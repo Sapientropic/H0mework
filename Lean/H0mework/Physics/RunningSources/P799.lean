@@ -1,0 +1,343 @@
+import H0mework.Physics.AlphaSources.P798
+
+/-!
+# Proposition 799: loop-expansion RG producer for alpha_s
+
+P798 lowers the smooth alpha_s producer to low-level source data, but its RG
+leg still receives `ThreeLoopBetaCoefficients` as a field.  This file lowers
+that RG leg one step further.
+
+The native RG input is a three-loop expansion:
+
+* a one-loop carrier trace input;
+* a two-loop diagram coordinate plus its source-law counterterm;
+* a three-loop diagram coordinate plus its source-law counterterm.
+
+The source-law condition says that the renormalized two- and three-loop
+coordinates cancel in the alpha_s source coordinate.  The resulting generated
+`ThreeLoopBetaCoefficients` then feeds the P798 low-level producer and gives
+the same exact inverse residual.
+
+This is not a Feynman-integral library.  It is the algebraic producer socket
+that a future three-loop integral calculation must fill: once the raw
+diagram/counterterm coordinates satisfy the source-law cancellation equations,
+the RG leg is no longer a canonical beta-coefficient field readout.
+-/
+
+noncomputable section
+
+namespace SaturationMonoid
+namespace StandardModelConstraint
+
+open RunningSigmaBeta
+open scoped BigOperators
+
+/-! ## Three-loop expansion source data -/
+
+/-- Native loop-coordinate contribution: a raw diagram coordinate and the
+counterterm/subtraction required by the source-law renormalization scheme. -/
+structure LoopCoordinateContribution where
+  diagram : ℚ
+  counterterm : ℚ
+
+namespace LoopCoordinateContribution
+
+/-- The renormalized source-coordinate contribution of a loop order. -/
+def renormalized (L : LoopCoordinateContribution) : ℚ :=
+  L.diagram + L.counterterm
+
+/-- Source-law cancellation at a loop order. -/
+def Cancelled (L : LoopCoordinateContribution) : Prop :=
+  L.renormalized = 0
+
+/-- If a loop coordinate is cancelled by its source-law counterterm, its
+renormalized contribution is zero. -/
+theorem renormalized_eq_zero_of_cancelled
+    (L : LoopCoordinateContribution)
+    (hL : L.Cancelled) :
+    L.renormalized = 0 :=
+  hL
+
+end LoopCoordinateContribution
+
+/-- Three-loop RG expansion source data.  The one-loop part is the carrier
+trace input; higher-loop parts are source-coordinate diagram/counterterm
+pairs. -/
+structure ThreeLoopRGExpansionSourceData where
+  oneLoopInput : GaugeTraceOneLoopInput
+  twoLoop : LoopCoordinateContribution
+  threeLoop : LoopCoordinateContribution
+
+/-- Generate P797's beta-coefficient object from native loop-expansion source
+data. -/
+def threeLoopBetaCoefficientsFromExpansion
+    (D : ThreeLoopRGExpansionSourceData) :
+    ThreeLoopBetaCoefficients where
+  oneLoopSlope := betaCoeff D.oneLoopInput
+  twoLoopCorrection := D.twoLoop.renormalized
+  threeLoopCorrection := D.threeLoop.renormalized
+
+/-- Source-law RG cancellation: higher-loop coordinates cancel, and the
+one-loop carrier input is the SU(7) incidence color input. -/
+def ThreeLoopRGExpansionSourceLaw
+    (D : ThreeLoopRGExpansionSourceData) : Prop :=
+  D.oneLoopInput = incidenceCarrierTraceInput .colorSU3 ∧
+    D.twoLoop.Cancelled ∧
+      D.threeLoop.Cancelled
+
+/-- A source-law-normalized loop expansion generates beta coefficients whose
+effective slope is exactly the SU(7) incidence color slope. -/
+theorem threeLoopBetaCoefficientsFromExpansion_incidenceMatch
+    (D : ThreeLoopRGExpansionSourceData)
+    (hD : ThreeLoopRGExpansionSourceLaw D) :
+    ThreeLoopBetaIncidenceMatch
+      (threeLoopBetaCoefficientsFromExpansion D)
+      (betaCoeff (incidenceCarrierTraceInput .colorSU3)) := by
+  rcases hD with ⟨hone, htwo, hthree⟩
+  unfold ThreeLoopBetaIncidenceMatch
+    threeLoopBetaCoefficientsFromExpansion
+    ThreeLoopBetaCoefficients.effectiveSlope
+  rw [hone, htwo, hthree]
+  ring
+
+/-- A source-law-normalized loop expansion generates a zero RG mismatch after
+P798's exact RG integral construction. -/
+theorem rgMismatch_fromLoopExpansion_eq_zero
+    (D : ThreeLoopRGExpansionSourceData)
+    (hD : ThreeLoopRGExpansionSourceLaw D) :
+    rgMismatch
+        (threeLoopRGStateFromBetaAndIncidence
+          (threeLoopBetaCoefficientsFromExpansion D)
+          (betaCoeff (incidenceCarrierTraceInput .colorSU3))) = 0 :=
+  rgMismatch_fromBetaAndIncidence_eq_zero
+    (threeLoopBetaCoefficientsFromExpansion D)
+    (betaCoeff (incidenceCarrierTraceInput .colorSU3))
+    (threeLoopBetaCoefficientsFromExpansion_incidenceMatch D hD)
+
+/-! ## Canonical loop-expansion RG producer -/
+
+/-- The zero diagram/counterterm pair. -/
+def zeroLoopCoordinateContribution : LoopCoordinateContribution where
+  diagram := 0
+  counterterm := 0
+
+/-- The zero pair is cancelled in the source-law coordinate. -/
+theorem zeroLoopCoordinateContribution_cancelled :
+    zeroLoopCoordinateContribution.Cancelled := by
+  unfold LoopCoordinateContribution.Cancelled
+    LoopCoordinateContribution.renormalized
+    zeroLoopCoordinateContribution
+  norm_num
+
+/-- Canonical loop-expansion data for the current SU(7) QCD RG leg.  The
+one-loop input is generated by the block-incidence carrier; two- and
+three-loop source coordinates have no leftover contribution after source-law
+renormalization. -/
+def canonicalThreeLoopRGExpansionSourceData :
+    ThreeLoopRGExpansionSourceData where
+  oneLoopInput := qcdBlockIncidenceOneLoopInput
+  twoLoop := zeroLoopCoordinateContribution
+  threeLoop := zeroLoopCoordinateContribution
+
+/-- The canonical loop-expansion RG data satisfies the source-law
+cancellation law. -/
+theorem canonicalThreeLoopRGExpansionSourceLaw :
+    ThreeLoopRGExpansionSourceLaw
+      canonicalThreeLoopRGExpansionSourceData := by
+  unfold ThreeLoopRGExpansionSourceLaw
+    canonicalThreeLoopRGExpansionSourceData
+  refine ⟨?_, ?_, ?_⟩
+  · exact qcdBlockIncidenceOneLoopInput_eq_incidenceCarrierTraceInput
+  · exact zeroLoopCoordinateContribution_cancelled
+  · exact zeroLoopCoordinateContribution_cancelled
+
+/-- The canonical loop-expansion producer emits P797's canonical beta
+coefficient object. -/
+theorem threeLoopBetaCoefficientsFromExpansion_canonical :
+    threeLoopBetaCoefficientsFromExpansion
+        canonicalThreeLoopRGExpansionSourceData =
+      canonicalThreeLoopBetaCoefficients := by
+  unfold threeLoopBetaCoefficientsFromExpansion
+    canonicalThreeLoopRGExpansionSourceData canonicalThreeLoopBetaCoefficients
+    zeroLoopCoordinateContribution LoopCoordinateContribution.renormalized
+  norm_num
+
+/-- The canonical loop-expansion producer emits P798's canonical RG state. -/
+theorem threeLoopRGStateFromLoopExpansion_canonical :
+    threeLoopRGStateFromBetaAndIncidence
+        (threeLoopBetaCoefficientsFromExpansion
+          canonicalThreeLoopRGExpansionSourceData)
+        (betaCoeff (incidenceCarrierTraceInput .colorSU3)) =
+      canonicalThreeLoopRGSourceState := by
+  rw [threeLoopBetaCoefficientsFromExpansion_canonical]
+  exact threeLoopRGStateFromBetaAndIncidence_canonical
+
+/-! ## Full low-level alpha_s producer with loop-expansion RG -/
+
+/-- Low-level source data whose RG leg is generated by a three-loop expansion
+rather than supplied directly as beta coefficients. -/
+structure LoopExpansionSmoothPhysicsSourceData where
+  su7BreakingSource : ℚ
+  thresholdTrace : ThresholdTraceSourceData
+  rgExpansion : ThreeLoopRGExpansionSourceData
+  incidenceGeneratedSlotEquiv :
+    SU7BlockIncidence ≃ SU7GeneratedCarrierSlot
+
+/-- Generate P797's smooth physics state from the loop-expansion source
+data. -/
+def smoothPhysicsStateFromLoopExpansionSource
+    (D : LoopExpansionSmoothPhysicsSourceData) :
+    SmoothPhysicsAlphaStrongState where
+  su7BreakingSource := D.su7BreakingSource
+  thresholdSpectrum :=
+    thresholdSpectrumFromTraceSource D.thresholdTrace
+  rgState :=
+    threeLoopRGStateFromBetaAndIncidence
+      (threeLoopBetaCoefficientsFromExpansion D.rgExpansion)
+      (betaCoeff (incidenceCarrierTraceInput .colorSU3))
+  higgsExtraSpectrum :=
+    generatedHiggsExtraSpectrumFromIncidenceEquiv
+      D.incidenceGeneratedSlotEquiv
+
+/-- Canonical loop-expansion source data for the alpha_s smooth producer. -/
+def canonicalLoopExpansionSmoothPhysicsSourceData :
+    LoopExpansionSmoothPhysicsSourceData where
+  su7BreakingSource := alphaStrongSU7BreakingCardSourceGap
+  thresholdTrace := canonicalThresholdTraceSourceData
+  rgExpansion := canonicalThreeLoopRGExpansionSourceData
+  incidenceGeneratedSlotEquiv := blockIncidenceGeneratedSlotEquiv
+
+/-- The canonical loop-expansion source data generates P797's canonical smooth
+physics state. -/
+theorem smoothPhysicsStateFromLoopExpansionSource_canonical :
+    smoothPhysicsStateFromLoopExpansionSource
+        canonicalLoopExpansionSmoothPhysicsSourceData =
+      canonicalSmoothPhysicsState := by
+  unfold smoothPhysicsStateFromLoopExpansionSource
+    canonicalLoopExpansionSmoothPhysicsSourceData canonicalSmoothPhysicsState
+  rw [threeLoopRGStateFromLoopExpansion_canonical]
+  rfl
+
+/-- THEOREM 1: the loop-expansion source producer outputs exactly the P792
+four-source primitive generator. -/
+theorem loopExpansionSmoothPhysicsFourSourceOutput_eq_target :
+    smoothPhysicsFourSourceOutput
+        (smoothPhysicsStateFromLoopExpansionSource
+          canonicalLoopExpansionSmoothPhysicsSourceData) =
+      su7AlphaStrongFourSourcePrimitiveGenerator := by
+  rw [smoothPhysicsStateFromLoopExpansionSource_canonical]
+  exact smoothPhysicsFourSourceOutput_eq_target
+
+/-- THEOREM 2: the loop-expansion smooth producer transports to the exact
+inverse alpha_s residual. -/
+theorem alphaStrongLoopExpansionSmoothPhysicsProducer_outputs_residual :
+    inverseCorrectionFromAlphaGap
+        (alphaStrongTwoLoopSMOutput ℚ)
+        (∑ s : AlphaStrongResidualSource,
+          smoothPhysicsFourSourceOutput
+            (smoothPhysicsStateFromLoopExpansionSource
+              canonicalLoopExpansionSmoothPhysicsSourceData) s) =
+      -((89000 : ℚ) / 128511) := by
+  rw [loopExpansionSmoothPhysicsFourSourceOutput_eq_target]
+  exact su7AlphaStrongFourSourcePrimitiveGenerator_inverseResidual
+
+/-! ## P795 residual-carrier reconstruction for the loop-expansion producer -/
+
+/-- The loop-expansion alpha_s four-source output as a native effective
+residual process. -/
+def loopExpansionSmoothAlphaStrongEffectiveProcess :
+    ResidualProjection.EffectiveResidualProcess
+      ℚ ℚ AlphaStrongResidualSource where
+  target := 0
+  keep := (LinearMap.id : ℚ →ₗ[ℚ] ℚ)
+  residual :=
+    smoothPhysicsFourSourceOutput
+      (smoothPhysicsStateFromLoopExpansionSource
+        canonicalLoopExpansionSmoothPhysicsSourceData)
+  update := id
+  residual_transport_law := by
+    intro s
+    rfl
+
+/-- THEOREM 3: by P795, the loop-expansion native producer uniquely
+reconstructs its residual-carrier system. -/
+theorem loopExpansionSmoothEffectiveProcess_uniqueResidualCarrier :
+    ∃! Q :
+      ResidualProjection.ResidualCarrierSystemProducer
+        ℚ ℚ AlphaStrongResidualSource,
+      Q.toEffectiveResidualProcess =
+        loopExpansionSmoothAlphaStrongEffectiveProcess :=
+  ResidualProjection.effectiveProcess_unique_residualCarrier_reconstruction
+    loopExpansionSmoothAlphaStrongEffectiveProcess
+
+/-! ## Bundled certificate -/
+
+/-- Loop-expansion RG alpha_s producer certificate. -/
+structure AlphaStrongLoopExpansionRGProducerCertificate : Prop where
+  rg_source_law :
+    ThreeLoopRGExpansionSourceLaw
+      canonicalThreeLoopRGExpansionSourceData
+  beta_coefficients_generated :
+    threeLoopBetaCoefficientsFromExpansion
+        canonicalThreeLoopRGExpansionSourceData =
+      canonicalThreeLoopBetaCoefficients
+  rg_state_generated :
+    threeLoopRGStateFromBetaAndIncidence
+        (threeLoopBetaCoefficientsFromExpansion
+          canonicalThreeLoopRGExpansionSourceData)
+        (betaCoeff (incidenceCarrierTraceInput .colorSU3)) =
+      canonicalThreeLoopRGSourceState
+  rg_zero :
+    rgMismatch
+        (threeLoopRGStateFromBetaAndIncidence
+          (threeLoopBetaCoefficientsFromExpansion
+            canonicalThreeLoopRGExpansionSourceData)
+          (betaCoeff (incidenceCarrierTraceInput .colorSU3))) = 0
+  smooth_state_generated :
+    smoothPhysicsStateFromLoopExpansionSource
+        canonicalLoopExpansionSmoothPhysicsSourceData =
+      canonicalSmoothPhysicsState
+  output_eq_primitive :
+    smoothPhysicsFourSourceOutput
+        (smoothPhysicsStateFromLoopExpansionSource
+          canonicalLoopExpansionSmoothPhysicsSourceData) =
+      su7AlphaStrongFourSourcePrimitiveGenerator
+  inverse_residual :
+    inverseCorrectionFromAlphaGap
+        (alphaStrongTwoLoopSMOutput ℚ)
+        (∑ s : AlphaStrongResidualSource,
+          smoothPhysicsFourSourceOutput
+            (smoothPhysicsStateFromLoopExpansionSource
+              canonicalLoopExpansionSmoothPhysicsSourceData) s) =
+      -((89000 : ℚ) / 128511)
+  residual_carrier_unique :
+    ∃! Q :
+      ResidualProjection.ResidualCarrierSystemProducer
+        ℚ ℚ AlphaStrongResidualSource,
+      Q.toEffectiveResidualProcess =
+        loopExpansionSmoothAlphaStrongEffectiveProcess
+
+/-- THEOREM 4: bundled loop-expansion RG alpha_s producer certificate. -/
+theorem alphaStrongLoopExpansionRGProducerCertificate :
+    AlphaStrongLoopExpansionRGProducerCertificate where
+  rg_source_law :=
+    canonicalThreeLoopRGExpansionSourceLaw
+  beta_coefficients_generated :=
+    threeLoopBetaCoefficientsFromExpansion_canonical
+  rg_state_generated :=
+    threeLoopRGStateFromLoopExpansion_canonical
+  rg_zero :=
+    rgMismatch_fromLoopExpansion_eq_zero
+      canonicalThreeLoopRGExpansionSourceData
+      canonicalThreeLoopRGExpansionSourceLaw
+  smooth_state_generated :=
+    smoothPhysicsStateFromLoopExpansionSource_canonical
+  output_eq_primitive :=
+    loopExpansionSmoothPhysicsFourSourceOutput_eq_target
+  inverse_residual :=
+    alphaStrongLoopExpansionSmoothPhysicsProducer_outputs_residual
+  residual_carrier_unique :=
+    loopExpansionSmoothEffectiveProcess_uniqueResidualCarrier
+
+end StandardModelConstraint
+end SaturationMonoid

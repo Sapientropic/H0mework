@@ -1,0 +1,185 @@
+import H0mework.Realization.Operations.Effects
+import Mathlib.LinearAlgebra.Finsupp.LinearCombination
+import H0mework.Foundation.Relations.ScalarDifferentialResidual
+
+/-!
+# Scalar operation-generated relations and residual transport
+
+The unchanged source operation semantics generate evaluators on finite formal words
+over the source scalar ring. The complete old value and generated effect produce
+the update square consumed by the existing coimage and its complete inverse fibres.
+Primitive operations retain their additive types; scalar linearity concerns formal words.
+-/
+
+set_option autoImplicit false
+
+universe r u v w w' q
+
+namespace SaturationMonoid.SourceOperationScalarRelations
+
+open SourceOperationEffects
+open ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceGeneratedScalarDifferentialResidual
+
+noncomputable section
+
+variable (R : Type r) [CommRing R]
+variable {Sorts : Type u} (Value : Sorts → Type v) (Var : Sorts → Type w)
+  [∀ s, AddCommGroup (Value s)]
+
+abbrev Formal (s : Sorts) := Expr Value Var s →₀ R
+
+variable {R Value Var} [∀ s, Module R (Value s)]
+variable {Var' : Sorts → Type w'} {s : Sorts}
+
+abbrev evaluation (ρ : Env Value Var) : Formal R Value Var s →ₗ[R] Value s :=
+  Finsupp.linearCombination R (fun e => e.eval ρ)
+
+abbrev effectEvaluator (ρ δ : Env Value Var) : Formal R Value Var s →ₗ[R] Value s :=
+  Finsupp.linearCombination R (fun e => e.effect ρ δ)
+
+theorem evaluation_update (ρ δ : Env Value Var) :
+    evaluation (R := R) (s := s) (ρ + δ) = evaluation (R := R) ρ + effectEvaluator (R := R) ρ δ := by
+  apply Finsupp.lhom_ext
+  intro e n
+  simp only [evaluation, effectEvaluator, Finsupp.linearCombination_single,
+    LinearMap.add_apply, Expr.eval_update, smul_add]
+
+/-- Retain the complete old relation and its independently generated effect
+before the addition readout. -/
+abbrev updateInventory (ρ δ : Env Value Var) :
+    Formal R Value Var s →ₗ[R] Value s × Value s :=
+  (evaluation (R := R) ρ).prod (effectEvaluator (R := R) ρ δ)
+
+abbrev additionReadout : Value s × Value s →ₗ[R] Value s :=
+  LinearMap.fst R _ _ + LinearMap.snd R _ _
+
+abbrev updateMorphism (ρ δ : Env Value Var) :
+    Morphism (updateInventory (R := R) (s := s) ρ δ)
+      (evaluation (R := R) (s := s) (ρ + δ)) where
+  sourceMap := LinearMap.id
+  targetMap := additionReadout (R := R)
+  commutes := by
+    apply LinearMap.ext
+    intro relation
+    exact (LinearMap.congr_fun (evaluation_update ρ δ) relation).symm
+
+/-- The existing coimage functor consumes the generated update square. -/
+theorem update_residual_from_inventory (ρ δ : Env Value Var)
+    (relation : Formal R Value Var s) :
+    inducedResidualMap (updateMorphism (R := R) ρ δ)
+      (canonicalResidual (updateInventory (R := R) ρ δ) relation) =
+        canonicalResidual (evaluation (R := R) (ρ + δ)) relation := rfl
+
+theorem updated_residual_readout (ρ δ : Env Value Var)
+    (relation : Formal R Value Var s) :
+    (residualEquivRange (evaluation (R := R) (ρ + δ))
+      (canonicalResidual (evaluation (R := R) (ρ + δ)) relation)).val =
+        evaluation (R := R) ρ relation + effectEvaluator (R := R) ρ δ relation :=
+  LinearMap.congr_fun (evaluation_update ρ δ) relation
+
+theorem old_relation_updated_residual (ρ δ : Env Value Var)
+    (relation : Formal R Value Var s) (old_relation : evaluation (R := R) ρ relation = 0) :
+    (residualEquivRange (evaluation (R := R) (ρ + δ))
+      (canonicalResidual (evaluation (R := R) (ρ + δ)) relation)).val =
+        effectEvaluator (R := R) ρ δ relation := by
+  rw [updated_residual_readout, old_relation, zero_add]
+
+theorem old_relation_updated_zero_iff (ρ δ : Env Value Var)
+    (relation : Formal R Value Var s) (old_relation : evaluation (R := R) ρ relation = 0) :
+    canonicalResidual (evaluation (R := R) (ρ + δ)) relation = 0 ↔
+      effectEvaluator (R := R) ρ δ relation = 0 := by
+  rw [canonicalResidual_eq_zero_iff, evaluation_update, LinearMap.add_apply,
+    old_relation, zero_add]
+
+theorem old_relation_updated_nonzero_iff (ρ δ : Env Value Var)
+    (relation : Formal R Value Var s) (old_relation : evaluation (R := R) ρ relation = 0) :
+    canonicalResidual (evaluation (R := R) (ρ + δ)) relation ≠ 0 ↔
+      effectEvaluator (R := R) ρ δ relation ≠ 0 :=
+  not_congr (old_relation_updated_zero_iff ρ δ relation old_relation)
+
+/-- Every representative in the residual fibre is retained, exactly modulo
+the generated evaluation kernel. -/
+theorem residual_fibre_iff (ρ : Env Value Var)
+    (left right : Formal R Value Var s) :
+    canonicalResidual (evaluation (R := R) ρ) left = canonicalResidual (evaluation (R := R) ρ) right ↔
+      left - right ∈ LinearMap.ker (evaluation (R := R) ρ) := by
+  rw [LinearMap.mem_ker,
+    ← canonicalResidual_eq_zero_iff (evaluation (R := R) ρ) (left - right),
+    map_sub, sub_eq_zero]
+
+/-- The update factors uniquely through the existing coimage of the complete
+old/effect inventory; kernel compatibility is generated by the update square. -/
+theorem updated_evaluation_factorization (ρ δ : Env Value Var) :
+    ∃! factor : ResidualCarrier (updateInventory (R := R) (s := s) ρ δ) →ₗ[R] Value s,
+      factor.comp (canonicalResidual (updateInventory (R := R) ρ δ)) = evaluation (R := R) (ρ + δ) := by
+  apply universal_factorization
+  intro relation relation_mem
+  rw [LinearMap.mem_ker] at relation_mem ⊢
+  have square := LinearMap.congr_fun (updateMorphism (R := R) (s := s) ρ δ).commutes relation
+  simp only [LinearMap.comp_apply] at square
+  rw [relation_mem, map_zero] at square
+  exact square.symm
+
+abbrev substitution (σ : ∀ t, Var t → Expr Value Var' t) :
+    Formal R Value Var s →ₗ[R] Formal R Value Var' s :=
+  Finsupp.lmapDomain R R (fun e => e.subst σ)
+
+theorem evaluation_substitution (σ : ∀ t, Var t → Expr Value Var' t)
+    (ρ : Env Value Var') :
+    (evaluation (R := R) (s := s) ρ).comp (substitution (R := R) σ) =
+      evaluation (R := R) (fun t x => (σ t x).eval ρ) := by
+  unfold evaluation substitution
+  rw [Finsupp.linearCombination_comp_lmapDomain]
+  congr 1
+  funext e
+  exact e.eval_subst σ ρ
+
+theorem effectEvaluator_substitution (σ : ∀ t, Var t → Expr Value Var' t)
+    (ρ δ : Env Value Var') :
+    (effectEvaluator (R := R) (s := s) ρ δ).comp (substitution (R := R) σ) =
+      effectEvaluator (R := R) (fun t x => (σ t x).eval ρ) (fun t x => (σ t x).effect ρ δ) := by
+  unfold effectEvaluator substitution
+  rw [Finsupp.linearCombination_comp_lmapDomain]
+  congr 1
+  funext e
+  exact e.effect_subst σ ρ δ
+
+abbrev substitutionMorphism (σ : ∀ t, Var t → Expr Value Var' t)
+    (ρ : Env Value Var') :
+    Morphism (evaluation (R := R) (s := s) (fun t x => (σ t x).eval ρ))
+      (evaluation (R := R) (s := s) ρ) where
+  sourceMap := substitution (R := R) σ
+  targetMap := LinearMap.id
+  commutes := by
+    rw [LinearMap.id_comp]
+    exact (evaluation_substitution σ ρ).symm
+
+theorem substitution_residual_naturality (σ : ∀ t, Var t → Expr Value Var' t)
+    (ρ : Env Value Var') (relation : Formal R Value Var s) :
+    inducedResidualMap (substitutionMorphism (R := R) σ ρ)
+      (canonicalResidual (evaluation (R := R) (fun t x => (σ t x).eval ρ)) relation) =
+        canonicalResidual (evaluation (R := R) ρ) (substitution (R := R) σ relation) := rfl
+
+abbrev effectSubstitutionMorphism (σ : ∀ t, Var t → Expr Value Var' t)
+    (ρ δ : Env Value Var') :
+    Morphism
+      (effectEvaluator (R := R) (s := s) (fun t x => (σ t x).eval ρ)
+        (fun t x => (σ t x).effect ρ δ)) (effectEvaluator (R := R) (s := s) ρ δ) where
+  sourceMap := substitution (R := R) σ
+  targetMap := LinearMap.id
+  commutes := by
+    rw [LinearMap.id_comp]
+    exact (effectEvaluator_substitution σ ρ δ).symm
+
+theorem effect_substitution_residual_naturality (σ : ∀ t, Var t → Expr Value Var' t)
+    (ρ δ : Env Value Var') (relation : Formal R Value Var s) :
+    inducedResidualMap (effectSubstitutionMorphism (R := R) σ ρ δ)
+      (canonicalResidual
+        (effectEvaluator (R := R) (fun t x => (σ t x).eval ρ) (fun t x => (σ t x).effect ρ δ))
+        relation) =
+          canonicalResidual (effectEvaluator (R := R) ρ δ)
+            (substitution (R := R) σ relation) := rfl
+
+end
+
+end SaturationMonoid.SourceOperationScalarRelations

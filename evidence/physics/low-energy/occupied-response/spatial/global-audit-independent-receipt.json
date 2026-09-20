@@ -1,0 +1,40 @@
+{
+  "status": "PASS",
+  "actual_native_time_hypercharge_T": "I12",
+  "radial_generated_norm_sphere_factor": 1,
+  "radial_off_sphere_negative_control": "2/3, not 1",
+  "all_real_epsilon_identity_evolution": "exp(-i*epsilon*(time-start))*w",
+  "unbounded_continuous_native_history": "R(t)=max(t,0)*I",
+  "ramp_future_phase": "exp(-i*epsilon*t^2/2), value and derivative join at zero",
+  "large_coupling_time_cases": [
+    {
+      "epsilon": 3,
+      "start": 100,
+      "time": -200,
+      "ramp_phase": "exp(-i*-15000)"
+    },
+    {
+      "epsilon": -7,
+      "start": -100,
+      "time": 1000,
+      "ramp_phase": "exp(-i*-3500000)"
+    },
+    {
+      "epsilon": 100,
+      "start": -5000,
+      "time": 2000,
+      "ramp_phase": "exp(-i*200000000)"
+    },
+    {
+      "epsilon": -100,
+      "start": -300,
+      "time": -1000,
+      "ramp_phase": "exp(-i*0)"
+    }
+  ],
+  "finite_window_Picard_slack": 1,
+  "no_all_time_R_bound_witness": "R(M+1) has norm M+1 for every M>=0",
+  "reused_noncommuting_receipt": "Verification/physics/low-energy-phenomenology/occupied-response/spatial/finite-coupling/derivative/audit/independent-receipt.json",
+  "reused_without_rerunning": "exact finite-epsilon source exponential, full 12 rows and its current/Kubo derivative",
+  "scope": "Independent actual-source mechanism controls. Universal arbitrary-window gluing is kernel-checked in Lean."
+}

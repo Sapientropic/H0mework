@@ -1,0 +1,302 @@
+{
+  "verdict": "certified",
+  "audited_at_utc": "2026-09-07T06:10:03.631295+00:00",
+  "scope": "Bounded subordinate mathematical consumer of the fixed eight-mode Stage9DEF source and original Stage10 ticks 16/17; no new operational authority.",
+  "certified_machine_facts": [
+    "Explicit finite occupation creation and annihilation operators generate dGamma(A)I(v)=I(Av) on the full Fock amplitude carrier for arbitrary finite linearly ordered modes, matrices and vectors.",
+    "The one-particle map is injective and preserves all complex pairings and dGamma matrix elements; same-mode nilpotency, vacuum identities and same_mode_car are kernel-checked.",
+    "Every 8x8 complex observable has the same expectation in the original source vector and its Fock preparation, separately at original Stage10 tickAt 16 and tickAt 17.",
+    "full_p286_current_preserved retains the exact positiveSmoothUnifiedSource, SpinPair.actual, arbitrary P286 variation and full 4*lapse*spinScale normalization.",
+    "The original independent linear dual is retained via spinFlip 0<->2, 1<->3; its exchange F is distinct from the original gamma^0. Physical current and physicalKinetic readouts retain their original source observables.",
+    "initial_agreement_dark_separation gives initial equality and a source-generated darkTime mismatch: accepted dual +1/2, omitted dual -1/2."
+  ],
+  "declaration_classification": {
+    "Fermion.lean": "Subordinate mathematical producer: explicit occupation operators and their one-particle laws; no assumed CAR or quantization identity.",
+    "Current.lean": "Transporter/readout: original source preparation, independent dual, current and physicalKinetic through the explicit Fock operators.",
+    "Consumer.lean": "Subordinate readout: original tick and nextTick answers; no root, writer or next-current mutation.",
+    "Controls.lean": "Diagnostic at the changed-observable interface: omitting the source dual changes the current; no broader route or theory no-go."
+  },
+  "strict_compilation": {
+    "toolchain": "Lean (version 4.33.0, arm64-apple-darwin24.6.0, commit d8b18978322de05a8f3dba51ef03cf5461676c17, Release)",
+    "working_directory": "Lean",
+    "environment": "PATH and baseline LEAN_PATH from lake env; temporary candidate library first. Unchanged package siblings are read-only symlinks to existing artifacts; Current and Consumer import freshly checked candidate artifacts.",
+    "temporary_path_placeholders": "{audit_lib} and {audit_dir} replace only ephemeral local output paths in recorded argument arrays.",
+    "commands": [
+      {
+        "file": "Lean/SaturationMonoid/PhysicsCore/QuantizationCheck/Fermion.lean",
+        "arguments_template": [
+          "lean",
+          "--trust=0",
+          "-DwarningAsError=true",
+          "-o",
+          "{audit_lib}/SaturationMonoid/PhysicsCore/QuantizationCheck/Fermion.olean",
+          "SaturationMonoid/PhysicsCore/QuantizationCheck/Fermion.lean"
+        ],
+        "exit_code": 0,
+        "seconds": 1.858688,
+        "diagnostics": [],
+        "sha256": "8a9690341e64c7ad6b1b03e208a57d6e23df5dcb4da367222994778f3eb7d83e"
+      },
+      {
+        "file": "Lean/SaturationMonoid/PhysicsCore/QuantizationCheck/Current.lean",
+        "arguments_template": [
+          "lean",
+          "--trust=0",
+          "-DwarningAsError=true",
+          "-o",
+          "{audit_lib}/SaturationMonoid/PhysicsCore/QuantizationCheck/Current.olean",
+          "SaturationMonoid/PhysicsCore/QuantizationCheck/Current.lean"
+        ],
+        "exit_code": 0,
+        "seconds": 4.664185,
+        "diagnostics": [],
+        "sha256": "78e671c5bf87ea3dc10a5fdae47c7f3b3e271375eaef9d5242da10d1460e3632"
+      },
+      {
+        "file": "Lean/SaturationMonoid/PhysicsCore/QuantizationCheck/Controls.lean",
+        "arguments_template": [
+          "lean",
+          "--trust=0",
+          "-DwarningAsError=true",
+          "-o",
+          "{audit_lib}/SaturationMonoid/PhysicsCore/QuantizationCheck/Controls.olean",
+          "SaturationMonoid/PhysicsCore/QuantizationCheck/Controls.lean"
+        ],
+        "exit_code": 0,
+        "seconds": 4.899185,
+        "diagnostics": [],
+        "sha256": "98ea8aa0f2e7c658b514eb550e85e16ac0f8437c1754d698b50c178d40474ce4"
+      },
+      {
+        "file": "Lean/SaturationMonoid/PhysicsCore/QuantizationCheck/Consumer.lean",
+        "arguments_template": [
+          "lean",
+          "--trust=0",
+          "-DwarningAsError=true",
+          "-o",
+          "{audit_lib}/SaturationMonoid/PhysicsCore/QuantizationCheck/Consumer.olean",
+          "SaturationMonoid/PhysicsCore/QuantizationCheck/Consumer.lean"
+        ],
+        "exit_code": 0,
+        "seconds": 3.88383,
+        "diagnostics": [],
+        "sha256": "fc936e9260092a46135c220b4d99c5ac0b0f3667c548b7cc830f35aaee84fc50"
+      }
+    ],
+    "broad_build_run": false,
+    "candidate_compile_failures": [],
+    "resolved_setup_issue": "The initial temporary package shadow lacked unchanged sibling modules; adding read-only sibling symlinks resolved the import-path error before the successful Controls/Current/Consumer checks. No candidate source changed."
+  },
+  "axiom_audit": {
+    "arguments_template": [
+      "lean",
+      "--trust=0",
+      "-DwarningAsError=true",
+      "{audit_dir}/Certification.lean"
+    ],
+    "exit_code": 0,
+    "seconds": 29.591242,
+    "method": "collectAxioms on every imported declaration whose privateToUserName starts with the candidate namespace, including private and generated declarations.",
+    "namespace": "SaturationMonoid.PhysicsCore.QuantizationCheck.",
+    "total_checked_declarations": 86,
+    "declaration_kinds": {
+      "definition": 18,
+      "theorem": 68
+    },
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "axiom_histogram": [
+      {
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "declarations": 81
+      },
+      {
+        "axioms": [
+          "Quot.sound",
+          "propext"
+        ],
+        "declarations": 4
+      },
+      {
+        "axioms": [
+          "propext"
+        ],
+        "declarations": 1
+      }
+    ],
+    "unauthorized_axioms": [],
+    "finals_checked_by_print_axioms": [
+      "sameOccurrence_quantization_check",
+      "full_p286_current_preserved",
+      "initial_agreement_dark_separation",
+      "Fermion.secondQuantize_oneParticle",
+      "Fermion.same_mode_car"
+    ],
+    "final_axiom_set": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "dependency_audit": {
+    "method": "Recursive full type/value constant closure using ConstantInfo.getUsedConstantsAsSet; every required anchor must occur and every node must be kernel-checked.",
+    "consumer_roots": 7,
+    "required_hits": 81,
+    "distinct_required_anchors": 62,
+    "missing_required_anchors": [],
+    "mouths": [
+      {
+        "target": "Fermion.secondQuantize_oneParticle",
+        "required_hits": 8,
+        "closure_nodes": 6650,
+        "closure_edges": 92832
+      },
+      {
+        "target": "Fermion.pairing_secondQuantize_oneParticle",
+        "required_hits": 7,
+        "closure_nodes": 14768,
+        "closure_edges": 229391
+      },
+      {
+        "target": "full_dual_response_preserved",
+        "required_hits": 9,
+        "closure_nodes": 63064,
+        "closure_edges": 1549525
+      },
+      {
+        "target": "full_p286_current_preserved",
+        "required_hits": 15,
+        "closure_nodes": 63452,
+        "closure_edges": 1564707
+      },
+      {
+        "target": "sameOccurrence_quantization_check",
+        "required_hits": 20,
+        "closure_nodes": 76074,
+        "closure_edges": 2222309
+      },
+      {
+        "target": "sameOccurrence_current_prediction",
+        "required_hits": 8,
+        "closure_nodes": 76210,
+        "closure_edges": 2228032
+      },
+      {
+        "target": "initial_agreement_dark_separation",
+        "required_hits": 14,
+        "closure_nodes": 63538,
+        "closure_edges": 1568850
+      }
+    ],
+    "source_provenance": {
+      "source": "StageNineEnrichedProofFreeSource.positiveSmoothUnifiedSource",
+      "actual": "Stage9C.Material.SpinPair.actual",
+      "preparation_chain": "Stage10.Runtime.tick/nextTick.answer -> tick_vector/nextTick_vector -> fieldAt_eq_vector -> Source.restrict_actual -> Source.amplitude_from_actual -> Source.vector",
+      "original_runtime_ticks": [
+        16,
+        17
+      ],
+      "current_normalization_chain": "full_p286_current_preserved -> physical_current_preserved -> currentResponse_eq_classical -> actual_p286MatterCurrent; responseMatrix -> actual_action_quantumResponse -> dualCoefficient_source_star",
+      "source_reverse_dependency_roots": 5,
+      "source_reverse_dependency_closure_nodes": 75988,
+      "source_reverse_dependencies_on_candidate": []
+    },
+    "observable_target_independence": {
+      "operators": [
+        "Stage9DEF.Compatibility.responseMatrix",
+        "Stage9DEF.Compatibility.currentObservable",
+        "Stage9DEF.Compatibility.physicalCurrent",
+        "QuantizationCheck.rawCurrent"
+      ],
+      "closure_nodes": 20328,
+      "forbidden_state_or_target_dependencies": []
+    },
+    "project_import_closure_modules": 1286,
+    "scratch_imports": [],
+    "missing_project_imports": [],
+    "candidate_forbidden_tokens": [],
+    "target_smuggling_or_vacuity_findings": []
+  },
+  "numerical_verification": {
+    "arguments_template": [
+      "python3",
+      "Verification/physics/quantization-current/check.py",
+      "--output",
+      "{audit_dir}/final-numerical-results.json"
+    ],
+    "exit_code": 0,
+    "status": "PASS",
+    "script_sha256": "f3e6ab0c3b5ed1a1c636cae4d4c8536d86432f1c54335a66a0a9e9a55efe5c5f",
+    "saved_results_sha256": "c8da22fd46a8374da58b7327f3a4b553aa609f16d0d629ea42d5b94e3b392369",
+    "fresh_json_equals_saved_results": true,
+    "check_families": 40,
+    "evaluations": 812,
+    "maximum_absolute_residual": 8.881821732672713e-16,
+    "tolerance": 2e-12,
+    "modes": 8,
+    "full_Fock_dimension": 256,
+    "particle_sector_dimensions": [
+      1,
+      8,
+      28,
+      56,
+      70,
+      56,
+      28,
+      8,
+      1
+    ],
+    "validated_labels": [
+      "theta=0",
+      "theta=pi/4",
+      "theta=pi/2",
+      "theta=pi",
+      "time=1.25",
+      "time=-2.3"
+    ],
+    "selected_category_counts": {
+      "CAR_aa": 64,
+      "CAR_creation_creation": 64,
+      "CAR_a_creation": 64,
+      "creation_annihilation_adjoint": 8,
+      "source_points": 6,
+      "directions": 4,
+      "source_color_generators": 3,
+      "source_current_entries_per_check_family": 72,
+      "actual_connection_entries_per_check_family": 24,
+      "arbitrary_complex_matrix_trials": 4
+    },
+    "negative_control": {
+      "initial_accepted_and_omitted": 0.5,
+      "dark_accepted": 0.5,
+      "dark_omitted": -0.5,
+      "dark_absolute_difference": 1.0,
+      "changed_observable_also_obeys_quantization_identity": true
+    },
+    "detailed_counts_and_results": "Verification/physics/quantization-current/results.json"
+  },
+  "claim_boundaries": [
+    "Cross-mode CAR and full-Fock adjoint laws are independently checked finite matrices in the numerical script; the new Lean modules prove same-mode CAR and one-particle intertwining, not a complete CAR/adjoint theorem family.",
+    "The comparison concerns the same normalized one-particle source preparation and its finite Fock lift. It does not claim spacetime field quantization, interacting renormalization, UV completion or a string-theory no-go.",
+    "physical_stress_preserved is exactly the original physicalKinetic expectation readout; it does not add a separate full stress-tensor theorem."
+  ],
+  "presentation_review": {
+    "mechanism_card": "Lean/docs/mechanisms/physics/quantization-current.md",
+    "claim_scope": "accepted after physicalKinetic wording correction",
+    "theorem_mouth_lint": "Exit 0 with --fail-on never; three autoImplicit style warnings follow local convention; four empty/non-singleton-name heuristics are generic algebraic identities, not route no-go claims.",
+    "candidate_source_unchanged_through_audit": true,
+    "focused_git_diff_check_exit_code": 0,
+    "owned_file": "Verification/physics/quantization-current/lean-audit.json",
+    "proof_or_script_files_modified_by_auditor": false,
+    "staged_or_committed_by_auditor": false
+  },
+  "candidate_defects": [],
+  "return_contract_to_strike": null
+}

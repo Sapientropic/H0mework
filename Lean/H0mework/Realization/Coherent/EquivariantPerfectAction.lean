@@ -1,0 +1,204 @@
+import H0mework.Realization.Perfectification.ScalarEnvelope
+
+/-!
+# Source-generated equivariant perfect action
+
+An actual evaluation `C → Dual(D)` may carry a source action on `C` and a
+contragredient action on `D`.  Their single commuting square descends to the
+canonical coimage and its generated dual image.  The canonical map, faithful
+dual embedding, perfect equivalence, coevaluation, and induced pairing all
+commute with the generated action.
+
+The constructor uses linear endomorphisms.  It does not require an inverse,
+finite generation, projectivity, a determinant, unitarity, or residual
+vanishing.  In particular, a non-invertible source action remains a lawful
+endomorphism of the exact perfect envelope rather than being silently
+promoted to an automorphism.
+-/
+
+set_option autoImplicit false
+set_option linter.style.haveILetI false
+
+namespace SaturationMonoid
+namespace ResponsibilityLifecycle
+namespace LivingLawEvolution
+namespace ConstructiveRoot
+namespace SourceGeneratedScalarEquivariantPerfectAction
+
+open SourceGeneratedScalarPerfectification
+open SourceGeneratedScalarExactEnvelope
+
+noncomputable section
+
+universe r c d
+
+variable {R : Type r} [CommRing R]
+variable {C : Type c} {D : Type d}
+variable [AddCommGroup C] [Module R C]
+variable [AddCommGroup D] [Module R D]
+variable (evaluation : C →ₗ[R] Module.Dual R D)
+
+/-- One actual action square.  The action on `D` is contragredient: applying
+the carrier action before evaluation equals precomposing the functional by
+the dual-carrier action. -/
+structure ActionData where
+  carrierAction : C →ₗ[R] C
+  dualCarrierAction : D →ₗ[R] D
+  evaluation_commutes :
+    (inducedDualTarget dualCarrierAction).comp evaluation =
+      evaluation.comp carrierAction
+
+/-- The source action descended to the canonical coimage. -/
+def perfectCarrierAction (action : ActionData evaluation) :
+    Carrier evaluation →ₗ[R] Carrier evaluation :=
+  inducedCarrierMap evaluation evaluation action.carrierAction
+    action.dualCarrierAction action.evaluation_commutes
+
+/-- The same action on the source-generated dual image. -/
+def perfectDualAction (action : ActionData evaluation) :
+    GeneratedDual evaluation →ₗ[R] GeneratedDual evaluation :=
+  inducedDualImageMap evaluation evaluation action.carrierAction
+    action.dualCarrierAction action.evaluation_commutes
+
+@[simp] theorem perfectCarrierAction_canonicalMap
+    (action : ActionData evaluation) :
+    (perfectCarrierAction evaluation action).comp (canonicalMap evaluation) =
+      (canonicalMap evaluation).comp action.carrierAction :=
+  inducedPerfectificationMap_comp evaluation evaluation action.carrierAction
+    action.dualCarrierAction action.evaluation_commutes
+
+theorem dualEmbedding_perfectCarrierAction
+    (action : ActionData evaluation) :
+    (dualEmbedding evaluation).comp (perfectCarrierAction evaluation action) =
+      (inducedDualTarget action.dualCarrierAction).comp
+        (dualEmbedding evaluation) :=
+  dualEmbedding_naturality evaluation evaluation action.carrierAction
+    action.dualCarrierAction action.evaluation_commutes
+
+theorem perfectDualAction_generatedDualMap
+    (action : ActionData evaluation) :
+    (perfectDualAction evaluation action).comp (generatedDualMap evaluation) =
+      (generatedDualMap evaluation).comp
+        (perfectCarrierAction evaluation action) :=
+  generatedDualMap_naturality evaluation evaluation action.carrierAction
+    action.dualCarrierAction action.evaluation_commutes
+
+theorem dualInclusion_perfectDualAction
+    (action : ActionData evaluation) :
+    (dualInclusion evaluation).comp (perfectDualAction evaluation action) =
+      (inducedDualTarget action.dualCarrierAction).comp
+        (dualInclusion evaluation) :=
+  dualInclusion_naturality evaluation evaluation action.carrierAction
+    action.dualCarrierAction action.evaluation_commutes
+
+theorem perfectCarrierAction_coevaluation
+    (action : ActionData evaluation) :
+    (perfectCarrierAction evaluation action).comp (coevaluation evaluation) =
+      (coevaluation evaluation).comp (perfectDualAction evaluation action) :=
+  coevaluation_naturality evaluation evaluation action.carrierAction
+    action.dualCarrierAction action.evaluation_commutes
+
+/-- The pairing on the exact perfect carrier is the original evaluation
+after quotienting its radical. -/
+def perfectPairing (carrier : Carrier evaluation) (dualValue : D) : R :=
+  dualEmbedding evaluation carrier dualValue
+
+theorem perfectPairing_commutes
+    (action : ActionData evaluation)
+    (carrier : Carrier evaluation) (dualValue : D) :
+    perfectPairing evaluation (perfectCarrierAction evaluation action carrier)
+        dualValue =
+      perfectPairing evaluation carrier (action.dualCarrierAction dualValue) := by
+  have commuting := LinearMap.congr_fun
+    (dualEmbedding_perfectCarrierAction evaluation action) carrier
+  exact congrArg (fun functional => functional dualValue) commuting
+
+/-- The complete action package generated by the one source square. -/
+structure GeneratedAction (action : ActionData evaluation) where
+  carrierAction : Carrier evaluation →ₗ[R] Carrier evaluation
+  dualAction : GeneratedDual evaluation →ₗ[R] GeneratedDual evaluation
+  canonicalMap_commutes : carrierAction.comp (canonicalMap evaluation) =
+    (canonicalMap evaluation).comp action.carrierAction
+  perfectMap_commutes : dualAction.comp (generatedDualMap evaluation) =
+    (generatedDualMap evaluation).comp carrierAction
+  dualInclusion_commutes : (dualInclusion evaluation).comp dualAction =
+    (inducedDualTarget action.dualCarrierAction).comp
+      (dualInclusion evaluation)
+  coevaluation_commutes : carrierAction.comp (coevaluation evaluation) =
+    (coevaluation evaluation).comp dualAction
+
+def generate (action : ActionData evaluation) : GeneratedAction evaluation action where
+  carrierAction := perfectCarrierAction evaluation action
+  dualAction := perfectDualAction evaluation action
+  canonicalMap_commutes := perfectCarrierAction_canonicalMap evaluation action
+  perfectMap_commutes := perfectDualAction_generatedDualMap evaluation action
+  dualInclusion_commutes := dualInclusion_perfectDualAction evaluation action
+  coevaluation_commutes := perfectCarrierAction_coevaluation evaluation action
+
+/-! ## Identity and composition -/
+
+def ActionData.identity : ActionData evaluation where
+  carrierAction := LinearMap.id
+  dualCarrierAction := LinearMap.id
+  evaluation_commutes := by rfl
+
+/-- Execute `first` and then `second`.  The dual-carrier actions compose in
+the reverse order, as forced by the evaluation pairing. -/
+def ActionData.comp (first second : ActionData evaluation) :
+    ActionData evaluation where
+  carrierAction := second.carrierAction.comp first.carrierAction
+  dualCarrierAction := first.dualCarrierAction.comp second.dualCarrierAction
+  evaluation_commutes := by
+    apply LinearMap.ext
+    intro carrier
+    apply LinearMap.ext
+    intro dualValue
+    have firstAt := LinearMap.congr_fun first.evaluation_commutes carrier
+    have firstAtDual := congrArg (fun functional =>
+      functional (second.dualCarrierAction dualValue)) firstAt
+    have secondAt := LinearMap.congr_fun second.evaluation_commutes
+      (first.carrierAction carrier)
+    have secondAtDual := congrArg (fun functional => functional dualValue) secondAt
+    exact firstAtDual.trans secondAtDual
+
+@[simp] theorem perfectCarrierAction_identity :
+    perfectCarrierAction evaluation (ActionData.identity evaluation) =
+      LinearMap.id := by
+  apply LinearMap.ext
+  intro value
+  obtain ⟨sourceValue, rfl⟩ :=
+    Submodule.mkQ_surjective (LinearMap.ker evaluation) value
+  rfl
+
+@[simp] theorem perfectDualAction_identity :
+    perfectDualAction evaluation (ActionData.identity evaluation) =
+      LinearMap.id :=
+  inducedDualImageMap_id evaluation
+    (ActionData.identity evaluation).evaluation_commutes
+
+theorem perfectCarrierAction_comp (first second : ActionData evaluation) :
+    perfectCarrierAction evaluation (ActionData.comp evaluation first second) =
+      (perfectCarrierAction evaluation second).comp
+        (perfectCarrierAction evaluation first) := by
+  apply LinearMap.ext
+  intro value
+  obtain ⟨sourceValue, rfl⟩ :=
+    Submodule.mkQ_surjective (LinearMap.ker evaluation) value
+  rfl
+
+theorem perfectDualAction_comp (first second : ActionData evaluation) :
+    perfectDualAction evaluation (ActionData.comp evaluation first second) =
+      (perfectDualAction evaluation second).comp
+        (perfectDualAction evaluation first) :=
+  inducedDualImageMap_comp evaluation evaluation evaluation
+    first.carrierAction second.carrierAction
+    first.dualCarrierAction second.dualCarrierAction
+    first.evaluation_commutes second.evaluation_commutes
+    (ActionData.comp evaluation first second).evaluation_commutes
+
+end
+end SourceGeneratedScalarEquivariantPerfectAction
+end ConstructiveRoot
+end LivingLawEvolution
+end ResponsibilityLifecycle
+end SaturationMonoid

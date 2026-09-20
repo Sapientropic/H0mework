@@ -1,0 +1,70 @@
+# H0mework
+
+三篇论文的公开源码与复现仓：完整证明选集、固定版本依赖、冻结证据回执与可运行的独立检查。
+
+研究开发在私有仓 Homework 进行；本仓按论文选集从固定源提交导出，历史独立、可独立构建，
+后续论文按批次扩展。选集入口、模块对应与来源记录见[证据对应表](docs/evidence-map.md)。
+
+| 论文 | 内容 | 代表入口 |
+| --- | --- | --- |
+| 过程核心（source-process-core） | 生命周期守恒、有限结算、完整历史、忠实实现、残差修订（C1–C13） | [`Lean/H0mework/Foundation/Responsibility/Lifecycle.lean`](Lean/H0mework/Foundation/Responsibility/Lifecycle.lean) |
+| 同源物理（physics-common-source） | Spin×SU7 共同作用、九场解、量子/Fock 对应、全时动力学（P1–P20） | [`Lean/H0mework/Physics/RootRuntime/RecoveryConsumer.lean`](Lean/H0mework/Physics/RootRuntime/RecoveryConsumer.lean) |
+| 低能唯象（low-energy-phenomenology） | 跑动、传播、顶点、占据态响应与全时间 Kubo 演化（L1–L17） | [`Lean/H0mework/Physics/LowEnergy/Consumer.lean`](Lean/H0mework/Physics/LowEnergy/Consumer.lean) |
+
+## 来源与导出方式
+
+- 证明源码固定取自 Homework 的两个提交：过程核心与物理主稿 `e60a8605`（H）、
+  低能唯象 `30218c1a`（S）；H 是 S 的祖先。全部所选模块在两提交间逐字节一致，
+  统一自 S 导出；对应关系与核对说明见[证据对应表](docs/evidence-map.md)。
+- 导出是布局变换：只改写本地 `import` 模块地址，声明名、命名空间、前提、量词与证明正文
+  保持原字节。`tools/export-map.json` 记录每个模块与证据文件的源／目标地址及 SHA256；
+  `tools/source_view.py` 可从本仓逆向重建原路径源码并逐字节校验（见下）。
+
+## 环境
+
+- Lean `leanprover/lean4:v4.33.0`（由 `Lean/lean-toolchain` 固定，elan 自动安装）
+- mathlib 输入 `v4.33.0`（实际修订 `db584cd6d46c92f209a44c0f1c829460d327499d`，
+  由 `Lean/lake-manifest.json` 固定）
+- 独立检查需要 Python 3 与 `sympy`、`mpmath`（`make check` 自动向 `.local/venv` 安装）
+
+## 构建与复现
+
+```bash
+make bootstrap   # 获取固定版本 mathlib 预编译产物
+make build       # 独立构建全部公开选集（--trust=0，warningAsError）
+make check       # 重建原路径源码视图并运行冻结的独立证据检查
+```
+
+构建覆盖三篇论文入口的完整 import 闭包（含传递依赖，共 2774 个本地模块）。
+定向复核某个直接消费者时，在 `Lean/` 目录运行如
+`lake build H0mework.Physics.RootRuntime.RecoveryConsumer`。
+
+`make check` 做两层验证：
+
+1. `tools/source_view.py` 依据 `tools/export-map.json` 与冻结回执中的 `source_sha256`，
+   把本仓导出文件逆向重建为原路径源码树（写入仓外临时目录），任何字节差异都会失败；
+2. 在重建树上运行随论文冻结的独立检查脚本：
+   - `scripts/physics/low-energy/check_readout.py`（L2 精确读出与特征多项式根隔离）
+   - `scripts/physics/low-energy/stabilizer_check.py`（L2 稳定子有限检查，输出与冻结回执比对）
+   - `scripts/physics/low-energy/occupied-response/spatial/global/independent_check.py`（L17 全时间控制）
+   - `scripts/physics/low-energy/occupied-response/spatial/finite-coupling-derivative/independent_check.py`
+     （L17 非交换 A01 有限块与真导数）
+
+## 目录
+
+```text
+Lean/                     导出的 Lean 选集（H0mework.* 模块）与固定依赖配置
+scripts/physics/          精确程序与独立检查脚本
+evidence/physics/         冻结回执（结果、独立检查输出、原验证记录）
+docs/source/physics/      机制推导与认证记录
+docs/evidence-map.md      三稿主张 → 本仓模块/脚本的对应表
+tools/export-map.json     源/目标地址与 SHA256 导出映射
+tools/source_view.py      原路径源码重建与逐字节校验
+```
+
+## 范围说明
+
+- 本仓只包含三篇论文的入口、直接消费者、完整依赖闭包与配套证据；论文未引用的其余成果
+  不在本选集内，后续论文公开时按批次扩展。
+- 迁移维护配置（选集状态、同步工具）留在本地忽略目录，公开构建与检查只依赖已跟踪文件。
+- 许可证待定：项目尚未选定发布许可证，正式公开前确定。

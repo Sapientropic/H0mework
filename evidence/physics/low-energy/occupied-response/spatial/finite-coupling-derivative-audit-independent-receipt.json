@@ -1,0 +1,22 @@
+{
+  "status": "PASS",
+  "source_channel": "original A01 temporal gauge force and B=-sqrt(2)Q T",
+  "actual_invariant_subspace_dimension": 4,
+  "finite_epsilon_solution": "two Q-eigenblocks; each exp(-i H_epsilon t)",
+  "parameter_regularness_not_assumed": true,
+  "complete_actual_12_by_4_tangent_rows": true,
+  "finite_current": "sqrt(2)*epsilon*omega*(1 - cos(2*physical_time*sqrt(epsilon**2 + omega**2)))/(epsilon**2 + omega**2)",
+  "true_finite_current_epsilon_zero_derivative": "sqrt(2)*(1 - cos(2*omega*physical_time))/omega",
+  "exact_Kubo_integral_matches": true,
+  "naive_factored_derivative_fails_by": "[H,T] at second time derivative",
+  "wrong_T_current_derivative": "0",
+  "operator_remainder_numeric_ratios_M_one": [
+    "0.49783605621956775517129271916531708918804166399853",
+    "0.49783605621956775517129271916531708918804166399853",
+    "0.49715282009293250995260318351849829678676657291856",
+    "0.48903743276786465960823716461122747495668482756567",
+    "0.49982722374772427331571527778741673852531111622501"
+  ],
+  "phase_preparation_commutation_on_true_tangent": true,
+  "scope": "Exact source-fiber finite epsilon/true derivative controls; universal L2 and operator norm differentiation are Lean theorems."
+}

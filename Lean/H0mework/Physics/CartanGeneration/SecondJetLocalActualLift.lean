@@ -1,0 +1,677 @@
+import H0mework.Physics.CartanGeneration.OriginRestartConsistency
+
+/-!
+# S9-C3h133: current-state Cartan/action second-jet local actual lift
+
+C3h132 proves the full current-state update law at the shared origin of two
+forward constructions.  This module advances the producer itself instead of
+trying to recover an endpoint from residual coordinates:
+
+```text
+source + generated current primitive state
+→ actual Lorentz action time jet
+→ differentiated Cartan spatial acceleration
+→ quadratic local coframe path U
+→ B := II⁺(U).
+```
+
+The acceleration is an explicit action/Cartan formula.  It is not supplied by
+the caller and is not decoded from a residual, quotient, endpoint, inverse
+image, shell witness, stationarity receipt, source knob, or branch choice.
+The resulting local actual retains the already generated action fields.  Its
+origin value and first time derivative agree with the C3h127/C3h129 current
+actual, while its second time derivative is the newly generated acceleration.
+
+This remains the already formalized torsion-free Cartan sector.  It is a local
+second-order actual germ, not an exact nonlinear flow, global solution, or
+nonzero-spin Einstein--Cartan producer.  Residual and field-equation laws may
+only inspect this `U` after construction.
+-/
+
+namespace
+  SaturationMonoid.PhysicsCore.StageNineSourceActionGeneratedCurrentTorsionFreeCartanSecondJetLocalActualLift
+
+open ProofFreeRicherAnholonomicSource
+open PointwiseDiracSpinConnectionLift
+open StageNineCanonicalCauchyState
+open StageNineCartanActionCoframeSecondJetLocalActualLift
+open StageNineCoframeFirstJet
+open StageNineCoframeLocalDifferentiability
+open StageNineEnrichedProofFreeSource
+open StageNineHolonomicField
+open StageNineJointActionLocalActualLift
+open StageNineLorentzConnectionVariation
+open StageNineP286ActionCauchySplit
+open StageNineP286ActionVelocityLocalActualLift
+open StageNineScalarActionSecondJetLocalActualLift
+open StageNineSourceActionGeneratedCurrentTorsionFreeCartanLocalActualLift
+open StageNineSourceActionGeneratedCurrentTorsionFreeCartanPrimitiveCauchyDevelopment
+open StageNineSourceActionGeneratedCurrentTorsionFreeCartanPrimitiveSynchronizedResponse
+open StageNineStateDependentCartanCoframeFirstJetLocalActualLift
+open scoped ContDiff Matrix.Norms.Elementwise
+
+noncomputable section
+
+set_option autoImplicit false
+set_option maxHeartbeats 2000000
+
+/-! ## Action-generated acceleration -/
+
+/-- Matrix-valued physical-time jet of the Lorentz connection generated from
+the already generated current primitive state. -/
+def sourceActionGeneratedCurrentLorentzConnectionTimeJet
+    (source : SmoothUnifiedSource)
+    (anchor : ℝ)
+    (state : StageNineCauchyState)
+    (space : StageNineSpatialPoint) :
+    PointwiseLorentzSpinConnection :=
+  lorentzSkewConnectionOfBivectorOneForm
+    (fun formDirection internalPair =>
+      actionGeneratedLorentzLocalConnectionJet
+        (sourceActionGeneratedCurrentPrimitiveCauchyState
+          source anchor state)
+        space canonicalLorentzianTimeDirection
+        formDirection internalPair)
+
+@[simp] theorem
+    sourceActionGeneratedCurrentLorentzConnectionTimeJet_temporal_zero
+    (source : SmoothUnifiedSource)
+    (anchor : ℝ)
+    (state : StageNineCauchyState)
+    (space : StageNineSpatialPoint) :
+    sourceActionGeneratedCurrentLorentzConnectionTimeJet
+        source anchor state space canonicalLorentzianTimeDirection = 0 := by
+  funext internalOut internalIn
+  simp [sourceActionGeneratedCurrentLorentzConnectionTimeJet,
+    actionGeneratedLorentzLocalConnectionJet,
+    canonicalLorentzianTimeDirection,
+    lorentzSkewConnectionOfBivectorOneForm,
+    loweredLorentzBivectorMatrix]
+
+/-- The differentiated zero-spin Cartan law.  The first sum transports the
+already generated coframe velocity through the current temporal connection;
+the second sum transports the current coframe through the actual Lorentz
+action time jet. -/
+def SourceActionGeneratedCurrentCartanSpatialAccelerationLaw
+    (source : SmoothUnifiedSource)
+    (anchor : ℝ)
+    (state : StageNineCauchyState)
+    (candidate : StageNineSpatialCoframeVelocity) : Prop :=
+  ∀ space direction internal,
+    candidate space direction internal +
+        ∑ middle : LorentzianIndex,
+          (sourceActionGeneratedCurrentPrimitiveCauchyState
+            source anchor state).gravityConnection
+              space canonicalLorentzianTimeDirection internal middle *
+            cartanTorsionFreeSpatialCoframeVelocity
+              (sourceActionGeneratedCurrentPrimitiveCauchyState
+                source anchor state)
+              space direction middle =
+      ∑ middle : LorentzianIndex,
+        sourceActionGeneratedCurrentLorentzConnectionTimeJet
+            source anchor state space direction.succ internal middle *
+          (sourceActionGeneratedCurrentPrimitiveCauchyState
+            source anchor state).coframe
+              space middle canonicalLorentzianTimeDirection
+
+/-- The spatial coframe acceleration generated by the actual action and the
+current Cartan velocity. -/
+def sourceActionGeneratedCurrentCartanSpatialCoframeAcceleration
+    (source : SmoothUnifiedSource)
+    (anchor : ℝ)
+    (state : StageNineCauchyState) :
+    StageNineSpatialCoframeVelocity :=
+  fun space direction internal =>
+    -(∑ middle : LorentzianIndex,
+        (sourceActionGeneratedCurrentPrimitiveCauchyState
+          source anchor state).gravityConnection
+            space canonicalLorentzianTimeDirection internal middle *
+          cartanTorsionFreeSpatialCoframeVelocity
+            (sourceActionGeneratedCurrentPrimitiveCauchyState
+              source anchor state)
+            space direction middle) +
+      ∑ middle : LorentzianIndex,
+        sourceActionGeneratedCurrentLorentzConnectionTimeJet
+            source anchor state space direction.succ internal middle *
+          (sourceActionGeneratedCurrentPrimitiveCauchyState
+            source anchor state).coframe
+              space middle canonicalLorentzianTimeDirection
+
+theorem
+    sourceActionGeneratedCurrentCartanSpatialCoframeAcceleration_satisfies_law
+    (source : SmoothUnifiedSource)
+    (anchor : ℝ)
+    (state : StageNineCauchyState) :
+    SourceActionGeneratedCurrentCartanSpatialAccelerationLaw
+      source anchor state
+      (sourceActionGeneratedCurrentCartanSpatialCoframeAcceleration
+        source anchor state) := by
+  intro space direction internal
+  unfold sourceActionGeneratedCurrentCartanSpatialCoframeAcceleration
+  ring
+
+theorem
+    sourceActionGeneratedCurrentCartanSpatialAccelerationLaw_unique
+    (source : SmoothUnifiedSource)
+    (anchor : ℝ)
+    (state : StageNineCauchyState)
+    (candidate : StageNineSpatialCoframeVelocity)
+    (law :
+      SourceActionGeneratedCurrentCartanSpatialAccelerationLaw
+        source anchor state candidate) :
+    candidate =
+      sourceActionGeneratedCurrentCartanSpatialCoframeAcceleration
+        source anchor state := by
+  funext space direction internal
+  have coordinateLaw := law space direction internal
+  unfold sourceActionGeneratedCurrentCartanSpatialCoframeAcceleration
+  linarith
+
+/-- Complete coframe acceleration.  The temporal column retains the declared
+zero control; the action/Cartan law generates the twelve spatial columns. -/
+def sourceActionGeneratedCurrentCartanCoframeAcceleration
+    (source : SmoothUnifiedSource)
+    (anchor : ℝ)
+    (state : StageNineCauchyState)
+    (space : StageNineSpatialPoint) :
+    LorentzianCoframe :=
+  fun internal coordinate =>
+    ![
+      0,
+      sourceActionGeneratedCurrentCartanSpatialCoframeAcceleration
+        source anchor state space 0 internal,
+      sourceActionGeneratedCurrentCartanSpatialCoframeAcceleration
+        source anchor state space 1 internal,
+      sourceActionGeneratedCurrentCartanSpatialCoframeAcceleration
+        source anchor state space 2 internal
+    ] coordinate
+
+@[simp] theorem
+    sourceActionGeneratedCurrentCartanCoframeAcceleration_temporal
+    (source : SmoothUnifiedSource)
+    (anchor : ℝ)
+    (state : StageNineCauchyState)
+    (space : StageNineSpatialPoint)
+    (internal : LorentzianIndex) :
+    sourceActionGeneratedCurrentCartanCoframeAcceleration
+        source anchor state space internal
+        canonicalLorentzianTimeDirection = 0 := by
+  simp [sourceActionGeneratedCurrentCartanCoframeAcceleration,
+    canonicalLorentzianTimeDirection]
+
+@[simp] theorem
+    sourceActionGeneratedCurrentCartanCoframeAcceleration_spatial
+    (source : SmoothUnifiedSource)
+    (anchor : ℝ)
+    (state : StageNineCauchyState)
+    (space : StageNineSpatialPoint)
+    (direction : Fin 3)
+    (internal : LorentzianIndex) :
+    sourceActionGeneratedCurrentCartanCoframeAcceleration
+        source anchor state space internal direction.succ =
+      sourceActionGeneratedCurrentCartanSpatialCoframeAcceleration
+        source anchor state space direction internal := by
+  fin_cases direction <;>
+    simp [sourceActionGeneratedCurrentCartanCoframeAcceleration]
+
+/-! ## The generated second-jet actual -/
+
+def sourceActionGeneratedCurrentTorsionFreeCartanSecondJetCoframeField
+    (source : SmoothUnifiedSource)
+    (anchor : ℝ)
+    (state : StageNineCauchyState)
+    (space : StageNineSpatialPoint)
+    (point : BasePoint) :
+    LorentzianCoframe :=
+  (sourceActionGeneratedCurrentTorsionFreeCartanCoframeLocalActualLift
+    source anchor state space).coframe point +
+      scalarQuadraticTimeCoefficient point •
+        sourceActionGeneratedCurrentCartanCoframeAcceleration
+          source anchor state space
+
+/-- The actual local second jet.  `B` is derived from the generated coframe;
+it is not an independent endpoint coordinate. -/
+def sourceActionGeneratedCurrentTorsionFreeCartanSecondJetLocalActualLift
+    (source : SmoothUnifiedSource)
+    (anchor : ℝ)
+    (state : StageNineCauchyState)
+    (space : StageNineSpatialPoint) :
+    StageNineHolonomicConfiguration :=
+  let coframe :=
+    sourceActionGeneratedCurrentTorsionFreeCartanSecondJetCoframeField
+      source anchor state space
+  { sourceActionGeneratedCurrentTorsionFreeCartanCoframeLocalActualLift
+      source anchor state space with
+    coframe := coframe
+    gravityAuxiliary := fun point =>
+      physicalIIPlusBivector (coframe point) }
+
+theorem
+    sourceActionGeneratedCurrentTorsionFreeCartanSecondJetLocalActualLift_retains_action_fields
+    (source : SmoothUnifiedSource)
+    (anchor : ℝ)
+    (state : StageNineCauchyState)
+    (space : StageNineSpatialPoint) :
+    SourceActionCartanCoframeRetainedFields source
+      (sourceActionGeneratedCurrentPrimitiveCauchyState
+        source anchor state)
+      space
+      (sourceActionGeneratedCurrentTorsionFreeCartanSecondJetLocalActualLift
+        source anchor state space) := by
+  have retained :=
+    (sourceActionGeneratedCurrentTorsionFreeCartanCoframeLocalActualLift_realizes
+      source anchor state space).retainsActionFields
+  unfold SourceActionCartanCoframeRetainedFields at retained ⊢
+  simpa only [
+    sourceActionGeneratedCurrentTorsionFreeCartanSecondJetLocalActualLift]
+    using retained
+
+theorem
+    sourceActionGeneratedCurrentTorsionFreeCartanSecondJetLocalActualLift_coframe_generated
+    (source : SmoothUnifiedSource)
+    (anchor : ℝ)
+    (state : StageNineCauchyState)
+    (space : StageNineSpatialPoint) :
+    (sourceActionGeneratedCurrentTorsionFreeCartanSecondJetLocalActualLift
+      source anchor state space).coframe =
+      sourceActionGeneratedCurrentTorsionFreeCartanSecondJetCoframeField
+        source anchor state space := by
+  rfl
+
+theorem
+    sourceActionGeneratedCurrentTorsionFreeCartanSecondJetLocalActualLift_gravityAuxiliary_generated
+    (source : SmoothUnifiedSource)
+    (anchor : ℝ)
+    (state : StageNineCauchyState)
+    (space : StageNineSpatialPoint) :
+    (sourceActionGeneratedCurrentTorsionFreeCartanSecondJetLocalActualLift
+      source anchor state space).gravityAuxiliary =
+      fun point =>
+        physicalIIPlusBivector
+          ((sourceActionGeneratedCurrentTorsionFreeCartanSecondJetLocalActualLift
+            source anchor state space).coframe point) := by
+  rfl
+
+theorem
+    sourceActionGeneratedCurrentTorsionFreeCartanSecondJetCoframeField_origin
+    (source : SmoothUnifiedSource)
+    (anchor : ℝ)
+    (state : StageNineCauchyState)
+    (space : StageNineSpatialPoint) :
+    sourceActionGeneratedCurrentTorsionFreeCartanSecondJetCoframeField
+        source anchor state space 0 =
+      (sourceActionGeneratedCurrentPrimitiveCauchyState
+        source anchor state).coframe space := by
+  unfold
+    sourceActionGeneratedCurrentTorsionFreeCartanSecondJetCoframeField
+  simp only [scalarQuadraticTimeCoefficient_origin, zero_smul, add_zero]
+  exact
+    sourceActionGeneratedCurrentTorsionFreeCartanCoframeLocalActualLift_initialCoframe
+      source anchor state space
+
+private theorem
+    currentCartanFirstActual_coframe_timeDerivative
+    (source : SmoothUnifiedSource)
+    (anchor : ℝ)
+    (state : StageNineCauchyState)
+    (space : StageNineSpatialPoint)
+    (point : BasePoint)
+    (internal coordinate : LorentzianIndex) :
+    fieldDirectionalDerivative
+        (fun candidate =>
+          (sourceActionGeneratedCurrentTorsionFreeCartanCoframeLocalActualLift
+            source anchor state space).coframe
+              candidate internal coordinate)
+        point canonicalLorentzianTimeDirection =
+      sourceActionGeneratedCurrentTorsionFreeCartanCoframeResponse
+        source anchor state space internal coordinate := by
+  unfold fieldDirectionalDerivative
+  change
+    fderiv ℝ
+        (fun candidate =>
+          affineCoframeFieldOfJet
+            (cartanTorsionFreeCoframeFirstJet
+              (sourceActionGeneratedCurrentPrimitiveCauchyState
+                source anchor state)
+              space)
+            candidate internal coordinate)
+        point (coordinateDirection canonicalLorentzianTimeDirection) =
+      _
+  rw [affineCoframeFieldOfJet_directionalDerivative]
+  rfl
+
+theorem
+    sourceActionGeneratedCurrentTorsionFreeCartanSecondJetCoframeField_timeDerivative
+    (source : SmoothUnifiedSource)
+    (anchor : ℝ)
+    (state : StageNineCauchyState)
+    (space : StageNineSpatialPoint)
+    (point : BasePoint)
+    (internal coordinate : LorentzianIndex) :
+    fieldDirectionalDerivative
+        (fun candidate =>
+          sourceActionGeneratedCurrentTorsionFreeCartanSecondJetCoframeField
+            source anchor state space candidate internal coordinate)
+        point canonicalLorentzianTimeDirection =
+      sourceActionGeneratedCurrentTorsionFreeCartanCoframeResponse
+          source anchor state space internal coordinate +
+        point canonicalLorentzianTimeDirection *
+          sourceActionGeneratedCurrentCartanCoframeAcceleration
+            source anchor state space internal coordinate := by
+  let base :=
+    sourceActionGeneratedCurrentTorsionFreeCartanCoframeLocalActualLift
+      source anchor state space
+  let acceleration :=
+    sourceActionGeneratedCurrentCartanCoframeAcceleration
+      source anchor state space
+  have baseDerivative :
+      HasFDerivAt
+        (fun candidate => base.coframe candidate internal coordinate)
+        (fderiv ℝ
+          (fun candidate => base.coframe candidate internal coordinate)
+          point)
+        point := by
+    exact
+      (((sourceActionGeneratedCurrentTorsionFreeCartanCoframeLocalActualLift_realizes
+        source anchor state space).smooth.1 internal coordinate).differentiable
+          (by simp)).differentiableAt.hasFDerivAt
+  have correctionDerivative :=
+    (scalarQuadraticTimeCoefficient_hasFDerivAt point).mul_const
+      (acceleration internal coordinate)
+  have sumDerivative := baseDerivative.add correctionDerivative
+  unfold
+    sourceActionGeneratedCurrentTorsionFreeCartanSecondJetCoframeField
+    fieldDirectionalDerivative
+  change
+    fderiv ℝ
+        ((fun candidate =>
+          base.coframe candidate internal coordinate) +
+          fun candidate =>
+            scalarQuadraticTimeCoefficient candidate *
+              acceleration internal coordinate)
+        point (coordinateDirection canonicalLorentzianTimeDirection) =
+      _
+  rw [sumDerivative.fderiv]
+  simp only [add_apply]
+  rw [show
+    fderiv ℝ
+        (fun candidate =>
+          base.coframe candidate internal coordinate)
+        point (coordinateDirection canonicalLorentzianTimeDirection) =
+      sourceActionGeneratedCurrentTorsionFreeCartanCoframeResponse
+        source anchor state space internal coordinate by
+    exact currentCartanFirstActual_coframe_timeDerivative
+      source anchor state space point internal coordinate]
+  simp [coordinateDirection]
+  ring
+
+theorem
+    sourceActionGeneratedCurrentTorsionFreeCartanSecondJetCoframeField_firstTimeDerivative_origin
+    (source : SmoothUnifiedSource)
+    (anchor : ℝ)
+    (state : StageNineCauchyState)
+    (space : StageNineSpatialPoint)
+    (internal coordinate : LorentzianIndex) :
+    fieldDirectionalDerivative
+        (fun point =>
+          sourceActionGeneratedCurrentTorsionFreeCartanSecondJetCoframeField
+            source anchor state space point internal coordinate)
+        0 canonicalLorentzianTimeDirection =
+      sourceActionGeneratedCurrentTorsionFreeCartanCoframeResponse
+        source anchor state space internal coordinate := by
+  rw [
+    sourceActionGeneratedCurrentTorsionFreeCartanSecondJetCoframeField_timeDerivative]
+  simp
+
+theorem
+    sourceActionGeneratedCurrentTorsionFreeCartanSecondJetCoframeField_secondTimeDerivative_origin
+    (source : SmoothUnifiedSource)
+    (anchor : ℝ)
+    (state : StageNineCauchyState)
+    (space : StageNineSpatialPoint)
+    (internal coordinate : LorentzianIndex) :
+    fieldDirectionalDerivative
+        (fun point =>
+          fieldDirectionalDerivative
+            (fun candidate =>
+              sourceActionGeneratedCurrentTorsionFreeCartanSecondJetCoframeField
+                source anchor state space candidate internal coordinate)
+            point canonicalLorentzianTimeDirection)
+        0 canonicalLorentzianTimeDirection =
+      sourceActionGeneratedCurrentCartanCoframeAcceleration
+        source anchor state space internal coordinate := by
+  rw [show
+    (fun point =>
+      fieldDirectionalDerivative
+        (fun candidate =>
+          sourceActionGeneratedCurrentTorsionFreeCartanSecondJetCoframeField
+            source anchor state space candidate internal coordinate)
+        point canonicalLorentzianTimeDirection) =
+      fun point =>
+        sourceActionGeneratedCurrentTorsionFreeCartanCoframeResponse
+            source anchor state space internal coordinate +
+          point canonicalLorentzianTimeDirection *
+            sourceActionGeneratedCurrentCartanCoframeAcceleration
+              source anchor state space internal coordinate by
+    funext point
+    exact
+      sourceActionGeneratedCurrentTorsionFreeCartanSecondJetCoframeField_timeDerivative
+        source anchor state space point internal coordinate]
+  unfold fieldDirectionalDerivative
+  have derivative :=
+    (((localBaseCoordinate canonicalLorentzianTimeDirection).hasFDerivAt
+      (x := (0 : BasePoint))).mul_const
+        (sourceActionGeneratedCurrentCartanCoframeAcceleration
+          source anchor state space internal coordinate)).const_add
+      (sourceActionGeneratedCurrentTorsionFreeCartanCoframeResponse
+        source anchor state space internal coordinate)
+  rw [show
+    (fun point : BasePoint =>
+      sourceActionGeneratedCurrentTorsionFreeCartanCoframeResponse
+          source anchor state space internal coordinate +
+        point canonicalLorentzianTimeDirection *
+          sourceActionGeneratedCurrentCartanCoframeAcceleration
+            source anchor state space internal coordinate) =
+      fun point =>
+        sourceActionGeneratedCurrentTorsionFreeCartanCoframeResponse
+            source anchor state space internal coordinate +
+          localBaseCoordinate canonicalLorentzianTimeDirection point *
+            sourceActionGeneratedCurrentCartanCoframeAcceleration
+              source anchor state space internal coordinate by
+    rfl,
+    derivative.fderiv]
+  simp [coordinateDirection]
+
+theorem
+    sourceActionGeneratedCurrentTorsionFreeCartanSecondJetLocalActualLift_smooth
+    (source : SmoothUnifiedSource)
+    (anchor : ℝ)
+    (state : StageNineCauchyState)
+    (space : StageNineSpatialPoint) :
+    (sourceActionGeneratedCurrentTorsionFreeCartanSecondJetLocalActualLift
+      source anchor state space).Smooth := by
+  let base :=
+    sourceActionGeneratedCurrentTorsionFreeCartanCoframeLocalActualLift
+      source anchor state space
+  let acceleration :=
+    sourceActionGeneratedCurrentCartanCoframeAcceleration
+      source anchor state space
+  have baseSmooth :=
+    (sourceActionGeneratedCurrentTorsionFreeCartanCoframeLocalActualLift_realizes
+      source anchor state space).smooth
+  have coframeSmooth :
+      ContDiff ℝ ∞
+        (sourceActionGeneratedCurrentTorsionFreeCartanSecondJetCoframeField
+          source anchor state space) := by
+    apply contDiff_pi'
+    intro internal
+    apply contDiff_pi'
+    intro coordinate
+    change
+      ContDiff ℝ ∞ fun point =>
+        base.coframe point internal coordinate +
+          scalarQuadraticTimeCoefficient point *
+            acceleration internal coordinate
+    apply (baseSmooth.1 internal coordinate).add
+    unfold scalarQuadraticTimeCoefficient
+    fun_prop
+  have gravityAuxiliarySmooth :
+      ContDiff ℝ ∞ fun point =>
+        physicalIIPlusBivector
+          (sourceActionGeneratedCurrentTorsionFreeCartanSecondJetCoframeField
+            source anchor state space point) :=
+    physicalIIPlusBivector_contDiff.comp coframeSmooth
+  exact
+    ⟨fun internal coordinate =>
+        contDiff_pi.mp (contDiff_pi.mp coframeSmooth internal) coordinate,
+      baseSmooth.2.1,
+      fun internalPair spacetimePair =>
+        contDiff_pi.mp
+          (contDiff_pi.mp gravityAuxiliarySmooth internalPair)
+          spacetimePair,
+      baseSmooth.2.2.2.1,
+      baseSmooth.2.2.2.2.1,
+      baseSmooth.2.2.2.2.2.1,
+      baseSmooth.2.2.2.2.2.2.1,
+      baseSmooth.2.2.2.2.2.2.2.1,
+      baseSmooth.2.2.2.2.2.2.2.2⟩
+
+theorem
+    sourceActionGeneratedCurrentTorsionFreeCartanSecondJetLocalActualLift_originNondegenerate
+    (source : SmoothUnifiedSource)
+    (anchor : ℝ)
+    (state : StageNineCauchyState)
+    (space : StageNineSpatialPoint)
+    (currentNondegenerate :
+      Matrix.det
+        ((sourceActionGeneratedCurrentPrimitiveCauchyState
+          source anchor state).coframe space) ≠ 0) :
+    Matrix.det
+        ((sourceActionGeneratedCurrentTorsionFreeCartanSecondJetLocalActualLift
+          source anchor state space).coframe 0) ≠ 0 := by
+  change
+    Matrix.det
+        (sourceActionGeneratedCurrentTorsionFreeCartanSecondJetCoframeField
+          source anchor state space 0) ≠ 0
+  rw [
+    sourceActionGeneratedCurrentTorsionFreeCartanSecondJetCoframeField_origin]
+  exact currentNondegenerate
+
+theorem
+    sourceActionGeneratedCurrentTorsionFreeCartanSecondJetLocalActualLift_simplicity
+    (source : SmoothUnifiedSource)
+    (anchor : ℝ)
+    (state : StageNineCauchyState)
+    (space : StageNineSpatialPoint) :
+    StageNinePlebanskiMultiplierVariation.GravitySimplicityEquation
+      (sourceActionGeneratedCurrentTorsionFreeCartanSecondJetLocalActualLift
+        source anchor state space) := by
+  intro point
+  rfl
+
+/-! ## Producer frontier -/
+
+structure SourceActionGeneratedCurrentCartanSecondJetLocalActualLaw
+    (source : SmoothUnifiedSource)
+    (anchor : ℝ)
+    (state : StageNineCauchyState)
+    (space : StageNineSpatialPoint)
+    (actual : StageNineHolonomicConfiguration) : Prop where
+  retainsActionFields :
+    SourceActionCartanCoframeRetainedFields source
+      (sourceActionGeneratedCurrentPrimitiveCauchyState
+        source anchor state)
+      space actual
+  accelerationGenerated :
+    SourceActionGeneratedCurrentCartanSpatialAccelerationLaw
+      source anchor state
+      (sourceActionGeneratedCurrentCartanSpatialCoframeAcceleration
+        source anchor state)
+  coframeGenerated :
+    actual.coframe =
+      sourceActionGeneratedCurrentTorsionFreeCartanSecondJetCoframeField
+        source anchor state space
+  gravityAuxiliaryGenerated :
+    actual.gravityAuxiliary =
+      fun point => physicalIIPlusBivector (actual.coframe point)
+  coframeInitial :
+    actual.coframe 0 =
+      (sourceActionGeneratedCurrentPrimitiveCauchyState
+        source anchor state).coframe space
+  coframeFirstTime :
+    ∀ internal coordinate,
+      fieldDirectionalDerivative
+          (fun point => actual.coframe point internal coordinate)
+          0 canonicalLorentzianTimeDirection =
+        sourceActionGeneratedCurrentTorsionFreeCartanCoframeResponse
+          source anchor state space internal coordinate
+  coframeSecondTime :
+    ∀ internal coordinate,
+      fieldDirectionalDerivative
+          (fun point =>
+            fieldDirectionalDerivative
+              (fun candidate =>
+                actual.coframe candidate internal coordinate)
+              point canonicalLorentzianTimeDirection)
+          0 canonicalLorentzianTimeDirection =
+        sourceActionGeneratedCurrentCartanCoframeAcceleration
+          source anchor state space internal coordinate
+  smooth :
+    actual.Smooth
+  originNondegenerate :
+    Matrix.det
+        ((sourceActionGeneratedCurrentPrimitiveCauchyState
+          source anchor state).coframe space) ≠ 0 →
+      Matrix.det (actual.coframe 0) ≠ 0
+  gravitySimplicity :
+    StageNinePlebanskiMultiplierVariation.GravitySimplicityEquation actual
+
+/-- Frontier theorem: source and current actual action first generate the
+complete local second-order `U`; the law records its origin 0/1/2 jets and
+derived simple gravity auxiliary without any residual-built endpoint. -/
+theorem
+    sourceActionGeneratedCurrentTorsionFreeCartanSecondJetLocalActualLift_realizes
+    (source : SmoothUnifiedSource)
+    (anchor : ℝ)
+    (state : StageNineCauchyState)
+    (space : StageNineSpatialPoint) :
+    SourceActionGeneratedCurrentCartanSecondJetLocalActualLaw
+      source anchor state space
+      (sourceActionGeneratedCurrentTorsionFreeCartanSecondJetLocalActualLift
+        source anchor state space) := by
+  exact
+    { retainsActionFields :=
+        sourceActionGeneratedCurrentTorsionFreeCartanSecondJetLocalActualLift_retains_action_fields
+          source anchor state space
+      accelerationGenerated :=
+        sourceActionGeneratedCurrentCartanSpatialCoframeAcceleration_satisfies_law
+          source anchor state
+      coframeGenerated :=
+        sourceActionGeneratedCurrentTorsionFreeCartanSecondJetLocalActualLift_coframe_generated
+          source anchor state space
+      gravityAuxiliaryGenerated :=
+        sourceActionGeneratedCurrentTorsionFreeCartanSecondJetLocalActualLift_gravityAuxiliary_generated
+          source anchor state space
+      coframeInitial :=
+        sourceActionGeneratedCurrentTorsionFreeCartanSecondJetCoframeField_origin
+          source anchor state space
+      coframeFirstTime :=
+        sourceActionGeneratedCurrentTorsionFreeCartanSecondJetCoframeField_firstTimeDerivative_origin
+          source anchor state space
+      coframeSecondTime :=
+        sourceActionGeneratedCurrentTorsionFreeCartanSecondJetCoframeField_secondTimeDerivative_origin
+          source anchor state space
+      smooth :=
+        sourceActionGeneratedCurrentTorsionFreeCartanSecondJetLocalActualLift_smooth
+          source anchor state space
+      originNondegenerate :=
+        sourceActionGeneratedCurrentTorsionFreeCartanSecondJetLocalActualLift_originNondegenerate
+          source anchor state space
+      gravitySimplicity :=
+        sourceActionGeneratedCurrentTorsionFreeCartanSecondJetLocalActualLift_simplicity
+          source anchor state space }
+
+end
+
+end
+  SaturationMonoid.PhysicsCore.StageNineSourceActionGeneratedCurrentTorsionFreeCartanSecondJetLocalActualLift

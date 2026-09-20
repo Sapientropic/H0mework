@@ -1,0 +1,215 @@
+/-
+  Proposition 117: cyclic residual magnitude.
+
+  Proposition 116 proved the binary/non-binary boundary:
+
+      exact/path-additive  <->  no nontrivial H¹
+      non-additive         <->  nontrivial H¹.
+
+  This file adds the graded invariant that is safe to prove now.  For the
+  three-agent interaction ring, the accumulated residual
+
+      c(0,1) + c(1,2) + c(2,0)
+
+  is invariant under global-potential explanations of the selected ring edges.
+  It vanishes exactly when those selected edges are explainable by a global
+  potential.  With integer coefficients, its absolute value is a computable
+  obstruction magnitude: zero exactly means edge-exact; positive implies a
+  genuine H¹ obstruction by Proposition 114.
+
+  Boundary:
+  - This is a mathematical residual magnitude, not yet a theorem that the
+    magnitude equals psychological, neural, or product-level "memory strength".
+  - Full cochains may have non-selected-edge asymmetries; the exact iff here is
+    for the selected three-agent interaction ring.
+-/
+
+import H0mework.Realization.Relations.P116
+
+/-! ## The three-agent interaction ring -/
+
+instance : Fintype ThreeCycleTime where
+  elems :=
+    {ThreeCycleTime.t0, ThreeCycleTime.t1, ThreeCycleTime.t2}
+  complete := by
+    intro x
+    cases x <;> simp
+
+/-- The cyclic successor `0 -> 1 -> 2 -> 0`. -/
+def threeCycleNext : Equiv.Perm ThreeCycleTime where
+  toFun
+    | ThreeCycleTime.t0 => ThreeCycleTime.t1
+    | ThreeCycleTime.t1 => ThreeCycleTime.t2
+    | ThreeCycleTime.t2 => ThreeCycleTime.t0
+  invFun
+    | ThreeCycleTime.t0 => ThreeCycleTime.t2
+    | ThreeCycleTime.t1 => ThreeCycleTime.t0
+    | ThreeCycleTime.t2 => ThreeCycleTime.t1
+  left_inv := by
+    intro x
+    cases x <;> rfl
+  right_inv := by
+    intro x
+    cases x <;> rfl
+
+/-- Accumulated phase around the three-agent ring. -/
+def threeAgentRingResidual {A : Type*} [AddCommGroup A]
+    (c : ThreeCycleTime -> ThreeCycleTime -> A) : A :=
+  c ThreeCycleTime.t0 ThreeCycleTime.t1 +
+    c ThreeCycleTime.t1 ThreeCycleTime.t2 +
+      c ThreeCycleTime.t2 ThreeCycleTime.t0
+
+/-- The `FiniteCyclicInteractionCertificate` residual for `threeCycleNext` is
+the explicit three-edge residual. -/
+theorem threeCycleNext_sum_eq_residual
+    {A : Type*} [AddCommGroup A]
+    (c : ThreeCycleTime -> ThreeCycleTime -> A) :
+    (∑ i, c i (threeCycleNext i)) = threeAgentRingResidual c := by
+  rw [show (Finset.univ : Finset ThreeCycleTime) =
+      {ThreeCycleTime.t0, ThreeCycleTime.t1, ThreeCycleTime.t2} by
+    ext x
+    cases x <;> simp]
+  simp [threeCycleNext, threeAgentRingResidual]
+  abel_nf
+
+/-- Selected-edge exactness for the three-agent ring: the three ring edges are
+explained by a single global potential. -/
+def ThreeAgentRingEdgeExact {A : Type*} [AddCommGroup A]
+    (c : ThreeCycleTime -> ThreeCycleTime -> A) : Prop :=
+  CycleEdgePotentialExplained threeCycleNext c
+
+/-- A concrete potential generated from two ring edges. -/
+def threeAgentRingPotentialOf {A : Type*} [AddCommGroup A]
+    (c : ThreeCycleTime -> ThreeCycleTime -> A) :
+    ThreeCycleTime -> A
+  | ThreeCycleTime.t0 => 0
+  | ThreeCycleTime.t1 => c ThreeCycleTime.t0 ThreeCycleTime.t1
+  | ThreeCycleTime.t2 =>
+      c ThreeCycleTime.t0 ThreeCycleTime.t1 +
+        c ThreeCycleTime.t1 ThreeCycleTime.t2
+
+/-- THEOREM 1: selected-edge exactness is equivalent to vanishing accumulated
+residual on the three-agent ring. -/
+theorem threeAgentRingEdgeExact_iff_residual_zero
+    {A : Type*} [AddCommGroup A]
+    (c : ThreeCycleTime -> ThreeCycleTime -> A) :
+    ThreeAgentRingEdgeExact c <-> threeAgentRingResidual c = 0 := by
+  constructor
+  · intro hexact
+    have hsum : (∑ i, c i (threeCycleNext i)) = 0 :=
+      cycleEdgePotentialExplained_residual_zero hexact
+    simpa [threeCycleNext_sum_eq_residual c] using hsum
+  · intro hzero
+    refine ⟨threeAgentRingPotentialOf c, ?_⟩
+    intro i
+    cases i
+    · simp [threeCycleNext, CechAdditiveCover.d0,
+        identityPairZeroTripleCover, threeAgentRingPotentialOf]
+    · simp [threeCycleNext, CechAdditiveCover.d0,
+        identityPairZeroTripleCover, threeAgentRingPotentialOf]
+    ·
+      have hsum :
+          (c ThreeCycleTime.t0 ThreeCycleTime.t1 +
+              c ThreeCycleTime.t1 ThreeCycleTime.t2) +
+            c ThreeCycleTime.t2 ThreeCycleTime.t0 = 0 := by
+        simpa [threeAgentRingResidual, add_assoc] using hzero
+      have htarget :
+          c ThreeCycleTime.t2 ThreeCycleTime.t0 =
+            -(c ThreeCycleTime.t0 ThreeCycleTime.t1 +
+              c ThreeCycleTime.t1 ThreeCycleTime.t2) :=
+        eq_neg_of_add_eq_zero_right hsum
+      simpa [threeCycleNext, CechAdditiveCover.d0,
+        identityPairZeroTripleCover, threeAgentRingPotentialOf,
+        sub_eq_add_neg, neg_add_rev, add_comm, add_left_comm, add_assoc]
+        using htarget
+
+/-! ## Nonzero residual gives H¹ -/
+
+/-- The three-agent interaction certificate generated by a nonzero ring
+residual. -/
+def threeAgentRingCertificate
+    {A : Type*} [AddCommGroup A]
+    (c : ThreeCycleTime -> ThreeCycleTime -> A)
+    (hres : threeAgentRingResidual c ≠ 0) :
+    FiniteCyclicInteractionCertificate ThreeCycleTime A where
+  next := threeCycleNext
+  phase := c
+  nondegenerate := by
+    rw [show Fintype.card ThreeCycleTime = 3 by
+      rw [Fintype.card]
+      rw [show (Finset.univ : Finset ThreeCycleTime) =
+          {ThreeCycleTime.t0, ThreeCycleTime.t1, ThreeCycleTime.t2} by
+        ext x
+        cases x <;> simp]
+      simp]
+  noncancelled := by
+    rw [NoncancelledCycleResidual, threeCycleNext_sum_eq_residual]
+    exact hres
+
+/-- THEOREM 2: a nonzero three-agent ring residual gives a genuine H¹
+obstruction. -/
+theorem threeAgentRingResidual_nonzero_h1
+    {A : Type*} [AddCommGroup A]
+    (c : ThreeCycleTime -> ThreeCycleTime -> A)
+    (hres : threeAgentRingResidual c ≠ 0) :
+    CechAdditiveCover.H1Obstruction
+      (identityPairZeroTripleCover ThreeCycleTime A) c :=
+  (threeAgentRingCertificate c hres).h1Obstruction
+
+/-! ## Integer residual magnitude -/
+
+/-- A computable magnitude of the three-agent ring residual for integer
+interaction phases. -/
+def threeAgentRingResidualMagnitude
+    (c : ThreeCycleTime -> ThreeCycleTime -> Int) : Nat :=
+  Int.natAbs (threeAgentRingResidual c)
+
+/-- THEOREM 3: residual magnitude is zero exactly when the selected three-agent
+ring edges are globally explainable. -/
+theorem threeAgentRingResidualMagnitude_eq_zero_iff_edgeExact
+    (c : ThreeCycleTime -> ThreeCycleTime -> Int) :
+    threeAgentRingResidualMagnitude c = 0 <->
+      ThreeAgentRingEdgeExact c := by
+  calc
+    threeAgentRingResidualMagnitude c = 0 <->
+        threeAgentRingResidual c = 0 := by
+      exact Int.natAbs_eq_zero
+    _ <-> ThreeAgentRingEdgeExact c :=
+      (threeAgentRingEdgeExact_iff_residual_zero c).symm
+
+/-- THEOREM 4: positive residual magnitude is exactly failure of selected-edge
+exactness. -/
+theorem threeAgentRingResidualMagnitude_pos_iff_not_edgeExact
+    (c : ThreeCycleTime -> ThreeCycleTime -> Int) :
+    0 < threeAgentRingResidualMagnitude c <->
+      Not (ThreeAgentRingEdgeExact c) := by
+  calc
+    0 < threeAgentRingResidualMagnitude c <->
+        threeAgentRingResidual c ≠ 0 := by
+      exact Int.natAbs_pos
+    _ <-> Not (ThreeAgentRingEdgeExact c) := by
+      constructor
+      · intro hne hexact
+        exact hne ((threeAgentRingEdgeExact_iff_residual_zero c).mp hexact)
+      · intro hnot hzero
+        exact hnot ((threeAgentRingEdgeExact_iff_residual_zero c).mpr hzero)
+
+/-- THEOREM 5: positive residual magnitude implies a genuine H¹ obstruction. -/
+theorem threeAgentRingResidualMagnitude_pos_h1
+    (c : ThreeCycleTime -> ThreeCycleTime -> Int)
+    (hpos : 0 < threeAgentRingResidualMagnitude c) :
+    CechAdditiveCover.H1Obstruction
+      (identityPairZeroTripleCover ThreeCycleTime Int) c := by
+  have hres : threeAgentRingResidual c ≠ 0 :=
+    (Int.natAbs_pos).mp hpos
+  exact threeAgentRingResidual_nonzero_h1 c hres
+
+/-!
+  Summary:
+  - The three-agent ring residual is the complete invariant for selected-edge
+    exactness on the ring.
+  - Integer residual magnitude is zero exactly at selected-edge exactness and
+    positive only when the ring carries a nontrivial H¹ obstruction.
+  - Interpreting this magnitude as "memory strength" remains an additional
+    modeling choice.  P117 only proves the cohomological obstruction magnitude.
+-/

@@ -1,0 +1,3643 @@
+{
+  "scope": "COMPLETE_216_SOURCE_FREE_HERMITIAN_SPECTRAL_RESOLUTION_ALL_REAL_MOMENTA",
+  "source_sha256": {
+    "Lean/SaturationMonoid/PhysicsCore/SU7ExteriorYukawaMassSpectrum.lean": "cc100f817041a1e8b33aadf909a4838756c32eb0f28a15ff138c5cd9a3db4813",
+    "Lean/SaturationMonoid/PhysicsCore/SU7ExteriorBreakingYukawa.lean": "f3d245e031380de7dacf16312b81665a11d2fd209dfd751652821e9638b74ce0",
+    "Lean/SaturationMonoid/PhysicsCore/SU7MotherLieAlgebra.lean": "acb8a102cb607e8736b25acd5e851f70b15fb53ec7cc6784362e1b0c2a95e7da",
+    "Lean/SaturationMonoid/PhysicsCore/SU7ExteriorMatterRepresentation.lean": "0b7cb7f6d4078d7f0a7347513bd98077bd18092f89b1c4c4ec3ee23ad84efbac",
+    "Lean/SaturationMonoid/PhysicsCore/SU7ExteriorMatterRestriction.lean": "b91ff6e8d6ea1e9e7e6220fec204288a946a8153913882d1f68eee489d403ed1",
+    "Lean/SaturationMonoid/PhysicsCore/StageNineDynamicBreakingVacuum.lean": "f79cd71ae67e1ee2b1b698f7a09a0130e742e4a471862165748277269e2027bf",
+    "Lean/SaturationMonoid/PhysicsCore/StageNineGlobalIntegratedAction.lean": "525d2672c446c94a9b528c4277efed582419fbcb31e8e28b533cba3ff0589497",
+    "Lean/SaturationMonoid/PhysicsCore/StageNineExteriorMotherLieRepresentation.lean": "444b0ef9ba42af3801ffc010996ac5feddfed8605f4ce9bb2fbe15fe2b562f7b",
+    "Lean/SaturationMonoid/PhysicsCore/StageNineFormNativeMotherAction.lean": "24104b817d0a663626c46388bfa5a2660441f90cbee77ea5a86495fd7d64e6a2",
+    "Lean/SaturationMonoid/PhysicsCore/Stage9C/Material/SpinPair/Parameters.lean": "eeecea0c096fbbf4c0090d301fb19ca70f22020c89a8ad279b70133b6b8f4bc3"
+  },
+  "normalization": "q=k/sqrt(2); original i*d_t psi=(N*sqrt(2))*h_original(q)*psi",
+  "nonzero_momentum_coordinates": "q=k/sqrt(2), r=|q|>0, n=q/r, t=sqrt(r^2+9/25)>0",
+  "exact_polynomial_ideal": [
+    "nx^2+ny^2+nz^2-1",
+    "t^2-r^2-9/25"
+  ],
+  "coordinate_reality": "nx,ny,nz,r,t are real; projectors use only denominator t, plus the direction n=q/r",
+  "universal_families": {
+    "singlet": {
+      "hamiltonian": {
+        "shape": [
+          2,
+          2
+        ],
+        "entries": [
+          [
+            0,
+            0,
+            "(2*nz*r + 3)/2"
+          ],
+          [
+            0,
+            1,
+            "r*(nx - I*ny)"
+          ],
+          [
+            1,
+            0,
+            "r*(nx + I*ny)"
+          ],
+          [
+            1,
+            1,
+            "-(2*nz*r - 3)/2"
+          ]
+        ]
+      },
+      "projectors": [
+        {
+          "name": "singlet_plus",
+          "scaled_frequency": "r + 3/2",
+          "rank": 1,
+          "matrix": {
+            "shape": [
+              2,
+              2
+            ],
+            "entries": [
+              [
+                0,
+                0,
+                "(nz + 1)/2"
+              ],
+              [
+                0,
+                1,
+                "(nx - I*ny)/2"
+              ],
+              [
+                1,
+                0,
+                "(nx + I*ny)/2"
+              ],
+              [
+                1,
+                1,
+                "-(nz - 1)/2"
+              ]
+            ]
+          }
+        },
+        {
+          "name": "singlet_minus",
+          "scaled_frequency": "3/2 - r",
+          "rank": 1,
+          "matrix": {
+            "shape": [
+              2,
+              2
+            ],
+            "entries": [
+              [
+                0,
+                0,
+                "-(nz - 1)/2"
+              ],
+              [
+                0,
+                1,
+                "-(nx - I*ny)/2"
+              ],
+              [
+                1,
+                0,
+                "-(nx + I*ny)/2"
+              ],
+              [
+                1,
+                1,
+                "(nz + 1)/2"
+              ]
+            ]
+          }
+        }
+      ],
+      "all_projector_eigenvalue_orthogonality_and_sum_identities": true,
+      "actual_two_sided_resolvent_identity": true,
+      "original_time_exponential_derivative_unitarity_and_composition": true
+    },
+    "doublet": {
+      "hamiltonian": {
+        "shape": [
+          4,
+          4
+        ],
+        "entries": [
+          [
+            0,
+            0,
+            "(5*nz*r + 9)/5"
+          ],
+          [
+            0,
+            2,
+            "r*(nx - I*ny)"
+          ],
+          [
+            1,
+            1,
+            "(5*nz*r + 6)/5"
+          ],
+          [
+            1,
+            2,
+            "3/5"
+          ],
+          [
+            1,
+            3,
+            "r*(nx - I*ny)"
+          ],
+          [
+            2,
+            0,
+            "r*(nx + I*ny)"
+          ],
+          [
+            2,
+            1,
+            "3/5"
+          ],
+          [
+            2,
+            2,
+            "-(5*nz*r - 6)/5"
+          ],
+          [
+            3,
+            1,
+            "r*(nx + I*ny)"
+          ],
+          [
+            3,
+            3,
+            "-(5*nz*r - 9)/5"
+          ]
+        ]
+      },
+      "projectors": [
+        {
+          "name": "parallel_plus",
+          "scaled_frequency": "r + 9/5",
+          "rank": 1,
+          "matrix": {
+            "shape": [
+              4,
+              4
+            ],
+            "entries": [
+              [
+                0,
+                0,
+                "-(nx**2 + ny**2 - 2*nz - 2)/4"
+              ],
+              [
+                0,
+                1,
+                "(nx - I*ny)*(nz + 1)/4"
+              ],
+              [
+                0,
+                2,
+                "(nx - I*ny)*(nz + 1)/4"
+              ],
+              [
+                0,
+                3,
+                "(nx - I*ny)**2/4"
+              ],
+              [
+                1,
+                0,
+                "(nx + I*ny)*(nz + 1)/4"
+              ],
+              [
+                1,
+                1,
+                "(nx**2 + ny**2)/4"
+              ],
+              [
+                1,
+                2,
+                "(nx**2 + ny**2)/4"
+              ],
+              [
+                1,
+                3,
+                "-(nx - I*ny)*(nz - 1)/4"
+              ],
+              [
+                2,
+                0,
+                "(nx + I*ny)*(nz + 1)/4"
+              ],
+              [
+                2,
+                1,
+                "(nx**2 + ny**2)/4"
+              ],
+              [
+                2,
+                2,
+                "(nx**2 + ny**2)/4"
+              ],
+              [
+                2,
+                3,
+                "-(nx - I*ny)*(nz - 1)/4"
+              ],
+              [
+                3,
+                0,
+                "(nx + I*ny)**2/4"
+              ],
+              [
+                3,
+                1,
+                "-(nx + I*ny)*(nz - 1)/4"
+              ],
+              [
+                3,
+                2,
+                "-(nx + I*ny)*(nz - 1)/4"
+              ],
+              [
+                3,
+                3,
+                "-(nx**2 + ny**2 + 2*nz - 2)/4"
+              ]
+            ]
+          }
+        },
+        {
+          "name": "parallel_minus",
+          "scaled_frequency": "9/5 - r",
+          "rank": 1,
+          "matrix": {
+            "shape": [
+              4,
+              4
+            ],
+            "entries": [
+              [
+                0,
+                0,
+                "-(nx**2 + ny**2 + 2*nz - 2)/4"
+              ],
+              [
+                0,
+                1,
+                "(nx - I*ny)*(nz - 1)/4"
+              ],
+              [
+                0,
+                2,
+                "(nx - I*ny)*(nz - 1)/4"
+              ],
+              [
+                0,
+                3,
+                "(nx - I*ny)**2/4"
+              ],
+              [
+                1,
+                0,
+                "(nx + I*ny)*(nz - 1)/4"
+              ],
+              [
+                1,
+                1,
+                "(nx**2 + ny**2)/4"
+              ],
+              [
+                1,
+                2,
+                "(nx**2 + ny**2)/4"
+              ],
+              [
+                1,
+                3,
+                "-(nx - I*ny)*(nz + 1)/4"
+              ],
+              [
+                2,
+                0,
+                "(nx + I*ny)*(nz - 1)/4"
+              ],
+              [
+                2,
+                1,
+                "(nx**2 + ny**2)/4"
+              ],
+              [
+                2,
+                2,
+                "(nx**2 + ny**2)/4"
+              ],
+              [
+                2,
+                3,
+                "-(nx - I*ny)*(nz + 1)/4"
+              ],
+              [
+                3,
+                0,
+                "(nx + I*ny)**2/4"
+              ],
+              [
+                3,
+                1,
+                "-(nx + I*ny)*(nz + 1)/4"
+              ],
+              [
+                3,
+                2,
+                "-(nx + I*ny)*(nz + 1)/4"
+              ],
+              [
+                3,
+                3,
+                "-(nx**2 + ny**2 - 2*nz - 2)/4"
+              ]
+            ]
+          }
+        },
+        {
+          "name": "mixed_plus",
+          "scaled_frequency": "t + 6/5",
+          "rank": 1,
+          "matrix": {
+            "shape": [
+              4,
+              4
+            ],
+            "entries": [
+              [
+                0,
+                0,
+                "(nx**2 + ny**2)*(5*t + 3)/(20*t)"
+              ],
+              [
+                0,
+                1,
+                "-(nx - I*ny)*(5*nz*t + 3*nz + 5*r)/(20*t)"
+              ],
+              [
+                0,
+                2,
+                "(nx - I*ny)*(-5*nz*t - 3*nz + 5*r)/(20*t)"
+              ],
+              [
+                0,
+                3,
+                "-(nx - I*ny)**2*(5*t + 3)/(20*t)"
+              ],
+              [
+                1,
+                0,
+                "-(nx + I*ny)*(5*nz*t + 3*nz + 5*r)/(20*t)"
+              ],
+              [
+                1,
+                1,
+                "(-5*nx**2*t - 3*nx**2 - 5*ny**2*t - 3*ny**2 + 10*nz*r + 10*t)/(20*t)"
+              ],
+              [
+                1,
+                2,
+                "-(5*nx**2*t + 3*nx**2 + 5*ny**2*t + 3*ny**2 - 6)/(20*t)"
+              ],
+              [
+                1,
+                3,
+                "(nx - I*ny)*(5*nz*t + 3*nz + 5*r)/(20*t)"
+              ],
+              [
+                2,
+                0,
+                "(nx + I*ny)*(-5*nz*t - 3*nz + 5*r)/(20*t)"
+              ],
+              [
+                2,
+                1,
+                "-(5*nx**2*t + 3*nx**2 + 5*ny**2*t + 3*ny**2 - 6)/(20*t)"
+              ],
+              [
+                2,
+                2,
+                "-(5*nx**2*t + 3*nx**2 + 5*ny**2*t + 3*ny**2 + 10*nz*r - 10*t)/(20*t)"
+              ],
+              [
+                2,
+                3,
+                "-(nx - I*ny)*(-5*nz*t - 3*nz + 5*r)/(20*t)"
+              ],
+              [
+                3,
+                0,
+                "-(nx + I*ny)**2*(5*t + 3)/(20*t)"
+              ],
+              [
+                3,
+                1,
+                "(nx + I*ny)*(5*nz*t + 3*nz + 5*r)/(20*t)"
+              ],
+              [
+                3,
+                2,
+                "-(nx + I*ny)*(-5*nz*t - 3*nz + 5*r)/(20*t)"
+              ],
+              [
+                3,
+                3,
+                "(nx**2 + ny**2)*(5*t + 3)/(20*t)"
+              ]
+            ]
+          }
+        },
+        {
+          "name": "mixed_minus",
+          "scaled_frequency": "6/5 - t",
+          "rank": 1,
+          "matrix": {
+            "shape": [
+              4,
+              4
+            ],
+            "entries": [
+              [
+                0,
+                0,
+                "(nx**2 + ny**2)*(5*t - 3)/(20*t)"
+              ],
+              [
+                0,
+                1,
+                "(nx - I*ny)*(-5*nz*t + 3*nz + 5*r)/(20*t)"
+              ],
+              [
+                0,
+                2,
+                "-(nx - I*ny)*(5*nz*t - 3*nz + 5*r)/(20*t)"
+              ],
+              [
+                0,
+                3,
+                "-(nx - I*ny)**2*(5*t - 3)/(20*t)"
+              ],
+              [
+                1,
+                0,
+                "(nx + I*ny)*(-5*nz*t + 3*nz + 5*r)/(20*t)"
+              ],
+              [
+                1,
+                1,
+                "-(5*nx**2*t - 3*nx**2 + 5*ny**2*t - 3*ny**2 + 10*nz*r - 10*t)/(20*t)"
+              ],
+              [
+                1,
+                2,
+                "-(5*nx**2*t - 3*nx**2 + 5*ny**2*t - 3*ny**2 + 6)/(20*t)"
+              ],
+              [
+                1,
+                3,
+                "-(nx - I*ny)*(-5*nz*t + 3*nz + 5*r)/(20*t)"
+              ],
+              [
+                2,
+                0,
+                "-(nx + I*ny)*(5*nz*t - 3*nz + 5*r)/(20*t)"
+              ],
+              [
+                2,
+                1,
+                "-(5*nx**2*t - 3*nx**2 + 5*ny**2*t - 3*ny**2 + 6)/(20*t)"
+              ],
+              [
+                2,
+                2,
+                "(-5*nx**2*t + 3*nx**2 - 5*ny**2*t + 3*ny**2 + 10*nz*r + 10*t)/(20*t)"
+              ],
+              [
+                2,
+                3,
+                "(nx - I*ny)*(5*nz*t - 3*nz + 5*r)/(20*t)"
+              ],
+              [
+                3,
+                0,
+                "-(nx + I*ny)**2*(5*t - 3)/(20*t)"
+              ],
+              [
+                3,
+                1,
+                "-(nx + I*ny)*(-5*nz*t + 3*nz + 5*r)/(20*t)"
+              ],
+              [
+                3,
+                2,
+                "(nx + I*ny)*(5*nz*t - 3*nz + 5*r)/(20*t)"
+              ],
+              [
+                3,
+                3,
+                "(nx**2 + ny**2)*(5*t - 3)/(20*t)"
+              ]
+            ]
+          }
+        }
+      ],
+      "all_projector_eigenvalue_orthogonality_and_sum_identities": true,
+      "actual_two_sided_resolvent_identity": true,
+      "original_time_exponential_derivative_unitarity_and_composition": true
+    }
+  },
+  "origin_resolution": {
+    "singlet": [
+      {
+        "scaled_frequency": "3/2",
+        "rank": 2,
+        "matrix": {
+          "shape": [
+            2,
+            2
+          ],
+          "entries": [
+            [
+              0,
+              0,
+              "1"
+            ],
+            [
+              1,
+              1,
+              "1"
+            ]
+          ]
+        }
+      }
+    ],
+    "doublet": [
+      {
+        "scaled_frequency": "9/5",
+        "rank": 3,
+        "matrix": {
+          "shape": [
+            4,
+            4
+          ],
+          "entries": [
+            [
+              0,
+              0,
+              "1"
+            ],
+            [
+              1,
+              1,
+              "1/2"
+            ],
+            [
+              1,
+              2,
+              "1/2"
+            ],
+            [
+              2,
+              1,
+              "1/2"
+            ],
+            [
+              2,
+              2,
+              "1/2"
+            ],
+            [
+              3,
+              3,
+              "1"
+            ]
+          ]
+        }
+      },
+      {
+        "scaled_frequency": "3/5",
+        "rank": 1,
+        "matrix": {
+          "shape": [
+            4,
+            4
+          ],
+          "entries": [
+            [
+              1,
+              1,
+              "1/2"
+            ],
+            [
+              1,
+              2,
+              "-1/2"
+            ],
+            [
+              2,
+              1,
+              "-1/2"
+            ],
+            [
+              2,
+              2,
+              "1/2"
+            ]
+          ]
+        }
+      }
+    ],
+    "direction_independent_merged_limits_paid": true
+  },
+  "full_source_projector": "Pi_b(k)=sum_over_source_copies F_copy P_b(k) F_copy^dagger",
+  "frequency_readback": "E_original=N*sqrt(2)*chi*e_b; E_stationary=E_original-omega*phase_charge",
+  "propagator": "U_free(time,k)=sum_b exp(-i E_original_b(k)*time) Pi_b(k)",
+  "resolvent": "G_free(E,k)=sum_b Pi_b(k)/(E-E_original_b(k)); (E-H)G=G(E-H)=Pfree",
+  "unitarity_and_group_law": "U(0)=Pfree; U(t)^dagger U(t)=Pfree; U(t)U(s)=U(t+s)",
+  "original_time_catalog": {
+    "branches": [
+      {
+        "id": 0,
+        "coefficients": [
+          "-3/2",
+          "-1",
+          "0"
+        ],
+        "scaled_frequency": "-r - 3/2",
+        "multiplicity": 25,
+        "source_labels": [
+          {
+            "chirality": -1,
+            "degree": 2,
+            "branch": "singlet_plus",
+            "multiplicity": 10
+          },
+          {
+            "chirality": -1,
+            "degree": 4,
+            "branch": "singlet_plus",
+            "multiplicity": 15
+          }
+        ]
+      },
+      {
+        "id": 1,
+        "coefficients": [
+          "-3/2",
+          "1",
+          "0"
+        ],
+        "scaled_frequency": "r - 3/2",
+        "multiplicity": 25,
+        "source_labels": [
+          {
+            "chirality": -1,
+            "degree": 2,
+            "branch": "singlet_minus",
+            "multiplicity": 10
+          },
+          {
+            "chirality": -1,
+            "degree": 4,
+            "branch": "singlet_minus",
+            "multiplicity": 15
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "coefficients": [
+          "-9/5",
+          "-1",
+          "0"
+        ],
+        "scaled_frequency": "-r - 9/5",
+        "multiplicity": 14,
+        "source_labels": [
+          {
+            "chirality": -1,
+            "degree": 2,
+            "branch": "parallel_plus",
+            "multiplicity": 4
+          },
+          {
+            "chirality": -1,
+            "degree": 4,
+            "branch": "parallel_plus",
+            "multiplicity": 10
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "coefficients": [
+          "-9/5",
+          "1",
+          "0"
+        ],
+        "scaled_frequency": "r - 9/5",
+        "multiplicity": 14,
+        "source_labels": [
+          {
+            "chirality": -1,
+            "degree": 2,
+            "branch": "parallel_minus",
+            "multiplicity": 4
+          },
+          {
+            "chirality": -1,
+            "degree": 4,
+            "branch": "parallel_minus",
+            "multiplicity": 10
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "coefficients": [
+          "-6/5",
+          "0",
+          "-1"
+        ],
+        "scaled_frequency": "-sqrt(r**2 + 9/25) - 6/5",
+        "multiplicity": 14,
+        "source_labels": [
+          {
+            "chirality": -1,
+            "degree": 2,
+            "branch": "mixed_plus",
+            "multiplicity": 4
+          },
+          {
+            "chirality": -1,
+            "degree": 4,
+            "branch": "mixed_plus",
+            "multiplicity": 10
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "coefficients": [
+          "-6/5",
+          "0",
+          "1"
+        ],
+        "scaled_frequency": "sqrt(r**2 + 9/25) - 6/5",
+        "multiplicity": 14,
+        "source_labels": [
+          {
+            "chirality": -1,
+            "degree": 2,
+            "branch": "mixed_minus",
+            "multiplicity": 4
+          },
+          {
+            "chirality": -1,
+            "degree": 4,
+            "branch": "mixed_minus",
+            "multiplicity": 10
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "coefficients": [
+          "3/2",
+          "1",
+          "0"
+        ],
+        "scaled_frequency": "r + 3/2",
+        "multiplicity": 25,
+        "source_labels": [
+          {
+            "chirality": 1,
+            "degree": 6,
+            "branch": "singlet_plus",
+            "multiplicity": 5
+          },
+          {
+            "chirality": 1,
+            "degree": 2,
+            "branch": "singlet_plus",
+            "multiplicity": 5
+          },
+          {
+            "chirality": 1,
+            "degree": 4,
+            "branch": "singlet_plus",
+            "multiplicity": 15
+          }
+        ]
+      },
+      {
+        "id": 7,
+        "coefficients": [
+          "3/2",
+          "-1",
+          "0"
+        ],
+        "scaled_frequency": "3/2 - r",
+        "multiplicity": 25,
+        "source_labels": [
+          {
+            "chirality": 1,
+            "degree": 6,
+            "branch": "singlet_minus",
+            "multiplicity": 5
+          },
+          {
+            "chirality": 1,
+            "degree": 2,
+            "branch": "singlet_minus",
+            "multiplicity": 5
+          },
+          {
+            "chirality": 1,
+            "degree": 4,
+            "branch": "singlet_minus",
+            "multiplicity": 15
+          }
+        ]
+      },
+      {
+        "id": 8,
+        "coefficients": [
+          "9/5",
+          "1",
+          "0"
+        ],
+        "scaled_frequency": "r + 9/5",
+        "multiplicity": 15,
+        "source_labels": [
+          {
+            "chirality": 1,
+            "degree": 6,
+            "branch": "parallel_plus",
+            "multiplicity": 1
+          },
+          {
+            "chirality": 1,
+            "degree": 2,
+            "branch": "parallel_plus",
+            "multiplicity": 4
+          },
+          {
+            "chirality": 1,
+            "degree": 4,
+            "branch": "parallel_plus",
+            "multiplicity": 10
+          }
+        ]
+      },
+      {
+        "id": 9,
+        "coefficients": [
+          "9/5",
+          "-1",
+          "0"
+        ],
+        "scaled_frequency": "9/5 - r",
+        "multiplicity": 15,
+        "source_labels": [
+          {
+            "chirality": 1,
+            "degree": 6,
+            "branch": "parallel_minus",
+            "multiplicity": 1
+          },
+          {
+            "chirality": 1,
+            "degree": 2,
+            "branch": "parallel_minus",
+            "multiplicity": 4
+          },
+          {
+            "chirality": 1,
+            "degree": 4,
+            "branch": "parallel_minus",
+            "multiplicity": 10
+          }
+        ]
+      },
+      {
+        "id": 10,
+        "coefficients": [
+          "6/5",
+          "0",
+          "1"
+        ],
+        "scaled_frequency": "sqrt(r**2 + 9/25) + 6/5",
+        "multiplicity": 15,
+        "source_labels": [
+          {
+            "chirality": 1,
+            "degree": 6,
+            "branch": "mixed_plus",
+            "multiplicity": 1
+          },
+          {
+            "chirality": 1,
+            "degree": 2,
+            "branch": "mixed_plus",
+            "multiplicity": 4
+          },
+          {
+            "chirality": 1,
+            "degree": 4,
+            "branch": "mixed_plus",
+            "multiplicity": 10
+          }
+        ]
+      },
+      {
+        "id": 11,
+        "coefficients": [
+          "6/5",
+          "0",
+          "-1"
+        ],
+        "scaled_frequency": "6/5 - sqrt(r**2 + 9/25)",
+        "multiplicity": 15,
+        "source_labels": [
+          {
+            "chirality": 1,
+            "degree": 6,
+            "branch": "mixed_minus",
+            "multiplicity": 1
+          },
+          {
+            "chirality": 1,
+            "degree": 2,
+            "branch": "mixed_minus",
+            "multiplicity": 4
+          },
+          {
+            "chirality": 1,
+            "degree": 4,
+            "branch": "mixed_minus",
+            "multiplicity": 10
+          }
+        ]
+      }
+    ],
+    "all_zero_frequency_shells": [
+      {
+        "r": "3*sqrt(3)/5",
+        "physical_momentum_squared": "54/25",
+        "zero_eigenspace_dimension": 29,
+        "branch_ids": [
+          5,
+          11
+        ]
+      },
+      {
+        "r": "3/2",
+        "physical_momentum_squared": "9/2",
+        "zero_eigenspace_dimension": 50,
+        "branch_ids": [
+          1,
+          7
+        ]
+      },
+      {
+        "r": "9/5",
+        "physical_momentum_squared": "162/25",
+        "zero_eigenspace_dimension": 29,
+        "branch_ids": [
+          3,
+          9
+        ]
+      }
+    ],
+    "all_branch_crossing_radii": [
+      {
+        "r": "0",
+        "physical_momentum_squared": "0",
+        "colliding_pairs": [
+          [
+            0,
+            1
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            6,
+            7
+          ],
+          [
+            8,
+            9
+          ],
+          [
+            8,
+            10
+          ],
+          [
+            9,
+            10
+          ]
+        ],
+        "eigenspaces": [
+          {
+            "scaled_frequency": "-3/2",
+            "branch_ids": [
+              0,
+              1
+            ],
+            "dimension": 50
+          },
+          {
+            "scaled_frequency": "-9/5",
+            "branch_ids": [
+              2,
+              3,
+              4
+            ],
+            "dimension": 42
+          },
+          {
+            "scaled_frequency": "-3/5",
+            "branch_ids": [
+              5
+            ],
+            "dimension": 14
+          },
+          {
+            "scaled_frequency": "3/2",
+            "branch_ids": [
+              6,
+              7
+            ],
+            "dimension": 50
+          },
+          {
+            "scaled_frequency": "9/5",
+            "branch_ids": [
+              8,
+              9,
+              10
+            ],
+            "dimension": 45
+          },
+          {
+            "scaled_frequency": "3/5",
+            "branch_ids": [
+              11
+            ],
+            "dimension": 15
+          }
+        ]
+      },
+      {
+        "r": "3/20",
+        "physical_momentum_squared": "9/200",
+        "colliding_pairs": [
+          [
+            0,
+            3
+          ],
+          [
+            6,
+            9
+          ]
+        ],
+        "eigenspaces": [
+          {
+            "scaled_frequency": "-33/20",
+            "branch_ids": [
+              0,
+              3
+            ],
+            "dimension": 39
+          },
+          {
+            "scaled_frequency": "-27/20",
+            "branch_ids": [
+              1
+            ],
+            "dimension": 25
+          },
+          {
+            "scaled_frequency": "-39/20",
+            "branch_ids": [
+              2
+            ],
+            "dimension": 14
+          },
+          {
+            "scaled_frequency": "-6/5 - 3*sqrt(17)/20",
+            "branch_ids": [
+              4
+            ],
+            "dimension": 14
+          },
+          {
+            "scaled_frequency": "-6/5 + 3*sqrt(17)/20",
+            "branch_ids": [
+              5
+            ],
+            "dimension": 14
+          },
+          {
+            "scaled_frequency": "33/20",
+            "branch_ids": [
+              6,
+              9
+            ],
+            "dimension": 40
+          },
+          {
+            "scaled_frequency": "27/20",
+            "branch_ids": [
+              7
+            ],
+            "dimension": 25
+          },
+          {
+            "scaled_frequency": "39/20",
+            "branch_ids": [
+              8
+            ],
+            "dimension": 15
+          },
+          {
+            "scaled_frequency": "3*sqrt(17)/20 + 6/5",
+            "branch_ids": [
+              10
+            ],
+            "dimension": 15
+          },
+          {
+            "scaled_frequency": "6/5 - 3*sqrt(17)/20",
+            "branch_ids": [
+              11
+            ],
+            "dimension": 15
+          }
+        ]
+      },
+      {
+        "r": "9/20",
+        "physical_momentum_squared": "81/200",
+        "colliding_pairs": [
+          [
+            0,
+            4
+          ],
+          [
+            6,
+            10
+          ]
+        ],
+        "eigenspaces": [
+          {
+            "scaled_frequency": "-39/20",
+            "branch_ids": [
+              0,
+              4
+            ],
+            "dimension": 39
+          },
+          {
+            "scaled_frequency": "-21/20",
+            "branch_ids": [
+              1
+            ],
+            "dimension": 25
+          },
+          {
+            "scaled_frequency": "-9/4",
+            "branch_ids": [
+              2
+            ],
+            "dimension": 14
+          },
+          {
+            "scaled_frequency": "-27/20",
+            "branch_ids": [
+              3
+            ],
+            "dimension": 14
+          },
+          {
+            "scaled_frequency": "-9/20",
+            "branch_ids": [
+              5
+            ],
+            "dimension": 14
+          },
+          {
+            "scaled_frequency": "39/20",
+            "branch_ids": [
+              6,
+              10
+            ],
+            "dimension": 40
+          },
+          {
+            "scaled_frequency": "21/20",
+            "branch_ids": [
+              7
+            ],
+            "dimension": 25
+          },
+          {
+            "scaled_frequency": "9/4",
+            "branch_ids": [
+              8
+            ],
+            "dimension": 15
+          },
+          {
+            "scaled_frequency": "27/20",
+            "branch_ids": [
+              9
+            ],
+            "dimension": 15
+          },
+          {
+            "scaled_frequency": "9/20",
+            "branch_ids": [
+              11
+            ],
+            "dimension": 15
+          }
+        ]
+      },
+      {
+        "r": "3*sqrt(3)/5",
+        "physical_momentum_squared": "54/25",
+        "colliding_pairs": [
+          [
+            5,
+            11
+          ]
+        ],
+        "eigenspaces": [
+          {
+            "scaled_frequency": "-3/2 - 3*sqrt(3)/5",
+            "branch_ids": [
+              0
+            ],
+            "dimension": 25
+          },
+          {
+            "scaled_frequency": "-3/2 + 3*sqrt(3)/5",
+            "branch_ids": [
+              1
+            ],
+            "dimension": 25
+          },
+          {
+            "scaled_frequency": "-9/5 - 3*sqrt(3)/5",
+            "branch_ids": [
+              2
+            ],
+            "dimension": 14
+          },
+          {
+            "scaled_frequency": "-9/5 + 3*sqrt(3)/5",
+            "branch_ids": [
+              3
+            ],
+            "dimension": 14
+          },
+          {
+            "scaled_frequency": "-12/5",
+            "branch_ids": [
+              4
+            ],
+            "dimension": 14
+          },
+          {
+            "scaled_frequency": "0",
+            "branch_ids": [
+              5,
+              11
+            ],
+            "dimension": 29
+          },
+          {
+            "scaled_frequency": "3*sqrt(3)/5 + 3/2",
+            "branch_ids": [
+              6
+            ],
+            "dimension": 25
+          },
+          {
+            "scaled_frequency": "3/2 - 3*sqrt(3)/5",
+            "branch_ids": [
+              7
+            ],
+            "dimension": 25
+          },
+          {
+            "scaled_frequency": "3*sqrt(3)/5 + 9/5",
+            "branch_ids": [
+              8
+            ],
+            "dimension": 15
+          },
+          {
+            "scaled_frequency": "9/5 - 3*sqrt(3)/5",
+            "branch_ids": [
+              9
+            ],
+            "dimension": 15
+          },
+          {
+            "scaled_frequency": "12/5",
+            "branch_ids": [
+              10
+            ],
+            "dimension": 15
+          }
+        ]
+      },
+      {
+        "r": "77/60",
+        "physical_momentum_squared": "5929/1800",
+        "colliding_pairs": [
+          [
+            1,
+            11
+          ],
+          [
+            5,
+            7
+          ]
+        ],
+        "eigenspaces": [
+          {
+            "scaled_frequency": "-167/60",
+            "branch_ids": [
+              0
+            ],
+            "dimension": 25
+          },
+          {
+            "scaled_frequency": "-13/60",
+            "branch_ids": [
+              1,
+              11
+            ],
+            "dimension": 40
+          },
+          {
+            "scaled_frequency": "-37/12",
+            "branch_ids": [
+              2
+            ],
+            "dimension": 14
+          },
+          {
+            "scaled_frequency": "-31/60",
+            "branch_ids": [
+              3
+            ],
+            "dimension": 14
+          },
+          {
+            "scaled_frequency": "-157/60",
+            "branch_ids": [
+              4
+            ],
+            "dimension": 14
+          },
+          {
+            "scaled_frequency": "13/60",
+            "branch_ids": [
+              5,
+              7
+            ],
+            "dimension": 39
+          },
+          {
+            "scaled_frequency": "167/60",
+            "branch_ids": [
+              6
+            ],
+            "dimension": 25
+          },
+          {
+            "scaled_frequency": "37/12",
+            "branch_ids": [
+              8
+            ],
+            "dimension": 15
+          },
+          {
+            "scaled_frequency": "31/60",
+            "branch_ids": [
+              9
+            ],
+            "dimension": 15
+          },
+          {
+            "scaled_frequency": "157/60",
+            "branch_ids": [
+              10
+            ],
+            "dimension": 15
+          }
+        ]
+      },
+      {
+        "r": "36/25",
+        "physical_momentum_squared": "2592/625",
+        "colliding_pairs": [
+          [
+            3,
+            11
+          ],
+          [
+            5,
+            9
+          ]
+        ],
+        "eigenspaces": [
+          {
+            "scaled_frequency": "-147/50",
+            "branch_ids": [
+              0
+            ],
+            "dimension": 25
+          },
+          {
+            "scaled_frequency": "-3/50",
+            "branch_ids": [
+              1
+            ],
+            "dimension": 25
+          },
+          {
+            "scaled_frequency": "-81/25",
+            "branch_ids": [
+              2
+            ],
+            "dimension": 14
+          },
+          {
+            "scaled_frequency": "-9/25",
+            "branch_ids": [
+              3,
+              11
+            ],
+            "dimension": 29
+          },
+          {
+            "scaled_frequency": "-69/25",
+            "branch_ids": [
+              4
+            ],
+            "dimension": 14
+          },
+          {
+            "scaled_frequency": "9/25",
+            "branch_ids": [
+              5,
+              9
+            ],
+            "dimension": 29
+          },
+          {
+            "scaled_frequency": "147/50",
+            "branch_ids": [
+              6
+            ],
+            "dimension": 25
+          },
+          {
+            "scaled_frequency": "3/50",
+            "branch_ids": [
+              7
+            ],
+            "dimension": 25
+          },
+          {
+            "scaled_frequency": "81/25",
+            "branch_ids": [
+              8
+            ],
+            "dimension": 15
+          },
+          {
+            "scaled_frequency": "69/25",
+            "branch_ids": [
+              10
+            ],
+            "dimension": 15
+          }
+        ]
+      },
+      {
+        "r": "3/2",
+        "physical_momentum_squared": "9/2",
+        "colliding_pairs": [
+          [
+            1,
+            7
+          ]
+        ],
+        "eigenspaces": [
+          {
+            "scaled_frequency": "-3",
+            "branch_ids": [
+              0
+            ],
+            "dimension": 25
+          },
+          {
+            "scaled_frequency": "0",
+            "branch_ids": [
+              1,
+              7
+            ],
+            "dimension": 50
+          },
+          {
+            "scaled_frequency": "-33/10",
+            "branch_ids": [
+              2
+            ],
+            "dimension": 14
+          },
+          {
+            "scaled_frequency": "-3/10",
+            "branch_ids": [
+              3
+            ],
+            "dimension": 14
+          },
+          {
+            "scaled_frequency": "-3*sqrt(29)/10 - 6/5",
+            "branch_ids": [
+              4
+            ],
+            "dimension": 14
+          },
+          {
+            "scaled_frequency": "-6/5 + 3*sqrt(29)/10",
+            "branch_ids": [
+              5
+            ],
+            "dimension": 14
+          },
+          {
+            "scaled_frequency": "3",
+            "branch_ids": [
+              6
+            ],
+            "dimension": 25
+          },
+          {
+            "scaled_frequency": "33/10",
+            "branch_ids": [
+              8
+            ],
+            "dimension": 15
+          },
+          {
+            "scaled_frequency": "3/10",
+            "branch_ids": [
+              9
+            ],
+            "dimension": 15
+          },
+          {
+            "scaled_frequency": "6/5 + 3*sqrt(29)/10",
+            "branch_ids": [
+              10
+            ],
+            "dimension": 15
+          },
+          {
+            "scaled_frequency": "6/5 - 3*sqrt(29)/10",
+            "branch_ids": [
+              11
+            ],
+            "dimension": 15
+          }
+        ]
+      },
+      {
+        "r": "33/20",
+        "physical_momentum_squared": "1089/200",
+        "colliding_pairs": [
+          [
+            1,
+            9
+          ],
+          [
+            3,
+            7
+          ]
+        ],
+        "eigenspaces": [
+          {
+            "scaled_frequency": "-63/20",
+            "branch_ids": [
+              0
+            ],
+            "dimension": 25
+          },
+          {
+            "scaled_frequency": "3/20",
+            "branch_ids": [
+              1,
+              9
+            ],
+            "dimension": 40
+          },
+          {
+            "scaled_frequency": "-69/20",
+            "branch_ids": [
+              2
+            ],
+            "dimension": 14
+          },
+          {
+            "scaled_frequency": "-3/20",
+            "branch_ids": [
+              3,
+              7
+            ],
+            "dimension": 39
+          },
+          {
+            "scaled_frequency": "-3*sqrt(137)/20 - 6/5",
+            "branch_ids": [
+              4
+            ],
+            "dimension": 14
+          },
+          {
+            "scaled_frequency": "-6/5 + 3*sqrt(137)/20",
+            "branch_ids": [
+              5
+            ],
+            "dimension": 14
+          },
+          {
+            "scaled_frequency": "63/20",
+            "branch_ids": [
+              6
+            ],
+            "dimension": 25
+          },
+          {
+            "scaled_frequency": "69/20",
+            "branch_ids": [
+              8
+            ],
+            "dimension": 15
+          },
+          {
+            "scaled_frequency": "6/5 + 3*sqrt(137)/20",
+            "branch_ids": [
+              10
+            ],
+            "dimension": 15
+          },
+          {
+            "scaled_frequency": "6/5 - 3*sqrt(137)/20",
+            "branch_ids": [
+              11
+            ],
+            "dimension": 15
+          }
+        ]
+      },
+      {
+        "r": "9/5",
+        "physical_momentum_squared": "162/25",
+        "colliding_pairs": [
+          [
+            3,
+            9
+          ]
+        ],
+        "eigenspaces": [
+          {
+            "scaled_frequency": "-33/10",
+            "branch_ids": [
+              0
+            ],
+            "dimension": 25
+          },
+          {
+            "scaled_frequency": "3/10",
+            "branch_ids": [
+              1
+            ],
+            "dimension": 25
+          },
+          {
+            "scaled_frequency": "-18/5",
+            "branch_ids": [
+              2
+            ],
+            "dimension": 14
+          },
+          {
+            "scaled_frequency": "0",
+            "branch_ids": [
+              3,
+              9
+            ],
+            "dimension": 29
+          },
+          {
+            "scaled_frequency": "-3*sqrt(10)/5 - 6/5",
+            "branch_ids": [
+              4
+            ],
+            "dimension": 14
+          },
+          {
+            "scaled_frequency": "-6/5 + 3*sqrt(10)/5",
+            "branch_ids": [
+              5
+            ],
+            "dimension": 14
+          },
+          {
+            "scaled_frequency": "33/10",
+            "branch_ids": [
+              6
+            ],
+            "dimension": 25
+          },
+          {
+            "scaled_frequency": "-3/10",
+            "branch_ids": [
+              7
+            ],
+            "dimension": 25
+          },
+          {
+            "scaled_frequency": "18/5",
+            "branch_ids": [
+              8
+            ],
+            "dimension": 15
+          },
+          {
+            "scaled_frequency": "6/5 + 3*sqrt(10)/5",
+            "branch_ids": [
+              10
+            ],
+            "dimension": 15
+          },
+          {
+            "scaled_frequency": "6/5 - 3*sqrt(10)/5",
+            "branch_ids": [
+              11
+            ],
+            "dimension": 15
+          }
+        ]
+      }
+    ],
+    "persistent_degeneracies_merged_by_identical_frequency_function": true,
+    "all_radical_equations_filtered_against_unsquared_source_equation": true
+  },
+  "stationary_time_catalog": {
+    "branches": [
+      {
+        "id": 0,
+        "coefficients": [
+          "-9/10",
+          "-1",
+          "0"
+        ],
+        "scaled_frequency": "-r - 9/10",
+        "multiplicity": 25,
+        "source_labels": [
+          {
+            "chirality": -1,
+            "degree": 2,
+            "branch": "singlet_plus",
+            "multiplicity": 10
+          },
+          {
+            "chirality": -1,
+            "degree": 4,
+            "branch": "singlet_plus",
+            "multiplicity": 15
+          }
+        ]
+      },
+      {
+        "id": 1,
+        "coefficients": [
+          "-9/10",
+          "1",
+          "0"
+        ],
+        "scaled_frequency": "r - 9/10",
+        "multiplicity": 25,
+        "source_labels": [
+          {
+            "chirality": -1,
+            "degree": 2,
+            "branch": "singlet_minus",
+            "multiplicity": 10
+          },
+          {
+            "chirality": -1,
+            "degree": 4,
+            "branch": "singlet_minus",
+            "multiplicity": 15
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "coefficients": [
+          "-6/5",
+          "-1",
+          "0"
+        ],
+        "scaled_frequency": "-r - 6/5",
+        "multiplicity": 14,
+        "source_labels": [
+          {
+            "chirality": -1,
+            "degree": 2,
+            "branch": "parallel_plus",
+            "multiplicity": 4
+          },
+          {
+            "chirality": -1,
+            "degree": 4,
+            "branch": "parallel_plus",
+            "multiplicity": 10
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "coefficients": [
+          "-6/5",
+          "1",
+          "0"
+        ],
+        "scaled_frequency": "r - 6/5",
+        "multiplicity": 14,
+        "source_labels": [
+          {
+            "chirality": -1,
+            "degree": 2,
+            "branch": "parallel_minus",
+            "multiplicity": 4
+          },
+          {
+            "chirality": -1,
+            "degree": 4,
+            "branch": "parallel_minus",
+            "multiplicity": 10
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "coefficients": [
+          "-3/5",
+          "0",
+          "-1"
+        ],
+        "scaled_frequency": "-sqrt(r**2 + 9/25) - 3/5",
+        "multiplicity": 15,
+        "source_labels": [
+          {
+            "chirality": -1,
+            "degree": 2,
+            "branch": "mixed_plus",
+            "multiplicity": 4
+          },
+          {
+            "chirality": -1,
+            "degree": 4,
+            "branch": "mixed_plus",
+            "multiplicity": 10
+          },
+          {
+            "chirality": 1,
+            "degree": 6,
+            "branch": "mixed_minus",
+            "multiplicity": 1
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "coefficients": [
+          "-3/5",
+          "0",
+          "1"
+        ],
+        "scaled_frequency": "sqrt(r**2 + 9/25) - 3/5",
+        "multiplicity": 15,
+        "source_labels": [
+          {
+            "chirality": -1,
+            "degree": 2,
+            "branch": "mixed_minus",
+            "multiplicity": 4
+          },
+          {
+            "chirality": -1,
+            "degree": 4,
+            "branch": "mixed_minus",
+            "multiplicity": 10
+          },
+          {
+            "chirality": 1,
+            "degree": 6,
+            "branch": "mixed_plus",
+            "multiplicity": 1
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "coefficients": [
+          "-3/10",
+          "1",
+          "0"
+        ],
+        "scaled_frequency": "r - 3/10",
+        "multiplicity": 5,
+        "source_labels": [
+          {
+            "chirality": 1,
+            "degree": 6,
+            "branch": "singlet_plus",
+            "multiplicity": 5
+          }
+        ]
+      },
+      {
+        "id": 7,
+        "coefficients": [
+          "-3/10",
+          "-1",
+          "0"
+        ],
+        "scaled_frequency": "-r - 3/10",
+        "multiplicity": 5,
+        "source_labels": [
+          {
+            "chirality": 1,
+            "degree": 6,
+            "branch": "singlet_minus",
+            "multiplicity": 5
+          }
+        ]
+      },
+      {
+        "id": 8,
+        "coefficients": [
+          "0",
+          "1",
+          "0"
+        ],
+        "scaled_frequency": "r",
+        "multiplicity": 1,
+        "source_labels": [
+          {
+            "chirality": 1,
+            "degree": 6,
+            "branch": "parallel_plus",
+            "multiplicity": 1
+          }
+        ]
+      },
+      {
+        "id": 9,
+        "coefficients": [
+          "0",
+          "-1",
+          "0"
+        ],
+        "scaled_frequency": "-r",
+        "multiplicity": 1,
+        "source_labels": [
+          {
+            "chirality": 1,
+            "degree": 6,
+            "branch": "parallel_minus",
+            "multiplicity": 1
+          }
+        ]
+      },
+      {
+        "id": 10,
+        "coefficients": [
+          "9/10",
+          "1",
+          "0"
+        ],
+        "scaled_frequency": "r + 9/10",
+        "multiplicity": 20,
+        "source_labels": [
+          {
+            "chirality": 1,
+            "degree": 2,
+            "branch": "singlet_plus",
+            "multiplicity": 5
+          },
+          {
+            "chirality": 1,
+            "degree": 4,
+            "branch": "singlet_plus",
+            "multiplicity": 15
+          }
+        ]
+      },
+      {
+        "id": 11,
+        "coefficients": [
+          "9/10",
+          "-1",
+          "0"
+        ],
+        "scaled_frequency": "9/10 - r",
+        "multiplicity": 20,
+        "source_labels": [
+          {
+            "chirality": 1,
+            "degree": 2,
+            "branch": "singlet_minus",
+            "multiplicity": 5
+          },
+          {
+            "chirality": 1,
+            "degree": 4,
+            "branch": "singlet_minus",
+            "multiplicity": 15
+          }
+        ]
+      },
+      {
+        "id": 12,
+        "coefficients": [
+          "6/5",
+          "1",
+          "0"
+        ],
+        "scaled_frequency": "r + 6/5",
+        "multiplicity": 14,
+        "source_labels": [
+          {
+            "chirality": 1,
+            "degree": 2,
+            "branch": "parallel_plus",
+            "multiplicity": 4
+          },
+          {
+            "chirality": 1,
+            "degree": 4,
+            "branch": "parallel_plus",
+            "multiplicity": 10
+          }
+        ]
+      },
+      {
+        "id": 13,
+        "coefficients": [
+          "6/5",
+          "-1",
+          "0"
+        ],
+        "scaled_frequency": "6/5 - r",
+        "multiplicity": 14,
+        "source_labels": [
+          {
+            "chirality": 1,
+            "degree": 2,
+            "branch": "parallel_minus",
+            "multiplicity": 4
+          },
+          {
+            "chirality": 1,
+            "degree": 4,
+            "branch": "parallel_minus",
+            "multiplicity": 10
+          }
+        ]
+      },
+      {
+        "id": 14,
+        "coefficients": [
+          "3/5",
+          "0",
+          "1"
+        ],
+        "scaled_frequency": "sqrt(r**2 + 9/25) + 3/5",
+        "multiplicity": 14,
+        "source_labels": [
+          {
+            "chirality": 1,
+            "degree": 2,
+            "branch": "mixed_plus",
+            "multiplicity": 4
+          },
+          {
+            "chirality": 1,
+            "degree": 4,
+            "branch": "mixed_plus",
+            "multiplicity": 10
+          }
+        ]
+      },
+      {
+        "id": 15,
+        "coefficients": [
+          "3/5",
+          "0",
+          "-1"
+        ],
+        "scaled_frequency": "3/5 - sqrt(r**2 + 9/25)",
+        "multiplicity": 14,
+        "source_labels": [
+          {
+            "chirality": 1,
+            "degree": 2,
+            "branch": "mixed_minus",
+            "multiplicity": 4
+          },
+          {
+            "chirality": 1,
+            "degree": 4,
+            "branch": "mixed_minus",
+            "multiplicity": 10
+          }
+        ]
+      }
+    ],
+    "all_zero_frequency_shells": [
+      {
+        "r": "0",
+        "physical_momentum_squared": "0",
+        "zero_eigenspace_dimension": 31,
+        "branch_ids": [
+          5,
+          8,
+          9,
+          15
+        ]
+      },
+      {
+        "r": "3/10",
+        "physical_momentum_squared": "9/50",
+        "zero_eigenspace_dimension": 5,
+        "branch_ids": [
+          6
+        ]
+      },
+      {
+        "r": "9/10",
+        "physical_momentum_squared": "81/50",
+        "zero_eigenspace_dimension": 45,
+        "branch_ids": [
+          1,
+          11
+        ]
+      },
+      {
+        "r": "6/5",
+        "physical_momentum_squared": "72/25",
+        "zero_eigenspace_dimension": 28,
+        "branch_ids": [
+          3,
+          13
+        ]
+      }
+    ],
+    "all_branch_crossing_radii": [
+      {
+        "r": "0",
+        "physical_momentum_squared": "0",
+        "colliding_pairs": [
+          [
+            0,
+            1
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            5,
+            8
+          ],
+          [
+            5,
+            9
+          ],
+          [
+            5,
+            15
+          ],
+          [
+            6,
+            7
+          ],
+          [
+            8,
+            9
+          ],
+          [
+            8,
+            15
+          ],
+          [
+            9,
+            15
+          ],
+          [
+            10,
+            11
+          ],
+          [
+            12,
+            13
+          ],
+          [
+            12,
+            14
+          ],
+          [
+            13,
+            14
+          ]
+        ],
+        "eigenspaces": [
+          {
+            "scaled_frequency": "-9/10",
+            "branch_ids": [
+              0,
+              1
+            ],
+            "dimension": 50
+          },
+          {
+            "scaled_frequency": "-6/5",
+            "branch_ids": [
+              2,
+              3,
+              4
+            ],
+            "dimension": 43
+          },
+          {
+            "scaled_frequency": "0",
+            "branch_ids": [
+              5,
+              8,
+              9,
+              15
+            ],
+            "dimension": 31
+          },
+          {
+            "scaled_frequency": "-3/10",
+            "branch_ids": [
+              6,
+              7
+            ],
+            "dimension": 10
+          },
+          {
+            "scaled_frequency": "9/10",
+            "branch_ids": [
+              10,
+              11
+            ],
+            "dimension": 40
+          },
+          {
+            "scaled_frequency": "6/5",
+            "branch_ids": [
+              12,
+              13,
+              14
+            ],
+            "dimension": 42
+          }
+        ]
+      },
+      {
+        "r": "3/20",
+        "physical_momentum_squared": "9/200",
+        "colliding_pairs": [
+          [
+            0,
+            3
+          ],
+          [
+            6,
+            9
+          ],
+          [
+            10,
+            13
+          ]
+        ],
+        "eigenspaces": [
+          {
+            "scaled_frequency": "-21/20",
+            "branch_ids": [
+              0,
+              3
+            ],
+            "dimension": 39
+          },
+          {
+            "scaled_frequency": "-3/4",
+            "branch_ids": [
+              1
+            ],
+            "dimension": 25
+          },
+          {
+            "scaled_frequency": "-27/20",
+            "branch_ids": [
+              2
+            ],
+            "dimension": 14
+          },
+          {
+            "scaled_frequency": "-3*sqrt(17)/20 - 3/5",
+            "branch_ids": [
+              4
+            ],
+            "dimension": 15
+          },
+          {
+            "scaled_frequency": "-3/5 + 3*sqrt(17)/20",
+            "branch_ids": [
+              5
+            ],
+            "dimension": 15
+          },
+          {
+            "scaled_frequency": "-3/20",
+            "branch_ids": [
+              6,
+              9
+            ],
+            "dimension": 6
+          },
+          {
+            "scaled_frequency": "-9/20",
+            "branch_ids": [
+              7
+            ],
+            "dimension": 5
+          },
+          {
+            "scaled_frequency": "3/20",
+            "branch_ids": [
+              8
+            ],
+            "dimension": 1
+          },
+          {
+            "scaled_frequency": "21/20",
+            "branch_ids": [
+              10,
+              13
+            ],
+            "dimension": 34
+          },
+          {
+            "scaled_frequency": "3/4",
+            "branch_ids": [
+              11
+            ],
+            "dimension": 20
+          },
+          {
+            "scaled_frequency": "27/20",
+            "branch_ids": [
+              12
+            ],
+            "dimension": 14
+          },
+          {
+            "scaled_frequency": "3/5 + 3*sqrt(17)/20",
+            "branch_ids": [
+              14
+            ],
+            "dimension": 14
+          },
+          {
+            "scaled_frequency": "3/5 - 3*sqrt(17)/20",
+            "branch_ids": [
+              15
+            ],
+            "dimension": 14
+          }
+        ]
+      },
+      {
+        "r": "1/4",
+        "physical_momentum_squared": "1/8",
+        "colliding_pairs": [
+          [
+            6,
+            15
+          ]
+        ],
+        "eigenspaces": [
+          {
+            "scaled_frequency": "-23/20",
+            "branch_ids": [
+              0
+            ],
+            "dimension": 25
+          },
+          {
+            "scaled_frequency": "-13/20",
+            "branch_ids": [
+              1
+            ],
+            "dimension": 25
+          },
+          {
+            "scaled_frequency": "-29/20",
+            "branch_ids": [
+              2
+            ],
+            "dimension": 14
+          },
+          {
+            "scaled_frequency": "-19/20",
+            "branch_ids": [
+              3
+            ],
+            "dimension": 14
+          },
+          {
+            "scaled_frequency": "-5/4",
+            "branch_ids": [
+              4
+            ],
+            "dimension": 15
+          },
+          {
+            "scaled_frequency": "1/20",
+            "branch_ids": [
+              5
+            ],
+            "dimension": 15
+          },
+          {
+            "scaled_frequency": "-1/20",
+            "branch_ids": [
+              6,
+              15
+            ],
+            "dimension": 19
+          },
+          {
+            "scaled_frequency": "-11/20",
+            "branch_ids": [
+              7
+            ],
+            "dimension": 5
+          },
+          {
+            "scaled_frequency": "1/4",
+            "branch_ids": [
+              8
+            ],
+            "dimension": 1
+          },
+          {
+            "scaled_frequency": "-1/4",
+            "branch_ids": [
+              9
+            ],
+            "dimension": 1
+          },
+          {
+            "scaled_frequency": "23/20",
+            "branch_ids": [
+              10
+            ],
+            "dimension": 20
+          },
+          {
+            "scaled_frequency": "13/20",
+            "branch_ids": [
+              11
+            ],
+            "dimension": 20
+          },
+          {
+            "scaled_frequency": "29/20",
+            "branch_ids": [
+              12
+            ],
+            "dimension": 14
+          },
+          {
+            "scaled_frequency": "19/20",
+            "branch_ids": [
+              13
+            ],
+            "dimension": 14
+          },
+          {
+            "scaled_frequency": "5/4",
+            "branch_ids": [
+              14
+            ],
+            "dimension": 14
+          }
+        ]
+      },
+      {
+        "r": "3/10",
+        "physical_momentum_squared": "9/50",
+        "colliding_pairs": [
+          [
+            1,
+            7
+          ]
+        ],
+        "eigenspaces": [
+          {
+            "scaled_frequency": "-6/5",
+            "branch_ids": [
+              0
+            ],
+            "dimension": 25
+          },
+          {
+            "scaled_frequency": "-3/5",
+            "branch_ids": [
+              1,
+              7
+            ],
+            "dimension": 30
+          },
+          {
+            "scaled_frequency": "-3/2",
+            "branch_ids": [
+              2
+            ],
+            "dimension": 14
+          },
+          {
+            "scaled_frequency": "-9/10",
+            "branch_ids": [
+              3
+            ],
+            "dimension": 14
+          },
+          {
+            "scaled_frequency": "-3*sqrt(5)/10 - 3/5",
+            "branch_ids": [
+              4
+            ],
+            "dimension": 15
+          },
+          {
+            "scaled_frequency": "-3/5 + 3*sqrt(5)/10",
+            "branch_ids": [
+              5
+            ],
+            "dimension": 15
+          },
+          {
+            "scaled_frequency": "0",
+            "branch_ids": [
+              6
+            ],
+            "dimension": 5
+          },
+          {
+            "scaled_frequency": "3/10",
+            "branch_ids": [
+              8
+            ],
+            "dimension": 1
+          },
+          {
+            "scaled_frequency": "-3/10",
+            "branch_ids": [
+              9
+            ],
+            "dimension": 1
+          },
+          {
+            "scaled_frequency": "6/5",
+            "branch_ids": [
+              10
+            ],
+            "dimension": 20
+          },
+          {
+            "scaled_frequency": "3/5",
+            "branch_ids": [
+              11
+            ],
+            "dimension": 20
+          },
+          {
+            "scaled_frequency": "3/2",
+            "branch_ids": [
+              12
+            ],
+            "dimension": 14
+          },
+          {
+            "scaled_frequency": "9/10",
+            "branch_ids": [
+              13
+            ],
+            "dimension": 14
+          },
+          {
+            "scaled_frequency": "3/5 + 3*sqrt(5)/10",
+            "branch_ids": [
+              14
+            ],
+            "dimension": 14
+          },
+          {
+            "scaled_frequency": "3/5 - 3*sqrt(5)/10",
+            "branch_ids": [
+              15
+            ],
+            "dimension": 14
+          }
+        ]
+      },
+      {
+        "r": "9/20",
+        "physical_momentum_squared": "81/200",
+        "colliding_pairs": [
+          [
+            0,
+            4
+          ],
+          [
+            1,
+            9
+          ],
+          [
+            3,
+            7
+          ],
+          [
+            5,
+            6
+          ],
+          [
+            8,
+            11
+          ],
+          [
+            10,
+            14
+          ]
+        ],
+        "eigenspaces": [
+          {
+            "scaled_frequency": "-27/20",
+            "branch_ids": [
+              0,
+              4
+            ],
+            "dimension": 40
+          },
+          {
+            "scaled_frequency": "-9/20",
+            "branch_ids": [
+              1,
+              9
+            ],
+            "dimension": 26
+          },
+          {
+            "scaled_frequency": "-33/20",
+            "branch_ids": [
+              2
+            ],
+            "dimension": 14
+          },
+          {
+            "scaled_frequency": "-3/4",
+            "branch_ids": [
+              3,
+              7
+            ],
+            "dimension": 19
+          },
+          {
+            "scaled_frequency": "3/20",
+            "branch_ids": [
+              5,
+              6
+            ],
+            "dimension": 20
+          },
+          {
+            "scaled_frequency": "9/20",
+            "branch_ids": [
+              8,
+              11
+            ],
+            "dimension": 21
+          },
+          {
+            "scaled_frequency": "27/20",
+            "branch_ids": [
+              10,
+              14
+            ],
+            "dimension": 34
+          },
+          {
+            "scaled_frequency": "33/20",
+            "branch_ids": [
+              12
+            ],
+            "dimension": 14
+          },
+          {
+            "scaled_frequency": "3/4",
+            "branch_ids": [
+              13
+            ],
+            "dimension": 14
+          },
+          {
+            "scaled_frequency": "-3/20",
+            "branch_ids": [
+              15
+            ],
+            "dimension": 14
+          }
+        ]
+      },
+      {
+        "r": "3/5",
+        "physical_momentum_squared": "18/25",
+        "colliding_pairs": [
+          [
+            3,
+            9
+          ],
+          [
+            6,
+            11
+          ],
+          [
+            8,
+            13
+          ]
+        ],
+        "eigenspaces": [
+          {
+            "scaled_frequency": "-3/2",
+            "branch_ids": [
+              0
+            ],
+            "dimension": 25
+          },
+          {
+            "scaled_frequency": "-3/10",
+            "branch_ids": [
+              1
+            ],
+            "dimension": 25
+          },
+          {
+            "scaled_frequency": "-9/5",
+            "branch_ids": [
+              2
+            ],
+            "dimension": 14
+          },
+          {
+            "scaled_frequency": "-3/5",
+            "branch_ids": [
+              3,
+              9
+            ],
+            "dimension": 15
+          },
+          {
+            "scaled_frequency": "-3*sqrt(2)/5 - 3/5",
+            "branch_ids": [
+              4
+            ],
+            "dimension": 15
+          },
+          {
+            "scaled_frequency": "-3/5 + 3*sqrt(2)/5",
+            "branch_ids": [
+              5
+            ],
+            "dimension": 15
+          },
+          {
+            "scaled_frequency": "3/10",
+            "branch_ids": [
+              6,
+              11
+            ],
+            "dimension": 25
+          },
+          {
+            "scaled_frequency": "-9/10",
+            "branch_ids": [
+              7
+            ],
+            "dimension": 5
+          },
+          {
+            "scaled_frequency": "3/5",
+            "branch_ids": [
+              8,
+              13
+            ],
+            "dimension": 15
+          },
+          {
+            "scaled_frequency": "3/2",
+            "branch_ids": [
+              10
+            ],
+            "dimension": 20
+          },
+          {
+            "scaled_frequency": "9/5",
+            "branch_ids": [
+              12
+            ],
+            "dimension": 14
+          },
+          {
+            "scaled_frequency": "3/5 + 3*sqrt(2)/5",
+            "branch_ids": [
+              14
+            ],
+            "dimension": 14
+          },
+          {
+            "scaled_frequency": "3/5 - 3*sqrt(2)/5",
+            "branch_ids": [
+              15
+            ],
+            "dimension": 14
+          }
+        ]
+      },
+      {
+        "r": "63/100",
+        "physical_momentum_squared": "3969/5000",
+        "colliding_pairs": [
+          [
+            1,
+            15
+          ],
+          [
+            5,
+            11
+          ]
+        ],
+        "eigenspaces": [
+          {
+            "scaled_frequency": "-153/100",
+            "branch_ids": [
+              0
+            ],
+            "dimension": 25
+          },
+          {
+            "scaled_frequency": "-27/100",
+            "branch_ids": [
+              1,
+              15
+            ],
+            "dimension": 39
+          },
+          {
+            "scaled_frequency": "-183/100",
+            "branch_ids": [
+              2
+            ],
+            "dimension": 14
+          },
+          {
+            "scaled_frequency": "-57/100",
+            "branch_ids": [
+              3
+            ],
+            "dimension": 14
+          },
+          {
+            "scaled_frequency": "-147/100",
+            "branch_ids": [
+              4
+            ],
+            "dimension": 15
+          },
+          {
+            "scaled_frequency": "27/100",
+            "branch_ids": [
+              5,
+              11
+            ],
+            "dimension": 35
+          },
+          {
+            "scaled_frequency": "33/100",
+            "branch_ids": [
+              6
+            ],
+            "dimension": 5
+          },
+          {
+            "scaled_frequency": "-93/100",
+            "branch_ids": [
+              7
+            ],
+            "dimension": 5
+          },
+          {
+            "scaled_frequency": "63/100",
+            "branch_ids": [
+              8
+            ],
+            "dimension": 1
+          },
+          {
+            "scaled_frequency": "-63/100",
+            "branch_ids": [
+              9
+            ],
+            "dimension": 1
+          },
+          {
+            "scaled_frequency": "153/100",
+            "branch_ids": [
+              10
+            ],
+            "dimension": 20
+          },
+          {
+            "scaled_frequency": "183/100",
+            "branch_ids": [
+              12
+            ],
+            "dimension": 14
+          },
+          {
+            "scaled_frequency": "57/100",
+            "branch_ids": [
+              13
+            ],
+            "dimension": 14
+          },
+          {
+            "scaled_frequency": "147/100",
+            "branch_ids": [
+              14
+            ],
+            "dimension": 14
+          }
+        ]
+      },
+      {
+        "r": "3/4",
+        "physical_momentum_squared": "9/8",
+        "colliding_pairs": [
+          [
+            6,
+            13
+          ]
+        ],
+        "eigenspaces": [
+          {
+            "scaled_frequency": "-33/20",
+            "branch_ids": [
+              0
+            ],
+            "dimension": 25
+          },
+          {
+            "scaled_frequency": "-3/20",
+            "branch_ids": [
+              1
+            ],
+            "dimension": 25
+          },
+          {
+            "scaled_frequency": "-39/20",
+            "branch_ids": [
+              2
+            ],
+            "dimension": 14
+          },
+          {
+            "scaled_frequency": "-9/20",
+            "branch_ids": [
+              3
+            ],
+            "dimension": 14
+          },
+          {
+            "scaled_frequency": "-3*sqrt(41)/20 - 3/5",
+            "branch_ids": [
+              4
+            ],
+            "dimension": 15
+          },
+          {
+            "scaled_frequency": "-3/5 + 3*sqrt(41)/20",
+            "branch_ids": [
+              5
+            ],
+            "dimension": 15
+          },
+          {
+            "scaled_frequency": "9/20",
+            "branch_ids": [
+              6,
+              13
+            ],
+            "dimension": 19
+          },
+          {
+            "scaled_frequency": "-21/20",
+            "branch_ids": [
+              7
+            ],
+            "dimension": 5
+          },
+          {
+            "scaled_frequency": "3/4",
+            "branch_ids": [
+              8
+            ],
+            "dimension": 1
+          },
+          {
+            "scaled_frequency": "-3/4",
+            "branch_ids": [
+              9
+            ],
+            "dimension": 1
+          },
+          {
+            "scaled_frequency": "33/20",
+            "branch_ids": [
+              10
+            ],
+            "dimension": 20
+          },
+          {
+            "scaled_frequency": "3/20",
+            "branch_ids": [
+              11
+            ],
+            "dimension": 20
+          },
+          {
+            "scaled_frequency": "39/20",
+            "branch_ids": [
+              12
+            ],
+            "dimension": 14
+          },
+          {
+            "scaled_frequency": "3/5 + 3*sqrt(41)/20",
+            "branch_ids": [
+              14
+            ],
+            "dimension": 14
+          },
+          {
+            "scaled_frequency": "3/5 - 3*sqrt(41)/20",
+            "branch_ids": [
+              15
+            ],
+            "dimension": 14
+          }
+        ]
+      },
+      {
+        "r": "4/5",
+        "physical_momentum_squared": "32/25",
+        "colliding_pairs": [
+          [
+            3,
+            15
+          ],
+          [
+            5,
+            13
+          ]
+        ],
+        "eigenspaces": [
+          {
+            "scaled_frequency": "-17/10",
+            "branch_ids": [
+              0
+            ],
+            "dimension": 25
+          },
+          {
+            "scaled_frequency": "-1/10",
+            "branch_ids": [
+              1
+            ],
+            "dimension": 25
+          },
+          {
+            "scaled_frequency": "-2",
+            "branch_ids": [
+              2
+            ],
+            "dimension": 14
+          },
+          {
+            "scaled_frequency": "-2/5",
+            "branch_ids": [
+              3,
+              15
+            ],
+            "dimension": 28
+          },
+          {
+            "scaled_frequency": "-8/5",
+            "branch_ids": [
+              4
+            ],
+            "dimension": 15
+          },
+          {
+            "scaled_frequency": "2/5",
+            "branch_ids": [
+              5,
+              13
+            ],
+            "dimension": 29
+          },
+          {
+            "scaled_frequency": "1/2",
+            "branch_ids": [
+              6
+            ],
+            "dimension": 5
+          },
+          {
+            "scaled_frequency": "-11/10",
+            "branch_ids": [
+              7
+            ],
+            "dimension": 5
+          },
+          {
+            "scaled_frequency": "4/5",
+            "branch_ids": [
+              8
+            ],
+            "dimension": 1
+          },
+          {
+            "scaled_frequency": "-4/5",
+            "branch_ids": [
+              9
+            ],
+            "dimension": 1
+          },
+          {
+            "scaled_frequency": "17/10",
+            "branch_ids": [
+              10
+            ],
+            "dimension": 20
+          },
+          {
+            "scaled_frequency": "1/10",
+            "branch_ids": [
+              11
+            ],
+            "dimension": 20
+          },
+          {
+            "scaled_frequency": "2",
+            "branch_ids": [
+              12
+            ],
+            "dimension": 14
+          },
+          {
+            "scaled_frequency": "8/5",
+            "branch_ids": [
+              14
+            ],
+            "dimension": 14
+          }
+        ]
+      },
+      {
+        "r": "9/10",
+        "physical_momentum_squared": "81/50",
+        "colliding_pairs": [
+          [
+            1,
+            11
+          ]
+        ],
+        "eigenspaces": [
+          {
+            "scaled_frequency": "-9/5",
+            "branch_ids": [
+              0
+            ],
+            "dimension": 25
+          },
+          {
+            "scaled_frequency": "0",
+            "branch_ids": [
+              1,
+              11
+            ],
+            "dimension": 45
+          },
+          {
+            "scaled_frequency": "-21/10",
+            "branch_ids": [
+              2
+            ],
+            "dimension": 14
+          },
+          {
+            "scaled_frequency": "-3/10",
+            "branch_ids": [
+              3
+            ],
+            "dimension": 14
+          },
+          {
+            "scaled_frequency": "-3*sqrt(13)/10 - 3/5",
+            "branch_ids": [
+              4
+            ],
+            "dimension": 15
+          },
+          {
+            "scaled_frequency": "-3/5 + 3*sqrt(13)/10",
+            "branch_ids": [
+              5
+            ],
+            "dimension": 15
+          },
+          {
+            "scaled_frequency": "3/5",
+            "branch_ids": [
+              6
+            ],
+            "dimension": 5
+          },
+          {
+            "scaled_frequency": "-6/5",
+            "branch_ids": [
+              7
+            ],
+            "dimension": 5
+          },
+          {
+            "scaled_frequency": "9/10",
+            "branch_ids": [
+              8
+            ],
+            "dimension": 1
+          },
+          {
+            "scaled_frequency": "-9/10",
+            "branch_ids": [
+              9
+            ],
+            "dimension": 1
+          },
+          {
+            "scaled_frequency": "9/5",
+            "branch_ids": [
+              10
+            ],
+            "dimension": 20
+          },
+          {
+            "scaled_frequency": "21/10",
+            "branch_ids": [
+              12
+            ],
+            "dimension": 14
+          },
+          {
+            "scaled_frequency": "3/10",
+            "branch_ids": [
+              13
+            ],
+            "dimension": 14
+          },
+          {
+            "scaled_frequency": "3/5 + 3*sqrt(13)/10",
+            "branch_ids": [
+              14
+            ],
+            "dimension": 14
+          },
+          {
+            "scaled_frequency": "3/5 - 3*sqrt(13)/10",
+            "branch_ids": [
+              15
+            ],
+            "dimension": 14
+          }
+        ]
+      },
+      {
+        "r": "21/20",
+        "physical_momentum_squared": "441/200",
+        "colliding_pairs": [
+          [
+            1,
+            13
+          ],
+          [
+            3,
+            11
+          ]
+        ],
+        "eigenspaces": [
+          {
+            "scaled_frequency": "-39/20",
+            "branch_ids": [
+              0
+            ],
+            "dimension": 25
+          },
+          {
+            "scaled_frequency": "3/20",
+            "branch_ids": [
+              1,
+              13
+            ],
+            "dimension": 39
+          },
+          {
+            "scaled_frequency": "-9/4",
+            "branch_ids": [
+              2
+            ],
+            "dimension": 14
+          },
+          {
+            "scaled_frequency": "-3/20",
+            "branch_ids": [
+              3,
+              11
+            ],
+            "dimension": 34
+          },
+          {
+            "scaled_frequency": "-3*sqrt(65)/20 - 3/5",
+            "branch_ids": [
+              4
+            ],
+            "dimension": 15
+          },
+          {
+            "scaled_frequency": "-3/5 + 3*sqrt(65)/20",
+            "branch_ids": [
+              5
+            ],
+            "dimension": 15
+          },
+          {
+            "scaled_frequency": "3/4",
+            "branch_ids": [
+              6
+            ],
+            "dimension": 5
+          },
+          {
+            "scaled_frequency": "-27/20",
+            "branch_ids": [
+              7
+            ],
+            "dimension": 5
+          },
+          {
+            "scaled_frequency": "21/20",
+            "branch_ids": [
+              8
+            ],
+            "dimension": 1
+          },
+          {
+            "scaled_frequency": "-21/20",
+            "branch_ids": [
+              9
+            ],
+            "dimension": 1
+          },
+          {
+            "scaled_frequency": "39/20",
+            "branch_ids": [
+              10
+            ],
+            "dimension": 20
+          },
+          {
+            "scaled_frequency": "9/4",
+            "branch_ids": [
+              12
+            ],
+            "dimension": 14
+          },
+          {
+            "scaled_frequency": "3/5 + 3*sqrt(65)/20",
+            "branch_ids": [
+              14
+            ],
+            "dimension": 14
+          },
+          {
+            "scaled_frequency": "3/5 - 3*sqrt(65)/20",
+            "branch_ids": [
+              15
+            ],
+            "dimension": 14
+          }
+        ]
+      },
+      {
+        "r": "6/5",
+        "physical_momentum_squared": "72/25",
+        "colliding_pairs": [
+          [
+            3,
+            13
+          ]
+        ],
+        "eigenspaces": [
+          {
+            "scaled_frequency": "-21/10",
+            "branch_ids": [
+              0
+            ],
+            "dimension": 25
+          },
+          {
+            "scaled_frequency": "3/10",
+            "branch_ids": [
+              1
+            ],
+            "dimension": 25
+          },
+          {
+            "scaled_frequency": "-12/5",
+            "branch_ids": [
+              2
+            ],
+            "dimension": 14
+          },
+          {
+            "scaled_frequency": "0",
+            "branch_ids": [
+              3,
+              13
+            ],
+            "dimension": 28
+          },
+          {
+            "scaled_frequency": "-3*sqrt(5)/5 - 3/5",
+            "branch_ids": [
+              4
+            ],
+            "dimension": 15
+          },
+          {
+            "scaled_frequency": "-3/5 + 3*sqrt(5)/5",
+            "branch_ids": [
+              5
+            ],
+            "dimension": 15
+          },
+          {
+            "scaled_frequency": "9/10",
+            "branch_ids": [
+              6
+            ],
+            "dimension": 5
+          },
+          {
+            "scaled_frequency": "-3/2",
+            "branch_ids": [
+              7
+            ],
+            "dimension": 5
+          },
+          {
+            "scaled_frequency": "6/5",
+            "branch_ids": [
+              8
+            ],
+            "dimension": 1
+          },
+          {
+            "scaled_frequency": "-6/5",
+            "branch_ids": [
+              9
+            ],
+            "dimension": 1
+          },
+          {
+            "scaled_frequency": "21/10",
+            "branch_ids": [
+              10
+            ],
+            "dimension": 20
+          },
+          {
+            "scaled_frequency": "-3/10",
+            "branch_ids": [
+              11
+            ],
+            "dimension": 20
+          },
+          {
+            "scaled_frequency": "12/5",
+            "branch_ids": [
+              12
+            ],
+            "dimension": 14
+          },
+          {
+            "scaled_frequency": "3/5 + 3*sqrt(5)/5",
+            "branch_ids": [
+              14
+            ],
+            "dimension": 14
+          },
+          {
+            "scaled_frequency": "3/5 - 3*sqrt(5)/5",
+            "branch_ids": [
+              15
+            ],
+            "dimension": 14
+          }
+        ]
+      }
+    ],
+    "persistent_degeneracies_merged_by_identical_frequency_function": true,
+    "all_radical_equations_filtered_against_unsquared_source_equation": true
+  },
+  "elapsed_seconds": 8.384
+}

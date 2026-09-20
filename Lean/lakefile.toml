@@ -1,0 +1,31 @@
+name = "H0mework"
+version = "0.1.0"
+defaultTargets = ["H0mework"]
+# Preserve source proof text: these lint suggestions are stylistic, not proof failures.
+moreLeanArgs = [
+  "--trust=0", "-DwarningAsError=true",
+  "-Dweak.linter.unnecessarySimpa=false",
+  "-Dweak.linter.style.haveILetI=false",
+  "-Dweak.linter.unusedSimpArgs=false",
+]
+# Further diagnostic-only source lint exemptions need not invalidate checked proof artifacts.
+weakLeanArgs = [
+  "-Dweak.linter.unusedSectionVars=false",
+  "-Dweak.linter.unnecessarySeqFocus=false",
+  "-Dweak.linter.unusedVariables=false",
+  "-Dweak.linter.unreachableTactic=false",
+  "-Dweak.linter.unusedTactic=false",
+  "-Dweak.linter.defProp=false",
+  "-Dweak.linter.deprecated=false",
+  "-Dweak.linter.tacticAnalysis.introMerge=false",
+  "-Dweak.linter.constructorNameAsVariable=false",
+]
+
+[[lean_lib]]
+name = "H0mework"
+globs = ["H0mework.*"]
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+rev = "v4.33.0"

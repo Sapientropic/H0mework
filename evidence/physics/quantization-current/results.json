@@ -1,0 +1,2067 @@
+{
+  "status": "PASS",
+  "verification_kind": "independent_numerical_source_current_consumer",
+  "python": "3.12.13",
+  "dependencies": "Python standard library only",
+  "modes": 8,
+  "Fock_dimension": 256,
+  "particle_sector_dimensions": [
+    1,
+    8,
+    28,
+    56,
+    70,
+    56,
+    28,
+    8,
+    1
+  ],
+  "tolerance": 2e-12,
+  "random_seed": 20260907,
+  "source_parameters": {
+    "spinScale": 1.4142135623730951,
+    "gaugeScale": 0.8485281374238571,
+    "lapse": 0.6572670690061994,
+    "frequency": 0.557709601853868
+  },
+  "conventions": {
+    "mode_order": "mode = 2*spin + color, spin=0..3, color=0..1",
+    "occupation_basis": "mask bit k = nk; |mask> = (a0^dagger)^n0 ... (a7^dagger)^n7 |vac>",
+    "operator_entries": "[output row, input column]",
+    "Jordan_Wigner_sign": "(-1)^popcount(mask & ((1<<mode)-1))",
+    "independent_dual": "linear, no conjugation on its coefficients",
+    "source_exchange_F": "spin 0<->2, 1<->3; distinct from source gamma^0",
+    "current_action_compression": "C_mu,g = i gamma_mu tensor T_g",
+    "source_current_observable": "R_mu,g = F C_mu,g",
+    "physicalCurrent": "(R + R^dagger)/2",
+    "normalization": "amplitude = 2 psi; raw dual current = 4 spinScale <psi,R psi>",
+    "second_quantization": "dGamma(A) = sum_(i,j) A_ij a_i^dagger a_j",
+    "source_tables": "rows direction 0,1,2,3; columns generator 0,1,2"
+  },
+  "source_provenance": {
+    "parameters": {
+      "path_relative_to_Lean": "SaturationMonoid/PhysicsCore/Stage9C/Material/SpinPair/Parameters.lean",
+      "declarations": [
+        "spinScale",
+        "gaugeScale",
+        "lapse",
+        "frequency"
+      ]
+    },
+    "phases": {
+      "path_relative_to_Lean": "SaturationMonoid/PhysicsCore/Stage9C/Material/SpinPair/Phase.lean",
+      "declarations": [
+        "phase",
+        "upperPhase",
+        "lowerPhase",
+        "upperDualPhase",
+        "lowerDualPhase"
+      ]
+    },
+    "matter_and_independent_dual": {
+      "path_relative_to_Lean": "SaturationMonoid/PhysicsCore/Stage9C/Material/SpinPair/Spinor.lean",
+      "declarations": [
+        "spinPairCoefficients",
+        "sourceColorDiracDual",
+        "spinPairMatter",
+        "spinPairDual"
+      ]
+    },
+    "actual": {
+      "path_relative_to_Lean": "SaturationMonoid/PhysicsCore/Stage9C/Material/SpinPair/Actual.lean",
+      "declarations": [
+        "gaugePotential",
+        "actual_matter",
+        "actual_conjugateMatter",
+        "actual_gaugeConnection"
+      ]
+    },
+    "preparation": {
+      "path_relative_to_Lean": "SaturationMonoid/PhysicsCore/Stage9DEF/Source/Coefficients.lean",
+      "declarations": [
+        "Index",
+        "amplitude",
+        "vector",
+        "vector_inner_self"
+      ]
+    },
+    "restriction": {
+      "path_relative_to_Lean": "SaturationMonoid/PhysicsCore/Stage9DEF/Source/Restriction.lean",
+      "declarations": [
+        "restrict",
+        "restrict_actual"
+      ]
+    },
+    "color_seed": {
+      "path_relative_to_Lean": "SaturationMonoid/PhysicsCore/SU7MotherGaugeConnection.lean",
+      "declarations": [
+        "colorCartanRaw",
+        "colorMixingRaw",
+        "p286LieBracket",
+        "suLieBracket"
+      ]
+    },
+    "color_generators": {
+      "path_relative_to_Lean": "SaturationMonoid/PhysicsCore/Stage9C/Material/SpinPair/ColorDoublet.lean",
+      "declarations": [
+        "sourceColorP286Generator",
+        "sourceColorPauli",
+        "sourceColorP286Generator_topLeft"
+      ]
+    },
+    "occupied_invariance": {
+      "path_relative_to_Lean": "SaturationMonoid/PhysicsCore/Stage9C/Material/SpinPair/ColorInvariant.lean",
+      "declarations": [
+        "sourceColorDoublet_generatorAction"
+      ]
+    },
+    "gamma": {
+      "path_relative_to_Lean": "SaturationMonoid/PhysicsCore/DiracCliffordRepresentation.lean",
+      "declarations": [
+        "diracGammaZero",
+        "diracGammaOne",
+        "diracGammaTwo",
+        "diracGammaThree"
+      ]
+    },
+    "full_current_compression": {
+      "path_relative_to_Lean": "SaturationMonoid/PhysicsCore/Stage9C/Material/SpinPair/Current.lean",
+      "declarations": [
+        "sourceColorDoubletDual_matrixMotherAction",
+        "spinPairCurrentComplex_full"
+      ]
+    },
+    "dual_response": {
+      "path_relative_to_Lean": "SaturationMonoid/PhysicsCore/Stage9DEF/Compatibility/DualResponse.lean",
+      "declarations": [
+        "spinFlip",
+        "flip",
+        "dualCoefficient_source_star",
+        "responseMatrix",
+        "actual_action_quantumResponse"
+      ]
+    },
+    "current": {
+      "path_relative_to_Lean": "SaturationMonoid/PhysicsCore/Stage9DEF/Compatibility/Current.lean",
+      "declarations": [
+        "currentAction",
+        "currentObservable",
+        "current_source_prediction",
+        "current_time_zero",
+        "actualConnectionObservable"
+      ]
+    },
+    "physical_readout": {
+      "path_relative_to_Lean": "SaturationMonoid/PhysicsCore/Stage9DEF/Compatibility/Hermitian.lean",
+      "declarations": [
+        "hermitianPart",
+        "physicalCurrent",
+        "physicalCurrent_readout"
+      ]
+    }
+  },
+  "maximum_absolute_residual": 8.881821732672713e-16,
+  "checks": {
+    "CAR_a_creation": {
+      "evaluations": 64,
+      "maximum_absolute_residual": 0.0
+    },
+    "CAR_aa": {
+      "evaluations": 64,
+      "maximum_absolute_residual": 0.0
+    },
+    "CAR_creation_creation": {
+      "evaluations": 64,
+      "maximum_absolute_residual": 0.0
+    },
+    "actual_connection_prediction": {
+      "evaluations": 24,
+      "maximum_absolute_residual": 5.551115123125783e-17
+    },
+    "actual_connection_quantum_response": {
+      "evaluations": 24,
+      "maximum_absolute_residual": 4.440892098500626e-16
+    },
+    "arbitrary_Fock_state_normalized": {
+      "evaluations": 4,
+      "maximum_absolute_residual": 2.220672272886309e-16
+    },
+    "arbitrary_full_Fock_hermitian_readout": {
+      "evaluations": 4,
+      "maximum_absolute_residual": 6.661799819533857e-16
+    },
+    "arbitrary_full_Fock_state_normalized": {
+      "evaluations": 4,
+      "maximum_absolute_residual": 8.881821732672713e-16
+    },
+    "arbitrary_matrix_complete_one_particle_block": {
+      "evaluations": 4,
+      "maximum_absolute_residual": 0.0
+    },
+    "arbitrary_matrix_complex_expectation": {
+      "evaluations": 4,
+      "maximum_absolute_residual": 0.0
+    },
+    "arbitrary_matrix_dGamma_adjoint": {
+      "evaluations": 4,
+      "maximum_absolute_residual": 0.0
+    },
+    "arbitrary_matrix_dGamma_hermitian_part": {
+      "evaluations": 4,
+      "maximum_absolute_residual": 0.0
+    },
+    "arbitrary_matrix_one_particle_intertwining": {
+      "evaluations": 4,
+      "maximum_absolute_residual": 0.0
+    },
+    "arbitrary_matrix_preserves_all_particle_sectors": {
+      "evaluations": 4,
+      "maximum_absolute_residual": 0.0
+    },
+    "arbitrary_vector_normalized": {
+      "evaluations": 4,
+      "maximum_absolute_residual": 2.220672272886309e-16
+    },
+    "changed_observable_cosine_formula": {
+      "evaluations": 6,
+      "maximum_absolute_residual": 5.90740245408836e-17
+    },
+    "changed_observable_still_quantizes": {
+      "evaluations": 6,
+      "maximum_absolute_residual": 0.0
+    },
+    "creation_annihilation_adjoint": {
+      "evaluations": 8,
+      "maximum_absolute_residual": 0.0
+    },
+    "creation_on_vacuum_embedding": {
+      "evaluations": 6,
+      "maximum_absolute_residual": 0.0
+    },
+    "dark_changed_observable_discrepancy_is_one": {
+      "evaluations": 1,
+      "maximum_absolute_residual": 0.0
+    },
+    "dark_source_phases_match_exact_witness": {
+      "evaluations": 1,
+      "maximum_absolute_residual": 3.061616997868383e-17
+    },
+    "exchange_involution": {
+      "evaluations": 1,
+      "maximum_absolute_residual": 0.0
+    },
+    "exchange_self_adjoint": {
+      "evaluations": 1,
+      "maximum_absolute_residual": 0.0
+    },
+    "physicalCurrent_Fock_self_adjoint": {
+      "evaluations": 12,
+      "maximum_absolute_residual": 0.0
+    },
+    "physicalCurrent_self_adjoint": {
+      "evaluations": 12,
+      "maximum_absolute_residual": 0.0
+    },
+    "raw_source_dual_vs_normalized_response": {
+      "evaluations": 72,
+      "maximum_absolute_residual": 0.0
+    },
+    "reported_changed_observable_sparse_matrix": {
+      "evaluations": 1,
+      "maximum_absolute_residual": 0.0
+    },
+    "reported_source_observable_sparse_matrix": {
+      "evaluations": 1,
+      "maximum_absolute_residual": 0.0
+    },
+    "second_quantized_identity_is_number": {
+      "evaluations": 1,
+      "maximum_absolute_residual": 0.0
+    },
+    "source_Clifford_minus_plus_plus_plus": {
+      "evaluations": 16,
+      "maximum_absolute_residual": 0.0
+    },
+    "source_Fock_state_normalized": {
+      "evaluations": 6,
+      "maximum_absolute_residual": 0.0
+    },
+    "source_amplitude_norm_squared_is_four": {
+      "evaluations": 6,
+      "maximum_absolute_residual": 0.0
+    },
+    "source_color_commutator_vs_explicit_Pauli": {
+      "evaluations": 3,
+      "maximum_absolute_residual": 0.0
+    },
+    "source_current_all_directions_generators": {
+      "evaluations": 72,
+      "maximum_absolute_residual": 0.0
+    },
+    "source_current_occupied_vs_Fock": {
+      "evaluations": 72,
+      "maximum_absolute_residual": 0.0
+    },
+    "source_current_one_particle_intertwining": {
+      "evaluations": 72,
+      "maximum_absolute_residual": 0.0
+    },
+    "source_dual_direct_vs_closed_form": {
+      "evaluations": 72,
+      "maximum_absolute_residual": 0.0
+    },
+    "source_independent_dual_exchange": {
+      "evaluations": 6,
+      "maximum_absolute_residual": 0.0
+    },
+    "source_physicalCurrent_readout": {
+      "evaluations": 72,
+      "maximum_absolute_residual": 0.0
+    },
+    "source_vector_normalized": {
+      "evaluations": 6,
+      "maximum_absolute_residual": 0.0
+    }
+  },
+  "source_points": [
+    {
+      "label": "theta=0",
+      "point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "theta": 0.0,
+      "source_vector": [
+        {
+          "real": 0.0,
+          "imaginary": 0.0
+        },
+        {
+          "real": 0.5,
+          "imaginary": 0.0
+        },
+        {
+          "real": -0.5,
+          "imaginary": 0.0
+        },
+        {
+          "real": 0.0,
+          "imaginary": 0.0
+        },
+        {
+          "real": 0.0,
+          "imaginary": 0.0
+        },
+        {
+          "real": 0.5,
+          "imaginary": 0.0
+        },
+        {
+          "real": -0.5,
+          "imaginary": 0.0
+        },
+        {
+          "real": 0.0,
+          "imaginary": 0.0
+        }
+      ],
+      "normalized_occupied_current": [
+        [
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          }
+        ],
+        [
+          {
+            "real": 0.5,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          }
+        ],
+        [
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.5,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          }
+        ],
+        [
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.5,
+            "imaginary": 0.0
+          }
+        ]
+      ],
+      "normalized_Fock_current": [
+        [
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          }
+        ],
+        [
+          {
+            "real": 0.5,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          }
+        ],
+        [
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.5,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          }
+        ],
+        [
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.5,
+            "imaginary": 0.0
+          }
+        ]
+      ],
+      "direct_source_dual_current": [
+        [
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          }
+        ],
+        [
+          {
+            "real": 2.8284271247461903,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          }
+        ],
+        [
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 2.8284271247461903,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          }
+        ],
+        [
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 2.8284271247461903,
+            "imaginary": 0.0
+          }
+        ]
+      ],
+      "actual_connection": [
+        {
+          "direction": 0,
+          "normalized_Fock": {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          "direct_source_dual": {
+            "real": 0.0,
+            "imaginary": 0.0
+          }
+        },
+        {
+          "direction": 1,
+          "normalized_Fock": {
+            "real": 0.42426406871192857,
+            "imaginary": 0.0
+          },
+          "direct_source_dual": {
+            "real": 2.4000000000000004,
+            "imaginary": 0.0
+          }
+        },
+        {
+          "direction": 2,
+          "normalized_Fock": {
+            "real": 0.42426406871192857,
+            "imaginary": 0.0
+          },
+          "direct_source_dual": {
+            "real": 2.4000000000000004,
+            "imaginary": 0.0
+          }
+        },
+        {
+          "direction": 3,
+          "normalized_Fock": {
+            "real": 0.42426406871192857,
+            "imaginary": 0.0
+          },
+          "direct_source_dual": {
+            "real": 2.4000000000000004,
+            "imaginary": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "label": "theta=pi/4",
+      "point": [
+        1.4082564847130599,
+        1.0,
+        -2.0,
+        3.0
+      ],
+      "theta": 0.7853981633974483,
+      "source_vector": [
+        {
+          "real": 0.0,
+          "imaginary": 0.0
+        },
+        {
+          "real": 0.3535533905932738,
+          "imaginary": 0.35355339059327373
+        },
+        {
+          "real": -0.3535533905932738,
+          "imaginary": -0.35355339059327373
+        },
+        {
+          "real": 0.0,
+          "imaginary": 0.0
+        },
+        {
+          "real": 0.0,
+          "imaginary": 0.0
+        },
+        {
+          "real": 0.3535533905932738,
+          "imaginary": -0.35355339059327373
+        },
+        {
+          "real": -0.3535533905932738,
+          "imaginary": 0.35355339059327373
+        },
+        {
+          "real": 0.0,
+          "imaginary": 0.0
+        }
+      ],
+      "normalized_occupied_current": [
+        [
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          }
+        ],
+        [
+          {
+            "real": 0.5,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          }
+        ],
+        [
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.5,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          }
+        ],
+        [
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.5,
+            "imaginary": 0.0
+          }
+        ]
+      ],
+      "normalized_Fock_current": [
+        [
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          }
+        ],
+        [
+          {
+            "real": 0.5,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          }
+        ],
+        [
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.5,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          }
+        ],
+        [
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.5,
+            "imaginary": 0.0
+          }
+        ]
+      ],
+      "direct_source_dual_current": [
+        [
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          }
+        ],
+        [
+          {
+            "real": 2.8284271247461903,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          }
+        ],
+        [
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 2.8284271247461903,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          }
+        ],
+        [
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 2.8284271247461903,
+            "imaginary": 0.0
+          }
+        ]
+      ],
+      "actual_connection": [
+        {
+          "direction": 0,
+          "normalized_Fock": {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          "direct_source_dual": {
+            "real": 0.0,
+            "imaginary": 0.0
+          }
+        },
+        {
+          "direction": 1,
+          "normalized_Fock": {
+            "real": 0.4242640687119285,
+            "imaginary": 0.0
+          },
+          "direct_source_dual": {
+            "real": 2.4000000000000004,
+            "imaginary": 0.0
+          }
+        },
+        {
+          "direction": 2,
+          "normalized_Fock": {
+            "real": 0.4242640687119285,
+            "imaginary": 0.0
+          },
+          "direct_source_dual": {
+            "real": 2.4000000000000004,
+            "imaginary": 0.0
+          }
+        },
+        {
+          "direction": 3,
+          "normalized_Fock": {
+            "real": 0.4242640687119285,
+            "imaginary": 0.0
+          },
+          "direct_source_dual": {
+            "real": 2.4000000000000004,
+            "imaginary": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "label": "theta=pi/2",
+      "point": [
+        2.8165129694261197,
+        -3.0,
+        4.0,
+        5.0
+      ],
+      "theta": 1.5707963267948966,
+      "source_vector": [
+        {
+          "real": 0.0,
+          "imaginary": 0.0
+        },
+        {
+          "real": 3.061616997868383e-17,
+          "imaginary": 0.5
+        },
+        {
+          "real": -3.061616997868383e-17,
+          "imaginary": -0.5
+        },
+        {
+          "real": 0.0,
+          "imaginary": 0.0
+        },
+        {
+          "real": 0.0,
+          "imaginary": 0.0
+        },
+        {
+          "real": 3.061616997868383e-17,
+          "imaginary": -0.5
+        },
+        {
+          "real": -3.061616997868383e-17,
+          "imaginary": 0.5
+        },
+        {
+          "real": 0.0,
+          "imaginary": 0.0
+        }
+      ],
+      "normalized_occupied_current": [
+        [
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          }
+        ],
+        [
+          {
+            "real": 0.5,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          }
+        ],
+        [
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.5,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          }
+        ],
+        [
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.5,
+            "imaginary": 0.0
+          }
+        ]
+      ],
+      "normalized_Fock_current": [
+        [
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          }
+        ],
+        [
+          {
+            "real": 0.5,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          }
+        ],
+        [
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.5,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          }
+        ],
+        [
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.5,
+            "imaginary": 0.0
+          }
+        ]
+      ],
+      "direct_source_dual_current": [
+        [
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          }
+        ],
+        [
+          {
+            "real": 2.8284271247461903,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          }
+        ],
+        [
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 2.8284271247461903,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          }
+        ],
+        [
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 2.8284271247461903,
+            "imaginary": 0.0
+          }
+        ]
+      ],
+      "actual_connection": [
+        {
+          "direction": 0,
+          "normalized_Fock": {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          "direct_source_dual": {
+            "real": 0.0,
+            "imaginary": 0.0
+          }
+        },
+        {
+          "direction": 1,
+          "normalized_Fock": {
+            "real": 0.42426406871192857,
+            "imaginary": 0.0
+          },
+          "direct_source_dual": {
+            "real": 2.4000000000000004,
+            "imaginary": 0.0
+          }
+        },
+        {
+          "direction": 2,
+          "normalized_Fock": {
+            "real": 0.42426406871192857,
+            "imaginary": 0.0
+          },
+          "direct_source_dual": {
+            "real": 2.4000000000000004,
+            "imaginary": 0.0
+          }
+        },
+        {
+          "direction": 3,
+          "normalized_Fock": {
+            "real": 0.42426406871192857,
+            "imaginary": 0.0
+          },
+          "direct_source_dual": {
+            "real": 2.4000000000000004,
+            "imaginary": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "label": "theta=pi",
+      "point": [
+        5.6330259388522395,
+        2.0,
+        0.0,
+        -1.0
+      ],
+      "theta": 3.141592653589793,
+      "source_vector": [
+        {
+          "real": 0.0,
+          "imaginary": 0.0
+        },
+        {
+          "real": -0.5,
+          "imaginary": 6.123233995736766e-17
+        },
+        {
+          "real": 0.5,
+          "imaginary": -6.123233995736766e-17
+        },
+        {
+          "real": 0.0,
+          "imaginary": 0.0
+        },
+        {
+          "real": 0.0,
+          "imaginary": 0.0
+        },
+        {
+          "real": -0.5,
+          "imaginary": -6.123233995736766e-17
+        },
+        {
+          "real": 0.5,
+          "imaginary": 6.123233995736766e-17
+        },
+        {
+          "real": 0.0,
+          "imaginary": 0.0
+        }
+      ],
+      "normalized_occupied_current": [
+        [
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          }
+        ],
+        [
+          {
+            "real": 0.5,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          }
+        ],
+        [
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.5,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          }
+        ],
+        [
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.5,
+            "imaginary": 0.0
+          }
+        ]
+      ],
+      "normalized_Fock_current": [
+        [
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          }
+        ],
+        [
+          {
+            "real": 0.5,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          }
+        ],
+        [
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.5,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          }
+        ],
+        [
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.5,
+            "imaginary": 0.0
+          }
+        ]
+      ],
+      "direct_source_dual_current": [
+        [
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          }
+        ],
+        [
+          {
+            "real": 2.8284271247461903,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          }
+        ],
+        [
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 2.8284271247461903,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          }
+        ],
+        [
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 2.8284271247461903,
+            "imaginary": 0.0
+          }
+        ]
+      ],
+      "actual_connection": [
+        {
+          "direction": 0,
+          "normalized_Fock": {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          "direct_source_dual": {
+            "real": 0.0,
+            "imaginary": 0.0
+          }
+        },
+        {
+          "direction": 1,
+          "normalized_Fock": {
+            "real": 0.42426406871192857,
+            "imaginary": 0.0
+          },
+          "direct_source_dual": {
+            "real": 2.4000000000000004,
+            "imaginary": 0.0
+          }
+        },
+        {
+          "direction": 2,
+          "normalized_Fock": {
+            "real": 0.42426406871192857,
+            "imaginary": 0.0
+          },
+          "direct_source_dual": {
+            "real": 2.4000000000000004,
+            "imaginary": 0.0
+          }
+        },
+        {
+          "direction": 3,
+          "normalized_Fock": {
+            "real": 0.42426406871192857,
+            "imaginary": 0.0
+          },
+          "direct_source_dual": {
+            "real": 2.4000000000000004,
+            "imaginary": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "label": "time=1.25",
+      "point": [
+        1.25,
+        -1.0,
+        0.5,
+        2.0
+      ],
+      "theta": 0.697137002317335,
+      "source_vector": [
+        {
+          "real": 0.0,
+          "imaginary": 0.0
+        },
+        {
+          "real": 0.3833417219501794,
+          "imaginary": 0.321012654286823
+        },
+        {
+          "real": -0.3833417219501794,
+          "imaginary": -0.321012654286823
+        },
+        {
+          "real": 0.0,
+          "imaginary": 0.0
+        },
+        {
+          "real": 0.0,
+          "imaginary": 0.0
+        },
+        {
+          "real": 0.3833417219501794,
+          "imaginary": -0.321012654286823
+        },
+        {
+          "real": -0.3833417219501794,
+          "imaginary": 0.321012654286823
+        },
+        {
+          "real": 0.0,
+          "imaginary": 0.0
+        }
+      ],
+      "normalized_occupied_current": [
+        [
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          }
+        ],
+        [
+          {
+            "real": 0.5,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          }
+        ],
+        [
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.5,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          }
+        ],
+        [
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.5,
+            "imaginary": 0.0
+          }
+        ]
+      ],
+      "normalized_Fock_current": [
+        [
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          }
+        ],
+        [
+          {
+            "real": 0.5,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          }
+        ],
+        [
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.5,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          }
+        ],
+        [
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.5,
+            "imaginary": 0.0
+          }
+        ]
+      ],
+      "direct_source_dual_current": [
+        [
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          }
+        ],
+        [
+          {
+            "real": 2.8284271247461903,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          }
+        ],
+        [
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 2.8284271247461903,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          }
+        ],
+        [
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 2.8284271247461903,
+            "imaginary": 0.0
+          }
+        ]
+      ],
+      "actual_connection": [
+        {
+          "direction": 0,
+          "normalized_Fock": {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          "direct_source_dual": {
+            "real": 0.0,
+            "imaginary": 0.0
+          }
+        },
+        {
+          "direction": 1,
+          "normalized_Fock": {
+            "real": 0.42426406871192857,
+            "imaginary": 0.0
+          },
+          "direct_source_dual": {
+            "real": 2.400000000000001,
+            "imaginary": 0.0
+          }
+        },
+        {
+          "direction": 2,
+          "normalized_Fock": {
+            "real": 0.42426406871192857,
+            "imaginary": 0.0
+          },
+          "direct_source_dual": {
+            "real": 2.400000000000001,
+            "imaginary": 0.0
+          }
+        },
+        {
+          "direction": 3,
+          "normalized_Fock": {
+            "real": 0.42426406871192857,
+            "imaginary": 0.0
+          },
+          "direct_source_dual": {
+            "real": 2.400000000000001,
+            "imaginary": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "label": "time=-2.3",
+      "point": [
+        -2.3,
+        7.0,
+        -4.0,
+        1.0
+      ],
+      "theta": -1.2827320842638963,
+      "source_vector": [
+        {
+          "real": 0.0,
+          "imaginary": 0.0
+        },
+        {
+          "real": 0.14204838138518433,
+          "imaginary": -0.47939780698898615
+        },
+        {
+          "real": -0.14204838138518433,
+          "imaginary": 0.47939780698898615
+        },
+        {
+          "real": 0.0,
+          "imaginary": 0.0
+        },
+        {
+          "real": 0.0,
+          "imaginary": 0.0
+        },
+        {
+          "real": 0.14204838138518433,
+          "imaginary": 0.47939780698898615
+        },
+        {
+          "real": -0.14204838138518433,
+          "imaginary": -0.47939780698898615
+        },
+        {
+          "real": 0.0,
+          "imaginary": 0.0
+        }
+      ],
+      "normalized_occupied_current": [
+        [
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          }
+        ],
+        [
+          {
+            "real": 0.5,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          }
+        ],
+        [
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.5,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          }
+        ],
+        [
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.5,
+            "imaginary": 0.0
+          }
+        ]
+      ],
+      "normalized_Fock_current": [
+        [
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          }
+        ],
+        [
+          {
+            "real": 0.5,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          }
+        ],
+        [
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.5,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          }
+        ],
+        [
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.5,
+            "imaginary": 0.0
+          }
+        ]
+      ],
+      "direct_source_dual_current": [
+        [
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          }
+        ],
+        [
+          {
+            "real": 2.8284271247461903,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          }
+        ],
+        [
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 2.8284271247461903,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          }
+        ],
+        [
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          {
+            "real": 2.8284271247461903,
+            "imaginary": 0.0
+          }
+        ]
+      ],
+      "actual_connection": [
+        {
+          "direction": 0,
+          "normalized_Fock": {
+            "real": 0.0,
+            "imaginary": 0.0
+          },
+          "direct_source_dual": {
+            "real": 0.0,
+            "imaginary": 0.0
+          }
+        },
+        {
+          "direction": 1,
+          "normalized_Fock": {
+            "real": 0.42426406871192857,
+            "imaginary": 0.0
+          },
+          "direct_source_dual": {
+            "real": 2.4000000000000004,
+            "imaginary": 0.0
+          }
+        },
+        {
+          "direction": 2,
+          "normalized_Fock": {
+            "real": 0.42426406871192857,
+            "imaginary": 0.0
+          },
+          "direct_source_dual": {
+            "real": 2.4000000000000004,
+            "imaginary": 0.0
+          }
+        },
+        {
+          "direction": 3,
+          "normalized_Fock": {
+            "real": 0.42426406871192857,
+            "imaginary": 0.0
+          },
+          "direct_source_dual": {
+            "real": 2.4000000000000004,
+            "imaginary": 0.0
+          }
+        }
+      ]
+    }
+  ],
+  "changed_observable_negative_control": {
+    "meaning": "Omitting the source independent-dual exchange F changes the observable; both observables obey the same quantization identity.",
+    "direction": 1,
+    "generator": 0,
+    "source_derived_sparse_matrices": {
+      "C": "C[row,7-row]=-1/2; other entries zero",
+      "R": "R[row,row xor 3]=-1/2; other entries zero"
+    },
+    "changed_expectation_formula": "cos(2 theta)/2",
+    "exact_dark_phase_witness": {
+      "upper": "i",
+      "lower": "-i",
+      "source_expectation": {
+        "real": 0.5,
+        "imaginary": 0.0
+      },
+      "changed_observable_expectation": {
+        "real": -0.5,
+        "imaginary": 0.0
+      },
+      "absolute_difference": 1.0
+    },
+    "phase_table": [
+      {
+        "label": "theta=0",
+        "theta": 0.0,
+        "source_F_included": {
+          "real": 0.5,
+          "imaginary": 0.0
+        },
+        "F_omitted_changed_observable": {
+          "real": 0.5,
+          "imaginary": 0.0
+        },
+        "absolute_difference": 0.0
+      },
+      {
+        "label": "theta=pi/4",
+        "theta": 0.7853981633974483,
+        "source_F_included": {
+          "real": 0.5,
+          "imaginary": 0.0
+        },
+        "F_omitted_changed_observable": {
+          "real": 8.969019451956744e-17,
+          "imaginary": 0.0
+        },
+        "absolute_difference": 0.4999999999999999
+      },
+      {
+        "label": "theta=pi/2",
+        "theta": 1.5707963267948966,
+        "source_F_included": {
+          "real": 0.5,
+          "imaginary": 0.0
+        },
+        "F_omitted_changed_observable": {
+          "real": -0.5,
+          "imaginary": 0.0
+        },
+        "absolute_difference": 1.0
+      },
+      {
+        "label": "theta=pi",
+        "theta": 3.141592653589793,
+        "source_F_included": {
+          "real": 0.5,
+          "imaginary": 0.0
+        },
+        "F_omitted_changed_observable": {
+          "real": 0.5,
+          "imaginary": 0.0
+        },
+        "absolute_difference": 0.0
+      },
+      {
+        "label": "time=1.25",
+        "theta": 0.697137002317335,
+        "source_F_included": {
+          "real": 0.5,
+          "imaginary": 0.0
+        },
+        "F_omitted_changed_observable": {
+          "real": 0.08780350315091459,
+          "imaginary": 0.0
+        },
+        "absolute_difference": 0.41219649684908544
+      },
+      {
+        "label": "time=-2.3",
+        "theta": -1.2827320842638963,
+        "source_F_included": {
+          "real": 0.5,
+          "imaginary": 0.0
+        },
+        "F_omitted_changed_observable": {
+          "real": -0.41928902938339685,
+          "imaginary": 0.0
+        },
+        "absolute_difference": 0.9192890293833968
+      }
+    ]
+  },
+  "arbitrary_complex_matrix_trials": [
+    {
+      "trial": 0,
+      "occupied_expectation": {
+        "real": 0.6801012475643958,
+        "imaginary": 0.16964679119240608
+      },
+      "Fock_expectation": {
+        "real": 0.6801012475643958,
+        "imaginary": 0.16964679119240608
+      }
+    },
+    {
+      "trial": 1,
+      "occupied_expectation": {
+        "real": 0.2889575502838927,
+        "imaginary": 0.5703810196517289
+      },
+      "Fock_expectation": {
+        "real": 0.2889575502838927,
+        "imaginary": 0.5703810196517289
+      }
+    },
+    {
+      "trial": 2,
+      "occupied_expectation": {
+        "real": 0.08347713474215121,
+        "imaginary": 0.9265797755384765
+      },
+      "Fock_expectation": {
+        "real": 0.08347713474215121,
+        "imaginary": 0.9265797755384765
+      }
+    },
+    {
+      "trial": 3,
+      "occupied_expectation": {
+        "real": 0.5605159318678208,
+        "imaginary": 0.1793730212002399
+      },
+      "Fock_expectation": {
+        "real": 0.5605159318678208,
+        "imaginary": 0.1793730212002399
+      }
+    }
+  ],
+  "scope": "Eight occupied source modes and their complete finite fermionic Fock space; current source compression, preparation normalization, actual connection response, CAR and one-particle second quantization.",
+  "limitations": [
+    "Floating-point numerical verification is distinct from the accompanying Lean proofs.",
+    "The occupied source compression is the one proved by the cited source declarations; this script does not reconstruct the entire SU7 exterior carrier.",
+    "No continuum field quantization, interacting spacetime dynamics or full quantum-gravity claim is tested."
+  ]
+}

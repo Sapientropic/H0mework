@@ -1,0 +1,39 @@
+{
+  "schema": "source-fixed-independent-bell-family/v2",
+  "stage": "before_new_archive_selection",
+  "purpose": "A fresh archival test whose source, observable family and test algorithm precede archive selection and outcome-summary disclosure.",
+  "source_mouth": "SaturationMonoid.PhysicsCore.Stage10.Bell.sameOccurrenceBellPrediction",
+  "source_family": "XZ-plane maximal Bell correlations; psi+ is the proven right-color-Z operation on the original source",
+  "eligible_archives": "Official public two-party Bell data with either outcome-independent event-ready heralding or deterministic trial preparation, a documented maximally entangled real Bell preparation, two documented XZ measurement settings per arm, per-event settings/outcomes or readout times, and complete outcome recording under outcome-independent event selection.",
+  "excluded_for_this_fresh_run": [
+    "Delft 2015",
+    "Delft 2016",
+    "Kovalenko Ramsey 2025"
+  ],
+  "custodian_selection": "Non-theory custodian selects on preparation, metadata completeness, public access and manageable size; no selection by CHSH, wins, p-values or agreement with the source. If several qualify, use the smallest complete download, then lexicographic DOI as tie-breaker.",
+  "disclosure_to_theory": "Only source identity, controlled preparation/axes, column meanings, pre-outcome selection and independently measured disjoint calibration. Keep evaluation outcomes, sample counts, CHSH, wins and fitted test-state summaries sealed until final instrument table/parser commitment.",
+  "sample_policy": "All designated Bell-test trials in documented acquisition order, up to the first 100000 accepted trials. Exclude key-only settings by the documented protocol; do not select outcomes, windows or stopping points from test results.",
+  "point_models": {
+    "ideal_source_alpha": 0.025,
+    "independent_calibration_alpha": 0.025,
+    "unused_alpha_is_not_reallocated": true
+  },
+  "statistics_source": "Verification/physics/stage10/delft-bell/statistics.py at commit 03583958eed0c4d3c2e7d50b29f2b5e28f2ea85f",
+  "alternatives": "The unchanged six visibility components plus prior-only KT, fixed equal weights and mixture of products",
+  "radii": [
+    0.0,
+    0.01,
+    0.02,
+    0.05,
+    0.1,
+    0.2
+  ],
+  "radius_role": "Conditional per-cell sensitivity at each point-model alpha, not an inferred calibration confidence region",
+  "calibration_policy": "Optional fixed depolarization then independent asymmetric F0/F1 assignment, only with documented calibration disjoint from evaluation events; never infer these parameters from target CHSH or target event counts.",
+  "failure_policy": "A candidate lacking the required preparation, axes or parser semantics receives an explicit eligibility disposition. Missing disjoint calibration omits the optional calibrated model, not the archive. No outcome-based repair or silent replacement. Retain all candidate-selection records.",
+  "prior_development_data": "Delft 2016 and its summaries are L0 development material for the already fixed method; they are excluded from this new evaluation stream.",
+  "revision": "r0002_complete_trials",
+  "prior_protocol_commit": "b5afc0ac59a1a512cfb91da207ae032823f374e2",
+  "prior_disposition": "No directly accessible, fully documented event-ready event stream was recovered from the recorded official candidates. Preserve the custodian selection record; this is not a claim that those data do not exist.",
+  "revision_basis": "The certified herald_probability theorem uses plus as a preparation operation and does not assume a random event-ready trigger. Deterministically prepared real Bell trials with complete outcome recording consume the identical fixed family. This eligibility expansion follows the theorem and access/metadata record, without disclosure of any new experimental counts or results to the theory role."
+}

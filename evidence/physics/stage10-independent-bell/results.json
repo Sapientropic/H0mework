@@ -1,0 +1,344 @@
+{
+  "schema": "source-fixed-independent-bell-analysis/v1",
+  "trial_cap": 100000,
+  "first_trial": {
+    "source_file": "ETH_repo_upload/main_dataset_all_events.txt",
+    "source_line": 4
+  },
+  "last_trial": {
+    "source_file": "ETH_repo_upload/main_dataset_all_events.txt",
+    "source_line": 100003
+  },
+  "family_alpha_max": 0.05,
+  "radius_role": "predeclared conditional sensitivity; no fitted error radius",
+  "predictions": {
+    "models": [
+      {
+        "id": "ideal_source",
+        "alpha": 0.025,
+        "table": [
+          {
+            "herald": -1,
+            "a": 0,
+            "b": 0,
+            "probabilities": [
+              0.42677669529663687,
+              0.07322330470336313,
+              0.07322330470336313,
+              0.42677669529663687
+            ]
+          },
+          {
+            "herald": -1,
+            "a": 0,
+            "b": 1,
+            "probabilities": [
+              0.42677669529663687,
+              0.07322330470336313,
+              0.07322330470336313,
+              0.42677669529663687
+            ]
+          },
+          {
+            "herald": -1,
+            "a": 1,
+            "b": 0,
+            "probabilities": [
+              0.42677669529663687,
+              0.07322330470336313,
+              0.07322330470336313,
+              0.42677669529663687
+            ]
+          },
+          {
+            "herald": -1,
+            "a": 1,
+            "b": 1,
+            "probabilities": [
+              0.07322330470336313,
+              0.42677669529663687,
+              0.42677669529663687,
+              0.07322330470336313
+            ]
+          },
+          {
+            "herald": 1,
+            "a": 0,
+            "b": 0,
+            "probabilities": [
+              0.42677669529663687,
+              0.07322330470336313,
+              0.07322330470336313,
+              0.42677669529663687
+            ]
+          },
+          {
+            "herald": 1,
+            "a": 0,
+            "b": 1,
+            "probabilities": [
+              0.42677669529663687,
+              0.07322330470336313,
+              0.07322330470336313,
+              0.42677669529663687
+            ]
+          },
+          {
+            "herald": 1,
+            "a": 1,
+            "b": 0,
+            "probabilities": [
+              0.07322330470336313,
+              0.42677669529663687,
+              0.42677669529663687,
+              0.07322330470336313
+            ]
+          },
+          {
+            "herald": 1,
+            "a": 1,
+            "b": 1,
+            "probabilities": [
+              0.42677669529663687,
+              0.07322330470336313,
+              0.07322330470336313,
+              0.42677669529663687
+            ]
+          }
+        ]
+      }
+    ],
+    "family_alpha_max": 0.05
+  },
+  "models": [
+    {
+      "id": "ideal_source",
+      "alpha": 0.025,
+      "prediction_kind": "caller_fixed_point_table",
+      "n_trials": 100000,
+      "outcome_order": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          -1
+        ],
+        [
+          -1,
+          1
+        ],
+        [
+          -1,
+          -1
+        ]
+      ],
+      "components": [
+        {
+          "name": "visibility_0",
+          "weight": 0.14285714285714285
+        },
+        {
+          "name": "visibility_0.25",
+          "weight": 0.14285714285714285
+        },
+        {
+          "name": "visibility_0.5",
+          "weight": 0.14285714285714285
+        },
+        {
+          "name": "visibility_0.75",
+          "weight": 0.14285714285714285
+        },
+        {
+          "name": "visibility_0.9",
+          "weight": 0.14285714285714285
+        },
+        {
+          "name": "visibility_1",
+          "weight": 0.14285714285714285
+        },
+        {
+          "name": "kt_prior_only",
+          "weight": 0.14285714285714285
+        }
+      ],
+      "radii": [
+        {
+          "radius": 0.0,
+          "scope": "fixed_point_model",
+          "terminal_e": "exp(46803.62338250303)",
+          "terminal_log_e": 46803.62338250303,
+          "max_log_e": 46803.62338250303,
+          "anytime_p": 0.0,
+          "support_violation": false,
+          "reject_at_model_alpha": true
+        },
+        {
+          "radius": 0.01,
+          "scope": "conditional_per_cell_radius_sensitivity",
+          "terminal_e": "exp(39333.58722245481)",
+          "terminal_log_e": 39333.58722245481,
+          "max_log_e": 39333.58722245481,
+          "anytime_p": 0.0,
+          "support_violation": false,
+          "reject_at_model_alpha": true
+        },
+        {
+          "radius": 0.02,
+          "scope": "conditional_per_cell_radius_sensitivity",
+          "terminal_e": "exp(32605.07412395364)",
+          "terminal_log_e": 32605.07412395364,
+          "max_log_e": 32605.07412395364,
+          "anytime_p": 0.0,
+          "support_violation": false,
+          "reject_at_model_alpha": true
+        },
+        {
+          "radius": 0.05,
+          "scope": "conditional_per_cell_radius_sensitivity",
+          "terminal_e": "exp(15586.638313710167)",
+          "terminal_log_e": 15586.638313710167,
+          "max_log_e": 15587.01199510993,
+          "anytime_p": 0.0,
+          "support_violation": false,
+          "reject_at_model_alpha": true
+        },
+        {
+          "radius": 0.1,
+          "scope": "conditional_per_cell_radius_sensitivity",
+          "terminal_e": 0.0,
+          "terminal_log_e": -6225.190452892981,
+          "max_log_e": 0.4819335825566837,
+          "anytime_p": 0.6175880790237656,
+          "support_violation": false,
+          "reject_at_model_alpha": false
+        },
+        {
+          "radius": 0.2,
+          "scope": "conditional_per_cell_radius_sensitivity",
+          "terminal_e": 0.0,
+          "terminal_log_e": -37462.7821198267,
+          "max_log_e": 0.0,
+          "anytime_p": 1.0,
+          "support_violation": false,
+          "reject_at_model_alpha": false
+        }
+      ],
+      "context_counts": [
+        {
+          "herald": -1,
+          "a": 0,
+          "b": 0,
+          "n": 0,
+          "outcome_counts": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "herald": -1,
+          "a": 0,
+          "b": 1,
+          "n": 0,
+          "outcome_counts": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "herald": -1,
+          "a": 1,
+          "b": 0,
+          "n": 0,
+          "outcome_counts": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "herald": -1,
+          "a": 1,
+          "b": 1,
+          "n": 0,
+          "outcome_counts": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "herald": 1,
+          "a": 0,
+          "b": 0,
+          "n": 25222,
+          "outcome_counts": [
+            9683,
+            3006,
+            3027,
+            9506
+          ]
+        },
+        {
+          "herald": 1,
+          "a": 0,
+          "b": 1,
+          "n": 24878,
+          "outcome_counts": [
+            3001,
+            9407,
+            9224,
+            3246
+          ]
+        },
+        {
+          "herald": 1,
+          "a": 1,
+          "b": 0,
+          "n": 24888,
+          "outcome_counts": [
+            8904,
+            2787,
+            3553,
+            9644
+          ]
+        },
+        {
+          "herald": 1,
+          "a": 1,
+          "b": 1,
+          "n": 25012,
+          "outcome_counts": [
+            9072,
+            2694,
+            3248,
+            9998
+          ]
+        }
+      ],
+      "verdict": "falsified"
+    }
+  ],
+  "computed_at": "2026-09-06T10:53:51.085076+00:00",
+  "lock_sha256": "f644d2c18e314f7ddc8733ddf4361fb8c72ac1315dc09ae36fe4e4b73cb13286",
+  "code_commit": "8bf881e89c07d36ce0f02ceb51b3025a36ea616b",
+  "python_version": "3.12.13",
+  "claim_scope": {
+    "hypothesis": "Original source Bell law with the explicitly fixed ideal Methods nominal phase alignment, ideal real-Bell preparation and ideal outcome assignment.",
+    "event_policy": "First 100000 main-file trials in original row order; all settings and outcomes retained; stop earlier only at file end.",
+    "source_to_apparatus": "A conditional nominal apparatus model, not an empirical proof of its calibration.",
+    "phase_identity": "theta_geo denotes the Methods relative basis angle. No fitted offset or theta_control is used, and Supplement Eq16 is not asserted equal to this geometric angle.",
+    "calibration": "No disjoint visibility/F0/F1 or simultaneous phase-error record; optional calibrated model omitted and its alpha unused.",
+    "uncertainty": "Frozen conditional per-cell radius sensitivity. No radius is estimated or selected from test events.",
+    "verdict_meaning": "A rejection applies to this joint source-plus-ideal-apparatus claim. It does not identify the source alone as the cause. Non-rejection is not verification of the whole theory."
+  },
+  "outcome_role": "historical held-out trial stream; independent custody"
+}

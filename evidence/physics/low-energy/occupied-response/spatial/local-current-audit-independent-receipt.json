@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "actual_temporal_color_A01_T_B_rebuilt": true,
+  "native_hypercharge_expectations": {
+    "T": "1",
+    "B": "0"
+  },
+  "invariant_actual_fiber_dimension": 3,
+  "nonzero_actual_fiber_kubo_integrand": "2*sqrt(2)*sin(36*sqrt(15)*(t - tau)/125)",
+  "actual_fiber_current_variation": "25*sqrt(30)*(1 - cos(36*sqrt(15)*t/125))/54",
+  "same_actual_fiber_CAR_kernel_at_rational_phases": "-32*sqrt(2)*I/65",
+  "wrong_T_as_current_response": "0",
+  "source_current_has_both_legs": true,
+  "identity_current_first_variation": 0,
+  "finite_epsilon_affine_identity_path_norm_squared": "epsilon**2*t**2 + 1",
+  "scope": "Finite source-fiber sign/weight controls; the continuum construction is paid by Lean and the L2 consumers",
+  "negative_controls": [
+    "B is not T",
+    "complex profile alone is not selfadjoint",
+    "Kubo commutator order or i sign reversal fails",
+    "one current leg is insufficient",
+    "affine epsilonPath is not an exact finite-epsilon unitary flow"
+  ]
+}

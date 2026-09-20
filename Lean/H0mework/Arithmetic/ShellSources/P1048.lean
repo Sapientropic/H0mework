@@ -1,0 +1,234 @@
+import H0mework.Arithmetic.ShellSources.P1047
+import H0mework.Arithmetic.ShellSources.P946
+
+/-!
+# Proposition 1048: finite generated coverage produces ge-three shell coverage
+
+P1047 named the P1046-ready target:
+
+```text
+generated no-prime flow/quantization on every even fiber, with codeBound >= 3
+```
+
+This file goes one producer layer lower.  The input is not the transparent
+coverage proposition itself; it is the P926 finite generated Boolean raw
+branching coverage certificate, with the endpoint-code bound welded to `>= 3`.
+
+From that finite generated certificate we produce both ge-three shell objects:
+
+* transparent generated raw energy coverage;
+* canonical no-prime endpoint shell coverage over `rawCodeTensorCoding`.
+-/
+
+namespace SaturationMonoid
+namespace StandardModelConstraint
+
+noncomputable section
+
+open RunningSigmaBeta
+
+set_option linter.defProp false
+
+/-! ## Ge-three finite generated coverage certificates -/
+
+/-- Every even fiber carries a finite generated Boolean raw-branching coverage
+certificate whose computed endpoint-code bound is a single fiber function and
+contains `3`.
+
+This is the generated-list producer below P1047.  It stores the finite P926
+coverage certificate, not a raw shell theorem and not a downstream zero cell. -/
+structure SU7GeneratedBooleanRawBranchingCoverageEveryEvenFiberGeThree where
+  codeBound : ℕ -> ℕ
+  codeBound_ge_three : ∀ n : ℕ, 2 ≤ n -> 3 ≤ codeBound n
+  cert :
+    ∀ n : ℕ, 2 ≤ n ->
+      SU7GeneratedBooleanRawBranchingCoverageCertificate n
+  cert_codeBound :
+    ∀ n : ℕ, ∀ hn : 2 ≤ n,
+      (cert n hn).codeBound = codeBound n
+
+/-- Forget the ge-three bound discipline and recover the older P926
+every-fiber generated coverage proposition. -/
+def generatedBooleanRawBranchingCoverageEveryEvenFiber_of_geThree
+    (H : SU7GeneratedBooleanRawBranchingCoverageEveryEvenFiberGeThree) :
+    SU7GeneratedBooleanRawBranchingCoverageEveryEvenFiber := by
+  intro n hn
+  exact ⟨H.cert n hn⟩
+
+/-! ## Finite generated coverage -> transparent raw energy coverage -/
+
+/-- A ge-three finite generated coverage certificate produces transparent
+generated raw shell coverage on every even fiber. -/
+def generatedRawEnergyCoverageGeThree_of_generatedBooleanCoverageGeThree
+    (H : SU7GeneratedBooleanRawBranchingCoverageEveryEvenFiberGeThree) :
+    SU7GeneratedRawEnergyCoverageEveryEvenFiberGeThree where
+  codeBound := H.codeBound
+  codeBound_ge_three := H.codeBound_ge_three
+  energy_coverage := by
+    intro n hn
+    have hcoverage :
+        GeneratedRawEnergyCoverage n (H.cert n hn).codeBound :=
+      energyCoverage_of_generatedCoverageCertificate (H.cert n hn)
+    simpa [H.cert_codeBound n hn] using hcoverage
+
+/-! ## Transparent raw energy coverage -> finite generated Boolean coverage -/
+
+/-- Canonical generated raw start cell used to remove `start_mem` as an
+independent finite-checker obligation.  The hard producer remains shell
+coverage; the start witness is the generated `(2, 2)` cell. -/
+def canonicalGeneratedRawCoverageStartCell
+    (n : ℕ) : SU7BranchingDecompositionCell n :=
+  canonicalRawCodePairBranchingCell n 2 2
+
+/-- The canonical `(2, 2)` start cell is present in every generated raw
+branching spectrum whose endpoint-code bound contains `2`. -/
+theorem canonicalGeneratedRawCoverageStartCell_mem_generatedSpectrum
+    {n bound : ℕ} (hbound : 2 ≤ bound) :
+    canonicalGeneratedRawCoverageStartCell n ∈
+      (booleanGeneratedRawBranchingSpectrum n bound).cells := by
+  let x :=
+    booleanAtomicCellOfRawCodePair n 2 2
+      natMultiplicativelyAtomicCheck_two
+      natMultiplicativelyAtomicCheck_two
+  have hxmem :
+      x ∈ booleanAtomicRawBranchingCandidateList n bound := by
+    dsimp [x]
+    exact
+      booleanAtomicCellOfRawCodePair_mem_generated
+        (two_mem_rawCodeBoundedList hbound)
+        (two_mem_rawCodeBoundedList hbound)
+        natMultiplicativelyAtomicCheck_two
+        natMultiplicativelyAtomicCheck_two
+  have hxcell :
+      x.cell ∈ (booleanGeneratedRawBranchingSpectrum n bound).cells :=
+    booleanAtomicCell_mem_booleanGeneratedSpectrum hxmem
+  simpa [canonicalGeneratedRawCoverageStartCell, x,
+    booleanAtomicCellOfRawCodePair] using hxcell
+
+/-- Transparent generated raw shell coverage builds the P926 finite generated
+Boolean coverage certificate without accepting a separate start-cell witness.
+-/
+def generatedBooleanCoverageCertificate_of_rawEnergyCoverage
+    {n bound : ℕ}
+    (hbound : 2 ≤ bound)
+    (H : GeneratedRawEnergyCoverage n bound) :
+    SU7GeneratedBooleanRawBranchingCoverageCertificate n :=
+  generatedCoverageCertificate_of_energyCoverage
+    (canonicalGeneratedRawCoverageStartCell n)
+    (canonicalGeneratedRawCoverageStartCell_mem_generatedSpectrum hbound)
+    H
+
+/-- Ge-three transparent generated raw shell coverage and P1048 finite
+generated Boolean coverage have the same hard source content: shell coverage.
+The finite Boolean certificate's start member is generated by `(2, 2)`. -/
+def generatedBooleanCoverageGeThree_of_rawEnergyCoverageGeThree
+    (H : SU7GeneratedRawEnergyCoverageEveryEvenFiberGeThree) :
+    SU7GeneratedBooleanRawBranchingCoverageEveryEvenFiberGeThree where
+  codeBound := H.codeBound
+  codeBound_ge_three := H.codeBound_ge_three
+  cert := by
+    intro n hn
+    exact
+      generatedBooleanCoverageCertificate_of_rawEnergyCoverage
+        (two_le_of_three_le_bound (H.codeBound_ge_three n hn))
+        (H.energy_coverage n hn)
+  cert_codeBound := by
+    intro n hn
+    rfl
+
+/-! ## Transparent raw energy coverage -> canonical no-prime endpoint coverage -/
+
+/-- Transparent ge-three generated raw shell coverage produces the canonical
+raw-coding no-prime endpoint shell coverage object. -/
+def noPrimeEndpointCoverageGeThree_of_rawEnergyCoverageGeThree
+    (H : SU7GeneratedRawEnergyCoverageEveryEvenFiberGeThree) :
+    SU7NoPrimeEndpointShellCoverageEveryEvenFiberGeThree
+      rawCodeTensorCoding where
+  codeBound := H.codeBound
+  codeBound_ge_three := H.codeBound_ge_three
+  cells := by
+    intro n hn
+    exact generatedNoPrimeBranchingCells n (H.codeBound n)
+  cells_within_bound := by
+    intro n hn
+    exact generatedNoPrimeBranchingCellsWithinBound n (H.codeBound n)
+  shell_coverage := by
+    intro n hn
+    exact
+      noPrimeEndpointShellCoverage_of_generatedRawEnergyCoverage
+        (H.energy_coverage n hn)
+
+/-- A ge-three finite generated coverage certificate produces canonical
+raw-coding no-prime endpoint shell coverage on every even fiber. -/
+def noPrimeEndpointCoverageGeThree_of_generatedBooleanCoverageGeThree
+    (H : SU7GeneratedBooleanRawBranchingCoverageEveryEvenFiberGeThree) :
+    SU7NoPrimeEndpointShellCoverageEveryEvenFiberGeThree
+      rawCodeTensorCoding :=
+  noPrimeEndpointCoverageGeThree_of_rawEnergyCoverageGeThree
+    (generatedRawEnergyCoverageGeThree_of_generatedBooleanCoverageGeThree H)
+
+/-! ## Direct P1047 handoff -/
+
+/-- A ge-three finite generated coverage certificate directly produces
+P1047's ge-three flow/quantization object. -/
+def flowQuantizationGeThree_of_generatedBooleanCoverageGeThree
+    (H : SU7GeneratedBooleanRawBranchingCoverageEveryEvenFiberGeThree) :
+    SU7GeneratedNoPrimeFlowQuantizationEveryEvenFiberGeThree :=
+  flowQuantizationGeThree_of_energyCoverageGeThree
+    (generatedRawEnergyCoverageGeThree_of_generatedBooleanCoverageGeThree H)
+
+/-- A ge-three finite generated coverage certificate directly produces the
+P1046/P979 residual normalizer on every even fiber. -/
+theorem generatedNoPrimeResidualNormalizers_of_generatedBooleanCoverageGeThree
+    (H : SU7GeneratedBooleanRawBranchingCoverageEveryEvenFiberGeThree) :
+    SU7GeneratedNoPrimeResidualNormalizerEveryEvenFiber :=
+  generatedNoPrimeResidualNormalizers_of_flowQuantizationEveryEvenFiberGeThree
+    (flowQuantizationGeThree_of_generatedBooleanCoverageGeThree H)
+
+/-! ## Certificate -/
+
+/-- P1048 certificate: finite generated Boolean raw-branching coverage with
+bound `>= 3` is the real producer for the two ge-three shell targets consumed
+by P1047. -/
+structure GeneratedBooleanCoverageGeThreeShellProducerCertificate where
+  finite_ge_three_forgets :
+    SU7GeneratedBooleanRawBranchingCoverageEveryEvenFiberGeThree ->
+      SU7GeneratedBooleanRawBranchingCoverageEveryEvenFiber
+  finite_ge_three_to_raw_shells :
+    SU7GeneratedBooleanRawBranchingCoverageEveryEvenFiberGeThree ->
+      SU7GeneratedRawEnergyCoverageEveryEvenFiberGeThree
+  raw_shells_to_no_prime_endpoint_shells :
+    SU7GeneratedRawEnergyCoverageEveryEvenFiberGeThree ->
+      SU7NoPrimeEndpointShellCoverageEveryEvenFiberGeThree
+        rawCodeTensorCoding
+  finite_ge_three_to_no_prime_endpoint_shells :
+    SU7GeneratedBooleanRawBranchingCoverageEveryEvenFiberGeThree ->
+      SU7NoPrimeEndpointShellCoverageEveryEvenFiberGeThree
+        rawCodeTensorCoding
+  finite_ge_three_to_flow_quantization :
+    SU7GeneratedBooleanRawBranchingCoverageEveryEvenFiberGeThree ->
+      SU7GeneratedNoPrimeFlowQuantizationEveryEvenFiberGeThree
+  finite_ge_three_to_normalizers :
+    SU7GeneratedBooleanRawBranchingCoverageEveryEvenFiberGeThree ->
+      SU7GeneratedNoPrimeResidualNormalizerEveryEvenFiber
+
+/-- Canonical P1048 finite-coverage ge-three shell producer certificate. -/
+def generatedBooleanCoverageGeThreeShellProducerCertificate :
+    GeneratedBooleanCoverageGeThreeShellProducerCertificate where
+  finite_ge_three_forgets :=
+    generatedBooleanRawBranchingCoverageEveryEvenFiber_of_geThree
+  finite_ge_three_to_raw_shells :=
+    generatedRawEnergyCoverageGeThree_of_generatedBooleanCoverageGeThree
+  raw_shells_to_no_prime_endpoint_shells :=
+    noPrimeEndpointCoverageGeThree_of_rawEnergyCoverageGeThree
+  finite_ge_three_to_no_prime_endpoint_shells :=
+    noPrimeEndpointCoverageGeThree_of_generatedBooleanCoverageGeThree
+  finite_ge_three_to_flow_quantization :=
+    flowQuantizationGeThree_of_generatedBooleanCoverageGeThree
+  finite_ge_three_to_normalizers :=
+    generatedNoPrimeResidualNormalizers_of_generatedBooleanCoverageGeThree
+
+
+end
+end StandardModelConstraint
+end SaturationMonoid
