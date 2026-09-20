@@ -176,3 +176,4 @@ import H0mework.Physics.Geometry.FullMotherDescentAndTransport
 import H0mework.Physics.YangMillsSourceQuantum.JetEnergy
 import H0mework.Physics.YangMillsSourceQuantum.TimeJet
 import H0mework.Foundation.Responsibility.Lifecycle
+import H0mework.Foundation.Responsibility.LifecycleRegression

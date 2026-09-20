@@ -36,7 +36,7 @@ make build       # 独立构建全部公开选集（--trust=0，warningAsError�
 make check       # 重建原路径源码视图并运行冻结的独立证据检查
 ```
 
-构建覆盖三篇论文入口的完整 import 闭包（含传递依赖，共 2774 个本地模块）。
+构建覆盖三篇论文入口的完整 import 闭包（含传递依赖，共 2777 个本地模块）。
 定向复核某个直接消费者时，在 `Lean/` 目录运行如
 `lake build H0mework.Physics.RootRuntime.RecoveryConsumer`。
 

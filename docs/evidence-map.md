@@ -1,9 +1,12 @@
 # 公开证据对应表
 
-三篇论文的承重主张与本仓源码的对应。源码固定来自 Homework 私有研究仓的两个提交：
-过程核心与物理主稿为 `e60a86058a…`（H），低能唯象稿为 `30218c1ae…`（S）；H 是 S 的祖先，
-前两稿所需的2629个模块在H/S间逐字节一致；低能稿另引入145个H中尚不存在的模块。
-全部2774个模块统一自S导出，其逆向恢复字节均与S一致。
+三篇论文的承重主张与本仓源码的对应。源码固定来自 Homework 私有研究仓：过程核心与
+物理主稿为 `e60a86058a…`（H），低能唯象稿为 `30218c1ae…`（S）；H 是 S 的祖先。
+前两稿所需的2632个模块在H/S间逐字节一致；低能稿另引入145个H中尚不存在的模块。
+全部2777个模块自S导出：其中2774个与S逐字节一致，回归消费者 LifecycleRegression 在S处的
+simpa脚本已不适配钉住的mathlib（v4.33.0/`db584cd`），自Homework修复提交`8e29b8e1e…`
+（S的直接后继，仅改该文件的证明脚本与两个私有列表引理，命题不变）导出；
+逆向恢复字节与各该来源一致。
 迁移仅改写本地 `import` 模块地址；声明名、命名空间、前提、量词与证明正文保持原样。
 
 | 论文 | 固定来源 | 选集入口 |
@@ -18,7 +21,7 @@
 
 | 命题 | 新仓模块（producer／consumer） |
 | --- | --- |
-| C1 | `Foundation/Responsibility/Lifecycle` |
+| C1 | `Foundation/Responsibility/Lifecycle`、`Foundation/Responsibility/LifecycleRegression` |
 | C2 | `Foundation/Responsibility/NoetherianClosure`、`Foundation/Responsibility/NoetherianClosureRegression` |
 | C3 | `Foundation/Runtime/AnswerHistory`、`Foundation/Semantics/RootReality` |
 | C4 | `Foundation/Runtime/Inquiry`、`Checks/Runtime/Inquiry` |
@@ -80,12 +83,6 @@
 | L16 局域电流与 Kubo 响应 | `Physics/LowEnergyMatterSpace/CurrentOperator`、`Physics/LowEnergyMatterSpace/LocalOperator`、`Physics/LowEnergyMatterSpace/LocalSource`、`Physics/LowEnergyMatterSpace/SpatialResponseEvolution`、`Physics/LowEnergyMatterSpace/SpatialResponseKubo`、`Physics/LowEnergyMatterSpace/SpatialResponseSource`、`Physics/LowEnergyMatterSpace/SpatialResponsePhase`、`Physics/LowEnergyMatterSpace/SpatialResponsePhaseDuhamel`、`Physics/LowEnergyMatterSpace/SpatialResponsePhaseKubo` |
 | L17 全时间演化与零幅度真导数 | `Physics/LowEnergyMatterSpace/GlobalGlue`、`Physics/LowEnergyMatterSpace/GlobalFlow`、`Physics/LowEnergyMatterSpace/GlobalResponse`、`Physics/LowEnergyMatterSpace/GlobalOriginal`、`Physics/LowEnergyMatterSpace/PerturbedVariation`、`Physics/LowEnergyMatterSpace/PerturbedOperator`、`Physics/LowEnergyMatterSpace/GlobalRadial` |
 
-## 本轮未纳入
-
-- C1/C6 的回归消费者 `ResponsibilityLifecycleRegression`：固定源在钉住依赖（mathlib
-  `db584cd`）下已不能编译，属上游证明修复责任；修复后随下一批迁入。C1 的 kernel 内
-  witness 与 C6 的 oneShot 反例不受影响。
-
 ## 程序证据与回执
 
 - 低能唯象的精确程序与独立检查在 `scripts/physics/low-energy/`，冻结回执在 `evidence/physics/low-energy/`，
@@ -97,6 +94,6 @@
 ## 依赖闭包说明
 
 上表列出的入口模块只覆盖论文显式引用的生产口与直接消费者；完整可构建集还包含它们的
-传递 `import` 依赖（共 2774 个本地模块）。
+传递 `import` 依赖（共 2777 个本地模块）。
 这些依赖保持原证明进入本仓，其中包含论文未单独成文的其他成果；范围与来源见各论文命题表
 及提交信息。
