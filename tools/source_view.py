@@ -5,7 +5,7 @@ The exported modules differ from the fixed research sources only in local import
 addresses; this tool inverts that rewrite using tools/export-map.json and verifies every
 reconstructed byte against the recorded source digest (and, when --receipt is given,
 against the receipt's own source_sha256 object). Reconstructed files are written to a new
-directory outside the repository; nothing here modifies tracked files.
+directory outside the repository or under its ignored .local directory; tracked files are unchanged.
 
 Example:
   python3 tools/source_view.py --output /tmp/view \\
