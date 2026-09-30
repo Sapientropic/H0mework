@@ -2,15 +2,17 @@
 """Draw docs/assets/banner.svg: an unfinished map grown from one source.
 
 A territory joins the map only against one already there, across the border
-they share, and its colour floods in from that border. A border is inked only
-once both of its sides exist; the coast is inked as each shore appears. The
-vermilion route records where every territory grew from. Early territories
-have dried to ochre, the newest are still wet indigo, and the blank beyond the
-frontier has not happened yet.
+they share, and its colour spreads in from that border. A border is inked only
+once both of its sides exist; the coast is inked as each shore appears. A
+vermilion brush line records where every territory grew from, broad where
+much has grown from it and lifting to a point at the youngest tips. Early
+territories have dried to ochre, the newest are still wet indigo, and the sea
+beyond the frontier has not happened yet.
 
 The Voronoi mesh underneath never shows: every border is wobbled once and
-shared by both sides, each territory is washed with pigment pooling at its
-edge as on hand-coloured maps, and the waterlines are contours of the land.
+shared by both sides, the washes bleed softly into each other, and the
+waterlines are contours of the land. The seal is a white-character impression
+of 源, drawn here in a squared Han-seal style so that no font is needed.
 
 Usage: python3 docs/assets/banner.py   (deterministic; rewrites banner.svg)
 """
@@ -28,6 +30,25 @@ rng = random.Random(20260930)
 # Pigment by age: dried ochre at the source, sage, still-wet indigo at the frontier.
 LIGHT = [(192, 160, 106), (142, 162, 128), (66, 100, 148)]
 DARK = [(180, 150, 102), (128, 158, 134), (116, 156, 208)]
+
+# 源 in a squared Han-seal style, glyph box 0..100, drawn as white strokes. The
+# water radical is the seal-script 水: a flowing centre line flanked by broken
+# strokes. 原 keeps its old sense, a spring (白 over 小) issuing under a cliff (厂).
+SEAL_GLYPH = [
+    "M19 4C19 18 22 28 19 40C17 52 17 62 19 74C21 84 19 92 19 97",
+    "M8 9C5 16 3 24 4 36",
+    "M8 50C5 58 3 72 4 90",
+    "M30 9C33 16 35 24 34 36",
+    "M30 50C33 58 35 72 34 90",
+    "M44 6H97",
+    "M47 6V60C47 78 45 90 41 97",
+    "M74 6V18",
+    "M58 18H90V50H58Z",
+    "M58 34H90",
+    "M74 50C74 64 77 72 74 84C72 90 74 94 74 97",
+    "M64 60C60 70 57 80 56 94",
+    "M84 60C88 70 91 80 92 94",
+]
 
 
 def pt(p):
@@ -116,7 +137,7 @@ class Vertices:
 
 
 def wobble(p, q, seed, amp, depth):
-    """Midpoint displacement: a hand-drawn border between two mesh vertices."""
+    """Midpoint displacement: a hand-drawn line between two fixed points."""
     r = random.Random(seed)
     pts = [p, q]
     for _ in range(depth):
@@ -139,15 +160,26 @@ def smooth(pts):
             + f"L{pt(pts[-1])}")
 
 
-def through(points):
-    """Catmull-Rom curve through points, as cubic Bézier commands."""
-    P = [points[0], *points, points[-1]]
-    out = ""
+def cr_open(P):
+    """Catmull-Rom segments from P[1] to P[-2]; the end points only steer the tangents."""
+    segs = []
     for k in range(1, len(P) - 2):
         p0, p1, p2, p3 = P[k - 1:k + 3]
         b1 = (p1[0] + (p2[0] - p0[0]) / 6, p1[1] + (p2[1] - p0[1]) / 6)
         b2 = (p2[0] - (p3[0] - p1[0]) / 6, p2[1] - (p3[1] - p1[1]) / 6)
-        out += f"C{pt(b1)} {pt(b2)} {pt(p2)}"
+        segs.append((p1, b1, b2, p2))
+    return segs
+
+
+def sample(segs, per_segment=8):
+    out = []
+    for p0, p1, p2, p3 in segs:
+        for k in range(per_segment):
+            t = k / per_segment
+            u = 1 - t
+            out.append(tuple(u ** 3 * a + 3 * u * u * t * b + 3 * u * t * t * c + t ** 3 * d
+                             for a, b, c, d in zip(p0, p1, p2, p3)))
+    out.append(segs[-1][3])
     return out
 
 
@@ -171,23 +203,41 @@ def waterline_table():
     return " ".join(f"{v:.3f}".rstrip("0").rstrip(".") if v else "0" for v in vals)
 
 
+def seal_outline(size=116, corner=7):
+    """A square block with slightly uneven sides and softened corners."""
+    c = [(0, 0), (size, 0), (size, size), (0, size)]
+    d = ""
+    for k in range(4):
+        a, b, nxt = c[k], c[(k + 1) % 4], c[(k + 2) % 4]
+        ux, uy = (b[0] - a[0]) / size, (b[1] - a[1]) / size
+        vx, vy = (nxt[0] - b[0]) / size, (nxt[1] - b[1]) / size
+        start = (a[0] + ux * corner, a[1] + uy * corner)
+        end = (b[0] - ux * corner, b[1] - uy * corner)
+        side = wobble(start, end, 400 + k, .004, 3)
+        d += (f"M{pt(start)}" if k == 0 else "") + smooth(side)
+        d += f"Q{pt(b)} {pt((b[0] + vx * corner, b[1] + vy * corner))}"
+    return d + "Z"
+
+
 STYLE = """
-    :root { --paper:#f5efe3; --ink:#3a332b; --seal:#b3372c; --wet:#3c679f; --shade:#6b5236; --shade-a:.1; }
+    :root { --paper:#f5efe3; --ink:#3a332b; --seal:#b3372c; --seal-ink:#b0302a; --wet:#3c679f;
+            --shade:#6b5236; --shade-a:.1; }
     .paper { fill:var(--paper); }
     .flood { fill:var(--c); transform-box:fill-box; transform-origin:center;
-             animation:flood 1.5s cubic-bezier(.2,.7,.25,1) backwards, dry 5.5s ease-out backwards; }
+             animation:flood 1.8s cubic-bezier(.2,.7,.25,1) backwards, dry 5.5s ease-out backwards; }
     .landcell { fill:var(--ink); animation:fade 1.2s ease-out backwards; }
     .border { fill:none; stroke:var(--ink); stroke-width:1.1; stroke-linecap:round; stroke-dasharray:0 3.4;
-              opacity:.45; animation:fade 1.2s ease-out backwards; }
+              opacity:.42; animation:fade 1.2s ease-out backwards; }
     .coast { fill:none; stroke:var(--ink); stroke-width:1.2; stroke-linecap:round; stroke-linejoin:round;
              opacity:.72; stroke-dasharray:1 2; animation:draw 1.2s ease-in-out backwards; }
-    .route { fill:none; stroke:var(--seal); stroke-linecap:round; opacity:.5; stroke-dasharray:1 2;
-             animation:draw .6s ease-out backwards; }
-    .capital { fill:none; stroke:var(--seal); stroke-width:1.2; }
-    .source { fill:var(--seal); }
-    .ripple { fill:none; stroke:var(--seal); stroke-width:.8; opacity:0; transform-box:fill-box;
+    .brush path { fill:none; stroke:var(--seal); stroke-linecap:round; stroke-linejoin:round;
+                  stroke-dasharray:1 2; animation:draw .14s linear backwards; }
+    .blot { fill:var(--seal); }
+    .bleed { fill:var(--seal); opacity:.2; }
+    .ripple { fill:none; stroke:var(--seal); stroke-width:.9; opacity:0; transform-box:fill-box;
               transform-origin:center; animation:ripple 7s ease-out .4s infinite; }
-    .spark { fill:var(--seal); }
+    .glint { fill:none; stroke:var(--seal); stroke-linecap:round; stroke-dasharray:.03 2; stroke-dashoffset:.03;
+             opacity:0; animation:glint 16s ease-in-out infinite; }
     .title { fill:var(--ink); font:400 38px "Iowan Old Style", Palatino, "Palatino Linotype", "Book Antiqua", Georgia, serif;
              letter-spacing:.035em; }
     .rule { stroke:var(--ink); stroke-width:.6; opacity:.5; }
@@ -197,19 +247,23 @@ STYLE = """
     .note { fill:var(--ink); font:400 12px "Songti SC", STSong, "Noto Serif CJK SC", serif; letter-spacing:.7em; opacity:.4; }
     .note-en { fill:var(--ink); font:italic 400 10.5px "Iowan Old Style", Palatino, Georgia, serif;
                letter-spacing:.12em; opacity:.36; }
-    .seal rect { fill:var(--seal); }
-    .seal text { fill:var(--paper); font:400 18px "Songti SC", STSong, "Noto Serif CJK SC", serif; }
+    .sealink { fill:var(--seal-ink); }
+    .stamp { transform-box:fill-box; transform-origin:center; animation:stamp .45s cubic-bezier(.3,0,.2,1) backwards; }
     .later { animation:fade 2s ease-out backwards; }
     @keyframes flood { from { transform:scale(0); } }
     @keyframes dry { 0% { fill:var(--wet); opacity:.72; } }
     @keyframes fade { from { opacity:0; } }
     @keyframes draw { from { stroke-dashoffset:1; } }
-    @keyframes ripple { 0% { transform:scale(.25); opacity:.5; } 60%, 100% { transform:scale(1); opacity:0; } }
+    @keyframes ripple { 0% { transform:scale(.3); opacity:.4; } 60%, 100% { transform:scale(1); opacity:0; } }
+    @keyframes glint { 0% { stroke-dashoffset:.03; opacity:0; } 4%, 34% { opacity:1; }
+                       38%, 100% { stroke-dashoffset:-1; opacity:0; } }
+    @keyframes stamp { 0% { transform:scale(1.35); opacity:0; } 70% { transform:scale(.97); opacity:1; } }
     @media (prefers-color-scheme: dark) {
-      :root { --paper:#15171a; --ink:#dcd3c2; --seal:#d4564a; --wet:#8cb4e6; --shade:#000; --shade-a:.45; }
+      :root { --paper:#15171a; --ink:#dcd3c2; --seal:#d4564a; --seal-ink:#c9463a; --wet:#8cb4e6;
+              --shade:#000; --shade-a:.45; }
       .flood { fill:var(--cd); }
     }
-    @media (prefers-reduced-motion: reduce) { * { animation:none !important; } .spark { display:none; } }
+    @media (prefers-reduced-motion: reduce) { * { animation:none !important; } .glint { display:none; } }
 """
 
 
@@ -283,6 +337,39 @@ def main():
         glue[i] = mid(pts[k], pts[k + 1])
         depth[i] = depth[parent[i]] + 1
 
+    # How much has grown out of each territory: the brush is broad where much depends on it.
+    grew = {i: 1 for i in order}
+    for i in reversed(order[1:]):
+        grew[parent[i]] += grew[i]
+
+    heir = {}
+    for i in order[1:]:
+        if parent[i] not in heir or grew[i] > grew[heir[parent[i]]]:
+            heir[parent[i]] = i
+
+    # Where the brush passes through a territory: pulled from its centre toward the
+    # borders it enters and leaves by, so a main line bends instead of kinking.
+    node = {root: SOURCE}
+    for i in order[1:]:
+        c, g = centre[i], glue[i]
+        if i in heir:
+            h = glue[heir[i]]
+            node[i] = (.4 * c[0] + .3 * g[0] + .3 * h[0], .4 * c[1] + .3 * g[1] + .3 * h[1])
+        else:
+            node[i] = c
+
+    def mirror(a, b):
+        return (2 * a[0] - b[0], 2 * a[1] - b[1])
+
+    def branch(i):
+        """Stroke from the parent through the shared border into i. Its tangent at the
+        parent follows the parent's own stroke, and at i it heads for i's heaviest child,
+        so a main line reads as one continuous brush movement."""
+        p, g, c = node[parent[i]], glue[i], node[i]
+        before = glue[parent[i]] if parent[i] != root else mirror(p, g)
+        after = glue[heir[i]] if i in heir else mirror(c, g)
+        return cr_open([before, p, g, c, after])
+
     n = len(order)
     when, age = {}, {}
     for k, i in enumerate(order):
@@ -290,21 +377,32 @@ def main():
         when[i] = t if parent[i] is None else max(t, when[parent[i]] + .35)
         age[i] = k / (n - 1)
 
-    defs, washes, landcells, routes = [], [], [], []
+    defs, washes, landcells, brush = [], [], [], []
     for i in order:
         t, a, g = when[i], age[i], glue[i]
         defs.append(f'<path id="c{i}" d="{outline(i)}"/>')
         defs.append(f'<clipPath id="k{i}"><use href="#c{i}"/></clipPath>')
         reach = max(math.dist(g, V.pts[v]) for v, _ in rings[i]) + 8
         washes.append(
-            f'<g filter="url(#pigment)"><g clip-path="url(#k{i})"><circle class="flood" '
-            f'cx="{g[0]:.1f}" cy="{g[1]:.1f}" r="{reach:.0f}" style="--c:{tint(LIGHT, a)};--cd:{tint(DARK, a)};'
-            f'opacity:{.17 + .2 * a ** 1.4:.2f};animation-delay:{t - .15:.2f}s,{t - .15:.2f}s"/></g></g>')
+            f'<g clip-path="url(#k{i})"><circle class="flood" cx="{g[0]:.1f}" cy="{g[1]:.1f}" r="{reach:.0f}" '
+            f'style="--c:{tint(LIGHT, a)};--cd:{tint(DARK, a)};opacity:{.17 + .2 * a ** 1.4:.2f};'
+            f'animation-delay:{t - .15:.2f}s,{t - .15:.2f}s"/></g>')
         landcells.append(f'<use href="#c{i}" class="landcell" style="animation-delay:{t:.2f}s"/>')
-        if parent[i] is not None:
-            p = centre[parent[i]]
-            routes.append(f'<path class="route" pathLength="1" style="stroke-width:{.4 + 1.1 * .85 ** depth[i]:.2f};'
-                          f'animation-delay:{t - .5:.2f}s" d="M{pt(p)}{through([p, g, centre[i]])}"/>')
+        if parent[i] is None:
+            continue
+        # One brush stroke from the parent through the shared border, in four
+        # pieces so its width can taper; a tip with nothing grown from it lifts to a point.
+        line = sample(branch(i))
+        w0 = min(2.5, .5 + .3 * math.sqrt(grew[i]))
+        w1 = .25 if grew[i] == 1 else w0 * .9
+        pieces, step = 4, (len(line) - 1) // 4
+        strokes = []
+        for k in range(pieces):
+            seg = line[k * step:(k + 1) * step + 1] if k < pieces - 1 else line[k * step:]
+            w = w0 + (w1 - w0) * (k + .5) / pieces
+            strokes.append(f'<path pathLength="1" style="stroke-width:{w:.2f};animation-delay:{t - .55 + .14 * k:.2f}s" '
+                           f'd="M{pt(seg[0])}' + "".join(f"L{pt(p)}" for p in seg[1:]) + '"/>')
+        brush.append(f'<g style="opacity:{.42 + .2 * min(1, grew[i] / 12):.2f}">' + "".join(strokes) + "</g>")
 
     inks, coasts, done = [], [], set()
     for i in order:
@@ -322,41 +420,83 @@ def main():
             else:
                 coasts.append(f'<path class="coast" pathLength="1" style="animation-delay:{when[i] + .1:.2f}s" d="{d}"/>')
 
-    # A recollection: light walks the route from the source to a young far territory.
+    # A recollection: light runs down the brush line from the source to a young far territory.
     tip = max(order[int(n * .7):], key=lambda i: math.dist(centre[i], SOURCE))
     chain = []
     while parent[tip] is not None:
         chain.append(tip)
         tip = parent[tip]
-    walk = f"M{pt(SOURCE)}" + "".join(through([centre[parent[i]], glue[i], centre[i]]) for i in reversed(chain))
+    walk = f"M{pt(SOURCE)}" + "".join(
+        "".join(f"C{pt(b1)} {pt(b2)} {pt(p2)}" for _, b1, b2, p2 in branch(i)) for i in reversed(chain))
     last = max(when.values())
-    begin = last + 3
+    title_at = min(last, 6.5)
+    # A soft light: a faint wide halo under a bright narrow core, moving together.
+    glints = "\n    ".join(
+        f'<g style="opacity:{o}"{' filter="url(#glow)"' if w > 2 else ''}><path class="glint" pathLength="1" '
+        f'style="stroke-width:{w};animation-delay:{last + 3:.1f}s" d="{walk}"/></g>'
+        for w, o in ((8, .16), (4, .3), (1.6, .85)))
+
+    glyph = "".join(f'<path d="{d}"/>' for d in SEAL_GLYPH)
 
     join = lambda items: "\n    ".join(items)
     svg = f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" role="img" aria-labelledby="t d">
   <title id="t">H0mework · 未干的地图</title>
-  <desc id="d">An unfinished map grows from a single source. Each territory joins only across a border it shares with one already drawn, and its colour floods in from that border; a vermilion route records where it grew from. Old territories have dried to ochre, the newest are still wet, and the sea beyond the frontier has not happened yet.</desc>
+  <desc id="d">An unfinished map grows from a single source. Each territory joins only across a border it shares with one already drawn, and its colour spreads in from that border; a vermilion brush line records where it grew from. Old territories have dried to ochre, the newest are still wet, and the sea beyond the frontier has not happened yet. A red seal reads 源, source.</desc>
   <style>{STYLE}  </style>
   <defs>
-    <filter id="pigment" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB">
-      <feTurbulence type="fractalNoise" baseFrequency=".028" numOctaves="3" seed="11" result="n"/>
-      <feDisplacementMap in="SourceGraphic" in2="n" scale="7" xChannelSelector="R" yChannelSelector="G" result="d"/>
-      <feGaussianBlur in="d" stdDeviation=".9" result="s"/>
-      <feGaussianBlur in="d" stdDeviation="4.5" result="w"/>
-      <feComposite in="s" in2="w" operator="arithmetic" k2="1.7" k3="-.7" result="rim"/>
-      <feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="1" seed="5" result="g"/>
-      <feColorMatrix in="g" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -.7 0 0 0 1.25" result="grain"/>
-      <feComposite in="rim" in2="grain" operator="in"/>
+    <filter id="pigment" filterUnits="userSpaceOnUse" x="0" y="0" width="{W}" height="{H}" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency=".022" numOctaves="3" seed="11" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="14" xChannelSelector="R" yChannelSelector="G" result="d"/>
+      <feGaussianBlur in="d" stdDeviation="4.5" result="soft"/>
+      <feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="1" seed="5" result="g"/>
+      <feColorMatrix in="g" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -.5 0 0 0 1.18" result="grain"/>
+      <feComposite in="soft" in2="grain" operator="in"/>
     </filter>
     <filter id="waterlines" x="-6%" y="-20%" width="112%" height="140%" color-interpolation-filters="sRGB">
       <feGaussianBlur in="SourceGraphic" stdDeviation="8"/>
       <feComponentTransfer><feFuncA type="table" tableValues="{waterline_table()}"/></feComponentTransfer>
+    </filter>
+    <filter id="brushed" filterUnits="userSpaceOnUse" x="0" y="0" width="{W}" height="{H}" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency=".05" numOctaves="2" seed="17" result="t"/>
+      <feDisplacementMap in="SourceGraphic" in2="t" scale="2.4" xChannelSelector="R" yChannelSelector="G" result="d"/>
+      <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="1" seed="23" result="g"/>
+      <feColorMatrix in="g" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -1.3 0 0 0 1.5" result="grain"/>
+      <feComposite in="d" in2="grain" operator="in"/>
+    </filter>
+    <filter id="blot" x="-80%" y="-80%" width="260%" height="260%">
+      <feTurbulence type="fractalNoise" baseFrequency=".2" numOctaves="2" seed="31" result="t"/>
+      <feDisplacementMap in="SourceGraphic" in2="t" scale="3" xChannelSelector="R" yChannelSelector="G" result="d"/>
+      <feGaussianBlur in="d" stdDeviation=".55"/>
+    </filter>
+    <filter id="glow" x="-10%" y="-20%" width="120%" height="140%">
+      <feGaussianBlur stdDeviation="1.8"/>
+    </filter>
+    <filter id="bleed" x="-80%" y="-80%" width="260%" height="260%">
+      <feTurbulence type="fractalNoise" baseFrequency=".12" numOctaves="2" seed="32" result="t"/>
+      <feDisplacementMap in="SourceGraphic" in2="t" scale="6" xChannelSelector="R" yChannelSelector="G" result="d"/>
+      <feGaussianBlur in="d" stdDeviation="2.4"/>
+    </filter>
+    <filter id="inkpad" x="-8%" y="-8%" width="116%" height="116%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency=".32" numOctaves="2" seed="21" result="fine"/>
+      <feColorMatrix in="fine" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -7 0 0 0 5" result="pits"/>
+      <feTurbulence type="fractalNoise" baseFrequency=".035" numOctaves="3" seed="9" result="broad"/>
+      <feColorMatrix in="broad" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  1.2 0 0 0 .3" result="density"/>
+      <feComposite in="pits" in2="density" operator="arithmetic" k1="1" result="cover"/>
+      <feComposite in="SourceGraphic" in2="cover" operator="in" result="inked"/>
+      <feTurbulence type="fractalNoise" baseFrequency=".18" numOctaves="2" seed="4" result="edge"/>
+      <feDisplacementMap in="inked" in2="edge" scale="3.2" xChannelSelector="R" yChannelSelector="G"/>
     </filter>
     <filter id="paper" x="0" y="0" width="100%" height="100%">
       <feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="2" seed="4" result="n"/>
       <feColorMatrix in="n" type="matrix" values="0 0 0 0 .35  0 0 0 0 .28  0 0 0 0 .2  -.5 0 0 0 .3"/>
       <feComposite in2="SourceGraphic" operator="in"/>
     </filter>
+    <mask id="carve" maskUnits="userSpaceOnUse" x="-10" y="-10" width="136" height="136">
+      <rect x="-10" y="-10" width="136" height="136" fill="#fff"/>
+      <g transform="translate(8 7.5)" fill="none" stroke="#000" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">{glyph}</g>
+      <g fill="#000"><ellipse cx="116" cy="41" rx="2.6" ry="4.2"/><ellipse cx="31" cy="116" rx="3.6" ry="2.2"/><ellipse cx="0" cy="88" rx="1.8" ry="2.8"/></g>
+    </mask>
+    <clipPath id="land">{"".join(f'<use href="#c{i}"/>' for i in order)}</clipPath>
     <radialGradient id="vignette" cx="50%" cy="50%" r="72%">
       <stop offset=".55" style="stop-color:var(--shade);stop-opacity:0"/>
       <stop offset="1" style="stop-color:var(--shade);stop-opacity:var(--shade-a)"/>
@@ -370,43 +510,47 @@ def main():
   <g filter="url(#waterlines)">
     {join(landcells)}
   </g>
-  <g>
+  <g clip-path="url(#land)"><g filter="url(#pigment)">
     {join(washes)}
-  </g>
+  </g></g>
   <g>
     {join(inks)}
   </g>
   <g>
     {join(coasts)}
   </g>
-  <g>
-    {join(routes)}
+  <g class="brush" filter="url(#brushed)">
+    {join(brush)}
   </g>
 
   <g class="later" style="animation-delay:.3s">
-    <circle class="ripple" cx="{SOURCE[0]}" cy="{SOURCE[1]}" r="30"/>
-    <circle class="capital" cx="{SOURCE[0]}" cy="{SOURCE[1]}" r="5.5"/>
-    <circle class="source" cx="{SOURCE[0]}" cy="{SOURCE[1]}" r="2.3"/>
+    <g filter="url(#blot)"><circle class="ripple" cx="{SOURCE[0]}" cy="{SOURCE[1]}" r="30"/></g>
+    <circle class="bleed" cx="{SOURCE[0] + .6}" cy="{SOURCE[1] - .4}" r="9" filter="url(#bleed)"/>
+    <g class="blot" filter="url(#blot)">
+      <circle cx="{SOURCE[0]}" cy="{SOURCE[1]}" r="3.7"/>
+      <circle cx="{SOURCE[0] + 1.7}" cy="{SOURCE[1] - 1.2}" r="2.6"/>
+      <circle cx="{SOURCE[0] - 1.3}" cy="{SOURCE[1] + 1.4}" r="2.2"/>
+    </g>
   </g>
 
-  <circle class="spark" r="2.1" opacity="0">
-    <animateMotion id="walk" dur="6s" begin="{begin:.1f}s;walk.end+10s" path="{walk}" calcMode="spline" keyPoints="0;1" keyTimes="0;1" keySplines=".4 0 .5 1"/>
-    <animate attributeName="opacity" values="0;.95;.95;0" keyTimes="0;.08;.9;1" dur="6s" begin="{begin:.1f}s;walk.end+10s"/>
-  </circle>
+  <g>
+    {glints}
+  </g>
 
   <g class="later" style="animation-delay:{last + .8:.1f}s">
     <text class="note" x="808" y="84" text-anchor="middle">尚未发生</text>
     <text class="note-en" x="808" y="102" text-anchor="middle">not yet happened</text>
   </g>
 
-  <g class="later" style="animation-delay:{min(last, 6.5):.1f}s">
+  <g class="later" style="animation-delay:{title_at:.1f}s">
     <text class="title" x="700" y="216">H0mework</text>
     <line class="rule" x1="701" y1="232" x2="926" y2="232"/>
     <text class="zh" x="701" y="254">未干的地图</text>
     <text class="en" x="701" y="272">The Unfinished Map</text>
-    <g class="seal" transform="translate(894 242) rotate(-4)">
-      <rect width="28" height="28" rx="2.5"/>
-      <text x="14" y="20" text-anchor="middle">源</text>
+  </g>
+  <g transform="translate(884 236) rotate(-3.5) scale(.345)">
+    <g class="stamp" style="animation-delay:{title_at + 1.3:.1f}s">
+      <g filter="url(#inkpad)"><path class="sealink" mask="url(#carve)" d="{seal_outline()}"/></g>
     </g>
   </g>
 
