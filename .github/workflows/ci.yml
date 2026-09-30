@@ -24,6 +24,18 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 350
     steps:
+      # The default build (mathlib cache plus ~16.8k modules) exceeds the ~14 GB
+      # a standard runner leaves free; the 2026-09-20 run stopped at module
+      # 9440/11481 with "no space left on device". Remove preinstalled
+      # toolchains the build never uses.
+      - name: Free runner disk space
+        run: |
+          df -h /
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /usr/local/.ghcup \
+            /opt/hostedtoolcache/CodeQL /usr/local/share/boost /usr/share/swift \
+            /usr/local/share/powershell /usr/local/share/chromium /usr/local/lib/node_modules
+          sudo docker image prune --all --force > /dev/null 2>&1 || true
+          df -h /
       - uses: actions/checkout@v4
       - uses: leanprover/lean-action@v1
         with:
@@ -32,3 +44,6 @@ jobs:
           build: true
           test: false
           lint: false
+      - name: Disk usage after build
+        if: always()
+        run: df -h / && du -sh Lean/.lake/build Lean/.lake/packages 2>/dev/null || true
