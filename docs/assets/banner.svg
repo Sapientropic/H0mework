@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 300" role="img" aria-labelledby="t d">
+  <title id="t">H0mework</title>
+  <desc id="d">Streams flow out of a single source. The papers tell the story; the proofs take the stand.</desc>
+  <style>
+    :root { --paper: #f7f3ea; --ink: #2b2a27; --seal: #b8352b; }
+    @media (prefers-color-scheme: dark) {
+      :root { --paper: #131517; --ink: #e6dfd0; --seal: #cf4a3d; }
+    }
+    .paper { fill: var(--paper); }
+    .stream { fill: none; stroke: var(--ink); stroke-linecap: round;
+              stroke-dasharray: 1; stroke-dashoffset: 0;
+              animation: draw 3.2s cubic-bezier(.45,0,.2,1) backwards; }
+    .ripple { fill: none; stroke: var(--ink); stroke-width: 1;
+              transform-box: fill-box; transform-origin: center;
+              animation: ripple 6s ease-out infinite; opacity: 0; }
+    .source { fill: var(--ink); transform-box: fill-box; transform-origin: center;
+              animation: breathe 6s ease-in-out infinite; }
+    .spark { fill: var(--seal); }
+    .title { fill: var(--ink); font: 400 56px "Iowan Old Style", Palatino, "Palatino Linotype", Georgia, serif;
+             letter-spacing: .04em; }
+    .zh { fill: var(--ink); font: 400 18px "Songti SC", STSong, "Noto Serif CJK SC", "Source Han Serif SC", serif;
+          letter-spacing: .18em; opacity: .8; }
+    .en { fill: var(--ink); font: italic 400 13.5px "Iowan Old Style", Palatino, Georgia, serif; opacity: .6; }
+    .seal rect { fill: var(--seal); }
+    .seal text { fill: var(--paper); font: 400 22px "Songti SC", STSong, "Noto Serif CJK SC", serif; }
+    .fade { animation: fade 1.6s ease-out backwards; }
+    @keyframes draw { from { stroke-dashoffset: 1; } }
+    @keyframes fade { from { opacity: 0; } }
+    @keyframes ripple {
+      0% { transform: scale(.1); opacity: .55; }
+      100% { transform: scale(1); opacity: 0; }
+    }
+    @keyframes breathe { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.35); } }
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; }
+      .spark { display: none; }
+    }
+  </style>
+
+  <rect class="paper" width="960" height="300" rx="14"/>
+
+  <!-- one source -->
+  <g transform="translate(120 132)">
+    <circle class="ripple" r="70"/>
+    <circle class="ripple" r="70" style="animation-delay: 2s"/>
+    <circle class="ripple" r="70" style="animation-delay: 4s"/>
+  </g>
+
+  <!-- the streams it feeds; pathLength=1 lets one dash length draw them all -->
+  <g>
+    <path id="s1" class="stream" pathLength="1" stroke-width="1.6" opacity=".75"
+          d="M120 132 C 250 132, 320 58, 500 50 S 780 40, 900 34"/>
+    <path id="s2" class="stream" pathLength="1" stroke-width="1.1" opacity=".5" style="animation-delay: .25s"
+          d="M120 132 C 250 132, 340 92, 520 88 S 750 74, 860 76"/>
+    <path id="s3" class="stream" pathLength="1" stroke-width="1.8" opacity=".8" style="animation-delay: .1s"
+          d="M120 132 C 260 134, 380 124, 560 120 S 800 112, 920 114"/>
+    <path id="s4" class="stream" pathLength="1" stroke-width="1.2" opacity=".55" style="animation-delay: .4s"
+          d="M120 132 C 240 134, 360 152, 520 154 S 690 152, 790 146"/>
+    <path id="s5" class="stream" pathLength="1" stroke-width=".9" opacity=".4" style="animation-delay: .6s"
+          d="M120 132 C 230 136, 320 182, 440 192 S 520 198, 560 196"/>
+    <path id="s6" class="stream" pathLength="1" stroke-width=".9" opacity=".4" style="animation-delay: .5s"
+          d="M120 132 C 220 130, 280 76, 370 62 S 450 38, 520 28"/>
+    <path id="s7" class="stream" pathLength="1" stroke-width=".8" opacity=".35" style="animation-delay: 1.2s"
+          d="M420 123 C 480 122, 530 138, 630 146 S 700 158, 740 156"/>
+    <path class="stream" pathLength="1" stroke-width=".7" opacity=".3" style="animation-delay: 1.5s"
+          d="M650 45 C 700 44, 740 58, 800 58"/>
+  </g>
+
+  <circle class="source" cx="120" cy="132" r="4.5"/>
+
+  <!-- light travelling downstream -->
+  <circle class="spark" r="2.2" opacity="0">
+    <animateMotion dur="7s" begin="3s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="spline" keySplines=".4 0 .6 1"><mpath xlink:href="#s3"/></animateMotion>
+    <animate attributeName="opacity" values="0;.9;.9;0" keyTimes="0;.1;.85;1" dur="7s" begin="3s" repeatCount="indefinite"/>
+  </circle>
+  <circle class="spark" r="1.8" opacity="0">
+    <animateMotion dur="8s" begin="5.5s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="spline" keySplines=".4 0 .6 1"><mpath xlink:href="#s1"/></animateMotion>
+    <animate attributeName="opacity" values="0;.8;.8;0" keyTimes="0;.1;.85;1" dur="8s" begin="5.5s" repeatCount="indefinite"/>
+  </circle>
+  <circle class="spark" r="1.6" opacity="0">
+    <animateMotion dur="6.5s" begin="8s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="spline" keySplines=".4 0 .6 1"><mpath xlink:href="#s4"/></animateMotion>
+    <animate attributeName="opacity" values="0;.8;.8;0" keyTimes="0;.1;.85;1" dur="6.5s" begin="8s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- title -->
+  <g class="fade" style="animation-delay: 1.8s">
+    <text class="title" x="850" y="232" text-anchor="end">H0mework</text>
+    <g class="seal" transform="translate(866 196) rotate(-3)">
+      <rect width="34" height="34" rx="3"/>
+      <text x="17" y="25" text-anchor="middle">源</text>
+    </g>
+  </g>
+  <g class="fade" style="animation-delay: 2.6s">
+    <text class="zh" x="900" y="264" text-anchor="end">论文负责讲述，证明负责作证</text>
+    <text class="en" x="900" y="285" text-anchor="end">The papers tell the story; the proofs take the stand.</text>
+  </g>
+</svg>

@@ -1,27 +1,28 @@
-# H0mework
+<p align="center"><img src="docs/assets/banner.svg" alt="H0mework：论文负责讲述，证明负责作证" width="100%"></p>
 
-> 论文负责讲述，证明负责作证。
-
-这里是八篇论文背后的证明与证据。
+这里是一组论文背后的证明与证据。
 
 它们从同一个源出发：过程怎样保留自己的历史，场和粒子怎样从同一处生成，经典与量子怎样相认，账平之后债为何还在，观察为何总要为压缩付账。论文用文字把这些故事讲给人听；这里的 Lean 证明、复现程序和冻结回执，则把每一句写成定理的话交给机器，从头再核一遍。
 
 读者不必相信作者。你可以亲手检验。
 
-## 八篇论文
+## 论文
 
 | 论文 | Lean 入口 |
 | --- | --- |
 | **状态不是历史，源才是**：过程同一性、责任承接与最小修订<br>*The State Is Not the History, the Source Is* | [SourceProcessCore](Lean/H0mework/Papers/SourceProcessCore.lean) |
 | **这浩瀚宇宙里，我们没找到魔法**：Spin×SU(7) 理论的同源生成与经典—量子对应<br>*We Found No Magic in This Mighty Universe* | [PhysicsCommonSource](Lean/H0mework/Papers/PhysicsCommonSource.lean) |
-| **共同源模型的低能展开**：传播谱、物质交换与量子响应<br>*Low-Energy Expansion of a Common-Source Model* | [LowEnergyPhenomenology](Lean/H0mework/Papers/LowEnergyPhenomenology.lean) |
-| **两负一正，裸迹宣誓**：有序闭迹与整球响应曲率<br>*Two Minuses, One Plus, and a Bare Trace Under Oath* | [LowEnergyLoopResponse](Lean/H0mework/Papers/LowEnergyLoopResponse.lean) |
-| **天底下没有免费的 lapse**：原作用约束与共同量子 Hamiltonian<br>*No Free Lapse* | [ConstrainedLocalQuantumK17](Lean/H0mework/Papers/ConstrainedLocalQuantumK17.lean) |
-| **同源流的有限宏修订、完整应力与晚时全阶演化**<br>*Finite Macro Revisions, Complete Stress, and Eventual All-Order Evolution of Source-Native Flows* | [NativeFlow](Lean/H0mework/Papers/NativeFlow.lean) |
-| **账平了，债还在**：源生整账与不可伪造的结算<br>*The Books Balance. The Debt Remains* | [WholeLedgerAccountingY1](Lean/H0mework/Papers/WholeLedgerAccountingY1.lean) |
-| **未来来收压缩账单**：自主观察与下一拍精确信息损失<br>*The Future Sends the Bill* | [ObservationDynamics](Lean/H0mework/Papers/ObservationDynamics.lean) |
 
-其中《两负一正》与《天底下没有免费的 lapse》属于 *CourtyCourt · The Theory Takes the Stand* 系列：让理论出庭，接受交叉质询。
+## 更多研究线
+
+| 研究线 | 内容 | Lean 入口 |
+| --- | --- | --- |
+| 低能唯象 | 低能展开、传播、物质交换与全时间 Kubo 响应 | [LowEnergyPhenomenology](Lean/H0mework/Papers/LowEnergyPhenomenology.lean) |
+| 低能环响应 | 闭迹、准备态完整词、玻色有效核与解析余项 | [LowEnergyLoopResponse](Lean/H0mework/Papers/LowEnergyLoopResponse.lean) |
+| 约束局部量子 | 原作用约束、量子约束与共同族时间演化 | [ConstrainedLocalQuantumK17](Lean/H0mework/Papers/ConstrainedLocalQuantumK17.lean) |
+| 原生长河 | Navier–Stokes 的原生演化与历史消费者 | [NativeFlow](Lean/H0mework/Papers/NativeFlow.lean) |
+| 整账会计 | 整账结构、债务结算与不可伪造的结算 | [WholeLedgerAccountingY1](Lean/H0mework/Papers/WholeLedgerAccountingY1.lean) |
+| 动态观察 | 计数观察、版本证明与压缩的精确代价 | [ObservationDynamics](Lean/H0mework/Papers/ObservationDynamics.lean) |
 
 ## 亲手检验
 
@@ -50,4 +51,4 @@ make check-map   # 逐字节核对本仓文件与原始来源
 
 ---
 
-*Lean proofs, reproduction programs and frozen evidence for eight research papers. The papers tell the story; the proofs take the stand. Every statement written as a theorem can be rechecked here by machine, from scratch. Start with the table above, then `make build`.*
+*Lean proofs, reproduction programs and frozen evidence behind a family of research papers. The papers tell the story; the proofs take the stand. Every statement written as a theorem can be rechecked here by machine, from scratch. Start with the table above, then `make build`.*
