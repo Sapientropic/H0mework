@@ -36,6 +36,19 @@ jobs:
             /usr/local/share/powershell /usr/local/share/chromium /usr/local/lib/node_modules
           sudo docker image prune --all --force > /dev/null 2>&1 || true
           df -h /
+      # The 2026-09-30 run then went silent at module 9618/13662 while several
+      # heavy chemistry modules compiled in parallel, and the runner was
+      # cancelled (exit 143): memory exhaustion on the 16 GB runner. Swap on
+      # the runner's temporary disk lets those peaks page instead of killing it.
+      - name: Add swap on the temporary disk
+        run: |
+          df -h /mnt
+          sudo swapoff -a
+          sudo fallocate -l 24G /mnt/lean-swapfile
+          sudo chmod 600 /mnt/lean-swapfile
+          sudo mkswap /mnt/lean-swapfile > /dev/null
+          sudo swapon /mnt/lean-swapfile
+          free -h
       - uses: actions/checkout@v4
       - uses: leanprover/lean-action@v1
         with:
