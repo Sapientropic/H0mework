@@ -23,7 +23,9 @@ make build
 (cd Lean && lake build H0mework.Physics.RootRuntime.RecoveryConsumer)
 ```
 
-完整构建需要为 `.lake` 产物留出磁盘空间。资源消耗及已有构建结果记录在[版本审查](reports/publication-review-2026-09-30.md)中。构建前可用 `df -h .` 查看可用空间，构建后用 `du -sh Lean/.lake/build Lean/.lake/packages` 查看实际占用。Lake 为每个模块写入的 `Lean/.lake/build/ir/*.setup.json` 列出全部传递依赖的产物路径，全量构建合计可达上百 GB；它只在模块开始编译时读取，编译完成后删除不会使构建失效，可用 `find Lean/.lake/build/ir -name '*.setup.json' -delete` 回收空间。
+完整构建需要为 `.lake` 产物留出磁盘空间。构建前可用 `df -h .` 查看可用空间，构建后用 `du -sh Lean/.lake/build Lean/.lake/packages` 查看实际占用。Lake 为每个模块写入的 `Lean/.lake/build/ir/*.setup.json` 列出全部传递依赖的产物路径，全量构建合计可达上百 GB；它只在模块开始编译时读取，编译完成后删除不会使构建失效，可用 `find Lean/.lake/build/ir -name '*.setup.json' -delete` 回收空间。
+
+2026-09-30，提交 `bf78b3674ec5680c7baab77e70107d148c281c9d` 在 macOS 上完成完整默认选集构建：`make build` exit 0，25560 jobs，复用现有缓存，实际重编 6509 个模块，耗时 6 小时 52 分 34 秒。
 
 ## 独立检查
 
@@ -85,4 +87,4 @@ Y 来源的唯一性引理在固定依赖下编译失败，原字节保存于非
 
 ## CI 范围
 
-[`ci.yml`](../.github/workflows/ci.yml) 定义两个 job：`evidence-checks` 执行 `make check`，`lean-build` 执行默认 Lean 构建：仓库私有期间只在手动触发（workflow_dispatch）时运行，公开后每次推送运行。其他独立检查通过上述 make targets 运行。各版本实际验收结果记录在带日期的[版本审查](reports/publication-review-2026-09-30.md)中。
+[`ci.yml`](../.github/workflows/ci.yml) 定义两个 job：`evidence-checks` 执行 `make check`，`lean-build` 执行默认 Lean 构建：仓库私有期间只在手动触发（workflow_dispatch）时运行，公开后每次推送运行。其他独立检查通过上述 make targets 运行。云端工作流的执行结果见 [GitHub Actions](https://github.com/Sapientropic/H0mework/actions)。

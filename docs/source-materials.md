@@ -52,10 +52,16 @@ PY
 
 | 材料 | 作者与出处 | 版权与使用依据 |
 | --- | --- | --- |
-| [Shalm 论文摘录](source/physics/bell-nist/nist-real/nominal-replay/shalm2015-channel-inputs.txt) | L. K. Shalm et al., *Strong Loophole-Free Test of Local Realism*, Physical Review Letters 115, 250402 (2015)，[DOI 原文](https://journals.aps.org/prl/pdf/10.1103/PhysRevLett.115.250402)；摘录自 arXiv:1511.03189v2 | APS 已发表版本采用 [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/)。三个摘录块的实质文字、数值与公式已核对到开放版正文；冠词、语法与引用格式差异见[版本审查](reports/publication-review-2026-09-30.md#shalm-摘录核对)。arXiv v2 的[非独占分发许可](https://arxiv.org/licenses/nonexclusive-distrib/1.0/license.html)保留为原提取版本的来源记录。 |
+| [Shalm 论文摘录](source/physics/bell-nist/nist-real/nominal-replay/shalm2015-channel-inputs.txt) | L. K. Shalm et al., *Strong Loophole-Free Test of Local Realism*, Physical Review Letters 115, 250402 (2015)，[DOI 原文](https://journals.aps.org/prl/pdf/10.1103/PhysRevLett.115.250402)；摘录自 arXiv:1511.03189v2 | APS 已发表版本采用 [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/)。冻结摘录与发表版的对应见[Shalm 摘录版本对应](#shalm-摘录版本对应)。arXiv v2 的[非独占分发许可](https://arxiv.org/licenses/nonexclusive-distrib/1.0/license.html)保留为原提取版本的来源记录。 |
 | [Christensen 博士论文摘录](source/physics/bell-nist/nist-real/nominal-replay/christensen-appendix-a.txt) | Bradley G. Christensen，*Advanced tests of nonlocality with entangled photons*，University of Illinois Urbana-Champaign 博士论文（2016），[学校馆藏条目](https://www.ideals.illinois.edu/items/92889) | Copyright 2016 Bradley Christensen。引用范围为 Appendix A 与 §4.6.2 的五页，用于核对特定装置模型、公式读法和偏振参数；文件保留作者、页码、来源和 PDF 哈希。 |
 | L-alanine 40 K 晶体与计算回执 | 论文作者 Hayashi、Nishioka、Kasai、Nishibori，[IUCr 官方原文](https://journals.iucr.org/m/issues/2025/03/00/woz5001/woz5001.pdf)；数据作者 Eiji Nishibori，[Zenodo 记录](https://zenodo.org/records/14688662) | 原论文与数据采用 [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)。派生计算与来源记录保存在 [`evidence/biomedical/`](../evidence/biomedical/) 中。 |
 
 Christensen 摘录用于研究核验与评述，[美国版权法的合理使用原则](https://www.copyright.gov/fair-use/)将该用途列为评估情境，并结合作品性质、使用范围与替代影响判断。本项目据这一研究用途保留选定材料及其引用上下文；第三方原文继续保留原作者版权。
 
-项目原创内容的 Apache-2.0 许可见 [LICENSE](../LICENSE)；第三方原文保留作者、出处、版权和适用许可。归属汇总见 [NOTICE](../NOTICE)。公开版本的审查结果见[2026-09-30 版本审查](reports/publication-review-2026-09-30.md)。
+## Shalm 摘录版本对应
+
+冻结的 arXiv v2 摘录包含三个正文块，其实质文字、数值与公式均对应 [APS 开放发表版](https://harvest.aps.org/v2/journals/articles/10.1103/PhysRevLett.115.250402/fulltext)。冻结文件保留冠词、介词、单复数、引用编号，以及停止规则的 `criteria` / `criterion` 等版本差异。第 171–176 行的原提取合并了两栏，恢复分栏后对应文字一致。
+
+APS PDF SHA256：`49c40d39e6a61c8cb961aae327ce7bc266132d9ed20ceefa93792930cd99c1da`。冻结摘录的来源身份由导出映射记录，正文保持原字节。
+
+项目原创内容的 Apache-2.0 许可见 [LICENSE](../LICENSE)；第三方原文保留作者、出处、版权和适用许可。归属汇总见 [NOTICE](../NOTICE)。

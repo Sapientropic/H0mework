@@ -43,7 +43,7 @@ python3 tools/source_view.py --verify-all --exact \
 
 ## 生成与验证
 
-迁移生成的收尾调用 `publish_outputs`，随后导出公开字节身份及变换记录。生成器与当前映射的一致性验收记录在[版本审查](reports/publication-review-2026-09-30.md)中。
+迁移生成的收尾调用 `publish_outputs`，随后导出公开字节身份及变换记录。生成产物的身份检查使用 `make check-map`。
 
 针对变换、路径碰撞、结果篡改、公开视图和精确视图的测试：
 
