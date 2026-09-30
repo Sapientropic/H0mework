@@ -50,10 +50,12 @@ PY
 
 ## 第三方材料
 
-| 材料 | 作者与出处 | 再分发依据 |
+| 材料 | 作者与出处 | 版权与使用依据 |
 | --- | --- | --- |
 | [Shalm 论文摘录](source/physics/bell-nist/nist-real/nominal-replay/shalm2015-channel-inputs.txt) | L. K. Shalm et al., *Strong Loophole-Free Test of Local Realism*, Physical Review Letters 115, 250402 (2015)，[DOI 原文](https://journals.aps.org/prl/pdf/10.1103/PhysRevLett.115.250402)；摘录自 arXiv:1511.03189v2 | APS 已发表版本采用 [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/)。三个摘录块的实质文字、数值与公式已核对到开放版正文；冠词、语法与引用格式差异见[版本审查](reports/publication-review-2026-09-30.md#shalm-摘录核对)。arXiv v2 的[非独占分发许可](https://arxiv.org/licenses/nonexclusive-distrib/1.0/license.html)保留为原提取版本的来源记录。 |
-| [Christensen 博士论文摘录](source/physics/bell-nist/nist-real/nominal-replay/christensen-appendix-a.txt) | Bradley G. Christensen，*Advanced tests of nonlocality with entangled photons*，University of Illinois Urbana-Champaign 博士论文（2016），[学校馆藏条目](https://www.ideals.illinois.edu/items/92889) | 馆藏权利字段为 Copyright 2016 Bradley Christensen。[⚠️] 本仓尚无可核实的摘录再分发授权记录。 |
+| [Christensen 博士论文摘录](source/physics/bell-nist/nist-real/nominal-replay/christensen-appendix-a.txt) | Bradley G. Christensen，*Advanced tests of nonlocality with entangled photons*，University of Illinois Urbana-Champaign 博士论文（2016），[学校馆藏条目](https://www.ideals.illinois.edu/items/92889) | Copyright 2016 Bradley Christensen。引用范围为 Appendix A 与 §4.6.2 的五页，用于核对特定装置模型、公式读法和偏振参数；文件保留作者、页码、来源和 PDF 哈希。 |
 | L-alanine 40 K 晶体与计算回执 | 论文作者 Hayashi、Nishioka、Kasai、Nishibori，[IUCr 官方原文](https://journals.iucr.org/m/issues/2025/03/00/woz5001/woz5001.pdf)；数据作者 Eiji Nishibori，[Zenodo 记录](https://zenodo.org/records/14688662) | 原论文与数据采用 [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)。派生计算与来源记录保存在 [`evidence/biomedical/`](../evidence/biomedical/) 中。 |
 
-项目原创内容的 Apache-2.0 许可见 [LICENSE](../LICENSE)；第三方原文保留作者、出处和各自许可。归属汇总见 [NOTICE](../NOTICE)。公开版本的审查结果见[2026-09-30 版本审查](reports/publication-review-2026-09-30.md)。
+Christensen 摘录用于研究核验与评述，[美国版权法的合理使用原则](https://www.copyright.gov/fair-use/)将该用途列为评估情境，并结合作品性质、使用范围与替代影响判断。本项目据这一研究用途保留选定材料及其引用上下文；第三方原文继续保留原作者版权。
+
+项目原创内容的 Apache-2.0 许可见 [LICENSE](../LICENSE)；第三方原文保留作者、出处、版权和适用许可。归属汇总见 [NOTICE](../NOTICE)。公开版本的审查结果见[2026-09-30 版本审查](reports/publication-review-2026-09-30.md)。

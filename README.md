@@ -38,4 +38,4 @@ make check-map   # 全量核对导出文件与固定源字节
 
 `Lean/` 保存证明与固定依赖配置，`scripts/` 保存复现程序，`evidence/` 保存冻结回执；[`tools/export-map.json`](tools/export-map.json) 记录源路径、导出路径、修订和哈希。
 
-本项目原创内容采用 Apache-2.0；许可原文与归属见 [LICENSE](LICENSE) 和 [NOTICE](NOTICE)。第三方摘录沿用各自许可，出处与具体范围见[来源材料索引](docs/source-materials.md#第三方材料)。
+本项目原创内容采用 Apache-2.0；许可原文与归属见 [LICENSE](LICENSE) 和 [NOTICE](NOTICE)。第三方材料的版权、许可与引用范围见[来源材料索引](docs/source-materials.md#第三方材料)。
