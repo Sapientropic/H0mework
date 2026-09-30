@@ -1,4 +1,4 @@
-<p align="center"><img src="docs/assets/banner.svg" alt="H0mework：论文负责讲述，证明负责作证" width="100%"></p>
+<p align="center"><img src="docs/assets/banner.svg" alt="H0mework · 未干的地图：一张从源点长出的地图，每块区域只贴着已有区域生成" width="100%"></p>
 
 这里是一组论文背后的证明与证据。
 
