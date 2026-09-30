@@ -1,0 +1,1404 @@
+{
+  "root": "positiveSmoothUnifiedSource; repaired Dirac-dual; SpinPair.actual; visit10/tick16/materialEntry -> tick17 unchanged",
+  "scope": "ORIGINAL_FULL122_H_FIXED_AMBIENT_PI_ALL16_COFORCES_AND_QUANTUM_NOETHER",
+  "source_sha256": {
+    "Lean/SaturationMonoid/PhysicsCore/SU7ExteriorYukawaMassSpectrum.lean": "cc100f817041a1e8b33aadf909a4838756c32eb0f28a15ff138c5cd9a3db4813",
+    "Lean/SaturationMonoid/PhysicsCore/SU7ExteriorBreakingYukawa.lean": "f3d245e031380de7dacf16312b81665a11d2fd209dfd751652821e9638b74ce0",
+    "Lean/SaturationMonoid/PhysicsCore/SU7MotherLieAlgebra.lean": "acb8a102cb607e8736b25acd5e851f70b15fb53ec7cc6784362e1b0c2a95e7da",
+    "Lean/SaturationMonoid/PhysicsCore/SU7ExteriorMatterRepresentation.lean": "0b7cb7f6d4078d7f0a7347513bd98077bd18092f89b1c4c4ec3ee23ad84efbac",
+    "Lean/SaturationMonoid/PhysicsCore/SU7ExteriorMatterRestriction.lean": "b91ff6e8d6ea1e9e7e6220fec204288a946a8153913882d1f68eee489d403ed1",
+    "Lean/SaturationMonoid/PhysicsCore/StageNineDynamicBreakingVacuum.lean": "f79cd71ae67e1ee2b1b698f7a09a0130e742e4a471862165748277269e2027bf",
+    "Lean/SaturationMonoid/PhysicsCore/StageNineGlobalIntegratedAction.lean": "525d2672c446c94a9b528c4277efed582419fbcb31e8e28b533cba3ff0589497",
+    "Lean/SaturationMonoid/PhysicsCore/StageNineExteriorMotherLieRepresentation.lean": "444b0ef9ba42af3801ffc010996ac5feddfed8605f4ce9bb2fbe15fe2b562f7b",
+    "Lean/SaturationMonoid/PhysicsCore/StageNineFormNativeMotherAction.lean": "24104b817d0a663626c46388bfa5a2660441f90cbee77ea5a86495fd7d64e6a2",
+    "Lean/SaturationMonoid/PhysicsCore/Stage9C/Material/SpinPair/Parameters.lean": "eeecea0c096fbbf4c0090d301fb19ca70f22020c89a8ad279b70133b6b8f4bc3"
+  },
+  "input_sha256": {
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/source_full_coframe_quantum_force.py": "6631eb7b0acf39a53e87dad54296b1d4847a7502e0ba4fe8cff7e523d6ff8344",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/source_lorentz_quantum_section.py": "1f4d8e0e4c8429daa3ce3ed169d2fe90e79189152a9d83c158363e6c749a4ca6",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/source_coframe_legendre.py": "dfcc6dedec8cdb00037536d7de6724d5a387ac92132e7ad00cc8491ced02c3bc",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/source_coframe_live_ordering.py": "ef20098b10b703cbfee6ae8775e43c66be4b7658a98a0ac033d21168a1f503df",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/source_joint_current_hilbert_section.py": "9f3db242bbbaaa4ce7ce8f8a50f84578240375a7139dd744037fba45e198d255",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/source_joint_current_hilbert_section.json": "9f2f3ba8f666b0297663605b0861d0c885dba99804f1f57ef178a25d6411535c",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/source_temporal_lorentz_balance.py": "42a1d46d80db348a6b53eb455f260b4bcd3c2d100955ff1321749edef5462a64",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/source_temporal_lorentz_balance.json": "8c07c81ef082d34514766d51d4d3f525bd9d619d853a36e8913be6f007760f7c",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/source_gauge_quantum_energy.py": "e91c190903823db12bf4705c0bc54a36395364a611b309674bd73c7c630dea1d",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/source_common_hamiltonian.py": "bd2f2791c7cfa8f9c0d9720685d48aa78d783fcd38b4dee1bc34ce80103f372d"
+  },
+  "force_mouth": "SourceFullCoframeQuantumForce().apply(axis, jet122) differentiates every original four-energy coefficient at fixed full canonical Pi before applying the input germ. The actual consumer obtains jet122 from the existing source100 inverse-half-density and primary/Gauss producer.",
+  "source_point": {
+    "shape": [
+      4,
+      4
+    ],
+    "entries": [
+      [
+        0,
+        0,
+        "3*sqrt(30)/25"
+      ],
+      [
+        1,
+        1,
+        "1"
+      ],
+      [
+        2,
+        2,
+        "1"
+      ],
+      [
+        3,
+        3,
+        "1"
+      ]
+    ]
+  },
+  "coefficient_counts": [
+    {
+      "axis": 0,
+      "nonzero_coefficients": {
+        "Q": 21,
+        "T": 24,
+        "one": 8,
+        "tensor": 80,
+        "matter": 432,
+        "scalar_principal": 1,
+        "gauge_principal": 42,
+        "gauge_first": 0,
+        "identity": 1
+      }
+    },
+    {
+      "axis": 1,
+      "nonzero_coefficients": {
+        "Q": 0,
+        "T": 56,
+        "one": 8,
+        "tensor": 128,
+        "matter": 432,
+        "scalar_principal": 0,
+        "gauge_principal": 0,
+        "gauge_first": 3,
+        "identity": 0
+      }
+    },
+    {
+      "axis": 2,
+      "nonzero_coefficients": {
+        "Q": 0,
+        "T": 56,
+        "one": 8,
+        "tensor": 128,
+        "matter": 432,
+        "scalar_principal": 0,
+        "gauge_principal": 0,
+        "gauge_first": 3,
+        "identity": 0
+      }
+    },
+    {
+      "axis": 3,
+      "nonzero_coefficients": {
+        "Q": 0,
+        "T": 56,
+        "one": 8,
+        "tensor": 32,
+        "matter": 432,
+        "scalar_principal": 0,
+        "gauge_principal": 0,
+        "gauge_first": 2,
+        "identity": 0
+      }
+    },
+    {
+      "axis": 4,
+      "nonzero_coefficients": {
+        "Q": 14,
+        "T": 64,
+        "one": 8,
+        "tensor": 128,
+        "matter": 256,
+        "scalar_principal": 0,
+        "gauge_principal": 0,
+        "gauge_first": 3,
+        "identity": 0
+      }
+    },
+    {
+      "axis": 5,
+      "nonzero_coefficients": {
+        "Q": 13,
+        "T": 16,
+        "one": 8,
+        "tensor": 80,
+        "matter": 256,
+        "scalar_principal": 1,
+        "gauge_principal": 42,
+        "gauge_first": 0,
+        "identity": 1
+      }
+    },
+    {
+      "axis": 6,
+      "nonzero_coefficients": {
+        "Q": 10,
+        "T": 8,
+        "one": 0,
+        "tensor": 0,
+        "matter": 256,
+        "scalar_principal": 0,
+        "gauge_principal": 28,
+        "gauge_first": 0,
+        "identity": 0
+      }
+    },
+    {
+      "axis": 7,
+      "nonzero_coefficients": {
+        "Q": 10,
+        "T": 8,
+        "one": 0,
+        "tensor": 0,
+        "matter": 256,
+        "scalar_principal": 0,
+        "gauge_principal": 28,
+        "gauge_first": 0,
+        "identity": 0
+      }
+    },
+    {
+      "axis": 8,
+      "nonzero_coefficients": {
+        "Q": 14,
+        "T": 64,
+        "one": 8,
+        "tensor": 128,
+        "matter": 256,
+        "scalar_principal": 0,
+        "gauge_principal": 0,
+        "gauge_first": 3,
+        "identity": 0
+      }
+    },
+    {
+      "axis": 9,
+      "nonzero_coefficients": {
+        "Q": 10,
+        "T": 8,
+        "one": 0,
+        "tensor": 0,
+        "matter": 256,
+        "scalar_principal": 0,
+        "gauge_principal": 28,
+        "gauge_first": 0,
+        "identity": 0
+      }
+    },
+    {
+      "axis": 10,
+      "nonzero_coefficients": {
+        "Q": 13,
+        "T": 16,
+        "one": 8,
+        "tensor": 80,
+        "matter": 256,
+        "scalar_principal": 1,
+        "gauge_principal": 42,
+        "gauge_first": 0,
+        "identity": 1
+      }
+    },
+    {
+      "axis": 11,
+      "nonzero_coefficients": {
+        "Q": 10,
+        "T": 8,
+        "one": 0,
+        "tensor": 0,
+        "matter": 256,
+        "scalar_principal": 0,
+        "gauge_principal": 28,
+        "gauge_first": 0,
+        "identity": 0
+      }
+    },
+    {
+      "axis": 12,
+      "nonzero_coefficients": {
+        "Q": 14,
+        "T": 64,
+        "one": 8,
+        "tensor": 32,
+        "matter": 256,
+        "scalar_principal": 0,
+        "gauge_principal": 0,
+        "gauge_first": 2,
+        "identity": 0
+      }
+    },
+    {
+      "axis": 13,
+      "nonzero_coefficients": {
+        "Q": 10,
+        "T": 8,
+        "one": 0,
+        "tensor": 0,
+        "matter": 256,
+        "scalar_principal": 0,
+        "gauge_principal": 28,
+        "gauge_first": 0,
+        "identity": 0
+      }
+    },
+    {
+      "axis": 14,
+      "nonzero_coefficients": {
+        "Q": 10,
+        "T": 8,
+        "one": 0,
+        "tensor": 0,
+        "matter": 256,
+        "scalar_principal": 0,
+        "gauge_principal": 28,
+        "gauge_first": 0,
+        "identity": 0
+      }
+    },
+    {
+      "axis": 15,
+      "nonzero_coefficients": {
+        "Q": 13,
+        "T": 16,
+        "one": 8,
+        "tensor": 80,
+        "matter": 256,
+        "scalar_principal": 1,
+        "gauge_principal": 42,
+        "gauge_first": 0,
+        "identity": 1
+      }
+    }
+  ],
+  "all_six_original_Noether": [
+    {
+      "generator": 0,
+      "all_four_energy_operator_coefficients_zero": true,
+      "omitting_orbital_Pi_term_defect_entries": 14,
+      "omitting_matter_Spin_term_defect_entries": 560
+    },
+    {
+      "generator": 1,
+      "all_four_energy_operator_coefficients_zero": true,
+      "omitting_orbital_Pi_term_defect_entries": 14,
+      "omitting_matter_Spin_term_defect_entries": 560
+    },
+    {
+      "generator": 2,
+      "all_four_energy_operator_coefficients_zero": true,
+      "omitting_orbital_Pi_term_defect_entries": 14,
+      "omitting_matter_Spin_term_defect_entries": 176
+    },
+    {
+      "generator": 3,
+      "all_four_energy_operator_coefficients_zero": true,
+      "omitting_orbital_Pi_term_defect_entries": 8,
+      "omitting_matter_Spin_term_defect_entries": 512
+    },
+    {
+      "generator": 4,
+      "all_four_energy_operator_coefficients_zero": true,
+      "omitting_orbital_Pi_term_defect_entries": 8,
+      "omitting_matter_Spin_term_defect_entries": 512
+    },
+    {
+      "generator": 5,
+      "all_four_energy_operator_coefficients_zero": true,
+      "omitting_orbital_Pi_term_defect_entries": 8,
+      "omitting_matter_Spin_term_defect_entries": 128
+    }
+  ],
+  "normal_carrier": "Full spin8 tensor I63, exact onebody504 matter, and independent occupied labels in the normal quartic. No occupied12 or matter48 projection.",
+  "original_scalar_shift_fact": "All three rho(A_i) phi_source vanish by direct source evaluation; the scalar shift and spatial potential therefore vanish for every varied coframe. The original scalar principal remains and is differentiated.",
+  "actual_consumer": {
+    "word": [
+      5,
+      144,
+      396
+    ],
+    "generated122_words": 139,
+    "all16_raw_forces_in_source_pairing": [
+      [
+        [
+          [
+            0,
+            5,
+            396
+          ],
+          "1"
+        ],
+        [
+          [
+            2,
+            5,
+            396
+          ],
+          "1"
+        ],
+        [
+          [
+            4,
+            144,
+            392
+          ],
+          "-1"
+        ],
+        [
+          [
+            4,
+            144,
+            396
+          ],
+          "3*sqrt(2)*(-4 - 3*I)/620"
+        ],
+        [
+          [
+            5,
+            135,
+            387
+          ],
+          "-1"
+        ],
+        [
+          [
+            5,
+            135,
+            396
+          ],
+          "3*sqrt(2)*(-1 + 3*I)/310"
+        ],
+        [
+          [
+            5,
+            140,
+            392
+          ],
+          "-1"
+        ],
+        [
+          [
+            5,
+            140,
+            396
+          ],
+          "3*sqrt(2)*(-4 - 3*I)/620"
+        ],
+        [
+          [
+            5,
+            144,
+            252
+          ],
+          "1"
+        ],
+        [
+          [
+            5,
+            144,
+            254
+          ],
+          "1"
+        ],
+        [
+          [
+            5,
+            144,
+            387
+          ],
+          "3*sqrt(2)*(1 + 3*I)/310"
+        ],
+        [
+          [
+            5,
+            144,
+            392
+          ],
+          "3*sqrt(2)*(4 - 3*I)/620"
+        ],
+        [
+          [
+            5,
+            144,
+            396
+          ],
+          "(1264562380117 + sqrt(2)*(8195189940 - 3157091970*I) - 1297401300*I)/24750424800"
+        ],
+        [
+          [
+            5,
+            144,
+            459
+          ],
+          "-1/62"
+        ],
+        [
+          [
+            5,
+            145,
+            397
+          ],
+          "-1"
+        ],
+        [
+          [
+            5,
+            207,
+            396
+          ],
+          "1/62"
+        ],
+        [
+          [
+            5,
+            207,
+            459
+          ],
+          "-1/4"
+        ],
+        [
+          [
+            6,
+            144,
+            396
+          ],
+          "625*sqrt(2)*(-5 + 3*I)/60264"
+        ],
+        [
+          [
+            68,
+            144,
+            396
+          ],
+          "1/62"
+        ],
+        [
+          [
+            68,
+            144,
+            459
+          ],
+          "-7/4"
+        ]
+      ],
+      [
+        [
+          [
+            5,
+            63,
+            396
+          ],
+          "3*sqrt(30)/25"
+        ],
+        [
+          [
+            5,
+            65,
+            396
+          ],
+          "3*sqrt(30)/25"
+        ],
+        [
+          [
+            5,
+            144,
+            315
+          ],
+          "-3*sqrt(30)/25"
+        ],
+        [
+          [
+            5,
+            144,
+            317
+          ],
+          "-3*sqrt(30)/25"
+        ],
+        [
+          [
+            5,
+            144,
+            459
+          ],
+          "3*sqrt(30)*(33 + 2*I)/1550"
+        ],
+        [
+          [
+            5,
+            207,
+            396
+          ],
+          "3*sqrt(30)*(89 + 4*I)/3100"
+        ],
+        [
+          [
+            6,
+            144,
+            396
+          ],
+          "sqrt(15)/6"
+        ],
+        [
+          [
+            68,
+            144,
+            396
+          ],
+          "-3*(93*sqrt(15) + sqrt(30)*(150 + 5*I))/3875"
+        ]
+      ],
+      [
+        [
+          [
+            5,
+            63,
+            396
+          ],
+          "3*sqrt(30)*I/25"
+        ],
+        [
+          [
+            5,
+            65,
+            396
+          ],
+          "3*sqrt(30)*I/25"
+        ],
+        [
+          [
+            5,
+            144,
+            315
+          ],
+          "3*sqrt(30)*I/25"
+        ],
+        [
+          [
+            5,
+            144,
+            317
+          ],
+          "3*sqrt(30)*I/25"
+        ],
+        [
+          [
+            5,
+            144,
+            396
+          ],
+          "-3*sqrt(30)*I/1550"
+        ],
+        [
+          [
+            5,
+            144,
+            459
+          ],
+          "-267*sqrt(30)*I/3100"
+        ],
+        [
+          [
+            5,
+            207,
+            396
+          ],
+          "99*sqrt(30)*I/1550"
+        ],
+        [
+          [
+            6,
+            144,
+            396
+          ],
+          "sqrt(15)*I/6"
+        ],
+        [
+          [
+            68,
+            144,
+            396
+          ],
+          "-3*I*(372*sqrt(15) + 485*sqrt(30))/15500"
+        ]
+      ],
+      [
+        [
+          [
+            0,
+            5,
+            396
+          ],
+          "-3*sqrt(30)/25"
+        ],
+        [
+          [
+            2,
+            5,
+            396
+          ],
+          "-3*sqrt(30)/25"
+        ],
+        [
+          [
+            5,
+            144,
+            252
+          ],
+          "-3*sqrt(30)/25"
+        ],
+        [
+          [
+            5,
+            144,
+            254
+          ],
+          "-3*sqrt(30)/25"
+        ],
+        [
+          [
+            5,
+            144,
+            396
+          ],
+          "(4402*sqrt(15) + sqrt(30)*(1395 - 270*I))/46500"
+        ],
+        [
+          [
+            5,
+            144,
+            459
+          ],
+          "-3*sqrt(30)/1550"
+        ],
+        [
+          [
+            5,
+            207,
+            396
+          ],
+          "3*sqrt(30)/1550"
+        ],
+        [
+          [
+            5,
+            207,
+            459
+          ],
+          "-3*sqrt(30)/50"
+        ],
+        [
+          [
+            68,
+            144,
+            396
+          ],
+          "-3*sqrt(30)/1550"
+        ]
+      ],
+      [
+        [
+          [
+            6,
+            144,
+            396
+          ],
+          "-71*sqrt(2)/180"
+        ]
+      ],
+      [
+        [
+          [
+            4,
+            144,
+            392
+          ],
+          "3*sqrt(30)/25"
+        ],
+        [
+          [
+            4,
+            144,
+            396
+          ],
+          "9*sqrt(15)*(4 + 3*I)/7750"
+        ],
+        [
+          [
+            5,
+            135,
+            387
+          ],
+          "3*sqrt(30)/25"
+        ],
+        [
+          [
+            5,
+            135,
+            396
+          ],
+          "9*sqrt(15)*(1 - 3*I)/3875"
+        ],
+        [
+          [
+            5,
+            140,
+            392
+          ],
+          "3*sqrt(30)/25"
+        ],
+        [
+          [
+            5,
+            140,
+            396
+          ],
+          "9*sqrt(15)*(4 + 3*I)/7750"
+        ],
+        [
+          [
+            5,
+            144,
+            387
+          ],
+          "9*sqrt(15)*(-1 - 3*I)/3875"
+        ],
+        [
+          [
+            5,
+            144,
+            392
+          ],
+          "9*sqrt(15)*(-4 + 3*I)/7750"
+        ],
+        [
+          [
+            5,
+            144,
+            396
+          ],
+          "I*(sqrt(15)*(153683940 - 1540125000*I) + sqrt(30)*(-3892203900 + 1208229146707*I))/206253540000"
+        ],
+        [
+          [
+            5,
+            144,
+            459
+          ],
+          "3*sqrt(30)/1550"
+        ],
+        [
+          [
+            5,
+            145,
+            397
+          ],
+          "3*sqrt(30)/25"
+        ],
+        [
+          [
+            5,
+            207,
+            396
+          ],
+          "-3*sqrt(30)/1550"
+        ],
+        [
+          [
+            5,
+            207,
+            459
+          ],
+          "3*sqrt(30)/100"
+        ],
+        [
+          [
+            6,
+            144,
+            396
+          ],
+          "25*sqrt(15)*(5 + 3*I)/10044"
+        ],
+        [
+          [
+            68,
+            144,
+            396
+          ],
+          "-3*sqrt(30)/1550"
+        ],
+        [
+          [
+            68,
+            144,
+            459
+          ],
+          "21*sqrt(30)/100"
+        ],
+        [
+          [
+            69,
+            144,
+            396
+          ],
+          "-9*sqrt(15)/125"
+        ]
+      ],
+      [
+        [
+          [
+            5,
+            144,
+            396
+          ],
+          "(1/2062535400 + I/4125070800)*(sqrt(15)*(20535000 - 5133750*I) + sqrt(30)*(13969199 + 49458586*I))"
+        ],
+        [
+          [
+            5,
+            144,
+            459
+          ],
+          "-3*sqrt(30)*I/3100"
+        ],
+        [
+          [
+            5,
+            207,
+            396
+          ],
+          "-3*sqrt(30)*I/3100"
+        ],
+        [
+          [
+            6,
+            144,
+            396
+          ],
+          "25*sqrt(15)*(-3 + 5*I)/10044"
+        ],
+        [
+          [
+            68,
+            144,
+            396
+          ],
+          "-3*sqrt(30)*I/3100"
+        ],
+        [
+          [
+            69,
+            144,
+            396
+          ],
+          "-9*sqrt(15)*I/125"
+        ]
+      ],
+      [
+        [
+          [
+            5,
+            144,
+            396
+          ],
+          "-I*(sqrt(15)*(684500 - 171125*I) + 67401*sqrt(30)*I)/45834120"
+        ],
+        [
+          [
+            5,
+            144,
+            459
+          ],
+          "3*sqrt(30)*(35 + 2*I)/3100"
+        ],
+        [
+          [
+            5,
+            207,
+            396
+          ],
+          "3*sqrt(30)*(29 + I)/1550"
+        ],
+        [
+          [
+            6,
+            144,
+            396
+          ],
+          "sqrt(15)*(-90396 - 3125*I)/1255500"
+        ],
+        [
+          [
+            68,
+            144,
+            396
+          ],
+          "3*sqrt(30)*(29 + I)/1550"
+        ]
+      ],
+      [
+        [
+          [
+            6,
+            144,
+            396
+          ],
+          "-71*sqrt(2)*I/180"
+        ]
+      ],
+      [
+        [
+          [
+            5,
+            144,
+            396
+          ],
+          "I*(sqrt(15)*(10267500 - 46203750*I) + sqrt(30)*(112886371 + 13536180*I))/4125070800"
+        ],
+        [
+          [
+            6,
+            144,
+            396
+          ],
+          "25*sqrt(15)*(-3 + 5*I)/10044"
+        ],
+        [
+          [
+            69,
+            144,
+            396
+          ],
+          "-9*sqrt(15)*I/125"
+        ]
+      ],
+      [
+        [
+          [
+            4,
+            144,
+            392
+          ],
+          "3*sqrt(30)/25"
+        ],
+        [
+          [
+            4,
+            144,
+            396
+          ],
+          "9*sqrt(15)*(4 + 3*I)/7750"
+        ],
+        [
+          [
+            5,
+            135,
+            387
+          ],
+          "3*sqrt(30)/25"
+        ],
+        [
+          [
+            5,
+            135,
+            396
+          ],
+          "9*sqrt(15)*(1 - 3*I)/3875"
+        ],
+        [
+          [
+            5,
+            140,
+            392
+          ],
+          "3*sqrt(30)/25"
+        ],
+        [
+          [
+            5,
+            140,
+            396
+          ],
+          "9*sqrt(15)*(4 + 3*I)/7750"
+        ],
+        [
+          [
+            5,
+            144,
+            387
+          ],
+          "9*sqrt(15)*(-1 - 3*I)/3875"
+        ],
+        [
+          [
+            5,
+            144,
+            392
+          ],
+          "9*sqrt(15)*(-4 + 3*I)/7750"
+        ],
+        [
+          [
+            5,
+            144,
+            396
+          ],
+          "-(sqrt(15)*(1540125000 - 2720558940*I) + sqrt(30)*(1192680457007 + 698600700*I))/206253540000"
+        ],
+        [
+          [
+            5,
+            144,
+            459
+          ],
+          "3*sqrt(30)/3100"
+        ],
+        [
+          [
+            5,
+            145,
+            397
+          ],
+          "3*sqrt(30)/25"
+        ],
+        [
+          [
+            5,
+            207,
+            396
+          ],
+          "-3*sqrt(30)/3100"
+        ],
+        [
+          [
+            5,
+            207,
+            459
+          ],
+          "3*sqrt(30)/100"
+        ],
+        [
+          [
+            6,
+            144,
+            396
+          ],
+          "25*sqrt(15)*(-5 - 3*I)/10044"
+        ],
+        [
+          [
+            68,
+            144,
+            396
+          ],
+          "-3*sqrt(30)/3100"
+        ],
+        [
+          [
+            68,
+            144,
+            459
+          ],
+          "21*sqrt(30)/100"
+        ],
+        [
+          [
+            69,
+            144,
+            396
+          ],
+          "9*sqrt(15)/125"
+        ]
+      ],
+      [
+        [
+          [
+            5,
+            144,
+            396
+          ],
+          "-I*(855625*sqrt(15) + sqrt(30)*(-887112 + 8463*I))/229170600"
+        ],
+        [
+          [
+            5,
+            144,
+            459
+          ],
+          "3*sqrt(30)*(-1 - 29*I)/1550"
+        ],
+        [
+          [
+            5,
+            207,
+            396
+          ],
+          "3*sqrt(30)*(2 + 35*I)/3100"
+        ],
+        [
+          [
+            6,
+            144,
+            396
+          ],
+          "sqrt(15)*(3125 - 90396*I)/1255500"
+        ],
+        [
+          [
+            68,
+            144,
+            396
+          ],
+          "3*sqrt(30)*(2 + 35*I)/3100"
+        ]
+      ],
+      [
+        [
+          [
+            5,
+            144,
+            396
+          ],
+          "-71*sqrt(2)/180"
+        ]
+      ],
+      [
+        [
+          [
+            5,
+            144,
+            396
+          ],
+          "-I*(sqrt(15)*(3422500 - 855625*I) + 115227*sqrt(30)*I)/229170600"
+        ],
+        [
+          [
+            5,
+            144,
+            459
+          ],
+          "9*sqrt(30)*(53 + 2*I)/6200"
+        ],
+        [
+          [
+            5,
+            207,
+            396
+          ],
+          "3*sqrt(30)*(151 + 6*I)/6200"
+        ],
+        [
+          [
+            6,
+            144,
+            396
+          ],
+          "-25*sqrt(15)*I/10044"
+        ],
+        [
+          [
+            68,
+            144,
+            396
+          ],
+          "-3*(744*sqrt(15) + sqrt(30)*(-755 - 30*I))/31000"
+        ]
+      ],
+      [
+        [
+          [
+            5,
+            144,
+            396
+          ],
+          "-I*(855625*sqrt(15) + sqrt(30)*(-887112 + 8463*I))/229170600"
+        ],
+        [
+          [
+            5,
+            144,
+            459
+          ],
+          "3*sqrt(30)*(1 - 91*I)/3100"
+        ],
+        [
+          [
+            5,
+            207,
+            396
+          ],
+          "3*sqrt(30)*(-1 + 64*I)/3100"
+        ],
+        [
+          [
+            6,
+            144,
+            396
+          ],
+          "25*sqrt(15)/10044"
+        ],
+        [
+          [
+            68,
+            144,
+            396
+          ],
+          "-3*I*(372*sqrt(15) + sqrt(30)*(-320 - 5*I))/15500"
+        ]
+      ],
+      [
+        [
+          [
+            4,
+            144,
+            392
+          ],
+          "3*sqrt(30)/25"
+        ],
+        [
+          [
+            4,
+            144,
+            396
+          ],
+          "9*sqrt(15)*(4 + 3*I)/7750"
+        ],
+        [
+          [
+            5,
+            135,
+            387
+          ],
+          "3*sqrt(30)/25"
+        ],
+        [
+          [
+            5,
+            135,
+            396
+          ],
+          "9*sqrt(15)*(1 - 3*I)/3875"
+        ],
+        [
+          [
+            5,
+            140,
+            392
+          ],
+          "3*sqrt(30)/25"
+        ],
+        [
+          [
+            5,
+            140,
+            396
+          ],
+          "9*sqrt(15)*(4 + 3*I)/7750"
+        ],
+        [
+          [
+            5,
+            144,
+            387
+          ],
+          "9*sqrt(15)*(-1 - 3*I)/3875"
+        ],
+        [
+          [
+            5,
+            144,
+            392
+          ],
+          "9*sqrt(15)*(-4 + 3*I)/7750"
+        ],
+        [
+          [
+            5,
+            144,
+            396
+          ],
+          "-(sqrt(15)*(16390379880 - 6314183940*I) + sqrt(30)*(1169529221557 - 1696601700*I))/206253540000"
+        ],
+        [
+          [
+            5,
+            144,
+            459
+          ],
+          "-3*sqrt(30)/3100"
+        ],
+        [
+          [
+            5,
+            145,
+            397
+          ],
+          "3*sqrt(30)/25"
+        ],
+        [
+          [
+            5,
+            207,
+            396
+          ],
+          "3*sqrt(30)/3100"
+        ],
+        [
+          [
+            5,
+            207,
+            459
+          ],
+          "-3*sqrt(30)/100"
+        ],
+        [
+          [
+            6,
+            144,
+            396
+          ],
+          "25*sqrt(15)*(5 - 3*I)/10044"
+        ],
+        [
+          [
+            68,
+            144,
+            396
+          ],
+          "3*sqrt(30)/3100"
+        ],
+        [
+          [
+            68,
+            144,
+            459
+          ],
+          "3*sqrt(30)/20"
+        ]
+      ]
+    ],
+    "existing_source_ordering_correction": [
+      [
+        [
+          5,
+          144,
+          396
+        ],
+        "-21*sqrt(30)*I/6200"
+      ]
+    ],
+    "all_four_temporal_returns_checked": true,
+    "temporal_identity": "Fraw_0 = Fcurrent_0 - (ambient_H-current_H)/N; Fraw_i = Fcurrent_i for the three original shift axes at the actual source."
+  },
+  "derivative_carrier": "The ambient Pi is fixed. DQ+QD^T and D.T_current are retained in the six Lorentz identities. The raw horizontal forces have not been identified with the reduced100 current forces; their momentum and half-density chain terms must be consumed during that transport.",
+  "secondary_equations_solved_or_physical_Ward9_claimed": false,
+  "seconds": 130.507
+}

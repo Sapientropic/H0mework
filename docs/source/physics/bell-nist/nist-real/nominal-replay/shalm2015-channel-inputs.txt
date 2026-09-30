@@ -1,0 +1,179 @@
+# Verbatim excerpt: L. K. Shalm et al., "A strong loophole-free test of local realism",
+# arXiv:1511.03189v2 (PRL 115, 250402 (2015)).  Excerpt of the inequality, source-architecture
+# and channel-input statements only.
+# Source URL: https://arxiv.org/pdf/1511.03189v2
+# Source PDF sha256: e4f16a8d1ea736cab1befbd67f95f4eee051df7ee4bf8c519afd1992496baaeb
+# Fetched: 2026-09-24 (curl -sL -o shalm2015.pdf <URL>)
+# Extraction command: pdftotext -layout shalm2015.pdf -
+# Content attribution (PDF page of the v2 preprint):
+#   [p.2] Eq. (1) and the reading of its four terms (BLOCK A).
+#   [p.3] PPKTP Type-II phasematching inside a polarization-based Mach-Zehnder interferometer
+#        built from three beam displacers + waveplates (BLOCK A).
+#   [p.4] 'The downconversion system was designed using the tools available in [32]' (ref [32] =
+#        http://www.spdcalc.org, a downconversion-rate calculator, NOT a Bell-setting optimizer);
+#        visibility 0.999 +- 0.001 (H/V) and 0.996 +- 0.001 (D/A); Klyshko system detection
+#        efficiencies 74.7 +- 0.3 % (Alice) and 75.6 +- 0.3 % (Bob); SNSPD efficiency 91 +- 2 %;
+#        background probability per window 8.9e-7 (Alice, ~625 ps) and 3.2e-7 (Bob, ~781 ps);
+#        pair probability per pump pulse ~5e-4; threshold raised 2/3 -> 72.5 %; pump 79.3 MHz;
+#        optimal state Eq. (2); optimal angles a, a', b, b' (BLOCK B).
+#   [p.5] Table I footnote: the definition of N(++|ab) and of the stopping rule (BLOCK C).
+# NOTE: mechanical pdftotext -layout output; the two-column layout interleaves columns inside
+#       some lines.  Whitespace and line breaks are preserved as produced by the extractor.
+# ============================================================================
+
+
+<<<<<<<<<< BLOCK A: Eq. (1), source architecture, measurement/synchronisation overview  [extractor lines 150-215] >>>>>>>>>>
+
+                                                         V2                                H2b            H2b
+                                                                                                                                                 f =25 cm
+                                                                 PPKTP
+                               HWP       ɸ                                                  V1a     H1a       V1a
+                 f =100 cm
+         SMF
+                                                                                            V2a    V2a    H2a
+                                                                           BD2                                      BD3
+                                                                                                                                                     f =25 cm   Polarization
+                        Ti:Sapphire Laser
+                                                   Synchronization                                                                                               Controller
+                  FPD                              Signal to Alice & Bob
+                             1/800
+                                                                                                                                                                   to Alice
+
+FIG. 1. Schematic of the entangled photon source. A pulsed 775 nm-wavelength Ti:Sapphire picosecond mode-locked laser
+running at 79.3 MHz repetition rate is used as both a clock and a pump in our setup. A fast photodiode (FPD) and divider circuit
+are used to generate the synchronization signal that is distributed to Alice and Bob. A polarization-maintaining single-mode
+fiber (SMF) then acts as a spatial filter for the pump. After exiting the SMF, a polarizer and half-wave plate (HWP) set the
+pump polarization. To generate entanglement, a periodically poled potassium titanyl phosphate (PPKTP) crystal designed for
+Type-II phasematching is placed in a polarization-based Mach-Zehnder interferometer formed using a series of HWPs and three
+beam displacers (BD). At BD1 the pump beam is split in two paths (1 and 2): the horizontal (H) component of polarization
+of the pump translates laterally in the x direction while the vertical (V) component of polarization passes straight through.
+Tilting BD1 sets the phase, φ, of the interferometer to 0. After BD1 the pump state is (cos(16◦ ) |H1 i + sin(16◦ ) |V2 i). To
+address the polarization of the paths individually, semi-circular waveplates are used. A HWP in path 2 rotates the polarization
+of the pump from vertical (V) to horizontal (H). A second HWP at 0◦ is inserted into path 1 to keep the path lengths of the
+interferometer balanced. The pump is focused at two spots in the crystal, and photon pairs at a wavelength of 1550 nm are
+generated in either path 1 or 2 through the process of spontaneous parametric downconversion. After the crystal, BD2 walks
+the V-polarized signal photons down in the y direction (V1a and V2a ) while the H-polarized idler photons pass straight through
+(H1b and H2b ). The x–y view shows the resulting locations of the four beam paths. HWPs at 45◦ correct the polarization
+while HWPs at 0◦ provide temporal compensation. BD3 then completes the interferometer by recombining paths 1 and 2 for
+the signal and idler photons. The two downconversion processes interfere with one another, creating the entangled state in Eq.
+(2). A high-purity silicon wafer with an anti-reflection coating is used to filter out the remaining pump light. The idler (signal)
+photons are coupled into a SMF and sent to Alice (Bob).
+
+
+results they obtained on a trial-by-trial basis.                                         Supplemental Material for further details). The p-value
+  Our Bell test uses a version of the Clauser-Horne in-                                  is then the maximum probability that our experiment,
+equality [10, 19, 27] where, according to local realism,                                 if it is governed by local realism, could have produced a
+                                                                                         value of the test statistic that is at least as large as the
+        P (++ | ab) ≤ P (+0 | ab0 ) +
+                                                                                         observed value [28]. Smaller p-values can be interpreted
+                         P (0+ | a0 b) + P (++ | a0 b0 ).                    (1)         as stronger evidence against this hypothesis. These p-
+The terms P (++ | ab) and P (++ | a b ) correspond to    0 0                             values can also be used as certificates for cryptographic
+the probability that both Alice and Bob record detection                                 applications, such as random number generation, that
+events (++) when they choose the measurement settings                                    rely on a Bell test [24, 29]. We use a martingale binomial
+ab or a0 b0 , respectively. Similarly, the terms P (+0 | ab0 )                           technique from [27] for computing the p-value that makes
+and P (0+ | a0 b) are the probabilities that only Alice or                               no assumptions about the distribution of events and does
+Bob record an event for settings ab0 and a0 b, respectively.                             not require that the data be independent and identically
+A local realistic model can saturate this inequality; how-                               distributed [30] as long as appropriate stopping criteria
+ever, the probability distributions of entangled quantum                                 are determined in advance.
+particles can violate it.                                                                  In our experiment, the source creates polarization-
+   To quantify our Bell violation we construct a hypoth-                                 entangled pairs of photons and distributes them to Alice
+esis test based on the inequality in Eq. (1). The null                                   and Bob, located in distant labs. At the source location a
+hypothesis we test is that the measured probability dis-                                 mode-locked Ti:Sapphire laser running at repetition rate
+tributions in our experiment are constrained by local re-                                of approximately 79.3 MHz produces picosecond pulses
+alism. Our evidence against this null hypothesis of local                                centered at a wavelength of 775 nm as shown in figure 1.
+realism is quantified in a p-value that we compute from                                  These laser pulses pump an apodized periodically poled
+our measured data using a test statistic. Our test statis-                               potassium titanyl phosphate (PPKTP) crystal to pro-
+tic takes all of the measured data from Alice’s and Bob’s                                duce photon pairs at a wavelength of 1550 nm via the
+trials and summarizes them into a single number (see the                                 process of spontaneous parametric downconversion [31].
+                                                                                                                                                                 4
+
+                                From Source             HWP   QWP              HWP        Plate
+                                                                                          Polarizers
+                                                                                                       generators. When the photons arrive at Alice and Bob,
+
+<<<<<<<<<< BLOCK B: channel inputs (visibility, efficiencies, background, pair probability) + optimal state and angles  [extractor lines 246-300] >>>>>>>>>>
+
+ization of the photons using a fast electro-optic effect. The                                          of the Bell inequality. Every time a background count
+two plate polarizers have a combined contrast ratio > 7000 : 1.                                        is observed it counts as a detection event for only one
+The photons are coupled back into a single-mode fiber (SMF)                                            party. These background counts increase the heralding
+and detected using a superconducting nanowire single-photon                                            efficiency required to close the detector loophole above
+detector (SNSPD). The signal is amplified and sent to a time-                                          2/3 [19]. To reduce the number of background counts,
+tagging unit where the arrival time of the event is recorded.                                          the only detection events considered are those that oc-
+The time tagger also records the measurement setting, the
+                                                                                                       cur within a window of approximately 625 ps at Alice
+synchronization signal, and a one pulse-per-second signal from
+a global positioning system (GPS). The pulse-per-second sig-                                           and 781 ps at Bob, centered around the expected arrival
+nal provides an external time reference that helps align the                                           times of photons from the source. The probability of
+time tags Alice and Bob record. A 10 MHz oscillator synchro-                                           observing a background count during a single window is
+nizes the internal clocks on Alice’s and Bob’s time taggers.                                           8.9 × 10−7 for Alice and 3.2 × 10−7 for Bob, while the
+The synchronization pulse from the source is used to trigger                                           probability that a single pump pulse downconverts into
+the measurement basis choice.                                                                          a photon pair is ≈ 5 × 10−4 . These background counts
+                                                                                                       in our system raise the efficiency needed to violate a Bell
+                                                                                                       inequality from 2/3 to 72.5 %. Given our system detec-
+The downconversion system was designed using the tools                                                 tion efficiencies, our entangled photon production rates,
+available in [32]. The PPKTP crystal is embedded in the                                                entanglement visibility, and the number of background
+middle of a polarization-based Mach-Zehnder interfer-                                                  counts, we numerically determine the entangled state and
+ometer that enables high-quality polarization-entangled                                                measurement settings for Alice and Bob that should give
+states to be generated [33]. Rotating the polarization an-                                             the largest Bell violation for our setup. The optimal state
+alyzer angles at Alice and Bob, we measure the visibility                                              is not maximally entangled [19] and is given by:
+of coincidence detections for a maximally entangled state
+to be 0.999 ± 0.001 in the horizontal/vertical polariza-
+tion basis and 0.996 ± 0.001 in the diagonal/antidiagonal                                                        |ψi = 0.961 |HA HB i + 0.276 |VA VB i ,       (2)
+polarization basis (see [34] for information about the re-
+ported uncertainties). The entangled photons are then                                                  where H (V ) denotes horizontal (vertical) polarization,
+coupled into separate single-mode optical fibers with one                                              and A and B correspond to Alice’s and Bob’s photons,
+photon sent to Alice and the other to Bob. Alice, Bob,                                                 respectively. From the simulation we also determine that
+and the source are positioned at the vertices of a nearly                                              Alice’s optimal polarization measurement angles, relative
+right-angle triangle. Due to constraints in the building                                               to a vertical polarizer, are {a = 4.2o , a0 = −25.9o } while
+layout, the photons travel to Alice and Bob in fiber op-                                               Bob’s are {b = −4.2o , b0 = 25.9o }.
+tic cables that are not positioned along their direct lines                                               Synchronization signals enable Alice and Bob to define
+of sight. While the photons are in flight toward Alice                                                 trials based only on local information. The synchroniza-
+and Bob, their random number generators each choose                                                    tion signal runs at a frequency of 99.1 kHz, allowing Alice
+a measurement setting. Each choice is completed before                                                 and Bob to perform 99,100 trials/s (79.3 MHz/800). This
+information about the entangled state, generated at the                                                trial frequency is limited by the rate the Pockels cells can
+PPKTP crystal, could possibly reach the random number                                                  be stably driven. When the Pockels cells are triggered
+                                                                                                                                                                                                                                                                                                         5
+
+    (a)                                                                                                                            (a)
+                                                                                               Photons measured
+                                                                                                                                                               Fiber to Alice                                                                   S
+           1000
+                              Photons measured                                                                                                         A                                                           132.1 m
+
+
+               800
+
+
+
+
+                                                                                                                                                                                                                                                     Fiber to Bob
+                                                                                                      6
+
+<<<<<<<<<< BLOCK C: Table I footnote (test-statistic terms and stopping rule)  [extractor lines 590-600] >>>>>>>>>>
+
+TABLE I. P-value results for different numbers of aggregate pulses. Here N (++ | ab) refers to the number of times Alice and
+Bob both detect a photon with settings a and b respectively. Before analyzing the data a stopping criteria, Nstop , was chosen.
+This stopping criteria refers to the total number of events considered that have the settings and outcomes specified by the terms
+in Eq. (1), Nstop = N (++ | ab) + N (+0 | ab0 ) + N (0+ | a0 b) + N (++ | a0 b0 ). After this number of trials the p-value is computed
+and the remaining trials discarded. Such pre-determined stopping criteria are necessary for the hypothesis test we use (see
+Supplemental Material for more details). The total trials include all trials up to the stopping criteria regardless of whether
+a photon is detected. The adjusted p-value accounts for the excess predictability we estimate from measurements of one of
+our random number generators. As discussed in the text, the time difference between Bob finishing his measurement and the
+earliest time at which information about Alice’s measurement choice could arrive at Bob sets the margin of timing error that
+can be tolerated and still have all events guaranteed to be spacelike separated. We also give the minimum distance between
+each party and its boundary line (shown in Fig. 4(a)) that guarantees satisfaction of the spacelike separation constraints. In
+
+<<<<<<<<<< BLOCK D: multi-pair statement, PDF p.6  [extractor lines 425-436] >>>>>>>>>>
+they stay on for ≈ 200 ns. This is more than 15 times
+longer than the 12.6 ns pulse-to-pulse separation of the
+pump laser. Therefore photons generated by the source cal significance of the Bell violation. However, including
+can arrive in one of 15 slots while both Alice’s and Bob’s too many pulses will cause one or more of the spacelike
+Pockels cells are on. Since the majority of the photon separation constraints to be violated. Because the prob-
+pulses arriving in these 15 slots satisfy the spacelike sep- ability per pulse of generating an entangled photon pair
+aration constraints, it is possible to aggregate multiple is so low, given that one photon has already arrived, the
+adjacent pulses to increase the event rate and statisti- chance of getting a second event in the same Pockels cell
+
+# NOTE: collapsed columns are an artifact of pdftotext -layout on the two-column page.
+# The relevant sentence is: "Because the probability per pulse of generating an entangled photon
+# pair is so low, given that one photon has already arrived, the chance of getting a second event
+# in the same Pockels cell window is negligible."

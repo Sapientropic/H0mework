@@ -1,0 +1,9 @@
+import H0mework.Chemistry.LAlanineCellField51.MatrixData
+import H0mework.Chemistry.LAlanineWholeCell.MatrixCertificate
+
+namespace SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.BasinRefinement.WholeCellMatrix.F51
+
+checkWholeCellMatrixRow 6
+checkWholeCellMatrixRow 7
+
+end SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.BasinRefinement.WholeCellMatrix.F51

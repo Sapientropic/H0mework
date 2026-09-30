@@ -1,7 +1,41 @@
 Copyright 2026 Sapientropic
 
-This repository (Lean formalizations, verification scripts, frozen evidence
-records and documentation) is licensed under the Apache License, Version 2.0.
-The exported Lean sources keep the byte-exact text of their fixed research
-sources and therefore carry no per-file license header; the repository-level
-LICENSE and this notice govern the whole tree.
+Original contributions to this repository (Lean formalizations, verification
+scripts, frozen evidence records and documentation) are licensed under the
+Apache License, Version 2.0.
+Exported Lean sources retain source declarations and proof text apart from
+the import, resource-address and resource-digest relocations recorded in
+tools/export-map.json.
+The repository-level LICENSE and this notice govern those original contributions.
+
+Third-party material retains its authorship and applicable license:
+
+- Bradley G. Christensen, Advanced tests of nonlocality with entangled photons,
+  University of Illinois Urbana-Champaign PhD thesis (2016), Appendix A and
+  Section 4.6.2. Copyright 2016 Bradley Christensen.
+  Source record: https://www.ideals.illinois.edu/items/92889
+  The excerpt is docs/source/physics/bell-nist/nist-real/nominal-replay/
+  christensen-appendix-a.txt. No redistribution permission for this excerpt
+  is recorded in this repository.
+
+- L. K. Shalm et al., Strong Loophole-Free Test of Local Realism,
+  Physical Review Letters 115, 250402 (2015),
+  https://doi.org/10.1103/PhysRevLett.115.250402 . The published APS article
+  is licensed under CC BY 3.0: https://creativecommons.org/licenses/by/3.0/ .
+  The repository excerpt, shalm2015-channel-inputs.txt in the same directory,
+  was mechanically extracted from arXiv:1511.03189v2. Its three excerpt
+  blocks correspond in substantive text, numbers and formulas to the CC BY
+  published work, with grammatical and reference-format differences retained.
+  The version comparison is recorded in
+  docs/reports/publication-review-2026-09-30.md.
+
+- Mibuki Hayashi, Takashi Nishioka, Hidetaka Kasai and Eiji Nishibori,
+  Accurate temperature dependence of structure factors of L-alanine and taurine
+  for quantum crystallography, IUCrJ 12 (2025), 384-392,
+  https://doi.org/10.1107/S2052252525002647 .
+  Source article licensed under CC BY 4.0:
+  https://creativecommons.org/licenses/by/4.0/ .
+  Eiji Nishibori, Temperature dependence of X-ray diffraction data of
+  L-alanine and taurine (2025), https://doi.org/10.5281/zenodo.14688662 ,
+  licensed under CC BY 4.0. Source records and derived calculations are
+  retained under evidence/biomedical/.

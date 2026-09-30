@@ -1,0 +1,17 @@
+import H0mework.Chemistry.LAlanineBandInputs.Reifier
+import H0mework.Chemistry.LAlanineBandTaylor040.InputBlock0
+
+set_option autoImplicit false
+set_option maxRecDepth 16384
+set_option maxHeartbeats 2000000
+
+namespace SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule
+namespace LAlanine40K2025.BasinRefinement.WholeBandGeneratedInputs.Block16_082
+
+open SourceSignedEvaluator SourceRectangle WholeBandSource WholeBandSaturation
+
+noncomputable def row1312 : CalculatedInput := Block16_080.row1280
+generateBandInputCalculations 1313 1328
+
+end LAlanine40K2025.BasinRefinement.WholeBandGeneratedInputs.Block16_082
+end SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule

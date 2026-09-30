@@ -1,0 +1,111 @@
+{
+  "checks": [
+    {
+      "name": "Source",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--trust=0",
+        "-DwarningAsError=true",
+        "Lean/scratch/LowEnergyPreparedLoops/Source.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 6.726
+    },
+    {
+      "name": "Words",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--trust=0",
+        "-DwarningAsError=true",
+        "Lean/scratch/LowEnergyPreparedLoops/Words.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 6.125
+    },
+    {
+      "name": "Native",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--trust=0",
+        "-DwarningAsError=true",
+        "Lean/scratch/LowEnergyPreparedLoops/Native.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 6.005
+    },
+    {
+      "name": "Transfer",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--trust=0",
+        "-DwarningAsError=true",
+        "Lean/scratch/LowEnergyPreparedLoops/Transfer.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 7.715
+    },
+    {
+      "name": "Scalar",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--trust=0",
+        "-DwarningAsError=true",
+        "Lean/scratch/LowEnergyPreparedLoops/Scalar.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 6.088
+    },
+    {
+      "name": "Audit",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--trust=0",
+        "-DwarningAsError=true",
+        "Verification/physics/low-energy-phenomenology/full-quantum/prepared-loops/Audit.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 5.505
+    },
+    {
+      "name": "Consumer",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--trust=0",
+        "-DwarningAsError=true",
+        "Verification/physics/low-energy-phenomenology/full-quantum/prepared-loops/Consumer.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 5.718
+    },
+    {
+      "name": "IndependentConsumer",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--trust=0",
+        "-DwarningAsError=true",
+        "Verification/physics/low-energy-phenomenology/full-quantum/prepared-loops/audit/Consumer.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 4.74
+    }
+  ],
+  "trust": 0,
+  "warnings_as_errors": true,
+  "default_limits": true
+}

@@ -1,0 +1,99 @@
+{
+  "verdict": "CERTIFIED_ORIGINAL_NONLINEAR_CANONICAL_COFRAME_INITIAL_BRANCH_AND_FULL_EULER_JET",
+  "root": "positiveSmoothUnifiedSource; repaired Dirac-dual; SpinPair.actual; visit10/tick16/materialEntry -> tick17 unchanged",
+  "source_sha256": {
+    "Lean/SaturationMonoid/PhysicsCore/SU7ExteriorYukawaMassSpectrum.lean": "cc100f817041a1e8b33aadf909a4838756c32eb0f28a15ff138c5cd9a3db4813",
+    "Lean/SaturationMonoid/PhysicsCore/SU7ExteriorBreakingYukawa.lean": "f3d245e031380de7dacf16312b81665a11d2fd209dfd751652821e9638b74ce0",
+    "Lean/SaturationMonoid/PhysicsCore/SU7MotherLieAlgebra.lean": "acb8a102cb607e8736b25acd5e851f70b15fb53ec7cc6784362e1b0c2a95e7da",
+    "Lean/SaturationMonoid/PhysicsCore/SU7ExteriorMatterRepresentation.lean": "0b7cb7f6d4078d7f0a7347513bd98077bd18092f89b1c4c4ec3ee23ad84efbac",
+    "Lean/SaturationMonoid/PhysicsCore/SU7ExteriorMatterRestriction.lean": "b91ff6e8d6ea1e9e7e6220fec204288a946a8153913882d1f68eee489d403ed1",
+    "Lean/SaturationMonoid/PhysicsCore/StageNineDynamicBreakingVacuum.lean": "f79cd71ae67e1ee2b1b698f7a09a0130e742e4a471862165748277269e2027bf",
+    "Lean/SaturationMonoid/PhysicsCore/StageNineGlobalIntegratedAction.lean": "525d2672c446c94a9b528c4277efed582419fbcb31e8e28b533cba3ff0589497",
+    "Lean/SaturationMonoid/PhysicsCore/StageNineExteriorMotherLieRepresentation.lean": "444b0ef9ba42af3801ffc010996ac5feddfed8605f4ce9bb2fbe15fe2b562f7b",
+    "Lean/SaturationMonoid/PhysicsCore/StageNineFormNativeMotherAction.lean": "24104b817d0a663626c46388bfa5a2660441f90cbee77ea5a86495fd7d64e6a2",
+    "Lean/SaturationMonoid/PhysicsCore/Stage9C/Material/SpinPair/Parameters.lean": "eeecea0c096fbbf4c0090d301fb19ca70f22020c89a8ad279b70133b6b8f4bc3"
+  },
+  "input_sha256": {
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/source_coframe_initial_constraints.json": "e1c76de0010eed6ff95e3c122fc60273ed3620548d76da87d0fa6d367574511d",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/source_coframe_initial_constraints.py": "6cac15188bb72d7277e61d09125fe0f0091425cd8fb124a9962a357069a10ffc",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/independent_source_coframe_initial_constraints.py": "e9afe7ad81f8d306538d1e9dd8d842c1bb60e03375fb415d16753e42b70fc018",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/independent_source_gauge_legendre.py": "f8c5f520b7ad7b0a00dead0d9f1a4edea32592f7e4a9f0a8a03f02818ec6c45d",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/independent_source_lorentz_contact.py": "1ff02fffd1864081c9aa5a4d65c54ecf3a7a3384d71d0a502fb05bed7eacb7bf",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/independent_source_constraint_preservation.py": "361270587d240436ff16a9ee7fdad144c0b4ccca2b88f88685273b8683872dae",
+    "Verification/physics/low-energy-phenomenology/active-gauge/receipt.json": "93187af70fcb7d91c2d4424346ff35cc2d5f6b29534f3376ccc253ca089035d1",
+    "Verification/physics/low-energy-phenomenology/occupied-response/receipt.json": "7b96255809a493fee55729dee5eb1792957984af582770fc9543bb68b9ec0a87",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/source_gauge_legendre.json": "1058cfd1c843ae13e1dfd2817f21b2e39bfdcf3c2ec4a936f628a05a87c155ee",
+    "Verification/physics/low-energy-phenomenology/exact_readout.py": "ee15e7ec6dae104f2c38050b4b6440267dd2f0d5220dcaf32aafbaddb94249b4",
+    "Lean/SaturationMonoid/PhysicsCore/DiracCliffordRepresentation.lean": "26f790b7500cb6cc71ccbdf5a737b852e3519bc63afc983c897b2c1589d86c6b"
+  },
+  "candidate_or_common_Hamiltonian_constructor_imported": false,
+  "independent_algorithm": "raw Levi-Civita gravity Hessian/load and original independent-dual spin density; raw scalar/gauge Legendre elimination; full252 Gamma/Yukawa density; fixed-velocity coframe stress first, then generated velocities; independent full16 original Euler and both matter equations",
+  "source_binding_checks": 80,
+  "family_canonical_data": "Pi_e=0,Pi_A=0 are the actual recomputed source momenta; Pi_phi=radial*u*q, q=P61 e23; psi=psi0+alpha e135, chi=chi0+beta e126; p=-i chi E fixed along time-coframe variables",
+  "original_source_readback": "u=alpha=beta=radial=0 and n=N,shift=0",
+  "all16_coframe_momenta_and_full_Lorentz_shift_zero": true,
+  "all70_scalar_and36_gauge_momenta_recovered_from_raw_density": true,
+  "full_H_components": {
+    "coframe_Lorentz_matter": "9*n",
+    "scalar": "-n*u**2*(50*radial**2 - 73)/200",
+    "gauge": "162*(3*n**2 - shift1**2 - shift2**2 - shift3**2)/(625*n*(n**2 - shift1**2 - shift2**2 - shift3**2))",
+    "matter_without_Lorentz": "-n*(5*alpha*beta*u + 72)/10"
+  },
+  "clock_coefficient": "-(100*alpha*beta*u + 50*radial**2*u**2 - 73*u**2 - 360)/200",
+  "positive_clock_squared": "486/(625*a)",
+  "raw_four_stresses_equal_fixed_canonical_Hamiltonian_derivative": true,
+  "actual_source_constraint_Jacobian": {
+    "shape": [
+      4,
+      4
+    ],
+    "entries": [
+      [
+        0,
+        0,
+        "-sqrt(30)"
+      ],
+      [
+        1,
+        1,
+        "-2*sqrt(30)/3"
+      ],
+      [
+        2,
+        2,
+        "-2*sqrt(30)/3"
+      ],
+      [
+        3,
+        3,
+        "-2*sqrt(30)/3"
+      ]
+    ]
+  },
+  "source_Jacobian_determinant": "800/3",
+  "family_Jacobian_at_solved_column": "diag(-6c/n^3,-4c/n^3,-4c/n^3,-4c/n^3), det=384c^4/n^12; c=162/625",
+  "branch_domain": "positive orientation n>0, original gauge electric block n^2-|shift|^2!=0 and a>0; the exact four constraints force shift=0 and the positive clock root in this displayed family",
+  "analytic_local_branch": "finite-jet mathematical implicit-function consequence of the actual nonzero source Jacobian and rational/analytic original canonical constraint map on its primary noncharacteristic chart; not a Lean analytic theorem or a global solution",
+  "nonlinear_fixture": {
+    "u": "1/4",
+    "alpha": 1,
+    "beta": 1,
+    "radial": "1/3",
+    "a": "48847/28800",
+    "n_squared": "559872/1221175",
+    "scalar_velocity": "-n q/12, nonzero",
+    "original_all16_coframe_Euler_matches": true,
+    "original_four_temporal_Euler_zero": true,
+    "original_six_Lorentz_projection_zero": true,
+    "original_primal_and_independent_dual_Euler_zero": true,
+    "Gauss_C_and_dotC_zero": true,
+    "nonzero_Yukawa_and_A0_rate": true,
+    "four_BF_fluxes_kept": true
+  },
+  "temporal_principal_generic_identity": "adj(e)[0,:] and E have zero derivatives along e[:,0]; G_t has four zero time-coframe columns",
+  "fixed_p_temporal_correction_zero_off_shell": true,
+  "time_coframe_rates_selected_by_preservation": false,
+  "uniform_all_frames_global_Cauchy_or_quantum_spectrum_claimed": false,
+  "lifetime_status": "SOURCE_NATIVE_DYNAMIC_MEASURE_REQUIRED",
+  "elapsed_seconds": 2.399
+}

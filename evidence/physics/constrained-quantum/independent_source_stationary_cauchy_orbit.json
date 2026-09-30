@@ -1,0 +1,62 @@
+{
+  "verdict": "CERTIFIED_ACTUAL_SOURCE_CAUCHY_ORBIT_AND_FULL_STATIONARY_LINEARIZATION",
+  "root": "positiveSmoothUnifiedSource; repaired Dirac-dual; SpinPair.actual; visit10/tick16/materialEntry -> tick17 unchanged",
+  "source_sha256": {
+    "Lean/SaturationMonoid/PhysicsCore/SU7ExteriorYukawaMassSpectrum.lean": "cc100f817041a1e8b33aadf909a4838756c32eb0f28a15ff138c5cd9a3db4813",
+    "Lean/SaturationMonoid/PhysicsCore/SU7ExteriorBreakingYukawa.lean": "f3d245e031380de7dacf16312b81665a11d2fd209dfd751652821e9638b74ce0",
+    "Lean/SaturationMonoid/PhysicsCore/SU7MotherLieAlgebra.lean": "acb8a102cb607e8736b25acd5e851f70b15fb53ec7cc6784362e1b0c2a95e7da",
+    "Lean/SaturationMonoid/PhysicsCore/SU7ExteriorMatterRepresentation.lean": "0b7cb7f6d4078d7f0a7347513bd98077bd18092f89b1c4c4ec3ee23ad84efbac",
+    "Lean/SaturationMonoid/PhysicsCore/SU7ExteriorMatterRestriction.lean": "b91ff6e8d6ea1e9e7e6220fec204288a946a8153913882d1f68eee489d403ed1",
+    "Lean/SaturationMonoid/PhysicsCore/StageNineDynamicBreakingVacuum.lean": "f79cd71ae67e1ee2b1b698f7a09a0130e742e4a471862165748277269e2027bf",
+    "Lean/SaturationMonoid/PhysicsCore/StageNineGlobalIntegratedAction.lean": "525d2672c446c94a9b528c4277efed582419fbcb31e8e28b533cba3ff0589497",
+    "Lean/SaturationMonoid/PhysicsCore/StageNineExteriorMotherLieRepresentation.lean": "444b0ef9ba42af3801ffc010996ac5feddfed8605f4ce9bb2fbe15fe2b562f7b",
+    "Lean/SaturationMonoid/PhysicsCore/StageNineFormNativeMotherAction.lean": "24104b817d0a663626c46388bfa5a2660441f90cbee77ea5a86495fd7d64e6a2",
+    "Lean/SaturationMonoid/PhysicsCore/Stage9C/Material/SpinPair/Parameters.lean": "eeecea0c096fbbf4c0090d301fb19ca70f22020c89a8ad279b70133b6b8f4bc3"
+  },
+  "input_sha256": {
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/independent_source_stationary_cauchy_orbit.py": "b325c30cf104c5339d8da122b4ebdf4df0ccca9af5def610aec675549a7be30a",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/source_stationary_cauchy_orbit.json": "61facca67c59bd04d3a9c3f0f042efc43231570c1602ba78de3555f96d16016a",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/source_stationary_cauchy_orbit.py": "cb4b9936a937c61797ccba9af7cd039ae2ffbb2d33e07f808a8a915f96e0267e",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/independent_source_first_order_cauchy.py": "8be922ee047a2dfcae80631fc6fa7d392aa8848396a03684cab363e7bc2a8bef",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/independent_source_first_order_cauchy.json": "4b7dcdac84c9e0764570bef72c259ccc25da457a5ee2031a00ea507ba7eeb3e3",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/independent_source_full_linear_split.py": "4bd7c40bc965bfc46024f78457b912aa719394d3e5899129d62528745641e86c",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/source_first_order_cauchy.json": "5264eea9bf2a09662140acf66072ea1672e6521fc1688f970f1ee1ba49e20d8d",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/source_full_linear_split.json": "f58affbf041dd7f16517e26b2d45a44280d0581e71a3370f5d83d37b7e10e15c",
+    "Verification/physics/low-energy-phenomenology/full-phase/receipt.json": "974c63e480b5202cdd00d77867ea0c4e03ba6cd370d5c927133382ee14387683",
+    "Verification/physics/low-energy-phenomenology/active-gauge/receipt.json": "93187af70fcb7d91c2d4424346ff35cc2d5f6b29534f3376ccc253ca089035d1"
+  },
+  "source_binding_checks": 114,
+  "candidate_orbit_constructor_imported": false,
+  "independent_method": "raw literal1500 RHS/original1310 Euler; chirality and exterior-degree weights; exact146 Laurent coefficient identities and original158 density vertices",
+  "initial_source": {
+    "original_Euler_real_rows": 1310,
+    "all_rows_zero": true,
+    "all_introduced_constraints_zero": true,
+    "full_original_auxiliary_graph_recovered": true
+  },
+  "all_time_orbit": {
+    "stationary_original_bosons": true,
+    "both_independent_phase_rates_nonzero": true,
+    "density_coefficient_count": 146,
+    "vertex_count": 158,
+    "arbitrary_phase_Laurent_identity_not_time_sampling": true,
+    "original_full252_primal_and_dual_Euler_zero_for_arbitrary_phase": true,
+    "every_bilinear_time_jet_preserves_zero_total_phase_weight": true,
+    "specific_literal_orbit_stays_in_source_chart_for_all_real_time": true
+  },
+  "full_time_Euler_argument": [
+    "Every original matter density coefficient has zero total dual/primal phase weight. Multiplication by integer rate powers keeps that support, so all time/spatial jet bilinears and coframe/connection/scalar variations retain their source values.",
+    "The bosons, curvature, auxiliary fields and their jets are stationary. Their original Euler rows and introduced constraints therefore remain the verified source-zero values; the two independent matter Euler systems vanish by the displayed exact phase factorization.",
+    "The explicit orbit is analytic and remains in the same noncharacteristic source chart. The previously certified constrained Cauchy uniqueness identifies its germ with the same-source Cauchy producer; this does not assert global evolution for other initial data."
+  ],
+  "linearization_identification": {
+    "complete_nonlinear_density_transform": "For arbitrary bosonic fields each coefficient is a real linear combination of the checked146 matrices. Pulling back psi=Up xi and chi=zeta Ud gives the original stationary density, with the sole time-jet contribution i omega E Rp; pure bosonic terms are unchanged.",
+    "Jacobi": "Differentiate this full density identity at the constant source. The source_full_linear_split1310 Jacobi operator is consequently the stationary representation of variation along the actual source orbit, with both perturbation phases and their temporal derivatives retained.",
+    "independent_dual_replaced_by_Hilbert_adjoint": false,
+    "proper_time_reparameterized": false
+  },
+  "general_initial_data_stationarity_or_global_Cauchy_claimed": false,
+  "interacting_composite_spectrum_or_lifetime_generated": false,
+  "lifetime_status": "SOURCE_NATIVE_DYNAMIC_MEASURE_REQUIRED",
+  "elapsed_seconds": 7.872
+}

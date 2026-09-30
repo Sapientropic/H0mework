@@ -1,0 +1,124 @@
+{
+  "checks": [
+    {
+      "name": "Graph",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--trust=0",
+        "-DwarningAsError=true",
+        "Lean/scratch/LowEnergyLightKernel/Graph.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 2.715
+    },
+    {
+      "name": "Jet",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--trust=0",
+        "-DwarningAsError=true",
+        "Lean/scratch/LowEnergyLightKernel/Jet.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 3.102
+    },
+    {
+      "name": "Source",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--trust=0",
+        "-DwarningAsError=true",
+        "Lean/scratch/LowEnergyLightKernel/Source.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 4.183
+    },
+    {
+      "name": "Scaling",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--trust=0",
+        "-DwarningAsError=true",
+        "Lean/scratch/LowEnergyLightKernel/Scaling.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 3.055
+    },
+    {
+      "name": "Characteristic",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--trust=0",
+        "-DwarningAsError=true",
+        "Lean/scratch/LowEnergyLightKernel/Characteristic.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 3.377
+    },
+    {
+      "name": "Metric",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--trust=0",
+        "-DwarningAsError=true",
+        "Lean/scratch/LowEnergyLightKernel/Metric.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 5.031
+    },
+    {
+      "name": "Audit",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--trust=0",
+        "-DwarningAsError=true",
+        "Verification/physics/low-energy-phenomenology/full-quantum/light-kernel/Audit.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 5.0
+    },
+    {
+      "name": "Consumer",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--trust=0",
+        "-DwarningAsError=true",
+        "Verification/physics/low-energy-phenomenology/full-quantum/light-kernel/Consumer.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 4.856
+    },
+    {
+      "name": "IndependentConsumer",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--trust=0",
+        "-DwarningAsError=true",
+        "Verification/physics/low-energy-phenomenology/full-quantum/light-kernel/audit/Consumer.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 3.899
+    }
+  ],
+  "trust": 0,
+  "warnings_as_errors": true,
+  "default_limits": true
+}

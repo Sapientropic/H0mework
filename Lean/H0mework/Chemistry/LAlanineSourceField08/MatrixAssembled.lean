@@ -1,0 +1,22 @@
+import H0mework.Chemistry.LAlanineSourceMatrix.MatrixSharedAssembly
+import H0mework.Chemistry.LAlanineSourceField08.MatrixB0
+import H0mework.Chemistry.LAlanineSourceField08.MatrixB1
+import H0mework.Chemistry.LAlanineSourceField08.MatrixB2
+import H0mework.Chemistry.LAlanineSourceField08.MatrixB3
+import H0mework.Chemistry.LAlanineSourceField08.MatrixB4
+
+namespace SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.BasinRefinement.SourceFieldMatrices.F8
+open SourceIntegerGrid SourceFields SourceFiniteData
+
+assembleRegisteredRow 0
+assembleRegisteredRow 1
+assembleRegisteredRow 2
+assembleRegisteredRow 3
+assembleRegisteredRow 4
+assembleRegisteredRow 5
+assembleRegisteredRow 6
+assembleRegisteredRow 7
+assembleRegisteredRow 8
+assembleRegisteredRow 9
+
+end SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.BasinRefinement.SourceFieldMatrices.F8

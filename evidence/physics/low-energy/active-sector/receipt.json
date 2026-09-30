@@ -1,0 +1,1308 @@
+{
+  "scope": "SOURCE_P286_ACTIVE_JACOBI_CARRIER_AND_TWO_SIDED_COUPLING_PROJECTIONS",
+  "source_sha256": {
+    "Lean/SaturationMonoid/PhysicsCore/SU7ExteriorYukawaMassSpectrum.lean": "cc100f817041a1e8b33aadf909a4838756c32eb0f28a15ff138c5cd9a3db4813",
+    "Lean/SaturationMonoid/PhysicsCore/SU7ExteriorBreakingYukawa.lean": "f3d245e031380de7dacf16312b81665a11d2fd209dfd751652821e9638b74ce0",
+    "Lean/SaturationMonoid/PhysicsCore/SU7MotherLieAlgebra.lean": "acb8a102cb607e8736b25acd5e851f70b15fb53ec7cc6784362e1b0c2a95e7da",
+    "Lean/SaturationMonoid/PhysicsCore/SU7ExteriorMatterRepresentation.lean": "0b7cb7f6d4078d7f0a7347513bd98077bd18092f89b1c4c4ec3ee23ad84efbac",
+    "Lean/SaturationMonoid/PhysicsCore/SU7ExteriorMatterRestriction.lean": "b91ff6e8d6ea1e9e7e6220fec204288a946a8153913882d1f68eee489d403ed1",
+    "Lean/SaturationMonoid/PhysicsCore/StageNineDynamicBreakingVacuum.lean": "f79cd71ae67e1ee2b1b698f7a09a0130e742e4a471862165748277269e2027bf",
+    "Lean/SaturationMonoid/PhysicsCore/StageNineGlobalIntegratedAction.lean": "525d2672c446c94a9b528c4277efed582419fbcb31e8e28b533cba3ff0589497",
+    "Lean/SaturationMonoid/PhysicsCore/StageNineExteriorMotherLieRepresentation.lean": "444b0ef9ba42af3801ffc010996ac5feddfed8605f4ce9bb2fbe15fe2b562f7b",
+    "Lean/SaturationMonoid/PhysicsCore/StageNineFormNativeMotherAction.lean": "24104b817d0a663626c46388bfa5a2660441f90cbee77ea5a86495fd7d64e6a2",
+    "Lean/SaturationMonoid/PhysicsCore/Stage9C/Material/SpinPair/Parameters.lean": "eeecea0c096fbbf4c0090d301fb19ca70f22020c89a8ad279b70133b6b8f4bc3"
+  },
+  "basis_names": [
+    "colorZeroIndex",
+    "colorOneIndex",
+    "colorTwoIndex",
+    "weakZeroIndex",
+    "weakOneIndex",
+    "hyperPlusIndex",
+    "hyperMinusIndex"
+  ],
+  "source_degrees": [
+    6,
+    2,
+    4
+  ],
+  "H_degree_two_basis": [
+    [
+      0,
+      5
+    ],
+    [
+      1,
+      5
+    ],
+    [
+      2,
+      5
+    ]
+  ],
+  "H_complex_dimension": 3,
+  "H_inclusion": {
+    "shape": [
+      21,
+      3
+    ],
+    "entries": [
+      [
+        4,
+        0,
+        "1"
+      ],
+      [
+        9,
+        1,
+        "1"
+      ],
+      [
+        13,
+        2,
+        "1"
+      ]
+    ]
+  },
+  "H_internal_projection": {
+    "shape": [
+      21,
+      21
+    ],
+    "entries": [
+      [
+        4,
+        4,
+        "1"
+      ],
+      [
+        9,
+        9,
+        "1"
+      ],
+      [
+        13,
+        13,
+        "1"
+      ]
+    ]
+  },
+  "H_whole_spin_projection": {
+    "shape": [
+      252,
+      252
+    ],
+    "entries": [
+      [
+        11,
+        11,
+        "1"
+      ],
+      [
+        16,
+        16,
+        "1"
+      ],
+      [
+        20,
+        20,
+        "1"
+      ],
+      [
+        74,
+        74,
+        "1"
+      ],
+      [
+        79,
+        79,
+        "1"
+      ],
+      [
+        83,
+        83,
+        "1"
+      ],
+      [
+        137,
+        137,
+        "1"
+      ],
+      [
+        142,
+        142,
+        "1"
+      ],
+      [
+        146,
+        146,
+        "1"
+      ],
+      [
+        200,
+        200,
+        "1"
+      ],
+      [
+        205,
+        205,
+        "1"
+      ],
+      [
+        209,
+        209,
+        "1"
+      ]
+    ]
+  },
+  "H_whole_complex_dimension": 12,
+  "p286_labels": [
+    "A01",
+    "S01",
+    "A02",
+    "S02",
+    "A12",
+    "S12",
+    "D0-2",
+    "D1-2",
+    "A34",
+    "S34",
+    "D3-4",
+    "Y"
+  ],
+  "p286_H_actions": [
+    {
+      "shape": [
+        3,
+        3
+      ],
+      "entries": [
+        [
+          0,
+          1,
+          "1"
+        ],
+        [
+          1,
+          0,
+          "-1"
+        ]
+      ]
+    },
+    {
+      "shape": [
+        3,
+        3
+      ],
+      "entries": [
+        [
+          0,
+          1,
+          "I"
+        ],
+        [
+          1,
+          0,
+          "I"
+        ]
+      ]
+    },
+    {
+      "shape": [
+        3,
+        3
+      ],
+      "entries": [
+        [
+          0,
+          2,
+          "1"
+        ],
+        [
+          2,
+          0,
+          "-1"
+        ]
+      ]
+    },
+    {
+      "shape": [
+        3,
+        3
+      ],
+      "entries": [
+        [
+          0,
+          2,
+          "I"
+        ],
+        [
+          2,
+          0,
+          "I"
+        ]
+      ]
+    },
+    {
+      "shape": [
+        3,
+        3
+      ],
+      "entries": [
+        [
+          1,
+          2,
+          "1"
+        ],
+        [
+          2,
+          1,
+          "-1"
+        ]
+      ]
+    },
+    {
+      "shape": [
+        3,
+        3
+      ],
+      "entries": [
+        [
+          1,
+          2,
+          "I"
+        ],
+        [
+          2,
+          1,
+          "I"
+        ]
+      ]
+    },
+    {
+      "shape": [
+        3,
+        3
+      ],
+      "entries": [
+        [
+          0,
+          0,
+          "I"
+        ],
+        [
+          2,
+          2,
+          "-I"
+        ]
+      ]
+    },
+    {
+      "shape": [
+        3,
+        3
+      ],
+      "entries": [
+        [
+          1,
+          1,
+          "I"
+        ],
+        [
+          2,
+          2,
+          "-I"
+        ]
+      ]
+    },
+    {
+      "shape": [
+        3,
+        3
+      ],
+      "entries": []
+    },
+    {
+      "shape": [
+        3,
+        3
+      ],
+      "entries": []
+    },
+    {
+      "shape": [
+        3,
+        3
+      ],
+      "entries": []
+    },
+    {
+      "shape": [
+        3,
+        3
+      ],
+      "entries": [
+        [
+          0,
+          0,
+          "I"
+        ],
+        [
+          1,
+          1,
+          "I"
+        ],
+        [
+          2,
+          2,
+          "I"
+        ]
+      ]
+    }
+  ],
+  "all_P286_generators_commute_H": true,
+  "Yv_H_zero": true,
+  "H_Yv_zero": true,
+  "old_doublet_leakage_generator": "A02",
+  "old_doublet_leakage": {
+    "shape": [
+      21,
+      21
+    ],
+    "entries": [
+      [
+        13,
+        4,
+        "-1"
+      ]
+    ]
+  },
+  "full_mother_counterexample_generator": "A03",
+  "full_mother_leakage": {
+    "shape": [
+      21,
+      21
+    ],
+    "entries": [
+      [
+        16,
+        4,
+        "-1"
+      ]
+    ]
+  },
+  "two_sided_spin_gauge_action_basis_checks": 208,
+  "independent_background_phase_columns": [
+    {
+      "shape": [
+        252,
+        1
+      ],
+      "entries": [
+        [
+          16,
+          0,
+          "1"
+        ],
+        [
+          74,
+          0,
+          "-1"
+        ]
+      ]
+    },
+    {
+      "shape": [
+        252,
+        1
+      ],
+      "entries": [
+        [
+          142,
+          0,
+          "1"
+        ],
+        [
+          200,
+          0,
+          "-1"
+        ]
+      ]
+    }
+  ],
+  "scalar_orbit": {
+    "shape": [
+      70,
+      12
+    ],
+    "entries": [
+      [
+        0,
+        8,
+        "1"
+      ],
+      [
+        5,
+        8,
+        "1"
+      ],
+      [
+        13,
+        4,
+        "-1"
+      ],
+      [
+        15,
+        4,
+        "-1"
+      ],
+      [
+        23,
+        2,
+        "1"
+      ],
+      [
+        25,
+        2,
+        "1"
+      ],
+      [
+        35,
+        9,
+        "1"
+      ],
+      [
+        36,
+        10,
+        "-1"
+      ],
+      [
+        38,
+        11,
+        "-1"
+      ],
+      [
+        40,
+        9,
+        "1"
+      ],
+      [
+        42,
+        6,
+        "1"
+      ],
+      [
+        42,
+        7,
+        "1"
+      ],
+      [
+        42,
+        10,
+        "-1"
+      ],
+      [
+        42,
+        11,
+        "1"
+      ],
+      [
+        44,
+        6,
+        "1"
+      ],
+      [
+        44,
+        7,
+        "1"
+      ],
+      [
+        48,
+        5,
+        "1"
+      ],
+      [
+        50,
+        5,
+        "1"
+      ],
+      [
+        58,
+        3,
+        "-1"
+      ],
+      [
+        60,
+        3,
+        "-1"
+      ]
+    ]
+  },
+  "scalar_orbit_independent_columns": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    8,
+    9,
+    10,
+    11
+  ],
+  "J_basis": {
+    "shape": [
+      70,
+      9
+    ],
+    "entries": [
+      [
+        0,
+        5,
+        "1"
+      ],
+      [
+        5,
+        5,
+        "1"
+      ],
+      [
+        13,
+        2,
+        "-1"
+      ],
+      [
+        15,
+        2,
+        "-1"
+      ],
+      [
+        23,
+        0,
+        "1"
+      ],
+      [
+        25,
+        0,
+        "1"
+      ],
+      [
+        35,
+        6,
+        "1"
+      ],
+      [
+        36,
+        7,
+        "-1"
+      ],
+      [
+        38,
+        8,
+        "-1"
+      ],
+      [
+        40,
+        6,
+        "1"
+      ],
+      [
+        42,
+        4,
+        "1"
+      ],
+      [
+        42,
+        7,
+        "-1"
+      ],
+      [
+        42,
+        8,
+        "1"
+      ],
+      [
+        44,
+        4,
+        "1"
+      ],
+      [
+        48,
+        3,
+        "1"
+      ],
+      [
+        50,
+        3,
+        "1"
+      ],
+      [
+        58,
+        1,
+        "-1"
+      ],
+      [
+        60,
+        1,
+        "-1"
+      ]
+    ]
+  },
+  "J_Gram": {
+    "shape": [
+      9,
+      9
+    ],
+    "entries": [
+      [
+        0,
+        0,
+        "2"
+      ],
+      [
+        1,
+        1,
+        "2"
+      ],
+      [
+        2,
+        2,
+        "2"
+      ],
+      [
+        3,
+        3,
+        "2"
+      ],
+      [
+        4,
+        4,
+        "2"
+      ],
+      [
+        4,
+        7,
+        "-1"
+      ],
+      [
+        4,
+        8,
+        "1"
+      ],
+      [
+        5,
+        5,
+        "2"
+      ],
+      [
+        6,
+        6,
+        "2"
+      ],
+      [
+        7,
+        4,
+        "-1"
+      ],
+      [
+        7,
+        7,
+        "2"
+      ],
+      [
+        7,
+        8,
+        "-1"
+      ],
+      [
+        8,
+        4,
+        "1"
+      ],
+      [
+        8,
+        7,
+        "-1"
+      ],
+      [
+        8,
+        8,
+        "2"
+      ]
+    ]
+  },
+  "J_projector": {
+    "shape": [
+      70,
+      70
+    ],
+    "entries": [
+      [
+        0,
+        0,
+        "1/2"
+      ],
+      [
+        0,
+        5,
+        "1/2"
+      ],
+      [
+        5,
+        0,
+        "1/2"
+      ],
+      [
+        5,
+        5,
+        "1/2"
+      ],
+      [
+        13,
+        13,
+        "1/2"
+      ],
+      [
+        13,
+        15,
+        "1/2"
+      ],
+      [
+        15,
+        13,
+        "1/2"
+      ],
+      [
+        15,
+        15,
+        "1/2"
+      ],
+      [
+        23,
+        23,
+        "1/2"
+      ],
+      [
+        23,
+        25,
+        "1/2"
+      ],
+      [
+        25,
+        23,
+        "1/2"
+      ],
+      [
+        25,
+        25,
+        "1/2"
+      ],
+      [
+        35,
+        35,
+        "1/2"
+      ],
+      [
+        35,
+        40,
+        "1/2"
+      ],
+      [
+        36,
+        36,
+        "3/4"
+      ],
+      [
+        36,
+        38,
+        "1/4"
+      ],
+      [
+        36,
+        42,
+        "1/4"
+      ],
+      [
+        36,
+        44,
+        "-1/4"
+      ],
+      [
+        38,
+        36,
+        "1/4"
+      ],
+      [
+        38,
+        38,
+        "3/4"
+      ],
+      [
+        38,
+        42,
+        "-1/4"
+      ],
+      [
+        38,
+        44,
+        "1/4"
+      ],
+      [
+        40,
+        35,
+        "1/2"
+      ],
+      [
+        40,
+        40,
+        "1/2"
+      ],
+      [
+        42,
+        36,
+        "1/4"
+      ],
+      [
+        42,
+        38,
+        "-1/4"
+      ],
+      [
+        42,
+        42,
+        "3/4"
+      ],
+      [
+        42,
+        44,
+        "1/4"
+      ],
+      [
+        44,
+        36,
+        "-1/4"
+      ],
+      [
+        44,
+        38,
+        "1/4"
+      ],
+      [
+        44,
+        42,
+        "1/4"
+      ],
+      [
+        44,
+        44,
+        "3/4"
+      ],
+      [
+        48,
+        48,
+        "1/2"
+      ],
+      [
+        48,
+        50,
+        "1/2"
+      ],
+      [
+        50,
+        48,
+        "1/2"
+      ],
+      [
+        50,
+        50,
+        "1/2"
+      ],
+      [
+        58,
+        58,
+        "1/2"
+      ],
+      [
+        58,
+        60,
+        "1/2"
+      ],
+      [
+        60,
+        58,
+        "1/2"
+      ],
+      [
+        60,
+        60,
+        "1/2"
+      ]
+    ]
+  },
+  "J_real_dimension": 9,
+  "J_perp_real_dimension": 61,
+  "M_real": {
+    "shape": [
+      28,
+      70
+    ],
+    "entries": [
+      [
+        0,
+        10,
+        "-1"
+      ],
+      [
+        2,
+        12,
+        "1"
+      ],
+      [
+        3,
+        14,
+        "1"
+      ],
+      [
+        4,
+        17,
+        "1"
+      ],
+      [
+        6,
+        31,
+        "-1"
+      ],
+      [
+        7,
+        20,
+        "-1"
+      ],
+      [
+        9,
+        22,
+        "1"
+      ],
+      [
+        10,
+        24,
+        "1"
+      ],
+      [
+        11,
+        27,
+        "1"
+      ],
+      [
+        12,
+        31,
+        "1"
+      ],
+      [
+        14,
+        45,
+        "-1"
+      ],
+      [
+        16,
+        47,
+        "1"
+      ],
+      [
+        17,
+        49,
+        "1"
+      ],
+      [
+        18,
+        52,
+        "1"
+      ],
+      [
+        20,
+        66,
+        "-1"
+      ],
+      [
+        21,
+        55,
+        "-1"
+      ],
+      [
+        23,
+        57,
+        "1"
+      ],
+      [
+        24,
+        59,
+        "1"
+      ],
+      [
+        25,
+        62,
+        "1"
+      ],
+      [
+        26,
+        66,
+        "1"
+      ]
+    ]
+  },
+  "M_sharp": {
+    "shape": [
+      70,
+      28
+    ],
+    "entries": [
+      [
+        10,
+        0,
+        "-1"
+      ],
+      [
+        12,
+        2,
+        "1"
+      ],
+      [
+        14,
+        3,
+        "1"
+      ],
+      [
+        17,
+        4,
+        "1"
+      ],
+      [
+        20,
+        7,
+        "-1"
+      ],
+      [
+        22,
+        9,
+        "1"
+      ],
+      [
+        24,
+        10,
+        "1"
+      ],
+      [
+        27,
+        11,
+        "1"
+      ],
+      [
+        31,
+        6,
+        "-1"
+      ],
+      [
+        31,
+        12,
+        "1"
+      ],
+      [
+        45,
+        14,
+        "1"
+      ],
+      [
+        47,
+        16,
+        "-1"
+      ],
+      [
+        49,
+        17,
+        "-1"
+      ],
+      [
+        52,
+        18,
+        "-1"
+      ],
+      [
+        55,
+        21,
+        "1"
+      ],
+      [
+        57,
+        23,
+        "-1"
+      ],
+      [
+        59,
+        24,
+        "-1"
+      ],
+      [
+        62,
+        25,
+        "-1"
+      ],
+      [
+        66,
+        20,
+        "1"
+      ],
+      [
+        66,
+        26,
+        "-1"
+      ]
+    ]
+  },
+  "M_J_zero": true,
+  "J_M_sharp_zero": true,
+  "background_scalar_J_actions": [
+    {
+      "shape": [
+        9,
+        9
+      ],
+      "entries": [
+        [
+          0,
+          3,
+          "-1/2"
+        ],
+        [
+          1,
+          2,
+          "1/2"
+        ],
+        [
+          2,
+          1,
+          "-1/2"
+        ],
+        [
+          3,
+          0,
+          "1/2"
+        ]
+      ]
+    },
+    {
+      "shape": [
+        9,
+        9
+      ],
+      "entries": [
+        [
+          0,
+          2,
+          "1/2"
+        ],
+        [
+          1,
+          3,
+          "1/2"
+        ],
+        [
+          2,
+          0,
+          "-1/2"
+        ],
+        [
+          3,
+          1,
+          "-1/2"
+        ]
+      ]
+    },
+    {
+      "shape": [
+        9,
+        9
+      ],
+      "entries": [
+        [
+          0,
+          1,
+          "-1/2"
+        ],
+        [
+          1,
+          0,
+          "1/2"
+        ],
+        [
+          2,
+          3,
+          "1/2"
+        ],
+        [
+          3,
+          2,
+          "-1/2"
+        ]
+      ]
+    }
+  ],
+  "background_J_Casimir": {
+    "shape": [
+      9,
+      9
+    ],
+    "entries": [
+      [
+        0,
+        0,
+        "3/4"
+      ],
+      [
+        1,
+        1,
+        "3/4"
+      ],
+      [
+        2,
+        2,
+        "3/4"
+      ],
+      [
+        3,
+        3,
+        "3/4"
+      ]
+    ]
+  },
+  "background_J_Casimir_eigenvalues": {
+    "3/4": 4,
+    "0": 5
+  },
+  "active_scalar_all_momentum_determinant": "Ks^5 Kd^2",
+  "outer_real_dimension": 1021,
+  "outer_diagonal_factor_exponents": {
+    "Ks": 25,
+    "Kd": 18,
+    "F0": 120,
+    "Fplus_Fminus": 60
+  },
+  "scalar_current_ignores_J_perp": true,
+  "scalar_background_preserves_J_split": true,
+  "active_primitive_components": {
+    "scalar_J_real": 9,
+    "gauge_connection_real": 48,
+    "coframe_real": 16,
+    "primal_H_real": 24,
+    "independent_dual_H_real": 24
+  },
+  "active_real_dimension": 121,
+  "previous_middle_real_dimension": 409,
+  "algebraic_fields_still_registered": {
+    "Lorentz_admissible_connection": 24,
+    "gravity_B": 36,
+    "gravity_simplicity_multiplier": 36,
+    "gauge_B": 72
+  },
+  "unreduced_Lorentz_admissible_active_real_dimension": 289,
+  "gravity_connection_ambient_storage_real_dimension": 64,
+  "full_nine_field_jacobi_matrix_assembled": false,
+  "polarization_or_physical_particle_count": null
+}

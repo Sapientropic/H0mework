@@ -1,0 +1,10 @@
+import H0mework.Chemistry.LAlanineBandCall037.TubeMatrixAssembled
+import H0mework.Chemistry.LAlanineBandCall037.TubeCacheComplete
+
+namespace SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.BasinRefinement.TrueTubeWholeMatrix.C37
+
+open WholeCellMatrix SourceIntegerGrid SourceFields SourceFiniteData SourceSignedEvaluator SourceRectangle SourceGaussianModel
+
+assembleTrueTubeCallMatrix 37
+
+end SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.BasinRefinement.TrueTubeWholeMatrix.C37

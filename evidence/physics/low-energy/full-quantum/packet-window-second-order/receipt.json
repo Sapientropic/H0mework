@@ -1,0 +1,119 @@
+{
+  "scope": "STRIKE_ANALYTIC_SHARP_BALL_RESPONSE_SECOND_COEFFICIENT",
+  "source_inputs_sha256": {
+    "Verification/physics/low-energy-phenomenology/full-quantum/packet-field/current-data.json": "f31f512fa9a3585a338678ce5361286d145bf23815698839c17c2d92cace2501",
+    "Verification/physics/low-energy-phenomenology/full-quantum/packet-seed-regularity/receipt.json": "9b6edcc998f5e534fe81e3e785048779adba9ccef4e825da45c92d9629b8e05c",
+    "Verification/physics/low-energy-phenomenology/full-quantum/packet-current-moments/receipt.json": "0bbd206a623ef7cd5a5bb7337b353b8703f7dc042616616090eaaedfb8927c10"
+  },
+  "source_current_coordinate": [
+    1,
+    1
+  ],
+  "source_Q_real_symmetric": true,
+  "source_Q_frobenius_squared": "75824/125",
+  "normalization": "L(sv)=(2*pi)^(-3)/2*integral B_Q(f(k),f(k+sv)) dk for real readout",
+  "expansion": "ReL(sv)=L(0)-c_v*s+K_v*s^2+o(s^2), s down to0",
+  "loss_expansion": "[L(0)-ReL(sv)-c_v*s]/s^2 tends to -K_v",
+  "coefficient": "K_v=(2*pi)^(-3)/4*integral_ball B_Q(a,partial_v^2 a)",
+  "integration_by_parts": "K_v=(2*pi)^(-3)/4*(integral_sphere (v.n)B_Q(a,partial_v a)-integral_ball B_Q(partial_v a,partial_v a))",
+  "geometry": {
+    "exact_overlap_volume": "pi*(16*R**3 - 12*R**2*s + s**3)/12",
+    "short_chord_projection_area": "pi*s**2/4",
+    "short_chord_ball_volume": "pi*s**3/6",
+    "valid_range": "0<s<=2R"
+  },
+  "generic_chord_identity": {
+    "cubic_Hilbert_jet_gram_arbitrary_real_symmetric": true,
+    "orders_0_1_2_exactly_checked": true,
+    "second_endpoint_terms_cancel_by": "c_prime(h)=2*B(a(h),a_prime(h))"
+  },
+  "examples": [
+    {
+      "name": "constant",
+      "test_field": "1",
+      "carrier": "b=e9+e259 in the actual 289 coordinates; B_Q(b,b)=4",
+      "exact_three_dimensional_L": "(16*R**3 - 12*R**2*s + s**3)/(48*pi**2)",
+      "L0": "R**3/(3*pi**2)",
+      "c_v": "R**2/(4*pi**2)",
+      "K_v": "0",
+      "sphere_flux": "0",
+      "gradient_energy": "0",
+      "integration_by_parts_exact": true,
+      "loss_after_cusp_coefficient": "0",
+      "wrong_drop_boundary_coefficient": "0",
+      "remainder_polynomial": "s**3/(48*pi**2)"
+    },
+    {
+      "name": "complex_affine",
+      "test_field": "z*(2 + I) + 1",
+      "carrier": "b=e9+e259 in the actual 289 coordinates; B_Q(b,b)=4",
+      "exact_three_dimensional_L": "(128*R**5 - 240*R**4*s + 128*R**3 + 80*R**2*s**3 - 96*R**2*s - 9*s**5 + 8*s**3)/(384*pi**2)",
+      "L0": "(R**5 + R**3)/(3*pi**2)",
+      "c_v": "R**2*(5*R**2 + 2)/(8*pi**2)",
+      "K_v": "0",
+      "sphere_flux": "80*pi*R**3/3",
+      "gradient_energy": "80*pi*R**3/3",
+      "integration_by_parts_exact": true,
+      "loss_after_cusp_coefficient": "0",
+      "wrong_drop_boundary_coefficient": "-5*R**3/(6*pi**2)",
+      "remainder_polynomial": "-3*s**5/(128*pi**2) + s**3*(10*R**2 + 1)/(48*pi**2)"
+    },
+    {
+      "name": "complex_quadratic",
+      "test_field": "z**2*(2 - I) + z*(1 + I) + 1",
+      "carrier": "b=e9+e259 in the actual 289 coordinates; B_Q(b,b)=4",
+      "exact_three_dimensional_L": "(3840*R**7 - 11200*R**6*s + 8960*R**5*s**2 + 10752*R**5 - 20160*R**4*s + 17920*R**3*s**2 + 8960*R**3 - 1120*R**2*s**5 - 6720*R**2*s**3 - 6720*R**2*s + 145*s**7 + 364*s**5 + 560*s**3)/(26880*pi**2)",
+      "L0": "R**3*(15*R**4 + 42*R**2 + 35)/(105*pi**2)",
+      "c_v": "R**2*(5*R**4 + 9*R**2 + 3)/(12*pi**2)",
+      "K_v": "R**3*(R**2 + 2)/(3*pi**2)",
+      "sphere_flux": "32*pi*R**3*(R**2 + 1)",
+      "gradient_energy": "32*pi*R**3*(2*R**2 + 1)/3",
+      "integration_by_parts_exact": true,
+      "loss_after_cusp_coefficient": "-R**3*(R**2 + 2)/(3*pi**2)",
+      "wrong_drop_boundary_coefficient": "(-2*R**5 - R**3)/(3*pi**2)",
+      "remainder_polynomial": "29*s**7/(5376*pi**2) + s**5*(13 - 40*R**2)/(960*pi**2) + s**3*(1 - 12*R**2)/(48*pi**2)"
+    },
+    {
+      "name": "phase",
+      "test_field": "exp(I*kappa*z)*b",
+      "exact_three_dimensional_L": "(16*R**3 - 12*R**2*s + s**3)*cos(kappa*s)/(48*pi**2)",
+      "c_v": "R**2/(4*pi**2)",
+      "K_v": "-R**3*kappa**2/(6*pi**2)",
+      "sphere_flux": "0",
+      "gradient_energy": "16*pi*R**3*kappa**2/3",
+      "integration_by_parts_exact": true,
+      "nonzero_when_kappa_nonzero": true
+    }
+  ],
+  "WJ_expansion": {
+    "beta": "W^dagger Q W, real",
+    "alpha": "W^dagger Q W_v, complex",
+    "gamma": "W_v^dagger Q W_v, real, not assumed positive",
+    "zeta": "W^dagger Q W_vv, complex",
+    "N": "inner(J,J), real",
+    "theta": "inner(J,J_v), complex",
+    "eta": "inner(J,J_vv), complex",
+    "B_a_avv": "Re(zeta)*N+2*Re(alpha*theta)+beta*Re(eta)",
+    "B_av_av": "gamma*N+beta*norm(J_v)^2+2*Re(conj(alpha)*theta)",
+    "B_a_av": "Re(alpha)*N+beta*Re(theta)",
+    "beta_derivatives": "beta_v=2Re(alpha); beta_vv=2Re(zeta)+2gamma",
+    "full_beta_form": "(beta_vv/2-gamma)*N+(beta_v/2)*N_v-2Im(alpha)Im(theta)+beta*(N_vv/2-norm(J_v)^2)",
+    "generic_complex_jet_identity_checked": true,
+    "opposite_phase_control": {
+      "W_phase_rate": 2,
+      "J_phase_rate": -2,
+      "actual_full_contraction": 0,
+      "incorrect_Real_only_contraction": -32,
+      "difference_nonzero": true
+    }
+  },
+  "analytic_remainder": {
+    "regularity_sufficient": "C2 on the closed ball, with continuous directional second derivative; actual source is C-infinity",
+    "omega2": "uniform modulus of continuity of partial_v^2 a",
+    "unscaled_autocorrelation_error_bound": "||B_Q||*[Vol(ball)*M0*omega2(s)*s^2/2+pi*R^2*(5*M1^2/6+4*M0*M2/3)*s^3+5*pi*M0^2*s^3/12+pi*M0*M2*s^5/12]",
+    "C3_improvement": "replace the first omega2 term by Vol(ball)*M0*M3*s^3/6",
+    "physical_L_error": "multiply that bound by (2*pi)^(-3)/2"
+  },
+  "not_computed": "No numerical value of the actual WJ integral K_v is supplied; examples test the universal identity, not replace the actual prepared source.",
+  "elapsed_seconds": 1.504
+}

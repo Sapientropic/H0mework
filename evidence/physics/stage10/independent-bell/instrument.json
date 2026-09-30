@@ -1,0 +1,78 @@
+{
+  "schema": "storz-2023-nominal-source-instrument/v1",
+  "protocol_revision": "r0002_complete_trials",
+  "data_doi": "10.3929/ethz-b-000624026",
+  "source_mouth": "SaturationMonoid.PhysicsCore.Stage10.Bell.deterministicPreparationPrediction",
+  "units": {
+    "probabilities": "dimensionless",
+    "angles": "Bloch rotation radians"
+  },
+  "nominal_geometric_theta": "-pi/4",
+  "alice_axes_xz": [
+    [
+      0,
+      1
+    ],
+    [
+      -1,
+      0
+    ]
+  ],
+  "bob_axes_xz": [
+    [
+      0.7071067811865475,
+      -0.7071067811865475
+    ],
+    [
+      -0.7071067811865475,
+      -0.7071067811865475
+    ]
+  ],
+  "coding": {
+    "herald": 1,
+    "a": "raw Input Alice",
+    "b": "raw Input Bob",
+    "x": "raw Output Alice, g=+1/e=-1",
+    "y": "raw Output Bob, g=+1/e=-1",
+    "outcome_sign_changes": false
+  },
+  "forward_map": {
+    "preparation": "real psi+; fixed common Rx(pi/2) frame gives phi+ up to global phase",
+    "pulses": "A: Rx(pi/2) then optional Ry(pi/2); B: R_(x+theta)(pi/2) then optional R_(y+theta)(pi/2)",
+    "rotation_convention": "R_phi(pi/2) = [I - i(cos(phi)X + sin(phi)Y)]/sqrt(2)",
+    "canonical_phi_axes": {
+      "A": [
+        [
+          0,
+          1
+        ],
+        [
+          -1,
+          0
+        ]
+      ],
+      "B": [
+        [
+          0.7071067811865475,
+          0.7071067811865475
+        ],
+        [
+          -0.7071067811865475,
+          0.7071067811865475
+        ]
+      ]
+    },
+    "family_map": "Bob color-X conjugation reverses z; feed transformed Bob axes and herald=+1 to the unchanged psi+ family.",
+    "predicted_correlation": "cos(theta_geo + (b-a)*pi/2)",
+    "independent_control_review": "custody/r0002-storz2023-pulse-bridge.md"
+  },
+  "claim_scope": {
+    "hypothesis": "Original source Bell law with the explicitly fixed ideal Methods nominal phase alignment, ideal real-Bell preparation and ideal outcome assignment.",
+    "event_policy": "First 100000 main-file trials in original row order; all settings and outcomes retained; stop earlier only at file end.",
+    "source_to_apparatus": "A conditional nominal apparatus model, not an empirical proof of its calibration.",
+    "phase_identity": "theta_geo denotes the Methods relative basis angle. No fitted offset or theta_control is used, and Supplement Eq16 is not asserted equal to this geometric angle.",
+    "calibration": "No disjoint visibility/F0/F1 or simultaneous phase-error record; optional calibrated model omitted and its alpha unused.",
+    "uncertainty": "Frozen conditional per-cell radius sensitivity. No radius is estimated or selected from test events.",
+    "verdict_meaning": "A rejection applies to this joint source-plus-ideal-apparatus claim. It does not identify the source alone as the cause. Non-rejection is not verification of the whole theory."
+  }
+}

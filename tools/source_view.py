@@ -1,11 +1,20 @@
 #!/usr/bin/env python3
-"""Reconstruct byte-exact original-path sources from this repository, without the source repo.
+"""Reconstruct verified public or exact source-layout views from this export.
 
-The exported modules differ from the fixed research sources only in local import
-addresses; this tool inverts that rewrite using tools/export-map.json and verifies every
-reconstructed byte against the recorded source digest (and, when --receipt is given,
-against the receipt's own source_sha256 object). Reconstructed files are written to a new
-directory outside the repository or under its ignored .local directory; tracked files are unchanged.
+The exported modules relocate local imports, include_str addresses and declared resource
+digests. The default original-path view uses published receipt bytes; --exact restores
+the pinned source bytes, requiring --private-originals for sanitized receipts. Both
+identities and the unchanged receipt payloads are checked with tools/export-map.json.
+Reconstructed files are written to a new
+directory outside the repository or under its ignored .local directory; tracked files are
+unchanged.
+
+Schema 2: a source file may have several pinned byte versions (different papers pin
+different Homework revisions). Every version is exported under its own target
+(H0mework.Versions.<tag>.* for later versions); rows carry source_sha256 plus the list of
+revisions the bytes satisfy. Receipts always record digests, so reconstruction picks the
+row matching the receipt; a bare --path is accepted only when the path has one byte
+version.
 
 Example:
   python3 tools/source_view.py --output /tmp/view \\
@@ -22,6 +31,8 @@ from pathlib import Path
 import re
 import shutil
 import sys
+
+from publication import PublicationError, verify_artifact
 
 ROOT = Path(__file__).resolve().parents[1]
 EXPORT_MAP = ROOT / "tools" / "export-map.json"
@@ -169,6 +180,76 @@ def transform(text: str, tokens, mapping: dict[str, str]) -> bytes:
     return text.encode("utf-8")
 
 
+def invert_resources(text: str, rewrites) -> str:
+    """Map relocated include_str literals back to their original addresses."""
+    for rewrite in rewrites or []:
+        target, source = rewrite["target_address"], rewrite["source_address"]
+        count = text.count(f'"{target}"')
+        if count != 1:
+            raise ViewError(
+                f"Relocated resource address not unique in exported file: {target!r}")
+        text = text.replace(f'"{target}"', f'"{source}"')
+    return text
+
+
+def invert_resource_digests(raw: bytes, row: dict) -> bytes:
+    for rewrite in reversed(row.get("resource_sha256_rewrites", [])):
+        target = json.dumps(rewrite["target"]).encode()
+        source = json.dumps(rewrite["source"]).encode()
+        if raw.count(target) != 1:
+            raise ViewError("Published module resource digest is not unique")
+        raw = raw.replace(target, source)
+    return raw
+
+
+def module_views(row: dict, inverse: dict) -> tuple[bytes, bytes]:
+    """Return the public source-layout view and its exact pinned source."""
+    raw = (ROOT / row["path"]).read_bytes()
+    if sha(raw) != row["target_sha256"]:
+        raise ViewError(f"Exported module differs from its recorded digest: {row['path']}")
+    text = raw.decode("utf-8")
+    tokens = import_tokens(text)
+    reverse = {}
+    for _, _, module in tokens:
+        if module.split(".")[0] in EXTERNAL:
+            continue
+        if module in (row.get("import_map") or {}):
+            reverse[module] = row["import_map"][module]
+            continue
+        source_row = inverse.get(module)
+        if source_row is None:
+            raise ViewError(f"Unmapped exported import: {module}")
+        reverse[module] = source_row["source"] if not source_row["source"].startswith("file:") \
+            else _file_token(source_row, row)
+    view = invert_resources(transform(text, tokens, reverse).decode("utf-8"),
+                            row.get("resource_rewrites")).encode("utf-8")
+    import_tokens(view.decode("utf-8"))
+    original = invert_resource_digests(view, row)
+    if sha(original) != row["source_sha256"]:
+        raise ViewError(f"Reconstructed source digest differs: {row['source_path']}")
+    if sha(view) != row.get("view_sha256", row["source_sha256"]):
+        raise ViewError(f"Public source-layout digest differs: {row['source_path']}")
+    return view, original
+
+
+def artifact_views(row: dict, private_originals=None) -> tuple[bytes, bytes | None]:
+    raw = (ROOT / row["path"]).read_bytes()
+    original = None
+    if row.get("publication") and private_originals is not None:
+        digest = row["source_sha256"]
+        if not re.fullmatch(r"[0-9a-f]{64}", digest):
+            raise ViewError("Invalid private source digest")
+        path = Path(private_originals) / digest
+        if not path.is_file():
+            raise ViewError("Private original receipt is unavailable")
+        original = path.read_bytes()
+    try:
+        verify_artifact(raw, row, original)
+    except PublicationError as error:
+        raise ViewError(f"Artifact identity failed: {row['path']}: {error}") from error
+    return raw, original if row.get("publication") else raw
+
+
 def source_path(value: str) -> str:
     if (not isinstance(value, str) or not value or value.startswith("/")
             or any(c in value for c in ("\\", ":", "\0", "\n", "\r"))
@@ -182,107 +263,289 @@ def load_map():
         data = json.loads(EXPORT_MAP.read_bytes())
     except (OSError, ValueError) as error:
         raise ViewError(f"Cannot read {EXPORT_MAP.name}: {error}") from error
-    if not isinstance(data, dict) or data.get("schema") != 1:
+    if not isinstance(data, dict) or data.get("schema") not in (1, 2):
         raise ViewError("Unsupported export map schema")
-    modules = {}
-    for row in data.get("modules", []):
-        name = data["lean_directory"] + "/" + row["source"].replace(".", "/") + ".lean"
-        if name in modules:
-            raise ViewError(f"Duplicate module entry: {name}")
-        modules[name] = row
-    artifacts = {row["source"]: row for row in data.get("artifacts", [])}
-    if len(artifacts) != len(data.get("artifacts", [])):
-        raise ViewError("Duplicate artifact entry in export map")
-    if modules.keys() & artifacts.keys():
-        raise ViewError("Ambiguous original module/artifact path")
-    return data, modules, artifacts
-
-
-def reconstruct(paths=(), receipts=()) -> dict[str, bytes]:
-    data, modules, artifacts = load_map()
+    directory = data["lean_directory"]
+    # module rows keyed by original source path; several rows per path are byte versions
+    modules: dict[str, list[dict]] = {}
     inverse = {}
-    for row in data["modules"]:
+    for row in data.get("modules", []):
+        if data["schema"] == 1:
+            row = {**row, "source_path": directory + "/" + row["source"].replace(".", "/") + ".lean",
+                   "variant": "base", "import_map": None}
+        key = row["source_path"]
+        modules.setdefault(key, []).append(row)
         previous = inverse.get(row["target"])
-        if previous is not None and previous != row["source"]:
+        if previous is not None and previous != row:
             raise ViewError(f"Ambiguous inverse mapping for {row['target']}")
-        inverse[row["target"]] = row["source"]
+        inverse[row["target"]] = row
+    artifacts: dict[str, list[dict]] = {}
+    for row in data.get("artifacts", []):
+        artifacts.setdefault(row["source"], []).append(row)
+    if set(modules) & set(artifacts):
+        raise ViewError("Ambiguous original module/artifact path")
+    return data, modules, artifacts, inverse
 
-    def artifact_bytes(name):
+
+def row_at(row: dict, rev: str) -> bool:
+    """Whether the row's bytes are the version pinned at revision ``rev``."""
+    if "source_revisions" in row:
+        return rev in row["source_revisions"]
+    return row["source_revision"] == rev
+
+
+def pick(rows: list[dict], path: str, digests: set[str] | None, at: str | None) -> dict:
+    if digests:
+        matches = [row for row in rows if row["source_sha256"] in digests
+                   or (row.get("publication") and row["target_sha256"] in digests)
+                   or row.get("view_sha256") in digests]
+        if at is not None and len(matches) > 1:
+            era = [row for row in matches if row_at(row, at)]
+            if era:
+                matches = era
+        if not matches:
+            raise ViewError(f"No exported byte version matches the receipt digests: {path}")
+        # Digest-matched rows all carry identical source bytes; a path pinned at
+        # several revisions can legitimately have one row per copy.
+        return matches[0]
+    if at is not None:
+        matches = [row for row in rows if row_at(row, at)]
+        if not matches:
+            return None  # the path did not exist with exported bytes at this revision
+        return matches[0]
+    distinct = {row["source_sha256"] for row in rows}
+    if len(distinct) > 1:
+        raise ViewError(
+            f"Several pinned byte versions of {path}; select one via a receipt or --at")
+    return rows[0]
+
+
+def reconstruct(paths=(), receipts=(), prefixes=(), at=None,
+                receipt_prefixes=(), exact=False, private_originals=None) -> tuple[dict[str, bytes], list[str]]:
+    data, modules, artifacts, inverse = load_map()
+    if at is not None:
+        revisions = data.get("revisions", {})
+        rev = revisions.get(at)
+        if rev is None:
+            known = {row["source_revision"] for rows in modules.values() for row in rows}
+            known |= {row["source_revision"] for rows in artifacts.values() for row in rows}
+            hits = {r for r in known if r.startswith(at)}
+            if len(hits) != 1:
+                raise ViewError(f"--at does not resolve to one pinned revision: {at}")
+            rev = hits.pop()
+        at = rev
+
+    def artifact_bytes(name, digests=None):
         source_path(name)
-        if name not in artifacts:
+        rows = artifacts.get(name)
+        if not rows:
             raise ViewError(f"Original artifact is not exported: {name}")
-        row = artifacts[name]
-        raw = (ROOT / row["path"]).read_bytes()
-        if sha(raw) != row["source_sha256"]:
-            raise ViewError(f"Exported artifact differs from its recorded digest: {name}")
-        return raw
+        row = pick(rows, name, digests, at)
+        if row is None:
+            raise ViewError(f"Original artifact does not exist at the pinned revision: {name}")
+        public, original = artifact_views(row, private_originals)
+        if exact and original is None:
+            raise ViewError("Exact receipt reconstruction requires --private-originals")
+        return original if exact else public
 
     requested = {source_path(p) for p in paths}
-    expected = {}
-    by_target = {row["path"]: row for row in data.get("artifacts", [])}
-    for receipt in receipts:
-        row = by_target.get(receipt)
-        if row is None:
-            raise ViewError(f"Receipt is not an exported artifact of this repository: {receipt}")
-        blob = artifact_bytes(row["source"])
+    for prefix in prefixes:
+        source_path(prefix.rstrip("/") + "/x")  # validate as a path fragment
+        hits = [name for name in set(modules) | set(artifacts)
+                if name == prefix or name.startswith(prefix.rstrip("/") + "/")]
+        if not hits:
+            raise ViewError(f"No exported source under prefix: {prefix}")
+        requested.update(hits)
+    expected: dict[str, set[str]] = {}
+
+    def receipt_hashes(blob, label):
         try:
-            hashes = json.loads(blob).get("source_sha256")
+            document = json.loads(blob)
         except ValueError as error:
-            raise ViewError(f"Receipt is not valid JSON: {receipt}") from error
-        if not isinstance(hashes, dict) or not hashes:
-            raise ViewError(f"Receipt needs a nonempty source_sha256 object: {receipt}")
-        requested.add(row["source"])  # the receipt itself is exported byte-exact
+            raise ViewError(f"Receipt is not valid JSON: {label}") from error
+        # Audited check-ins pin source bytes under *_sha256 tables (plus the
+        # legacy source_hashes); the runtime scripts assert every table that is
+        # present, so merge all.
+        merged = {}
+        for key, table in document.items():
+            if key == "source_hashes" or key.endswith("_sha256"):
+                if isinstance(table, dict):
+                    merged.update(table)
+        return merged
+
+    def merge_hashes(hashes, label, receipt_source=None):
         for name, digest in hashes.items():
+            if "/" not in name and receipt_source is not None:
+                # Bare keys are package-dir-relative provenance labels.
+                resolved = receipt_source.rsplit("/", 1)[0] + "/" + name
+                if resolved in modules or resolved in artifacts:
+                    name = resolved
+                else:
+                    continue
             source_path(name)
             if not isinstance(digest, str) or not re.fullmatch(r"[0-9a-f]{64}", digest):
                 raise ViewError(f"Invalid receipt digest: {name}")
-            if name in expected and expected[name] != digest:
-                raise ViewError(f"Receipts disagree on original digest: {name}")
-            expected[name] = digest
+            expected.setdefault(name, set()).add(digest)
             requested.add(name)
+
+    for prefix in receipt_prefixes:
+        for rows in artifacts.values():
+            for row in rows:
+                if not row["path"].startswith(prefix):
+                    continue
+                if not row["path"].endswith(".json") or row.get("binary"):
+                    continue
+                if at is not None and not row_at(row, at):
+                    continue
+                blob = artifact_bytes(row["source"])
+                try:
+                    hashes = receipt_hashes(blob, row["path"])
+                except ViewError:
+                    continue
+                if isinstance(hashes, dict) and hashes:
+                    merge_hashes(hashes, row["path"], row["source"])
+    for receipt in receipts:
+        rows = [row for rows in artifacts.values() for row in rows if row["path"] == receipt]
+        if len(rows) != 1:
+            raise ViewError(f"Receipt is not an exported artifact of this repository: {receipt}")
+        blob = artifact_bytes(rows[0]["source"], {rows[0]["source_sha256"]})
+        hashes = receipt_hashes(blob, receipt)
+        if not isinstance(hashes, dict) or not hashes:
+            raise ViewError(f"Receipt needs a nonempty source_sha256 object: {receipt}")
+        requested.add(rows[0]["source"])
+        expected[rows[0]["source"]] = {rows[0]["source_sha256"] if exact
+                                       else rows[0]["target_sha256"]}
+        merge_hashes(hashes, receipt, rows[0]["source"])
     if not requested:
         raise ViewError("Select at least one original path or receipt")
 
     outputs = {}
+    skipped = []
     for name in sorted(requested):
-        if name not in modules:
-            outputs[name] = artifact_bytes(name)
-            continue
-        row = modules[name]
-        raw = (ROOT / row["path"]).read_bytes()
-        if sha(raw) != row["target_sha256"]:
-            raise ViewError(f"Exported module differs from its recorded digest: {row['path']}")
-        text = raw.decode("utf-8")
-        tokens = import_tokens(text)
-        reverse = {}
-        for begin, end, module in tokens:
-            if module.split(".")[0] in EXTERNAL:
+        digests = expected.get(name)
+        if name not in modules and name not in artifacts:
+            # A receipt may pin a file this repository already tracks verbatim
+            # (e.g. Lean/lean-toolchain): identical bytes satisfy the pin.
+            if digests:
+                local = ROOT / name
+                if local.is_file():
+                    raw = local.read_bytes()
+                    if sha(raw) in digests:
+                        outputs[name] = raw
+                        continue
+                    raise ViewError(f"Tracked file differs from its pinned bytes: {name}")
+                # Receipts also pin runtime-generated outputs (a replay writes
+                # its own receipt.json): not exportable, not needed as input.
+                # A pinned Lean source can never be a runtime output, though —
+                # its absence means the export is missing a real input.
+                if name.startswith("Lean/") and name.endswith(".lean"):
+                    raise ViewError(f"Pinned Lean source is not exported: {name}")
+                skipped.append(name)
+                expected.pop(name, None)
                 continue
-            if module not in inverse:
-                raise ViewError(f"Unmapped exported import: {module}")
-            reverse[module] = inverse[module]
-        original = transform(text, tokens, reverse)
-        import_tokens(original.decode("utf-8"))  # the inverted text must still parse
-        if sha(original) != row["source_sha256"]:
-            raise ViewError(f"Reconstructed source digest differs: {name}")
-        outputs[name] = original
-    for name, digest in expected.items():
-        if sha(outputs[name]) != digest:
+            raise ViewError(f"Original path is not exported: {name}")
+        if name not in modules:
+            if pick(artifacts[name], name, digests, at) is None:
+                continue
+            outputs[name] = artifact_bytes(name, digests)
+            continue
+        row = pick(modules[name], name, digests, at)
+        if row is None:
+            continue
+        public, original = module_views(row, inverse)
+        outputs[name] = original if exact else public
+    for name, digests in expected.items():
+        accepted = set(digests)
+        if not exact:
+            for row in modules.get(name, []) + artifacts.get(name, []):
+                if row["source_sha256"] in digests:
+                    accepted.add(row.get("view_sha256", row.get("target_sha256", row["source_sha256"])))
+        if sha(outputs[name]) not in accepted:
             raise ViewError(f"Receipt source digest differs: {name}")
     if len({name.casefold() for name in outputs}) != len(outputs):
         raise ViewError("Case-colliding original paths")
-    return outputs
+    return outputs, skipped
+
+
+def _file_token(file_row: dict, importer_row: dict) -> str:
+    """Original import token for an exported non-module file.
+
+    The importing file referenced it by its path relative to the importer, as a
+    dotted Lean name (a flat sibling directory yields the bare basename).
+    """
+    source = file_row["source"]
+    assert source.startswith("file:")
+    target_path = source[5:]
+    importer = importer_row["source"]
+    assert importer.startswith("file:")
+    import posixpath
+    rel = posixpath.relpath(target_path, posixpath.dirname(importer[5:]))
+    if rel.startswith("../"):
+        raise ViewError(f"Cannot recover the original import token of {target_path} "
+                        f"from {importer[5:]}")
+    return rel[:-5].replace("/", ".")
+
+
+def verify_all(private_originals=None) -> dict:
+    """Check pinned modules, original artifacts and published receipt payloads."""
+    data, modules, artifacts, inverse = load_map()
+    checked = 0
+    for path, rows in sorted(modules.items()):
+        for row in rows:
+            module_views(row, inverse)
+            checked += 1
+    artifact_checked = 0
+    published = 0
+    private_checked = 0
+    for path, rows in sorted(artifacts.items()):
+        for row in rows:
+            _, original = artifact_views(row, private_originals)
+            if row.get("publication"):
+                published += 1
+                private_checked += original is not None
+            artifact_checked += 1
+    return {"modules": checked, "artifacts": artifact_checked,
+            "published_receipts": published, "private_originals_verified": private_checked}
 
 
 def main(argv=None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--output", type=Path, required=True,
+    parser.add_argument("--output", type=Path, default=None,
                         help="New directory under an existing temporary parent, outside this repository")
     parser.add_argument("--path", action="append", default=[],
                         help="Original source path of an exported module or artifact")
     parser.add_argument("--receipt", action="append", default=[],
                         help="Repository path of an exported JSON receipt with source_sha256")
+    parser.add_argument("--path-prefix", action="append", default=[],
+                        help="Export every module/artifact whose original source path starts "
+                             "with this prefix (single byte version required per path)")
+    parser.add_argument("--at", default=None, metavar="REV",
+                        help="Pinned revision tag or commit prefix; resolves which byte "
+                             "version to use for multi-version paths")
+    parser.add_argument("--receipt-prefix", action="append", default=[], metavar="DIR",
+                        help="Merge the pin lists of every exported JSON receipt under this "
+                             "repository path (with --at, only receipts pinned at that "
+                             "revision contribute)")
+    parser.add_argument("--verify-all", action="store_true",
+                        help="Verify every module and original/published artifact; writes nothing")
+    parser.add_argument("--exact", action="store_true",
+                        help="Restore exact pinned source bytes; sanitized receipts need private originals")
+    parser.add_argument("--private-originals", type=Path,
+                        help="Private archive directory with original receipt files named by source SHA256")
     args = parser.parse_args(argv)
+    if args.verify_all:
+        try:
+            result = verify_all(args.private_originals)
+            if args.exact and result["private_originals_verified"] != result["published_receipts"]:
+                raise ViewError("Exact verification requires all private original receipts")
+        except (ViewError, OSError, ValueError) as error:
+            print(json.dumps({"ok": False, "error": str(error)}))
+            return 1
+        print(json.dumps({"ok": True, **result}, ensure_ascii=False))
+        return 0
+    if args.output is None:
+        print(json.dumps({"ok": False, "error": "--output is required unless --verify-all"}))
+        return 1
     output = args.output
     if ".." in output.parts or output.is_symlink():
         print(json.dumps({"ok": False, "error": "Unsafe output directory"}))
@@ -296,7 +559,8 @@ def main(argv=None) -> int:
                           "(only the gitignored .local/ area is allowed inside the repository)"}))
         return 1
     try:
-        outputs = reconstruct(args.path, args.receipt)
+        outputs, skipped = reconstruct(args.path, args.receipt, args.path_prefix,
+                                       args.at, args.receipt_prefix, args.exact, args.private_originals)
         output.mkdir(parents=True, exist_ok=False)
         try:
             for name, raw in outputs.items():
@@ -310,7 +574,9 @@ def main(argv=None) -> int:
     except (ViewError, OSError, ValueError) as error:
         print(json.dumps({"ok": False, "error": str(error)}))
         return 1
-    print(json.dumps({"ok": True, "files": len(outputs), "root": str(output)}, ensure_ascii=False))
+    print(json.dumps({"ok": True, "files": len(outputs), "root": str(output),
+                      "view": "exact" if args.exact else "public",
+                      "runtime_generated_skipped": skipped}, ensure_ascii=False))
     return 0
 
 

@@ -1,0 +1,80 @@
+{
+  "passed": true,
+  "records": [
+    {
+      "name": "Grading",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--trust=0",
+        "-DwarningAsError=true",
+        "Lean/scratch/LowEnergyClosedLoops/Grading.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 6.611
+    },
+    {
+      "name": "Source",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--trust=0",
+        "-DwarningAsError=true",
+        "Lean/scratch/LowEnergyClosedLoops/Source.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 4.73
+    },
+    {
+      "name": "Words",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--trust=0",
+        "-DwarningAsError=true",
+        "Lean/scratch/LowEnergyClosedLoops/Words.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 4.153
+    },
+    {
+      "name": "Audit",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--trust=0",
+        "-DwarningAsError=true",
+        "Verification/physics/low-energy-phenomenology/full-quantum/closed-loops/Audit.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 4.263
+    },
+    {
+      "name": "Consumer",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--trust=0",
+        "-DwarningAsError=true",
+        "Verification/physics/low-energy-phenomenology/full-quantum/closed-loops/Consumer.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 4.283
+    }
+  ],
+  "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "public_declarations": 41,
+  "direct_consumers": 2,
+  "trust": 0,
+  "warnings_as_errors": true,
+  "default_limits": true
+}

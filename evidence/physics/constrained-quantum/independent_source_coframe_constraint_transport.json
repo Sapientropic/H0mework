@@ -1,0 +1,186 @@
+{
+  "verdict": "CERTIFIED_ORIGINAL_SPATIAL_EULER_RECONSTRUCTION_AND_TEMPORAL_CONSTRAINT_PDE",
+  "root": "positiveSmoothUnifiedSource; repaired Dirac-dual; SpinPair.actual; visit10/tick16/materialEntry -> tick17 unchanged",
+  "source_sha256": {
+    "Lean/SaturationMonoid/PhysicsCore/SU7ExteriorYukawaMassSpectrum.lean": "cc100f817041a1e8b33aadf909a4838756c32eb0f28a15ff138c5cd9a3db4813",
+    "Lean/SaturationMonoid/PhysicsCore/SU7ExteriorBreakingYukawa.lean": "f3d245e031380de7dacf16312b81665a11d2fd209dfd751652821e9638b74ce0",
+    "Lean/SaturationMonoid/PhysicsCore/SU7MotherLieAlgebra.lean": "acb8a102cb607e8736b25acd5e851f70b15fb53ec7cc6784362e1b0c2a95e7da",
+    "Lean/SaturationMonoid/PhysicsCore/SU7ExteriorMatterRepresentation.lean": "0b7cb7f6d4078d7f0a7347513bd98077bd18092f89b1c4c4ec3ee23ad84efbac",
+    "Lean/SaturationMonoid/PhysicsCore/SU7ExteriorMatterRestriction.lean": "b91ff6e8d6ea1e9e7e6220fec204288a946a8153913882d1f68eee489d403ed1",
+    "Lean/SaturationMonoid/PhysicsCore/StageNineDynamicBreakingVacuum.lean": "f79cd71ae67e1ee2b1b698f7a09a0130e742e4a471862165748277269e2027bf",
+    "Lean/SaturationMonoid/PhysicsCore/StageNineGlobalIntegratedAction.lean": "525d2672c446c94a9b528c4277efed582419fbcb31e8e28b533cba3ff0589497",
+    "Lean/SaturationMonoid/PhysicsCore/StageNineExteriorMotherLieRepresentation.lean": "444b0ef9ba42af3801ffc010996ac5feddfed8605f4ce9bb2fbe15fe2b562f7b",
+    "Lean/SaturationMonoid/PhysicsCore/StageNineFormNativeMotherAction.lean": "24104b817d0a663626c46388bfa5a2660441f90cbee77ea5a86495fd7d64e6a2",
+    "Lean/SaturationMonoid/PhysicsCore/Stage9C/Material/SpinPair/Parameters.lean": "eeecea0c096fbbf4c0090d301fb19ca70f22020c89a8ad279b70133b6b8f4bc3"
+  },
+  "input_sha256": {
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/independent_source_coframe_constraint_transport.py": "8e37d2859ddc2fad5cf32eb761d4decd204a6c55f3f186067a4a33ae464fe91a",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/source_coframe_constraint_transport.json": "5a00df481651a59e95e5b9a89bbbffb61c0e409d87cd145ad5a2cad0b1970ebe",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/source_coframe_constraint_transport.py": "6debb94c57a2412968177d76dd25da0e20d10eef1b1365f34341302d86317c81",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/independent_source_lorentz_contact.py": "1ff02fffd1864081c9aa5a4d65c54ecf3a7a3384d71d0a502fb05bed7eacb7bf",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/source_spatial_time_coframe.json": "fc9b8da09c8f10d7756a19d2bad8535b201715910bb02d01f8a7694779bb3be0",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/independent_source_spatial_time_coframe.json": "0b20260a48d9e85aba1dfb39931d49cff2280baef9f62beb4ff2d3bf41a976cd",
+    "Verification/physics/low-energy-phenomenology/active-gauge/receipt.json": "93187af70fcb7d91c2d4424346ff35cc2d5f6b29534f3376ccc253ca089035d1"
+  },
+  "source_binding_checks": 45,
+  "candidate_projection_formula_imported": false,
+  "independent_algorithm": "full12 metric-lift equations, full12 metric6/Spin6 Euler solve, differentiated defining linear systems modulo epsilon squared, raw coordinate Noether coefficient extraction",
+  "uniform_reconstruction": {
+    "generic_coframe_variables": 16,
+    "metric_lift_polynomial_identity": true,
+    "Lorentz_metric_kernel_polynomial_identity": true,
+    "source_normal": "n=eta adj(e)^T e0; E_sp^T eta n=0 and n^T eta n=-det(h_sp)",
+    "uniform_injectivity": "For det(e)det(h_sp)!=0, a Lorentz-skew map killing the spatial3-plane preserves its orthogonal normal line. Skewness and the computed nonzero normal norm force its action on that line to vanish, hence the map is zero; independence of the original six generators gives rank(Z_sp)=6.",
+    "uniform_linear_system": "D_sp R_sp=I and D_sp Z_sp=0, together with rank(Z_sp)=6, make [R_sp Z_sp] and its12x12 transpose invertible. The metric6 and Spin6 equations uniquely generate K."
+  },
+  "all4_actual_directional_derivatives_verified": true,
+  "all_symbolic_constraint_and_first_derivative_coefficients": true,
+  "spatial_Euler_off_constraint_nonzero_retained": true,
+  "source_equation": "partial_t F0=N(partial_1 F1+partial_2 F2+partial_3 F3); partial_t Fi=0 for i=1,2,3",
+  "actual_time_matrix": {
+    "shape": [
+      4,
+      4
+    ],
+    "entries": [
+      [
+        0,
+        0,
+        "7/5"
+      ],
+      [
+        0,
+        1,
+        "1/7"
+      ],
+      [
+        1,
+        0,
+        "1/9"
+      ],
+      [
+        1,
+        1,
+        "1"
+      ],
+      [
+        2,
+        1,
+        "1/11"
+      ],
+      [
+        2,
+        2,
+        "6/5"
+      ],
+      [
+        3,
+        2,
+        "1/13"
+      ],
+      [
+        3,
+        3,
+        "9/8"
+      ]
+    ]
+  },
+  "actual_lower_matrix": {
+    "shape": [
+      4,
+      4
+    ],
+    "entries": [
+      [
+        0,
+        0,
+        "-12260265733/358347640924"
+      ],
+      [
+        0,
+        1,
+        "1860031949407/16125643841580"
+      ],
+      [
+        0,
+        2,
+        "21192254284339/573080573446920"
+      ],
+      [
+        0,
+        3,
+        "1996778301980377/41906516933306025"
+      ],
+      [
+        1,
+        0,
+        "3388965199013/136837606312836"
+      ],
+      [
+        1,
+        1,
+        "66990068395631/1231538456815524"
+      ],
+      [
+        1,
+        2,
+        "18268314874686017/218834910403373880"
+      ],
+      [
+        1,
+        3,
+        "-219934383447641498/3200460564649342995"
+      ],
+      [
+        2,
+        0,
+        "206471289666493/5853608714493540"
+      ],
+      [
+        2,
+        1,
+        "-17442747208272389/75260683472059800"
+      ],
+      [
+        2,
+        2,
+        "40365841930739/3261766957231860"
+      ],
+      [
+        2,
+        3,
+        "160125224994757109/2794052873900220075"
+      ],
+      [
+        3,
+        0,
+        "3420399/38227826"
+      ],
+      [
+        3,
+        1,
+        "1953787/27305590"
+      ],
+      [
+        3,
+        2,
+        "2824120219/50460730320"
+      ],
+      [
+        3,
+        3,
+        "-36362044639/737988180930"
+      ]
+    ]
+  },
+  "analytic_zero_initial_consumer": {
+    "status": "CERTIFIED_CONDITIONAL_LINEAR_ANALYTIC_CONSTRAINT_PROPAGATION",
+    "proof": "On an already generated analytic first-order field solution in the noncharacteristic source chart, all coefficients K(e), derivatives and B(e,de) are analytic. Inverting e^T yields a first-order linear PDE solved for partial_t F. The zero function solves its zero-data Cauchy problem and analytic Cauchy uniqueness gives F=0 locally.",
+    "consumer_order": "First preserve torsion, scalar gradient, gauge curvature, C9 and Gauss and pay the other original Euler equations. Metric6 plus full Spin6 then reconstruct E_sp=K F without assuming F=0. The separately generated coordinate defect equation divQ=0 yields this homogeneous transport, after which zero initial F is propagated.",
+    "time_constraint_zero_assumed_to_derive_spatial_Euler_zero": false,
+    "all_prior_first_order_producers_assumed_assembled_by_this_receipt": false
+  },
+  "complete_spatial_Cauchy_solution_or_quantum_measure_claimed": false,
+  "lifetime_status": "SOURCE_NATIVE_DYNAMIC_MEASURE_REQUIRED",
+  "elapsed_seconds": 0.375
+}

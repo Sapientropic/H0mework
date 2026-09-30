@@ -1,0 +1,255 @@
+{
+  "verdict": "CERTIFIED_ARBITRARY_MOMENTUM_WAVEPACKET_GRADE_AND_ALTERNATING_ORDERED_WORDS",
+  "root": "positiveSmoothUnifiedSource; repaired Dirac-dual; SpinPair.actual; visit10/tick16/materialEntry -> tick17 unchanged",
+  "classification": "subordinate generic wave-configuration algebra consumer with a nonzero real-momentum fermionic fixture; no controller mutation",
+  "input_sha256": {
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/WavepacketGrade.lean": "5c44613d7e7fc59058af86e2c4352ea47144a8614ed0323b2092d989dded50ad",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/WavepacketInteraction.lean": "f736416e4985ed53444a09cf510d9faa8459b8f2f547d01a3a70657e05e9f958",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/WavepacketAudit.lean": "a2e2aa4fa124c297c58f296ff170472cadc05b45ff8d397c2a09dc9a14c8aef4",
+    "Lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+    "Lean/lake-manifest.json": "aa60b347daf17a642d027cda3288f7d6f12c176c4ddd2677c28140daadb15c81"
+  },
+  "strict_checks": [
+    {
+      "module": "WavepacketGrade",
+      "trust": 0,
+      "warningAsError": true,
+      "exit_code": 0
+    },
+    {
+      "module": "WavepacketInteraction",
+      "trust": 0,
+      "warningAsError": true,
+      "exit_code": 0
+    },
+    {
+      "module": "WavepacketAudit",
+      "trust": 0,
+      "warningAsError": true,
+      "exit_code": 0
+    }
+  ],
+  "strict_command_template": "cd Lean; LEAN_PATH=<isolated audit olean directory> lake env lean --root=../Verification/physics/low-energy-phenomenology/external-composite-decay --trust=0 -DwarningAsError=true -o <isolated audit olean directory>/<module>.olean ../Verification/physics/low-energy-phenomenology/external-composite-decay/<module>.lean",
+  "audit_method": "fresh strict compilation of both candidates into a separate temporary olean directory; direct real-momentum family/Alternating consumers; parse exact transitive axiom output after successful independent audit compile",
+  "axioms": {
+    "SourceWavepacketGrade.finite_grade_decomposition": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "SourceWavepacketGrade.eigenstate_above_bound": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "SourceWavepacketGrade.word_eigenstate": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "SourceWavepacketGrade.bounded_grade_word_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "SourceWavepacketInteraction.occupation_bound": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "SourceWavepacketInteraction.occupation_update": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "SourceWavepacketInteraction.line_raises_occupation": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "SourceWavepacketInteraction.interaction_raises_occupation": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "SourceWavepacketInteraction.ordered_wavepacket_word_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "SourceWavepacketInteraction.line_permutation": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "SourceWavepacketInteraction.interaction_permutation": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "SourceWavepacketInteraction.interaction_preserves_alternating": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "SourceWavepacketInteraction.scalarKernel_support": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "SourceWavepacketInteraction.family_raises_occupation": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "SourceWavepacketInteraction.time_ordered_family_word_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "SourceWavepacketInteraction.family_preserves_alternating": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "SourceWavepacketAudit.same_internal_is_alternating": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "SourceWavepacketAudit.same_internal_different_momenta_nonzero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "SourceWavepacketAudit.same_configuration_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "SourceWavepacketAudit.source_matrix_grade": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "SourceWavepacketAudit.actual_kernel_support": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "SourceWavepacketAudit.actual_family_preserves_alternating": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "SourceWavepacketAudit.actual_three_time_word_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "SourceWavepacketAudit.actual_two_insertions_survive": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "theorem_mouth_lint": "attention pass: autoImplicit style hints and intentional axiom-print audit statements only; no final word-zero premise or finiteness assumption on momentum",
+  "bounded_grade_mouth": {
+    "theorem": "SourceWavepacketGrade.bounded_grade_word_zero",
+    "configuration_space": "arbitrary Omega, not assumed finite",
+    "coefficient_module": "arbitrary complex module B",
+    "decomposition": "f=sum_{n=0}^N project(weight,n,f); grade range is finite even when Omega is not",
+    "premises": "weight(x)<=N; every word operator raises grade by one; word.length>N",
+    "conclusion": "word.prod=0 as an operator on every Omega->B function",
+    "finite_configuration_basis_used": false,
+    "final_vanishing_premise_used": false
+  },
+  "source_interaction": {
+    "configuration": "Fin N -> M x I",
+    "momentum_type": "arbitrary M with no Fintype, topology, or measure assumption",
+    "internal_type": "finite decidable I",
+    "wave": "Configuration M I N -> B",
+    "line_action": "sum_j kernel(p_out,i_out,j) applied to psi with that line replaced by (shift(p_out),j)",
+    "shift_orientation": "shift reads the incoming momentum from the outgoing configuration",
+    "occupation": "sum over lines of the indicator that the outgoing internal label lies in target",
+    "occupation_bound_generated": "occupation<=N by the actual Fin N line sum",
+    "source_support": "kernel(p,i,j)!=0 implies i in target and j outside target",
+    "scalar_kernel_bridge": "W(p,i,j) times an arbitrary complex-linear endomorphism Q of B",
+    "scalar_kernel_theorem": "SourceWavepacketInteraction.scalarKernel_support",
+    "matrix_grade_premise": "(indicator_target(i)-indicator_target(j)-1)*W(p,i,j)=0",
+    "kernel_endomorphisms_assumed_commutative": false,
+    "same_internal_label_on_distinct_momenta_excluded": false
+  },
+  "ordered_family_mouth": {
+    "theorem": "SourceWavepacketInteraction.time_ordered_family_word_zero",
+    "parameters": "arbitrary N, arbitrary time-label type T, finite channel type A, arbitrary shifts and operator-valued kernels satisfying source support",
+    "conclusion": "for every list of more than N time labels, the ordered product of actual summed particle-line family interactions is the zero operator",
+    "arbitrary_N": true,
+    "arbitrary_infinite_momentum_carrier": true,
+    "time_ordering_swapped": false,
+    "time_integral_claimed": false
+  },
+  "fermionic_permutation": {
+    "definition": "for every line permutation e, psi(x composed with e)=sign(e) times psi(x)",
+    "line_relabeling_theorem": "SourceWavepacketInteraction.line_permutation",
+    "full_line_sum_equivariance": "SourceWavepacketInteraction.interaction_permutation",
+    "family_preservation_theorem": "SourceWavepacketInteraction.family_preserves_alternating",
+    "sign_not_plain_symmetry": true
+  },
+  "actual_real_momentum_fixture": {
+    "momentum": "Real",
+    "particle_number": 2,
+    "internal_labels": "Fin 2",
+    "coefficient_module": "Complex",
+    "state": "if both internal labels are 0 then p0-p1 else 0",
+    "full_signed_Alternating_proved": true,
+    "same_internal_different_momenta": "psi((1,0),(0,0))=1",
+    "coincident_configuration": "psi((p,0),(p,0))=0 for every real p",
+    "target": [
+      1
+    ],
+    "matrix": "W(t,p)=(t+p+1) e_(1,0)",
+    "pullback_shift": "p -> p-1",
+    "operator_coefficient": "identity endomorphism on Complex",
+    "channel_type": "Fin 1",
+    "source_grade_and_actual_kernel_support_checked": true,
+    "actual_family_preserves_Alternating_checked": true,
+    "arbitrary_three_real_times_word_zero": true,
+    "two_insertions_survive": "family(0)(family(0) psi)((2,1),(0,1))=12",
+    "physical_source61_mode_interpretation_claimed": false,
+    "smooth_compact_test_wave_claimed": false
+  },
+  "scope": "actual algebraic N-body wave functions with arbitrary momentum labels, operator-valued line kernels, signed permutation preservation and bounded-grade ordered word termination",
+  "continuous_smooth_compact_domain_closed": false,
+  "time_integration_or_differentiation_interchange_constructed": false,
+  "source_scalar61_literals_installed_in_Lean": false,
+  "continuous_momentum_integral_constructed": false,
+  "full_four_block_Fock_spectrum_or_lifetime_claimed": false,
+  "lifetime_status": "SOURCE_NATIVE_DYNAMIC_MEASURE_REQUIRED",
+  "environment_recheck": {
+    "reason": "The manifest adds Physlib and five transitive packages; every prior package record, mathlib pin and Lean toolchain is unchanged. The original physics scopes and theorem axiom records are retained.",
+    "previous_manifest_sha256": "2fe02acc26899fd57d82018e711e79c251e26d0b6d2bb370af81db0ed312fbfd",
+    "current_manifest_sha256": "aa60b347daf17a642d027cda3288f7d6f12c176c4ddd2677c28140daadb15c81",
+    "added_packages": [
+      "BibtexQuery",
+      "MD4Lean",
+      "Physlib",
+      "UnicodeBasic",
+      "leansqlite",
+      "«doc-gen4»"
+    ],
+    "strict_command_template": "cd Lean; LEAN_PATH=<fresh isolated olean directory> lake env lean --root=../Verification/physics/low-energy-phenomenology/external-composite-decay --trust=0 -DwarningAsError=true -o <isolated directory>/<module>.olean ../Verification/physics/low-energy-phenomenology/external-composite-decay/<module>.lean",
+    "strict_modules": [
+      "WavepacketGrade",
+      "WavepacketInteraction",
+      "WavepacketAudit"
+    ],
+    "extra_strict_dependencies": [],
+    "all_strict_exit_codes": 0,
+    "replayed_axiom_targets": 24,
+    "all_recorded_axiom_sets_unchanged": true,
+    "refreshed_input_paths": [
+      "Lean/lake-manifest.json"
+    ]
+  }
+}

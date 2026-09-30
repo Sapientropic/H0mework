@@ -1,0 +1,271 @@
+{
+  "scope": "STRIKE_ORIGINAL_E0_ETA1_FIXED_PREPARATION_TRANSFER_CURRENT_HESSIAN",
+  "source_sha256": {
+    "Lean/SaturationMonoid/PhysicsCore/SU7ExteriorYukawaMassSpectrum.lean": "cc100f817041a1e8b33aadf909a4838756c32eb0f28a15ff138c5cd9a3db4813",
+    "Lean/SaturationMonoid/PhysicsCore/SU7ExteriorBreakingYukawa.lean": "f3d245e031380de7dacf16312b81665a11d2fd209dfd751652821e9638b74ce0",
+    "Lean/SaturationMonoid/PhysicsCore/SU7MotherLieAlgebra.lean": "acb8a102cb607e8736b25acd5e851f70b15fb53ec7cc6784362e1b0c2a95e7da",
+    "Lean/SaturationMonoid/PhysicsCore/SU7ExteriorMatterRepresentation.lean": "0b7cb7f6d4078d7f0a7347513bd98077bd18092f89b1c4c4ec3ee23ad84efbac",
+    "Lean/SaturationMonoid/PhysicsCore/SU7ExteriorMatterRestriction.lean": "b91ff6e8d6ea1e9e7e6220fec204288a946a8153913882d1f68eee489d403ed1",
+    "Lean/SaturationMonoid/PhysicsCore/StageNineDynamicBreakingVacuum.lean": "f79cd71ae67e1ee2b1b698f7a09a0130e742e4a471862165748277269e2027bf",
+    "Lean/SaturationMonoid/PhysicsCore/StageNineGlobalIntegratedAction.lean": "525d2672c446c94a9b528c4277efed582419fbcb31e8e28b533cba3ff0589497",
+    "Lean/SaturationMonoid/PhysicsCore/StageNineExteriorMotherLieRepresentation.lean": "444b0ef9ba42af3801ffc010996ac5feddfed8605f4ce9bb2fbe15fe2b562f7b",
+    "Lean/SaturationMonoid/PhysicsCore/StageNineFormNativeMotherAction.lean": "24104b817d0a663626c46388bfa5a2660441f90cbee77ea5a86495fd7d64e6a2",
+    "Lean/SaturationMonoid/PhysicsCore/Stage9C/Material/SpinPair/Parameters.lean": "eeecea0c096fbbf4c0090d301fb19ca70f22020c89a8ad279b70133b6b8f4bc3"
+  },
+  "source_input_sha256": {
+    "Verification/physics/low-energy-phenomenology/full-quantum/packet-noise/source_kernel.py": "d2fcef25a9fb340950773d61b9e5cf5102c4fb73e06db92652598783ffac2b9e"
+  },
+  "physical_momentum": "p=2*pi*xi; transfer k is physical momentum",
+  "original_Dirac_inverse": "R(z,p)=i (z-H(p))^-1 C0^-1 = -N (z-H(p))^-1 gamma0",
+  "lapse": "3*sqrt(30)/25",
+  "frequency": "18*sqrt(15)/125",
+  "cyclic_denominators": [
+    {
+      "chirality": -1,
+      "denominator": "-54*x/125 - 209/3125 + 72*sqrt(15)*I/125"
+    },
+    {
+      "chirality": 1,
+      "denominator": "-54*x/125 - 209/3125 - 72*sqrt(15)*I/125"
+    }
+  ],
+  "packet": "psi(p)=f(p)*b(|p|)/n; f=i(i-H)^(-1)C0^(-1)w; n fixed for all k",
+  "current": "B_k psi(p)=N^(-2)[K H(p-k)+H(p)K]psi(p-k)",
+  "centering": "P=|psi><psi| fixed; mu_a=<psi,j_a>; <z0,z_a>=<j0,j_a>-conj(mu0)*mu_a",
+  "zero_mean_weight": "-2*sqrt(30)*(x - 11873/4050)/((x + 209/1350 - 4*sqrt(15)*I/3)*(x + 209/1350 + 4*sqrt(15)*I/3))",
+  "zero_second_weight": "500*(x**2 - 2707*x/1350 + 11873/1875)/(27*(x + 209/1350 - 4*sqrt(15)*I/3)*(x + 209/1350 + 4*sqrt(15)*I/3))",
+  "first_derivatives": [
+    {
+      "axis": 0,
+      "mean_first": {
+        "b_squared": "0",
+        "b_times_bprime_over_r": "0",
+        "b_times_bsecond_minus_bprime_over_r_over_r2": "0",
+        "ODE_reduced_mixed_coefficient": "0",
+        "ball_squared_rational_weight": "0",
+        "boundary_at_zero_order": null,
+        "boundary_at_infinity_degree_in_r2": null,
+        "both_integration_by_parts_endpoints_zero": true
+      },
+      "current_cross_first": {
+        "b_squared": "0",
+        "b_times_bprime_over_r": "0",
+        "b_times_bsecond_minus_bprime_over_r_over_r2": "0",
+        "ODE_reduced_mixed_coefficient": "0",
+        "ball_squared_rational_weight": "0",
+        "boundary_at_zero_order": null,
+        "boundary_at_infinity_degree_in_r2": null,
+        "both_integration_by_parts_endpoints_zero": true
+      }
+    },
+    {
+      "axis": 1,
+      "mean_first": {
+        "b_squared": "0",
+        "b_times_bprime_over_r": "0",
+        "b_times_bsecond_minus_bprime_over_r_over_r2": "0",
+        "ODE_reduced_mixed_coefficient": "0",
+        "ball_squared_rational_weight": "0",
+        "boundary_at_zero_order": null,
+        "boundary_at_infinity_degree_in_r2": null,
+        "both_integration_by_parts_endpoints_zero": true
+      },
+      "current_cross_first": {
+        "b_squared": "0",
+        "b_times_bprime_over_r": "0",
+        "b_times_bsecond_minus_bprime_over_r_over_r2": "0",
+        "ODE_reduced_mixed_coefficient": "0",
+        "ball_squared_rational_weight": "0",
+        "boundary_at_zero_order": null,
+        "boundary_at_infinity_degree_in_r2": null,
+        "both_integration_by_parts_endpoints_zero": true
+      }
+    },
+    {
+      "axis": 2,
+      "mean_first": {
+        "b_squared": "0",
+        "b_times_bprime_over_r": "0",
+        "b_times_bsecond_minus_bprime_over_r_over_r2": "0",
+        "ODE_reduced_mixed_coefficient": "0",
+        "ball_squared_rational_weight": "0",
+        "boundary_at_zero_order": null,
+        "boundary_at_infinity_degree_in_r2": null,
+        "both_integration_by_parts_endpoints_zero": true
+      },
+      "current_cross_first": {
+        "b_squared": "0",
+        "b_times_bprime_over_r": "0",
+        "b_times_bsecond_minus_bprime_over_r_over_r2": "0",
+        "ODE_reduced_mixed_coefficient": "0",
+        "ball_squared_rational_weight": "0",
+        "boundary_at_zero_order": null,
+        "boundary_at_infinity_degree_in_r2": null,
+        "both_integration_by_parts_endpoints_zero": true
+      }
+    }
+  ],
+  "second_derivatives": [
+    {
+      "axes": [
+        0,
+        0
+      ],
+      "mean_second": {
+        "b_squared": "-2*sqrt(30)*(x**4 - 500*x**3/27 - 294343543*x**2/911250 + 2938472516*x/3796875 + 7340037509135717/3321506250000)/(3*(x + 209/1350 - 4*sqrt(15)*I/3)**3*(x + 209/1350 + 4*sqrt(15)*I/3)**3)",
+        "b_times_bprime_over_r": "-2*sqrt(30)*(x**3 + 3127*x**2/810 + 724692301*x/5467500 - 577546424513/2460375000)/(3*(x + 209/1350 - 4*sqrt(15)*I/3)**2*(x + 209/1350 + 4*sqrt(15)*I/3)**2)",
+        "b_times_bsecond_minus_bprime_over_r_over_r2": "-2*sqrt(30)*x*(x - 11873/4050)/(3*(x + 209/1350 - 4*sqrt(15)*I/3)*(x + 209/1350 + 4*sqrt(15)*I/3))",
+        "ODE_reduced_mixed_coefficient": "8*sqrt(30)*(x**3 - 2291*x**2/540 - 2481457*x/2733750 - 577546424513/14762250000)/(3*(x + 209/1350 - 4*sqrt(15)*I/3)**2*(x + 209/1350 + 4*sqrt(15)*I/3)**2)",
+        "ball_squared_rational_weight": "2*sqrt(30)*(x**4 - 6569*x**3/4050 + 91189579*x**2/5467500 - 1175267082563*x/7381125000 + 577546424513/7381125000)/(3*x*(x + 209/1350 - 4*sqrt(15)*I/3)**2*(x + 209/1350 + 4*sqrt(15)*I/3)**2)",
+        "boundary_at_zero_order": 0,
+        "boundary_at_infinity_degree_in_r2": -1,
+        "both_integration_by_parts_endpoints_zero": true
+      },
+      "current_cross_second": {
+        "b_squared": "-500*(x**5 + 2294*x**4/675 + 28393681*x**3/101250 - 199322084189*x**2/307546875 - 6257346824738107*x/3321506250000 + 7340037509135717/1537734375000)/(81*(x + 209/1350 - 4*sqrt(15)*I/3)**3*(x + 209/1350 + 4*sqrt(15)*I/3)**3)",
+        "b_times_bprime_over_r": "1000*(x**4 - 311*x**3/675 + 27683959*x**2/364500 - 82966849907*x/615093750 + 577546424513/2278125000)/(81*(x + 209/1350 - 4*sqrt(15)*I/3)**2*(x + 209/1350 + 4*sqrt(15)*I/3)**2)",
+        "b_times_bsecond_minus_bprime_over_r_over_r2": "500*x*(x**2 - 2707*x/1350 + 11873/1875)/(81*(x + 209/1350 - 4*sqrt(15)*I/3)*(x + 209/1350 + 4*sqrt(15)*I/3))",
+        "ODE_reduced_mixed_coefficient": "-500*(x**4 - 10201*x**3/4050 + 3684793*x**2/1093500 + 29462338961*x/7381125000 + 577546424513/5125781250)/(27*(x + 209/1350 - 4*sqrt(15)*I/3)**2*(x + 209/1350 + 4*sqrt(15)*I/3)**2)",
+        "ball_squared_rational_weight": "-500*(x**5 - 494*x**4/225 + 4534228*x**3/151875 - 30337641773*x**2/307546875 + 13849041757531*x/41006250000 - 577546424513/3417187500)/(81*x*(x + 209/1350 - 4*sqrt(15)*I/3)**2*(x + 209/1350 + 4*sqrt(15)*I/3)**2)",
+        "boundary_at_zero_order": 0,
+        "boundary_at_infinity_degree_in_r2": 0,
+        "both_integration_by_parts_endpoints_zero": true
+      }
+    },
+    {
+      "axes": [
+        0,
+        1
+      ],
+      "mean_second": {
+        "b_squared": "0",
+        "b_times_bprime_over_r": "0",
+        "b_times_bsecond_minus_bprime_over_r_over_r2": "0",
+        "ODE_reduced_mixed_coefficient": "0",
+        "ball_squared_rational_weight": "0",
+        "boundary_at_zero_order": null,
+        "boundary_at_infinity_degree_in_r2": null,
+        "both_integration_by_parts_endpoints_zero": true
+      },
+      "current_cross_second": {
+        "b_squared": "0",
+        "b_times_bprime_over_r": "0",
+        "b_times_bsecond_minus_bprime_over_r_over_r2": "0",
+        "ODE_reduced_mixed_coefficient": "0",
+        "ball_squared_rational_weight": "0",
+        "boundary_at_zero_order": null,
+        "boundary_at_infinity_degree_in_r2": null,
+        "both_integration_by_parts_endpoints_zero": true
+      }
+    },
+    {
+      "axes": [
+        0,
+        2
+      ],
+      "mean_second": {
+        "b_squared": "0",
+        "b_times_bprime_over_r": "0",
+        "b_times_bsecond_minus_bprime_over_r_over_r2": "0",
+        "ODE_reduced_mixed_coefficient": "0",
+        "ball_squared_rational_weight": "0",
+        "boundary_at_zero_order": null,
+        "boundary_at_infinity_degree_in_r2": null,
+        "both_integration_by_parts_endpoints_zero": true
+      },
+      "current_cross_second": {
+        "b_squared": "0",
+        "b_times_bprime_over_r": "0",
+        "b_times_bsecond_minus_bprime_over_r_over_r2": "0",
+        "ODE_reduced_mixed_coefficient": "0",
+        "ball_squared_rational_weight": "0",
+        "boundary_at_zero_order": null,
+        "boundary_at_infinity_degree_in_r2": null,
+        "both_integration_by_parts_endpoints_zero": true
+      }
+    },
+    {
+      "axes": [
+        1,
+        1
+      ],
+      "mean_second": {
+        "b_squared": "-2*sqrt(30)*(x**4 - 500*x**3/27 - 294343543*x**2/911250 + 2938472516*x/3796875 + 7340037509135717/3321506250000)/(3*(x + 209/1350 - 4*sqrt(15)*I/3)**3*(x + 209/1350 + 4*sqrt(15)*I/3)**3)",
+        "b_times_bprime_over_r": "-2*sqrt(30)*(x**3 + 3127*x**2/810 + 724692301*x/5467500 - 577546424513/2460375000)/(3*(x + 209/1350 - 4*sqrt(15)*I/3)**2*(x + 209/1350 + 4*sqrt(15)*I/3)**2)",
+        "b_times_bsecond_minus_bprime_over_r_over_r2": "-2*sqrt(30)*x*(x - 11873/4050)/(3*(x + 209/1350 - 4*sqrt(15)*I/3)*(x + 209/1350 + 4*sqrt(15)*I/3))",
+        "ODE_reduced_mixed_coefficient": "8*sqrt(30)*(x**3 - 2291*x**2/540 - 2481457*x/2733750 - 577546424513/14762250000)/(3*(x + 209/1350 - 4*sqrt(15)*I/3)**2*(x + 209/1350 + 4*sqrt(15)*I/3)**2)",
+        "ball_squared_rational_weight": "2*sqrt(30)*(x**4 - 6569*x**3/4050 + 91189579*x**2/5467500 - 1175267082563*x/7381125000 + 577546424513/7381125000)/(3*x*(x + 209/1350 - 4*sqrt(15)*I/3)**2*(x + 209/1350 + 4*sqrt(15)*I/3)**2)",
+        "boundary_at_zero_order": 0,
+        "boundary_at_infinity_degree_in_r2": -1,
+        "both_integration_by_parts_endpoints_zero": true
+      },
+      "current_cross_second": {
+        "b_squared": "-500*(x**5 + 2294*x**4/675 + 28393681*x**3/101250 - 199322084189*x**2/307546875 - 6257346824738107*x/3321506250000 + 7340037509135717/1537734375000)/(81*(x + 209/1350 - 4*sqrt(15)*I/3)**3*(x + 209/1350 + 4*sqrt(15)*I/3)**3)",
+        "b_times_bprime_over_r": "1000*(x**4 - 311*x**3/675 + 27683959*x**2/364500 - 82966849907*x/615093750 + 577546424513/2278125000)/(81*(x + 209/1350 - 4*sqrt(15)*I/3)**2*(x + 209/1350 + 4*sqrt(15)*I/3)**2)",
+        "b_times_bsecond_minus_bprime_over_r_over_r2": "500*x*(x**2 - 2707*x/1350 + 11873/1875)/(81*(x + 209/1350 - 4*sqrt(15)*I/3)*(x + 209/1350 + 4*sqrt(15)*I/3))",
+        "ODE_reduced_mixed_coefficient": "-500*(x**4 - 10201*x**3/4050 + 3684793*x**2/1093500 + 29462338961*x/7381125000 + 577546424513/5125781250)/(27*(x + 209/1350 - 4*sqrt(15)*I/3)**2*(x + 209/1350 + 4*sqrt(15)*I/3)**2)",
+        "ball_squared_rational_weight": "-500*(x**5 - 494*x**4/225 + 4534228*x**3/151875 - 30337641773*x**2/307546875 + 13849041757531*x/41006250000 - 577546424513/3417187500)/(81*x*(x + 209/1350 - 4*sqrt(15)*I/3)**2*(x + 209/1350 + 4*sqrt(15)*I/3)**2)",
+        "boundary_at_zero_order": 0,
+        "boundary_at_infinity_degree_in_r2": 0,
+        "both_integration_by_parts_endpoints_zero": true
+      }
+    },
+    {
+      "axes": [
+        1,
+        2
+      ],
+      "mean_second": {
+        "b_squared": "0",
+        "b_times_bprime_over_r": "0",
+        "b_times_bsecond_minus_bprime_over_r_over_r2": "0",
+        "ODE_reduced_mixed_coefficient": "0",
+        "ball_squared_rational_weight": "0",
+        "boundary_at_zero_order": null,
+        "boundary_at_infinity_degree_in_r2": null,
+        "both_integration_by_parts_endpoints_zero": true
+      },
+      "current_cross_second": {
+        "b_squared": "0",
+        "b_times_bprime_over_r": "0",
+        "b_times_bsecond_minus_bprime_over_r_over_r2": "0",
+        "ODE_reduced_mixed_coefficient": "0",
+        "ball_squared_rational_weight": "0",
+        "boundary_at_zero_order": null,
+        "boundary_at_infinity_degree_in_r2": null,
+        "both_integration_by_parts_endpoints_zero": true
+      }
+    },
+    {
+      "axes": [
+        2,
+        2
+      ],
+      "mean_second": {
+        "b_squared": "-2*sqrt(30)*(x**4 - 500*x**3/27 - 294343543*x**2/911250 + 2938472516*x/3796875 + 7340037509135717/3321506250000)/(3*(x + 209/1350 - 4*sqrt(15)*I/3)**3*(x + 209/1350 + 4*sqrt(15)*I/3)**3)",
+        "b_times_bprime_over_r": "-2*sqrt(30)*(x**3 + 3127*x**2/810 + 724692301*x/5467500 - 577546424513/2460375000)/(3*(x + 209/1350 - 4*sqrt(15)*I/3)**2*(x + 209/1350 + 4*sqrt(15)*I/3)**2)",
+        "b_times_bsecond_minus_bprime_over_r_over_r2": "-2*sqrt(30)*x*(x - 11873/4050)/(3*(x + 209/1350 - 4*sqrt(15)*I/3)*(x + 209/1350 + 4*sqrt(15)*I/3))",
+        "ODE_reduced_mixed_coefficient": "8*sqrt(30)*(x**3 - 2291*x**2/540 - 2481457*x/2733750 - 577546424513/14762250000)/(3*(x + 209/1350 - 4*sqrt(15)*I/3)**2*(x + 209/1350 + 4*sqrt(15)*I/3)**2)",
+        "ball_squared_rational_weight": "2*sqrt(30)*(x**4 - 6569*x**3/4050 + 91189579*x**2/5467500 - 1175267082563*x/7381125000 + 577546424513/7381125000)/(3*x*(x + 209/1350 - 4*sqrt(15)*I/3)**2*(x + 209/1350 + 4*sqrt(15)*I/3)**2)",
+        "boundary_at_zero_order": 0,
+        "boundary_at_infinity_degree_in_r2": -1,
+        "both_integration_by_parts_endpoints_zero": true
+      },
+      "current_cross_second": {
+        "b_squared": "-500*(x**5 + 2294*x**4/675 + 28393681*x**3/101250 - 199322084189*x**2/307546875 - 6257346824738107*x/3321506250000 + 7340037509135717/1537734375000)/(81*(x + 209/1350 - 4*sqrt(15)*I/3)**3*(x + 209/1350 + 4*sqrt(15)*I/3)**3)",
+        "b_times_bprime_over_r": "1000*(x**4 - 311*x**3/675 + 27683959*x**2/364500 - 82966849907*x/615093750 + 577546424513/2278125000)/(81*(x + 209/1350 - 4*sqrt(15)*I/3)**2*(x + 209/1350 + 4*sqrt(15)*I/3)**2)",
+        "b_times_bsecond_minus_bprime_over_r_over_r2": "500*x*(x**2 - 2707*x/1350 + 11873/1875)/(81*(x + 209/1350 - 4*sqrt(15)*I/3)*(x + 209/1350 + 4*sqrt(15)*I/3))",
+        "ODE_reduced_mixed_coefficient": "-500*(x**4 - 10201*x**3/4050 + 3684793*x**2/1093500 + 29462338961*x/7381125000 + 577546424513/5125781250)/(27*(x + 209/1350 - 4*sqrt(15)*I/3)**2*(x + 209/1350 + 4*sqrt(15)*I/3)**2)",
+        "ball_squared_rational_weight": "-500*(x**5 - 494*x**4/225 + 4534228*x**3/151875 - 30337641773*x**2/307546875 + 13849041757531*x/41006250000 - 577546424513/3417187500)/(81*x*(x + 209/1350 - 4*sqrt(15)*I/3)**2*(x + 209/1350 + 4*sqrt(15)*I/3)**2)",
+        "boundary_at_zero_order": 0,
+        "boundary_at_infinity_degree_in_r2": 0,
+        "both_integration_by_parts_endpoints_zero": true
+      }
+    }
+  ],
+  "full_tensor_isotropic_generated_from_all_six_actual_components": true,
+  "original_ball_ODE_checked": true,
+  "endpoint_argument": "b(r) finite at 0 and O(r^-2) at infinity; each boundary r*beta(r\u00b2)*b(r)\u00b2/2 vanishes by the recorded exact rational orders",
+  "halfline_integral": "Every rational weight uses the same normalized ball Fourier measure r\u00b2*b(r)\u00b2/(2*pi\u00b2) dr on [0,infinity), with no cutoff.",
+  "elapsed_seconds": 98.646
+}

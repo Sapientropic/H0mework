@@ -1,0 +1,132 @@
+{
+  "scope": "SOURCE_TRUE_LIGHT5_KERNEL_AND_PROPAGATION_CHARACTERISTICS",
+  "passed": true,
+  "trust": 0,
+  "warningAsError": true,
+  "default_limits": true,
+  "public_declarations": 62,
+  "direct_consumers": 7,
+  "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "records": [
+    {
+      "name": "Graph",
+      "exit_code": 0,
+      "seconds": 2.058,
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--trust=0",
+        "-DwarningAsError=true",
+        "-o",
+        "Lean/.lake/build/lib/lean/SaturationMonoid/PhysicsCore/LowEnergy/LightKernel/Graph.olean",
+        "SaturationMonoid/PhysicsCore/LowEnergy/LightKernel/Graph.lean"
+      ]
+    },
+    {
+      "name": "Jet",
+      "exit_code": 0,
+      "seconds": 2.82,
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--trust=0",
+        "-DwarningAsError=true",
+        "-o",
+        "Lean/.lake/build/lib/lean/SaturationMonoid/PhysicsCore/LowEnergy/LightKernel/Jet.olean",
+        "SaturationMonoid/PhysicsCore/LowEnergy/LightKernel/Jet.lean"
+      ]
+    },
+    {
+      "name": "Source",
+      "exit_code": 0,
+      "seconds": 3.515,
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--trust=0",
+        "-DwarningAsError=true",
+        "-o",
+        "Lean/.lake/build/lib/lean/SaturationMonoid/PhysicsCore/LowEnergy/LightKernel/Source.olean",
+        "SaturationMonoid/PhysicsCore/LowEnergy/LightKernel/Source.lean"
+      ]
+    },
+    {
+      "name": "Scaling",
+      "exit_code": 0,
+      "seconds": 2.736,
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--trust=0",
+        "-DwarningAsError=true",
+        "-o",
+        "Lean/.lake/build/lib/lean/SaturationMonoid/PhysicsCore/LowEnergy/LightKernel/Scaling.olean",
+        "SaturationMonoid/PhysicsCore/LowEnergy/LightKernel/Scaling.lean"
+      ]
+    },
+    {
+      "name": "Characteristic",
+      "exit_code": 0,
+      "seconds": 3.047,
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--trust=0",
+        "-DwarningAsError=true",
+        "-o",
+        "Lean/.lake/build/lib/lean/SaturationMonoid/PhysicsCore/LowEnergy/LightKernel/Characteristic.olean",
+        "SaturationMonoid/PhysicsCore/LowEnergy/LightKernel/Characteristic.lean"
+      ]
+    },
+    {
+      "name": "Metric",
+      "exit_code": 0,
+      "seconds": 4.174,
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--trust=0",
+        "-DwarningAsError=true",
+        "-o",
+        "Lean/.lake/build/lib/lean/SaturationMonoid/PhysicsCore/LowEnergy/LightKernel/Metric.olean",
+        "SaturationMonoid/PhysicsCore/LowEnergy/LightKernel/Metric.lean"
+      ]
+    },
+    {
+      "name": "Consumer",
+      "exit_code": 0,
+      "seconds": 3.898,
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--trust=0",
+        "-DwarningAsError=true",
+        "Verification/physics/low-energy-phenomenology/full-quantum/light-kernel/Consumer.lean"
+      ]
+    },
+    {
+      "name": "Audit",
+      "exit_code": 0,
+      "seconds": 3.984,
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--trust=0",
+        "-DwarningAsError=true",
+        "Verification/physics/low-energy-phenomenology/full-quantum/light-kernel/Audit.lean"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,102 @@
+{
+  "scope": "FULL_SOURCE_252_PRIMAL_DUAL_AND_ALGEBRAIC_CAR_FOCK_FLOW",
+  "trust": 0,
+  "warningAsError": true,
+  "default_limits": true,
+  "public_theorems": 44,
+  "direct_consumers": 5,
+  "records": [
+    {
+      "name": "Source",
+      "exit_code": 0,
+      "seconds": 7.122,
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--trust=0",
+        "-DwarningAsError=true",
+        "-o",
+        ".lake/build/lib/lean/scratch/LowEnergyFullQuantum/Source.olean",
+        "scratch/LowEnergyFullQuantum/Source.lean"
+      ]
+    },
+    {
+      "name": "Evolution",
+      "exit_code": 0,
+      "seconds": 8.243,
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--trust=0",
+        "-DwarningAsError=true",
+        "-o",
+        ".lake/build/lib/lean/scratch/LowEnergyFullQuantum/Evolution.olean",
+        "scratch/LowEnergyFullQuantum/Evolution.lean"
+      ]
+    },
+    {
+      "name": "CAR",
+      "exit_code": 0,
+      "seconds": 5.149,
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--trust=0",
+        "-DwarningAsError=true",
+        "-o",
+        ".lake/build/lib/lean/scratch/LowEnergyFullQuantum/CAR.olean",
+        "scratch/LowEnergyFullQuantum/CAR.lean"
+      ]
+    },
+    {
+      "name": "FockEvolution",
+      "exit_code": 0,
+      "seconds": 4.941,
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--trust=0",
+        "-DwarningAsError=true",
+        "-o",
+        ".lake/build/lib/lean/scratch/LowEnergyFullQuantum/FockEvolution.olean",
+        "scratch/LowEnergyFullQuantum/FockEvolution.lean"
+      ]
+    },
+    {
+      "name": "Consumer",
+      "exit_code": 0,
+      "seconds": 3.872,
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--trust=0",
+        "-DwarningAsError=true",
+        "Verification/physics/low-energy-phenomenology/full-quantum/Consumer.lean"
+      ]
+    },
+    {
+      "name": "Audit",
+      "exit_code": 0,
+      "seconds": 3.97,
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--trust=0",
+        "-DwarningAsError=true",
+        "Verification/physics/low-energy-phenomenology/full-quantum/Audit.lean"
+      ]
+    }
+  ],
+  "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "passed": true
+}

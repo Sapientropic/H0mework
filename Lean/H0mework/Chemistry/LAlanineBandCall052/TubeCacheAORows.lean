@@ -1,0 +1,18 @@
+import H0mework.Chemistry.LAlanineBandCall052.TubeCacheB0
+import H0mework.Chemistry.LAlanineBandCall052.TubeCacheB1
+import H0mework.Chemistry.LAlanineBandCall052.TubeCacheB2
+import H0mework.Chemistry.LAlanineBandCall052.TubeCacheB3
+import H0mework.Chemistry.LAlanineBandCall052.TubeCacheB4
+import H0mework.Chemistry.LAlanineBandCall052.TubeCacheB5
+import H0mework.Chemistry.LAlanineBandCall052.TubeCacheB6
+import H0mework.Chemistry.LAlanineBandCall052.TubeCacheB7
+
+set_option autoImplicit false
+
+namespace SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.BasinRefinement.TrueTubeWholeCache.Call52
+
+open SourceRectangle SourceSignedEvaluator SourceGaussianModel SourceFiniteData SourceRectangleChecks SourceFields
+
+assembleLowFieldAOs
+
+end SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.BasinRefinement.TrueTubeWholeCache.Call52

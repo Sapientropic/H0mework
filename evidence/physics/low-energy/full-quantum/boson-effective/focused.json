@@ -1,0 +1,132 @@
+{
+  "scope": "ORIGINAL55_BOSON_SCHUR_AND_LIGHT6_HEAVY42_LOW_MOMENTUM_KERNEL",
+  "passed": true,
+  "trust": 0,
+  "warningAsError": true,
+  "default_limits": true,
+  "public_declarations": 32,
+  "direct_consumers": 7,
+  "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "records": [
+    {
+      "name": "Schur",
+      "exit_code": 0,
+      "seconds": 2.301,
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--trust=0",
+        "-DwarningAsError=true",
+        "-o",
+        ".lake/build/lib/lean/SaturationMonoid/PhysicsCore/LowEnergy/BosonEffective/Schur.olean",
+        "SaturationMonoid/PhysicsCore/LowEnergy/BosonEffective/Schur.lean"
+      ]
+    },
+    {
+      "name": "Order",
+      "exit_code": 0,
+      "seconds": 2.211,
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--trust=0",
+        "-DwarningAsError=true",
+        "-o",
+        ".lake/build/lib/lean/SaturationMonoid/PhysicsCore/LowEnergy/BosonEffective/Order.olean",
+        "SaturationMonoid/PhysicsCore/LowEnergy/BosonEffective/Order.lean"
+      ]
+    },
+    {
+      "name": "Taylor",
+      "exit_code": 0,
+      "seconds": 2.211,
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--trust=0",
+        "-DwarningAsError=true",
+        "-o",
+        ".lake/build/lib/lean/SaturationMonoid/PhysicsCore/LowEnergy/BosonEffective/Taylor.olean",
+        "SaturationMonoid/PhysicsCore/LowEnergy/BosonEffective/Taylor.lean"
+      ]
+    },
+    {
+      "name": "Analytic",
+      "exit_code": 0,
+      "seconds": 2.286,
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--trust=0",
+        "-DwarningAsError=true",
+        "-o",
+        ".lake/build/lib/lean/SaturationMonoid/PhysicsCore/LowEnergy/BosonEffective/Analytic.olean",
+        "SaturationMonoid/PhysicsCore/LowEnergy/BosonEffective/Analytic.lean"
+      ]
+    },
+    {
+      "name": "Readback",
+      "exit_code": 0,
+      "seconds": 1.902,
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--trust=0",
+        "-DwarningAsError=true",
+        "-o",
+        ".lake/build/lib/lean/SaturationMonoid/PhysicsCore/LowEnergy/BosonEffective/Readback.olean",
+        "SaturationMonoid/PhysicsCore/LowEnergy/BosonEffective/Readback.lean"
+      ]
+    },
+    {
+      "name": "Metric",
+      "exit_code": 0,
+      "seconds": 4.218,
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--trust=0",
+        "-DwarningAsError=true",
+        "-o",
+        ".lake/build/lib/lean/SaturationMonoid/PhysicsCore/LowEnergy/BosonEffective/Metric.olean",
+        "SaturationMonoid/PhysicsCore/LowEnergy/BosonEffective/Metric.lean"
+      ]
+    },
+    {
+      "name": "Consumer",
+      "exit_code": 0,
+      "seconds": 2.472,
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--trust=0",
+        "-DwarningAsError=true",
+        "Verification/physics/low-energy-phenomenology/full-quantum/boson-effective/Consumer.lean"
+      ]
+    },
+    {
+      "name": "Audit",
+      "exit_code": 0,
+      "seconds": 2.549,
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--trust=0",
+        "-DwarningAsError=true",
+        "Verification/physics/low-energy-phenomenology/full-quantum/boson-effective/Audit.lean"
+      ]
+    }
+  ]
+}

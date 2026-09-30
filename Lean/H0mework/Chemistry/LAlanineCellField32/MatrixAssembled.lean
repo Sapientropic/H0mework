@@ -1,0 +1,21 @@
+import H0mework.Chemistry.LAlanineWholeCell.MatrixFactory
+import H0mework.Chemistry.LAlanineCellField32.MatrixB0
+import H0mework.Chemistry.LAlanineCellField32.MatrixB1
+import H0mework.Chemistry.LAlanineCellField32.MatrixB2
+import H0mework.Chemistry.LAlanineCellField32.MatrixB3
+import H0mework.Chemistry.LAlanineCellField32.MatrixB4
+
+namespace SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.BasinRefinement.WholeCellMatrix.F32
+
+assembleWholeCellMatrixRow 0
+assembleWholeCellMatrixRow 1
+assembleWholeCellMatrixRow 2
+assembleWholeCellMatrixRow 3
+assembleWholeCellMatrixRow 4
+assembleWholeCellMatrixRow 5
+assembleWholeCellMatrixRow 6
+assembleWholeCellMatrixRow 7
+assembleWholeCellMatrixRow 8
+assembleWholeCellMatrixRow 9
+
+end SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.BasinRefinement.WholeCellMatrix.F32

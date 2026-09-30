@@ -1,0 +1,9 @@
+import H0mework.Chemistry.LAlanineBandTaylor032.CenterMatrixData
+import H0mework.Chemistry.LAlanineBandHighJet.DensityReifier
+
+set_option autoImplicit false
+set_option maxRecDepth 16384
+namespace SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.BasinRefinement.WholeBandGenerated.Sample064
+open HighJet.DensityReification
+generateHighJetDensity
+end SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.BasinRefinement.WholeBandGenerated.Sample064

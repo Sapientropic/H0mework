@@ -1,0 +1,124 @@
+{
+  "checks": [
+    {
+      "name": "Schur",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--trust=0",
+        "-DwarningAsError=true",
+        "Lean/scratch/LowEnergyBosonEffective/Schur.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 3.104
+    },
+    {
+      "name": "Order",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--trust=0",
+        "-DwarningAsError=true",
+        "Lean/scratch/LowEnergyBosonEffective/Order.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 3.279
+    },
+    {
+      "name": "Taylor",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--trust=0",
+        "-DwarningAsError=true",
+        "Lean/scratch/LowEnergyBosonEffective/Taylor.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 3.508
+    },
+    {
+      "name": "Analytic",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--trust=0",
+        "-DwarningAsError=true",
+        "Lean/scratch/LowEnergyBosonEffective/Analytic.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 3.555
+    },
+    {
+      "name": "Readback",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--trust=0",
+        "-DwarningAsError=true",
+        "Lean/scratch/LowEnergyBosonEffective/Readback.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 2.838
+    },
+    {
+      "name": "Metric",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--trust=0",
+        "-DwarningAsError=true",
+        "Lean/scratch/LowEnergyBosonEffective/Metric.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 6.115
+    },
+    {
+      "name": "Audit",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--trust=0",
+        "-DwarningAsError=true",
+        "Verification/physics/low-energy-phenomenology/full-quantum/boson-effective/Audit.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 3.168
+    },
+    {
+      "name": "Consumer",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--trust=0",
+        "-DwarningAsError=true",
+        "Verification/physics/low-energy-phenomenology/full-quantum/boson-effective/Consumer.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 3.142
+    },
+    {
+      "name": "IndependentConsumer",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--trust=0",
+        "-DwarningAsError=true",
+        "Verification/physics/low-energy-phenomenology/full-quantum/boson-effective/audit/Consumer.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 2.662
+    }
+  ],
+  "trust": 0,
+  "warnings_as_errors": true,
+  "default_limits": true
+}

@@ -1,0 +1,12 @@
+import H0mework.Chemistry.LAlanineBandCall046.FieldMatrixData
+
+set_option autoImplicit false
+set_option maxRecDepth 4096
+
+namespace SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule
+namespace LAlanine40K2025.BasinRefinement.WholeBandCache.Call46
+
+checkWholeBandMatrixRows 0 1
+
+end LAlanine40K2025.BasinRefinement.WholeBandCache.Call46
+end SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule

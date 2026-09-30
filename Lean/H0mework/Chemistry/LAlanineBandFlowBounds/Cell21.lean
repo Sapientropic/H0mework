@@ -1,0 +1,15 @@
+import H0mework.Chemistry.LAlanineBandFlowBounds.Reifier
+import H0mework.Chemistry.LAlanineBandFlowReplay.BlocksCell21
+
+set_option autoImplicit false
+set_option maxRecDepth 16384
+
+namespace SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule
+namespace LAlanine40K2025.BasinRefinement.WholeBandGenerated.FlowBounds
+open WholeBandSource WholeBandReplay WholeBandTransverse WholeBandContinuation
+open WholeBandContinuationDifferential WholeBandCell0Differential SourceSignedEvaluator TrueFlowGeometry
+
+generateCellFlowBounds 21
+
+end LAlanine40K2025.BasinRefinement.WholeBandGenerated.FlowBounds
+end SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule

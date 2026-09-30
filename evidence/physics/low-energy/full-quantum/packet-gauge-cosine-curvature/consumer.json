@@ -1,0 +1,104 @@
+{
+  "scope": "STRIKE_NATIVE_FULL_RAW_TENSOR_AND_MEAN_CONNECTED_DECOMPOSITION",
+  "all_pass": true,
+  "input_sha256": {
+    "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-cosine-curvature/kernels.json": "c7b3cb0d65b078e013a41654ffd5fa739b0c38cb483a91ffcadacec7d240c6d4",
+    "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-cosine-curvature/integrals.json": "854da6ddc43ad2c6664f495a9559aa59d6ae37704a6c18c8de5df4f8790d4bd0",
+    "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-cosine-curvature/probe-bounds.json": "49a1f5d4eef2c73db9951fa80d9864b2d3b7341c78cd33c5feb45bb3380f30ab",
+    "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-cosine/source.json": "cb103aa5d8f7cc49d858f03863a46cb142b5f37440ef0fcf98872931360981f0",
+    "Verification/physics/low-energy-phenomenology/full-quantum/packet-current-hessian/kernels.json": "e5a9a3a1e7d83c666aa52a41e079b3c19398a40918a00146e1b82b3973cdbddf",
+    "Verification/physics/low-energy-phenomenology/full-quantum/packet-band-kernel/intervals.py": "7b74b7a63fd7cf69d2c6806d7808a7b7c866b02152ccea80447e8c2ebb97b167"
+  },
+  "raw_isotropy_is_exact_rational_weight_identity": true,
+  "all_mixed_components_exact_zero": true,
+  "actual_nonaxial_external_direction": [
+    "168/845",
+    "576/845",
+    "119/169"
+  ],
+  "actual_ray_double_Laplace_Hessian": {
+    "raw": {
+      "rational": [
+        "-14034767643875351921831051138987662885438347275304461/1000000000000000000000000000000000000000000000000000000",
+        "-140347676438753519218310511389876628854383472753044609/10000000000000000000000000000000000000000000000000000000"
+      ],
+      "decimal": [
+        "-0.01403476764387535192183105113898767",
+        "-0.01403476764387535192183105113898766"
+      ]
+    },
+    "mean": {
+      "rational": [
+        "-114315737048023629025570503088612324790891622887081679/10000000000000000000000000000000000000000000000000000000",
+        "-114315737048023629025570503088612324790891622887081677/10000000000000000000000000000000000000000000000000000000"
+      ],
+      "decimal": [
+        "-0.01143157370480236290255705030886124",
+        "-0.01143157370480236290255705030886123"
+      ]
+    },
+    "connected": {
+      "rational": [
+        "-6507984847682472548185002075316076015872962466490733/2500000000000000000000000000000000000000000000000000000",
+        "-2603193939072989019274000830126430406349184986596293/1000000000000000000000000000000000000000000000000000000"
+      ],
+      "decimal": [
+        "-0.00260319393907298901927400083012644",
+        "-0.00260319393907298901927400083012643"
+      ]
+    }
+  },
+  "source_full_probe_ball_consumers": [
+    {
+      "domain": "whole_original_light_ball",
+      "all_three_raw_real_diagonals_strictly_negative": true,
+      "all_unit_external_directions_raw_real_negative": true,
+      "all_unit_external_directions_raw_real_interval": {
+        "rational": [
+          "-151407436930032176880166200474827445670857061503703309/10000000000000000000000000000000000000000000000000000000",
+          "-12928791594747486155645482230492581203790988400238591/1000000000000000000000000000000000000000000000000000000"
+        ],
+        "decimal": [
+          "-0.01514074369300321768801662004748275",
+          "-0.01292879159474748615564548223049258"
+        ]
+      },
+      "connected_real_diagonal_signs": [
+        "positive",
+        "negative",
+        "negative"
+      ],
+      "full_complex_cross_error_retained": true
+    },
+    {
+      "domain": "whole_domain",
+      "all_three_raw_real_diagonals_strictly_negative": true,
+      "all_unit_external_directions_raw_real_negative": true,
+      "all_unit_external_directions_raw_real_interval": {
+        "rational": [
+          "-162379836372008840180588361002430647289865828935128859/10000000000000000000000000000000000000000000000000000000",
+          "-2957887912637454956400816544433065260472527914274009/250000000000000000000000000000000000000000000000000000"
+        ],
+        "decimal": [
+          "-0.01623798363720088401805883610024307",
+          "-0.01183155165054981982560326617773226"
+        ]
+      },
+      "connected_real_diagonal_signs": [
+        "positive",
+        "negative",
+        "negative"
+      ],
+      "full_complex_cross_error_retained": true
+    }
+  ],
+  "controls": {
+    "omit_actual_mean_second_changes_first_diagonal_sign": true,
+    "reuse_old_transfer_current_hessian_weight_nonzero_difference": true,
+    "wrong_z_squared_changes_nonzero_real_answer_to_imaginary": true,
+    "extra_Taylor_half_changes_actual_nonzero_second_derivative": true,
+    "no_extra_cosine_half_or_Fourier_2pi": "q is physical; cos gives half of each opposite shift, whose two second jets add once"
+  },
+  "new_Lean_declarations": 0,
+  "elapsed_seconds": 0.059
+}

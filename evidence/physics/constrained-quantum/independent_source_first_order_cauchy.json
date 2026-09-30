@@ -1,0 +1,115 @@
+{
+  "verdict": "CERTIFIED_SOURCE1500_FIRST_ORDER_RHS_CONSTRAINT_PROPAGATION_AND_LOCAL_ANALYTIC_CAUCHY",
+  "root": "positiveSmoothUnifiedSource; repaired Dirac-dual; SpinPair.actual; visit10/tick16/materialEntry -> tick17 unchanged",
+  "source_sha256": {
+    "Lean/SaturationMonoid/PhysicsCore/SU7ExteriorYukawaMassSpectrum.lean": "cc100f817041a1e8b33aadf909a4838756c32eb0f28a15ff138c5cd9a3db4813",
+    "Lean/SaturationMonoid/PhysicsCore/SU7ExteriorBreakingYukawa.lean": "f3d245e031380de7dacf16312b81665a11d2fd209dfd751652821e9638b74ce0",
+    "Lean/SaturationMonoid/PhysicsCore/SU7MotherLieAlgebra.lean": "acb8a102cb607e8736b25acd5e851f70b15fb53ec7cc6784362e1b0c2a95e7da",
+    "Lean/SaturationMonoid/PhysicsCore/SU7ExteriorMatterRepresentation.lean": "0b7cb7f6d4078d7f0a7347513bd98077bd18092f89b1c4c4ec3ee23ad84efbac",
+    "Lean/SaturationMonoid/PhysicsCore/SU7ExteriorMatterRestriction.lean": "b91ff6e8d6ea1e9e7e6220fec204288a946a8153913882d1f68eee489d403ed1",
+    "Lean/SaturationMonoid/PhysicsCore/StageNineDynamicBreakingVacuum.lean": "f79cd71ae67e1ee2b1b698f7a09a0130e742e4a471862165748277269e2027bf",
+    "Lean/SaturationMonoid/PhysicsCore/StageNineGlobalIntegratedAction.lean": "525d2672c446c94a9b528c4277efed582419fbcb31e8e28b533cba3ff0589497",
+    "Lean/SaturationMonoid/PhysicsCore/StageNineExteriorMotherLieRepresentation.lean": "444b0ef9ba42af3801ffc010996ac5feddfed8605f4ce9bb2fbe15fe2b562f7b",
+    "Lean/SaturationMonoid/PhysicsCore/StageNineFormNativeMotherAction.lean": "24104b817d0a663626c46388bfa5a2660441f90cbee77ea5a86495fd7d64e6a2",
+    "Lean/SaturationMonoid/PhysicsCore/Stage9C/Material/SpinPair/Parameters.lean": "eeecea0c096fbbf4c0090d301fb19ca70f22020c89a8ad279b70133b6b8f4bc3"
+  },
+  "input_sha256": {
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/independent_source_first_order_cauchy.py": "8be922ee047a2dfcae80631fc6fa7d392aa8848396a03684cab363e7bc2a8bef",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/source_first_order_cauchy.json": "5264eea9bf2a09662140acf66072ea1672e6521fc1688f970f1ee1ba49e20d8d",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/source_first_order_cauchy.py": "8d67c35efef64904ca6c4f86abddb115d01b5a20c85361a5a9bfa187cbe485f3",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/independent_source_spatial_lorentz_time.py": "109a1026799c233f601044150d1a9c09f9d782bc80755cb0eb15455c2e28c615",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/independent_source_spatial_time_coframe.py": "ffb45a3bf0c30649438f097233f534d5562ba717a5b9470cf28b75a21d4f9c8d",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/independent_source_coframe_constraint_transport.py": "8e37d2859ddc2fad5cf32eb761d4decd204a6c55f3f186067a4a33ae464fe91a",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/independent_source_constraint_preservation.json": "d527480060b7502c8cbec66c247b9df0847c178875b86b365b9c6b0b7da93851",
+    "Verification/physics/low-energy-phenomenology/active-gauge/receipt.json": "93187af70fcb7d91c2d4424346ff35cc2d5f6b29534f3376ccc253ca089035d1",
+    "Verification/physics/low-energy-phenomenology/occupied-response/receipt.json": "7b96255809a493fee55729dee5eb1792957984af582770fc9543bb68b9ec0a87",
+    "Verification/physics/low-energy-phenomenology/full-quantum/receipt.json": "aae3bdc6344ee0e393d7fb3a21e5e6c212a381f76d701e6b862e40b44111f194"
+  },
+  "source_binding_checks": 65,
+  "candidate_constructor_imported": false,
+  "independent_algorithm": "previously certified original4/18 raw solvers; full scalar divergence/curl and independent Dirac pair; actual spatial epsilon curves of defining defects and Maxwell RHS before cancelling symmetric second jets",
+  "field_dimension_real": 1500,
+  "field_shapes": {
+    "e": [
+      4,
+      4
+    ],
+    "Omega": [
+      18,
+      1
+    ],
+    "A": [
+      3,
+      12
+    ],
+    "F": [
+      6,
+      12
+    ],
+    "phi": [
+      70,
+      1
+    ],
+    "U": [
+      4,
+      70
+    ],
+    "psi": [
+      252,
+      1
+    ],
+    "chi": [
+      1,
+      252
+    ]
+  },
+  "actual_fixtures": [
+    {
+      "fixture": "actual_homogeneous_consumer",
+      "original_Euler_real_rows": 1310,
+      "all_rows_zero": true,
+      "all_introduced_constraints_zero": true,
+      "full_original_auxiliary_graph_recovered": true,
+      "all1500_rates_independently_rebuilt": true,
+      "all12_Tsp_time_rows_checked_by_original18_solve": true,
+      "second_A0_coefficients_cancelled": 72,
+      "second_P_coefficients_cancelled": 432
+    },
+    {
+      "fixture": "actual_constraint_transport",
+      "ambient_V_W_C_G_nonzero_retained": true,
+      "Gauss_scalar_and_curvature_corrections_nonzero": true,
+      "all210_Vdot_and36_Wdot_and12_Cdot_and12_Gdot": true,
+      "all1500_rates_independently_rebuilt": true,
+      "all12_Tsp_time_rows_checked_by_original18_solve": true,
+      "second_A0_coefficients_cancelled": 72,
+      "second_P_coefficients_cancelled": 432
+    }
+  ],
+  "literal_original_source": {
+    "original_Euler_real_rows": 1310,
+    "all_rows_zero": true,
+    "all_introduced_constraints_zero": true,
+    "full_original_auxiliary_graph_recovered": true
+  },
+  "original_840_Yukawa_covariance_and_native144_pairing_identities": true,
+  "actual_nonzero_F4_original_Euler_reconstruction": true,
+  "all_initial_F4_rows_have_no_unknown_Omega_or_matter_time_derivative": true,
+  "analytic_Cauchy_review": {
+    "status": "CERTIFIED_LOCAL_ANALYTIC_SPATIAL_CAUCHY_GERM_IN_ORIGINAL_SOURCE_CHART",
+    "independent_mathematical_reviewer": "spectral_next; final frozen candidate independently read and certified",
+    "dependency_order": "algebraic A0 and its first spatial derivatives; torsion0i spatial coframe rate; coordinate-defect/Maxwell time4 and F rate; full independent Dirac pair; prolonged torsion plus metric Euler Omega18; scalar curl then nonzero h00 scalar divergence",
+    "solved_system": "partial_t u=R(u,partial_1 u,partial_2 u,partial_3 u), u has1500 real components; no second spatial derivative or unknown time derivative occurs in R",
+    "analytic_domain": "det e>0, det spatial metric!=0, native g00!=0, det D9(phi)!=0 and det M4(e,F)!=0; all inverses depend only on the fields and have source nonzero denominators",
+    "existence": "For analytic initial fields in this chart, the analytic first-order Cauchy-Kowalevski theorem gives a unique local analytic ambient solution germ; the source RHS recursively generates its Taylor coefficients.",
+    "propagation_order": "V/W/C/Tsp first, then G with the explicit C/V/W corrections; these constraints identify U and F with original fields and pay the other Euler equations. Spin plus metric then reconstructs E_sp=K F4 without F4=0; divQ=0 gives the homogeneous linear analytic first-order PDE for F4. Zero initial F4 propagates by analytic Cauchy uniqueness.",
+    "original_Euler_conclusion": "Initial V/W/Tsp/C/G/F4 must vanish as three-dimensional analytic germs, not just at a point. Exactly these constrained initial fields reconstruct the original1310 real Euler equations. The literal source and nontrivial homogeneous constant spatial profiles give explicit nonempty constrained germs.",
+    "no_Gauss_regular_value_or_hyperbolicity_premise": true,
+    "heat_equation_or_ODE_substituted_for_first_order_CK": false,
+    "general_smooth_or_global_solution_claimed": false,
+    "formal_Lean_time_path_installed": false
+  },
+  "interacting_quantum_spectral_measure_generated": false,
+  "lifetime_status": "SOURCE_NATIVE_DYNAMIC_MEASURE_REQUIRED",
+  "elapsed_seconds": 27.955
+}

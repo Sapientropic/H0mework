@@ -1,0 +1,219 @@
+{
+  "verdict": "CERTIFIED_FINITE_CAR_RAISING_WORDS_ON_ARBITRARY_NUMBER_SECTORS",
+  "root": "positiveSmoothUnifiedSource; repaired Dirac-dual; SpinPair.actual; visit10/tick16/materialEntry -> tick17 unchanged",
+  "classification": "subordinate generic occupation-grade CAR consumer with independent nonvacuous normal-product regression; no controller mutation",
+  "input_sha256": {
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/FockRaising.lean": "a6ff3c6d0ecdf7576763fdf698b74d74931164b4ac8da9aed3282c64164afe05",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/FockRaisingAudit.lean": "86866e583140386151d7804a217edcb04d44f46f975cf41186a6f21815d5f851",
+    "Lean/SaturationMonoid/PhysicsCore/QuantizationCheck/Fermion.lean": "8a9690341e64c7ad6b1b03e208a57d6e23df5dcb4da367222994778f3eb7d83e",
+    "Lean/SaturationMonoid/PhysicsCore/LowEnergy/Fermion/CAR.lean": "7bba74038fd8c34dca68820878c276afdd83bfd628a6f1356089a9be566ff205",
+    "Lean/SaturationMonoid/PhysicsCore/LowEnergy/Fermion/NormalOrder.lean": "90b889f2db6ab8072e3faf27ec89fb8e748d2d31f2cc0cefcbe80cb546fbe29b",
+    "Lean/SaturationMonoid/PhysicsCore/LowEnergy/Fermion/TwoParticle.lean": "bb990faf20ca17eda6401254a47bac7edd1f35aac8efea2a457206a76c9de238",
+    "Lean/SaturationMonoid/PhysicsCore/LowEnergy/Fermion/MatrixElement.lean": "af5577cd6c6ec6c44683b1b9ab6ce4e7f34a4ecaaa97e04134427b24709c78c0",
+    "Lean/SaturationMonoid/PhysicsCore/LowEnergy/Fermion/Charge.lean": "82a9483249bb5cddf837322aa8ba90f6b35240aab5067c96ec2cbd32edb3bc67",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/FockRaisingTensor.lean": "ef6a33a6ce6929873b3b385feacfb790a4dfa0d45d3cb90c2908e3315aedbe59"
+  },
+  "strict_checks": [
+    {
+      "module": "FockRaising",
+      "trust": 0,
+      "warningAsError": true,
+      "exit_code": 0
+    },
+    {
+      "module": "FockRaisingTensor",
+      "trust": 0,
+      "warningAsError": true,
+      "exit_code": 0
+    },
+    {
+      "module": "FockRaisingAudit",
+      "trust": 0,
+      "warningAsError": true,
+      "exit_code": 0
+    }
+  ],
+  "strict_command_template": "cd Lean; LEAN_PATH=<isolated audit olean directory> lake env lean --root=../Verification/physics/low-energy-phenomenology/external-composite-decay --trust=0 -DwarningAsError=true -o <isolated audit olean directory>/<module>.olean ../Verification/physics/low-energy-phenomenology/external-composite-decay/<module>.lean",
+  "audit_method": "fresh strict candidate compilation into a separate temporary olean directory; direct original quantize/normalProduct/pairing consumers; exact transitive-axiom extraction from the successful strict audit output",
+  "axioms": {
+    "SourceFockRaising.grade_above_particle_number": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "SourceFockRaising.raises_eigenstate": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "SourceFockRaising.word_eigenstates": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "SourceFockRaising.word_vanishes_on_number_sector": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "SourceFockRaising.quantize_preserves_number": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "SourceFockRaising.quantize_raises_grade": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "SourceFockRaising.matrix_word_vanishes_on_number_sector": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "SourceFockRaisingAudit.actual_matrix_raises": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "SourceFockRaisingAudit.actual_one_body_square_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "SourceFockRaisingAudit.incoming_number_sector": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "SourceFockRaisingAudit.incoming_is_two_particle": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "SourceFockRaisingAudit.actual_fock_square_normal_product": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "SourceFockRaisingAudit.actual_second_word_matrix_element": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "SourceFockRaisingAudit.actual_second_word_nonzero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "SourceFockRaisingAudit.actual_third_word_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "SourceFockRaising.ordered_tensor_product": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "SourceFockRaising.tensor_word_vanishes_on_number_sector": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "SourceFockRaisingAudit.actual_bosons_do_not_commute": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "SourceFockRaisingAudit.actual_three_boson_factors_nonzero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "SourceFockRaisingAudit.actual_tensor_order_kept": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "SourceFockRaisingAudit.actual_tensor_third_word_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "theorem_mouth_lint": "attention pass: autoImplicit style hint and intentional #print axioms audit statements only; no target-equivalent or vacuous-domain premise identified",
+  "public_mouth": {
+    "theorem": "SourceFockRaising.matrix_word_vanishes_on_number_sector",
+    "carrier": "arbitrary finite linearly ordered index iota, original Fock iota = Finset iota -> Complex",
+    "parameters": "target : Finset iota; arbitrary list of Complex matrices; arbitrary N : Nat and N-sector state psi",
+    "source_grade": "for each matrix A and indices i,j: (indicator_target(i)-indicator_target(j)-1)*A(i,j)=0",
+    "number_sector": "for every occupation s, s.card != N implies psi(s)=0",
+    "length_condition": "N < word.length",
+    "conclusion": "(word.map Fermion.quantize).prod psi = 0",
+    "number_preservation_generated_by_original_quantize": true,
+    "final_word_vanishing_assumed": false,
+    "one_body_square_zero_required_as_premise": false,
+    "same_matrix_or_commuting_matrices_required": false,
+    "arbitrary_particle_number_not_finite_sample_only": true,
+    "mechanism": "each quantized word entry raises occupation grade by one while preserving total number; basis expansion covers the complete N-sector and grade cannot exceed N"
+  },
+  "actual_CAR_fixture": {
+    "index": "Fin 4",
+    "target": [
+      2,
+      3
+    ],
+    "raising_matrix_nonzero_entries": [
+      [
+        2,
+        0,
+        "1"
+      ],
+      [
+        3,
+        1,
+        "1"
+      ]
+    ],
+    "incoming_state": "occupationBasis {0,1} = twoParticle(single 0 1, single 1 1)",
+    "outgoing_reader": "twoParticle(single 2 1, single 3 1)",
+    "source_grade_identity_checked": true,
+    "complete_incoming_number_sector_checked": true,
+    "one_body_square": "W * W = 0",
+    "second_quantized_square": "quantize(W)*quantize(W) = normalProduct(W,W)",
+    "second_word_matrix_element": "2",
+    "second_word_state_nonzero": true,
+    "third_word_state": "0",
+    "third_word_consumes_public_arbitrary_N_mouth": true,
+    "different_particle_normal_product_retained": true,
+    "finite_fixture_identified_as_physical_scalar_modes": false
+  },
+  "scope": "finite CAR number-sector raising words and ordered noncommuting tensor coefficients, with actual two-particle normal-product and noncommuting-boson consumers; no continuous Dyson evolution or physical source-grade installation asserted",
+  "concrete_source_scalar61_grade_formally_installed": false,
+  "actual_continuous_Dyson_evolution_claimed": false,
+  "full_four_block_interacting_Fock_Hamiltonian_or_spectrum_claimed": false,
+  "isolated_composite_pole_or_width_claimed": false,
+  "lifetime_status": "SOURCE_NATIVE_DYNAMIC_MEASURE_REQUIRED",
+  "tensor_consumer": {
+    "theorem": "SourceFockRaising.tensor_word_vanishes_on_number_sector",
+    "boson_carrier": "arbitrary complex module V; arbitrary Module.End Complex V factors on the stated common algebraic domain",
+    "word": "arbitrary list (B_i, W_i), each W_i satisfies the same indicator-grade condition",
+    "ordered_factorization": "product_i (B_i tensor quantize(W_i)) = (ordered product_i B_i) tensor (ordered product_i quantize(W_i))",
+    "conclusion": "represented word kills every v tensor psi in the N-particle sector when word.length > N",
+    "boson_commutativity_assumed": false,
+    "boson_order_swapped": false,
+    "common_time_or_identical_boson_factors_assumed": false,
+    "analytic_Dyson_convergence_assumed": false,
+    "actual_noncommuting_fixture": {
+      "module": "Fin 2 -> Complex",
+      "U": "U(v0,v1)=(v1,0)",
+      "D": "D(v0,v1)=(0,v0)",
+      "UD_not_DU_checked": true,
+      "UDU_nonzero_checked": true,
+      "tensor_two_word_order": "(U tensor QW)(D tensor QW) = UD tensor QW^2, exactly in the original order",
+      "tensor_three_word_zero": "(U tensor QW)(D tensor QW)(U tensor QW) kills every v tensor incoming despite UDU != 0",
+      "scalar_physical_domain_interpretation_claimed": false
+    }
+  }
+}

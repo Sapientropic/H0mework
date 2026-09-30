@@ -1,0 +1,88 @@
+{
+  "checks": [
+    {
+      "name": "Grading",
+      "exit_code": 0,
+      "seconds": 7.784,
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--trust=0",
+        "-DwarningAsError=true",
+        "Lean/scratch/LowEnergyClosedLoops/Grading.lean"
+      ],
+      "writes_olean": false
+    },
+    {
+      "name": "Source",
+      "exit_code": 0,
+      "seconds": 6.26,
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--trust=0",
+        "-DwarningAsError=true",
+        "Lean/scratch/LowEnergyClosedLoops/Source.lean"
+      ],
+      "writes_olean": false
+    },
+    {
+      "name": "Words",
+      "exit_code": 0,
+      "seconds": 5.492,
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--trust=0",
+        "-DwarningAsError=true",
+        "Lean/scratch/LowEnergyClosedLoops/Words.lean"
+      ],
+      "writes_olean": false
+    },
+    {
+      "name": "Consumer",
+      "exit_code": 0,
+      "seconds": 4.701,
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--trust=0",
+        "-DwarningAsError=true",
+        "Verification/physics/low-energy-phenomenology/full-quantum/closed-loops/Consumer.lean"
+      ],
+      "writes_olean": false
+    },
+    {
+      "name": "Audit",
+      "exit_code": 0,
+      "seconds": 4.481,
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--trust=0",
+        "-DwarningAsError=true",
+        "Verification/physics/low-energy-phenomenology/full-quantum/closed-loops/Audit.lean"
+      ],
+      "writes_olean": false
+    }
+  ],
+  "mouth_lint": [
+    {
+      "name": "Grading",
+      "exit_code": 0
+    },
+    {
+      "name": "Source",
+      "exit_code": 0
+    },
+    {
+      "name": "Words",
+      "exit_code": 0
+    }
+  ]
+}

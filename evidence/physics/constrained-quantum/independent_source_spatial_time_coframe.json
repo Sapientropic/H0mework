@@ -1,0 +1,192 @@
+{
+  "verdict": "CERTIFIED_ORIGINAL_COORDINATE_DEFECT_AND_MAXWELL_GENERATED_TIME_COFRAME_CHART",
+  "root": "positiveSmoothUnifiedSource; repaired Dirac-dual; SpinPair.actual; visit10/tick16/materialEntry -> tick17 unchanged",
+  "source_sha256": {
+    "Lean/SaturationMonoid/PhysicsCore/SU7ExteriorYukawaMassSpectrum.lean": "cc100f817041a1e8b33aadf909a4838756c32eb0f28a15ff138c5cd9a3db4813",
+    "Lean/SaturationMonoid/PhysicsCore/SU7ExteriorBreakingYukawa.lean": "f3d245e031380de7dacf16312b81665a11d2fd209dfd751652821e9638b74ce0",
+    "Lean/SaturationMonoid/PhysicsCore/SU7MotherLieAlgebra.lean": "acb8a102cb607e8736b25acd5e851f70b15fb53ec7cc6784362e1b0c2a95e7da",
+    "Lean/SaturationMonoid/PhysicsCore/SU7ExteriorMatterRepresentation.lean": "0b7cb7f6d4078d7f0a7347513bd98077bd18092f89b1c4c4ec3ee23ad84efbac",
+    "Lean/SaturationMonoid/PhysicsCore/SU7ExteriorMatterRestriction.lean": "b91ff6e8d6ea1e9e7e6220fec204288a946a8153913882d1f68eee489d403ed1",
+    "Lean/SaturationMonoid/PhysicsCore/StageNineDynamicBreakingVacuum.lean": "f79cd71ae67e1ee2b1b698f7a09a0130e742e4a471862165748277269e2027bf",
+    "Lean/SaturationMonoid/PhysicsCore/StageNineGlobalIntegratedAction.lean": "525d2672c446c94a9b528c4277efed582419fbcb31e8e28b533cba3ff0589497",
+    "Lean/SaturationMonoid/PhysicsCore/StageNineExteriorMotherLieRepresentation.lean": "444b0ef9ba42af3801ffc010996ac5feddfed8605f4ce9bb2fbe15fe2b562f7b",
+    "Lean/SaturationMonoid/PhysicsCore/StageNineFormNativeMotherAction.lean": "24104b817d0a663626c46388bfa5a2660441f90cbee77ea5a86495fd7d64e6a2",
+    "Lean/SaturationMonoid/PhysicsCore/Stage9C/Material/SpinPair/Parameters.lean": "eeecea0c096fbbf4c0090d301fb19ca70f22020c89a8ad279b70133b6b8f4bc3"
+  },
+  "input_sha256": {
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/independent_source_spatial_time_coframe.py": "ffb45a3bf0c30649438f097233f534d5562ba717a5b9470cf28b75a21d4f9c8d",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/source_spatial_time_coframe.json": "fc9b8da09c8f10d7756a19d2bad8535b201715910bb02d01f8a7694779bb3be0",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/source_spatial_time_coframe.py": "d26cb99e383dadcf701f0b03ec0d82f6f0ae083d938682ff83f3df69d3aa16fb",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/source_gauge_legendre.py": "70ca7f5186cef7777e47ded19ef9d00e2339df36d6ce3e91a3ac95401385fcf1",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/source_homogeneous_canonical_flow.json": "dce3d2d98ba29953a87ef8524d349b47d79c8733c4a222f336eb9d6dafbdd98b",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/source_temporal_coframe_flux.json": "bfb168fd76860aa7302394b542e599151b8a051d3af31ee5e3381974a4a19a81",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/independent_source_joint_temporal_rates.py": "fb147e88de396bddbed6730ec4e11932a33249d94f677e1825c5e744d0f040de",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/independent_source_gauge_legendre.py": "f8c5f520b7ad7b0a00dead0d9f1a4edea32592f7e4a9f0a8a03f02818ec6c45d",
+    "Verification/physics/low-energy-phenomenology/active-gauge/receipt.json": "93187af70fcb7d91c2d4424346ff35cc2d5f6b29534f3376ccc253ca089035d1",
+    "Verification/physics/low-energy-phenomenology/occupied-response/receipt.json": "7b96255809a493fee55729dee5eb1792957984af582770fc9543bb68b9ec0a87"
+  },
+  "source_binding_checks": 77,
+  "candidate_constructor_imported": false,
+  "density_covariance_and_defect": {
+    "generic_coframe_variables": 16,
+    "coordinate_gradient_generators": 16,
+    "original_BF_simplicity_and_volume_density_weights": true,
+    "full70_scalar_and252_independent_dual_density_weights": true,
+    "native_gauge_defect_from_actual_covariant_twoform_pullback": true,
+    "gauge_auxiliary_envelope": "Original auxiliary Euler=0 makes the derivative of the eliminated B(e,F) identical to the raw BF derivative; no defect is discarded.",
+    "Noether_identity": "E_A partial_nu q^A - partial_mu(E_A R^{A,mu}_nu) = -partial_mu Q^mu_nu",
+    "on_remaining_Euler": "e[a,nu] partial_t F_a = partial_mu Q^mu_nu + F_a(partial_nu e[a,0]-partial_t e[a,nu])",
+    "Q_itself_required_to_vanish": false,
+    "boundary": "original BF density identity precedes integration by parts; the previously generated original flux remains in the common Hamiltonian"
+  },
+  "source_time_minor": {
+    "matrix": {
+      "shape": [
+        4,
+        4
+      ],
+      "entries": [
+        [
+          0,
+          0,
+          "-18/5"
+        ],
+        [
+          1,
+          1,
+          "-2*sqrt(30)/3"
+        ],
+        [
+          2,
+          2,
+          "-2*sqrt(30)/3"
+        ],
+        [
+          3,
+          3,
+          "-2*sqrt(30)/3"
+        ]
+      ]
+    },
+    "determinant": "32*sqrt(30)",
+    "original36_electric_equations_solved_first": true,
+    "source_Q_nonzero_retained": true,
+    "fixed_F_derivative_rejected": true,
+    "equals_original_e_transpose_J4": true
+  },
+  "nontrivial_homogeneous_consumer": {
+    "original_time4_rates_recovered": true,
+    "original_gauge36_rates_recovered": true,
+    "source_scalar70_and_independent_dual252_currents": true
+  },
+  "actual_spatial_jet_consumer": {
+    "all252_components_live": true,
+    "all70_covariant_scalar_jets_live": true,
+    "spatial_F_from_symmetric_connection_second_jets": true,
+    "spatial_Bianchi12": true,
+    "dynamic_Maxwell36": true,
+    "coordinate_defect_divergence4": true,
+    "time_rates": {
+      "shape": [
+        4,
+        1
+      ],
+      "entries": [
+        [
+          0,
+          0,
+          "593*sqrt(30)/358775"
+        ],
+        [
+          1,
+          0,
+          "-391766420427691/4846061923524000 - 1448*sqrt(30)/215265"
+        ],
+        [
+          2,
+          0,
+          "-3769844088931960721/97565360867815065000 - 98*sqrt(30)/25425"
+        ],
+        [
+          3,
+          0,
+          "5286196090824023/157025795388114375 - 3172*sqrt(30)/3228975"
+        ]
+      ]
+    },
+    "Gauss12_residual_nonzero_retained": {
+      "shape": [
+        12,
+        1
+      ],
+      "entries": [
+        [
+          0,
+          0,
+          "-24644609*sqrt(30)/9573224400 - 83/50621"
+        ],
+        [
+          1,
+          0,
+          "-15197511/2445956099 + 19912447*sqrt(30)/9573224400"
+        ],
+        [
+          2,
+          0,
+          "100/50621 - 89063*sqrt(30)/42359400"
+        ],
+        [
+          3,
+          0,
+          "-4071592/2445956099 + 13313*sqrt(30)/42359400"
+        ],
+        [
+          4,
+          0,
+          "59/50621 + 213937*sqrt(30)/10589850"
+        ],
+        [
+          5,
+          0,
+          "-588532/2445956099 + 88031*sqrt(30)/10589850"
+        ],
+        [
+          6,
+          0,
+          "1702796/2445956099 - 61013647*sqrt(30)/9573224400"
+        ],
+        [
+          7,
+          0,
+          "-2207*sqrt(30)/285325 - 7357512/2445956099"
+        ],
+        [
+          8,
+          0,
+          "-1067621*sqrt(30)/84718800 - 29/50621"
+        ],
+        [
+          9,
+          0,
+          "3813134/2445956099 + 945499*sqrt(30)/84718800"
+        ],
+        [
+          10,
+          0,
+          "-222583*sqrt(30)/28239600 - 556091/2445956099"
+        ],
+        [
+          11,
+          0,
+          "1075971/2445956099 + 969373*sqrt(30)/84718800"
+        ]
+      ]
+    },
+    "spatial_initial_constraint_datum_or_PDE_integral_curve_claimed": false
+  },
+  "dependency": "e,F and first spatial derivatives; known spatial coframe velocity, original scalar covariant first jets, gauge connection and independent matter fields",
+  "source_local_chart": "electric g00!=0 and det(M4)!=0; the exact source lies in this open chart",
+  "general_spatial_Cauchy_or_quantum_measure_claimed": false,
+  "lifetime_status": "SOURCE_NATIVE_DYNAMIC_MEASURE_REQUIRED",
+  "elapsed_seconds": 11.857
+}

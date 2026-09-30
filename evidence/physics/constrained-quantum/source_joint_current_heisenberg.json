@@ -1,0 +1,1693 @@
+{
+  "root": "positiveSmoothUnifiedSource; repaired Dirac-dual; SpinPair.actual; visit10/tick16/materialEntry -> tick17 unchanged",
+  "scope": "ACTUAL_GAUSS100_FULL504_CURRENT_HEISENBERG_DERIVATIVE",
+  "source_sha256": {
+    "Lean/SaturationMonoid/PhysicsCore/SU7ExteriorYukawaMassSpectrum.lean": "cc100f817041a1e8b33aadf909a4838756c32eb0f28a15ff138c5cd9a3db4813",
+    "Lean/SaturationMonoid/PhysicsCore/SU7ExteriorBreakingYukawa.lean": "f3d245e031380de7dacf16312b81665a11d2fd209dfd751652821e9638b74ce0",
+    "Lean/SaturationMonoid/PhysicsCore/SU7MotherLieAlgebra.lean": "acb8a102cb607e8736b25acd5e851f70b15fb53ec7cc6784362e1b0c2a95e7da",
+    "Lean/SaturationMonoid/PhysicsCore/SU7ExteriorMatterRepresentation.lean": "0b7cb7f6d4078d7f0a7347513bd98077bd18092f89b1c4c4ec3ee23ad84efbac",
+    "Lean/SaturationMonoid/PhysicsCore/SU7ExteriorMatterRestriction.lean": "b91ff6e8d6ea1e9e7e6220fec204288a946a8153913882d1f68eee489d403ed1",
+    "Lean/SaturationMonoid/PhysicsCore/StageNineDynamicBreakingVacuum.lean": "f79cd71ae67e1ee2b1b698f7a09a0130e742e4a471862165748277269e2027bf",
+    "Lean/SaturationMonoid/PhysicsCore/StageNineGlobalIntegratedAction.lean": "525d2672c446c94a9b528c4277efed582419fbcb31e8e28b533cba3ff0589497",
+    "Lean/SaturationMonoid/PhysicsCore/StageNineExteriorMotherLieRepresentation.lean": "444b0ef9ba42af3801ffc010996ac5feddfed8605f4ce9bb2fbe15fe2b562f7b",
+    "Lean/SaturationMonoid/PhysicsCore/StageNineFormNativeMotherAction.lean": "24104b817d0a663626c46388bfa5a2660441f90cbee77ea5a86495fd7d64e6a2",
+    "Lean/SaturationMonoid/PhysicsCore/Stage9C/Material/SpinPair/Parameters.lean": "eeecea0c096fbbf4c0090d301fb19ca70f22020c89a8ad279b70133b6b8f4bc3"
+  },
+  "input_sha256": {
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/source_joint_current_heisenberg.py": "17f61c971fccb4002e71557081c9a21c15175b902cabc07c9988ad085674eeb5",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/source_joint_current_heisenberg.jacobian.json.gz": "2803def4d965bac4d1b1b847cc44dddaf6ba5999bddfd9aac2de88fbd0ef3289",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/source_joint_ccr_car_ports.py": "9aca50c0237a809cd24df86d9d4dcedf093145a1aab8333fe811ecb741444930",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/source_joint_form_hamiltonian.py": "bdb049a97ddaad396f10de2d1a5d6fc81b43ef6d70390ee2e889bee2c09c1da9",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/source_scalar_weyl_symbol.py": "58ab107aba361de69085b0c05a1489d9e818b1168decf0d9ecada6440a3694a3",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/source_common_weyl_symbol.py": "e569cc3cf3517ebc591c21df0fc03c7accb0bd3392300e79043d6351344bda12",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/source_clock_symbol_recursion.py": "9595d979afb61767e642e02bdb31f524d2c2434ee06990987ea0a4d3b3533cf4",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/source_gauss_quantum_current.py": "73d917bd8c06e1ca88b2475ef792008d4eeed64e48a1eddd59c02ef0400ec1ca",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/JointCCRCarPorts.lean": "dac73e6454fd1c20043934725da47a7446e8916f23a72b6769a5048c719467f4",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/JointCurrentHeisenberg.lean": "5ca5ddea4b389da0af4bc5586cf2729c5d1064d704e81bfd5a93c637af8f552e",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/source_joint_ccr_car_ports.json": "a7edc94cf6c95e9c2f26b89a71e22a352765049cf73ea08b41d7c4eb47063808",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/source_joint_charge_conservation.json": "809bbb95e62304e909e6d7d0a31237ab873a393676b77ccd41736d6554d365d9"
+  },
+  "jacobian_file": "source_joint_current_heisenberg.jacobian.json.gz",
+  "jacobian_sha256": "2803def4d965bac4d1b1b847cc44dddaf6ba5999bddfd9aac2de88fbd0ef3289",
+  "jacobian_bytes": 2332024,
+  "jacobian_computation": {
+    "mode": "fresh"
+  },
+  "fixture": {
+    "configuration": "configuration100",
+    "momenta": "configuration_momenta100"
+  },
+  "symbol": {
+    "current": "J_j = OpW(Q(M_j(z))), M_j = coefficients(z)[\"linear_current\"][j]",
+    "heisenberg_derivative": "Jdot_j = i[H,J_j] = OpW(Jdot_j(p))",
+    "Jdot_j": "sum_l p_l Q(U_jl) + Q(W_j) + sum_k N(M_k,D_kj) + i sum_(c,A,B) c (N([A,M_j],B) + N(A,[B,M_j]))",
+    "U_jl": "2 sum_k K_lk D_kj + i [M_l,M_j]",
+    "W_j": "sum_k l_k D_kj + (1/2) sum_k (M_k D_kj + D_kj M_k) + i [M_0,M_j]",
+    "D_kj": "d/dz_k M_j at z0 (Jacobian receipt in the gz file)",
+    "ordering_term": "OpW(sum_l p_l Q(U_jl)) = action + -(i/2) Q(sum_l d_l U_jl)",
+    "divergence_U": "sum_l d_l U_jl = 2 sum_k divergence_k D_kj + i sum_l ([D_ll,M_j] + [M_l,D_lj])",
+    "normal_product": "Q(A)Q(B) = Q(AB) + N(A,B), N symmetric"
+  },
+  "V1_native_composition": {
+    "statement": "i (H(J1 psi) - J1(H psi)) = Jdot_j(p0)|w> - (i/2) Q(div U_j)|w>",
+    "checks": [
+      {
+        "j": 0,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 0
+      },
+      {
+        "j": 1,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 4
+      },
+      {
+        "j": 2,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 0
+      },
+      {
+        "j": 3,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 4
+      },
+      {
+        "j": 4,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 2
+      },
+      {
+        "j": 5,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 0
+      },
+      {
+        "j": 6,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 10
+      },
+      {
+        "j": 7,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 11
+      },
+      {
+        "j": 8,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 0
+      },
+      {
+        "j": 9,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 0
+      },
+      {
+        "j": 10,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 6
+      },
+      {
+        "j": 11,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 6
+      },
+      {
+        "j": 12,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 11
+      },
+      {
+        "j": 13,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 6
+      },
+      {
+        "j": 14,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 11
+      },
+      {
+        "j": 15,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 2
+      },
+      {
+        "j": 16,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 18
+      },
+      {
+        "j": 17,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 6
+      },
+      {
+        "j": 18,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 10
+      },
+      {
+        "j": 19,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 6
+      },
+      {
+        "j": 20,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 6
+      },
+      {
+        "j": 21,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 6
+      },
+      {
+        "j": 22,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 6
+      },
+      {
+        "j": 23,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 4
+      },
+      {
+        "j": 24,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 6
+      },
+      {
+        "j": 25,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 14
+      },
+      {
+        "j": 26,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 6
+      },
+      {
+        "j": 27,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 16
+      },
+      {
+        "j": 28,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 6
+      },
+      {
+        "j": 29,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 6
+      },
+      {
+        "j": 30,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 6
+      },
+      {
+        "j": 31,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 6
+      },
+      {
+        "j": 32,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 6
+      },
+      {
+        "j": 33,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 6
+      },
+      {
+        "j": 34,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 6
+      },
+      {
+        "j": 35,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 6
+      },
+      {
+        "j": 36,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 6
+      },
+      {
+        "j": 37,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 0
+      },
+      {
+        "j": 38,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 16
+      },
+      {
+        "j": 39,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 8
+      },
+      {
+        "j": 40,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 0
+      },
+      {
+        "j": 41,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 6
+      },
+      {
+        "j": 42,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 6
+      },
+      {
+        "j": 43,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 6
+      },
+      {
+        "j": 44,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 6
+      },
+      {
+        "j": 45,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 21
+      },
+      {
+        "j": 46,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 6
+      },
+      {
+        "j": 47,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 13
+      },
+      {
+        "j": 48,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 6
+      },
+      {
+        "j": 49,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 6
+      },
+      {
+        "j": 50,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 6
+      },
+      {
+        "j": 51,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 6
+      },
+      {
+        "j": 52,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 6
+      },
+      {
+        "j": 53,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 4
+      },
+      {
+        "j": 54,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 16
+      },
+      {
+        "j": 55,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 6
+      },
+      {
+        "j": 56,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 18
+      },
+      {
+        "j": 57,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 6
+      },
+      {
+        "j": 58,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 6
+      },
+      {
+        "j": 59,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 6
+      },
+      {
+        "j": 60,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 6
+      },
+      {
+        "j": 61,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 6
+      },
+      {
+        "j": 62,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 6
+      },
+      {
+        "j": 63,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 6
+      },
+      {
+        "j": 64,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 6
+      },
+      {
+        "j": 65,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 6
+      },
+      {
+        "j": 66,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 0
+      },
+      {
+        "j": 67,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 16
+      },
+      {
+        "j": 68,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 18
+      },
+      {
+        "j": 69,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 18
+      },
+      {
+        "j": 70,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 18
+      },
+      {
+        "j": 71,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 23
+      },
+      {
+        "j": 72,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 16
+      },
+      {
+        "j": 73,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 4
+      },
+      {
+        "j": 74,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 4
+      },
+      {
+        "j": 75,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 4
+      },
+      {
+        "j": 76,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 0
+      },
+      {
+        "j": 77,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 24
+      },
+      {
+        "j": 78,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 20
+      },
+      {
+        "j": 79,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 22
+      },
+      {
+        "j": 80,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 24
+      },
+      {
+        "j": 81,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 24
+      },
+      {
+        "j": 82,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 22
+      },
+      {
+        "j": 83,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 18
+      },
+      {
+        "j": 84,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 4
+      },
+      {
+        "j": 85,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 4
+      },
+      {
+        "j": 86,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 4
+      },
+      {
+        "j": 87,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 0
+      },
+      {
+        "j": 88,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 23
+      },
+      {
+        "j": 89,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 18
+      },
+      {
+        "j": 90,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 18
+      },
+      {
+        "j": 91,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 16
+      },
+      {
+        "j": 92,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 18
+      },
+      {
+        "j": 93,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 14
+      },
+      {
+        "j": 94,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 19
+      },
+      {
+        "j": 95,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 20
+      },
+      {
+        "j": 96,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 4
+      },
+      {
+        "j": 97,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 4
+      },
+      {
+        "j": 98,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 4
+      },
+      {
+        "j": 99,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 0
+      },
+      {
+        "j": 0,
+        "word": [
+          5,
+          144,
+          396
+        ],
+        "image_entries": 0
+      },
+      {
+        "j": 1,
+        "word": [
+          5,
+          144,
+          396
+        ],
+        "image_entries": 7
+      },
+      {
+        "j": 2,
+        "word": [
+          5,
+          144,
+          396
+        ],
+        "image_entries": 0
+      },
+      {
+        "j": 3,
+        "word": [
+          5,
+          144,
+          396
+        ],
+        "image_entries": 7
+      },
+      {
+        "j": 4,
+        "word": [
+          5,
+          144,
+          396
+        ],
+        "image_entries": 5
+      },
+      {
+        "j": 5,
+        "word": [
+          5,
+          144,
+          396
+        ],
+        "image_entries": 0
+      },
+      {
+        "j": 6,
+        "word": [
+          5,
+          144,
+          396
+        ],
+        "image_entries": 18
+      },
+      {
+        "j": 30,
+        "word": [
+          5,
+          144,
+          396
+        ],
+        "image_entries": 9
+      },
+      {
+        "j": 66,
+        "word": [
+          5,
+          144,
+          396
+        ],
+        "image_entries": 0
+      },
+      {
+        "j": 67,
+        "word": [
+          5,
+          144,
+          396
+        ],
+        "image_entries": 26
+      },
+      {
+        "j": 80,
+        "word": [
+          5,
+          144,
+          396
+        ],
+        "image_entries": 40
+      },
+      {
+        "j": 99,
+        "word": [
+          5,
+          144,
+          396
+        ],
+        "image_entries": 0
+      }
+    ]
+  },
+  "V2_reverse_controls": {
+    "drop_all_D_terms": {
+      "nonzero_defects": 95,
+      "first_witness": {
+        "j": 3,
+        "word": [
+          144,
+          396
+        ],
+        "defect_entries": 2,
+        "sample": [
+          [
+            [
+              144,
+              459
+            ],
+            "-28272512/570340155 + 256*I/32065"
+          ],
+          [
+            [
+              207,
+              396
+            ],
+            "-40680064/570340155 + 256*I/32065"
+          ]
+        ]
+      }
+    },
+    "drop_lorentz_elimination_pair_derivations": {
+      "nonzero_defects": 0,
+      "invariant_form_cancellation": true,
+      "tensor_proof": "lorentz_elimination_invariance",
+      "single_pair_derivation_witness": {
+        "j": 3,
+        "word": [
+          144,
+          396
+        ],
+        "image_entries": 2,
+        "sample": [
+          [
+            [
+              144,
+              459
+            ],
+            "4608/25109315 - 768*I/326095"
+          ],
+          [
+            [
+              207,
+              396
+            ],
+            "4608/25109315 + 768*I/326095"
+          ]
+        ]
+      }
+    },
+    "one_sided_quadratic_term": {
+      "nonzero_defects": 33,
+      "first_witness": {
+        "j": 3,
+        "word": [
+          144,
+          396
+        ],
+        "defect_entries": 2,
+        "sample": [
+          [
+            [
+              144,
+              459
+            ],
+            "-256/4235"
+          ],
+          [
+            [
+              207,
+              396
+            ],
+            "-256/4235"
+          ]
+        ]
+      }
+    },
+    "drop_normal_current_stress": {
+      "nonzero_defects": 39,
+      "first_witness": {
+        "j": 3,
+        "word": [
+          144,
+          396
+        ],
+        "defect_entries": 2,
+        "sample": [
+          [
+            [
+              144,
+              459
+            ],
+            "-256/4235"
+          ],
+          [
+            [
+              207,
+              396
+            ],
+            "-256/4235"
+          ]
+        ]
+      }
+    }
+  },
+  "V3_charge_conservation": {
+    "source_real_CAR504_generators": 14,
+    "nonzero_D_commutator_checks": 12236,
+    "conclusion": "[Q_alpha, D_kj] = 0 for all nonzero Jacobian blocks and all 14 generators; with closure under products/commutators and Lean SourceJointCurrentHeisenberg.normalProduct_charge_commute, quantize(Q_alpha) commutes with Jdot_j"
+  },
+  "V4_jacobian_report": {
+    "nonzero_blocks": 874,
+    "block_counts": {
+      "coframe": 108,
+      "scalar": 521,
+      "gauge": 245
+    },
+    "coframe_diagonal_divergence_zero": true,
+    "scalar_gauge_diagonal_equals_divmatrix": true,
+    "per_current_quartic_stress": {
+      "0": {
+        "normal_stress_terms": 0,
+        "pair_derivation_terms": 0
+      },
+      "1": {
+        "normal_stress_terms": 2,
+        "pair_derivation_terms": 100
+      },
+      "2": {
+        "normal_stress_terms": 0,
+        "pair_derivation_terms": 0
+      },
+      "3": {
+        "normal_stress_terms": 4,
+        "pair_derivation_terms": 156
+      },
+      "4": {
+        "normal_stress_terms": 2,
+        "pair_derivation_terms": 140
+      },
+      "5": {
+        "normal_stress_terms": 0,
+        "pair_derivation_terms": 0
+      },
+      "6": {
+        "normal_stress_terms": 16,
+        "pair_derivation_terms": 44
+      },
+      "7": {
+        "normal_stress_terms": 3,
+        "pair_derivation_terms": 0
+      },
+      "8": {
+        "normal_stress_terms": 1,
+        "pair_derivation_terms": 0
+      },
+      "9": {
+        "normal_stress_terms": 1,
+        "pair_derivation_terms": 0
+      },
+      "10": {
+        "normal_stress_terms": 5,
+        "pair_derivation_terms": 0
+      },
+      "11": {
+        "normal_stress_terms": 7,
+        "pair_derivation_terms": 0
+      },
+      "12": {
+        "normal_stress_terms": 7,
+        "pair_derivation_terms": 0
+      },
+      "13": {
+        "normal_stress_terms": 7,
+        "pair_derivation_terms": 0
+      },
+      "14": {
+        "normal_stress_terms": 5,
+        "pair_derivation_terms": 0
+      },
+      "15": {
+        "normal_stress_terms": 5,
+        "pair_derivation_terms": 0
+      },
+      "16": {
+        "normal_stress_terms": 24,
+        "pair_derivation_terms": 52
+      },
+      "17": {
+        "normal_stress_terms": 7,
+        "pair_derivation_terms": 0
+      },
+      "18": {
+        "normal_stress_terms": 8,
+        "pair_derivation_terms": 0
+      },
+      "19": {
+        "normal_stress_terms": 7,
+        "pair_derivation_terms": 0
+      },
+      "20": {
+        "normal_stress_terms": 5,
+        "pair_derivation_terms": 0
+      },
+      "21": {
+        "normal_stress_terms": 5,
+        "pair_derivation_terms": 0
+      },
+      "22": {
+        "normal_stress_terms": 7,
+        "pair_derivation_terms": 0
+      },
+      "23": {
+        "normal_stress_terms": 7,
+        "pair_derivation_terms": 0
+      },
+      "24": {
+        "normal_stress_terms": 5,
+        "pair_derivation_terms": 0
+      },
+      "25": {
+        "normal_stress_terms": 7,
+        "pair_derivation_terms": 0
+      },
+      "26": {
+        "normal_stress_terms": 7,
+        "pair_derivation_terms": 0
+      },
+      "27": {
+        "normal_stress_terms": 18,
+        "pair_derivation_terms": 44
+      },
+      "28": {
+        "normal_stress_terms": 7,
+        "pair_derivation_terms": 0
+      },
+      "29": {
+        "normal_stress_terms": 5,
+        "pair_derivation_terms": 0
+      },
+      "30": {
+        "normal_stress_terms": 5,
+        "pair_derivation_terms": 0
+      },
+      "31": {
+        "normal_stress_terms": 7,
+        "pair_derivation_terms": 0
+      },
+      "32": {
+        "normal_stress_terms": 7,
+        "pair_derivation_terms": 0
+      },
+      "33": {
+        "normal_stress_terms": 5,
+        "pair_derivation_terms": 0
+      },
+      "34": {
+        "normal_stress_terms": 5,
+        "pair_derivation_terms": 0
+      },
+      "35": {
+        "normal_stress_terms": 7,
+        "pair_derivation_terms": 0
+      },
+      "36": {
+        "normal_stress_terms": 7,
+        "pair_derivation_terms": 0
+      },
+      "37": {
+        "normal_stress_terms": 0,
+        "pair_derivation_terms": 0
+      },
+      "38": {
+        "normal_stress_terms": 18,
+        "pair_derivation_terms": 52
+      },
+      "39": {
+        "normal_stress_terms": 10,
+        "pair_derivation_terms": 0
+      },
+      "40": {
+        "normal_stress_terms": 1,
+        "pair_derivation_terms": 0
+      },
+      "41": {
+        "normal_stress_terms": 5,
+        "pair_derivation_terms": 0
+      },
+      "42": {
+        "normal_stress_terms": 7,
+        "pair_derivation_terms": 0
+      },
+      "43": {
+        "normal_stress_terms": 7,
+        "pair_derivation_terms": 0
+      },
+      "44": {
+        "normal_stress_terms": 5,
+        "pair_derivation_terms": 0
+      },
+      "45": {
+        "normal_stress_terms": 17,
+        "pair_derivation_terms": 16
+      },
+      "46": {
+        "normal_stress_terms": 7,
+        "pair_derivation_terms": 0
+      },
+      "47": {
+        "normal_stress_terms": 8,
+        "pair_derivation_terms": 0
+      },
+      "48": {
+        "normal_stress_terms": 7,
+        "pair_derivation_terms": 0
+      },
+      "49": {
+        "normal_stress_terms": 5,
+        "pair_derivation_terms": 0
+      },
+      "50": {
+        "normal_stress_terms": 5,
+        "pair_derivation_terms": 0
+      },
+      "51": {
+        "normal_stress_terms": 7,
+        "pair_derivation_terms": 0
+      },
+      "52": {
+        "normal_stress_terms": 7,
+        "pair_derivation_terms": 0
+      },
+      "53": {
+        "normal_stress_terms": 5,
+        "pair_derivation_terms": 0
+      },
+      "54": {
+        "normal_stress_terms": 22,
+        "pair_derivation_terms": 52
+      },
+      "55": {
+        "normal_stress_terms": 7,
+        "pair_derivation_terms": 0
+      },
+      "56": {
+        "normal_stress_terms": 20,
+        "pair_derivation_terms": 52
+      },
+      "57": {
+        "normal_stress_terms": 7,
+        "pair_derivation_terms": 0
+      },
+      "58": {
+        "normal_stress_terms": 5,
+        "pair_derivation_terms": 0
+      },
+      "59": {
+        "normal_stress_terms": 5,
+        "pair_derivation_terms": 0
+      },
+      "60": {
+        "normal_stress_terms": 7,
+        "pair_derivation_terms": 0
+      },
+      "61": {
+        "normal_stress_terms": 7,
+        "pair_derivation_terms": 0
+      },
+      "62": {
+        "normal_stress_terms": 5,
+        "pair_derivation_terms": 0
+      },
+      "63": {
+        "normal_stress_terms": 5,
+        "pair_derivation_terms": 0
+      },
+      "64": {
+        "normal_stress_terms": 7,
+        "pair_derivation_terms": 0
+      },
+      "65": {
+        "normal_stress_terms": 7,
+        "pair_derivation_terms": 0
+      },
+      "66": {
+        "normal_stress_terms": 0,
+        "pair_derivation_terms": 0
+      },
+      "67": {
+        "normal_stress_terms": 13,
+        "pair_derivation_terms": 30
+      },
+      "68": {
+        "normal_stress_terms": 13,
+        "pair_derivation_terms": 30
+      },
+      "69": {
+        "normal_stress_terms": 21,
+        "pair_derivation_terms": 52
+      },
+      "70": {
+        "normal_stress_terms": 21,
+        "pair_derivation_terms": 52
+      },
+      "71": {
+        "normal_stress_terms": 22,
+        "pair_derivation_terms": 54
+      },
+      "72": {
+        "normal_stress_terms": 22,
+        "pair_derivation_terms": 52
+      },
+      "73": {
+        "normal_stress_terms": 2,
+        "pair_derivation_terms": 0
+      },
+      "74": {
+        "normal_stress_terms": 2,
+        "pair_derivation_terms": 0
+      },
+      "75": {
+        "normal_stress_terms": 2,
+        "pair_derivation_terms": 0
+      },
+      "76": {
+        "normal_stress_terms": 0,
+        "pair_derivation_terms": 0
+      },
+      "77": {
+        "normal_stress_terms": 13,
+        "pair_derivation_terms": 16
+      },
+      "78": {
+        "normal_stress_terms": 27,
+        "pair_derivation_terms": 52
+      },
+      "79": {
+        "normal_stress_terms": 23,
+        "pair_derivation_terms": 52
+      },
+      "80": {
+        "normal_stress_terms": 22,
+        "pair_derivation_terms": 48
+      },
+      "81": {
+        "normal_stress_terms": 21,
+        "pair_derivation_terms": 48
+      },
+      "82": {
+        "normal_stress_terms": 22,
+        "pair_derivation_terms": 52
+      },
+      "83": {
+        "normal_stress_terms": 12,
+        "pair_derivation_terms": 16
+      },
+      "84": {
+        "normal_stress_terms": 2,
+        "pair_derivation_terms": 0
+      },
+      "85": {
+        "normal_stress_terms": 2,
+        "pair_derivation_terms": 0
+      },
+      "86": {
+        "normal_stress_terms": 2,
+        "pair_derivation_terms": 0
+      },
+      "87": {
+        "normal_stress_terms": 0,
+        "pair_derivation_terms": 0
+      },
+      "88": {
+        "normal_stress_terms": 19,
+        "pair_derivation_terms": 16
+      },
+      "89": {
+        "normal_stress_terms": 28,
+        "pair_derivation_terms": 52
+      },
+      "90": {
+        "normal_stress_terms": 24,
+        "pair_derivation_terms": 52
+      },
+      "91": {
+        "normal_stress_terms": 22,
+        "pair_derivation_terms": 44
+      },
+      "92": {
+        "normal_stress_terms": 16,
+        "pair_derivation_terms": 30
+      },
+      "93": {
+        "normal_stress_terms": 17,
+        "pair_derivation_terms": 42
+      },
+      "94": {
+        "normal_stress_terms": 13,
+        "pair_derivation_terms": 16
+      },
+      "95": {
+        "normal_stress_terms": 13,
+        "pair_derivation_terms": 16
+      },
+      "96": {
+        "normal_stress_terms": 2,
+        "pair_derivation_terms": 0
+      },
+      "97": {
+        "normal_stress_terms": 2,
+        "pair_derivation_terms": 0
+      },
+      "98": {
+        "normal_stress_terms": 2,
+        "pair_derivation_terms": 0
+      },
+      "99": {
+        "normal_stress_terms": 0,
+        "pair_derivation_terms": 0
+      }
+    },
+    "quartic_stress_witness": {
+      "j": 3,
+      "word": [
+        144,
+        396
+      ],
+      "image_word": [
+        144,
+        459
+      ],
+      "coefficient": "-256/4235"
+    }
+  },
+  "lorentz_elimination_pairs_tail_count": 86,
+  "lorentz_elimination_invariance": {
+    "J_family_size": 24,
+    "J_span_rank": 8,
+    "W_entries": 86,
+    "criterion": "Theta^AA[i,j,k,l] = Theta[i,j,k,l] - Theta[k,j,i,l] - Theta[i,l,k,j] + Theta[k,l,i,j] == 0 (same-sector) AND Theta_sym[i,j,k,l] = Theta[i,j,k,l] + Theta[k,l,i,j] == 0 (cross-sector) on the 8-mode coframe sector <=> the W-tail derivation operator vanishes on every Fock word",
+    "per_current": {
+      "6": "zero_commutator_504",
+      "7": "zero_commutator_504",
+      "8": "zero_commutator_504",
+      "9": "zero_commutator_504",
+      "10": "zero_commutator_504",
+      "11": "zero_commutator_504",
+      "12": "zero_commutator_504",
+      "13": "zero_commutator_504",
+      "14": "zero_commutator_504",
+      "15": "zero_commutator_504",
+      "16": "zero_commutator_504",
+      "17": "zero_commutator_504",
+      "18": "zero_commutator_504",
+      "19": "zero_commutator_504",
+      "20": "zero_commutator_504",
+      "21": "zero_commutator_504",
+      "22": "zero_commutator_504",
+      "23": "zero_commutator_504",
+      "24": "zero_commutator_504",
+      "25": "zero_commutator_504",
+      "26": "zero_commutator_504",
+      "27": "zero_commutator_504",
+      "28": "zero_commutator_504",
+      "29": "zero_commutator_504",
+      "30": "zero_commutator_504",
+      "31": "zero_commutator_504",
+      "32": "zero_commutator_504",
+      "33": "zero_commutator_504",
+      "34": "zero_commutator_504",
+      "35": "zero_commutator_504",
+      "36": "zero_commutator_504",
+      "37": "zero_commutator_504",
+      "38": "zero_commutator_504",
+      "39": "zero_commutator_504",
+      "40": "zero_commutator_504",
+      "41": "zero_commutator_504",
+      "42": "zero_commutator_504",
+      "43": "zero_commutator_504",
+      "44": "zero_commutator_504",
+      "45": "zero_commutator_504",
+      "46": "zero_commutator_504",
+      "47": "zero_commutator_504",
+      "48": "zero_commutator_504",
+      "49": "zero_commutator_504",
+      "50": "zero_commutator_504",
+      "51": "zero_commutator_504",
+      "52": "zero_commutator_504",
+      "53": "zero_commutator_504",
+      "54": "zero_commutator_504",
+      "55": "zero_commutator_504",
+      "56": "zero_commutator_504",
+      "57": "zero_commutator_504",
+      "58": "zero_commutator_504",
+      "59": "zero_commutator_504",
+      "60": "zero_commutator_504",
+      "61": "zero_commutator_504",
+      "62": "zero_commutator_504",
+      "63": "zero_commutator_504",
+      "64": "zero_commutator_504",
+      "65": "zero_commutator_504",
+      "66": "zero_commutator_504",
+      "67": "zero_commutator_504",
+      "68": "zero_commutator_504",
+      "69": "zero_commutator_504",
+      "70": "zero_commutator_504",
+      "71": "zero_commutator_504",
+      "72": "zero_commutator_504",
+      "73": "zero_commutator_504",
+      "74": "zero_commutator_504",
+      "75": "zero_commutator_504",
+      "76": "zero_commutator_504",
+      "77": "zero_commutator_504",
+      "78": "zero_commutator_504",
+      "79": "zero_commutator_504",
+      "80": "zero_commutator_504",
+      "81": "zero_commutator_504",
+      "82": "zero_commutator_504",
+      "83": "zero_commutator_504",
+      "84": "zero_commutator_504",
+      "85": "zero_commutator_504",
+      "86": "zero_commutator_504",
+      "87": "zero_commutator_504",
+      "88": "zero_commutator_504",
+      "89": "zero_commutator_504",
+      "90": "zero_commutator_504",
+      "91": "zero_commutator_504",
+      "92": "zero_commutator_504",
+      "93": "zero_commutator_504",
+      "94": "zero_commutator_504",
+      "95": "zero_commutator_504",
+      "96": "zero_commutator_504",
+      "97": "zero_commutator_504",
+      "98": "zero_commutator_504",
+      "99": "zero_commutator_504",
+      "0": "zero_commutator_8",
+      "1": {
+        "verdict": "invariant_form",
+        "nonzero_commutator_Js": [
+          0,
+          1,
+          3,
+          4,
+          8,
+          11,
+          14,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "theta_entries": 192,
+        "theta_AA_failures": 0,
+        "theta_sym_failures": 0
+      },
+      "2": "zero_commutator_8",
+      "3": {
+        "verdict": "invariant_form",
+        "nonzero_commutator_Js": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          7,
+          8,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "theta_entries": 256,
+        "theta_AA_failures": 0,
+        "theta_sym_failures": 0
+      },
+      "4": {
+        "verdict": "invariant_form",
+        "nonzero_commutator_Js": [
+          1,
+          2,
+          4,
+          5,
+          7,
+          8,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "theta_entries": 256,
+        "theta_AA_failures": 0,
+        "theta_sym_failures": 0
+      },
+      "5": "zero_commutator_8"
+    }
+  },
+  "proton_lifetime_status": "SOURCE_NATIVE_DYNAMIC_MEASURE_REQUIRED",
+  "seconds": 3125.081
+}

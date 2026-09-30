@@ -1,0 +1,16 @@
+import H0mework.Chemistry.LAlanineBandAttractor.SourceA007HullGroups
+import H0mework.Chemistry.LAlanineBandAttractor.SourceA007HullOrbitals
+import H0mework.Chemistry.LAlanineBandAttractor.SourceA007HullMatrixPart0
+import H0mework.Chemistry.LAlanineBandAttractor.SourceA007HullMatrixPart1
+import H0mework.Chemistry.LAlanineBandAttractor.SourceA007HullMatrixPart2
+import H0mework.Chemistry.LAlanineBandAttractor.SourceA007HullMatrixPart3
+import H0mework.Chemistry.LAlanineBandAttractor.SourceA007HullDensityCheck
+import H0mework.Chemistry.LAlanineBandHighJet.Assembly
+set_option autoImplicit false
+set_option maxHeartbeats 0
+set_option maxRecDepth 16384
+namespace SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.BasinRefinement.WholeBandAttractor.Atom007.Hull
+open WholeBandGenerated HighJet.MatrixChecking HighJet.Assembly
+assembleHighJetMatrix
+assembleHighJetMaterial 0
+end SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.BasinRefinement.WholeBandAttractor.Atom007.Hull

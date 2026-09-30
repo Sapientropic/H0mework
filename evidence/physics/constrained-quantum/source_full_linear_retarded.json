@@ -1,0 +1,4971 @@
+{
+  "root": "positiveSmoothUnifiedSource; repaired Dirac-dual; SpinPair.actual; visit10/tick16/materialEntry -> tick17 unchanged",
+  "source_sha256": {
+    "Lean/SaturationMonoid/PhysicsCore/SU7ExteriorYukawaMassSpectrum.lean": "cc100f817041a1e8b33aadf909a4838756c32eb0f28a15ff138c5cd9a3db4813",
+    "Lean/SaturationMonoid/PhysicsCore/SU7ExteriorBreakingYukawa.lean": "f3d245e031380de7dacf16312b81665a11d2fd209dfd751652821e9638b74ce0",
+    "Lean/SaturationMonoid/PhysicsCore/SU7MotherLieAlgebra.lean": "acb8a102cb607e8736b25acd5e851f70b15fb53ec7cc6784362e1b0c2a95e7da",
+    "Lean/SaturationMonoid/PhysicsCore/SU7ExteriorMatterRepresentation.lean": "0b7cb7f6d4078d7f0a7347513bd98077bd18092f89b1c4c4ec3ee23ad84efbac",
+    "Lean/SaturationMonoid/PhysicsCore/SU7ExteriorMatterRestriction.lean": "b91ff6e8d6ea1e9e7e6220fec204288a946a8153913882d1f68eee489d403ed1",
+    "Lean/SaturationMonoid/PhysicsCore/StageNineDynamicBreakingVacuum.lean": "f79cd71ae67e1ee2b1b698f7a09a0130e742e4a471862165748277269e2027bf",
+    "Lean/SaturationMonoid/PhysicsCore/StageNineGlobalIntegratedAction.lean": "525d2672c446c94a9b528c4277efed582419fbcb31e8e28b533cba3ff0589497",
+    "Lean/SaturationMonoid/PhysicsCore/StageNineExteriorMotherLieRepresentation.lean": "444b0ef9ba42af3801ffc010996ac5feddfed8605f4ce9bb2fbe15fe2b562f7b",
+    "Lean/SaturationMonoid/PhysicsCore/StageNineFormNativeMotherAction.lean": "24104b817d0a663626c46388bfa5a2660441f90cbee77ea5a86495fd7d64e6a2",
+    "Lean/SaturationMonoid/PhysicsCore/Stage9C/Material/SpinPair/Parameters.lean": "eeecea0c096fbbf4c0090d301fb19ca70f22020c89a8ad279b70133b6b8f4bc3"
+  },
+  "input_sha256": {
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/source_full_linear_retarded.py": "9401426d5657eb51911743dbcba90c3baebadeff186e9c4bdff7c2e44e6dbf1b",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/source_full_linear_split.py": "fb2b55ef378b82ff6b25b864a45e57a3b90ae6604c3b73f0cb3c568c50b3f124",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/source_full_linear_split.json": "f58affbf041dd7f16517e26b2d45a44280d0581e71a3370f5d83d37b7e10e15c",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/independent_source_full_linear_split.json": "8df41dd9feef2fe26964e0a2b44489a669afa282d20ee2ae17fb07510c4a2344",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/scalar_canonical_phase.py": "440fe3c97391a8a0cccc8c3451ab912df4d9f00656c593b17b7f43fed750330c",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/scalar_canonical_phase.json": "99d91563d81013c7b7a6d4f08f29f0c6b49ab9a2b3defc04b9bedff07b422a2b",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/independent_scalar_canonical_phase.json": "91130ce07d229acf1e27b10d9e852aa05a4a550cf8846c25a70bfdee4f3be415",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/scalar_momentum_energy.py": "0b4fb3e47fc0af93d8ae1da6b2e6d63ace71a0c215ad8185f25931e2126fc890",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/scalar_momentum_energy.json": "952df7b9c11d09f16fecd4d5488ae811209a0833b3071485b4966eeb7a582a5f",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/independent_scalar_momentum_energy.json": "52bab518ead171013e571fc9152a92a404448e83776980e8187ec805dbd976e2",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/retained_hamiltonian_reduction.json": "52365c46699beb9d917d71dbe04e6e2383773007e38607535d36e1f16fc30166",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/source_first_order_cauchy.json": "5264eea9bf2a09662140acf66072ea1672e6521fc1688f970f1ee1ba49e20d8d",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/independent_source_first_order_cauchy.json": "4b7dcdac84c9e0764570bef72c259ccc25da457a5ee2031a00ea507ba7eeb3e3",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/source_stationary_cauchy_orbit.py": "cb4b9936a937c61797ccba9af7cd039ae2ffbb2d33e07f808a8a915f96e0267e",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/source_stationary_cauchy_orbit.json": "61facca67c59bd04d3a9c3f0f042efc43231570c1602ba78de3555f96d16016a",
+    "Verification/physics/low-energy-phenomenology/full-phase/receipt.json": "974c63e480b5202cdd00d77867ea0c4e03ba6cd370d5c927133382ee14387683",
+    "Lean/SaturationMonoid/PhysicsCore/SU7ExteriorYukawaMassSpectrum.lean": "cc100f817041a1e8b33aadf909a4838756c32eb0f28a15ff138c5cd9a3db4813",
+    "Lean/SaturationMonoid/PhysicsCore/SU7ExteriorBreakingYukawa.lean": "f3d245e031380de7dacf16312b81665a11d2fd209dfd751652821e9638b74ce0",
+    "Lean/SaturationMonoid/PhysicsCore/SU7MotherLieAlgebra.lean": "acb8a102cb607e8736b25acd5e851f70b15fb53ec7cc6784362e1b0c2a95e7da",
+    "Lean/SaturationMonoid/PhysicsCore/SU7ExteriorMatterRepresentation.lean": "0b7cb7f6d4078d7f0a7347513bd98077bd18092f89b1c4c4ec3ee23ad84efbac",
+    "Lean/SaturationMonoid/PhysicsCore/SU7ExteriorMatterRestriction.lean": "b91ff6e8d6ea1e9e7e6220fec204288a946a8153913882d1f68eee489d403ed1",
+    "Lean/SaturationMonoid/PhysicsCore/StageNineDynamicBreakingVacuum.lean": "f79cd71ae67e1ee2b1b698f7a09a0130e742e4a471862165748277269e2027bf",
+    "Lean/SaturationMonoid/PhysicsCore/StageNineGlobalIntegratedAction.lean": "525d2672c446c94a9b528c4277efed582419fbcb31e8e28b533cba3ff0589497",
+    "Lean/SaturationMonoid/PhysicsCore/StageNineExteriorMotherLieRepresentation.lean": "444b0ef9ba42af3801ffc010996ac5feddfed8605f4ce9bb2fbe15fe2b562f7b",
+    "Lean/SaturationMonoid/PhysicsCore/StageNineFormNativeMotherAction.lean": "24104b817d0a663626c46388bfa5a2660441f90cbee77ea5a86495fd7d64e6a2",
+    "Lean/SaturationMonoid/PhysicsCore/Stage9C/Material/SpinPair/Parameters.lean": "eeecea0c096fbbf4c0090d301fb19ca70f22020c89a8ad279b70133b6b8f4bc3",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/source_common_hamiltonian.py": "bd2f2791c7cfa8f9c0d9720685d48aa78d783fcd38b4dee1bc34ce80103f372d",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/independent_retained_hamiltonian_reduction.json": "a3b60abfba5212fdde9a4fd203cc4d9f47cfc4778e9920a08a295dc5d2774177",
+    "Verification/physics/low-energy-phenomenology/active-gauge/receipt.json": "93187af70fcb7d91c2d4424346ff35cc2d5f6b29534f3376ccc253ca089035d1",
+    "Verification/physics/low-energy-phenomenology/occupied-response/receipt.json": "7b96255809a493fee55729dee5eb1792957984af582770fc9543bb68b9ec0a87",
+    "Verification/physics/low-energy-phenomenology/matter-vertices/receipt.json": "7708a972d5f9bc953d146f85891bca1f4a8e0a06264b3a03c40a170e377e3517",
+    "Verification/physics/low-energy-phenomenology/scalar-exchange/receipt.json": "d97fa252d20870aeb6ebd375222a24e4b60cee862eb1a72e65775b86a30e755a",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/source_first_order_cauchy.py": "8d67c35efef64904ca6c4f86abddb115d01b5a20c85361a5a9bfa187cbe485f3",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/source_spatial_lorentz_time.py": "9608068dfe06664db9a5a7db28c33ffa966e751f2b633502fbbd0316e05f81f6",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/source_spatial_lorentz_time.json": "66b25683c540bdd338d3b30cfbbe9d2b8c66f93995cd626f7c5dfb87d67185e6",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/independent_source_spatial_lorentz_time.json": "4d136e725a284f9f09316e42ef0de6c7fd72945c5b6c722619491a6d02bd2099",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/source_spatial_time_coframe.py": "d26cb99e383dadcf701f0b03ec0d82f6f0ae083d938682ff83f3df69d3aa16fb",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/source_spatial_time_coframe.json": "fc9b8da09c8f10d7756a19d2bad8535b201715910bb02d01f8a7694779bb3be0",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/independent_source_spatial_time_coframe.json": "0b20260a48d9e85aba1dfb39931d49cff2280baef9f62beb4ff2d3bf41a976cd",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/source_coframe_constraint_transport.py": "6debb94c57a2412968177d76dd25da0e20d10eef1b1365f34341302d86317c81",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/source_coframe_constraint_transport.json": "5a00df481651a59e95e5b9a89bbbffb61c0e409d87cd145ad5a2cad0b1970ebe",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/independent_source_coframe_constraint_transport.json": "9a1da5737d31e584ee071bc23415b638c9a3fcc358d73dfbb0f96957176d79e6",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/source_constraint_preservation.py": "ff68170c281f1af574f350dd62fd5ef9cef89b11f9d8a287a793d35a1b29d854",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/source_constraint_preservation.json": "7177ec607851313b2615744eeaa0088395ec5c8c43d82fe5527998fab6e36a89",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/independent_source_constraint_preservation.json": "d527480060b7502c8cbec66c247b9df0847c178875b86b365b9c6b0b7da93851",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/source_homogeneous_canonical_flow.json": "dce3d2d98ba29953a87ef8524d349b47d79c8733c4a222f336eb9d6dafbdd98b",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/source_gauge_legendre.py": "70ca7f5186cef7777e47ded19ef9d00e2339df36d6ce3e91a3ac95401385fcf1",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/source_lorentz_contact.py": "bb9a611798fd182af0869ec43d93c27dfece5161b256d6dc9b7729c26cd7094d",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/source_coframe_legendre.py": "dfcc6dedec8cdb00037536d7de6724d5a387ac92132e7ad00cc8491ced02c3bc",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/source_scalar_legendre.py": "494c77958f26fd76f41ed46b587cfab01698bd81c3518541b1cf5d3707357f36",
+    "Verification/physics/low-energy-phenomenology/full-quantum/receipt.json": "aae3bdc6344ee0e393d7fb3a21e5e6c212a381f76d701e6b862e40b44111f194",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/independent_source_first_order_cauchy.py": "8be922ee047a2dfcae80631fc6fa7d392aa8848396a03684cab363e7bc2a8bef",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/independent_source_spatial_lorentz_time.py": "109a1026799c233f601044150d1a9c09f9d782bc80755cb0eb15455c2e28c615",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/independent_source_spatial_time_coframe.py": "ffb45a3bf0c30649438f097233f534d5562ba717a5b9470cf28b75a21d4f9c8d",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/independent_source_coframe_constraint_transport.py": "8e37d2859ddc2fad5cf32eb761d4decd204a6c55f3f186067a4a33ae464fe91a"
+  },
+  "verdict": "SOURCE_COMPLETE_1082_TAIL_RETARDED_INVERSE_AND_TIME_PROPAGATOR_GENERATED",
+  "scope": "Complete1082 retarded tail along the actual original source Cauchy phase orbit, represented by its exact stationary source Jacobi coefficients.",
+  "dimensions": {
+    "dual": 480,
+    "scalar": 122,
+    "primal": 480,
+    "total": 1082
+  },
+  "dual_inverse": {
+    "complex_dimension": 240,
+    "source_components": [
+      {
+        "indices": [
+          0,
+          60
+        ],
+        "inverse_leaf": 0
+      },
+      {
+        "indices": [
+          1,
+          61
+        ],
+        "inverse_leaf": 0
+      },
+      {
+        "indices": [
+          2,
+          62
+        ],
+        "inverse_leaf": 0
+      },
+      {
+        "indices": [
+          3,
+          63
+        ],
+        "inverse_leaf": 0
+      },
+      {
+        "indices": [
+          4,
+          64
+        ],
+        "inverse_leaf": 0
+      },
+      {
+        "indices": [
+          5,
+          6,
+          65,
+          66
+        ],
+        "inverse_leaf": 1
+      },
+      {
+        "indices": [
+          7,
+          67
+        ],
+        "inverse_leaf": 2
+      },
+      {
+        "indices": [
+          8,
+          12,
+          68,
+          72
+        ],
+        "inverse_leaf": 3
+      },
+      {
+        "indices": [
+          9,
+          13,
+          69,
+          73
+        ],
+        "inverse_leaf": 3
+      },
+      {
+        "indices": [
+          10,
+          14,
+          70,
+          74
+        ],
+        "inverse_leaf": 3
+      },
+      {
+        "indices": [
+          11,
+          15,
+          71,
+          75
+        ],
+        "inverse_leaf": 3
+      },
+      {
+        "indices": [
+          16,
+          76
+        ],
+        "inverse_leaf": 2
+      },
+      {
+        "indices": [
+          17,
+          77
+        ],
+        "inverse_leaf": 2
+      },
+      {
+        "indices": [
+          18,
+          78
+        ],
+        "inverse_leaf": 2
+      },
+      {
+        "indices": [
+          19,
+          79
+        ],
+        "inverse_leaf": 2
+      },
+      {
+        "indices": [
+          20,
+          80
+        ],
+        "inverse_leaf": 2
+      },
+      {
+        "indices": [
+          21,
+          81
+        ],
+        "inverse_leaf": 2
+      },
+      {
+        "indices": [
+          22,
+          82
+        ],
+        "inverse_leaf": 2
+      },
+      {
+        "indices": [
+          23,
+          83
+        ],
+        "inverse_leaf": 2
+      },
+      {
+        "indices": [
+          24,
+          84
+        ],
+        "inverse_leaf": 2
+      },
+      {
+        "indices": [
+          25,
+          85
+        ],
+        "inverse_leaf": 2
+      },
+      {
+        "indices": [
+          26,
+          86
+        ],
+        "inverse_leaf": 2
+      },
+      {
+        "indices": [
+          27,
+          87
+        ],
+        "inverse_leaf": 2
+      },
+      {
+        "indices": [
+          28,
+          88
+        ],
+        "inverse_leaf": 2
+      },
+      {
+        "indices": [
+          29,
+          89
+        ],
+        "inverse_leaf": 2
+      },
+      {
+        "indices": [
+          30,
+          90
+        ],
+        "inverse_leaf": 2
+      },
+      {
+        "indices": [
+          31,
+          91
+        ],
+        "inverse_leaf": 2
+      },
+      {
+        "indices": [
+          32,
+          92
+        ],
+        "inverse_leaf": 2
+      },
+      {
+        "indices": [
+          33,
+          93
+        ],
+        "inverse_leaf": 2
+      },
+      {
+        "indices": [
+          34,
+          94
+        ],
+        "inverse_leaf": 2
+      },
+      {
+        "indices": [
+          35,
+          45,
+          95,
+          105
+        ],
+        "inverse_leaf": 3
+      },
+      {
+        "indices": [
+          36,
+          46,
+          96,
+          106
+        ],
+        "inverse_leaf": 3
+      },
+      {
+        "indices": [
+          37,
+          47,
+          97,
+          107
+        ],
+        "inverse_leaf": 3
+      },
+      {
+        "indices": [
+          38,
+          48,
+          98,
+          108
+        ],
+        "inverse_leaf": 3
+      },
+      {
+        "indices": [
+          39,
+          49,
+          99,
+          109
+        ],
+        "inverse_leaf": 3
+      },
+      {
+        "indices": [
+          40,
+          50,
+          100,
+          110
+        ],
+        "inverse_leaf": 3
+      },
+      {
+        "indices": [
+          41,
+          51,
+          101,
+          111
+        ],
+        "inverse_leaf": 3
+      },
+      {
+        "indices": [
+          42,
+          52,
+          102,
+          112
+        ],
+        "inverse_leaf": 3
+      },
+      {
+        "indices": [
+          43,
+          53,
+          103,
+          113
+        ],
+        "inverse_leaf": 3
+      },
+      {
+        "indices": [
+          44,
+          54,
+          104,
+          114
+        ],
+        "inverse_leaf": 3
+      },
+      {
+        "indices": [
+          55,
+          115
+        ],
+        "inverse_leaf": 2
+      },
+      {
+        "indices": [
+          56,
+          116
+        ],
+        "inverse_leaf": 2
+      },
+      {
+        "indices": [
+          57,
+          117
+        ],
+        "inverse_leaf": 2
+      },
+      {
+        "indices": [
+          58,
+          118
+        ],
+        "inverse_leaf": 2
+      },
+      {
+        "indices": [
+          59,
+          119
+        ],
+        "inverse_leaf": 2
+      },
+      {
+        "indices": [
+          120,
+          180
+        ],
+        "inverse_leaf": 4
+      },
+      {
+        "indices": [
+          121,
+          181
+        ],
+        "inverse_leaf": 4
+      },
+      {
+        "indices": [
+          122,
+          182
+        ],
+        "inverse_leaf": 4
+      },
+      {
+        "indices": [
+          123,
+          183
+        ],
+        "inverse_leaf": 4
+      },
+      {
+        "indices": [
+          124,
+          184
+        ],
+        "inverse_leaf": 4
+      },
+      {
+        "indices": [
+          125,
+          126,
+          185,
+          186
+        ],
+        "inverse_leaf": 5
+      },
+      {
+        "indices": [
+          127,
+          187
+        ],
+        "inverse_leaf": 6
+      },
+      {
+        "indices": [
+          128,
+          132,
+          188,
+          192
+        ],
+        "inverse_leaf": 7
+      },
+      {
+        "indices": [
+          129,
+          133,
+          189,
+          193
+        ],
+        "inverse_leaf": 7
+      },
+      {
+        "indices": [
+          130,
+          134,
+          190,
+          194
+        ],
+        "inverse_leaf": 7
+      },
+      {
+        "indices": [
+          131,
+          135,
+          191,
+          195
+        ],
+        "inverse_leaf": 7
+      },
+      {
+        "indices": [
+          136,
+          196
+        ],
+        "inverse_leaf": 6
+      },
+      {
+        "indices": [
+          137,
+          197
+        ],
+        "inverse_leaf": 6
+      },
+      {
+        "indices": [
+          138,
+          198
+        ],
+        "inverse_leaf": 6
+      },
+      {
+        "indices": [
+          139,
+          199
+        ],
+        "inverse_leaf": 6
+      },
+      {
+        "indices": [
+          140,
+          200
+        ],
+        "inverse_leaf": 6
+      },
+      {
+        "indices": [
+          141,
+          201
+        ],
+        "inverse_leaf": 6
+      },
+      {
+        "indices": [
+          142,
+          202
+        ],
+        "inverse_leaf": 6
+      },
+      {
+        "indices": [
+          143,
+          203
+        ],
+        "inverse_leaf": 6
+      },
+      {
+        "indices": [
+          144,
+          204
+        ],
+        "inverse_leaf": 6
+      },
+      {
+        "indices": [
+          145,
+          205
+        ],
+        "inverse_leaf": 6
+      },
+      {
+        "indices": [
+          146,
+          206
+        ],
+        "inverse_leaf": 6
+      },
+      {
+        "indices": [
+          147,
+          207
+        ],
+        "inverse_leaf": 6
+      },
+      {
+        "indices": [
+          148,
+          208
+        ],
+        "inverse_leaf": 6
+      },
+      {
+        "indices": [
+          149,
+          209
+        ],
+        "inverse_leaf": 6
+      },
+      {
+        "indices": [
+          150,
+          210
+        ],
+        "inverse_leaf": 6
+      },
+      {
+        "indices": [
+          151,
+          211
+        ],
+        "inverse_leaf": 6
+      },
+      {
+        "indices": [
+          152,
+          212
+        ],
+        "inverse_leaf": 6
+      },
+      {
+        "indices": [
+          153,
+          213
+        ],
+        "inverse_leaf": 6
+      },
+      {
+        "indices": [
+          154,
+          214
+        ],
+        "inverse_leaf": 6
+      },
+      {
+        "indices": [
+          155,
+          165,
+          215,
+          225
+        ],
+        "inverse_leaf": 7
+      },
+      {
+        "indices": [
+          156,
+          166,
+          216,
+          226
+        ],
+        "inverse_leaf": 7
+      },
+      {
+        "indices": [
+          157,
+          167,
+          217,
+          227
+        ],
+        "inverse_leaf": 7
+      },
+      {
+        "indices": [
+          158,
+          168,
+          218,
+          228
+        ],
+        "inverse_leaf": 7
+      },
+      {
+        "indices": [
+          159,
+          169,
+          219,
+          229
+        ],
+        "inverse_leaf": 7
+      },
+      {
+        "indices": [
+          160,
+          170,
+          220,
+          230
+        ],
+        "inverse_leaf": 7
+      },
+      {
+        "indices": [
+          161,
+          171,
+          221,
+          231
+        ],
+        "inverse_leaf": 7
+      },
+      {
+        "indices": [
+          162,
+          172,
+          222,
+          232
+        ],
+        "inverse_leaf": 7
+      },
+      {
+        "indices": [
+          163,
+          173,
+          223,
+          233
+        ],
+        "inverse_leaf": 7
+      },
+      {
+        "indices": [
+          164,
+          174,
+          224,
+          234
+        ],
+        "inverse_leaf": 7
+      },
+      {
+        "indices": [
+          175,
+          235
+        ],
+        "inverse_leaf": 6
+      },
+      {
+        "indices": [
+          176,
+          236
+        ],
+        "inverse_leaf": 6
+      },
+      {
+        "indices": [
+          177,
+          237
+        ],
+        "inverse_leaf": 6
+      },
+      {
+        "indices": [
+          178,
+          238
+        ],
+        "inverse_leaf": 6
+      },
+      {
+        "indices": [
+          179,
+          239
+        ],
+        "inverse_leaf": 6
+      }
+    ],
+    "exact_inverse_leaves": [
+      {
+        "generator": {
+          "shape": [
+            2,
+            2
+          ],
+          "entries": [
+            [
+              0,
+              0,
+              "-3*sqrt(30)*I*k3/25 - 9*sqrt(15)*I/125"
+            ],
+            [
+              0,
+              1,
+              "-3*sqrt(30)*I*k1/25 + 3*sqrt(30)*k2/25"
+            ],
+            [
+              1,
+              0,
+              "-3*sqrt(30)*I*k1/25 - 3*sqrt(30)*k2/25"
+            ],
+            [
+              1,
+              1,
+              "3*sqrt(30)*I*k3/25 - 9*sqrt(15)*I/125"
+            ]
+          ]
+        },
+        "numerator": {
+          "shape": [
+            2,
+            2
+          ],
+          "entries": [
+            [
+              0,
+              0,
+              "-3*sqrt(30)*I*k3/25 + retarded_laplace + 9*sqrt(15)*I/125"
+            ],
+            [
+              0,
+              1,
+              "-3*sqrt(30)*I*k1/25 + 3*sqrt(30)*k2/25"
+            ],
+            [
+              1,
+              0,
+              "-3*sqrt(30)*I*k1/25 - 3*sqrt(30)*k2/25"
+            ],
+            [
+              1,
+              1,
+              "3*sqrt(30)*I*k3/25 + retarded_laplace + 9*sqrt(15)*I/125"
+            ]
+          ]
+        },
+        "denominator": "54*k1**2/125 + 54*k2**2/125 + 54*k3**2/125 + retarded_laplace**2 + 18*sqrt(15)*I*retarded_laplace/125 - 243/3125"
+      },
+      {
+        "generator": {
+          "shape": [
+            4,
+            4
+          ],
+          "entries": [
+            [
+              0,
+              0,
+              "-3*sqrt(30)*I*k3/25"
+            ],
+            [
+              0,
+              2,
+              "-3*sqrt(30)*I*k1/25 + 3*sqrt(30)*k2/25"
+            ],
+            [
+              1,
+              1,
+              "-3*sqrt(30)*I*k3/25 - 18*sqrt(15)*I/125"
+            ],
+            [
+              1,
+              2,
+              "18*sqrt(15)*I/125"
+            ],
+            [
+              1,
+              3,
+              "-3*sqrt(30)*I*k1/25 + 3*sqrt(30)*k2/25"
+            ],
+            [
+              2,
+              0,
+              "-3*sqrt(30)*I*k1/25 - 3*sqrt(30)*k2/25"
+            ],
+            [
+              2,
+              1,
+              "18*sqrt(15)*I/125"
+            ],
+            [
+              2,
+              2,
+              "3*sqrt(30)*I*k3/25 - 18*sqrt(15)*I/125"
+            ],
+            [
+              3,
+              1,
+              "-3*sqrt(30)*I*k1/25 - 3*sqrt(30)*k2/25"
+            ],
+            [
+              3,
+              3,
+              "3*sqrt(30)*I*k3/25"
+            ]
+          ]
+        },
+        "numerator": {
+          "shape": [
+            4,
+            4
+          ],
+          "entries": [
+            [
+              0,
+              0,
+              "-162*sqrt(30)*I*k1**2*k3/3125 + 54*k1**2*retarded_laplace/125 + 972*sqrt(15)*I*k1**2/15625 - 162*sqrt(30)*I*k2**2*k3/3125 + 54*k2**2*retarded_laplace/125 + 972*sqrt(15)*I*k2**2/15625 - 162*sqrt(30)*I*k3**3/3125 + 54*k3**2*retarded_laplace/125 - 3*sqrt(30)*I*k3*retarded_laplace**2/25 + 324*sqrt(2)*k3*retarded_laplace/625 + retarded_laplace**3 + 36*sqrt(15)*I*retarded_laplace**2/125"
+            ],
+            [
+              0,
+              1,
+              "-972*sqrt(15)*I*k1*k3/15625 + 162*sqrt(2)*k1*retarded_laplace/625 + 972*sqrt(15)*k2*k3/15625 + 162*sqrt(2)*I*k2*retarded_laplace/625"
+            ],
+            [
+              0,
+              2,
+              "-162*sqrt(30)*I*k1**3/3125 + 162*sqrt(30)*k1**2*k2/3125 - 162*sqrt(30)*I*k1*k2**2/3125 - 162*sqrt(30)*I*k1*k3**2/3125 - 972*sqrt(15)*I*k1*k3/15625 - 3*sqrt(30)*I*k1*retarded_laplace**2/25 + 162*sqrt(2)*k1*retarded_laplace/625 + 162*sqrt(30)*k2**3/3125 + 162*sqrt(30)*k2*k3**2/3125 + 972*sqrt(15)*k2*k3/15625 + 3*sqrt(30)*k2*retarded_laplace**2/25 + 162*sqrt(2)*I*k2*retarded_laplace/625"
+            ],
+            [
+              0,
+              3,
+              "-972*sqrt(15)*I*k1**2/15625 + 1944*sqrt(15)*k1*k2/15625 + 972*sqrt(15)*I*k2**2/15625"
+            ],
+            [
+              1,
+              0,
+              "-972*sqrt(15)*I*k1*k3/15625 + 162*sqrt(2)*k1*retarded_laplace/625 - 972*sqrt(15)*k2*k3/15625 - 162*sqrt(2)*I*k2*retarded_laplace/625"
+            ],
+            [
+              1,
+              1,
+              "-162*sqrt(30)*I*k1**2*k3/3125 + 54*k1**2*retarded_laplace/125 - 162*sqrt(30)*I*k2**2*k3/3125 + 54*k2**2*retarded_laplace/125 - 162*sqrt(30)*I*k3**3/3125 + 54*k3**2*retarded_laplace/125 + 972*sqrt(15)*I*k3**2/15625 - 3*sqrt(30)*I*k3*retarded_laplace**2/25 + retarded_laplace**3 + 18*sqrt(15)*I*retarded_laplace**2/125"
+            ],
+            [
+              1,
+              2,
+              "972*sqrt(15)*I*k3**2/15625 + 18*sqrt(15)*I*retarded_laplace**2/125"
+            ],
+            [
+              1,
+              3,
+              "-162*sqrt(30)*I*k1**3/3125 + 162*sqrt(30)*k1**2*k2/3125 - 162*sqrt(30)*I*k1*k2**2/3125 - 162*sqrt(30)*I*k1*k3**2/3125 + 972*sqrt(15)*I*k1*k3/15625 - 3*sqrt(30)*I*k1*retarded_laplace**2/25 + 162*sqrt(2)*k1*retarded_laplace/625 + 162*sqrt(30)*k2**3/3125 + 162*sqrt(30)*k2*k3**2/3125 - 972*sqrt(15)*k2*k3/15625 + 3*sqrt(30)*k2*retarded_laplace**2/25 + 162*sqrt(2)*I*k2*retarded_laplace/625"
+            ],
+            [
+              2,
+              0,
+              "-162*sqrt(30)*I*k1**3/3125 - 162*sqrt(30)*k1**2*k2/3125 - 162*sqrt(30)*I*k1*k2**2/3125 - 162*sqrt(30)*I*k1*k3**2/3125 - 972*sqrt(15)*I*k1*k3/15625 - 3*sqrt(30)*I*k1*retarded_laplace**2/25 + 162*sqrt(2)*k1*retarded_laplace/625 - 162*sqrt(30)*k2**3/3125 - 162*sqrt(30)*k2*k3**2/3125 - 972*sqrt(15)*k2*k3/15625 - 3*sqrt(30)*k2*retarded_laplace**2/25 - 162*sqrt(2)*I*k2*retarded_laplace/625"
+            ],
+            [
+              2,
+              1,
+              "972*sqrt(15)*I*k3**2/15625 + 18*sqrt(15)*I*retarded_laplace**2/125"
+            ],
+            [
+              2,
+              2,
+              "162*sqrt(30)*I*k1**2*k3/3125 + 54*k1**2*retarded_laplace/125 + 162*sqrt(30)*I*k2**2*k3/3125 + 54*k2**2*retarded_laplace/125 + 162*sqrt(30)*I*k3**3/3125 + 54*k3**2*retarded_laplace/125 + 972*sqrt(15)*I*k3**2/15625 + 3*sqrt(30)*I*k3*retarded_laplace**2/25 + retarded_laplace**3 + 18*sqrt(15)*I*retarded_laplace**2/125"
+            ],
+            [
+              2,
+              3,
+              "972*sqrt(15)*I*k1*k3/15625 + 162*sqrt(2)*k1*retarded_laplace/625 - 972*sqrt(15)*k2*k3/15625 + 162*sqrt(2)*I*k2*retarded_laplace/625"
+            ],
+            [
+              3,
+              0,
+              "-972*sqrt(15)*I*k1**2/15625 - 1944*sqrt(15)*k1*k2/15625 + 972*sqrt(15)*I*k2**2/15625"
+            ],
+            [
+              3,
+              1,
+              "-162*sqrt(30)*I*k1**3/3125 - 162*sqrt(30)*k1**2*k2/3125 - 162*sqrt(30)*I*k1*k2**2/3125 - 162*sqrt(30)*I*k1*k3**2/3125 + 972*sqrt(15)*I*k1*k3/15625 - 3*sqrt(30)*I*k1*retarded_laplace**2/25 + 162*sqrt(2)*k1*retarded_laplace/625 - 162*sqrt(30)*k2**3/3125 - 162*sqrt(30)*k2*k3**2/3125 + 972*sqrt(15)*k2*k3/15625 - 3*sqrt(30)*k2*retarded_laplace**2/25 - 162*sqrt(2)*I*k2*retarded_laplace/625"
+            ],
+            [
+              3,
+              2,
+              "972*sqrt(15)*I*k1*k3/15625 + 162*sqrt(2)*k1*retarded_laplace/625 + 972*sqrt(15)*k2*k3/15625 - 162*sqrt(2)*I*k2*retarded_laplace/625"
+            ],
+            [
+              3,
+              3,
+              "162*sqrt(30)*I*k1**2*k3/3125 + 54*k1**2*retarded_laplace/125 + 972*sqrt(15)*I*k1**2/15625 + 162*sqrt(30)*I*k2**2*k3/3125 + 54*k2**2*retarded_laplace/125 + 972*sqrt(15)*I*k2**2/15625 + 162*sqrt(30)*I*k3**3/3125 + 54*k3**2*retarded_laplace/125 + 3*sqrt(30)*I*k3*retarded_laplace**2/25 - 324*sqrt(2)*k3*retarded_laplace/625 + retarded_laplace**3 + 36*sqrt(15)*I*retarded_laplace**2/125"
+            ]
+          ]
+        },
+        "denominator": "2916*k1**4/15625 + 5832*k1**2*k2**2/15625 + 5832*k1**2*k3**2/15625 + 108*k1**2*retarded_laplace**2/125 + 1944*sqrt(15)*I*k1**2*retarded_laplace/15625 + 2916*k2**4/15625 + 5832*k2**2*k3**2/15625 + 108*k2**2*retarded_laplace**2/125 + 1944*sqrt(15)*I*k2**2*retarded_laplace/15625 + 2916*k3**4/15625 + 108*k3**2*retarded_laplace**2/125 + 1944*sqrt(15)*I*k3**2*retarded_laplace/15625 + retarded_laplace**4 + 36*sqrt(15)*I*retarded_laplace**3/125"
+      },
+      {
+        "generator": {
+          "shape": [
+            2,
+            2
+          ],
+          "entries": [
+            [
+              0,
+              0,
+              "-3*sqrt(30)*I*k3/25 + 27*sqrt(15)*I/125"
+            ],
+            [
+              0,
+              1,
+              "-3*sqrt(30)*I*k1/25 + 3*sqrt(30)*k2/25"
+            ],
+            [
+              1,
+              0,
+              "-3*sqrt(30)*I*k1/25 - 3*sqrt(30)*k2/25"
+            ],
+            [
+              1,
+              1,
+              "3*sqrt(30)*I*k3/25 + 27*sqrt(15)*I/125"
+            ]
+          ]
+        },
+        "numerator": {
+          "shape": [
+            2,
+            2
+          ],
+          "entries": [
+            [
+              0,
+              0,
+              "-3*sqrt(30)*I*k3/25 + retarded_laplace - 27*sqrt(15)*I/125"
+            ],
+            [
+              0,
+              1,
+              "-3*sqrt(30)*I*k1/25 + 3*sqrt(30)*k2/25"
+            ],
+            [
+              1,
+              0,
+              "-3*sqrt(30)*I*k1/25 - 3*sqrt(30)*k2/25"
+            ],
+            [
+              1,
+              1,
+              "3*sqrt(30)*I*k3/25 + retarded_laplace - 27*sqrt(15)*I/125"
+            ]
+          ]
+        },
+        "denominator": "54*k1**2/125 + 54*k2**2/125 + 54*k3**2/125 + retarded_laplace**2 - 54*sqrt(15)*I*retarded_laplace/125 - 2187/3125"
+      },
+      {
+        "generator": {
+          "shape": [
+            4,
+            4
+          ],
+          "entries": [
+            [
+              0,
+              0,
+              "-3*sqrt(30)*I*k3/25 + 36*sqrt(15)*I/125"
+            ],
+            [
+              0,
+              2,
+              "-3*sqrt(30)*I*k1/25 + 3*sqrt(30)*k2/25"
+            ],
+            [
+              1,
+              1,
+              "-3*sqrt(30)*I*k3/25 + 18*sqrt(15)*I/125"
+            ],
+            [
+              1,
+              2,
+              "18*sqrt(15)*I/125"
+            ],
+            [
+              1,
+              3,
+              "-3*sqrt(30)*I*k1/25 + 3*sqrt(30)*k2/25"
+            ],
+            [
+              2,
+              0,
+              "-3*sqrt(30)*I*k1/25 - 3*sqrt(30)*k2/25"
+            ],
+            [
+              2,
+              1,
+              "18*sqrt(15)*I/125"
+            ],
+            [
+              2,
+              2,
+              "3*sqrt(30)*I*k3/25 + 18*sqrt(15)*I/125"
+            ],
+            [
+              3,
+              1,
+              "-3*sqrt(30)*I*k1/25 - 3*sqrt(30)*k2/25"
+            ],
+            [
+              3,
+              3,
+              "3*sqrt(30)*I*k3/25 + 36*sqrt(15)*I/125"
+            ]
+          ]
+        },
+        "numerator": {
+          "shape": [
+            4,
+            4
+          ],
+          "entries": [
+            [
+              0,
+              0,
+              "-162*sqrt(30)*I*k1**2*k3/3125 + 54*k1**2*retarded_laplace/125 - 972*sqrt(15)*I*k1**2/15625 - 162*sqrt(30)*I*k2**2*k3/3125 + 54*k2**2*retarded_laplace/125 - 972*sqrt(15)*I*k2**2/15625 - 162*sqrt(30)*I*k3**3/3125 + 54*k3**2*retarded_laplace/125 - 1944*sqrt(15)*I*k3**2/15625 - 3*sqrt(30)*I*k3*retarded_laplace**2/25 - 324*sqrt(2)*k3*retarded_laplace/625 + retarded_laplace**3 - 72*sqrt(15)*I*retarded_laplace**2/125 - 3888*retarded_laplace/3125"
+            ],
+            [
+              0,
+              1,
+              "-972*sqrt(15)*I*k1*k3/15625 + 162*sqrt(2)*k1*retarded_laplace/625 - 5832*sqrt(30)*I*k1/78125 + 972*sqrt(15)*k2*k3/15625 + 162*sqrt(2)*I*k2*retarded_laplace/625 + 5832*sqrt(30)*k2/78125"
+            ],
+            [
+              0,
+              2,
+              "-162*sqrt(30)*I*k1**3/3125 + 162*sqrt(30)*k1**2*k2/3125 - 162*sqrt(30)*I*k1*k2**2/3125 - 162*sqrt(30)*I*k1*k3**2/3125 - 972*sqrt(15)*I*k1*k3/15625 - 3*sqrt(30)*I*k1*retarded_laplace**2/25 - 486*sqrt(2)*k1*retarded_laplace/625 + 5832*sqrt(30)*I*k1/78125 + 162*sqrt(30)*k2**3/3125 + 162*sqrt(30)*k2*k3**2/3125 + 972*sqrt(15)*k2*k3/15625 + 3*sqrt(30)*k2*retarded_laplace**2/25 - 486*sqrt(2)*I*k2*retarded_laplace/625 - 5832*sqrt(30)*k2/78125"
+            ],
+            [
+              0,
+              3,
+              "-972*sqrt(15)*I*k1**2/15625 + 1944*sqrt(15)*k1*k2/15625 + 972*sqrt(15)*I*k2**2/15625"
+            ],
+            [
+              1,
+              0,
+              "-972*sqrt(15)*I*k1*k3/15625 + 162*sqrt(2)*k1*retarded_laplace/625 - 5832*sqrt(30)*I*k1/78125 - 972*sqrt(15)*k2*k3/15625 - 162*sqrt(2)*I*k2*retarded_laplace/625 - 5832*sqrt(30)*k2/78125"
+            ],
+            [
+              1,
+              1,
+              "-162*sqrt(30)*I*k1**2*k3/3125 + 54*k1**2*retarded_laplace/125 - 1944*sqrt(15)*I*k1**2/15625 - 162*sqrt(30)*I*k2**2*k3/3125 + 54*k2**2*retarded_laplace/125 - 1944*sqrt(15)*I*k2**2/15625 - 162*sqrt(30)*I*k3**3/3125 + 54*k3**2*retarded_laplace/125 - 972*sqrt(15)*I*k3**2/15625 - 3*sqrt(30)*I*k3*retarded_laplace**2/25 - 648*sqrt(2)*k3*retarded_laplace/625 + 11664*sqrt(30)*I*k3/78125 + retarded_laplace**3 - 18*sqrt(15)*I*retarded_laplace**2/25 - 7776*retarded_laplace/3125 + 69984*sqrt(15)*I/390625"
+            ],
+            [
+              1,
+              2,
+              "972*sqrt(15)*I*k3**2/15625 + 18*sqrt(15)*I*retarded_laplace**2/125 + 3888*retarded_laplace/3125 - 69984*sqrt(15)*I/390625"
+            ],
+            [
+              1,
+              3,
+              "-162*sqrt(30)*I*k1**3/3125 + 162*sqrt(30)*k1**2*k2/3125 - 162*sqrt(30)*I*k1*k2**2/3125 - 162*sqrt(30)*I*k1*k3**2/3125 + 972*sqrt(15)*I*k1*k3/15625 - 3*sqrt(30)*I*k1*retarded_laplace**2/25 - 486*sqrt(2)*k1*retarded_laplace/625 + 5832*sqrt(30)*I*k1/78125 + 162*sqrt(30)*k2**3/3125 + 162*sqrt(30)*k2*k3**2/3125 - 972*sqrt(15)*k2*k3/15625 + 3*sqrt(30)*k2*retarded_laplace**2/25 - 486*sqrt(2)*I*k2*retarded_laplace/625 - 5832*sqrt(30)*k2/78125"
+            ],
+            [
+              2,
+              0,
+              "-162*sqrt(30)*I*k1**3/3125 - 162*sqrt(30)*k1**2*k2/3125 - 162*sqrt(30)*I*k1*k2**2/3125 - 162*sqrt(30)*I*k1*k3**2/3125 - 972*sqrt(15)*I*k1*k3/15625 - 3*sqrt(30)*I*k1*retarded_laplace**2/25 - 486*sqrt(2)*k1*retarded_laplace/625 + 5832*sqrt(30)*I*k1/78125 - 162*sqrt(30)*k2**3/3125 - 162*sqrt(30)*k2*k3**2/3125 - 972*sqrt(15)*k2*k3/15625 - 3*sqrt(30)*k2*retarded_laplace**2/25 + 486*sqrt(2)*I*k2*retarded_laplace/625 + 5832*sqrt(30)*k2/78125"
+            ],
+            [
+              2,
+              1,
+              "972*sqrt(15)*I*k3**2/15625 + 18*sqrt(15)*I*retarded_laplace**2/125 + 3888*retarded_laplace/3125 - 69984*sqrt(15)*I/390625"
+            ],
+            [
+              2,
+              2,
+              "162*sqrt(30)*I*k1**2*k3/3125 + 54*k1**2*retarded_laplace/125 - 1944*sqrt(15)*I*k1**2/15625 + 162*sqrt(30)*I*k2**2*k3/3125 + 54*k2**2*retarded_laplace/125 - 1944*sqrt(15)*I*k2**2/15625 + 162*sqrt(30)*I*k3**3/3125 + 54*k3**2*retarded_laplace/125 - 972*sqrt(15)*I*k3**2/15625 + 3*sqrt(30)*I*k3*retarded_laplace**2/25 + 648*sqrt(2)*k3*retarded_laplace/625 - 11664*sqrt(30)*I*k3/78125 + retarded_laplace**3 - 18*sqrt(15)*I*retarded_laplace**2/25 - 7776*retarded_laplace/3125 + 69984*sqrt(15)*I/390625"
+            ],
+            [
+              2,
+              3,
+              "972*sqrt(15)*I*k1*k3/15625 + 162*sqrt(2)*k1*retarded_laplace/625 - 5832*sqrt(30)*I*k1/78125 - 972*sqrt(15)*k2*k3/15625 + 162*sqrt(2)*I*k2*retarded_laplace/625 + 5832*sqrt(30)*k2/78125"
+            ],
+            [
+              3,
+              0,
+              "-972*sqrt(15)*I*k1**2/15625 - 1944*sqrt(15)*k1*k2/15625 + 972*sqrt(15)*I*k2**2/15625"
+            ],
+            [
+              3,
+              1,
+              "-162*sqrt(30)*I*k1**3/3125 - 162*sqrt(30)*k1**2*k2/3125 - 162*sqrt(30)*I*k1*k2**2/3125 - 162*sqrt(30)*I*k1*k3**2/3125 + 972*sqrt(15)*I*k1*k3/15625 - 3*sqrt(30)*I*k1*retarded_laplace**2/25 - 486*sqrt(2)*k1*retarded_laplace/625 + 5832*sqrt(30)*I*k1/78125 - 162*sqrt(30)*k2**3/3125 - 162*sqrt(30)*k2*k3**2/3125 + 972*sqrt(15)*k2*k3/15625 - 3*sqrt(30)*k2*retarded_laplace**2/25 + 486*sqrt(2)*I*k2*retarded_laplace/625 + 5832*sqrt(30)*k2/78125"
+            ],
+            [
+              3,
+              2,
+              "972*sqrt(15)*I*k1*k3/15625 + 162*sqrt(2)*k1*retarded_laplace/625 - 5832*sqrt(30)*I*k1/78125 + 972*sqrt(15)*k2*k3/15625 - 162*sqrt(2)*I*k2*retarded_laplace/625 - 5832*sqrt(30)*k2/78125"
+            ],
+            [
+              3,
+              3,
+              "162*sqrt(30)*I*k1**2*k3/3125 + 54*k1**2*retarded_laplace/125 - 972*sqrt(15)*I*k1**2/15625 + 162*sqrt(30)*I*k2**2*k3/3125 + 54*k2**2*retarded_laplace/125 - 972*sqrt(15)*I*k2**2/15625 + 162*sqrt(30)*I*k3**3/3125 + 54*k3**2*retarded_laplace/125 - 1944*sqrt(15)*I*k3**2/15625 + 3*sqrt(30)*I*k3*retarded_laplace**2/25 + 324*sqrt(2)*k3*retarded_laplace/625 + retarded_laplace**3 - 72*sqrt(15)*I*retarded_laplace**2/125 - 3888*retarded_laplace/3125"
+            ]
+          ]
+        },
+        "denominator": "2916*k1**4/15625 + 5832*k1**2*k2**2/15625 + 5832*k1**2*k3**2/15625 + 108*k1**2*retarded_laplace**2/125 - 5832*sqrt(15)*I*k1**2*retarded_laplace/15625 - 209952*k1**2/390625 + 2916*k2**4/15625 + 5832*k2**2*k3**2/15625 + 108*k2**2*retarded_laplace**2/125 - 5832*sqrt(15)*I*k2**2*retarded_laplace/15625 - 209952*k2**2/390625 + 2916*k3**4/15625 + 108*k3**2*retarded_laplace**2/125 - 5832*sqrt(15)*I*k3**2*retarded_laplace/15625 - 209952*k3**2/390625 + retarded_laplace**4 - 108*sqrt(15)*I*retarded_laplace**3/125 - 11664*retarded_laplace**2/3125 + 139968*sqrt(15)*I*retarded_laplace/390625"
+      },
+      {
+        "generator": {
+          "shape": [
+            2,
+            2
+          ],
+          "entries": [
+            [
+              0,
+              0,
+              "3*sqrt(30)*I*k3/25 - 63*sqrt(15)*I/125"
+            ],
+            [
+              0,
+              1,
+              "3*sqrt(30)*I*k1/25 - 3*sqrt(30)*k2/25"
+            ],
+            [
+              1,
+              0,
+              "3*sqrt(30)*I*k1/25 + 3*sqrt(30)*k2/25"
+            ],
+            [
+              1,
+              1,
+              "-3*sqrt(30)*I*k3/25 - 63*sqrt(15)*I/125"
+            ]
+          ]
+        },
+        "numerator": {
+          "shape": [
+            2,
+            2
+          ],
+          "entries": [
+            [
+              0,
+              0,
+              "3*sqrt(30)*I*k3/25 + retarded_laplace + 63*sqrt(15)*I/125"
+            ],
+            [
+              0,
+              1,
+              "3*sqrt(30)*I*k1/25 - 3*sqrt(30)*k2/25"
+            ],
+            [
+              1,
+              0,
+              "3*sqrt(30)*I*k1/25 + 3*sqrt(30)*k2/25"
+            ],
+            [
+              1,
+              1,
+              "-3*sqrt(30)*I*k3/25 + retarded_laplace + 63*sqrt(15)*I/125"
+            ]
+          ]
+        },
+        "denominator": "54*k1**2/125 + 54*k2**2/125 + 54*k3**2/125 + retarded_laplace**2 + 126*sqrt(15)*I*retarded_laplace/125 - 11907/3125"
+      },
+      {
+        "generator": {
+          "shape": [
+            4,
+            4
+          ],
+          "entries": [
+            [
+              0,
+              0,
+              "3*sqrt(30)*I*k3/25 - 72*sqrt(15)*I/125"
+            ],
+            [
+              0,
+              2,
+              "3*sqrt(30)*I*k1/25 - 3*sqrt(30)*k2/25"
+            ],
+            [
+              1,
+              1,
+              "3*sqrt(30)*I*k3/25 - 54*sqrt(15)*I/125"
+            ],
+            [
+              1,
+              2,
+              "-18*sqrt(15)*I/125"
+            ],
+            [
+              1,
+              3,
+              "3*sqrt(30)*I*k1/25 - 3*sqrt(30)*k2/25"
+            ],
+            [
+              2,
+              0,
+              "3*sqrt(30)*I*k1/25 + 3*sqrt(30)*k2/25"
+            ],
+            [
+              2,
+              1,
+              "-18*sqrt(15)*I/125"
+            ],
+            [
+              2,
+              2,
+              "-3*sqrt(30)*I*k3/25 - 54*sqrt(15)*I/125"
+            ],
+            [
+              3,
+              1,
+              "3*sqrt(30)*I*k1/25 + 3*sqrt(30)*k2/25"
+            ],
+            [
+              3,
+              3,
+              "-3*sqrt(30)*I*k3/25 - 72*sqrt(15)*I/125"
+            ]
+          ]
+        },
+        "numerator": {
+          "shape": [
+            4,
+            4
+          ],
+          "entries": [
+            [
+              0,
+              0,
+              "162*sqrt(30)*I*k1**2*k3/3125 + 54*k1**2*retarded_laplace/125 + 2916*sqrt(15)*I*k1**2/15625 + 162*sqrt(30)*I*k2**2*k3/3125 + 54*k2**2*retarded_laplace/125 + 2916*sqrt(15)*I*k2**2/15625 + 162*sqrt(30)*I*k3**3/3125 + 54*k3**2*retarded_laplace/125 + 3888*sqrt(15)*I*k3**2/15625 + 3*sqrt(30)*I*k3*retarded_laplace**2/25 - 972*sqrt(2)*k3*retarded_laplace/625 - 23328*sqrt(30)*I*k3/78125 + retarded_laplace**3 + 36*sqrt(15)*I*retarded_laplace**2/25 - 31104*retarded_laplace/3125 - 559872*sqrt(15)*I/390625"
+            ],
+            [
+              0,
+              1,
+              "972*sqrt(15)*I*k1*k3/15625 + 162*sqrt(2)*k1*retarded_laplace/625 + 11664*sqrt(30)*I*k1/78125 - 972*sqrt(15)*k2*k3/15625 + 162*sqrt(2)*I*k2*retarded_laplace/625 - 11664*sqrt(30)*k2/78125"
+            ],
+            [
+              0,
+              2,
+              "162*sqrt(30)*I*k1**3/3125 - 162*sqrt(30)*k1**2*k2/3125 + 162*sqrt(30)*I*k1*k2**2/3125 + 162*sqrt(30)*I*k1*k3**2/3125 + 972*sqrt(15)*I*k1*k3/15625 + 3*sqrt(30)*I*k1*retarded_laplace**2/25 - 1134*sqrt(2)*k1*retarded_laplace/625 - 34992*sqrt(30)*I*k1/78125 - 162*sqrt(30)*k2**3/3125 - 162*sqrt(30)*k2*k3**2/3125 - 972*sqrt(15)*k2*k3/15625 - 3*sqrt(30)*k2*retarded_laplace**2/25 - 1134*sqrt(2)*I*k2*retarded_laplace/625 + 34992*sqrt(30)*k2/78125"
+            ],
+            [
+              0,
+              3,
+              "972*sqrt(15)*I*k1**2/15625 - 1944*sqrt(15)*k1*k2/15625 - 972*sqrt(15)*I*k2**2/15625"
+            ],
+            [
+              1,
+              0,
+              "972*sqrt(15)*I*k1*k3/15625 + 162*sqrt(2)*k1*retarded_laplace/625 + 11664*sqrt(30)*I*k1/78125 + 972*sqrt(15)*k2*k3/15625 - 162*sqrt(2)*I*k2*retarded_laplace/625 + 11664*sqrt(30)*k2/78125"
+            ],
+            [
+              1,
+              1,
+              "162*sqrt(30)*I*k1**2*k3/3125 + 54*k1**2*retarded_laplace/125 + 3888*sqrt(15)*I*k1**2/15625 + 162*sqrt(30)*I*k2**2*k3/3125 + 54*k2**2*retarded_laplace/125 + 3888*sqrt(15)*I*k2**2/15625 + 162*sqrt(30)*I*k3**3/3125 + 54*k3**2*retarded_laplace/125 + 2916*sqrt(15)*I*k3**2/15625 + 3*sqrt(30)*I*k3*retarded_laplace**2/25 - 1296*sqrt(2)*k3*retarded_laplace/625 - 46656*sqrt(30)*I*k3/78125 + retarded_laplace**3 + 198*sqrt(15)*I*retarded_laplace**2/125 - 7776*retarded_laplace/625 - 839808*sqrt(15)*I/390625"
+            ],
+            [
+              1,
+              2,
+              "-972*sqrt(15)*I*k3**2/15625 - 18*sqrt(15)*I*retarded_laplace**2/125 + 7776*retarded_laplace/3125 + 279936*sqrt(15)*I/390625"
+            ],
+            [
+              1,
+              3,
+              "162*sqrt(30)*I*k1**3/3125 - 162*sqrt(30)*k1**2*k2/3125 + 162*sqrt(30)*I*k1*k2**2/3125 + 162*sqrt(30)*I*k1*k3**2/3125 - 972*sqrt(15)*I*k1*k3/15625 + 3*sqrt(30)*I*k1*retarded_laplace**2/25 - 1134*sqrt(2)*k1*retarded_laplace/625 - 34992*sqrt(30)*I*k1/78125 - 162*sqrt(30)*k2**3/3125 - 162*sqrt(30)*k2*k3**2/3125 + 972*sqrt(15)*k2*k3/15625 - 3*sqrt(30)*k2*retarded_laplace**2/25 - 1134*sqrt(2)*I*k2*retarded_laplace/625 + 34992*sqrt(30)*k2/78125"
+            ],
+            [
+              2,
+              0,
+              "162*sqrt(30)*I*k1**3/3125 + 162*sqrt(30)*k1**2*k2/3125 + 162*sqrt(30)*I*k1*k2**2/3125 + 162*sqrt(30)*I*k1*k3**2/3125 + 972*sqrt(15)*I*k1*k3/15625 + 3*sqrt(30)*I*k1*retarded_laplace**2/25 - 1134*sqrt(2)*k1*retarded_laplace/625 - 34992*sqrt(30)*I*k1/78125 + 162*sqrt(30)*k2**3/3125 + 162*sqrt(30)*k2*k3**2/3125 + 972*sqrt(15)*k2*k3/15625 + 3*sqrt(30)*k2*retarded_laplace**2/25 + 1134*sqrt(2)*I*k2*retarded_laplace/625 - 34992*sqrt(30)*k2/78125"
+            ],
+            [
+              2,
+              1,
+              "-972*sqrt(15)*I*k3**2/15625 - 18*sqrt(15)*I*retarded_laplace**2/125 + 7776*retarded_laplace/3125 + 279936*sqrt(15)*I/390625"
+            ],
+            [
+              2,
+              2,
+              "-162*sqrt(30)*I*k1**2*k3/3125 + 54*k1**2*retarded_laplace/125 + 3888*sqrt(15)*I*k1**2/15625 - 162*sqrt(30)*I*k2**2*k3/3125 + 54*k2**2*retarded_laplace/125 + 3888*sqrt(15)*I*k2**2/15625 - 162*sqrt(30)*I*k3**3/3125 + 54*k3**2*retarded_laplace/125 + 2916*sqrt(15)*I*k3**2/15625 - 3*sqrt(30)*I*k3*retarded_laplace**2/25 + 1296*sqrt(2)*k3*retarded_laplace/625 + 46656*sqrt(30)*I*k3/78125 + retarded_laplace**3 + 198*sqrt(15)*I*retarded_laplace**2/125 - 7776*retarded_laplace/625 - 839808*sqrt(15)*I/390625"
+            ],
+            [
+              2,
+              3,
+              "-972*sqrt(15)*I*k1*k3/15625 + 162*sqrt(2)*k1*retarded_laplace/625 + 11664*sqrt(30)*I*k1/78125 + 972*sqrt(15)*k2*k3/15625 + 162*sqrt(2)*I*k2*retarded_laplace/625 - 11664*sqrt(30)*k2/78125"
+            ],
+            [
+              3,
+              0,
+              "972*sqrt(15)*I*k1**2/15625 + 1944*sqrt(15)*k1*k2/15625 - 972*sqrt(15)*I*k2**2/15625"
+            ],
+            [
+              3,
+              1,
+              "162*sqrt(30)*I*k1**3/3125 + 162*sqrt(30)*k1**2*k2/3125 + 162*sqrt(30)*I*k1*k2**2/3125 + 162*sqrt(30)*I*k1*k3**2/3125 - 972*sqrt(15)*I*k1*k3/15625 + 3*sqrt(30)*I*k1*retarded_laplace**2/25 - 1134*sqrt(2)*k1*retarded_laplace/625 - 34992*sqrt(30)*I*k1/78125 + 162*sqrt(30)*k2**3/3125 + 162*sqrt(30)*k2*k3**2/3125 - 972*sqrt(15)*k2*k3/15625 + 3*sqrt(30)*k2*retarded_laplace**2/25 + 1134*sqrt(2)*I*k2*retarded_laplace/625 - 34992*sqrt(30)*k2/78125"
+            ],
+            [
+              3,
+              2,
+              "-972*sqrt(15)*I*k1*k3/15625 + 162*sqrt(2)*k1*retarded_laplace/625 + 11664*sqrt(30)*I*k1/78125 - 972*sqrt(15)*k2*k3/15625 - 162*sqrt(2)*I*k2*retarded_laplace/625 + 11664*sqrt(30)*k2/78125"
+            ],
+            [
+              3,
+              3,
+              "-162*sqrt(30)*I*k1**2*k3/3125 + 54*k1**2*retarded_laplace/125 + 2916*sqrt(15)*I*k1**2/15625 - 162*sqrt(30)*I*k2**2*k3/3125 + 54*k2**2*retarded_laplace/125 + 2916*sqrt(15)*I*k2**2/15625 - 162*sqrt(30)*I*k3**3/3125 + 54*k3**2*retarded_laplace/125 + 3888*sqrt(15)*I*k3**2/15625 - 3*sqrt(30)*I*k3*retarded_laplace**2/25 + 972*sqrt(2)*k3*retarded_laplace/625 + 23328*sqrt(30)*I*k3/78125 + retarded_laplace**3 + 36*sqrt(15)*I*retarded_laplace**2/25 - 31104*retarded_laplace/3125 - 559872*sqrt(15)*I/390625"
+            ]
+          ]
+        },
+        "denominator": "2916*k1**4/15625 + 5832*k1**2*k2**2/15625 + 5832*k1**2*k3**2/15625 + 108*k1**2*retarded_laplace**2/125 + 13608*sqrt(15)*I*k1**2*retarded_laplace/15625 - 1259712*k1**2/390625 + 2916*k2**4/15625 + 5832*k2**2*k3**2/15625 + 108*k2**2*retarded_laplace**2/125 + 13608*sqrt(15)*I*k2**2*retarded_laplace/15625 - 1259712*k2**2/390625 + 2916*k3**4/15625 + 108*k3**2*retarded_laplace**2/125 + 13608*sqrt(15)*I*k3**2*retarded_laplace/15625 - 1259712*k3**2/390625 + retarded_laplace**4 + 252*sqrt(15)*I*retarded_laplace**3/125 - 69984*retarded_laplace**2/3125 - 559872*sqrt(15)*I*retarded_laplace/78125 + 120932352/9765625"
+      },
+      {
+        "generator": {
+          "shape": [
+            2,
+            2
+          ],
+          "entries": [
+            [
+              0,
+              0,
+              "3*sqrt(30)*I*k3/25 - 27*sqrt(15)*I/125"
+            ],
+            [
+              0,
+              1,
+              "3*sqrt(30)*I*k1/25 - 3*sqrt(30)*k2/25"
+            ],
+            [
+              1,
+              0,
+              "3*sqrt(30)*I*k1/25 + 3*sqrt(30)*k2/25"
+            ],
+            [
+              1,
+              1,
+              "-3*sqrt(30)*I*k3/25 - 27*sqrt(15)*I/125"
+            ]
+          ]
+        },
+        "numerator": {
+          "shape": [
+            2,
+            2
+          ],
+          "entries": [
+            [
+              0,
+              0,
+              "3*sqrt(30)*I*k3/25 + retarded_laplace + 27*sqrt(15)*I/125"
+            ],
+            [
+              0,
+              1,
+              "3*sqrt(30)*I*k1/25 - 3*sqrt(30)*k2/25"
+            ],
+            [
+              1,
+              0,
+              "3*sqrt(30)*I*k1/25 + 3*sqrt(30)*k2/25"
+            ],
+            [
+              1,
+              1,
+              "-3*sqrt(30)*I*k3/25 + retarded_laplace + 27*sqrt(15)*I/125"
+            ]
+          ]
+        },
+        "denominator": "54*k1**2/125 + 54*k2**2/125 + 54*k3**2/125 + retarded_laplace**2 + 54*sqrt(15)*I*retarded_laplace/125 - 2187/3125"
+      },
+      {
+        "generator": {
+          "shape": [
+            4,
+            4
+          ],
+          "entries": [
+            [
+              0,
+              0,
+              "3*sqrt(30)*I*k3/25 - 36*sqrt(15)*I/125"
+            ],
+            [
+              0,
+              2,
+              "3*sqrt(30)*I*k1/25 - 3*sqrt(30)*k2/25"
+            ],
+            [
+              1,
+              1,
+              "3*sqrt(30)*I*k3/25 - 18*sqrt(15)*I/125"
+            ],
+            [
+              1,
+              2,
+              "-18*sqrt(15)*I/125"
+            ],
+            [
+              1,
+              3,
+              "3*sqrt(30)*I*k1/25 - 3*sqrt(30)*k2/25"
+            ],
+            [
+              2,
+              0,
+              "3*sqrt(30)*I*k1/25 + 3*sqrt(30)*k2/25"
+            ],
+            [
+              2,
+              1,
+              "-18*sqrt(15)*I/125"
+            ],
+            [
+              2,
+              2,
+              "-3*sqrt(30)*I*k3/25 - 18*sqrt(15)*I/125"
+            ],
+            [
+              3,
+              1,
+              "3*sqrt(30)*I*k1/25 + 3*sqrt(30)*k2/25"
+            ],
+            [
+              3,
+              3,
+              "-3*sqrt(30)*I*k3/25 - 36*sqrt(15)*I/125"
+            ]
+          ]
+        },
+        "numerator": {
+          "shape": [
+            4,
+            4
+          ],
+          "entries": [
+            [
+              0,
+              0,
+              "162*sqrt(30)*I*k1**2*k3/3125 + 54*k1**2*retarded_laplace/125 + 972*sqrt(15)*I*k1**2/15625 + 162*sqrt(30)*I*k2**2*k3/3125 + 54*k2**2*retarded_laplace/125 + 972*sqrt(15)*I*k2**2/15625 + 162*sqrt(30)*I*k3**3/3125 + 54*k3**2*retarded_laplace/125 + 1944*sqrt(15)*I*k3**2/15625 + 3*sqrt(30)*I*k3*retarded_laplace**2/25 - 324*sqrt(2)*k3*retarded_laplace/625 + retarded_laplace**3 + 72*sqrt(15)*I*retarded_laplace**2/125 - 3888*retarded_laplace/3125"
+            ],
+            [
+              0,
+              1,
+              "972*sqrt(15)*I*k1*k3/15625 + 162*sqrt(2)*k1*retarded_laplace/625 + 5832*sqrt(30)*I*k1/78125 - 972*sqrt(15)*k2*k3/15625 + 162*sqrt(2)*I*k2*retarded_laplace/625 - 5832*sqrt(30)*k2/78125"
+            ],
+            [
+              0,
+              2,
+              "162*sqrt(30)*I*k1**3/3125 - 162*sqrt(30)*k1**2*k2/3125 + 162*sqrt(30)*I*k1*k2**2/3125 + 162*sqrt(30)*I*k1*k3**2/3125 + 972*sqrt(15)*I*k1*k3/15625 + 3*sqrt(30)*I*k1*retarded_laplace**2/25 - 486*sqrt(2)*k1*retarded_laplace/625 - 5832*sqrt(30)*I*k1/78125 - 162*sqrt(30)*k2**3/3125 - 162*sqrt(30)*k2*k3**2/3125 - 972*sqrt(15)*k2*k3/15625 - 3*sqrt(30)*k2*retarded_laplace**2/25 - 486*sqrt(2)*I*k2*retarded_laplace/625 + 5832*sqrt(30)*k2/78125"
+            ],
+            [
+              0,
+              3,
+              "972*sqrt(15)*I*k1**2/15625 - 1944*sqrt(15)*k1*k2/15625 - 972*sqrt(15)*I*k2**2/15625"
+            ],
+            [
+              1,
+              0,
+              "972*sqrt(15)*I*k1*k3/15625 + 162*sqrt(2)*k1*retarded_laplace/625 + 5832*sqrt(30)*I*k1/78125 + 972*sqrt(15)*k2*k3/15625 - 162*sqrt(2)*I*k2*retarded_laplace/625 + 5832*sqrt(30)*k2/78125"
+            ],
+            [
+              1,
+              1,
+              "162*sqrt(30)*I*k1**2*k3/3125 + 54*k1**2*retarded_laplace/125 + 1944*sqrt(15)*I*k1**2/15625 + 162*sqrt(30)*I*k2**2*k3/3125 + 54*k2**2*retarded_laplace/125 + 1944*sqrt(15)*I*k2**2/15625 + 162*sqrt(30)*I*k3**3/3125 + 54*k3**2*retarded_laplace/125 + 972*sqrt(15)*I*k3**2/15625 + 3*sqrt(30)*I*k3*retarded_laplace**2/25 - 648*sqrt(2)*k3*retarded_laplace/625 - 11664*sqrt(30)*I*k3/78125 + retarded_laplace**3 + 18*sqrt(15)*I*retarded_laplace**2/25 - 7776*retarded_laplace/3125 - 69984*sqrt(15)*I/390625"
+            ],
+            [
+              1,
+              2,
+              "-972*sqrt(15)*I*k3**2/15625 - 18*sqrt(15)*I*retarded_laplace**2/125 + 3888*retarded_laplace/3125 + 69984*sqrt(15)*I/390625"
+            ],
+            [
+              1,
+              3,
+              "162*sqrt(30)*I*k1**3/3125 - 162*sqrt(30)*k1**2*k2/3125 + 162*sqrt(30)*I*k1*k2**2/3125 + 162*sqrt(30)*I*k1*k3**2/3125 - 972*sqrt(15)*I*k1*k3/15625 + 3*sqrt(30)*I*k1*retarded_laplace**2/25 - 486*sqrt(2)*k1*retarded_laplace/625 - 5832*sqrt(30)*I*k1/78125 - 162*sqrt(30)*k2**3/3125 - 162*sqrt(30)*k2*k3**2/3125 + 972*sqrt(15)*k2*k3/15625 - 3*sqrt(30)*k2*retarded_laplace**2/25 - 486*sqrt(2)*I*k2*retarded_laplace/625 + 5832*sqrt(30)*k2/78125"
+            ],
+            [
+              2,
+              0,
+              "162*sqrt(30)*I*k1**3/3125 + 162*sqrt(30)*k1**2*k2/3125 + 162*sqrt(30)*I*k1*k2**2/3125 + 162*sqrt(30)*I*k1*k3**2/3125 + 972*sqrt(15)*I*k1*k3/15625 + 3*sqrt(30)*I*k1*retarded_laplace**2/25 - 486*sqrt(2)*k1*retarded_laplace/625 - 5832*sqrt(30)*I*k1/78125 + 162*sqrt(30)*k2**3/3125 + 162*sqrt(30)*k2*k3**2/3125 + 972*sqrt(15)*k2*k3/15625 + 3*sqrt(30)*k2*retarded_laplace**2/25 + 486*sqrt(2)*I*k2*retarded_laplace/625 - 5832*sqrt(30)*k2/78125"
+            ],
+            [
+              2,
+              1,
+              "-972*sqrt(15)*I*k3**2/15625 - 18*sqrt(15)*I*retarded_laplace**2/125 + 3888*retarded_laplace/3125 + 69984*sqrt(15)*I/390625"
+            ],
+            [
+              2,
+              2,
+              "-162*sqrt(30)*I*k1**2*k3/3125 + 54*k1**2*retarded_laplace/125 + 1944*sqrt(15)*I*k1**2/15625 - 162*sqrt(30)*I*k2**2*k3/3125 + 54*k2**2*retarded_laplace/125 + 1944*sqrt(15)*I*k2**2/15625 - 162*sqrt(30)*I*k3**3/3125 + 54*k3**2*retarded_laplace/125 + 972*sqrt(15)*I*k3**2/15625 - 3*sqrt(30)*I*k3*retarded_laplace**2/25 + 648*sqrt(2)*k3*retarded_laplace/625 + 11664*sqrt(30)*I*k3/78125 + retarded_laplace**3 + 18*sqrt(15)*I*retarded_laplace**2/25 - 7776*retarded_laplace/3125 - 69984*sqrt(15)*I/390625"
+            ],
+            [
+              2,
+              3,
+              "-972*sqrt(15)*I*k1*k3/15625 + 162*sqrt(2)*k1*retarded_laplace/625 + 5832*sqrt(30)*I*k1/78125 + 972*sqrt(15)*k2*k3/15625 + 162*sqrt(2)*I*k2*retarded_laplace/625 - 5832*sqrt(30)*k2/78125"
+            ],
+            [
+              3,
+              0,
+              "972*sqrt(15)*I*k1**2/15625 + 1944*sqrt(15)*k1*k2/15625 - 972*sqrt(15)*I*k2**2/15625"
+            ],
+            [
+              3,
+              1,
+              "162*sqrt(30)*I*k1**3/3125 + 162*sqrt(30)*k1**2*k2/3125 + 162*sqrt(30)*I*k1*k2**2/3125 + 162*sqrt(30)*I*k1*k3**2/3125 - 972*sqrt(15)*I*k1*k3/15625 + 3*sqrt(30)*I*k1*retarded_laplace**2/25 - 486*sqrt(2)*k1*retarded_laplace/625 - 5832*sqrt(30)*I*k1/78125 + 162*sqrt(30)*k2**3/3125 + 162*sqrt(30)*k2*k3**2/3125 - 972*sqrt(15)*k2*k3/15625 + 3*sqrt(30)*k2*retarded_laplace**2/25 + 486*sqrt(2)*I*k2*retarded_laplace/625 - 5832*sqrt(30)*k2/78125"
+            ],
+            [
+              3,
+              2,
+              "-972*sqrt(15)*I*k1*k3/15625 + 162*sqrt(2)*k1*retarded_laplace/625 + 5832*sqrt(30)*I*k1/78125 - 972*sqrt(15)*k2*k3/15625 - 162*sqrt(2)*I*k2*retarded_laplace/625 + 5832*sqrt(30)*k2/78125"
+            ],
+            [
+              3,
+              3,
+              "-162*sqrt(30)*I*k1**2*k3/3125 + 54*k1**2*retarded_laplace/125 + 972*sqrt(15)*I*k1**2/15625 - 162*sqrt(30)*I*k2**2*k3/3125 + 54*k2**2*retarded_laplace/125 + 972*sqrt(15)*I*k2**2/15625 - 162*sqrt(30)*I*k3**3/3125 + 54*k3**2*retarded_laplace/125 + 1944*sqrt(15)*I*k3**2/15625 - 3*sqrt(30)*I*k3*retarded_laplace**2/25 + 324*sqrt(2)*k3*retarded_laplace/625 + retarded_laplace**3 + 72*sqrt(15)*I*retarded_laplace**2/125 - 3888*retarded_laplace/3125"
+            ]
+          ]
+        },
+        "denominator": "2916*k1**4/15625 + 5832*k1**2*k2**2/15625 + 5832*k1**2*k3**2/15625 + 108*k1**2*retarded_laplace**2/125 + 5832*sqrt(15)*I*k1**2*retarded_laplace/15625 - 209952*k1**2/390625 + 2916*k2**4/15625 + 5832*k2**2*k3**2/15625 + 108*k2**2*retarded_laplace**2/125 + 5832*sqrt(15)*I*k2**2*retarded_laplace/15625 - 209952*k2**2/390625 + 2916*k3**4/15625 + 108*k3**2*retarded_laplace**2/125 + 5832*sqrt(15)*I*k3**2*retarded_laplace/15625 - 209952*k3**2/390625 + retarded_laplace**4 + 108*sqrt(15)*I*retarded_laplace**3/125 - 11664*retarded_laplace**2/3125 - 139968*sqrt(15)*I*retarded_laplace/390625"
+      }
+    ],
+    "original_between_block_Yukawa": {
+      "shape": [
+        240,
+        240
+      ],
+      "entries": [
+        [
+          16,
+          120,
+          "-3*sqrt(30)*I/25"
+        ],
+        [
+          16,
+          122,
+          "-3*sqrt(30)*I/25"
+        ],
+        [
+          17,
+          123,
+          "-3*sqrt(30)*I/25"
+        ],
+        [
+          18,
+          123,
+          "-3*sqrt(30)*I/25"
+        ],
+        [
+          19,
+          121,
+          "-3*sqrt(30)*I/25"
+        ],
+        [
+          19,
+          124,
+          "-3*sqrt(30)*I/25"
+        ],
+        [
+          20,
+          120,
+          "3*sqrt(30)*I/25"
+        ],
+        [
+          20,
+          122,
+          "-3*sqrt(30)*I/25"
+        ],
+        [
+          21,
+          121,
+          "3*sqrt(30)*I/25"
+        ],
+        [
+          21,
+          124,
+          "-3*sqrt(30)*I/25"
+        ],
+        [
+          22,
+          123,
+          "-3*sqrt(30)*I/25"
+        ],
+        [
+          24,
+          123,
+          "-3*sqrt(30)*I/25"
+        ],
+        [
+          76,
+          180,
+          "-3*sqrt(30)*I/25"
+        ],
+        [
+          76,
+          182,
+          "-3*sqrt(30)*I/25"
+        ],
+        [
+          77,
+          183,
+          "-3*sqrt(30)*I/25"
+        ],
+        [
+          78,
+          183,
+          "-3*sqrt(30)*I/25"
+        ],
+        [
+          79,
+          181,
+          "-3*sqrt(30)*I/25"
+        ],
+        [
+          79,
+          184,
+          "-3*sqrt(30)*I/25"
+        ],
+        [
+          80,
+          180,
+          "3*sqrt(30)*I/25"
+        ],
+        [
+          80,
+          182,
+          "-3*sqrt(30)*I/25"
+        ],
+        [
+          81,
+          181,
+          "3*sqrt(30)*I/25"
+        ],
+        [
+          81,
+          184,
+          "-3*sqrt(30)*I/25"
+        ],
+        [
+          82,
+          183,
+          "-3*sqrt(30)*I/25"
+        ],
+        [
+          84,
+          183,
+          "-3*sqrt(30)*I/25"
+        ]
+      ]
+    },
+    "between_block_feed_count": 12,
+    "source_and_target_block_sets_disjoint": true,
+    "inverse": "R=R0+R0*N*R0; N*R0*N=0 by the actual disjoint source/target blocks",
+    "both_sides_checked": "Every diagonal leaf and every actual off-block polynomial numerator has both source identities; no path with two off-block feeds exists."
+  },
+  "primal_inverse": {
+    "complex_dimension": 240,
+    "source_components": [
+      {
+        "indices": [
+          0,
+          60
+        ],
+        "inverse_leaf": 0
+      },
+      {
+        "indices": [
+          1,
+          61
+        ],
+        "inverse_leaf": 0
+      },
+      {
+        "indices": [
+          2,
+          62
+        ],
+        "inverse_leaf": 0
+      },
+      {
+        "indices": [
+          3,
+          63
+        ],
+        "inverse_leaf": 0
+      },
+      {
+        "indices": [
+          4,
+          64
+        ],
+        "inverse_leaf": 0
+      },
+      {
+        "indices": [
+          5,
+          6,
+          65,
+          66
+        ],
+        "inverse_leaf": 1
+      },
+      {
+        "indices": [
+          7,
+          67
+        ],
+        "inverse_leaf": 2
+      },
+      {
+        "indices": [
+          8,
+          12,
+          68,
+          72
+        ],
+        "inverse_leaf": 3
+      },
+      {
+        "indices": [
+          9,
+          13,
+          69,
+          73
+        ],
+        "inverse_leaf": 3
+      },
+      {
+        "indices": [
+          10,
+          14,
+          70,
+          74
+        ],
+        "inverse_leaf": 3
+      },
+      {
+        "indices": [
+          11,
+          15,
+          71,
+          75
+        ],
+        "inverse_leaf": 3
+      },
+      {
+        "indices": [
+          16,
+          76
+        ],
+        "inverse_leaf": 2
+      },
+      {
+        "indices": [
+          17,
+          77
+        ],
+        "inverse_leaf": 2
+      },
+      {
+        "indices": [
+          18,
+          78
+        ],
+        "inverse_leaf": 2
+      },
+      {
+        "indices": [
+          19,
+          79
+        ],
+        "inverse_leaf": 2
+      },
+      {
+        "indices": [
+          20,
+          80
+        ],
+        "inverse_leaf": 2
+      },
+      {
+        "indices": [
+          21,
+          81
+        ],
+        "inverse_leaf": 2
+      },
+      {
+        "indices": [
+          22,
+          82
+        ],
+        "inverse_leaf": 2
+      },
+      {
+        "indices": [
+          23,
+          83
+        ],
+        "inverse_leaf": 2
+      },
+      {
+        "indices": [
+          24,
+          84
+        ],
+        "inverse_leaf": 2
+      },
+      {
+        "indices": [
+          25,
+          85
+        ],
+        "inverse_leaf": 2
+      },
+      {
+        "indices": [
+          26,
+          86
+        ],
+        "inverse_leaf": 2
+      },
+      {
+        "indices": [
+          27,
+          87
+        ],
+        "inverse_leaf": 2
+      },
+      {
+        "indices": [
+          28,
+          88
+        ],
+        "inverse_leaf": 2
+      },
+      {
+        "indices": [
+          29,
+          89
+        ],
+        "inverse_leaf": 2
+      },
+      {
+        "indices": [
+          30,
+          90
+        ],
+        "inverse_leaf": 2
+      },
+      {
+        "indices": [
+          31,
+          91
+        ],
+        "inverse_leaf": 2
+      },
+      {
+        "indices": [
+          32,
+          92
+        ],
+        "inverse_leaf": 2
+      },
+      {
+        "indices": [
+          33,
+          93
+        ],
+        "inverse_leaf": 2
+      },
+      {
+        "indices": [
+          34,
+          94
+        ],
+        "inverse_leaf": 2
+      },
+      {
+        "indices": [
+          35,
+          45,
+          95,
+          105
+        ],
+        "inverse_leaf": 3
+      },
+      {
+        "indices": [
+          36,
+          46,
+          96,
+          106
+        ],
+        "inverse_leaf": 3
+      },
+      {
+        "indices": [
+          37,
+          47,
+          97,
+          107
+        ],
+        "inverse_leaf": 3
+      },
+      {
+        "indices": [
+          38,
+          48,
+          98,
+          108
+        ],
+        "inverse_leaf": 3
+      },
+      {
+        "indices": [
+          39,
+          49,
+          99,
+          109
+        ],
+        "inverse_leaf": 3
+      },
+      {
+        "indices": [
+          40,
+          50,
+          100,
+          110
+        ],
+        "inverse_leaf": 3
+      },
+      {
+        "indices": [
+          41,
+          51,
+          101,
+          111
+        ],
+        "inverse_leaf": 3
+      },
+      {
+        "indices": [
+          42,
+          52,
+          102,
+          112
+        ],
+        "inverse_leaf": 3
+      },
+      {
+        "indices": [
+          43,
+          53,
+          103,
+          113
+        ],
+        "inverse_leaf": 3
+      },
+      {
+        "indices": [
+          44,
+          54,
+          104,
+          114
+        ],
+        "inverse_leaf": 3
+      },
+      {
+        "indices": [
+          55,
+          115
+        ],
+        "inverse_leaf": 2
+      },
+      {
+        "indices": [
+          56,
+          116
+        ],
+        "inverse_leaf": 2
+      },
+      {
+        "indices": [
+          57,
+          117
+        ],
+        "inverse_leaf": 2
+      },
+      {
+        "indices": [
+          58,
+          118
+        ],
+        "inverse_leaf": 2
+      },
+      {
+        "indices": [
+          59,
+          119
+        ],
+        "inverse_leaf": 2
+      },
+      {
+        "indices": [
+          120,
+          180
+        ],
+        "inverse_leaf": 4
+      },
+      {
+        "indices": [
+          121,
+          181
+        ],
+        "inverse_leaf": 4
+      },
+      {
+        "indices": [
+          122,
+          182
+        ],
+        "inverse_leaf": 4
+      },
+      {
+        "indices": [
+          123,
+          183
+        ],
+        "inverse_leaf": 4
+      },
+      {
+        "indices": [
+          124,
+          184
+        ],
+        "inverse_leaf": 4
+      },
+      {
+        "indices": [
+          125,
+          126,
+          185,
+          186
+        ],
+        "inverse_leaf": 5
+      },
+      {
+        "indices": [
+          127,
+          187
+        ],
+        "inverse_leaf": 6
+      },
+      {
+        "indices": [
+          128,
+          132,
+          188,
+          192
+        ],
+        "inverse_leaf": 7
+      },
+      {
+        "indices": [
+          129,
+          133,
+          189,
+          193
+        ],
+        "inverse_leaf": 7
+      },
+      {
+        "indices": [
+          130,
+          134,
+          190,
+          194
+        ],
+        "inverse_leaf": 7
+      },
+      {
+        "indices": [
+          131,
+          135,
+          191,
+          195
+        ],
+        "inverse_leaf": 7
+      },
+      {
+        "indices": [
+          136,
+          196
+        ],
+        "inverse_leaf": 6
+      },
+      {
+        "indices": [
+          137,
+          197
+        ],
+        "inverse_leaf": 6
+      },
+      {
+        "indices": [
+          138,
+          198
+        ],
+        "inverse_leaf": 6
+      },
+      {
+        "indices": [
+          139,
+          199
+        ],
+        "inverse_leaf": 6
+      },
+      {
+        "indices": [
+          140,
+          200
+        ],
+        "inverse_leaf": 6
+      },
+      {
+        "indices": [
+          141,
+          201
+        ],
+        "inverse_leaf": 6
+      },
+      {
+        "indices": [
+          142,
+          202
+        ],
+        "inverse_leaf": 6
+      },
+      {
+        "indices": [
+          143,
+          203
+        ],
+        "inverse_leaf": 6
+      },
+      {
+        "indices": [
+          144,
+          204
+        ],
+        "inverse_leaf": 6
+      },
+      {
+        "indices": [
+          145,
+          205
+        ],
+        "inverse_leaf": 6
+      },
+      {
+        "indices": [
+          146,
+          206
+        ],
+        "inverse_leaf": 6
+      },
+      {
+        "indices": [
+          147,
+          207
+        ],
+        "inverse_leaf": 6
+      },
+      {
+        "indices": [
+          148,
+          208
+        ],
+        "inverse_leaf": 6
+      },
+      {
+        "indices": [
+          149,
+          209
+        ],
+        "inverse_leaf": 6
+      },
+      {
+        "indices": [
+          150,
+          210
+        ],
+        "inverse_leaf": 6
+      },
+      {
+        "indices": [
+          151,
+          211
+        ],
+        "inverse_leaf": 6
+      },
+      {
+        "indices": [
+          152,
+          212
+        ],
+        "inverse_leaf": 6
+      },
+      {
+        "indices": [
+          153,
+          213
+        ],
+        "inverse_leaf": 6
+      },
+      {
+        "indices": [
+          154,
+          214
+        ],
+        "inverse_leaf": 6
+      },
+      {
+        "indices": [
+          155,
+          165,
+          215,
+          225
+        ],
+        "inverse_leaf": 7
+      },
+      {
+        "indices": [
+          156,
+          166,
+          216,
+          226
+        ],
+        "inverse_leaf": 7
+      },
+      {
+        "indices": [
+          157,
+          167,
+          217,
+          227
+        ],
+        "inverse_leaf": 7
+      },
+      {
+        "indices": [
+          158,
+          168,
+          218,
+          228
+        ],
+        "inverse_leaf": 7
+      },
+      {
+        "indices": [
+          159,
+          169,
+          219,
+          229
+        ],
+        "inverse_leaf": 7
+      },
+      {
+        "indices": [
+          160,
+          170,
+          220,
+          230
+        ],
+        "inverse_leaf": 7
+      },
+      {
+        "indices": [
+          161,
+          171,
+          221,
+          231
+        ],
+        "inverse_leaf": 7
+      },
+      {
+        "indices": [
+          162,
+          172,
+          222,
+          232
+        ],
+        "inverse_leaf": 7
+      },
+      {
+        "indices": [
+          163,
+          173,
+          223,
+          233
+        ],
+        "inverse_leaf": 7
+      },
+      {
+        "indices": [
+          164,
+          174,
+          224,
+          234
+        ],
+        "inverse_leaf": 7
+      },
+      {
+        "indices": [
+          175,
+          235
+        ],
+        "inverse_leaf": 6
+      },
+      {
+        "indices": [
+          176,
+          236
+        ],
+        "inverse_leaf": 6
+      },
+      {
+        "indices": [
+          177,
+          237
+        ],
+        "inverse_leaf": 6
+      },
+      {
+        "indices": [
+          178,
+          238
+        ],
+        "inverse_leaf": 6
+      },
+      {
+        "indices": [
+          179,
+          239
+        ],
+        "inverse_leaf": 6
+      }
+    ],
+    "exact_inverse_leaves": [
+      {
+        "generator": {
+          "shape": [
+            2,
+            2
+          ],
+          "entries": [
+            [
+              0,
+              0,
+              "3*sqrt(30)*I*k3/25 + 63*sqrt(15)*I/125"
+            ],
+            [
+              0,
+              1,
+              "3*sqrt(30)*I*k1/25 + 3*sqrt(30)*k2/25"
+            ],
+            [
+              1,
+              0,
+              "3*sqrt(30)*I*k1/25 - 3*sqrt(30)*k2/25"
+            ],
+            [
+              1,
+              1,
+              "-3*sqrt(30)*I*k3/25 + 63*sqrt(15)*I/125"
+            ]
+          ]
+        },
+        "numerator": {
+          "shape": [
+            2,
+            2
+          ],
+          "entries": [
+            [
+              0,
+              0,
+              "3*sqrt(30)*I*k3/25 + retarded_laplace - 63*sqrt(15)*I/125"
+            ],
+            [
+              0,
+              1,
+              "3*sqrt(30)*I*k1/25 + 3*sqrt(30)*k2/25"
+            ],
+            [
+              1,
+              0,
+              "3*sqrt(30)*I*k1/25 - 3*sqrt(30)*k2/25"
+            ],
+            [
+              1,
+              1,
+              "-3*sqrt(30)*I*k3/25 + retarded_laplace - 63*sqrt(15)*I/125"
+            ]
+          ]
+        },
+        "denominator": "54*k1**2/125 + 54*k2**2/125 + 54*k3**2/125 + retarded_laplace**2 - 126*sqrt(15)*I*retarded_laplace/125 - 11907/3125"
+      },
+      {
+        "generator": {
+          "shape": [
+            4,
+            4
+          ],
+          "entries": [
+            [
+              0,
+              0,
+              "3*sqrt(30)*I*k3/25 + 72*sqrt(15)*I/125"
+            ],
+            [
+              0,
+              2,
+              "3*sqrt(30)*I*k1/25 + 3*sqrt(30)*k2/25"
+            ],
+            [
+              1,
+              1,
+              "3*sqrt(30)*I*k3/25 + 54*sqrt(15)*I/125"
+            ],
+            [
+              1,
+              2,
+              "18*sqrt(15)*I/125"
+            ],
+            [
+              1,
+              3,
+              "3*sqrt(30)*I*k1/25 + 3*sqrt(30)*k2/25"
+            ],
+            [
+              2,
+              0,
+              "3*sqrt(30)*I*k1/25 - 3*sqrt(30)*k2/25"
+            ],
+            [
+              2,
+              1,
+              "18*sqrt(15)*I/125"
+            ],
+            [
+              2,
+              2,
+              "-3*sqrt(30)*I*k3/25 + 54*sqrt(15)*I/125"
+            ],
+            [
+              3,
+              1,
+              "3*sqrt(30)*I*k1/25 - 3*sqrt(30)*k2/25"
+            ],
+            [
+              3,
+              3,
+              "-3*sqrt(30)*I*k3/25 + 72*sqrt(15)*I/125"
+            ]
+          ]
+        },
+        "numerator": {
+          "shape": [
+            4,
+            4
+          ],
+          "entries": [
+            [
+              0,
+              0,
+              "162*sqrt(30)*I*k1**2*k3/3125 + 54*k1**2*retarded_laplace/125 - 2916*sqrt(15)*I*k1**2/15625 + 162*sqrt(30)*I*k2**2*k3/3125 + 54*k2**2*retarded_laplace/125 - 2916*sqrt(15)*I*k2**2/15625 + 162*sqrt(30)*I*k3**3/3125 + 54*k3**2*retarded_laplace/125 - 3888*sqrt(15)*I*k3**2/15625 + 3*sqrt(30)*I*k3*retarded_laplace**2/25 + 972*sqrt(2)*k3*retarded_laplace/625 - 23328*sqrt(30)*I*k3/78125 + retarded_laplace**3 - 36*sqrt(15)*I*retarded_laplace**2/25 - 31104*retarded_laplace/3125 + 559872*sqrt(15)*I/390625"
+            ],
+            [
+              0,
+              1,
+              "-972*sqrt(15)*I*k1*k3/15625 - 162*sqrt(2)*k1*retarded_laplace/625 + 11664*sqrt(30)*I*k1/78125 - 972*sqrt(15)*k2*k3/15625 + 162*sqrt(2)*I*k2*retarded_laplace/625 + 11664*sqrt(30)*k2/78125"
+            ],
+            [
+              0,
+              2,
+              "162*sqrt(30)*I*k1**3/3125 + 162*sqrt(30)*k1**2*k2/3125 + 162*sqrt(30)*I*k1*k2**2/3125 + 162*sqrt(30)*I*k1*k3**2/3125 - 972*sqrt(15)*I*k1*k3/15625 + 3*sqrt(30)*I*k1*retarded_laplace**2/25 + 1134*sqrt(2)*k1*retarded_laplace/625 - 34992*sqrt(30)*I*k1/78125 + 162*sqrt(30)*k2**3/3125 + 162*sqrt(30)*k2*k3**2/3125 - 972*sqrt(15)*k2*k3/15625 + 3*sqrt(30)*k2*retarded_laplace**2/25 - 1134*sqrt(2)*I*k2*retarded_laplace/625 - 34992*sqrt(30)*k2/78125"
+            ],
+            [
+              0,
+              3,
+              "-972*sqrt(15)*I*k1**2/15625 - 1944*sqrt(15)*k1*k2/15625 + 972*sqrt(15)*I*k2**2/15625"
+            ],
+            [
+              1,
+              0,
+              "-972*sqrt(15)*I*k1*k3/15625 - 162*sqrt(2)*k1*retarded_laplace/625 + 11664*sqrt(30)*I*k1/78125 + 972*sqrt(15)*k2*k3/15625 - 162*sqrt(2)*I*k2*retarded_laplace/625 - 11664*sqrt(30)*k2/78125"
+            ],
+            [
+              1,
+              1,
+              "162*sqrt(30)*I*k1**2*k3/3125 + 54*k1**2*retarded_laplace/125 - 3888*sqrt(15)*I*k1**2/15625 + 162*sqrt(30)*I*k2**2*k3/3125 + 54*k2**2*retarded_laplace/125 - 3888*sqrt(15)*I*k2**2/15625 + 162*sqrt(30)*I*k3**3/3125 + 54*k3**2*retarded_laplace/125 - 2916*sqrt(15)*I*k3**2/15625 + 3*sqrt(30)*I*k3*retarded_laplace**2/25 + 1296*sqrt(2)*k3*retarded_laplace/625 - 46656*sqrt(30)*I*k3/78125 + retarded_laplace**3 - 198*sqrt(15)*I*retarded_laplace**2/125 - 7776*retarded_laplace/625 + 839808*sqrt(15)*I/390625"
+            ],
+            [
+              1,
+              2,
+              "972*sqrt(15)*I*k3**2/15625 + 18*sqrt(15)*I*retarded_laplace**2/125 + 7776*retarded_laplace/3125 - 279936*sqrt(15)*I/390625"
+            ],
+            [
+              1,
+              3,
+              "162*sqrt(30)*I*k1**3/3125 + 162*sqrt(30)*k1**2*k2/3125 + 162*sqrt(30)*I*k1*k2**2/3125 + 162*sqrt(30)*I*k1*k3**2/3125 + 972*sqrt(15)*I*k1*k3/15625 + 3*sqrt(30)*I*k1*retarded_laplace**2/25 + 1134*sqrt(2)*k1*retarded_laplace/625 - 34992*sqrt(30)*I*k1/78125 + 162*sqrt(30)*k2**3/3125 + 162*sqrt(30)*k2*k3**2/3125 + 972*sqrt(15)*k2*k3/15625 + 3*sqrt(30)*k2*retarded_laplace**2/25 - 1134*sqrt(2)*I*k2*retarded_laplace/625 - 34992*sqrt(30)*k2/78125"
+            ],
+            [
+              2,
+              0,
+              "162*sqrt(30)*I*k1**3/3125 - 162*sqrt(30)*k1**2*k2/3125 + 162*sqrt(30)*I*k1*k2**2/3125 + 162*sqrt(30)*I*k1*k3**2/3125 - 972*sqrt(15)*I*k1*k3/15625 + 3*sqrt(30)*I*k1*retarded_laplace**2/25 + 1134*sqrt(2)*k1*retarded_laplace/625 - 34992*sqrt(30)*I*k1/78125 - 162*sqrt(30)*k2**3/3125 - 162*sqrt(30)*k2*k3**2/3125 + 972*sqrt(15)*k2*k3/15625 - 3*sqrt(30)*k2*retarded_laplace**2/25 + 1134*sqrt(2)*I*k2*retarded_laplace/625 + 34992*sqrt(30)*k2/78125"
+            ],
+            [
+              2,
+              1,
+              "972*sqrt(15)*I*k3**2/15625 + 18*sqrt(15)*I*retarded_laplace**2/125 + 7776*retarded_laplace/3125 - 279936*sqrt(15)*I/390625"
+            ],
+            [
+              2,
+              2,
+              "-162*sqrt(30)*I*k1**2*k3/3125 + 54*k1**2*retarded_laplace/125 - 3888*sqrt(15)*I*k1**2/15625 - 162*sqrt(30)*I*k2**2*k3/3125 + 54*k2**2*retarded_laplace/125 - 3888*sqrt(15)*I*k2**2/15625 - 162*sqrt(30)*I*k3**3/3125 + 54*k3**2*retarded_laplace/125 - 2916*sqrt(15)*I*k3**2/15625 - 3*sqrt(30)*I*k3*retarded_laplace**2/25 - 1296*sqrt(2)*k3*retarded_laplace/625 + 46656*sqrt(30)*I*k3/78125 + retarded_laplace**3 - 198*sqrt(15)*I*retarded_laplace**2/125 - 7776*retarded_laplace/625 + 839808*sqrt(15)*I/390625"
+            ],
+            [
+              2,
+              3,
+              "972*sqrt(15)*I*k1*k3/15625 - 162*sqrt(2)*k1*retarded_laplace/625 + 11664*sqrt(30)*I*k1/78125 + 972*sqrt(15)*k2*k3/15625 + 162*sqrt(2)*I*k2*retarded_laplace/625 + 11664*sqrt(30)*k2/78125"
+            ],
+            [
+              3,
+              0,
+              "-972*sqrt(15)*I*k1**2/15625 + 1944*sqrt(15)*k1*k2/15625 + 972*sqrt(15)*I*k2**2/15625"
+            ],
+            [
+              3,
+              1,
+              "162*sqrt(30)*I*k1**3/3125 - 162*sqrt(30)*k1**2*k2/3125 + 162*sqrt(30)*I*k1*k2**2/3125 + 162*sqrt(30)*I*k1*k3**2/3125 + 972*sqrt(15)*I*k1*k3/15625 + 3*sqrt(30)*I*k1*retarded_laplace**2/25 + 1134*sqrt(2)*k1*retarded_laplace/625 - 34992*sqrt(30)*I*k1/78125 - 162*sqrt(30)*k2**3/3125 - 162*sqrt(30)*k2*k3**2/3125 - 972*sqrt(15)*k2*k3/15625 - 3*sqrt(30)*k2*retarded_laplace**2/25 + 1134*sqrt(2)*I*k2*retarded_laplace/625 + 34992*sqrt(30)*k2/78125"
+            ],
+            [
+              3,
+              2,
+              "972*sqrt(15)*I*k1*k3/15625 - 162*sqrt(2)*k1*retarded_laplace/625 + 11664*sqrt(30)*I*k1/78125 - 972*sqrt(15)*k2*k3/15625 - 162*sqrt(2)*I*k2*retarded_laplace/625 - 11664*sqrt(30)*k2/78125"
+            ],
+            [
+              3,
+              3,
+              "-162*sqrt(30)*I*k1**2*k3/3125 + 54*k1**2*retarded_laplace/125 - 2916*sqrt(15)*I*k1**2/15625 - 162*sqrt(30)*I*k2**2*k3/3125 + 54*k2**2*retarded_laplace/125 - 2916*sqrt(15)*I*k2**2/15625 - 162*sqrt(30)*I*k3**3/3125 + 54*k3**2*retarded_laplace/125 - 3888*sqrt(15)*I*k3**2/15625 - 3*sqrt(30)*I*k3*retarded_laplace**2/25 - 972*sqrt(2)*k3*retarded_laplace/625 + 23328*sqrt(30)*I*k3/78125 + retarded_laplace**3 - 36*sqrt(15)*I*retarded_laplace**2/25 - 31104*retarded_laplace/3125 + 559872*sqrt(15)*I/390625"
+            ]
+          ]
+        },
+        "denominator": "2916*k1**4/15625 + 5832*k1**2*k2**2/15625 + 5832*k1**2*k3**2/15625 + 108*k1**2*retarded_laplace**2/125 - 13608*sqrt(15)*I*k1**2*retarded_laplace/15625 - 1259712*k1**2/390625 + 2916*k2**4/15625 + 5832*k2**2*k3**2/15625 + 108*k2**2*retarded_laplace**2/125 - 13608*sqrt(15)*I*k2**2*retarded_laplace/15625 - 1259712*k2**2/390625 + 2916*k3**4/15625 + 108*k3**2*retarded_laplace**2/125 - 13608*sqrt(15)*I*k3**2*retarded_laplace/15625 - 1259712*k3**2/390625 + retarded_laplace**4 - 252*sqrt(15)*I*retarded_laplace**3/125 - 69984*retarded_laplace**2/3125 + 559872*sqrt(15)*I*retarded_laplace/78125 + 120932352/9765625"
+      },
+      {
+        "generator": {
+          "shape": [
+            2,
+            2
+          ],
+          "entries": [
+            [
+              0,
+              0,
+              "3*sqrt(30)*I*k3/25 + 27*sqrt(15)*I/125"
+            ],
+            [
+              0,
+              1,
+              "3*sqrt(30)*I*k1/25 + 3*sqrt(30)*k2/25"
+            ],
+            [
+              1,
+              0,
+              "3*sqrt(30)*I*k1/25 - 3*sqrt(30)*k2/25"
+            ],
+            [
+              1,
+              1,
+              "-3*sqrt(30)*I*k3/25 + 27*sqrt(15)*I/125"
+            ]
+          ]
+        },
+        "numerator": {
+          "shape": [
+            2,
+            2
+          ],
+          "entries": [
+            [
+              0,
+              0,
+              "3*sqrt(30)*I*k3/25 + retarded_laplace - 27*sqrt(15)*I/125"
+            ],
+            [
+              0,
+              1,
+              "3*sqrt(30)*I*k1/25 + 3*sqrt(30)*k2/25"
+            ],
+            [
+              1,
+              0,
+              "3*sqrt(30)*I*k1/25 - 3*sqrt(30)*k2/25"
+            ],
+            [
+              1,
+              1,
+              "-3*sqrt(30)*I*k3/25 + retarded_laplace - 27*sqrt(15)*I/125"
+            ]
+          ]
+        },
+        "denominator": "54*k1**2/125 + 54*k2**2/125 + 54*k3**2/125 + retarded_laplace**2 - 54*sqrt(15)*I*retarded_laplace/125 - 2187/3125"
+      },
+      {
+        "generator": {
+          "shape": [
+            4,
+            4
+          ],
+          "entries": [
+            [
+              0,
+              0,
+              "3*sqrt(30)*I*k3/25 + 36*sqrt(15)*I/125"
+            ],
+            [
+              0,
+              2,
+              "3*sqrt(30)*I*k1/25 + 3*sqrt(30)*k2/25"
+            ],
+            [
+              1,
+              1,
+              "3*sqrt(30)*I*k3/25 + 18*sqrt(15)*I/125"
+            ],
+            [
+              1,
+              2,
+              "18*sqrt(15)*I/125"
+            ],
+            [
+              1,
+              3,
+              "3*sqrt(30)*I*k1/25 + 3*sqrt(30)*k2/25"
+            ],
+            [
+              2,
+              0,
+              "3*sqrt(30)*I*k1/25 - 3*sqrt(30)*k2/25"
+            ],
+            [
+              2,
+              1,
+              "18*sqrt(15)*I/125"
+            ],
+            [
+              2,
+              2,
+              "-3*sqrt(30)*I*k3/25 + 18*sqrt(15)*I/125"
+            ],
+            [
+              3,
+              1,
+              "3*sqrt(30)*I*k1/25 - 3*sqrt(30)*k2/25"
+            ],
+            [
+              3,
+              3,
+              "-3*sqrt(30)*I*k3/25 + 36*sqrt(15)*I/125"
+            ]
+          ]
+        },
+        "numerator": {
+          "shape": [
+            4,
+            4
+          ],
+          "entries": [
+            [
+              0,
+              0,
+              "162*sqrt(30)*I*k1**2*k3/3125 + 54*k1**2*retarded_laplace/125 - 972*sqrt(15)*I*k1**2/15625 + 162*sqrt(30)*I*k2**2*k3/3125 + 54*k2**2*retarded_laplace/125 - 972*sqrt(15)*I*k2**2/15625 + 162*sqrt(30)*I*k3**3/3125 + 54*k3**2*retarded_laplace/125 - 1944*sqrt(15)*I*k3**2/15625 + 3*sqrt(30)*I*k3*retarded_laplace**2/25 + 324*sqrt(2)*k3*retarded_laplace/625 + retarded_laplace**3 - 72*sqrt(15)*I*retarded_laplace**2/125 - 3888*retarded_laplace/3125"
+            ],
+            [
+              0,
+              1,
+              "-972*sqrt(15)*I*k1*k3/15625 - 162*sqrt(2)*k1*retarded_laplace/625 + 5832*sqrt(30)*I*k1/78125 - 972*sqrt(15)*k2*k3/15625 + 162*sqrt(2)*I*k2*retarded_laplace/625 + 5832*sqrt(30)*k2/78125"
+            ],
+            [
+              0,
+              2,
+              "162*sqrt(30)*I*k1**3/3125 + 162*sqrt(30)*k1**2*k2/3125 + 162*sqrt(30)*I*k1*k2**2/3125 + 162*sqrt(30)*I*k1*k3**2/3125 - 972*sqrt(15)*I*k1*k3/15625 + 3*sqrt(30)*I*k1*retarded_laplace**2/25 + 486*sqrt(2)*k1*retarded_laplace/625 - 5832*sqrt(30)*I*k1/78125 + 162*sqrt(30)*k2**3/3125 + 162*sqrt(30)*k2*k3**2/3125 - 972*sqrt(15)*k2*k3/15625 + 3*sqrt(30)*k2*retarded_laplace**2/25 - 486*sqrt(2)*I*k2*retarded_laplace/625 - 5832*sqrt(30)*k2/78125"
+            ],
+            [
+              0,
+              3,
+              "-972*sqrt(15)*I*k1**2/15625 - 1944*sqrt(15)*k1*k2/15625 + 972*sqrt(15)*I*k2**2/15625"
+            ],
+            [
+              1,
+              0,
+              "-972*sqrt(15)*I*k1*k3/15625 - 162*sqrt(2)*k1*retarded_laplace/625 + 5832*sqrt(30)*I*k1/78125 + 972*sqrt(15)*k2*k3/15625 - 162*sqrt(2)*I*k2*retarded_laplace/625 - 5832*sqrt(30)*k2/78125"
+            ],
+            [
+              1,
+              1,
+              "162*sqrt(30)*I*k1**2*k3/3125 + 54*k1**2*retarded_laplace/125 - 1944*sqrt(15)*I*k1**2/15625 + 162*sqrt(30)*I*k2**2*k3/3125 + 54*k2**2*retarded_laplace/125 - 1944*sqrt(15)*I*k2**2/15625 + 162*sqrt(30)*I*k3**3/3125 + 54*k3**2*retarded_laplace/125 - 972*sqrt(15)*I*k3**2/15625 + 3*sqrt(30)*I*k3*retarded_laplace**2/25 + 648*sqrt(2)*k3*retarded_laplace/625 - 11664*sqrt(30)*I*k3/78125 + retarded_laplace**3 - 18*sqrt(15)*I*retarded_laplace**2/25 - 7776*retarded_laplace/3125 + 69984*sqrt(15)*I/390625"
+            ],
+            [
+              1,
+              2,
+              "972*sqrt(15)*I*k3**2/15625 + 18*sqrt(15)*I*retarded_laplace**2/125 + 3888*retarded_laplace/3125 - 69984*sqrt(15)*I/390625"
+            ],
+            [
+              1,
+              3,
+              "162*sqrt(30)*I*k1**3/3125 + 162*sqrt(30)*k1**2*k2/3125 + 162*sqrt(30)*I*k1*k2**2/3125 + 162*sqrt(30)*I*k1*k3**2/3125 + 972*sqrt(15)*I*k1*k3/15625 + 3*sqrt(30)*I*k1*retarded_laplace**2/25 + 486*sqrt(2)*k1*retarded_laplace/625 - 5832*sqrt(30)*I*k1/78125 + 162*sqrt(30)*k2**3/3125 + 162*sqrt(30)*k2*k3**2/3125 + 972*sqrt(15)*k2*k3/15625 + 3*sqrt(30)*k2*retarded_laplace**2/25 - 486*sqrt(2)*I*k2*retarded_laplace/625 - 5832*sqrt(30)*k2/78125"
+            ],
+            [
+              2,
+              0,
+              "162*sqrt(30)*I*k1**3/3125 - 162*sqrt(30)*k1**2*k2/3125 + 162*sqrt(30)*I*k1*k2**2/3125 + 162*sqrt(30)*I*k1*k3**2/3125 - 972*sqrt(15)*I*k1*k3/15625 + 3*sqrt(30)*I*k1*retarded_laplace**2/25 + 486*sqrt(2)*k1*retarded_laplace/625 - 5832*sqrt(30)*I*k1/78125 - 162*sqrt(30)*k2**3/3125 - 162*sqrt(30)*k2*k3**2/3125 + 972*sqrt(15)*k2*k3/15625 - 3*sqrt(30)*k2*retarded_laplace**2/25 + 486*sqrt(2)*I*k2*retarded_laplace/625 + 5832*sqrt(30)*k2/78125"
+            ],
+            [
+              2,
+              1,
+              "972*sqrt(15)*I*k3**2/15625 + 18*sqrt(15)*I*retarded_laplace**2/125 + 3888*retarded_laplace/3125 - 69984*sqrt(15)*I/390625"
+            ],
+            [
+              2,
+              2,
+              "-162*sqrt(30)*I*k1**2*k3/3125 + 54*k1**2*retarded_laplace/125 - 1944*sqrt(15)*I*k1**2/15625 - 162*sqrt(30)*I*k2**2*k3/3125 + 54*k2**2*retarded_laplace/125 - 1944*sqrt(15)*I*k2**2/15625 - 162*sqrt(30)*I*k3**3/3125 + 54*k3**2*retarded_laplace/125 - 972*sqrt(15)*I*k3**2/15625 - 3*sqrt(30)*I*k3*retarded_laplace**2/25 - 648*sqrt(2)*k3*retarded_laplace/625 + 11664*sqrt(30)*I*k3/78125 + retarded_laplace**3 - 18*sqrt(15)*I*retarded_laplace**2/25 - 7776*retarded_laplace/3125 + 69984*sqrt(15)*I/390625"
+            ],
+            [
+              2,
+              3,
+              "972*sqrt(15)*I*k1*k3/15625 - 162*sqrt(2)*k1*retarded_laplace/625 + 5832*sqrt(30)*I*k1/78125 + 972*sqrt(15)*k2*k3/15625 + 162*sqrt(2)*I*k2*retarded_laplace/625 + 5832*sqrt(30)*k2/78125"
+            ],
+            [
+              3,
+              0,
+              "-972*sqrt(15)*I*k1**2/15625 + 1944*sqrt(15)*k1*k2/15625 + 972*sqrt(15)*I*k2**2/15625"
+            ],
+            [
+              3,
+              1,
+              "162*sqrt(30)*I*k1**3/3125 - 162*sqrt(30)*k1**2*k2/3125 + 162*sqrt(30)*I*k1*k2**2/3125 + 162*sqrt(30)*I*k1*k3**2/3125 + 972*sqrt(15)*I*k1*k3/15625 + 3*sqrt(30)*I*k1*retarded_laplace**2/25 + 486*sqrt(2)*k1*retarded_laplace/625 - 5832*sqrt(30)*I*k1/78125 - 162*sqrt(30)*k2**3/3125 - 162*sqrt(30)*k2*k3**2/3125 - 972*sqrt(15)*k2*k3/15625 - 3*sqrt(30)*k2*retarded_laplace**2/25 + 486*sqrt(2)*I*k2*retarded_laplace/625 + 5832*sqrt(30)*k2/78125"
+            ],
+            [
+              3,
+              2,
+              "972*sqrt(15)*I*k1*k3/15625 - 162*sqrt(2)*k1*retarded_laplace/625 + 5832*sqrt(30)*I*k1/78125 - 972*sqrt(15)*k2*k3/15625 - 162*sqrt(2)*I*k2*retarded_laplace/625 - 5832*sqrt(30)*k2/78125"
+            ],
+            [
+              3,
+              3,
+              "-162*sqrt(30)*I*k1**2*k3/3125 + 54*k1**2*retarded_laplace/125 - 972*sqrt(15)*I*k1**2/15625 - 162*sqrt(30)*I*k2**2*k3/3125 + 54*k2**2*retarded_laplace/125 - 972*sqrt(15)*I*k2**2/15625 - 162*sqrt(30)*I*k3**3/3125 + 54*k3**2*retarded_laplace/125 - 1944*sqrt(15)*I*k3**2/15625 - 3*sqrt(30)*I*k3*retarded_laplace**2/25 - 324*sqrt(2)*k3*retarded_laplace/625 + retarded_laplace**3 - 72*sqrt(15)*I*retarded_laplace**2/125 - 3888*retarded_laplace/3125"
+            ]
+          ]
+        },
+        "denominator": "2916*k1**4/15625 + 5832*k1**2*k2**2/15625 + 5832*k1**2*k3**2/15625 + 108*k1**2*retarded_laplace**2/125 - 5832*sqrt(15)*I*k1**2*retarded_laplace/15625 - 209952*k1**2/390625 + 2916*k2**4/15625 + 5832*k2**2*k3**2/15625 + 108*k2**2*retarded_laplace**2/125 - 5832*sqrt(15)*I*k2**2*retarded_laplace/15625 - 209952*k2**2/390625 + 2916*k3**4/15625 + 108*k3**2*retarded_laplace**2/125 - 5832*sqrt(15)*I*k3**2*retarded_laplace/15625 - 209952*k3**2/390625 + retarded_laplace**4 - 108*sqrt(15)*I*retarded_laplace**3/125 - 11664*retarded_laplace**2/3125 + 139968*sqrt(15)*I*retarded_laplace/390625"
+      },
+      {
+        "generator": {
+          "shape": [
+            2,
+            2
+          ],
+          "entries": [
+            [
+              0,
+              0,
+              "-3*sqrt(30)*I*k3/25 + 9*sqrt(15)*I/125"
+            ],
+            [
+              0,
+              1,
+              "-3*sqrt(30)*I*k1/25 - 3*sqrt(30)*k2/25"
+            ],
+            [
+              1,
+              0,
+              "-3*sqrt(30)*I*k1/25 + 3*sqrt(30)*k2/25"
+            ],
+            [
+              1,
+              1,
+              "3*sqrt(30)*I*k3/25 + 9*sqrt(15)*I/125"
+            ]
+          ]
+        },
+        "numerator": {
+          "shape": [
+            2,
+            2
+          ],
+          "entries": [
+            [
+              0,
+              0,
+              "-3*sqrt(30)*I*k3/25 + retarded_laplace - 9*sqrt(15)*I/125"
+            ],
+            [
+              0,
+              1,
+              "-3*sqrt(30)*I*k1/25 - 3*sqrt(30)*k2/25"
+            ],
+            [
+              1,
+              0,
+              "-3*sqrt(30)*I*k1/25 + 3*sqrt(30)*k2/25"
+            ],
+            [
+              1,
+              1,
+              "3*sqrt(30)*I*k3/25 + retarded_laplace - 9*sqrt(15)*I/125"
+            ]
+          ]
+        },
+        "denominator": "54*k1**2/125 + 54*k2**2/125 + 54*k3**2/125 + retarded_laplace**2 - 18*sqrt(15)*I*retarded_laplace/125 - 243/3125"
+      },
+      {
+        "generator": {
+          "shape": [
+            4,
+            4
+          ],
+          "entries": [
+            [
+              0,
+              0,
+              "-3*sqrt(30)*I*k3/25"
+            ],
+            [
+              0,
+              2,
+              "-3*sqrt(30)*I*k1/25 - 3*sqrt(30)*k2/25"
+            ],
+            [
+              1,
+              1,
+              "-3*sqrt(30)*I*k3/25 + 18*sqrt(15)*I/125"
+            ],
+            [
+              1,
+              2,
+              "-18*sqrt(15)*I/125"
+            ],
+            [
+              1,
+              3,
+              "-3*sqrt(30)*I*k1/25 - 3*sqrt(30)*k2/25"
+            ],
+            [
+              2,
+              0,
+              "-3*sqrt(30)*I*k1/25 + 3*sqrt(30)*k2/25"
+            ],
+            [
+              2,
+              1,
+              "-18*sqrt(15)*I/125"
+            ],
+            [
+              2,
+              2,
+              "3*sqrt(30)*I*k3/25 + 18*sqrt(15)*I/125"
+            ],
+            [
+              3,
+              1,
+              "-3*sqrt(30)*I*k1/25 + 3*sqrt(30)*k2/25"
+            ],
+            [
+              3,
+              3,
+              "3*sqrt(30)*I*k3/25"
+            ]
+          ]
+        },
+        "numerator": {
+          "shape": [
+            4,
+            4
+          ],
+          "entries": [
+            [
+              0,
+              0,
+              "-162*sqrt(30)*I*k1**2*k3/3125 + 54*k1**2*retarded_laplace/125 - 972*sqrt(15)*I*k1**2/15625 - 162*sqrt(30)*I*k2**2*k3/3125 + 54*k2**2*retarded_laplace/125 - 972*sqrt(15)*I*k2**2/15625 - 162*sqrt(30)*I*k3**3/3125 + 54*k3**2*retarded_laplace/125 - 3*sqrt(30)*I*k3*retarded_laplace**2/25 - 324*sqrt(2)*k3*retarded_laplace/625 + retarded_laplace**3 - 36*sqrt(15)*I*retarded_laplace**2/125"
+            ],
+            [
+              0,
+              1,
+              "972*sqrt(15)*I*k1*k3/15625 - 162*sqrt(2)*k1*retarded_laplace/625 + 972*sqrt(15)*k2*k3/15625 + 162*sqrt(2)*I*k2*retarded_laplace/625"
+            ],
+            [
+              0,
+              2,
+              "-162*sqrt(30)*I*k1**3/3125 - 162*sqrt(30)*k1**2*k2/3125 - 162*sqrt(30)*I*k1*k2**2/3125 - 162*sqrt(30)*I*k1*k3**2/3125 + 972*sqrt(15)*I*k1*k3/15625 - 3*sqrt(30)*I*k1*retarded_laplace**2/25 - 162*sqrt(2)*k1*retarded_laplace/625 - 162*sqrt(30)*k2**3/3125 - 162*sqrt(30)*k2*k3**2/3125 + 972*sqrt(15)*k2*k3/15625 - 3*sqrt(30)*k2*retarded_laplace**2/25 + 162*sqrt(2)*I*k2*retarded_laplace/625"
+            ],
+            [
+              0,
+              3,
+              "972*sqrt(15)*I*k1**2/15625 + 1944*sqrt(15)*k1*k2/15625 - 972*sqrt(15)*I*k2**2/15625"
+            ],
+            [
+              1,
+              0,
+              "972*sqrt(15)*I*k1*k3/15625 - 162*sqrt(2)*k1*retarded_laplace/625 - 972*sqrt(15)*k2*k3/15625 - 162*sqrt(2)*I*k2*retarded_laplace/625"
+            ],
+            [
+              1,
+              1,
+              "-162*sqrt(30)*I*k1**2*k3/3125 + 54*k1**2*retarded_laplace/125 - 162*sqrt(30)*I*k2**2*k3/3125 + 54*k2**2*retarded_laplace/125 - 162*sqrt(30)*I*k3**3/3125 + 54*k3**2*retarded_laplace/125 - 972*sqrt(15)*I*k3**2/15625 - 3*sqrt(30)*I*k3*retarded_laplace**2/25 + retarded_laplace**3 - 18*sqrt(15)*I*retarded_laplace**2/125"
+            ],
+            [
+              1,
+              2,
+              "-972*sqrt(15)*I*k3**2/15625 - 18*sqrt(15)*I*retarded_laplace**2/125"
+            ],
+            [
+              1,
+              3,
+              "-162*sqrt(30)*I*k1**3/3125 - 162*sqrt(30)*k1**2*k2/3125 - 162*sqrt(30)*I*k1*k2**2/3125 - 162*sqrt(30)*I*k1*k3**2/3125 - 972*sqrt(15)*I*k1*k3/15625 - 3*sqrt(30)*I*k1*retarded_laplace**2/25 - 162*sqrt(2)*k1*retarded_laplace/625 - 162*sqrt(30)*k2**3/3125 - 162*sqrt(30)*k2*k3**2/3125 - 972*sqrt(15)*k2*k3/15625 - 3*sqrt(30)*k2*retarded_laplace**2/25 + 162*sqrt(2)*I*k2*retarded_laplace/625"
+            ],
+            [
+              2,
+              0,
+              "-162*sqrt(30)*I*k1**3/3125 + 162*sqrt(30)*k1**2*k2/3125 - 162*sqrt(30)*I*k1*k2**2/3125 - 162*sqrt(30)*I*k1*k3**2/3125 + 972*sqrt(15)*I*k1*k3/15625 - 3*sqrt(30)*I*k1*retarded_laplace**2/25 - 162*sqrt(2)*k1*retarded_laplace/625 + 162*sqrt(30)*k2**3/3125 + 162*sqrt(30)*k2*k3**2/3125 - 972*sqrt(15)*k2*k3/15625 + 3*sqrt(30)*k2*retarded_laplace**2/25 - 162*sqrt(2)*I*k2*retarded_laplace/625"
+            ],
+            [
+              2,
+              1,
+              "-972*sqrt(15)*I*k3**2/15625 - 18*sqrt(15)*I*retarded_laplace**2/125"
+            ],
+            [
+              2,
+              2,
+              "162*sqrt(30)*I*k1**2*k3/3125 + 54*k1**2*retarded_laplace/125 + 162*sqrt(30)*I*k2**2*k3/3125 + 54*k2**2*retarded_laplace/125 + 162*sqrt(30)*I*k3**3/3125 + 54*k3**2*retarded_laplace/125 - 972*sqrt(15)*I*k3**2/15625 + 3*sqrt(30)*I*k3*retarded_laplace**2/25 + retarded_laplace**3 - 18*sqrt(15)*I*retarded_laplace**2/125"
+            ],
+            [
+              2,
+              3,
+              "-972*sqrt(15)*I*k1*k3/15625 - 162*sqrt(2)*k1*retarded_laplace/625 - 972*sqrt(15)*k2*k3/15625 + 162*sqrt(2)*I*k2*retarded_laplace/625"
+            ],
+            [
+              3,
+              0,
+              "972*sqrt(15)*I*k1**2/15625 - 1944*sqrt(15)*k1*k2/15625 - 972*sqrt(15)*I*k2**2/15625"
+            ],
+            [
+              3,
+              1,
+              "-162*sqrt(30)*I*k1**3/3125 + 162*sqrt(30)*k1**2*k2/3125 - 162*sqrt(30)*I*k1*k2**2/3125 - 162*sqrt(30)*I*k1*k3**2/3125 - 972*sqrt(15)*I*k1*k3/15625 - 3*sqrt(30)*I*k1*retarded_laplace**2/25 - 162*sqrt(2)*k1*retarded_laplace/625 + 162*sqrt(30)*k2**3/3125 + 162*sqrt(30)*k2*k3**2/3125 + 972*sqrt(15)*k2*k3/15625 + 3*sqrt(30)*k2*retarded_laplace**2/25 - 162*sqrt(2)*I*k2*retarded_laplace/625"
+            ],
+            [
+              3,
+              2,
+              "-972*sqrt(15)*I*k1*k3/15625 - 162*sqrt(2)*k1*retarded_laplace/625 + 972*sqrt(15)*k2*k3/15625 - 162*sqrt(2)*I*k2*retarded_laplace/625"
+            ],
+            [
+              3,
+              3,
+              "162*sqrt(30)*I*k1**2*k3/3125 + 54*k1**2*retarded_laplace/125 - 972*sqrt(15)*I*k1**2/15625 + 162*sqrt(30)*I*k2**2*k3/3125 + 54*k2**2*retarded_laplace/125 - 972*sqrt(15)*I*k2**2/15625 + 162*sqrt(30)*I*k3**3/3125 + 54*k3**2*retarded_laplace/125 + 3*sqrt(30)*I*k3*retarded_laplace**2/25 + 324*sqrt(2)*k3*retarded_laplace/625 + retarded_laplace**3 - 36*sqrt(15)*I*retarded_laplace**2/125"
+            ]
+          ]
+        },
+        "denominator": "2916*k1**4/15625 + 5832*k1**2*k2**2/15625 + 5832*k1**2*k3**2/15625 + 108*k1**2*retarded_laplace**2/125 - 1944*sqrt(15)*I*k1**2*retarded_laplace/15625 + 2916*k2**4/15625 + 5832*k2**2*k3**2/15625 + 108*k2**2*retarded_laplace**2/125 - 1944*sqrt(15)*I*k2**2*retarded_laplace/15625 + 2916*k3**4/15625 + 108*k3**2*retarded_laplace**2/125 - 1944*sqrt(15)*I*k3**2*retarded_laplace/15625 + retarded_laplace**4 - 36*sqrt(15)*I*retarded_laplace**3/125"
+      },
+      {
+        "generator": {
+          "shape": [
+            2,
+            2
+          ],
+          "entries": [
+            [
+              0,
+              0,
+              "-3*sqrt(30)*I*k3/25 - 27*sqrt(15)*I/125"
+            ],
+            [
+              0,
+              1,
+              "-3*sqrt(30)*I*k1/25 - 3*sqrt(30)*k2/25"
+            ],
+            [
+              1,
+              0,
+              "-3*sqrt(30)*I*k1/25 + 3*sqrt(30)*k2/25"
+            ],
+            [
+              1,
+              1,
+              "3*sqrt(30)*I*k3/25 - 27*sqrt(15)*I/125"
+            ]
+          ]
+        },
+        "numerator": {
+          "shape": [
+            2,
+            2
+          ],
+          "entries": [
+            [
+              0,
+              0,
+              "-3*sqrt(30)*I*k3/25 + retarded_laplace + 27*sqrt(15)*I/125"
+            ],
+            [
+              0,
+              1,
+              "-3*sqrt(30)*I*k1/25 - 3*sqrt(30)*k2/25"
+            ],
+            [
+              1,
+              0,
+              "-3*sqrt(30)*I*k1/25 + 3*sqrt(30)*k2/25"
+            ],
+            [
+              1,
+              1,
+              "3*sqrt(30)*I*k3/25 + retarded_laplace + 27*sqrt(15)*I/125"
+            ]
+          ]
+        },
+        "denominator": "54*k1**2/125 + 54*k2**2/125 + 54*k3**2/125 + retarded_laplace**2 + 54*sqrt(15)*I*retarded_laplace/125 - 2187/3125"
+      },
+      {
+        "generator": {
+          "shape": [
+            4,
+            4
+          ],
+          "entries": [
+            [
+              0,
+              0,
+              "-3*sqrt(30)*I*k3/25 - 36*sqrt(15)*I/125"
+            ],
+            [
+              0,
+              2,
+              "-3*sqrt(30)*I*k1/25 - 3*sqrt(30)*k2/25"
+            ],
+            [
+              1,
+              1,
+              "-3*sqrt(30)*I*k3/25 - 18*sqrt(15)*I/125"
+            ],
+            [
+              1,
+              2,
+              "-18*sqrt(15)*I/125"
+            ],
+            [
+              1,
+              3,
+              "-3*sqrt(30)*I*k1/25 - 3*sqrt(30)*k2/25"
+            ],
+            [
+              2,
+              0,
+              "-3*sqrt(30)*I*k1/25 + 3*sqrt(30)*k2/25"
+            ],
+            [
+              2,
+              1,
+              "-18*sqrt(15)*I/125"
+            ],
+            [
+              2,
+              2,
+              "3*sqrt(30)*I*k3/25 - 18*sqrt(15)*I/125"
+            ],
+            [
+              3,
+              1,
+              "-3*sqrt(30)*I*k1/25 + 3*sqrt(30)*k2/25"
+            ],
+            [
+              3,
+              3,
+              "3*sqrt(30)*I*k3/25 - 36*sqrt(15)*I/125"
+            ]
+          ]
+        },
+        "numerator": {
+          "shape": [
+            4,
+            4
+          ],
+          "entries": [
+            [
+              0,
+              0,
+              "-162*sqrt(30)*I*k1**2*k3/3125 + 54*k1**2*retarded_laplace/125 + 972*sqrt(15)*I*k1**2/15625 - 162*sqrt(30)*I*k2**2*k3/3125 + 54*k2**2*retarded_laplace/125 + 972*sqrt(15)*I*k2**2/15625 - 162*sqrt(30)*I*k3**3/3125 + 54*k3**2*retarded_laplace/125 + 1944*sqrt(15)*I*k3**2/15625 - 3*sqrt(30)*I*k3*retarded_laplace**2/25 + 324*sqrt(2)*k3*retarded_laplace/625 + retarded_laplace**3 + 72*sqrt(15)*I*retarded_laplace**2/125 - 3888*retarded_laplace/3125"
+            ],
+            [
+              0,
+              1,
+              "972*sqrt(15)*I*k1*k3/15625 - 162*sqrt(2)*k1*retarded_laplace/625 - 5832*sqrt(30)*I*k1/78125 + 972*sqrt(15)*k2*k3/15625 + 162*sqrt(2)*I*k2*retarded_laplace/625 - 5832*sqrt(30)*k2/78125"
+            ],
+            [
+              0,
+              2,
+              "-162*sqrt(30)*I*k1**3/3125 - 162*sqrt(30)*k1**2*k2/3125 - 162*sqrt(30)*I*k1*k2**2/3125 - 162*sqrt(30)*I*k1*k3**2/3125 + 972*sqrt(15)*I*k1*k3/15625 - 3*sqrt(30)*I*k1*retarded_laplace**2/25 + 486*sqrt(2)*k1*retarded_laplace/625 + 5832*sqrt(30)*I*k1/78125 - 162*sqrt(30)*k2**3/3125 - 162*sqrt(30)*k2*k3**2/3125 + 972*sqrt(15)*k2*k3/15625 - 3*sqrt(30)*k2*retarded_laplace**2/25 - 486*sqrt(2)*I*k2*retarded_laplace/625 + 5832*sqrt(30)*k2/78125"
+            ],
+            [
+              0,
+              3,
+              "972*sqrt(15)*I*k1**2/15625 + 1944*sqrt(15)*k1*k2/15625 - 972*sqrt(15)*I*k2**2/15625"
+            ],
+            [
+              1,
+              0,
+              "972*sqrt(15)*I*k1*k3/15625 - 162*sqrt(2)*k1*retarded_laplace/625 - 5832*sqrt(30)*I*k1/78125 - 972*sqrt(15)*k2*k3/15625 - 162*sqrt(2)*I*k2*retarded_laplace/625 + 5832*sqrt(30)*k2/78125"
+            ],
+            [
+              1,
+              1,
+              "-162*sqrt(30)*I*k1**2*k3/3125 + 54*k1**2*retarded_laplace/125 + 1944*sqrt(15)*I*k1**2/15625 - 162*sqrt(30)*I*k2**2*k3/3125 + 54*k2**2*retarded_laplace/125 + 1944*sqrt(15)*I*k2**2/15625 - 162*sqrt(30)*I*k3**3/3125 + 54*k3**2*retarded_laplace/125 + 972*sqrt(15)*I*k3**2/15625 - 3*sqrt(30)*I*k3*retarded_laplace**2/25 + 648*sqrt(2)*k3*retarded_laplace/625 + 11664*sqrt(30)*I*k3/78125 + retarded_laplace**3 + 18*sqrt(15)*I*retarded_laplace**2/25 - 7776*retarded_laplace/3125 - 69984*sqrt(15)*I/390625"
+            ],
+            [
+              1,
+              2,
+              "-972*sqrt(15)*I*k3**2/15625 - 18*sqrt(15)*I*retarded_laplace**2/125 + 3888*retarded_laplace/3125 + 69984*sqrt(15)*I/390625"
+            ],
+            [
+              1,
+              3,
+              "-162*sqrt(30)*I*k1**3/3125 - 162*sqrt(30)*k1**2*k2/3125 - 162*sqrt(30)*I*k1*k2**2/3125 - 162*sqrt(30)*I*k1*k3**2/3125 - 972*sqrt(15)*I*k1*k3/15625 - 3*sqrt(30)*I*k1*retarded_laplace**2/25 + 486*sqrt(2)*k1*retarded_laplace/625 + 5832*sqrt(30)*I*k1/78125 - 162*sqrt(30)*k2**3/3125 - 162*sqrt(30)*k2*k3**2/3125 - 972*sqrt(15)*k2*k3/15625 - 3*sqrt(30)*k2*retarded_laplace**2/25 - 486*sqrt(2)*I*k2*retarded_laplace/625 + 5832*sqrt(30)*k2/78125"
+            ],
+            [
+              2,
+              0,
+              "-162*sqrt(30)*I*k1**3/3125 + 162*sqrt(30)*k1**2*k2/3125 - 162*sqrt(30)*I*k1*k2**2/3125 - 162*sqrt(30)*I*k1*k3**2/3125 + 972*sqrt(15)*I*k1*k3/15625 - 3*sqrt(30)*I*k1*retarded_laplace**2/25 + 486*sqrt(2)*k1*retarded_laplace/625 + 5832*sqrt(30)*I*k1/78125 + 162*sqrt(30)*k2**3/3125 + 162*sqrt(30)*k2*k3**2/3125 - 972*sqrt(15)*k2*k3/15625 + 3*sqrt(30)*k2*retarded_laplace**2/25 + 486*sqrt(2)*I*k2*retarded_laplace/625 - 5832*sqrt(30)*k2/78125"
+            ],
+            [
+              2,
+              1,
+              "-972*sqrt(15)*I*k3**2/15625 - 18*sqrt(15)*I*retarded_laplace**2/125 + 3888*retarded_laplace/3125 + 69984*sqrt(15)*I/390625"
+            ],
+            [
+              2,
+              2,
+              "162*sqrt(30)*I*k1**2*k3/3125 + 54*k1**2*retarded_laplace/125 + 1944*sqrt(15)*I*k1**2/15625 + 162*sqrt(30)*I*k2**2*k3/3125 + 54*k2**2*retarded_laplace/125 + 1944*sqrt(15)*I*k2**2/15625 + 162*sqrt(30)*I*k3**3/3125 + 54*k3**2*retarded_laplace/125 + 972*sqrt(15)*I*k3**2/15625 + 3*sqrt(30)*I*k3*retarded_laplace**2/25 - 648*sqrt(2)*k3*retarded_laplace/625 - 11664*sqrt(30)*I*k3/78125 + retarded_laplace**3 + 18*sqrt(15)*I*retarded_laplace**2/25 - 7776*retarded_laplace/3125 - 69984*sqrt(15)*I/390625"
+            ],
+            [
+              2,
+              3,
+              "-972*sqrt(15)*I*k1*k3/15625 - 162*sqrt(2)*k1*retarded_laplace/625 - 5832*sqrt(30)*I*k1/78125 - 972*sqrt(15)*k2*k3/15625 + 162*sqrt(2)*I*k2*retarded_laplace/625 - 5832*sqrt(30)*k2/78125"
+            ],
+            [
+              3,
+              0,
+              "972*sqrt(15)*I*k1**2/15625 - 1944*sqrt(15)*k1*k2/15625 - 972*sqrt(15)*I*k2**2/15625"
+            ],
+            [
+              3,
+              1,
+              "-162*sqrt(30)*I*k1**3/3125 + 162*sqrt(30)*k1**2*k2/3125 - 162*sqrt(30)*I*k1*k2**2/3125 - 162*sqrt(30)*I*k1*k3**2/3125 - 972*sqrt(15)*I*k1*k3/15625 - 3*sqrt(30)*I*k1*retarded_laplace**2/25 + 486*sqrt(2)*k1*retarded_laplace/625 + 5832*sqrt(30)*I*k1/78125 + 162*sqrt(30)*k2**3/3125 + 162*sqrt(30)*k2*k3**2/3125 + 972*sqrt(15)*k2*k3/15625 + 3*sqrt(30)*k2*retarded_laplace**2/25 + 486*sqrt(2)*I*k2*retarded_laplace/625 - 5832*sqrt(30)*k2/78125"
+            ],
+            [
+              3,
+              2,
+              "-972*sqrt(15)*I*k1*k3/15625 - 162*sqrt(2)*k1*retarded_laplace/625 - 5832*sqrt(30)*I*k1/78125 + 972*sqrt(15)*k2*k3/15625 - 162*sqrt(2)*I*k2*retarded_laplace/625 + 5832*sqrt(30)*k2/78125"
+            ],
+            [
+              3,
+              3,
+              "162*sqrt(30)*I*k1**2*k3/3125 + 54*k1**2*retarded_laplace/125 + 972*sqrt(15)*I*k1**2/15625 + 162*sqrt(30)*I*k2**2*k3/3125 + 54*k2**2*retarded_laplace/125 + 972*sqrt(15)*I*k2**2/15625 + 162*sqrt(30)*I*k3**3/3125 + 54*k3**2*retarded_laplace/125 + 1944*sqrt(15)*I*k3**2/15625 + 3*sqrt(30)*I*k3*retarded_laplace**2/25 - 324*sqrt(2)*k3*retarded_laplace/625 + retarded_laplace**3 + 72*sqrt(15)*I*retarded_laplace**2/125 - 3888*retarded_laplace/3125"
+            ]
+          ]
+        },
+        "denominator": "2916*k1**4/15625 + 5832*k1**2*k2**2/15625 + 5832*k1**2*k3**2/15625 + 108*k1**2*retarded_laplace**2/125 + 5832*sqrt(15)*I*k1**2*retarded_laplace/15625 - 209952*k1**2/390625 + 2916*k2**4/15625 + 5832*k2**2*k3**2/15625 + 108*k2**2*retarded_laplace**2/125 + 5832*sqrt(15)*I*k2**2*retarded_laplace/15625 - 209952*k2**2/390625 + 2916*k3**4/15625 + 108*k3**2*retarded_laplace**2/125 + 5832*sqrt(15)*I*k3**2*retarded_laplace/15625 - 209952*k3**2/390625 + retarded_laplace**4 + 108*sqrt(15)*I*retarded_laplace**3/125 - 11664*retarded_laplace**2/3125 - 139968*sqrt(15)*I*retarded_laplace/390625"
+      }
+    ],
+    "original_between_block_Yukawa": {
+      "shape": [
+        240,
+        240
+      ],
+      "entries": [
+        [
+          0,
+          136,
+          "-3*sqrt(30)*I/25"
+        ],
+        [
+          0,
+          140,
+          "3*sqrt(30)*I/25"
+        ],
+        [
+          1,
+          139,
+          "-3*sqrt(30)*I/25"
+        ],
+        [
+          1,
+          141,
+          "3*sqrt(30)*I/25"
+        ],
+        [
+          2,
+          136,
+          "-3*sqrt(30)*I/25"
+        ],
+        [
+          2,
+          140,
+          "-3*sqrt(30)*I/25"
+        ],
+        [
+          3,
+          137,
+          "-3*sqrt(30)*I/25"
+        ],
+        [
+          3,
+          138,
+          "-3*sqrt(30)*I/25"
+        ],
+        [
+          3,
+          142,
+          "-3*sqrt(30)*I/25"
+        ],
+        [
+          3,
+          144,
+          "-3*sqrt(30)*I/25"
+        ],
+        [
+          4,
+          139,
+          "-3*sqrt(30)*I/25"
+        ],
+        [
+          4,
+          141,
+          "-3*sqrt(30)*I/25"
+        ],
+        [
+          60,
+          196,
+          "-3*sqrt(30)*I/25"
+        ],
+        [
+          60,
+          200,
+          "3*sqrt(30)*I/25"
+        ],
+        [
+          61,
+          199,
+          "-3*sqrt(30)*I/25"
+        ],
+        [
+          61,
+          201,
+          "3*sqrt(30)*I/25"
+        ],
+        [
+          62,
+          196,
+          "-3*sqrt(30)*I/25"
+        ],
+        [
+          62,
+          200,
+          "-3*sqrt(30)*I/25"
+        ],
+        [
+          63,
+          197,
+          "-3*sqrt(30)*I/25"
+        ],
+        [
+          63,
+          198,
+          "-3*sqrt(30)*I/25"
+        ],
+        [
+          63,
+          202,
+          "-3*sqrt(30)*I/25"
+        ],
+        [
+          63,
+          204,
+          "-3*sqrt(30)*I/25"
+        ],
+        [
+          64,
+          199,
+          "-3*sqrt(30)*I/25"
+        ],
+        [
+          64,
+          201,
+          "-3*sqrt(30)*I/25"
+        ]
+      ]
+    },
+    "between_block_feed_count": 12,
+    "source_and_target_block_sets_disjoint": true,
+    "inverse": "R=R0+R0*N*R0; N*R0*N=0 by the actual disjoint source/target blocks",
+    "both_sides_checked": "Every diagonal leaf and every actual off-block polynomial numerator has both source identities; no path with two off-block feeds exists."
+  },
+  "scalar_inverse": {
+    "denominator": "3*sqrt(30)*k1**6/25 + 9*sqrt(30)*k1**4*k2**2/25 + 9*sqrt(30)*k1**4*k3**2/25 + 5*sqrt(30)*k1**4*retarded_laplace**2/6 - 423*sqrt(30)*k1**4/625 + 9*sqrt(30)*k1**2*k2**4/25 + 18*sqrt(30)*k1**2*k2**2*k3**2/25 + 5*sqrt(30)*k1**2*k2**2*retarded_laplace**2/3 - 846*sqrt(30)*k1**2*k2**2/625 + 9*sqrt(30)*k1**2*k3**4/25 + 5*sqrt(30)*k1**2*k3**2*retarded_laplace**2/3 - 846*sqrt(30)*k1**2*k3**2/625 + 625*sqrt(30)*k1**2*retarded_laplace**4/324 - 44*sqrt(30)*k1**2*retarded_laplace**2/15 + 70587*sqrt(30)*k1**2/62500 + 3*sqrt(30)*k2**6/25 + 9*sqrt(30)*k2**4*k3**2/25 + 5*sqrt(30)*k2**4*retarded_laplace**2/6 - 423*sqrt(30)*k2**4/625 + 9*sqrt(30)*k2**2*k3**4/25 + 5*sqrt(30)*k2**2*k3**2*retarded_laplace**2/3 - 846*sqrt(30)*k2**2*k3**2/625 + 625*sqrt(30)*k2**2*retarded_laplace**4/324 - 44*sqrt(30)*k2**2*retarded_laplace**2/15 + 70587*sqrt(30)*k2**2/62500 + 3*sqrt(30)*k3**6/25 + 5*sqrt(30)*k3**4*retarded_laplace**2/6 - 423*sqrt(30)*k3**4/625 + 625*sqrt(30)*k3**2*retarded_laplace**4/324 - 44*sqrt(30)*k3**2*retarded_laplace**2/15 + 70587*sqrt(30)*k3**2/62500 + 78125*sqrt(30)*retarded_laplace**6/52488 - 1025*sqrt(30)*retarded_laplace**4/324 + 6643*sqrt(30)*retarded_laplace**2/3000 - 15987*sqrt(30)/31250",
+    "exact_numerator_recipe": {
+      "Q": "Gram^-1*R.T*original_Green_numerator70*R/N",
+      "Gram": "R.T*R",
+      "L": "As[61:,:61]/N",
+      "blocks": [
+        [
+          "z*Q",
+          "-N*Q*Gram^-1"
+        ],
+        [
+          "N*L*Q",
+          "z*Gram*Q*Gram^-1"
+        ]
+      ],
+      "original_Green_and_R_source": "scalar_canonical_phase.json",
+      "computed_matrix_API": "SourceFullLinearRetarded.scalar_numerator"
+    },
+    "original70_Green_to_canonical122_both_sides_zero": true
+  },
+  "actual_source_maps": {
+    "dual_to_scalar": {
+      "shape": [
+        122,
+        480
+      ],
+      "entries": [
+        [
+          70,
+          120,
+          "-3*sqrt(30)/25"
+        ],
+        [
+          72,
+          122,
+          "3*sqrt(30)/25"
+        ],
+        [
+          74,
+          123,
+          "3*sqrt(30)/25"
+        ],
+        [
+          76,
+          124,
+          "3*sqrt(30)/25"
+        ],
+        [
+          79,
+          180,
+          "-3*sqrt(30)/25"
+        ],
+        [
+          81,
+          182,
+          "3*sqrt(30)/25"
+        ],
+        [
+          83,
+          183,
+          "3*sqrt(30)/25"
+        ],
+        [
+          85,
+          184,
+          "3*sqrt(30)/25"
+        ],
+        [
+          89,
+          126,
+          "-3*sqrt(30)/25"
+        ],
+        [
+          89,
+          185,
+          "3*sqrt(30)/25"
+        ],
+        [
+          99,
+          360,
+          "3*sqrt(30)/25"
+        ],
+        [
+          101,
+          362,
+          "-3*sqrt(30)/25"
+        ],
+        [
+          103,
+          363,
+          "-3*sqrt(30)/25"
+        ],
+        [
+          105,
+          364,
+          "-3*sqrt(30)/25"
+        ],
+        [
+          108,
+          420,
+          "3*sqrt(30)/25"
+        ],
+        [
+          110,
+          422,
+          "-3*sqrt(30)/25"
+        ],
+        [
+          112,
+          423,
+          "-3*sqrt(30)/25"
+        ],
+        [
+          114,
+          424,
+          "-3*sqrt(30)/25"
+        ],
+        [
+          118,
+          366,
+          "3*sqrt(30)/25"
+        ],
+        [
+          118,
+          425,
+          "-3*sqrt(30)/25"
+        ]
+      ]
+    },
+    "scalar_to_primal": {
+      "shape": [
+        480,
+        122
+      ],
+      "entries": [
+        [
+          0,
+          38,
+          "-3*sqrt(30)/25"
+        ],
+        [
+          2,
+          40,
+          "3*sqrt(30)/25"
+        ],
+        [
+          3,
+          42,
+          "3*sqrt(30)/25"
+        ],
+        [
+          4,
+          44,
+          "3*sqrt(30)/25"
+        ],
+        [
+          6,
+          57,
+          "-3*sqrt(30)/25"
+        ],
+        [
+          60,
+          47,
+          "-3*sqrt(30)/25"
+        ],
+        [
+          62,
+          49,
+          "3*sqrt(30)/25"
+        ],
+        [
+          63,
+          51,
+          "3*sqrt(30)/25"
+        ],
+        [
+          64,
+          53,
+          "3*sqrt(30)/25"
+        ],
+        [
+          65,
+          57,
+          "3*sqrt(30)/25"
+        ],
+        [
+          240,
+          9,
+          "3*sqrt(30)/25"
+        ],
+        [
+          242,
+          11,
+          "-3*sqrt(30)/25"
+        ],
+        [
+          243,
+          13,
+          "-3*sqrt(30)/25"
+        ],
+        [
+          244,
+          15,
+          "-3*sqrt(30)/25"
+        ],
+        [
+          246,
+          28,
+          "3*sqrt(30)/25"
+        ],
+        [
+          300,
+          18,
+          "3*sqrt(30)/25"
+        ],
+        [
+          302,
+          20,
+          "-3*sqrt(30)/25"
+        ],
+        [
+          303,
+          22,
+          "-3*sqrt(30)/25"
+        ],
+        [
+          304,
+          24,
+          "-3*sqrt(30)/25"
+        ],
+        [
+          305,
+          28,
+          "-3*sqrt(30)/25"
+        ]
+      ]
+    }
+  },
+  "whole_inverse": [
+    [
+      "Rd",
+      "0",
+      "0"
+    ],
+    [
+      "Rs*B*Rd",
+      "Rs",
+      "0"
+    ],
+    [
+      "Rp*C*Rs*B*Rd",
+      "Rp*C*Rs",
+      "Rp"
+    ]
+  ],
+  "whole_two_sided_identity": "Source diagonal polynomial identities and the two actual lower off-blocks give (zI-A)R=R(zI-A)=I1082; every path of three off-block edges is absent.",
+  "retarded_time": {
+    "initial": "E(0)=I1082",
+    "equation": "(partial_t-A(k))*Theta(t)*E(t,k)=delta(t)*I1082",
+    "construction": "E=exp(t*A), with actual finite source coefficients; equivalently diagonal flows plus one and two ordered Duhamel integrals.",
+    "full_forcing_consumer": "u(t)=E(t)u0+integral_0^t E(t-s)f(s)ds; public resolvent_action handles arbitrary full1082 forcing",
+    "convergence": "Finite matrix exponential is entire. The source comparison bounds pay the retarded Laplace transform on Re(z)>beta."
+  },
+  "global_bounds": {
+    "matter": {
+      "dual": {
+        "all_three_Fourier_principals_skew_Hermitian": true,
+        "Hermitian_constant_max_absolute_row_sum": "6*sqrt(30)/25",
+        "uniform_all_real_momentum_flow_bound": "exp(alpha*abs(t))"
+      },
+      "primal": {
+        "all_three_Fourier_principals_skew_Hermitian": true,
+        "Hermitian_constant_max_absolute_row_sum": "6*sqrt(30)/25",
+        "uniform_all_real_momentum_flow_bound": "exp(alpha*abs(t))"
+      }
+    },
+    "alpha": "6*sqrt(30)/25",
+    "beta": "153*sqrt(30)/625",
+    "scalar_C": "4*sqrt(45*sqrt(2) + 177)/5",
+    "B_norm_bound": "6*sqrt(15)/25",
+    "C_norm_bound": "6*sqrt(15)/25",
+    "beta_minus_alpha": "3*sqrt(30)/625",
+    "scalar_bound_m": "m(k)=scalar_C*sqrt(1+|k|^2)",
+    "time_bound": "||E(t,k)|| <= exp(beta*abs(t))*(2+m+m*(b+c)*abs(t)+m*b*c*t^2/2)",
+    "proof": "Hermitian-part differential inequality gives the two matter bounds. The same source scalar122 uses its certified comparison energy. One and two ordered Duhamel integrations give |t| and |t|^2/2, respectively.",
+    "safe_half_plane": "Re(z)>beta for the complete1082 tail, every real k, without a momentum cutoff",
+    "active289_or_active126_uniform_beta_claimed": false,
+    "resolvent_bound": "dD=1/(Re(z)-alpha); dS=m/(Re(z)-beta); ||R|| <= 2*dD+dS+dS*b*dD+dD*c*dS+dD*c*dS*b*dD",
+    "Laplace_identity": "Absolute convergence and integration by parts give integral_0^infty exp(-z*t) E(t,k) dt=(zI-A(k))^-1.",
+    "proper_clock_beta": "51/25",
+    "comparison_norm_is_physical_Hilbert_normalization": false
+  },
+  "physical_phase_restoration": {
+    "frequency": "18*sqrt(15)/125",
+    "primal_complement_rates": [
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "-3",
+      "-3",
+      "-3",
+      "-3",
+      "-3",
+      "-3",
+      "-3",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-3",
+      "-3",
+      "-3",
+      "-3",
+      "-3",
+      "-3",
+      "-3",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1"
+    ],
+    "dual_complement_rates": [
+      "3",
+      "3",
+      "3",
+      "3",
+      "3",
+      "3",
+      "3",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "3",
+      "3",
+      "3",
+      "3",
+      "3",
+      "3",
+      "3",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1",
+      "-1"
+    ],
+    "dual_kinetic_pairing_identity": "Dd*E+E*Dp=0",
+    "stationary_density_identity": "Kstat=Koriginal+i*frequency*E*Dp",
+    "same_index_dual_equals_minus_primal_negative_control": true,
+    "rotation": "R_r(t)=[[cos(frequency*r*t),-sin(frequency*r*t)],[sin(frequency*r*t),cos(frequency*r*t)]], coordinatewise",
+    "original_retarded": "R(t)*Theta(t-s)*exp((t-s)Astat(k))*R(s)^-1; R=diag(R_dual,I122,R_primal)",
+    "original_generator": "Rprime*R^-1+R*Astat*R^-1",
+    "original_time_delta_initial_value": "R(s)*I1082*R(s)^-1=I1082",
+    "orthogonal_endpoint_rotations_preserve_bounds": true,
+    "time_reparametrized": false,
+    "proper_clock": "tau=N*t; no independently chosen clock or leg normalization",
+    "stationary_Laplace_poles_identified_with_composite_measure": false
+  },
+  "actual_two_stage_time_consumer": {
+    "momentum": [
+      "-3*sqrt(2)/8",
+      "0",
+      "3*sqrt(2)/4"
+    ],
+    "dual_initial_coordinate": 360,
+    "primal_reader_coordinate": 0,
+    "exact_invariant_time_state_dimension": 24,
+    "state_embedding_source_indices": [
+      16,
+      20,
+      76,
+      80,
+      120,
+      180,
+      256,
+      260,
+      316,
+      320,
+      360,
+      420,
+      489,
+      498,
+      518,
+      527,
+      550,
+      559,
+      579,
+      588,
+      602,
+      662,
+      842,
+      902
+    ],
+    "state_generator": {
+      "shape": [
+        24,
+        24
+      ],
+      "entries": [
+        [
+          0,
+          0,
+          "-9*sqrt(15)*I/50"
+        ],
+        [
+          0,
+          2,
+          "9*sqrt(15)*I/100"
+        ],
+        [
+          0,
+          6,
+          "-27*sqrt(15)/125"
+        ],
+        [
+          0,
+          10,
+          "3*sqrt(30)/25"
+        ],
+        [
+          1,
+          1,
+          "-9*sqrt(15)*I/50"
+        ],
+        [
+          1,
+          3,
+          "9*sqrt(15)*I/100"
+        ],
+        [
+          1,
+          7,
+          "-27*sqrt(15)/125"
+        ],
+        [
+          1,
+          10,
+          "-3*sqrt(30)/25"
+        ],
+        [
+          2,
+          0,
+          "9*sqrt(15)*I/100"
+        ],
+        [
+          2,
+          2,
+          "9*sqrt(15)*I/50"
+        ],
+        [
+          2,
+          8,
+          "-27*sqrt(15)/125"
+        ],
+        [
+          2,
+          11,
+          "3*sqrt(30)/25"
+        ],
+        [
+          3,
+          1,
+          "9*sqrt(15)*I/100"
+        ],
+        [
+          3,
+          3,
+          "9*sqrt(15)*I/50"
+        ],
+        [
+          3,
+          9,
+          "-27*sqrt(15)/125"
+        ],
+        [
+          3,
+          11,
+          "-3*sqrt(30)/25"
+        ],
+        [
+          4,
+          4,
+          "9*sqrt(15)*I/50"
+        ],
+        [
+          4,
+          5,
+          "-9*sqrt(15)*I/100"
+        ],
+        [
+          4,
+          10,
+          "63*sqrt(15)/125"
+        ],
+        [
+          5,
+          4,
+          "-9*sqrt(15)*I/100"
+        ],
+        [
+          5,
+          5,
+          "-9*sqrt(15)*I/50"
+        ],
+        [
+          5,
+          11,
+          "63*sqrt(15)/125"
+        ],
+        [
+          6,
+          0,
+          "27*sqrt(15)/125"
+        ],
+        [
+          6,
+          4,
+          "-3*sqrt(30)/25"
+        ],
+        [
+          6,
+          6,
+          "-9*sqrt(15)*I/50"
+        ],
+        [
+          6,
+          8,
+          "9*sqrt(15)*I/100"
+        ],
+        [
+          7,
+          1,
+          "27*sqrt(15)/125"
+        ],
+        [
+          7,
+          4,
+          "3*sqrt(30)/25"
+        ],
+        [
+          7,
+          7,
+          "-9*sqrt(15)*I/50"
+        ],
+        [
+          7,
+          9,
+          "9*sqrt(15)*I/100"
+        ],
+        [
+          8,
+          2,
+          "27*sqrt(15)/125"
+        ],
+        [
+          8,
+          5,
+          "-3*sqrt(30)/25"
+        ],
+        [
+          8,
+          6,
+          "9*sqrt(15)*I/100"
+        ],
+        [
+          8,
+          8,
+          "9*sqrt(15)*I/50"
+        ],
+        [
+          9,
+          3,
+          "27*sqrt(15)/125"
+        ],
+        [
+          9,
+          5,
+          "3*sqrt(30)/25"
+        ],
+        [
+          9,
+          7,
+          "9*sqrt(15)*I/100"
+        ],
+        [
+          9,
+          9,
+          "9*sqrt(15)*I/50"
+        ],
+        [
+          10,
+          4,
+          "-63*sqrt(15)/125"
+        ],
+        [
+          10,
+          10,
+          "9*sqrt(15)*I/50"
+        ],
+        [
+          10,
+          11,
+          "-9*sqrt(15)*I/100"
+        ],
+        [
+          11,
+          5,
+          "-63*sqrt(15)/125"
+        ],
+        [
+          11,
+          10,
+          "-9*sqrt(15)*I/100"
+        ],
+        [
+          11,
+          11,
+          "-9*sqrt(15)*I/50"
+        ],
+        [
+          12,
+          16,
+          "-3*sqrt(30)/25"
+        ],
+        [
+          13,
+          17,
+          "-3*sqrt(30)/25"
+        ],
+        [
+          14,
+          18,
+          "-3*sqrt(30)/25"
+        ],
+        [
+          15,
+          19,
+          "-3*sqrt(30)/25"
+        ],
+        [
+          16,
+          4,
+          "-3*sqrt(30)/25"
+        ],
+        [
+          16,
+          12,
+          "-129*sqrt(30)/20000"
+        ],
+        [
+          16,
+          14,
+          "27*sqrt(30)*I/250"
+        ],
+        [
+          16,
+          15,
+          "-27*sqrt(30)*I/500"
+        ],
+        [
+          17,
+          5,
+          "-3*sqrt(30)/25"
+        ],
+        [
+          17,
+          13,
+          "-129*sqrt(30)/20000"
+        ],
+        [
+          17,
+          14,
+          "-27*sqrt(30)*I/500"
+        ],
+        [
+          17,
+          15,
+          "-27*sqrt(30)*I/250"
+        ],
+        [
+          18,
+          10,
+          "3*sqrt(30)/25"
+        ],
+        [
+          18,
+          12,
+          "-27*sqrt(30)*I/250"
+        ],
+        [
+          18,
+          13,
+          "27*sqrt(30)*I/500"
+        ],
+        [
+          18,
+          14,
+          "-129*sqrt(30)/20000"
+        ],
+        [
+          19,
+          11,
+          "3*sqrt(30)/25"
+        ],
+        [
+          19,
+          12,
+          "27*sqrt(30)*I/500"
+        ],
+        [
+          19,
+          13,
+          "27*sqrt(30)*I/250"
+        ],
+        [
+          19,
+          15,
+          "-129*sqrt(30)/20000"
+        ],
+        [
+          20,
+          14,
+          "-3*sqrt(30)/25"
+        ],
+        [
+          20,
+          20,
+          "9*sqrt(15)*I/50"
+        ],
+        [
+          20,
+          21,
+          "-9*sqrt(15)*I/100"
+        ],
+        [
+          20,
+          22,
+          "-63*sqrt(15)/125"
+        ],
+        [
+          21,
+          15,
+          "-3*sqrt(30)/25"
+        ],
+        [
+          21,
+          20,
+          "-9*sqrt(15)*I/100"
+        ],
+        [
+          21,
+          21,
+          "-9*sqrt(15)*I/50"
+        ],
+        [
+          21,
+          23,
+          "-63*sqrt(15)/125"
+        ],
+        [
+          22,
+          12,
+          "3*sqrt(30)/25"
+        ],
+        [
+          22,
+          20,
+          "63*sqrt(15)/125"
+        ],
+        [
+          22,
+          22,
+          "9*sqrt(15)*I/50"
+        ],
+        [
+          22,
+          23,
+          "-9*sqrt(15)*I/100"
+        ],
+        [
+          23,
+          13,
+          "3*sqrt(30)/25"
+        ],
+        [
+          23,
+          21,
+          "63*sqrt(15)/125"
+        ],
+        [
+          23,
+          22,
+          "-9*sqrt(15)*I/100"
+        ],
+        [
+          23,
+          23,
+          "-9*sqrt(15)*I/50"
+        ]
+      ]
+    },
+    "state_initial": {
+      "shape": [
+        24,
+        1
+      ],
+      "entries": [
+        [
+          10,
+          0,
+          "1"
+        ]
+      ]
+    },
+    "all_time_source_solution": "u(t)=injection*exp(t*state_generator)*state_initial",
+    "all_time_identity_checked": "A*injection=injection*state_generator; injection*state_initial=original dual coordinate",
+    "two_hop_second_time_derivative_zero": true,
+    "two_hop_third_time_derivative": "162*sqrt(30)/3125",
+    "whole_two_hop_third_derivative": {
+      "shape": [
+        480,
+        480
+      ],
+      "entries": [
+        [
+          0,
+          360,
+          "162*sqrt(30)/3125"
+        ],
+        [
+          2,
+          362,
+          "162*sqrt(30)/3125"
+        ],
+        [
+          3,
+          363,
+          "162*sqrt(30)/3125"
+        ],
+        [
+          4,
+          364,
+          "162*sqrt(30)/3125"
+        ],
+        [
+          6,
+          366,
+          "162*sqrt(30)/3125"
+        ],
+        [
+          6,
+          425,
+          "-162*sqrt(30)/3125"
+        ],
+        [
+          60,
+          420,
+          "162*sqrt(30)/3125"
+        ],
+        [
+          62,
+          422,
+          "162*sqrt(30)/3125"
+        ],
+        [
+          63,
+          423,
+          "162*sqrt(30)/3125"
+        ],
+        [
+          64,
+          424,
+          "162*sqrt(30)/3125"
+        ],
+        [
+          65,
+          366,
+          "-162*sqrt(30)/3125"
+        ],
+        [
+          65,
+          425,
+          "162*sqrt(30)/3125"
+        ],
+        [
+          240,
+          120,
+          "162*sqrt(30)/3125"
+        ],
+        [
+          242,
+          122,
+          "162*sqrt(30)/3125"
+        ],
+        [
+          243,
+          123,
+          "162*sqrt(30)/3125"
+        ],
+        [
+          244,
+          124,
+          "162*sqrt(30)/3125"
+        ],
+        [
+          246,
+          126,
+          "162*sqrt(30)/3125"
+        ],
+        [
+          246,
+          185,
+          "-162*sqrt(30)/3125"
+        ],
+        [
+          300,
+          180,
+          "162*sqrt(30)/3125"
+        ],
+        [
+          302,
+          182,
+          "162*sqrt(30)/3125"
+        ],
+        [
+          303,
+          183,
+          "162*sqrt(30)/3125"
+        ],
+        [
+          304,
+          184,
+          "162*sqrt(30)/3125"
+        ],
+        [
+          305,
+          126,
+          "-162*sqrt(30)/3125"
+        ],
+        [
+          305,
+          185,
+          "162*sqrt(30)/3125"
+        ]
+      ]
+    },
+    "actual_safe_laplace": "2",
+    "whole1082_response": {
+      "shape": [
+        1082,
+        1
+      ],
+      "entries": [
+        [
+          16,
+          0,
+          "183451088175337002000*sqrt(30)/10189801223376685095841 - 157223646950400000000*sqrt(2)*I/10189801223376685095841"
+        ],
+        [
+          20,
+          0,
+          "-183451088175337002000*sqrt(30)/10189801223376685095841 + 157223646950400000000*sqrt(2)*I/10189801223376685095841"
+        ],
+        [
+          76,
+          0,
+          "78611823475200000000*sqrt(2)*I/10189801223376685095841"
+        ],
+        [
+          80,
+          0,
+          "-78611823475200000000*sqrt(2)*I/10189801223376685095841"
+        ],
+        [
+          120,
+          0,
+          "9075452400*sqrt(15)/153998658769 + 13608000000*I/153998658769"
+        ],
+        [
+          180,
+          0,
+          "-6804000000*I/153998658769"
+        ],
+        [
+          256,
+          0,
+          "-315212478555168000000*sqrt(2)/10189801223376685095841 - 42635974714912800000*sqrt(30)*I/10189801223376685095841"
+        ],
+        [
+          260,
+          0,
+          "315212478555168000000*sqrt(2)/10189801223376685095841 + 42635974714912800000*sqrt(30)*I/10189801223376685095841"
+        ],
+        [
+          316,
+          0,
+          "21317987357456400000*sqrt(30)*I/10189801223376685095841"
+        ],
+        [
+          320,
+          0,
+          "-21317987357456400000*sqrt(30)*I/10189801223376685095841"
+        ],
+        [
+          360,
+          0,
+          "42088700000/153998658769 + 358767000*sqrt(15)*I/153998658769"
+        ],
+        [
+          420,
+          0,
+          "-179383500*sqrt(15)*I/153998658769"
+        ],
+        [
+          489,
+          0,
+          "38790054179933760000*sqrt(15)/6015889217240597521249 + 76118517504000000000*I/6015889217240597521249"
+        ],
+        [
+          498,
+          0,
+          "-38059258752000000000*I/6015889217240597521249"
+        ],
+        [
+          518,
+          0,
+          "-187910267456880000000/6015889217240597521249 + 2269942339888800000*sqrt(15)*I/6015889217240597521249"
+        ],
+        [
+          527,
+          0,
+          "-1134971169944400000*sqrt(15)*I/6015889217240597521249"
+        ],
+        [
+          550,
+          0,
+          "-323250451499448000000*sqrt(2)/6015889217240597521249 - 42288065280000000000*sqrt(30)*I/6015889217240597521249"
+        ],
+        [
+          559,
+          0,
+          "21144032640000000000*sqrt(30)*I/6015889217240597521249"
+        ],
+        [
+          579,
+          0,
+          "104394593031600000000*sqrt(30)/6015889217240597521249 - 18916186165740000000*sqrt(2)*I/6015889217240597521249"
+        ],
+        [
+          588,
+          0,
+          "9458093082870000000*sqrt(2)*I/6015889217240597521249"
+        ],
+        [
+          602,
+          0,
+          "472606216160286748957156800000*sqrt(30)/926438870757941289448491977682481 - 2244218325989098833504000000000*sqrt(2)*I/926438870757941289448491977682481"
+        ],
+        [
+          662,
+          0,
+          "1122109162994549416752000000000*sqrt(2)*I/926438870757941289448491977682481"
+        ],
+        [
+          842,
+          0,
+          "6016444821232151517043200000000*sqrt(2)/926438870757941289448491977682481 + 679265991947679706045440000000*sqrt(30)*I/926438870757941289448491977682481"
+        ],
+        [
+          902,
+          0,
+          "-339632995973839853022720000000*sqrt(30)*I/926438870757941289448491977682481"
+        ]
+      ]
+    },
+    "original_full_equation_backwrite": true,
+    "opposite_inverse_orientation_actual_all_three_block_data": true,
+    "small_state_is_exact_source_invariant_restriction_not_Galerkin": true
+  },
+  "literal_source_Cauchy_readback": {
+    "bosonic_rates_zero": true,
+    "primal_rate_is_original_H": true,
+    "all1500_rates_assumed_zero": false,
+    "actual_full_orbit_variation_identification_consumed": true,
+    "source_orbit_original_Euler_argument": [
+      "Every original matter coefficient has rd(row)+rp(column)=0. Thus every bilinear of the displayed matter orbit and any of its time/spatial jets is the same as its value at0; all coframe variations and their derivatives use the same checked coefficient span.",
+      "The original bosons and their jets are constant. Their1310 Euler rows, auxiliary equations and initial constraints at0 are already checked on the literal source. The preceding coefficient identity transports the bosonic equations and constraints for every real t.",
+      "The primal and independent-dual Euler equations factor by their invertible phase matrices. The original temporal derivatives give Kstationary=Koriginal+i*omega*E*Rp=Koriginal-i*omega*Rd*E, exactly the complete generator used by full_linear_split.",
+      "The explicit analytic orbit stays in the same source noncharacteristic chart. Local Cauchy uniqueness identifies it with the original constrained spacetime producer for its literal source initial data."
+    ],
+    "complete_stationary_Jacobi_bridge": "Transform perturbations by the same two phase matrices and differentiate the full original density. Its time derivative contributes the checked stationary shift; its remaining coefficients are time independent by the146 coefficient identities. The full1310 common carrier in source_full_linear_split is therefore the stationary representation of variation along this actual orbit."
+  },
+  "active289_canonical79_dual24_preserved": true,
+  "active126_phase_only_at_already_generated_momenta": [
+    {
+      "momentum": [
+        "0",
+        "0",
+        "0"
+      ],
+      "active_phase_dimension": 126,
+      "scalar_phase_dimension": 122,
+      "complete_matter_complement_real_phase_dimension": 960,
+      "full_phase_dimension": 1208,
+      "actual_tail_generator_shape": [
+        1082,
+        1082
+      ],
+      "actual_tail_generator_nonzero_entries": 1450,
+      "full_generator": "diag(original_retained_Hamiltonian_generator,actual_tail_generator)",
+      "characteristic_factorization": "det(lambda-A_full)=det(lambda-A_active)*det(lambda-A_dual_C)*det(lambda-A_scalar61)*det(lambda-A_primal_C)",
+      "scope": "The two already generated source momenta; no new uniform active-phase rank claim. At nonzero k this is a complex Fourier fiber of real fields, paired with its conjugate at -k; it is not the real dimension of an independent +/-k pair."
+    },
+    {
+      "momentum": [
+        "-3*sqrt(2)/8",
+        "0",
+        "3*sqrt(2)/4"
+      ],
+      "active_phase_dimension": 126,
+      "scalar_phase_dimension": 122,
+      "complete_matter_complement_real_phase_dimension": 960,
+      "full_phase_dimension": 1208,
+      "actual_tail_generator_shape": [
+        1082,
+        1082
+      ],
+      "actual_tail_generator_nonzero_entries": 3442,
+      "full_generator": "diag(original_retained_Hamiltonian_generator,actual_tail_generator)",
+      "characteristic_factorization": "det(lambda-A_full)=det(lambda-A_active)*det(lambda-A_dual_C)*det(lambda-A_scalar61)*det(lambda-A_primal_C)",
+      "scope": "The two already generated source momenta; no new uniform active-phase rank claim. At nonzero k this is a complex Fourier fiber of real fields, paired with its conjugate at -k; it is not the real dimension of an independent +/-k pair."
+    }
+  ],
+  "interacting_composite_spectral_measure_generated": false,
+  "lifetime_status": "SOURCE_NATIVE_DYNAMIC_MEASURE_REQUIRED",
+  "elapsed_seconds": 14.383
+}

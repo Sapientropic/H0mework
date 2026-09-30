@@ -1,0 +1,576 @@
+{
+  "verdict": "CERTIFIED_RAW_SOURCE_ALL61_SCALAR_GRADE_AND_ARBITRARY_N_CAR_WORD_CONSUMER",
+  "root": "positiveSmoothUnifiedSource; repaired Dirac-dual; SpinPair.actual; visit10/tick16/materialEntry -> tick17 unchanged",
+  "source_sha256": {
+    "Lean/SaturationMonoid/PhysicsCore/SU7ExteriorYukawaMassSpectrum.lean": "cc100f817041a1e8b33aadf909a4838756c32eb0f28a15ff138c5cd9a3db4813",
+    "Lean/SaturationMonoid/PhysicsCore/SU7ExteriorBreakingYukawa.lean": "f3d245e031380de7dacf16312b81665a11d2fd209dfd751652821e9638b74ce0",
+    "Lean/SaturationMonoid/PhysicsCore/SU7MotherLieAlgebra.lean": "acb8a102cb607e8736b25acd5e851f70b15fb53ec7cc6784362e1b0c2a95e7da",
+    "Lean/SaturationMonoid/PhysicsCore/SU7ExteriorMatterRepresentation.lean": "0b7cb7f6d4078d7f0a7347513bd98077bd18092f89b1c4c4ec3ee23ad84efbac",
+    "Lean/SaturationMonoid/PhysicsCore/SU7ExteriorMatterRestriction.lean": "b91ff6e8d6ea1e9e7e6220fec204288a946a8153913882d1f68eee489d403ed1",
+    "Lean/SaturationMonoid/PhysicsCore/StageNineDynamicBreakingVacuum.lean": "f79cd71ae67e1ee2b1b698f7a09a0130e742e4a471862165748277269e2027bf",
+    "Lean/SaturationMonoid/PhysicsCore/StageNineGlobalIntegratedAction.lean": "525d2672c446c94a9b528c4277efed582419fbcb31e8e28b533cba3ff0589497",
+    "Lean/SaturationMonoid/PhysicsCore/StageNineExteriorMotherLieRepresentation.lean": "444b0ef9ba42af3801ffc010996ac5feddfed8605f4ce9bb2fbe15fe2b562f7b",
+    "Lean/SaturationMonoid/PhysicsCore/StageNineFormNativeMotherAction.lean": "24104b817d0a663626c46388bfa5a2660441f90cbee77ea5a86495fd7d64e6a2",
+    "Lean/SaturationMonoid/PhysicsCore/Stage9C/Material/SpinPair/Parameters.lean": "eeecea0c096fbbf4c0090d301fb19ca70f22020c89a8ad279b70133b6b8f4bc3"
+  },
+  "input_sha256": {
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/scalar_dyson_fixed_N.json": "3a19455fe36b847a0a611bfd1b177517973ba16d86270e2f76263ec8aa195dc3",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/scalar_dyson_fixed_N.py": "0911a5073a69def25e0ec12a95e26d6300045ab18332ef6e65646200c0722176",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/scalar_canonical_phase.json": "99d91563d81013c7b7a6d4f08f29f0c6b49ab9a2b3defc04b9bedff07b422a2b",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/independent_scalar_canonical_phase.json": "91130ce07d229acf1e27b10d9e852aa05a4a550cf8846c25a70bfdee4f3be415",
+    "Verification/physics/low-energy-phenomenology/active-gauge/receipt.json": "93187af70fcb7d91c2d4424346ff35cc2d5f6b29534f3376ccc253ca089035d1",
+    "Verification/physics/low-energy-phenomenology/full-phase/receipt.json": "974c63e480b5202cdd00d77867ea0c4e03ba6cd370d5c927133382ee14387683",
+    "Verification/physics/low-energy-phenomenology/matter-vertices/receipt.json": "7708a972d5f9bc953d146f85891bca1f4a8e0a06264b3a03c40a170e377e3517",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/full-matter-ports.json": "ec7c849fc1b448c0e96b3f1cebfb67a9306a3330098c075f617229fb93ac2b85",
+    "Lean/SaturationMonoid/PhysicsCore/DiracCliffordRepresentation.lean": "26f790b7500cb6cc71ccbdf5a737b852e3519bc63afc983c897b2c1589d86c6b",
+    "Verification/physics/low-energy-phenomenology/exact_readout.py": "ee15e7ec6dae104f2c38050b4b6440267dd2f0d5220dcaf32aafbaddb94249b4",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/independent_spectral_splice.py": "9c6aad62415f16d655574bde766aa27d75343cb6d8d63d2464efb3e00ebb4dfd",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/FockRaising.lean": "a6ff3c6d0ecdf7576763fdf698b74d74931164b4ac8da9aed3282c64164afe05",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/FockRaisingTensor.lean": "ef6a33a6ce6929873b3b385feacfb790a4dfa0d45d3cb90c2908e3315aedbe59",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/fock_raising_audit.json": "3267f4332f69a03b0be3f18c2256ceefc3997d8bc04c14286c1893b87c910bf0",
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/independent_scalar_dyson_fixed_N.py": "6a76aec700c4e1174479709fa3f26b6be945b1e1eabb8d0ee1af8cc4eac59184"
+  },
+  "candidate_constructor_imported": false,
+  "MatterPorts_constructor_imported": false,
+  "algorithm": "raw Lean Clifford and source exterior/Yukawa/coframe density; reconstruct original scalar orbit; canonical E inverse times actual density V; complete support-grade and independent in/out momentum intertwining; direct exterior dGamma action plus determinant CAR coefficient",
+  "source_ports": [
+    {
+      "coordinate": 0,
+      "rank": 6,
+      "nonzero_entries": 12,
+      "original_W_equals_minus_i_Einverse_V": true,
+      "complete_Lambda2_to_Lambda6_factorization": true,
+      "all_entries_occupation_grade_plus_one": true
+    },
+    {
+      "coordinate": 1,
+      "rank": 6,
+      "nonzero_entries": 6,
+      "original_W_equals_minus_i_Einverse_V": true,
+      "complete_Lambda2_to_Lambda6_factorization": true,
+      "all_entries_occupation_grade_plus_one": true
+    },
+    {
+      "coordinate": 2,
+      "rank": 6,
+      "nonzero_entries": 6,
+      "original_W_equals_minus_i_Einverse_V": true,
+      "complete_Lambda2_to_Lambda6_factorization": true,
+      "all_entries_occupation_grade_plus_one": true
+    },
+    {
+      "coordinate": 3,
+      "rank": 6,
+      "nonzero_entries": 6,
+      "original_W_equals_minus_i_Einverse_V": true,
+      "complete_Lambda2_to_Lambda6_factorization": true,
+      "all_entries_occupation_grade_plus_one": true
+    },
+    {
+      "coordinate": 4,
+      "rank": 6,
+      "nonzero_entries": 6,
+      "original_W_equals_minus_i_Einverse_V": true,
+      "complete_Lambda2_to_Lambda6_factorization": true,
+      "all_entries_occupation_grade_plus_one": true
+    },
+    {
+      "coordinate": 5,
+      "rank": 6,
+      "nonzero_entries": 6,
+      "original_W_equals_minus_i_Einverse_V": true,
+      "complete_Lambda2_to_Lambda6_factorization": true,
+      "all_entries_occupation_grade_plus_one": true
+    },
+    {
+      "coordinate": 6,
+      "rank": 6,
+      "nonzero_entries": 6,
+      "original_W_equals_minus_i_Einverse_V": true,
+      "complete_Lambda2_to_Lambda6_factorization": true,
+      "all_entries_occupation_grade_plus_one": true
+    },
+    {
+      "coordinate": 7,
+      "rank": 6,
+      "nonzero_entries": 6,
+      "original_W_equals_minus_i_Einverse_V": true,
+      "complete_Lambda2_to_Lambda6_factorization": true,
+      "all_entries_occupation_grade_plus_one": true
+    },
+    {
+      "coordinate": 8,
+      "rank": 6,
+      "nonzero_entries": 6,
+      "original_W_equals_minus_i_Einverse_V": true,
+      "complete_Lambda2_to_Lambda6_factorization": true,
+      "all_entries_occupation_grade_plus_one": true
+    },
+    {
+      "coordinate": 9,
+      "rank": 6,
+      "nonzero_entries": 6,
+      "original_W_equals_minus_i_Einverse_V": true,
+      "complete_Lambda2_to_Lambda6_factorization": true,
+      "all_entries_occupation_grade_plus_one": true
+    },
+    {
+      "coordinate": 10,
+      "rank": 6,
+      "nonzero_entries": 6,
+      "original_W_equals_minus_i_Einverse_V": true,
+      "complete_Lambda2_to_Lambda6_factorization": true,
+      "all_entries_occupation_grade_plus_one": true
+    },
+    {
+      "coordinate": 11,
+      "rank": 6,
+      "nonzero_entries": 6,
+      "original_W_equals_minus_i_Einverse_V": true,
+      "complete_Lambda2_to_Lambda6_factorization": true,
+      "all_entries_occupation_grade_plus_one": true
+    },
+    {
+      "coordinate": 12,
+      "rank": 6,
+      "nonzero_entries": 12,
+      "original_W_equals_minus_i_Einverse_V": true,
+      "complete_Lambda2_to_Lambda6_factorization": true,
+      "all_entries_occupation_grade_plus_one": true
+    },
+    {
+      "coordinate": 13,
+      "rank": 6,
+      "nonzero_entries": 6,
+      "original_W_equals_minus_i_Einverse_V": true,
+      "complete_Lambda2_to_Lambda6_factorization": true,
+      "all_entries_occupation_grade_plus_one": true
+    },
+    {
+      "coordinate": 14,
+      "rank": 6,
+      "nonzero_entries": 6,
+      "original_W_equals_minus_i_Einverse_V": true,
+      "complete_Lambda2_to_Lambda6_factorization": true,
+      "all_entries_occupation_grade_plus_one": true
+    },
+    {
+      "coordinate": 15,
+      "rank": 6,
+      "nonzero_entries": 6,
+      "original_W_equals_minus_i_Einverse_V": true,
+      "complete_Lambda2_to_Lambda6_factorization": true,
+      "all_entries_occupation_grade_plus_one": true
+    },
+    {
+      "coordinate": 16,
+      "rank": 6,
+      "nonzero_entries": 6,
+      "original_W_equals_minus_i_Einverse_V": true,
+      "complete_Lambda2_to_Lambda6_factorization": true,
+      "all_entries_occupation_grade_plus_one": true
+    },
+    {
+      "coordinate": 17,
+      "rank": 6,
+      "nonzero_entries": 6,
+      "original_W_equals_minus_i_Einverse_V": true,
+      "complete_Lambda2_to_Lambda6_factorization": true,
+      "all_entries_occupation_grade_plus_one": true
+    },
+    {
+      "coordinate": 18,
+      "rank": 6,
+      "nonzero_entries": 6,
+      "original_W_equals_minus_i_Einverse_V": true,
+      "complete_Lambda2_to_Lambda6_factorization": true,
+      "all_entries_occupation_grade_plus_one": true
+    },
+    {
+      "coordinate": 19,
+      "rank": 6,
+      "nonzero_entries": 6,
+      "original_W_equals_minus_i_Einverse_V": true,
+      "complete_Lambda2_to_Lambda6_factorization": true,
+      "all_entries_occupation_grade_plus_one": true
+    },
+    {
+      "coordinate": 20,
+      "rank": 6,
+      "nonzero_entries": 6,
+      "original_W_equals_minus_i_Einverse_V": true,
+      "complete_Lambda2_to_Lambda6_factorization": true,
+      "all_entries_occupation_grade_plus_one": true
+    },
+    {
+      "coordinate": 21,
+      "rank": 6,
+      "nonzero_entries": 12,
+      "original_W_equals_minus_i_Einverse_V": true,
+      "complete_Lambda2_to_Lambda6_factorization": true,
+      "all_entries_occupation_grade_plus_one": true
+    },
+    {
+      "coordinate": 22,
+      "rank": 6,
+      "nonzero_entries": 6,
+      "original_W_equals_minus_i_Einverse_V": true,
+      "complete_Lambda2_to_Lambda6_factorization": true,
+      "all_entries_occupation_grade_plus_one": true
+    },
+    {
+      "coordinate": 23,
+      "rank": 6,
+      "nonzero_entries": 6,
+      "original_W_equals_minus_i_Einverse_V": true,
+      "complete_Lambda2_to_Lambda6_factorization": true,
+      "all_entries_occupation_grade_plus_one": true
+    },
+    {
+      "coordinate": 24,
+      "rank": 6,
+      "nonzero_entries": 6,
+      "original_W_equals_minus_i_Einverse_V": true,
+      "complete_Lambda2_to_Lambda6_factorization": true,
+      "all_entries_occupation_grade_plus_one": true
+    },
+    {
+      "coordinate": 25,
+      "rank": 6,
+      "nonzero_entries": 6,
+      "original_W_equals_minus_i_Einverse_V": true,
+      "complete_Lambda2_to_Lambda6_factorization": true,
+      "all_entries_occupation_grade_plus_one": true
+    },
+    {
+      "coordinate": 26,
+      "rank": 6,
+      "nonzero_entries": 6,
+      "original_W_equals_minus_i_Einverse_V": true,
+      "complete_Lambda2_to_Lambda6_factorization": true,
+      "all_entries_occupation_grade_plus_one": true
+    },
+    {
+      "coordinate": 27,
+      "rank": 6,
+      "nonzero_entries": 6,
+      "original_W_equals_minus_i_Einverse_V": true,
+      "complete_Lambda2_to_Lambda6_factorization": true,
+      "all_entries_occupation_grade_plus_one": true
+    },
+    {
+      "coordinate": 28,
+      "rank": 6,
+      "nonzero_entries": 6,
+      "original_W_equals_minus_i_Einverse_V": true,
+      "complete_Lambda2_to_Lambda6_factorization": true,
+      "all_entries_occupation_grade_plus_one": true
+    },
+    {
+      "coordinate": 29,
+      "rank": 6,
+      "nonzero_entries": 6,
+      "original_W_equals_minus_i_Einverse_V": true,
+      "complete_Lambda2_to_Lambda6_factorization": true,
+      "all_entries_occupation_grade_plus_one": true
+    },
+    {
+      "coordinate": 30,
+      "rank": 6,
+      "nonzero_entries": 6,
+      "original_W_equals_minus_i_Einverse_V": true,
+      "complete_Lambda2_to_Lambda6_factorization": true,
+      "all_entries_occupation_grade_plus_one": true
+    },
+    {
+      "coordinate": 31,
+      "rank": 6,
+      "nonzero_entries": 6,
+      "original_W_equals_minus_i_Einverse_V": true,
+      "complete_Lambda2_to_Lambda6_factorization": true,
+      "all_entries_occupation_grade_plus_one": true
+    },
+    {
+      "coordinate": 32,
+      "rank": 6,
+      "nonzero_entries": 12,
+      "original_W_equals_minus_i_Einverse_V": true,
+      "complete_Lambda2_to_Lambda6_factorization": true,
+      "all_entries_occupation_grade_plus_one": true
+    },
+    {
+      "coordinate": 33,
+      "rank": 10,
+      "nonzero_entries": 24,
+      "original_W_equals_minus_i_Einverse_V": true,
+      "complete_Lambda2_to_Lambda6_factorization": true,
+      "all_entries_occupation_grade_plus_one": true
+    },
+    {
+      "coordinate": 34,
+      "rank": 6,
+      "nonzero_entries": 6,
+      "original_W_equals_minus_i_Einverse_V": true,
+      "complete_Lambda2_to_Lambda6_factorization": true,
+      "all_entries_occupation_grade_plus_one": true
+    },
+    {
+      "coordinate": 35,
+      "rank": 6,
+      "nonzero_entries": 6,
+      "original_W_equals_minus_i_Einverse_V": true,
+      "complete_Lambda2_to_Lambda6_factorization": true,
+      "all_entries_occupation_grade_plus_one": true
+    },
+    {
+      "coordinate": 36,
+      "rank": 6,
+      "nonzero_entries": 6,
+      "original_W_equals_minus_i_Einverse_V": true,
+      "complete_Lambda2_to_Lambda6_factorization": true,
+      "all_entries_occupation_grade_plus_one": true
+    },
+    {
+      "coordinate": 37,
+      "rank": 6,
+      "nonzero_entries": 6,
+      "original_W_equals_minus_i_Einverse_V": true,
+      "complete_Lambda2_to_Lambda6_factorization": true,
+      "all_entries_occupation_grade_plus_one": true
+    },
+    {
+      "coordinate": 38,
+      "rank": 6,
+      "nonzero_entries": 6,
+      "original_W_equals_minus_i_Einverse_V": true,
+      "complete_Lambda2_to_Lambda6_factorization": true,
+      "all_entries_occupation_grade_plus_one": true
+    },
+    {
+      "coordinate": 39,
+      "rank": 6,
+      "nonzero_entries": 6,
+      "original_W_equals_minus_i_Einverse_V": true,
+      "complete_Lambda2_to_Lambda6_factorization": true,
+      "all_entries_occupation_grade_plus_one": true
+    },
+    {
+      "coordinate": 40,
+      "rank": 6,
+      "nonzero_entries": 6,
+      "original_W_equals_minus_i_Einverse_V": true,
+      "complete_Lambda2_to_Lambda6_factorization": true,
+      "all_entries_occupation_grade_plus_one": true
+    },
+    {
+      "coordinate": 41,
+      "rank": 6,
+      "nonzero_entries": 12,
+      "original_W_equals_minus_i_Einverse_V": true,
+      "complete_Lambda2_to_Lambda6_factorization": true,
+      "all_entries_occupation_grade_plus_one": true
+    },
+    {
+      "coordinate": 42,
+      "rank": 6,
+      "nonzero_entries": 6,
+      "original_W_equals_minus_i_Einverse_V": true,
+      "complete_Lambda2_to_Lambda6_factorization": true,
+      "all_entries_occupation_grade_plus_one": true
+    },
+    {
+      "coordinate": 43,
+      "rank": 6,
+      "nonzero_entries": 6,
+      "original_W_equals_minus_i_Einverse_V": true,
+      "complete_Lambda2_to_Lambda6_factorization": true,
+      "all_entries_occupation_grade_plus_one": true
+    },
+    {
+      "coordinate": 44,
+      "rank": 6,
+      "nonzero_entries": 6,
+      "original_W_equals_minus_i_Einverse_V": true,
+      "complete_Lambda2_to_Lambda6_factorization": true,
+      "all_entries_occupation_grade_plus_one": true
+    },
+    {
+      "coordinate": 45,
+      "rank": 6,
+      "nonzero_entries": 6,
+      "original_W_equals_minus_i_Einverse_V": true,
+      "complete_Lambda2_to_Lambda6_factorization": true,
+      "all_entries_occupation_grade_plus_one": true
+    },
+    {
+      "coordinate": 46,
+      "rank": 6,
+      "nonzero_entries": 6,
+      "original_W_equals_minus_i_Einverse_V": true,
+      "complete_Lambda2_to_Lambda6_factorization": true,
+      "all_entries_occupation_grade_plus_one": true
+    },
+    {
+      "coordinate": 47,
+      "rank": 6,
+      "nonzero_entries": 6,
+      "original_W_equals_minus_i_Einverse_V": true,
+      "complete_Lambda2_to_Lambda6_factorization": true,
+      "all_entries_occupation_grade_plus_one": true
+    },
+    {
+      "coordinate": 48,
+      "rank": 6,
+      "nonzero_entries": 6,
+      "original_W_equals_minus_i_Einverse_V": true,
+      "complete_Lambda2_to_Lambda6_factorization": true,
+      "all_entries_occupation_grade_plus_one": true
+    },
+    {
+      "coordinate": 49,
+      "rank": 6,
+      "nonzero_entries": 6,
+      "original_W_equals_minus_i_Einverse_V": true,
+      "complete_Lambda2_to_Lambda6_factorization": true,
+      "all_entries_occupation_grade_plus_one": true
+    },
+    {
+      "coordinate": 50,
+      "rank": 6,
+      "nonzero_entries": 12,
+      "original_W_equals_minus_i_Einverse_V": true,
+      "complete_Lambda2_to_Lambda6_factorization": true,
+      "all_entries_occupation_grade_plus_one": true
+    },
+    {
+      "coordinate": 51,
+      "rank": 6,
+      "nonzero_entries": 6,
+      "original_W_equals_minus_i_Einverse_V": true,
+      "complete_Lambda2_to_Lambda6_factorization": true,
+      "all_entries_occupation_grade_plus_one": true
+    },
+    {
+      "coordinate": 52,
+      "rank": 6,
+      "nonzero_entries": 6,
+      "original_W_equals_minus_i_Einverse_V": true,
+      "complete_Lambda2_to_Lambda6_factorization": true,
+      "all_entries_occupation_grade_plus_one": true
+    },
+    {
+      "coordinate": 53,
+      "rank": 6,
+      "nonzero_entries": 6,
+      "original_W_equals_minus_i_Einverse_V": true,
+      "complete_Lambda2_to_Lambda6_factorization": true,
+      "all_entries_occupation_grade_plus_one": true
+    },
+    {
+      "coordinate": 54,
+      "rank": 6,
+      "nonzero_entries": 6,
+      "original_W_equals_minus_i_Einverse_V": true,
+      "complete_Lambda2_to_Lambda6_factorization": true,
+      "all_entries_occupation_grade_plus_one": true
+    },
+    {
+      "coordinate": 55,
+      "rank": 6,
+      "nonzero_entries": 6,
+      "original_W_equals_minus_i_Einverse_V": true,
+      "complete_Lambda2_to_Lambda6_factorization": true,
+      "all_entries_occupation_grade_plus_one": true
+    },
+    {
+      "coordinate": 56,
+      "rank": 6,
+      "nonzero_entries": 6,
+      "original_W_equals_minus_i_Einverse_V": true,
+      "complete_Lambda2_to_Lambda6_factorization": true,
+      "all_entries_occupation_grade_plus_one": true
+    },
+    {
+      "coordinate": 57,
+      "rank": 6,
+      "nonzero_entries": 6,
+      "original_W_equals_minus_i_Einverse_V": true,
+      "complete_Lambda2_to_Lambda6_factorization": true,
+      "all_entries_occupation_grade_plus_one": true
+    },
+    {
+      "coordinate": 58,
+      "rank": 6,
+      "nonzero_entries": 6,
+      "original_W_equals_minus_i_Einverse_V": true,
+      "complete_Lambda2_to_Lambda6_factorization": true,
+      "all_entries_occupation_grade_plus_one": true
+    },
+    {
+      "coordinate": 59,
+      "rank": 6,
+      "nonzero_entries": 6,
+      "original_W_equals_minus_i_Einverse_V": true,
+      "complete_Lambda2_to_Lambda6_factorization": true,
+      "all_entries_occupation_grade_plus_one": true
+    },
+    {
+      "coordinate": 60,
+      "rank": 6,
+      "nonzero_entries": 6,
+      "original_W_equals_minus_i_Einverse_V": true,
+      "complete_Lambda2_to_Lambda6_factorization": true,
+      "all_entries_occupation_grade_plus_one": true
+    }
+  ],
+  "all61_squared_ordered_pair_coverage": 3721,
+  "pair_coverage_mechanism": "every W factors through Lambda2->Lambda6; the middle Lambda2^T Lambda6 is zero and every source drift preserves Lambda6",
+  "all_momentum_interaction_picture_grade": "exp(-A(kout)t) W exp(A(kin)t)=T6 exp(-A6(kout)t) W62 exp(A2(kin)t) T2^T",
+  "original_background_Lambda2_to_Lambda6_block_retained": true,
+  "false_full_grade_projector_commutation_used": false,
+  "real_source_branches": "diag(W,-conjugate(W)), drift diag(A(k),conjugate(A(-k))); both branches have occupation grade +1",
+  "independent_dual": "opposite transpose with reversed momentum edge; no adjoint substitution",
+  "normal_product_witness": {
+    "coordinate_pair": [
+      0,
+      0
+    ],
+    "input": [
+      145,
+      152
+    ],
+    "output": [
+      0,
+      1
+    ],
+    "matrix_element": "27/125",
+    "complete_second_word_output": [
+      [
+        [
+          0,
+          1
+        ],
+        "27/125"
+      ],
+      [
+        [
+          0,
+          4
+        ],
+        "27/125"
+      ]
+    ],
+    "same_line_contraction_zero": true,
+    "different_particle_normal_product_nonzero": true
+  },
+  "arbitrary_N_theorem": "SourceFockRaising.matrix_word_vanishes_on_number_sector",
+  "noncommuting_boson_ordered_tensor_theorem": "SourceFockRaising.tensor_word_vanishes_on_number_sector",
+  "finite_N_0_to_6_counts_used_as_proof": false,
+  "formal_source_installation_scope": "the general arbitrary-N and tensor statements are kernel-certified; concrete source61 grade and all-momentum coefficients are independently exact-SymPy checked, not installed as Lean source literals",
+  "scope": "source scalar61 algebraic interaction-picture matrix words on fixed particle sectors, including original conjugate branch coefficients and ordered auxiliary operator factors",
+  "time_integral_Dyson_or_Cinfinity_domain_constructed": false,
+  "continuous_momentum_integral_or_spectral_measure_constructed": false,
+  "full_four_block_interacting_Fock_spectrum_claimed": false,
+  "lifetime_status": "SOURCE_NATIVE_DYNAMIC_MEASURE_REQUIRED",
+  "elapsed_seconds": 44.432
+}

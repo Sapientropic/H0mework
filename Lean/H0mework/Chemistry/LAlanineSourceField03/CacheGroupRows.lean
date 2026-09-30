@@ -1,0 +1,19 @@
+import H0mework.Chemistry.LAlanineSourceField03.CacheB0
+import H0mework.Chemistry.LAlanineSourceField03.CacheB1
+import H0mework.Chemistry.LAlanineSourceField03.CacheB2
+import H0mework.Chemistry.LAlanineSourceField03.CacheB3
+import H0mework.Chemistry.LAlanineSourceField03.CacheB4
+import H0mework.Chemistry.LAlanineSourceField03.CacheB5
+import H0mework.Chemistry.LAlanineSourceField03.CacheB6
+import H0mework.Chemistry.LAlanineSourceField03.CacheB7
+import H0mework.Chemistry.LAlanineSourceMatrix.Aggregation
+
+set_option autoImplicit false
+
+namespace SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.BasinRefinement.SourceFields.Field3
+
+open SourceRectangle SourceSignedEvaluator
+
+assembleLowFieldGroups
+
+end SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.BasinRefinement.SourceFields.Field3

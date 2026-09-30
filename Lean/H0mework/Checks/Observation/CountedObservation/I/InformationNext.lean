@@ -1,0 +1,9 @@
+import H0mework.Versions.I.Fock.HistoryCopy.Consumer
+import H0mework.Fock.SourceHistory.CountedMerge.Information
+
+set_option autoImplicit false
+
+#print axioms SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceCountedMerge.continued_next_table_loss
+#print axioms SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceCountedMerge.continued_next_table_strict
+#print axioms SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceCopyNativeModelStep.observation_consumed
+#print axioms SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceCopyObservation.current_consumed

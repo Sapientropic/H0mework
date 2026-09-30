@@ -1,0 +1,10 @@
+import H0mework.Chemistry.LAlanineBandAttractor.SourceA007PointMatrixData
+import H0mework.Chemistry.LAlanineBandHighJet.DensityReifier
+
+set_option autoImplicit false
+set_option maxRecDepth 16384
+namespace SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.BasinRefinement.WholeBandAttractor.Atom007.Point
+open WholeBandGenerated
+open HighJet.DensityReification
+generateHighJetDensity
+end SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.BasinRefinement.WholeBandAttractor.Atom007.Point

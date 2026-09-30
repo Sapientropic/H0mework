@@ -1,0 +1,277 @@
+# Verbatim extract: B. G. Christensen, PhD thesis (UIUC 2016), Appendix A + Section 4.6.2
+# Source PDF: https://research.physics.illinois.edu/QI/Photonics/theses/christensen-thesis.pdf
+# Source PDF sha256: 343d4d35ad3e0116a2d90a0edb1220dd236619d081da890ff6ebddfc54c06a1f
+# Fetched: 2026-09-24 (fetch command: curl -sL -o christensen-thesis.pdf <URL>)
+# Extraction command: pdftotext -layout -f <PDF page> -l <PDF page> christensen-thesis.pdf -
+# PDF page 85 == thesis page 76 (Appendix A start / Eq. (A.1) / state family / Eq. (A.2))
+# PDF page 86 == thesis page 77 (noise assembly / Eq. (A.3) / acc_u)
+# PDF page 87 == thesis page 78 (objective + optimization variables/constraints)
+# PDF page 55 == thesis page 46 (Section 4.6.2 Visibility limitations, first part)
+# PDF page 56 == thesis page 47 (Section 4.6.2, the |H +- 1.5 deg state and 99.7% visibility)
+# NOTE: this file is a mechanical pdftotext extract. Superscripts/subscripts lose their
+#       typographic level; "sin2 d" reads "sin^2 delta", "10-7" reads "10^-7", etc.
+#       The printed Eq. (A.2) lists |VHi twice (see criterion.md free choice F2 for the reading).
+# ============================================================================
+
+=================== BEGIN PDF PAGE 85 (thesis p.76) ===================
+Appendix A
+
+Optimal State and Settings
+Calculation
+
+In this Appendix, we give a description of the method we use to calculate the optimal state and settings of
+
+the different Bell inequalities. To do so, we will describe the method for determining the optimal state and
+
+settings for the CH Bell inequality,
+
+                                                                                                      L
+     SCH = p(1, 1|0, 0) + p(1, 1|0, 1) + p(1, 1|1, 0) − p(1, 1|1, 1) − p(a = 1|x = 0) − p(b = 1|y = 0) ≤ 0,   (A.1)
+
+
+and then describe the generalization to the more complex Bell inequalities.
+
+    For the CH Bell inequality, we model the system (given the estimated noise and efficiency) and perform a
+
+numerical maximization to determine the settings and state. That is, we optimize over the state parameter
+                                   √
+r (where |ψr i = (|HHi + r|V V i) / 1 + r2 ), and over settings (x = 0) = θ0A , (x = 1) = θ1A , (y = 0) = θ0B ,
+
+and (y = 1) = θ1B setting choices. Note, however, that due to the symmetry of the CH Bell inequality and
+
+the state we produce, the settings have a symmetry about the 0◦ polarization setting. Thus, we assume that
+
+θ0A = −θ0B = θ0 and θ1A = −θ1B = θ1 , which reduces the problem to an optimization over only 3 parameters
+
+(r,θ0 ,θ1 ).
+
+    As mentioned in Section 4.6.2, our state is actually best described as: |ψr i ∝ |H + δ, H − δi + r|V V i,
+
+where δ ≈ 3◦ . In the H/V basis, this is then written as:
+
+
+               |ψi ∝ (1 − r sin2 δ)|V V i + r(cos2 δ|HHi + sin δ cos δ|V Hi − sin δ cos δ|V Hi).              (A.2)
+
+
+From the density matrix, ρ = |ψihψ|, we can calculate the probability of measuring a joint detection event
+
+(a joint outcome of 1) from such an entangled photon pair through polarizers at θA on Alice’s side and
+
+θB on Bob’s side via p(1, 1|θA , θB ) = tr(ρJ), where J is the matrix representation of the joint polarization
+
+measurement.
+
+    We then determine Alice’s (Bob’s) marginal probability distribution, p(1|θ), which can be calculated with
+
+the reduced density matrix, ρA = trB (ρ). Thus, p(1|θ) = tr(ρA S), where S is the matrix representation of
+
+the polarization measurement on Alice’s side.
+
+                                                         76
+
+=================== END PDF PAGE 85 ===================
+
+=================== BEGIN PDF PAGE 86 (thesis p.77) ===================
+    Now we need to include noise to the above terms, as well as the finite system efficiency. The three noise
+
+terms to include are: dark counts (here we define a dark count as any count that does not scale with the laser
+
+power, i.e., including room light background), fluorescence counts (counts that scale linearly with the pump
+
+power), and accidental counts (counts that scale quadratically with pump power). To consider dark counts,
+
+we modify the marginal distribution by adding in an additional term that is independent of pump power,
+
+N pm (1|θ) = N  p(1|θ) + dcr, where N is a laser power parameter, pm (1|θ) is the measured probability
+
+distribution with a polarizer at θ,  is the system efficiency, and dcr is the measured number of counts with
+
+the laser blocked1 . The parameter N can be interpreted as the number of pairs emitted from the source
+
+into our desired mode, where we can experimentally set N by noting that N pm (1|θ) = S(1|θ). To include
+
+fluorescence counts, we further modify the marginal distribution: N pm (1|θ) = N  p(1|θ)+dcr+N f lr. This
+
+term, while being the most critical, is also unfortunately the hardest to measure precisely (the measurement
+
+of this value is described in Section 4.3).
+
+    Finally, the accidental counts only affect the joint probability distribution. These counts are due to two
+
+photon events (e.g., Alice detects one photon from one pair, whereas Bob detects a photon from the other
+
+pair), which will degrade the polarization correlations. The probability distribution of photon pairs follows:
+
+                                                    mm hnin Γ(m + n)
+                                         pn =                             ,                                               (A.3)
+                                                (m + hni)m+n Γ(m)Γ(1 + n)
+
+where n is the number of pairs in a trial, hni is the mean number of pairs per trial, and m is the number
+
+of modes. If m = 1, this reduces to the usual thermal distribution, and if m = ∞, this follows Poissonian
+
+statistics. Here, due to the (typically) low probability of even a single pair being emitted from the source,
+
+we only consider accidentals from two-pair events. That is, we alter the joint detection distribution by
+
+N pm (1, 1|θA , θB ) = N 2 p(1, 1|θA , θB ) + acc, where acc includes all possible detections for the 2-pair
+
+emission. As the above calculation is involved and tedious, an alternate approximation can be used. TO do
+
+so, we can find an overestimate of the accidental counts by determining the number of coincidence counts
+
+one would expect with a source of completely random photons (that is, the source does not output pairs of
+
+photons, it instead randomly emits photons to Alice and Bob with no correlation on the emission times).
+
+Here, we would find accu = N 2 pm (1|θA ) pm (1|θB ), where accu is the upper bound on the accidentals2 . As
+
+we are interested in ensuring the violation of a Bell inequality, it is acceptable to overestimate the noise, and
+
+therefore we typically set acc = accu .
+   1 As we experimentally measure counts, putting in the noise terms is easiest by writing all terms as counts, i.e., multiplying
+
+the probabilities terms by N .
+   2 We can similarly find a lower bound on acc by accounting for the known emission correlations, which results in a quadratic
+
+equation.
+
+
+
+                                                               77
+
+=================== END PDF PAGE 86 ===================
+
+=================== BEGIN PDF PAGE 87 (thesis p.78) ===================
+   We can then insert the expected measured probabilities (pm ) into SCH , and then maximize over (r, θ0 , θ1 , N )
+
+to determine the optimal solution. It is worth noting, that while we can make any value of r,θ0 , and θ1 , the
+
+parameter N will need to limited based on the maximum laser power and pair emission from the photon
+
+source, e.g., the source in Chapter 4 can emit (into the desired mode) up to 15 MHz (when we run with a
+
+pulse rate of 120 MHz), thus N cannot be larger than N = S(1|θ)/pm (1|θ)
+
+   For the Bell tests considered in Chapter 6, we do not need to consider any system noise to determine
+
+the optimal state and settings (since we assume fair-sampling, and therefore post-select on coincidence
+
+counts, these noise terms are negligible). However, in this case we can no longer assume symmetry to reduce
+
+the number of optimization parameters. Instead, we allow the state and all polarization settings to be
+
+parameters to maximize over. In all of the cases, both here and for the CH Bell inequality with noise, these
+
+maximizations can be done with the built-in tools available in both Matlab and Mathematica.
+
+
+
+
+                                                       78
+
+=================== END PDF PAGE 87 ===================
+
+############ BEGIN SECTION 4.6.2 EVIDENCE (PDF pages 55-56, thesis pp.46-47) ############
+
+=================== BEGIN PDF PAGE 55 (thesis p.46) ===================
+4.6.2     Visibility limitations
+
+        y
+                 x
+                     z
+
+
+
+
+Figure 4.4: A depiction of the ordinary polarization (|oi) for the two downconversion crystals. In a negative
+uniaxial crystal, the Type-I downconversion process is e → oo, where the downconverted photon’s ordinary
+eigen-polarization obeys ô · ĉ = 0 and ô · k̂ = 0, where ô is the ordinary polarization unit vector, ĉ is
+the crystal axis unit vector, and k̂ is the propagation direction of the downconverted photon (and the
+extraordinary eigen-polarization of the pump is orthogonal to the pump’s ordinary polarization). Here, if we
+collect downconversion with a non-zero opening angle (k̂ not parallel to the pump), and with a crystal axis
+(ĉ) that is not vertical, then the eigen-polarizations in the crystal for the downconverted photons are not
+necessarily the H/V basis (where |Hi is defined to be a polarization in the x − z plane, and |V i is defined
+to be a polarization entirely in the y direction. In the left crystal, k̂ and ĉ are co-planar (both are in the
+x − z plane), thus the ordinary polarization is simply |V i (it must be orthogonal to the x − z plane, and
+thus it must be entirely in the y direction). However, if k̂ and ĉ do not form the y − z plane, as in the right
+crystal, then the ordinary polarization is slightly rotated out of the H/V basis (i.e., its polarization is not in
+the x − z plane). This effect causes us to no longer make a perfect maximally entangled state, which is the
+dominant source of entanglement degradation in our system, as we have corrected the other major sources
+of decoherence.
+
+   The incredible visibility (99.7%) of our entanglement source allows for the challenging Bell tests discussed
+
+in Chapter 6. However, it is important to note why there is a “missing” 0.3%. In our system, by coupling
+
+into a single-mode fiber, we have removed any spatial-mode decoherence. By temporally compensating for
+
+the group velocity dispersion in the crystal, we have also removed any spectral decoherence, thus leaving us
+
+with the dominant docoherence being from not creating the correct polarization states. That is, one of the
+
+crystals does not actually produce the desired state |HHi, whereas the other crystal accurately produces
+
+|V V i. To understand this effect, consider a negative uniaxial crystal (while BiBO, our crystal of choice due
+
+to its high nonlinearity, is biaxial, a similar but more complicated analysis can still be done). In this case,
+
+the downconversion process is e → oo (i.e., an extraordinary polarized pump downconverts to two ordinary
+
+polarized photons). Now, the extraordinary polarization is along the crystal optic axis, whereas the ordinary
+
+ray is orthogonal to the optic axis, as shown in Fig. 4.4. The issue is this: since we collect downconversion
+
+at a 3◦ angle (relative to the pump), and since our crystal axis (ĉ) is also cut at a somewhat large angle
+
+(141.8◦ ), this results in the |H + δi = |H + 1.5◦ i polarization state. If we consider the other photon in
+
+the pair, its k-vector is at −3◦ , which results in the polarization state of |H − δi = |H − 1.5◦ i, for a final
+
+                                                       46
+
+=================== END PDF PAGE 55 ===================
+
+=================== BEGIN PDF PAGE 56 (thesis p.47) ===================
+entangled state of |V, V i + |H + 1.5◦ , H − 1.5◦ i. This state has a 99.7% visibility, and cannot be unitarily
+
+transformed into a maximally entangled state (or our desired nonmaximally entangled state), as the two
+
+terms have different eigen-bases.
+
+   This effect can be eliminated (or significantly reduced) in a few ways. First, the effect depends on
+
+having a sizable opening angle, so decreasing the opening angle from 3◦ reduces the effect, and collinear
+
+downconversion (both photons propagate in the same direction as the pump) completely eliminates it.
+
+However, we typically work at 3◦ so that it is easy to separate the two photons; moving towards collinear
+
+downconversion requires other techniques to split the two photons, e.g., using non-degenerate downconversion
+
+and a dichroic mirror to separate the colors. Alternatively, periodically-poled crystals do not observe this
+
+effect, as the crystal axis is not at an angle (however, periodically-poled downconversion sources are almost
+
+always required to be collinear). One could also use the crystal temperature to adjust the indices of refraction
+
+to achieve “non-critical” phase matching, from which again crystal axis is then vertical (though, this method
+
+may be impractical due to the potentially high temperatures required). Finally, one could use Type-II
+
+downconversion (i.e., f → sf ), as it can require smaller crystal cuts (in this case, the temporal compensation
+
+becomes more challenging due to the 3 different group velocities one has to consider). Of these methods, the
+
+most practical is most likely producing collinear downconversion with periodically-poled crystals to achieve
+
+the next level of visibilities (> 99.99%). Nevertheless, our existing system still has very high visibility, which
+
+allows us to make the intriguing advanced quantum nonlocality measurements presented in Chapter 6.
+
+
+
+
+                                                       47
+
+=================== END PDF PAGE 56 ===================

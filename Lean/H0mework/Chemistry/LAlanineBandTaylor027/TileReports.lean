@@ -1,0 +1,10 @@
+import H0mework.Chemistry.LAlanineBandTaylor027.TileReports0
+import H0mework.Chemistry.LAlanineBandTaylor027.TileReports1
+import H0mework.Chemistry.LAlanineBandTaylor027.TileReports2
+import H0mework.Chemistry.LAlanineBandTaylor027.TileReports3
+
+set_option autoImplicit false
+namespace SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.BasinRefinement.WholeBandGenerated.Tile027
+open HighJet.ReportChecking
+assembleHighJetReports 27
+end SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.BasinRefinement.WholeBandGenerated.Tile027

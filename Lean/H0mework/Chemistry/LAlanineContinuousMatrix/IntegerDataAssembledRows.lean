@@ -1,0 +1,37 @@
+import H0mework.Chemistry.LAlanineContinuousMatrix.IntegerDataAssembly
+import H0mework.Chemistry.LAlanineContinuousMatrix.IntegerDataBlocksB0
+import H0mework.Chemistry.LAlanineContinuousMatrix.IntegerDataBlocksB1
+import H0mework.Chemistry.LAlanineContinuousMatrix.IntegerDataBlocksB2
+import H0mework.Chemistry.LAlanineContinuousMatrix.IntegerDataBlocksB3
+import H0mework.Chemistry.LAlanineContinuousMatrix.IntegerDataBlocksB4
+import H0mework.Chemistry.LAlanineContinuousMatrix.IntegerDataBlocksB5
+import H0mework.Chemistry.LAlanineContinuousMatrix.IntegerDataBlocksB6
+import H0mework.Chemistry.LAlanineContinuousMatrix.IntegerDataBlocksB7
+import H0mework.Chemistry.LAlanineContinuousMatrix.IntegerDataBlocksB8
+import H0mework.Chemistry.LAlanineContinuousMatrix.IntegerDataBlocksB9
+
+namespace SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.BasinRefinement.SourceIntegerMatrix
+open SourceIntegerGrid SourceRectangle SourceFiniteData
+
+assembleIntegerRow 0
+assembleIntegerRow 1
+assembleIntegerRow 2
+assembleIntegerRow 3
+assembleIntegerRow 4
+assembleIntegerRow 5
+assembleIntegerRow 6
+assembleIntegerRow 7
+assembleIntegerRow 8
+assembleIntegerRow 9
+assembleIntegerRow 10
+assembleIntegerRow 11
+assembleIntegerRow 12
+assembleIntegerRow 13
+assembleIntegerRow 14
+assembleIntegerRow 15
+assembleIntegerRow 16
+assembleIntegerRow 17
+assembleIntegerRow 18
+assembleIntegerRow 19
+
+end SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.BasinRefinement.SourceIntegerMatrix

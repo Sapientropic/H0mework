@@ -1,0 +1,10 @@
+import H0mework.Chemistry.LAlanineBandTaylor001.CenterData
+import H0mework.Chemistry.LAlanineBandHighJet.Check
+
+set_option autoImplicit false
+set_option maxHeartbeats 0
+set_option maxRecDepth 16384
+namespace SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.BasinRefinement.WholeBandGenerated.Sample002
+open HighJet.Checks
+checkHighJetGroups
+end SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.BasinRefinement.WholeBandGenerated.Sample002

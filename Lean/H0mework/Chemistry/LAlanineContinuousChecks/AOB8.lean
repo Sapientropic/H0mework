@@ -1,0 +1,9 @@
+import H0mework.Chemistry.LAlanineContinuousChecks.AOSharedProbe
+
+set_option autoImplicit false
+
+namespace SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.BasinRefinement.SourceRectangleChecks.AOChecks
+
+checkCachedAO 96
+
+end SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.BasinRefinement.SourceRectangleChecks.AOChecks

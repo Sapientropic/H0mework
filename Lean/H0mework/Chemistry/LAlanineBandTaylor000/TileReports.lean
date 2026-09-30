@@ -1,0 +1,12 @@
+import H0mework.Chemistry.LAlanineBandTaylor000.TileReportFirst
+import H0mework.Chemistry.LAlanineBandTaylor000.TileReports0
+import H0mework.Chemistry.LAlanineBandTaylor000.TileReports1
+import H0mework.Chemistry.LAlanineBandTaylor000.TileReports2
+import H0mework.Chemistry.LAlanineBandTaylor000.TileReports3
+
+set_option autoImplicit false
+namespace SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.BasinRefinement.WholeBandGenerated.Tile000
+open HighJet.ReportChecking
+theorem report_0 : HighJet.FieldWithin (restrictedField 0) (WholeBandSource.recordedCallField 0) := first_report
+assembleHighJetReports 0
+end SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.BasinRefinement.WholeBandGenerated.Tile000

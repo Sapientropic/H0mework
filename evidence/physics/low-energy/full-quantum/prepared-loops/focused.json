@@ -1,0 +1,117 @@
+{
+  "scope": "ORIGINAL_PREPARED_BOUNDARY_WEIGHTED_FULL_WORDS_AND_TRANSFER_GRADING",
+  "passed": true,
+  "trust": 0,
+  "warningAsError": true,
+  "default_limits": true,
+  "public_declarations": 40,
+  "direct_consumers": 7,
+  "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "records": [
+    {
+      "name": "Source",
+      "exit_code": 0,
+      "seconds": 5.466,
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--trust=0",
+        "-DwarningAsError=true",
+        "-o",
+        ".lake/build/lib/lean/SaturationMonoid/PhysicsCore/LowEnergy/FullQuantum/PreparedLoops/Source.olean",
+        "SaturationMonoid/PhysicsCore/LowEnergy/FullQuantum/PreparedLoops/Source.lean"
+      ]
+    },
+    {
+      "name": "Words",
+      "exit_code": 0,
+      "seconds": 5.052,
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--trust=0",
+        "-DwarningAsError=true",
+        "-o",
+        ".lake/build/lib/lean/SaturationMonoid/PhysicsCore/LowEnergy/FullQuantum/PreparedLoops/Words.olean",
+        "SaturationMonoid/PhysicsCore/LowEnergy/FullQuantum/PreparedLoops/Words.lean"
+      ]
+    },
+    {
+      "name": "Native",
+      "exit_code": 0,
+      "seconds": 4.863,
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--trust=0",
+        "-DwarningAsError=true",
+        "-o",
+        ".lake/build/lib/lean/SaturationMonoid/PhysicsCore/LowEnergy/FullQuantum/PreparedLoops/Native.olean",
+        "SaturationMonoid/PhysicsCore/LowEnergy/FullQuantum/PreparedLoops/Native.lean"
+      ]
+    },
+    {
+      "name": "Transfer",
+      "exit_code": 0,
+      "seconds": 5.951,
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--trust=0",
+        "-DwarningAsError=true",
+        "-o",
+        ".lake/build/lib/lean/SaturationMonoid/PhysicsCore/LowEnergy/FullQuantum/PreparedLoops/Transfer.olean",
+        "SaturationMonoid/PhysicsCore/LowEnergy/FullQuantum/PreparedLoops/Transfer.lean"
+      ]
+    },
+    {
+      "name": "Scalar",
+      "exit_code": 0,
+      "seconds": 4.738,
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--trust=0",
+        "-DwarningAsError=true",
+        "-o",
+        ".lake/build/lib/lean/SaturationMonoid/PhysicsCore/LowEnergy/FullQuantum/PreparedLoops/Scalar.olean",
+        "SaturationMonoid/PhysicsCore/LowEnergy/FullQuantum/PreparedLoops/Scalar.lean"
+      ]
+    },
+    {
+      "name": "Consumer",
+      "exit_code": 0,
+      "seconds": 4.297,
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--trust=0",
+        "-DwarningAsError=true",
+        "Verification/physics/low-energy-phenomenology/full-quantum/prepared-loops/Consumer.lean"
+      ]
+    },
+    {
+      "name": "Audit",
+      "exit_code": 0,
+      "seconds": 4.272,
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--trust=0",
+        "-DwarningAsError=true",
+        "Verification/physics/low-energy-phenomenology/full-quantum/prepared-loops/Audit.lean"
+      ]
+    }
+  ]
+}

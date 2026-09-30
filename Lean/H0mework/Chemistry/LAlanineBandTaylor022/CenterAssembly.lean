@@ -1,0 +1,17 @@
+import H0mework.Chemistry.LAlanineBandTaylor022.CenterGroups
+import H0mework.Chemistry.LAlanineBandTaylor022.CenterOrbitals
+import H0mework.Chemistry.LAlanineBandTaylor022.CenterMatrixPart0
+import H0mework.Chemistry.LAlanineBandTaylor022.CenterMatrixPart1
+import H0mework.Chemistry.LAlanineBandTaylor022.CenterMatrixPart2
+import H0mework.Chemistry.LAlanineBandTaylor022.CenterMatrixPart3
+import H0mework.Chemistry.LAlanineBandTaylor022.CenterDensityCheck
+import H0mework.Chemistry.LAlanineBandHighJet.Assembly
+
+set_option autoImplicit false
+set_option maxHeartbeats 0
+set_option maxRecDepth 16384
+namespace SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.BasinRefinement.WholeBandGenerated.Sample044
+open HighJet.MatrixChecking HighJet.Assembly
+assembleHighJetMatrix
+assembleHighJetMaterial 0
+end SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.BasinRefinement.WholeBandGenerated.Sample044

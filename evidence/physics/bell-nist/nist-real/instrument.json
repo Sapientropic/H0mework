@@ -1,0 +1,29 @@
+{
+  "schema": "nist-documented-real-instrument/v2",
+  "revision": "r0003-NIST-design",
+  "theorem_mouth": "SaturationMonoid.PhysicsCore.Stage10.Bell.RealFamily.prediction",
+  "claim_scope": "documented_real_born_conditional",
+  "preparation": {
+    "amplitudes": {"HH": "0.961", "VV": "0.276"},
+    "basis_order": ["V", "H"],
+    "normalization": "radial",
+    "rounding_policy": "Published decimal direction is normalized, not fitted. Preparation uncertainty remains a calibration obligation.",
+    "source": "https://arxiv.org/pdf/1511.03189#page=4"
+  },
+  "controls": {
+    "angle_reference": "vertical_polarizer_degrees",
+    "alice": ["4.2", "-25.9"],
+    "bob": ["-4.2", "25.9"],
+    "setting_bits": {"0": "unprimed", "1": "primed"},
+    "bloch_map": "(sin(2 phi), cos(2 phi)) in V,H basis",
+    "source": "https://arxiv.org/pdf/1511.03189#page=4"
+  },
+  "outcome_policy": {"click": 1, "no_click": -1, "discard_no_click": false},
+  "detector_geometry": "single_transmitted_port",
+  "channel": null,
+  "trial_policy": "All predeclared sync trials; one predeclared pulse slot/window; no coincidence postselection.",
+  "actual_slot_window_epoch": null,
+  "source_occurrence_claim": false,
+  "maximum_entanglement_claim": false,
+  "lock_created": false
+}

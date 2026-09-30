@@ -1,0 +1,16 @@
+import H0mework.Chemistry.LAlanineBandCall128.FieldData
+
+set_option autoImplicit false
+set_option maxRecDepth 16384
+
+namespace SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule
+namespace LAlanine40K2025.BasinRefinement.WholeBandCell2.Call128
+
+open SourceRectangle SourceSignedEvaluator SourceGaussianModel SourceFiniteData SourceRectangleChecks SourceFields
+
+open WholeBandCache
+
+checkWholeBandOrbitals 0 98
+
+end LAlanine40K2025.BasinRefinement.WholeBandCell2.Call128
+end SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule

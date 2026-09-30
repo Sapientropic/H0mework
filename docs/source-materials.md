@@ -1,0 +1,59 @@
+# 来源材料索引
+
+本仓的有效用法见[复现指南](reproduction.md)，主张与源码对应见[证据表](evidence-map.md)。本页负责定位研究来源、冻结认证与历史过程记录。
+
+## 固定来源的阅读方式
+
+[`docs/source/`](source/) 和 [`docs/physics/`](physics/) 内的材料均作为固定来源工件导出。每份文件的原路径、来源修订与 SHA256 记录在 [`export-map.json`](../tools/export-map.json) 的 `artifacts` 中；正文保持该版本的原字节。
+
+其中的“当前”“本轮”、运行耗时和完成状态指对应源修订。原文中的命令及链接使用研究源仓布局；本仓的执行命令以复现指南为准。旧链接的目标可能已迁移，也可能没有纳入选集。
+
+按 `artifacts.source` 或 `modules.source_path` 查询原目标，`path` 给出本仓文件地址。下面查询生命周期原文引用的证明：
+
+```bash
+python3 - <<'PY'
+import json
+with open('tools/export-map.json') as stream:
+    data = json.load(stream)
+source = 'Lean/SaturationMonoid/ResponsibilityLifecycleKernel.lean'
+for row in data['modules']:
+    if row['source_path'] == source:
+        print(row['path'], row['source_revisions'])
+PY
+```
+
+查询没有记录时，该目标不在选集内。原路径视图恢复已导出的材料及其字节；可用参数见[原路径版本视图](reproduction.md#原路径版本视图)。
+
+## 机制与认证
+
+| 材料 | 详细来源 |
+| --- | --- |
+| 责任、债务与结构归属 | [foundation](source/foundation/)；[生命周期](source/foundation/responsibility-conservation-lifecycle.md) |
+| Navier–Stokes 原生载体与控制 | [navier-stokes](source/navier-stokes/)；[配对载体](source/navier-stokes/native-paired-source-carrier.md) |
+| 计数观察与原始 Riesz 动态观察 | [计数观察](source/observation/source-counted-observation.md)；[Riesz 观察](source/observation/original-riesz-dynamic-observation.md) |
+| 低能唯象推导与认证 | [验证入口快照](source/physics/low-energy/verification-README.md)及其同级目录 |
+| Case 2 全量子机制与认证 | [full-quantum](source/physics/low-energy/full-quantum/)；[完整物质时间生成元](physics/low-energy/full-quantum/README.md) |
+| Case 5A 不同时代材料 | [T 期入口](source/physics/constrained-quantum/README.md)；[X 期入口](source/physics/constrained-quantum/README-x.md) |
+| Bell 名义装置重放与冻结判据 | [重放说明](source/physics/bell-nist/nist-real/nominal-replay/README.md)；[criterion](source/physics/bell-nist/nist-real/nominal-replay/criterion.md) |
+
+`certification.md`、`audit-certification.md` 等报告保存对应修订的验收结果与条件；[`evidence/`](../evidence/) 保存机读回执及失败结果。公开回执的路径变换与原件身份见[公开回执与原始来源](evidence-publication.md)。
+
+## 历史过程材料
+
+以下材料描述源仓的历史进度、讨论或访问过程，单独作为过程依据阅读：
+
+- Navier–Stokes [2026-08-10 checkpoint](source/navier-stokes/navier-stokes-native-turbulence-total-evolution-checkpoint-2026-08-10.md)。
+- 动态观察 [Living-Law ledger](source/observation/living-law-framework-checkpoints.md)、[卷 45](source/observation/living-law-framework-checkpoints-volume-45.md)与 [source-word ledger](source/observation/source-word-checkpoints.md)。
+- Bell [协议草案](source/physics/bell-nist/nist-real/protocol.md)、[信息访问记录](source/physics/bell-nist/nist-real/access-record.md)与 [controller capsule](source/physics/bell-nist/nist-real/controller-capsule.md)。
+
+这些文件保留原路径与哈希，便于回执复核和源版本重建。当前主张的消费入口由证据表指定。
+
+## 第三方材料
+
+| 材料 | 作者与出处 | 再分发依据 |
+| --- | --- | --- |
+| [Shalm 论文摘录](source/physics/bell-nist/nist-real/nominal-replay/shalm2015-channel-inputs.txt) | L. K. Shalm et al., *Strong Loophole-Free Test of Local Realism*, Physical Review Letters 115, 250402 (2015)，[DOI 原文](https://journals.aps.org/prl/pdf/10.1103/PhysRevLett.115.250402)；摘录自 arXiv:1511.03189v2 | APS 已发表版本采用 [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/)。三个摘录块的实质文字、数值与公式已核对到开放版正文；冠词、语法与引用格式差异见[版本审查](reports/publication-review-2026-09-30.md#shalm-摘录核对)。arXiv v2 的[非独占分发许可](https://arxiv.org/licenses/nonexclusive-distrib/1.0/license.html)保留为原提取版本的来源记录。 |
+| [Christensen 博士论文摘录](source/physics/bell-nist/nist-real/nominal-replay/christensen-appendix-a.txt) | Bradley G. Christensen，*Advanced tests of nonlocality with entangled photons*，University of Illinois Urbana-Champaign 博士论文（2016），[学校馆藏条目](https://www.ideals.illinois.edu/items/92889) | 馆藏权利字段为 Copyright 2016 Bradley Christensen。[⚠️] 本仓尚无可核实的摘录再分发授权记录。 |
+| L-alanine 40 K 晶体与计算回执 | 论文作者 Hayashi、Nishioka、Kasai、Nishibori，[IUCr 官方原文](https://journals.iucr.org/m/issues/2025/03/00/woz5001/woz5001.pdf)；数据作者 Eiji Nishibori，[Zenodo 记录](https://zenodo.org/records/14688662) | 原论文与数据采用 [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)。派生计算与来源记录保存在 [`evidence/biomedical/`](../evidence/biomedical/) 中。 |
+
+项目原创内容的 Apache-2.0 许可见 [LICENSE](../LICENSE)；第三方原文保留作者、出处和各自许可。归属汇总见 [NOTICE](../NOTICE)。公开版本的审查结果见[2026-09-30 版本审查](reports/publication-review-2026-09-30.md)。

@@ -1,0 +1,12 @@
+import H0mework.Chemistry.LAlanineTrueTubeCache.F2GroupRows
+import H0mework.Chemistry.LAlanineTrueTubeCache.F2AORows
+
+set_option autoImplicit false
+
+namespace SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.BasinRefinement.TrueTubeCache.Field2
+
+open SourceRectangle SourceSignedEvaluator SourceGaussianModel SourceFiniteData SourceRectangleChecks SourceFields
+
+assembleTrueTubeField 2
+
+end SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.BasinRefinement.TrueTubeCache.Field2

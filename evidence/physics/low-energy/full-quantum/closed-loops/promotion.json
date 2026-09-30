@@ -1,0 +1,96 @@
+{
+  "records": [
+    {
+      "name": "Grading",
+      "exit_code": 0,
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--trust=0",
+        "-DwarningAsError=true",
+        "-o",
+        ".lake/build/lib/lean/SaturationMonoid/PhysicsCore/LowEnergy/FullQuantum/ClosedLoops/Grading.olean",
+        "SaturationMonoid/PhysicsCore/LowEnergy/FullQuantum/ClosedLoops/Grading.lean"
+      ],
+      "seconds": 6.814
+    },
+    {
+      "name": "Source",
+      "exit_code": 0,
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--trust=0",
+        "-DwarningAsError=true",
+        "-o",
+        ".lake/build/lib/lean/SaturationMonoid/PhysicsCore/LowEnergy/FullQuantum/ClosedLoops/Source.olean",
+        "SaturationMonoid/PhysicsCore/LowEnergy/FullQuantum/ClosedLoops/Source.lean"
+      ],
+      "seconds": 5.216
+    },
+    {
+      "name": "Words",
+      "exit_code": 0,
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--trust=0",
+        "-DwarningAsError=true",
+        "-o",
+        ".lake/build/lib/lean/SaturationMonoid/PhysicsCore/LowEnergy/FullQuantum/ClosedLoops/Words.olean",
+        "SaturationMonoid/PhysicsCore/LowEnergy/FullQuantum/ClosedLoops/Words.lean"
+      ],
+      "seconds": 4.26
+    },
+    {
+      "name": "Audit",
+      "exit_code": 0,
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--trust=0",
+        "-DwarningAsError=true",
+        "Verification/physics/low-energy-phenomenology/full-quantum/closed-loops/Audit.lean"
+      ]
+    },
+    {
+      "name": "Consumer",
+      "exit_code": 0,
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--trust=0",
+        "-DwarningAsError=true",
+        "Verification/physics/low-energy-phenomenology/full-quantum/closed-loops/Consumer.lean"
+      ]
+    }
+  ],
+  "passed": true,
+  "independent_consumers_formal": {
+    "support_source": "Verification/physics/low-energy-phenomenology/full-quantum/triangular/audit/Consumer.lean",
+    "proof_bodies_copied_without_changes": true,
+    "imports_use_promoted_Triangular_modules": true,
+    "temporary_oleans_removed": true,
+    "checks": [
+      {
+        "name": "Support",
+        "exit_code": 0,
+        "seconds": 6.9,
+        "trust": 0,
+        "warnings_as_errors": true
+      },
+      {
+        "name": "IndependentConsumer",
+        "exit_code": 0,
+        "seconds": 3.605,
+        "trust": 0,
+        "warnings_as_errors": true
+      }
+    ]
+  }
+}
