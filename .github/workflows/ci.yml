@@ -21,13 +21,16 @@ jobs:
 
   lean-build:
     name: 独立 Lean 构建
+    # A full build takes about two hours; while the repository is private it
+    # would draw on the account's Actions minutes, so it runs on manual dispatch
+    # there and on every push once the repository is public.
+    if: github.event_name == 'workflow_dispatch' || !github.event.repository.private
     runs-on: ubuntu-latest
     timeout-minutes: 350
     steps:
-      # The default build (mathlib cache plus ~16.8k modules) exceeds the ~14 GB
-      # a standard runner leaves free; the 2026-09-20 run stopped at module
-      # 9440/11481 with "no space left on device". Remove preinstalled
-      # toolchains the build never uses.
+      # The mathlib cache and the ~19 GB of build artifacts exceed the ~14 GB a
+      # standard runner leaves free. Remove preinstalled toolchains the build
+      # never uses.
       - name: Free runner disk space
         run: |
           df -h /
@@ -36,20 +39,17 @@ jobs:
             /usr/local/share/powershell /usr/local/share/chromium /usr/local/lib/node_modules
           sudo docker image prune --all --force > /dev/null 2>&1 || true
           df -h /
-      # The 2026-09-30 run then went silent at module 9618/13662 while several
-      # heavy chemistry modules compiled in parallel, and the runner was
-      # cancelled (exit 143): memory exhaustion on the 16 GB runner. Swap on
-      # the runner's temporary disk lets those peaks page instead of killing it.
-      - name: Add swap on the temporary disk
-        run: |
-          df -h /mnt
-          sudo swapoff -a
-          sudo fallocate -l 24G /mnt/lean-swapfile
-          sudo chmod 600 /mnt/lean-swapfile
-          sudo mkswap /mnt/lean-swapfile > /dev/null
-          sudo swapon /mnt/lean-swapfile
-          free -h
       - uses: actions/checkout@v4
+      # Lake writes ir/<module>.setup.json listing every transitive import's
+      # artifacts (about 5 MB each here, over 90 GB for the whole build). Lean
+      # reads it only when a module starts compiling, and deleting it afterwards
+      # does not invalidate the build, so remove files older than a minute.
+      - name: Start setup-file janitor
+        run: |
+          nohup setsid bash -c 'while true; do
+            find Lean/.lake/build/ir -name "*.setup.json" -mmin +1 -delete 2>/dev/null
+            sleep 30
+          done' > /dev/null 2>&1 &
       - uses: leanprover/lean-action@v1
         with:
           lake-package-directory: Lean
