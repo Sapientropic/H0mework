@@ -2,12 +2,13 @@
 
 审查基线：`87f914a90601b886d76d383d05de38f5901b50ba`，纳入同日公开回执变换。交付版本为本报告所在的提交。日期采用 Asia/Shanghai。检查覆盖导出文件、私有原件、Git 历史与现有远端状态。
 
-结论：65 处私人路径已清除，16 份公开回执与私有原件对照通过，三个资源消费者实际重编通过。公开分支保留前 6 个干净提交，后续导出内容接入为一枚脱敏提交；原件可从私有研究仓的固定版本恢复。第三方摘录按其版权和研究引用用途保留，版本构建的实际覆盖记录如下。
+结论：65 处私人路径已清除，16 份公开回执与私有原件对照通过，完整默认选集构建及三个资源消费者实际重编通过。公开分支保留前 6 个干净提交，后续导出内容接入为一枚脱敏提交；原件可从私有研究仓的固定版本恢复。第三方摘录按其版权和研究引用用途保留，版本构建的实际覆盖记录如下。
 
 ## 机器验收
 
 | 验收 | 结果与条件 |
 | --- | --- |
+| `make build` | exit 0；使用现有缓存，24754.064 秒，25560 jobs；实际重编 6509 个模块，其中 6508 个化学模块、1 个论文入口 |
 | `make check-map` | exit 0；16789 个模块、969 个工件验证通过，包含 16 个派生回执的 payload 校验 |
 | `make check` | exit 0；精确读出、稳定子回执、全时间控制、非交换有限块导数检查通过 |
 | `make check-obs` | exit 0；E/I 视图重建及 Gate 字节差异断言通过 |
@@ -34,7 +35,7 @@ lake build H0mework.Papers.WholeLedgerAccountingY1 \
   H0mework.Papers.ConstrainedLocalQuantumK17
 ```
 
-本次没有运行 clean clone 的完整默认构建，也没有重新运行 `check-5a`、`check-5a-k`。已有默认构建成功日志记录 25504 jobs，时间为 9 月 28 日，早于 9 月 29 日的 Y1/K15–K17 配置更新。定向构建提供最新入口的增量验收。
+默认构建于 9 月 30 日 21:42:53 完成，结束记录对应提交 `bf78b3674ec5680c7baab77e70107d148c281c9d`。运行期间更新了作者文档及 CI 配置，Lean 源码、资源输入和依赖配置保持一致。这次构建复用现有缓存，没有执行 clean clone 构建，也没有重新运行 `check-5a`、`check-5a-k`。
 
 依赖提交与 manifest 一致。mathlib 两份 benchmark 脚本、batteries 的文档 README 在本地由符号链接变成普通文件，内容均与固定提交的链接目标逐字一致；没有 Lean 依赖源码差异。命令覆盖和配置规则见[复现指南](../reproduction.md)。
 
@@ -76,6 +77,7 @@ APS PDF SHA256：`49c40d39e6a61c8cb961aae327ce7bc266132d9ed20ceefa93792930cd99c1
 
 | 记录 | SHA256 |
 | --- | --- |
+| `current-default-build.log` | `da2bc93a7af74e7c0f73b14b94bc10356fadc0c1a09880443a00a16f93198613` |
 | `public-map-check.log` | `ed576b935903f28c2a65b65f21c87a73a349408d47a449ccd532eeaf1d46870b` |
 | `evidence-check.log` | `26416a42d1ee0f3d427d2077e7a15b97f4e09f2c731a83e9db9f454aa24c141d` |
 | `case2-check.log` | `4df5d8965a0f8f3367a67001cca9fdd83fb713430f837e9423cab48819c88dd4` |
