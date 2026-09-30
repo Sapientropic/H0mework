@@ -1,4 +1,4 @@
-<p align="center"><img src="docs/assets/banner.svg" alt="H0mework · 未干的地图：名字里的 0 是一笔朱砂圈，一道引线从它流出，渡水上岸，长成一张未干的地图" width="100%"></p>
+<p align="center"><img src="docs/assets/banner.svg" alt="H0mework · 未干的地图：名字里的 0 是一笔朱砂圈；同样的圈落在地图上，一张未干的地图从那里长出" width="100%"></p>
 
 这里是一组论文背后的证明与证据。
 
