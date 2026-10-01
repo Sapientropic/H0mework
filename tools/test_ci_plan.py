@@ -15,8 +15,10 @@ import time
 import unittest
 from unittest.mock import patch
 
-from ci_plan import (Layout, ancestors_within, build_part, closure, completed_setup_files, estimate_costs,
-                     imports, make_plan, pack, read_times, stage_plan, unpack, update_times)
+import ci_plan
+from ci_plan import (LAYOUT, Layout, ReleaseStore, ancestors_within, build_part, closure, completed_setup_files,
+                     coverage, estimate_costs, imports, make_plan, pack, prune_store, read_times, restore_choice,
+                     save_archive, stage_number, stage_plan, sticky_assignment, unpack, update_times, write_layout)
 
 # A synthetic project with ten-second modules spreads over several stages and shards.
 SPLIT = Layout(window=25, workers=1, fill=1.0, shared_users=99, shared_chain=0)
@@ -146,6 +148,37 @@ class PlanTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "non-default"):
             make_plan(self.root)
 
+    def commit_layout(self, plan):
+        (self.root / "tools").mkdir(exist_ok=True)
+        write_layout(self.root / LAYOUT, plan["assignment"])
+
+    def test_committed_layout_keeps_placements_and_adds_new_modules(self):
+        before = make_plan(self.root, SPLIT)
+        self.commit_layout(before)
+        name = "H0mework.Papers.NewPaper"
+        self.sources[name] = "import H0mework.Physics.Independent\n"
+        self.write_module(name, self.sources[name])
+        self.write_config()
+        after = make_plan(self.root, SPLIT)
+        self.assertEqual({m: s for m, s in after["assignment"].items() if m != name}, before["assignment"])
+        self.assertEqual(after["placed"], 1)
+        changed = {p for p in before["parts"] if p != "complete"
+                   and before["parts"][p]["fingerprint"] != after["parts"][p]["fingerprint"]}
+        self.assertLessEqual(changed, {after["assignment"][name]})
+
+    def test_displaced_module_moves_after_its_new_import(self):
+        before = make_plan(self.root, SPLIT)
+        self.commit_layout(before)
+        moved, stage = "H0mework.Physics.Independent", lambda plan, m: stage_number(plan["assignment"][m])
+        dependencies = self.dependencies(before)
+        later = sorted(m for m in dependencies if stage(before, m) > stage(before, moved)
+                       and moved not in closure([m], dependencies))[0]
+        self.write_module(moved, self.sources[moved] + f"import {later}\n")
+        after = make_plan(self.root, SPLIT)
+        self.assertGreaterEqual(stage(after, moved), stage(after, later))
+        for part in after["parts"].values():
+            self.assertTrue(all(after["parts"][u]["stage"] < part["stage"] for u in part["upstream"]))
+
     def checkout(self, name):
         path = self.root / "checkouts" / name
         shutil.copytree(self.root / "Lean", path / "Lean", ignore=shutil.ignore_patterns(".lake"))
@@ -181,6 +214,11 @@ class PlanTests(unittest.TestCase):
             unpack(final, archive)
         check = subprocess.run(["lake", "--no-build", "build"], cwd=final / "Lean", capture_output=True, text=True)
         self.assertEqual(check.returncode, 0, check.stdout + check.stderr)
+        # Lake's own module lists agree with the plan, and a part left out is reported.
+        self.assertEqual(coverage(self.root, plan), (set(), set()))
+        dropped = json.loads(json.dumps(plan))
+        lost = dropped["parts"][plan["stages"][0][0]]["modules"].pop()
+        self.assertEqual(coverage(self.root, dropped), ({lost}, set()))
         packet = final / "evidence/source.json"
         original = packet.read_bytes()
         packet.write_text('{"result": 2}\n')
@@ -244,6 +282,19 @@ class StagePlanTests(unittest.TestCase):
         self.assertEqual(stages[0], [{"R"}])
         self.assertEqual(stages[1], [{"H", f"F{i}.a", f"F{i}.b"} for i in range(4)])
         self.assertEqual(stages[2], [{"J", "T"}])
+
+    def test_new_module_waits_a_stage_rather_than_rebuilding_other_shards(self):
+        dependencies, cost = self.hub_and_families(hub_cost=1)
+        previous = {"R": "s1-01", "H": "s1-01", "J": "s3-01", "T": "s3-01"}
+        previous.update({f"F{i}.{x}": f"s2-0{i + 1}" for i in range(4) for x in "ab"})
+        dependencies.update({"K": ["F0.b"], "Joiner": [f"F{i}.b" for i in range(4)], "Big": ["F1.b"]})
+        cost.update({"K": 1, "Joiner": 1, "Big": 10})
+        layout = Layout(window=25, workers=1, fill=1.0)
+        assignment = sticky_assignment(dependencies, cost, previous, layout)
+        self.assertEqual({n: assignment[n] for n in previous}, previous)
+        self.assertEqual(assignment["K"], "s2-01")         # beside its import, which has room
+        self.assertEqual(stage_number(assignment["Joiner"]), 3)
+        self.assertEqual(stage_number(assignment["Big"]), 3)  # its import's shard is full
 
     def test_estimates_prefer_measurement_then_nearest_namespace(self):
         times = {"A.B.x": 7.0, **{f"A.B.m{i}": float(i) for i in range(1, 6)}, **{f"C.n{i}": 100.0 for i in range(5)}}
@@ -392,6 +443,85 @@ class ArtifactTests(unittest.TestCase):
         os.utime(trace, ns=(30, 30))
         self.assertEqual(completed_setup_files(self.build), 1)
         self.assertFalse(setup.exists())
+
+
+class FakeStore(ReleaseStore):
+    def __init__(self):
+        super().__init__("owner/repo", "token")
+        self.data, self.clock = {}, 0
+
+    def open(self, create=False):
+        if self.release_id is None and create:
+            self.release_id = 1
+        if self.release_id is not None and self.assets is None:
+            self.assets = {}
+        return self.release_id is not None
+
+    def download(self, asset, output):
+        output.write(self.data[asset["id"]])
+
+    def upload(self, name, source):
+        self.clock += 1
+        self.data[name] = source.read_bytes()
+        self.assets[name] = {"id": name, "name": name, "created_at": f"2026-10-01T00:00:{self.clock:02d}Z"}
+
+    def api(self, method, path, body=None):
+        assert method == "DELETE"
+        del self.data[path.rsplit("/", 1)[1]]
+
+
+class StoreTests(unittest.TestCase):
+    def setUp(self):
+        self.temporary = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temporary.cleanup)
+        self.root = Path(self.temporary.name)
+
+    def file(self, name, data):
+        path = self.root / name
+        path.write_bytes(data)
+        return path
+
+    def test_restore_prefers_exact_then_newest_progress_then_newest_version(self):
+        key, prefix = "L-v1-c-s1-01-new", "L-v1-c-s1-01-"
+        entries = {f"{key}-7-1.tar.zst": "2", f"{key}-8-1.tar.zst": "3", f"{prefix}old.tar.zst": "4",
+                   "L-v1-c-s1-011-other.tar.zst": "9"}
+        self.assertEqual(restore_choice(entries, key, prefix), (f"{key}-8-1.tar.zst", False))
+        entries[key + ".tar.zst"] = "1"
+        self.assertEqual(restore_choice(entries, key, prefix), (key + ".tar.zst", True))
+        older = {f"{prefix}old.tar.zst": "4", f"{prefix}older.tar.zst": "1"}
+        self.assertEqual(restore_choice(older, key, prefix), (f"{prefix}old.tar.zst", False))
+        self.assertEqual(restore_choice({}, key, prefix), (None, False))
+
+    def test_split_archive_round_trips_and_counts_once(self):
+        store, data = FakeStore(), bytes(range(256)) * 3
+        with patch("ci_plan.ASSET_LIMIT", 100):
+            store.put("big.tar.zst", self.file("big", data))
+        self.assertEqual(sorted(store.assets), [*(f"big.tar.zst.{i:03d}" for i in range(8)), "big.tar.zst.parts"])
+        self.assertEqual(list(store.entries()), ["big.tar.zst"])
+        self.assertTrue(store.fetch("big.tar.zst", self.root / "restored"))
+        self.assertEqual((self.root / "restored").read_bytes(), data)
+        store.remove(["big.tar.zst"])
+        self.assertEqual(store.assets, {})
+
+    def test_progress_and_full_archives_supersede_older_progress(self):
+        store, archive = FakeStore(), self.file("part", b"outputs")
+        save_archive(store, "k", archive, "1-1")
+        save_archive(store, "k", archive, "2-1")
+        self.assertEqual(list(store.entries()), ["k-2-1.tar.zst"])
+        save_archive(store, "k", archive)
+        self.assertEqual(list(store.entries()), ["k.tar.zst"])
+
+    def test_prune_keeps_current_archives_and_waits_until_all_are_stored(self):
+        store, archive = FakeStore(), self.file("part", b"outputs")
+        tag = ci_plan.platform_tag()
+        current = {f"{tag}-{ci_plan.CACHE_VERSION}-c-s1-01-new.tar.zst", f"{tag}-lean-selection-new.json"}
+        stale = [f"{tag}-{ci_plan.CACHE_VERSION}-c-s1-01-old.tar.zst", f"{tag}-lean-selection-old.json"]
+        for name in [*stale, "unrelated.bin", sorted(current)[0]]:
+            store.put(name, archive)
+        self.assertEqual(prune_store(store, current), [])  # the seal is not stored yet
+        store.put(sorted(current)[1], archive)
+        self.assertEqual(prune_store(store, current), sorted(stale))
+        self.assertEqual(set(store.entries()), current | {"unrelated.bin"})
 
 
 if __name__ == "__main__":

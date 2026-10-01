@@ -35,6 +35,9 @@ jobs:
   plan:
     name: 构建分工
     runs-on: ubuntu-latest
+    # The verified-selection record lives in the draft proof-store release.
+    permissions:
+      contents: write
     outputs:
       stages: ${{ steps.plan.outputs.stages }}
       s1: ${{ steps.plan.outputs.s1 }}
@@ -45,10 +48,11 @@ jobs:
       s6: ${{ steps.plan.outputs.s6 }}
       s7: ${{ steps.plan.outputs.s7 }}
       s8: ${{ steps.plan.outputs.s8 }}
-      seal: ${{ steps.seal.outputs.cache-primary-key }}
-      verified: ${{ steps.seal.outputs.cache-hit }}
+      verified: ${{ steps.seal.outputs.verified }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
@@ -56,11 +60,9 @@ jobs:
         run: python3 tools/ci_plan.py plan
       - name: Look up the verified selection
         id: seal
-        uses: actions/cache/restore@v4
-        with:
-          path: .local/ci/verified.json
-          key: ${{ runner.os }}-${{ runner.arch }}-lean-selection-${{ steps.plan.outputs.selection }}
-          lookup-only: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 tools/ci_plan.py sealed --output "$GITHUB_OUTPUT"
       - uses: actions/upload-artifact@v4
         with:
           name: lean-plan
@@ -85,6 +87,8 @@ jobs:
 
   lean-s1:
     name: Lean 阶段 1
+    permissions:
+      contents: write
     needs: plan
     if: needs.plan.outputs.verified != 'true' && (github.event_name == 'workflow_dispatch' || !github.event.repository.private)
     strategy:
@@ -96,6 +100,8 @@ jobs:
 
   lean-s2:
     name: Lean 阶段 2
+    permissions:
+      contents: write
     needs: [plan, lean-s1]
     if: fromJSON(needs.plan.outputs.stages) >= 2
     strategy:
@@ -107,6 +113,8 @@ jobs:
 
   lean-s3:
     name: Lean 阶段 3
+    permissions:
+      contents: write
     needs: [plan, lean-s2]
     if: fromJSON(needs.plan.outputs.stages) >= 3
     strategy:
@@ -118,6 +126,8 @@ jobs:
 
   lean-s4:
     name: Lean 阶段 4
+    permissions:
+      contents: write
     needs: [plan, lean-s3]
     if: fromJSON(needs.plan.outputs.stages) >= 4
     strategy:
@@ -129,6 +139,8 @@ jobs:
 
   lean-s5:
     name: Lean 阶段 5
+    permissions:
+      contents: write
     needs: [plan, lean-s4]
     if: fromJSON(needs.plan.outputs.stages) >= 5
     strategy:
@@ -140,6 +152,8 @@ jobs:
 
   lean-s6:
     name: Lean 阶段 6
+    permissions:
+      contents: write
     needs: [plan, lean-s5]
     if: fromJSON(needs.plan.outputs.stages) >= 6
     strategy:
@@ -151,6 +165,8 @@ jobs:
 
   lean-s7:
     name: Lean 阶段 7
+    permissions:
+      contents: write
     needs: [plan, lean-s6]
     if: fromJSON(needs.plan.outputs.stages) >= 7
     strategy:
@@ -162,6 +178,8 @@ jobs:
 
   lean-s8:
     name: Lean 阶段 8
+    permissions:
+      contents: write
     needs: [plan, lean-s7]
     if: fromJSON(needs.plan.outputs.stages) >= 8
     strategy:
@@ -178,10 +196,11 @@ jobs:
     if: >-
       always() && needs.lean-s1.result == 'success'
       && !contains(needs.*.result, 'failure') && !contains(needs.*.result, 'cancelled')
+    permissions:
+      contents: write
     uses: ./.github/workflows/lean-part.yml
     with:
       part: complete
-      seal: ${{ needs.plan.outputs.seal }}
 
   continue:
     name: 到期续跑

@@ -3,21 +3,29 @@
 from __future__ import annotations
 
 import argparse
+import collections
 from collections import defaultdict, deque
 from dataclasses import dataclass
 import hashlib
 import json
 import math
+import io
 import os
 from pathlib import Path
+import platform
 import re
+import shutil
 import signal
 import statistics
 import subprocess
 import sys
 import tarfile
+import tempfile
 import time
 import tomllib
+import urllib.error
+import urllib.parse
+import urllib.request
 
 
 CACHE_VERSION = "lean-parts-v1"
@@ -25,6 +33,8 @@ CACHE_VERSION = "lean-parts-v1"
 CI_FILES = ("tools/ci_plan.py", ".github/workflows/ci.yml", ".github/workflows/lean-part.yml")
 # Seconds per module on a hosted runner, refreshed from CI logs with `ci_plan.py times`.
 TIMES = "tools/ci_times.tsv"
+# Committed module -> shard placement; `plan --rebalance` rewrites it from scratch.
+LAYOUT = "tools/ci_layout.tsv"
 DEFAULT_SECONDS = 10.0
 
 
@@ -108,6 +118,7 @@ class Layout:
     shared_chain: float = 0.5 * 3600  # longest chain worth a short stage of its own
     max_shards: int = 20              # concurrent jobs on a free account
     max_stages: int = 8               # stage jobs defined in ci.yml
+    copy_share: float = 0.05          # rebuilt same-stage imports a new module may cost a shard
 
     @property
     def capacity(self) -> float:
@@ -257,7 +268,7 @@ def digest(records) -> str:
     return hashlib.sha256(json.dumps(records, sort_keys=True, separators=(",", ":")).encode()).hexdigest()
 
 
-def make_plan(root: Path, layout: Layout = Layout()) -> dict:
+def make_plan(root: Path, layout: Layout = Layout(), rebalance: bool = False) -> dict:
     lean = root / "Lean"
     config = tomllib.loads((lean / "lakefile.toml").read_text())
     libraries = config["lean_lib"]
@@ -290,7 +301,15 @@ def make_plan(root: Path, layout: Layout = Layout()) -> dict:
         raise ValueError("A default module imports a non-default library")
     dependencies = {n: local[n] for n in selected}
     cost = estimate_costs(dependencies, read_times(root / TIMES))
-    stages = stage_plan(dependencies, cost, layout)
+    previous = {} if rebalance else read_layout(root / LAYOUT)
+    if previous:
+        assignment = sticky_assignment(dependencies, cost, previous, layout)
+    else:
+        assignment = full_assignment(dependencies, cost, layout)
+    shards = shards_from(assignment, dependencies, cost)
+    slots = sorted({shard["stage"] for shard in shards.values()})
+    if len(slots) > layout.max_stages:
+        raise ValueError(f"{len(slots)} stages exceed the {layout.max_stages} stage jobs in ci.yml; rebalance")
 
     resources = {r["name"]: r for r in config.get("input_file", [])}
     resource_hashes = {
@@ -301,32 +320,21 @@ def make_plan(root: Path, layout: Layout = Layout()) -> dict:
     compatibility = digest([toolchain, hashlib.sha256(manifest).hexdigest()])[:24]
     # New globs or paper targets do not change an existing module's compiler settings.
     package_options = {k: v for k, v in config.items() if k not in {"defaultTargets", "lean_lib", "input_file"}}
-    # A shard owns the modules it builds first; a later shard of the same stage that also
-    # needs them builds a private copy and leaves them out of its archive.
-    owner, stage_of = {}, {}
-    for k, shards in enumerate(stages, 1):
-        for j, shard in enumerate(shards, 1):
-            shard["name"], shard["stage"] = f"s{k}-{j:02d}", k
-            shard["owned"] = sorted(n for n in shard["build"] if n not in owner)
-            owner.update(dict.fromkeys(shard["owned"], shard["name"]))
-            stage_of[shard["name"]] = k
-    if owner.keys() != dependencies.keys():
-        raise ValueError("Every default module needs exactly one owning shard")
     position = {n: i for i, n in enumerate(dependency_order(dependencies))}
     parts = {}
-    for shard in (shard for shards in stages for shard in shards):
+    for name, shard in sorted(shards.items(), key=lambda item: (item[1]["stage"], item[0])):
         inputs = closure(shard["owned"], dependencies)
-        upstream = sorted({owner[n] for n in inputs - shard["build"]})
-        if any(stage_of[u] >= shard["stage"] for u in upstream):
-            raise ValueError(f"{shard['name']} imports from its own or a later stage")
+        upstream = sorted({assignment[n] for n in inputs - shard["build"]})
+        if any(shards[u]["stage"] >= shard["stage"] for u in upstream):
+            raise ValueError(f"{name} imports from its own or a later stage")
         needed = sorted({r for n in inputs for r in owners[n].get("needs", [])})
         if any(n not in resources for n in needed):
-            raise ValueError(f"Unknown resource input in {shard['name']}")
+            raise ValueError(f"Unknown resource input in {name}")
         module_options = {
             n: {k: v for k, v in owners[n].items() if k not in {"globs", "roots"}}
             for n in inputs
         }
-        targets = ["+" + n for n in sorted(shard["sinks"])]
+        targets = ["+" + n for n in shard["targets"]]
         fingerprint = digest({
             "modules": {n: source_hashes[n] for n in sorted(inputs)},
             "owned": shard["owned"], "targets": targets, "options": module_options,
@@ -336,7 +344,7 @@ def make_plan(root: Path, layout: Layout = Layout()) -> dict:
         chain = {}
         for n in sorted(shard["build"], key=position.get):
             chain[n] = cost[n] + max((chain[d] for d in dependencies[n] if d in chain), default=0.0)
-        parts[shard["name"]] = {
+        parts[name] = {
             "stage": shard["stage"], "modules": shard["owned"], "targets": targets,
             "upstream": upstream, "fingerprint": fingerprint, "module_count": len(shard["owned"]),
             "hours": round(max(shard["work"] / layout.workers, max(chain.values())) / 3600, 2),
@@ -347,16 +355,105 @@ def make_plan(root: Path, layout: Layout = Layout()) -> dict:
                 for p in CI_FILES if (root / p).is_file()}
     selection = digest({"version": CACHE_VERSION, "compatibility": compatibility, "ci": ci_files,
                         "parts": {g: p["fingerprint"] for g, p in parts.items()}})
-    matrices = {
-        str(k): {"include": [{"part": s["name"], "dependencies": artifact_pattern(parts[s["name"]]["upstream"])}
-                             for s in shards]}
-        for k, shards in enumerate(stages, 1)
-    }
-    parts["complete"] = {"stage": len(stages) + 1, "modules": [], "targets": [], "upstream": sorted(stage_of),
+    # Stage numbers stay in shard names so that caches survive; jobs run them in order.
+    stages = [[n for n, p in parts.items() if p["stage"] == stage] for stage in slots]
+    parts["complete"] = {"stage": slots[-1] + 1, "modules": [], "targets": [], "upstream": sorted(parts),
                          "fingerprint": selection, "module_count": 0, "hours": 0.0}
     return {"version": CACHE_VERSION, "compatibility": compatibility, "selection": selection,
-            "module_count": len(selected), "stages": [[s["name"] for s in shards] for shards in stages],
-            "parts": parts, "matrices": matrices}
+            "module_count": len(selected), "libraries": sorted(defaults), "stages": stages,
+            "parts": parts, "assignment": assignment, "placed": len(set(assignment) - set(previous))}
+
+
+def stage_number(shard: str) -> int:
+    return int(shard[1:shard.index("-")])
+
+
+def family(name: str) -> str:
+    parts = name.split(".")
+    return ".".join(parts[:5] if parts[1:2] == ["Versions"] else parts[:3])
+
+
+def read_layout(path: Path) -> dict[str, str]:
+    if not path.is_file():
+        return {}
+    return dict(reversed(line.split("\t")) for line in path.read_text().splitlines())
+
+
+def write_layout(path: Path, assignment: dict[str, str]):
+    path.write_text("".join(f"{shard}\t{name}\n" for name, shard in sorted(assignment.items())))
+
+
+def full_assignment(dependencies, cost, layout: Layout) -> dict[str, str]:
+    # A shard owns the modules it builds first; a later shard of the same stage that also
+    # needs them builds a private copy and leaves them out of its archive.
+    assignment = {}
+    for k, shards in enumerate(stage_plan(dependencies, cost, layout), 1):
+        for j, shard in enumerate(shards, 1):
+            for name in sorted(shard["build"]):
+                assignment.setdefault(name, f"s{k}-{j:02d}")
+    return assignment
+
+
+def sticky_assignment(dependencies, cost, previous: dict[str, str], layout: Layout) -> dict[str, str]:
+    """Keep committed placements and put new or displaced modules beside their imports.
+
+    Existing shards then change only by gaining modules, so a migration rebuilds little
+    more than what it adds. A module whose same-stage imports live in other shards would
+    have to rebuild them; when those copies cost more than a small share of a shard, it
+    waits one stage instead.
+    """
+    assignment, load = {}, defaultdict(float)
+    by_stage, families = defaultdict(set), defaultdict(collections.Counter)
+    members = defaultdict(set)
+    for shard in previous.values():
+        by_stage[stage_number(shard)].add(shard)
+
+    def place(name):
+        imports_ = dependencies[name]
+        stage = max((stage_number(assignment[d]) for d in imports_), default=1)
+        same = [d for d in imports_ if stage_number(assignment[d]) == stage]
+        home = collections.Counter(assignment[d] for d in same).most_common(1)[0][0] if same else None
+        if home is not None and load[home] + cost[name] > layout.capacity:
+            home = None
+        others = [d for d in same if assignment[d] != home]
+        copies = sum(cost[n] for n in ancestors_within(others, dependencies, members[stage])
+                     if assignment[n] != home)
+        if copies > layout.capacity * layout.copy_share:
+            stage, home = stage + 1, None
+        if home is not None:
+            return home
+        room = [s for s in by_stage[stage] if load[s] + cost[name] <= layout.capacity]
+        if room:
+            return max(room, key=lambda s: (families[s][family(name)], -load[s], s))
+        taken = [int(s.split("-")[1]) for s in by_stage[stage]]
+        return f"s{stage}-{max(taken, default=0) + 1:02d}"
+
+    for name in dependency_order(dependencies):
+        shard = previous.get(name)
+        if shard is None or any(stage_number(assignment[d]) > stage_number(shard) for d in dependencies[name]):
+            shard = place(name)
+        assignment[name] = shard
+        load[shard] += cost[name]
+        families[shard][family(name)] += 1
+        members[stage_number(shard)].add(name)
+        by_stage[stage_number(shard)].add(shard)
+    return assignment
+
+
+def shards_from(assignment: dict[str, str], dependencies, cost) -> dict[str, dict]:
+    owned, members = defaultdict(list), defaultdict(set)
+    for name, shard in assignment.items():
+        owned[shard].append(name)
+        members[stage_number(shard)].add(name)
+    shards = {}
+    for shard, names in owned.items():
+        names = set(names)
+        imported = {d for n in names for d in dependencies[n] if d in names}
+        targets = sorted(names - imported)
+        build = ancestors_within(targets, dependencies, members[stage_number(shard)])
+        shards[shard] = {"stage": stage_number(shard), "owned": sorted(names), "targets": targets,
+                         "build": build, "work": sum(cost[n] for n in build)}
+    return shards
 
 
 def artifact_pattern(upstream: list[str]) -> str:
@@ -534,9 +631,201 @@ def update_times(path: Path, logs, scale: float) -> int:
     return len(measured)
 
 
+STORE_TAG = "proof-cache"
+ASSET_LIMIT = 1900 * 2**20  # GitHub rejects release assets of 2 GiB or more
+
+
+def platform_tag() -> str:
+    return f"{os.environ.get('RUNNER_OS', platform.system())}-{os.environ.get('RUNNER_ARCH', platform.machine())}"
+
+
+def part_prefix(plan: dict, name: str) -> str:
+    return f"{platform_tag()}-{plan['version']}-{plan['compatibility']}-{name}-"
+
+
+def part_key(plan: dict, name: str) -> str:
+    return part_prefix(plan, name) + plan["parts"][name]["fingerprint"]
+
+
+def seal_name(plan: dict) -> str:
+    return f"{platform_tag()}-lean-selection-{plan['selection']}.json"
+
+
+def restore_choice(entries: dict[str, str], key: str, prefix: str):
+    """Exact archive, else the newest progress for this content, else the newest of this part."""
+    exact = key + ".tar.zst"
+    if exact in entries:
+        return exact, True
+    for start in (key + "-", prefix):
+        found = [n for n in entries if n.startswith(start) and n.endswith(".tar.zst")]
+        if found:
+            return max(found, key=lambda n: (entries[n], n)), False
+    return None, False
+
+
+def superseded(entries: dict[str, str], keep: set[str]) -> list[str]:
+    ours = (f"{platform_tag()}-{CACHE_VERSION}-", f"{platform_tag()}-lean-selection-")
+    return sorted(n for n in entries if n.startswith(ours) and n not in keep)
+
+
+class ReleaseStore:
+    """Checked part archives kept as assets of one draft release of this repository.
+
+    Release assets have no total size limit and never expire, unlike Actions caches. A
+    draft stays out of public view but is visible only to tokens with push access, so a
+    job that uses the store needs `contents: write`. Archives over the asset limit are
+    split; their `.parts` record is uploaded last, so an interrupted upload stays invisible.
+    """
+
+    def __init__(self, repo: str, token: str):
+        self.repo, self.token = repo, token
+        self.release_id, self.assets = None, None
+
+    def request(self, method, url, data=None, headers=None):
+        request = urllib.request.Request(url, data=data, method=method)
+        # Asset downloads redirect to storage that rejects a second credential.
+        request.add_unredirected_header("Authorization", f"Bearer {self.token}")
+        for key, value in {"Accept": "application/vnd.github+json", "X-GitHub-Api-Version": "2022-11-28",
+                           **(headers or {})}.items():
+            request.add_header(key, value)
+        return urllib.request.urlopen(request, timeout=900)
+
+    def api(self, method, path, body=None):
+        data = None if body is None else json.dumps(body).encode()
+        headers = {"Content-Type": "application/json"} if data else None
+        with self.request(method, f"https://api.github.com/repos/{self.repo}/{path}", data, headers) as response:
+            payload = response.read()
+        return json.loads(payload) if payload else None
+
+    def pages(self, path):
+        page = 1
+        while True:
+            items = self.api("GET", f"{path}?per_page=100&page={page}")
+            yield from items
+            if len(items) < 100:
+                return
+            page += 1
+
+    def open(self, create=False) -> bool:
+        if self.release_id is None:
+            self.release_id = next((r["id"] for r in self.pages("releases") if r["tag_name"] == STORE_TAG), None)
+        if self.release_id is None and create:
+            self.release_id = self.api("POST", "releases", {
+                "tag_name": STORE_TAG, "name": "CI proof cache", "draft": True,
+                "body": "Checked Lean build outputs kept between CI runs by tools/ci_plan.py. Not a release."})["id"]
+        if self.release_id is not None and self.assets is None:
+            self.assets = {a["name"]: a for a in self.pages(f"releases/{self.release_id}/assets")
+                           if a["state"] == "uploaded"}
+        return self.release_id is not None
+
+    def entries(self) -> dict[str, str]:
+        """Complete archives by name, with upload times; a split archive counts once."""
+        if not self.open():
+            return {}
+        return {n.removesuffix(".parts"): a["created_at"] for n, a in self.assets.items()
+                if not re.search(r"\.\d{3}$", n)}
+
+    def download(self, asset, output):
+        with self.request("GET", asset["url"], headers={"Accept": "application/octet-stream"}) as response:
+            shutil.copyfileobj(response, output, 1 << 20)
+
+    def fetch(self, name: str, path: Path) -> bool:
+        if name not in self.entries():
+            return False
+        pieces = [name]
+        if name not in self.assets:
+            record = io.BytesIO()
+            self.download(self.assets[name + ".parts"], record)
+            pieces = [f"{name}.{i:03d}" for i in range(int(record.getvalue()))]
+        path.parent.mkdir(parents=True, exist_ok=True)
+        temporary = path.with_name(path.name + ".download")
+        with temporary.open("wb") as output:
+            for piece in pieces:
+                self.download(self.assets[piece], output)
+        temporary.replace(path)
+        return True
+
+    def upload(self, name: str, source: Path):
+        if name in self.assets:
+            self.api("DELETE", f"releases/assets/{self.assets.pop(name)['id']}")
+        url = (f"https://uploads.github.com/repos/{self.repo}/releases/{self.release_id}/assets"
+               f"?name={urllib.parse.quote(name)}")
+        headers = {"Content-Type": "application/octet-stream", "Content-Length": str(source.stat().st_size)}
+        with source.open("rb") as body, self.request("POST", url, body, headers) as response:
+            self.assets[name] = json.loads(response.read())
+
+    def put(self, name: str, path: Path):
+        self.open(create=True)
+        size = path.stat().st_size
+        if size <= ASSET_LIMIT:
+            self.upload(name, path)
+            return
+        count = math.ceil(size / ASSET_LIMIT)
+        with tempfile.TemporaryDirectory() as temporary, path.open("rb") as source:
+            for i in range(count):
+                piece = Path(temporary) / f"{i:03d}"
+                with piece.open("wb") as output:
+                    output.write(source.read(ASSET_LIMIT))
+                self.upload(f"{name}.{i:03d}", piece)
+                piece.unlink()
+            record = Path(temporary) / "parts"
+            record.write_text(str(count))
+            self.upload(name + ".parts", record)
+
+    def remove(self, names):
+        self.open()
+        for name in names:
+            for asset in [n for n in self.assets if n == name or n.startswith(name + ".")]:
+                self.api("DELETE", f"releases/assets/{self.assets.pop(asset)['id']}")
+
+
+def open_store() -> ReleaseStore | None:
+    repo, token = os.environ.get("GITHUB_REPOSITORY"), os.environ.get("GH_TOKEN")
+    return ReleaseStore(repo, token) if repo and token else None
+
+
+def store_call(action, fallback=None):
+    # The store only saves time; when it is unreachable a run rebuilds instead of failing.
+    try:
+        return action()
+    except (urllib.error.URLError, OSError, ValueError) as error:
+        print(f"::warning::Proof store unavailable: {error}")
+        return fallback
+
+
+def save_archive(store: ReleaseStore, key: str, archive: Path, progress: str | None = None):
+    name = f"{key}-{progress}.tar.zst" if progress else key + ".tar.zst"
+    store.put(name, archive)
+    # Older progress for this content is superseded by the newer progress or the full archive.
+    store.remove([n for n in store.entries() if n.startswith(key + "-") and n != name])
+
+
+def prune_store(store: ReleaseStore, keep: set[str]) -> list[str]:
+    entries = store.entries()
+    # Older versions stay as fallbacks until every current archive is stored.
+    if not keep <= entries.keys():
+        return []
+    stale = superseded(entries, keep)
+    store.remove(stale)
+    return stale
+
+
+def coverage(root: Path, plan: dict) -> tuple[set[str], set[str]]:
+    """Default modules as Lake enumerates them, against the modules the parts own."""
+    targets = [f"{lib}:modules" for lib in plan["libraries"]]
+    result = subprocess.run(["lake", "--no-build", "query", "--json", *targets], cwd=root / "Lean",
+                            capture_output=True, text=True)
+    if result.returncode != 0:
+        raise RuntimeError(result.stdout + result.stderr)
+    listed = {m for line in result.stdout.splitlines() if line.strip() for m in json.loads(line)}
+    owned = {m for part in plan["parts"].values() for m in part["modules"]}
+    return listed - owned, owned - listed
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("command", choices=["plan", "part", "build", "pack", "unpack", "times"])
+    parser.add_argument("command", choices=["plan", "part", "build", "pack", "unpack", "times",
+                                            "fetch", "save", "sealed", "seal", "prune", "coverage"])
     parser.add_argument("logs", nargs="*", type=Path, help="Lake build logs read by `times`")
     parser.add_argument("--root", type=Path, default=Path.cwd())
     parser.add_argument("--plan", type=Path, default=Path(".local/ci/plan.json"))
@@ -546,41 +835,90 @@ def main():
     parser.add_argument("--archive", type=Path)
     parser.add_argument("--deadline", type=float, help="Unix time at which a build stops and keeps its progress")
     parser.add_argument("--scale", type=float, default=1.0, help="runner seconds per logged second, for `times`")
+    parser.add_argument("--rebalance", action="store_true", help="plan from scratch and rewrite the layout")
+    parser.add_argument("--update-layout", action="store_true", help="record where new modules were placed")
+    parser.add_argument("--progress", help="save the archive as progress under this run tag")
     args = parser.parse_args()
     root = args.root.resolve()
     if args.command == "times":
         print(f"Recorded {update_times(root / TIMES, args.logs, args.scale)} module times in {TIMES}")
         return
     if args.command == "plan":
-        plan = make_plan(root)
+        layout = Layout()
+        plan = make_plan(root, layout, rebalance=args.rebalance)
+        assignment = plan.pop("assignment")
+        if args.rebalance or args.update_layout:
+            write_layout(root / LAYOUT, assignment)
         args.plan.parent.mkdir(parents=True, exist_ok=True)
         args.plan.write_text(json.dumps(plan, indent=2) + "\n")
         outputs = {"stages": len(plan["stages"]), "selection": plan["selection"]}
-        unused = {"include": [{"part": "unused", "dependencies": ""}]}
-        for k in range(1, Layout().max_stages + 1):
-            outputs[f"s{k}"] = json.dumps(plan["matrices"].get(str(k), unused), separators=(",", ":"))
+        for k in range(1, layout.max_stages + 1):
+            names = plan["stages"][k - 1] if k <= len(plan["stages"]) else ["unused"]
+            outputs[f"s{k}"] = json.dumps({"include": [{"part": n} for n in names]}, separators=(",", ":"))
         append_outputs(os.environ.get("GITHUB_OUTPUT"), outputs)
         print(f"{plan['module_count']} modules in {len(plan['stages'])} stages; selection {plan['selection']}")
         for k, names in enumerate(plan["stages"], 1):
             shards = [plan["parts"][n] for n in names]
             print(f"stage {k}: {len(names)} shards, {sum(p['module_count'] for p in shards)} modules,"
                   f" longest estimate {max(p['hours'] for p in shards):.2f} h")
+        if plan["placed"] and not (args.rebalance or args.update_layout):
+            print(f"::notice::{plan['placed']} modules are not in {LAYOUT};"
+                  " `python3 tools/ci_plan.py plan --update-layout` keeps their placement")
+        for name, part in plan["parts"].items():
+            if part["hours"] > 1.3 * layout.window / 3600:
+                print(f"::warning::{name} is estimated at {part['hours']} h;"
+                      " `python3 tools/ci_plan.py plan --rebalance` spreads the stages again")
         return
     if args.command == "unpack":
         unpack(root, args.archive)
         return
     plan = json.loads(args.plan.read_text())
+    store = open_store()
+    if args.command == "sealed":
+        entries = store_call(store.entries, {}) if store else {}
+        print(f"Proof store holds {len(entries)} archives" if entries or (store and store.release_id)
+              else "No proof store found")
+        append_outputs(args.output, {"verified": str(seal_name(plan) in entries).lower()})
+        return
+    if args.command == "seal":
+        record = Path(tempfile.mkdtemp()) / "selection.json"
+        record.write_text(json.dumps({"commit": os.environ.get("GITHUB_SHA"), "run": os.environ.get("GITHUB_RUN_ID")}))
+        if store:
+            store_call(lambda: store.put(seal_name(plan), record))
+        return
+    if args.command == "prune":
+        keep = {part_key(plan, n) + ".tar.zst" for n in plan["parts"] if n != "complete"} | {seal_name(plan)}
+        stale = store_call(lambda: prune_store(store, keep), []) if store else []
+        print(f"Removed {len(stale)} superseded archives from the proof store")
+        return
+    if args.command == "coverage":
+        unowned, unlisted = coverage(root, plan)
+        for label, names in (("not built by any part", unowned), ("not a default module", unlisted)):
+            if names:
+                print(f"{len(names)} modules {label}: {sorted(names)[:20]}", file=sys.stderr)
+        raise SystemExit(1 if unowned or unlisted else 0)
     part = plan["parts"][args.part]
+    archive = args.archive or root / ".local/ci/cache" / f"{args.part}.tar.zst"
     if args.command == "part":
         outputs = {"prefix": f"{plan['version']}-{plan['compatibility']}-{args.part}-",
                    "fingerprint": part["fingerprint"], "modules": part["module_count"],
                    "upstream": artifact_pattern(part["upstream"])}
         append_outputs(args.output, outputs)
         print(json.dumps(outputs))
+    elif args.command == "fetch":
+        entries = store_call(store.entries, {}) if store else {}
+        name, exact = restore_choice(entries, part_key(plan, args.part), part_prefix(plan, args.part))
+        if name and not store_call(lambda: store.fetch(name, archive), False):
+            name, exact = None, False
+        print(f"Restored {name}" if name else f"No stored outputs for this part among {len(entries)} archives")
+        append_outputs(args.output, {"hit": str(exact).lower(), "matched": name or ""})
+    elif args.command == "save":
+        if store:
+            store_call(lambda: save_archive(store, part_key(plan, args.part), archive, args.progress))
     elif args.command == "build":
         raise SystemExit(build_part(root, part, args.check_only, args.output, args.deadline))
     else:
-        pack(root, part["modules"], args.archive)
+        pack(root, part["modules"], archive)
 
 
 if __name__ == "__main__":
