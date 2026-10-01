@@ -346,6 +346,7 @@ def make_plan(root: Path, layout: Layout = Layout(), rebalance: bool = False) ->
             chain[n] = cost[n] + max((chain[d] for d in dependencies[n] if d in chain), default=0.0)
         parts[name] = {
             "stage": shard["stage"], "modules": shard["owned"], "targets": targets,
+            "progress_modules": sorted(shard["build"]),
             "upstream": upstream, "fingerprint": fingerprint, "module_count": len(shard["owned"]),
             "hours": round(max(shard["work"] / layout.workers, max(chain.values())) / 3600, 2),
         }
@@ -358,7 +359,7 @@ def make_plan(root: Path, layout: Layout = Layout(), rebalance: bool = False) ->
     # Stage numbers stay in shard names so that caches survive; jobs run them in order.
     stages = [[n for n, p in parts.items() if p["stage"] == stage] for stage in slots]
     parts["complete"] = {"stage": slots[-1] + 1, "modules": [], "targets": [], "upstream": sorted(parts),
-                         "fingerprint": selection, "module_count": 0, "hours": 0.0}
+                         "progress_modules": [], "fingerprint": selection, "module_count": 0, "hours": 0.0}
     return {"version": CACHE_VERSION, "compatibility": compatibility, "selection": selection,
             "module_count": len(selected), "libraries": sorted(defaults), "stages": stages,
             "parts": parts, "assignment": assignment, "placed": len(set(assignment) - set(previous))}
@@ -562,9 +563,11 @@ def build_part(root: Path, part: dict, check_only: bool = False, output: Path | 
         completed_setup_files(build)
     code = {"incomplete": 75, "cancelled": 130}.get(stopped, process.returncode)
     status = stopped or ("complete" if code == 0 else "failed")
-    built = built_since(build, part["modules"], started)
+    # Same-stage imports may be owned by another shard but are useful progress here.
+    progress_modules = part.get("progress_modules", part["modules"])
+    built = built_since(build, progress_modules, started)
     append_outputs(output, {"status": status, "built": built})
-    print(f"{status}: {built} of {part['module_count']} modules built in this job")
+    print(f"{status}: {built} of {len(progress_modules)} build-scope modules built in this job")
     return code
 
 
@@ -846,6 +849,8 @@ def main():
     parser.add_argument("--rebalance", action="store_true", help="plan from scratch and rewrite the layout")
     parser.add_argument("--update-layout", action="store_true", help="record where new modules were placed")
     parser.add_argument("--progress", help="save the archive as progress under this run tag")
+    parser.add_argument("--checkpoint", action="store_true",
+                        help="include same-stage build dependencies in a resumable archive")
     args = parser.parse_args()
     root = args.root.resolve()
     if args.command == "times":
@@ -931,7 +936,8 @@ def main():
     elif args.command == "build":
         raise SystemExit(build_part(root, part, args.check_only, args.output, args.deadline))
     else:
-        pack(root, part["modules"], archive)
+        modules = part.get("progress_modules", part["modules"]) if args.checkpoint else part["modules"]
+        pack(root, modules, archive)
 
 
 if __name__ == "__main__":

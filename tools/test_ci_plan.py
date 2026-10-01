@@ -96,6 +96,7 @@ class PlanTests(unittest.TestCase):
             builds = stage_builds(plan, dependencies)
             for name, part in parts.items():
                 self.assertLessEqual(set(part["modules"]), builds[name], name)
+                self.assertEqual(set(part["progress_modules"]), builds[name], name)
                 needed = closure(builds[name], dependencies) - builds[name]
                 self.assertEqual(set(part["upstream"]), {owner[m] for m in needed}, name)
                 self.assertTrue(all(parts[u]["stage"] < part["stage"] for u in part["upstream"]), name)
@@ -256,6 +257,53 @@ class PlanTests(unittest.TestCase):
         self.assertEqual(build_part(second, plan["parts"][name], output=output), 0)
         self.assertIn("built=1", output.read_text().splitlines())
 
+    @unittest.skipUnless(shutil.which("lake") and shutil.which("zstd"), "Lean and zstd are required")
+    def test_shared_only_progress_survives_and_resumes_in_another_checkout(self):
+        shared, owned = "H0mework.Physics.SharedProgress", "H0mework.Physics.OwnedProgress"
+        self.sources[shared] = "theorem checkpointWitness : (1 : Nat) = 1 := rfl\n"
+        self.sources[owned] = f"import {shared}\n#eval IO.sleep 15000\n"
+        for name in (shared, owned):
+            self.write_module(name, self.sources[name])
+        self.write_config()
+        self.lake_update()
+        part = {"targets": ["+" + owned], "modules": [owned], "progress_modules": [shared, owned],
+                "module_count": 1}
+        output = self.root / "outputs.txt"
+        self.assertEqual(build_part(self.root, part, output=output, deadline=time.time() + 6), 75)
+        self.assertIn("built=1", output.read_text().splitlines())
+        source_lib = self.root / "Lean/.lake/build/lib/lean"
+        self.assertTrue((source_lib / "H0mework/Physics/SharedProgress.trace").exists())
+        self.assertFalse((source_lib / "H0mework/Physics/OwnedProgress.trace").exists())
+
+        plan = self.root / "plan.json"
+        plan.write_text(json.dumps({"parts": {"s1-02": part}}))
+        archive = self.root / "part.tar.zst"
+        command = [sys.executable, str(Path(ci_plan.__file__).resolve()), "pack", "--root", str(self.root),
+                   "--plan", str(plan), "--part", "s1-02", "--archive", str(archive)]
+        # A full archive cannot publish another shard's modules.
+        self.assertEqual(subprocess.run(command, capture_output=True).returncode, 0)
+        ordinary = self.checkout("ordinary")
+        unpack(ordinary, archive)
+        self.assertFalse((ordinary / "Lean/.lake/build/lib/lean/H0mework/Physics/SharedProgress.olean").exists())
+
+        self.assertEqual(subprocess.run([*command, "--checkpoint"], capture_output=True).returncode, 0)
+        second = self.checkout("resume")
+        unpack(second, archive)
+        check = subprocess.run(["lake", "--no-build", "build", "+" + shared], cwd=second / "Lean", capture_output=True)
+        self.assertEqual(check.returncode, 0, check.stdout + check.stderr)
+        shared_file = second / "Lean/H0mework/Physics/SharedProgress.lean"
+        shared_file.write_text(self.sources[shared] + "-- revised input\n")
+        check = subprocess.run(["lake", "--no-build", "build", "+" + shared], cwd=second / "Lean", capture_output=True)
+        self.assertEqual(check.returncode, 3, check.stdout + check.stderr)
+        shared_file.write_text(self.sources[shared])
+
+        trace = second / "Lean/.lake/build/lib/lean/H0mework/Physics/SharedProgress.trace"
+        timestamp = trace.stat().st_mtime_ns
+        output.unlink()
+        self.assertEqual(build_part(second, part, output=output), 0)
+        self.assertIn("built=1", output.read_text().splitlines())
+        self.assertEqual(trace.stat().st_mtime_ns, timestamp)
+
 
 class StagePlanTests(unittest.TestCase):
     def hub_and_families(self, hub_cost):
@@ -378,6 +426,33 @@ class BuildTests(unittest.TestCase):
         self.assertLess(time.monotonic() - began, 20)
         self.assertEqual((self.outputs()["status"], self.outputs()["built"]), ("incomplete", "1"))
         self.assert_gone(int((self.root / "Lean/child.pid").read_text()))
+
+    def test_same_stage_copy_counts_as_progress_at_deadline_and_cancellation(self):
+        self.part.update(targets=["+H0mework.Pending"], modules=["H0mework.Pending"], module_count=1,
+                         progress_modules=["H0mework.Done", "H0mework.Pending"])
+        for stop in ("deadline", "cancelled"):
+            with self.subTest(stop=stop), self.lake("import time\ntime.sleep(60)\n"):
+                self.output.unlink(missing_ok=True)
+                if stop == "deadline":
+                    code = build_part(self.root, self.part, output=self.output, deadline=time.time() + 1.5)
+                    self.assertEqual(code, 75)
+                else:
+                    timer = threading.Timer(1.0, os.kill, (os.getpid(), signal.SIGTERM))
+                    timer.start()
+                    try:
+                        code = build_part(self.root, self.part, output=self.output)
+                    finally:
+                        timer.cancel()
+                    self.assertEqual(code, 130)
+                self.assertEqual(self.outputs()["built"], "1")
+
+    def test_module_outside_the_build_scope_does_not_request_continuation(self):
+        self.part.update(targets=["+H0mework.Pending"], modules=["H0mework.Pending"], module_count=1,
+                         progress_modules=["H0mework.Pending"])
+        with self.lake("import time\ntime.sleep(60)\n"):
+            code = build_part(self.root, self.part, output=self.output, deadline=time.time() + 1.5)
+        self.assertEqual(code, 75)
+        self.assertEqual((self.outputs()["status"], self.outputs()["built"]), ("incomplete", "0"))
 
     def test_cancellation_signal_stops_the_build(self):
         with self.lake("import time\ntime.sleep(60)\n"):

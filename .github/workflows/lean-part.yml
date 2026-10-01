@@ -113,6 +113,9 @@ jobs:
         if: >-
           always() && steps.build.outputs.started == 'true'
           && (steps.store.outputs.hit != 'true' || steps.build.outputs.current != 'true')
+        env:
+          BUILD_STATUS: ${{ steps.build.outputs.status }}
+          JOB_STATUS: ${{ job.status }}
         run: |
           # Nothing from a cancelled build may still write while its outputs are packed.
           for sig in INT TERM KILL; do
@@ -120,7 +123,11 @@ jobs:
             pkill "-$sig" -x 'lake|lean' || true
             sleep 3
           done
-          python3 tools/ci_plan.py pack --part "$PART" --archive "$ARCHIVE"
+          pack_args=()
+          if [ "$BUILD_STATUS" != complete ] || [ "$JOB_STATUS" != success ]; then
+            pack_args+=(--checkpoint)
+          fi
+          python3 tools/ci_plan.py pack --part "$PART" --archive "$ARCHIVE" "${pack_args[@]}"
       - name: Store the verified part
         if: env.STORE_WRITES == 'true' && steps.store.outputs.hit != 'true' && steps.build.outputs.status == 'complete'
         env:
