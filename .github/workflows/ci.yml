@@ -36,7 +36,15 @@ jobs:
     name: 构建分工
     runs-on: ubuntu-latest
     outputs:
-      matrix: ${{ steps.plan.outputs.matrix }}
+      stages: ${{ steps.plan.outputs.stages }}
+      s1: ${{ steps.plan.outputs.s1 }}
+      s2: ${{ steps.plan.outputs.s2 }}
+      s3: ${{ steps.plan.outputs.s3 }}
+      s4: ${{ steps.plan.outputs.s4 }}
+      s5: ${{ steps.plan.outputs.s5 }}
+      s6: ${{ steps.plan.outputs.s6 }}
+      s7: ${{ steps.plan.outputs.s7 }}
+      s8: ${{ steps.plan.outputs.s8 }}
       seal: ${{ steps.seal.outputs.cache-primary-key }}
       verified: ${{ steps.seal.outputs.cache-hit }}
     steps:
@@ -75,37 +83,109 @@ jobs:
       - run: python3 -m unittest discover -s tools -p 'test_*.py' -v
       - run: make check-map check
 
-  lean-base:
-    name: Lean · 共享基础
+  lean-s1:
+    name: Lean 阶段 1
     needs: plan
     if: needs.plan.outputs.verified != 'true' && (github.event_name == 'workflow_dispatch' || !github.event.repository.private)
-    uses: ./.github/workflows/lean-part.yml
-    with:
-      part: base
-
-  lean-parts:
-    name: Lean · ${{ matrix.part }}
-    needs: [plan, lean-base]
     strategy:
       fail-fast: false
-      matrix: ${{ fromJSON(needs.plan.outputs.matrix) }}
+      matrix: ${{ fromJSON(needs.plan.outputs.s1) }}
     uses: ./.github/workflows/lean-part.yml
     with:
       part: ${{ matrix.part }}
-      dependencies: lean-part-base
+
+  lean-s2:
+    name: Lean 阶段 2
+    needs: [plan, lean-s1]
+    if: fromJSON(needs.plan.outputs.stages) >= 2
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJSON(needs.plan.outputs.s2) }}
+    uses: ./.github/workflows/lean-part.yml
+    with:
+      part: ${{ matrix.part }}
+
+  lean-s3:
+    name: Lean 阶段 3
+    needs: [plan, lean-s2]
+    if: fromJSON(needs.plan.outputs.stages) >= 3
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJSON(needs.plan.outputs.s3) }}
+    uses: ./.github/workflows/lean-part.yml
+    with:
+      part: ${{ matrix.part }}
+
+  lean-s4:
+    name: Lean 阶段 4
+    needs: [plan, lean-s3]
+    if: fromJSON(needs.plan.outputs.stages) >= 4
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJSON(needs.plan.outputs.s4) }}
+    uses: ./.github/workflows/lean-part.yml
+    with:
+      part: ${{ matrix.part }}
+
+  lean-s5:
+    name: Lean 阶段 5
+    needs: [plan, lean-s4]
+    if: fromJSON(needs.plan.outputs.stages) >= 5
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJSON(needs.plan.outputs.s5) }}
+    uses: ./.github/workflows/lean-part.yml
+    with:
+      part: ${{ matrix.part }}
+
+  lean-s6:
+    name: Lean 阶段 6
+    needs: [plan, lean-s5]
+    if: fromJSON(needs.plan.outputs.stages) >= 6
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJSON(needs.plan.outputs.s6) }}
+    uses: ./.github/workflows/lean-part.yml
+    with:
+      part: ${{ matrix.part }}
+
+  lean-s7:
+    name: Lean 阶段 7
+    needs: [plan, lean-s6]
+    if: fromJSON(needs.plan.outputs.stages) >= 7
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJSON(needs.plan.outputs.s7) }}
+    uses: ./.github/workflows/lean-part.yml
+    with:
+      part: ${{ matrix.part }}
+
+  lean-s8:
+    name: Lean 阶段 8
+    needs: [plan, lean-s7]
+    if: fromJSON(needs.plan.outputs.stages) >= 8
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJSON(needs.plan.outputs.s8) }}
+    uses: ./.github/workflows/lean-part.yml
+    with:
+      part: ${{ matrix.part }}
 
   lean-complete:
     name: Lean · 完整选集
-    needs: [plan, lean-base, lean-parts]
+    needs: [plan, lean-s1, lean-s2, lean-s3, lean-s4, lean-s5, lean-s6, lean-s7, lean-s8]
+    # Stages past the plan's last one are skipped; any failed or cancelled stage stops here.
+    if: >-
+      always() && needs.lean-s1.result == 'success'
+      && !contains(needs.*.result, 'failure') && !contains(needs.*.result, 'cancelled')
     uses: ./.github/workflows/lean-part.yml
     with:
-      part: integration
-      dependencies: lean-part-*
+      part: complete
       seal: ${{ needs.plan.outputs.seal }}
 
   continue:
     name: 到期续跑
-    needs: [lean-base, lean-parts, lean-complete]
+    needs: [lean-s1, lean-s2, lean-s3, lean-s4, lean-s5, lean-s6, lean-s7, lean-s8, lean-complete]
     if: >-
       !cancelled() && contains(needs.*.result, 'failure') && github.ref == 'refs/heads/main'
       && github.event_name != 'pull_request' && !github.event.repository.private

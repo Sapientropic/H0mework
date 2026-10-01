@@ -6,11 +6,8 @@ on:
       part:
         required: true
         type: string
-      dependencies:
-        default: ''
-        type: string
       seal:
-        # Integration only: the key that records a verified complete selection.
+        # Complete selection only: the key that records a verified selection.
         default: ''
         type: string
 
@@ -41,6 +38,7 @@ jobs:
         run: python3 tools/ci_plan.py part --part "$PART" --output "$GITHUB_OUTPUT"
       - name: Restore checked outputs
         id: cache
+        if: steps.identity.outputs.modules != '0'
         uses: actions/cache/restore@v4
         with:
           path: .local/ci/cache/${{ inputs.part }}.tar.zst
@@ -52,7 +50,7 @@ jobs:
       - name: Choose verified reuse or a Lean build
         id: mode
         # An exact key is saved only after the whole part built, so a hit is already
-        # verified. Integration still builds to check the complete selection.
+        # verified. The complete selection is always checked.
         env:
           HIT: ${{ steps.cache.outputs.cache-hit }}
           SEAL: ${{ inputs.seal }}
@@ -89,10 +87,10 @@ jobs:
           use-github-cache: false
           use-mathlib-cache: ${{ steps.dependencies.outputs.cache-hit != 'true' }}
       - name: Download current upstream outputs
-        if: steps.mode.outputs.build == 'true' && inputs.dependencies != ''
+        if: steps.mode.outputs.build == 'true' && steps.identity.outputs.upstream != ''
         uses: actions/download-artifact@v4
         with:
-          pattern: ${{ inputs.dependencies }}
+          pattern: ${{ steps.identity.outputs.upstream }}
           merge-multiple: true
           path: .local/ci/upstream
       - name: Restore own and upstream module outputs
@@ -118,7 +116,9 @@ jobs:
         run: lake --no-build build
       - name: Pack this part's module artifacts
         id: pack
-        if: always() && steps.build.outputs.started == 'true' && (steps.cache.outputs.cache-hit != 'true' || steps.build.outputs.current != 'true')
+        if: >-
+          always() && steps.build.outputs.started == 'true' && steps.identity.outputs.modules != '0'
+          && (steps.cache.outputs.cache-hit != 'true' || steps.build.outputs.current != 'true')
         run: |
           # Nothing from a cancelled build may still write while its outputs are packed.
           for sig in INT TERM KILL; do
@@ -128,7 +128,7 @@ jobs:
           done
           python3 tools/ci_plan.py pack --part "$PART" --archive "$ARCHIVE"
       - name: Save the verified part
-        if: steps.cache.outputs.cache-hit != 'true' && steps.build.outputs.status == 'complete'
+        if: steps.identity.outputs.modules != '0' && steps.cache.outputs.cache-hit != 'true' && steps.build.outputs.status == 'complete'
         uses: actions/cache/save@v4
         with:
           path: .local/ci/cache/${{ inputs.part }}.tar.zst

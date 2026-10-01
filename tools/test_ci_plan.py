@@ -1,3 +1,4 @@
+from collections import defaultdict
 from pathlib import Path
 import io
 import json
@@ -14,7 +15,20 @@ import time
 import unittest
 from unittest.mock import patch
 
-from ci_plan import build_part, closure, completed_setup_files, imports, make_plan, pack, unpack
+from ci_plan import (Layout, ancestors_within, build_part, closure, completed_setup_files, estimate_costs,
+                     imports, make_plan, pack, read_times, stage_plan, unpack, update_times)
+
+# A synthetic project with ten-second modules spreads over several stages and shards.
+SPLIT = Layout(window=25, workers=1, fill=1.0, shared_users=99, shared_chain=0)
+
+
+def stage_builds(plan, dependencies):
+    """Modules each part compiles: its targets' closure within its own stage."""
+    members = defaultdict(set)
+    for part in plan["parts"].values():
+        members[part["stage"]] |= set(part["modules"])
+    return {name: ancestors_within([t[1:] for t in part["targets"]], dependencies, members[part["stage"]])
+            for name, part in plan["parts"].items()}
 
 
 class PlanTests(unittest.TestCase):
@@ -64,45 +78,37 @@ class PlanTests(unittest.TestCase):
             '[[input_file]]\nname = "ResourceInput"\npath = "../evidence/source.json"\ntext = false\n'
         )
 
-    def test_default_coverage_and_cross_part_dependencies(self):
-        parts = make_plan(self.root)["parts"]
-        all_modules = [n for p in parts.values() for n in p["modules"]]
-        self.assertEqual(len(all_modules), len(set(all_modules)))
-        self.assertEqual(set(all_modules), set(self.sources) - {"H0mework.Versions.Y.Broken"})
-        dependencies = {n: [d for d in imports(self.sources[n]) if d in all_modules] for n in all_modules}
-        for part in parts.values():
-            roots = [n.removeprefix("+") for n in part["targets"]]
-            self.assertTrue(set(part["modules"]) <= closure(roots, dependencies))
-        self.assertIn("H0mework.Foundation.Shared", parts["base"]["modules"])
-        self.assertIn("H0mework.Chemistry.SourceParsing", parts["base"]["modules"])
-        self.assertIn("H0mework.Chemistry.LAlanineBandCall001.Check", parts["chemistry-1"]["modules"])
+    def dependencies(self, plan):
+        selected = {m for p in plan["parts"].values() for m in p["modules"]}
+        return {n: [d for d in imports(self.sources[n]) if d in selected] for n in selected}
 
-    def test_new_paper_does_not_invalidate_existing_parts(self):
-        before = make_plan(self.root)
-        name = "H0mework.Papers.NewPaper"
-        self.sources[name] = "import H0mework.Physics.Independent\n"
-        self.write_module(name, self.sources[name])
-        self.write_module("H0mework", self.sources["H0mework"] + f"import {name}\n")
-        self.write_config()
-        after = make_plan(self.root)
-        for part in before["parts"]:
-            if part != "integration":
-                self.assertEqual(before["parts"][part]["fingerprint"], after["parts"][part]["fingerprint"], part)
-        self.assertNotEqual(before["parts"]["integration"]["fingerprint"], after["parts"]["integration"]["fingerprint"])
-        self.assertNotEqual(before["selection"], after["selection"])
+    def test_every_module_has_one_owner_and_each_import_is_earlier_or_rebuilt(self):
+        for layout in (Layout(), SPLIT):
+            plan = make_plan(self.root, layout)
+            parts = {n: p for n, p in plan["parts"].items() if n != "complete"}
+            owned = [m for p in parts.values() for m in p["modules"]]
+            self.assertEqual(len(owned), len(set(owned)))
+            self.assertEqual(set(owned), set(self.sources) - {"H0mework.Versions.Y.Broken"})
+            dependencies = self.dependencies(plan)
+            owner = {m: n for n, p in parts.items() for m in p["modules"]}
+            builds = stage_builds(plan, dependencies)
+            for name, part in parts.items():
+                self.assertLessEqual(set(part["modules"]), builds[name], name)
+                needed = closure(builds[name], dependencies) - builds[name]
+                self.assertEqual(set(part["upstream"]), {owner[m] for m in needed}, name)
+                self.assertTrue(all(parts[u]["stage"] < part["stage"] for u in part["upstream"]), name)
+            self.assertEqual(plan["parts"]["complete"]["upstream"], sorted(parts))
+        # The split layout spreads the synthetic project over several stages and shares a module.
+        self.assertGreater(len(plan["stages"]), 1)
+        self.assertGreater(max(map(len, plan["stages"])), 1)
+        self.assertGreater(sum("H0mework.Foundation.Shared" in b for b in builds.values()), 1)
 
-    def test_modules_needing_only_the_base_leave_integration(self):
-        plan = make_plan(self.root)
-        parts = plan["parts"]
-        self.assertEqual(parts["standalone"]["modules"], [
-            "H0mework.Chemistry.LAlanineRefillRows.Block1", "H0mework.Chemistry.LAlanineRefillRows.Block2"])
-        self.assertEqual(parts["standalone"]["targets"], ["+H0mework.Chemistry.LAlanineRefillRows.Block2"])
-        self.assertIn({"part": "standalone"}, plan["matrix"]["include"])
-        # A consumer of a shard keeps waiting; a paper entry stays by rule.
-        for name in ["H0mework.Chemistry.LAlanineThermalLoad.Block1", "H0mework.Papers.BaseOnly"]:
-            self.assertIn(name, parts["integration"]["modules"])
+    def test_plan_is_deterministic(self):
+        self.assertEqual(make_plan(self.root, SPLIT), make_plan(self.root, SPLIT))
 
     def test_selection_follows_content_and_ci_files_not_unrelated_files(self):
+        def fingerprints(plan):
+            return {p: v["fingerprint"] for p, v in plan["parts"].items() if p != "complete"}
         before = make_plan(self.root)
         (self.root / "evidence/notes.md").write_text("not a Lake input\n")
         self.assertEqual(make_plan(self.root)["selection"], before["selection"])
@@ -111,18 +117,24 @@ class PlanTests(unittest.TestCase):
         workflow.write_text("name: CI\n")
         revised_ci = make_plan(self.root)
         self.assertNotEqual(revised_ci["selection"], before["selection"])
-        self.assertEqual({p: v["fingerprint"] for p, v in revised_ci["parts"].items()},
-                         {p: v["fingerprint"] for p, v in before["parts"].items()})
+        self.assertEqual(fingerprints(revised_ci), fingerprints(before))
         self.write_module("H0mework.Physics.Independent", self.sources["H0mework.Physics.Independent"] + "-- revised\n")
         self.assertNotEqual(make_plan(self.root)["selection"], revised_ci["selection"])
 
-    def test_resource_change_invalidates_consumers_but_not_independent_physics(self):
-        before = make_plan(self.root)
+    def test_resource_change_invalidates_exactly_its_consumers(self):
+        before = make_plan(self.root, SPLIT)
         (self.root / "evidence/source.json").write_text('{"result": 2}\n')
-        after = make_plan(self.root)
-        for part in ["base", "chemistry-1", "chemistry-2", "integration"]:
-            self.assertNotEqual(before["parts"][part]["fingerprint"], after["parts"][part]["fingerprint"], part)
-        self.assertEqual(before["parts"]["physics"]["fingerprint"], after["parts"]["physics"]["fingerprint"])
+        after = make_plan(self.root, SPLIT)
+        dependencies = self.dependencies(before)
+        consumers = 0
+        for name, part in before["parts"].items():
+            if name == "complete":
+                continue
+            uses = "H0mework.Chemistry.SourceParsing" in closure(part["modules"], dependencies)
+            consumers += uses
+            changed = part["fingerprint"] != after["parts"][name]["fingerprint"]
+            self.assertEqual(changed, uses, name)
+        self.assertTrue(0 < consumers < len(before["parts"]) - 1)
 
     def test_real_import_header_ignores_comments_and_body_strings(self):
         source = '/- import H0mework.Wrong /- nested -/ -/\nmodule\npublic import H0mework.Foundation.Shared -- note\n'
@@ -134,60 +146,121 @@ class PlanTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "non-default"):
             make_plan(self.root)
 
-    @unittest.skipUnless(shutil.which("lake") and shutil.which("zstd"), "Lean and zstd are required")
-    def test_checked_artifacts_work_in_a_separate_checkout_and_missing_outputs_fail(self):
+    def checkout(self, name):
+        path = self.root / "checkouts" / name
+        shutil.copytree(self.root / "Lean", path / "Lean", ignore=shutil.ignore_patterns(".lake"))
+        shutil.copytree(self.root / "evidence", path / "evidence")
+        return path
+
+    def lake_update(self):
         updated = subprocess.run(["lake", "update"], cwd=self.root / "Lean", capture_output=True, text=True)
         self.assertEqual(updated.returncode, 0, updated.stdout + updated.stderr)
-        plan = make_plan(self.root)
-        ordered = ["base", *sorted(n for n in plan["parts"] if n not in {"base", "integration"}), "integration"]
-        second = self.root / "second-checkout"
-        shutil.copytree(self.root / "Lean", second / "Lean", ignore=shutil.ignore_patterns(".lake"))
-        shutil.copytree(self.root / "evidence", second / "evidence")
-        for name in ordered:
-            part = plan["parts"][name]
-            self.assertEqual(build_part(self.root, part), 0, name)
-            archive = self.root / (name + ".tar.zst")
-            pack(self.root, part["modules"], archive)
-            unpack(second, archive)
-        check = subprocess.run(["lake", "--no-build", "build"], cwd=second / "Lean", capture_output=True, text=True)
+
+    @unittest.skipUnless(shutil.which("lake") and shutil.which("zstd"), "Lean and zstd are required")
+    def test_each_part_builds_from_its_declared_upstream_alone(self):
+        self.lake_update()
+        plan = make_plan(self.root, SPLIT)
+        builds = stage_builds(plan, self.dependencies(plan))
+        archives = {}
+        for names in plan["stages"]:
+            for name in names:
+                part, checkout = plan["parts"][name], self.checkout(name)
+                for upstream in part["upstream"]:
+                    unpack(checkout, archives[upstream])
+                started = time.time_ns()
+                self.assertEqual(build_part(checkout, part), 0, name)
+                lib = checkout / "Lean/.lake/build/lib/lean"
+                fresh = {".".join(p.relative_to(lib).with_suffix("").parts) for p in lib.rglob("*.trace")
+                         if p.stat().st_mtime_ns >= started}
+                # Only this stage's modules compile; everything earlier came from upstream archives.
+                self.assertTrue(set(part["modules"]) <= fresh <= builds[name], name)
+                archives[name] = self.root / (name + ".tar.zst")
+                pack(checkout, part["modules"], archives[name])
+        final = self.checkout("complete")
+        for archive in archives.values():
+            unpack(final, archive)
+        check = subprocess.run(["lake", "--no-build", "build"], cwd=final / "Lean", capture_output=True, text=True)
         self.assertEqual(check.returncode, 0, check.stdout + check.stderr)
-        packet = second / "evidence/source.json"
+        packet = final / "evidence/source.json"
         original = packet.read_bytes()
         packet.write_text('{"result": 2}\n')
-        check = subprocess.run(["lake", "--no-build", "build"], cwd=second / "Lean", capture_output=True, text=True)
+        check = subprocess.run(["lake", "--no-build", "build"], cwd=final / "Lean", capture_output=True, text=True)
         self.assertEqual(check.returncode, 3, check.stdout + check.stderr)
         packet.write_bytes(original)
-        (second / "Lean/.lake/build/lib/lean/H0mework/Physics/Independent.olean").unlink()
-        check = subprocess.run(["lake", "--no-build", "build"], cwd=second / "Lean", capture_output=True, text=True)
+        (final / "Lean/.lake/build/lib/lean/H0mework/Physics/Independent.olean").unlink()
+        check = subprocess.run(["lake", "--no-build", "build"], cwd=final / "Lean", capture_output=True, text=True)
         self.assertEqual(check.returncode, 3, check.stdout + check.stderr)
 
     @unittest.skipUnless(shutil.which("lake") and shutil.which("zstd"), "Lean and zstd are required")
     def test_progress_saved_at_a_deadline_resumes_in_another_checkout(self):
         slow = "H0mework.Physics.Slow"
-        self.sources[slow] = "import H0mework.Physics.Independent\n#eval IO.sleep 8000\n"
+        self.sources[slow] = "import H0mework.Physics.Independent\n#eval IO.sleep 15000\n"
         self.write_module(slow, self.sources[slow])
         self.write_config()
-        updated = subprocess.run(["lake", "update"], cwd=self.root / "Lean", capture_output=True, text=True)
-        self.assertEqual(updated.returncode, 0, updated.stdout + updated.stderr)
+        self.lake_update()
         plan = make_plan(self.root)
-        base, physics = plan["parts"]["base"], plan["parts"]["physics"]
-        self.assertEqual(build_part(self.root, base), 0)
+        name = next(n for n, p in plan["parts"].items() if slow in p["modules"])
+        earlier = [n for names in plan["stages"] for n in names if plan["parts"][n]["stage"] < plan["parts"][name]["stage"]]
+        for n in earlier:
+            self.assertEqual(build_part(self.root, plan["parts"][n]), 0, n)
         output = self.root / "outputs.txt"
-        self.assertEqual(build_part(self.root, physics, output=output, deadline=time.time() + 4), 75)
-        self.assertIn("built=1", output.read_text().splitlines())
-        second = self.root / "second-checkout"
-        shutil.copytree(self.root / "Lean", second / "Lean", ignore=shutil.ignore_patterns(".lake"))
-        shutil.copytree(self.root / "evidence", second / "evidence")
-        for part in (base, physics):
+        self.assertEqual(build_part(self.root, plan["parts"][name], output=output, deadline=time.time() + 6), 75)
+        self.assertNotIn("built=0", output.read_text().splitlines())
+        second = self.checkout("second")
+        for n in [*earlier, name]:
             archive = self.root / "part.tar.zst"
-            pack(self.root, part["modules"], archive)
+            pack(self.root, plan["parts"][n]["modules"], archive)
             unpack(second, archive)
         for target, code in (("+H0mework.Physics.Independent", 0), ("+" + slow, 3)):
             check = subprocess.run(["lake", "--no-build", "build", target], cwd=second / "Lean", capture_output=True, text=True)
             self.assertEqual(check.returncode, code, check.stdout + check.stderr)
         output.unlink()
-        self.assertEqual(build_part(second, physics, output=output), 0)
+        self.assertEqual(build_part(second, plan["parts"][name], output=output), 0)
         self.assertIn("built=1", output.read_text().splitlines())
+
+
+class StagePlanTests(unittest.TestCase):
+    def hub_and_families(self, hub_cost):
+        dependencies = {"R": [], "H": ["R"], "J": [f"F{i}.b" for i in range(4)], "T": ["J"]}
+        for i in range(4):
+            dependencies[f"F{i}.a"], dependencies[f"F{i}.b"] = ["H"], [f"F{i}.a"]
+        cost = {"R": 1, "H": hub_cost, "J": 1, "T": 5}
+        cost.update({n: 10 for n in dependencies if n.startswith("F")})
+        return dependencies, cost
+
+    def test_light_shared_module_is_published_before_parallel_families(self):
+        dependencies, cost = self.hub_and_families(hub_cost=1)
+        layout = Layout(window=25, workers=1, fill=1.0, shared_users=3, shared_chain=5)
+        stages = [[shard["build"] for shard in stage] for stage in stage_plan(dependencies, cost, layout)]
+        self.assertEqual(stages[0], [{"R", "H"}])
+        self.assertEqual(stages[1], [{f"F{i}.a", f"F{i}.b"} for i in range(4)])
+        # The joiner needs every family, so it waits for the next stage with its consumer.
+        self.assertEqual(stages[2], [{"J", "T"}])
+
+    def test_costly_shared_module_is_rebuilt_by_each_family(self):
+        dependencies, cost = self.hub_and_families(hub_cost=10)
+        layout = Layout(window=40, workers=1, fill=1.0, shared_users=3, shared_chain=5)
+        stages = [[shard["build"] for shard in stage] for stage in stage_plan(dependencies, cost, layout)]
+        self.assertEqual(stages[0], [{"R"}])
+        self.assertEqual(stages[1], [{"H", f"F{i}.a", f"F{i}.b"} for i in range(4)])
+        self.assertEqual(stages[2], [{"J", "T"}])
+
+    def test_estimates_prefer_measurement_then_nearest_namespace(self):
+        times = {"A.B.x": 7.0, **{f"A.B.m{i}": float(i) for i in range(1, 6)}, **{f"C.n{i}": 100.0 for i in range(5)}}
+        costs = estimate_costs(["A.B.x", "A.B.new", "A.Z.new", "D.new"], times)
+        self.assertEqual(costs, {"A.B.x": 7.0, "A.B.new": 3.5, "A.Z.new": 3.5, "D.new": 7.0})
+
+    def test_times_command_records_logged_seconds(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            log = root / "run.log"
+            log.write_text("2026-10-01T00:00:00Z ✔ [3/9] Built H0mework.A.B (2.5s)\n"
+                           "✔ [4/9] Built H0mework.A.C (320ms)\n✔ [5/9] Built Mathlib.X (9s)\n"
+                           "ℹ [6/9] Replayed H0mework.A.D\n")
+            table = root / "ci_times.tsv"
+            table.write_text("1\tH0mework.A.B\n5\tH0mework.Z\n")
+            self.assertEqual(update_times(table, [log], 2.0), 2)
+            self.assertEqual(read_times(table), {"H0mework.A.B": 5.0, "H0mework.A.C": 0.6, "H0mework.Z": 5.0})
 
 
 class BuildTests(unittest.TestCase):

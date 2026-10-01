@@ -4,12 +4,15 @@ from __future__ import annotations
 
 import argparse
 from collections import defaultdict, deque
+from dataclasses import dataclass
 import hashlib
 import json
+import math
 import os
 from pathlib import Path
 import re
 import signal
+import statistics
 import subprocess
 import sys
 import tarfile
@@ -20,6 +23,9 @@ import tomllib
 CACHE_VERSION = "lean-parts-v1"
 # Changing these re-runs the complete-selection check; part caches stay valid.
 CI_FILES = ("tools/ci_plan.py", ".github/workflows/ci.yml", ".github/workflows/lean-part.yml")
+# Seconds per module on a hosted runner, refreshed from CI logs with `ci_plan.py times`.
+TIMES = "tools/ci_times.tsv"
+DEFAULT_SECONDS = 10.0
 
 
 def without_comments(text: str) -> str:
@@ -92,50 +98,139 @@ def closure(roots, dependencies):
     return seen
 
 
-def domain(name: str) -> str:
-    parts = name.split(".")
-    if parts[1:2] == ["Versions"]:
-        return parts[3]
-    return parts[1] if len(parts) > 1 else "root"
+@dataclass(frozen=True)
+class Layout:
+    """Stage geometry in seconds of one hosted runner thread."""
+    window: float = 2.75 * 3600       # dependency chain one stage may advance
+    workers: int = 4
+    fill: float = 0.9                 # share of a runner's window given to one shard's work
+    shared_users: int = 3             # shards that would each rebuild a module
+    shared_chain: float = 0.5 * 3600  # longest chain worth a short stage of its own
+    max_shards: int = 20              # concurrent jobs on a free account
+    max_stages: int = 8               # stage jobs defined in ci.yml
+
+    @property
+    def capacity(self) -> float:
+        return self.workers * self.window * self.fill
 
 
-def partition(dependencies):
-    reverse = defaultdict(set)
-    for name, deps in dependencies.items():
-        for dep in deps:
-            reverse[dep].add(name)
-    chemical = {n for n in dependencies if domain(n) == "Chemistry"}
-    chemical_consumers = closure(chemical, reverse)
+def read_times(path: Path) -> dict[str, float]:
+    if not path.is_file():
+        return {}
+    times = {}
+    for line in path.read_text().splitlines():
+        seconds, name = line.split("\t")
+        times[name] = float(seconds)
+    return times
 
-    def initial(name):
-        area = domain(name)
-        if area == "Chemistry":
-            match = re.match(
-                r"H0mework\.Chemistry\.(?:LAlanineBandCall|LAlanineCellField|LAlanineBandTaylor)(\d+)",
-                name,
-            )
-            return f"chemistry-{int(match[1]) % 4}" if match else "integration"
-        if name in chemical_consumers or area in {"Papers", "root"}:
-            return "integration"
-        return {
-            "Arithmetic": "arithmetic", "NavierStokes": "navier-stokes", "Physics": "physics",
-        }.get(area, "structures")
 
-    groups = {n: initial(n) for n in dependencies}
-    # Dependencies used across parallel parts are built once, before the matrix.
-    shared = {
-        dep for name, deps in dependencies.items() if groups[name] != "integration"
-        for dep in deps if groups[name] != groups[dep]
-    }
-    for name in closure(shared, dependencies):
-        groups[name] = "base"
-    # Integration waits for every shard. A module that needs only the base runs beside
-    # them instead; paper entries stay so that a new paper changes integration alone.
-    for name in dependency_order(dependencies):
-        if (groups[name] == "integration" and domain(name) not in {"Papers", "root"}
-                and all(groups[dep] in {"base", "standalone"} for dep in dependencies[name])):
-            groups[name] = "standalone"
-    return groups
+def estimate_costs(modules, times: dict[str, float]) -> dict[str, float]:
+    # An unmeasured module takes the median of its nearest namespace with enough measurements.
+    samples = defaultdict(list)
+    for name, seconds in times.items():
+        parts = name.split(".")
+        for k in range(1, len(parts)):
+            samples[".".join(parts[:k])].append(seconds)
+    medians = {k: statistics.median(v) for k, v in samples.items() if len(v) >= 5}
+    fallback = statistics.median(times.values()) if times else DEFAULT_SECONDS
+    costs = {}
+    for name in modules:
+        parts = name.split(".")
+        prefixes = (".".join(parts[:k]) for k in range(len(parts) - 1, 0, -1))
+        estimate = times[name] if name in times else next((medians[p] for p in prefixes if p in medians), fallback)
+        costs[name] = max(estimate, 0.01)
+    return costs
+
+
+def ancestors_within(starts, dependencies, members):
+    seen, pending = set(starts), list(starts)
+    while pending:
+        for dep in dependencies[pending.pop()]:
+            if dep in members and dep not in seen:
+                seen.add(dep)
+                pending.append(dep)
+    return seen
+
+
+def sinks_of(members, dependencies):
+    imported = {d for n in members for d in dependencies[n] if d in members}
+    return sorted(members - imported)
+
+
+def pack_shards(members, dependencies, cost, capacity, layout):
+    """Group the sinks of one stage so that each shard builds the closure it needs.
+
+    A shard also rebuilds same-stage modules owned by another shard; packing keeps those
+    copies small by placing each sink where its closure is mostly built already.
+    """
+    sinks = sinks_of(members, dependencies)
+    closures = {s: ancestors_within([s], dependencies, members) for s in sinks}
+    work = {s: sum(cost[n] for n in closures[s]) for s in sinks}
+    shards = []
+    for sink in sorted(sinks, key=lambda s: (-work[s], s)):
+        best, best_load = None, None
+        for shard in shards:
+            extra = sum(cost[n] for n in closures[sink] - shard["build"])
+            load = shard["work"] + extra
+            if (load <= capacity or len(shards) >= layout.max_shards) and (best is None or load < best_load):
+                best, best_load = shard, load
+        if best is None:
+            best = {"sinks": [], "build": set(), "work": 0.0}
+            shards.append(best)
+            best_load = work[sink]
+        best["sinks"].append(sink)
+        best["build"] |= closures[sink]
+        best["work"] = best_load
+    return sorted(shards, key=lambda shard: min(shard["sinks"]))
+
+
+def stage_plan(dependencies, cost, layout: Layout = Layout()):
+    """Assign modules to stages of parallel shards.
+
+    Stages follow the dependency chain in windows of `layout.window`. Inside a stage, a
+    module needed by several shards is published first in a short stage when its chain is
+    short; a sink whose closure cannot fit one shard waits for the next stage.
+    """
+    order = dependency_order(dependencies)
+    finish = {}
+    for name in order:
+        finish[name] = cost[name] + max((finish[d] for d in dependencies[name]), default=0.0)
+    window = {n: max(0, math.ceil(finish[n] / layout.window) - 1) for n in order}
+    position = {n: i for i, n in enumerate(order)}
+    stages, pending, current_window = [], set(order), 0
+    while pending:
+        members = {n for n in pending if window[n] <= current_window}
+        while members:
+            local = {}
+            for name in sorted(members, key=position.get):
+                local[name] = cost[name] + max((local[d] for d in dependencies[name] if d in members), default=0.0)
+            waiting = [s for s in sinks_of(members, dependencies)
+                       if any(d in members for d in dependencies[s])
+                       and (local[s] > layout.window
+                            or sum(cost[n] for n in ancestors_within([s], dependencies, members)) > layout.capacity)]
+            if not waiting:
+                break
+            for sink in waiting:
+                window[sink] = current_window + 1
+                members.discard(sink)
+        if members:
+            users = defaultdict(int)
+            for sink in sinks_of(members, dependencies):
+                for name in ancestors_within([sink], dependencies, members):
+                    users[name] += 1
+            shared = [n for n in members if users[n] >= layout.shared_users and local[n] <= layout.shared_chain]
+            early = ancestors_within(shared, dependencies, members)
+            if early and early != members:
+                short = layout.workers * max(layout.shared_chain, max(local[n] for n in early)) * layout.fill
+                stages.append(pack_shards(early, dependencies, cost, short, layout))
+                pending -= early
+                members -= early
+            stages.append(pack_shards(members, dependencies, cost, layout.capacity, layout))
+            pending -= members
+        current_window += 1
+    if len(stages) > layout.max_stages:
+        raise ValueError(f"{len(stages)} stages exceed the {layout.max_stages} stage jobs in ci.yml")
+    return stages
 
 
 def dependency_order(dependencies):
@@ -162,7 +257,7 @@ def digest(records) -> str:
     return hashlib.sha256(json.dumps(records, sort_keys=True, separators=(",", ":")).encode()).hexdigest()
 
 
-def make_plan(root: Path) -> dict:
+def make_plan(root: Path, layout: Layout = Layout()) -> dict:
     lean = root / "Lean"
     config = tomllib.loads((lean / "lakefile.toml").read_text())
     libraries = config["lean_lib"]
@@ -194,16 +289,8 @@ def make_plan(root: Path) -> dict:
     if any(owners[n]["name"] not in defaults for n in selected):
         raise ValueError("A default module imports a non-default library")
     dependencies = {n: local[n] for n in selected}
-    groups = partition(dependencies)
-    modules = defaultdict(list)
-    imported = defaultdict(set)
-    for name, group in groups.items():
-        modules[group].append(name)
-        for dep in dependencies[name]:
-            if groups[dep] == group:
-                imported[group].add(dep)
-            elif group == "base" or (group != "integration" and groups[dep] != "base"):
-                raise ValueError(f"Invalid shard ordering: {name} imports {dep}")
+    cost = estimate_costs(dependencies, read_times(root / TIMES))
+    stages = stage_plan(dependencies, cost, layout)
 
     resources = {r["name"]: r for r in config.get("input_file", [])}
     resource_hashes = {
@@ -214,38 +301,69 @@ def make_plan(root: Path) -> dict:
     compatibility = digest([toolchain, hashlib.sha256(manifest).hexdigest()])[:24]
     # New globs or paper targets do not change an existing module's compiler settings.
     package_options = {k: v for k, v in config.items() if k not in {"defaultTargets", "lean_lib", "input_file"}}
+    # A shard owns the modules it builds first; a later shard of the same stage that also
+    # needs them builds a private copy and leaves them out of its archive.
+    owner, stage_of = {}, {}
+    for k, shards in enumerate(stages, 1):
+        for j, shard in enumerate(shards, 1):
+            shard["name"], shard["stage"] = f"s{k}-{j:02d}", k
+            shard["owned"] = sorted(n for n in shard["build"] if n not in owner)
+            owner.update(dict.fromkeys(shard["owned"], shard["name"]))
+            stage_of[shard["name"]] = k
+    if owner.keys() != dependencies.keys():
+        raise ValueError("Every default module needs exactly one owning shard")
+    position = {n: i for i, n in enumerate(dependency_order(dependencies))}
     parts = {}
-    for group, owned in sorted(modules.items()):
-        owned = sorted(owned)
-        roots = sorted(set(owned) - imported[group])
-        if closure(roots, dependencies) & set(owned) != set(owned):
-            raise ValueError(f"Module cycle or incomplete roots in {group}")
-        inputs = closure(owned, dependencies)
+    for shard in (shard for shards in stages for shard in shards):
+        inputs = closure(shard["owned"], dependencies)
+        upstream = sorted({owner[n] for n in inputs - shard["build"]})
+        if any(stage_of[u] >= shard["stage"] for u in upstream):
+            raise ValueError(f"{shard['name']} imports from its own or a later stage")
         needed = sorted({r for n in inputs for r in owners[n].get("needs", [])})
         if any(n not in resources for n in needed):
-            raise ValueError(f"Unknown resource input in {group}")
+            raise ValueError(f"Unknown resource input in {shard['name']}")
         module_options = {
             n: {k: v for k, v in owners[n].items() if k not in {"globs", "roots"}}
             for n in inputs
         }
+        targets = ["+" + n for n in sorted(shard["sinks"])]
         fingerprint = digest({
             "modules": {n: source_hashes[n] for n in sorted(inputs)},
-            "owned": owned, "options": module_options, "package": package_options,
+            "owned": shard["owned"], "targets": targets, "options": module_options,
+            "package": package_options,
             "resources": {n: [resources[n], resource_hashes[n]] for n in needed},
         })
-        parts[group] = {
-            "modules": owned, "targets": ["+" + n for n in roots],
-            "fingerprint": fingerprint, "module_count": len(owned),
+        chain = {}
+        for n in sorted(shard["build"], key=position.get):
+            chain[n] = cost[n] + max((chain[d] for d in dependencies[n] if d in chain), default=0.0)
+        parts[shard["name"]] = {
+            "stage": shard["stage"], "modules": shard["owned"], "targets": targets,
+            "upstream": upstream, "fingerprint": fingerprint, "module_count": len(shard["owned"]),
+            "hours": round(max(shard["work"] / layout.workers, max(chain.values())) / 3600, 2),
         }
-    matrix = {"include": [{"part": p} for p in parts if p not in {"base", "integration"}]}
     # The verified-selection record exists only after every part of exactly this
     # content passed together, so a run decides from content, not from its diff.
     ci_files = {p: hashlib.sha256((root / p).read_bytes()).hexdigest()
                 for p in CI_FILES if (root / p).is_file()}
     selection = digest({"version": CACHE_VERSION, "compatibility": compatibility, "ci": ci_files,
                         "parts": {g: p["fingerprint"] for g, p in parts.items()}})
+    matrices = {
+        str(k): {"include": [{"part": s["name"], "dependencies": artifact_pattern(parts[s["name"]]["upstream"])}
+                             for s in shards]}
+        for k, shards in enumerate(stages, 1)
+    }
+    parts["complete"] = {"stage": len(stages) + 1, "modules": [], "targets": [], "upstream": sorted(stage_of),
+                         "fingerprint": selection, "module_count": 0, "hours": 0.0}
     return {"version": CACHE_VERSION, "compatibility": compatibility, "selection": selection,
-            "module_count": len(selected), "parts": parts, "matrix": matrix}
+            "module_count": len(selected), "stages": [[s["name"] for s in shards] for shards in stages],
+            "parts": parts, "matrices": matrices}
+
+
+def artifact_pattern(upstream: list[str]) -> str:
+    if not upstream:
+        return ""
+    names = upstream[0] if len(upstream) == 1 else "{" + ",".join(upstream) + "}"
+    return f"lean-part-{names}"
 
 
 def completed_setup_files(build: Path) -> int:
@@ -403,9 +521,23 @@ def unpack(root: Path, archive: Path):
         raise RuntimeError("Artifact decompression failed")
 
 
+def update_times(path: Path, logs, scale: float) -> int:
+    times = read_times(path)
+    measured = {}
+    for log in logs:
+        for line in log.read_text(errors="replace").splitlines():
+            match = re.search(r" Built (H0mework\S*) \(([0-9.]+)(m?s)\)", line)
+            if match:
+                measured[match[1]] = round(float(match[2]) / (1000 if match[3] == "ms" else 1) * scale, 1)
+    times.update(measured)
+    path.write_text("".join(f"{seconds:g}\t{name}\n" for name, seconds in sorted(times.items())))
+    return len(measured)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("command", choices=["plan", "part", "build", "pack", "unpack"])
+    parser.add_argument("command", choices=["plan", "part", "build", "pack", "unpack", "times"])
+    parser.add_argument("logs", nargs="*", type=Path, help="Lake build logs read by `times`")
     parser.add_argument("--root", type=Path, default=Path.cwd())
     parser.add_argument("--plan", type=Path, default=Path(".local/ci/plan.json"))
     parser.add_argument("--part")
@@ -413,16 +545,26 @@ def main():
     parser.add_argument("--check-only", action="store_true")
     parser.add_argument("--archive", type=Path)
     parser.add_argument("--deadline", type=float, help="Unix time at which a build stops and keeps its progress")
+    parser.add_argument("--scale", type=float, default=1.0, help="runner seconds per logged second, for `times`")
     args = parser.parse_args()
     root = args.root.resolve()
+    if args.command == "times":
+        print(f"Recorded {update_times(root / TIMES, args.logs, args.scale)} module times in {TIMES}")
+        return
     if args.command == "plan":
         plan = make_plan(root)
         args.plan.parent.mkdir(parents=True, exist_ok=True)
         args.plan.write_text(json.dumps(plan, indent=2) + "\n")
-        outputs = {"matrix": json.dumps(plan["matrix"], separators=(",", ":")), "selection": plan["selection"]}
+        outputs = {"stages": len(plan["stages"]), "selection": plan["selection"]}
+        unused = {"include": [{"part": "unused", "dependencies": ""}]}
+        for k in range(1, Layout().max_stages + 1):
+            outputs[f"s{k}"] = json.dumps(plan["matrices"].get(str(k), unused), separators=(",", ":"))
         append_outputs(os.environ.get("GITHUB_OUTPUT"), outputs)
-        print(json.dumps({"modules": plan["module_count"],
-            "parts": {n: p["module_count"] for n, p in plan["parts"].items()}, **outputs}, indent=2))
+        print(f"{plan['module_count']} modules in {len(plan['stages'])} stages; selection {plan['selection']}")
+        for k, names in enumerate(plan["stages"], 1):
+            shards = [plan["parts"][n] for n in names]
+            print(f"stage {k}: {len(names)} shards, {sum(p['module_count'] for p in shards)} modules,"
+                  f" longest estimate {max(p['hours'] for p in shards):.2f} h")
         return
     if args.command == "unpack":
         unpack(root, args.archive)
@@ -431,7 +573,8 @@ def main():
     part = plan["parts"][args.part]
     if args.command == "part":
         outputs = {"prefix": f"{plan['version']}-{plan['compatibility']}-{args.part}-",
-                   "fingerprint": part["fingerprint"]}
+                   "fingerprint": part["fingerprint"], "modules": part["module_count"],
+                   "upstream": artifact_pattern(part["upstream"])}
         append_outputs(args.output, outputs)
         print(json.dumps(outputs))
     elif args.command == "build":
