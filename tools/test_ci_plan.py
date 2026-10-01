@@ -207,7 +207,8 @@ class BuildTests(unittest.TestCase):
         bin_dir.mkdir(exist_ok=True)
         script = bin_dir / "lake"
         script.write_text(f"#!{sys.executable}\n" + textwrap.dedent(f"""
-            import pathlib, subprocess, sys
+            import pathlib, signal, subprocess, sys
+            signal.signal(signal.SIGINT, signal.SIG_DFL)
             if sys.argv[1] == "--no-build":
                 sys.exit({probe})
             trace = pathlib.Path(".lake/build/lib/lean/H0mework/Done.trace")
@@ -241,7 +242,8 @@ class BuildTests(unittest.TestCase):
 
     def test_deadline_stops_lake_and_its_children_and_keeps_progress(self):
         child = """
-            child = subprocess.Popen([sys.executable, "-c", "import time; time.sleep(60)"])
+            child = subprocess.Popen([sys.executable, "-c",
+                "import signal, time; signal.signal(signal.SIGINT, signal.SIG_DFL); time.sleep(60)"])
             pathlib.Path("child.pid").write_text(str(child.pid))
             child.wait()
         """
