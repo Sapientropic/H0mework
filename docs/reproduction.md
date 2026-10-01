@@ -87,4 +87,4 @@ Y 来源的唯一性引理在固定依赖下编译失败，原字节保存于非
 
 ## CI 范围
 
-[`ci.yml`](../.github/workflows/ci.yml) 定义两个 job：`evidence-checks` 执行 `make check`，`lean-build` 执行默认 Lean 构建：仓库私有期间只在手动触发（workflow_dispatch）时运行，公开后每次推送运行。其他独立检查通过上述 make targets 运行。云端工作流的执行结果见 [GitHub Actions](https://github.com/Sapientropic/H0mework/actions)。
+CI 按实际改动选择证据检查和分片 Lean 构建，沿用默认库的资源依赖与编译规则。触发条件、分工、缓存键和完整选集验收见 [CI 与增量构建](ci.md)，云端执行结果见 [GitHub Actions](https://github.com/Sapientropic/H0mework/actions)。

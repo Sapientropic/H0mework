@@ -1,0 +1,114 @@
+name: Lean part
+
+on:
+  workflow_call:
+    inputs:
+      part:
+        required: true
+        type: string
+      dependencies:
+        default: ''
+        type: string
+      verify-defaults:
+        default: false
+        type: boolean
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - name: Free runner disk space
+        run: |
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /usr/local/.ghcup \
+            /opt/hostedtoolcache/CodeQL /usr/local/share/boost /usr/share/swift \
+            /usr/local/share/powershell /usr/local/share/chromium /usr/local/lib/node_modules
+          sudo docker image prune --all --force > /dev/null 2>&1 || true
+          df -h /
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: lean-plan
+          path: .local/ci
+      - name: Read part identity
+        id: identity
+        env:
+          PART: ${{ inputs.part }}
+        run: python3 tools/ci_plan.py part --part "$PART" --output "$GITHUB_OUTPUT"
+      - name: Restore fixed dependencies
+        id: dependencies
+        uses: actions/cache@v4
+        with:
+          path: Lean/.lake/packages
+          key: lean-dependencies-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('Lean/lean-toolchain', 'Lean/lake-manifest.json') }}
+      - uses: leanprover/lean-action@v1
+        with:
+          lake-package-directory: Lean
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
+          use-mathlib-cache: ${{ steps.dependencies.outputs.cache-hit != 'true' }}
+      - name: Restore part artifacts
+        id: cache
+        uses: actions/cache/restore@v4
+        with:
+          path: .local/ci/cache/${{ inputs.part }}.tar.zst
+          key: ${{ runner.os }}-${{ runner.arch }}-${{ steps.identity.outputs.prefix }}${{ steps.identity.outputs.fingerprint }}
+          restore-keys: ${{ runner.os }}-${{ runner.arch }}-${{ steps.identity.outputs.prefix }}
+      - name: Download current upstream artifacts
+        if: inputs.dependencies != ''
+        uses: actions/download-artifact@v4
+        with:
+          pattern: ${{ inputs.dependencies }}
+          merge-multiple: true
+          path: .local/ci/upstream
+      - name: Restore upstream and own module outputs
+        env:
+          PART: ${{ inputs.part }}
+        run: |
+          shopt -s nullglob
+          # Current upstream outputs take precedence over an older part cache.
+          for archive in .local/ci/cache/"$PART".tar.zst .local/ci/upstream/*.tar.zst; do
+            python3 tools/ci_plan.py unpack --archive "$archive"
+          done
+      - name: Build part using Lake freshness checks
+        id: build
+        env:
+          PART: ${{ inputs.part }}
+        run: python3 tools/ci_plan.py build --part "$PART" --output "$GITHUB_OUTPUT"
+      - name: Verify the complete default selection
+        if: inputs.verify-defaults
+        working-directory: Lean
+        # Every configured default library must already be current after the merge.
+        run: lake --no-build build
+      - name: Pack this part's module artifacts
+        if: steps.cache.outputs.cache-hit != 'true' || steps.build.outputs.current != 'true'
+        env:
+          PART: ${{ inputs.part }}
+        run: python3 tools/ci_plan.py pack --part "$PART" --archive ".local/ci/cache/$PART.tar.zst"
+      - name: Save updated part cache
+        if: steps.cache.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: .local/ci/cache/${{ inputs.part }}.tar.zst
+          key: ${{ runner.os }}-${{ runner.arch }}-${{ steps.identity.outputs.prefix }}${{ steps.identity.outputs.fingerprint }}
+      - name: Pass checked outputs to downstream jobs
+        uses: actions/upload-artifact@v4
+        with:
+          name: lean-part-${{ inputs.part }}
+          path: .local/ci/cache/${{ inputs.part }}.tar.zst
+          include-hidden-files: true
+          compression-level: 0
+          retention-days: 1
+          if-no-files-found: error
+      - name: Disk usage after build
+        if: always()
+        run: df -h / && du -sh Lean/.lake/build Lean/.lake/packages 2>/dev/null || true
