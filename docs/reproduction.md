@@ -87,4 +87,4 @@ Y 来源的唯一性引理在固定依赖下编译失败，原字节保存于非
 
 ## CI 范围
 
-CI 按实际改动选择证据检查和分片 Lean 构建，沿用默认库的资源依赖与编译规则。触发条件、分工、缓存键和完整选集验收见 [CI 与增量构建](ci.md)，云端执行结果见 [GitHub Actions](https://github.com/Sapientropic/H0mework/actions)。
+CI 每次运行冻结证据检查，并按内容指纹分片构建 Lean，沿用默认库的资源依赖与编译规则。触发条件、分工、缓存键、跨运行续建和完整选集验收见 [CI 与增量构建](ci.md)，云端执行结果见 [GitHub Actions](https://github.com/Sapientropic/H0mework/actions)。

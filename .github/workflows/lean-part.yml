@@ -9,9 +9,10 @@ on:
       dependencies:
         default: ''
         type: string
-      verify-defaults:
-        default: false
-        type: boolean
+      seal:
+        # Integration only: the key that records a verified complete selection.
+        default: ''
+        type: string
 
 permissions:
   contents: read
@@ -20,14 +21,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
     timeout-minutes: 350
+    env:
+      PART: ${{ inputs.part }}
+      ARCHIVE: .local/ci/cache/${{ inputs.part }}.tar.zst
     steps:
-      - name: Free runner disk space
-        run: |
-          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /usr/local/.ghcup \
-            /opt/hostedtoolcache/CodeQL /usr/local/share/boost /usr/share/swift \
-            /usr/local/share/powershell /usr/local/share/chromium /usr/local/lib/node_modules
-          sudo docker image prune --all --force > /dev/null 2>&1 || true
-          df -h /
+      - name: Start the build clock
+        # A build stops 30 minutes before the job limit so its progress can be saved.
+        run: echo "LEAN_DEADLINE=$(( $(date +%s) + 320 * 60 ))" >> "$GITHUB_ENV"
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
@@ -38,16 +38,48 @@ jobs:
           path: .local/ci
       - name: Read part identity
         id: identity
-        env:
-          PART: ${{ inputs.part }}
         run: python3 tools/ci_plan.py part --part "$PART" --output "$GITHUB_OUTPUT"
+      - name: Restore checked outputs
+        id: cache
+        uses: actions/cache/restore@v4
+        with:
+          path: .local/ci/cache/${{ inputs.part }}.tar.zst
+          key: ${{ runner.os }}-${{ runner.arch }}-${{ steps.identity.outputs.prefix }}${{ steps.identity.outputs.fingerprint }}
+          # Progress saved for this exact content first, then the newest earlier version.
+          restore-keys: |
+            ${{ runner.os }}-${{ runner.arch }}-${{ steps.identity.outputs.prefix }}${{ steps.identity.outputs.fingerprint }}-
+            ${{ runner.os }}-${{ runner.arch }}-${{ steps.identity.outputs.prefix }}
+      - name: Choose verified reuse or a Lean build
+        id: mode
+        # An exact key is saved only after the whole part built, so a hit is already
+        # verified. Integration still builds to check the complete selection.
+        env:
+          HIT: ${{ steps.cache.outputs.cache-hit }}
+          SEAL: ${{ inputs.seal }}
+        run: |
+          if [ "$HIT" = true ] && [ -z "$SEAL" ]; then
+            echo "Checked outputs for this exact content exist; passing them on"
+            echo "build=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "build=true" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Free runner disk space
+        if: steps.mode.outputs.build == 'true'
+        run: |
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /usr/local/.ghcup \
+            /opt/hostedtoolcache/CodeQL /usr/local/share/boost /usr/share/swift \
+            /usr/local/share/powershell /usr/local/share/chromium /usr/local/lib/node_modules
+          sudo docker image prune --all --force > /dev/null 2>&1 || true
+          df -h /
       - name: Restore fixed dependencies
+        if: steps.mode.outputs.build == 'true'
         id: dependencies
         uses: actions/cache@v4
         with:
           path: Lean/.lake/packages
           key: lean-dependencies-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('Lean/lean-toolchain', 'Lean/lake-manifest.json') }}
-      - uses: leanprover/lean-action@v1
+      - if: steps.mode.outputs.build == 'true'
+        uses: leanprover/lean-action@v1
         with:
           lake-package-directory: Lean
           auto-config: false
@@ -56,51 +88,86 @@ jobs:
           lint: false
           use-github-cache: false
           use-mathlib-cache: ${{ steps.dependencies.outputs.cache-hit != 'true' }}
-      - name: Restore part artifacts
-        id: cache
-        uses: actions/cache/restore@v4
-        with:
-          path: .local/ci/cache/${{ inputs.part }}.tar.zst
-          key: ${{ runner.os }}-${{ runner.arch }}-${{ steps.identity.outputs.prefix }}${{ steps.identity.outputs.fingerprint }}
-          restore-keys: ${{ runner.os }}-${{ runner.arch }}-${{ steps.identity.outputs.prefix }}
-      - name: Download current upstream artifacts
-        if: inputs.dependencies != ''
+      - name: Download current upstream outputs
+        if: steps.mode.outputs.build == 'true' && inputs.dependencies != ''
         uses: actions/download-artifact@v4
         with:
           pattern: ${{ inputs.dependencies }}
           merge-multiple: true
           path: .local/ci/upstream
-      - name: Restore upstream and own module outputs
-        env:
-          PART: ${{ inputs.part }}
+      - name: Restore own and upstream module outputs
+        if: steps.mode.outputs.build == 'true'
         run: |
           shopt -s nullglob
+          archives=(.local/ci/upstream/*.tar.zst)
           # Current upstream outputs take precedence over an older part cache.
-          for archive in .local/ci/cache/"$PART".tar.zst .local/ci/upstream/*.tar.zst; do
+          if [ -f "$ARCHIVE" ]; then archives=("$ARCHIVE" "${archives[@]}"); fi
+          for archive in "${archives[@]}"; do
             python3 tools/ci_plan.py unpack --archive "$archive"
           done
+          rm -rf .local/ci/upstream
       - name: Build part using Lake freshness checks
+        if: steps.mode.outputs.build == 'true'
         id: build
-        env:
-          PART: ${{ inputs.part }}
-        run: python3 tools/ci_plan.py build --part "$PART" --output "$GITHUB_OUTPUT"
+        # exec lets a cancelled run signal the build directly, which stops Lake cleanly.
+        run: exec python3 tools/ci_plan.py build --part "$PART" --deadline "$LEAN_DEADLINE" --output "$GITHUB_OUTPUT"
       - name: Verify the complete default selection
-        if: inputs.verify-defaults
+        if: inputs.seal != ''
         working-directory: Lean
         # Every configured default library must already be current after the merge.
         run: lake --no-build build
       - name: Pack this part's module artifacts
-        if: steps.cache.outputs.cache-hit != 'true' || steps.build.outputs.current != 'true'
-        env:
-          PART: ${{ inputs.part }}
-        run: python3 tools/ci_plan.py pack --part "$PART" --archive ".local/ci/cache/$PART.tar.zst"
-      - name: Save updated part cache
-        if: steps.cache.outputs.cache-hit != 'true'
+        id: pack
+        if: always() && steps.build.outputs.started == 'true' && (steps.cache.outputs.cache-hit != 'true' || steps.build.outputs.current != 'true')
+        run: |
+          # Nothing from a cancelled build may still write while its outputs are packed.
+          for sig in INT TERM KILL; do
+            pgrep -x 'lake|lean' > /dev/null || break
+            pkill "-$sig" -x 'lake|lean' || true
+            sleep 3
+          done
+          python3 tools/ci_plan.py pack --part "$PART" --archive "$ARCHIVE"
+      - name: Save the verified part
+        if: steps.cache.outputs.cache-hit != 'true' && steps.build.outputs.status == 'complete'
         uses: actions/cache/save@v4
         with:
           path: .local/ci/cache/${{ inputs.part }}.tar.zst
-          key: ${{ runner.os }}-${{ runner.arch }}-${{ steps.identity.outputs.prefix }}${{ steps.identity.outputs.fingerprint }}
+          key: ${{ steps.cache.outputs.cache-primary-key }}
+      - name: Save progress for the next run
+        if: (failure() || cancelled()) && steps.pack.outcome == 'success'
+        uses: actions/cache/save@v4
+        with:
+          path: .local/ci/cache/${{ inputs.part }}.tar.zst
+          key: ${{ steps.cache.outputs.cache-primary-key }}-${{ github.run_id }}-${{ github.run_attempt }}
+      - name: Note a deadline stop
+        if: failure() && steps.build.outputs.status == 'incomplete'
+        env:
+          BUILT: ${{ steps.build.outputs.built }}
+        run: |
+          if [ "$BUILT" = 0 ]; then
+            echo "::error::No module finished before the deadline; continuation stops here"
+          else
+            echo "$BUILT" > ".local/ci/$PART.stopped"
+          fi
+      - name: Request a continuation run
+        if: failure() && steps.build.outputs.status == 'incomplete' && steps.build.outputs.built != '0'
+        uses: actions/upload-artifact@v4
+        with:
+          name: lean-incomplete-${{ inputs.part }}
+          path: .local/ci/${{ inputs.part }}.stopped
+          include-hidden-files: true
+          retention-days: 1
+          overwrite: true
+      - name: Record the verified selection
+        if: inputs.seal != ''
+        run: printf '{"commit":"%s","run":%s}\n' "$GITHUB_SHA" "$GITHUB_RUN_ID" > .local/ci/verified.json
+      - if: inputs.seal != ''
+        uses: actions/cache/save@v4
+        with:
+          path: .local/ci/verified.json
+          key: ${{ inputs.seal }}
       - name: Pass checked outputs to downstream jobs
+        if: inputs.seal == ''
         uses: actions/upload-artifact@v4
         with:
           name: lean-part-${{ inputs.part }}
@@ -109,6 +176,7 @@ jobs:
           compression-level: 0
           retention-days: 1
           if-no-files-found: error
+          overwrite: true
       - name: Disk usage after build
         if: always()
         run: df -h / && du -sh Lean/.lake/build Lean/.lake/packages 2>/dev/null || true

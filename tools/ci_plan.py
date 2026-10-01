@@ -9,14 +9,17 @@ import json
 import os
 from pathlib import Path
 import re
+import signal
 import subprocess
 import sys
 import tarfile
-import threading
+import time
 import tomllib
 
 
 CACHE_VERSION = "lean-parts-v1"
+# Changing these re-runs the complete-selection check; part caches stay valid.
+CI_FILES = ("tools/ci_plan.py", ".github/workflows/ci.yml", ".github/workflows/lean-part.yml")
 
 
 def without_comments(text: str) -> str:
@@ -126,7 +129,33 @@ def partition(dependencies):
     }
     for name in closure(shared, dependencies):
         groups[name] = "base"
+    # Integration waits for every shard. A module that needs only the base runs beside
+    # them instead; paper entries stay so that a new paper changes integration alone.
+    for name in dependency_order(dependencies):
+        if (groups[name] == "integration" and domain(name) not in {"Papers", "root"}
+                and all(groups[dep] in {"base", "standalone"} for dep in dependencies[name])):
+            groups[name] = "standalone"
     return groups
+
+
+def dependency_order(dependencies):
+    order, seen = [], set()
+    for start in sorted(dependencies):
+        if start in seen:
+            continue
+        seen.add(start)
+        stack = [(start, iter(dependencies[start]))]
+        while stack:
+            name, pending = stack[-1]
+            for dep in pending:
+                if dep not in seen:
+                    seen.add(dep)
+                    stack.append((dep, iter(dependencies[dep])))
+                    break
+            else:
+                stack.pop()
+                order.append(name)
+    return order
 
 
 def digest(records) -> str:
@@ -209,32 +238,14 @@ def make_plan(root: Path) -> dict:
             "fingerprint": fingerprint, "module_count": len(owned),
         }
     matrix = {"include": [{"part": p} for p in parts if p not in {"base", "integration"}]}
-    return {"version": CACHE_VERSION, "compatibility": compatibility,
+    # The verified-selection record exists only after every part of exactly this
+    # content passed together, so a run decides from content, not from its diff.
+    ci_files = {p: hashlib.sha256((root / p).read_bytes()).hexdigest()
+                for p in CI_FILES if (root / p).is_file()}
+    selection = digest({"version": CACHE_VERSION, "compatibility": compatibility, "ci": ci_files,
+                        "parts": {g: p["fingerprint"] for g, p in parts.items()}})
+    return {"version": CACHE_VERSION, "compatibility": compatibility, "selection": selection,
             "module_count": len(selected), "parts": parts, "matrix": matrix}
-
-
-def changed_paths(root: Path, event_name: str, event: dict) -> list[str] | None:
-    if event_name not in {"push", "pull_request"}:
-        return None
-    try:
-        if event_name == "pull_request":
-            base, head = event["pull_request"]["base"]["sha"], event["pull_request"]["head"]["sha"]
-            base = subprocess.check_output(["git", "merge-base", base, head], cwd=root, text=True, stderr=subprocess.PIPE).strip()
-        else:
-            base, head = event.get("before"), event.get("after")
-        if not base or not head or set(base) == {"0"}:
-            return None
-        output = subprocess.check_output(["git", "diff", "--name-only", "-z", base, head], cwd=root, stderr=subprocess.PIPE)
-    except subprocess.CalledProcessError:
-        # A force-push can make the previous head unavailable in a fresh checkout.
-        print("Changed-file range unavailable; checking the complete selection", file=sys.stderr)
-        return None
-    return [p.decode() for p in output.split(b"\0") if p]
-
-
-def requires_lean(paths: list[str] | None) -> bool:
-    return paths is None or any(p.startswith(("Lean/", "evidence/", ".github/"))
-        or p == "Makefile" or p.startswith("tools/ci_") for p in paths)
 
 
 def completed_setup_files(build: Path) -> int:
@@ -252,35 +263,94 @@ def completed_setup_files(build: Path) -> int:
     return count
 
 
-def build_part(root: Path, part: dict, check_only: bool = False, output: Path | None = None) -> int:
+def append_outputs(path, values: dict):
+    if path:
+        with open(path, "a") as stream:
+            for key, value in values.items():
+                stream.write(f"{key}={value}\n")
+
+
+def built_since(build: Path, modules: list[str], since_ns: int) -> int:
+    count = 0
+    for name in modules:
+        trace = build / "lib/lean" / (str(Path(*name.split("."))) + ".trace")
+        try:
+            count += trace.stat().st_mtime_ns >= since_ns
+        except FileNotFoundError:
+            continue
+    return count
+
+
+def stop_group(process: subprocess.Popen, grace: float):
+    # Lake runs in its own session, so its process group also holds every lean it started.
+    for sig, wait in ((signal.SIGINT, grace), (signal.SIGTERM, 5.0), (signal.SIGKILL, 5.0)):
+        try:
+            os.killpg(process.pid, sig)
+        except ProcessLookupError:
+            return
+        end = time.monotonic() + wait
+        while time.monotonic() < end:
+            process.poll()
+            try:
+                os.killpg(process.pid, 0)
+            except ProcessLookupError:
+                return
+            time.sleep(0.1)
+
+
+def build_part(root: Path, part: dict, check_only: bool = False, output: Path | None = None,
+               deadline: float | None = None) -> int:
+    append_outputs(output, {"started": "true"})
     if not part["targets"]:
+        append_outputs(output, {"current": "true", "status": "complete", "built": 0})
         return 0
     command = ["lake", "--no-build", "build", *part["targets"]]
     probe = subprocess.run(command, cwd=root / "Lean", capture_output=True, text=True)
-    if output:
-        with output.open("a") as stream:
-            stream.write(f"current={str(probe.returncode == 0).lower()}\n")
+    append_outputs(output, {"current": str(probe.returncode == 0).lower()})
     if probe.returncode == 0:
         print(f"All {part['module_count']} module artifacts are current")
+        append_outputs(output, {"status": "complete", "built": 0})
         return 0
     if check_only or probe.returncode != 3:
         print(probe.stdout + probe.stderr, file=sys.stderr)
+        append_outputs(output, {"status": "failed", "built": 0})
         return probe.returncode
-    stop = threading.Event()
+    build = root / "Lean/.lake/build"
+    started = time.time_ns()
+    stopped = None
 
-    def janitor():
-        while not stop.wait(5):
-            completed_setup_files(root / "Lean/.lake/build")
+    def interrupted(signum, frame):
+        nonlocal stopped
+        stopped = stopped or "cancelled"
 
-    thread = threading.Thread(target=janitor, daemon=True)
-    thread.start()
+    previous = {sig: signal.signal(sig, interrupted) for sig in (signal.SIGINT, signal.SIGTERM)}
     try:
         # Lake decides freshness; a cache hit never bypasses resource/hash checks.
-        return subprocess.run(["lake", "build", *part["targets"]], cwd=root / "Lean").returncode
+        process = subprocess.Popen(["lake", "build", *part["targets"]], cwd=root / "Lean",
+                                   start_new_session=True)
+        swept = time.monotonic()
+        while process.poll() is None and not stopped:
+            if deadline is not None and time.time() >= deadline:
+                stopped = "incomplete"
+            elif time.monotonic() - swept >= 5:
+                completed_setup_files(build)
+                swept = time.monotonic()
+            else:
+                time.sleep(0.5)
+        if stopped:
+            # Lake writes a module's trace only after its outputs, so stopping keeps every
+            # finished module reusable and rebuilds the interrupted ones next time.
+            stop_group(process, 30.0 if stopped == "incomplete" else 3.0)
     finally:
-        stop.set()
-        thread.join()
-        completed_setup_files(root / "Lean/.lake/build")
+        for sig, handler in previous.items():
+            signal.signal(sig, handler)
+        completed_setup_files(build)
+    code = {"incomplete": 75, "cancelled": 130}.get(stopped, process.returncode)
+    status = stopped or ("complete" if code == 0 else "failed")
+    built = built_since(build, part["modules"], started)
+    append_outputs(output, {"status": status, "built": built})
+    print(f"{status}: {built} of {part['module_count']} modules built in this job")
+    return code
 
 
 def artifact_files(build: Path, modules: list[str]):
@@ -299,7 +369,7 @@ def pack(root: Path, modules: list[str], archive: Path):
     temporary = archive.with_suffix(archive.suffix + ".tmp")
     try:
         with temporary.open("wb") as output:
-            compressor = subprocess.Popen(["zstd", "-q", "-3", "-T2", "-c"], stdin=subprocess.PIPE, stdout=output)
+            compressor = subprocess.Popen(["zstd", "-q", "-3", "-T0", "-c"], stdin=subprocess.PIPE, stdout=output)
             try:
                 with tarfile.open(fileobj=compressor.stdin, mode="w|") as tar:
                     for file in artifact_files(build, modules):
@@ -342,20 +412,15 @@ def main():
     parser.add_argument("--output", type=Path)
     parser.add_argument("--check-only", action="store_true")
     parser.add_argument("--archive", type=Path)
+    parser.add_argument("--deadline", type=float, help="Unix time at which a build stops and keeps its progress")
     args = parser.parse_args()
     root = args.root.resolve()
     if args.command == "plan":
         plan = make_plan(root)
         args.plan.parent.mkdir(parents=True, exist_ok=True)
         args.plan.write_text(json.dumps(plan, indent=2) + "\n")
-        paths = changed_paths(root, os.environ.get("GITHUB_EVENT_NAME", "workflow_dispatch"),
-            json.loads(Path(os.environ["GITHUB_EVENT_PATH"]).read_text()) if "GITHUB_EVENT_PATH" in os.environ else {})
-        outputs = {"matrix": json.dumps(plan["matrix"], separators=(",", ":")),
-                   "lean": str(requires_lean(paths)).lower()}
-        if path := os.environ.get("GITHUB_OUTPUT"):
-            with open(path, "a") as stream:
-                for key, value in outputs.items():
-                    stream.write(f"{key}={value}\n")
+        outputs = {"matrix": json.dumps(plan["matrix"], separators=(",", ":")), "selection": plan["selection"]}
+        append_outputs(os.environ.get("GITHUB_OUTPUT"), outputs)
         print(json.dumps({"modules": plan["module_count"],
             "parts": {n: p["module_count"] for n, p in plan["parts"].items()}, **outputs}, indent=2))
         return
@@ -367,13 +432,10 @@ def main():
     if args.command == "part":
         outputs = {"prefix": f"{plan['version']}-{plan['compatibility']}-{args.part}-",
                    "fingerprint": part["fingerprint"]}
-        if args.output:
-            with args.output.open("a") as stream:
-                for key, value in outputs.items():
-                    stream.write(f"{key}={value}\n")
+        append_outputs(args.output, outputs)
         print(json.dumps(outputs))
     elif args.command == "build":
-        raise SystemExit(build_part(root, part, args.check_only, args.output))
+        raise SystemExit(build_part(root, part, args.check_only, args.output, args.deadline))
     else:
         pack(root, part["modules"], args.archive)
 

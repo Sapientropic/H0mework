@@ -16,13 +16,20 @@ on:
   pull_request:
     paths-ignore: *display-files
   workflow_dispatch:
+    inputs:
+      continuation:
+        description: Continuation count after a deadline stop (set by the workflow)
+        type: number
+        default: 0
 
 permissions:
   contents: read
 
 concurrency:
   group: ci-${{ github.event.pull_request.number || github.ref }}
-  cancel-in-progress: true
+  # Pushes replace older runs, whose Lean jobs save their progress first. A dispatched
+  # continuation queues behind the run that requested it.
+  cancel-in-progress: ${{ github.event_name != 'workflow_dispatch' }}
 
 jobs:
   plan:
@@ -30,22 +37,29 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       matrix: ${{ steps.plan.outputs.matrix }}
-      lean: ${{ steps.plan.outputs.lean }}
+      seal: ${{ steps.seal.outputs.cache-primary-key }}
+      verified: ${{ steps.seal.outputs.cache-hit }}
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
       - id: plan
         run: python3 tools/ci_plan.py plan
+      - name: Look up the verified selection
+        id: seal
+        uses: actions/cache/restore@v4
+        with:
+          path: .local/ci/verified.json
+          key: ${{ runner.os }}-${{ runner.arch }}-lean-selection-${{ steps.plan.outputs.selection }}
+          lookup-only: true
       - uses: actions/upload-artifact@v4
         with:
           name: lean-plan
           path: .local/ci/plan.json
           include-hidden-files: true
           retention-days: 1
+          overwrite: true
 
   evidence-checks:
     name: 冻结证据独立检查
@@ -64,7 +78,7 @@ jobs:
   lean-base:
     name: Lean · 共享基础
     needs: plan
-    if: needs.plan.outputs.lean == 'true' && (github.event_name == 'workflow_dispatch' || !github.event.repository.private)
+    if: needs.plan.outputs.verified != 'true' && (github.event_name == 'workflow_dispatch' || !github.event.repository.private)
     uses: ./.github/workflows/lean-part.yml
     with:
       part: base
@@ -74,7 +88,6 @@ jobs:
     needs: [plan, lean-base]
     strategy:
       fail-fast: false
-      max-parallel: 4
       matrix: ${{ fromJSON(needs.plan.outputs.matrix) }}
     uses: ./.github/workflows/lean-part.yml
     with:
@@ -83,9 +96,38 @@ jobs:
 
   lean-complete:
     name: Lean · 完整选集
-    needs: [lean-base, lean-parts]
+    needs: [plan, lean-base, lean-parts]
     uses: ./.github/workflows/lean-part.yml
     with:
       part: integration
       dependencies: lean-part-*
-      verify-defaults: true
+      seal: ${{ needs.plan.outputs.seal }}
+
+  continue:
+    name: 到期续跑
+    needs: [lean-base, lean-parts, lean-complete]
+    if: >-
+      !cancelled() && contains(needs.*.result, 'failure') && github.ref == 'refs/heads/main'
+      && github.event_name != 'pull_request' && !github.event.repository.private
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      actions: write
+    steps:
+      - name: Continue parts that stopped at their deadline
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CONTINUATION: ${{ inputs.continuation || 0 }}
+        run: |
+          stopped=$(gh api --paginate "repos/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID/artifacts" \
+            --jq '.artifacts[].name | select(startswith("lean-incomplete-"))')
+          if [ -z "$stopped" ]; then
+            echo "No part stopped at its deadline with new progress"
+            exit 0
+          fi
+          echo "$stopped"
+          if [ "$CONTINUATION" -ge 12 ]; then
+            echo "::error::Stopped after $CONTINUATION continuation runs"
+            exit 1
+          fi
+          gh workflow run ci.yml --repo "$GITHUB_REPOSITORY" --ref main -f continuation="$((CONTINUATION + 1))"

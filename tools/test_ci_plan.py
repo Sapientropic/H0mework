@@ -3,13 +3,18 @@ import io
 import json
 import os
 import shutil
+import signal
 import subprocess
+import sys
 import tarfile
 import tempfile
+import textwrap
+import threading
+import time
 import unittest
 from unittest.mock import patch
 
-from ci_plan import build_part, changed_paths, closure, completed_setup_files, imports, make_plan, pack, requires_lean, unpack
+from ci_plan import build_part, closure, completed_setup_files, imports, make_plan, pack, unpack
 
 
 class PlanTests(unittest.TestCase):
@@ -25,6 +30,10 @@ class PlanTests(unittest.TestCase):
             "H0mework.Chemistry.SourceParsing": "import H0mework.Foundation.Shared\n",
             "H0mework.Chemistry.LAlanineBandCall001.Check": "import H0mework.Chemistry.SourceParsing\n",
             "H0mework.Chemistry.LAlanineBandCall002.Check": "import H0mework.Chemistry.SourceParsing\n",
+            "H0mework.Chemistry.LAlanineRefillRows.Block1": "import H0mework.Foundation.Shared\n",
+            "H0mework.Chemistry.LAlanineRefillRows.Block2": "import H0mework.Chemistry.LAlanineRefillRows.Block1\n",
+            "H0mework.Chemistry.LAlanineThermalLoad.Block1": "import H0mework.Chemistry.LAlanineBandCall001.Check\n",
+            "H0mework.Papers.BaseOnly": "import H0mework.Foundation.Shared\n",
             "H0mework.Papers.Demo": "import H0mework.Physics.Independent\nimport H0mework.Chemistry.LAlanineBandCall001.Check\n",
             "H0mework.Versions.Y.Broken": "this historical source fails\n",
         }
@@ -80,6 +89,32 @@ class PlanTests(unittest.TestCase):
             if part != "integration":
                 self.assertEqual(before["parts"][part]["fingerprint"], after["parts"][part]["fingerprint"], part)
         self.assertNotEqual(before["parts"]["integration"]["fingerprint"], after["parts"]["integration"]["fingerprint"])
+        self.assertNotEqual(before["selection"], after["selection"])
+
+    def test_modules_needing_only_the_base_leave_integration(self):
+        plan = make_plan(self.root)
+        parts = plan["parts"]
+        self.assertEqual(parts["standalone"]["modules"], [
+            "H0mework.Chemistry.LAlanineRefillRows.Block1", "H0mework.Chemistry.LAlanineRefillRows.Block2"])
+        self.assertEqual(parts["standalone"]["targets"], ["+H0mework.Chemistry.LAlanineRefillRows.Block2"])
+        self.assertIn({"part": "standalone"}, plan["matrix"]["include"])
+        # A consumer of a shard keeps waiting; a paper entry stays by rule.
+        for name in ["H0mework.Chemistry.LAlanineThermalLoad.Block1", "H0mework.Papers.BaseOnly"]:
+            self.assertIn(name, parts["integration"]["modules"])
+
+    def test_selection_follows_content_and_ci_files_not_unrelated_files(self):
+        before = make_plan(self.root)
+        (self.root / "evidence/notes.md").write_text("not a Lake input\n")
+        self.assertEqual(make_plan(self.root)["selection"], before["selection"])
+        workflow = self.root / ".github/workflows/ci.yml"
+        workflow.parent.mkdir(parents=True)
+        workflow.write_text("name: CI\n")
+        revised_ci = make_plan(self.root)
+        self.assertNotEqual(revised_ci["selection"], before["selection"])
+        self.assertEqual({p: v["fingerprint"] for p, v in revised_ci["parts"].items()},
+                         {p: v["fingerprint"] for p, v in before["parts"].items()})
+        self.write_module("H0mework.Physics.Independent", self.sources["H0mework.Physics.Independent"] + "-- revised\n")
+        self.assertNotEqual(make_plan(self.root)["selection"], revised_ci["selection"])
 
     def test_resource_change_invalidates_consumers_but_not_independent_physics(self):
         before = make_plan(self.root)
@@ -98,19 +133,6 @@ class PlanTests(unittest.TestCase):
         self.write_module("H0mework", "import H0mework.Versions.Y.Broken\n")
         with self.assertRaisesRegex(ValueError, "non-default"):
             make_plan(self.root)
-
-    def test_trigger_positive_override_and_near_miss(self):
-        self.assertTrue(requires_lean(["Lean/H0mework/Papers/New.lean"]))
-        self.assertTrue(requires_lean(None))
-        self.assertFalse(requires_lean(["README.md", "docs/assets/banner.svg"]))
-        self.assertFalse(requires_lean(["docs/source/physics/criterion.md"]))
-        self.assertTrue(requires_lean(["evidence/physics/receipt.json"]))
-
-    def test_force_push_without_previous_head_keeps_full_verification(self):
-        with patch("ci_plan.subprocess.check_output", side_effect=subprocess.CalledProcessError(128, ["git", "diff"])):
-            paths = changed_paths(self.root, "push", {"before": "a" * 40, "after": "b" * 40})
-        self.assertIsNone(paths)
-        self.assertTrue(requires_lean(paths))
 
     @unittest.skipUnless(shutil.which("lake") and shutil.which("zstd"), "Lean and zstd are required")
     def test_checked_artifacts_work_in_a_separate_checkout_and_missing_outputs_fail(self):
@@ -138,6 +160,110 @@ class PlanTests(unittest.TestCase):
         (second / "Lean/.lake/build/lib/lean/H0mework/Physics/Independent.olean").unlink()
         check = subprocess.run(["lake", "--no-build", "build"], cwd=second / "Lean", capture_output=True, text=True)
         self.assertEqual(check.returncode, 3, check.stdout + check.stderr)
+
+    @unittest.skipUnless(shutil.which("lake") and shutil.which("zstd"), "Lean and zstd are required")
+    def test_progress_saved_at_a_deadline_resumes_in_another_checkout(self):
+        slow = "H0mework.Physics.Slow"
+        self.sources[slow] = "import H0mework.Physics.Independent\n#eval IO.sleep 8000\n"
+        self.write_module(slow, self.sources[slow])
+        self.write_config()
+        updated = subprocess.run(["lake", "update"], cwd=self.root / "Lean", capture_output=True, text=True)
+        self.assertEqual(updated.returncode, 0, updated.stdout + updated.stderr)
+        plan = make_plan(self.root)
+        base, physics = plan["parts"]["base"], plan["parts"]["physics"]
+        self.assertEqual(build_part(self.root, base), 0)
+        output = self.root / "outputs.txt"
+        self.assertEqual(build_part(self.root, physics, output=output, deadline=time.time() + 4), 75)
+        self.assertIn("built=1", output.read_text().splitlines())
+        second = self.root / "second-checkout"
+        shutil.copytree(self.root / "Lean", second / "Lean", ignore=shutil.ignore_patterns(".lake"))
+        shutil.copytree(self.root / "evidence", second / "evidence")
+        for part in (base, physics):
+            archive = self.root / "part.tar.zst"
+            pack(self.root, part["modules"], archive)
+            unpack(second, archive)
+        for target, code in (("+H0mework.Physics.Independent", 0), ("+" + slow, 3)):
+            check = subprocess.run(["lake", "--no-build", "build", target], cwd=second / "Lean", capture_output=True, text=True)
+            self.assertEqual(check.returncode, code, check.stdout + check.stderr)
+        output.unlink()
+        self.assertEqual(build_part(second, physics, output=output), 0)
+        self.assertIn("built=1", output.read_text().splitlines())
+
+
+class BuildTests(unittest.TestCase):
+    def setUp(self):
+        self.temporary = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temporary.cleanup)
+        self.root = Path(self.temporary.name)
+        (self.root / "Lean").mkdir()
+        self.output = self.root / "outputs.txt"
+        self.part = {"targets": ["+H0mework.Done"], "modules": ["H0mework.Done", "H0mework.Pending"],
+                     "module_count": 2}
+
+    def lake(self, body, probe=3):
+        # Stand-in Lake: the probe exits with `probe`; a build finishes one module,
+        # then runs `body`.
+        bin_dir = self.root / "bin"
+        bin_dir.mkdir(exist_ok=True)
+        script = bin_dir / "lake"
+        script.write_text(f"#!{sys.executable}\n" + textwrap.dedent(f"""
+            import pathlib, subprocess, sys
+            if sys.argv[1] == "--no-build":
+                sys.exit({probe})
+            trace = pathlib.Path(".lake/build/lib/lean/H0mework/Done.trace")
+            trace.parent.mkdir(parents=True, exist_ok=True)
+            trace.write_text("built")
+        """) + textwrap.dedent(body))
+        script.chmod(0o755)
+        return patch.dict(os.environ, {"PATH": f"{bin_dir}{os.pathsep}{os.environ['PATH']}"})
+
+    def outputs(self):
+        return dict(line.split("=", 1) for line in self.output.read_text().splitlines())
+
+    def assert_gone(self, pid):
+        end = time.monotonic() + 5
+        while time.monotonic() < end:
+            try:
+                os.kill(pid, 0)
+            except ProcessLookupError:
+                return
+            time.sleep(0.05)
+        self.fail(f"process {pid} survived the stop")
+
+    def test_status_separates_current_complete_failed_and_probe_errors(self):
+        cases = [(0, "sys.exit(0)", 0, "true", "complete", "0"), (3, "sys.exit(0)", 0, "false", "complete", "1"),
+                 (3, "sys.exit(1)", 1, "false", "failed", "1"), (2, "sys.exit(0)", 2, "false", "failed", "0")]
+        for probe, body, code, current, status, built in cases:
+            with self.subTest(probe=probe, body=body), self.lake(body, probe):
+                self.output.unlink(missing_ok=True)
+                self.assertEqual(build_part(self.root, self.part, output=self.output), code)
+                self.assertEqual(self.outputs(), {"started": "true", "current": current, "status": status, "built": built})
+
+    def test_deadline_stops_lake_and_its_children_and_keeps_progress(self):
+        child = """
+            child = subprocess.Popen([sys.executable, "-c", "import time; time.sleep(60)"])
+            pathlib.Path("child.pid").write_text(str(child.pid))
+            child.wait()
+        """
+        with self.lake(child):
+            began = time.monotonic()
+            code = build_part(self.root, self.part, output=self.output, deadline=time.time() + 1.5)
+        self.assertEqual(code, 75)
+        self.assertLess(time.monotonic() - began, 20)
+        self.assertEqual((self.outputs()["status"], self.outputs()["built"]), ("incomplete", "1"))
+        self.assert_gone(int((self.root / "Lean/child.pid").read_text()))
+
+    def test_cancellation_signal_stops_the_build(self):
+        with self.lake("import time\ntime.sleep(60)\n"):
+            timer = threading.Timer(1.0, os.kill, (os.getpid(), signal.SIGTERM))
+            timer.start()
+            try:
+                code = build_part(self.root, self.part, output=self.output)
+            finally:
+                timer.cancel()
+        self.assertEqual(code, 130)
+        self.assertEqual(self.outputs()["status"], "cancelled")
+        self.assertIs(signal.getsignal(signal.SIGTERM), signal.SIG_DFL)
 
 
 @unittest.skipUnless(shutil.which("zstd"), "zstd is needed for artifact transport")
