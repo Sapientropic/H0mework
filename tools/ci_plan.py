@@ -718,6 +718,14 @@ class ReleaseStore:
                            if a["state"] == "uploaded"}
         return self.release_id is not None
 
+    def dump(self, path: Path):
+        path.write_text(json.dumps({"release": self.release_id, "assets": self.assets or {}}))
+
+    def load(self, path: Path):
+        # A listing taken once by the plan job saves every part from listing the store again.
+        snapshot = json.loads(path.read_text())
+        self.release_id, self.assets = snapshot["release"], snapshot["assets"]
+
     def entries(self) -> dict[str, str]:
         """Complete archives by name, with upload times; a split archive counts once."""
         if not self.open():
@@ -874,8 +882,11 @@ def main():
         return
     plan = json.loads(args.plan.read_text())
     store = open_store()
+    snapshot = args.plan.with_name("store.json")
     if args.command == "sealed":
         entries = store_call(store.entries, {}) if store else {}
+        if store and store.release_id:
+            store.dump(snapshot)
         print(f"Proof store holds {len(entries)} archives" if entries or (store and store.release_id)
               else "No proof store found")
         append_outputs(args.output, {"verified": str(seal_name(plan) in entries).lower()})
@@ -899,6 +910,8 @@ def main():
         raise SystemExit(1 if unowned or unlisted else 0)
     part = plan["parts"][args.part]
     archive = args.archive or root / ".local/ci/cache" / f"{args.part}.tar.zst"
+    if store and snapshot.is_file():
+        store.load(snapshot)
     if args.command == "part":
         outputs = {"prefix": f"{plan['version']}-{plan['compatibility']}-{args.part}-",
                    "fingerprint": part["fingerprint"], "modules": part["module_count"],

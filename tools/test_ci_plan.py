@@ -503,6 +503,16 @@ class StoreTests(unittest.TestCase):
         store.remove(["big.tar.zst"])
         self.assertEqual(store.assets, {})
 
+    def test_listing_taken_once_serves_later_jobs(self):
+        store = FakeStore()
+        store.put("k.tar.zst", self.file("part", b"outputs"))
+        store.dump(self.root / "store.json")
+        later = ReleaseStore("owner/repo", "token")
+        later.load(self.root / "store.json")
+        # No request is needed to list the store again.
+        with patch.object(ReleaseStore, "pages", side_effect=AssertionError("listed again")):
+            self.assertEqual(list(later.entries()), ["k.tar.zst"])
+
     def test_progress_and_full_archives_supersede_older_progress(self):
         store, archive = FakeStore(), self.file("part", b"outputs")
         save_archive(store, "k", archive, "1-1")
