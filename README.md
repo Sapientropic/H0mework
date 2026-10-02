@@ -10,8 +10,8 @@
 
 | 论文 | Lean 入口 |
 | --- | --- |
-| **状态不是历史，源才是**：过程同一性、责任承接与最小修订<br>*The State Is Not the History, the Source Is* | [SourceProcessCore](Lean/H0mework/Papers/SourceProcessCore.lean) |
-| **这浩瀚宇宙里，我们没找到魔法**：Spin×SU(7) 理论的同源生成与经典—量子对应<br>*We Found No Magic in This Mighty Universe* | [PhysicsCommonSource](Lean/H0mework/Papers/PhysicsCommonSource.lean) |
+| **状态不是历史，源才是**：过程同一性、责任承接与最小修订<br>*The State Is Not the History, the Source Is* | [SourceProcessCoreR2](Lean/H0mework/Papers/SourceProcessCoreR2.lean) |
+| **这浩瀚宇宙里，我们没找到魔法**：Spin×SU(7) 理论的同源生成与经典—量子对应<br>*We Found No Magic in This Mighty Universe* | [PhysicsCommonSourceR2](Lean/H0mework/Papers/PhysicsCommonSourceR2.lean) |
 
 ## 更多研究线
 
@@ -41,7 +41,7 @@ make check-map   # 逐字节核对本仓文件与原始来源
 
 - [证据对应表](docs/evidence-map.md)：每篇论文的主张落在哪个模块、哪段程序、哪份回执，包括 Bell 实验数据的独立裁决。
 - [来源材料索引](docs/source-materials.md)：机制说明、认证报告、研究过程材料，以及引用的第三方原文。
-- 论文正文中的"代码与数据可用性"一节，对应本仓的标签 [`papers-2026-09`](https://github.com/Sapientropic/H0mework/tree/papers-2026-09)。
+- 首版论文正文中的"代码与数据可用性"一节，对应标签 [`papers-2026-09`](https://github.com/Sapientropic/H0mework/tree/papers-2026-09)；两篇修订稿的 R2 选集见[证据对应表](docs/evidence-map.md#r2-修订选集)。
 
 `Lean/` 是证明，`scripts/` 是复现程序，`evidence/` 是冻结的计算结果；[`tools/export-map.json`](tools/export-map.json) 记下每个文件的来处与哈希。
 

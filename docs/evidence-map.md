@@ -21,6 +21,7 @@
 | K15 | constrained-local-quantum-k15 |
 | K16 | constrained-local-quantum-k16 |
 | K17 | constrained-local-quantum-k17 |
+| R2 | source-process-core-r2、physics-common-source-r2 |
 | E | observation-dynamics-e |
 | I | observation-dynamics-i |
 
@@ -34,8 +35,8 @@
 
 | 论文 | 来源标签 | 选集条目 |
 | --- | --- | --- |
-| source-process-core（过程核心） | base/H | `source-process-core`（C1–C13 及其直接消费者） |
-| physics-common-source（同源物理） | base/H | `physics-common-source`（P1–P20 及其直接消费者） |
+| source-process-core（过程核心） | R2；首版 base/H | `source-process-core-r2`；首版 `source-process-core{,-supplement}` |
+| physics-common-source（同源物理） | R2；首版 base/F | `physics-common-source-r2`；首版 `physics-common-source{,-f}` |
 | low-energy-phenomenology（低能唯象） | base | `low-energy-phenomenology`（L1–L17 及复现程序） |
 | whole-ledger-accounting（整账会计） | Y/Y1 | `whole-ledger-accounting{,-y1}` |
 | observation-dynamics（动态观察） | H/E/I/X | `observation-dynamics{,-e,-i,-x}` |
@@ -44,7 +45,11 @@
 | constrained-local-quantum（Case 5A） | T/T2/T3/V/X/K15/K16/K17 | `constrained-local-quantum-{t,t2,t3,v,x,k15,k16,k17}` |
 | Bell 独立裁决（同源物理补充） | F/X | `physics-common-source-{f,x}` |
 
-下表定位生产口与直接消费者；Lean 声明的类型给出对应前提与量词。模块路径均相对于 `Lean/H0mework/`。
+### R2 修订选集
+
+两篇修订选集使用导出映射中 `revisions.R2` 的固定源码，入口分别为 [SourceProcessCoreR2](../Lean/H0mework/Papers/SourceProcessCoreR2.lean) 和 [PhysicsCommonSourceR2](../Lean/H0mework/Papers/PhysicsCommonSourceR2.lean)。过程核心纳入完整源树作用、独立树恢复、依赖输入与原收费 runtime 的消费者；同源物理纳入当前 Stage1–10 总消费、完整母源形成及同源作用的物理安装。各入口的 import 指定实际版本，逐文件身份以导出映射为准。
+
+原论文标签及 base/H/F 等冻结链保持各自版本。下表保存首版命题编号到生产口和直接消费者的对应；Lean 声明的类型给出前提与量词。模块路径均相对于 `Lean/H0mework/`。
 
 ### source-process-core（C1–C13）
 

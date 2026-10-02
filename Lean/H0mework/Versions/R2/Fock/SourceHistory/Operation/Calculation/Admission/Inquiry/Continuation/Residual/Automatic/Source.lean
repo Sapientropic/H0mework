@@ -1,0 +1,144 @@
+import H0mework.Versions.R2.Fock.SourceHistory.Operation.Calculation.Admission.Inquiry.Continuation.Residual.Automatic
+
+/-! Every macro successor, including an actual residual birth, advances the
+same original source action exactly once. The source coordinate below is a
+proof-only readout, not a registry key or an environment input. -/
+
+set_option autoImplicit false
+
+namespace SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot
+namespace SourcePhysicalCalculationAdmission.Inquiry.Continuation.Residual.Automatic
+
+open SourceOperationEffects SourceOperationExecution SourceOperationNative RootInquiryCompletion
+open NoIslandNoMagic.CanonicalArithmeticState.ParticleWaveFockRuntime
+open NoIslandNoMagic.CanonicalArithmeticState.ParticleWaveFock
+open NoIslandNoMagic.CanonicalArithmeticState.ParticleWaveFockOperationPrefix
+open RootGeneratedDebtActivationJointSource.Native.Request.Continuation
+
+noncomputable section
+variable (sourceRuntime : LivingRuntimeState process)
+
+private theorem first_budget : remaining (initial sourceRuntime).event.state.1 = 11 := by
+  have account := RootGeneratedDebtActivationJointSource.Native.Request.Completion.budget
+    (initial sourceRuntime).old (initial sourceRuntime).program (initial sourceRuntime).registered
+    (initial sourceRuntime).scope 1
+  have raw : remaining (initial sourceRuntime).registered.input.expression = 12 := ResidualSource.completed_budget sourceRuntime 9
+    ((SourcePhysicalCalculationAdmission.Inquiry.Consumer.budget_eq sourceRuntime 9).trans (by rfl))
+  change remaining (initial sourceRuntime).event.state.1 = remaining (initial sourceRuntime).registered.input.expression - 1 at account
+  exact account.trans (congrArg (fun count : Nat => count - 1) raw)
+
+theorem initial_existing_node : ((inquiry sourceRuntime).stateAt 0).engine.node =
+    ((ResidualRuntime.inquiry sourceRuntime 9).stateAt 1).engine.node := by
+  rw [actual_node, ResidualRuntime.actual_node]
+  change RootInquiryProcessNode.active (initial sourceRuntime).presentation =
+    RootInquiryProcessNode.active (initial sourceRuntime).currentPresentation
+  unfold Frame.presentation Frame.presentationFrom
+  cases chosen : (initial sourceRuntime).action with
+  | inr paid => rfl
+  | inl settled =>
+      have zero : remaining (initial sourceRuntime).event.state.1 = 0 :=
+        congrArg remaining settled.2.down
+      have actual := first_budget sourceRuntime
+      omega
+
+private abbrev PhysicalFrame := Frame (Value := SourcePhysicalCalculation.CalculationValue)
+  (Var := SourcePhysicalCalculation.CalculationVar) (sort := Sum.inl OperationSort.parent)
+
+private def Grounded (frame : PhysicalFrame) (clock : Nat) : Prop :=
+  ∃ coordinate : frame.V.Current → Nat,
+    (∀ current, frame.environment (frame.old.root.emitted current) =
+      Context.environment (PhysicalValue := SourceOperationInventoryLift.PairValue OperationValue)
+        (statePoint process (coordinate current - 1))) ∧
+    (∀ current, coordinate (frame.V.nativeTarget (frame.program.emit current).write) = coordinate current + 1) ∧
+    coordinate (RootGeneratedDebtActivationJointSource.Native.Request.mathCurrent
+      frame.old frame.program frame.registered frame.scope frame.depth).1 = clock
+
+private theorem initial_grounded : Grounded (initial sourceRuntime)
+    (scanIndex (RootGeneratedDebtActivationJointSource.Native.Request.mathCurrent
+      (initial sourceRuntime).old (initial sourceRuntime).program (initial sourceRuntime).registered
+      (initial sourceRuntime).scope 0).1.1) := by
+  refine ⟨fun current => scanIndex current.1, ?_, ?_, rfl⟩
+  · intro current
+    rfl
+  · intro current
+    change scanIndex (CanonicalUnitArithmeticRoot.next current.1) = scanIndex current.1 + 1
+    exact scanIndex_next current.1
+
+private theorem grounded_next (frame : PhysicalFrame) (clock : Nat) (source : Grounded frame clock) :
+    Grounded frame.next (clock + 1) := by
+  rcases source with ⟨coordinate, environment, nativeClock, currentClock⟩
+  unfold Frame.next Frame.nextFrom
+  cases frame.action with
+  | inr paid =>
+      refine ⟨coordinate, environment, nativeClock, ?_⟩
+      change coordinate (frame.V.nativeTarget
+        (frame.program.emit (RootGeneratedDebtActivationJointSource.Native.Request.mathCurrent
+          frame.old frame.program frame.registered frame.scope frame.depth).1).write) = clock + 1
+      exact (nativeClock _).trans (congrArg (fun value => value + 1) currentClock)
+  | inl settled =>
+      refine ⟨fun current => coordinate current.1, ?_, ?_, ?_⟩
+      · intro current
+        exact environment current.1
+      · intro current
+        exact nativeClock current.1
+      · change coordinate (frame.V.nativeTarget
+          (frame.program.emit (RootGeneratedDebtActivationJointSource.Native.Request.mathCurrent
+            frame.old frame.program frame.registered frame.scope frame.depth).1).write) = clock + 1
+        exact (nativeClock _).trans (congrArg (fun value => value + 1) currentClock)
+
+private theorem advance_state (count : Nat) : (sourceRuntime.advance count).state = sourceRuntime.state + count := by
+  induction count with
+  | zero => rfl
+  | succ count prior =>
+      change (sourceRuntime.advance count).state + 1 = sourceRuntime.state + (count + 1)
+      rw [prior]
+      exact Nat.add_assoc _ _ _
+
+private theorem actualScan (actual : LivingRuntimeState process) :
+    scanIndex (SourcePhysicalCalculation.baseCurrent actual) = actual.state + 1 := by
+  change scanIndex (NoIslandNoMagic.CanonicalArithmeticState.ParticleWaveFockRuntime.finiteVisit actual.state).current = _
+  rw [finiteVisit_current]
+  exact ArithmeticGeneration.UnitHistory.cardinalShadow_generate _
+
+private theorem frames_grounded (count : Nat) :
+    Grounded (C.frames (initial sourceRuntime) count) (sourceRuntime.state + 11 + count + 1) := by
+  induction count with
+  | zero =>
+      have start := initial_grounded sourceRuntime
+      have original := Next.source_original sourceRuntime 9 0
+      have clock := (congrArg scanIndex original).trans (actualScan (sourceRuntime.advance 11))
+      rw [advance_state] at clock
+      exact Eq.mp (congrArg (Grounded (initial sourceRuntime)) clock) start
+  | succ count prior =>
+      exact grounded_next (C.frames (initial sourceRuntime) count) _ prior
+
+theorem environment_actual (count : Nat) : (C.frames (initial sourceRuntime) count).activeEnvironment =
+    SourcePhysicalCalculation.rawEnvironment (sourceRuntime.advance (11 + count)) := by
+  obtain ⟨coordinate, environment, _nativeClock, currentClock⟩ := frames_grounded sourceRuntime count
+  have actual := environment (RootGeneratedDebtActivationJointSource.Native.Request.mathCurrent
+    (C.frames (initial sourceRuntime) count).old (C.frames (initial sourceRuntime) count).program
+    (C.frames (initial sourceRuntime) count).registered (C.frames (initial sourceRuntime) count).scope
+    (C.frames (initial sourceRuntime) count).depth).1
+  change (C.frames (initial sourceRuntime) count).activeEnvironment =
+    Context.environment (PhysicalValue := SourceOperationInventoryLift.PairValue OperationValue)
+      (statePoint process (coordinate _ - 1)) at actual
+  rw [currentClock] at actual
+  have state := advance_state sourceRuntime (11 + count)
+  change _ = Context.environment (PhysicalValue := SourceOperationInventoryLift.PairValue OperationValue)
+    (statePoint process (sourceRuntime.advance (11 + count)).state)
+  rw [state]
+  have clock : sourceRuntime.state + 11 + count + 1 - 1 = sourceRuntime.state + (11 + count) :=
+    (Nat.add_sub_cancel (sourceRuntime.state + 11 + count) 1).trans (Nat.add_assoc _ _ _)
+  exact actual.trans (congrArg (fun value => Context.environment (PhysicalValue := SourceOperationInventoryLift.PairValue OperationValue)
+    (statePoint process value)) clock)
+
+theorem source_action_square (count : Nat) :
+    (fun sort name => (Context.binding sort name).eval (C.frames (initial sourceRuntime) count).activeEnvironment) =
+      (C.frames (initial sourceRuntime) (count + 1)).activeEnvironment := by
+  rw [environment_actual, environment_actual]
+  exact Context.binding_eval (PhysicalValue := SourceOperationInventoryLift.PairValue OperationValue)
+    (sourceRuntime.advance (11 + count))
+
+end
+end SourcePhysicalCalculationAdmission.Inquiry.Continuation.Residual.Automatic
+end SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot

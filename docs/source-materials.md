@@ -28,12 +28,13 @@ PY
 
 | 材料 | 详细来源 |
 | --- | --- |
-| 责任、债务与结构归属 | [foundation](source/foundation/)；[生命周期](source/foundation/responsibility-conservation-lifecycle.md) |
+| 责任、债务与结构归属 | [foundation](source/foundation/)；[生命周期](source/foundation/responsibility-conservation-lifecycle.md)；[R2 源作用机制](source/foundation/r2/) |
 | Navier–Stokes 原生载体与控制 | [navier-stokes](source/navier-stokes/)；[配对载体](source/navier-stokes/native-paired-source-carrier.md) |
 | 计数观察与原始 Riesz 动态观察 | [计数观察](source/observation/source-counted-observation.md)；[Riesz 观察](source/observation/original-riesz-dynamic-observation.md) |
 | 低能唯象推导与认证 | [验证入口快照](source/physics/low-energy/verification-README.md)及其同级目录 |
 | Case 2 全量子机制与认证 | [full-quantum](source/physics/low-energy/full-quantum/)；[完整物质时间生成元](physics/low-energy/full-quantum/README.md) |
 | Case 5A 不同时代材料 | [T 期入口](source/physics/constrained-quantum/README.md)；[X 期入口](source/physics/constrained-quantum/README-x.md) |
+| 同源物理 R2 全阶段机制 | [Stage1–10 贯通图](source/physics/common-source/r2/source-stage-one-through-ten.md) |
 | Bell 名义装置重放与冻结判据 | [重放说明](source/physics/bell-nist/nist-real/nominal-replay/README.md)；[criterion](source/physics/bell-nist/nist-real/nominal-replay/criterion.md) |
 
 `certification.md`、`audit-certification.md` 等报告保存对应修订的验收结果与条件；[`evidence/`](../evidence/) 保存机读回执及失败结果。公开回执的路径变换与原件身份见[公开回执与原始来源](evidence-publication.md)。
