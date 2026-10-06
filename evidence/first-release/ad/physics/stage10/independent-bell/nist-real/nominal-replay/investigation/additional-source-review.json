@@ -1,0 +1,85 @@
+{
+  "schema": "nist-nominal-source-identity-review/v1",
+  "review_date": "2026-10-01",
+  "purpose": "Read-only clarification of source and pair-rate identity; no new numerical criterion or replay inputs.",
+  "publications": [
+    {
+      "url": "https://arxiv.org/pdf/1407.8487v2",
+      "nist_reference": 31,
+      "pdf_sha256": "bc553b43f2c212d56c9964f14eefbc66c4658b54c10ab618f77c535e10da2bae",
+      "pdf_pages_reviewed": [1, 2],
+      "page_text_sha256": {"2": "174e06a67ba414f8e5b6c53d61a76da6ad0d5269d6868db66e3713619f53d385"},
+      "supports": [
+        "Eq.(1)-(5) distinguish joint and single collected-mode probabilities",
+        "Heralding efficiencies include conditional mode collection and subsequent transmission/detection"
+      ],
+      "does_not_supply": ["NIST2015 instance parameters", "normalization of the quoted NIST pair probability"]
+    },
+    {
+      "url": "https://arxiv.org/pdf/1009.1609v2",
+      "nist_reference": 33,
+      "pdf_sha256": "37a0d2aaf136b45b86649182a27f596cf0ff6a0abeb2d3c63120fd1d3434f861",
+      "pdf_pages_reviewed": [1, 2, 3],
+      "page_text_sha256": {
+        "2": "59268b470a77f548297863d502fbc1f394bdad1f9f7fc648bb7e0ebdddbb0a1b",
+        "3": "b5feee13e6f6d2b48031d477977187302b166f47527ee9f2d2d8d6cef55e4a82"
+      },
+      "supports": ["SPDC spectral/spatial mode structure and two-path beam-displacer preparation"],
+      "does_not_supply": ["NIST2015 path-specific amplitudes or optical channel"],
+      "other_apparatus_parameters_transferred": false
+    },
+    {
+      "url": "https://arxiv.org/pdf/1312.2999v3",
+      "nist_reference": 27,
+      "pdf_sha256": "0272c623ea93d59a29287dab1f4a576a4a594b5e5aff888a9f7d2cb57f0489ba",
+      "pdf_pages_reviewed": [1, 2, 3, 4, 5],
+      "page_text_sha256": {
+        "3": "781212d1a7eecff3d45d2eea9a50e62fb219fbef7f5bb8675199ac55bef0ac4a",
+        "4": "9d72cfc57aca194ccf2afa155f201fb20bc5102cbb42fe1bc0be9d4d783cd5e8",
+        "5": "ed95b2d716311ee087f909da5fd148405768f7f05433f68bc485461a24d4bbde"
+      },
+      "supports": ["Eq.(2),(5) distinguish per-trial and nonzero-step test statistics"],
+      "alternate_design_objective_justified": false,
+      "published_result_table_exposure": true,
+      "published_result_values_used": false
+    }
+  ],
+  "author_code": {
+    "repository": "https://github.com/spdcalc/spdcalc",
+    "nist_reference": 32,
+    "commit": "46f3c8e4b495e2d2a12e3460aa11528089a59109",
+    "commit_author": "Krister Shalm",
+    "commit_date": "2015-08-12",
+    "reviewed_path_sha256": {
+      "browser/library/js/modules/parameters.js": "0a5615953a078c4ddd5aaf7aad971c9a36f15b049fba10f1dec6c6bda46dfa3c",
+      "src/pm-properties.js": "665a9d627111f1e7e98e990aa7305c3d2f8694b89cfff0663379e44466041e20",
+      "src/pm-lib.js": "8d67f0f414c799dffdba48576f703f467ee624614b4ce8a04cce6c9ccebf292b",
+      "src/pm-plothelpers.js": "01d6c952f114aed4269b11aed71e8c652fd858dc7c240762bf03d9e43cda2923",
+      "AlfredHeraldingEfficiencyCode/HeraldingEfficiency.m": "fed408a77ec5c5289fa3fe419c56b580e0bbb22b64e48abb92614d0b38ad2451",
+      "Mathematica/lhfsagnacwalkoffcalculations.nb": "6ece0dae49cee5606d6ff40bc608d0666893cc5753802d7806d5718b7bc7d6fa"
+    },
+    "interfaces": {
+      "saved_configuration": "parameters.js:69,125,160,181 imports/serializes the URL hash",
+      "mode_amplitude": "pm-lib.js:546,565,596,621 generates pump and joint/single phase matching",
+      "heralding": "pm-plothelpers.js:1234,1374,1375 computes joint/single collection-rate ratios",
+      "absolute_rate_example": "HeraldingEfficiency.m:95,101; the rate integrals at103,111,119 and ratios at122,123 are commented out",
+      "walkoff": "lhfsagnacwalkoffcalculations.nb:117-228 contains MZ beam-displacer temporal compensation calculations"
+    },
+    "walkoff_last_file_change": "c97c00acbd0f06c9c9022db2c27974f2495129ab",
+    "original_2015_bell_optimizer_recovered": false,
+    "nist_instance_configuration_recovered": false,
+    "scope": "Reviewed generic source-method/configuration interfaces and the named historical notebook; no assertion that all public sources lack the original optimizer."
+  },
+  "source_obligations": [
+    "original_or_independently_characterized_nonmaximal_state_channel_map",
+    "pair_rate_reference_plane_and_normalization_consistent_with_klyshko_efficiencies",
+    "same_design_instance_inputs_and_control_freedom"
+  ],
+  "no_second_numeric_bug_claimed": true,
+  "frozen_replay_files_modified": false,
+  "new_numeric_replay_runs": 0,
+  "test_events_read": 0,
+  "test_files_downloaded": 0,
+  "external_messages_sent": 0,
+  "access_record": "../../access-record.md"
+}

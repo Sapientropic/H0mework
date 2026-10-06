@@ -1,0 +1,50 @@
+{
+  "schema": "independent-bell-data-roles/v1",
+  "stage": "before_event_unsealing",
+  "data_doi": "10.3929/ethz-b-000624026",
+  "roles": {
+    "theory_and_protocol": "root; no new archive event values or count/CHSH/wins/fidelity summaries received",
+    "custodian": "bell_custodian; fresh context with no theory construction; selected and downloaded official candidates under the recorded protocol, disclosed metadata only",
+    "instrument_controls": "g_foundation_controls; read only the custodian metadata and synthetic matrices, no new event archive or paper results",
+    "formal_certification": "g_certify; certifies source/operation proof, does not certify empirical instrument truth"
+  },
+  "preselection_commit": "4ec8c95de",
+  "first_eligibility_protocol_commit": "b5afc0ac59a1a512cfb91da207ae032823f374e2",
+  "expanded_eligibility_protocol_commit": "1750d335bf2304f15b60a01b0483d6d35267cf69",
+  "revision_reason": "Source theorem also covers complete deterministic preparations; recorded official event-ready candidates were inaccessible or lacked required raw schema. No new result was disclosed to determine this change.",
+  "claim_components": [
+    {
+      "component": "General Bell knowledge and Delft2016 model/statistical development",
+      "role": "L0; prior development material, not validation by this lock"
+    },
+    {
+      "component": "ETH preparation, nominal pulses, basis/readout labels and schema",
+      "role": "instrument metadata used before lock; no independent confirmation claimed for metadata"
+    },
+    {
+      "component": "ETH main-file joint trial sequence under the fixed cap",
+      "role": "L2 historical held-out trial statistic under independent custody; conditional nominal-apparatus scope"
+    },
+    {
+      "component": "ETH fig2 tomography, fig5 angle scan and fitted phase offset",
+      "role": "sealed excluded material; not used for calibration or model selection"
+    },
+    {
+      "component": "Visibility, asymmetric readout and simultaneous phase calibration",
+      "role": "not supplied with disjoint provenance; optional calibrated model omitted"
+    }
+  ],
+  "known_to_theory_before_freeze": {
+    "new_event_values": false,
+    "new_count_summary": false,
+    "new_CHSH_or_wins": false,
+    "new_state_fidelity": false,
+    "general_quantum_Bell_relations": true
+  },
+  "affirmative_nonuse_record": "Predictor and statistical family were committed before the fresh custodian existed. Eligibility revision followed metadata/access and the existing theorem. The control reviewer independently calculated all 16 probabilities from only the stated pulse model. All new result-bearing material remains with the custodian until the committed parser/instrument lock.",
+  "remaining_conditions": [
+    "Ideal nominal phase alignment, state preparation and outcome assignment are explicit joint-null conditions, not independently validated calibration.",
+    "Use the original main-file row order. The archive lacks per-event timestamps; no independent timestamp ordering proof is claimed."
+  ],
+  "retention": "Keep the frozen output whether falsified, not_falsified or execution-inconclusive. Do not fit parameters to this stream or rewrite its data role after access."
+}

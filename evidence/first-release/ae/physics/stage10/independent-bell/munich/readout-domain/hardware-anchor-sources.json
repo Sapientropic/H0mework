@@ -1,0 +1,177 @@
+{
+  "schema": "munich-run-hardware-anchor-access/v1",
+  "status": "run_setting_aom_nominal_control_identity_certified",
+  "source_identity": {
+    "source": "positiveSmoothUnifiedSource",
+    "root": "SpinPair.livingRoot",
+    "visit": 10,
+    "current_tick": 16,
+    "next_tick": 17,
+    "whole_ledger_row": "material row0 retained",
+    "controller_advance": false
+  },
+  "scope": {
+    "runs": ["2016-04-15", "2016-06-14"],
+    "run_setting_aom_nominal_table_certified": true,
+    "actual_effective_angle_certified": false,
+    "actual_effective_gain_certified": false,
+    "actual_hardware_parameters_unique": false,
+    "raw_csv_setting_token_to_command_bit_certified": false,
+    "raw_csv_result_token_to_click_certified": false,
+    "cross_document_optical_convention_resolved": false,
+    "claim_quantifier": "the bound documents and current record inventory; no universal public-availability claim"
+  },
+  "documents": [
+    {
+      "id": "G2021",
+      "title": "Efficient Single Photon Collection for Single Atom Quantum Nodes",
+      "author": "Robert Sebastian Garthoff",
+      "title_page_date": "2021-09-27",
+      "official_publication_date": "November 2021",
+      "official_publication_page": "https://xqp.physik.uni-muenchen.de/publications/theses_phd/phd_garthoff.html",
+      "url": "https://xqp.physik.uni-muenchen.de/publications/files/theses_phd/phd_garthoff.pdf",
+      "bytes": 9905849,
+      "sha256": "730f2cf60ce7a58fe8433e3e4b9d5c242584837aa63ba417bd74bf5286338f91",
+      "used_locations": [
+        "Eq2.9-2.11 p17/PDF29",
+        "actual polarization and alignment errors pp19-20/PDF31-32",
+        "140ns/1.24microW/contrast0.938 quotation of Ortegel[52] p20/PDF32",
+        "specified two-run introduction p39/PDF51",
+        "Table3.1 and click sign p40/PDF52",
+        "Fig3.1 p43/PDF55",
+        "section3.3.2 p44/PDF56",
+        "AppendixB TableB.1 p141/PDF153",
+        "AppendixB TableB.2 p142/PDF154"
+      ],
+      "table_3_1_visually_verified": true,
+      "reported_pulse_values_are_run_matched_actual_parameter_box": false
+    },
+    {
+      "id": "G2015",
+      "title": "Optimierte Erzeugung und Nachweis von Atom-Photon-Zustaenden zur Verschraenkung Raeumlich Getrennter Atome",
+      "author": "Robert Sebastian Garthoff",
+      "title_page_date": "2015-01-28",
+      "url": "https://xqp.physik.uni-muenchen.de/publications/files/theses_master/master_garthoff.pdf",
+      "bytes": 4227991,
+      "sha256": "8117baa61ccb7bfb26c2ce63ae6e5eaed1f7cbbae52a06300dacb21628a7438c",
+      "used_locations": [
+        "section3.3 Eq3.5-3.13 pp43-49/PDF43-49",
+        "section3.3.4 and Fig3.19 pp56-58/PDF56-58"
+      ],
+      "simulation_power_axis_multiplier": "3.1",
+      "power_multiplier_role": "calibration-curve alignment to the bright response after atom-focus mismatch; not a 2016 run attestation",
+      "2016_per_aom_raw_parameter_box_supplied": false
+    },
+    {
+      "id": "PRL-SI",
+      "title": "Supplementary material: Event-ready Bell test using entangled atoms simultaneously closing detection and locality loopholes",
+      "url": "https://journals.aps.org/prl/supplemental/10.1103/PhysRevLett.119.010402/BellTest-supplement.pdf",
+      "bytes": 342458,
+      "sha256": "bf957f62ec90082818175b2c5d06e46e140768da3a1f00f1d3c7edcf86fd13dd",
+      "used_locations": ["sectionI.E p7", "sectionIV pp23-24"],
+      "tdc_recording_described": true,
+      "tdc_stream_in_checked_zenodo_inventory": false
+    }
+  ],
+  "nominal_control": {
+    "source_id": "G2021",
+    "location": "Table3.1 p40/PDF52; Fig3.1 p43/PDF55; section3.3.2 p44/PDF56",
+    "input_labels": "A/B binary inputs select the respective two local AOM paths",
+    "angle_unit": "radian",
+    "phase_phi": "0",
+    "polarization_definition": "chi=cos(alpha)*V-exp(-i*phi)*sin(alpha)*H",
+    "table": [
+      {"side": "Alice", "input": 0, "alpha": "0", "polarization": "V"},
+      {"side": "Alice", "input": 1, "alpha": "pi/4", "polarization": "cos(pi/4)*V-sin(pi/4)*H"},
+      {"side": "Bob", "input": 0, "alpha": "-pi/8", "polarization": "cos(-pi/8)*V-sin(-pi/8)*H"},
+      {"side": "Bob", "input": 1, "alpha": "pi/8", "polarization": "cos(pi/8)*V-sin(pi/8)*H"}
+    ],
+    "aom_drive_frequency_MHz": "408",
+    "aom_drive_frequency_is_optical_rabi_frequency": false,
+    "actual_field_at_atom_equals_nominal_polarization": false
+  },
+  "basis_and_label_transport": {
+    "source_basis": ["u_x", "d_x"],
+    "named_atomic_basis": {
+      "u_z": "F=1,mF=+1",
+      "d_z": "F=1,mF=-1",
+      "u_x": "(u_z+d_z)/sqrt(2)",
+      "d_x": "-i*(d_z-u_z)/sqrt(2)"
+    },
+    "G2021_bright": "cos(alpha)*d_x+exp(-i*phi)*sin(alpha)*u_x",
+    "G2021_dark": "sin(alpha)*d_x-exp(-i*phi)*cos(alpha)*u_x",
+    "G2021_click_value": 1,
+    "G2021_no_click_value": -1,
+    "source_click_bool": true,
+    "source_click_spectral_value": -1,
+    "source_dark_bool": false,
+    "source_dark_spectral_value": 1,
+    "G2021_and_source_numeric_outcome_signs_are_opposite": true,
+    "transport_rule": "transport the named click/dark projectors; do not equate numerical labels or infer serialized CSV tokens",
+    "same_named_formal_x_basis": true,
+    "actual_optical_reference_frame_identity_across_documents_certified": false,
+    "old_optical_chart_binding": "../source-methods.md and public-anchor-sources.json remain unchanged"
+  },
+  "archive_inventory_check": {
+    "checked_date": "2026-10-04",
+    "date_timezone": "Asia/Shanghai",
+    "record_url": "https://zenodo.org/records/22936124",
+    "record_api": "https://zenodo.org/api/records/22936124",
+    "versions_api": "https://zenodo.org/api/records/22936124/versions",
+    "latest_api": "https://zenodo.org/api/records/22936124/versions/latest",
+    "versions_total": 1,
+    "version_ids": [22936124],
+    "latest_id": 22936124,
+    "conceptrecid": 22936123,
+    "created": "2026-09-24T11:11:05.954258+00:00",
+    "updated": "2026-09-24T11:11:06.594970+00:00",
+    "related_identifiers": [
+      {"identifier": "10.1103/PhysRevLett.119.010402", "relation": "isSupplementTo"}
+    ],
+    "files": [
+      {"name": "Bell_2016-04-15.zip", "bytes": 369992, "md5": "53544819317d4dcfbe5c63e039a8aa38", "sha256": "da9e1125034e5e61a177ae1796f6362ab312bbfbc5947aeec0b09a85e67b8656"},
+      {"name": "Bell_2016-06-14.zip", "bytes": 391935, "md5": "030ce1a0c6c6cc7f1107e1cd608cce77", "sha256": "b24fb1693dfd14bc4d2b05df6bb23a53fc1e77b3d932c67668c2b7b9515bd84a"},
+      {"name": "README.txt", "bytes": 3509, "md5": "2f41231bb4e55784ba07972cba8536a1", "sha256": "8bdca2652d598add72e91123b7f92e873da8fbba4e35f8f1229a40187d3b0f55"},
+      {"name": "Bell_website.pdf", "bytes": 753900, "md5": "e48087dfe950ce16b5167acb9a1c340d", "sha256": "d142630b2cd37ab7e8d467a79cd9b2b1087fa2ea3612a7fcac93465b2803eab2"}
+    ],
+    "file_sha256_origin": "previous exact-byte bindings in ../sources.json; names, sizes and md5 rechecked against current API",
+    "local_timestamp_role": "identifies the random number used in the measurement",
+    "local_timestamp_is_particle_arrival_time": false,
+    "separate_ion_electron_bits_in_csv_headers": false,
+    "tdc_stream_in_inventory": false,
+    "raw_event_rows_read": 0
+  },
+  "forward_absolute_anchor": {
+    "classification": "derived mathematical mechanism conditional on raw physical controls and common detector parameters",
+    "target_F0_F1_input": false,
+    "J_i_source": "raw lambda -> physical channel -> ionization effect restricted to source qubit",
+    "required_common_parameters": ["background d", "fragment registration eta"],
+    "k": "(1-d)*eta",
+    "tau_i": "Tr(J_i)",
+    "dark_effect": "E_D_i=(1-d)*I-k*J_i",
+    "identified_bias": "mu_i=1-2*d-k*tau_i",
+    "nondegeneracy": "tau_0!=tau_1",
+    "pure_rotation_degeneracy": "J_1=U*J_0*U_adjoint has tau_1=tau_0; a nominal direction table alone supplies no absolute k",
+    "generated_absolute_factor": "k=(mu_1-mu_0)/(tau_0-tau_1)",
+    "generated_background": "d=(1-mu_i-k*tau_i)/2",
+    "generated_registration": "eta=k/(1-d) when d!=1",
+    "generated_u_i": "-k*Tr(J_i*X)",
+    "generated_z_i": "-k*Tr(J_i*Z)",
+    "XZ_admission_condition": "Tr(J_i*Y)=0",
+    "physical_admission_condition": "0<=d<=1, 0<=eta<=1, each J_i is a legal effect",
+    "interval_inputs_generate": "a parameter set; no exact-point recovery from finite confidence widths",
+    "raw_lambda_bound_for_both_2016_runs": false,
+    "common_d_eta_attested_for_actual_two_aom_paths": false,
+    "raw_inputs_remaining": ["field amplitude at atom for each AOM", "actual polarization and alignment", "laser detuning", "pulse waveform and windows", "ionization rate", "fragment registration", "background probability"],
+    "power_axis_multiplier_3_1_is_actual_raw_input": false
+  },
+  "access": {
+    "public_primary_sources_only": true,
+    "new_event_statistics_executed": false,
+    "new_target_fit_executed": false,
+    "ETH_heldout_accessed": false,
+    "publish_repository_modified": false,
+    "external_messages_sent": false,
+    "new_experiment_performed": false
+  }
+}

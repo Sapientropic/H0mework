@@ -1,0 +1,136 @@
+NIST Bell test public DAQ source extract; non-executable source material.
+Source: official NIST code/daq archives. Extracted 2026-10-02.
+Network endpoints, device identifiers and local paths are redacted.
+This extract does not establish execution at any named data-run epoch.
+NIST notice and source attribution: https://www.nist.gov/pml/applied-physics-division/bell-test-research-software-and-data
+
+MEMBER bell_client/motorScriptExample.py
+ORIGINAL_SHA256 93f15020ad38d61e6a52b2c0b0083b724729ff43adf403ed021c2e7ac8f98409
+LINES 25-100
+25: def rotate_two_wps(wp1, wp2, theta1, theta2):
+26:     mc.goto(wp1, theta1)
+27:     mc.goto(wp2, theta2)
+28:     
+29: def rotate_two_wps_together(wp1, wp2, theta):
+30:     mc.goto(wp1, theta)#+45 to measure OA of PC
+31:     mc.goto(wp2, theta)
+32:     
+33: def rotate_to_bellsettings(theta):
+34: 
+35:     mc_bob.goto('BobHWP1', -5.9050 + theta)#Alternative (if this angle is wrong) could be -10.095
+36:     mc_bob.goto('BobHWP2', -8)
+37:     mc_bob.goto('BobQWP1', -16+90)
+38:     #mc.goto(alice_hwp1, 3.405)#Alternative (if this angle is wrong) could be -10.095
+39:     #mc.goto(alice_hwp2, 5.5)
+40:     #mc.goto(alice_qwp1, 11)
+41:     
+42: def rotate_three_WPs(bob_hwp1,bob_hwp2,bob_qwp1):
+43:     mc.goto('BobHWP1', bob_hwp1)
+44:     mc.goto('BobHWP2', bob_hwp2)
+45:     mc.goto('BobQWP1', bob_qwp1)
+46:     
+47: def calc_visibility(high, low):
+48:     return (high-low)/ (high + low*1.0)
+49:     
+50: def switch_path(setting):
+51:     AliceOffset = 5.5
+52:     BobOffset = -8
+53:     #BobOffset = 0
+54:     if setting == 1:
+55:         PHWP = 45
+56:         AHWP1 = 0
+57:         AHWP2 = 0
+58:         AQWP1 = 0
+59:         BHWP3 = 0
+60:     elif setting == 2:
+61:         PHWP = 0
+62:         AHWP1 = 45
+63:         AHWP2 = 0
+64:         AQWP1 = 0
+65:         BHWP3 = 45
+66:     elif setting == 'DA':
+67:         PHWP = 22.5
+68:         AHWP1 = 22.5
+69:         AHWP2 = 0
+70:         AQWP1 = 0
+71:         BHWP3 = -22.5
+72:     elif setting == 'AA':
+73:         PHWP = 22.5
+74:         AHWP1 = -22.5
+75:         AHWP2 = 0
+76:         AQWP1 = 0
+77:         BHWP3 = -22.5
+78:     else:
+79:         print 'Invalid path setting.'
+80: 
+81:         
+82:     mc_alice.goto('AliceHWP2', AHWP2 + AliceOffset)
+83:     mc_alice.goto('AliceHWP1', AHWP1 + AliceOffset)
+84:     mc_alice.goto('AliceQWP1', AQWP1 + 2* AliceOffset)
+85:     mc_bob.goto('BobHWP2',  BobOffset)
+86:     mc_bob.goto('BobHWP1', BHWP3 + BobOffset)
+87:     mc_bob.goto('BobQWP1',  2* BobOffset)
+88:    #mc.goto('BobHWP1', BHWP3)
+89:     mc_source.goto('PumpHWP', PHWP)
+90:     
+91: def rotateToFindPCTheta(angle):
+92:     mc_bob.goto('BobHWP1', angle)
+93:     mc_bob.goto('BobHWP2', angle)
+94:     mc_bob.goto('BobQWP1', 2*angle)
+95:     
+96: def rotateBob(theta):
+97:     boboffset = -8
+98:     mc_bob.goto('BobHWP1', boboffset +theta)
+99:     mc_bob.goto('BobHWP2', boboffset +theta)
+100:     mc_bob.goto('BobQWP1', 2*(boboffset +theta))
+
+MEMBER bell_client/sweep_wp.py
+ORIGINAL_SHA256 a930027bbc244291c738a25b6e8671a1a43d132dccf94d391ab9c2d890cf491d
+LINES 25-70
+25: 
+26: alice_wplist = ['AliceQWP1','AliceHWP1','AliceHWP2']
+27: bob_wplist = ['BobQWP1','BobHWP1','BobHWP2']
+28: 
+29: for wp in alice_wplist[:2]:
+30:     mc_alice.goto(wp,0)
+31: mc_alice.goto('AliceHWP2',45)
+32: for wp in bob_wplist[:2]:
+33:     mc_bob.goto(wp,0)
+34: mc_bob.goto('BobHWP2',0)
+35: 
+36: name = 'BobHWP1'
+37: 
+38: alldata = []
+39: fname = createfilename(subfolder='bell',name,'align')
+40: #fp = open('temp_wp.data','w')
+41: fp = open(fname,'w')
+42: #rng =np.arange(-0.5,1.6,0.1):
+43: rng = np.arange(-5,5,1)/1.0
+44: inttime = config['INT_TIME']
+45: for theta in rng:
+46:     mc_bob.goto(name,theta)
+47:     time.sleep(inttime)
+48:     alice_data, bob_data, coin_data, pockel = cmdline.update(alice,bob,calc,config)
+49:     data = [theta, alice_data['singles'], coin_data['coin2']]
+50:     msgout = '%.2f %d %d'%(theta, alice_data['singles'],coin_data['coin2'])
+51:     fp.write(msgout+'\n')
+52:     print data
+53: 
+54:     alldata.append(data)
+55:     gc.collect()
+56: fp.close()
+57: alldata = np.array(alldata)
+58: 
+59: plt.ion()
+60: plt.figure(1)
+61: plt.plot(alldata[:,0],alldata[:,1],'o')
+62: plt.title('Singles')
+63: plt.figure(2)
+64: plt.plot(alldata[:,0],alldata[:,2],'x')
+65: plt.title('Coin')
+66: 
+67: pfit = np.polyfit(alldata[:,0],alldata[:,2],2)
+68: print -pfit[1]/(2*pfit[0])
+69: rngfine = np.arange( rng.min(), rng.max(), 0.01)
+70: plt.plot( rngfine, np.polyval(pfit, rngfine))
+

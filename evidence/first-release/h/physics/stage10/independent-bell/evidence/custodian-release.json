@@ -1,0 +1,64 @@
+{
+  "schema": "independent-bell-custodian-release/v1",
+  "role": "Independent empirical custodian /root/bell_custodian; selected and held public data, then executed the already frozen procedure on explicit parent authorization. No theory, instrument or statistical design changes during execution.",
+  "command": "python3 -B Verification/physics/stage10/independent-bell/run.py --lock-sha256 f644d2c18e314f7ddc8733ddf4361fb8c72ac1315dc09ae36fe4e4b73cb13286",
+  "invocations": 1,
+  "exit_code": 0,
+  "execution_requested_at_utc": "2026-09-06T10:53:41+00:00",
+  "execution_requested_timestamp_precision": "one second; clock observation immediately before invocation",
+  "lock_commit": "5d32d1576",
+  "lock_sha256": "f644d2c18e314f7ddc8733ddf4361fb8c72ac1315dc09ae36fe4e4b73cb13286",
+  "frozen_at": "2026-09-06T10:52:09.688074+00:00",
+  "code_commit": "8bf881e89c07d36ce0f02ceb51b3025a36ea616b",
+  "locked_input_count": 34,
+  "locked_inputs_unchanged_after_execution": true,
+  "first_access_at": "2026-09-06T10:53:49.967977+00:00",
+  "first_access_semantics": "First access by the frozen scoring pipeline. Earlier custodian-only public-paper/schema/domain inspection remained isolated from the parent and was not used to choose outcomes, models or axes.",
+  "computed_at": "2026-09-06T10:53:51.085076+00:00",
+  "process_completion_observed_at_utc": "2026-09-06T10:54:01+00:00",
+  "release_recorded_at_utc": "2026-09-06T10:55:25.897144+00:00",
+  "results": {
+    "path": "Verification/physics/stage10/independent-bell/evidence/results.json",
+    "sha256": "1b8e10da7818528afc945e36e6874fa02d325628d791be5727ee607d8bda253d"
+  },
+  "access_record": {
+    "path": "Verification/physics/stage10/independent-bell/evidence/access.json",
+    "sha256": "9039f71ccedaf7364529832e5c2b1af1d60131929ee22804de43f4e3bbb8d166"
+  },
+  "released_scope": {
+    "trial_cap": 100000,
+    "first_trial": {
+      "source_file": "ETH_repo_upload/main_dataset_all_events.txt",
+      "source_line": 4
+    },
+    "last_trial": {
+      "source_file": "ETH_repo_upload/main_dataset_all_events.txt",
+      "source_line": 100003
+    },
+    "model_ids": [
+      "ideal_source"
+    ],
+    "all_predeclared_radii": [
+      0.0,
+      0.01,
+      0.02,
+      0.05,
+      0.1,
+      0.2
+    ],
+    "rule": "Release every complete frozen point-model, radius and context result together, irrespective of verdict."
+  },
+  "custody_attestation": {
+    "parent_received_only_metadata_before_authorized_execution": true,
+    "no_partial_result_release_before_complete_results": true,
+    "sealed_boundary_preserved_until_release_recorded_at": true,
+    "no_pipeline_source_instrument_method_lock_edits": true,
+    "no_first_access_record_overwrite": true,
+    "no_outcome_sign_changes_or_result_based_selection": true,
+    "no_retry_after_failure_or_result": true,
+    "still_sealed": "fig2, fig5 and all summaries of events outside the frozen cap remain undisclosed.",
+    "external_messages_or_publication": false
+  },
+  "interpretation": "A rejection applies to this joint source-plus-ideal-apparatus claim. It does not identify the source alone as the cause. Non-rejection is not verification of the whole theory.",
+  "numeric_representation": "anytime_p=0.0 and terminal_e=0.0 in results may represent floating-point underflow; finite log-e values are retained and zeros are not exact-probability claims."
+}

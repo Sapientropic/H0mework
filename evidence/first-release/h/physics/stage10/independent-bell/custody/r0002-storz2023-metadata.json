@@ -1,0 +1,192 @@
+{
+  "schema": "independent-bell-instrument-metadata/v1",
+  "protocol_revision": "r0002_complete_trials",
+  "protocol_commit": "1750d335bf2304f15b60a01b0483d6d35267cf69",
+  "protocol_sha256": "eb124e2c08e17d19c9504d4a9b7b73ba2f30ea3904b1a06fdb946a080b5e6012",
+  "metadata_created_at_utc": "2026-09-06T10:23:19.258855+00:00",
+  "role": "Independent empirical custodian; metadata only; no prediction or adjudication.",
+  "source": {
+    "article_doi": "10.1038/s41586-023-05885-0",
+    "data_doi": "10.3929/ethz-b-000624026",
+    "author": "Simon Storz",
+    "repository": "ETH Research Collection",
+    "published_data_date": "2023-07-26",
+    "license": "CC BY 4.0",
+    "record_url": "https://www.research-collection.ethz.ch/entities/researchdata/100f0077-511e-4765-b6c8-08ff50a0962a",
+    "archive_download_url": "https://www.research-collection.ethz.ch/server/api/core/bitstreams/88466bab-6aba-46e8-bd18-9a62c2c45ea5/content",
+    "repository_display_name": "Bell_Test_ETHZ_2023_rawData",
+    "download_filename": "Storz_Loopholefree_Nature_2023.zip"
+  },
+  "archive": {
+    "local_path": "Verification/physics/stage10/independent-bell/cache/storz-2023-rawData.zip",
+    "bytes": 1273595,
+    "sha256": "2d39d1b6898480d3de0134e2d55ac3faee87af32c8db5bc6fdf6fa6997296909",
+    "download_completed_at_utc": "2026-09-06T10:14:21.383820+00:00",
+    "members": [
+      {
+        "member": "ETH_repo_upload/fig2.txt",
+        "bytes": 972,
+        "sha256": "1f9cfb237c585e8ba914eefafac77da514a4072cd73565ce1bd3b61a0106d097",
+        "role": "sealed_non_evaluation_reference"
+      },
+      {
+        "member": "ETH_repo_upload/fig5.txt",
+        "bytes": 1622,
+        "sha256": "e5d0fa0edc29cbe9f849724299a1a0441351c304ddd500b4633265e5da066cd8",
+        "role": "sealed_non_evaluation_reference"
+      },
+      {
+        "member": "ETH_repo_upload/main_dataset_all_events.txt",
+        "bytes": 13649568,
+        "sha256": "5881b901b0d4a148104b14eadabe80c4f742026e2a120397af23013c2113a848",
+        "role": "evaluation_event_stream"
+      },
+      {
+        "member": "ETH_repo_upload/readme.txt",
+        "bytes": 2348,
+        "sha256": "1661f840346a8866367583c84df3200a81af78124acfe4bafa583ab0bacf1963",
+        "role": "sealed_non_evaluation_reference"
+      }
+    ]
+  },
+  "evaluation_file_choice": {
+    "member": "ETH_repo_upload/main_dataset_all_events.txt",
+    "basis": "The author-provided header designates it as the main Bell-test experiment and says one line corresponds to one trial. The text and Supplement X.A identify the final fixed nominal-angle test.",
+    "nominal_fixed_theta_radians": "-pi/4",
+    "ordering": "Use the original row order. No custodian reordering or outcome-dependent selection. The file contains no per-row timestamp.",
+    "other_files": "fig5.txt supplies aggregate angle-scan figure data; fig2.txt supplies reconstructed/simulated density matrices. Neither supplies the designated per-trial stream. They are not optional replacements or fit inputs.",
+    "cutoff": "Unchanged protocol rule: first accepted trials up to the protocol cap. No sample count is disclosed here."
+  },
+  "parser_schema": {
+    "encoding": "UTF-8-compatible ASCII records",
+    "line_endings": "CRLF",
+    "header_physical_lines": 3,
+    "delimiter": ",",
+    "surrounding_whitespace": "strip from each field",
+    "terminal_newline_required": false,
+    "columns": [
+      {
+        "index": 0,
+        "name": "Input Alice",
+        "meaning": "Alice random measurement-basis bit a",
+        "domain": [
+          0,
+          1
+        ]
+      },
+      {
+        "index": 1,
+        "name": "Output Alice",
+        "meaning": "Alice recorded readout x",
+        "domain": [
+          -1,
+          1
+        ]
+      },
+      {
+        "index": 2,
+        "name": "Input Bob",
+        "meaning": "Bob random measurement-basis bit b",
+        "domain": [
+          0,
+          1
+        ]
+      },
+      {
+        "index": 3,
+        "name": "Output Bob",
+        "meaning": "Bob recorded readout y",
+        "domain": [
+          -1,
+          1
+        ]
+      }
+    ],
+    "validation": "Every event record was checked for exactly four fields, input-bit domains and plus/minus-one output domains. No correlations or test statistics were computed.",
+    "packed_fpga_codes": "The file is already unpacked. Supplement Table SIV separately defines FPGA codes 0=(input 0,g), 1=(input 0,e), 2=(input 1,g), 3=(input 1,e). Do not decode those packed codes a second time."
+  },
+  "controlled_preparation": {
+    "physical_qubits": "Stationary superconducting transmons at nodes A and B, computational states |g>, |e>.",
+    "trigger": "Deterministic preparation and complete recorded trials; no stochastic event-ready herald.",
+    "entangling_operation": "Direct microwave photon exchange targets psi+ = (|ge> + |eg>)/sqrt(2).",
+    "fixed_basis_operation": "Methods states that a pi/2 pulse around x at A and the corresponding phase-offset axis x+theta at B precede random basis selection; the common basis rotation is described as effectively generating phi+ = (|gg> + |ee>)/sqrt(2).",
+    "source_of_preparation": "Main text Bell test; Methods Optimizing the measurement basis; Supplement IX Eq. (14). No reconstructed density matrix was used as a source input."
+  },
+  "literal_phase_formulas": {
+    "reference": "Supplement IX, printed p. 16; formulas and control definitions only.",
+    "equation_13_location": "Supplement I, printed p. 3, not Section IX. These are no-signalling definitions, not pulse-control formulas.",
+    "equation_13a": "P(x|ab) = P(x|ab')",
+    "equation_13b": "P(y|ab) = P(y|a'b)",
+    "microwave_pulse": "b_in(t) = beta_in(t) exp[-i (omega_ge t + phi)]",
+    "pulse_axis_definition": "phi = 0 is an x-axis rotation; phi = pi/2 is a y-axis rotation.",
+    "preparation_sequence": "pi_ge^A, (pi/2)_ef^A, f0g1^A emission, f0g1^B absorption, (pi/2)_ef^B. The first pulse phase contributes a common initial phase and is omitted in Eq. (14).",
+    "equation_14": "|psi> = (|eg> + exp[-i (phi_ef^A - phi_f0g1^A + phi_f0g1^B - phi_ef^B)] |ge>) / sqrt(2)",
+    "equation_14_kind": "Prepared-state expression; the supplement does not write a complete per-setting measurement-unitary matrix here.",
+    "equation_15": "S = 2 sqrt(2) cos(theta)",
+    "equation_15_kind": "Printed theoretical expression transcribed on the parent's explicit request. No empirical S value or correlator is supplied; no additional pi/4 term has been inserted.",
+    "effective_phase_scope": "Supplement IX combines the fixed measurement-basis rotation and optional basis-choice pulses into effective microwave phases phi_ge^A and phi_ge^B.",
+    "equation_16": "theta = phi_ef^A + phi_ge^A - phi_f0g1^A - (phi_ef^B + phi_ge^B - phi_f0g1^B)",
+    "offset_relation": "theta = theta_control + theta0",
+    "unexpanded_convention": "The printed definition does not give a per-(a,b) expansion of the combined effective phi_ge values. Their relation to each literal pulse axis must be derived from the pulse sequence; matching the symbol theta alone is insufficient. No measured correlator is used to choose that relation.",
+    "nominal_theta_identification": "Main Methods defines theta as the angle between the two measurement bases and uses it on Bob's fixed pulse; Fig. 4 uses y_theta for Bob's optional pulse. Immediately after Eq. (16), Supplement IX uses theta = theta_control + theta0 and reuses theta for the calibrated Fig. 5 phase axis. There is no separately defined theta_B and no explicit conversion between the combined Eq. (16) phase and the individual Fig. 4 pulse-axis angle. Thus the main nominal angle is not a bare uncalibrated theta_control, but equality of the total Eq. (16) phase and the individual pulse-axis angle is not established by a per-setting formula in the source.",
+    "transcription_check": "Equations (14)-(16) checked against rendered publisher PDF and both layout/raw text extraction. The custodian did not repair notation or infer a missing phase shift."
+  },
+  "controlled_measurement": {
+    "paper_plane": "The physical experiment is described in the xy plane before the fixed local basis rotations. Methods explicitly moves to the effective phi+ description; the theory role must write its fixed effect-conjugation map to the frozen real XZ family.",
+    "random_choice": {
+      "0": "RNG bit 0 blocks the basis-change microwave pulse.",
+      "1": "RNG bit 1 passes a pi/2_y basis-change pulse.",
+      "reference": "Supplement II, printed pp. 5-6; main Methods Random basis selection."
+    },
+    "angle_convention": "pi/2 is a Bloch-sphere rotation angle, not a state-amplitude half-angle. Microwave phase phi=0 defines x-axis rotation and phi=pi/2 defines y-axis rotation, per Supplement IX.",
+    "two_pulse_phase_scope": {
+      "fixed_rotation": "Methods Optimizing the measurement basis labels Alice's fixed pulse (pi/2)_x and Bob's fixed pulse (pi/2)_(x+theta).",
+      "optional_rotation": "Main Fig. 4 labels Alice's optional pulse a*(pi/2)_y and Bob's optional pulse b*(pi/2)_(y_theta). These labels were checked in the rendered primary figure.",
+      "consequence": "Both Bob pulse stages carry the phase-axis convention. The source does not describe theta as affecting only the fixed pre-pulse.",
+      "supplement_phrase": "measurement basis rotation and basis choice pulses",
+      "reference": "Main Methods; main Fig. 4; Supplement IX, printed p. 16."
+    },
+    "readout": {
+      "+1": "Detected ground state |g> after the chosen rotations.",
+      "-1": "Detected excited state |e> after the chosen rotations.",
+      "integration_time_ns": 50
+    },
+    "phase_parameters": {
+      "nominal_theta": "-pi/4 for the designated fixed-angle experiment, as stated by the paper.",
+      "theta_control": "The programmed relative microwave phase is conceptually distinct from the effective nominal theta.",
+      "offset_relation": "Supplement IX writes theta = theta_control + theta0 and states that theta0 is an arbitrary inter-instrument phase offset requiring recalibration.",
+      "fitted_offset_value": "Withheld; not a permitted control-input value in this packet.",
+      "independent_phase_calibration": "No disjoint raw phase-calibration record or event-level provenance is supplied in the downloaded ZIP. A physical interpretation therefore requires the explicitly stated ideal nominal phase-alignment condition; this packet does not validate that condition empirically."
+    },
+    "canonical_vector_table": "Not inferred from empirical correlators. The theory role must derive the sign/orientation table from the documented pulses and chosen fixed basis convention before unsealing."
+  },
+  "outcome_independent_admission": {
+    "selection": "All main-file trials; no key-only settings.",
+    "paper_rule": "Main text includes every readout; Supplement X.A explicitly states no readout-error correction and no data post-selection.",
+    "readout_thresholds": "Supplement VII states that integration weights and assignment thresholds are fixed before Bell test experiments."
+  },
+  "calibration": {
+    "optional_calibrated_model": "omit",
+    "readout_training": "Supplement VII describes preparation of known g and e states for threshold/weight training prior to Bell tests.",
+    "missing_parameters": "The ZIP does not supply disjoint calibration event data sufficient for independent asymmetric F0/F1 and source depolarization under the frozen calibration policy.",
+    "prohibited_substitutes": "Do not use target-state tomography, fig2 density matrices, angle-scan correlators, fitted phase offsets or target event counts to supply missing calibration."
+  },
+  "evidence": {
+    "article": "https://www.nature.com/articles/s41586-023-05885-0",
+    "supplement": "https://media.springernature.com/original/springer-static/esm/art:10.1038%2Fs41586-023-05885-0/MediaObjects/41586_2023_5885_MOESM1_ESM.pdf",
+    "locations": [
+      "Main text Bell test and Methods Optimizing the measurement basis / Random basis selection",
+      "Supplement II: bit-to-switch meaning",
+      "Supplement VII: readout calibration before tests",
+      "Supplement IX: phase conventions and offset responsibility",
+      "Supplement X.A and Table SIV: raw coding and no postselection"
+    ]
+  },
+  "isolation": {
+    "counts_released": false,
+    "test_results_released": false,
+    "fitted_test_state_released": false,
+    "predictor_executed": false,
+    "adjudicator_executed": false
+  }
+}

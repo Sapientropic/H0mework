@@ -1,0 +1,80 @@
+{
+  "verdict": "certified",
+  "scope": "Complete incidence/exact transitions and write/remainder programmes at one sufficient rank, with full original generated row and remainder payloads, two independent certification tables and Compilation values; no full compiler/compilePatch claim",
+  "parent_verdicts": {
+    ".cache/arena-certification": "2ec6230a2375fa32bbc4199700b7c3b801954cba2c3808e2a5b10b4fbbcf62b3",
+    ".cache/arena-declarations-certification": "490eb16caba3a62823985af9a9ab47f05c62028211f067a8c1aa04462f7dc78c",
+    ".cache/arena-source-certification": "50c9db8870e9ae9b72cd4bddfc439506aa34669115aba0bcf425ae982c4301a4",
+    ".cache/arena-compiler-certification": "ab8c86572d7b7bb524043c1addc9b12dcb73009f328263312bd1496605992aa8",
+    ".cache/arena-programs-certification": "26eeae11007b02104f92bec98214f7e060ae2128e401de2865013b93507a278e"
+  },
+  "parent_45_files_reused_without_recompilation": true,
+  "frozen": {
+    "scratch/MotherCoverage/ArenaExact/Context.lean": "76b0fc927833fc14e15374ae763c9b8228a282b3465bfa9584bc296f2234181e",
+    "scratch/MotherCoverage/ArenaExact/Transitions.lean": "0dee2a8a862a4c8455c550ac6b0caf7e96907ff0f289e1eefb1b43c283728309",
+    "scratch/MotherCoverage/ArenaExact/Coverage.lean": "5f7b3899d5167913a9c9078fa6c9531461605ed72b0e620fe4ae5a3197e96415",
+    "scratch/MotherCoverage/ArenaExact/WriteCoordinates.lean": "6e41012cbafa5c3fab35a9c4ef903f1843ac1c85ab6777d35ab5b1d0f2ab66e3",
+    "scratch/MotherCoverage/ArenaExact/WriteFactory.lean": "f8faa505255a51b973f2d0af2ca7c7aee43dfc45e4ee670c4d83123689f45243",
+    "scratch/MotherCoverage/ArenaExact/WriteEncoding.lean": "e794e14d74c67ffbfd5d4d48e2fe31401aab0c12d87269fdd182efe9102e50a5",
+    "scratch/MotherCoverage/ArenaExact/RemainderEncoding.lean": "6cee710098e8dc6b293b4e6c05c3edc815a09f97c2d81e027f3e5b9911e51104",
+    "scratch/MotherCoverage/ArenaExact/WriteReadback.lean": "48562457835d068bcadb07e72b44203e14f0273648b9278b31aa67ca2afc4cfa",
+    "scratch/MotherCoverage/ArenaExact/WriteFormation.lean": "dd5a777cd5bf865431f0798a389fee99861e817d24ec0a1409daf687071b1f28",
+    "scratch/MotherCoverage/ArenaExact/WriteGenerated.lean": "9894ae04c091f0c6e4a6cb4c41202b0e53cbc626ce4ad00ab41c964c572466ee",
+    "scratch/MotherCoverage/ArenaExact/JointFormation.lean": "eb2f46160f8f7d55974720adcd1b1479c4263fbd496cffb21cf0d4b1908adafa",
+    "scratch/MotherCoverage/ArenaExact/Consumer.lean": "9c0c00bb90154a3b18ca69df61bb43e3ad16a523c0f161c548acd2a9412c6aa3"
+  },
+  "frozen_unchanged": true,
+  "parent_frozen_unchanged": true,
+  "own_declarations": 275,
+  "trusted_declarations": 275,
+  "compiler_partial_auxiliaries": 0,
+  "closure_nodes": 78303,
+  "closure_edges": 2277728,
+  "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "unsafe": 0,
+  "partial": 0,
+  "parent_union_nodes": 78673,
+  "delta_nodes": 420,
+  "delta_own": 275,
+  "delta_existing_dependencies": 145,
+  "extended_signed_union_nodes": 79093,
+  "registered_instances": {
+    "total": 2,
+    "generated_SizeOf": 2
+  },
+  "native_codegen_only": {
+    "total": 784,
+    "boxed": 42,
+    "closed_constants": 734,
+    "lambda_lifts": 0,
+    "redArg": 8,
+    "same_module_declared_origin": true,
+    "trusted_reachable": false
+  },
+  "controls": {
+    "count": 2,
+    "closure_nodes": 77965,
+    "closure_edges": 2272503,
+    "unsafe": 0,
+    "partial": 0
+  },
+  "receipts": {
+    "fresh-1-receipt.json": "f9c8787b58b41484a88621b1452ba65073b33eb62a75b6c87e99b812db13554b",
+    "Audit-1-receipt.json": "3fcda404942f34f05a94f71a7287799a409df1b228c62094eee32cd545982e85",
+    "Controls-2-receipt.json": "053073f9442c5038db5b5da16961f3688a7bfdaecd4c5193768264294c2b6f47",
+    "ControlsTrust-1-receipt.json": "58386b59413b00469c1c8c8dc05941824a5e07e099530751d7f0ce446884f9f1"
+  },
+  "audit_files": {
+    "Audit.lean": "4b54fea034cd046452c0cb6978f8c0aaa4a3442463146e35c6aa64608f4a4618",
+    "Controls.lean": "2bce5d363d4930feae0d0e0057a09949f02d577bc55fcbf99f94681ebbc3f5d7",
+    "ControlsTrust.lean": "a328aa281c50560416164511076bc24156f5c397c05fcb580eabd8078752ad86",
+    "freeze.json": "5a57709ee072d06949a04804f2e1e5e0d10ae03a3b588e54e0599463f1d548e7",
+    "config.json": "f3aa3e98dfa9b9c0567e50a0bf36d4b34bc6444717369d3b249f850f376204f4",
+    "delta-names.json": "a8d3516b0ee50829c4ce61a7dd62c0e6a2f047529d2f8b81f3faf837b2e70edd",
+    "codegen-only.json": "4b008a468b268aa5142308b141812ec6981cf9470553fd848547aecb7013f5ee"
+  }
+}

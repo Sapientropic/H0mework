@@ -1,0 +1,76 @@
+{
+  "schema": "nist-nominal-design-sources/v1",
+  "review_date": "2026-10-01",
+  "sources": [
+    {
+      "url": "https://arxiv.org/pdf/1511.03189v2",
+      "pdf_sha256": "e4f16a8d1ea736cab1befbd67f95f4eee051df7ee4bf8c519afd1992496baaeb",
+      "pdf_pages_reviewed": [
+        3,
+        4
+      ],
+      "page_text_sha256": {
+        "3": "e9bf64c8aa038a61610bd056099d29f8a7017490496b3f1c629099df515cfdd9",
+        "4": "520ba1f2ccebbb9f8121b8e8ca9487c350856d099f4e3a8ddc4b8d198818d943"
+      },
+      "supports": [
+        "two-path HH/VV preparation and phase zero",
+        "two maximum-entanglement visibility observables",
+        "Klyshko system efficiency and background/pair units",
+        "named CH apparatus design inputs"
+      ]
+    },
+    {
+      "url": "https://journals.aps.org/prl/supplemental/10.1103/PhysRevLett.115.250402/LHFSupplementary.pdf",
+      "pdf_sha256": "61f6d34c0347fea9712ac98a91f7b3385b0b2087f1eb65e8b959a5d5e72b8412",
+      "pdf_pages_reviewed": [
+        1
+      ],
+      "page_text_sha256": {
+        "1": "3f6e04e5de53631c202bedc87d1f94fa46543349df1b9d939f2c215988354874"
+      },
+      "supports": [
+        "CH design objective identity, Section I.A and Eq. S1"
+      ]
+    },
+    {
+      "url": "https://research.physics.illinois.edu/QI/Photonics/theses/christensen-thesis.pdf",
+      "pdf_sha256": "343d4d35ad3e0116a2d90a0edb1220dd236619d081da890ff6ebddfc54c06a1f",
+      "pdf_pages_reviewed": [
+        59,
+        61
+      ],
+      "page_text_sha256": {
+        "59": "e549813c0be6e7fba9b7d3492f510939bfee3ae6e89d8fdc545bb08b3abe9e1f",
+        "61": "8b17d31267d62bae8365978a0e263be6b0d96b35717a716083f23927bc1461af"
+      },
+      "supports": [
+        "beam-displacer source geometry, thesis p.50",
+        "coherence interpretation of diagonal visibility, thesis p.52 footnote4"
+      ]
+    }
+  ],
+  "original_2015_simulation_code_recovered": false,
+  "design_input_table_recovered": false,
+  "visibility_to_nonmaximal_channel_identity_recovered": false,
+  "public_author_code_review": [
+    {
+      "repository": "https://github.com/kshalm/bellhelpers",
+      "commit": "c84205362e1ab8620cfb03d321f2c15834e9c684",
+      "found": "later instrument movement and time-tagger helpers, not the original theoretical apparatus optimizer"
+    },
+    {
+      "repository": "https://github.com/kshalm/bellanalysishelper",
+      "commit": "a7827601816b1d3f0403935b86069568f99b8df1",
+      "found": "later data processing helpers, no original design parameter/state map identified"
+    }
+  ],
+  "negative_claim_scope": "No original optimizer or complete state/channel input map was identified in the listed publications and author repositories; no claim about all public or private sources.",
+  "access": {
+    "test_events_read": 0,
+    "test_files_downloaded": 0,
+    "design_pdfs_refetched": true,
+    "root_local_pdfs_committed": false,
+    "adjacent_published_result_text_exposure": "Read-only source searches and full-page tool output included adjacent already published plot text; no values used as model inputs, optimization targets, bands or tolerances. Direct page extracts excluded SI result pages and thesis PDF62."
+  }
+}

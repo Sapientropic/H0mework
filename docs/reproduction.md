@@ -1,5 +1,7 @@
 # 复现指南
 
+两篇首发修订的证明包和公开独立程序见[首发复现指南](first-release-reproduction.md)。本页保存原八稿及历史版本的入口。
+
 本指南描述仓库根目录的有效命令。各项命令的实现以 [`Makefile`](../Makefile) 中同名 target 为准；主张与版本关系见[证据对应表](evidence-map.md)。
 
 ## 环境与构建
@@ -23,7 +25,7 @@ make build
 (cd Lean && lake build H0mework.Physics.RootRuntime.RecoveryConsumer)
 ```
 
-完整构建需要为 `.lake` 产物留出磁盘空间。构建前可用 `df -h .` 查看可用空间，构建后用 `du -sh Lean/.lake/build Lean/.lake/packages` 查看实际占用。Lake 为每个模块写入的 `Lean/.lake/build/ir/*.setup.json` 列出全部传递依赖的产物路径，全量构建合计可达上百 GB；它只在模块开始编译时读取，编译完成后删除不会使构建失效，可用 `find Lean/.lake/build/ir -name '*.setup.json' -delete` 回收空间。
+完整构建需要为 `.lake` 产物留出磁盘空间。构建前可用 `df -h .` 查看可用空间，构建后用 `du -sh Lean/.lake/build Lean/.lake/packages` 查看实际占用。Lake 为每个模块写入的 `Lean/.lake/build/ir/*.setup.json` 列出全部传递依赖的产物路径，全量构建合计可达上百 GB；回收时只清理已有更新编译 trace 的 setup 文件，正在使用的输入继续保留；CI 使用 [`ci_plan.py`](../tools/ci_plan.py) 的 `completed_setup_files` 判断范围。
 
 2026-09-30，提交 `bf78b3674ec5680c7baab77e70107d148c281c9d` 在 macOS 上完成完整默认选集构建：`make build` exit 0，25560 jobs，复用现有缓存，实际重编 6509 个模块，耗时 6 小时 52 分 34 秒。
 
@@ -83,7 +85,7 @@ python3 tools/source_view.py --output .local/observation-e \
 
 Y 来源的唯一性引理在固定依赖下编译失败，原字节保存于非默认库 `H0meworkPinned`。默认构建采用对应的 Y1 战术修复；错误位置、修复来源与消费者见[整账会计证据](evidence-map.md#whole-ledger-accountingy)。
 
-在 `Lean/` 下执行 `lake build H0meworkPinned` 可复现这项历史失败。该命令的失败结果用于核对 Y 快照。
+历史 R2 的两个入口也保存在 `H0meworkPinned`，结果见[首发准备状态](first-release-readiness.md#历史版本)。在 `Lean/` 下执行 `lake build H0meworkPinned` 可复现这些固定失败；定向检查可使用相应 `H0mework.Papers.*R2` 入口。
 
 ## CI 范围
 

@@ -1,0 +1,170 @@
+{
+  "schema": "p23-collected-response-lean-certification/v1",
+  "status": "certified",
+  "classification": "bounded subordinate finite real optical response producer and conditional calibration consumer",
+  "scope": "Same actual finite real source and local transmission/loss columns generate joint and both loss-inclusive singles, V-referenced raw CH, both harmonic responses and HasDerivAt; source-generated positivity, named lambda0/lambda1 calibration budgets, collected ratio/coherence and actual two-source response differences. Numerical continuous-box signs and empirical source identity are not Lean claims.",
+  "numerical_interval_kernel_proof": false,
+  "source_mapping_identified": false,
+  "publication_configuration_identified": false,
+  "production_admitted": false,
+  "criterion_freeze": {
+    "commit": "4a8e1753f4e19669e11b39ac2c8987dc890f8f6f",
+    "criterion": "criterion-r0001.1.md",
+    "criterion_sha256": "c9b4825832bba9cade516ba2319bd4f000775810436460793a75123506c5ee2d",
+    "sources_sha256": "8e6d6f8030798498ecc6e5885722cb27d5d799f258da24ff6281517d19a468b4"
+  },
+  "source_packet_freeze": "a26869a1f3e5ec4dbe94230623235a6fe4411e53",
+  "original_source_commits": [
+    "40a278fec15e667ad393caa60527e55bc1247ab8",
+    "67b5fa45a6223f191889eb34d74d05806d2a3351"
+  ],
+  "candidate": {
+    "file": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/collected-response/SourceResponse.lean",
+    "sha256": "caeadbe42a9c1263afed406733ee5ad3d8febd53ad1524524c0090461098394f"
+  },
+  "direct_consumer": {
+    "file": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/collected-response/SourceResponseCertification.lean",
+    "sha256": "d14d5db777fc086b9b3ad696d43a0c17aa84fbd62fac2a2b955602dbceaa5ce8"
+  },
+  "authorized_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "source_audit": {
+    "candidate_declarations": 96,
+    "all_source_declarations": 237,
+    "dependency_nodes": 26625,
+    "required_nodes": 55,
+    "primitive_nodes": 11721,
+    "actual_branch_Born_and_partner_loss_in_closure": true,
+    "all_advertised_consumers_in_closure": true,
+    "target_or_response_coefficients_in_primitive": false,
+    "operational_root_in_closure": false,
+    "primitive_data": "Normalized real preparation; two normalized finite source amplitudes; actual local unit transmission/loss columns. No target probabilities, fitted moments, coverage or optimum certificate."
+  },
+  "focused_verification": {
+    "fresh_source_compilation": true,
+    "trust_level": 0,
+    "warning_as_error": true,
+    "temporary_directory": "runtime-artifacts/p23-collected-response-certify-5misc2zd",
+    "commands": [
+      {
+        "source": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/investigation/collected-source/Collection.lean",
+        "command": [
+          "lean",
+          "--trust=0",
+          "-DwarningAsError=true",
+          "--root=Verification/physics/stage10/independent-bell/nist-real/nominal-replay/investigation/collected-source",
+          "-o",
+          "runtime-artifacts/p23-collected-response-certify-5misc2zd/Collection.olean",
+          "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/investigation/collected-source/Collection.lean"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      {
+        "source": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/collected-response/SourceResponse.lean",
+        "command": [
+          "lean",
+          "--trust=0",
+          "-DwarningAsError=true",
+          "--root=Verification/physics/stage10/independent-bell/nist-real/nominal-replay/collected-response",
+          "-o",
+          "runtime-artifacts/p23-collected-response-certify-5misc2zd/SourceResponse.olean",
+          "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/collected-response/SourceResponse.lean"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      {
+        "source": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/collected-response/SourceResponseCertification.lean",
+        "command": [
+          "lean",
+          "--trust=0",
+          "-DwarningAsError=true",
+          "--root=Verification/physics/stage10/independent-bell/nist-real/nominal-replay/collected-response",
+          "-o",
+          "runtime-artifacts/p23-collected-response-certify-5misc2zd/SourceResponseCertification.olean",
+          "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/collected-response/SourceResponseCertification.lean"
+        ],
+        "exit_code": 0,
+        "stdout": "COLLECTED_RESPONSE_CERTIFIED declarations=96 source_declarations=237 nodes=26625 required=55 primitive=11721\nCOLLECTED_RESPONSE_AXIOMS P23.Collection.Response.models_response: [propext, Classical.choice, Quot.sound]\nCOLLECTED_RESPONSE_AXIOMS P23.Collection.Response.linearBorn_from_source: [propext, Classical.choice, Quot.sound]\nCOLLECTED_RESPONSE_AXIOMS P23.Collection.Response.aliceBorn_from_loss: [propext, Classical.choice, Quot.sound]\nCOLLECTED_RESPONSE_AXIOMS P23.Collection.Response.bobBorn_from_loss: [propext, Classical.choice, Quot.sound]\nCOLLECTED_RESPONSE_AXIOMS P23.Collection.Response.source_bounds: [propext, Classical.choice, Quot.sound]\nCOLLECTED_RESPONSE_AXIOMS P23.Collection.Response.calibration_identity: [propext, Classical.choice, Quot.sound]\nCOLLECTED_RESPONSE_AXIOMS P23.Collection.Response.calibrated_correction_bound: [propext, Classical.choice, Quot.sound]\nCOLLECTED_RESPONSE_AXIOMS P23.Collection.Response.normalized_source_ratio: [propext, Classical.choice, Quot.sound]\nCOLLECTED_RESPONSE_AXIOMS P23.Collection.Response.actual_source_consumer: [propext, Classical.choice, Quot.sound]\n",
+        "stderr": ""
+      }
+    ],
+    "lsp": [
+      {
+        "file": "Collection.lean",
+        "errors": 0,
+        "warnings": 0,
+        "symbol_count": 1,
+        "method": "task-owned lean --server; documentSymbol, idle fileProgress, published diagnostics"
+      },
+      {
+        "file": "SourceResponse.lean",
+        "errors": 0,
+        "warnings": 0,
+        "symbol_count": 1,
+        "method": "task-owned lean --server; documentSymbol, idle fileProgress, published diagnostics"
+      },
+      {
+        "file": "SourceResponseCertification.lean",
+        "errors": 0,
+        "warnings": 0,
+        "symbol_count": 2,
+        "method": "task-owned lean --server; documentSymbol, idle fileProgress, published diagnostics"
+      }
+    ]
+  },
+  "controls": {
+    "both_actual_derivatives_nonzero": "3/100",
+    "actual_contrast_product_difference": "-9/400",
+    "actual_lambda1_slope_difference_nonzero": "9/6400",
+    "lambda0_same_joint_derivative_consumer": "both Alice and Bob HasDerivAt consume actual sourceI/sourceII",
+    "physical_V_coordinate_endpoints": 4,
+    "effect_only_swap_rejected": true,
+    "partner_lost_single_rejected": true,
+    "zero_Q_and_zero_uA_response": true,
+    "positive_trace_calibration_domain_nonempty": true,
+    "zero_trace_denominator_lookalike_excluded": true
+  },
+  "conditions": {
+    "correction": "lambda=0 or lambda=1, Q>=0, actual trace joint>0",
+    "calibrated_budget": "uA/uB in [0,1], actual unscreened Klyshko efficiencies >=93/125 and >=753/1000, and separately named qEff<=3/5000 or Q*traceJoint<=3/5000 or Q<=3/5000",
+    "coherence": "preparation c nonzero and both generated H/V joint powers positive",
+    "normalized_ratio": "additionally generated zCoeff nonzero",
+    "rates": "lambda1 is the named M3 accidental-rate law, not generated multipair statistics",
+    "source_identity": "Gamma calibration, collection plane and preparation mapping remain independent obligations"
+  },
+  "controller": {
+    "source": "positiveSmoothUnifiedSource",
+    "visit": "SpinPair.visit 10 / tickAt 16",
+    "row": "materialEntry",
+    "next": "tickAt 17",
+    "root_mutation": false,
+    "installation_or_controller_advance": false
+  },
+  "bindings": {
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/investigation/collected-source/criterion.md": "562b062d5eaf79eafb29f41a8c314d350369eb3cb68ba21a1d46bfb2afe26021",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/investigation/collected-source/Collection.lean": "4c89ff1aebae41dc472d24930f79ca418bc3253fc48151889ca17eb308326977",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/investigation/collected-source/Consumer.lean": "d44b26f529369eafad8a7055c67b500f82e223aa29e96c600eff4d7b8f830e9b",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/investigation/collected-source/model.py": "c4baa7ee17c1cb6995488ae7a79800c73e7518dfd6913067cd9cbb9c8d14bec1",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/investigation/collected-source/independent.py": "1a243a2bc00de0120f2296b7149cfbd9dfecd1b9584c9924c57591f78cc8c716",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/investigation/collected-source/external-inputs.json": "e6abaa2c1153c1a3d24e07693b64c12316f0a10467ca1e9df11f1cdad8cb7308",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/response/criterion.md": "63dd1df90a93c4a7a9b127514e63da5bfa1de1f0c57784f16f50ee85149f5bfc",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/response/Response.lean": "3ea723aae1698e5c229e6993468a04d876006719c4bc989c00641d2972849322",
+    "Verification/physics/stage10/independent-bell/nist-real/instrument.json": "4becca05d3a92bdd37d6218d83db64d80df5b4c605766056285d2bb32c0519c4",
+    "Lean/.lake/packages/mathlib/Mathlib/Analysis/Real/Pi/Bounds.lean": "bb8dc6144292b803b2df8c31ca32d67a7ab47b50f8005b5b688d95aff1489444",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/collected-response/criterion-r0001.1.md": "c9b4825832bba9cade516ba2319bd4f000775810436460793a75123506c5ee2d",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/collected-response/sources.json": "8e6d6f8030798498ecc6e5885722cb27d5d799f258da24ff6281517d19a468b4",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/collected-response/SourceResponse.lean": "caeadbe42a9c1263afed406733ee5ad3d8febd53ad1524524c0090461098394f",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/collected-response/SourceResponseCertification.lean": "d14d5db777fc086b9b3ad696d43a0c17aa84fbd62fac2a2b955602dbceaa5ce8",
+    "Lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+    "Lean/lake-manifest.json": "aa60b347daf17a642d027cda3288f7d6f12c176c4ddd2677c28140daadb15c81"
+  },
+  "candidate_capsule_sha256": "657219ac29a049b1c780c3dc46c1b2b64eee4870d1a73932ca18b90b0e036906",
+  "toolchain": "leanprover/lean4:v4.33.0"
+}

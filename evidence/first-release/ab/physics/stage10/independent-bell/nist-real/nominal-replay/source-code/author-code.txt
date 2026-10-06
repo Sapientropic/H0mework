@@ -1,0 +1,182 @@
+# Meyer-Scott 2016 thesis, Appendix A, MATLAB code extracted from PDF176-180.
+# Source PDF SHA256: ba11bf51448fb1e859b03bd8ae8bd7cbbcec33a25ce0f94e1e603a1f5d1249a1
+# Appendix A permits use and modification of this software.
+# PDF extraction artifacts are preserved; these are not recovered original .m bytes.
+
+%%%%%%%%%%%%%%%%%%%% Optimize CH.m
+% Use to optimize the entangled state balance and measurement angles for
+% the CH B' parameter (eq 3, Christensen et al, PRL 2013 [48])
+% The CH inequality is then B' < 1, with (B' − 1) giving the approximate
+% efficiency overhead available.
+% Set the experiment parameters in CH B.m, then run this to optimize.
+clear
+% X0 is the start point for gamma, alpha, beta, alpha p, beta p (degrees)
+% where:
+% cos(gamma)HH + sin(gamma)VV balance angle (so HWP angle is gamma/2)
+% alpha/ p = Alice's first/second polarizer angle (so HWP angle is /2)
+
+
+                                            159
+% beta/ p = Bob's first/second polarizer angle (so HWP angle is /2)
+% Can get away with optimizing only 3 angles, since beta/ p = −alpha/ p
+
+% X0 = [gamma, alpha, alpha p,];
+X0 = [45, 5, −28]; % A good starting point
+% Perform optimization, in degrees for polarizer angles. HWPs would use
+% half these angles
+X = fminsearch(@(X) CH B(X,1), X0)
+% Run this to generate a matrix of expected counts for all measurement ...
+   settings combinations
+CH val = 1/CH B(X, 0) − 1
+
+%%%%%%%%%%%%%%%%%%%% CH B.m
+function B inv = CH B(X, opting)
+% Simulation for loophole−free Bell test at NIST
+% Evan Meyer−Scott 2015
+
+%% Experiment parameters
+coinc window = .2e−9; % Coincdence window (s) − only used to calculate ...
+   probablity of darks
+rep rate = 79.3e6; % Rep rate of laser − used to calculate probabily of ...
+   down−conversion
+darks ch1 = 2000; % Darks/s for Alice (could change to pdark per trial ...
+   if known)
+eff ch1 = .747; % Heralding efficiency for Alice
+darks ch2 = 2000; % Darks/s for Bob (could change to pdark per trial if ...
+   known)
+eff ch2 =.732; % Heralding efficiency for Bob
+coinc = 33e3; % Measured coincidences for one polarizer setting (e.g. ...
+   HH) for balanced pumping
+int time = 5; % Integration time, useful for comparing measured counts ...
+   to counts simulated here
+
+% Optimized parameters:
+% Optimize over CH value, or normalized B' value? − The latter doesn't
+% converge to 45deg pump for highly−efficient detectors. It is probably not
+% awesome.
+opt CH = 1;
+
+
+                                    160
+% cos(gamma)HH + sin(gamma)VV balance angle (so HWP angle is gamma/2)
+gamma = (X(1)) * pi/180;
+% Alice/Bob measurement angles
+alpha = X(2);
+alpha p = X(3);
+beta = −alpha; % Bob's angles are just the negative of Alice's
+beta p = −alpha p;
+
+% Set up quantum optics
+N = 4;
+standard defintions qo toolbox;
+
+%% Create two−photon entangled state
+% Net source rate (i.e. backcalculated from the coincidences) gives SPDC ...
+   strength
+net source rate = coinc / eff ch1 / eff ch2;
+epsilon = sqrt(net source rate / rep rate);
+% Create entangled state, modes are | Ha,Va,Hb,Vb>
+H spdc = sqrt(2) * (sin(gamma) * (tensor(a',ida,a',ida) + ...
+   tensor(a,ida,a,ida)) +...
+    exp(1i*0*pi/180)*cos(gamma) * (tensor(ida,a',ida,a') + ...
+       tensor(ida,a,ida,a)))*epsilon;
+U spdc = expm(−1i * H spdc);
+spdc state = U spdc * tensor(vacc, vacc, vacc, vacc);
+% Ideal state for checks:
+% spdc state = 1/sqrt(2) * (tensor(oneph, vacc, oneph, vacc ) + ...
+   tensor(vacc, oneph, vacc, oneph));
+
+% Detector setup
+[proj ch1, ˜] = BucketDetector noise(N, eff ch1, darks ch1 * coinc window);
+[proj ch2, ˜] = BucketDetector noise(N, eff ch2, darks ch2 * coinc window);
+% Or use number resolving detectors with no darks:
+% [proj ch1, unproj ch1] = SPDDetector(N, eff ch1);
+% [proj ch2, unproj ch2] = SPDDetector(N, eff ch2);
+
+% Uncomment to check agreement with measurements in lab
+% H singles = expect(tensor(proj ch1, ida, ida, ida), spdc state) * ...
+   rep rate;
+
+
+                                    161
+% HH coinc = expect(tensor(proj ch1, ida, proj ch2, ida), spdc state) * ...
+   rep rate;
+% VH coinc = expect(tensor(ida, proj ch1, proj ch2, ida), spdc state) * ...
+   rep rate;
+% vis = (HH coinc − VH coinc) / (HH coinc + VH coinc);
+% darks windowed = expect(proj ch1, vacc) * rep rate;
+
+
+
+%% Measurements
+% Use a HWP for polarizer angle alpha/beta and alpha prime/beta prime ...
+   (degrees):
+% Means the HWPs are at alpha/2, etc.
+H HWP alpha = (tensor(a,a')*exp(1i*pi/2) + tensor(a',a) * exp(−1i*pi/2)) ...
+   * alpha * pi/180;
+U HWP alpha = expm(−1i * H HWP alpha);
+H HWP beta = (tensor(a,a')*exp(1i*pi/2) + tensor(a',a) * exp(−1i*pi/2)) ...
+   * beta * pi/180;
+U HWP beta = expm(−1i * H HWP beta);
+H HWP alpha p = (tensor(a,a')*exp(1i*pi/2) + tensor(a',a) * ...
+   exp(−1i*pi/2)) * alpha p * pi/180;
+U HWP alpha p = expm(−1i * H HWP alpha p);
+H HWP beta p = (tensor(a,a')*exp(1i*pi/2) + tensor(a',a) * ...
+   exp(−1i*pi/2)) * beta p * pi/180;
+U HWP beta p = expm(−1i * H HWP beta p);
+
+% Measurement probabilities for terms in CH inequality
+prob ab = real(expect(tensor(proj ch1, ida, proj ch2, ida), ...
+   tensor(U HWP alpha, U HWP beta) * spdc state));
+prob abp = real(expect(tensor(proj ch1, ida, proj ch2, ida), ...
+   tensor(U HWP alpha, U HWP beta p) * spdc state));
+prob apb = real(expect(tensor(proj ch1, ida, proj ch2, ida), ...
+   tensor(U HWP alpha p, U HWP beta) * spdc state));
+prob apbp = real(expect(tensor(proj ch1, ida, proj ch2, ida), ...
+   tensor(U HWP alpha p, U HWP beta p) * spdc state));
+prob a = real(expect(tensor(proj ch1, ida, ida, ida), ...
+   tensor(U HWP alpha, ida, ida) * spdc state));
+prob b = real(expect(tensor(ida, ida, proj ch2, ida), tensor(ida, ida, ...
+   U HWP beta) * spdc state));
+
+
+                                    162
+prob ap = real(expect(tensor(proj ch1, ida, ida, ida), ...
+   tensor(U HWP alpha p, ida, ida) * spdc state));
+prob bp = real(expect(tensor(ida, ida, proj ch2, ida), tensor(ida, ida, ...
+   U HWP beta p) * spdc state));
+
+% CH value (scales with pump power)
+CH = (prob ab + prob apb + prob abp − prob apbp − prob a − prob b);
+
+% B' value (mostly independent of pump power, but convenient to show ...
+    overhead)
+B = (prob ab + prob apb + prob abp − prob apbp) / (prob a + prob b)
+if ˜opting % Display a counts matrix for comparison with experiments
+     counts = round([prob a *rep rate, prob ab *rep rate, prob b *rep rate;
+               prob a *rep rate, prob abp *rep rate, prob bp *rep rate;
+               prob ap *rep rate, prob apb *rep rate, prob b *rep rate;
+               prob ap *rep rate, prob apbp*rep rate, ...
+                  prob bp *rep rate]*int time)
+end
+
+% For minimization
+if opt CH
+     B inv = 1/(CH+1);
+else
+     B inv = 1/(B+1);
+end
+if B inv < 0; % Strong penalty for negative values
+     B inv = 1e6;
+end
+
+% Can check CH value agrees with Thomas' code, but only for "standard"
+% angles, or set last parameter to 1 to assume fair sampling.
+% [ch chsh] = ...
+   msrmt ch chsh 2side rho(N,spdc state,proj ch1,ida,proj ch2,ida,0)
+
+
+
+
+                                    163
+

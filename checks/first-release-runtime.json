@@ -1,0 +1,346 @@
+{
+  "schema": "h0mework/first-release-runtime@1",
+  "views": {
+    "h": {
+      "ref": "H",
+      "paths": [
+        "Verification/physics/quantization-current/check.py"
+      ]
+    },
+    "ad": {
+      "ref": "AD",
+      "paths": [
+        "Verification/physics/stage10/independent-bell/theory-blind/constructor.py",
+        "Verification/physics/stage10/independent-bell/theory-blind/independent_born.py"
+      ]
+    },
+    "ae": {
+      "ref": "AE",
+      "paths": [
+        "Verification/physics/low-energy-phenomenology/external-composite-decay/check_clock_phi_native_matched_gamma_budget.py",
+        "Verification/physics/low-energy-phenomenology/external-composite-decay/check_clock_phi_renormalized_second_green_tail.py",
+        "Verification/physics/low-energy-phenomenology/external-composite-decay/check_clock_phi_matched_diffusion_source.py",
+        "Verification/physics/low-energy-phenomenology/external-composite-decay/SourceClockPhiFixedSecondGreenTail.lean",
+        "Verification/physics/low-energy-phenomenology/external-composite-decay/SourceClockPhiMatchedDiffusionSource.lean",
+        "Verification/physics/low-energy-phenomenology/external-composite-decay/SourceClockPhiMatchedElectricSource.lean",
+        "Verification/physics/low-energy-phenomenology/external-composite-decay/SourceClockPhiNativeMatchedGammaBudget.lean",
+        "Verification/physics/low-energy-phenomenology/external-composite-decay/SourceClockPhiNativeMatchedSource.lean",
+        "Verification/physics/low-energy-phenomenology/external-composite-decay/SourceClockPhiRadiusNormalizedFluxBudget.lean",
+        "Verification/physics/low-energy-phenomenology/external-composite-decay/SourceClockPhiRenormalizedSecondGreen.lean",
+        "Verification/physics/low-energy-phenomenology/external-composite-decay/SourceClockPhiRenormalizedSecondGreenBudget.lean",
+        "Verification/physics/low-energy-phenomenology/external-composite-decay/SourceClockPhiRenormalizedSecondGreenTail.lean",
+        "Verification/physics/low-energy-phenomenology/external-composite-decay/SourceClockRadiusAffineCutoff.lean",
+        "Verification/physics/low-energy-phenomenology/external-composite-decay/SourceClockYukawaQ8RadiusBudget.lean"
+      ]
+    },
+    "eth-h": {
+      "ref": "H",
+      "prefixes": [
+        "Verification/physics/stage10/independent-bell/"
+      ],
+      "paths": [
+        "Verification/physics/stage10/delft-bell/statistics.py"
+      ]
+    },
+    "munich-ae": {
+      "ref": "AE",
+      "prefixes": [
+        "Verification/physics/stage10/independent-bell/munich/",
+        "Verification/physics/stage10/independent-bell/theory-blind/"
+      ],
+      "paths": [
+        "Lean/SaturationMonoid/PhysicsCore/Stage10/Bell/ReadoutAnchors.lean"
+      ]
+    },
+    "nist-ab": {
+      "ref": "AB",
+      "prefixes": [
+        "Verification/physics/stage10/independent-bell/nist-real/"
+      ]
+    },
+    "nist-ac": {
+      "ref": "AC",
+      "prefixes": [
+        "Verification/physics/stage10/independent-bell/nist-real/"
+      ],
+      "paths": [
+        "Lean/lean-toolchain",
+        "Lean/lake-manifest.json"
+      ]
+    },
+    "nist-ad": {
+      "ref": "AD",
+      "prefixes": [
+        "Verification/physics/stage10/independent-bell/nist-real/"
+      ],
+      "paths": [
+        "Lean/lean-toolchain",
+        "Lean/lake-manifest.json"
+      ],
+      "public_inputs": [
+        {
+          "path": "evidence/first-release/mathlib/Mathlib/Analysis/SpecialFunctions/Trigonometric/Arctan.lean",
+          "sha256": "99d770025b84333619ab7ea91b8e38789fc4de14ac99002028b3caf4f2436fa7",
+          "original_path": "Lean/.lake/packages/mathlib/Mathlib/Analysis/SpecialFunctions/Trigonometric/Arctan.lean",
+          "source_repository": "https://github.com/leanprover-community/mathlib4",
+          "source_commit": "db584cd6d46c92f209a44c0f1c829460d327499d"
+        }
+      ]
+    },
+    "nist-old-domain-reader": {
+      "ref": "NIST_OLD_DOMAIN_READER",
+      "paths": [
+        "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/public-review/multi-window/source_verify.py"
+      ]
+    },
+    "nist-old-covariance-reader": {
+      "ref": "NIST_OLD_COVARIANCE_READER",
+      "paths": [
+        "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/full-statistical-fiber/covariance_source_certify.py"
+      ]
+    }
+  },
+  "checks": [
+    {
+      "id": "finite-core-identities",
+      "tier": "entry",
+      "kind": "core-identities",
+      "program": "scripts/physics/common-source/check_core_identities.py",
+      "frozen": "evidence/physics/common-source/core-identity-checks.json"
+    },
+    {
+      "id": "fock-current",
+      "tier": "entry",
+      "kind": "fock-current",
+      "view": "h",
+      "program": "Verification/physics/quantization-current/check.py",
+      "frozen": "evidence/physics/quantization-current/results.json"
+    },
+    {
+      "id": "blind-born",
+      "tier": "entry",
+      "kind": "theory-blind",
+      "view": "ad",
+      "root": "Verification/physics/stage10/independent-bell/theory-blind"
+    },
+    {
+      "id": "check-clock-phi-native-matched-gamma-budget",
+      "tier": "entry",
+      "kind": "exact-source-controls",
+      "view": "ae",
+      "program": "Verification/physics/low-energy-phenomenology/external-composite-decay/check_clock_phi_native_matched_gamma_budget.py",
+      "output": "Verification/physics/low-energy-phenomenology/external-composite-decay/clock-phi-native-matched-gamma-budget-check.json",
+      "frozen": "evidence/first-release/ae/physics/low-energy-phenomenology/external-composite-decay/clock-phi-native-matched-gamma-budget-check.json"
+    },
+    {
+      "id": "check-clock-phi-renormalized-second-green-tail",
+      "tier": "entry",
+      "kind": "exact-source-controls",
+      "view": "ae",
+      "program": "Verification/physics/low-energy-phenomenology/external-composite-decay/check_clock_phi_renormalized_second_green_tail.py",
+      "output": "Verification/physics/low-energy-phenomenology/external-composite-decay/clock-phi-renormalized-second-green-tail-check.json",
+      "frozen": "evidence/first-release/ae/physics/low-energy-phenomenology/external-composite-decay/clock-phi-renormalized-second-green-tail-check.json"
+    },
+    {
+      "id": "check-clock-phi-matched-diffusion-source",
+      "tier": "entry",
+      "kind": "exact-source-controls",
+      "view": "ae",
+      "program": "Verification/physics/low-energy-phenomenology/external-composite-decay/check_clock_phi_matched_diffusion_source.py",
+      "output": "Verification/physics/low-energy-phenomenology/external-composite-decay/clock-phi-matched-diffusion-source-check.json",
+      "frozen": "evidence/first-release/ae/physics/low-energy-phenomenology/external-composite-decay/clock-phi-matched-diffusion-source-check.json"
+    },
+    {
+      "id": "eth-ordered-bell",
+      "tier": "bell",
+      "kind": "eth-bell",
+      "view": "eth-h",
+      "root": "Verification/physics/stage10/independent-bell",
+      "archive_name": "storz-2023-rawData.zip"
+    },
+    {
+      "id": "munich-complete-bell",
+      "tier": "bell",
+      "kind": "munich-bell",
+      "view": "munich-ae",
+      "root": "Verification/physics/stage10/independent-bell/munich"
+    },
+    {
+      "id": "nist-complete-source-slice",
+      "tier": "bell",
+      "kind": "nist-witness-consumers",
+      "view": "nist-ac",
+      "consumers": [
+        {
+          "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/verify_slice.py",
+          "function": "run"
+        }
+      ]
+    },
+    {
+      "id": "nist-complete-source-receiver",
+      "tier": "bell",
+      "kind": "nist-witness-consumers",
+      "view": "nist-ac",
+      "consumers": [
+        {
+          "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/verify_receiver.py",
+          "function": "run",
+          "independent_report": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/receiver-independent-stable.json.gz"
+        }
+      ]
+    },
+    {
+      "id": "nist-full-source-domain",
+      "tier": "bell",
+      "kind": "nist-witness-consumers",
+      "view": "nist-ad",
+      "consumers": [
+        {
+          "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/full-statistical-fiber/verify_fiber.py",
+          "function": "verify"
+        },
+        {
+          "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/public-review/source-compression/statistics_verify.py",
+          "function": "generate"
+        },
+        {
+          "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/public-review/source-compression/domain_verify.py",
+          "function": "verify_witness"
+        },
+        {
+          "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/public-review/source-compression/verify.py",
+          "function": "generate"
+        }
+      ],
+      "controls": [
+        "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/public-review/source-compression/test_independent.py",
+        "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/public-review/source-compression/test_statistics_verify.py",
+        "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/public-review/source-compression/test_domain.py",
+        "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/public-review/source-compression/test_domain_verify.py"
+      ],
+      "historical_views": [
+        "nist-old-domain-reader",
+        "nist-old-covariance-reader"
+      ]
+    },
+    {
+      "id": "nist-nominal-replay",
+      "tier": "bell",
+      "kind": "nist-nominal-replay",
+      "view": "nist-ab",
+      "root": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay"
+    },
+    {
+      "id": "nist-public-member",
+      "tier": "bell",
+      "kind": "nist-public-member",
+      "view": "nist-ab",
+      "root": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-prediction"
+    },
+    {
+      "id": "munich-identification",
+      "tier": "bell",
+      "kind": "munich-contract",
+      "view": "munich-ae",
+      "contract": "identification"
+    },
+    {
+      "id": "munich-shared-response",
+      "tier": "bell",
+      "kind": "munich-contract",
+      "view": "munich-ae",
+      "contract": "shared-response"
+    },
+    {
+      "id": "munich-joint-response",
+      "tier": "bell",
+      "kind": "munich-contract",
+      "view": "munich-ae",
+      "contract": "joint-response"
+    },
+    {
+      "id": "munich-atomic-forward",
+      "tier": "bell",
+      "kind": "munich-contract",
+      "view": "munich-ae",
+      "contract": "atomic-forward"
+    },
+    {
+      "id": "munich-detector-fiber",
+      "tier": "bell",
+      "kind": "munich-contract",
+      "view": "munich-ae",
+      "contract": "detector-fiber"
+    },
+    {
+      "id": "munich-pulse-realization",
+      "tier": "bell",
+      "kind": "munich-contract",
+      "view": "munich-ae",
+      "contract": "pulse-realization"
+    },
+    {
+      "id": "munich-hardware-anchors",
+      "tier": "bell",
+      "kind": "munich-contract",
+      "view": "munich-ae",
+      "contract": "hardware-anchors"
+    },
+    {
+      "id": "quantum-independent",
+      "tier": "full",
+      "kind": "quantum-independent",
+      "quantum_config": "checks/first-release-quantum.json"
+    }
+  ],
+  "required": {
+    "entry": [
+      "finite-core-identities",
+      "fock-current",
+      "blind-born",
+      "check-clock-phi-native-matched-gamma-budget",
+      "check-clock-phi-renormalized-second-green-tail",
+      "check-clock-phi-matched-diffusion-source"
+    ],
+    "bell": [
+      "eth-ordered-bell",
+      "munich-complete-bell",
+      "nist-complete-source-slice",
+      "nist-complete-source-receiver",
+      "nist-full-source-domain",
+      "nist-nominal-replay",
+      "nist-public-member",
+      "munich-identification",
+      "munich-shared-response",
+      "munich-joint-response",
+      "munich-atomic-forward",
+      "munich-detector-fiber",
+      "munich-pulse-realization",
+      "munich-hardware-anchors"
+    ],
+    "full": [
+      "finite-core-identities",
+      "fock-current",
+      "blind-born",
+      "check-clock-phi-native-matched-gamma-budget",
+      "check-clock-phi-renormalized-second-green-tail",
+      "check-clock-phi-matched-diffusion-source",
+      "eth-ordered-bell",
+      "munich-complete-bell",
+      "nist-complete-source-slice",
+      "nist-complete-source-receiver",
+      "nist-full-source-domain",
+      "nist-nominal-replay",
+      "nist-public-member",
+      "munich-identification",
+      "munich-shared-response",
+      "munich-joint-response",
+      "munich-atomic-forward",
+      "munich-detector-fiber",
+      "munich-pulse-realization",
+      "munich-hardware-anchors",
+      "quantum-independent"
+    ]
+  }
+}

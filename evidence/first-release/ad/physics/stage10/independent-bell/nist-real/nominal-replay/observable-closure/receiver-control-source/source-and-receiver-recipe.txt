@@ -1,0 +1,141 @@
+NIST Bell test public DAQ source extract; non-executable source material.
+Source: official NIST code/daq archives. Extracted 2026-10-02.
+Network endpoints, device identifiers and local paths are redacted.
+This extract does not establish execution at any named data-run epoch.
+NIST notice and source attribution: https://www.nist.gov/pml/applied-physics-division/bell-test-research-software-and-data
+
+MEMBER bell_client/CH_over_network.py
+ORIGINAL_SHA256 98dcac2dc3c49d39c009d9d561347c62ed53b7cf5f5b39bb298c1963914dd452
+LINES 1-12
+1: # -*- coding: utf-8 -*-
+2: """
+3: Created on Thu Aug 20 18:55:45 2015
+4: 
+5: @author: qittlab
+6: """
+7: from motorControl import MotorController
+8: import numpy as np
+9: import time
+10: import gc
+11: import cmdline2 as cmdline
+12: 
+LINES 194-218
+194: AHWP2 = 5.5
+195: AHWP1 = 3.4050
+196: AQWP1 = 11.0
+197: BHWP1 = -5.905
+198: BHWP2 = -8
+199: BQWP1 = -16 
+200: Angles = -1*np.array([-4.19/2, 25.93/2]) 
+201: Bob_angles = 1*Angles + BHWP2
+202: Alice_angles = AHWP2 - Angles
+203: # Set the pump to the correct angle
+204: mc_source.goto('PumpHWP', 8.0)
+205: # Set Alice WP angles correctly
+206: mc_alice.goto('AliceQWP1', AQWP1)
+207: mc_alice.goto('AliceHWP1', AHWP1)
+208: mc_alice.goto('AliceHWP2', AHWP2)
+209: # Set Bob WP angles correctly
+210: mc_bob.goto('BobQWP1', BQWP1 +90)
+211: mc_bob.goto('BobHWP1', BHWP1)
+212: mc_bob.goto('BobHWP2', BHWP2)
+213: time.sleep(15)
+214: 
+215: num_experiments = 1
+216: collect_data_with_waveplates(num_experiments)
+217: #collect_data_with_PC(num_experiments)
+218:     
+
+MEMBER bell_client/CH_with_one_pockels_cell.py
+ORIGINAL_SHA256 934cc197eeab7b2a5c89848d8eb50e6703cf18b88e27daa6596490b6afbe8732
+LINES 237-261
+237: AHWP2 = 5.5
+238: AHWP1 = 3.4050
+239: AQWP1 = 11.0
+240: BHWP1 = -5.905
+241: BHWP2 = -8
+242: BQWP1 = -16 
+243: Angles = -1*np.array([-4.19/2, 25.93/2]) 
+244: Bob_angles = 1*Angles + BHWP2  
+245: Alice_angles = AHWP2 - Angles 
+246: # Set the pump to the correct angle
+247: mc_source.goto('PumpHWP', 8.0)
+248: # Set Alice WP angles correctly
+249: mc_alice.goto('AliceQWP1', AQWP1)
+250: mc_alice.goto('AliceHWP1', AHWP1)
+251: mc_alice.goto('AliceHWP2', AHWP2)
+252: # Set Bob WP angles correctly
+253: mc_bob.goto('BobQWP1', BQWP1 +90)
+254: mc_bob.goto('BobHWP1', BHWP1)
+255: mc_bob.goto('BobHWP2', BHWP2)
+256: time.sleep(WP_PAUSE_TIME)
+257: 
+258: num_experiments = 1
+259: collect_data_with_waveplates(num_experiments)
+260: winsound.Beep(1000, 1000)
+261: #collect_data_with_PC(num_experiments)
+
+MEMBER bell_client/CH_with_one_pockels_cell_log.py
+ORIGINAL_SHA256 6e575eebb337c3e5b3be40006886869770f6e3858a3dd43eaf1b695c8ee8ad2b
+LINES 245-269
+245: AHWP2 = 5.5
+246: AHWP1 = 3.4050
+247: AQWP1 = 11.0
+248: BHWP1 = -5.905
+249: BHWP2 = -8
+250: BQWP1 = -16 
+251: Angles = -1*np.array([-4.19/2, 25.93/2]) 
+252: Bob_angles = 1*Angles + BHWP2 - .25
+253: Alice_angles = AHWP2 - Angles + .25
+254: # Set the pump to the correct angle
+255: mc_source.goto('PumpHWP', 8.0)
+256: # Set Alice WP angles correctly
+257: mc_alice.goto('AliceQWP1', AQWP1)
+258: mc_alice.goto('AliceHWP1', AHWP1)
+259: mc_alice.goto('AliceHWP2', AHWP2)
+260: # Set Bob WP angles correctly
+261: mc_bob.goto('BobQWP1', BQWP1 +90)
+262: mc_bob.goto('BobHWP1', BHWP1)
+263: mc_bob.goto('BobHWP2', BHWP2)
+264: time.sleep(15)
+265: 
+266: num_experiments = 1
+267: collect_data_with_waveplates(num_experiments,filestr='')
+268: #collect_data_with_PC(num_experiments)
+269: client_twottag.log_twottag_close()   
+
+MEMBER bell_client/CH_with_one_pockels_cell_log2.py
+ORIGINAL_SHA256 488c713494099980e4b1a52d513aa53a107bce07eb3bd67af4ba0432c32cc535
+LINES 250-281
+250: AHWP2 = 5.5
+251: AHWP1 = 3.4050
+252: AQWP1 = 11.0
+253: BHWP1 = -5.905
+254: BHWP2 = -8
+255: BQWP1 = -16 
+256: Angles = -1*np.array([-4.19/2, 25.93/2]) 
+257: Bob_angles = 1*Angles + BHWP2  
+258: Alice_angles = AHWP2 - Angles 
+259: # Set the pump to the correct angle
+260: mc_source.goto('PumpHWP', 8.0)
+261: # Set Alice WP angles correctly
+262: mc_alice.goto('AliceQWP1', AQWP1)
+263: mc_alice.goto('AliceHWP1', AHWP1)
+264: mc_alice.goto('AliceHWP2', AHWP2)
+265: # Set Bob WP angles correctly
+266: mc_bob.goto('BobQWP1', BQWP1 +90)
+267: mc_bob.goto('BobHWP1', BHWP1)
+268: mc_bob.goto('BobHWP2', BHWP2)
+269: time.sleep(WP_PAUSE_TIME)
+270: 
+271: num_experiments = 1
+272: filestr = ''
+273: logtofile = True
+274: if logtofile:
+275:     client_twottag.simple_init()
+276: collect_data_with_waveplates(num_experiments, filestr, logtofile)
+277: winsound.Beep(1000, 1000)
+278: #collect_data_with_PC(num_experiments, filestr, logtofile)
+279:     
+280: if logtofile:
+281:     client_twottag.log_twottag_close()

@@ -145,3 +145,34 @@ check-all: check check-map check-5a check-5a-k check-case2 check-obs check-physi
 
 clean:
 	rm -rf $(VIEW_BASE)
+
+# Each first-release execution keeps its own view and result directory.
+FR_RUN := .local/first-release-runs/$(shell python3 -c 'import uuid; print(uuid.uuid4().hex)')
+FR_RUNTIME := checks/first-release-runtime.json
+FR_QUANTUM := checks/first-release-quantum.json
+FR_ARCHIVES ?= evidence/first-release/bell-inputs
+.PHONY: build-first-release trust-first-release check-first-release-map check-first-release-entry check-first-release-bell check-first-release-quantum check-first-release-full
+
+build-first-release:
+	python3 tools/first_release.py build --output $(FR_RUN)/build
+
+trust-first-release:
+	python3 tools/first_release.py trust --output $(FR_RUN)/trust
+
+check-first-release-map: check-map
+	python3 tools/first_release.py verify-map
+
+check-first-release-entry: check-first-release-map $(VENV)/bin/python
+	$(VENV)/bin/python tools/first_release_replay.py entry --config $(FR_RUNTIME) --output $(FR_RUN)/entry --python $(ROOT)/$(VENV)/bin/python
+
+check-first-release-bell: $(VENV)/bin/python
+	$(VENV)/bin/python tools/first_release_replay.py bell --config $(FR_RUNTIME) --output $(FR_RUN)/bell --archive-dir $(FR_ARCHIVES) --python $(ROOT)/$(VENV)/bin/python
+
+check-first-release-quantum: $(VENV)/bin/python
+	$(VENV)/bin/python tools/first_release_quantum.py --config $(FR_QUANTUM) --output $(FR_RUN)/quantum --python $(ROOT)/$(VENV)/bin/python
+
+check-first-release-full: $(VENV)/bin/python
+	$(MAKE) build-first-release
+	$(MAKE) trust-first-release
+	$(MAKE) check-first-release-map
+	$(VENV)/bin/python tools/first_release_replay.py full --config $(FR_RUNTIME) --output $(FR_RUN)/full --archive-dir $(FR_ARCHIVES) --python $(ROOT)/$(VENV)/bin/python

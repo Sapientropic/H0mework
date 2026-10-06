@@ -1,0 +1,115 @@
+# NIST Bell analysis: static source excerpts. Original member line numbers are retained.
+# No archive module is imported or executed. Redactions preserve line positions.
+
+## bell_analysis_code/make_compressed.py
+## original_sha256: ee75b2cb74be3b84c2d310641f0e5cabddf0ac84020bf19b1a2e8e9de03780ee
+
+### original lines 18-42
+0018:     data = np.memmap(fname,dtype=np.uint64,mode='r')
+0019:     data.shape=(-1,3)
+0020:     fname2 = fname+'.compressed' 
+0021:     f = open(fname2,'wb')
+0022: 
+0023:     numberleft = data.shape[0]
+0024:     bell_dtype = np.dtype('u1, u8')
+0025: 
+0026:     start = 0
+0027:     block_size = 10000000
+0028:     block = np.zeros((block_size,),dtype=([('ch','u1'),('ttag','u8'),('xfer','u2')]))
+0029:     #while numberleft > block_size:
+0030:     filecount=0
+0031:     while numberleft > 0:
+0032:         print 'start',start
+0033:         idx = np.arange(block_size)+start
+0034:         if idx[-1]>data.shape[0]:
+0035:             idx = np.arange(start,data.shape[0])
+0036:             block = np.zeros((len(idx),),dtype=([('ch','u1'),('ttag','u8'),('xfer','u2')]))
+0037:         ch = data[idx,0].astype('u1')+0
+0038:         ttag = data[idx,1]+0
+0039:         xfer = data[idx,2].astype('u2')
+0040:         block['ch']=ch
+0041:         block['ttag']=ttag
+0042:         block['xfer']=xfer
+
+## bell_analysis_code/sync_hdf5.py
+## original_sha256: 29ded9d310a712b7e70e8395b6af7315203f8680532aa43e7267865cb2ab7b57
+
+### original lines 10-14
+0010: import build_file_txt as build_file
+0011: compressed = True
+0012: doPlot = False
+0013: count = 0
+0014: import h5py
+
+### original lines 43-47
+0043:     global blocksize, found_initial_offset, compressed
+0044:     if compressed:
+0045:         dt = [('ch','u1'),('ttag','i8'),('xfer','u2')]
+0046:         alice.rawdata = np.memmap(fp['alice'],dtype=dt, mode='r')
+0047:         bob.rawdata = np.memmap(fp['bob'],dtype=dt, mode='r')
+
+### original lines 85-94
+0085: def run(fp=None):
+0086:     global count,compressed
+0087: 
+0088:     alice,bob,config,fp = build_file.initialize(fp)
+0089:     hdf = h5py.File(fp['results'],'a')
+0090:         
+0091:     getOffsets(alice,bob,config,fp,hdf) # get offsets and load files
+0092:         
+0093:     data = {'alice':alice.rawdata, 'bob':bob.rawdata}
+0094:     print_first_last(data)
+
+### original lines 117-123
+0117:         if compressed:
+0118:             booleanCut = data[key]['ch']==(config[key]['channelmap']['sync']-1)
+0119:             #sync = data[key]['ttag'][booleanCut]
+0120:             sync = np.compress(booleanCut, data[key]['ttag'])
+0121:         else:
+0122:             booleanCut = data[key][:,0]==(config[key]['channelmap']['sync']-1)
+0123:             sync = data[key][booleanCut][:,1]
+
+### original lines 130-171
+0130:         syncOffsetIndex = booleanCut.cumsum().astype('i8')-1  #  first sync has index 0
+0131:         syncOffset = sync[syncOffsetIndex]
+0132:         stuff[key]['sync']=sync
+0133:         """
+0134:         stuff[key]['syncOffset']=syncOffset  # equals # rows in rawdata
+0135:         stuff[key]['syncOffsetIndex']=syncOffsetIndex  # equals # rows in rawdata 
+0136:         """
+0137:         checklaserperiod= np.floor(np.diff(sync)/(129102/800.) + 0.5)
+0138:         badSyncIdx = np.where(checklaserperiod!=800)[0]
+0139:         if badSyncIdx.size > 0:
+0140:             print 'syncperiod',key,checklaserperiod[checklaserperiod!=800]
+0141:             print 'badSyncIdx',key,badSyncIdx
+0142:             print sync[badSyncIdx]
+0143:             print sync[badSyncIdx+1]
+0144:             stuff[key]['badSyncInfo'] = np.vstack( (badSyncIdx, sync[badSyncIdx], sync[badSyncIdx+1], checklaserperiod[checklaserperiod!=800])).astype('int')
+0145:             print stuff[key]['badSyncInfo'][:]
+0146: 
+0147:             badSync = stuff[key]['badSyncInfo'][:]
+0148: 
+0149:             modelockbool = np.abs(badSync[-1,:]) < 790
+0150:             if modelockbool.sum()>0:
+0151:                 modeLockIdx = np.where(modelockbool)[0]
+0152:                 print key,'modelockbool',modelockbool.sum(), badSync[:,modeLockIdx[0]]
+0153:                 lastSyncIdx = badSync[:,modeLockIdx[0]][0] # need to include the bad one
+0154:                 lastIdx = np.where(booleanCut)[0][lastSyncIdx]+1                     
+0155:                 stuff[key]['modelockOffsetInfo'] = np.array([lastSyncIdx, lastIdx])
+0156:                 print 'modelockOffsetInfo',stuff[key]['modelockOffsetInfo'][:]
+0157:             #  Check for gaps in syncs:
+0158:             gapbool = np.abs(badSync[-1,:])>810
+0159:             gapbool = gapbool & ( np.abs(badSync[-1,:])<(100000*800))
+0160:             print key,'gapbool',gapbool.sum(), badSync[:,gapbool]
+0161: 
+0162:         syncperiod = np.diff(sync)
+0163: 
+0164:         if badSyncIdx.size>0:
+0165:             ttagjumpbool = ( np.abs(badSync[-1,:])>(100000*800))
+0166:             if ttagjumpbool.sum()>0:
+0167:                 ttagIdx = badSync[0,ttagjumpbool]
+0168:                 print 'syncperiod',syncperiod[ttagIdx]
+0169:                 syncperiod[ttagIdx] = syncperiod[ttagIdx-1]
+0170:                 print 'syncperiod',syncperiod[ttagIdx]
+0171:         stuff[key]['syncPeriod']=syncperiod
+

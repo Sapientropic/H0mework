@@ -71,6 +71,355 @@ class PublicationTests(unittest.TestCase):
         self.assertEqual(s.invert_resource_digests(outputs["Lean/A.lean"], modules[0]), source)
 
 
+class DeclaredRuntimePathTests(unittest.TestCase):
+    def test_only_selected_pointer_changes_and_number_bytes_survive(self):
+        raw = fixture(b'{"log":"@ROOT@/audit.log","same":"@ROOT@/audit.log","value":1.2300000000000000001,"failed":true}')
+        rules = [{"pointer": "/log", "relative": "audit.log"}]
+        result, count = p.declared_runtime_paths(raw, rules)
+        self.assertEqual(count, 1)
+        self.assertEqual(json.loads(result)["same"], FIXTURE_ROOT + "/audit.log")
+        self.assertIn(b'"value":1.2300000000000000001,"failed":true', result)
+        self.assertEqual(p.declared_runtime_paths(result, rules), (result, 0))
+
+    def test_declared_key_slot_and_collision_never_change_payload_values(self):
+        raw = fixture(b'{"inputs":{"@ROOT@/a.json":"original-digest"},"result":17}')
+        result, count = p.declared_runtime_paths(raw, [{"pointer": "/inputs", "key_index": 0, "relative": "a.json"}])
+        self.assertEqual(count, 1)
+        self.assertEqual(json.loads(result), {"inputs": {"a.json": "original-digest"}, "result": 17})
+        with self.assertRaises(p.PublicationError):
+            p.declared_runtime_paths(raw, [{"pointer": "/absent", "relative": "a.json"}])
+        collision = fixture(b'{"inputs":{"@ROOT@/a.json":"x","a.json":"y"}}')
+        with self.assertRaises(p.PublicationError):
+            p.declared_runtime_paths(collision, [{"pointer": "/inputs", "key_index": 0, "relative": "a.json"}])
+
+    def test_declared_publication_rejects_tampered_result_with_updated_target_hash(self):
+        raw = fixture(b'{"log":"@ROOT@/audit.log","result":17}')
+        rules = [{"pointer": "/log", "relative": "audit.log"}]
+        public = p.declared_runtime_paths(raw, rules)[0]
+        row = {"source_sha256": p.sha(raw), "target_sha256": p.sha(public), "publication": {
+            "kind": p.DECLARED_KIND, "runtime_paths": rules, "payload_sha256": p.sha(public)}}
+        p.verify_artifact(public, row, raw)
+        tampered = public.replace(b'17', b'18')
+        row["target_sha256"] = p.sha(tampered)
+        with self.assertRaises(p.PublicationError):
+            p.verify_artifact(tampered, row, raw)
+
+
+class PrivateNameRewriteTests(unittest.TestCase):
+    source = "_private.CanonicalPreparationEngineProgram"
+    target = "_private.H0mework.Versions.AB.Physics.LowEnergy.AlphaSource.CanonicalPreparationEngineProgram"
+
+    def rules(self, target=None):
+        return [{"source_name": self.source, "target_name": target or self.target}]
+
+    def test_name_quotation_and_numeric_private_reference_round_trip(self):
+        original = (f"let owner := Name.num `{self.source} 0\n"
+                    f"#check {self.source}.0.LowEnergy.engine\n"
+                    f"def quoted := `{self.source}.12.LowEnergy.engine\n")
+        exported = s.rewrite_private_names(original, self.rules())
+        self.assertEqual(exported, original.replace(self.source, self.target))
+        self.assertEqual(s.rewrite_private_names(exported, self.rules(), reverse=True), original)
+
+    def test_explicit_version_and_no_declared_rewrites(self):
+        original = f"let owner := Name.num `{self.source} 0\n"
+        other = self.target.replace(".AB.", ".AC.")
+        self.assertEqual(s.rewrite_private_names(original, self.rules(other)),
+                         original.replace(self.source, other))
+        self.assertEqual(s.rewrite_private_names(original, None), original)
+        self.assertEqual(s.rewrite_private_names(original, []), original)
+        self.assertEqual(s.rewrite_private_names(original, self.rules(), reverse=True), original)
+
+    def test_longer_names_comments_and_strings_are_unchanged(self):
+        names = [self.source + tail for tail in (
+            "Longer", "'", "?", "!", "α", "℀", ".Extra.0.engine", ".0extra", ".engine")]
+        names += ["Longer" + self.source, "Namespace." + self.source]
+        untouched = ("\n".join(f"#check {name}" for name in names) + "\n"
+                     f"-- `{self.source}\n"
+                     f"/- nested /- `{self.source} -/ still `{self.source} -/\n"
+                     f'def string := "{self.source}"\n'
+                     f'def escaped := "\\\"{self.source}\\\""\n'
+                     f'def raw := r##"{self.source}"##\n'
+                     f"#check «{self.source}»\n")
+        original = untouched + f"let owner := Name.num `{self.source} 0\n"
+        self.assertEqual(s.rewrite_private_names(original, self.rules()),
+                         untouched + f"let owner := Name.num `{self.target} 0\n")
+
+    def test_rules_apply_simultaneously_and_preserve_longer_declared_owner(self):
+        rules = [{"source_name": "_private.A", "target_name": "_private.B"},
+                 {"source_name": "_private.B", "target_name": "_private.C"},
+                 {"source_name": "_private.A.Child", "target_name": "_private.B.Child"}]
+        original = "#check `_private.A\n#check _private.B.0.f\n#check `_private.A.Child\n"
+        exported = "#check `_private.B\n#check _private.C.0.f\n#check `_private.B.Child\n"
+        self.assertEqual(s.rewrite_private_names(original, rules), exported)
+        self.assertEqual(s.rewrite_private_names(exported, rules, reverse=True), original)
+
+    def test_malformed_or_conflicting_metadata_is_rejected(self):
+        malformed = [{}, "rules", [None], [{"source_name": self.source}],
+                     [{"source_name": self.source, "target_name": self.target, "extra": True}]]
+        for name in (None, 1, "CanonicalPreparationEngineProgram", "_private.",
+                     "_private.A.0", "_private.A B", "`_private.A"):
+            malformed.append([{"source_name": name, "target_name": self.target}])
+            malformed.append([{"source_name": self.source, "target_name": name}])
+        malformed += [self.rules() * 2,
+                      self.rules() + [{"source_name": self.source, "target_name": "_private.Other"}],
+                      self.rules() + [{"source_name": "_private.Other", "target_name": self.target}]]
+        for rules in malformed:
+            with self.subTest(rules=rules), self.assertRaises(s.ViewError):
+                s.rewrite_private_names("", rules)
+
+
+class AuditRewriteTests(unittest.TestCase):
+    source = "SaturationMonoid.PhysicsCore.Bell.Source"
+    target = "H0mework.Versions.AE.Physics.Bell.Source"
+    variable = "BELL_DETECTOR_PAID_NAMES"
+
+    def rules(self):
+        return [{"source_module": self.source, "target_module": self.target}]
+
+    def boundary(self):
+        return (f'  let some paidPath ← IO.getEnv "{self.variable}" |\n'
+                '    throwError "missing paid source-dependency boundary"\n'
+                '  let paidText ← IO.FS.readFile paidPath\n')
+
+    def test_module_quotation_relocation_stays_in_observer(self):
+        prefix = f'def sameSpelling := `{self.source}\n'
+        tail = (f'  let candidate := `{self.source}\n'
+                f'  let declaration := `{self.source}.theorem\n'
+                f'  let text := "`{self.source}"\n'
+                f'  -- `{self.source}\n')
+        original = prefix + 'open Lean Elab Command in\nrun_cmd do\n' + tail
+        public = s.rewrite_audit_module_names(original, self.rules())
+        self.assertTrue(public.startswith(prefix))
+        self.assertEqual(public.count('`' + self.target), 1)
+        self.assertIn('`' + self.source + '.theorem', public)
+        self.assertEqual(s.rewrite_audit_module_names(public, self.rules(), reverse=True), original)
+
+    def test_unregistered_or_noninvertible_module_rules_reject(self):
+        for rules in ({}, [self.rules()[0], self.rules()[0]],
+                      [{"source_module": "../Source", "target_module": self.target}],
+                      [{"source_module": self.source, "target_module": self.target, "extra": True}]):
+            with self.subTest(rules=rules), self.assertRaises(s.ViewError):
+                s.rewrite_audit_module_names('\nrun_cmd do\n', rules)
+        with self.assertRaises(s.ViewError):
+            s.rewrite_audit_module_names('def outside := `' + self.source + '\n', self.rules())
+
+    def test_elaborated_observer_relocates_only_module_quotations(self):
+        prefix = (f'def outside := `{self.source}\n'
+                  '-- run_cmd do\n'
+                  '/-\nelab "#fake" : command => do\n-/\n')
+        tail = (f'  let candidate := `{self.source}\n'
+                f'  let declaration := `{self.source}.theorem\n'
+                f'  let resolved := ``{self.source}\n'
+                f'  let literal := "`{self.source}"\n'
+                f'  -- `{self.source}\n')
+        original = prefix + 'elab "#audit" : command => do\n' + tail + '\n#audit\n'
+        public = s.rewrite_audit_module_names(original, self.rules())
+        self.assertTrue(public.startswith(prefix))
+        self.assertEqual(public.count('`' + self.target), 1)
+        self.assertIn('``' + self.source, public)
+        self.assertIn('`' + self.source + '.theorem', public)
+        self.assertEqual(s.rewrite_audit_module_names(public, self.rules(), reverse=True), original)
+
+    def test_module_rewrite_rejects_resolved_declaration_and_ambiguous_observers(self):
+        for text in (f'run_cmd do\n  let declaration := ``{self.source}\n',
+                     f'run_cmd do\n  let candidate := `{self.source}\nrun_cmd do\n',
+                     f'elab "#one" : command => do\n  let candidate := `{self.source}\n'
+                     'elab "#two" : command => do\n'):
+            with self.subTest(text=text), self.assertRaises(s.ViewError):
+                s.rewrite_audit_module_names(text, self.rules())
+
+    def test_elaborated_observer_source_view_rejects_proof_tampering(self):
+        original = (f'import {self.source}\n'
+                    'theorem value : True := by trivial\n'
+                    'elab "#audit" : command => do\n'
+                    f'  let candidate := `{self.source}\n\n#audit\n')
+        public = s.rewrite_audit_module_names(original, self.rules())
+        public = s.transform(public, s.import_tokens(public), {self.source: self.target})
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / 'Audit.lean').write_bytes(public)
+            row = {'path': 'Audit.lean', 'source_path': 'Original.lean',
+                   'target_sha256': p.sha(public), 'source_sha256': p.sha(original.encode()),
+                   'import_map': {self.target: self.source}, 'audit_module_rewrites': self.rules()}
+            with patch.object(s, 'ROOT', root):
+                self.assertEqual(s.module_views(row, {}), (original.encode(), original.encode()))
+                tampered = public.replace(b': True :=', b': False :=')
+                (root / 'Audit.lean').write_bytes(tampered)
+                with self.assertRaises(s.ViewError):
+                    s.module_views({**row, 'target_sha256': p.sha(tampered)}, {})
+
+    def test_full_observer_keeps_proof_and_explicit_boundary_branch(self):
+        prefix = 'theorem value : True := by trivial\n\n'
+        original = prefix + 'open Lean Elab Command in\nrun_cmd do\n' + self.boundary()
+        public = s.rewrite_audit_runtime(original, [self.variable], True)
+        self.assertTrue(public.startswith(prefix))
+        self.assertIn('| some paidPath => IO.FS.readFile paidPath', public)
+        self.assertIn('| none => pure "[]"', public)
+        self.assertIn('set_option maxHeartbeats 0 in\nrun_cmd do', public)
+        self.assertEqual(s.rewrite_audit_runtime(public, [self.variable], True, reverse=True), original)
+
+    def test_runtime_rewrites_reject_bad_metadata_or_false_matches(self):
+        source = 'open Lean Elab Command in\nrun_cmd do\n' + self.boundary()
+        for variables in ({}, [[self.variable]], [self.variable, self.variable], ['UNRELATED_NAMES']):
+            with self.subTest(variables=variables), self.assertRaises(s.ViewError):
+                s.rewrite_audit_runtime(source, variables, True)
+        with self.assertRaises(s.ViewError):
+            s.rewrite_audit_runtime(source, [self.variable], 'true')
+        with self.assertRaises(s.ViewError):
+            s.rewrite_audit_runtime(source + self.boundary(), [self.variable], True)
+        fake = 'open Lean Elab Command in\nrun_cmd do\n/-\n' + self.boundary() + '-/\n'
+        with self.assertRaises(s.ViewError):
+            s.rewrite_audit_runtime(fake, [self.variable], True)
+
+    def test_composed_source_view_restores_original_and_rejects_proof_tampering(self):
+        original = (f'import {self.source}\n'
+                    'theorem value : True := by trivial\n'
+                    'open Lean Elab Command in\nrun_cmd do\n'
+                    f'  let candidate := `{self.source}\n' + self.boundary())
+        public = s.rewrite_audit_module_names(original, self.rules())
+        public = s.rewrite_audit_runtime(public, [self.variable], True)
+        public = s.transform(public, s.import_tokens(public), {self.source: self.target})
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / 'Audit.lean').write_bytes(public)
+            row = {'path': 'Audit.lean', 'source_path': 'Original.lean',
+                   'target_sha256': p.sha(public), 'source_sha256': p.sha(original.encode()),
+                   'import_map': {self.target: self.source}, 'audit_module_rewrites': self.rules(),
+                   'audit_boundary_fallbacks': [self.variable], 'audit_full_closure': True}
+            with patch.object(s, 'ROOT', root):
+                self.assertEqual(s.module_views(row, {}), (original.encode(), original.encode()))
+                tampered = public.replace(b': True :=', b': False :=')
+                (root / 'Audit.lean').write_bytes(tampered)
+                with self.assertRaises(s.ViewError):
+                    s.module_views({**row, 'target_sha256': p.sha(tampered)}, {})
+
+
+class AuditCommandNameTests(unittest.TestCase):
+    header = 'elab "#audit" : command => do'
+
+    def rule(self):
+        return {'source_declaration': self.header, 'target_name': 'H0mework.Audit.auditCommand'}
+
+    def test_only_executable_registration_name_changes(self):
+        prefix = '/-\n' + self.header + '\n-/\n' + 'theorem preserved : True := by trivial\n'
+        body = '\n  logInfo "same audit"\n\n#audit\n'
+        original = prefix + self.header + body
+        public = s.name_audit_command(original, self.rule())
+        self.assertTrue(public.startswith(prefix))
+        self.assertTrue(public.endswith(body))
+        self.assertIn('elab (name := H0mework.Audit.auditCommand) "#audit"', public)
+        self.assertIsNotNone(s.audit_observer_start(public))
+        self.assertEqual(s.name_audit_command(public, self.rule(), reverse=True), original)
+
+    def test_invalid_or_ambiguous_registration_rejects(self):
+        for rule in ({}, {'source_declaration': 'def value := 1', 'target_name': 'Good'},
+                     {'source_declaration': self.header, 'target_name': '../Bad'}):
+            with self.subTest(rule=rule), self.assertRaises(s.ViewError):
+                s.name_audit_command(self.header + '\n', rule)
+        for text in ('/-\n' + self.header + '\n-/\n', self.header + '\n' + self.header + '\n'):
+            with self.subTest(text=text), self.assertRaises(s.ViewError):
+                s.name_audit_command(text, self.rule())
+
+    def test_composed_registration_and_module_names_restore_source(self):
+        original = ('import SourceModule\ntheorem preserved : True := by trivial\n' + self.header +
+                    '\n  let candidates := #[`SourceModule]\n\n#audit\n')
+        rules = [{'source_module': 'SourceModule', 'target_module': 'H0mework.SourceModule'}]
+        public = s.rewrite_audit_module_names(original, rules)
+        public = s.name_audit_command(public, self.rule())
+        public = s.transform(public, s.import_tokens(public), {'SourceModule': 'H0mework.SourceModule'})
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / 'Audit.lean').write_bytes(public)
+            row = {'path': 'Audit.lean', 'source_path': 'Original.lean',
+                   'target_sha256': p.sha(public), 'source_sha256': p.sha(original.encode()),
+                   'import_map': {'H0mework.SourceModule': 'SourceModule'},
+                   'audit_module_rewrites': rules, 'audit_command_name': self.rule()}
+            with patch.object(s, 'ROOT', root):
+                self.assertEqual(s.module_views(row, {}), (original.encode(), original.encode()))
+                tampered = public.replace(b'"#audit"', b'"#other"')
+                (root / 'Audit.lean').write_bytes(tampered)
+                with self.assertRaises(s.ViewError):
+                    s.module_views({**row, 'target_sha256': p.sha(tampered)}, {})
+
+
+class LocalInstanceNameTests(unittest.TestCase):
+    source = 'local instance : NormedSpace ℝ Coframe'
+    name = 'coframeInverseLocalNormedSpace'
+
+    def rules(self):
+        return [{'source_declaration': self.source, 'target_name': self.name}]
+
+    def test_only_declared_local_instance_name_changes(self):
+        original = (self.source + ' := Matrix.normedSpace\n'
+                    'theorem unchanged : True := by trivial\n')
+        target = self.source.replace('instance', 'instance ' + self.name, 1)
+        public = s.name_local_instances(original, self.rules())
+        self.assertEqual(public, original.replace(self.source, target))
+        self.assertEqual(s.name_local_instances(public, self.rules(), reverse=True), original)
+
+    def test_comments_strings_and_global_instances_do_not_match(self):
+        for source in ('-- ' + self.source + ' := value\n',
+                       '/-\n' + self.source + ' := value\n-/\n',
+                       'def quoted := "' + self.source + ' := value"\n',
+                       self.source.removeprefix('local ') + ' := value\n'):
+            with self.subTest(source=source), self.assertRaises(s.ViewError):
+                s.name_local_instances(source, self.rules())
+
+    def test_bad_or_ambiguous_rules_reject(self):
+        text = self.source + ' := Matrix.normedSpace\n'
+        for rules in ({}, [self.rules()[0], self.rules()[0]],
+                      [{'source_declaration': self.source, 'target_name': 'name;bad'}],
+                      [{'source_declaration': self.source + ' := bad', 'target_name': self.name}]):
+            with self.subTest(rules=rules), self.assertRaises(s.ViewError):
+                s.name_local_instances(text, rules)
+        with self.assertRaises(s.ViewError):
+            s.name_local_instances(text + text, self.rules())
+
+    def test_all_local_matrix_instances_roundtrip_together(self):
+        declarations = [('NormedAddCommGroup Coframe', 'matrixGroup'),
+                        ('SeminormedAddCommGroup Coframe', 'matrixSemigroup'),
+                        ('NormedSpace ℝ Coframe', 'matrixSpace')]
+        rules = [{'source_declaration': 'local instance : ' + kind, 'target_name': name}
+                 for kind, name in declarations]
+        original = ''.join(rule['source_declaration'] + ' := originalValue\n' for rule in rules)
+        public = s.name_local_instances(original, rules)
+        self.assertEqual(s.name_local_instances(public, rules, reverse=True), original)
+        self.assertEqual(public.count(':= originalValue'), 3)
+        for _, name in declarations:
+            self.assertIn('local instance ' + name + ' :', public)
+
+    def test_record_and_multiline_instance_values_are_unchanged(self):
+        rules = [{'source_declaration': 'local instance : Module.Finite ℝ Carrier',
+                  'target_name': 'moduleFinite'},
+                 {'source_declaration': 'local instance : IsTopologicalAddGroup Carrier',
+                  'target_name': 'topologicalGroup'}]
+        original = ('local instance : Module.Finite ℝ Carrier :=\n'
+                    '  originalProof\n'
+                    'local instance : IsTopologicalAddGroup Carrier where\n'
+                    '  continuous_add := originalAdd\n'
+                    '  continuous_neg := originalNeg\n')
+        public = s.name_local_instances(original, rules)
+        self.assertEqual(s.name_local_instances(public, rules, reverse=True), original)
+        self.assertIn('where\n  continuous_add := originalAdd\n  continuous_neg := originalNeg', public)
+        self.assertIn(':=\n  originalProof', public)
+
+    def test_source_digest_still_rejects_changed_instance_value(self):
+        original = (self.source + ' := Matrix.normedSpace\n').encode()
+        public = s.name_local_instances(original.decode(), self.rules()).encode()
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / 'Instance.lean').write_bytes(public)
+            row = {'path': 'Instance.lean', 'source_path': 'Instance.lean',
+                   'target_sha256': p.sha(public), 'source_sha256': p.sha(original),
+                   'local_instance_names': self.rules()}
+            with patch.object(s, 'ROOT', root):
+                self.assertEqual(s.module_views(row, {}), (original, original))
+                changed = public.replace(b'Matrix.normedSpace', b'Other.normedSpace')
+                (root / 'Instance.lean').write_bytes(changed)
+                with self.assertRaises(s.ViewError):
+                    s.module_views({**row, 'target_sha256': p.sha(changed)}, {})
+
+
 class SourceViewTests(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
@@ -157,6 +506,35 @@ class SourceViewTests(unittest.TestCase):
         exact, _ = s.reconstruct(paths=paths, exact=True, private_originals=archive)
         self.assertEqual(exact[paths[0]], original_module)
         self.assertEqual(exact[paths[1]], self.original)
+
+    def test_private_owner_recovery_precedes_imports_resources_and_exact_digest(self):
+        source_owner, target_owner = "_private.Engine", "_private.H0mework.Versions.AB.Engine"
+        original = (b'import Engine\nimport Mathlib\n'
+                    b'def owner := Name.num `_private.Engine 0\n'
+                    b'def packetText := include_str "source/receipt.json"\n'
+                    b'def packetSha256 := "' + p.sha(self.original).encode() + b'"\n')
+        public_view = original.replace(p.sha(self.original).encode(), p.sha(self.public).encode())
+        exported = (public_view.replace(b'import Engine\n', b'import H0mework.Versions.AB.Engine\n')
+                    .replace(source_owner.encode(), target_owner.encode())
+                    .replace(b'"source/receipt.json"', b'"receipt.json"'))
+        (self.root / "Consumer.lean").write_bytes(exported)
+        row = {"source": "Consumer", "source_path": "Lean/Consumer.lean",
+               "source_revision": "a" * 40, "target": "H0mework.Versions.AB.Consumer",
+               "path": "Consumer.lean", "source_sha256": p.sha(original),
+               "target_sha256": p.sha(exported), "view_sha256": p.sha(public_view),
+               "import_map": {"H0mework.Versions.AB.Engine": "Engine"},
+               "private_name_rewrites": [{"source_name": source_owner, "target_name": target_owner}],
+               "resource_rewrites": [{"source_address": "source/receipt.json",
+                                      "target_address": "receipt.json"}],
+               "resource_sha256_rewrites": [{"source": p.sha(self.original), "target": p.sha(self.public)}]}
+        self.assertEqual(s.module_views(row, {}), (public_view, original))
+        with self.assertRaisesRegex(s.ViewError, "Reconstructed source digest differs"):
+            s.module_views({**row, "private_name_rewrites": []}, {})
+        changed = exported.replace(b"Name.num `" + target_owner.encode() + b" 0",
+                                   b"Name.num `" + target_owner.encode() + b" 1")
+        (self.root / "Consumer.lean").write_bytes(changed)
+        with self.assertRaisesRegex(s.ViewError, "Reconstructed source digest differs"):
+            s.module_views({**row, "target_sha256": p.sha(changed)}, {})
 
 
 if __name__ == "__main__":

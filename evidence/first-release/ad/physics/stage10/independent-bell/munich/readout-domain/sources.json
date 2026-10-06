@@ -1,0 +1,123 @@
+{
+  "schema": "munich-readout-method-constraint-sources/v1",
+  "status": "method_constraints_frozen_before_readout_execution",
+  "parent_method_bindings": "../sources.json",
+  "original_source": {
+    "source": "positiveSmoothUnifiedSource",
+    "visit": 10,
+    "current_tick": 16,
+    "next_tick": 17,
+    "controller_advance": false,
+    "original_source_theorem_changed": false
+  },
+  "method_inputs": [
+    {
+      "name": "PRL119010402.pdf",
+      "url": "https://journals.aps.org/prl/pdf/10.1103/PhysRevLett.119.010402",
+      "bytes": 552873,
+      "sha256": "daf278619b6be31c6f974cf8cc87e01cc8622b68e97f40e829697303d8b87aa0",
+      "used_locations": ["010402-2 source and spin basis", "010402-3 Fig2 and readout methods", "010402-4 left method paragraphs"]
+    },
+    {
+      "name": "BellTest-supplement.pdf",
+      "url": "https://journals.aps.org/prl/supplemental/10.1103/PhysRevLett.119.010402/BellTest-supplement.pdf",
+      "bytes": 342458,
+      "sha256": "bf957f62ec90082818175b2c5d06e46e140768da3a1f00f1d3c7edcf86fd13dd",
+      "used_locations": ["I.B pp2-3 and Fig1", "I.C pp4-6", "I.E p7", "IV pp23-24"]
+    },
+    {
+      "name": "Readme.txt",
+      "source": "original exact method member already bound in each of the two parent archives",
+      "bytes": 1302,
+      "sha256": "aec6c3be8b4f63f2fb33622665d5882cf7b566796ad152b6472276ffeca772a5",
+      "use": "official valid-pairs denominator, row references and declared invalid reasons only"
+    }
+  ],
+  "method_constraints": [
+    {
+      "id": "MC1",
+      "source_location": "PRL010402-3 Fig2b and text; 010402-4 method text",
+      "claim": "state-selective excitation and ionization precede fragment detection; decay to F=1 can reduce measurement fidelity",
+      "domain_use": "separate conditional state-assignment rates from fragment detector efficiencies"
+    },
+    {
+      "id": "MC2",
+      "source_location": "PRL010402-3 to 010402-4 method text",
+      "reported_quantity": "ion/electron fragment detection efficiency",
+      "ion_reported_range": ["0.90", "0.94"],
+      "electron_reported_range": ["0.75", "0.90"],
+      "either_fragment_reported_lower_bound": "0.98",
+      "confidence_level": null,
+      "use_as_F0_F1_constraint": false,
+      "use_as_95_percent_confidence_domain": false
+    },
+    {
+      "id": "MC3",
+      "source_location": "PRL010402-3 to 010402-4 method text; SI I.C",
+      "claim": "random setting selects one of two AOM/readout beams; linear polarization is at half the spin angle",
+      "domain_use": "independent local-setting readout rates and all legal XZ axes",
+      "numerical_angle_noise_confidence_bound": null
+    },
+    {
+      "id": "MC4",
+      "source_location": "PRL010402-4 method text",
+      "claim": "fragment efficiencies differ by laboratory and by measurement run",
+      "domain_use": "separate readout parameter domain for each side and each run"
+    },
+    {
+      "id": "MC5",
+      "source_location": "SI I.B Fig1 and I.C; PRL Fig2c",
+      "claim": "successful BSM triggers the same local state-measurement sequence; local QRNG selects readout beam",
+      "domain_use": "nominal cross-herald shared readout at each own setting",
+      "cross_herald_rate_equality_independently_calibrated": false
+    },
+    {
+      "id": "MC6",
+      "source_location": "SI I.C and IV pp23-24",
+      "claim": "acceptance windows are fixed before the run; laser and CEM malfunctions cause declared interval exclusions; maintenance checks recur daily",
+      "domain_use": "retain parent official selection; fixed rates within a run are an explicit nominal conditional hypothesis",
+      "within_run_zero_drift_confidence_bound": null
+    },
+    {
+      "id": "MC7",
+      "source_location": "SI I.B; PRL010402-2 source definition and 010402-3 Fig2",
+      "claim": "optical pumping and excitation followed by the specified BSM prepare the nominal Psi-minus/Psi-plus source",
+      "domain_use": "retain the original pure-herald source contract",
+      "independent_matched_run_source_visibility_confidence_domain_in_bound_methods": false,
+      "depolarizing_mechanism_independently_calibrated": false
+    }
+  ],
+  "recommended_domain": {
+    "source_family": "original_pure_Psi_minus_and_color_Z_Psi_plus",
+    "geometry": "all_legal_unit_XZ_axes",
+    "correct_rate_definition": {"F0": "P(recorded 0 | ideal 0)", "F1": "P(recorded 1 | ideal 1)"},
+    "correct_rate_lower": "0",
+    "correct_rate_upper": "1",
+    "readout_parameters_distinct_by": ["run", "side", "own_setting"],
+    "readout_shared_across_heralds": true,
+    "within_run_fixed_readout": "explicit_nominal_conditional_hypothesis",
+    "local_response_product": "explicit_nominal_instrument_contract",
+    "calibration_sigma_inserted_as_CI": false,
+    "numeric_fragment_efficiency_cut_inserted": false,
+    "common_depolarizing_visibility_parameter_needed": false,
+    "herald_dependent_source_noise_added": false
+  },
+  "nontrivial_generated_constraints": {
+    "local_affine_parameters": "u=F0-F1; v=F0+F1-1; abs(u)+abs(v)<=1",
+    "local_marginals": "shared across herald and remote setting",
+    "centered_correlation": "D_h(a,b)=v_Aa*v_Bb*C_h(a,b)",
+    "herald_sum_difference": "Z and X outer products with shared local length bounds",
+    "arbitrary_32_cell_table_admitted": false,
+    "common_visibility_absorption": "R_A'=w*R_A+(1-w)*T_A, with both T_A columns equal to R_A*(1/2,1/2); all outcomes unchanged"
+  },
+  "access": {
+    "cached_official_method_bytes_reused": true,
+    "new_event_or_archive_member_reads": 0,
+    "new_statistical_or_fit_execution": 0,
+    "new_readout_results_read": 0,
+    "human_public_result_unexposed_claimed": false,
+    "original_theory_blind_constructor_unchanged": true,
+    "ETH_heldout_accessed": false,
+    "publish_repository_modified": false
+  }
+}

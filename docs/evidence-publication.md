@@ -10,7 +10,8 @@
 | --- | --- |
 | `source_sha256` | 固定来源提交中的原始字节摘要 |
 | `target_sha256` | 本仓文件的完整字节摘要 |
-| `publication.kind` | 声明的公开变换；当前为 `relative-runtime-paths/v1` |
+| `publication.kind` | 声明的公开变换；原选集使用 `relative-runtime-paths/v1`，首发运行记录另使用 `declared-runtime-paths/v2` |
+| `publication.runtime_paths` | v2 的精确 JSON 指针、字典键位置及对应相对地址 |
 | `publication.payload_sha256` | 路径规范化后的原始序列化字节摘要；保留数值的原始写法 |
 | `publication.digest_rewrites` | 公开回执读取另一个公开回执时，对绑定摘要的明确更新 |
 
@@ -20,11 +21,19 @@
 
 变换限定于上述路径标签和声明的绑定摘要，其他序列化字节保持不变。该变换直接替换 JSON 字符串，不重新序列化数值。
 
+首发证据中的来源文件、编译对象、编译搜索路径和原失败日志使用 v2：`declared_runtime_paths` 只替换 `runtime_paths` 指定位置的字符串。字典路径键通过 `key_index` 登记，公开记录不包含私人原键。其他字段及数值写法保持原字节，目标键冲突或声明位置缺失会使变换失败。原件对照使用相同声明验证 payload；原执行的结果和失败状态保持。
+
 ## Lean 资源消费者
 
 包含公开回执的 Lean 模块继续校验文件的完整 SHA256。导出记录用 `resource_sha256_rewrites` 登记原、新资源摘要，用 `view_sha256` 登记公开原路径视图的字节身份。
 
 `resource_rewrites.data_sha256` 保留原始资源身份，`target_artifact` 指向公开资源；公开资源的摘要取其工件记录的 `target_sha256`。这些地址及摘要改写可逆，模块的原 `source_sha256` 可以逐字节复核。
+
+Lean 私有声明的名称包含所属模块地址。模块迁移时，显式引用这些名称的源码用 `private_name_rewrites` 登记原／新地址；[`source_view.py`](../tools/source_view.py) 的 `rewrite_private_names` 只改声明的名称引用，保留注释、字符串和相似长名称。原路径视图恢复所属模块地址并核对原摘要。
+
+同一命名空间的不同模块若生成了冲突的匿名局部实例名，`local_instance_names` 登记对应声明前缀与显式名称。`name_local_instances` 只插入名称，保留实例类型、值和定理正文；恢复原路径视图时移除该名称并核对原摘要。
+
+认证消费者保留数学定义与证明的原字节。末尾的 `run_cmd` 或 `elab` 观察命令用 `audit_module_rewrites` 对齐所查询的模块地址；`audit_command_name` 为独立审查固定各自的命令注册名，使其可以合并导入。Bell 消费者的 `audit_boundary_fallbacks` 保留原边界文件覆盖，在没有提供文件时完整遍历依赖图，委托边界为空；`audit_full_closure` 只调整其观察命令的执行预算。`rewrite_audit_module_names`、`name_audit_command` 与 `rewrite_audit_runtime` 将这些变换逆向恢复，原路径视图继续核对固定来源摘要。选定声明的完整 trust0／werror 审查由[首发验收入口](first-release-reproduction.md#完整检查)执行。
 
 ## 两种视图
 

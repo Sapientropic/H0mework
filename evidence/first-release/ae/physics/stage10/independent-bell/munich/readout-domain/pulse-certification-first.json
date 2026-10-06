@@ -1,0 +1,1299 @@
+{
+  "schema": "stage10-munich-readout-pulse-certification/v1",
+  "evidence_valid": true,
+  "status": "certified_primitive_response_realizer_and_complete_native_feasibility",
+  "candidate_module": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization",
+  "source_bindings": [
+    {
+      "path": "Lean/SaturationMonoid/PhysicsCore/Stage10/Bell/ReadoutPulseRealization.lean",
+      "sha256": "5fc31cd47ce4779eb0641d7190d73297c6c6090cef8c2def62e2775cf3a47f40"
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/PulseCertification.lean",
+      "sha256": "b221bf6a54311ac29e3bcbcf32cde202f17856bf220f79e34350d480cf6266a3"
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/pulse_certify.py",
+      "sha256": "b126b3bda25a59789bf85846f71e62ce84a981678fb16a28b504c2cadf5d8f13"
+    }
+  ],
+  "toolchain_version": "Lean (version 4.33.0, arm64-apple-darwin24.6.0, commit d8b18978322de05a8f3dba51ef03cf5461676c17, Release)",
+  "focused_trust_level": 0,
+  "warning_as_error": true,
+  "asynchronous_elaboration": false,
+  "lean_threads": 1,
+  "fresh_candidate_and_general_consumer_checked": true,
+  "all_owned_declarations_audited": true,
+  "complete_new_dependency_closure_certified": true,
+  "same_original_source_current_next_certified": true,
+  "primitive_bright_dark_response_required": true,
+  "positive_source_gain_required": true,
+  "native_feasibility_iff_generated_legal_detector_rates": true,
+  "squared_source_coordinates_feasibility_certified": true,
+  "whole_response_box_worst_corner_transport_certified": true,
+  "faithful_same_source_effect_realization_certified": true,
+  "distinct_feasible_response_realizers_certified": true,
+  "nonempty_math_response_realizer_certified": true,
+  "original_source_ledger_and_next_certified": true,
+  "detector_factors_scoped_per_role": true,
+  "actual_hardware_uniquely_identified": false,
+  "actual_raw_pulse_inputs_available": false,
+  "shared_detector_factors_between_settings_certified": false,
+  "atomic_response_forward_model_kernel_proved": false,
+  "new_statistical_interval_coverage_kernel_proved": false,
+  "controller_advance": false,
+  "empirical_fit_executed": false,
+  "trial_event_files_read": 0,
+  "new_statistical_tables_read": 0,
+  "frozen_source_receipt": {
+    "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/source-certification-first.json",
+    "sha256": "948ab6b1e302433f7731cd73de96cce58651b274cb2ccfd68152321d7c88e4a7",
+    "explicit_declarations": 115,
+    "source_recompiled": false
+  },
+  "frozen_detector_receipt": {
+    "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/detector-certification-first.json",
+    "sha256": "a324cf597259e4835b4321690b094a3c5ea1c7ccc4effd306eb049e9b9a5f5cb",
+    "owned_declarations": 85,
+    "source_recompiled": false
+  },
+  "producer_compilation_evidence": {
+    "actual_hardware_uniqueness_asserted": false,
+    "actual_pulse_parameters_asserted": false,
+    "candidate": "Lean/SaturationMonoid/PhysicsCore/Stage10/Bell/ReadoutPulseRealization.lean",
+    "candidate_sha256": "5fc31cd47ce4779eb0641d7190d73297c6c6090cef8c2def62e2775cf3a47f40",
+    "compile_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "compiled_object_sha256": "e9793184b77ff6fc62f1f7fa9289b6d559ad5581bfe10cdf4d6cc234ed351957",
+    "controller_advance": false,
+    "direct_consumer": "rf0001 certified pulse-response intervals and existing lawful full-joint source witnesses",
+    "fixed_source": "positiveSmoothUnifiedSource / SpinPair.visit10 / material row / current16 -> next17",
+    "focused_command": [
+      "toolchains/lean-4.33.0-darwin_aarch64/bin/lean",
+      "--trust=0",
+      "-DwarningAsError=true",
+      "-DElab.async=false",
+      "-j1",
+      "-o",
+      "runtime-artifacts/homework-bell-pulserealization-strike.frs1y3g3/SaturationMonoid/PhysicsCore/Stage10/Bell/ReadoutPulseRealization.olean",
+      "Lean/SaturationMonoid/PhysicsCore/Stage10/Bell/ReadoutPulseRealization.lean"
+    ],
+    "focused_exit_code": 0,
+    "paid_detector_object_sha256": "7948f8e595f19868a926ccde7f1468350a9b16e8623bf8949419a246ce3c610f",
+    "phase": "strike",
+    "public_mouth": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.realized_effect_eq",
+    "role": "faithful realizer/transporter of an existing source effect, supplied independently generated atomic spectrum"
+  },
+  "independent_audit_stdout_sha256": "5895837d29e2fc183e097c5d31c914ad20acce6d4b2886770fab3ccda9d12908",
+  "elapsed_seconds": 48.334,
+  "explicit_declarations": [
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.Spectrum",
+      "kind": "structure",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.Spectrum.gap",
+      "kind": "def",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.Spectrum.gap_positive",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.Spectrum.channel",
+      "kind": "def",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.atomicEffect",
+      "kind": "def",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.atomic_effect_coordinates",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.atomic_effect_gain",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.atomic_effect_spectrum",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.realizationAxis",
+      "kind": "def",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.factor",
+      "kind": "def",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.background",
+      "kind": "def",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.Feasible",
+      "kind": "structure",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.factor_gap",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.factor_positive",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.feasible_iff_rates",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.realizationRates",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.realization_background_lt_one",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.realization_efficiency",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.pulse_realizes",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.feasible_gap_lower",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.realizedEffect",
+      "kind": "def",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.realized_effect_eq",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.feasible_monotone",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.feasible_iff_squared",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.atomic_effect_injective",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.two_spectra_same_effect",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    }
+  ],
+  "owned_declarations": [
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.Feasible",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.Feasible.background_slack",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.Feasible.casesOn",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.Feasible.detector_slack",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.Feasible.mk",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.Feasible.mk._flat_ctor",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.Feasible.rec",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.Feasible.recOn",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.Spectrum",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.Spectrum._sizeOf_1",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.Spectrum._sizeOf_inst",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.Spectrum.bright",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.Spectrum.bright_le_one",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.Spectrum.casesOn",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.Spectrum.channel",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.Spectrum.channel._proof_1",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.Spectrum.channel._proof_2",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.Spectrum.channel._proof_3",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.Spectrum.channel.eq_1",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.Spectrum.ctorIdx",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.Spectrum.dark",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.Spectrum.dark_nonnegative",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.Spectrum.ext",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.Spectrum.ext.match_1",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.Spectrum.ext_iff",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.Spectrum.gap",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.Spectrum.gap.eq_1",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.Spectrum.gap_positive",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.Spectrum.mk",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.Spectrum.mk._flat_ctor",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.Spectrum.mk.inj",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.Spectrum.mk.injEq",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.Spectrum.mk.noConfusion",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.Spectrum.mk.sizeOf_spec",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.Spectrum.noConfusion",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.Spectrum.noConfusionType",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.Spectrum.ordered",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.Spectrum.rec",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.Spectrum.recOn",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.atomicEffect",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.atomicEffect.eq_1",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.atomic_effect_coordinates",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.atomic_effect_gain",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.atomic_effect_injective",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.atomic_effect_spectrum",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.background",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.background._proof_1",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.background.eq_1",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.factor",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.factor.eq_1",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.factor_gap",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.factor_positive",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.feasible_gap_lower",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.feasible_iff_rates",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.feasible_iff_squared",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.feasible_monotone",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.pulse_realizes",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.pulse_realizes._simp_3",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.pulse_realizes._simp_4",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.pulse_realizes._simp_5",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.pulse_realizes._simp_6",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.pulse_realizes._simp_7",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.pulse_realizes._simp_8",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.pulse_realizes._simp_9",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.realizationAxis",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.realizationAxis._proof_1",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.realizationAxis.congr_simp",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.realizationAxis.eq_1",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.realizationRates",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.realization_background_lt_one",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.realization_efficiency",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.realizedEffect",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.realized_effect_eq",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.two_spectra_same_effect",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    }
+  ],
+  "independent_consumers": [
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.PulseCertification.controlEffect",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.PulseCertification.controlEffect._proof_1",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.PulseCertification.controlEffect._proof_2",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.PulseCertification.controlEffect._proof_3",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.PulseCertification.controlEffect._proof_4",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.PulseCertification.controlEffect._proof_5",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.PulseCertification.controlEffect.eq_1",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.PulseCertification.controlGain",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.PulseCertification.differentSpectra",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.PulseCertification.firstFeasible",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.PulseCertification.firstSpectrum",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.PulseCertification.firstSpectrum._proof_1",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.PulseCertification.firstSpectrum._proof_2",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.PulseCertification.firstSpectrum._proof_3",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.PulseCertification.firstSpectrum._proof_4",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.PulseCertification.firstSpectrum._proof_5",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.PulseCertification.firstSpectrum.eq_1",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.PulseCertification.generalBothSidesFullProbability",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.PulseCertification.generalDistinctRealizers",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.PulseCertification.generalFaithfulAtomicResponse",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.PulseCertification.generalGeneratedEffectEquality",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.PulseCertification.generalGeneratedRates",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.PulseCertification.generalNativeFeasibility",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.PulseCertification.generalSameSourceCurrentNext",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.PulseCertification.generalSquaredCoordinates",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.PulseCertification.generalWholeResponseBox",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.PulseCertification.nonemptyDistinctRealizers",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.PulseCertification.originalAnswerNext",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.PulseCertification.originalLedger",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.PulseCertification.secondFeasible",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.PulseCertification.secondSpectrum",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.PulseCertification.secondSpectrum._proof_1",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.PulseCertification.secondSpectrum._proof_2",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.PulseCertification.secondSpectrum._proof_3",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.PulseCertification.secondSpectrum._proof_4",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.PulseCertification.secondSpectrum._proof_5",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.PulseCertification.secondSpectrum.eq_1",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.PulseCertification.weakSpectrum",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.PulseCertification.weakSpectrum._proof_1",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.PulseCertification.weakSpectrum._proof_2",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.PulseCertification.weakSpectrum._proof_3",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.PulseCertification.weakSpectrum.eq_1",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.PulseCertification.weakSpectrumRejected",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    }
+  ],
+  "axiom_union": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "public_mouths": [
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.feasible_iff_rates",
+      "type": "∀ (effect : SaturationMonoid.PhysicsCore.Stage10.Bell.CompactReadoutEffect)\n  (spectrum : SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.Spectrum),\n  SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.Feasible effect spectrum ↔\n    SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.Rates\n      (SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.background effect spectrum)\n      (SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.factor effect spectrum)"
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.feasible_iff_squared",
+      "type": "∀ (effect : SaturationMonoid.PhysicsCore.Stage10.Bell.CompactReadoutEffect)\n  (spectrum : SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.Spectrum),\n  SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.Feasible effect spectrum ↔\n    (effect.u ^ 2 + effect.z ^ 2) * (spectrum.bright + spectrum.dark) ^ 2 ≤ (1 - effect.mu) ^ 2 * spectrum.gap ^ 2 ∧\n      (effect.u ^ 2 + effect.z ^ 2) * (2 - spectrum.bright - spectrum.dark) ^ 2 ≤ (1 + effect.mu) ^ 2 * spectrum.gap ^ 2"
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.feasible_monotone",
+      "type": "∀ (effect : SaturationMonoid.PhysicsCore.Stage10.Bell.CompactReadoutEffect)\n  (worst actual : SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.Spectrum),\n  SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.Feasible effect worst →\n    worst.bright ≤ actual.bright →\n      actual.dark ≤ worst.dark →\n        SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.Feasible effect actual"
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.pulse_realizes",
+      "type": "∀ (effect : SaturationMonoid.PhysicsCore.Stage10.Bell.CompactReadoutEffect)\n  (spectrum : SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.Spectrum) (positive : 0 < effect.gain),\n  SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.Realizes effect\n    (SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.background effect spectrum)\n    (SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.factor effect spectrum)\n    (SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.atomicEffect spectrum\n      (SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.realizationAxis effect positive))"
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.realized_effect_eq",
+      "type": "∀ (effect : SaturationMonoid.PhysicsCore.Stage10.Bell.CompactReadoutEffect)\n  (spectrum : SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.Spectrum) (positive : 0 < effect.gain)\n  (feasible : SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.Feasible effect spectrum),\n  SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.realizedEffect effect spectrum positive feasible =\n    effect"
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.atomic_effect_injective",
+      "type": "∀ (axis : SaturationMonoid.PhysicsCore.Stage10.Bell.Axis)\n  {first second : SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.Spectrum},\n  SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.atomicEffect first axis =\n      SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.atomicEffect second axis →\n    first = second"
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.two_spectra_same_effect",
+      "type": "∀ (effect : SaturationMonoid.PhysicsCore.Stage10.Bell.CompactReadoutEffect)\n  (first second : SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.Spectrum)\n  (positive : 0 < effect.gain)\n  (first_feasible : SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.Feasible effect first)\n  (second_feasible : SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.Feasible effect second),\n  first ≠ second →\n    SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.atomicEffect first\n          (SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.realizationAxis effect positive) ≠\n        SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.atomicEffect second\n          (SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.realizationAxis effect positive) ∧\n      SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.realizedEffect effect first positive\n            first_feasible =\n          effect ∧\n        SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.realizedEffect effect second positive\n            second_feasible =\n          effect"
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.PulseCertification.generalSameSourceCurrentNext",
+      "type": "∀ (effect second : SaturationMonoid.PhysicsCore.Stage10.Bell.CompactReadoutEffect)\n  (spectrum : SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.Spectrum) (positive : 0 < effect.gain)\n  (feasible : SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.Feasible effect spectrum)\n  (point : SaturationMonoid.PhysicsCore.ProofFreeRicherAnholonomicSource.BasePoint) (plus x y : Bool),\n  SaturationMonoid.PhysicsCore.Stage10.Bell.effectSourceWeight\n        (SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.realizedEffect effect spectrum positive\n          feasible)\n        second plus point x y =\n      SaturationMonoid.PhysicsCore.Stage10.Bell.effectSourceWeight effect second plus point x y ∧\n    SaturationMonoid.PhysicsCore.Stage10.Bell.effectRuntimeProbability\n          (SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.realizedEffect effect spectrum positive\n            feasible)\n          second plus point x y =\n        SaturationMonoid.PhysicsCore.Stage10.Bell.effectRuntimeProbability effect second plus point x y ∧\n      SaturationMonoid.PhysicsCore.Stage10.Bell.effectNextProbability\n          (SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.realizedEffect effect spectrum positive\n            feasible)\n          second plus point x y =\n        SaturationMonoid.PhysicsCore.Stage10.Bell.effectNextProbability effect second plus point x y"
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.PulseCertification.generalBothSidesFullProbability",
+      "type": "∀ (first second : SaturationMonoid.PhysicsCore.Stage10.Bell.CompactReadoutEffect)\n  (firstSpectrum secondSpectrum : SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.Spectrum)\n  (firstPositive : 0 < first.gain) (secondPositive : 0 < second.gain)\n  (firstFeasible : SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.Feasible first firstSpectrum)\n  (secondFeasible : SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.Feasible second secondSpectrum)\n  (plus x y : Bool),\n  SaturationMonoid.PhysicsCore.Stage10.Bell.effectProbability\n      (SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.realizedEffect first firstSpectrum\n        firstPositive firstFeasible)\n      (SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.realizedEffect second secondSpectrum\n        secondPositive secondFeasible)\n      plus x y =\n    SaturationMonoid.PhysicsCore.Stage10.Bell.effectProbability first second plus x y"
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.PulseCertification.nonemptyDistinctRealizers",
+      "type": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.atomicEffect\n      SaturationMonoid.PhysicsCore.Stage10.Bell.PulseCertification.firstSpectrum\n      (SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.realizationAxis\n        SaturationMonoid.PhysicsCore.Stage10.Bell.PulseCertification.controlEffect ⋯) ≠\n    SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.atomicEffect\n      SaturationMonoid.PhysicsCore.Stage10.Bell.PulseCertification.secondSpectrum\n      (SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.realizationAxis\n        SaturationMonoid.PhysicsCore.Stage10.Bell.PulseCertification.controlEffect ⋯) ∧\n  SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.realizedEffect\n        SaturationMonoid.PhysicsCore.Stage10.Bell.PulseCertification.controlEffect\n        SaturationMonoid.PhysicsCore.Stage10.Bell.PulseCertification.firstSpectrum ⋯\n        SaturationMonoid.PhysicsCore.Stage10.Bell.PulseCertification.firstFeasible =\n      SaturationMonoid.PhysicsCore.Stage10.Bell.PulseCertification.controlEffect ∧\n    SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.realizedEffect\n        SaturationMonoid.PhysicsCore.Stage10.Bell.PulseCertification.controlEffect\n        SaturationMonoid.PhysicsCore.Stage10.Bell.PulseCertification.secondSpectrum ⋯\n        SaturationMonoid.PhysicsCore.Stage10.Bell.PulseCertification.secondFeasible =\n      SaturationMonoid.PhysicsCore.Stage10.Bell.PulseCertification.controlEffect"
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.PulseCertification.weakSpectrumRejected",
+      "type": "¬SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutPulseRealization.Feasible\n    SaturationMonoid.PhysicsCore.Stage10.Bell.PulseCertification.controlEffect\n    SaturationMonoid.PhysicsCore.Stage10.Bell.PulseCertification.weakSpectrum"
+    }
+  ],
+  "compiler_only_module_symbols": [],
+  "new_dependency_declaration_count": 125,
+  "delegated_source_boundary_count": 36,
+  "checked_base_boundary_count": 491,
+  "dependency_delta_sha256": "4016d9ad9a2908167b16ea5e128fdd62f17328a86d9d887902af84e0ff5b0ca1",
+  "source_boundary_sha256": "c0c0c2d16cba78159a97d540e7639121a1de1dd1ec3780b72680cf8d1b9664b7",
+  "dependency_closure_method": "fresh new type/value graph; frozen source-owned axiom boundaries; exact-edge accepted base graph",
+  "source_only_import_module_count": 12514
+}

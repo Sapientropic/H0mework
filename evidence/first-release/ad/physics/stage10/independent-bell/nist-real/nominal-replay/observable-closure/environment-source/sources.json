@@ -1,0 +1,89 @@
+{
+  "schema": "p23-fixed-environment-sources/v1",
+  "version": "p23-fixed-environment-ev0001",
+  "role": "physical_environment_and_passive_ports_source_constructor",
+  "status": "frozen_before_execution",
+  "inputs": [
+    {
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window/GaussianSource.lean",
+      "sha256": "1dee783a0976a497139e64d4ef7278b203d56a0b119c84eea942bbb7846a10af"
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window/native-effects/DetectorGamma.lean",
+      "sha256": "b0007ece95dd29f1db550e260f73b3955d365241162ebe971c4ebcd92a16a2af"
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window/native-effects/GammaConsumer.lean",
+      "sha256": "b75cec12b93e10135f92d126a4f6f250c26965b0c3daa0b9d25e77d53256ed35"
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/receiver-control-source/WaveplateSource.lean",
+      "sha256": "4da795e3c3dbb22b642bf6e93bef5019af396a85429f6c7d50f68fc5c41999c0"
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/receiver-control-source/WaveplateConsumer.lean",
+      "sha256": "58a01a5f0bb7c2a87df923b6aba7cc0b70b604af0263145344dbcc81f30420ba"
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/receiver-control-source/certification.json",
+      "sha256": "08f190945c8fc26f36be0dbd4cbdf760323d9ad426759ea17dd8c1bdb2455173"
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/source-code/author-code.txt",
+      "sha256": "99e6a27a51bb525c5c154cde5f679099d48dbf14ae54d758a55d9b9842be377b"
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/source-code/sources.json",
+      "sha256": "1b2d24a18e7a6e5c332cee9ec38b328436b9cc9b998bc09b37493abada139323"
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/analysis-readout/sources.json",
+      "sha256": "e19db49120a84a8d19431e5e7d761aafc8f9ee6a06a577a7c6efc72d836d2a14"
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/published-drive-criterion-pd0002.md",
+      "sha256": "6764bbe6a536eb965d2c72258e17165c66a66b55d82eda90546da227dae32739"
+    }
+  ],
+  "primary_literature": [
+    {
+      "url": "https://arxiv.org/pdf/1410.3627v2",
+      "authors": "Takeoka et al.",
+      "scope": "multimode Gaussian threshold and raw PDC fringes",
+      "pages": [
+        3,
+        4,
+        7
+      ],
+      "equations": [
+        "15-17",
+        "19-21",
+        "35-39"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/pdf/1009.1609",
+      "authors": "Evans et al.",
+      "scope": "two-branch spatial and spectral indistinguishability design",
+      "pages": [
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "url": "https://arxiv.org/pdf/quant-ph/9904002",
+      "authors": "Braunstein",
+      "scope": "vacuum pair kernels and passive Bloch-Messiah decomposition",
+      "pages": [
+        2,
+        3
+      ]
+    }
+  ],
+  "source_identity_scope": "Minimal local-environment mechanism justified as a named optical class; no claim the final NIST optimizer used it.",
+  "proof_scope": "six physical ports, their Gram, all-sector word compression and old rank1 limit; infinite Gaussian/Born and empirical calibration fiber separately consumed.",
+  "retrospective": true,
+  "event_files_read": 0,
+  "archive_code_executed": false
+}

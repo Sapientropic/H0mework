@@ -1,0 +1,81 @@
+{
+  "schema": "nist-real-calibration-responsibilities/v1",
+  "values_admitted": false,
+  "entries": {
+    "preparation": {
+      "responsible_role": "independent preparation/calibration custodian",
+      "required_evidence": "Real pair direction and deviation from the pure real subfamily; register state TV coverage.",
+      "status": "awaiting_independent_receipt",
+      "receipt": null
+    },
+    "angles_and_pulses": {
+      "responsible_role": "optical control custodian",
+      "required_evidence": "Vertical reference, signed Pockels transfer and angle errors; no phase or sign inferred from outcomes.",
+      "status": "awaiting_independent_receipt",
+      "receipt": null
+    },
+    "eta": {
+      "responsible_role": "detector calibration custodian",
+      "required_evidence": "Separate absolute/system efficiency runs with a justified Klyshko or detector calibration method, spectral/temporal matching and joint coverage; no target-run coincidence estimate.",
+      "status": "awaiting_independent_receipt",
+      "receipt": null
+    },
+    "assignment": {
+      "responsible_role": "optical readout custodian",
+      "required_evidence": "Separate port/extinction tests for F0/F1; blocked port has eta_minus=0 by geometry, leakage is not discarded.",
+      "status": "awaiting_independent_receipt",
+      "receipt": null
+    },
+    "background": {
+      "responsible_role": "dark/background calibration custodian",
+      "required_evidence": "Independent blocked-source runs matched to the predeclared slot/window and epoch.",
+      "status": "awaiting_independent_receipt",
+      "receipt": null
+    },
+    "pair_probability": {
+      "responsible_role": "source calibration custodian",
+      "required_evidence": "Independent pump/source occupancy calibration for the trial unit; never estimate q by conditioning on detected test pairs.",
+      "status": "awaiting_independent_receipt",
+      "receipt": null
+    },
+    "visibility": {
+      "responsible_role": "preparation calibration custodian",
+      "required_evidence": "Separate characterization with registered target-state dependence; depolarizing approximation must be bounded.",
+      "status": "awaiting_independent_receipt",
+      "receipt": null
+    },
+    "model_tv": {
+      "responsible_role": "model validation custodian",
+      "required_evidence": "Multipair, crosstalk, leakage, dead time and non-independent background/assignment residual TV bounds.",
+      "status": "awaiting_independent_receipt",
+      "receipt": null
+    },
+    "epoch_and_drift": {
+      "responsible_role": "experiment timing custodian",
+      "required_evidence": "Run joins, calibration/test disjointness and conditional per-step drift coverage.",
+      "status": "awaiting_independent_receipt",
+      "receipt": null
+    },
+    "trial_format": {
+      "responsible_role": "data custody custodian",
+      "required_evidence": "One pulse-slot/window and sync policy, setting anomalies, clock-alignment prefix exclusion and stopping rule fixed without test reads.",
+      "status": "awaiting_independent_receipt",
+      "receipt": null
+    },
+    "joint_coverage": {
+      "responsible_role": "statistical reviewer",
+      "required_evidence": "One simultaneous parameter/transport region with beta=1/100, not a collection of unadjusted marginal intervals.",
+      "status": "awaiting_independent_receipt",
+      "receipt": null
+    },
+    "nominal_optimum": {
+      "responsible_role": "independent design reviewer",
+      "required_evidence": "Original or independently justified apparatus objective plus nominal channel inputs and rounding criterion; certify controls before any test data.",
+      "status": "blocked_certified_nominal_replay_deviation",
+      "receipt": "nominal-replay/observable-closure/environment-source/replay-verification-r0006.1.json",
+      "historical_receipt": "nominal-replay/independent_replay-r0003.json",
+      "scientific_model_id": "nominal-environment-replay-r0006",
+      "numerical_revision": "nominal-environment-replay-r0006.1"
+    }
+  }
+}

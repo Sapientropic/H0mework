@@ -1,0 +1,3191 @@
+{
+  "schema": "p23-frame-window-source-snapshot/v1",
+  "scientific_schema": "p23-frame-window-primary/v1",
+  "version": "p23-frame-window-fw0001",
+  "full_scientific_json_sha256": "15ee9b8dba95a45fcc8d1775a412e27a5107fce026c3fc97815069e5ce3bb8d1",
+  "criterion_freeze": {
+    "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/frame-window/criterion.md",
+    "commit": "4c86dd68e7feccd66fe0370a67175c4697d8d760",
+    "sha256": "06c7b8f32335dd4a6f31c8b0264de7e283088e751ebde03247481ed7705db3c3"
+  },
+  "executable_freeze": {
+    "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/frame-window/forward.py",
+    "commit": "4af1a446b047398b923d30dbe3d59ee2e04430a4",
+    "sha256": "6d3e97a6425d08fdcb965a20965347201a81a84fcc7bfbdf9c5873a2df4f4666"
+  },
+  "bindings": {
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/criterion-r0003.md": "2dd6d3e511da35415637edda8a164b1569c055a16ec7d25b99f262c5d86412d6",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/shalm2015-channel-inputs.txt": "17c5bc32515536634c451bf761f748ccd2e6c6002fa3949b58524e4cc1aeb3eb",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/source-code/author-code.txt": "99e6a27a51bb525c5c154cde5f679099d48dbf14ae54d758a55d9b9842be377b",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/source-code/sources.json": "1b2d24a18e7a6e5c332cee9ec38b328436b9cc9b998bc09b37493abada139323",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/calibrated-window/criterion.md": "418d67a57ddc45bfada3c09c730f39231628b7c28199671f7da3c43168272b76",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/calibrated-window/predict.py": "5aebc951882f65af61dac76dbd7d9604234c358a2cad81eb2fb9870bae68a49b",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/calibrated-window/independent.py": "d90d5e5f9511b5f79bc1903dc473ea32c8b8429788c0041e23af0c4e33ef53a1",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window/criterion.md": "66763dc0eb5d789df39227ba10e382d4bfb07138e4c7d27237b0fa605338206e",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window/GaussianSource.lean": "1dee783a0976a497139e64d4ef7278b203d56a0b119c84eea942bbb7846a10af",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window/gaussian.py": "5adfc235d6cb9b9ca61e804bded0fd2bff6a89860cd9332ec75a603e5f6bd852",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window/independent_fock.py": "f4a4d1549a1edce04cc5171c8043902db9c97328e0e7174e52da4fcdfa7d5162",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window/native-effects/DetectorGamma.lean": "b0007ece95dd29f1db550e260f73b3955d365241162ebe971c4ebcd92a16a2af",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window/native-effects/GammaConsumer.lean": "b75cec12b93e10135f92d126a4f6f250c26965b0c3daa0b9d25e77d53256ed35",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/calibration-readout/CalibrationLaw.lean": "0944bbc767afe4e1456613ad36caeaf0f8c90402839356a78aa015078c204e2d",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-prediction/public-observables.json": "442e6f1d74fa654a15a8a48c1ec502d93ae695d725b70fb3623418cc599a2cb6",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-prediction/public-criterion-po0003.md": "0a3b5d9dd26c50a1680fcf89f47d9eafa3347fbcfc16b0bd9a99e87a9de99ee2",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-prediction/public-comparison-po0003.json": "20f30388cd5ae23d29f737a20ec36d450def91b9a70be891c751057686d09fee",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/structured-contrast/criterion-sc0001.1.md": "2223db0fffefdf6654825f2608fb7c962a7ba27d83d63a055c07403d6f9a330a",
+    "Lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+    "Lean/lake-manifest.json": "aa60b347daf17a642d027cda3288f7d6f12c176c4ddd2677c28140daadb15c81",
+    "Lean/.lake/packages/mathlib/Mathlib/Analysis/Real/Pi/Bounds.lean": "bb8dc6144292b803b2df8c31ca32d67a7ab47b50f8005b5b688d95aff1489444",
+    "Verification/physics/stage10/independent-bell/nist-real/instrument.json": "4becca05d3a92bdd37d6218d83db64d80df5b4c605766056285d2bb32c0519c4",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window/native-effects/certification.json": "278453a6f98b1695855870669b779dc211104986d4daeb7342e0569ffd829083",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window/native-effects/verification.json": "3c28891a412b4ae792be90b3c10458d73a5828f0907c901a565c48c535b421cd",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/calibration-readout/certification.json": "7b47f79a85117c7edc832b2d9c0e9fab8bc89dfdd9274335b4bdcd269c542191",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/calibration-readout/verification.json": "9d5d33599154f1a5a708da6f5c50b9177c7033c1da9dc7e8f0d841d8cbf3a48b",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/calibration-readout/calibration.json": "547ebf134776b1c6707e79929579dcb58047f70fa10d44fb047cd568639408a3",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/calibration-readout/independent_count.json": "0858761ce5840aa1ed1a7dc09f37604a7a1ed08b2a97aad4d5bb3a35dac2bf54",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/calibration-readout/independent-comparison.json": "348048dc7cad246d1f632410d14cb7b8fab9b208f4d6008133d5cec45ef1726b",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/calibrated-window/prediction.json": "88494dad0016c155bece6cefb5a5c5cafd748f2d04dc4fe457484b1d1d6a74ac",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/calibrated-window/independent.json": "a4875b496433f4abe1f37d0aedf52db7d07acc90e045c58c444677a3890746f5",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/structured-contrast/sources-sc0001.1.json": "e73e641492111d0e1eb94c1239cf5af56052b50f1216d388b7cd5c80e9e5626a",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/structured-contrast/contrast.json": "030e1d5eb0d255099c30c57e6549b58c33872548cc0beace2ed330e78d2295ba",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/structured-contrast/independent.json": "8d4ea59ddcca4e3f402f4d2b626947c7d3654923d4a6d3c6d4d731efd24f36b2",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/structured-contrast/independent-comparison.json": "9f806563c822111cffec357c0eeea2f2b8402d8591467365365070ba0f955b4b"
+  },
+  "point_count": 9,
+  "points": [
+    {
+      "point": {
+        "point_id": "center",
+        "K_A": "747/1000",
+        "K_B": "189/250",
+        "DA_target": "249/250"
+      },
+      "outcome": "EXHIBITED_FRAME_WINDOW_MEMBER",
+      "source_parameters": {
+        "geometric_ratio": [
+          "677853528347/1000000000000000",
+          "53327141497/1000000000000000"
+        ],
+        "rotation": {
+          "Z": "31238164539/100000000000000",
+          "X": "-4145824449/500000000000000",
+          "C_squared": "12206380477251426608313/125000000000000000000000000000"
+        },
+        "loss_inverse": {
+          "Klyshko_targets": [
+            "747/1000",
+            "189/250"
+          ],
+          "calibration_geometric_ratio": "1/10000",
+          "branch": "vacuum_continuous_small_root",
+          "radicand": "2499561757/2500000000",
+          "raw_transmission_A": {
+            "rational": "377216364591/19318091",
+            "sqrt_coefficient": "-377235000000/19318091",
+            "radicand": "2499561757/2500000000"
+          },
+          "raw_transmission_B": {
+            "rational": "262460311344/12656219",
+            "sqrt_coefficient": "-262473750000/12656219",
+            "radicand": "2499561757/2500000000"
+          },
+          "matched_Klyshko_exact": [
+            "747/1000",
+            "189/250"
+          ]
+        },
+        "lambda_root": {
+          "definition": "exact_left_threshold_of_complete_DA_visibility",
+          "target": "249/250",
+          "calibration_geometric_ratio": "1/10000",
+          "profile_rotation": {
+            "Z": "31238164539/100000000000000",
+            "X": "-4145824449/500000000000000",
+            "C_squared": "12206380477251426608313/125000000000000000000000000000"
+          },
+          "profile_loss_inverse": {
+            "Klyshko_targets": [
+              "747/1000",
+              "189/250"
+            ],
+            "calibration_geometric_ratio": "1/10000",
+            "branch": "vacuum_continuous_small_root",
+            "radicand": "2499561757/2500000000",
+            "raw_transmission_A": {
+              "rational": "377216364591/19318091",
+              "sqrt_coefficient": "-377235000000/19318091",
+              "radicand": "2499561757/2500000000"
+            },
+            "raw_transmission_B": {
+              "rational": "262460311344/12656219",
+              "sqrt_coefficient": "-262473750000/12656219",
+              "radicand": "2499561757/2500000000"
+            },
+            "matched_Klyshko_exact": [
+              "747/1000",
+              "189/250"
+            ]
+          },
+          "canonical_isolating_bracket": [
+            "137034247039995/72057594037927936",
+            "2192547952639921/1152921504606846976"
+          ],
+          "source_value_is_dyadic_midpoint": false,
+          "midpoint_for_float_candidate_only": "4385095905279841/2305843009213693952"
+        }
+      },
+      "phase_flip_probability_enclosure": {
+        "exact_lower": "137034247039995/72057594037927936",
+        "exact_upper": "2192547952639921/1152921504606846976",
+        "lower": 0.001901732202824677,
+        "upper": 0.0019017322028246778
+      },
+      "source_construction": {
+        "training_marginals": [
+          {
+            "sA": "9667/44349054",
+            "sB": "3175/14783018"
+          },
+          {
+            "sA": "13834/22166099",
+            "sB": "15053/22166099"
+          }
+        ],
+        "single_means": [
+          {
+            "A": {
+              "exact_lower": "427107311358988488765172982397493397/10000000000000000000000000000000000000000",
+              "exact_upper": "2135536556794942443825864911987467/50000000000000000000000000000000000000",
+              "lower": 4.271073113589885e-05,
+              "upper": 4.271073113589885e-05
+            },
+            "B": {
+              "exact_lower": "426402154549415287466505346534616079/10000000000000000000000000000000000000000",
+              "exact_upper": "213201077274707643733252673267308041/5000000000000000000000000000000000000000",
+              "lower": 4.264021545494153e-05,
+              "upper": 4.264021545494153e-05
+            },
+            "normalized_A": {
+              "exact_lower": "571781466378353564347763790449356627/10000000000000000000000000000000000000000",
+              "exact_upper": "285890733189176782173881895224678317/5000000000000000000000000000000000000000",
+              "lower": 5.717814663783536e-05,
+              "upper": 5.717814663783536e-05
+            },
+            "normalized_B": {
+              "exact_lower": "35252578751535085819766006522387821/625000000000000000000000000000000000000",
+              "exact_upper": "564041260024561373116256104358205143/10000000000000000000000000000000000000000",
+              "lower": 5.640412600245614e-05,
+              "upper": 5.640412600245614e-05
+            }
+          },
+          {
+            "A": {
+              "exact_lower": "619889464801916186172410898988523507/5000000000000000000000000000000000000000",
+              "exact_upper": "1239778929603832372344821797977047017/10000000000000000000000000000000000000000",
+              "lower": 0.00012397789296038323,
+              "upper": 0.00012397789296038323
+            },
+            "B": {
+              "exact_lower": "677776724498207949511000353083751013/5000000000000000000000000000000000000000",
+              "exact_upper": "1355553448996415899022000706167502029/10000000000000000000000000000000000000000",
+              "lower": 0.0001355553448996416,
+              "upper": 0.0001355553448996416
+            },
+            "normalized_A": {
+              "exact_lower": "207466190434176698249548323197856057/1250000000000000000000000000000000000000",
+              "exact_upper": "829864761736706792998193292791424233/5000000000000000000000000000000000000000",
+              "lower": 0.00016597295234734136,
+              "upper": 0.00016597295234734136
+            },
+            "normalized_B": {
+              "exact_lower": "1793114943826980880788523335198550249/10000000000000000000000000000000000000000",
+              "exact_upper": "1793114943826980880788523335198550259/10000000000000000000000000000000000000000",
+              "lower": 0.0001793114943826981,
+              "upper": 0.0001793114943826981
+            }
+          }
+        ],
+        "LS_covariance_enclosures": {
+          "M": {
+            "exact_lower": "228638534643495169405630907812842877/625000000000000000000000000000000000000",
+            "exact_upper": "3658216554295922710509901767606887469/10000000000000000000000000000000000000000",
+            "lower": 0.0003658216554295923,
+            "upper": 0.0003658216554295923
+          },
+          "Z": {
+            "exact_lower": "1561908226948303287906475196647075687/5000000000000000000000000000000000000000",
+            "exact_upper": "3123816453896606575832756385856021363/10000000000000000000000000000000000000000",
+            "lower": 0.00031238164538966064,
+            "upper": 0.00031238164538966064
+          },
+          "X": {
+            "exact_lower": "-41458244489006657127463583463756201/5000000000000000000000000000000000000000",
+            "exact_upper": "-16583297795602662850894006072339393/2000000000000000000000000000000000000000",
+            "lower": -8.29164889780133e-06,
+            "upper": -8.29164889780133e-06
+          }
+        },
+        "covariance_grid": {
+          "M": "36582165543/100000000000000",
+          "Z": "31238164539/100000000000000",
+          "X": "-4145824449/500000000000000"
+        },
+        "native_mean_enclosures": {
+          "H": {
+            "exact_lower": "6783133254277959618355573161610510771/10000000000000000000000000000000000000000",
+            "exact_upper": "1695783313569489904588893290402627693/2500000000000000000000000000000000000000",
+            "lower": 0.000678313325427796,
+            "upper": 0.000678313325427796
+          },
+          "V": {
+            "exact_lower": "133324963580510095411106709597372307/2500000000000000000000000000000000000000",
+            "exact_upper": "533299854322040381644426838389489229/10000000000000000000000000000000000000000",
+            "lower": 5.3329985432204035e-05,
+            "upper": 5.3329985432204035e-05
+          }
+        },
+        "LS_reconstruction_residuals": [
+          {
+            "A": {
+              "exact_lower": "-4121294325892200548856353364512631/5000000000000000000000000000000000000000",
+              "exact_upper": "-4121294325892200548730075735269797/5000000000000000000000000000000000000000",
+              "lower": -8.242588651784402e-07,
+              "upper": -8.242588651784402e-07
+            },
+            "B": {
+              "exact_lower": "8242588650343863402374116598490363/10000000000000000000000000000000000000000",
+              "exact_upper": "8242588650343863402626671856976031/10000000000000000000000000000000000000000",
+              "lower": 8.242588650343863e-07,
+              "upper": 8.242588650343863e-07
+            }
+          },
+          {
+            "A": {
+              "exact_lower": "-1532215755927167281353534504159359/10000000000000000000000000000000000000000",
+              "exact_upper": "-766107877963583637052271859319613/5000000000000000000000000000000000000000",
+              "lower": -1.5322157559271672e-07,
+              "upper": -1.5322157559271672e-07
+            },
+            "B": {
+              "exact_lower": "1532215751969632274414364129099221/10000000000000000000000000000000000000000",
+              "exact_upper": "766107875984816140831677457309677/5000000000000000000000000000000000000000",
+              "lower": 1.5322157519696323e-07,
+              "upper": 1.5322157519696323e-07
+            }
+          }
+        ],
+        "actual_covariance": {
+          "M": "365554186930979598830484541/999268855478147020401169515459",
+          "Z": {
+            "exact_lower": "390477056737309447473565655746397097/1250000000000000000000000000000000000000",
+            "exact_upper": "1561908226949237789894262622985588389/5000000000000000000000000000000000000000",
+            "lower": 0.00031238164538984755,
+            "upper": 0.00031238164538984755
+          },
+          "X": {
+            "exact_lower": "-82916488979959536812251619559862281/10000000000000000000000000000000000000000",
+            "exact_upper": "-2072912224498988420306290488996557/250000000000000000000000000000000000000",
+            "lower": -8.291648897995953e-06,
+            "upper": -8.291648897995953e-06
+          }
+        },
+        "actual_normalized_single_residuals": [
+          {
+            "A": {
+              "exact_lower": "-4121294328256616200971148631566591/5000000000000000000000000000000000000000",
+              "exact_upper": "-4121294328256616200844871002323817/5000000000000000000000000000000000000000",
+              "lower": -8.242588656513232e-07,
+              "upper": -8.242588656513232e-07
+            },
+            "B": {
+              "exact_lower": "1030323580700401266015172537163871/1250000000000000000000000000000000000000",
+              "exact_upper": "2060647161400802532093483888949129/2500000000000000000000000000000000000000",
+              "lower": 8.24258864560321e-07,
+              "upper": 8.24258864560321e-07
+            }
+          },
+          {
+            "A": {
+              "exact_lower": "-47881742504011105106680537528647/312500000000000000000000000000000000000",
+              "exact_upper": "-306443152025671071232957283080021/2000000000000000000000000000000000000000",
+              "lower": -1.5322157601283553e-07,
+              "upper": -1.5322157601283553e-07
+            },
+            "B": {
+              "exact_lower": "766107873916020371188975954050307/5000000000000000000000000000000000000000",
+              "exact_upper": "1532215747832040749626942693617213/10000000000000000000000000000000000000000",
+              "lower": 1.5322157478320408e-07,
+              "upper": 1.5322157478320408e-07
+            }
+          }
+        ],
+        "covariance_quantization_errors": {
+          "M": {
+            "exact_lower": "4077289490098232393112531/10000000000000000000000000000000000000000",
+            "exact_upper": "254830594369092187157123/625000000000000000000000000000000000000",
+            "lower": 4.0772894900982323e-16,
+            "upper": 4.077289509905475e-16
+          },
+          "Z": {
+            "exact_lower": "3393424167243614143978637/10000000000000000000000000000000000000000",
+            "exact_upper": "1696712093524803352924313/5000000000000000000000000000000000000000",
+            "lower": 3.393424167243614e-16,
+            "upper": 3.393424187049607e-16
+          },
+          "X": {
+            "exact_lower": "-397337149105993927660607/2000000000000000000000000000000000000000",
+            "exact_upper": "-993342872536416536243799/5000000000000000000000000000000000000000",
+            "lower": -1.9866857455299696e-16,
+            "upper": -1.9866857450728331e-16
+          }
+        },
+        "geometric_quantization_mean_errors": {
+          "H": {
+            "exact_lower": "850859209720009850274181/5000000000000000000000000000000000000000",
+            "exact_upper": "425429604860004925137091/2500000000000000000000000000000000000000",
+            "lower": 1.7017184194400196e-16,
+            "upper": 1.7017184194400196e-16
+          },
+          "V": {
+            "exact_lower": "475163268099918325497181/1000000000000000000000000000000000000000",
+            "exact_upper": "1187908170249795813742953/2500000000000000000000000000000000000000",
+            "lower": 4.751632680999183e-16,
+            "upper": 4.751632680999183e-16
+          }
+        },
+        "orientation_identified_from_singles": true,
+        "independent_joint_statistics_used": false,
+        "heldout_rows_used": false,
+        "global_N_used": false,
+        "documented_optimal_state_used": false,
+        "public_q_used": false
+      },
+      "calibration_root_descriptor": {
+        "definition": "exact_left_threshold_of_complete_DA_visibility",
+        "target": "249/250",
+        "calibration_geometric_ratio": "1/10000",
+        "profile_rotation": {
+          "Z": "31238164539/100000000000000",
+          "X": "-4145824449/500000000000000",
+          "C_squared": "12206380477251426608313/125000000000000000000000000000"
+        },
+        "profile_loss_inverse": {
+          "Klyshko_targets": [
+            "747/1000",
+            "189/250"
+          ],
+          "calibration_geometric_ratio": "1/10000",
+          "branch": "vacuum_continuous_small_root",
+          "radicand": "2499561757/2500000000",
+          "raw_transmission_A": {
+            "rational": "377216364591/19318091",
+            "sqrt_coefficient": "-377235000000/19318091",
+            "radicand": "2499561757/2500000000"
+          },
+          "raw_transmission_B": {
+            "rational": "262460311344/12656219",
+            "sqrt_coefficient": "-262473750000/12656219",
+            "radicand": "2499561757/2500000000"
+          },
+          "matched_Klyshko_exact": [
+            "747/1000",
+            "189/250"
+          ]
+        },
+        "canonical_isolating_bracket": [
+          "137034247039995/72057594037927936",
+          "2192547952639921/1152921504606846976"
+        ],
+        "source_value_is_dyadic_midpoint": false,
+        "midpoint_for_float_candidate_only": "4385095905279841/2305843009213693952"
+      }
+    },
+    {
+      "point": {
+        "point_id": "corner_000",
+        "K_A": "93/125",
+        "K_B": "753/1000",
+        "DA_target": "199/200"
+      },
+      "outcome": "EXHIBITED_FRAME_WINDOW_MEMBER",
+      "source_parameters": {
+        "geometric_ratio": [
+          "170141975691/250000000000000",
+          "26770519707/500000000000000"
+        ],
+        "rotation": {
+          "Z": "6272668079/20000000000000",
+          "X": "-8320082801/1000000000000000",
+          "C_squared": "98435135851079371608101/1000000000000000000000000000000"
+        },
+        "loss_inverse": {
+          "Klyshko_targets": [
+            "93/125",
+            "753/1000"
+          ],
+          "calibration_geometric_ratio": "1/10000",
+          "branch": "vacuum_continuous_small_root",
+          "radicand": "2499563257/2500000000",
+          "raw_transmission_A": {
+            "rational": "129147447297/6692672",
+            "sqrt_coefficient": "-8072109375/418292",
+            "radicand": "2499563257/2500000000"
+          },
+          "raw_transmission_B": {
+            "rational": "4182703344501/204166001",
+            "sqrt_coefficient": "-4182915000000/204166001",
+            "radicand": "2499563257/2500000000"
+          },
+          "matched_Klyshko_exact": [
+            "93/125",
+            "753/1000"
+          ]
+        },
+        "lambda_root": {
+          "definition": "exact_left_threshold_of_complete_DA_visibility",
+          "target": "199/200",
+          "calibration_geometric_ratio": "1/10000",
+          "profile_rotation": {
+            "Z": "6272668079/20000000000000",
+            "X": "-8320082801/1000000000000000",
+            "C_squared": "98435135851079371608101/1000000000000000000000000000000"
+          },
+          "profile_loss_inverse": {
+            "Klyshko_targets": [
+              "93/125",
+              "753/1000"
+            ],
+            "calibration_geometric_ratio": "1/10000",
+            "branch": "vacuum_continuous_small_root",
+            "radicand": "2499563257/2500000000",
+            "raw_transmission_A": {
+              "rational": "129147447297/6692672",
+              "sqrt_coefficient": "-8072109375/418292",
+              "radicand": "2499563257/2500000000"
+            },
+            "raw_transmission_B": {
+              "rational": "4182703344501/204166001",
+              "sqrt_coefficient": "-4182915000000/204166001",
+              "radicand": "2499563257/2500000000"
+            },
+            "matched_Klyshko_exact": [
+              "93/125",
+              "753/1000"
+            ]
+          },
+          "canonical_isolating_bracket": [
+            "21636951430271/9007199254740992",
+            "2769529783074689/1152921504606846976"
+          ],
+          "source_value_is_dyadic_midpoint": false,
+          "midpoint_for_float_candidate_only": "5539059566149377/2305843009213693952"
+        }
+      },
+      "phase_flip_probability_enclosure": {
+        "exact_lower": "21636951430271/9007199254740992",
+        "exact_upper": "2769529783074689/1152921504606846976",
+        "lower": 0.0024021841660583076,
+        "upper": 0.0024021841660583085
+      },
+      "source_construction": {
+        "training_marginals": [
+          {
+            "sA": "9667/44349054",
+            "sB": "3175/14783018"
+          },
+          {
+            "sA": "13834/22166099",
+            "sB": "15053/22166099"
+          }
+        ],
+        "single_means": [
+          {
+            "A": {
+              "exact_lower": "427107311358988488765172982397493397/10000000000000000000000000000000000000000",
+              "exact_upper": "2135536556794942443825864911987467/50000000000000000000000000000000000000",
+              "lower": 4.271073113589885e-05,
+              "upper": 4.271073113589885e-05
+            },
+            "B": {
+              "exact_lower": "426402154549415287466505346534616079/10000000000000000000000000000000000000000",
+              "exact_upper": "213201077274707643733252673267308041/5000000000000000000000000000000000000000",
+              "lower": 4.264021545494153e-05,
+              "upper": 4.264021545494153e-05
+            },
+            "normalized_A": {
+              "exact_lower": "28704364758585279946943607455855767/500000000000000000000000000000000000000",
+              "exact_upper": "574087295171705598938872149117115347/10000000000000000000000000000000000000000",
+              "lower": 5.740872951717056e-05,
+              "upper": 5.740872951717056e-05
+            },
+            "normalized_B": {
+              "exact_lower": "283144345607121975036583010060493983/5000000000000000000000000000000000000000",
+              "exact_upper": "566288691214243950073166020120987973/10000000000000000000000000000000000000000",
+              "lower": 5.662886912142439e-05,
+              "upper": 5.662886912142439e-05
+            }
+          },
+          {
+            "A": {
+              "exact_lower": "619889464801916186172410898988523507/5000000000000000000000000000000000000000",
+              "exact_upper": "1239778929603832372344821797977047017/10000000000000000000000000000000000000000",
+              "lower": 0.00012397789296038323,
+              "upper": 0.00012397789296038323
+            },
+            "B": {
+              "exact_lower": "677776724498207949511000353083751013/5000000000000000000000000000000000000000",
+              "exact_upper": "1355553448996415899022000706167502029/10000000000000000000000000000000000000000",
+              "lower": 0.0001355553448996416,
+              "upper": 0.0001355553448996416
+            },
+            "normalized_A": {
+              "exact_lower": "1666422731192512773487876804978226663/10000000000000000000000000000000000000000",
+              "exact_upper": "104151420699532048342992300311139167/625000000000000000000000000000000000000",
+              "lower": 0.00016664227311925128,
+              "upper": 0.00016664227311925128
+            },
+            "normalized_B": {
+              "exact_lower": "1800259638261688007155706922425230513/10000000000000000000000000000000000000000",
+              "exact_upper": "1800259638261688007155706922425230523/10000000000000000000000000000000000000000",
+              "lower": 0.0001800259638261688,
+              "upper": 0.0001800259638261688
+            }
+          }
+        ],
+        "LS_covariance_enclosures": {
+          "M": {
+            "exact_lower": "3672876485398234348664916694610882499/10000000000000000000000000000000000000000",
+            "exact_upper": "1836438242699117174342401653853090153/5000000000000000000000000000000000000000",
+            "lower": 0.00036728764853982346,
+            "upper": 0.00036728764853982346
+          },
+          "Z": {
+            "exact_lower": "3136334039497838212843512171063459661/10000000000000000000000000000000000000000",
+            "exact_upper": "784083509874459553215849382277534079/2500000000000000000000000000000000000000",
+            "lower": 0.00031363340394978384,
+            "upper": 0.00031363340394978384
+          },
+          "X": {
+            "exact_lower": "-83200828010689004500550390786421697/10000000000000000000000000000000000000000",
+            "exact_upper": "-41600414005344502250045840741550781/5000000000000000000000000000000000000000",
+            "lower": -8.3200828010689e-06,
+            "upper": -8.3200828010689e-06
+          }
+        },
+        "covariance_grid": {
+          "M": "18364382427/50000000000000",
+          "Z": "6272668079/20000000000000",
+          "X": "-8320082801/1000000000000000"
+        },
+        "native_mean_enclosures": {
+          "H": {
+            "exact_lower": "1702578477174386194049421806832857277/2500000000000000000000000000000000000000",
+            "exact_upper": "6810313908697544776197687227331429109/10000000000000000000000000000000000000000",
+            "lower": 0.0006810313908697544,
+            "upper": 0.0006810313908697544
+          },
+          "V": {
+            "exact_lower": "535439062102455223802312772668570891/10000000000000000000000000000000000000000",
+            "exact_upper": "133859765525613805950578193167142723/2500000000000000000000000000000000000000",
+            "lower": 5.354390621024552e-05,
+            "upper": 5.354390621024552e-05
+          }
+        },
+        "LS_reconstruction_residuals": [
+          {
+            "A": {
+              "exact_lower": "-4127463477748678478635906706273789/5000000000000000000000000000000000000000",
+              "exact_upper": "-825492695549735695701826857107757/1000000000000000000000000000000000000000",
+              "lower": -8.254926955497357e-07,
+              "upper": -8.254926955497357e-07
+            },
+            "B": {
+              "exact_lower": "8254926956243246734402514840913329/10000000000000000000000000000000000000000",
+              "exact_upper": "8254926956243246734656059682383337/10000000000000000000000000000000000000000",
+              "lower": 8.254926956243246e-07,
+              "upper": 8.254926956243246e-07
+            }
+          },
+          {
+            "A": {
+              "exact_lower": "-767254662728422916111321398088259/5000000000000000000000000000000000000000",
+              "exact_upper": "-383627331364211456236168023113879/2500000000000000000000000000000000000000",
+              "lower": -1.5345093254568457e-07,
+              "upper": -1.5345093254568457e-07
+            },
+            "B": {
+              "exact_lower": "767254662299638907731909103680529/5000000000000000000000000000000000000000",
+              "exact_upper": "1534509324599277822741788911082061/10000000000000000000000000000000000000000",
+              "lower": 1.5345093245992778e-07,
+              "upper": 1.5345093245992778e-07
+            }
+          }
+        ],
+        "actual_covariance": {
+          "M": "45877254097011776169557463/124908240937016863223830442537",
+          "Z": {
+            "exact_lower": "3136334039497494343483525817580028361/10000000000000000000000000000000000000000",
+            "exact_upper": "3136334039497494343483525817580028363/10000000000000000000000000000000000000000",
+            "lower": 0.0003136334039497494,
+            "upper": 0.0003136334039497494
+          },
+          "X": {
+            "exact_lower": "-83200828009933529817215343785727061/10000000000000000000000000000000000000000",
+            "exact_upper": "-4160041400496676490860767189286353/500000000000000000000000000000000000000",
+            "lower": -8.320082800993353e-06,
+            "upper": -8.320082800993353e-06
+          }
+        },
+        "actual_normalized_single_residuals": [
+          {
+            "A": {
+              "exact_lower": "-2063731739233140807737365792259547/2500000000000000000000000000000000000000",
+              "exact_upper": "-4127463478466281615347959163784189/5000000000000000000000000000000000000000",
+              "lower": -8.254926956932563e-07,
+              "upper": -8.254926956932563e-07
+            },
+            "B": {
+              "exact_lower": "1650985390957724025900861155073373/2000000000000000000000000000000000000000",
+              "exact_upper": "330197078191544805190314024673467/400000000000000000000000000000000000000",
+              "lower": 8.25492695478862e-07,
+              "upper": 8.25492695478862e-07
+            }
+          },
+          {
+            "A": {
+              "exact_lower": "-767254663012370340428096234504481/5000000000000000000000000000000000000000",
+              "exact_upper": "-1534509326024740673578221765293771/10000000000000000000000000000000000000000",
+              "lower": -1.5345093260247408e-07,
+              "upper": -1.5345093260247405e-07
+            },
+            "B": {
+              "exact_lower": "1534509324135855069494170566507071/10000000000000000000000000000000000000000",
+              "exact_upper": "1534509324135855076772141270222263/10000000000000000000000000000000000000000",
+              "lower": 1.534509324135855e-07,
+              "upper": 1.534509324135855e-07
+            }
+          }
+        ],
+        "covariance_quantization_errors": {
+          "M": {
+            "exact_lower": "882825657598346146909847/5000000000000000000000000000000000000000",
+            "exact_upper": "1765651335083305389117501/10000000000000000000000000000000000000000",
+            "lower": 1.7656513151966923e-16,
+            "upper": 1.7656513350833053e-16
+          },
+          "Z": {
+            "exact_lower": "540446784150617722465921/2500000000000000000000000000000000000000",
+            "exact_upper": "2161787156487828936540339/10000000000000000000000000000000000000000",
+            "lower": 2.1617871366024708e-16,
+            "upper": 2.161787156487829e-16
+          },
+          "X": {
+            "exact_lower": "344502250045840741550781/5000000000000000000000000000000000000000",
+            "exact_upper": "689004500550390786421697/10000000000000000000000000000000000000000",
+            "lower": 6.890045000916814e-17,
+            "upper": 6.890045005503907e-17
+          }
+        },
+        "geometric_quantization_mean_errors": {
+          "H": {
+            "exact_lower": "-3540398251967674560769073/10000000000000000000000000000000000000000",
+            "exact_upper": "-3540398251967674560769071/10000000000000000000000000000000000000000",
+            "lower": -3.5403982519676746e-16,
+            "upper": -3.5403982519676746e-16
+          },
+          "V": {
+            "exact_lower": "1472677795230875729473573/10000000000000000000000000000000000000000",
+            "exact_upper": "58907111809235029178943/400000000000000000000000000000000000000",
+            "lower": 1.4726777952308756e-16,
+            "upper": 1.4726777952308756e-16
+          }
+        },
+        "orientation_identified_from_singles": true,
+        "independent_joint_statistics_used": false,
+        "heldout_rows_used": false,
+        "global_N_used": false,
+        "documented_optimal_state_used": false,
+        "public_q_used": false
+      },
+      "calibration_root_descriptor": {
+        "definition": "exact_left_threshold_of_complete_DA_visibility",
+        "target": "199/200",
+        "calibration_geometric_ratio": "1/10000",
+        "profile_rotation": {
+          "Z": "6272668079/20000000000000",
+          "X": "-8320082801/1000000000000000",
+          "C_squared": "98435135851079371608101/1000000000000000000000000000000"
+        },
+        "profile_loss_inverse": {
+          "Klyshko_targets": [
+            "93/125",
+            "753/1000"
+          ],
+          "calibration_geometric_ratio": "1/10000",
+          "branch": "vacuum_continuous_small_root",
+          "radicand": "2499563257/2500000000",
+          "raw_transmission_A": {
+            "rational": "129147447297/6692672",
+            "sqrt_coefficient": "-8072109375/418292",
+            "radicand": "2499563257/2500000000"
+          },
+          "raw_transmission_B": {
+            "rational": "4182703344501/204166001",
+            "sqrt_coefficient": "-4182915000000/204166001",
+            "radicand": "2499563257/2500000000"
+          },
+          "matched_Klyshko_exact": [
+            "93/125",
+            "753/1000"
+          ]
+        },
+        "canonical_isolating_bracket": [
+          "21636951430271/9007199254740992",
+          "2769529783074689/1152921504606846976"
+        ],
+        "source_value_is_dyadic_midpoint": false,
+        "midpoint_for_float_candidate_only": "5539059566149377/2305843009213693952"
+      }
+    },
+    {
+      "point": {
+        "point_id": "corner_001",
+        "K_A": "93/125",
+        "K_B": "753/1000",
+        "DA_target": "997/1000"
+      },
+      "outcome": "EXHIBITED_FRAME_WINDOW_MEMBER",
+      "source_parameters": {
+        "geometric_ratio": [
+          "170141975691/250000000000000",
+          "26770519707/500000000000000"
+        ],
+        "rotation": {
+          "Z": "6272668079/20000000000000",
+          "X": "-8320082801/1000000000000000",
+          "C_squared": "98435135851079371608101/1000000000000000000000000000000"
+        },
+        "loss_inverse": {
+          "Klyshko_targets": [
+            "93/125",
+            "753/1000"
+          ],
+          "calibration_geometric_ratio": "1/10000",
+          "branch": "vacuum_continuous_small_root",
+          "radicand": "2499563257/2500000000",
+          "raw_transmission_A": {
+            "rational": "129147447297/6692672",
+            "sqrt_coefficient": "-8072109375/418292",
+            "radicand": "2499563257/2500000000"
+          },
+          "raw_transmission_B": {
+            "rational": "4182703344501/204166001",
+            "sqrt_coefficient": "-4182915000000/204166001",
+            "radicand": "2499563257/2500000000"
+          },
+          "matched_Klyshko_exact": [
+            "93/125",
+            "753/1000"
+          ]
+        },
+        "lambda_root": {
+          "definition": "exact_left_threshold_of_complete_DA_visibility",
+          "target": "997/1000",
+          "calibration_geometric_ratio": "1/10000",
+          "profile_rotation": {
+            "Z": "6272668079/20000000000000",
+            "X": "-8320082801/1000000000000000",
+            "C_squared": "98435135851079371608101/1000000000000000000000000000000"
+          },
+          "profile_loss_inverse": {
+            "Klyshko_targets": [
+              "93/125",
+              "753/1000"
+            ],
+            "calibration_geometric_ratio": "1/10000",
+            "branch": "vacuum_continuous_small_root",
+            "radicand": "2499563257/2500000000",
+            "raw_transmission_A": {
+              "rational": "129147447297/6692672",
+              "sqrt_coefficient": "-8072109375/418292",
+              "radicand": "2499563257/2500000000"
+            },
+            "raw_transmission_B": {
+              "rational": "4182703344501/204166001",
+              "sqrt_coefficient": "-4182915000000/204166001",
+              "radicand": "2499563257/2500000000"
+            },
+            "matched_Klyshko_exact": [
+              "93/125",
+              "753/1000"
+            ]
+          },
+          "canonical_isolating_bracket": [
+            "807781502954881/576460752303423488",
+            "1615563005909763/1152921504606846976"
+          ],
+          "source_value_is_dyadic_midpoint": false,
+          "midpoint_for_float_candidate_only": "3231126011819525/2305843009213693952"
+        }
+      },
+      "phase_flip_probability_enclosure": {
+        "exact_lower": "807781502954881/576460752303423488",
+        "exact_upper": "1615563005909763/1152921504606846976",
+        "lower": 0.0014012775366356606,
+        "upper": 0.0014012775366356615
+      },
+      "source_construction": {
+        "training_marginals": [
+          {
+            "sA": "9667/44349054",
+            "sB": "3175/14783018"
+          },
+          {
+            "sA": "13834/22166099",
+            "sB": "15053/22166099"
+          }
+        ],
+        "single_means": [
+          {
+            "A": {
+              "exact_lower": "427107311358988488765172982397493397/10000000000000000000000000000000000000000",
+              "exact_upper": "2135536556794942443825864911987467/50000000000000000000000000000000000000",
+              "lower": 4.271073113589885e-05,
+              "upper": 4.271073113589885e-05
+            },
+            "B": {
+              "exact_lower": "426402154549415287466505346534616079/10000000000000000000000000000000000000000",
+              "exact_upper": "213201077274707643733252673267308041/5000000000000000000000000000000000000000",
+              "lower": 4.264021545494153e-05,
+              "upper": 4.264021545494153e-05
+            },
+            "normalized_A": {
+              "exact_lower": "28704364758585279946943607455855767/500000000000000000000000000000000000000",
+              "exact_upper": "574087295171705598938872149117115347/10000000000000000000000000000000000000000",
+              "lower": 5.740872951717056e-05,
+              "upper": 5.740872951717056e-05
+            },
+            "normalized_B": {
+              "exact_lower": "283144345607121975036583010060493983/5000000000000000000000000000000000000000",
+              "exact_upper": "566288691214243950073166020120987973/10000000000000000000000000000000000000000",
+              "lower": 5.662886912142439e-05,
+              "upper": 5.662886912142439e-05
+            }
+          },
+          {
+            "A": {
+              "exact_lower": "619889464801916186172410898988523507/5000000000000000000000000000000000000000",
+              "exact_upper": "1239778929603832372344821797977047017/10000000000000000000000000000000000000000",
+              "lower": 0.00012397789296038323,
+              "upper": 0.00012397789296038323
+            },
+            "B": {
+              "exact_lower": "677776724498207949511000353083751013/5000000000000000000000000000000000000000",
+              "exact_upper": "1355553448996415899022000706167502029/10000000000000000000000000000000000000000",
+              "lower": 0.0001355553448996416,
+              "upper": 0.0001355553448996416
+            },
+            "normalized_A": {
+              "exact_lower": "1666422731192512773487876804978226663/10000000000000000000000000000000000000000",
+              "exact_upper": "104151420699532048342992300311139167/625000000000000000000000000000000000000",
+              "lower": 0.00016664227311925128,
+              "upper": 0.00016664227311925128
+            },
+            "normalized_B": {
+              "exact_lower": "1800259638261688007155706922425230513/10000000000000000000000000000000000000000",
+              "exact_upper": "1800259638261688007155706922425230523/10000000000000000000000000000000000000000",
+              "lower": 0.0001800259638261688,
+              "upper": 0.0001800259638261688
+            }
+          }
+        ],
+        "LS_covariance_enclosures": {
+          "M": {
+            "exact_lower": "3672876485398234348664916694610882499/10000000000000000000000000000000000000000",
+            "exact_upper": "1836438242699117174342401653853090153/5000000000000000000000000000000000000000",
+            "lower": 0.00036728764853982346,
+            "upper": 0.00036728764853982346
+          },
+          "Z": {
+            "exact_lower": "3136334039497838212843512171063459661/10000000000000000000000000000000000000000",
+            "exact_upper": "784083509874459553215849382277534079/2500000000000000000000000000000000000000",
+            "lower": 0.00031363340394978384,
+            "upper": 0.00031363340394978384
+          },
+          "X": {
+            "exact_lower": "-83200828010689004500550390786421697/10000000000000000000000000000000000000000",
+            "exact_upper": "-41600414005344502250045840741550781/5000000000000000000000000000000000000000",
+            "lower": -8.3200828010689e-06,
+            "upper": -8.3200828010689e-06
+          }
+        },
+        "covariance_grid": {
+          "M": "18364382427/50000000000000",
+          "Z": "6272668079/20000000000000",
+          "X": "-8320082801/1000000000000000"
+        },
+        "native_mean_enclosures": {
+          "H": {
+            "exact_lower": "1702578477174386194049421806832857277/2500000000000000000000000000000000000000",
+            "exact_upper": "6810313908697544776197687227331429109/10000000000000000000000000000000000000000",
+            "lower": 0.0006810313908697544,
+            "upper": 0.0006810313908697544
+          },
+          "V": {
+            "exact_lower": "535439062102455223802312772668570891/10000000000000000000000000000000000000000",
+            "exact_upper": "133859765525613805950578193167142723/2500000000000000000000000000000000000000",
+            "lower": 5.354390621024552e-05,
+            "upper": 5.354390621024552e-05
+          }
+        },
+        "LS_reconstruction_residuals": [
+          {
+            "A": {
+              "exact_lower": "-4127463477748678478635906706273789/5000000000000000000000000000000000000000",
+              "exact_upper": "-825492695549735695701826857107757/1000000000000000000000000000000000000000",
+              "lower": -8.254926955497357e-07,
+              "upper": -8.254926955497357e-07
+            },
+            "B": {
+              "exact_lower": "8254926956243246734402514840913329/10000000000000000000000000000000000000000",
+              "exact_upper": "8254926956243246734656059682383337/10000000000000000000000000000000000000000",
+              "lower": 8.254926956243246e-07,
+              "upper": 8.254926956243246e-07
+            }
+          },
+          {
+            "A": {
+              "exact_lower": "-767254662728422916111321398088259/5000000000000000000000000000000000000000",
+              "exact_upper": "-383627331364211456236168023113879/2500000000000000000000000000000000000000",
+              "lower": -1.5345093254568457e-07,
+              "upper": -1.5345093254568457e-07
+            },
+            "B": {
+              "exact_lower": "767254662299638907731909103680529/5000000000000000000000000000000000000000",
+              "exact_upper": "1534509324599277822741788911082061/10000000000000000000000000000000000000000",
+              "lower": 1.5345093245992778e-07,
+              "upper": 1.5345093245992778e-07
+            }
+          }
+        ],
+        "actual_covariance": {
+          "M": "45877254097011776169557463/124908240937016863223830442537",
+          "Z": {
+            "exact_lower": "3136334039497494343483525817580028361/10000000000000000000000000000000000000000",
+            "exact_upper": "3136334039497494343483525817580028363/10000000000000000000000000000000000000000",
+            "lower": 0.0003136334039497494,
+            "upper": 0.0003136334039497494
+          },
+          "X": {
+            "exact_lower": "-83200828009933529817215343785727061/10000000000000000000000000000000000000000",
+            "exact_upper": "-4160041400496676490860767189286353/500000000000000000000000000000000000000",
+            "lower": -8.320082800993353e-06,
+            "upper": -8.320082800993353e-06
+          }
+        },
+        "actual_normalized_single_residuals": [
+          {
+            "A": {
+              "exact_lower": "-2063731739233140807737365792259547/2500000000000000000000000000000000000000",
+              "exact_upper": "-4127463478466281615347959163784189/5000000000000000000000000000000000000000",
+              "lower": -8.254926956932563e-07,
+              "upper": -8.254926956932563e-07
+            },
+            "B": {
+              "exact_lower": "1650985390957724025900861155073373/2000000000000000000000000000000000000000",
+              "exact_upper": "330197078191544805190314024673467/400000000000000000000000000000000000000",
+              "lower": 8.25492695478862e-07,
+              "upper": 8.25492695478862e-07
+            }
+          },
+          {
+            "A": {
+              "exact_lower": "-767254663012370340428096234504481/5000000000000000000000000000000000000000",
+              "exact_upper": "-1534509326024740673578221765293771/10000000000000000000000000000000000000000",
+              "lower": -1.5345093260247408e-07,
+              "upper": -1.5345093260247405e-07
+            },
+            "B": {
+              "exact_lower": "1534509324135855069494170566507071/10000000000000000000000000000000000000000",
+              "exact_upper": "1534509324135855076772141270222263/10000000000000000000000000000000000000000",
+              "lower": 1.534509324135855e-07,
+              "upper": 1.534509324135855e-07
+            }
+          }
+        ],
+        "covariance_quantization_errors": {
+          "M": {
+            "exact_lower": "882825657598346146909847/5000000000000000000000000000000000000000",
+            "exact_upper": "1765651335083305389117501/10000000000000000000000000000000000000000",
+            "lower": 1.7656513151966923e-16,
+            "upper": 1.7656513350833053e-16
+          },
+          "Z": {
+            "exact_lower": "540446784150617722465921/2500000000000000000000000000000000000000",
+            "exact_upper": "2161787156487828936540339/10000000000000000000000000000000000000000",
+            "lower": 2.1617871366024708e-16,
+            "upper": 2.161787156487829e-16
+          },
+          "X": {
+            "exact_lower": "344502250045840741550781/5000000000000000000000000000000000000000",
+            "exact_upper": "689004500550390786421697/10000000000000000000000000000000000000000",
+            "lower": 6.890045000916814e-17,
+            "upper": 6.890045005503907e-17
+          }
+        },
+        "geometric_quantization_mean_errors": {
+          "H": {
+            "exact_lower": "-3540398251967674560769073/10000000000000000000000000000000000000000",
+            "exact_upper": "-3540398251967674560769071/10000000000000000000000000000000000000000",
+            "lower": -3.5403982519676746e-16,
+            "upper": -3.5403982519676746e-16
+          },
+          "V": {
+            "exact_lower": "1472677795230875729473573/10000000000000000000000000000000000000000",
+            "exact_upper": "58907111809235029178943/400000000000000000000000000000000000000",
+            "lower": 1.4726777952308756e-16,
+            "upper": 1.4726777952308756e-16
+          }
+        },
+        "orientation_identified_from_singles": true,
+        "independent_joint_statistics_used": false,
+        "heldout_rows_used": false,
+        "global_N_used": false,
+        "documented_optimal_state_used": false,
+        "public_q_used": false
+      },
+      "calibration_root_descriptor": {
+        "definition": "exact_left_threshold_of_complete_DA_visibility",
+        "target": "997/1000",
+        "calibration_geometric_ratio": "1/10000",
+        "profile_rotation": {
+          "Z": "6272668079/20000000000000",
+          "X": "-8320082801/1000000000000000",
+          "C_squared": "98435135851079371608101/1000000000000000000000000000000"
+        },
+        "profile_loss_inverse": {
+          "Klyshko_targets": [
+            "93/125",
+            "753/1000"
+          ],
+          "calibration_geometric_ratio": "1/10000",
+          "branch": "vacuum_continuous_small_root",
+          "radicand": "2499563257/2500000000",
+          "raw_transmission_A": {
+            "rational": "129147447297/6692672",
+            "sqrt_coefficient": "-8072109375/418292",
+            "radicand": "2499563257/2500000000"
+          },
+          "raw_transmission_B": {
+            "rational": "4182703344501/204166001",
+            "sqrt_coefficient": "-4182915000000/204166001",
+            "radicand": "2499563257/2500000000"
+          },
+          "matched_Klyshko_exact": [
+            "93/125",
+            "753/1000"
+          ]
+        },
+        "canonical_isolating_bracket": [
+          "807781502954881/576460752303423488",
+          "1615563005909763/1152921504606846976"
+        ],
+        "source_value_is_dyadic_midpoint": false,
+        "midpoint_for_float_candidate_only": "3231126011819525/2305843009213693952"
+      }
+    },
+    {
+      "point": {
+        "point_id": "corner_010",
+        "K_A": "93/125",
+        "K_B": "759/1000",
+        "DA_target": "199/200"
+      },
+      "outcome": "EXHIBITED_FRAME_WINDOW_MEMBER",
+      "source_parameters": {
+        "geometric_ratio": [
+          "135542217101/200000000000000",
+          "26675854981/500000000000000"
+        ],
+        "rotation": {
+          "Z": "312318123531/1000000000000000",
+          "X": "-7495976229/1000000000000000",
+          "C_squared": "48799399972775354484201/500000000000000000000000000000"
+        },
+        "loss_inverse": {
+          "Klyshko_targets": [
+            "93/125",
+            "759/1000"
+          ],
+          "calibration_geometric_ratio": "1/10000",
+          "branch": "vacuum_continuous_small_root",
+          "radicand": "2499561721/2500000000",
+          "raw_transmission_A": {
+            "rational": "387442341891/20238016",
+            "sqrt_coefficient": "-24216328125/1264876",
+            "radicand": "2499561721/2500000000"
+          },
+          "raw_transmission_B": {
+            "rational": "12648079795527/597619027",
+            "sqrt_coefficient": "-12648735000000/597619027",
+            "radicand": "2499561721/2500000000"
+          },
+          "matched_Klyshko_exact": [
+            "93/125",
+            "759/1000"
+          ]
+        },
+        "lambda_root": {
+          "definition": "exact_left_threshold_of_complete_DA_visibility",
+          "target": "199/200",
+          "calibration_geometric_ratio": "1/10000",
+          "profile_rotation": {
+            "Z": "312318123531/1000000000000000",
+            "X": "-7495976229/1000000000000000",
+            "C_squared": "48799399972775354484201/500000000000000000000000000000"
+          },
+          "profile_loss_inverse": {
+            "Klyshko_targets": [
+              "93/125",
+              "759/1000"
+            ],
+            "calibration_geometric_ratio": "1/10000",
+            "branch": "vacuum_continuous_small_root",
+            "radicand": "2499561721/2500000000",
+            "raw_transmission_A": {
+              "rational": "387442341891/20238016",
+              "sqrt_coefficient": "-24216328125/1264876",
+              "radicand": "2499561721/2500000000"
+            },
+            "raw_transmission_B": {
+              "rational": "12648079795527/597619027",
+              "sqrt_coefficient": "-12648735000000/597619027",
+              "radicand": "2499561721/2500000000"
+            },
+            "matched_Klyshko_exact": [
+              "93/125",
+              "759/1000"
+            ]
+          },
+          "canonical_isolating_bracket": [
+            "2769175514682785/1152921504606846976",
+            "1384587757341393/576460752303423488"
+          ],
+          "source_value_is_dyadic_midpoint": false,
+          "midpoint_for_float_candidate_only": "5538351029365571/2305843009213693952"
+        }
+      },
+      "phase_flip_probability_enclosure": {
+        "exact_lower": "2769175514682785/1152921504606846976",
+        "exact_upper": "1384587757341393/576460752303423488",
+        "lower": 0.0024018768872101923,
+        "upper": 0.002401876887210193
+      },
+      "source_construction": {
+        "training_marginals": [
+          {
+            "sA": "9667/44349054",
+            "sB": "3175/14783018"
+          },
+          {
+            "sA": "13834/22166099",
+            "sB": "15053/22166099"
+          }
+        ],
+        "single_means": [
+          {
+            "A": {
+              "exact_lower": "427107311358988488765172982397493397/10000000000000000000000000000000000000000",
+              "exact_upper": "2135536556794942443825864911987467/50000000000000000000000000000000000000",
+              "lower": 4.271073113589885e-05,
+              "upper": 4.271073113589885e-05
+            },
+            "B": {
+              "exact_lower": "426402154549415287466505346534616079/10000000000000000000000000000000000000000",
+              "exact_upper": "213201077274707643733252673267308041/5000000000000000000000000000000000000000",
+              "lower": 4.264021545494153e-05,
+              "upper": 4.264021545494153e-05
+            },
+            "normalized_A": {
+              "exact_lower": "574087206978176239417898710233981953/10000000000000000000000000000000000000000",
+              "exact_upper": "574087206978176239417898710233981959/10000000000000000000000000000000000000000",
+              "lower": 5.7408720697817624e-05,
+              "upper": 5.7408720697817624e-05
+            },
+            "normalized_B": {
+              "exact_lower": "561811677351505706601777440660487539/10000000000000000000000000000000000000000",
+              "exact_upper": "112362335470301141320355488132097509/2000000000000000000000000000000000000000",
+              "lower": 5.618116773515057e-05,
+              "upper": 5.618116773515057e-05
+            }
+          },
+          {
+            "A": {
+              "exact_lower": "619889464801916186172410898988523507/5000000000000000000000000000000000000000",
+              "exact_upper": "1239778929603832372344821797977047017/10000000000000000000000000000000000000000",
+              "lower": 0.00012397789296038323,
+              "upper": 0.00012397789296038323
+            },
+            "B": {
+              "exact_lower": "677776724498207949511000353083751013/5000000000000000000000000000000000000000",
+              "exact_upper": "1355553448996415899022000706167502029/10000000000000000000000000000000000000000",
+              "lower": 0.0001355553448996416,
+              "upper": 0.0001355553448996416
+            },
+            "normalized_A": {
+              "exact_lower": "1666422475190153367775956461982669951/10000000000000000000000000000000000000000",
+              "exact_upper": "1666422475190153367775956461982669961/10000000000000000000000000000000000000000",
+              "lower": 0.00016664224751901534,
+              "upper": 0.00016664224751901534
+            },
+            "normalized_B": {
+              "exact_lower": "35720539814112881973081946424541293/200000000000000000000000000000000000000",
+              "exact_upper": "89301349535282204932704866061353233/500000000000000000000000000000000000000",
+              "lower": 0.0001786026990705644,
+              "upper": 0.0001786026990705644
+            }
+          }
+        ],
+        "LS_covariance_enclosures": {
+          "M": {
+            "exact_lower": "1828813114543879234984566699061432357/5000000000000000000000000000000000000000",
+            "exact_upper": "228601639317984904374308538311353883/625000000000000000000000000000000000000",
+            "lower": 0.00036576262290877583,
+            "upper": 0.00036576262290877583
+          },
+          "Z": {
+            "exact_lower": "1561590617655791488072272743015849023/5000000000000000000000000000000000000000",
+            "exact_upper": "624636247062316595232869490221031151/2000000000000000000000000000000000000000",
+            "lower": 0.0003123181235311583,
+            "upper": 0.0003123181235311583
+          },
+          "X": {
+            "exact_lower": "-14991952458919047688295508073411299/2000000000000000000000000000000000000000",
+            "exact_upper": "-37479881147297619220531711736479729/5000000000000000000000000000000000000000",
+            "lower": -7.495976229459524e-06,
+            "upper": -7.495976229459524e-06
+          }
+        },
+        "covariance_grid": {
+          "M": "365762622909/1000000000000000",
+          "Z": "312318123531/1000000000000000",
+          "X": "-7495976229/1000000000000000"
+        },
+        "native_mean_enclosures": {
+          "H": {
+            "exact_lower": "271268275719607721526810349800688223/400000000000000000000000000000000000000",
+            "exact_upper": "847713361623774129771282343127150697/1250000000000000000000000000000000000000",
+            "lower": 0.0006781706892990193,
+            "upper": 0.0006781706892990193
+          },
+          "V": {
+            "exact_lower": "66693195648725870228717656872849303/1250000000000000000000000000000000000000",
+            "exact_upper": "21341822607592278473189650199311777/400000000000000000000000000000000000000",
+            "lower": 5.33545565189807e-05,
+            "upper": 5.33545565189807e-05
+          }
+        },
+        "LS_reconstruction_residuals": [
+          {
+            "A": {
+              "exact_lower": "-2406292143056956584636321392396279/5000000000000000000000000000000000000000",
+              "exact_upper": "-481258428611391316902385744105951/1000000000000000000000000000000000000000",
+              "lower": -4.812584286113913e-07,
+              "upper": -4.812584286113913e-07
+            },
+            "B": {
+              "exact_lower": "4812584278498864100425793181932503/10000000000000000000000000000000000000000",
+              "exact_upper": "4812584278498864100674578525665551/10000000000000000000000000000000000000000",
+              "lower": 4.812584278498864e-07,
+              "upper": 4.812584278498864e-07
+            }
+          },
+          {
+            "A": {
+              "exact_lower": "-894611854579772620181956235050269/10000000000000000000000000000000000000000",
+              "exact_upper": "-27956620455617894154552498278711/312500000000000000000000000000000000000",
+              "lower": -8.946118545797726e-08,
+              "upper": -8.946118545797726e-08
+            },
+            "B": {
+              "exact_lower": "894611848138861083894666209765749/10000000000000000000000000000000000000000",
+              "exact_upper": "447305924069430545565471249948633/5000000000000000000000000000000000000000",
+              "lower": 8.946118481388611e-08,
+              "upper": 8.946118481388611e-08
+            }
+          }
+        ],
+        "actual_covariance": {
+          "M": "36549524068822810505769919/99926897336157827189494230081",
+          "Z": {
+            "exact_lower": "124927249412427861971182547288996533/400000000000000000000000000000000000000",
+            "exact_upper": "3123181235310696549279563682224913327/10000000000000000000000000000000000000000",
+            "lower": 0.00031231812353106966,
+            "upper": 0.00031231812353106966
+          },
+          "X": {
+            "exact_lower": "-7495976229001671794381608527175773/1000000000000000000000000000000000000000",
+            "exact_upper": "-74959762290016717943816085271757729/10000000000000000000000000000000000000000",
+            "lower": -7.495976229001672e-06,
+            "upper": -7.495976229001672e-06
+          }
+        },
+        "actual_normalized_single_residuals": [
+          {
+            "A": {
+              "exact_lower": "-2406292142281250563038471920875019/5000000000000000000000000000000000000000",
+              "exact_upper": "-4812584284562501125828158498016931/10000000000000000000000000000000000000000",
+              "lower": -4.812584284562501e-07,
+              "upper": -4.812584284562501e-07
+            },
+            "B": {
+              "exact_lower": "4812584280055160559349472079725539/10000000000000000000000000000000000000000",
+              "exact_upper": "2406292140027580279799128711729323/5000000000000000000000000000000000000000",
+              "lower": 4.81258428005516e-07,
+              "upper": 4.81258428005516e-07
+            }
+          },
+          {
+            "A": {
+              "exact_lower": "-89461185327110546628989319602357/1000000000000000000000000000000000000000",
+              "exact_upper": "-894611853271105459053616905890437/10000000000000000000000000000000000000000",
+              "lower": -8.946118532711055e-08,
+              "upper": -8.946118532711055e-08
+            },
+            "B": {
+              "exact_lower": "111826481177656551876443732612061/1250000000000000000000000000000000000000",
+              "exact_upper": "894611849421252422247826151029621/10000000000000000000000000000000000000000",
+              "lower": 8.946118494212524e-08,
+              "upper": 8.946118494212525e-08
+            }
+          }
+        ],
+        "covariance_quantization_errors": {
+          "M": {
+            "exact_lower": "140095625691461688646117/625000000000000000000000000000000000000",
+            "exact_upper": "1120765015433300938567643/5000000000000000000000000000000000000000",
+            "lower": 2.241530011063387e-16,
+            "upper": 2.241530030866602e-16
+          },
+          "Z": {
+            "exact_lower": "-316595232869490221031151/2000000000000000000000000000000000000000",
+            "exact_upper": "-791488072272743015849023/5000000000000000000000000000000000000000",
+            "lower": -1.582976164347451e-16,
+            "upper": -1.582976144545486e-16
+          },
+          "X": {
+            "exact_lower": "2297619220531711736479729/5000000000000000000000000000000000000000",
+            "exact_upper": "919047688295508073411299/2000000000000000000000000000000000000000",
+            "lower": 4.595238441063424e-16,
+            "upper": 4.59523844147754e-16
+          }
+        },
+        "geometric_quantization_mean_errors": {
+          "H": {
+            "exact_lower": "-42006861275775129540513/2500000000000000000000000000000000000000",
+            "exact_upper": "-3360548902062010363241/200000000000000000000000000000000000000",
+            "lower": -1.6802744510310053e-17,
+            "upper": -1.6802744510310053e-17
+          },
+          "V": {
+            "exact_lower": "-312305439076194392691073/2000000000000000000000000000000000000000",
+            "exact_upper": "-1561527195380971963455363/10000000000000000000000000000000000000000",
+            "lower": -1.561527195380972e-16,
+            "upper": -1.561527195380972e-16
+          }
+        },
+        "orientation_identified_from_singles": true,
+        "independent_joint_statistics_used": false,
+        "heldout_rows_used": false,
+        "global_N_used": false,
+        "documented_optimal_state_used": false,
+        "public_q_used": false
+      },
+      "calibration_root_descriptor": {
+        "definition": "exact_left_threshold_of_complete_DA_visibility",
+        "target": "199/200",
+        "calibration_geometric_ratio": "1/10000",
+        "profile_rotation": {
+          "Z": "312318123531/1000000000000000",
+          "X": "-7495976229/1000000000000000",
+          "C_squared": "48799399972775354484201/500000000000000000000000000000"
+        },
+        "profile_loss_inverse": {
+          "Klyshko_targets": [
+            "93/125",
+            "759/1000"
+          ],
+          "calibration_geometric_ratio": "1/10000",
+          "branch": "vacuum_continuous_small_root",
+          "radicand": "2499561721/2500000000",
+          "raw_transmission_A": {
+            "rational": "387442341891/20238016",
+            "sqrt_coefficient": "-24216328125/1264876",
+            "radicand": "2499561721/2500000000"
+          },
+          "raw_transmission_B": {
+            "rational": "12648079795527/597619027",
+            "sqrt_coefficient": "-12648735000000/597619027",
+            "radicand": "2499561721/2500000000"
+          },
+          "matched_Klyshko_exact": [
+            "93/125",
+            "759/1000"
+          ]
+        },
+        "canonical_isolating_bracket": [
+          "2769175514682785/1152921504606846976",
+          "1384587757341393/576460752303423488"
+        ],
+        "source_value_is_dyadic_midpoint": false,
+        "midpoint_for_float_candidate_only": "5538351029365571/2305843009213693952"
+      }
+    },
+    {
+      "point": {
+        "point_id": "corner_011",
+        "K_A": "93/125",
+        "K_B": "759/1000",
+        "DA_target": "997/1000"
+      },
+      "outcome": "EXHIBITED_FRAME_WINDOW_MEMBER",
+      "source_parameters": {
+        "geometric_ratio": [
+          "135542217101/200000000000000",
+          "26675854981/500000000000000"
+        ],
+        "rotation": {
+          "Z": "312318123531/1000000000000000",
+          "X": "-7495976229/1000000000000000",
+          "C_squared": "48799399972775354484201/500000000000000000000000000000"
+        },
+        "loss_inverse": {
+          "Klyshko_targets": [
+            "93/125",
+            "759/1000"
+          ],
+          "calibration_geometric_ratio": "1/10000",
+          "branch": "vacuum_continuous_small_root",
+          "radicand": "2499561721/2500000000",
+          "raw_transmission_A": {
+            "rational": "387442341891/20238016",
+            "sqrt_coefficient": "-24216328125/1264876",
+            "radicand": "2499561721/2500000000"
+          },
+          "raw_transmission_B": {
+            "rational": "12648079795527/597619027",
+            "sqrt_coefficient": "-12648735000000/597619027",
+            "radicand": "2499561721/2500000000"
+          },
+          "matched_Klyshko_exact": [
+            "93/125",
+            "759/1000"
+          ]
+        },
+        "lambda_root": {
+          "definition": "exact_left_threshold_of_complete_DA_visibility",
+          "target": "997/1000",
+          "calibration_geometric_ratio": "1/10000",
+          "profile_rotation": {
+            "Z": "312318123531/1000000000000000",
+            "X": "-7495976229/1000000000000000",
+            "C_squared": "48799399972775354484201/500000000000000000000000000000"
+          },
+          "profile_loss_inverse": {
+            "Klyshko_targets": [
+              "93/125",
+              "759/1000"
+            ],
+            "calibration_geometric_ratio": "1/10000",
+            "branch": "vacuum_continuous_small_root",
+            "radicand": "2499561721/2500000000",
+            "raw_transmission_A": {
+              "rational": "387442341891/20238016",
+              "sqrt_coefficient": "-24216328125/1264876",
+              "radicand": "2499561721/2500000000"
+            },
+            "raw_transmission_B": {
+              "rational": "12648079795527/597619027",
+              "sqrt_coefficient": "-12648735000000/597619027",
+              "radicand": "2499561721/2500000000"
+            },
+            "matched_Klyshko_exact": [
+              "93/125",
+              "759/1000"
+            ]
+          },
+          "canonical_isolating_bracket": [
+            "1615356549345263/1152921504606846976",
+            "100959784334079/72057594037927936"
+          ],
+          "source_value_is_dyadic_midpoint": false,
+          "midpoint_for_float_candidate_only": "3230713098690527/2305843009213693952"
+        }
+      },
+      "phase_flip_probability_enclosure": {
+        "exact_lower": "1615356549345263/1152921504606846976",
+        "exact_upper": "100959784334079/72057594037927936",
+        "lower": 0.0014010984641110577,
+        "upper": 0.0014010984641110585
+      },
+      "source_construction": {
+        "training_marginals": [
+          {
+            "sA": "9667/44349054",
+            "sB": "3175/14783018"
+          },
+          {
+            "sA": "13834/22166099",
+            "sB": "15053/22166099"
+          }
+        ],
+        "single_means": [
+          {
+            "A": {
+              "exact_lower": "427107311358988488765172982397493397/10000000000000000000000000000000000000000",
+              "exact_upper": "2135536556794942443825864911987467/50000000000000000000000000000000000000",
+              "lower": 4.271073113589885e-05,
+              "upper": 4.271073113589885e-05
+            },
+            "B": {
+              "exact_lower": "426402154549415287466505346534616079/10000000000000000000000000000000000000000",
+              "exact_upper": "213201077274707643733252673267308041/5000000000000000000000000000000000000000",
+              "lower": 4.264021545494153e-05,
+              "upper": 4.264021545494153e-05
+            },
+            "normalized_A": {
+              "exact_lower": "574087206978176239417898710233981953/10000000000000000000000000000000000000000",
+              "exact_upper": "574087206978176239417898710233981959/10000000000000000000000000000000000000000",
+              "lower": 5.7408720697817624e-05,
+              "upper": 5.7408720697817624e-05
+            },
+            "normalized_B": {
+              "exact_lower": "561811677351505706601777440660487539/10000000000000000000000000000000000000000",
+              "exact_upper": "112362335470301141320355488132097509/2000000000000000000000000000000000000000",
+              "lower": 5.618116773515057e-05,
+              "upper": 5.618116773515057e-05
+            }
+          },
+          {
+            "A": {
+              "exact_lower": "619889464801916186172410898988523507/5000000000000000000000000000000000000000",
+              "exact_upper": "1239778929603832372344821797977047017/10000000000000000000000000000000000000000",
+              "lower": 0.00012397789296038323,
+              "upper": 0.00012397789296038323
+            },
+            "B": {
+              "exact_lower": "677776724498207949511000353083751013/5000000000000000000000000000000000000000",
+              "exact_upper": "1355553448996415899022000706167502029/10000000000000000000000000000000000000000",
+              "lower": 0.0001355553448996416,
+              "upper": 0.0001355553448996416
+            },
+            "normalized_A": {
+              "exact_lower": "1666422475190153367775956461982669951/10000000000000000000000000000000000000000",
+              "exact_upper": "1666422475190153367775956461982669961/10000000000000000000000000000000000000000",
+              "lower": 0.00016664224751901534,
+              "upper": 0.00016664224751901534
+            },
+            "normalized_B": {
+              "exact_lower": "35720539814112881973081946424541293/200000000000000000000000000000000000000",
+              "exact_upper": "89301349535282204932704866061353233/500000000000000000000000000000000000000",
+              "lower": 0.0001786026990705644,
+              "upper": 0.0001786026990705644
+            }
+          }
+        ],
+        "LS_covariance_enclosures": {
+          "M": {
+            "exact_lower": "1828813114543879234984566699061432357/5000000000000000000000000000000000000000",
+            "exact_upper": "228601639317984904374308538311353883/625000000000000000000000000000000000000",
+            "lower": 0.00036576262290877583,
+            "upper": 0.00036576262290877583
+          },
+          "Z": {
+            "exact_lower": "1561590617655791488072272743015849023/5000000000000000000000000000000000000000",
+            "exact_upper": "624636247062316595232869490221031151/2000000000000000000000000000000000000000",
+            "lower": 0.0003123181235311583,
+            "upper": 0.0003123181235311583
+          },
+          "X": {
+            "exact_lower": "-14991952458919047688295508073411299/2000000000000000000000000000000000000000",
+            "exact_upper": "-37479881147297619220531711736479729/5000000000000000000000000000000000000000",
+            "lower": -7.495976229459524e-06,
+            "upper": -7.495976229459524e-06
+          }
+        },
+        "covariance_grid": {
+          "M": "365762622909/1000000000000000",
+          "Z": "312318123531/1000000000000000",
+          "X": "-7495976229/1000000000000000"
+        },
+        "native_mean_enclosures": {
+          "H": {
+            "exact_lower": "271268275719607721526810349800688223/400000000000000000000000000000000000000",
+            "exact_upper": "847713361623774129771282343127150697/1250000000000000000000000000000000000000",
+            "lower": 0.0006781706892990193,
+            "upper": 0.0006781706892990193
+          },
+          "V": {
+            "exact_lower": "66693195648725870228717656872849303/1250000000000000000000000000000000000000",
+            "exact_upper": "21341822607592278473189650199311777/400000000000000000000000000000000000000",
+            "lower": 5.33545565189807e-05,
+            "upper": 5.33545565189807e-05
+          }
+        },
+        "LS_reconstruction_residuals": [
+          {
+            "A": {
+              "exact_lower": "-2406292143056956584636321392396279/5000000000000000000000000000000000000000",
+              "exact_upper": "-481258428611391316902385744105951/1000000000000000000000000000000000000000",
+              "lower": -4.812584286113913e-07,
+              "upper": -4.812584286113913e-07
+            },
+            "B": {
+              "exact_lower": "4812584278498864100425793181932503/10000000000000000000000000000000000000000",
+              "exact_upper": "4812584278498864100674578525665551/10000000000000000000000000000000000000000",
+              "lower": 4.812584278498864e-07,
+              "upper": 4.812584278498864e-07
+            }
+          },
+          {
+            "A": {
+              "exact_lower": "-894611854579772620181956235050269/10000000000000000000000000000000000000000",
+              "exact_upper": "-27956620455617894154552498278711/312500000000000000000000000000000000000",
+              "lower": -8.946118545797726e-08,
+              "upper": -8.946118545797726e-08
+            },
+            "B": {
+              "exact_lower": "894611848138861083894666209765749/10000000000000000000000000000000000000000",
+              "exact_upper": "447305924069430545565471249948633/5000000000000000000000000000000000000000",
+              "lower": 8.946118481388611e-08,
+              "upper": 8.946118481388611e-08
+            }
+          }
+        ],
+        "actual_covariance": {
+          "M": "36549524068822810505769919/99926897336157827189494230081",
+          "Z": {
+            "exact_lower": "124927249412427861971182547288996533/400000000000000000000000000000000000000",
+            "exact_upper": "3123181235310696549279563682224913327/10000000000000000000000000000000000000000",
+            "lower": 0.00031231812353106966,
+            "upper": 0.00031231812353106966
+          },
+          "X": {
+            "exact_lower": "-7495976229001671794381608527175773/1000000000000000000000000000000000000000",
+            "exact_upper": "-74959762290016717943816085271757729/10000000000000000000000000000000000000000",
+            "lower": -7.495976229001672e-06,
+            "upper": -7.495976229001672e-06
+          }
+        },
+        "actual_normalized_single_residuals": [
+          {
+            "A": {
+              "exact_lower": "-2406292142281250563038471920875019/5000000000000000000000000000000000000000",
+              "exact_upper": "-4812584284562501125828158498016931/10000000000000000000000000000000000000000",
+              "lower": -4.812584284562501e-07,
+              "upper": -4.812584284562501e-07
+            },
+            "B": {
+              "exact_lower": "4812584280055160559349472079725539/10000000000000000000000000000000000000000",
+              "exact_upper": "2406292140027580279799128711729323/5000000000000000000000000000000000000000",
+              "lower": 4.81258428005516e-07,
+              "upper": 4.81258428005516e-07
+            }
+          },
+          {
+            "A": {
+              "exact_lower": "-89461185327110546628989319602357/1000000000000000000000000000000000000000",
+              "exact_upper": "-894611853271105459053616905890437/10000000000000000000000000000000000000000",
+              "lower": -8.946118532711055e-08,
+              "upper": -8.946118532711055e-08
+            },
+            "B": {
+              "exact_lower": "111826481177656551876443732612061/1250000000000000000000000000000000000000",
+              "exact_upper": "894611849421252422247826151029621/10000000000000000000000000000000000000000",
+              "lower": 8.946118494212524e-08,
+              "upper": 8.946118494212525e-08
+            }
+          }
+        ],
+        "covariance_quantization_errors": {
+          "M": {
+            "exact_lower": "140095625691461688646117/625000000000000000000000000000000000000",
+            "exact_upper": "1120765015433300938567643/5000000000000000000000000000000000000000",
+            "lower": 2.241530011063387e-16,
+            "upper": 2.241530030866602e-16
+          },
+          "Z": {
+            "exact_lower": "-316595232869490221031151/2000000000000000000000000000000000000000",
+            "exact_upper": "-791488072272743015849023/5000000000000000000000000000000000000000",
+            "lower": -1.582976164347451e-16,
+            "upper": -1.582976144545486e-16
+          },
+          "X": {
+            "exact_lower": "2297619220531711736479729/5000000000000000000000000000000000000000",
+            "exact_upper": "919047688295508073411299/2000000000000000000000000000000000000000",
+            "lower": 4.595238441063424e-16,
+            "upper": 4.59523844147754e-16
+          }
+        },
+        "geometric_quantization_mean_errors": {
+          "H": {
+            "exact_lower": "-42006861275775129540513/2500000000000000000000000000000000000000",
+            "exact_upper": "-3360548902062010363241/200000000000000000000000000000000000000",
+            "lower": -1.6802744510310053e-17,
+            "upper": -1.6802744510310053e-17
+          },
+          "V": {
+            "exact_lower": "-312305439076194392691073/2000000000000000000000000000000000000000",
+            "exact_upper": "-1561527195380971963455363/10000000000000000000000000000000000000000",
+            "lower": -1.561527195380972e-16,
+            "upper": -1.561527195380972e-16
+          }
+        },
+        "orientation_identified_from_singles": true,
+        "independent_joint_statistics_used": false,
+        "heldout_rows_used": false,
+        "global_N_used": false,
+        "documented_optimal_state_used": false,
+        "public_q_used": false
+      },
+      "calibration_root_descriptor": {
+        "definition": "exact_left_threshold_of_complete_DA_visibility",
+        "target": "997/1000",
+        "calibration_geometric_ratio": "1/10000",
+        "profile_rotation": {
+          "Z": "312318123531/1000000000000000",
+          "X": "-7495976229/1000000000000000",
+          "C_squared": "48799399972775354484201/500000000000000000000000000000"
+        },
+        "profile_loss_inverse": {
+          "Klyshko_targets": [
+            "93/125",
+            "759/1000"
+          ],
+          "calibration_geometric_ratio": "1/10000",
+          "branch": "vacuum_continuous_small_root",
+          "radicand": "2499561721/2500000000",
+          "raw_transmission_A": {
+            "rational": "387442341891/20238016",
+            "sqrt_coefficient": "-24216328125/1264876",
+            "radicand": "2499561721/2500000000"
+          },
+          "raw_transmission_B": {
+            "rational": "12648079795527/597619027",
+            "sqrt_coefficient": "-12648735000000/597619027",
+            "radicand": "2499561721/2500000000"
+          },
+          "matched_Klyshko_exact": [
+            "93/125",
+            "759/1000"
+          ]
+        },
+        "canonical_isolating_bracket": [
+          "1615356549345263/1152921504606846976",
+          "100959784334079/72057594037927936"
+        ],
+        "source_value_is_dyadic_midpoint": false,
+        "midpoint_for_float_candidate_only": "3230713098690527/2305843009213693952"
+      }
+    },
+    {
+      "point": {
+        "point_id": "corner_100",
+        "K_A": "3/4",
+        "K_B": "753/1000",
+        "DA_target": "199/200"
+      },
+      "outcome": "EXHIBITED_FRAME_WINDOW_MEMBER",
+      "source_parameters": {
+        "geometric_ratio": [
+          "678019561077/1000000000000000",
+          "53302259569/1000000000000000"
+        ],
+        "rotation": {
+          "Z": "78113779437/250000000000000",
+          "X": "-4543754887/500000000000000",
+          "C_squared": "4885539172040454506129/50000000000000000000000000000"
+        },
+        "loss_inverse": {
+          "Klyshko_targets": [
+            "3/4",
+            "753/1000"
+          ],
+          "calibration_geometric_ratio": "1/10000",
+          "branch": "vacuum_continuous_small_root",
+          "radicand": "99982471/100000000",
+          "raw_transmission_A": {
+            "rational": "199970001/10039",
+            "sqrt_coefficient": "-199980000/10039",
+            "radicand": "99982471/100000000"
+          },
+          "raw_transmission_B": {
+            "rational": "12548110033503/617438003",
+            "sqrt_coefficient": "-12548745000000/617438003",
+            "radicand": "99982471/100000000"
+          },
+          "matched_Klyshko_exact": [
+            "3/4",
+            "753/1000"
+          ]
+        },
+        "lambda_root": {
+          "definition": "exact_left_threshold_of_complete_DA_visibility",
+          "target": "199/200",
+          "calibration_geometric_ratio": "1/10000",
+          "profile_rotation": {
+            "Z": "78113779437/250000000000000",
+            "X": "-4543754887/500000000000000",
+            "C_squared": "4885539172040454506129/50000000000000000000000000000"
+          },
+          "profile_loss_inverse": {
+            "Klyshko_targets": [
+              "3/4",
+              "753/1000"
+            ],
+            "calibration_geometric_ratio": "1/10000",
+            "branch": "vacuum_continuous_small_root",
+            "radicand": "99982471/100000000",
+            "raw_transmission_A": {
+              "rational": "199970001/10039",
+              "sqrt_coefficient": "-199980000/10039",
+              "radicand": "99982471/100000000"
+            },
+            "raw_transmission_B": {
+              "rational": "12548110033503/617438003",
+              "sqrt_coefficient": "-12548745000000/617438003",
+              "radicand": "99982471/100000000"
+            },
+            "matched_Klyshko_exact": [
+              "3/4",
+              "753/1000"
+            ]
+          },
+          "canonical_isolating_bracket": [
+            "2769924161038051/1152921504606846976",
+            "692481040259513/288230376151711744"
+          ],
+          "source_value_is_dyadic_midpoint": false,
+          "midpoint_for_float_candidate_only": "5539848322076103/2305843009213693952"
+        }
+      },
+      "phase_flip_probability_enclosure": {
+        "exact_lower": "2769924161038051/1152921504606846976",
+        "exact_upper": "692481040259513/288230376151711744",
+        "lower": 0.0024025262344140345,
+        "upper": 0.0024025262344140354
+      },
+      "source_construction": {
+        "training_marginals": [
+          {
+            "sA": "9667/44349054",
+            "sB": "3175/14783018"
+          },
+          {
+            "sA": "13834/22166099",
+            "sB": "15053/22166099"
+          }
+        ],
+        "single_means": [
+          {
+            "A": {
+              "exact_lower": "427107311358988488765172982397493397/10000000000000000000000000000000000000000",
+              "exact_upper": "2135536556794942443825864911987467/50000000000000000000000000000000000000",
+              "lower": 4.271073113589885e-05,
+              "upper": 4.271073113589885e-05
+            },
+            "B": {
+              "exact_lower": "426402154549415287466505346534616079/10000000000000000000000000000000000000000",
+              "exact_upper": "213201077274707643733252673267308041/5000000000000000000000000000000000000000",
+              "lower": 4.264021545494153e-05,
+              "upper": 4.264021545494153e-05
+            },
+            "normalized_A": {
+              "exact_lower": "71186771334759941565253847963499877/1250000000000000000000000000000000000000",
+              "exact_upper": "284747085339039766261015391853999511/5000000000000000000000000000000000000000",
+              "lower": 5.6949417067807956e-05,
+              "upper": 5.6949417067807956e-05
+            },
+            "normalized_B": {
+              "exact_lower": "566288607277126204130224641093984621/10000000000000000000000000000000000000000",
+              "exact_upper": "566288607277126204130224641093984627/10000000000000000000000000000000000000000",
+              "lower": 5.662886072771262e-05,
+              "upper": 5.662886072771262e-05
+            }
+          },
+          {
+            "A": {
+              "exact_lower": "619889464801916186172410898988523507/5000000000000000000000000000000000000000",
+              "exact_upper": "1239778929603832372344821797977047017/10000000000000000000000000000000000000000",
+              "lower": 0.00012397789296038323,
+              "upper": 0.00012397789296038323
+            },
+            "B": {
+              "exact_lower": "677776724498207949511000353083751013/5000000000000000000000000000000000000000",
+              "exact_upper": "1355553448996415899022000706167502029/10000000000000000000000000000000000000000",
+              "lower": 0.0001355553448996416,
+              "upper": 0.0001355553448996416
+            },
+            "normalized_A": {
+              "exact_lower": "330618022478875966364793621306955131/2000000000000000000000000000000000000000",
+              "exact_upper": "103318132024648739488998006658423479/625000000000000000000000000000000000000",
+              "lower": 0.000165309011239438,
+              "upper": 0.000165309011239438
+            },
+            "normalized_B": {
+              "exact_lower": "360051874284291382450212614080457079/2000000000000000000000000000000000000000",
+              "exact_upper": "360051874284291382450212614080457081/2000000000000000000000000000000000000000",
+              "lower": 0.0001800259371421457,
+              "upper": 0.0001800259371421457
+            }
+          }
+        ],
+        "LS_covariance_enclosures": {
+          "M": {
+            "exact_lower": "1829461710893263321087920424747581587/5000000000000000000000000000000000000000",
+            "exact_upper": "3658923421786526642195652750772417263/10000000000000000000000000000000000000000",
+            "lower": 0.00036589234217865264,
+            "upper": 0.00036589234217865264
+          },
+          "Z": {
+            "exact_lower": "312455117748104318356732907911896773/1000000000000000000000000000000000000000",
+            "exact_upper": "781137794370260795896784932515670073/2500000000000000000000000000000000000000",
+            "lower": 0.0003124551177481043,
+            "upper": 0.0003124551177481043
+          },
+          "X": {
+            "exact_lower": "-45437548868220076860593944346689579/5000000000000000000000000000000000000000",
+            "exact_upper": "-11359387217055019215085965249816397/1250000000000000000000000000000000000000",
+            "lower": -9.087509773644016e-06,
+            "upper": -9.087509773644016e-06
+          }
+        },
+        "covariance_grid": {
+          "M": "365892342179/1000000000000000",
+          "Z": "78113779437/250000000000000",
+          "X": "-4543754887/500000000000000"
+        },
+        "native_mean_enclosures": {
+          "H": {
+            "exact_lower": "1696198958766539383853354070646228409/2500000000000000000000000000000000000000",
+            "exact_upper": "6784795835066157535413416282584913637/10000000000000000000000000000000000000000",
+            "lower": 0.0006784795835066157,
+            "upper": 0.0006784795835066157
+          },
+          "V": {
+            "exact_lower": "533051008513842464586583717415086363/10000000000000000000000000000000000000000",
+            "exact_upper": "133262752128460616146645929353771591/2500000000000000000000000000000000000000",
+            "lower": 5.330510085138425e-05,
+            "upper": 5.330510085138425e-05
+          }
+        },
+        "LS_reconstruction_residuals": [
+          {
+            "A": {
+              "exact_lower": "-11672527802793053416349379180716051/10000000000000000000000000000000000000000",
+              "exact_upper": "-2334505560558610683218609263639273/2000000000000000000000000000000000000000",
+              "lower": -1.1672527802793054e-06,
+              "upper": -1.1672527802793054e-06
+            },
+            "B": {
+              "exact_lower": "2334505558756470497053587259719033/2000000000000000000000000000000000000000",
+              "exact_upper": "11672527793782352485524269161114851/10000000000000000000000000000000000000000",
+              "lower": 1.1672527793782353e-06,
+              "upper": 1.1672527793782353e-06
+            }
+          },
+          {
+            "A": {
+              "exact_lower": "-1084903770344813117764894721244209/5000000000000000000000000000000000000000",
+              "exact_upper": "-2169807540689626228267854329373703/10000000000000000000000000000000000000000",
+              "lower": -2.1698075406896263e-07,
+              "upper": -2.1698075406896263e-07
+            },
+            "B": {
+              "exact_lower": "433961506490536727127938403556451/2000000000000000000000000000000000000000",
+              "exact_upper": "2169807532452683642901627130896971/10000000000000000000000000000000000000000",
+              "lower": 2.1698075324526838e-07,
+              "upper": 2.1698075324526838e-07
+            }
+          }
+        ],
+        "actual_covariance": {
+          "M": "365624770348362614296804187/999268714319328637385703195813",
+          "Z": {
+            "exact_lower": "3124551177479276731051859827968667969/10000000000000000000000000000000000000000",
+            "exact_upper": "3124551177479276731051859827968667971/10000000000000000000000000000000000000000",
+            "lower": 0.0003124551177479277,
+            "upper": 0.0003124551177479277
+          },
+          "X": {
+            "exact_lower": "-18175019547995792859030233257322623/2000000000000000000000000000000000000000",
+            "exact_upper": "-45437548869989482147575583143306557/5000000000000000000000000000000000000000",
+            "lower": -9.087509773997896e-06,
+            "upper": -9.087509773997896e-06
+          }
+        },
+        "actual_normalized_single_residuals": [
+          {
+            "A": {
+              "exact_lower": "-5836263901079369943195946441604079/5000000000000000000000000000000000000000",
+              "exact_upper": "-5836263901079369943067780010344263/5000000000000000000000000000000000000000",
+              "lower": -1.167252780215874e-06,
+              "upper": -1.167252780215874e-06
+            },
+            "B": {
+              "exact_lower": "11672527794410520096280897324415753/10000000000000000000000000000000000000000",
+              "exact_upper": "2334505558882104019307446037387077/2000000000000000000000000000000000000000",
+              "lower": 1.167252779441052e-06,
+              "upper": 1.167252779441052e-06
+            }
+          },
+          {
+            "A": {
+              "exact_lower": "-433961507961336469729564041702897/2000000000000000000000000000000000000000",
+              "exact_upper": "-271225942475835292673235636925181/1250000000000000000000000000000000000000",
+              "lower": -2.1698075398066823e-07,
+              "upper": -2.1698075398066823e-07
+            },
+            "B": {
+              "exact_lower": "2169807533368689629838179649680361/10000000000000000000000000000000000000000",
+              "exact_upper": "2169807533368689637100114762793399/10000000000000000000000000000000000000000",
+              "lower": 2.1698075333686895e-07,
+              "upper": 2.1698075333686895e-07
+            }
+          }
+        ],
+        "covariance_quantization_errors": {
+          "M": {
+            "exact_lower": "3473357804347249227582737/10000000000000000000000000000000000000000",
+            "exact_upper": "1736678912079575252418413/5000000000000000000000000000000000000000",
+            "lower": 3.4733578043472494e-16,
+            "upper": 3.4733578241591503e-16
+          },
+          "Z": {
+            "exact_lower": "-260795896784932515670073/2500000000000000000000000000000000000000",
+            "exact_upper": "-104318356732907911896773/1000000000000000000000000000000000000000",
+            "lower": -1.04318358713973e-16,
+            "upper": -1.0431835673290791e-16
+          },
+          "X": {
+            "exact_lower": "-444980784914034750183603/1250000000000000000000000000000000000000",
+            "exact_upper": "-1779923139406055653310421/5000000000000000000000000000000000000000",
+            "lower": -3.559846279312278e-16,
+            "upper": -3.5598462788121114e-16
+          }
+        },
+        "geometric_quantization_mean_errors": {
+          "H": {
+            "exact_lower": "-414065063412220472548381/2000000000000000000000000000000000000000",
+            "exact_upper": "-2070325317061102362741903/10000000000000000000000000000000000000000",
+            "lower": -2.0703253170611023e-16,
+            "upper": -2.0703253170611023e-16
+          },
+          "V": {
+            "exact_lower": "-623175743281974159800381/10000000000000000000000000000000000000000",
+            "exact_upper": "-623175743281974159800379/10000000000000000000000000000000000000000",
+            "lower": -6.231757432819741e-17,
+            "upper": -6.231757432819741e-17
+          }
+        },
+        "orientation_identified_from_singles": true,
+        "independent_joint_statistics_used": false,
+        "heldout_rows_used": false,
+        "global_N_used": false,
+        "documented_optimal_state_used": false,
+        "public_q_used": false
+      },
+      "calibration_root_descriptor": {
+        "definition": "exact_left_threshold_of_complete_DA_visibility",
+        "target": "199/200",
+        "calibration_geometric_ratio": "1/10000",
+        "profile_rotation": {
+          "Z": "78113779437/250000000000000",
+          "X": "-4543754887/500000000000000",
+          "C_squared": "4885539172040454506129/50000000000000000000000000000"
+        },
+        "profile_loss_inverse": {
+          "Klyshko_targets": [
+            "3/4",
+            "753/1000"
+          ],
+          "calibration_geometric_ratio": "1/10000",
+          "branch": "vacuum_continuous_small_root",
+          "radicand": "99982471/100000000",
+          "raw_transmission_A": {
+            "rational": "199970001/10039",
+            "sqrt_coefficient": "-199980000/10039",
+            "radicand": "99982471/100000000"
+          },
+          "raw_transmission_B": {
+            "rational": "12548110033503/617438003",
+            "sqrt_coefficient": "-12548745000000/617438003",
+            "radicand": "99982471/100000000"
+          },
+          "matched_Klyshko_exact": [
+            "3/4",
+            "753/1000"
+          ]
+        },
+        "canonical_isolating_bracket": [
+          "2769924161038051/1152921504606846976",
+          "692481040259513/288230376151711744"
+        ],
+        "source_value_is_dyadic_midpoint": false,
+        "midpoint_for_float_candidate_only": "5539848322076103/2305843009213693952"
+      }
+    },
+    {
+      "point": {
+        "point_id": "corner_101",
+        "K_A": "3/4",
+        "K_B": "753/1000",
+        "DA_target": "997/1000"
+      },
+      "outcome": "EXHIBITED_FRAME_WINDOW_MEMBER",
+      "source_parameters": {
+        "geometric_ratio": [
+          "678019561077/1000000000000000",
+          "53302259569/1000000000000000"
+        ],
+        "rotation": {
+          "Z": "78113779437/250000000000000",
+          "X": "-4543754887/500000000000000",
+          "C_squared": "4885539172040454506129/50000000000000000000000000000"
+        },
+        "loss_inverse": {
+          "Klyshko_targets": [
+            "3/4",
+            "753/1000"
+          ],
+          "calibration_geometric_ratio": "1/10000",
+          "branch": "vacuum_continuous_small_root",
+          "radicand": "99982471/100000000",
+          "raw_transmission_A": {
+            "rational": "199970001/10039",
+            "sqrt_coefficient": "-199980000/10039",
+            "radicand": "99982471/100000000"
+          },
+          "raw_transmission_B": {
+            "rational": "12548110033503/617438003",
+            "sqrt_coefficient": "-12548745000000/617438003",
+            "radicand": "99982471/100000000"
+          },
+          "matched_Klyshko_exact": [
+            "3/4",
+            "753/1000"
+          ]
+        },
+        "lambda_root": {
+          "definition": "exact_left_threshold_of_complete_DA_visibility",
+          "target": "997/1000",
+          "calibration_geometric_ratio": "1/10000",
+          "profile_rotation": {
+            "Z": "78113779437/250000000000000",
+            "X": "-4543754887/500000000000000",
+            "C_squared": "4885539172040454506129/50000000000000000000000000000"
+          },
+          "profile_loss_inverse": {
+            "Klyshko_targets": [
+              "3/4",
+              "753/1000"
+            ],
+            "calibration_geometric_ratio": "1/10000",
+            "branch": "vacuum_continuous_small_root",
+            "radicand": "99982471/100000000",
+            "raw_transmission_A": {
+              "rational": "199970001/10039",
+              "sqrt_coefficient": "-199980000/10039",
+              "radicand": "99982471/100000000"
+            },
+            "raw_transmission_B": {
+              "rational": "12548110033503/617438003",
+              "sqrt_coefficient": "-12548745000000/617438003",
+              "radicand": "99982471/100000000"
+            },
+            "matched_Klyshko_exact": [
+              "3/4",
+              "753/1000"
+            ]
+          },
+          "canonical_isolating_bracket": [
+            "1615792821651463/1152921504606846976",
+            "201974102706433/144115188075855872"
+          ],
+          "source_value_is_dyadic_midpoint": false,
+          "midpoint_for_float_candidate_only": "3231585643302927/2305843009213693952"
+        }
+      },
+      "phase_flip_probability_enclosure": {
+        "exact_lower": "1615792821651463/1152921504606846976",
+        "exact_upper": "201974102706433/144115188075855872",
+        "lower": 0.0014014768700167995,
+        "upper": 0.0014014768700168004
+      },
+      "source_construction": {
+        "training_marginals": [
+          {
+            "sA": "9667/44349054",
+            "sB": "3175/14783018"
+          },
+          {
+            "sA": "13834/22166099",
+            "sB": "15053/22166099"
+          }
+        ],
+        "single_means": [
+          {
+            "A": {
+              "exact_lower": "427107311358988488765172982397493397/10000000000000000000000000000000000000000",
+              "exact_upper": "2135536556794942443825864911987467/50000000000000000000000000000000000000",
+              "lower": 4.271073113589885e-05,
+              "upper": 4.271073113589885e-05
+            },
+            "B": {
+              "exact_lower": "426402154549415287466505346534616079/10000000000000000000000000000000000000000",
+              "exact_upper": "213201077274707643733252673267308041/5000000000000000000000000000000000000000",
+              "lower": 4.264021545494153e-05,
+              "upper": 4.264021545494153e-05
+            },
+            "normalized_A": {
+              "exact_lower": "71186771334759941565253847963499877/1250000000000000000000000000000000000000",
+              "exact_upper": "284747085339039766261015391853999511/5000000000000000000000000000000000000000",
+              "lower": 5.6949417067807956e-05,
+              "upper": 5.6949417067807956e-05
+            },
+            "normalized_B": {
+              "exact_lower": "566288607277126204130224641093984621/10000000000000000000000000000000000000000",
+              "exact_upper": "566288607277126204130224641093984627/10000000000000000000000000000000000000000",
+              "lower": 5.662886072771262e-05,
+              "upper": 5.662886072771262e-05
+            }
+          },
+          {
+            "A": {
+              "exact_lower": "619889464801916186172410898988523507/5000000000000000000000000000000000000000",
+              "exact_upper": "1239778929603832372344821797977047017/10000000000000000000000000000000000000000",
+              "lower": 0.00012397789296038323,
+              "upper": 0.00012397789296038323
+            },
+            "B": {
+              "exact_lower": "677776724498207949511000353083751013/5000000000000000000000000000000000000000",
+              "exact_upper": "1355553448996415899022000706167502029/10000000000000000000000000000000000000000",
+              "lower": 0.0001355553448996416,
+              "upper": 0.0001355553448996416
+            },
+            "normalized_A": {
+              "exact_lower": "330618022478875966364793621306955131/2000000000000000000000000000000000000000",
+              "exact_upper": "103318132024648739488998006658423479/625000000000000000000000000000000000000",
+              "lower": 0.000165309011239438,
+              "upper": 0.000165309011239438
+            },
+            "normalized_B": {
+              "exact_lower": "360051874284291382450212614080457079/2000000000000000000000000000000000000000",
+              "exact_upper": "360051874284291382450212614080457081/2000000000000000000000000000000000000000",
+              "lower": 0.0001800259371421457,
+              "upper": 0.0001800259371421457
+            }
+          }
+        ],
+        "LS_covariance_enclosures": {
+          "M": {
+            "exact_lower": "1829461710893263321087920424747581587/5000000000000000000000000000000000000000",
+            "exact_upper": "3658923421786526642195652750772417263/10000000000000000000000000000000000000000",
+            "lower": 0.00036589234217865264,
+            "upper": 0.00036589234217865264
+          },
+          "Z": {
+            "exact_lower": "312455117748104318356732907911896773/1000000000000000000000000000000000000000",
+            "exact_upper": "781137794370260795896784932515670073/2500000000000000000000000000000000000000",
+            "lower": 0.0003124551177481043,
+            "upper": 0.0003124551177481043
+          },
+          "X": {
+            "exact_lower": "-45437548868220076860593944346689579/5000000000000000000000000000000000000000",
+            "exact_upper": "-11359387217055019215085965249816397/1250000000000000000000000000000000000000",
+            "lower": -9.087509773644016e-06,
+            "upper": -9.087509773644016e-06
+          }
+        },
+        "covariance_grid": {
+          "M": "365892342179/1000000000000000",
+          "Z": "78113779437/250000000000000",
+          "X": "-4543754887/500000000000000"
+        },
+        "native_mean_enclosures": {
+          "H": {
+            "exact_lower": "1696198958766539383853354070646228409/2500000000000000000000000000000000000000",
+            "exact_upper": "6784795835066157535413416282584913637/10000000000000000000000000000000000000000",
+            "lower": 0.0006784795835066157,
+            "upper": 0.0006784795835066157
+          },
+          "V": {
+            "exact_lower": "533051008513842464586583717415086363/10000000000000000000000000000000000000000",
+            "exact_upper": "133262752128460616146645929353771591/2500000000000000000000000000000000000000",
+            "lower": 5.330510085138425e-05,
+            "upper": 5.330510085138425e-05
+          }
+        },
+        "LS_reconstruction_residuals": [
+          {
+            "A": {
+              "exact_lower": "-11672527802793053416349379180716051/10000000000000000000000000000000000000000",
+              "exact_upper": "-2334505560558610683218609263639273/2000000000000000000000000000000000000000",
+              "lower": -1.1672527802793054e-06,
+              "upper": -1.1672527802793054e-06
+            },
+            "B": {
+              "exact_lower": "2334505558756470497053587259719033/2000000000000000000000000000000000000000",
+              "exact_upper": "11672527793782352485524269161114851/10000000000000000000000000000000000000000",
+              "lower": 1.1672527793782353e-06,
+              "upper": 1.1672527793782353e-06
+            }
+          },
+          {
+            "A": {
+              "exact_lower": "-1084903770344813117764894721244209/5000000000000000000000000000000000000000",
+              "exact_upper": "-2169807540689626228267854329373703/10000000000000000000000000000000000000000",
+              "lower": -2.1698075406896263e-07,
+              "upper": -2.1698075406896263e-07
+            },
+            "B": {
+              "exact_lower": "433961506490536727127938403556451/2000000000000000000000000000000000000000",
+              "exact_upper": "2169807532452683642901627130896971/10000000000000000000000000000000000000000",
+              "lower": 2.1698075324526838e-07,
+              "upper": 2.1698075324526838e-07
+            }
+          }
+        ],
+        "actual_covariance": {
+          "M": "365624770348362614296804187/999268714319328637385703195813",
+          "Z": {
+            "exact_lower": "3124551177479276731051859827968667969/10000000000000000000000000000000000000000",
+            "exact_upper": "3124551177479276731051859827968667971/10000000000000000000000000000000000000000",
+            "lower": 0.0003124551177479277,
+            "upper": 0.0003124551177479277
+          },
+          "X": {
+            "exact_lower": "-18175019547995792859030233257322623/2000000000000000000000000000000000000000",
+            "exact_upper": "-45437548869989482147575583143306557/5000000000000000000000000000000000000000",
+            "lower": -9.087509773997896e-06,
+            "upper": -9.087509773997896e-06
+          }
+        },
+        "actual_normalized_single_residuals": [
+          {
+            "A": {
+              "exact_lower": "-5836263901079369943195946441604079/5000000000000000000000000000000000000000",
+              "exact_upper": "-5836263901079369943067780010344263/5000000000000000000000000000000000000000",
+              "lower": -1.167252780215874e-06,
+              "upper": -1.167252780215874e-06
+            },
+            "B": {
+              "exact_lower": "11672527794410520096280897324415753/10000000000000000000000000000000000000000",
+              "exact_upper": "2334505558882104019307446037387077/2000000000000000000000000000000000000000",
+              "lower": 1.167252779441052e-06,
+              "upper": 1.167252779441052e-06
+            }
+          },
+          {
+            "A": {
+              "exact_lower": "-433961507961336469729564041702897/2000000000000000000000000000000000000000",
+              "exact_upper": "-271225942475835292673235636925181/1250000000000000000000000000000000000000",
+              "lower": -2.1698075398066823e-07,
+              "upper": -2.1698075398066823e-07
+            },
+            "B": {
+              "exact_lower": "2169807533368689629838179649680361/10000000000000000000000000000000000000000",
+              "exact_upper": "2169807533368689637100114762793399/10000000000000000000000000000000000000000",
+              "lower": 2.1698075333686895e-07,
+              "upper": 2.1698075333686895e-07
+            }
+          }
+        ],
+        "covariance_quantization_errors": {
+          "M": {
+            "exact_lower": "3473357804347249227582737/10000000000000000000000000000000000000000",
+            "exact_upper": "1736678912079575252418413/5000000000000000000000000000000000000000",
+            "lower": 3.4733578043472494e-16,
+            "upper": 3.4733578241591503e-16
+          },
+          "Z": {
+            "exact_lower": "-260795896784932515670073/2500000000000000000000000000000000000000",
+            "exact_upper": "-104318356732907911896773/1000000000000000000000000000000000000000",
+            "lower": -1.04318358713973e-16,
+            "upper": -1.0431835673290791e-16
+          },
+          "X": {
+            "exact_lower": "-444980784914034750183603/1250000000000000000000000000000000000000",
+            "exact_upper": "-1779923139406055653310421/5000000000000000000000000000000000000000",
+            "lower": -3.559846279312278e-16,
+            "upper": -3.5598462788121114e-16
+          }
+        },
+        "geometric_quantization_mean_errors": {
+          "H": {
+            "exact_lower": "-414065063412220472548381/2000000000000000000000000000000000000000",
+            "exact_upper": "-2070325317061102362741903/10000000000000000000000000000000000000000",
+            "lower": -2.0703253170611023e-16,
+            "upper": -2.0703253170611023e-16
+          },
+          "V": {
+            "exact_lower": "-623175743281974159800381/10000000000000000000000000000000000000000",
+            "exact_upper": "-623175743281974159800379/10000000000000000000000000000000000000000",
+            "lower": -6.231757432819741e-17,
+            "upper": -6.231757432819741e-17
+          }
+        },
+        "orientation_identified_from_singles": true,
+        "independent_joint_statistics_used": false,
+        "heldout_rows_used": false,
+        "global_N_used": false,
+        "documented_optimal_state_used": false,
+        "public_q_used": false
+      },
+      "calibration_root_descriptor": {
+        "definition": "exact_left_threshold_of_complete_DA_visibility",
+        "target": "997/1000",
+        "calibration_geometric_ratio": "1/10000",
+        "profile_rotation": {
+          "Z": "78113779437/250000000000000",
+          "X": "-4543754887/500000000000000",
+          "C_squared": "4885539172040454506129/50000000000000000000000000000"
+        },
+        "profile_loss_inverse": {
+          "Klyshko_targets": [
+            "3/4",
+            "753/1000"
+          ],
+          "calibration_geometric_ratio": "1/10000",
+          "branch": "vacuum_continuous_small_root",
+          "radicand": "99982471/100000000",
+          "raw_transmission_A": {
+            "rational": "199970001/10039",
+            "sqrt_coefficient": "-199980000/10039",
+            "radicand": "99982471/100000000"
+          },
+          "raw_transmission_B": {
+            "rational": "12548110033503/617438003",
+            "sqrt_coefficient": "-12548745000000/617438003",
+            "radicand": "99982471/100000000"
+          },
+          "matched_Klyshko_exact": [
+            "3/4",
+            "753/1000"
+          ]
+        },
+        "canonical_isolating_bracket": [
+          "1615792821651463/1152921504606846976",
+          "201974102706433/144115188075855872"
+        ],
+        "source_value_is_dyadic_midpoint": false,
+        "midpoint_for_float_candidate_only": "3231585643302927/2305843009213693952"
+      }
+    },
+    {
+      "point": {
+        "point_id": "corner_110",
+        "K_A": "3/4",
+        "K_B": "759/1000",
+        "DA_target": "199/200"
+      },
+      "outcome": "EXHIBITED_FRAME_WINDOW_MEMBER",
+      "source_parameters": {
+        "geometric_ratio": [
+          "675160719553/1000000000000000",
+          "829921027/15625000000000"
+        ],
+        "rotation": {
+          "Z": "155569919413/500000000000000",
+          "X": "-2065850809/250000000000000",
+          "C_squared": "24219070784427498082493/250000000000000000000000000000"
+        },
+        "loss_inverse": {
+          "Klyshko_targets": [
+            "3/4",
+            "759/1000"
+          ],
+          "calibration_geometric_ratio": "1/10000",
+          "branch": "vacuum_continuous_small_root",
+          "radicand": "99982411/100000000",
+          "raw_transmission_A": {
+            "rational": "66656667/3373",
+            "sqrt_coefficient": "-66660000/3373",
+            "radicand": "99982411/100000000"
+          },
+          "raw_transmission_B": {
+            "rational": "4216026598509/200813009",
+            "sqrt_coefficient": "-4216245000000/200813009",
+            "radicand": "99982411/100000000"
+          },
+          "matched_Klyshko_exact": [
+            "3/4",
+            "759/1000"
+          ]
+        },
+        "lambda_root": {
+          "definition": "exact_left_threshold_of_complete_DA_visibility",
+          "target": "199/200",
+          "calibration_geometric_ratio": "1/10000",
+          "profile_rotation": {
+            "Z": "155569919413/500000000000000",
+            "X": "-2065850809/250000000000000",
+            "C_squared": "24219070784427498082493/250000000000000000000000000000"
+          },
+          "profile_loss_inverse": {
+            "Klyshko_targets": [
+              "3/4",
+              "759/1000"
+            ],
+            "calibration_geometric_ratio": "1/10000",
+            "branch": "vacuum_continuous_small_root",
+            "radicand": "99982411/100000000",
+            "raw_transmission_A": {
+              "rational": "66656667/3373",
+              "sqrt_coefficient": "-66660000/3373",
+              "radicand": "99982411/100000000"
+            },
+            "raw_transmission_B": {
+              "rational": "4216026598509/200813009",
+              "sqrt_coefficient": "-4216245000000/200813009",
+              "radicand": "99982411/100000000"
+            },
+            "matched_Klyshko_exact": [
+              "3/4",
+              "759/1000"
+            ]
+          },
+          "canonical_isolating_bracket": [
+            "2769534233342415/1152921504606846976",
+            "173095889583901/72057594037927936"
+          ],
+          "source_value_is_dyadic_midpoint": false,
+          "midpoint_for_float_candidate_only": "5539068466684831/2305843009213693952"
+        }
+      },
+      "phase_flip_probability_enclosure": {
+        "exact_lower": "2769534233342415/1152921504606846976",
+        "exact_upper": "173095889583901/72057594037927936",
+        "lower": 0.002402188026050258,
+        "upper": 0.0024021880260502587
+      },
+      "source_construction": {
+        "training_marginals": [
+          {
+            "sA": "9667/44349054",
+            "sB": "3175/14783018"
+          },
+          {
+            "sA": "13834/22166099",
+            "sB": "15053/22166099"
+          }
+        ],
+        "single_means": [
+          {
+            "A": {
+              "exact_lower": "427107311358988488765172982397493397/10000000000000000000000000000000000000000",
+              "exact_upper": "2135536556794942443825864911987467/50000000000000000000000000000000000000",
+              "lower": 4.271073113589885e-05,
+              "upper": 4.271073113589885e-05
+            },
+            "B": {
+              "exact_lower": "426402154549415287466505346534616079/10000000000000000000000000000000000000000",
+              "exact_upper": "213201077274707643733252673267308041/5000000000000000000000000000000000000000",
+              "lower": 4.264021545494153e-05,
+              "upper": 4.264021545494153e-05
+            },
+            "normalized_A": {
+              "exact_lower": "284747042620286472500923902120940823/5000000000000000000000000000000000000000",
+              "exact_upper": "569494085240572945001847804241881653/10000000000000000000000000000000000000000",
+              "lower": 5.6949408524057295e-05,
+              "upper": 5.6949408524057295e-05
+            },
+            "normalized_B": {
+              "exact_lower": "140452899025184473604496388441311923/2500000000000000000000000000000000000000",
+              "exact_upper": "280905798050368947208992776882623849/5000000000000000000000000000000000000000",
+              "lower": 5.618115961007379e-05,
+              "upper": 5.618115961007379e-05
+            }
+          },
+          {
+            "A": {
+              "exact_lower": "619889464801916186172410898988523507/5000000000000000000000000000000000000000",
+              "exact_upper": "1239778929603832372344821797977047017/10000000000000000000000000000000000000000",
+              "lower": 0.00012397789296038323,
+              "upper": 0.00012397789296038323
+            },
+            "B": {
+              "exact_lower": "677776724498207949511000353083751013/5000000000000000000000000000000000000000",
+              "exact_upper": "1355553448996415899022000706167502029/10000000000000000000000000000000000000000",
+              "lower": 0.0001355553448996416,
+              "upper": 0.0001355553448996416
+            },
+            "normalized_A": {
+              "exact_lower": "1653089864392021529729350735147081849/10000000000000000000000000000000000000000",
+              "exact_upper": "826544932196010764864675367573540929/5000000000000000000000000000000000000000",
+              "lower": 0.00016530898643920216,
+              "upper": 0.00016530898643920216
+            },
+            "normalized_B": {
+              "exact_lower": "1786026732405451741983596258264637981/10000000000000000000000000000000000000000",
+              "exact_upper": "178602673240545174198359625826463799/1000000000000000000000000000000000000000",
+              "lower": 0.00017860267324054516,
+              "upper": 0.00017860267324054516
+            }
+          }
+        ],
+        "LS_covariance_enclosures": {
+          "M": {
+            "exact_lower": "72873463659972852502964971435796767/200000000000000000000000000000000000000",
+            "exact_upper": "910918295749660656291994268731365331/2500000000000000000000000000000000000000",
+            "lower": 0.00036436731829986427,
+            "upper": 0.00036436731829986427
+          },
+          "Z": {
+            "exact_lower": "3111398388256699864950869304227161579/10000000000000000000000000000000000000000",
+            "exact_upper": "622279677651339972994119312458503697/2000000000000000000000000000000000000000",
+            "lower": 0.00031113983882567,
+            "upper": 0.00031113983882567
+          },
+          "X": {
+            "exact_lower": "-20658508090108240698737549347800777/2500000000000000000000000000000000000000",
+            "exact_upper": "-20658508090108240698623655775924291/2500000000000000000000000000000000000000",
+            "lower": -8.263403236043296e-06,
+            "upper": -8.263403236043296e-06
+          }
+        },
+        "covariance_grid": {
+          "M": "3643673183/10000000000000",
+          "Z": "155569919413/500000000000000",
+          "X": "-2065850809/250000000000000"
+        },
+        "native_mean_enclosures": {
+          "H": {
+            "exact_lower": "6756168695249134028138501013206197449/10000000000000000000000000000000000000000",
+            "exact_upper": "135123373904982680562770020264123949/200000000000000000000000000000000000000",
+            "lower": 0.0006756168695249134,
+            "upper": 0.0006756168695249134
+          },
+          "V": {
+            "exact_lower": "10623553415017319437229979735876051/200000000000000000000000000000000000000",
+            "exact_upper": "531177670750865971861498986793802551/10000000000000000000000000000000000000000",
+            "lower": 5.3117767075086596e-05,
+            "upper": 5.3117767075086596e-05
+          }
+        },
+        "LS_reconstruction_residuals": [
+          {
+            "A": {
+              "exact_lower": "-2057546284412060720711126494064449/2500000000000000000000000000000000000000",
+              "exact_upper": "-823018513764824288259293261029163/1000000000000000000000000000000000000000",
+              "lower": -8.230185137648243e-07,
+              "upper": -8.230185137648243e-07
+            },
+            "B": {
+              "exact_lower": "4115092570731478888797923854051741/5000000000000000000000000000000000000000",
+              "exact_upper": "8230185141462957777847421074069647/10000000000000000000000000000000000000000",
+              "lower": 8.230185141462957e-07,
+              "upper": 8.230185141462957e-07
+            }
+          },
+          {
+            "A": {
+              "exact_lower": "-305982013009285444792800112614737/2000000000000000000000000000000000000000",
+              "exact_upper": "-1529910065046427216743759828890929/10000000000000000000000000000000000000000",
+              "lower": -1.5299100650464271e-07,
+              "upper": -1.5299100650464271e-07
+            },
+            "B": {
+              "exact_lower": "1529910066413339961162177880329431/10000000000000000000000000000000000000000",
+              "exact_upper": "1529910066413339968382418614512187/10000000000000000000000000000000000000000",
+              "lower": 1.52991006641334e-07,
+              "upper": 1.52991006641334e-07
+            }
+          }
+        ],
+        "actual_covariance": {
+          "M": "1896364434976683671753023/5204540417686687378828246977",
+          "Z": {
+            "exact_lower": "3111398388258142084179962984582430557/10000000000000000000000000000000000000000",
+            "exact_upper": "3111398388258142084179962984582430559/10000000000000000000000000000000000000000",
+            "lower": 0.0003111398388258142,
+            "upper": 0.0003111398388258142
+          },
+          "X": {
+            "exact_lower": "-82634032359950656567614617734386687/10000000000000000000000000000000000000000",
+            "exact_upper": "-41317016179975328283807308867193343/5000000000000000000000000000000000000000",
+            "lower": -8.263403235995066e-06,
+            "upper": -8.263403235995066e-06
+          }
+        },
+        "actual_normalized_single_residuals": [
+          {
+            "A": {
+              "exact_lower": "-164603702798169115591090013789627/200000000000000000000000000000000000000",
+              "exact_upper": "-2057546284977113944825731830878833/2500000000000000000000000000000000000000",
+              "lower": -8.230185139908456e-07,
+              "upper": -8.230185139908456e-07
+            },
+            "B": {
+              "exact_lower": "8230185139188328404800810547349713/10000000000000000000000000000000000000000",
+              "exact_upper": "823018513918832840505238391331573/1000000000000000000000000000000000000000",
+              "lower": 8.230185139188329e-07,
+              "upper": 8.230185139188329e-07
+            }
+          },
+          {
+            "A": {
+              "exact_lower": "-1529910066663591258431146749055709/10000000000000000000000000000000000000000",
+              "exact_upper": "-1529910066663591251210906014877261/10000000000000000000000000000000000000000",
+              "lower": -1.5299100666635912e-07,
+              "upper": -1.5299100666635912e-07
+            },
+            "B": {
+              "exact_lower": "764955032436864839820502864106689/5000000000000000000000000000000000000000",
+              "exact_upper": "764955032436864843430623231195913/5000000000000000000000000000000000000000",
+              "lower": 1.5299100648737296e-07,
+              "upper": 1.5299100648737296e-07
+            }
+          }
+        ],
+        "covariance_quantization_errors": {
+          "M": {
+            "exact_lower": "339343708005731268634669/2500000000000000000000000000000000000000",
+            "exact_upper": "27147497035028564203233/200000000000000000000000000000000000000",
+            "lower": 1.3573748320229251e-16,
+            "upper": 1.3573748517514282e-16
+          },
+          "Z": {
+            "exact_lower": "660027005880687541496303/2000000000000000000000000000000000000000",
+            "exact_upper": "3300135049130695772838421/10000000000000000000000000000000000000000",
+            "lower": 3.3001350294034376e-16,
+            "upper": 3.3001350491306957e-16
+          },
+          "X": {
+            "exact_lower": "108240698623655775924291/2500000000000000000000000000000000000000",
+            "exact_upper": "108240698737549347800777/2500000000000000000000000000000000000000",
+            "lower": 4.329627944946231e-17,
+            "upper": 4.329627949501974e-17
+          }
+        },
+        "geometric_quantization_mean_errors": {
+          "H": {
+            "exact_lower": "-1429134530961147280332811/10000000000000000000000000000000000000000",
+            "exact_upper": "-1429134530961147280332809/10000000000000000000000000000000000000000",
+            "lower": -1.4291345309611473e-16,
+            "upper": -1.4291345309611473e-16
+          },
+          "V": {
+            "exact_lower": "2288007364992455538576789/10000000000000000000000000000000000000000",
+            "exact_upper": "2288007364992455538576791/10000000000000000000000000000000000000000",
+            "lower": 2.2880073649924554e-16,
+            "upper": 2.2880073649924554e-16
+          }
+        },
+        "orientation_identified_from_singles": true,
+        "independent_joint_statistics_used": false,
+        "heldout_rows_used": false,
+        "global_N_used": false,
+        "documented_optimal_state_used": false,
+        "public_q_used": false
+      },
+      "calibration_root_descriptor": {
+        "definition": "exact_left_threshold_of_complete_DA_visibility",
+        "target": "199/200",
+        "calibration_geometric_ratio": "1/10000",
+        "profile_rotation": {
+          "Z": "155569919413/500000000000000",
+          "X": "-2065850809/250000000000000",
+          "C_squared": "24219070784427498082493/250000000000000000000000000000"
+        },
+        "profile_loss_inverse": {
+          "Klyshko_targets": [
+            "3/4",
+            "759/1000"
+          ],
+          "calibration_geometric_ratio": "1/10000",
+          "branch": "vacuum_continuous_small_root",
+          "radicand": "99982411/100000000",
+          "raw_transmission_A": {
+            "rational": "66656667/3373",
+            "sqrt_coefficient": "-66660000/3373",
+            "radicand": "99982411/100000000"
+          },
+          "raw_transmission_B": {
+            "rational": "4216026598509/200813009",
+            "sqrt_coefficient": "-4216245000000/200813009",
+            "radicand": "99982411/100000000"
+          },
+          "matched_Klyshko_exact": [
+            "3/4",
+            "759/1000"
+          ]
+        },
+        "canonical_isolating_bracket": [
+          "2769534233342415/1152921504606846976",
+          "173095889583901/72057594037927936"
+        ],
+        "source_value_is_dyadic_midpoint": false,
+        "midpoint_for_float_candidate_only": "5539068466684831/2305843009213693952"
+      }
+    },
+    {
+      "point": {
+        "point_id": "corner_111",
+        "K_A": "3/4",
+        "K_B": "759/1000",
+        "DA_target": "997/1000"
+      },
+      "outcome": "EXHIBITED_FRAME_WINDOW_MEMBER",
+      "source_parameters": {
+        "geometric_ratio": [
+          "675160719553/1000000000000000",
+          "829921027/15625000000000"
+        ],
+        "rotation": {
+          "Z": "155569919413/500000000000000",
+          "X": "-2065850809/250000000000000",
+          "C_squared": "24219070784427498082493/250000000000000000000000000000"
+        },
+        "loss_inverse": {
+          "Klyshko_targets": [
+            "3/4",
+            "759/1000"
+          ],
+          "calibration_geometric_ratio": "1/10000",
+          "branch": "vacuum_continuous_small_root",
+          "radicand": "99982411/100000000",
+          "raw_transmission_A": {
+            "rational": "66656667/3373",
+            "sqrt_coefficient": "-66660000/3373",
+            "radicand": "99982411/100000000"
+          },
+          "raw_transmission_B": {
+            "rational": "4216026598509/200813009",
+            "sqrt_coefficient": "-4216245000000/200813009",
+            "radicand": "99982411/100000000"
+          },
+          "matched_Klyshko_exact": [
+            "3/4",
+            "759/1000"
+          ]
+        },
+        "lambda_root": {
+          "definition": "exact_left_threshold_of_complete_DA_visibility",
+          "target": "997/1000",
+          "calibration_geometric_ratio": "1/10000",
+          "profile_rotation": {
+            "Z": "155569919413/500000000000000",
+            "X": "-2065850809/250000000000000",
+            "C_squared": "24219070784427498082493/250000000000000000000000000000"
+          },
+          "profile_loss_inverse": {
+            "Klyshko_targets": [
+              "3/4",
+              "759/1000"
+            ],
+            "calibration_geometric_ratio": "1/10000",
+            "branch": "vacuum_continuous_small_root",
+            "radicand": "99982411/100000000",
+            "raw_transmission_A": {
+              "rational": "66656667/3373",
+              "sqrt_coefficient": "-66660000/3373",
+              "radicand": "99982411/100000000"
+            },
+            "raw_transmission_B": {
+              "rational": "4216026598509/200813009",
+              "sqrt_coefficient": "-4216245000000/200813009",
+              "radicand": "99982411/100000000"
+            },
+            "matched_Klyshko_exact": [
+              "3/4",
+              "759/1000"
+            ]
+          },
+          "canonical_isolating_bracket": [
+            "1615565584937429/1152921504606846976",
+            "807782792468715/576460752303423488"
+          ],
+          "source_value_is_dyadic_midpoint": false,
+          "midpoint_for_float_candidate_only": "3231131169874859/2305843009213693952"
+        }
+      },
+      "phase_flip_probability_enclosure": {
+        "exact_lower": "1615565584937429/1152921504606846976",
+        "exact_upper": "807782792468715/576460752303423488",
+        "lower": 0.0014012797735855802,
+        "upper": 0.001401279773585581
+      },
+      "source_construction": {
+        "training_marginals": [
+          {
+            "sA": "9667/44349054",
+            "sB": "3175/14783018"
+          },
+          {
+            "sA": "13834/22166099",
+            "sB": "15053/22166099"
+          }
+        ],
+        "single_means": [
+          {
+            "A": {
+              "exact_lower": "427107311358988488765172982397493397/10000000000000000000000000000000000000000",
+              "exact_upper": "2135536556794942443825864911987467/50000000000000000000000000000000000000",
+              "lower": 4.271073113589885e-05,
+              "upper": 4.271073113589885e-05
+            },
+            "B": {
+              "exact_lower": "426402154549415287466505346534616079/10000000000000000000000000000000000000000",
+              "exact_upper": "213201077274707643733252673267308041/5000000000000000000000000000000000000000",
+              "lower": 4.264021545494153e-05,
+              "upper": 4.264021545494153e-05
+            },
+            "normalized_A": {
+              "exact_lower": "284747042620286472500923902120940823/5000000000000000000000000000000000000000",
+              "exact_upper": "569494085240572945001847804241881653/10000000000000000000000000000000000000000",
+              "lower": 5.6949408524057295e-05,
+              "upper": 5.6949408524057295e-05
+            },
+            "normalized_B": {
+              "exact_lower": "140452899025184473604496388441311923/2500000000000000000000000000000000000000",
+              "exact_upper": "280905798050368947208992776882623849/5000000000000000000000000000000000000000",
+              "lower": 5.618115961007379e-05,
+              "upper": 5.618115961007379e-05
+            }
+          },
+          {
+            "A": {
+              "exact_lower": "619889464801916186172410898988523507/5000000000000000000000000000000000000000",
+              "exact_upper": "1239778929603832372344821797977047017/10000000000000000000000000000000000000000",
+              "lower": 0.00012397789296038323,
+              "upper": 0.00012397789296038323
+            },
+            "B": {
+              "exact_lower": "677776724498207949511000353083751013/5000000000000000000000000000000000000000",
+              "exact_upper": "1355553448996415899022000706167502029/10000000000000000000000000000000000000000",
+              "lower": 0.0001355553448996416,
+              "upper": 0.0001355553448996416
+            },
+            "normalized_A": {
+              "exact_lower": "1653089864392021529729350735147081849/10000000000000000000000000000000000000000",
+              "exact_upper": "826544932196010764864675367573540929/5000000000000000000000000000000000000000",
+              "lower": 0.00016530898643920216,
+              "upper": 0.00016530898643920216
+            },
+            "normalized_B": {
+              "exact_lower": "1786026732405451741983596258264637981/10000000000000000000000000000000000000000",
+              "exact_upper": "178602673240545174198359625826463799/1000000000000000000000000000000000000000",
+              "lower": 0.00017860267324054516,
+              "upper": 0.00017860267324054516
+            }
+          }
+        ],
+        "LS_covariance_enclosures": {
+          "M": {
+            "exact_lower": "72873463659972852502964971435796767/200000000000000000000000000000000000000",
+            "exact_upper": "910918295749660656291994268731365331/2500000000000000000000000000000000000000",
+            "lower": 0.00036436731829986427,
+            "upper": 0.00036436731829986427
+          },
+          "Z": {
+            "exact_lower": "3111398388256699864950869304227161579/10000000000000000000000000000000000000000",
+            "exact_upper": "622279677651339972994119312458503697/2000000000000000000000000000000000000000",
+            "lower": 0.00031113983882567,
+            "upper": 0.00031113983882567
+          },
+          "X": {
+            "exact_lower": "-20658508090108240698737549347800777/2500000000000000000000000000000000000000",
+            "exact_upper": "-20658508090108240698623655775924291/2500000000000000000000000000000000000000",
+            "lower": -8.263403236043296e-06,
+            "upper": -8.263403236043296e-06
+          }
+        },
+        "covariance_grid": {
+          "M": "3643673183/10000000000000",
+          "Z": "155569919413/500000000000000",
+          "X": "-2065850809/250000000000000"
+        },
+        "native_mean_enclosures": {
+          "H": {
+            "exact_lower": "6756168695249134028138501013206197449/10000000000000000000000000000000000000000",
+            "exact_upper": "135123373904982680562770020264123949/200000000000000000000000000000000000000",
+            "lower": 0.0006756168695249134,
+            "upper": 0.0006756168695249134
+          },
+          "V": {
+            "exact_lower": "10623553415017319437229979735876051/200000000000000000000000000000000000000",
+            "exact_upper": "531177670750865971861498986793802551/10000000000000000000000000000000000000000",
+            "lower": 5.3117767075086596e-05,
+            "upper": 5.3117767075086596e-05
+          }
+        },
+        "LS_reconstruction_residuals": [
+          {
+            "A": {
+              "exact_lower": "-2057546284412060720711126494064449/2500000000000000000000000000000000000000",
+              "exact_upper": "-823018513764824288259293261029163/1000000000000000000000000000000000000000",
+              "lower": -8.230185137648243e-07,
+              "upper": -8.230185137648243e-07
+            },
+            "B": {
+              "exact_lower": "4115092570731478888797923854051741/5000000000000000000000000000000000000000",
+              "exact_upper": "8230185141462957777847421074069647/10000000000000000000000000000000000000000",
+              "lower": 8.230185141462957e-07,
+              "upper": 8.230185141462957e-07
+            }
+          },
+          {
+            "A": {
+              "exact_lower": "-305982013009285444792800112614737/2000000000000000000000000000000000000000",
+              "exact_upper": "-1529910065046427216743759828890929/10000000000000000000000000000000000000000",
+              "lower": -1.5299100650464271e-07,
+              "upper": -1.5299100650464271e-07
+            },
+            "B": {
+              "exact_lower": "1529910066413339961162177880329431/10000000000000000000000000000000000000000",
+              "exact_upper": "1529910066413339968382418614512187/10000000000000000000000000000000000000000",
+              "lower": 1.52991006641334e-07,
+              "upper": 1.52991006641334e-07
+            }
+          }
+        ],
+        "actual_covariance": {
+          "M": "1896364434976683671753023/5204540417686687378828246977",
+          "Z": {
+            "exact_lower": "3111398388258142084179962984582430557/10000000000000000000000000000000000000000",
+            "exact_upper": "3111398388258142084179962984582430559/10000000000000000000000000000000000000000",
+            "lower": 0.0003111398388258142,
+            "upper": 0.0003111398388258142
+          },
+          "X": {
+            "exact_lower": "-82634032359950656567614617734386687/10000000000000000000000000000000000000000",
+            "exact_upper": "-41317016179975328283807308867193343/5000000000000000000000000000000000000000",
+            "lower": -8.263403235995066e-06,
+            "upper": -8.263403235995066e-06
+          }
+        },
+        "actual_normalized_single_residuals": [
+          {
+            "A": {
+              "exact_lower": "-164603702798169115591090013789627/200000000000000000000000000000000000000",
+              "exact_upper": "-2057546284977113944825731830878833/2500000000000000000000000000000000000000",
+              "lower": -8.230185139908456e-07,
+              "upper": -8.230185139908456e-07
+            },
+            "B": {
+              "exact_lower": "8230185139188328404800810547349713/10000000000000000000000000000000000000000",
+              "exact_upper": "823018513918832840505238391331573/1000000000000000000000000000000000000000",
+              "lower": 8.230185139188329e-07,
+              "upper": 8.230185139188329e-07
+            }
+          },
+          {
+            "A": {
+              "exact_lower": "-1529910066663591258431146749055709/10000000000000000000000000000000000000000",
+              "exact_upper": "-1529910066663591251210906014877261/10000000000000000000000000000000000000000",
+              "lower": -1.5299100666635912e-07,
+              "upper": -1.5299100666635912e-07
+            },
+            "B": {
+              "exact_lower": "764955032436864839820502864106689/5000000000000000000000000000000000000000",
+              "exact_upper": "764955032436864843430623231195913/5000000000000000000000000000000000000000",
+              "lower": 1.5299100648737296e-07,
+              "upper": 1.5299100648737296e-07
+            }
+          }
+        ],
+        "covariance_quantization_errors": {
+          "M": {
+            "exact_lower": "339343708005731268634669/2500000000000000000000000000000000000000",
+            "exact_upper": "27147497035028564203233/200000000000000000000000000000000000000",
+            "lower": 1.3573748320229251e-16,
+            "upper": 1.3573748517514282e-16
+          },
+          "Z": {
+            "exact_lower": "660027005880687541496303/2000000000000000000000000000000000000000",
+            "exact_upper": "3300135049130695772838421/10000000000000000000000000000000000000000",
+            "lower": 3.3001350294034376e-16,
+            "upper": 3.3001350491306957e-16
+          },
+          "X": {
+            "exact_lower": "108240698623655775924291/2500000000000000000000000000000000000000",
+            "exact_upper": "108240698737549347800777/2500000000000000000000000000000000000000",
+            "lower": 4.329627944946231e-17,
+            "upper": 4.329627949501974e-17
+          }
+        },
+        "geometric_quantization_mean_errors": {
+          "H": {
+            "exact_lower": "-1429134530961147280332811/10000000000000000000000000000000000000000",
+            "exact_upper": "-1429134530961147280332809/10000000000000000000000000000000000000000",
+            "lower": -1.4291345309611473e-16,
+            "upper": -1.4291345309611473e-16
+          },
+          "V": {
+            "exact_lower": "2288007364992455538576789/10000000000000000000000000000000000000000",
+            "exact_upper": "2288007364992455538576791/10000000000000000000000000000000000000000",
+            "lower": 2.2880073649924554e-16,
+            "upper": 2.2880073649924554e-16
+          }
+        },
+        "orientation_identified_from_singles": true,
+        "independent_joint_statistics_used": false,
+        "heldout_rows_used": false,
+        "global_N_used": false,
+        "documented_optimal_state_used": false,
+        "public_q_used": false
+      },
+      "calibration_root_descriptor": {
+        "definition": "exact_left_threshold_of_complete_DA_visibility",
+        "target": "997/1000",
+        "calibration_geometric_ratio": "1/10000",
+        "profile_rotation": {
+          "Z": "155569919413/500000000000000",
+          "X": "-2065850809/250000000000000",
+          "C_squared": "24219070784427498082493/250000000000000000000000000000"
+        },
+        "profile_loss_inverse": {
+          "Klyshko_targets": [
+            "3/4",
+            "759/1000"
+          ],
+          "calibration_geometric_ratio": "1/10000",
+          "branch": "vacuum_continuous_small_root",
+          "radicand": "99982411/100000000",
+          "raw_transmission_A": {
+            "rational": "66656667/3373",
+            "sqrt_coefficient": "-66660000/3373",
+            "radicand": "99982411/100000000"
+          },
+          "raw_transmission_B": {
+            "rational": "4216026598509/200813009",
+            "sqrt_coefficient": "-4216245000000/200813009",
+            "radicand": "99982411/100000000"
+          },
+          "matched_Klyshko_exact": [
+            "3/4",
+            "759/1000"
+          ]
+        },
+        "canonical_isolating_bracket": [
+          "1615565584937429/1152921504606846976",
+          "807782792468715/576460752303423488"
+        ],
+        "source_value_is_dyadic_midpoint": false,
+        "midpoint_for_float_candidate_only": "3231131169874859/2305843009213693952"
+      }
+    }
+  ],
+  "bell_event_files_read": 0,
+  "retrospective": true,
+  "source_mapping_identified": false,
+  "publication_configuration_identified": false,
+  "production_admitted": false,
+  "actual_window_model_identified": false,
+  "calibration_protocol_identified": false,
+  "noise_channel_identified": false,
+  "source_pair_rate_reference_identified": false,
+  "common_Jones_map_identified": false,
+  "equal_branch_conversion_identified": false,
+  "actual_pump_actuator_identified": false
+}

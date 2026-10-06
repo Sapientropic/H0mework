@@ -1,0 +1,1753 @@
+{
+  "schema": "stage10-munich-readout-likelihood-certification/v1",
+  "evidence_valid": true,
+  "status": "certified_source_positive_support_finite_one_step_normalizer",
+  "candidate_module": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood",
+  "source_bindings": [
+    {
+      "path": "Lean/SaturationMonoid/PhysicsCore/Stage10/Bell/ReadoutLikelihood.lean",
+      "sha256": "12b31be60274e48398e4b0380cb1b1cb6d951f0fe50bbb739c7fd661799e1836"
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/LikelihoodCertification.lean",
+      "sha256": "de5363f46c83c6f8134ff2d9bcc4f43fb7e5cf7bf4525694bc0355d2f499f8e5"
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/likelihood_certify.py",
+      "sha256": "74085808dbdac67ab395cfe9c689f0ee1072432b3ea3afdb78837f1d964989ea"
+    }
+  ],
+  "toolchain_version": "Lean (version 4.33.0, arm64-apple-darwin24.6.0, commit d8b18978322de05a8f3dba51ef03cf5461676c17, Release)",
+  "focused_trust_level": 0,
+  "warning_as_error": true,
+  "asynchronous_elaboration": false,
+  "lean_threads": 1,
+  "fresh_candidate_and_general_consumer_checked": true,
+  "all_owned_declarations_audited": true,
+  "complete_new_dependency_closure_certified": true,
+  "same_original_source_current_next_certified": true,
+  "all_four_factor_nonnegative_mean_one_certified": true,
+  "fixed_mixture_weights": {
+    "full": "1/2",
+    "first": "1/6",
+    "second": "1/6",
+    "conditional": "1/6"
+  },
+  "fixed_mixture_nonnegative_mean_one_certified": true,
+  "parity_then_alice_forecast_index_certified": true,
+  "source_marginals_and_parity_mass_generated": true,
+  "caller_source_normalization_premise_absent": true,
+  "all_natural_count_jeffreys_forecasts_certified": true,
+  "zero_count_predictors_certified": true,
+  "positive_source_domain_nonempty_certified": true,
+  "source_zero_boundary_excluded_by_mouth_certified": true,
+  "strict_all_cell_source_positivity_required": true,
+  "trial_conditional_law_identified": false,
+  "past_only_adaptivity_proved": false,
+  "Ville_probability_process_proved": false,
+  "controller_advance": false,
+  "empirical_fit_executed": false,
+  "trial_event_files_read": 0,
+  "new_statistical_tables_read": 0,
+  "frozen_source_receipt": {
+    "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/source-certification-first.json",
+    "sha256": "948ab6b1e302433f7731cd73de96cce58651b274cb2ccfd68152321d7c88e4a7",
+    "explicit_declarations": 115,
+    "source_recompiled": false
+  },
+  "producer_compilation_evidence": {
+    "candidate_sha256": "12b31be60274e48398e4b0380cb1b1cb6d951f0fe50bbb739c7fd661799e1836",
+    "command": [
+      "toolchains/lean-4.33.0-darwin_aarch64/bin/lean",
+      "--trust=0",
+      "-DwarningAsError=true",
+      "-DElab.async=false",
+      "-j1",
+      "-o",
+      "runtime-artifacts/homework-bell-readout-certify-8x27ynvq/SaturationMonoid/PhysicsCore/Stage10/Bell/ReadoutLikelihood.olean",
+      "SaturationMonoid/PhysicsCore/Stage10/Bell/ReadoutLikelihood.lean"
+    ],
+    "exit_code": 0,
+    "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "compiled_object_sha256": "2fb91e77be74a195e171649c7f94779afd61867c2e47eb13d0f901174f2ba06b"
+  },
+  "independent_audit_stdout_sha256": "8b52ec64dae1ebd36d4d1c416ccb6de151886ce2a40afc158719c4f64530973d",
+  "elapsed_seconds": 35.456,
+  "explicit_declarations": [
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.BinaryForecast",
+      "kind": "structure",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.JointForecast",
+      "kind": "structure",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.Forecasters",
+      "kind": "structure",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.leftMass",
+      "kind": "def",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.rightMass",
+      "kind": "def",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.parityMass",
+      "kind": "def",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.sourceMean",
+      "kind": "def",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.fullFactor",
+      "kind": "def",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.firstFactor",
+      "kind": "def",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.secondFactor",
+      "kind": "def",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.conditionalFactor",
+      "kind": "def",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.mixtureFactor",
+      "kind": "def",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.left_mass_positive",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.right_mass_positive",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.parity_mass_positive",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.parity_mass_normalized",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.full_factor_nonnegative",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.first_factor_nonnegative",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.second_factor_nonnegative",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.conditional_factor_nonnegative",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.mixture_factor_nonnegative",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.full_factor_mean",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.first_factor_mean",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.second_factor_mean",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.sum_parity_reindex",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.conditional_factor_cancel",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.conditional_factor_mean",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.mixture_factor_mean",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.mixture_source_mean",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.mixture_runtime_mean",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.mixture_next_mean",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.binaryJeffreysProbability",
+      "kind": "def",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.binary_jeffreys_denominator_positive",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.binary_jeffreys_positive",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.binary_jeffreys_normalized",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.BinaryForecast.jeffreys",
+      "kind": "def",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.jointJeffreysProbability",
+      "kind": "def",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.joint_jeffreys_denominator_positive",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.joint_jeffreys_positive",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.joint_jeffreys_normalized",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.JointForecast.jeffreys",
+      "kind": "def",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.jeffreysForecasters",
+      "kind": "def",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.OneStepNormalizer",
+      "kind": "structure",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.oneStepNormalizer",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    }
+  ],
+  "owned_declarations": [
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.BinaryForecast",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.BinaryForecast._sizeOf_1",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.BinaryForecast._sizeOf_inst",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.BinaryForecast.casesOn",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.BinaryForecast.ctorIdx",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.BinaryForecast.jeffreys",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.BinaryForecast.jeffreys._proof_1",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.BinaryForecast.mk",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.BinaryForecast.mk._flat_ctor",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.BinaryForecast.mk.inj",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.BinaryForecast.mk.injEq",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.BinaryForecast.mk.noConfusion",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.BinaryForecast.mk.sizeOf_spec",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.BinaryForecast.noConfusion",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.BinaryForecast.noConfusionType",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.BinaryForecast.nonnegative",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.BinaryForecast.rec",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.BinaryForecast.recOn",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.BinaryForecast.total",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.BinaryForecast.weight",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.Forecasters",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.Forecasters._sizeOf_1",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.Forecasters._sizeOf_inst",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.Forecasters.casesOn",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.Forecasters.conditional",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.Forecasters.ctorIdx",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.Forecasters.first",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.Forecasters.full",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.Forecasters.mk",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.Forecasters.mk._flat_ctor",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.Forecasters.mk.inj",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.Forecasters.mk.injEq",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.Forecasters.mk.noConfusion",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.Forecasters.mk.sizeOf_spec",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.Forecasters.noConfusion",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.Forecasters.noConfusionType",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.Forecasters.rec",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.Forecasters.recOn",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.Forecasters.second",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.JointForecast",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.JointForecast._sizeOf_1",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.JointForecast._sizeOf_inst",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.JointForecast.casesOn",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.JointForecast.ctorIdx",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.JointForecast.jeffreys",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.JointForecast.jeffreys._proof_1",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.JointForecast.mk",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.JointForecast.mk._flat_ctor",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.JointForecast.mk.inj",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.JointForecast.mk.injEq",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.JointForecast.mk.noConfusion",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.JointForecast.mk.sizeOf_spec",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.JointForecast.noConfusion",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.JointForecast.noConfusionType",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.JointForecast.nonnegative",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.JointForecast.rec",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.JointForecast.recOn",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.JointForecast.total",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.JointForecast.weight",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.OneStepNormalizer",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.OneStepNormalizer.casesOn",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.OneStepNormalizer.conditionalMean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.OneStepNormalizer.currentMeanAt",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.OneStepNormalizer.firstMean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.OneStepNormalizer.fullMean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.OneStepNormalizer.leftPositive",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.OneStepNormalizer.mixtureMean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.OneStepNormalizer.mixturePositive",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.OneStepNormalizer.mk",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.OneStepNormalizer.mk._flat_ctor",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.OneStepNormalizer.nextMeanAt",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.OneStepNormalizer.parityPositive",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.OneStepNormalizer.parityTotal",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.OneStepNormalizer.rec",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.OneStepNormalizer.recOn",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.OneStepNormalizer.rightPositive",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.OneStepNormalizer.secondMean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.OneStepNormalizer.sourceMeanAt",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.OneStepNormalizer.sourcePrediction",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.OneStepNormalizer.sourceTotal",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.binaryJeffreysProbability",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.binaryJeffreysProbability.eq_1",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.binary_jeffreys_denominator_positive",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.binary_jeffreys_normalized",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.binary_jeffreys_positive",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.conditionalFactor",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.conditional_factor_cancel",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.conditional_factor_mean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.conditional_factor_nonnegative",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.firstFactor",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.firstFactor.eq_1",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.first_factor_mean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.first_factor_nonnegative",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.fullFactor",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.full_factor_mean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.full_factor_mean._simp_1",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.full_factor_mean._simp_2",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.full_factor_mean._simp_3",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.full_factor_mean._simp_4",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.full_factor_mean._simp_5",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.full_factor_mean._simp_6",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.full_factor_mean._simp_7",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.full_factor_nonnegative",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.jeffreysForecasters",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.jointJeffreysProbability",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.jointJeffreysProbability.eq_1",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.joint_jeffreys_denominator_positive",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.joint_jeffreys_normalized",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.joint_jeffreys_positive",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.leftMass",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.leftMass.eq_1",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.left_mass_positive",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.mixtureFactor",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.mixtureFactor._proof_1",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.mixtureFactor._proof_2",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.mixtureFactor.eq_1",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.mixture_factor_mean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.mixture_factor_mean._simp_2",
+      "axioms": []
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.mixture_factor_mean._simp_3",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.mixture_factor_nonnegative",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.mixture_next_mean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.mixture_runtime_mean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.mixture_source_mean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.oneStepNormalizer",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.parityMass",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.parityMass.eq_1",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.parity_mass_normalized",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.parity_mass_positive",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.rightMass",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.rightMass.eq_1",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.right_mass_positive",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.secondFactor",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.secondFactor.eq_1",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.second_factor_mean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.second_factor_nonnegative",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.sourceMean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.sourceMean.eq_1",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.sum_parity_reindex",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    }
+  ],
+  "independent_consumers": [
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.LikelihoodCertification.erasedEffect",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.LikelihoodCertification.erasedEffect._proof_1",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.LikelihoodCertification.erasedEffect._proof_2",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.LikelihoodCertification.erasedEffect._proof_3",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.LikelihoodCertification.erasedEffect._proof_4",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.LikelihoodCertification.erasedEffect.eq_1",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.LikelihoodCertification.erasedSourceQuarter",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.LikelihoodCertification.everyCountArray",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.LikelihoodCertification.exactMixtureWeights",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.LikelihoodCertification.fourFactorsNonnegative",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.LikelihoodCertification.fourMeans",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.LikelihoodCertification.generalConsumer",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.LikelihoodCertification.originalAnswerNext",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.LikelihoodCertification.originalLedger",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.LikelihoodCertification.sourceBoundaryExcluded",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.LikelihoodCertification.sourceCurrentNextMeans",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.LikelihoodCertification.strictDomainNonempty",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.LikelihoodCertification.zeroCountsNormalizer",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.LikelihoodCertification.zeroCountsPredictors",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    }
+  ],
+  "axiom_union": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "public_mouths": [
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.oneStepNormalizer",
+      "type": "∀ (first second : SaturationMonoid.PhysicsCore.Stage10.Bell.CompactReadoutEffect) (plus : Bool)\n  (forecast : SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.Forecasters),\n  (∀ (x y : Bool), 0 < SaturationMonoid.PhysicsCore.Stage10.Bell.effectProbability first second plus x y) →\n    SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.OneStepNormalizer first second plus forecast"
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.conditional_factor_mean",
+      "type": "∀ (first second : SaturationMonoid.PhysicsCore.Stage10.Bell.CompactReadoutEffect) (plus : Bool)\n  (forecast : SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.Forecasters),\n  (∀ (x y : Bool), 0 < SaturationMonoid.PhysicsCore.Stage10.Bell.effectProbability first second plus x y) →\n    SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.sourceMean first second plus\n        (SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.conditionalFactor first second plus forecast) =\n      1"
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.mixture_factor_mean",
+      "type": "∀ (first second : SaturationMonoid.PhysicsCore.Stage10.Bell.CompactReadoutEffect) (plus : Bool)\n  (forecast : SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.Forecasters),\n  (∀ (x y : Bool), 0 < SaturationMonoid.PhysicsCore.Stage10.Bell.effectProbability first second plus x y) →\n    SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.sourceMean first second plus\n        (SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.mixtureFactor first second plus forecast) =\n      1"
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.mixture_source_mean",
+      "type": "∀ (first second : SaturationMonoid.PhysicsCore.Stage10.Bell.CompactReadoutEffect) (plus : Bool)\n  (forecast : SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.Forecasters),\n  (∀ (x y : Bool), 0 < SaturationMonoid.PhysicsCore.Stage10.Bell.effectProbability first second plus x y) →\n    ∀ (point : SaturationMonoid.PhysicsCore.ProofFreeRicherAnholonomicSource.BasePoint),\n      ∑ x,\n          ∑ y,\n            SaturationMonoid.PhysicsCore.Stage10.Bell.effectSourceWeight first second plus point x y *\n              SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.mixtureFactor first second plus forecast x y =\n        1"
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.mixture_runtime_mean",
+      "type": "∀ (first second : SaturationMonoid.PhysicsCore.Stage10.Bell.CompactReadoutEffect) (plus : Bool)\n  (forecast : SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.Forecasters),\n  (∀ (x y : Bool), 0 < SaturationMonoid.PhysicsCore.Stage10.Bell.effectProbability first second plus x y) →\n    ∀ (point : SaturationMonoid.PhysicsCore.ProofFreeRicherAnholonomicSource.BasePoint),\n      ∑ x,\n          ∑ y,\n            SaturationMonoid.PhysicsCore.Stage10.Bell.effectRuntimeProbability first second plus point x y *\n              SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.mixtureFactor first second plus forecast x y =\n        1"
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.mixture_next_mean",
+      "type": "∀ (first second : SaturationMonoid.PhysicsCore.Stage10.Bell.CompactReadoutEffect) (plus : Bool)\n  (forecast : SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.Forecasters),\n  (∀ (x y : Bool), 0 < SaturationMonoid.PhysicsCore.Stage10.Bell.effectProbability first second plus x y) →\n    ∀ (point : SaturationMonoid.PhysicsCore.ProofFreeRicherAnholonomicSource.BasePoint),\n      ∑ x,\n          ∑ y,\n            SaturationMonoid.PhysicsCore.Stage10.Bell.effectNextProbability first second plus point x y *\n              SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutLikelihood.mixtureFactor first second plus forecast x y =\n        1"
+    }
+  ],
+  "compiler_only_module_symbols": [],
+  "new_dependency_declaration_count": 166,
+  "delegated_source_boundary_count": 22,
+  "checked_base_boundary_count": 441,
+  "dependency_delta_sha256": "32510f23e72f34adef9c3c2068443030482507b04b224ac30da074fc8c15cb19",
+  "source_boundary_sha256": "5382323376e6dbe2e0283b93ec8a67a27d324c14e1d14d50d3f6a5cb15adb334",
+  "dependency_closure_method": "fresh new type/value graph; frozen source-owned axiom boundaries; exact-edge accepted base graph",
+  "source_only_import_module_count": 12513
+}

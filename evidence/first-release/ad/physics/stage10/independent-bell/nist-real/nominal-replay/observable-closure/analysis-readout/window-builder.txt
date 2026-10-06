@@ -1,0 +1,261 @@
+# NIST Bell analysis: static source excerpts. Original member line numbers are retained.
+# No archive module is imported or executed. Redactions preserve line positions.
+
+## bell_analysis_code/build_file_hdf5.py
+## original_sha256: 4aac3780c30944ac2ac7cf318c462ac9fb66848d870397bc4d8a2bdcf73340bd
+
+### original lines 10-16
+0010: import build_file_txt as build_file
+0011: from sync_hdf5 import getOffsets, setupKey
+0012: from build_file_txt import find_last, chop_last
+0013: compressed = True
+0014: doPlot = False
+0015: count = 0
+0016: import h5py
+
+### original lines 26-50
+0026: def yaml2hdf(hdf,config,bitoffset):
+0027:     if 'config' in hdf:
+0028:         del hdf['config']
+0029:     setupKey(hdf,'config')
+0030:     setupKey(hdf['config'],'alice')
+0031:     setupKey(hdf['config'],'bob')
+0032:     for key in hdf['config'].keys():
+0033:         hdf['config'][key]['pk'] = config['analysis'][key+'Peak']
+0034:         hdf['config'][key]['radius'] = config['analysis'][key+'_radius']
+0035:         hdf['config'][key]['bitoffset'] = bitoffset[key]
+0036: def run(fp=None):
+0037:     global count,compressed
+0038: 
+0039:     alice,bob,config,fp = build_file.initialize(fp)
+0040:     fnameSync =fp['results']
+0041:     print 'fnameSync',fnameSync
+0042:     fname =fp['results'].replace('.sync.','.build.') 
+0043:     fnameSettings =fp['results'].replace('.sync.','.settings.') 
+0044:     hdf = h5py.File(fname,'w')
+0045:     hdfSync = h5py.File(fnameSync,'r')
+0046:     hdfSettings = h5py.File(fnameSettings,'r')
+0047:     hdf.copy(hdfSync['offsets'],hdf)
+0048:     getOffsets(alice,bob,config,fp,hdfSync) # get offsets and load files
+0049:     #  check of we need to correct syncs from mode locking problems
+0050:     data = {'alice':alice.rawdata, 'bob':bob.rawdata}
+
+### original lines 79-90
+0079:     radius={'alice':alice.radius, 'bob':bob.radius}
+0080:     data = {'alice':alice.rawdata, 'bob':bob.rawdata}
+0081:     bitdelay = 0
+0082:     if fp is not None:
+0083:         if 'addition' in fp['alice']:
+0084:            bitdelay = 16
+0085:         elif 'reduced' in fp['alice']:
+0086:            bitdelay = -16
+0087:         else:
+0088:            bitdelay = 0
+0089:     bitoffset = {'alice':28+bitdelay, 'bob':37+bitdelay}
+0090:     yaml2hdf(hdf,config,bitoffset)
+
+### original lines 95-151
+0095:     for key in data.keys():
+0096:         if key in hdf:
+0097:             del hdf[key]
+0098:         setupKey(hdf,key)
+0099:         hdf[key]['settings'] = hdfSettings['settings'][key]['settings'][:]
+0100:         start = startIdx[key]
+0101:         stop = stopIdx[key]
+0102:         booleanCut = hdfSync['cuts'][key]['sync'][start:stop]
+0103:         sync = hdfSync['stuff'][key]['sync'][start:stop]
+0104:         syncperiod = hdfSync['stuff'][key]['syncPeriod'][start:stop]
+0105:         if 'badSyncInfo' in hdfSync['stuff'][key]:
+0106:             hdf[key]['badSyncInfo'] = hdfSync['stuff'][key]['badSyncInfo'][:]
+0107:             print key,'badSyncInfo',hdf[key]['badSyncInfo'][:]
+0108:         nSyncs = booleanCut.sum()
+0109: 
+0110:         syncOffsetIndex = booleanCut.cumsum().astype('u4')-1  #  first sync has index 0
+0111:         syncOffset = sync[syncOffsetIndex]
+0112:         #plt.plot(np.diff(sync),'.')
+0113:         #plt.show(block=False)
+0114:         checklaserperiod= np.floor(syncperiod/(129102/800.) + 0.5)
+0115:         laserperiod = syncperiod/checklaserperiod
+0116:         laserperiod = np.append(laserperiod[0],laserperiod)
+0117: 
+0118:         if compressed:
+0119:             detCut = data[key]['ch']==(config[key]['channelmap']['detector']-1)
+0120:         else:
+0121:             detCut = data[key][:,0]==(config[key]['channelmap']['detector']-1)
+0122: 
+0123:         detSyncOffsetIndex = syncOffsetIndex[detCut]
+0124:         hdf[key]['syncNumber']=detSyncOffsetIndex
+0125:         print 'detCut len',key,detSyncOffsetIndex.size
+0126:         """
+0127:         tempfname = 'temp.%s.syncNumber'%key
+0128:         print 'writing',tempfname
+0129:         detSyncOffsetIndex.tofile(tempfname)
+0130:         """
+0131:         if compressed:
+0132:             delayFromSync = data[key]['ttag'][detCut] - syncOffset[detCut]
+0133:         else:
+0134:             delayFromSync = data[key][:,1][detCut] - syncOffset[detCut]
+0135: 
+0136:         detLaserPeriod = laserperiod[detSyncOffsetIndex] 
+0137:         phase= delayFromSync % detLaserPeriod
+0138: 
+0139:         laserPulseNumber= np.floor( delayFromSync/detLaserPeriod).astype('u2') 
+0140: 
+0141:         hdf[key]['laserPulseNumber']=laserPulseNumber
+0142:         hdf[key]['phase'] = phase
+0143:         """
+0144:         tempfname = 'temp.%s.laserNumber'%key
+0145:         print 'writing',tempfname
+0146:         laserPulseNumber.tofile(tempfname)
+0147:         #print 'laserNumber',laserPulseNumber
+0148:         """
+0149:         pk = config['analysis'][key+'Peak']
+0150:         singles = np.abs(phase - pk)<radius[key]
+0151:         print 'peak',key,phase[singles].mean()
+
+### original lines 175-188
+0175:         results = np.zeros(nSyncs-1,dtype='u2')
+0176:         singlesNumber = laserPulseNumber[singles]
+0177:         pockel = (singlesNumber >= bitoffset[key]) & (singlesNumber<(bitoffset[key]+16))
+0178:         syncNumber = detSyncOffsetIndex
+0179:         syncidx = syncNumber[singles][pockel]
+0180:         bitidx = laserPulseNumber[singles][pockel]-bitoffset[key] 
+0181:         #print 'len bitidx',len(bitidx)
+0182:         results[ syncidx ] += 2**bitidx
+0183:         hdf[key]['clicks'] = results 
+0184:         print key,hdf[key]['clicks']
+0185:         hdf.flush()
+0186:     fixgaps(hdf,data)
+0187: 
+0188:     return  0
+
+### original lines 247-294
+0247: def build_filelist():
+0248:     filelist = {'alice':None, 'bob':None}
+0249:     for key in filelist.keys():
+0250:         volume = '[REDACTED_VOLUME]'
+0251:         f = glob.glob('%s/bell/%s/2015_09_18/00*.compressed'%(volume,key))
+0252:         #f.extend( glob.glob('%s/bell/%s/2015_09_18/21*.compressed'%(volume,key)))
+0253:         #f.extend( glob.glob('%s/bell/%s/2015_09_18/23*.compressed'%(volume,key)))
+0254:         print key,f
+0255:         filelist[key] = sorted(f)
+0256:     filelist['results']=[] 
+0257:     blindcut = []
+0258:     for f in filelist['alice']:
+0259:         blindcut.append( 'lind' in f)
+0260:         newf = f.replace('alice/','results/hdf5/')
+0261:         newf = newf.replace('alice.','')
+0262:         newf = newf+'.sync.hdf5'
+0263:         filelist['results'].append(newf)
+0264:                 
+0265:         localdatafolder = os.path.dirname(newf)
+0266:         #idx = string.rfind(newf,'/')+1
+0267:         #localdatafolder = newf[:idx]
+0268:         print 'writing results to',localdatafolder
+0269:         if not os.path.isdir(localdatafolder): #make the file folder if it doesn't exist
+0270:             print 'Creating: %s'%(localdatafolder)
+0271:             os.makedirs(localdatafolder) 
+0272:     cut = []
+0273:     for f in filelist['alice']:
+0274:         
+0275:         badfile = ('lind' in f) or ('RandomPump' in f)
+0276:         #badfile = badfile or ('Classical' in f)  
+0277:         #badfile = badfile or ('fix2.alice.dat' in f) or ('fix2_train' in f)
+0278:         #print f, badfile
+0279:         cut.append( badfile)
+0280: 
+0281:     cut = np.array(cut)
+0282:     print 'cut',cut
+0283:     for key in filelist.keys():
+0284:         filelist[key] = np.array(filelist[key])
+0285:         filelist[key] = filelist[key][~cut]
+0286: 
+0287:     flist = []
+0288:     for names in zip(filelist['alice'],filelist['bob'],filelist['results']):
+0289:         f = {}
+0290:         f['alice'] = names[0]
+0291:         f['bob'] = names[1]
+0292:         f['results'] = names[2]
+0293:         flist.append(f)
+0294:     return flist
+
+## bell_analysis_code/hfd5_to_newclicks.py
+## original_sha256: 93e584b5caac7b5a614d0c6ab635b068320a1d86f7ee024ee523d9dcfa65c905
+
+### original lines 10-16
+0010: import build_file_txt as build_file
+0011: from sync_hdf5 import getOffsets, setupKey
+0012: from build_file_txt import find_last, chop_last
+0013: compressed = True
+0014: doPlot = True
+0015: count = 0
+0016: import h5py
+
+### original lines 26-40
+0026: def run(fname):
+0027:     global count,compressed
+0028:     print 'opening',fname
+0029:     hdf = h5py.File(fname,'a')
+0030:      
+0031: 
+0032:     radius={'alice':hdf['config/alice/radius'][()], 
+0033:             'bob':hdf['config/bob/radius'][()]}
+0034:     bitoffset = {'alice':hdf['config/alice/bitoffset'][()],
+0035:                  'bob':hdf['config/bob/bitoffset'][()]}
+0036:     pk={'alice':hdf['config/alice/pk'][()], 
+0037:             'bob':hdf['config/bob/pk'][()]}
+0038:     pk['bob']=124
+0039:     print type(pk['bob'])
+0040:     print pk 
+
+### original lines 45-87
+0045:     for key in radius.keys():
+0046:         """
+0047:         hdf[key]['syncNumber']=detSyncOffsetIndex
+0048:         hdf[key]['laserPulseNumber']=laserPulseNumber
+0049:         hdf[key]['phase'] = phase
+0050:         """
+0051:         nSyncs = hdf[key]['clicks'].size + 1
+0052:         hdf.move('%s/clicks'%key, '%s/oldclicks'%key)
+0053: 
+0054:         detSyncOffsetIndex = hdf[key]['syncNumber'] 
+0055:         laserPulseNumber = hdf[key]['laserPulseNumber']
+0056:         phase = hdf[key]['phase'][:]
+0057:         print 'phase type',type(phase)
+0058:         singles = np.abs(phase - pk[key])<radius[key]
+0059:         print 'peak',key,pk[key],phase[singles].mean()
+0060: 
+0061:         if doPlot:
+0062:             plt.figure(1)
+0063:             plt.hist(phase, np.arange(161,step=1))
+0064:             #print 'peak',pk
+0065:             plt.hist(phase[singles],np.arange(161,step=1))
+0066:             plt.draw()
+0067:             plt.show(block=False)
+0068: 
+0069:         if doPlot:
+0070:             plt.figure(2)
+0071:             [n,x]=np.histogram(laserPulseNumber[singles],-0.5 + np.arange(801))
+0072:             centers = (x[1:]+x[0:-1])/2.
+0073:             plt.plot(centers,n,'o',label=key)
+0074:             plt.legend() 
+0075: 
+0076:             plt.draw()
+0077:             plt.show(block=False)
+0078: 
+0079:         results = np.zeros(nSyncs-1,dtype='u2')
+0080:         singlesNumber = laserPulseNumber[singles]
+0081:         pockel = (singlesNumber >= bitoffset[key]) & (singlesNumber<(bitoffset[key]+16))
+0082:         syncNumber = detSyncOffsetIndex
+0083:         syncidx = syncNumber[singles][pockel]
+0084:         bitidx = laserPulseNumber[singles][pockel]-bitoffset[key] 
+0085:         #print 'len bitidx',len(bitidx)
+0086:         results[ syncidx ] += 2**bitidx
+0087:         hdf[key]['clicks'] = results 
+
+### original lines 152-155
+0152: def build_filelist():
+0153:     flist = glob.glob('data_for_plots/*.hdf5')
+0154:     return flist
+0155: 
+

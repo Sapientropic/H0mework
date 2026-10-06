@@ -1,0 +1,64 @@
+{
+  "schema": "nist-real-readiness-request/v1",
+  "revision": "r0003-NIST-design",
+  "claim_scope": "documented_real_born_conditional",
+  "controller_role": "subordinate_producer",
+  "root_mutation": false,
+  "r0002_modified": false,
+  "u7_u8_triggered": false,
+  "qualification": "Documented real-amplitude preparation with externally fixed controls; no claim of original-source preparation generation or maximal entanglement.",
+  "error_budget": {
+    "conditional_alpha": "1/40",
+    "calibration_beta": "1/100",
+    "total": "1/20",
+    "unused_budget_policy": "not reallocated"
+  },
+  "calibration_registry": "calibration-registry.json",
+  "nominal_optimum": {
+    "required": true,
+    "status": "blocked_certified_nominal_replay_deviation",
+    "reason": "The source-bound public-calibration environment replay completes all 19 source points. Both independent numerical implementations place all five documented values outside the unchanged predeclared default band.",
+    "acceptance": "Freeze the independently sourced nominal apparatus and objective first; replay the documented settings with a predeclared rounding/approximation criterion. No test-driven model, sign, parameter or tolerance changes.",
+    "criterion_revision": "nominal-environment-replay-r0006",
+    "numerical_revision": "nominal-environment-replay-r0006.1",
+    "evidence": {
+      "primary": "nominal-replay/observable-closure/environment-source/replay-r0006.json.gz",
+      "independent": "nominal-replay/observable-closure/environment-source/independent-replay-r0006.1.json.gz",
+      "cross_verification": "nominal-replay/observable-closure/environment-source/replay-verification-r0006.1.json",
+      "gate": "evidence/readiness-r0006.1.json"
+    },
+    "calibration_revision": "p23-nominal-environment-calibration-nec0001",
+    "calibration_evidence": "nominal-replay/observable-closure/environment-source/calibration-verification.json",
+    "scope": "Independently justified nominal source with public raw calibration inputs; actual publication configuration and continuous global argmax are separate claims.",
+    "new_measurement_or_private_drive_disclosure_required": false,
+    "historical_replay": {
+      "criterion_revision": "nominal-replay-r0003",
+      "evidence": {
+        "primary": "nominal-replay/replay-r0003.json",
+        "independent": "nominal-replay/independent_replay-r0003.json",
+        "gate": "evidence/readiness.json"
+      },
+      "status": "blocked_certified_nominal_replay_deviation",
+      "research_revision": "nominal-source-code-r0005",
+      "research_evidence": "nominal-replay/source-code/verification.json"
+    }
+  },
+  "data_roles": {
+    "test_events_read": 0,
+    "test_partition": null,
+    "calibration_partitions": [],
+    "published_aggregate_context_seen": true,
+    "exposure_record": "access-record.md"
+  },
+  "freeze_requires": [
+    "strict_lean_and_consumer_certification",
+    "independent_nominal_optimum_loop",
+    "calibration_test_epoch_separation",
+    "simultaneous_calibration_coverage_and_transport",
+    "fixed_complete_trial_slot_window_policy",
+    "multipair_and_channel_approximation_bounds",
+    "hash_bound_lock_and_separate_reviewer"
+  ],
+  "lock_created": false,
+  "data_ingestion_scheduled": false
+}

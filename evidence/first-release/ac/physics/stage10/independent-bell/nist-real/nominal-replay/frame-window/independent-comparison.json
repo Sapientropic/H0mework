@@ -1,0 +1,2122 @@
+{
+  "schema": "p23-frame-window-independent-comparison/v1",
+  "version": "p23-frame-window-fw0001",
+  "executable_freeze": {
+    "commit": "114d87154b61b5f70716a1e630695db44d66e16e",
+    "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/frame-window/independent_comparison.py",
+    "sha256": "134ad1067973ce8525dd13b02f8aaa23949467335034edc01cc87f5be549030a"
+  },
+  "criterion_freeze": {
+    "commit": "4c86dd68e7",
+    "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/frame-window/criterion.md",
+    "sha256": "06c7b8f32335dd4a6f31c8b0264de7e283088e751ebde03247481ed7705db3c3",
+    "sources_sha256": "1ace776951fd5b3825da69ea07f893723d67517cf9081442836c933e646f2350"
+  },
+  "bindings": {
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/criterion-r0003.md": "2dd6d3e511da35415637edda8a164b1569c055a16ec7d25b99f262c5d86412d6",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/shalm2015-channel-inputs.txt": "17c5bc32515536634c451bf761f748ccd2e6c6002fa3949b58524e4cc1aeb3eb",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/source-code/author-code.txt": "99e6a27a51bb525c5c154cde5f679099d48dbf14ae54d758a55d9b9842be377b",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/source-code/sources.json": "1b2d24a18e7a6e5c332cee9ec38b328436b9cc9b998bc09b37493abada139323",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/calibrated-window/criterion.md": "418d67a57ddc45bfada3c09c730f39231628b7c28199671f7da3c43168272b76",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/calibrated-window/predict.py": "5aebc951882f65af61dac76dbd7d9604234c358a2cad81eb2fb9870bae68a49b",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/calibrated-window/independent.py": "d90d5e5f9511b5f79bc1903dc473ea32c8b8429788c0041e23af0c4e33ef53a1",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window/criterion.md": "66763dc0eb5d789df39227ba10e382d4bfb07138e4c7d27237b0fa605338206e",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window/GaussianSource.lean": "1dee783a0976a497139e64d4ef7278b203d56a0b119c84eea942bbb7846a10af",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window/gaussian.py": "5adfc235d6cb9b9ca61e804bded0fd2bff6a89860cd9332ec75a603e5f6bd852",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window/independent_fock.py": "f4a4d1549a1edce04cc5171c8043902db9c97328e0e7174e52da4fcdfa7d5162",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window/native-effects/DetectorGamma.lean": "b0007ece95dd29f1db550e260f73b3955d365241162ebe971c4ebcd92a16a2af",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window/native-effects/GammaConsumer.lean": "b75cec12b93e10135f92d126a4f6f250c26965b0c3daa0b9d25e77d53256ed35",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/calibration-readout/CalibrationLaw.lean": "0944bbc767afe4e1456613ad36caeaf0f8c90402839356a78aa015078c204e2d",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-prediction/public-observables.json": "442e6f1d74fa654a15a8a48c1ec502d93ae695d725b70fb3623418cc599a2cb6",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-prediction/public-criterion-po0003.md": "0a3b5d9dd26c50a1680fcf89f47d9eafa3347fbcfc16b0bd9a99e87a9de99ee2",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-prediction/public-comparison-po0003.json": "20f30388cd5ae23d29f737a20ec36d450def91b9a70be891c751057686d09fee",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/structured-contrast/criterion-sc0001.1.md": "2223db0fffefdf6654825f2608fb7c962a7ba27d83d63a055c07403d6f9a330a",
+    "Lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+    "Lean/lake-manifest.json": "aa60b347daf17a642d027cda3288f7d6f12c176c4ddd2677c28140daadb15c81",
+    "Lean/.lake/packages/mathlib/Mathlib/Analysis/Real/Pi/Bounds.lean": "bb8dc6144292b803b2df8c31ca32d67a7ab47b50f8005b5b688d95aff1489444",
+    "Verification/physics/stage10/independent-bell/nist-real/instrument.json": "4becca05d3a92bdd37d6218d83db64d80df5b4c605766056285d2bb32c0519c4",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window/native-effects/certification.json": "278453a6f98b1695855870669b779dc211104986d4daeb7342e0569ffd829083",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window/native-effects/verification.json": "3c28891a412b4ae792be90b3c10458d73a5828f0907c901a565c48c535b421cd",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/calibration-readout/certification.json": "7b47f79a85117c7edc832b2d9c0e9fab8bc89dfdd9274335b4bdcd269c542191",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/calibration-readout/verification.json": "9d5d33599154f1a5a708da6f5c50b9177c7033c1da9dc7e8f0d841d8cbf3a48b",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/calibration-readout/calibration.json": "547ebf134776b1c6707e79929579dcb58047f70fa10d44fb047cd568639408a3",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/calibration-readout/independent_count.json": "0858761ce5840aa1ed1a7dc09f37604a7a1ed08b2a97aad4d5bb3a35dac2bf54",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/calibration-readout/independent-comparison.json": "348048dc7cad246d1f632410d14cb7b8fab9b208f4d6008133d5cec45ef1726b",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/calibrated-window/prediction.json": "88494dad0016c155bece6cefb5a5c5cafd748f2d04dc4fe457484b1d1d6a74ac",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/calibrated-window/independent.json": "a4875b496433f4abe1f37d0aedf52db7d07acc90e045c58c444677a3890746f5",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/structured-contrast/sources-sc0001.1.json": "e73e641492111d0e1eb94c1239cf5af56052b50f1216d388b7cd5c80e9e5626a",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/structured-contrast/contrast.json": "030e1d5eb0d255099c30c57e6549b58c33872548cc0beace2ed330e78d2295ba",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/structured-contrast/independent.json": "8d4ea59ddcca4e3f402f4d2b626947c7d3654923d4a6d3c6d4d731efd24f36b2",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/structured-contrast/independent-comparison.json": "9f806563c822111cffec357c0eeea2f2b8402d8591467365365070ba0f955b4b"
+  },
+  "first_receipt_hashes": {
+    "primary_source": "15ee9b8dba95a45fcc8d1775a412e27a5107fce026c3fc97815069e5ce3bb8d1",
+    "independent_source": "61c4e7c0e769483a988aa7e40cba863c715277832005a99815dd7bc2bd8f2e70",
+    "primary_replay": "48d9de2f58139793093dd7be79f6bc7260cf16e97d426b70b7c28b4f77694ca7",
+    "independent_replay": "a5835b901d10fe38d733772f972b55bc96a23a3ff564d0b527d840a144582f4b"
+  },
+  "first_receipts_preserved": true,
+  "source_first_receipts_mutually_blind": true,
+  "optimization_first_receipts_mutually_blind": true,
+  "comparison_after_both_firsts": true,
+  "records": [
+    {
+      "point_id": "center",
+      "source_identity": {
+        "raw_kernel": true,
+        "common_Jones_Z_X": true,
+        "common_Jones_radius": true,
+        "coupled_loss_exact": true,
+        "Klyshko_targets": true,
+        "source_lambda_is_exact_root": true,
+        "lambda_target": true,
+        "lambda_brackets_overlap": true,
+        "replay_source_matches_forward": true
+      },
+      "original_probability_checks": {
+        "j": [
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          }
+        ],
+        "sA_cell": [
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          }
+        ],
+        "sB_cell": [
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          }
+        ]
+      },
+      "independent_original_probabilities_restored_from_own_first_source": {
+        "j": [
+          {
+            "lower": 0.00014343510303423907,
+            "upper": 0.0001434351030342651,
+            "exact_lower": "1434351030342390757206717855436986863/10000000000000000000000000000000000000000",
+            "exact_upper": "1434351030342650913909049042050424839/10000000000000000000000000000000000000000"
+          },
+          {
+            "lower": 0.00015921763892887605,
+            "upper": 0.00015921763892890207,
+            "exact_lower": "1592176389288760525814459134968517951/10000000000000000000000000000000000000000",
+            "exact_upper": "796088194644510301116465666577315921/5000000000000000000000000000000000000000"
+          },
+          {
+            "lower": 0.0001488577227869276,
+            "upper": 0.0001488577227869536,
+            "exact_lower": "744288613934637942574198900419868189/5000000000000000000000000000000000000000",
+            "exact_upper": "23259019185461499560204318162505671/156250000000000000000000000000000000000"
+          },
+          {
+            "lower": 3.5547211906865037e-06,
+            "upper": 3.5547211907125034e-06,
+            "exact_lower": "4443401488358129812117343977270329/1250000000000000000000000000000000000000",
+            "exact_upper": "8886802976781258742860772246011319/2500000000000000000000000000000000000000"
+          }
+        ],
+        "sA_cell": [
+          {
+            "lower": 0.00022105303898278111,
+            "upper": 0.0002210530389827898,
+            "exact_lower": "110526519491390559137694554654778767/500000000000000000000000000000000000000",
+            "exact_upper": "2210530389827897903323319798809379957/10000000000000000000000000000000000000000"
+          },
+          {
+            "lower": 0.00022105303898278111,
+            "upper": 0.0002210530389827898,
+            "exact_lower": "110526519491390559137694554654778767/500000000000000000000000000000000000000",
+            "exact_upper": "2210530389827897903323319798809379957/10000000000000000000000000000000000000000"
+          },
+          {
+            "lower": 0.0006246780446418685,
+            "upper": 0.0006246780446418771,
+            "exact_lower": "3123390223209342200996267021749253523/5000000000000000000000000000000000000000",
+            "exact_upper": "3123390223209385543794726280004290289/5000000000000000000000000000000000000000"
+          },
+          {
+            "lower": 0.0006246780446418685,
+            "upper": 0.0006246780446418771,
+            "exact_lower": "3123390223209342200996267021749253523/5000000000000000000000000000000000000000",
+            "exact_upper": "3123390223209385543794726280004290289/5000000000000000000000000000000000000000"
+          }
+        ],
+        "sB_cell": [
+          {
+            "lower": 0.0002116586579659708,
+            "upper": 0.00021165865796597948,
+            "exact_lower": "2116586579659708212444065102561853603/10000000000000000000000000000000000000000",
+            "exact_upper": "105829328982989746691418412766542539/500000000000000000000000000000000000000"
+          },
+          {
+            "lower": 0.0006785214095635385,
+            "upper": 0.0006785214095635472,
+            "exact_lower": "6785214095635385806997506842014065623/10000000000000000000000000000000000000000",
+            "exact_upper": "1357042819127094497584913376445118883/2000000000000000000000000000000000000000"
+          },
+          {
+            "lower": 0.0002116586579659708,
+            "upper": 0.00021165865796597948,
+            "exact_lower": "2116586579659708212444065102561853603/10000000000000000000000000000000000000000",
+            "exact_upper": "105829328982989746691418412766542539/500000000000000000000000000000000000000"
+          },
+          {
+            "lower": 0.0006785214095635385,
+            "upper": 0.0006785214095635472,
+            "exact_lower": "6785214095635385806997506842014065623/10000000000000000000000000000000000000000",
+            "exact_upper": "1357042819127094497584913376445118883/2000000000000000000000000000000000000000"
+          }
+        ]
+      },
+      "original_probability_restoration_is_post_first": true,
+      "r_agreement": true,
+      "angle_agreement": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "CH_agreement": true,
+      "primary_actual_CH_recomputed": {
+        "lower": 1.61438902061184e-05,
+        "upper": 1.6143890206239765e-05,
+        "exact_lower": "315310355588249965177600738063323/19531250000000000000000000000000000000",
+        "exact_upper": "161438902062397668748123194516255421/10000000000000000000000000000000000000000"
+      },
+      "primary_actual_CH_overlaps_report": true,
+      "independent_actual_CH_overlaps_report": true,
+      "independent_actual_five_controls_recomputed": true,
+      "printed_five_balance_recomputed": {
+        "lower": 16.02096854990045,
+        "upper": 16.02096854990045,
+        "exact_lower": "577216223931568725/36028797018963968",
+        "exact_upper": "1154432447863137495/72057594037927936"
+      },
+      "printed_five_balance_agrees": true,
+      "printed_five_actual_CH_recomputed": {
+        "lower": 1.5329069239855347e-05,
+        "upper": 1.532906923998074e-05,
+        "exact_lower": "76645346199276728768576691836471531/5000000000000000000000000000000000000000",
+        "exact_upper": "3065813847996148071533521574755113/200000000000000000000000000000000000000"
+      },
+      "printed_five_actual_CH_overlaps_primary": true,
+      "strict_gain_over_printed_five_controls": {
+        "lower": 8.14820966137446e-07,
+        "upper": 8.148209663842089e-07,
+        "exact_lower": "2037052415343614960046339194979747/2500000000000000000000000000000000000000",
+        "exact_upper": "8148209663842089227841951681609641/10000000000000000000000000000000000000000"
+      },
+      "strict_improvement_over_printed_five_controls": true,
+      "primary_CH_midpoint_is_math_value": true
+    },
+    {
+      "point_id": "corner_0",
+      "source_identity": {
+        "raw_kernel": true,
+        "common_Jones_Z_X": true,
+        "common_Jones_radius": true,
+        "coupled_loss_exact": true,
+        "Klyshko_targets": true,
+        "source_lambda_is_exact_root": true,
+        "lambda_target": true,
+        "lambda_brackets_overlap": true,
+        "replay_source_matches_forward": true
+      },
+      "original_probability_checks": {
+        "j": [
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          }
+        ],
+        "sA_cell": [
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          }
+        ],
+        "sB_cell": [
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          }
+        ]
+      },
+      "independent_original_probabilities_restored_from_own_first_source": {
+        "j": [
+          {
+            "lower": 0.0001428683461471417,
+            "upper": 0.00014286834614716772,
+            "exact_lower": "1428683461471416945288719624441327357/10000000000000000000000000000000000000000",
+            "exact_upper": "1428683461471677102245078787285456857/10000000000000000000000000000000000000000"
+          },
+          {
+            "lower": 0.00015854278235360458,
+            "upper": 0.00015854278235363057,
+            "exact_lower": "1585427823536045735241316827893197037/10000000000000000000000000000000000000000",
+            "exact_upper": "792713911768152905954597312306011841/5000000000000000000000000000000000000000"
+          },
+          {
+            "lower": 0.00014824239995409787,
+            "upper": 0.0001482423999541239,
+            "exact_lower": "370605999885244688067187612256989337/2500000000000000000000000000000000000000",
+            "exact_upper": "296484799908247767844925595334738211/2000000000000000000000000000000000000000"
+          },
+          {
+            "lower": 3.7071670801515684e-06,
+            "upper": 3.707167080177568e-06,
+            "exact_lower": "4633958850189460560523291237039557/1250000000000000000000000000000000000000",
+            "exact_upper": "37071670801775681261140954308029617/10000000000000000000000000000000000000000"
+          }
+        ],
+        "sA_cell": [
+          {
+            "lower": 0.00022104526586575238,
+            "upper": 0.00022104526586576106,
+            "exact_lower": "552613164664380987042757185368902449/2500000000000000000000000000000000000000",
+            "exact_upper": "552613164664402667210587766940308759/2500000000000000000000000000000000000000"
+          },
+          {
+            "lower": 0.00022104526586575238,
+            "upper": 0.00022104526586576106,
+            "exact_lower": "552613164664380987042757185368902449/2500000000000000000000000000000000000000",
+            "exact_upper": "552613164664402667210587766940308759/2500000000000000000000000000000000000000"
+          },
+          {
+            "lower": 0.0006246766003954181,
+            "upper": 0.0006246766003954267,
+            "exact_lower": "1249353200790836081292016963948056543/2000000000000000000000000000000000000000",
+            "exact_upper": "6246766003954267092158314213658729061/10000000000000000000000000000000000000000"
+          },
+          {
+            "lower": 0.0006246766003954181,
+            "upper": 0.0006246766003954267,
+            "exact_lower": "1249353200790836081292016963948056543/2000000000000000000000000000000000000000",
+            "exact_upper": "6246766003954267092158314213658729061/10000000000000000000000000000000000000000"
+          }
+        ],
+        "sB_cell": [
+          {
+            "lower": 0.0002116663756799689,
+            "upper": 0.00021166637567997758,
+            "exact_lower": "264582969599961124827786713724241781/1250000000000000000000000000000000000000",
+            "exact_upper": "1058331878399887860053573817935656581/5000000000000000000000000000000000000000"
+          },
+          {
+            "lower": 0.00067852284340393,
+            "upper": 0.0006785228434039387,
+            "exact_lower": "1357045686807859945512956521404023301/2000000000000000000000000000000000000000",
+            "exact_upper": "1357045686807877281718580203853821097/2000000000000000000000000000000000000000"
+          },
+          {
+            "lower": 0.0002116663756799689,
+            "upper": 0.00021166637567997758,
+            "exact_lower": "264582969599961124827786713724241781/1250000000000000000000000000000000000000",
+            "exact_upper": "1058331878399887860053573817935656581/5000000000000000000000000000000000000000"
+          },
+          {
+            "lower": 0.00067852284340393,
+            "upper": 0.0006785228434039387,
+            "exact_lower": "1357045686807859945512956521404023301/2000000000000000000000000000000000000000",
+            "exact_upper": "1357045686807877281718580203853821097/2000000000000000000000000000000000000000"
+          }
+        ]
+      },
+      "original_probability_restoration_is_post_first": true,
+      "r_agreement": true,
+      "angle_agreement": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "CH_agreement": true,
+      "primary_actual_CH_recomputed": {
+        "lower": 1.3809686952213217e-05,
+        "upper": 1.3809686952334588e-05,
+        "exact_lower": "27619373904426432929481196290965921/2000000000000000000000000000000000000000",
+        "exact_upper": "138096869523345878821225795329745469/10000000000000000000000000000000000000000"
+      },
+      "primary_actual_CH_overlaps_report": true,
+      "independent_actual_CH_overlaps_report": true,
+      "independent_actual_five_controls_recomputed": true,
+      "printed_five_balance_recomputed": {
+        "lower": 16.02095596729024,
+        "upper": 16.020955967290245,
+        "exact_lower": "1154431541190519405/72057594037927936",
+        "exact_upper": "577215770595259725/36028797018963968"
+      },
+      "printed_five_balance_agrees": true,
+      "printed_five_actual_CH_recomputed": {
+        "lower": 1.3244082670371314e-05,
+        "upper": 1.3244082670496726e-05,
+        "exact_lower": "66220413351856566265369408169402469/5000000000000000000000000000000000000000",
+        "exact_upper": "66220413352483627288455327165645969/5000000000000000000000000000000000000000"
+      },
+      "printed_five_actual_CH_overlaps_primary": true,
+      "strict_gain_over_printed_five_controls": {
+        "lower": 5.656042817158399e-07,
+        "upper": 5.656042819626232e-07,
+        "exact_lower": "353502676072399927160418377040977/625000000000000000000000000000000000000",
+        "exact_upper": "5656042819626231820563272264879061/10000000000000000000000000000000000000000"
+      },
+      "strict_improvement_over_printed_five_controls": true,
+      "primary_CH_midpoint_is_math_value": true
+    },
+    {
+      "point_id": "corner_1",
+      "source_identity": {
+        "raw_kernel": true,
+        "common_Jones_Z_X": true,
+        "common_Jones_radius": true,
+        "coupled_loss_exact": true,
+        "Klyshko_targets": true,
+        "source_lambda_is_exact_root": true,
+        "lambda_target": true,
+        "lambda_brackets_overlap": true,
+        "replay_source_matches_forward": true
+      },
+      "original_probability_checks": {
+        "j": [
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          }
+        ],
+        "sA_cell": [
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          }
+        ],
+        "sB_cell": [
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          }
+        ]
+      },
+      "independent_original_probabilities_restored_from_own_first_source": {
+        "j": [
+          {
+            "lower": 0.00014285729774832272,
+            "upper": 0.00014285729774834874,
+            "exact_lower": "1428572977483227304994949502405746781/10000000000000000000000000000000000000000",
+            "exact_upper": "1428572977483487461950541475811739881/10000000000000000000000000000000000000000"
+          },
+          {
+            "lower": 0.00015861670419899942,
+            "upper": 0.00015861670419902541,
+            "exact_lower": "317233408397998825598722356952327203/2000000000000000000000000000000000000000",
+            "exact_upper": "1586167041990254204666616641520093149/10000000000000000000000000000000000000000"
+          },
+          {
+            "lower": 0.00014829170777443687,
+            "upper": 0.0001482917077744629,
+            "exact_lower": "1482917077744368818064593626580787507/10000000000000000000000000000000000000000",
+            "exact_upper": "370729269436157226255972853062831061/2500000000000000000000000000000000000000"
+          },
+          {
+            "lower": 3.3772949524682616e-06,
+            "upper": 3.3772949524942612e-06,
+            "exact_lower": "33772949524682616299430130394480223/10000000000000000000000000000000000000000",
+            "exact_upper": "16886474762471306526746907949077471/5000000000000000000000000000000000000000"
+          }
+        ],
+        "sA_cell": [
+          {
+            "lower": 0.00022104526586575238,
+            "upper": 0.00022104526586576106,
+            "exact_lower": "138153291166095246760689299881912213/625000000000000000000000000000000000000",
+            "exact_upper": "138153291166100666802646938195390589/625000000000000000000000000000000000000"
+          },
+          {
+            "lower": 0.00022104526586575238,
+            "upper": 0.00022104526586576106,
+            "exact_lower": "138153291166095246760689299881912213/625000000000000000000000000000000000000",
+            "exact_upper": "138153291166100666802646938195390589/625000000000000000000000000000000000000"
+          },
+          {
+            "lower": 0.0006246766003954181,
+            "upper": 0.0006246766003954267,
+            "exact_lower": "6246766003954180406460085235007221923/10000000000000000000000000000000000000000",
+            "exact_upper": "6246766003954267092158313798391789849/10000000000000000000000000000000000000000"
+          },
+          {
+            "lower": 0.0006246766003954181,
+            "upper": 0.0006246766003954267,
+            "exact_lower": "6246766003954180406460085235007221923/10000000000000000000000000000000000000000",
+            "exact_upper": "6246766003954267092158313798391789849/10000000000000000000000000000000000000000"
+          }
+        ],
+        "sB_cell": [
+          {
+            "lower": 0.0002116663756799689,
+            "upper": 0.00021166637567997758,
+            "exact_lower": "2116663756799688998622293709793934253/10000000000000000000000000000000000000000",
+            "exact_upper": "2116663756799775720107147635871313157/10000000000000000000000000000000000000000"
+          },
+          {
+            "lower": 0.00067852284340393,
+            "upper": 0.0006785228434039387,
+            "exact_lower": "678522843403929972756478260702011651/1000000000000000000000000000000000000000",
+            "exact_upper": "169630710850984660214822525481727637/250000000000000000000000000000000000000"
+          },
+          {
+            "lower": 0.0002116663756799689,
+            "upper": 0.00021166637567997758,
+            "exact_lower": "2116663756799688998622293709793934253/10000000000000000000000000000000000000000",
+            "exact_upper": "2116663756799775720107147635871313157/10000000000000000000000000000000000000000"
+          },
+          {
+            "lower": 0.00067852284340393,
+            "upper": 0.0006785228434039387,
+            "exact_lower": "678522843403929972756478260702011651/1000000000000000000000000000000000000000",
+            "exact_upper": "169630710850984660214822525481727637/250000000000000000000000000000000000000"
+          }
+        ]
+      },
+      "original_probability_restoration_is_post_first": true,
+      "r_agreement": true,
+      "angle_agreement": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "CH_agreement": true,
+      "primary_actual_CH_recomputed": {
+        "lower": 1.4308214907376584e-05,
+        "upper": 1.4308214907497955e-05,
+        "exact_lower": "143082149073765844167459057042086399/10000000000000000000000000000000000000000",
+        "exact_upper": "143082149074979552894642225040589267/10000000000000000000000000000000000000000"
+      },
+      "primary_actual_CH_overlaps_report": true,
+      "independent_actual_CH_overlaps_report": true,
+      "independent_actual_five_controls_recomputed": true,
+      "printed_five_balance_recomputed": {
+        "lower": 16.02095596729024,
+        "upper": 16.020955967290245,
+        "exact_lower": "1154431541190519405/72057594037927936",
+        "exact_upper": "577215770595259725/36028797018963968"
+      },
+      "printed_five_balance_agrees": true,
+      "printed_five_actual_CH_recomputed": {
+        "lower": 1.3695124388607777e-05,
+        "upper": 1.369512438873319e-05,
+        "exact_lower": "136951243886077774486471713646027637/10000000000000000000000000000000000000000",
+        "exact_upper": "136951243887331896500165622630679789/10000000000000000000000000000000000000000"
+      },
+      "printed_five_actual_CH_overlaps_primary": true,
+      "strict_gain_over_printed_five_controls": {
+        "lower": 6.130905186429402e-07,
+        "upper": 6.130905188897229e-07,
+        "exact_lower": "6130905186429401836256580447130373/10000000000000000000000000000000000000000",
+        "exact_upper": "4904724151117783473017985055807/8000000000000000000000000000000000000"
+      },
+      "strict_improvement_over_printed_five_controls": true,
+      "primary_CH_midpoint_is_math_value": true
+    },
+    {
+      "point_id": "corner_2",
+      "source_identity": {
+        "raw_kernel": true,
+        "common_Jones_Z_X": true,
+        "common_Jones_radius": true,
+        "coupled_loss_exact": true,
+        "Klyshko_targets": true,
+        "source_lambda_is_exact_root": true,
+        "lambda_target": true,
+        "lambda_brackets_overlap": true,
+        "replay_source_matches_forward": true
+      },
+      "original_probability_checks": {
+        "j": [
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          }
+        ],
+        "sA_cell": [
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          }
+        ],
+        "sB_cell": [
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          }
+        ]
+      },
+      "independent_original_probabilities_restored_from_own_first_source": {
+        "j": [
+          {
+            "lower": 0.00014347536064184582,
+            "upper": 0.00014347536064187184,
+            "exact_lower": "286950721283691634717338043904293941/2000000000000000000000000000000000000000",
+            "exact_upper": "1434753606418718330277691279210797169/10000000000000000000000000000000000000000"
+          },
+          {
+            "lower": 0.00015870393353881158,
+            "upper": 0.0001587039335388376,
+            "exact_lower": "1587039335388115816033115490015013/10000000000000000000000000000000000000",
+            "exact_upper": "3967598338470939731462855883822231/25000000000000000000000000000000000000"
+          },
+          {
+            "lower": 0.00014934911493129783,
+            "upper": 0.00014934911493132383,
+            "exact_lower": "1493491149312978287581097996953333743/10000000000000000000000000000000000000000",
+            "exact_upper": "1493491149313238374121154387322848539/10000000000000000000000000000000000000000"
+          },
+          {
+            "lower": 3.7270703701764143e-06,
+            "upper": 3.727070370202414e-06,
+            "exact_lower": "37270703701764142122042005937452649/10000000000000000000000000000000000000000",
+            "exact_upper": "4658837962753017324227347512769467/1250000000000000000000000000000000000000"
+          }
+        ],
+        "sA_cell": [
+          {
+            "lower": 0.00021976509308000323,
+            "upper": 0.0002197650930800119,
+            "exact_lower": "2197650930800032245859365018878456821/10000000000000000000000000000000000000000",
+            "exact_upper": "549412732700029741633862430557406329/2500000000000000000000000000000000000000"
+          },
+          {
+            "lower": 0.00021976509308000323,
+            "upper": 0.0002197650930800119,
+            "exact_lower": "2197650930800032245859365018878456821/10000000000000000000000000000000000000000",
+            "exact_upper": "549412732700029741633862430557406329/2500000000000000000000000000000000000000"
+          },
+          {
+            "lower": 0.0006244387443628677,
+            "upper": 0.0006244387443628764,
+            "exact_lower": "6244387443628677498647540202656461189/10000000000000000000000000000000000000000",
+            "exact_upper": "3122193721814382092129956641180714779/5000000000000000000000000000000000000000"
+          },
+          {
+            "lower": 0.0006244387443628677,
+            "upper": 0.0006244387443628764,
+            "exact_lower": "6244387443628677498647540202656461189/10000000000000000000000000000000000000000",
+            "exact_upper": "3122193721814382092129956641180714779/5000000000000000000000000000000000000000"
+          }
+        ],
+        "sB_cell": [
+          {
+            "lower": 0.00021294761271991398,
+            "upper": 0.00021294761271992266,
+            "exact_lower": "425895225439827957991308705337693603/2000000000000000000000000000000000000000",
+            "exact_upper": "2129476127199226511223993147719330193/10000000000000000000000000000000000000000"
+          },
+          {
+            "lower": 0.0006787608794021911,
+            "upper": 0.0006787608794021998,
+            "exact_lower": "6787608794021910843766765938205312503/10000000000000000000000000000000000000000",
+            "exact_upper": "212112774813187422645876889738280141/312500000000000000000000000000000000000"
+          },
+          {
+            "lower": 0.00021294761271991398,
+            "upper": 0.00021294761271992266,
+            "exact_lower": "425895225439827957991308705337693603/2000000000000000000000000000000000000000",
+            "exact_upper": "2129476127199226511223993147719330193/10000000000000000000000000000000000000000"
+          },
+          {
+            "lower": 0.0006787608794021911,
+            "upper": 0.0006787608794021998,
+            "exact_lower": "6787608794021910843766765938205312503/10000000000000000000000000000000000000000",
+            "exact_upper": "212112774813187422645876889738280141/312500000000000000000000000000000000000"
+          }
+        ]
+      },
+      "original_probability_restoration_is_post_first": true,
+      "r_agreement": true,
+      "angle_agreement": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "CH_agreement": true,
+      "primary_actual_CH_recomputed": {
+        "lower": 1.585132117111425e-05,
+        "upper": 1.585132117123562e-05,
+        "exact_lower": "158513211711142506929188628439829653/10000000000000000000000000000000000000000",
+        "exact_upper": "19814151464044524552904450884428337/1250000000000000000000000000000000000000"
+      },
+      "primary_actual_CH_overlaps_report": true,
+      "independent_actual_CH_overlaps_report": true,
+      "independent_actual_five_controls_recomputed": true,
+      "printed_five_balance_recomputed": {
+        "lower": 16.02096905651776,
+        "upper": 16.02096905651776,
+        "exact_lower": "577216242184381065/36028797018963968",
+        "exact_upper": "1154432484368762175/72057594037927936"
+      },
+      "printed_five_balance_agrees": true,
+      "printed_five_actual_CH_recomputed": {
+        "lower": 1.5164860116069057e-05,
+        "upper": 1.516486011619445e-05,
+        "exact_lower": "151648601160690566006022011415396223/10000000000000000000000000000000000000000",
+        "exact_upper": "18956075145243061967061883347612247/1250000000000000000000000000000000000000"
+      },
+      "printed_five_actual_CH_overlaps_primary": true,
+      "strict_gain_over_printed_five_controls": {
+        "lower": 6.864610549194741e-07,
+        "upper": 6.864610551662357e-07,
+        "exact_lower": "1372922109838948272200743309822121/2000000000000000000000000000000000000000",
+        "exact_upper": "3432305275831178678636972089209973/5000000000000000000000000000000000000000"
+      },
+      "strict_improvement_over_printed_five_controls": true,
+      "primary_CH_midpoint_is_math_value": true
+    },
+    {
+      "point_id": "corner_3",
+      "source_identity": {
+        "raw_kernel": true,
+        "common_Jones_Z_X": true,
+        "common_Jones_radius": true,
+        "coupled_loss_exact": true,
+        "Klyshko_targets": true,
+        "source_lambda_is_exact_root": true,
+        "lambda_target": true,
+        "lambda_brackets_overlap": true,
+        "replay_source_matches_forward": true
+      },
+      "original_probability_checks": {
+        "j": [
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          }
+        ],
+        "sA_cell": [
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          }
+        ],
+        "sB_cell": [
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          }
+        ]
+      },
+      "independent_original_probabilities_restored_from_own_first_source": {
+        "j": [
+          {
+            "lower": 0.00014346420016862096,
+            "upper": 0.00014346420016864698,
+            "exact_lower": "286928400337241917770257598192206859/2000000000000000000000000000000000000000",
+            "exact_upper": "1434642001686469745541514134321288371/10000000000000000000000000000000000000000"
+          },
+          {
+            "lower": 0.00015877693700904177,
+            "upper": 0.00015877693700906776,
+            "exact_lower": "79388468504520882206102228113510577/500000000000000000000000000000000000000",
+            "exact_upper": "1587769370090677720679134981996539527/10000000000000000000000000000000000000000"
+          },
+          {
+            "lower": 0.00014939975869904853,
+            "upper": 0.00014939975869907455,
+            "exact_lower": "746998793495242647623482094439259353/5000000000000000000000000000000000000000",
+            "exact_upper": "1493997586990745381790533665446421639/10000000000000000000000000000000000000000"
+          },
+          {
+            "lower": 3.3958301250345904e-06,
+            "upper": 3.39583012506059e-06,
+            "exact_lower": "6791660250069181111644488742494539/2000000000000000000000000000000000000000",
+            "exact_upper": "33958301250605902007013346509889869/10000000000000000000000000000000000000000"
+          }
+        ],
+        "sA_cell": [
+          {
+            "lower": 0.00021976509308000323,
+            "upper": 0.0002197650930800119,
+            "exact_lower": "274706366350004030732420633741013037/1250000000000000000000000000000000000000",
+            "exact_upper": "2197650930800118966535449671179977841/10000000000000000000000000000000000000000"
+          },
+          {
+            "lower": 0.00021976509308000323,
+            "upper": 0.0002197650930800119,
+            "exact_lower": "274706366350004030732420633741013037/1250000000000000000000000000000000000000",
+            "exact_upper": "2197650930800118966535449671179977841/10000000000000000000000000000000000000000"
+          },
+          {
+            "lower": 0.0006244387443628677,
+            "upper": 0.0006244387443628764,
+            "exact_lower": "6244387443628677498647540576972274033/10000000000000000000000000000000000000000",
+            "exact_upper": "3122193721814382092129956454022808357/5000000000000000000000000000000000000000"
+          },
+          {
+            "lower": 0.0006244387443628677,
+            "upper": 0.0006244387443628764,
+            "exact_lower": "6244387443628677498647540576972274033/10000000000000000000000000000000000000000",
+            "exact_upper": "3122193721814382092129956454022808357/5000000000000000000000000000000000000000"
+          }
+        ],
+        "sB_cell": [
+          {
+            "lower": 0.00021294761271991398,
+            "upper": 0.00021294761271992266,
+            "exact_lower": "425895225439827957991308705337693603/2000000000000000000000000000000000000000",
+            "exact_upper": "1064738063599613255611996573859665099/5000000000000000000000000000000000000000"
+          },
+          {
+            "lower": 0.0006787608794021911,
+            "upper": 0.0006787608794021998,
+            "exact_lower": "6787608794021910843766765938205312503/10000000000000000000000000000000000000000",
+            "exact_upper": "6787608794021997524668060471624964517/10000000000000000000000000000000000000000"
+          },
+          {
+            "lower": 0.00021294761271991398,
+            "upper": 0.00021294761271992266,
+            "exact_lower": "425895225439827957991308705337693603/2000000000000000000000000000000000000000",
+            "exact_upper": "1064738063599613255611996573859665099/5000000000000000000000000000000000000000"
+          },
+          {
+            "lower": 0.0006787608794021911,
+            "upper": 0.0006787608794021998,
+            "exact_lower": "6787608794021910843766765938205312503/10000000000000000000000000000000000000000",
+            "exact_upper": "6787608794021997524668060471624964517/10000000000000000000000000000000000000000"
+          }
+        ]
+      },
+      "original_probability_restoration_is_post_first": true,
+      "r_agreement": true,
+      "angle_agreement": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "CH_agreement": true,
+      "primary_actual_CH_recomputed": {
+        "lower": 1.637640918174484e-05,
+        "upper": 1.6376409181866206e-05,
+        "exact_lower": "81882045908724193866745077161569727/5000000000000000000000000000000000000000",
+        "exact_upper": "32752818363732414376635058860398567/2000000000000000000000000000000000000000"
+      },
+      "primary_actual_CH_overlaps_report": true,
+      "independent_actual_CH_overlaps_report": true,
+      "independent_actual_five_controls_recomputed": true,
+      "printed_five_balance_recomputed": {
+        "lower": 16.02096905651776,
+        "upper": 16.02096905651776,
+        "exact_lower": "577216242184381065/36028797018963968",
+        "exact_upper": "1154432484368762175/72057594037927936"
+      },
+      "printed_five_balance_agrees": true,
+      "printed_five_actual_CH_recomputed": {
+        "lower": 1.561748114736474e-05,
+        "upper": 1.5617481147490136e-05,
+        "exact_lower": "31234962294729483540483577465930633/2000000000000000000000000000000000000000",
+        "exact_upper": "19521851434362668425233683011029333/1250000000000000000000000000000000000000"
+      },
+      "printed_five_actual_CH_overlaps_primary": true,
+      "strict_gain_over_printed_five_controls": {
+        "lower": 7.589280342543012e-07,
+        "upper": 7.589280345010622e-07,
+        "exact_lower": "3794640171271505933479759216747467/5000000000000000000000000000000000000000",
+        "exact_upper": "7589280345010622486092634520413451/10000000000000000000000000000000000000000"
+      },
+      "strict_improvement_over_printed_five_controls": true,
+      "primary_CH_midpoint_is_math_value": true
+    },
+    {
+      "point_id": "corner_4",
+      "source_identity": {
+        "raw_kernel": true,
+        "common_Jones_Z_X": true,
+        "common_Jones_radius": true,
+        "coupled_loss_exact": true,
+        "Klyshko_targets": true,
+        "source_lambda_is_exact_root": true,
+        "lambda_target": true,
+        "lambda_brackets_overlap": true,
+        "replay_source_matches_forward": true
+      },
+      "original_probability_checks": {
+        "j": [
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          }
+        ],
+        "sA_cell": [
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          }
+        ],
+        "sB_cell": [
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          }
+        ]
+      },
+      "independent_original_probabilities_restored_from_own_first_source": {
+        "j": [
+          {
+            "lower": 0.00014340281005958795,
+            "upper": 0.00014340281005961394,
+            "exact_lower": "717014050297939693100362077685471921/5000000000000000000000000000000000000000",
+            "exact_upper": "44813378143629360716057722288250597/312500000000000000000000000000000000000"
+          },
+          {
+            "lower": 0.0001596547947296626,
+            "upper": 0.00015965479472968862,
+            "exact_lower": "99784246706039127855481118977755049/625000000000000000000000000000000000000",
+            "exact_upper": "798273973648443060983870033196095601/5000000000000000000000000000000000000000"
+          },
+          {
+            "lower": 0.00014831488342371805,
+            "upper": 0.00014831488342374407,
+            "exact_lower": "2373038134779489006696893427302573/16000000000000000000000000000000000000",
+            "exact_upper": "741574417118720358025849877408464967/5000000000000000000000000000000000000000"
+          },
+          {
+            "lower": 3.7132445386673123e-06,
+            "upper": 3.713244538693312e-06,
+            "exact_lower": "37132445386673124360100693814647297/10000000000000000000000000000000000000000",
+            "exact_upper": "18566222693466560431055178816423791/5000000000000000000000000000000000000000"
+          }
+        ],
+        "sA_cell": [
+          {
+            "lower": 0.00022235124616942772,
+            "upper": 0.0002223512461694364,
+            "exact_lower": "2223512461694277255452478629444192781/10000000000000000000000000000000000000000",
+            "exact_upper": "88940498467774559036609021671087061/400000000000000000000000000000000000000"
+          },
+          {
+            "lower": 0.00022235124616942772,
+            "upper": 0.0002223512461694364,
+            "exact_lower": "2223512461694277255452478629444192781/10000000000000000000000000000000000000000",
+            "exact_upper": "88940498467774559036609021671087061/400000000000000000000000000000000000000"
+          },
+          {
+            "lower": 0.0006249192517707889,
+            "upper": 0.0006249192517707976,
+            "exact_lower": "1249838503541577953179189702508267723/2000000000000000000000000000000000000000",
+            "exact_upper": "312459625885398822573905686255632527/500000000000000000000000000000000000000"
+          },
+          {
+            "lower": 0.0006249192517707889,
+            "upper": 0.0006249192517707976,
+            "exact_lower": "1249838503541577953179189702508267723/2000000000000000000000000000000000000000",
+            "exact_upper": "312459625885398822573905686255632527/500000000000000000000000000000000000000"
+          }
+        ],
+        "sB_cell": [
+          {
+            "lower": 0.00021038001364093276,
+            "upper": 0.00021038001364094143,
+            "exact_lower": "1051900068204663805890006185952485197/5000000000000000000000000000000000000000",
+            "exact_upper": "1051900068204707166640569343857296021/5000000000000000000000000000000000000000"
+          },
+          {
+            "lower": 0.0006782838555530982,
+            "upper": 0.0006782838555531069,
+            "exact_lower": "6782838555530982601419783304073177259/10000000000000000000000000000000000000000",
+            "exact_upper": "271313542221242771294932269145622467/400000000000000000000000000000000000000"
+          },
+          {
+            "lower": 0.00021038001364093276,
+            "upper": 0.00021038001364094143,
+            "exact_lower": "1051900068204663805890006185952485197/5000000000000000000000000000000000000000",
+            "exact_upper": "1051900068204707166640569343857296021/5000000000000000000000000000000000000000"
+          },
+          {
+            "lower": 0.0006782838555530982,
+            "upper": 0.0006782838555531069,
+            "exact_lower": "6782838555530982601419783304073177259/10000000000000000000000000000000000000000",
+            "exact_upper": "271313542221242771294932269145622467/400000000000000000000000000000000000000"
+          }
+        ]
+      },
+      "original_probability_restoration_is_post_first": true,
+      "r_agreement": true,
+      "angle_agreement": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "CH_agreement": true,
+      "primary_actual_CH_recomputed": {
+        "lower": 1.5899436089403048e-05,
+        "upper": 1.5899436089524417e-05,
+        "exact_lower": "158994360894030488168111198365019651/10000000000000000000000000000000000000000",
+        "exact_upper": "79497180447622088633641060378926559/5000000000000000000000000000000000000000"
+      },
+      "primary_actual_CH_overlaps_report": true,
+      "independent_actual_CH_overlaps_report": true,
+      "independent_actual_five_controls_recomputed": true,
+      "printed_five_balance_recomputed": {
+        "lower": 16.02096794325852,
+        "upper": 16.02096794325852,
+        "exact_lower": "1154432404149979725/72057594037927936",
+        "exact_upper": "577216202074989885/36028797018963968"
+      },
+      "printed_five_balance_agrees": true,
+      "printed_five_actual_CH_recomputed": {
+        "lower": 1.5012569709148026e-05,
+        "upper": 1.5012569709273422e-05,
+        "exact_lower": "3753142427287006411290598210615521/250000000000000000000000000000000000000",
+        "exact_upper": "150125697092734220131555577342345313/10000000000000000000000000000000000000000"
+      },
+      "printed_five_actual_CH_overlaps_primary": true,
+      "strict_gain_over_printed_five_controls": {
+        "lower": 8.868663801290265e-07,
+        "upper": 8.868663803757914e-07,
+        "exact_lower": "4434331900645132238193163380529571/5000000000000000000000000000000000000000",
+        "exact_upper": "1773732760751582805166305210460747/2000000000000000000000000000000000000000"
+      },
+      "strict_improvement_over_printed_five_controls": true,
+      "primary_CH_midpoint_is_math_value": true
+    },
+    {
+      "point_id": "corner_5",
+      "source_identity": {
+        "raw_kernel": true,
+        "common_Jones_Z_X": true,
+        "common_Jones_radius": true,
+        "coupled_loss_exact": true,
+        "Klyshko_targets": true,
+        "source_lambda_is_exact_root": true,
+        "lambda_target": true,
+        "lambda_brackets_overlap": true,
+        "replay_source_matches_forward": true
+      },
+      "original_probability_checks": {
+        "j": [
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          }
+        ],
+        "sA_cell": [
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          }
+        ],
+        "sB_cell": [
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          }
+        ]
+      },
+      "independent_original_probabilities_restored_from_own_first_source": {
+        "j": [
+          {
+            "lower": 0.00014339179297715368,
+            "upper": 0.0001433917929771797,
+            "exact_lower": "286783585954307350176656647116976189/2000000000000000000000000000000000000000",
+            "exact_upper": "44809935305368653362363785256357677/312500000000000000000000000000000000000"
+          },
+          {
+            "lower": 0.000159730244284494,
+            "upper": 0.00015973024428452,
+            "exact_lower": "798651221422469974487909635598472007/5000000000000000000000000000000000000000",
+            "exact_upper": "1597302442845200025261094266023637333/10000000000000000000000000000000000000000"
+          },
+          {
+            "lower": 0.00014836324091472574,
+            "upper": 0.00014836324091475176,
+            "exact_lower": "1483632409147257475564121579593758441/10000000000000000000000000000000000000000",
+            "exact_upper": "1483632409147517562433617120469315979/10000000000000000000000000000000000000000"
+          },
+          {
+            "lower": 3.3821057799110717e-06,
+            "upper": 3.3821057799370714e-06,
+            "exact_lower": "33821057799110718794761082539704003/10000000000000000000000000000000000000000",
+            "exact_upper": "16910528899685357636895973649579743/5000000000000000000000000000000000000000"
+          }
+        ],
+        "sA_cell": [
+          {
+            "lower": 0.00022235124616942772,
+            "upper": 0.0002223512461694364,
+            "exact_lower": "2223512461694277255452478691769403561/10000000000000000000000000000000000000000",
+            "exact_upper": "8894049846777455903660901917807863/40000000000000000000000000000000000000"
+          },
+          {
+            "lower": 0.00022235124616942772,
+            "upper": 0.0002223512461694364,
+            "exact_lower": "2223512461694277255452478691769403561/10000000000000000000000000000000000000000",
+            "exact_upper": "8894049846777455903660901917807863/40000000000000000000000000000000000000"
+          },
+          {
+            "lower": 0.0006249192517707889,
+            "upper": 0.0006249192517707976,
+            "exact_lower": "6249192517707889765895948969531555093/10000000000000000000000000000000000000000",
+            "exact_upper": "3124596258853988225739056634061217031/5000000000000000000000000000000000000000"
+          },
+          {
+            "lower": 0.0006249192517707889,
+            "upper": 0.0006249192517707976,
+            "exact_lower": "6249192517707889765895948969531555093/10000000000000000000000000000000000000000",
+            "exact_upper": "3124596258853988225739056634061217031/5000000000000000000000000000000000000000"
+          }
+        ],
+        "sB_cell": [
+          {
+            "lower": 0.00021038001364093276,
+            "upper": 0.00021038001364094143,
+            "exact_lower": "1051900068204663805890006185952485197/5000000000000000000000000000000000000000",
+            "exact_upper": "2103800136409414333281138687714592047/10000000000000000000000000000000000000000"
+          },
+          {
+            "lower": 0.0006782838555530982,
+            "upper": 0.0006782838555531069,
+            "exact_lower": "6782838555530982601419783304073177259/10000000000000000000000000000000000000000",
+            "exact_upper": "84785481944138366029666334108007021/125000000000000000000000000000000000000"
+          },
+          {
+            "lower": 0.00021038001364093276,
+            "upper": 0.00021038001364094143,
+            "exact_lower": "1051900068204663805890006185952485197/5000000000000000000000000000000000000000",
+            "exact_upper": "2103800136409414333281138687714592047/10000000000000000000000000000000000000000"
+          },
+          {
+            "lower": 0.0006782838555530982,
+            "upper": 0.0006782838555531069,
+            "exact_lower": "6782838555530982601419783304073177259/10000000000000000000000000000000000000000",
+            "exact_upper": "84785481944138366029666334108007021/125000000000000000000000000000000000000"
+          }
+        ]
+      },
+      "original_probability_restoration_is_post_first": true,
+      "r_agreement": true,
+      "angle_agreement": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "CH_agreement": true,
+      "primary_actual_CH_recomputed": {
+        "lower": 1.642531439570079e-05,
+        "upper": 1.642531439582216e-05,
+        "exact_lower": "164253143957007925699709262307809241/10000000000000000000000000000000000000000",
+        "exact_upper": "41063285989555402363126057429980451/2500000000000000000000000000000000000000"
+      },
+      "primary_actual_CH_overlaps_report": true,
+      "independent_actual_CH_overlaps_report": true,
+      "independent_actual_five_controls_recomputed": true,
+      "printed_five_balance_recomputed": {
+        "lower": 16.02096794325852,
+        "upper": 16.02096794325852,
+        "exact_lower": "1154432404149979725/72057594037927936",
+        "exact_upper": "577216202074989885/36028797018963968"
+      },
+      "printed_five_balance_agrees": true,
+      "printed_five_actual_CH_recomputed": {
+        "lower": 1.5465663805542985e-05,
+        "upper": 1.5465663805668383e-05,
+        "exact_lower": "30931327611085972242457408445092557/2000000000000000000000000000000000000000",
+        "exact_upper": "154656638056683824858138730558309533/10000000000000000000000000000000000000000"
+      },
+      "printed_five_actual_CH_overlaps_primary": true,
+      "strict_gain_over_printed_five_controls": {
+        "lower": 9.596505900324825e-07,
+        "upper": 9.596505902792469e-07,
+        "exact_lower": "9596505900324825539718858852828263/10000000000000000000000000000000000000000",
+        "exact_upper": "9596505902792469706858150486838747/10000000000000000000000000000000000000000"
+      },
+      "strict_improvement_over_printed_five_controls": true,
+      "primary_CH_midpoint_is_math_value": true
+    },
+    {
+      "point_id": "corner_6",
+      "source_identity": {
+        "raw_kernel": true,
+        "common_Jones_Z_X": true,
+        "common_Jones_radius": true,
+        "coupled_loss_exact": true,
+        "Klyshko_targets": true,
+        "source_lambda_is_exact_root": true,
+        "lambda_target": true,
+        "lambda_brackets_overlap": true,
+        "replay_source_matches_forward": true
+      },
+      "original_probability_checks": {
+        "j": [
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          }
+        ],
+        "sA_cell": [
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          }
+        ],
+        "sB_cell": [
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          }
+        ]
+      },
+      "independent_original_probabilities_restored_from_own_first_source": {
+        "j": [
+          {
+            "lower": 0.0001440129527064912,
+            "upper": 0.0001440129527065172,
+            "exact_lower": "1440129527064911884110946993768200817/10000000000000000000000000000000000000000",
+            "exact_upper": "720064763532586020284778164157117379/5000000000000000000000000000000000000000"
+          },
+          {
+            "lower": 0.0001598182706604113,
+            "upper": 0.0001598182706604373,
+            "exact_lower": "319636541320822610315065738474203461/2000000000000000000000000000000000000000",
+            "exact_upper": "159818270660437312774878945968541751/1000000000000000000000000000000000000000"
+          },
+          {
+            "lower": 0.0001494235477020396,
+            "upper": 0.0001494235477020656,
+            "exact_lower": "747117738510197959520878570553648947/5000000000000000000000000000000000000000",
+            "exact_upper": "747117738510328002750664199154954101/5000000000000000000000000000000000000000"
+          },
+          {
+            "lower": 3.7334691480169443e-06,
+            "upper": 3.733469148042944e-06,
+            "exact_lower": "7466938296033888721728350826045571/2000000000000000000000000000000000000000",
+            "exact_upper": "9333672870107359953302405578671571/2500000000000000000000000000000000000000"
+          }
+        ],
+        "sA_cell": [
+          {
+            "lower": 0.00022106075064836676,
+            "upper": 0.00022106075064837544,
+            "exact_lower": "2210607506483667632976173563765688177/10000000000000000000000000000000000000000",
+            "exact_upper": "2210607506483754353446892805746218159/10000000000000000000000000000000000000000"
+          },
+          {
+            "lower": 0.00022106075064836676,
+            "upper": 0.00022106075064837544,
+            "exact_lower": "2210607506483667632976173563765688177/10000000000000000000000000000000000000000",
+            "exact_upper": "2210607506483754353446892805746218159/10000000000000000000000000000000000000000"
+          },
+          {
+            "lower": 0.0006246794774689591,
+            "upper": 0.0006246794774689677,
+            "exact_lower": "624679477468959055491633859501563857/1000000000000000000000000000000000000000",
+            "exact_upper": "6246794774689677240415125729777735551/10000000000000000000000000000000000000000"
+          },
+          {
+            "lower": 0.0006246794774689591,
+            "upper": 0.0006246794774689677,
+            "exact_lower": "624679477468959055491633859501563857/1000000000000000000000000000000000000000",
+            "exact_upper": "6246794774689677240415125729777735551/10000000000000000000000000000000000000000"
+          }
+        ],
+        "sB_cell": [
+          {
+            "lower": 0.00021165100199032683,
+            "upper": 0.0002116510019903355,
+            "exact_lower": "264563752487908546250206793416429339/1250000000000000000000000000000000000000",
+            "exact_upper": "423302003980671018257716021715855547/2000000000000000000000000000000000000000"
+          },
+          {
+            "lower": 0.0006785199871884183,
+            "upper": 0.000678519987188427,
+            "exact_lower": "271407994875367305774097664181310119/400000000000000000000000000000000000000",
+            "exact_upper": "6785199871884269325181619831441725309/10000000000000000000000000000000000000000"
+          },
+          {
+            "lower": 0.00021165100199032683,
+            "upper": 0.0002116510019903355,
+            "exact_lower": "264563752487908546250206793416429339/1250000000000000000000000000000000000000",
+            "exact_upper": "423302003980671018257716021715855547/2000000000000000000000000000000000000000"
+          },
+          {
+            "lower": 0.0006785199871884183,
+            "upper": 0.000678519987188427,
+            "exact_lower": "271407994875367305774097664181310119/400000000000000000000000000000000000000",
+            "exact_upper": "6785199871884269325181619831441725309/10000000000000000000000000000000000000000"
+          }
+        ]
+      },
+      "original_probability_restoration_is_post_first": true,
+      "r_agreement": true,
+      "angle_agreement": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "CH_agreement": true,
+      "primary_actual_CH_recomputed": {
+        "lower": 1.8073295587447203e-05,
+        "upper": 1.807329558756857e-05,
+        "exact_lower": "180732955874472035805693164913662271/10000000000000000000000000000000000000000",
+        "exact_upper": "180732955875685700488335383583306861/10000000000000000000000000000000000000000"
+      },
+      "primary_actual_CH_overlaps_report": true,
+      "independent_actual_CH_overlaps_report": true,
+      "independent_actual_five_controls_recomputed": true,
+      "printed_five_balance_recomputed": {
+        "lower": 16.02098103250734,
+        "upper": 16.02098103250734,
+        "exact_lower": "1154433347329757445/72057594037927936",
+        "exact_upper": "577216673664878745/36028797018963968"
+      },
+      "printed_five_balance_agrees": true,
+      "printed_five_actual_CH_recomputed": {
+        "lower": 1.696122597188483e-05,
+        "upper": 1.6961225972010207e-05,
+        "exact_lower": "33922451943769657230675564666618897/2000000000000000000000000000000000000000",
+        "exact_upper": "169612259720102057691735026423196533/10000000000000000000000000000000000000000"
+      },
+      "printed_five_actual_CH_overlaps_primary": true,
+      "strict_gain_over_printed_five_controls": {
+        "lower": 1.1120696154364802e-06,
+        "upper": 1.1120696156832237e-06,
+        "exact_lower": "5560348077182401566639447162750629/5000000000000000000000000000000000000000",
+        "exact_upper": "5560348078416118065570458137761827/5000000000000000000000000000000000000000"
+      },
+      "strict_improvement_over_printed_five_controls": true,
+      "primary_CH_midpoint_is_math_value": true
+    },
+    {
+      "point_id": "corner_7",
+      "source_identity": {
+        "raw_kernel": true,
+        "common_Jones_Z_X": true,
+        "common_Jones_radius": true,
+        "coupled_loss_exact": true,
+        "Klyshko_targets": true,
+        "source_lambda_is_exact_root": true,
+        "lambda_target": true,
+        "lambda_brackets_overlap": true,
+        "replay_source_matches_forward": true
+      },
+      "original_probability_checks": {
+        "j": [
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          }
+        ],
+        "sA_cell": [
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          }
+        ],
+        "sB_cell": [
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          },
+          {
+            "primary_contained": true,
+            "independent_contained": true,
+            "confidence_conclusion_agrees": true,
+            "enclosures_overlap": true,
+            "numeric_tolerance": true
+          }
+        ]
+      },
+      "independent_original_probabilities_restored_from_own_first_source": {
+        "j": [
+          {
+            "lower": 0.00014400181661238304,
+            "upper": 0.00014400181661240906,
+            "exact_lower": "288003633224766064813617342678542977/2000000000000000000000000000000000000000",
+            "exact_upper": "1440018166124090480525922774343458827/10000000000000000000000000000000000000000"
+          },
+          {
+            "lower": 0.000159892799724964,
+            "upper": 0.00015989279972499,
+            "exact_lower": "399731999312409987505235182774154703/2500000000000000000000000000000000000000",
+            "exact_upper": "799463998624950013099785339255098381/5000000000000000000000000000000000000000"
+          },
+          {
+            "lower": 0.00014947323699778504,
+            "upper": 0.00014947323699781106,
+            "exact_lower": "46710386561807827484246587769990293/312500000000000000000000000000000000000",
+            "exact_upper": "59789294799124422638356351441624429/400000000000000000000000000000000000000"
+          },
+          {
+            "lower": 3.4009538514158353e-06,
+            "upper": 3.400953851441835e-06,
+            "exact_lower": "34009538514158351365266795028746367/10000000000000000000000000000000000000000",
+            "exact_upper": "34009538514418347546760349116251381/10000000000000000000000000000000000000000"
+          }
+        ],
+        "sA_cell": [
+          {
+            "lower": 0.00022106075064836676,
+            "upper": 0.00022106075064837544,
+            "exact_lower": "2210607506483667632976173620467683287/10000000000000000000000000000000000000000",
+            "exact_upper": "2210607506483754353446892749044223043/10000000000000000000000000000000000000000"
+          },
+          {
+            "lower": 0.00022106075064836676,
+            "upper": 0.00022106075064837544,
+            "exact_lower": "2210607506483667632976173620467683287/10000000000000000000000000000000000000000",
+            "exact_upper": "2210607506483754353446892749044223043/10000000000000000000000000000000000000000"
+          },
+          {
+            "lower": 0.0006246794774689591,
+            "upper": 0.0006246794774689677,
+            "exact_lower": "6246794774689590554916339010777228171/10000000000000000000000000000000000000000",
+            "exact_upper": "6246794774689677240415125314016145949/10000000000000000000000000000000000000000"
+          },
+          {
+            "lower": 0.0006246794774689591,
+            "upper": 0.0006246794774689677,
+            "exact_lower": "6246794774689590554916339010777228171/10000000000000000000000000000000000000000",
+            "exact_upper": "6246794774689677240415125314016145949/10000000000000000000000000000000000000000"
+          }
+        ],
+        "sB_cell": [
+          {
+            "lower": 0.00021165100199032683,
+            "upper": 0.0002116510019903355,
+            "exact_lower": "2116510019903268370001654347331434717/10000000000000000000000000000000000000000",
+            "exact_upper": "211651001990335509128858010857927773/1000000000000000000000000000000000000000"
+          },
+          {
+            "lower": 0.0006785199871884183,
+            "upper": 0.000678519987188427,
+            "exact_lower": "271407994875367305774097664181310119/400000000000000000000000000000000000000",
+            "exact_upper": "848149983985533665647702478930215663/1250000000000000000000000000000000000000"
+          },
+          {
+            "lower": 0.00021165100199032683,
+            "upper": 0.0002116510019903355,
+            "exact_lower": "2116510019903268370001654347331434717/10000000000000000000000000000000000000000",
+            "exact_upper": "211651001990335509128858010857927773/1000000000000000000000000000000000000000"
+          },
+          {
+            "lower": 0.0006785199871884183,
+            "upper": 0.000678519987188427,
+            "exact_lower": "271407994875367305774097664181310119/400000000000000000000000000000000000000",
+            "exact_upper": "848149983985533665647702478930215663/1250000000000000000000000000000000000000"
+          }
+        ]
+      },
+      "original_probability_restoration_is_post_first": true,
+      "r_agreement": true,
+      "angle_agreement": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "CH_agreement": true,
+      "primary_actual_CH_recomputed": {
+        "lower": 1.862593205196943e-05,
+        "upper": 1.8625932052090793e-05,
+        "exact_lower": "186259320519694286120521695430963429/10000000000000000000000000000000000000000",
+        "exact_upper": "37251864104181589111862062077832539/2000000000000000000000000000000000000000"
+      },
+      "primary_actual_CH_overlaps_report": true,
+      "independent_actual_CH_overlaps_report": true,
+      "independent_actual_five_controls_recomputed": true,
+      "printed_five_balance_recomputed": {
+        "lower": 16.02098103250734,
+        "upper": 16.02098103250734,
+        "exact_lower": "1154433347329757445/72057594037927936",
+        "exact_upper": "577216673664878745/36028797018963968"
+      },
+      "printed_five_balance_agrees": true,
+      "printed_five_actual_CH_recomputed": {
+        "lower": 1.7415886499575213e-05,
+        "upper": 1.741588649970059e-05,
+        "exact_lower": "21769858124469016380969149477449073/1250000000000000000000000000000000000000",
+        "exact_upper": "43539716249251475638369564884777041/2500000000000000000000000000000000000000"
+      },
+      "printed_five_actual_CH_overlaps_primary": true,
+      "strict_gain_over_printed_five_controls": {
+        "lower": 1.210045552268529e-06,
+        "upper": 1.2100455525152719e-06,
+        "exact_lower": "12100455522685290701128194449077589/10000000000000000000000000000000000000000",
+        "exact_upper": "12100455525152718420810431187391691/10000000000000000000000000000000000000000"
+      },
+      "strict_improvement_over_printed_five_controls": true,
+      "primary_CH_midpoint_is_math_value": true
+    }
+  ],
+  "max_original_probability_midpoint_difference": "3412731298185186051/20000000000000000000000000000000000000000",
+  "band_agreement": [
+    true,
+    true,
+    true,
+    true,
+    true
+  ],
+  "primary_band_status": "NUMERICAL_CANDIDATE_BAND",
+  "independent_band_status": "NUMERICAL_DEVIATION_EXCEEDS_DECLARED_BAND",
+  "verdict": "CERTIFIED_NUMERIC_FRAME_REPLAY_AGREEMENT",
+  "global_maximum_kernel_claimed": false,
+  "retrospective": true,
+  "bell_event_files_read": 0,
+  "source_mapping_identified": false,
+  "publication_configuration_identified": false,
+  "production_admitted": false,
+  "actual_window_model_identified": false,
+  "calibration_protocol_identified": false,
+  "noise_channel_identified": false,
+  "source_pair_rate_reference_identified": false,
+  "common_Jones_map_identified": false,
+  "equal_branch_conversion_identified": false,
+  "actual_pump_actuator_identified": false
+}

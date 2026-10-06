@@ -1,0 +1,925 @@
+{
+  "verdict": "certified",
+  "material_findings": [],
+  "connection": "SourceGaussConnection:77 original inverseL nativeFock commutator remains; :96 generates -i connection torque, :116 uses actual Number-weighted charge pairing, not assumed commute.",
+  "native": "SourceGaussKineticTorque:113/118 has both covariant legs with correct minus, original adjoint_pair, scalarWeight=-lapse/volume, gaugeWeight=sigma*volume/lapse*inverseSpatial, all Lie and i,j cross sums, 1/2. Scalar potential commutator is generated zero; native kinetic is not erased.",
+  "CF": "SourceGaussColorWard:98/123 generates ordinary derivative and actual weighted adjoint commutation; :130/150 retains full seven primal/dual spin matrices and original branch signs; :231 complete kinetic/current/spinSquare/numberShift/volumePotential commutes.",
+  "configuration": "SourceGaussColorWard:249/254 preserves all original localMatrix i,b matter commutators. :260/271 removes only paid CF commutator and returns exact native+matter configuration torque, not whole torque zero.",
+  "actual": "SourceGaussColorWard:282 consumes same q.F actual sourceActualN1Primal/fulljoint resolvent/time via sourceTestApprox, giving reduced core native+matter+current+Y. WeightActionTorque and four material compression/uncut defects stay in signed N1NormalWard downstream weighted and finite mouths; this theorem does not itself erase or prove them zero.",
+  "next_source_obligation": "Consume this native connection plus actual matter torque in the same returned-current null9/114 equation with original contact/deviation and material initial/final boundaries. No configuration stationarity or full Ward0 premise.",
+  "units": "Colour2 source direction is not identified with EM/electron. Occupation density, fractional charge, source action hbar, full residue and 4pi remain distinct responsibilities.",
+  "claim": "sameGauss inverseL native connection weak commutator, full source coframe operator colour commutation and complete matter localMatrix torque; original configurationTorque=native+matter with actualN1 testApprox consumer preserving current/Y and weighted outer defects",
+  "generated_next": "same source native/contact/configuration-deviation and exact Gauss native/matter torque consumed by the actual weighted colour Ward and source114 compatibility, with initial/terminal charge, weightActionTorque and four material defects retained",
+  "prediction_source": "positiveSmoothUnifiedSource / repaired independent Dirac-dual / SpinPair.actual / same Gauss sourcePreparation",
+  "direct_consumers": [
+    "sourceColor_covariant_connection",
+    "sourceNativeActionWard",
+    "sourceColor_coframeAction",
+    "sourceMatterTorque_generated",
+    "sourceConfigurationTorque_ward",
+    "sourceActualN1_gaussColorCore"
+  ],
+  "controller": {
+    "source": "positiveSmoothUnifiedSource",
+    "configuration": "SpinPair.actual / independent repaired Dirac-dual",
+    "root": "SpinPair.livingRoot",
+    "visit": 10,
+    "entry": "materialEntry",
+    "whole_ledger_row": 0,
+    "live_account": ".inl.liveAccount",
+    "tick": 16,
+    "face": "quantumFace10 -> quantumPresentation10",
+    "next_tick": 17,
+    "controller_advanced": false
+  },
+  "production_sha256": {
+    "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSourceGaussConnection.lean": "467d35df68d0b33707f61d22d18a47d8bc16f75a4b9df97ea5871069a5d4da78",
+    "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSourceGaussKineticTorque.lean": "70b8db56ec0529ff48e56f700dabf58db740fb59a16612146e49dca495d87ac7",
+    "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSourceGaussColorWard.lean": "129561068a905a96e479879ffe000274283d3469cf8ed248e7602d0832f0903b",
+    "Verification/physics/low-energy-phenomenology/alpha-source/AuditCanonicalPreparationPhysicalGaussColorTorque.lean": "d092647a67ec003f4386fa0e93675f89a0aa871b556d63fb78630ae432616c7c",
+    "Verification/physics/low-energy-phenomenology/alpha-source/canonical_preparation_physical_gauss_color_torque_check.py": "40d2ac0563103548a07473713a2ea69f60bbda87bac53c86a8ecb29b0862ac43",
+    "Verification/physics/low-energy-phenomenology/alpha-source/canonical_preparation_physical_gauss_color_torque_check.json": "93f451ec5e035b2e050c51d5f3423b7b4348cb9433369b7fd7160707c48c1e56",
+    "Verification/physics/low-energy-phenomenology/alpha-source/canonical_preparation_physical_gauss_color_torque_verify.py": "e96323a75af94f1eba65667c4322dc9604a0f3af2c6d1ed5ba8ca96baa9b2d46",
+    "Verification/physics/low-energy-phenomenology/alpha-source/canonical_preparation_physical_gauss_color_torque_sources.json": "476db61b0fad0b5698dbe593a473c3d44ae78839bcc2e8e0e3e9c080118549e4"
+  },
+  "source_scratch_parity": [
+    {
+      "source": "Lean/scratch/AlphaSource/PreparationPhysicalGaussColorTorque/SourceGaussConnection.lean",
+      "source_sha256": "d8d54dad751e95e37880606510df247d74cadcbac6dbc49b586ef2a6739a8524",
+      "production": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSourceGaussConnection.lean",
+      "production_sha256": "467d35df68d0b33707f61d22d18a47d8bc16f75a4b9df97ea5871069a5d4da78"
+    },
+    {
+      "source": "Lean/scratch/AlphaSource/PreparationPhysicalGaussColorTorque/SourceGaussKineticTorque.lean",
+      "source_sha256": "132b6c96dfd2c552f386066f53e30cfb495f5347157cc56874d9635f45394cc1",
+      "production": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSourceGaussKineticTorque.lean",
+      "production_sha256": "70b8db56ec0529ff48e56f700dabf58db740fb59a16612146e49dca495d87ac7"
+    },
+    {
+      "source": "Lean/scratch/AlphaSource/PreparationPhysicalGaussColorTorque/SourceGaussColorWard.lean",
+      "source_sha256": "c26650c0e7334959b3e0a7d13e1113df32a1d87ddb1f0b55d840fa593ec0f14a",
+      "production": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSourceGaussColorWard.lean",
+      "production_sha256": "129561068a905a96e479879ffe000274283d3469cf8ed248e7602d0832f0903b"
+    }
+  ],
+  "kernel": {
+    "actual_tests": [
+      "LowEnergy.PreparationPhysicalGaussColorTorqueAudit.checked_sourceColor_directional",
+      "LowEnergy.PreparationPhysicalGaussColorTorqueAudit.checked_sourceColor_covariant_connection",
+      "LowEnergy.PreparationPhysicalGaussColorTorqueAudit.checked_sourceColorCharge_hermitian",
+      "LowEnergy.PreparationPhysicalGaussColorTorqueAudit.checked_sourceColorCharge_pair",
+      "LowEnergy.PreparationPhysicalGaussColorTorqueAudit.checked_sourceColorCovariantTorque_generated",
+      "LowEnergy.PreparationPhysicalGaussColorTorqueAudit.checked_sourceNativeSandwichWard",
+      "LowEnergy.PreparationPhysicalGaussColorTorqueAudit.checked_sourceNativeOperator_generated",
+      "LowEnergy.PreparationPhysicalGaussColorTorqueAudit.checked_sourceNativeActionWard",
+      "LowEnergy.PreparationPhysicalGaussColorTorqueAudit.checked_sourceColor_coframeDerivative",
+      "LowEnergy.PreparationPhysicalGaussColorTorqueAudit.checked_sourceColor_coframeMomentum",
+      "LowEnergy.PreparationPhysicalGaussColorTorqueAudit.checked_sourceColor_coframeAdjoint",
+      "LowEnergy.PreparationPhysicalGaussColorTorqueAudit.checked_sourceColor_spin_full",
+      "LowEnergy.PreparationPhysicalGaussColorTorqueAudit.checked_sourceColor_spinCurrent",
+      "LowEnergy.PreparationPhysicalGaussColorTorqueAudit.checked_sourceColor_scalar",
+      "LowEnergy.PreparationPhysicalGaussColorTorqueAudit.checked_sourceColor_coframeTerm",
+      "LowEnergy.PreparationPhysicalGaussColorTorqueAudit.checked_sourceColor_coframeMixed",
+      "LowEnergy.PreparationPhysicalGaussColorTorqueAudit.checked_sourceColor_number",
+      "LowEnergy.PreparationPhysicalGaussColorTorqueAudit.checked_sourceColor_coframeAction",
+      "LowEnergy.PreparationPhysicalGaussColorTorqueAudit.checked_sourceMatterTorque_generated",
+      "LowEnergy.PreparationPhysicalGaussColorTorqueAudit.checked_sourceConfigurationTorque_generated",
+      "LowEnergy.PreparationPhysicalGaussColorTorqueAudit.checked_sourceConfigurationTorque_ward",
+      "LowEnergy.PreparationPhysicalGaussColorTorqueAudit.checked_sourceActualN1_gaussColorCore"
+    ],
+    "anchors": [
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceColorChargeFiber",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceColorConnectionFiber",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceColorCovariantTorque",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceNativeSandwichTorque",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceColorWardOperator",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceNativeTorque",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceMatterTorqueFiber"
+    ],
+    "axioms": 3,
+    "consumers": [
+      [
+        "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceColor_covariant_connection",
+        "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceColor_directional"
+      ],
+      [
+        "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceColorCharge_pair",
+        "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceColorCharge_hermitian"
+      ],
+      [
+        "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceColorCovariantTorque_generated",
+        "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceColor_covariant_connection"
+      ],
+      [
+        "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceNativeSandwichWard",
+        "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceColorCharge_pair"
+      ],
+      [
+        "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceNativeActionWard",
+        "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceNativeSandwichWard"
+      ],
+      [
+        "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceNativeActionWard",
+        "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceNativeOperator_generated"
+      ],
+      [
+        "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceColor_coframeMomentum",
+        "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceColor_coframeDerivative"
+      ],
+      [
+        "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceColor_coframeAdjoint",
+        "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceColor_coframeMomentum"
+      ],
+      [
+        "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceColor_coframeAdjoint",
+        "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceColorCharge_pair"
+      ],
+      [
+        "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceColor_spinCurrent",
+        "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceColor_spin_full"
+      ],
+      [
+        "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceColor_coframeTerm",
+        "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceColor_coframeMomentum"
+      ],
+      [
+        "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceColor_coframeTerm",
+        "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceColor_coframeAdjoint"
+      ],
+      [
+        "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceColor_coframeMixed",
+        "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceColor_coframeMomentum"
+      ],
+      [
+        "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceColor_coframeMixed",
+        "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceColor_spinCurrent"
+      ],
+      [
+        "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceColor_coframeAction",
+        "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceColor_coframeTerm"
+      ],
+      [
+        "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceColor_coframeAction",
+        "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceColor_coframeMixed"
+      ],
+      [
+        "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceColor_coframeAction",
+        "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceColor_spin_full"
+      ],
+      [
+        "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceColor_coframeAction",
+        "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceColor_number"
+      ],
+      [
+        "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceConfigurationTorque_generated",
+        "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceColor_coframeAction"
+      ],
+      [
+        "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceConfigurationTorque_ward",
+        "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceConfigurationTorque_generated"
+      ],
+      [
+        "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceConfigurationTorque_ward",
+        "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceNativeActionWard"
+      ],
+      [
+        "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceMatterTorque_generated",
+        "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceMatterTorqueFiber"
+      ],
+      [
+        "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceActualN1_gaussColorCore",
+        "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceConfigurationTorque_ward"
+      ],
+      [
+        "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceActualN1_gaussColorCore",
+        "LowEnergy.PreparationVacuumPhysicalN1WardCollapse.sourceActualN1Primal"
+      ]
+    ],
+    "nodes": 100302,
+    "opaque_all_read": 59,
+    "owned": [
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.instDecidableEqIndex_canonicalPreparationSourceGaussColorWard",
+      "_private.CanonicalPreparationSourceGaussKineticTorque.0.LowEnergy.PreparationVacuumPhysicalGaussColorTorque.pair_sum_right",
+      "_private.CanonicalPreparationSourceGaussKineticTorque.0.LowEnergy.PreparationVacuumPhysicalGaussColorTorque.scalar_charge",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceColorChargeFiber._proof_3",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceNativeTorque",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceColor_spinCurrent",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceMatterTorque_generated",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.instFintypeLabel_canonicalPreparationSourceGaussColorWard._proof_1",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceMatterTorqueFiber._proof_2",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceColorCharge_hermitian",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.instFintypeLabel_canonicalPreparationSourceGaussColorWard",
+      "_private.CanonicalPreparationSourceGaussKineticTorque.0.LowEnergy.PreparationVacuumPhysicalGaussColorTorque.pair_add_left",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceColorConnectionFiber._proof_1",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceColor_covariant_connection._abel_2",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.QuantumEnd._proof_1",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceNativeSandwichTorque",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceColorWardOperator.eq_1",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.instNormedAlgebraRealContinuousLinearMapComplexIdH_canonicalPreparationSourceGaussKineticTorque._proof_1",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.instFintypeLabel_canonicalPreparationSourceGaussConnection",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.instNormedAlgebraRatContinuousLinearMapComplexIdH_canonicalPreparationSourceGaussConnection",
+      "_private.CanonicalPreparationSourceGaussColorWard.0.LowEnergy.PreparationVacuumPhysicalGaussColorTorque.compose_commutes",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceActualN1_gaussColorCore",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceColor_coframeMixed",
+      "_private.CanonicalPreparationSourceGaussKineticTorque.0.LowEnergy.PreparationVacuumPhysicalGaussColorTorque.pair_add_right",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceColorConnectionFiber",
+      "_private.CanonicalPreparationSourceGaussKineticTorque.0.LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceColorWard_multiply",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceColorCharge_pair",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceColorChargeFiber._proof_2",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceColor_coframeDerivative",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.instDecidableEqIndex_canonicalPreparationSourceGaussConnection",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.instNormedAlgebraRealContinuousLinearMapComplexIdH_canonicalPreparationSourceGaussConnection",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceColorChargeFiber",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.instNormedAlgebraRealContinuousLinearMapComplexIdH_canonicalPreparationSourceGaussColorWard",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceMatterTorqueFiber._proof_4",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceColorChargeFiber._proof_1",
+      "_private.CanonicalPreparationSourceGaussKineticTorque.0.LowEnergy.PreparationVacuumPhysicalGaussColorTorque.covariant_decomposition",
+      "_private.CanonicalPreparationSourceGaussKineticTorque.0.LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceColorWardLinear._proof_1",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.instNormedAlgebraRatContinuousLinearMapComplexIdH_canonicalPreparationSourceGaussKineticTorque",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceColor_covariant_connection",
+      "_private.CanonicalPreparationSourceGaussKineticTorque.0.LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceColorWardLinear._proof_2",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceNativeSandwichTorque._proof_1",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.instFintypeLabel_canonicalPreparationSourceGaussKineticTorque",
+      "_private.CanonicalPreparationSourceGaussKineticTorque.0.LowEnergy.PreparationVacuumPhysicalGaussColorTorque.pair_sub_right",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceNativeOperator_generated",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceMatterTorqueFiber.eq_1",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceColor_coframeTerm",
+      "_private.CanonicalPreparationSourceGaussKineticTorque.0.LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceColorWardLinear._proof_3",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceColorCovariantTorque._proof_2",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.QuantumEnd",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceColorWardOperator",
+      "_private.CanonicalPreparationSourceGaussKineticTorque.0.LowEnergy.PreparationVacuumPhysicalGaussColorTorque.pair_smul_right",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.instFintypeLabel_canonicalPreparationSourceGaussKineticTorque._proof_1",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceNativeTorque._proof_1",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceConfigurationTorque_generated._abel_1",
+      "_private.CanonicalPreparationSourceGaussKineticTorque.0.LowEnergy.PreparationVacuumPhysicalGaussColorTorque.covariant_decomposition._abel_1",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceColor_spin_full",
+      "_private.CanonicalPreparationSourceGaussKineticTorque.0.LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceColorWardLinear",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceColorCovariantTorque",
+      "_private.CanonicalPreparationSourceGaussColorWard.0.LowEnergy.PreparationVacuumPhysicalGaussColorTorque.add_commutes",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceColorConnectionFiber._proof_2",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceColor_coframeMomentum",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceMatterTorqueFiber._proof_1",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceColor_coframeAction",
+      "_private.CanonicalPreparationSourceGaussColorWard.0.LowEnergy.PreparationVacuumPhysicalGaussColorTorque.colour_adjoint",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceConfigurationTorque_ward",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceConfigurationTorque_generated",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceMatterTorqueFiber",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceColor_coframeAdjoint",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceColor_directional",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceColor_scalar",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceColorCovariantTorque_generated",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceColorConnectionFiber.eq_1",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.instNormedAlgebraRealContinuousLinearMapComplexIdH_canonicalPreparationSourceGaussKineticTorque",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.instFintypeLabel_canonicalPreparationSourceGaussConnection._proof_1",
+      "_private.CanonicalPreparationSourceGaussConnection.0.LowEnergy.PreparationVacuumPhysicalGaussColorTorque.directional_constant",
+      "_private.CanonicalPreparationSourceGaussColorWard.0.LowEnergy.PreparationVacuumPhysicalGaussColorTorque.commute_smul",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceMatterTorqueFiber._proof_3",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.instDecidableEqIndex_canonicalPreparationSourceGaussKineticTorque",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.QuantumEnd._proof_2",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceColor_number",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.instNormedAlgebraRealContinuousLinearMapComplexIdH_canonicalPreparationSourceGaussColorWard._proof_1",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceColorChargeFiber._proof_4",
+      "_private.CanonicalPreparationSourceGaussKineticTorque.0.LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceColorWardLinear._abel_2",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.instNormedAlgebraRealContinuousLinearMapComplexIdH_canonicalPreparationSourceGaussConnection._proof_1",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceNativeSandwichTorque._proof_2",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceNativeSandwichWard",
+      "_private.CanonicalPreparationSourceGaussColorWard.0.LowEnergy.PreparationVacuumPhysicalGaussColorTorque.core_separates",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceNativeSandwichWard._abel_1",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceNativeActionWard",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.instNormedAlgebraRatContinuousLinearMapComplexIdH_canonicalPreparationSourceGaussColorWard",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceColorCovariantTorque._proof_1",
+      "_private.CanonicalPreparationSourceGaussColorWard.0.LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sum_commutes",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceMatterTorque_generated._simp_1",
+      "LowEnergy.PreparationVacuumPhysicalGaussColorTorque.sourceColorConnectionFiber._proof_3"
+    ],
+    "public_roots": 30
+  },
+  "strict_fresh_production": [
+    {
+      "file": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSourceGaussConnection.lean",
+      "sha256": "467d35df68d0b33707f61d22d18a47d8bc16f75a4b9df97ea5871069a5d4da78",
+      "strict_seconds": 15.233,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "object_sha256": "13798e49eaad1b9b011f3c05de0eac2b63e65fa909e84336b990a0e275eb84bf"
+    },
+    {
+      "file": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSourceGaussKineticTorque.lean",
+      "sha256": "70b8db56ec0529ff48e56f700dabf58db740fb59a16612146e49dca495d87ac7",
+      "strict_seconds": 23.521,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "object_sha256": "72a534f17d2594ad59fa18ea678f7dd1ff0e7e30b11adc7f76a0773605bc4426"
+    },
+    {
+      "file": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSourceGaussColorWard.lean",
+      "sha256": "129561068a905a96e479879ffe000274283d3469cf8ed248e7602d0832f0903b",
+      "strict_seconds": 46.27,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "object_sha256": "a6e9a9c0e942457e1d1309211f1cb7cd0ea53f22e6b39d47a99295e4367ee224"
+    }
+  ],
+  "strict_explicit_types": [
+    {
+      "file": "Lean/scratch/AlphaSource/PreparationPhysicalGaussColorTorqueAudit/AuditProofs.lean",
+      "sha256": "ff359d36e6605e10fdcb2fe8ab71562972ac3c16d1595e19da9e1421eee44b93",
+      "strict_seconds": 25.118,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "strict_complete_audit": [
+    {
+      "file": "Lean/scratch/AlphaSource/PreparationPhysicalGaussColorTorqueAudit/Audit.lean",
+      "sha256": "d092647a67ec003f4386fa0e93675f89a0aa871b556d63fb78630ae432616c7c",
+      "strict_seconds": 85.101,
+      "log_sha256": "716a3e354296dcdceb277b31afedda2f00c0a5977ea8ad689a500428e5710ab1"
+    }
+  ],
+  "archive_parity": {
+    "audit_bytes_identical": true,
+    "successful_kernel_result_reused_by_exact_code_and_production_input_parity": true,
+    "not_recompiled_after_success": true
+  },
+  "source_inventory": {
+    "modules": 946,
+    "unique_resolution": true,
+    "current_hashes": true,
+    "signed_prior_modules": 943,
+    "fresh_owned_modules": 3,
+    "complete_declaration_module_walk_retained_private": true,
+    "read_only_fourth_owner": "alpha-source/em-identification (GaussComposite)"
+  },
+  "authorized_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "closure_policy": "complete type/value including opaque, all owned/private/generated declarations and constructor/recursor RHS dependencies; unsafe/partial/unknown/unread rejected; forbidden target constants excluded",
+  "independent_python": {
+    "schema": "physical-gauss-color-torque-independent-generic-controls/v1",
+    "status": "FIRST_SUCCESS",
+    "phase": "CERTIFY",
+    "counts": {
+      "checks": 103,
+      "negative_controls": 26,
+      "bindings": 21,
+      "canonical_paid_nodes": 3
+    },
+    "checks": [
+      "binding:Lean/scratch/AlphaSource/PreparationPhysicalGaussColorTorque/SourceGaussConnection.first-strict.json",
+      "binding:Lean/scratch/AlphaSource/PreparationPhysicalGaussColorTorque/SourceGaussConnection.lean",
+      "binding:Lean/scratch/AlphaSource/PreparationPhysicalGaussColorTorque/SourceGaussConnection.olean",
+      "binding:Lean/scratch/AlphaSource/PreparationPhysicalGaussColorTorque/SourceGaussConnection.strict.log",
+      "first-trust-werror:SourceGaussConnection",
+      "binding:Lean/scratch/AlphaSource/PreparationPhysicalGaussColorTorque/SourceGaussKineticTorque.first-strict.json",
+      "binding:Lean/scratch/AlphaSource/PreparationPhysicalGaussColorTorque/SourceGaussKineticTorque.lean",
+      "binding:Lean/scratch/AlphaSource/PreparationPhysicalGaussColorTorque/SourceGaussKineticTorque.olean",
+      "binding:Lean/scratch/AlphaSource/PreparationPhysicalGaussColorTorque/SourceGaussKineticTorque.strict.log",
+      "first-trust-werror:SourceGaussKineticTorque",
+      "binding:Lean/scratch/AlphaSource/PreparationPhysicalGaussColorTorque/SourceGaussColorWard.first-strict.json",
+      "binding:Lean/scratch/AlphaSource/PreparationPhysicalGaussColorTorque/SourceGaussColorWard.lean",
+      "binding:Lean/scratch/AlphaSource/PreparationPhysicalGaussColorTorque/SourceGaussColorWard.olean",
+      "binding:Lean/scratch/AlphaSource/PreparationPhysicalGaussColorTorque/SourceGaussColorWard.strict.log",
+      "first-trust-werror:SourceGaussColorWard",
+      "exact-third-source",
+      "exact-third-object",
+      "binding:Lean/scratch/AlphaSource/PreparationPhysicalGaussColorTorque/capsule.md",
+      "binding:Lean/scratch/AlphaSource/PreparationPhysicalGaussColorTorqueAudit/frozen-prefix-inputs.json",
+      "binding:Lean/scratch/AlphaSource/PreparationPhysicalGaussColorTorqueAudit/production-build.json",
+      "binding:Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSourceGaussConnection.lean",
+      "binding:Lean/scratch/AlphaSource/PreparationPhysicalGaussColorTorqueAudit/overlay/CanonicalPreparationSourceGaussConnection.olean",
+      "binding:Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSourceGaussKineticTorque.lean",
+      "binding:Lean/scratch/AlphaSource/PreparationPhysicalGaussColorTorqueAudit/overlay/CanonicalPreparationSourceGaussKineticTorque.olean",
+      "binding:Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSourceGaussColorWard.lean",
+      "binding:Lean/scratch/AlphaSource/PreparationPhysicalGaussColorTorqueAudit/overlay/CanonicalPreparationSourceGaussColorWard.olean",
+      "source-anchor:nativeFock (inverseL z v).1",
+      "source-anchor:sourceColor_covariant_connection",
+      "source-anchor:(-Complex.I)",
+      "source-anchor:sourceColorCharge_hermitian",
+      "source-anchor:sourceColorCharge_pair",
+      "source-anchor:sourceNativeSandwichTorque",
+      "source-anchor:sourceColorCovariantTorque v f",
+      "source-anchor:GaussNativeForm.adjoint_pair",
+      "source-anchor:GaussNativeEnergy.scalarWeight",
+      "source-anchor:GaussNativeEnergy.gaugeWeight",
+      "source-anchor:sourceNativeActionWard",
+      "source-anchor:\u2211 i : Fin 3,\u2211 j : Fin 3",
+      "source-anchor:sourceColor_coframeDerivative",
+      "source-anchor:GaussCoframeKinetic.adjoint_pair",
+      "source-anchor:sourceColor_spin_full",
+      "source-anchor:(a : Fin 7)",
+      "source-anchor:if a.val<3",
+      "source-anchor:sourceColor_number",
+      "source-anchor:numberShift",
+      "source-anchor:sourceColor_coframeAction",
+      "source-anchor:sourceMatterTorqueFiber",
+      "source-anchor:GaussMatterCore.localMatrix i b z",
+      "source-anchor:sourceConfigurationTorque_ward",
+      "source-anchor:sourceActualN1_gaussColorCore",
+      "source-anchor:sourceTestApprox q.F (sourceActualN1Primal",
+      "source-anchor:CanonicalPhysicalWardCore.currentAction",
+      "source-anchor:yukawaTorque",
+      "toy-number-weight-charge-commute",
+      "toy-charge-weighted-Hermitian",
+      "negative-occupationweight-removed",
+      "toy-directional-constant-charge",
+      "toy-covariant-connection-minus-i",
+      "negative-inverseL-connection-deleted",
+      "negative-covariant-sign-flipped",
+      "toy-number-preserved-native",
+      "toy-original-adjoint-pair",
+      "toy-two-connection-legs-ward",
+      "negative-left-connection-leg-deleted",
+      "negative-right-connection-leg-deleted",
+      "negative-adjoint-as-unweighted-derivative",
+      "toy-native-potential-scalar-commutes",
+      "toy-native-ward-linear-sums",
+      "negative-native-whole-zero",
+      "negative-spatial-crossweights-deleted",
+      "toy-full-seven-primaldual-commute:0",
+      "negative-spin-dual-deleted:0",
+      "toy-full-seven-primaldual-commute:1",
+      "negative-spin-dual-deleted:1",
+      "toy-full-seven-primaldual-commute:2",
+      "negative-spin-dual-deleted:2",
+      "toy-full-seven-primaldual-commute:3",
+      "negative-spin-dual-deleted:3",
+      "toy-full-seven-primaldual-commute:4",
+      "negative-spin-dual-deleted:4",
+      "toy-full-seven-primaldual-commute:5",
+      "negative-spin-dual-deleted:5",
+      "toy-full-seven-primaldual-commute:6",
+      "negative-spin-dual-deleted:6",
+      "toy-number-weighted-CFadjoint-commutes",
+      "toy-fullCF-real-nonzero",
+      "toy-fullCF-commutator-zero",
+      "toy-numberShift-charge-commutes",
+      "toy-config-exact-native-plus-matter",
+      "negative-CFzero-promoted-wholezero",
+      "negative-matter-branch-deleted",
+      "negative-native-branch-deleted",
+      "toy-weak-config-native-plus-matter",
+      "toy-N1-core-all-four-branches",
+      "negative-current-torque-deleted",
+      "negative-Y-torque-deleted",
+      "negative-weightTorque-deleted",
+      "negative-fourmaterial-defects-deleted",
+      "negative-fraction-charge-unitized",
+      "negative-residue-deleted",
+      "negative-fourpi-deleted",
+      "negative-original-action-hbar-deleted",
+      "toy-experiment-target-independent"
+    ],
+    "bindings": {
+      "Lean/scratch/AlphaSource/PreparationPhysicalGaussColorTorque/SourceGaussConnection.first-strict.json": "63dbaa5d0b5ce425aa06af9a7385018736e2d21bb197d090249f06c803d7c5de",
+      "Lean/scratch/AlphaSource/PreparationPhysicalGaussColorTorque/SourceGaussConnection.lean": "d8d54dad751e95e37880606510df247d74cadcbac6dbc49b586ef2a6739a8524",
+      "Lean/scratch/AlphaSource/PreparationPhysicalGaussColorTorque/SourceGaussConnection.olean": "5aa43c4f19c39489e92fc6bd09771adbcb5975858660f81f3390213696025997",
+      "Lean/scratch/AlphaSource/PreparationPhysicalGaussColorTorque/SourceGaussConnection.strict.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "Lean/scratch/AlphaSource/PreparationPhysicalGaussColorTorque/SourceGaussKineticTorque.first-strict.json": "bc0c7d346a22edd2c3bbe3311670e7830c11ca132ae2c28e05640f9711d4efd8",
+      "Lean/scratch/AlphaSource/PreparationPhysicalGaussColorTorque/SourceGaussKineticTorque.lean": "132b6c96dfd2c552f386066f53e30cfb495f5347157cc56874d9635f45394cc1",
+      "Lean/scratch/AlphaSource/PreparationPhysicalGaussColorTorque/SourceGaussKineticTorque.olean": "ded45338f1540d5b2fa1cbfbdc1478792a122629ee157ba97d751e8553fc8b85",
+      "Lean/scratch/AlphaSource/PreparationPhysicalGaussColorTorque/SourceGaussKineticTorque.strict.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "Lean/scratch/AlphaSource/PreparationPhysicalGaussColorTorque/SourceGaussColorWard.first-strict.json": "1c0fc35e6d28bf0f58b27a0ae91a4cb5c1e8724e196a70436a87286715c8b316",
+      "Lean/scratch/AlphaSource/PreparationPhysicalGaussColorTorque/SourceGaussColorWard.lean": "c26650c0e7334959b3e0a7d13e1113df32a1d87ddb1f0b55d840fa593ec0f14a",
+      "Lean/scratch/AlphaSource/PreparationPhysicalGaussColorTorque/SourceGaussColorWard.olean": "2de2aec8060f99eb2fa0b740e9f450ed542e62338e6a8771d1749403f0c7d2fa",
+      "Lean/scratch/AlphaSource/PreparationPhysicalGaussColorTorque/SourceGaussColorWard.strict.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "Lean/scratch/AlphaSource/PreparationPhysicalGaussColorTorque/capsule.md": "c6a13ab6854ced6351dc2df1385ccedad24197c146eb5b94928fb73a124d2880",
+      "Lean/scratch/AlphaSource/PreparationPhysicalGaussColorTorqueAudit/frozen-prefix-inputs.json": "89097df4c09c572c1a2ff586632177788f97a5a5a011bc66097b548de1013327",
+      "Lean/scratch/AlphaSource/PreparationPhysicalGaussColorTorqueAudit/production-build.json": "ba73b007408303bea1ff9e652bc9d48f014cc392d861777f8f2c6fd53e952922",
+      "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSourceGaussConnection.lean": "467d35df68d0b33707f61d22d18a47d8bc16f75a4b9df97ea5871069a5d4da78",
+      "Lean/scratch/AlphaSource/PreparationPhysicalGaussColorTorqueAudit/overlay/CanonicalPreparationSourceGaussConnection.olean": "13798e49eaad1b9b011f3c05de0eac2b63e65fa909e84336b990a0e275eb84bf",
+      "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSourceGaussKineticTorque.lean": "70b8db56ec0529ff48e56f700dabf58db740fb59a16612146e49dca495d87ac7",
+      "Lean/scratch/AlphaSource/PreparationPhysicalGaussColorTorqueAudit/overlay/CanonicalPreparationSourceGaussKineticTorque.olean": "72a534f17d2594ad59fa18ea678f7dd1ff0e7e30b11adc7f76a0773605bc4426",
+      "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSourceGaussColorWard.lean": "129561068a905a96e479879ffe000274283d3469cf8ed248e7602d0832f0903b",
+      "Lean/scratch/AlphaSource/PreparationPhysicalGaussColorTorqueAudit/overlay/CanonicalPreparationSourceGaussColorWard.olean": "a6e9a9c0e942457e1d1309211f1cb7cd0ea53f22e6b39d47a99295e4367ee224"
+    },
+    "checker_sha256": "40d2ac0563103548a07473713a2ea69f60bbda87bac53c86a8ecb29b0862ac43",
+    "semantic_sha256": "6750ab9b0b6dfcebde799bd4818f6520567d75dde0813b607f85c2ffc4d43c5c",
+    "seconds": 0.038973,
+    "scope": "Fresh small weighted connection sandwich, full seven-spin primaldual, complete CF and nonzero native/matter/core Ward toy controls. No actual matrix fold, solver, Lean or old checker replay."
+  },
+  "signed_prior_receipts_sha256": {
+    "physical_mode_contact": "7803d3bc9c59ca2e12f40b323e6bbe095a9674c524d2b034ad30feb2c3ee9ccf",
+    "physical_n1_ward_collapse": "ba7a0f33a4f9fa00a7662b7ba7002e080b691c5cd000d9a4dca0c6feb174faad",
+    "physical_color_ward": "c0cc78cf501d7c235a8e75b4ad61e4067f83c3ec3b6ab78fac723876998b79e9",
+    "physical_color_charge": "047c5661d8621e0675e46ef929fa7ab5a571772a33f8d00117bbd93be9bd510d",
+    "rest_mode_coupling": "8802964825dd71b070957ab30ac840873de1b196c68017d2babd8f3801ccf397",
+    "rest_pole_spectrum": "099c3a23fb27cd4f402e22b4d0ea9b3fd75afac6f27afc697b0d464a8ce88195",
+    "physical_abel_zero_read": "c297b9f9b5844a0aa4ca17856ea3cc552d38df7796358e129fec0ee7cb352420",
+    "static_pole_response": "3679b2f845f21c39d19a107adac1243177047ba3c2de3297a8799e1dfec81988",
+    "full_origin_response": "f737fa9d452844c51e87f66dd8a2e563e1995b94d033dd170988824b21e248c3",
+    "constraint114": "436d213d8c7fa131725db16cc6299987905c7e35a6a367d76f05bb7e0f895d23",
+    "whole_origin": "9f47db64bfd20dfb8862f3b5928efd3a8ddecbb70c713c1ed1238bfd52fc7788",
+    "mixed_effective": "69be7f6806e0b2313d996efce3edeac5b6224a87e2cb594f3c32300abeb85a5e",
+    "mixed_principal": "a511ddf53194fa7ba1a6ac832fd6c81e91be751f10bbef782beeb515de2e6e88",
+    "mixed_control": "445ec8aaac9cd8152fdd96e65ed912010662e1d544b5267d370a892122ea4a63",
+    "physical_number_one_read": "fcc804e2973dbd65373a8dc2b5edced5202aa39a5b69124080db2f16c2e8a85f",
+    "physical_grade_zero_read": "0c752962803f5f143fbaa5c3e6366f0903520ddf9fb919370953779ac80bdaa7",
+    "physical_zero_read": "db120099c1409af5a9d36c553e8be710283507bda6496c232929431a701ab98e",
+    "physical_field_channel": "67348bfc5e6c2e1da297d4e11f8868bd6c23a2103282ab47716776f7d0d64191",
+    "physical_pole_amputation": "d1714c7ad9f8775812c17661eb12215b76ef0b73715342c0ffce72254cc339ee",
+    "source_propagation_constrained_pole_return": "069eacba276e92ff35c3974b6e4ac48143c4f09b6b2d589d94e55b44eb21cc0a",
+    "physical_pole_half_response": "471e22a958436c56a2f012840729ff34b5e4dd070666cb88e59c092ff6d4cbc7",
+    "pole_quantum_ward": "169d80b4cdc1180c478f5e5909b851f997614991f88fb62358eedcb10ea51fdd",
+    "physical_pole_leg_dynamics": "1b173676f7bb025847af8adc2b7efec2d2bfb3434b617f83da3dcedbd7c4c92d",
+    "moving_current_initial_ward": "63d982391a50310d2cdb368ebd33b5ac600d891a0e8aa26ca558c53c87db7acc",
+    "moving_pole_gauss_return": "66927656f42912e6f82b3d358e028507e14f36f707bd18e47a6d687792c308e9",
+    "physical_current_laplace_return": "5805a899c1d364ce098ed01342d434377ed10395b0f31b809a3f44f8cedf81c1",
+    "moving_pole_current": "de31822c29813d5f6e2827bcf070784859b59716be941ddc2e002d57acb92d64",
+    "current_regular_anchor": "cce918b1db49f39816a19cc2a9c04499150da3bc9bad197af501f9413934d97a",
+    "source_propagation_common_momentum": "0d6b533760468d37827f8c50eadc1e4584ad6b1918c01aa9c390fabc3c20ea54",
+    "current_constrained_inverse": "24d14f21a30bfa9104d301722beafcd1cd88ddc5e6f5f795e085c87e9ad56500",
+    "current_native_laplace_bridge": "2019af3cea1f52e5320cb412840d83d9fe15e813d31194181ee651e5e2e6ab62",
+    "current_signal_operator": "a34885efa52edc54864983549e63181af785b641d3415874831dbdbb04dc0506",
+    "current_signal_realization": "2aede437f5abcd248705823e09a007505b0f81ed78e75801037565cb5ad931d2",
+    "source_propagation_native_euler_history": "706d21f97e2adcf85a3ae79a0daaf0cff9bbca83973ec35f16e84c3f6aac69e1",
+    "current_half_operator": "edbf804cb2b6480dfb8e7e05e5482fe2a4a822ff50a262433679c25927e7ddd0",
+    "current_visible_feedback": "a4544ace05eb5d78c779bc32d7473bb79fdaac70aecefa72fd898c6ed781a455",
+    "source_propagation_mother_residual_directions": "0f72f949ab50c728a0b72ed99ff475ac80f44fc098b74c6de282222e74c762f1",
+    "noether_response_price": "f4ad715722bd4e2a4b9c2309795ddac3d2591a0360304a44cccd66615cae63b9",
+    "physical_tail_price": "5ee72816f4e5864473426e4aae6da587790a128803153d3eb143b41aa4410bd5",
+    "matter_euler_feedback": "7b71a39e327d552b57b34c8e411fecf3e2c2c7c59c0db60a6a34316da6846248",
+    "fixed_momentum_action_return": "4bf47cf657b8f8684f810aa0654990478f5fa41346ce302e3a9ffe2610993cb0",
+    "independent_momentum_return": "2b258e9077e16565931580bf3cb1b1ce0e27bbe351c8352f8847482819a57926",
+    "moving_noether_return": "44995a196e7e5524f92c7fe56493bf97abad89d50a0a95f5d96171bb6d8e78fd",
+    "number_radial_return": "b72422ee236a6e1196a47725874d96d17bb5e3840bb55ec0198122762bd2b40e",
+    "legendre_current_return": "d92f15763a250c34724ec25a1bd1894788b439cf6b7fd25558d54d32f19bb374",
+    "legendre_spin_return": "165881aa683b436e6e0b0bc4cbe86aac512ca961c4c45521842af902b43ca7b6",
+    "gauss_measure_return": "f6e32087700997d55d76c2577506bb6b67e9c1d03a39c73516cf40ab8e6e2335",
+    "spin_car_return": "5ae14119087057a3d4d93cf91ca62d0b25174cbb5f21c069395193505dbed935",
+    "spin_gauss_contraction": "78cf1bae438602576e20f123cbb4078c2202846fe78c4378cef1805a8ca72f94",
+    "coframe_spin_reduction": "631ff50e961fbd0dba9eabf3cd0cb27d5acd93284e05cdb0b037f48a67b64abf",
+    "coframe_quantum_current": "fad4798d7dbc7ebefa103634b92c2b34da2345820d4452b3e447965640db39bb",
+    "coframe_legendre_source": "1a7587c4ffb6c0dd7e9dd04b55cb4f787d953c2c387036b3701ae40ef682b5c9",
+    "noether_chart": "e60c563adb1fcbc8242e361583684e7c993e824daabcefb22f17f40f4222b6f4",
+    "original_density": "19667b08a2cea7cda5e187afa0a76f69f26e49736ca49134e68741b40e0ab882",
+    "gravity_legendre_source": "02fefb19c909378784e1d7f5eedd2fed3808a7aaa479ddf83bc1b6656c7c3c6b",
+    "repaired_gravity_action_return": "6a646f9ab72f26d404d913719aa017a58b625f31cb1f5b5046f0762dc96ea134",
+    "native_full_gravity_return": "478cabc8c668f5bba63b1d21ebf3ee4fcacb69c16f7d71ffa51adcb1755eac59",
+    "native_source_restriction": "2fb4ea0952daa8321037c6ad34c29f4239d8f39cbe187797e125b3d0f11ce847",
+    "lorentz_field_injection": "f113389337daf02e59d9950fc434f8d4871a358800811a13898a55883cc5b33a",
+    "native_field_injection": "bdf3325e5b06592a85271552d2c562280e34f8505ce26e36e71cdf9321c3bb80",
+    "native_local_ward": "2033ba24d8ab5147b1d978cf4b0898e84c709c78db26f301c7d3a01a21213425",
+    "weighted_charge_action_ward": "d109242ff7d376731edc43abf93ba25f81ea95a9a9e7a50864bc9c83913224b3",
+    "source_charge_ward": "fefd72079652ccfe36063f244259fe240214f0b318691f84407177293b857d74",
+    "noether_ordinary_ward": "d1ed11a316acff07a66c32ca8269dd54398aa2babcdae6cc5d73167eb20fb64d",
+    "ordered_real_signal": "619d2f9d07c76b2925f77696cd40c9b094743b5ae166804ba4139940f93fba89",
+    "real_reaction": "51a253fd1cf929a3954087aa2cd782cdf809fa328c7b4b6297ad512f367fe2d6",
+    "physical_half_axis": "8f28fa054ef1a0d647d70f299ade73c50af58179f66f6a2ef57ccaa7776970c7",
+    "physical_feedback": "3458811945c48f63d6498e6cfcc420c93ecd6d190d7918ce11961ac2fd61699e",
+    "raw_joint": "218c74be9947e82c1abe2d031ef54ae8b04a2f33be1aefa55755586e57bc781d",
+    "original_green": "4437d4dcd6d8e2d75fa0cffc6f52d450c9a13e57fb617ce88473bbda8ffb7695",
+    "action_decomposition": "5bd8ac3efc2d9c0a83c9bfacea15e157131137e347a9b8f8afe3f43a17a56275",
+    "joint_field": "9e8ab4652125ab16d3fa062d200f0a8d8b041a124f24b75cceaed599a3706205",
+    "gauge_source_injection": "63c8aaae6bae453a8804258fcbf89e7266b06ab99d02e243539857fe7fb0ed4b",
+    "spatial_density": "0b270f4be7e7ab2781f353ef2bea6804d5f78c9833bd58d43959c0b9159fa7aa",
+    "half_density_fiber": "35ffc0cb81ab3c88517c6aa2716c7b01f6ab7eacd4c9a8a75190dfb75c7bc0c1",
+    "field_covector": "caf985a985620492780e14e895298c82bc5b7f13b88dbc08a8ed66afcdaa179b",
+    "uncut_yukawa": "2aa5f949d475aeda129d32cf8e09353e52e0c2bf87a4cd459844a9bd2a9fbaad",
+    "graded_transport": "1f8bf894c9dde9d288df1d52ffa2167964afd8730bd01a2a439331e28bfd6b5b",
+    "action_field_lift": "6c5d784e55e45ee212eab60247f36af94e99655d28677f9bb5a13d6aabee500f",
+    "source_action_jets": "6ef40fc1cde5600b4ec96c494f127cefb2e23b73a331a7b3e3669da00889cbb3",
+    "source_prepared_response": "2765cdeb2bc4c249c3db8bc1994f744a6e226c12dafc0f985828bdde998f5c29",
+    "serialized_source": "661ac04678daf4990ccfc1c00a1cd97bca3c15690ca7c65baf60335827e9b79f",
+    "actual_prepared_mixed_selected_modules": "dad5a15cd5e30521411740afca2f5716403a7658bd8db8c9b69577ac8120380e",
+    "full_electric_ward_selected_pair_current": "303655c86ce0322aaf67c07c02e2474fd0eddbc93e72087200864c2600dcba41",
+    "original_spin_square_selected_theorem": "0c8dff722b4e8a56777b836b78edea6b31e6e49d1978bfc3b5149aa233a9e439",
+    "source_action_selected_module": "35f37d3bc25e51e81f4ece60ff1a61fc09fde0d0ba724a5c9c8cb20e2eb8aa0e",
+    "original_grade_return_selected_restoration": "75a85791130700de0877ccf3d2099d4000dcab3ac11cd445d2e4504c09effd26",
+    "original_vacuum_hamiltonian_selected_module": "0476f3b125de7ae91e23406481b0860e208a90b719c1bd974f712f12716e7d97"
+  },
+  "signed_direct_source_objects": {
+    "CanonicalPreparationSerializedConsumer": {
+      "file": "Lean/scratch/AlphaSource/PreparationSerializedSourceAudit/overlay/CanonicalPreparationSerializedConsumer.olean",
+      "sha256": "e7e10e562a33e0b2380ce208274b9230cf81e3435e78493bbd5be8fe51e48cc5",
+      "signed_source_sha256": "4a54a2c3355f37e6e5825a113bc22eee0f3ddec2a2b03ce8b3cc621e1110b275",
+      "signed_private_prior": "serialized_source",
+      "signed_selected_object_prior": "matter_euler_feedback"
+    },
+    "CanonicalPreparationFieldQuantizationSymbols": {
+      "file": "Lean/scratch/AlphaSource/PreparationActualFieldQuantizationAudit/overlay/CanonicalPreparationFieldQuantizationSymbols.olean",
+      "sha256": "44a2e74c7ff53d4a0b7ee50955957827ffa88cfe0bfaf8db2d473b43d620a4eb",
+      "signed_source_sha256": "984e71b784d34988fd0f4d10a0178d227fae5c8b87a4afecd3c5ce6a0f336214",
+      "signed_selected_object_prior": "source_propagation_mother_residual_directions"
+    },
+    "CanonicalPreparationFieldQuantizationCore": {
+      "file": "Lean/scratch/AlphaSource/PreparationActualFieldQuantizationAudit/overlay/CanonicalPreparationFieldQuantizationCore.olean",
+      "sha256": "df29e86df27657be523d97419cfe00b5bfe34e3afdd37e064c90fe9c7615d92a",
+      "signed_source_sha256": "e0c85c2a13276430701077b3339b3025e6f1226d993cedcc0823526223fe805b",
+      "signed_selected_object_prior": "source_propagation_mother_residual_directions"
+    },
+    "CanonicalPreparationFieldQuantizationContacts": {
+      "file": "Lean/scratch/AlphaSource/PreparationActualFieldQuantizationAudit/overlay/CanonicalPreparationFieldQuantizationContacts.olean",
+      "sha256": "0ab5732923cc8eaea8fe8c35aa4981ae5825b75374593710fc31c8f3f7610ac4",
+      "signed_source_sha256": "9d63f9b7318c4fcf4e0ed5cc2d0dfd9e1c39e467c1a6be24b42f1b4b5463724a",
+      "signed_selected_object_prior": "source_propagation_mother_residual_directions"
+    },
+    "CanonicalPreparationPhysicalRawTimeJets": {
+      "file": "Lean/scratch/AlphaSource/PreparationPhysicalFeedbackAudit/overlay/CanonicalPreparationPhysicalRawTimeJets.olean",
+      "sha256": "579624b8f73e2f96aa08f2e6ba1f1bc87a64047664de748a4c731d621ad2c651",
+      "signed_source_sha256": "2f89e21da9c88f69e07033caf755227938e086413a63a504a270528381ab4d0f",
+      "signed_selected_object_prior": "matter_euler_feedback"
+    },
+    "CanonicalPreparationRawJointReaderCompression": {
+      "file": "Lean/scratch/AlphaSource/PreparationRawJointAudit/overlay/CanonicalPreparationRawJointReaderCompression.olean",
+      "sha256": "f259bce8b516db60f732aa3e21e78985f853322ca08f3659277e774e8583422f",
+      "signed_source_sha256": "e233ab3bd9cc2169aa166869ccefb183545fc08b601f6a5041a57aa613f5a498",
+      "signed_selected_object_prior": "matter_euler_feedback"
+    },
+    "CanonicalPreparationActionCoreDecomposition": {
+      "file": "Lean/scratch/AlphaSource/PreparationActionDecompositionAudit/overlay/CanonicalPreparationActionCoreDecomposition.olean",
+      "sha256": "e710a67e575d84155e248aaf006e1ad76b6322e7e11b0ac92e10f509fdc90488",
+      "signed_source_sha256": "81668d2d0e4b9387a1ccc8ec26e61ee7a7139e839de63ece698175f0f8335dc3",
+      "signed_selected_object_prior": "matter_euler_feedback"
+    },
+    "CanonicalPreparationJointSource": {
+      "file": "Lean/scratch/AlphaSource/PreparationJointFieldAudit/overlay/CanonicalPreparationJointSource.olean",
+      "sha256": "54436d0fcea97fc17491152c33a03b92caab9f315c9a2f343a9e2245427fed1b",
+      "signed_source_sha256": "14fa2ff48557df549f3bfcf17c02ca7b82479d12ef3cc1f6687c33c37b2710bf",
+      "signed_selected_object_prior": "matter_euler_feedback"
+    },
+    "CanonicalPreparationJointMixedResponse": {
+      "file": "Lean/scratch/AlphaSource/PreparationJointFieldAudit/overlay/CanonicalPreparationJointMixedResponse.olean",
+      "sha256": "a1c99f2863e5e6454b7f7d42db4dde1a24152dd59c21327af66d5583732712eb",
+      "signed_source_sha256": "e9b8e08ed4b0ebf216d3a4bf4bb2809d2e54f050c07f496cf4a816e672f860df",
+      "signed_selected_object_prior": "matter_euler_feedback"
+    },
+    "CanonicalPreparationSpatialRatioDerivative": {
+      "file": "Lean/scratch/AlphaSource/PreparationSpatialDensityAudit/overlay/CanonicalPreparationSpatialRatioDerivative.olean",
+      "sha256": "f90766c667b5dd120caaab6682f9f95e0735b386e140caa966be31f16ea5465e",
+      "signed_source_sha256": "e7261b8a9bc703876a2c37ae045b0ee1f64ff5807494f3e23359b354e865f7f7",
+      "signed_selected_object_prior": "matter_euler_feedback"
+    },
+    "CanonicalPreparationSpatialMomentumTransport": {
+      "file": "Lean/scratch/AlphaSource/PreparationSpatialDensityAudit/overlay/CanonicalPreparationSpatialMomentumTransport.olean",
+      "sha256": "b8813e7c2ee748ffe14aaa0e0c4a215fb02bc7528672e16a686b5079603e8551",
+      "signed_source_sha256": "43f3269ab8ceac4b3dec41186f28a501a4736f467c56bdc62d73c9de71fb30c7",
+      "signed_selected_object_prior": "matter_euler_feedback"
+    },
+    "CanonicalPreparationSpatialFullFormFeed": {
+      "file": "Lean/scratch/AlphaSource/PreparationSpatialDensityAudit/overlay/CanonicalPreparationSpatialFullFormFeed.olean",
+      "sha256": "8b0d2fbc3d88d6436901c424f791ba8339936b5194c45b8ba8141454eead9eeb",
+      "signed_source_sha256": "476b1f6f262d5c6c4cf9501e090b6731d7482ec898d8311c267107d1f6d52071",
+      "signed_selected_object_prior": "matter_euler_feedback"
+    },
+    "CanonicalPreparationHalfDensityFixedFiber": {
+      "file": "Lean/scratch/AlphaSource/PreparationHalfDensityFiberAudit/overlay/CanonicalPreparationHalfDensityFixedFiber.olean",
+      "sha256": "23113a21a9b4aad6f8299a682f55b9847169838436b31333b6c23b61f0637b43",
+      "signed_source_sha256": "2b3af19e9b12bf8745806ed1e3dfb8d66463ef4867a0e9f54c6fac490cd0b9e0",
+      "signed_selected_object_prior": "matter_euler_feedback"
+    },
+    "CanonicalPreparationHalfDensityCompressionFeed": {
+      "file": "Lean/scratch/AlphaSource/PreparationHalfDensityFiberAudit/overlay/CanonicalPreparationHalfDensityCompressionFeed.olean",
+      "sha256": "949075f76259538748bbd92fd56ca28bf317d8f290095e9bf65e90b9b273de40",
+      "signed_source_sha256": "1758272997087e161ecdaddebd0b1026f438166cfe81f495285837790b1ba5d3",
+      "signed_selected_object_prior": "matter_euler_feedback"
+    },
+    "CanonicalPreparationFieldTangentCurrent": {
+      "file": "Lean/scratch/AlphaSource/PreparationFieldCovectorAudit/overlay/CanonicalPreparationFieldTangentCurrent.olean",
+      "sha256": "1672512914edb9f8d38cb3597e662ec662587e2a66aaad57e25bf4d0309524db",
+      "signed_source_sha256": "134843250c3fb8f190582d439c44e1f1b2c2ae9ee55fe24e1fb3129a4441f09e",
+      "signed_selected_object_prior": "matter_euler_feedback"
+    },
+    "CanonicalPreparationYukawaUncutDomain": {
+      "file": "Lean/scratch/AlphaSource/PreparationUncutYukawaAudit/overlay/CanonicalPreparationYukawaUncutDomain.olean",
+      "sha256": "0f00bf87e024338d01e8fd42e4301bce227e20be0aee569eca9c1f3b0262b6c3",
+      "signed_source_sha256": "a6778ad8570c085bfa0fdd7f4a9a97e1f72484b160eb64749ac8e3bd8dc2417b",
+      "signed_selected_object_prior": "matter_euler_feedback"
+    },
+    "CanonicalPreparationGradedDensityTransport": {
+      "file": "Lean/scratch/AlphaSource/PreparationGradedTransportAudit/overlay/CanonicalPreparationGradedDensityTransport.olean",
+      "sha256": "c24acf2a7409c911b4ec469daf0c93461b721fed5f759ef54245d6b2d84efb67",
+      "signed_source_sha256": "beda793a6c416dee4110c8953d43eeb7de29cac66ef86fd4fb590b5a4d59d30b",
+      "signed_selected_object_prior": "matter_euler_feedback"
+    },
+    "CanonicalPreparationGradedSourceForm": {
+      "file": "Lean/scratch/AlphaSource/PreparationGradedTransportAudit/overlay/CanonicalPreparationGradedSourceForm.olean",
+      "sha256": "b716d2ac76c2de0097b80ad1acf0fc7032dd208a69734deb4114579cec4ae0af",
+      "signed_source_sha256": "28ca81666b9acf47a363590f0d61121f52334b7cd1d72659895c2ffcefb460b5",
+      "signed_selected_object_prior": "matter_euler_feedback"
+    },
+    "CanonicalPreparationTransportedGraded": {
+      "file": "Lean/scratch/AlphaSource/PreparationGradedTransportAudit/overlay/CanonicalPreparationTransportedGraded.olean",
+      "sha256": "42f4b7e2da437eb806296ae9adf9c90c48648fab26290d9107074f057fdde150",
+      "signed_source_sha256": "a75e9f83b3015a27720d6dff0386261af391aaa663ef861a9e0baac8b2263c75",
+      "signed_selected_object_prior": "matter_euler_feedback"
+    },
+    "CanonicalPhysicalYResolvent": {
+      "file": "Lean/scratch/AlphaSource/PreparationSourceChartBudgetAudit/overlay/CanonicalPhysicalYResolvent.olean",
+      "sha256": "dbc715ab6691a4da2a2b931efc3e8e94fef140e993a47f0c17ff1c3f23a44033",
+      "signed_source_sha256": "012e77f1aae9a055746d95fbac457155cc6358ccd83d6e3359d84dbaf88efd32",
+      "signed_current_source_prior": "source_prepared_state",
+      "read_only_original_restoration_record": "Lean/scratch/AlphaSource/PreparationSourceChartBudgetAudit/reused-dag-restored-prerequisites.json",
+      "signed_selected_object_prior": "matter_euler_feedback"
+    },
+    "CanonicalPreparationSourceRestPoleSpectrum": {
+      "file": "Lean/scratch/AlphaSource/PreparationRestPoleSpectrumAudit/overlay/CanonicalPreparationSourceRestPoleSpectrum.olean",
+      "sha256": "92eba785a79cc135b00b50c1215831104ca736b94b75cb34bc45e920819ae058",
+      "signed_source_sha256": "65375627690cd3c9fc2ef91ebfb6af39e128eed29b6f3df4fc52bdf176d14281",
+      "signed_selected_object_prior": "moving_pole_current"
+    },
+    "CanonicalPreparationSourceMovingPoleGaussPreparation": {
+      "file": "Lean/scratch/AlphaSource/PreparationMovingPoleGaussReturnAudit/overlay/CanonicalPreparationSourceMovingPoleGaussPreparation.olean",
+      "sha256": "0638717890275d5ae98c7c4673ace1e78827cb8f28f8a497cd1d8128613e3bcf",
+      "signed_source_sha256": "b1962648e9e933f69b688c994170f58ed19553f81cc0f7d6f5317f94cc2bcea5"
+    },
+    "CanonicalPreparationSourceMovingPoleCurrent": {
+      "file": "Lean/scratch/AlphaSource/PreparationMovingPoleCurrentAudit/overlay/CanonicalPreparationSourceMovingPoleCurrent.olean",
+      "sha256": "1445a09b4c822569378b99259d1fe2a59ab5738e56d5f4be64ff39fe8bdad035",
+      "signed_source_sha256": "597349ef1aa7b2abd3342e2d1864bccc420a0d24d7a1d042794c169828c3145b"
+    },
+    "CanonicalPreparationActualMixedSourceGrades": {
+      "file": "Lean/scratch/AlphaSource/PreparationActualPreparedMixedAudit/overlay/CanonicalPreparationActualMixedSourceGrades.olean",
+      "sha256": "c30c1754d8d0c783cc40c42f6c25c8b2889cc824f07978624c69386f8896a89a",
+      "signed_source_sha256": "7fedcdfdb2d8e74c2f018b3db48209ee72a916a7f4035404b9c6e52656197d89",
+      "signed_selected_module_prior": "actual_prepared_mixed",
+      "old_framework_inventory_not_admitted": true
+    },
+    "CanonicalPreparationActualMixedPreparedKernel": {
+      "file": "Lean/scratch/AlphaSource/PreparationActualPreparedMixedAudit/overlay/CanonicalPreparationActualMixedPreparedKernel.olean",
+      "sha256": "284c6b539aff0677b6af13d33678c17ff37158f45abbac0d6cf8a16e83a9cec4",
+      "signed_source_sha256": "1cdbd8b59a11e65a43277049e0b1186d62905395e2498c8c5a5bb1afc7eaf283",
+      "signed_selected_module_prior": "actual_prepared_mixed",
+      "old_framework_inventory_not_admitted": true
+    },
+    "CanonicalPreparationElectricCoreWard": {
+      "file": "Lean/scratch/AlphaSource/PreparationFullElectricWardAudit/overlay/CanonicalPreparationElectricCoreWard.olean",
+      "sha256": "54686674faa42089d4b88bb170e04184c667ba290b81ce8c39e77185e3cb835e",
+      "signed_source_sha256": "017278fe2db72791bb82fdd1ab34706f92c5a9e16222f6ec35394c240b49c7f1",
+      "signed_selected_module_prior": "full_electric_ward",
+      "unrelated_old_module_inventory_not_admitted": true,
+      "signed_selected_object_prior": "matter_euler_feedback"
+    },
+    "CanonicalPhysicalForce": {
+      "file": "Lean/scratch/AlphaSource/PreparationSourceChartBudgetAudit/overlay/CanonicalPhysicalForce.olean",
+      "sha256": "b293d2d6d45e85dbc994eda8dc689d3f87cf32c2ce0c41bdcc8c66709d229a0a",
+      "signed_source_sha256": "bc1050913ac9fb14d465f04f436e81c0b2962dfe2f688d9bc11465baf52b1120",
+      "signed_selected_module_prior": "full_electric_ward_original_strict_source",
+      "reused_original_receipt_record": {
+        "module": "CanonicalPhysicalForce",
+        "source": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPhysicalForce.lean",
+        "source_sha256": "bc1050913ac9fb14d465f04f436e81c0b2962dfe2f688d9bc11465baf52b1120",
+        "object_sha256": "b293d2d6d45e85dbc994eda8dc689d3f87cf32c2ce0c41bdcc8c66709d229a0a",
+        "origin": "Lean/scratch/AlphaSource/PreparationVacuumDAGSemantic/overlay/CanonicalPhysicalForce.olean",
+        "readonly_old_source_restored_not_live_DAG_candidate": true,
+        "reused_from_manifest": "Lean/scratch/AlphaSource/PreparationSourceChartBudgetAudit/reused-dag-restored-prerequisites.json",
+        "manifest_sha256": "75a85791130700de0877ccf3d2099d4000dcab3ac11cd445d2e4504c09effd26",
+        "actual_overlay_object": "Lean/scratch/AlphaSource/PreparationSourceChartBudgetAudit/overlay/CanonicalPhysicalForce.olean",
+        "current_source_object_identity_paid_by_original_strict_restoration": true,
+        "old_gate_replayed": false
+      },
+      "unrelated_old_module_inventory_not_admitted": true,
+      "signed_selected_object_prior": "matter_euler_feedback"
+    },
+    "CanonicalPhysicalWardCore": {
+      "file": "Lean/scratch/AlphaSource/PreparationSourceChartBudgetAudit/overlay/CanonicalPhysicalWardCore.olean",
+      "sha256": "417466d40ca81a39838a6e5e6078a73b8bf6ddf010c53b6dd2a14a300a3e2766",
+      "signed_source_sha256": "5d8633057d43165411e0fae845595d6cc90e8d371148f3b2b39b3fb3b27335aa",
+      "signed_selected_module_prior": "full_electric_ward_original_strict_source",
+      "reused_original_receipt_record": {
+        "module": "CanonicalPhysicalWardCore",
+        "source": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPhysicalWardCore.lean",
+        "source_sha256": "5d8633057d43165411e0fae845595d6cc90e8d371148f3b2b39b3fb3b27335aa",
+        "object_sha256": "417466d40ca81a39838a6e5e6078a73b8bf6ddf010c53b6dd2a14a300a3e2766",
+        "origin": "Lean/scratch/AlphaSource/PreparationVacuumDAGSemantic/overlay/CanonicalPhysicalWardCore.olean",
+        "readonly_old_source_restored_not_live_DAG_candidate": true,
+        "reused_from_manifest": "Lean/scratch/AlphaSource/PreparationSourceChartBudgetAudit/reused-dag-restored-prerequisites.json",
+        "manifest_sha256": "75a85791130700de0877ccf3d2099d4000dcab3ac11cd445d2e4504c09effd26",
+        "actual_overlay_object": "Lean/scratch/AlphaSource/PreparationSourceChartBudgetAudit/overlay/CanonicalPhysicalWardCore.olean",
+        "current_source_object_identity_paid_by_original_strict_restoration": true,
+        "old_gate_replayed": false
+      },
+      "unrelated_old_module_inventory_not_admitted": true,
+      "signed_selected_object_prior": "matter_euler_feedback"
+    },
+    "JointCurrentHeisenberg": {
+      "file": "Lean/scratch/AlphaSource/PreparationSourceChartBudgetAudit/overlay/JointCurrentHeisenberg.olean",
+      "sha256": "e70fc85e8aeae62893291931ebca6d759d9e3560fefd0664ef1ade2e7f3e89da",
+      "signed_source_sha256": "5ca5ddea4b389da0af4bc5586cf2729c5d1064d704e81bfd5a93c637af8f552e",
+      "signed_selected_module_prior": "full_electric_ward_original_strict_source",
+      "reused_original_receipt_record": {
+        "module": "JointCurrentHeisenberg",
+        "source": "Verification/physics/low-energy-phenomenology/external-composite-decay/JointCurrentHeisenberg.lean",
+        "source_sha256": "5ca5ddea4b389da0af4bc5586cf2729c5d1064d704e81bfd5a93c637af8f552e",
+        "object_sha256": "e70fc85e8aeae62893291931ebca6d759d9e3560fefd0664ef1ade2e7f3e89da",
+        "origin": "/tmp/low-energy-inverse-volume-ward/JointCurrentHeisenberg.olean",
+        "origin_manifest_sha256": "8ce7ba9277d550deade0308b1649d4026eadaf276b62c46efdb60b455452d89a",
+        "reused_from_manifest": "Lean/scratch/AlphaSource/PreparationVacuumDAGSemantic/reused-current-prerequisites.json",
+        "manifest_sha256": "5a4cf1bed9b04d920e91c878a76c7142370795476b2d9b75f02063a95b9f3636",
+        "actual_overlay_object": "Lean/scratch/AlphaSource/PreparationSourceChartBudgetAudit/overlay/JointCurrentHeisenberg.olean",
+        "current_source_object_identity_paid_by_original_strict_restoration": true,
+        "old_gate_replayed": false
+      },
+      "unrelated_old_module_inventory_not_admitted": true,
+      "signed_selected_object_prior": "matter_euler_feedback"
+    },
+    "CanonicalPreparationSourceChargeSpectrum": {
+      "file": "Lean/scratch/AlphaSource/PreparationElectromagneticIdentityAudit/overlay/CanonicalPreparationSourceChargeSpectrum.olean",
+      "sha256": "8c5658b667bd69ca7a8a7571a3055b78d1e51e3177feb867717c16d423f75693",
+      "signed_source_sha256": "976622665bc4bd2eb07efc81726d76e0b166a92ba4ce6b9d0196ee3f2be87ba1",
+      "signed_selected_object_prior": "moving_pole_current"
+    },
+    "SaturationMonoid.PhysicsCore.LowEnergy.Electromagnetic.Action": {
+      "file": "Lean/scratch/AlphaSource/PreparationElectromagneticOriginalsAudit/overlay/SaturationMonoid/PhysicsCore/LowEnergy/Electromagnetic/Action.olean",
+      "sha256": "1e669f844714179900c5857753475c8e5002820cec52dd1d265078edcbc6af92",
+      "signed_source_sha256": "18e8d4c07684d27a274881b731a385f4f648bfbfb719cee63f412b714be215e7",
+      "reused_signed_electromagnetic_original_record": {
+        "module": "SaturationMonoid.PhysicsCore.LowEnergy.Electromagnetic.Action",
+        "source": "Lean/SaturationMonoid/PhysicsCore/LowEnergy/Electromagnetic/Action.lean",
+        "source_sha256": "18e8d4c07684d27a274881b731a385f4f648bfbfb719cee63f412b714be215e7",
+        "object": "Lean/scratch/AlphaSource/PreparationElectromagneticOriginalsAudit/overlay/SaturationMonoid/PhysicsCore/LowEnergy/Electromagnetic/Action.olean",
+        "object_sha256": "1e669f844714179900c5857753475c8e5002820cec52dd1d265078edcbc6af92",
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "strict_seconds": 29.985,
+        "command": [
+          "lake",
+          "env",
+          "sh",
+          "-c",
+          "export LEAN_PATH=\"$1:$LEAN_PATH\"; shift; exec lean \"$@\"",
+          "actual-electromagnetic-originals",
+          "Lean/scratch/AlphaSource/PreparationElectromagneticOriginalsAudit/overlay",
+          "-j1",
+          "--trust=0",
+          "-DwarningAsError=true",
+          "-DElab.async=false",
+          "--root=Lean",
+          "-o",
+          "Lean/scratch/AlphaSource/PreparationElectromagneticOriginalsAudit/overlay/SaturationMonoid/PhysicsCore/LowEnergy/Electromagnetic/Action.olean",
+          "Lean/SaturationMonoid/PhysicsCore/LowEnergy/Electromagnetic/Action.lean"
+        ],
+        "source_unchanged": true,
+        "shared_source_or_cache_modified": false,
+        "first_strict_source_object": true
+      },
+      "read_only_original_trace_bound": true,
+      "old_recompiled": false,
+      "signed_selected_object_prior": "moving_pole_current"
+    },
+    "CanonicalGradedGaugeReturn": {
+      "file": "Lean/scratch/AlphaSource/PreparationSourceChartBudgetAudit/overlay/CanonicalGradedGaugeReturn.olean",
+      "sha256": "1db07c4efdecfd2ac18536bc466599f50f3e132255c9e50071dff254305e1be8",
+      "signed_source_sha256": "16b511b6e50f77740164db4f90e52ef7b432960bfbe29175641f4050b06e5074",
+      "read_only_original_restoration_record": "Lean/scratch/AlphaSource/PreparationSourceChartBudgetAudit/reused-dag-restored-prerequisites.json",
+      "old_recompiled": false,
+      "new_full_type_value_closure_certifies_actual_selected_original_consumer": true
+    },
+    "CanonicalPreparationVacuumHamiltonian": {
+      "file": "Lean/scratch/AlphaSource/PreparationVacuumAudit/overlay/CanonicalPreparationVacuumHamiltonian.olean",
+      "sha256": "227785701e7ff95fe94a1cd0f7e508d2f31883789a708fba4abe3eb66bbcda0f",
+      "signed_source_sha256": "bb752eb076a55a18daad28bb63b1270850c9aaa633c15603bd5045b524ef5b66",
+      "signed_selected_module_prior": "vacuum",
+      "read_only_original_cache_record": "Lean/scratch/AlphaSource/PreparationSourceChartBudgetAudit/native-import-union.json",
+      "cache_record_sha256": "9e203778c44be117cadcff0d832f0d61af28f6c26bbbb45e5307afef11c95e39",
+      "old_recompiled": false,
+      "new_full_type_value_closure_checked": true,
+      "unrelated_old_inventory_not_admitted": true
+    }
+  },
+  "prediction_inputs_read": false,
+  "selected_original_source_objects": [],
+  "production_hygiene": {
+    "single_terminal_LF": true,
+    "new_file_diffcheck_including_EOF": true
+  },
+  "frozen_whole_input": {
+    "nodes": [
+      {
+        "source": "Lean/scratch/AlphaSource/PreparationPhysicalGaussColorTorque/SourceGaussConnection.lean",
+        "source_sha256": "d8d54dad751e95e37880606510df247d74cadcbac6dbc49b586ef2a6739a8524",
+        "object": "Lean/scratch/AlphaSource/PreparationPhysicalGaussColorTorque/SourceGaussConnection.olean",
+        "object_sha256": "5aa43c4f19c39489e92fc6bd09771adbcb5975858660f81f3390213696025997",
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "strict_seconds": 20.714
+      },
+      {
+        "source": "Lean/scratch/AlphaSource/PreparationPhysicalGaussColorTorque/SourceGaussKineticTorque.lean",
+        "source_sha256": "132b6c96dfd2c552f386066f53e30cfb495f5347157cc56874d9635f45394cc1",
+        "object": "Lean/scratch/AlphaSource/PreparationPhysicalGaussColorTorque/SourceGaussKineticTorque.olean",
+        "object_sha256": "ded45338f1540d5b2fa1cbfbdc1478792a122629ee157ba97d751e8553fc8b85",
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "strict_seconds": 19.609
+      },
+      {
+        "source": "Lean/scratch/AlphaSource/PreparationPhysicalGaussColorTorque/SourceGaussColorWard.lean",
+        "source_sha256": "c26650c0e7334959b3e0a7d13e1113df32a1d87ddb1f0b55d840fa593ec0f14a",
+        "object": "Lean/scratch/AlphaSource/PreparationPhysicalGaussColorTorque/SourceGaussColorWard.olean",
+        "object_sha256": "2de2aec8060f99eb2fa0b740e9f450ed542e62338e6a8771d1749403f0c7d2fa",
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "strict_seconds": 39.619
+      }
+    ],
+    "whole": true,
+    "math_regeneration": false
+  },
+  "readonly_original_square_recovery": {
+    "prior_source_receipt": "Lean/scratch/LowEnergyRetardedCouncil/InverseVolumeWard/covariant-gram-shape-certification.json",
+    "prior_source_receipt_sha256": "0c8dff722b4e8a56777b836b78edea6b31e6e49d1978bfc3b5149aa233a9e439",
+    "selected_theorem": "original_full_spin_square",
+    "old_recompiled": false
+  },
+  "private_overlay": {
+    "dependency_bindings_read_only": true,
+    "shared_source_or_cache_modified": false,
+    "unused_import_prerequisites_not_forced_into_physical_type_value_closure": true
+  }
+}

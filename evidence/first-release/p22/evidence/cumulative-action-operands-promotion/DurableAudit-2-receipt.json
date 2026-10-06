@@ -1,0 +1,27 @@
+{
+  "status": "complete",
+  "manifest_sha256": "6e175132326ceda3e83d407878706bfbcb6d766abefa7e29b61377ec8b8eb106",
+  "base_certificate_sha256": "ddc3b452e0369173d01cedb5b5eaa2fc782c3b5d2978d39d80be560670169b06",
+  "checks": [
+    {
+      "source": "Lean/docs/audits/physics/source-uniqueness/MotherCumulativeActionOperands.lean",
+      "source_sha256": "f58b9725c3c2a1fb420a8d3b60e61cf1f78b6e34c4fac6de7b96ccfafcdf4e7f",
+      "source_unchanged": true,
+      "command": [
+        "toolchains/lean-4.33.0-darwin_aarch64/bin/lean",
+        "--trust=0",
+        "-DwarningAsError=true",
+        "-o",
+        "Lean/.cache/cumulative-action-operands-promotion/MotherCumulativeActionOperands.olean",
+        "Lean/docs/audits/physics/source-uniqueness/MotherCumulativeActionOperands.lean"
+      ],
+      "returncode": 0,
+      "seconds": 23.456555208191276,
+      "log": "Lean/.cache/cumulative-action-operands-promotion/DurableAudit-2-000-MotherCumulativeActionOperands.log",
+      "olean": "Lean/.cache/cumulative-action-operands-promotion/MotherCumulativeActionOperands.olean",
+      "olean_sha256": "03a220455021ed7a2b3bdbc10d84e608670067ec1379e3dfb630ec7d53f479e2"
+    }
+  ],
+  "frozen_unchanged": true,
+  "parent_unchanged": true
+}

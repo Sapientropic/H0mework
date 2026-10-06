@@ -1,0 +1,12 @@
+import H0mework.Versions.AB.Arithmetic.PrimeShadow.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.Unified.Orbitals.Source.Charge.Reifier
+
+set_option autoImplicit false
+set_option maxRecDepth 16384
+set_option maxHeartbeats 0
+namespace SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule
+namespace LAlanine40K2025.UnifiedOrbitals.OriginalMetric.Charge
+
+generateOriginalChargeRows 70 77
+
+end LAlanine40K2025.UnifiedOrbitals.OriginalMetric.Charge
+end SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule

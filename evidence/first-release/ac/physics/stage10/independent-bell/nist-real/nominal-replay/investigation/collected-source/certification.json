@@ -1,0 +1,60 @@
+{
+  "authorized_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "classification": "bounded subordinate finite real optical producer and independent consumer",
+  "freeze": {
+    "commit": "40a278fec15e667ad393caa60527e55bc1247ab8",
+    "sha256": "562b062d5eaf79eafb29f41a8c314d350369eb3cb68ba21a1d46bfb2afe26021"
+  },
+  "lsp": [
+    {
+      "errors": 0,
+      "file": "Collection.lean",
+      "method": "task-owned lean --server; documentSymbol, idle fileProgress, published diagnostics",
+      "symbol_count": 1,
+      "warnings": 0
+    },
+    {
+      "errors": 0,
+      "file": "Consumer.lean",
+      "method": "task-owned lean --server; documentSymbol, idle fileProgress, published diagnostics",
+      "symbol_count": 2,
+      "warnings": 0
+    }
+  ],
+  "schema": "p23-collected-source-lean-certification/v1",
+  "scope": "Finite real source amplitudes, polarization-preserving local loss columns; no original root installation, complex channel certification or empirical identity.",
+  "sha256": {
+    "Collection.lean": "4c89ff1aebae41dc472d24930f79ca418bc3253fc48151889ca17eb308326977",
+    "Consumer.lean": "d44b26f529369eafad8a7055c67b500f82e223aa29e96c600eff4d7b8f830e9b",
+    "certify.py": "9003712ab1974430614887b1ceddda4ae338ac20c33292233c23aa4a170d34ac",
+    "criterion.md": "562b062d5eaf79eafb29f41a8c314d350369eb3cb68ba21a1d46bfb2afe26021"
+  },
+  "status": "certified",
+  "strict_checks": [
+    {
+      "exit_code": 0,
+      "file": "Collection.lean",
+      "flags": [
+        "--trust=0",
+        "-DwarningAsError=true"
+      ],
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "exit_code": 0,
+      "file": "Consumer.lean",
+      "flags": [
+        "--trust=0",
+        "-DwarningAsError=true"
+      ],
+      "stderr": "",
+      "stdout": "P23_COLLECTION_CERTIFIED declarations=156 primitive_nodes=5175 consumer_nodes=12291\nP23_COLLECTION_CONTROLS same_joint=true balanced_totals=true unequal_singles=-21/500 missing_partner_detected=true\n'P23.Collection.four_branches_conserve' depends on axioms: [propext, Classical.choice, Quot.sound]\n'P23.Collection.joint_read_from_source' depends on axioms: [propext, Classical.choice, Quot.sound]\n'P23.Collection.omegaA_generated_loss' depends on axioms: [propext, Classical.choice, Quot.sound]\n'P23.Collection.omegaB_generated_loss' depends on axioms: [propext, Classical.choice, Quot.sound]\n'P23.Collection.effective_rates' depends on axioms: [propext, Classical.choice, Quot.sound]\n'P23.Collection.Consumer.same_joint_distinct_singles' depends on axioms: [propext, Classical.choice, Quot.sound]\n"
+    }
+  ],
+  "toolchain": "leanprover/lean4:v4.33.0"
+}

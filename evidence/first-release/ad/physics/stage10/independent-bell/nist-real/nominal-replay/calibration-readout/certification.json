@@ -1,0 +1,182 @@
+{
+  "schema": "p23-calibration-readout-lean-certification/v1",
+  "version": "p23-calibration-readout-cal0001",
+  "status": "certified",
+  "phase": "lean-certify",
+  "criterion_freeze": {
+    "commit": "d9ead286cf6f3fb9051e4cb6aa235603e115dc97",
+    "criterion_sha256": "88369d029736091e579ed45da9f80a33e5c9cf245e33803a73ee68461bf2c242",
+    "sources_sha256": "cdead46159bcb0af5101b1d3d7ad0a9db0c369438690d3829fcbf2b02573733d"
+  },
+  "kernel_claims": [
+    "source_generated_distinct_pair_quantities",
+    "inclusive_loss_source_PGF",
+    "matched_single_pol_single_pulse_signal_only_exact_Klyshko",
+    "matched_increase_zero_to_two_mean",
+    "zero_herald_option_undefined"
+  ],
+  "authorized_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "source_audit": {
+    "candidate_declarations": 76,
+    "dependency_nodes": 16380,
+    "required_nodes": 34,
+    "primitive_nodes": 7014,
+    "source_count_PGF_loss_and_matched_consumer_in_closure": true,
+    "target_in_primitive": false,
+    "operational_root_in_closure": false
+  },
+  "focused_verification": {
+    "fresh_source_compilation": true,
+    "trust_level": 0,
+    "warning_as_error": true,
+    "commands": [
+      {
+        "source": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window/GaussianSource.lean",
+        "command": [
+          "lean",
+          "--trust=0",
+          "-DwarningAsError=true",
+          "--root=Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window",
+          "-o",
+          "${fresh_olean}/GaussianSource.olean",
+          "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window/GaussianSource.lean"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      {
+        "source": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/calibration-readout/CalibrationLaw.lean",
+        "command": [
+          "lean",
+          "--trust=0",
+          "-DwarningAsError=true",
+          "--root=Verification/physics/stage10/independent-bell/nist-real/nominal-replay/calibration-readout",
+          "-o",
+          "${fresh_olean}/CalibrationLaw.olean",
+          "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/calibration-readout/CalibrationLaw.lean"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      {
+        "source": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/calibration-readout/CalibrationCertification.lean",
+        "command": [
+          "lean",
+          "--trust=0",
+          "-DwarningAsError=true",
+          "--root=Verification/physics/stage10/independent-bell/nist-real/nominal-replay/calibration-readout",
+          "-o",
+          "${fresh_olean}/CalibrationCertification.olean",
+          "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/calibration-readout/CalibrationCertification.lean"
+        ],
+        "exit_code": 0,
+        "stdout": "CALIBRATION_CERTIFIED declarations=76 nodes=16380 required=34 primitive=7014\nCALIBRATION_AXIOMS P23.GaussianWindow.Calibration.IndependentCertification.source_bundle: [propext,\n Classical.choice,\n Quot.sound]\nCALIBRATION_AXIOMS P23.GaussianWindow.Calibration.IndependentCertification.inclusive_source_consumer: [propext,\n Classical.choice,\n Quot.sound]\nCALIBRATION_AXIOMS P23.GaussianWindow.Calibration.IndependentCertification.matched_source_consumer: [propext,\n Classical.choice,\n Quot.sound]\nCALIBRATION_AXIOMS P23.GaussianWindow.Calibration.IndependentCertification.zero_herald_consumer: [propext,\n Classical.choice,\n Quot.sound]\n",
+        "stderr": ""
+      }
+    ],
+    "lsp": [
+      {
+        "file": "GaussianSource.lean",
+        "errors": 0,
+        "warnings": 0,
+        "symbol_count": 1,
+        "method": "task-owned lean --server; documentSymbol, idle fileProgress, published diagnostics"
+      },
+      {
+        "file": "CalibrationLaw.lean",
+        "errors": 0,
+        "warnings": 0,
+        "symbol_count": 1,
+        "method": "task-owned lean --server; documentSymbol, idle fileProgress, published diagnostics"
+      },
+      {
+        "file": "CalibrationCertification.lean",
+        "errors": 0,
+        "warnings": 0,
+        "symbol_count": 2,
+        "method": "task-owned lean --server; documentSymbol, idle fileProgress, published diagnostics"
+      }
+    ]
+  },
+  "execution_source_freezes": {
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window/GaussianSource.lean": {
+      "commit": "26dec5f4c5bebd8ec6defc921c0ba79a85a79f23",
+      "sha256": "1dee783a0976a497139e64d4ef7278b203d56a0b119c84eea942bbb7846a10af"
+    },
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/calibration-readout/CalibrationLaw.lean": {
+      "commit": "829534f0e1eace805ce60918880041d5d9efa8b8",
+      "sha256": "0944bbc767afe4e1456613ad36caeaf0f8c90402839356a78aa015078c204e2d"
+    },
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/calibration-readout/CalibrationCertification.lean": {
+      "commit": "0712d496d628475779b4140e73ab629ad5054318",
+      "sha256": "ba7c2847bf2d5467f729e141fb2b6df201f7ed38ae23e6f22f894566399f947b"
+    },
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/calibration-readout/verify.py": {
+      "commit": "badd485d9feb9aeb43bc837d1faab84aaf6c0eee",
+      "sha256": "9eac2495f17a581a311f62feb6625cb0945c8bca825df5c006976028a4322e0e"
+    },
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/calibration-readout/tests.py": {
+      "commit": "badd485d9feb9aeb43bc837d1faab84aaf6c0eee",
+      "sha256": "2a3efd8d6e2696dd5b5fd193015fd95aa657bb4c009a38e5151290de670ed13b"
+    }
+  },
+  "bindings": {
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window/criterion.md": "66763dc0eb5d789df39227ba10e382d4bfb07138e4c7d27237b0fa605338206e",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window/gaussian.py": "5adfc235d6cb9b9ca61e804bded0fd2bff6a89860cd9332ec75a603e5f6bd852",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window/independent_fock.py": "f4a4d1549a1edce04cc5171c8043902db9c97328e0e7174e52da4fcdfa7d5162",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window/GaussianSource.lean": "1dee783a0976a497139e64d4ef7278b203d56a0b119c84eea942bbb7846a10af",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window/verification.json": "ae99fa5ccecd0c6821c371ac709c89fceb824ca5c8a2cece1b8f4621e9e5d0bf",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-prediction/public-comparison-po0003.json": "20f30388cd5ae23d29f737a20ec36d450def91b9a70be891c751057686d09fee",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/shalm2015-channel-inputs.txt": "17c5bc32515536634c451bf761f748ccd2e6c6002fa3949b58524e4cc1aeb3eb",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/source-code/author-code.txt": "99e6a27a51bb525c5c154cde5f679099d48dbf14ae54d758a55d9b9842be377b",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/investigation/design-sources.json": "13298573dc4a87470540cb3be6703acb1f4ccc236eaa15c3cd292a700396b203",
+    "Lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+    "Lean/lake-manifest.json": "aa60b347daf17a642d027cda3288f7d6f12c176c4ddd2677c28140daadb15c81",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/calibration-readout/criterion.md": "88369d029736091e579ed45da9f80a33e5c9cf245e33803a73ee68461bf2c242",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/calibration-readout/sources.json": "cdead46159bcb0af5101b1d3d7ad0a9db0c369438690d3829fcbf2b02573733d",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/calibration-readout/CalibrationLaw.lean": "0944bbc767afe4e1456613ad36caeaf0f8c90402839356a78aa015078c204e2d",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/calibration-readout/CalibrationCertification.lean": "ba7c2847bf2d5467f729e141fb2b6df201f7ed38ae23e6f22f894566399f947b",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/calibration-readout/verify.py": "9eac2495f17a581a311f62feb6625cb0945c8bca825df5c006976028a4322e0e",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/calibration-readout/tests.py": "2a3efd8d6e2696dd5b5fd193015fd95aa657bb4c009a38e5151290de670ed13b"
+  },
+  "numeric_audit": {
+    "first_scientific_snapshots_byte_identical": true,
+    "twelve_branches_bijective": true,
+    "exact_primary_rates_enclosed": 36,
+    "exact_primary_Klyshko_enclosed": 24,
+    "matched_exact_conditional_efficiencies": 4,
+    "control_counts": {
+      "primary": 28,
+      "independent": 60
+    },
+    "zero_herald_explicitly_undefined": true,
+    "public_efficiency_probability_half_width": "0.003",
+    "no_calibration_branch_selected": true,
+    "pair_quantities_distinct": true,
+    "bindings": {
+      "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/calibration-readout/independent_count.json": "0858761ce5840aa1ed1a7dc09f37604a7a1ed08b2a97aad4d5bb3a35dac2bf54",
+      "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/calibration-readout/calibration.json": "547ebf134776b1c6707e79929579dcb58047f70fa10d44fb047cd568639408a3",
+      "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/calibration-readout/calibration.py": "3be2b18ec39397b4de6bed95332ac1f8064378d37725f30aa46bbf2405952076",
+      "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/calibration-readout/independent_count.py": "6f755ac8d1fd7ef36af18d7fdc7f0e4ed3a544ab7e78aeb75ebf319d3cd0337d",
+      "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/calibration-readout/comparison.py": "550e9b0499079dfe3af974c934c4c48343db28d340c6ead2955f70259c3da3c3",
+      "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/calibration-readout/independent-comparison.json": "348048dc7cad246d1f632410d14cb7b8fab9b208f4d6008133d5cec45ef1726b"
+    }
+  },
+  "actual_calibration_failure_claimed": false,
+  "no_calibration_branch_selected": true,
+  "calibration_preparation_identified": false,
+  "calibration_ports_identified": false,
+  "calibration_pump_identified": false,
+  "background_subtraction_identified": false,
+  "source_mapping_identified": false,
+  "publication_configuration_identified": false,
+  "production_admitted": false,
+  "scope": "Source-count calibration; exact matched single-pol/single-pulse/signal-only Klyshko. No public calibration identity or full-Fock visibility/window Born theorem assigned.",
+  "regression_fixture_updated_without_source_or_kernel_change": true
+}

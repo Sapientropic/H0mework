@@ -1,0 +1,198 @@
+NIST Bell test public DAQ source extract; non-executable source material.
+Source: official NIST code/daq archives. Extracted 2026-10-02.
+Network endpoints, device identifiers and local paths are redacted.
+This extract does not establish execution at any named data-run epoch.
+NIST notice and source attribution: https://www.nist.gov/pml/applied-physics-division/bell-test-research-software-and-data
+
+MEMBER bell_client/client.yaml
+ORIGINAL_SHA256 978e458cd377bd949f035c6e14ec013f0ba51ed0dd11ea8d830eefcd34b38d43
+LINES 1-62
+1: ---
+2: alice:
+3:     channelmap:
+4:         detector: 1
+5:         sync: 7 
+6:         setting0: 3
+7:         setting1: 5 
+8:         gps: 6
+9:     ip: '[network-endpoint-redacted]'
+10:     #ip: '[network-endpoint-redacted]'
+11:     port: [network-port-redacted]
+12:     #ttag_offset: [clock-reference-value-redacted]
+13:     #ttag_offset: [clock-reference-value-redacted]
+14:     #  two timetaggers in 3079
+15:     ttag_offset: [clock-reference-value-redacted]
+16: 
+17:     timeTaggerPeriod: [clock-reference-value-redacted]
+18: bob: 
+19:     channelmap:
+20:         detector: 1
+21:         sync: 7
+22:         setting0: 3
+23:         setting1: 5
+24:         gps: 6
+25:     ip: '[network-endpoint-redacted]'
+26:     #ip: '[network-endpoint-redacted]'
+27:     port: [network-port-redacted]
+28:     ttag_offset: [clock-reference-value-redacted]
+29: 
+30:     timeTaggerPeriod: [clock-reference-value-redacted]
+31: analysis:
+32:     alicePeak: 62 
+33:     bobPeak: 123 
+34:     pockelOn: 10
+35:     pockelOnLength: 10
+36:     pockelOff: 200
+37:     pockelOffLength: 10
+38:     #abDelay: 10979 
+39: 
+40:     abDelay: 24912 
+41: 
+42:     #abDelay: 1032
+43:     abDelay: -334 #changed after 10MHz PD died
+44: 
+45:     sync_avg: 1
+46:     bob_pockel_offset: 6
+47:     coin_radius: 5
+48: 
+49: INT_TIME: .5
+50: 
+51: 
+52: 
+53: DIVIDER: 800
+54: SINGLE_SERVER: False
+55: #ip2: '[network-endpoint-redacted]'
+56: #ip: '[network-endpoint-redacted]'
+57: #ip: '[network-endpoint-redacted]'
+58: #port: [network-port-redacted]
+59: #port2: [network-port-redacted]
+60: src: 'ttag'
+61: [local-path-redacted]
+62: file_multiplier: 100000
+
+MEMBER bell_client/client_twottag_find_sync.py
+ORIGINAL_SHA256 3f89686f81d2346743c1a55561700679e1faf1fe9fa1a05dd9a6c76f94de0423
+LINES 69-86
+69: def start_logging_to_file(s, filepostfix = ''):
+70:     response = sendMessage(s, 'log on ' + filepostfix)
+71:     filename = ''
+72:     try:
+73:         filename = re.sub('\\nAck\n$', '', response)
+74:     except:
+75:         filename = ''
+76:     return filename
+77: 
+78: 
+79: def stop_logging_to_file(s):
+80:     response = sendMessage(s, 'log off' )
+81:     filename = ''
+82:     try:
+83:         filename = re.sub('\\nAck\n$', '', response)
+84:     except:
+85:         filename = ''
+86:     return filename
+LINES 135-170
+135: def simple_init():
+136:     global timetaggers
+137:     import socket
+138:     import threading
+139:     import sys
+140:     import select
+141:     import argparse
+142:     import time
+143:     import re
+144:     import numpy as np
+145: 
+146:     config_fp = open('client.yaml','r')
+147:     config = yaml.load(config_fp)
+148:     config_fp.close()    
+149: 
+150:     timetaggers = {'alice':{'name':'alice'}, 'bob':{'name':'bob'}}
+151:     for key in ['alice','bob']:
+152:         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+153:         s.connect((config[key]['ip'], config[key]['port']))
+154:         timetaggers[key]['s'] = s
+155:     return timetaggers
+156: 
+157: def log_twottag(filestr):
+158:     global timetaggers
+159:     for key in timetaggers.keys():
+160:         filename = start_logging_to_file(timetaggers[key]['s'], key+'.'+filestr)
+161:         #timeTaggers[key]['file'] = filename
+162:         #print filename
+163: def log_twottag_stop():
+164:     global timetaggers
+165:     for key in timetaggers.keys():
+166:         stop_logging_to_file(timetaggers[key]['s'])
+167: def log_twottag_close():
+168:     global timetaggers
+169:     for key in timetaggers.keys():
+170:         stop_server(timetaggers[key]['s'])
+
+MEMBER bell_server/bell_server.py
+ORIGINAL_SHA256 1672091c979a4daf8052223648200683731a26f263f08561ad73eee9abcf1f90
+LINES 42-62
+42:                 self.daq_thread.start()
+43:             else:
+44:                 print 'DAQ is already running'
+45:         def stop(self):
+46:             self.running = False
+47:             if hasattr(self,'datalogger'):
+48:                 self.datalogger.stop()
+49:         def run(self,fnameStr,sec):
+50:             #self.datalogger = ttag_stream.TTagLogging(0)
+51:             self.datalogger.filename=createfilename(subfolder='bell',suffix=fnameStr)
+52:             #self.datalogger.set_values(0,0.5,False)
+53:             #time.sleep(1)
+54:             #self.datalogger.set_values(3,0.5,False)
+55:             #self.datalogger.buff.start()
+56:             self.datalogger.init()
+57:             #print 'try to save to :',self.filename
+58:             #print 'Trying to sync to %d'%sec
+59:             #sync.sync(sec)
+60:             self.datalogger.start()
+61: 
+62:             """
+
+MEMBER bell_server/ttag_stream.py
+ORIGINAL_SHA256 f4458333fc010f71d991f524f9c384971bd5c1a2deb59c9337c561acce149ce5
+LINES 115-152
+115:     def run(self):
+116:         oldend = self.buff.datapoints 
+117:         print 'datapoints start: ',oldend
+118:         xferCount = 0
+119:         if oldend>0:
+120:             lasttag = self.buff[oldend-1][1]
+121:         else:
+122:             lasttag = 0
+123:         if self.usegps:
+124:             self.gpsport.flushInput()
+125:         while self.running:
+126:             gpstime = sync.gpsdatetime(self.gpsport)
+127:             end = self.buff.datapoints
+128:             if end > oldend: 
+129:                 data = self.buff[oldend:end]  
+130:                 data = np.array(data)
+131:                 #print xferCount, data.shape[1]
+132:                 temp = np.ones(data.shape[1]).astype('uint64')*xferCount
+133:                 data = np.vstack((data,temp))
+134:                 data.T.tofile(self.f)
+135:                 self.f.flush()
+136:                 gpsdata = np.array([np.uint64(64), np.uint64(gpstime.strftime('%Y%m%d%H%M%S')), np.uint64(xferCount)])
+137:                 gpsdata.tofile(self.f)
+138:                 self.f.flush()
+139:                 print gpsdata
+140:                 firsttag = data[1,0]  # row 1 (2nd row), first entry/column
+141:                 if firsttag<lasttag:
+142:                     print 'problem with xfer',lasttag, firsttag, lasttag-firsttag
+143:                     print xferCount,oldend,end
+144: 
+145:                 lasttag = data[1,-1]  # row 1, last entry
+146:                 oldend = end
+147:                 xferCount += 1
+148:             else:
+149:                 print 'No data from ttag'
+150: 
+151:             #time.sleep(self.sleeptime)
+152:         print 'Stopped logging'
+

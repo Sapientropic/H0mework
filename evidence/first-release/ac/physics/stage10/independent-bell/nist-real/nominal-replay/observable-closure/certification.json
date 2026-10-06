@@ -1,0 +1,238 @@
+{
+  "schema": "p23-observable-closure-lean-certification/v1",
+  "version": "p23-observable-closure-ef0001",
+  "status": "certified",
+  "criterion_preexecution_freeze": "fde5c14df36b6064c87064acd20830d3df0500bb",
+  "candidate_precompile_freeze": "d95c4ff3f0614eb098bd5d83cb929c1b97ab3857",
+  "public_mouth": "P23.ObservableClosure.Consumer.shared_training_root_and_heldout",
+  "bindings": {
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-prediction/public-observables.json": "442e6f1d74fa654a15a8a48c1ec502d93ae695d725b70fb3623418cc599a2cb6",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-prediction/public-criterion.md": "667b30442cb535b6e87c66f378c60c23c62bb9ac66f7295e749bcb2f28e7da4e",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-prediction/public-criterion-po0003.md": "0a3b5d9dd26c50a1680fcf89f47d9eafa3347fbcfc16b0bd9a99e87a9de99ee2",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-prediction/public-comparison-po0003.json": "20f30388cd5ae23d29f737a20ec36d450def91b9a70be891c751057686d09fee",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/frame-window/criterion.md": "06c7b8f32335dd4a6f31c8b0264de7e283088e751ebde03247481ed7705db3c3",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/frame-window/forward.py": "6d3e97a6425d08fdcb965a20965347201a81a84fcc7bfbdf9c5873a2df4f4666",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/frame-window/independent.py": "7e3e014413c25f7f158bb4c5fae9e552bbd7a935bed24f3a6f96b9b593045084",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window/criterion.md": "66763dc0eb5d789df39227ba10e382d4bfb07138e4c7d27237b0fa605338206e",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window/gaussian.py": "5adfc235d6cb9b9ca61e804bded0fd2bff6a89860cd9332ec75a603e5f6bd852",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/response/response.py": "2d62e6bf254302b3a99d4061761b7db30138edf461b45a2f59a814a5727f38d3",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window/GaussianSource.lean": "1dee783a0976a497139e64d4ef7278b203d56a0b119c84eea942bbb7846a10af",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window/native-effects/DetectorGamma.lean": "b0007ece95dd29f1db550e260f73b3955d365241162ebe971c4ebcd92a16a2af",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window/native-effects/GammaConsumer.lean": "b75cec12b93e10135f92d126a4f6f250c26965b0c3daa0b9d25e77d53256ed35",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/ObservableClosure.lean": "10bd6d3abc3fa23d5a6672e3b7ecd2249624b29396d41e84ea2ebb39b2770c2f",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/ClosureConsumer.lean": "aeab3e4a50fc884e3dbdd6bb6a6d91711879a3b045fcbf54b9e315dd1580f9d2",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/ClosureCertification.lean": "a44e7afd778a91b82f3d7cae940178096fb63d6cdf8206cadc045f2c98eb49e8",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/verify_lean.py": "c8634350d8e25d75313aefc848002e2a562567033280786bcf66309c3aa6a073",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/criterion.md": "752b76055af93d64f256078d89bd8dfba4a1711a1a8d8f15844c60a97ee57c6c",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/sources.json": "9ca2e4e8be7eedd07b82ec3c32f430897da0e710e4cdd71c06931f499ad4a493",
+    "Lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+    "Lean/lake-manifest.json": "aa60b347daf17a642d027cda3288f7d6f12c176c4ddd2677c28140daadb15c81",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/investigation/collected-source/certify.py": "9003712ab1974430614887b1ceddda4ae338ac20c33292233c23aa4a170d34ac",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/investigation/collected-source/verify.py": "8d9d668c79903b714b9272bb70e09174f8d91ae36ef8c677331d52d2beb08ad4"
+  },
+  "execution_source_freezes": {
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window/GaussianSource.lean": {
+      "commit": "26dec5f4c5bebd8ec6defc921c0ba79a85a79f23",
+      "sha256": "1dee783a0976a497139e64d4ef7278b203d56a0b119c84eea942bbb7846a10af"
+    },
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/ObservableClosure.lean": {
+      "commit": "d95c4ff3f0614eb098bd5d83cb929c1b97ab3857",
+      "sha256": "10bd6d3abc3fa23d5a6672e3b7ecd2249624b29396d41e84ea2ebb39b2770c2f"
+    },
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/ClosureConsumer.lean": {
+      "commit": "cc6730c43d601c1bcc20da91eb92cf354104dfdf",
+      "sha256": "aeab3e4a50fc884e3dbdd6bb6a6d91711879a3b045fcbf54b9e315dd1580f9d2"
+    },
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/ClosureCertification.lean": {
+      "commit": "e4d2d9d4e7ca5ab970973b5d32ac54a2e7b8cd1b",
+      "sha256": "a44e7afd778a91b82f3d7cae940178096fb63d6cdf8206cadc045f2c98eb49e8"
+    },
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/verify_lean.py": {
+      "commit": "e4d2d9d4e7ca5ab970973b5d32ac54a2e7b8cd1b",
+      "sha256": "c8634350d8e25d75313aefc848002e2a562567033280786bcf66309c3aa6a073"
+    },
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/criterion.md": {
+      "commit": "fde5c14df36b6064c87064acd20830d3df0500bb",
+      "sha256": "752b76055af93d64f256078d89bd8dfba4a1711a1a8d8f15844c60a97ee57c6c"
+    },
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/sources.json": {
+      "commit": "fde5c14df36b6064c87064acd20830d3df0500bb",
+      "sha256": "9ca2e4e8be7eedd07b82ec3c32f430897da0e710e4cdd71c06931f499ad4a493"
+    },
+    "Lean/lean-toolchain": {
+      "commit": "26ee1b5b83a96e596cae02415c8939aeb2542d8a",
+      "sha256": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b"
+    },
+    "Lean/lake-manifest.json": {
+      "commit": "a8e067a44b7243a584342c53e045b66d38df3afc",
+      "sha256": "aa60b347daf17a642d027cda3288f7d6f12c176c4ddd2677c28140daadb15c81"
+    },
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/investigation/collected-source/certify.py": {
+      "commit": "67b5fa45a6223f191889eb34d74d05806d2a3351",
+      "sha256": "9003712ab1974430614887b1ceddda4ae338ac20c33292233c23aa4a170d34ac"
+    },
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/investigation/collected-source/verify.py": {
+      "commit": "67b5fa45a6223f191889eb34d74d05806d2a3351",
+      "sha256": "8d9d668c79903b714b9272bb70e09174f8d91ae36ef8c677331d52d2beb08ad4"
+    }
+  },
+  "authorized_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "focused_verification": {
+    "fresh_source_compilation": true,
+    "trust_level": 0,
+    "warning_as_error": true,
+    "commands": [
+      {
+        "source": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window/GaussianSource.lean",
+        "command": [
+          "lean",
+          "--trust=0",
+          "-DwarningAsError=true",
+          "--root=../Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window",
+          "-o",
+          "${fresh_olean}/GaussianSource.olean",
+          "../Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window/GaussianSource.lean"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      {
+        "source": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/ObservableClosure.lean",
+        "command": [
+          "lean",
+          "--trust=0",
+          "-DwarningAsError=true",
+          "--root=../Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure",
+          "-o",
+          "${fresh_olean}/ObservableClosure.olean",
+          "../Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/ObservableClosure.lean"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      {
+        "source": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/ClosureConsumer.lean",
+        "command": [
+          "lean",
+          "--trust=0",
+          "-DwarningAsError=true",
+          "--root=../Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure",
+          "-o",
+          "${fresh_olean}/ClosureConsumer.olean",
+          "../Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/ClosureConsumer.lean"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      {
+        "source": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/ClosureCertification.lean",
+        "command": [
+          "lean",
+          "--trust=0",
+          "-DwarningAsError=true",
+          "--root=../Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure",
+          "-o",
+          "${fresh_olean}/ClosureCertification.olean",
+          "../Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/ClosureCertification.lean"
+        ],
+        "exit_code": 0,
+        "stdout": "OBSERVABLE_CLOSURE_CERTIFIED declarations=357 main_nodes=21670 bundle_nodes=21700 required=53 primitive=5255\nOBSERVABLE_CLOSURE_AXIOMS P23.ObservableClosure.Consumer.shared_training_root_and_heldout: [propext,\n Classical.choice,\n Quot.sound]\nOBSERVABLE_CLOSURE_AXIOMS P23.ObservableClosure.native_mean_readback: [propext, Classical.choice, Quot.sound]\nOBSERVABLE_CLOSURE_AXIOMS P23.ObservableClosure.snapshot_scaled_readback: [propext, Classical.choice, Quot.sound]\nOBSERVABLE_CLOSURE_AXIOMS P23.ObservableClosure.Consumer.outcomes_sum_one: [propext, Classical.choice, Quot.sound]\nOBSERVABLE_CLOSURE_INDEPENDENT_AXIOMS declarations=28\n",
+        "stderr": ""
+      }
+    ],
+    "lsp": [
+      {
+        "file": "GaussianSource.lean",
+        "errors": 0,
+        "warnings": 0,
+        "symbol_count": 1,
+        "method": "task-owned lean --server; documentSymbol, idle fileProgress, published diagnostics"
+      },
+      {
+        "file": "ObservableClosure.lean",
+        "errors": 0,
+        "warnings": 0,
+        "symbol_count": 1,
+        "method": "task-owned lean --server; documentSymbol, idle fileProgress, published diagnostics"
+      },
+      {
+        "file": "ClosureConsumer.lean",
+        "errors": 0,
+        "warnings": 0,
+        "symbol_count": 1,
+        "method": "task-owned lean --server; documentSymbol, idle fileProgress, published diagnostics"
+      },
+      {
+        "file": "ClosureCertification.lean",
+        "errors": 0,
+        "warnings": 0,
+        "symbol_count": 2,
+        "method": "task-owned lean --server; documentSymbol, idle fileProgress, published diagnostics"
+      }
+    ]
+  },
+  "source_audit": {
+    "candidate_declarations": 357,
+    "main_dependency_nodes": 21670,
+    "bundle_dependency_nodes": 21700,
+    "required_main_nodes": 53,
+    "primitive_nodes": 5255,
+    "independent_declarations": 28,
+    "primitive": "nH/nV, two positive scalar transmissions, one delta and lambda, physical order/bounds only",
+    "target_H_F_root_or_coverage_in_primitive": false,
+    "named_phase_denominators_generated_positive": true,
+    "source_H_degree_common_root_and_shared_consumer_in_main_closure": true,
+    "native_RawKernel_and_mean_readback_certified_separately": true,
+    "native_kernel_or_countPGF_or_fullBorn_in_main_closure": false,
+    "root_or_statistical_authority_in_main_closure": false
+  },
+  "kernel_claims": {
+    "legal_native_source_mapping_and_mean_readback": true,
+    "named_Gaussian_phase_denominator_positivity": true,
+    "actual_source_generates_H_equals_coherence_gT": true,
+    "generated_polynomial_degree_at_most_two": true,
+    "actual_absolute_loss_is_common_training_and_cell_root": true,
+    "first_informative_mirror_seed_and_zero_fallback": true,
+    "same_source_all_cell_N5_OR_recipe_equality": true,
+    "four_outcome_recipe_sum_one": true,
+    "source_generated_necessary_Sylvester_determinants_zero": true,
+    "nonempty_source_negative_coherence_fallback_and_nonsufficiency_controls": true,
+    "resultant_sufficiency": false,
+    "full_Gaussian_Born_vacuum_identity": false,
+    "full_outcome_nonnegative_distribution": false,
+    "public_six_count_inverse": false,
+    "all_real_inverse_roots_enumerated": false,
+    "finite_count_Ville_kernel": false,
+    "full_statistical_training_fiber_certified": false
+  },
+  "scope": {
+    "source": "forward arithmetic of the named two-polarization Gaussian pulse law",
+    "source_mapping": "legal original RawKernel generated separately from the same finite source occupations",
+    "consumer": "one Snapshot, actual loss/root and phase generates all cells; N5 OR formulas as arithmetic recipes",
+    "background": "formal consumer accepts arbitrary real background arguments; probability qualification is separate",
+    "statistics": "frozen po0003 confidence is external; no stationary source identity or coverage inferred from public centers",
+    "native_fullBorn_identity_newly_proved": false,
+    "actual_NIST_configuration_identified": false,
+    "hardware_operated": false,
+    "production_admitted": false,
+    "full_statistical_fiber_certified": false,
+    "global_optimum_proved": false,
+    "controller_advance": false,
+    "nominal_optimum_verdict_changed": false
+  },
+  "numerical_access": {
+    "new_science_program_files_read": false,
+    "science_receipt_files_read": false,
+    "parent_center_outcome_summary_received": true,
+    "summary_scope": "illegal exact-center roots were communicated before route review; the mathematical candidate was not modified"
+  },
+  "retrospective": true,
+  "bell_event_files_read": 0
+}

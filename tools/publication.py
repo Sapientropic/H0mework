@@ -10,6 +10,7 @@ import json
 import re
 
 KIND = "relative-runtime-paths/v1"
+DECLARED_KIND = "declared-runtime-paths/v2"
 PRIVATE_PATH = re.compile(r"^/(?:Users|home)/[^/]+/")
 JSON_STRING = re.compile(r'"(?:[^"\\]|\\.)*"')
 PROJECTS = {"Homework", "H0mework"}
@@ -77,6 +78,94 @@ def normalize_paths(raw: bytes) -> tuple[bytes, int]:
     return result, count
 
 
+def declared_runtime_paths(raw: bytes, declarations: list[dict]) -> tuple[bytes, int]:
+    """Replace registered JSON string spans, preserving numbers and other fields."""
+    text = raw.decode("utf-8")
+    json.loads(text)
+    replacements = {}
+    keys = {}
+    for row in declarations:
+        pointer, relative = row["pointer"], row["relative"]
+        if not isinstance(pointer, str) or (pointer and not pointer.startswith("/")):
+            raise PublicationError("Runtime path needs an exact JSON pointer")
+        if not isinstance(relative, str) or re.search(r"/(?:Users|home)/[^/]+/", relative):
+            raise PublicationError("Runtime replacement contains a machine address")
+        identity = (pointer, row.get("key_index"))
+        table = keys if "key_index" in row else replacements
+        if identity in table and table[identity] != relative:
+            raise PublicationError("Runtime location has competing addresses")
+        table[identity] = relative
+    edits = []
+    found = set()
+    length = len(text)
+    def space(index):
+        while index < length and text[index].isspace():
+            index += 1
+        return index
+    def quoted(index, pointer, key_index=None):
+        match = JSON_STRING.match(text, index)
+        if match is None:
+            raise PublicationError("Runtime JSON string cannot be located")
+        value = json.loads(match.group())
+        identity = (pointer, key_index)
+        table = replacements if key_index is None else keys
+        if identity in table:
+            relative = table[identity]
+            found.add(identity)
+            if value != relative:
+                edits.append((match.start(), match.end(), json.dumps(relative, ensure_ascii=False)))
+        return value, match.end()
+    def visit(index, pointer):
+        index = space(index)
+        character = text[index]
+        if character == '"':
+            return quoted(index, pointer)[1]
+        if character == '{':
+            index = space(index + 1)
+            count = 0
+            while text[index] != '}':
+                key, index = quoted(index, pointer, count)
+                index = space(index)
+                if text[index] != ':':
+                    raise PublicationError("Runtime JSON object separator differs")
+                child = pointer + '/' + key.replace('~', '~0').replace('/', '~1')
+                index = space(visit(index + 1, child))
+                count += 1
+                if text[index] == ',':
+                    index = space(index + 1)
+                else:
+                    break
+            return index + 1
+        if character == '[':
+            index = space(index + 1)
+            count = 0
+            while text[index] != ']':
+                index = space(visit(index, pointer + '/' + str(count)))
+                count += 1
+                if text[index] == ',':
+                    index = space(index + 1)
+                else:
+                    break
+            return index + 1
+        end = index
+        while end < length and text[end] not in ',]} \r\n\t':
+            end += 1
+        return end
+    if declarations:
+        visit(0, '')
+    expected = set(keys) | set(replacements)
+    if found != expected:
+        raise PublicationError("Declared runtime string location is absent or not a string")
+    for begin, end, value in sorted(edits, reverse=True):
+        text = text[:begin] + value + text[end:]
+    def unique_keys(pairs):
+        if len({key for key, value in pairs}) != len(pairs):
+            raise PublicationError("Relative runtime input path collision")
+        return dict(pairs)
+    json.loads(text, object_pairs_hook=unique_keys)
+    return text.encode("utf-8"), len(edits)
+
+
 def digest_rewrite(raw: bytes, rule: dict, reverse=False) -> bytes:
     """Rewrite one declared JSON digest binding, with its field identity checked."""
     field = rule["field"]
@@ -99,10 +188,12 @@ def digest_rewrite(raw: bytes, rule: dict, reverse=False) -> bytes:
 
 
 def payload_bytes(raw: bytes, publication: dict) -> bytes:
-    if publication.get("kind") != KIND:
+    if publication.get("kind") not in {KIND, DECLARED_KIND}:
         raise PublicationError("Unsupported publication transform")
     for rule in reversed(publication.get("digest_rewrites", [])):
         raw = digest_rewrite(raw, rule, reverse=True)
+    if publication.get("kind") == DECLARED_KIND:
+        return declared_runtime_paths(raw, publication.get("runtime_paths", []))[0]
     return normalize_paths(raw)[0]
 
 
@@ -114,7 +205,8 @@ def verify_artifact(raw: bytes, row: dict, original: bytes | None = None):
         if sha(raw) != row["source_sha256"]:
             raise PublicationError("Original artifact digest differs")
         return
-    normalized, count = normalize_paths(raw)
+    normalized, count = (declared_runtime_paths(raw, publication.get("runtime_paths", []))
+                         if publication.get("kind") == DECLARED_KIND else normalize_paths(raw))
     if count:
         raise PublicationError("Published artifact still contains machine paths")
     if sha(payload_bytes(normalized, publication)) != publication["payload_sha256"]:
@@ -122,22 +214,29 @@ def verify_artifact(raw: bytes, row: dict, original: bytes | None = None):
     if original is not None:
         if sha(original) != row["source_sha256"]:
             raise PublicationError("Private original digest differs")
-        if sha(normalize_paths(original)[0]) != publication["payload_sha256"]:
+        original_payload = (declared_runtime_paths(original, publication.get("runtime_paths", []))[0]
+                            if publication.get("kind") == DECLARED_KIND else normalize_paths(original)[0])
+        if sha(original_payload) != publication["payload_sha256"]:
             raise PublicationError("Private original and public payload differ")
 
 
 def publish_outputs(outputs: dict[str, bytes], modules: list[dict],
-                    artifacts: list[dict], original_module) -> dict:
+                    artifacts: list[dict], original_module, runtime_declarations: dict | None = None) -> dict:
     """Apply the publication transform to a freshly produced export plan."""
     by_source = {row["source"]: row for row in artifacts}
     changed = []
     occurrences = 0
     for row in artifacts:
         raw = outputs[row.get("path", row["target"])]
-        normalized, count = normalize_paths(raw) if row["target"].endswith(".json") else (raw, 0)
+        declarations = (runtime_declarations or {}).get((row.get("source_revision"), row["source"]))
+        normalized, count = (declared_runtime_paths(raw, declarations) if declarations is not None
+                             else normalize_paths(raw) if row["target"].endswith(".json") else (raw, 0))
         row.pop("publication", None)
         if count:
-            row["publication"] = {"kind": KIND, "payload_sha256": sha(normalized)}
+            row["publication"] = {"kind": DECLARED_KIND if declarations is not None else KIND,
+                                  "payload_sha256": sha(normalized)}
+            if declarations is not None:
+                row["publication"]["runtime_paths"] = declarations
             changed.append(row)
             occurrences += count
         outputs[row["target"]] = normalized

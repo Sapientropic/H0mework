@@ -1,0 +1,20 @@
+{
+  "schema": "p23-collected-source-external-inputs/v1",
+  "publication_configuration_identified": false,
+  "production_admitted": false,
+  "identity_rule": "Independent design/characterization provenance; never proximity to published state or angles.",
+  "fields": [
+    {"name":"apparatus_epoch_and_collection_reference_plane", "value":null, "needed_for":"Same source, filters, couplers, detector plane and date across all calibrations."},
+    {"name":"pump_to_r_src_and_relative_phase", "value":null, "needed_for":"Absolute path excitation, source profile normalization and preparation map, including stability across preparation."},
+    {"name":"source_complex_joint_mode_amplitudes_and_local_optics", "value":null, "needed_for":"Raw producer inputs F_H/F_V and local collection transfer, including lost ports; sufficient-statistic calibration is an alternative for identifying output family, not unique microscopic source recovery."},
+    {"name":"six_collection_powers", "components":["A_H","A_V","B_H","B_V","C_H","C_V"], "value":null, "needed_for":"Separate pure-path source calibration, absolute normalization and partner-lost sectors."},
+    {"name":"two_overlap_quadratures", "components":["Re Z","Im Z"], "value":null, "needed_for":"Known-phase coherent preparation and two independent interference quadratures; no arbitrary visibility-to-channel conversion."},
+    {"name":"absolute_postcollection_uA_uB", "value":null, "needed_for":"Separate detector/transmission efficiency from conditional Klyshko efficiency, with wavelength/polarization/settings dependencies tested."},
+    {"name":"Q1_Qmultipair_and_repetition_rate_vs_preparation", "value":null, "needed_for":"Per-pulse exactly-one-pair, multiple-pair distribution or gain/mode Hamiltonian, repetition frequency; distinguishes source Q, QPp, q_eff, HH epsilon squared and mean pair number."},
+    {"name":"calibration_preparation_invariance_and_uncertainty", "value":null, "needed_for":"Independent second-preparation validation of fixed profiles/optics and covariance of inferred moments; constant pump power alone is insufficient."},
+    {"name":"analyzer_coordinate_and_loss_maps", "value":null, "needed_for":"Polarizer/HWP angle convention, physical source branch labels, phase, setting-dependent loss and evidence for polarization-preserving S3."},
+    {"name":"background_window_detector_and_multipair_model", "value":null, "needed_for":"Accidentals/dark subtraction for Klyshko calibration; intended additive-vs-OR detector and finite-window/dead-time treatment for pulse predictions."}
+  ],
+  "admissible_sources": ["same-epoch independent design records", "source-only characterization", "calibrated component transfer measurements"],
+  "forbidden_substitutes": ["Bell trial archives", "best fit to published optimum", "merging historical and published configuration identities"]
+}

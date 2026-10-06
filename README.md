@@ -6,12 +6,12 @@
 
 读者不必相信作者。你可以亲手检验。
 
-## 论文
+## 首发论文
 
-| 论文 | Lean 入口 |
+| 论文 | 证明选集 |
 | --- | --- |
-| **状态不是历史，源才是**：过程同一性、责任承接与最小修订<br>*The State Is Not the History, the Source Is* | [SourceProcessCoreR2](Lean/H0mework/Papers/SourceProcessCoreR2.lean) |
-| **这浩瀚宇宙里，我们没找到魔法**：Spin×SU(7) 理论的同源生成与经典—量子对应<br>*We Found No Magic in This Mighty Universe* | [PhysicsCommonSourceR2](Lean/H0mework/Papers/PhysicsCommonSourceR2.lean) |
+| **状态不是历史，源才是**：过程同一性、责任承接与最小修订<br>*The State Is Not the History, the Source Is* | [首发证明与复现](docs/first-release-reproduction.md) |
+| **这浩瀚宇宙里，我们没找到魔法**：Spin×SU(7) 理论的同源生成与经典—量子对应<br>*We Found No Magic in This Mighty Universe* | [逐主张映射](docs/first-release-map.json) |
 
 ## 更多研究线
 
@@ -26,22 +26,19 @@
 
 ## 亲手检验
 
-需要 elan/Lake、Git、make 和 Python 3（含 `venv`）。在仓库根目录：
+入口检查需要 Git、make 和 Python 3（含 `venv`）。在仓库根目录：
 
 ```bash
-make bootstrap   # 取回固定版本的 Lean 与 mathlib 缓存
-make build       # 构建论文证明
-make check       # 独立复核低能唯象的冻结证据
-make check-map   # 逐字节核对本仓文件与原始来源
+make check-first-release-entry  # 检查导出身份、完整 Fock、Born 与精确控制
 ```
 
-完整的构建较长，工具链版本由 [`Lean/lean-toolchain`](Lean/lean-toolchain) 与 [`Lean/lake-manifest.json`](Lean/lake-manifest.json) 固定。其余命令与环境说明见[复现指南](docs/reproduction.md)。
+构建 Lean 证明另需 elan/Lake，首次执行 `make bootstrap` 取回固定依赖缓存，再运行 `make build-first-release`。完整验收运行 `make check-first-release-full`。范围与运行依赖见[首发复现指南](docs/first-release-reproduction.md)，实际结果见[首发准备状态](docs/first-release-readiness.md)。工具链版本由 [`Lean/lean-toolchain`](Lean/lean-toolchain) 与 [`Lean/lake-manifest.json`](Lean/lake-manifest.json) 固定。原八稿的命令与版本说明见[旧版复现指南](docs/reproduction.md)。
 
 ## 从论文走到证明
 
 - [证据对应表](docs/evidence-map.md)：每篇论文的主张落在哪个模块、哪段程序、哪份回执，包括 Bell 实验数据的独立裁决。
 - [来源材料索引](docs/source-materials.md)：机制说明、认证报告、研究过程材料，以及引用的第三方原文。
-- 首版论文正文中的"代码与数据可用性"一节，对应标签 [`papers-2026-09`](https://github.com/Sapientropic/H0mework/tree/papers-2026-09)；两篇修订稿的 R2 选集见[证据对应表](docs/evidence-map.md#r2-修订选集)。
+- 首版论文正文中的"代码与数据可用性"一节，对应标签 [`papers-2026-09`](https://github.com/Sapientropic/H0mework/tree/papers-2026-09)；首发修订选集按[逐主张映射](docs/first-release-map.json)使用各自固定来源。
 
 `Lean/` 是证明，`scripts/` 是复现程序，`evidence/` 是冻结的计算结果；[`tools/export-map.json`](tools/export-map.json) 记下每个文件的来处与哈希。
 
@@ -51,4 +48,4 @@ make check-map   # 逐字节核对本仓文件与原始来源
 
 ---
 
-*Lean proofs, reproduction programs and frozen evidence behind a family of research papers. The papers tell the story; the proofs take the stand. Every statement written as a theorem can be rechecked here by machine, from scratch. Start with the table above, then `make build`.*
+*Lean proofs, reproduction programs and frozen evidence behind a family of research papers. The papers tell the story; the proofs take the stand. Every statement written as a theorem can be rechecked here by machine, from scratch. Start with the table above, then `make build-first-release`.*

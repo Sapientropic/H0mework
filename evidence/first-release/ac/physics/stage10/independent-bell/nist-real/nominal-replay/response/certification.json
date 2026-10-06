@@ -1,0 +1,178 @@
+{
+  "schema": "nist-raw-m3-response-certification/v1",
+  "phase": "certify",
+  "status": "certified",
+  "classification": "bounded subordinate conditional harmonic-response producer and direct mathematical consumer",
+  "criterion_version": "nominal-response-r0006",
+  "criterion_freeze": {
+    "commit": "b818e92fbdeca40d4a34c26e4bbf5ad90a0a4f80",
+    "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/response/criterion.md",
+    "sha256": "63dd1df90a93c4a7a9b127514e63da5bfa1de1f0c57784f16f50ee85149f5bfc"
+  },
+  "candidate": {
+    "file": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/response/Response.lean",
+    "sha256": "3ea723aae1698e5c229e6993468a04d876006719c4bc989c00641d2972849322",
+    "namespace": "SaturationMonoid.PhysicsCore.Stage10.Bell.Response"
+  },
+  "direct_consumer": {
+    "file": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/response/ResponseCertification.lean",
+    "sha256": "7e645178eb6206e53e5b286695d67b33e12355d99387fa0d18231eee7ff0fd12",
+    "consumed_mouth": "Response.response_contract"
+  },
+  "focused_verification": {
+    "fresh_source_compilation": true,
+    "trust_level": 0,
+    "warning_as_error": true,
+    "commands": [
+      {
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "--trust=0",
+          "-DwarningAsError=true",
+          "-o",
+          "runtime-artifacts/nist-response-certify-gstbq05f/SaturationMonoid/PhysicsCore/Stage10/Bell/RealFamily.olean",
+          "SaturationMonoid/PhysicsCore/Stage10/Bell/RealFamily.lean"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      {
+        "command": [
+          "lake",
+          "env",
+          "sh",
+          "-c",
+          "LEAN_PATH=runtime-artifacts/nist-response-certify-gstbq05f:$LEAN_PATH lean --trust=0 -DwarningAsError=true --root=Verification/physics/stage10/independent-bell/nist-real/nominal-replay/investigation -o runtime-artifacts/nist-response-certify-gstbq05f/VisibilityCarrier.olean Verification/physics/stage10/independent-bell/nist-real/nominal-replay/investigation/VisibilityCarrier.lean"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      {
+        "command": [
+          "lake",
+          "env",
+          "sh",
+          "-c",
+          "LEAN_PATH=runtime-artifacts/nist-response-certify-gstbq05f:$LEAN_PATH lean --trust=0 -DwarningAsError=true --root=Verification/physics/stage10/independent-bell/nist-real/nominal-replay/response -o runtime-artifacts/nist-response-certify-gstbq05f/Response.olean Verification/physics/stage10/independent-bell/nist-real/nominal-replay/response/Response.lean"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      {
+        "command": [
+          "lake",
+          "env",
+          "sh",
+          "-c",
+          "LEAN_PATH=runtime-artifacts/nist-response-certify-gstbq05f:$LEAN_PATH lean --trust=0 -DwarningAsError=true --root=Verification/physics/stage10/independent-bell/nist-real/nominal-replay/response -o runtime-artifacts/nist-response-certify-gstbq05f/ResponseCertification.olean Verification/physics/stage10/independent-bell/nist-real/nominal-replay/response/ResponseCertification.lean"
+        ],
+        "exit_code": 0,
+        "stdout": "RESPONSE_CERTIFIED declarations=33 nodes=27679 required=33 primitive=6264 prior=80175\nRESPONSE_AXIOMS SaturationMonoid.PhysicsCore.Stage10.Bell.Response.response_contract: [propext,\n Classical.choice,\n Quot.sound]\nRESPONSE_AXIOMS SaturationMonoid.PhysicsCore.Stage10.Bell.Response.normalizedGradient_factor: [propext,\n Classical.choice,\n Quot.sound]\nRESPONSE_AXIOMS SaturationMonoid.PhysicsCore.Stage10.Bell.Response.derivative_eq_normalized: [propext,\n Classical.choice,\n Quot.sound]\nRESPONSE_AXIOMS SaturationMonoid.PhysicsCore.Stage10.Bell.Response.pi_enclosure: [propext, Classical.choice, Quot.sound]\n",
+        "stderr": ""
+      }
+    ],
+    "temporary_artifact_directory": "runtime-artifacts/nist-response-certify-gstbq05f",
+    "environment_recovery": "Private temporary symlink overlay for unchanged SaturationMonoid dependencies; RealFamily, VisibilityCarrier, Response and certification consumer freshly compiled."
+  },
+  "dependency_audit": {
+    "declarations": 33,
+    "dependency_nodes": 27679,
+    "required_entries": 33,
+    "primitive_nodes": 6264,
+    "prior_root_nodes": 80175,
+    "source_to_born_to_rawCH_to_both_responses": true,
+    "target_in_primitive": false,
+    "prior_root_reverse_dependency": false
+  },
+  "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "axiom_coverage": "Every declaration in the candidate Response namespace, including private helpers.",
+  "certified_machine_facts": [
+    "The same universally quantified Preparation p and mixtures l,r generate all probabilities and both observed marginal rates.",
+    "Raw M3 CH generates the exact Alice and Bob primed-angle harmonics from weighted original Born effects and the product of actual singles.",
+    "Both harmonic readouts generate HasDerivAt at every real optical angle u; the derivative is with respect to radians.",
+    "The derivative prefactor is q*etaA*etaB/2 times the generated normalizedGradient.",
+    "normalizedGradient_factor explicitly requires its effective Z coefficient, cosine and axis-X difference to be nonzero.",
+    "Real.pi_gt_d4 and Real.pi_lt_d4 provide exact rational bounds 6283/2000 < pi < 3927/1250."
+  ],
+  "scope": {
+    "source_parameters": "q, etaA, etaB, bA, bB are arbitrary real parameters held fixed while the measurement angle varies.",
+    "probability_carrier": "Finite nonnegative normalized local Pauli mixtures of the existing RealFamily Born family.",
+    "rate_model": "r0004 raw M3 with additive singles background and coincidence accidental term equal to the product of those singles.",
+    "sign_interpretation": "Interpreting normalizedGradient as the raw derivative sign also requires a positive q*etaA*etaB prefactor; that source-domain evidence belongs to the separate interval consumer.",
+    "numeric_sign_or_continuous_box_sign_proved_in_Lean": false,
+    "empirical_source_mapping_identified": false,
+    "production_admitted": false,
+    "root_controlled_or_installed": false
+  },
+  "synthetic_controls": {
+    "nonempty_preparation": "c=3/5, s=4/5, delta=-7/25, chi=24/25",
+    "two_sided_positive_derivatives": "response_contract gives both Alice and Bob derivatives 3/25 at u=0 for q=1/2, etaA=2/3, etaB=3/4 and independent X/Z axes; backgrounds remain arbitrary.",
+    "opposite_coherence_control": "c=3/5, s=-4/5 gives the Alice derivative -3/25.",
+    "degenerate_controls": [
+      "q=0 gives zero Alice derivative",
+      "etaA=0 gives zero Bob derivative",
+      "zero Z-retention falsifies the factorization nonzero-Z premise"
+    ],
+    "nonzero_positive_and_negative_controls": true
+  },
+  "controller": {
+    "source": "positiveSmoothUnifiedSource",
+    "visit": "Stage10.Runtime.visit = SpinPair.visit 10",
+    "entry": "materialEntry (SpinPair.support visit.current)",
+    "history": "tickAt 16 -> tickAt 17",
+    "root_mutation": false,
+    "installed_new_authority": false
+  },
+  "root_preservation": {
+    "Lean/SaturationMonoid/PhysicsCore/Stage10/Runtime/Occurrence.lean": {
+      "sha256": "8643a3fc19ffd6f75cff7bce9e354c7af0d2e4b86f9d2417f3d0f60697778ff2",
+      "equals_frozen_commit": true
+    },
+    "Lean/SaturationMonoid/PhysicsCore/Stage10/Runtime/Activation.lean": {
+      "sha256": "0f4973617953403d6c71da64426e1fa1a7ee026b7c75051ba36cbf505879b684",
+      "equals_frozen_commit": true
+    },
+    "Lean/SaturationMonoid/PhysicsCore/Stage10/Runtime/Consumer.lean": {
+      "sha256": "5d7c6a4f18953f1538d12d593938bc5d6b7db1c96585d66c713e013294a7a159",
+      "equals_frozen_commit": true
+    },
+    "Lean/SaturationMonoid/PhysicsCore/Stage10/Bell/Runtime.lean": {
+      "sha256": "7d23c95660eec06c2337b26383a8e7cc1fefc74ea3b158e608d5c7c009c7d1ee",
+      "equals_frozen_commit": true
+    },
+    "Lean/SaturationMonoid/PhysicsCore/StageTenPhysicalRootRuntime.lean": {
+      "sha256": "c4f309f240ee892ec7231c1597c05d8c8362dd9edf69d8e9eebc8c4985d2cce1",
+      "equals_frozen_commit": true
+    }
+  },
+  "bindings": {
+    "Verification/physics/stage10/independent-bell/nist-real/instrument.json": "4becca05d3a92bdd37d6218d83db64d80df5b4c605766056285d2bb32c0519c4",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/investigation/criterion.md": "7c1be7e884054ce5b6df12d6b8cfa37fd93e884609228d74850cfc75da64dac5",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/investigation/VisibilityCarrier.lean": "6a0ec8b71dac893c0b55210454138178cb298a9282f0a0f25d71657aff955d65",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/criterion-r0003.md": "2dd6d3e511da35415637edda8a164b1569c055a16ec7d25b99f262c5d86412d6",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/christensen-appendix-a.txt": "75dd07c2af8d81e42c410f04c8b8f32b7a884d4c23e8f505f377c44af70fdd5a",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/shalm2015-channel-inputs.txt": "17c5bc32515536634c451bf761f748ccd2e6c6002fa3949b58524e4cc1aeb3eb",
+    "Lean/SaturationMonoid/PhysicsCore/Stage10/Bell/RealFamily.lean": "9dc295cfaa1b296fdc08844e5a8772ecdd7ad66e2b1632c1e30ea0304dc652a7",
+    "Lean/.lake/packages/mathlib/Mathlib/Analysis/Real/Pi/Bounds.lean": "bb8dc6144292b803b2df8c31ca32d67a7ab47b50f8005b5b688d95aff1489444",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/response/criterion.md": "63dd1df90a93c4a7a9b127514e63da5bfa1de1f0c57784f16f50ee85149f5bfc",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/response/sources.json": "e07bbaf3244d799836872fb90d470bc52a20123da7bae27d5b7e6fcb77393842",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/response/Response.lean": "3ea723aae1698e5c229e6993468a04d876006719c4bc989c00641d2972849322",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/response/ResponseCertification.lean": "7e645178eb6206e53e5b286695d67b33e12355d99387fa0d18231eee7ff0fd12"
+  },
+  "numeric_replay_outputs_read": false,
+  "event_or_count_files_read": false,
+  "committed": false,
+  "owned_repository_files": [
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/response/ResponseCertification.lean",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/response/certification.json"
+  ]
+}

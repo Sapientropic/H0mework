@@ -1,0 +1,136 @@
+{
+  "schema": "p23-klyshko-inverse-lean-certification/v1",
+  "version": "p23-frame-window-fw0001",
+  "status": "certified",
+  "phase": "independent_lean_certify",
+  "criterion_freeze": "4c86dd68e7feccd66fe0370a67175c4697d8d760",
+  "candidate_freeze": "477d8cd184556b2052bf872eca968d926aff2ade",
+  "audit_freeze": "b32e348045",
+  "kernel_claims": {
+    "generated_legal_coupled_transmissions": true,
+    "original_PGF_singles_joint_readback": true,
+    "both_original_Klyshko_targets_readback": true,
+    "nonzero_herald_generated": true,
+    "large_root_excluded_by_source_legality": true,
+    "Gaussian_vacuum_Born_identity": false,
+    "whole_window_Born_identity": false,
+    "actual_NIST_calibration_protocol": false
+  },
+  "authorized_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "source_audit": {
+    "inverse_namespace_declarations_including_audit": 73,
+    "dependency_nodes": 15401,
+    "required_nodes": 32,
+    "primitive_nodes": 10886,
+    "original_PGF_and_both_herald_directions_in_closure": true,
+    "target_readback_in_primitive": false,
+    "operational_root_in_closure": false,
+    "public_domain_nonempty_kernel_examples": true
+  },
+  "focused_verification": {
+    "fresh_source_compilation": true,
+    "trust_level": 0,
+    "warning_as_error": true,
+    "commands": [
+      {
+        "source": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window/GaussianSource.lean",
+        "sha256": "1dee783a0976a497139e64d4ef7278b203d56a0b119c84eea942bbb7846a10af",
+        "returncode": 0,
+        "output": ""
+      },
+      {
+        "source": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/calibration-readout/CalibrationLaw.lean",
+        "sha256": "0944bbc767afe4e1456613ad36caeaf0f8c90402839356a78aa015078c204e2d",
+        "returncode": 0,
+        "output": ""
+      },
+      {
+        "source": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/frame-window/KlyshkoInverse.lean",
+        "sha256": "c5fc06ce695690c192b6651157c7982bdc8e02d81ad65556d978ff7b3d97a8ce",
+        "returncode": 0,
+        "output": ""
+      },
+      {
+        "source": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/frame-window/InverseConsumer.lean",
+        "sha256": "5186cc0b12f39475b6ef9e48193ab4cfbd56e38e9afb524e816dea8d9d225678",
+        "returncode": 0,
+        "output": ""
+      },
+      {
+        "source": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/frame-window/InverseCertification.lean",
+        "sha256": "db3348b0f625bf1cacb6ec065d3f6de074171227f91ce875e50e011b79fff8de",
+        "returncode": 0,
+        "output": "INVERSE_CERTIFIED declarations=73 nodes=15401 required=32 primitive=10886\nINVERSE_AXIOMS P23.GaussianWindow.FrameWindow.CalibrationInverse.IndependentCertification.generated_loss_and_original_readback: [propext,\n Classical.choice,\n Quot.sound]\nINVERSE_AXIOMS P23.GaussianWindow.FrameWindow.CalibrationInverse.IndependentCertification.same_source_PGF: [propext,\n Classical.choice,\n Quot.sound]\nINVERSE_AXIOMS P23.GaussianWindow.FrameWindow.CalibrationInverse.IndependentCertification.conditional_bucket_identity: [propext,\n Classical.choice,\n Quot.sound]\nINVERSE_AXIOMS P23.GaussianWindow.FrameWindow.CalibrationInverse.IndependentCertification.physical_branch: [propext,\n Classical.choice,\n Quot.sound]\n"
+      }
+    ],
+    "lsp": [
+      {
+        "file": "GaussianSource.lean",
+        "errors": 0,
+        "warnings": 0,
+        "symbol_count": 1,
+        "method": "task-owned lean --server; documentSymbol, idle fileProgress, published diagnostics"
+      },
+      {
+        "file": "CalibrationLaw.lean",
+        "errors": 0,
+        "warnings": 0,
+        "symbol_count": 1,
+        "method": "task-owned lean --server; documentSymbol, idle fileProgress, published diagnostics"
+      },
+      {
+        "file": "KlyshkoInverse.lean",
+        "errors": 0,
+        "warnings": 0,
+        "symbol_count": 1,
+        "method": "task-owned lean --server; documentSymbol, idle fileProgress, published diagnostics"
+      },
+      {
+        "file": "InverseConsumer.lean",
+        "errors": 0,
+        "warnings": 0,
+        "symbol_count": 1,
+        "method": "task-owned lean --server; documentSymbol, idle fileProgress, published diagnostics"
+      },
+      {
+        "file": "InverseCertification.lean",
+        "errors": 0,
+        "warnings": 0,
+        "symbol_count": 2,
+        "method": "task-owned lean --server; documentSymbol, idle fileProgress, published diagnostics"
+      }
+    ],
+    "lsp_control_plane": "task_owned_frozen_calibration_harness_after_MCP_rejected_non_project_path"
+  },
+  "bindings": {
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window/GaussianSource.lean": "1dee783a0976a497139e64d4ef7278b203d56a0b119c84eea942bbb7846a10af",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/calibration-readout/CalibrationLaw.lean": "0944bbc767afe4e1456613ad36caeaf0f8c90402839356a78aa015078c204e2d",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/frame-window/KlyshkoInverse.lean": "c5fc06ce695690c192b6651157c7982bdc8e02d81ad65556d978ff7b3d97a8ce",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/frame-window/InverseConsumer.lean": "5186cc0b12f39475b6ef9e48193ab4cfbd56e38e9afb524e816dea8d9d225678",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/frame-window/InverseCertification.lean": "db3348b0f625bf1cacb6ec065d3f6de074171227f91ce875e50e011b79fff8de",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/frame-window/criterion.md": "06c7b8f32335dd4a6f31c8b0264de7e283088e751ebde03247481ed7705db3c3",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/frame-window/sources.json": "1ace776951fd5b3825da69ea07f893723d67517cf9081442836c933e646f2350"
+  },
+  "classification": {
+    "rawTA_rawTB_and_inverse_losses": "calibration_data_inverse_producer",
+    "source_matched_inverse": "direct_original_source_readout",
+    "other_root_not_legal_single": "source_legality_diagnostic"
+  },
+  "conditions": [
+    "matched single source eigenpolarization",
+    "single pulse",
+    "signal-only",
+    "known geometric t",
+    "0<t<1 and t<KA,KB<=1"
+  ],
+  "source_mapping_identified": false,
+  "publication_configuration_identified": false,
+  "production_admitted": false,
+  "calibration_protocol_identified": false,
+  "actual_source_failure_claimed": false,
+  "root_effect": "bounded subordinate calibration producer; original root/runtime/whole-ledger/tick unchanged"
+}

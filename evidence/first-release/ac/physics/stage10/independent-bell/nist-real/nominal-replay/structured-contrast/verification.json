@@ -1,0 +1,212 @@
+{
+  "schema": "p23-structured-contrast-verification/v1",
+  "version": "p23-structured-contrast-sc0001.1",
+  "status": "verified",
+  "evidence_valid": true,
+  "criterion_freeze": {
+    "commit": "b4114c8e818d788bfb3df8b804b086b651b259fd",
+    "criterion_sha256": "2223db0fffefdf6654825f2608fb7c962a7ba27d83d63a055c07403d6f9a330a",
+    "sources_sha256": "e73e641492111d0e1eb94c1239cf5af56052b50f1216d388b7cd5c80e9e5626a"
+  },
+  "candidate_freeze": "3d7e88bc26e934d4af22ee2b9163e1c91a056f19",
+  "fullBorn_source_dominance_kernel": true,
+  "kernel_closed_form_Born_identity": false,
+  "all_named_mappings_rejected": true,
+  "outcome": "ALIGNED_SCALAR_MAPPING_REJECTED",
+  "complete_trial_count_grid": 120,
+  "full_family_size": 23592240,
+  "all_120_exact_log_intervals_compatible": true,
+  "all_120_threshold_decisions_agree": true,
+  "consumed_fresh_source_certificate": true,
+  "fresh_source_compilation": false,
+  "kernel_claims": {
+    "raw_kernel_actual_ports_and_occupation_to_Gamma": true,
+    "all_number_sectors_scalar_click_dominance": true,
+    "mirror_paired_local_effect_identity": true,
+    "phase_only_local_fullBorn_invariance": true,
+    "original_fullBorn_summability_and_single_dominance": true,
+    "same_N_and_local_OR_background_dominance": true,
+    "printed_probability_box_ratio": true,
+    "named_matched_calibration_ratio_and_order": true,
+    "one_step_null_factor_readout": true,
+    "fullBorn_source_dominance_kernel": true,
+    "kernel_closed_form_Born_identity": false,
+    "sequential_supermartingale_Ville_kernel": false
+  },
+  "source_audit": {
+    "candidate_declarations": 96,
+    "dependency_nodes": 38454,
+    "required_nodes": 56,
+    "primitive_nodes": 12038,
+    "independent_declarations": 10,
+    "actual_Gamma_paired_local_summability_original_fullBorn_in_closure": true,
+    "target_singles_relation_in_primitive": false,
+    "operational_root_in_closure": false,
+    "primitive_raw_source_and_transmissions_only": true
+  },
+  "authorized_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "execution_source_freezes": {
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window/GaussianSource.lean": {
+      "commit": "26dec5f4c5bebd8ec6defc921c0ba79a85a79f23",
+      "sha256": "1dee783a0976a497139e64d4ef7278b203d56a0b119c84eea942bbb7846a10af"
+    },
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window/native-effects/DetectorGamma.lean": {
+      "commit": "a9f64fa6e3f8ee0a5329107002e1677f37842975",
+      "sha256": "b0007ece95dd29f1db550e260f73b3955d365241162ebe971c4ebcd92a16a2af"
+    },
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/calibration-readout/CalibrationLaw.lean": {
+      "commit": "829534f0e1eace805ce60918880041d5d9efa8b8",
+      "sha256": "0944bbc767afe4e1456613ad36caeaf0f8c90402839356a78aa015078c204e2d"
+    },
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/structured-contrast/AlignedSingles.lean": {
+      "commit": "3d7e88bc26e934d4af22ee2b9163e1c91a056f19",
+      "sha256": "5f9d5881ae79e9976721e92f6f759521c71d641b3db9ff9955d2e0cdde001268"
+    },
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/structured-contrast/SinglesConsumer.lean": {
+      "commit": "8e74d4e66504665702e2198b8060435cdd256663",
+      "sha256": "27ec83afdf836c2ef8be1431ab06df1331b838e0b7c6c79603d236cd6c579336"
+    },
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/structured-contrast/SinglesCertification.lean": {
+      "commit": "78c7af3ca78d5932217ce5bac7e7b96dbd0a0dc8",
+      "sha256": "67da02540829fc21e735d59f9d77d2759787f08ca11a2938e02d5a4866efb40a"
+    },
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/structured-contrast/contrast.py": {
+      "commit": "337c370db781f34149d781b4650993cd95c931eb",
+      "sha256": "a7eb0fe8543901db5ce9b271d298f44154c26fc8496bef46ec1c2ff00dc3347d"
+    },
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/structured-contrast/independent.py": {
+      "commit": "193c84708192631d0a76e5ca29aded290cf2e6a5",
+      "sha256": "1ca99bfc2f425665c8e28894883b1a705365d1f8a3922fcdcf7d2ecf8d4f0511"
+    },
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/structured-contrast/comparison.py": {
+      "commit": "152f8bf1def45b705214bce810fa7059b031ce3e",
+      "sha256": "af467861334250028a92bc61edcde95d5bd9be0da21d361adfe1b131090608aa"
+    },
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/structured-contrast/verify.py": {
+      "commit": "9fc26a74f6e2e3cf4823062c87f21add84d9104f",
+      "sha256": "ea12c966c6d59f86b9eb3ec843168f8d3bdc2b28d8958eb43ae667e4c38b01f4"
+    },
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/investigation/collected-source/certify.py": {
+      "commit": "67b5fa45a6223f191889eb34d74d05806d2a3351",
+      "sha256": "9003712ab1974430614887b1ceddda4ae338ac20c33292233c23aa4a170d34ac"
+    },
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/investigation/collected-source/verify.py": {
+      "commit": "67b5fa45a6223f191889eb34d74d05806d2a3351",
+      "sha256": "8d9d668c79903b714b9272bb70e09174f8d91ae36ef8c677331d52d2beb08ad4"
+    }
+  },
+  "bindings": {
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/criterion-r0003.md": "2dd6d3e511da35415637edda8a164b1569c055a16ec7d25b99f262c5d86412d6",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/shalm2015-channel-inputs.txt": "17c5bc32515536634c451bf761f748ccd2e6c6002fa3949b58524e4cc1aeb3eb",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window/GaussianSource.lean": "1dee783a0976a497139e64d4ef7278b203d56a0b119c84eea942bbb7846a10af",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window/native-effects/DetectorGamma.lean": "b0007ece95dd29f1db550e260f73b3955d365241162ebe971c4ebcd92a16a2af",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window/native-effects/GammaConsumer.lean": "b75cec12b93e10135f92d126a4f6f250c26965b0c3daa0b9d25e77d53256ed35",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window/native-effects/certification.json": "278453a6f98b1695855870669b779dc211104986d4daeb7342e0569ffd829083",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/calibration-readout/CalibrationLaw.lean": "0944bbc767afe4e1456613ad36caeaf0f8c90402839356a78aa015078c204e2d",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/calibration-readout/certification.json": "7b47f79a85117c7edc832b2d9c0e9fab8bc89dfdd9274335b4bdcd269c542191",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/calibrated-window/criterion.md": "418d67a57ddc45bfada3c09c730f39231628b7c28199671f7da3c43168272b76",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/calibrated-window/predict.py": "5aebc951882f65af61dac76dbd7d9604234c358a2cad81eb2fb9870bae68a49b",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/calibrated-window/independent.py": "d90d5e5f9511b5f79bc1903dc473ea32c8b8429788c0041e23af0c4e33ef53a1",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-prediction/public-observables.json": "442e6f1d74fa654a15a8a48c1ec502d93ae695d725b70fb3623418cc599a2cb6",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-prediction/public-criterion-po0003.md": "0a3b5d9dd26c50a1680fcf89f47d9eafa3347fbcfc16b0bd9a99e87a9de99ee2",
+    "Lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+    "Lean/lake-manifest.json": "aa60b347daf17a642d027cda3288f7d6f12c176c4ddd2677c28140daadb15c81",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/structured-contrast/criterion-sc0001.1.md": "2223db0fffefdf6654825f2608fb7c962a7ba27d83d63a055c07403d6f9a330a",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/structured-contrast/sources-sc0001.1.json": "e73e641492111d0e1eb94c1239cf5af56052b50f1216d388b7cd5c80e9e5626a",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/structured-contrast/AlignedSingles.lean": "5f9d5881ae79e9976721e92f6f759521c71d641b3db9ff9955d2e0cdde001268",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/structured-contrast/SinglesConsumer.lean": "27ec83afdf836c2ef8be1431ab06df1331b838e0b7c6c79603d236cd6c579336",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/structured-contrast/SinglesCertification.lean": "67da02540829fc21e735d59f9d77d2759787f08ca11a2938e02d5a4866efb40a",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/structured-contrast/contrast.py": "a7eb0fe8543901db5ce9b271d298f44154c26fc8496bef46ec1c2ff00dc3347d",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/structured-contrast/independent.py": "1ca99bfc2f425665c8e28894883b1a705365d1f8a3922fcdcf7d2ecf8d4f0511",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/structured-contrast/comparison.py": "af467861334250028a92bc61edcde95d5bd9be0da21d361adfe1b131090608aa",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/structured-contrast/verify.py": "ea12c966c6d59f86b9eb3ec843168f8d3bdc2b28d8958eb43ae667e4c38b01f4",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/investigation/collected-source/certify.py": "9003712ab1974430614887b1ceddda4ae338ac20c33292233c23aa4a170d34ac",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/investigation/collected-source/verify.py": "8d9d668c79903b714b9272bb70e09174f8d91ae36ef8c677331d52d2beb08ad4",
+    "certification.json": "a4edbe776c81e7ba74f0f88aa3ad906d391973bfef2a4ae47f5d4a42b36f7bf9",
+    "contrast.json": "030e1d5eb0d255099c30c57e6549b58c33872548cc0beace2ed330e78d2295ba",
+    "independent.json": "8d4ea59ddcca4e3f402f4d2b626947c7d3654923d4a6d3c6d4d731efd24f36b2",
+    "independent-comparison.json": "9f806563c822111cffec357c0eeea2f2b8402d8591467365365070ba0f955b4b"
+  },
+  "by_model": {
+    "nominal_center": {
+      "c": "83/84",
+      "rejects_named_conditional_null": true,
+      "cells": [
+        {
+          "cell": 0,
+          "rejects_named_conditional_null": false,
+          "lambda_grid_size": 20
+        },
+        {
+          "cell": 3,
+          "rejects_named_conditional_null": true,
+          "lambda_grid_size": 20
+        }
+      ],
+      "summary_selection_paid_by_full_budget": true
+    },
+    "printed_probability_box": {
+      "c": "248/253",
+      "rejects_named_conditional_null": true,
+      "cells": [
+        {
+          "cell": 0,
+          "rejects_named_conditional_null": false,
+          "lambda_grid_size": 20
+        },
+        {
+          "cell": 3,
+          "rejects_named_conditional_null": true,
+          "lambda_grid_size": 20
+        }
+      ],
+      "summary_selection_paid_by_full_budget": true
+    },
+    "matched_calibration_box": {
+      "c": "7437256/7589241",
+      "rejects_named_conditional_null": true,
+      "cells": [
+        {
+          "cell": 0,
+          "rejects_named_conditional_null": false,
+          "lambda_grid_size": 20
+        },
+        {
+          "cell": 3,
+          "rejects_named_conditional_null": true,
+          "lambda_grid_size": 20
+        }
+      ],
+      "summary_selection_paid_by_full_budget": true
+    }
+  },
+  "information_access": {
+    "independent_first_read_primary_code_or_result": false,
+    "primary_initial_execution_produced_complete_receipt": false,
+    "primary_initial_execution_failure": "exact log(1) neighboring Decimal exponents could not be serialized as Fraction",
+    "primary_repair_before_successful_run_seen_independent_statistical_summary": true,
+    "primary_repair_scope": [
+      "exact log(1)=0",
+      "positive source-null controls"
+    ],
+    "primary_scientific_AST_unchanged_outside_exact_zero_and_controls": true,
+    "scientific_contract_data_family_or_bet_grid_changed_after_summary": false,
+    "two_successful_first_receipts_mutually_blind": false,
+    "other_output_used_as_numerical_input": false,
+    "comparison_is_after_both_successful_first_receipts": true
+  },
+  "scope": "named aligned scalar loss and mirror paired local count law; actual NIST identity is not supplied",
+  "nominal_optimum_verdict_changed": false,
+  "combined_with_po0003_alpha": false,
+  "retrospective": true,
+  "bell_event_files_read": 0,
+  "source_mapping_identified": false,
+  "publication_configuration_identified": false,
+  "production_admitted": false,
+  "calibration_protocol_identified": false,
+  "actual_source_failure_claimed": false
+}

@@ -1,0 +1,79 @@
+{
+  "schema": "p23-covariance-source-certify-capsule/v1",
+  "phase": "certify",
+  "verdict": "certified",
+  "classification": "bounded subordinate optical source producer over every lawful regular z>0 coordinate tuple",
+  "certification_path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/full-statistical-fiber/covariance-source-certification.json",
+  "certification_sha256": "f84f51a75f02e9c53092fc627313eceebc7967fba9da4b4948e2059aad12f280",
+  "public_mouths": [
+    "P23.ObservableClosure.CovarianceSource.Consumer.generated_shared_phase",
+    "P23.ObservableClosure.CovarianceSource.Consumer.generated_single_intervals_iff_tuple",
+    "P23.ObservableClosure.CovarianceSource.Consumer.primitive_generates_source_and_readouts",
+    "P23.ObservableClosure.CovarianceSource.Primitive",
+    "P23.ObservableClosure.CovarianceSource.axis_readback",
+    "P23.ObservableClosure.CovarianceSource.baseline_T2",
+    "P23.ObservableClosure.CovarianceSource.baseline_coordinates",
+    "P23.ObservableClosure.CovarianceSource.boundary_preserves_all_phases",
+    "P23.ObservableClosure.CovarianceSource.boundary_pure_mode",
+    "P23.ObservableClosure.CovarianceSource.boundary_zero_T",
+    "P23.ObservableClosure.CovarianceSource.generatedSnapshot",
+    "P23.ObservableClosure.CovarianceSource.generated_all_cells",
+    "P23.ObservableClosure.CovarianceSource.generated_coordinates",
+    "P23.ObservableClosure.CovarianceSource.generated_interference",
+    "P23.ObservableClosure.CovarianceSource.generated_phase_physical",
+    "P23.ObservableClosure.CovarianceSource.rawSource"
+  ],
+  "candidate_precompile_freezes": {
+    "CovarianceSource.lean": "581d1cd97a4a23b488fd250436fe860037e6d29b",
+    "CovarianceSourceConsumer.lean": "e9e4b743bbcc9152fd967153e591914a2395403b"
+  },
+  "audit_preexecution_freeze": "34a2feaedbff943d71afd5b22a5399439f5de2ae",
+  "machine_counts": {
+    "candidate_declarations": 127,
+    "source_declarations": 740,
+    "independent_declarations": 43,
+    "axiom_declarations_checked": 783
+  },
+  "kernel_claims": {
+    "all_legal_regular_z_positive_coordinate_tuples_generate_original_RawSource": true,
+    "primitive_has_only_five_coordinates_and_elementary_physical_inequalities": true,
+    "arctan_axis_and_original_loss_occupation_fields_generated_internally": true,
+    "exact_same_tuple_five_coordinate_and_original_T2_readback": true,
+    "every_lawful_signed_k_generates_phase_lambda_and_original_Snapshot": true,
+    "pure_nV_zero_T_zero_and_every_lawful_lambda_readout_equivalence_preserved": true,
+    "complete_tuple_eight_halfspaces_iff_generated_source_four_single_intervals": true,
+    "same_generated_source_all_original_pulse_cells_shared_phase_and_N5_OR_windows": true,
+    "numeric_tree_or_statistical_confidence_coverage_kernel": false,
+    "new_infinite_Born_or_detector_determinant_kernel": false,
+    "actual_hardware_or_source_epoch_identification": false,
+    "controller_advance": false
+  },
+  "mouth_scope": {
+    "producer_domain": "m>=0, z^2+x^2<=m^2, z>0, r>0, 0<loss<=1, loss<=r; arbitrary real x",
+    "raw_source": "nH=(m+sqrt(z^2+x^2))/loss, nV=(m-sqrt(z^2+x^2))/loss, etaA=loss, etaB=loss/r, delta=arctan(x/z)/2",
+    "phase": "k^2<=(m^2-z^2-x^2)((m+loss)^2-z^2-x^2); internal same-source PF phase recipe",
+    "CI": "all eight tuple bounds correspond to all four actual generated local intervals; no tree or confidence premise",
+    "window": "original Gaussian pulse and N5/independent-OR algebraic readouts from that generated source",
+    "controller": "original visit10/tick16-to17 and root remain unchanged"
+  },
+  "lsp": {
+    "schema": "p23-covariance-source-independent-lsp-attempt/v1",
+    "candidate_sha256": "4f9679384b1c284d2102614da793ff855c1ea20f7525fa32546c26f143fe300d",
+    "attempted_tool": "mcp__lean_lsp_homework__lean_diagnostic_messages",
+    "file_path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/full-statistical-fiber/CovarianceSource.lean",
+    "declaration": "P23.ObservableClosure.CovarianceSource.baseline_coordinates",
+    "attempts": 1,
+    "status": "path_not_in_lean_project",
+    "persistent_lsp_validation_completed": false,
+    "reason": "Verification has no lean-toolchain ancestor; service rejected the target before elaboration.",
+    "raw_result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Error executing tool lean_diagnostic_messages: Invalid Lean file path: 'Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/full-statistical-fiber/CovarianceSource.lean' not found in any Lean project (no lean-toolchain ancestor or file does not exist)"
+        }
+      ],
+      "isError": true
+    }
+  }
+}

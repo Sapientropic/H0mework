@@ -1,0 +1,1386 @@
+{
+  "schema": "stage10-munich-readout-detector-certification/v1",
+  "evidence_valid": true,
+  "status": "certified_complete_detector_fiber_and_polarity_free_microhardware_bounds",
+  "candidate_module": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber",
+  "source_bindings": [
+    {
+      "path": "Lean/SaturationMonoid/PhysicsCore/Stage10/Bell/ReadoutDetectorFiber.lean",
+      "sha256": "7a26bcce11ea8e86ff17abead126e1daf79d3a2d80a778cd6015e91cb1f0a4c4"
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/DetectorCertification.lean",
+      "sha256": "5198682e4799f51dc73f36976c37458a6fb0084925edba57a7bf8a8395aa0428"
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/detector_certify.py",
+      "sha256": "f44032097d5741f0ca87ebab2d433aa53bda749cf1b9ae9a67ddb03b56fb5d93"
+    }
+  ],
+  "toolchain_version": "Lean (version 4.33.0, arm64-apple-darwin24.6.0, commit d8b18978322de05a8f3dba51ef03cf5461676c17, Release)",
+  "focused_trust_level": 0,
+  "warning_as_error": true,
+  "asynchronous_elaboration": false,
+  "lean_threads": 1,
+  "fresh_candidate_and_general_consumer_checked": true,
+  "all_owned_declarations_audited": true,
+  "complete_new_dependency_closure_certified": true,
+  "same_original_source_current_next_certified": true,
+  "complete_positive_response_detector_fiber_certified": true,
+  "lawful_atomic_effect_inverse_generated": true,
+  "joint_efficiency_atomic_response_lower_certified": true,
+  "both_click_polarities_retained": true,
+  "whole_source_bias_and_gain_to_microhardware_transport_certified": true,
+  "raw_control_gain_cap_certified": true,
+  "area_bound_requires_independent_forward_envelope": true,
+  "positive_domain_nonempty_certified": true,
+  "zero_response_and_zero_detector_factor_strata_explicit": true,
+  "original_source_ledger_and_next_certified": true,
+  "actual_independent_anchor_inputs_available": false,
+  "actual_hardware_uniquely_identified": false,
+  "atomic_response_forward_model_kernel_proved": false,
+  "new_statistical_interval_coverage_kernel_proved": false,
+  "controller_advance": false,
+  "empirical_fit_executed": false,
+  "trial_event_files_read": 0,
+  "new_statistical_tables_read": 0,
+  "frozen_source_receipt": {
+    "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/source-certification-first.json",
+    "sha256": "948ab6b1e302433f7731cd73de96cce58651b274cb2ccfd68152321d7c88e4a7",
+    "explicit_declarations": 115,
+    "source_recompiled": false
+  },
+  "producer_compilation_evidence": {
+    "actual_hardware_uniqueness_asserted": false,
+    "candidate": "Lean/SaturationMonoid/PhysicsCore/Stage10/Bell/ReadoutDetectorFiber.lean",
+    "candidate_sha256": "7a26bcce11ea8e86ff17abead126e1daf79d3a2d80a778cd6015e91cb1f0a4c4",
+    "compile_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "compiled_object_sha256": "7948f8e595f19868a926ccde7f1468350a9b16e8623bf8949419a246ce3c610f",
+    "controller_advance": false,
+    "direct_consumer": "whole-CS polarity-free microscopic hardware bounds and rawcap joint rejection",
+    "fixed_source": "positiveSmoothUnifiedSource / SpinPair.visit10 / material row / current16 -> next17",
+    "focused_command": [
+      "toolchains/lean-4.33.0-darwin_aarch64/bin/lean",
+      "--trust=0",
+      "-DwarningAsError=true",
+      "-DElab.async=false",
+      "-j1",
+      "-o",
+      "runtime-artifacts/homework-bell-detector-strike.waxypgdq/SaturationMonoid/PhysicsCore/Stage10/Bell/ReadoutDetectorFiber.olean",
+      "Lean/SaturationMonoid/PhysicsCore/Stage10/Bell/ReadoutDetectorFiber.lean"
+    ],
+    "focused_exit_code": 0,
+    "phase": "strike",
+    "public_mouth": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.fiber_iff_decomposition"
+  },
+  "independent_audit_stdout_sha256": "846bbd059e891fd4e90759ad526999d4c1ea22ae7c3ff2689922042b0d0da1e7",
+  "elapsed_seconds": 71.082,
+  "explicit_declarations": [
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.minClick",
+      "kind": "def",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.maxClick",
+      "kind": "def",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.maxAtomic",
+      "kind": "def",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.Rates",
+      "kind": "structure",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.Realizes",
+      "kind": "def",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.Fiber",
+      "kind": "structure",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.click_bounds",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.click_gap",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.max_atomic_bounds",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.detectorEffect",
+      "kind": "def",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.detector_effect_realizes",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.realizes_gain",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.realizes_fiber",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.Fiber.factor_positive",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.Fiber.background_lt_one",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.inverseAtom",
+      "kind": "def",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.inverse_atom_realizes",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.inverse_atom_unique",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.fiber_iff_decomposition",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.efficiency",
+      "kind": "def",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.efficiency_eq_physical",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.intrinsicLower",
+      "kind": "def",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.intrinsic_denominator_positive",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.intrinsic_lower_eq",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.efficiency_bounds",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.efficiency_atomic_product",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.efficiency_atomic_lower",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.individual_lower",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.domainLower",
+      "kind": "def",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.domain_lower_le_intrinsic",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.domain_microhardware_bounds",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.domain_area_bound",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.raw_product_cap_gain",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.raw_detector_area_cap",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.zero_factor_iff",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.zero_gain_scalar",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.zero_gain_atomic_scalar",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.zero_factor_fiber",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    }
+  ],
+  "owned_declarations": [
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.Fiber",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.Fiber.background_le_min",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.Fiber.background_lt_one",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.Fiber.background_nonnegative",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.Fiber.casesOn",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.Fiber.factor_lower",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.Fiber.factor_positive",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.Fiber.factor_upper",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.Fiber.mk",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.Fiber.mk._flat_ctor",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.Fiber.rec",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.Fiber.recOn",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.Rates",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.Rates.background_nonnegative",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.Rates.casesOn",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.Rates.factor_nonnegative",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.Rates.mk",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.Rates.mk._flat_ctor",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.Rates.rec",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.Rates.recOn",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.Rates.total_le_one",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.Realizes",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.Realizes.eq_1",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.click_bounds",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.click_gap",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.detectorEffect",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.detectorEffect._proof_1",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.detectorEffect._proof_2",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.detectorEffect._proof_3",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.detectorEffect._proof_4",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.detector_effect_realizes",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.domainLower",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.domain_area_bound",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.domain_lower_le_intrinsic",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.domain_microhardware_bounds",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.efficiency",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.efficiency.eq_1",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.efficiency_atomic_lower",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.efficiency_atomic_product",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.efficiency_bounds",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.efficiency_eq_physical",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.fiber_iff_decomposition",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.individual_lower",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.intrinsicLower",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.intrinsicLower.eq_1",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.intrinsic_denominator_positive",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.intrinsic_lower_eq",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.inverseAtom",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.inverseAtom._proof_1",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.inverseAtom._proof_2",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.inverseAtom._proof_3",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.inverseAtom._proof_4",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.inverseAtom.eq_1",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.inverse_atom_realizes",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.inverse_atom_realizes._simp_10",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.inverse_atom_realizes._simp_4",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.inverse_atom_realizes._simp_5",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.inverse_atom_realizes._simp_6",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.inverse_atom_realizes._simp_7",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.inverse_atom_realizes._simp_8",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.inverse_atom_realizes._simp_9",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.inverse_atom_unique",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.maxAtomic",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.maxAtomic.eq_1",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.maxClick",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.maxClick.eq_1",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.max_atomic_bounds",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.minClick",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.minClick._proof_1",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.minClick.eq_1",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.raw_detector_area_cap",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.raw_product_cap_gain",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.realizes_fiber",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.realizes_gain",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.zero_factor_fiber",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.zero_factor_fiber._simp_1",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.zero_factor_iff",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.zero_gain_atomic_scalar",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.zero_gain_scalar",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "_private.SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.0.SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.effectOfRadius",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "_private.SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.0.SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.effectOfRadius._proof_1",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "_private.SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.0.SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.effectOfRadius._proof_2",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "_private.SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.0.SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.effectOfRadius._proof_3",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "_private.SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.0.SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.effectOfRadius._proof_4",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "_private.SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.0.SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.effectOfRadius.eq_1",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    }
+  ],
+  "independent_consumers": [
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.DetectorCertification.generalCompleteFiber",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.DetectorCertification.generalForwardAreaBound",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.DetectorCertification.generalGeneratedAtomicResponse",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.DetectorCertification.generalIndividualBounds",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.DetectorCertification.generalJointDetectorAtomicBound",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.DetectorCertification.generalPolarityFreeDomain",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.DetectorCertification.generalRawPulseAreaCap",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.DetectorCertification.generalRawResponseCap",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.DetectorCertification.generalRawSourceCurrentNext",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.DetectorCertification.generalUniqueInverse",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.DetectorCertification.nonemptyPositiveFiber",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.DetectorCertification.originalAnswerNext",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.DetectorCertification.originalLedger",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.DetectorCertification.positiveEffect",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.DetectorCertification.positiveEffect._proof_1",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.DetectorCertification.positiveEffect._proof_2",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.DetectorCertification.positiveEffect._proof_3",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.DetectorCertification.positiveEffectGain",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.DetectorCertification.positiveRates",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.DetectorCertification.positiveResponseRejectsZeroFactor",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.DetectorCertification.pureAtomicEffect",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.DetectorCertification.pureAtomicEffect._proof_1",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.DetectorCertification.pureAtomicEffect._proof_2",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.DetectorCertification.pureAtomicEffect._proof_3",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.DetectorCertification.pureAtomicEffect._proof_4",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.DetectorCertification.pureAtomicEffect.eq_1",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.DetectorCertification.pureAtomicGain",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.DetectorCertification.zeroFactorHiddenAtom",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.DetectorCertification.zeroRates",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    }
+  ],
+  "axiom_union": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "public_mouths": [
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.fiber_iff_decomposition",
+      "type": "∀ (effect : SaturationMonoid.PhysicsCore.Stage10.Bell.CompactReadoutEffect) (d k : ℝ),\n  0 < effect.gain →\n    (SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.Fiber effect d k ↔\n      SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.Rates d k ∧\n        ∃ atom, SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.Realizes effect d k atom)"
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.efficiency_atomic_lower",
+      "type": "∀ (effect atom : SaturationMonoid.PhysicsCore.Stage10.Bell.CompactReadoutEffect) (d k : ℝ),\n  SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.Rates d k →\n    SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.Realizes effect d k atom →\n      0 < effect.gain →\n        SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.intrinsicLower effect ≤\n          SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.efficiency d k *\n            SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.maxAtomic atom"
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.domain_microhardware_bounds",
+      "type": "∀ (effect atom : SaturationMonoid.PhysicsCore.Stage10.Bell.CompactReadoutEffect) (d k B G : ℝ),\n  SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.Rates d k →\n    SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.Realizes effect d k atom →\n      0 < G →\n        G ≤ effect.gain →\n          |effect.mu| ≤ B →\n            SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.domainLower B G ≤\n                SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.efficiency d k *\n                  SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.maxAtomic atom ∧\n              d ≤ (1 + B - G) / 2"
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.domain_area_bound",
+      "type": "∀ (effect atom : SaturationMonoid.PhysicsCore.Stage10.Bell.CompactReadoutEffect) (d k B G areaSquared : ℝ),\n  SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.Rates d k →\n    SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.Realizes effect d k atom →\n      0 < G →\n        G ≤ effect.gain →\n          |effect.mu| ≤ B →\n            SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.maxAtomic atom ≤ 7 * areaSquared / 4 →\n              4 * SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.domainLower B G / 7 ≤\n                SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.efficiency d k * areaSquared"
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.raw_product_cap_gain",
+      "type": "∀ (effect atom : SaturationMonoid.PhysicsCore.Stage10.Bell.CompactReadoutEffect) (d k B cap : ℝ),\n  SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.Rates d k →\n    SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.Realizes effect d k atom →\n      |effect.mu| ≤ B →\n        0 ≤ cap →\n          cap ≤ 1 →\n            SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.efficiency d k *\n                  SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.maxAtomic atom ≤\n                cap →\n              effect.gain ≤ min 1 ((1 + B) * cap / (2 - cap))"
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.raw_detector_area_cap",
+      "type": "∀ (effect atom : SaturationMonoid.PhysicsCore.Stage10.Bell.CompactReadoutEffect)\n  (d k B etaUpper areaSquared areaUpper : ℝ),\n  SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.Rates d k →\n    SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.Realizes effect d k atom →\n      d < 1 →\n        |effect.mu| ≤ B →\n          0 ≤ etaUpper →\n            etaUpper ≤ 1 →\n              SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.efficiency d k ≤ etaUpper →\n                0 ≤ areaUpper →\n                  areaSquared ≤ areaUpper →\n                    SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.maxAtomic atom ≤\n                        7 * areaSquared / 4 →\n                      effect.gain ≤\n                        min 1\n                          ((1 + B) * (etaUpper * min 1 (7 * areaUpper / 4)) /\n                            (2 - etaUpper * min 1 (7 * areaUpper / 4)))"
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.inverse_atom_unique",
+      "type": "∀ (effect atom : SaturationMonoid.PhysicsCore.Stage10.Bell.CompactReadoutEffect) (d k : ℝ)\n  (fiber : SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.Fiber effect d k) (positive : 0 < k),\n  SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.Realizes effect d k atom →\n    SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.inverseAtom effect d k fiber positive = atom"
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.DetectorCertification.generalCompleteFiber",
+      "type": "∀ (effect : SaturationMonoid.PhysicsCore.Stage10.Bell.CompactReadoutEffect) (d k : ℝ),\n  0 < effect.gain →\n    (SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.Fiber effect d k ↔\n      SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.Rates d k ∧\n        ∃ atom, SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.Realizes effect d k atom)"
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.DetectorCertification.generalRawSourceCurrentNext",
+      "type": "∀ (atom second : SaturationMonoid.PhysicsCore.Stage10.Bell.CompactReadoutEffect) (d k : ℝ)\n  (rates : SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.Rates d k)\n  (point : SaturationMonoid.PhysicsCore.ProofFreeRicherAnholonomicSource.BasePoint) (plus x y : Bool),\n  SaturationMonoid.PhysicsCore.Stage10.Bell.effectSourceWeight\n        (SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.detectorEffect atom d k rates) second plus point\n        x y =\n      SaturationMonoid.PhysicsCore.Stage10.Bell.effectJointPolynomial\n        (SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.detectorEffect atom d k rates) second plus x y ∧\n    SaturationMonoid.PhysicsCore.Stage10.Bell.effectRuntimeProbability\n          (SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.detectorEffect atom d k rates) second plus\n          point x y =\n        SaturationMonoid.PhysicsCore.Stage10.Bell.effectJointPolynomial\n          (SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.detectorEffect atom d k rates) second plus x\n          y ∧\n      SaturationMonoid.PhysicsCore.Stage10.Bell.effectNextProbability\n          (SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.detectorEffect atom d k rates) second plus\n          point x y =\n        SaturationMonoid.PhysicsCore.Stage10.Bell.effectJointPolynomial\n          (SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.detectorEffect atom d k rates) second plus x y"
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.DetectorCertification.generalRawPulseAreaCap",
+      "type": "∀ (effect atom : SaturationMonoid.PhysicsCore.Stage10.Bell.CompactReadoutEffect)\n  (d k B etaUpper areaSquared areaUpper : ℝ),\n  SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.Rates d k →\n    SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.Realizes effect d k atom →\n      d < 1 →\n        |effect.mu| ≤ B →\n          0 ≤ etaUpper →\n            etaUpper ≤ 1 →\n              SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.efficiency d k ≤ etaUpper →\n                0 ≤ areaUpper →\n                  areaSquared ≤ areaUpper →\n                    SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.maxAtomic atom ≤\n                        7 * areaSquared / 4 →\n                      effect.gain ≤\n                        min 1\n                          ((1 + B) * (etaUpper * min 1 (7 * areaUpper / 4)) /\n                            (2 - etaUpper * min 1 (7 * areaUpper / 4)))"
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.DetectorCertification.generalUniqueInverse",
+      "type": "∀ (effect atom : SaturationMonoid.PhysicsCore.Stage10.Bell.CompactReadoutEffect) (d k : ℝ)\n  (fiber : SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.Fiber effect d k) (positive : 0 < k),\n  SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.Realizes effect d k atom →\n    SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.inverseAtom effect d k fiber positive = atom"
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.DetectorCertification.nonemptyPositiveFiber",
+      "type": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.Fiber\n  SaturationMonoid.PhysicsCore.Stage10.Bell.DetectorCertification.positiveEffect (1 / 10) (4 / 5)"
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.DetectorCertification.zeroFactorHiddenAtom",
+      "type": "∀ (original other : SaturationMonoid.PhysicsCore.Stage10.Bell.CompactReadoutEffect),\n  SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.Realizes\n    (SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.detectorEffect original (1 / 3) 0\n      SaturationMonoid.PhysicsCore.Stage10.Bell.DetectorCertification.zeroRates)\n    (1 / 3) 0 other"
+    }
+  ],
+  "compiler_only_module_symbols": [
+    "_private.SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.0.SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.effectOfRadius._boxed",
+    "_private.SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.0.SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutDetectorFiber.effectOfRadius._redArg"
+  ],
+  "new_dependency_declaration_count": 120,
+  "delegated_source_boundary_count": 27,
+  "checked_base_boundary_count": 519,
+  "dependency_delta_sha256": "8748dda782cb9e199e1e4ee094efa629feb04bb56f01c7316b8c73392e96efda",
+  "source_boundary_sha256": "245addad7c76e84f64417c3ecb4603be2cbd0b0bec0cd481c29e5fb331b2a179",
+  "dependency_closure_method": "fresh new type/value graph; frozen source-owned axiom boundaries; exact-edge accepted base graph",
+  "source_only_import_module_count": 12513
+}

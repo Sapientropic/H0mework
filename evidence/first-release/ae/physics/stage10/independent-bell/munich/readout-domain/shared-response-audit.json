@@ -1,0 +1,117 @@
+{
+  "accepted_mechanisms": {
+    "bias_intervals_inherited_from_same_parent_confidence_set": true,
+    "canonical_gain_and_error_intervals_valid": true,
+    "certified_lower_endpoint_excludes_entire_closed_interval_zero_to_Glo": true,
+    "clipped_parity_mle_maximizes_allowed_band": true,
+    "four_contexts_share_same_source_response": true,
+    "four_selected_parity_mle_penalties_used_once_each": true,
+    "full_global_dirichlet_numerator_used_once": true,
+    "local_effect_depends_only_on_own_setting": true,
+    "max_new_and_legacy_gain_bounds_cannot_weaken_cp0001": true,
+    "nested_gain_bands_make_profile_nonincreasing": true,
+    "profile_is_lower_bound_on_full_component": true,
+    "relaxed_denominator_covers_every_low_response_source_null": true,
+    "source_current_next_correlation_identity_reused": true,
+    "zero_observed_parity_mass_gives_infinite_profile": true
+  },
+  "audit_kind": "source_and_mathematical_logic_review_before_science_freeze",
+  "auditor_role": "independent_readout_source_certify",
+  "confidence_contract": {
+    "full_component_threshold": "80",
+    "full_component_weight": "1/2",
+    "new_confidence_budget_spent": false,
+    "parent_confidence_budget": "1/20",
+    "parent_threshold": "40",
+    "scope": "simultaneous_necessary_outer_bounds_for_entire_original_parent_confidence_set_under_unchanged_source_sampling_contract"
+  },
+  "evidence_valid": true,
+  "paid_kernel_receipt": {
+    "axiom_union": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "consume_api": "response_bounds_certify.consume()",
+    "evidence_valid": true,
+    "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/response-bounds-certification-first.json",
+    "sha256": "7ded9d077b62d0c62b9b1a7d4b30a69a0729243ab2bd3ee7b22fae6938ff315b"
+  },
+  "qualification": {
+    "actual_gain_extremum_sharpness_claimed": false,
+    "actual_hardware_uniquely_identified": false,
+    "actual_ideal_label_identity_selected": false,
+    "empirical_endpoint_certificates_checked_in_this_audit": false,
+    "profile_threshold_bracket_gap_bound": "1/68719476736",
+    "two_observed_parity_counts_positive_required": true
+  },
+  "schema": "stage10-munich-readout-shared-response-audit/v1",
+  "source_authority": {
+    "controller_advance": false,
+    "current_tick": 16,
+    "next_tick": 17,
+    "root": "positiveSmoothUnifiedSource",
+    "visit": 10,
+    "whole_ledger_row": 0
+  },
+  "source_bindings": [
+    {
+      "path": "Lean/SaturationMonoid/PhysicsCore/Stage10/Bell/ReadoutIdentification.lean",
+      "sha256": "bdc08f2a929410bc6747fe0b405fe3d8b7b2c664720a2512774d9915aeb328d5"
+    },
+    {
+      "path": "Lean/SaturationMonoid/PhysicsCore/Stage10/Bell/ReadoutResponseBounds.lean",
+      "sha256": "e4aebb6af99987eb55f92e6a2f884d4c5f3bc17d52b493071a967fbac1e5fa81"
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/ResponseBoundsCertification.lean",
+      "sha256": "d300c2b840be18441cefa980d8e7f0ce87d04b6b59e89c077da79d2c4e32865d"
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/response_bounds_certify.py",
+      "sha256": "fc48591472a16afb0643473c27448dbee5081f0aac3f6e57508b8a506ef1a0c2"
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/response-bounds-certification-first.json",
+      "sha256": "7ded9d077b62d0c62b9b1a7d4b30a69a0729243ab2bd3ee7b22fae6938ff315b"
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/likelihood.py",
+      "sha256": "219ac5b1c227e6c727c85abd151c08f4f656f2249396581def4b82a84bb2e3a5"
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/response_projection.py",
+      "sha256": "8264611f3bb3c8622f0e401d754dc5f32880815d50a0b1f0dc875a55de4e56c2"
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/criterion-id0001.md",
+      "sha256": "eb47ae4ba990caa4bb4f2742848919d6390df60c61b07f0c4415296168bd22e8"
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/shared_response.py",
+      "sha256": "a2b758840e10092c8d56028d9ecbf09ee4636f6d43ac60c67763537fa8358730"
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/test_shared_response.py",
+      "sha256": "5e10a3f3b7242ef3abdf8e5ff41c47e16e26c76e603dcba9dbe4709cc2c7775d"
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/criterion-cp0002.md",
+      "sha256": "777617c46d7eb1ab69b5171f0167afc38d3f28af4c99de119f98cad3f1d9030a"
+    }
+  ],
+  "status": "accepted_shared_response_source_and_statistical_logic",
+  "substantive_defects": [],
+  "verification": {
+    "actual_sufficient_counts_read": 0,
+    "asymmetric_exact_source_null_denominator_checks": 4,
+    "exact_nested_band_checks": 24,
+    "new_lean_compilation_executed": false,
+    "scientific_first_executed": false,
+    "signed_bias_canonical_error_transport_checks": 363,
+    "synthetic_tests_passed": 7,
+    "synthetic_unittest_command": "python3 -m unittest -v test_shared_response.py",
+    "trial_event_files_read": 0
+  },
+  "version": "stage10-munich-readout-cp0002"
+}

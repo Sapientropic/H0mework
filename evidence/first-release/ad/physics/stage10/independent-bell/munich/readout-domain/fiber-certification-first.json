@@ -1,0 +1,1206 @@
+{
+  "schema": "stage10-munich-readout-fiber-certification/v1",
+  "evidence_valid": true,
+  "status": "certified_complete_source_fiber_geometry_and_uniform_dual_bounds",
+  "candidate_module": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds",
+  "source_bindings": [
+    {
+      "path": "Lean/SaturationMonoid/PhysicsCore/Stage10/Bell/ReadoutFiberBounds.lean",
+      "sha256": "ef47a4a9b2f102875b773281aca9e62100a08b69f14aacbc679a81c884220467"
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/FiberBoundsCertification.lean",
+      "sha256": "dddfaf93b61acc0a4364239a8fd53d2e2e8b895e975edc46a738cbd0e9628f7b"
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/fiber_certify.py",
+      "sha256": "0bce1e46e1a5d8c0bbbfe833757b851de14cdd23aa1eeb3ca3f41a6bc789ae0d"
+    }
+  ],
+  "toolchain_version": "Lean (version 4.33.0, arm64-apple-darwin24.6.0, commit d8b18978322de05a8f3dba51ef03cf5461676c17, Release)",
+  "focused_trust_level": 0,
+  "warning_as_error": true,
+  "asynchronous_elaboration": false,
+  "lean_threads": 1,
+  "fresh_candidate_and_general_consumer_checked": true,
+  "all_owned_declarations_audited": true,
+  "complete_new_dependency_closure_certified": true,
+  "same_original_source_current_next_certified": true,
+  "complete_first_scale_projection_certified": true,
+  "second_scale_generated_internally_certified": true,
+  "reciprocal_amgm_with_zero_weights_certified": true,
+  "universal_signed_objective_dual_bound_certified": true,
+  "source_scaled_family_to_all_four_cones_certified": true,
+  "source_canonical_gain_is_same_dual_objective_certified": true,
+  "both_side_coordinates_source_coupled_certified": true,
+  "original_ID_complete_regular_fiber_consumed": true,
+  "finite_grid_used_as_coverage": false,
+  "target_objective_bound_supplied_as_premise": false,
+  "numeric_endpoint_optimizer_kernel_proved": false,
+  "whole_empirical_confidence_set_bounds": false,
+  "actual_hardware_uniquely_identified": false,
+  "controller_advance": false,
+  "empirical_fit_executed": false,
+  "trial_event_files_read": 0,
+  "new_statistical_tables_read": 0,
+  "frozen_source_receipt": {
+    "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/source-certification-first.json",
+    "sha256": "948ab6b1e302433f7731cd73de96cce58651b274cb2ccfd68152321d7c88e4a7",
+    "explicit_declarations": 115,
+    "source_recompiled": false
+  },
+  "frozen_identification_receipt": {
+    "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/identification-certification-first.json",
+    "sha256": "ec85a916ffba0d74b7febfb96a7ebf4e49d1335da68305b720e7eb74681fff8f"
+  },
+  "producer_compilation_evidence": {
+    "candidate_sha256": "ef47a4a9b2f102875b773281aca9e62100a08b69f14aacbc679a81c884220467",
+    "command": [
+      "toolchains/lean-4.33.0-darwin_aarch64/bin/lean",
+      "--trust=0",
+      "-DwarningAsError=true",
+      "-DElab.async=false",
+      "-j1",
+      "-o",
+      "runtime-artifacts/homework-bell-readout-certify-8x27ynvq/SaturationMonoid/PhysicsCore/Stage10/Bell/ReadoutFiberBounds.olean",
+      "SaturationMonoid/PhysicsCore/Stage10/Bell/ReadoutFiberBounds.lean"
+    ],
+    "exit_code": 0,
+    "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "compiled_object_sha256": "8beec64f8684260e089d25c772735e0a313c27f14d00c3a866805345efcd571f"
+  },
+  "independent_audit_stdout_sha256": "73698096fe9caf13a410a012d971a6f5df65b22f16fa9848d337df27404c892a",
+  "elapsed_seconds": 32.14,
+  "explicit_declarations": [
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.PositiveConeSystem",
+      "kind": "structure",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.Feasible",
+      "kind": "structure",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.PositiveConeSystem.denominator",
+      "kind": "def",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.PositiveConeSystem.upper",
+      "kind": "def",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.PositiveConeSystem.lower",
+      "kind": "def",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.PositiveConeSystem.quadratic",
+      "kind": "def",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.Projected",
+      "kind": "structure",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.reciprocal_amgm",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.alice_iff_upper",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.reciprocal_cone_iff",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.Feasible.denominator_positive",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.bob_iff_lower",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.pair_iff_quadratic",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.Feasible.projected",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.PositiveConeSystem.selectedT",
+      "kind": "def",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.projected_generates_feasible",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.feasible_iff_projected",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.dualC",
+      "kind": "def",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.dualD",
+      "kind": "def",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.dualP",
+      "kind": "def",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.dualQ",
+      "kind": "def",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.dualK",
+      "kind": "def",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.dualP_nonnegative",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.dualQ_nonnegative",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.dual_core_bound",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.dual_certificate_bound",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    }
+  ],
+  "owned_declarations": [
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.Feasible",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.Feasible.S_positive",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.Feasible.T_positive",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.Feasible.alice",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.Feasible.bob",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.Feasible.casesOn",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.Feasible.denominator_positive",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.Feasible.mk",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.Feasible.mk._flat_ctor",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.Feasible.projected",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.Feasible.rec",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.Feasible.recOn",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.PositiveConeSystem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.PositiveConeSystem._sizeOf_1",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.PositiveConeSystem._sizeOf_inst",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.PositiveConeSystem.a",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.PositiveConeSystem.a_positive",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.PositiveConeSystem.b",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.PositiveConeSystem.b_positive",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.PositiveConeSystem.c",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.PositiveConeSystem.c_positive",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.PositiveConeSystem.casesOn",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.PositiveConeSystem.ctorIdx",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.PositiveConeSystem.d",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.PositiveConeSystem.d_positive",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.PositiveConeSystem.denominator",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.PositiveConeSystem.denominator.eq_1",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.PositiveConeSystem.lower",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.PositiveConeSystem.lower.eq_1",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.PositiveConeSystem.mk",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.PositiveConeSystem.mk._flat_ctor",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.PositiveConeSystem.mk.inj",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.PositiveConeSystem.mk.injEq",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.PositiveConeSystem.mk.noConfusion",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.PositiveConeSystem.mk.sizeOf_spec",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.PositiveConeSystem.noConfusion",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.PositiveConeSystem.noConfusionType",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.PositiveConeSystem.p",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.PositiveConeSystem.p_positive",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.PositiveConeSystem.q",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.PositiveConeSystem.q_positive",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.PositiveConeSystem.quadratic",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.PositiveConeSystem.quadratic.eq_1",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.PositiveConeSystem.rec",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.PositiveConeSystem.recOn",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.PositiveConeSystem.selectedT",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.PositiveConeSystem.upper",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.PositiveConeSystem.upper.eq_1",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.Projected",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.Projected.S_positive",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.Projected.casesOn",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.Projected.denominator_positive",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.Projected.mk",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.Projected.mk._flat_ctor",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.Projected.quadratic_nonnegative",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.Projected.rec",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.Projected.recOn",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.alice_iff_upper",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.bob_iff_lower",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.dualC",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.dualC.eq_1",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.dualD",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.dualD.eq_1",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.dualK",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.dualK.eq_1",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.dualP",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.dualP.eq_1",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.dualP_nonnegative",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.dualQ",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.dualQ.eq_1",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.dualQ_nonnegative",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.dual_certificate_bound",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.dual_core_bound",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.feasible_iff_projected",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.pair_iff_quadratic",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.projected_generates_feasible",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.reciprocal_amgm",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.reciprocal_amgm._simp_1",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.reciprocal_amgm._simp_2",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.reciprocal_amgm._simp_3",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.reciprocal_amgm._simp_4",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.reciprocal_amgm._simp_5",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.reciprocal_amgm._simp_6",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.reciprocal_amgm._simp_7",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.reciprocal_cone_iff",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    }
+  ],
+  "independent_consumers": [
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.FiberBoundsCertification.Strict",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.FiberBoundsCertification.completeFirstScale",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.FiberBoundsCertification.completeOriginalRegularFiber",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.FiberBoundsCertification.coordinate",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.FiberBoundsCertification.coordinate.eq_1",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.FiberBoundsCertification.effectCapacity",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.FiberBoundsCertification.generatedSecondScale",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.FiberBoundsCertification.localEffect",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.FiberBoundsCertification.localEffect.eq_1",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.FiberBoundsCertification.originalSourceCurrentNext",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.FiberBoundsCertification.scaledFeasible",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.FiberBoundsCertification.scaledGainObjective",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.FiberBoundsCertification.sourceScaledUniformBound",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.FiberBoundsCertification.sourceSystem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.FiberBoundsCertification.sourceSystem._proof_1",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.FiberBoundsCertification.sourceSystem._proof_2",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.FiberBoundsCertification.sourceSystem._proof_3",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.FiberBoundsCertification.sourceSystem._proof_4",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.FiberBoundsCertification.sourceSystem._proof_5",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.FiberBoundsCertification.sourceSystem._proof_6",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.FiberBoundsCertification.sourceSystem.eq_1",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    }
+  ],
+  "axiom_union": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "public_mouths": [
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.reciprocal_amgm",
+      "type": "∀ (A B r x : ℝ), 0 ≤ A → 0 ≤ B → 0 ≤ r → r ^ 2 ≤ A * B → 0 < x → 2 * r ≤ A * x + B / x"
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.projected_generates_feasible",
+      "type": "∀ (system : SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.PositiveConeSystem) (S : ℝ),\n  SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.Projected system S →\n    SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.Feasible system S (system.selectedT S)"
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.feasible_iff_projected",
+      "type": "∀ (system : SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.PositiveConeSystem) (S : ℝ),\n  (∃ T, SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.Feasible system S T) ↔\n    SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.Projected system S"
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.dual_certificate_bound",
+      "type": "∀ (system : SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.PositiveConeSystem)\n  (objectiveA objectiveB sigma S T rS rT : ℝ) (theta lambda : Bool → ℝ),\n  (∀ (i : Bool), 0 ≤ theta i) →\n    (∀ (j : Bool), 0 ≤ lambda j) →\n      0 ≤ SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.dualC system objectiveA sigma theta →\n        0 ≤ SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.dualD system objectiveB sigma theta →\n          0 ≤ rS →\n            0 ≤ rT →\n              rS ^ 2 ≤\n                  SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.dualC system objectiveA sigma theta *\n                    SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.dualP system lambda →\n                rT ^ 2 ≤\n                    SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.dualD system objectiveB sigma theta *\n                      SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.dualQ system lambda →\n                  SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.Feasible system S T →\n                    2 * (rS + rT) -\n                        SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.dualK system theta lambda ≤\n                      sigma * (objectiveA * S + objectiveB * T)"
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.FiberBoundsCertification.sourceScaledUniformBound",
+      "type": "∀ (family : SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutIdentification.SettingFamily) (side setting : Bool)\n  (strict : SaturationMonoid.PhysicsCore.Stage10.Bell.FiberBoundsCertification.Strict family) (sigma rS rT : ℝ)\n  (theta lambda : Bool → ℝ),\n  (∀ (i : Bool), 0 ≤ theta i) →\n    (∀ (j : Bool), 0 ≤ lambda j) →\n      0 ≤\n          SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.dualC\n            (SaturationMonoid.PhysicsCore.Stage10.Bell.FiberBoundsCertification.sourceSystem family side strict)\n            ((SaturationMonoid.PhysicsCore.Stage10.Bell.FiberBoundsCertification.sourceSystem family side strict).a\n              setting)\n            sigma theta →\n        0 ≤\n            SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.dualD\n              (SaturationMonoid.PhysicsCore.Stage10.Bell.FiberBoundsCertification.sourceSystem family side strict)\n              ((SaturationMonoid.PhysicsCore.Stage10.Bell.FiberBoundsCertification.sourceSystem family side strict).b\n                setting)\n              sigma theta →\n          0 ≤ rS →\n            0 ≤ rT →\n              rS ^ 2 ≤\n                  SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.dualC\n                      (SaturationMonoid.PhysicsCore.Stage10.Bell.FiberBoundsCertification.sourceSystem family side\n                        strict)\n                      ((SaturationMonoid.PhysicsCore.Stage10.Bell.FiberBoundsCertification.sourceSystem family side\n                            strict).a\n                        setting)\n                      sigma theta *\n                    SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.dualP\n                      (SaturationMonoid.PhysicsCore.Stage10.Bell.FiberBoundsCertification.sourceSystem family side\n                        strict)\n                      lambda →\n                rT ^ 2 ≤\n                    SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.dualD\n                        (SaturationMonoid.PhysicsCore.Stage10.Bell.FiberBoundsCertification.sourceSystem family side\n                          strict)\n                        ((SaturationMonoid.PhysicsCore.Stage10.Bell.FiberBoundsCertification.sourceSystem family side\n                              strict).b\n                          setting)\n                        sigma theta *\n                      SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.dualQ\n                        (SaturationMonoid.PhysicsCore.Stage10.Bell.FiberBoundsCertification.sourceSystem family side\n                          strict)\n                        lambda →\n                  ∀ (s t : ℝ)\n                    (valid :\n                      SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutIdentification.AdmissibleScales family s t),\n                    2 * (rS + rT) -\n                        SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.dualK\n                          (SaturationMonoid.PhysicsCore.Stage10.Bell.FiberBoundsCertification.sourceSystem family side\n                            strict)\n                          theta lambda ≤\n                      sigma *\n                        (SaturationMonoid.PhysicsCore.Stage10.Bell.FiberBoundsCertification.localEffect\n                              (SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutIdentification.scaledFamily family s t\n                                valid)\n                              side setting).gain ^\n                          2"
+    }
+  ],
+  "compiler_only_module_symbols": [
+    "Finset.sum._at_.SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.dualC.spec_0",
+    "Finset.sum._at_.SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.dualC.spec_0._redArg",
+    "Multiset.sum._at_.Finset.sum._at_.SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.dualC.spec_0.spec_0",
+    "Multiset.sum._at_.Finset.sum._at_.SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.dualC.spec_0.spec_0._closed_0",
+    "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.PositiveConeSystem.denominator._boxed",
+    "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.PositiveConeSystem.quadratic._boxed",
+    "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.dualC._closed_0",
+    "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.dualC._closed_1",
+    "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.dualC._lam_0",
+    "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.dualC._lam_0._boxed",
+    "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.dualD._lam_0",
+    "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.dualD._lam_0._boxed",
+    "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.dualK._lam_0",
+    "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.dualK._lam_0._boxed",
+    "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.dualK._lam_1",
+    "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.dualK._lam_1._boxed",
+    "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.dualP._lam_0",
+    "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.dualP._lam_0._boxed",
+    "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.dualQ._lam_0",
+    "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutFiberBounds.dualQ._lam_0._boxed"
+  ],
+  "new_dependency_declaration_count": 117,
+  "delegated_source_boundary_count": 37,
+  "checked_base_boundary_count": 483,
+  "dependency_delta_sha256": "c84f8923580960661696431589fab955920c7f1743e9bd0ae2ddb28226b5a491",
+  "source_boundary_sha256": "dc6d819827a81fe0eb070bf10c35d9acf706c1b0ea7e8d747491f1e025c5ed09",
+  "dependency_closure_method": "fresh new type/value graph; frozen source-owned axiom boundaries; exact-edge accepted base graph",
+  "source_only_import_module_count": 12514
+}

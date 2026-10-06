@@ -1,0 +1,463 @@
+{
+  "schema": "stage10-munich-atomic-forward-source/v1",
+  "version": "af0001",
+  "status": "source_model_and_error_contract_reviewed",
+  "evidence_valid": true,
+  "controller_advance": false,
+  "authority": {
+    "source": "positiveSmoothUnifiedSource",
+    "exact_visit": "SpinPair.visit 10",
+    "current_tick": 16,
+    "generated_next_tick": 17,
+    "role": "bounded_subordinate_physics_producer",
+    "direct_consumer": "independent_response_anchors_and_readiness"
+  },
+  "public_sources": [
+    {
+      "title": "Garthoff 2015 official master thesis",
+      "url": "https://xqp.physik.uni-muenchen.de/publications/files/theses_master/master_garthoff.pdf",
+      "sha256": "8117baa61ccb7bfb26c2ce63ae6e5eaed1f7cbbae52a06300dacb21628a7438c",
+      "bytes": 4227991,
+      "body_and_pdf_pages": [
+        44,
+        47,
+        48,
+        49,
+        89
+      ],
+      "formulas": [
+        "3.5",
+        "3.6",
+        "3.7",
+        "3.8",
+        "3.9",
+        "3.10",
+        "3.11",
+        "3.12",
+        "3.13"
+      ],
+      "formula_pages_visually_checked": [
+        47,
+        48,
+        89
+      ]
+    },
+    {
+      "title": "Watrous The Theory of Quantum Information official author manuscript",
+      "url": "https://cs.uwaterloo.ca/~watrous/TQI/TQI.pdf",
+      "sha256": "c8f30116586435fc265273b09ca2d63f4912a5d4b8901db1ada84b03373c6325",
+      "bytes": 2459123,
+      "body_page": 168,
+      "pdf_page": 176,
+      "theorems": [
+        "Corollary 3.40",
+        "Proposition 3.41"
+      ],
+      "equations": [
+        "3.241",
+        "3.243"
+      ],
+      "role": "positive_trace_preserving_trace_norm_contraction_and_additive_composition_error"
+    },
+    {
+      "title": "Lindblad On the generators of quantum dynamical semigroups original publisher record",
+      "url": "https://link.springer.com/article/10.1007/BF01608499",
+      "doi": "10.1007/BF01608499",
+      "year": 1976,
+      "role": "general_gksl_generator_reference",
+      "full_original_paper_read": false,
+      "finite_specific_generator_cp_tp_argument_in_review_note": true
+    }
+  ],
+  "spontaneous_jumps_gamma1_units": [
+    {
+      "destination": 1,
+      "origin": 2,
+      "rate": "1/12"
+    },
+    {
+      "destination": 1,
+      "origin": 7,
+      "rate": "1/12"
+    },
+    {
+      "destination": 1,
+      "origin": 9,
+      "rate": "1/2"
+    },
+    {
+      "destination": 4,
+      "origin": 2,
+      "rate": "1/12"
+    },
+    {
+      "destination": 4,
+      "origin": 7,
+      "rate": "1/12"
+    },
+    {
+      "destination": 4,
+      "origin": 8,
+      "rate": "1/4"
+    },
+    {
+      "destination": 4,
+      "origin": 10,
+      "rate": "1/12"
+    },
+    {
+      "destination": 4,
+      "origin": 12,
+      "rate": "1/2"
+    },
+    {
+      "destination": 11,
+      "origin": 7,
+      "rate": "1/3"
+    },
+    {
+      "destination": 11,
+      "origin": 8,
+      "rate": "1/4"
+    },
+    {
+      "destination": 11,
+      "origin": 10,
+      "rate": "1/12"
+    },
+    {
+      "destination": 5,
+      "origin": 2,
+      "rate": "5/6"
+    },
+    {
+      "destination": 5,
+      "origin": 6,
+      "rate": "30333/28750"
+    },
+    {
+      "destination": 5,
+      "origin": 7,
+      "rate": "1/2"
+    },
+    {
+      "destination": 5,
+      "origin": 8,
+      "rate": "1/2"
+    },
+    {
+      "destination": 5,
+      "origin": 9,
+      "rate": "1/2"
+    },
+    {
+      "destination": 5,
+      "origin": 10,
+      "rate": "5/6"
+    },
+    {
+      "destination": 5,
+      "origin": 12,
+      "rate": "1/2"
+    }
+  ],
+  "spontaneous_total_rate_by_excited_state": {
+    "2": "1",
+    "6": "30333/28750",
+    "7": "1",
+    "8": "1",
+    "9": "1",
+    "10": "1",
+    "12": "1"
+  },
+  "spontaneous_jump_formula_count": 18,
+  "spontaneous_jump_prose_count": 20,
+  "prose_count_used_to_invent_jumps": false,
+  "ionization_jumps": [
+    {
+      "destination": 3,
+      "origin": 2,
+      "rate": "Aion"
+    },
+    {
+      "destination": 3,
+      "origin": 6,
+      "rate": "Aion"
+    },
+    {
+      "destination": 3,
+      "origin": 7,
+      "rate": "Aion"
+    },
+    {
+      "destination": 3,
+      "origin": 8,
+      "rate": "Aion"
+    },
+    {
+      "destination": 3,
+      "origin": 9,
+      "rate": "Aion"
+    },
+    {
+      "destination": 3,
+      "origin": 10,
+      "rate": "Aion"
+    },
+    {
+      "destination": 3,
+      "origin": 12,
+      "rate": "Aion"
+    }
+  ],
+  "hamiltonian_offdiagonal_edges": [
+    {
+      "edge": [
+        1,
+        2
+      ],
+      "omega_over_gamma1": "R"
+    },
+    {
+      "edge": [
+        1,
+        9
+      ],
+      "omega_over_gamma1": "sqrt(6)*R"
+    },
+    {
+      "edge": [
+        4,
+        7
+      ],
+      "omega_over_gamma1": "R"
+    },
+    {
+      "edge": [
+        4,
+        12
+      ],
+      "omega_over_gamma1": "sqrt(6)*R"
+    },
+    {
+      "edge": [
+        5,
+        6
+      ],
+      "omega_over_gamma1": "C"
+    },
+    {
+      "edge": [
+        8,
+        11
+      ],
+      "omega_over_gamma1": "sqrt(3)*R"
+    },
+    {
+      "edge": [
+        10,
+        11
+      ],
+      "omega_over_gamma1": "R"
+    }
+  ],
+  "hamiltonian_offdiagonal_factor": "1/2",
+  "hamiltonian_detuned_diagonal_states": [
+    7,
+    8,
+    9,
+    12
+  ],
+  "hamiltonian_detuned_diagonal_value": "-3258/23",
+  "gamma2_over_gamma1": "30333/28750",
+  "dimensionless_time": "tau=(2*pi*5.7500e6)*T_seconds",
+  "ordinary_and_angular_frequency_mixed": false,
+  "raw_control_fields": [
+    "readout_rabi_over_gamma1",
+    "cycling_rabi_over_gamma1",
+    "ionization_rate_over_gamma1",
+    "pulse_time_boundaries_gamma1_units",
+    "actual_xz_control_axis",
+    "background_click_probability",
+    "fragment_registration_probability"
+  ],
+  "target_response_or_gain_inputs_admitted": false,
+  "coherent_blocks": [
+    [
+      1,
+      2,
+      9
+    ],
+    [
+      4,
+      7,
+      12
+    ],
+    [
+      11,
+      8,
+      10
+    ],
+    [
+      5,
+      6
+    ],
+    [
+      3
+    ]
+  ],
+  "invariant_hermitian_real_coordinates": 32,
+  "diagonal_real_coordinates": 12,
+  "offdiagonal_real_imaginary_coordinates": 20,
+  "frobenius_coordinate_infinity_factor_squared": 52,
+  "trace_norm_coordinate_infinity_factor_squared": 624,
+  "safe_trace_norm_coordinate_infinity_factor": 32,
+  "uniform_phase_covariance_argument_reviewed": true,
+  "qubit_offblock_coherence_to_ion_population_zero": true,
+  "ionization_qubit_effect_diagonal_generated": true,
+  "xz_transport_y_coefficient_zero_given_xz_control_chart": true,
+  "actual_optical_axis_identity_generated_from_nominal_table": false,
+  "exact_and_midpoint_generator_cp_tp_reviewed": true,
+  "local_error_additive_under_exact_semigroup_reviewed": true,
+  "taylor_tail_condition": "R<n+2",
+  "taylor_tail_bound": "R^(n+1)/(n+1)!/(1-R/(n+2))*input_norm",
+  "square_root_midpoint_hamiltonian_perturbation_bound": "2*sum(segment_tau*delta_H_operator_norm)",
+  "global_exp_detuning_error_amplification_used": false,
+  "raw_physics_image_automatically_singleton": false,
+  "equal_trace_common_bias_detector_scale_gauge_reviewed": true,
+  "equal_trace_gauge_claimed_for_unequal_bias_fixed_witnesses": false,
+  "actual_independent_anchor_inputs_available": false,
+  "actual_hardware_uniquely_identified": false,
+  "numerical_program_files_reviewed": [
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/atomic_forward.py",
+      "sha256": "446ed60461e1e9353aa8948e8403b2355c62e667589773165009b92c9ddc5685"
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/atomic_forward_independent.py",
+      "sha256": "23f9b65b8a02b95432e1d61a32fb6f992378cb092935248eff165a51da3abc59"
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/test_atomic_forward.py",
+      "sha256": "e5bc917edc67062d64c64b4871b2a45b054a07a2e6907ff7c3c005dc10cf3082"
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/test_atomic_forward_independent.py",
+      "sha256": "1844e781522a8db6dced1689280434224a7487cb92b840cd38d3abdffa818093"
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/criterion-af0001.md",
+      "sha256": "df079a9d6639db041efa8d317bc3c4f473fc60bf95dc630792e1d012a71b6038"
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/atomic_dose.py",
+      "sha256": "fbc2a0dc648380ddde6f9abd5e92409c6b6467aa782c79f3a3ca3e8958d407f3"
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/test_atomic_dose.py",
+      "sha256": "a1b4d36b9b7cb8df6ff759a022cf88a2aea2cbab773e02f9f7cb751167cf3336"
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/atomic_forward_run.py",
+      "sha256": "f5540025de0770e727814dd3b786da15bbae5a42f33ca648ccfc9d50ad5f00e5"
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/atomic_forward_verify.py",
+      "sha256": "f794d1e705a7eca91c049296b80f4d5d97fa177de4914e359f07ab1a95a9d861"
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/test_atomic_forward_verify.py",
+      "sha256": "3c1cb5dfee0a83ff0c6d803ce518ee17ae14c0178a99a3e1fa581a78674284e2"
+    }
+  ],
+  "trial_event_files_read": 0,
+  "new_empirical_fits_executed": 0,
+  "review_note": {
+    "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/atomic-forward-source.md",
+    "sha256": "8e9f6886542d68733a63b130276a7cf0ec8315ca8541bf8c3f28fc3e01e28411"
+  },
+  "nominal_atomic_constant_centers_are_actual_input_confidence_intervals": false,
+  "uniform_raw_pulse_area_bound_reviewed": true,
+  "pulse_area": "sum(segment.duration*segment.omega_r)",
+  "initial_ground_states_without_outgoing_jumps": [
+    1,
+    4
+  ],
+  "uniform_pulse_area_gain_upper": "min(1,7*pulse_area^2/4)",
+  "whole_parent_cs_raw_pulse_area_squared_lower": "4*gain_lower/7",
+  "uniform_area_bound_requires_only_registered_jump_and_hamiltonian_graph": true,
+  "uniform_area_bound_all_cycling_and_ionization_controls": true,
+  "uniform_area_bound_extra_unregistered_ground_noise_admitted": false,
+  "stronger_analytic_area_lower": "2*asin(sqrt(gain_lower))/sqrt(7)",
+  "arcsin_float_used_as_certified_endpoint": false,
+  "additional_confidence_alpha_spent": 0,
+  "primary_directed_block_program_reviewed": true,
+  "independent_full_complex_program_reviewed": true,
+  "independent_program_imports_primary_producer": false,
+  "independent_full_restriction_formal_coefficient_checks_executed": 3072,
+  "primary_focused_controls_passed": 13,
+  "independent_focused_controls_passed": 18,
+  "additional_unclipped_boundary_cross_controls_passed": 2,
+  "one_instrument_fixed_chart_across_pulse_segments": true,
+  "optical_polarization_waveform_or_ground_transverse_field_admitted": false,
+  "atomic_response_forward_model_kernel_proved": false,
+  "registered_af0001_contract_reviewed": true,
+  "raw_pulse_role_driver_reviewed": true,
+  "primary_dose_ratio_and_independent_reciprocal_ratio_reviewed": true,
+  "original_cs_individual_and_joint_maximum_semantics_reviewed": true,
+  "joint_maximum_support_by_ray": {
+    "uniform": [
+      [
+        "alice",
+        0
+      ],
+      [
+        "alice",
+        1
+      ],
+      [
+        "bob",
+        0
+      ],
+      [
+        "bob",
+        1
+      ]
+    ],
+    "alice": [
+      [
+        "alice",
+        0
+      ],
+      [
+        "alice",
+        1
+      ]
+    ],
+    "bob": [
+      [
+        "bob",
+        0
+      ],
+      [
+        "bob",
+        1
+      ]
+    ]
+  },
+  "dose_focused_synthetic_controls_passed": 3,
+  "independent_driver_imports_primary_numeric_or_dose_producer": false,
+  "primary_probability_maximum_enclosure_width": "1/100000000000000000000000000000000000000000000000000",
+  "trace_j_maximum_enclosure_width": "1/50000000000000000000000000000000000000000000000000",
+  "official_af0001_first_generation_executed_during_review": false,
+  "official_af0001_kinetic_dose_generation_executed_during_review": false,
+  "frozen_first_consumer_program_reviewed": true,
+  "consumer_reexecutes_forward_model": false,
+  "consumer_reexecutes_matrix_exponential": false,
+  "consumer_rebuilds_only_exact_restriction_and_paid_cs_dose_arithmetic": true,
+  "consumer_primary_attempt_and_independent_attempt_flat_identity_reviewed": true,
+  "consumer_strict_typed_actual_false_scope_fields_reviewed": true,
+  "ion_effect_trace_required_to_equal_same_probability_endpoint_sums": true,
+  "nonnegative_trace_norm_error_bounds_required": true,
+  "frozen_first_consumer_tests_executed_during_review": false
+}

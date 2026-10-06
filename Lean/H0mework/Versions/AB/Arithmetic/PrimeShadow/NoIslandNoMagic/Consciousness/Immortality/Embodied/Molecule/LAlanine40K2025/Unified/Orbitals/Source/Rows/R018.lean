@@ -1,0 +1,115 @@
+import H0mework.Versions.AB.Arithmetic.PrimeShadow.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.Unified.Orbitals.Source.RowsReifier
+
+set_option autoImplicit false
+set_option maxRecDepth 16384
+set_option maxHeartbeats 0
+namespace SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule
+namespace LAlanine40K2025.UnifiedOrbitals.OriginalMetric
+open BasinRefinement SourceFiniteData
+
+generateOriginalMetricRow 18
+
+theorem row18_error (c : Basis) :
+    |overlap 18 c-(recordedOverlap 18 c : ℝ)| ≤ (1/10^12 : ℚ) := by
+  fin_cases c
+  · exact entry18_0_error
+  · exact entry18_1_error
+  · exact entry18_2_error
+  · exact entry18_3_error
+  · exact entry18_4_error
+  · exact entry18_5_error
+  · exact entry18_6_error
+  · exact entry18_7_error
+  · exact entry18_8_error
+  · exact entry18_9_error
+  · exact entry18_10_error
+  · exact entry18_11_error
+  · exact entry18_12_error
+  · exact entry18_13_error
+  · exact entry18_14_error
+  · exact entry18_15_error
+  · exact entry18_16_error
+  · exact entry18_17_error
+  · exact entry18_18_error
+  · exact entry18_19_error
+  · exact entry18_20_error
+  · exact entry18_21_error
+  · exact entry18_22_error
+  · exact entry18_23_error
+  · exact entry18_24_error
+  · exact entry18_25_error
+  · exact entry18_26_error
+  · exact entry18_27_error
+  · exact entry18_28_error
+  · exact entry18_29_error
+  · exact entry18_30_error
+  · exact entry18_31_error
+  · exact entry18_32_error
+  · exact entry18_33_error
+  · exact entry18_34_error
+  · exact entry18_35_error
+  · exact entry18_36_error
+  · exact entry18_37_error
+  · exact entry18_38_error
+  · exact entry18_39_error
+  · exact entry18_40_error
+  · exact entry18_41_error
+  · exact entry18_42_error
+  · exact entry18_43_error
+  · exact entry18_44_error
+  · exact entry18_45_error
+  · exact entry18_46_error
+  · exact entry18_47_error
+  · exact entry18_48_error
+  · exact entry18_49_error
+  · exact entry18_50_error
+  · exact entry18_51_error
+  · exact entry18_52_error
+  · exact entry18_53_error
+  · exact entry18_54_error
+  · exact entry18_55_error
+  · exact entry18_56_error
+  · exact entry18_57_error
+  · exact entry18_58_error
+  · exact entry18_59_error
+  · exact entry18_60_error
+  · exact entry18_61_error
+  · exact entry18_62_error
+  · exact entry18_63_error
+  · exact entry18_64_error
+  · exact entry18_65_error
+  · exact entry18_66_error
+  · exact entry18_67_error
+  · exact entry18_68_error
+  · exact entry18_69_error
+  · exact entry18_70_error
+  · exact entry18_71_error
+  · exact entry18_72_error
+  · exact entry18_73_error
+  · exact entry18_74_error
+  · exact entry18_75_error
+  · exact entry18_76_error
+  · exact entry18_77_error
+  · exact entry18_78_error
+  · exact entry18_79_error
+  · exact entry18_80_error
+  · exact entry18_81_error
+  · exact entry18_82_error
+  · exact entry18_83_error
+  · exact entry18_84_error
+  · exact entry18_85_error
+  · exact entry18_86_error
+  · exact entry18_87_error
+  · exact entry18_88_error
+  · exact entry18_89_error
+  · exact entry18_90_error
+  · exact entry18_91_error
+  · exact entry18_92_error
+  · exact entry18_93_error
+  · exact entry18_94_error
+  · exact entry18_95_error
+  · exact entry18_96_error
+  · exact entry18_97_error
+
+end LAlanine40K2025.UnifiedOrbitals.OriginalMetric
+end SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule

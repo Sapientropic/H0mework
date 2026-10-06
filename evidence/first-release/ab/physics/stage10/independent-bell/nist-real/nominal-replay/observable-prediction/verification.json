@@ -1,0 +1,89 @@
+{
+  "schema": "p23-observable-prediction-verification/v1",
+  "version": "p23-observable-prediction-op0001",
+  "evidence_valid": true,
+  "source_mapping_identified": false,
+  "publication_configuration_identified": false,
+  "production_admitted": false,
+  "statistical_verdict_enabled": false,
+  "private_optimizer_input_required": false,
+  "status": "verified",
+  "criterion_freeze": {
+    "commit": "be90dbed91730c1bd4049aaecde52fa49c888aa9",
+    "criterion_sha256": "4e292aa4abd441daa62dfe2f60c964295e85c2396a41f25b043baaa1eb3c1f6d",
+    "sources_sha256": "2ab2e07b57f9c85f031055b64c1cf694ae18abc44714762d29ce2dbc83e6dfa5"
+  },
+  "execution_source_freezes": {
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-prediction/predict.py": {
+      "commit": "925b241a77a1baf0404519df5213006e98b8b1f3",
+      "sha256": "12139616de12163c345949b5479260b13365268d1f80f84247e3ecbe70bb5b39"
+    },
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-prediction/independent.py": {
+      "commit": "59637cdd55301e693f871bc238736d977a6a6133",
+      "sha256": "9736cd2e2d5aa1405a938d0e377ab640019d56c61bd32ae89344569c88c13c6d"
+    },
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-prediction/verify.py": {
+      "commit": "43a4bf60d37f0c9d20b2f14b3bf998bef335ed78",
+      "sha256": "86db18fce09bf6840bece6aacd02b387093830bc4bba4b27c7a2a71cafe085ec"
+    },
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-prediction/tests.py": {
+      "commit": "43a4bf60d37f0c9d20b2f14b3bf998bef335ed78",
+      "sha256": "0121994d2f3dc5d561e035e6a26eb8d5649d0db1570ad87b468eb890ff8c4479"
+    }
+  },
+  "source_controls": 336,
+  "models": [
+    "S1_signal",
+    "independent_OR",
+    "named_M3"
+  ],
+  "maxima": [
+    {
+      "held_out_residual": 1.0842021724855044e-19,
+      "cofactor_residual": 7.291671958386353e-20,
+      "derivative_error": 7.900956635904094e-14,
+      "paired_gain_error": 2.168404344971009e-19
+    },
+    {
+      "held_out_residual": 1.0842021724855044e-19,
+      "cofactor_residual": 7.910100410184187e-20,
+      "derivative_error": 2.4436634898754306e-13,
+      "paired_gain_error": 6.505213034913027e-19
+    }
+  ],
+  "lean_candidate_certified": true,
+  "source_full_mode_and_OR_branch_recomputed": true,
+  "holdout_rows": {
+    "calibration": [
+      0,
+      1,
+      3
+    ],
+    "held_out": 2
+  },
+  "bindings": {
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/investigation/collected-source/criterion.md": "562b062d5eaf79eafb29f41a8c314d350369eb3cb68ba21a1d46bfb2afe26021",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/investigation/collected-source/Collection.lean": "4c89ff1aebae41dc472d24930f79ca418bc3253fc48151889ca17eb308326977",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/investigation/collected-source/model.py": "c4baa7ee17c1cb6995488ae7a79800c73e7518dfd6913067cd9cbb9c8d14bec1",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/investigation/collected-source/independent.py": "1a243a2bc00de0120f2296b7149cfbd9dfecd1b9584c9924c57591f78cc8c716",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/collected-response/criterion-r0001.1.md": "c9b4825832bba9cade516ba2319bd4f000775810436460793a75123506c5ee2d",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/collected-response/SourceResponse.lean": "caeadbe42a9c1263afed406733ee5ad3d8febd53ad1524524c0090461098394f",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-prediction/criterion.md": "4e292aa4abd441daa62dfe2f60c964295e85c2396a41f25b043baaa1eb3c1f6d",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-prediction/sources.json": "2ab2e07b57f9c85f031055b64c1cf694ae18abc44714762d29ce2dbc83e6dfa5",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-prediction/ObservableLaw.lean": "46971c8b9747442279709d10469a19f04b4c9b412fa6575c825d2eacccc49b2c",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-prediction/ObservableConsumer.lean": "13150b3b12835fda2891f5dc84f6d34cab10515974f7b9482443d8106fd443a8",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-prediction/ObservableCertification.lean": "fcf15d370d65aba87010e246d7fa09ff27c7066b12a8958393318b898e5a4545",
+    "Lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+    "Lean/lake-manifest.json": "aa60b347daf17a642d027cda3288f7d6f12c176c4ddd2677c28140daadb15c81",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-prediction/certification.json": "56f094a0b131cbf50b6c97eac72b7db3c4fee5970f464db2746103edd569ac3a",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-prediction/independent.py": "9736cd2e2d5aa1405a938d0e377ab640019d56c61bd32ae89344569c88c13c6d",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-prediction/prediction.json": "eebc029e005631c5f8cfe77b2c8e0b8a4d805e7a790db50f4a6a0dcf887bddef",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-prediction/predict.py": "12139616de12163c345949b5479260b13365268d1f80f84247e3ecbe70bb5b39",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-prediction/verify.py": "86db18fce09bf6840bece6aacd02b387093830bc4bba4b27c7a2a71cafe085ec",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-prediction/tests.py": "0121994d2f3dc5d561e035e6a26eb8d5649d0db1570ad87b468eb890ff8c4479",
+    "prediction.json": "eebc029e005631c5f8cfe77b2c8e0b8a4d805e7a790db50f4a6a0dcf887bddef",
+    "independent_prediction.json": "7ff52470664c27e85639ab676fdce3ae522df6d93e8297ea19c92abac942cdb6"
+  },
+  "scope": "source_generated_collected_HHVV_observable_family",
+  "public_target_role": "retrospective_published_rounding_only"
+}

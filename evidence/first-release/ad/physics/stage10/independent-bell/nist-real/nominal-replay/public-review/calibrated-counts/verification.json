@@ -1,0 +1,1301 @@
+{
+  "actual_hardware_identity_verified": false,
+  "actual_source_epoch_identified": false,
+  "all_19_source_count_readouts_independently_verified": true,
+  "analytic_audit": {
+    "K_A_herald": "Bob",
+    "K_B_herald": "Alice",
+    "analytic_chain_static_audit_complete": true,
+    "background_added_per_pulse_before_window": true,
+    "bound_independent_of_all_finite_source_points": true,
+    "reference_q_and_balanced_n_have_distinct_definitions": true,
+    "second_native_trig_single_pulse_upper": "74449936235256949838053173445757149/2000000000000000000000000000000000000000"
+  },
+  "bell_event_files_read": 0,
+  "bindings": [
+    {
+      "commit": "829534f0e1eace805ce60918880041d5d9efa8b8",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/calibration-readout/CalibrationLaw.lean",
+      "sha256": "0944bbc767afe4e1456613ad36caeaf0f8c90402839356a78aa015078c204e2d"
+    },
+    {
+      "commit": "26dec5f4c5bebd8ec6defc921c0ba79a85a79f23",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window/GaussianSource.lean",
+      "sha256": "1dee783a0976a497139e64d4ef7278b203d56a0b119c84eea942bbb7846a10af"
+    },
+    {
+      "commit": "a9f64fa6e3f8ee0a5329107002e1677f37842975",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window/native-effects/DetectorGamma.lean",
+      "sha256": "b0007ece95dd29f1db550e260f73b3955d365241162ebe971c4ebcd92a16a2af"
+    },
+    {
+      "commit": "07045a57bda676b4f94ee4523ed5fb3259527aea",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window/native-effects/GammaConsumer.lean",
+      "sha256": "b75cec12b93e10135f92d126a4f6f250c26965b0c3daa0b9d25e77d53256ed35"
+    },
+    {
+      "commit": "79ed586e98d012b5d22d3241dc138ed9d809da20",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/analysis-readout/sources.json",
+      "sha256": "e19db49120a84a8d19431e5e7d761aafc8f9ee6a06a577a7c6efc72d836d2a14"
+    },
+    {
+      "commit": "8785af4d6afb70e673753040f4635fd42e22815d",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/environment-source/EnvironmentConsumer.lean",
+      "sha256": "f317a62d62e723aba3903bf20dd0211850503a333087423883186c1d7c4c51b7"
+    },
+    {
+      "commit": "ee4adfbc4a7d26e80d997a72db858811ed87d277",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/environment-source/EnvironmentSource.lean",
+      "sha256": "d8b0a04c84ac7269c796531ecba1caca5d2f315cd2df16d89a89796749e17a35"
+    },
+    {
+      "commit": "64cc6efa6cfacb4d0938908393dc0b7d6c9bd490",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/environment-source/MatchedSource.lean",
+      "sha256": "749931486965dfb9d0c4402df431e9369e35428712bff5de7636bcdff50c10f4"
+    },
+    {
+      "commit": "d316af87ec22bc0b7bfad7d1d0669fee850e2db1",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/environment-source/SectorConsumer.lean",
+      "sha256": "97897e1474333366535c91d163cc3b3ff47b84bffb7504a7581ab062c69343bf"
+    },
+    {
+      "commit": "d9d396539b43fd0ff92171248ad9b56492e293f6",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/environment-source/SectorSource.lean",
+      "sha256": "10301d121a6e727ce1e475a34837771a12fe206c6b8520c13ce00eea8421f86d"
+    },
+    {
+      "commit": "23294e59d99a22db32c97c3aed07450b9bff5e4f",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/environment-source/calibration-criterion.md",
+      "sha256": "1b877f6386ce1856f6a82289c3ca3c61785dca0d5431c967cd3c36b10231e1fd"
+    },
+    {
+      "commit": "7de2651e11254e44216b4809674dbe7c8385d0b2",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/environment-source/calibration-independent-r0002.json",
+      "sha256": "d6ad02e1bdd6e8e19cbf7d46316ef116e1eaab3dafabc022a8011db1022a6325"
+    },
+    {
+      "commit": "57d52ca1d3b1c45b745c48afda0c35dfa5557afd",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/environment-source/calibration-primary.json",
+      "sha256": "6d3b422a5db6bdcd51f4f2a2b850ebcabb706adf15a63b895750bee6fd21d5bc"
+    },
+    {
+      "commit": "23294e59d99a22db32c97c3aed07450b9bff5e4f",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/environment-source/calibration-sources.json",
+      "sha256": "823745e7e39b4b621b8169129c29d2445e93c7fa658b63c821d2016a71c19f94"
+    },
+    {
+      "commit": "8a4aa9f089c2068ccbca7fa0a4c25e94cc41af46",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/environment-source/calibration-verification.json",
+      "sha256": "4ff05c8fc08cd2c7664801499c34e724339c7936c0dd2c93b19654f38236150c"
+    },
+    {
+      "commit": "614b2f2ddd198db0de2dcdea097ff51ad356d2aa",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/environment-source/calibration_source.py",
+      "sha256": "4658f963e6873afa0ea2e2eabfa918d57f16e87a5982712da345674e825c7480"
+    },
+    {
+      "commit": "75ecac81d9d21ce6112217a72a4368ac85513511",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/environment-source/certification.json",
+      "sha256": "7c144fe87eca3f5cae00f84f9f1c0b420116d63c0a32f8ecfb0668545e7f7471"
+    },
+    {
+      "commit": "25723049a854f3d511a79700150089a51a9e5b04",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/environment-source/counts.py",
+      "sha256": "9c6972dccca9eb5cb0509b29a325fe9a3d8c550e1ee89a168c37aaa7f1481bda"
+    },
+    {
+      "commit": "0d1e6c22ee1b18a01e2755ee5e04a618a66cf157",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/environment-source/criterion.md",
+      "sha256": "877d3c558b81ba684226c425cefec4dbb92d88910a3011dd503937acc0eb7de8"
+    },
+    {
+      "commit": "46eb6cbb227bebc9cb9924ba1f7ce05880a7c9b0",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/environment-source/independent_calibration_source.py",
+      "sha256": "65c980d754326cc36eaa2ef5e01bc330efdc67956840f9bb9fe0238eb6262725"
+    },
+    {
+      "commit": "3b52bb208548975c47c55c0779a2175425c30d2c",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/environment-source/independent_counts.py",
+      "sha256": "056df106ecfe6802014c20cb080501b8d2111edbd89ec525e9abcc511252e8d8"
+    },
+    {
+      "commit": "041db5f0a4c4ae77054a145d5e1cbf6071fb0609",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/environment-source/matched-certification.json",
+      "sha256": "860a7e04a4327bfd131e94abbcd80e680c2d415a9a12d884a6715c3259d771f6"
+    },
+    {
+      "commit": "75ecac81d9d21ce6112217a72a4368ac85513511",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/environment-source/numeric-criterion.md",
+      "sha256": "2a228f1633a3786aafe3258bdbd8c5ba770c3ad3af00b34f0334774fd7baea32"
+    },
+    {
+      "commit": "75ecac81d9d21ce6112217a72a4368ac85513511",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/environment-source/numeric-sources.json",
+      "sha256": "fb52c62be7d4e0691de9f195b9c0ab4d994d1702abe2d825ee69d091223ac0b9"
+    },
+    {
+      "commit": "065ea1e89f39787b3b0b90d7904e7e85d5421208",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/environment-source/sector-certification.json",
+      "sha256": "02602c3fcd3685a51dd39d98f691fd749ec4bf75fd5d13d763602b46064aa3c3"
+    },
+    {
+      "commit": "0d1e6c22ee1b18a01e2755ee5e04a618a66cf157",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/environment-source/sources.json",
+      "sha256": "2b7713b74db74f4806aba3fedaf8d700777b2355180001b0204b10c2f0702f75"
+    },
+    {
+      "commit": "6563279a3962a2bac7b5c59265899a53d8c27aca",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/environment-source/verification.json",
+      "sha256": "ce68a22f4fc793337d8ad0c0b79cbabc808766185c6bf883be7c6d6bde772116"
+    },
+    {
+      "commit": "581d1cd97a4a23b488fd250436fe860037e6d29b",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/full-statistical-fiber/CovarianceSource.lean",
+      "sha256": "4f9679384b1c284d2102614da793ff855c1ea20f7525fa32546c26f143fe300d"
+    },
+    {
+      "commit": "2ce71a12c802486c95c1916d06ecc5e6f9c4d0b9",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/full-statistical-fiber/covariance-source-certification.json",
+      "sha256": "f84f51a75f02e9c53092fc627313eceebc7967fba9da4b4948e2059aad12f280"
+    },
+    {
+      "commit": "3f8aed12d081e4f8178fdf6cceddd006c3d47bb4",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/published-drive-criterion-pd0002.md",
+      "sha256": "6764bbe6a536eb965d2c72258e17165c66a66b55d82eda90546da227dae32739"
+    },
+    {
+      "commit": "1d77d45a0348571b1374fef83758cbf18bca37a6",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/receiver-control-source/WaveplateConsumer.lean",
+      "sha256": "58a01a5f0bb7c2a87df923b6aba7cc0b70b604af0263145344dbcc81f30420ba"
+    },
+    {
+      "commit": "27a49e695c4ee9585a81f95333b2b2c5c777e6f6",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/receiver-control-source/WaveplateSource.lean",
+      "sha256": "4da795e3c3dbb22b642bf6e93bef5019af396a85429f6c7d50f68fc5c41999c0"
+    },
+    {
+      "commit": "fb9ba0195871223587e2d4525e69c48d0cd1fe29",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/receiver-control-source/certification.json",
+      "sha256": "08f190945c8fc26f36be0dbd4cbdf760323d9ad426759ea17dd8c1bdb2455173"
+    },
+    {
+      "commit": "6e43872e7f12adf7612099e687670741cc1183a7",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/receiver-control-source/counts-objectives.txt",
+      "sha256": "fefabb3c8c01f08296373925fd912661f8e7d8447f38eb5d2218f0bbedb220d7"
+    },
+    {
+      "commit": "6e43872e7f12adf7612099e687670741cc1183a7",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/receiver-control-source/polarization-calibration.txt",
+      "sha256": "29dddde6002233ca465ed114853e08de3fcb4f013535d1d9c389713443b7b3b3"
+    },
+    {
+      "commit": "0919a10e64b2616358d7d26b83422f650f727406",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/receiver-control-source/source-and-receiver-recipe.txt",
+      "sha256": "b5e6f6ca39236822d3b7d43a032ffc281aa3b4905ae09c1af54c682bf85b7594"
+    },
+    {
+      "commit": "0919a10e64b2616358d7d26b83422f650f727406",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/receiver-control-source/sources.json",
+      "sha256": "75428181d17ba5f082c7e0d456d1ccaa7191493cbfea7d6d7121e7f8295b6504"
+    },
+    {
+      "commit": "2ca142ff9b85a9bd39f06c0c39a219059cf5932b",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-prediction/public-comparison-po0003.json",
+      "sha256": "20f30388cd5ae23d29f737a20ec36d450def91b9a70be891c751057686d09fee"
+    },
+    {
+      "commit": "af26fdcb74d7dc6ecb6e3be31c17d4927e18f496",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-prediction/public-criterion-po0003.md",
+      "sha256": "0a3b5d9dd26c50a1680fcf89f47d9eafa3347fbcfc16b0bd9a99e87a9de99ee2"
+    },
+    {
+      "commit": "925b241a77a1baf0404519df5213006e98b8b1f3",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-prediction/public-criterion.md",
+      "sha256": "667b30442cb535b6e87c66f378c60c23c62bb9ac66f7295e749bcb2f28e7da4e"
+    },
+    {
+      "commit": "a0cfeadec3f250ab4f3eff5976f6a6176696e4be",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-prediction/public_compare.py",
+      "sha256": "8dea21231138d1cc9c98071e7337db5f93ed5e05ff9b12dfd662e8fa2a2117ba"
+    },
+    {
+      "commit": "6ffb64d04d828a2f7037b4e4a79bf99f084c3d28",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/public-review/calibrated-counts/criterion-cross.md",
+      "sha256": "a6bae28e02a2941919f0b208e1011a710afa5c68a2d0a2347f183b6afb9036fa"
+    },
+    {
+      "commit": "d47e407e27893b4c0a08de4318ff37b0fd0e46fb",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/public-review/calibrated-counts/criterion.md",
+      "sha256": "22a30fd46b50fb0ea53dc546f795504c8f1c1a132ce69811a4cd944d69132b0a"
+    },
+    {
+      "commit": "6f35633195f8a001584efada7a4734f63033ad84",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/public-review/calibrated-counts/first-storage.json",
+      "sha256": "7b0df29fcbdec84cae92f0546dbddc14e03ba18fe7eb09f185aca837372af1c5"
+    },
+    {
+      "commit": "6f35633195f8a001584efada7a4734f63033ad84",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/public-review/calibrated-counts/first.json.gz",
+      "sha256": "de3e93eb6afb46dbbd2c73f102c5287c337142b8ce8e877d7aa5f15668af7a02"
+    },
+    {
+      "commit": "f64acc6bbe496e768de4ebb90c7490dc0d2c95ef",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/public-review/calibrated-counts/review.py",
+      "sha256": "0295b93d38b77ea9c8ab576699412c4055408bffa8cc1bf3f6585a56d681563c"
+    },
+    {
+      "commit": "6ffb64d04d828a2f7037b4e4a79bf99f084c3d28",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/public-review/calibrated-counts/sources-cross.json",
+      "sha256": "f9fac05eaa069b70a9b035b57a78f7377a7a63bf2af10051a861b66bd94feba0"
+    },
+    {
+      "commit": "d47e407e27893b4c0a08de4318ff37b0fd0e46fb",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/public-review/calibrated-counts/sources.json",
+      "sha256": "2f78fb876d56b408139a23b2b4d1d27f939cc1844af6a0c6c987cde579996c7f"
+    },
+    {
+      "commit": "d47e407e27893b4c0a08de4318ff37b0fd0e46fb",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/public-review/calibrated-counts/tests.py",
+      "sha256": "97ba7a5d83221e2b803868f0a591fd93e5f6e1556179e06b84c44a75c345c1de"
+    },
+    {
+      "commit": "6ffb64d04d828a2f7037b4e4a79bf99f084c3d28",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/public-review/calibrated-counts/tests_verify.py",
+      "sha256": "3b5a9651a4fbbd45f2d69705cff2941838b412148860ba97d467af0df3fd20db"
+    },
+    {
+      "commit": "6ffb64d04d828a2f7037b4e4a79bf99f084c3d28",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/public-review/calibrated-counts/verify.py",
+      "sha256": "edec043fd3938b1c2b30d575222f825cfd902f3bc047e426313f2fb04fc11ec4"
+    },
+    {
+      "commit": "f12b8e7e3e5891c4e08cd9c2f859e4ae9e2d5163",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/public-review/multi-window/criterion-cross.md",
+      "sha256": "0ef8747faaa5f6122da570e65f7115ea7fba989c98f4035301117d443f2d31c2"
+    },
+    {
+      "commit": "dcd53e8384520c976180128fb4219d85a32b59fc",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/public-review/multi-window/criterion.md",
+      "sha256": "7a1248db1268121abecaac2a2e1496cc14ea3eaeefc9137049ac84d2a1b96b8b"
+    },
+    {
+      "commit": "6d5e7f8120c71194cee0457bacae5c92a15a82b7",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/public-review/multi-window/cross-verification.json",
+      "sha256": "dd49e276ad064f4a07f0eb1e333954aa72483b4b3a469951fdaddba94cc9c73b"
+    },
+    {
+      "commit": "6c0b46230ce1b786d86aa906b4ef21777dfa770c",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/public-review/multi-window/independent-gzip-storage.json",
+      "sha256": "eb42a7bdbd696698517bc5e9ea69f8ee98f564da13dcc0bcdb3d7b9e52b965e2"
+    },
+    {
+      "commit": "6c0b46230ce1b786d86aa906b4ef21777dfa770c",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/public-review/multi-window/independent-storage.json",
+      "sha256": "f30d80c3ced3cf025a04256565fbcbc406e0fa302bf15d3644bce241ef61f3ab"
+    },
+    {
+      "commit": "6c0b46230ce1b786d86aa906b4ef21777dfa770c",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/public-review/multi-window/independent.json.gz",
+      "sha256": "31fea61d92a8477c1abeb24485c064c44026af4f8fad285121b2b1a371600de7"
+    },
+    {
+      "commit": "d88a7f4f8438ab179872d5c3627798955b30b5c1",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/public-review/multi-window/independent.py",
+      "sha256": "ce30988cceb32c6a08ae3510ce4ccf1ace3a56c9d6758009aa89b99d4eb92172"
+    },
+    {
+      "commit": "f5dcce91d37554545143a3519dd90e8b11b09268",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/public-review/multi-window/primary-first.json",
+      "sha256": "0d379308784bd67bef50d0c9977ea8fd05458bb3f5e204f3ed47be760b75dc66"
+    },
+    {
+      "commit": "2d327c46584162a1925c2dd3d1f4edd9f792fdd1",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/public-review/multi-window/primary.py",
+      "sha256": "f81aca0b1c8e85fa099ffedb3fccfaaea4836ec5a68720620b444bf73dfe2495"
+    },
+    {
+      "commit": "f12b8e7e3e5891c4e08cd9c2f859e4ae9e2d5163",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/public-review/multi-window/sources-cross.json",
+      "sha256": "d59fb2bf1e9b2f4e255ee5971f1d26b00ecef8f5e719c826e18ec49b68697745"
+    },
+    {
+      "commit": "dcd53e8384520c976180128fb4219d85a32b59fc",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/public-review/multi-window/sources.json",
+      "sha256": "16bfc3257d1544c69a50cc9b6708ab451139688d201f6889946e7110dba33afb"
+    },
+    {
+      "commit": "89cd2e5039eaa2602928c1a54da917e817a46265",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/public-review/public-summaries/diag-02-54.xlsx",
+      "sha256": "8817e5d95d0a1745d1c7ad50541c8761431fc161a182b17f12277c29eea58d25"
+    },
+    {
+      "commit": "89cd2e5039eaa2602928c1a54da917e817a46265",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/public-review/public-summaries/diag-03-43.xlsx",
+      "sha256": "0c0c1a7ddb2fe3372d16f625aeeba694a666e0bc52c1338fa913da785a1115fd"
+    },
+    {
+      "commit": "89cd2e5039eaa2602928c1a54da917e817a46265",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/public-review/public-summaries/diag-19-45.xlsx",
+      "sha256": "b857e3b1d7aa5b87d6649b3e82099982f7b39b61eebca6a3ec3e7d3245e32f4e"
+    },
+    {
+      "commit": "89cd2e5039eaa2602928c1a54da917e817a46265",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/public-review/public-summaries/diag-xor1.xlsx",
+      "sha256": "9c42fcfafdf6faec6eca9f71325505d749e0e2901d8370733fc8757ec6f91b4d"
+    },
+    {
+      "commit": "89cd2e5039eaa2602928c1a54da917e817a46265",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/public-review/public-summaries/diag-xor2.xlsx",
+      "sha256": "77192d2fc6b7cfdaa390239434e9668553a0cc882136e3eca3f5d1a087a45b52"
+    },
+    {
+      "commit": "89cd2e5039eaa2602928c1a54da917e817a46265",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/public-review/public-summaries/diag-xor3.xlsx",
+      "sha256": "4c80cf3d3594a92c2d3637a706a76320c995220c37df2f2e8027519a4ea12473"
+    },
+    {
+      "commit": "89cd2e5039eaa2602928c1a54da917e817a46265",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/public-review/public-summaries/inputs.json",
+      "sha256": "9fc87d0c385a52f70e0103428e7923a93e9ba1c4345ea1d716794ae9b29f324d"
+    },
+    {
+      "commit": "89cd2e5039eaa2602928c1a54da917e817a46265",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/public-review/public-summaries/rate-estimates.xlsx",
+      "sha256": "c7c5cbc815b0456eaa42198df42b1f5d7c76a04d7881e20417cfe7db78304f8f"
+    },
+    {
+      "commit": "89cd2e5039eaa2602928c1a54da917e817a46265",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/public-review/source-bindings.md",
+      "sha256": "4460eb0c4cb9edf15fdd8e3cadf58ac531a7408f5d97bc4e357a59bdba8a7efe"
+    },
+    {
+      "commit": "89cd2e5039eaa2602928c1a54da917e817a46265",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/public-review/sources-public-review.json",
+      "sha256": "76ac79faa05b231ea4cea31d83ff75b64c149b17f9523a96fba6e85ff801c1a2"
+    },
+    {
+      "commit": "2621449202e0ab3e73d78c83c183c5737f35f8de",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/response/response.py",
+      "sha256": "2d62e6bf254302b3a99d4061761b7db30138edf461b45a2f59a814a5727f38d3"
+    },
+    {
+      "commit": "420227bfbc5a3c164e8d23a46ca891325c0c03c3",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/shalm2015-channel-inputs.txt",
+      "sha256": "17c5bc32515536634c451bf761f748ccd2e6c6002fa3949b58524e4cc1aeb3eb"
+    },
+    {
+      "commit": "7756ce61784f8e705444450c03b12996340090f5",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/source-code/author-code.txt",
+      "sha256": "99e6a27a51bb525c5c154cde5f679099d48dbf14ae54d758a55d9b9842be377b"
+    },
+    {
+      "commit": "7756ce61784f8e705444450c03b12996340090f5",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/source-code/sources.json",
+      "sha256": "1b2d24a18e7a6e5c332cee9ec38b328436b9cc9b998bc09b37493abada139323"
+    }
+  ],
+  "calibration_sigma_hard_confidence_bound": false,
+  "continuous_domain_from_point_scan": false,
+  "continuous_nominal_ENV_domain_single_bound_certified": true,
+  "continuous_nominal_domain": {
+    "V_population_fraction_upper": {
+      "exact_lower": "151951903843574029613536580235794526949/2000000000000000000000000000000000000000",
+      "exact_upper": "379879759608935074036387715157341883441/5000000000000000000000000000000000000000",
+      "lower": 0.07597595192178702,
+      "upper": 0.07597595192178702
+    },
+    "all_N_transport": [
+      {
+        "N": 1,
+        "endpoint": "full_N1",
+        "original_CI": {
+          "exact_lower": "36599410629061406546522093627996704254528102819310229181/1000000000000000000000000000000000000000000000000000000000000",
+          "exact_upper": "5011338766551454077713943040855034424076651532076108043/100000000000000000000000000000000000000000000000000000000000",
+          "lower": 3.659941062906141e-05,
+          "upper": 5.0113387665514544e-05
+        },
+        "single_upper": "74449936235256949838053173445757149/2000000000000000000000000000000000000000"
+      },
+      {
+        "N": 3,
+        "endpoint": "full_N3",
+        "original_CI": {
+          "exact_lower": "23700874177208557645335598050825994939217500416188004031/200000000000000000000000000000000000000000000000000000000000",
+          "exact_upper": "5738290141660582674839709694370466758671928439458128141/40000000000000000000000000000000000000000000000000000000000",
+          "lower": 0.00011850437088604279,
+          "upper": 0.00014345725354151457
+        },
+        "single_upper": "893365978477711380921774584227419105837669437088762508812604133979464750046154994728597891929098177446563659778949/8000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      },
+      {
+        "N": 5,
+        "endpoint": "full_N5",
+        "original_CI": {
+          "exact_lower": "101319334381583622088643763482714310168838091540159972549/500000000000000000000000000000000000000000000000000000000000",
+          "exact_upper": "117049475426533803027530827081849703439846126811261664951/500000000000000000000000000000000000000000000000000000000000",
+          "lower": 0.00020263866876316723,
+          "upper": 0.0002340989508530676
+        },
+        "single_upper": "5955551491886237490517730117376877233325061026274941329404834979413587463905578145847628884579374603347193042483117301892585611239236225588467049970812468067067815142439675259952323593132560749/32000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      },
+      {
+        "N": 7,
+        "endpoint": "full_N7",
+        "original_CI": {
+          "exact_lower": "284276651038204527434366280339555216649190067912255356301/1000000000000000000000000000000000000000000000000000000000000",
+          "exact_upper": "161025627038965683617337456532858658758661579480685177359/500000000000000000000000000000000000000000000000000000000000",
+          "lower": 0.00028427665103820455,
+          "upper": 0.0003220512540779314
+        },
+        "single_upper": "33349846907576787932528864988845803107855901037512632780730439035670465152608208236709949953092872061935334692021899564145193451514072343254349871536745398230855023283986340938460879735114120307751018870861208919110674710567056564259700716799257049177362490465279696102549/128000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      },
+      {
+        "N": 9,
+        "endpoint": "full_N9",
+        "original_CI": {
+          "exact_lower": "367458964151821163289985264083288250258123106305406441259/1000000000000000000000000000000000000000000000000000000000000",
+          "exact_upper": "25729208437530795787717832073129981098187917696039691313/62500000000000000000000000000000000000000000000000000000000",
+          "lower": 0.0003674589641518212,
+          "upper": 0.00041166733500049273
+        },
+        "single_upper": "171507114114202413996954402148625048636764134471452370185406657852366424237164495940449352018880851220650322440400231724796691766385609627710101303797860860174769762352647830984538148624938867586328664307124614445968258985086191628759706051844949157061588429828882496093766503831204661535304459361907777903191938372422217752217596857146186063582404349/512000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      },
+      {
+        "N": 5,
+        "endpoint": "old_stop_N5",
+        "original_CI": {
+          "exact_lower": "50927542717675990319864624380347/251502250000000000000000000000000000",
+          "exact_upper": "58240924614309919831319954799291/248502250000000000000000000000000000",
+          "lower": 0.00020249338810160143,
+          "upper": 0.00023436779592261205
+        },
+        "single_upper": "5955551491886237490517730117376877233325061026274941329404834979413587463905578145847628884579374603347193042483117301892585611239236225588467049970812468067067815142439675259952323593132560749/32000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      }
+    ],
+    "all_legal_environment_allocations_and_calibration_roots_covered": true,
+    "balanced_n_domain": [
+      "399999999/2000000000000",
+      "600000001/1998799999998"
+    ],
+    "calibration_k1_band_role": "nominal_condition_not_95_percent_coverage",
+    "continuous_nominal_ENV_input_domain_rejected": true,
+    "herald_B_lower": "30147808004766449589991030253067749060260945899999911/199970083827104766481589991030253067749060260945899999911",
+    "input_domain": {
+      "K_A_upper": "750000000001/1000000000000",
+      "K_B_lower": "752999999999/1000000000000",
+      "q": [
+        "399999999/1000000000000",
+        "600000001/1000000000000"
+      ]
+    },
+    "more_point_scans_performed": false,
+    "new_general_Born_kernel_claim": false,
+    "pair_interval_role": "old_self_chosen_nominal_box_not_public_uncertainty",
+    "receiver_weighted_fraction": {
+      "exact_lower": "201311851813139787167635117418034136221/2500000000000000000000000000000000000000",
+      "exact_upper": "805247407252559148675973045125918763777/10000000000000000000000000000000000000000",
+      "lower": 0.08052474072525591,
+      "upper": 0.08052474072525591
+    },
+    "single_pulse_click_upper": "74449936235256949838053173445757149/2000000000000000000000000000000000000000",
+    "strict_original_CI_witnesses": [
+      {
+        "N": 3,
+        "all_nominal_source_upper": "893365978477711380921774584227419105837669437088762508812604133979464750046154994728597891929098177446563659778949/8000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "endpoint": "full_N3",
+        "field": "sA_cell",
+        "original_CI_lower": "23700874177208557645335598050825994939217500416188004031/200000000000000000000000000000000000000000000000000000000000",
+        "row": 0,
+        "spacelike_scope": true,
+        "strict_gap": "54668988610630924891649337805620691731030579558757652427395866020535249953845005271402108070901822553436340221051/8000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      },
+      {
+        "N": 5,
+        "all_nominal_source_upper": "5955551491886237490517730117376877233325061026274941329404834979413587463905578145847628884579374603347193042483117301892585611239236225588467049970812468067067815142439675259952323593132560749/32000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "endpoint": "full_N5",
+        "field": "sA_cell",
+        "original_CI_lower": "101319334381583622088643763482714310168838091540159972549/500000000000000000000000000000000000000000000000000000000000",
+        "row": 0,
+        "spacelike_scope": true,
+        "strict_gap": "528885908535114323155470745516838617480576832295296913731165020586412536094421854152371115420625396652806957516882698107414388760763774411532950029187531932932184857560324740047676406867439251/32000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      },
+      {
+        "N": 7,
+        "all_nominal_source_upper": "33349846907576787932528864988845803107855901037512632780730439035670465152608208236709949953092872061935334692021899564145193451514072343254349871536745398230855023283986340938460879735114120307751018870861208919110674710567056564259700716799257049177362490465279696102549/128000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "endpoint": "full_N7",
+        "field": "sA_cell",
+        "original_CI_lower": "284276651038204527434366280339555216649190067912255356301/1000000000000000000000000000000000000000000000000000000000000",
+        "row": 0,
+        "spacelike_scope": true,
+        "strict_gap": "3037564425313391579070018894617264623240427655256052825797560964329534847391791763290050046907127938064665307978100435854806548485927656745650128463254601769144976716013659061539120264885879692248981129138791080889325289432943435740299283200742950822637509534720303897451/128000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      },
+      {
+        "N": 9,
+        "all_nominal_source_upper": "171507114114202413996954402148625048636764134471452370185406657852366424237164495940449352018880851220650322440400231724796691766385609627710101303797860860174769762352647830984538148624938867586328664307124614445968258985086191628759706051844949157061588429828882496093766503831204661535304459361907777903191938372422217752217596857146186063582404349/512000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "endpoint": "full_N9",
+        "field": "sA_cell",
+        "original_CI_lower": "367458964151821163289985264083288250258123106305406441259/1000000000000000000000000000000000000000000000000000000000000",
+        "row": 0,
+        "spacelike_scope": false,
+        "strict_gap": "16631875531530021607518053062018535495394895956915727739201342147633575762835504059550647981119148779349677559599768275203308233614390372289898696202139139825230237647352169015461851375061132413671335692875385554031741014913808371240293948155050842938411570171117503906233496168795338464695540638092222096808061627577782247782403142853813936417595651/512000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      },
+      {
+        "N": 5,
+        "all_nominal_source_upper": "5955551491886237490517730117376877233325061026274941329404834979413587463905578145847628884579374603347193042483117301892585611239236225588467049970812468067067815142439675259952323593132560749/32000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "endpoint": "old_stop_N5",
+        "field": "sA_cell",
+        "original_CI_lower": "50927542717675990319864624380347/251502250000000000000000000000000000",
+        "row": 0,
+        "spacelike_scope": true,
+        "strict_gap": "527387067061544869344420763032221111379888682018172548146771367195116289023813235073972713453187934661293674524601646240341841822827203931971851525912919812317174356369404731410622894396305693459259/32192288000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      }
+    ],
+    "total_reference_mean_upper": "600000001/999399999999",
+    "transmission_A_upper": "14131768232534912973973690029608673496970070963636464497487006194375/18802369252090082310335139911173732683562910424492333948437506234158",
+    "transmission_B_lower": "75209568199940124474827886819739089700000089/99969999999950000000000000000000000000000000"
+  },
+  "controller_advance": false,
+  "default_points_checked": 17,
+  "evidence_valid": true,
+  "experimental_or_Born_law_rejected": false,
+  "finite_19_calibrated_ENV_sources_rejected_by_original_CI": true,
+  "first_identity": {
+    "first": {
+      "commit": "6f35633195f8a001584efada7a4734f63033ad84",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/public-review/calibrated-counts/first.json.gz",
+      "sha256": "de3e93eb6afb46dbbd2c73f102c5287c337142b8ce8e877d7aa5f15668af7a02"
+    },
+    "logical_sha256": "01be564fa0d43e37d4e103b4467db486327419cf653e5d3de245471ce2ac997e",
+    "storage": {
+      "commit": "6f35633195f8a001584efada7a4734f63033ad84",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/public-review/calibrated-counts/first-storage.json",
+      "sha256": "7b0df29fcbdec84cae92f0546dbddc14e03ba18fe7eb09f185aca837372af1c5"
+    }
+  },
+  "foreign_EF_fields_used": false,
+  "native_Gamma_Fock_settings_regenerated": 76,
+  "new_continuum_Lean_kernel_claim": false,
+  "nominal_continuous_source_domain_rejected": true,
+  "nominal_optimum_contract_replaced": false,
+  "outcomes_crossed": 1824,
+  "path_probability_reads": 4104,
+  "probabilities_crossed": 1368,
+  "public_72_CI_consumed": true,
+  "public_calibrated_count_review_completed": true,
+  "retrospective": true,
+  "runtime_seconds": 21.42147854200448,
+  "schema": "p23-calibrated-count-cross/v1",
+  "source_epoch_identified": false,
+  "source_points_checked": 19,
+  "source_rows": [
+    {
+      "allocation": "symmetric",
+      "calibration_adapter_domain": {
+        "N1_matched_K_A": {
+          "exact_lower": "3734999999999988182077318591680305211453/5000000000000000000000000000000000000000",
+          "exact_upper": "466874999999998522786761569872526684313/625000000000000000000000000000000000000",
+          "lower": 0.7469999999999977,
+          "upper": 0.7469999999999977
+        },
+        "N1_matched_K_B": {
+          "exact_lower": "7559999999999934633857513611415330785261/10000000000000000000000000000000000000000",
+          "exact_upper": "1889999999999983658574043955111420630227/2500000000000000000000000000000000000000",
+          "lower": 0.7559999999999935,
+          "upper": 0.7559999999999935
+        },
+        "entire_generated_intervals_inside_1e12_adapter_expansion": true,
+        "same_G_balanced_n": {
+          "exact_lower": "625253214481375806564609279355098439/2500000000000000000000000000000000000000",
+          "exact_upper": "500202571585100645254056912825772541/2000000000000000000000000000000000000000",
+          "lower": 0.00025010128579255035,
+          "upper": 0.00025010128579255035
+        },
+        "same_G_reference_q": {
+          "exact_lower": "2499999999999999999996388293121892923/5000000000000000000000000000000000000000",
+          "exact_upper": "5000000000000000000021425428513356799/10000000000000000000000000000000000000000",
+          "lower": 0.0005,
+          "upper": 0.0005
+        }
+      },
+      "default": true,
+      "outcomes_crossed": 96,
+      "point_id": "center",
+      "probabilities_crossed": 72,
+      "root_index": 1,
+      "strict_disjoint_features": 66
+    },
+    {
+      "allocation": "symmetric",
+      "calibration_adapter_domain": {
+        "N1_matched_K_A": {
+          "exact_lower": "3719999999999993123842986226077589428239/5000000000000000000000000000000000000000",
+          "exact_upper": "1859999999999996562050740928192457335917/2500000000000000000000000000000000000000",
+          "lower": 0.7439999999999987,
+          "upper": 0.7439999999999987
+        },
+        "N1_matched_K_B": {
+          "exact_lower": "7529999999999961571950546517497293683381/10000000000000000000000000000000000000000",
+          "exact_upper": "7529999999999961572473639294056993080723/10000000000000000000000000000000000000000",
+          "lower": 0.7529999999999961,
+          "upper": 0.7529999999999961
+        },
+        "entire_generated_intervals_inside_1e12_adapter_expansion": true,
+        "same_G_balanced_n": {
+          "exact_lower": "2000648172378296214289144938809031261/10000000000000000000000000000000000000000",
+          "exact_upper": "2000648172378296214299739863109260949/10000000000000000000000000000000000000000",
+          "lower": 0.00020006481723782962,
+          "upper": 0.00020006481723782962
+        },
+        "same_G_reference_q": {
+          "exact_lower": "249999999999999999998810035277797139/625000000000000000000000000000000000000",
+          "exact_upper": "500000000000000000000764286678635907/1250000000000000000000000000000000000000",
+          "lower": 0.0004,
+          "upper": 0.0004
+        }
+      },
+      "default": true,
+      "outcomes_crossed": 96,
+      "point_id": "corner_00",
+      "probabilities_crossed": 72,
+      "root_index": 1,
+      "strict_disjoint_features": 66
+    },
+    {
+      "allocation": "symmetric",
+      "calibration_adapter_domain": {
+        "N1_matched_K_A": {
+          "exact_lower": "3719999999999993123842986226077589428239/5000000000000000000000000000000000000000",
+          "exact_upper": "1859999999999996562050740928192457335917/2500000000000000000000000000000000000000",
+          "lower": 0.7439999999999987,
+          "upper": 0.7439999999999987
+        },
+        "N1_matched_K_B": {
+          "exact_lower": "7529999999999961571950546517497293683381/10000000000000000000000000000000000000000",
+          "exact_upper": "7529999999999961572473639294056993080723/10000000000000000000000000000000000000000",
+          "lower": 0.7529999999999961,
+          "upper": 0.7529999999999961
+        },
+        "entire_generated_intervals_inside_1e12_adapter_expansion": true,
+        "same_G_balanced_n": {
+          "exact_lower": "2000648172378296214289144938809031261/10000000000000000000000000000000000000000",
+          "exact_upper": "2000648172378296214299739863109260949/10000000000000000000000000000000000000000",
+          "lower": 0.00020006481723782962,
+          "upper": 0.00020006481723782962
+        },
+        "same_G_reference_q": {
+          "exact_lower": "249999999999999999998810035277797139/625000000000000000000000000000000000000",
+          "exact_upper": "500000000000000000000764286678635907/1250000000000000000000000000000000000000",
+          "lower": 0.0004,
+          "upper": 0.0004
+        }
+      },
+      "default": true,
+      "outcomes_crossed": 96,
+      "point_id": "corner_01",
+      "probabilities_crossed": 72,
+      "root_index": 1,
+      "strict_disjoint_features": 66
+    },
+    {
+      "allocation": "symmetric",
+      "calibration_adapter_domain": {
+        "N1_matched_K_A": {
+          "exact_lower": "3719999999999995160684491037871002474783/5000000000000000000000000000000000000000",
+          "exact_upper": "1859999999999997580436447180391519560083/2500000000000000000000000000000000000000",
+          "lower": 0.743999999999999,
+          "upper": 0.743999999999999
+        },
+        "N1_matched_K_B": {
+          "exact_lower": "3764999999999986786484096995431482275421/5000000000000000000000000000000000000000",
+          "exact_upper": "94124999999999669666868445614763536277/125000000000000000000000000000000000000",
+          "lower": 0.7529999999999973,
+          "upper": 0.7529999999999973
+        },
+        "entire_generated_intervals_inside_1e12_adapter_expansion": true,
+        "same_G_balanced_n": {
+          "exact_lower": "3001458642997403169333725790438030327/10000000000000000000000000000000000000000",
+          "exact_upper": "1500729321498701584673353083502421309/5000000000000000000000000000000000000000",
+          "lower": 0.0003001458642997403,
+          "upper": 0.0003001458642997403
+        },
+        "same_G_reference_q": {
+          "exact_lower": "5999999999999999999983268253433345019/10000000000000000000000000000000000000000",
+          "exact_upper": "3000000000000000000007586396191296161/5000000000000000000000000000000000000000",
+          "lower": 0.0006,
+          "upper": 0.0006
+        }
+      },
+      "default": true,
+      "outcomes_crossed": 96,
+      "point_id": "corner_02",
+      "probabilities_crossed": 72,
+      "root_index": 1,
+      "strict_disjoint_features": 60
+    },
+    {
+      "allocation": "symmetric",
+      "calibration_adapter_domain": {
+        "N1_matched_K_A": {
+          "exact_lower": "3719999999999995160684491037871002474783/5000000000000000000000000000000000000000",
+          "exact_upper": "1859999999999997580436447180391519560083/2500000000000000000000000000000000000000",
+          "lower": 0.743999999999999,
+          "upper": 0.743999999999999
+        },
+        "N1_matched_K_B": {
+          "exact_lower": "3764999999999986786484096995431482275421/5000000000000000000000000000000000000000",
+          "exact_upper": "94124999999999669666868445614763536277/125000000000000000000000000000000000000",
+          "lower": 0.7529999999999973,
+          "upper": 0.7529999999999973
+        },
+        "entire_generated_intervals_inside_1e12_adapter_expansion": true,
+        "same_G_balanced_n": {
+          "exact_lower": "3001458642997403169333725790438030327/10000000000000000000000000000000000000000",
+          "exact_upper": "1500729321498701584673353083502421309/5000000000000000000000000000000000000000",
+          "lower": 0.0003001458642997403,
+          "upper": 0.0003001458642997403
+        },
+        "same_G_reference_q": {
+          "exact_lower": "5999999999999999999983268253433345019/10000000000000000000000000000000000000000",
+          "exact_upper": "3000000000000000000007586396191296161/5000000000000000000000000000000000000000",
+          "lower": 0.0006,
+          "upper": 0.0006
+        }
+      },
+      "default": true,
+      "outcomes_crossed": 96,
+      "point_id": "corner_03",
+      "probabilities_crossed": 72,
+      "root_index": 1,
+      "strict_disjoint_features": 60
+    },
+    {
+      "allocation": "symmetric",
+      "calibration_adapter_domain": {
+        "N1_matched_K_A": {
+          "exact_lower": "7439999999999986354944540571300032972509/10000000000000000000000000000000000000000",
+          "exact_upper": "1859999999999996588864930370007929438861/2500000000000000000000000000000000000000",
+          "lower": 0.7439999999999987,
+          "upper": 0.7439999999999987
+        },
+        "N1_matched_K_B": {
+          "exact_lower": "3794999999999980637449463400950848734817/5000000000000000000000000000000000000000",
+          "exact_upper": "1517999999999992255084868034787438520359/2000000000000000000000000000000000000000",
+          "lower": 0.7589999999999961,
+          "upper": 0.7589999999999961
+        },
+        "entire_generated_intervals_inside_1e12_adapter_expansion": true,
+        "same_G_balanced_n": {
+          "exact_lower": "2000648172378296214289144938809031261/10000000000000000000000000000000000000000",
+          "exact_upper": "2000648172378296214299739863109260949/10000000000000000000000000000000000000000",
+          "lower": 0.00020006481723782962,
+          "upper": 0.00020006481723782962
+        },
+        "same_G_reference_q": {
+          "exact_lower": "249999999999999999998810035277797139/625000000000000000000000000000000000000",
+          "exact_upper": "500000000000000000000764286678635907/1250000000000000000000000000000000000000",
+          "lower": 0.0004,
+          "upper": 0.0004
+        }
+      },
+      "default": true,
+      "outcomes_crossed": 96,
+      "point_id": "corner_04",
+      "probabilities_crossed": 72,
+      "root_index": 1,
+      "strict_disjoint_features": 66
+    },
+    {
+      "allocation": "symmetric",
+      "calibration_adapter_domain": {
+        "N1_matched_K_A": {
+          "exact_lower": "7439999999999986354944540571300032972509/10000000000000000000000000000000000000000",
+          "exact_upper": "1859999999999996588864930370007929438861/2500000000000000000000000000000000000000",
+          "lower": 0.7439999999999987,
+          "upper": 0.7439999999999987
+        },
+        "N1_matched_K_B": {
+          "exact_lower": "3794999999999980637449463400950848734817/5000000000000000000000000000000000000000",
+          "exact_upper": "1517999999999992255084868034787438520359/2000000000000000000000000000000000000000",
+          "lower": 0.7589999999999961,
+          "upper": 0.7589999999999961
+        },
+        "entire_generated_intervals_inside_1e12_adapter_expansion": true,
+        "same_G_balanced_n": {
+          "exact_lower": "2000648172378296214289144938809031261/10000000000000000000000000000000000000000",
+          "exact_upper": "2000648172378296214299739863109260949/10000000000000000000000000000000000000000",
+          "lower": 0.00020006481723782962,
+          "upper": 0.00020006481723782962
+        },
+        "same_G_reference_q": {
+          "exact_lower": "249999999999999999998810035277797139/625000000000000000000000000000000000000",
+          "exact_upper": "500000000000000000000764286678635907/1250000000000000000000000000000000000000",
+          "lower": 0.0004,
+          "upper": 0.0004
+        }
+      },
+      "default": true,
+      "outcomes_crossed": 96,
+      "point_id": "corner_05",
+      "probabilities_crossed": 72,
+      "root_index": 1,
+      "strict_disjoint_features": 66
+    },
+    {
+      "allocation": "symmetric",
+      "calibration_adapter_domain": {
+        "N1_matched_K_A": {
+          "exact_lower": "929999999999998799487696807259767832593/1250000000000000000000000000000000000000",
+          "exact_upper": "7439999999999990396277046593183857415201/10000000000000000000000000000000000000000",
+          "lower": 0.743999999999999,
+          "upper": 0.743999999999999
+        },
+        "N1_matched_K_B": {
+          "exact_lower": "3794999999999986688503710419337339634063/5000000000000000000000000000000000000000",
+          "exact_upper": "1517999999999994675478075774931685730533/2000000000000000000000000000000000000000",
+          "lower": 0.7589999999999973,
+          "upper": 0.7589999999999973
+        },
+        "entire_generated_intervals_inside_1e12_adapter_expansion": true,
+        "same_G_balanced_n": {
+          "exact_lower": "3001458642997403169333725790438030327/10000000000000000000000000000000000000000",
+          "exact_upper": "1500729321498701584673353083502421309/5000000000000000000000000000000000000000",
+          "lower": 0.0003001458642997403,
+          "upper": 0.0003001458642997403
+        },
+        "same_G_reference_q": {
+          "exact_lower": "5999999999999999999983268253433345019/10000000000000000000000000000000000000000",
+          "exact_upper": "3000000000000000000007586396191296161/5000000000000000000000000000000000000000",
+          "lower": 0.0006,
+          "upper": 0.0006
+        }
+      },
+      "default": true,
+      "outcomes_crossed": 96,
+      "point_id": "corner_06",
+      "probabilities_crossed": 72,
+      "root_index": 1,
+      "strict_disjoint_features": 60
+    },
+    {
+      "allocation": "symmetric",
+      "calibration_adapter_domain": {
+        "N1_matched_K_A": {
+          "exact_lower": "929999999999998799487696807259767832593/1250000000000000000000000000000000000000",
+          "exact_upper": "7439999999999990396277046593183857415201/10000000000000000000000000000000000000000",
+          "lower": 0.743999999999999,
+          "upper": 0.743999999999999
+        },
+        "N1_matched_K_B": {
+          "exact_lower": "3794999999999986688503710419337339634063/5000000000000000000000000000000000000000",
+          "exact_upper": "1517999999999994675478075774931685730533/2000000000000000000000000000000000000000",
+          "lower": 0.7589999999999973,
+          "upper": 0.7589999999999973
+        },
+        "entire_generated_intervals_inside_1e12_adapter_expansion": true,
+        "same_G_balanced_n": {
+          "exact_lower": "3001458642997403169333725790438030327/10000000000000000000000000000000000000000",
+          "exact_upper": "1500729321498701584673353083502421309/5000000000000000000000000000000000000000",
+          "lower": 0.0003001458642997403,
+          "upper": 0.0003001458642997403
+        },
+        "same_G_reference_q": {
+          "exact_lower": "5999999999999999999983268253433345019/10000000000000000000000000000000000000000",
+          "exact_upper": "3000000000000000000007586396191296161/5000000000000000000000000000000000000000",
+          "lower": 0.0006,
+          "upper": 0.0006
+        }
+      },
+      "default": true,
+      "outcomes_crossed": 96,
+      "point_id": "corner_07",
+      "probabilities_crossed": 72,
+      "root_index": 1,
+      "strict_disjoint_features": 60
+    },
+    {
+      "allocation": "symmetric",
+      "calibration_adapter_domain": {
+        "N1_matched_K_A": {
+          "exact_lower": "7499999999999986145668465309000840040979/10000000000000000000000000000000000000000",
+          "exact_upper": "937499999999998268273299935736190949811/1250000000000000000000000000000000000000",
+          "lower": 0.7499999999999987,
+          "upper": 0.7499999999999987
+        },
+        "N1_matched_K_B": {
+          "exact_lower": "301199999999998475052893264562979385923/400000000000000000000000000000000000000",
+          "exact_upper": "7529999999999961876842186954307720496877/10000000000000000000000000000000000000000",
+          "lower": 0.7529999999999962,
+          "upper": 0.7529999999999962
+        },
+        "entire_generated_intervals_inside_1e12_adapter_expansion": true,
+        "same_G_balanced_n": {
+          "exact_lower": "2000648172378296214289144938809031261/10000000000000000000000000000000000000000",
+          "exact_upper": "2000648172378296214299739863109260949/10000000000000000000000000000000000000000",
+          "lower": 0.00020006481723782962,
+          "upper": 0.00020006481723782962
+        },
+        "same_G_reference_q": {
+          "exact_lower": "249999999999999999998810035277797139/625000000000000000000000000000000000000",
+          "exact_upper": "500000000000000000000764286678635907/1250000000000000000000000000000000000000",
+          "lower": 0.0004,
+          "upper": 0.0004
+        }
+      },
+      "default": true,
+      "outcomes_crossed": 96,
+      "point_id": "corner_08",
+      "probabilities_crossed": 72,
+      "root_index": 1,
+      "strict_disjoint_features": 66
+    },
+    {
+      "allocation": "symmetric",
+      "calibration_adapter_domain": {
+        "N1_matched_K_A": {
+          "exact_lower": "7499999999999986145668465309000840040979/10000000000000000000000000000000000000000",
+          "exact_upper": "937499999999998268273299935736190949811/1250000000000000000000000000000000000000",
+          "lower": 0.7499999999999987,
+          "upper": 0.7499999999999987
+        },
+        "N1_matched_K_B": {
+          "exact_lower": "301199999999998475052893264562979385923/400000000000000000000000000000000000000",
+          "exact_upper": "7529999999999961876842186954307720496877/10000000000000000000000000000000000000000",
+          "lower": 0.7529999999999962,
+          "upper": 0.7529999999999962
+        },
+        "entire_generated_intervals_inside_1e12_adapter_expansion": true,
+        "same_G_balanced_n": {
+          "exact_lower": "2000648172378296214289144938809031261/10000000000000000000000000000000000000000",
+          "exact_upper": "2000648172378296214299739863109260949/10000000000000000000000000000000000000000",
+          "lower": 0.00020006481723782962,
+          "upper": 0.00020006481723782962
+        },
+        "same_G_reference_q": {
+          "exact_lower": "249999999999999999998810035277797139/625000000000000000000000000000000000000",
+          "exact_upper": "500000000000000000000764286678635907/1250000000000000000000000000000000000000",
+          "lower": 0.0004,
+          "upper": 0.0004
+        }
+      },
+      "default": true,
+      "outcomes_crossed": 96,
+      "point_id": "corner_09",
+      "probabilities_crossed": 72,
+      "root_index": 1,
+      "strict_disjoint_features": 66
+    },
+    {
+      "allocation": "symmetric",
+      "calibration_adapter_domain": {
+        "N1_matched_K_A": {
+          "exact_lower": "3749999999999995128794215856186894538227/5000000000000000000000000000000000000000",
+          "exact_upper": "3749999999999995128982995357246025605849/5000000000000000000000000000000000000000",
+          "lower": 0.749999999999999,
+          "upper": 0.749999999999999
+        },
+        "N1_matched_K_B": {
+          "exact_lower": "7529999999999973781664680254319616410811/10000000000000000000000000000000000000000",
+          "exact_upper": "1505999999999994756408733466316180513233/2000000000000000000000000000000000000000",
+          "lower": 0.7529999999999973,
+          "upper": 0.7529999999999973
+        },
+        "entire_generated_intervals_inside_1e12_adapter_expansion": true,
+        "same_G_balanced_n": {
+          "exact_lower": "3001458642997403169333725790438030327/10000000000000000000000000000000000000000",
+          "exact_upper": "1500729321498701584673353083502421309/5000000000000000000000000000000000000000",
+          "lower": 0.0003001458642997403,
+          "upper": 0.0003001458642997403
+        },
+        "same_G_reference_q": {
+          "exact_lower": "5999999999999999999983268253433345019/10000000000000000000000000000000000000000",
+          "exact_upper": "3000000000000000000007586396191296161/5000000000000000000000000000000000000000",
+          "lower": 0.0006,
+          "upper": 0.0006
+        }
+      },
+      "default": true,
+      "outcomes_crossed": 96,
+      "point_id": "corner_10",
+      "probabilities_crossed": 72,
+      "root_index": 1,
+      "strict_disjoint_features": 60
+    },
+    {
+      "allocation": "symmetric",
+      "calibration_adapter_domain": {
+        "N1_matched_K_A": {
+          "exact_lower": "3749999999999995128794215856186894538227/5000000000000000000000000000000000000000",
+          "exact_upper": "3749999999999995128982995357246025605849/5000000000000000000000000000000000000000",
+          "lower": 0.749999999999999,
+          "upper": 0.749999999999999
+        },
+        "N1_matched_K_B": {
+          "exact_lower": "7529999999999973781664680254319616410811/10000000000000000000000000000000000000000",
+          "exact_upper": "1505999999999994756408733466316180513233/2000000000000000000000000000000000000000",
+          "lower": 0.7529999999999973,
+          "upper": 0.7529999999999973
+        },
+        "entire_generated_intervals_inside_1e12_adapter_expansion": true,
+        "same_G_balanced_n": {
+          "exact_lower": "3001458642997403169333725790438030327/10000000000000000000000000000000000000000",
+          "exact_upper": "1500729321498701584673353083502421309/5000000000000000000000000000000000000000",
+          "lower": 0.0003001458642997403,
+          "upper": 0.0003001458642997403
+        },
+        "same_G_reference_q": {
+          "exact_lower": "5999999999999999999983268253433345019/10000000000000000000000000000000000000000",
+          "exact_upper": "3000000000000000000007586396191296161/5000000000000000000000000000000000000000",
+          "lower": 0.0006,
+          "upper": 0.0006
+        }
+      },
+      "default": true,
+      "outcomes_crossed": 96,
+      "point_id": "corner_11",
+      "probabilities_crossed": 72,
+      "root_index": 1,
+      "strict_disjoint_features": 60
+    },
+    {
+      "allocation": "symmetric",
+      "calibration_adapter_domain": {
+        "N1_matched_K_A": {
+          "exact_lower": "7499999999999986253752964287566841733631/10000000000000000000000000000000000000000",
+          "exact_upper": "7499999999999986254269083894767913839851/10000000000000000000000000000000000000000",
+          "lower": 0.7499999999999987,
+          "upper": 0.7499999999999987
+        },
+        "N1_matched_K_B": {
+          "exact_lower": "1897499999999990395413975463241357194329/2500000000000000000000000000000000000000",
+          "exact_upper": "7589999999999961582178062498754604206169/10000000000000000000000000000000000000000",
+          "lower": 0.7589999999999961,
+          "upper": 0.7589999999999961
+        },
+        "entire_generated_intervals_inside_1e12_adapter_expansion": true,
+        "same_G_balanced_n": {
+          "exact_lower": "2000648172378296214289144938809031261/10000000000000000000000000000000000000000",
+          "exact_upper": "2000648172378296214299739863109260949/10000000000000000000000000000000000000000",
+          "lower": 0.00020006481723782962,
+          "upper": 0.00020006481723782962
+        },
+        "same_G_reference_q": {
+          "exact_lower": "249999999999999999998810035277797139/625000000000000000000000000000000000000",
+          "exact_upper": "500000000000000000000764286678635907/1250000000000000000000000000000000000000",
+          "lower": 0.0004,
+          "upper": 0.0004
+        }
+      },
+      "default": true,
+      "outcomes_crossed": 96,
+      "point_id": "corner_12",
+      "probabilities_crossed": 72,
+      "root_index": 1,
+      "strict_disjoint_features": 66
+    },
+    {
+      "allocation": "symmetric",
+      "calibration_adapter_domain": {
+        "N1_matched_K_A": {
+          "exact_lower": "7499999999999986253752964287566841733631/10000000000000000000000000000000000000000",
+          "exact_upper": "7499999999999986254269083894767913839851/10000000000000000000000000000000000000000",
+          "lower": 0.7499999999999987,
+          "upper": 0.7499999999999987
+        },
+        "N1_matched_K_B": {
+          "exact_lower": "1897499999999990395413975463241357194329/2500000000000000000000000000000000000000",
+          "exact_upper": "7589999999999961582178062498754604206169/10000000000000000000000000000000000000000",
+          "lower": 0.7589999999999961,
+          "upper": 0.7589999999999961
+        },
+        "entire_generated_intervals_inside_1e12_adapter_expansion": true,
+        "same_G_balanced_n": {
+          "exact_lower": "2000648172378296214289144938809031261/10000000000000000000000000000000000000000",
+          "exact_upper": "2000648172378296214299739863109260949/10000000000000000000000000000000000000000",
+          "lower": 0.00020006481723782962,
+          "upper": 0.00020006481723782962
+        },
+        "same_G_reference_q": {
+          "exact_lower": "249999999999999999998810035277797139/625000000000000000000000000000000000000",
+          "exact_upper": "500000000000000000000764286678635907/1250000000000000000000000000000000000000",
+          "lower": 0.0004,
+          "upper": 0.0004
+        }
+      },
+      "default": true,
+      "outcomes_crossed": 96,
+      "point_id": "corner_13",
+      "probabilities_crossed": 72,
+      "root_index": 1,
+      "strict_disjoint_features": 66
+    },
+    {
+      "allocation": "symmetric",
+      "calibration_adapter_domain": {
+        "N1_matched_K_A": {
+          "exact_lower": "299999999999999613305808828401099871447/400000000000000000000000000000000000000",
+          "exact_upper": "937499999999998791627680175487685507029/1250000000000000000000000000000000000000",
+          "lower": 0.749999999999999,
+          "upper": 0.749999999999999
+        },
+        "N1_matched_K_B": {
+          "exact_lower": "3794999999999986793644260210881484538001/5000000000000000000000000000000000000000",
+          "exact_upper": "3794999999999986793834586320703057516949/5000000000000000000000000000000000000000",
+          "lower": 0.7589999999999973,
+          "upper": 0.7589999999999973
+        },
+        "entire_generated_intervals_inside_1e12_adapter_expansion": true,
+        "same_G_balanced_n": {
+          "exact_lower": "3001458642997403169333725790438030327/10000000000000000000000000000000000000000",
+          "exact_upper": "1500729321498701584673353083502421309/5000000000000000000000000000000000000000",
+          "lower": 0.0003001458642997403,
+          "upper": 0.0003001458642997403
+        },
+        "same_G_reference_q": {
+          "exact_lower": "5999999999999999999983268253433345019/10000000000000000000000000000000000000000",
+          "exact_upper": "3000000000000000000007586396191296161/5000000000000000000000000000000000000000",
+          "lower": 0.0006,
+          "upper": 0.0006
+        }
+      },
+      "default": true,
+      "outcomes_crossed": 96,
+      "point_id": "corner_14",
+      "probabilities_crossed": 72,
+      "root_index": 1,
+      "strict_disjoint_features": 59
+    },
+    {
+      "allocation": "symmetric",
+      "calibration_adapter_domain": {
+        "N1_matched_K_A": {
+          "exact_lower": "299999999999999613305808828401099871447/400000000000000000000000000000000000000",
+          "exact_upper": "937499999999998791627680175487685507029/1250000000000000000000000000000000000000",
+          "lower": 0.749999999999999,
+          "upper": 0.749999999999999
+        },
+        "N1_matched_K_B": {
+          "exact_lower": "3794999999999986793644260210881484538001/5000000000000000000000000000000000000000",
+          "exact_upper": "3794999999999986793834586320703057516949/5000000000000000000000000000000000000000",
+          "lower": 0.7589999999999973,
+          "upper": 0.7589999999999973
+        },
+        "entire_generated_intervals_inside_1e12_adapter_expansion": true,
+        "same_G_balanced_n": {
+          "exact_lower": "3001458642997403169333725790438030327/10000000000000000000000000000000000000000",
+          "exact_upper": "1500729321498701584673353083502421309/5000000000000000000000000000000000000000",
+          "lower": 0.0003001458642997403,
+          "upper": 0.0003001458642997403
+        },
+        "same_G_reference_q": {
+          "exact_lower": "5999999999999999999983268253433345019/10000000000000000000000000000000000000000",
+          "exact_upper": "3000000000000000000007586396191296161/5000000000000000000000000000000000000000",
+          "lower": 0.0006,
+          "upper": 0.0006
+        }
+      },
+      "default": true,
+      "outcomes_crossed": 96,
+      "point_id": "corner_15",
+      "probabilities_crossed": 72,
+      "root_index": 1,
+      "strict_disjoint_features": 59
+    },
+    {
+      "allocation": "Alice_rank_one",
+      "calibration_adapter_domain": {
+        "N1_matched_K_A": {
+          "exact_lower": "3734999999999988182077318591680305211453/5000000000000000000000000000000000000000",
+          "exact_upper": "466874999999998522786761569872526684313/625000000000000000000000000000000000000",
+          "lower": 0.7469999999999977,
+          "upper": 0.7469999999999977
+        },
+        "N1_matched_K_B": {
+          "exact_lower": "7559999999999934633857513611415330785261/10000000000000000000000000000000000000000",
+          "exact_upper": "1889999999999983658574043955111420630227/2500000000000000000000000000000000000000",
+          "lower": 0.7559999999999935,
+          "upper": 0.7559999999999935
+        },
+        "entire_generated_intervals_inside_1e12_adapter_expansion": true,
+        "same_G_balanced_n": {
+          "exact_lower": "625253214481375806564609279355098439/2500000000000000000000000000000000000000",
+          "exact_upper": "500202571585100645254056912825772541/2000000000000000000000000000000000000000",
+          "lower": 0.00025010128579255035,
+          "upper": 0.00025010128579255035
+        },
+        "same_G_reference_q": {
+          "exact_lower": "2499999999999999999996388293121892923/5000000000000000000000000000000000000000",
+          "exact_upper": "5000000000000000000021425428513356799/10000000000000000000000000000000000000000",
+          "lower": 0.0005,
+          "upper": 0.0005
+        }
+      },
+      "default": false,
+      "outcomes_crossed": 96,
+      "point_id": "center_override_Alice_rank_one",
+      "probabilities_crossed": 72,
+      "root_index": 1,
+      "strict_disjoint_features": 66
+    },
+    {
+      "allocation": "Bob_rank_one",
+      "calibration_adapter_domain": {
+        "N1_matched_K_A": {
+          "exact_lower": "3734999999999988182077318591680305211453/5000000000000000000000000000000000000000",
+          "exact_upper": "466874999999998522786761569872526684313/625000000000000000000000000000000000000",
+          "lower": 0.7469999999999977,
+          "upper": 0.7469999999999977
+        },
+        "N1_matched_K_B": {
+          "exact_lower": "7559999999999934633857513611415330785261/10000000000000000000000000000000000000000",
+          "exact_upper": "1889999999999983658574043955111420630227/2500000000000000000000000000000000000000",
+          "lower": 0.7559999999999935,
+          "upper": 0.7559999999999935
+        },
+        "entire_generated_intervals_inside_1e12_adapter_expansion": true,
+        "same_G_balanced_n": {
+          "exact_lower": "625253214481375806564609279355098439/2500000000000000000000000000000000000000",
+          "exact_upper": "500202571585100645254056912825772541/2000000000000000000000000000000000000000",
+          "lower": 0.00025010128579255035,
+          "upper": 0.00025010128579255035
+        },
+        "same_G_reference_q": {
+          "exact_lower": "2499999999999999999996388293121892923/5000000000000000000000000000000000000000",
+          "exact_upper": "5000000000000000000021425428513356799/10000000000000000000000000000000000000000",
+          "lower": 0.0005,
+          "upper": 0.0005
+        }
+      },
+      "default": false,
+      "outcomes_crossed": 96,
+      "point_id": "center_override_Bob_rank_one",
+      "probabilities_crossed": 72,
+      "root_index": 1,
+      "strict_disjoint_features": 66
+    }
+  ],
+  "source_search_rerun": false,
+  "strict_disjoint_features": 1204,
+  "units_independent": {
+    "percent_text_independently_parsed": true,
+    "probability_center": [
+      "747/1000",
+      "189/250"
+    ],
+    "probability_half_width": [
+      "3/1000",
+      "3/1000"
+    ],
+    "public_text_and_machine_block_agree": true
+  },
+  "units_primary": {
+    "Alice": {
+      "center_probability": "747/1000",
+      "half_width_probability": "3/1000"
+    },
+    "Bob": {
+      "center_probability": "189/250",
+      "half_width_probability": "3/1000"
+    }
+  },
+  "version": "p23-calibrated-count-cross-ncc-cross0001"
+}

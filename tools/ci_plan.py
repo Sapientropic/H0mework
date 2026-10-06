@@ -319,7 +319,9 @@ def make_plan(root: Path, layout: Layout = Layout(), rebalance: bool = False) ->
     manifest = (lean / "lake-manifest.json").read_bytes()
     compatibility = digest([toolchain, hashlib.sha256(manifest).hexdigest()])[:24]
     # New globs or paper targets do not change an existing module's compiler settings.
-    package_options = {k: v for k, v in config.items() if k not in {"defaultTargets", "lean_lib", "input_file"}}
+    # Lake excludes weakLeanArgs from build traces, so budget changes reuse artifacts in either scope.
+    package_options = {k: v for k, v in config.items()
+                       if k not in {"defaultTargets", "lean_lib", "input_file", "weakLeanArgs"}}
     position = {n: i for i, n in enumerate(dependency_order(dependencies))}
     parts = {}
     for name, shard in sorted(shards.items(), key=lambda item: (item[1]["stage"], item[0])):
@@ -331,7 +333,7 @@ def make_plan(root: Path, layout: Layout = Layout(), rebalance: bool = False) ->
         if any(n not in resources for n in needed):
             raise ValueError(f"Unknown resource input in {name}")
         module_options = {
-            n: {k: v for k, v in owners[n].items() if k not in {"globs", "roots"}}
+            n: {k: v for k, v in owners[n].items() if k not in {"globs", "roots", "weakLeanArgs"}}
             for n in inputs
         }
         targets = ["+" + n for n in shard["targets"]]

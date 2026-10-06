@@ -1,0 +1,568 @@
+{
+  "schema": "p23-public-analysis-readout-source/v1",
+  "role": "public_nominal_time_window_and_trial_outcome_readout_source",
+  "official_landing_page": "https://www.nist.gov/pml/applied-physics-division/bell-test-research-software-and-data/repository-bell-test-research-0",
+  "archive": {
+    "url": "https://s3.amazonaws.com/nist-belltestdata/belldata/code/analysis/bell_analysis_code.zip",
+    "archive_size": 787181075,
+    "head": {
+      "Content-Length": "787181075",
+      "Last-Modified": "Sat, 12 Dec 2015 21:26:34 GMT",
+      "ETag": "\"abe303948bd6f97de7ff70aff4af089e-94\"",
+      "Accept-Ranges": "bytes"
+    },
+    "central_directory": {
+      "offset": 787172015,
+      "size": 9038,
+      "sha256": "7039c4372a058cf7e745dfaff459dc18bac9ac934a3a6b63991e6bd792347cb3",
+      "member_count": 77
+    },
+    "full_archive_sha256": null,
+    "retrieval": "HTTP byte Range; central directory and .py/.yaml payloads only; no event/result-data member payload"
+  },
+  "members": [
+    {
+      "member": "bell_analysis_code/build_file.yaml",
+      "method": 8,
+      "crc32": 234146436,
+      "compressed_size": 493,
+      "size": 1170,
+      "local_header_offset": 7278199,
+      "sha256": "3e1fb4bb66f6ced1a9b26ea427796579367fdc9f15a3a9284489d558d18d7fa7",
+      "payload_range": [
+        7278291,
+        7278783
+      ]
+    },
+    {
+      "member": "bell_analysis_code/build_file_hdf5.py",
+      "method": 8,
+      "crc32": 2370586443,
+      "compressed_size": 3162,
+      "size": 10905,
+      "local_header_offset": 7278784,
+      "sha256": "4aac3780c30944ac2ac7cf318c462ac9fb66848d870397bc4d8a2bdcf73340bd",
+      "payload_range": [
+        7278879,
+        7282040
+      ]
+    },
+    {
+      "member": "bell_analysis_code/hdf5_to_peter_classical.py",
+      "method": 8,
+      "crc32": 2913407681,
+      "compressed_size": 1308,
+      "size": 3998,
+      "local_header_offset": 183494301,
+      "sha256": "6a1038af8e61d900909642847b26f1ebe768dc1fad3a14fe720636ea410f02b7",
+      "payload_range": [
+        183494404,
+        183495711
+      ]
+    },
+    {
+      "member": "bell_analysis_code/hdf5_to_peter_v2.py",
+      "method": 8,
+      "crc32": 38910442,
+      "compressed_size": 1801,
+      "size": 5583,
+      "local_header_offset": 183495712,
+      "sha256": "9dd2db203b3f23ef518d8df72255f5d93f78fe95bb1fea40b81759a39ff4f3bf",
+      "payload_range": [
+        183495808,
+        183497608
+      ]
+    },
+    {
+      "member": "bell_analysis_code/hdf_to.yaml",
+      "method": 8,
+      "crc32": 2857834383,
+      "compressed_size": 140,
+      "size": 215,
+      "local_header_offset": 183498769,
+      "sha256": "2d9fa76319e3bcd0decce50f721455403756a1293dab10e380cdf09985197987",
+      "payload_range": [
+        183498857,
+        183498996
+      ]
+    },
+    {
+      "member": "bell_analysis_code/hfd5_to_newclicks.py",
+      "method": 8,
+      "crc32": 207218955,
+      "compressed_size": 1847,
+      "size": 5591,
+      "local_header_offset": 183500904,
+      "sha256": "93e584b5caac7b5a614d0c6ab635b068320a1d86f7ee024ee523d9dcfa65c905",
+      "payload_range": [
+        183501001,
+        183502847
+      ]
+    },
+    {
+      "member": "bell_analysis_code/make_compressed.py",
+      "method": 8,
+      "crc32": 222245283,
+      "compressed_size": 598,
+      "size": 1512,
+      "local_header_offset": 785771034,
+      "sha256": "ee75b2cb74be3b84c2d310641f0e5cabddf0ac84020bf19b1a2e8e9de03780ee",
+      "payload_range": [
+        785771129,
+        785771726
+      ]
+    },
+    {
+      "member": "bell_analysis_code/sync_hdf5.py",
+      "method": 8,
+      "crc32": 2858328425,
+      "compressed_size": 2546,
+      "size": 9047,
+      "local_header_offset": 787092339,
+      "sha256": "29ded9d310a712b7e70e8395b6af7315203f8680532aa43e7267865cb2ab7b57",
+      "payload_range": [
+        787092428,
+        787094973
+      ]
+    }
+  ],
+  "python_yaml_source_inventory": {
+    "count": 31,
+    "bytes": 112366,
+    "members": [
+      "bell_analysis_code/analyze_sync.py",
+      "bell_analysis_code/build_file.yaml",
+      "bell_analysis_code/build_file_hdf5.py",
+      "bell_analysis_code/calc_ch_from_compressed.py",
+      "bell_analysis_code/calc_ch_from_hdf5.py",
+      "bell_analysis_code/calc_rates_from_beginning.py",
+      "bell_analysis_code/check_syncs.py",
+      "bell_analysis_code/chopup_forManny.py",
+      "bell_analysis_code/compressed_to_krister.py",
+      "bell_analysis_code/hdf5_to_krister.py",
+      "bell_analysis_code/hdf5_to_peter.py",
+      "bell_analysis_code/hdf5_to_peter_85_thensmall.py",
+      "bell_analysis_code/hdf5_to_peter_classical.py",
+      "bell_analysis_code/hdf5_to_peter_v2.py",
+      "bell_analysis_code/hdf5_to_yanbao.py",
+      "bell_analysis_code/hdf_to.yaml",
+      "bell_analysis_code/hdf_to_stats_bymin.py",
+      "bell_analysis_code/hfd5_to_newclicks.py",
+      "bell_analysis_code/lookatSyncs_hdf5.py",
+      "bell_analysis_code/makePlots.py",
+      "bell_analysis_code/make_compressed.py",
+      "bell_analysis_code/p_calculator_for_krister.py",
+      "bell_analysis_code/peter_signaling_diagnostics.py",
+      "bell_analysis_code/peter_to_p.py",
+      "bell_analysis_code/pvaluehack.py",
+      "bell_analysis_code/setting_stats.py",
+      "bell_analysis_code/settings_check.py",
+      "bell_analysis_code/settings_hdf5.py",
+      "bell_analysis_code/sync_check.py",
+      "bell_analysis_code/sync_hdf5.py",
+      "bell_analysis_code/sync_jump.py"
+    ],
+    "scope": "31 Python/YAML members inspected statically; no NIST2015 visibility-to-nonmax channel implementation found in these bodies"
+  },
+  "unbundled_dependency": {
+    "module": "build_file_txt",
+    "called_at": {
+      "build_file_hdf5.py": [
+        10,
+        12,
+        39
+      ],
+      "sync_hdf5.py": [
+        10,
+        88
+      ]
+    },
+    "scope": "No exact build_file_txt.py member in this ZIP central directory. No claim about other repositories or revisions."
+  },
+  "files": [
+    {
+      "file": "configuration.txt",
+      "sha256": "91fc4baad8aa16b96da196e81a8b92c7174230fd1df86fda21e46e7181c2fab4",
+      "bytes": 2981,
+      "bindings": [
+        {
+          "member": "bell_analysis_code/build_file.yaml",
+          "source_sha256": "3e1fb4bb66f6ced1a9b26ea427796579367fdc9f15a3a9284489d558d18d7fa7",
+          "line_ranges": [
+            [
+              1,
+              56
+            ]
+          ],
+          "redactions": [
+            {
+              "line": 9,
+              "original_line_sha256": "f72bb4c46b0a18d9a1fde0fdfb37da7bab35bdca97b31f1f46c0d138d263e21a",
+              "replacement": "# [REDACTED network endpoint / clock identifier / local device path]"
+            },
+            {
+              "line": 10,
+              "original_line_sha256": "f9aff7de347f345e1faf377c035f6340785332174cff918f27f8f79ef6deffc2",
+              "replacement": "# [REDACTED network endpoint / clock identifier / local device path]"
+            },
+            {
+              "line": 11,
+              "original_line_sha256": "d5627f94ea2474ad4bba91ee72e56109fbb9d674aab36e05a65651fc9d2150e6",
+              "replacement": "# [REDACTED network endpoint / clock identifier / local device path]"
+            },
+            {
+              "line": 12,
+              "original_line_sha256": "a9aba5a623dec56e4add4ce47509be4988aa6d2c1ceb2a4fd57d55370288def5",
+              "replacement": "# [REDACTED network endpoint / clock identifier / local device path]"
+            },
+            {
+              "line": 14,
+              "original_line_sha256": "485d1f0d0460aeacc2f6140fa5ddc5cd743242947d6d4978e1fa0578ea2c3b36",
+              "replacement": "# [REDACTED network endpoint / clock identifier / local device path]"
+            },
+            {
+              "line": 15,
+              "original_line_sha256": "b5c79b34dd3ce6381bfeca32e37f1410ee7f21d30d7e486cb02d4b2f80627ba7",
+              "replacement": "# [REDACTED network endpoint / clock identifier / local device path]"
+            },
+            {
+              "line": 24,
+              "original_line_sha256": "5565edec324cad9dffb198cb511d9e223c3295a976c7ca52d730aa3c83d1e401",
+              "replacement": "# [REDACTED network endpoint / clock identifier / local device path]"
+            },
+            {
+              "line": 25,
+              "original_line_sha256": "09e93e7380d0cd73a4db5db3010e03606248688eb12005481cd7f16782e79f0d",
+              "replacement": "# [REDACTED network endpoint / clock identifier / local device path]"
+            },
+            {
+              "line": 26,
+              "original_line_sha256": "271379f10991dde0811ddbd3f215cb7f84eaa787cdb5070d7a78d58875c90dde",
+              "replacement": "# [REDACTED network endpoint / clock identifier / local device path]"
+            },
+            {
+              "line": 27,
+              "original_line_sha256": "97d0a1eda01a3189c9c17e9ad764c120a1ca79e4279edbd2e13cdb456526da0c",
+              "replacement": "# [REDACTED network endpoint / clock identifier / local device path]"
+            },
+            {
+              "line": 29,
+              "original_line_sha256": "b1c86486395cf575909239df029910affba7c1a5e6021dbff64da3f2a0759bdc",
+              "replacement": "# [REDACTED network endpoint / clock identifier / local device path]"
+            },
+            {
+              "line": 49,
+              "original_line_sha256": "e136e0f87d343a9f574721569034c0ffc2832dd939fdd9a459dacf6eee90629a",
+              "replacement": "# [REDACTED network endpoint / clock identifier / local device path]"
+            },
+            {
+              "line": 50,
+              "original_line_sha256": "cd6801d55699ce63c43b5f9834a29728d2efe93f7f75714d1790e2839088ee52",
+              "replacement": "# [REDACTED network endpoint / clock identifier / local device path]"
+            },
+            {
+              "line": 51,
+              "original_line_sha256": "ac1d9a1ed079b13f29b5de11ad211a08e16c7aa1a6cb78c21b7f317816b32340",
+              "replacement": "# [REDACTED network endpoint / clock identifier / local device path]"
+            },
+            {
+              "line": 52,
+              "original_line_sha256": "ba7d8efbb8fc7d28fb9060db9131d361694d93042152c4710328f461b10932cd",
+              "replacement": "# [REDACTED network endpoint / clock identifier / local device path]"
+            },
+            {
+              "line": 53,
+              "original_line_sha256": "1237701f01d3c5d6b1654cb15266c22b37ae714409194817134943e56741423f",
+              "replacement": "# [REDACTED network endpoint / clock identifier / local device path]"
+            },
+            {
+              "line": 55,
+              "original_line_sha256": "ee0f8d47e462ed446948068a41ec9805a2794f7ea9f0d0e1cfecba009e55154e",
+              "replacement": "# [REDACTED network endpoint / clock identifier / local device path]"
+            }
+          ]
+        },
+        {
+          "member": "bell_analysis_code/hdf_to.yaml",
+          "source_sha256": "2d9fa76319e3bcd0decce50f721455403756a1293dab10e380cdf09985197987",
+          "line_ranges": [
+            [
+              1,
+              10
+            ]
+          ],
+          "redactions": [
+            {
+              "line": 2,
+              "original_line_sha256": "f5a6fdd4f9cff37f28dfe762114f4d1226ee66697ed80fcae49240584d0c4854",
+              "replacement": "#filestr: [REDACTED_LOCAL_ROOT]/bell/results/hdf5/*19/02*build*.hdf5"
+            }
+          ]
+        }
+      ],
+      "role": "non_executable_source_excerpt"
+    },
+    {
+      "file": "timetag-lineage.txt",
+      "sha256": "3a6b63a50bcd17f07e84158c7532d9b7cb13296d87b22ac1b582622bfb570082",
+      "bytes": 5171,
+      "bindings": [
+        {
+          "member": "bell_analysis_code/make_compressed.py",
+          "source_sha256": "ee75b2cb74be3b84c2d310641f0e5cabddf0ac84020bf19b1a2e8e9de03780ee",
+          "line_ranges": [
+            [
+              18,
+              42
+            ]
+          ],
+          "redactions": []
+        },
+        {
+          "member": "bell_analysis_code/sync_hdf5.py",
+          "source_sha256": "29ded9d310a712b7e70e8395b6af7315203f8680532aa43e7267865cb2ab7b57",
+          "line_ranges": [
+            [
+              10,
+              14
+            ],
+            [
+              43,
+              47
+            ],
+            [
+              85,
+              94
+            ],
+            [
+              117,
+              123
+            ],
+            [
+              130,
+              171
+            ]
+          ],
+          "redactions": []
+        }
+      ],
+      "role": "non_executable_source_excerpt"
+    },
+    {
+      "file": "window-builder.txt",
+      "sha256": "1006e103415da47407b15a637afd9f155fc731ac27ac06c592502e1e5303f91e",
+      "bytes": 10700,
+      "bindings": [
+        {
+          "member": "bell_analysis_code/build_file_hdf5.py",
+          "source_sha256": "4aac3780c30944ac2ac7cf318c462ac9fb66848d870397bc4d8a2bdcf73340bd",
+          "line_ranges": [
+            [
+              10,
+              16
+            ],
+            [
+              26,
+              50
+            ],
+            [
+              79,
+              90
+            ],
+            [
+              95,
+              151
+            ],
+            [
+              175,
+              188
+            ],
+            [
+              247,
+              294
+            ]
+          ],
+          "redactions": [
+            {
+              "line": 250,
+              "original_line_sha256": "ea2ca6805c99f613e68d4b8bcb9f248c1944279d0ccbae3a3babdaac0da3302e",
+              "replacement": "        volume = '[REDACTED_VOLUME]'"
+            }
+          ]
+        },
+        {
+          "member": "bell_analysis_code/hfd5_to_newclicks.py",
+          "source_sha256": "93e584b5caac7b5a614d0c6ab635b068320a1d86f7ee024ee523d9dcfa65c905",
+          "line_ranges": [
+            [
+              10,
+              16
+            ],
+            [
+              26,
+              40
+            ],
+            [
+              45,
+              87
+            ],
+            [
+              152,
+              155
+            ]
+          ],
+          "redactions": []
+        }
+      ],
+      "role": "non_executable_source_excerpt"
+    },
+    {
+      "file": "window-outcomes.txt",
+      "sha256": "0be08ec2077c6ed6d0317d87043178618126980af8c619562e8a6ee22774959f",
+      "bytes": 7089,
+      "bindings": [
+        {
+          "member": "bell_analysis_code/hdf5_to_peter_v2.py",
+          "source_sha256": "9dd2db203b3f23ef518d8df72255f5d93f78fe95bb1fea40b81759a39ff4f3bf",
+          "line_ranges": [
+            [
+              16,
+              59
+            ],
+            [
+              60,
+              112
+            ]
+          ],
+          "redactions": [
+            {
+              "line": 23,
+              "original_line_sha256": "3d1c69c39825f27a97acc64d84413e4a92eea897ca14232cc72eefb45bbc24ba",
+              "replacement": "    #volume = '[REDACTED_VOLUME]'"
+            },
+            {
+              "line": 24,
+              "original_line_sha256": "f47317fceeb605b61fb73e0bdd7b72bb83573e526f6ed365e45bbbf56e2a191f",
+              "replacement": "    #filelist = glob.glob('[REDACTED_LOCAL_ROOT]/bell/results/2015_09_19/19_45*.compressed')"
+            },
+            {
+              "line": 25,
+              "original_line_sha256": "0b4c8fcecc4a6e92beb0785ee985d6ffe9fb15965be3b48f55a14a2087b9aa14",
+              "replacement": "    #filelist = glob.glob('[REDACTED_LOCAL_ROOT]/Compressed_files/19_45*')"
+            },
+            {
+              "line": 26,
+              "original_line_sha256": "82a949edcdc05a164fe2c23d888f72a41407986597d422d61b17f4b8bf9e3805",
+              "replacement": "    #filelist = glob.glob('[REDACTED_LOCAL_ROOT]/bell/results/hdf5/*19/02*build*.hdf5')"
+            }
+          ]
+        },
+        {
+          "member": "bell_analysis_code/hdf5_to_peter_classical.py",
+          "source_sha256": "6a1038af8e61d900909642847b26f1ebe768dc1fad3a14fe720636ea410f02b7",
+          "line_ranges": [
+            [
+              16,
+              44
+            ],
+            [
+              63,
+              86
+            ]
+          ],
+          "redactions": [
+            {
+              "line": 17,
+              "original_line_sha256": "3d1c69c39825f27a97acc64d84413e4a92eea897ca14232cc72eefb45bbc24ba",
+              "replacement": "    #volume = '[REDACTED_VOLUME]'"
+            },
+            {
+              "line": 18,
+              "original_line_sha256": "f47317fceeb605b61fb73e0bdd7b72bb83573e526f6ed365e45bbbf56e2a191f",
+              "replacement": "    #filelist = glob.glob('[REDACTED_LOCAL_ROOT]/bell/results/2015_09_19/19_45*.compressed')"
+            },
+            {
+              "line": 19,
+              "original_line_sha256": "0b4c8fcecc4a6e92beb0785ee985d6ffe9fb15965be3b48f55a14a2087b9aa14",
+              "replacement": "    #filelist = glob.glob('[REDACTED_LOCAL_ROOT]/Compressed_files/19_45*')"
+            },
+            {
+              "line": 20,
+              "original_line_sha256": "08483cd8f4e2628ed656a623f73a14a4962a514c9c3daa5475eb48cdb5f2975f",
+              "replacement": "    filelist = glob.glob('[REDACTED_LOCAL_ROOT]/bell/results/hdf5/*/*Classical*build*.hdf5')"
+            }
+          ]
+        }
+      ],
+      "role": "non_executable_source_excerpt"
+    }
+  ],
+  "notice": {
+    "path": "../receiver-control-source/NIST_NOTICE.txt",
+    "sha256": "06bf35f584f484900f865451ea90723c10f3c15a4185484722814f437d788254",
+    "url": "https://s3.amazonaws.com/nist-belltestdata/belldata/File_Folder_Descriptions_Addendum_2017_02.pdf",
+    "pages": [
+      2,
+      3
+    ]
+  },
+  "primary_documents": [
+    {
+      "url": "https://www.nist.gov/document/bell-test-data-file-folder-descriptions",
+      "page": 1,
+      "role": "raw timetag unit = 78.125ps"
+    },
+    {
+      "url": "https://www.nist.gov/document/bell-test-data-file-folder-descriptions",
+      "pages": [
+        3,
+        4,
+        5
+      ],
+      "role": "processed compressed/HDF role; stored radius; pulse-index mismatch scope; archived 00 counting caveat"
+    },
+    {
+      "url": "https://s3.amazonaws.com/nist-belltestdata/belldata/code/analysis/DataProcessingDescription.pdf",
+      "page": 1,
+      "role": "raw timestamp preservation; sync/settings/clicks pipeline"
+    },
+    {
+      "url": "https://journals.aps.org/prl/pdf/10.1103/PhysRevLett.115.250402",
+      "page": 4,
+      "role": "approx625/781ps local windows; per-window backgrounds; approx5e-4 per-pump pair probability"
+    }
+  ],
+  "time_window": {
+    "unit_ps": "78.125",
+    "predicate": "abs(phase-peak)<radius; both endpoints excluded",
+    "alice_config_halfwidth_ticks": 4,
+    "bob_config_halfwidth_ticks": 5,
+    "alice_full_span_ps": "625",
+    "bob_full_span_ps": "781.25",
+    "interpretation": "continuous timestamp interval span, not count of accepted integer histogram centers",
+    "source_chain": [
+      "make_compressed.py:38,41",
+      "sync_hdf5.py:120,162-171",
+      "build_file_hdf5.py:114-142",
+      "hfd5_to_newclicks.py:57-58"
+    ],
+    "config_binding": "yaml2hdf writes per-station _radius; initial builder selects using alice.radius/bob.radius from unbundled initializer; reconverter reads stored radius but overrides Bob peak to124"
+  },
+  "workflow": {
+    "builder_default_family": "build_file_hdf5.py build_filelist active 2015_09_18/00*.compressed; excludes lind and RandomPump names; filename addition/reduced changes bitoffset by +/-16",
+    "yaml_loader_identity": "build_file.yaml is bundled configuration text; initializer source is unbundled, so its invocation/default role is not asserted",
+    "reconverter_family": "hfd5_to_newclicks.py build_filelist data_for_plots/*.hdf5; opens HDF append mode and rewrites clicks",
+    "outcome_converter": "hdf5_to_peter_v2.py explicitly loads hdf_to.yaml; active filestr data_for_plots/02*build*.hdf5 and pc_list [[4]]",
+    "slot_basis": "zero-based bit positions relative to builder bitoffset, not automatically a TableS-I/S-II pulse label",
+    "current_mask_rule": "local clicks&mask>0; joint = localA OR and localB OR; 00=N-joint-Aonly-Bonly",
+    "legacy_rule": "hdf5_to_peter_classical.py additionally requires equal nonzero masked bit patterns; its 00 formula uses N-(A+B)-C and is preserved as a distinct legacy readout"
+  },
+  "scope": {
+    "source_packet_only": true,
+    "archive_python_executed": false,
+    "event_payload_read": false,
+    "hardware_or_internal_endpoint_accessed": false,
+    "actual_run_snapshot_identified": false,
+    "nominal_gate_requires_actual_epoch": false
+  }
+}

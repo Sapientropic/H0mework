@@ -1,0 +1,50 @@
+{
+  "schema": "nist-real-readiness-request/v1",
+  "revision": "r0003-NIST-design",
+  "claim_scope": "documented_real_born_conditional",
+  "controller_role": "subordinate_producer",
+  "root_mutation": false,
+  "r0002_modified": false,
+  "u7_u8_triggered": false,
+  "qualification": "Documented real-amplitude preparation with externally fixed controls; no claim of original-source preparation generation or maximal entanglement.",
+  "error_budget": {
+    "conditional_alpha": "1/40",
+    "calibration_beta": "1/100",
+    "total": "1/20",
+    "unused_budget_policy": "not reallocated"
+  },
+  "calibration_registry": "calibration-registry.json",
+  "nominal_optimum": {
+    "required": true,
+    "status": "blocked_certified_nominal_replay_deviation",
+    "reason": "The r0003 criterion maps the published efficiency half-width to 0.003. Both source-bound replay implementations certify that all five documented values remain outside the predeclared band.",
+    "acceptance": "Freeze the independently sourced nominal apparatus and objective first; replay the documented settings with a predeclared rounding/approximation criterion. No test-driven model, sign, parameter or tolerance changes.",
+    "criterion_revision": "nominal-replay-r0003",
+    "evidence": {
+      "primary": "nominal-replay/replay-r0003.json",
+      "independent": "nominal-replay/independent_replay-r0003.json",
+      "gate": "evidence/readiness.json"
+    },
+    "research_revision": "nominal-source-code-r0005",
+    "research_evidence": "nominal-replay/source-code/verification.json",
+    "remaining_source": "The original NIST2015 four-mode source/measurement model is recovered and independently replayed. The final design efficiency/dark/brightness configuration and publication visibility handling remain to be bound; historical defaults are not substituted for the final publication."
+  },
+  "data_roles": {
+    "test_events_read": 0,
+    "test_partition": null,
+    "calibration_partitions": [],
+    "published_aggregate_context_seen": true,
+    "exposure_record": "access-record.md"
+  },
+  "freeze_requires": [
+    "strict_lean_and_consumer_certification",
+    "independent_nominal_optimum_loop",
+    "calibration_test_epoch_separation",
+    "simultaneous_calibration_coverage_and_transport",
+    "fixed_complete_trial_slot_window_policy",
+    "multipair_and_channel_approximation_bounds",
+    "hash_bound_lock_and_separate_reviewer"
+  ],
+  "lock_created": false,
+  "data_ingestion_scheduled": false
+}

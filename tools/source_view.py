@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Reconstruct verified public or exact source-layout views from this export.
 
-The exported modules relocate local imports, include_str addresses and declared resource
-digests. The default original-path view uses published receipt bytes; --exact restores
-the pinned source bytes, requiring --private-originals for sanitized receipts. Both
+The exported modules relocate local imports, declared private-name owners, include_str
+addresses and declared resource digests. The default original-path view uses published
+receipt bytes; --exact restores the pinned source bytes, requiring --private-originals
+for sanitized receipts. Both
 identities and the unchanged receipt payloads are checked with tools/export-map.json.
 Reconstructed files are written to a new
 directory outside the repository or under its ignored .local directory; tracked files are
@@ -180,6 +181,195 @@ def transform(text: str, tokens, mapping: dict[str, str]) -> bytes:
     return text.encode("utf-8")
 
 
+def rewrite_private_names(text: str, rewrites, *, reverse: bool = False) -> str:
+    """Relocate only declared private module owners; reverse restores source names.
+
+    Rows declare ``private_name_rewrites`` as source_name/target_name pairs. An owner
+    can stand alone in a Name quotation or precede a numeric private-name component.
+    Comments, strings and longer module names remain byte-for-byte unchanged.
+    """
+    if rewrites is None:
+        return text
+    if not isinstance(rewrites, list):
+        raise ViewError("Private-name rewrites must be a list")
+    mapping = {}
+    targets = set()
+    for rewrite in rewrites:
+        if not isinstance(rewrite, dict) or set(rewrite) != {"source_name", "target_name"}:
+            raise ViewError("Private-name rewrites need source_name and target_name")
+        source, target = rewrite["source_name"], rewrite["target_name"]
+        for name in (source, target):
+            if (not isinstance(name, str) or not name.startswith("_private.")
+                    or not MODULE.fullmatch(name)):
+                raise ViewError(f"Invalid private module owner: {name!r}")
+        if source in mapping or target in targets:
+            raise ViewError("Private-name rewrites must have unique sources and targets")
+        mapping[source] = target
+        targets.add(target)
+    if not mapping:
+        return text
+    if reverse:
+        mapping = {target: source for source, target in mapping.items()}
+    owners = "|".join(re.escape(name) for name in sorted(mapping, key=len, reverse=True))
+    # Lean identifiers also admit !, ?, and letter-like symbols outside Python's \w.
+    name_chars = r"\w'.!?\u03ca-\u03fb\u1f00-\u1ffe\u2100-\u214f\U0001d49c-\U0001d59f"
+    boundary = rf"(?![{name_chars}])"
+    pattern = re.compile(rf"(?<![{name_chars}])(?:{owners})(?={boundary}|\.[0-9]+(?:\.|{boundary}))")
+    edits = [(match.start(), match.end(), mapping[match.group()])
+             for match in pattern.finditer(mask_comments_and_strings(text))]
+    for begin, end, replacement in reversed(edits):
+        text = text[:begin] + replacement + text[end:]
+    return text
+
+
+def audit_observer_start(text: str) -> int | None:
+    """Locate one executable observer body, without matching comments or strings."""
+    masked = mask_comments_and_strings(text)
+    commands = list(re.finditer(r"(?m)^run_cmd[ \t]+do[ \t]*\r?\n", masked))
+    named = r"(?:[ \t]+\([ \t]*name[ \t]*:=[ \t]*[A-Za-z_][A-Za-z0-9_'.]*[ \t]*\))?"
+    headers = re.finditer(
+        r'(?m)^elab' + named + r'[ \t]+"(?:\\.|[^"\\\r\n])*"[ \t]*:[ \t]*command[ \t]*=>[ \t]*do[ \t]*\r?\n',
+        text)
+    commands.extend(match for match in headers
+                    if masked[match.start():match.start() + 4] == "elab")
+    if not commands:
+        return None
+    if len(commands) != 1:
+        raise ViewError("Audit module rewrites need one trailing observer command")
+    return commands[0].end()
+
+
+def name_audit_command(text: str, rule, *, reverse: bool = False) -> str:
+    """Give a colliding command registration a module-owned name; keep its body."""
+    if rule is None:
+        return text
+    if not isinstance(rule, dict) or set(rule) != {"source_declaration", "target_name"}:
+        raise ViewError("Audit command name needs source_declaration and target_name")
+    source, name = rule["source_declaration"], rule["target_name"]
+    if (not isinstance(source, str)
+            or not re.fullmatch(r'elab "(?:\\.|[^"\\\r\n])*" : command => do', source)
+            or not isinstance(name, str) or not MODULE.fullmatch(name)):
+        raise ViewError("Invalid audit command naming rule")
+    target = "elab (name := " + name + ")" + source[4:]
+    before, after = (target, source) if reverse else (source, target)
+    masked = mask_comments_and_strings(text)
+    matches = [match for match in re.finditer(r"(?m)^" + re.escape(before) + r"(?=\r?$)", text)
+               if masked[match.start():match.start() + 4] == "elab"]
+    if len(matches) != 1:
+        raise ViewError("Declared audit command is absent or duplicated")
+    begin, end = matches[0].span()
+    return text[:begin] + after + text[end:]
+
+
+def rewrite_audit_module_names(text: str, rewrites, *, reverse: bool = False) -> str:
+    """Relocate declared module quotations in the trailing observer command."""
+    if rewrites is None:
+        return text
+    if not isinstance(rewrites, list):
+        raise ViewError("Audit module rewrites must be a list")
+    if not rewrites:
+        return text
+    mapping, targets = {}, set()
+    for item in rewrites:
+        if not isinstance(item, dict) or set(item) != {"source_module", "target_module"}:
+            raise ViewError("Audit module rewrites need source_module and target_module")
+        source, target = item["source_module"], item["target_module"]
+        if any(not isinstance(name, str) or not MODULE.fullmatch(name) for name in (source, target)):
+            raise ViewError("Invalid audit module name")
+        if source in mapping or target in targets:
+            raise ViewError("Audit module rewrites must be invertible")
+        mapping[source] = target
+        targets.add(target)
+    if reverse:
+        mapping = {target: source for source, target in mapping.items()}
+    split = audit_observer_start(text)
+    if split is None:
+        raise ViewError("Audit module rewrites need one trailing observer command")
+    tail = text[split:]
+    owners = "|".join(re.escape(name) for name in sorted(mapping, key=len, reverse=True))
+    pattern = re.compile(r"(?<!`)`(" + owners + r")(?![\w'.!?])")
+    matches = list(pattern.finditer(mask_comments_and_strings(tail)))
+    if set(mapping) != {match[1] for match in matches}:
+        raise ViewError("Declared audit module quotation is absent")
+    for match in reversed(matches):
+        tail = tail[:match.start(1)] + mapping[match[1]] + tail[match.end(1):]
+    return text[:split] + tail
+
+
+def rewrite_audit_runtime(text: str, environments, full_closure=False, *, reverse=False) -> str:
+    """Keep legacy boundary overrides; an absent boundary traverses every edge."""
+    if not isinstance(full_closure, bool):
+        raise ViewError("Audit full-closure option must be boolean")
+    if environments is None:
+        environments = []
+    if (not isinstance(environments, list) or any(not isinstance(name, str) for name in environments)
+            or len(environments) != len(set(environments))):
+        raise ViewError("Audit boundary environments must be a unique list")
+    if not environments and not full_closure:
+        return text
+    source_marker = "open Lean Elab Command in\nrun_cmd do"
+    target_marker = "open Lean Elab Command in\nset_option maxHeartbeats 0 in\nrun_cmd do"
+    marker = target_marker if reverse and full_closure else source_marker
+    if text.count(marker) != 1:
+        raise ViewError("Audit runtime rewrite needs one trailing observer command")
+    split = text.index(marker)
+    prefix, tail = text[:split], text[split:]
+    for variable in environments:
+        if variable not in {"BELL_FIBER_PAID_NAMES", "BELL_DETECTOR_PAID_NAMES",
+                            "BELL_PULSE_PAID_NAMES", "BELL_ANCHORS_PAID_NAMES"}:
+            raise ViewError("Unregistered audit boundary environment")
+        source = (f'  let some paidPath ← IO.getEnv "{variable}" |\n'
+                  '    throwError "missing paid source-dependency boundary"\n'
+                  '  let paidText ← IO.FS.readFile paidPath')
+        target = (f'  let paidText ← match (← IO.getEnv "{variable}") with\n'
+                  '    | some paidPath => IO.FS.readFile paidPath\n'
+                  '    | none => pure "[]"')
+        before, after = (target, source) if reverse else (source, target)
+        if tail.count(before) != 1:
+            raise ViewError("Declared audit boundary block is absent or duplicated")
+        start = tail.index(before)
+        if mask_comments_and_strings(tail)[start:start + 5] != "  let":
+            raise ViewError("Audit boundary rewrite must address executable observer code")
+        tail = tail.replace(before, after)
+    if full_closure:
+        before, after = (target_marker, source_marker) if reverse else (source_marker, target_marker)
+        tail = tail.replace(before, after, 1)
+    return prefix + tail
+
+
+def name_local_instances(text: str, rules, *, reverse: bool = False) -> str:
+    """Give colliding anonymous local instances explicit names; keep type and value."""
+    if rules is None:
+        return text
+    if not isinstance(rules, list):
+        raise ViewError("Local instance names must be a list")
+    sources, names = set(), set()
+    for rule in rules:
+        if not isinstance(rule, dict) or set(rule) != {"source_declaration", "target_name"}:
+            raise ViewError("Local instance names need source_declaration and target_name")
+        source, name = rule["source_declaration"], rule["target_name"]
+        match = re.fullmatch(r"(local[ \t]+instance)([ \t]*:[ \t]*[^\n\r:=\";]+)", source) \
+            if isinstance(source, str) else None
+        if match is None or not isinstance(name, str) or not re.fullmatch(r"[A-Za-z_][A-Za-z0-9_]*", name):
+            raise ViewError("Invalid anonymous local instance naming rule")
+        if source in sources or name in names:
+            raise ViewError("Local instance names must be invertible")
+        sources.add(source)
+        names.add(name)
+    for rule in rules:
+        source, name = rule["source_declaration"], rule["target_name"]
+        split = re.match(r"local[ \t]+instance", source).end()
+        target = source[:split] + " " + name + source[split:]
+        before, after = (target, source) if reverse else (source, target)
+        pattern = re.compile(r"(?m)^[ \t]*(" + re.escape(before) + r")(?=[ \t]*(?::=|where\b))")
+        matches = list(pattern.finditer(mask_comments_and_strings(text)))
+        if len(matches) != 1:
+            raise ViewError("Declared anonymous local instance is absent or duplicated")
+        begin, end = matches[0].span(1)
+        text = text[:begin] + after + text[end:]
+    return text
+
+
 def invert_resources(text: str, rewrites) -> str:
     """Map relocated include_str literals back to their original addresses."""
     for rewrite in rewrites or []:
@@ -207,7 +397,13 @@ def module_views(row: dict, inverse: dict) -> tuple[bytes, bytes]:
     raw = (ROOT / row["path"]).read_bytes()
     if sha(raw) != row["target_sha256"]:
         raise ViewError(f"Exported module differs from its recorded digest: {row['path']}")
-    text = raw.decode("utf-8")
+    text = name_audit_command(raw.decode("utf-8"), row.get("audit_command_name"), reverse=True)
+    text = name_local_instances(text, row.get("local_instance_names"), reverse=True)
+    text = rewrite_audit_runtime(text, row.get("audit_boundary_fallbacks"),
+                                 row.get("audit_full_closure", False), reverse=True)
+    text = rewrite_audit_module_names(text, row.get("audit_module_rewrites"), reverse=True)
+    text = rewrite_private_names(text, row.get("private_name_rewrites"),
+                                 reverse=True)
     tokens = import_tokens(text)
     reverse = {}
     for _, _, module in tokens:

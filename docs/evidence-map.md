@@ -1,5 +1,7 @@
 # 证据对应表
 
+两篇首发修订以[首发映射](first-release-map.json)登记生产声明、消费者和验证身份，命令见[首发复现指南](first-release-reproduction.md)。本页保存原八稿与历史选集对应。
+
 本表将各稿主张连接到固定源码、程序和回执。执行命令见[复现指南](reproduction.md)，来源文档的角色与阅读方式见[来源材料索引](source-materials.md)。
 
 ## 来源与地址变换
@@ -47,7 +49,7 @@
 
 ### R2 修订选集
 
-两篇修订选集使用导出映射中 `revisions.R2` 的固定源码，入口分别为 [SourceProcessCoreR2](../Lean/H0mework/Papers/SourceProcessCoreR2.lean) 和 [PhysicsCommonSourceR2](../Lean/H0mework/Papers/PhysicsCommonSourceR2.lean)。过程核心纳入完整源树作用、独立树恢复、依赖输入与原收费 runtime 的消费者；同源物理纳入当前 Stage1–10 总消费、完整母源形成及同源作用的物理安装。各入口的 import 指定实际版本，逐文件身份以导出映射为准。
+历史 R2 快照使用导出映射中 `revisions.R2` 的固定源码。其原构建有四处 elaboration 失败，作为非默认历史库保留原字节；首发修订使用首发映射登记的独立版本。历史入口分别为 [SourceProcessCoreR2](../Lean/H0mework/Papers/SourceProcessCoreR2.lean) 和 [PhysicsCommonSourceR2](../Lean/H0mework/Papers/PhysicsCommonSourceR2.lean)。过程核心纳入完整源树作用、独立树恢复、依赖输入与原收费 runtime 的消费者；同源物理纳入该版本 Stage1–10 总消费、完整母源形成及同源作用的物理安装。各入口的 import 指定实际版本，逐文件身份以导出映射为准。
 
 原论文标签及 base/H/F 等冻结链保持各自版本。下表保存首版命题编号到生产口和直接消费者的对应；Lean 声明的类型给出前提与量词。模块路径均相对于 `Lean/H0mework/`。
 

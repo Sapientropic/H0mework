@@ -1,0 +1,77 @@
+{
+  "schema": "p23-gaussian-window-verification/v1",
+  "version": "p23-gaussian-window-gw0001",
+  "evidence_valid": true,
+  "source_mapping_identified": false,
+  "publication_configuration_identified": false,
+  "production_admitted": false,
+  "actual_window_model_identified": false,
+  "private_optimizer_input_required": false,
+  "bell_event_files_read": 0,
+  "retrospective": true,
+  "status": "verified",
+  "criterion_freeze": {
+    "commit": "5b5814bceb3da6d03a84147d9af67327962e97b1",
+    "criterion_sha256": "66763dc0eb5d789df39227ba10e382d4bfb07138e4c7d27237b0fa605338206e",
+    "sources_sha256": "93e256ff59ab0b22f71af17d52b9fc3a467180110e9ac4a5227393adc6c82bc1"
+  },
+  "execution_source_freezes": {
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window/gaussian.py": {
+      "commit": "2df14f506ec80151f93c9173b5702d078e83f3a0",
+      "sha256": "5adfc235d6cb9b9ca61e804bded0fd2bff6a89860cd9332ec75a603e5f6bd852"
+    },
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window/independent_fock.py": {
+      "commit": "6d206a20ced760f8c45cbe29bf5bd6c82b795bf9",
+      "sha256": "f4a4d1549a1edce04cc5171c8043902db9c97328e0e7174e52da4fcdfa7d5162"
+    },
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window/verify.py": {
+      "commit": "5402667a047c5dcb080b3678803af074d29a6f52",
+      "sha256": "d70e08d6c2cdfd2ac6914ede6d61d9483bc20ccc68ec74d31526c1f1df2b2259"
+    },
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window/tests.py": {
+      "commit": "5402667a047c5dcb080b3678803af074d29a6f52",
+      "sha256": "9dfc047d5f1d089340d3fd881c50b74edc9a2ffff9900248255f3564bd8f2faa"
+    }
+  },
+  "primary_source_controls": 180,
+  "control_cells": 720,
+  "primary_outcome": "EXHIBITED_FULL_FOCK_WINDOW_MEMBER",
+  "independent_outcome": "EXHIBITED_FULL_FOCK_WINDOW_MEMBER",
+  "outcome": "EXHIBITED_FULL_FOCK_WINDOW_MEMBER",
+  "all_public_enclosures_contained": true,
+  "source_Born_matrices_recomputed": true,
+  "unnormalized_sector_prefix_and_exact_tail_recomputed": true,
+  "public_statistical_contract": "p23-public-observables-po0003",
+  "Lean_scope": "source normalization/PGF/factorial moments and coherent legal-effect Born tail; concrete Gamma, Gaussian vacuum and window equality are numerical consumers",
+  "numeric_controls": {
+    "prefix_mass_error": 1.1102230246251565e-16,
+    "prefix_Born_error": 2.220446049250313e-16,
+    "tolerance": "1/1000000000000",
+    "role": "floating creation-polynomial/full-phase differential controls; exact enclosure inclusion is evaluated separately"
+  },
+  "bindings": {
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-prediction/public-criterion-po0003.md": "0a3b5d9dd26c50a1680fcf89f47d9eafa3347fbcfc16b0bd9a99e87a9de99ee2",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-prediction/public-comparison-po0003.json": "20f30388cd5ae23d29f737a20ec36d450def91b9a70be891c751057686d09fee",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-prediction/public-observables.json": "442e6f1d74fa654a15a8a48c1ec502d93ae695d725b70fb3623418cc599a2cb6",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-prediction/public-criterion.md": "667b30442cb535b6e87c66f378c60c23c62bb9ac66f7295e749bcb2f28e7da4e",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-prediction/public_verify.py": "a4cd90caa3b55577257ebe111c273801a13d62a568c648250d14380783521f09",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-prediction/public-verification.json": "1f5326d17bf398f52598b0c58ed4cbcfb691fca208da324788c51a825607be78",
+    "Lean/.lake/packages/mathlib/Mathlib/Analysis/Real/Pi/Bounds.lean": "bb8dc6144292b803b2df8c31ca32d67a7ab47b50f8005b5b688d95aff1489444",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window/criterion.md": "66763dc0eb5d789df39227ba10e382d4bfb07138e4c7d27237b0fa605338206e",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window/sources.json": "93e256ff59ab0b22f71af17d52b9fc3a467180110e9ac4a5227393adc6c82bc1",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/response/response.py": "2d62e6bf254302b3a99d4061761b7db30138edf461b45a2f59a814a5727f38d3",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window/GaussianSource.lean": "1dee783a0976a497139e64d4ef7278b203d56a0b119c84eea942bbb7846a10af",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window/Consumer.lean": "10f8f406cf6be40e0b15b72f824468e58b59564b9fede225b9e6b5cc26b46b1b",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window/GaussianCertification.lean": "449ba652608194eda63ca6d6599f56df9580109a778bc65c7707c03c928a8f13",
+    "Lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+    "Lean/lake-manifest.json": "aa60b347daf17a642d027cda3288f7d6f12c176c4ddd2677c28140daadb15c81",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window/certification.json": "2cb75d05d2ad39d4ca348a5efc325ae1fc8aec75535f3fc5e2680a585c646c50",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window/independent_fock.py": "f4a4d1549a1edce04cc5171c8043902db9c97328e0e7174e52da4fcdfa7d5162",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window/gaussian.json": "5a2071e36d4f80990a4a85c38afa85be35f914b4ed2d2f749931eaab49508ff3",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window/gaussian.py": "5adfc235d6cb9b9ca61e804bded0fd2bff6a89860cd9332ec75a603e5f6bd852",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window/verify.py": "d70e08d6c2cdfd2ac6914ede6d61d9483bc20ccc68ec74d31526c1f1df2b2259",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window/tests.py": "9dfc047d5f1d089340d3fd881c50b74edc9a2ffff9900248255f3564bd8f2faa",
+    "gaussian.json": "5a2071e36d4f80990a4a85c38afa85be35f914b4ed2d2f749931eaab49508ff3",
+    "independent_fock.json": "e7d9b421e9ce08ab0d048e42c040c525a31931f9b6228d35d450c832b3a81b6d"
+  }
+}

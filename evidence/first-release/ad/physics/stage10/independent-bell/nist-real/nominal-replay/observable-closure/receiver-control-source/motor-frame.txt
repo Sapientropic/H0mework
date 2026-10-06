@@ -1,0 +1,120 @@
+NIST Bell test public DAQ source extract; non-executable source material.
+Source: official NIST code/daq archives. Extracted 2026-10-02.
+Network endpoints, device identifiers and local paths are redacted.
+This extract does not establish execution at any named data-run epoch.
+NIST notice and source attribution: https://www.nist.gov/pml/applied-physics-division/bell-test-research-software-and-data
+
+MEMBER bell_client/RotationController.py
+ORIGINAL_SHA256 0ba195519f970ea4e1ec9c1b1f9403c887720c851ca660a63f1646f28aa5838a
+LINES 1-22
+1: # -*- coding: utf-8 -*-
+2: """
+3: Created on Wed Aug 05 12:10:18 2015
+4: 
+5: @author: qittlab
+6: """
+7: from PyAPT import APTMotor
+8: class RotationController(APTMotor):
+9:     
+10:     def __init__(self, info):
+11:         APTMotor.__init__(self,info['serial'], HWTYPE = 31)
+12:         APTMotor.setVelocityParameters(self,info['minVel'],info['acc'],info['maxVel'])
+13:         self.attributes = info
+14:         
+15:     def mAbs(self, absPosition):
+16:         pos = absPosition + self.attributes['zero']
+17:         APTMotor.mAbs(self,pos)
+18:         return 'Success'
+19:         
+20:     def getPos(self):
+21:         absolutePos = APTMotor.getPos(self)
+22:         return (360 + absolutePos - self.attributes['zero']) % 360
+
+MEMBER bell_client/motorControl.py
+ORIGINAL_SHA256 900ab1de1eb821f966c5093013666f0491e2117ff9620fa685459c78956476e0
+LINES 55-83
+55:     def forward(self, name, distance):
+56:         print ("%s forward %i" %(name, distance))
+57:         self.s.send("for %s %i\n" % (distance, self.id_dict[name]))
+58:         self._response()
+59: 
+60:         
+61:     def backward(self, name, distance):
+62:         print ("%s backward %i" %(name, distance))
+63:         self.s.send("back %s %i\n" % (distance, self.id_dict[name]))
+64:         self._response()
+65: 
+66:         
+67:     def goto(self, name, pos):
+68:         print "Motor goto position %s" %pos
+69:         self.s.send("goto %s %i\n" % (pos, self.id_dict[name]))
+70:         self._response()
+71: 
+72:     def home(self, name):
+73:         print "Homing %s" %name
+74:         self.s.send("home %i \n" %self.id_dict[name])
+75:         self._response()
+76: 
+77: 
+78:     def getPos(self, name):
+79:         #print "getpos %s" %name
+80:         self.s.send('getpos %i \n' %self.id_dict[name])
+81:         pos = self.s.recv(1024)
+82:         print "%s position: %s" %(name,pos)
+83:         self._response()
+
+MEMBER bell_client/motor_server.py
+ORIGINAL_SHA256 89457a218bebebdd5e654667f31d9c14f4c0955b343c780f41df3382eaae530a
+LINES 16-24
+16: motor_list = []
+17: motorList = []
+18: f = open('motorConfig.yaml','r')
+19: line = f.readline()
+20: while line != '':
+21:     print line
+22:     motorList.append(yaml.load(line))
+23:     line = f.readline()
+24: f.close()
+LINES 43-50
+43: for m in motorList:
+44:     #print "Initializing motor %d" %sn
+45:     if m['type'].lower() == 'rotational':
+46:         motor = RotationController(m)
+47:     elif m['type'].lower() == 'linear':
+48:         motor = LinearController(m)
+49:     #m.initializeHardwareDevice()
+50:     motor_list.append(motor)
+LINES 82-107
+82:             elif cmd[0].lower() == 'for':
+83:                 msgout = self._motor[int(cmd[2])].mRel(float(cmd[1]))
+84:                 #msgout = "Moved foward %f mm" %float(cmd[1])
+85:                 
+86:             elif cmd[0].lower() == 'back':
+87:                 msgout = self._motor[int(cmd[2])].mRel(float(cmd[1])*-1)
+88:                 #msgout = "Moved backword %f mm" %float(cmd[1])
+89:                 
+90:             elif cmd[0].lower() == 'goto':
+91:                 msgout = self._motor[int(cmd[2])].mAbs(float(cmd[1]))
+92:                 #msgout = "Going to postion %f" %float(cmd[1])
+93:                 
+94:             elif cmd[0].lower() == 'getpos':
+95:                 msgout = self._motor[int(cmd[1])].getPos()
+96:                 
+97:             elif cmd[0].lower() == 'home':
+98:                 self._motor[int(cmd[1])].mHome()
+99:                 msgout = "Homed motor"
+100:                 
+101:             elif cmd[0].lower() == 'done':
+102:                 self._motor[int(cmd[1])].cleanUpAPT()
+103:                 
+104:             else:
+105:                 msgout = "didn't do a command"
+106:             self.wfile.write(msgout)
+107:             self.wfile.write('ack\n')
+
+MEMBER bell_client/motorConfigExample.yaml
+ORIGINAL_SHA256 a907337e7ea21834df456c793171901752c337d22bd97960f825e9a9a1640e39
+LINES 1-2
+1: {acc: 2, maxVel: 5, minVel: 5, name: Desk Motor, serial: [device-identifier-redacted], zero: 10, type: rotational}
+2: {acc: 2, maxVel: 5, minVel: 5, name: Linear Motor, serial: [device-identifier-redacted], zero: 0, type: linear, minPos: 0, maxPos: 4}
+

@@ -66,14 +66,18 @@ class PlanTests(unittest.TestCase):
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(text)
 
-    def write_config(self):
+    def write_config(self, *, package_options=None, library_options=None):
         ordinary = [n for n in self.sources if n not in {"H0mework.Chemistry.SourceParsing", "H0mework.Versions.Y.Broken"}]
+        package = {"moreLeanArgs": ["--trust=0"], **(package_options or {})}
+        package_text = "".join(f"{key} = {json.dumps(value)}\n" for key, value in package.items())
+        library_text = "".join(f"{key} = {json.dumps(value)}\n" for key, value in (library_options or {}).items())
         (self.root / "Lean/lakefile.toml").write_text(
             'name = "H0mework"\ndefaultTargets = ["H0mework", "ResourceConsumers"]\n'
-            'moreLeanArgs = ["--trust=0"]\n'
+            f'{package_text}'
             '[[lean_lib]]\nname = "H0mework"\n'
             f'globs = {json.dumps(ordinary)}\nmoreLeanArgs = ["-DwarningAsError=true"]\n'
             '[[lean_lib]]\nname = "ResourceConsumers"\nroots = []\n'
+            f'{library_text}'
             'globs = ["H0mework.Chemistry.SourceParsing"]\nneeds = ["ResourceInput"]\n'
             '[[lean_lib]]\nname = "Pinned"\nroots = []\n'
             'globs = ["H0mework.Versions.Y.Broken"]\n'
@@ -108,6 +112,51 @@ class PlanTests(unittest.TestCase):
 
     def test_plan_is_deterministic(self):
         self.assertEqual(make_plan(self.root, SPLIT), make_plan(self.root, SPLIT))
+
+    def test_weak_lean_args_preserve_source_and_the_complete_plan(self):
+        before = make_plan(self.root, SPLIT)
+        source_bytes = {p: p.read_bytes() for p in (self.root / "Lean").rglob("*.lean")}
+        for scope in ("package", "library", "both"):
+            for args in ([], ["-DmaxHeartbeats=2000000"],
+                         ["-DmaxHeartbeats=4000000", "-Dtrace.profiler=true"]):
+                with self.subTest(scope=scope, args=args):
+                    option = {"weakLeanArgs": args}
+                    self.write_config(package_options=option if scope in {"package", "both"} else None,
+                                      library_options=option if scope in {"library", "both"} else None)
+                    self.assertEqual(make_plan(self.root, SPLIT), before)
+        self.assertEqual({p: p.read_bytes() for p in source_bytes}, source_bytes)
+
+    def assert_compiler_setting_invalidates_consumers(self, before, after, scope):
+        self.assertEqual(after["compatibility"], before["compatibility"])
+        self.assertEqual(after["assignment"], before["assignment"])
+        self.assertNotEqual(after["selection"], before["selection"])
+        dependencies = self.dependencies(before)
+        for name, part in before["parts"].items():
+            affected = name == "complete" or scope == "package" or (
+                "H0mework.Chemistry.SourceParsing" in closure(part["modules"], dependencies))
+            changed = part["fingerprint"] != after["parts"][name]["fingerprint"]
+            self.assertEqual(changed, affected, name)
+
+    def test_more_lean_args_overrides_still_invalidate_part_consumers(self):
+        before = make_plan(self.root, SPLIT)
+        for scope in ("package", "library"):
+            with self.subTest(scope=scope):
+                args = ["--trust=0"] if scope == "package" else []
+                option = {"weakLeanArgs": ["-DmaxHeartbeats=2000000"],
+                          "moreLeanArgs": [*args, "-DmaxHeartbeats=4000000"]}
+                self.write_config(package_options=option if scope == "package" else None,
+                                  library_options=option if scope == "library" else None)
+                self.assert_compiler_setting_invalidates_consumers(before, make_plan(self.root, SPLIT), scope)
+
+    def test_other_compiler_settings_are_not_weak_lean_args(self):
+        before = make_plan(self.root, SPLIT)
+        for key, value in (("leanOptions.maxHeartbeats", 2000000), ("moreLeancArgs", ["-O0"])):
+            for scope in ("package", "library"):
+                with self.subTest(key=key, scope=scope):
+                    option = {key: value}
+                    self.write_config(package_options=option if scope == "package" else None,
+                                      library_options=option if scope == "library" else None)
+                    self.assert_compiler_setting_invalidates_consumers(before, make_plan(self.root, SPLIT), scope)
 
     def test_selection_follows_content_and_ci_files_not_unrelated_files(self):
         def fingerprints(plan):

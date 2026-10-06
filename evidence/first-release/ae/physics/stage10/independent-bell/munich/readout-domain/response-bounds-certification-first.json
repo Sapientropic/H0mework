@@ -1,0 +1,584 @@
+{
+  "schema": "stage10-munich-readout-response-certification/v1",
+  "evidence_valid": true,
+  "status": "certified_source_correlation_intervals_to_canonical_response_and_error_bounds",
+  "candidate_module": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutResponseBounds",
+  "source_bindings": [
+    {
+      "path": "Lean/SaturationMonoid/PhysicsCore/Stage10/Bell/ReadoutResponseBounds.lean",
+      "sha256": "e4aebb6af99987eb55f92e6a2f884d4c5f3bc17d52b493071a967fbac1e5fa81"
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/ResponseBoundsCertification.lean",
+      "sha256": "d300c2b840be18441cefa980d8e7f0ce87d04b6b59e89c077da79d2c4e32865d"
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/response_bounds_certify.py",
+      "sha256": "fc48591472a16afb0643473c27448dbee5081f0aac3f6e57508b8a506ef1a0c2"
+    }
+  ],
+  "toolchain_version": "Lean (version 4.33.0, arm64-apple-darwin24.6.0, commit d8b18978322de05a8f3dba51ef03cf5461676c17, Release)",
+  "focused_trust_level": 0,
+  "warning_as_error": true,
+  "asynchronous_elaboration": false,
+  "lean_threads": 1,
+  "fresh_candidate_and_general_consumer_checked": true,
+  "all_owned_declarations_audited": true,
+  "complete_new_dependency_closure_certified": true,
+  "same_original_source_current_next_certified": true,
+  "actual_source_joint_correlation_moment_certified": true,
+  "centered_correlation_to_product_and_individual_gains_certified": true,
+  "sign_general_fourcorner_product_interval_certified": true,
+  "primitive_intervals_generate_gain_lower_bound_certified": true,
+  "gain_lower_bound_not_supplied_to_main_producer": true,
+  "computed_gain_lower_bound_consumed_by_canonical_error_consumer": true,
+  "canonical_error_upper_bounds_and_nonnegativity_certified": true,
+  "all_source_current_next_correlation_moments_certified": true,
+  "original_source_ledger_and_next_certified": true,
+  "statistical_interval_coverage_proved_by_kernel": false,
+  "actual_native_signed_gain_label_identity_selected": false,
+  "actual_hardware_uniquely_identified": false,
+  "controller_advance": false,
+  "empirical_fit_executed": false,
+  "trial_event_files_read": 0,
+  "new_statistical_tables_read": 0,
+  "frozen_source_receipt": {
+    "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/source-certification-first.json",
+    "sha256": "948ab6b1e302433f7731cd73de96cce58651b274cb2ccfd68152321d7c88e4a7",
+    "explicit_declarations": 115,
+    "source_recompiled": false
+  },
+  "frozen_identification_receipt": {
+    "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/identification-certification-first.json",
+    "sha256": "ec85a916ffba0d74b7febfb96a7ebf4e49d1335da68305b720e7eb74681fff8f"
+  },
+  "producer_compilation_evidence": {
+    "candidate_sha256": "e4aebb6af99987eb55f92e6a2f884d4c5f3bc17d52b493071a967fbac1e5fa81",
+    "command": [
+      "toolchains/lean-4.33.0-darwin_aarch64/bin/lean",
+      "--trust=0",
+      "-DwarningAsError=true",
+      "-DElab.async=false",
+      "-j1",
+      "-o",
+      "runtime-artifacts/homework-bell-readout-certify-8x27ynvq/SaturationMonoid/PhysicsCore/Stage10/Bell/ReadoutResponseBounds.olean",
+      "SaturationMonoid/PhysicsCore/Stage10/Bell/ReadoutResponseBounds.lean"
+    ],
+    "exit_code": 0,
+    "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "compiled_object_sha256": "e95abdd6f789916bf2f12ea07d485cf22d6ea85650fb341531adbb4c9c7b3320"
+  },
+  "independent_audit_stdout_sha256": "1d1d6d7c5446ff146a0ec4318a8953e10e0da88b764a891f7137714e1d8e163c",
+  "elapsed_seconds": 32.558,
+  "explicit_declarations": [
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutResponseBounds.centeredCorrelation",
+      "kind": "def",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutResponseBounds.centered_correlation_product_bound",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutResponseBounds.gain_product_le_alice",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutResponseBounds.gain_product_le_bob",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutResponseBounds.centered_correlation_response_bounds",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutResponseBounds.sourceCorrelationMoment",
+      "kind": "def",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutResponseBounds.currentCorrelationMoment",
+      "kind": "def",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutResponseBounds.nextCorrelationMoment",
+      "kind": "def",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutResponseBounds.source_correlation_moment",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutResponseBounds.current_correlation_moment",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutResponseBounds.next_correlation_moment",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutResponseBounds.intervalDistance",
+      "kind": "def",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutResponseBounds.interval_distance_le_abs",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutResponseBounds.centered_interval_response_bounds",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutResponseBounds.constant_interval_bounds",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutResponseBounds.productLower",
+      "kind": "def",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutResponseBounds.productUpper",
+      "kind": "def",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutResponseBounds.product_interval_bounds",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutResponseBounds.correlation_intervals_centered",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutResponseBounds.correlation_intervals_response_bounds",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutResponseBounds.canonical_error0_bound",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutResponseBounds.canonical_error1_bound",
+      "kind": "theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    }
+  ],
+  "owned_declarations": [
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutResponseBounds.canonical_error0_bound",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutResponseBounds.canonical_error1_bound",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutResponseBounds.centeredCorrelation",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutResponseBounds.centeredCorrelation.eq_1",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutResponseBounds.centered_correlation_product_bound",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutResponseBounds.centered_correlation_response_bounds",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutResponseBounds.centered_interval_response_bounds",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutResponseBounds.constant_interval_bounds",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutResponseBounds.correlation_intervals_centered",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutResponseBounds.correlation_intervals_response_bounds",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutResponseBounds.currentCorrelationMoment",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutResponseBounds.currentCorrelationMoment.eq_1",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutResponseBounds.current_correlation_moment",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutResponseBounds.gain_product_le_alice",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutResponseBounds.gain_product_le_bob",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutResponseBounds.intervalDistance",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutResponseBounds.interval_distance_le_abs",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutResponseBounds.nextCorrelationMoment",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutResponseBounds.nextCorrelationMoment.eq_1",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutResponseBounds.next_correlation_moment",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutResponseBounds.productLower",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutResponseBounds.productUpper",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutResponseBounds.product_interval_bounds",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutResponseBounds.sourceCorrelationMoment",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutResponseBounds.sourceCorrelationMoment.eq_1",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutResponseBounds.source_correlation_moment",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    }
+  ],
+  "independent_consumers": [
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ResponseBoundsCertification.actualMomentResponse",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ResponseBoundsCertification.allSignedRectangles",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ResponseBoundsCertification.allSourceCurrentNextMoments",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ResponseBoundsCertification.currentIntervalsGenerateErrors",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ResponseBoundsCertification.generalIntervalsGenerateBothResponses",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ResponseBoundsCertification.generalIntervalsGenerateCanonicalErrors",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ResponseBoundsCertification.originalAnswerNext",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ResponseBoundsCertification.originalLedger",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    }
+  ],
+  "axiom_union": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "public_mouths": [
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutResponseBounds.centered_correlation_product_bound",
+      "type": "∀ (family : SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutIdentification.SettingFamily) (plus a b : Bool),\n  |SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutResponseBounds.centeredCorrelation family plus a b| ≤\n    (family.alice a).gain * (family.bob b).gain"
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutResponseBounds.product_interval_bounds",
+      "type": "∀ (first second AL AU BL BU : ℝ),\n  AL ≤ first →\n    first ≤ AU →\n      BL ≤ second →\n        second ≤ BU →\n          SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutResponseBounds.productLower AL AU BL BU ≤ first * second ∧\n            first * second ≤ SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutResponseBounds.productUpper AL AU BL BU"
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutResponseBounds.correlation_intervals_response_bounds",
+      "type": "∀ (family : SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutIdentification.SettingFamily) (plus a b : Bool)\n  (CL CU AL AU BL BU : ℝ),\n  CL ≤ family.correlation plus a b →\n    family.correlation plus a b ≤ CU →\n      AL ≤ (family.alice a).mu →\n        (family.alice a).mu ≤ AU →\n          BL ≤ (family.bob b).mu →\n            (family.bob b).mu ≤ BU →\n              SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutResponseBounds.intervalDistance\n                    (CL - SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutResponseBounds.productUpper AL AU BL BU)\n                    (CU - SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutResponseBounds.productLower AL AU BL BU) ≤\n                  (family.alice a).gain ∧\n                SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutResponseBounds.intervalDistance\n                    (CL - SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutResponseBounds.productUpper AL AU BL BU)\n                    (CU - SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutResponseBounds.productLower AL AU BL BU) ≤\n                  (family.bob b).gain"
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ResponseBoundsCertification.generalIntervalsGenerateCanonicalErrors",
+      "type": "∀ (family : SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutIdentification.SettingFamily) (plus a b : Bool)\n  (CL CU AL AU BL BU : ℝ),\n  CL ≤ family.correlation plus a b →\n    family.correlation plus a b ≤ CU →\n      AL ≤ (family.alice a).mu →\n        (family.alice a).mu ≤ AU →\n          BL ≤ (family.bob b).mu →\n            (family.bob b).mu ≤ BU →\n              have G :=\n                SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutResponseBounds.intervalDistance\n                  (CL - SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutResponseBounds.productUpper AL AU BL BU)\n                  (CU - SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutResponseBounds.productLower AL AU BL BU);\n              (0 ≤ (family.alice a).channel.error0 ∧ (family.alice a).channel.error0 ≤ (1 - G - AL) / 2) ∧\n                (0 ≤ (family.alice a).channel.error1 ∧ (family.alice a).channel.error1 ≤ (1 - G + AU) / 2) ∧\n                  (0 ≤ (family.bob b).channel.error0 ∧ (family.bob b).channel.error0 ≤ (1 - G - BL) / 2) ∧\n                    0 ≤ (family.bob b).channel.error1 ∧ (family.bob b).channel.error1 ≤ (1 - G + BU) / 2"
+    },
+    {
+      "name": "SaturationMonoid.PhysicsCore.Stage10.Bell.ResponseBoundsCertification.currentIntervalsGenerateErrors",
+      "type": "∀ (family : SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutIdentification.SettingFamily)\n  (point : SaturationMonoid.PhysicsCore.ProofFreeRicherAnholonomicSource.BasePoint) (plus a b : Bool)\n  (CL CU AL AU BL BU : ℝ),\n  CL ≤ SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutResponseBounds.currentCorrelationMoment family point plus a b →\n    SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutResponseBounds.currentCorrelationMoment family point plus a b ≤\n        CU →\n      AL ≤ (family.alice a).mu →\n        (family.alice a).mu ≤ AU →\n          BL ≤ (family.bob b).mu →\n            (family.bob b).mu ≤ BU →\n              have G :=\n                SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutResponseBounds.intervalDistance\n                  (CL - SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutResponseBounds.productUpper AL AU BL BU)\n                  (CU - SaturationMonoid.PhysicsCore.Stage10.Bell.ReadoutResponseBounds.productLower AL AU BL BU);\n              (family.alice a).channel.error0 ≤ (1 - G - AL) / 2 ∧ (family.bob b).channel.error1 ≤ (1 - G + BU) / 2"
+    }
+  ],
+  "compiler_only_module_symbols": [],
+  "new_dependency_declaration_count": 34,
+  "delegated_source_boundary_count": 30,
+  "checked_base_boundary_count": 310,
+  "dependency_delta_sha256": "6d45393372d0276ffabca214aad389c809e68ea3588170979ab727caadf2c6a1",
+  "source_boundary_sha256": "88007c07bc30e9a5b0760e7a299d99ce40a52702481e861516721b5325d92b4e",
+  "dependency_closure_method": "fresh new type/value graph; frozen source-owned axiom boundaries; exact-edge accepted base graph",
+  "source_only_import_module_count": 12514
+}

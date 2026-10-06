@@ -1,0 +1,11 @@
+import H0mework.Versions.AB.Arithmetic.PrimeShadow.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.Unified.Orbitals.Source.Reifier
+
+set_option autoImplicit false
+set_option maxRecDepth 8192
+namespace SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule
+namespace LAlanine40K2025.UnifiedOrbitals.SourceInputs
+
+generateOriginalMetricInputs
+
+end LAlanine40K2025.UnifiedOrbitals.SourceInputs
+end SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule

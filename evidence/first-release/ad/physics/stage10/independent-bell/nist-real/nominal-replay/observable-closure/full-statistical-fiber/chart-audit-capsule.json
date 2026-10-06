@@ -1,0 +1,75 @@
+{
+  "schema": "p23-training-chart-certify-capsule/v1",
+  "phase": "certify",
+  "verdict": "certified",
+  "classification": "bounded subordinate source-coordinate readout and inverse chart with direct full-training consumer",
+  "certification_path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/full-statistical-fiber/chart-certification.json",
+  "certification_sha256": "8235a61c421483a1f771f8576fb601f82c13871dc3473c01ce1f8b0ee9474062",
+  "public_mouths": [
+    "P23.ObservableClosure.TrainingChart.Consumer.chart_generates_full_training_source",
+    "P23.ObservableClosure.TrainingChart.Consumer.full_interval_members_recover_regular_chart",
+    "P23.ObservableClosure.TrainingChart.Consumer.full_training_iff_chart",
+    "P23.ObservableClosure.TrainingChart.Consumer.source_generates_full_training_chart",
+    "P23.ObservableClosure.TrainingChart.actual_means_recover_chart",
+    "P23.ObservableClosure.TrainingChart.native_mirror_means",
+    "P23.ObservableClosure.TrainingChart.single_membership_iff_polytope",
+    "P23.ObservableClosure.TrainingChart.source_physical_covariance",
+    "P23.ObservableClosure.TrainingChart.training_intervals_exclude_equal_modes"
+  ],
+  "candidate_precompile_freezes": {
+    "TrainingChart.lean": "1edd369873d6da5be5276bbed741da20d7e16c6c",
+    "TrainingChartConsumer.lean": "cd9ca56e5784e251c2c825aa3fe3fc743d00ade1"
+  },
+  "audit_preexecution_freeze": "7351af91347ebbdeed6241ac43a6cb1128dd710d",
+  "machine_counts": {
+    "candidate_declarations": 168,
+    "source_declarations": 655,
+    "independent_declarations": 44,
+    "axiom_declarations_checked": 699
+  },
+  "kernel_claims": {
+    "same_snapshot_native_four_mean_coordinates": true,
+    "inverse_ratio_z_m_x_from_four_actual_means_under_symbolic_nondegeneracy": true,
+    "signed_denominator_strictly_negative_generated_from_angles_and_positive_B_means": true,
+    "four_complete_single_interval_membership_iff_eight_linear_halfspaces": true,
+    "source_generated_covariance_PSD_and_loss_domain": true,
+    "both_strict_interval_increases_generate_z_and_R2_positive": true,
+    "pure_mode_PSD_boundary_and_regular_inverse_chart_preserved": true,
+    "four_singles_and_two_joints_iff_same_source_polytope_and_complete_phase_slabs": true,
+    "same_original_source_all_N5_independent_OR_windows": true,
+    "lawful_full_chart_internally_generates_its_phase_source": true,
+    "all_unknown_coordinate_tuples_realizable_as_source": false,
+    "numeric_tree_coverage_or_statistical_confidence_kernel": false,
+    "new_infinite_Born_or_detector_determinant_kernel": false,
+    "actual_hardware_or_source_epoch_identification": false,
+    "controller_advance": false
+  },
+  "mouth_scope": {
+    "forward_and_interval": "all lawful Snapshot/RawSource/lambda; arbitrary intervals with every bound retained",
+    "inverse": "sin(2a0)>0, sin(2a1)<0, positive actual Bob means and cos(2a0)>cos(2a1); CI consumer derives actual-mean positivity from positive lower bounds",
+    "regular": "strictly separated A and B intervals plus descending cosine generate positive source z and R2; no nV>0 premise",
+    "recipe": "FullTrainingChart is a qualification over the same supplied raw source; its legal k generates lambda internally, not arbitrary source existence from coordinates",
+    "window": "original N5/independent-OR algebraic recipes; physical statistical coverage and background positivity retain their existing scope",
+    "controller": "original visit10/tick16-to17 and root remain unchanged"
+  },
+  "lsp": {
+    "schema": "p23-training-chart-independent-lsp-attempt/v1",
+    "candidate_sha256": "3a4dc03452a1b9b6e130e004d6fcfd8e5014dbd52600ae649bd18d697a3a2a51",
+    "attempted_tool": "mcp__lean_lsp_homework__lean_diagnostic_messages",
+    "file_path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/full-statistical-fiber/TrainingChart.lean",
+    "declaration": "P23.ObservableClosure.TrainingChart.actual_means_recover_chart",
+    "attempts": 1,
+    "status": "path_not_in_lean_project",
+    "persistent_lsp_validation_completed": false,
+    "reason": "Verification has no lean-toolchain ancestor; service rejected the target before elaboration.",
+    "raw_result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Error executing tool lean_diagnostic_messages: Invalid Lean file path: 'Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/full-statistical-fiber/TrainingChart.lean' not found in any Lean project (no lean-toolchain ancestor or file does not exist)"
+        }
+      ],
+      "isError": true
+    }
+  }
+}

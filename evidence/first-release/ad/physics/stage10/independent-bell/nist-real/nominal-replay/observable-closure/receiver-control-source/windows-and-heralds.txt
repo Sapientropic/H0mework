@@ -1,0 +1,242 @@
+NIST Bell test public DAQ source extract; non-executable source material.
+Source: official NIST code/daq archives. Extracted 2026-10-02.
+Network endpoints, device identifiers and local paths are redacted.
+This extract does not establish execution at any named data-run epoch.
+NIST notice and source attribution: https://www.nist.gov/pml/applied-physics-division/bell-test-research-software-and-data
+
+MEMBER bell_client/multi_networkCalc.py
+ORIGINAL_SHA256 2b5ecfb023c464a7bdff88e9b75f691047dd9aacfad4aa392800cffbaf5ec502
+LINES 109-151
+109:     def singlesCalc(self, server, radius = 3, peakPosition = -1):
+110:         syncArray = server.syncArray
+111:         laser_period = server.laser_period
+112:         syncNumber = server.syncNumber
+113: 
+114:         adjustedTTags = server.allTTags[:,1] - syncArray
+115:         det_bool =server.allTTags[:,0]==(server.channel_map['detector']-1) 
+116:         adjustedTTags = adjustedTTags[det_bool] 
+117:         modTTags =  adjustedTTags % laser_period[det_bool]                           # determine phase of click
+118:         #modTTags = modTTags[server.allTTags[:,0] == (server.channel_map['detector']-1)]
+119:         
+120:         cycleTTags = np.floor(adjustedTTags / laser_period[det_bool])                   # determine which laser cycle
+121:         #cycleTTags = cycleTTags[server.allTTags[:,0] == (server.channel_map['detector']-1)]
+122:         cycleTTags = cycleTTags.astype(int)
+123:         
+124:         # compute number of ttag bins to histogram over
+125:         ttag_bins = np.arange( np.floor(laser_period.mean())+1)
+126:         n,x=np.histogram( modTTags, ttag_bins)
+127:         
+128:         #server.mask['singles'] = np.zeros(cycleTTags.size)        
+129:         if peakPosition == -1:
+130:             peakPosition = x[n.argmax()]
+131:         upper = peakPosition + radius
+132:         lower = peakPosition - radius   
+133:         singles_bool = (modTTags > (lower)) & ( modTTags < (upper))         #counts all TTags in certain range
+134:         singles_count = singles_bool.sum()
+135:         #server.mask['singles'][singles_bool] = 1
+136:         server.mask['singles']=singles_bool
+137:         pk = modTTags[singles_bool].mean()
+138:         pk_std = modTTags[singles_bool].std()
+139:         #  compute histogram of singles in each laser pulse slot
+140:         countsinslot,slot = np.histogram(cycleTTags[singles_bool],np.arange(0, DIVIDER+1))
+141:         
+142:         metrics = {}
+143:         metrics['Length'] = len(modTTags)
+144:         metrics['singles'] = singles_count
+145:         metrics['syncNumber'] = syncNumber[det_bool]
+146:         metrics['n'] = n
+147:         metrics['x'] = x
+148:         metrics['laserslot'] = slot
+149:         metrics['countsinslot'] = countsinslot
+150:         metrics['cycle'] = cycleTTags
+151:         metrics['remainder'] = modTTags
+LINES 264-287
+264:     def coinsingleCalc(self,server1, server2, delay, radius):
+265:         coincidence_count = 0
+266:         coin_list = []
+267:         coin_ttags = np.array([],dtype=np.uint64)
+268:         coin_range = range(-radius,radius+1)
+269:         server1.mask['coin2'] = np.zeros(server1.ttags['detector'].size,dtype=bool)
+270:         server2.mask['coin2'] = np.zeros(server2.ttags['detector'].size,dtype=bool)
+271: 
+272:         #indexList = np.ndarray([])
+273:         firstTime = True
+274:         for offset in coin_range:
+275:             #finds the common time tags between the two detectors that are singles
+276:             server1tags = server1.ttags['detector'][server1.mask['singles']]
+277:             server2tags = server2.ttags['detector'][server2.mask['singles']]
+278:             total_offset = np.floor(offset+delay)
+279:             common_ttags = np.intersect1d(server1tags+total_offset, server2tags, True)  
+280:             overlap = len(common_ttags)
+281:             coin_ttags = np.append(coin_ttags,common_ttags.astype(np.uint64))
+282:             
+283:             coin_list.append([delay+offset, overlap])
+284:             coincidence_count += overlap
+285:             
+286:             #creates coincidence masks showing which detections are used in coincidence counting
+287:             idx = np.searchsorted(server2.ttags['detector'], common_ttags, side = 'left')
+LINES 405-441
+405:         metrics_alice = self.singlesCalc(alice, alice.radius)        
+406:         metrics_bob = self.singlesCalc(bob, bob.radius)
+407: 
+408:         alice_settings = self.createSettingArray(alice)
+409:         alice.settingArray = alice_settings['settings']
+410:         metrics_alice['settings']= alice_settings 
+411: 
+412:         bob_settings = self.createSettingArray(bob)
+413:         bob.settingArray = bob_settings['settings']
+414:         metrics_bob['settings']= bob_settings 
+415: 
+416:         #print alice.ttags
+417:         #print bob.ttags
+418:         # coin_count is actual counts
+419: 	# coin_data is data for plotting to see how the offset varies
+420: 	# coin_ttags are the timetag values in Bob that are coincident
+421: 	# indexList are the values of indices that are coincident
+422: 	# 
+423:         coin_radius = config['analysis']['coin_radius']
+424:         coin_count,coin_data, coin_ttags, indexList = self.coinCalc(alice, bob, delay, coin_radius)
+425:         coin2_count, coin2_data, coin2_ttags, indexList2 = self.coinsingleCalc(alice,bob,delay, coin_radius)
+426:         #print metrics_alice['singles'], metrics_bob['singles'], coin_count, coin_count*1./metrics_alice['singles'], coin_count*1./metrics_bob['singles']
+427:         
+428:         #self.settingsCount(alice)
+429:         #self.settingsCOunt(alice)
+430:         coinBool = alice.mask['singles'][indexList[:,0]]& bob.mask['singles'][indexList[:,1]]
+431:         coin3 = coinBool.sum() 
+432:         #print '%6d  %6d %6d:  coin delays only, coin using singles windows'%(coin_count, coin2_count, coin3)
+433:         coin = {}
+434:         coin['coin']=coin_count          #  Estimate of best possible # of coincidences
+435:         coin['coin2']=coin2_count        # coincidences that are in the singles window
+436:         coin['coin3']=coin3              #  another estimate of coincidences in teh singles window..check
+437:         coin['coin_hist']=coin_data      #  Histogram data for the coincidences
+438:         coin['coin2_hist']=coin2_data      #  Histogram data for the coincidences
+439:         coin['indexList']=indexList      #  Index in alice and bob of which events are coincidences
+440:         #print 'about to calc pockel stuff'
+441:         #pockel = None
+LINES 449-521
+449:     def pockel_bool_calcs(self, settings, detector, coinBool, indexList, singlesMask, pockelPos, pockelLength):
+450:         #settings = alice.settingArray  # setting by sync cycle number, entire list of cycles
+451: 
+452:         # calculate a boolean for which singles are in the pockelWindor, this is for the list of singles 
+453:         metrics = detector.metrics
+454:         singlesMask = detector.mask['singles']
+455:         coin2Mask = detector.mask['coin2']
+456:         pockelBool = (metrics['cycle'] > pockelPos) & (metrics['cycle'] < (pockelPos + pockelLength) )
+457:         # find the indices in the list of singles that are in the pockel window
+458:         pockelIndex = np.where(pockelBool)[0]
+459:         # find indices which are in the pockel cell window and are coincident with both singles windows
+460:         #    the length is the number of total coincidences
+461:         coinTotal = len(np.intersect1d(indexList[coinBool], pockelIndex))
+462:         coin2Total = (coin2Mask&pockelBool).sum()
+463:         singlesTotal = singlesMask[pockelBool].sum()
+464:         aliceSettings = settings[0]
+465:         bobSettings = settings[1]
+466:         #print coinTotal, coin2Total, singlesTotal,len(aliceSettings), len(bobSettings)
+467:         singlesSettings = []
+468:         coinSettings = []
+469:         coin2Settings = []
+470:         settingTotals=[]
+471:         for aliceSetting in range(3):
+472:             for bobSetting in range(3):
+473:                 # find indices from the total list of settings where where the setting is a particular value
+474: 
+475:                 settingBool = (bobSetting==bobSettings) & (aliceSetting==aliceSettings)  # total number of settings in rawdata
+476:                 #print settingBool.sum()#,(bobSetting==bobSettings).sum(), (aliceSetting==aliceSettings).sum()
+477: #                print aliceSetting, bobSetting, aliceSettings.sum(), bobSettings.sum()
+478:                 settingTotals.append(settingBool.sum())
+479: 
+480:                 settingBool = settingBool[metrics['syncNumber']]  # cut on syncNumbers, create a boolean over all singles 
+481:                 pockel_and_settingBool = settingBool & pockelBool
+482:                 # fine list of indices of the singles list which are in the pockel window and right setting
+483:                 pockel_and_settingIndex = np.where(pockel_and_settingBool)[0]
+484:                          
+485:                 coinSettings.append( len(np.intersect1d(indexList[coinBool], pockel_and_settingIndex)))
+486: 
+487:                 coin2Settings.append( (pockelBool & coin2Mask & settingBool).sum())
+488: 
+489:                 singlesSettings.append( (pockelBool & singlesMask & settingBool).sum())
+490: 
+491:         #coinSettings.append(coinTotal) 
+492:         coinSettings = np.array(coinSettings)
+493:         coinSettings.shape = (3,3)
+494:         #coin2Settings.append(coin2Total) 
+495:         coin2Settings = np.array(coin2Settings)
+496:         coin2Settings.shape = (3,3)
+497: 
+498:         #singlesSettings.append(singlesTotal)
+499:         singlesSettings = np.array(singlesSettings)
+500:         singlesSettings.shape=(3,3) 
+501:         #print coinSettings, coin2Settings
+502:         settingTotals = np.array(settingTotals)
+503:         settingTotals.shape=(3,3)
+504:         return coinSettings, singlesSettings, settingTotals
+505: 
+506: 
+507:     def pockelCalcs(self,alice, bob, coin_results, config):
+508:         indexList = coin_results['indexList'] # list of indices in alice and bob that are coincident
+509:         singlesMaskAlice = alice.mask['singles']  # boolean for clicks in Alice are in the singles window
+510:         singlesMaskBob = bob.mask['singles']
+511:         #  Using indexList, find which are in singles windows for both, this is a boolean for indexList 
+512:         coinBool = singlesMaskAlice[indexList[:,0]] & singlesMaskBob[indexList[:,1]]
+513:         pockelPos = config['analysis']['pockelOn']
+514:         pockelLength = config['analysis']['pockelOnLength']
+515:         settings = [alice.settingArray, bob.settingArray]
+516:         alicecoin, alicesing,aSettingTot = self.pockel_bool_calcs(settings, alice, coinBool, indexList[:,0], singlesMaskAlice, pockelPos, pockelLength)
+517:         offset = config['analysis']['bob_pockel_offset']
+518:         bobcoin, bobsing,bSettingTot = self.pockel_bool_calcs(settings, bob, coinBool, indexList[:,1], singlesMaskBob, pockelPos+offset, pockelLength)
+519:         alice_pockel={'coin':alicecoin, 'single':alicesing}
+520:         bob_pockel={'coin':bobcoin, 'single':bobsing}
+521:         pockel = {'alice':alice_pockel,'bob':bob_pockel,'settings':aSettingTot}
+
+MEMBER bell_client/cmdline2.py
+ORIGINAL_SHA256 7433002a921fe6859dd524a076ccd0f6ac9b92688f61dd631d3d214626854afa
+LINES 244-273
+244:     global count
+245:     INT_TIME = config['INT_TIME']
+246:     count += 1
+247:     start = time.time()
+248:     alice_data, bob_data, coin_data, pockel = fetch_and_process(alice,bob,calc, config)
+249:     coin_count = coin_data['coin2']
+250:     coin_hist = coin_data['coin_hist']
+251:     try:
+252:         coin_mean = float((coin_hist[:,0]*coin_hist[:,1]).sum())/(coin_hist[:,1].sum()) 
+253:         coin_std =  (( (coin_hist[:,0]-coin_mean)**2)*coin_hist[:,1]).sum()/(coin_hist[:,1].sum()) 
+254:     except:
+255:         coin_mean = 0.;
+256:         coin_std = 0.;
+257:     try:
+258:         alice_eff =  (1.*coin_count)/alice_data['singles']
+259:         bob_eff = (1.*coin_count)/bob_data['singles']
+260:     except:
+261:         alice_eff =  0.0
+262:         bob_eff = 0.0
+263:         
+264:     line2 = "%3d: %i  %i  %i  %.3f  %.3f %.3f %.3f %.3f %.3f" %(count,
+265:             alice_data['singles'], 
+266: 	        bob_data['singles'], coin_count,
+267:             alice_eff, 
+268: 	      bob_eff,
+269:             alice_data['pk'], bob_data['pk'], 
+270:             alice_data['pk_std'], bob_data['pk_std']
+271: 	    )
+272:     print line2, pockel
+273:     try:
+
+MEMBER bell_client/coin_plot.py
+ORIGINAL_SHA256 3631ea469797c2266972b9f94afcbc9f6ddc2c2e3ea85aea217b52afecbbf780
+LINES 79-92
+79: 
+80:     coin_count = coin2_count
+81:     if metrics_alice['singles']==0:
+82:         eta2 = float('Nan')
+83:     else:
+84:         eta2 = (1.*coin_count)/metrics_alice['singles'] 
+85:     if metrics_bob['singles']==0:
+86:         eta1 = float('Nan')
+87:     else:
+88:         eta1 = (1.*coin_count)/metrics_bob['singles']    
+89:     results={'SA':metrics_alice['singles'], 'SB':metrics_bob['singles'],
+90:              'coin':coin2_count, 'coin3':coin3, 'eta1':eta1, 'eta2':eta2}
+91: 
+92:     return results
+

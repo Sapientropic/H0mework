@@ -1,0 +1,228 @@
+{
+  "actual_pump_actuator_identified": false,
+  "actual_window_model_identified": false,
+  "bell_event_files_read": 0,
+  "controller_advance": false,
+  "criterion_freeze": {
+    "commit": "fde5c14df36b6064c87064acd20830d3df0500bb",
+    "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/criterion.md",
+    "sha256": "752b76055af93d64f256078d89bd8dfba4a1711a1a8d8f15844c60a97ee57c6c"
+  },
+  "gaussian_vacuum_law_kernel": false,
+  "held_out_rows": [
+    1,
+    2
+  ],
+  "inputs": [
+    {
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-prediction/public-observables.json",
+      "sha256": "442e6f1d74fa654a15a8a48c1ec502d93ae695d725b70fb3623418cc599a2cb6"
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-prediction/public-criterion.md",
+      "sha256": "667b30442cb535b6e87c66f378c60c23c62bb9ac66f7295e749bcb2f28e7da4e"
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-prediction/public-criterion-po0003.md",
+      "sha256": "0a3b5d9dd26c50a1680fcf89f47d9eafa3347fbcfc16b0bd9a99e87a9de99ee2"
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-prediction/public-comparison-po0003.json",
+      "sha256": "20f30388cd5ae23d29f737a20ec36d450def91b9a70be891c751057686d09fee"
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/frame-window/criterion.md",
+      "sha256": "06c7b8f32335dd4a6f31c8b0264de7e283088e751ebde03247481ed7705db3c3"
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/frame-window/forward.py",
+      "sha256": "6d3e97a6425d08fdcb965a20965347201a81a84fcc7bfbdf9c5873a2df4f4666"
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/frame-window/independent.py",
+      "sha256": "7e3e014413c25f7f158bb4c5fae9e552bbd7a935bed24f3a6f96b9b593045084"
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window/criterion.md",
+      "sha256": "66763dc0eb5d789df39227ba10e382d4bfb07138e4c7d27237b0fa605338206e"
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window/gaussian.py",
+      "sha256": "5adfc235d6cb9b9ca61e804bded0fd2bff6a89860cd9332ec75a603e5f6bd852"
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/response/response.py",
+      "sha256": "2d62e6bf254302b3a99d4061761b7db30138edf461b45a2f59a814a5727f38d3"
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window/GaussianSource.lean",
+      "sha256": "1dee783a0976a497139e64d4ef7278b203d56a0b119c84eea942bbb7846a10af"
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window/native-effects/DetectorGamma.lean",
+      "sha256": "b0007ece95dd29f1db550e260f73b3955d365241162ebe971c4ebcd92a16a2af"
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window/native-effects/GammaConsumer.lean",
+      "sha256": "b75cec12b93e10135f92d126a4f6f250c26965b0c3daa0b9d25e77d53256ed35"
+    }
+  ],
+  "manifest_sha256": "9ca2e4e8be7eedd07b82ec3c32f430897da0e710e4cdd71c06931f499ad4a493",
+  "private_optimizer_input_required": false,
+  "production_admitted": false,
+  "program_freeze": {
+    "commit": "bc8189da84faae6197c6844962b37f95072369bb",
+    "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/primary.py",
+    "sha256": "1c526d2e1ecc96d08c4b0fbf4862df55542e3297b60826570d4722a29506b3e0"
+  },
+  "public_Klyshko_input_required": false,
+  "publication_configuration_identified": false,
+  "retrospective": true,
+  "schema": "p23-observable-closure-primary/v1",
+  "source": {
+    "branches": [
+      {
+        "e": {
+          "exact_lower": "239224337043573616395614240907289979060617449/10000000000000000000000000000000000000000",
+          "exact_upper": "239224337043573616664794542381551644722261407/10000000000000000000000000000000000000000",
+          "lower": 23922.43370435736,
+          "upper": 23922.43370435736
+        },
+        "exact_source_representation": "real_root_of_source_owned_quadratic_then_rational_and_square_root_readouts",
+        "multiplicity": 1,
+        "root_sign": -1,
+        "status": "REJECTED_ILLEGAL_LOSS"
+      },
+      {
+        "e": {
+          "exact_lower": "7415247254726681231278918116697119902863/10000000000000000000000000000000000000000",
+          "exact_upper": "296609890189073820419211407076200758621/400000000000000000000000000000000000000",
+          "lower": 0.7415247254726681,
+          "upper": 0.7415247254726846
+        },
+        "exact_source_representation": "real_root_of_source_owned_quadratic_then_rational_and_square_root_readouts",
+        "multiplicity": 1,
+        "phase_coherence": {
+          "exact_lower": "2006699641386479636285004852888897453761/2000000000000000000000000000000000000000",
+          "exact_upper": "10033498206938498512667930311418965232597/10000000000000000000000000000000000000000",
+          "lower": 1.0033498206932399,
+          "upper": 1.0033498206938498
+        },
+        "root_sign": 1,
+        "status": "REJECTED_ILLEGAL_PHASE_WEIGHT"
+      }
+    ],
+    "loss_ratio": {
+      "exact_lower": "9693151426835395373948992878602946764957/10000000000000000000000000000000000000000",
+      "exact_upper": "9693151426835395373993745083794726459311/10000000000000000000000000000000000000000",
+      "lower": 0.9693151426835396,
+      "upper": 0.9693151426835396
+    },
+    "mean_A": [
+      {
+        "exact_lower": "427107311358988488765172982397493397/10000000000000000000000000000000000000000",
+        "exact_upper": "2135536556794942443825864911987467/50000000000000000000000000000000000000",
+        "lower": 4.271073113589885e-05,
+        "upper": 4.271073113589885e-05
+      },
+      {
+        "exact_lower": "619889464801916186172410898988523507/5000000000000000000000000000000000000000",
+        "exact_upper": "1239778929603832372344821797977047017/10000000000000000000000000000000000000000",
+        "lower": 0.00012397789296038323,
+        "upper": 0.00012397789296038323
+      }
+    ],
+    "mean_B": [
+      {
+        "exact_lower": "426402154549415287466505346534616079/10000000000000000000000000000000000000000",
+        "exact_upper": "213201077274707643733252673267308041/5000000000000000000000000000000000000000",
+        "lower": 4.264021545494153e-05,
+        "upper": 4.264021545494153e-05
+      },
+      {
+        "exact_lower": "677776724498207949511000353083751013/5000000000000000000000000000000000000000",
+        "exact_upper": "1355553448996415899022000706167502029/10000000000000000000000000000000000000000",
+        "lower": 0.0001355553448996416,
+        "upper": 0.0001355553448996416
+      }
+    ],
+    "quadratic_coefficients_ascending": [
+      {
+        "exact_lower": "-91530673488611942609132068470170839/10000000000000000000000000000000000000000",
+        "exact_upper": "-11441334186076492825175002879907999/1250000000000000000000000000000000000000",
+        "lower": -9.153067348861194e-06,
+        "upper": -9.153067348861194e-06
+      },
+      {
+        "exact_lower": "15429949185200914654917014874082481/1250000000000000000000000000000000000000",
+        "exact_upper": "12343959348160731732409514019751743/1000000000000000000000000000000000000000",
+        "lower": 1.2343959348160732e-05,
+        "upper": 1.2343959348160732e-05
+      },
+      {
+        "exact_lower": "-1031966637367975665444241294111/2000000000000000000000000000000000000000",
+        "exact_upper": "-5159833186839878324958522988113/10000000000000000000000000000000000000000",
+        "lower": -5.159833186839878e-10,
+        "upper": -5.159833186839878e-10
+      }
+    ],
+    "scaled_source": {
+      "h": {
+        "exact_lower": "5015701073775315899821607425048485001/10000000000000000000000000000000000000000",
+        "exact_upper": "5015701073775315899873372149029562937/10000000000000000000000000000000000000000",
+        "lower": 0.0005015701073775316,
+        "upper": 0.0005015701073775316
+      },
+      "m": {
+        "exact_lower": "2705325939916807581508676776727906893/10000000000000000000000000000000000000000",
+        "exact_upper": "2705325939916807581534913385460514527/10000000000000000000000000000000000000000",
+        "lower": 0.00027053259399168074,
+        "upper": 0.00027053259399168074
+      },
+      "v": {
+        "exact_lower": "394950806058299263170218013158858483/10000000000000000000000000000000000000000",
+        "exact_upper": "394950806058299263221982737139936419/10000000000000000000000000000000000000000",
+        "lower": 3.949508060582993e-05,
+        "upper": 3.949508060582993e-05
+      },
+      "x": {
+        "exact_lower": "-23598302652012206969617788124000581/5000000000000000000000000000000000000000",
+        "exact_upper": "-47196605304024413932552897821071151/10000000000000000000000000000000000000000",
+        "lower": -4.719660530402441e-06,
+        "upper": -4.719660530402441e-06
+      },
+      "z": {
+        "exact_lower": "577473253687968238511755447598016367/2500000000000000000000000000000000000000",
+        "exact_upper": "2309893014751872954072418690843121311/10000000000000000000000000000000000000000",
+        "lower": 0.00023098930147518728,
+        "upper": 0.00023098930147518728
+      }
+    },
+    "status": "QUADRATIC_TWO_REAL_ROOTS",
+    "training": {
+      "0": {
+        "j": "1063/7391509",
+        "sA": "9667/44349054",
+        "sB": "3175/14783018"
+      },
+      "3": {
+        "j": "53/22166099",
+        "sA": "13834/22166099",
+        "sB": "15053/22166099"
+      }
+    }
+  },
+  "source_mapping_identified": false,
+  "statistical_coverage_kernel": false,
+  "statistics": {
+    "alpha": "1/20",
+    "confidence_report_sha256": "20f30388cd5ae23d29f737a20ec36d450def91b9a70be891c751057686d09fee",
+    "full_statistical_fiber_certified": false
+  },
+  "training_rows": [
+    0,
+    3
+  ],
+  "version": "p23-observable-closure-ef0001",
+  "visibility_input_required": false
+}

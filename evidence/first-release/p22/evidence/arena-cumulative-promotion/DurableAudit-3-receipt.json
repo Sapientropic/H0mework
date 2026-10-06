@@ -1,0 +1,25 @@
+{
+  "status": "complete",
+  "manifest_sha256": "7c137f3b6a947c9ab6a7c5e92a50a19fc71e7946c3bb49a0592b5ef5509fb707",
+  "checks": [
+    {
+      "source": "Lean/docs/audits/physics/source-uniqueness/MotherCumulativeDeclarations.lean",
+      "source_sha256": "ac0361b63cc39a95a23b41120221ec56be5cd4b9ac62c5845a54a60cdc0e0c3f",
+      "source_unchanged": true,
+      "command": [
+        "toolchains/lean-4.33.0-darwin_aarch64/bin/lean",
+        "--trust=0",
+        "-DwarningAsError=true",
+        "-o",
+        "Lean/.cache/arena-cumulative-promotion/MotherCumulativeDeclarations.olean",
+        "Lean/docs/audits/physics/source-uniqueness/MotherCumulativeDeclarations.lean"
+      ],
+      "returncode": 0,
+      "seconds": 23.406880292110145,
+      "log": "Lean/.cache/arena-cumulative-promotion/DurableAudit-3-000-MotherCumulativeDeclarations.log",
+      "olean": "Lean/.cache/arena-cumulative-promotion/MotherCumulativeDeclarations.olean",
+      "olean_sha256": "c1ae7c4a94c2baa58bc14ca10226f3b4be2b198ae3a4f85711b45e3b87f6e1b3"
+    }
+  ],
+  "frozen_unchanged": true
+}

@@ -1,0 +1,2428 @@
+{
+  "CH_optimization_executed": false,
+  "Sturm_root_interval_max_width": "1/100000000000000000000",
+  "actual_source_or_hardware_identity_verified": false,
+  "apparatus_optimum_verified": false,
+  "bindings": {
+    "criterion": {
+      "commit": "23294e59d99a22db32c97c3aed07450b9bff5e4f",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/environment-source/calibration-criterion.md",
+      "sha256": "1b877f6386ce1856f6a82289c3ca3c61785dca0d5431c967cd3c36b10231e1fd"
+    },
+    "input_sources": [
+      {
+        "commit": "23294e59d99a22db32c97c3aed07450b9bff5e4f",
+        "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/shalm2015-channel-inputs.txt",
+        "sha256": "17c5bc32515536634c451bf761f748ccd2e6c6002fa3949b58524e4cc1aeb3eb"
+      },
+      {
+        "commit": "23294e59d99a22db32c97c3aed07450b9bff5e4f",
+        "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/source-code/author-code.txt",
+        "sha256": "99e6a27a51bb525c5c154cde5f679099d48dbf14ae54d758a55d9b9842be377b"
+      },
+      {
+        "commit": "23294e59d99a22db32c97c3aed07450b9bff5e4f",
+        "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/source-code/sources.json",
+        "sha256": "1b2d24a18e7a6e5c332cee9ec38b328436b9cc9b998bc09b37493abada139323"
+      },
+      {
+        "commit": "23294e59d99a22db32c97c3aed07450b9bff5e4f",
+        "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window/GaussianSource.lean",
+        "sha256": "1dee783a0976a497139e64d4ef7278b203d56a0b119c84eea942bbb7846a10af"
+      },
+      {
+        "commit": "23294e59d99a22db32c97c3aed07450b9bff5e4f",
+        "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window/native-effects/DetectorGamma.lean",
+        "sha256": "b0007ece95dd29f1db550e260f73b3955d365241162ebe971c4ebcd92a16a2af"
+      },
+      {
+        "commit": "23294e59d99a22db32c97c3aed07450b9bff5e4f",
+        "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/calibration-readout/CalibrationLaw.lean",
+        "sha256": "0944bbc767afe4e1456613ad36caeaf0f8c90402839356a78aa015078c204e2d"
+      },
+      {
+        "commit": "23294e59d99a22db32c97c3aed07450b9bff5e4f",
+        "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/receiver-control-source/source-and-receiver-recipe.txt",
+        "sha256": "b5e6f6ca39236822d3b7d43a032ffc281aa3b4905ae09c1af54c682bf85b7594"
+      },
+      {
+        "commit": "23294e59d99a22db32c97c3aed07450b9bff5e4f",
+        "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/receiver-control-source/polarization-calibration.txt",
+        "sha256": "29dddde6002233ca465ed114853e08de3fcb4f013535d1d9c389713443b7b3b3"
+      },
+      {
+        "commit": "23294e59d99a22db32c97c3aed07450b9bff5e4f",
+        "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/receiver-control-source/counts-objectives.txt",
+        "sha256": "fefabb3c8c01f08296373925fd912661f8e7d8447f38eb5d2218f0bbedb220d7"
+      },
+      {
+        "commit": "23294e59d99a22db32c97c3aed07450b9bff5e4f",
+        "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/receiver-control-source/sources.json",
+        "sha256": "75428181d17ba5f082c7e0d456d1ccaa7191493cbfea7d6d7121e7f8295b6504"
+      },
+      {
+        "commit": "23294e59d99a22db32c97c3aed07450b9bff5e4f",
+        "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/receiver-control-source/certification.json",
+        "sha256": "08f190945c8fc26f36be0dbd4cbdf760323d9ad426759ea17dd8c1bdb2455173"
+      },
+      {
+        "commit": "23294e59d99a22db32c97c3aed07450b9bff5e4f",
+        "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/analysis-readout/sources.json",
+        "sha256": "e19db49120a84a8d19431e5e7d761aafc8f9ee6a06a577a7c6efc72d836d2a14"
+      },
+      {
+        "commit": "23294e59d99a22db32c97c3aed07450b9bff5e4f",
+        "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/environment-source/criterion.md",
+        "sha256": "877d3c558b81ba684226c425cefec4dbb92d88910a3011dd503937acc0eb7de8"
+      },
+      {
+        "commit": "23294e59d99a22db32c97c3aed07450b9bff5e4f",
+        "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/environment-source/sources.json",
+        "sha256": "2b7713b74db74f4806aba3fedaf8d700777b2355180001b0204b10c2f0702f75"
+      },
+      {
+        "commit": "23294e59d99a22db32c97c3aed07450b9bff5e4f",
+        "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/environment-source/EnvironmentSource.lean",
+        "sha256": "d8b0a04c84ac7269c796531ecba1caca5d2f315cd2df16d89a89796749e17a35"
+      },
+      {
+        "commit": "23294e59d99a22db32c97c3aed07450b9bff5e4f",
+        "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/environment-source/EnvironmentConsumer.lean",
+        "sha256": "f317a62d62e723aba3903bf20dd0211850503a333087423883186c1d7c4c51b7"
+      },
+      {
+        "commit": "23294e59d99a22db32c97c3aed07450b9bff5e4f",
+        "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/environment-source/certification.json",
+        "sha256": "7c144fe87eca3f5cae00f84f9f1c0b420116d63c0a32f8ecfb0668545e7f7471"
+      },
+      {
+        "commit": "23294e59d99a22db32c97c3aed07450b9bff5e4f",
+        "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/environment-source/numeric-criterion.md",
+        "sha256": "2a228f1633a3786aafe3258bdbd8c5ba770c3ad3af00b34f0334774fd7baea32"
+      },
+      {
+        "commit": "23294e59d99a22db32c97c3aed07450b9bff5e4f",
+        "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/environment-source/numeric-sources.json",
+        "sha256": "fb52c62be7d4e0691de9f195b9c0ab4d994d1702abe2d825ee69d091223ac0b9"
+      },
+      {
+        "commit": "23294e59d99a22db32c97c3aed07450b9bff5e4f",
+        "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/environment-source/counts.py",
+        "sha256": "9c6972dccca9eb5cb0509b29a325fe9a3d8c550e1ee89a168c37aaa7f1481bda"
+      },
+      {
+        "commit": "23294e59d99a22db32c97c3aed07450b9bff5e4f",
+        "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/environment-source/independent_counts.py",
+        "sha256": "056df106ecfe6802014c20cb080501b8d2111edbd89ec525e9abcc511252e8d8"
+      },
+      {
+        "commit": "23294e59d99a22db32c97c3aed07450b9bff5e4f",
+        "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/environment-source/verification.json",
+        "sha256": "ce68a22f4fc793337d8ad0c0b79cbabc808766185c6bf883be7c6d6bde772116"
+      },
+      {
+        "commit": "23294e59d99a22db32c97c3aed07450b9bff5e4f",
+        "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/environment-source/SectorSource.lean",
+        "sha256": "10301d121a6e727ce1e475a34837771a12fe206c6b8520c13ce00eea8421f86d"
+      },
+      {
+        "commit": "23294e59d99a22db32c97c3aed07450b9bff5e4f",
+        "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/environment-source/SectorConsumer.lean",
+        "sha256": "97897e1474333366535c91d163cc3b3ff47b84bffb7504a7581ab062c69343bf"
+      }
+    ],
+    "program": {
+      "commit": "8d771b54baf404a584da1e6e4ff65cebbf3c0c1c",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/environment-source/independent_calibration_source.py",
+      "sha256": "7334421214ab8ff3c5f3b3bdd4f6b5fb5d03e5a4818eb00c388bb3ab0e70b546"
+    },
+    "sources": {
+      "commit": "23294e59d99a22db32c97c3aed07450b9bff5e4f",
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/environment-source/calibration-sources.json",
+      "sha256": "823745e7e39b4b621b8169129c29d2445e93c7fa658b63c821d2016a71c19f94"
+    }
+  },
+  "checks": {
+    "all_calibration_and_reference_Born_probes": false,
+    "all_physical_roots_preserved": false,
+    "all_points_source_generated": false,
+    "complete_real_Sturm_root_isolation": true,
+    "criterion_text_and_machine_efficiency_units": true,
+    "full_fringe_certified_before_endpoints": false,
+    "nineteen_point_inventory": true,
+    "no_prefix_renormalization": false,
+    "raw_visibility_not_assigned_to_overlap": false,
+    "seventeen_default_sources_separate_from_overrides": true,
+    "source_phase_and_environment_fixed_across_preparation": false
+  },
+  "coherence_root_interval_max_width": "1/1000000000000000000",
+  "controller_advance": false,
+  "criterion_freeze": "23294e59d99a22db32c97c3aed07450b9bff5e4f",
+  "efficiency_unit_readback": {
+    "percent_text_independently_parsed": true,
+    "probability_center": [
+      "747/1000",
+      "189/250"
+    ],
+    "probability_half_width": [
+      "3/1000",
+      "3/1000"
+    ],
+    "public_text_and_machine_block_agree": true
+  },
+  "event_files_read": 0,
+  "exact_calibration_inverse_kernel_claim": false,
+  "hyperbolic_terms": 24,
+  "native_fringe_symbolic_denominators": {
+    "DA": {
+      "QA": {
+        "1": "1",
+        "n^1*A^1": "1",
+        "n^2*A^2*y^2": "1/4",
+        "n^2*A^2*y^2*uA^1": "-1/4"
+      },
+      "QAB": {
+        "1": "1",
+        "n^1*A^1": "1",
+        "n^1*A^1*B^1": "-1/2",
+        "n^1*A^1*B^1*y^1*c^1": "-1/2",
+        "n^1*B^1": "1",
+        "n^2*A^1*B^1": "1/2",
+        "n^2*A^1*B^1*y^1*c^1": "-1/2",
+        "n^2*A^1*B^2": "-1/4",
+        "n^2*A^1*B^2*uB^1": "1/4",
+        "n^2*A^2*B^1*y^2": "-1/4",
+        "n^2*A^2*B^1*y^2*uA^1": "1/4",
+        "n^2*A^2*B^2*y^2": "1/16",
+        "n^2*A^2*B^2*y^2*uA^1": "-1/16",
+        "n^2*A^2*B^2*y^2*uA^1*uB^1": "1/16",
+        "n^2*A^2*B^2*y^2*uB^1": "-1/16",
+        "n^2*A^2*y^2": "1/4",
+        "n^2*A^2*y^2*uA^1": "-1/4",
+        "n^2*B^2": "1/4",
+        "n^2*B^2*uB^1": "-1/4"
+      },
+      "QB": {
+        "1": "1",
+        "n^1*B^1": "1",
+        "n^2*B^2": "1/4",
+        "n^2*B^2*uB^1": "-1/4"
+      }
+    },
+    "HV": {
+      "QA": {
+        "1": "1",
+        "n^1*A^1": "1",
+        "n^2*A^2*z^1": "1",
+        "n^2*A^2*z^1*uA^1": "-1",
+        "n^2*A^2*z^2": "-1",
+        "n^2*A^2*z^2*uA^1": "1"
+      },
+      "QAB": {
+        "1": "1",
+        "n^1*A^1": "1",
+        "n^1*A^1*B^1*z^1": "-1",
+        "n^1*B^1": "1",
+        "n^2*A^1*B^1": "1",
+        "n^2*A^1*B^1*z^1": "-1",
+        "n^2*A^2*B^1*z^1": "-1",
+        "n^2*A^2*B^1*z^1*uA^1": "1",
+        "n^2*A^2*B^1*z^2": "1",
+        "n^2*A^2*B^1*z^2*uA^1": "-1",
+        "n^2*A^2*z^1": "1",
+        "n^2*A^2*z^1*uA^1": "-1",
+        "n^2*A^2*z^2": "-1",
+        "n^2*A^2*z^2*uA^1": "1"
+      },
+      "QB": {
+        "1": "1",
+        "n^1*B^1": "1"
+      }
+    }
+  },
+  "new_full_Born_or_Gaussian_determinant_kernel_claim": false,
+  "old_scalar_inverse_gain_or_published_controls_admitted": false,
+  "outcome": "UNRESOLVED",
+  "passed": false,
+  "pi_interval": [
+    "157079632679489661923/50000000000000000000",
+    "314159265358979323847/100000000000000000000"
+  ],
+  "precision_digits": 40,
+  "publication_configuration_identified": false,
+  "published_r_angles_or_Table_SII_used_as_inverse_inputs": false,
+  "retrospective": true,
+  "rows": [
+    {
+      "K_inverse": {
+        "Cauchy_bound": "3",
+        "all_real_root_count": 3,
+        "classification": [
+          {
+            "index": 0,
+            "status": "OUTSIDE_PHYSICAL_DOMAIN"
+          },
+          {
+            "index": 1,
+            "status": "PHYSICAL_ROOT_RETAINED"
+          },
+          {
+            "index": 2,
+            "status": "OUTSIDE_PHYSICAL_DOMAIN"
+          }
+        ],
+        "full_real_cover": true,
+        "no_root_selection_by_target": true,
+        "physical_domain": [
+          "89/100000000",
+          "989760320039/4001000405143172"
+        ],
+        "physical_root_count": 1,
+        "polynomial": [
+          "-89022259014435577/78156651810312500000000000",
+          "4935838081857554196151853859/6487002100255937500000000000",
+          "-544960779349502082215470728673211/134605293580310703125000000000",
+          "1094919772372088164278/215368469728497125"
+        ],
+        "root_intervals": [
+          {
+            "exact_lower": "883667655069/590295810358705651712",
+            "exact_upper": "27614614221/18446744073709551616",
+            "lower": 1.496991236532783e-09,
+            "upper": 1.4969912365378653e-09
+          },
+          {
+            "exact_lower": "110964108696515787/590295810358705651712",
+            "exact_upper": "55482054348257895/295147905179352825856",
+            "lower": 0.00018798051205731262,
+            "upper": 0.00018798051205731262
+          },
+          {
+            "exact_lower": "469969964006340800955/590295810358705651712",
+            "exact_upper": "234984982003170400479/295147905179352825856",
+            "lower": 0.7961600874665766,
+            "upper": 0.7961600874665766
+          }
+        ],
+        "sequence": [
+          [
+            "-89022259014435577/78156651810312500000000000",
+            "4935838081857554196151853859/6487002100255937500000000000",
+            "-544960779349502082215470728673211/134605293580310703125000000000",
+            "1094919772372088164278/215368469728497125"
+          ],
+          [
+            "4935838081857554196151853859/6487002100255937500000000000",
+            "-544960779349502082215470728673211/67302646790155351562500000000",
+            "3284759317116264492834/215368469728497125"
+          ],
+          [
+            "-223256564152949773955191341912986149722982885699492028342513667/2374175905320540827733094438634421216227149130547108481407432404168",
+            "1"
+          ],
+          [
+            "1"
+          ]
+        ],
+        "split_count": 192
+      },
+      "allocation": "symmetric",
+      "gain_inverse": {
+        "G_enclosure": {
+          "exact_lower": "422449244663687273009/18889465931478580854784",
+          "exact_upper": "211224622331843636505/9444732965739290427392",
+          "lower": 0.022364276798302253,
+          "upper": 0.022364276798302253
+        },
+        "G_grid15": "11182138399151/500000000000000",
+        "balanced_n_enclosure": {
+          "exact_lower": "1250506428962723367228823257350912497/5000000000000000000000000000000000000000",
+          "exact_upper": "625253214481361683614411628675456249/2500000000000000000000000000000000000000",
+          "lower": 0.00025010128579254466,
+          "upper": 0.00025010128579254466
+        },
+        "balanced_n_from_unrounded_G": {
+          "exact_lower": "1250506428962751613129220039500329419/5000000000000000000000000000000000000000",
+          "exact_upper": "1250506428962751613135140801274298811/5000000000000000000000000000000000000000",
+          "lower": 0.00025010128579255035,
+          "upper": 0.00025010128579255035
+        },
+        "balanced_n_grid15": "250101285793/1000000000000000",
+        "iterations": 72,
+        "q_reference_readback": {
+          "exact_lower": "2499999999999943553943067183836686083/5000000000000000000000000000000000000000",
+          "exact_upper": "4999999999999887107891098990797559289/10000000000000000000000000000000000000000",
+          "lower": 0.0004999999999999887,
+          "upper": 0.0004999999999999887
+        }
+      },
+      "inputs": {
+        "DA_raw_visibility": ".996",
+        "K_A": ".747",
+        "K_B": ".756",
+        "pair_probability": ".0005"
+      },
+      "point_id": "default:center",
+      "reason": "coherence_inverse_precision_unresolved",
+      "sources": [],
+      "status": "UNRESOLVED"
+    },
+    {
+      "K_inverse": {
+        "Cauchy_bound": "3",
+        "all_real_root_count": 3,
+        "classification": [
+          {
+            "index": 0,
+            "status": "OUTSIDE_PHYSICAL_DOMAIN"
+          },
+          {
+            "index": 1,
+            "status": "PHYSICAL_ROOT_RETAINED"
+          },
+          {
+            "index": 2,
+            "status": "OUTSIDE_PHYSICAL_DOMAIN"
+          }
+        ],
+        "full_real_cover": true,
+        "no_root_selection_by_target": true,
+        "physical_domain": [
+          "89/100000000",
+          "24847717337512/125525108134563369"
+        ],
+        "physical_root_count": 1,
+        "polynomial": [
+          "-44508902884367091/31260127693437500000000000",
+          "5884948387840830187718378409/7752511667972500000000000000",
+          "-1216269566578812419638786207835071/240327861707147500000000000000",
+          "612437002588534677351/96131144682859000"
+        ],
+        "root_intervals": [
+          {
+            "exact_lower": "553606330815/295147905179352825856",
+            "exact_upper": "1107212661633/590295810358705651712",
+            "lower": 1.8756912080354746e-09,
+            "upper": 1.8756912080405568e-09
+          },
+          {
+            "exact_lower": "88556574378809709/590295810358705651712",
+            "exact_upper": "5534785898675607/36893488147419103232",
+            "lower": 0.0001500206723896557,
+            "upper": 0.0001500206723896557
+          },
+          {
+            "exact_lower": "468830744309462033535/590295810358705651712",
+            "exact_upper": "234415372154731016769/295147905179352825856",
+            "lower": 0.7942301742317418,
+            "upper": 0.7942301742317418
+          }
+        ],
+        "sequence": [
+          [
+            "-44508902884367091/31260127693437500000000000",
+            "5884948387840830187718378409/7752511667972500000000000000",
+            "-1216269566578812419638786207835071/240327861707147500000000000000",
+            "612437002588534677351/96131144682859000"
+          ],
+          [
+            "5884948387840830187718378409/7752511667972500000000000000",
+            "-1216269566578812419638786207835071/120163930853573750000000000000",
+            "1837311007765604032053/96131144682859000"
+          ],
+          [
+            "-31698312522901272697434715424706356080161149953357619688691887/422421054671627430286176095455783332864568906265763873008210735726",
+            "1"
+          ],
+          [
+            "1"
+          ]
+        ],
+        "split_count": 191
+      },
+      "allocation": "symmetric",
+      "gain_inverse": {
+        "G_enclosure": {
+          "exact_lower": "377837933855226425489/18889465931478580854784",
+          "exact_upper": "188918966927613212745/9444732965739290427392",
+          "lower": 0.020002573668616738,
+          "upper": 0.020002573668616738
+        },
+        "G_grid15": "20002573668617/1000000000000000",
+        "balanced_n_enclosure": {
+          "exact_lower": "125040510773646775789646511709039421/625000000000000000000000000000000000000",
+          "exact_upper": "1000324086189174206317172093672315369/5000000000000000000000000000000000000000",
+          "lower": 0.00020006481723783485,
+          "upper": 0.00020006481723783485
+        },
+        "balanced_n_from_unrounded_G": {
+          "exact_lower": "2000648172378296214289147057632820847/10000000000000000000000000000000000000000",
+          "exact_upper": "2000648172378296214299737744285471363/10000000000000000000000000000000000000000",
+          "lower": 0.00020006481723782962,
+          "upper": 0.00020006481723782962
+        },
+        "balanced_n_grid15": "100032408619/500000000000000",
+        "iterations": 72,
+        "q_reference_readback": {
+          "exact_lower": "4000000000000104329036321574310501413/10000000000000000000000000000000000000000",
+          "exact_upper": "4000000000000104329040293090812218539/10000000000000000000000000000000000000000",
+          "lower": 0.00040000000000001043,
+          "upper": 0.00040000000000001043
+        }
+      },
+      "inputs": {
+        "DA_raw_visibility": "199/200",
+        "K_A": "93/125",
+        "K_B": "753/1000",
+        "pair_probability": ".0004"
+      },
+      "point_id": "default:corner_0000",
+      "reason": "coherence_inverse_precision_unresolved",
+      "sources": [],
+      "status": "UNRESOLVED"
+    },
+    {
+      "K_inverse": {
+        "Cauchy_bound": "3",
+        "all_real_root_count": 3,
+        "classification": [
+          {
+            "index": 0,
+            "status": "OUTSIDE_PHYSICAL_DOMAIN"
+          },
+          {
+            "index": 1,
+            "status": "PHYSICAL_ROOT_RETAINED"
+          },
+          {
+            "index": 2,
+            "status": "OUTSIDE_PHYSICAL_DOMAIN"
+          }
+        ],
+        "full_real_cover": true,
+        "no_root_selection_by_target": true,
+        "physical_domain": [
+          "89/100000000",
+          "24847717337512/125525108134563369"
+        ],
+        "physical_root_count": 1,
+        "polynomial": [
+          "-44508902884367091/31260127693437500000000000",
+          "5884948387840830187718378409/7752511667972500000000000000",
+          "-1216269566578812419638786207835071/240327861707147500000000000000",
+          "612437002588534677351/96131144682859000"
+        ],
+        "root_intervals": [
+          {
+            "exact_lower": "553606330815/295147905179352825856",
+            "exact_upper": "1107212661633/590295810358705651712",
+            "lower": 1.8756912080354746e-09,
+            "upper": 1.8756912080405568e-09
+          },
+          {
+            "exact_lower": "88556574378809709/590295810358705651712",
+            "exact_upper": "5534785898675607/36893488147419103232",
+            "lower": 0.0001500206723896557,
+            "upper": 0.0001500206723896557
+          },
+          {
+            "exact_lower": "468830744309462033535/590295810358705651712",
+            "exact_upper": "234415372154731016769/295147905179352825856",
+            "lower": 0.7942301742317418,
+            "upper": 0.7942301742317418
+          }
+        ],
+        "sequence": [
+          [
+            "-44508902884367091/31260127693437500000000000",
+            "5884948387840830187718378409/7752511667972500000000000000",
+            "-1216269566578812419638786207835071/240327861707147500000000000000",
+            "612437002588534677351/96131144682859000"
+          ],
+          [
+            "5884948387840830187718378409/7752511667972500000000000000",
+            "-1216269566578812419638786207835071/120163930853573750000000000000",
+            "1837311007765604032053/96131144682859000"
+          ],
+          [
+            "-31698312522901272697434715424706356080161149953357619688691887/422421054671627430286176095455783332864568906265763873008210735726",
+            "1"
+          ],
+          [
+            "1"
+          ]
+        ],
+        "split_count": 191
+      },
+      "allocation": "symmetric",
+      "gain_inverse": {
+        "G_enclosure": {
+          "exact_lower": "377837933855226425489/18889465931478580854784",
+          "exact_upper": "188918966927613212745/9444732965739290427392",
+          "lower": 0.020002573668616738,
+          "upper": 0.020002573668616738
+        },
+        "G_grid15": "20002573668617/1000000000000000",
+        "balanced_n_enclosure": {
+          "exact_lower": "125040510773646775789646511709039421/625000000000000000000000000000000000000",
+          "exact_upper": "1000324086189174206317172093672315369/5000000000000000000000000000000000000000",
+          "lower": 0.00020006481723783485,
+          "upper": 0.00020006481723783485
+        },
+        "balanced_n_from_unrounded_G": {
+          "exact_lower": "2000648172378296214289147057632820847/10000000000000000000000000000000000000000",
+          "exact_upper": "2000648172378296214299737744285471363/10000000000000000000000000000000000000000",
+          "lower": 0.00020006481723782962,
+          "upper": 0.00020006481723782962
+        },
+        "balanced_n_grid15": "100032408619/500000000000000",
+        "iterations": 72,
+        "q_reference_readback": {
+          "exact_lower": "4000000000000104329036321574310501413/10000000000000000000000000000000000000000",
+          "exact_upper": "4000000000000104329040293090812218539/10000000000000000000000000000000000000000",
+          "lower": 0.00040000000000001043,
+          "upper": 0.00040000000000001043
+        }
+      },
+      "inputs": {
+        "DA_raw_visibility": "997/1000",
+        "K_A": "93/125",
+        "K_B": "753/1000",
+        "pair_probability": ".0004"
+      },
+      "point_id": "default:corner_0001",
+      "reason": "coherence_inverse_precision_unresolved",
+      "sources": [],
+      "status": "UNRESOLVED"
+    },
+    {
+      "K_inverse": {
+        "Cauchy_bound": "3",
+        "all_real_root_count": 3,
+        "classification": [
+          {
+            "index": 0,
+            "status": "OUTSIDE_PHYSICAL_DOMAIN"
+          },
+          {
+            "index": 1,
+            "status": "PHYSICAL_ROOT_RETAINED"
+          },
+          {
+            "index": 2,
+            "status": "OUTSIDE_PHYSICAL_DOMAIN"
+          }
+        ],
+        "full_real_cover": true,
+        "no_root_selection_by_target": true,
+        "physical_domain": [
+          "89/100000000",
+          "745155343464/2510753366119393"
+        ],
+        "physical_root_count": 1,
+        "polynomial": [
+          "-890267129819227/937955825937500000000000",
+          "176103788812316402122194273/232613044832500000000000000",
+          "-24330258398747393814619530905287/7211004389807500000000000000",
+          "12249965673296518447/2884401755923000"
+        ],
+        "root_intervals": [
+          {
+            "exact_lower": "92509313967/73786976294838206464",
+            "exact_upper": "740074511739/590295810358705651712",
+            "lower": 1.2537349897270627e-09,
+            "upper": 1.253734989732145e-09
+          },
+          {
+            "exact_lower": "66243559534024803/295147905179352825856",
+            "exact_upper": "132487119068049609/590295810358705651712",
+            "lower": 0.00022444190987488293,
+            "upper": 0.00022444190987488296
+          },
+          {
+            "exact_lower": "29302106943261615825/36893488147419103232",
+            "exact_upper": "468833711092185853203/590295810358705651712",
+            "lower": 0.7942352001571706,
+            "upper": 0.7942352001571706
+          }
+        ],
+        "sequence": [
+          [
+            "-890267129819227/937955825937500000000000",
+            "176103788812316402122194273/232613044832500000000000000",
+            "-24330258398747393814619530905287/7211004389807500000000000000",
+            "12249965673296518447/2884401755923000"
+          ],
+          [
+            "176103788812316402122194273/232613044832500000000000000",
+            "-24330258398747393814619530905287/3605502194903750000000000000",
+            "36749897019889555341/2884401755923000"
+          ],
+          [
+            "-132824169404389839437838525854354992072143210386343881461881/1182919819103568115392932330434162917413680983739268459529104738",
+            "1"
+          ],
+          [
+            "1"
+          ]
+        ],
+        "split_count": 192
+      },
+      "allocation": "symmetric",
+      "gain_inverse": {
+        "G_enclosure": {
+          "exact_lower": "239254161294631457726075180841125701/9765625000000000000000000000000000000",
+          "exact_upper": "48999252233140522542324533827329852509/2000000000000000000000000000000000000000",
+          "lower": 0.02449962611657026,
+          "upper": 0.02449962611657026
+        },
+        "G_grid15": "2449962611657/100000000000000",
+        "balanced_n_enclosure": {
+          "exact_lower": "3001458642997339146076387556140894107/10000000000000000000000000000000000000000",
+          "exact_upper": "3001458642997339146076387556140894109/10000000000000000000000000000000000000000",
+          "lower": 0.0003001458642997339,
+          "upper": 0.0003001458642997339
+        },
+        "balanced_n_from_unrounded_G": {
+          "exact_lower": "3001458642997403169339115192400622023/10000000000000000000000000000000000000000",
+          "exact_upper": "3001458642997403169342097000319066897/10000000000000000000000000000000000000000",
+          "lower": 0.0003001458642997403,
+          "upper": 0.0003001458642997403
+        },
+        "balanced_n_grid15": "3001458643/10000000000000",
+        "iterations": 71,
+        "q_reference_readback": {
+          "exact_lower": "2999999999999936038948173171197998707/5000000000000000000000000000000000000000",
+          "exact_upper": "2999999999999936038951152081578403803/5000000000000000000000000000000000000000",
+          "lower": 0.0005999999999999872,
+          "upper": 0.0005999999999999872
+        }
+      },
+      "inputs": {
+        "DA_raw_visibility": "199/200",
+        "K_A": "93/125",
+        "K_B": "753/1000",
+        "pair_probability": ".0006"
+      },
+      "point_id": "default:corner_0010",
+      "reason": "coherence_inverse_precision_unresolved",
+      "sources": [],
+      "status": "UNRESOLVED"
+    },
+    {
+      "K_inverse": {
+        "Cauchy_bound": "3",
+        "all_real_root_count": 3,
+        "classification": [
+          {
+            "index": 0,
+            "status": "OUTSIDE_PHYSICAL_DOMAIN"
+          },
+          {
+            "index": 1,
+            "status": "PHYSICAL_ROOT_RETAINED"
+          },
+          {
+            "index": 2,
+            "status": "OUTSIDE_PHYSICAL_DOMAIN"
+          }
+        ],
+        "full_real_cover": true,
+        "no_root_selection_by_target": true,
+        "physical_domain": [
+          "89/100000000",
+          "745155343464/2510753366119393"
+        ],
+        "physical_root_count": 1,
+        "polynomial": [
+          "-890267129819227/937955825937500000000000",
+          "176103788812316402122194273/232613044832500000000000000",
+          "-24330258398747393814619530905287/7211004389807500000000000000",
+          "12249965673296518447/2884401755923000"
+        ],
+        "root_intervals": [
+          {
+            "exact_lower": "92509313967/73786976294838206464",
+            "exact_upper": "740074511739/590295810358705651712",
+            "lower": 1.2537349897270627e-09,
+            "upper": 1.253734989732145e-09
+          },
+          {
+            "exact_lower": "66243559534024803/295147905179352825856",
+            "exact_upper": "132487119068049609/590295810358705651712",
+            "lower": 0.00022444190987488293,
+            "upper": 0.00022444190987488296
+          },
+          {
+            "exact_lower": "29302106943261615825/36893488147419103232",
+            "exact_upper": "468833711092185853203/590295810358705651712",
+            "lower": 0.7942352001571706,
+            "upper": 0.7942352001571706
+          }
+        ],
+        "sequence": [
+          [
+            "-890267129819227/937955825937500000000000",
+            "176103788812316402122194273/232613044832500000000000000",
+            "-24330258398747393814619530905287/7211004389807500000000000000",
+            "12249965673296518447/2884401755923000"
+          ],
+          [
+            "176103788812316402122194273/232613044832500000000000000",
+            "-24330258398747393814619530905287/3605502194903750000000000000",
+            "36749897019889555341/2884401755923000"
+          ],
+          [
+            "-132824169404389839437838525854354992072143210386343881461881/1182919819103568115392932330434162917413680983739268459529104738",
+            "1"
+          ],
+          [
+            "1"
+          ]
+        ],
+        "split_count": 192
+      },
+      "allocation": "symmetric",
+      "gain_inverse": {
+        "G_enclosure": {
+          "exact_lower": "239254161294631457726075180841125701/9765625000000000000000000000000000000",
+          "exact_upper": "48999252233140522542324533827329852509/2000000000000000000000000000000000000000",
+          "lower": 0.02449962611657026,
+          "upper": 0.02449962611657026
+        },
+        "G_grid15": "2449962611657/100000000000000",
+        "balanced_n_enclosure": {
+          "exact_lower": "3001458642997339146076387556140894107/10000000000000000000000000000000000000000",
+          "exact_upper": "3001458642997339146076387556140894109/10000000000000000000000000000000000000000",
+          "lower": 0.0003001458642997339,
+          "upper": 0.0003001458642997339
+        },
+        "balanced_n_from_unrounded_G": {
+          "exact_lower": "3001458642997403169339115192400622023/10000000000000000000000000000000000000000",
+          "exact_upper": "3001458642997403169342097000319066897/10000000000000000000000000000000000000000",
+          "lower": 0.0003001458642997403,
+          "upper": 0.0003001458642997403
+        },
+        "balanced_n_grid15": "3001458643/10000000000000",
+        "iterations": 71,
+        "q_reference_readback": {
+          "exact_lower": "2999999999999936038948173171197998707/5000000000000000000000000000000000000000",
+          "exact_upper": "2999999999999936038951152081578403803/5000000000000000000000000000000000000000",
+          "lower": 0.0005999999999999872,
+          "upper": 0.0005999999999999872
+        }
+      },
+      "inputs": {
+        "DA_raw_visibility": "997/1000",
+        "K_A": "93/125",
+        "K_B": "753/1000",
+        "pair_probability": ".0006"
+      },
+      "point_id": "default:corner_0011",
+      "reason": "coherence_inverse_precision_unresolved",
+      "sources": [],
+      "status": "UNRESOLVED"
+    },
+    {
+      "K_inverse": {
+        "Cauchy_bound": "3",
+        "all_real_root_count": 3,
+        "classification": [
+          {
+            "index": 0,
+            "status": "OUTSIDE_PHYSICAL_DOMAIN"
+          },
+          {
+            "index": 1,
+            "status": "PHYSICAL_ROOT_RETAINED"
+          },
+          {
+            "index": 2,
+            "status": "OUTSIDE_PHYSICAL_DOMAIN"
+          }
+        ],
+        "full_real_cover": true,
+        "no_root_selection_by_target": true,
+        "physical_domain": [
+          "89/100000000",
+          "24847717337512/126525308199380607"
+        ],
+        "physical_root_count": 1,
+        "polynomial": [
+          "-44508902884367091/31260127693437500000000000",
+          "5931741582231259578325512591/7752511667972500000000000000",
+          "-1225960956736157387690490088194713/240327861707147500000000000000",
+          "56211743742761184219/8739194971169000"
+        ],
+        "root_intervals": [
+          {
+            "exact_lower": "549239092455/295147905179352825856",
+            "exact_upper": "1098478184913/590295810358705651712",
+            "lower": 1.8608944289177432e-09,
+            "upper": 1.8608944289228254e-09
+          },
+          {
+            "exact_lower": "22138783738320987/147573952589676412928",
+            "exact_upper": "88555134953283951/590295810358705651712",
+            "lower": 0.00015001823390796483,
+            "upper": 0.00015001823390796483
+          },
+          {
+            "exact_lower": "468063126373508641215/590295810358705651712",
+            "exact_upper": "234031563186754320609/295147905179352825856",
+            "lower": 0.7929297788664301,
+            "upper": 0.7929297788664301
+          }
+        ],
+        "sequence": [
+          [
+            "-44508902884367091/31260127693437500000000000",
+            "5931741582231259578325512591/7752511667972500000000000000",
+            "-1225960956736157387690490088194713/240327861707147500000000000000",
+            "56211743742761184219/8739194971169000"
+          ],
+          [
+            "5931741582231259578325512591/7752511667972500000000000000",
+            "-1225960956736157387690490088194713/120163930853573750000000000000",
+            "168635231228283552657/8739194971169000"
+          ],
+          [
+            "-225434586382571244639771930975212606929082706628634999775072873/3004255022337182014143237891165368763555118820137699739094802304738",
+            "1"
+          ],
+          [
+            "1"
+          ]
+        ],
+        "split_count": 191
+      },
+      "allocation": "symmetric",
+      "gain_inverse": {
+        "G_enclosure": {
+          "exact_lower": "377837933855226425489/18889465931478580854784",
+          "exact_upper": "188918966927613212745/9444732965739290427392",
+          "lower": 0.020002573668616738,
+          "upper": 0.020002573668616738
+        },
+        "G_grid15": "20002573668617/1000000000000000",
+        "balanced_n_enclosure": {
+          "exact_lower": "125040510773646775789646511709039421/625000000000000000000000000000000000000",
+          "exact_upper": "1000324086189174206317172093672315369/5000000000000000000000000000000000000000",
+          "lower": 0.00020006481723783485,
+          "upper": 0.00020006481723783485
+        },
+        "balanced_n_from_unrounded_G": {
+          "exact_lower": "2000648172378296214289147057632820847/10000000000000000000000000000000000000000",
+          "exact_upper": "2000648172378296214299737744285471363/10000000000000000000000000000000000000000",
+          "lower": 0.00020006481723782962,
+          "upper": 0.00020006481723782962
+        },
+        "balanced_n_grid15": "100032408619/500000000000000",
+        "iterations": 72,
+        "q_reference_readback": {
+          "exact_lower": "4000000000000104329036321574310501413/10000000000000000000000000000000000000000",
+          "exact_upper": "4000000000000104329040293090812218539/10000000000000000000000000000000000000000",
+          "lower": 0.00040000000000001043,
+          "upper": 0.00040000000000001043
+        }
+      },
+      "inputs": {
+        "DA_raw_visibility": "199/200",
+        "K_A": "93/125",
+        "K_B": "759/1000",
+        "pair_probability": ".0004"
+      },
+      "point_id": "default:corner_0100",
+      "reason": "coherence_inverse_precision_unresolved",
+      "sources": [],
+      "status": "UNRESOLVED"
+    },
+    {
+      "K_inverse": {
+        "Cauchy_bound": "3",
+        "all_real_root_count": 3,
+        "classification": [
+          {
+            "index": 0,
+            "status": "OUTSIDE_PHYSICAL_DOMAIN"
+          },
+          {
+            "index": 1,
+            "status": "PHYSICAL_ROOT_RETAINED"
+          },
+          {
+            "index": 2,
+            "status": "OUTSIDE_PHYSICAL_DOMAIN"
+          }
+        ],
+        "full_real_cover": true,
+        "no_root_selection_by_target": true,
+        "physical_domain": [
+          "89/100000000",
+          "24847717337512/126525308199380607"
+        ],
+        "physical_root_count": 1,
+        "polynomial": [
+          "-44508902884367091/31260127693437500000000000",
+          "5931741582231259578325512591/7752511667972500000000000000",
+          "-1225960956736157387690490088194713/240327861707147500000000000000",
+          "56211743742761184219/8739194971169000"
+        ],
+        "root_intervals": [
+          {
+            "exact_lower": "549239092455/295147905179352825856",
+            "exact_upper": "1098478184913/590295810358705651712",
+            "lower": 1.8608944289177432e-09,
+            "upper": 1.8608944289228254e-09
+          },
+          {
+            "exact_lower": "22138783738320987/147573952589676412928",
+            "exact_upper": "88555134953283951/590295810358705651712",
+            "lower": 0.00015001823390796483,
+            "upper": 0.00015001823390796483
+          },
+          {
+            "exact_lower": "468063126373508641215/590295810358705651712",
+            "exact_upper": "234031563186754320609/295147905179352825856",
+            "lower": 0.7929297788664301,
+            "upper": 0.7929297788664301
+          }
+        ],
+        "sequence": [
+          [
+            "-44508902884367091/31260127693437500000000000",
+            "5931741582231259578325512591/7752511667972500000000000000",
+            "-1225960956736157387690490088194713/240327861707147500000000000000",
+            "56211743742761184219/8739194971169000"
+          ],
+          [
+            "5931741582231259578325512591/7752511667972500000000000000",
+            "-1225960956736157387690490088194713/120163930853573750000000000000",
+            "168635231228283552657/8739194971169000"
+          ],
+          [
+            "-225434586382571244639771930975212606929082706628634999775072873/3004255022337182014143237891165368763555118820137699739094802304738",
+            "1"
+          ],
+          [
+            "1"
+          ]
+        ],
+        "split_count": 191
+      },
+      "allocation": "symmetric",
+      "gain_inverse": {
+        "G_enclosure": {
+          "exact_lower": "377837933855226425489/18889465931478580854784",
+          "exact_upper": "188918966927613212745/9444732965739290427392",
+          "lower": 0.020002573668616738,
+          "upper": 0.020002573668616738
+        },
+        "G_grid15": "20002573668617/1000000000000000",
+        "balanced_n_enclosure": {
+          "exact_lower": "125040510773646775789646511709039421/625000000000000000000000000000000000000",
+          "exact_upper": "1000324086189174206317172093672315369/5000000000000000000000000000000000000000",
+          "lower": 0.00020006481723783485,
+          "upper": 0.00020006481723783485
+        },
+        "balanced_n_from_unrounded_G": {
+          "exact_lower": "2000648172378296214289147057632820847/10000000000000000000000000000000000000000",
+          "exact_upper": "2000648172378296214299737744285471363/10000000000000000000000000000000000000000",
+          "lower": 0.00020006481723782962,
+          "upper": 0.00020006481723782962
+        },
+        "balanced_n_grid15": "100032408619/500000000000000",
+        "iterations": 72,
+        "q_reference_readback": {
+          "exact_lower": "4000000000000104329036321574310501413/10000000000000000000000000000000000000000",
+          "exact_upper": "4000000000000104329040293090812218539/10000000000000000000000000000000000000000",
+          "lower": 0.00040000000000001043,
+          "upper": 0.00040000000000001043
+        }
+      },
+      "inputs": {
+        "DA_raw_visibility": "997/1000",
+        "K_A": "93/125",
+        "K_B": "759/1000",
+        "pair_probability": ".0004"
+      },
+      "point_id": "default:corner_0101",
+      "reason": "coherence_inverse_precision_unresolved",
+      "sources": [],
+      "status": "UNRESOLVED"
+    },
+    {
+      "K_inverse": {
+        "Cauchy_bound": "3",
+        "all_real_root_count": 3,
+        "classification": [
+          {
+            "index": 0,
+            "status": "OUTSIDE_PHYSICAL_DOMAIN"
+          },
+          {
+            "index": 1,
+            "status": "PHYSICAL_ROOT_RETAINED"
+          },
+          {
+            "index": 2,
+            "status": "OUTSIDE_PHYSICAL_DOMAIN"
+          }
+        ],
+        "full_real_cover": true,
+        "no_root_selection_by_target": true,
+        "physical_domain": [
+          "89/100000000",
+          "745155343464/2530759369036679"
+        ],
+        "physical_root_count": 1,
+        "polynomial": [
+          "-890267129819227/937955825937500000000000",
+          "177505029562558281066632727/232613044832500000000000000",
+          "-24524124983304391638531230897361/7211004389807500000000000000",
+          "12367821036482250273/2884401755923000"
+        ],
+        "root_intervals": [
+          {
+            "exact_lower": "367116132147/295147905179352825856",
+            "exact_upper": "734232264297/590295810358705651712",
+            "lower": 1.2438378375882904e-09,
+            "upper": 1.2438378375933726e-09
+          },
+          {
+            "exact_lower": "66242855311681077/295147905179352825856",
+            "exact_upper": "132485710623362157/590295810358705651712",
+            "lower": 0.00022443952387677364,
+            "upper": 0.00022443952387677364
+          },
+          {
+            "exact_lower": "468066016352217752355/590295810358705651712",
+            "exact_upper": "234033008176108876179/295147905179352825856",
+            "lower": 0.792934674680797,
+            "upper": 0.792934674680797
+          }
+        ],
+        "sequence": [
+          [
+            "-890267129819227/937955825937500000000000",
+            "177505029562558281066632727/232613044832500000000000000",
+            "-24524124983304391638531230897361/7211004389807500000000000000",
+            "12367821036482250273/2884401755923000"
+          ],
+          [
+            "177505029562558281066632727/232613044832500000000000000",
+            "-24524124983304391638531230897361/3605502194903750000000000000",
+            "37103463109446750819/2884401755923000"
+          ],
+          [
+            "-14994202170028019236924496388841595445519399531084826281873/133538286048830147925572224019613983461765710658097660737058738",
+            "1"
+          ],
+          [
+            "1"
+          ]
+        ],
+        "split_count": 192
+      },
+      "allocation": "symmetric",
+      "gain_inverse": {
+        "G_enclosure": {
+          "exact_lower": "239254161294631457726075180841125701/9765625000000000000000000000000000000",
+          "exact_upper": "48999252233140522542324533827329852509/2000000000000000000000000000000000000000",
+          "lower": 0.02449962611657026,
+          "upper": 0.02449962611657026
+        },
+        "G_grid15": "2449962611657/100000000000000",
+        "balanced_n_enclosure": {
+          "exact_lower": "3001458642997339146076387556140894107/10000000000000000000000000000000000000000",
+          "exact_upper": "3001458642997339146076387556140894109/10000000000000000000000000000000000000000",
+          "lower": 0.0003001458642997339,
+          "upper": 0.0003001458642997339
+        },
+        "balanced_n_from_unrounded_G": {
+          "exact_lower": "3001458642997403169339115192400622023/10000000000000000000000000000000000000000",
+          "exact_upper": "3001458642997403169342097000319066897/10000000000000000000000000000000000000000",
+          "lower": 0.0003001458642997403,
+          "upper": 0.0003001458642997403
+        },
+        "balanced_n_grid15": "3001458643/10000000000000",
+        "iterations": 71,
+        "q_reference_readback": {
+          "exact_lower": "2999999999999936038948173171197998707/5000000000000000000000000000000000000000",
+          "exact_upper": "2999999999999936038951152081578403803/5000000000000000000000000000000000000000",
+          "lower": 0.0005999999999999872,
+          "upper": 0.0005999999999999872
+        }
+      },
+      "inputs": {
+        "DA_raw_visibility": "199/200",
+        "K_A": "93/125",
+        "K_B": "759/1000",
+        "pair_probability": ".0006"
+      },
+      "point_id": "default:corner_0110",
+      "reason": "coherence_inverse_precision_unresolved",
+      "sources": [],
+      "status": "UNRESOLVED"
+    },
+    {
+      "K_inverse": {
+        "Cauchy_bound": "3",
+        "all_real_root_count": 3,
+        "classification": [
+          {
+            "index": 0,
+            "status": "OUTSIDE_PHYSICAL_DOMAIN"
+          },
+          {
+            "index": 1,
+            "status": "PHYSICAL_ROOT_RETAINED"
+          },
+          {
+            "index": 2,
+            "status": "OUTSIDE_PHYSICAL_DOMAIN"
+          }
+        ],
+        "full_real_cover": true,
+        "no_root_selection_by_target": true,
+        "physical_domain": [
+          "89/100000000",
+          "745155343464/2530759369036679"
+        ],
+        "physical_root_count": 1,
+        "polynomial": [
+          "-890267129819227/937955825937500000000000",
+          "177505029562558281066632727/232613044832500000000000000",
+          "-24524124983304391638531230897361/7211004389807500000000000000",
+          "12367821036482250273/2884401755923000"
+        ],
+        "root_intervals": [
+          {
+            "exact_lower": "367116132147/295147905179352825856",
+            "exact_upper": "734232264297/590295810358705651712",
+            "lower": 1.2438378375882904e-09,
+            "upper": 1.2438378375933726e-09
+          },
+          {
+            "exact_lower": "66242855311681077/295147905179352825856",
+            "exact_upper": "132485710623362157/590295810358705651712",
+            "lower": 0.00022443952387677364,
+            "upper": 0.00022443952387677364
+          },
+          {
+            "exact_lower": "468066016352217752355/590295810358705651712",
+            "exact_upper": "234033008176108876179/295147905179352825856",
+            "lower": 0.792934674680797,
+            "upper": 0.792934674680797
+          }
+        ],
+        "sequence": [
+          [
+            "-890267129819227/937955825937500000000000",
+            "177505029562558281066632727/232613044832500000000000000",
+            "-24524124983304391638531230897361/7211004389807500000000000000",
+            "12367821036482250273/2884401755923000"
+          ],
+          [
+            "177505029562558281066632727/232613044832500000000000000",
+            "-24524124983304391638531230897361/3605502194903750000000000000",
+            "37103463109446750819/2884401755923000"
+          ],
+          [
+            "-14994202170028019236924496388841595445519399531084826281873/133538286048830147925572224019613983461765710658097660737058738",
+            "1"
+          ],
+          [
+            "1"
+          ]
+        ],
+        "split_count": 192
+      },
+      "allocation": "symmetric",
+      "gain_inverse": {
+        "G_enclosure": {
+          "exact_lower": "239254161294631457726075180841125701/9765625000000000000000000000000000000",
+          "exact_upper": "48999252233140522542324533827329852509/2000000000000000000000000000000000000000",
+          "lower": 0.02449962611657026,
+          "upper": 0.02449962611657026
+        },
+        "G_grid15": "2449962611657/100000000000000",
+        "balanced_n_enclosure": {
+          "exact_lower": "3001458642997339146076387556140894107/10000000000000000000000000000000000000000",
+          "exact_upper": "3001458642997339146076387556140894109/10000000000000000000000000000000000000000",
+          "lower": 0.0003001458642997339,
+          "upper": 0.0003001458642997339
+        },
+        "balanced_n_from_unrounded_G": {
+          "exact_lower": "3001458642997403169339115192400622023/10000000000000000000000000000000000000000",
+          "exact_upper": "3001458642997403169342097000319066897/10000000000000000000000000000000000000000",
+          "lower": 0.0003001458642997403,
+          "upper": 0.0003001458642997403
+        },
+        "balanced_n_grid15": "3001458643/10000000000000",
+        "iterations": 71,
+        "q_reference_readback": {
+          "exact_lower": "2999999999999936038948173171197998707/5000000000000000000000000000000000000000",
+          "exact_upper": "2999999999999936038951152081578403803/5000000000000000000000000000000000000000",
+          "lower": 0.0005999999999999872,
+          "upper": 0.0005999999999999872
+        }
+      },
+      "inputs": {
+        "DA_raw_visibility": "997/1000",
+        "K_A": "93/125",
+        "K_B": "759/1000",
+        "pair_probability": ".0006"
+      },
+      "point_id": "default:corner_0111",
+      "reason": "coherence_inverse_precision_unresolved",
+      "sources": [],
+      "status": "UNRESOLVED"
+    },
+    {
+      "K_inverse": {
+        "Cauchy_bound": "3",
+        "all_real_root_count": 3,
+        "classification": [
+          {
+            "index": 0,
+            "status": "OUTSIDE_PHYSICAL_DOMAIN"
+          },
+          {
+            "index": 1,
+            "status": "PHYSICAL_ROOT_RETAINED"
+          },
+          {
+            "index": 2,
+            "status": "OUTSIDE_PHYSICAL_DOMAIN"
+          }
+        ],
+        "full_real_cover": true,
+        "no_root_selection_by_target": true,
+        "physical_domain": [
+          "89/100000000",
+          "25048102154750/125525108134563369"
+        ],
+        "physical_root_count": 1,
+        "polynomial": [
+          "-44508902884367091/31260127693437500000000000",
+          "5932126103211549301643693841/7815031923359375000000000000",
+          "-4904312736217081708016373615527/976878990419921875000000000",
+          "157031910276338774619/25008102154750000"
+        ],
+        "root_intervals": [
+          {
+            "exact_lower": "1107265101801/590295810358705651712",
+            "exact_upper": "276816275451/147573952589676412928",
+            "lower": 1.875780045140668e-09,
+            "upper": 1.87578004514575e-09
+          },
+          {
+            "exact_lower": "89266538897459529/590295810358705651712",
+            "exact_upper": "22316634724364883/147573952589676412928",
+            "lower": 0.00015122339906701159,
+            "upper": 0.00015122339906701159
+          },
+          {
+            "exact_lower": "235932495118584112821/295147905179352825856",
+            "exact_upper": "471864990237168225645/590295810358705651712",
+            "lower": 0.7993703867734205,
+            "upper": 0.7993703867734205
+          }
+        ],
+        "sequence": [
+          [
+            "-44508902884367091/31260127693437500000000000",
+            "5932126103211549301643693841/7815031923359375000000000000",
+            "-4904312736217081708016373615527/976878990419921875000000000",
+            "157031910276338774619/25008102154750000"
+          ],
+          [
+            "5932126103211549301643693841/7815031923359375000000000000",
+            "-4904312736217081708016373615527/488439495209960937500000000",
+            "471095730829016323857/25008102154750000"
+          ],
+          [
+            "-29093000986530676577298683696512839573896726094706006869207/384618206565033954873717019829143160881053590305096238122803664",
+            "1"
+          ],
+          [
+            "1"
+          ]
+        ],
+        "split_count": 191
+      },
+      "allocation": "symmetric",
+      "gain_inverse": {
+        "G_enclosure": {
+          "exact_lower": "377837933855226425489/18889465931478580854784",
+          "exact_upper": "188918966927613212745/9444732965739290427392",
+          "lower": 0.020002573668616738,
+          "upper": 0.020002573668616738
+        },
+        "G_grid15": "20002573668617/1000000000000000",
+        "balanced_n_enclosure": {
+          "exact_lower": "125040510773646775789646511709039421/625000000000000000000000000000000000000",
+          "exact_upper": "1000324086189174206317172093672315369/5000000000000000000000000000000000000000",
+          "lower": 0.00020006481723783485,
+          "upper": 0.00020006481723783485
+        },
+        "balanced_n_from_unrounded_G": {
+          "exact_lower": "2000648172378296214289147057632820847/10000000000000000000000000000000000000000",
+          "exact_upper": "2000648172378296214299737744285471363/10000000000000000000000000000000000000000",
+          "lower": 0.00020006481723782962,
+          "upper": 0.00020006481723782962
+        },
+        "balanced_n_grid15": "100032408619/500000000000000",
+        "iterations": 72,
+        "q_reference_readback": {
+          "exact_lower": "4000000000000104329036321574310501413/10000000000000000000000000000000000000000",
+          "exact_upper": "4000000000000104329040293090812218539/10000000000000000000000000000000000000000",
+          "lower": 0.00040000000000001043,
+          "upper": 0.00040000000000001043
+        }
+      },
+      "inputs": {
+        "DA_raw_visibility": "199/200",
+        "K_A": "3/4",
+        "K_B": "753/1000",
+        "pair_probability": ".0004"
+      },
+      "point_id": "default:corner_1000",
+      "reason": "coherence_inverse_precision_unresolved",
+      "sources": [],
+      "status": "UNRESOLVED"
+    },
+    {
+      "K_inverse": {
+        "Cauchy_bound": "3",
+        "all_real_root_count": 3,
+        "classification": [
+          {
+            "index": 0,
+            "status": "OUTSIDE_PHYSICAL_DOMAIN"
+          },
+          {
+            "index": 1,
+            "status": "PHYSICAL_ROOT_RETAINED"
+          },
+          {
+            "index": 2,
+            "status": "OUTSIDE_PHYSICAL_DOMAIN"
+          }
+        ],
+        "full_real_cover": true,
+        "no_root_selection_by_target": true,
+        "physical_domain": [
+          "89/100000000",
+          "25048102154750/125525108134563369"
+        ],
+        "physical_root_count": 1,
+        "polynomial": [
+          "-44508902884367091/31260127693437500000000000",
+          "5932126103211549301643693841/7815031923359375000000000000",
+          "-4904312736217081708016373615527/976878990419921875000000000",
+          "157031910276338774619/25008102154750000"
+        ],
+        "root_intervals": [
+          {
+            "exact_lower": "1107265101801/590295810358705651712",
+            "exact_upper": "276816275451/147573952589676412928",
+            "lower": 1.875780045140668e-09,
+            "upper": 1.87578004514575e-09
+          },
+          {
+            "exact_lower": "89266538897459529/590295810358705651712",
+            "exact_upper": "22316634724364883/147573952589676412928",
+            "lower": 0.00015122339906701159,
+            "upper": 0.00015122339906701159
+          },
+          {
+            "exact_lower": "235932495118584112821/295147905179352825856",
+            "exact_upper": "471864990237168225645/590295810358705651712",
+            "lower": 0.7993703867734205,
+            "upper": 0.7993703867734205
+          }
+        ],
+        "sequence": [
+          [
+            "-44508902884367091/31260127693437500000000000",
+            "5932126103211549301643693841/7815031923359375000000000000",
+            "-4904312736217081708016373615527/976878990419921875000000000",
+            "157031910276338774619/25008102154750000"
+          ],
+          [
+            "5932126103211549301643693841/7815031923359375000000000000",
+            "-4904312736217081708016373615527/488439495209960937500000000",
+            "471095730829016323857/25008102154750000"
+          ],
+          [
+            "-29093000986530676577298683696512839573896726094706006869207/384618206565033954873717019829143160881053590305096238122803664",
+            "1"
+          ],
+          [
+            "1"
+          ]
+        ],
+        "split_count": 191
+      },
+      "allocation": "symmetric",
+      "gain_inverse": {
+        "G_enclosure": {
+          "exact_lower": "377837933855226425489/18889465931478580854784",
+          "exact_upper": "188918966927613212745/9444732965739290427392",
+          "lower": 0.020002573668616738,
+          "upper": 0.020002573668616738
+        },
+        "G_grid15": "20002573668617/1000000000000000",
+        "balanced_n_enclosure": {
+          "exact_lower": "125040510773646775789646511709039421/625000000000000000000000000000000000000",
+          "exact_upper": "1000324086189174206317172093672315369/5000000000000000000000000000000000000000",
+          "lower": 0.00020006481723783485,
+          "upper": 0.00020006481723783485
+        },
+        "balanced_n_from_unrounded_G": {
+          "exact_lower": "2000648172378296214289147057632820847/10000000000000000000000000000000000000000",
+          "exact_upper": "2000648172378296214299737744285471363/10000000000000000000000000000000000000000",
+          "lower": 0.00020006481723782962,
+          "upper": 0.00020006481723782962
+        },
+        "balanced_n_grid15": "100032408619/500000000000000",
+        "iterations": 72,
+        "q_reference_readback": {
+          "exact_lower": "4000000000000104329036321574310501413/10000000000000000000000000000000000000000",
+          "exact_upper": "4000000000000104329040293090812218539/10000000000000000000000000000000000000000",
+          "lower": 0.00040000000000001043,
+          "upper": 0.00040000000000001043
+        }
+      },
+      "inputs": {
+        "DA_raw_visibility": "997/1000",
+        "K_A": "3/4",
+        "K_B": "753/1000",
+        "pair_probability": ".0004"
+      },
+      "point_id": "default:corner_1001",
+      "reason": "coherence_inverse_precision_unresolved",
+      "sources": [],
+      "status": "UNRESOLVED"
+    },
+    {
+      "K_inverse": {
+        "Cauchy_bound": "3",
+        "all_real_root_count": 3,
+        "classification": [
+          {
+            "index": 0,
+            "status": "OUTSIDE_PHYSICAL_DOMAIN"
+          },
+          {
+            "index": 1,
+            "status": "PHYSICAL_ROOT_RETAINED"
+          },
+          {
+            "index": 2,
+            "status": "OUTSIDE_PHYSICAL_DOMAIN"
+          }
+        ],
+        "full_real_cover": true,
+        "no_root_selection_by_target": true,
+        "physical_domain": [
+          "89/100000000",
+          "751164660750/2510753366119393"
+        ],
+        "physical_root_count": 1,
+        "polynomial": [
+          "-890267129819227/937955825937500000000000",
+          "177518349177710816608963977/234488956484375000000000000",
+          "-98105879995128495888888791919/29311119560546875000000000",
+          "3140952461015360643/750364660750000"
+        ],
+        "root_intervals": [
+          {
+            "exact_lower": "740097956571/590295810358705651712",
+            "exact_upper": "370048978287/295147905179352825856",
+            "lower": 1.2537747068224386e-09,
+            "upper": 1.2537747068275208e-09
+          },
+          {
+            "exact_lower": "133551392204219223/590295810358705651712",
+            "exact_upper": "66775696102109613/295147905179352825856",
+            "lower": 0.00022624485869730959,
+            "upper": 0.0002262448586973096
+          },
+          {
+            "exact_lower": "471867906239758924329/590295810358705651712",
+            "exact_upper": "117966976559939731083/147573952589676412928",
+            "lower": 0.7993753266739577,
+            "upper": 0.7993753266739577
+          }
+        ],
+        "sequence": [
+          [
+            "-890267129819227/937955825937500000000000",
+            "177518349177710816608963977/234488956484375000000000000",
+            "-98105879995128495888888791919/29311119560546875000000000",
+            "3140952461015360643/750364660750000"
+          ],
+          [
+            "177518349177710816608963977/234488956484375000000000000",
+            "-98105879995128495888888791919/14655559780273437500000000",
+            "9422857383046081929/750364660750000"
+          ],
+          [
+            "-1935065957288269566022209017261671888611980066788300207/17096170777315142651680183925446222273120546889020038915664",
+            "1"
+          ],
+          [
+            "1"
+          ]
+        ],
+        "split_count": 192
+      },
+      "allocation": "symmetric",
+      "gain_inverse": {
+        "G_enclosure": {
+          "exact_lower": "239254161294631457726075180841125701/9765625000000000000000000000000000000",
+          "exact_upper": "48999252233140522542324533827329852509/2000000000000000000000000000000000000000",
+          "lower": 0.02449962611657026,
+          "upper": 0.02449962611657026
+        },
+        "G_grid15": "2449962611657/100000000000000",
+        "balanced_n_enclosure": {
+          "exact_lower": "3001458642997339146076387556140894107/10000000000000000000000000000000000000000",
+          "exact_upper": "3001458642997339146076387556140894109/10000000000000000000000000000000000000000",
+          "lower": 0.0003001458642997339,
+          "upper": 0.0003001458642997339
+        },
+        "balanced_n_from_unrounded_G": {
+          "exact_lower": "3001458642997403169339115192400622023/10000000000000000000000000000000000000000",
+          "exact_upper": "3001458642997403169342097000319066897/10000000000000000000000000000000000000000",
+          "lower": 0.0003001458642997403,
+          "upper": 0.0003001458642997403
+        },
+        "balanced_n_grid15": "3001458643/10000000000000",
+        "iterations": 71,
+        "q_reference_readback": {
+          "exact_lower": "2999999999999936038948173171197998707/5000000000000000000000000000000000000000",
+          "exact_upper": "2999999999999936038951152081578403803/5000000000000000000000000000000000000000",
+          "lower": 0.0005999999999999872,
+          "upper": 0.0005999999999999872
+        }
+      },
+      "inputs": {
+        "DA_raw_visibility": "199/200",
+        "K_A": "3/4",
+        "K_B": "753/1000",
+        "pair_probability": ".0006"
+      },
+      "point_id": "default:corner_1010",
+      "reason": "coherence_inverse_precision_unresolved",
+      "sources": [],
+      "status": "UNRESOLVED"
+    },
+    {
+      "K_inverse": {
+        "Cauchy_bound": "3",
+        "all_real_root_count": 3,
+        "classification": [
+          {
+            "index": 0,
+            "status": "OUTSIDE_PHYSICAL_DOMAIN"
+          },
+          {
+            "index": 1,
+            "status": "PHYSICAL_ROOT_RETAINED"
+          },
+          {
+            "index": 2,
+            "status": "OUTSIDE_PHYSICAL_DOMAIN"
+          }
+        ],
+        "full_real_cover": true,
+        "no_root_selection_by_target": true,
+        "physical_domain": [
+          "89/100000000",
+          "751164660750/2510753366119393"
+        ],
+        "physical_root_count": 1,
+        "polynomial": [
+          "-890267129819227/937955825937500000000000",
+          "177518349177710816608963977/234488956484375000000000000",
+          "-98105879995128495888888791919/29311119560546875000000000",
+          "3140952461015360643/750364660750000"
+        ],
+        "root_intervals": [
+          {
+            "exact_lower": "740097956571/590295810358705651712",
+            "exact_upper": "370048978287/295147905179352825856",
+            "lower": 1.2537747068224386e-09,
+            "upper": 1.2537747068275208e-09
+          },
+          {
+            "exact_lower": "133551392204219223/590295810358705651712",
+            "exact_upper": "66775696102109613/295147905179352825856",
+            "lower": 0.00022624485869730959,
+            "upper": 0.0002262448586973096
+          },
+          {
+            "exact_lower": "471867906239758924329/590295810358705651712",
+            "exact_upper": "117966976559939731083/147573952589676412928",
+            "lower": 0.7993753266739577,
+            "upper": 0.7993753266739577
+          }
+        ],
+        "sequence": [
+          [
+            "-890267129819227/937955825937500000000000",
+            "177518349177710816608963977/234488956484375000000000000",
+            "-98105879995128495888888791919/29311119560546875000000000",
+            "3140952461015360643/750364660750000"
+          ],
+          [
+            "177518349177710816608963977/234488956484375000000000000",
+            "-98105879995128495888888791919/14655559780273437500000000",
+            "9422857383046081929/750364660750000"
+          ],
+          [
+            "-1935065957288269566022209017261671888611980066788300207/17096170777315142651680183925446222273120546889020038915664",
+            "1"
+          ],
+          [
+            "1"
+          ]
+        ],
+        "split_count": 192
+      },
+      "allocation": "symmetric",
+      "gain_inverse": {
+        "G_enclosure": {
+          "exact_lower": "239254161294631457726075180841125701/9765625000000000000000000000000000000",
+          "exact_upper": "48999252233140522542324533827329852509/2000000000000000000000000000000000000000",
+          "lower": 0.02449962611657026,
+          "upper": 0.02449962611657026
+        },
+        "G_grid15": "2449962611657/100000000000000",
+        "balanced_n_enclosure": {
+          "exact_lower": "3001458642997339146076387556140894107/10000000000000000000000000000000000000000",
+          "exact_upper": "3001458642997339146076387556140894109/10000000000000000000000000000000000000000",
+          "lower": 0.0003001458642997339,
+          "upper": 0.0003001458642997339
+        },
+        "balanced_n_from_unrounded_G": {
+          "exact_lower": "3001458642997403169339115192400622023/10000000000000000000000000000000000000000",
+          "exact_upper": "3001458642997403169342097000319066897/10000000000000000000000000000000000000000",
+          "lower": 0.0003001458642997403,
+          "upper": 0.0003001458642997403
+        },
+        "balanced_n_grid15": "3001458643/10000000000000",
+        "iterations": 71,
+        "q_reference_readback": {
+          "exact_lower": "2999999999999936038948173171197998707/5000000000000000000000000000000000000000",
+          "exact_upper": "2999999999999936038951152081578403803/5000000000000000000000000000000000000000",
+          "lower": 0.0005999999999999872,
+          "upper": 0.0005999999999999872
+        }
+      },
+      "inputs": {
+        "DA_raw_visibility": "997/1000",
+        "K_A": "3/4",
+        "K_B": "753/1000",
+        "pair_probability": ".0006"
+      },
+      "point_id": "default:corner_1011",
+      "reason": "coherence_inverse_precision_unresolved",
+      "sources": [],
+      "status": "UNRESOLVED"
+    },
+    {
+      "K_inverse": {
+        "Cauchy_bound": "3",
+        "all_real_root_count": 3,
+        "classification": [
+          {
+            "index": 0,
+            "status": "OUTSIDE_PHYSICAL_DOMAIN"
+          },
+          {
+            "index": 1,
+            "status": "PHYSICAL_ROOT_RETAINED"
+          },
+          {
+            "index": 2,
+            "status": "OUTSIDE_PHYSICAL_DOMAIN"
+          }
+        ],
+        "full_real_cover": true,
+        "no_root_selection_by_target": true,
+        "physical_domain": [
+          "89/100000000",
+          "25048102154750/126525308199380607"
+        ],
+        "physical_root_count": 1,
+        "polynomial": [
+          "-44508902884367091/31260127693437500000000000",
+          "459945724513836068318624271/601156301796875000000000000",
+          "-19773563686780233328200122154199/3907515961679687500000000000",
+          "14412382833983990961/2273463832250000"
+        ],
+        "root_intervals": [
+          {
+            "exact_lower": "1098530213121/590295810358705651712",
+            "exact_upper": "274632553281/147573952589676412928",
+            "lower": 1.8609825681355506e-09,
+            "upper": 1.8609825681406328e-09
+          },
+          {
+            "exact_lower": "89265087149023815/590295810358705651712",
+            "exact_upper": "44632543574511909/295147905179352825856",
+            "lower": 0.0001512209397094992,
+            "upper": 0.00015122093970949924
+          },
+          {
+            "exact_lower": "58888959062732244267/73786976294838206464",
+            "exact_upper": "471111672501857954139/590295810358705651712",
+            "lower": 0.7980942168903029,
+            "upper": 0.7980942168903029
+          }
+        ],
+        "sequence": [
+          [
+            "-44508902884367091/31260127693437500000000000",
+            "459945724513836068318624271/601156301796875000000000000",
+            "-19773563686780233328200122154199/3907515961679687500000000000",
+            "14412382833983990961/2273463832250000"
+          ],
+          [
+            "459945724513836068318624271/601156301796875000000000000",
+            "-19773563686780233328200122154199/1953757980839843750000000000",
+            "43237148501951972883/2273463832250000"
+          ],
+          [
+            "-16890279501293580660226789861273022617464885438251053933011/223298084962235666993982854300174865868766298446560722261903772",
+            "1"
+          ],
+          [
+            "1"
+          ]
+        ],
+        "split_count": 191
+      },
+      "allocation": "symmetric",
+      "gain_inverse": {
+        "G_enclosure": {
+          "exact_lower": "377837933855226425489/18889465931478580854784",
+          "exact_upper": "188918966927613212745/9444732965739290427392",
+          "lower": 0.020002573668616738,
+          "upper": 0.020002573668616738
+        },
+        "G_grid15": "20002573668617/1000000000000000",
+        "balanced_n_enclosure": {
+          "exact_lower": "125040510773646775789646511709039421/625000000000000000000000000000000000000",
+          "exact_upper": "1000324086189174206317172093672315369/5000000000000000000000000000000000000000",
+          "lower": 0.00020006481723783485,
+          "upper": 0.00020006481723783485
+        },
+        "balanced_n_from_unrounded_G": {
+          "exact_lower": "2000648172378296214289147057632820847/10000000000000000000000000000000000000000",
+          "exact_upper": "2000648172378296214299737744285471363/10000000000000000000000000000000000000000",
+          "lower": 0.00020006481723782962,
+          "upper": 0.00020006481723782962
+        },
+        "balanced_n_grid15": "100032408619/500000000000000",
+        "iterations": 72,
+        "q_reference_readback": {
+          "exact_lower": "4000000000000104329036321574310501413/10000000000000000000000000000000000000000",
+          "exact_upper": "4000000000000104329040293090812218539/10000000000000000000000000000000000000000",
+          "lower": 0.00040000000000001043,
+          "upper": 0.00040000000000001043
+        }
+      },
+      "inputs": {
+        "DA_raw_visibility": "199/200",
+        "K_A": "3/4",
+        "K_B": "759/1000",
+        "pair_probability": ".0004"
+      },
+      "point_id": "default:corner_1100",
+      "reason": "coherence_inverse_precision_unresolved",
+      "sources": [],
+      "status": "UNRESOLVED"
+    },
+    {
+      "K_inverse": {
+        "Cauchy_bound": "3",
+        "all_real_root_count": 3,
+        "classification": [
+          {
+            "index": 0,
+            "status": "OUTSIDE_PHYSICAL_DOMAIN"
+          },
+          {
+            "index": 1,
+            "status": "PHYSICAL_ROOT_RETAINED"
+          },
+          {
+            "index": 2,
+            "status": "OUTSIDE_PHYSICAL_DOMAIN"
+          }
+        ],
+        "full_real_cover": true,
+        "no_root_selection_by_target": true,
+        "physical_domain": [
+          "89/100000000",
+          "25048102154750/126525308199380607"
+        ],
+        "physical_root_count": 1,
+        "polynomial": [
+          "-44508902884367091/31260127693437500000000000",
+          "459945724513836068318624271/601156301796875000000000000",
+          "-19773563686780233328200122154199/3907515961679687500000000000",
+          "14412382833983990961/2273463832250000"
+        ],
+        "root_intervals": [
+          {
+            "exact_lower": "1098530213121/590295810358705651712",
+            "exact_upper": "274632553281/147573952589676412928",
+            "lower": 1.8609825681355506e-09,
+            "upper": 1.8609825681406328e-09
+          },
+          {
+            "exact_lower": "89265087149023815/590295810358705651712",
+            "exact_upper": "44632543574511909/295147905179352825856",
+            "lower": 0.0001512209397094992,
+            "upper": 0.00015122093970949924
+          },
+          {
+            "exact_lower": "58888959062732244267/73786976294838206464",
+            "exact_upper": "471111672501857954139/590295810358705651712",
+            "lower": 0.7980942168903029,
+            "upper": 0.7980942168903029
+          }
+        ],
+        "sequence": [
+          [
+            "-44508902884367091/31260127693437500000000000",
+            "459945724513836068318624271/601156301796875000000000000",
+            "-19773563686780233328200122154199/3907515961679687500000000000",
+            "14412382833983990961/2273463832250000"
+          ],
+          [
+            "459945724513836068318624271/601156301796875000000000000",
+            "-19773563686780233328200122154199/1953757980839843750000000000",
+            "43237148501951972883/2273463832250000"
+          ],
+          [
+            "-16890279501293580660226789861273022617464885438251053933011/223298084962235666993982854300174865868766298446560722261903772",
+            "1"
+          ],
+          [
+            "1"
+          ]
+        ],
+        "split_count": 191
+      },
+      "allocation": "symmetric",
+      "gain_inverse": {
+        "G_enclosure": {
+          "exact_lower": "377837933855226425489/18889465931478580854784",
+          "exact_upper": "188918966927613212745/9444732965739290427392",
+          "lower": 0.020002573668616738,
+          "upper": 0.020002573668616738
+        },
+        "G_grid15": "20002573668617/1000000000000000",
+        "balanced_n_enclosure": {
+          "exact_lower": "125040510773646775789646511709039421/625000000000000000000000000000000000000",
+          "exact_upper": "1000324086189174206317172093672315369/5000000000000000000000000000000000000000",
+          "lower": 0.00020006481723783485,
+          "upper": 0.00020006481723783485
+        },
+        "balanced_n_from_unrounded_G": {
+          "exact_lower": "2000648172378296214289147057632820847/10000000000000000000000000000000000000000",
+          "exact_upper": "2000648172378296214299737744285471363/10000000000000000000000000000000000000000",
+          "lower": 0.00020006481723782962,
+          "upper": 0.00020006481723782962
+        },
+        "balanced_n_grid15": "100032408619/500000000000000",
+        "iterations": 72,
+        "q_reference_readback": {
+          "exact_lower": "4000000000000104329036321574310501413/10000000000000000000000000000000000000000",
+          "exact_upper": "4000000000000104329040293090812218539/10000000000000000000000000000000000000000",
+          "lower": 0.00040000000000001043,
+          "upper": 0.00040000000000001043
+        }
+      },
+      "inputs": {
+        "DA_raw_visibility": "997/1000",
+        "K_A": "3/4",
+        "K_B": "759/1000",
+        "pair_probability": ".0004"
+      },
+      "point_id": "default:corner_1101",
+      "reason": "coherence_inverse_precision_unresolved",
+      "sources": [],
+      "status": "UNRESOLVED"
+    },
+    {
+      "K_inverse": {
+        "Cauchy_bound": "3",
+        "all_real_root_count": 3,
+        "classification": [
+          {
+            "index": 0,
+            "status": "OUTSIDE_PHYSICAL_DOMAIN"
+          },
+          {
+            "index": 1,
+            "status": "PHYSICAL_ROOT_RETAINED"
+          },
+          {
+            "index": 2,
+            "status": "OUTSIDE_PHYSICAL_DOMAIN"
+          }
+        ],
+        "full_real_cover": true,
+        "no_root_selection_by_target": true,
+        "physical_domain": [
+          "89/100000000",
+          "751164660750/2530759369036679"
+        ],
+        "physical_root_count": 1,
+        "polynomial": [
+          "-890267129819227/937955825937500000000000",
+          "178930845384234146960789931/234488956484375000000000000",
+          "-395550400325361478889742511903/117244478242187500000000000",
+          "3171041489402958787/750364660750000"
+        ],
+        "root_intervals": [
+          {
+            "exact_lower": "734255524569/590295810358705651712",
+            "exact_upper": "183563881143/147573952589676412928",
+            "lower": 1.2438772420268648e-09,
+            "upper": 1.243877242031947e-09
+          },
+          {
+            "exact_lower": "133549970908700115/590295810358705651712",
+            "exact_upper": "66774985454350059/295147905179352825856",
+            "lower": 0.00022624245092904465,
+            "upper": 0.00022624245092904465
+          },
+          {
+            "exact_lower": "471114513131137229553/590295810358705651712",
+            "exact_upper": "117778628282784307389/147573952589676412928",
+            "lower": 0.7980990291034838,
+            "upper": 0.7980990291034838
+          }
+        ],
+        "sequence": [
+          [
+            "-890267129819227/937955825937500000000000",
+            "178930845384234146960789931/234488956484375000000000000",
+            "-395550400325361478889742511903/117244478242187500000000000",
+            "3171041489402958787/750364660750000"
+          ],
+          [
+            "178930845384234146960789931/234488956484375000000000000",
+            "-395550400325361478889742511903/58622239121093750000000000",
+            "9513124468208876361/750364660750000"
+          ],
+          [
+            "-70776166529802220005950456976351110187429227894550048693/625308541976670512519890172434237350739585605680902886725636",
+            "1"
+          ],
+          [
+            "1"
+          ]
+        ],
+        "split_count": 192
+      },
+      "allocation": "symmetric",
+      "gain_inverse": {
+        "G_enclosure": {
+          "exact_lower": "239254161294631457726075180841125701/9765625000000000000000000000000000000",
+          "exact_upper": "48999252233140522542324533827329852509/2000000000000000000000000000000000000000",
+          "lower": 0.02449962611657026,
+          "upper": 0.02449962611657026
+        },
+        "G_grid15": "2449962611657/100000000000000",
+        "balanced_n_enclosure": {
+          "exact_lower": "3001458642997339146076387556140894107/10000000000000000000000000000000000000000",
+          "exact_upper": "3001458642997339146076387556140894109/10000000000000000000000000000000000000000",
+          "lower": 0.0003001458642997339,
+          "upper": 0.0003001458642997339
+        },
+        "balanced_n_from_unrounded_G": {
+          "exact_lower": "3001458642997403169339115192400622023/10000000000000000000000000000000000000000",
+          "exact_upper": "3001458642997403169342097000319066897/10000000000000000000000000000000000000000",
+          "lower": 0.0003001458642997403,
+          "upper": 0.0003001458642997403
+        },
+        "balanced_n_grid15": "3001458643/10000000000000",
+        "iterations": 71,
+        "q_reference_readback": {
+          "exact_lower": "2999999999999936038948173171197998707/5000000000000000000000000000000000000000",
+          "exact_upper": "2999999999999936038951152081578403803/5000000000000000000000000000000000000000",
+          "lower": 0.0005999999999999872,
+          "upper": 0.0005999999999999872
+        }
+      },
+      "inputs": {
+        "DA_raw_visibility": "199/200",
+        "K_A": "3/4",
+        "K_B": "759/1000",
+        "pair_probability": ".0006"
+      },
+      "point_id": "default:corner_1110",
+      "reason": "coherence_inverse_precision_unresolved",
+      "sources": [],
+      "status": "UNRESOLVED"
+    },
+    {
+      "K_inverse": {
+        "Cauchy_bound": "3",
+        "all_real_root_count": 3,
+        "classification": [
+          {
+            "index": 0,
+            "status": "OUTSIDE_PHYSICAL_DOMAIN"
+          },
+          {
+            "index": 1,
+            "status": "PHYSICAL_ROOT_RETAINED"
+          },
+          {
+            "index": 2,
+            "status": "OUTSIDE_PHYSICAL_DOMAIN"
+          }
+        ],
+        "full_real_cover": true,
+        "no_root_selection_by_target": true,
+        "physical_domain": [
+          "89/100000000",
+          "751164660750/2530759369036679"
+        ],
+        "physical_root_count": 1,
+        "polynomial": [
+          "-890267129819227/937955825937500000000000",
+          "178930845384234146960789931/234488956484375000000000000",
+          "-395550400325361478889742511903/117244478242187500000000000",
+          "3171041489402958787/750364660750000"
+        ],
+        "root_intervals": [
+          {
+            "exact_lower": "734255524569/590295810358705651712",
+            "exact_upper": "183563881143/147573952589676412928",
+            "lower": 1.2438772420268648e-09,
+            "upper": 1.243877242031947e-09
+          },
+          {
+            "exact_lower": "133549970908700115/590295810358705651712",
+            "exact_upper": "66774985454350059/295147905179352825856",
+            "lower": 0.00022624245092904465,
+            "upper": 0.00022624245092904465
+          },
+          {
+            "exact_lower": "471114513131137229553/590295810358705651712",
+            "exact_upper": "117778628282784307389/147573952589676412928",
+            "lower": 0.7980990291034838,
+            "upper": 0.7980990291034838
+          }
+        ],
+        "sequence": [
+          [
+            "-890267129819227/937955825937500000000000",
+            "178930845384234146960789931/234488956484375000000000000",
+            "-395550400325361478889742511903/117244478242187500000000000",
+            "3171041489402958787/750364660750000"
+          ],
+          [
+            "178930845384234146960789931/234488956484375000000000000",
+            "-395550400325361478889742511903/58622239121093750000000000",
+            "9513124468208876361/750364660750000"
+          ],
+          [
+            "-70776166529802220005950456976351110187429227894550048693/625308541976670512519890172434237350739585605680902886725636",
+            "1"
+          ],
+          [
+            "1"
+          ]
+        ],
+        "split_count": 192
+      },
+      "allocation": "symmetric",
+      "gain_inverse": {
+        "G_enclosure": {
+          "exact_lower": "239254161294631457726075180841125701/9765625000000000000000000000000000000",
+          "exact_upper": "48999252233140522542324533827329852509/2000000000000000000000000000000000000000",
+          "lower": 0.02449962611657026,
+          "upper": 0.02449962611657026
+        },
+        "G_grid15": "2449962611657/100000000000000",
+        "balanced_n_enclosure": {
+          "exact_lower": "3001458642997339146076387556140894107/10000000000000000000000000000000000000000",
+          "exact_upper": "3001458642997339146076387556140894109/10000000000000000000000000000000000000000",
+          "lower": 0.0003001458642997339,
+          "upper": 0.0003001458642997339
+        },
+        "balanced_n_from_unrounded_G": {
+          "exact_lower": "3001458642997403169339115192400622023/10000000000000000000000000000000000000000",
+          "exact_upper": "3001458642997403169342097000319066897/10000000000000000000000000000000000000000",
+          "lower": 0.0003001458642997403,
+          "upper": 0.0003001458642997403
+        },
+        "balanced_n_grid15": "3001458643/10000000000000",
+        "iterations": 71,
+        "q_reference_readback": {
+          "exact_lower": "2999999999999936038948173171197998707/5000000000000000000000000000000000000000",
+          "exact_upper": "2999999999999936038951152081578403803/5000000000000000000000000000000000000000",
+          "lower": 0.0005999999999999872,
+          "upper": 0.0005999999999999872
+        }
+      },
+      "inputs": {
+        "DA_raw_visibility": "997/1000",
+        "K_A": "3/4",
+        "K_B": "759/1000",
+        "pair_probability": ".0006"
+      },
+      "point_id": "default:corner_1111",
+      "reason": "coherence_inverse_precision_unresolved",
+      "sources": [],
+      "status": "UNRESOLVED"
+    },
+    {
+      "K_inverse": {
+        "Cauchy_bound": "3",
+        "all_real_root_count": 3,
+        "classification": [
+          {
+            "index": 0,
+            "status": "OUTSIDE_PHYSICAL_DOMAIN"
+          },
+          {
+            "index": 1,
+            "status": "PHYSICAL_ROOT_RETAINED"
+          },
+          {
+            "index": 2,
+            "status": "OUTSIDE_PHYSICAL_DOMAIN"
+          }
+        ],
+        "full_real_cover": true,
+        "no_root_selection_by_target": true,
+        "physical_domain": [
+          "89/100000000",
+          "989760320039/4001000405143172"
+        ],
+        "physical_root_count": 1,
+        "polynomial": [
+          "-89022259014435577/78156651810312500000000000",
+          "4935838081857554196151853859/6487002100255937500000000000",
+          "-544960779349502082215470728673211/134605293580310703125000000000",
+          "1094919772372088164278/215368469728497125"
+        ],
+        "root_intervals": [
+          {
+            "exact_lower": "883667655069/590295810358705651712",
+            "exact_upper": "27614614221/18446744073709551616",
+            "lower": 1.496991236532783e-09,
+            "upper": 1.4969912365378653e-09
+          },
+          {
+            "exact_lower": "110964108696515787/590295810358705651712",
+            "exact_upper": "55482054348257895/295147905179352825856",
+            "lower": 0.00018798051205731262,
+            "upper": 0.00018798051205731262
+          },
+          {
+            "exact_lower": "469969964006340800955/590295810358705651712",
+            "exact_upper": "234984982003170400479/295147905179352825856",
+            "lower": 0.7961600874665766,
+            "upper": 0.7961600874665766
+          }
+        ],
+        "sequence": [
+          [
+            "-89022259014435577/78156651810312500000000000",
+            "4935838081857554196151853859/6487002100255937500000000000",
+            "-544960779349502082215470728673211/134605293580310703125000000000",
+            "1094919772372088164278/215368469728497125"
+          ],
+          [
+            "4935838081857554196151853859/6487002100255937500000000000",
+            "-544960779349502082215470728673211/67302646790155351562500000000",
+            "3284759317116264492834/215368469728497125"
+          ],
+          [
+            "-223256564152949773955191341912986149722982885699492028342513667/2374175905320540827733094438634421216227149130547108481407432404168",
+            "1"
+          ],
+          [
+            "1"
+          ]
+        ],
+        "split_count": 192
+      },
+      "allocation": "Alice_rank_one",
+      "gain_inverse": {
+        "G_enclosure": {
+          "exact_lower": "422449244663687273009/18889465931478580854784",
+          "exact_upper": "211224622331843636505/9444732965739290427392",
+          "lower": 0.022364276798302253,
+          "upper": 0.022364276798302253
+        },
+        "G_grid15": "11182138399151/500000000000000",
+        "balanced_n_enclosure": {
+          "exact_lower": "1250506428962723367228823257350912497/5000000000000000000000000000000000000000",
+          "exact_upper": "625253214481361683614411628675456249/2500000000000000000000000000000000000000",
+          "lower": 0.00025010128579254466,
+          "upper": 0.00025010128579254466
+        },
+        "balanced_n_from_unrounded_G": {
+          "exact_lower": "1250506428962751613129220039500329419/5000000000000000000000000000000000000000",
+          "exact_upper": "1250506428962751613135140801274298811/5000000000000000000000000000000000000000",
+          "lower": 0.00025010128579255035,
+          "upper": 0.00025010128579255035
+        },
+        "balanced_n_grid15": "250101285793/1000000000000000",
+        "iterations": 72,
+        "q_reference_readback": {
+          "exact_lower": "2499999999999943553943067183836686083/5000000000000000000000000000000000000000",
+          "exact_upper": "4999999999999887107891098990797559289/10000000000000000000000000000000000000000",
+          "lower": 0.0004999999999999887,
+          "upper": 0.0004999999999999887
+        }
+      },
+      "inputs": {
+        "DA_raw_visibility": ".996",
+        "K_A": ".747",
+        "K_B": ".756",
+        "pair_probability": ".0005"
+      },
+      "point_id": "Alice_rank_one:center",
+      "reason": "coherence_inverse_precision_unresolved",
+      "sources": [],
+      "status": "UNRESOLVED"
+    },
+    {
+      "K_inverse": {
+        "Cauchy_bound": "3",
+        "all_real_root_count": 3,
+        "classification": [
+          {
+            "index": 0,
+            "status": "OUTSIDE_PHYSICAL_DOMAIN"
+          },
+          {
+            "index": 1,
+            "status": "PHYSICAL_ROOT_RETAINED"
+          },
+          {
+            "index": 2,
+            "status": "OUTSIDE_PHYSICAL_DOMAIN"
+          }
+        ],
+        "full_real_cover": true,
+        "no_root_selection_by_target": true,
+        "physical_domain": [
+          "89/100000000",
+          "989760320039/4001000405143172"
+        ],
+        "physical_root_count": 1,
+        "polynomial": [
+          "-89022259014435577/78156651810312500000000000",
+          "4935838081857554196151853859/6487002100255937500000000000",
+          "-544960779349502082215470728673211/134605293580310703125000000000",
+          "1094919772372088164278/215368469728497125"
+        ],
+        "root_intervals": [
+          {
+            "exact_lower": "883667655069/590295810358705651712",
+            "exact_upper": "27614614221/18446744073709551616",
+            "lower": 1.496991236532783e-09,
+            "upper": 1.4969912365378653e-09
+          },
+          {
+            "exact_lower": "110964108696515787/590295810358705651712",
+            "exact_upper": "55482054348257895/295147905179352825856",
+            "lower": 0.00018798051205731262,
+            "upper": 0.00018798051205731262
+          },
+          {
+            "exact_lower": "469969964006340800955/590295810358705651712",
+            "exact_upper": "234984982003170400479/295147905179352825856",
+            "lower": 0.7961600874665766,
+            "upper": 0.7961600874665766
+          }
+        ],
+        "sequence": [
+          [
+            "-89022259014435577/78156651810312500000000000",
+            "4935838081857554196151853859/6487002100255937500000000000",
+            "-544960779349502082215470728673211/134605293580310703125000000000",
+            "1094919772372088164278/215368469728497125"
+          ],
+          [
+            "4935838081857554196151853859/6487002100255937500000000000",
+            "-544960779349502082215470728673211/67302646790155351562500000000",
+            "3284759317116264492834/215368469728497125"
+          ],
+          [
+            "-223256564152949773955191341912986149722982885699492028342513667/2374175905320540827733094438634421216227149130547108481407432404168",
+            "1"
+          ],
+          [
+            "1"
+          ]
+        ],
+        "split_count": 192
+      },
+      "allocation": "Bob_rank_one",
+      "gain_inverse": {
+        "G_enclosure": {
+          "exact_lower": "422449244663687273009/18889465931478580854784",
+          "exact_upper": "211224622331843636505/9444732965739290427392",
+          "lower": 0.022364276798302253,
+          "upper": 0.022364276798302253
+        },
+        "G_grid15": "11182138399151/500000000000000",
+        "balanced_n_enclosure": {
+          "exact_lower": "1250506428962723367228823257350912497/5000000000000000000000000000000000000000",
+          "exact_upper": "625253214481361683614411628675456249/2500000000000000000000000000000000000000",
+          "lower": 0.00025010128579254466,
+          "upper": 0.00025010128579254466
+        },
+        "balanced_n_from_unrounded_G": {
+          "exact_lower": "1250506428962751613129220039500329419/5000000000000000000000000000000000000000",
+          "exact_upper": "1250506428962751613135140801274298811/5000000000000000000000000000000000000000",
+          "lower": 0.00025010128579255035,
+          "upper": 0.00025010128579255035
+        },
+        "balanced_n_grid15": "250101285793/1000000000000000",
+        "iterations": 72,
+        "q_reference_readback": {
+          "exact_lower": "2499999999999943553943067183836686083/5000000000000000000000000000000000000000",
+          "exact_upper": "4999999999999887107891098990797559289/10000000000000000000000000000000000000000",
+          "lower": 0.0004999999999999887,
+          "upper": 0.0004999999999999887
+        }
+      },
+      "inputs": {
+        "DA_raw_visibility": ".996",
+        "K_A": ".747",
+        "K_B": ".756",
+        "pair_probability": ".0005"
+      },
+      "point_id": "Bob_rank_one:center",
+      "reason": "coherence_inverse_precision_unresolved",
+      "sources": [],
+      "status": "UNRESOLVED"
+    }
+  ],
+  "schema": "p23-nominal-environment-calibration-independent/v1",
+  "source_grid_digits": 15,
+  "source_mapping_identified": false,
+  "trig_terms": 14,
+  "version": "p23-nominal-environment-calibration-nec0001"
+}

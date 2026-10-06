@@ -1,0 +1,230 @@
+NIST Bell test public DAQ source extract; non-executable source material.
+Source: official NIST code/daq archives. Extracted 2026-10-02.
+Network endpoints, device identifiers and local paths are redacted.
+This extract does not establish execution at any named data-run epoch.
+NIST notice and source attribution: https://www.nist.gov/pml/applied-physics-division/bell-test-research-software-and-data
+
+MEMBER bell_client/CH_over_network.py
+ORIGINAL_SHA256 98dcac2dc3c49d39c009d9d561347c62ed53b7cf5f5b39bb298c1963914dd452
+LINES 64-101
+64: def get_pockel_on_off_counts(alice, bob, pockelPosOn, pockelLengthOn, pockelPosOff, pockelLengthOff, offset):
+65:     alice_data = []
+66:     bob_data = []
+67:     getUpdate = True
+68:     counts ={}
+69:     while getUpdate:
+70:         try:
+71:             alice_data, bob_data, coin_results,pockel = cmdline.update(alice,bob,calc,config)
+72:             getUpdate = False
+73:             break
+74:            
+75:         except:
+76:             print "Memory Error"
+77:             getUpdate = True
+78: 
+79:     
+80: #    counts = {"SAOn": pockel[1][2], "SBOn": pockel[3][2], "CoinOn": pockel[0][2], 
+81: #              "SAOff": pockel[1][1], "SBOff": pockel[3][1], "CoinOff": pockel[0][1]}    
+82:     counts = {"SA00": pockel['alice']['single'][1][1], "SA01":  pockel['alice']['single'][1][2], "SA10": pockel['alice']['single'][2][1], "SA11": pockel['alice']['single'][2][2], 
+83:               "SB00": pockel['bob']['single'][1][1], "SB01": pockel['bob']['single'][1][2], "SB10": pockel['bob']['single'][2][1], "SB11": pockel['bob']['single'][2][2],   
+84:               "C00": pockel['alice']['coin'][1][1], "C01": pockel['alice']['coin'][1][2], "C10": pockel['alice']['coin'][2][1], "C11": pockel['alice']['coin'][2][2],
+85:               "SET00": pockel['settings'][1][1], "SET01":  pockel['settings'][1][2], "SET10": pockel['settings'][2][1], "SET11": pockel['settings'][2][2]}      
+86:     gc.collect()
+87:     return counts
+88: 
+89: 
+90: 
+91: 
+92: 
+93: 
+94: def calc_ch(ch_counts):
+95:     counts_sorted = np.sort(ch_counts, axis=0) 
+96:     coinc = counts_sorted[1,1] + counts_sorted[2,1] + counts_sorted[3, 1] - counts_sorted[0,1]
+97:     Sa = (counts_sorted[0,0] +  counts_sorted[1,0])/2.
+98:     Sb = (counts_sorted[0,2] +  counts_sorted[1,2])/2.
+99:     ch = coinc - Sa - Sb
+100:     chn = coinc/(Sa + Sb) *1.
+101:     return ch, chn
+LINES 115-141
+115: def get_ch_two_pockels():
+116:     ch_counts =  []
+117:     time.sleep(INT_TIME)
+118:     counts = get_pockel_on_off_counts(alice, bob, pockelOn, pockelOnLength, pockelOff, pockelOnLength, offset )
+119:     #meanTrials = (counts['SET00'] + counts['SET01'] + counts['SET10'] + counts['SET11'])/4.
+120:     meanTrials = 1
+121:     ch_counts = [[ meanTrials*counts['SA00']/(1.*counts['SET00']), meanTrials*counts['C00']/(1.*counts['SET00']), meanTrials*counts['SB00']/(1.*counts['SET00'])],
+122:                  [ meanTrials*counts['SA10']/(1.*counts['SET10']), meanTrials*counts['C10']/(1.*counts['SET10']), meanTrials*counts['SB10']/(1.*counts['SET10'])],
+123:                  [ meanTrials*counts['SA01']/(1.*counts['SET01']), meanTrials*counts['C01']/(1.*counts['SET01']), meanTrials*counts['SB01']/(1.*counts['SET01'])],
+124:                  [ meanTrials*counts['SA11']/(1.*counts['SET11']), meanTrials*counts['C11']/(1.*counts['SET11']), meanTrials*counts['SB11']/(1.*counts['SET11'])]]
+125: 
+126: #    ch_counts.append([counts['SAOff'], counts["CoinOff"], counts['SBOff']])
+127: #    ch_counts.append([counts['SAOn'], counts["CoinOn"], counts['SBOn']])
+128:     return ch_counts
+129: 
+130: def get_ch_waveplates():
+131:     ch_counts =  []
+132:     for alice_angle in Alice_angles:
+133:         mc_alice.goto('AliceHWP1', alice_angle)
+134:         for bob_angle in Bob_angles:
+135:             mc_bob.goto('BobHWP1', 1*bob_angle )
+136:             time.sleep(INT_TIME + WP_PAUSE_TIME)
+137:             counts = get_counts(INT_TIME, 'none')
+138:             ch_counts.append(counts)
+139:     #assign number of trial
+140:     ch_counts = np.column_stack((ch_counts,INT_TIME*79e6*np.array([1,1,1,1])))
+141:     return ch_counts
+LINES 169-191
+169: def calculate_poissoinian_uncertainty(counts):
+170: #Assume standard counts matrix, with trials on far right, trials will be placed in program:
+171: #[Sa_0 , C00 , Sb_0 , N00]
+172: #[Sa_0 , C01 , Sb_1 , N01]
+173: #[Sa_1 , C10 , Sb_0 , N10]
+174: #[Sa_1 , C11 , Sb_1 , N11]
+175:     #rate = 80e6#number of pulses used per second (1e6 for PC and 80e6 for WP)
+176:     #counts = np.column_stack((counts,[rate*duration,rate*duration,rate*duration,rate*duration]))#convert counts to include trials
+177:     #counts = np.column_stack((counts,[1., 1., 1., 1.]))#convert counts to include trials
+178: 
+179:     #swap rows 2 and 3
+180:     #counts[[1, 2],:] = counts[[2, 1],:]
+181:     
+182:     unc_a2 = (counts[0,0] + counts[0,2]) * (.25 + counts[0,1]/counts[0,3]) - counts[0,1]
+183:     unc_b2 = counts[1,0] * (0.25 + counts[1,1]/counts[1,3])
+184:     unc_c2 = counts[2,2] * (0.25 + counts[2,1]/counts[2,3])
+185:     unc_d2 = counts[3,1]
+186:     
+187:     unc = np.sqrt(unc_a2 + unc_b2 + unc_c2 + unc_d2)    
+188:     CHval = counts[0,1] + counts[1,1] + counts[2,1] - counts[3,1] - 0.5 * (counts[0,0] + counts[1,0] + counts[0,2] + counts[2,2])
+189:     CHnorm = counts[0,1] + counts[1,1] + counts[2,1] - counts[3,1] /( 0.5 * (counts[0,0] + counts[1,0] + counts[0,2] + counts[2,2]))
+190:    
+191:     return CHval, unc, CHnorm
+
+MEMBER bell_client/CH_with_one_pockels_cell_log2.py
+ORIGINAL_SHA256 488c713494099980e4b1a52d513aa53a107bce07eb3bd67af4ba0432c32cc535
+LINES 99-147
+99: def get_pockel_on_off_counts(alice, bob, pockelPosOn, pockelLengthOn, pockelPosOff, pockelLengthOff, offset):
+100:     alice_data = []
+101:     bob_data = []
+102:     getUpdate = True
+103:     counts ={}
+104:     while getUpdate:
+105:         try:
+106:             alice_data, bob_data, coin_results,pockel = cmdline.update(alice,bob,calc,config)
+107:             print "grabbed data"
+108:             #getUpdate = False
+109:             diffMatrix = np.array(pockel['alice']['coin'] - pockel['bob']['coin'])
+110:             coinDiff = np.max(np.abs(diffMatrix))
+111:             print coinDiff, diffMatrix
+112:             #break
+113:             # Make sure Alice and Bob have the same coincidence matrix
+114:             if coinDiff == 0:
+115:                 print "Congratulations. You've got data."
+116:                 getUpdate = False
+117:                 break
+118:             else:
+119:                 print "Pockel's Cell coincidence error. Alice and Bob coincidences do not match."
+120:                 getUpdate = True
+121:         except:
+122:             print "Memory Error"
+123:             getUpdate = True
+124: 
+125:     
+126: #    counts = {"SAOn": pockel[1][2], "SBOn": pockel[3][2], "CoinOn": pockel[0][2], 
+127: #              "SAOff": pockel[1][1], "SBOff": pockel[3][1], "CoinOff": pockel[0][1]}    
+128:     counts = {"SA00": pockel['alice']['single'][1][1], "SA01":  pockel['alice']['single'][1][2], "SA10": pockel['alice']['single'][2][1], "SA11": pockel['alice']['single'][2][2], 
+129:               "SB00": pockel['bob']['single'][1][1], "SB01": pockel['bob']['single'][1][2], "SB10": pockel['bob']['single'][2][1], "SB11": pockel['bob']['single'][2][2],   
+130:               "C00": pockel['alice']['coin'][1][1], "C01": pockel['alice']['coin'][1][2], "C10": pockel['alice']['coin'][2][1], "C11": pockel['alice']['coin'][2][2],
+131:               "SET00": pockel['settings'][1][1], "SET01":  pockel['settings'][1][2], "SET10": pockel['settings'][2][1], "SET11": pockel['settings'][2][2]}      
+132:     gc.collect()
+133:     return counts
+134: 
+135: 
+136: def calc_ch(ch_counts):
+137:     #print "starting ch calculation"
+138:     coinc1 =  ch_counts[0,1] + ch_counts[1,1] + ch_counts[2,1] - ch_counts[3,1]
+139:     coinc2 =  ch_counts[0,1] + ch_counts[1,1] - ch_counts[2,1] + ch_counts[3,1]
+140:     coinc3 =  ch_counts[0,1] - ch_counts[1,1] + ch_counts[2,1] + ch_counts[3,1]
+141:     coinc2 = -ch_counts[0,1] + ch_counts[1,1] + ch_counts[2,1] + ch_counts[3,1]
+142:     
+143:     singles1 = (ch_counts[0,0] + ch_counts[2,0])/2 + (ch_counts[0,2] + ch_counts[1,2])/2
+144:     #print coinc1,singles1
+145:     ch = coinc1 -singles1
+146:     chn = coinc1 / singles1
+147:     return ch, chn
+LINES 159-219
+159: def get_ch_two_pockels():
+160:     ch_counts =  []
+161:     time.sleep(INT_TIME)
+162:     counts = get_pockel_on_off_counts(alice, bob, pockelOn, pockelOnLength, pockelOff, pockelOnLength, offset )
+163: 
+164:     ch_counts = [[ counts['SA00'], counts['C00'], counts['SB00'], counts['SET00']],
+165:                  [ counts['SA10'], counts['C10'], counts['SB10'], counts['SET10']],
+166:                  [ counts['SA01'], counts['C01'], counts['SB01'], counts['SET01']],
+167:                  [ counts['SA11'], counts['C11'], counts['SB11'], counts['SET11']]]         
+168:     print "CH Counts: ", ch_counts
+169:     return ch_counts
+170: 
+171: def get_ch_waveplates(filestr='', logtofile=True):
+172:     ch_counts =  []
+173:     setting = 0
+174:     for alice_angle in Alice_angles:
+175:         mc_alice.goto('AliceHWP1', 1*alice_angle )
+176:         for bob_angle in Bob_angles:
+177:             mc_bob.goto('BobHWP1', bob_angle )
+178: #            
+179:             if filestr == '':
+180:                 filestring = 'setting%d'%setting
+181:             else:
+182:                 filestring = '%s.setting%d'%(filestr,setting)
+183:                 
+184:             if logtofile:
+185:                 client_twottag.log_twottag(filestring)
+186: #                
+187:             time.sleep(INT_TIME + WP_PAUSE_TIME)
+188:             counts = get_counts(INT_TIME, 'none')
+189:             
+190:             if logtofile:
+191:                 client_twottag.log_twottag_stop()
+192:                 
+193:             counts.append(INT_TIME * 80e6)#add in fourth row for trials, to be consistent with PC output
+194:             ch_counts.append(counts)
+195:             setting += 1
+196:     return ch_counts
+197: 
+198: 
+199: def collect_data_with_PC(num_experiments = 1, filestr='', logtofile=True):
+200:     ch_counts = np.zeros((4,4))
+201:     # start logging to file   
+202:     if logtofile:
+203:         filestring = filestr
+204:         client_twottag.log_twottags(filestring)
+205:     
+206:     for i in range(num_experiments):
+207:         ch_results = np.array(get_ch_two_pockels(filestr=''))*1.
+208:         ch_counts = ch_counts + ch_results
+209:         print ch_counts
+210:         print calculate_poissonian_uncertainty(ch_counts)
+211:         print "Total CH: ", calc_ch(ch_counts)
+212:         print "Iteration: ", i
+213:         winsound.Beep(1000, 1000)
+214:         
+215:     # stop logging 
+216:     if logtofile:
+217:         client_twottag.log_twottags_stop()
+218:         
+219:     return ch_counts
+LINES 232-245
+232: def calculate_poissonian_uncertainty(counts):
+233:     #Assume standard counts matrix, with trials on far right, trials will be placed in program:
+234:     #[Sa_0 , C00 , Sb_0 , N00]
+235:     #[Sa_0 , C01 , Sb_1 , N01]
+236:     #[Sa_1 , C10 , Sb_0 , N10]
+237:     #[Sa_1 , C11 , Sb_1 , N11]    
+238:     unc_a2 = (counts[0,0] + counts[0,2]) * (.25 + counts[0,1]/counts[0,3]) - counts[0,1]
+239:     unc_b2 = counts[1,0] * (0.25 + counts[1,1]/counts[1,3])
+240:     unc_c2 = counts[2,2] * (0.25 + counts[2,1]/counts[2,3])
+241:     unc_d2 = counts[3,1]
+242:     
+243:     unc = np.sqrt(unc_a2 + unc_b2 + unc_c2 + unc_d2)    
+244:     CHval = counts[0,1] + counts[1,1] + counts[2,1] - counts[3,1] - 0.5 * (counts[0,0] + counts[1,0] + counts[0,2] + counts[2,2])
+245:     CHnorm = (counts[0,1] + counts[1,1] + counts[2,1] - counts[3,1]) /( 0.5 * (counts[0,0] + counts[1,0] + counts[0,2] + counts[2,2]))
+

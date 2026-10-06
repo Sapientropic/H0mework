@@ -1,0 +1,79 @@
+# NIST Bell analysis: static source excerpts. Original member line numbers are retained.
+# No archive module is imported or executed. Redactions preserve line positions.
+
+## bell_analysis_code/build_file.yaml
+## original_sha256: 3e1fb4bb66f6ced1a9b26ea427796579367fdc9f15a3a9284489d558d18d7fa7
+
+### original lines 1-56
+0001: ---
+0002: alice:
+0003:     channelmap:
+0004:         detector: 1
+0005:         sync: 7 
+0006:         setting0: 3
+0007:         setting1: 5 
+0008:         gps: 6
+0009: # [REDACTED network endpoint / clock identifier / local device path]
+0010: # [REDACTED network endpoint / clock identifier / local device path]
+0011: # [REDACTED network endpoint / clock identifier / local device path]
+0012: # [REDACTED network endpoint / clock identifier / local device path]
+0013:     #ttag_offset: 0
+0014: # [REDACTED network endpoint / clock identifier / local device path]
+0015: # [REDACTED network endpoint / clock identifier / local device path]
+0016:     timeTaggerPeriod: 129107 
+0017: bob: 
+0018:     channelmap:
+0019:         detector: 1
+0020:         sync: 7
+0021:         setting0: 3
+0022:         setting1: 5
+0023:         gps: 6
+0024: # [REDACTED network endpoint / clock identifier / local device path]
+0025: # [REDACTED network endpoint / clock identifier / local device path]
+0026: # [REDACTED network endpoint / clock identifier / local device path]
+0027: # [REDACTED network endpoint / clock identifier / local device path]
+0028:     #ttag_offset: 0
+0029: # [REDACTED network endpoint / clock identifier / local device path]
+0030:     timeTaggerPeriod: 1
+0031: analysis:
+0032:     alicePeak: 90 
+0033:     bobPeak: 125
+0034:     pockelOn: 12
+0035:     pockelOnLength: 10
+0036:     pockelOff: 200
+0037:     pockelOffLength: 10
+0038:     #abDelay: 10979 
+0039:     #abDelay: 1032
+0040:     abDelay: 1192 #changed after 10MHz PD died
+0041:     sync_avg: 1
+0042:     bob_pockel_offset: 2
+0043:     coin_radius: 5
+0044:     alice_radius: 4
+0045:     bob_radius: 5
+0046: INT_TIME: 5
+0047: DIVIDER: 800
+0048: SINGLE_SERVER: False
+0049: # [REDACTED network endpoint / clock identifier / local device path]
+0050: # [REDACTED network endpoint / clock identifier / local device path]
+0051: # [REDACTED network endpoint / clock identifier / local device path]
+0052: # [REDACTED network endpoint / clock identifier / local device path]
+0053: # [REDACTED network endpoint / clock identifier / local device path]
+0054: src: 'ttag'
+0055: # [REDACTED network endpoint / clock identifier / local device path]
+0056: file_multiplier: 100000
+
+## bell_analysis_code/hdf_to.yaml
+## original_sha256: 2d9fa76319e3bcd0decce50f721455403756a1293dab10e380cdf09985197987
+
+### original lines 1-10
+0001: ---
+0002: #filestr: [REDACTED_LOCAL_ROOT]/bell/results/hdf5/*19/02*build*.hdf5
+0003: filestr: data_for_plots/02*build*.hdf5
+0004: pc_list:
+0005: - - 4
+0006: #- - 5
+0007: #- [ 4,5,6]
+0008: #- [ 3, 4, 5, 6, 7]
+0009: #- [ 2, 3, 4, 5, 6, 7, 8]
+0010: #- [ 1, 2, 3, 4, 5, 6, 7, 8, 9]
+

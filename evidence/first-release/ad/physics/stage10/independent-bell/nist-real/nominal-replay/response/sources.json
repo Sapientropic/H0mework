@@ -1,0 +1,45 @@
+{
+  "schema": "nist-response-sources/v1",
+  "role": "Exact existing Born/Pauli/M3 source and public control/calibration bindings; no new empirical inputs.",
+  "source_mapping_identified": false,
+  "production_admitted": false,
+  "inputs": [
+    {
+      "path": "Verification/physics/stage10/independent-bell/nist-real/instrument.json",
+      "sha256": "4becca05d3a92bdd37d6218d83db64d80df5b4c605766056285d2bb32c0519c4"
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/investigation/criterion.md",
+      "sha256": "7c1be7e884054ce5b6df12d6b8cfa37fd93e884609228d74850cfc75da64dac5"
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/investigation/VisibilityCarrier.lean",
+      "sha256": "6a0ec8b71dac893c0b55210454138178cb298a9282f0a0f25d71657aff955d65"
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/criterion-r0003.md",
+      "sha256": "2dd6d3e511da35415637edda8a164b1569c055a16ec7d25b99f262c5d86412d6"
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/christensen-appendix-a.txt",
+      "sha256": "75dd07c2af8d81e42c410f04c8b8f32b7a884d4c23e8f505f377c44af70fdd5a"
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/shalm2015-channel-inputs.txt",
+      "sha256": "17c5bc32515536634c451bf761f748ccd2e6c6002fa3949b58524e4cc1aeb3eb"
+    },
+    {
+      "path": "Lean/SaturationMonoid/PhysicsCore/Stage10/Bell/RealFamily.lean",
+      "sha256": "9dc295cfaa1b296fdc08844e5a8772ecdd7ad66e2b1632c1e30ea0304dc652a7"
+    },
+    {
+      "path": "Lean/.lake/packages/mathlib/Mathlib/Analysis/Real/Pi/Bounds.lean",
+      "sha256": "bb8dc6144292b803b2df8c31ca32d67a7ab47b50f8005b5b688d95aff1489444"
+    }
+  ],
+  "pi_theorems": [
+    "Real.pi_gt_d4",
+    "Real.pi_lt_d4"
+  ],
+  "source_owned_objective": "raw CH as frozen in r0004; no ratio or significance replacement"
+}

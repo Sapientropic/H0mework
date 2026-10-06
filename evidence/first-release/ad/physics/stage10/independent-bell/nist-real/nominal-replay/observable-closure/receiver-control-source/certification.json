@@ -1,0 +1,328 @@
+{
+  "schema": "p23-receiver-control-lean-certification/v1",
+  "version": "p23-receiver-control-source-rc0001",
+  "status": "certified",
+  "criterion_preexecution_freeze": "b806a5e095f178d57e2a7786cb34f6bfbbfa4278",
+  "source_context_preexecution_freeze": "0919a10e64b2616358d7d26b83422f650f727406",
+  "candidate_precompile_freeze": "1d77d45a0348571b1374fef83758cbf18bca37a6",
+  "public_mouth": "P23.ReceiverControl.Consumer.waveplate_source_effect_consumer",
+  "bindings": {
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/receiver-control-source/source-and-receiver-recipe.txt": "b5e6f6ca39236822d3b7d43a032ffc281aa3b4905ae09c1af54c682bf85b7594",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/receiver-control-source/polarization-calibration.txt": "29dddde6002233ca465ed114853e08de3fcb4f013535d1d9c389713443b7b3b3",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/receiver-control-source/motor-frame.txt": "a7541fdbe5712d4cc097f0f9af1155d4b0b608796790635a570438889143f944",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/receiver-control-source/counts-objectives.txt": "fefabb3c8c01f08296373925fd912661f8e7d8447f38eb5d2218f0bbedb220d7",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/receiver-control-source/windows-and-heralds.txt": "d2c279be048528249ad43fafe4d7f7ded5fbaf9e6f590cd91a898c53e748205e",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/receiver-control-source/configuration-and-logging.txt": "4256d9e22443654c4ee2392be0548af9b15e649d609dd1ba12aa948b7d4c9839",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/receiver-control-source/NIST_NOTICE.txt": "06bf35f584f484900f865451ea90723c10f3c15a4185484722814f437d788254",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window/GaussianSource.lean": "1dee783a0976a497139e64d4ef7278b203d56a0b119c84eea942bbb7846a10af",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window/native-effects/DetectorGamma.lean": "b0007ece95dd29f1db550e260f73b3955d365241162ebe971c4ebcd92a16a2af",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/receiver-control-source/WaveplateSource.lean": "4da795e3c3dbb22b642bf6e93bef5019af396a85429f6c7d50f68fc5c41999c0",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/receiver-control-source/WaveplateConsumer.lean": "58a01a5f0bb7c2a87df923b6aba7cc0b70b604af0263145344dbcc81f30420ba",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/receiver-control-source/Certification.lean": "cd18637df8eeae0b3193caa8811663b30f5828faa410223ce25c5c6b9fe04934",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/receiver-control-source/certify.py": "95b8aad4e0b22d835739ea70c1ab8176af537643e2f6941578d7c7cdb0a1cd98",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/receiver-control-source/criterion.md": "927f9483d6a8b8a7a42852ef65e119466461c9cf34460cec24c3cbdd8f751736",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/receiver-control-source/sources.json": "75428181d17ba5f082c7e0d456d1ccaa7191493cbfea7d6d7121e7f8295b6504",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/receiver-control-source/sources.md": "2d659d011de16f9b132e0f24c78c5d5f694fa17359098d1cb94bb0a350351e03",
+    "Lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+    "Lean/lake-manifest.json": "aa60b347daf17a642d027cda3288f7d6f12c176c4ddd2677c28140daadb15c81",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/investigation/collected-source/certify.py": "9003712ab1974430614887b1ceddda4ae338ac20c33292233c23aa4a170d34ac",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/investigation/collected-source/verify.py": "8d9d668c79903b714b9272bb70e09174f8d91ae36ef8c677331d52d2beb08ad4"
+  },
+  "execution_source_freezes": {
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window/GaussianSource.lean": {
+      "commit": "26dec5f4c5bebd8ec6defc921c0ba79a85a79f23",
+      "sha256": "1dee783a0976a497139e64d4ef7278b203d56a0b119c84eea942bbb7846a10af"
+    },
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window/native-effects/DetectorGamma.lean": {
+      "commit": "a9f64fa6e3f8ee0a5329107002e1677f37842975",
+      "sha256": "b0007ece95dd29f1db550e260f73b3955d365241162ebe971c4ebcd92a16a2af"
+    },
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/receiver-control-source/WaveplateSource.lean": {
+      "commit": "27a49e695c4ee9585a81f95333b2b2c5c777e6f6",
+      "sha256": "4da795e3c3dbb22b642bf6e93bef5019af396a85429f6c7d50f68fc5c41999c0"
+    },
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/receiver-control-source/WaveplateConsumer.lean": {
+      "commit": "1d77d45a0348571b1374fef83758cbf18bca37a6",
+      "sha256": "58a01a5f0bb7c2a87df923b6aba7cc0b70b604af0263145344dbcc81f30420ba"
+    },
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/receiver-control-source/Certification.lean": {
+      "commit": "51ff25afb1451e19eefeb5b68eace9b7dd9acc8f",
+      "sha256": "cd18637df8eeae0b3193caa8811663b30f5828faa410223ce25c5c6b9fe04934"
+    },
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/receiver-control-source/certify.py": {
+      "commit": "22f1e980c560696ceeeabd3702e6293ba5c5a1d1",
+      "sha256": "95b8aad4e0b22d835739ea70c1ab8176af537643e2f6941578d7c7cdb0a1cd98"
+    },
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/receiver-control-source/criterion.md": {
+      "commit": "b806a5e095f178d57e2a7786cb34f6bfbbfa4278",
+      "sha256": "927f9483d6a8b8a7a42852ef65e119466461c9cf34460cec24c3cbdd8f751736"
+    },
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/receiver-control-source/sources.json": {
+      "commit": "0919a10e64b2616358d7d26b83422f650f727406",
+      "sha256": "75428181d17ba5f082c7e0d456d1ccaa7191493cbfea7d6d7121e7f8295b6504"
+    },
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/receiver-control-source/sources.md": {
+      "commit": "6e43872e7f12adf7612099e687670741cc1183a7",
+      "sha256": "2d659d011de16f9b132e0f24c78c5d5f694fa17359098d1cb94bb0a350351e03"
+    },
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/receiver-control-source/source-and-receiver-recipe.txt": {
+      "commit": "0919a10e64b2616358d7d26b83422f650f727406",
+      "sha256": "b5e6f6ca39236822d3b7d43a032ffc281aa3b4905ae09c1af54c682bf85b7594"
+    },
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/receiver-control-source/polarization-calibration.txt": {
+      "commit": "6e43872e7f12adf7612099e687670741cc1183a7",
+      "sha256": "29dddde6002233ca465ed114853e08de3fcb4f013535d1d9c389713443b7b3b3"
+    },
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/receiver-control-source/motor-frame.txt": {
+      "commit": "6e43872e7f12adf7612099e687670741cc1183a7",
+      "sha256": "a7541fdbe5712d4cc097f0f9af1155d4b0b608796790635a570438889143f944"
+    },
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/receiver-control-source/counts-objectives.txt": {
+      "commit": "6e43872e7f12adf7612099e687670741cc1183a7",
+      "sha256": "fefabb3c8c01f08296373925fd912661f8e7d8447f38eb5d2218f0bbedb220d7"
+    },
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/receiver-control-source/windows-and-heralds.txt": {
+      "commit": "6e43872e7f12adf7612099e687670741cc1183a7",
+      "sha256": "d2c279be048528249ad43fafe4d7f7ded5fbaf9e6f590cd91a898c53e748205e"
+    },
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/receiver-control-source/configuration-and-logging.txt": {
+      "commit": "6e43872e7f12adf7612099e687670741cc1183a7",
+      "sha256": "4256d9e22443654c4ee2392be0548af9b15e649d609dd1ba12aa948b7d4c9839"
+    },
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/receiver-control-source/NIST_NOTICE.txt": {
+      "commit": "6e43872e7f12adf7612099e687670741cc1183a7",
+      "sha256": "06bf35f584f484900f865451ea90723c10f3c15a4185484722814f437d788254"
+    },
+    "Lean/lean-toolchain": {
+      "commit": "26ee1b5b83a96e596cae02415c8939aeb2542d8a",
+      "sha256": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b"
+    },
+    "Lean/lake-manifest.json": {
+      "commit": "a8e067a44b7243a584342c53e045b66d38df3afc",
+      "sha256": "aa60b347daf17a642d027cda3288f7d6f12c176c4ddd2677c28140daadb15c81"
+    },
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/investigation/collected-source/certify.py": {
+      "commit": "67b5fa45a6223f191889eb34d74d05806d2a3351",
+      "sha256": "9003712ab1974430614887b1ceddda4ae338ac20c33292233c23aa4a170d34ac"
+    },
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/investigation/collected-source/verify.py": {
+      "commit": "67b5fa45a6223f191889eb34d74d05806d2a3351",
+      "sha256": "8d9d668c79903b714b9272bb70e09174f8d91ae36ef8c677331d52d2beb08ad4"
+    }
+  },
+  "source_archive_descriptors": {
+    "bell_client.zip": {
+      "url": "https://s3.amazonaws.com/nist-belltestdata/belldata/code/daq/bell_client.zip",
+      "sha256": "2ab050486473caf71a7b991a6598ef8a139d92e52d738b5a26ac5870e59c28d7",
+      "bytes": 80156
+    },
+    "bell_server.zip": {
+      "url": "https://s3.amazonaws.com/nist-belltestdata/belldata/code/daq/bell_server.zip",
+      "sha256": "858c7bfdb2eaabdb4dec5ecd12a7f974428d5fe2c846634a4e1ff52b36c348c7",
+      "bytes": 17507
+    }
+  },
+  "authorized_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "focused_verification": {
+    "fresh_source_compilation": true,
+    "trust_level": 0,
+    "warning_as_error": true,
+    "commands": [
+      {
+        "source": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window/GaussianSource.lean",
+        "command": [
+          "lean",
+          "--trust=0",
+          "-DwarningAsError=true",
+          "--root=../Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window",
+          "-o",
+          "${fresh_olean}/GaussianSource.olean",
+          "../Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window/GaussianSource.lean"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      {
+        "source": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window/native-effects/DetectorGamma.lean",
+        "command": [
+          "lean",
+          "--trust=0",
+          "-DwarningAsError=true",
+          "--root=../Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window/native-effects",
+          "-o",
+          "${fresh_olean}/DetectorGamma.olean",
+          "../Verification/physics/stage10/independent-bell/nist-real/nominal-replay/gaussian-window/native-effects/DetectorGamma.lean"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      {
+        "source": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/receiver-control-source/WaveplateSource.lean",
+        "command": [
+          "lean",
+          "--trust=0",
+          "-DwarningAsError=true",
+          "--root=../Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/receiver-control-source",
+          "-o",
+          "${fresh_olean}/WaveplateSource.olean",
+          "../Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/receiver-control-source/WaveplateSource.lean"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      {
+        "source": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/receiver-control-source/WaveplateConsumer.lean",
+        "command": [
+          "lean",
+          "--trust=0",
+          "-DwarningAsError=true",
+          "--root=../Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/receiver-control-source",
+          "-o",
+          "${fresh_olean}/WaveplateConsumer.olean",
+          "../Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/receiver-control-source/WaveplateConsumer.lean"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      {
+        "source": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/receiver-control-source/Certification.lean",
+        "command": [
+          "lean",
+          "--trust=0",
+          "-DwarningAsError=true",
+          "--root=../Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/receiver-control-source",
+          "-o",
+          "${fresh_olean}/Certification.olean",
+          "../Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/receiver-control-source/Certification.lean"
+        ],
+        "exit_code": 0,
+        "stdout": "WAVEPLATE_SOURCE_CERTIFIED declarations=348 main_nodes=17161 bundle_nodes=17162 required=46 primitive=4301 source_body=15853\nWAVEPLATE_SOURCE_AXIOMS P23.ReceiverControl.Consumer.waveplate_source_effect_consumer: [propext,\n Classical.choice,\n Quot.sound]\nWAVEPLATE_SOURCE_AXIOMS P23.ReceiverControl.Consumer.finite_source_born: [propext, Classical.choice, Quot.sound]\nWAVEPLATE_SOURCE_AXIOMS P23.ReceiverControl.transport_product: [propext, Classical.choice, Quot.sound]\nWAVEPLATE_SOURCE_AXIOMS P23.ReceiverControl.transport_born: [propext, Classical.choice, Quot.sound]\nWAVEPLATE_SOURCE_INDEPENDENT_AXIOMS declarations=12\n",
+        "stderr": ""
+      }
+    ],
+    "lsp": [
+      {
+        "file": "GaussianSource.lean",
+        "errors": 0,
+        "warnings": 0,
+        "symbol_count": 1,
+        "method": "task-owned lean --server; documentSymbol, idle fileProgress, published diagnostics"
+      },
+      {
+        "file": "DetectorGamma.lean",
+        "errors": 0,
+        "warnings": 0,
+        "symbol_count": 1,
+        "method": "task-owned lean --server; documentSymbol, idle fileProgress, published diagnostics"
+      },
+      {
+        "file": "WaveplateSource.lean",
+        "errors": 0,
+        "warnings": 0,
+        "symbol_count": 1,
+        "method": "task-owned lean --server; documentSymbol, idle fileProgress, published diagnostics"
+      },
+      {
+        "file": "WaveplateConsumer.lean",
+        "errors": 0,
+        "warnings": 0,
+        "symbol_count": 1,
+        "method": "task-owned lean --server; documentSymbol, idle fileProgress, published diagnostics"
+      },
+      {
+        "file": "Certification.lean",
+        "errors": 0,
+        "warnings": 0,
+        "symbol_count": 2,
+        "method": "task-owned lean --server; documentSymbol, idle fileProgress, published diagnostics"
+      }
+    ]
+  },
+  "source_audit": {
+    "candidate_declarations": 348,
+    "main_dependency_nodes": 17161,
+    "bundle_dependency_nodes": 17162,
+    "required_main_nodes": 46,
+    "primitive_nodes": 4301,
+    "source_body_nodes": 15853,
+    "independent_declarations": 12,
+    "primitive": "two real mechanical HWP parameters and aligned/orthogonal QWP recipe enumeration",
+    "effective_angle_or_completed_projector_in_primitive_or_Jones_body": false,
+    "same_physical_Jones_pulled_port_unit_phase_projector_in_main_closure": true,
+    "both_basis_source_effect_product_trace_transport_in_bundle": true,
+    "original_onePhotonEffect_wordTensor_occupation_gamma_in_main_closure": true,
+    "fullBorn_or_source_normalization_in_main_closure": false,
+    "root_or_statistical_authority_in_bundle": false
+  },
+  "kernel_claims": {
+    "physical_waveplate_recipe_generates_effective_angle_and_rank_one_effect": true,
+    "quarter_global_phase_unit_modulus_generated": true,
+    "arbitrary_complex_matrix_Born_equality": true,
+    "arbitrary_finite_complex_source_vector_Born_equality": true,
+    "same_signed_basis_source_effect_operator_product_and_trace_transport": true,
+    "direct_original_no_click_one_photon_feed": true,
+    "direct_original_gamma_feed_for_every_number_sector": true,
+    "both_QWP_recipes_offset_half_angle_and_only_state_controls": true,
+    "new_full_Fock_Born_kernel_identity": false,
+    "PC_on_retarder_identity": false,
+    "actual_motor_zero_or_hardware_identity": false,
+    "receiver_or_pump_argmax_proved": false,
+    "statistical_or_stationary_model_qualification": false,
+    "root_activation": false
+  },
+  "declaration_classification": {
+    "producer": [
+      "quarterAxis",
+      "nativeJones",
+      "native_pulled_port",
+      "native_effective_projector"
+    ],
+    "readout": [
+      "effectiveAngle",
+      "actual_pose_born",
+      "finite_source_born"
+    ],
+    "transporter": [
+      "transport_product",
+      "transport_trace",
+      "transport_born",
+      "actual_one_photon_feed",
+      "actual_all_sector_feed"
+    ],
+    "direct_consumer": [
+      "waveplate_source_effect_consumer"
+    ]
+  },
+  "scope": {
+    "source": "ideal nominal PC-off static HWP-QWP-HWP chain in the physical H,V basis and final V port",
+    "quarter_recipe": "axis 2*lastHWP or 2*lastHWP+pi/2; all real first/last HWP parameters",
+    "effective_angle": "2*(lastHWP-firstHWP), generated before the projector comparison",
+    "Born": "same matrix effect algebra for arbitrary complex rho and finite vectors; no new density or infinite-state probability law",
+    "basis": "unitary signed quarter-turn applied to source, effect and products together",
+    "all_sectors": "existing DetectorGamma is directly fed the generated real projector for every n",
+    "public_text": "frozen excerpt/source descriptor binding only; no execution or independent certification of a historical apparatus snapshot",
+    "actual_XOR3_execution_identified": false,
+    "actual_hardware_verified": false,
+    "PC_on_retarder_identified": false,
+    "new_full_Fock_Born_kernel": false,
+    "pump_or_receiver_controls_prove_argmax": false,
+    "production_admitted": false,
+    "apparatus_optimum_verified": false,
+    "controller_advance": false
+  },
+  "source_access": {
+    "archive_programs_imported_or_executed": false,
+    "hardware_or_network_contacted": false,
+    "decoder_or_independent_decoder_executed_by_certification": false,
+    "event_files_read": 0
+  },
+  "retrospective": true
+}

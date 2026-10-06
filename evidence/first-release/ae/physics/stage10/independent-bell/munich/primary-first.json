@@ -1,0 +1,232 @@
+{
+  "admission": "admission_failed",
+  "attempt_sha256": "445c24affa01c4ef97b8ac73f334d26d3bcd9fd1b911e16423135937c719038e",
+  "failure": {
+    "code": "record_arity",
+    "member": "local2",
+    "row": 1,
+    "run": "2016-04-15"
+  },
+  "provenance": {
+    "execution_head": "9d8917ed9963bc679b63f97536001f7a4103d617",
+    "last_scientific_path_commit": "",
+    "scientific_path_git_blobs": {
+      "Verification/physics/stage10/independent-bell/munich/criterion.md": "27fe4ec86fa9cf3c4b25033711046d86908b4806",
+      "Verification/physics/stage10/independent-bell/munich/invariant_independent.py": "dd9cb960c0f06edcea123685e25b4db9b2f43b1a",
+      "Verification/physics/stage10/independent-bell/munich/primary.py": "03d92501b7582c10c14cf9ae7cf6ca1cd9621aa7",
+      "Verification/physics/stage10/independent-bell/munich/schema.py": "2eeefb5859fa57a15f1e077d2c4a157e0530a82f",
+      "Verification/physics/stage10/independent-bell/munich/source-methods.md": "a088d8d097f3e98a3680f2d30a3badd681e1f17a",
+      "Verification/physics/stage10/independent-bell/munich/sources.json": "45ed020e20cc2d72c08e1a9fbbb7099574699f44",
+      "Verification/physics/stage10/independent-bell/munich/test_invariant_independent.py": "e36ac7c2fffcf65bd1ee3c0f1aa9ecb03967ef55",
+      "Verification/physics/stage10/independent-bell/munich/test_primary.py": "3dc150f6fa966ff4bdf5ae95d06ef2d760111241",
+      "Verification/physics/stage10/independent-bell/munich/test_verify.py": "69703148253e5274d6c038ac4bcb75a1ddd3fafb",
+      "Verification/physics/stage10/independent-bell/munich/verify.py": "fe566a9dd482f5063acd1b8e0fb65959ab2fc9ee"
+    }
+  },
+  "real_instrument_empirical_verdict_executed": false,
+  "record_access": {
+    "decoded_csv_members_in_full": 1,
+    "decoded_pairs_members_in_full": 0,
+    "event_record_lines_decoded": 10219,
+    "members": [
+      {
+        "fully_decoded": true,
+        "payload_bytes": 449879,
+        "payload_sha256": "e894c25402d5f92599bcc4323f7daa0ca7e1ba4e9ea90cfa176380a43271e60f",
+        "record_lines_decoded": 10218,
+        "record_lines_in_payload": 10218,
+        "role": "local1",
+        "run": "2016-04-15"
+      },
+      {
+        "fully_decoded": false,
+        "payload_bytes": 400255,
+        "payload_sha256": "4890ac06e977dd7c7d80bf4bf7f9c4f6d4cb283ccb261cdfcd761df384423c8a",
+        "record_lines_decoded": 1,
+        "record_lines_in_payload": 10248,
+        "role": "local2",
+        "run": "2016-04-15"
+      },
+      {
+        "fully_decoded": false,
+        "payload_bytes": 375815,
+        "payload_sha256": "1351c0a73ee84dccbb74f2a7086d72350d4e4690fcb3c32adc04ee547603845f",
+        "record_lines_decoded": 0,
+        "record_lines_in_payload": 10201,
+        "role": "pairs",
+        "run": "2016-04-15"
+      }
+    ],
+    "record_lines_in_read_csv_payloads": 30667
+  },
+  "schema": "stage10-munich-balanced-complement-primary/v1",
+  "scientific_adjudication_completed": false,
+  "scientific_verdict": "not_executed",
+  "score_execution_started": false,
+  "source_bindings": {
+    "archive_bindings": [
+      {
+        "bytes": 369992,
+        "md5": "53544819317d4dcfbe5c63e039a8aa38",
+        "members": [
+          "Bell_2016-04-15_9_lab_1.csv",
+          "Bell_2016-04-15_9_lab_2.csv",
+          "Bell_2016-04-15_9_pairs.csv",
+          "Readme.txt"
+        ],
+        "name": "Bell_2016-04-15.zip",
+        "run": "2016-04-15",
+        "sha256": "da9e1125034e5e61a177ae1796f6362ab312bbfbc5947aeec0b09a85e67b8656",
+        "url": "https://zenodo.org/api/records/22936124/files/Bell_2016-04-15.zip/content"
+      },
+      {
+        "bytes": 391935,
+        "md5": "030ce1a0c6c6cc7f1107e1cd608cce77",
+        "members": [
+          "Bell_2016-06-14_16_lab_1.csv",
+          "Bell_2016-06-14_16_lab_2.csv",
+          "Bell_2016-06-14_16_pairs.csv",
+          "Readme.txt"
+        ],
+        "name": "Bell_2016-06-14.zip",
+        "run": "2016-06-14",
+        "sha256": "b24fb1693dfd14bc4d2b05df6bb23a53fc1e77b3d932c67668c2b7b9515bd84a",
+        "url": "https://zenodo.org/api/records/22936124/files/Bell_2016-06-14.zip/content"
+      }
+    ],
+    "criterion_sha256": "b6d8ec339c603ca9ec7e47a5d3c854da8ca3177378c5a233ccdbce1e781802f6",
+    "header_access_commit": "3471ee8db8",
+    "header_bindings": [
+      {
+        "bytes": 100,
+        "empty_lines_skipped": 0,
+        "header": "time (Unix time in ms);setting;result; local timestamp;Bell-state;excluded from evaluation; comment\n",
+        "member": "Bell_2016-04-15_9_lab_1.csv",
+        "raw_header_base64": "dGltZSAoVW5peCB0aW1lIGluIG1zKTtzZXR0aW5nO3Jlc3VsdDsgbG9jYWwgdGltZXN0YW1wO0JlbGwtc3RhdGU7ZXhjbHVkZWQgZnJvbSBldmFsdWF0aW9uOyBjb21tZW50Cg==",
+        "record_lines_read": 0,
+        "run": "2016-04-15",
+        "sha256": "fbb3b3f06a4610fd2163f02bfacc337b8fb08001c090f890e4dd558cbadadb6b"
+      },
+      {
+        "bytes": 88,
+        "empty_lines_skipped": 0,
+        "header": "time (Unix time in ms);setting;result;local timestamp;excluded from evaluation;comment;\n",
+        "member": "Bell_2016-04-15_9_lab_2.csv",
+        "raw_header_base64": "dGltZSAoVW5peCB0aW1lIGluIG1zKTtzZXR0aW5nO3Jlc3VsdDtsb2NhbCB0aW1lc3RhbXA7ZXhjbHVkZWQgZnJvbSBldmFsdWF0aW9uO2NvbW1lbnQ7Cg==",
+        "record_lines_read": 0,
+        "run": "2016-04-15",
+        "sha256": "16b96c336501543126feacec30fb4bc48d3ce8561d33385c9189eddcafd6dfc5"
+      },
+      {
+        "bytes": 134,
+        "empty_lines_skipped": 0,
+        "header": "timestamp lab 1 (unix time ms)\tBell-state\tsetting lab 1\tresult lab 1\tsetting lab 2\tresult lab 2\tline in lab 1 file\tline in lab 2 file\n",
+        "member": "Bell_2016-04-15_9_pairs.csv",
+        "raw_header_base64": "dGltZXN0YW1wIGxhYiAxICh1bml4IHRpbWUgbXMpCUJlbGwtc3RhdGUJc2V0dGluZyBsYWIgMQlyZXN1bHQgbGFiIDEJc2V0dGluZyBsYWIgMglyZXN1bHQgbGFiIDIJbGluZSBpbiBsYWIgMSBmaWxlCWxpbmUgaW4gbGFiIDIgZmlsZQo=",
+        "record_lines_read": 0,
+        "run": "2016-04-15",
+        "sha256": "23844173d7478d305b5b2f335543f9fec91c65e99b601124c500fb187b0a2f49"
+      },
+      {
+        "bytes": 100,
+        "empty_lines_skipped": 0,
+        "header": "time (Unix time in ms);setting;result; local timestamp;Bell-state;excluded from evaluation; comment\n",
+        "member": "Bell_2016-06-14_16_lab_1.csv",
+        "raw_header_base64": "dGltZSAoVW5peCB0aW1lIGluIG1zKTtzZXR0aW5nO3Jlc3VsdDsgbG9jYWwgdGltZXN0YW1wO0JlbGwtc3RhdGU7ZXhjbHVkZWQgZnJvbSBldmFsdWF0aW9uOyBjb21tZW50Cg==",
+        "record_lines_read": 0,
+        "run": "2016-06-14",
+        "sha256": "fbb3b3f06a4610fd2163f02bfacc337b8fb08001c090f890e4dd558cbadadb6b"
+      },
+      {
+        "bytes": 88,
+        "empty_lines_skipped": 0,
+        "header": "time (Unix time in ms);setting;result;local timestamp;excluded from evaluation;comment;\n",
+        "member": "Bell_2016-06-14_16_lab_2.csv",
+        "raw_header_base64": "dGltZSAoVW5peCB0aW1lIGluIG1zKTtzZXR0aW5nO3Jlc3VsdDtsb2NhbCB0aW1lc3RhbXA7ZXhjbHVkZWQgZnJvbSBldmFsdWF0aW9uO2NvbW1lbnQ7Cg==",
+        "record_lines_read": 0,
+        "run": "2016-06-14",
+        "sha256": "16b96c336501543126feacec30fb4bc48d3ce8561d33385c9189eddcafd6dfc5"
+      },
+      {
+        "bytes": 134,
+        "empty_lines_skipped": 0,
+        "header": "timestamp lab 1 (unix time ms)\tBell-state\tsetting lab 1\tresult lab 1\tsetting lab 2\tresult lab 2\tline in lab 1 file\tline in lab 2 file\n",
+        "member": "Bell_2016-06-14_16_pairs.csv",
+        "raw_header_base64": "dGltZXN0YW1wIGxhYiAxICh1bml4IHRpbWUgbXMpCUJlbGwtc3RhdGUJc2V0dGluZyBsYWIgMQlyZXN1bHQgbGFiIDEJc2V0dGluZyBsYWIgMglyZXN1bHQgbGFiIDIJbGluZSBpbiBsYWIgMSBmaWxlCWxpbmUgaW4gbGFiIDIgZmlsZQo=",
+        "record_lines_read": 0,
+        "run": "2016-06-14",
+        "sha256": "23844173d7478d305b5b2f335543f9fec91c65e99b601124c500fb187b0a2f49"
+      }
+    ],
+    "metadata_access_commit": "2268d2aae8",
+    "readme_sha256": "aec6c3be8b4f63f2fb33622665d5882cf7b566796ad152b6472276ffeca772a5",
+    "sources_json_sha256": "9e4ecd313835061238c969a0f0140a07435709ca196f2e6dcd9e2b0554a77ba5",
+    "theory_authority": {
+      "bindings": [
+        {
+          "path": "Lean/SaturationMonoid/PhysicsCore/Stage10/Bell/Runtime.lean",
+          "sha256": "7d23c95660eec06c2337b26383a8e7cc1fefc74ea3b158e608d5c7c009c7d1ee"
+        },
+        {
+          "path": "Lean/SaturationMonoid/PhysicsCore/Stage10/Bell/Probabilities.lean",
+          "sha256": "17472dab0d1b4448fddd28c8c76c7a6c2e2ad98c7bea14f9191fe82aa674f7fa"
+        },
+        {
+          "path": "Lean/SaturationMonoid/PhysicsCore/Stage10/Bell/Source.lean",
+          "sha256": "ff953cfb4741523bcbc252b3eb64007f8d0f413feecab7da7f1b0a4d917fdd69"
+        },
+        {
+          "path": "Lean/SaturationMonoid/PhysicsCore/Stage10/Bell/Herald.lean",
+          "sha256": "b06a25b1a71acdfadc54512d00d65806eaef2fbf3208ac6be5c6c9914962e625"
+        },
+        {
+          "path": "Lean/SaturationMonoid/PhysicsCore/Stage10/Bell/Operators.lean",
+          "sha256": "77881f36c1807003b06ee9cfc66dfea88d885a1d24b5eae1d9d241f6af125ff8"
+        },
+        {
+          "path": "Lean/SaturationMonoid/PhysicsCore/Stage10/Bell/Effects.lean",
+          "sha256": "9b4b12d925817502c0595645ab358ef4e06e1fdab6c70f48f3a3d34f93fd4056"
+        },
+        {
+          "path": "Lean/SaturationMonoid/PhysicsCore/Stage9C/Material/SpinPair/Spinor.lean",
+          "sha256": "69599a8ff17a6bf5169e8cca9e6fe163f82f7b0e90fb3c77db9aaaa1eb3a7238"
+        },
+        {
+          "path": "Lean/SaturationMonoid/PhysicsCore/Stage9DEF/Source/Coefficients.lean",
+          "sha256": "9d045a8b8bc26712c3552f8b4b3710df20a18eccbe2fa28a897607df9617ded4"
+        },
+        {
+          "path": "Lean/SaturationMonoid/PhysicsCore/Stage10/Runtime/Occurrence.lean",
+          "sha256": "8643a3fc19ffd6f75cff7bce9e354c7af0d2e4b86f9d2417f3d0f60697778ff2"
+        },
+        {
+          "path": "Lean/SaturationMonoid/PhysicsCore/Stage10/Bell/TheoryBlind.lean",
+          "sha256": "02aa19c43c9ec004d4b41304acef6e533d2021aa1b4e422e4c3faf37511be8d7"
+        },
+        {
+          "path": "Verification/physics/stage10/independent-bell/theory-blind/Certification.lean",
+          "sha256": "2bbe6bc8377ad70b0eff96c4f11b7d22823ff99844f7c611f2a5fa7d9e0ed207"
+        },
+        {
+          "path": "Verification/physics/stage10/independent-bell/theory-blind/verification.json",
+          "sha256": "27b6f7eafe74d78a4f55cd806ea8d7617042e1ef8e1996385e74508fe86c9cba"
+        },
+        {
+          "path": "Verification/physics/stage10/independent-bell/theory-blind/kernel-certification-first.json",
+          "sha256": "094ca4d962cef1d96c571a63fde9bd4303c0d93cd812ff861e0f3adceba3e937"
+        }
+      ],
+      "consumer_role": "subordinate empirical adjudication of conditional instrument realization",
+      "controller_advance": false,
+      "current_tick": 16,
+      "next_tick": 17,
+      "original_certification_commit": "79efabda45",
+      "probability_declaration": "SaturationMonoid.PhysicsCore.Stage10.Bell.probability",
+      "root_visit": 10,
+      "runtime_declaration": "SaturationMonoid.PhysicsCore.Stage10.Bell.sameOccurrenceBellPrediction",
+      "source": "positiveSmoothUnifiedSource",
+      "source_theorem_changed": false
+    }
+  },
+  "version": "stage10-munich-mu0001"
+}

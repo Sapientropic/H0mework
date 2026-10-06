@@ -1,0 +1,111 @@
+{
+  "schema": "nist-source-code-verification/v1",
+  "status": "verified",
+  "criterion_version": "nominal-source-code-r0005",
+  "criterion_freeze": {
+    "commit": "7756ce61784f8e705444450c03b12996340090f5",
+    "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/source-code/criterion.md",
+    "sha256": "10229c6b8f97314cde87a91c74a9f687b996b02de37b86ae0cbb60108bbce28c"
+  },
+  "model_source_identified": true,
+  "publication_configuration_identified": false,
+  "production_admitted": false,
+  "input_points_verified": 19,
+  "cases": {
+    "author_defaults": {
+      "verdict": "DEVIATION",
+      "documented_values_in_band": 2,
+      "band": {
+        "r_one_pair": [
+          0.2748303278178397,
+          0.2758303278178397
+        ],
+        "a0_deg": [
+          4.169649314880371,
+          4.269649314880371
+        ],
+        "a1_deg": [
+          -26.031717944145203,
+          -25.931717944145202
+        ],
+        "b0_deg": [
+          -4.269649314880371,
+          -4.169649314880371
+        ],
+        "b1_deg": [
+          25.931717944145202,
+          26.031717944145203
+        ]
+      }
+    },
+    "published_gain_half": {
+      "verdict": "DEVIATION",
+      "documented_values_in_band": 0,
+      "band": {
+        "r_one_pair": [
+          0.30493346340817906,
+          0.3254399320131999
+        ],
+        "a0_deg": [
+          4.722009491920471,
+          5.173858779668808
+        ],
+        "a1_deg": [
+          -27.54186396598816,
+          -26.88627470731735
+        ],
+        "b0_deg": [
+          -5.173858779668808,
+          -4.722009491920471
+        ],
+        "b1_deg": [
+          26.88627470731735,
+          27.54186396598816
+        ]
+      }
+    },
+    "published_native_strength": {
+      "verdict": "DEVIATION",
+      "documented_values_in_band": 0,
+      "band": {
+        "r_one_pair": [
+          0.30482279745060875,
+          0.32537703357901604
+        ],
+        "a0_deg": [
+          4.718336743116379,
+          5.17155944108963
+        ],
+        "a1_deg": [
+          -27.53332518339157,
+          -26.872660261392593
+        ],
+        "b0_deg": [
+          -5.17155944108963,
+          -4.718336743116379
+        ],
+        "b1_deg": [
+          26.872660261392593,
+          27.53332518339157
+        ]
+      }
+    }
+  },
+  "worst_deltas": {
+    "r_one_pair": 1.5498796690494032e-08,
+    "angle_deg": 7.463912865546263e-07,
+    "CH": 1.3552527156068805e-19
+  },
+  "required_source": [
+    "same_final_design_efficiency_dark_and_brightness_configuration",
+    "publication_visibility_handling_or_approximation_binding"
+  ],
+  "bindings": {
+    "criterion.md": "10229c6b8f97314cde87a91c74a9f687b996b02de37b86ae0cbb60108bbce28c",
+    "replay.json": "5e9288d87300ab1bc7af2b10a1dd159b9c3f15b06351dd3760198fd7e0f1bd75",
+    "independent_replay.json": "421946f33de75e25db24a297f04d8fcbe23972d0ef62206c2d3297b0a1a4ea7f",
+    "sources.json": "1b2d24a18e7a6e5c332cee9ec38b328436b9cc9b998bc09b37493abada139323",
+    "verify.py": "64afc165b600a2bf3229b4362983250b067f6115a150870d464a71ecacdfd34b"
+  },
+  "bell_event_files_read": 0
+}

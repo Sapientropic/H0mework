@@ -1,0 +1,388 @@
+{
+  "schema": "p23-calibration-readout-independent-comparison/v1",
+  "version": "p23-calibration-readout-cal0001",
+  "status": "PASS",
+  "executable_freeze": {
+    "commit": "51f246f406c83e3e040695ae16e35db146f75172",
+    "program_sha256": "550e9b0499079dfe3af974c934c4c48343db28d340c6ead2955f70259c3da3c3"
+  },
+  "bindings": {
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/calibration-readout/independent_count.json": "0858761ce5840aa1ed1a7dc09f37604a7a1ed08b2a97aad4d5bb3a35dac2bf54",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/calibration-readout/calibration.json": "547ebf134776b1c6707e79929579dcb58047f70fa10d44fb047cd568639408a3",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/calibration-readout/independent_count.py": "6f755ac8d1fd7ef36af18d7fdc7f0e4ed3a544ab7e78aeb75ebf319d3cd0337d",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/calibration-readout/calibration.py": "3be2b18ec39397b4de6bed95332ac1f8064378d37725f30aa46bbf2405952076",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/calibration-readout/criterion.md": "88369d029736091e579ed45da9f80a33e5c9cf245e33803a73ee68461bf2c242",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/calibration-readout/sources.json": "cdead46159bcb0af5101b1d3d7ad0a9db0c369438690d3829fcbf2b02573733d",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/calibration-readout/comparison.py": "550e9b0499079dfe3af974c934c4c48343db28d340c6ead2955f70259c3da3c3"
+  },
+  "shared_input_identity": {
+    "version": true,
+    "criterion_sha256": true,
+    "sources_sha256": true,
+    "source_parameters": true,
+    "source_pair_quantities": true,
+    "ratio_definedness": true,
+    "matched_exact_values_and_bounds": true,
+    "seven_unbound_calibration_roles_false": true
+  },
+  "checks": {
+    "twelve_branches_bijective": true,
+    "probabilities_and_ratios_inside_number_enclosures": true,
+    "four_matched_exact_conditional_efficiencies": true,
+    "independent_control_aggregate": true,
+    "primary_control_aggregate": true,
+    "zero_herald_not_zero_efficiency": true
+  },
+  "errors": [],
+  "branches": [
+    {
+      "case_id": "dual_pol/N1/signal_only",
+      "primary_preparation_name": "dual_pol",
+      "exact_primary_rates_inside_independent": {
+        "sA": true,
+        "sB": true,
+        "j": true
+      },
+      "exact_primary_ratios_inside_independent": {
+        "alice": true,
+        "bob": true
+      },
+      "conditional_efficiency_interval_relations": {
+        "alice": {
+          "primary_exact_point_inside_public_eta": false,
+          "independent_enclosure_intersects_public_eta": false,
+          "independent_recorded_verdict_consistent": true,
+          "calibration_identity_identified": false
+        },
+        "bob": {
+          "primary_exact_point_inside_public_eta": false,
+          "independent_enclosure_intersects_public_eta": false,
+          "independent_recorded_verdict_consistent": true,
+          "calibration_identity_identified": false
+        }
+      }
+    },
+    {
+      "case_id": "dual_pol/N1/independent_OR",
+      "primary_preparation_name": "dual_pol",
+      "exact_primary_rates_inside_independent": {
+        "sA": true,
+        "sB": true,
+        "j": true
+      },
+      "exact_primary_ratios_inside_independent": {
+        "alice": true,
+        "bob": true
+      },
+      "conditional_efficiency_interval_relations": {
+        "alice": {
+          "primary_exact_point_inside_public_eta": false,
+          "independent_enclosure_intersects_public_eta": false,
+          "independent_recorded_verdict_consistent": true,
+          "calibration_identity_identified": false
+        },
+        "bob": {
+          "primary_exact_point_inside_public_eta": false,
+          "independent_enclosure_intersects_public_eta": false,
+          "independent_recorded_verdict_consistent": true,
+          "calibration_identity_identified": false
+        }
+      }
+    },
+    {
+      "case_id": "dual_pol/N5/signal_only",
+      "primary_preparation_name": "dual_pol",
+      "exact_primary_rates_inside_independent": {
+        "sA": true,
+        "sB": true,
+        "j": true
+      },
+      "exact_primary_ratios_inside_independent": {
+        "alice": true,
+        "bob": true
+      },
+      "conditional_efficiency_interval_relations": {
+        "alice": {
+          "primary_exact_point_inside_public_eta": false,
+          "independent_enclosure_intersects_public_eta": false,
+          "independent_recorded_verdict_consistent": true,
+          "calibration_identity_identified": false
+        },
+        "bob": {
+          "primary_exact_point_inside_public_eta": false,
+          "independent_enclosure_intersects_public_eta": false,
+          "independent_recorded_verdict_consistent": true,
+          "calibration_identity_identified": false
+        }
+      }
+    },
+    {
+      "case_id": "dual_pol/N5/independent_OR",
+      "primary_preparation_name": "dual_pol",
+      "exact_primary_rates_inside_independent": {
+        "sA": true,
+        "sB": true,
+        "j": true
+      },
+      "exact_primary_ratios_inside_independent": {
+        "alice": true,
+        "bob": true
+      },
+      "conditional_efficiency_interval_relations": {
+        "alice": {
+          "primary_exact_point_inside_public_eta": false,
+          "independent_enclosure_intersects_public_eta": false,
+          "independent_recorded_verdict_consistent": true,
+          "calibration_identity_identified": false
+        },
+        "bob": {
+          "primary_exact_point_inside_public_eta": false,
+          "independent_enclosure_intersects_public_eta": false,
+          "independent_recorded_verdict_consistent": true,
+          "calibration_identity_identified": false
+        }
+      }
+    },
+    {
+      "case_id": "pure_H/N1/signal_only",
+      "primary_preparation_name": "pure_H_same_H_gain",
+      "exact_primary_rates_inside_independent": {
+        "sA": true,
+        "sB": true,
+        "j": true
+      },
+      "exact_primary_ratios_inside_independent": {
+        "alice": true,
+        "bob": true
+      },
+      "conditional_efficiency_interval_relations": {
+        "alice": {
+          "primary_exact_point_inside_public_eta": false,
+          "independent_enclosure_intersects_public_eta": false,
+          "independent_recorded_verdict_consistent": true,
+          "calibration_identity_identified": false
+        },
+        "bob": {
+          "primary_exact_point_inside_public_eta": false,
+          "independent_enclosure_intersects_public_eta": false,
+          "independent_recorded_verdict_consistent": true,
+          "calibration_identity_identified": false
+        }
+      }
+    },
+    {
+      "case_id": "pure_H/N1/independent_OR",
+      "primary_preparation_name": "pure_H_same_H_gain",
+      "exact_primary_rates_inside_independent": {
+        "sA": true,
+        "sB": true,
+        "j": true
+      },
+      "exact_primary_ratios_inside_independent": {
+        "alice": true,
+        "bob": true
+      },
+      "conditional_efficiency_interval_relations": {
+        "alice": {
+          "primary_exact_point_inside_public_eta": false,
+          "independent_enclosure_intersects_public_eta": false,
+          "independent_recorded_verdict_consistent": true,
+          "calibration_identity_identified": false
+        },
+        "bob": {
+          "primary_exact_point_inside_public_eta": false,
+          "independent_enclosure_intersects_public_eta": false,
+          "independent_recorded_verdict_consistent": true,
+          "calibration_identity_identified": false
+        }
+      }
+    },
+    {
+      "case_id": "pure_H/N5/signal_only",
+      "primary_preparation_name": "pure_H_same_H_gain",
+      "exact_primary_rates_inside_independent": {
+        "sA": true,
+        "sB": true,
+        "j": true
+      },
+      "exact_primary_ratios_inside_independent": {
+        "alice": true,
+        "bob": true
+      },
+      "conditional_efficiency_interval_relations": {
+        "alice": {
+          "primary_exact_point_inside_public_eta": false,
+          "independent_enclosure_intersects_public_eta": false,
+          "independent_recorded_verdict_consistent": true,
+          "calibration_identity_identified": false
+        },
+        "bob": {
+          "primary_exact_point_inside_public_eta": false,
+          "independent_enclosure_intersects_public_eta": false,
+          "independent_recorded_verdict_consistent": true,
+          "calibration_identity_identified": false
+        }
+      }
+    },
+    {
+      "case_id": "pure_H/N5/independent_OR",
+      "primary_preparation_name": "pure_H_same_H_gain",
+      "exact_primary_rates_inside_independent": {
+        "sA": true,
+        "sB": true,
+        "j": true
+      },
+      "exact_primary_ratios_inside_independent": {
+        "alice": true,
+        "bob": true
+      },
+      "conditional_efficiency_interval_relations": {
+        "alice": {
+          "primary_exact_point_inside_public_eta": false,
+          "independent_enclosure_intersects_public_eta": false,
+          "independent_recorded_verdict_consistent": true,
+          "calibration_identity_identified": false
+        },
+        "bob": {
+          "primary_exact_point_inside_public_eta": false,
+          "independent_enclosure_intersects_public_eta": false,
+          "independent_recorded_verdict_consistent": true,
+          "calibration_identity_identified": false
+        }
+      }
+    },
+    {
+      "case_id": "pure_V/N1/signal_only",
+      "primary_preparation_name": "pure_V_same_V_gain",
+      "exact_primary_rates_inside_independent": {
+        "sA": true,
+        "sB": true,
+        "j": true
+      },
+      "exact_primary_ratios_inside_independent": {
+        "alice": true,
+        "bob": true
+      },
+      "conditional_efficiency_interval_relations": {
+        "alice": {
+          "primary_exact_point_inside_public_eta": false,
+          "independent_enclosure_intersects_public_eta": false,
+          "independent_recorded_verdict_consistent": true,
+          "calibration_identity_identified": false
+        },
+        "bob": {
+          "primary_exact_point_inside_public_eta": false,
+          "independent_enclosure_intersects_public_eta": false,
+          "independent_recorded_verdict_consistent": true,
+          "calibration_identity_identified": false
+        }
+      }
+    },
+    {
+      "case_id": "pure_V/N1/independent_OR",
+      "primary_preparation_name": "pure_V_same_V_gain",
+      "exact_primary_rates_inside_independent": {
+        "sA": true,
+        "sB": true,
+        "j": true
+      },
+      "exact_primary_ratios_inside_independent": {
+        "alice": true,
+        "bob": true
+      },
+      "conditional_efficiency_interval_relations": {
+        "alice": {
+          "primary_exact_point_inside_public_eta": true,
+          "independent_enclosure_intersects_public_eta": true,
+          "independent_recorded_verdict_consistent": true,
+          "calibration_identity_identified": false
+        },
+        "bob": {
+          "primary_exact_point_inside_public_eta": false,
+          "independent_enclosure_intersects_public_eta": false,
+          "independent_recorded_verdict_consistent": true,
+          "calibration_identity_identified": false
+        }
+      }
+    },
+    {
+      "case_id": "pure_V/N5/signal_only",
+      "primary_preparation_name": "pure_V_same_V_gain",
+      "exact_primary_rates_inside_independent": {
+        "sA": true,
+        "sB": true,
+        "j": true
+      },
+      "exact_primary_ratios_inside_independent": {
+        "alice": true,
+        "bob": true
+      },
+      "conditional_efficiency_interval_relations": {
+        "alice": {
+          "primary_exact_point_inside_public_eta": false,
+          "independent_enclosure_intersects_public_eta": false,
+          "independent_recorded_verdict_consistent": true,
+          "calibration_identity_identified": false
+        },
+        "bob": {
+          "primary_exact_point_inside_public_eta": false,
+          "independent_enclosure_intersects_public_eta": false,
+          "independent_recorded_verdict_consistent": true,
+          "calibration_identity_identified": false
+        }
+      }
+    },
+    {
+      "case_id": "pure_V/N5/independent_OR",
+      "primary_preparation_name": "pure_V_same_V_gain",
+      "exact_primary_rates_inside_independent": {
+        "sA": true,
+        "sB": true,
+        "j": true
+      },
+      "exact_primary_ratios_inside_independent": {
+        "alice": true,
+        "bob": true
+      },
+      "conditional_efficiency_interval_relations": {
+        "alice": {
+          "primary_exact_point_inside_public_eta": true,
+          "independent_enclosure_intersects_public_eta": true,
+          "independent_recorded_verdict_consistent": true,
+          "calibration_identity_identified": false
+        },
+        "bob": {
+          "primary_exact_point_inside_public_eta": false,
+          "independent_enclosure_intersects_public_eta": false,
+          "independent_recorded_verdict_consistent": true,
+          "calibration_identity_identified": false
+        }
+      }
+    }
+  ],
+  "control_counts": {
+    "primary": 28,
+    "independent": 60
+  },
+  "worst_midpoint_deltas": {
+    "rates": {
+      "exact": "340150064377204638076469226232015602319272561631936171699428401923953946512264930033829772898929623340946539290332096094182482837922425635853985134951761003/1140173251846000363402589402460281438772216622725071731640563140567458518801412782845178195685776369442497679710788632772125725574444184591488165650125000000000000000000000000000",
+      "value": 2.983319103710632e-22
+    },
+    "Klyshko": {
+      "exact": "48648718416339663677093832322303497432967823744034918609935456489/1377598192217294615556210373984599010473855165102684552600000000000000000000000000000",
+      "value": 3.5314156690375566e-20
+    }
+  },
+  "scientific_receipts_preserved_byte_identical": true,
+  "post_calculation_primary_access": true,
+  "actual_calibration_failure_claimed": false,
+  "no_calibration_branch_selected": true,
+  "calibration_preparation_identified": false,
+  "calibration_ports_identified": false,
+  "calibration_pump_identified": false,
+  "background_subtraction_identified": false,
+  "source_mapping_identified": false,
+  "publication_configuration_identified": false,
+  "production_admitted": false
+}

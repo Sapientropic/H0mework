@@ -1,0 +1,195 @@
+{
+  "schema": "independent-bell-decimal-recompute/v1",
+  "status": "passed",
+  "created_at": "2026-09-06T11:05:28.589288+00:00",
+  "decimal_precision": 80,
+  "independent_parser_and_statistics": true,
+  "production_core_imported": false,
+  "only_designated_capped_member_decoded": true,
+  "other_members_or_uncapped_summaries_opened": false,
+  "binding": {
+    "inputs_checked_current_and_commit": 34,
+    "lock_sha256": "f644d2c18e314f7ddc8733ddf4361fb8c72ac1315dc09ae36fe4e4b73cb13286",
+    "code_commit": "8bf881e89c07d36ce0f02ceb51b3025a36ea616b",
+    "lock_commit": "5d32d1576",
+    "archive_sha256": "2d39d1b6898480d3de0134e2d55ac3faee87af32c8db5bc6fdf6fa6997296909",
+    "pipeline_first_access_at": "2026-09-06T10:53:49.967977+00:00",
+    "ordered_time_chain": [
+      "2026-09-06T10:52:09.688074+00:00",
+      "2026-09-06T10:53:41+00:00",
+      "2026-09-06T10:53:49.967977+00:00",
+      "2026-09-06T10:53:51.085076+00:00",
+      "2026-09-06T10:54:01+00:00",
+      "2026-09-06T10:55:25.897144+00:00"
+    ],
+    "custody_scope": "Byte/commit/time-chain consistency; first access means frozen pipeline access.",
+    "access_sha256": "9039f71ccedaf7364529832e5c2b1af1d60131929ee22804de43f4e3bbb8d166",
+    "release_sha256": "7ae29be58bbbc17dd0674713724f29aa2783c195bbe157c91cc7d950ac4e6572"
+  },
+  "recomputed": {
+    "n_trials": 100000,
+    "context_counts": [
+      {
+        "herald": 1,
+        "a": 0,
+        "b": 0,
+        "n": 25222,
+        "outcome_counts": [
+          9683,
+          3006,
+          3027,
+          9506
+        ]
+      },
+      {
+        "herald": 1,
+        "a": 0,
+        "b": 1,
+        "n": 24878,
+        "outcome_counts": [
+          3001,
+          9407,
+          9224,
+          3246
+        ]
+      },
+      {
+        "herald": 1,
+        "a": 1,
+        "b": 0,
+        "n": 24888,
+        "outcome_counts": [
+          8904,
+          2787,
+          3553,
+          9644
+        ]
+      },
+      {
+        "herald": 1,
+        "a": 1,
+        "b": 1,
+        "n": 25012,
+        "outcome_counts": [
+          9072,
+          2694,
+          3248,
+          9998
+        ]
+      }
+    ],
+    "radii": [
+      {
+        "radius": "0",
+        "max_log_e": "46803.62338250275224372239253323123222876949108709229480744524888124315441454863",
+        "terminal_log_e": "46803.62338250275224372239253323123222876949108709229480744524888124315441454863",
+        "anytime_p": "2.7837607108465184063623157024262754660301463233008529637811816333975498023858165E-20327",
+        "terminal_e": "3.5922627835921584772991892101100682221313559444719306571746798756007401461575210E+20326",
+        "maximum_at_trial": 100000,
+        "maximum_at_source_line": 100003,
+        "reject_at_model_alpha": true
+      },
+      {
+        "radius": "0.01",
+        "max_log_e": "39333.58722245462002709573066663633875621248522164441197321390885294406524564188",
+        "terminal_log_e": "39333.58722245462002709573066663633875621248522164441197321390885294406524564188",
+        "anytime_p": "4.3663226791218201679804666678312910378246965501307608202686048530383852394468123E-17083",
+        "terminal_e": "2.2902567526253596287808349115514742095389034307284863392927098461046037304348469E+17082",
+        "maximum_at_trial": 100000,
+        "maximum_at_source_line": 100003,
+        "reject_at_model_alpha": true
+      },
+      {
+        "radius": "0.02",
+        "max_log_e": "32605.07412395419872556863940850233821293735262880464723490975315516328309699082",
+        "terminal_log_e": "32605.07412395419872556863940850233821293735262880464723490975315516328309699082",
+        "anytime_p": "6.2549799250058523077122021099625923214977710787671559806601806833083156386499696E-14161",
+        "terminal_e": "1.5987261541835633889101846018206401622258911382253940604676243282140091884470530E+14160",
+        "maximum_at_trial": 100000,
+        "maximum_at_source_line": 100003,
+        "reject_at_model_alpha": true
+      },
+      {
+        "radius": "0.05",
+        "max_log_e": "15587.01199510979352234954133815993643448354339274992744345979839765678040450710",
+        "terminal_log_e": "15586.63831371003112165931885182832722958764221479621054600503300682734705178941",
+        "anytime_p": "4.4330350391593653923958563254717790288935783256319980103474579341099486546545494E-6770",
+        "terminal_e": "1.5524265661741584746655997893764847088248807307646961354441744927020963259433412E+6769",
+        "maximum_at_trial": 99991,
+        "maximum_at_source_line": 99994,
+        "reject_at_model_alpha": true
+      },
+      {
+        "radius": "0.1",
+        "max_log_e": "0.481933582556682014691609832829862514798528265775241551223725861534381367075792",
+        "terminal_log_e": "-6225.19045289295744684122101380700898463613636715764486245565673835011559105752",
+        "anytime_p": "0.61758807902376662437444174826620447633042426220109039080892578338804427676746896",
+        "terminal_e": "2.7172995182047350152296603073757014426876442016610189765540113100490359645013795E-2704",
+        "maximum_at_trial": 22,
+        "maximum_at_source_line": 25,
+        "reject_at_model_alpha": false
+      },
+      {
+        "radius": "0.2",
+        "max_log_e": "0",
+        "terminal_log_e": "-37462.782119826750895840113685561215784620029830776050180459135605537147830784676",
+        "anytime_p": "1",
+        "terminal_e": "1.3196191686489453747768267067708782339075777592131462387101549735843960162440337E-16270",
+        "maximum_at_trial": 0,
+        "maximum_at_source_line": null,
+        "reject_at_model_alpha": false
+      }
+    ],
+    "physical_lines": [
+      4,
+      100003
+    ],
+    "source_file": "ETH_repo_upload/main_dataset_all_events.txt",
+    "consumed_prefix_sha256": "8487ea08480204fb50d5ae4e65440062dc81b1a5786a7678a44d9f72981446f5",
+    "prefixes_evaluated_per_radius": 100001,
+    "nominal_probability_max_error": "1.1100211090526212259821208984422118509147084967248841559807763385E-17"
+  },
+  "comparison": {
+    "counts_and_verdict_match": true,
+    "point_verdict": "falsified",
+    "max_abs_log_difference": "5.5872556863940850233821293735262880464723490975315516328309699082E-10",
+    "log_comparison_tolerance": "1e-5",
+    "floating_underflows": [
+      {
+        "radius": "0",
+        "field": "anytime_p",
+        "positive_decimal": "2.7837607108465184063623157024262754660301463233008529637811816333975498023858165E-20327"
+      },
+      {
+        "radius": "0.01",
+        "field": "anytime_p",
+        "positive_decimal": "4.3663226791218201679804666678312910378246965501307608202686048530383852394468123E-17083"
+      },
+      {
+        "radius": "0.02",
+        "field": "anytime_p",
+        "positive_decimal": "6.2549799250058523077122021099625923214977710787671559806601806833083156386499696E-14161"
+      },
+      {
+        "radius": "0.05",
+        "field": "anytime_p",
+        "positive_decimal": "4.4330350391593653923958563254717790288935783256319980103474579341099486546545494E-6770"
+      },
+      {
+        "radius": "0.1",
+        "field": "terminal_e",
+        "positive_decimal": "2.7172995182047350152296603073757014426876442016610189765540113100490359645013795E-2704"
+      },
+      {
+        "radius": "0.2",
+        "field": "terminal_e",
+        "positive_decimal": "1.3196191686489453747768267067708782339075777592131462387101549735843960162440337E-16270"
+      }
+    ],
+    "original_results_sha256": "1b8e10da7818528afc945e36e6874fa02d325628d791be5727ee607d8bda253d"
+  },
+  "log_mixture_omission_bound": "8.3033791604204251838920887418745081124182854940368632563635521186746161827059580E-87",
+  "claim": "Joint ideal source, nominal phase, preparation and readout conditions; no claim about an Euler residual.",
+  "script_sha256": "753f8425c2acab0d4aa127d488024e2080d0dc8d405b13f6927bcf1ad5446dcc",
+  "seconds": 9.273
+}
