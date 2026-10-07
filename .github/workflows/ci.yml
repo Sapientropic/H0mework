@@ -250,19 +250,57 @@ jobs:
 
   first-release-bell-replay:
     name: 首发 Bell 独立复现
-    if: github.event_name == 'workflow_dispatch' && inputs.full_replay
+    if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     timeout-minutes: 360
+    permissions:
+      actions: read
+      contents: read
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
           cache: pip
           cache-dependency-path: Makefile
-      - run: make check-first-release-bell
+      - name: Locate a successful replay artifact
+        id: locate
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 tools/first_release_cache.py find --kind bell --output "$GITHUB_OUTPUT"
+      - name: Download the successful replay artifact
+        if: steps.locate.outputs.found == 'true' && inputs.full_replay != true
+        uses: actions/download-artifact@v4
+        with:
+          artifact-ids: ${{ steps.locate.outputs.artifact_id }}
+          github-token: ${{ github.token }}
+          run-id: ${{ steps.locate.outputs.run_id }}
+          path: .local/replay-cache/bell
+      - name: Validate and reuse the successful replay
+        id: reuse
+        if: steps.locate.outputs.found == 'true' && inputs.full_replay != true
+        env:
+          SOURCE_RUN_URL: ${{ steps.locate.outputs.source_run_url }}
+        run: python3 tools/first_release_cache.py verify --kind bell --artifact-directory .local/replay-cache/bell --source-sha "${{ steps.locate.outputs.source_sha }}" --output .local/first-release-reuse/bell
+      - name: Reuse receipt
+        if: steps.reuse.outputs.reused == 'true'
+        run: |
+          echo "### Bell replay reused" >> "$GITHUB_STEP_SUMMARY"
+          cat .local/first-release-reuse/bell/reuse.json >> "$GITHUB_STEP_SUMMARY"
+      - name: Upload reuse receipt
+        if: steps.reuse.outputs.reused == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: first-release-bell-reuse
+          path: .local/first-release-reuse/bell
+          retention-days: 7
+      - name: Run the Bell replay
+        if: inputs.full_replay == true || steps.reuse.outputs.reused != 'true'
+        run: make check-first-release-bell
       - uses: actions/upload-artifact@v4
-        if: always()
+        if: always() && (inputs.full_replay == true || steps.reuse.outputs.reused != 'true')
         with:
           name: first-release-bell-replay
           path: .local/first-release-runs/
@@ -271,19 +309,57 @@ jobs:
 
   first-release-quantum-replay:
     name: 首发量子载体独立复现
-    if: github.event_name == 'workflow_dispatch' && inputs.full_replay
+    if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     timeout-minutes: 360
+    permissions:
+      actions: read
+      contents: read
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
           cache: pip
           cache-dependency-path: Makefile
-      - run: make check-first-release-quantum
+      - name: Locate a successful replay artifact
+        id: locate
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 tools/first_release_cache.py find --kind quantum --output "$GITHUB_OUTPUT"
+      - name: Download the successful replay artifact
+        if: steps.locate.outputs.found == 'true' && inputs.full_replay != true
+        uses: actions/download-artifact@v4
+        with:
+          artifact-ids: ${{ steps.locate.outputs.artifact_id }}
+          github-token: ${{ github.token }}
+          run-id: ${{ steps.locate.outputs.run_id }}
+          path: .local/replay-cache/quantum
+      - name: Validate and reuse the successful replay
+        id: reuse
+        if: steps.locate.outputs.found == 'true' && inputs.full_replay != true
+        env:
+          SOURCE_RUN_URL: ${{ steps.locate.outputs.source_run_url }}
+        run: python3 tools/first_release_cache.py verify --kind quantum --artifact-directory .local/replay-cache/quantum --source-sha "${{ steps.locate.outputs.source_sha }}" --output .local/first-release-reuse/quantum
+      - name: Reuse receipt
+        if: steps.reuse.outputs.reused == 'true'
+        run: |
+          echo "### Quantum replay reused" >> "$GITHUB_STEP_SUMMARY"
+          cat .local/first-release-reuse/quantum/reuse.json >> "$GITHUB_STEP_SUMMARY"
+      - name: Upload reuse receipt
+        if: steps.reuse.outputs.reused == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: first-release-quantum-reuse
+          path: .local/first-release-reuse/quantum
+          retention-days: 7
+      - name: Run the quantum replay
+        if: inputs.full_replay == true || steps.reuse.outputs.reused != 'true'
+        run: make check-first-release-quantum
       - uses: actions/upload-artifact@v4
-        if: always()
+        if: always() && (inputs.full_replay == true || steps.reuse.outputs.reused != 'true')
         with:
           name: first-release-quantum-replay
           path: .local/first-release-runs/
