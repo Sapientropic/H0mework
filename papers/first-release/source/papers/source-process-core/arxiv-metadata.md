@@ -27,13 +27,11 @@ A question leaves a demand for a process to discharge; even when readings agree,
 **Comments**
 
 ```
-81 pages plus a 16-page supplement of complete proofs, 6 figures and 2 supplementary figures. Lean 4 formalization and reproduction: https://github.com/Sapientropic/H0mework
+81 pages plus a 16-page supplement of complete proofs, 6 figures and 2 supplementary figures. Lean 4 formalization and reproduction: https://github.com/Sapientropic/H0mework/tree/234817b3c3f7a1023226e7a4fdb8660ddcbc9d0a
 ```
-
-Formal proofs and reproduction materials: https://github.com/Sapientropic/H0mework/tree/234817b3c3f7a1023226e7a4fdb8660ddcbc9d0a (commit 234817b3c3f7a1023226e7a4fdb8660ddcbc9d0a).
 
 **Categories**：主类 `cs.LO`；交叉列入 `cs.PL`。
 
 **License**：建议 CC BY 4.0。
 
-提交前提：H0mework 已推送并公开（Comments 中的链接指向它）；首次在该分类投稿需要背书（endorsement）。
+提交前提：H0mework 已推送并公开，且含验收提交 `234817b3`（Comments 中的链接固定到该提交）；首次在该分类投稿需要背书（endorsement）。

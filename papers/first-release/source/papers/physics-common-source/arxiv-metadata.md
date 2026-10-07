@@ -28,13 +28,11 @@ In the $\mathrm{Spin}^+(1,3)\times\mathrm{SU}(7)$ theory constructed here, gravi
 **Comments**
 
 ```
-92 pages plus a 39-page supplement of complete proofs, 6 figures. Lean 4 formalization, finite checks and Bell-test replay: https://github.com/Sapientropic/H0mework
+92 pages plus a 39-page supplement of complete proofs, 6 figures. Lean 4 formalization, finite checks and Bell-test replay: https://github.com/Sapientropic/H0mework/tree/234817b3c3f7a1023226e7a4fdb8660ddcbc9d0a
 ```
 
 **Categories**：主类 `math-ph`；交叉列入 `hep-th`、`quant-ph`。
 
 **License**：建议 CC BY 4.0。
 
-提交前提：H0mework 已推送并公开（Comments 中的链接指向它）；首次在该分类投稿需要背书（endorsement）。
-
-Formal proofs and reproduction materials: https://github.com/Sapientropic/H0mework/tree/234817b3c3f7a1023226e7a4fdb8660ddcbc9d0a (commit 234817b3c3f7a1023226e7a4fdb8660ddcbc9d0a).
+提交前提：H0mework 已推送并公开，且含验收提交 `234817b3`（Comments 中的链接固定到该提交）；首次在该分类投稿需要背书（endorsement）。
