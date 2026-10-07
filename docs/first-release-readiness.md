@@ -22,11 +22,20 @@ AD 完整双树、统计消费者、完整域和最终消费者已完成实际�
 
 必要来源修正已由主仓 `089a1727` 与 `fa15016c` 保存，公开地址、原／目标摘要和依赖版本见首发映射。AB／AC 的状态暴露证明采用已提交 AE 版本的展开修正。波片生产体与直接消费者采用 AE 中已有的完整证明，原 AC 候选保持原字节并归入历史构建范围；具体来源与地址见首发映射的 `build_source_adaptations`。
 
-源码与证据选集已保存为本地验收提交 `234817b3c3f7a1023226e7a4fdb8660ddcbc9d0a`，版本绑定见首发映射的 `local_delivery`。
+源码与证据选集已保存为[公开验收提交 `234817b3`](https://github.com/Sapientropic/H0mework/tree/234817b3c3f7a1023226e7a4fdb8660ddcbc9d0a)，版本绑定见首发映射的 `local_delivery`。
 
 两篇论文的代码可得性、来源索引、生成器和 arXiv／Zenodo 元数据已同步，写作仓版本由首发映射的 `local_delivery` 登记。八份阅读版 PDF、两个可独立编译的英文 arXiv 包及对应 PDF、可编辑正文、图源、排版脚本与书目均已备齐，见[两篇首发成品](../papers/first-release/README.md)；精确文件身份、页数与验证记录见[成品清单](../papers/first-release/manifest.json)。全部 613 页已渲染并视觉复查。
 
 selection 中核心 C13 的两项声明已使用源码全名，21 个补充根均已审查；60 条主张的数学陈述、量词、固定来源及证明／科学输入保持。当前元数据与原验收的对应关系见[选集兼容核验](../evidence/first-release/acceptance/paper-binding-20261007/metadata-correction-compatibility.json)。首发的源码选集与论文成品均已完成本地交付。
+
+## 公开记录 · 2026-10-07
+
+H0mework 已公开，两篇论文以 v1 预印本发布于 Zenodo。每条记录包含中英正文与中英补充材料四份 PDF，采用 CC BY 4.0；均引用上述固定验收提交。
+
+| 论文 | 版本 DOI |
+| --- | --- |
+| 过程核心 | [10.5281/zenodo.23210084](https://doi.org/10.5281/zenodo.23210084) |
+| 同源物理旗舰 | [10.5281/zenodo.23210292](https://doi.org/10.5281/zenodo.23210292) |
 
 ## 历史版本
 
