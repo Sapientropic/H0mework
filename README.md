@@ -8,10 +8,10 @@
 
 ## 首发论文
 
-| 论文 | 证明选集 |
-| --- | --- |
-| **状态不是历史，源才是**：过程同一性、责任承接与最小修订<br>*The State Is Not the History, the Source Is* | [首发证明与复现](docs/first-release-reproduction.md) |
-| **这浩瀚宇宙里，我们没找到魔法**：Spin×SU(7) 理论的同源生成与经典—量子对应<br>*We Found No Magic in This Mighty Universe* | [逐主张映射](docs/first-release-map.json) |
+| 论文 | 正文与补充 | 证明选集 |
+| --- | --- | --- |
+| **状态不是历史，源才是**：过程同一性、责任承接与最小修订<br>*The State Is Not the History, the Source Is* | [首发成品](papers/first-release/README.md) | [首发证明与复现](docs/first-release-reproduction.md) |
+| **这浩瀚宇宙里，我们没找到魔法**：Spin×SU(7) 理论的同源生成与经典—量子对应<br>*We Found No Magic in This Mighty Universe* | [首发成品](papers/first-release/README.md) | [逐主张映射](docs/first-release-map.json) |
 
 ## 更多研究线
 
@@ -40,11 +40,11 @@ make check-first-release-entry  # 检查导出身份、完整 Fock、Born 与精
 - [来源材料索引](docs/source-materials.md)：机制说明、认证报告、研究过程材料，以及引用的第三方原文。
 - 首版论文正文中的"代码与数据可用性"一节，对应标签 [`papers-2026-09`](https://github.com/Sapientropic/H0mework/tree/papers-2026-09)；首发修订选集按[逐主张映射](docs/first-release-map.json)使用各自固定来源。
 
-`Lean/` 是证明，`scripts/` 是复现程序，`evidence/` 是冻结的计算结果；[`tools/export-map.json`](tools/export-map.json) 记下每个文件的来处与哈希。
+`Lean/` 是证明，`scripts/` 是复现程序，`evidence/` 是冻结的计算结果；[`tools/export-map.json`](tools/export-map.json) 记下每个文件的来处与哈希。`papers/first-release/` 保存两篇首发论文的正文、补充、可编辑来源与成品。
 
 ## 许可
 
-原创内容采用 Apache-2.0，见 [LICENSE](LICENSE) 与 [NOTICE](NOTICE)。引用的第三方原文保留原作者的版权与许可，详见[来源材料索引](docs/source-materials.md#第三方材料)。
+原创代码与证据采用 Apache-2.0，见 [LICENSE](LICENSE) 与 [NOTICE](NOTICE)。首发论文沿用成品元数据登记的 CC BY 4.0，见[论文许可](papers/first-release/source/papers/source-process-core/zenodo-metadata.md#licenses)。引用的第三方原文保留原作者的版权与许可，详见[来源材料索引](docs/source-materials.md#第三方材料)。
 
 ---
 

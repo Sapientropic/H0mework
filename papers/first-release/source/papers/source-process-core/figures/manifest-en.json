@@ -1,0 +1,100 @@
+[
+  {
+    "id": "figure1",
+    "stem": "figure1-three-tick-counterexample-en",
+    "title": "Local witnesses cannot be spliced into a common source history",
+    "caption": "Exact numerical figure (Example 4.1, Table 1). The three-tick environments are x↦1, x↦0, x↦1. The zero word realizes 0→0 on the first segment, the variable word realizes 0→1 on the second; both read 0 in the middle environment. A common source word would have its first and last readings given by one and the same evaluation function ev₁, yet they would have to be 0 and 1, so no such word exists. Solid lines mark the adopted local segments; dashed lines and hollow dots supply the candidate's remaining true readings; the upper bracket only marks that the first and last environments are the same.",
+    "claim": "Agreement of readings on local segments does not guarantee a common source word running through all segments.",
+    "kind": "main",
+    "role": "main",
+    "svg": "vector/figure1-three-tick-counterexample-en.svg",
+    "pdf": "vector/figure1-three-tick-counterexample-en.pdf",
+    "png": "vector/figure1-three-tick-counterexample-en.png"
+  },
+  {
+    "id": "figure2",
+    "stem": "figure2-three-layer-overview-en",
+    "title": "Four levels of identity",
+    "caption": "Structural diagram. From bottom to top: the four levels of identity and the obligation after revision. Same reading compares values only; same source object requires one witness for the whole history (Theorems 3.9, 4.4, 4.6–4.7); same occurrence is fixed by the correspondence between two faithful realizations and the common occurrence (Theorem 5.3); same obligation is given by the determined row that carries an old row through a whole-ledger update, and an obligation born from a source program is paid step by step (Proposition 6.4, Theorems 6.7, 6.10); after revision, the minimal extension sends the new direction to the new row consumed by the first write, and a settled answer asks the next question, carrying the complete time, all actors and both inventories (Theorems 7.7, 8.4, 8.6–8.7, 8.12, 9.2–9.8). The text between levels is the concrete situation that makes the next level necessary; the same-debt master law for general debts and the typed revision are marked as inputs.",
+    "claim": "Each level keeps one more thing than the one below; the concrete failure between levels explains why the next level is needed.",
+    "kind": "main",
+    "role": "main",
+    "svg": "vector/figure2-three-layer-overview-en.svg",
+    "pdf": "vector/figure2-three-layer-overview-en.pdf",
+    "png": "vector/figure2-three-layer-overview-en.png"
+  },
+  {
+    "id": "figure3",
+    "stem": "figure3-prefix-tower-and-shift-en",
+    "title": "Prefix truncation and start advance",
+    "caption": "Structural diagram (Definition 4.5, Theorems 4.6–4.7). A: under the convention pre_b^s(w)=(U₀^s,…,U_b^s), the same-start transition r_b^s:Q_{b+1}(s)→Q_b(s) deletes the last tick, and the completion carrier is the inverse limit of this fixed-start tower. B: d_b^s:Q_{b+1}(s)→Q_b(σs) deletes the first tick and advances the start, inducing the linear successor T; the two maps change different indices. Bottom: the evolution equation holds for every completion element z, whether or not z comes from a source word.",
+    "claim": "Prefix truncation and time shift change different indices; once they are distinguished, the evolution equation on the completion carrier has clear types.",
+    "kind": "main",
+    "role": "main",
+    "svg": "vector/figure3-prefix-tower-and-shift-en.svg",
+    "pdf": "vector/figure3-prefix-tower-and-shift-en.pdf",
+    "png": "vector/figure3-prefix-tower-and-shift-en.png",
+    "editorial_note": "Fixed start: prefixRestriction deletes the last tick; advancing start: dropFirst deletes the first tick; the corresponding evidence at the fixed H is claims C8."
+  },
+  {
+    "id": "figure4",
+    "stem": "figure4-common-source-history-extension-en",
+    "title": "History extension keeping the common source word",
+    "caption": "Structural diagram (Proposition 4.8). Given p=pre_b^s(w) and its source-word witness w, read the longer prefix pre_{b+1}^s(w) with the same w; deleting the newly added last tick returns p. The activated runtime of the new last tick equals the target tick of the original b-budget history; the equation compares runtime fields and does not treat the stage inventory U directly as a tick. Both arrows leaving w are reads, and the upward arrow is a finite-window restriction. The lower part recalls Example 4.1: equal readings did not replace keeping a common source witness. There is no unconditional choice arrow from a finite quotient point to the completion carrier.",
+    "claim": "An extension with a given source witness keeps the same word; a bare reading cannot select such an extension.",
+    "kind": "main",
+    "role": "main",
+    "svg": "vector/figure4-common-source-history-extension-en.svg",
+    "pdf": "vector/figure4-common-source-history-extension-en.pdf",
+    "png": "vector/figure4-common-source-history-extension-en.png",
+    "editorial_note": "Fixed start: prefixRestriction deletes the last tick; advancing start: dropFirst deletes the first tick; the corresponding evidence at the fixed H is claims C8."
+  },
+  {
+    "id": "figure5",
+    "stem": "figure5-coproduct-revision-and-continuation-en",
+    "title": "The two-tick revision: from the exact failure to the new root's answer",
+    "caption": "Fixed two-tick instance (Table 4, Proposition 8.9): the old support true, the query (), an old row with budget 2 and an empty expression/realization theory give the exact failure. The minimal extension adds the same failure direction and a new row with budget 0; the natural-number dynamical program is supplied separately by the typed revision and connected through exact field grounding. The first write 0→1 consumes the old and new rows; the compilation 1→2 at the target gives the revised new root's current 2; the second tick reads the unit answer at the same new root's current 2 and advances to 3.",
+    "claim": "The expression extension of the same failure, the actual first write, the complete new-root macro successor and the second-tick answer are connected object by object; the identity of inputs is not erased.",
+    "kind": "main",
+    "role": "main",
+    "svg": "vector/figure5-coproduct-revision-and-continuation-en.svg",
+    "pdf": "vector/figure5-coproduct-revision-and-continuation-en.pdf",
+    "png": "vector/figure5-coproduct-revision-and-continuation-en.png"
+  },
+  {
+    "id": "figure6",
+    "stem": "figure6-source-program-chain-en",
+    "title": "From the original occurrence to the next question",
+    "caption": "Structural diagram (Theorems 3.9, 6.10, 8.12, Example 8.13). The projection of the original occurrence reads a rooted tree T; the whole-tree program is executed in β(T) steps, and a syntax-only parser reads the program back to T. Every execution step is a genuine payment on the same mathematical row, with budgets B, B−1, …, 0; at settlement the completed value equals the original evaluation, and the paid trace gives a relation receipt. After the actual environment moves, the residual request has the effect as its value and budget r(e)+r(e′)+2>0; its first step is the birth of a new obligation, and the next frame returns to the same runtime. The figure has no dashed input frame: no master law or revision is supplied along the chain.",
+    "claim": "Execution, inverse reading, payment and the next question of a source program form one chain through one execution debt law, with no supplied input.",
+    "kind": "main",
+    "role": "main",
+    "svg": "vector/figure6-source-program-chain-en.svg",
+    "pdf": "vector/figure6-source-program-chain-en.pdf",
+    "png": "vector/figure6-source-program-chain-en.png"
+  },
+  {
+    "id": "supp1",
+    "stem": "supp1-two-certificates-kernel-en",
+    "title": "The two-certificate decomposition of the relation kernel",
+    "caption": "Certificate-structure diagram (Theorem 4.4, Appendix A.3). Given a formal word w evaluating to zero, qρ(w) denotes the constant formal sum formed after expression-by-expression evaluation. The linear extension of the normalization derivations gives the relation image w−qρ(w); since evρ(w)=0, the remaining qρ(w) is given a second certificate by the addition and scalar-action relations. The two certificates add up to a relation image of exactly w, giving ker(evρ)⊆range(relρ). The other direction evaluates each piece of evidence to zero.",
+    "claim": "Every formal word in the kernel has an explicit two-part decomposition into a derivation certificate and a scalar certificate.",
+    "kind": "companion",
+    "role": "companion",
+    "svg": "vector/supp1-two-certificates-kernel-en.svg",
+    "pdf": "vector/supp1-two-certificates-kernel-en.pdf",
+    "png": "vector/supp1-two-certificates-kernel-en.png"
+  },
+  {
+    "id": "supp2",
+    "stem": "supp2-same-debt-budget-descent-en",
+    "title": "The three-stage budget composition of a payment macro",
+    "caption": "Exact numerical figure (Definition 6.6, Theorem 6.7, Table 3). The three-stage inequality is read in the boundary order of the payment macro: the middle stage is the payment 1→0 of Table 2 and the two sides are identity boundaries, so the budgets are 1, 1, 0, 0. The general law is βtarget≤βpaid<βpay≤βsource; the two sides may also strictly decrease, and only the middle stage must decrease strictly; zero budget by itself does not replace a terminal receipt.",
+    "claim": "Under the master-law input, one strictly decreasing stage in a payment macro makes the three-stage composite strictly decrease, and supports the well-founded recursion.",
+    "kind": "companion",
+    "role": "companion",
+    "svg": "vector/supp2-same-debt-budget-descent-en.svg",
+    "pdf": "vector/supp2-same-debt-budget-descent-en.pdf",
+    "png": "vector/supp2-same-debt-budget-descent-en.png"
+  }
+]

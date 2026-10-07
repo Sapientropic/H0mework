@@ -1,0 +1,4926 @@
+{
+ "schema": "publish/first-release-selection@1",
+ "maintainer": "publish writing window (sole writer)",
+ "status": "final",
+ "updated": "2026-10-07",
+ "publish_baseline": "d68aebabd732a10791a6b1911595bdd74778dfd5",
+ "source_repository": "Homework (private research)",
+ "sources": {
+  "H": "e60a86058abcb74b7f2225f2383c182be8343785",
+  "base": "8e29b8e",
+  "F": "cde4b910929d9bc57554aa56f6ade116bc3b8675",
+  "X": "eec031c489f37459742e62a59a26b9866a21caed",
+  "AB": "fde5c14df36b6064c87064acd20830d3df0500bb",
+  "AC": "b67aa48c75b3cd7738766ed40093bb3f7c1d7a1a",
+  "AD": "aef0ad2a26199d9fd6da9bc9e7ec1a65636ef63f",
+  "AE": "26b91feb6b507fdc3f43be9c429edb63fb9395ef",
+  "CAP": "59409a512c435cad5c5113fdedc91a451af88883",
+  "K1-4": "85cb5386ca132818f74d90470d87a252e4a27ea7",
+  "K5": "958a425f952d6445ecb4123ff553d2a32d5ae010",
+  "K6-7": "f9b733928fb5078ac82430b164dabb8696542e64",
+  "K8-11": "6726f385356cb327e7c158687e6e37f5f086fe71",
+  "K15": "d745a78c89a54632fb29461c51f62d9df7180ec5",
+  "K16": "a66cf2d4f1b46465f991401d8e65fde7fab3e4e2",
+  "K16-17": "7e04cfdd4af29c5abe8582a3e0fd93f83b34fd54",
+  "INTERFACE_REPAIR": "089a1727993bec51c27ee72a0311022fec8111ab",
+  "BUDGET_REPAIR": "fa15016c967e1ea50c1fdc3d8e7bf1ec8f7128a6"
+ },
+ "intake_cap": {
+  "AE": "26b91feb6b507fdc3f43be9c429edb63fb9395ef",
+  "cap": "59409a512c435cad5c5113fdedc91a451af88883",
+  "rule": "each claim keeps its own fixed commit; post-cap results enter only to correct an error, change a decisive proof dependency or complete a registered first-release duty"
+ },
+ "papers": [
+  {
+   "id": "source-process-core",
+   "title_zh": "状态不是历史，源才是：过程同一性、责任承接与最小修订",
+   "title_en": "The State Is Not the History, the Source Is: Identity, Responsibility, and Minimal Revision in Processes"
+  },
+  {
+   "id": "physics-common-source",
+   "title_zh": "这浩瀚宇宙里，我们没找到魔法：Spin×SU(7) 理论的同源生成与经典—量子对应",
+   "title_en": "We Found No Magic in This Mighty Universe: Common-Source Generation and Classical–Quantum Correspondence in a Spin×SU(7) Theory"
+  }
+ ],
+ "paths_relative_to": "Homework repository root at the claim source commit",
+ "claims": [
+  {
+   "id": "core.C1",
+   "paper": "source-process-core",
+   "status": "selected",
+   "title": "生命周期三律",
+   "statement": "任意词汇V、NativeResponsibilityProcess P、合法edge与slot：fresh allocation⇒admitted；newly live⇒admitted或reopened；live→nonlive⇒obligationTerminal；Run.history_eq保序历史。",
+   "quantifiers_premises": "P自带实际事件及分类器；不是任意裸状态差分。",
+   "text_location": {
+    "zh": "§6.1 命题6.1",
+    "en": "§6.1 Proposition 6.1"
+   },
+   "written_proof": "manuscript §6.1 证明",
+   "source": {
+    "alias": "H",
+    "commit": "e60a86058abcb74b7f2225f2383c182be8343785"
+   },
+   "producers": [
+    {
+     "path": "Lean/SaturationMonoid/ResponsibilityLifecycleKernel.lean",
+     "decls": [
+      "Edge.freshlyAllocated_implies_admitted",
+      "newlyLive_implies_admitted_or_reopened",
+      "disappears_implies_obligationTerminal",
+      "Run.history_eq"
+     ]
+    }
+   ],
+   "direct_consumers": [
+    {
+     "path": "Lean/SaturationMonoid/ResponsibilityLifecycleRegression.lean",
+     "decls": [
+      "terminalEdge"
+     ],
+     "note": "needs base tactic repair 8e29b8e (merged 585bb74)"
+    }
+   ],
+   "h0mework": {
+    "status": "bound@234817b3",
+    "accepted_commit": "234817b3c3f7a1023226e7a4fdb8660ddcbc9d0a",
+    "map": "docs/first-release-map.json",
+    "claim_id": "core.C1"
+   }
+  },
+  {
+   "id": "core.C2",
+   "paper": "source-process-core",
+   "status": "selected",
+   "title": "同债总律生成有限结算",
+   "statement": "固定process与origin debt：不增—严格降—不增付款宏复合严格下降，续行关系良基、无自返、零预算无付款；给覆盖全部同债current的Noetherian总emit后，每个current构造有限GeneratedHistory、准确target、Settlement与Receipt。",
+   "quantifiers_premises": "总律是输入；目标行、行演化、同债唯一性为微步输入。",
+   "text_location": {
+    "zh": "§6.4 定义6.6、定理6.7、注6.8",
+    "en": "§6.4 Definition 6.6, Theorem 6.7, Remark 6.8"
+   },
+   "written_proof": "manuscript §6.4 定理6.7证明",
+   "source": {
+    "alias": "H",
+    "commit": "e60a86058abcb74b7f2225f2383c182be8343785"
+   },
+   "producers": [
+    {
+     "path": "Lean/SaturationMonoid/LivingLawRootNoetherianDebtClosureKernel.lean",
+     "decls": [
+      "ofPayment",
+      "strictDebit",
+      "generatedHistory",
+      "terminalSettlement",
+      "generatedSettlement",
+      "generatedReceipt"
+     ]
+    }
+   ],
+   "direct_consumers": [
+    {
+     "path": "Lean/SaturationMonoid/LivingLawRootNoetherianDebtClosureRegression.lean",
+     "decls": [
+      "generated_noetherianDebtSettlementReceipt"
+     ]
+    }
+   ],
+   "h0mework": {
+    "status": "bound@234817b3",
+    "accepted_commit": "234817b3c3f7a1023226e7a4fdb8660ddcbc9d0a",
+    "map": "docs/first-release-map.json",
+    "claim_id": "core.C2"
+   }
+  },
+  {
+   "id": "core.C3",
+   "paper": "source-process-core",
+   "status": "selected",
+   "title": "固定过程后继与历史",
+   "statement": "任意fixed-law process：stateAt为完整living current的单射表示；successor精确认回root编译结果并保law surface；相同current后继相同；任意fuel生成历史。",
+   "quantifiers_premises": "后继由一拍源生成律给出；不把给定总过程写成任意源的终止证明。",
+   "text_location": {
+    "zh": "§2.1 定义2.1、命题2.2",
+    "en": "§2.1 Definition 2.1, Proposition 2.2"
+   },
+   "written_proof": "manuscript §2.1",
+   "source": {
+    "alias": "H",
+    "commit": "e60a86058abcb74b7f2225f2383c182be8343785"
+   },
+   "producers": [
+    {
+     "path": "Lean/SaturationMonoid/LivingLawRootAnswerNextHistoryKernel.lean",
+     "decls": [
+      "successor_eq",
+      "successor_lawSurface_eq",
+      "successor_difference_reflects_current",
+      "generateHistory"
+     ]
+    },
+    {
+     "path": "Lean/SaturationMonoid/LivingLawRootTemporalAnswerNextKernel.lean",
+     "decls": [
+      "generatedNextCurrentAt_lawSurface_eq"
+     ]
+    }
+   ],
+   "direct_consumers": [
+    {
+     "path": "Lean/SaturationMonoid/LivingLawRootTotalRealityAdapter.lean",
+     "decls": [
+      "registeredCurrent_ne_of_ne",
+      "RootProcessTotalReality.isTotal"
+     ]
+    }
+   ],
+   "h0mework": {
+    "status": "bound@234817b3",
+    "accepted_commit": "234817b3c3f7a1023226e7a4fdb8660ddcbc9d0a",
+    "map": "docs/first-release-map.json",
+    "claim_id": "core.C3"
+   }
+  },
+  {
+   "id": "core.C4",
+   "paper": "source-process-core",
+   "status": "selected",
+   "title": "规范询问运行时",
+   "statement": "任意SourceNativeInquiryEngineProcess与其激活律递归生成stateAt n；每拍answer、receipt、next来自engine.ask；同一激活态token等于canonical tick。",
+   "quantifiers_premises": "激活律为输入。",
+   "text_location": {
+    "zh": "§8.4 运行时段",
+    "en": "§8.4 runtime paragraph"
+   },
+   "written_proof": "manuscript §8.4",
+   "source": {
+    "alias": "H",
+    "commit": "e60a86058abcb74b7f2225f2383c182be8343785"
+   },
+   "producers": [
+    {
+     "path": "Lean/SaturationMonoid/LivingLawCanonicalInquiryRuntimeKernel.lean",
+     "decls": [
+      "initialState",
+      "State.tick",
+      "ExactActivatedInquiryOccurrenceAt.eq_tick",
+      "stateAt",
+      "stateAt_succ_activation"
+     ]
+    }
+   ],
+   "direct_consumers": [
+    {
+     "path": "Lean/SaturationMonoid/LivingLawCanonicalInquiryRuntimeRegression.lean",
+     "decls": [
+      "threeTickHistory"
+     ]
+    }
+   ],
+   "h0mework": {
+    "status": "bound@234817b3",
+    "accepted_commit": "234817b3c3f7a1023226e7a4fdb8660ddcbc9d0a",
+    "map": "docs/first-release-map.json",
+    "claim_id": "core.C4"
+   }
+  },
+  {
+   "id": "core.C5",
+   "paper": "source-process-core",
+   "status": "selected",
+   "title": "两拍修订实例",
+   "statement": "固定唯一query的非空实现：旧Bool支撑、预算2、空表达理论；coface新行预算0；Nat写入n↦n+1经精确接地，首次写入0→1，目标处编译到2；首拍公开cofaceAnswer，宏后继revised 2且不等于旧微后继；第二拍新根直接答PUnit.unit，后继3。",
+   "quantifiers_premises": "不声称付款、一般学习或自动发现。",
+   "text_location": {
+    "zh": "§8.4 命题8.9、表4、图5",
+    "en": "§8.4 Proposition 8.9, Table 4, Figure 5"
+   },
+   "written_proof": "manuscript §8.4、附录C.3",
+   "source": {
+    "alias": "H",
+    "commit": "e60a86058abcb74b7f2225f2383c182be8343785"
+   },
+   "producers": [
+    {
+     "path": "Lean/SaturationMonoid/LivingLawRootInquiryU8CompletionRegression.lean",
+     "decls": [
+      "oldTheory",
+      "rooted",
+      "coface",
+      "revisedVocabulary",
+      "revisedRows",
+      "revisedPatch",
+      "generatedTypedRevision",
+      "generatedTypedRevisionFieldGrounding",
+      "generatedRevisionCore",
+      "generatedCompletion",
+      "process",
+      "public_old_new_rows_generate_same_next",
+      "second_resolution_is_direct"
+     ]
+    }
+   ],
+   "direct_consumers": [
+    {
+     "path": "Lean/SaturationMonoid/LivingLawCanonicalInquiryRuntimeRegression.lean",
+     "decls": [
+      "firstTick_resolution_is_revised",
+      "firstTick_next_uses_exact_revised_living_root",
+      "firstTick_next_is_not_old_micro_successor",
+      "secondTick_is_revised_root_answer"
+     ]
+    }
+   ],
+   "h0mework": {
+    "status": "bound@234817b3",
+    "accepted_commit": "234817b3c3f7a1023226e7a4fdb8660ddcbc9d0a",
+    "map": "docs/first-release-map.json",
+    "claim_id": "core.C5"
+   }
+  },
+  {
+   "id": "core.C6",
+   "paper": "source-process-core",
+   "status": "selected",
+   "title": "一次性接口无自主运行时",
+   "statement": "任意RootInquiryStatePresentation：IsEmpty (SourceNativeInquiryRuntime state.oneShotProcess)。",
+   "quantifiers_premises": "无。",
+   "text_location": {
+    "zh": "§8.4 命题8.10",
+    "en": "§8.4 Proposition 8.10"
+   },
+   "written_proof": "manuscript §8.4",
+   "source": {
+    "alias": "H",
+    "commit": "e60a86058abcb74b7f2225f2383c182be8343785"
+   },
+   "producers": [
+    {
+     "path": "Lean/SaturationMonoid/LivingLawCanonicalInquiryRuntimeRegression.lean",
+     "decls": [
+      "oneShot_has_no_autonomous_runtime"
+     ]
+    }
+   ],
+   "direct_consumers": [],
+   "h0mework": {
+    "status": "bound@234817b3",
+    "accepted_commit": "234817b3c3f7a1023226e7a4fdb8660ddcbc9d0a",
+    "map": "docs/first-release-map.json",
+    "claim_id": "core.C6"
+   }
+  },
+  {
+   "id": "core.C7",
+   "paper": "source-process-core",
+   "status": "selected",
+   "title": "效应、混合项与Type中推导",
+   "statement": "任意sorts、加法交换群、变量环境；有限Expr的递归effect与有序mixedTerms给eval(old+inc)=eval(old)+effect，双线性节点保左右与joint三项；normalize在Type中生成Derivation env e (const(eval e env))。",
+   "quantifiers_premises": "无加法以外结构。",
+   "text_location": {
+    "zh": "§3.1–§3.3 定义3.1–3.2、命题3.3–3.6",
+    "en": "§3.1–§3.3"
+   },
+   "written_proof": "manuscript §3.1–§3.3",
+   "source": {
+    "alias": "H",
+    "commit": "e60a86058abcb74b7f2225f2383c182be8343785"
+   },
+   "producers": [
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Effect.lean",
+     "decls": [
+      "Expr.effect",
+      "eval_update"
+     ]
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/MixedTrace.lean",
+     "decls": [
+      "eval_update_mixedTerms"
+     ]
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Derivation/Reduction.lean",
+     "decls": [
+      "normalize"
+     ]
+    }
+   ],
+   "direct_consumers": [
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Regression/Derivation.lean",
+     "decls": [
+      "generated_square_add_readback",
+      "actual_increment_changes_generated_relation_range"
+     ]
+    }
+   ],
+   "h0mework": {
+    "status": "bound@234817b3",
+    "accepted_commit": "234817b3c3f7a1023226e7a4fdb8660ddcbc9d0a",
+    "map": "docs/first-release-map.json",
+    "claim_id": "core.C7"
+   }
+  },
+  {
+   "id": "core.C8",
+   "paper": "source-process-core",
+   "status": "selected",
+   "title": "关系核、完成载体与逐元素演化",
+   "statement": "任意交换环R与R-模、固定环境：range(relationMap)=ker(evaluation)；固定runtime、实际readMaterial与加性环境投影：两词在completion同像⇔每stage的(old,effect)差属于该stage生成关系范围；successor覆盖全部completion元素；Fock实现中原word的Fibre见证沿生成后继延展。",
+   "quantifiers_premises": "有限商满射与逆极限相容；不要求Formal→completion满射。",
+   "text_location": {
+    "zh": "§4 定理4.4、4.6、4.7、命题4.8",
+    "en": "§4 Theorems 4.4, 4.6, 4.7, Proposition 4.8"
+   },
+   "written_proof": "manuscript §4、附录A–B",
+   "source": {
+    "alias": "H",
+    "commit": "e60a86058abcb74b7f2225f2383c182be8343785"
+   },
+   "producers": [
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Scalar/Presentation.lean",
+     "decls": [
+      "normalizationCertificate",
+      "relation_range_eq_kernel",
+      "source_reduction"
+     ]
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Scalar/Exact.lean",
+     "decls": [
+      "inventory_fibre_generated",
+      "presentationComplex_exact"
+     ]
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Runtime/Relations.lean",
+     "decls": [
+      "completion_fibre_generated",
+      "successor_fibre_generated"
+     ]
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Runtime/Successor.lean",
+     "decls": []
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Runtime/Evolution.lean",
+     "decls": []
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Scalar/InventoryLift.lean",
+     "decls": [
+      "pairEnvironment",
+      "evaluation_liftMap",
+      "eval_liftExpr"
+     ]
+    }
+   ],
+   "direct_consumers": [
+    {
+     "path": "Lean/SaturationMonoid/NoIslandNoMagic/CanonicalArithmeticState/ParticleWave/Fock/Runtime/Cofinal/Dynamics/Witness.lean",
+     "decls": [
+      "extendWitness",
+      "extension_factorizes"
+     ]
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Logic/Regression/QuantifiedUpdate.lean",
+     "decls": []
+    }
+   ],
+   "h0mework": {
+    "status": "bound@234817b3",
+    "accepted_commit": "234817b3c3f7a1023226e7a4fdb8660ddcbc9d0a",
+    "map": "docs/first-release-map.json",
+    "claim_id": "core.C8"
+   }
+  },
+  {
+   "id": "core.C9",
+   "paper": "source-process-core",
+   "status": "selected",
+   "title": "原生状态的自由载体与任意二元运算",
+   "statement": "∀固定SourceNativeLivingRootProcess：δ:State→Freeℤ(State)单射，Aδ(s)=δ(successor s)；任意原read唯一线性延拓并与作用对易；任意f:X→Y→Z生成双加性lift、mixed effect与normalize；Field的nextWitness保原tick.next。",
+   "quantifiers_premises": "State无需加法。",
+   "text_location": {
+    "zh": "§2.2–§2.4 命题2.3、定义2.4、命题2.5",
+    "en": "§2.2–§2.4"
+   },
+   "written_proof": "manuscript §2.2–§2.4、附录A.1",
+   "source": {
+    "alias": "H",
+    "commit": "e60a86058abcb74b7f2225f2383c182be8343785"
+   },
+   "producers": [
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Core.lean",
+     "decls": [
+      "statePoint_injective",
+      "sourceAction",
+      "observer_unique",
+      "point_factorizes"
+     ]
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Binary.lean",
+     "decls": [
+      "joint",
+      "pushJoint",
+      "lift"
+     ]
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Field.lean",
+     "decls": [
+      "nextWitness",
+      "nativeReadWitness"
+     ]
+    }
+   ],
+   "direct_consumers": [
+    {
+     "path": "Lean/SaturationMonoid/NoIslandNoMagic/CanonicalArithmeticState/ParticleWave/Fock/Runtime/Cofinal/OperationNative.lean",
+     "decls": [
+      "native_field_factorizes",
+      "native_readout_is_original_write_target"
+     ]
+    }
+   ],
+   "h0mework": {
+    "status": "bound@234817b3",
+    "accepted_commit": "234817b3c3f7a1023226e7a4fdb8660ddcbc9d0a",
+    "map": "docs/first-release-map.json",
+    "claim_id": "core.C9"
+   }
+  },
+  {
+   "id": "core.C10",
+   "paper": "source-process-core",
+   "status": "selected",
+   "title": "忠实实现与唯一比较",
+   "statement": "固定SourceNativeLivingRootClosure：规范Process有FaithfulRealization；任意忠实process任意event恢复规范发生与全部安装投影、event=emitted；任意两忠实实现经共同occurrence生成整个编译相容的双向表示；任意候选逐current事件映射逐点等于生成比较。",
+   "quantifiers_premises": "确定性单根；编译整体相容使用世界合法演化唯一律。",
+   "text_location": {
+    "zh": "§5 定义5.1、命题5.2、定理5.3",
+    "en": "§5"
+   },
+   "written_proof": "manuscript §5",
+   "source": {
+    "alias": "H",
+    "commit": "e60a86058abcb74b7f2225f2383c182be8343785"
+   },
+   "producers": [
+    {
+     "path": "Lean/SaturationMonoid/LivingLawRootGroundedRealizationKernel.lean",
+     "decls": [
+      "source_generates_faithful_realization",
+      "recover",
+      "recover_eq_generated",
+      "event_eq_emitted",
+      "recovered_projection",
+      "compiled_next",
+      "source_generates_unique_comparison",
+      "grounded_iff_represented_difference"
+     ]
+    },
+    {
+     "path": "Lean/SaturationMonoid/LivingLawCausalRealizationConstructiveKernel.lean",
+     "decls": [
+      "FaithfulRealization",
+      "commutingPresentation",
+      "compile_eq_at_occurrence"
+     ]
+    }
+   ],
+   "direct_consumers": [
+    {
+     "path": "Lean/SaturationMonoid/PhysicsCore/Stage10/Realization.lean",
+     "decls": [
+      "source_realization_consumed"
+     ]
+    },
+    {
+     "path": "Lean/SaturationMonoid/PhysicsCore/Stage10/Description/Consumer.lean",
+     "decls": [
+      "source_description_closed"
+     ]
+    }
+   ],
+   "h0mework": {
+    "status": "bound@234817b3",
+    "accepted_commit": "234817b3c3f7a1023226e7a4fdb8660ddcbc9d0a",
+    "map": "docs/first-release-map.json",
+    "claim_id": "core.C10"
+   }
+  },
+  {
+   "id": "core.C11",
+   "paper": "source-process-core",
+   "status": "selected",
+   "title": "总处置、残差扩充与因果审计",
+   "statement": "固定living root、完备复Hilbert H、已安装RecognitionAt：每步总处置六选一；选中RootedPassiveResidual生成同支撑自由残差coface与因果审计转移：旧行恒同、新行得权威、两端发生保留、整账与next认回。",
+   "quantifiers_premises": "审计协议（U7/calculus）为已固定源输入，旧障碍纤维为空时由IsEmpty生成；settle非构造。",
+   "text_location": {
+    "zh": "§7.1–§7.3 命题7.1、定义7.2、命题7.3–7.5",
+    "en": "§7.1–§7.3"
+   },
+   "written_proof": "manuscript §7、附录C.6",
+   "source": {
+    "alias": "H",
+    "commit": "e60a86058abcb74b7f2225f2383c182be8343785"
+   },
+   "producers": [
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Integral/Coherent/PerfectRealization/Dependent/Effect/Controller/LivingLawRootGeneratedDependentJointPassiveEffectControllerKernel.lean",
+     "decls": [
+      "settlePassiveEffect",
+      "installedAuthority_factorizes"
+     ]
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Integral/Coherent/PerfectRealization/Dependent/Effect/Residual/LivingLawRootGeneratedDependentJointPassiveResidualKernel.lean",
+     "decls": [
+      "selectedResidual?"
+     ]
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Occurrence/Residual/Admission/LivingLawRootGeneratedResidualWorldCofaceKernel.lean",
+     "decls": [
+      "extendedNetwork",
+      "claimLift_unique",
+      "residualFailure",
+      "liftTheory"
+     ]
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Integral/Coherent/PerfectRealization/Dependent/Effect/Residual/Causal/LivingLawRootGeneratedDependentJointPassiveResidualAuditTransition.lean",
+     "decls": [
+      "causal_transition_mouth"
+     ]
+    }
+   ],
+   "direct_consumers": [
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Integral/Coherent/PerfectRealization/Dependent/Effect/Residual/Causal/LivingLawRootGeneratedDependentJointPassiveResidualAuditTransitionRegression.lean",
+     "decls": []
+    }
+   ],
+   "h0mework": {
+    "status": "bound@234817b3",
+    "accepted_commit": "234817b3c3f7a1023226e7a4fdb8660ddcbc9d0a",
+    "map": "docs/first-release-map.json",
+    "claim_id": "core.C11"
+   }
+  },
+  {
+   "id": "core.C12",
+   "paper": "source-process-core",
+   "status": "selected",
+   "title": "债务激活与逐事件整账编译",
+   "statement": "∀world N与DebtActivationLaw：扩世界support=base×Option DebtState，inactive纤维恢复全部旧行，active纤维恢复旧行加唯一law-owned债行；固定lower root/current的OccurrenceIndexedSourceAt生成LedgerWriteEvolution、LedgerTerminalEvolution或同行U7审计。目标6实例：2+4→3+3行动债1→0付款与目标终账分开读。",
+   "quantifiers_premises": "激活律与U7为输入；固定实例不扩大为任意来源都有总律。",
+   "text_location": {
+    "zh": "§6.2–§6.3 定义6.2–6.3、命题6.4–6.5、表2",
+    "en": "§6.2–§6.3"
+   },
+   "written_proof": "manuscript §6.2–§6.3、附录C.5",
+   "source": {
+    "alias": "H",
+    "commit": "e60a86058abcb74b7f2225f2383c182be8343785"
+   },
+   "producers": [
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Responsibility/Debt/Activation/World/LivingLawRootGeneratedDebtActivationWorldKernel.lean",
+     "decls": [
+      "DebtActivationLaw",
+      "extendedNetwork"
+     ]
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Responsibility/Debt/Activation/World/LivingLawRootGeneratedDebtActivationWorldReadback.lean",
+     "decls": [
+      "inactiveInventoryPresentation",
+      "activeInventoryPresentation",
+      "active_debt_row_unique"
+     ]
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Responsibility/Debt/Activation/Root/Direct/LivingLawRootGeneratedDebtActivationDirectCompilerKernel.lean",
+     "decls": [
+      "OccurrenceIndexedSourceAt",
+      "liveLedger",
+      "CompiledResultAt",
+      "compile"
+     ]
+    }
+   ],
+   "direct_consumers": [
+    {
+     "path": "Lean/SaturationMonoid/NoIslandNoMagic/CanonicalArithmeticState/ParticleWave/Fock/Runtime/Goldbach/Occurrence/Actuality/Dynamics/TargetSix/LivingLawCanonicalParticleWaveFockPrimePairActualityTargetSixActionDebt.lean",
+     "decls": [
+      "source",
+      "wholeLedgerStep",
+      "targetSixWholeLedgerTerminal",
+      "positive"
+     ]
+    },
+    {
+     "path": "Lean/SaturationMonoid/NoIslandNoMagic/CanonicalArithmeticState/ParticleWave/Fock/Runtime/Goldbach/Occurrence/Actuality/Direct/Responsibility/LivingLawCanonicalParticleWaveFockPrimePairActualityDirectResponsibility.lean",
+     "decls": []
+    }
+   ],
+   "h0mework": {
+    "status": "bound@234817b3",
+    "accepted_commit": "234817b3c3f7a1023226e7a4fdb8660ddcbc9d0a",
+    "map": "docs/first-release-map.json",
+    "claim_id": "core.C12"
+   }
+  },
+  {
+   "id": "core.C13",
+   "paper": "source-process-core",
+   "status": "selected",
+   "title": "最小扩充、唯一因子化与首次写入",
+   "statement": "∀RootedActualExpressibilityFailure：生成whole-network最小coface，旧support/identity/ledger构造性retract、旧事实与定理保留，新方向无旧原像；∀AdmissibleCofaceRevisionAt唯一FaithfulCofaceMorphism；typed revision的映射把新方向送到首次写入的新行；字段接地下旧新两行取得答案—后继；容量复合结合律。",
+   "quantifiers_premises": "有类型修订、字段接地为输入；live-row容量不在范围。",
+   "text_location": {
+    "zh": "§8.1–§8.3 定义8.1、命题8.2–8.3、定理8.4、定义8.5、定理8.6–8.7、命题8.8",
+    "en": "§8.1–§8.3"
+   },
+   "written_proof": "manuscript §8、附录C.1–C.4",
+   "source": {
+    "alias": "H",
+    "commit": "e60a86058abcb74b7f2225f2383c182be8343785"
+   },
+   "producers": [
+    {
+     "path": "Lean/SaturationMonoid/LivingLawObstructionGeneratedMinimalCofaceKernel.lean",
+     "decls": [
+      "root_obstruction_generates_minimal_coface",
+      "worldNetwork",
+      "translation",
+      "oldTheoremSurvival",
+      "initial",
+      "factorization_unique",
+      "RelativeExpressiveCapacity.compose",
+      "compose_embed_associates"
+     ]
+    },
+    {
+     "path": "Lean/SaturationMonoid/LivingLawTypedSemanticWorldNetworkU8Kernel.lean",
+     "decls": [
+      "factorizesThroughInitialCoface",
+      "successiveWholeNetworkCapacities"
+     ]
+    }
+   ],
+   "direct_consumers": [
+    {
+     "path": "Lean/SaturationMonoid/LivingLawTypedSemanticWorldNetworkU8RecoveryKernel.lean",
+     "decls": [
+      "generatedInitialEntryAnswerAndNext",
+      "factorizesThroughInitialCofaceAnswerAndNext"
+     ]
+    },
+    {
+     "path": "Lean/SaturationMonoid/NoIslandNoMagic/CanonicalArithmeticState/ParticleWave/Fock/Runtime/Goldbach/Occurrence/LivingLawCanonicalParticleWaveFockOccurrenceDebtU7LivingRoot.lean",
+     "decls": [
+      "recurrenceMinimalCoface"
+     ]
+    }
+   ],
+   "h0mework": {
+    "status": "bound@234817b3",
+    "accepted_commit": "234817b3c3f7a1023226e7a4fdb8660ddcbc9d0a",
+    "map": "docs/first-release-map.json",
+    "claim_id": "core.C13"
+   }
+  },
+  {
+   "id": "core.C22",
+   "paper": "source-process-core",
+   "status": "selected",
+   "title": "无旧承担者的责任出生与付款",
+   "statement": "任意old authoritative root、origin及该origin原occurrence上的Raw Env/Expr reader，生成数学source、编译器、完整patch、重构证书与living process：数学行由实际Step新生、旧账为同源余项；预算B−k，k<B真实付款，k=B局部结算，完成值=ev_ρ(e)，已付迹关系像e−const(ev e)∈ker。",
+   "quantifiers_premises": "不输入旧owner、RegisteredAt、NativeProgram、未来packet表或EmptyCoverage。",
+   "text_location": {
+    "zh": "§6.5 定义6.9、定理6.10",
+    "en": "§6.5 Definition 6.9, Theorem 6.10"
+   },
+   "written_proof": "manuscript §6.5 定理6.10证明；supplement S1",
+   "source": {
+    "alias": "AB",
+    "commit": "fde5c14df36b6064c87064acd20830d3df0500bb"
+   },
+   "producers": [
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Execution/Debt/Source.lean",
+     "decls": [
+      "State",
+      "advance",
+      "law",
+      "generate",
+      "completed_value"
+     ]
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Responsibility/Debt/Activation/Root/Direct/JointSource/Idle.lean",
+     "decls": [
+      "law",
+      "identityTransport"
+     ]
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Responsibility/Debt/Activation/Root/Direct/JointSource/OwnerFree/Source.lean",
+     "decls": [
+      "vocabulary",
+      "eventAlgebra",
+      "whole",
+      "mathEntry",
+      "destination_math"
+     ]
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Responsibility/Debt/Activation/Root/Direct/JointSource/OwnerFree/Compiler.lean",
+     "decls": [
+      "remainder",
+      "patch",
+      "patch_fold",
+      "compiler",
+      "ledgerRoot"
+     ]
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Responsibility/Debt/Activation/Root/Direct/JointSource/OwnerFree/Authority.lean",
+     "decls": [
+      "authoritativeRoot"
+     ]
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Responsibility/Debt/Activation/Root/Direct/JointSource/OwnerFree/Runtime.lean",
+     "decls": [
+      "process",
+      "tick_math"
+     ]
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Responsibility/Debt/Activation/Root/Direct/JointSource/OwnerFree/Completion.lean",
+     "decls": [
+      "budget",
+      "completed_value",
+      "completed_history_length",
+      "completed_next_state"
+     ]
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Responsibility/Debt/Activation/Root/Direct/JointSource/OwnerFree/Payment.lean",
+     "decls": [
+      "debtCurrent",
+      "debtStep",
+      "activePayment",
+      "wellFounded",
+      "no_refill",
+      "endpoint_no_paid"
+     ]
+    }
+   ],
+   "direct_consumers": [
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Responsibility/Debt/Activation/Root/Direct/JointSource/OwnerFree/Consumer.lean",
+     "decls": [
+      "value_source",
+      "paid_history",
+      "original_material",
+      "relation_boundary",
+      "updated_inverse_fibre"
+     ]
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Responsibility/Debt/Activation/Root/Direct/JointSource/OwnerFree/Calculation.lean",
+     "decls": [
+      "frontier",
+      "realization",
+      "target_state"
+     ]
+    }
+   ],
+   "h0mework": {
+    "status": "bound@234817b3",
+    "accepted_commit": "234817b3c3f7a1023226e7a4fdb8660ddcbc9d0a",
+    "map": "docs/first-release-map.json",
+    "claim_id": "core.C22"
+   }
+  },
+  {
+   "id": "core.C23",
+   "paper": "source-process-core",
+   "status": "selected",
+   "title": "整树程序：执行、计费与独立逆读",
+   "statement": "任意Root、Carrier与任意atOccurrence:Root→List Carrier→Carrier：整树生成程序，执行值为fold的原生单基，预算由树语法β生成，执行迹长度=β；只读语法的parser恢复整棵树；atOccurrence恒零时程序仍单射。装入询问后值、出处、代价同时读出。",
+   "quantifiers_premises": "单次构造子内部成本保持原primitive合同。",
+   "text_location": {
+    "zh": "§3.4 命题3.7、定义3.8、定理3.9；§6.5 命题6.11；§10.1",
+    "en": "§3.4 Proposition 3.7, Definition 3.8, Theorem 3.9; §6.5 Proposition 6.11; §10.1"
+   },
+   "written_proof": "manuscript §3.4 定理3.9证明、§6.5 命题6.11证明（完整）",
+   "source": {
+    "alias": "AB",
+    "commit": "fde5c14df36b6064c87064acd20830d3df0500bb"
+   },
+   "producers": [
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Execution/Step.lean",
+     "decls": [
+      "remaining",
+      "Step.remaining_eq",
+      "step_wellFounded"
+     ]
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Execution/Run.lean",
+     "decls": [
+      "execution",
+      "execution_length"
+     ]
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Execution/Trace.lean",
+     "decls": [
+      "Trace.toDerivation",
+      "Trace.length_to_const"
+     ]
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Execution/Relations.lean",
+     "decls": [
+      "Trace.relation_boundary",
+      "Trace.relation_inventory",
+      "Trace.updated_residual"
+     ]
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Source.lean",
+     "decls": [
+      "program",
+      "children",
+      "program_value",
+      "program_budget",
+      "trace_budget",
+      "source_boundary"
+     ]
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Inverse.lean",
+     "decls": [
+      "readTree",
+      "readChildren",
+      "read_program",
+      "program_injective"
+     ]
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Installation.lean",
+     "decls": [
+      "treeAt",
+      "reader",
+      "actual_value",
+      "actual_trace"
+     ]
+    }
+   ],
+   "direct_consumers": [
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Consumer.lean",
+     "decls": [
+      "actual_budget",
+      "completed_cost",
+      "query_charged_history",
+      "query_original_material"
+     ]
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Recovery.lean",
+     "decls": [
+      "recovered_tree",
+      "query_tree"
+     ]
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Source.lean",
+     "decls": [
+      "appendTree",
+      "program",
+      "program_budget"
+     ],
+     "note": "arithmetic whole-tree consumer (CA16)"
+    }
+   ],
+   "h0mework": {
+    "status": "bound@234817b3",
+    "accepted_commit": "234817b3c3f7a1023226e7a4fdb8660ddcbc9d0a",
+    "map": "docs/first-release-map.json",
+    "claim_id": "core.C23"
+   }
+  },
+  {
+   "id": "core.C24",
+   "paper": "source-process-core",
+   "status": "selected",
+   "title": "实际动作生成下一问",
+   "statement": "任意初始询问帧：残差请求e⊖e′的值=ev_ρ′(e)−ev_ρ′(e′)，旧值0，等于已付迹关系证书在增量下的效应；r(e⊖e′)=r(e)+r(e′)+2>0，首步为责任准入；递归帧构成现成询问运行时全部节点，擦除单射，查询纤维单点；只有执行步发射同债付款回执。",
+   "quantifiers_premises": "无IdentityScope、erasure证书或未来请求表。",
+   "text_location": {
+    "zh": "§8.5 定义8.11、定理8.12、例8.13、图6",
+    "en": "§8.5 Definition 8.11, Theorem 8.12, Example 8.13, Figure 6"
+   },
+   "written_proof": "manuscript §8.5；supplement S2.1",
+   "source": {
+    "alias": "AB",
+    "commit": "fde5c14df36b6064c87064acd20830d3df0500bb"
+   },
+   "producers": [
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Responsibility/Debt/Activation/Root/Direct/JointSource/Native/ResidualRequest.lean",
+     "decls": [
+      "expression",
+      "input",
+      "expression_eval",
+      "old_value",
+      "budget",
+      "action_is_paid",
+      "updated_value",
+      "residual_value",
+      "residual_zero_iff"
+     ]
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Responsibility/Debt/Activation/Root/Direct/JointSource/Native/Restructuring/Inquiry/Continuation/Source.lean",
+     "decls": [
+      "material",
+      "request",
+      "request_budget",
+      "born",
+      "firstStep",
+      "birth_compiles",
+      "frames"
+     ]
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Responsibility/Debt/Activation/Root/Direct/JointSource/Native/Restructuring/Inquiry/Continuation/Occurrence.lean",
+     "decls": [
+      "successor_valid"
+     ]
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Responsibility/Debt/Activation/Root/Direct/JointSource/Native/Restructuring/Inquiry/Continuation/Inventory.lean",
+     "decls": [
+      "frames_erase_injective"
+     ]
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Responsibility/Debt/Activation/Root/Direct/JointSource/Native/Restructuring/Inquiry/Continuation/Frame.lean",
+     "decls": []
+    }
+   ],
+   "direct_consumers": [
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Responsibility/Debt/Activation/Root/Direct/JointSource/Native/Restructuring/Inquiry/Continuation/Runtime.lean",
+     "decls": [
+      "inquiryProcess",
+      "runtime",
+      "actual_node",
+      "macro_next",
+      "macro_next_preserves"
+     ]
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Responsibility/Debt/Activation/Root/Direct/JointSource/Native/Restructuring/Inquiry/Continuation/Payment.lean",
+     "decls": [
+      "actual_paid_receipt",
+      "no_paid_of_zero",
+      "runtime_debt_current_actual"
+     ]
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Responsibility/Debt/Activation/Root/Direct/JointSource/Native/Restructuring/Inquiry/Continuation/Residual.lean",
+     "decls": [
+      "request_effect",
+      "request_inverse_fibre"
+     ]
+    }
+   ],
+   "h0mework": {
+    "status": "bound@234817b3",
+    "accepted_commit": "234817b3c3f7a1023226e7a4fdb8660ddcbc9d0a",
+    "map": "docs/first-release-map.json",
+    "claim_id": "core.C24"
+   }
+  },
+  {
+   "id": "core.C25",
+   "paper": "source-process-core",
+   "status": "selected",
+   "title": "依赖步的源程序供给",
+   "statement": "固定完备复Hilbert H、已安装RecognitionAt与exact visit：settle全处置；全生成与联合残差两支自产完整对齐构造子树T、OwnerFree已付状态与执行值、原材料及全部β(T)+1阶段材料；执行值=δ_{τ(T)}，计费=β(T)；整账与next认回。",
+   "quantifiers_premises": "与命题7.1相同的固定数据。",
+   "text_location": {
+    "zh": "§7.3 命题7.6",
+    "en": "§7.3 Proposition 7.6"
+   },
+   "written_proof": "manuscript §7.3 命题7.6证明（完整）",
+   "source": {
+    "alias": "AB",
+    "commit": "fde5c14df36b6064c87064acd20830d3df0500bb"
+   },
+   "producers": [
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Source.lean",
+     "decls": [
+      "sourceFeed",
+      "generatedFeed",
+      "nativePacket",
+      "actual_effect_value",
+      "actual_effect_charge",
+      "original_whole_next"
+     ]
+    }
+   ],
+   "direct_consumers": [
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Installation.lean",
+     "decls": [
+      "material_generated",
+      "query_tree",
+      "result_tree",
+      "old_compilation_preserved",
+      "generatedInquiry"
+     ]
+    }
+   ],
+   "h0mework": {
+    "status": "bound@234817b3",
+    "accepted_commit": "234817b3c3f7a1023226e7a4fdb8660ddcbc9d0a",
+    "map": "docs/first-release-map.json",
+    "claim_id": "core.C25"
+   },
+   "closure_supplements": [
+    "interface-alignment",
+    "state-exposure-alignment"
+   ]
+  },
+  {
+   "id": "core.C26",
+   "paper": "source-process-core",
+   "status": "selected",
+   "title": "原登记输入进入共享运行时",
+   "statement": "任意old inquiry state、同root已安装Recognition及原SourceNativeRootInquiryInputAt：全生成与联合残差两支同时生成inputState/queryInput，reader直接读原Query.raw，实际Math/Frame/Shared runtime由此产生；独立消费者恢复整树、normal值与长度=原树预算的paid Trace；所有count的math whole/原material与所有offset的query/answer/next保持；其余分支返回原Feed。",
+   "quantifiers_premises": "登记输入为原源对象，调用方不再提供目标查询、对齐结果或完成状态。",
+   "text_location": {
+    "zh": "§7.3 定理7.7(1)(2)",
+    "en": "§7.3 Theorem 7.7(1)(2)"
+   },
+   "written_proof": "manuscript §7.3 证明思路；supplement S2.2(1)(2)",
+   "source": {
+    "alias": "AC",
+    "commit": "b67aa48c75b3cd7738766ed40093bb3f7c1d7a1a"
+   },
+   "producers": [
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Input/Source.lean",
+     "decls": [
+      "generatedInput",
+      "queryInput"
+     ]
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Input/Runtime/Source.lean",
+     "decls": [
+      "actualRuntime",
+      "generatedRuntime"
+     ]
+    }
+   ],
+   "direct_consumers": [
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Input/Consumer.lean",
+     "decls": [
+      "inputState",
+      "generatedState",
+      "actual_compiled",
+      "actual_tree"
+     ]
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Input/Runtime/Consumer.lean",
+     "decls": [
+      "original_tree",
+      "actual_normal_history",
+      "actual_normal_value",
+      "actual_math_whole_next",
+      "actual_source_material",
+      "actual_query_answer_next"
+     ]
+    }
+   ],
+   "h0mework": {
+    "status": "bound@234817b3",
+    "accepted_commit": "234817b3c3f7a1023226e7a4fdb8660ddcbc9d0a",
+    "map": "docs/first-release-map.json",
+    "claim_id": "core.C26"
+   },
+   "closure_supplements": [
+    "interface-alignment",
+    "state-exposure-alignment"
+   ]
+  },
+  {
+   "id": "core.C27",
+   "paper": "source-process-core",
+   "status": "selected",
+   "title": "原后继供应下一运行",
+   "statement": "输入仅为原living root、exact visit、同root完整Recognition与原U7/calculus：每个continuing分支取原successor.next_eq生成下一actual visit并重读exposure/history；下一selected得到真实source runtime或准确Feed；前拍完整packet/residual同时保持；两拍整账与canonical next由同root认回；新低Source Inquiry/Frame只收source root/visit/calculus/raw reader。",
+   "quantifiers_premises": "无须前问完成State、entry、answer或未来表。",
+   "text_location": {
+    "zh": "§7.3 定理7.7(3)",
+    "en": "§7.3 Theorem 7.7(3)"
+   },
+   "written_proof": "manuscript §7.3 证明思路；supplement S2.2(3)",
+   "source": {
+    "alias": "AC",
+    "commit": "b67aa48c75b3cd7738766ed40093bb3f7c1d7a1a"
+   },
+   "producers": [
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Next/Source.lean",
+     "decls": [
+      "generated",
+      "nextVisit",
+      "nextRun",
+      "generatedNext"
+     ]
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Responsibility/Debt/Activation/Root/Direct/JointSource/OwnerFree/Installation/Math/Inquiry/Source.lean",
+     "decls": []
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Responsibility/Debt/Activation/Root/Direct/JointSource/OwnerFree/Installation/Math/Frame/Source.lean",
+     "decls": []
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Responsibility/Debt/Activation/Root/Direct/JointSource/OwnerFree/Installation/Math/Source.lean",
+     "decls": [
+      "initialRow",
+      "admission"
+     ]
+    }
+   ],
+   "direct_consumers": [
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Next/Consumer.lean",
+     "decls": [
+      "actual_next_material",
+      "current_whole_next",
+      "next_whole_next",
+      "query_answer_next"
+     ]
+    }
+   ],
+   "h0mework": {
+    "status": "bound@234817b3",
+    "accepted_commit": "234817b3c3f7a1023226e7a4fdb8660ddcbc9d0a",
+    "map": "docs/first-release-map.json",
+    "claim_id": "core.C27"
+   },
+   "closure_supplements": [
+    "interface-alignment",
+    "state-exposure-alignment"
+   ]
+  },
+  {
+   "id": "core.C28",
+   "paper": "source-process-core",
+   "status": "selected",
+   "title": "完整时间与原作用树由同一程序生成",
+   "statement": "任意原root、完整temporal visit与已安装Recognition：finite/sealed cofinal/post-cofinal材料的Code保current与全部history，encode/decode互逆，Code.next认原actual successor；两history的continuation生成共同闭包、双completion map与准确零纤维、双evaluator及原normed action；一个有序tree programme的Outcome同时保原effect、完整temporal receipt树与common/evaluator/action，独立parser恢复全节点；target作用差分的观察/像两残差给真实逆判据，原词与exposure树经同发生保到literal下一source。",
+   "quantifiers_premises": "共同闭包由原两history的continuation生成，不另输入standalone common或controller。",
+   "text_location": {
+    "zh": "§9.1 定义9.1、定理9.2",
+    "en": "§9.1 Definition 9.1, Theorem 9.2"
+   },
+   "written_proof": "manuscript §9.1 证明思路；supplement S3.1",
+   "source": {
+    "alias": "AD",
+    "commit": "aef0ad2a26199d9fd6da9bc9e7ec1a65636ef63f"
+   },
+   "producers": [
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Occurrence/Temporal/Action/Inverse.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Occurrence/Temporal/Action/Source.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Occurrence/Temporal/History/Common/Action/Source.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Occurrence/Temporal/History/Common/Closure.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Occurrence/Temporal/History/Common/Evaluator/Source.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Occurrence/Temporal/History/Common/RootSource.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Occurrence/Temporal/Source.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Joint/Consumer.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Joint/Laws.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Joint/Source.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Joint/TargetConsumer.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Joint/TargetDifference.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Joint/TargetProgramme.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Next/Material.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Next/Pursuit.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Next/Source.lean"
+    }
+   ],
+   "direct_consumers": [],
+   "detailed_in": [
+    "exact-realization R24",
+    "exact-realization R26",
+    "whole-ledger-accounting WA21"
+   ],
+   "h0mework": {
+    "status": "bound@234817b3",
+    "accepted_commit": "234817b3c3f7a1023226e7a4fdb8660ddcbc9d0a",
+    "map": "docs/first-release-map.json",
+    "claim_id": "core.C28"
+   },
+   "closure_supplements": [
+    "interface-alignment"
+   ]
+  },
+  {
+   "id": "core.C29",
+   "paper": "source-process-core",
+   "status": "selected",
+   "title": "全作用者、全词与全未来恢复进入真实执行",
+   "statement": "原source/target两树全部trace成员生成actor动作与H读口；完整allword Model的核=全部词联合读数核，whole carrier由原completion生成；每letter的E与point给有序effect history，总词残差=后续E运输各步残差之和；全部trace位置（含重复payload）生成node H/Gram；coarse×全部future H、integral/cofinal/coarse三面各自共同核为0，在实际像上真双逆并保每个词作用；paid AST与同一Trace消费。",
+   "quantifiers_premises": "保持实际有限H单位，不改称无限H范数或物理margin。",
+   "text_location": {
+    "zh": "§9.2 定理9.3",
+    "en": "§9.2 Theorem 9.3"
+   },
+   "written_proof": "manuscript §9.2 证明思路；supplement S3.2",
+   "source": {
+    "alias": "AD",
+    "commit": "aef0ad2a26199d9fd6da9bc9e7ec1a65636ef63f"
+   },
+   "producers": [
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Joint/ActionWords/Inventory/Complete/Source.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Joint/ActionWords/Inventory/EffectHistory/Equation.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Joint/ActionWords/Inventory/EffectHistory/Source.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Joint/ActionWords/Inventory/NodeHilbert/Future/Recovery/Source.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Joint/ActionWords/Inventory/NodeHilbert/Future/Wave/Full/Source.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Joint/ActionWords/Inventory/NodeHilbert/Future/Wave/Incidence/Consumer.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Joint/ActionWords/Inventory/NodeHilbert/Future/Wave/Incidence/Environment/Consumer.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Joint/ActionWords/Inventory/NodeHilbert/Future/Wave/Incidence/Environment/Faces.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Joint/ActionWords/Inventory/NodeHilbert/Future/Wave/Incidence/Environment/Perfect/Source.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Joint/ActionWords/Inventory/NodeHilbert/Future/Wave/Incidence/Environment/Source.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Joint/ActionWords/Inventory/NodeHilbert/Future/Wave/Incidence/Environment/WriteBack.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Joint/ActionWords/Inventory/NodeHilbert/Future/Wave/Recovery/Consumer.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Joint/ActionWords/Inventory/NodeHilbert/Future/Wave/Recovery/Source.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Joint/ActionWords/Inventory/NodeHilbert/Future/Wave/Words/Kernel.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Joint/ActionWords/Inventory/NodeHilbert/Source.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Joint/ActionWords/Inventory/Source.lean"
+    }
+   ],
+   "direct_consumers": [],
+   "detailed_in": [
+    "exact-realization R25",
+    "observation-dynamics O37–O39",
+    "whole-ledger-accounting WA21–WA22"
+   ],
+   "h0mework": {
+    "status": "bound@234817b3",
+    "accepted_commit": "234817b3c3f7a1023226e7a4fdb8660ddcbc9d0a",
+    "map": "docs/first-release-map.json",
+    "claim_id": "core.C29"
+   },
+   "closure_supplements": [
+    "interface-alignment"
+   ]
+  },
+  {
+   "id": "core.C30",
+   "paper": "source-process-core",
+   "status": "selected",
+   "title": "已付查询自产下一内容与通用母准入",
+   "statement": "同actual query的paid old＋effect生成born下一内容，原history(stage)经源作用读出history(stage+2)；对任意原Frame、source-owned Programme与独立LowVar，actual query完整State/Trace/同发生owner及下一query环境自产ResidualRequest、正syntax预算firstStep、同root/visit的debtAdmission；原whole首目的地、全部旧projection、literal next、runtime current/全offset next与no-refill/Noetherian直接生成；同queryFrame的原生shift/full packet回同一母准入。",
+   "quantifiers_premises": "局部normal保其实际source责任。",
+   "text_location": {
+    "zh": "§9.3 定义9.4、定理9.5",
+    "en": "§9.3 Definition 9.4, Theorem 9.5"
+   },
+   "written_proof": "manuscript §9.3 证明思路；supplement S4.1",
+   "source": {
+    "alias": "AD",
+    "commit": "aef0ad2a26199d9fd6da9bc9e7ec1a65636ef63f"
+   },
+   "producers": [
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Programme.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Receipt/Compiler.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Receipt/Consumer.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Receipt/Execution.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Receipt/Faces/Action.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Receipt/Faces/Consumer.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Receipt/Faces/Native/Consumer.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Receipt/Faces/Native/Source.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Receipt/Faces/Source.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Receipt/Runtime.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Receipt/Source.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Target.lean"
+    }
+   ],
+   "direct_consumers": [],
+   "detailed_in": [
+    "exact-realization R27",
+    "observation-dynamics O40",
+    "whole-ledger-accounting WA22–WA24"
+   ],
+   "h0mework": {
+    "status": "bound@234817b3",
+    "accepted_commit": "234817b3c3f7a1023226e7a4fdb8660ddcbc9d0a",
+    "map": "docs/first-release-map.json",
+    "claim_id": "core.C30"
+   },
+   "closure_supplements": [
+    "interface-alignment"
+   ]
+  },
+  {
+   "id": "core.C31",
+   "paper": "source-process-core",
+   "status": "selected",
+   "title": "typed库存越过母准入并实际再消费",
+   "statement": "任意原Frame/source-owned Programme/独立LowVar：同supplied occurrence的physical与low Raw/paid Result/完整Trace保原类型；逐变量binding保全部Expr/relation求值；母target的inherited typed outcome消元取得stock；完整written、逐发生Fin坐标及mathNext/nextBorn两支自产下一库存query；全词cofinal、原native packet与完整reverse由同actual query/whole/literal next消费。",
+   "quantifiers_premises": "类型相认由HEq消元支付；新环境中关系的soundness由原source处分。",
+   "text_location": {
+    "zh": "§9.3 定理9.6",
+    "en": "§9.3 Theorem 9.6"
+   },
+   "written_proof": "manuscript §9.3 证明思路；supplement S4.2",
+   "source": {
+    "alias": "AE",
+    "commit": "26b91feb6b507fdc3f43be9c429edb63fb9395ef"
+   },
+   "producers": [
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Receipt/Inventory/Born/Consumer.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Receipt/Inventory/Born/Coordinates/Actual/Cofinal/Consumer.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Receipt/Inventory/Born/Coordinates/Actual/Cofinal/Source.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Receipt/Inventory/Born/Coordinates/Actual/Query.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Receipt/Inventory/Born/Coordinates/Actual/Source.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Receipt/Inventory/Born/Source.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Receipt/Inventory/Born/Vector/Fibre/Consumer.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Receipt/Inventory/Born/Vector/Fibre/Source.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Receipt/Inventory/Installation.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Receipt/Inventory/Laws.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Receipt/Inventory/Source.lean"
+    }
+   ],
+   "direct_consumers": [],
+   "detailed_in": [
+    "whole-ledger-accounting WA25–WA26",
+    "exact-realization R28–R29"
+   ],
+   "h0mework": {
+    "status": "bound@234817b3",
+    "accepted_commit": "234817b3c3f7a1023226e7a4fdb8660ddcbc9d0a",
+    "map": "docs/first-release-map.json",
+    "claim_id": "core.C31"
+   },
+   "closure_supplements": [
+    "interface-alignment"
+   ]
+  },
+  {
+   "id": "core.C32",
+   "paper": "source-process-core",
+   "status": "selected",
+   "title": "同源词—State作用保完整有偿历史",
+   "statement": "同原runtime/source自产操作formal word×完整sealed State的ℤ双线性原值pair；binding与sourceAction生成全carrier covariance、canonical coimage action与任意次迭代；每个prefix的原AST执行、完整Trace与exposure保留；batch原坐标有偿执行，callFrame/raw/query/receipt自产有限snapshot并恢复原迭代query与完整epoch Past，下一request/whole/next直接消费。",
+   "quantifiers_premises": "原值单位不改成整数迹。",
+   "text_location": {
+    "zh": "§9.3 定理9.7",
+    "en": "§9.3 Theorem 9.7"
+   },
+   "written_proof": "manuscript §9.3 证明思路；supplement S4.3",
+   "source": {
+    "alias": "AE",
+    "commit": "26b91feb6b507fdc3f43be9c429edb63fb9395ef"
+   },
+   "producers": [
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Receipt/Inventory/Born/Coordinates/Actual/Cofinal/Native/Reverse/Action/Cochain/Terms/Next/Future/Query/Pair/Coimage/Iteration/Batch/Calls/Consumer.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Receipt/Inventory/Born/Coordinates/Actual/Cofinal/Native/Reverse/Action/Cochain/Terms/Next/Future/Query/Pair/Coimage/Iteration/Batch/Calls/History/Consumer.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Receipt/Inventory/Born/Coordinates/Actual/Cofinal/Native/Reverse/Action/Cochain/Terms/Next/Future/Query/Pair/Coimage/Iteration/Batch/Calls/History/Source.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Receipt/Inventory/Born/Coordinates/Actual/Cofinal/Native/Reverse/Action/Cochain/Terms/Next/Future/Query/Pair/Coimage/Iteration/Batch/Calls/Source.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Native/Pairing/Orbit/Action.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Native/Pairing/Orbit/Iteration.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Native/Pairing/Orbit/Iteration/Batch.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Native/Pairing/Orbit/Iteration/Current.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Native/Pairing/Orbit/Source.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Native/Pairing/Source.lean"
+    }
+   ],
+   "direct_consumers": [],
+   "detailed_in": [
+    "whole-ledger-accounting WA27",
+    "exact-realization R30"
+   ],
+   "h0mework": {
+    "status": "bound@234817b3",
+    "accepted_commit": "234817b3c3f7a1023226e7a4fdb8660ddcbc9d0a",
+    "map": "docs/first-release-map.json",
+    "claim_id": "core.C32"
+   },
+   "closure_supplements": [
+    "interface-alignment"
+   ]
+  },
+  {
+   "id": "core.C33",
+   "paper": "source-process-core",
+   "status": "selected",
+   "title": "默认主运行执行源自产请求",
+   "statement": "原Joint及Branch的实际root/reader产生初frame与seed，programme.reader直接执行同supplied occurrence的occurrenceRaw；Shared actual query/input/answer/next由同seed/initial/count生成；新paid exposure、原inverse与Past交下一库存；Branch的core与relation两AST形成Fin2 batch，源action、paid与完整substituted Trace进入初stock。",
+   "quantifiers_premises": "四面读口不代付物理H范数。",
+   "text_location": {
+    "zh": "§9.4 定理9.8(1)",
+    "en": "§9.4 Theorem 9.8(1)"
+   },
+   "written_proof": "manuscript §9.4 证明思路；supplement S5(1)",
+   "source": {
+    "alias": "AE",
+    "commit": "26b91feb6b507fdc3f43be9c429edb63fb9395ef"
+   },
+   "producers": [
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Inventory/Pair/Residual/Joint/Past/NextObservation/Request/Acted/Consumer.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Inventory/Pair/Residual/Joint/Past/NextObservation/Request/Acted/FourFace/Consumer.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Inventory/Pair/Residual/Joint/Past/NextObservation/Request/Acted/FourFace/Source.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Inventory/Pair/Residual/Joint/Past/NextObservation/Request/Acted/Source.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Branch/Primary/Consumer.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Branch/Primary/FourFace.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Branch/Primary/Source.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Joint/Primary/Consumer.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Joint/Primary/FourFace.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Joint/Primary/Source.lean"
+    }
+   ],
+   "direct_consumers": [],
+   "h0mework": {
+    "status": "bound@234817b3",
+    "accepted_commit": "234817b3c3f7a1023226e7a4fdb8660ddcbc9d0a",
+    "map": "docs/first-release-map.json",
+    "claim_id": "core.C33"
+   },
+   "closure_supplements": [
+    "interface-alignment"
+   ]
+  },
+  {
+   "id": "core.C34",
+   "paper": "source-process-core",
+   "status": "selected",
+   "title": "原新actor与child操作进入默认Born",
+   "statement": "同actual core自产Fresh.Complete old/next actor与canonical packet，Stage0 seed事件生成原word/completion point；原Plan及全exposure节点作用生成child AST/paid State/Trace；一次typed主AST实际执行原query加已选old/next child；source-dependent decoder读当次environment的原binding，把完整child作用送true Born；default live runtime逐stage消费方程、inverse、付款、whole与next。",
+   "quantifiers_premises": "moving child读取物理M/H/Gram是后续责任，不是本结果前提。",
+   "text_location": {
+    "zh": "§9.4 定理9.8(2)(3)",
+    "en": "§9.4 Theorem 9.8(2)(3)"
+   },
+   "written_proof": "manuscript §9.4 证明思路；supplement S5(2)(3)",
+   "source": {
+    "alias": "AE",
+    "commit": "26b91feb6b507fdc3f43be9c429edb63fb9395ef"
+   },
+   "producers": [
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Branch/JointQuery/Actor/Action/Source.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Branch/JointQuery/Actor/Embedding.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Consumer.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Action/Consumer.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Action/Source.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Consumer.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Language.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Live/Consumer.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Live/FourFace/Consumer.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Live/Source.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Source.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Source.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Branch/JointQuery/Actor/Source.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Next/Consumer.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Next/Source.lean"
+    }
+   ],
+   "direct_consumers": [],
+   "h0mework": {
+    "status": "bound@234817b3",
+    "accepted_commit": "234817b3c3f7a1023226e7a4fdb8660ddcbc9d0a",
+    "map": "docs/first-release-map.json",
+    "claim_id": "core.C34"
+   },
+   "closure_supplements": [
+    "interface-alignment"
+   ]
+  },
+  {
+   "id": "phys.P1",
+   "paper": "physics-common-source",
+   "status": "selected",
+   "title": "总链实际生成",
+   "statement": "固定源构造StageOneThroughTenClosure，携带Stage10 closure、完整Stage8 credential、当前与下一configuration的MatterRecovery。",
+   "quantifiers_premises": "无调用者配置、态、相容或结算证书。",
+   "text_location": {
+    "zh": "构造4.1；定理8.3",
+    "en": "Construction 4.1; Theorem 8.3"
+   },
+   "written_proof": "manuscript §4、§8.3",
+   "source": {
+    "alias": "H",
+    "commit": "e60a86058abcb74b7f2225f2383c182be8343785"
+   },
+   "producers": [
+    {
+     "path": "Lean/SaturationMonoid/PhysicsCore/Stage10/Recovery/Consumer.lean",
+     "decls": [
+      "stageOneThroughTenClosure"
+     ]
+    },
+    {
+     "path": "Lean/SaturationMonoid/PhysicsCore/Stage10/Recovery/Source.lean",
+     "decls": []
+    }
+   ],
+   "direct_consumers": [
+    {
+     "path": "Lean/SaturationMonoid/PhysicsCore/Stage10/Recovery/Consumer.lean",
+     "decls": [
+      "stageOneThroughTenClosed"
+     ]
+    }
+   ],
+   "h0mework": {
+    "status": "bound@234817b3",
+    "accepted_commit": "234817b3c3f7a1023226e7a4fdb8660ddcbc9d0a",
+    "map": "docs/first-release-map.json",
+    "claim_id": "phys.P1"
+   }
+  },
+  {
+   "id": "phys.P2",
+   "paper": "physics-common-source",
+   "status": "selected",
+   "title": "完整经典世界及唯一性",
+   "statement": "存在唯一configuration同时满足LawfulClassicalActual与固定源ClassicalWorldAcceptance（光滑、全点非退化、Lorentz合法、同action联合零纤维、原点scalar接触、六部门非零）。",
+   "quantifiers_premises": "合法弱像覆盖原完整历史。",
+   "text_location": {
+    "zh": "定理4.2–4.4",
+    "en": "Theorems 4.2–4.4"
+   },
+   "written_proof": "manuscript §4、附录B",
+   "source": {
+    "alias": "H",
+    "commit": "e60a86058abcb74b7f2225f2383c182be8343785"
+   },
+   "producers": [
+    {
+     "path": "Lean/SaturationMonoid/PhysicsCore/Stage9G/Classical.lean",
+     "decls": [
+      "sourceGeneratedUniqueClassicalActual"
+     ]
+    },
+    {
+     "path": "Lean/SaturationMonoid/PhysicsCore/StageNineCClassicalWorldAcceptance.lean",
+     "decls": []
+    },
+    {
+     "path": "Lean/SaturationMonoid/PhysicsCore/Stage9G/Foundation/Acceptance.lean",
+     "decls": [
+      "actualFoundation"
+     ]
+    }
+   ],
+   "direct_consumers": [
+    {
+     "path": "Lean/SaturationMonoid/PhysicsCore/Stage9G/Runtime/Consumer.lean",
+     "decls": [
+      "stageNineClosed"
+     ]
+    }
+   ],
+   "h0mework": {
+    "status": "bound@234817b3",
+    "accepted_commit": "234817b3c3f7a1023226e7a4fdb8660ddcbc9d0a",
+    "map": "docs/first-release-map.json",
+    "claim_id": "phys.P2"
+   }
+  },
+  {
+   "id": "phys.P3",
+   "paper": "physics-common-source",
+   "status": "selected",
+   "title": "早期物质接回实际场",
+   "statement": "每点、母元与spin：早期内部表示作用=当前完整matter作用；scalar、完整mass map、Fin2×Fin2 mixing精确等于早期joint值；next同样。",
+   "quantifiers_premises": "Weyl-only旧表不承担动态标量后的全理论beta表。",
+   "text_location": {
+    "zh": "命题2.5；附录A.3",
+    "en": "Proposition 2.5; Appendix A.3"
+   },
+   "written_proof": "manuscript §2.5",
+   "source": {
+    "alias": "H",
+    "commit": "e60a86058abcb74b7f2225f2383c182be8343785"
+   },
+   "producers": [
+    {
+     "path": "Lean/SaturationMonoid/PhysicsCore/Stage10/Recovery/Matter.lean",
+     "decls": [
+      "currentMatter"
+     ]
+    },
+    {
+     "path": "Lean/SaturationMonoid/PhysicsCore/SU7GravityGaugeMatterJointCredential.lean",
+     "decls": []
+    }
+   ],
+   "direct_consumers": [
+    {
+     "path": "Lean/SaturationMonoid/PhysicsCore/Stage10/Recovery/Consumer.lean",
+     "decls": []
+    }
+   ],
+   "h0mework": {
+    "status": "bound@234817b3",
+    "accepted_commit": "234817b3c3f7a1023226e7a4fdb8660ddcbc9d0a",
+    "map": "docs/first-release-map.json",
+    "claim_id": "phys.P3"
+   }
+  },
+  {
+   "id": "phys.P4",
+   "paper": "physics-common-source",
+   "status": "selected",
+   "title": "经典—量子配对等式",
+   "statement": "任意点、完整252维母物质载体上任意复线性A：χ(Aψ)=4k⟨v,SPAE v⟩，k=√2。",
+   "quantifiers_premises": "8维占据态与252维输入域不同。",
+   "text_location": {
+    "zh": "定理6.2；式(6.1)–(6.2)",
+    "en": "Theorem 6.2"
+   },
+   "written_proof": "manuscript §6.2 证明",
+   "source": {
+    "alias": "H",
+    "commit": "e60a86058abcb74b7f2225f2383c182be8343785"
+   },
+   "producers": [
+    {
+     "path": "Lean/SaturationMonoid/PhysicsCore/Stage9DEF/Compatibility/DualResponse.lean",
+     "decls": [
+      "actual_action_quantumResponse"
+     ]
+    },
+    {
+     "path": "Lean/SaturationMonoid/PhysicsCore/Stage9G/Credential.lean",
+     "decls": []
+    }
+   ],
+   "direct_consumers": [
+    {
+     "path": "Lean/SaturationMonoid/PhysicsCore/Stage10/Realization.lean",
+     "decls": [
+      "whole_matter_action"
+     ]
+    }
+   ],
+   "h0mework": {
+    "status": "bound@234817b3",
+    "accepted_commit": "234817b3c3f7a1023226e7a4fdb8660ddcbc9d0a",
+    "map": "docs/first-release-map.json",
+    "claim_id": "phys.P4"
+   }
+  },
+  {
+   "id": "phys.P5",
+   "paper": "physics-common-source",
+   "status": "selected",
+   "title": "电流、动能负荷、输运与外幂余项",
+   "statement": "任意点及完整P286变分：currentResponse=原变分current；16项kineticLoad逐项相等；质量非零、mixing非零、occupied Yukawa=0；exp(tG)酉、‖exp(tG)−(1+tG)‖≤‖G‖²t²；任意外幂阶坐标差≤源生尺度·t²；移动标架读数交换。",
+   "quantifiers_premises": "固定实际构型。",
+   "text_location": {
+    "zh": "定理6.3、命题6.4；附录B.4",
+    "en": "Theorem 6.3, Proposition 6.4"
+   },
+   "written_proof": "manuscript §6.3–§6.4、附录B.4",
+   "source": {
+    "alias": "H",
+    "commit": "e60a86058abcb74b7f2225f2383c182be8343785"
+   },
+   "producers": [
+    {
+     "path": "Lean/SaturationMonoid/PhysicsCore/Stage9DEF/Compatibility/Acceptance.lean",
+     "decls": [
+      "physicalCompatibility"
+     ]
+    },
+    {
+     "path": "Lean/SaturationMonoid/PhysicsCore/Stage9DEF/Compatibility/Stress.lean",
+     "decls": []
+    },
+    {
+     "path": "Lean/SaturationMonoid/PhysicsCore/Stage9DEF/Compatibility/ExteriorRemainder.lean",
+     "decls": [
+      "exteriorTransport_remainder"
+     ]
+    }
+   ],
+   "direct_consumers": [
+    {
+     "path": "Lean/SaturationMonoid/PhysicsCore/Stage9G/Credential.lean",
+     "decls": []
+    }
+   ],
+   "h0mework": {
+    "status": "bound@234817b3",
+    "accepted_commit": "234817b3c3f7a1023226e7a4fdb8660ddcbc9d0a",
+    "map": "docs/first-release-map.json",
+    "claim_id": "phys.P5"
+   }
+  },
+  {
+   "id": "phys.P6",
+   "paper": "physics-common-source",
+   "status": "selected",
+   "title": "完整表示、全事件与宏后继",
+   "statement": "Pointwise与Compact描述唯一比较、保持与反射任意关系与运算；任意n完整历史恢复visit n；第10次事件恢复原writer、投影、整账、场与任意matter响应；宏进程∀index保持living law。",
+   "quantifiers_premises": "表示的continuation账与原物理整账分别保留。",
+   "text_location": {
+    "zh": "定理8.3；附录C.8",
+    "en": "Theorem 8.3"
+   },
+   "written_proof": "manuscript §8.3",
+   "source": {
+    "alias": "H",
+    "commit": "e60a86058abcb74b7f2225f2383c182be8343785"
+   },
+   "producers": [
+    {
+     "path": "Lean/SaturationMonoid/PhysicsCore/Stage10/Description/Consumer.lean",
+     "decls": [
+      "source_description_closed"
+     ]
+    },
+    {
+     "path": "Lean/SaturationMonoid/PhysicsCore/Stage10/Realization.lean",
+     "decls": [
+      "source_realization_consumed"
+     ]
+    },
+    {
+     "path": "Lean/SaturationMonoid/PhysicsCore/Stage10/RawSourceRealization.lean",
+     "decls": [
+      "represented_history",
+      "original_consumer"
+     ]
+    },
+    {
+     "path": "Lean/SaturationMonoid/PhysicsCore/Stage10/Runtime/Activation.lean",
+     "decls": [
+      "allMacroNext",
+      "sameOccurrenceActivation"
+     ]
+    }
+   ],
+   "direct_consumers": [],
+   "h0mework": {
+    "status": "bound@234817b3",
+    "accepted_commit": "234817b3c3f7a1023226e7a4fdb8660ddcbc9d0a",
+    "map": "docs/first-release-map.json",
+    "claim_id": "phys.P6"
+   }
+  },
+  {
+   "id": "phys.P7",
+   "paper": "physics-common-source",
+   "status": "selected",
+   "title": "全时规范—Dirac轨道",
+   "statement": "任意实impulse生成CompleteOrbit；任意实时间满足原Hamilton导数方程；同impulse轨道唯一；Euler为零、能量守恒、Q对非零impulse变化。",
+   "quantifiers_premises": "固定原coframe/Cartan spin背景。",
+   "text_location": {
+    "zh": "定理7.1",
+    "en": "Theorem 7.1"
+   },
+   "written_proof": "manuscript §7.1",
+   "source": {
+    "alias": "H",
+    "commit": "e60a86058abcb74b7f2225f2383c182be8343785"
+   },
+   "producers": [
+    {
+     "path": "Lean/SaturationMonoid/PhysicsCore/Stage10/GaugeSpectrum/Global/Acceptance.lean",
+     "decls": [
+      "sourceGlobalDynamicsClosure"
+     ]
+    },
+    {
+     "path": "Lean/SaturationMonoid/PhysicsCore/Stage10/GaugeSpectrum/Global/Observable.lean",
+     "decls": []
+    }
+   ],
+   "direct_consumers": [],
+   "h0mework": {
+    "status": "bound@234817b3",
+    "accepted_commit": "234817b3c3f7a1023226e7a4fdb8660ddcbc9d0a",
+    "map": "docs/first-release-map.json",
+    "claim_id": "phys.P7"
+   }
+  },
+  {
+   "id": "phys.P8",
+   "paper": "physics-common-source",
+   "status": "selected",
+   "title": "解析预测与Bell概率族",
+   "statement": "相干读数cos²(ω·x₀)，ω²=972/3125；五点1,1/2,0,1/2,1对exclusive-path恒1/2；tick16/17 Born概率同值、边缘1/2；确定color-X准备Φ+；Storz联合模型六半径拒绝保留。",
+   "quantifiers_premises": "仪器桥未闭合；底层源单独不可裁决。",
+   "text_location": {
+    "zh": "定理7.3、命题7.4；§9.2；D.4",
+    "en": "Theorem 7.3, Proposition 7.4; §9.2; D.4"
+   },
+   "written_proof": "manuscript §7.3–§7.4、D.4",
+   "source": {
+    "alias": "H",
+    "commit": "e60a86058abcb74b7f2225f2383c182be8343785"
+   },
+   "producers": [
+    {
+     "path": "Lean/SaturationMonoid/PhysicsCore/Stage10/Prediction/DimensionlessJoint.lean",
+     "decls": [
+      "sourceClosedJoint"
+     ]
+    },
+    {
+     "path": "Lean/SaturationMonoid/PhysicsCore/Stage10/Bell/Runtime.lean",
+     "decls": []
+    },
+    {
+     "path": "Lean/SaturationMonoid/PhysicsCore/Stage10/Bell/Preparation.lean",
+     "decls": []
+    }
+   ],
+   "direct_consumers": [
+    {
+     "path": "Lean/SaturationMonoid/PhysicsCore/Stage10/Runtime/Consumer.lean",
+     "decls": []
+    }
+   ],
+   "data_receipts": [
+    "Verification/physics/stage10/independent-bell/protocol.json",
+    "Verification/physics/stage10/independent-bell/evidence/results.json",
+    "Verification/physics/stage10/independent-bell/evidence/independent-recompute.json"
+   ],
+   "h0mework": {
+    "status": "bound@234817b3",
+    "accepted_commit": "234817b3c3f7a1023226e7a4fdb8660ddcbc9d0a",
+    "map": "docs/first-release-map.json",
+    "claim_id": "phys.P8"
+   }
+  },
+  {
+   "id": "phys.P9",
+   "paper": "physics-common-source",
+   "status": "selected",
+   "title": "任意物理源家族形成",
+   "statement": "∃law ∀source:SmoothUnifiedSource ∀state ∀center：母求值恢复完整input并输出p286CartanStateNext；先于Material/current的存在法则给native compile/nextCurrent与target=原writer；任意给定law的合法occurrence生成successor。",
+   "quantifiers_premises": "范围是SmoothUnifiedSource家族。",
+   "text_location": {
+    "zh": "定理8.1；附录C.2",
+    "en": "Theorem 8.1"
+   },
+   "written_proof": "manuscript §8.1、附录C.2",
+   "source": {
+    "alias": "H",
+    "commit": "e60a86058abcb74b7f2225f2383c182be8343785"
+   },
+   "producers": [
+    {
+     "path": "Lean/SaturationMonoid/PhysicsCore/Stage10/SourceUniqueness/Formation/Declarations/AllSourceOrigin/Consumer.lean",
+     "decls": [
+      "all_source_writer_consumed",
+      "all_source_native_compiled",
+      "all_source_evolution_is_native"
+     ]
+    }
+   ],
+   "direct_consumers": [],
+   "h0mework": {
+    "status": "bound@234817b3",
+    "accepted_commit": "234817b3c3f7a1023226e7a4fdb8660ddcbc9d0a",
+    "map": "docs/first-release-map.json",
+    "claim_id": "phys.P9"
+   }
+  },
+  {
+   "id": "phys.P10",
+   "paper": "physics-common-source",
+   "status": "selected",
+   "title": "任意源的完整经典—量子实现",
+   "statement": "每个SmoothUnifiedSource同一materialField生成光滑、非退化、Lorentz合法、九通道JointZero与scalar contact；CWA⇔physicalPhaseAmplitude≠0；任意center/epoch/point/matter作用的writer、九场、作用与量子响应同时消费。",
+   "quantifiers_premises": "零/负振幅Euler按各自输出保留。",
+   "text_location": {
+    "zh": "定理8.1；附录C.8",
+    "en": "Theorem 8.1"
+   },
+   "written_proof": "manuscript §8.1",
+   "source": {
+    "alias": "H",
+    "commit": "e60a86058abcb74b7f2225f2383c182be8343785"
+   },
+   "producers": [
+    {
+     "path": "Lean/SaturationMonoid/PhysicsCore/Stage10/SourceUniqueness/Formation/General/Consumer.lean",
+     "decls": [
+      "material_realization",
+      "material_original"
+     ]
+    },
+    {
+     "path": "Lean/SaturationMonoid/PhysicsCore/Stage10/SourceUniqueness/Formation/General/Acceptance.lean",
+     "decls": [
+      "material_acceptance_iff"
+     ]
+    },
+    {
+     "path": "Lean/SaturationMonoid/PhysicsCore/Stage10/SourceUniqueness/Formation/General/Evolution/Consumer.lean",
+     "decls": [
+      "occupied_normalized",
+      "quantum_response",
+      "whole_native_consumed"
+     ]
+    }
+   ],
+   "direct_consumers": [],
+   "h0mework": {
+    "status": "bound@234817b3",
+    "accepted_commit": "234817b3c3f7a1023226e7a4fdb8660ddcbc9d0a",
+    "map": "docs/first-release-map.json",
+    "claim_id": "phys.P10"
+   }
+  },
+  {
+   "id": "phys.P11",
+   "paper": "physics-common-source",
+   "status": "selected",
+   "title": "完整源路径与自主程序",
+   "statement": "①任意有限(SmoothUnifiedSource×195实余项)列表存在同一母史合法有限事件路径；②任意有限离散材料/260有理坐标列表在同一自主历史中被实际形成并执行。",
+   "quantifiers_premises": "两合同各自成立，不互换。",
+   "text_location": {
+    "zh": "定理8.2；附录C.3",
+    "en": "Theorem 8.2"
+   },
+   "written_proof": "manuscript §8.2",
+   "source": {
+    "alias": "H",
+    "commit": "e60a86058abcb74b7f2225f2383c182be8343785"
+   },
+   "producers": [
+    {
+     "path": "Lean/SaturationMonoid/PhysicsCore/Stage10/SourceUniqueness/Formation/Paths/Consumer.lean",
+     "decls": [
+      "ordered_physical_sources"
+     ]
+    },
+    {
+     "path": "Lean/SaturationMonoid/PhysicsCore/Stage10/SourceUniqueness/Formation/Programmes/Autonomous/Consumer.lean",
+     "decls": [
+      "source_birth_consumed",
+      "every_programme_consumed"
+     ]
+    }
+   ],
+   "direct_consumers": [],
+   "h0mework": {
+    "status": "bound@234817b3",
+    "accepted_commit": "234817b3c3f7a1023226e7a4fdb8660ddcbc9d0a",
+    "map": "docs/first-release-map.json",
+    "claim_id": "phys.P11"
+   }
+  },
+  {
+   "id": "phys.P12",
+   "paper": "physics-common-source",
+   "status": "selected",
+   "title": "量子时间导数恢复轨道能量",
+   "statement": "任意impulse、CompleteOrbit、实t：q=Re⟨Vψ,ψ′⟩/ω恢复r、p；Legendre相对能量=p²/2m+c(r−r₀)²+非负项。",
+   "quantifiers_premises": "同P7背景。",
+   "text_location": {
+    "zh": "定理7.2",
+    "en": "Theorem 7.2"
+   },
+   "written_proof": "manuscript §7.2",
+   "source": {
+    "alias": "H",
+    "commit": "e60a86058abcb74b7f2225f2383c182be8343785"
+   },
+   "producers": [
+    {
+     "path": "Lean/SaturationMonoid/PhysicsCore/YangMills/SourceQuantum/TimeJet.lean",
+     "decls": [
+      "feature_derivative",
+      "rateRead_eq",
+      "radiusRead_eq",
+      "momentumRead_eq"
+     ]
+    },
+    {
+     "path": "Lean/SaturationMonoid/PhysicsCore/YangMills/SourceQuantum/JetEnergy.lean",
+     "decls": [
+      "jetEnergy_physical",
+      "quantum_jet_physical_energy"
+     ]
+    }
+   ],
+   "direct_consumers": [],
+   "h0mework": {
+    "status": "bound@234817b3",
+    "accepted_commit": "234817b3c3f7a1023226e7a4fdb8660ddcbc9d0a",
+    "map": "docs/first-release-map.json",
+    "claim_id": "phys.P12"
+   }
+  },
+  {
+   "id": "phys.P13",
+   "paper": "physics-common-source",
+   "status": "selected",
+   "title": "生成几何进入实际作用",
+   "statement": "Spin×SU7总bundle、平行ODE与复合律、actual的Ad(g)A−(dg)g⁻¹拼接、matter下降、唯一势极小、35坐标稳定子、local-Spin保持与moving-frame law。",
+   "quantifiers_premises": "—",
+   "text_location": {
+    "zh": "命题2.3–2.4、3.3；附录B.3/B.6",
+    "en": "Propositions 2.3–2.4, 3.3"
+   },
+   "written_proof": "manuscript §2–§3、附录B",
+   "source": {
+    "alias": "H",
+    "commit": "e60a86058abcb74b7f2225f2383c182be8343785"
+   },
+   "producers": [
+    {
+     "path": "Lean/SaturationMonoid/PhysicsCore/StageNineFullMotherDescentAndTransport.lean",
+     "decls": []
+    },
+    {
+     "path": "Lean/SaturationMonoid/PhysicsCore/Stage9G/Foundation/Descent.lean",
+     "decls": []
+    },
+    {
+     "path": "Lean/SaturationMonoid/PhysicsCore/Stage9G/Foundation/NativeAction.lean",
+     "decls": []
+    },
+    {
+     "path": "Lean/SaturationMonoid/PhysicsCore/Stage9G/Foundation/Invariance.lean",
+     "decls": []
+    }
+   ],
+   "direct_consumers": [
+    {
+     "path": "Lean/SaturationMonoid/PhysicsCore/Stage9G/Credential.lean",
+     "decls": []
+    }
+   ],
+   "h0mework": {
+    "status": "bound@234817b3",
+    "accepted_commit": "234817b3c3f7a1023226e7a4fdb8660ddcbc9d0a",
+    "map": "docs/first-release-map.json",
+    "claim_id": "phys.P13"
+   }
+  },
+  {
+   "id": "phys.P14",
+   "paper": "physics-common-source",
+   "status": "selected",
+   "title": "辅助场精确有符号消元",
+   "statement": "任意源、任意非退化完整场：B*=Kₑ⁻¹F，L(B)=L(B*)−½W(B−B*,Kₑ(B−B*))；九场与“构成中心＋B余量”双向等价；任意Nat次native写入保持。",
+   "quantifiers_premises": "等价本身不需非退化。",
+   "text_location": {
+    "zh": "定理3.2；附录B.2",
+    "en": "Theorem 3.2"
+   },
+   "written_proof": "manuscript §3.2、附录B.2",
+   "source": {
+    "alias": "H",
+    "commit": "e60a86058abcb74b7f2225f2383c182be8343785"
+   },
+   "producers": [
+    {
+     "path": "Lean/SaturationMonoid/PhysicsCore/Stage10/SourceUniqueness/Formation/FullAuxiliary/Action.lean",
+     "decls": [
+      "action_decomposition",
+      "configuration_decomposition"
+     ]
+    },
+    {
+     "path": "Lean/SaturationMonoid/PhysicsCore/Stage10/SourceUniqueness/Formation/FullAuxiliary/Fields.lean",
+     "decls": [
+      "wholeEquiv",
+      "action_in_generated_fields"
+     ]
+    }
+   ],
+   "direct_consumers": [
+    {
+     "path": "Lean/SaturationMonoid/PhysicsCore/Stage10/SourceUniqueness/Formation/FullAuxiliary/Consumer.lean",
+     "decls": [
+      "source_family_consumed"
+     ]
+    }
+   ],
+   "h0mework": {
+    "status": "bound@234817b3",
+    "accepted_commit": "234817b3c3f7a1023226e7a4fdb8660ddcbc9d0a",
+    "map": "docs/first-release-map.json",
+    "claim_id": "phys.P14"
+   }
+  },
+  {
+   "id": "phys.P15",
+   "paper": "physics-common-source",
+   "status": "selected",
+   "title": "clock–B耦合与非零反馈",
+   "statement": "L=L₀+κ(b²+2ub+ub²)，κ=9N/5；唯一B极小b*=−u/(1+u)；u=σ=1/2经native writer使引力辅助场(3,0)分量变化−N/2。",
+   "quantifiers_premises": "1+u>0。",
+   "text_location": {
+    "zh": "构造5.1、定理5.2–5.4",
+    "en": "Construction 5.1, Theorems 5.2–5.4"
+   },
+   "written_proof": "manuscript §5",
+   "source": {
+    "alias": "H",
+    "commit": "e60a86058abcb74b7f2225f2383c182be8343785"
+   },
+   "producers": [
+    {
+     "path": "Lean/SaturationMonoid/PhysicsCore/Stage10/SourceUniqueness/Formation/ClockBF/Action.lean",
+     "decls": [
+      "action_normalForm",
+      "action_elimination"
+     ]
+    },
+    {
+     "path": "Lean/SaturationMonoid/PhysicsCore/Stage10/SourceUniqueness/Formation/ClockBF/Calculus.lean",
+     "decls": [
+      "quadraticBlock_value",
+      "generatedB_unique"
+     ]
+    },
+    {
+     "path": "Lean/SaturationMonoid/PhysicsCore/Stage10/SourceUniqueness/Formation/ClockBF/Preparation.lean",
+     "decls": [
+      "constitutive_update",
+      "native_consumed"
+     ]
+    }
+   ],
+   "direct_consumers": [
+    {
+     "path": "Lean/SaturationMonoid/PhysicsCore/Stage10/SourceUniqueness/Formation/ClockBF/Feedback.lean",
+     "decls": [
+      "source_feedback_consumed"
+     ]
+    }
+   ],
+   "h0mework": {
+    "status": "bound@234817b3",
+    "accepted_commit": "234817b3c3f7a1023226e7a4fdb8660ddcbc9d0a",
+    "map": "docs/first-release-map.json",
+    "claim_id": "phys.P15"
+   }
+  },
+  {
+   "id": "phys.P16",
+   "paper": "physics-common-source",
+   "status": "selected",
+   "title": "标准Fock保持",
+   "statement": "任意有限线序模集与任意复矩阵A：dΓ(A)I(v)=I(Av)，⟨I(v),dΓ(A)I(w)⟩=⟨v,Aw⟩；本源8模/256维Fock保持全部读数；暗时刻−1/2反例。",
+   "quantifiers_premises": "跨模CAR与完整Fock伴随在数值验收内。",
+   "text_location": {
+    "zh": "定理6.5、例6.6；D.3",
+    "en": "Theorem 6.5, Example 6.6"
+   },
+   "written_proof": "manuscript §6.5–§6.6",
+   "source": {
+    "alias": "H",
+    "commit": "e60a86058abcb74b7f2225f2383c182be8343785"
+   },
+   "producers": [
+    {
+     "path": "Lean/SaturationMonoid/PhysicsCore/QuantizationCheck/Fermion.lean",
+     "decls": [
+      "secondQuantize_oneParticle",
+      "pairing_secondQuantize_oneParticle"
+     ]
+    },
+    {
+     "path": "Lean/SaturationMonoid/PhysicsCore/QuantizationCheck/Current.lean",
+     "decls": []
+    },
+    {
+     "path": "Lean/SaturationMonoid/PhysicsCore/QuantizationCheck/Controls.lean",
+     "decls": [
+      "initial_agreement_dark_separation"
+     ]
+    }
+   ],
+   "direct_consumers": [
+    {
+     "path": "Lean/SaturationMonoid/PhysicsCore/QuantizationCheck/Consumer.lean",
+     "decls": []
+    }
+   ],
+   "data_receipts": [
+    "Verification/physics/quantization-current/lean-audit.json",
+    "Verification/physics/quantization-current/results.json"
+   ],
+   "h0mework": {
+    "status": "bound@234817b3",
+    "accepted_commit": "234817b3c3f7a1023226e7a4fdb8660ddcbc9d0a",
+    "map": "docs/first-release-map.json",
+    "claim_id": "phys.P16"
+   }
+  },
+  {
+   "id": "phys.P17",
+   "paper": "physics-common-source",
+   "status": "selected",
+   "title": "完整物质作用由母材料形成",
+   "statement": "252复维物质基；对每个A∈Endℂ存在唯一完成值v使operator(v)=A；有限operatorAt只读过去样本。",
+   "quantifiers_premises": "—",
+   "text_location": {
+    "zh": "附录C.5 定理C.1",
+    "en": "Appendix C.5 Theorem C.1"
+   },
+   "written_proof": "manuscript 附录C.5",
+   "source": {
+    "alias": "H",
+    "commit": "e60a86058abcb74b7f2225f2383c182be8343785"
+   },
+   "producers": [
+    {
+     "path": "Lean/SaturationMonoid/PhysicsCore/Stage10/SourceUniqueness/Formation/Matter/Action/Matrix.lean",
+     "decls": [
+      "operatorEquiv",
+      "every_operator",
+      "finite_matrix"
+     ]
+    }
+   ],
+   "direct_consumers": [
+    {
+     "path": "Lean/SaturationMonoid/PhysicsCore/Stage10/SourceUniqueness/Formation/Matter/Action/Consumer.lean",
+     "decls": [
+      "native_consumed",
+      "finite_native_consumed"
+     ]
+    }
+   ],
+   "h0mework": {
+    "status": "bound@234817b3",
+    "accepted_commit": "234817b3c3f7a1023226e7a4fdb8660ddcbc9d0a",
+    "map": "docs/first-release-map.json",
+    "claim_id": "phys.P17"
+   }
+  },
+  {
+   "id": "phys.P18",
+   "paper": "physics-common-source",
+   "status": "selected",
+   "title": "完整联合载体与非零反馈",
+   "statement": "Joint为jointInput的Ω轨道整数span；先于值存在两枚母law与共同law；∀parent∀值∃query使compile返回(query,some v,some nativeLift v)；任意query保持自身answer。",
+   "quantifiers_premises": "∃query不换成∀query。",
+   "text_location": {
+    "zh": "附录C.6 命题C.2",
+    "en": "Appendix C.6 Proposition C.2"
+   },
+   "written_proof": "manuscript 附录C.6",
+   "source": {
+    "alias": "H",
+    "commit": "e60a86058abcb74b7f2225f2383c182be8343785"
+   },
+   "producers": [
+    {
+     "path": "Lean/SaturationMonoid/PhysicsCore/Stage10/SourceUniqueness/Formation/Declarations/JointCarrierFormation/Coverage.lean",
+     "decls": [
+      "whole_carrier_formed"
+     ]
+    },
+    {
+     "path": "Lean/SaturationMonoid/PhysicsCore/Stage10/SourceUniqueness/Formation/Declarations/JointCarrierFormation/Consumer.lean",
+     "decls": [
+      "source_feedback_formed"
+     ]
+    }
+   ],
+   "direct_consumers": [],
+   "h0mework": {
+    "status": "bound@234817b3",
+    "accepted_commit": "234817b3c3f7a1023226e7a4fdb8660ddcbc9d0a",
+    "map": "docs/first-release-map.json",
+    "claim_id": "phys.P18"
+   }
+  },
+  {
+   "id": "phys.P19",
+   "paper": "physics-common-source",
+   "status": "selected",
+   "title": "全历史全阶紧域界",
+   "statement": "∀m∀紧K∃C(K,m)：原完整历史全部index、九字段全部坐标与x∈K的m阶导数≤C；所有合法弱恢复actual共享同界。",
+   "quantifiers_premises": "—",
+   "text_location": {
+    "zh": "定理4.5",
+    "en": "Theorem 4.5"
+   },
+   "written_proof": "manuscript §4.4",
+   "source": {
+    "alias": "H",
+    "commit": "e60a86058abcb74b7f2225f2383c182be8343785"
+   },
+   "producers": [
+    {
+     "path": "Lean/SaturationMonoid/PhysicsCore/Stage9CU/Fields/HistoryBounds.lean",
+     "decls": [
+      "history_compact_jet_bound"
+     ]
+    }
+   ],
+   "direct_consumers": [
+    {
+     "path": "Lean/SaturationMonoid/PhysicsCore/Stage9CU/Weak/CompactBounds.lean",
+     "decls": [
+      "actuals_compact_jet_bound"
+     ]
+    }
+   ],
+   "h0mework": {
+    "status": "bound@234817b3",
+    "accepted_commit": "234817b3c3f7a1023226e7a4fdb8660ddcbc9d0a",
+    "map": "docs/first-release-map.json",
+    "claim_id": "phys.P19"
+   }
+  },
+  {
+   "id": "phys.P20",
+   "paper": "physics-common-source",
+   "status": "selected",
+   "title": "母法则完成与连续过程表示",
+   "statement": "∀f:Stream→Stream∃!law；∀Input→Stream同；完备可分度量、emit/update连续的原Dynamics闭嵌入并恢复全部状态与事件。",
+   "quantifiers_premises": "拓扑前提明示。",
+   "text_location": {
+    "zh": "附录C.7 命题C.3",
+    "en": "Appendix C.7 Proposition C.3"
+   },
+   "written_proof": "manuscript 附录C.7",
+   "source": {
+    "alias": "H",
+    "commit": "e60a86058abcb74b7f2225f2383c182be8343785"
+   },
+   "producers": [
+    {
+     "path": "Lean/SaturationMonoid/PhysicsCore/Stage10/SourceUniqueness/Formation/Laws/Pointwise/Completion.lean",
+     "decls": [
+      "every_law"
+     ]
+    },
+    {
+     "path": "Lean/SaturationMonoid/PhysicsCore/Stage10/SourceUniqueness/Formation/Laws/Restriction/Process.lean",
+     "decls": [
+      "regular_process_map"
+     ]
+    }
+   ],
+   "direct_consumers": [],
+   "h0mework": {
+    "status": "bound@234817b3",
+    "accepted_commit": "234817b3c3f7a1023226e7a4fdb8660ddcbc9d0a",
+    "map": "docs/first-release-map.json",
+    "claim_id": "phys.P20"
+   }
+  },
+  {
+   "id": "phys.P22",
+   "paper": "physics-common-source",
+   "status": "selected",
+   "title": "固定母源完整实现",
+   "statement": "原Type0：∀N,V,权威root,合法world state∃origin（形成、恢复、全实在性⇒无魔法比特）；∀N,V,完整inquiry state∃origin；∀原SourceNativeInquiryEngineProcess∃origin，restrict=原完整process并保封印激活、整条激活法则与任意runtime全部有限深度历史。",
+   "quantifiers_premises": "阶与地址内部生成；无新准入前提。",
+   "text_location": {
+    "zh": "定理8.4、推论8.5；附录C.9",
+    "en": "Theorem 8.4, Corollary 8.5; Appendix C.9"
+   },
+   "written_proof": "manuscript §8.4–§8.5、附录C.9",
+   "source": {
+    "alias": "F",
+    "commit": "cde4b910929d9bc57554aa56f6ade116bc3b8675"
+   },
+   "producers": [
+    {
+     "path": "Lean/SaturationMonoid/PhysicsCore/Stage10/SourceUniqueness/Formation/Declarations/Cumulative/FixedMother/CompleteRealization.lean",
+     "decls": [
+      "root_admission_fixed_mother_complete_realization"
+     ]
+    },
+    {
+     "path": "Lean/SaturationMonoid/PhysicsCore/Stage10/SourceUniqueness/Formation/Declarations/Cumulative/FixedMother/Formation.lean",
+     "decls": []
+    }
+   ],
+   "direct_consumers": [
+    {
+     "path": "Lean/docs/audits/physics/source-uniqueness/MotherFixedSourceRealizationConsumer.lean",
+     "decls": [
+      "original_world",
+      "original_inquiry",
+      "original_process",
+      "original_physical_seal_and_whole_law",
+      "original_physical_tick_and_history"
+     ]
+    }
+   ],
+   "data_receipts": [
+    "MotherFixedSourceRealization.certification.json (F)"
+   ],
+   "h0mework": {
+    "status": "bound@234817b3",
+    "accepted_commit": "234817b3c3f7a1023226e7a4fdb8660ddcbc9d0a",
+    "map": "docs/first-release-map.json",
+    "claim_id": "phys.P22"
+   }
+  },
+  {
+   "id": "phys.P24",
+   "paper": "physics-common-source",
+   "status": "selected",
+   "title": "NIST 2015名义重放（正确单位）",
+   "statement": "r0003按公开±0.3%（概率半宽0.003）执行前冻结；中心与16角点双实现一致；五个文档值全在预声明最优带外；中心(r,θ₀,θ₁)=(0.315463895,4.954737358°,−27.232869633°)；readiness实际消费负向结果。",
+   "quantifiers_premises": "具名名义模型的数值最优带，不是连续全域argmax或新的Bell实验反驳。",
+   "text_location": {
+    "zh": "§9.2 NIST 名义重放段；附录D.4.6",
+    "en": "§9.2 NIST nominal-replay paragraph; Appendix D.4.6"
+   },
+   "written_proof": "manuscript §9.2、D.4.6；supplement S9.2(b)",
+   "source": {
+    "alias": "AB",
+    "commit": "fde5c14df36b6064c87064acd20830d3df0500bb"
+   },
+   "producers": [
+    {
+     "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/replay.py"
+    },
+    {
+     "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/independent_replay.py"
+    }
+   ],
+   "direct_consumers": [
+    {
+     "path": "Verification/physics/stage10/independent-bell/nist-real/checks.py"
+    },
+    {
+     "path": "Verification/physics/stage10/independent-bell/nist-real/readiness.py"
+    }
+   ],
+   "data_receipts": [
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/criterion-r0003.md",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/replay-r0003.json",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/independent_replay-r0003.json",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/replay.json (X, 0.0003, historical)"
+   ],
+   "h0mework": {
+    "status": "bound@234817b3",
+    "accepted_commit": "234817b3c3f7a1023226e7a4fdb8660ddcbc9d0a",
+    "map": "docs/first-release-map.json",
+    "claim_id": "phys.P24"
+   },
+   "audited_files": [
+    {
+     "result": "§9.2 NIST名义重放",
+     "alias": "AB",
+     "path": "N/criterion-r0003.md",
+     "blob": "1af4d273f487e390156a1c272e78fcd1b89cd3c5",
+     "read": "full"
+    },
+    {
+     "result": "§9.2 NIST名义重放",
+     "alias": "AB",
+     "path": "N/replay-r0003.json",
+     "blob": "33d865020e86ad97ce6d89cf355b86dd8ad0785f",
+     "read": "ranges"
+    },
+    {
+     "result": "§9.2 NIST名义重放",
+     "alias": "AB",
+     "path": "N/independent_replay-r0003.json",
+     "blob": "77b01ccc44fff1883243c51fb8e9292608f28121",
+     "read": "ranges"
+    }
+   ]
+  },
+  {
+   "id": "phys.P25",
+   "paper": "physics-common-source",
+   "status": "selected",
+   "title": "公开计数条件源成员（BL8）",
+   "statement": "Shalm 2015 Table S-II 5-pulse窗口、N=177358351：训练00/01/11、留出10的条件全Fock源成员，12个包络落在po0003域内。",
+   "quantifiers_premises": "光学逆解与反馈详证归光学稿BL1–BL7。",
+   "text_location": {
+    "zh": "§9.2 Table S-II 条件源成员段",
+    "en": "§9.2 Table S-II conditional-member paragraph"
+   },
+   "written_proof": "manuscript §9.2；supplement S9.2(c)",
+   "source": {
+    "alias": "AB",
+    "commit": "fde5c14df36b6064c87064acd20830d3df0500bb"
+   },
+   "producers": [
+    {
+     "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-prediction/public-criterion-po0003.md"
+    }
+   ],
+   "direct_consumers": [
+    {
+     "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-prediction/public-witness-verification.json"
+    }
+   ],
+   "detailed_in": [
+    "bell-source-calibration BL1–BL8"
+   ],
+   "data_receipts": [
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-prediction/public-observables.json"
+   ],
+   "h0mework": {
+    "status": "bound@234817b3",
+    "accepted_commit": "234817b3c3f7a1023226e7a4fdb8660ddcbc9d0a",
+    "map": "docs/first-release-map.json",
+    "claim_id": "phys.P25"
+   },
+   "audited_files": [
+    {
+     "result": "§9.2 Table S-II 条件源成员（phys.P25）",
+     "alias": "AB",
+     "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-prediction/",
+     "blob": "public-observables.json / public-criterion-po0003.md / public-verification.json（git 按路径核读）",
+     "read": "public-observables.json 全文；public-criterion-po0003.md 全文（含 PO3-FROZEN 块）；public-verification.json 全文"
+    }
+   ]
+  },
+  {
+   "id": "phys.P26",
+   "paper": "physics-common-source",
+   "status": "selected",
+   "title": "完整量子构造（定理6.7–6.10）",
+   "statement": "原作用→共同H=H₀+Y（61对CCR、504模CAR、100维配置、最小闭图、四时间Weyl；作用核恒等式(6.3)，耦合4W(q)，W≥1源生）→全阶时钟、固定自伴R=E_tail−C_src、同一11字段准备（两残差趋零）→真变场289/36读数、非线性Laplace、cut→uncut 0/1/2 jet交换、固定测度纤维→荷—电流Ward P(k)Q_a=J_sp+J_pair（单粒子投影上J_pair=0；双传播子响应=通道和；同一准备读出）。",
+   "quantifiers_premises": "定理6.8(4)是残差收敛，不是态矢收敛；Ward读数尚未识别为物理电磁耦合/Thomson；5b测度属原H₀源响应。",
+   "text_location": {
+    "zh": "§6.7–§6.10 定理6.7–6.10、§6.9末；图3",
+    "en": "§6.7–§6.10 Theorems 6.7–6.10, end of §6.9; Figure 3"
+   },
+   "written_proof": "supplement S1–S4（§6.9末见S3末段）",
+   "source": {
+    "alias": "AB",
+    "commit": "fde5c14df36b6064c87064acd20830d3df0500bb"
+   },
+   "producers": [
+    {
+     "path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationActionCoreDecomposition.lean",
+     "decls": [
+      "physical_action_decomposition"
+     ]
+    },
+    {
+     "path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationEngineProgram.lean",
+     "decls": [
+      "sourceEngine_generated"
+     ]
+    },
+    {
+     "path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationEngineCancellationForces.lean",
+     "decls": [
+      "sourceEngineForces_successor_zero"
+     ]
+    },
+    {
+     "path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationFullEnergyForm.lean",
+     "decls": [
+      "actual_closed_form_complete_energy"
+     ]
+    },
+    {
+     "path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSourceRemainder.lean",
+     "decls": [
+      "sourceRemainder_decomposition",
+      "sourceRemainder_selfAdjoint",
+      "sourceRemainder_readback"
+     ]
+    },
+    {
+     "path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSourcePreparedState.lean",
+     "decls": [
+      "sourcePreparation_exists"
+     ]
+    },
+    {
+     "path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSourceBoundarySequence.lean",
+     "decls": [
+      "preparationSequence_residual",
+      "preparationSequence_yukawa_residual"
+     ]
+    },
+    {
+     "path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSourceNonlinearState.lean",
+     "decls": [
+      "preparedLaplace_derivative",
+      "preparedLaplace_remainder",
+      "sourceNonlinearState_same_preparation"
+     ]
+    },
+    {
+     "path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationYukawaObservedLimit.lean",
+     "decls": [
+      "observed_uncut_limit_near",
+      "observed_first_exchange",
+      "observed_second_exchange",
+      "curvature_first_exchange",
+      "curvature_second_exchange"
+     ]
+    },
+    {
+     "path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationHalfDensityCompressionFeed.lean",
+     "decls": [
+      "diagonalFiber_source"
+     ]
+    },
+    {
+     "path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationElectricPairCurrent.lean"
+    },
+    {
+     "path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationElectricCoreWard.lean"
+    },
+    {
+     "path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationElectricWeightedGraph.lean"
+    },
+    {
+     "path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationElectricPreparedWard.lean",
+     "decls": [
+      "resolvedChannels_original_response",
+      "preparedChannels_same_state",
+      "curvatureChannels_same_state"
+     ]
+    },
+    {
+     "path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationTemporalGlobalCharge.lean"
+    },
+    {
+     "path": "Verification/physics/low-energy-phenomenology/external-composite-decay/SourceHamiltonianSpectralMeasure.lean",
+     "decls": [
+      "actual_source_spectral_measure"
+     ]
+    },
+    {
+     "path": "Verification/physics/low-energy-phenomenology/external-composite-decay/SourceBoundedInsertionTime.lean",
+     "decls": [
+      "actual_uniform_time_response"
+     ]
+    }
+   ],
+   "direct_consumers": [
+    {
+     "path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSourceCausalState.lean",
+     "decls": [
+      "sourceCausalState_same_preparation"
+     ]
+    }
+   ],
+   "detailed_in": [
+    "constrained-local-quantum K1–K19, K24–K28",
+    "source-quantum-clock QC16–QC19",
+    "composite-source-response D24–D25"
+   ],
+   "h0mework": {
+    "status": "bound@234817b3",
+    "accepted_commit": "234817b3c3f7a1023226e7a4fdb8660ddcbc9d0a",
+    "map": "docs/first-release-map.json",
+    "claim_id": "phys.P26"
+   },
+   "carrier_sources": {
+    "paths_relative_to": "Verification/physics/low-energy-phenomenology/ at the listed alias commit",
+    "note": "Theorem 6.7(1)(2); per-subclaim mapping recorded from papers/physics-common-source/checks/first-release-source-audit.json (S1)",
+    "items": [
+     {
+      "subclaim": "61 对 CCR 与 504 模双支 CAR",
+      "K": "K3",
+      "alias": "K1-4",
+      "paths": [
+       "external-composite-decay/source_scalar_gauss_reduction.py",
+       "external-composite-decay/independent_source_scalar_gauss_reduction.py"
+      ],
+      "evidence": "fixed exact source program + independent recomputation; CAR normal-order Lean port"
+     },
+     {
+      "subclaim": "103 维共同配置域、944 个交叉主部条目、61 个 Yukawa 力方向",
+      "K": "K4",
+      "alias": "K1-4",
+      "paths": [
+       "external-composite-decay/source_joint_local_quantum.py"
+      ],
+      "evidence": "fixed exact source program + independent recomputation"
+     },
+     {
+      "subclaim": "三稳定子协变与共同核",
+      "K": "K6",
+      "alias": "K6-7",
+      "paths": [
+       "external-composite-decay/source_quantum_stabilizer.py"
+      ],
+      "evidence": "fixed exact source program + independent recomputation"
+     },
+     {
+      "subclaim": "约化相空间图与规范枢轴",
+      "K": "K7",
+      "alias": "K6-7",
+      "paths": [
+       "external-composite-decay/source_stabilizer_phase_reduction.py"
+      ],
+      "evidence": "fixed exact source program + independent recomputation"
+     },
+     {
+      "subclaim": "量子截面、第二类测度相消、半密度",
+      "K": "K8",
+      "alias": "K8-11",
+      "paths": [
+       "external-composite-decay/source_quantum_gauss_section.py",
+       "external-composite-decay/source_gauss_section_measure.py",
+       "external-composite-decay/source_full_gauss_section.py",
+       "external-composite-decay/SecondClassReduction.lean"
+      ],
+      "evidence": "program + independent recomputation; Lean for the cancellation identity"
+     },
+     {
+      "subclaim": "100 维 Hilbert 载体、半密度等距、伴随对、最小闭包、392 模限制",
+      "K": "K9",
+      "alias": "K8-11",
+      "paths": [
+       "external-composite-decay/SourceQuantumConfigurationHilbert.lean",
+       "external-composite-decay/SourceQuantumHalfDensityHilbert.lean",
+       "external-composite-decay/FockFilteredWords.lean",
+       "external-composite-decay/SymmetricGraphClosure.lean",
+       "external-composite-decay/AntiunitaryDefectPair.lean"
+      ],
+      "evidence": "Lean + programs with independent recomputation"
+     },
+     {
+      "subclaim": "四时间 Weyl 表示",
+      "K": "K10",
+      "alias": "K8-11",
+      "paths": [
+       "external-composite-decay/source_coframe_weyl_symbol.py",
+       "external-composite-decay/source_scalar_weyl_symbol.py",
+       "external-composite-decay/source_common_weyl_symbol.py",
+       "external-composite-decay/source_common_temporal_form.py"
+      ],
+      "evidence": "fixed exact source program + independent recomputation"
+     },
+     {
+      "subclaim": "全部 100 对 CCR 与 504 对 CAR 的正规积运动",
+      "K": "K12",
+      "alias": "X",
+      "paths": [
+       "external-composite-decay/source_joint_ccr_car_ports.py",
+       "external-composite-decay/JointCCRCarPorts.lean"
+      ],
+      "evidence": "program + independent recomputation; Lean for the generic cubic algebra"
+     }
+    ]
+   },
+   "audited_files": [
+    {
+     "result": "定理6.7(1)(2) 正则载体/截面/测度/闭图",
+     "alias": "5a-85cb5386",
+     "path": "V/source_scalar_gauss_reduction.py",
+     "blob": "309313a9c23924a5c7a24124acd6336e449c2f60",
+     "read": "declaration list + claims-ledger cross-check"
+    },
+    {
+     "result": "定理6.7(1)(2) 正则载体/截面/测度/闭图",
+     "alias": "5a-85cb5386",
+     "path": "V/source_joint_local_quantum.py",
+     "blob": "b9893889fb0043435c9c23ba295fd2f918108991",
+     "read": "declaration list"
+    },
+    {
+     "result": "定理6.7(2) 三稳定子与截面",
+     "alias": "5a-6726f385",
+     "path": "V/source_stabilizer_phase_reduction.py",
+     "blob": "71ff3a775e7753423339d61f0c3e5e0368588080",
+     "read": "declaration list"
+    },
+    {
+     "result": "定理6.7(2) 第二类约束测度相消",
+     "alias": "5a-6726f385",
+     "path": "V/SecondClassReduction.lean",
+     "blob": "cf41741098461ab7341be57a112eeaf209cb4ffd",
+     "read": "declaration list + 关键定理体"
+    },
+    {
+     "result": "定理6.7(2) 配置 Hilbert 空间",
+     "alias": "5a-6726f385",
+     "path": "V/SourceQuantumConfigurationHilbert.lean",
+     "blob": "0839b9d1f5a789b9d95c26c98f7ff451bf46d805",
+     "read": "declaration list + 结构字段"
+    },
+    {
+     "result": "定理6.7(2) 半密度与加权",
+     "alias": "5a-6726f385",
+     "path": "V/SourceQuantumHalfDensityHilbert.lean",
+     "blob": "90535318eec753cf6584724125d2f15a076af183",
+     "read": "declaration list"
+    },
+    {
+     "result": "定理6.7(2) 共同时间形式/Weyl",
+     "alias": "5a-6726f385",
+     "path": "V/source_common_temporal_form.py",
+     "blob": "3d91133a8cdf7424539fcb96198434dc000a995b",
+     "read": "declaration list"
+    },
+    {
+     "result": "定理6.7(3) 作用认回",
+     "alias": "AB",
+     "path": "A/CanonicalPreparationActionCoreDecomposition.lean",
+     "blob": "1beb8853f0b3a954a3ff3743275bf817be5f3ef8",
+     "read": "declaration list + 定理语句"
+    },
+    {
+     "result": "定理6.7(3) 场量子化",
+     "alias": "AB",
+     "path": "A/CanonicalPreparationFieldQuantizationSymbols.lean",
+     "blob": "3184fe63b0e20dddbd2475db2cfc537b9c8b0850",
+     "read": "ranges"
+    },
+    {
+     "result": "定理6.7(3) 场量子化",
+     "alias": "AB",
+     "path": "A/CanonicalPreparationFieldQuantizationCore.lean",
+     "blob": "92d3c8a0d8b1ce0f4258f9de5eaf16c386db9e28",
+     "read": "ranges"
+    },
+    {
+     "result": "定理6.7(3) 场量子化",
+     "alias": "AB",
+     "path": "A/CanonicalPreparationFieldQuantizationContacts.lean",
+     "blob": "47e63a274c45bc037873cd6a313ec69316c55b68",
+     "read": "ranges"
+    },
+    {
+     "result": "定理6.8(1) 全阶时钟",
+     "alias": "AB",
+     "path": "A/CanonicalPreparationEngineProgram.lean",
+     "blob": "82b2439c8417e3d21ee5030d2405d3ddab6c7323",
+     "read": "lines 13-185"
+    },
+    {
+     "result": "定理6.8(1) 后继力为零",
+     "alias": "AB",
+     "path": "A/CanonicalPreparationEngineCancellationForces.lean",
+     "blob": "82ee7661c6e6b7b40ae9aebd1d6ed11ed55615da",
+     "read": "lines 116-185"
+    },
+    {
+     "result": "定理6.8(1) 时钟滤过",
+     "alias": "AB",
+     "path": "A/CanonicalPreparationEngineFiltration.lean",
+     "blob": "f9aa97e36e54723c05f4c97c4e87cb8ec9ff80c5",
+     "read": "ranges"
+    },
+    {
+     "result": "定理6.8(1) 已付力",
+     "alias": "AB",
+     "path": "A/CanonicalPreparationEnginePaidForces.lean",
+     "blob": "5080ef68954400f8d7d2910b60801575a27e7821",
+     "read": "ranges"
+    },
+    {
+     "result": "定理6.8(1) 径向导数预算",
+     "alias": "AB",
+     "path": "A/CanonicalPreparationEngineActualRadial.lean",
+     "blob": "d8028dadb251c3703ef8e515fb90a36e814b9750",
+     "read": "ranges"
+    },
+    {
+     "result": "定理6.8(2) 完整固定R",
+     "alias": "AB",
+     "path": "A/CanonicalPreparationFullEnergyForm.lean",
+     "blob": "5d7795950f20bed722c026b530667fc9e10017f0",
+     "read": "lines 20-80"
+    },
+    {
+     "result": "定理6.8(2) 余项 R",
+     "alias": "AB",
+     "path": "A/CanonicalPreparationSourceRemainder.lean",
+     "blob": "024084ee4d48d0fd5318a80ddf4f02f064b52777",
+     "read": "ranges"
+    },
+    {
+     "result": "定理6.8(3) 同一准备点",
+     "alias": "AB",
+     "path": "A/CanonicalPreparationSourcePreparedState.lean",
+     "blob": "85ea602bd2783ab55144024983f789694f37f09a",
+     "read": "lines 15-90"
+    },
+    {
+     "result": "定理6.8(4) 两残差趋零",
+     "alias": "AB",
+     "path": "A/CanonicalPreparationSourceBoundarySequence.lean",
+     "blob": "bfaaf826c18485210ccac83485578957c5843895",
+     "read": "lines 19-55"
+    },
+    {
+     "result": "定理6.8(4) 因果/非线性状态",
+     "alias": "AB",
+     "path": "A/CanonicalPreparationSourceCausalState.lean",
+     "blob": "ddeac790af7313594963ed5f39391790f425b5f3",
+     "read": "lines 18-64"
+    },
+    {
+     "result": "定理6.9(2) 非线性响应",
+     "alias": "AB",
+     "path": "A/CanonicalPreparationSourceNonlinearState.lean",
+     "blob": "643add527759b3ebe709ac4384a471368dd00109",
+     "read": "lines 21-90"
+    },
+    {
+     "result": "定理6.9(3) 截断交换",
+     "alias": "AB",
+     "path": "A/CanonicalPreparationYukawaObservedLimit.lean",
+     "blob": "6674484526e5dfa5702fd5146ed262ccc0ffd7c3",
+     "read": "declaration list + lines 215-348"
+    },
+    {
+     "result": "定理6.9(1)(4) 纤维/压缩",
+     "alias": "AB",
+     "path": "A/CanonicalPreparationHalfDensityCompressionFeed.lean",
+     "blob": "9de7d78fa887ac98d727b8bf5b1198f6ab58731e",
+     "read": "lines 47-131"
+    },
+    {
+     "result": "§6.9末 谱测度",
+     "alias": "AB",
+     "path": "V/SourceHamiltonianSpectralMeasure.lean",
+     "blob": "c1b48f3bd9bdb81b619cf579d419e80d59e80382",
+     "read": "lines 19-247"
+    },
+    {
+     "result": "§6.9末 全时响应",
+     "alias": "AB",
+     "path": "V/SourceBoundedInsertionTime.lean",
+     "blob": "9ee5ec333e65882f5fb488aa8c5c4e6dbf8e6723",
+     "read": "lines 12-48"
+    },
+    {
+     "result": "定理6.10(1) 对电流",
+     "alias": "AB",
+     "path": "A/CanonicalPreparationElectricPairCurrent.lean",
+     "blob": "b415a72f7cc4113a64d6ff84cf6acbefb7cea52f",
+     "read": "lines 20-80"
+    },
+    {
+     "result": "定理6.10(2) 完整Ward",
+     "alias": "AB",
+     "path": "A/CanonicalPreparationElectricCoreWard.lean",
+     "blob": "2dc2181b6e6a615dd7f89c73caabe4f64a3e7940",
+     "read": "lines 19-100"
+    },
+    {
+     "result": "定理6.10(3) 加权图",
+     "alias": "AB",
+     "path": "A/CanonicalPreparationElectricWeightedGraph.lean",
+     "blob": "b0e23dc252cf6343931456ae0b797061b8ee77de",
+     "read": "lines 20-115"
+    },
+    {
+     "result": "定理6.10(2) 双腿读数",
+     "alias": "AB",
+     "path": "A/CanonicalPreparationElectricPreparedWard.lean",
+     "blob": "f5d28c95c5d50458b34271917cbd629ba8f8ba74",
+     "read": "lines 21-134"
+    },
+    {
+     "result": "定理6.10(3) 全局荷",
+     "alias": "AB",
+     "path": "A/CanonicalPreparationTemporalGlobalCharge.lean",
+     "blob": "65ce1c27d80cbf7dc5a1bebe396ad64ffa1fe325",
+     "read": "lines 29-112"
+    },
+    {
+     "result": "定理6.9(1)(4) 共同场",
+     "alias": "AC",
+     "path": "A/CanonicalPreparationSpatialFullFormFeed.lean",
+     "blob": "f024171b9e9ba4b36ebf9ef2836aef0628f6cb16",
+     "read": "declaration list"
+    },
+    {
+     "result": "定理6.8(3) 同一源准备的存在性机制",
+     "alias": "AB",
+     "path": "A/BoundedRemainder.lean",
+     "blob": "44e804ff10dfa77ddef0208bb3c6a04d8f20952c",
+     "read": "160–211"
+    },
+    {
+     "result": "定理6.7(1)(2) 三稳定子与相空间图（K6–K7）",
+     "alias": "5a-f9b73392",
+     "path": "V/source_quantum_stabilizer.py 与 source_stabilizer_phase_reduction.py（含同名 independent_*）",
+     "blob": "9ab4c988a880;71ff3a775e77;548a9b34535c;2a0e7b7c069d",
+     "read": "claims-ledger cross-check + 生产口登记"
+    },
+    {
+     "result": "定理6.7(2) 量子截面、测度相消、半密度（K8）",
+     "alias": "5a-6726f385",
+     "path": "V/source_{quantum_gauss_section,gauss_section_measure,full_gauss_section}.py",
+     "blob": "d1184c2bd5b3;dd4a21a13415;cfa2fcacc980",
+     "read": "claims-ledger cross-check"
+    },
+    {
+     "result": "定理6.7(2) 四时间 Weyl 表示（K10）",
+     "alias": "5a-6726f385",
+     "path": "V/source_{coframe,scalar,common}_weyl_symbol.py",
+     "blob": "3f89e7032364;2b857aa77bb3;5088ebfa41ed",
+     "read": "claims-ledger cross-check"
+    },
+    {
+     "result": "定理6.7(2) 全部正则运动端口（K12）",
+     "alias": "5a-eec031c4",
+     "path": "V/source_joint_ccr_car_ports.py 与 JointCCRCarPorts.lean",
+     "blob": "7e956f074564;1f5b511a7f9b;7f52cbd53433",
+     "read": "claims-ledger cross-check"
+    }
+   ],
+   "closure_supplements": [
+    "serialized-generated-modules"
+   ]
+  },
+  {
+   "id": "phys.P27",
+   "paper": "physics-common-source",
+   "status": "selected",
+   "title": "原完整289 Green进入真实有限窗场反馈",
+   "statement": "同一空间半密度与完整配置积分→共同Field289真C²/对称Hessian→同准备双36的1296格混合响应；母raw −4W·DH与完整密度contact→五项时间导数→原289 Green（九零方向残差）→真实物理有限窗场导数。",
+   "quantifiers_premises": "每个有限源指标F与原非实物质谱参数保持；物理Laplace参数独立。",
+   "text_location": {
+    "zh": "§6.12 定理6.12(1)",
+    "en": "§6.12 Theorem 6.12(1)"
+   },
+   "written_proof": "supplement S6(1)",
+   "source": {
+    "alias": "AC",
+    "commit": "b67aa48c75b3cd7738766ed40093bb3f7c1d7a1a"
+   },
+   "producers": [
+    {
+     "path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSpatialFullFormFeed.lean",
+     "decls": [
+      "completeForm_source"
+     ]
+    },
+    {
+     "path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationJointMixedResponse.lean",
+     "decls": [
+      "mixedCurvatureMatrix_generated"
+     ]
+    },
+    {
+     "path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationRawJointFiveTerms.lean",
+     "decls": [
+      "eulerCovector_generated"
+     ]
+    },
+    {
+     "path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationOriginalPreparedGreen.lean",
+     "decls": [
+      "original_green_equation"
+     ]
+    },
+    {
+     "path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationPhysicalFeedbackField.lean",
+     "decls": [
+      "physicalField_generated"
+     ]
+    }
+   ],
+   "direct_consumers": [],
+   "detailed_in": [
+    "constrained-local-quantum K29–K33",
+    "composite-source-response D33–D38"
+   ],
+   "h0mework": {
+    "status": "bound@234817b3",
+    "accepted_commit": "234817b3c3f7a1023226e7a4fdb8660ddcbc9d0a",
+    "map": "docs/first-release-map.json",
+    "claim_id": "phys.P27"
+   },
+   "audited_files": [
+    {
+     "result": "定理6.12(1) 混合响应",
+     "alias": "AC",
+     "path": "A/CanonicalPreparationJointMixedResponse.lean",
+     "blob": "8fee1ac68513d805d44108e19a8c3ccdb9c9e174",
+     "read": "declaration list"
+    },
+    {
+     "result": "定理6.12(1) 五项核",
+     "alias": "AC",
+     "path": "A/CanonicalPreparationRawJointFiveTerms.lean",
+     "blob": "f8aa4ae4bf49baa6daad7070fc18813d495b534e",
+     "read": "declaration list"
+    },
+    {
+     "result": "定理6.12(4) 原Green等式",
+     "alias": "AC",
+     "path": "A/CanonicalPreparationOriginalPreparedGreen.lean",
+     "blob": "3f3d3b818e11e32112a3dd5d9c9a09806cea7796",
+     "read": "declaration list + lines 50-95"
+    },
+    {
+     "result": "定理6.12(1) 物理反馈场",
+     "alias": "AC",
+     "path": "A/CanonicalPreparationPhysicalFeedbackField.lean",
+     "blob": "f01b54d2a5a8bf82590211152bab84166dc5ca82",
+     "read": "declaration list"
+    }
+   ],
+   "closure_supplements": [
+    "serialized-generated-modules"
+   ]
+  },
+  {
+   "id": "phys.P28",
+   "paper": "physics-common-source",
+   "status": "selected",
+   "title": "观测生成的完整源切片与全盒严格更新",
+   "statement": "五训练中心与joint11原区间生成完整合法源切片并预测两整格留出；双路69段保两boundary；整±0.05°角盒上Bcommon −0.01°有限更新有双路一致严格raw CH增益及独立Fock端点。",
+   "quantifiers_premises": "公开配置公式不代替全域argmax。",
+   "text_location": {
+    "zh": "§9.2 观测生成源切片与 Bob 两角更新段",
+    "en": "§9.2 observation-generated slice and Bob two-angle update paragraph"
+   },
+   "written_proof": "manuscript §9.2；supplement S9.2(d)",
+   "source": {
+    "alias": "AC",
+    "commit": "b67aa48c75b3cd7738766ed40093bb3f7c1d7a1a"
+   },
+   "producers": [
+    {
+     "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/ScalarFiberConsumer.lean",
+     "decls": [
+      "source_fiber_generates_seed_and_windows"
+     ]
+    }
+   ],
+   "direct_consumers": [],
+   "detailed_in": [
+    "bell-source-calibration BL9–BL12"
+   ],
+   "data_receipts": [
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/verification.json",
+    "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/receiver-verification.json"
+   ],
+   "h0mework": {
+    "status": "bound@234817b3",
+    "accepted_commit": "234817b3c3f7a1023226e7a4fdb8660ddcbc9d0a",
+    "map": "docs/first-release-map.json",
+    "claim_id": "phys.P28"
+   },
+   "audited_files": [
+    {
+     "result": "命题9.1/§9.2 AC切片",
+     "alias": "AC",
+     "path": "O/ScalarFiberConsumer.lean",
+     "blob": "386dec334127fc350d61c96da95c1719991fcb7b",
+     "read": "declaration list"
+    },
+    {
+     "result": "命题9.1/§9.2 AC切片",
+     "alias": "AC",
+     "path": "O/ScalarFiber.lean",
+     "blob": "6df1c5d30f393a3b4c8f609576edf03fa72e9ae4",
+     "read": "declaration list"
+    },
+    {
+     "result": "命题9.1/§9.2 AC切片",
+     "alias": "AC",
+     "path": "O/ObservableClosure.lean",
+     "blob": "df9b4d08b0b2024895b6ae34a5f91c64c3adfd21",
+     "read": "declaration list"
+    },
+    {
+     "result": "命题9.1/§9.2 AC切片",
+     "alias": "AC",
+     "path": "O/ClosureConsumer.lean",
+     "blob": "63ed753a159257bbfa7c6c189a09d431145790fb",
+     "read": "declaration list"
+    },
+    {
+     "result": "§9.2 AC切片文档",
+     "alias": "AC",
+     "path": "O/README.md",
+     "blob": "07cbfea5da4fe252b4f5fe913b355d0bce553047",
+     "read": "full"
+    },
+    {
+     "result": "§9.2 AC切片判据",
+     "alias": "AC",
+     "path": "O/criterion-ef0002.md",
+     "blob": "aaffc5e525dbbb6e39bed38ebb8799854cd27c7b",
+     "read": "full"
+    },
+    {
+     "result": "§9.2 AC切片回执",
+     "alias": "AC",
+     "path": "O/verification.json",
+     "blob": "da67a85f372ab76c032a991c82f70ae7d3c4a495",
+     "read": "ranges"
+    },
+    {
+     "result": "§9.2 AC切片回执",
+     "alias": "AC",
+     "path": "O/slice-primary.json",
+     "blob": "2050a04a1a46142e411d1a65de190bd196a6a274",
+     "read": "ranges"
+    },
+    {
+     "result": "§9.2 AC切片回执",
+     "alias": "AC",
+     "path": "O/independent-slice.json",
+     "blob": "9dd5c167f4d2040f76ae70a06fa56fafb0183ff3",
+     "read": "ranges"
+    },
+    {
+     "result": "§9.2 AC切片回执",
+     "alias": "AC",
+     "path": "O/cross-receipt.json",
+     "blob": "511cef29a5ce1198a81e9b67209ac71885f758ee",
+     "read": "ranges"
+    },
+    {
+     "result": "§9.2 AC接收器更新",
+     "alias": "AC",
+     "path": "O/receiver-criterion.md",
+     "blob": "c3d3e8971019c63e1996ceb850d901ea92ba45ff",
+     "read": "full"
+    },
+    {
+     "result": "§9.2 AC接收器更新",
+     "alias": "AC",
+     "path": "O/receiver-verification.json",
+     "blob": "42c92bbb9cf11b20618d0b83f1ec9411c4af86bd",
+     "read": "ranges"
+    },
+    {
+     "result": "§9.2 AC接收器更新",
+     "alias": "AC",
+     "path": "O/receiver-independent-stable.json.gz",
+     "blob": "93351bb23e8279f671fc53604660e5167755d2df",
+     "read": "ranges(gzip解压后)"
+    }
+   ]
+  },
+  {
+   "id": "phys.P29",
+   "paper": "physics-common-source",
+   "status": "selected",
+   "title": "母作用认回同一个H289与全部Euler",
+   "statement": "既有repaired原作用的实际九组场提升、独立dual与一jet密度生成真Fréchet Hessian；原四block源字典对任意四复动量证明其Fourier Hessian等于同一原H289；原辅助图、全Number Legendre/quartic、独立Noether动量与全289 holonomic Euler认回原九组母残差；同一Green/九相容/36曲率实际消费。",
+   "quantifiers_premises": "旧Jacobi/Factorization/Green生产字节未更换。",
+   "text_location": {
+    "zh": "§6.11 定理6.11",
+    "en": "§6.11 Theorem 6.11"
+   },
+   "written_proof": "supplement S5",
+   "source": {
+    "alias": "AD",
+    "commit": "aef0ad2a26199d9fd6da9bc9e7ec1a65636ef63f"
+   },
+   "producers": [
+    {
+     "path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalSourcePropagationOriginalHessianReturn.lean",
+     "decls": [
+      "nativeActionFourierHessian_original"
+     ]
+    },
+    {
+     "path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalSourcePropagationPreparedMotherEulerReturn.lean"
+    }
+   ],
+   "direct_consumers": [
+    {
+     "path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSourceCurrentFieldSquare.lean"
+    }
+   ],
+   "detailed_in": [
+    "constrained-local-quantum K34–K38, K43"
+   ],
+   "h0mework": {
+    "status": "bound@234817b3",
+    "accepted_commit": "234817b3c3f7a1023226e7a4fdb8660ddcbc9d0a",
+    "map": "docs/first-release-map.json",
+    "claim_id": "phys.P29"
+   },
+   "audited_files": [
+    {
+     "result": "定理6.11 母Hessian",
+     "alias": "AD",
+     "path": "A/CanonicalSourcePropagationOriginalHessianReturn.lean",
+     "blob": "866b38690caba627adb930abea0f31f8e7993a23",
+     "read": "declaration list + 图文档核对(234/406/220/790、1650→3300→3071)"
+    },
+    {
+     "result": "定理6.11/6.12 母Euler返回",
+     "alias": "AD",
+     "path": "A/CanonicalSourcePropagationPreparedMotherEulerReturn.lean",
+     "blob": "620bbbeb55a6dc291b4ef02d45b94f089a06c1e7",
+     "read": "declaration list"
+    },
+    {
+     "result": "定理6.11 Fourier 归并的实际判定",
+     "alias": "AD",
+     "path": "A/CanonicalSourcePropagationNativeOriginalDictionaryIdentity.lean",
+     "blob": "5ee134af0f0253990a7c1ac8ccb36c9e4c032006",
+     "read": "full (36 lines)"
+    }
+   ],
+   "closure_supplements": [
+    "serialized-generated-modules"
+   ]
+  },
+  {
+   "id": "phys.P30",
+   "paper": "physics-common-source",
+   "status": "selected",
+   "title": "原完整时间支付半轴、谱轴与实际变背景",
+   "statement": "actual C＋uncutRetainer的全载体演化多项式界给Reλ>0完整正半轴、末端消失与显式指数尾；双侧时间生成两半面双逆、真实谱轴与零转移实际谱点；共同动量载体仿射pencil与真实Field289逆为给定C¹历史生成非自治双腿、真振幅导数与原prepared Euler返回。",
+   "quantifiers_premises": "每个原F、源时间范围、prepared读口与field determinant保各自量词。",
+   "text_location": {
+    "zh": "§6.12 定理6.12(2)–(4)",
+    "en": "§6.12 Theorem 6.12(2)–(4)"
+   },
+   "written_proof": "supplement S6(2)–(4)",
+   "source": {
+    "alias": "AD",
+    "commit": "aef0ad2a26199d9fd6da9bc9e7ec1a65636ef63f"
+   },
+   "producers": [
+    {
+     "path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationPhysicalFullHalfAxis.lean"
+    },
+    {
+     "path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationPhysicalControlledFieldTail.lean"
+    },
+    {
+     "path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalSourcePropagationActualNativeHistoryReturn.lean"
+    }
+   ],
+   "direct_consumers": [],
+   "detailed_in": [
+    "constrained-local-quantum K39–K43",
+    "composite-source-response D39–D45"
+   ],
+   "h0mework": {
+    "status": "bound@234817b3",
+    "accepted_commit": "234817b3c3f7a1023226e7a4fdb8660ddcbc9d0a",
+    "map": "docs/first-release-map.json",
+    "claim_id": "phys.P30"
+   },
+   "audited_files": [
+    {
+     "result": "定理6.12(2) 完整半轴",
+     "alias": "AD",
+     "path": "A/CanonicalPreparationPhysicalFullHalfAxis.lean",
+     "blob": "0cbfe9ed00f4340169820ccf0d99e5191ca16e78",
+     "read": "ranges"
+    },
+    {
+     "result": "定理6.12(1)(2) 受控尾",
+     "alias": "AD",
+     "path": "A/CanonicalPreparationPhysicalControlledFieldTail.lean",
+     "blob": "0c058a187173f1b4c15c5410cc44b7638e6d3f20",
+     "read": "ranges"
+    },
+    {
+     "result": "定理6.12(4) 原生历史返回",
+     "alias": "AD",
+     "path": "A/CanonicalSourcePropagationActualNativeHistoryReturn.lean",
+     "blob": "faa6876f333935ddc8b5f869a6c4c6c331f5fbd8",
+     "read": "ranges"
+    },
+    {
+     "result": "定理6.12(2) 57 项多项式时间界",
+     "alias": "AD",
+     "path": "A/CanonicalPhysicalLaplace.lean",
+     "blob": "cdd8ff8b087dbe2b130b730a18cd463f6b6d3036",
+     "read": "statement list"
+    },
+    {
+     "result": "定理6.12(2) 物理时间多项式/源增长/包络/分级混合",
+     "alias": "AD",
+     "path": "A/CanonicalPreparationPhysical{TimePolynomial,SourceGrowth,ActualEnvelopes}.lean 与 CanonicalGradedMixed.lean",
+     "blob": "a623f6189ae9ea58d7ddc849dc784139f1a1950d;e6b8de984de2a8ab8e7d02ac203bd4a5c0937200;8fe0c9ad04d1bb9898e224039c69d9377a1b9a0e;929fcf5d283fbd590e08657be8307d7323ca3e7a",
+     "read": "statement list + key lines"
+    },
+    {
+     "result": "定理6.12(4) 实际变背景与有序历史返回",
+     "alias": "AD",
+     "path": "A/CanonicalSourcePropagation{ActualBackgroundEvolution,ActualPreparedHistoryVariation}.lean",
+     "blob": "d12d340438c5b963a481da4086a5258e1c4aa6f5;0eed0eb2d8e7b848e6400618228da10b2b46b17e",
+     "read": "statement list"
+    }
+   ],
+   "closure_supplements": [
+    "serialized-generated-modules"
+   ]
+  },
+  {
+   "id": "phys.P31",
+   "paper": "physics-common-source",
+   "status": "selected",
+   "title": "光学完整源域与公开联合95%严格正CH",
+   "statement": "全single误差区间＋共同相位自产完整光学source；Pol⊗Env给全n效果与matched无限Born；完整多窗source域；联合95%域消费实际setting曝光与完整outcome，有8个Γ/Fock成员、连续外覆盖，并∀接受源CH_N5>1.3790180504×10⁻⁶。",
+   "quantifiers_premises": "数学source proof、既有科学运行与联合预算各保身份。",
+   "text_location": {
+    "zh": "§9.2 命题9.1",
+    "en": "§9.2 Proposition 9.1"
+   },
+   "written_proof": "supplement S9.1",
+   "source": {
+    "alias": "AD",
+    "commit": "aef0ad2a26199d9fd6da9bc9e7ec1a65636ef63f"
+   },
+   "producers": [
+    {
+     "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/full-statistical-fiber/"
+    },
+    {
+     "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/observable-closure/environment-source/"
+    },
+    {
+     "path": "Verification/physics/stage10/independent-bell/nist-real/nominal-replay/public-review/source-compression/"
+    }
+   ],
+   "direct_consumers": [],
+   "detailed_in": [
+    "bell-source-calibration BL13–BL18"
+   ],
+   "data_receipts": [
+    "source-compression-verification.json",
+    "complete-review-final.json"
+   ],
+   "h0mework": {
+    "status": "bound@234817b3",
+    "accepted_commit": "234817b3c3f7a1023226e7a4fdb8660ddcbc9d0a",
+    "map": "docs/first-release-map.json",
+    "claim_id": "phys.P31"
+   },
+   "audited_files": [
+    {
+     "result": "命题9.1(1) 完整源纤维",
+     "alias": "AD",
+     "path": "O/full-statistical-fiber/README.md",
+     "blob": "038b45f862a93eee840e26a1d0e47b6a0d26e092",
+     "read": "full"
+    },
+    {
+     "result": "命题9.1(1) 相位纤维",
+     "alias": "AD",
+     "path": "O/full-statistical-fiber/PhaseFiber.lean",
+     "blob": "c03815f8fbc9eeb1f4330567db935b1757d80d66",
+     "read": "declaration list"
+    },
+    {
+     "result": "命题9.1(1) 均值图",
+     "alias": "AD",
+     "path": "O/full-statistical-fiber/TrainingChart.lean",
+     "blob": "bf225ee2372bb7f5a7c6b8555f74553696cb02c2",
+     "read": "declaration list"
+    },
+    {
+     "result": "命题9.1(1) 协方差源",
+     "alias": "AD",
+     "path": "O/full-statistical-fiber/CovarianceSource.lean",
+     "blob": "a884e4b4747f3cba66748a53767b5294fbbd76aa",
+     "read": "declaration list"
+    },
+    {
+     "result": "命题9.1(1) 协方差认证",
+     "alias": "AD",
+     "path": "O/full-statistical-fiber/CovarianceSourceCertification.lean",
+     "blob": "b1e5ce0a032926c50ec0f3dca079d04e9859f33b",
+     "read": "declaration list"
+    },
+    {
+     "result": "命题9.1(1) 相位认证",
+     "alias": "AD",
+     "path": "O/full-statistical-fiber/PhaseCertification.lean",
+     "blob": "f9de9f31d9fbf8ae373b805893e056af888f33ea",
+     "read": "declaration list"
+    },
+    {
+     "result": "命题9.1(2) 环境端口",
+     "alias": "AD",
+     "path": "O/environment-source/README.md",
+     "blob": "528c32cb3dda6a8e74050e7d2c4e8d8fe90f2c2c",
+     "read": "full"
+    },
+    {
+     "result": "命题9.1(2) 环境端口",
+     "alias": "AD",
+     "path": "O/environment-source/MatchedSource.lean",
+     "blob": "a4125e6325af9ae38158e82721026d020df45739",
+     "read": "declaration list"
+    },
+    {
+     "result": "命题9.1(2) 环境端口",
+     "alias": "AD",
+     "path": "O/environment-source/EnvironmentSource.lean",
+     "blob": "7d19251fdf383fef4940916320d20022e99bbcd3",
+     "read": "declaration list"
+    },
+    {
+     "result": "命题9.1(2) 扇区源",
+     "alias": "AD",
+     "path": "O/environment-source/SectorSource.lean",
+     "blob": "610a98dab89467c146bfbab3f531e7016d39bd73",
+     "read": "declaration list"
+    },
+    {
+     "result": "命题9.1(4) 联合95%域",
+     "alias": "AD",
+     "path": "N/public-review/source-compression/README.md",
+     "blob": "bd8f4cb84d3a4018665297fe157a178b189ddd3b",
+     "read": "lines 1-60"
+    },
+    {
+     "result": "命题9.1(4) 归一化支持",
+     "alias": "AD",
+     "path": "N/public-review/source-compression/NormalizedSourceBet.lean",
+     "blob": "e66f123d0d7e882c58788f9605f63e5f9000a00f",
+     "read": "declaration list"
+    },
+    {
+     "result": "命题9.1(5) 公开审查",
+     "alias": "AD",
+     "path": "N/public-review/README.md",
+     "blob": "b9693a0dc2140dcf2d9197b1d9fbc4c6055d27ed",
+     "read": "ranges"
+    }
+   ]
+  },
+  {
+   "id": "phys.P32",
+   "paper": "physics-common-source",
+   "status": "selected",
+   "title": "理论预测、原子仪器域与参数逆读",
+   "statement": "SpinPair source/current/next生成全部合法XZ族、统一Tsirelson界及达到2√2的32格零经验输入构造；Munich两run各有合法primitive witness，全部20,403原序前缀通过联合1/20合同，April理想面拒绝保持；最大商、全部正则两尺度纤维、近锐范围与整个置信域八项共享响应界。",
+   "quantifiers_premises": "构造盲性、经验相容与参数非唯一是不同结果。",
+   "text_location": {
+    "zh": "§7.4；§9.2 命题9.2(1)(2)(4)(5)",
+    "en": "§7.4; §9.2 Proposition 9.2(1)(2)(4)(5)"
+   },
+   "written_proof": "supplement S9.3",
+   "source": {
+    "alias": "AD",
+    "commit": "aef0ad2a26199d9fd6da9bc9e7ec1a65636ef63f"
+   },
+   "producers": [
+    {
+     "path": "Lean/SaturationMonoid/PhysicsCore/Stage10/Bell/TheoryBlind.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/PhysicsCore/Stage10/Bell/ReadoutEffects.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/PhysicsCore/Stage10/Bell/ReadoutIdentification.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/PhysicsCore/Stage10/Bell/ReadoutResponseBounds.lean"
+    }
+   ],
+   "direct_consumers": [],
+   "detailed_in": [
+    "bell-readout-identification BE1–BE7"
+   ],
+   "data_receipts": [
+    "Verification/physics/stage10/independent-bell/munich/readout-domain/"
+   ],
+   "h0mework": {
+    "status": "bound@234817b3",
+    "accepted_commit": "234817b3c3f7a1023226e7a4fdb8660ddcbc9d0a",
+    "map": "docs/first-release-map.json",
+    "claim_id": "phys.P32"
+   },
+   "audited_files": [
+    {
+     "result": "命题9.2(1) 预测锁",
+     "alias": "AD",
+     "path": "B/TheoryBlind.lean",
+     "blob": "e81e546c16b6d96cb34b167278fee600fee12792",
+     "read": "declaration list"
+    },
+    {
+     "result": "命题9.2(2) 读出域",
+     "alias": "AD",
+     "path": "B/ReadoutEffects.lean",
+     "blob": "b5744db5bae4d946c87e685dc50ef6e1d6f4873c",
+     "read": "lines 31-267"
+    },
+    {
+     "result": "命题9.2(4) 同律与纤维",
+     "alias": "AD",
+     "path": "B/ReadoutIdentification.lean",
+     "blob": "778e1a620b4c8b01f68dcf695f26f5769117412e",
+     "read": "declaration list"
+    },
+    {
+     "result": "命题9.2(5) 响应界",
+     "alias": "AD",
+     "path": "B/ReadoutResponseBounds.lean",
+     "blob": "8e43e9eed43cd1ff9274a37bcd8b3ab0ea73aa3f",
+     "read": "declaration list"
+    }
+   ]
+  },
+  {
+   "id": "phys.P33",
+   "paper": "physics-common-source",
+   "status": "selected",
+   "title": "原实电流：半轴算子、源生双逆与未清静态留数",
+   "statement": "同QC19准备的完整Field289 real CLM有算子范数窗口→半轴价格；原两quadrature实Fourier signal与0/1/2时间jet进入actual有序history、母Euler与因果反馈；源生λ=3实例给非空开放regular域、双逆与唯一fixed point；八维moving pole、同Gauss准备与非零pole defect经Duhamel/dressed返回原H；五origin/98补空间给全四动量Schur与未清场κ⁻²系数；固定forcing的staticApproach留数极限、actual current点价格与Abel读数各保量词；N1 history/normal Ward同源消费。",
+   "quantifiers_premises": "原初值cosource与九残差保留。",
+   "text_location": {
+    "zh": "§6.12 定理6.12(5)；§6.13 定理6.13(3) 固定 forcing 与实际电流留数、(5) 带权 Ward 形式",
+    "en": "§6.12 Theorem 6.12(5); §6.13 Theorem 6.13(3) fixed-forcing and actual-current residue, (5) weighted Ward form"
+   },
+   "written_proof": "supplement S6(5)、S7(3)(5)",
+   "source": {
+    "alias": "AE",
+    "commit": "26b91feb6b507fdc3f43be9c429edb63fb9395ef"
+   },
+   "producers": [
+    {
+     "path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSourceHalfAxisCurrentOperator.lean"
+    },
+    {
+     "path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSourceHalfAxisFieldOperator.lean"
+    },
+    {
+     "path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSourceNativeFourierHistory.lean"
+    },
+    {
+     "path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSourceOrderedSignalOperator.lean"
+    },
+    {
+     "path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSourceSignalCausalResponse.lean"
+    },
+    {
+     "path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSourcePreparedSignalEuler.lean"
+    },
+    {
+     "path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSourceCurrentFeedbackAdjugate.lean"
+    },
+    {
+     "path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSourceAnalyticRegularPoint.lean"
+    },
+    {
+     "path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSourceMovingPoleCurrent.lean"
+    },
+    {
+     "path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSourceMovingPoleGaussPreparation.lean"
+    },
+    {
+     "path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSourceMovingPoleGaussVertex.lean"
+    },
+    {
+     "path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSourceQuantumPoleDuhamel.lean"
+    },
+    {
+     "path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSourcePhysicalPoleDressedReturn.lean"
+    },
+    {
+     "path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSourcePhysicalPolePreparedReturn.lean"
+    },
+    {
+     "path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSourceFullOriginCurrent.lean"
+    },
+    {
+     "path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSourceFullOriginInverse.lean"
+    },
+    {
+     "path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSourceFullOriginSchur.lean"
+    },
+    {
+     "path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSourceStaticOriginalGreen.lean"
+    },
+    {
+     "path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSourceStaticPoleDomain.lean"
+    },
+    {
+     "path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSourceStaticActualPole.lean"
+    },
+    {
+     "path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSourceModeCurrent.lean"
+    },
+    {
+     "path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSourceN1Dynamics.lean"
+    },
+    {
+     "path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSourceN1NormalWard.lean"
+    },
+    {
+     "path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSourceN1Prepared.lean"
+    },
+    {
+     "path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSourceWholeCurrent.lean"
+    }
+   ],
+   "direct_consumers": [],
+   "detailed_in": [
+    "constrained-local-quantum K44–K52",
+    "matter-selection S11–S13"
+   ],
+   "h0mework": {
+    "status": "bound@234817b3",
+    "accepted_commit": "234817b3c3f7a1023226e7a4fdb8660ddcbc9d0a",
+    "map": "docs/first-release-map.json",
+    "claim_id": "phys.P33"
+   },
+   "audited_files": [
+    {
+     "result": "定理6.12(5) 半轴电流算子",
+     "alias": "AE",
+     "path": "A/CanonicalPreparationSourceHalfAxisCurrentOperator.lean",
+     "blob": "624c15afd6c6b63bb549cad00baa5942ec6f6345",
+     "read": "declaration list"
+    },
+    {
+     "result": "定理6.12(5) 半轴场算子",
+     "alias": "AE",
+     "path": "A/CanonicalPreparationSourceHalfAxisFieldOperator.lean",
+     "blob": "d28091ecf4f79824b12b847a17ce571647411fd0",
+     "read": "declaration list"
+    },
+    {
+     "result": "定理6.12(3)(4) 半轴pencil",
+     "alias": "AE",
+     "path": "A/CanonicalPreparationPropagationHalfAxisPencil.lean",
+     "blob": "2e1322693cb2ca5dd6a67cc9e17a2ab2e0ccb3d1",
+     "read": "lines 107-185"
+    },
+    {
+     "result": "定理6.12(4) pencil动力学",
+     "alias": "AE",
+     "path": "A/CanonicalPreparationPropagationPencilDynamics.lean",
+     "blob": "8e5bfcaecf9cecbe07b61c979f492856138ecf8f",
+     "read": "lines 60-135"
+    },
+    {
+     "result": "定理6.12(3) 谱轴读回",
+     "alias": "AE",
+     "path": "A/CanonicalSourcePropagationAxisReadback.lean",
+     "blob": "1982e1ea6fcf625c9d3c116f563b90702bf93d18",
+     "read": "declaration list"
+    },
+    {
+     "result": "定理6.12(3) 谱逆",
+     "alias": "AE",
+     "path": "A/CanonicalSourcePropagationSourceSpectralInverse.lean",
+     "blob": "ea2060823a7bca18227abd66de7646b876ff57eb",
+     "read": "declaration list"
+    },
+    {
+     "result": "定理6.12(3) 全预解式",
+     "alias": "AE",
+     "path": "A/CanonicalSourcePropagationWholeResolvent.lean",
+     "blob": "dd1fba4c948de1302d81b28238d419c859f49d89",
+     "read": "declaration list"
+    },
+    {
+     "result": "定理6.12(5) 原生Fourier历史",
+     "alias": "AE",
+     "path": "A/CanonicalPreparationSourceNativeFourierHistory.lean",
+     "blob": "359fe0083ce17db8719b0eaa931ba23473ca418a",
+     "read": "declaration list"
+    },
+    {
+     "result": "定理6.12(5) 因果响应",
+     "alias": "AE",
+     "path": "A/CanonicalPreparationSourceSignalCausalResponse.lean",
+     "blob": "e12f95306481c4d31b7e52eed5af1c46240392dd",
+     "read": "declaration list"
+    },
+    {
+     "result": "定理6.12(5) 反馈伴随",
+     "alias": "AE",
+     "path": "A/CanonicalPreparationSourceCurrentFeedbackAdjugate.lean",
+     "blob": "16f21aaf25dec26f16afd57a05338066319b9abb",
+     "read": "lines 15-85"
+    },
+    {
+     "result": "定理6.12(5) 解析正则点",
+     "alias": "AE",
+     "path": "A/CanonicalPreparationSourceAnalyticRegularPoint.lean",
+     "blob": "5bbf0a99f901271597f8efde82129f8ef6a8a9f3",
+     "read": "lines 26-340"
+    },
+    {
+     "result": "定理6.13 Schur",
+     "alias": "AE",
+     "path": "A/CanonicalPreparationSourceFullOriginSchur.lean",
+     "blob": "a086eeb0f7919333f98cfead26f52c034c62eb60",
+     "read": "ranges"
+    },
+    {
+     "result": "定理6.13 原点逆",
+     "alias": "AE",
+     "path": "A/CanonicalPreparationSourceFullOriginInverse.lean",
+     "blob": "65341a74eebb0384b2d1f9d6be9daec89fd647b2",
+     "read": "declaration list"
+    },
+    {
+     "result": "定理6.13(4)(5) 全原点电流",
+     "alias": "AE",
+     "path": "A/CanonicalPreparationSourceFullOriginCurrent.lean",
+     "blob": "f961424ddb6344c8437bffff17351363819d0291",
+     "read": "declaration list + lines 22-275"
+    },
+    {
+     "result": "定理6.13(3) 静态极点域",
+     "alias": "AE",
+     "path": "A/CanonicalPreparationSourceStaticPoleDomain.lean",
+     "blob": "45ca8fc1139b6d99ab6c68c220ce2dc7e5240d8b",
+     "read": "lines 15-255"
+    },
+    {
+     "result": "定理6.13(3) 静态原Green",
+     "alias": "AE",
+     "path": "A/CanonicalPreparationSourceStaticOriginalGreen.lean",
+     "blob": "607a18b5f449c65e3a80bdb61e5818945d8e1a37",
+     "read": "lines 19-85"
+    },
+    {
+     "result": "定理6.13(3) 静态留数",
+     "alias": "AE",
+     "path": "A/CanonicalPreparationSourceStaticActualPole.lean",
+     "blob": "95408a53cf3cb06f3895d409511481408c3b5b2b",
+     "read": "lines 24-290"
+    },
+    {
+     "result": "定理6.13(1)(2) 模式电流",
+     "alias": "AE",
+     "path": "A/CanonicalPreparationSourceModeCurrent.lean",
+     "blob": "f9949d3defba4736e472187ff089c38cf7c51d11",
+     "read": "lines 53-240"
+    },
+    {
+     "result": "定理6.13(1) moving极点电流",
+     "alias": "AE",
+     "path": "A/CanonicalPreparationSourceMovingPoleCurrent.lean",
+     "blob": "b7a730c8a4db67d17bda1a604cb5165b59a2c213",
+     "read": "declaration list"
+    },
+    {
+     "result": "定理6.13(1) moving Gauss准备",
+     "alias": "AE",
+     "path": "A/CanonicalPreparationSourceMovingPoleGaussPreparation.lean",
+     "blob": "726a612ec98807378cbadc6d97ea0fd973ae0e31",
+     "read": "declaration list"
+    },
+    {
+     "result": "定理6.13(1) moving Gauss顶点",
+     "alias": "AE",
+     "path": "A/CanonicalPreparationSourceMovingPoleGaussVertex.lean",
+     "blob": "90b4269987bb92c321efec728780bfc15a8563e6",
+     "read": "declaration list"
+    },
+    {
+     "result": "定理6.13(4)(5) N1准备",
+     "alias": "AE",
+     "path": "A/CanonicalPreparationSourceN1Prepared.lean",
+     "blob": "8a96287948b7d774150a0c4440b76716bf80f94e",
+     "read": "declaration list"
+    },
+    {
+     "result": "定理6.13(4)(5) N1 Ward",
+     "alias": "AE",
+     "path": "A/CanonicalPreparationSourceN1NormalWard.lean",
+     "blob": "a6f6c14658212c6a88719ec8c71c127ad66e3128",
+     "read": "lines 64-250"
+    },
+    {
+     "result": "定理6.13(4) N1动力学",
+     "alias": "AE",
+     "path": "A/CanonicalPreparationSourceN1Dynamics.lean",
+     "blob": "738e35decf2536d04543eea71528011e0007659c",
+     "read": "declaration list"
+    },
+    {
+     "result": "定理6.13(4) 约束行114",
+     "alias": "AE",
+     "path": "A/CanonicalPreparationSourceConstraintRead.lean",
+     "blob": "95f0743aa426df039b5f2eadf96d4162e8283819",
+     "read": "lines 60-133"
+    },
+    {
+     "result": "定理6.13(4) 约束边界",
+     "alias": "AE",
+     "path": "A/CanonicalPreparationSourceConstraintBoundary.lean",
+     "blob": "c50cad47a46e04ef17192ae6b0becd07e17024d5",
+     "read": "ranges"
+    },
+    {
+     "result": "定理6.13(5) 色Ward边界",
+     "alias": "AE",
+     "path": "A/CanonicalPreparationSourceColorBoundaryWard.lean",
+     "blob": "88a9be6dea9e3b331834ed417b188f46a268056a",
+     "read": "lines 183-200"
+    },
+    {
+     "result": "定理6.12/6.13 辅助文件",
+     "alias": "AE",
+     "path": "A/CanonicalPreparationSourceOrderedSignalOperator.lean",
+     "blob": "6049e0f4ba6e202a1bc1caf0fdd37e91793ff8ca",
+     "read": "declaration list"
+    },
+    {
+     "result": "定理6.12/6.13 极点返回",
+     "alias": "AE",
+     "path": "A/CanonicalPreparationSourcePhysicalPoleDressedReturn.lean",
+     "blob": "557238531984dc831a6a69c3105b4abbe33b3f8d",
+     "read": "declaration list"
+    },
+    {
+     "result": "定理6.12/6.13 极点返回",
+     "alias": "AE",
+     "path": "A/CanonicalPreparationSourcePhysicalPolePreparedReturn.lean",
+     "blob": "1a3df1bfb1da4df4a71d92a4a202dc68ff93cc5f",
+     "read": "declaration list"
+    },
+    {
+     "result": "定理6.12/6.13 信号Euler",
+     "alias": "AE",
+     "path": "A/CanonicalPreparationSourcePreparedSignalEuler.lean",
+     "blob": "a1622196b685cb6363f6cd1f3836cf341362476a",
+     "read": "declaration list"
+    },
+    {
+     "result": "定理6.12/6.13 量子极点Duhamel",
+     "alias": "AE",
+     "path": "A/CanonicalPreparationSourceQuantumPoleDuhamel.lean",
+     "blob": "11a5ef42d072a627acb459400586158f2c800637",
+     "read": "declaration list"
+    }
+   ],
+   "closure_supplements": [
+    "serialized-generated-modules"
+   ]
+  },
+  {
+   "id": "phys.P34",
+   "paper": "physics-common-source",
+   "status": "selected",
+   "title": "matched原Γ整词的全频预算与endpoint共同尾",
+   "statement": "同fullH₀生成matched J3/R3与正bulk、两Ritt profile；∀μ>0、原g/k、两sharp，common N/cofinal F源内支付原整Γ预算（保normalization、CF/dF、matter/vacuum/gauge/spatial与coframe contact）；secondGreen signed中项、pole扣项与fixedsource jets给renormalizedEndpoint的绝对全频L¹共同尾；同volume PSD噪声/diffusion与full carré交叉给R3精确分解。",
+   "quantifiers_premises": "固定两种sharp与原source责任，不扩为fullCF半群结论；exact remainder保真符号。",
+   "text_location": {
+    "zh": "§6.14 定理6.14",
+    "en": "§6.14 Theorem 6.14"
+   },
+   "written_proof": "supplement S8",
+   "source": {
+    "alias": "AE",
+    "commit": "26b91feb6b507fdc3f43be9c429edb63fb9395ef"
+   },
+   "producers": [
+    {
+     "path": "Verification/physics/low-energy-phenomenology/external-composite-decay/SourceClockPhiNativeMatchedSource.lean"
+    },
+    {
+     "path": "Verification/physics/low-energy-phenomenology/external-composite-decay/SourceClockPhiNativeMatchedGammaBudget.lean"
+    },
+    {
+     "path": "Verification/physics/low-energy-phenomenology/external-composite-decay/SourceClockPhiRenormalizedSecondGreen.lean"
+    },
+    {
+     "path": "Verification/physics/low-energy-phenomenology/external-composite-decay/SourceClockPhiFixedSourceJets.lean"
+    },
+    {
+     "path": "Verification/physics/low-energy-phenomenology/external-composite-decay/SourceClockPhiRittHigherGradient.lean"
+    },
+    {
+     "path": "Verification/physics/low-energy-phenomenology/external-composite-decay/SourceClockPhiRenormalizedSecondGreenTail.lean"
+    },
+    {
+     "path": "Verification/physics/low-energy-phenomenology/external-composite-decay/SourceClockPhiMatchedDiffusionSource.lean"
+    }
+   ],
+   "direct_consumers": [],
+   "detailed_in": [
+    "composite-source-response D46–D52"
+   ],
+   "h0mework": {
+    "status": "bound@234817b3",
+    "accepted_commit": "234817b3c3f7a1023226e7a4fdb8660ddcbc9d0a",
+    "map": "docs/first-release-map.json",
+    "claim_id": "phys.P34"
+   },
+   "audited_files": [
+    {
+     "result": "定理6.14(1) matched源",
+     "alias": "AE",
+     "path": "V/SourceClockPhiNativeMatchedSource.lean",
+     "blob": "c3f97b27651f039a6463d2ae53997fbc0104e867",
+     "read": "lines 387-930"
+    },
+    {
+     "result": "定理6.14(2) Γ预算",
+     "alias": "AE",
+     "path": "V/SourceClockPhiNativeMatchedGammaBudget.lean",
+     "blob": "e4d5d83847fca63a67a676b8ba00166c331c32b2",
+     "read": "lines 185-500"
+    },
+    {
+     "result": "定理6.14(3) 端点共同尾",
+     "alias": "AE",
+     "path": "V/SourceClockPhiRenormalizedSecondGreenTail.lean",
+     "blob": "f9b6e59b1232132567f51ac6aeb44e6207af367d",
+     "read": "lines 85-110"
+    },
+    {
+     "result": "定理6.14(3) renormalized第二Green",
+     "alias": "AE",
+     "path": "V/SourceClockPhiRenormalizedSecondGreen.lean",
+     "blob": "bb406d3d5f16099904ee30dcbeafb9766c17c768",
+     "read": "declaration list"
+    },
+    {
+     "result": "定理6.14 固定源jet",
+     "alias": "AE",
+     "path": "V/SourceClockPhiFixedSourceJets.lean",
+     "blob": "3e7938127a01ff92242533e30179b33bdb142a7f",
+     "read": "declaration list"
+    },
+    {
+     "result": "定理6.14(4) 扩散源",
+     "alias": "AE",
+     "path": "V/SourceClockPhiMatchedDiffusionSource.lean",
+     "blob": "2b8bbdecf5847a0500e13cd385b1e53193e66eb4",
+     "read": "lines 272-860"
+    },
+    {
+     "result": "定理6.14 Ritt梯度",
+     "alias": "AE",
+     "path": "V/SourceClockPhiRittHigherGradient.lean",
+     "blob": "86d958445f41bd76c8184f0204e9544c2cea503b",
+     "read": "declaration list"
+    }
+   ],
+   "closure_supplements": [
+    "geometric-bulk-time-budget"
+   ]
+  },
+  {
+   "id": "phys.P35",
+   "paper": "physics-common-source",
+   "status": "selected",
+   "title": "硬件逆、脉冲可实现像与原后测历史",
+   "statement": "同whole-parent域产生跨四gain联合cap；已识别完整law的正则范围上两source-known signed probe与非零识别det给完整effect唯一逆；detector微观纤维给全(d,k)条件、唯一inverseAtom与pulse-area cap；原12态GKSL矩阵、natural/ion jump与双实现给actual atomic response，Spectrum完整可实现像内部生成detector rates；六组严格异atomic response给同一联合概率与全部prefix factors；原source/visit10/tick16→17完整history保持；公开41,673 local records的九字段、867未配对条目与successor gaps完整恢复。",
+   "quantifiers_premises": "数值12态前向与Lean逆像定理分列；名义AOM设置不代付actual独立校准输入；cl0001二维联合分布字段为False。",
+   "text_location": {
+    "zh": "§9.2 命题9.2(3)、命题9.3",
+    "en": "§9.2 Proposition 9.2(3), Proposition 9.3"
+   },
+   "written_proof": "supplement S9.3(3)、S9.4",
+   "source": {
+    "alias": "AE",
+    "commit": "26b91feb6b507fdc3f43be9c429edb63fb9395ef"
+   },
+   "producers": [
+    {
+     "path": "Lean/SaturationMonoid/PhysicsCore/Stage10/Bell/ReadoutAnchors.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/PhysicsCore/Stage10/Bell/ReadoutDetectorFiber.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/PhysicsCore/Stage10/Bell/ReadoutPulseRealization.lean"
+    },
+    {
+     "path": "Lean/SaturationMonoid/PhysicsCore/Stage10/Bell/SourceHistory.lean"
+    }
+   ],
+   "direct_consumers": [
+    {
+     "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/AnchorsCertification.lean"
+    },
+    {
+     "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/DetectorCertification.lean"
+    },
+    {
+     "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/PulseCertification.lean"
+    },
+    {
+     "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/SourceHistoryCertification.lean"
+    }
+   ],
+   "detailed_in": [
+    "bell-readout-identification BE8–BE14"
+   ],
+   "data_receipts": [
+    "Verification/physics/stage10/independent-bell/munich/readout-domain/atomic-forward-verification.json",
+    "Verification/physics/stage10/independent-bell/munich/readout-domain/clock-verification-cl0001.json",
+    "Verification/physics/stage10/independent-bell/munich/readout-domain/atomic_forward.py",
+    "Verification/physics/stage10/independent-bell/munich/readout-domain/atomic_forward_independent.py"
+   ],
+   "h0mework": {
+    "status": "bound@234817b3",
+    "accepted_commit": "234817b3c3f7a1023226e7a4fdb8660ddcbc9d0a",
+    "map": "docs/first-release-map.json",
+    "claim_id": "phys.P35"
+   },
+   "audited_files": [
+    {
+     "result": "命题9.3(2) 读出锚",
+     "alias": "AE",
+     "path": "B/ReadoutAnchors.lean",
+     "blob": "2c3e48e43faa36470f94ef4b543d4438fdffbfc5",
+     "read": "declaration list"
+    },
+    {
+     "result": "命题9.3(3) 探测器纤维",
+     "alias": "AE",
+     "path": "B/ReadoutDetectorFiber.lean",
+     "blob": "3e9c0d06be4f38cefe2034311f5a55bf08913c2e",
+     "read": "declaration list"
+    },
+    {
+     "result": "命题9.3(4) 脉冲实现",
+     "alias": "AE",
+     "path": "B/ReadoutPulseRealization.lean",
+     "blob": "7ea6d1960ab7cb7a009be8bbe6426bcc98c0c81c",
+     "read": "declaration list"
+    },
+    {
+     "result": "命题9.3(5) 源历史",
+     "alias": "AE",
+     "path": "B/SourceHistory.lean",
+     "blob": "193c3c73baea04999dedb8862a87a607a1fd8e81",
+     "read": "declaration list"
+    },
+    {
+     "result": "命题9.2/9.3 Munich总览",
+     "alias": "AE",
+     "path": "M/README.md",
+     "blob": "4bb01b0854737205364ec312303751b7ef836f70",
+     "read": "full"
+    },
+    {
+     "result": "命题9.2/9.3 Munich读出域",
+     "alias": "AE",
+     "path": "M/readout-domain/README.md",
+     "blob": "92be252ca081051c99651effb356a08129066ac5",
+     "read": "full"
+    },
+    {
+     "result": "命题9.2(3) 参数恢复",
+     "alias": "AE",
+     "path": "M/readout-domain/parameter-recovery.md",
+     "blob": "23b306f9b4686cd048b904717b7ce2b9bf8078b5",
+     "read": "full"
+    },
+    {
+     "result": "命题9.3(5) 历史源",
+     "alias": "AE",
+     "path": "M/readout-domain/history-source.md",
+     "blob": "1c2adf015b9a0c648139aa658378d0dce83f831f",
+     "read": "full"
+    },
+    {
+     "result": "命题9.2(3) mu0001.1判据",
+     "alias": "AE",
+     "path": "M/criterion-mu0001.1.md",
+     "blob": "5d7d6c0fbcee86b64d1bde133556d540226a2706",
+     "read": "full"
+    },
+    {
+     "result": "命题9.2(3) 读出域判据",
+     "alias": "AE",
+     "path": "M/readout-domain/criterion.md",
+     "blob": "67c511b49ab9f73348ce39da56bc8fe14ad10084",
+     "read": "ranges"
+    },
+    {
+     "result": "命题9.2(3) 读出域回执",
+     "alias": "AE",
+     "path": "M/readout-domain/verification.json",
+     "blob": "50bfaf31708bfa87f53f950de512c2fe81742d95",
+     "read": "ranges"
+    },
+    {
+     "result": "命题9.2(4) 辨识回执",
+     "alias": "AE",
+     "path": "M/readout-domain/identification-verification.json",
+     "blob": "1eb23ab4d7b59b83d6bc0d599e5795509df30a5e",
+     "read": "ranges"
+    },
+    {
+     "result": "命题9.3(1) 共享响应回执",
+     "alias": "AE",
+     "path": "M/readout-domain/shared-response-verification.json",
+     "blob": "45a7ef3463b9b766b745badfdcb29bc544962a02",
+     "read": "ranges"
+    },
+    {
+     "result": "命题9.3(2) 响应投影回执",
+     "alias": "AE",
+     "path": "M/readout-domain/response-projection-verification.json",
+     "blob": "d09d7b06ad496e7708c48584115c65acd1834949",
+     "read": "ranges"
+    },
+    {
+     "result": "命题9.3(3) 纤维回执",
+     "alias": "AE",
+     "path": "M/readout-domain/fiber-verification.json",
+     "blob": "8d9c11ce541d47681e5a57374f37287bd50224cc",
+     "read": "ranges"
+    },
+    {
+     "result": "命题9.3(3) 探测器纤维回执",
+     "alias": "AE",
+     "path": "M/readout-domain/detector-fiber-verification.json",
+     "blob": "70362b1b84e4c369faa63495b3657c3d6f08cb76",
+     "read": "ranges"
+    },
+    {
+     "result": "命题9.3(4) 脉冲实现回执",
+     "alias": "AE",
+     "path": "M/readout-domain/pulse-realization-verification.json",
+     "blob": "57c7e66489a8e07cf85728a992130a4f0ee0c14f",
+     "read": "ranges"
+    },
+    {
+     "result": "命题9.3(4) 原子前向回执",
+     "alias": "AE",
+     "path": "M/readout-domain/atomic-forward-verification.json",
+     "blob": "7220b52348880228e14cf7e6ad4eff11604e83f2",
+     "read": "ranges"
+    },
+    {
+     "result": "命题9.3(5) 历史回执",
+     "alias": "AE",
+     "path": "M/readout-domain/history-verification.json",
+     "blob": "030b71f9b701d82bf7db32995b8b85961c6165c2",
+     "read": "ranges"
+    },
+    {
+     "result": "命题9.3(5) 时钟回执",
+     "alias": "AE",
+     "path": "M/readout-domain/clock-verification-cl0001.json",
+     "blob": "71923c1a74bd0acb894de297db994844ed92ef84",
+     "read": "ranges"
+    },
+    {
+     "result": "命题9.3(4) 面积上限恢复",
+     "alias": "AE",
+     "path": "Lean/SaturationMonoid/PhysicsCore/Stage10/Bell/ReadoutDetectorFiber.lean",
+     "blob": "(fixed commit read; blob 未取)",
+     "read": "280–360"
+    },
+    {
+     "result": "命题9.3(4) 前向不等式与面积下界回执",
+     "alias": "AE",
+     "path": "M/readout-domain/atomic-forward-first.json",
+     "blob": "(fixed commit read)",
+     "read": "full"
+    }
+   ]
+  },
+  {
+   "id": "phys.P36",
+   "paper": "physics-common-source",
+   "status": "selected",
+   "title": "同源moving载体、动量连续与变forcing场极点",
+   "statement": "moving pole完整基到p=0八态的overlap U(p)为酉，准备/primal/creation/fiber/同ε准备逐层U(p)展开；张量M(pL,pR)=U_L†M_0[A]U_R，整个Gauss算子A保留；actualC(p)=actualC(0)+v_F(p)（v_F实线性连续），‖C(p)−C(k)‖≤‖v_F‖‖p−k‖，非实z预解差≤|Im z|⁻²‖v_F‖‖p−k‖；finiteRetainer与actualA跨动量相同，fulljoint R/time连续、时间界actualGrowth(0,F,|t|)；全部289方向rawReader动量连续；原全部current与积分窗精确返回同8载体U_L J U_R†；变化forcing的未清场−κ²极限=staticResidue(actualCurrent)，系数(−9/125)√30·w与(−67/72)√30·w（w=originWeight）；H field=current⇔axisNullCosource=0；w=−cosource₁₁₄=nativeContactWindow−deviationWindow=−(N1 Ward积分+协变积分−(Q(T)−Q(0)))；|w−nativeContact|≤‖D₀F‖|T|/(|Im z||Im w|)。",
+   "quantifiers_premises": "固定ε/F/z/w/λ/T；κ静态与η Abel限序不交换；null9相容是必要充分条件，零不由本结果生成；不识别EM/电子/Thomson。",
+   "text_location": {
+    "zh": "§6.13 定理6.13(1)(2)、(3) 变化 forcing 的未清场极限、(4) 约束相容、(5) 接触—偏离分解与价格",
+    "en": "§6.13 Theorem 6.13(1)(2), (3) uncleared limit for varying forcing, (4) constraint compatibility, (5) contact–deviation split and price"
+   },
+   "written_proof": "supplement S7(1)–(5)",
+   "source": {
+    "alias": "CAP",
+    "commit": "59409a512c435cad5c5113fdedc91a451af88883"
+   },
+   "producers": [
+    {
+     "path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSourceMovingCarrier.lean"
+    },
+    {
+     "path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSourcePreparedTensor.lean"
+    },
+    {
+     "path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSourceMomentumContinuation.lean"
+    },
+    {
+     "path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSourceRetainerMomentum.lean"
+    },
+    {
+     "path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSourceReaderMomentum.lean"
+    },
+    {
+     "path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSourceFullPoleTensor.lean"
+    },
+    {
+     "path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSourceReferenceContact.lean"
+    },
+    {
+     "path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSourceModeNativeSymbol.lean"
+    },
+    {
+     "path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSourceModeContactRead.lean"
+    },
+    {
+     "path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSourceGaussConnection.lean"
+    },
+    {
+     "path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSourceGaussKineticTorque.lean"
+    },
+    {
+     "path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSourceGaussColorWard.lean"
+    },
+    {
+     "path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSourceAxisCompatibility.lean"
+    },
+    {
+     "path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSourceNativePoleBalance.lean"
+    },
+    {
+     "path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSourceNativePolePrice.lean"
+    }
+   ],
+   "direct_consumers": [
+    {
+     "path": "Verification/physics/low-energy-phenomenology/alpha-source/AuditCanonicalPreparationSharedPoleCarrier.lean"
+    },
+    {
+     "path": "Verification/physics/low-energy-phenomenology/alpha-source/AuditCanonicalPreparationFullPoleContinuation.lean"
+    },
+    {
+     "path": "Verification/physics/low-energy-phenomenology/alpha-source/AuditCanonicalPreparationPhysicalModeContact.lean"
+    },
+    {
+     "path": "Verification/physics/low-energy-phenomenology/alpha-source/AuditCanonicalPreparationPhysicalGaussColorTorque.lean"
+    },
+    {
+     "path": "Verification/physics/low-energy-phenomenology/alpha-source/AuditCanonicalPreparationPoleConstraintReturn.lean"
+    }
+   ],
+   "data_receipts": [
+    "Verification/physics/low-energy-phenomenology/alpha-source/canonical_preparation_shared_pole_carrier_certification.json",
+    "Verification/physics/low-energy-phenomenology/alpha-source/canonical_preparation_full_pole_continuation_certification.json",
+    "Verification/physics/low-energy-phenomenology/alpha-source/canonical_preparation_physical_mode_contact_certification.json",
+    "Verification/physics/low-energy-phenomenology/alpha-source/canonical_preparation_physical_gauss_color_torque_certification.json",
+    "Verification/physics/low-energy-phenomenology/alpha-source/canonical_preparation_pole_constraint_return_certification.json"
+   ],
+   "h0mework": {
+    "status": "bound@234817b3",
+    "accepted_commit": "234817b3c3f7a1023226e7a4fdb8660ddcbc9d0a",
+    "map": "docs/first-release-map.json",
+    "claim_id": "phys.P36"
+   },
+   "audited_files": [
+    {
+     "result": "定理6.13 moving载体",
+     "alias": "CAP",
+     "path": "A/CanonicalPreparationSourceMovingCarrier.lean",
+     "blob": "29c1edf16037c9cd80abc562c2b4500b78e2ab35",
+     "read": "declaration list"
+    },
+    {
+     "result": "定理6.13(2) 动量连续",
+     "alias": "CAP",
+     "path": "A/CanonicalPreparationSourceMomentumContinuation.lean",
+     "blob": "693ca16b6f9e4692b494cc5569066c7e70549e1e",
+     "read": "declaration list"
+    },
+    {
+     "result": "定理6.13(2) 读口动量",
+     "alias": "CAP",
+     "path": "A/CanonicalPreparationSourceReaderMomentum.lean",
+     "blob": "13dff20dbf03ada32ca536ef3db7947a29aace2e",
+     "read": "declaration list"
+    },
+    {
+     "result": "定理6.13 极点张量/Ward",
+     "alias": "CAP",
+     "path": "A/CanonicalPreparationSourceFullPoleTensor.lean",
+     "blob": "74757f592df20068fad31747491811cd86f84a79",
+     "read": "declaration list"
+    },
+    {
+     "result": "定理6.13 Gauss色Ward",
+     "alias": "CAP",
+     "path": "A/CanonicalPreparationSourceGaussColorWard.lean",
+     "blob": "df657637eaa0f691198417fff20f06dcb02a17ef",
+     "read": "declaration list"
+    },
+    {
+     "result": "定理6.13 Gauss连接",
+     "alias": "CAP",
+     "path": "A/CanonicalPreparationSourceGaussConnection.lean",
+     "blob": "19a7bb2f3b54a95d32b79aae59954f4a1f3ed690",
+     "read": "declaration list"
+    },
+    {
+     "result": "定理6.13 Gauss动力",
+     "alias": "CAP",
+     "path": "A/CanonicalPreparationSourceGaussKineticTorque.lean",
+     "blob": "f801728d69647397f7f93039a359b0ec91bde231",
+     "read": "declaration list"
+    },
+    {
+     "result": "定理6.13 模式接触",
+     "alias": "CAP",
+     "path": "A/CanonicalPreparationSourceModeContactRead.lean",
+     "blob": "201a03c762740fe039a649dcd131892144b56611",
+     "read": "declaration list"
+    },
+    {
+     "result": "定理6.13 模式符号",
+     "alias": "CAP",
+     "path": "A/CanonicalPreparationSourceModeNativeSymbol.lean",
+     "blob": "0f3c5824ddb5f9511df232098bf86063bd801976",
+     "read": "declaration list"
+    },
+    {
+     "result": "定理6.13 极点平衡",
+     "alias": "CAP",
+     "path": "A/CanonicalPreparationSourceNativePoleBalance.lean",
+     "blob": "4b16953601dc67e342c221516f2def7753706166",
+     "read": "declaration list"
+    },
+    {
+     "result": "定理6.13 极点价格",
+     "alias": "CAP",
+     "path": "A/CanonicalPreparationSourceNativePolePrice.lean",
+     "blob": "3f3fd79b6ae0fa8a5713d7ceb6565bc7fd58d63e",
+     "read": "declaration list"
+    },
+    {
+     "result": "定理6.13 准备张量",
+     "alias": "CAP",
+     "path": "A/CanonicalPreparationSourcePreparedTensor.lean",
+     "blob": "6a74cbf8b56802dabcac5572abd0881b3eafa5d5",
+     "read": "declaration list"
+    },
+    {
+     "result": "定理6.13 保留动量",
+     "alias": "CAP",
+     "path": "A/CanonicalPreparationSourceRetainerMomentum.lean",
+     "blob": "2978647b152e2fe2e50678f87039cce4fb452bb4",
+     "read": "declaration list"
+    },
+    {
+     "result": "定理6.13 参考接触",
+     "alias": "CAP",
+     "path": "A/CanonicalPreparationSourceReferenceContact.lean",
+     "blob": "0c1e1b39a63b7df57250175d95b33f17ac1a845e",
+     "read": "declaration list"
+    },
+    {
+     "result": "定理6.13(4)(5) 轴相容、w=−c₁₁₄、变化 forcing 未清场极限",
+     "alias": "CAP",
+     "path": "A/CanonicalPreparationSourceAxisCompatibility.lean",
+     "blob": "37f944cff3aaa33fdeca91e95abd52c35d0c2ec5",
+     "read": "38–140"
+    }
+   ],
+   "closure_supplements": [
+    "serialized-generated-modules"
+   ]
+  }
+ ],
+ "excluded": [
+  {
+   "id": "core.C14–C18",
+   "reason": "补充证据，非正文主张（门控两相根、休眠四支、审计账根、同债反控、原receipt消费者）；不进入首发选集"
+  },
+  {
+   "id": "core.C19–C21",
+   "reason": "AA接口由C22–C27的更强构造取代；正文不单列"
+  },
+  {
+   "id": "phys.P21",
+   "reason": "候选增量，未进入正文"
+  },
+  {
+   "id": "phys.P23",
+   "reason": "X时点0.0003名义重放，按历史身份在正文一句保留（D.4.6），由P24取代"
+  },
+  {
+   "id": "post-cap",
+   "reason": "Homework@59409a5之后的成果不进入本版，除非纠正本版主张错误"
+  }
+ ],
+ "h0mework_exchange": {
+  "reads": [
+   "docs/first-release-map.json",
+   "docs/first-release-readiness.md"
+  ],
+  "status_values": [
+   "bound@ba591b43",
+   "partial@dacb9f2d(R2)",
+   "pending",
+   "bound@234817b3"
+  ],
+  "final_flag": "publish sets status=final with manuscript file identities when text is frozen"
+ },
+ "source_notes": {
+  "K1-4,K5,K6-7,K8-11,X(K12-14),K15,K16,K16-17": "constrained-local-quantum (5a) fixed commits; used only for Theorem 6.7(1)(2) carrier facts of physics-common-source (see phys.P26 carrier_sources)"
+ },
+ "source_supplements": [
+  {
+   "id": "interface-alignment",
+   "source": "INTERFACE_REPAIR",
+   "commit": "089a1727993bec51c27ee72a0311022fec8111ab",
+   "post_cap_reason": "decisive proof dependency: fresh builds of the fixed bytes fail in two upstream files of the producers' closure",
+   "paths": {
+    "Lean/SaturationMonoid/GenericFoundation/LivingLawRootGeneratedCofinalPerfectAmbientDispositionKernel.lean": {
+     "applies_to": [
+      "AB",
+      "AC",
+      "AD",
+      "AE"
+     ],
+     "defect": "statement of installedAmbient_factorizes still uses PUnit.unit while the upstream installedDuality_factorizes in the same commit uses (.inr PUnit.unit)"
+    },
+    "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Observation/Source.lean": {
+     "applies_to": [
+      "AD",
+      "AE"
+     ],
+     "defect": "next_raw unfolds Activation.next, now an abbrev of Shared.next, without unfolding Shared.next"
+    }
+   },
+   "change": "three-line alignment (2 replaced, 1 added); no selected declaration or statement changes",
+   "claims": [
+    "core.C25",
+    "core.C26",
+    "core.C27",
+    "core.C28",
+    "core.C29",
+    "core.C30",
+    "core.C31",
+    "core.C32",
+    "core.C33",
+    "core.C34"
+   ],
+   "text": {
+    "zh": "过程核心 附录D.2 末段",
+    "en": "process core Appendix D.2, last paragraph"
+   }
+  },
+  {
+   "id": "state-exposure-alignment",
+   "source": "AE",
+   "commit": "26b91feb6b507fdc3f43be9c429edb63fb9395ef",
+   "post_cap_reason": null,
+   "paths": {
+    "Lean/SaturationMonoid/GenericFoundation/Integral/Coherent/PerfectRealization/Dependent/Controller/LivingLawRootGeneratedDependentJointStateExposureKernel.lean": {
+     "applies_to": [
+      "AB",
+      "AC"
+     ],
+     "defect": "parentComponentInstallation.outcome_heq is closed by rfl, which no longer reduces; the AD/AE bytes (fix from e899075e73) split on the projection classification",
+     "sha256_at_AE": "1ce36447e5b3058058c08c7b7cf58450074d43215b4bbc4e8a36920a6155de12"
+    }
+   },
+   "change": "proof-only (1 line to 2); no selected declaration or statement changes",
+   "claims": [
+    "core.C25",
+    "core.C26",
+    "core.C27"
+   ],
+   "text": {
+    "zh": "过程核心 附录D.2 末段",
+    "en": "process core Appendix D.2, last paragraph"
+   }
+  },
+  {
+   "id": "geometric-bulk-time-budget",
+   "source": "BUDGET_REPAIR",
+   "commit": "fa15016c967e1ea50c1fdc3d8e7bf1ec8f7128a6",
+   "post_cap_reason": "decisive proof dependency: file imported by the closure is absent from every commit AB–CAP",
+   "paths": {
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/SourceGeometricBulkTimeBudget.lean": {
+     "decls": [
+      "actual_original_geometric_budget"
+     ],
+     "reached_via": "Verification/physics/low-energy-phenomenology/external-composite-decay/SourceScalarEssentialBudget.lean"
+    },
+    "Verification/physics/low-energy-phenomenology/external-composite-decay/AuditSourceGeometricBulkTimeBudget.lean": {
+     "role": "direct consumer"
+    }
+   },
+   "change": "retains the checked file bytes; no selected declaration or statement changes",
+   "claims": [
+    "phys.P34"
+   ],
+   "text": {
+    "zh": "物理 附录D.7 表后段；补充 S8 形式对应",
+    "en": "physics Appendix D.7 paragraph after the table; Supplement S8 formal correspondence"
+   }
+  },
+  {
+   "id": "serialized-generated-modules",
+   "source": "same fixed commit as each claim",
+   "commit": null,
+   "post_cap_reason": null,
+   "paths": {
+    "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSerializedAsset.lean": {
+     "generated": true,
+     "sha256": "852c8b95ce7afc4865572d44e41c5ca917f092d3e35ae3eb08ddbec24a441f4c"
+    },
+    "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSerializedConsumer.lean": {
+     "generated": true,
+     "sha256": "4a54a2c3355f37e6e5825a113bc22eee0f3ddec2a2b03ce8b3cc621e1110b275"
+    }
+   },
+   "committed_inputs": [
+    "Verification/physics/low-energy-phenomenology/alpha-source/canonical_preparation_serialized_source_generate.py",
+    "Verification/physics/low-energy-phenomenology/alpha-source/canonical_preparation_serialized_source_sources.json",
+    "Verification/physics/low-energy-phenomenology/alpha-source/canonical_preparation_serialized_source_certification.json"
+   ],
+   "change": "generated from a fixed original table (3934 nodes, 747 expressions, 46079 ordered rows) kept only in a private archive of the source repository; the receipt records both hashes and byte-for-byte regeneration",
+   "claims": [
+    "phys.P26",
+    "phys.P27",
+    "phys.P29",
+    "phys.P30",
+    "phys.P33",
+    "phys.P36"
+   ],
+   "text": {
+    "zh": "物理 附录D.7 表后段",
+    "en": "physics Appendix D.7 paragraph after the table"
+   }
+  }
+ ],
+ "manuscripts": [
+  {
+   "path": "papers/source-process-core/manuscript.md",
+   "sha256": "051975c7bf9ddad86f690cdb97e66ba218d1a905f08186442cf510d30a16e93c"
+  },
+  {
+   "path": "papers/source-process-core/manuscript-en.md",
+   "sha256": "95642ef4dc7318479d62fe601efb4689a6ee9e3305a432ab3eccbb468a1c9234"
+  },
+  {
+   "path": "papers/source-process-core/supplement.md",
+   "sha256": "b9d3ca15cf371a3b907011116697a1b09cf3fee92af56f1b4f2ba642d33c9894"
+  },
+  {
+   "path": "papers/source-process-core/supplement-en.md",
+   "sha256": "8dbb91c82c9827e01785c23ecc50752a265230a8b5a9284fdb5f045b954fa299"
+  },
+  {
+   "path": "papers/physics-common-source/manuscript.md",
+   "sha256": "991022add4f47320be56a9d829f0aa9e8c044939c3fd30c92099c31a851ce823"
+  },
+  {
+   "path": "papers/physics-common-source/manuscript-en.md",
+   "sha256": "52e133240b346a0850424ca9aa8309e9e5f5c77a40a147b64f20a1e87675e947"
+  },
+  {
+   "path": "papers/physics-common-source/supplement.md",
+   "sha256": "2eb6dabfab6ca5af289ff78c1efdd1242b750358bd18ff0c34d067d069610983"
+  },
+  {
+   "path": "papers/physics-common-source/supplement-en.md",
+   "sha256": "dc6dee94e2eae2e2883efa688ab64fc8c3dd49cbd3bb373c66335ad75b545b3e"
+  }
+ ],
+ "final_note": "First-release texts and source bindings finalized; manuscript identities are recorded in manuscripts[]. Accepted H0mework proof and evidence commit: 234817b3c3f7a1023226e7a4fdb8660ddcbc9d0a."
+}

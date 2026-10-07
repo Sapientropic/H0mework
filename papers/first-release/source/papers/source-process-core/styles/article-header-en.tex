@@ -1,0 +1,132 @@
+% Reproducible English academic reading layout; use XeLaTeX.
+% Same typography as article-header.tex; running heads, float and contents
+% names are English. xeCJK stays because the manuscript keeps the bilingual
+% title and the Chinese abstract.
+% TeX Live basic has no fontconfig names for Latin Modern; load OTF by file.
+\usepackage{fontspec}
+\setmainfont{lmroman10-regular.otf}[BoldFont=lmroman10-bold.otf,ItalicFont=lmroman10-italic.otf,BoldItalicFont=lmroman10-bolditalic.otf]
+\setsansfont{lmsans10-regular.otf}[BoldFont=lmsans10-bold.otf,ItalicFont=lmsans10-oblique.otf,BoldItalicFont=lmsans10-boldoblique.otf]
+\setmonofont{lmmono10-regular.otf}[ItalicFont=lmmono10-italic.otf]
+\usepackage{unicode-math}
+\setmathfont{latinmodern-math.otf}
+\usepackage{xeCJK}
+\usepackage{xcolor}
+\definecolor{Ink}{HTML}{202831}
+\definecolor{Accent}{HTML}{29465B}
+\definecolor{Muted}{HTML}{66737D}
+\definecolor{Rule}{HTML}{CED5DA}
+\usepackage{geometry}
+\geometry{a4paper,left=23mm,right=23mm,top=23mm,bottom=24mm,headheight=21pt,headsep=7mm,footskip=11mm}
+\providecommand{\CJKFontDir}{/Library/Fonts}
+\setCJKmainfont[Path=\CJKFontDir/,BoldFont={NotoSerifCJKsc-Bold.otf},ItalicFont={NotoSerifCJKsc-Regular.otf}]{NotoSerifCJKsc-Regular.otf}
+\setCJKsansfont[Path=\CJKFontDir/,BoldFont={NotoSansCJKsc-Bold.otf}]{NotoSansCJKsc-Regular.otf}
+\setCJKmonofont[Path=\CJKFontDir/]{NotoSansCJKsc-Regular.otf}
+\xeCJKsetup{PunctStyle=quanjiao,CheckSingle=true}
+\usepackage{setspace}
+% Uniform interword space after sentence periods (e.g. "et al. and").
+\frenchspacing
+\setstretch{1.23}
+\setlength{\parindent}{1.5em}
+\setlength{\parskip}{0.22em plus 0.12em minus 0.08em}
+\setlength{\emergencystretch}{3em}
+\tolerance=1800
+\pretolerance=1000
+\hyphenpenalty=250
+\widowpenalty=8000
+\clubpenalty=8000
+\displaywidowpenalty=3000
+\raggedbottom
+\usepackage{microtype}
+% CJK punctuation spacing is handled by xeCJK. Disable Latin-font protrusion
+% tables for the mixed CJK/Unicode-math font set.
+\microtypesetup{protrusion=false,nopatch=footnote}
+\usepackage{titlesec}
+\usepackage{needspace}
+\titleformat{\section}{\Large\sffamily\bfseries\color{Accent}}{}{0pt}{}
+\titleformat{\subsection}{\large\sffamily\bfseries\color{Accent}}{}{0pt}{}
+\titleformat{\subsubsection}{\normalsize\sffamily\bfseries\color{Accent}}{}{0pt}{}
+\titlespacing*{\section}{0pt}{2.2em plus 0.5em minus 0.3em}{0.9em}
+\titlespacing*{\subsection}{0pt}{1.65em plus 0.4em minus 0.2em}{0.7em}
+\titlespacing*{\subsubsection}{0pt}{1.3em}{0.5em}
+\usepackage{etoolbox}
+% Floats may drift past a section start. \Needspace breaks only when the page
+% really lacks room; \needspace always offers a rewarded break, which the high
+% widow/club penalties turned into half-empty pages before headings.
+\pretocmd{\section}{\Needspace{7\baselineskip}}{}{}
+\pretocmd{\subsection}{\Needspace{4\baselineskip}}{}{}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\scriptsize\sffamily\color{Muted}The State Is Not the History}
+\fancyhead[R]{\scriptsize\sffamily\color{Muted}identity\quad responsibility\quad minimal revision}
+\fancyfoot[C]{\small\sffamily\color{Muted}\thepage}
+\renewcommand{\headrulewidth}{0.3pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{Rule}\leaders\hrule height \headrulewidth\hfill}}
+\fancypagestyle{plain}{\fancyhf{}\fancyfoot[C]{\small\sffamily\color{Muted}\thepage}\renewcommand{\headrulewidth}{0pt}}
+\usepackage{enumitem}
+\setlist{topsep=0.35em,itemsep=0.15em,parsep=0.08em,leftmargin=2em}
+\setlist[enumerate]{labelsep=0.5em}
+\usepackage{caption}
+\captionsetup{font=small,labelfont={bf,sf},justification=raggedright,singlelinecheck=false,skip=9pt}
+\renewcommand{\figurename}{Figure}
+\renewcommand{\tablename}{Table}
+\usepackage{float}
+\usepackage{placeins}
+\setcounter{topnumber}{2}
+\setcounter{bottomnumber}{1}
+\renewcommand{\topfraction}{0.92}
+\renewcommand{\bottomfraction}{0.6}
+\renewcommand{\textfraction}{0.08}
+\renewcommand{\floatpagefraction}{0.7}
+\setlength{\textfloatsep}{1.3em plus 0.3em minus 0.2em}
+\setlength{\intextsep}{1.2em plus 0.3em minus 0.2em}
+\usepackage{adjustbox}
+\usepackage{seqsplit}
+\usepackage{xurl}
+\urlstyle{same}
+\usepackage{fvextra}
+\usepackage{longtable,booktabs,array}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\},breaklines,breakanywhere,fontsize=\footnotesize}
+\AtBeginEnvironment{longtable}{\footnotesize\setstretch{1.16}\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{1.22}}
+\setlength{\LTpre}{0.8em}
+\setlength{\LTpost}{0.8em}
+\usepackage{newunicodechar}
+\newunicodechar{∎}{\ensuremath{\blacksquare}}
+\newunicodechar{→}{\ensuremath{\rightarrow}}
+\newunicodechar{⇔}{\ensuremath{\Leftrightarrow}}
+\newunicodechar{↔}{\ensuremath{\leftrightarrow}}
+\newunicodechar{⊕}{\ensuremath{\oplus}}
+\newunicodechar{⊆}{\ensuremath{\subseteq}}
+\newunicodechar{⊇}{\ensuremath{\supseteq}}
+\newunicodechar{×}{\ensuremath{\times}}
+\newunicodechar{≤}{\ensuremath{\leq}}
+\newunicodechar{≥}{\ensuremath{\geq}}
+\newunicodechar{≠}{\ensuremath{\neq}}
+\newunicodechar{✓}{\ensuremath{\checkmark}}
+\newunicodechar{✗}{\ensuremath{\times}}
+\newunicodechar{ℤ}{\ensuremath{\mathbb{Z}}}
+\newunicodechar{∅}{\ensuremath{\varnothing}}
+\newunicodechar{σ}{\ensuremath{\sigma}}
+\newunicodechar{δ}{\ensuremath{\delta}}
+\newunicodechar{ρ}{\ensuremath{\rho}}
+\AtBeginDocument{\hypersetup{linkcolor=Accent,urlcolor=Accent,citecolor=Accent,bookmarksnumbered=false,pdfborder={0 0 0}}}
+\setcounter{tocdepth}{1}
+\renewcommand{\contentsname}{Contents}
+\makeatletter
+% Inline code may shrink body text, but must not enlarge footnotesize tables.
+\newcommand{\paperinlinecode}[1]{{\ifdim\f@size pt>10pt\small\fi\texttt{#1}}}
+\renewcommand{\maketitle}{%
+  \thispagestyle{plain}%
+  {\centering\vspace*{5mm}%
+    {\fontsize{20}{30}\selectfont\sffamily\bfseries\color{Accent}\@title\par}%
+    \ifx\@subtitle\@empty\else\vspace{0.85em}{\fontsize{11.3}{15}\selectfont\@subtitle\par}\fi
+    \ifx\@byline\@empty\else\vspace{1.1em}{\fontsize{11.3}{15}\selectfont\@byline\par}%
+      \ifx\@bylinedetails\@empty\else\vspace{0.3em}{\footnotesize\color{Muted}\@bylinedetails\par}\fi\fi
+    \vspace{1.4em}\textcolor{Rule}{\rule{0.26\textwidth}{0.6pt}}\par\vspace{1.6em}}
+}
+\providecommand{\@subtitle}{}
+\providecommand{\@byline}{}\providecommand{\@bylinedetails}{}
+\newcommand{\paperbyline}[2]{\gdef\@byline{#1}\gdef\@bylinedetails{#2}}
+\newcommand{\papersubtitle}[1]{\gdef\@subtitle{#1}}
+\makeatother
+\AtBeginDocument{\color{Ink}}
