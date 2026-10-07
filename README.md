@@ -1,5 +1,7 @@
 <p align="center"><img src="docs/assets/banner.svg" alt="H0mework · 未干的地图：名字里的 0 是一笔朱砂圈；同样的圈落在地图上，一张未干的地图从那里长出" width="100%"></p>
 
+简体中文 · [English](README.en.md)
+
 这里是一组论文背后的证明与证据。
 
 它们从同一个源出发：过程怎样保留自己的历史，场和粒子怎样从同一处生成，经典与量子怎样相认，账平之后债为何还在，观察为何总要为压缩付账。论文用文字把这些故事讲给人听；这里的 Lean 证明、复现程序和冻结回执，则把每一句写成定理的话交给机器，从头再核一遍。
@@ -45,7 +47,3 @@ make check-first-release-entry  # 检查导出身份、完整 Fock、Born 与精
 ## 许可
 
 原创代码与证据采用 Apache-2.0，见 [LICENSE](LICENSE) 与 [NOTICE](NOTICE)。首发论文沿用成品元数据登记的 CC BY 4.0，见[论文许可](papers/first-release/source/papers/source-process-core/zenodo-metadata.md#licenses)。引用的第三方原文保留原作者的版权与许可，详见[来源材料索引](docs/source-materials.md#第三方材料)。
-
----
-
-*Lean proofs, reproduction programs and frozen evidence behind a family of research papers. The papers tell the story; the proofs take the stand. Every statement written as a theorem can be rechecked here by machine, from scratch. Start with the table above, then `make build-first-release`.*
