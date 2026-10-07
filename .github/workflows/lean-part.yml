@@ -64,6 +64,18 @@ jobs:
             /usr/local/share/powershell /usr/local/share/chromium /usr/local/lib/node_modules
           sudo docker image prune --all --force > /dev/null 2>&1 || true
           df -h /
+      - name: Add swap and use every runner thread
+        if: steps.mode.outputs.build == 'true' && inputs.part != 'complete'
+        # Single generated decision proofs peak at about 24 GiB, above the runner's 16 GiB,
+        # and a hosted runner out of memory is shut down mid-step. Swap absorbs those peaks,
+        # so the build runs the four threads its plan assumes instead of one memory slot.
+        run: |
+          sudo fallocate -l 48G /lean.swap
+          sudo chmod 600 /lean.swap
+          sudo mkswap /lean.swap > /dev/null
+          sudo swapon /lean.swap
+          echo "LEAN_NUM_THREADS=$(nproc)" >> "$GITHUB_ENV"
+          free -h
       - name: Restore fixed dependencies
         if: steps.mode.outputs.build == 'true'
         id: dependencies
@@ -175,6 +187,13 @@ jobs:
           retention-days: 1
           if-no-files-found: error
           overwrite: true
-      - name: Disk usage after build
+      - name: Disk and memory after build
         if: always()
-        run: df -h / && du -sh Lean/.lake/build Lean/.lake/packages 2>/dev/null || true
+        run: |
+          df -h / && du -sh Lean/.lake/build Lean/.lake/packages 2>/dev/null || true
+          free -h
+          # Peaks of the runner's cgroup show how much of the swap the build needed.
+          group=/sys/fs/cgroup$(cut -d: -f3 /proc/self/cgroup)
+          for peak in memory.peak memory.swap.peak; do
+            [ -r "$group/$peak" ] && echo "$peak: $(( $(cat "$group/$peak") / 2**20 )) MiB"
+          done || true
