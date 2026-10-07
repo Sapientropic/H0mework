@@ -103,6 +103,8 @@ jobs:
         if: steps.mode.outputs.build == 'true' && inputs.part != 'complete'
         id: build
         # exec lets a cancelled run signal the build directly, which stops Lake cleanly.
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: exec python3 tools/ci_plan.py build --part "$PART" --deadline "$LEAN_DEADLINE" --output "$GITHUB_OUTPUT"
       - name: Check that the parts cover every default module
         if: inputs.part == 'complete'
@@ -152,7 +154,7 @@ jobs:
         if: failure() && steps.build.outputs.status == 'incomplete' && steps.build.outputs.built != '0'
         uses: actions/upload-artifact@v4
         with:
-          name: lean-incomplete-${{ inputs.part }}
+          name: lean-incomplete-${{ inputs.part }}-${{ github.run_attempt }}
           path: .local/ci/${{ inputs.part }}.stopped
           include-hidden-files: true
           retention-days: 1

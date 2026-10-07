@@ -13,12 +13,13 @@ import textwrap
 import threading
 import time
 import unittest
-from unittest.mock import patch
+from unittest.mock import Mock, patch
 
 import ci_plan
 from ci_plan import (LAYOUT, Layout, ReleaseStore, ancestors_within, build_part, closure, completed_setup_files,
                      coverage, estimate_costs, imports, make_plan, pack, prune_store, read_times, restore_choice,
-                     save_archive, stage_number, stage_plan, sticky_assignment, unpack, update_times, write_layout)
+                     save_archive, stage_number, stage_plan, sticky_assignment, unpack, update_times, write_layout,
+                     continuation_parts, pack_checkpoint)
 
 # A synthetic project with ten-second modules spreads over several stages and shards.
 SPLIT = Layout(window=25, workers=1, fill=1.0, shared_users=99, shared_chain=0)
@@ -297,7 +298,7 @@ class PlanTests(unittest.TestCase):
         second = self.checkout("second")
         for n in [*earlier, name]:
             archive = self.root / "part.tar.zst"
-            pack(self.root, plan["parts"][n]["modules"], archive)
+            self.assertGreater(pack_checkpoint(self.root, plan["parts"][n]["modules"], archive), 0)
             unpack(second, archive)
         for target, code in (("+H0mework.Physics.Independent", 0), ("+" + slow, 3)):
             check = subprocess.run(["lake", "--no-build", "build", target], cwd=second / "Lean", capture_output=True, text=True)
@@ -515,6 +516,38 @@ class BuildTests(unittest.TestCase):
         self.assertEqual(self.outputs()["status"], "cancelled")
         self.assertIs(signal.getsignal(signal.SIGTERM), signal.SIG_DFL)
 
+    def test_runtime_budget_reaches_lake_without_the_cache_token(self):
+        body = """
+            import json, os
+            pathlib.Path("environment.json").write_text(json.dumps({
+                "threads": os.environ.get("LEAN_NUM_THREADS"), "has_token": "GH_TOKEN" in os.environ}))
+        """
+        with patch.dict(os.environ, {"LEAN_NUM_THREADS": "2", "GH_TOKEN": "not-a-real-token"}), self.lake(body):
+            self.assertEqual(build_part(self.root, self.part), 0)
+        environment = json.loads((self.root / "Lean/environment.json").read_text())
+        self.assertEqual(environment, {"threads": "2", "has_token": False})
+
+    def test_live_progress_is_saved_before_the_build_exits(self):
+        checkpoint = Mock(return_value=True)
+        with self.lake("import time\ntime.sleep(1.8)\nsys.exit(1)\n"):
+            self.assertEqual(build_part(self.root, self.part, output=self.output,
+                                       checkpoint=checkpoint, checkpoint_interval=0.2), 1)
+        checkpoint.assert_called_once_with()
+        self.assertEqual(self.outputs()["status"], "failed")
+
+    def test_failed_checkpoint_retries_and_stops_after_success_without_new_progress(self):
+        checkpoint = Mock(side_effect=[False, True])
+        with self.lake("import time\ntime.sleep(1.8)\n"):
+            self.assertEqual(build_part(self.root, self.part, checkpoint=checkpoint, checkpoint_interval=0.2), 0)
+        self.assertEqual(checkpoint.call_count, 2)
+
+    def test_out_of_scope_progress_does_not_trigger_a_live_checkpoint(self):
+        self.part["progress_modules"] = ["H0mework.Pending"]
+        checkpoint = Mock(return_value=True)
+        with self.lake("import time\ntime.sleep(1.2)\n"):
+            self.assertEqual(build_part(self.root, self.part, checkpoint=checkpoint, checkpoint_interval=0.2), 0)
+        checkpoint.assert_not_called()
+
 
 @unittest.skipUnless(shutil.which("zstd"), "zstd is needed for artifact transport")
 class ArtifactTests(unittest.TestCase):
@@ -557,6 +590,18 @@ class ArtifactTests(unittest.TestCase):
             unpack(self.root, archive)
         self.assertFalse((self.root / "escape").exists())
 
+    def test_valid_archive_padding_is_drained_before_waiting_for_zstd(self):
+        raw = io.BytesIO()
+        with tarfile.open(fileobj=raw, mode="w") as tar:
+            entry = tarfile.TarInfo("lib/lean/H0mework/Done.olean")
+            entry.size = 3
+            tar.addfile(entry, io.BytesIO(b"yes"))
+        archive = self.root / "padded.tar.zst"
+        archive.write_bytes(subprocess.check_output(["zstd", "-q", "-c"],
+                                                   input=raw.getvalue() + b"\0" * (4 << 20)))
+        unpack(self.root, archive)
+        self.assertEqual((self.build / "lib/lean/H0mework/Done.olean").read_bytes(), b"yes")
+
     def test_janitor_waits_for_compilation_trace(self):
         setup = self.file("ir/H0mework/Example.setup.json")
         trace = self.file("lib/lean/H0mework/Example.trace")
@@ -567,6 +612,44 @@ class ArtifactTests(unittest.TestCase):
         os.utime(trace, ns=(30, 30))
         self.assertEqual(completed_setup_files(self.build), 1)
         self.assertFalse(setup.exists())
+
+    def test_live_snapshot_excludes_unfinished_outputs_and_restores_settled_modules(self):
+        done = self.file("lib/lean/H0mework/Done.olean")
+        trace = self.file("lib/lean/H0mework/Done.trace")
+        pending = self.file("lib/lean/H0mework/Pending.olean")
+        stale = self.file("lib/lean/H0mework/Pending.trace")
+        self.file("lib/lean/H0mework/Untraced.olean")
+        for path, stamp in ((done, 10), (trace, 30), (pending, 40), (stale, 20)):
+            os.utime(path, ns=(stamp, stamp))
+        archive = self.root / "live.tar.zst"
+        self.assertEqual(pack_checkpoint(self.root, ["H0mework.Done", "H0mework.Pending", "H0mework.Untraced"], archive), 1)
+        destination = self.root / "destination"
+        unpack(destination, archive)
+        restored = destination / "Lean/.lake/build/lib/lean/H0mework"
+        self.assertEqual((restored / "Done.olean").read_bytes(), b"checked module")
+        self.assertFalse((restored / "Pending.olean").exists())
+        self.assertFalse((restored / "Untraced.olean").exists())
+
+    def test_outputs_changed_or_removed_during_copy_are_not_checkpointed(self):
+        original_copy = shutil.copy2
+        for remove in (False, True):
+            with self.subTest(remove=remove):
+                self.file("lib/lean/H0mework/Done.olean")
+                trace = self.file("lib/lean/H0mework/Done.trace")
+
+                def copy(source, target):
+                    result = original_copy(source, target)
+                    if source.suffix == ".olean":
+                        if remove:
+                            trace.unlink()
+                        else:
+                            trace.write_bytes(b"changed trace")
+                    return result
+
+                archive = self.root / "unstable.tar.zst"
+                with patch("ci_plan.shutil.copy2", side_effect=copy):
+                    self.assertEqual(pack_checkpoint(self.root, ["H0mework.Done"], archive), 0)
+                self.assertFalse(archive.exists())
 
 
 class FakeStore(ReleaseStore):
@@ -645,6 +728,23 @@ class StoreTests(unittest.TestCase):
         save_archive(store, "k", archive)
         self.assertEqual(list(store.entries()), ["k.tar.zst"])
 
+    @unittest.skipUnless(shutil.which("zstd"), "zstd is required")
+    def test_live_checkpoint_is_resumable_progress_and_never_a_verified_part(self):
+        build = self.root / "Lean/.lake/build/lib/lean/H0mework"
+        build.mkdir(parents=True)
+        (build / "Done.olean").write_bytes(b"checked module")
+        (build / "Done.trace").write_bytes(b"finished")
+        plan = {"version": "v1", "compatibility": "c", "parts": {"s1-01": {
+            "fingerprint": "content", "modules": ["H0mework.Done"]}}}
+        store = FakeStore()
+        save = ci_plan.live_checkpoint(self.root, plan, "s1-01", store, "31", "2")
+        self.assertTrue(save())
+        key = ci_plan.part_key(plan, "s1-01")
+        chosen, verified = restore_choice(store.entries(), key, ci_plan.part_prefix(plan, "s1-01"))
+        self.assertTrue(chosen.startswith(key + "-31-2-checkpoint-"))
+        self.assertFalse(verified)
+        self.assertFalse((self.root / ".local/ci/cache/s1-01.checkpoint.tar.zst").exists())
+
     def test_prune_keeps_current_archives_and_waits_until_all_are_stored(self):
         store, archive = FakeStore(), self.file("part", b"outputs")
         tag = ci_plan.platform_tag()
@@ -656,6 +756,76 @@ class StoreTests(unittest.TestCase):
         store.put(sorted(current)[1], archive)
         self.assertEqual(prune_store(store, current), sorted(stale))
         self.assertEqual(set(store.entries()), current | {"unrelated.bin"})
+
+
+class ContinuationTests(unittest.TestCase):
+    def setUp(self):
+        self.plan = {"version": "v1", "compatibility": "c", "parts": {
+            "s1-01": {"fingerprint": "one"}, "s1-02": {"fingerprint": "two"}}}
+        self.store = FakeStore()
+        self.store.open(create=True)
+        self.jobs, self.artifacts = [], []
+
+    def saved(self, part="s1-01", run="31", attempt="2", checkpoint=True):
+        name = ci_plan.part_key(self.plan, part) + f"-{run}-{attempt}"
+        name += "-checkpoint-10.tar.zst" if checkpoint else ".tar.zst"
+        self.store.assets[name] = {"id": name, "created_at": "2026-10-07"}
+
+    def job(self, conclusion="cancelled"):
+        self.jobs.append({"name": "Lean 阶段 1 (s1-01) / build", "conclusion": "failure",
+                          "steps": [{"name": "Build part using Lake freshness checks", "conclusion": conclusion}]})
+
+    def resume(self):
+        def api(method, path):
+            self.assertEqual(method, "GET")
+            kind = "jobs" if "/jobs?" in path else "artifacts"
+            data = self.jobs if kind == "jobs" else self.artifacts
+            page = int(path.split("page=")[-1].split("&")[0])
+            return {kind: data[(page - 1) * 100:page * 100]}
+        with patch.object(self.store, "api", side_effect=api):
+            return continuation_parts(self.store, self.plan, "31", "2")
+
+    def test_runner_shutdown_with_a_current_checkpoint_resumes(self):
+        self.job()
+        self.saved()
+        self.assertEqual(self.resume(), ["s1-01"])
+
+    def test_compiler_failure_is_not_retried_even_with_saved_progress(self):
+        self.job("failure")
+        self.saved()
+        self.assertEqual(self.resume(), [])
+
+    def test_another_parts_compiler_failure_stops_the_whole_continuation(self):
+        self.job()
+        self.saved()
+        self.jobs.append({"name": "Lean 阶段 1 (s1-02) / build", "conclusion": "failure",
+                          "steps": [{"name": "Build part using Lake freshness checks", "conclusion": "failure"}]})
+        self.assertEqual(self.resume(), [])
+
+    def test_shutdown_without_current_matching_progress_does_not_loop(self):
+        self.job()
+        for kwargs in ({}, {"attempt": "1"}, {"run": "30"}, {"part": "s1-02"}):
+            with self.subTest(kwargs=kwargs):
+                self.store.assets.clear()
+                if kwargs:
+                    self.saved(**kwargs)
+                self.assertEqual(self.resume(), [])
+
+    def test_deadline_requires_a_current_marker_and_saved_progress(self):
+        self.job("failure")
+        self.saved(checkpoint=False)
+        self.artifacts = [{"name": "lean-incomplete-s1-01-1", "expired": False}]
+        self.assertEqual(self.resume(), [])
+        self.artifacts = [{"name": "lean-incomplete-s1-01-2", "expired": True}]
+        self.assertEqual(self.resume(), [])
+        self.artifacts[0]["expired"] = False
+        self.assertEqual(self.resume(), ["s1-01"])
+
+    def test_job_pagination_keeps_later_interrupted_parts(self):
+        self.jobs = [{"name": "other", "conclusion": "success", "steps": []}] * 100
+        self.job()
+        self.saved()
+        self.assertEqual(self.resume(), ["s1-01"])
 
 
 if __name__ == "__main__":

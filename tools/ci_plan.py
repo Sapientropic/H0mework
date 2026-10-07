@@ -27,6 +27,8 @@ import urllib.error
 import urllib.parse
 import urllib.request
 
+from first_release import build_environment
+
 
 CACHE_VERSION = "lean-parts-v1"
 # Changing these re-runs the complete-selection check; part caches stay valid.
@@ -517,13 +519,17 @@ def stop_group(process: subprocess.Popen, grace: float):
 
 
 def build_part(root: Path, part: dict, check_only: bool = False, output: Path | None = None,
-               deadline: float | None = None) -> int:
+               deadline: float | None = None, checkpoint=None, checkpoint_interval: float = 300) -> int:
     append_outputs(output, {"started": "true"})
     if not part["targets"]:
         append_outputs(output, {"current": "true", "status": "complete", "built": 0})
         return 0
     command = ["lake", "--no-build", "build", *part["targets"]]
-    probe = subprocess.run(command, cwd=root / "Lean", capture_output=True, text=True)
+    environment = build_environment()
+    # The cache client uses the token; Lake and its compiler children do not.
+    environment.pop("GH_TOKEN", None)
+    print(f"Lean runtime: LEAN_NUM_THREADS={environment['LEAN_NUM_THREADS']}", flush=True)
+    probe = subprocess.run(command, cwd=root / "Lean", capture_output=True, text=True, env=environment)
     append_outputs(output, {"current": str(probe.returncode == 0).lower()})
     if probe.returncode == 0:
         print(f"All {part['module_count']} module artifacts are current")
@@ -536,6 +542,8 @@ def build_part(root: Path, part: dict, check_only: bool = False, output: Path | 
     build = root / "Lean/.lake/build"
     started = time.time_ns()
     stopped = None
+    progress_modules = part.get("progress_modules", part["modules"])
+    checkpoint_built = 0
 
     def interrupted(signum, frame):
         nonlocal stopped
@@ -545,11 +553,18 @@ def build_part(root: Path, part: dict, check_only: bool = False, output: Path | 
     try:
         # Lake decides freshness; a cache hit never bypasses resource/hash checks.
         process = subprocess.Popen(["lake", "build", *part["targets"]], cwd=root / "Lean",
-                                   start_new_session=True)
+                                   start_new_session=True, env=environment)
         swept = time.monotonic()
+        checkpointed = swept
         while process.poll() is None and not stopped:
             if deadline is not None and time.time() >= deadline:
                 stopped = "incomplete"
+            elif checkpoint and time.monotonic() - checkpointed >= checkpoint_interval:
+                built = built_since(build, progress_modules, started)
+                if built > checkpoint_built and checkpoint():
+                    checkpoint_built = built
+                    print(f"Saved live progress after {built} completed modules", flush=True)
+                checkpointed = time.monotonic()
             elif time.monotonic() - swept >= 5:
                 completed_setup_files(build)
                 swept = time.monotonic()
@@ -566,7 +581,6 @@ def build_part(root: Path, part: dict, check_only: bool = False, output: Path | 
     code = {"incomplete": 75, "cancelled": 130}.get(stopped, process.returncode)
     status = stopped or ("complete" if code == 0 else "failed")
     # Same-stage imports may be owned by another shard but are useful progress here.
-    progress_modules = part.get("progress_modules", part["modules"])
     built = built_since(build, progress_modules, started)
     append_outputs(output, {"status": status, "built": built})
     print(f"{status}: {built} of {len(progress_modules)} build-scope modules built in this job")
@@ -603,6 +617,44 @@ def pack(root: Path, modules: list[str], archive: Path):
         temporary.unlink(missing_ok=True)
 
 
+def pack_checkpoint(root: Path, modules: list[str], archive: Path) -> int:
+    """Snapshot settled module outputs while Lake continues compiling."""
+    build = root / "Lean/.lake/build"
+    archive.parent.mkdir(parents=True, exist_ok=True)
+    with tempfile.TemporaryDirectory(dir=archive.parent) as temporary:
+        snapshot = Path(temporary)
+        copied = []
+        for name in modules:
+            files = list(artifact_files(build, [name]))
+            stem = build / "lib/lean" / Path(*name.split("."))
+            trace, olean = stem.with_suffix(".trace"), stem.with_suffix(".olean")
+            destinations = []
+            try:
+                before = {p: (p.stat().st_size, p.stat().st_mtime_ns) for p in files}
+                if trace not in before or olean not in before:
+                    continue
+                # Lake writes the compilation trace after the module's outputs.
+                if any(stamp[1] > before[trace][1] for stamp in before.values()):
+                    continue
+                for source in files:
+                    target = snapshot / "Lean/.lake/build" / source.relative_to(build)
+                    target.parent.mkdir(parents=True, exist_ok=True)
+                    destinations.append(target)
+                    shutil.copy2(source, target)
+                after = {p: (p.stat().st_size, p.stat().st_mtime_ns) for p in files}
+                unchanged = before == after and files == list(artifact_files(build, [name]))
+            except FileNotFoundError:
+                unchanged = False
+            if unchanged:
+                copied.append(name)
+            else:
+                for target in destinations:
+                    target.unlink(missing_ok=True)
+        if copied:
+            pack(snapshot, copied, archive)
+        return len(copied)
+
+
 def unpack(root: Path, archive: Path):
     build = root / "Lean/.lake/build"
     build.mkdir(parents=True, exist_ok=True)
@@ -616,6 +668,12 @@ def unpack(root: Path, archive: Path):
                 if not (member.name.startswith("lib/lean/") or member.name.startswith("ir/")):
                     raise ValueError(f"Unexpected artifact archive entry: {member.name}")
                 tar.extract(member, build, filter="data")
+        # tar stops at its end marker before zstd has necessarily emitted the padding.
+        while decompressor.stdout.read(1 << 20):
+            pass
+    except BaseException:
+        decompressor.terminate()
+        raise
     finally:
         decompressor.stdout.close()
         code = decompressor.wait()
@@ -813,6 +871,65 @@ def save_archive(store: ReleaseStore, key: str, archive: Path, progress: str | N
     store.remove([n for n in store.entries() if n.startswith(key + "-") and n != name])
 
 
+def live_checkpoint(root: Path, plan: dict, name: str, store: ReleaseStore, run: str, attempt: str):
+    archive = root / ".local/ci/cache" / f"{name}.checkpoint.tar.zst"
+    archive.parent.mkdir(parents=True, exist_ok=True)
+    modules = plan["parts"][name].get("progress_modules", plan["parts"][name]["modules"])
+
+    def save():
+        def upload():
+            if not pack_checkpoint(root, modules, archive):
+                return False
+            progress = f"{run}-{attempt}-checkpoint-{time.time_ns()}"
+            save_archive(store, part_key(plan, name), archive, progress)
+            return True
+        try:
+            return store_call(upload, False)
+        finally:
+            archive.unlink(missing_ok=True)
+
+    return save
+
+
+def continuation_parts(store: ReleaseStore, plan: dict, run: str, attempt: str) -> list[str]:
+    def items(kind):
+        page = 1
+        while True:
+            query = f"per_page=100&page={page}" + ("&filter=latest" if kind == "jobs" else "")
+            batch = store.api("GET", f"actions/runs/{run}/{kind}?{query}")[kind]
+            yield from batch
+            if len(batch) < 100:
+                return
+            page += 1
+
+    markers = {a["name"] for a in items("artifacts") if not a["expired"]}
+    interrupted = set()
+    for job in items("jobs"):
+        match = re.search(r"\((s[1-8]-[0-9]+)\) / build$", job["name"])
+        if job["conclusion"] != "failure":
+            continue
+        # A real compiler/setup/evidence failure must stop the whole continuation.
+        if not match:
+            return []
+        name = match[1]
+        if (any(s["conclusion"] == "failure" for s in job["steps"])
+                and f"lean-incomplete-{name}-{attempt}" not in markers):
+            return []
+        if any(
+                s["name"] == "Build part using Lake freshness checks" and s["conclusion"] == "cancelled"
+                for s in job["steps"]):
+            interrupted.add(name)
+    entries = store.entries()
+    resumable = []
+    for name in plan["parts"]:
+        if name not in interrupted and f"lean-incomplete-{name}-{attempt}" not in markers:
+            continue
+        progress = part_key(plan, name) + f"-{run}-{attempt}"
+        if progress + ".tar.zst" in entries or any(n.startswith(progress + "-checkpoint-") for n in entries):
+            resumable.append(name)
+    return sorted(resumable)
+
+
 def prune_store(store: ReleaseStore, keep: set[str]) -> list[str]:
     entries = store.entries()
     # Older versions stay as fallbacks until every current archive is stored.
@@ -838,7 +955,7 @@ def coverage(root: Path, plan: dict) -> tuple[set[str], set[str]]:
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("command", choices=["plan", "part", "build", "pack", "unpack", "times",
-                                            "fetch", "save", "sealed", "seal", "prune", "coverage"])
+                                            "fetch", "save", "sealed", "seal", "prune", "coverage", "continuation"])
     parser.add_argument("logs", nargs="*", type=Path, help="Lake build logs read by `times`")
     parser.add_argument("--root", type=Path, default=Path.cwd())
     parser.add_argument("--plan", type=Path, default=Path(".local/ci/plan.json"))
@@ -915,9 +1032,14 @@ def main():
             if names:
                 print(f"{len(names)} modules {label}: {sorted(names)[:20]}", file=sys.stderr)
         raise SystemExit(1 if unowned or unlisted else 0)
+    if args.command == "continuation":
+        parts = continuation_parts(store, plan, os.environ["GITHUB_RUN_ID"], os.environ["GITHUB_RUN_ATTEMPT"])
+        append_outputs(args.output, {"resume": str(bool(parts)).lower()})
+        print(f"Resumable parts: {', '.join(parts)}" if parts else "No interrupted part has saved new progress")
+        return
     part = plan["parts"][args.part]
     archive = args.archive or root / ".local/ci/cache" / f"{args.part}.tar.zst"
-    if store and snapshot.is_file():
+    if store and snapshot.is_file() and args.command == "fetch":
         store.load(snapshot)
     if args.command == "part":
         outputs = {"prefix": f"{plan['version']}-{plan['compatibility']}-{args.part}-",
@@ -936,7 +1058,11 @@ def main():
         if store:
             store_call(lambda: save_archive(store, part_key(plan, args.part), archive, args.progress))
     elif args.command == "build":
-        raise SystemExit(build_part(root, part, args.check_only, args.output, args.deadline))
+        checkpoint = None
+        if store and os.environ.get("STORE_WRITES") == "true" and not args.check_only:
+            checkpoint = live_checkpoint(root, plan, args.part, store,
+                                         os.environ["GITHUB_RUN_ID"], os.environ["GITHUB_RUN_ATTEMPT"])
+        raise SystemExit(build_part(root, part, args.check_only, args.output, args.deadline, checkpoint))
     else:
         modules = part.get("progress_modules", part["modules"]) if args.checkpoint else part["modules"]
         pack(root, modules, archive)

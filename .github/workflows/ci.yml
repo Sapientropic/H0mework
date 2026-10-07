@@ -212,7 +212,7 @@ jobs:
       part: complete
 
   continue:
-    name: 到期续跑
+    name: 中断续跑
     needs: [lean-s1, lean-s2, lean-s3, lean-s4, lean-s5, lean-s6, lean-s7, lean-s8, lean-complete]
     if: >-
       !cancelled() && contains(needs.*.result, 'failure') && github.ref == 'refs/heads/main'
@@ -221,19 +221,27 @@ jobs:
     timeout-minutes: 5
     permissions:
       actions: write
+      # Reading the draft proof store requires push access.
+      contents: write
     steps:
-      - name: Continue parts that stopped at their deadline
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/download-artifact@v4
+        with:
+          name: lean-plan
+          path: .local/ci
+      - name: Find interrupted parts with saved progress
+        id: resume
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 tools/ci_plan.py continuation --output "$GITHUB_OUTPUT"
+      - name: Continue from saved progress
+        if: steps.resume.outputs.resume == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
           CONTINUATION: ${{ inputs.continuation || 0 }}
         run: |
-          stopped=$(gh api --paginate "repos/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID/artifacts" \
-            --jq '.artifacts[].name | select(startswith("lean-incomplete-"))')
-          if [ -z "$stopped" ]; then
-            echo "No part stopped at its deadline with new progress"
-            exit 0
-          fi
-          echo "$stopped"
           if [ "$CONTINUATION" -ge 12 ]; then
             echo "::error::Stopped after $CONTINUATION continuation runs"
             exit 1
