@@ -1,6 +1,6 @@
 # Zenodo 上传元数据
 
-由 `python3 shared/scripts/zenodo_metadata.py` 从正文生成；改稿后重新生成。字段按 Zenodo 上传页的顺序排列，逐项复制。Zenodo 记录发布后不能删除，只能发新版本。
+由 `python3 shared/scripts/zenodo_metadata.py` 从正文生成；改稿后重新生成。字段按 Zenodo 上传页的顺序排列，逐项复制。发布前保存草稿并预览；发布后的更正与删除规则见 [Zenodo 记录管理](https://help.zenodo.org/docs/deposit/manage-records/)，修订文件使用 [版本管理](https://help.zenodo.org/docs/deposit/manage-versions/)。
 
 ## Files（上传）
 
@@ -13,6 +13,10 @@
 
 Publication → Preprint
 
+## Digital Object Identifier (DOI)
+
+已有本文的 DOI 时填写原 DOI；没有时选择 No，并可用 Get a DOI now! 在草稿中预留。DOI 在记录发布时注册。操作见 [Zenodo DOI 指南](https://help.zenodo.org/docs/deposit/describe-records/reserve-doi/)。
+
 ## Title
 
 The State Is Not the History, the Source Is: Identity, Responsibility, and Minimal Revision in Processes
@@ -23,7 +27,7 @@ The State Is Not the History, the Source Is: Identity, Responsibility, and Minim
 
 ## Publication date
 
-上传当天（Zenodo 默认值）。
+填写本版本首次公开的日期。草稿默认值是创建日，发布时核对；见 [Zenodo 上传指南](https://help.zenodo.org/docs/deposit/create-new-upload/)。
 
 ## Creators
 
@@ -76,7 +80,7 @@ v1
 
 ## Related works
 
-- Relation：Is supplemented by；Identifier：https://github.com/Sapientropic/H0mework/tree/234817b3c3f7a1023226e7a4fdb8660ddcbc9d0a（commit `234817b3c3f7a1023226e7a4fdb8660ddcbc9d0a`）；Scheme：URL；Resource type：Software
+- Relation：Is supplemented by；Identifier：https://github.com/Sapientropic/H0mework/tree/234817b3c3f7a1023226e7a4fdb8660ddcbc9d0a；Scheme：URL；Resource type：Software
 
 ## Notes（可选）
 

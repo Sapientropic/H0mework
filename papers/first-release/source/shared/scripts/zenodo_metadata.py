@@ -86,11 +86,10 @@ def write(paper: str, zh_name: str, en_name: str | None, pdfs: list[str]) -> Pat
         files.append(f"- `{pdf.relative_to(ROOT)}`（{pages(pdf)} 页）")
     out = base / "zenodo-metadata.md"
     binding = re.search(r"H0mework 固定提交 `([0-9a-f]{40})`", zh)
-    code_relation = (f"{CODE}/tree/{binding[1]}（commit `{binding[1]}`）"
-                     if binding else f"{CODE}（tag `{TAG}`）")
+    code_relation = f"{CODE}/tree/{binding[1] if binding else TAG}"
     out.write_text(f"""# Zenodo 上传元数据
 
-由 `python3 shared/scripts/zenodo_metadata.py` 从正文生成；改稿后重新生成。字段按 Zenodo 上传页的顺序排列，逐项复制。Zenodo 记录发布后不能删除，只能发新版本。
+由 `python3 shared/scripts/zenodo_metadata.py` 从正文生成；改稿后重新生成。字段按 Zenodo 上传页的顺序排列，逐项复制。发布前保存草稿并预览；发布后的更正与删除规则见 [Zenodo 记录管理](https://help.zenodo.org/docs/deposit/manage-records/)，修订文件使用 [版本管理](https://help.zenodo.org/docs/deposit/manage-versions/)。
 
 ## Files（上传）
 
@@ -99,6 +98,10 @@ def write(paper: str, zh_name: str, en_name: str | None, pdfs: list[str]) -> Pat
 ## Resource type
 
 Publication → Preprint
+
+## Digital Object Identifier (DOI)
+
+已有本文的 DOI 时填写原 DOI；没有时选择 No，并可用 Get a DOI now! 在草稿中预留。DOI 在记录发布时注册。操作见 [Zenodo DOI 指南](https://help.zenodo.org/docs/deposit/describe-records/reserve-doi/)。
 
 ## Title
 
@@ -110,7 +113,7 @@ Publication → Preprint
 
 ## Publication date
 
-上传当天（Zenodo 默认值）。
+填写本版本首次公开的日期。草稿默认值是创建日，发布时核对；见 [Zenodo 上传指南](https://help.zenodo.org/docs/deposit/create-new-upload/)。
 
 ## Creators
 
