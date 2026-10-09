@@ -1,5 +1,4 @@
-import H0mework.Versions.C62.Realization.Operations.Tree.Fold.Dependent.Branch.JointQuery.Actor.Operation.Query.Inventory.Observer.CurrentChild.Dynamic.Live.Native.Action.Coupled.Registry.Calculation.Common.Feedback.Continuation.SourceFamily.Foresight.Contextual.Profile.Finite.Reader.Difference.Incoming
-import H0mework.Versions.C62.Realization.Operations.Tree.Fold.Dependent.Branch.JointQuery.Actor.Operation.Query.Inventory.Observer.CurrentChild.Dynamic.Live.Native.Action.Coupled.Registry.Calculation.Common.Feedback.Continuation.SourceFamily.Foresight.Contextual.Profile.Finite.Indexed
+import SaturationMonoid.GenericFoundation.Operations.Native.Tree.Fold.Dependent.Branch.JointQuery.Actor.Operation.Query.Inventory.Observer.CurrentChild.Dynamic.Live.Native.Action.Coupled.Registry.Calculation.Common.Feedback.Continuation.SourceFamily.Foresight.Contextual.Profile.Finite.Indexed
 
 set_option autoImplicit false
 noncomputable section
@@ -55,9 +54,7 @@ def configuration:E.Programme (PhysicalValue:=Lower.Value W n) (PhysicalVar:=X) 
  datum sourceFrame:={
    component:=some (combined binding n seed sourceFrame)
    reader:=((Original.configuration binding n seed).datum sourceFrame).reader
-   calculationReader:=
-     Lower.SourceFamily.Foresight.Contextual.Profile.FiniteSource.Indexed.ReaderResidual.ForwardDifference.Incoming.calculationReader
-      sourceFrame ((Original.configuration binding n seed).datum sourceFrame)
+   calculationReader:=none
    nextEnvironmentRead:=((Original.configuration binding n seed).datum sourceFrame).nextEnvironmentRead
    nextEnvironmentReadAt:=((Original.configuration binding n seed).datum sourceFrame).nextEnvironmentReadAt}
  nextInventory:=(Original.configuration binding n seed).nextInventory
