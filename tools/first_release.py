@@ -319,10 +319,38 @@ def package_entries(claims: list[dict], package: dict) -> list[tuple[dict, str, 
     selected = [item for item in claim_entries(claims) if entry_kind(item[1], item[3]) == "lean"
                 and item[0]["paper"] == package.get("paper")
                 and (ids is None or item[0]["id"] in ids) and item[3].get("source_commit") in commits]
+    paths = None
+    if "source_paths" in package:
+        values = package["source_paths"]
+        if not isinstance(values, list) or not values:
+            raise ReleaseError(f"Invalid source_paths for package: {package['id']}")
+        for path in values:
+            if relative_path(path) != path or PurePosixPath(path).suffix != ".lean":
+                raise ReleaseError(f"Package source_paths must be exact relative Lean paths: {package['id']}")
+        paths = set(values)
+        if len(paths) != len(values):
+            raise ReleaseError(f"Duplicate source_paths for package: {package['id']}")
+        missing = paths - {item[3].get("source_path") for item in selected}
+        if missing:
+            raise ReleaseError(f"Package source_paths have no selected same-epoch proof entries: {package['id']}: {sorted(missing)}")
+        # Original audit and certification prefixes can define the same names
+        # in independent environments; selection preserves both claim entries.
+        selected = [item for item in selected if item[3]["source_path"] in paths]
     if not selected:
         raise ReleaseError(f"Package has no selected mapped proof entries: {package['id']}")
     if any(item[3].get("public") is None for item in selected):
         raise ReleaseError(f"Package still has pending public proof entries: {package['id']}")
+    if paths is not None:
+        for _, _, _, entry in selected:
+            public = entry["public"]
+            if not isinstance(public, dict):
+                raise ReleaseError(f"Selected package source public must be an object: {entry['source_path']}")
+            module_name(public.get("module"))
+            declarations = entry.get("declarations")
+            if not isinstance(declarations, list) or not declarations:
+                raise ReleaseError(f"Selected package source has no declaration roots: {entry['source_path']}")
+            for declaration in declarations:
+                declaration_name(declaration)
     return selected
 
 

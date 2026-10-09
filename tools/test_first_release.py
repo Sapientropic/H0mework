@@ -101,6 +101,13 @@ class FirstReleaseTests(unittest.TestCase):
         self.data["claims"][0]["producers"].append(entry)
         return entry
 
+    def add_same_epoch_consumer(self):
+        self.add_package("B", "1" * 40)
+        consumer = self.data["claims"].pop()["producers"][0]
+        package = self.data["proof_packages"].pop()
+        self.data["claims"][0]["direct_consumers"].append(consumer)
+        return consumer, package
+
     def test_mapped_identity_does_not_certify_pending_kernel(self):
         result = f.verify_map(self.root)
         self.assertTrue(result["ok"])
@@ -188,6 +195,98 @@ class FirstReleaseTests(unittest.TestCase):
             result = f.execute("build", self.root, f.MAP, ".local/proof-only-build")
         self.assertTrue(result["ok"])
         self.assertFalse(f.verify_map(self.root, require_ready=True)["ok"])
+
+    def test_source_paths_absent_preserves_all_same_epoch_entries(self):
+        consumer, _ = self.add_same_epoch_consumer()
+        package = self.data["proof_packages"][0]
+        entries = f.package_entries(f.selected_claims(self.data), package)
+        self.assertEqual([item[3] for item in entries], [self.entry, consumer])
+        with self.assertRaisesRegex(f.ReleaseError, "mixes different owners"):
+            f.audit_source(package, entries)
+
+    def test_source_paths_keep_same_name_consumers_in_separate_environments(self):
+        consumer, consumer_package = self.add_same_epoch_consumer()
+        main_package = self.data["proof_packages"][0]
+        main_package["source_paths"] = [self.entry["source_path"]]
+        consumer_package["source_paths"] = [consumer["source_path"]]
+        self.data["proof_packages"].append(consumer_package)
+        self.save()
+        with patch.object(f, "run_process", side_effect=self.fake_run):
+            build = f.execute("build", self.root, f.MAP, ".local/partitioned-build")
+            trust = f.execute("trust", self.root, f.MAP, ".local/partitioned-trust")
+        self.assertTrue(build["ok"])
+        self.assertTrue(trust["ok"])
+        self.assertEqual(build["identity_scope"]["proof_entries"], 2)
+        self.assertEqual(self.calls[0], ["lake", "build", main_package["lean_target"], consumer_package["lean_target"]])
+        owners = [run["audit_scope"]["declarations"] for run in trust["results"]]
+        self.assertEqual(owners, [{"Example.value": self.entry["public"]["module"]},
+                                  {"Example.value": consumer["public"]["module"]}])
+        self.assertEqual(self.data["claims"][0]["producers"], [self.entry])
+        self.assertEqual(self.data["claims"][0]["direct_consumers"], [consumer])
+
+    def test_source_paths_override_selects_exact_original_path(self):
+        consumer, consumer_package = self.add_same_epoch_consumer()
+        main_package = self.data["proof_packages"][0]
+        main_package.update(source_paths=[consumer["source_path"]], lean_target=consumer_package["lean_target"])
+        self.save()
+        with patch.object(f, "run_process", side_effect=self.fake_run):
+            result = f.execute("build", self.root, f.MAP, ".local/explicit-consumer")
+        self.assertTrue(result["ok"])
+        self.assertEqual(result["identity_scope"]["proof_entries"], 1)
+        self.assertEqual(self.calls, [["lake", "build", consumer_package["lean_target"]]])
+
+    def test_source_paths_do_not_guess_nearby_paths_or_other_epoch_claims(self):
+        package = self.data["proof_packages"][0]
+        for path in ("Original/A.lean", "Lean/Original/A.lean.bak.lean", "Lean/Original/a.lean", "Lean/Original/*.lean"):
+            with self.subTest(path=path), self.assertRaisesRegex(f.ReleaseError, "same-epoch proof entries"):
+                package["source_paths"] = [path]
+                f.package_entries(f.selected_claims(self.data), package)
+        consumer, _ = self.add_same_epoch_consumer()
+        package["source_paths"] = [consumer["source_path"]]
+        consumer["source_commit"] = "2" * 40
+        with self.assertRaisesRegex(f.ReleaseError, "same-epoch proof entries"):
+            f.package_entries(f.selected_claims(self.data), package)
+        consumer["source_commit"] = "1" * 40
+        self.data["claims"][0]["direct_consumers"].remove(consumer)
+        self.data["claims"].append({"id": "core.consumer", "paper": "other-paper", "selection_status": "provisional",
+                                    "producers": [consumer], "direct_consumers": [], "resources": []})
+        with self.assertRaisesRegex(f.ReleaseError, "same-epoch proof entries"):
+            f.package_entries(f.selected_claims(self.data), package)
+        self.data["claims"][-1]["paper"] = "core"
+        package["claim_ids"] = ["core.A"]
+        with self.assertRaisesRegex(f.ReleaseError, "same-epoch proof entries"):
+            f.package_entries(f.selected_claims(self.data), package)
+
+    def test_source_paths_reject_empty_duplicate_nonlean_and_unsafe_selection(self):
+        package = self.data["proof_packages"][0]
+        invalid = (None, [], "Lean/Original/A.lean", [self.entry["source_path"]] * 2,
+                   ["../A.lean"], ["/tmp/A.lean"], ["Lean\\A.lean"], ["Lean/A.json"],
+                   ["Lean//Original/A.lean"], ["Lean/Original/A.lean/"], [None])
+        for values in invalid:
+            with self.subTest(values=values), self.assertRaises(f.ReleaseError):
+                package["source_paths"] = values
+                f.package_entries(f.selected_claims(self.data), package)
+
+    def test_source_paths_require_actual_public_module_and_roots(self):
+        package = self.data["proof_packages"][0]
+        package["source_paths"] = [self.entry["source_path"]]
+        original = copy.deepcopy(self.entry)
+        for changes in ({"public": None}, {"public": "pending"}, {"public": {"module": None}},
+                        {"declarations": []}, {"declarations": ["invalid/name"]}):
+            with self.subTest(changes=changes), self.assertRaises(f.ReleaseError):
+                self.entry.clear()
+                self.entry.update(copy.deepcopy(original))
+                self.entry.update(changes)
+                f.package_entries(f.selected_claims(self.data), package)
+
+    def test_source_paths_do_not_bypass_real_aggregator_consumption(self):
+        consumer, _ = self.add_same_epoch_consumer()
+        self.data["proof_packages"][0]["source_paths"] = [consumer["source_path"]]
+        self.save()
+        with patch.object(f, "run_process", side_effect=self.fake_run), self.assertRaisesRegex(f.ReleaseError, "not consumed"):
+            f.execute("build", self.root, f.MAP, ".local/unconsumed-selected-source")
+        self.assertFalse(self.calls)
+        self.assertFalse((self.root / ".local/unconsumed-selected-source").exists())
 
     def test_lean_entry_cannot_be_reclassified_to_skip_its_kernel_gate(self):
         self.entry["kind"] = "artifact"
