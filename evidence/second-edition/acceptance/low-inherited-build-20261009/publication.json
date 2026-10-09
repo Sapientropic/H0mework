@@ -1,0 +1,53 @@
+{
+  "schema": "h0mework/edition-execution-archive@1",
+  "status": "passed",
+  "kind": "build",
+  "inputs_unchanged": true,
+  "packages": [
+    "low-energy-phenomenology",
+    "low-energy-loop-response",
+    "low-energy-inherited-26b91feb-physics-common-source-ae",
+    "low-energy-inherited-aef0ad2a-physics-common-source-ad",
+    "low-energy-inherited-b67aa48c-physics-common-source-ac"
+  ],
+  "files": [
+    {
+      "original_runtime_path": ".local/second-edition-20261009/low-inherited-public-build/build.log",
+      "public_path": "evidence/second-edition/acceptance/low-inherited-build-20261009/build.log.zst",
+      "source_sha256": "506f97243a759d37b9e07206e5f68213d5973c5254419bc063eb39cad5bcd15f",
+      "target_sha256": "ae82d453be9a37c199bdcea22c99b3393d1109804982de8f8b33e8c603e7a737",
+      "transforms": [
+        {
+          "kind": "literal-runtime-roots",
+          "project_replacement": ".",
+          "elan_replacement": "runtime/elan"
+        },
+        {
+          "kind": "zstd",
+          "level": 19,
+          "uncompressed_sha256": "b7cfbb688c12507869ecd418de0b198ff4126e27c541f250477789afb8d9aca5",
+          "uncompressed_bytes": 298366523,
+          "compressed_bytes": 15671707
+        }
+      ]
+    },
+    {
+      "original_runtime_path": ".local/second-edition-20261009/low-inherited-public-build/result.json",
+      "public_path": "evidence/second-edition/acceptance/low-inherited-build-20261009/result.json",
+      "source_sha256": "a4e21e5ec2de9bbaef638c71d9c9ca3b0ce9ea88428059cb45d590278f1d3632",
+      "target_sha256": "1fbbe85515f4ad0d4a73bafcb511c45eadc30aaa46805511b09f677f86697f0e",
+      "publication": {
+        "kind": "declared-runtime-paths/v2",
+        "runtime_paths": [
+          {
+            "pointer": "/results/0/log",
+            "relative": "evidence/second-edition/acceptance/low-inherited-build-20261009/build.log.zst"
+          }
+        ],
+        "payload_sha256": "1fbbe85515f4ad0d4a73bafcb511c45eadc30aaa46805511b09f677f86697f0e"
+      }
+    }
+  ],
+  "receipt": "evidence/second-edition/acceptance/low-inherited-build-20261009/result.json",
+  "original_source_certification": "Separate from this local public execution."
+}

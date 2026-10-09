@@ -1,0 +1,1429 @@
+{
+  "schema": "h0mework/first-release-trust@1",
+  "kind": "trust",
+  "ok": true,
+  "input_identity": {
+    "sha256": {
+      "claim_map": "fe6c77c2dbba60df2d19e3b72bcf9050e75516c3550cb245d05b9fefc8e9b156",
+      "export_map": "3571df167fd4d48ef87a827106b137dd4bdde1a5f7ca13d7201c719086faf4bd",
+      "lakefile": "41659610733e6ae72a3e552a4d2ebee719916ebf29f5c7240ac244749ef26b7f",
+      "toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+      "manifest": "2fe02acc26899fd57d82018e711e79c251e26d0b6d2bb370af81db0ed312fbfd"
+    },
+    "package_inputs": {
+      "low-energy-phenomenology": "414cb8c7c74ff810f5e2a7bc3e1715e68da3e17242fec0c695ac13ca482b9625",
+      "low-energy-loop-response": "d0f24c2b22dd4dcc40d0c44273a7e7806c4a2176a9fdf2e6bd9269e12a913765",
+      "low-energy-inherited-26b91feb-physics-common-source-ae": "9f881fb1d120f509b5f7de983fc2f92cab95036a8358958623d49d47f262658a",
+      "low-energy-inherited-aef0ad2a-physics-common-source-ad": "f9a0fba4050bc51049b5e4cd057db193d888d71e51efd397c98a6178d2af8c85",
+      "low-energy-inherited-b67aa48c-physics-common-source-ac": "37be1fdcacb1c3f3858d409d937d7b47beb6f067bf67526e19c7ebcca5b66cc6"
+    }
+  },
+  "settings": {
+    "toolchain_pin": "leanprover/lean4:v4.33.0",
+    "package_moreLeanArgs": [
+      "--trust=0",
+      "-Dweak.linter.unnecessarySimpa=false",
+      "-Dweak.linter.style.haveILetI=false",
+      "-Dweak.linter.unusedSimpArgs=false"
+    ],
+    "package_weakLeanArgs": [
+      "-DmaxHeartbeats=2000000",
+      "-Dweak.linter.unusedSectionVars=false",
+      "-Dweak.linter.unnecessarySeqFocus=false",
+      "-Dweak.linter.unusedVariables=false",
+      "-Dweak.linter.unreachableTactic=false",
+      "-Dweak.linter.unusedTactic=false",
+      "-Dweak.linter.defProp=false",
+      "-Dweak.linter.deprecated=false",
+      "-Dlinter.deprecated=false",
+      "-Dweak.linter.tacticAnalysis.introMerge=false",
+      "-Dweak.linter.constructorNameAsVariable=false"
+    ],
+    "libraries": [
+      {
+        "name": "H0mework",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_15a9a7f1af9edd94",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_3606f5269412e357",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_d700e8a5f12a0c72",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_1e1ae4b55cfaa424",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_5d60190f8c552243",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_c8f26eb536eba11f",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_05819243d0f03058",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_42d0393dda443953",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_662d860139605627",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_c5ce7c98c6fb2afe",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_4306926d26d3e100",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_524380564da88277",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_598bc2100d4a470f",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_f16f09d592d9fed1",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_38dd326bee1881e5",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_a5be13c98d55de59",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_a8ba570880d786e7",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_e94628c12cb5af16",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_e615fc1eae897d2f",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_3ec8ead604397acb",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_f3b844eed8451357",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_fb8213f28d86d220",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_343b97a439466c84",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_e7aebe388314d626",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_5ee63fcc1d2eabc2",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_048d35b0f13ffddc",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_8a02641b81044b03",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_efa122af6a18f938",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "H0meworkRelaxed",
+        "moreLeanArgs": []
+      },
+      {
+        "name": "H0meworkPinned",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      }
+    ]
+  },
+  "identity_scope": {
+    "packages": [
+      "low-energy-phenomenology",
+      "low-energy-loop-response",
+      "low-energy-inherited-26b91feb-physics-common-source-ae",
+      "low-energy-inherited-aef0ad2a-physics-common-source-ad",
+      "low-energy-inherited-b67aa48c-physics-common-source-ac"
+    ],
+    "proof_entries": 75
+  },
+  "cache": {
+    "kind": "existing_workspace_cache",
+    "clean_clone": false,
+    "build_directory_preexisted": true,
+    "lean_num_threads": "2",
+    "compiled_targets_before": {
+      "H0mework.Papers.LowEnergyPhenomenology": "90516ab2321fd79669b9a97a1f3bbef032e63ea0b3f53a29e17ff04adc79b75c",
+      "H0mework.Papers.LowEnergyLoopResponse": "c5fe5ac679c16aa04c50a450e5e1f272f8e58edda6811634548b6adc5a24ef9b",
+      "H0mework.Papers.PhysicsCommonSourceAeRelease": "590d3d296759e4eb9f858a4f71c891b7cb427b7067fc80f800eea8fc1558d7dd",
+      "H0mework.Papers.PhysicsCommonSourceAdRelease": "649b0cdf80446c37bfbf20f73f48b871f2d91737a008936dec5de5459ac63cde",
+      "H0mework.Papers.PhysicsCommonSourceAcRelease": "c13cfc7b949cc7bfc6af555132bed0f3449af10549f92199c67435eea3ebec2a"
+    },
+    "trust_jobs": 2
+  },
+  "packages": [
+    {
+      "id": "low-energy-phenomenology",
+      "paper": "low-energy-phenomenology",
+      "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+      "source_commits": [
+        "30218c1aea92640eae09b1d9204a09b01a2d0e47"
+      ],
+      "claim_ids": [
+        "low1.L1",
+        "low1.L2",
+        "low1.L3",
+        "low1.L4",
+        "low1.L5",
+        "low1.L6",
+        "low1.L7",
+        "low1.L8",
+        "low1.L9",
+        "low1.L10",
+        "low1.L11",
+        "low1.L12",
+        "low1.L13",
+        "low1.L14",
+        "low1.L15",
+        "low1.L16",
+        "low1.L17"
+      ],
+      "lean_target": "H0mework.Papers.LowEnergyPhenomenology",
+      "verification": {
+        "build": "pending",
+        "kernel": "pending",
+        "scope": "New selected public edition package execution"
+      },
+      "commands": {
+        "build": [
+          "python3",
+          "tools/edition_release.py",
+          "--edition",
+          "low-energy",
+          "build",
+          "--package",
+          "low-energy-phenomenology",
+          "--output",
+          ".local/low-energy-release-runs/low-energy-phenomenology-build-RUN"
+        ],
+        "trust": [
+          "python3",
+          "tools/edition_release.py",
+          "--edition",
+          "low-energy",
+          "trust",
+          "--package",
+          "low-energy-phenomenology",
+          "--output",
+          ".local/low-energy-release-runs/low-energy-phenomenology-trust-RUN"
+        ]
+      }
+    },
+    {
+      "id": "low-energy-loop-response",
+      "paper": "low-energy-loop-response",
+      "source_commit": "85cb5386ca132818f74d90470d87a252e4a27ea7",
+      "source_commits": [
+        "85cb5386ca132818f74d90470d87a252e4a27ea7"
+      ],
+      "claim_ids": [
+        "low2.Q1",
+        "low2.Q2"
+      ],
+      "lean_target": "H0mework.Papers.LowEnergyLoopResponse",
+      "verification": {
+        "build": "pending",
+        "kernel": "pending",
+        "scope": "New selected public edition package execution"
+      },
+      "commands": {
+        "build": [
+          "python3",
+          "tools/edition_release.py",
+          "--edition",
+          "low-energy",
+          "build",
+          "--package",
+          "low-energy-loop-response",
+          "--output",
+          ".local/low-energy-release-runs/low-energy-loop-response-build-RUN"
+        ],
+        "trust": [
+          "python3",
+          "tools/edition_release.py",
+          "--edition",
+          "low-energy",
+          "trust",
+          "--package",
+          "low-energy-loop-response",
+          "--output",
+          ".local/low-energy-release-runs/low-energy-loop-response-trust-RUN"
+        ]
+      }
+    },
+    {
+      "id": "low-energy-inherited-26b91feb-physics-common-source-ae",
+      "paper": "low-energy-loop-response",
+      "source_commit": "26b91feb6b507fdc3f43be9c429edb63fb9395ef",
+      "source_commits": [
+        "26b91feb6b507fdc3f43be9c429edb63fb9395ef"
+      ],
+      "claim_ids": [
+        "low2.Q5",
+        "low2.Q6"
+      ],
+      "lean_target": "H0mework.Papers.PhysicsCommonSourceAeRelease",
+      "verification": {
+        "build": "pending",
+        "kernel": "pending",
+        "scope": "New selected public edition package execution"
+      },
+      "commands": {
+        "build": [
+          "python3",
+          "tools/edition_release.py",
+          "--edition",
+          "low-energy",
+          "build",
+          "--package",
+          "low-energy-inherited-26b91feb-physics-common-source-ae",
+          "--output",
+          ".local/low-energy-release-runs/low-energy-inherited-26b91feb-physics-common-source-ae-build-RUN"
+        ],
+        "trust": [
+          "python3",
+          "tools/edition_release.py",
+          "--edition",
+          "low-energy",
+          "trust",
+          "--package",
+          "low-energy-inherited-26b91feb-physics-common-source-ae",
+          "--output",
+          ".local/low-energy-release-runs/low-energy-inherited-26b91feb-physics-common-source-ae-trust-RUN"
+        ]
+      },
+      "inheritance": {
+        "original_package": "physics-common-source-ae",
+        "claim_map": "docs/first-release-map.json",
+        "original_verification": {
+          "build": "passed",
+          "kernel": "passed",
+          "receipt": {
+            "path": "evidence/first-release/acceptance/proof-root-supplement-20261007/receipt.json",
+            "sha256": "fce024e638563a21fd526ae087b2eb8062c9a7cb3a824649074551c553161ec1"
+          },
+          "scope_token": "395a192449ddd623703921eeeb9c715af0b4df072419cd8369560dc67e716a22",
+          "build_receipt": {
+            "path": "evidence/first-release/acceptance/proof-20261007/receipt.json",
+            "sha256": "c0e7872ea7f795a25b784870fd43468d306465c60087dde962d3827208462ce8"
+          }
+        }
+      }
+    },
+    {
+      "id": "low-energy-inherited-aef0ad2a-physics-common-source-ad",
+      "paper": "low-energy-loop-response",
+      "source_commit": "aef0ad2a26199d9fd6da9bc9e7ec1a65636ef63f",
+      "source_commits": [
+        "aef0ad2a26199d9fd6da9bc9e7ec1a65636ef63f"
+      ],
+      "claim_ids": [
+        "low2.Q5",
+        "low2.Q6"
+      ],
+      "lean_target": "H0mework.Papers.PhysicsCommonSourceAdRelease",
+      "verification": {
+        "build": "pending",
+        "kernel": "pending",
+        "scope": "New selected public edition package execution"
+      },
+      "commands": {
+        "build": [
+          "python3",
+          "tools/edition_release.py",
+          "--edition",
+          "low-energy",
+          "build",
+          "--package",
+          "low-energy-inherited-aef0ad2a-physics-common-source-ad",
+          "--output",
+          ".local/low-energy-release-runs/low-energy-inherited-aef0ad2a-physics-common-source-ad-build-RUN"
+        ],
+        "trust": [
+          "python3",
+          "tools/edition_release.py",
+          "--edition",
+          "low-energy",
+          "trust",
+          "--package",
+          "low-energy-inherited-aef0ad2a-physics-common-source-ad",
+          "--output",
+          ".local/low-energy-release-runs/low-energy-inherited-aef0ad2a-physics-common-source-ad-trust-RUN"
+        ]
+      },
+      "inheritance": {
+        "original_package": "physics-common-source-ad",
+        "claim_map": "docs/first-release-map.json",
+        "original_verification": {
+          "build": "passed",
+          "kernel": "passed",
+          "receipt": {
+            "path": "evidence/first-release/acceptance/proof-root-supplement-20261007/receipt.json",
+            "sha256": "fce024e638563a21fd526ae087b2eb8062c9a7cb3a824649074551c553161ec1"
+          },
+          "scope_token": "7f6938e366c13b1d7c1c0f31e091a4c73a181a45f73514510757b2d4c77dfea6",
+          "build_receipt": {
+            "path": "evidence/first-release/acceptance/proof-20261007/receipt.json",
+            "sha256": "c0e7872ea7f795a25b784870fd43468d306465c60087dde962d3827208462ce8"
+          }
+        }
+      }
+    },
+    {
+      "id": "low-energy-inherited-b67aa48c-physics-common-source-ac",
+      "paper": "low-energy-loop-response",
+      "source_commit": "b67aa48c75b3cd7738766ed40093bb3f7c1d7a1a",
+      "source_commits": [
+        "b67aa48c75b3cd7738766ed40093bb3f7c1d7a1a"
+      ],
+      "claim_ids": [
+        "low2.Q6"
+      ],
+      "lean_target": "H0mework.Papers.PhysicsCommonSourceAcRelease",
+      "verification": {
+        "build": "pending",
+        "kernel": "pending",
+        "scope": "New selected public edition package execution"
+      },
+      "commands": {
+        "build": [
+          "python3",
+          "tools/edition_release.py",
+          "--edition",
+          "low-energy",
+          "build",
+          "--package",
+          "low-energy-inherited-b67aa48c-physics-common-source-ac",
+          "--output",
+          ".local/low-energy-release-runs/low-energy-inherited-b67aa48c-physics-common-source-ac-build-RUN"
+        ],
+        "trust": [
+          "python3",
+          "tools/edition_release.py",
+          "--edition",
+          "low-energy",
+          "trust",
+          "--package",
+          "low-energy-inherited-b67aa48c-physics-common-source-ac",
+          "--output",
+          ".local/low-energy-release-runs/low-energy-inherited-b67aa48c-physics-common-source-ac-trust-RUN"
+        ]
+      },
+      "inheritance": {
+        "original_package": "physics-common-source-ac",
+        "claim_map": "docs/first-release-map.json",
+        "original_verification": {
+          "build": "passed",
+          "kernel": "passed",
+          "receipt": {
+            "path": "evidence/first-release/acceptance/proof-root-supplement-20261007/receipt.json",
+            "sha256": "fce024e638563a21fd526ae087b2eb8062c9a7cb3a824649074551c553161ec1"
+          },
+          "scope_token": "7e6ca510e5df3c161309a0142fb4b064edf74cf3e10489c0de13132a9d092d94",
+          "build_receipt": {
+            "path": "evidence/first-release/acceptance/proof-20261007/receipt.json",
+            "sha256": "c0e7872ea7f795a25b784870fd43468d306465c60087dde962d3827208462ce8"
+          }
+        }
+      }
+    }
+  ],
+  "results": [
+    {
+      "package": "low-energy-phenomenology",
+      "status": "passed",
+      "exit_code": 0,
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--root=..",
+        "--trust=0",
+        "-Dweak.linter.unnecessarySimpa=false",
+        "-Dweak.linter.style.haveILetI=false",
+        "-Dweak.linter.unusedSimpArgs=false",
+        "-DmaxHeartbeats=2000000",
+        "-Dweak.linter.unusedSectionVars=false",
+        "-Dweak.linter.unnecessarySeqFocus=false",
+        "-Dweak.linter.unusedVariables=false",
+        "-Dweak.linter.unreachableTactic=false",
+        "-Dweak.linter.unusedTactic=false",
+        "-Dweak.linter.defProp=false",
+        "-Dweak.linter.deprecated=false",
+        "-Dlinter.deprecated=false",
+        "-Dweak.linter.tacticAnalysis.introMerge=false",
+        "-Dweak.linter.constructorNameAsVariable=false",
+        "-DwarningAsError=true",
+        "../.local/second-edition-20261009/low-inherited-public-trust/audit-001.lean"
+      ],
+      "cwd": "Lean",
+      "started_at": "2026-10-09T14:30:27.713071+00:00",
+      "finished_at": "2026-10-09T14:31:29.316156+00:00",
+      "elapsed_seconds": 61.603,
+      "error": null,
+      "log": ".local/second-edition-20261009/low-inherited-public-trust/audit-001.log",
+      "audit_scope": {
+        "package": "low-energy-phenomenology",
+        "source_commits": [
+          "30218c1aea92640eae09b1d9204a09b01a2d0e47"
+        ],
+        "lean_target": "H0mework.Papers.LowEnergyPhenomenology",
+        "declarations": {
+          "SaturationMonoid.PhysicsCore.LowEnergy.ScalarInventory.b0_table": "H0mework.Physics.LowEnergy.ScalarInventory",
+          "SaturationMonoid.PhysicsCore.LowEnergy.Normalization.native_boundary": "H0mework.Physics.LowEnergy.Normalization",
+          "SaturationMonoid.PhysicsCore.LowEnergy.Running.normal_forms": "H0mework.Physics.LowEnergy.Running",
+          "SaturationMonoid.PhysicsCore.LowEnergy.Consumer.source_inventory_beta": "H0mework.Physics.LowEnergy.Consumer",
+          "SaturationMonoid.PhysicsCore.LowEnergy.Consumer.source_fixed_inventory_diagnostic": "H0mework.Physics.LowEnergy.Consumer",
+          "SaturationMonoid.PhysicsCore.LowEnergy.JointMass.coefficient_actual": "H0mework.Physics.LowEnergy.JointMassCoordinates",
+          "SaturationMonoid.PhysicsCore.LowEnergy.JointMass.outputGram_actual": "H0mework.Physics.LowEnergy.JointMassCoordinates",
+          "SaturationMonoid.PhysicsCore.LowEnergy.Consumer.source_mass_entry": "H0mework.Physics.LowEnergy.Consumer",
+          "SaturationMonoid.PhysicsCore.LowEnergy.Evolution.uniformDevelopment_exists": "H0mework.Physics.LowEnergyEvolution.Uniform",
+          "SaturationMonoid.PhysicsCore.LowEnergy.Evolution.Variation.initial_derivative": "H0mework.Physics.LowEnergyEvolution.VariationDerivative",
+          "SaturationMonoid.PhysicsCore.LowEnergy.Evolution.Variation.initial_fderiv": "H0mework.Physics.LowEnergyEvolution.VariationDerivative",
+          "SaturationMonoid.PhysicsCore.LowEnergy.Evolution.UniformDevelopment.joint_zero": "H0mework.Physics.LowEnergyEvolution.Uniform",
+          "SaturationMonoid.PhysicsCore.LowEnergy.Evolution.UniformDevelopment.norm_control": "H0mework.Physics.LowEnergyEvolution.Uniform",
+          "SaturationMonoid.PhysicsCore.LowEnergy.Evolution.Solution.joint_zero": "H0mework.Physics.LowEnergyEvolution.Full",
+          "SaturationMonoid.PhysicsCore.LowEnergy.Evolution.Variation.initial_variation_evolves": "H0mework.Physics.LowEnergyEvolution.VariationDerivative",
+          "SaturationMonoid.PhysicsCore.LowEnergy.Quantum.compression_product": "H0mework.Physics.LowEnergyQuantum.Compression",
+          "SaturationMonoid.PhysicsCore.LowEnergy.Quantum.moving_response": "H0mework.Physics.LowEnergyQuantum.Readout",
+          "SaturationMonoid.PhysicsCore.LowEnergy.Quantum.spatial_volume_response": "H0mework.Physics.LowEnergyQuantum.Density",
+          "SaturationMonoid.PhysicsCore.LowEnergy.Quantum.moving_composite_response": "H0mework.Physics.LowEnergyQuantum.Readout",
+          "SaturationMonoid.PhysicsCore.LowEnergy.Quantum.source_joint_and_response": "H0mework.Physics.LowEnergyQuantum.Readout",
+          "SaturationMonoid.PhysicsCore.LowEnergy.MatterSpace.SpatialCAR.source_native_allWord": "H0mework.Physics.LowEnergyMatterSpace.SpatialCARNative",
+          "SaturationMonoid.PhysicsCore.LowEnergy.Spacetime.fundamentalTime_equation": "H0mework.Physics.LowEnergySpacetime.Propagation",
+          "SaturationMonoid.PhysicsCore.LowEnergy.Spacetime.fundamentalWave_operator": "H0mework.Physics.LowEnergySpacetime.Propagation",
+          "SaturationMonoid.PhysicsCore.LowEnergy.Spacetime.fundamentalWave_residual": "H0mework.Physics.LowEnergySpacetime.Cauchy",
+          "SaturationMonoid.PhysicsCore.LowEnergy.Spacetime.fundamentalWave_nine_channels": "H0mework.Physics.LowEnergySpacetime.Cauchy",
+          "SaturationMonoid.PhysicsCore.LowEnergy.Spacetime.fundamentalWave_actual_nonzero_speed": "H0mework.Physics.LowEnergySpacetime.Cauchy",
+          "SaturationMonoid.PhysicsCore.LowEnergy.Spacetime.radial_residual": "H0mework.Physics.LowEnergySpacetime.Jacobi",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullPhase.gamma_preserved": "H0mework.Physics.LowEnergyFullPhase.Operator",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullPhase.yukawa_preserved": "H0mework.Physics.LowEnergyFullPhase.Operator",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullPhase.kinetic_phase_term": "H0mework.Physics.LowEnergyFullPhase.Derivative",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullPhase.canonical_preserved": "H0mework.Physics.LowEnergyFullPhase.Preparation",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullPhase.prepared_pair_preserved": "H0mework.Physics.LowEnergyFullPhase.Preparation",
+          "SaturationMonoid.PhysicsCore.LowEnergy.Exchange.original_current": "H0mework.Physics.LowEnergyExchange.Current",
+          "SaturationMonoid.PhysicsCore.LowEnergy.Exchange.original_current_exchange": "H0mework.Physics.LowEnergyExchange.Static",
+          "SaturationMonoid.PhysicsCore.LowEnergy.Fermion.actual_color_fourFermion": "H0mework.Physics.LowEnergyFermion.Consumer",
+          "SaturationMonoid.PhysicsCore.LowEnergy.Fermion.actual_color_fourFermion_normalized": "H0mework.Physics.LowEnergyFermion.Consumer",
+          "SaturationMonoid.PhysicsCore.LowEnergy.Kinetic.original_action_time_affine": "H0mework.Physics.LowEnergyKinetic.Density",
+          "SaturationMonoid.PhysicsCore.LowEnergy.Kinetic.normalized_right_unit": "H0mework.Physics.LowEnergyKinetic.Scale",
+          "SaturationMonoid.PhysicsCore.LowEnergy.Kinetic.four_leg_amplitude_normalized": "H0mework.Physics.LowEnergyKinetic.Scale",
+          "SaturationMonoid.PhysicsCore.LowEnergy.MatterSpace.sourceHamiltonian_hermitian": "H0mework.Physics.LowEnergyMatterSpace.Source",
+          "SaturationMonoid.PhysicsCore.LowEnergy.MatterSpace.spatialUnitary_add": "H0mework.Physics.LowEnergyMatterSpace.Spatial",
+          "SaturationMonoid.PhysicsCore.LowEnergy.MatterSpace.source_domain_iff": "H0mework.Physics.LowEnergyMatterSpace.GeneratorDomain",
+          "SaturationMonoid.PhysicsCore.LowEnergy.MatterSpace.source_hamiltonian_value": "H0mework.Physics.LowEnergyMatterSpace.GeneratorDomain",
+          "SaturationMonoid.PhysicsCore.LowEnergy.MatterSpace.schwartz_hamiltonian_value": "H0mework.Physics.LowEnergyMatterSpace.GeneratorSchwartz",
+          "SaturationMonoid.PhysicsCore.LowEnergy.MatterSpace.original_primal_hamiltonian": "H0mework.Physics.LowEnergyMatterSpace.PrimalSymbol",
+          "SaturationMonoid.PhysicsCore.LowEnergy.MatterSpace.duhamel_dual_weak": "H0mework.Physics.LowEnergyMatterSpace.DualWeak",
+          "SaturationMonoid.PhysicsCore.LowEnergy.MatterSpace.preparationMap_norm": "H0mework.Physics.LowEnergyMatterSpace.PreparationHistory",
+          "SaturationMonoid.PhysicsCore.LowEnergy.MatterSpace.gauge_history_prepares_nonempty": "H0mework.Physics.LowEnergyMatterSpace.PreparationGauge",
+          "SaturationMonoid.PhysicsCore.LowEnergy.MatterSpace.preparationNative_sourceResponse": "H0mework.Physics.LowEnergyMatterSpace.PreparationNative",
+          "SaturationMonoid.PhysicsCore.LowEnergy.MatterSpace.preparationNative_original_dual": "H0mework.Physics.LowEnergyMatterSpace.PreparationNative",
+          "SaturationMonoid.PhysicsCore.LowEnergy.MatterSpace.normalizedPreparationNative_sourceResponse": "H0mework.Physics.LowEnergyMatterSpace.PreparationNative",
+          "SaturationMonoid.PhysicsCore.LowEnergy.MatterSpace.SpatialCAR.wordOperator": "H0mework.Physics.LowEnergyMatterSpace.SpatialCARWords",
+          "SaturationMonoid.PhysicsCore.LowEnergy.MatterSpace.SpatialCAR.spatialMoment_positive": "H0mework.Physics.LowEnergyMatterSpace.SpatialCARState",
+          "SaturationMonoid.PhysicsCore.LowEnergy.MatterSpace.SpatialCAR.wordObservable_response": "H0mework.Physics.LowEnergyMatterSpace.SpatialCARNative",
+          "SaturationMonoid.PhysicsCore.LowEnergy.MatterSpace.gaugeCurrentMatrix_weight": "H0mework.Physics.LowEnergyMatterSpace.CurrentOperator",
+          "SaturationMonoid.PhysicsCore.LowEnergy.MatterSpace.Response.currentVariation_kubo": "H0mework.Physics.LowEnergyMatterSpace.SpatialResponseKubo",
+          "SaturationMonoid.PhysicsCore.LowEnergy.MatterSpace.Response.local_native_kubo": "H0mework.Physics.LowEnergyMatterSpace.SpatialResponseSource",
+          "SaturationMonoid.PhysicsCore.LowEnergy.MatterSpace.Response.local_source_CAR": "H0mework.Physics.LowEnergyMatterSpace.SpatialResponseSource",
+          "SaturationMonoid.PhysicsCore.LowEnergy.MatterSpace.ResponsePhase.originalKernel_prepared_readback": "H0mework.Physics.LowEnergyMatterSpace.SpatialResponsePhaseKubo",
+          "SaturationMonoid.PhysicsCore.LowEnergy.MatterSpace.Response.perturbed_global_exists": "H0mework.Physics.LowEnergyMatterSpace.GlobalGlue",
+          "SaturationMonoid.PhysicsCore.LowEnergy.MatterSpace.Response.globalPerturbedDevelopment": "H0mework.Physics.LowEnergyMatterSpace.GlobalFlow",
+          "SaturationMonoid.PhysicsCore.LowEnergy.MatterSpace.Response.perturbed_quadratic_remainder": "H0mework.Physics.LowEnergyMatterSpace.PerturbedVariation",
+          "SaturationMonoid.PhysicsCore.LowEnergy.MatterSpace.Response.PerturbedDevelopment.couplingOperator_derivative": "H0mework.Physics.LowEnergyMatterSpace.PerturbedOperator",
+          "SaturationMonoid.PhysicsCore.LowEnergy.MatterSpace.Response.GlobalPerturbedDevelopment.unitary": "H0mework.Physics.LowEnergyMatterSpace.GlobalFlow",
+          "SaturationMonoid.PhysicsCore.LowEnergy.MatterSpace.Response.GlobalPerturbedDevelopment.operator_derivative": "H0mework.Physics.LowEnergyMatterSpace.GlobalResponse",
+          "SaturationMonoid.PhysicsCore.LowEnergy.MatterSpace.Response.GlobalPerturbedDevelopment.current_kubo": "H0mework.Physics.LowEnergyMatterSpace.GlobalResponse",
+          "SaturationMonoid.PhysicsCore.LowEnergy.MatterSpace.Response.GlobalPerturbedDevelopment.current_source": "H0mework.Physics.LowEnergyMatterSpace.GlobalResponse",
+          "SaturationMonoid.PhysicsCore.LowEnergy.MatterSpace.Response.GlobalLocal.original_field_derivative": "H0mework.Physics.LowEnergyMatterSpace.GlobalOriginal",
+          "SaturationMonoid.PhysicsCore.LowEnergy.MatterSpace.Response.GlobalLocal.original_current_derivative": "H0mework.Physics.LowEnergyMatterSpace.GlobalOriginal",
+          "SaturationMonoid.PhysicsCore.LowEnergy.MatterSpace.Response.GlobalLocal.original_prepared_source_derivative": "H0mework.Physics.LowEnergyMatterSpace.GlobalOriginal"
+        },
+        "closure": "complete type/value, mutual declarations, inductives, constructors and recursor metadata",
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "token": "c2c20fc80e41c3244947ed730bb5382467b6d841e665ea238613719c02be516f",
+        "source_sha256": "032868dc1d1fc9224d7a92eaa36368c607bb3173342303959e3b3d8699506985",
+        "public_modules": [
+          "H0mework.Physics.LowEnergy.Consumer",
+          "H0mework.Physics.LowEnergy.JointMassCoordinates",
+          "H0mework.Physics.LowEnergy.Normalization",
+          "H0mework.Physics.LowEnergy.Running",
+          "H0mework.Physics.LowEnergy.ScalarInventory",
+          "H0mework.Physics.LowEnergyEvolution.Full",
+          "H0mework.Physics.LowEnergyEvolution.Uniform",
+          "H0mework.Physics.LowEnergyEvolution.VariationDerivative",
+          "H0mework.Physics.LowEnergyExchange.Current",
+          "H0mework.Physics.LowEnergyExchange.Static",
+          "H0mework.Physics.LowEnergyFermion.Consumer",
+          "H0mework.Physics.LowEnergyFullPhase.Derivative",
+          "H0mework.Physics.LowEnergyFullPhase.Operator",
+          "H0mework.Physics.LowEnergyFullPhase.Preparation",
+          "H0mework.Physics.LowEnergyKinetic.Density",
+          "H0mework.Physics.LowEnergyKinetic.Scale",
+          "H0mework.Physics.LowEnergyMatterSpace.CurrentOperator",
+          "H0mework.Physics.LowEnergyMatterSpace.DualWeak",
+          "H0mework.Physics.LowEnergyMatterSpace.GeneratorDomain",
+          "H0mework.Physics.LowEnergyMatterSpace.GeneratorSchwartz",
+          "H0mework.Physics.LowEnergyMatterSpace.GlobalFlow",
+          "H0mework.Physics.LowEnergyMatterSpace.GlobalGlue",
+          "H0mework.Physics.LowEnergyMatterSpace.GlobalOriginal",
+          "H0mework.Physics.LowEnergyMatterSpace.GlobalResponse",
+          "H0mework.Physics.LowEnergyMatterSpace.PerturbedOperator",
+          "H0mework.Physics.LowEnergyMatterSpace.PerturbedVariation",
+          "H0mework.Physics.LowEnergyMatterSpace.PreparationGauge",
+          "H0mework.Physics.LowEnergyMatterSpace.PreparationHistory",
+          "H0mework.Physics.LowEnergyMatterSpace.PreparationNative",
+          "H0mework.Physics.LowEnergyMatterSpace.PrimalSymbol",
+          "H0mework.Physics.LowEnergyMatterSpace.Source",
+          "H0mework.Physics.LowEnergyMatterSpace.Spatial",
+          "H0mework.Physics.LowEnergyMatterSpace.SpatialCARNative",
+          "H0mework.Physics.LowEnergyMatterSpace.SpatialCARState",
+          "H0mework.Physics.LowEnergyMatterSpace.SpatialCARWords",
+          "H0mework.Physics.LowEnergyMatterSpace.SpatialResponseKubo",
+          "H0mework.Physics.LowEnergyMatterSpace.SpatialResponsePhaseKubo",
+          "H0mework.Physics.LowEnergyMatterSpace.SpatialResponseSource",
+          "H0mework.Physics.LowEnergyQuantum.Compression",
+          "H0mework.Physics.LowEnergyQuantum.Density",
+          "H0mework.Physics.LowEnergyQuantum.Readout",
+          "H0mework.Physics.LowEnergySpacetime.Cauchy",
+          "H0mework.Physics.LowEnergySpacetime.Jacobi",
+          "H0mework.Physics.LowEnergySpacetime.Propagation"
+        ]
+      },
+      "audit": {
+        "axioms": [
+          "Quot.sound",
+          "Classical.choice",
+          "propext"
+        ],
+        "constants": 91482,
+        "edges": 3019338,
+        "full_metadata": true,
+        "partial": 0,
+        "roots": 70,
+        "token": "c2c20fc80e41c3244947ed730bb5382467b6d841e665ea238613719c02be516f",
+        "unsafe": 0
+      }
+    },
+    {
+      "package": "low-energy-loop-response",
+      "status": "passed",
+      "exit_code": 0,
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--root=..",
+        "--trust=0",
+        "-Dweak.linter.unnecessarySimpa=false",
+        "-Dweak.linter.style.haveILetI=false",
+        "-Dweak.linter.unusedSimpArgs=false",
+        "-DmaxHeartbeats=2000000",
+        "-Dweak.linter.unusedSectionVars=false",
+        "-Dweak.linter.unnecessarySeqFocus=false",
+        "-Dweak.linter.unusedVariables=false",
+        "-Dweak.linter.unreachableTactic=false",
+        "-Dweak.linter.unusedTactic=false",
+        "-Dweak.linter.defProp=false",
+        "-Dweak.linter.deprecated=false",
+        "-Dlinter.deprecated=false",
+        "-Dweak.linter.tacticAnalysis.introMerge=false",
+        "-Dweak.linter.constructorNameAsVariable=false",
+        "-DwarningAsError=true",
+        "../.local/second-edition-20261009/low-inherited-public-trust/audit-002.lean"
+      ],
+      "cwd": "Lean",
+      "started_at": "2026-10-09T14:30:27.744252+00:00",
+      "finished_at": "2026-10-09T14:31:24.655848+00:00",
+      "elapsed_seconds": 56.912,
+      "error": null,
+      "log": ".local/second-edition-20261009/low-inherited-public-trust/audit-002.log",
+      "audit_scope": {
+        "package": "low-energy-loop-response",
+        "source_commits": [
+          "85cb5386ca132818f74d90470d87a252e4a27ea7"
+        ],
+        "lean_target": "H0mework.Papers.LowEnergyLoopResponse",
+        "declarations": {
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.ClosedLoops.six": "H0mework.Physics.LowEnergy.FullQuantum.ClosedLoops.Grading",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.ClosedLoops.Arrow": "H0mework.Physics.LowEnergy.FullQuantum.ClosedLoops.Grading",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.ClosedLoops.Expansion": "H0mework.Physics.LowEnergy.FullQuantum.ClosedLoops.Grading",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.ClosedLoops.Arrow.zero": "H0mework.Physics.LowEnergy.FullQuantum.ClosedLoops.Grading",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.ClosedLoops.Arrow.add": "H0mework.Physics.LowEnergy.FullQuantum.ClosedLoops.Grading",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.ClosedLoops.Arrow.smul": "H0mework.Physics.LowEnergy.FullQuantum.ClosedLoops.Grading",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.ClosedLoops.Arrow.sub": "H0mework.Physics.LowEnergy.FullQuantum.ClosedLoops.Grading",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.ClosedLoops.Arrow.compose_zero": "H0mework.Physics.LowEnergy.FullQuantum.ClosedLoops.Grading",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.ClosedLoops.Arrow.diagonal_left": "H0mework.Physics.LowEnergy.FullQuantum.ClosedLoops.Grading",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.ClosedLoops.Arrow.diagonal_right": "H0mework.Physics.LowEnergy.FullQuantum.ClosedLoops.Grading",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.ClosedLoops.Expansion.refl": "H0mework.Physics.LowEnergy.FullQuantum.ClosedLoops.Grading",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.ClosedLoops.Expansion.one": "H0mework.Physics.LowEnergy.FullQuantum.ClosedLoops.Grading",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.ClosedLoops.Expansion.smul": "H0mework.Physics.LowEnergy.FullQuantum.ClosedLoops.Grading",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.ClosedLoops.Expansion.sub": "H0mework.Physics.LowEnergy.FullQuantum.ClosedLoops.Grading",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.ClosedLoops.Expansion.mul": "H0mework.Physics.LowEnergy.FullQuantum.ClosedLoops.Grading",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.ClosedLoops.Expansion.arrow_left": "H0mework.Physics.LowEnergy.FullQuantum.ClosedLoops.Grading",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.ClosedLoops.Expansion.arrow_right": "H0mework.Physics.LowEnergy.FullQuantum.ClosedLoops.Grading",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.ClosedLoops.Expansion.product": "H0mework.Physics.LowEnergy.FullQuantum.ClosedLoops.Grading",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.ClosedLoops.loopTrace": "H0mework.Physics.LowEnergy.FullQuantum.ClosedLoops.Grading",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.ClosedLoops.loopTrace_mul_comm": "H0mework.Physics.LowEnergy.FullQuantum.ClosedLoops.Grading",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.ClosedLoops.arrow_trace": "H0mework.Physics.LowEnergy.FullQuantum.ClosedLoops.Grading",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.ClosedLoops.expansion_trace": "H0mework.Physics.LowEnergy.FullQuantum.ClosedLoops.Grading",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.ClosedLoops.ordered_loop": "H0mework.Physics.LowEnergy.FullQuantum.ClosedLoops.Grading",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.ClosedLoops.ordered_loop_with_arrow": "H0mework.Physics.LowEnergy.FullQuantum.ClosedLoops.Grading",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.ClosedLoops.source_hamiltonian": "H0mework.Physics.LowEnergy.FullQuantum.ClosedLoops.Source",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.ClosedLoops.source_variation": "H0mework.Physics.LowEnergy.FullQuantum.ClosedLoops.Source",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.ClosedLoops.source_resolvent": "H0mework.Physics.LowEnergy.FullQuantum.ClosedLoops.Source",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.ClosedLoops.original_gauge_vertex": "H0mework.Physics.LowEnergy.FullQuantum.ClosedLoops.Source",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.ClosedLoops.original_scalar_vertex": "H0mework.Physics.LowEnergy.FullQuantum.ClosedLoops.Source",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.ClosedLoops.original_principal_inverse": "H0mework.Physics.LowEnergy.FullQuantum.ClosedLoops.Source",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.ClosedLoops.freeDiracResolvent": "H0mework.Physics.LowEnergy.FullQuantum.ClosedLoops.Source",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.ClosedLoops.source_diracResolvent": "H0mework.Physics.LowEnergy.FullQuantum.ClosedLoops.Source",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.ClosedLoops.GaugeLine": "H0mework.Physics.LowEnergy.FullQuantum.ClosedLoops.Words",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.ClosedLoops.GaugeLine.full": "H0mework.Physics.LowEnergy.FullQuantum.ClosedLoops.Words",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.ClosedLoops.GaugeLine.diagonal": "H0mework.Physics.LowEnergy.FullQuantum.ClosedLoops.Words",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.ClosedLoops.GaugeLine.Regular": "H0mework.Physics.LowEnergy.FullQuantum.ClosedLoops.Words",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.ClosedLoops.GaugeLine.propagator": "H0mework.Physics.LowEnergy.FullQuantum.ClosedLoops.Words",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.ClosedLoops.GaugeLine.generated": "H0mework.Physics.LowEnergy.FullQuantum.ClosedLoops.Words",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.ClosedLoops.gauge_word_generated": "H0mework.Physics.LowEnergy.FullQuantum.ClosedLoops.Words",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.ClosedLoops.gauge_loop_independent_yukawa": "H0mework.Physics.LowEnergy.FullQuantum.ClosedLoops.Words",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.ClosedLoops.scalar_insertion_closed_loop": "H0mework.Physics.LowEnergy.FullQuantum.ClosedLoops.Words",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.ClosedLoops.two_scalar_open_chain": "H0mework.Physics.LowEnergy.FullQuantum.ClosedLoops.Words",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.ClosedLoops.Consumer.actual_regular_loop_exists": "H0mework.Checks.Physics.LowEnergy.ClosedLoops.Consumer",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.ClosedLoops.Consumer.actual_whole_word_readback": "H0mework.Checks.Physics.LowEnergy.ClosedLoops.Consumer",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.PreparedLoops.SourceStep": "H0mework.Physics.LowEnergy.FullQuantum.PreparedLoops.Native",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.PreparedLoops.SourceStep.line": "H0mework.Physics.LowEnergy.FullQuantum.PreparedLoops.Native",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.PreparedLoops.SourceStep.regular": "H0mework.Physics.LowEnergy.FullQuantum.PreparedLoops.Native",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.PreparedLoops.fullSteps": "H0mework.Physics.LowEnergy.FullQuantum.PreparedLoops.Native",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.PreparedLoops.diagonalSteps": "H0mework.Physics.LowEnergy.FullQuantum.PreparedLoops.Native",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.PreparedLoops.steps_generated": "H0mework.Physics.LowEnergy.FullQuantum.PreparedLoops.Native",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.PreparedLoops.source_weighted_yukawa_independent": "H0mework.Physics.LowEnergy.FullQuantum.PreparedLoops.Native",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.PreparedLoops.source_scalar_weighted_word": "H0mework.Physics.LowEnergy.FullQuantum.PreparedLoops.Native",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.PreparedLoops.source_weighted_Stage10": "H0mework.Physics.LowEnergy.FullQuantum.PreparedLoops.Native",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.PreparedLoops.source_scalar_Stage10": "H0mework.Physics.LowEnergy.FullQuantum.PreparedLoops.Native",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.PreparedLoops.scalarForce": "H0mework.Physics.LowEnergy.FullQuantum.PreparedLoops.Scalar",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.PreparedLoops.scalarReader": "H0mework.Physics.LowEnergy.FullQuantum.PreparedLoops.Scalar",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.PreparedLoops.scalarForce_arrow": "H0mework.Physics.LowEnergy.FullQuantum.PreparedLoops.Scalar",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.PreparedLoops.scalarReader_arrow": "H0mework.Physics.LowEnergy.FullQuantum.PreparedLoops.Scalar",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.PreparedLoops.transferRead_scalar_force_zero": "H0mework.Physics.LowEnergy.FullQuantum.PreparedLoops.Scalar",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.PreparedLoops.transferRead_scalar_reader_zero": "H0mework.Physics.LowEnergy.FullQuantum.PreparedLoops.Scalar",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.PreparedLoops.source_scalar_gauge_transfer_zero": "H0mework.Physics.LowEnergy.FullQuantum.PreparedLoops.Scalar",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.PreparedLoops.prepared_six_read": "H0mework.Physics.LowEnergy.FullQuantum.PreparedLoops.Source",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.PreparedLoops.arrow_prepared_zero": "H0mework.Physics.LowEnergy.FullQuantum.PreparedLoops.Source",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.PreparedLoops.expansion_prepared": "H0mework.Physics.LowEnergy.FullQuantum.PreparedLoops.Source",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.PreparedLoops.boundary_grade": "H0mework.Physics.LowEnergy.FullQuantum.PreparedLoops.Source",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.PreparedLoops.weighted_expansion": "H0mework.Physics.LowEnergy.FullQuantum.PreparedLoops.Source",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.PreparedLoops.weighted_arrow_zero": "H0mework.Physics.LowEnergy.FullQuantum.PreparedLoops.Source",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.PreparedLoops.transferRead": "H0mework.Physics.LowEnergy.FullQuantum.PreparedLoops.Transfer",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.PreparedLoops.prepared_matrix_pair": "H0mework.Physics.LowEnergy.FullQuantum.PreparedLoops.Transfer",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.PreparedLoops.transferRead_generated": "H0mework.Physics.LowEnergy.FullQuantum.PreparedLoops.Transfer",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.PreparedLoops.transferRead_expansion": "H0mework.Physics.LowEnergy.FullQuantum.PreparedLoops.Transfer",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.PreparedLoops.sourceForce": "H0mework.Physics.LowEnergy.FullQuantum.PreparedLoops.Transfer",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.PreparedLoops.sourceReader": "H0mework.Physics.LowEnergy.FullQuantum.PreparedLoops.Transfer",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.PreparedLoops.sourceForce_grade": "H0mework.Physics.LowEnergy.FullQuantum.PreparedLoops.Transfer",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.PreparedLoops.sourceReader_grade": "H0mework.Physics.LowEnergy.FullQuantum.PreparedLoops.Transfer",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.PreparedLoops.sourceReader_original": "H0mework.Physics.LowEnergy.FullQuantum.PreparedLoops.Transfer",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.PreparedLoops.native_transfer_yukawa_independent": "H0mework.Physics.LowEnergy.FullQuantum.PreparedLoops.Transfer",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.PreparedLoops.fullWord": "H0mework.Physics.LowEnergy.FullQuantum.PreparedLoops.Words",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.PreparedLoops.fullWord_oneParticle": "H0mework.Physics.LowEnergy.FullQuantum.PreparedLoops.Words",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.PreparedLoops.fullWord_read": "H0mework.Physics.LowEnergy.FullQuantum.PreparedLoops.Words",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.PreparedLoops.complete_word_expansion": "H0mework.Physics.LowEnergy.FullQuantum.PreparedLoops.Words",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.PreparedLoops.weightedWord": "H0mework.Physics.LowEnergy.FullQuantum.PreparedLoops.Words",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.PreparedLoops.weightedWord_expansion": "H0mework.Physics.LowEnergy.FullQuantum.PreparedLoops.Words",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.PreparedLoops.weightedWord_native": "H0mework.Physics.LowEnergy.FullQuantum.PreparedLoops.Words",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.PreparedLoops.Consumer.actual_unit_word": "H0mework.Checks.Physics.LowEnergy.PreparedLoops.Consumer",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.PreparedLoops.Consumer.actual_weight_is_not_bare_trace": "H0mework.Checks.Physics.LowEnergy.PreparedLoops.Consumer",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.PreparedLoops.Consumer.native_weighted_all_words": "H0mework.Checks.Physics.LowEnergy.PreparedLoops.Consumer",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.PreparedLoops.Consumer.actual_scalar_weighted_zero": "H0mework.Checks.Physics.LowEnergy.PreparedLoops.Consumer",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.PreparedLoops.Consumer.source_reader_raw_identity": "H0mework.Checks.Physics.LowEnergy.PreparedLoops.Consumer",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.PreparedLoops.Consumer.source_scalar_transfer_vanishes": "H0mework.Checks.Physics.LowEnergy.PreparedLoops.Consumer",
+          "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.PreparedLoops.Consumer.original_return_stays_visible": "H0mework.Checks.Physics.LowEnergy.PreparedLoops.Consumer"
+        },
+        "closure": "complete type/value, mutual declarations, inductives, constructors and recursor metadata",
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "token": "028bb85d23cfb3eb02c8f73612a1e8d2049edc0a7843e6a99b2d008f1a151af3",
+        "source_sha256": "ebdf3c47bb08225af13a67853de10c3dd238ac844006be6e1644af84b2ff123c",
+        "public_modules": [
+          "H0mework.Checks.Physics.LowEnergy.ClosedLoops.Consumer",
+          "H0mework.Checks.Physics.LowEnergy.PreparedLoops.Consumer",
+          "H0mework.Physics.LowEnergy.FullQuantum.ClosedLoops.Grading",
+          "H0mework.Physics.LowEnergy.FullQuantum.ClosedLoops.Source",
+          "H0mework.Physics.LowEnergy.FullQuantum.ClosedLoops.Words",
+          "H0mework.Physics.LowEnergy.FullQuantum.PreparedLoops.Native",
+          "H0mework.Physics.LowEnergy.FullQuantum.PreparedLoops.Scalar",
+          "H0mework.Physics.LowEnergy.FullQuantum.PreparedLoops.Source",
+          "H0mework.Physics.LowEnergy.FullQuantum.PreparedLoops.Transfer",
+          "H0mework.Physics.LowEnergy.FullQuantum.PreparedLoops.Words"
+        ]
+      },
+      "audit": {
+        "axioms": [
+          "Quot.sound",
+          "Classical.choice",
+          "propext"
+        ],
+        "constants": 82595,
+        "edges": 2614331,
+        "full_metadata": true,
+        "partial": 0,
+        "roots": 91,
+        "token": "028bb85d23cfb3eb02c8f73612a1e8d2049edc0a7843e6a99b2d008f1a151af3",
+        "unsafe": 0
+      }
+    },
+    {
+      "package": "low-energy-inherited-26b91feb-physics-common-source-ae",
+      "status": "passed",
+      "exit_code": 0,
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--root=..",
+        "--trust=0",
+        "-Dweak.linter.unnecessarySimpa=false",
+        "-Dweak.linter.style.haveILetI=false",
+        "-Dweak.linter.unusedSimpArgs=false",
+        "-DmaxHeartbeats=2000000",
+        "-Dweak.linter.unusedSectionVars=false",
+        "-Dweak.linter.unnecessarySeqFocus=false",
+        "-Dweak.linter.unusedVariables=false",
+        "-Dweak.linter.unreachableTactic=false",
+        "-Dweak.linter.unusedTactic=false",
+        "-Dweak.linter.defProp=false",
+        "-Dweak.linter.deprecated=false",
+        "-Dlinter.deprecated=false",
+        "-Dweak.linter.tacticAnalysis.introMerge=false",
+        "-Dweak.linter.constructorNameAsVariable=false",
+        "-DwarningAsError=true",
+        "../.local/second-edition-20261009/low-inherited-public-trust/audit-003.lean"
+      ],
+      "cwd": "Lean",
+      "started_at": "2026-10-09T14:31:24.668503+00:00",
+      "finished_at": "2026-10-09T14:33:41.327490+00:00",
+      "elapsed_seconds": 136.66,
+      "error": null,
+      "log": ".local/second-edition-20261009/low-inherited-public-trust/audit-003.log",
+      "audit_scope": {
+        "package": "low-energy-inherited-26b91feb-physics-common-source-ae",
+        "source_commits": [
+          "26b91feb6b507fdc3f43be9c429edb63fb9395ef"
+        ],
+        "lean_target": "H0mework.Papers.PhysicsCommonSourceAeRelease",
+        "declarations": {
+          "LowEnergy.PreparationVacuumFullOriginResponse.Heavy.flag": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginInverse",
+          "LowEnergy.PreparationVacuumFullOriginResponse.Heavy.projection": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginInverse",
+          "LowEnergy.PreparationVacuumFullOriginResponse.Heavy.originTerms": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginInverse",
+          "LowEnergy.PreparationVacuumFullOriginResponse.Heavy.inverseTerms": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginInverse",
+          "LowEnergy.PreparationVacuumFullOriginResponse.Heavy.inverse": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginInverse",
+          "LowEnergy.PreparationVacuumFullOriginResponse.Heavy.origin_generated": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginInverse",
+          "LowEnergy.PreparationVacuumFullOriginResponse.Heavy.inverse_left": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginInverse",
+          "LowEnergy.PreparationVacuumFullOriginResponse.Heavy.inverse_left_support": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginInverse",
+          "LowEnergy.PreparationVacuumFullOriginResponse.Heavy.inverse_right_support": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginInverse",
+          "LowEnergy.PreparationVacuumFullOriginResponse.componentInverseTerms": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginInverse",
+          "LowEnergy.PreparationVacuumFullOriginResponse.componentOriginTerms": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginInverse",
+          "LowEnergy.PreparationVacuumFullOriginResponse.componentFlag": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginInverse",
+          "LowEnergy.PreparationVacuumFullOriginResponse.componentInverse": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginInverse",
+          "LowEnergy.PreparationVacuumFullOriginResponse.componentOrigin": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginInverse",
+          "LowEnergy.PreparationVacuumFullOriginResponse.componentProjection": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginInverse",
+          "LowEnergy.PreparationVacuumFullOriginResponse.component_inverse_left": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginInverse",
+          "LowEnergy.PreparationVacuumFullOriginResponse.component_inverse_left_support": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginInverse",
+          "LowEnergy.PreparationVacuumFullOriginResponse.component_inverse_right_support": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginInverse",
+          "LowEnergy.PreparationVacuumFullOriginResponse.component_inverse_cross": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginInverse",
+          "LowEnergy.PreparationVacuumFullOriginResponse.fullComplementFlag": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginInverse",
+          "LowEnergy.PreparationVacuumFullOriginResponse.fullComplementProjection": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginInverse",
+          "LowEnergy.PreparationVacuumFullOriginResponse.fullOriginTerms": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginInverse",
+          "LowEnergy.PreparationVacuumFullOriginResponse.fullOrigin": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginInverse",
+          "LowEnergy.PreparationVacuumFullOriginResponse.fullInverse": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginInverse",
+          "LowEnergy.PreparationVacuumFullOriginResponse.fullProjection_sum": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginInverse",
+          "LowEnergy.PreparationVacuumFullOriginResponse.fullProjection_piece": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginInverse",
+          "LowEnergy.PreparationVacuumFullOriginResponse.piece_fullProjection": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginInverse",
+          "LowEnergy.PreparationVacuumFullOriginResponse.fullOrigin_sum": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginInverse",
+          "LowEnergy.PreparationVacuumFullOriginResponse.fullOrigin_generated": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginInverse",
+          "LowEnergy.PreparationVacuumFullOriginResponse.fullInverse_left": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginInverse",
+          "LowEnergy.PreparationVacuumFullOriginResponse.fullInverse_left_support": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginInverse",
+          "LowEnergy.PreparationVacuumFullOriginResponse.fullInverse_right_support": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginInverse",
+          "LowEnergy.PreparationVacuumFullOriginResponse.fullProjection_square": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginInverse",
+          "LowEnergy.PreparationVacuumFullOriginResponse.complementKernel": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginInverse",
+          "LowEnergy.PreparationVacuumFullOriginResponse.originInverse": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginInverse",
+          "LowEnergy.PreparationVacuumFullOriginResponse.originInverse_left": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginInverse",
+          "LowEnergy.PreparationVacuumFullOriginResponse.originInverse_right": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginInverse",
+          "LowEnergy.PreparationVacuumFullOriginResponse.origin_determinant": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginInverse",
+          "LowEnergy.PreparationVacuumFullOriginResponse.dualInjectionTerms": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginSchur",
+          "LowEnergy.PreparationVacuumFullOriginResponse.dualInjection": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginSchur",
+          "LowEnergy.PreparationVacuumFullOriginResponse.fullKernelTerms": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginSchur",
+          "LowEnergy.PreparationVacuumFullOriginResponse.fullKernelFrame": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginSchur",
+          "LowEnergy.PreparationVacuumFullOriginResponse.fullKernel_generated": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginSchur",
+          "LowEnergy.PreparationVacuumFullOriginResponse.fullKernel_origin": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginSchur",
+          "LowEnergy.PreparationVacuumFullOriginResponse.complementRegular": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginSchur",
+          "LowEnergy.PreparationVacuumFullOriginResponse.complementOrigin": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginSchur",
+          "LowEnergy.PreparationVacuumFullOriginResponse.complementKernel_continuous": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginSchur",
+          "LowEnergy.PreparationVacuumFullOriginResponse.complementRegular_near_origin": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginSchur",
+          "LowEnergy.PreparationVacuumFullOriginResponse.complementGreen": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginSchur",
+          "LowEnergy.PreparationVacuumFullOriginResponse.complementKernel_right": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginSchur",
+          "LowEnergy.PreparationVacuumFullOriginResponse.complementKernel_left": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginSchur",
+          "LowEnergy.PreparationVacuumFullOriginResponse.complementGreen_left_support": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginSchur",
+          "LowEnergy.PreparationVacuumFullOriginResponse.complementGreen_right_support": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginSchur",
+          "LowEnergy.PreparationVacuumFullOriginResponse.complementGreen_left": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginSchur",
+          "LowEnergy.PreparationVacuumFullOriginResponse.complementGreen_right": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginSchur",
+          "LowEnergy.PreparationVacuumFullOriginResponse.complementGreen_origin": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginSchur",
+          "LowEnergy.PreparationVacuumFullOriginResponse.effectiveReader": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginSchur",
+          "LowEnergy.PreparationVacuumFullOriginResponse.effectiveKernel": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginSchur",
+          "LowEnergy.PreparationVacuumFullOriginResponse.effectiveFrame": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginSchur",
+          "LowEnergy.PreparationVacuumFullOriginResponse.nativeEffectiveFrame": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginSchur",
+          "LowEnergy.PreparationVacuumFullOriginResponse.effectiveKernel_frame": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginSchur",
+          "LowEnergy.PreparationVacuumFullOriginResponse.effectiveReader_complement": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginSchur",
+          "LowEnergy.PreparationVacuumFullOriginResponse.effectiveKernel_generated": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginSchur",
+          "LowEnergy.PreparationVacuumFullOriginResponse.effectiveKernel_origin": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginSchur",
+          "LowEnergy.PreparationVacuumFullOriginResponse.complement_response": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginSchur",
+          "LowEnergy.PreparationVacuumFullOriginResponse.frozenTensor": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginSchur",
+          "LowEnergy.PreparationVacuumFullOriginResponse.effectiveKernel_complete_return": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginSchur",
+          "LowEnergy.PreparationVacuumFullOriginResponse.fullInverseTerms": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginSchur",
+          "LowEnergy.PreparationVacuumFullOriginResponse.fullInverse_generated": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginSchur",
+          "LowEnergy.PreparationVacuumFullOriginResponse.fullLeadingTerms": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginSchur",
+          "LowEnergy.PreparationVacuumFullOriginResponse.fullHigherTerms": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginSchur",
+          "LowEnergy.PreparationVacuumFullOriginResponse.leadingTensor": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginSchur",
+          "LowEnergy.PreparationVacuumFullOriginResponse.higherTensor": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginSchur",
+          "LowEnergy.PreparationVacuumFullOriginResponse.fullResidualTerms": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginSchur",
+          "LowEnergy.PreparationVacuumFullOriginResponse.fullInverseResidualTerms": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginSchur",
+          "LowEnergy.PreparationVacuumFullOriginResponse.fullResidual_generated": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginSchur",
+          "LowEnergy.PreparationVacuumFullOriginResponse.fullInverseResidual_generated": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginSchur",
+          "LowEnergy.PreparationVacuumFullOriginResponse.frozenTensor_generated": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginSchur",
+          "LowEnergy.PreparationVacuumFullOriginResponse.leading_degrees": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginSchur",
+          "LowEnergy.PreparationVacuumFullOriginResponse.higher_degrees": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginSchur",
+          "LowEnergy.PreparationVacuumFullOriginResponse.effectiveKernel_source_tensor": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginSchur",
+          "LowEnergy.PreparationVacuumFullOriginResponse.inverseBudget": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginSchur",
+          "LowEnergy.PreparationVacuumFullOriginResponse.sourceRadius": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginSchur",
+          "LowEnergy.PreparationVacuumFullOriginResponse.inverseBudget_ge_one": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginSchur",
+          "LowEnergy.PreparationVacuumFullOriginResponse.sourceRadius_pos": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginSchur",
+          "LowEnergy.PreparationVacuumFullOriginResponse.sourceRadius_le_one": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginSchur",
+          "LowEnergy.PreparationVacuumFullOriginResponse.fullComplementProjection_price": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginSchur",
+          "LowEnergy.PreparationVacuumFullOriginResponse.fullInverse_price": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginSchur",
+          "LowEnergy.PreparationVacuumFullOriginResponse.originInverse_price": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginSchur",
+          "LowEnergy.PreparationVacuumFullOriginResponse.complement_delta_price": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginSchur",
+          "LowEnergy.PreparationVacuumFullOriginResponse.source_neumann_price": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginSchur",
+          "LowEnergy.PreparationVacuumFullOriginResponse.sourceRadius_regular": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginSchur",
+          "LowEnergy.PreparationVacuumFullOriginResponse.controlledPoint": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginSchur",
+          "LowEnergy.PreparationVacuumFullOriginResponse.complement_full_inverse_price": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginSchur",
+          "LowEnergy.PreparationVacuumFullOriginResponse.complementGreen_price": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginSchur",
+          "LowEnergy.PreparationVacuumFullOriginResponse.inversePrice_exact": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginSchur",
+          "LowEnergy.PreparationVacuumFullOriginResponse.sourceRadius_exact": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginSchur",
+          "LowEnergy.PreparationVacuumFullOriginResponse.complementGreen_delta": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginSchur",
+          "LowEnergy.PreparationVacuumFullOriginResponse.complementGreen_delta_price": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginSchur",
+          "LowEnergy.PreparationVacuumFullOriginResponse.kernelBudget": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginSchur",
+          "LowEnergy.PreparationVacuumFullOriginResponse.higherBudget": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginSchur",
+          "LowEnergy.PreparationVacuumFullOriginResponse.effectiveErrorBudget": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginSchur",
+          "LowEnergy.PreparationVacuumFullOriginResponse.kernelBudget_nonneg": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginSchur",
+          "LowEnergy.PreparationVacuumFullOriginResponse.higherBudget_nonneg": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginSchur",
+          "LowEnergy.PreparationVacuumFullOriginResponse.fullKernel_price": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginSchur",
+          "LowEnergy.PreparationVacuumFullOriginResponse.higherTensor_price": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginSchur",
+          "LowEnergy.PreparationVacuumFullOriginResponse.effectiveKernel_leading_price": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginSchur",
+          "LowEnergy.PreparationVacuumFullOriginResponse.effectiveErrorBudget_nonneg": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginSchur",
+          "LowEnergy.PreparationVacuumFullOriginResponse.kernelPrice_exact": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginSchur",
+          "LowEnergy.PreparationVacuumFullOriginResponse.higherPrice_exact": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginSchur",
+          "LowEnergy.PreparationVacuumFullOriginResponse.active_square": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginCurrent",
+          "LowEnergy.PreparationVacuumFullOriginResponse.active_null": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginCurrent",
+          "LowEnergy.PreparationVacuumFullOriginResponse.activeKernel_right": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginCurrent",
+          "LowEnergy.PreparationVacuumFullOriginResponse.selectorTerms": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginCurrent",
+          "LowEnergy.PreparationVacuumFullOriginResponse.modeSelector": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginCurrent",
+          "LowEnergy.PreparationVacuumFullOriginResponse.blockCoordinates": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginCurrent",
+          "LowEnergy.PreparationVacuumFullOriginResponse.blockComplement": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginCurrent",
+          "LowEnergy.PreparationVacuumFullOriginResponse.blockComplement_supported": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginCurrent",
+          "LowEnergy.PreparationVacuumFullOriginResponse.blockComplement_generated": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginCurrent",
+          "LowEnergy.PreparationVacuumFullOriginResponse.effective_actual_equation": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginCurrent",
+          "LowEnergy.PreparationVacuumFullOriginResponse.effective_field_reconstruction": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginCurrent",
+          "LowEnergy.PreparationVacuumFullOriginResponse.fullKernel_coordinates": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginCurrent",
+          "LowEnergy.PreparationVacuumFullOriginResponse.fullKernel_independent": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginCurrent",
+          "LowEnergy.PreparationVacuumFullOriginResponse.actualMomentum": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginCurrent",
+          "LowEnergy.PreparationVacuumFullOriginResponse.actualCurrent": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginCurrent",
+          "LowEnergy.PreparationVacuumFullOriginResponse.actualCosource": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginCurrent",
+          "LowEnergy.PreparationVacuumFullOriginResponse.actualNativeField": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginCurrent",
+          "LowEnergy.PreparationVacuumFullOriginResponse.actualField": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginCurrent",
+          "LowEnergy.PreparationVacuumFullOriginResponse.actualForcing": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginCurrent",
+          "LowEnergy.PreparationVacuumFullOriginResponse.actual_current_ward": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginCurrent",
+          "LowEnergy.PreparationVacuumFullOriginResponse.actual_whole_native": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginCurrent",
+          "LowEnergy.PreparationVacuumFullOriginResponse.actual_source": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginCurrent",
+          "LowEnergy.PreparationVacuumFullOriginResponse.actual_inside": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginCurrent",
+          "LowEnergy.PreparationVacuumFullOriginResponse.actual_effective_dynamics": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginCurrent",
+          "LowEnergy.PreparationVacuumFullOriginResponse.actual_complement_return": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginCurrent",
+          "LowEnergy.PreparationVacuumFullOriginResponse.actual_native_reconstruction": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginCurrent",
+          "LowEnergy.PreparationVacuumFullOriginResponse.origin_kernel_complete": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginCurrent",
+          "LowEnergy.PreparationVacuumFullOriginResponse.actual_forcing_twoSectors": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginCurrent",
+          "LowEnergy.PreparationVacuumFullOriginResponse.actual_whole_reconstruction": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginCurrent",
+          "LowEnergy.PreparationVacuumFullOriginResponse.fullNativeOriginTerms": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginCurrent",
+          "LowEnergy.PreparationVacuumFullOriginResponse.fullNativeOrigin": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginCurrent",
+          "LowEnergy.PreparationVacuumFullOriginResponse.fullNativeOrigin_generated": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginCurrent",
+          "LowEnergy.PreparationVacuumFullOriginResponse.actual_origin_kernel_read": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginCurrent",
+          "LowEnergy.PreparationVacuumFullOriginResponse.actual_effective_response_price": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginCurrent",
+          "LowEnergy.PreparationVacuumCurrentHalfOperator.sourceWeightedCurrent": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceHalfAxisCurrentOperator",
+          "LowEnergy.PreparationVacuumCurrentHalfOperator.sourceWeightedCurrent_generated": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceHalfAxisCurrentOperator",
+          "LowEnergy.PreparationVacuumCurrentHalfOperator.sourceCurrentPrice": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceHalfAxisCurrentOperator",
+          "LowEnergy.PreparationVacuumCurrentHalfOperator.sourceCurrentPrice_nonnegative": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceHalfAxisCurrentOperator",
+          "LowEnergy.PreparationVacuumCurrentHalfOperator.sourceWeightedCurrent_price": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceHalfAxisCurrentOperator",
+          "LowEnergy.PreparationVacuumCurrentHalfOperator.sourceWeightedCurrent_continuous": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceHalfAxisCurrentOperator",
+          "LowEnergy.PreparationVacuumCurrentHalfOperator.sourceWeightedCurrent_integrable": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceHalfAxisCurrentOperator",
+          "LowEnergy.PreparationVacuumCurrentHalfOperator.sourceHalfCurrent": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceHalfAxisCurrentOperator",
+          "LowEnergy.PreparationVacuumCurrentHalfOperator.sourceHalfCurrent_generated": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceHalfAxisCurrentOperator",
+          "LowEnergy.PreparationVacuumCurrentHalfOperator.sourceWindowJacobian_integral": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceHalfAxisCurrentOperator",
+          "LowEnergy.PreparationVacuumCurrentHalfOperator.sourceCurrentTailPrice": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceHalfAxisCurrentOperator",
+          "LowEnergy.PreparationVacuumCurrentHalfOperator.sourceHalfCurrent_tail": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceHalfAxisCurrentOperator",
+          "LowEnergy.PreparationVacuumCurrentHalfOperator.sourceHalfCurrent_price": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceHalfAxisCurrentOperator",
+          "LowEnergy.PreparationVacuumCurrentHalfOperator.sourceCurrentTailPrice_zero": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceHalfAxisCurrentOperator",
+          "LowEnergy.PreparationVacuumCurrentHalfOperator.sourceWindowJacobian_operatorNorm": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceHalfAxisCurrentOperator",
+          "LowEnergy.PreparationVacuumCurrentHalfOperator.sourceHalfFieldOperator": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceHalfAxisFieldOperator",
+          "LowEnergy.PreparationVacuumCurrentHalfOperator.sourceHalfCurvatureOperator": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceHalfAxisFieldOperator",
+          "LowEnergy.PreparationVacuumCurrentHalfOperator.sourceFieldOperatorFactor": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceHalfAxisFieldOperator",
+          "LowEnergy.PreparationVacuumCurrentHalfOperator.sourceCurvatureOperatorFactor": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceHalfAxisFieldOperator",
+          "LowEnergy.PreparationVacuumCurrentHalfOperator.sourceHalfFieldOperator_generated": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceHalfAxisFieldOperator",
+          "LowEnergy.PreparationVacuumCurrentHalfOperator.sourceHalfCurvatureOperator_generated": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceHalfAxisFieldOperator",
+          "LowEnergy.PreparationVacuumCurrentHalfOperator.sourceHalfFieldOperator_tail": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceHalfAxisFieldOperator",
+          "LowEnergy.PreparationVacuumCurrentHalfOperator.sourceHalfCurvatureOperator_tail": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceHalfAxisFieldOperator",
+          "LowEnergy.PreparationVacuumCurrentHalfOperator.sourceHalfFieldOperator_price": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceHalfAxisFieldOperator",
+          "LowEnergy.PreparationVacuumCurrentHalfOperator.sourceHalfCurvatureOperator_price": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceHalfAxisFieldOperator",
+          "LowEnergy.PreparationVacuumCurrentHalfOperator.sourceHalfFieldOperator_native": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceHalfAxisFieldOperator",
+          "LowEnergy.PreparationVacuumCurrentHalfOperator.sourceFieldJacobian_operatorNorm": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceHalfAxisFieldOperator",
+          "LowEnergy.PreparationVacuumCurrentHalfOperator.sourceCurvatureJacobian_operatorNorm": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceHalfAxisFieldOperator",
+          "LowEnergy.PreparationVacuumCurrentHalfOperator.sourceHalfCurrent_reality": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceHalfAxisFieldOperator",
+          "LowEnergy.PreparationVacuumCurrentHalfOperator.sourceHalfCurvatureOperator_mate": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceHalfAxisFieldOperator",
+          "LowEnergy.PreparationVacuumCurrentSignalRealization.sourcePhase": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceNativeRealFourierSignal",
+          "LowEnergy.PreparationVacuumCurrentSignalRealization.sourcePhase_apply": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceNativeRealFourierSignal",
+          "LowEnergy.PreparationVacuumCurrentSignalRealization.sourcePhase_coordinate": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceNativeRealFourierSignal",
+          "LowEnergy.PreparationVacuumCurrentSignalRealization.sourceRealSignal": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceNativeRealFourierSignal",
+          "LowEnergy.PreparationVacuumCurrentSignalRealization.sourceSignalAmplitude": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceNativeRealFourierSignal",
+          "LowEnergy.PreparationVacuumCurrentSignalRealization.sourceRealSignal_smooth": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceNativeRealFourierSignal",
+          "LowEnergy.PreparationVacuumCurrentSignalRealization.sourceRealFirstJet": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceNativeRealFourierSignal",
+          "LowEnergy.PreparationVacuumCurrentSignalRealization.sourceRealSecondJet": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceNativeRealFourierSignal",
+          "LowEnergy.PreparationVacuumCurrentSignalRealization.sourceRealSignal_firstJet": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceNativeRealFourierSignal",
+          "LowEnergy.PreparationVacuumCurrentSignalRealization.sourceRealSignal_secondJet": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceNativeRealFourierSignal",
+          "LowEnergy.PreparationVacuumCurrentSignalRealization.sourceRealJet_coefficient": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceNativeRealFourierSignal",
+          "LowEnergy.PreparationVacuumCurrentSignalRealization.sourceRealEuler_Fourier": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceNativeRealFourierSignal",
+          "LowEnergy.PreparationVacuumCurrentSignalRealization.sourceRealSignal_originalDensity": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceNativeRealFourierSignal",
+          "LowEnergy.PreparationVacuumCurrentSignalRealization.sourceRealSignal_originalEuler": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceNativeRealFourierSignal",
+          "LowEnergy.PreparationVacuumCurrentSignalOperator.SignalAmplitude": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceOrderedSignalOperator",
+          "LowEnergy.PreparationVacuumCurrentSignalOperator.SourceOp": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceOrderedSignalOperator",
+          "LowEnergy.PreparationVacuumCurrentSignalOperator.sourceHistoryInput": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceOrderedSignalOperator",
+          "LowEnergy.PreparationVacuumCurrentSignalOperator.sourceHistoryInput_actual": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceOrderedSignalOperator",
+          "LowEnergy.PreparationVacuumCurrentSignalOperator.sourceHistoryInput_continuous": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceOrderedSignalOperator",
+          "LowEnergy.PreparationVacuumCurrentSignalOperator.sourceRightDrive": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceOrderedSignalOperator",
+          "LowEnergy.PreparationVacuumCurrentSignalOperator.sourceLeftDrive": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceOrderedSignalOperator",
+          "LowEnergy.PreparationVacuumCurrentSignalOperator.sourceRightDrive_continuous": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceOrderedSignalOperator",
+          "LowEnergy.PreparationVacuumCurrentSignalOperator.sourceLeftDrive_continuous": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceOrderedSignalOperator",
+          "LowEnergy.PreparationVacuumCurrentSignalOperator.sourcePrimalOperator": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceOrderedSignalOperator",
+          "LowEnergy.PreparationVacuumCurrentSignalOperator.sourceIndependentDualOperator": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceOrderedSignalOperator",
+          "LowEnergy.PreparationVacuumCurrentSignalOperator.sourcePrimalOperator_actual": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceOrderedSignalOperator",
+          "LowEnergy.PreparationVacuumCurrentSignalOperator.sourceIndependentDualOperator_actual": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceOrderedSignalOperator",
+          "LowEnergy.PreparationVacuumCurrentSignalOperator.sourceMiddleOperator": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceOrderedSignalOperator",
+          "LowEnergy.PreparationVacuumCurrentSignalOperator.sourceHistoryOperator": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceOrderedSignalOperator",
+          "LowEnergy.PreparationVacuumCurrentSignalOperator.sourceHistoryOperator_actual": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceOrderedSignalOperator",
+          "LowEnergy.PreparationVacuumCurrentSignalOperator.sourceCurrentOperator": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceOrderedSignalOperator",
+          "LowEnergy.PreparationVacuumCurrentSignalOperator.sourceCurrentOperator_actual": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceOrderedSignalOperator",
+          "LowEnergy.PreparationVacuumCurrentSignalRealization.sourceSignalDuration": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourcePreparedSignalEuler",
+          "LowEnergy.PreparationVacuumCurrentSignalRealization.sourceSignalDuration_positive": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourcePreparedSignalEuler",
+          "LowEnergy.PreparationVacuumCurrentSignalRealization.sourceSignalCurrent": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourcePreparedSignalEuler",
+          "LowEnergy.PreparationVacuumCurrentSignalRealization.sourceRawSignalEuler_generated": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourcePreparedSignalEuler",
+          "LowEnergy.PreparationVacuumCurrentSignalRealization.sourcePreparedQuadrature_generated": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourcePreparedSignalEuler",
+          "LowEnergy.PreparationVacuumCurrentSignalRealization.sourceSignalCurrent_actual": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourcePreparedSignalEuler",
+          "LowEnergy.PreparationVacuumCurrentSignalRealization.sourceSignalOrdinaryRemainder_generated": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourcePreparedSignalEuler",
+          "LowEnergy.PreparationVacuumCurrentSignalRealization.sourceSignalForcing": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourcePreparedSignalEuler",
+          "LowEnergy.PreparationVacuumCurrentSignalRealization.sourceSignalField": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourcePreparedSignalEuler",
+          "LowEnergy.PreparationVacuumCurrentSignalRealization.sourceSignalForcing_actual": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourcePreparedSignalEuler",
+          "LowEnergy.PreparationVacuumCurrentSignalRealization.sourceSignalField_native": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourcePreparedSignalEuler",
+          "LowEnergy.PreparationVacuumCurrentSignalRealization.sourceSignalField_native36": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourcePreparedSignalEuler",
+          "LowEnergy.PreparationVacuumCurrentSignalRealization.sourceSignalForcing_cosources": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourcePreparedSignalEuler",
+          "LowEnergy.PreparationVacuumCurrentNativeLaplaceBridge.sourcePlaneWindowScalar": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceNativeSignalLaplaceReturn",
+          "LowEnergy.PreparationVacuumCurrentNativeLaplaceBridge.sourceNativePlaneWindow": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceNativeSignalLaplaceReturn",
+          "LowEnergy.PreparationVacuumCurrentNativeLaplaceBridge.sourceNativeBoundary": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceNativeSignalLaplaceReturn",
+          "LowEnergy.PreparationVacuumCurrentNativeLaplaceBridge.sourcePlaneWindowScalar_derivative": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceNativeSignalLaplaceReturn",
+          "LowEnergy.PreparationVacuumCurrentNativeLaplaceBridge.sourceNativeBoundary_initial": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceNativeSignalLaplaceReturn",
+          "LowEnergy.PreparationVacuumCurrentNativeLaplaceBridge.sourceNativePlaneWindow_ordinary": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceNativeSignalLaplaceReturn",
+          "LowEnergy.PreparationVacuumCurrentNativeLaplaceBridge.sourceNativeSignal_weighted": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceNativeSignalLaplaceReturn",
+          "LowEnergy.PreparationVacuumCurrentNativeLaplaceBridge.sourceNativeEulerWindow": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceNativeSignalLaplaceReturn",
+          "LowEnergy.PreparationVacuumCurrentNativeLaplaceBridge.sourceNativeEulerWindow_actual": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceNativeSignalLaplaceReturn",
+          "LowEnergy.PreparationVacuumCurrentNativeLaplaceBridge.sourcePreparedEulerWindow": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceNativeSignalLaplaceReturn",
+          "LowEnergy.PreparationVacuumCurrentNativeLaplaceBridge.sourcePreparedEulerWindow_generated": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceNativeSignalLaplaceReturn",
+          "LowEnergy.PreparationVacuumCurrentNativeLaplaceBridge.sourcePreparedEulerWindow_native": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceNativeSignalLaplaceReturn",
+          "LowEnergy.PreparationVacuumCurrentNativeLaplaceBridge.sourceNativeTimeValue": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceNativeSignalLaplaceReturn",
+          "LowEnergy.PreparationVacuumCurrentNativeLaplaceBridge.sourceNativeTimeFirst": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceNativeSignalLaplaceReturn",
+          "LowEnergy.PreparationVacuumCurrentNativeLaplaceBridge.sourceNativeTimeValue_actual": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceNativeSignalLaplaceReturn",
+          "LowEnergy.PreparationVacuumCurrentNativeLaplaceBridge.sourceNativeTimeFirst_actual": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceNativeSignalLaplaceReturn",
+          "LowEnergy.PreparationVacuumCurrentNativeLaplaceBridge.sourceNativeBoundary_history": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceNativeSignalLaplaceReturn",
+          "LowEnergy.PreparationVacuumCurrentNativeLaplaceBridge.sourcePlaneHalfScalar": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceNativeSignalLaplaceReturn",
+          "LowEnergy.PreparationVacuumCurrentNativeLaplaceBridge.sourcePlaneHalfScalar_actual": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceNativeSignalLaplaceReturn",
+          "LowEnergy.PreparationVacuumCurrentNativeLaplaceBridge.sourcePlaneWindowScalar_limit": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceNativeSignalLaplaceReturn",
+          "LowEnergy.PreparationVacuumCurrentSignalOperator.sourceClockGrowth": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceSignalOperatorPrice",
+          "LowEnergy.PreparationVacuumCurrentSignalOperator.sourceClockGrowth_nonnegative": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceSignalOperatorPrice",
+          "LowEnergy.PreparationVacuumCurrentSignalOperator.sourceHistoryInput_price": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceSignalOperatorPrice",
+          "LowEnergy.PreparationVacuumCurrentSignalOperator.sourcePrimalCoefficient": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceSignalOperatorPrice",
+          "LowEnergy.PreparationVacuumCurrentSignalOperator.sourceDualCoefficient": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceSignalOperatorPrice",
+          "LowEnergy.PreparationVacuumCurrentSignalOperator.sourceRightDrive_price": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceSignalOperatorPrice",
+          "LowEnergy.PreparationVacuumCurrentSignalOperator.sourceLeftDrive_price": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceSignalOperatorPrice",
+          "LowEnergy.PreparationVacuumCurrentSignalOperator.sourcePrimalOperator_price": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceSignalOperatorPrice",
+          "LowEnergy.PreparationVacuumCurrentSignalOperator.sourceIndependentDualOperator_price": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceSignalOperatorPrice",
+          "LowEnergy.PreparationVacuumCurrentSignalOperator.sourceMaterialMap": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceSignalOperatorPrice",
+          "LowEnergy.PreparationVacuumCurrentSignalOperator.sourceContactMap": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceSignalOperatorPrice",
+          "LowEnergy.PreparationVacuumCurrentSignalOperator.sourceMiddleOperator_source_maps": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceSignalOperatorPrice",
+          "LowEnergy.PreparationVacuumCurrentSignalOperator.sourceMiddleCoefficient": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceSignalOperatorPrice",
+          "LowEnergy.PreparationVacuumCurrentSignalOperator.sourceMiddleOperator_price": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceSignalOperatorPrice",
+          "LowEnergy.PreparationVacuumCurrentSignalOperator.sourceHistoryLinearCoefficient": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceSignalOperatorPrice",
+          "LowEnergy.PreparationVacuumCurrentSignalOperator.sourceHistoryConstantCoefficient": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceSignalOperatorPrice",
+          "LowEnergy.PreparationVacuumCurrentSignalOperator.sourceHistoryOperator_price": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceSignalOperatorPrice",
+          "LowEnergy.PreparationVacuumCurrentSignalOperator.sourceCurrentLinearCoefficient": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceSignalOperatorPrice",
+          "LowEnergy.PreparationVacuumCurrentSignalOperator.sourceCurrentConstantCoefficient": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceSignalOperatorPrice",
+          "LowEnergy.PreparationVacuumCurrentSignalOperator.sourceCurrentCoefficient_nonnegative": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceSignalOperatorPrice",
+          "LowEnergy.PreparationVacuumCurrentSignalOperator.sourceCurrentOperator_price": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceSignalOperatorPrice",
+          "LowEnergy.PreparationVacuumCurrentSignalOperator.sourceCurrentOperator_continuous": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceSignalOperatorPrice",
+          "LowEnergy.PreparationVacuumCurrentSignalOperator.sourceQuadratureOperator": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceSignalCausalResponse",
+          "LowEnergy.PreparationVacuumCurrentSignalOperator.sourceQuadratureCurrent": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceSignalCausalResponse",
+          "LowEnergy.PreparationVacuumCurrentSignalOperator.sourceQuadratureCurrent_actual": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceSignalCausalResponse",
+          "LowEnergy.PreparationVacuumCurrentSignalOperator.sourceQuadratureCurrent_continuous": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceSignalCausalResponse",
+          "LowEnergy.PreparationVacuumCurrentSignalOperator.sourceQuadratureCurrent_price": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceSignalCausalResponse",
+          "LowEnergy.PreparationVacuumCurrentSignalOperator.sourceReadGap": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceSignalCausalResponse",
+          "LowEnergy.PreparationVacuumCurrentSignalOperator.sourceCausalEta": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceSignalCausalResponse",
+          "LowEnergy.PreparationVacuumCurrentSignalOperator.sourceCausalCoefficient": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceSignalCausalResponse",
+          "LowEnergy.PreparationVacuumCurrentSignalOperator.sourceWeightedQuadrature": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceSignalCausalResponse",
+          "LowEnergy.PreparationVacuumCurrentSignalOperator.sourceWeightedQuadrature_price": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceSignalCausalResponse",
+          "LowEnergy.PreparationVacuumCurrentSignalOperator.sourceWeightedQuadrature_continuous": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceSignalCausalResponse",
+          "LowEnergy.PreparationVacuumCurrentSignalOperator.sourceWeightedQuadrature_integrable": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceSignalCausalResponse",
+          "LowEnergy.PreparationVacuumCurrentSignalOperator.sourceCausalWindow": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceSignalCausalResponse",
+          "LowEnergy.PreparationVacuumCurrentSignalOperator.sourceCausalHalfOperator": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceSignalCausalResponse",
+          "LowEnergy.PreparationVacuumCurrentSignalOperator.sourceCausalWindow_actual": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceSignalCausalResponse",
+          "LowEnergy.PreparationVacuumCurrentSignalOperator.sourceCausalWindow_noether": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceSignalCausalResponse",
+          "LowEnergy.PreparationVacuumCurrentSignalOperator.sourceCausalWindow_operatorNorm": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceSignalCausalResponse",
+          "LowEnergy.PreparationVacuumCurrentSignalOperator.sourceCausalTailPrice": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceSignalCausalResponse",
+          "LowEnergy.PreparationVacuumCurrentSignalOperator.sourceCausalHalfOperator_tail": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceSignalCausalResponse",
+          "LowEnergy.PreparationVacuumCurrentSignalOperator.sourceCausalFieldOperator": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceSignalCausalResponse",
+          "LowEnergy.PreparationVacuumCurrentSignalOperator.sourceCausalCurvatureOperator": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceSignalCausalResponse",
+          "LowEnergy.PreparationVacuumCurrentSignalOperator.sourceCausalCurvatureOperator_actual": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceSignalCausalResponse",
+          "LowEnergy.PreparationVacuumCurrentSignalOperator.sourceCausalFieldOperator_native": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceSignalCausalResponse",
+          "LowEnergy.PreparationVacuumCurrentSignalOperator.sourceCausalCurvatureOperator_native": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceSignalCausalResponse",
+          "LowEnergy.PreparationVacuumCurrentSignalOperator.sourceCausalWindow_cosources": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceSignalCausalResponse"
+        },
+        "closure": "complete type/value, mutual declarations, inductives, constructors and recursor metadata",
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "token": "c08a64cb242acf1fad528fefcf1136a61c9388a9920cbd20a014a89d8238a520",
+        "source_sha256": "3a96eee5f43a1015dcd58ba0d6f004ca046d556fdd8157df82fd7b5f8299ec60",
+        "public_modules": [
+          "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginCurrent",
+          "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginInverse",
+          "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceFullOriginSchur",
+          "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceHalfAxisCurrentOperator",
+          "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceHalfAxisFieldOperator",
+          "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceNativeRealFourierSignal",
+          "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceNativeSignalLaplaceReturn",
+          "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceOrderedSignalOperator",
+          "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourcePreparedSignalEuler",
+          "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceSignalCausalResponse",
+          "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceSignalOperatorPrice"
+        ]
+      },
+      "audit": {
+        "axioms": [
+          "Quot.sound",
+          "Classical.choice",
+          "propext"
+        ],
+        "constants": 107242,
+        "edges": 4060604,
+        "full_metadata": true,
+        "partial": 0,
+        "roots": 286,
+        "token": "c08a64cb242acf1fad528fefcf1136a61c9388a9920cbd20a014a89d8238a520",
+        "unsafe": 0
+      }
+    },
+    {
+      "package": "low-energy-inherited-aef0ad2a-physics-common-source-ad",
+      "status": "passed",
+      "exit_code": 0,
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--root=..",
+        "--trust=0",
+        "-Dweak.linter.unnecessarySimpa=false",
+        "-Dweak.linter.style.haveILetI=false",
+        "-Dweak.linter.unusedSimpArgs=false",
+        "-DmaxHeartbeats=2000000",
+        "-Dweak.linter.unusedSectionVars=false",
+        "-Dweak.linter.unnecessarySeqFocus=false",
+        "-Dweak.linter.unusedVariables=false",
+        "-Dweak.linter.unreachableTactic=false",
+        "-Dweak.linter.unusedTactic=false",
+        "-Dweak.linter.defProp=false",
+        "-Dweak.linter.deprecated=false",
+        "-Dlinter.deprecated=false",
+        "-Dweak.linter.tacticAnalysis.introMerge=false",
+        "-Dweak.linter.constructorNameAsVariable=false",
+        "-DwarningAsError=true",
+        "../.local/second-edition-20261009/low-inherited-public-trust/audit-004.lean"
+      ],
+      "cwd": "Lean",
+      "started_at": "2026-10-09T14:31:29.317843+00:00",
+      "finished_at": "2026-10-09T14:32:46.696024+00:00",
+      "elapsed_seconds": 77.379,
+      "error": null,
+      "log": ".local/second-edition-20261009/low-inherited-public-trust/audit-004.log",
+      "audit_scope": {
+        "package": "low-energy-inherited-aef0ad2a-physics-common-source-ad",
+        "source_commits": [
+          "aef0ad2a26199d9fd6da9bc9e7ec1a65636ef63f"
+        ],
+        "lean_target": "H0mework.Papers.PhysicsCommonSourceAdRelease",
+        "declarations": {
+          "LowEnergy.SourcePropagationNativeActionHessian.nativeActionFourierHessian_original": "H0mework.Versions.AD.Physics.LowEnergy.AlphaSource.CanonicalSourcePropagationOriginalHessianReturn"
+        },
+        "closure": "complete type/value, mutual declarations, inductives, constructors and recursor metadata",
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "token": "48d961b757e1e99567712baf6e42c3756bcfe34b2310d0617c68b3bc5c0c7a67",
+        "source_sha256": "f71672b6225881b2909d4be494977e76c87ee9139ccb4eca8345fffe0ea104dc",
+        "public_modules": [
+          "H0mework.Versions.AD.Physics.LowEnergy.AlphaSource.CanonicalSourcePropagationOriginalHessianReturn"
+        ]
+      },
+      "audit": {
+        "axioms": [
+          "Quot.sound",
+          "Classical.choice",
+          "propext"
+        ],
+        "constants": 74368,
+        "edges": 2314624,
+        "full_metadata": true,
+        "partial": 0,
+        "roots": 1,
+        "token": "48d961b757e1e99567712baf6e42c3756bcfe34b2310d0617c68b3bc5c0c7a67",
+        "unsafe": 0
+      }
+    },
+    {
+      "package": "low-energy-inherited-b67aa48c-physics-common-source-ac",
+      "status": "passed",
+      "exit_code": 0,
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--root=..",
+        "--trust=0",
+        "-Dweak.linter.unnecessarySimpa=false",
+        "-Dweak.linter.style.haveILetI=false",
+        "-Dweak.linter.unusedSimpArgs=false",
+        "-DmaxHeartbeats=2000000",
+        "-Dweak.linter.unusedSectionVars=false",
+        "-Dweak.linter.unnecessarySeqFocus=false",
+        "-Dweak.linter.unusedVariables=false",
+        "-Dweak.linter.unreachableTactic=false",
+        "-Dweak.linter.unusedTactic=false",
+        "-Dweak.linter.defProp=false",
+        "-Dweak.linter.deprecated=false",
+        "-Dlinter.deprecated=false",
+        "-Dweak.linter.tacticAnalysis.introMerge=false",
+        "-Dweak.linter.constructorNameAsVariable=false",
+        "-DwarningAsError=true",
+        "../.local/second-edition-20261009/low-inherited-public-trust/audit-005.lean"
+      ],
+      "cwd": "Lean",
+      "started_at": "2026-10-09T14:32:46.697794+00:00",
+      "finished_at": "2026-10-09T14:34:46.456069+00:00",
+      "elapsed_seconds": 119.759,
+      "error": null,
+      "log": ".local/second-edition-20261009/low-inherited-public-trust/audit-005.log",
+      "audit_scope": {
+        "package": "low-energy-inherited-b67aa48c-physics-common-source-ac",
+        "source_commits": [
+          "b67aa48c75b3cd7738766ed40093bb3f7c1d7a1a"
+        ],
+        "lean_target": "H0mework.Papers.PhysicsCommonSourceAcRelease",
+        "declarations": {
+          "LowEnergy.PreparationVacuumRawJointFeedback.eulerCovector_generated": "H0mework.Versions.AC.Physics.LowEnergy.AlphaSource.CanonicalPreparationRawJointFiveTerms"
+        },
+        "closure": "complete type/value, mutual declarations, inductives, constructors and recursor metadata",
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "token": "f615441ffa958c9745294765420fbbb675fa857143fd1a3358f0e0a8e7f5f2cd",
+        "source_sha256": "67dcb718a969ce9f8a1b4e9c9197c14b71d1479e9f28319c12e2578f2aa4b30b",
+        "public_modules": [
+          "H0mework.Versions.AC.Physics.LowEnergy.AlphaSource.CanonicalPreparationRawJointFiveTerms"
+        ]
+      },
+      "audit": {
+        "axioms": [
+          "Quot.sound",
+          "Classical.choice",
+          "propext"
+        ],
+        "constants": 101352,
+        "edges": 3670302,
+        "full_metadata": true,
+        "partial": 0,
+        "roots": 1,
+        "token": "f615441ffa958c9745294765420fbbb675fa857143fd1a3358f0e0a8e7f5f2cd",
+        "unsafe": 0
+      }
+    }
+  ],
+  "publication_readiness": "not_assessed",
+  "preflight": {
+    "command": [
+      "lake",
+      "--no-build",
+      "build",
+      "H0mework.Papers.LowEnergyPhenomenology",
+      "H0mework.Papers.LowEnergyLoopResponse",
+      "H0mework.Papers.PhysicsCommonSourceAeRelease",
+      "H0mework.Papers.PhysicsCommonSourceAdRelease",
+      "H0mework.Papers.PhysicsCommonSourceAcRelease"
+    ],
+    "cwd": "Lean",
+    "started_at": "2026-10-09T14:29:52.604247+00:00",
+    "finished_at": "2026-10-09T14:30:27.709296+00:00",
+    "elapsed_seconds": 35.105,
+    "exit_code": 0,
+    "error": null,
+    "log": "evidence/second-edition/acceptance/low-inherited-trust-20261009/preflight.log.zst",
+    "scope": "validate existing built targets against current source; no build permitted"
+  },
+  "input_identity_after": {
+    "sha256": {
+      "claim_map": "fe6c77c2dbba60df2d19e3b72bcf9050e75516c3550cb245d05b9fefc8e9b156",
+      "export_map": "3571df167fd4d48ef87a827106b137dd4bdde1a5f7ca13d7201c719086faf4bd",
+      "lakefile": "41659610733e6ae72a3e552a4d2ebee719916ebf29f5c7240ac244749ef26b7f",
+      "toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+      "manifest": "2fe02acc26899fd57d82018e711e79c251e26d0b6d2bb370af81db0ed312fbfd"
+    },
+    "package_inputs": {
+      "low-energy-phenomenology": "414cb8c7c74ff810f5e2a7bc3e1715e68da3e17242fec0c695ac13ca482b9625",
+      "low-energy-loop-response": "d0f24c2b22dd4dcc40d0c44273a7e7806c4a2176a9fdf2e6bd9269e12a913765",
+      "low-energy-inherited-26b91feb-physics-common-source-ae": "9f881fb1d120f509b5f7de983fc2f92cab95036a8358958623d49d47f262658a",
+      "low-energy-inherited-aef0ad2a-physics-common-source-ad": "f9a0fba4050bc51049b5e4cd057db193d888d71e51efd397c98a6178d2af8c85",
+      "low-energy-inherited-b67aa48c-physics-common-source-ac": "37be1fdcacb1c3f3858d409d937d7b47beb6f067bf67526e19c7ebcca5b66cc6"
+    }
+  },
+  "inputs_unchanged": true,
+  "receipt": ".local/second-edition-20261009/low-inherited-public-trust/result.json",
+  "compiled_targets_after": {
+    "H0mework.Papers.LowEnergyPhenomenology": "90516ab2321fd79669b9a97a1f3bbef032e63ea0b3f53a29e17ff04adc79b75c",
+    "H0mework.Papers.LowEnergyLoopResponse": "c5fe5ac679c16aa04c50a450e5e1f272f8e58edda6811634548b6adc5a24ef9b",
+    "H0mework.Papers.PhysicsCommonSourceAeRelease": "590d3d296759e4eb9f858a4f71c891b7cb427b7067fc80f800eea8fc1558d7dd",
+    "H0mework.Papers.PhysicsCommonSourceAdRelease": "649b0cdf80446c37bfbf20f73f48b871f2d91737a008936dec5de5459ac63cde",
+    "H0mework.Papers.PhysicsCommonSourceAcRelease": "c13cfc7b949cc7bfc6af555132bed0f3449af10549f92199c67435eea3ebec2a"
+  }
+}
