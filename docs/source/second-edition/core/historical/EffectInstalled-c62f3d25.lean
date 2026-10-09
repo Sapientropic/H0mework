@@ -1,8 +1,8 @@
-import H0mework.Versions.C62.Realization.Operations.Tree.Fold.Dependent.Branch.JointQuery.Actor.Operation.Query.Inventory.Observer.CurrentChild.Dynamic.Live.Native.Action.Coupled.Registry.Calculation.Common.Feedback.Continuation.SourceFamily.Effect.Words
-import H0mework.Versions.C62.Realization.Operations.Tree.Fold.Dependent.Branch.JointQuery.Actor.Operation.Query.Inventory.Observer.CurrentChild.Dynamic.Live.Native.Action.Coupled.Registry.Calculation.Common.Feedback.Continuation.Future.Feedback.Installation
-import H0mework.Versions.C62.Realization.Operations.Tree.Fold.Dependent.Branch.JointQuery.Actor.Operation.Query.Inventory.Observer.CurrentChild.Dynamic.Live.Native.Action.Coupled.Registry.Calculation.Common.Feedback.Continuation.SourceFamily.Installed
-import H0mework.Versions.C62.Realization.Operations.Tree.Fold.Dependent.Branch.JointQuery.Actor.Operation.Query.Inventory.Observer.CurrentChild.Dynamic.Live.Native.Action.Coupled.Registry.Calculation.Common.Feedback.Continuation.Future.First
-import H0mework.Versions.C62.Realization.Operations.Tree.Fold.Dependent.Branch.JointQuery.Actor.Operation.Query.Inventory.Observer.CurrentChild.Dynamic.Live.Native.Action.Coupled.Registry.Calculation.Common.Feedback.Continuation.Future.Source
+import SaturationMonoid.GenericFoundation.Operations.Native.Tree.Fold.Dependent.Branch.JointQuery.Actor.Operation.Query.Inventory.Observer.CurrentChild.Dynamic.Live.Native.Action.Coupled.Registry.Calculation.Common.Feedback.Continuation.SourceFamily.Effect.Words
+import SaturationMonoid.GenericFoundation.Operations.Native.Tree.Fold.Dependent.Branch.JointQuery.Actor.Operation.Query.Inventory.Observer.CurrentChild.Dynamic.Live.Native.Action.Coupled.Registry.Calculation.Common.Feedback.Continuation.Future.Feedback.Installation
+import SaturationMonoid.GenericFoundation.Operations.Native.Tree.Fold.Dependent.Branch.JointQuery.Actor.Operation.Query.Inventory.Observer.CurrentChild.Dynamic.Live.Native.Action.Coupled.Registry.Calculation.Common.Feedback.Continuation.SourceFamily.Installed
+import SaturationMonoid.GenericFoundation.Operations.Native.Tree.Fold.Dependent.Branch.JointQuery.Actor.Operation.Query.Inventory.Observer.CurrentChild.Dynamic.Live.Native.Action.Coupled.Registry.Calculation.Common.Feedback.Continuation.Future.First
+import SaturationMonoid.GenericFoundation.Operations.Native.Tree.Fold.Dependent.Branch.JointQuery.Actor.Operation.Query.Inventory.Observer.CurrentChild.Dynamic.Live.Native.Action.Coupled.Registry.Calculation.Common.Feedback.Continuation.Future.Source
 set_option autoImplicit false
 noncomputable section
 universe u
@@ -34,27 +34,6 @@ theorem cast_paid {Y Z : S → Type u} (same : Y=Z) (n : Nat)
  Paid (same ▸ data : Lower.SourceFamily.Packet (W:=W) (X:=Z) (s:=s) n).1 := by
  cases same; exact paid
 
-private theorem receiver_positive
- (frame : M.Frame (Value:=W) (Var:=X) (sort:=s))
- (cfg : A.Programme (PhysicalValue:=W) (PhysicalVar:=X) (sort:=s))
- (scalar : RootedAccountedUnfolding (PresentedRelationEventAt (Expr (PairValue W) cfg.LowVar s)))
- (pair : RootedAccountedUnfolding (PresentedRelationEventAt (Expr (PairValue (PairValue W)) cfg.LowVar s))) :
- 0<remaining (Future.receiver frame cfg scalar pair).event.state.1 := by
- have fee := RootGeneratedDebtActivationJointSource.Native.ResidualRequest.budget (Future.Receipt.actualMaterial frame cfg)
- have consumed :
-  remaining (RootGeneratedDebtActivationJointSource.initialEvent (Future.Receipt.registered frame cfg)).state.1=
-  remaining (Future.Receipt.firstStep frame cfg).1.1+1 := by
-  rcases Future.Receipt.firstStep frame cfg with ⟨target,step⟩
-  cases step with
-  | paid actual => exact actual.remaining_eq
- change remaining (RootGeneratedDebtActivationJointSource.Native.ResidualRequest.expression (Future.Receipt.actualMaterial frame cfg))=
-  remaining (Future.Receipt.actualMaterial frame cfg).raw+remaining (Future.Receipt.actualMaterial frame cfg).state.1+2 at fee
- rw [Future.receiver_state]
- have sourceFee :
-  remaining (RootGeneratedDebtActivationJointSource.initialEvent (Future.Receipt.registered frame cfg)).state.1=
-  remaining (RootGeneratedDebtActivationJointSource.Native.ResidualRequest.expression (Future.Receipt.actualMaterial frame cfg)) := rfl
- omega
-
 variable (originalBinding : ∀ t,X t → Expr W X t)
 variable (initial : M.Frame (Value:=W) (Var:=X) (sort:=s))
 variable (firstCfg : A.Programme (PhysicalValue:=W) (PhysicalVar:=X) (sort:=s))
@@ -67,24 +46,32 @@ theorem native_paid_from_raw (sourceFactory : Lower.SourceFamily.Factory W X s)
  (n : Nat) : Paid (Lower.SourceFamily.frameAt sourceFactory initial firstCfg language (n+1)) := by
  cases n with
  | zero =>
-  have positive := receiver_positive initial firstCfg (Lower.Stock.scalar initial firstCfg language)
-   (Lower.Stock.pair initial firstCfg language)
+  have budget := Future.receiver_budget initial firstCfg (Lower.Stock.scalar initial firstCfg language)
+   (Lower.Stock.pair initial firstCfg language) firstCharge
+  have positive : 0<remaining (Lower.Stock.receiver initial firstCfg language).event.state.1 := by
+   change 3≤remaining (Lower.Stock.receiver initial firstCfg language).event.state.1 at budget
+   omega
   exact cast_paid language 1
    ⟨Lower.Stock.receiver initial firstCfg language,Lower.Stock.seed initial firstCfg language⟩
    (paid_of_budget (Lower.Stock.receiver initial firstCfg language) positive)
  | succ n =>
   let data := Lower.SourceFamily.tailData sourceFactory initial firstCfg language n
-  have positive := receiver_positive data.1 (Lower.SourceFamily.cfg sourceFactory (n+1) data.2)
+  have budget := Future.receiver_budget data.1 (Lower.SourceFamily.cfg sourceFactory (n+1) data.2)
    (Lower.SourceFamily.scalar sourceFactory (n+1) data)
-   (Lower.SourceFamily.pair sourceFactory (n+1) data)
+   (Lower.SourceFamily.pair sourceFactory (n+1) data) (sourceCharge (n+1) data.2 data.1)
+  change 3≤remaining (Lower.SourceFamily.receiver sourceFactory (n+1) data).event.state.1 at budget
+  have positive : 0<remaining (Lower.SourceFamily.receiver sourceFactory (n+1) data).event.state.1 := by omega
   exact paid_of_budget (Lower.SourceFamily.receiver sourceFactory (n+1) data) positive
 
 theorem native_paid (firstCharge : 2≤remaining (SourceOperationInquiry.Context.Faces.Execution.Activation.Shared.query initial firstCfg).raw.expression)
  (n : Nat) : Paid (Lower.SourceFamily.frameAt (Lower.SourceFamily.Replay.factory (s:=s) originalBinding) initial firstCfg language (n+1)) := by
  cases n with
  | zero =>
-  have positive := receiver_positive initial firstCfg (Lower.Stock.scalar initial firstCfg language)
-   (Lower.Stock.pair initial firstCfg language)
+  have budget := Future.receiver_budget initial firstCfg (Lower.Stock.scalar initial firstCfg language)
+   (Lower.Stock.pair initial firstCfg language) firstCharge
+  have positive : 0<remaining (Lower.Stock.receiver initial firstCfg language).event.state.1 := by
+   change 3≤remaining (Lower.Stock.receiver initial firstCfg language).event.state.1 at budget
+   omega
   have paid := paid_of_budget (Lower.Stock.receiver initial firstCfg language) positive
   exact cast_paid language 1 ⟨Lower.Stock.receiver initial firstCfg language,Lower.Stock.seed initial firstCfg language⟩ paid
  | succ n =>
