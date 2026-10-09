@@ -271,6 +271,44 @@ def rewrite_private_owner_strings(text: str, rewrites, *, reverse: bool = False)
     return text
 
 
+def rewrite_private_owner_expressions(text: str, rewrites, *, reverse: bool = False) -> str:
+    """Relocate declared dynamic Name constructors, preserving the private index."""
+    if rewrites is None:
+        return text
+    if not isinstance(rewrites, list):
+        raise ViewError("Private-owner expressions must be a list")
+    seen = set()
+    for rule in rewrites:
+        if (not isinstance(rule, dict) or set(rule) != {"source_expression", "target_expression", "count"}
+                or rule["count"] != 1):
+            raise ViewError("Private-owner expressions require one exact source and target")
+        source, target = rule["source_expression"], rule["target_expression"]
+        if not isinstance(source, str) or not isinstance(target, str) or source in seen:
+            raise ViewError("Invalid private-owner expression")
+        seen.add(source)
+        family = re.fullmatch(r'\s*let moduleName := Name\.mkSimple \("([A-Za-z_][A-Za-z0-9_]*)"\+\+family\)', source)
+        private = re.fullmatch(r'\(Name\.str `_private "([A-Za-z_][A-Za-z0-9_]*)"\)', source)
+        valid = source == '(Name.str `_private moduleName.toString)' and target == '(Name.append `_private moduleName)'
+        if family:
+            named = re.fullmatch(r'\s*let moduleName := \("(H0mework\.[A-Za-z_][A-Za-z0-9_.]*)"\+\+family\)\.toName', target)
+            valid = named is not None and named[1].endswith('.' + family[1])
+        elif private:
+            named = re.fullmatch(r'\(`_private\.(H0mework\.[A-Za-z_][A-Za-z0-9_.]*)\)', target)
+            valid = named is not None and named[1].endswith('.' + private[1])
+        if not valid:
+            raise ViewError("Unsupported private-owner Name construction")
+        before, after = (target, source) if reverse else (source, target)
+        masked = mask_comments_and_strings(text)
+        offset = len(before) - len(before.lstrip())
+        positions = [match.start() for match in re.finditer(re.escape(before), text)
+                     if masked[match.start() + offset] == before[offset]]
+        if len(positions) != 1:
+            raise ViewError("Declared private-owner expression is absent or duplicated")
+        begin = positions[0]
+        text = text[:begin] + after + text[begin + len(before):]
+    return text
+
+
 def audit_observer_start(text: str) -> int | None:
     """Locate one executable observer body, without matching comments or strings."""
     masked = mask_comments_and_strings(text)
@@ -485,6 +523,7 @@ def module_views(row: dict, inverse: dict) -> tuple[bytes, bytes]:
     text = rewrite_private_names(text, row.get("private_name_rewrites"),
                                  reverse=True)
     text = rewrite_private_owner_strings(text, row.get("private_owner_string_rewrites"), reverse=True)
+    text = rewrite_private_owner_expressions(text, row.get("private_owner_expression_rewrites"), reverse=True)
     tokens = import_tokens(text)
     reverse = {}
     for _, _, module in tokens:
@@ -536,6 +575,32 @@ def source_path(value: str) -> str:
     return value
 
 
+def source_record(row: dict, path: str) -> dict | None:
+    """Select an original layout while retaining its shared complete body owner."""
+    if path == row.get("source_path", row.get("source")):
+        return row
+    for alias in row.get("source_aliases", []):
+        if (not isinstance(alias, dict)
+                or set(alias) & {"path", "target", "target_sha256", "import_map", "proof_body_rewrites"}
+                or alias.get("source_sha256") != row["source_sha256"]
+                or not MODULE.fullmatch(str(alias.get("original_module_name", "")))
+                or not re.fullmatch(r"[0-9a-f]{40}", str(alias.get("source_revision", "")))
+                or not isinstance(alias.get("source_revisions"), list)
+                or any(not re.fullmatch(r"[0-9a-f]{40}", str(ref)) for ref in alias["source_revisions"])
+                or alias["source_revision"] not in alias["source_revisions"]):
+            raise ViewError("Invalid shared source-layout identity")
+        original_path = source_path(alias.get("source_path"))
+        if original_path != path:
+            continue
+        result = {**row, **{key: alias[key] for key in
+                          ("source_path", "source_sha256", "source_revision", "source_revisions", "source_origin")
+                          if key in alias}, "source": "file:" + original_path}
+        if "source_origin" not in alias:
+            result.pop("source_origin", None)
+        return result
+    return None
+
+
 def load_map():
     try:
         data = json.loads(EXPORT_MAP.read_bytes())
@@ -557,6 +622,16 @@ def load_map():
         if previous is not None and previous != row:
             raise ViewError(f"Ambiguous inverse mapping for {row['target']}")
         inverse[row["target"]] = row
+    for row in data.get("modules", []):
+        seen = set()
+        for alias in row.get("source_aliases", []):
+            if not isinstance(alias, dict):
+                raise ViewError("Invalid shared source-layout identity")
+            key = source_path(alias.get("source_path"))
+            if key == row["source_path"] or key in seen:
+                raise ViewError("Duplicate shared source-layout address")
+            seen.add(key)
+            modules.setdefault(key, []).append(source_record(row, key))
     artifacts: dict[str, list[dict]] = {}
     for row in data.get("artifacts", []):
         artifacts.setdefault(row["source"], []).append(row)

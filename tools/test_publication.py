@@ -44,11 +44,55 @@ class ModuleImportTests(unittest.TestCase):
                 s.import_tokens(raw)
 
 
+class DynamicPrivateOwnerTests(unittest.TestCase):
+    def test_family_and_private_index_are_preserved(self):
+        raw = ('  let moduleName := Name.mkSimple ("SourceValues"++family)\n'
+               '  let paid := Name.str (Name.num (Name.str `_private moduleName.toString) 0) "value"\n')
+        rules = [{'source_expression': '  let moduleName := Name.mkSimple ("SourceValues"++family)',
+                  'target_expression': '  let moduleName := ("H0mework.P.SourceValues"++family).toName', 'count': 1},
+                 {'source_expression': '(Name.str `_private moduleName.toString)',
+                  'target_expression': '(Name.append `_private moduleName)', 'count': 1}]
+        public = s.rewrite_private_owner_expressions(raw, rules)
+        self.assertIn('Name.num (Name.append `_private moduleName) 0', public)
+        self.assertEqual(s.rewrite_private_owner_expressions(public, rules, reverse=True), raw)
+
+    def test_single_owner_and_lookalike_comment(self):
+        expression = '(Name.str `_private "SourceTail")'
+        raw = '-- ' + expression + '\nlet name := ' + expression + '\n'
+        rules = [{'source_expression': expression,
+                  'target_expression': '(`_private.H0mework.P.SourceTail)', 'count': 1}]
+        public = s.rewrite_private_owner_expressions(raw, rules)
+        self.assertTrue(public.startswith('-- ' + expression))
+        self.assertEqual(s.rewrite_private_owner_expressions(public, rules, reverse=True), raw)
+        with self.assertRaises(s.ViewError):
+            s.rewrite_private_owner_expressions(raw, [{**rules[0], 'target_expression': '(True.intro)'}])
+        with self.assertRaises(s.ViewError):
+            s.rewrite_private_owner_expressions(raw + 'let another := ' + expression, rules)
+
+
 def fixture(raw: bytes) -> bytes:
     return raw.replace(b"@ROOT@", FIXTURE_ROOT.encode())
 
 
 class PublicationTests(unittest.TestCase):
+    def test_source_text_runtime_spans_preserve_the_program(self):
+        raw = fixture(b'ROOT = Path("@ROOT@")\nvalue = 1.2300000000000000001\n')
+        text = raw.decode()
+        begin = text.index(FIXTURE_ROOT)
+        rules = [{'begin': begin, 'end': begin + len(FIXTURE_ROOT), 'relative': '.'}]
+        public = p.text_runtime_paths(raw, rules)
+        self.assertEqual(public, b'ROOT = Path(".")\nvalue = 1.2300000000000000001\n')
+        row = {'source_sha256': p.sha(raw), 'target_sha256': p.sha(public),
+               'publication': {'kind': p.TEXT_KIND, 'runtime_paths': rules,
+                               'payload_sha256': p.sha(public)}}
+        self.assertEqual(p.verify_artifact(public, row, raw), public)
+        changed = public.replace(b'1.230', b'2.230')
+        row['target_sha256'] = p.sha(changed)
+        with self.assertRaises(p.PublicationError):
+            p.verify_artifact(changed, row, raw)
+        with self.assertRaises(p.PublicationError):
+            p.text_runtime_paths(raw, [{**rules[0], 'begin': 0}])
+
     def test_only_runtime_addresses_change(self):
         raw = fixture(b'{"root":"@ROOT@","command":["lean","@ROOT@/Lean/A.lean"],"source_inputs":{"@ROOT@/data/a.json":"abcd"},"value":1.2300000000000000001,"failed":true}')
         public, count = p.normalize_paths(raw)
@@ -683,6 +727,40 @@ class SourceViewTests(unittest.TestCase):
         self.assertEqual(outputs, {"source/receipt.json": self.public})
         self.assertEqual(skipped, [])
         self.assertEqual(s.verify_all()["private_originals_verified"], 0)
+
+    def test_shared_layout_restores_full_body_under_both_addresses(self):
+        raw = b'import Mathlib\nnamespace Tail\ntheorem same : True := True.intro\nend Tail\n'
+        (self.root / 'Tail.lean').write_bytes(raw)
+        primary = 'Verification/Tail.lean'
+        alternate = 'Lean/scratch/Original/Tail.lean'
+        alias = {'source_path': alternate, 'source_sha256': p.sha(raw),
+                 'source_revision': 'b' * 40, 'source_revisions': ['b' * 40],
+                 'original_module_name': 'Tail'}
+        row = {'source': 'file:' + primary, 'source_path': primary,
+               'source_revision': 'a' * 40, 'source_revisions': ['a' * 40],
+               'path': 'Tail.lean', 'target': 'H0mework.Tail',
+               'source_sha256': p.sha(raw), 'target_sha256': p.sha(raw), 'source_aliases': [alias]}
+        data = json.loads(self.map.read_text())
+        data['modules'] = [row]
+        self.map.write_text(json.dumps(data))
+        restored, skipped = s.reconstruct(paths=[primary, alternate], exact=True)
+        self.assertEqual(restored, {primary: raw, alternate: raw})
+        self.assertEqual(skipped, [])
+        self.assertEqual(s.reconstruct(paths=[alternate], at='b' * 40)[0], {alternate: raw})
+        self.assertEqual(s.verify_all()['modules'], 2)
+        alias['source_sha256'] = 'f' * 64
+        self.map.write_text(json.dumps(data))
+        with self.assertRaisesRegex(s.ViewError, 'Invalid shared'):
+            s.reconstruct(paths=[alternate])
+
+    def test_layout_cannot_redirect_the_public_body_owner(self):
+        row = {'source_path': 'Verification/Tail.lean', 'source_sha256': 'a' * 64,
+               'source_aliases': [{'source_path': 'Lean/scratch/Tail.lean',
+                                  'source_sha256': 'a' * 64, 'source_revision': 'b' * 40,
+                                  'source_revisions': ['b' * 40], 'original_module_name': 'Tail',
+                                  'target': 'H0mework.Wrong'}]}
+        with self.assertRaisesRegex(s.ViewError, 'Invalid shared'):
+            s.source_record(row, 'Lean/scratch/Tail.lean')
 
     def test_exact_override_needs_and_checks_original(self):
         with self.assertRaises(s.ViewError):

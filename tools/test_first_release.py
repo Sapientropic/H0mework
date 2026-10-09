@@ -224,6 +224,25 @@ class FirstReleaseTests(unittest.TestCase):
         self.save()
         self.assertTrue(f.verify_map(self.root)["ok"])
 
+    def test_shared_layout_uses_its_own_epoch_and_provenance(self):
+        alias = {'source_path': 'Lean/Alternate/A.lean',
+                 'source_sha256': self.entry['source_sha256'],
+                 'source_revision': '2' * 40, 'source_revisions': ['2' * 40],
+                 'original_module_name': 'Original.A',
+                 'source_origin': {'kind': 'same-original-layout', 'source_commit': '2' * 40}}
+        self.export['modules'][0]['source_aliases'] = [alias]
+        self.entry.update(source_commit=alias['source_revision'], source_path=alias['source_path'],
+                          source_origin=copy.deepcopy(alias['source_origin']))
+        self.save()
+        self.assertTrue(f.verify_map(self.root)['ok'])
+        self.entry['source_origin'] = {'kind': 'wrong-original-layout'}
+        self.save()
+        self.assertIn('Source origin differs', f.verify_map(self.root)['errors'][0]['error'])
+        self.entry['source_origin'] = copy.deepcopy(alias['source_origin'])
+        alias['source_sha256'] = 'f' * 64
+        self.save()
+        self.assertIn('Invalid shared', f.verify_map(self.root)['errors'][0]['error'])
+
     def test_supplement_origin_must_match_the_export_record(self):
         origin = {"kind": "git-source-supplement", "source_commit": "2" * 40,
                   "source_path": "Lean/Original/A.lean", "source_sha256": self.entry["source_sha256"]}

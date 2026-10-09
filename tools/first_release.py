@@ -20,7 +20,7 @@ import sys
 import time
 import tomllib
 
-from source_view import EXTERNAL, MODULE, ViewError, import_tokens
+from source_view import EXTERNAL, MODULE, ViewError, import_tokens, source_record
 
 ROOT = Path(__file__).resolve().parents[1]
 MAP = "docs/first-release-map.json"
@@ -203,6 +203,11 @@ def verify_map(root: Path = ROOT, path: Path | str = MAP, require_ready: bool = 
                 if len(candidates) != 1:
                     raise ReleaseError(f"Expected one {index_kind} export row for {public_path}; found {len(candidates)}")
                 row = candidates[0]
+                if kind == "lean":
+                    selected_source = source_record(row, source)
+                    if selected_source is None:
+                        raise ReleaseError(f"Source path differs from export row: {public_path}")
+                    row = selected_source
                 revisions = set(row.get("source_revisions", [])) | {row.get("source_revision")}
                 if commit not in revisions:
                     raise ReleaseError(f"Source revision is absent from export row: {public_path}")
@@ -246,7 +251,7 @@ def verify_map(root: Path = ROOT, path: Path | str = MAP, require_ready: bool = 
                     pending["resources"] += 1
             if claim.get("scientific_verification") is not None or kind == "artifact" and role != "resources":
                 runtime_claims.add(claim["id"])
-        except (ReleaseError, OSError, TypeError) as error:
+        except (ReleaseError, ViewError, OSError, TypeError) as error:
             result.update(identity="failed", error=str(error))
             errors.append({"entry": label, "error": str(error)})
         rows.append(result)

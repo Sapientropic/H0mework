@@ -15,6 +15,7 @@ import subprocess
 
 KIND = "relative-runtime-paths/v1"
 DECLARED_KIND = "declared-runtime-paths/v2"
+TEXT_KIND = "declared-text-runtime-paths/v1"
 PRIVATE_PATH = re.compile(r"^/(?:Users|home)/[^/]+/")
 JSON_STRING = re.compile(r'"(?:[^"\\]|\\.)*"')
 PROJECTS = {"Homework", "H0mework"}
@@ -66,6 +67,24 @@ def relative_path(value: str) -> str:
         if part in PROJECTS:
             return "/".join(parts[index + 1:]) or "."
     raise PublicationError("Runtime path has no recognized project root")
+
+
+def text_runtime_paths(raw: bytes, declarations: list[dict]) -> bytes:
+    """Relabel fixed source-text path spans without reserializing its body."""
+    text = raw.decode("utf-8")
+    previous = 0
+    for rule in sorted(declarations, key=lambda item: item["begin"]):
+        begin, end, relative = rule["begin"], rule["end"], rule["relative"]
+        if (not isinstance(begin, int) or not isinstance(end, int)
+                or not 0 <= previous <= begin < end <= len(text)
+                or not isinstance(relative, str) or relative.startswith("/")
+                or any(char in relative for char in ('\x00', '\n', '\r'))
+                or not re.match(r"^/(?:Users|home|home2)/[^/]+/|^/var/folders/", text[begin:end])):
+            raise PublicationError("Invalid source-text runtime path declaration")
+        previous = end
+    for rule in sorted(declarations, key=lambda item: item["begin"], reverse=True):
+        text = text[:rule["begin"]] + rule["relative"] + text[rule["end"]:]
+    return text.encode("utf-8")
 
 
 def normalize_paths(raw: bytes) -> tuple[bytes, int]:
@@ -250,6 +269,17 @@ def verify_artifact(raw: bytes, row: dict, original: bytes | None = None):
     if publication is None:
         if sha(raw) != row["source_sha256"]:
             raise PublicationError("Original artifact digest differs")
+        return raw
+    if publication.get("kind") == TEXT_KIND:
+        if sha(raw) != publication["payload_sha256"]:
+            raise PublicationError("Published source-text payload differs")
+        if re.search(rb"/(?:Users|home|home2)/[^/]+/|/var/folders/", raw):
+            raise PublicationError("Published source text still contains machine paths")
+        if original is not None:
+            if sha(original) != row["source_sha256"]:
+                raise PublicationError("Private original digest differs")
+            if text_runtime_paths(original, publication["runtime_paths"]) != raw:
+                raise PublicationError("Private original and public source text differ")
         return raw
     normalized, count = (declared_runtime_paths(raw, publication.get("runtime_paths", []))
                          if publication.get("kind") == DECLARED_KIND else normalize_paths(raw))
