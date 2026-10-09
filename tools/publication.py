@@ -7,7 +7,10 @@ from __future__ import annotations
 
 import hashlib
 import json
+from pathlib import Path
 import re
+import stat
+import subprocess
 
 KIND = "relative-runtime-paths/v1"
 DECLARED_KIND = "declared-runtime-paths/v2"
@@ -15,6 +18,7 @@ PRIVATE_PATH = re.compile(r"^/(?:Users|home)/[^/]+/")
 JSON_STRING = re.compile(r'"(?:[^"\\]|\\.)*"')
 PROJECTS = {"Homework", "H0mework"}
 PIN_TABLES = {"source_inputs", "input_sha256"}
+MAX_PUBLIC_FILE_BYTES = 100 * 1024 * 1024
 
 
 class PublicationError(ValueError):
@@ -23,6 +27,34 @@ class PublicationError(ValueError):
 
 def sha(raw: bytes) -> str:
     return hashlib.sha256(raw).hexdigest()
+
+
+def verify_file_size(size: int, path: str, *, limit: int = MAX_PUBLIC_FILE_BYTES):
+    if size > limit:
+        raise PublicationError(
+            f"Published file exceeds {limit} bytes: {path} ({size} bytes); "
+            "compress it and update its receipt before committing")
+
+
+def verify_file_sizes(root: Path, paths) -> int:
+    checked = 0
+    for name in sorted(set(paths)):
+        path = root / name
+        if not path.exists() and not path.is_symlink():
+            continue
+        info = path.lstat()
+        if stat.S_ISREG(info.st_mode) or stat.S_ISLNK(info.st_mode):
+            verify_file_size(info.st_size, str(name))
+            checked += 1
+    return checked
+
+
+def verify_repository_file_sizes(root: Path) -> int:
+    # Include newly produced, untracked outputs; ignored runtime logs stay private.
+    result = subprocess.run(
+        ["git", "ls-files", "--cached", "--others", "--exclude-standard", "-z"],
+        cwd=root, check=True, capture_output=True)
+    return verify_file_sizes(root, (name.decode("utf-8") for name in result.stdout.split(b"\0") if name))
 
 
 def relative_path(value: str) -> str:
@@ -223,6 +255,8 @@ def verify_artifact(raw: bytes, row: dict, original: bytes | None = None):
 def publish_outputs(outputs: dict[str, bytes], modules: list[dict],
                     artifacts: list[dict], original_module, runtime_declarations: dict | None = None) -> dict:
     """Apply the publication transform to a freshly produced export plan."""
+    for path, raw in outputs.items():
+        verify_file_size(len(raw), path)
     by_source = {row["source"]: row for row in artifacts}
     changed = []
     occurrences = 0
@@ -288,5 +322,21 @@ def publish_outputs(outputs: dict[str, bytes], modules: list[dict],
             changed_modules += 1
         outputs[row["path"]] = raw
         row["target_sha256" if "target_sha256" in row else "transformed_sha256"] = sha(raw)
+    for path, raw in outputs.items():
+        verify_file_size(len(raw), path)
     return {"artifacts": len(changed), "machine_paths": occurrences,
             "resource_modules": changed_modules}
+
+
+if __name__ == "__main__":
+    import argparse
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--check-file-sizes", action="store_true", required=True,
+                        help="Reject tracked and non-ignored files larger than 100 MiB")
+    args = parser.parse_args()
+    try:
+        count = verify_repository_file_sizes(Path(__file__).resolve().parents[1])
+    except (PublicationError, OSError, subprocess.CalledProcessError) as error:
+        print(json.dumps({"ok": False, "error": str(error)}))
+        raise SystemExit(1)
+    print(json.dumps({"ok": True, "files": count, "max_file_bytes": MAX_PUBLIC_FILE_BYTES}))

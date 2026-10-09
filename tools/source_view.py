@@ -33,7 +33,8 @@ import re
 import shutil
 import sys
 
-from publication import PublicationError, verify_artifact
+from publication import (PublicationError, verify_artifact, verify_file_sizes,
+                         verify_repository_file_sizes)
 
 ROOT = Path(__file__).resolve().parents[1]
 EXPORT_MAP = ROOT / "tools" / "export-map.json"
@@ -760,6 +761,15 @@ def _file_token(file_row: dict, importer_row: dict) -> str:
 def verify_all(private_originals=None) -> dict:
     """Check pinned modules, original artifacts and published receipt payloads."""
     data, modules, artifacts, inverse = load_map()
+    if (ROOT / ".git").exists():
+        verify_repository_file_sizes(ROOT)
+    else:
+        # Source bundles have no Git index; include unbound execution logs too.
+        paths = {row["path"] for rows in (*modules.values(), *artifacts.values()) for row in rows}
+        paths.add("tools/export-map.json")
+        paths.update(path.relative_to(ROOT).as_posix()
+                     for path in (ROOT / "evidence").rglob("*") if path.is_file())
+        verify_file_sizes(ROOT, paths)
     checked = 0
     for path, rows in sorted(modules.items()):
         for row in rows:

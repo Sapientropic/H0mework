@@ -4,6 +4,8 @@
 
 核心查询与计算 reader 的源责任、实际环境 producer 及有限配置接线见[环境合同](source-action-environment.md)；原定义和 H0 补充来源由映射分列。
 
+保持原源码身份的公开证明适配、默认视图与精确原件合同见[证明构建适配](proof-build-adaptations.md)。
+
 本仓的有效用法见[复现指南](reproduction.md)，主张与源码对应见[证据表](evidence-map.md)。本页负责定位研究来源、冻结认证与历史过程记录。
 
 ## 固定来源的阅读方式

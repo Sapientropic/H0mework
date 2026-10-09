@@ -14,6 +14,8 @@ python3 tools/edition_release.py --edition low-energy verify-map
 
 `check-map`核对每个公开文件的字节与可逆源身份；`verify-map`核对选定生产声明、直接消费者、资源和已登记的验收。后者不会自行构建或重放科学程序。加入 `--require-ready` 还要求全部已登记 kernel/runtime 验收完成。
 
+导出计划和 `check-map` 均拒绝超过 100 MiB 的单文件。大型执行日志以 `.log.zst` 无损保存；`publication.json` 的 `target_sha256`核对压缩文件，`transforms`中的 `uncompressed_sha256`核对解压后的公开日志，原运行字节的 `source_sha256`保留。用 `zstd -dc <日志路径>`读取完整内容。未推送历史的日志修复与提交替换表见[历史改写回执](../evidence/second-edition/acceptance/local-history-rewrite-20261010.json)。
+
 Lean 工具链与 Mathlib 使用 [toolchain](../Lean/lean-toolchain) 和 [manifest](../Lean/lake-manifest.json) 的固定版本。`make bootstrap` 获取固定依赖缓存。Python 运行依赖沿用 [Makefile](../Makefile) 的 `.local/venv/bin/python`，包含 NumPy、SymPy 和 mpmath。
 
 ## 按论文构建与完整声明审查
@@ -61,3 +63,5 @@ python3 tools/edition_materials.py --edition low-energy --view low-energy-l26-ac
 核心 PR／C62 的历史 `InventoryTransport.born_kernel_member` 采用收稿上限前的纯证明修正。H0 另外修正了实际 receiver 的付费证明、泛型环境输入合同及有限配置的实际计算 reader 接线；物理 prepared Ward 以纯证明补充直接消费已证等式。定义变化与纯证明补充分别登记。原源码、原失败、本次实际构建与声明审查保持各自身份，详情见[环境与计算合同](source-action-environment.md)及映射中的 `source_origin`。低能 S/base 同字节关系限定于本轮实际选定源，按每个导出记录的 `source_revisions`核验。
 
 第一版成品、60 条主张、原命令和冻结结果继续使用[首发复现指南](first-release-reproduction.md)。CI 新模块追加到独立阶段；旧模块、资源、库强选项与分片身份的实际保留结果由准备状态链接的回执记录。
+
+GSR 九份副本的内存证明适配保留原来源 SHA 和 epoch；默认原路径视图使用适配证明，`source_view.py --exact` 恢复原字节。适配源码和可逆规则见[构建适配合同](proof-build-adaptations.md)，受影响包的新构建／审查与原回执分列。

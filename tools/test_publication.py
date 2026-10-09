@@ -71,6 +71,47 @@ class PublicationTests(unittest.TestCase):
         self.assertEqual(s.invert_resource_digests(outputs["Lean/A.lean"], modules[0]), source)
 
 
+class PublicationSizeTests(unittest.TestCase):
+    def test_limit_boundary_and_explicit_override(self):
+        p.verify_file_size(p.MAX_PUBLIC_FILE_BYTES, "build.log.zst")
+        with self.assertRaisesRegex(p.PublicationError, "build.log"):
+            p.verify_file_size(p.MAX_PUBLIC_FILE_BYTES + 1, "build.log")
+        p.verify_file_size(12, "small.log", limit=12)
+        with self.assertRaises(p.PublicationError):
+            p.verify_file_size(13, "small.log", limit=12)
+
+    def test_compressed_extension_does_not_exempt_an_oversized_file(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            with (root / "oversized.log.zst").open("wb") as handle:
+                handle.truncate(p.MAX_PUBLIC_FILE_BYTES + 1)
+            with self.assertRaisesRegex(p.PublicationError, "oversized.log.zst"):
+                p.verify_file_sizes(root, ["oversized.log.zst"])
+            (root / "oversized.log.zst").unlink()
+            with (root / "fresh-retarded-inlet.json.gz").open("wb") as handle:
+                handle.truncate(55 * 1024 * 1024)
+            self.assertEqual(p.verify_file_sizes(root, ["fresh-retarded-inlet.json.gz"]), 1)
+
+    def test_export_rejects_size_before_mutating_metadata(self):
+        class Oversized:
+            def __len__(self):
+                return p.MAX_PUBLIC_FILE_BYTES + 1
+        row = {"target_sha256": "unchanged"}
+        with self.assertRaises(p.PublicationError):
+            p.publish_outputs({"evidence/build.log": Oversized()}, [], [row], None)
+        self.assertEqual(row, {"target_sha256": "unchanged"})
+
+    def test_source_bundle_checks_public_target_instead_of_source_address(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            with (root / "published.lean").open("wb") as handle:
+                handle.truncate(p.MAX_PUBLIC_FILE_BYTES + 1)
+            modules = {"source/Original.lean": [{"path": "published.lean"}]}
+            with patch.object(s, "ROOT", root), patch.object(s, "load_map", return_value=({}, modules, {}, {})):
+                with self.assertRaisesRegex(p.PublicationError, "published.lean"):
+                    s.verify_all()
+
+
 class ProofBodyRewriteTests(unittest.TestCase):
     source = "theorem total (n : Nat) : n = n := by\n  rfl\n"
     public = "theorem total (n : Nat) : n = n := by\n  exact Eq.refl n\n"
