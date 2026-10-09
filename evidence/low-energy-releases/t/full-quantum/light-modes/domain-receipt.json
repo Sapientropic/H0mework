@@ -1,0 +1,1485 @@
+{
+  "scope": "FULL_SOURCE_FOUR_LIGHT_ROOTS_EXPLICIT_COMMON_DOMAIN",
+  "source_sha256": {
+    "Lean/SaturationMonoid/PhysicsCore/SU7ExteriorYukawaMassSpectrum.lean": "cc100f817041a1e8b33aadf909a4838756c32eb0f28a15ff138c5cd9a3db4813",
+    "Lean/SaturationMonoid/PhysicsCore/SU7ExteriorBreakingYukawa.lean": "f3d245e031380de7dacf16312b81665a11d2fd209dfd751652821e9638b74ce0",
+    "Lean/SaturationMonoid/PhysicsCore/SU7MotherLieAlgebra.lean": "acb8a102cb607e8736b25acd5e851f70b15fb53ec7cc6784362e1b0c2a95e7da",
+    "Lean/SaturationMonoid/PhysicsCore/SU7ExteriorMatterRepresentation.lean": "0b7cb7f6d4078d7f0a7347513bd98077bd18092f89b1c4c4ec3ee23ad84efbac",
+    "Lean/SaturationMonoid/PhysicsCore/SU7ExteriorMatterRestriction.lean": "b91ff6e8d6ea1e9e7e6220fec204288a946a8153913882d1f68eee489d403ed1",
+    "Lean/SaturationMonoid/PhysicsCore/StageNineDynamicBreakingVacuum.lean": "f79cd71ae67e1ee2b1b698f7a09a0130e742e4a471862165748277269e2027bf",
+    "Lean/SaturationMonoid/PhysicsCore/StageNineGlobalIntegratedAction.lean": "525d2672c446c94a9b528c4277efed582419fbcb31e8e28b533cba3ff0589497",
+    "Lean/SaturationMonoid/PhysicsCore/StageNineExteriorMotherLieRepresentation.lean": "444b0ef9ba42af3801ffc010996ac5feddfed8605f4ce9bb2fbe15fe2b562f7b",
+    "Lean/SaturationMonoid/PhysicsCore/StageNineFormNativeMotherAction.lean": "24104b817d0a663626c46388bfa5a2660441f90cbee77ea5a86495fd7d64e6a2",
+    "Lean/SaturationMonoid/PhysicsCore/Stage9C/Material/SpinPair/Parameters.lean": "eeecea0c096fbbf4c0090d301fb19ca70f22020c89a8ad279b70133b6b8f4bc3",
+    "Lean/SaturationMonoid/PhysicsCore/StageNineDiracDualFormNativeMotherAction.lean": "2f5ca2728d8160733c5111db837bb5f9a90c7e79f1b5143d0a4f55708ed7f829",
+    "Lean/SaturationMonoid/PhysicsCore/StageNineDiracKineticLocalSpinDensity.lean": "920a4e7072b5966e594f314a455c0af9b2f78463d0b94455d795d3e28be38008",
+    "Lean/SaturationMonoid/PhysicsCore/StageNineMatterCovariantDerivativeAffine.lean": "f187fd6a0adf4202441b08dba226d1df4067c693adbba859668119d3abb4e112",
+    "Lean/SaturationMonoid/PhysicsCore/DiracExteriorMatterAction.lean": "b9bf18d89989057f312569f34261c02840ab12256608b674a5b05fb914e1d1c2",
+    "Lean/SaturationMonoid/PhysicsCore/DiracCliffordRepresentation.lean": "26f790b7500cb6cc71ccbdf5a737b852e3519bc63afc983c897b2c1589d86c6b",
+    "Lean/SaturationMonoid/PhysicsCore/RawLorentzianMetricHodgeRecovery.lean": "4584b7f9afbd343132d7338b26ccfbab5cbec20a18f85af67fdbfc77a02110c5",
+    "Lean/SaturationMonoid/PhysicsCore/ProofFreeRicherAnholonomicSource.lean": "8b51d83e651dea4b783869b939eaffe47dbf5d1bead102a2f0da6d5b255284d3",
+    "Lean/SaturationMonoid/PhysicsCore/StageNineTopologicalFourFormPairing.lean": "19a8f42a0e59561bfa0e08a319daa15be8625093b3ddbc07a6a39923a8495b38",
+    "Lean/SaturationMonoid/PhysicsCore/StageNineTopologicalGravityCurvatureVariancePairing.lean": "e036ceea5e477082babd06d9e68dda326bd220afb502b11d13d1d8130a8e2b37",
+    "Lean/SaturationMonoid/PhysicsCore/StageNineLorentzConnectionVariation.lean": "ebc0916446c357a5bd1b64690f948e38b7250eec066ec5feef87aeb5cbd55cb0",
+    "Lean/SaturationMonoid/PhysicsCore/Stage9C/Material/SpinPair/Actual.lean": "2566921edbbeb4e301fcdb6e24a24399ab5bd5a44426211083275f7b79ed1db3",
+    "Lean/SaturationMonoid/PhysicsCore/Stage9C/Material/SpinPair/Spinor.lean": "69599a8ff17a6bf5169e8cca9e6fe163f82f7b0e90fb3c77db9aaaa1eb3a7238",
+    "Lean/SaturationMonoid/PhysicsCore/Stage9C/Material/SpinPair/Phase.lean": "1bb51953c8eeaf21af9a6da6e9e5f817d2d34dc9a31698a7c939e41d64110b33",
+    "Lean/SaturationMonoid/PhysicsCore/Stage9C/Material/SpinPair/ColorDoublet.lean": "05e10f7cd1421562bbc29d19065cf378d39c317592cc6c82594d6a2f2c39d446",
+    "Lean/SaturationMonoid/PhysicsCore/LowEnergy/Evolution/Generator.lean": "537d90a2bd2c1e143c0df4edbd950df372b78371e11672c8a2bc871ff2d4f378",
+    "Lean/SaturationMonoid/PhysicsCore/LowEnergy/Evolution/Fields.lean": "70118aedd1ad49f2cebb9217080a60991ca3cbe334b6ed2d84f17192170aff3c"
+  },
+  "branches": {
+    "vector_real": {
+      "full_source_factor": "25*q**4 + 50*q**2*u**2 - 90*q**2 + 25*u**4 - 54*u**2",
+      "squared_time_factor": "25*v**2 + 50*v*w - 54*v + 25*w**2 - 90*w",
+      "v_scaling_power": 1,
+      "r_origin": "-5/3",
+      "source_linear_coefficient": "-54",
+      "normalized_remainder": "-25*r**2/54 - 25*r/27 - 25/54",
+      "selected_factor_has_multiplicity_one": true,
+      "full_time_derivative_identity": "partial_u F = 2 u * source_linear_coefficient * (1+w partial_r remainder)",
+      "source_derivative_identity_verified": true,
+      "remainder_coefficients": [
+        [
+          2,
+          0,
+          "-25/54"
+        ],
+        [
+          1,
+          0,
+          "-25/27"
+        ],
+        [
+          0,
+          0,
+          "-25/54"
+        ]
+      ],
+      "remainder_bound": "25/6",
+      "r_derivative_bound": "25/9",
+      "w_threshold": "9/2860",
+      "root_interval_half_width": "1/20",
+      "other_factors_nonzero": [
+        {
+          "factor": 0,
+          "q_power": 0,
+          "origin_polynomial": "-3375",
+          "strict_origin_margin": "3375",
+          "remainder_bound": "42914",
+          "q_threshold": "225/5722"
+        },
+        {
+          "factor": 1,
+          "q_power": 0,
+          "origin_polynomial": "-3375",
+          "strict_origin_margin": "3375",
+          "remainder_bound": "42914",
+          "q_threshold": "225/5722"
+        },
+        {
+          "factor": 2,
+          "q_power": 0,
+          "origin_polynomial": "-3375",
+          "strict_origin_margin": "3375",
+          "remainder_bound": "42914",
+          "q_threshold": "225/5722"
+        },
+        {
+          "factor": 3,
+          "q_power": 0,
+          "origin_polynomial": "-3375",
+          "strict_origin_margin": "3375",
+          "remainder_bound": "42914",
+          "q_threshold": "225/5722"
+        },
+        {
+          "factor": 4,
+          "q_power": 0,
+          "origin_polynomial": "-125",
+          "strict_origin_margin": "125",
+          "remainder_bound": "648",
+          "q_threshold": "125/1298"
+        },
+        {
+          "factor": 5,
+          "q_power": 0,
+          "origin_polynomial": "-125",
+          "strict_origin_margin": "125",
+          "remainder_bound": "648",
+          "q_threshold": "125/1298"
+        },
+        {
+          "factor": 6,
+          "q_power": 0,
+          "origin_polynomial": "81",
+          "strict_origin_margin": "81",
+          "remainder_bound": "480",
+          "q_threshold": "81/962"
+        },
+        {
+          "factor": 7,
+          "q_power": 0,
+          "origin_polynomial": "81",
+          "strict_origin_margin": "81",
+          "remainder_bound": "480",
+          "q_threshold": "81/962"
+        },
+        {
+          "factor": 8,
+          "q_power": 0,
+          "origin_polynomial": "-12375",
+          "strict_origin_margin": "12375",
+          "remainder_bound": "123328",
+          "q_threshold": "12375/246658"
+        },
+        {
+          "factor": 9,
+          "q_power": 0,
+          "origin_polynomial": "-12375",
+          "strict_origin_margin": "12375",
+          "remainder_bound": "123328",
+          "q_threshold": "12375/246658"
+        },
+        {
+          "factor": 10,
+          "q_power": 0,
+          "origin_polynomial": "-5289978375",
+          "strict_origin_margin": "5289978375",
+          "remainder_bound": "915497050896",
+          "q_threshold": "480907125/166454009254"
+        },
+        {
+          "factor": 11,
+          "q_power": 0,
+          "origin_polynomial": "-5289978375",
+          "strict_origin_margin": "5289978375",
+          "remainder_bound": "915497050896",
+          "q_threshold": "480907125/166454009254"
+        },
+        {
+          "factor": 12,
+          "q_power": 0,
+          "origin_polynomial": "81",
+          "strict_origin_margin": "81",
+          "remainder_bound": "480",
+          "q_threshold": "81/962"
+        },
+        {
+          "factor": 13,
+          "q_power": 0,
+          "origin_polynomial": "81",
+          "strict_origin_margin": "81",
+          "remainder_bound": "480",
+          "q_threshold": "81/962"
+        },
+        {
+          "factor": 14,
+          "q_power": 0,
+          "origin_polynomial": "-12375",
+          "strict_origin_margin": "12375",
+          "remainder_bound": "123328",
+          "q_threshold": "12375/246658"
+        },
+        {
+          "factor": 15,
+          "q_power": 0,
+          "origin_polynomial": "-12375",
+          "strict_origin_margin": "12375",
+          "remainder_bound": "123328",
+          "q_threshold": "12375/246658"
+        },
+        {
+          "factor": 16,
+          "q_power": 0,
+          "origin_polynomial": "-5289978375",
+          "strict_origin_margin": "5289978375",
+          "remainder_bound": "915497050896",
+          "q_threshold": "480907125/166454009254"
+        },
+        {
+          "factor": 17,
+          "q_power": 0,
+          "origin_polynomial": "-5289978375",
+          "strict_origin_margin": "5289978375",
+          "remainder_bound": "915497050896",
+          "q_threshold": "480907125/166454009254"
+        },
+        {
+          "factor": 18,
+          "q_power": 0,
+          "origin_polynomial": "36",
+          "strict_origin_margin": "36",
+          "remainder_bound": "135",
+          "q_threshold": "9/68"
+        },
+        {
+          "factor": 19,
+          "q_power": 0,
+          "origin_polynomial": "-54",
+          "strict_origin_margin": "54",
+          "remainder_bound": "90",
+          "q_threshold": "27/91"
+        },
+        {
+          "factor": 20,
+          "q_power": 0,
+          "origin_polynomial": "-54",
+          "strict_origin_margin": "54",
+          "remainder_bound": "90",
+          "q_threshold": "27/91"
+        },
+        {
+          "factor": 21,
+          "q_power": 0,
+          "origin_polynomial": "36",
+          "strict_origin_margin": "36",
+          "remainder_bound": "135",
+          "q_threshold": "9/68"
+        },
+        {
+          "factor": 22,
+          "q_power": 0,
+          "origin_polynomial": "11016000",
+          "strict_origin_margin": "11016000",
+          "remainder_bound": "282957698",
+          "q_threshold": "1836000/94319233"
+        },
+        {
+          "factor": 23,
+          "q_power": 0,
+          "origin_polynomial": "11016000",
+          "strict_origin_margin": "11016000",
+          "remainder_bound": "282957698",
+          "q_threshold": "1836000/94319233"
+        },
+        {
+          "factor": 24,
+          "q_power": 0,
+          "origin_polynomial": "-10302820312500",
+          "strict_origin_margin": "10302820312500",
+          "remainder_bound": "18120995390747331",
+          "q_threshold": "2575705078125/9060497695373666"
+        },
+        {
+          "factor": 25,
+          "q_power": 0,
+          "origin_polynomial": "-10302820312500",
+          "strict_origin_margin": "10302820312500",
+          "remainder_bound": "18120995390747331",
+          "q_threshold": "2575705078125/9060497695373666"
+        },
+        {
+          "factor": 27,
+          "q_power": 2,
+          "origin_polynomial": "36*r",
+          "strict_origin_margin": "291/5",
+          "remainder_bound": "225",
+          "q_threshold": "291/2260"
+        },
+        {
+          "factor": 28,
+          "q_power": 0,
+          "origin_polynomial": "54000",
+          "strict_origin_margin": "54000",
+          "remainder_bound": "192707",
+          "q_threshold": "750/5353"
+        },
+        {
+          "factor": 29,
+          "q_power": 0,
+          "origin_polynomial": "54000",
+          "strict_origin_margin": "54000",
+          "remainder_bound": "192707",
+          "q_threshold": "750/5353"
+        },
+        {
+          "factor": 30,
+          "q_power": 2,
+          "origin_polynomial": "-392578125*r - 322265625",
+          "strict_origin_margin": "1249609375/4",
+          "remainder_bound": "121133203632",
+          "q_threshold": "1249609375/969065629064"
+        },
+        {
+          "factor": 31,
+          "q_power": 2,
+          "origin_polynomial": "77456250000000 - 100383300000000*r",
+          "strict_origin_margin": "239742585000000",
+          "remainder_bound": "3502640722422099",
+          "q_threshold": "1198712925000/35026407224221"
+        }
+      ]
+    },
+    "vector_phase": {
+      "full_source_factor": "188956800*q**10 + 944784000*q**8*u**2 - 473850000*q**8 + 1889568000*q**6*u**4 - 1623302208*q**6*u**2 - 939954375*q**6 + 1889568000*q**4*u**6 - 2026806624*q**4*u**4 - 3502207125*q**4*u**2 + 1267421875*q**4 + 944784000*q**2*u**8 - 1079106624*q**2*u**6 - 4184551125*q**2*u**4 + 2944906250*q**2*u**2 - 322265625*q**2 + 188956800*u**10 - 201752208*u**8 - 1622298375*u**6 + 1677484375*u**4 - 392578125*u**2",
+      "squared_time_factor": "188956800*v**5 + 944784000*v**4*w - 201752208*v**4 + 1889568000*v**3*w**2 - 1079106624*v**3*w - 1622298375*v**3 + 1889568000*v**2*w**3 - 2026806624*v**2*w**2 - 4184551125*v**2*w + 1677484375*v**2 + 944784000*v*w**4 - 1623302208*v*w**3 - 3502207125*v*w**2 + 2944906250*v*w - 392578125*v + 188956800*w**5 - 473850000*w**4 - 939954375*w**3 + 1267421875*w**2 - 322265625*w",
+      "v_scaling_power": 1,
+      "r_origin": "-55/67",
+      "source_linear_coefficient": "-392578125",
+      "normalized_remainder": "-2519424*r**5*w**3/5234375 - 2519424*r**4*w**3/1046875 + 67250736*r**4*w**2/130859375 - 5038848*r**3*w**3/1046875 + 359702208*r**3*w**2/130859375 + 4326129*r**3*w/1046875 - 5038848*r**2*w**3/1046875 + 675602208*r**2*w**2/130859375 + 11158803*r**2*w/1046875 - 107359*r**2/25125 - 2519424*r*w**3/1046875 + 541100736*r*w**2/130859375 + 9339219*r*w/1046875 - 188474*r/25125 - 2519424*w**3/5234375 + 50544*w**2/41875 + 501309*w/209375 - 16223/5025",
+      "selected_factor_has_multiplicity_one": true,
+      "full_time_derivative_identity": "partial_u F = 2 u * source_linear_coefficient * (1+w partial_r remainder)",
+      "source_derivative_identity_verified": true,
+      "remainder_coefficients": [
+        [
+          5,
+          3,
+          "-2519424/5234375"
+        ],
+        [
+          4,
+          3,
+          "-2519424/1046875"
+        ],
+        [
+          4,
+          2,
+          "67250736/130859375"
+        ],
+        [
+          3,
+          3,
+          "-5038848/1046875"
+        ],
+        [
+          3,
+          2,
+          "359702208/130859375"
+        ],
+        [
+          3,
+          1,
+          "4326129/1046875"
+        ],
+        [
+          2,
+          3,
+          "-5038848/1046875"
+        ],
+        [
+          2,
+          2,
+          "675602208/130859375"
+        ],
+        [
+          2,
+          1,
+          "11158803/1046875"
+        ],
+        [
+          2,
+          0,
+          "-107359/25125"
+        ],
+        [
+          1,
+          3,
+          "-2519424/1046875"
+        ],
+        [
+          1,
+          2,
+          "541100736/130859375"
+        ],
+        [
+          1,
+          1,
+          "9339219/1046875"
+        ],
+        [
+          1,
+          0,
+          "-188474/25125"
+        ],
+        [
+          0,
+          3,
+          "-2519424/5234375"
+        ],
+        [
+          0,
+          2,
+          "50544/41875"
+        ],
+        [
+          0,
+          1,
+          "501309/209375"
+        ],
+        [
+          0,
+          0,
+          "-16223/5025"
+        ]
+      ],
+      "remainder_bound": "40377734544/130859375",
+      "r_derivative_bound": "51675406241/130859375",
+      "w_threshold": "5234375/147494400256",
+      "root_interval_half_width": "1/20",
+      "other_factors_nonzero": [
+        {
+          "factor": 0,
+          "q_power": 0,
+          "origin_polynomial": "-3375",
+          "strict_origin_margin": "3375",
+          "remainder_bound": "42914",
+          "q_threshold": "225/5722"
+        },
+        {
+          "factor": 1,
+          "q_power": 0,
+          "origin_polynomial": "-3375",
+          "strict_origin_margin": "3375",
+          "remainder_bound": "42914",
+          "q_threshold": "225/5722"
+        },
+        {
+          "factor": 2,
+          "q_power": 0,
+          "origin_polynomial": "-3375",
+          "strict_origin_margin": "3375",
+          "remainder_bound": "42914",
+          "q_threshold": "225/5722"
+        },
+        {
+          "factor": 3,
+          "q_power": 0,
+          "origin_polynomial": "-3375",
+          "strict_origin_margin": "3375",
+          "remainder_bound": "42914",
+          "q_threshold": "225/5722"
+        },
+        {
+          "factor": 4,
+          "q_power": 0,
+          "origin_polynomial": "-125",
+          "strict_origin_margin": "125",
+          "remainder_bound": "648",
+          "q_threshold": "125/1298"
+        },
+        {
+          "factor": 5,
+          "q_power": 0,
+          "origin_polynomial": "-125",
+          "strict_origin_margin": "125",
+          "remainder_bound": "648",
+          "q_threshold": "125/1298"
+        },
+        {
+          "factor": 6,
+          "q_power": 0,
+          "origin_polynomial": "81",
+          "strict_origin_margin": "81",
+          "remainder_bound": "480",
+          "q_threshold": "81/962"
+        },
+        {
+          "factor": 7,
+          "q_power": 0,
+          "origin_polynomial": "81",
+          "strict_origin_margin": "81",
+          "remainder_bound": "480",
+          "q_threshold": "81/962"
+        },
+        {
+          "factor": 8,
+          "q_power": 0,
+          "origin_polynomial": "-12375",
+          "strict_origin_margin": "12375",
+          "remainder_bound": "123328",
+          "q_threshold": "12375/246658"
+        },
+        {
+          "factor": 9,
+          "q_power": 0,
+          "origin_polynomial": "-12375",
+          "strict_origin_margin": "12375",
+          "remainder_bound": "123328",
+          "q_threshold": "12375/246658"
+        },
+        {
+          "factor": 10,
+          "q_power": 0,
+          "origin_polynomial": "-5289978375",
+          "strict_origin_margin": "5289978375",
+          "remainder_bound": "915497050896",
+          "q_threshold": "480907125/166454009254"
+        },
+        {
+          "factor": 11,
+          "q_power": 0,
+          "origin_polynomial": "-5289978375",
+          "strict_origin_margin": "5289978375",
+          "remainder_bound": "915497050896",
+          "q_threshold": "480907125/166454009254"
+        },
+        {
+          "factor": 12,
+          "q_power": 0,
+          "origin_polynomial": "81",
+          "strict_origin_margin": "81",
+          "remainder_bound": "480",
+          "q_threshold": "81/962"
+        },
+        {
+          "factor": 13,
+          "q_power": 0,
+          "origin_polynomial": "81",
+          "strict_origin_margin": "81",
+          "remainder_bound": "480",
+          "q_threshold": "81/962"
+        },
+        {
+          "factor": 14,
+          "q_power": 0,
+          "origin_polynomial": "-12375",
+          "strict_origin_margin": "12375",
+          "remainder_bound": "123328",
+          "q_threshold": "12375/246658"
+        },
+        {
+          "factor": 15,
+          "q_power": 0,
+          "origin_polynomial": "-12375",
+          "strict_origin_margin": "12375",
+          "remainder_bound": "123328",
+          "q_threshold": "12375/246658"
+        },
+        {
+          "factor": 16,
+          "q_power": 0,
+          "origin_polynomial": "-5289978375",
+          "strict_origin_margin": "5289978375",
+          "remainder_bound": "915497050896",
+          "q_threshold": "480907125/166454009254"
+        },
+        {
+          "factor": 17,
+          "q_power": 0,
+          "origin_polynomial": "-5289978375",
+          "strict_origin_margin": "5289978375",
+          "remainder_bound": "915497050896",
+          "q_threshold": "480907125/166454009254"
+        },
+        {
+          "factor": 18,
+          "q_power": 0,
+          "origin_polynomial": "36",
+          "strict_origin_margin": "36",
+          "remainder_bound": "135",
+          "q_threshold": "9/68"
+        },
+        {
+          "factor": 19,
+          "q_power": 0,
+          "origin_polynomial": "-54",
+          "strict_origin_margin": "54",
+          "remainder_bound": "90",
+          "q_threshold": "27/91"
+        },
+        {
+          "factor": 20,
+          "q_power": 0,
+          "origin_polynomial": "-54",
+          "strict_origin_margin": "54",
+          "remainder_bound": "90",
+          "q_threshold": "27/91"
+        },
+        {
+          "factor": 21,
+          "q_power": 0,
+          "origin_polynomial": "36",
+          "strict_origin_margin": "36",
+          "remainder_bound": "135",
+          "q_threshold": "9/68"
+        },
+        {
+          "factor": 22,
+          "q_power": 0,
+          "origin_polynomial": "11016000",
+          "strict_origin_margin": "11016000",
+          "remainder_bound": "282957698",
+          "q_threshold": "1836000/94319233"
+        },
+        {
+          "factor": 23,
+          "q_power": 0,
+          "origin_polynomial": "11016000",
+          "strict_origin_margin": "11016000",
+          "remainder_bound": "282957698",
+          "q_threshold": "1836000/94319233"
+        },
+        {
+          "factor": 24,
+          "q_power": 0,
+          "origin_polynomial": "-10302820312500",
+          "strict_origin_margin": "10302820312500",
+          "remainder_bound": "18120995390747331",
+          "q_threshold": "2575705078125/9060497695373666"
+        },
+        {
+          "factor": 25,
+          "q_power": 0,
+          "origin_polynomial": "-10302820312500",
+          "strict_origin_margin": "10302820312500",
+          "remainder_bound": "18120995390747331",
+          "q_threshold": "2575705078125/9060497695373666"
+        },
+        {
+          "factor": 26,
+          "q_power": 2,
+          "origin_polynomial": "-54*r - 90",
+          "strict_origin_margin": "28791/670",
+          "remainder_bound": "225",
+          "q_threshold": "28791/302840"
+        },
+        {
+          "factor": 27,
+          "q_power": 2,
+          "origin_polynomial": "36*r",
+          "strict_origin_margin": "9297/335",
+          "remainder_bound": "225",
+          "q_threshold": "9297/151420"
+        },
+        {
+          "factor": 28,
+          "q_power": 0,
+          "origin_polynomial": "54000",
+          "strict_origin_margin": "54000",
+          "remainder_bound": "192707",
+          "q_threshold": "750/5353"
+        },
+        {
+          "factor": 29,
+          "q_power": 0,
+          "origin_polynomial": "54000",
+          "strict_origin_margin": "54000",
+          "remainder_bound": "192707",
+          "q_threshold": "750/5353"
+        },
+        {
+          "factor": 31,
+          "q_power": 2,
+          "origin_polynomial": "77456250000000 - 100383300000000*r",
+          "strict_origin_margin": "10374366195000000/67",
+          "remainder_bound": "3502640722422099",
+          "q_threshold": "51871830975000/2346769284022807"
+        }
+      ]
+    },
+    "axial_phase": {
+      "full_source_factor": "988769531250*q**12 + 7105914843750*q**10*u**2 + 3515380859375*q**10 + 8566446093750*q**8*u**4 + 20863513093750*q**8*u**2 + 10071269531250*q**8 - 348356420550*q**6*u**6 + 14320336749875*q**6*u**4 - 54526414743750*q**6*u**2 + 30510703125000*q**6 - 2812927273200*q**4*u**8 - 4054836616488*q**4*u**6 - 13331559163500*q**4*u**4 + 54793278225000*q**4*u**2 - 166986562500000*q**4 + 88042059000*q**2*u**10 + 7146135894492*q**2*u**8 + 54877225175424*q**2*u**6 - 44274070098000*q**2*u**4 + 333108288000000*q**2*u**2 + 77456250000000*q**2 + 103312130400*u**12 - 1326196135152*u**10 - 10666675605312*u**8 - 29979885888000*u**6 - 232960429728000*u**4 - 100383300000000*u**2",
+      "squared_time_factor": "103312130400*v**6 + 88042059000*v**5*w - 1326196135152*v**5 - 2812927273200*v**4*w**2 + 7146135894492*v**4*w - 10666675605312*v**4 - 348356420550*v**3*w**3 - 4054836616488*v**3*w**2 + 54877225175424*v**3*w - 29979885888000*v**3 + 8566446093750*v**2*w**4 + 14320336749875*v**2*w**3 - 13331559163500*v**2*w**2 - 44274070098000*v**2*w - 232960429728000*v**2 + 7105914843750*v*w**5 + 20863513093750*v*w**4 - 54526414743750*v*w**3 + 54793278225000*v*w**2 + 333108288000000*v*w - 100383300000000*v + 988769531250*w**6 + 3515380859375*w**5 + 10071269531250*w**4 + 30510703125000*w**3 - 166986562500000*w**2 + 77456250000000*w",
+      "v_scaling_power": 1,
+      "r_origin": "125/162",
+      "source_linear_coefficient": "-100383300000000",
+      "normalized_remainder": "-2187*r**6*w**4/2125000 - 1491*r**5*w**4/1700000 + 1403703*r**5*w**3/106250000 + 3215509*r**4*w**4/114750000 - 2450663887*r**4*w**3/34425000000 + 2822517*r**4*w**2/26562500 + 5059643*r**3*w**4/1458000000 + 18772391743*r**3*w**3/464737500000 - 1764314081*r**3*w**2/3227343750 + 15866*r**3*w/53125 - 7963*r**2*w**4/93312 - 114562693999*r**2*w**3/803066400000 + 987522901*r**2*w**2/7435800000 + 273296729*r**2*w/619650000 + 369863*r**2/159375 - 112291*r*w**4/1586304 - 667632419*r*w**3/3212265600 + 2908075453*r*w**2/5353776000 - 27058409*r*w/49572000 - 342704*r/103275 - 15625*w**4/1586304 - 529375*w**3/15116544 - 4297075*w**2/42830208 - 1084825*w/3569184 + 18325/11016",
+      "selected_factor_has_multiplicity_one": true,
+      "full_time_derivative_identity": "partial_u F = 2 u * source_linear_coefficient * (1+w partial_r remainder)",
+      "source_derivative_identity_verified": true,
+      "remainder_coefficients": [
+        [
+          6,
+          4,
+          "-2187/2125000"
+        ],
+        [
+          5,
+          4,
+          "-1491/1700000"
+        ],
+        [
+          5,
+          3,
+          "1403703/106250000"
+        ],
+        [
+          4,
+          4,
+          "3215509/114750000"
+        ],
+        [
+          4,
+          3,
+          "-2450663887/34425000000"
+        ],
+        [
+          4,
+          2,
+          "2822517/26562500"
+        ],
+        [
+          3,
+          4,
+          "5059643/1458000000"
+        ],
+        [
+          3,
+          3,
+          "18772391743/464737500000"
+        ],
+        [
+          3,
+          2,
+          "-1764314081/3227343750"
+        ],
+        [
+          3,
+          1,
+          "15866/53125"
+        ],
+        [
+          2,
+          4,
+          "-7963/93312"
+        ],
+        [
+          2,
+          3,
+          "-114562693999/803066400000"
+        ],
+        [
+          2,
+          2,
+          "987522901/7435800000"
+        ],
+        [
+          2,
+          1,
+          "273296729/619650000"
+        ],
+        [
+          2,
+          0,
+          "369863/159375"
+        ],
+        [
+          1,
+          4,
+          "-112291/1586304"
+        ],
+        [
+          1,
+          3,
+          "-667632419/3212265600"
+        ],
+        [
+          1,
+          2,
+          "2908075453/5353776000"
+        ],
+        [
+          1,
+          1,
+          "-27058409/49572000"
+        ],
+        [
+          1,
+          0,
+          "-342704/103275"
+        ],
+        [
+          0,
+          4,
+          "-15625/1586304"
+        ],
+        [
+          0,
+          3,
+          "-529375/15116544"
+        ],
+        [
+          0,
+          2,
+          "-4297075/42830208"
+        ],
+        [
+          0,
+          1,
+          "-1084825/3569184"
+        ],
+        [
+          0,
+          0,
+          "18325/11016"
+        ]
+      ],
+      "remainder_bound": "1167546907474033/33461100000000",
+      "r_derivative_bound": "598055175124897/16730550000000",
+      "w_threshold": "278842500000/799039452574609",
+      "root_interval_half_width": "1/20",
+      "other_factors_nonzero": [
+        {
+          "factor": 0,
+          "q_power": 0,
+          "origin_polynomial": "-3375",
+          "strict_origin_margin": "3375",
+          "remainder_bound": "42914",
+          "q_threshold": "225/5722"
+        },
+        {
+          "factor": 1,
+          "q_power": 0,
+          "origin_polynomial": "-3375",
+          "strict_origin_margin": "3375",
+          "remainder_bound": "42914",
+          "q_threshold": "225/5722"
+        },
+        {
+          "factor": 2,
+          "q_power": 0,
+          "origin_polynomial": "-3375",
+          "strict_origin_margin": "3375",
+          "remainder_bound": "42914",
+          "q_threshold": "225/5722"
+        },
+        {
+          "factor": 3,
+          "q_power": 0,
+          "origin_polynomial": "-3375",
+          "strict_origin_margin": "3375",
+          "remainder_bound": "42914",
+          "q_threshold": "225/5722"
+        },
+        {
+          "factor": 4,
+          "q_power": 0,
+          "origin_polynomial": "-125",
+          "strict_origin_margin": "125",
+          "remainder_bound": "648",
+          "q_threshold": "125/1298"
+        },
+        {
+          "factor": 5,
+          "q_power": 0,
+          "origin_polynomial": "-125",
+          "strict_origin_margin": "125",
+          "remainder_bound": "648",
+          "q_threshold": "125/1298"
+        },
+        {
+          "factor": 6,
+          "q_power": 0,
+          "origin_polynomial": "81",
+          "strict_origin_margin": "81",
+          "remainder_bound": "480",
+          "q_threshold": "81/962"
+        },
+        {
+          "factor": 7,
+          "q_power": 0,
+          "origin_polynomial": "81",
+          "strict_origin_margin": "81",
+          "remainder_bound": "480",
+          "q_threshold": "81/962"
+        },
+        {
+          "factor": 8,
+          "q_power": 0,
+          "origin_polynomial": "-12375",
+          "strict_origin_margin": "12375",
+          "remainder_bound": "123328",
+          "q_threshold": "12375/246658"
+        },
+        {
+          "factor": 9,
+          "q_power": 0,
+          "origin_polynomial": "-12375",
+          "strict_origin_margin": "12375",
+          "remainder_bound": "123328",
+          "q_threshold": "12375/246658"
+        },
+        {
+          "factor": 10,
+          "q_power": 0,
+          "origin_polynomial": "-5289978375",
+          "strict_origin_margin": "5289978375",
+          "remainder_bound": "915497050896",
+          "q_threshold": "480907125/166454009254"
+        },
+        {
+          "factor": 11,
+          "q_power": 0,
+          "origin_polynomial": "-5289978375",
+          "strict_origin_margin": "5289978375",
+          "remainder_bound": "915497050896",
+          "q_threshold": "480907125/166454009254"
+        },
+        {
+          "factor": 12,
+          "q_power": 0,
+          "origin_polynomial": "81",
+          "strict_origin_margin": "81",
+          "remainder_bound": "480",
+          "q_threshold": "81/962"
+        },
+        {
+          "factor": 13,
+          "q_power": 0,
+          "origin_polynomial": "81",
+          "strict_origin_margin": "81",
+          "remainder_bound": "480",
+          "q_threshold": "81/962"
+        },
+        {
+          "factor": 14,
+          "q_power": 0,
+          "origin_polynomial": "-12375",
+          "strict_origin_margin": "12375",
+          "remainder_bound": "123328",
+          "q_threshold": "12375/246658"
+        },
+        {
+          "factor": 15,
+          "q_power": 0,
+          "origin_polynomial": "-12375",
+          "strict_origin_margin": "12375",
+          "remainder_bound": "123328",
+          "q_threshold": "12375/246658"
+        },
+        {
+          "factor": 16,
+          "q_power": 0,
+          "origin_polynomial": "-5289978375",
+          "strict_origin_margin": "5289978375",
+          "remainder_bound": "915497050896",
+          "q_threshold": "480907125/166454009254"
+        },
+        {
+          "factor": 17,
+          "q_power": 0,
+          "origin_polynomial": "-5289978375",
+          "strict_origin_margin": "5289978375",
+          "remainder_bound": "915497050896",
+          "q_threshold": "480907125/166454009254"
+        },
+        {
+          "factor": 18,
+          "q_power": 0,
+          "origin_polynomial": "36",
+          "strict_origin_margin": "36",
+          "remainder_bound": "135",
+          "q_threshold": "9/68"
+        },
+        {
+          "factor": 19,
+          "q_power": 0,
+          "origin_polynomial": "-54",
+          "strict_origin_margin": "54",
+          "remainder_bound": "90",
+          "q_threshold": "27/91"
+        },
+        {
+          "factor": 20,
+          "q_power": 0,
+          "origin_polynomial": "-54",
+          "strict_origin_margin": "54",
+          "remainder_bound": "90",
+          "q_threshold": "27/91"
+        },
+        {
+          "factor": 21,
+          "q_power": 0,
+          "origin_polynomial": "36",
+          "strict_origin_margin": "36",
+          "remainder_bound": "135",
+          "q_threshold": "9/68"
+        },
+        {
+          "factor": 22,
+          "q_power": 0,
+          "origin_polynomial": "11016000",
+          "strict_origin_margin": "11016000",
+          "remainder_bound": "282957698",
+          "q_threshold": "1836000/94319233"
+        },
+        {
+          "factor": 23,
+          "q_power": 0,
+          "origin_polynomial": "11016000",
+          "strict_origin_margin": "11016000",
+          "remainder_bound": "282957698",
+          "q_threshold": "1836000/94319233"
+        },
+        {
+          "factor": 24,
+          "q_power": 0,
+          "origin_polynomial": "-10302820312500",
+          "strict_origin_margin": "10302820312500",
+          "remainder_bound": "18120995390747331",
+          "q_threshold": "2575705078125/9060497695373666"
+        },
+        {
+          "factor": 25,
+          "q_power": 0,
+          "origin_polynomial": "-10302820312500",
+          "strict_origin_margin": "10302820312500",
+          "remainder_bound": "18120995390747331",
+          "q_threshold": "2575705078125/9060497695373666"
+        },
+        {
+          "factor": 26,
+          "q_power": 2,
+          "origin_polynomial": "-54*r - 90",
+          "strict_origin_margin": "3869/30",
+          "remainder_bound": "225",
+          "q_threshold": "3869/13560"
+        },
+        {
+          "factor": 27,
+          "q_power": 2,
+          "origin_polynomial": "36*r",
+          "strict_origin_margin": "1169/45",
+          "remainder_bound": "225",
+          "q_threshold": "1169/20340"
+        },
+        {
+          "factor": 28,
+          "q_power": 0,
+          "origin_polynomial": "54000",
+          "strict_origin_margin": "54000",
+          "remainder_bound": "192707",
+          "q_threshold": "750/5353"
+        },
+        {
+          "factor": 29,
+          "q_power": 0,
+          "origin_polynomial": "54000",
+          "strict_origin_margin": "54000",
+          "remainder_bound": "192707",
+          "q_threshold": "750/5353"
+        },
+        {
+          "factor": 30,
+          "q_power": 2,
+          "origin_polynomial": "-392578125*r - 322265625",
+          "strict_origin_margin": "65399609375/108",
+          "remainder_bound": "121133203632",
+          "q_threshold": "65399609375/26164771984728"
+        }
+      ]
+    },
+    "quadratic_pair": {
+      "full_source_factor": "25*q**4 + 50*q**2*u**2 + 25*u**4 + 36*u**2",
+      "squared_time_factor": "25*v**2 + 50*v*w + 36*v + 25*w**2",
+      "v_scaling_power": 2,
+      "r_origin": "-25/36",
+      "source_linear_coefficient": "36",
+      "normalized_remainder": "25*r**2*w/36 + 25*r/18",
+      "selected_factor_has_multiplicity_one": true,
+      "full_time_derivative_identity": "partial_u F = 2 u * source_linear_coefficient * (1+w partial_r remainder)",
+      "source_derivative_identity_verified": true,
+      "remainder_coefficients": [
+        [
+          2,
+          1,
+          "25/36"
+        ],
+        [
+          1,
+          0,
+          "25/18"
+        ]
+      ],
+      "remainder_bound": "50/9",
+      "r_derivative_bound": "25/6",
+      "w_threshold": "9/3860",
+      "root_interval_half_width": "1/20",
+      "other_factors_nonzero": [
+        {
+          "factor": 0,
+          "q_power": 0,
+          "origin_polynomial": "-3375",
+          "strict_origin_margin": "3375",
+          "remainder_bound": "42914",
+          "q_threshold": "225/5722"
+        },
+        {
+          "factor": 1,
+          "q_power": 0,
+          "origin_polynomial": "-3375",
+          "strict_origin_margin": "3375",
+          "remainder_bound": "42914",
+          "q_threshold": "225/5722"
+        },
+        {
+          "factor": 2,
+          "q_power": 0,
+          "origin_polynomial": "-3375",
+          "strict_origin_margin": "3375",
+          "remainder_bound": "42914",
+          "q_threshold": "225/5722"
+        },
+        {
+          "factor": 3,
+          "q_power": 0,
+          "origin_polynomial": "-3375",
+          "strict_origin_margin": "3375",
+          "remainder_bound": "42914",
+          "q_threshold": "225/5722"
+        },
+        {
+          "factor": 4,
+          "q_power": 0,
+          "origin_polynomial": "-125",
+          "strict_origin_margin": "125",
+          "remainder_bound": "648",
+          "q_threshold": "125/1298"
+        },
+        {
+          "factor": 5,
+          "q_power": 0,
+          "origin_polynomial": "-125",
+          "strict_origin_margin": "125",
+          "remainder_bound": "648",
+          "q_threshold": "125/1298"
+        },
+        {
+          "factor": 6,
+          "q_power": 0,
+          "origin_polynomial": "81",
+          "strict_origin_margin": "81",
+          "remainder_bound": "480",
+          "q_threshold": "81/962"
+        },
+        {
+          "factor": 7,
+          "q_power": 0,
+          "origin_polynomial": "81",
+          "strict_origin_margin": "81",
+          "remainder_bound": "480",
+          "q_threshold": "81/962"
+        },
+        {
+          "factor": 8,
+          "q_power": 0,
+          "origin_polynomial": "-12375",
+          "strict_origin_margin": "12375",
+          "remainder_bound": "123328",
+          "q_threshold": "12375/246658"
+        },
+        {
+          "factor": 9,
+          "q_power": 0,
+          "origin_polynomial": "-12375",
+          "strict_origin_margin": "12375",
+          "remainder_bound": "123328",
+          "q_threshold": "12375/246658"
+        },
+        {
+          "factor": 10,
+          "q_power": 0,
+          "origin_polynomial": "-5289978375",
+          "strict_origin_margin": "5289978375",
+          "remainder_bound": "915497050896",
+          "q_threshold": "480907125/166454009254"
+        },
+        {
+          "factor": 11,
+          "q_power": 0,
+          "origin_polynomial": "-5289978375",
+          "strict_origin_margin": "5289978375",
+          "remainder_bound": "915497050896",
+          "q_threshold": "480907125/166454009254"
+        },
+        {
+          "factor": 12,
+          "q_power": 0,
+          "origin_polynomial": "81",
+          "strict_origin_margin": "81",
+          "remainder_bound": "480",
+          "q_threshold": "81/962"
+        },
+        {
+          "factor": 13,
+          "q_power": 0,
+          "origin_polynomial": "81",
+          "strict_origin_margin": "81",
+          "remainder_bound": "480",
+          "q_threshold": "81/962"
+        },
+        {
+          "factor": 14,
+          "q_power": 0,
+          "origin_polynomial": "-12375",
+          "strict_origin_margin": "12375",
+          "remainder_bound": "123328",
+          "q_threshold": "12375/246658"
+        },
+        {
+          "factor": 15,
+          "q_power": 0,
+          "origin_polynomial": "-12375",
+          "strict_origin_margin": "12375",
+          "remainder_bound": "123328",
+          "q_threshold": "12375/246658"
+        },
+        {
+          "factor": 16,
+          "q_power": 0,
+          "origin_polynomial": "-5289978375",
+          "strict_origin_margin": "5289978375",
+          "remainder_bound": "915497050896",
+          "q_threshold": "480907125/166454009254"
+        },
+        {
+          "factor": 17,
+          "q_power": 0,
+          "origin_polynomial": "-5289978375",
+          "strict_origin_margin": "5289978375",
+          "remainder_bound": "915497050896",
+          "q_threshold": "480907125/166454009254"
+        },
+        {
+          "factor": 18,
+          "q_power": 0,
+          "origin_polynomial": "36",
+          "strict_origin_margin": "36",
+          "remainder_bound": "135",
+          "q_threshold": "9/68"
+        },
+        {
+          "factor": 19,
+          "q_power": 0,
+          "origin_polynomial": "-54",
+          "strict_origin_margin": "54",
+          "remainder_bound": "90",
+          "q_threshold": "27/91"
+        },
+        {
+          "factor": 20,
+          "q_power": 0,
+          "origin_polynomial": "-54",
+          "strict_origin_margin": "54",
+          "remainder_bound": "90",
+          "q_threshold": "27/91"
+        },
+        {
+          "factor": 21,
+          "q_power": 0,
+          "origin_polynomial": "36",
+          "strict_origin_margin": "36",
+          "remainder_bound": "135",
+          "q_threshold": "9/68"
+        },
+        {
+          "factor": 22,
+          "q_power": 0,
+          "origin_polynomial": "11016000",
+          "strict_origin_margin": "11016000",
+          "remainder_bound": "282957698",
+          "q_threshold": "1836000/94319233"
+        },
+        {
+          "factor": 23,
+          "q_power": 0,
+          "origin_polynomial": "11016000",
+          "strict_origin_margin": "11016000",
+          "remainder_bound": "282957698",
+          "q_threshold": "1836000/94319233"
+        },
+        {
+          "factor": 24,
+          "q_power": 0,
+          "origin_polynomial": "-10302820312500",
+          "strict_origin_margin": "10302820312500",
+          "remainder_bound": "18120995390747331",
+          "q_threshold": "2575705078125/9060497695373666"
+        },
+        {
+          "factor": 25,
+          "q_power": 0,
+          "origin_polynomial": "-10302820312500",
+          "strict_origin_margin": "10302820312500",
+          "remainder_bound": "18120995390747331",
+          "q_threshold": "2575705078125/9060497695373666"
+        },
+        {
+          "factor": 26,
+          "q_power": 2,
+          "origin_polynomial": "-90",
+          "strict_origin_margin": "90",
+          "remainder_bound": "333",
+          "q_threshold": "45/334"
+        },
+        {
+          "factor": 28,
+          "q_power": 0,
+          "origin_polynomial": "54000",
+          "strict_origin_margin": "54000",
+          "remainder_bound": "192707",
+          "q_threshold": "750/5353"
+        },
+        {
+          "factor": 29,
+          "q_power": 0,
+          "origin_polynomial": "54000",
+          "strict_origin_margin": "54000",
+          "remainder_bound": "192707",
+          "q_threshold": "750/5353"
+        },
+        {
+          "factor": 30,
+          "q_power": 2,
+          "origin_polynomial": "-322265625",
+          "strict_origin_margin": "322265625",
+          "remainder_bound": "121918359882",
+          "q_threshold": "322265625/243836719766"
+        },
+        {
+          "factor": 31,
+          "q_power": 2,
+          "origin_polynomial": "77456250000000",
+          "strict_origin_margin": "77456250000000",
+          "remainder_bound": "3703407322422099",
+          "q_threshold": "387281250000/37034073224221"
+        }
+      ]
+    }
+  },
+  "source_full_determinant_constant": "-680564733841876926926749214863536422912/1510687891439074888013512652056148978892054637602761704872543505044307582741807817896794008391570470514579660470388944304431788623332977294921875",
+  "source_full_determinant_factors": [
+    {
+      "polynomial": "31250*q**2 + 5832*u**2 - 3375",
+      "multiplicity": 1
+    },
+    {
+      "polynomial": "31250*q**2 + 5832*u**2 - 3375",
+      "multiplicity": 1
+    },
+    {
+      "polynomial": "31250*q**2 + 5832*u**2 - 3375",
+      "multiplicity": 1
+    },
+    {
+      "polynomial": "31250*q**2 + 5832*u**2 - 3375",
+      "multiplicity": 1
+    },
+    {
+      "polynomial": "216*q**2 + 216*u**2 - 125",
+      "multiplicity": 1
+    },
+    {
+      "polynomial": "216*q**2 + 216*u**2 - 125",
+      "multiplicity": 1
+    },
+    {
+      "polynomial": "100*q**2 - 180*q + 100*u**2 + 81",
+      "multiplicity": 1
+    },
+    {
+      "polynomial": "100*q**2 + 180*q + 100*u**2 + 81",
+      "multiplicity": 1
+    },
+    {
+      "polynomial": "62500*q**2 - 37500*q + 11664*u**2 - 12375",
+      "multiplicity": 1
+    },
+    {
+      "polynomial": "62500*q**2 + 37500*q + 11664*u**2 - 12375",
+      "multiplicity": 1
+    },
+    {
+      "polynomial": "33750000000*q**6 + 60750000000*q**5 + 73798560000*q**4*u**2 + 22386250000*q**4 + 55616544000*q**3*u**2 + 25102000000*q**3 + 46347120000*q**2*u**4 + 13513639600*q**2*u**2 - 256200000*q**2 - 5133456000*q*u**4 + 48884450320*q*u**2 - 1925415000*q + 6298560000*u**6 + 20774944800*u**4 - 24145117428*u**2 - 5289978375",
+      "multiplicity": 1
+    },
+    {
+      "polynomial": "33750000000*q**6 - 60750000000*q**5 + 73798560000*q**4*u**2 + 22386250000*q**4 - 55616544000*q**3*u**2 - 25102000000*q**3 + 46347120000*q**2*u**4 + 13513639600*q**2*u**2 - 256200000*q**2 + 5133456000*q*u**4 - 48884450320*q*u**2 + 1925415000*q + 6298560000*u**6 + 20774944800*u**4 - 24145117428*u**2 - 5289978375",
+      "multiplicity": 1
+    },
+    {
+      "polynomial": "100*q**2 - 180*q + 100*u**2 + 81",
+      "multiplicity": 1
+    },
+    {
+      "polynomial": "100*q**2 + 180*q + 100*u**2 + 81",
+      "multiplicity": 1
+    },
+    {
+      "polynomial": "62500*q**2 - 37500*q + 11664*u**2 - 12375",
+      "multiplicity": 1
+    },
+    {
+      "polynomial": "62500*q**2 + 37500*q + 11664*u**2 - 12375",
+      "multiplicity": 1
+    },
+    {
+      "polynomial": "33750000000*q**6 + 60750000000*q**5 + 73798560000*q**4*u**2 + 22386250000*q**4 + 55616544000*q**3*u**2 + 25102000000*q**3 + 46347120000*q**2*u**4 + 13513639600*q**2*u**2 - 256200000*q**2 - 5133456000*q*u**4 + 48884450320*q*u**2 - 1925415000*q + 6298560000*u**6 + 20774944800*u**4 - 24145117428*u**2 - 5289978375",
+      "multiplicity": 1
+    },
+    {
+      "polynomial": "33750000000*q**6 - 60750000000*q**5 + 73798560000*q**4*u**2 + 22386250000*q**4 - 55616544000*q**3*u**2 - 25102000000*q**3 + 46347120000*q**2*u**4 + 13513639600*q**2*u**2 - 256200000*q**2 + 5133456000*q*u**4 - 48884450320*q*u**2 + 1925415000*q + 6298560000*u**6 + 20774944800*u**4 - 24145117428*u**2 - 5289978375",
+      "multiplicity": 1
+    },
+    {
+      "polynomial": "25*q**2 - 60*q + 25*u**2 + 36",
+      "multiplicity": 1
+    },
+    {
+      "polynomial": "25*q**2 - 15*q + 25*u**2 - 54",
+      "multiplicity": 1
+    },
+    {
+      "polynomial": "25*q**2 + 15*q + 25*u**2 - 54",
+      "multiplicity": 1
+    },
+    {
+      "polynomial": "25*q**2 + 60*q + 25*u**2 + 36",
+      "multiplicity": 1
+    },
+    {
+      "polynomial": "16875000*q**5 - 177975*q**4*u**2 - 27000000*q**4 + 18520830*q**3*u**2 + 16200000*q**3 + 1134225*q**2*u**4 - 152280*q**2*u**2 - 14757500*q**2 - 738450*q*u**4 + 21567636*q*u**2 - 58320000*q + 1312200*u**6 + 594864*u**4 + 24300000*u**2 + 11016000",
+      "multiplicity": 1
+    },
+    {
+      "polynomial": "-16875000*q**5 - 177975*q**4*u**2 - 27000000*q**4 - 18520830*q**3*u**2 - 16200000*q**3 + 1134225*q**2*u**4 - 152280*q**2*u**2 - 14757500*q**2 + 738450*q*u**4 - 21567636*q*u**2 + 58320000*q + 1312200*u**6 + 594864*u**4 + 24300000*u**2 + 11016000",
+      "multiplicity": 1
+    },
+    {
+      "polynomial": "762939453125000*q**8 - 1831054687500000*q**7 + 1190087890625000*q**6*u**2 + 741577148437500*q**6 - 1025156250000000*q**5*u**2 + 1625976562500000*q**5 + 506864587500000*q**4*u**4 + 124767773437500*q**4*u**2 - 1396966552734375*q**4 - 191318760000000*q**3*u**4 + 606892500000000*q**3*u**2 - 250356445312500*q**3 + 84675132259200*q**2*u**6 - 30914775900000*q**2*u**4 - 488843194921875*q**2*u**2 + 241481250000000*q**2 - 11901557422080*q*u**6 + 56630352960000*q*u**4 - 46722521250000*q*u**2 + 10123417968750*q + 4958982259200*u**8 - 5294784946752*u**6 - 42575598553500*u**4 + 44023899937500*u**2 - 10302820312500",
+      "multiplicity": 1
+    },
+    {
+      "polynomial": "762939453125000*q**8 + 1831054687500000*q**7 + 1190087890625000*q**6*u**2 + 741577148437500*q**6 + 1025156250000000*q**5*u**2 - 1625976562500000*q**5 + 506864587500000*q**4*u**4 + 124767773437500*q**4*u**2 - 1396966552734375*q**4 + 191318760000000*q**3*u**4 - 606892500000000*q**3*u**2 + 250356445312500*q**3 + 84675132259200*q**2*u**6 - 30914775900000*q**2*u**4 - 488843194921875*q**2*u**2 + 241481250000000*q**2 + 11901557422080*q*u**6 - 56630352960000*q*u**4 + 46722521250000*q*u**2 - 10123417968750*q + 4958982259200*u**8 - 5294784946752*u**6 - 42575598553500*u**4 + 44023899937500*u**2 - 10302820312500",
+      "multiplicity": 1
+    },
+    {
+      "polynomial": "25*q**4 + 50*q**2*u**2 - 90*q**2 + 25*u**4 - 54*u**2",
+      "multiplicity": 1
+    },
+    {
+      "polynomial": "25*q**4 + 50*q**2*u**2 + 25*u**4 + 36*u**2",
+      "multiplicity": 1
+    },
+    {
+      "polynomial": "15625*q**4 + 12500*q**3 + 18541*q**2*u**2 - 12918*q*u**2 - 90000*q + 2916*u**4 + 54000",
+      "multiplicity": 1
+    },
+    {
+      "polynomial": "15625*q**4 - 12500*q**3 + 18541*q**2*u**2 + 12918*q*u**2 + 90000*q + 2916*u**4 + 54000",
+      "multiplicity": 1
+    },
+    {
+      "polynomial": "188956800*q**10 + 944784000*q**8*u**2 - 473850000*q**8 + 1889568000*q**6*u**4 - 1623302208*q**6*u**2 - 939954375*q**6 + 1889568000*q**4*u**6 - 2026806624*q**4*u**4 - 3502207125*q**4*u**2 + 1267421875*q**4 + 944784000*q**2*u**8 - 1079106624*q**2*u**6 - 4184551125*q**2*u**4 + 2944906250*q**2*u**2 - 322265625*q**2 + 188956800*u**10 - 201752208*u**8 - 1622298375*u**6 + 1677484375*u**4 - 392578125*u**2",
+      "multiplicity": 1
+    },
+    {
+      "polynomial": "988769531250*q**12 + 7105914843750*q**10*u**2 + 3515380859375*q**10 + 8566446093750*q**8*u**4 + 20863513093750*q**8*u**2 + 10071269531250*q**8 - 348356420550*q**6*u**6 + 14320336749875*q**6*u**4 - 54526414743750*q**6*u**2 + 30510703125000*q**6 - 2812927273200*q**4*u**8 - 4054836616488*q**4*u**6 - 13331559163500*q**4*u**4 + 54793278225000*q**4*u**2 - 166986562500000*q**4 + 88042059000*q**2*u**10 + 7146135894492*q**2*u**8 + 54877225175424*q**2*u**6 - 44274070098000*q**2*u**4 + 333108288000000*q**2*u**2 + 77456250000000*q**2 + 103312130400*u**12 - 1326196135152*u**10 - 10666675605312*u**8 - 29979885888000*u**6 - 232960429728000*u**4 - 100383300000000*u**2",
+      "multiplicity": 1
+    }
+  ],
+  "original98_G_delta_row_bound": "145183524382/1442721375",
+  "original98_q_threshold": "1442721375/293252491514",
+  "axial_g00_normalized_numerator": "-18596183472000*q**10*r**6 - 41446020708000*q**10*r**5 + 434216821500000*q**10*r**4 + 651419197798500*q**10*r**3 - 72615234375000*q**10*r**2 - 266967773437500*q**10*r - 340819830714240*q**8*r**5 + 367830877749120*q**8*r**4 + 2053972077783840*q**8*r**3 - 3249883667587500*q**8*r**2 - 3406942771875000*q**8*r + 160180664062500*q**8 - 1678841863096032*q**6*r**4 + 863278195689864*q**6*r**3 - 14143148665204500*q**6*r**2 - 7826715408656250*q**6*r + 1915009277343750*q**6 - 6848127468360000*q**4*r**3 - 18878196531510000*q**4*r**2 + 15613203972600000*q**4*r + 3047637656250000*q**4 - 24712372131408000*q**2*r**2 + 23409241218000000*q**2*r - 10121025937500000*q**2 - 9937946700000000*r + 4182637500000000",
+  "axial_g00_origin_numerator": "4182637500000000 - 9937946700000000*r",
+  "axial_g00_strict_margin": "2988633915000000",
+  "axial_g00_remainder_bound": "496966132246933494",
+  "axial_g00_q_threshold": "298863391500000/99393226449386699",
+  "common_positive_q_threshold": "5234375/294988800512",
+  "actual_nonzero_q": "1/65536",
+  "u_bound_along_branches": "|u|<=2q; 0<q<common threshold",
+  "all_other_full_factors_nonzero_on_each_branch": true,
+  "original98_unit_from_row_norm": true,
+  "actual_g00_numerator_nonzero_at_axial_root": true
+}

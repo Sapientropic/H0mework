@@ -1,0 +1,54 @@
+{
+  "audit_output": {
+    "path": "ComputeNode/state/bell-free-density-rha0032/registered-tensor-math-audit-rha0034.txt",
+    "sha256": "549e17109235d814bed70e993665e47fee3b8cbe7a48ff85bf0b19373e303451"
+  },
+  "audit_source": {
+    "path": "ComputeNode/state/bell-free-density-rha0032/registered-tensor-audit-rha0034.lean",
+    "sha256": "0744a3897be7536abd876d4e39b5ad2fbbf9aa2468908abd8f533e2e7a8cded7"
+  },
+  "axioms": {
+    "complete_adjoint_pair": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "opposite_side_recycle": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "same_side_recycle": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "source_tensor_left_right": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "candidate": "RegisteredTensorAction.lean",
+  "candidate_sha256": "85a48fd4bac4a846ca12a7fe5da454dc6a0872ab1cb665ca6d2e55fb52815d4b",
+  "classification": "same-carrier algebraic transporter consumed by the registered factor/layer compiler",
+  "controller_advance": false,
+  "focused_gate": {
+    "exit_code": 0,
+    "trust_level": 0,
+    "warning_as_error": true
+  },
+  "independent_consumers": [
+    "full 33 by 33 tensor action",
+    "complete 1089 by 1089 adjoint pair"
+  ],
+  "owned_theorems": [
+    "BellRegisteredTensorAction.source_tensor_left_right",
+    "BellRegisteredTensorAction.same_side_recycle",
+    "BellRegisteredTensorAction.opposite_side_recycle",
+    "BellRegisteredTensorAction.complete_adjoint_pair"
+  ],
+  "schema": "stage10-registered-tensor-algebra-certification/rha0034",
+  "scope": "generic tensor left/right action and Hermitian adjoint-pair identities; no empirical probability or full instrument claim",
+  "verdict": "certified"
+}

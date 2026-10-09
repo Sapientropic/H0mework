@@ -4,8 +4,11 @@ Original contributions to this repository (Lean formalizations, verification
 scripts, frozen evidence records and documentation) are licensed under the
 Apache License, Version 2.0.
 Exported Lean sources retain source declarations and proof text apart from
-the import, resource-address and resource-digest relocations recorded in
-tools/export-map.json.
+the reversible import, resource-address, resource-digest, private-owner,
+local-instance and audit-observer transformations recorded in tools/export-map.json.
+Explicit source_origin records identify retained generated sources and
+committed proof-only source supplements; their original identities and
+historical source copies are preserved separately.
 The repository-level LICENSE and this notice govern those original contributions.
 
 The first-release paper texts, supplements and figures in papers/first-release/

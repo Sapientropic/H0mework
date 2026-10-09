@@ -1,0 +1,49 @@
+{
+  "schema": "stage10-apparatus-programme-sources-hp0001/v1",
+  "source_identity": {
+    "source": "positiveSmoothUnifiedSource", "root_visit": 10,
+    "whole_ledger_row": "material row0 retained", "current_tick": 16, "next_tick": 17,
+    "controller_advance": false
+  },
+  "apparatus_catalogue": "hardware-anchor-sources.json",
+  "G2021": {
+    "url": "https://xqp.physik.uni-muenchen.de/publications/files/theses_phd/phd_garthoff.pdf",
+    "sha256": "730f2cf60ce7a58fe8433e3e4b9d5c242584837aa63ba417bd74bf5286338f91",
+    "used_locations": [
+      "section2.2.2 pp8-9: red-detuned D2 F2 to F'3 cooling and F1 to F'2 repump",
+      "section2.3.1 p13: simultaneous pump2to1 and pi pump1to1; alternating directions/polarisations",
+      "section2.6.3 pp31-34: shared BSM/APDs, cooling masks, distinct single/both-loaded thresholds"
+    ],
+    "generic_208ns_bsm_window_is_used_for_2016_runs": false
+  },
+  "PRL_SI": {
+    "url": "https://arxiv.org/html/1611.04604v2",
+    "original_pdf_catalogue_id": "PRL-SI",
+    "used_locations": ["I.A synchronization", "I.B experimental sequence", "I.C timing", "I.E data recording"],
+    "shared_clock_Hz": 100000000,
+    "CU_clock_Hz": 50000000,
+    "CU_resolution_ns": 20,
+    "QRNG_sample_rate_bits_per_second": 50000000,
+    "presence_integration_ms": 40,
+    "bsm_acceptance_window_ns": 120,
+    "attempts_per_recooling_block": 40,
+    "recooling_us": 350,
+    "local_storage": "successful BSM, requested random bit and CEM outcomes",
+    "integer_UID_encoder_formula_given": false,
+    "Unix_writer_restriction_given": false
+  },
+  "observations": {
+    "original_archive_catalogue": "../sources.json",
+    "paid_original_join": "../primary-first-mu0001.1.json",
+    "complete_public_records": 41673,
+    "UID_gcd_strictly_identifies_physical_time_unit": false,
+    "CEMs_off_or_Maintenance_implies_constant_no_click": false
+  },
+  "scope": {
+    "actual_hardware_uniquely_identified": false,
+    "actual_programme_control_clock_record_square_certified": false,
+    "hidden_data_required": false,
+    "new_experiments_performed": false,
+    "ETH_heldout_accessed": false
+  }
+}

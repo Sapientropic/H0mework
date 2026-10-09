@@ -1,0 +1,66 @@
+{
+  "schema": "physical-em-dressed-charge-certification/v1",
+  "phase": "CERTIFY",
+  "verdict": "certified",
+  "classification": "same-source electromagnetic joint charge and complete prepared-field producer",
+  "controller_advanced": false,
+  "controller": {
+    "source": "positiveSmoothUnifiedSource / repaired independent Dirac-dual / SpinPair.actual",
+    "visit": "Stage10.Runtime.visit10 / row0 / sameOccurrenceActivation",
+    "current": "tick16 quantumFace10 -> quantumPresentation10",
+    "next": "tick17 unchanged"
+  },
+  "production": {
+    "character": "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/PhysicalEMDressedCharacter.lean",
+    "character_sha256": "8d150b8a2147ca4c1e6122085a9417f75a79f59bf6115a861f7c46604a46bb9d",
+    "prepared_read": "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/PhysicalEMDressedPreparedRead.lean",
+    "prepared_read_sha256": "6cdb8c67320f9b7c187c50649c0d16cebbdafd4a49782ad6cc8519e8ec29670b",
+    "audit": "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/PhysicalEMDressedAudit.lean",
+    "audit_sha256": "aa6ec1c10c24f4e09af2e623b59fde85821a4b3149b4a3da7d3e315c101a0664"
+  },
+  "generated": [
+    "The original EM mother matrix generates its fundamental and exterior weights.",
+    "The actual degree4 scalar and degree2 matter contraction has total EM Lie weight -1/2 for every source channel and colour.",
+    "The independent dual uses the original negative composition and returns the opposite joint character.",
+    "The joint charge unit is defined by the actual source subset weights and generated as positive 1/2.",
+    "The full independent-mode CAR generator and both scalar variations produce the original root-volume weighted test and completed-leg variations.",
+    "The same completed source legs consume the full 289-field prepared/source covector and its original price.",
+    "The original GT joint variation is -10/11 times the EM joint variation on the same actual completed legs and prepared reader."
+  ],
+  "scope": "Joint field, CAR-letter and source-prepared variations; no equality of full GT and EM generators is asserted.",
+  "kernel": {
+    "public": 39,
+    "owned": 112,
+    "nodes": 100873,
+    "anchors": 9,
+    "direct": 5,
+    "consumers": 3,
+    "opaque_all_read": 59,
+    "axioms": 3,
+    "unknown": 0,
+    "unsafe": 0,
+    "partial": 0
+  },
+  "authorized_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "independent_consumer_check": {
+    "execution": "fresh local strict Lean consumer and complete owned dependency closure",
+    "compiler_commit": "d8b18978322de05a8f3dba51ef03cf5461676c17",
+    "flags": [
+      "-j1",
+      "--trust=0",
+      "-DwarningAsError=true",
+      "-DmaxErrors=1",
+      "-DElab.async=false"
+    ],
+    "gate": "Lean/scratch/AlphaSource/EMDressedChargeGate",
+    "audit_output": "audit-a2.stdout.log",
+    "exit": 0,
+    "source_and_snapshot_equal": true,
+    "default_linters": true
+  },
+  "old_source_solver_or_eigensystem_replayed": false
+}

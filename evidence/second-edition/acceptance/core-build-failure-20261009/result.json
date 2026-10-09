@@ -1,0 +1,367 @@
+{
+  "schema": "h0mework/first-release-build@1",
+  "kind": "build",
+  "ok": false,
+  "input_identity": {
+    "sha256": {
+      "claim_map": "f168cc59f46919786a39129e4654006f44eb22af4b288ea60166f5afc3b3bee4",
+      "export_map": "7a2f689669ceb3355906b843fa1c90a0d21b6342175f75f67f8171b415ebf087",
+      "lakefile": "9bd08df4b08ab92982dc0b35d9e60caac77f8f6932436ff6d2ef0f311fce1209",
+      "toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+      "manifest": "2fe02acc26899fd57d82018e711e79c251e26d0b6d2bb370af81db0ed312fbfd"
+    },
+    "package_inputs": {
+      "v2-core-action-reader": "6788d91070a6a356f1a483c0d7ef49acf8ab2096cce3c5cc8b2837c27297bc2b",
+      "v2-core-difference-feedback": "fc358c979affc1c1bde507086646dde3e4e039dde5710e29de074f5ba4672c14",
+      "v2-core-completion": "b6a7e0340474ad8ad4bdbff1b4d6728a3d609330605ead7745943a0988a2c6fb",
+      "v2-core-full-stock": "85244d68ecc8dfe2a24a2140c39b15ce5da1a6d35f74ed51c4c8c24a81d014f4",
+      "v2-core-runtime-calculation": "c4f55cab577948aff72afbdafdbea94b9c328f2ddf529fc08015b1d8ab880602"
+    }
+  },
+  "settings": {
+    "toolchain_pin": "leanprover/lean4:v4.33.0",
+    "package_moreLeanArgs": [
+      "--trust=0",
+      "-Dweak.linter.unnecessarySimpa=false",
+      "-Dweak.linter.style.haveILetI=false",
+      "-Dweak.linter.unusedSimpArgs=false"
+    ],
+    "package_weakLeanArgs": [
+      "-DmaxHeartbeats=2000000",
+      "-Dweak.linter.unusedSectionVars=false",
+      "-Dweak.linter.unnecessarySeqFocus=false",
+      "-Dweak.linter.unusedVariables=false",
+      "-Dweak.linter.unreachableTactic=false",
+      "-Dweak.linter.unusedTactic=false",
+      "-Dweak.linter.defProp=false",
+      "-Dweak.linter.deprecated=false",
+      "-Dlinter.deprecated=false",
+      "-Dweak.linter.tacticAnalysis.introMerge=false",
+      "-Dweak.linter.constructorNameAsVariable=false"
+    ],
+    "libraries": [
+      {
+        "name": "H0mework",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_15a9a7f1af9edd94",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_3606f5269412e357",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_d700e8a5f12a0c72",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_1e1ae4b55cfaa424",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_5d60190f8c552243",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_c8f26eb536eba11f",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_05819243d0f03058",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_42d0393dda443953",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_662d860139605627",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_c5ce7c98c6fb2afe",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_4306926d26d3e100",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_524380564da88277",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_598bc2100d4a470f",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_f16f09d592d9fed1",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_38dd326bee1881e5",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_a5be13c98d55de59",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_a8ba570880d786e7",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_e94628c12cb5af16",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_e615fc1eae897d2f",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_3ec8ead604397acb",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_f3b844eed8451357",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_fb8213f28d86d220",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_343b97a439466c84",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_e7aebe388314d626",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_5ee63fcc1d2eabc2",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_048d35b0f13ffddc",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_8a02641b81044b03",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_efa122af6a18f938",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "H0meworkRelaxed",
+        "moreLeanArgs": []
+      },
+      {
+        "name": "H0meworkPinned",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      }
+    ]
+  },
+  "identity_scope": {
+    "packages": [
+      "v2-core-action-reader",
+      "v2-core-difference-feedback",
+      "v2-core-completion",
+      "v2-core-full-stock",
+      "v2-core-runtime-calculation"
+    ],
+    "proof_entries": 61
+  },
+  "cache": {
+    "kind": "existing_workspace_cache",
+    "clean_clone": false,
+    "build_directory_preexisted": true,
+    "lean_num_threads": "8",
+    "compiled_targets_before": {
+      "H0mework.Papers.V2CoreActionReader": null,
+      "H0mework.Papers.V2CoreDifferenceFeedback": null,
+      "H0mework.Papers.V2CoreCompletion": null,
+      "H0mework.Papers.V2CoreFullStock": null,
+      "H0mework.Papers.V2CoreRuntimeCalculation": null
+    }
+  },
+  "packages": [
+    {
+      "id": "v2-core-action-reader",
+      "paper": "source-process-core",
+      "source_commit": "e05558097256e86b537c019c8ca63cd449d6b2d2",
+      "lean_target": "H0mework.Papers.V2CoreActionReader",
+      "claim_ids": [
+        "core.C35",
+        "core.C36"
+      ],
+      "commands": {
+        "build": "python3 tools/edition_release.py --edition second build --package v2-core-action-reader --output .local/second-edition-runs/<new>/build",
+        "trust": "python3 tools/edition_release.py --edition second trust --package v2-core-action-reader --output .local/second-edition-runs/<new>/trust"
+      }
+    },
+    {
+      "id": "v2-core-difference-feedback",
+      "paper": "source-process-core",
+      "source_commit": "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46",
+      "lean_target": "H0mework.Papers.V2CoreDifferenceFeedback",
+      "claim_ids": [
+        "core.C37",
+        "core.C38"
+      ],
+      "commands": {
+        "build": "python3 tools/edition_release.py --edition second build --package v2-core-difference-feedback --output .local/second-edition-runs/<new>/build",
+        "trust": "python3 tools/edition_release.py --edition second trust --package v2-core-difference-feedback --output .local/second-edition-runs/<new>/trust"
+      }
+    },
+    {
+      "id": "v2-core-completion",
+      "paper": "source-process-core",
+      "source_commit": "71e94e8261d67cf4849a05eb14ac95aa2f7dcbb9",
+      "lean_target": "H0mework.Papers.V2CoreCompletion",
+      "claim_ids": [
+        "core.C39"
+      ],
+      "commands": {
+        "build": "python3 tools/edition_release.py --edition second build --package v2-core-completion --output .local/second-edition-runs/<new>/build",
+        "trust": "python3 tools/edition_release.py --edition second trust --package v2-core-completion --output .local/second-edition-runs/<new>/trust"
+      }
+    },
+    {
+      "id": "v2-core-full-stock",
+      "paper": "source-process-core",
+      "source_commit": "71e94e8261d67cf4849a05eb14ac95aa2f7dcbb9",
+      "lean_target": "H0mework.Papers.V2CoreFullStock",
+      "claim_ids": [
+        "core.C40"
+      ],
+      "commands": {
+        "build": "python3 tools/edition_release.py --edition second build --package v2-core-full-stock --output .local/second-edition-runs/<new>/build",
+        "trust": "python3 tools/edition_release.py --edition second trust --package v2-core-full-stock --output .local/second-edition-runs/<new>/trust"
+      }
+    },
+    {
+      "id": "v2-core-runtime-calculation",
+      "paper": "source-process-core",
+      "source_commit": "71e94e8261d67cf4849a05eb14ac95aa2f7dcbb9",
+      "lean_target": "H0mework.Papers.V2CoreRuntimeCalculation",
+      "claim_ids": [
+        "core.C41"
+      ],
+      "commands": {
+        "build": "python3 tools/edition_release.py --edition second build --package v2-core-runtime-calculation --output .local/second-edition-runs/<new>/build",
+        "trust": "python3 tools/edition_release.py --edition second trust --package v2-core-runtime-calculation --output .local/second-edition-runs/<new>/trust"
+      }
+    }
+  ],
+  "results": [
+    {
+      "command": [
+        "lake",
+        "build",
+        "H0mework.Papers.V2CoreActionReader",
+        "H0mework.Papers.V2CoreDifferenceFeedback",
+        "H0mework.Papers.V2CoreCompletion",
+        "H0mework.Papers.V2CoreFullStock",
+        "H0mework.Papers.V2CoreRuntimeCalculation"
+      ],
+      "cwd": "Lean",
+      "started_at": "2026-10-09T09:22:31.107393+00:00",
+      "finished_at": "2026-10-09T10:19:01.519750+00:00",
+      "elapsed_seconds": 3390.356,
+      "exit_code": 1,
+      "error": null,
+      "log": ".local/second-edition-20261009/core-build-1/build.log"
+    }
+  ],
+  "publication_readiness": "not_assessed",
+  "input_identity_after": {
+    "sha256": {
+      "claim_map": "f168cc59f46919786a39129e4654006f44eb22af4b288ea60166f5afc3b3bee4",
+      "export_map": "abc323367c44a1a23b9452b7c4f28a800c2712bd32c0c561adc65344c75bd037",
+      "lakefile": "9bd08df4b08ab92982dc0b35d9e60caac77f8f6932436ff6d2ef0f311fce1209",
+      "toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+      "manifest": "2fe02acc26899fd57d82018e711e79c251e26d0b6d2bb370af81db0ed312fbfd"
+    },
+    "package_inputs": {
+      "v2-core-action-reader": "6788d91070a6a356f1a483c0d7ef49acf8ab2096cce3c5cc8b2837c27297bc2b",
+      "v2-core-difference-feedback": "fc358c979affc1c1bde507086646dde3e4e039dde5710e29de074f5ba4672c14",
+      "v2-core-completion": "b6a7e0340474ad8ad4bdbff1b4d6728a3d609330605ead7745943a0988a2c6fb",
+      "v2-core-full-stock": "85244d68ecc8dfe2a24a2140c39b15ce5da1a6d35f74ed51c4c8c24a81d014f4",
+      "v2-core-runtime-calculation": "c4f55cab577948aff72afbdafdbea94b9c328f2ddf529fc08015b1d8ab880602"
+    }
+  },
+  "inputs_unchanged": false,
+  "receipt": ".local/second-edition-20261009/core-build-1/result.json",
+  "compiled_targets_after": {
+    "H0mework.Papers.V2CoreActionReader": null,
+    "H0mework.Papers.V2CoreDifferenceFeedback": null,
+    "H0mework.Papers.V2CoreCompletion": "cef8946d0088e7561922bd27fd7c352a2ebe4dde652c0d0d26b25530f69d9c9b",
+    "H0mework.Papers.V2CoreFullStock": "80f64be012db62529bb6d91265eee799b17897b916c09224ee9c4f78cfff7a26",
+    "H0mework.Papers.V2CoreRuntimeCalculation": "6bf388210e1ad49b3ef7e347356abdc2810d815256bfde79987393b8e5c15b15"
+  }
+}

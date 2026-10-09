@@ -1,0 +1,71 @@
+{
+  "scope": "DIRECT_RADIAL_CAP_OPERATOR_WITH_BOREL_ANGULAR_DEPENDENCE",
+  "input_sha256": {
+    "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-spatial-current/assembly.json": "987ad42eabbd50a80b3634e247dd24cafc7564f381df43174daeebc6f9b8528c"
+  },
+  "original_cosine_half": "1/2",
+  "physical_measure": "d3k/(2pi)^3, sphere measure dS/(2pi)^3",
+  "definition": "I(h)=1/2 sum_sigma integral_(B intersect (B+sigma*h*n)) Phi(k,sigma*h)",
+  "branches": [
+    {
+      "sigma": -1,
+      "fixed_incoming_window_centers": [
+        "-1",
+        "0"
+      ],
+      "true_radial_edge": "-h*u + sqrt(R**2 - h**2*(1 - u**2))",
+      "first_strip_coefficient": "-R**2*f0*u",
+      "second_strip_coefficient": "R**2*f1*u + R**2*fr*u**2/2 + 3*R*f0*u**2/2 - R*f0/2"
+    },
+    {
+      "sigma": 1,
+      "fixed_incoming_window_centers": [
+        "0",
+        "1"
+      ],
+      "true_radial_edge": "h*u + sqrt(R**2 - h**2*(1 - u**2))",
+      "first_strip_coefficient": "R**2*f0*u",
+      "second_strip_coefficient": "R**2*f1*u + R**2*fr*u**2/2 + 3*R*f0*u**2/2 - R*f0/2"
+    }
+  ],
+  "coefficient0": "integral_B Phi0",
+  "coefficient1": "-1/2 integral_S |n.nu| Phi0",
+  "coefficient2": "1/2 integral_B Phi2 +1/2 integral_S (n.nu) Phi1 +1/4 integral_S [(n.nu)^2 radial_Phi0+((3*(n.nu)^2-1)/R)*Phi0]",
+  "true_switching_belt": "0<sigma*(n.nu)<h/(2R)",
+  "belt_area_bound": "pi*h*R",
+  "belt_radial_depth_bound": "h^2/R",
+  "belt_volume_bound_each_branch": "pi*h^3",
+  "angular_regularities": "bounded Borel; no angular derivative or seam continuity",
+  "radial_regularities": "uniform one-sided radial C2 of Phi0 and C1 of Phi1 near R; bounded Phi2; uniform external third-order Taylor control",
+  "full_lens_complex_kernel": {
+    "a": [
+      "2 + I",
+      "3 - 2*I",
+      "5 + I",
+      "-7 + 3*I"
+    ],
+    "b": [
+      "11 - I",
+      "-13 + 2*I"
+    ],
+    "c": "17 + 4*I",
+    "exact_integral": "-8*pi*R**5/15 + 16*I*pi*R**5/15 - 3*pi*R**4*h/4 - 5*I*pi*R**4*h/4 + 6*pi*R**3*h**2 + 14*I*pi*R**3*h**2/3 + 8*pi*R**3/3 + 4*I*pi*R**3/3 - 95*pi*R**2*h**3/24 - 77*I*pi*R**2*h**3/24 - 2*pi*R**2*h - I*pi*R**2*h + 97*pi*h**5/320 + 253*I*pi*h**5/960 + pi*h**3/6 + I*pi*h**3/12",
+    "coefficients": [
+      "-8*pi*R**5/15 + 16*I*pi*R**5/15 + 8*pi*R**3/3 + 4*I*pi*R**3/3",
+      "-3*pi*R**4/4 - 5*I*pi*R**4/4 - 2*pi*R**2 - I*pi*R**2",
+      "6*pi*R**3 + 14*I*pi*R**3/3"
+    ]
+  },
+  "angular_jump_consumer": {
+    "function": "nu1 * indicator(nu3>0)",
+    "direction": [
+      "3/5",
+      "0",
+      "4/5"
+    ],
+    "true_radial_quadratic_coefficient": "9*pi*R/50",
+    "incorrect_classical_angular_coefficient": "3*pi*R/50",
+    "nonzero_missed_jump": "3*pi*R/25"
+  },
+  "seconds": 0.168
+}

@@ -1,0 +1,61 @@
+{
+  "status": "PASS",
+  "inverse_algorithm": "12-mode direct inverses plus original independent-dual off-diagonal inverse",
+  "samples": [
+    {
+      "label": "time",
+      "full48_left_and_right_inverse": true,
+      "all2304_current_entries": true,
+      "all289_residual_rows_retained": true,
+      "nonzero_residual_row_counts": {
+        "scalar_J": 9,
+        "gauge_A": 48,
+        "coframe": 16,
+        "Lorentz": 9,
+        "gauge_B": 60
+      },
+      "original_amplitude_squared_factor": 4
+    },
+    {
+      "label": "spatial_plus",
+      "full48_left_and_right_inverse": true,
+      "all2304_current_entries": true,
+      "all289_residual_rows_retained": true,
+      "nonzero_residual_row_counts": {
+        "scalar_J": 9,
+        "gauge_A": 48,
+        "coframe": 16,
+        "Lorentz": 12,
+        "gauge_B": 68
+      },
+      "original_amplitude_squared_factor": 4
+    },
+    {
+      "label": "spatial_opposite",
+      "full48_left_and_right_inverse": true,
+      "all2304_current_entries": true,
+      "all289_residual_rows_retained": true,
+      "nonzero_residual_row_counts": {
+        "scalar_J": 9,
+        "gauge_A": 48,
+        "coframe": 16,
+        "Lorentz": 12,
+        "gauge_B": 68
+      },
+      "original_amplitude_squared_factor": 4
+    }
+  ],
+  "opposite_frequency_momentum_signed_transpose": true,
+  "excluded_source_pole_rank": 11,
+  "excluded_source_pole_kernel_dimension": 1,
+  "zero_momentum_response_spectral_projector_derivation": "-200*sqrt(30)/(27*(z - 2)*(z + 2))",
+  "actual_z_plus2_residue": "-50*sqrt(30)/27",
+  "actual_z_minus2_residue": "50*sqrt(30)/27",
+  "negative_controls": [
+    "dropping_backward_resolvent",
+    "force_substituted_for_current",
+    "reversing_matter_response_sign",
+    "unit_seed_substituted_for_original_amplitude"
+  ],
+  "full_bosonic_solution_or_vacuum_loop_claimed": false
+}

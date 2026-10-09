@@ -1,0 +1,53 @@
+{
+  "status": "PASS",
+  "mode": "replay",
+  "strict_flags": [
+    "-j1",
+    "--trust=0",
+    "-DwarningAsError=true"
+  ],
+  "task_cache": "runtime/.cache/low-energy-h0-checkpoint-20261005/dynamic/task-closure",
+  "canonical_path_sources": [
+    "runtime/.cache/low-energy-h0-checkpoint-20261005/dynamic/OriginalRNativeStepGraphEvent-attempt2.receipt.json",
+    "runtime/.cache/physical-pole-charge-closure-20261008/lean-path.txt"
+  ],
+  "canonical_path_entries": 625,
+  "targets": {
+    "SourceCanonical79BraNativeCurrents": {
+      "status": "PASS",
+      "receipt": "runtime/.cache/low-energy-h0-checkpoint-20261005/dynamic/task-closure/SourceCanonical79BraNativeCurrents.strict.json",
+      "failed_checks": [],
+      "source_sha256": "8166f93a8feb3dfaf8cd9f7e1e8d30c9628d24720508b849a0ff847d9c17d0e1",
+      "olean_sha256": "cd6d826df85b16922d66c84f0d48c9006124509bc02b131a94292b3031cf1f22",
+      "exit_code": 0
+    },
+    "SourceActualFourBlockCausalOnset": {
+      "status": "PASS",
+      "receipt": "runtime/.cache/low-energy-h0-checkpoint-20261005/dynamic/task-closure/SourceActualFourBlockCausalOnset.strict.json",
+      "failed_checks": [],
+      "source_sha256": "819b3f363ea9d05084198a8de01998df8a466186471d4e93b6dfa025d4fb8627",
+      "olean_sha256": "bb482692d2a065e936a062f203cfd6f7f816710430eff101e4635f0c9f5e4429",
+      "exit_code": 0
+    },
+    "SourceActualFourBlockHilbertOperator": {
+      "status": "PASS",
+      "receipt": "runtime/.cache/low-energy-h0-checkpoint-20261005/dynamic/task-closure/SourceActualFourBlockHilbertOperator.strict.json",
+      "failed_checks": [],
+      "source_sha256": "afa966c6d1699cad71dfc90c034a121324d5d8085837b9536af4786a401564c1",
+      "olean_sha256": "e724fb3543dd2508e0d6717d1e5114326b80b73420e8d323789d3856bd599589",
+      "exit_code": 0
+    },
+    "SourceActualFourBlockSharpCausalMass": {
+      "status": "PASS",
+      "receipt": "runtime/.cache/low-energy-h0-checkpoint-20261005/dynamic/task-closure/SourceActualFourBlockSharpCausalMass.strict.json",
+      "failed_checks": [],
+      "source_sha256": "26227f0f98ce20ff613697aeda2921c772367d42367bc62405617d91613665bd",
+      "olean_sha256": "78b7f7d0ee42f085a3751ebabd09e76e535e373b7d5a13ed47bd6f0a997044a7",
+      "exit_code": 0
+    }
+  },
+  "recompiled": [
+    "SourceActualFourBlockSharpCausalMass"
+  ],
+  "scope": "Task source/strict-command/object receipts; canonical dependencies reused as paid boundaries."
+}

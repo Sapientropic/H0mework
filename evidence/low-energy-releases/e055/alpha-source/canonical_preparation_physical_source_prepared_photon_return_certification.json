@@ -1,0 +1,53 @@
+{
+  "schema": "source-prepared-photon-amplitude-return/v1",
+  "phase": "CERTIFY",
+  "classification": "subordinate same-source preparation/amplitude producer",
+  "prediction_source": "positiveSmoothUnifiedSource / repaired independent Dirac-dual / SpinPair.actual",
+  "controller": {
+    "root": "SpinPair.livingRoot",
+    "visit": 10,
+    "whole_ledger_row": 0,
+    "live_account": ".inl.liveAccount",
+    "tick": 16,
+    "generated_next": 17,
+    "controller_advanced": false
+  },
+  "production_sha256": {
+    "Verification/physics/low-energy-phenomenology/alpha-source/SourcePreparedPhotonAmplitude.lean": "47a0ad6dab619b2edfacf4f38d35f9f443af1dfa98e6f1dfb3c58a1259fce854",
+    "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSourcePreparedPhotonAmplitude.lean": "5236eed7f1e3944db949ffb50c5e296004a4f2f6610be54c42ab2270c871d9fc",
+    "Verification/physics/low-energy-phenomenology/alpha-source/canonical_preparation_physical_source_prepared_photon_return_check.py": "c17fad53b543a788873a86a3b39d7d738c54a634612ab4c414f78133c68d82ba"
+  },
+  "source_first": {
+    "source_sha256": "47a0ad6dab619b2edfacf4f38d35f9f443af1dfa98e6f1dfb3c58a1259fce854",
+    "object_sha256": "71209efb2146243b475642ed78c4b13cb01a1bb71ca8e972ad3fad371f109275",
+    "strict": {
+      "trust": 0,
+      "warning_as_error": true,
+      "threads": 1,
+      "async": false,
+      "axioms": ["propext", "Classical.choice", "Quot.sound"]
+    }
+  },
+  "public_declarations": 7,
+  "theorem_mouths": 5,
+  "public_mouths": [
+    "sourcePreparedPhotonProfile_generated",
+    "sourcePreparedPhoton_unit",
+    "sourcePreparedPhoton_charge",
+    "sourcePreparedPhotonAmplitude",
+    "sourcePreparedPhotonAmplitudeNormalized",
+    "sourcePreparedPhotonAmplitude_normalized",
+    "sourcePreparedPhotonAmplitude_price"
+  ],
+  "direct_consumer": "sourcePhotonWholePair_price / sourcePhotonWholePair",
+  "generated_structure": [
+    "actual SourcePreparation -> sourceCausalState -> sourceProfile -> completedLeg",
+    "complex sourcePhotonWholePair amplitude",
+    "one phaseMomentum*sourceSpeed normalization",
+    "unit and nativeY charge readback",
+    "full 289 polarization/resolvent price"
+  ],
+  "physical_boundary": "This is a source-prepared amplitude and source-unit normalization. It does not supply the missing parallel-unbroken physical EM carrier or the full-light/contact zero-momentum matching identity.",
+  "prediction_inputs_read": false,
+  "experiment_alpha_or_137_read": false
+}

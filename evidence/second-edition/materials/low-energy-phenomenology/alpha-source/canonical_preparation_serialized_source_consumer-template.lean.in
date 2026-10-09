@@ -1,0 +1,274 @@
+import SourceAsset
+
+set_option autoImplicit false
+set_option maxHeartbeats 10000000
+set_option maxRecDepth 8192
+set_option backward.isDefEq.respectTransparency false
+noncomputable section
+namespace LowEnergy.PreparationVacuumSerializedSource
+open PreparationVacuumDAGSemantic PreparationVacuumDAGCoefficient PreparationVacuumPoleCancellation
+open PreparationVacuumLiteralFeed PreparationVacuumLiteralAdmission PreparationVacuumArenaRows
+open PreparationVacuumCentralBudget PreparationVacuumNumericSource PreparationVacuumCanonicalMoyal
+open PreparationVacuumEngineBudget PreparationVacuumArenaBudget PreparationVacuumMoyalBudget
+open CanonicalPreparationCutoff CanonicalPreparationSquareCutoff
+open scoped BigOperators
+
+def rationalEvaluation (point : Fin 7 → ℚ) : CentralPolynomial →+* ℚ :=
+  MvPolynomial.eval₂Hom (RingHom.id ℚ) point
+
+theorem rationalEvaluation_monomial (point : Fin 7 → ℚ) (e : Fin 7 →₀ ℕ) (q : ℚ) :
+    rationalEvaluation point (MvPolynomial.monomial e q)=q*∏ i,point i^(e i) := by
+  change MvPolynomial.eval₂ (RingHom.id ℚ) point (MvPolynomial.monomial e q)=_
+  rw [MvPolynomial.eval₂_monomial,Finsupp.prod_fintype _ _ (fun i=>pow_zero (point i))]
+  rfl
+
+theorem nondivides_of_evaluation (point : Fin 7 → ℚ) (P Q : CentralPolynomial)
+    (zero : rationalEvaluation point P=0) (nonzero : rationalEvaluation point Q≠0) : ¬ P∣Q := by
+  rintro ⟨factor,same⟩
+  apply nonzero
+  rw [same,map_mul,zero,zero_mul]
+
+theorem cancelStep_fixed (i : Fin 3) (c : NormalizedCoefficient) (nonzero : c.numerator≠0)
+    (reduced : CancelledAt i c) : cancelStep i c=c := by
+  unfold cancelStep
+  rw [if_neg nonzero]
+  rcases reduced with exponent|nondiv
+  · rw [if_pos exponent]
+  · by_cases exponent : c.poles i=0
+    · rw [if_pos exponent]
+    · rw [if_neg exponent,if_neg (fun h=>nondiv ((poleRemainder_zero_iff i c.numerator).mp h))]
+
+theorem cancelAt_fixed (index : Fin 3) (fuel : ℕ) (c : NormalizedCoefficient)
+    (nonzero : c.numerator≠0) (reduced : CancelledAt index c) : cancelAt index fuel c=c := by
+  induction fuel with
+  | zero=>rfl
+  | succ fuel ih=>change cancelStep index (cancelAt index fuel c)=c;rw [ih,cancelStep_fixed index c nonzero reduced]
+
+theorem cancelCoefficient_fixed (c : NormalizedCoefficient) (nonzero : c.numerator≠0)
+    (reduced : ∀ i,CancelledAt i c) : cancelCoefficient c=c := by
+  unfold cancelCoefficient
+  rw [cancelAt_fixed 0 _ c nonzero (reduced 0),cancelAt_fixed 1 _ c nonzero (reduced 1),
+    cancelAt_fixed 2 _ c nonzero (reduced 2)]
+
+-- SOURCE_WITNESSES
+-- END_SOURCE_WITNESSES
+
+def nodeArray {p : ℕ} (previous : Fin p → PreparationVacuumCentralBudget.ArrayBound) :
+    NodeKind p → PreparationVacuumCentralBudget.ArrayBound
+  | .source d j=>literalLowerAtoms d j
+  | .clock _ _ e=>previous e
+  | .moyal r a b=>fun m=>moyalScale r*convolution m r (previous a) (previous b)
+
+def boundsStep {p n c : ℕ} (source : SourceTable p n c)
+    (previous : Fin p → PreparationVacuumCentralBudget.ArrayBound) (e : Fin p) :
+    PreparationVacuumCentralBudget.ArrayBound :=
+  (source.rows e).foldr (fun row out m=>
+    productArray (sourceCentralArray (source.coefficient row.coefficient))
+      (orderedArray (row.word.map (fun i=>nodeArray previous (source.node i).kind))) m+out m) (constantArray 0)
+
+def decodeBounds {p n c : ℕ} (source : SourceTable p n c) (fuel : ℕ) :
+    Fin p → PreparationVacuumCentralBudget.ArrayBound :=
+  Nat.rec (fun _=>constantArray 0) (fun _ previous=>boundsStep source previous) fuel
+
+theorem node_array_readback {p : ℕ} (previous : Fin p → ArenaExpression 0) (kind : NodeKind p) :
+    literalExpressionArray (kind.expression previous)=
+      nodeArray (fun i=>literalExpressionArray (previous i)) kind := by
+  cases kind with
+  | source d j=>exact literal_lower_readback d j
+  | clock _ _ _=>rfl
+  | moyal _ _ _=>rfl
+
+theorem step_array_readback {p n c : ℕ} (source : SourceTable p n c)
+    (previous : Fin p → ArenaExpression 0) (e : Fin p) :
+    literalExpressionArray (sourceStep source previous e)=
+      boundsStep source (fun i=>literalExpressionArray (previous i)) e := by
+  unfold sourceStep boundsStep
+  induction source.rows e with
+  | nil=>simp only [List.foldr_nil,literalExpressionArray,expressionArray_literal,abs_zero]
+  | cons row rows ih=>
+    simp only [List.foldr_cons,literalExpressionArray,expressionArray_add]
+    rw [show expressionArray literalPrimitiveArrays
+        (List.foldr (fun row out=>ArenaExpression.add
+          (.row (source.coefficient row.coefficient)
+            (row.word.map (fun i=>(source.node i).kind.expression previous))) out) (.literal 0) rows)=_
+        from ih]
+    rw [expressionArray_row]
+    simp only [List.map_map,Function.comp_def]
+    have same : (fun i=>expressionArray literalPrimitiveArrays ((source.node i).kind.expression previous))=
+        (fun i=>nodeArray (fun i=>literalExpressionArray (previous i)) (source.node i).kind) := by
+      funext i;exact node_array_readback previous (source.node i).kind
+    rw [same]
+    rfl
+
+theorem decode_array_readback {p n c : ℕ} (source : SourceTable p n c) (fuel : ℕ) (e : Fin p) :
+    literalExpressionArray (decode source fuel e)=decodeBounds source fuel e := by
+  induction fuel generalizing e with
+  | zero=>simp only [decode,decodeBounds,Nat.rec_zero,literalExpressionArray,expressionArray_literal,abs_zero]
+  | succ fuel ih=>
+    change literalExpressionArray (sourceStep source (decode source fuel) e)=
+      boundsStep source (decodeBounds source fuel) e
+    rw [step_array_readback]
+    congr 1
+    funext i;exact ih i
+
+def fixedExpression (id : Fin 747) : ArenaExpression 0 := decode fixedSource 5 id
+
+theorem fixedExpression_equation (id : Fin 747) :
+    fixedExpression id=sourceStep fixedSource fixedExpression id :=
+  decode_exact_equation fixedSource fixed_closed 5 fixed_height_bound id
+
+def fixedBounds (id : Fin 747) : PreparationVacuumCentralBudget.ArrayBound := decodeBounds fixedSource 5 id
+
+theorem fixedBounds_readback (id : Fin 747) : literalExpressionArray (fixedExpression id)=fixedBounds id :=
+  decode_array_readback fixedSource 5 id
+
+def fixedStageId (k : Fin 4) (i : Fin 5) : Fin 747 :=
+  Fin.lastCases (fixedEnergyIds k) (fun a=>fixedClockIds k a) i
+
+def fixedFiveBounds (k : Fin 4) (i : Fin 5) : PreparationVacuumCentralBudget.ArrayBound :=
+  fixedBounds (fixedStageId k i)
+
+theorem actual_fixed_expression_budget (z u : FlatConfiguration)
+    (zbox : ∀ i,|z i-flatSource i| ≤ sourceRadius)
+    (ubox : ∀ i,|u i-sourceUnitMomentum i| ≤ sourceRadius)
+    (unit : (∑ i : Fin 100,u i^2)=1) (M : ℕ) (id : Fin 747) :
+    ComplexJetBound (arenaEvaluate (fixedExpression id)) M (fixedBounds id) (z,WithLp.toLp 2 u) := by
+  rw [←fixedBounds_readback]
+  exact actual_literal_expression_budget z u zbox ubox unit (fixedExpression id) M
+
+theorem actual_fixed_five_budget (z u : FlatConfiguration)
+    (zbox : ∀ i,|z i-flatSource i| ≤ sourceRadius)
+    (ubox : ∀ i,|u i-sourceUnitMomentum i| ≤ sourceRadius)
+    (unit : (∑ i : Fin 100,u i^2)=1) (M : ℕ) (k : Fin 4) (i : Fin 5) :
+    ComplexJetBound (arenaEvaluate (fixedExpression (fixedStageId k i))) M (fixedFiveBounds k i)
+      (z,WithLp.toLp 2 u) :=
+  actual_fixed_expression_budget z u zbox ubox unit M (fixedStageId k i)
+
+def originalCoefficientArray (i : Fin 878) : PreparationVacuumCentralBudget.ArrayBound :=
+  coefficientArray (fieldArrays sourceClockArray PreparationVacuumPrincipalBudget.sArray)
+    sourceInverseArrays (fixedCoefficient i)
+
+theorem fixed_coefficient_budget (i : Fin 878) :
+    sourceCentralArray (fixedSource.coefficient i)=originalCoefficientArray i := by
+  change coefficientArray (fieldArrays sourceClockArray PreparationVacuumPrincipalBudget.sArray)
+    sourceInverseArrays (cancelCoefficient (fixedCoefficient i))=_
+  rw [fixed_coefficient_canceled]
+  rfl
+
+def originalBoundsStep (previous : Fin 747 → PreparationVacuumCentralBudget.ArrayBound) (e : Fin 747) :
+    PreparationVacuumCentralBudget.ArrayBound :=
+  (fixedSource.rows e).foldr (fun row out m=>
+    productArray (originalCoefficientArray row.coefficient)
+      (orderedArray (row.word.map (fun i=>nodeArray previous (fixedSource.node i).kind))) m+out m) (constantArray 0)
+
+theorem boundsStep_original (previous : Fin 747 → PreparationVacuumCentralBudget.ArrayBound) (e : Fin 747) :
+    boundsStep fixedSource previous e=originalBoundsStep previous e := by
+  unfold boundsStep originalBoundsStep
+  congr 1
+  funext row out m
+  rw [fixed_coefficient_budget]
+
+def originalBounds (fuel : ℕ) : Fin 747 → PreparationVacuumCentralBudget.ArrayBound :=
+  Nat.rec (fun _=>constantArray 0) (fun _ previous=>originalBoundsStep previous) fuel
+
+theorem original_bounds_readback (fuel : ℕ) (e : Fin 747) :
+    decodeBounds fixedSource fuel e=originalBounds fuel e := by
+  induction fuel generalizing e with
+  | zero=>rfl
+  | succ fuel ih=>
+    change boundsStep fixedSource (decodeBounds fixedSource fuel) e=
+      originalBoundsStep (originalBounds fuel) e
+    rw [boundsStep_original]
+    congr 1
+    funext i;exact ih i
+
+theorem ordered_bounds_left_fold (A : PreparationVacuumCentralBudget.ArrayBound)
+    (bs : List PreparationVacuumCentralBudget.ArrayBound) :
+    bs.foldl productArray A=productArray A (orderedArray bs) := by
+  induction bs generalizing A with
+  | nil=>simp only [List.foldl_nil,orderedArray,List.foldr_nil,
+      PreparationVacuumPrincipalBudget.productArray_comm A,
+      PreparationVacuumPrincipalBudget.productArray_one]
+  | cons B bs ih=>
+    simp only [List.foldl_cons,orderedArray,List.foldr_cons]
+    rw [ih]
+    exact PreparationVacuumPrincipalBudget.productArray_assoc A B (orderedArray bs)
+
+def originalFiveBounds (k : Fin 4) (i : Fin 5) : PreparationVacuumCentralBudget.ArrayBound :=
+  originalBounds 5 (fixedStageId k i)
+
+theorem actual_original_fixed_five_budget (z u : FlatConfiguration)
+    (zbox : ∀ i,|z i-flatSource i| ≤ sourceRadius)
+    (ubox : ∀ i,|u i-sourceUnitMomentum i| ≤ sourceRadius)
+    (unit : (∑ i : Fin 100,u i^2)=1) (M : ℕ) (k : Fin 4) (i : Fin 5) :
+    ComplexJetBound (arenaEvaluate (fixedExpression (fixedStageId k i))) M (originalFiveBounds k i)
+      (z,WithLp.toLp 2 u) := by
+  change ComplexJetBound _ M (originalBounds 5 (fixedStageId k i)) _
+  rw [←original_bounds_readback]
+  exact actual_fixed_five_budget z u zbox ubox unit M k i
+
+theorem fixed_stage_ids :
+    (fun k : Fin 4=>![fixedStageId k 0,fixedStageId k 1,fixedStageId k 2,fixedStageId k 3,fixedStageId k 4])=
+      ![![48,50,52,54,138],![226,228,230,232,252],![718,720,722,724,729],![735,737,739,741,746]] := by
+  funext k
+  fin_cases k <;> rfl
+
+def clockIdValid (i : Fin 3934) : Bool :=
+  match (fixedNode i).kind with
+  | .clock k a expression=>decide (expression=fixedClockIds k a)
+  | _=>true
+
+theorem fixed_clock_definition_checks : ∀ i,clockIdValid i=true := by decide +kernel
+
+theorem fixed_clock_definitions (i : Fin 3934) :
+    match (fixedNode i).kind with
+    | .clock k a expression=>expression=fixedClockIds k a
+    | _=>True := by
+  have paid:=fixed_clock_definition_checks i
+  cases h : (fixedNode i).kind <;> simp_all [clockIdValid]
+
+theorem lower_row (c : NormalizedCoefficient) (word : List (ArenaExpression 0))
+    (lower : ∀ e,e∈word → LowerSourceOnly e) : LowerSourceOnly (.row c word) := by
+  induction word with
+  | nil=>trivial
+  | cons e word ih=>
+    change LowerSourceOnly e ∧ LowerSourceOnly (.row c word)
+    exact ⟨lower e (by simp),ih (fun f hf=>lower f (by simp [hf]))⟩
+
+theorem node_lower {p : ℕ} (previous : Fin p → ArenaExpression 0)
+    (lower : ∀ i,LowerSourceOnly (previous i)) (kind : NodeKind p) :
+    LowerSourceOnly (kind.expression previous) := by
+  cases kind with
+  | source d j=>exact d.isLt
+  | clock k a e=>exact lower e
+  | moyal r a b=>exact ⟨lower a,lower b⟩
+
+theorem decode_lower {p n c : ℕ} (source : SourceTable p n c) (fuel : ℕ) (e : Fin p) :
+    LowerSourceOnly (decode source fuel e) := by
+  induction fuel generalizing e with
+  | zero=>trivial
+  | succ fuel ih=>
+    change LowerSourceOnly (sourceStep source (decode source fuel) e)
+    unfold sourceStep
+    induction source.rows e with
+    | nil=>trivial
+    | cons row rows tail=>
+      change LowerSourceOnly (.row (source.coefficient row.coefficient)
+        (row.word.map (fun i=>(source.node i).kind.expression (decode source fuel)))) ∧ _
+      refine ⟨lower_row (source.coefficient row.coefficient) _ ?_,tail⟩
+      intro expression mem
+      obtain ⟨i,_,rfl⟩:=List.mem_map.mp mem
+      exact node_lower _ ih (source.node i).kind
+
+theorem fixed_expression_lower (i : Fin 747) : LowerSourceOnly (fixedExpression i) :=
+  decode_lower fixedSource 5 i
+
+end LowEnergy.PreparationVacuumSerializedSource
+#print axioms LowEnergy.PreparationVacuumSerializedSource.cancelCoefficient_fixed
+
+#print axioms LowEnergy.PreparationVacuumSerializedSource.actual_fixed_five_budget
+
+#print axioms LowEnergy.PreparationVacuumSerializedSource.fixed_coefficient_canceled
+#print axioms LowEnergy.PreparationVacuumSerializedSource.actual_original_fixed_five_budget
+
+#print axioms LowEnergy.PreparationVacuumSerializedSource.fixed_expression_lower

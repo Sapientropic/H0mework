@@ -1,0 +1,103 @@
+{
+  "schema": "physical-em-actual-coulomb-certification/v1",
+  "phase": "CERTIFY",
+  "verdict": "certified",
+  "classification": "source-generated original once-Coulomb scalar and corrected full-field age-window read",
+  "controller_advanced": false,
+  "controller": {
+    "source": "positiveSmoothUnifiedSource / repaired independent Dirac-dual / SpinPair.actual",
+    "visit": "Stage10.Runtime.visit10 / row0 / sameOccurrenceActivation",
+    "current": "tick16 quantumFace10 -> quantumPresentation10",
+    "next": "tick17 unchanged"
+  },
+  "production": {
+    "reader": "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/PhysicalEMStaticReaderRecognition.lean",
+    "reader_sha256": "ebc022806d6f8141da1189b1703a256b92ad4c97fe445e8df19af0ac3d6c675e",
+    "window": "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/PhysicalEMActualStaticWindow.lean",
+    "window_sha256": "c030b663b2b112af82540a61fd1607d6ef6f57ec6799ceb6a70d70fc5daff6d6",
+    "scalar": "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/PhysicalEMActualCoulombScalar.lean",
+    "scalar_sha256": "fa8d729ea81f561c73f797d7bb7640fefd407ec0f3efb0f38075e1b9334c7c27",
+    "audit": "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/PhysicalEMActualCoulombAudit.lean",
+    "audit_sha256": "1e8d1f891df356e54a3a74cf3dafe9e3704d3d75ccee3f8e177fa882648313ec"
+  },
+  "generated": [
+    "The original full currentRestriction in the surviving spatial gauge direction is the raw gauge reader plus an explicit source compensation.",
+    "The compensation retains the original native/coframe first jets, complete configuration density/matter integral, and retained-Y fiber variation.",
+    "The original physicalTime/jointResolvent finite-age response is read by the original full field configuration on its actual evolved pole legs.",
+    "Each actual origin current equals the full source configuration window plus its source compensation window; all64 preparation weights and the original lambda/T remain.",
+    "Zero window length returns zero for the actual, full and compensation reads.",
+    "The original three-channel Coulomb tensor is contracted before scalar reduction; the source origin-pair read generates zero on the third channel.",
+    "The two original spatial inverse coefficients sum to K=(9023/9000)*rootTwo*rootFifteen.",
+    "The original sourceGaugeStaticCEM returns legNormalization*(K*actualOriginScalar*coframeStaticScalar - completeLegCorrection).",
+    "The source coframe scalar keeps both independent Green legs, equal/resonance projections, all64 source weights and the complementary CAR action.",
+    "The dimensionless sourceGaugeStaticAlpha divides that same raw coefficient by phaseMomentum*sourceSpeed exactly once.",
+    "The raw CEM consumer also exposes the actual-origin scalar as the full original configuration age window plus the retained source compensation."
+  ],
+  "scope": "Exact source-generated raw once-Coulomb observation on independent actual source/detector preparations and nonreal original Green parameters, with source leg normalization and the complete correction retained. The separate extra staticResidue(CoulombField) response is not substituted for this original observation.",
+  "remaining_return": "Physical EM carrier identification and the same-prepared full/light/contact and zero-transfer Thomson source return.",
+  "kernel": {
+    "public": 37,
+    "owned": 73,
+    "nodes": 102961,
+    "anchors": 23,
+    "direct": 10,
+    "consumers": 6,
+    "opaque_all_read": 59,
+    "axioms": 3,
+    "unknown": 0,
+    "unsafe": 0,
+    "partial": 0
+  },
+  "authorized_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "target_constraints_rejected": [
+    "SaturationMonoid.StandardModelConstraint.alphaEMIntegerDenominator",
+    "SaturationMonoid.StandardModelConstraint.alphaEMFromIntegerConstraint",
+    "SaturationMonoid.StandardModelConstraint.gutWeakMixingInformationRatio"
+  ],
+  "independent_consumer_check": {
+    "execution": "fresh local strict production consumers and complete three-owner type/value/private dependency closure",
+    "compiler_commit": "d8b18978322de05a8f3dba51ef03cf5461676c17",
+    "flags": [
+      "-j1",
+      "--trust=0",
+      "-DwarningAsError=true",
+      "-DmaxErrors=1",
+      "-DElab.async=false"
+    ],
+    "root": "Verification/physics/low-energy-phenomenology/alpha-source/em-identification",
+    "gate": "Lean/scratch/AlphaSource/EMStaticReaderRecognitionGate",
+    "audit_output": "prod-coulomb-audit-a1.stdout.log",
+    "consumer_prefix_check_output": "coulomb-consumer-a1.stdout.log",
+    "consumer_prefix_check_exit": 0,
+    "consumer_prefix_check_elapsed_seconds": 17,
+    "source_and_snapshot_equal": true,
+    "default_linters": true
+  },
+  "focused_compile": {
+    "reader": {
+      "exit": 0,
+      "elapsed_seconds": 19,
+      "object_sha256": "f0bbd84ac3e31d3dbb2d24e674062b33c6549b317be8ee1fb313b2f20f519b1a"
+    },
+    "window": {
+      "exit": 0,
+      "elapsed_seconds": 59,
+      "object_sha256": "c75e0aa0df4aac7d7ba735be820777f7fff4ce0f214008ffd9175b1145ad5930"
+    },
+    "scalar": {
+      "exit": 0,
+      "elapsed_seconds": 32,
+      "object_sha256": "3d1ff2f26baccf1862d98a69bf7ae35a9b4f2c40dc83f3ed915df94e539ce809"
+    },
+    "audit": {
+      "exit": 0,
+      "elapsed_seconds": 186,
+      "object_sha256": "b4993b592bfafa7edb3b603a1d9182e9a015a43ae97b76b4ce31ac0ae4d083f1"
+    }
+  },
+  "old_source_solver_or_eigensystem_replayed": false
+}

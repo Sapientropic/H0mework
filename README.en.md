@@ -15,6 +15,8 @@ The papers begin with a common source: how a process retains its history, how fi
 
 Chinese editions, editable manuscripts, figure sources and English arXiv source packages are listed in the [paper package](papers/first-release/README.md).
 
+The second editions of the process-core and common-source physics papers, and the low-energy selections L1–L28 and Q1–Q6, have separate [claim maps](docs/second-edition-map.json), a [low-energy map](docs/low-energy-release-map.json), and [reproduction commands](docs/edition-reproduction.md). Actual material acceptance and local delivery are recorded in the [edition readiness card](docs/second-edition-readiness.md).
+
 ## Other research threads
 
 | Thread | Subject | Lean entry |

@@ -2,6 +2,8 @@
 
 两篇首发修订的证明包和公开独立程序见[首发复现指南](first-release-reproduction.md)。本页保存原八稿及历史版本的入口。
 
+第二版与低能首发选集的独立 epoch 构建、声明审查和冻结材料恢复见[版本复现](edition-reproduction.md)。
+
 本指南描述仓库根目录的有效命令。各项命令的实现以 [`Makefile`](../Makefile) 中同名 target 为准；主张与版本关系见[证据对应表](evidence-map.md)。
 
 ## 环境与构建

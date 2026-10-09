@@ -1,0 +1,236 @@
+{
+  "scope": "ORIGINAL_CONTINUUM_UNIT_BALL_DIRAC_FILTERED_CURRENT_NOISE",
+  "spectral_parameters": {
+    "E": 0,
+    "eta": 1
+  },
+  "exact_source": {
+    "source_sha256": {
+      "Lean/SaturationMonoid/PhysicsCore/SU7ExteriorYukawaMassSpectrum.lean": "cc100f817041a1e8b33aadf909a4838756c32eb0f28a15ff138c5cd9a3db4813",
+      "Lean/SaturationMonoid/PhysicsCore/SU7ExteriorBreakingYukawa.lean": "f3d245e031380de7dacf16312b81665a11d2fd209dfd751652821e9638b74ce0",
+      "Lean/SaturationMonoid/PhysicsCore/SU7MotherLieAlgebra.lean": "acb8a102cb607e8736b25acd5e851f70b15fb53ec7cc6784362e1b0c2a95e7da",
+      "Lean/SaturationMonoid/PhysicsCore/SU7ExteriorMatterRepresentation.lean": "0b7cb7f6d4078d7f0a7347513bd98077bd18092f89b1c4c4ec3ee23ad84efbac",
+      "Lean/SaturationMonoid/PhysicsCore/SU7ExteriorMatterRestriction.lean": "b91ff6e8d6ea1e9e7e6220fec204288a946a8153913882d1f68eee489d403ed1",
+      "Lean/SaturationMonoid/PhysicsCore/StageNineDynamicBreakingVacuum.lean": "f79cd71ae67e1ee2b1b698f7a09a0130e742e4a471862165748277269e2027bf",
+      "Lean/SaturationMonoid/PhysicsCore/StageNineGlobalIntegratedAction.lean": "525d2672c446c94a9b528c4277efed582419fbcb31e8e28b533cba3ff0589497",
+      "Lean/SaturationMonoid/PhysicsCore/StageNineExteriorMotherLieRepresentation.lean": "444b0ef9ba42af3801ffc010996ac5feddfed8605f4ce9bb2fbe15fe2b562f7b",
+      "Lean/SaturationMonoid/PhysicsCore/StageNineFormNativeMotherAction.lean": "24104b817d0a663626c46388bfa5a2660441f90cbee77ea5a86495fd7d64e6a2",
+      "Lean/SaturationMonoid/PhysicsCore/Stage9C/Material/SpinPair/Parameters.lean": "eeecea0c096fbbf4c0090d301fb19ca70f22020c89a8ad279b70133b6b8f4bc3"
+    },
+    "lapse": "3*sqrt(30)/25",
+    "frequency": "18*sqrt(15)/125",
+    "full252_to_original12_both_sides": true,
+    "original_nonzero_Y_reducing_not_deleted": true,
+    "original_Dirac_inverse_side": "R(z,p)=i (z-H(p))^-1 C0^-1 = -N (z-H(p))^-1 gamma0",
+    "original_D_R_w_rational_identity": true,
+    "regular_domain": "Both (z-sign*omega)(z-3*sign*omega)-N^2*|p|^2 are nonzero. At z=i and real p their imaginary parts are -4*sign*omega, so the selected domain is all real momenta.",
+    "source_chiral_cyclic_blocks": [
+      {
+        "sign": -1,
+        "seed": {
+          "shape": [
+            12,
+            1
+          ],
+          "entries": [
+            [
+              1,
+              0,
+              "1/2"
+            ],
+            [
+              3,
+              0,
+              "-1/2"
+            ]
+          ]
+        },
+        "partner": {
+          "shape": [
+            12,
+            1
+          ],
+          "entries": [
+            [
+              0,
+              0,
+              "-p1/2 + I*p2/2"
+            ],
+            [
+              1,
+              0,
+              "p3/2"
+            ],
+            [
+              3,
+              0,
+              "p3/2"
+            ],
+            [
+              4,
+              0,
+              "p1/2 + I*p2/2"
+            ]
+          ]
+        },
+        "denominator": "-54*p1**2/125 - 54*p2**2/125 - 54*p3**2/125 + z**2 + 72*sqrt(15)*z/125 + 2916/3125"
+      },
+      {
+        "sign": 1,
+        "seed": {
+          "shape": [
+            12,
+            1
+          ],
+          "entries": [
+            [
+              7,
+              0,
+              "-1/2"
+            ],
+            [
+              9,
+              0,
+              "1/2"
+            ]
+          ]
+        },
+        "partner": {
+          "shape": [
+            12,
+            1
+          ],
+          "entries": [
+            [
+              6,
+              0,
+              "p1/2 - I*p2/2"
+            ],
+            [
+              7,
+              0,
+              "-p3/2"
+            ],
+            [
+              9,
+              0,
+              "-p3/2"
+            ],
+            [
+              10,
+              0,
+              "-p1/2 - I*p2/2"
+            ]
+          ]
+        },
+        "denominator": "-54*p1**2/125 - 54*p2**2/125 - 54*p3**2/125 + z**2 - 72*sqrt(15)*z/125 + 2916/3125"
+      }
+    ],
+    "cyclic_matrix_in_normalized_basis": "sign * [[omega,N*r],[N*r,3*omega]]",
+    "source_chiral_norms": "||seed||^2=1/2; ||partner||^2=|p|^2/2; inner(seed,partner)=0",
+    "zero_transfer_raw_norm_integrand": "1350*(1350*r**2 + 11873)/(1822500*r**4 + 564300*r**2 + 48643681)",
+    "zero_transfer_raw_mean_integrand": "-900*sqrt(30)*(4050*r**2 - 11873)/(1822500*r**4 + 564300*r**2 + 48643681)",
+    "zero_transfer_second_moment_identity": "8/(N^2*n^2)-8/N^4",
+    "second_moment_scope": "The quadratic form ||A_h psi||^2; no claim that psi belongs to D(A_h^2).",
+    "ball_fourier_physical": "bhat(p)=4*pi*(sin(r)-r*cos(r))/(r^3*sqrt(4*pi/3)); r=|p|; p=2*pi*xi",
+    "ball_radial_measure": "6/pi*(sin(r)-r*cos(r))^2/r^4 dr",
+    "ball_overlap_J": "(2*kappa**3 - 3*kappa**2 - 3*(kappa + 1)**2*exp(-2*kappa) + 3)/(2*kappa**5)",
+    "closed_filtered_observables": {
+      "kappa": "sqrt((1-3*omega^2+4*i*omega)/N^2), Re kappa>0",
+      "Z": "(i-3*omega)*J(kappa)",
+      "norm_squared": "n^2=Im Z",
+      "mean": "mu_0=(2*sqrt(2)/N^2)*Re Z/Im Z",
+      "centered_noise": "8/(N^2*n^2)-8/N^4-mu_0^2"
+    },
+    "overlap_derivation": "Normalized ball overlap is 1-3r/4+r^3/16 on 0<=r<=2. The Yukawa kernel e^-kappa*r/(4*pi*r) gives J=integral_0^2 r*overlap*e^-kappa*r dr.",
+    "finite_overlap_primitive_checked": true
+  },
+  "evaluations": {
+    "interval_decimal_precision": 50,
+    "method": "mpmath.iv outward interval arithmetic on exact closed overlap formula",
+    "kappa_real": "[1.631121200898866445532553225228720562151498402529459358, 1.631121200898866445532553225228720562151498402529491431]",
+    "kappa_imaginary": "[1.582953428628570050436010513943643569231473158379046489, 1.582953428628570050436010513943643569231473158379078562]",
+    "raw_filtered_norm_squared": "[0.2089044548998527476066822647548463670463665341150666508, 0.2089044548998527476066822647548463670463665341152704492]",
+    "normalized_packet_norm_squared": "[1,1]",
+    "current_mean_h0": "[-0.7013554792140426720651247325208071606478164114739774807, -0.7013554792140426720651247325208071606478164114670857568]",
+    "current_second_moment_h0": "[45.77893552878903931411420921149838123287586301752311978, 45.77893552878903931411420921149838123287586301761172728]",
+    "centered_noise_h0": "[45.28703602056547987148304399408984753810198560706679098, 45.28703602056547987148304399408984753810198560716514872]",
+    "nonzero_transfer": {
+      "physical_q": [
+        "0",
+        "0",
+        "1/65536"
+      ],
+      "Fourier_shift_h": [
+        "0",
+        "0",
+        "1/(131072*pi)"
+      ],
+      "current_vector_error_upper": "[0.0004189461941326320002031220367491893103024195003926339613, 0.0004189461941326320002031220367491893103024195003926339613]",
+      "mean_enclosure": "[-0.7017744254081753040653278545575563499581188309743704259, -0.7009365330199100400649216104840579713375139919666928116]",
+      "second_moment_enclosure": "[45.77326651328965848655709727452745548681709875630751325, 45.78460489532024729810527993447261878910053182055293865]",
+      "centered_noise_enclosure": "[45.27575942117859262660577487686682697163924737141498065, 45.29831402407967574209614825532611534522834200971929289]"
+    },
+    "continuum_control": {
+      "unit_ball_position_moment": "sqrt(3/5)",
+      "weighted_filtered_packet_bound": "[2.750975783626263871662919610349728699135922978754799775, 2.750975783626263871662919610349728699135922978756178922]",
+      "weighted_H_packet_bound": "[3.864869227726440998417675115835342362163375443142395171, 3.864869227726440998417675115835342362163375443144335598]",
+      "current_Lipschitz_constant_upper": "[27.45605777867617076531180580039487063997936437773165929, 27.45605777867617076531180580039487063997936437773165929]",
+      "proof": "On the actual reducing sector: ||R||<=N, ||d_pj R||<=N^2, Hj^2=N^2. Thus |||x|psi||<=(sqrt(3)N^2+N sqrt(3/5))/n and |||x|Hpsi||<=(sqrt(3)N^2+2N sqrt(3/5))/n. A_q-A_0=2 K(M_q-1)H/N^2+[H,M_q]K/N^2, with ||[H,M_q]||<=N|q|. Hence ||(A_q-A_0)psi||<=L|q|, |mu_q-mu_0|<=L|q| and |sqrt(var_q)-sqrt(var_0)|<=2L|q|."
+    }
+  },
+  "direct_kernel_probes": [
+    {
+      "physical_p": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Dirac_equation_residual": 8.3820000221454525e-16,
+      "raw_packet_norm_squared": 1.3802457350406714,
+      "nonzero_transfer_current_norm_squared": 18.403276464840673
+    },
+    {
+      "physical_p": [
+        0.14285714285714285,
+        -0.18181818181818182,
+        0.23076923076923078
+      ],
+      "Dirac_equation_residual": 3.420474857963466e-16,
+      "raw_packet_norm_squared": 1.3651753740697503,
+      "nonzero_transfer_current_norm_squared": 17.408697209658726
+    },
+    {
+      "physical_p": [
+        2.0,
+        -1.0,
+        0.5
+      ],
+      "Dirac_equation_residual": 3.378927855336746e-16,
+      "raw_packet_norm_squared": 0.3353950513482437,
+      "nonzero_transfer_current_norm_squared": 10.333797590082906
+    }
+  ],
+  "independent_Fourier_radial_check": {
+    "finite_diagnostic_radius": 96.0,
+    "finite_radial_norm_squared": 0.2089040929013137,
+    "quadrature_reported_error": 1.6268847896531434e-14,
+    "positive_infinite_tail_upper": 2.9385116552652026e-06,
+    "closed_minus_finite": 3.6199853903351453e-07,
+    "tail_derivation": "For r>=R>=6omega/N, resolvent norm gives g(r)<=4/r^2 and (sin r-r cos r)^2/r^4<=(1+1/R)^2/r^2; integrate to infinity.",
+    "radius_is_only_a_check_parameter_not_a_UV_cutoff": true,
+    "reported_quadrature_error_is_not_used_for_main_interval_certification": true
+  },
+  "general_nonzero_shift_kernel": {
+    "raw_packet": "psi_raw(p)=i*(i-H(p))^-1*C0^-1*w*bhat(p)",
+    "current": "(A_h psi)(p)=sum_sign [K H(p-sign*q)+H(p)^dagger K]/(2N^2) * psi(p-sign*q); q=2*pi*h",
+    "mean": "integral psi(p)^dagger (A_h psi)(p) d^3p/(2*pi)^3",
+    "centered_noise": "integral ||(A_h psi)(p)-mu_h psi(p)||^2 d^3p/(2*pi)^3",
+    "shared_packet_overlap_retained": true,
+    "same_sign_terms_removed": false
+  },
+  "claim_level": "Exact finite source algebra, analytic radial/overlap derivation, interval evaluation and explicit nonzero-shift bounds; no new Lean integral theorem is claimed.",
+  "no_UV_cutoff_or_experimental_units": true,
+  "no_new_vacuum_or_momentumwise_preparation": true,
+  "elapsed_seconds": 1.432
+}

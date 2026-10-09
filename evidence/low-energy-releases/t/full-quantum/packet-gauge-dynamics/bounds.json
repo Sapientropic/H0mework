@@ -1,0 +1,86 @@
+{
+  "scope": "STRIKE_TRUE_ALL_TIME_NOISE_PARAMETER_DERIVATIVE_AND_DOUBLE_LAPLACE_CONSUMER",
+  "source_inputs_sha256": {
+    "packet-gauge-noise/intervals.json": "8d974d511cce3a5b98dc0eb025bea1edc10a6a1e34efb5a6cb7d96979604ba3f",
+    "packet-current-hessian/integrals.json": "c30ab547752105b76f22c2b4193af377c5ecd96eeae50f95a02d1b0131355f36"
+  },
+  "source_constants": {
+    "alpha": "norm(K)/N^2=sqrt(2)/N^2",
+    "v": "norm(V)=N",
+    "h": "norm(H psi)=sqrt(N^2/n^2-1); only the original H domain is used",
+    "r_i": "norm(H_k_i)=N*norm(k_i)"
+  },
+  "whole_time_bounds": {
+    "J0_i": "a_i=alpha*(2*h+r_i)",
+    "Z_i": "b+2*v*a_i*abs(t); b=2*alpha*v",
+    "J_epsilon_minus_J0": "abs(epsilon)*(b+2*v*a_i*abs(t))",
+    "J_remainder": "epsilon^2*(2*v*b*abs(t)+2*v^2*a_i*t^2)",
+    "noise_remainder": "epsilon^2*(d_left(t)*a_right+a_left*d_right(s)+z_left(t)*z_right(s))",
+    "all_real_epsilon": true
+  },
+  "laplace_parameters": "z=eta1-i E1, w=eta2-i E2 with eta1,eta2>0 independently",
+  "double_time_weight": "exp(-conjugate(z)*t-w*s)",
+  "vector_Laplace_slope_bound": "2*alpha*v/eta1 + 4*alpha*h*v/eta1**2 + 2*alpha*r1*v/eta1**2",
+  "vector_Laplace_remainder_bound": "4*alpha*v**2/eta1**2 + 8*alpha*h*v**2/eta1**3 + 4*alpha*r1*v**2/eta1**3",
+  "double_Laplace_remainder_bound": "4*alpha**2*v**2/(eta1*eta2) + 16*alpha**2*h*v**2/(eta1*eta2**2) + 4*alpha**2*r1*v**2/(eta1*eta2**2) + 4*alpha**2*r2*v**2/(eta1*eta2**2) + 16*alpha**2*h**2*v**2/(eta1*eta2**3) + 8*alpha**2*h*r1*v**2/(eta1*eta2**3) + 8*alpha**2*h*r2*v**2/(eta1*eta2**3) + 4*alpha**2*r1*r2*v**2/(eta1*eta2**3) + 16*alpha**2*h*v**2/(eta1**2*eta2) + 4*alpha**2*r1*v**2/(eta1**2*eta2) + 4*alpha**2*r2*v**2/(eta1**2*eta2) + 16*alpha**2*h**2*v**2/(eta1**2*eta2**2) + 8*alpha**2*h*r1*v**2/(eta1**2*eta2**2) + 8*alpha**2*h*r2*v**2/(eta1**2*eta2**2) + 4*alpha**2*r1*r2*v**2/(eta1**2*eta2**2) + 16*alpha**2*h**2*v**2/(eta1**3*eta2) + 8*alpha**2*h*r1*v**2/(eta1**3*eta2) + 8*alpha**2*h*r2*v**2/(eta1**3*eta2) + 4*alpha**2*r1*r2*v**2/(eta1**3*eta2)",
+  "actual_zero_transfer_all_time_splice": "J_epsilon,0(t) is independent of t; derivative at every two times is exactly the original GaugeNoise t0 derivative.",
+  "actual_nonzero_consumer": {
+    "frequency": "z=w=(6*sqrt(15)/25)*(1-I), in original physical time",
+    "frequency_absolute_square": "216/125",
+    "zero_transfer_exact_interval": [
+      "11992875213548591033980807675924835901558134324315544671/8640000000000000000000000000000000000000000000000000000",
+      "7995250142365727355987205117283223934372089549543696449/5760000000000000000000000000000000000000000000000000000"
+    ],
+    "unvaried_zero_transfer_interval": [
+      "50318928911739422079425604437877608375668872896795666249/1920000000000000000000000000000000000000000000000000000",
+      "226435180102827399357415219970449237690509928035580498121/8640000000000000000000000000000000000000000000000000000"
+    ],
+    "unvaried_noise_transfer_error": "21001/2250000",
+    "unvaried_noise_interval_for_every_k_in_ball": [
+      "150903024175218266238276813313632825127006618690386998747/5760000000000000000000000000000000000000000000000000000",
+      "226515823942827399357415219970449237690509928035580498121/8640000000000000000000000000000000000000000000000000000"
+    ],
+    "unvaried_noise_decimal_interval": [
+      "26.19844169708650455525",
+      "26.21710925264206011082"
+    ],
+    "unvaried_noise_decimal_endpoints_outward_rounded": true,
+    "unvaried_noise_simple_strict_interval": [
+      "26",
+      "27"
+    ],
+    "whole_physical_transfer_ball_radius": "1/90000",
+    "coarse_original_bounds": {
+      "H_psi": 2,
+      "directional_x_psi": 3,
+      "directional_x_Hpsi": 4,
+      "J0_zero_transfer": 7,
+      "Z0_zero_transfer": 4,
+      "alpha": 4,
+      "N_and_v": 1
+    },
+    "position_bounds_generated_from_original_packet": {
+      "x_psi": "3868/1371",
+      "x_H_psi": "5468/1371"
+    },
+    "integrated_J_transfer_Lipschitz_upper": 60,
+    "integrated_Z_transfer_Lipschitz_upper": 214,
+    "noise_derivative_transfer_error": "1303607/33750000",
+    "rigorous_interval_for_every_k_in_ball": [
+      "3886383940516197011326935891974945300519378108105181557/2880000000000000000000000000000000000000000000000000000",
+      "24653197211097182067961615351849671803116268648631089347/17280000000000000000000000000000000000000000000000000000"
+    ],
+    "simple_strict_interval": [
+      "4/3",
+      "3/2"
+    ],
+    "new_nonaxial_physical_transfer": [
+      "1/1048576",
+      "1/524288",
+      "3/1048576"
+    ],
+    "no_new_UV_cutoff_or_time_tail_omitted": true
+  },
+  "frequency_scope": "A sesquilinear two-parameter Laplace Gram. No identification with Kernel one-ordered independent-dual +/-p response follows merely by the shared numerical frequency.",
+  "elapsed_seconds": 0.036
+}

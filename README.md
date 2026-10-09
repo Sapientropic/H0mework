@@ -15,6 +15,8 @@
 | **状态不是历史，源才是**：过程同一性、责任承接与最小修订<br>*The State Is Not the History, the Source Is* | [DOI](https://doi.org/10.5281/zenodo.23210084) | [首发成品](papers/first-release/README.md) | [首发证明与复现](docs/first-release-reproduction.md) |
 | **这浩瀚宇宙里，我们没找到魔法**：Spin×SU(7) 理论的同源生成与经典—量子对应<br>*We Found No Magic in This Mighty Universe* | [DOI](https://doi.org/10.5281/zenodo.23210292) | [首发成品](papers/first-release/README.md) | [逐主张映射](docs/first-release-map.json) |
 
+第二版过程核心／同源物理旗舰，以及低能首发选集 L1–L28／Q1–Q6，使用独立的[逐项映射](docs/second-edition-map.json)、[低能映射](docs/low-energy-release-map.json)和[复现入口](docs/edition-reproduction.md)。实际材料验收与本地交付见[第二版准备状态](docs/second-edition-readiness.md)。
+
 ## 更多研究线
 
 | 研究线 | 内容 | Lean 入口 |

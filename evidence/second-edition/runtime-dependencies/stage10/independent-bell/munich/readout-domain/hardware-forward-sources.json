@@ -1,0 +1,28 @@
+{
+  "schema": "stage10-hardware-forward-source-hf0001/v1",
+  "apparatus_sources": "hardware-anchor-sources.json",
+  "qubit_convention": "Garthoff2021 Eq2.9-2.11; basis 0=u_x,1=d_x; bright=cos(alpha)d_x+exp(-i phi)sin(alpha)u_x",
+  "atomic_reference": {
+    "title": "Daniel A. Steck, Rubidium 87 D Line Data",
+    "version": "2.3.4, 8 August 2025",
+    "url": "https://steck.us/alkalidata/rubidium87numbers.pdf",
+    "sha256": "0d7ecd708e44ad950db280cbf980b16090660646f5e530e544ae78ccd6385c3b",
+    "bytes": 486469,
+    "locations": "section 3.3, equations 34-39",
+    "normalization_conversion": "Steck ground-bra CG reduced to standard 3j excited-bra reduced: D1 +sqrt(2), D2 -sqrt(2), fixed electronic phases"
+  },
+  "independent_angular_reference": {
+    "package": "SymPy",
+    "version": "1.14.0",
+    "checked_signed_coefficients": 576,
+    "production_dependency": false
+  },
+  "registered_model": {
+    "bound_states": 32,
+    "ion_sink_states": 1,
+    "ion_regime": "effective_resolved_absorption_sink",
+    "radiation_regimes": ["coherent_q_F", "secular_rank1"],
+    "actual_hardware_identity_asserted": false,
+    "old_twelve_state_restriction_asserted": false
+  }
+}

@@ -1,0 +1,167 @@
+{
+  "verdict": "certified",
+  "scope": "same actual edge0 rest preparations; raw once-Coulomb scalar and full photon-frequency ordinary response with explicit beta left reader",
+  "classification": "source-backed actual electron-leg readout/producer consumption, not full-light/Thomson alpha(0) closure",
+  "compile_evidence": {
+    "producer_compile": "constructor strict exit0 for both modules; exact current source hashes independently checked",
+    "independent_audit_compile_exit": 0,
+    "strict_flags": [
+      "-j1",
+      "--trust=0",
+      "-DwarningAsError=true",
+      "-DmaxErrors=3",
+      "-DElab.async=false"
+    ],
+    "audit_stdout": "ACTUAL_ELECTRON_PASS public=7 owned=7 tests=12 nodes=104631 anchors=14 direct=7 opaque_all_read=59 axioms=3 unknown=0 unsafe=0 partial=0",
+    "audit_stderr_empty": true
+  },
+  "hashes": [
+    {
+      "module": "PhysicalEMActualElectronCoulomb",
+      "source_file": "PhysicalEMActualElectronCoulomb.lean",
+      "source_sha256": "6526334f3b271400e1f40f3e707aaee08a4a86a9c9e296ad97e36074e020e1c4",
+      "object_file": "PhysicalEMActualElectronCoulomb.olean",
+      "object_sha256": "eff81724bb312e06a433819b0ad52ffd5e0282131ab2a2cbd0ed3f3820668642"
+    },
+    {
+      "module": "PhysicalEMActualElectronOrdinary",
+      "source_file": "PhysicalEMActualElectronOrdinary.lean",
+      "source_sha256": "63d0d4dca4deb5e037e3d80eb262082e93dfe13fd9916cdad43570274d98806f",
+      "object_file": "PhysicalEMActualElectronOrdinary.olean",
+      "object_sha256": "6e023f1a9f6bfd431309c433a3e33e0cf8af8c6b5b4739f5fd3fa558f783dfde"
+    },
+    {
+      "module": "PhysicalEMActualElectronAudit",
+      "source_file": "PhysicalEMActualElectronAudit.lean",
+      "source_sha256": "21025b9110e102a728d57709d81ad73f87173c233bd9672b5e4b4478e3031bc4",
+      "object_file": "PhysicalEMActualElectronAudit.olean",
+      "object_sha256": "bc494b9521f139220beabd4fccd1c6c6e857f0ed7b5f4a98298b0ac95b092494"
+    }
+  ],
+  "public_mouths": [
+    "LowEnergy.GaussComposite.PhysicalEMActualElectronCoulomb.coframeScalar_actual",
+    "LowEnergy.GaussComposite.PhysicalEMActualElectronCoulomb.coframeScalar_sameCharge",
+    "LowEnergy.GaussComposite.PhysicalEMActualElectronCoulomb.rawCEM_electron_generated",
+    "LowEnergy.GaussComposite.PhysicalEMActualElectronCoulomb.coframeScalar_unit_sameCharge",
+    "LowEnergy.GaussComposite.PhysicalEMActualElectronCoulomb.rawCEM_bothElectronLegs_generated",
+    "LowEnergy.GaussComposite.PhysicalEMActualElectronCoulomb.rawAlpha_electron_generated",
+    "LowEnergy.GaussComposite.PhysicalEMActualElectronOrdinary.actualElectronOrdinary_generated"
+  ],
+  "owned_declarations": 7,
+  "direct_consumers_and_controls": [
+    "LowEnergy.GaussComposite.PhysicalEMActualElectronAudit.checked_coframeScalar_actual",
+    "LowEnergy.GaussComposite.PhysicalEMActualElectronAudit.checked_coframeScalar_sameCharge",
+    "LowEnergy.GaussComposite.PhysicalEMActualElectronAudit.checked_rawCEM_electron_generated",
+    "LowEnergy.GaussComposite.PhysicalEMActualElectronAudit.checked_coframeScalar_unit_sameCharge",
+    "LowEnergy.GaussComposite.PhysicalEMActualElectronAudit.checked_rawCEM_bothElectronLegs_generated",
+    "LowEnergy.GaussComposite.PhysicalEMActualElectronAudit.checked_rawAlpha_electron_generated",
+    "LowEnergy.GaussComposite.PhysicalEMActualElectronAudit.checked_actualElectronOrdinary_generated",
+    "LowEnergy.GaussComposite.PhysicalEMActualElectronAudit.checked_actual_electron_rest_index",
+    "LowEnergy.GaussComposite.PhysicalEMActualElectronAudit.checked_same_actual_electron",
+    "LowEnergy.GaussComposite.PhysicalEMActualElectronAudit.checked_actual_em_unit",
+    "LowEnergy.GaussComposite.PhysicalEMActualElectronAudit.checked_neutral_edge",
+    "LowEnergy.GaussComposite.PhysicalEMActualElectronAudit.checked_complete_em_defect"
+  ],
+  "closure": {
+    "scope": "Every declaration owned by PhysicalEMActualElectronCoulomb and PhysicalEMActualElectronOrdinary plus all twelve audit consumers; recursively types and values, including opaque values, inductive constructors and recursor rule expressions. No private helpers excluded.",
+    "nodes": 104631,
+    "opaque_values_read": 59,
+    "project_declarations": 24295,
+    "project_modules": 1117,
+    "export_sha256": "6395f76c680386c0b7d189ddaa4640ac5d823b79b3596d1d513a9b8f3364ff61",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "unknown": 0,
+    "unsafe": 0,
+    "partial": 0
+  },
+  "source_anchors": [
+    "SaturationMonoid.PhysicsCore.StageNineEnrichedProofFreeSource.positiveSmoothUnifiedSource",
+    "SaturationMonoid.PhysicsCore.Stage9C.Material.SpinPair.actual",
+    "LowEnergy.PreparationVacuumPhysicalQuantumLockedCharge.sourceChargedRestIndex",
+    "LowEnergy.PreparationVacuumPhysicalQuantumLockedCharge.sourceChargedRestriction",
+    "LowEnergy.PreparationPhysicalActualGaussChargeCurrent.sourceActualPreparedWeight",
+    "LowEnergy.PreparationPhysicalActualGaussChargeCurrent.sourceActualPreparedCurrent",
+    "LowEnergy.PreparationVacuumPhysicalQuantumLockedCharge.sourceQuantumChargedRead",
+    "LowEnergy.PreparationPhysicalActualLegNormalization.sourceActualLegCorrection",
+    "LowEnergy.PreparationPhysicalActualLegNormalization.sourceActualUnitLegRead_return",
+    "LowEnergy.PreparationPhysicalCommonCurrentStaticRead.sourceCommonCoulombTensor",
+    "LowEnergy.PreparationPhysicalNativePhotonFluxReturn.sourcePhotonLeftReader",
+    "LowEnergy.PreparationPhysicalNativePhotonFluxReturn.sourceWholePhotonFrequencyResidue",
+    "SaturationMonoid.PhysicsCore.Stage10.ActionNormalization.phaseMomentum",
+    "LowEnergy.PreparationVacuumPhysicalPoleSheet.sourceSpeed"
+  ],
+  "direct_producer_dependencies": [
+    [
+      "LowEnergy.GaussComposite.PhysicalEMActualElectronCoulomb.coframeScalar_actual",
+      [
+        "LowEnergy.PreparationPhysicalActualGaussChargeCurrent.sourceActualGaussRead_poles"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.PhysicalEMActualElectronCoulomb.coframeScalar_sameCharge",
+      [
+        "LowEnergy.PreparationPhysicalCoframeChargeExchange.sourceCoframePreparedStatic_sameCharge"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.PhysicalEMActualElectronCoulomb.rawCEM_electron_generated",
+      [
+        "LowEnergy.GaussComposite.PhysicalEMActualCoulombScalar.em_staticCEM_scalar_generated",
+        "LowEnergy.GaussComposite.PhysicalEMActualElectronCoulomb.coframeScalar_sameCharge"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.PhysicalEMActualElectronCoulomb.coframeScalar_unit_sameCharge",
+      [
+        "LowEnergy.PreparationPhysicalActualLegNormalization.sourceActualUnitLegRead_return",
+        "LowEnergy.GaussComposite.PhysicalEMActualElectronCoulomb.coframeScalar_sameCharge"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.PhysicalEMActualElectronCoulomb.rawCEM_bothElectronLegs_generated",
+      [
+        "LowEnergy.GaussComposite.PhysicalEMActualCoulombScalar.em_staticCEM_scalar_generated",
+        "LowEnergy.GaussComposite.PhysicalEMActualElectronCoulomb.coframeScalar_unit_sameCharge"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.PhysicalEMActualElectronCoulomb.rawAlpha_electron_generated",
+      [
+        "LowEnergy.GaussComposite.PhysicalEMActualElectronCoulomb.rawCEM_electron_generated"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.PhysicalEMActualElectronOrdinary.actualElectronOrdinary_generated",
+      [
+        "LowEnergy.PreparationPhysicalActualGaussChargeCurrent.sourceActualPreparedDetector_frequency",
+        "LowEnergy.PreparationPhysicalGaugeMomentumCoupling.sourceGaugeCouplingRead_generated"
+      ]
+    ]
+  ],
+  "target_name_scan": {
+    "CODATA": 0,
+    "alphaEMIntegerDenominator": 0,
+    "alphaEMFromIntegerConstraint": 0,
+    "experimentalAlpha": 0,
+    "alphaTarget": 0
+  },
+  "same_actual_external_state": "sourceChargedRestIndex side 0=(side,1); native state=naturalCoordinates(sourceChargedRestriction side0)",
+  "generated_physical_content": [
+    "two independent physical response points qd and qs and complete all64 weights",
+    "both source and detector complete leg corrections retained for both-normalized Coulomb read",
+    "raw CEM consumes original once-Coulomb tensor, not a second static inverse",
+    "raw alpha divides by phaseMomentum*sourceSpeed once",
+    "ordinary keeps sourcePhotonLeftReader(actual source current), independent lambda/T and mu/S, whole frequency residue"
+  ],
+  "not_claimed": [
+    "EM-only carrier equivalence eliminating complete defects",
+    "window/direction-independent scalar alpha",
+    "full-light/contact matching",
+    "physical zero-transfer or Thomson identity",
+    "controlled numerical alpha(0) interval"
+  ]
+}

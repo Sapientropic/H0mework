@@ -1,0 +1,77 @@
+{
+  "verdict": "PASS",
+  "checkpoint": "CP38 v2: same-occurrence calculationReader composite raw -> actual Receipt state/fee/whole consumer",
+  "capsule": "/tmp/registry-calculation-reader-cp38-v2-certify",
+  "scope": "Default Contextual Factory installs Some calculationReader when the actual pairInventory is present. Its raw keeps the supplied datum reader environment and combines the original source reader expression with the same-occurrence ForwardDifference generator expression. Receipt.actionReader/actionResultAt consumes this combined raw, generating the actual OwnerFree state/full trace/fee/material/register/Step while preserving original whole answer/canonical next. Compatibility configurations explicitly set calculationReader := none and retain the old reader. The generic SourceFamily.defaultFactory remains outside this claim. ActiveClaim legacy downstream is recorded as a separate compatibility seam: its old reader/positive-budget contract cannot be transferred to an uncharged isolated lambda and is not claimed by this checkpoint.",
+  "claims": [
+    "Contextual Factory installs Some calculationReader from actual pairInventory root/pairUpdate.",
+    "Incoming calculationReader combines the supplied original datum reader expression with the same-occurrence ForwardDifference event expression.",
+    "Receipt.actionReader/actionResultAt supplies actual raw/state/environment/material/fee/Step while existing whole/canonical-next consumers remain the downstream consumer.",
+    "Explicit calculationReader := none compatibility configurations and unchanged generic SourceFamily.defaultFactory remain outside this checkpoint.",
+    "ActiveClaim old Shared.query/resultFace and old positive charge are excluded; no charge is transferred to an isolated lambda."
+  ],
+  "roleCounts": {
+    "owned": 647,
+    "source": 15,
+    "assembly": 244,
+    "public": 388,
+    "posterior": 388,
+    "anchors": 15
+  },
+  "trust": {
+    "fullClosure": 29886,
+    "valueClosure": 28835,
+    "axioms": [
+      "Quot.sound",
+      "Classical.choice",
+      "propext"
+    ],
+    "unsafe": 0,
+    "partial": 0
+  },
+  "verification": {
+    "freshRows": 18,
+    "scannerRows": 1,
+    "freshAllExit0": true,
+    "directDagModules": 17,
+    "controls": {
+      "exit": 0,
+      "seconds": 9.17185520901694,
+      "sha256": "ca87486a6aee86ff3247bfe5ab0b68641575666f9eb8baafa64ccb3e8263f801",
+      "caseCount": 12,
+      "noOutputObject": true
+    },
+    "nameSanity": {
+      "exit": 0,
+      "seconds": 16.568769625009736
+    },
+    "audit": {
+      "exit": 0,
+      "seconds": 91.64130087499507,
+      "sha256": "dd650a940fa5d4842679710264de7014230c4a01f9f3e9a9db31c565d6411391",
+      "closure": "/tmp/registry-calculation-reader-cp38-v2-certify/independent-closure-summary.json"
+    },
+    "exactRows": 18,
+    "snapshotObjectHashesMatch": true,
+    "genericDefaultFactoryExcluded": true,
+    "activeClaimChargeSeamExcluded": true
+  },
+  "evidence": {
+    "scope": "/tmp/registry-calculation-reader-cp38-v2-certify/scope.json",
+    "exact": "/tmp/registry-calculation-reader-cp38-v2-certify/exact.json",
+    "fresh": "/tmp/registry-calculation-reader-cp38-v2-certify/fresh-results.json",
+    "design": "/tmp/registry-calculation-reader-cp38-v2-certify/independent-design.json",
+    "audit": "/tmp/registry-calculation-reader-cp38-v2-certify/independent-audit.lean",
+    "controls": "/tmp/registry-calculation-reader-cp38-v2-certify/independent-controls.lean",
+    "nameSanity": "/tmp/registry-calculation-reader-cp38-v2-certify/independent-name-sanity.lean",
+    "staticReview": "/tmp/registry-calculation-reader-cp38-v2-certify/independent-static-review.json"
+  },
+  "hashes": {
+    "audit": "dd650a940fa5d4842679710264de7014230c4a01f9f3e9a9db31c565d6411391",
+    "design": "256818b0f3f52393f6129e558ff6fc4ce6edc6346bee335a22bd823b33245adc",
+    "controls": "ca87486a6aee86ff3247bfe5ab0b68641575666f9eb8baafa64ccb3e8263f801",
+    "nameSanity": "7ec61e128ac5313800df7bfaba85157c184db9b95721e8cb4bff81a00deeb52f",
+    "staticReview": "f6bec2a9d95f5b1e6d2b96d1238da27792a529275b7f1f6cadd2ee9d58e0cb52"
+  },
+  "constructionSeparation": "Independent recursive audit and controls were run after the exact source/object freeze; this seal only records those results and does not modify production source or the frozen audit."
+}

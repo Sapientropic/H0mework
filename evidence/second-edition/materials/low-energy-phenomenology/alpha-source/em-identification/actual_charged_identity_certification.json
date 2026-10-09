@@ -1,0 +1,327 @@
+{
+  "verdict": "certified",
+  "scope": "source-owned actual charged pole dynamics and normalized full504 EM/color-singlet/Dirac-spin-half external realization; not an experimental electron on-shell mass assignment",
+  "controller_disposition": "positiveSmoothUnifiedSource/repaired independent Dirac-dual/SpinPair.actual; visit10/row0.inl.liveAccount tick16→tick17 unchanged; subordinate source state/spectrum/representation producer; no root/current mutation",
+  "strict_flags": [
+    "-j1",
+    "--trust=0",
+    "-DwarningAsError=true",
+    "-DmaxErrors=1",
+    "-DElab.async=false"
+  ],
+  "construction_evidence": [
+    {
+      "source": "Lean/scratch/AlphaSource/ActualChargedIdentityOwn/ActualChargedPoleDynamics.lean",
+      "source_sha256": "8a36408e8f528ec1fcc303b7d8f2b572244085f44bb8797cf197105651b7f568",
+      "object_sha256": "6ed7dd17e1a02cb5c4f3e6f994808beaaa57d10c5570a7881878967e8ad00bc1",
+      "namespace": "LowEnergy.GaussComposite.ActualChargedPoleDynamics",
+      "public_mouths": [
+        "actual_charged_hamiltonian",
+        "actual_charged_axis_hamiltonian",
+        "actual_charged_positive_axis",
+        "actual_charged_axis_rest",
+        "actual_charged_axis_velocity",
+        "actual_charged_axis_value",
+        "actual_charged_axis_dirac",
+        "actual_charged_axis_radial_gap",
+        "actual_charged_axis_velocity_constant",
+        "actual_charged_axis_residue_exact",
+        "actual_charged_moving_support",
+        "actual_charged_moving_energy_fiber"
+      ],
+      "public_definitions": [
+        "chargedSideSign",
+        "chargedEdgeSign",
+        "chargedAxisMomentum",
+        "chargedEnergyDiagonal",
+        "chargedTransverseIndex",
+        "chargedTransverseRestriction",
+        "chargedTransverseCoefficient"
+      ]
+    },
+    {
+      "source": "Lean/scratch/AlphaSource/ActualChargedIdentityOwn/ActualEMExternalRepresentation.lean",
+      "source_sha256": "2a31aaf7cab1be93c41bbae14fd13ef90af9476703871228d1f0b07d91f7d20d",
+      "object_sha256": "7d1b89c134c0c23292fe11b1bb8cb62fe4cc430dce1ceb09b875bf832464699e",
+      "namespace": "LowEnergy.GaussComposite.ActualEMExternalRepresentation",
+      "public_mouths": [
+        "actual_em_full_spectrum",
+        "actual_em_exterior_weight",
+        "composite_em_lie_same",
+        "composite_em_charge_same",
+        "actual_composite_unit_norm",
+        "actual_composite_em_spin_color"
+      ],
+      "public_definitions": [
+        "actualEMBranchWeight",
+        "actualCompositeUnit"
+      ]
+    }
+  ],
+  "audit_source_object_hashes": {
+    "module": "ActualChargedIdentityAudit",
+    "exit": 0,
+    "seconds": 31.731265783309937,
+    "source_sha256": "9dedeb810f6b98a80917af3af3fd8ec43129657eb670e129150aa07b6f12386f",
+    "object_sha256": "0b41fd575fed1d287a12ac18fe72aefcc2fe44e3fdfec79e6c29690ddd239d19"
+  },
+  "production_source_object_hashes": [
+    {
+      "module": "ActualChargedPoleDynamics",
+      "exit": 0,
+      "seconds": 33.15535807609558,
+      "source_sha256": "8a36408e8f528ec1fcc303b7d8f2b572244085f44bb8797cf197105651b7f568",
+      "object_sha256": "d8f4fcbb97f6862f9bef4799c5243c636416ceefe346927da4e24a2193ff1860"
+    },
+    {
+      "module": "ActualEMExternalRepresentation",
+      "exit": 0,
+      "seconds": 45.557202100753784,
+      "source_sha256": "2a31aaf7cab1be93c41bbae14fd13ef90af9476703871228d1f0b07d91f7d20d",
+      "object_sha256": "acf2958eea84bbac6044a0bea357c1e19423ea5691b3fec039272707c4bece8a"
+    },
+    {
+      "module": "ActualChargedIdentityAuditProductionConsumers",
+      "exit": 0,
+      "seconds": 35.53823208808899,
+      "source_sha256": "4e112da74326d5b25732c92b213509a9b0a746078e3e2997179cb2be183b2646",
+      "object_sha256": "fd77f359a42126e4e9eb36059fc28063665bb25c17ac17f75e26f960f4b31543"
+    }
+  ],
+  "source_byte_identity": true,
+  "public_mouths": [
+    "LowEnergy.GaussComposite.ActualChargedPoleDynamics.chargedSideSign",
+    "LowEnergy.GaussComposite.ActualChargedPoleDynamics.chargedEdgeSign",
+    "LowEnergy.GaussComposite.ActualChargedPoleDynamics.chargedAxisMomentum",
+    "LowEnergy.GaussComposite.ActualChargedPoleDynamics.chargedEnergyDiagonal",
+    "LowEnergy.GaussComposite.ActualChargedPoleDynamics.chargedTransverseIndex",
+    "LowEnergy.GaussComposite.ActualChargedPoleDynamics.chargedTransverseRestriction",
+    "LowEnergy.GaussComposite.ActualChargedPoleDynamics.chargedTransverseCoefficient",
+    "LowEnergy.GaussComposite.ActualChargedPoleDynamics.actual_charged_hamiltonian",
+    "LowEnergy.GaussComposite.ActualChargedPoleDynamics.actual_charged_axis_hamiltonian",
+    "LowEnergy.GaussComposite.ActualChargedPoleDynamics.actual_charged_positive_axis",
+    "LowEnergy.GaussComposite.ActualChargedPoleDynamics.actual_charged_axis_rest",
+    "LowEnergy.GaussComposite.ActualChargedPoleDynamics.actual_charged_axis_velocity",
+    "LowEnergy.GaussComposite.ActualChargedPoleDynamics.actual_charged_axis_value",
+    "LowEnergy.GaussComposite.ActualChargedPoleDynamics.actual_charged_axis_dirac",
+    "LowEnergy.GaussComposite.ActualChargedPoleDynamics.actual_charged_axis_radial_gap",
+    "LowEnergy.GaussComposite.ActualChargedPoleDynamics.actual_charged_axis_velocity_constant",
+    "LowEnergy.GaussComposite.ActualChargedPoleDynamics.actual_charged_axis_residue_exact",
+    "LowEnergy.GaussComposite.ActualChargedPoleDynamics.actual_charged_moving_support",
+    "LowEnergy.GaussComposite.ActualChargedPoleDynamics.actual_charged_moving_energy_fiber",
+    "LowEnergy.GaussComposite.ActualEMExternalRepresentation.actualEMBranchWeight",
+    "LowEnergy.GaussComposite.ActualEMExternalRepresentation.actual_em_full_spectrum",
+    "LowEnergy.GaussComposite.ActualEMExternalRepresentation.actual_em_exterior_weight",
+    "LowEnergy.GaussComposite.ActualEMExternalRepresentation.composite_em_lie_same",
+    "LowEnergy.GaussComposite.ActualEMExternalRepresentation.composite_em_charge_same",
+    "LowEnergy.GaussComposite.ActualEMExternalRepresentation.actualCompositeUnit",
+    "LowEnergy.GaussComposite.ActualEMExternalRepresentation.actual_composite_unit_norm",
+    "LowEnergy.GaussComposite.ActualEMExternalRepresentation.actual_composite_em_spin_color"
+  ],
+  "owned_count": 60,
+  "tests": [
+    "LowEnergy.GaussComposite.ActualChargedIdentityAudit.checked_actual_charged_hamiltonian",
+    "LowEnergy.GaussComposite.ActualChargedIdentityAudit.checked_actual_charged_axis_hamiltonian",
+    "LowEnergy.GaussComposite.ActualChargedIdentityAudit.checked_actual_charged_positive_axis",
+    "LowEnergy.GaussComposite.ActualChargedIdentityAudit.checked_actual_charged_axis_rest",
+    "LowEnergy.GaussComposite.ActualChargedIdentityAudit.checked_actual_charged_axis_velocity",
+    "LowEnergy.GaussComposite.ActualChargedIdentityAudit.checked_actual_charged_axis_value",
+    "LowEnergy.GaussComposite.ActualChargedIdentityAudit.checked_actual_charged_axis_dirac",
+    "LowEnergy.GaussComposite.ActualChargedIdentityAudit.checked_actual_charged_axis_radial_gap",
+    "LowEnergy.GaussComposite.ActualChargedIdentityAudit.checked_actual_charged_axis_velocity_constant",
+    "LowEnergy.GaussComposite.ActualChargedIdentityAudit.checked_actual_charged_axis_residue_exact",
+    "LowEnergy.GaussComposite.ActualChargedIdentityAudit.checked_actual_charged_moving_support",
+    "LowEnergy.GaussComposite.ActualChargedIdentityAudit.checked_actual_charged_moving_energy_fiber",
+    "LowEnergy.GaussComposite.ActualChargedIdentityAudit.checked_actual_em_full_spectrum",
+    "LowEnergy.GaussComposite.ActualChargedIdentityAudit.checked_actual_em_exterior_weight",
+    "LowEnergy.GaussComposite.ActualChargedIdentityAudit.checked_composite_em_lie_same",
+    "LowEnergy.GaussComposite.ActualChargedIdentityAudit.checked_composite_em_charge_same",
+    "LowEnergy.GaussComposite.ActualChargedIdentityAudit.checked_actual_composite_unit_norm",
+    "LowEnergy.GaussComposite.ActualChargedIdentityAudit.checked_actual_composite_em_spin_color",
+    "LowEnergy.GaussComposite.ActualChargedIdentityAudit.checked_composite_nonzero",
+    "LowEnergy.GaussComposite.ActualChargedIdentityAudit.checked_actual_positive_rest",
+    "LowEnergy.GaussComposite.ActualChargedIdentityAudit.checked_gap_at_one",
+    "LowEnergy.GaussComposite.ActualChargedIdentityAudit.checked_independent_dual_weights",
+    "LowEnergy.GaussComposite.ActualChargedIdentityAudit.checked_charged_index_same_actual"
+  ],
+  "anchors": [
+    "SaturationMonoid.PhysicsCore.StageNineEnrichedProofFreeSource.positiveSmoothUnifiedSource",
+    "SaturationMonoid.PhysicsCore.Stage9C.Material.SpinPair.actual",
+    "LowEnergy.PreparationPhysicalJointRotationCharge.sourceMovingHamiltonian_original",
+    "LowEnergy.PreparationVacuumPhysicalQuantumLockedCharge.sourceChargedRestriction",
+    "LowEnergy.PreparationVacuumPhysicalQuantumLockedCharge.sourceChargedRestriction_moving",
+    "LowEnergy.PreparationVacuumElectromagneticIdentity.sourceMovingFullHamiltonian",
+    "LowEnergy.PreparationVacuumElectromagneticIdentity.sourceMovingFullHamiltonian_hermitian",
+    "LowEnergy.PreparationVacuumPhysicalQuantumLockedCharge.sourceChargedRestIndex",
+    "LowEnergy.GaussComposite.PhysicalEMGaugeRealization.emGaugeAction",
+    "LowEnergy.GaussComposite.PhysicalEMVoltage.em_charge_matrix_diagonal",
+    "LowEnergy.GaussComposite.PhysicalEMNativeChargeFull.emFullCharge",
+    "LowEnergy.GaussComposite.PhysicalEMPoleWard.em_phase_gauge_action",
+    "LowEnergy.MixedSpectatorCandidate.candidate",
+    "LowEnergy.MixedSpectatorCandidate.actual_candidate_phase_charge",
+    "LowEnergy.MixedSpectatorCandidate.actual_candidate_spin_half",
+    "LowEnergy.MixedSpectatorCandidate.actual_candidate_color_singlet",
+    "LowEnergy.NamedColorQtNext.originalSpinCasimir",
+    "LowEnergy.PreparationPhysicalPhaseGaugeRealization.actualSourcePhaseGaugeLie"
+  ],
+  "direct_dependencies": [
+    [
+      "LowEnergy.GaussComposite.ActualChargedPoleDynamics.actual_charged_hamiltonian",
+      [
+        "LowEnergy.PreparationPhysicalJointRotationCharge.sourceMovingHamiltonian_original",
+        "LowEnergy.PreparationPhysicalNormalizedFullField.sourceChargedRestriction_basis"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualChargedPoleDynamics.actual_charged_axis_hamiltonian",
+      [
+        "LowEnergy.GaussComposite.ActualChargedPoleDynamics.actual_charged_hamiltonian"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualChargedPoleDynamics.actual_charged_axis_value",
+      [
+        "LowEnergy.GaussComposite.ActualChargedPoleDynamics.actual_charged_axis_hamiltonian",
+        "SaturationMonoid.PhysicsCore.LowEnergy.FullQuantum.Retarded.value_kernel_right"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualChargedPoleDynamics.actual_charged_axis_dirac",
+      [
+        "LowEnergy.GaussComposite.ActualChargedPoleDynamics.actual_charged_axis_value",
+        "LowEnergy.PreparationPhysicalChargedScatteringPoleReturn.sourceActualChargedTemporalInverse"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualChargedPoleDynamics.actual_charged_axis_residue_exact",
+      [
+        "LowEnergy.GaussComposite.ActualChargedPoleDynamics.actual_charged_axis_dirac"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualChargedPoleDynamics.actual_charged_moving_energy_fiber",
+      [
+        "LowEnergy.GaussComposite.ActualChargedPoleDynamics.actual_charged_moving_support",
+        "LowEnergy.PreparationVacuumPhysicalQuantumLockedCharge.sourceChargedRestriction_moving"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualEMExternalRepresentation.actual_em_full_spectrum",
+      [
+        "LowEnergy.GaussComposite.PhysicalEMNativeChargeFull.em_full_charge_generated",
+        "LowEnergy.GaussComposite.PhysicalEMVoltage.em_charge_matrix_diagonal",
+        "LowEnergy.GaussComposite.PhysicalEMPoleWard.em_phase_gauge_action"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualEMExternalRepresentation.actual_em_exterior_weight",
+      [
+        "LowEnergy.GaussComposite.PhysicalEMDressedCharacter.emDressed_matrix",
+        "LowEnergy.GaussComposite.PhysicalEMVoltage.em_charge_matrix_diagonal"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualEMExternalRepresentation.composite_em_charge_same",
+      [
+        "LowEnergy.GaussComposite.ActualEMExternalRepresentation.composite_em_lie_same",
+        "LowEnergy.GaussComposite.PhysicalEMNativeChargeFull.emFullCharge"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualEMExternalRepresentation.actual_composite_unit_norm",
+      [
+        "LowEnergy.MixedSpectatorCandidate.actual_candidate_norm_sq"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualEMExternalRepresentation.actual_composite_em_spin_color",
+      [
+        "LowEnergy.GaussComposite.ActualEMExternalRepresentation.actual_composite_unit_norm",
+        "LowEnergy.GaussComposite.ActualEMExternalRepresentation.composite_em_charge_same",
+        "LowEnergy.MixedSpectatorCandidate.actual_candidate_phase_charge",
+        "LowEnergy.MixedSpectatorCandidate.actual_candidate_spin_half",
+        "LowEnergy.MixedSpectatorCandidate.actual_candidate_color_singlet"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualChargedIdentityAudit.checked_gap_at_one",
+      [
+        "LowEnergy.GaussComposite.ActualChargedPoleDynamics.actual_charged_axis_radial_gap"
+      ]
+    ]
+  ],
+  "closure": {
+    "scope": "all two producer-module declarations including private full8 Hamiltonian matrix and literal primal-charge proofs, generated terms and all23 direct consumers/controls; complete recursive type/value/allowOpaque/constructors/recursor RHS",
+    "nodes": 83417,
+    "opaque_all_read": 57,
+    "axioms": 3,
+    "authorized_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "unknown": 0,
+    "unsafe": 0,
+    "partial": 0,
+    "manifest_sha256": "a13573a2e367930c5a9970419aa4ed01e29c1dc2e419f22897be6e3f7d152e4f",
+    "target_scan": {
+      "project_nodes": 13930,
+      "target_matches": [],
+      "excluded_live_modules_reached": false
+    }
+  },
+  "compatibility": {
+    "same_occurrence_recovery": [
+      {
+        "declaration": "coreRead",
+        "old_source": "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-source/OriginalSpectralReadStateRecovery.lean",
+        "owner_source": "Verification/physics/low-energy-phenomenology/external-composite-decay/SourceNativeMixedCurrent.lean",
+        "same_tokens": true
+      },
+      {
+        "declaration": "sourceRead",
+        "old_source": "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-source/OriginalSpectralReadStateRecovery.lean",
+        "owner_source": "Verification/physics/low-energy-phenomenology/external-composite-decay/SourceNativeMixedCurrent.lean",
+        "same_tokens": true
+      },
+      {
+        "declaration": "state",
+        "old_source": "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-source/OriginalSpectralReadStateRecovery.lean",
+        "owner_source": "Verification/physics/low-energy-phenomenology/external-composite-decay/SourceScalarPositiveBulkWard.lean",
+        "same_tokens": true
+      }
+    ],
+    "sha256": {
+      "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-source/OriginalSpectralReadStateRecovery.lean": "2926daee38f3bd383a666435a76a46c94594b57335bfd6b2d00d83503efa5a0e",
+      "Lean/scratch/AlphaSource/ActualChargedIdentityOwn/OriginalSpectralReadStateRecovery.lean": "4ccf0b54b7067d6a2fd1c461c74e8c298db8cbb8f4ed0bcf76cf372445b7dc8d",
+      "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSourceFirstPoleGaugeReturn.lean": "aae10a5c2ad582bc462ab4c45f6c47787de7a87ad6826d73452582f1ba233f3e",
+      "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/PhysicalEMPoleWard.lean": "6932a1facf0df0b9152013a68182be99947149103fa59deb931b47b2a5a4cfaf",
+      "Verification/physics/low-energy-phenomenology/external-composite-decay/MixedSpectatorJointFacts.lean": "3122f9acb624dc7261c7ab81f9a9f754d3cb646eb651e0aafdebf6f6aae77786",
+      "Verification/physics/low-energy-phenomenology/external-composite-decay/SourceScalarPositiveBulkWard.lean": "a300059d611cd75e7adf12029523ee75a4d80cb17447ca6722dbe1de267c7996",
+      "Verification/physics/low-energy-phenomenology/external-composite-decay/SourceNativeMixedCurrent.lean": "69130c1738db26c8413a5670e8c6cc076cb69316779f150cc58af6b80b13344b"
+    },
+    "shim_imports": "existing original owners only; no replacement definitions or aliases"
+  },
+  "machine_stdout": "ACTUAL_CHARGED_IDENTITY_PASS public=27 owned=60 tests=23 nodes=83417 anchors=18 direct=12 opaque_all_read=57 axioms=3 unknown=0 unsafe=0 partial=0\n'LowEnergy.GaussComposite.ActualChargedPoleDynamics.actual_charged_moving_energy_fiber' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualEMExternalRepresentation.actual_composite_em_spin_color' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualEMExternalRepresentation.actual_em_full_spectrum' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n",
+  "production_gate": "fresh strict two production sources and23 direct consumers; full closure reused on byte-identical sources",
+  "generated_structure": {
+    "charged_dynamics": "literal original full Hamiltonian on actual charged source columns retains diagonal and complete transverse leakage; axis pole generated at sideSign*(3frequency+edgeSign*lapse*k), positive side1/edge0 for k>=0",
+    "pole": "same original Retarded and once-Dirac resolvents, C0 inverse flip, exact damping-scaled residue and rest return retained; axial derivative and radial-band strict gap generated",
+    "energy_fiber": "all8 original moving poles automatically select the full equal-energy fiber, including every degeneracy; no caller-selected eigenbasis label or arbitrary-moving single-pole assumption",
+    "full_EM_spectrum": "literal emGaugeAction Hermitian charge produces all252 primal weights and all504 independent dual weights with opposite sign; exterior fractional weights retained",
+    "same_Lie_occurrence": "foreign actualSourcePhaseGaugeLie and sourcePhaseGaugeLie are definitionally identical; quantized emFullCharge=phaseCharge derived from this same occurrence and complex-linear quantizer",
+    "external_state": "explicit actualCompositeUnit=1/sqrt2*candidate(dual) has norm1, literal EM charge(-1 if dual else+1), original Dirac spin Casimir3/4, and arbitrary full SU3 Lie algebra zero action simultaneously",
+    "recovery": "old recovered coreRead/sourceRead/state declaration bodies equal original owner bodies modulo whitespace/comments; shim imports actual original SourceNativeMixedCurrent and SourceScalarPositiveBulkWard, no replacement definitions; production CanonicalFirstPole shim unchanged, PhysicalEMPoleWard source unchanged",
+    "controls": "composite norm1 implies nonzero, positive actual rest branch, strict actual axis versus radial gap at k1, independent full dual opposite weights, actual charged RestIndex(1,0)=(1,1) distinct from canonical(0,0)"
+  },
+  "preserved": [
+    "original positive source and actual charged restrictions",
+    "full transverse Hamiltonian leakage and all8 moving energy fiber",
+    "original C0 and once-Dirac residue",
+    "literal full252 exterior and independent dual504 charges",
+    "same native Lie and original CAR quantizer",
+    "one explicit normalized composite state carrying all EM/spin/SU3 properties",
+    "full original Dirac spin operator and all SU3 generators"
+  ],
+  "boundary": "Dynamics concerns its actual charged source leg; Representation concerns its explicit composite Fock state. Their pole/mass identity is not transported here. Experimental electron mass assignment, canonicalMass substitution, momentum-conserving scattering/full-light/Thomson and alpha are not asserted; live third full-current node is excluded."
+}

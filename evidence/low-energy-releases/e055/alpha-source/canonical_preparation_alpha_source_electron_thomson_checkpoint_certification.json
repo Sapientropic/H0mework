@@ -1,0 +1,33 @@
+{
+  "schema": "alpha-source-electron-thomson-combined-checkpoint/v1",
+  "root_current": "positiveSmoothUnifiedSource/repaired independent Dirac-dual/SpinPair.actual/visit10/row0.inl.liveAccount/tick16 quantumFace10->quantumPresentation10/next17",
+  "controller_advanced": false,
+  "whole_ledger_changed": false,
+  "prediction_reads_experiment": false,
+  "prediction_reads_old_137": false,
+  "prediction_reads_stock_b0_or_affine_running": false,
+  "source_identity": "same actual sourcePhaseGaugeLie / sourceActualPhaseCharge / sourceStaticComposite / ordinary DressedPhoton source",
+  "packages": [
+    "electron",
+    "thomson"
+  ],
+  "whole_sha256": {
+    "electron": "4af1093a71f404afa2f0a9e935b42feb8cab6b3fb1a2fbccd2b03aa94866b2b5",
+    "thomson": "c84b31d33e71595105fcb6513f708e4d74504324e5e11609bbfc4d20f6f51754"
+  },
+  "public_count": 26,
+  "source_lines": 400,
+  "source_files": [
+    "Verification/physics/low-energy-phenomenology/alpha-source/SourceElectronChargeUnit.lean",
+    "Verification/physics/low-energy-phenomenology/alpha-source/SourceElectronStaticConsumer.lean",
+    "Verification/physics/low-energy-phenomenology/alpha-source/SourceThomsonStaticResponse.lean",
+    "Verification/physics/low-energy-phenomenology/alpha-source/SourceThomsonMatchingConsumer.lean"
+  ],
+  "direct_consumers": [
+    "sourceElectronStaticResidue_generated -> sourceStaticCompositeLeading_return",
+    "sourceThomsonOrdinaryInput -> sourceDressedPhotonInteraction_generated",
+    "sourceThomsonMatching_return -> SourceThomsonMatchingContract -> sourceThomsonAlphaSource"
+  ],
+  "claim_scope": "Actual edge-0 electron charge unit and complete static C_EM source read are closed. Ordinary full-light/contact relation remains an explicit typed return contract; alpha(0) numerical prediction and experiment consumer remain next.",
+  "generated_next": "Fill the owner full-light/contact matching contract from the real matching window, then generate alpha(0) interval and independent experimental consumer."
+}

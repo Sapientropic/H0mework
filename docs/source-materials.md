@@ -1,5 +1,7 @@
 # 来源材料索引
 
+第二版与低能首发选集的生产、直接消费者和原认证材料分别由[第二版映射](second-edition-map.json)与[低能映射](low-energy-release-map.json)登记。原认证、原失败和本次公开执行分列，验收入口见[版本复现](edition-reproduction.md)。
+
 本仓的有效用法见[复现指南](reproduction.md)，主张与源码对应见[证据表](evidence-map.md)。本页负责定位研究来源、冻结认证与历史过程记录。
 
 ## 固定来源的阅读方式

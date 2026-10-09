@@ -1,0 +1,774 @@
+{
+  "schema": "h0mework/first-release-trust@1",
+  "kind": "trust",
+  "ok": true,
+  "input_identity": {
+    "sha256": {
+      "claim_map": "f168cc59f46919786a39129e4654006f44eb22af4b288ea60166f5afc3b3bee4",
+      "export_map": "abc323367c44a1a23b9452b7c4f28a800c2712bd32c0c561adc65344c75bd037",
+      "lakefile": "9bd08df4b08ab92982dc0b35d9e60caac77f8f6932436ff6d2ef0f311fce1209",
+      "toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+      "manifest": "2fe02acc26899fd57d82018e711e79c251e26d0b6d2bb370af81db0ed312fbfd"
+    },
+    "package_inputs": {
+      "v2-core-completion": "b6a7e0340474ad8ad4bdbff1b4d6728a3d609330605ead7745943a0988a2c6fb",
+      "v2-core-full-stock": "85244d68ecc8dfe2a24a2140c39b15ce5da1a6d35f74ed51c4c8c24a81d014f4",
+      "v2-core-runtime-calculation": "c4f55cab577948aff72afbdafdbea94b9c328f2ddf529fc08015b1d8ab880602"
+    }
+  },
+  "settings": {
+    "toolchain_pin": "leanprover/lean4:v4.33.0",
+    "package_moreLeanArgs": [
+      "--trust=0",
+      "-Dweak.linter.unnecessarySimpa=false",
+      "-Dweak.linter.style.haveILetI=false",
+      "-Dweak.linter.unusedSimpArgs=false"
+    ],
+    "package_weakLeanArgs": [
+      "-DmaxHeartbeats=2000000",
+      "-Dweak.linter.unusedSectionVars=false",
+      "-Dweak.linter.unnecessarySeqFocus=false",
+      "-Dweak.linter.unusedVariables=false",
+      "-Dweak.linter.unreachableTactic=false",
+      "-Dweak.linter.unusedTactic=false",
+      "-Dweak.linter.defProp=false",
+      "-Dweak.linter.deprecated=false",
+      "-Dlinter.deprecated=false",
+      "-Dweak.linter.tacticAnalysis.introMerge=false",
+      "-Dweak.linter.constructorNameAsVariable=false"
+    ],
+    "libraries": [
+      {
+        "name": "H0mework",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_15a9a7f1af9edd94",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_3606f5269412e357",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_d700e8a5f12a0c72",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_1e1ae4b55cfaa424",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_5d60190f8c552243",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_c8f26eb536eba11f",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_05819243d0f03058",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_42d0393dda443953",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_662d860139605627",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_c5ce7c98c6fb2afe",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_4306926d26d3e100",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_524380564da88277",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_598bc2100d4a470f",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_f16f09d592d9fed1",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_38dd326bee1881e5",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_a5be13c98d55de59",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_a8ba570880d786e7",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_e94628c12cb5af16",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_e615fc1eae897d2f",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_3ec8ead604397acb",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_f3b844eed8451357",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_fb8213f28d86d220",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_343b97a439466c84",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_e7aebe388314d626",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_5ee63fcc1d2eabc2",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_048d35b0f13ffddc",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_8a02641b81044b03",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_efa122af6a18f938",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "H0meworkRelaxed",
+        "moreLeanArgs": []
+      },
+      {
+        "name": "H0meworkPinned",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      }
+    ]
+  },
+  "identity_scope": {
+    "packages": [
+      "v2-core-completion",
+      "v2-core-full-stock",
+      "v2-core-runtime-calculation"
+    ],
+    "proof_entries": 19
+  },
+  "cache": {
+    "kind": "existing_workspace_cache",
+    "clean_clone": false,
+    "build_directory_preexisted": true,
+    "lean_num_threads": "8",
+    "compiled_targets_before": {
+      "H0mework.Papers.V2CoreCompletion": "cef8946d0088e7561922bd27fd7c352a2ebe4dde652c0d0d26b25530f69d9c9b",
+      "H0mework.Papers.V2CoreFullStock": "80f64be012db62529bb6d91265eee799b17897b916c09224ee9c4f78cfff7a26",
+      "H0mework.Papers.V2CoreRuntimeCalculation": "6bf388210e1ad49b3ef7e347356abdc2810d815256bfde79987393b8e5c15b15"
+    },
+    "trust_jobs": 3
+  },
+  "packages": [
+    {
+      "id": "v2-core-completion",
+      "paper": "source-process-core",
+      "source_commit": "71e94e8261d67cf4849a05eb14ac95aa2f7dcbb9",
+      "lean_target": "H0mework.Papers.V2CoreCompletion",
+      "claim_ids": [
+        "core.C39"
+      ],
+      "commands": {
+        "build": "python3 tools/edition_release.py --edition second build --package v2-core-completion --output .local/second-edition-runs/<new>/build",
+        "trust": "python3 tools/edition_release.py --edition second trust --package v2-core-completion --output .local/second-edition-runs/<new>/trust"
+      }
+    },
+    {
+      "id": "v2-core-full-stock",
+      "paper": "source-process-core",
+      "source_commit": "71e94e8261d67cf4849a05eb14ac95aa2f7dcbb9",
+      "lean_target": "H0mework.Papers.V2CoreFullStock",
+      "claim_ids": [
+        "core.C40"
+      ],
+      "commands": {
+        "build": "python3 tools/edition_release.py --edition second build --package v2-core-full-stock --output .local/second-edition-runs/<new>/build",
+        "trust": "python3 tools/edition_release.py --edition second trust --package v2-core-full-stock --output .local/second-edition-runs/<new>/trust"
+      }
+    },
+    {
+      "id": "v2-core-runtime-calculation",
+      "paper": "source-process-core",
+      "source_commit": "71e94e8261d67cf4849a05eb14ac95aa2f7dcbb9",
+      "lean_target": "H0mework.Papers.V2CoreRuntimeCalculation",
+      "claim_ids": [
+        "core.C41"
+      ],
+      "commands": {
+        "build": "python3 tools/edition_release.py --edition second build --package v2-core-runtime-calculation --output .local/second-edition-runs/<new>/build",
+        "trust": "python3 tools/edition_release.py --edition second trust --package v2-core-runtime-calculation --output .local/second-edition-runs/<new>/trust"
+      }
+    }
+  ],
+  "results": [
+    {
+      "package": "v2-core-completion",
+      "status": "passed",
+      "exit_code": 0,
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--root=..",
+        "--trust=0",
+        "-Dweak.linter.unnecessarySimpa=false",
+        "-Dweak.linter.style.haveILetI=false",
+        "-Dweak.linter.unusedSimpArgs=false",
+        "-DmaxHeartbeats=2000000",
+        "-Dweak.linter.unusedSectionVars=false",
+        "-Dweak.linter.unnecessarySeqFocus=false",
+        "-Dweak.linter.unusedVariables=false",
+        "-Dweak.linter.unreachableTactic=false",
+        "-Dweak.linter.unusedTactic=false",
+        "-Dweak.linter.defProp=false",
+        "-Dweak.linter.deprecated=false",
+        "-Dlinter.deprecated=false",
+        "-Dweak.linter.tacticAnalysis.introMerge=false",
+        "-Dweak.linter.constructorNameAsVariable=false",
+        "-DwarningAsError=true",
+        "../.local/second-edition-20261009/core-cap-trust-1/audit-001.lean"
+      ],
+      "cwd": "Lean",
+      "started_at": "2026-10-09T10:22:33.050894+00:00",
+      "finished_at": "2026-10-09T10:22:51.749298+00:00",
+      "elapsed_seconds": 18.698,
+      "error": null,
+      "log": ".local/second-edition-20261009/core-cap-trust-1/audit-001.log",
+      "audit_scope": {
+        "package": "v2-core-completion",
+        "source_commits": [
+          "71e94e8261d67cf4849a05eb14ac95aa2f7dcbb9"
+        ],
+        "lean_target": "H0mework.Papers.V2CoreCompletion",
+        "declarations": {
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Faces.Execution.Activation.Shared.Completion.mathNext_state": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Faces.Execution.Activation.Completion",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Faces.Execution.Activation.Shared.Completion.paid_decreases": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Faces.Execution.Activation.Completion",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Faces.Execution.Activation.Shared.Completion.Receipt": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Faces.Execution.Activation.Completion",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Faces.Execution.Activation.Shared.Completion.receipt": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Faces.Execution.Activation.Completion",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Faces.Execution.Activation.Shared.Completion.atReceipt": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Faces.Execution.Activation.Completion",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Faces.Execution.Activation.Shared.Completion.receipt_next": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Faces.Execution.Activation.Completion",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Faces.Execution.Activation.Shared.Completion.receipt_compiles": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Faces.Execution.Activation.Completion",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Faces.Execution.Activation.Shared.Completion.Births.startIndex": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Faces.Execution.Activation.Completion.Births",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Faces.Execution.Activation.Shared.Completion.Births.birthIndex": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Faces.Execution.Activation.Completion.Births",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Faces.Execution.Activation.Shared.Completion.Births.startIndex_succ": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Faces.Execution.Activation.Completion.Births",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Faces.Execution.Activation.Shared.Completion.Births.birthIndex_succ": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Faces.Execution.Activation.Completion.Births",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Faces.Execution.Activation.Shared.Completion.Births.birthIndex_step": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Faces.Execution.Activation.Completion.Births",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Faces.Execution.Activation.Shared.Completion.Births.birthIndex_strictMono": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Faces.Execution.Activation.Completion.Births",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Faces.Execution.Activation.Shared.Completion.Births.ordinal_le": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Faces.Execution.Activation.Completion.Births",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Faces.Execution.Activation.Shared.Completion.Births.cover": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Faces.Execution.Activation.Completion.Births",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Faces.Execution.Activation.Shared.Completion.Births.settled": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Faces.Execution.Activation.Completion.Births",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Faces.Execution.Activation.Shared.Completion.Births.actual_action": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Faces.Execution.Activation.Completion.Births",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Faces.Execution.Activation.Shared.Completion.Births.actual_next": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Faces.Execution.Activation.Completion.Births",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Faces.Execution.Activation.Shared.Completion.Births.actual_compiles": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Faces.Execution.Activation.Completion.Births",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Faces.Execution.Activation.Shared.Completion.Prefix.prefix_budget": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Faces.Execution.Activation.Completion.Prefix",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Faces.Execution.Activation.Shared.Completion.Prefix.paid_at_offset": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Faces.Execution.Activation.Completion.Prefix",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Faces.Execution.Activation.Shared.Completion.Prefix.receipt_distance_exact": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Faces.Execution.Activation.Completion.Prefix",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Faces.Execution.Activation.Shared.Completion.Prefix.receipt_paid_prefix": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Faces.Execution.Activation.Completion.Prefix",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Faces.Execution.Activation.Shared.Completion.Prefix.receipt_read": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Faces.Execution.Activation.Completion.Prefix",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Faces.Execution.Activation.Shared.Completion.Prefix.receipt_environment": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Faces.Execution.Activation.Completion.Prefix",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyBirthControls.covered_tick_read": "H0mework.Checks.SecondEdition.V2.Framework.SourcePolicy.Births",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyBirthControls.cover_after": "H0mework.Checks.SecondEdition.V2.Framework.SourcePolicy.Births",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyBirthControls.actual_birth_receipt": "H0mework.Checks.SecondEdition.V2.Framework.SourcePolicy.Births",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyBirthControls.born_raw_environment": "H0mework.Checks.SecondEdition.V2.Framework.SourcePolicy.Births",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyBirthControls.birth_raw_environment": "H0mework.Checks.SecondEdition.V2.Framework.SourcePolicy.Births",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyBirthControls.observed_after_birth": "H0mework.Checks.SecondEdition.V2.Framework.SourcePolicy.Births",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyBirthControls.birth_stage_delta": "H0mework.Checks.SecondEdition.V2.Framework.SourcePolicy.Births",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyPaidPrefixControls.actual_birth_after_positive": "H0mework.Checks.SecondEdition.V2.Framework.SourcePolicy.Paidprefix",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyPaidPrefixControls.actual_first_paid": "H0mework.Checks.SecondEdition.V2.Framework.SourcePolicy.Paidprefix",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyPaidPrefixControls.actual_settled_zero": "H0mework.Checks.SecondEdition.V2.Framework.SourcePolicy.Paidprefix",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyPaidPrefixControls.actual_settled_next": "H0mework.Checks.SecondEdition.V2.Framework.SourcePolicy.Paidprefix",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyPaidPrefixControls.actual_settled_compiles": "H0mework.Checks.SecondEdition.V2.Framework.SourcePolicy.Paidprefix",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyPaidPrefixControls.actual_environment": "H0mework.Checks.SecondEdition.V2.Framework.SourcePolicy.Paidprefix"
+        },
+        "closure": "complete type/value, mutual declarations, inductives, constructors and recursor metadata",
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "token": "610beaf214ad31e1f2fe4b803e8a575ce2b7ada9e0ebc2cd59933fd17d327d78",
+        "source_sha256": "e9aa146f142160ce34e7967ab8de1526790acac01f7030e83ef57ba026d6f64f",
+        "public_modules": [
+          "H0mework.Checks.SecondEdition.V2.Framework.SourcePolicy.Births",
+          "H0mework.Checks.SecondEdition.V2.Framework.SourcePolicy.Paidprefix",
+          "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Faces.Execution.Activation.Completion",
+          "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Faces.Execution.Activation.Completion.Births",
+          "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Faces.Execution.Activation.Completion.Prefix"
+        ]
+      },
+      "audit": {
+        "axioms": [
+          "Quot.sound",
+          "Classical.choice",
+          "propext"
+        ],
+        "constants": 13701,
+        "edges": 237506,
+        "full_metadata": true,
+        "partial": 0,
+        "roots": 38,
+        "token": "610beaf214ad31e1f2fe4b803e8a575ce2b7ada9e0ebc2cd59933fd17d327d78",
+        "unsafe": 0
+      }
+    },
+    {
+      "package": "v2-core-full-stock",
+      "status": "passed",
+      "exit_code": 0,
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--root=..",
+        "--trust=0",
+        "-Dweak.linter.unnecessarySimpa=false",
+        "-Dweak.linter.style.haveILetI=false",
+        "-Dweak.linter.unusedSimpArgs=false",
+        "-DmaxHeartbeats=2000000",
+        "-Dweak.linter.unusedSectionVars=false",
+        "-Dweak.linter.unnecessarySeqFocus=false",
+        "-Dweak.linter.unusedVariables=false",
+        "-Dweak.linter.unreachableTactic=false",
+        "-Dweak.linter.unusedTactic=false",
+        "-Dweak.linter.defProp=false",
+        "-Dweak.linter.deprecated=false",
+        "-Dlinter.deprecated=false",
+        "-Dweak.linter.tacticAnalysis.introMerge=false",
+        "-Dweak.linter.constructorNameAsVariable=false",
+        "-DwarningAsError=true",
+        "../.local/second-edition-20261009/core-cap-trust-1/audit-002.lean"
+      ],
+      "cwd": "Lean",
+      "started_at": "2026-10-09T10:22:33.049104+00:00",
+      "finished_at": "2026-10-09T10:22:58.456874+00:00",
+      "elapsed_seconds": 25.407,
+      "error": null,
+      "log": ".local/second-edition-20261009/core-cap-trust-1/audit-002.log",
+      "audit_scope": {
+        "package": "v2-core-full-stock",
+        "source_commits": [
+          "71e94e8261d67cf4849a05eb14ac95aa2f7dcbb9"
+        ],
+        "lean_target": "H0mework.Papers.V2CoreFullStock",
+        "declarations": {
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.SourceFrame": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Source",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.read": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Source",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.actual": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Source",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.observer": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Source",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.fullword_read": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Source",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.model_read": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Source",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.model_next": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Source",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.model_stage_injective": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Source",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.model_ne_next": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Source",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.inventory_next": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Source",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.paid_depth_next": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Source",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.Stock.frameAt": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Stock",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.Stock.frame_actual": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Stock",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.Stock.full_model_next": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Stock",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.Stock.sealed_query": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Stock",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.Stock.source_query": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Stock",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.Stock.source_value": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Stock",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.Stock.source_trace": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Stock",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.Stock.born_stock": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Stock",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.Stock.source_decoder": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Stock",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.Stock.registered_raw": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Stock",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.Stock.registered_state": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Stock",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.Stock.calculation_effect": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Stock",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.Stock.calculation_inverse": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Stock",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.Stock.calculation_whole": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Stock",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.Stock.calculation_next": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Stock",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.Stock.same_ledger": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Stock",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.Stock.physicalTarget": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Stock",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.Stock.canonical_stock": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Stock",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.Stock.canonical_next": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Stock",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.Stock.Return.queryTrace": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Stock.Return",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.Stock.Return.written": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Stock.Return",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.Stock.Return.new_event_born": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Stock.Return",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.Stock.Return.new_event_next_query": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Stock.Return",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.Stock.Return.new_event_in_next_born": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Stock.Return",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.Stock.Return.actual_source_return": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Stock.Return",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.Stock.Return.eventReceipt": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Stock.Return",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.Stock.Return.generated_source_return": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Stock.Return",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.Stock.Return.actual_full_source_return": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Stock.Return",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.Stock.Coordinates.origin": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Stock.Coordinates",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.Stock.Coordinates.sourceOccurrence": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Stock.Coordinates",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.Stock.Coordinates.oldWritten": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Stock.Coordinates",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.Stock.Coordinates.sourceWritten": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Stock.Coordinates",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.Stock.Coordinates.migratedWritten": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Stock.Coordinates",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.Stock.Coordinates.physicalWritten": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Stock.Coordinates",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.Stock.Coordinates.source_exposure": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Stock.Coordinates",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.Stock.Coordinates.sourceIndex": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Stock.Coordinates",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.Stock.Coordinates.completeIndex": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Stock.Coordinates",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.Stock.Coordinates.inventory_source": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Stock.Coordinates",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.Stock.Coordinates.canonicalInventory": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Stock.Coordinates",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.Stock.Coordinates.canonicalIndex": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Stock.Coordinates",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.Stock.Coordinates.intoBorn": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Stock.Coordinates",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.Stock.Coordinates.intoBorn_injective": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Stock.Coordinates",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.Stock.Coordinates.sourceIndex_read": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Stock.Coordinates",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.Stock.Coordinates.completeIndex_read": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Stock.Coordinates",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.Stock.Coordinates.canonical_read": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Stock.Coordinates",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.Stock.Coordinates.intoBorn_read": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Stock.Coordinates",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.Stock.Coordinates.intoBorn_value": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Stock.Coordinates",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.Stock.Coordinates.intoBorn_strictMono": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Stock.Coordinates",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.Stock.Birth.index": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Stock.Birth",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.Stock.Birth.current": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Stock.Birth",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.Stock.Birth.after": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Stock.Birth",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.Stock.Birth.generated": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Stock.Birth",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.Stock.Birth.target": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Stock.Birth",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.Stock.Birth.selected_action": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Stock.Birth",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.Stock.Birth.selected_compile": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Stock.Birth",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.Stock.Birth.after_birth": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Stock.Birth",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.Stock.Birth.macro_answer": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Stock.Birth",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.Stock.Birth.macro_next": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Stock.Birth",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.Stock.Birth.macro_next_current": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Stock.Birth",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.Stock.Birth.actual_root": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Stock.Birth",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.Stock.Birth.selected_packet": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Stock.Birth",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.Stock.Birth.after_projection": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Stock.Birth",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.Stock.Birth.after_initial_read": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Stock.Birth",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.Stock.Birth.after_current_read": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Stock.Birth",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.Stock.Birth.initial_readback": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Stock.Birth",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.Stock.Birth.actual_complete_stock": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Stock.Birth",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.Stock.Birth.current_complete_stock": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Stock.Birth",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationInquiry.Context.Native.Frame.Stock.Birth.macro_receipt": "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Stock.Birth",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyFullFrameControls.full_current_next": "H0mework.Checks.SecondEdition.V2.Framework.SourcePolicy.Fullframe",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyFullFrameControls.full_actual_inventory": "H0mework.Checks.SecondEdition.V2.Framework.SourcePolicy.Fullframe",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyFullFrameControls.actual_macro_effect": "H0mework.Checks.SecondEdition.V2.Framework.SourcePolicy.Fullframe",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyFullFrameControls.actual_receipt": "H0mework.Checks.SecondEdition.V2.Framework.SourcePolicy.Fullframe",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyFullFrameControls.same_source_next": "H0mework.Checks.SecondEdition.V2.Framework.SourcePolicy.Fullframe",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyFullFrameControls.typed_phase_preserved": "H0mework.Checks.SecondEdition.V2.Framework.SourcePolicy.Fullframe",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyFullFrameControls.actual_paid_after_birth": "H0mework.Checks.SecondEdition.V2.Framework.SourcePolicy.Fullframe",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyFullFrameControls.actual_paid_depth": "H0mework.Checks.SecondEdition.V2.Framework.SourcePolicy.Fullframe",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyFullFrameControls.paid_faithful_fibre": "H0mework.Checks.SecondEdition.V2.Framework.SourcePolicy.Fullframe",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyFullFrameControls.actual_paid_fibre": "H0mework.Checks.SecondEdition.V2.Framework.SourcePolicy.Fullframe",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyStockQueryControls.actor_decoder": "H0mework.Checks.SecondEdition.V2.Framework.SourcePolicy.Stockquery",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyStockQueryControls.all_query_outputs": "H0mework.Checks.SecondEdition.V2.Framework.SourcePolicy.Stockquery",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyStockQueryControls.exact_query_charge": "H0mework.Checks.SecondEdition.V2.Framework.SourcePolicy.Stockquery",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyStockQueryControls.low_raw_ignores_stock": "H0mework.Checks.SecondEdition.V2.Framework.SourcePolicy.Stockquery",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyStockQueryControls.same_runtime_next": "H0mework.Checks.SecondEdition.V2.Framework.SourcePolicy.Stockquery",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyQueryTraceReturnControls.source_event_exists": "H0mework.Checks.SecondEdition.V2.Framework.SourcePolicy.Querytracereturn",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyQueryTraceReturnControls.born_field_is_real": "H0mework.Checks.SecondEdition.V2.Framework.SourcePolicy.Querytracereturn",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyQueryTraceReturnControls.root_reaches_next_query": "H0mework.Checks.SecondEdition.V2.Framework.SourcePolicy.Querytracereturn",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyQueryTraceReturnControls.root_in_next_born_inventory": "H0mework.Checks.SecondEdition.V2.Framework.SourcePolicy.Querytracereturn",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyQueryTraceReturnControls.all_fresh_events_written": "H0mework.Checks.SecondEdition.V2.Framework.SourcePolicy.Querytracereturn",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyQueryTraceReturnControls.source_binding_expression": "H0mework.Checks.SecondEdition.V2.Framework.SourcePolicy.Querytracereturn",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyQueryTraceReturnControls.source_binding_relation": "H0mework.Checks.SecondEdition.V2.Framework.SourcePolicy.Querytracereturn",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyQueryTraceReturnControls.actual_born_occurrence": "H0mework.Checks.SecondEdition.V2.Framework.SourcePolicy.Querytracereturn",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyQueryTraceReturnControls.generated_whole_inverse_next": "H0mework.Checks.SecondEdition.V2.Framework.SourcePolicy.Querytracereturn",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyQueryTraceReturnControls.actual_full_frame_return": "H0mework.Checks.SecondEdition.V2.Framework.SourcePolicy.Querytracereturn",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyTraceCoordinatesControls.intoActual": "H0mework.Checks.SecondEdition.V2.Framework.SourcePolicy.Tracecoordinates",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyTraceCoordinatesControls.intoActual_injective": "H0mework.Checks.SecondEdition.V2.Framework.SourcePolicy.Tracecoordinates",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyTraceCoordinatesControls.intoActual_read": "H0mework.Checks.SecondEdition.V2.Framework.SourcePolicy.Tracecoordinates",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyTraceCoordinatesControls.completed": "H0mework.Checks.SecondEdition.V2.Framework.SourcePolicy.Tracecoordinates",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyTraceCoordinatesControls.completed_value": "H0mework.Checks.SecondEdition.V2.Framework.SourcePolicy.Tracecoordinates",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyTraceCoordinatesControls.indexed_update": "H0mework.Checks.SecondEdition.V2.Framework.SourcePolicy.Tracecoordinates",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyTraceCoordinatesControls.different_positions": "H0mework.Checks.SecondEdition.V2.Framework.SourcePolicy.Tracecoordinates",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyTraceCoordinatesControls.same_value_distinct_positions": "H0mework.Checks.SecondEdition.V2.Framework.SourcePolicy.Tracecoordinates",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyTraceCoordinatesControls.cofinal_word": "H0mework.Checks.SecondEdition.V2.Framework.SourcePolicy.Tracecoordinates",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyTraceCoordinatesControls.cofinal_next": "H0mework.Checks.SecondEdition.V2.Framework.SourcePolicy.Tracecoordinates",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyTraceCoordinatesControls.cofinal_ledger": "H0mework.Checks.SecondEdition.V2.Framework.SourcePolicy.Tracecoordinates",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyTraceCoordinatesControls.actual_whole": "H0mework.Checks.SecondEdition.V2.Framework.SourcePolicy.Tracecoordinates",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyTraceCoordinatesControls.actual_math_next": "H0mework.Checks.SecondEdition.V2.Framework.SourcePolicy.Tracecoordinates",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyTraceCoordinatesControls.cofinal_whole": "H0mework.Checks.SecondEdition.V2.Framework.SourcePolicy.Tracecoordinates",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyTraceCoordinatesControls.cofinal_math_next": "H0mework.Checks.SecondEdition.V2.Framework.SourcePolicy.Tracecoordinates",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicySelectedStockBirthControls.selected_macro_answer": "H0mework.Checks.SecondEdition.V2.Framework.SourcePolicy.Selectedstockbirth",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicySelectedStockBirthControls.selected_macro_current": "H0mework.Checks.SecondEdition.V2.Framework.SourcePolicy.Selectedstockbirth",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicySelectedStockBirthControls.selected_actual_stock": "H0mework.Checks.SecondEdition.V2.Framework.SourcePolicy.Selectedstockbirth",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicySelectedStockBirthControls.selected_current_stock": "H0mework.Checks.SecondEdition.V2.Framework.SourcePolicy.Selectedstockbirth",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicySelectedStockBirthControls.selected_receipt": "H0mework.Checks.SecondEdition.V2.Framework.SourcePolicy.Selectedstockbirth",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicySelectedStockBirthControls.canonical_visit": "H0mework.Checks.SecondEdition.V2.Framework.SourcePolicy.Selectedstockbirth",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicySelectedStockBirthControls.initial_ne_first_next": "H0mework.Checks.SecondEdition.V2.Framework.SourcePolicy.Selectedstockbirth",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicySelectedStockBirthControls.actual_paid_after_birth": "H0mework.Checks.SecondEdition.V2.Framework.SourcePolicy.Selectedstockbirth",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicySelectedStockBirthControls.actual_paid_compiler": "H0mework.Checks.SecondEdition.V2.Framework.SourcePolicy.Selectedstockbirth"
+        },
+        "closure": "complete type/value, mutual declarations, inductives, constructors and recursor metadata",
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "token": "0e6c7a54fb6e991d285c2d020d838687c0f1526f1f1f6f4c3e757fd264c86250",
+        "source_sha256": "2beec1f4631380ffb915b5c9e8731b8a5acbb15f0e5d66ba096f08107dce4284",
+        "public_modules": [
+          "H0mework.Checks.SecondEdition.V2.Framework.SourcePolicy.Fullframe",
+          "H0mework.Checks.SecondEdition.V2.Framework.SourcePolicy.Querytracereturn",
+          "H0mework.Checks.SecondEdition.V2.Framework.SourcePolicy.Selectedstockbirth",
+          "H0mework.Checks.SecondEdition.V2.Framework.SourcePolicy.Stockquery",
+          "H0mework.Checks.SecondEdition.V2.Framework.SourcePolicy.Tracecoordinates",
+          "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Source",
+          "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Stock",
+          "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Stock.Birth",
+          "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Stock.Coordinates",
+          "H0mework.Versions.V2.Realization.Operations.Inquiry.Context.Native.Frame.Stock.Return"
+        ]
+      },
+      "audit": {
+        "axioms": [
+          "Quot.sound",
+          "Classical.choice",
+          "propext"
+        ],
+        "constants": 57545,
+        "edges": 1378311,
+        "full_metadata": true,
+        "partial": 0,
+        "roots": 128,
+        "token": "0e6c7a54fb6e991d285c2d020d838687c0f1526f1f1f6f4c3e757fd264c86250",
+        "unsafe": 0
+      }
+    },
+    {
+      "package": "v2-core-runtime-calculation",
+      "status": "passed",
+      "exit_code": 0,
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--root=..",
+        "--trust=0",
+        "-Dweak.linter.unnecessarySimpa=false",
+        "-Dweak.linter.style.haveILetI=false",
+        "-Dweak.linter.unusedSimpArgs=false",
+        "-DmaxHeartbeats=2000000",
+        "-Dweak.linter.unusedSectionVars=false",
+        "-Dweak.linter.unnecessarySeqFocus=false",
+        "-Dweak.linter.unusedVariables=false",
+        "-Dweak.linter.unreachableTactic=false",
+        "-Dweak.linter.unusedTactic=false",
+        "-Dweak.linter.defProp=false",
+        "-Dweak.linter.deprecated=false",
+        "-Dlinter.deprecated=false",
+        "-Dweak.linter.tacticAnalysis.introMerge=false",
+        "-Dweak.linter.constructorNameAsVariable=false",
+        "-DwarningAsError=true",
+        "../.local/second-edition-20261009/core-cap-trust-1/audit-003.lean"
+      ],
+      "cwd": "Lean",
+      "started_at": "2026-10-09T10:22:33.049008+00:00",
+      "finished_at": "2026-10-09T10:23:03.444736+00:00",
+      "elapsed_seconds": 30.395,
+      "error": null,
+      "log": ".local/second-edition-20261009/core-cap-trust-1/audit-003.log",
+      "audit_scope": {
+        "package": "v2-core-runtime-calculation",
+        "source_commits": [
+          "71e94e8261d67cf4849a05eb14ac95aa2f7dcbb9"
+        ],
+        "lean_target": "H0mework.Papers.V2CoreRuntimeCalculation",
+        "declarations": {
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.NoIslandNoMagic.CanonicalRiemann.ClozelGeneralizedDual.CenteredGram.IntegralGraphJointAction.OriginalKCombCalculation.Value": "H0mework.Versions.V2.Arithmetic.RiemannRuntime.Calculation.ClozelOriginalKCombSourceCalculation",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.NoIslandNoMagic.CanonicalRiemann.ClozelGeneralizedDual.CenteredGram.IntegralGraphJointAction.OriginalKCombCalculation.Var": "H0mework.Versions.V2.Arithmetic.RiemannRuntime.Calculation.ClozelOriginalKCombSourceCalculation",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.NoIslandNoMagic.CanonicalRiemann.ClozelGeneralizedDual.CenteredGram.IntegralGraphJointAction.OriginalKCombCalculation.code": "H0mework.Versions.V2.Arithmetic.RiemannRuntime.Calculation.ClozelOriginalKCombSourceCalculation",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.NoIslandNoMagic.CanonicalRiemann.ClozelGeneralizedDual.CenteredGram.IntegralGraphJointAction.OriginalKCombCalculation.code_eval": "H0mework.Versions.V2.Arithmetic.RiemannRuntime.Calculation.ClozelOriginalKCombSourceCalculation",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.NoIslandNoMagic.CanonicalRiemann.ClozelGeneralizedDual.CenteredGram.IntegralGraphJointAction.OriginalKCombCalculation.code_budget": "H0mework.Versions.V2.Arithmetic.RiemannRuntime.Calculation.ClozelOriginalKCombSourceCalculation",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.NoIslandNoMagic.CanonicalRiemann.ClozelGeneralizedDual.CenteredGram.IntegralGraphJointAction.OriginalKCombCalculation.Base": "H0mework.Versions.V2.Arithmetic.RiemannRuntime.Calculation.ClozelOriginalKCombSourceCalculation",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.NoIslandNoMagic.CanonicalRiemann.ClozelGeneralizedDual.CenteredGram.IntegralGraphJointAction.OriginalKCombCalculation.Half": "H0mework.Versions.V2.Arithmetic.RiemannRuntime.Calculation.ClozelOriginalKCombSourceCalculation",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.NoIslandNoMagic.CanonicalRiemann.ClozelGeneralizedDual.CenteredGram.IntegralGraphJointAction.OriginalKCombCalculation.reader": "H0mework.Versions.V2.Arithmetic.RiemannRuntime.Calculation.ClozelOriginalKCombSourceCalculation",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.NoIslandNoMagic.CanonicalRiemann.ClozelGeneralizedDual.CenteredGram.IntegralGraphJointAction.OriginalKCombCalculation.component": "H0mework.Versions.V2.Arithmetic.RiemannRuntime.Calculation.ClozelOriginalKCombSourceCalculation",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.NoIslandNoMagic.CanonicalRiemann.ClozelGeneralizedDual.CenteredGram.IntegralGraphJointAction.OriginalKCombCalculation.result": "H0mework.Versions.V2.Arithmetic.RiemannRuntime.Calculation.ClozelOriginalKCombSourceCalculation",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.NoIslandNoMagic.CanonicalRiemann.ClozelGeneralizedDual.CenteredGram.IntegralGraphJointAction.OriginalKCombCalculation.result_value": "H0mework.Versions.V2.Arithmetic.RiemannRuntime.Calculation.ClozelOriginalKCombSourceCalculation",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.NoIslandNoMagic.CanonicalRiemann.ClozelGeneralizedDual.CenteredGram.IntegralGraphJointAction.OriginalKCombCalculation.result_trace": "H0mework.Versions.V2.Arithmetic.RiemannRuntime.Calculation.ClozelOriginalKCombSourceCalculation",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.NoIslandNoMagic.CanonicalRiemann.ClozelGeneralizedDual.CenteredGram.IntegralGraphJointAction.runtimeEffectAuthoritySource": "H0mework.Versions.V2.Arithmetic.RiemannRuntime.PairedOmegaEffectRowRoot",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.NoIslandNoMagic.CanonicalRiemann.ClozelGeneralizedDual.CenteredGram.IntegralGraphJointAction.runtimeEffectLivingSource": "H0mework.Versions.V2.Arithmetic.RiemannRuntime.PairedOmegaEffectRowRoot",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.NoIslandNoMagic.CanonicalRiemann.ClozelGeneralizedDual.CenteredGram.IntegralGraphJointAction.runtimeEffectRoot": "H0mework.Versions.V2.Arithmetic.RiemannRuntime.PairedOmegaEffectRowRoot",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.NoIslandNoMagic.CanonicalRiemann.ClozelGeneralizedDual.CenteredGram.IntegralGraphJointAction.runtimeEffectRoot_reuses_lower_source_emitter": "H0mework.Versions.V2.Arithmetic.RiemannRuntime.PairedOmegaEffectRowRoot",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.NoIslandNoMagic.CanonicalRiemann.ClozelGeneralizedDual.CenteredGram.IntegralGraphJointAction.runtimeEffectRoot_projects_paired_occurrence": "H0mework.Versions.V2.Arithmetic.RiemannRuntime.PairedOmegaEffectRowRoot",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.NoIslandNoMagic.CanonicalRiemann.ClozelGeneralizedDual.CenteredGram.IntegralGraphJointAction.runtimeEffectRecognition": "H0mework.Versions.V2.Arithmetic.RiemannRuntime.PairedOmegaEffectRowRoot",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.NoIslandNoMagic.CanonicalRiemann.ClozelGeneralizedDual.CenteredGram.IntegralGraphJointAction.runtimeCombCalculationInstallation": "H0mework.Versions.V2.Arithmetic.RiemannRuntime.PairedOmegaEffectRowRoot",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.NoIslandNoMagic.CanonicalRiemann.ClozelGeneralizedDual.CenteredGram.IntegralGraphJointAction.runtimeEffectVisit": "H0mework.Versions.V2.Arithmetic.RiemannRuntime.PairedOmegaEffectRowRoot",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.NoIslandNoMagic.CanonicalRiemann.ClozelGeneralizedDual.CenteredGram.IntegralGraphJointAction.runtimeEffectSourceAuthority": "H0mework.Versions.V2.Arithmetic.RiemannRuntime.PairedOmegaEffectRowRoot",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.NoIslandNoMagic.CanonicalRiemann.ClozelGeneralizedDual.CenteredGram.IntegralGraphJointAction.runtimeEffectRootedActive": "H0mework.Versions.V2.Arithmetic.RiemannRuntime.PairedOmegaEffectRowRoot",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.NoIslandNoMagic.CanonicalRiemann.ClozelGeneralizedDual.CenteredGram.IntegralGraphJointAction.installedRuntimeEffect_factorizes": "H0mework.Versions.V2.Arithmetic.RiemannRuntime.PairedOmegaEffectRowRoot",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.NoIslandNoMagic.CanonicalRiemann.ClozelGeneralizedDual.CenteredGram.IntegralGraphJointAction.installedRuntimeEffectOccurrence": "H0mework.Versions.V2.Arithmetic.RiemannRuntime.PairedOmegaEffectRowRoot",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.NoIslandNoMagic.CanonicalRiemann.ClozelGeneralizedDual.CenteredGram.IntegralGraphJointAction.installedRuntimeEffectValue": "H0mework.Versions.V2.Arithmetic.RiemannRuntime.PairedOmegaEffectRowRoot",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.NoIslandNoMagic.CanonicalRiemann.ClozelGeneralizedDual.CenteredGram.IntegralGraphJointAction.installedRuntimeEffectValue_eq_initial": "H0mework.Versions.V2.Arithmetic.RiemannRuntime.PairedOmegaEffectRowRoot",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.NoIslandNoMagic.CanonicalRiemann.ClozelGeneralizedDual.CenteredGram.IntegralGraphJointAction.installedOriginalKReceiptAt": "H0mework.Versions.V2.Arithmetic.RiemannRuntime.PairedOmegaEffectRowRoot",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.NoIslandNoMagic.CanonicalRiemann.ClozelGeneralizedDual.CenteredGram.IntegralGraphJointAction.installedOriginalKReceiptAt_eq_source": "H0mework.Versions.V2.Arithmetic.RiemannRuntime.PairedOmegaEffectRowRoot",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.NoIslandNoMagic.CanonicalRiemann.ClozelGeneralizedDual.CenteredGram.IntegralGraphJointAction.installedRuntimeEffectValue_conservation": "H0mework.Versions.V2.Arithmetic.RiemannRuntime.PairedOmegaEffectRowRoot",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.NoIslandNoMagic.CanonicalRiemann.ClozelGeneralizedDual.CenteredGram.IntegralGraphJointAction.branchNormalizedSeparator_eq_installedRuntimeEffect": "H0mework.Versions.V2.Arithmetic.RiemannRuntime.PairedOmegaEffectRowRoot",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.NoIslandNoMagic.CanonicalRiemann.ClozelGeneralizedDual.CenteredGram.IntegralGraphJointAction.runtimeEffectCausalSuccessor": "H0mework.Versions.V2.Arithmetic.RiemannRuntime.PairedOmegaEffectRowRoot",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.NoIslandNoMagic.CanonicalRiemann.ClozelGeneralizedDual.CenteredGram.IntegralGraphJointAction.runtimeEffectTargetAuthority": "H0mework.Versions.V2.Arithmetic.RiemannRuntime.PairedOmegaEffectRowRoot",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.NoIslandNoMagic.CanonicalRiemann.ClozelGeneralizedDual.CenteredGram.IntegralGraphJointAction.RuntimeEffectFace": "H0mework.Versions.V2.Arithmetic.RiemannRuntime.PairedOmegaEffectRuntimeFacade",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.NoIslandNoMagic.CanonicalRiemann.ClozelGeneralizedDual.CenteredGram.IntegralGraphJointAction.runtimeEffectFacade": "H0mework.Versions.V2.Arithmetic.RiemannRuntime.PairedOmegaEffectRuntimeFacade",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.NoIslandNoMagic.CanonicalRiemann.ClozelGeneralizedDual.CenteredGram.IntegralGraphJointAction.runtimeEffectFacadeReadoutAt": "H0mework.Versions.V2.Arithmetic.RiemannRuntime.PairedOmegaEffectRuntimeFacade",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.NoIslandNoMagic.CanonicalRiemann.ClozelGeneralizedDual.CenteredGram.IntegralGraphJointAction.runtimeEffectFacadeReadoutAt_heq_installedFiber": "H0mework.Versions.V2.Arithmetic.RiemannRuntime.PairedOmegaEffectRuntimeFacade",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.NoIslandNoMagic.CanonicalRiemann.ClozelGeneralizedDual.CenteredGram.IntegralGraphJointAction.runtimeEffectFacadeReadoutAt_factorizes": "H0mework.Versions.V2.Arithmetic.RiemannRuntime.PairedOmegaEffectRuntimeFacade",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.NoIslandNoMagic.CanonicalRiemann.ClozelGeneralizedDual.CenteredGram.IntegralGraphJointAction.runtimeCombCalculationReadoutAt": "H0mework.Versions.V2.Arithmetic.RiemannRuntime.PairedOmegaEffectRuntimeFacade",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.NoIslandNoMagic.CanonicalRiemann.ClozelGeneralizedDual.CenteredGram.IntegralGraphJointAction.runtimeCombCalculationReadoutAt_source": "H0mework.Versions.V2.Arithmetic.RiemannRuntime.PairedOmegaEffectRuntimeFacade",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.NoIslandNoMagic.CanonicalRiemann.ClozelGeneralizedDual.CenteredGram.IntegralGraphJointAction.runtimeCombCalculationResultAt": "H0mework.Versions.V2.Arithmetic.RiemannRuntime.PairedOmegaEffectRuntimeFacade",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.NoIslandNoMagic.CanonicalRiemann.ClozelGeneralizedDual.CenteredGram.IntegralGraphJointAction.runtimeCombCalculationResultAt_source": "H0mework.Versions.V2.Arithmetic.RiemannRuntime.PairedOmegaEffectRuntimeFacade",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.NoIslandNoMagic.CanonicalRiemann.ClozelGeneralizedDual.CenteredGram.IntegralGraphJointAction.runtimeCombCalculationReadoutAt_factorizes": "H0mework.Versions.V2.Arithmetic.RiemannRuntime.PairedOmegaEffectRuntimeFacade",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.RuntimeCombCalculationGate.Value": "H0mework.Checks.SecondEdition.V2.NoIsland.RiemannCombSource.Runtimecalculation",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.RuntimeCombCalculationGate.Var": "H0mework.Checks.SecondEdition.V2.NoIsland.RiemannCombSource.Runtimecalculation",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.RuntimeCombCalculationGate.half": "H0mework.Checks.SecondEdition.V2.NoIsland.RiemannCombSource.Runtimecalculation",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.RuntimeCombCalculationGate.occurrence": "H0mework.Checks.SecondEdition.V2.NoIsland.RiemannCombSource.Runtimecalculation",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.RuntimeCombCalculationGate.origin": "H0mework.Checks.SecondEdition.V2.NoIsland.RiemannCombSource.Runtimecalculation",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.RuntimeCombCalculationGate.read": "H0mework.Checks.SecondEdition.V2.NoIsland.RiemannCombSource.Runtimecalculation",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.RuntimeCombCalculationGate.raw": "H0mework.Checks.SecondEdition.V2.NoIsland.RiemannCombSource.Runtimecalculation",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.RuntimeCombCalculationGate.inputReader": "H0mework.Checks.SecondEdition.V2.NoIsland.RiemannCombSource.Runtimecalculation",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.RuntimeCombCalculationGate.installed_value": "H0mework.Checks.SecondEdition.V2.NoIsland.RiemannCombSource.Runtimecalculation",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.RuntimeCombCalculationGate.installed_trace": "H0mework.Checks.SecondEdition.V2.NoIsland.RiemannCombSource.Runtimecalculation",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.RuntimeCombCalculationGate.installed_targetState": "H0mework.Checks.SecondEdition.V2.NoIsland.RiemannCombSource.Runtimecalculation",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.RuntimeCombCalculationGate.installed_relation": "H0mework.Checks.SecondEdition.V2.NoIsland.RiemannCombSource.Runtimecalculation",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.RuntimeCombCalculationGate.installed_inverse": "H0mework.Checks.SecondEdition.V2.NoIsland.RiemannCombSource.Runtimecalculation",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.RuntimeCombCalculationGate.installed_cochain": "H0mework.Checks.SecondEdition.V2.NoIsland.RiemannCombSource.Runtimecalculation",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.RuntimeCombCalculationGate.installed_physical": "H0mework.Checks.SecondEdition.V2.NoIsland.RiemannCombSource.Runtimecalculation",
+          "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.RuntimeCombCalculationGate.math_trace_not_one": "H0mework.Checks.SecondEdition.V2.NoIsland.RiemannCombSource.Runtimecalculation"
+        },
+        "closure": "complete type/value, mutual declarations, inductives, constructors and recursor metadata",
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "token": "959992d079c8212d162ee008391a6c7078d4fdfbaa3e0317ffcc1172c5ce394b",
+        "source_sha256": "84059e3f5e249e376bbeb2ca780cbe2d8ecd4685fc1c61cbccfb395aff2ae6a4",
+        "public_modules": [
+          "H0mework.Checks.SecondEdition.V2.NoIsland.RiemannCombSource.Runtimecalculation",
+          "H0mework.Versions.V2.Arithmetic.RiemannRuntime.Calculation.ClozelOriginalKCombSourceCalculation",
+          "H0mework.Versions.V2.Arithmetic.RiemannRuntime.PairedOmegaEffectRowRoot",
+          "H0mework.Versions.V2.Arithmetic.RiemannRuntime.PairedOmegaEffectRuntimeFacade"
+        ]
+      },
+      "audit": {
+        "axioms": [
+          "Quot.sound",
+          "Classical.choice",
+          "propext"
+        ],
+        "constants": 75718,
+        "edges": 2172637,
+        "full_metadata": true,
+        "partial": 0,
+        "roots": 58,
+        "token": "959992d079c8212d162ee008391a6c7078d4fdfbaa3e0317ffcc1172c5ce394b",
+        "unsafe": 0
+      }
+    }
+  ],
+  "publication_readiness": "not_assessed",
+  "preflight": {
+    "command": [
+      "lake",
+      "--no-build",
+      "build",
+      "H0mework.Papers.V2CoreCompletion",
+      "H0mework.Papers.V2CoreFullStock",
+      "H0mework.Papers.V2CoreRuntimeCalculation"
+    ],
+    "cwd": "Lean",
+    "started_at": "2026-10-09T10:22:25.613139+00:00",
+    "finished_at": "2026-10-09T10:22:33.042328+00:00",
+    "elapsed_seconds": 7.429,
+    "exit_code": 0,
+    "error": null,
+    "log": ".local/second-edition-20261009/core-cap-trust-1/preflight.log",
+    "scope": "validate existing built targets against current source; no build permitted"
+  },
+  "input_identity_after": {
+    "sha256": {
+      "claim_map": "f168cc59f46919786a39129e4654006f44eb22af4b288ea60166f5afc3b3bee4",
+      "export_map": "abc323367c44a1a23b9452b7c4f28a800c2712bd32c0c561adc65344c75bd037",
+      "lakefile": "9bd08df4b08ab92982dc0b35d9e60caac77f8f6932436ff6d2ef0f311fce1209",
+      "toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+      "manifest": "2fe02acc26899fd57d82018e711e79c251e26d0b6d2bb370af81db0ed312fbfd"
+    },
+    "package_inputs": {
+      "v2-core-completion": "b6a7e0340474ad8ad4bdbff1b4d6728a3d609330605ead7745943a0988a2c6fb",
+      "v2-core-full-stock": "85244d68ecc8dfe2a24a2140c39b15ce5da1a6d35f74ed51c4c8c24a81d014f4",
+      "v2-core-runtime-calculation": "c4f55cab577948aff72afbdafdbea94b9c328f2ddf529fc08015b1d8ab880602"
+    }
+  },
+  "inputs_unchanged": true,
+  "receipt": ".local/second-edition-20261009/core-cap-trust-1/result.json",
+  "compiled_targets_after": {
+    "H0mework.Papers.V2CoreCompletion": "cef8946d0088e7561922bd27fd7c352a2ebe4dde652c0d0d26b25530f69d9c9b",
+    "H0mework.Papers.V2CoreFullStock": "80f64be012db62529bb6d91265eee799b17897b916c09224ee9c4f78cfff7a26",
+    "H0mework.Papers.V2CoreRuntimeCalculation": "6bf388210e1ad49b3ef7e347356abdc2810d815256bfde79987393b8e5c15b15"
+  }
+}
