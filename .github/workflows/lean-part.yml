@@ -66,11 +66,11 @@ jobs:
           df -h /
       - name: Add swap and use every runner thread
         if: steps.mode.outputs.build == 'true' && inputs.part != 'complete'
-        # Single generated decision proofs peak at about 24 GiB, above the runner's 16 GiB,
+        # Single generated proofs peak at up to 58 GiB, far above the runner's 16 GiB,
         # and a hosted runner out of memory is shut down mid-step. Swap absorbs those peaks,
         # so the build runs the four threads its plan assumes instead of one memory slot.
         run: |
-          sudo fallocate -l 48G /lean.swap
+          sudo fallocate -l 56G /lean.swap
           sudo chmod 600 /lean.swap
           sudo mkswap /lean.swap > /dev/null
           sudo swapon /lean.swap

@@ -35,6 +35,10 @@ CACHE_VERSION = "lean-parts-v1"
 CI_FILES = ("tools/ci_plan.py", ".github/workflows/ci.yml", ".github/workflows/lean-part.yml")
 # Seconds per module on a hosted runner, refreshed from CI logs with `ci_plan.py times`.
 TIMES = "tools/ci_times.tsv"
+# Peak resident GiB of memory-heavy modules, measured locally; `Versions.<v>.` copies share an entry.
+MEMORY = "tools/ci_memory.tsv"
+# Several such modules at once exhaust a runner's 16 GiB and its swap, so each compiles alone.
+SOLO_GIB = 14.0
 # Committed module -> shard placement; `plan --rebalance` rewrites it from scratch.
 LAYOUT = "tools/ci_layout.tsv"
 DEFAULT_SECONDS = 10.0
@@ -135,6 +139,13 @@ def read_times(path: Path) -> dict[str, float]:
         seconds, name = line.split("\t")
         times[name] = float(seconds)
     return times
+
+
+def solo_modules(modules, peaks: dict[str, float]) -> list[str]:
+    """Modules whose measured peak needs the runner to themselves, in the given order."""
+    def peak(name):
+        return peaks.get(name, peaks.get(re.sub(r"^H0mework\.Versions\.[^.]+\.", "H0mework.", name), 0.0))
+    return [n for n in modules if peak(n) >= SOLO_GIB]
 
 
 def estimate_costs(modules, times: dict[str, float]) -> dict[str, float]:
@@ -303,6 +314,7 @@ def make_plan(root: Path, layout: Layout = Layout(), rebalance: bool = False) ->
         raise ValueError("A default module imports a non-default library")
     dependencies = {n: local[n] for n in selected}
     cost = estimate_costs(dependencies, read_times(root / TIMES))
+    peaks = read_times(root / MEMORY)
     previous = {} if rebalance else read_layout(root / LAYOUT)
     if previous:
         assignment = sticky_assignment(dependencies, cost, previous, layout)
@@ -351,6 +363,7 @@ def make_plan(root: Path, layout: Layout = Layout(), rebalance: bool = False) ->
         parts[name] = {
             "stage": shard["stage"], "modules": shard["owned"], "targets": targets,
             "progress_modules": sorted(shard["build"]),
+            "solo": solo_modules(sorted(shard["build"], key=position.get), peaks),
             "upstream": upstream, "fingerprint": fingerprint, "module_count": len(shard["owned"]),
             "hours": round(max(shard["work"] / layout.workers, max(chain.values())) / 3600, 2),
         }
@@ -549,31 +562,39 @@ def build_part(root: Path, part: dict, check_only: bool = False, output: Path | 
         nonlocal stopped
         stopped = stopped or "cancelled"
 
+    # Memory-heavy modules first, one Lake call each, so none of them shares the runner;
+    # Lake still builds their remaining imports in parallel.
+    commands = [["lake", "build", "+" + n] for n in part.get("solo", [])]
+    commands.append(["lake", "build", *part["targets"]])
     previous = {sig: signal.signal(sig, interrupted) for sig in (signal.SIGINT, signal.SIGTERM)}
     try:
-        # Lake decides freshness; a cache hit never bypasses resource/hash checks.
-        process = subprocess.Popen(["lake", "build", *part["targets"]], cwd=root / "Lean",
-                                   start_new_session=True, env=environment)
         swept = time.monotonic()
         checkpointed = swept
-        while process.poll() is None and not stopped:
-            if deadline is not None and time.time() >= deadline:
-                stopped = "incomplete"
-            elif checkpoint and time.monotonic() - checkpointed >= checkpoint_interval:
-                built = built_since(build, progress_modules, started)
-                if built > checkpoint_built and checkpoint():
-                    checkpoint_built = built
-                    print(f"Saved live progress after {built} completed modules", flush=True)
-                checkpointed = time.monotonic()
-            elif time.monotonic() - swept >= 5:
-                completed_setup_files(build)
-                swept = time.monotonic()
-            else:
-                time.sleep(0.5)
-        if stopped:
-            # Lake writes a module's trace only after its outputs, so stopping keeps every
-            # finished module reusable and rebuilds the interrupted ones next time.
-            stop_group(process, 30.0 if stopped == "incomplete" else 3.0)
+        for command in commands:
+            if command[2:] != part["targets"]:
+                print(f"Compiling {command[2][1:]} alone", flush=True)
+            # Lake decides freshness; a cache hit never bypasses resource/hash checks.
+            process = subprocess.Popen(command, cwd=root / "Lean", start_new_session=True, env=environment)
+            while process.poll() is None and not stopped:
+                if deadline is not None and time.time() >= deadline:
+                    stopped = "incomplete"
+                elif checkpoint and time.monotonic() - checkpointed >= checkpoint_interval:
+                    built = built_since(build, progress_modules, started)
+                    if built > checkpoint_built and checkpoint():
+                        checkpoint_built = built
+                        print(f"Saved live progress after {built} completed modules", flush=True)
+                    checkpointed = time.monotonic()
+                elif time.monotonic() - swept >= 5:
+                    completed_setup_files(build)
+                    swept = time.monotonic()
+                else:
+                    time.sleep(0.5)
+            if stopped:
+                # Lake writes a module's trace only after its outputs, so stopping keeps every
+                # finished module reusable and rebuilds the interrupted ones next time.
+                stop_group(process, 30.0 if stopped == "incomplete" else 3.0)
+            if stopped or process.returncode != 0:
+                break
     finally:
         for sig, handler in previous.items():
             signal.signal(sig, handler)

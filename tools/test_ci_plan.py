@@ -18,8 +18,8 @@ from unittest.mock import Mock, patch
 import ci_plan
 from ci_plan import (LAYOUT, Layout, ReleaseStore, ancestors_within, build_part, closure, completed_setup_files,
                      coverage, estimate_costs, imports, make_plan, pack, prune_store, read_times, restore_choice,
-                     save_archive, stage_number, stage_plan, sticky_assignment, unpack, update_times, write_layout,
-                     continuation_parts, pack_checkpoint)
+                     save_archive, solo_modules, stage_number, stage_plan, sticky_assignment, unpack, update_times,
+                     write_layout, continuation_parts, pack_checkpoint)
 
 # A synthetic project with ten-second modules spreads over several stages and shards.
 SPLIT = Layout(window=25, workers=1, fill=1.0, shared_users=99, shared_chain=0)
@@ -110,6 +110,28 @@ class PlanTests(unittest.TestCase):
         self.assertGreater(len(plan["stages"]), 1)
         self.assertGreater(max(map(len, plan["stages"])), 1)
         self.assertGreater(sum("H0mework.Foundation.Shared" in b for b in builds.values()), 1)
+
+    def test_measured_heavy_modules_compile_alone_in_import_order(self):
+        (self.root / "tools").mkdir()
+        (self.root / ci_plan.MEMORY).write_text(
+            "30\tH0mework.Chemistry.LAlanineRefillRows.Block2\n20\tH0mework.Chemistry.LAlanineRefillRows.Block1\n"
+            "13.9\tH0mework.Physics.Independent\n")
+        plan = make_plan(self.root, SPLIT)
+        solo = {m for p in plan["parts"].values() for m in p.get("solo", [])}
+        self.assertEqual(solo, {"H0mework.Chemistry.LAlanineRefillRows.Block1",
+                                "H0mework.Chemistry.LAlanineRefillRows.Block2"})
+        for part in plan["parts"].values():
+            listed = part.get("solo", [])
+            self.assertLessEqual(set(listed), set(part.get("progress_modules", [])))
+            if len(listed) == 2:
+                self.assertEqual(listed, ["H0mework.Chemistry.LAlanineRefillRows.Block1",
+                                          "H0mework.Chemistry.LAlanineRefillRows.Block2"])
+
+    def test_versioned_copies_share_a_measured_peak(self):
+        peaks = {"H0mework.Physics.Heavy": 36.0, "H0mework.Versions.AD.Physics.Light": 2.0}
+        names = ["H0mework.Versions.AD.Physics.Heavy", "H0mework.Versions.CAP.Physics.Heavy",
+                 "H0mework.Physics.Heavy", "H0mework.Versions.AD.Physics.Light", "H0mework.Physics.Other"]
+        self.assertEqual(solo_modules(names, peaks), names[:3])
 
     def test_plan_is_deterministic(self):
         self.assertEqual(make_plan(self.root, SPLIT), make_plan(self.root, SPLIT))
@@ -461,6 +483,26 @@ class BuildTests(unittest.TestCase):
                 self.output.unlink(missing_ok=True)
                 self.assertEqual(build_part(self.root, self.part, output=self.output), code)
                 self.assertEqual(self.outputs(), {"started": "true", "current": current, "status": status, "built": built})
+
+    def test_heavy_modules_compile_alone_before_the_part_and_a_failure_stops_the_rest(self):
+        self.part["solo"] = ["H0mework.HeavyA", "H0mework.HeavyB"]
+        record = """
+            import json
+            with open("calls.jsonl", "a") as log:
+                log.write(json.dumps(sys.argv[2:]) + "\\n")
+            sys.exit(1 if sys.argv[2:] == {failing} else 0)
+        """
+        calls = self.root / "Lean/calls.jsonl"
+        for failing, expected, status in (
+                (None, [["+H0mework.HeavyA"], ["+H0mework.HeavyB"], ["+H0mework.Done"]], "complete"),
+                (["+H0mework.HeavyA"], [["+H0mework.HeavyA"]], "failed")):
+            with self.subTest(failing=failing), self.lake(record.format(failing=failing)):
+                calls.unlink(missing_ok=True)
+                self.output.unlink(missing_ok=True)
+                code = build_part(self.root, self.part, output=self.output)
+                self.assertEqual(code, 0 if status == "complete" else 1)
+                self.assertEqual([json.loads(line) for line in calls.read_text().splitlines()], expected)
+                self.assertEqual(self.outputs()["status"], status)
 
     def test_deadline_stops_lake_and_its_children_and_keeps_progress(self):
         child = """
