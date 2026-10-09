@@ -47,6 +47,8 @@ theorem receiver_paid : ∃ paid : DebtActivationWorld.GeneratedStepAt
  (receiver binding seed frame scalar pair).action=.inr paid := by
  have charged := Future.receiver_budget frame (cfg binding seed) scalar pair (by
   have fee := actual_fee binding seed frame
+  rw [SourceOperationInquiry.Context.Faces.Execution.Activation.Shared.query_generated] at fee
+  change 3 ≤ remaining (Future.actionRaw frame (cfg binding seed)).expression at fee
   omega)
  cases selected : (receiver binding seed frame scalar pair).action with
  | inr paid => exact ⟨paid,rfl⟩

@@ -1,5 +1,5 @@
-import H0mework.Versions.C62.Realization.Operations.Tree.Fold.Dependent.Branch.JointQuery.Actor.Operation.Query.Inventory.Observer.CurrentChild.Dynamic.Live.Native.Action.Coupled.Registry.Calculation.Common.Feedback.Continuation.Future.Source
-import H0mework.Versions.C62.Realization.Operations.Tree.Fold.Dependent.Branch.JointQuery.Actor.Operation.Query.Inventory.Observer.CurrentChild.Dynamic.Live.Native.Action.Coupled.Registry.Calculation.Common.Feedback.Continuation.Source
+import SaturationMonoid.GenericFoundation.Operations.Native.Tree.Fold.Dependent.Branch.JointQuery.Actor.Operation.Query.Inventory.Observer.CurrentChild.Dynamic.Live.Native.Action.Coupled.Registry.Calculation.Common.Feedback.Continuation.Future.Source
+import SaturationMonoid.GenericFoundation.Operations.Native.Tree.Fold.Dependent.Branch.JointQuery.Actor.Operation.Query.Inventory.Observer.CurrentChild.Dynamic.Live.Native.Action.Coupled.Registry.Calculation.Common.Feedback.Continuation.Source
 set_option autoImplicit false
 noncomputable section
 universe u
@@ -26,7 +26,7 @@ abbrev cfg : SourceOperationInquiry.Context.Faces.Execution.Activation.Programme
 
 theorem source_query_charge : 2≤remaining (Q.query frame (cfg seed)).raw.expression := by
  have native := Future.native_query_charge frame seed
- rw [raw_generated]
+ rw [raw_generated] at native ⊢
  exact native
 variable (scalar : RootedAccountedUnfolding (PresentedRelationEventAt (Expr (PairValue W) (cfg seed).LowVar s)))
 variable (pair : RootedAccountedUnfolding (PresentedRelationEventAt (Expr (PairValue (PairValue W)) (cfg seed).LowVar s)))

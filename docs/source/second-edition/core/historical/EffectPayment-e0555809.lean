@@ -1,4 +1,4 @@
-import H0mework.Versions.PR.Realization.Operations.Tree.Fold.Dependent.Branch.JointQuery.Actor.Operation.Query.Inventory.Observer.CurrentChild.Dynamic.Live.Native.Action.Coupled.Registry.Calculation.Common.Feedback.Continuation.SourceFamily.Effect.Source
+import SaturationMonoid.GenericFoundation.Operations.Native.Tree.Fold.Dependent.Branch.JointQuery.Actor.Operation.Query.Inventory.Observer.CurrentChild.Dynamic.Live.Native.Action.Coupled.Registry.Calculation.Common.Feedback.Continuation.SourceFamily.Effect.Source
 set_option autoImplicit false
 noncomputable section
 universe u
@@ -47,8 +47,6 @@ theorem receiver_paid : ∃ paid : DebtActivationWorld.GeneratedStepAt
  (receiver binding seed frame scalar pair).action=.inr paid := by
  have charged := Future.receiver_budget frame (cfg binding seed) scalar pair (by
   have fee := actual_fee binding seed frame
-  rw [SourceOperationInquiry.Context.Faces.Execution.Activation.Shared.query_generated] at fee
-  change 3 ≤ remaining (Future.actionRaw frame (cfg binding seed)).expression at fee
   omega)
  cases selected : (receiver binding seed frame scalar pair).action with
  | inr paid => exact ⟨paid,rfl⟩
