@@ -1,5 +1,5 @@
-import H0mework.Versions.C62.Realization.Operations.Tree.Fold.Dependent.Branch.JointQuery.Actor.Operation.Query.Inventory.Observer.CurrentChild.Dynamic.Live.Native.Action.Coupled.Registry.Calculation.Common.Feedback.Continuation.SourceFamily.Foresight.Contextual.Profile.ActiveClaim.Source
-import H0mework.Versions.C62.Realization.Operations.Tree.Fold.Dependent.Branch.JointQuery.Actor.Operation.Query.Inventory.Observer.CurrentChild.Dynamic.Live.Native.Action.Coupled.Registry.Calculation.Common.Feedback.Continuation.SourceFamily.Effect.Environment.Generated
+import SaturationMonoid.GenericFoundation.Operations.Native.Tree.Fold.Dependent.Branch.JointQuery.Actor.Operation.Query.Inventory.Observer.CurrentChild.Dynamic.Live.Native.Action.Coupled.Registry.Calculation.Common.Feedback.Continuation.SourceFamily.Foresight.Contextual.Profile.ActiveClaim.Source
+import SaturationMonoid.GenericFoundation.Operations.Native.Tree.Fold.Dependent.Branch.JointQuery.Actor.Operation.Query.Inventory.Observer.CurrentChild.Dynamic.Live.Native.Action.Coupled.Registry.Calculation.Common.Feedback.Continuation.SourceFamily.Effect.Environment.Generated
 set_option autoImplicit false
 noncomputable section
 universe u
@@ -41,8 +41,7 @@ include paid in
 theorem decoder_active : E.actualDecoder binding n packet=Claim.activeEnv binding n packet := by
  rcases paid with ⟨step,actual⟩
  exact (Lower.SourceFamily.Effect.Environment.Generated.packet_decoder_paid
-  (C.factory (s:=s) binding) (Lower.SourceFamily.Foresight.Contextual.factory_action_environment binding)
-  n packet step actual).trans
+  (C.factory (s:=s) binding) n packet step actual).trans
   (Claim.input_environment binding n packet).symm
 
 include paid in

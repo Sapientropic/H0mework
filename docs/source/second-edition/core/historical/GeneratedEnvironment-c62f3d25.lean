@@ -1,5 +1,5 @@
-import H0mework.Versions.C62.Realization.Operations.Tree.Fold.Dependent.Branch.JointQuery.Actor.Operation.Query.Inventory.Observer.CurrentChild.Dynamic.Live.Native.Action.Coupled.Registry.Calculation.Common.Feedback.Continuation.SourceFamily.Effect.Installed
-import H0mework.Versions.C62.Realization.Operations.Tree.Fold.Dependent.Branch.JointQuery.Actor.Operation.Query.Inventory.Observer.CurrentChild.Dynamic.Live.Native.Action.Coupled.Registry.Calculation.Common.Feedback.Continuation.SourceFamily.Foresight.Paid.Effect
+import SaturationMonoid.GenericFoundation.Operations.Native.Tree.Fold.Dependent.Branch.JointQuery.Actor.Operation.Query.Inventory.Observer.CurrentChild.Dynamic.Live.Native.Action.Coupled.Registry.Calculation.Common.Feedback.Continuation.SourceFamily.Effect.Installed
+import SaturationMonoid.GenericFoundation.Operations.Native.Tree.Fold.Dependent.Branch.JointQuery.Actor.Operation.Query.Inventory.Observer.CurrentChild.Dynamic.Live.Native.Action.Coupled.Registry.Calculation.Common.Feedback.Continuation.SourceFamily.Foresight.Paid.Effect
 set_option autoImplicit false
 noncomputable section
 universe u
@@ -30,14 +30,6 @@ def packetDecoder (n : Nat) (data : Lower.SourceFamily.Packet (W:=W) (X:=X) (s:=
       (Lower.SourceFamily.receiver source n data).registered (Lower.SourceFamily.receiver source n data).packetAt
       (Q.actualOccurrence (Lower.SourceFamily.receiver source n data)))
 
-variable (sourceActionEnvironment : ∀ (n : Nat) (seed : Lower.SourceFamily.Seed W X s n)
- (frame : M.Frame (Value:=Lower.Value W n) (Var:=X) (sort:=s))
- {current : RootGeneratedDebtActivationJointSource.Successor.CompilerFromPacketSourceLaw.Current frame.registered}
- (supplied : SourceOperationInquiry.Context.Installation.Occurrence frame (current:=current)),
- (SourceGeneratedInquiryReceiptAction.actionReader frame (Lower.SourceFamily.cfg source n seed) supplied).environment=
- ((Q.datum frame (Lower.SourceFamily.cfg source n seed)).reader supplied).environment)
-
-include sourceActionEnvironment in
 theorem packet_decoder_paid (n : Nat) (data : Lower.SourceFamily.Packet (W:=W) (X:=X) (s:=s) n)
     (paid : DebtActivationWorld.GeneratedStepAt
       (RootGeneratedDebtActivationJointSource.Idle.law data.1.registered.input.environment data.1.registered.input.expression)
@@ -46,7 +38,7 @@ theorem packet_decoder_paid (n : Nat) (data : Lower.SourceFamily.Packet (W:=W) (
   unfold packetAfter SourceGeneratedInquiryReceiptAction.afterEnvironment
   unfold SourceOperationInquiry.Context.Faces.Execution.Activation.Shared.next
   rw [actual]
-  exact (sourceActionEnvironment n data.2 data.1.mathNext (Q.actualOccurrence data.1.mathNext)).symm
+  rfl
 
 variable (sourceRaw : ∀ (n : Nat) (seed : Lower.SourceFamily.Seed W X s n)
     (frame : M.Frame (Value:=Lower.Value W n) (Var:=X) (sort:=s)),
@@ -54,7 +46,7 @@ variable (sourceRaw : ∀ (n : Nat) (seed : Lower.SourceFamily.Seed W X s n)
       Future.Replay.Source.pairEnvironment (Future.Replay.Binding.at binding n)
         (E.epoch frame) (Q.actualOccurrence frame))
 
-include sourceRaw sourceActionEnvironment in
+include sourceRaw in
 theorem packet_step_environment (n : Nat) (data : Lower.SourceFamily.Packet (W:=W) (X:=X) (s:=s) n)
     (paid : DebtActivationWorld.GeneratedStepAt
       (RootGeneratedDebtActivationJointSource.Idle.law data.1.registered.input.environment data.1.registered.input.expression)
@@ -69,7 +61,7 @@ theorem packet_step_environment (n : Nat) (data : Lower.SourceFamily.Packet (W:=
       (Q.actualOccurrence (Lower.SourceFamily.receiver source n data)) = packetDecoder source n data := rfl
   exact congrArg (fun base : Env (Lower.Value W (n+1)) X =>
     pairEnvironment base (SourceSubstitution.sourceEnvironment (Future.Replay.Binding.at binding (n+1)) base-base))
-    (decoded.trans (packet_decoder_paid source sourceActionEnvironment n data paid actual))
+    (decoded.trans (packet_decoder_paid source n data paid actual))
 
 variable (initial : M.Frame (Value:=W) (Var:=X) (sort:=s))
 variable (firstCfg : A.Programme (PhysicalValue:=W) (PhysicalVar:=X) (sort:=s))
@@ -77,7 +69,7 @@ variable (language : firstCfg.LowVar=X)
 variable (sourceCharge : ∀ n seed frame, 2≤remaining
   (Q.query frame (Lower.SourceFamily.cfg source n seed)).raw.expression)
 
-include sourceRaw sourceCharge sourceActionEnvironment in
+include sourceRaw sourceCharge in
 theorem generic_native_environment
     (firstCharge : 2≤remaining (Q.query initial firstCfg).raw.expression) (n : Nat) :
     packetEnvironment source (n+2) (Lower.SourceFamily.tailData source initial firstCfg language (n+1)) =
@@ -88,7 +80,7 @@ theorem generic_native_environment
   rcases Lower.SourceFamily.Effect.PaidSource.native_paid_from_raw initial firstCfg language source sourceCharge firstCharge n
     with ⟨paid,selected⟩
   rw [Lower.SourceFamily.Foresight.Paid.tail_next]
-  exact packet_step_environment source binding sourceActionEnvironment sourceRaw (n+1)
+  exact packet_step_environment source binding sourceRaw (n+1)
     (Lower.SourceFamily.tailData source initial firstCfg language n) paid selected
 end Lower.SourceFamily.Effect.Environment.Generated
 

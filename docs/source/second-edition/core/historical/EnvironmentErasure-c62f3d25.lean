@@ -1,5 +1,5 @@
-import H0mework.Versions.C62.Realization.Operations.Tree.Fold.Dependent.Branch.JointQuery.Actor.Operation.Query.Inventory.Observer.CurrentChild.Dynamic.Live.Native.Action.Coupled.Registry.Calculation.Common.Feedback.Continuation.SourceFamily.Foresight.Contextual.Factory
-import H0mework.Versions.C62.Realization.Operations.Tree.Fold.Dependent.Branch.JointQuery.Actor.Operation.Query.Inventory.Observer.CurrentChild.Dynamic.Live.Native.Action.Coupled.Registry.Calculation.Common.Feedback.Continuation.SourceFamily.Effect.Environment.Generated
+import SaturationMonoid.GenericFoundation.Operations.Native.Tree.Fold.Dependent.Branch.JointQuery.Actor.Operation.Query.Inventory.Observer.CurrentChild.Dynamic.Live.Native.Action.Coupled.Registry.Calculation.Common.Feedback.Continuation.SourceFamily.Foresight.Contextual.Factory
+import SaturationMonoid.GenericFoundation.Operations.Native.Tree.Fold.Dependent.Branch.JointQuery.Actor.Operation.Query.Inventory.Observer.CurrentChild.Dynamic.Live.Native.Action.Coupled.Registry.Calculation.Common.Feedback.Continuation.SourceFamily.Effect.Environment.Generated
 set_option autoImplicit false
 noncomputable section
 universe u
@@ -55,12 +55,6 @@ theorem actual_after_environment
  unfold SourceGeneratedInquiryReceiptAction.afterEnvironment
  unfold SourceOperationInquiry.Context.Faces.Execution.Activation.Shared.next
  rw [selected]
- change (SourceGeneratedInquiryReceiptAction.actionReader frame.mathNext (actualCfg binding n seed)
-   (SourceOperationInquiry.Context.Faces.Execution.Activation.Shared.actualOccurrence frame.mathNext)).environment=
-  (SourceGeneratedInquiryReceiptAction.actionReader frame.mathNext (beforeCfg binding n seed)
-   (SourceOperationInquiry.Context.Faces.Execution.Activation.Shared.actualOccurrence frame.mathNext)).environment
- apply (Lower.SourceFamily.Foresight.Contextual.factory_action_environment binding n seed frame.mathNext
-   (SourceOperationInquiry.Context.Faces.Execution.Activation.Shared.actualOccurrence frame.mathNext)).trans
  change (((actualCfg binding n seed).datum (SourceOperationInquiry.Context.Faces.Execution.Activation.epoch frame.mathNext)).reader
   (SourceOperationInquiry.Context.Faces.Execution.Activation.Shared.actualOccurrence frame.mathNext)).environment=_
  exact reader_environment binding n seed (SourceOperationInquiry.Context.Faces.Execution.Activation.epoch frame.mathNext)
