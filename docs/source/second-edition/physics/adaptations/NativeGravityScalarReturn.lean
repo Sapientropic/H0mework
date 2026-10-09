@@ -1,5 +1,5 @@
-import H0mework.Versions.C62.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalSourcePropagationNativeActionJets
-import H0mework.Versions.AC.Physics.LowEnergy.AlphaSource.CanonicalPreparationOriginalJacobi
+import CanonicalSourcePropagationNativeActionJets
+import CanonicalPreparationOriginalJacobi
 
 set_option autoImplicit false
 set_option maxHeartbeats 1200000

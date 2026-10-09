@@ -22,9 +22,11 @@ C62 的查询与计算读口现在各自承担真实责任。receiver 的正费�
 
 物理 prepared increment Ward 的最终证明现在直接消费已证 `increment_wedge`，消除巨大 Completion 实例的重复代数归一。纯证明补充为 `ca96ff382e5eaff4b231422202d5a7b051a5d0bf`；原声明、前提、定义与 heartbeat 设置保持，原源码独立保存。真实 import 图限定影响为两个新增物理包和八个新增低能包，已签收核心与五个低能继承包的源码闭包保持。
 
+GSR 九份副本已同步稀疏证明适配：先用原 `originalRho_fast`，再以真空列四个非零位置核验原结论。原源码 SHA／epoch 保留，默认公开视图使用适配证明，`--exact` 恢复原字节。R71e 完整模块实测通过，541 秒、峰值 16.03 GiB；其余副本依次构建。核心五包、Bell、S／T／Q3／AC 不受影响；AD／AE 已保留原验收并将当前公开源码范围标为待重验。
+
 ## 当前结构责任
 
-完成剩余三个物理包与九个低能新增 epoch 包的实际构建和全量声明审查，特别是 Q6 新增 21 根的真实 Noether／完整量子响应闭包。原 16-target 批次已报告 Ward elaboration 超时，原失败继续保留；修正后的公开模块及其 prepared current／Coulomb 消费者已独立构建通过，原批次其余依赖继续运行。L24–L25 复用已付 C62 与本批共享依赖缓存。三篇待付论文入口仍须按整篇构建验收，科学生成链不重算。
+完成剩余三个物理包、九个低能新增 epoch 包，以及 AD／AE 当前适配范围的构建与完整声明审查，特别是 Q6 新增 21 根的真实 Noether／完整量子响应闭包。原 16-target 批次保留 Ward 超时及旧 GSR 编译主动替代记录；原批次其余依赖继续运行，适配 GSR 另行依次构建。第一版 AD／AE／CAP 新构建与审查另存，原回执保持历史身份。三篇待付论文入口仍须按整篇构建验收，科学生成链不重算。
 
 材料验收后交出实际本地提交。过程核心／物理旗舰第二版成品等待写作侧 final；低能已交成品保留观察时的代码绑定，写作侧取得新验收提交后刷新成品。本仓只读写作仓，不推送或发布。
 
@@ -35,7 +37,7 @@ C62 的查询与计算读口现在各自承担真实责任。receiver 的正费�
 - [低能继承包构建](../evidence/second-edition/acceptance/low-inherited-build-20261009/result.json)与[完整审查](../evidence/second-edition/acceptance/low-inherited-trust-20261009/result.json)：五包通过，输入前后一致。
 - [Ward 完整文件探针](../evidence/second-edition/acceptance/physics-prepared-proof-probe-20261010/result.json)、[公开模块构建](../evidence/second-edition/acceptance/physics-prepared-public-build-20261010/result.json)、[prepared current](../evidence/second-edition/acceptance/physics-prepared-current-build-20261010/result.json)与[Coulomb 消费者](../evidence/second-edition/acceptance/physics-prepared-coulomb-build-20261010/result.json)：原设置均通过。
 - [Bell 包构建](../evidence/second-edition/acceptance/physics-forcing-build-20261010/result.json)与[完整审查](../evidence/second-edition/acceptance/physics-forcing-trust-20261010/result.json)、[低能 Q3 材料包构建](../evidence/second-edition/acceptance/low-q3-materials-build-20261010/result.json)与[完整审查](../evidence/second-edition/acceptance/low-q3-materials-trust-20261010/result.json)：两包通过，源闭包摘要与精确声明根在回填时重新核对。
-- [缓存保留](../evidence/second-edition/acceptance/cache-preservation-20261009.json)：原 25,404 个 CI 模块、29 个资源及 42 个旧分片身份保持；新增 6,885 个默认模块只追加到两个阶段 8 分片。源接线与 Ward 纯证明补充后再次核对，42 个旧分片键完全相同。
+- [GSR 适配前缓存保留](../evidence/second-edition/acceptance/cache-preservation-20261009.json)：源接线与 Ward 补充后，42 个旧分片键保持。GSR 的三个旧副本全在未建成的 `s7-01`；远端原 run 已结束为 failure，阶段 1–6 的 41 个完整缓存逐一确认存在。本次适配的缓存合同是保持这 41 个键，允许 `s7` 换键并按同 prefix 恢复进度；内存记录仍使九份 GSR 单独编译。
 - 最终门口为 `make check-map`、两份映射的 `verify-map --require-ready` 及[四篇论文的独立构建／审查](edition-reproduction.md)。只有真实通过才回填签收状态。
 
 ## 权威源码入口

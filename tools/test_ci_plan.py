@@ -377,6 +377,27 @@ class PlanTests(unittest.TestCase):
         self.assertEqual(trace.stat().st_mtime_ns, timestamp)
 
 
+class MemoryRegistryTests(unittest.TestCase):
+    suffix = "AlphaSource.CanonicalSourcePropagationNativeGravityScalarReturn"
+
+    def registry(self):
+        return ci_plan.read_times(Path(__file__).resolve().parents[1] / ci_plan.MEMORY)
+
+    def test_all_gravity_scalar_return_layouts_still_compile_alone(self):
+        names = [f"H0mework.Versions.{tag}.Physics.LowEnergy.{self.suffix}" for tag in ['AD', 'AE', 'CAP']]
+        names += [f"H0mework.Versions.{tag}.ReleaseMaterials.Physics.LowEnergyPhenomenology.{self.suffix}"
+                  for tag in ['C62', 'E055', 'R3bbcbd59', 'R71e', 'Rc015842c', 'Rf13ed87d']]
+        self.assertEqual(solo_modules(names, self.registry()), names)
+
+    def test_exact_module_override_takes_precedence_over_layout_peak(self):
+        name = f"H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.{self.suffix}"
+        self.assertEqual(solo_modules([name], {**self.registry(), name: 13.9}), [])
+
+    def test_similar_module_name_does_not_inherit_gravity_scalar_return_peak(self):
+        name = f"H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.{self.suffix}Control"
+        self.assertEqual(solo_modules([name], self.registry()), [])
+
+
 class StagePlanTests(unittest.TestCase):
     def hub_and_families(self, hub_cost):
         dependencies = {"R": [], "H": ["R"], "J": [f"F{i}.b" for i in range(4)], "T": ["J"]}

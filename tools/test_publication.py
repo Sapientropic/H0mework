@@ -71,6 +71,60 @@ class PublicationTests(unittest.TestCase):
         self.assertEqual(s.invert_resource_digests(outputs["Lean/A.lean"], modules[0]), source)
 
 
+class ProofBodyRewriteTests(unittest.TestCase):
+    source = "theorem total (n : Nat) : n = n := by\n  rfl\n"
+    public = "theorem total (n : Nat) : n = n := by\n  exact Eq.refl n\n"
+
+    def rules(self):
+        return [{"declaration": "total", "source": self.source, "public": self.public}]
+
+    def test_round_trip_and_no_implicit_adapter(self):
+        text = "import Mathlib\n" + self.source + "def unchanged := 7\n"
+        adapted = s.rewrite_proof_bodies(text, self.rules())
+        self.assertEqual(adapted, text.replace(self.source, self.public))
+        self.assertEqual(s.rewrite_proof_bodies(adapted, self.rules(), reverse=True), text)
+        self.assertEqual(s.rewrite_proof_bodies(text, None), text)
+
+    def test_default_view_is_adapted_and_exact_override_restores_source(self):
+        original = ("import Mathlib\n" + self.source).encode()
+        adapted = ("import Mathlib\n" + self.public).encode()
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "Proof.lean").write_bytes(adapted)
+            row = {"source": "Original.Proof", "source_path": "Lean/Original/Proof.lean",
+                   "source_revision": "a" * 40, "target": "H0mework.Proof", "path": "Proof.lean",
+                   "source_sha256": p.sha(original), "target_sha256": p.sha(adapted),
+                   "view_sha256": p.sha(adapted), "proof_body_rewrites": self.rules()}
+            mapping = root / "export-map.json"
+            mapping.write_text(json.dumps({"schema": 2, "lean_directory": "Lean", "modules": [row], "artifacts": []}))
+            with patch.object(s, "ROOT", root), patch.object(s, "EXPORT_MAP", mapping):
+                self.assertEqual(s.module_views(row, {}), (adapted, original))
+                path = "Lean/Original/Proof.lean"
+                self.assertEqual(s.reconstruct(paths=[path])[0][path], adapted)
+                self.assertEqual(s.reconstruct(paths=[path], exact=True)[0][path], original)
+
+    def test_statement_change_and_new_top_level_declaration_are_rejected(self):
+        for public in [self.public.replace("n = n", "n = 0"), self.public + "def smuggled := 0\n"]:
+            with self.subTest(public=public), self.assertRaises(s.ViewError):
+                s.rewrite_proof_bodies(self.source, [{**self.rules()[0], "public": public}])
+
+    def test_missing_or_duplicate_anchor_is_rejected(self):
+        for text in ["-- another theorem\n", self.source + self.source]:
+            with self.subTest(text=text), self.assertRaises(s.ViewError):
+                s.rewrite_proof_bodies(text, self.rules())
+
+    def test_resigned_nonproof_tampering_still_fails_original_identity(self):
+        original = ("import Mathlib\n" + self.source + "def value := 7\n").encode()
+        adapted = ("import Mathlib\n" + self.public + "def value := 8\n").encode()
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "Proof.lean").write_bytes(adapted)
+            row = {"path": "Proof.lean", "source_path": "Proof.lean", "source_sha256": p.sha(original),
+                   "target_sha256": p.sha(adapted), "view_sha256": p.sha(adapted), "proof_body_rewrites": self.rules()}
+            with patch.object(s, "ROOT", root), self.assertRaisesRegex(s.ViewError, "Reconstructed source digest differs"):
+                s.module_views(row, {})
+
+
 class DeclaredRuntimePathTests(unittest.TestCase):
     def test_only_selected_pointer_changes_and_number_bytes_survive(self):
         raw = fixture(b'{"log":"@ROOT@/audit.log","same":"@ROOT@/audit.log","value":1.2300000000000000001,"failed":true}')

@@ -2,7 +2,7 @@
 """Reconstruct verified public or exact source-layout views from this export.
 
 The exported modules relocate local imports, declared private-name owners, include_str
-addresses and declared resource digests. The default original-path view uses published
+addresses, declared resource digests and explicit proof-body build adaptations. The default original-path view uses published
 receipt bytes; --exact restores the pinned source bytes, requiring --private-originals
 for sanitized receipts. Both
 identities and the unchanged receipt payloads are checked with tools/export-map.json.
@@ -434,6 +434,37 @@ def invert_resource_digests(raw: bytes, row: dict) -> bytes:
     return raw
 
 
+def rewrite_proof_bodies(text: str, rewrites, *, reverse: bool = False) -> str:
+    """Apply declared compilation proofs while retaining the exact theorem statement."""
+    if rewrites is None:
+        return text
+    if not isinstance(rewrites, list):
+        raise ViewError("Invalid proof-body rewrites")
+    for rewrite in rewrites:
+        if not isinstance(rewrite, dict) or set(rewrite) != {"declaration", "source", "public"}:
+            raise ViewError("Invalid proof-body rewrite")
+        declaration = rewrite["declaration"]
+        source, public = rewrite["source"], rewrite["public"]
+        if not isinstance(declaration, str) or not MODULE.fullmatch(declaration):
+            raise ViewError("Invalid proof declaration")
+        statements = []
+        for block in (source, public):
+            if not isinstance(block, str) or not block.endswith("\n"):
+                raise ViewError("Invalid proof-body block")
+            statement, separator, body = block.partition(" := by\n")
+            if (not separator or not re.match(r"^theorem\s+" + re.escape(declaration) + r"(?:\s|:)", statement)
+                    or not body.strip() or any(line and not line[0].isspace() for line in body.splitlines())):
+                raise ViewError("Rewrite must contain one theorem and its indented proof")
+            statements.append(statement)
+        if statements[0] != statements[1]:
+            raise ViewError("Proof-body rewrite changes the theorem statement")
+        before, after = (public, source) if reverse else (source, public)
+        if before == after or text.count(before) != 1:
+            raise ViewError("Proof-body rewrite anchor is not unique")
+        text = text.replace(before, after, 1)
+    return text
+
+
 def module_views(row: dict, inverse: dict) -> tuple[bytes, bytes]:
     """Return the public source-layout view and its exact pinned source."""
     raw = (ROOT / row["path"]).read_bytes()
@@ -464,6 +495,7 @@ def module_views(row: dict, inverse: dict) -> tuple[bytes, bytes]:
                             row.get("resource_rewrites")).encode("utf-8")
     import_tokens(view.decode("utf-8"))
     original = invert_resource_digests(view, row)
+    original = rewrite_proof_bodies(original.decode("utf-8"), row.get("proof_body_rewrites"), reverse=True).encode("utf-8")
     if sha(original) != row["source_sha256"]:
         raise ViewError(f"Reconstructed source digest differs: {row['source_path']}")
     if sha(view) != row.get("view_sha256", row["source_sha256"]):

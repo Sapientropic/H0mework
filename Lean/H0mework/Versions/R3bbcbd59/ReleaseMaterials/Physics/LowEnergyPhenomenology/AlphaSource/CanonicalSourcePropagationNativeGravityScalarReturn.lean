@@ -902,6 +902,14 @@ def rationalOriginalOrbit (a : Fin 12) (i : Fin 70) : ℚ :=
   if a.val < 2 then 0 else rationalO i (rawOrbitColumn a)
 theorem originalScalarOrbit_code : ∀ (a : Fin 12) (i : Fin 70),
     originalScalarOrbit a i = rationalOriginalOrbit a i := by
+  -- The vacuum column has four unit entries, so each orbit entry reads four table entries.
+  have sparse (a : Fin 12) (i : Fin 70) : originalScalarOrbit a i =
+      originalRhoFast a i 1 + originalRhoFast a i 3 + originalRhoFast a i 7 + originalRhoFast a i 9 := by
+    simp only [originalScalarOrbit, originalRho_fast, vacuumColumn, Pi.add_apply, Pi.single_apply, mul_add,
+      Finset.sum_add_distrib, mul_ite, mul_one, mul_zero, Finset.sum_ite_eq', Finset.mem_univ, if_true]
+  intro a i
+  rw [sparse]
+  revert a i
   decide +kernel
 def scalarRawContraction (a : Fin 12) (i : Fin 70) (k : Fin 9) : ℚ :=
   ∑ j : Fin 70, if rationalO j k=0 then 0 else originalRhoFast a i j*rationalO j k
