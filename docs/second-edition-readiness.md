@@ -12,6 +12,8 @@
 
 四组物理原路径已从 H0 恢复。Bell 的 30 件冻结输入按原 SHA 恢复，共 1,143,760,250 字节；shared-background、registered Duhamel 和 first registered forcing 三项原消费者及完整独立比较通过，新的求解次数为零。低能 13 个科学消费范围已签收：五项实际原消费者重放，其余八项继承固定原认证。五个低能继承证明包的新构建与完整审查均已通过，64 条新增唯一证明项按当前源码摘要签收。两稿四份双语 PDF、两个可编辑 ZIP 与独立解包已按原字节接入[成品快照](../papers/low-energy-first-release/2026-10-09/README.md)。
 
+Bell 新增证明包构建与完整声明审查通过：39 根、10,173 个声明；低能 Q3 材料包通过：94 根、19,295 个声明。两包的类型、值、归纳与 recursor 元数据均已审查，Std3／unsafe0／partial0，输入前后一致。它们各自的生产声明、直接消费者与科学消费签收已由逐项映射对齐。
+
 ## 闭合改变了什么
 
 C62 的查询与计算读口现在各自承担真实责任。receiver 的正费用来自原 residual request 两枚 AST 节点及一次扣费；实际 factory 生成计算 reader 的环境等式；有限配置接入同一 Incoming reader，使实际表达式、差词、完整历史与库存消费者对齐。原失败与 H0 补充来源分列，定义修正不标作纯证明变换。稳定接口见[源与环境合同](source-action-environment.md)。
@@ -22,7 +24,7 @@ C62 的查询与计算读口现在各自承担真实责任。receiver 的正费�
 
 ## 当前结构责任
 
-完成四组物理包与剩余十个低能新增 epoch 包的实际构建和全量声明审查，特别是 Q6 新增 21 根的真实 Noether／完整量子响应闭包。原 16-target 批次已报告 Ward elaboration 超时，原失败继续保留；修正后的公开模块已独立构建通过，原批次其余依赖继续运行。L24–L25 复用已付 C62 与本批共享依赖缓存。按论文执行的入口与每包验收分列，科学生成链不重算。
+完成剩余三个物理包与九个低能新增 epoch 包的实际构建和全量声明审查，特别是 Q6 新增 21 根的真实 Noether／完整量子响应闭包。原 16-target 批次已报告 Ward elaboration 超时，原失败继续保留；修正后的公开模块及其 prepared current／Coulomb 消费者已独立构建通过，原批次其余依赖继续运行。L24–L25 复用已付 C62 与本批共享依赖缓存。三篇待付论文入口仍须按整篇构建验收，科学生成链不重算。
 
 材料验收后交出实际本地提交。过程核心／物理旗舰第二版成品等待写作侧 final；低能已交成品保留观察时的代码绑定，写作侧取得新验收提交后刷新成品。本仓只读写作仓，不推送或发布。
 
@@ -31,7 +33,8 @@ C62 的查询与计算读口现在各自承担真实责任。receiver 的正费�
 - [过程核心整篇构建](../evidence/second-edition/acceptance/core-paper-build-20261009/result.json)、[PR 审查](../evidence/second-edition/acceptance/core-action-trust-20261009/result.json)与[C62 审查](../evidence/second-edition/acceptance/core-difference-trust-20261009/result.json)：均通过且输入前后一致。
 - [C39–C41 审查](../evidence/second-edition/acceptance/core-cap-trust-20261009/receipt.json)、[Bell 重放](../evidence/second-edition/acceptance/bell-replay-20261009/receipt.json)、[低能科学消费](../evidence/second-edition/acceptance/low-energy-original-consumers-20261009/contracts.json)：按各自明确范围签收。
 - [低能继承包构建](../evidence/second-edition/acceptance/low-inherited-build-20261009/result.json)与[完整审查](../evidence/second-edition/acceptance/low-inherited-trust-20261009/result.json)：五包通过，输入前后一致。
-- [Ward 完整文件探针](../evidence/second-edition/acceptance/physics-prepared-proof-probe-20261010/result.json)与[公开模块构建](../evidence/second-edition/acceptance/physics-prepared-public-build-20261010/result.json)：原设置通过，公开构建完成 11,038 个任务。
+- [Ward 完整文件探针](../evidence/second-edition/acceptance/physics-prepared-proof-probe-20261010/result.json)、[公开模块构建](../evidence/second-edition/acceptance/physics-prepared-public-build-20261010/result.json)、[prepared current](../evidence/second-edition/acceptance/physics-prepared-current-build-20261010/result.json)与[Coulomb 消费者](../evidence/second-edition/acceptance/physics-prepared-coulomb-build-20261010/result.json)：原设置均通过。
+- [Bell 包构建](../evidence/second-edition/acceptance/physics-forcing-build-20261010/result.json)与[完整审查](../evidence/second-edition/acceptance/physics-forcing-trust-20261010/result.json)、[低能 Q3 材料包构建](../evidence/second-edition/acceptance/low-q3-materials-build-20261010/result.json)与[完整审查](../evidence/second-edition/acceptance/low-q3-materials-trust-20261010/result.json)：两包通过，源闭包摘要与精确声明根在回填时重新核对。
 - [缓存保留](../evidence/second-edition/acceptance/cache-preservation-20261009.json)：原 25,404 个 CI 模块、29 个资源及 42 个旧分片身份保持；新增 6,885 个默认模块只追加到两个阶段 8 分片。源接线与 Ward 纯证明补充后再次核对，42 个旧分片键完全相同。
 - 最终门口为 `make check-map`、两份映射的 `verify-map --require-ready` 及[四篇论文的独立构建／审查](edition-reproduction.md)。只有真实通过才回填签收状态。
 
