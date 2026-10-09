@@ -18,9 +18,11 @@ C62 的查询与计算读口现在各自承担真实责任。receiver 的正费�
 
 纯证明补充为 `dd60317f95f03945142c5f70c11e60d50d350889`；实际 receiver 证明为 `4c2f8c5ccb1c2601849b5f414410625c7d36c6b5`；环境输入／生产责任为 `06fe5ede76de8954633cdae179feafd9e482b359`；有限计算配置接线为 `e6908c97bb87417071dcefc4edcf4c6793517e56`。来源、原 SHA、原定义和可逆目标均由逐项映射登记。
 
+物理 prepared increment Ward 的最终证明现在直接消费已证 `increment_wedge`，消除巨大 Completion 实例的重复代数归一。纯证明补充为 `ca96ff382e5eaff4b231422202d5a7b051a5d0bf`；原声明、前提、定义与 heartbeat 设置保持，原源码独立保存。真实 import 图限定影响为两个新增物理包和八个新增低能包，已签收核心与五个低能继承包的源码闭包保持。
+
 ## 当前结构责任
 
-完成四组物理包与剩余十个低能新增 epoch 包的实际构建和全量声明审查，特别是 Q6 新增 21 根的真实 Noether／完整量子响应闭包。两条验收责任保持独立，原 16-target 首次构建继续运行；L24–L25 复用已付 C62 与本批共享依赖缓存。按论文执行的入口与每包验收分列，科学生成链不重算。
+完成四组物理包与剩余十个低能新增 epoch 包的实际构建和全量声明审查，特别是 Q6 新增 21 根的真实 Noether／完整量子响应闭包。原 16-target 批次已报告 Ward elaboration 超时，原失败继续保留；修正后的公开模块已独立构建通过，原批次其余依赖继续运行。L24–L25 复用已付 C62 与本批共享依赖缓存。按论文执行的入口与每包验收分列，科学生成链不重算。
 
 材料验收后交出实际本地提交。过程核心／物理旗舰第二版成品等待写作侧 final；低能已交成品保留观察时的代码绑定，写作侧取得新验收提交后刷新成品。本仓只读写作仓，不推送或发布。
 
@@ -29,7 +31,8 @@ C62 的查询与计算读口现在各自承担真实责任。receiver 的正费�
 - [过程核心整篇构建](../evidence/second-edition/acceptance/core-paper-build-20261009/result.json)、[PR 审查](../evidence/second-edition/acceptance/core-action-trust-20261009/result.json)与[C62 审查](../evidence/second-edition/acceptance/core-difference-trust-20261009/result.json)：均通过且输入前后一致。
 - [C39–C41 审查](../evidence/second-edition/acceptance/core-cap-trust-20261009/receipt.json)、[Bell 重放](../evidence/second-edition/acceptance/bell-replay-20261009/receipt.json)、[低能科学消费](../evidence/second-edition/acceptance/low-energy-original-consumers-20261009/contracts.json)：按各自明确范围签收。
 - [低能继承包构建](../evidence/second-edition/acceptance/low-inherited-build-20261009/result.json)与[完整审查](../evidence/second-edition/acceptance/low-inherited-trust-20261009/result.json)：五包通过，输入前后一致。
-- [缓存保留](../evidence/second-edition/acceptance/cache-preservation-20261009.json)：原 25,404 个 CI 模块、29 个资源及 42 个旧分片身份保持；新增 6,885 个默认模块只追加到两个阶段 8 分片。源接线补录后再次核对，42 个旧分片键完全相同。
+- [Ward 完整文件探针](../evidence/second-edition/acceptance/physics-prepared-proof-probe-20261010/result.json)与[公开模块构建](../evidence/second-edition/acceptance/physics-prepared-public-build-20261010/result.json)：原设置通过，公开构建完成 11,038 个任务。
+- [缓存保留](../evidence/second-edition/acceptance/cache-preservation-20261009.json)：原 25,404 个 CI 模块、29 个资源及 42 个旧分片身份保持；新增 6,885 个默认模块只追加到两个阶段 8 分片。源接线与 Ward 纯证明补充后再次核对，42 个旧分片键完全相同。
 - 最终门口为 `make check-map`、两份映射的 `verify-map --require-ready` 及[四篇论文的独立构建／审查](edition-reproduction.md)。只有真实通过才回填签收状态。
 
 ## 权威源码入口
