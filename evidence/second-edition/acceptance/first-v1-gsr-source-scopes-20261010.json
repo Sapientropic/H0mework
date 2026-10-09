@@ -1,0 +1,187 @@
+{
+  "schema": "h0mework/local-first-v1-gsr-source-scopes@1",
+  "original_receipt": {
+    "path": "evidence/first-release/acceptance/proof-root-supplement-20261007/receipt.json",
+    "sha256": "fce024e638563a21fd526ae087b2eb8062c9a7cb3a824649074551c553161ec1",
+    "preserved": true
+  },
+  "interrupted_run": {
+    "path": ".local/gsr-memory-fix/first-v1-gsr-build/result.json",
+    "reason": "shared physical AD/AE producer build serialization",
+    "kernel_failure": false,
+    "exit_code": -15,
+    "inputs_unchanged": true
+  },
+  "current_acceptance": {
+    "status": "passed",
+    "build_receipt": {
+      "path": ".local/gsr-memory-fix/first-v1-gsr-build-after-low-energy/result.json",
+      "sha256": "58eee6b1c81cf56b23c0d9d81f14b7e363d2ab3486afb2187f078549228a5295"
+    },
+    "trust_receipt": {
+      "path": ".local/gsr-memory-fix/first-v1-gsr-trust/result.json",
+      "sha256": "eb3ea9f769b98c811d3d717dbaa736a0db7fae229e96c65f62f5d3e069063277"
+    },
+    "frozen_claim_map_sha256": "70a109c44e4fa0907f817e5ff7751029562415d82b0a1b48cb854053aeba78be",
+    "fresh_build_inputs_unchanged": true,
+    "fresh_trust_inputs_unchanged": true,
+    "source_scopes_unchanged_between_fresh_build_and_trust": true,
+    "compiled_roots_unchanged_between_fresh_build_and_trust": true,
+    "preflight_exit_code": 0,
+    "build_input_identity": {
+      "sha256": {
+        "claim_map": "70a109c44e4fa0907f817e5ff7751029562415d82b0a1b48cb854053aeba78be",
+        "export_map": "2cd3f195015e73455e8647dce2ceea5568f8170311afcacc0e0d7f08005e62de",
+        "lakefile": "41659610733e6ae72a3e552a4d2ebee719916ebf29f5c7240ac244749ef26b7f",
+        "toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+        "manifest": "2fe02acc26899fd57d82018e711e79c251e26d0b6d2bb370af81db0ed312fbfd"
+      },
+      "package_inputs": {
+        "physics-common-source-ad": "8b86b2d18a58460fc813a082663226f1da88b7808130db9eae68308fc778bb3c",
+        "physics-common-source-ae": "50a32ff6d94498615b098acf4b3f28e4de1bbee829e5517ad900298a5298763a",
+        "physics-common-source-cap": "163f6be919e8990e62dea59260523be2bc31e09cf8e2da01190ea595967f7a57"
+      }
+    },
+    "trust_input_identity": {
+      "sha256": {
+        "claim_map": "70a109c44e4fa0907f817e5ff7751029562415d82b0a1b48cb854053aeba78be",
+        "export_map": "05ba0676585b7d8240f46b2bfbb88e1a489b121cee7b89524a19fab727389425",
+        "lakefile": "41659610733e6ae72a3e552a4d2ebee719916ebf29f5c7240ac244749ef26b7f",
+        "toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+        "manifest": "2fe02acc26899fd57d82018e711e79c251e26d0b6d2bb370af81db0ed312fbfd"
+      },
+      "package_inputs": {
+        "physics-common-source-ad": "8b86b2d18a58460fc813a082663226f1da88b7808130db9eae68308fc778bb3c",
+        "physics-common-source-ae": "50a32ff6d94498615b098acf4b3f28e4de1bbee829e5517ad900298a5298763a",
+        "physics-common-source-cap": "163f6be919e8990e62dea59260523be2bc31e09cf8e2da01190ea595967f7a57"
+      }
+    },
+    "proof_entries": 85,
+    "accepted_at": "2026-10-09T21:39:55.921544+00:00"
+  },
+  "packages": [
+    {
+      "package": "physics-common-source-ad",
+      "original_source_scope_sha256": "f9a0fba4050bc51049b5e4cd057db193d888d71e51efd397c98a6178d2af8c85",
+      "candidate_current_source_scope_sha256": "8b86b2d18a58460fc813a082663226f1da88b7808130db9eae68308fc778bb3c",
+      "original_audit": {
+        "axioms": [
+          "Quot.sound",
+          "Classical.choice",
+          "propext"
+        ],
+        "constants": 111309,
+        "edges": 4216028,
+        "full_metadata": true,
+        "partial": 0,
+        "roots": 640,
+        "token": "7f6938e366c13b1d7c1c0f31e091a4c73a181a45f73514510757b2d4c77dfea6",
+        "unsafe": 0
+      },
+      "new_build_status": "passed",
+      "new_trust_status": "passed",
+      "current_source_scope_sha256": "8b86b2d18a58460fc813a082663226f1da88b7808130db9eae68308fc778bb3c",
+      "current_audit": {
+        "axioms": [
+          "Quot.sound",
+          "Classical.choice",
+          "propext"
+        ],
+        "constants": 111310,
+        "edges": 4216107,
+        "full_metadata": true,
+        "partial": 0,
+        "roots": 640,
+        "token": "7f6938e366c13b1d7c1c0f31e091a4c73a181a45f73514510757b2d4c77dfea6",
+        "unsafe": 0
+      },
+      "current_audit_log": {
+        "path": ".local/gsr-memory-fix/first-v1-gsr-trust/audit-001.log",
+        "sha256": "f693445f7f0277f0b6421b95221c5dca47f5923fa74b0920cb7c526acd54345e"
+      },
+      "root_identity_preserved": true
+    },
+    {
+      "package": "physics-common-source-ae",
+      "original_source_scope_sha256": "9f881fb1d120f509b5f7de983fc2f92cab95036a8358958623d49d47f262658a",
+      "candidate_current_source_scope_sha256": "50a32ff6d94498615b098acf4b3f28e4de1bbee829e5517ad900298a5298763a",
+      "original_audit": {
+        "axioms": [
+          "Quot.sound",
+          "Classical.choice",
+          "propext"
+        ],
+        "constants": 119600,
+        "edges": 5069957,
+        "full_metadata": true,
+        "partial": 0,
+        "roots": 841,
+        "token": "395a192449ddd623703921eeeb9c715af0b4df072419cd8369560dc67e716a22",
+        "unsafe": 0
+      },
+      "new_build_status": "passed",
+      "new_trust_status": "passed",
+      "current_source_scope_sha256": "50a32ff6d94498615b098acf4b3f28e4de1bbee829e5517ad900298a5298763a",
+      "current_audit": {
+        "axioms": [
+          "Quot.sound",
+          "Classical.choice",
+          "propext"
+        ],
+        "constants": 119601,
+        "edges": 5070036,
+        "full_metadata": true,
+        "partial": 0,
+        "roots": 841,
+        "token": "395a192449ddd623703921eeeb9c715af0b4df072419cd8369560dc67e716a22",
+        "unsafe": 0
+      },
+      "current_audit_log": {
+        "path": ".local/gsr-memory-fix/first-v1-gsr-trust/audit-002.log",
+        "sha256": "17aa9a2505d8e442afde08560edc43df7b8fed20dcc0c110d6e14e438205a3e2"
+      },
+      "root_identity_preserved": true
+    },
+    {
+      "package": "physics-common-source-cap",
+      "original_source_scope_sha256": "57b6cf7f3c11d7e09fbf7458f3a5ea9f708575347898cda7d8a511e60e6c4d50",
+      "candidate_current_source_scope_sha256": "163f6be919e8990e62dea59260523be2bc31e09cf8e2da01190ea595967f7a57",
+      "original_audit": {
+        "axioms": [
+          "Quot.sound",
+          "Classical.choice",
+          "propext"
+        ],
+        "constants": 105897,
+        "edges": 3939560,
+        "full_metadata": true,
+        "partial": 0,
+        "roots": 224,
+        "token": "dd88b36ef18cc432239986bf65a1af062dc72a4caadac98a027e40310b78be85",
+        "unsafe": 0
+      },
+      "new_build_status": "passed",
+      "new_trust_status": "passed",
+      "current_source_scope_sha256": "163f6be919e8990e62dea59260523be2bc31e09cf8e2da01190ea595967f7a57",
+      "current_audit": {
+        "axioms": [
+          "Quot.sound",
+          "Classical.choice",
+          "propext"
+        ],
+        "constants": 105898,
+        "edges": 3939639,
+        "full_metadata": true,
+        "partial": 0,
+        "roots": 224,
+        "token": "dd88b36ef18cc432239986bf65a1af062dc72a4caadac98a027e40310b78be85",
+        "unsafe": 0
+      },
+      "current_audit_log": {
+        "path": ".local/gsr-memory-fix/first-v1-gsr-trust/audit-003.log",
+        "sha256": "e7128ab1360bab332797e77ed9a0e14b79e3d31950a03fa238d9aff00218d7ec"
+      },
+      "root_identity_preserved": true
+    }
+  ]
+}

@@ -2,44 +2,46 @@
 
 ## 全局目标
 
-接收过程核心 C35–C41、同源物理旗舰 P37–P40，以及低能首发 L1–L28／Q1–Q6 的有限证明、直接消费者、冻结资源和本地成品。Homework 收稿上限为 `71e94e8261d67cf4849a05eb14ac95aa2f7dcbb9`；历史证明与回执保持自己的 epoch。原 60 条首发主张继承 `234817b3c3f7a1023226e7a4fdb8660ddcbc9d0a` 与[原映射](first-release-map.json)。
+接入过程核心、同源物理旗舰和低能首发的完整证明、直接消费者、冻结资源及成品，推送 H0 并完成远端 CI。第二版固定 `9c73a630ce05bea062ec889b188f5105c0afb796`；低能 L1–L28／Q1–Q6 固定 `71e94e8261d67cf4849a05eb14ac95aa2f7dcbb9`。历史证明与认证保持自己的 epoch。原 60 条首发主张继承 `234817b3c3f7a1023226e7a4fdb8660ddcbc9d0a` 与[冻结映射](first-release-map.json)。Homework／写作仓只读。
 
 ## 已闭合的权威链
 
-源码材料已独立提交 `53fd2a31c9ddd2c5fc2f8a2fd83e17bec5833c5e`。两份选集的公开生产／消费者／资源身份缺项为零，原 25,362 个模块和 2,225 件工件的字节、主来源及公开变换保持。
+71e 材料提交 `53fd2a31c9ddd2c5fc2f8a2fd83e17bec5833c5e` 已接入；远端 `4be2f53b3f73ae5898a7eb6d32f0c7e65ccf2377` 的全量身份核验通过 32,127 个模块、3,038 件工件和 199 个公开变换回执。两份旧选集的生产、消费者与资源身份缺项为零。
 
-过程核心整篇入口已构建成功，6288 个任务通过。PR／C62 独立声明审查分别通过：361／202 根、28,645／27,056 个声明；C39–C41 三包已通过：38／128／58 根、13,701／57,545／75,718 个声明。全部审查包含类型、值、归纳与 recursor 元数据，trust0／werror、Std3、unsafe0／partial0；三包源码闭包摘要在后续修正后仍与原回执一致。
+71e 核心五包全部通过实际构建与完整声明审查：整篇 6,288 个构建任务；PR／C62／completion／full-stock／runtime 分别 361／202／38／128／58 根。Bell 新增证明与低能 Q3 材料包分别 39／94 根通过。各自的原源码 scope、类型、值、归纳及 recursor 元数据已绑定实际回执，Std3／unsafe0／partial0。
 
-四组物理原路径已从 H0 恢复。Bell 的 30 件冻结输入按原 SHA 恢复，共 1,143,760,250 字节；shared-background、registered Duhamel 和 first registered forcing 三项原消费者及完整独立比较通过，新的求解次数为零。低能 13 个科学消费范围已签收：五项实际原消费者重放，其余八项继承固定原认证。五个低能继承证明包的新构建与完整审查均已通过，64 条新增唯一证明项按当前源码摘要签收。两稿四份双语 PDF、两个可编辑 ZIP 与独立解包已按原字节接入[成品快照](../papers/low-energy-first-release/2026-10-09/README.md)。
+低能 13 个科学消费范围已签收：五项原消费者实际重放，其余八项继承固定原认证。S／T／AC 的签收范围保持；AD／AE 的 GSR 适配范围已重新构建并完整审查，覆盖 1／286 根，共 13 条唯一证明项，输入前后一致。[两稿成品快照](../papers/low-energy-first-release/2026-10-09/README.md)保留四份双语 PDF、两个可编辑 ZIP 和原解包字节。
 
-Bell 新增证明包构建与完整声明审查通过：39 根、10,173 个声明；低能 Q3 材料包通过：94 根、19,295 个声明。两包的类型、值、归纳与 recursor 元数据均已审查，Std3／unsafe0／partial0，输入前后一致。它们各自的生产声明、直接消费者与科学消费签收已由逐项映射对齐。
+GSR 九份副本的来源、适配和内存调度已同步；R71e／AD／AE／CAP／E055／C62 六份专项模块构建通过。第一版 AD／AE／CAP 已独立补验：构建通过，完整审查覆盖 640／841／224 根，源 scope 与新构建一致，Std3／unsafe0／partial0。原首发 map、原回执与 root token 保持。
+
+Bell 原三项消费者重放和完整比较通过，30 件冻结输入共 1,143,760,250 字节按原 SHA 恢复，新的求解次数为零。超限日志已无损压缩，引用、摘要和六个未推送提交同步替换后已推送；[历史改写回执](../evidence/second-edition/acceptance/local-history-rewrite-20261010.json)保留原执行标签。
 
 ## 闭合改变了什么
 
-C62 的查询与计算读口现在各自承担真实责任。receiver 的正费用来自原 residual request 两枚 AST 节点及一次扣费；实际 factory 生成计算 reader 的环境等式；有限配置接入同一 Incoming reader，使实际表达式、差词、完整历史与库存消费者对齐。原失败与 H0 补充来源分列，定义修正不标作纯证明变换。稳定接口见[源与环境合同](source-action-environment.md)。
+原查询／计算读口、实际 receiver 费用、factory 生成环境与有限 Incoming 接线已对齐；证明补充、定义修正和历史原件分别登记。稳定合同见[源与环境接口](source-action-environment.md)、[证明构建适配](proof-build-adaptations.md)及[公开字节与原件](evidence-publication.md)。
 
-纯证明补充为 `dd60317f95f03945142c5f70c11e60d50d350889`；实际 receiver 证明为 `4c2f8c5ccb1c2601849b5f414410625c7d36c6b5`；环境输入／生产责任为 `06fe5ede76de8954633cdae179feafd9e482b359`；有限计算配置接线为 `e6908c97bb87417071dcefc4edcf4c6793517e56`。来源、原 SHA、原定义和可逆目标均由逐项映射登记。
-
-物理 prepared increment Ward 的最终证明现在直接消费已证 `increment_wedge`，消除巨大 Completion 实例的重复代数归一。纯证明补充为 `ca96ff382e5eaff4b231422202d5a7b051a5d0bf`；原声明、前提、定义与 heartbeat 设置保持，原源码独立保存。真实 import 图限定影响为两个新增物理包和八个新增低能包，已签收核心与五个低能继承包的源码闭包保持。
-
-GSR 九份副本已同步稀疏证明适配：先用原 `originalRho_fast`，再以真空列四个非零位置核验原结论。原源码 SHA／epoch 保留，默认公开视图使用适配证明，`--exact` 恢复原字节。R71e 完整模块实测通过，541 秒、峰值 16.03 GiB；其余副本依次构建。核心五包、Bell、S／T／Q3／AC 不受影响；AD／AE 已保留原验收并将当前公开源码范围标为待重验。
+GSR 的稀疏证明保留原定理、定义与 kernel 检查，降低实际编译内存；受影响的首版与低能 AD／AE 已按当前适配字节重新签收。完整递归签名一致的源布局共享完整声明 owner，原路径各自恢复完整源码及原 SHA。
 
 ## 当前结构责任
 
-完成剩余三个物理包、九个低能新增 epoch 包，以及 AD／AE 当前适配范围的构建与完整声明审查，特别是 Q6 新增 21 根的真实 Noether／完整量子响应闭包。原 16-target 批次保留 Ward 超时及旧 GSR 编译主动替代记录；原批次其余依赖继续运行，适配 GSR 另行依次构建。第一版 AD／AE／CAP 新构建与审查另存，原回执保持历史身份。三篇待付论文入口仍须按整篇构建验收，科学生成链不重算。
+9c73 的八个固定 intake 已提交为 `53779d64cf2215f87db80bbe59d8a98d4928e127`：15,554 个完整源、728 件工件与 12 个独立聚合入口，保留已签 71e 及历史 epoch。真实 `make check-map` 通过 47,737 个逻辑源码视图、3,766 件工件；21 个包的所选根均由实际入口消费。四个新核心包按各自精确 source_paths 验收 176／232／508／740 根，随后完成四篇论文实际构建与完整审查。CPS1 原 LAlanine／临床依赖和固定 Physlib 63 模块随完整闭包接入，原参数、源单位与科学计算保持。
 
-材料验收后交出实际本地提交。过程核心／物理旗舰第二版成品等待写作侧 final；低能已交成品保留观察时的代码绑定，写作侧取得新验收提交后刷新成品。本仓只读写作仓，不推送或发布。
+旧 71e 的三个物理包及九个低能新增 epoch 包仍需收尾验收。charged-transfer 的 11 文件／15 匿名实例命名已越过原冲突；八个动态私有 `Name` owner 修复模块实际构建通过，输入前后一致。P37／P38 的完整 Audit 与原独立认证消费者使用同名声明，分别保留原环境、完整正文和根声明，并按独立包构建与审查。原 16-target 批次已发生的失败与后续缓存产出分别记录；新签收使用稳定输入下的实际回执。Q6 新增 21 根按 Noether／完整量子响应合同审查。
 
-## 机器验收
+远端 [CI 37981352421](https://github.com/Sapientropic/H0mework/actions/runs/37981352421) 已复用全部 41 个旧完整分片，Bell、量子与冻结证据检查成功。s7 仍在有效推进，s8 等上游。新增阶段 9 保留现有布局；相对于本轮远端 plan，阶段 1–7 的 42 片完整字段和缓存键实测保持。积累修复与验收后批量推送，完成全轮 CI。
 
-- [过程核心整篇构建](../evidence/second-edition/acceptance/core-paper-build-20261009/result.json)、[PR 审查](../evidence/second-edition/acceptance/core-action-trust-20261009/result.json)与[C62 审查](../evidence/second-edition/acceptance/core-difference-trust-20261009/result.json)：均通过且输入前后一致。
-- [C39–C41 审查](../evidence/second-edition/acceptance/core-cap-trust-20261009/receipt.json)、[Bell 重放](../evidence/second-edition/acceptance/bell-replay-20261009/receipt.json)、[低能科学消费](../evidence/second-edition/acceptance/low-energy-original-consumers-20261009/contracts.json)：按各自明确范围签收。
-- [低能继承包构建](../evidence/second-edition/acceptance/low-inherited-build-20261009/result.json)与[完整审查](../evidence/second-edition/acceptance/low-inherited-trust-20261009/result.json)：五包通过，输入前后一致。
-- [Ward 完整文件探针](../evidence/second-edition/acceptance/physics-prepared-proof-probe-20261010/result.json)、[公开模块构建](../evidence/second-edition/acceptance/physics-prepared-public-build-20261010/result.json)、[prepared current](../evidence/second-edition/acceptance/physics-prepared-current-build-20261010/result.json)与[Coulomb 消费者](../evidence/second-edition/acceptance/physics-prepared-coulomb-build-20261010/result.json)：原设置均通过。
-- [Bell 包构建](../evidence/second-edition/acceptance/physics-forcing-build-20261010/result.json)与[完整审查](../evidence/second-edition/acceptance/physics-forcing-trust-20261010/result.json)、[低能 Q3 材料包构建](../evidence/second-edition/acceptance/low-q3-materials-build-20261010/result.json)与[完整审查](../evidence/second-edition/acceptance/low-q3-materials-trust-20261010/result.json)：两包通过，源闭包摘要与精确声明根在回填时重新核对。
-- [GSR 缓存保留](../evidence/second-edition/acceptance/cache-preservation-gsr-20261010.json)：阶段 1–6 的 41 个已建完整缓存及全部分片身份实测保持。三个旧 GSR 仅在未建成的 `s7-01`，该片仅指纹改变、原进度恢复 prefix 保持；42 个旧 solo 序列保持，六个新增副本均进入 solo。[适配前回执](../evidence/second-edition/acceptance/cache-preservation-20261009.json)保留原 42 键的历史核对。
-- 最终门口为 `make check-map`、两份映射的 `verify-map --require-ready` 及[四篇论文的独立构建／审查](edition-reproduction.md)。只有真实通过才回填签收状态。
+核心／物理第二版成品等待写作侧 final；低能成品已完成，公开代码绑定待完整材料验收。四篇论文按独立版本接入并交付实际提交。
+
+## 本 checkpoint 的机器验收
+
+- [核心整篇构建](../evidence/second-edition/acceptance/core-paper-build-20261009/result.json)、[PR](../evidence/second-edition/acceptance/core-action-trust-20261009/result.json)、[C62](../evidence/second-edition/acceptance/core-difference-trust-20261009/result.json)及[C39–C41 审查](../evidence/second-edition/acceptance/core-cap-trust-20261009/receipt.json)。
+- [低能 AD／AE 构建](../evidence/second-edition/acceptance/low-ad-ae-build-20261010/result.json)与[完整审查](../evidence/second-edition/acceptance/low-ad-ae-trust-20261010/result.json)；[第一版三包补充构建](../evidence/second-edition/acceptance/first-v1-gsr-build-20261010/result.json)与[完整审查](../evidence/second-edition/acceptance/first-v1-gsr-trust-20261010/result.json)。
+- [Bell 科学消费](../evidence/second-edition/acceptance/bell-replay-20261009/receipt.json)、[低能科学消费](../evidence/second-edition/acceptance/low-energy-original-consumers-20261009/contracts.json)、[Bell 证明审查](../evidence/second-edition/acceptance/physics-forcing-trust-20261010/result.json)与[Q3 材料审查](../evidence/second-edition/acceptance/low-q3-materials-trust-20261010/result.json)。
+- [动态 owner 八模块构建](../evidence/second-edition/acceptance/physics-dynamic-owner-focused-build-20261010/result.json)保留实际输出摘要；[第一版适配后源码 scope](../evidence/second-edition/acceptance/first-v1-gsr-source-scopes-20261010.json)与冻结主张映射分列。
+- [GSR 缓存保留](../evidence/second-edition/acceptance/cache-preservation-gsr-20261010.json)、[Dictionary 独占调度](../evidence/second-edition/acceptance/cache-preservation-dictionary-20261010.json)及[阶段 9 接线／42 片核验](../evidence/second-edition/acceptance/cache-preservation-stage9-20261010.json)。新源迁入后再核对实际最终分工。
+- [完整材料落地](../evidence/second-edition/acceptance/fixed-cap-9c73-material-apply-20261010.json)及[最终缓存字段核验](../evidence/second-edition/acceptance/cache-preservation-final-9c73-20261010.json)通过；真实工作区身份检查已完成。
+- 最终签收条件：两份 `verify-map --require-ready`、[四篇论文实际构建／审查](edition-reproduction.md)，以及实际提交的远端 CI 成功。
 
 ## 权威源码入口
 
-[第二版逐项映射](second-edition-map.json)、[低能逐项映射](low-energy-release-map.json)登记稳定主张、生产声明、直接消费者、程序、资源与原／派生回执。[版本复现](edition-reproduction.md)登记独立 epoch 构建、完整审查、原路径恢复与 Bell 消费命令。
+[第二版逐项映射](second-edition-map.json)、[低能逐项映射](low-energy-release-map.json)登记生产声明、直接消费者、程序、资源及各 epoch 的原／派生验收。[版本复现](edition-reproduction.md)给出独立构建、完整审查、原路径恢复及科学消费命令。

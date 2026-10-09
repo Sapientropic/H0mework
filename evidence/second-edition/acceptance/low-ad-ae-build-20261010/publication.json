@@ -1,0 +1,50 @@
+{
+  "schema": "h0mework/edition-execution-archive@1",
+  "status": "passed",
+  "kind": "build",
+  "inputs_unchanged": true,
+  "packages": [
+    "low-energy-inherited-26b91feb-physics-common-source-ae",
+    "low-energy-inherited-aef0ad2a-physics-common-source-ad"
+  ],
+  "files": [
+    {
+      "original_runtime_path": ".local/gsr-memory-fix/low-ad-ae-build/build.log",
+      "public_path": "evidence/second-edition/acceptance/low-ad-ae-build-20261010/build.log.zst",
+      "source_sha256": "8bd6423127975083e5cc829cd8793f0208aa51fc99196365da09fa80409b94bd",
+      "target_sha256": "64dac652fede0ea89ebca1b50971bbc5901b70e136b790c991b076d07bc45a2c",
+      "transforms": [
+        {
+          "kind": "literal-runtime-roots",
+          "project_replacement": ".",
+          "elan_replacement": "runtime/elan"
+        },
+        {
+          "kind": "zstd",
+          "level": 19,
+          "uncompressed_sha256": "55f95459e8a634bfa0da7c4992013dca7cf11ebf887c912ceee679339dfe16ef",
+          "uncompressed_bytes": 298268964,
+          "compressed_bytes": 15666400
+        }
+      ]
+    },
+    {
+      "original_runtime_path": ".local/gsr-memory-fix/low-ad-ae-build/result.json",
+      "public_path": "evidence/second-edition/acceptance/low-ad-ae-build-20261010/result.json",
+      "source_sha256": "ff7a13c329ce664f7d3d1827d0e74db8f6ae70e78972cb0a68c658a3c7458626",
+      "target_sha256": "ce96822fc90efc05f07dbfae31d19009652dec37f522e575b5b5c5d3d296b0f7",
+      "publication": {
+        "kind": "declared-runtime-paths/v2",
+        "runtime_paths": [
+          {
+            "pointer": "/results/0/log",
+            "relative": "evidence/second-edition/acceptance/low-ad-ae-build-20261010/build.log.zst"
+          }
+        ],
+        "payload_sha256": "ce96822fc90efc05f07dbfae31d19009652dec37f522e575b5b5c5d3d296b0f7"
+      }
+    }
+  ],
+  "receipt": "evidence/second-edition/acceptance/low-ad-ae-build-20261010/result.json",
+  "original_source_certification": "Separate from this local public execution."
+}

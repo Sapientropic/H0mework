@@ -1,6 +1,6 @@
 # 第二版与低能首发复现
 
-[第二版映射](second-edition-map.json)登记过程核心 C35–C41 和物理旗舰 P37–P40 的新增证明；原 60 条主张继承[固定首发映射](first-release-map.json)。[低能映射](low-energy-release-map.json)覆盖 L1–L28 与 Q1–Q6，各证明包保持实际 source epoch。实际执行结果和本地交付见[准备状态](second-edition-readiness.md)。
+[第二版映射](second-edition-map.json)登记过程核心 C35–C45 和物理旗舰 P37–P40 的新增证明；原 60 条主张继承[固定首发映射](first-release-map.json)。[低能映射](low-energy-release-map.json)覆盖 L1–L28 与 Q1–Q6，各证明包保持实际 source epoch。实际执行结果和本地交付见[准备状态](second-edition-readiness.md)。
 
 ## 读者入口
 
@@ -34,6 +34,8 @@ python3 tools/edition_release.py --edition low-energy --paper low-energy-loop-re
 ```
 
 省略 `--paper` 会执行该 edition 的全部证明包。用 `--package <map中的id>`可以选择单包；同时给出 `--paper` 时，显式包必须属于该论文。
+
+P37／P38 的完整 Audit 与原认证 ProductionConsumers 定义同名声明，各自属于原独立编译环境。映射用精确 `source_paths` 选择完整源文件，并分别登记聚合入口与根声明；两种包分别构建和审查。每份原认证消费者的完整生产正文、原测试根、原 source／object SHA 与认证回执均保留。
 
 构建执行实际选定生产与消费者的 import 闭包，沿用 trust0／werror。`trust`先以 `lake --no-build`检查现有编译结果与当前源一致，再检查选定声明的完整类型、值、归纳与 recursor 元数据闭包，记录标准公理、unsafe／partial 与检查数量。运行记录注明缓存和实际输入；本轮本地执行复用了工作区编译缓存。
 

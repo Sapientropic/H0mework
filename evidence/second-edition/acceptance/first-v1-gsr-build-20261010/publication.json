@@ -1,0 +1,51 @@
+{
+  "schema": "h0mework/edition-execution-archive@1",
+  "status": "passed",
+  "kind": "build",
+  "inputs_unchanged": true,
+  "packages": [
+    "physics-common-source-ad",
+    "physics-common-source-ae",
+    "physics-common-source-cap"
+  ],
+  "files": [
+    {
+      "original_runtime_path": ".local/gsr-memory-fix/first-v1-gsr-build-after-low-energy/build.log",
+      "public_path": "evidence/second-edition/acceptance/first-v1-gsr-build-20261010/build.log.zst",
+      "source_sha256": "abc5b057c0409582c4eddb0579e052442014d775fc220c30c80e3daa6ff2d2bd",
+      "target_sha256": "4e511aefdc334811063311db87dfc2ca122c547f849dfc540c5acc0df7256186",
+      "transforms": [
+        {
+          "kind": "literal-runtime-roots",
+          "project_replacement": ".",
+          "elan_replacement": "runtime/elan"
+        },
+        {
+          "kind": "zstd",
+          "level": 19,
+          "uncompressed_sha256": "a303408617625d0b181602be6d8802ccd0e2fbabd3e6a84b90b9521f79a6d777",
+          "uncompressed_bytes": 298370331,
+          "compressed_bytes": 15675410
+        }
+      ]
+    },
+    {
+      "original_runtime_path": ".local/gsr-memory-fix/first-v1-gsr-build-after-low-energy/result.json",
+      "public_path": "evidence/second-edition/acceptance/first-v1-gsr-build-20261010/result.json",
+      "source_sha256": "58eee6b1c81cf56b23c0d9d81f14b7e363d2ab3486afb2187f078549228a5295",
+      "target_sha256": "16a632e8b9072b5f1543098aa640c03dcd89b35fe4bb75ee2b057180e6bb89c3",
+      "publication": {
+        "kind": "declared-runtime-paths/v2",
+        "runtime_paths": [
+          {
+            "pointer": "/results/0/log",
+            "relative": "evidence/second-edition/acceptance/first-v1-gsr-build-20261010/build.log.zst"
+          }
+        ],
+        "payload_sha256": "16a632e8b9072b5f1543098aa640c03dcd89b35fe4bb75ee2b057180e6bb89c3"
+      }
+    }
+  ],
+  "receipt": "evidence/second-edition/acceptance/first-v1-gsr-build-20261010/result.json",
+  "original_source_certification": "Separate from this local public execution."
+}
