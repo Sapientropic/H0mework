@@ -7,8 +7,8 @@ open Lean Meta Elab Term
 
 private def sourceRowName (index : Nat) (proof : Bool) : Name :=
   let family := if index < 57 then "Gauge" else if index < 73 then "Coframe" else "Lorentz"
-  let moduleName := Name.mkSimple ("SourceActualCandidateVertexValues"++family)
-  let ns := Name.str (Name.str (Name.num (Name.str `_private moduleName.toString) 0)
+  let moduleName := ("H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.ExternalCompositeDecay.SourceActualCandidateVertexValues"++family).toName
+  let ns := Name.str (Name.str (Name.num (Name.append `_private moduleName) 0)
     "LowEnergy") "ActualCandidateVertexValues"
   Name.str ns ("row_"++toString index++if proof then "_original" else "")
 

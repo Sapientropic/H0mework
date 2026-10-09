@@ -1,0 +1,48 @@
+{
+  "actual_hardware_uniquely_identified": false,
+  "audit_output_sha256": "bc9e1e105b0e3f4b805e4c7099b2c38292a86a8ba18687c57c1eb3d2b51947cb",
+  "audit_source_sha256": "6e5acefda0ab45ea64aa4af803813a3fda637b2c50fee2134e3c1b4708b0c730",
+  "classification": "same-source transpose/right-action, reflected scalar clock and diagonal-frame loss transport",
+  "complete_operator_bank_already_checked": false,
+  "consumer": "gaussian_operator_flow_rha0037.GaussianOperatorFlow and six source operator curves",
+  "controller_advance": false,
+  "declarations": {
+    "BellGaussianCoflow.diagonal_frame_preserves_loss": {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "BellGaussianCoflow.reflected_gaussian_square": {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "BellGaussianCoflow.right_action_transpose": {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "BellGaussianCoflow.transpose_loss_identity": {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    }
+  },
+  "independent_direct_consumers": 3,
+  "kernel_exit_code": 0,
+  "schema": "stage10-source-Gaussian-coflow-math-certification/rha0037",
+  "source_contract": "original full33 Gaussian K+Kadj+R=0 and nonnegative R; transpose/frame preserve it",
+  "source_file": "Verification/physics/stage10/independent-bell/munich/readout-domain/GaussianCoflow.lean",
+  "source_sha256": "88f945926fc29031a5ca47a3252773c3726fd3f20c1da6f1800509918a2786ba",
+  "status": "certified",
+  "strict_command": "lake env lean --trust=0 -DwarningAsError=true <exact candidate plus full33 direct consumers and axioms>",
+  "synthetic_controls_passed": 7
+}

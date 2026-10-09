@@ -1,0 +1,10 @@
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineCellField17.MatrixAssembled
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineCellField17.CacheComplete
+
+namespace SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.BasinRefinement.WholeCellMatrix.F17
+
+open SourceIntegerGrid SourceFields SourceFiniteData SourceSignedEvaluator SourceRectangle SourceGaussianModel
+
+assembleWholeCellMatrix 17
+
+end SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.BasinRefinement.WholeCellMatrix.F17

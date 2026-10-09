@@ -1,0 +1,63 @@
+{
+  "head_at_reconciliation": "af01f79de64219164b825cbc9dcf0feed042781a",
+  "nonowned_source_count": 1369,
+  "nonowned_current_head_deltas": [],
+  "source_snapshots_verified": 1370,
+  "signed_artifacts_verified": 1364,
+  "fresh_receipts_verified": 11,
+  "prior_API_probe": {
+    "module": "CP103PriorApiGate",
+    "command": [
+      "lean",
+      "-t",
+      "0",
+      "-DwarningAsError=true",
+      "-j",
+      "2",
+      "-R",
+      "/tmp/cp103-independent-clean/src",
+      "/tmp/cp103-independent-clean/src/CP103PriorApiGate.lean"
+    ],
+    "source": "/tmp/cp103-independent-clean/src/CP103PriorApiGate.lean",
+    "source_sha256": "bb4704f08242507460c2e3e354ae5c8e52c48cee530bb1bdac213d28690a4c1e",
+    "log": "/tmp/cp103-independent-clean/logs/CP103PriorApiGate.log",
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "exit_code": 0,
+    "seconds": 5.77,
+    "formal_manifest": {
+      "verdict": "/tmp/cp102-independent-clean/verdict.json",
+      "verdict_sha256": "1422291ef66a435ce50308b9eccc9722c7552b39d00184596c059fd3f09e28aa",
+      "manifest": "/tmp/cp102-independent-clean/manifest.json",
+      "manifest_sha256": "ed0b5c9d2cbeaf579e35ac8eb64be1b49cfa58f5cdc91c353705dbcc29c6ecb3"
+    }
+  },
+  "owned": [
+    {
+      "file": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/Admission.lean",
+      "source_sha256": "9e9f2b5ac5cf8727d442bbb270146ff333f6ed51f1a57dfc68cd638ac1ff675e",
+      "base_source_sha256": "f9d87c3a3e807407c7852ccb62ac49f16c63f23472df9c47185b0c2ef94c2f6a",
+      "working_source_is_pristine_base": true,
+      "new_gate_absent": false,
+      "git_status": "",
+      "olean_sha256": "2d0c15de1598e0236d87a1690d2d1e4b9c0b4194b438ba54f15d34fdc7a1ab6d",
+      "construction_olean_sha256": "2d0c15de1598e0236d87a1690d2d1e4b9c0b4194b438ba54f15d34fdc7a1ab6d",
+      "olean_matches_construction": true,
+      "note": null
+    },
+    {
+      "file": "Verification/framework/source-policy/StockSourceBranch.lean",
+      "source_sha256": "6a1c6b29e819b3d84d21ca9cd4fdba8c33d531ba31fc7a03ec7b378fb3e67c89",
+      "base_source_sha256": null,
+      "working_source_is_pristine_base": false,
+      "new_gate_absent": true,
+      "git_status": "",
+      "olean_sha256": "2e13c94eda6c2dd8fa60d0a310965db949d51a9adcf755278947fcce30eda251",
+      "construction_olean_sha256": "b3bd9843b6b08634a3d8832d13b08efe19d16b2903556efdbb99d7261cc4000d",
+      "olean_matches_construction": false,
+      "note": "Independent gate compiled under its own audit module name; main OLean equality to construction is not required."
+    }
+  ],
+  "repository_mutations": [],
+  "compiler_sha256": "1b370cfcbf44e80d1b004ab1b1ab9a4c73951f9f7c242140bcff9bc577576554",
+  "capsule_sha256": "b2e0f7a209309865e54d3679a1b9b615d5e119bffc77ecf9c2524d903c589a64"
+}

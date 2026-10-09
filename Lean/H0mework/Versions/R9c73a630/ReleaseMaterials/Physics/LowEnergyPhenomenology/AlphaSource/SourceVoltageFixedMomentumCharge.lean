@@ -1,0 +1,112 @@
+import H0mework.Versions.R9c73a630.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.SourceVoltageCompleteEnergy
+
+set_option autoImplicit false
+set_option maxHeartbeats 1800000
+set_option maxRecDepth 8192
+set_option backward.isDefEq.respectTransparency false
+noncomputable section
+namespace LowEnergy.PreparationPhysicalVoltageNoetherChargeReturn
+open SaturationMonoid.PhysicsCore SaturationMonoid.PhysicsCore.LowEnergy
+open Stage10 FullQuantum.StateGreen FullQuantum.CoframeResponse
+open StageNineCurrentCoframeMatterTemporalPrincipal
+open PreparationPhysicalVoltageNoether PreparationPhysicalActionUnits
+open PreparationVacuumNoetherChart PreparationVacuumStaticVoltageSource
+open PreparationVacuumSourceFieldFamily PreparationVacuumNonlinearFieldCurve
+open PreparationVacuumGaugeSourceInjection PreparationVacuumActionFieldLift PreparationVacuumActualFieldQuantization
+open PreparationVacuumOriginalDensity PreparationVacuumPhysicalModeChargeRead GaussComposite
+open PreparationVacuumMixedFieldReturn CanonicalGradedSpatialSource GaussHistoryHilbert
+open Filter Set
+open scoped Topology BigOperators Matrix Matrix.Norms.L2Operator
+local instance : DecidableEq Quantum.Index:=Classical.decEq _
+local instance : NormedAlgebra ℝ SourceMatrix:=NormedAlgebra.restrictScalars ℝ ℂ _
+
+private theorem voltage_unit : fieldUnit 20=sourceVoltageCoordinates 1 0 0 := by
+  ext j
+  simp [fieldUnit,sourceVoltageCoordinates]
+
+private theorem phase_principal (s : ActionState) (valid : s∈validStates) :
+    statePhase s*(stateVolume s • coefficientMatrix 0 s.1)=Complex.I • (1 : SourceMatrix) := by
+  rw [←principalMatrix_coefficient,statePhase,smul_mul_smul,
+    Ring.inverse_mul_cancel _ (principalMatrix_regular s.1 valid.2)]
+  have volume : stateVolume s≠0:=Complex.ofReal_ne_zero.mpr (abs_ne_zero.mpr valid.1)
+  congr 1
+  field_simp
+
+/-- The original canonical momentum and temporal gauge insertion fix this coefficient before any prepared read. -/
+def sourceVoltageFixedCoefficient (base : ActionState) : SourceMatrix :=
+  rawMomentumMatrix base*(Complex.I • GaussNativeMatter.nativePrimal nativeY)
+
+def sourceVoltageUnitCoefficient (base : ActionState) : SourceMatrix :=
+  (Quantum.operatorMatrix YangMills.FullPairing.flipMatter*inversePhase base)*
+    (Complex.I • GaussNativeMatter.nativePrimal nativeY)
+
+theorem sourceVoltageFixedCoefficient_momentum (base : ActionState) :
+    sourceVoltageFixedCoefficient base=(ActionNormalization.phaseMomentum:ℂ) • sourceVoltageUnitCoefficient base := by
+  simp only [sourceVoltageFixedCoefficient,sourceVoltageUnitCoefficient,rawMomentumMatrix,
+    sourceDensityActionMatrix_momentum,smul_mul_assoc]
+
+/-- Moving volume and principal factors cancel at fixed Pi on the actual valid-state domain. -/
+theorem sourceVoltageTransportedDensity (base candidate : ActionState) (valid : candidate∈validStates) (k : Fin 4) :
+    transportedDensity (fieldUnit 20) base candidate k=
+      if k=0 then sourceVoltageFixedCoefficient base else 0 := by
+  have density:=sourceVoltage_density_generated candidate valid.1 1 0 0 k
+  rw [←voltage_unit] at density
+  simp only [sourceVoltageLowerInput,one_smul,zero_smul,add_zero] at density
+  rw [transportedDensity,density]
+  split_ifs with zero
+  · have canceled : rawMomentumInverse candidate*densityActionMatrix=statePhase candidate := by
+      rw [rawMomentumInverse,mul_assoc,densityAction_two_sided.2,mul_one]
+    calc
+      _=rawMomentumMatrix base*(rawMomentumInverse candidate*densityActionMatrix)*
+          ((stateVolume candidate • coefficientMatrix 0 candidate.1)*GaussNativeMatter.nativePrimal nativeY) := by
+        rw [smul_mul_assoc]
+        noncomm_ring
+      _=rawMomentumMatrix base*(statePhase candidate*(stateVolume candidate • coefficientMatrix 0 candidate.1))*
+          GaussNativeMatter.nativePrimal nativeY := by rw [canceled];noncomm_ring
+      _=sourceVoltageFixedCoefficient base := by
+        rw [phase_principal candidate valid,mul_assoc,smul_mul_assoc,one_mul]
+        rfl
+  · exact mul_zero _
+
+def sourceVoltageUnitSymbol (base : ActionState) (p : PhysicalMomentum) : FullMatrix :=
+  rawFourier p (fun k=>if k=0 then sourceVoltageUnitCoefficient base else 0)
+
+theorem sourceVoltageTransportedSymbol (base candidate : ActionState) (valid : candidate∈validStates) (p : PhysicalMomentum) :
+    transportedRawSymbol (fieldUnit 20) base candidate p=
+      ActionNormalization.phaseMomentum • sourceVoltageUnitSymbol base p := by
+  rw [transportedRawSymbol]
+  have coefficients : transportedDensity (fieldUnit 20) base candidate=
+      ActionNormalization.phaseMomentum • (fun k : Fin 4=>if k=0 then sourceVoltageUnitCoefficient base else 0) := by
+    funext k
+    rw [sourceVoltageTransportedDensity base candidate valid k]
+    simp only [Pi.smul_apply]
+    split_ifs
+    · rw [sourceVoltageFixedCoefficient_momentum,RCLike.real_smul_eq_coe_smul (K:=ℂ)]
+      rfl
+    · exact (smul_zero _).symm
+  rw [coefficients,map_smul]
+  rfl
+
+/-- The candidate-state domain is generated by the actual source curve; no charge or contact outcome is a premise. -/
+theorem sourceVoltageNoetherContactCoefficient (force : Field289) (z : physicalChart) (k : Fin 4) :
+    noetherContactCoefficient (fieldUnit 20) force (sourceState z.val) k=0 := by
+  have near : ∀ᶠr : ℝ in 𝓝 0,sourceState z.val+r • fieldDirection force∈validStates:=
+    (state_line (sourceState z.val) (fieldDirection force)).continuousAt.preimage_mem_nhds
+      (by simpa only [zero_smul,add_zero] using validStates_open.mem_nhds (sourceState_valid z))
+  have same : (fun r : ℝ=>transportedDensity (fieldUnit 20) (sourceState z.val)
+      (sourceState z.val+r • fieldDirection force) k)=ᶠ[𝓝 0]
+      (fun _=>if k=0 then sourceVoltageFixedCoefficient (sourceState z.val) else 0) := by
+    filter_upwards [near] with r valid
+    exact sourceVoltageTransportedDensity _ _ valid k
+  exact (transportedDensity_generated (fieldUnit 20) force z k).unique
+    ((hasDerivAt_const (0:ℝ) (if k=0 then sourceVoltageFixedCoefficient (sourceState z.val) else 0)).congr_of_eventuallyEq same)
+
+theorem sourceVoltageNoetherContactSymbol (force : Field289) (z : physicalChart) (p : PhysicalMomentum) :
+    noetherContactSymbol (fieldUnit 20) force (sourceState z.val) p=0 := by
+  rw [noetherContactSymbol]
+  have zero : noetherContactCoefficient (fieldUnit 20) force (sourceState z.val)=0:=by
+    funext k
+    exact sourceVoltageNoetherContactCoefficient force z k
+  rw [zero,map_zero]
+
+end LowEnergy.PreparationPhysicalVoltageNoetherChargeReturn

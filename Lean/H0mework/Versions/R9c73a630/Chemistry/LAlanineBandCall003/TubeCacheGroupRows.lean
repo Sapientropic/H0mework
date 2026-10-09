@@ -1,0 +1,18 @@
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineBandCall003.TubeCacheB0
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineBandCall003.TubeCacheB1
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineBandCall003.TubeCacheB2
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineBandCall003.TubeCacheB3
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineBandCall003.TubeCacheB4
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineBandCall003.TubeCacheB5
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineBandCall003.TubeCacheB6
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineBandCall003.TubeCacheB7
+
+set_option autoImplicit false
+
+namespace SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.BasinRefinement.TrueTubeWholeCache.Call3
+
+open SourceRectangle SourceSignedEvaluator SourceGaussianModel SourceFiniteData SourceRectangleChecks SourceFields
+
+assembleLowFieldGroups
+
+end SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.BasinRefinement.TrueTubeWholeCache.Call3

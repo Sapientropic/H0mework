@@ -1,0 +1,10 @@
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineTrueTubeHull.MatrixAssembled
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineTrueTubeHull.CacheComplete
+
+namespace SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.BasinRefinement.TrueTubeHullMatrix
+
+open WholeCellMatrix SourceIntegerGrid SourceFields SourceFiniteData SourceSignedEvaluator SourceRectangle SourceGaussianModel
+
+assembleTrueTubeHullMatrix 0
+
+end SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.BasinRefinement.TrueTubeHullMatrix

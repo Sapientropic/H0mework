@@ -1,0 +1,28 @@
+import H0mework.Versions.R9c73a630.ReleaseMaterials.SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.Thermal.Recovery.Reservoir.Feedback.Renewal.Direction.Blocks.EnergyFrame.Inverse.Scaled.Finite.Evaluation.Field.Check
+import H0mework.Versions.R9c73a630.ReleaseMaterials.SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.Thermal.Recovery.Reservoir.Feedback.Renewal.Direction.Blocks.EnergyFrame.Inverse.Scaled.Finite.Evaluation.Field.Term6.B08
+import H0mework.Versions.R9c73a630.ReleaseMaterials.SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.Thermal.Recovery.Reservoir.Feedback.Renewal.Direction.Blocks.EnergyFrame.Inverse.Scaled.Finite.Evaluation.Field.Term5.B08
+
+set_option autoImplicit false
+set_option maxRecDepth 8192
+set_option maxHeartbeats 8000000
+namespace SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule
+namespace LAlanine40K2025.Thermal.Recovery.Reservoir.Pointer.Feedback.Renewal.Direction.Blocks.EnergyFrame.Inverse.Scaled.Finite.Evaluation.Field
+
+theorem step6_column64 : Check 5 term5Column64 term6Column64 := by decide +kernel
+
+theorem step6_column65 : Check 5 term5Column65 term6Column65 := by decide +kernel
+
+theorem step6_column66 : Check 5 term5Column66 term6Column66 := by decide +kernel
+
+theorem step6_column67 : Check 5 term5Column67 term6Column67 := by decide +kernel
+
+theorem step6_column68 : Check 5 term5Column68 term6Column68 := by decide +kernel
+
+theorem step6_column69 : Check 5 term5Column69 term6Column69 := by decide +kernel
+
+theorem step6_column70 : Check 5 term5Column70 term6Column70 := by decide +kernel
+
+theorem step6_column71 : Check 5 term5Column71 term6Column71 := by decide +kernel
+
+end LAlanine40K2025.Thermal.Recovery.Reservoir.Pointer.Feedback.Renewal.Direction.Blocks.EnergyFrame.Inverse.Scaled.Finite.Evaluation.Field
+end SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule

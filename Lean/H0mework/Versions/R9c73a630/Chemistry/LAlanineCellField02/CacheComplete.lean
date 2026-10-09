@@ -1,0 +1,12 @@
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineCellField02.CacheGroupRows
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineCellField02.CacheAORows
+
+set_option autoImplicit false
+
+namespace SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.BasinRefinement.WholeCellCache.Field2
+
+open SourceRectangle SourceSignedEvaluator SourceGaussianModel SourceFiniteData SourceRectangleChecks SourceFields
+
+assembleWholeField 2
+
+end SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.BasinRefinement.WholeCellCache.Field2

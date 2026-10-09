@@ -10,7 +10,7 @@ open SU7MotherLieAlgebra SU7ExteriorMatterRepresentation SU7ExteriorMatterRestri
 open StageNineHolonomicField StageNineP286GaugeConnectionVariationDensity DiracExteriorMatterAction
 open SourceQuantumScalarChart SourceQuantumFockGauge SourceQuantumConfigurationHilbert
 open scoped BigOperators Matrix
-local instance : DecidableEq LowEnergy.Quantum.Index:=Classical.decEq _
+local instance h0R71eMixedSpectatorColorMatrixLocal1 : DecidableEq LowEnergy.Quantum.Index:=Classical.decEq _
 
 def colorNative(A:SU3BlockLieMatrix):NativeLie:=p286CoordinateEquiv (colorData A)
 def namedColumn(i:NamedMode):DiracExteriorMatterCarrier:=LowEnergy.Quantum.wholeBasis (rootIndex i)

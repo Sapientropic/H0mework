@@ -1,0 +1,11 @@
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineContinuousMatrix.IntegerDataCertificate
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineContinuousMatrix.IntegerDataIncidenceCertificate
+
+namespace SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.BasinRefinement.SourceIntegerMatrix
+
+checkIntegerMatrixRow 16
+checkIntegerReadoutRow 16
+checkIntegerMatrixRow 17
+checkIntegerReadoutRow 17
+
+end SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.BasinRefinement.SourceIntegerMatrix

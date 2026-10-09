@@ -1,0 +1,501 @@
+{
+  "reviewer": "/root/native_positive_certify",
+  "phase": "lean-certify independent bounded generic source review",
+  "verdict": "GENERIC_SOURCE_AND_FOCUSED_EVIDENCE_ACCEPTED; no term/provenance defect",
+  "installation_scope": "The same-body generic Type producer is accepted. The actual Root consumer is a separate ungreen candidate owned by initial_electron_strike and is not certified by this report.",
+  "candidate": {
+    "path": "Lean/scratch/CPS1NativeBodyFunction/Function.lean",
+    "sha256": "1cee5f7debbdac0d4fa0361895a8412c62fc97d56360d643782448138fc4ad42",
+    "bytes": 9023,
+    "lines": 161,
+    "namespace": "CPS1MaterialIncidence.NativeBodyFunctionProbe",
+    "imports": [
+      "CPS1MaterialIncidence.ActualNativeBodyUpdate",
+      "CPS1MaterialIncidence.NativeCPFocus"
+    ],
+    "freeze": "/Volumes/Extension/Codex-Homework-cache/cps1-native-body-function-strike/function-freeze.json",
+    "freeze_sha256": "b485dad0ad663c365bf0416d0c4eead990888cd65e66a21a46a422b7d8d4c249"
+  },
+  "focused_evidence": {
+    "record": "/Volumes/Extension/Codex-Homework-cache/cps1-native-body-function-strike/CPS1NativeBodyFunction.Function.focused.json",
+    "record_sha256": "6475c05da69ec6356df1aad48bd4f5c9cfc0cc5e7b5e857ae71db6aad17ad263",
+    "record_exact_freeze": true,
+    "session": 18208,
+    "source_frozen": true,
+    "exit": 0,
+    "seconds": 44.24202841700753,
+    "command": [
+      "lake",
+      "env",
+      "sh",
+      "-c",
+      "LEAN_PATH=\"/Volumes/Extension/Codex-Homework-cache/cps1-native-body-function-strike/overlay:/Volumes/Extension/Codex-Homework-cache/cps1-native-registered-body-runtime-audit-state/input/lib:$LEAN_PATH\" LEAN_NUM_THREADS=1 exec lean --trust=0 -DElab.async=false -DwarningAsError=true -j1 -M16000 --root=scratch -o \"/Volumes/Extension/Codex-Homework-cache/cps1-native-body-function-strike/overlay/CPS1NativeBodyFunction/Function.olean\" \"scratch/CPS1NativeBodyFunction/Function.lean\""
+    ],
+    "flags_verified": [
+      "trust=0",
+      "Elab.async=false",
+      "warningAsError=true",
+      "j1",
+      "M16000",
+      "LEAN_NUM_THREADS=1"
+    ],
+    "actual_log": "/Volumes/Extension/Codex-Homework-cache/cps1-native-body-function-strike/CPS1NativeBodyFunction.Function.strict.log",
+    "actual_log_bytes": 0,
+    "actual_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "olean": "/Volumes/Extension/Codex-Homework-cache/cps1-native-body-function-strike/overlay/CPS1NativeBodyFunction/Function.olean",
+    "olean_sha256": "5ed750b2b9c02b61be150c6fe1fb30470ca7b8e25002987278ac33acbeff0969"
+  },
+  "paid_parent_interfaces": [
+    {
+      "module": "NativeCPFocus",
+      "path": "Lean/DomainProofs/CPS1ResourceExecution/CPS1MaterialIncidence/NativeCPFocus.lean",
+      "sha256": "fd33e077afc73061585a479464484bbbb290848d98cf872be3da36a3ca3036ae"
+    },
+    {
+      "module": "NativeBiologicalBody",
+      "path": "Lean/DomainProofs/CPS1ResourceExecution/CPS1MaterialIncidence/NativeBiologicalBody.lean",
+      "sha256": "06f8898a92a12f65d36d164f421352a2ef531f9875d29c2c4ea66143deafb63f"
+    },
+    {
+      "module": "ActualNativeBodyUpdate",
+      "path": "Lean/DomainProofs/CPS1ResourceExecution/CPS1MaterialIncidence/ActualNativeBodyUpdate.lean",
+      "sha256": "dad02b7861d4c13863eba46c9bb4c8a1de1e2ab7b7a850620e27766e8f0ac129"
+    },
+    {
+      "module": "NativeResumablePhysics",
+      "path": "Lean/DomainProofs/CPS1ResourceExecution/CPS1MaterialIncidence/NativeResumablePhysics.lean",
+      "sha256": "0780d0b2ac855b543e4365d17a666bf8f1b694066f850dd728dfecd94f74fe4b"
+    },
+    {
+      "module": "ActualAmmoniaDynamics",
+      "path": "Lean/DomainProofs/CPS1ResourceExecution/CPS1MaterialIncidence/ActualAmmoniaDynamics.lean",
+      "sha256": "6e594bcd874dbac425bf61d3e25c373f10afb34dd22c6814edb0864a6e4fa74a"
+    },
+    {
+      "module": "NativeAdoptionExecution",
+      "path": "Lean/DomainProofs/CPS1ResourceExecution/CPS1MaterialIncidence/NativeAdoptionExecution.lean",
+      "sha256": "1ce5517a07d4e349f89ddf1d8ccc92a3bf6295987f056322ba8488d3c75fcfb9"
+    },
+    {
+      "module": "ActualNativeAdoptedNext",
+      "path": "Lean/DomainProofs/CPS1ResourceExecution/CPS1MaterialIncidence/ActualNativeAdoptedNext.lean",
+      "sha256": "628a2807175886625538348dd413c2c3f4c1fa73b737c9689177480ae47cedf3"
+    },
+    {
+      "module": "NativeRootData",
+      "path": "Lean/DomainProofs/CPS1ResourceExecution/CPS1MaterialIncidence/NativeRootData.lean",
+      "sha256": "9184040095c5295f99a47827c3daeaf874c6e25d3326c2bdcda7f9eab1b45a81"
+    },
+    {
+      "module": "NativeRootFromInput",
+      "path": "Lean/DomainProofs/CPS1ResourceExecution/CPS1MaterialIncidence/NativeRootFromInput.lean",
+      "sha256": "ae90e82866b6a69f244eae499ba743c2300a2d8767ae1a312ef5d1763499ac6f"
+    },
+    {
+      "module": "NativeRootNextLaw",
+      "path": "Lean/DomainProofs/CPS1ResourceExecution/CPS1MaterialIncidence/NativeRootNextLaw.lean",
+      "sha256": "87c660445e7ce3366aa963c0766f3f1151fa4347111dc6ad042f25c737d7dfa7"
+    }
+  ],
+  "installed_root_parent": {
+    "receipt": "Verification/cps1-native-root-installation-formal/receipt.json",
+    "sha256": "65954ed97b72b72f7a418bcc3d4fea22e39d13674c60d3aabdfa5063b41b67cb",
+    "registered_runtime_new_gate": "being independently checked by parent, not rerun here"
+  },
+  "mouths": [
+    {
+      "name": "ChannelRead",
+      "line": 23
+    },
+    {
+      "name": "channel_read",
+      "line": 31
+    },
+    {
+      "name": "FunctionDisposition",
+      "line": 36
+    },
+    {
+      "name": "function_disposition",
+      "line": 49
+    },
+    {
+      "name": "DispositionLaw",
+      "line": 60
+    },
+    {
+      "name": "disposition_law",
+      "line": 84
+    },
+    {
+      "name": "NativeBodyFunction",
+      "line": 94
+    },
+    {
+      "name": "source_generated_native_body_function",
+      "line": 104
+    },
+    {
+      "name": "actual_result",
+      "line": 113
+    },
+    {
+      "name": "actual_execution",
+      "line": 115
+    },
+    {
+      "name": "actual_next",
+      "line": 117
+    },
+    {
+      "name": "next_state",
+      "line": 120
+    },
+    {
+      "name": "next_stock",
+      "line": 124
+    },
+    {
+      "name": "next_history",
+      "line": 128
+    },
+    {
+      "name": "actual_disposition",
+      "line": 132
+    },
+    {
+      "name": "account",
+      "line": 135
+    },
+    {
+      "name": "whole",
+      "line": 140
+    },
+    {
+      "name": "fields",
+      "line": 141
+    },
+    {
+      "name": "electrons",
+      "line": 142
+    },
+    {
+      "name": "invariant",
+      "line": 143
+    },
+    {
+      "name": "genomic_read",
+      "line": 145
+    },
+    {
+      "name": "duties",
+      "line": 149
+    },
+    {
+      "name": "strict_state",
+      "line": 151
+    },
+    {
+      "name": "unchanged_state_cannot_be_positive",
+      "line": 157
+    }
+  ],
+  "principal_factory": {
+    "name": "source_generated_native_body_function",
+    "line": 104,
+    "type": "(body : NativeBody receipt returned germ) : NativeBodyFunction body",
+    "universe": "Type data producer; physical/source indices are same family parameters, not independently selected target fields",
+    "inputs": "Only current body plus its existing receipt/source/current/paid/continuation/returned/germ family indices; no caller target, event, CP focus, guard, direction, afterRead, coverage or finished endpoint.",
+    "generation": "event := bodyEvent same body; beforeRead := channel_read continuation.focus same current.state; afterRead := channel_read same focus event.result.next; disposition := function_disposition same focus same event.result; next := bodyWrite same body same event.",
+    "classification": "Source-owned same-event native body function producer that generates actual NativeWrite and next body with complete stock/history and physical state. ChannelRead is a readout subcomponent and FunctionDisposition classifies that same generated event; the complete factory is not merely an observer tag. It does not cause an additional transition beyond the actual bodyEvent/bodyWrite."
+  },
+  "data_bindings": [
+    {
+      "line": 95,
+      "field": "event",
+      "type": "NativeWrite returned germ body.current"
+    },
+    {
+      "line": 96,
+      "field": "eventActual",
+      "equation": "event=bodyEvent receipt returned germ body"
+    },
+    {
+      "line": 97,
+      "field": "beforeRead",
+      "type": "ChannelRead continuation.focus body.current.state"
+    },
+    {
+      "line": 98,
+      "field": "afterRead",
+      "type": "ChannelRead continuation.focus event.result.next"
+    },
+    {
+      "line": 99,
+      "field": "disposition",
+      "type": "FunctionDisposition continuation.focus event.result"
+    },
+    {
+      "line": 100,
+      "field": "dispositionActual",
+      "equation": "disposition=function_disposition continuation.focus event.result"
+    },
+    {
+      "line": 101,
+      "field": "next",
+      "type": "NativeBody receipt returned germ"
+    },
+    {
+      "line": 102,
+      "field": "writeActual",
+      "equation": "next=bodyWrite receipt returned germ body event"
+    }
+  ],
+  "five_channels": {
+    "focus_source": "continuation.focus : CPFocus paid, intrinsically bound to the same original paid parent/serial/source atoms. Function factory does not accept a separately selected focus.",
+    "source_origin_contract": "EdgeFocus.left/right : AtomSector source with originAt source slots equal exact SourceBond endpoints; CPFocus carries three serial actual receipt equalities. Debit/credit endpoint coverage derives from serial.proton/deprotonate/phosphorylate.safe, not caller target bonds.",
+    "ordinals": [
+      {
+        "ordinal": 0,
+        "name": "protonLeaving",
+        "bond": "nitrogenHydrogen source",
+        "direction": "after < before"
+      },
+      {
+        "ordinal": 1,
+        "name": "protonForming",
+        "bond": "protonCredit source original bicarbonate",
+        "direction": "before < after"
+      },
+      {
+        "ordinal": 2,
+        "name": "hydroxylLeaving",
+        "bond": "oxygenHydrogen original bicarbonate",
+        "direction": "after < before"
+      },
+      {
+        "ordinal": 3,
+        "name": "atpLeaving",
+        "bond": "sourceDebit original serial.sites.atp",
+        "direction": "after < before"
+      },
+      {
+        "ordinal": 4,
+        "name": "atpForming",
+        "bond": "phosphorylationCredit original ATP2 site and original bicarbonate",
+        "direction": "before < after"
+      }
+    ],
+    "read_formula": "EdgeFocus.read= bondRead(state,left,right) = Complex.normSq(fullDensityKernel state at actual postNucleus row positions). fullDensityKernel sums spins and all RawIndex i/j, uses rawDensity current state.rawC and conjugated/raw basis values. Nuclear positions belong to state.pose at exact source slot addresses. Reads therefore use full actual rawC and actual nuclei after the event, not initial/old occupied-only capture.",
+    "parent_anchors": {
+      "NativeCPFocus.lean": [
+        16,
+        20,
+        52,
+        79,
+        81,
+        95
+      ],
+      "ActualAmmoniaDynamics.lean": [
+        272,
+        299
+      ]
+    },
+    "Classical_choose_scope": "Existing postNucleus chooses an actual node from same state.pose whose nucleus address is the source AtomSector; its signed post_nucleus_actual/unique address coverage is source-owned. This is an existing-source read, not choosing a finished after-state endpoint."
+  },
+  "physical_disposition": {
+    "index": "FunctionDisposition focus result indexed by same NativePhysicalResult body.current.state; eventActual and resultActual force exact body event result.",
+    "positive": {
+      "function_lines": [
+        37,
+        54,
+        63,
+        66
+      ],
+      "condition": "PaidStep state exists from three actual guards and all five StrictDirection inequalities hold from state to that exact event.after",
+      "after": "result.next=event.after",
+      "elapsed": "state.elapsed < result.next.elapsed",
+      "fullC": "next.rawC=state.rawC+sourceCoefficient current*(next.occupied-state.occupied)"
+    },
+    "channelResidual": {
+      "function_lines": [
+        39,
+        55,
+        67,
+        70
+      ],
+      "condition": "same PaidStep; not StrictDirection focus state event.after",
+      "after": "same actual PaidStep.after, not revert-to-before",
+      "elapsed_and_fullC": "same actual paid clock and fullC increment as positive"
+    },
+    "nondifferentiable": {
+      "function_lines": [
+        41,
+        71,
+        74
+      ],
+      "condition": "not FullSmooth actual state",
+      "next": "refineState same state; pose/rawC/reserve retained; time=state.time/2"
+    },
+    "collision": {
+      "function_lines": [
+        43,
+        75,
+        78
+      ],
+      "condition": "FullSmooth actual state and not Body.ready(endPose same state)",
+      "next": "same exact refinement with pose/rawC/reserve retained and half time"
+    },
+    "energyShortage": {
+      "function_lines": [
+        45,
+        79,
+        82
+      ],
+      "condition": "FullSmooth + Body.ready(endPose) and not energyPrice state <= state.reserve",
+      "next": "same exact refinement with pose/rawC/reserve retained and half time"
+    },
+    "guard_producer": "NativeResumablePhysics.advanceNative computes smooth/ready/budget branches from actual state, no caller guards.",
+    "paid_physics": "ActualAmmoniaDynamics fullKick/endPose and two-stage occupiedUpdate/endCoordinates use same state; paid budget sets after.reserve=before.reserve-energyPrice and preserves total energy+reserve. DispositionLaw retains the complete actual result object even though it projects selected equations.",
+    "strict_scope": "positive is the five signed CP-edge response directions on a real paid native physical step; it is not new CP stoichiometric fire, catalyst turnover, a uniform-positive theorem or a duty discharge."
+  },
+  "return_and_invariants": [
+    {
+      "line": 113,
+      "name": "actual_result",
+      "fact": "function.event.result=advanceNative body.current.state"
+    },
+    {
+      "line": 115,
+      "name": "actual_execution",
+      "fact": "function.event.execution=runPulse body.current"
+    },
+    {
+      "line": 117,
+      "name": "actual_next",
+      "fact": "function.next=bodyWrite body canonical bodyEvent; canonical body_next is definitionally this same bodyWrite"
+    },
+    {
+      "line": 120,
+      "name": "next_state",
+      "fact": "function.next.current.state=function.event.result.next"
+    },
+    {
+      "line": 124,
+      "name": "next_stock",
+      "fact": "function.next.current.stock=function.event.execution.stock, actual Inventory execution stock"
+    },
+    {
+      "line": 128,
+      "name": "next_history",
+      "fact": "function.next.history=body.history++[.written body.current same event]"
+    },
+    {
+      "line": 132,
+      "name": "actual_disposition",
+      "fact": "Full branch-sensitive DispositionLaw on actual same indexed result"
+    },
+    {
+      "line": 135,
+      "name": "account",
+      "fact": "next.state.energy+next.state.reserve=before.state.energy+before.state.reserve"
+    },
+    {
+      "line": 140,
+      "name": "whole",
+      "fact": "one actual physical state mother, original charged serial.after/spent, full remaining live inventory from same source"
+    },
+    {
+      "line": 141,
+      "name": "fields",
+      "fact": "actual full rawField/rawC fields equal same basis/occupied fields"
+    },
+    {
+      "line": 142,
+      "name": "electrons",
+      "fact": "trace occupied*occupied.conjTranspose=actual source electronCount"
+    },
+    {
+      "line": 143,
+      "name": "invariant",
+      "fact": "BodyInvariant includes same receipt legacy; current native DNA/coding/peptide, fullLength, whole/fields/Ne/account/origin/lastNative/reopened/pending"
+    },
+    {
+      "line": 145,
+      "name": "genomic_read",
+      "fact": "Direct theorem is native_damage(next)=native_damage(before). Full DNA/coding/peptide preservation is available via same source invariant and signed write_genome, not inferred from this name."
+    },
+    {
+      "line": 149,
+      "name": "duties",
+      "fact": "Exact generic theorem is function.next.pending=body.pending. It retains receipt.nextBody.pending/oldBody.pending; Root seven duties specialize through the original signed pending=independentDuties, not an extra generic list-count claim."
+    },
+    {
+      "line": 151,
+      "name": "strict_state",
+      "fact": "actual next.current.state != old.current.state; signed write_strict uses paid elapsed progress or refinement index progress, no phase inequality"
+    }
+  ],
+  "no_paid_CP_replay": {
+    "runPulse": "Inventory.execute [.pulse source.active] on source.stock, not initialStock or CP paid-stock fire",
+    "pulse_reactants": "[.active same active]",
+    "pulse_products": "[.active(pulse_active active), .spentPulse old state]",
+    "actual_stock": "new active :: spentPulse prior state :: same source.tail",
+    "remaining_mother": "same charged serial.after, same charged.spent and tailRemaining current.remaining preserved; no second physical mother",
+    "parent_anchors": {
+      "ActualNativeAdoptedNext.lean": [
+        25,
+        36,
+        75,
+        98,
+        110,
+        114
+      ],
+      "NativeAdoptionExecution.lean": [
+        97,
+        113
+      ]
+    },
+    "function_source_contains_fire_paid": false,
+    "function_source_calls_CP_tokenStep": false
+  },
+  "critical_countercontrol": {
+    "name": "unchanged_state_cannot_be_positive",
+    "line": 157,
+    "exact": "forall focus state, not StrictDirection focus state state",
+    "proof": "strict_direction_irrefl; first strict inequality is read(state)<read(state), impossible",
+    "scope": "It rejects unchanged-state positive. There is no distinct zeroState definition or separate stationary-dynamics theorem in this candidate; do not broaden this irreflexivity mouth to a new zero-state physical producer. Actual next state already strict for both paid and physical refinement branches."
+  },
+  "actual_Root_consumer_minimal_return_contract": {
+    "root": "Same existing CPS1Personalized2025.Delivery.facade and original inputs face; actual stored current/readNativeBody/readNativeWrite, canonical reachable tick or actual afterParent.",
+    "binding": "Recover same native body by exact generated_input/Disposition family equality and HEq/cast of stored InputBodyAt. A Prop-only existential readout may use existing witness alignment, but it may not select an independent finished body endpoint into a data producer.",
+    "factory": "Invoke source_generated_native_body_function on that very stored represented native body, not source_input_body or a fixed earlier body factory.",
+    "event_return": "Bind same function.event=bodyEvent to real stored body current; actual_result/execution consume live current/state/stock.",
+    "complete_next_return": "Pay function.next HEq to the actual original Root.Write.body/readWrittenNativeBody through canonical body_next=bodyWrite(bodyEvent) and signed Input/DispositionWriteLaw. Then actual next.readNativeBody must equal that same function.next; matching only state or stock is insufficient.",
+    "readouts": "Consume beforeRead/afterRead five values and exact dispositionActual; use next_state to bind after channel state to actual Root successor state. Retain next_stock/next_history/account/whole/fields/Ne/invariant/genome/fullLength and exact seven Root pending duties from signed same receipt.",
+    "countercontrol": "Actual next state differs from the stored state, and unchanged state cannot satisfy five-direction positive. Preserve channelResidual actual paid after and all physical typed residuals; no forced positive tag.",
+    "checkpoint_scope": "Root consumer is not yet green and not accepted by this generic source review; this is a precise return obligation for the owning construction, not a route no-go or demand to re-open paid parents."
+  },
+  "independent_fullTVO_responsibility": "Parent owns new Function/actual consumer raw type/value/opaque/recursor/axioms closure checks. Bind this exact source; traverse all generated declarations and actual factory value chain including bodyEvent/bodyWrite/function_disposition/channel_read/bondRead. Paid parents are used at signed exact scope, no parent full build rerun. Do not require surface type-only aliases as proof-body dependencies.",
+  "claim_boundary": "Five actual CP-edge directions/fullLength do not discharge .catalysis or any governance/independent Duty. The producer retains these duties; physical/semantic response classification is exact to same already-paid material source and actual body event.",
+  "defects": [],
+  "target_smuggling": false,
+  "caller_finished_endpoint": false,
+  "observer_only_label": false,
+  "positive_assumed_as_input": false,
+  "fullC_recaptured_from_occupation": false,
+  "paid_CP_re_fired": false,
+  "stock_reset": false,
+  "same_after_whole_field_ne_account_lost": false,
+  "duties_cleared": false,
+  "actions": {
+    "Lean_compile": 0,
+    "parent_compile": 0,
+    "fullTVO_repeat": 0,
+    "Lean_edit": 0,
+    "docs_edit": 0,
+    "Git_write": 0,
+    "artifact_copy": 0,
+    "only_write": "this own SSD source-review JSON"
+  }
+}

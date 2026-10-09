@@ -1,0 +1,45 @@
+{
+  "status": "PASS",
+  "mode": "replay",
+  "strict_flags": [
+    "-j1",
+    "--trust=0",
+    "-DwarningAsError=true"
+  ],
+  "task_cache": "runtime/.cache/low-energy-h0-checkpoint-20261005/dynamic/task-closure",
+  "canonical_path_sources": [
+    "runtime/.cache/low-energy-h0-checkpoint-20261005/dynamic/OriginalRNativeStepGraphEvent-attempt2.receipt.json",
+    "runtime/.cache/physical-pole-charge-closure-20261008/lean-path.txt"
+  ],
+  "canonical_path_entries": 625,
+  "targets": {
+    "SourceActualMixedCoframeTailPayment": {
+      "status": "PASS",
+      "receipt": "runtime/.cache/low-energy-h0-checkpoint-20261005/dynamic/task-closure/SourceActualMixedCoframeTailPayment.strict.json",
+      "failed_checks": [],
+      "source_sha256": "56c7b3bde4d95e0ff8e809af028b7442fa0d8decc5dca4d5410a25b0abad3a3c",
+      "olean_sha256": "cdb20827853bd8055ed03a0d74e50d0f8a3ae3e591cffc6504d644708446d7e6",
+      "exit_code": 0
+    },
+    "SourceActualSylvesterMixedFrequency": {
+      "status": "PASS",
+      "receipt": "runtime/.cache/low-energy-h0-checkpoint-20261005/dynamic/task-closure/SourceActualSylvesterMixedFrequency.strict.json",
+      "failed_checks": [],
+      "source_sha256": "8fc981c25183ed3d61c1a343b5352acaeb3ac84055220a80fbaef9a72636b99e",
+      "olean_sha256": "514237539786ea500a5f0059895400e5ffc2b7196c0bed3b0c5bf59a12918114",
+      "exit_code": 0
+    },
+    "SourceActualExactSylvesterRawFrequencyBalance": {
+      "status": "PASS",
+      "receipt": "runtime/.cache/low-energy-h0-checkpoint-20261005/dynamic/task-closure/SourceActualExactSylvesterRawFrequencyBalance.strict.json",
+      "failed_checks": [],
+      "source_sha256": "6150fbd8c3fe1b499935227432e2edebdc97b2ba74953a624894ebcdb3b0e6d8",
+      "olean_sha256": "14621d1d20218ed1272782a06bb4ca8affe55eb5ecf911e79e0ac6a9d282447f",
+      "exit_code": 0
+    }
+  },
+  "recompiled": [
+    "SourceActualExactSylvesterRawFrequencyBalance"
+  ],
+  "scope": "Task source/strict-command/object receipts; canonical dependencies reused as paid boundaries."
+}

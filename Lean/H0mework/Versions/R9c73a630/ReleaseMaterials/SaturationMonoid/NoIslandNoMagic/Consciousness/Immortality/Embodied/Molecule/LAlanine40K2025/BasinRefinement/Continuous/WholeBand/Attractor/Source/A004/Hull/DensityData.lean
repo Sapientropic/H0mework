@@ -1,0 +1,10 @@
+import H0mework.Versions.R9c73a630.ReleaseMaterials.SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.BasinRefinement.Continuous.WholeBand.Attractor.Source.A004.Hull.MatrixData
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineBandHighJet.DensityReifier
+
+set_option autoImplicit false
+set_option maxRecDepth 16384
+namespace SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.BasinRefinement.WholeBandAttractor.Atom004.Hull
+open WholeBandGenerated
+open HighJet.DensityReification
+generateHighJetDensity
+end SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.BasinRefinement.WholeBandAttractor.Atom004.Hull

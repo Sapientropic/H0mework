@@ -1,0 +1,93 @@
+{
+  "schema": "CPS1-native-full-smooth-audit-contract/v1",
+  "modules": [
+    "CPS1MaterialIncidence.NativeRawRegularity",
+    "CPS1MaterialIncidence.NativeFullSmooth"
+  ],
+  "sources": {
+    "Lean/DomainProofs/CPS1ResourceExecution/CPS1MaterialIncidence/NativeRawRegularity.lean": "6829a9ee0a3c0fc4337083a294294398e08da37001c718ad6ecb1d694c4b4b2e",
+    "Lean/DomainProofs/CPS1ResourceExecution/CPS1MaterialIncidence/NativeFullSmooth.lean": "c41abedd084fcf1165cc38d6802381067a8f4597d5e871b8dc13b7bd0f2488c0"
+  },
+  "mouths": [
+    "CPS1MaterialIncidence.NativeBodyFunctionProbe.full_raw_nuclear_differentiable",
+    "CPS1MaterialIncidence.NativeBodyFunctionProbe.full_raw_core_differentiable",
+    "CPS1MaterialIncidence.NativeBodyFunctionProbe.full_raw_trace_differentiable",
+    "CPS1MaterialIncidence.NativeBodyFunctionProbe.full_raw_energy_differentiable",
+    "CPS1MaterialIncidence.NativeBodyFunctionProbe.post_full_smooth",
+    "CPS1MaterialIncidence.NativeBodyFunctionProbe.post_nondifferentiable_impossible",
+    "CPS1MaterialIncidence.NativeBodyFunctionProbe.native_body_full_smooth",
+    "CPS1MaterialIncidence.NativeBodyFunctionProbe.body_function_nondifferentiable_impossible"
+  ],
+  "checks": [
+    [
+      "CPS1MaterialIncidence.NativeBodyFunctionProbe.full_raw_nuclear_differentiable",
+      [
+        "CPS1Deformation.multicentre_nuclear_hasFDerivAt"
+      ]
+    ],
+    [
+      "CPS1MaterialIncidence.NativeBodyFunctionProbe.full_raw_core_differentiable",
+      [
+        "CPS1MaterialIncidence.NativeBodyFunctionProbe.full_raw_nuclear_differentiable"
+      ]
+    ],
+    [
+      "CPS1MaterialIncidence.NativeBodyFunctionProbe.full_raw_trace_differentiable",
+      [
+        "CPS1MaterialIncidence.NativeBodyFunctionProbe.full_raw_core_differentiable"
+      ]
+    ],
+    [
+      "CPS1MaterialIncidence.NativeBodyFunctionProbe.full_raw_energy_differentiable",
+      [
+        "CPS1MaterialIncidence.NativeBodyFunctionProbe.full_raw_trace_differentiable"
+      ]
+    ],
+    [
+      "CPS1MaterialIncidence.NativeBodyFunctionProbe.post_full_smooth",
+      [
+        "CPS1MaterialIncidence.NativeBodyFunctionProbe.full_raw_energy_differentiable"
+      ]
+    ],
+    [
+      "CPS1MaterialIncidence.NativeBodyFunctionProbe.post_nondifferentiable_impossible",
+      [
+        "CPS1MaterialIncidence.NativeBodyFunctionProbe.post_full_smooth"
+      ]
+    ],
+    [
+      "CPS1MaterialIncidence.NativeBodyFunctionProbe.native_body_full_smooth",
+      [
+        "CPS1MaterialIncidence.NativeBodyFunctionProbe.post_full_smooth"
+      ]
+    ],
+    [
+      "CPS1MaterialIncidence.NativeBodyFunctionProbe.body_function_nondifferentiable_impossible",
+      [
+        "CPS1MaterialIncidence.NativeBodyFunctionProbe.native_body_full_smooth"
+      ]
+    ]
+  ],
+  "data_mouths": [],
+  "capture_data_mouths": [],
+  "capture_entry_points": [],
+  "live_mouths": [
+    "CPS1MaterialIncidence.NativeBodyFunctionProbe.full_raw_nuclear_differentiable",
+    "CPS1MaterialIncidence.NativeBodyFunctionProbe.full_raw_core_differentiable",
+    "CPS1MaterialIncidence.NativeBodyFunctionProbe.full_raw_trace_differentiable",
+    "CPS1MaterialIncidence.NativeBodyFunctionProbe.full_raw_energy_differentiable",
+    "CPS1MaterialIncidence.NativeBodyFunctionProbe.post_full_smooth",
+    "CPS1MaterialIncidence.NativeBodyFunctionProbe.post_nondifferentiable_impossible",
+    "CPS1MaterialIncidence.NativeBodyFunctionProbe.native_body_full_smooth",
+    "CPS1MaterialIncidence.NativeBodyFunctionProbe.body_function_nondifferentiable_impossible"
+  ],
+  "forbidden_live_prefixes": [
+    "CPS1BiologicalUpdate.SourcePositive."
+  ],
+  "forbidden_live_names": [],
+  "scope": "subordinate source analytic producer: complete RawIndex stored/local four nuclear-integral blocks, actual rawCore/full trace/rawEnergy displacement at full rawIncrement halfCoordinates; post_full_smooth from actual PostState.ready, native_body_full_smooth and true nondifferentiability guard elimination. No new root facade/ABI/face and no future endPose or energy-budget claim.",
+  "source_review": {
+    "path": "/Volumes/Extension/Codex-Homework-cache/cps1-native-full-smooth-certification/source-review-native-positive-certify.json",
+    "sha256": "0743d60f7245c051d283c0c2944e0a19f73b33d84edacf524d4b3c700fbd3933"
+  }
+}

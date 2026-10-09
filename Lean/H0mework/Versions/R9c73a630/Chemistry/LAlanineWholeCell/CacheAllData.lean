@@ -1,0 +1,140 @@
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineContinuousChecks.AOCalculatedData
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineCellField01.CacheData
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineCellField02.CacheData
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineCellField03.CacheData
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineCellField04.CacheData
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineCellField05.CacheData
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineCellField06.CacheData
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineCellField07.CacheData
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineCellField08.CacheData
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineCellField09.CacheData
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineCellField10.CacheData
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineCellField11.CacheData
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineCellField12.CacheData
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineCellField13.CacheData
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineCellField14.CacheData
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineCellField15.CacheData
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineCellField16.CacheData
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineCellField17.CacheData
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineCellField18.CacheData
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineCellField19.CacheData
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineCellField20.CacheData
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineCellField21.CacheData
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineCellField22.CacheData
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineCellField23.CacheData
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineCellField24.CacheData
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineCellField25.CacheData
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineCellField26.CacheData
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineCellField27.CacheData
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineCellField28.CacheData
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineCellField29.CacheData
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineCellField30.CacheData
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineCellField31.CacheData
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineCellField32.CacheData
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineCellField33.CacheData
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineCellField34.CacheData
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineCellField35.CacheData
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineCellField36.CacheData
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineCellField37.CacheData
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineCellField38.CacheData
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineCellField39.CacheData
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineCellField40.CacheData
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineCellField41.CacheData
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineCellField42.CacheData
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineCellField43.CacheData
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineCellField44.CacheData
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineCellField45.CacheData
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineCellField46.CacheData
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineCellField47.CacheData
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineCellField48.CacheData
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineCellField49.CacheData
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineCellField50.CacheData
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineCellField51.CacheData
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineCellField52.CacheData
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineCellField53.CacheData
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineCellField54.CacheData
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineCellField55.CacheData
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineCellField56.CacheData
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineCellField57.CacheData
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineCellField58.CacheData
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineCellField59.CacheData
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineCellField60.CacheData
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineCellField61.CacheData
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineCellField62.CacheData
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineCellField63.CacheData
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineCellField64.CacheData
+
+set_option autoImplicit false
+
+namespace SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.BasinRefinement.WholeCellCache
+
+open SourceRectangle SourceSignedEvaluator SourceGaussianModel SourceFiniteData SourceFields
+
+noncomputable def calculatedAO (f : WholeCellSource.Field) (j : LowJet) (basis : Basis) : Pair :=
+  ![SourceRectangleChecks.calculatedAO (fullJet j),
+    Field1.calculatedAO j,
+    Field2.calculatedAO j,
+    Field3.calculatedAO j,
+    Field4.calculatedAO j,
+    Field5.calculatedAO j,
+    Field6.calculatedAO j,
+    Field7.calculatedAO j,
+    Field8.calculatedAO j,
+    Field9.calculatedAO j,
+    Field10.calculatedAO j,
+    Field11.calculatedAO j,
+    Field12.calculatedAO j,
+    Field13.calculatedAO j,
+    Field14.calculatedAO j,
+    Field15.calculatedAO j,
+    Field16.calculatedAO j,
+    Field17.calculatedAO j,
+    Field18.calculatedAO j,
+    Field19.calculatedAO j,
+    Field20.calculatedAO j,
+    Field21.calculatedAO j,
+    Field22.calculatedAO j,
+    Field23.calculatedAO j,
+    Field24.calculatedAO j,
+    Field25.calculatedAO j,
+    Field26.calculatedAO j,
+    Field27.calculatedAO j,
+    Field28.calculatedAO j,
+    Field29.calculatedAO j,
+    Field30.calculatedAO j,
+    Field31.calculatedAO j,
+    Field32.calculatedAO j,
+    Field33.calculatedAO j,
+    Field34.calculatedAO j,
+    Field35.calculatedAO j,
+    Field36.calculatedAO j,
+    Field37.calculatedAO j,
+    Field38.calculatedAO j,
+    Field39.calculatedAO j,
+    Field40.calculatedAO j,
+    Field41.calculatedAO j,
+    Field42.calculatedAO j,
+    Field43.calculatedAO j,
+    Field44.calculatedAO j,
+    Field45.calculatedAO j,
+    Field46.calculatedAO j,
+    Field47.calculatedAO j,
+    Field48.calculatedAO j,
+    Field49.calculatedAO j,
+    Field50.calculatedAO j,
+    Field51.calculatedAO j,
+    Field52.calculatedAO j,
+    Field53.calculatedAO j,
+    Field54.calculatedAO j,
+    Field55.calculatedAO j,
+    Field56.calculatedAO j,
+    Field57.calculatedAO j,
+    Field58.calculatedAO j,
+    Field59.calculatedAO j,
+    Field60.calculatedAO j,
+    Field61.calculatedAO j,
+    Field62.calculatedAO j,
+    Field63.calculatedAO j,
+    Field64.calculatedAO j] f basis
+
+end SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.BasinRefinement.WholeCellCache

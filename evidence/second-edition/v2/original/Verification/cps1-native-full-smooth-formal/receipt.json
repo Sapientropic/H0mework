@@ -1,0 +1,323 @@
+{
+  "schema": "CPS1-native-full-smooth-formal/v1",
+  "verdict": "certified",
+  "sources": [
+    {
+      "path": "Lean/DomainProofs/CPS1ResourceExecution/CPS1MaterialIncidence/NativeRawRegularity.lean",
+      "sha256": "6829a9ee0a3c0fc4337083a294294398e08da37001c718ad6ecb1d694c4b4b2e",
+      "bytes": 8167,
+      "module": "CPS1MaterialIncidence.NativeRawRegularity"
+    },
+    {
+      "path": "Lean/DomainProofs/CPS1ResourceExecution/CPS1MaterialIncidence/NativeFullSmooth.lean",
+      "sha256": "c41abedd084fcf1165cc38d6802381067a8f4597d5e871b8dc13b7bd0f2488c0",
+      "bytes": 7356,
+      "module": "CPS1MaterialIncidence.NativeFullSmooth"
+    }
+  ],
+  "direct_consumer": {
+    "path": "Lean/DomainProofs/CPS1ResourceExecution/CPS1MaterialIncidence/NativeFullSmooth.lean",
+    "sha256": "c41abedd084fcf1165cc38d6802381067a8f4597d5e871b8dc13b7bd0f2488c0",
+    "bytes": 7356,
+    "module": "CPS1MaterialIncidence.NativeFullSmooth",
+    "declaration": "CPS1MaterialIncidence.NativeBodyFunctionProbe.native_body_full_smooth"
+  },
+  "compiled_candidate": {
+    "path": "Verification/cps1-native-full-smooth-formal/compiled-candidate-capsule.json",
+    "sha256": "869d0e8647d80c4c41a6ba7f46b0f7a99cf02762e16e9219b3bb3f0c1b4ce20e",
+    "bytes": 14684
+  },
+  "signed_parent_receipts": [
+    {
+      "path": "Verification/cps1-native-body-function-formal/receipt.json",
+      "sha256": "3a4753af63d3dadf4e7fd6aacb6dde9bfa3b70f397f73198b0b58851e4f72d96",
+      "bytes": 18757
+    }
+  ],
+  "audit": {
+    "schema": "native-full-smooth-closed-lossless-TVO/v1",
+    "verdict": "passed",
+    "owner_slots": 15,
+    "expression_nodes": 9000,
+    "owner_types_values_and_recursor_rhs_closed": true,
+    "private_raw": 6,
+    "raw_constructors": 0,
+    "raw_recursors": 0,
+    "header_modules": 27766,
+    "public_mouths": 8,
+    "value_paths": 8,
+    "closed_graph_nodes": 442,
+    "fresh_declarations": 15,
+    "fresh_edges": 1819,
+    "reused_frontier_count": 427,
+    "paid_names": 113255,
+    "rechecked_paid_declarations": [],
+    "rechecked_paid_count": 0,
+    "rechecked_paid_full_parts_identical": true,
+    "rechecked_paid_body_walk": 0,
+    "paid_frontier_body_walk": 0,
+    "old_body_walk_excludes_rechecked_paid": true,
+    "capture_proof_classification": {
+      "complete_TVO_graph_retained": true,
+      "classification": "complete source RawIndex nuclear differentiability generates full raw energy smoothness and rules out native body nondifferentiability; ready follows from actual PostState field",
+      "source_review": {
+        "path": "/Volumes/Extension/Codex-Homework-cache/cps1-native-full-smooth-certification/source-review-native-positive-certify.json",
+        "sha256": "0743d60f7245c051d283c0c2944e0a19f73b33d84edacf524d4b3c700fbd3933"
+      },
+      "type_edges_used_in_value_closure": false,
+      "no_finished_payload_selected_from_exists": true,
+      "no_future_body_table": true
+    },
+    "fresh_flags_zero": true,
+    "official_compiler_backends": [],
+    "official_backend_math_unreachable": true,
+    "fresh_opaque_readable": [],
+    "old_body_walk": 0,
+    "Root_parent_owners_rebuilt": 0,
+    "value_only_closures_recomputed_exact": true,
+    "live_value_excludes_fixed_factory": true
+  },
+  "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "axiom_sets": {
+    "CPS1MaterialIncidence.NativeBodyFunctionProbe.full_raw_nuclear_differentiable": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "CPS1MaterialIncidence.NativeBodyFunctionProbe.full_raw_core_differentiable": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "CPS1MaterialIncidence.NativeBodyFunctionProbe.full_raw_trace_differentiable": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "CPS1MaterialIncidence.NativeBodyFunctionProbe.full_raw_energy_differentiable": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "CPS1MaterialIncidence.NativeBodyFunctionProbe.post_full_smooth": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "CPS1MaterialIncidence.NativeBodyFunctionProbe.post_nondifferentiable_impossible": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "CPS1MaterialIncidence.NativeBodyFunctionProbe.native_body_full_smooth": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "CPS1MaterialIncidence.NativeBodyFunctionProbe.body_function_nondifferentiable_impossible": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "scope": {
+    "classification": "subordinate source analytic producer and native-body guard consumer",
+    "complete_raw_index": true,
+    "stored_local_four_blocks": true,
+    "actual_fullForce_derivative_lambda": true,
+    "full_raw_core_trace_energy": true,
+    "two_body_terms_constant_only_in_actual_pose_variable": true,
+    "current_ready_from_PostState_field": true,
+    "no_caller_smooth_future_ready_or_budget": true,
+    "native_body_full_smooth": true,
+    "nondifferentiability_guard_impossible": true,
+    "endPose_ready_and_energy_budget": "independent source guards; not premises of post_full_smooth",
+    "Root_installation": "unchanged Root24; this receipt signs analytic guard capability, next paid source consumer remains separate"
+  },
+  "verification": {
+    "formal_focused": {
+      "path": "/Volumes/Extension/Codex-Homework-cache/cps1-native-full-smooth-audit-state/focused.json",
+      "sha256": "a518e061c25920f06cc77e8eea5bd58180da1ed46d30aa1266dbad26be86df6b",
+      "bytes": 6073
+    },
+    "independent_source_review": {
+      "path": "/Volumes/Extension/Codex-Homework-cache/cps1-native-full-smooth-certification/source-review-native-positive-certify.json",
+      "sha256": "0743d60f7245c051d283c0c2944e0a19f73b33d84edacf524d4b3c700fbd3933",
+      "bytes": 21312
+    },
+    "pc_audit": {
+      "id": "native-full-smooth-execute-audit@e18c2a3f70dc6965",
+      "exit": 0,
+      "seconds": 128.968,
+      "peak_anon_gb": 1.45,
+      "host": "Luciano-PC"
+    },
+    "full_TVO_and_value_only_paths": {
+      "path": "/Volumes/Extension/Codex-Homework-cache/cps1-native-full-smooth-certification/purecert-native-full-smooth-v1/returned-audit-check.json",
+      "sha256": "38d0dfeb74bb1762f4cb0d406013a42546b06597972817e35d06768d99d80daa",
+      "bytes": 1645
+    },
+    "all_axiom_sets": {
+      "path": "/Volumes/Extension/Codex-Homework-cache/cps1-native-full-smooth-certification/purecert-native-full-smooth-v1/axiom-sets.json",
+      "sha256": "45d98de306bcd871310b6f36d0f4beebb190da600c7aae5a17398cf65426343b",
+      "bytes": 1155
+    }
+  },
+  "audit_files": [
+    {
+      "path": "/Volumes/Extension/Codex-Homework-cache/cps1-native-full-smooth-certification/purecert-native-full-smooth-v1/ExecuteAudit.compiler-backends.json",
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "bytes": 2
+    },
+    {
+      "path": "/Volumes/Extension/Codex-Homework-cache/cps1-native-full-smooth-certification/purecert-native-full-smooth-v1/ExecuteAudit.expressions.jsonl",
+      "sha256": "15d39a7ea171bb50868fc87b86fc6c6c5a3041e273ccd4f0fe55b3c363a66b78",
+      "bytes": 510826
+    },
+    {
+      "path": "/Volumes/Extension/Codex-Homework-cache/cps1-native-full-smooth-certification/purecert-native-full-smooth-v1/ExecuteAudit.graph.jsonl",
+      "sha256": "2399586219819c07cf86d61a1b81ea46e5ed32e65ab6da5a5e73bbef4207d2d9",
+      "bytes": 154212
+    },
+    {
+      "path": "/Volumes/Extension/Codex-Homework-cache/cps1-native-full-smooth-certification/purecert-native-full-smooth-v1/ExecuteAudit.header.json",
+      "sha256": "b7f4a56bb39abbcb71d079a9040f0cfa8bbea80ac544d2b613ea26fef41d8606",
+      "bytes": 42300684
+    },
+    {
+      "path": "/Volumes/Extension/Codex-Homework-cache/cps1-native-full-smooth-certification/purecert-native-full-smooth-v1/ExecuteAudit.olean",
+      "sha256": "9446d65f34760b592f4a1ba0348b0e5df0f73b08490e76db31f67f3751e00769",
+      "bytes": 2056
+    },
+    {
+      "path": "/Volumes/Extension/Codex-Homework-cache/cps1-native-full-smooth-certification/purecert-native-full-smooth-v1/ExecuteAudit.owners.jsonl",
+      "sha256": "eea9c304a579ad91154284532d12cee4f181f2368047ed1a4d7a9f22bd4bab75",
+      "bytes": 110498
+    },
+    {
+      "path": "/Volumes/Extension/Codex-Homework-cache/cps1-native-full-smooth-certification/purecert-native-full-smooth-v1/ExecuteAudit.public-mouths.json",
+      "sha256": "22f6f85cb03d7ae4415e0d054c98949619155f47b657d03f13cc3b2310d19098",
+      "bytes": 22690
+    },
+    {
+      "path": "/Volumes/Extension/Codex-Homework-cache/cps1-native-full-smooth-certification/purecert-native-full-smooth-v1/ExecuteAudit.summary.json",
+      "sha256": "e6d852d4f0a529370f75fe77e18d0362f73192807f1d3415fd6a22c84cac8936",
+      "bytes": 13130
+    },
+    {
+      "path": "/Volumes/Extension/Codex-Homework-cache/cps1-native-full-smooth-certification/purecert-native-full-smooth-v1/ExecuteAudit.value-paths.json",
+      "sha256": "4fbd5c2be39dd2ae7951bf6b6f4f290883c060a6cb4b7c972670c0b14b72616d",
+      "bytes": 102266
+    },
+    {
+      "path": "/Volumes/Extension/Codex-Homework-cache/cps1-native-full-smooth-certification/purecert-native-full-smooth-v1/NativeFullSmoothAuditTools.olean",
+      "sha256": "37e11482475edb0f0c3cb8c61a04121447ba9aae1bd6e96e41fa9df74ddd8667",
+      "bytes": 2391728
+    },
+    {
+      "path": "/Volumes/Extension/Codex-Homework-cache/cps1-native-full-smooth-certification/purecert-native-full-smooth-v1/axiom-sets.json",
+      "sha256": "45d98de306bcd871310b6f36d0f4beebb190da600c7aae5a17398cf65426343b",
+      "bytes": 1155
+    },
+    {
+      "path": "/Volumes/Extension/Codex-Homework-cache/cps1-native-full-smooth-certification/purecert-native-full-smooth-v1/axioms.log",
+      "sha256": "38cf69eaff5f28bada0c5a303727e8a8cc1e04cec433de3737e6463b1c9ca41b",
+      "bytes": 1112
+    },
+    {
+      "path": "/Volumes/Extension/Codex-Homework-cache/cps1-native-full-smooth-certification/purecert-native-full-smooth-v1/math-gates.log",
+      "sha256": "80f458fae375a8d27d8b6885c030fbc473339ccd0107a1bed365dc1b8a0a2acd",
+      "bytes": 103
+    },
+    {
+      "path": "/Volumes/Extension/Codex-Homework-cache/cps1-native-full-smooth-certification/purecert-native-full-smooth-v1/returned-audit-check.json",
+      "sha256": "38d0dfeb74bb1762f4cb0d406013a42546b06597972817e35d06768d99d80daa",
+      "bytes": 1645
+    },
+    {
+      "path": "/Volumes/Extension/Codex-Homework-cache/cps1-native-full-smooth-certification/purecert-native-full-smooth-v1/CPS1MaterialIncidence/NativeRawRegularity.olean",
+      "sha256": "bbad4f52b2f9fd23e54eba7964a236526e4b3f7bb9fad05a7119ad67781ce043",
+      "bytes": 234240
+    },
+    {
+      "path": "/Volumes/Extension/Codex-Homework-cache/cps1-native-full-smooth-certification/purecert-native-full-smooth-v1/CPS1MaterialIncidence/NativeFullSmooth.olean",
+      "sha256": "a77b9aeda23fec232ff52a71a2ce168155d42a1e69eedf8e5d81833104cc5bd0",
+      "bytes": 186968
+    }
+  ],
+  "audit_inputs": [
+    {
+      "path": "/Volumes/Extension/Codex-Homework-cache/cps1-native-full-smooth-audit-state/audit-contract.json",
+      "sha256": "b87a873e51386670f175dd134ab38947a9dfb4ee9f3b747d1dbe34a5bab1329b",
+      "bytes": 4268
+    },
+    {
+      "path": "/Volumes/Extension/Codex-Homework-cache/cps1-native-full-smooth-audit-state/preparation.json",
+      "sha256": "ed83ba86f1db7299d4d8f12390a757b47b47515330b9f532f81c716d6604a089",
+      "bytes": 670
+    },
+    {
+      "path": "/Volumes/Extension/Codex-Homework-cache/cps1-native-full-smooth-audit-state/units.jsonl",
+      "sha256": "dfbd07873f6be70503c7bd54471c932212f36308722868f179978f26e49423d5",
+      "bytes": 5727354
+    },
+    {
+      "path": "/Volumes/Extension/Codex-Homework-cache/cps1-native-full-smooth-audit-state/prepare-audit.py",
+      "sha256": "d4c9f8e95dfabcb1ce24ec2a11ea84f620ae9f2aa08f9c090a3f5df7c003bea8",
+      "bytes": 5456
+    },
+    {
+      "path": "/Volumes/Extension/Codex-Homework-cache/cps1-native-full-smooth-audit-state/check-returned-audit.py",
+      "sha256": "1e400da3a6a968d3e0c526ce14b7075c1ea9729a21acc7599fa48c2a798d41ce",
+      "bytes": 7356
+    },
+    {
+      "path": "/Volumes/Extension/Codex-Homework-cache/cps1-native-full-smooth-audit-state/focused.py",
+      "sha256": "7926389c6feb9a8e9bee0bf898fcd46845d1ba121ca406240bf0e56285d53c3e",
+      "bytes": 2356
+    },
+    {
+      "path": "/Volumes/Extension/Codex-Homework-cache/cps1-native-full-smooth-audit-state/focused.json",
+      "sha256": "a518e061c25920f06cc77e8eea5bd58180da1ed46d30aa1266dbad26be86df6b",
+      "bytes": 6073
+    },
+    {
+      "path": "/Volumes/Extension/Codex-Homework-cache/cps1-native-full-smooth-audit-state/NativeRawRegularity.focused.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "/Volumes/Extension/Codex-Homework-cache/cps1-native-full-smooth-audit-state/NativeFullSmooth.focused.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "/Volumes/Extension/Codex-Homework-cache/cps1-native-full-smooth-audit-state/input/src/paid-names-native-full-smooth.txt",
+      "sha256": "17e78e795b31d733fc5c31171a1b4138e40617cb2a05f2fa8fa39b98bd03eadf",
+      "bytes": 6220374
+    },
+    {
+      "path": "Verification/cps1-native-full-smooth-formal/ExportAuditTools.lean",
+      "sha256": "31d499fc4a026c05bf31ef654866d5cb54c2caf548755dfff9dee12c2bebe5fd",
+      "bytes": 21370
+    },
+    {
+      "path": "Verification/cps1-native-full-smooth-formal/Axioms.lean",
+      "sha256": "422b5b584112bc1b745c2e099e0d09d22a2be2ebb6580b1a288f1ef55bff0a65",
+      "bytes": 815
+    }
+  ],
+  "controller_advanced": false,
+  "operational_face_additions": 0,
+  "parent_owners_rebuilt": 0,
+  "storage": {
+    "canonical_outputs": "/Volumes/Extension/Codex-Homework-cache/cps1-native-full-smooth-certification/purecert-native-full-smooth-v1",
+    "state": "/Volumes/Extension/Codex-Homework-cache/cps1-native-full-smooth-audit-state",
+    "inherited_artifacts": "one shared complete immutable library view on SSD, no duplicate data copy"
+  },
+  "timestamp_ns": 1791529077963350000
+}

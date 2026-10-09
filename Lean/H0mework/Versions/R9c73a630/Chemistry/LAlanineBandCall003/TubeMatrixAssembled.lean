@@ -1,0 +1,21 @@
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineTrueTubeWhole.MatrixFactory
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineBandCall003.TubeMatrixB0
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineBandCall003.TubeMatrixB1
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineBandCall003.TubeMatrixB2
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineBandCall003.TubeMatrixB3
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineBandCall003.TubeMatrixB4
+
+namespace SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.BasinRefinement.TrueTubeWholeMatrix.C3
+
+assembleWholeCellMatrixRow 0
+assembleWholeCellMatrixRow 1
+assembleWholeCellMatrixRow 2
+assembleWholeCellMatrixRow 3
+assembleWholeCellMatrixRow 4
+assembleWholeCellMatrixRow 5
+assembleWholeCellMatrixRow 6
+assembleWholeCellMatrixRow 7
+assembleWholeCellMatrixRow 8
+assembleWholeCellMatrixRow 9
+
+end SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.BasinRefinement.TrueTubeWholeMatrix.C3

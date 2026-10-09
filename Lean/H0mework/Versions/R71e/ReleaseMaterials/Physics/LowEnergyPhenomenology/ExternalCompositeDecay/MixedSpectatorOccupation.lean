@@ -9,7 +9,7 @@ open SourceQuantumConfigurationHilbert SourceQuantumFockGauge
 open SaturationMonoid.PhysicsCore QuantizationCheck.Fermion
 open scoped BigOperators InnerProductSpace
 attribute [local instance] SourceRealScalarFock.branchOrder
-local instance : DecidableEq Mode := SourceRealScalarFock.branchOrder.toDecidableEq
+local instance h0R71eMixedSpectatorOccupationLocal1 : DecidableEq Mode := SourceRealScalarFock.branchOrder.toDecidableEq
 
 def fiberCharge (q : Mode → ℂ) : Module.End ℂ FockFiber :=
   fiberCoordinates.symm.toLinearMap.comp

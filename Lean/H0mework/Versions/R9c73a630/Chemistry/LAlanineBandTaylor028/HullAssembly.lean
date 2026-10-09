@@ -1,0 +1,20 @@
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineBandTaylor028.HullGroups
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineBandTaylor028.HullOrbitals
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineBandTaylor028.HullMatrixPart0
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineBandTaylor028.HullMatrixPart1
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineBandTaylor028.HullMatrixPart2
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineBandTaylor028.HullMatrixPart3
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineBandTaylor028.HullMatrixPart4
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineBandTaylor028.HullMatrixPart5
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineBandTaylor028.HullMatrixPart6
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineBandTaylor028.HullDensityCheck
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineBandHighJet.Assembly
+
+set_option autoImplicit false
+set_option maxHeartbeats 0
+set_option maxRecDepth 16384
+namespace SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.BasinRefinement.WholeBandGenerated.Sample057
+open HighJet.MatrixChecking HighJet.Assembly
+assembleHighJetMatrix
+assembleHighJetMaterial 1
+end SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.BasinRefinement.WholeBandGenerated.Sample057

@@ -1,0 +1,39 @@
+{
+  "schema": "CPS1-native-registration-paid-lazy-comparator-controls/v1",
+  "verdict": "passed",
+  "checker_sha256": "06a39e69682e9acddbc02ef8ce214ceb0aea27932341576f09d8894b8ecfca74",
+  "exact15_positive_coverage": true,
+  "signed_full_trust_chain_authenticated": true,
+  "negative_controls_rejected": [
+    {
+      "control": "reported_name_omitted",
+      "expected_rejection": "SUMMARY_RECHECKED_SET_NOT_EXACT"
+    },
+    {
+      "control": "extra_raw_paid_name",
+      "expected_rejection": "RAW_OWN_PAID_INTERSECTION_NOT_EXPECTED"
+    },
+    {
+      "control": "private_suffix_substitution",
+      "expected_rejection": "RAW_OWN_PAID_INTERSECTION_NOT_EXPECTED"
+    },
+    {
+      "control": "duplicate_reported_name",
+      "expected_rejection": "SUMMARY_RECHECKED_SET_NOT_EXACT"
+    },
+    {
+      "control": "signed_sha_mismatch",
+      "expected_rejection": "SIGNED_BINDING_MISMATCH"
+    },
+    {
+      "control": "paid_frontier_stop",
+      "expected_rejection": "RECHECKED_DECLARATION_WAS_PAID_FRONTIER_STOP"
+    }
+  ],
+  "reused_fullparts_algorithm": {
+    "path": "/Volumes/Extension/Codex-Homework-cache/cps1-native-root-data-certification/check-generic-relocation.py",
+    "sha256": "0ebd3bd19c9da886374995e7e5a0b78d6e50204b4fc86943fb196a6bd671370f",
+    "bytes": 33077
+  },
+  "original_comparator_18_negative_controls_preserved": true
+}

@@ -1,0 +1,9 @@
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineBandCall034.TubeMatrixData
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineWholeCell.MatrixCertificate
+
+namespace SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.BasinRefinement.TrueTubeWholeMatrix.C34
+
+checkWholeCellMatrixRow 8
+checkWholeCellMatrixRow 9
+
+end SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.BasinRefinement.TrueTubeWholeMatrix.C34

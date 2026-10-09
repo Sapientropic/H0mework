@@ -1,0 +1,8 @@
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineSourceMatrix.MatrixCertificate
+
+namespace SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.BasinRefinement.SourceField1Matrix
+
+checkField1MatrixRow 0
+checkField1MatrixRow 1
+
+end SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.BasinRefinement.SourceField1Matrix

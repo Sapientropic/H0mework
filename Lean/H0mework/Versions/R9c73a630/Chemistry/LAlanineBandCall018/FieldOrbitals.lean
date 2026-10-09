@@ -1,0 +1,11 @@
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineBandCall018.FieldData
+
+set_option autoImplicit false
+
+namespace SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule
+namespace LAlanine40K2025.BasinRefinement.WholeBandCache.Call18
+
+checkWholeBandOrbitals 0 98
+
+end LAlanine40K2025.BasinRefinement.WholeBandCache.Call18
+end SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule

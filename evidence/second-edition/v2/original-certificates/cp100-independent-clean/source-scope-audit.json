@@ -1,0 +1,88 @@
+{
+  "body_identity": {
+    "raw_splice": "/tmp/cp100-registered-source-feed/src/CP100Splice.lean",
+    "raw_splice_sha256": "0fab70808521dd9ccecf066e1e506d1861860027cd1c6747a0f93bde7fc67b1a",
+    "raw_production_segment_sha256": "50201f9cca1cc4a1c339338efbefa8168622eba1984afa1f0751cad7df58fe38",
+    "normalized_export_sha256": "837d3e683647af1cde6d743c0dd181f0e36c65fa79e8d613e5773e5218d7c8ba",
+    "frozen_production_sha256": "837d3e683647af1cde6d743c0dd181f0e36c65fa79e8d613e5773e5218d7c8ba",
+    "exact_math_body_preserved": true,
+    "permitted_changes": [
+      "namespace",
+      "fully qualified peer export/unfold names",
+      "separate existing direct examples"
+    ],
+    "shared_diffs": [
+      {
+        "file": "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Receipt/Inventory/Installation.lean",
+        "old_sha256": "9fd4c4924b75e56f55fc4e0b1bbff24dcaa309bedc8d04ae497eea91de94c619",
+        "new_sha256": "aca42c89eba64c4a979a9a390b959a6211b52b827dc07a041aa5aa6ec262d297",
+        "diff": "--- fixed HEAD\n+++ candidate\n@@ -34,6 +34,7 @@\n  datum := fun sourceFrame => {\n   component := some (component sourceFrame configuration)\n   reader := reader sourceFrame configuration\n+  calculationReader := (configuration.datum sourceFrame).calculationReader\n   nextEnvironmentRead := none\n   nextEnvironmentReadAt := match (configuration.datum sourceFrame).nextEnvironmentReadAt with\n    | some read => some (fun {_current} supplied _ => read supplied (lowResult sourceFrame configuration supplied).2.2.1)\n",
+        "only_exact_authorized_changes": true
+      },
+      {
+        "file": "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Native/Frame/Stock.lean",
+        "old_sha256": "7bf62a6e528c3c694803d86f5b8cf7ab652f3a9a46c19643fdfb8c222dc1ef8b",
+        "new_sha256": "5b3636594e58dc0e122c4aa7d586d8c28554cc90b348c021234180f1434e120f",
+        "diff": "--- fixed HEAD\n+++ candidate\n@@ -60,7 +60,9 @@\n     type_of% (I.decoder_preserved (frameAt initial configuration stage) configuration pair) :=\n   I.decoder_preserved (frameAt initial configuration stage) configuration pair\n \n-theorem registered_raw (stage : Nat) :\n+theorem registered_raw (stage : Nat)\n+    (defaultCalculation : (configuration.datum\n+      (A.epoch (frameAt initial configuration stage))).calculationReader = none) :\n     (R.actualMaterial (frameAt initial configuration stage) (I.programme configuration)).raw =\n       (I.raw (A.epoch (frameAt initial configuration stage)) configuration\n         (A.actualOccurrence (frameAt initial configuration stage))).expression := by\n@@ -69,6 +71,8 @@\n     SourceOperationInquiry.Context.Faces.Execution.Activation.Shared.datum,\n     SourceGeneratedInquiryReceiptAction.Inventory.programme,\n     SourceGeneratedInquiryReceiptAction.Inventory.reader]\n+  rw [defaultCalculation]\n+  rfl\n theorem registered_state (stage : Nat) : type_of%\n     (R.actual_calculation_state (frameAt initial configuration stage) (I.programme configuration)) :=\n   R.actual_calculation_state (frameAt initial configuration stage) (I.programme configuration)\n",
+        "only_exact_authorized_changes": true
+      }
+    ]
+  },
+  "hygiene": [
+    {
+      "file": "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Receipt/Inventory/Installation.lean",
+      "source_sha256": "aca42c89eba64c4a979a9a390b959a6211b52b827dc07a041aa5aa6ec262d297",
+      "role": "shared_patch",
+      "unauthorized_commands": [],
+      "scratch_verification_imports": []
+    },
+    {
+      "file": "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Native/Frame/Stock.lean",
+      "source_sha256": "5b3636594e58dc0e122c4aa7d586d8c28554cc90b348c021234180f1434e120f",
+      "role": "shared_patch",
+      "unauthorized_commands": [],
+      "scratch_verification_imports": []
+    },
+    {
+      "file": "Lean/SaturationMonoid/NoIslandNoMagic/CanonicalRiemann/GeneralizedDual/CoPoissonEnergy/Muntz/Cokernel/CenteredGram/JointAction/Runtime/Feedback/ClozelOriginalKRegisteredSourceFeed.lean",
+      "source_sha256": "837d3e683647af1cde6d743c0dd181f0e36c65fa79e8d613e5773e5218d7c8ba",
+      "role": "production",
+      "unauthorized_commands": [],
+      "scratch_verification_imports": []
+    },
+    {
+      "file": "Verification/no-island/riemann-comb-source/RegisteredSourceFeed.lean",
+      "source_sha256": "1498ba75277e7e1fb7dc42e392fccf7deedba5971899a5dcde96d545f5fdf667",
+      "role": "direct_gate",
+      "unauthorized_commands": [],
+      "scratch_verification_imports": []
+    }
+  ],
+  "source_input_scope": {
+    "primitive": "Existing CP99 lowProgramme plus explicit source calculationReader; only original observation/nontrivial/source Half and actual Frame environment enter, no target/physical/zero/terminal/coverage witness.",
+    "routing": "Inventory.programme passes calculationReader from its actual sourceFrame datum while retaining independent stock reader, actual lowResult decoder and both original inventory callbacks. registered_raw now has correct actual-epoch None precondition.",
+    "recovery": "Existing CP99 runtime stateAt(priorReceipt.distance+1) is decoded by Native.Frame.read; recovered_born identifies the entire generated B Frame. full_model_born reads the actual source Model to Finsupp.single B before environment/source projections.",
+    "current_input": "B has new p=physicalProjection(R(v)) active environment, derived from CP99 actual_physical_next. B.rawRead remains prebirth; the new action reads epoch(B).activeEnvironment=(p,0).",
+    "actual_source_action": "actual actionReader/actualMaterial.raw is the original one-R/split AST. actionResultAt directly generates S(p)=(physicalProjection(Rp),physicalRemainder(Rp)), sourceState retains full (Rp,0) before split, source Trace length3 and pair sum recovers Rp.",
+    "same_occurrence_transport": "common_raw_state transports between actual source roots/visits with the same supplied raw input. No root equality, different occurrences identification or target commutes input is assumed.",
+    "native_input": "Native.ResidualRequest.expression is raw-material.state.1; it is not naked R/split. afterEnvironment/registered input/Configured receiver preserve (p,0) on actual B paid/mathNext edge. Full S(p) remains actual source material; native residual value cannot be renamed S(p) or source0.",
+    "budgets": "Source var/R/split cost3 is distinct from native remaining(raw)+remaining(paidState)+2; direct budget consumer covers native expression. No physical strict payment or Bochner cost is inferred.",
+    "true_consumer": "Configured.state.compileInquiry, whole_first, target_next, actual_initial/runtime_source_gate, receiver current/registered/env/inventories and actual next query are existing consumers at recovered B with the new configuration.",
+    "two_macro_scopes": "Prior CP99 Shared.nextBorn produces B; the new Configured action has its own actual generated target/next. Neither is identified with the other or original physical UnitHistory.",
+    "future_decoder": "No own-runtime updatedPair decoder or infinite registered physical iteration is signed; CP101 is separate."
+  },
+  "routing_controls": [
+    "originalProgramme defaultNone -> stock reader",
+    "explicitSome source -> actual R/split action reader",
+    "same-looking CP99 R/split with None -> stock reader",
+    "Stock.registered_raw called with actual-epoch None fact"
+  ],
+  "caller_audit": {
+    "tracked_search": "/tmp/cp100-independent-clean/shared-caller-audit.json",
+    "head": "7a96fa2066194c9c1c1b692e85eb50f31f09e56c",
+    "registered_raw_proof_callers": 0,
+    "existing_source_overrides": "Foresight.Contextual Factory/Psi override top-level datum after the lower configuration; the source Installation/Foresight/Acted underlying datums explicitly choose None. No new external caller regression is claimed."
+  },
+  "optional_stockquery": "Not run in independent scope; author attempt lacked an Actor.Action artifact outside this graph. The new actual None direct control covers changed mouth; no StockQuery PASS is inferred.",
+  "mutations": []
+}

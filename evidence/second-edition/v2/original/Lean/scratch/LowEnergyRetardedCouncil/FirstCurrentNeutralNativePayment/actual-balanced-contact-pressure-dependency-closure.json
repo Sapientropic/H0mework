@@ -1,0 +1,35 @@
+{
+  "status": "PASS",
+  "mode": "inspect",
+  "strict_flags": [
+    "-j1",
+    "--trust=0",
+    "-DwarningAsError=true"
+  ],
+  "task_cache": "runtime/.cache/low-energy-h0-checkpoint-20261005/dynamic/task-closure",
+  "canonical_path_sources": [
+    "runtime/.cache/low-energy-h0-checkpoint-20261005/dynamic/OriginalRNativeStepGraphEvent-attempt2.receipt.json",
+    "runtime/.cache/physical-pole-charge-closure-20261008/lean-path.txt"
+  ],
+  "canonical_path_entries": 625,
+  "targets": {
+    "SourceActualBalancedFixedContactPayment": {
+      "status": "PASS",
+      "receipt": "runtime/.cache/low-energy-h0-checkpoint-20261005/dynamic/task-closure/SourceActualBalancedFixedContactPayment.strict.json",
+      "failed_checks": [],
+      "source_sha256": "1ae95de7d66eb6ea31c95e5570e0b46d2b1c50396f296e4394414eefd1392e3d",
+      "olean_sha256": "28112d2a80cdb0322b4a6509e79e0da37be8e2e3bf37ac704055611d6c1660bc",
+      "exit_code": 0
+    },
+    "SourceActualBalancedPressureWardPayment": {
+      "status": "PASS",
+      "receipt": "runtime/.cache/low-energy-h0-checkpoint-20261005/dynamic/task-closure/SourceActualBalancedPressureWardPayment.strict.json",
+      "failed_checks": [],
+      "source_sha256": "40050db176337c4b8aac1f04006600e05ad16a1eb3d1f05f385e45bf5e001c0a",
+      "olean_sha256": "24e2519deeb890ba8f5239361c97f338b94265a97d5d9f2cf845c3681b793154",
+      "exit_code": 0
+    }
+  },
+  "recompiled": [],
+  "scope": "Task source/strict-command/object receipts; canonical dependencies reused as paid boundaries."
+}

@@ -8,7 +8,7 @@ open SourceQuantumConfigurationHilbert SourceQuantumFockGauge
 open SaturationMonoid.PhysicsCore QuantizationCheck.Fermion
 open scoped BigOperators InnerProductSpace
 attribute [local instance] SourceRealScalarFock.branchOrder
-local instance : DecidableEq Mode:=SourceRealScalarFock.branchOrder.toDecidableEq
+local instance h0R71eMixedSpectatorGramLocal1 : DecidableEq Mode:=SourceRealScalarFock.branchOrder.toDecidableEq
 
 def delta(i j:NamedMode):ℂ:=if i=j then 1 else 0
 

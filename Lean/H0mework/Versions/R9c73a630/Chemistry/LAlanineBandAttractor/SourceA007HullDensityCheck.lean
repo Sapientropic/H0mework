@@ -1,0 +1,10 @@
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineBandAttractor.SourceA007HullDensityData
+
+set_option autoImplicit false
+set_option maxHeartbeats 0
+set_option maxRecDepth 16384
+namespace SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.BasinRefinement.WholeBandAttractor.Atom007.Hull
+open WholeBandGenerated
+open HighJet.DensityReification
+checkHighJetDensity
+end SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.BasinRefinement.WholeBandAttractor.Atom007.Hull

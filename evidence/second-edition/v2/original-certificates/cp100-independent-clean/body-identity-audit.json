@@ -1,0 +1,29 @@
+{
+  "raw_splice": "/tmp/cp100-registered-source-feed/src/CP100Splice.lean",
+  "raw_splice_sha256": "0fab70808521dd9ccecf066e1e506d1861860027cd1c6747a0f93bde7fc67b1a",
+  "raw_production_segment_sha256": "50201f9cca1cc4a1c339338efbefa8168622eba1984afa1f0751cad7df58fe38",
+  "normalized_export_sha256": "837d3e683647af1cde6d743c0dd181f0e36c65fa79e8d613e5773e5218d7c8ba",
+  "frozen_production_sha256": "837d3e683647af1cde6d743c0dd181f0e36c65fa79e8d613e5773e5218d7c8ba",
+  "exact_math_body_preserved": true,
+  "permitted_changes": [
+    "namespace",
+    "fully qualified peer export/unfold names",
+    "separate existing direct examples"
+  ],
+  "shared_diffs": [
+    {
+      "file": "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Receipt/Inventory/Installation.lean",
+      "old_sha256": "9fd4c4924b75e56f55fc4e0b1bbff24dcaa309bedc8d04ae497eea91de94c619",
+      "new_sha256": "aca42c89eba64c4a979a9a390b959a6211b52b827dc07a041aa5aa6ec262d297",
+      "diff": "--- fixed HEAD\n+++ candidate\n@@ -34,6 +34,7 @@\n  datum := fun sourceFrame => {\n   component := some (component sourceFrame configuration)\n   reader := reader sourceFrame configuration\n+  calculationReader := (configuration.datum sourceFrame).calculationReader\n   nextEnvironmentRead := none\n   nextEnvironmentReadAt := match (configuration.datum sourceFrame).nextEnvironmentReadAt with\n    | some read => some (fun {_current} supplied _ => read supplied (lowResult sourceFrame configuration supplied).2.2.1)\n",
+      "only_exact_authorized_changes": true
+    },
+    {
+      "file": "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Native/Frame/Stock.lean",
+      "old_sha256": "7bf62a6e528c3c694803d86f5b8cf7ab652f3a9a46c19643fdfb8c222dc1ef8b",
+      "new_sha256": "5b3636594e58dc0e122c4aa7d586d8c28554cc90b348c021234180f1434e120f",
+      "diff": "--- fixed HEAD\n+++ candidate\n@@ -60,7 +60,9 @@\n     type_of% (I.decoder_preserved (frameAt initial configuration stage) configuration pair) :=\n   I.decoder_preserved (frameAt initial configuration stage) configuration pair\n \n-theorem registered_raw (stage : Nat) :\n+theorem registered_raw (stage : Nat)\n+    (defaultCalculation : (configuration.datum\n+      (A.epoch (frameAt initial configuration stage))).calculationReader = none) :\n     (R.actualMaterial (frameAt initial configuration stage) (I.programme configuration)).raw =\n       (I.raw (A.epoch (frameAt initial configuration stage)) configuration\n         (A.actualOccurrence (frameAt initial configuration stage))).expression := by\n@@ -69,6 +71,8 @@\n     SourceOperationInquiry.Context.Faces.Execution.Activation.Shared.datum,\n     SourceGeneratedInquiryReceiptAction.Inventory.programme,\n     SourceGeneratedInquiryReceiptAction.Inventory.reader]\n+  rw [defaultCalculation]\n+  rfl\n theorem registered_state (stage : Nat) : type_of%\n     (R.actual_calculation_state (frameAt initial configuration stage) (I.programme configuration)) :=\n   R.actual_calculation_state (frameAt initial configuration stage) (I.programme configuration)\n",
+      "only_exact_authorized_changes": true
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+import H0mework.Versions.R9c73a630.ReleaseMaterials.SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.Thermal.Recovery.Reservoir.Feedback.Renewal.Direction.Blocks.EnergyFrame.Inverse.Scaled.Finite.Evaluation.InputProducts.BathFinal.Rows.B08
+import H0mework.Versions.R9c73a630.ReleaseMaterials.SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.Thermal.Recovery.Reservoir.Feedback.Renewal.Direction.Blocks.EnergyFrame.Inverse.Scaled.Finite.Evaluation.InputProducts.BathMiddle.Rows.B08
+import H0mework.Versions.R9c73a630.ReleaseMaterials.SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.Thermal.Recovery.Reservoir.Feedback.Renewal.Direction.Blocks.EnergyFrame.Inverse.Scaled.Finite.Evaluation.InputProducts.Conjugate
+import H0mework.Versions.R9c73a630.ReleaseMaterials.SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.Thermal.Recovery.Reservoir.Feedback.Renewal.Direction.Blocks.EnergyFrame.Inverse.Scaled.Finite.Evaluation.InputProducts.Fields
+
+set_option autoImplicit false
+set_option maxRecDepth 8192
+namespace SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule
+namespace LAlanine40K2025.Thermal.Recovery.Reservoir.Pointer.Feedback.Renewal.Direction.Blocks.EnergyFrame.Inverse.Scaled.Finite.Evaluation.InputProducts.Products
+open Spectral Propagation.Interface
+
+theorem bath_final_row32_checked : ProductCheck bathMiddleR32 bathMiddleI32 Operands.fieldRRows (negativeRows Operands.fieldIRows) bathR32 bathI32 1 (10^24) := by
+  unfold ProductCheck
+  decide +kernel
+
+theorem bath_final_row33_checked : ProductCheck bathMiddleR33 bathMiddleI33 Operands.fieldRRows (negativeRows Operands.fieldIRows) bathR33 bathI33 1 (10^24) := by
+  unfold ProductCheck
+  decide +kernel
+
+theorem bath_final_row34_checked : ProductCheck bathMiddleR34 bathMiddleI34 Operands.fieldRRows (negativeRows Operands.fieldIRows) bathR34 bathI34 1 (10^24) := by
+  unfold ProductCheck
+  decide +kernel
+
+theorem bath_final_row35_checked : ProductCheck bathMiddleR35 bathMiddleI35 Operands.fieldRRows (negativeRows Operands.fieldIRows) bathR35 bathI35 1 (10^24) := by
+  unfold ProductCheck
+  decide +kernel
+
+end LAlanine40K2025.Thermal.Recovery.Reservoir.Pointer.Feedback.Renewal.Direction.Blocks.EnergyFrame.Inverse.Scaled.Finite.Evaluation.InputProducts.Products
+end SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule

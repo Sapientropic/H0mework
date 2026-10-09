@@ -1,0 +1,9 @@
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineBandAttractor.SourceA007PointMatrixData
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineBandHighJet.MatrixCheck
+set_option autoImplicit false
+set_option maxHeartbeats 0
+set_option maxRecDepth 16384
+namespace SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.BasinRefinement.WholeBandAttractor.Atom007.Point
+open WholeBandGenerated HighJet.MatrixChecking
+checkHighJetMatrixRows 0 5
+end SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.BasinRefinement.WholeBandAttractor.Atom007.Point

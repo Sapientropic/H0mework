@@ -13,8 +13,8 @@ open DiracCliffordRepresentation DiracExteriorMatterAction
 open SourceQuantumScalarChart SourceQuantumFockGauge GaussYukawaCoefficient
 open scoped BigOperators InnerProductSpace Matrix
 attribute [local simp] Matrix.cons_val_two Matrix.cons_val_three
-local instance : DecidableEq LowEnergy.Quantum.Index := Classical.decEq _
-local instance : DecidableEq LowEnergy.Quantum.InternalIndex := Classical.decEq _
+local instance h0R71eMixedSpectatorYukawaMatrixLocal1 : DecidableEq LowEnergy.Quantum.Index := Classical.decEq _
+local instance h0R71eMixedSpectatorYukawaMatrixLocal2 : DecidableEq LowEnergy.Quantum.InternalIndex := Classical.decEq _
 
 private theorem vacuum_original : scalarCoordinateEquiv.symm vacuum = finiteGenerationJointBreakingScalar := by
   simp [vacuum,sourceGeneratedVacuumCoordinates,positive_sourceGeneratedVacuumBase]

@@ -24,7 +24,7 @@ elab "analytic_paid_source_schema_row" n:num : tactic => do
   let i := n.getNat
   let file := if i = 0 then "SourceCanonical79SourceSparsePilot" else
     "SourceCanonical79SourceSparseRows" ++ toString (i / 16)
-  let ns := Name.str (Name.str (Name.num (Name.str `_private file) 0) "LowEnergy")
+  let ns := Name.str (Name.str (Name.num (Name.append `_private ("H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.ExternalCompositeDecay." ++ file).toName) 0) "LowEnergy")
     "ActualCanonical79Imaginary"
   let identity := mkIdent (Name.str ns ("schema" ++ toString i))
   let row := mkIdent (Name.str ns ("schemaRow" ++ toString i))

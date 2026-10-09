@@ -1,0 +1,66 @@
+import H0mework.Versions.R9c73a630.ReleaseMaterials.SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.Unified.Orbitals.Frame.Occupation.Factor.ManyBody.Pair.Coulomb.Hartree.Charge.Residual.Interaction.AO.UpperTriangle.SourceJoin.Weight.Address
+
+set_option autoImplicit false
+set_option maxRecDepth 16384
+set_option maxHeartbeats 400000000
+namespace SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule
+namespace LAlanine40K2025.UnifiedOrbitals.Frame.Occupation.Factor.ManyBody.Pair.Coulomb.Hartree.Charge.Residual.Interaction.AO.UpperTriangle.SourceJoin.Weight
+open LAlanine40K2025.UnifiedOrbitals
+open LAlanine40K2025.UnifiedOrbitals.Frame.Occupation.Factor.ManyBody.Pair.Coulomb.Hartree.Charge.Residual.Interaction.AO.UpperTriangle.SourceJoin
+open BasinRefinement SourceFiniteData
+noncomputable section
+
+private theorem sub_0 : weightBlock (2430) 81 =
+    (956996847895887530267 / 18446744073709551616,
+      46534619751660499647 / 9223372036854775808,
+      5370568517177966503623766072097539024561 / 1361129467683753853853498429727072845824,
+      36392387836299831552412937650207 / 9223372036854775808000000000000) := by
+  decide +kernel
+
+private theorem sub_1 : weightBlock (2430 + 81) 81 =
+    (1301732446624657914391 / 18446744073709551616,
+      46194178771033120629 / 9223372036854775808,
+      602831380038413522260832884693963508601 / 85070591730234615865843651857942052864,
+      32679554593983101135192505443243 / 4611686018427387904000000000000) := by
+  decide +kernel
+
+private theorem sub_2 : weightBlock (2430 + 81 + 81) 81 =
+    (916376290518260294765 / 18446744073709551616,
+      46194178771033120629 / 9223372036854775808,
+      8755470357730816840060352714947098480911 / 1361129467683753853853498429727072845824,
+      29664687446829133061557065291169 / 4611686018427387904000000000000) := by
+  decide +kernel
+
+private theorem sub_3 : weightBlock (2430 + 81 + 81 + 81) 81 =
+    (983068461922083710495 / 18446744073709551616,
+      53340443096899328121 / 9223372036854775808,
+      2360527928114393979430783582659519614591 / 340282366920938463463374607431768211456,
+      15995559424209462771621889563043 / 2305843009213693952000000000000) := by
+  decide +kernel
+
+private theorem sub_4 : weightBlock (2430 + 81 + 81 + 81 + 81) 81 =
+    (628965415777612040205 / 9223372036854775808,
+      19123980120994352719 / 4611686018427387904,
+      306751004230022665297425136689980687447 / 85070591730234615865843651857942052864,
+      3325801051986050881985199847063 / 922337203685477580800000000000) := by
+  decide +kernel
+
+private theorem sub_5 : weightBlock (2430 + 81 + 81 + 81 + 81 + 81) 81 =
+    (844981368980208698045 / 9223372036854775808,
+      80503567351874597927 / 18446744073709551616,
+      839102008378092031149844360104170589043 / 170141183460469231731687303715884105728,
+      22743905510559151191967505084841 / 4611686018427387904000000000000) := by
+  decide +kernel
+
+theorem block_2430 : weightBlock 2430 486 =
+    (3553033808238265463209 / 9223372036854775808,
+      53340443096899328121 / 9223372036854775808,
+      11208571200671518627884534085164796953237 / 340282366920938463463374607431768211456,
+      60761786231148192447237329202303 / 1844674407370955161600000000000) := by
+  have e : (486 : Nat) = 81 + (81 + (81 + (81 + (81 + (81))))) := rfl
+  rw [e, weightBlock_split, weightBlock_split, weightBlock_split, weightBlock_split, weightBlock_split]
+  rw [sub_0, sub_1, sub_2, sub_3, sub_4, sub_5]
+  decide +kernel
+end
+end LAlanine40K2025.UnifiedOrbitals.Frame.Occupation.Factor.ManyBody.Pair.Coulomb.Hartree.Charge.Residual.Interaction.AO.UpperTriangle.SourceJoin.Weight
+end SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule

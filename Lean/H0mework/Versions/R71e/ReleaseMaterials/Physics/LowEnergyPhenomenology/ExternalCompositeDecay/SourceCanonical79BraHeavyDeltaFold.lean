@@ -14,7 +14,7 @@ open Lean Meta Elab Tactic
 private def deltaReadName (row : Nat) (weights : Bool) : Name :=
   let moduleName := if row = 0 then "SourceCanonical79SourceSparsePilot" else
     "SourceCanonical79SourceSparseRows" ++ toString (row/16)
-  let ns := Name.str (Name.str (Name.num (Name.str `_private moduleName) 0)
+  let ns := Name.str (Name.str (Name.num (Name.append `_private ("H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.ExternalCompositeDecay." ++ moduleName).toName) 0)
     "LowEnergy") "ActualCanonical79Imaginary"
   Name.str ns ((if weights then "weights" else "fields") ++ toString row)
 

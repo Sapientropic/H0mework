@@ -1,0 +1,221 @@
+import Mathlib.Analysis.InnerProductSpace.Adjoint
+import Mathlib.Tactic
+
+set_option autoImplicit false
+set_option maxRecDepth 16384
+set_option maxHeartbeats 0
+
+namespace LAlanineSpatialProjection
+open ContinuousLinearMap
+noncomputable section
+
+variable {H E : Type*}
+  [NormedAddCommGroup H] [InnerProductSpace ℂ H] [CompleteSpace H]
+  [NormedAddCommGroup E] [InnerProductSpace ℂ E] [CompleteSpace E]
+
+def gram (B : H →L[ℂ] E) : H →L[ℂ] H := B.adjoint ∘L B
+
+def inverseGram (B : H →L[ℂ] E) (unit : IsUnit (gram B)) : H →L[ℂ] H :=
+  ↑unit.unit⁻¹
+
+def projection (B : H →L[ℂ] E) (unit : IsUnit (gram B)) : E →L[ℂ] E :=
+  B ∘L inverseGram B unit ∘L B.adjoint
+
+def gramRate (B D : H →L[ℂ] E) : H →L[ℂ] H :=
+  D.adjoint ∘L B+B.adjoint ∘L D
+
+def inverseRate (B D : H →L[ℂ] E) (unit : IsUnit (gram B)) : H →L[ℂ] H :=
+  -(inverseGram B unit ∘L gramRate B D ∘L inverseGram B unit)
+
+def projectionRate (B D : H →L[ℂ] E) (unit : IsUnit (gram B)) : E →L[ℂ] E :=
+  D ∘L inverseGram B unit ∘L B.adjoint+
+    B ∘L inverseRate B D unit ∘L B.adjoint+
+    B ∘L inverseGram B unit ∘L D.adjoint
+
+def commutator (P Q : E →L[ℂ] E) : E →L[ℂ] E := P ∘L Q-Q ∘L P
+
+def hamiltonian (B D : H →L[ℂ] E) (unit : IsUnit (gram B)) : E →L[ℂ] E :=
+  Complex.I • commutator (projectionRate B D unit) (projection B unit)
+
+def verticalResponse (B D : H →L[ℂ] E) (unit : IsUnit (gram B)) : H →L[ℂ] H :=
+  inverseGram B unit ∘L B.adjoint ∘L D
+
+theorem inverse_gram_left (B : H →L[ℂ] E) (unit : IsUnit (gram B)) :
+    inverseGram B unit ∘L gram B=1 := unit.val_inv_mul
+
+theorem inverse_gram_right (B : H →L[ℂ] E) (unit : IsUnit (gram B)) :
+    gram B ∘L inverseGram B unit=1 := unit.mul_val_inv
+
+theorem gram_adjoint (B : H →L[ℂ] E) : (gram B).adjoint=gram B := by
+  simp [gram,adjoint_comp]
+
+theorem inverse_gram_adjoint (B : H →L[ℂ] E) (unit : IsUnit (gram B)) :
+    (inverseGram B unit).adjoint=inverseGram B unit := by
+  have reverse : (inverseGram B unit).adjoint ∘L gram B=1 := by
+    have source := congrArg (fun A : H →L[ℂ] H => A.adjoint) (inverse_gram_right B unit)
+    simpa only [adjoint_comp,gram_adjoint,adjoint_one] using source
+  calc
+    _=(inverseGram B unit).adjoint ∘L (gram B ∘L inverseGram B unit) := by
+      rw [inverse_gram_right]
+      ext x
+      rfl
+    _=((inverseGram B unit).adjoint ∘L gram B) ∘L inverseGram B unit := by
+      rw [comp_assoc]
+    _=inverseGram B unit := by
+      rw [reverse]
+      ext x
+      rfl
+
+theorem projection_frame (B : H →L[ℂ] E) (unit : IsUnit (gram B)) :
+    projection B unit ∘L B=B := by
+  ext x
+  have source := congrArg (fun A : H →L[ℂ] H => B (A x)) (inverse_gram_left B unit)
+  exact source
+
+theorem projection_adjoint (B : H →L[ℂ] E) (unit : IsUnit (gram B)) :
+    (projection B unit).adjoint=projection B unit := by
+  simp only [projection,adjoint_comp,adjoint_adjoint,inverse_gram_adjoint,comp_assoc]
+
+theorem projection_idempotent (B : H →L[ℂ] E) (unit : IsUnit (gram B)) :
+    projection B unit ∘L projection B unit=projection B unit := by
+  change projection B unit ∘L (B ∘L inverseGram B unit ∘L B.adjoint)=projection B unit
+  rw [← comp_assoc,← comp_assoc,projection_frame]
+  rfl
+
+theorem gram_rate_adjoint (B D : H →L[ℂ] E) : (gramRate B D).adjoint=gramRate B D := by
+  simp only [gramRate,map_add,adjoint_comp,adjoint_adjoint]
+  exact add_comm _ _
+
+theorem inverse_rate_adjoint (B D : H →L[ℂ] E) (unit : IsUnit (gram B)) :
+    (inverseRate B D unit).adjoint=inverseRate B D unit := by
+  simp only [inverseRate,map_neg,adjoint_comp,inverse_gram_adjoint,gram_rate_adjoint,comp_assoc]
+
+theorem projection_rate_adjoint (B D : H →L[ℂ] E) (unit : IsUnit (gram B)) :
+    (projectionRate B D unit).adjoint=projectionRate B D unit := by
+  simp only [projectionRate,map_add,adjoint_comp,adjoint_adjoint,
+    inverse_gram_adjoint,inverse_rate_adjoint,comp_assoc]
+  abel
+
+def response (B D : H →L[ℂ] E) (unit : IsUnit (gram B)) : E →L[ℂ] E :=
+  D ∘L inverseGram B unit ∘L B.adjoint
+
+theorem response_adjoint (B D : H →L[ℂ] E) (unit : IsUnit (gram B)) :
+    (response B D unit).adjoint=B ∘L inverseGram B unit ∘L D.adjoint := by
+  simp only [response,adjoint_comp,adjoint_adjoint,inverse_gram_adjoint,comp_assoc]
+
+theorem projection_adjoint_frame (B : H →L[ℂ] E) (unit : IsUnit (gram B)) :
+    B.adjoint ∘L projection B unit=B.adjoint := by
+  have source := congrArg (fun A : H →L[ℂ] E => A.adjoint) (projection_frame B unit)
+  simpa only [adjoint_comp,projection_adjoint] using source
+
+theorem response_projection (B D : H →L[ℂ] E) (unit : IsUnit (gram B)) :
+    response B D unit ∘L projection B unit=response B D unit := by
+  simp only [response,comp_assoc,projection_adjoint_frame]
+
+theorem projection_response_adjoint (B D : H →L[ℂ] E) (unit : IsUnit (gram B)) :
+    projection B unit ∘L (response B D unit).adjoint=(response B D unit).adjoint := by
+  have source := congrArg (fun A : E →L[ℂ] E => A.adjoint) (response_projection B D unit)
+  simpa only [adjoint_comp,projection_adjoint] using source
+
+/-- Both off-diagonal channels are generated by the full source Gram response. -/
+theorem projection_rate_response (B D : H →L[ℂ] E) (unit : IsUnit (gram B)) :
+    projectionRate B D unit=response B D unit+(response B D unit).adjoint-
+      (response B D unit).adjoint ∘L projection B unit-
+      projection B unit ∘L response B D unit := by
+  rw [response_adjoint]
+  simp only [projectionRate,inverseRate,gramRate,response,projection,
+    comp_add,add_comp,comp_neg,neg_comp,comp_assoc]
+  abel
+
+theorem projection_rate_tangent (B D : H →L[ℂ] E) (unit : IsUnit (gram B)) :
+    projectionRate B D unit ∘L projection B unit+
+      projection B unit ∘L projectionRate B D unit=projectionRate B D unit := by
+  have adjointSandwich : projection B unit ∘L
+      ((response B D unit).adjoint ∘L projection B unit)=
+      (response B D unit).adjoint ∘L projection B unit := by
+    rw [← comp_assoc,projection_response_adjoint]
+  have sourceSandwich : projection B unit ∘L (projection B unit ∘L response B D unit)=
+      projection B unit ∘L response B D unit := by
+    rw [← comp_assoc,projection_idempotent]
+  simp only [projection_rate_response,sub_comp,add_comp,comp_sub,comp_add,
+    comp_assoc,response_projection,projection_response_adjoint,projection_idempotent,
+    adjointSandwich,sourceSandwich]
+  abel
+
+theorem projection_rate_frame (B D : H →L[ℂ] E) (unit : IsUnit (gram B)) :
+    projectionRate B D unit ∘L B=D-projection B unit ∘L D := by
+  have frameResponse : response B D unit ∘L B=D := by
+    ext x
+    exact congrArg (fun A : H →L[ℂ] H => D (A x)) (inverse_gram_left B unit)
+  simp only [projection_rate_response,sub_comp,add_comp,comp_assoc,projection_frame,frameResponse]
+  abel
+
+theorem hamiltonian_adjoint (B D : H →L[ℂ] E) (unit : IsUnit (gram B)) :
+    (hamiltonian B D unit).adjoint=hamiltonian B D unit := by
+  simp only [hamiltonian,commutator,map_smulₛₗ,map_sub,adjoint_comp,
+    projection_adjoint,projection_rate_adjoint,Complex.conj_I,
+    neg_smul,smul_sub]
+  abel
+
+theorem projection_double_commutator (B D : H →L[ℂ] E) (unit : IsUnit (gram B)) :
+    commutator (commutator (projectionRate B D unit) (projection B unit)) (projection B unit)=
+      projectionRate B D unit := by
+  let P := projection B unit
+  let Q := projectionRate B D unit
+  have squared : P*P=P := projection_idempotent B unit
+  have tangent : Q*P+P*Q=Q := projection_rate_tangent B D unit
+  have diagonal : P*Q*P=0 := by
+    have multiplied := congrArg (fun A : E →L[ℂ] E => P*A) tangent
+    simp only [mul_add,← mul_assoc,squared] at multiplied
+    exact add_right_cancel (multiplied.trans (zero_add (P*Q)).symm)
+  have right : Q*P*P=Q*P := by rw [mul_assoc,squared]
+  change (Q*P-P*Q)*P-P*(Q*P-P*Q)=Q
+  simp only [sub_mul,mul_sub,← mul_assoc,diagonal,squared,right,
+    sub_zero,zero_sub,sub_neg_eq_add]
+  exact tangent
+
+/-- The original full field response generates its bounded spatial Hamiltonian. -/
+theorem projection_evolution (B D : H →L[ℂ] E) (unit : IsUnit (gram B)) :
+    projectionRate B D unit=(-Complex.I) • commutator (hamiltonian B D unit) (projection B unit) := by
+  have source := projection_double_commutator B D unit
+  simp only [hamiltonian,commutator,smul_comp,comp_smul,← smul_sub,smul_smul,
+    neg_mul,Complex.I_mul_I,neg_neg,one_smul]
+  exact source.symm
+
+theorem hamiltonian_frame (B D : H →L[ℂ] E) (unit : IsUnit (gram B)) :
+    hamiltonian B D unit ∘L B=Complex.I • (D-projection B unit ∘L D) := by
+  have squared : projection B unit ∘L (projection B unit ∘L D)=projection B unit ∘L D := by
+    rw [← comp_assoc,projection_idempotent]
+  simp only [hamiltonian,commutator,smul_comp,sub_comp,comp_assoc,
+    projection_frame,projection_rate_frame,comp_sub,squared,sub_self,sub_zero]
+
+theorem vertical_response_frame (B D : H →L[ℂ] E) (unit : IsUnit (gram B)) :
+    B ∘L verticalResponse B D unit=projection B unit ∘L D := by
+  simp only [verticalResponse,projection,comp_assoc]
+
+theorem full_frame_lift (B D : H →L[ℂ] E) (unit : IsUnit (gram B)) :
+    Complex.I • D=hamiltonian B D unit ∘L B+B ∘L (Complex.I • verticalResponse B D unit) := by
+  rw [hamiltonian_frame,comp_smul,vertical_response_frame,smul_sub]
+  abel
+
+theorem vertical_gram_rate (B D : H →L[ℂ] E) (unit : IsUnit (gram B)) :
+    (verticalResponse B D unit).adjoint ∘L gram B+
+      gram B ∘L verticalResponse B D unit=gramRate B D := by
+  have left : (verticalResponse B D unit).adjoint ∘L gram B=D.adjoint ∘L B := by
+    simp only [verticalResponse,adjoint_comp,adjoint_adjoint,inverse_gram_adjoint,comp_assoc]
+    rw [inverse_gram_left]
+    rfl
+  have right : gram B ∘L verticalResponse B D unit=B.adjoint ∘L D := by
+    rw [verticalResponse,← comp_assoc,← comp_assoc,inverse_gram_right]
+    rfl
+  rw [left,right]
+  rfl
+
+theorem hamiltonian_diagonal_zero (B D : H →L[ℂ] E) (unit : IsUnit (gram B)) :
+    projection B unit ∘L hamiltonian B D unit ∘L projection B unit=0 := by
+  simp only [hamiltonian,commutator,comp_smul,smul_comp,comp_sub,sub_comp,comp_assoc,
+    projection_idempotent]
+  simp only [← comp_assoc,projection_idempotent,sub_self,smul_zero]
+
+end
+end LAlanineSpatialProjection

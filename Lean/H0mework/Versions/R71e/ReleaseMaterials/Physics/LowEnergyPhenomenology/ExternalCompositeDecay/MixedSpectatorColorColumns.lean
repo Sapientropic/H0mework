@@ -13,7 +13,7 @@ open StageNineResidualLimitScalarBalanceClosure StageNineExteriorMotherLieRepres
 open StageNineP286GaugeConnectionVariationDensity StageNineP286LinkedActiveLieRepresentation
 open GaugeProjection.ConcreteBlockDiagonal
 open scoped BigOperators Matrix
-local instance : LinearOrder SU7MotherIndex:=
+local instance h0R71eMixedSpectatorColorColumnsLocal1 : LinearOrder SU7MotherIndex:=
   LinearOrder.lift' smBlockIndexEquivFin7 smBlockIndexEquivFin7.injective
 
 def colorData(A:SU3BlockLieMatrix):P286LieBlockData:=(A,0,0)

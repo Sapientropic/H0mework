@@ -1,0 +1,22 @@
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineSourceMatrix.MatrixAssembly
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineSourceMatrix.MatrixBlocksB0
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineSourceMatrix.MatrixBlocksB1
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineSourceMatrix.MatrixBlocksB2
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineSourceMatrix.MatrixBlocksB3
+import H0mework.Versions.R9c73a630.Chemistry.LAlanineSourceMatrix.MatrixBlocksB4
+
+namespace SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.BasinRefinement.SourceField1Matrix
+open SourceIntegerGrid SourceFields SourceFiniteData
+
+assembleField1Row 0
+assembleField1Row 1
+assembleField1Row 2
+assembleField1Row 3
+assembleField1Row 4
+assembleField1Row 5
+assembleField1Row 6
+assembleField1Row 7
+assembleField1Row 8
+assembleField1Row 9
+
+end SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.BasinRefinement.SourceField1Matrix

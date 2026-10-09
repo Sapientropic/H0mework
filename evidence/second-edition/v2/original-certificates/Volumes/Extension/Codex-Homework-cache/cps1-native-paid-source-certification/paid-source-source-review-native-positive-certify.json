@@ -1,0 +1,180 @@
+{
+  "reviewer": "/root/native_positive_certify",
+  "phase": "lean-certify read-only final bounded source review",
+  "verdict": "SOURCE_AND_FOCUSED_PAID_SOURCE_ACCEPTED; defects=[]",
+  "source": {
+    "path": "Lean/scratch/CPS1NativeBodyFunction/PaidSource.lean",
+    "sha256": "6b160490116ba5c7cda9820065b93ee7e066ded6a5921619ac4b2dd1bbcc499e",
+    "bytes": 27089,
+    "lines": 462,
+    "capsule": "Lean/scratch/CPS1NativeBodyFunction/paid-source-capsule.md",
+    "capsule_sha256": "9fc2a6ea57d911a0d51340283712b6d548bc9df0ba0ac2ebd8b4a42458ede31a"
+  },
+  "strict": {
+    "freeze": "/Volumes/Extension/Codex-Homework-cache/cps1-native-body-function-strike/paid-source-freeze.json",
+    "freeze_sha256": "fc769e2d06d9597bb44b503a6efc60473827ec2f9f77f2204200b616c162fce4",
+    "record": "/Volumes/Extension/Codex-Homework-cache/cps1-native-body-function-strike/CPS1NativeBodyFunction.PaidSource.focused.json",
+    "record_sha256": "a43065a709087acaff1e3bf03dea1e0cb9ef42a4e1be66e04584fca4c1e46d47",
+    "session": 50239,
+    "exit": 0,
+    "seconds": 40.5369816669845,
+    "source_frozen": true,
+    "command": [
+      "lake",
+      "env",
+      "sh",
+      "-c",
+      "LEAN_PATH=\"/Volumes/Extension/Codex-Homework-cache/cps1-native-body-function-strike/overlay:/Volumes/Extension/Codex-Homework-cache/cps1-native-registered-body-runtime-audit-state/input/lib:$LEAN_PATH\" LEAN_NUM_THREADS=1 exec lean --trust=0 -DElab.async=false -DwarningAsError=true -j1 -M16000 --root=scratch -o \"/Volumes/Extension/Codex-Homework-cache/cps1-native-body-function-strike/overlay/CPS1NativeBodyFunction/PaidSource.olean\" \"scratch/CPS1NativeBodyFunction/PaidSource.lean\""
+    ],
+    "flags_verified": [
+      "trust0",
+      "asyncfalse",
+      "Werror",
+      "j1",
+      "M16000",
+      "threads1"
+    ],
+    "actual_log": "/Volumes/Extension/Codex-Homework-cache/cps1-native-body-function-strike/CPS1NativeBodyFunction.PaidSource.strict.log",
+    "actual_log_bytes": 0,
+    "actual_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "olean": "/Volumes/Extension/Codex-Homework-cache/cps1-native-body-function-strike/overlay/CPS1NativeBodyFunction/PaidSource.olean",
+    "olean_sha256": "7a1611890caa1ea2edb23fb20b1d85d231c66539bf67eb9ee872dbfe01ddd369",
+    "actual_FullSmooth_import_olean_sha256": "efcbd0584fc932eed88155417f60e1964ae93665127a2cec3f83dddf80e0d8b8"
+  },
+  "formal": {
+    "path": "Lean/DomainProofs/CPS1ResourceExecution/CPS1MaterialIncidence/NativeBodyPaidSource.lean",
+    "sha256": "819074dae93f7d40eb88a76ef1118b8adab04cfefe8e18e4cf0465cc332035eb",
+    "exact_one_import_promotion": {
+      "old": "CPS1NativeBodyFunction.FullSmooth",
+      "new": "CPS1MaterialIncidence.NativeFullSmooth"
+    },
+    "all_remaining_bytes_identical": true,
+    "namespace_and_proof_contract_unchanged": true,
+    "formal_strict_parent_reported": {
+      "seconds": 42.037,
+      "exit": 0,
+      "diagnostics_empty": true
+    },
+    "no_formal_recompile_by_reviewer": true
+  },
+  "paid_parents": [
+    {
+      "path": "Verification/cps1-native-body-function-formal/receipt.json",
+      "sha256": "3a4753af63d3dadf4e7fd6aacb6dde9bfa3b70f397f73198b0b58851e4f72d96",
+      "reopened": false
+    },
+    {
+      "path": "Verification/cps1-native-full-smooth-formal/receipt.json",
+      "sha256": "7cc4c6d0cfa4f22ae4ead7b803c35c8a4080bd158a5317a1da240142593aec0f",
+      "reopened": false
+    }
+  ],
+  "strongest_mouth": {
+    "name": "source_generated_paid_disposition",
+    "line": 382,
+    "type": "(state : PostState current) : PaidSourceDisposition state",
+    "public_budget_delta_time_target_or_positive_premise": false,
+    "implicit_current_source": "Same existing NativeCurrent/source family; exact stored PostState pose/occupied/reserve/index/energy is used."
+  },
+  "certified_source_mechanism": [
+    {
+      "lines": [
+        19,
+        59
+      ],
+      "fact": "Complete fullCoreAxis/trace nuclear-coordinate derivative uses every RawIndex and fixed full density; full_energy_axis matches original fullForce. Auxiliary zero matrix only isolates nuclear derivative and is never a physical PostState or endpoint."
+    },
+    {
+      "lines": [
+        61,
+        115
+      ],
+      "fact": "halfAt(state,time) is actual first Cayley half step; forceAt exact fullForce at state.time. Its time continuity follows complete density times fullCoreAxis plus fixed same-pose nuclear derivative; electron branch is actual zero force."
+    },
+    {
+      "lines": [
+        117,
+        239
+      ],
+      "fact": "poseAt(state,0)=state.pose; occupiedAt(state,0)=state.occupied. At state.time these equal original endPose/endCoordinates. Full Fock uses actual rawCore at evolving pose plus full rawDensity; both Cayley steps and all old/local complement rows remain."
+    },
+    {
+      "lines": [
+        241,
+        318
+      ],
+      "fact": "Actual full nuclear kinetic+pair Coulomb, full trace and complete quartic Coulomb/exchange energy are continuous in time near zero. Quartic is variable through density here, unlike the spatial-axis derivative. priceAt(state,0)=0 using exact current state.energy/rawC; priceAt(state,state.time)=energyPrice(state)."
+    },
+    {
+      "lines": [
+        320,
+        366
+      ],
+      "fact": "Current state.ready and finite actual row continuity generate eventual ready pose. refinedAt only adds the original index, preserving pose/occupied/reserve; its time is state.time*(1/2)^index, and pose/price at that time are definitionally same original checker endPose/energyPrice for refinedAt. Dyadic convergence yields finite ready and finite strictly affordable refinement when current reserve>0."
+    },
+    {
+      "lines": [
+        368,
+        402
+      ],
+      "fact": "Canonical positive branch Nat.find selects earliest actual ready AND price<=reserve (weak guard), using strict affordability only to prove existence. Canonical nonpositive branch uses state.nonnegative to derive actual reserve=0; Nat.find selects first ready refinement, then actual weak budget comparison chooses paid or exact energyShortage. No old normalReserve/source budget positivity is imported."
+    },
+    {
+      "lines": [
+        404,
+        441
+      ],
+      "fact": "Generated ordinal/result/next are actual source data; actual proves advanceNative(refinedAt state index)=result for both branches, unpaid_prefix rejects every earlier actual weak guard, complete_next preserves same mother energy+reserve, Ne, full particles and raw field projection."
+    }
+  ],
+  "earliest_guard_scope": {
+    "predicate": "RefinementPaidGuard=Body.ready(endPose(refinedAt)) AND energyPrice(refinedAt)<=refinedAt.reserve",
+    "strict_less_not_search_predicate": true,
+    "paid_branch": "Selected event satisfies the actual weak guard and every earlier ordinal fails it; this includes zero-reserve paid if actual price<=0.",
+    "zero_shortage": "Canonical source chooses first ready dyadic, rejects its actual weak budget, and earlier all fail paid guard. This is an exact source-specific shortage, not a statement that every future refinement is unpaid.",
+    "general_disposition_vs_factory": "Any PaidSourceDisposition retains its earlierUnpaid/actual selected event. The first-ready-zero policy is the canonical factory implementation; it is not falsely added to arbitrary constructor payload."
+  },
+  "typed_data_provenance": {
+    "Nat_find": "Only a least natural index of the actual source guard/readiness predicate is selected from proved finite existence; no Real delta, target pose/state/field or finished endpoint is chosen into data.",
+    "event": "PaidStep(refinedAt state selectedIndex) carries intrinsic smooth/ready/budget proofs; after is computed by original PaidStep.after from that exact state.",
+    "source_reset": false,
+    "future_endpoint_table": false,
+    "reserve_refill": false,
+    "CP_token_refire": false,
+    "complete_source_field": "current/source/rawIndex/rawCoefficient/basis/particle origins stay same; actual state fields are held and evolved by the original force/Fock/pose methods."
+  },
+  "controls": [
+    {
+      "name": "paid_source_refinement_cannot_pay_clock",
+      "line": 443,
+      "scope": "For an actual PaidStep at same refined state, event.after cannot equal refineState: elapsed strictly increases on paid and stays fixed under refine. This rejects presenting clock-free refinement as paid."
+    },
+    {
+      "name": "zero_source_shortage_cannot_pay",
+      "line": 452,
+      "scope": "Actual reserve=0 and strictly positive actual energyPrice at that same refinement forbid any PaidStep, by its weak budget. It does not reject zero-price or negative-price actual payment."
+    }
+  ],
+  "Root_consumer_remaining_exact_contract": {
+    "status": "Separate PaidRuntime candidate now reported green and awaiting final capsule; not accepted by this source-only report.",
+    "requirements": [
+      "Start from same actual original Root.inputs stored native body/current state, call this very source_generated_paid_disposition; no old original/source_input_body reset.",
+      "Pay literal body_next/tick prefix up to selected ordinal: every earlier failed actual weak guard with post_full_smooth forces original collision/energy residual and result.next=refineState. Establish actual prefix state=refinedAt original state j and preserve full stock/history/mother/spent/Ne/account/genome/pending.",
+      "At selected ordinal bind generated.actual/result to that actual current bodyEvent.result, and complete bodyWrite/Root.Write.body/literal next to same paid.after or exact zero-shortage refine. Keep original inputs factorization/sourceActual/writeActual and fullledger.",
+      "Do not read original normalReserve+1 as current positive reserve or label five CP directions/governance duties settled merely because actual physical payment occurred."
+    ]
+  },
+  "defects": [],
+  "exact_scope": "Genuine total source-only physical paid-or-zero-shortage data producer. Positive current reserve guarantees a finite earliest actual paid guard; zero current reserve yields exact actual disposition at first ready. It does not yet certify the separately constructed same-root literal prefix consumer or categorical catalytic positive/Duty discharge.",
+  "completeTVO_owner": "Parent audits new formal NativeBodyPaidSource complete raw type/value/opaque/recursor/private closures and exact printed axioms. All paid parents remain stopped at their signed scope; no old build/audit rerun by this review.",
+  "actions": {
+    "Lean_compile": 0,
+    "parent_compile": 0,
+    "old_audit_rerun": 0,
+    "proof_edit": 0,
+    "shared_docs_edit": 0,
+    "Git_write": 0,
+    "artifact_copy": 0,
+    "only_write": "this one own SSD bounded source-review JSON"
+  }
+}

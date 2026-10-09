@@ -19,7 +19,7 @@ open Lean Meta Elab Term
 /-- Keep the exact paid Parseval constants rather than reconstructing their analytic proof. -/
 elab "paid_output_parseval%" helper:ident : term => do
   let ns := Name.str (Name.str (Name.num
-    (Name.str `_private "SourceFullYPositiveOutputParseval") 0) "LowEnergy") "FourGradeOutputParseval"
+    (`_private.H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.ExternalCompositeDecay.SourceFullYPositiveOutputParseval) 0) "LowEnergy") "FourGradeOutputParseval"
   let name := Name.str ns helper.getId.toString
   unless (← getEnv).contains name do throwError "Missing paid Parseval helper: {name}"
   mkConstWithFreshMVarLevels name

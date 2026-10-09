@@ -14,9 +14,9 @@ open DiracCliffordRepresentation DiracExteriorMatterAction StageNineDiracDualYuk
 open StageNineDynamicBreakingVacuum SourceQuantumScalarChart SourceQuantumConfigurationHilbert SourceQuantumFockGauge
 open GaugeProjection.ConcreteBlockDiagonal
 open scoped BigOperators InnerProductSpace Matrix
-local instance : LinearOrder SU7MotherIndex :=
+local instance h0R71eMixedSpectatorYukawaColumnLocal1 : LinearOrder SU7MotherIndex :=
   LinearOrder.lift' smBlockIndexEquivFin7 smBlockIndexEquivFin7.injective
-local instance : DecidableEq LowEnergy.Quantum.Index := Classical.decEq _
+local instance h0R71eMixedSpectatorYukawaColumnLocal2 : DecidableEq LowEnergy.Quantum.Index := Classical.decEq _
 
 private theorem source_disjoint_a :
     Disjoint (internalBasis 2 1).1 (finiteGenerationScalarIndex 1 0).1 := by decide

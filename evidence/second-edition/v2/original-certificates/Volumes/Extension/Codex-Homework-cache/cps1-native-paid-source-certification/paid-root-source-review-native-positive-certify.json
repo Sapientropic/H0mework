@@ -1,0 +1,481 @@
+{
+  "reviewer": "/root/native_positive_certify",
+  "phase": "independent lean-certify final same-root source/focused review",
+  "verdict": "SOURCE_AND_FOCUSED_ACTUAL_ROOT_PAID_PREFIX_ACCEPTED; defects=[]",
+  "candidate": {
+    "path": "Lean/scratch/CPS1NativeBodyFunction/PaidRuntime.lean",
+    "sha256": "65d5d5b86f1dc595e098ffedc37fe286ffe5ef6bd5b050d1d0050f24991f87c1",
+    "bytes": 29196,
+    "lines": 496,
+    "declarations": [
+      {
+        "name": "refineSteps",
+        "private": false,
+        "line": 21
+      },
+      {
+        "name": "refine_steps_exact",
+        "private": false,
+        "line": 25
+      },
+      {
+        "name": "refine_steps_fields",
+        "private": false,
+        "line": 32
+      },
+      {
+        "name": "refine_steps_time",
+        "private": false,
+        "line": 43
+      },
+      {
+        "name": "PaidGuard",
+        "private": true,
+        "line": 50
+      },
+      {
+        "name": "advance_refines_if_unpaid",
+        "private": true,
+        "line": 53
+      },
+      {
+        "name": "bodySteps",
+        "private": false,
+        "line": 73
+      },
+      {
+        "name": "body_steps_zero",
+        "private": false,
+        "line": 77
+      },
+      {
+        "name": "body_steps_next",
+        "private": false,
+        "line": 79
+      },
+      {
+        "name": "body_steps_iterate",
+        "private": false,
+        "line": 82
+      },
+      {
+        "name": "body_steps_actual",
+        "private": false,
+        "line": 88
+      },
+      {
+        "name": "body_steps_refine_prefix",
+        "private": true,
+        "line": 98
+      },
+      {
+        "name": "firstPaidIndex",
+        "private": true,
+        "line": 108
+      },
+      {
+        "name": "first_paid_guard",
+        "private": true,
+        "line": 113
+      },
+      {
+        "name": "paidBodyEvent",
+        "private": true,
+        "line": 125
+      },
+      {
+        "name": "actual_paid_body_event",
+        "private": true,
+        "line": 130
+      },
+      {
+        "name": "paid_body_clock",
+        "private": true,
+        "line": 135
+      },
+      {
+        "name": "source_disposition_before",
+        "private": true,
+        "line": 145
+      },
+      {
+        "name": "advance_states_heq",
+        "private": true,
+        "line": 153
+      },
+      {
+        "name": "result_next_eq",
+        "private": true,
+        "line": 158
+      },
+      {
+        "name": "NativeBodyPaidRun",
+        "private": false,
+        "line": 164
+      },
+      {
+        "name": "source_generated_native_body_paid_run",
+        "private": false,
+        "line": 179
+      },
+      {
+        "name": "actual_stock",
+        "private": false,
+        "line": 197
+      },
+      {
+        "name": "actual_history",
+        "private": false,
+        "line": 199
+      },
+      {
+        "name": "whole",
+        "private": false,
+        "line": 201
+      },
+      {
+        "name": "fields",
+        "private": false,
+        "line": 203
+      },
+      {
+        "name": "electrons",
+        "private": false,
+        "line": 205
+      },
+      {
+        "name": "account",
+        "private": false,
+        "line": 207
+      },
+      {
+        "name": "actual_after",
+        "private": false,
+        "line": 211
+      },
+      {
+        "name": "inputSteps",
+        "private": false,
+        "line": 232
+      },
+      {
+        "name": "runtimeSteps",
+        "private": false,
+        "line": 237
+      },
+      {
+        "name": "input_next_heq",
+        "private": true,
+        "line": 241
+      },
+      {
+        "name": "runtime_steps_input",
+        "private": false,
+        "line": 250
+      },
+      {
+        "name": "runtime_steps_body",
+        "private": false,
+        "line": 258
+      },
+      {
+        "name": "input_next_disposition_heq",
+        "private": true,
+        "line": 274
+      },
+      {
+        "name": "dispositionSteps",
+        "private": true,
+        "line": 289
+      },
+      {
+        "name": "input_steps_disposition_heq",
+        "private": true,
+        "line": 298
+      },
+      {
+        "name": "iterates_heq",
+        "private": true,
+        "line": 308
+      },
+      {
+        "name": "positive_next_heq",
+        "private": true,
+        "line": 333
+      },
+      {
+        "name": "disposition_steps_iterate",
+        "private": true,
+        "line": 354
+      },
+      {
+        "name": "runtime_steps_disposition",
+        "private": true,
+        "line": 364
+      },
+      {
+        "name": "written_body_at_run",
+        "private": true,
+        "line": 383
+      },
+      {
+        "name": "PaidAtDisposition",
+        "private": true,
+        "line": 420
+      },
+      {
+        "name": "paid_at_actual_runtime",
+        "private": true,
+        "line": 438
+      },
+      {
+        "name": "NativeBodyPaidRootAt",
+        "private": false,
+        "line": 469
+      },
+      {
+        "name": "native_body_paid_root_actual",
+        "private": true,
+        "line": 476
+      },
+      {
+        "name": "source_generated_native_body_paid_at_root",
+        "private": false,
+        "line": 489
+      },
+      {
+        "name": "source_generated_native_body_paid_after_parent",
+        "private": false,
+        "line": 492
+      }
+    ]
+  },
+  "strict": {
+    "session": 30063,
+    "record": "/Volumes/Extension/Codex-Homework-cache/cps1-native-paid-runtime-strike/PaidRuntime.focused.json",
+    "record_sha256": "dc8dd12bdb9a89eae65c18310a2eb16ee67c994440ac71820bf1c77aa6a20931",
+    "source_before_after_exact": true,
+    "exit": 0,
+    "seconds": 51.005358042020816,
+    "diagnostics_empty": true,
+    "actual_log": "/Volumes/Extension/Codex-Homework-cache/cps1-native-paid-runtime-strike/PaidRuntime.focused.log",
+    "actual_log_bytes": 0,
+    "actual_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "olean": "/Volumes/Extension/Codex-Homework-cache/cps1-native-paid-runtime-strike/overlay/CPS1NativeBodyFunction/PaidRuntime.olean",
+    "olean_sha256": "0dc7cac1a8b15cb82d439506fe5557c6de9089f848b1305c5f275ca48a879827",
+    "command": [
+      "lean",
+      "--trust=0",
+      "-DElab.async=false",
+      "-DwarningAsError=true",
+      "-j1",
+      "-M16000",
+      "--root=scratch",
+      "-o",
+      "/Volumes/Extension/Codex-Homework-cache/cps1-native-paid-runtime-strike/overlay/CPS1NativeBodyFunction/PaidRuntime.olean",
+      "scratch/CPS1NativeBodyFunction/PaidRuntime.lean"
+    ],
+    "threads": 1,
+    "strict_flags_verified": true,
+    "actual_PaidSource_import": "/Volumes/Extension/Codex-Homework-cache/cps1-native-paid-runtime-strike/overlay/CPS1NativeBodyFunction/PaidSource.olean",
+    "actual_PaidSource_import_sha256": "7a1611890caa1ea2edb23fb20b1d85d231c66539bf67eb9ee872dbfe01ddd369"
+  },
+  "formal": {
+    "path": "Lean/SaturationMonoid/NoIslandNoMagic/Consciousness/Immortality/Embodied/Molecule/CPS1Personalized2025/Runtime/BodyPaid.lean",
+    "sha256": "33e2e9803ee32ccb3349b4e40325834e1dacce94837363076d1c71a98b0241fd",
+    "one_import_exact": {
+      "old": "CPS1NativeBodyFunction.PaidSource",
+      "new": "CPS1MaterialIncidence.NativeBodyPaidSource"
+    },
+    "all_remaining_bytes_identical": true,
+    "parent_focused_session": 78438,
+    "not_recompiled_by_reviewer": true
+  },
+  "source_review": {
+    "path": "/Volumes/Extension/Codex-Homework-cache/cps1-native-paid-source-certification/paid-source-source-review-native-positive-certify.json",
+    "sha256": "d2a03737ded01016d05e77c2da66306b346b38647fc70fc69989cc4c6dd627c9",
+    "source": "same source_generated_paid_disposition of body.current.state, exact weak paid guard and zero first-ready actual shortage"
+  },
+  "paid_receipts": [
+    {
+      "path": "Verification/cps1-native-registered-body-runtime-formal/receipt.json",
+      "sha256": "e5dbcad958ef2e059c1753feb2b71955e9b7e6e0b574c903a07aceedb01ea5a6",
+      "reopened": false
+    },
+    {
+      "path": "Verification/cps1-native-body-function-formal/receipt.json",
+      "sha256": "3a4753af63d3dadf4e7fd6aacb6dde9bfa3b70f397f73198b0b58851e4f72d96",
+      "reopened": false
+    },
+    {
+      "path": "Verification/cps1-native-full-smooth-formal/receipt.json",
+      "sha256": "7cc4c6d0cfa4f22ae4ead7b803c35c8a4080bd158a5317a1da240142593aec0f",
+      "reopened": false
+    }
+  ],
+  "exact_root": {
+    "facade": "CPS1Personalized2025.Delivery.facade",
+    "row": "originalProgramResponse",
+    "claim": "registeredCPS1ProgramAndClinicalResponse",
+    "start": "actual supplied runtime; public canonical registered_body_runtime n or actual Delivery.afterParent",
+    "trajectory": "runtimeSteps starts at same runtime, each successor is its literal tick.next",
+    "inputs": "existing inherited Delivery.nativeInputsFace sourceBody/writeActual; factorization at the actual selected ordinal",
+    "new_Root_ABI_fields": 0,
+    "new_runtime_or_facade": false
+  },
+  "decisive_actual_prefix": [
+    {
+      "lines": [
+        21,
+        48
+      ],
+      "fact": "refineSteps actual refineState recursion is exact index+n; pose/rawC/occupied/reserve/elapsed/energy fixed, time halves. It is a state restriction, not source reset."
+    },
+    {
+      "lines": [
+        50,
+        62
+      ],
+      "fact": "PaidGuard exactly same ready AND weak price<=reserve. With proved FullSmooth, every failed actual guard produces original collision or energyShortage result.next=refineState."
+    },
+    {
+      "lines": [
+        73,
+        106
+      ],
+      "fact": "bodySteps executes original body_next on previous stored body; all updates keep actual advanceSource/runPulse stock, append history, BodyUpdate/Invariant. Induction using each unpaid guard proves actual bodySteps.state=refineSteps current state."
+    },
+    {
+      "lines": [
+        145,
+        151
+      ],
+      "fact": "source_disposition_before consumes generated.unpaid_prefix for the exact source-selected ordinal, converts same RefinementPaidGuard/refinedAt to refineSteps, and obtains actual selected before.state=refinedAt original current state."
+    },
+    {
+      "lines": [
+        164,
+        192
+      ],
+      "fact": "NativeBodyPaidRun is genuine Type data: generated=source_generated_paid_disposition(body.current.state), before=bodySteps selected index, event=original body_event_at before, next=original body_next before. HEq resultActual composes event.resultActual, exact beforeState and generated.actual; nextState uses same result_next_eq. No caller event/after/refinement ordinal/eventual/positive premise."
+    },
+    {
+      "lines": [
+        197,
+        213
+      ],
+      "fact": "Actual stock is event.execution.stock; history append same event; one mother/full charged/spent/remaining, fields and Ne are same next; account from original supplied body.state via generated.complete_next; actual_after=bodySteps(index+1) complete object."
+    },
+    {
+      "lines": [
+        232,
+        272
+      ],
+      "fact": "inputSteps and runtimeSteps recurse real input_body_next and literal Delivery tick; input identity and HEq whole stored body are proven at every ordinal, including original source/writeActual and literal body next."
+    },
+    {
+      "lines": [
+        274,
+        378
+      ],
+      "fact": "same generated_input occurrence and same body align input/disposition steps by real InputWriteLaw. Positive disposition steps align with original body_next via DispositionWriteLaw HEq and iterator congruence; no independently generated body family."
+    },
+    {
+      "lines": [
+        383,
+        405
+      ],
+      "fact": "At selected index, original inputs readWrittenNativeBody is HEq full run.next; next literal runtimeSteps(index+1).readNativeBody is same full run.next. Proof uses all-body runtimeSteps/bodySteps HEq and run.actual_after, then original literal next return."
+    },
+    {
+      "lines": [
+        420,
+        487
+      ],
+      "fact": "PaidAtDisposition is Prop with same computed source/continuation family and canonical source_generated_native_body_paid_run on the represented stored native body. It retains every runtime/body step alignment, complete selected written/next body HEq and same selected inputs factorization. Prop witnesses do not become a newly chosen Type endpoint."
+    }
+  ],
+  "public_mouths": [
+    {
+      "name": "source_generated_native_body_paid_run",
+      "line": 179,
+      "type": "(body : NativeBody receipt returned germ) : NativeBodyPaidRun body",
+      "scope": "Only the actual current body plus its existing source family. Derives ordinal from current state source data, not private eventual promise."
+    },
+    {
+      "name": "NativeBodyPaidRootAt",
+      "line": 469,
+      "sort": "Prop",
+      "scope": "Full original NativeBodyRootTransitionAt for source current/readNativeWrite plus actual generated_input same occurrence and paid run of this runtime through same original inputs."
+    },
+    {
+      "name": "source_generated_native_body_paid_at_root",
+      "line": 489,
+      "type": "(n : Nat) : NativeBodyPaidRootAt (registered_body_runtime n)",
+      "scope": "Consumes signed exact all-ticks transition; no profile, reserve, eventual, delta, guard, endpoint or target premise."
+    },
+    {
+      "name": "source_generated_native_body_paid_after_parent",
+      "line": 492,
+      "type": "NativeBodyPaidRootAt Delivery.afterParent",
+      "scope": "No arguments; actual same installed afterParent and signed native transition, not a neighbouring fixed-source example."
+    }
+  ],
+  "full_body_and_ledger": {
+    "selected_event": "original body_event_at current live before; resultActual HEq exact generated.result at same source state/refinement ordinal",
+    "selected_target": "Full body next equality, not just next.state or label matching. BodyUpdate contains stock/state/nativePending/cut/history/account/strict, and BodyInvariant contains same-source genome/fullLength, one physical mother, charged/spent/all remaining, raw fields/Ne/account, origin/legacy/reopened/lastNative/pending.",
+    "original_occurrence": "At selected runtime original inputs sourceActual/writeActual relate body and emitted Write; factorization is at that very runtimeSteps ordinal. BodyReturned HEq then actual nativeTarget/complete ledger/literal next preserve same whole current, inherited from paid Root kernel.",
+    "seven_duties": "Original same receipt/Root transition pending=independentDuties and run.invariant retain all seven. No catalytic or governance settlement inferred from actual paid event."
+  },
+  "private_conditional_helpers": {
+    "names": [
+      "firstPaidIndex",
+      "first_paid_guard",
+      "paidBodyEvent",
+      "actual_paid_body_event",
+      "paid_body_clock"
+    ],
+    "exact_scope": "They are private conditional lemmas/assets parameterized by eventual:exists n PaidGuard. Main source_generated_native_body_paid_run uses canonical source_generated_paid_disposition directly; public Root mouths expose none of these premises. Their presence cannot change producer signature.",
+    "completeTVO_requirement": "Fresh raw bodies still must be fully audited. Actual live producer/Root value closure should not be reported as consuming a private eventual promise; recompute actual returned value_constants rather than adding unused helpers as required edges."
+  },
+  "source_branch_and_controls": {
+    "positive_current_reserve": "Finite earliest actual weak guard from continuity; selected original bodyEvent is real paid, with time/clock and full physics after.",
+    "zero_current_reserve": "At source first ready finite ordinal selected event is actual paid if actual weak budget<=0, otherwise exact energyShortage. Later zero-reserve refinements are not declared permanently unable to pay.",
+    "unpaid_prefix": "Every earlier index lacks actual paid guard, so real body events refine rather than advance clock; their stock/history are nonetheless actual executed body_next writes.",
+    "clock_control": "Combined PaidSource paid_source_refinement_cannot_pay_clock rejects paid.after=refineState, via actual elapsed growth.",
+    "zero_strictprice_control": "Combined PaidSource zero_source_shortage_cannot_pay rejects a PaidStep when same current reserve=0 and actual price>0. No strict< earliest-guard substitution."
+  },
+  "value_responsibilities": [
+    "source_generated_native_body_paid_run -> source_generated_paid_disposition actual body.current.state -> generated.unpaid_prefix -> source_disposition_before -> actual body_steps_refine_prefix",
+    "unpaid-prefix -> advance_refines_if_unpaid -> post_full_smooth and exact collision/energy shortage advanceNative -> refineState",
+    "run.before/bodySteps -> original body_next/body_event_at on same previous body; actual advanceSource/runPulse stock and history",
+    "run.resultActual -> event.resultActual -> actual state HEq -> generated.actual; run.nextState -> same actual result.next",
+    "runtimeSteps -> actual runtime.tick.next; runtime_steps_input/body -> original full native current and same InputWriteLaw updates",
+    "input/disposition/body iteration HEq -> same source occurrence, same-body law witnesses, positive_next_heq and iterates_heq",
+    "paid_at_actual_runtime -> same represented stored body -> canonical source_generated_native_body_paid_run -> written_body_at_run -> actual selected Write.body/literal next full body",
+    "public root n/afterParent -> signed corresponding NativeBodyRootTransitionAt -> native_body_paid_root_actual and same selected inputs factorization"
+  ],
+  "defects": [],
+  "target_smuggling": false,
+  "private_eventual_promoted_to_public": false,
+  "reserve_refill_or_old_normalReserve": false,
+  "source_reset": false,
+  "future_table": false,
+  "Exists_to_Type_new_endpoint": false,
+  "state_label_only_match": false,
+  "paid_CP_refire": false,
+  "original_whole_body_stock_history_or_budget_lost": false,
+  "strongest_accepted_scope": "Same actual original Delivery root at every canonical registered tick and actual afterParent generates a finite physical paid-or-zero-shortage run from its current native state, executes every earlier unpaid refinement through the real stored-body writer, identifies the selected original event/result and complete written/next body with source disposition, and retains full stock/history/source/fields/Ne/account/genome/sevenDuty in same inputs/ledger/literal next.",
+  "claim_boundary": "Actual paid physical progress does not prove the five CP-edge catalytic directions or completion of independent duties. The zero-source shortage is a faithful particular residual, not a route no-go.",
+  "completeTVO_next": "Parent owns exact two new formal owners full raw TVO/opaque/private/recursor/axioms. Old Root/function/FullSmooth remain paid; this review does not recompile any owner or append result-label wrappers.",
+  "actions": {
+    "Lean_compile": 0,
+    "parent_compile": 0,
+    "old_audit_rerun": 0,
+    "Lean_edit": 0,
+    "docs_edit": 0,
+    "Git_write": 0,
+    "artifact_copy": 0,
+    "only_write": "this own SSD same-root final source-review JSON"
+  }
+}
