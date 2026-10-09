@@ -1,0 +1,52 @@
+{
+  "schema": "h0mework/low-energy-original-consumer-check@1",
+  "claim_id": "low1.L2",
+  "runs": [
+    {
+      "command": [
+        "/opt/homebrew/opt/python@3.12/bin/python3.12",
+        "tools/source_view.py",
+        "--output",
+        ".local/second-edition-20261009/low-energy-l2-original-consumer-run/view",
+        "--at",
+        "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+        "--receipt",
+        "evidence/physics/low-energy/results/exact-readout.json"
+      ],
+      "exit_code": 0,
+      "seconds": 0.6931949160061777,
+      "log": ".local/second-edition-20261009/low-energy-l2-original-consumer-run/0.log"
+    },
+    {
+      "command": [
+        "/opt/homebrew/opt/python@3.12/bin/python3.12",
+        "scripts/physics/low-energy/check_readout.py",
+        "--root",
+        ".local/second-edition-20261009/low-energy-l2-original-consumer-run/view",
+        "--receipt",
+        "evidence/physics/low-energy/results/exact-readout.json"
+      ],
+      "exit_code": 0,
+      "seconds": 1.0522278750431724,
+      "log": ".local/second-edition-20261009/low-energy-l2-original-consumer-run/1.log"
+    },
+    {
+      "command": [
+        "/opt/homebrew/opt/python@3.12/bin/python3.12",
+        "scripts/physics/low-energy/stabilizer_check.py",
+        "--receipt",
+        "evidence/physics/low-energy/results/exact-readout.json",
+        "--out",
+        ".local/second-edition-20261009/low-energy-l2-original-consumer-run/stabilizer-check.json"
+      ],
+      "exit_code": 0,
+      "seconds": 0.07371091598179191,
+      "log": ".local/second-edition-20261009/low-energy-l2-original-consumer-run/2.log"
+    }
+  ],
+  "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+  "producer_execution": false,
+  "scientific_scope": "Original independent fixed-data readout and finite stabilizer checks",
+  "stabilizer_original_bytes_equal": true,
+  "status": "passed"
+}

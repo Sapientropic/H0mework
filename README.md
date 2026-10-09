@@ -17,6 +17,8 @@
 
 第二版过程核心／同源物理旗舰，以及低能首发选集 L1–L28／Q1–Q6，使用独立的[逐项映射](docs/second-edition-map.json)、[低能映射](docs/low-energy-release-map.json)和[复现入口](docs/edition-reproduction.md)。实际材料验收与本地交付见[第二版准备状态](docs/second-edition-readiness.md)。
 
+已交低能两稿的双语阅读版与可编辑材料见[独立成品快照](papers/low-energy-first-release/2026-10-09/README.md)，逐文件来源及实际代码绑定由该目录清单登记。
+
 ## 更多研究线
 
 | 研究线 | 内容 | Lean 入口 |

@@ -13,7 +13,7 @@
       "sha256": "29dbccf2f4d0da5102aeac764d76560792defb188a44a9d74a970ecde529935b"
     }
   },
-  "status": "selected material identity binding; new public package build/trust pending",
+  "status": "All selected material/source identities and scientific consumption scopes verified; new kernel acceptance in progress.",
   "claims": [
     {
       "id": "low1.L1",
@@ -487,10 +487,43 @@
         "source_byte_identity_summary": 2271
       },
       "scientific_verification": {
-        "status": "pending",
-        "check_ids": [],
-        "original_source_certification": "Inherited at its recorded scope",
-        "public_edition_replay": "No new scientific execution by this identity-map generator"
+        "status": "passed",
+        "check_ids": [
+          "original-consumer-low1-l2"
+        ],
+        "receipt": {
+          "path": "evidence/second-edition/acceptance/low-energy-original-consumers-20261009/low1-L2/result.json",
+          "sha256": "1e8334ad4e45fe1661cf5cb58048a6ae362324cbabcc453a5f7415c29bf6d65e"
+        },
+        "new_execution": {
+          "status": "passed",
+          "scope": "original_independent_consumers_executed"
+        },
+        "original_certification_inheritance": [
+          {
+            "source_path": "Verification/physics/low-energy-phenomenology/results/exact-readout.json",
+            "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+            "source_sha256": "338f1c41473c9c515b613eaf817fd703301d3e703f85f535b30c2299c15239c8",
+            "public": {
+              "path": "evidence/physics/low-energy/results/exact-readout.json",
+              "sha256": "338f1c41473c9c515b613eaf817fd703301d3e703f85f535b30c2299c15239c8"
+            },
+            "original_recorded_status": "EXACT_SUBORDINATE_READOUT_NOT_EMPIRICAL_PARTICLE_IDENTIFICATION",
+            "scope": "Original exact source/data/receipt certification; distinct from a new public execution"
+          },
+          {
+            "source_path": "Verification/physics/low-energy-phenomenology/results/stabilizer-check.json",
+            "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+            "source_sha256": "9b7b0e5c8db00d29aeea0e9682bd019c56b205bcf5c4c212b125999e04bfd170",
+            "public": {
+              "path": "evidence/physics/low-energy/results/stabilizer-check.json",
+              "sha256": "9b7b0e5c8db00d29aeea0e9682bd019c56b205bcf5c4c212b125999e04bfd170"
+            },
+            "original_recorded_status": null,
+            "scope": "Original exact source/data/receipt certification; distinct from a new public execution"
+          }
+        ],
+        "full_producer_recalculation": false
       }
     },
     {
@@ -1540,6 +1573,23 @@
             "source_sha256": "919ef0b63c034baa42b3ce0381495b3eba57835f27943795772e2f5f9c246f8a",
             "execution_scope": "Original fixed-source program/data/receipt identity; no scientific replay by this generator."
           }
+        },
+        {
+          "kind": "artifact",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_path": "Verification/physics/low-energy-phenomenology/active-gauge/rotation/quotient-transport.json",
+          "source_sha256": "cbe86397b52b99bf0bf29db388f7f66f531dcc7105cc3a3b8616a6dda44907ce",
+          "public": {
+            "path": "evidence/physics/low-energy/active-gauge/rotation/quotient-transport.json",
+            "sha256": "cbe86397b52b99bf0bf29db388f7f66f531dcc7105cc3a3b8616a6dda44907ce"
+          },
+          "verification": {
+            "identity": "mapped"
+          },
+          "original_identity": {
+            "source_sha256": "cbe86397b52b99bf0bf29db388f7f66f531dcc7105cc3a3b8616a6dda44907ce",
+            "execution_scope": "Original fixed-source program/data/receipt identity; no scientific replay by this generator."
+          }
         }
       ],
       "program_source_reads": [
@@ -1623,10 +1673,76 @@
         "source_byte_identity_summary": 2271
       },
       "scientific_verification": {
-        "status": "pending",
-        "check_ids": [],
-        "original_source_certification": "Inherited at its recorded scope",
-        "public_edition_replay": "No new scientific execution by this identity-map generator"
+        "status": "passed",
+        "check_ids": [
+          "original-consumer-low1-l6"
+        ],
+        "receipt": {
+          "path": "evidence/second-edition/acceptance/low-energy-original-consumers-20261009/low1-L6/result.json",
+          "sha256": "5f5760f5c68523e3af4b25f3ee8807dc5d5ca4a7d15864aa9b402234f21889e3"
+        },
+        "new_execution": {
+          "status": "passed",
+          "scope": "original_selected_consumer_executed_with_other_original_certification_inherited"
+        },
+        "original_certification_inheritance": [
+          {
+            "source_path": "Verification/physics/low-energy-phenomenology/active-gauge/audit/independent-receipt.json",
+            "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+            "source_sha256": "f9804ec71a20aca1d86dfedb997661230b9e6b4bab57cac46ab7d3307c075195",
+            "public": {
+              "path": "evidence/physics/low-energy/active-gauge/audit-independent-receipt.json",
+              "sha256": "f9804ec71a20aca1d86dfedb997661230b9e6b4bab57cac46ab7d3307c075195"
+            },
+            "original_recorded_status": "PASS",
+            "scope": "Original exact source/data/receipt certification; distinct from a new public execution"
+          },
+          {
+            "source_path": "Verification/physics/low-energy-phenomenology/active-gauge/audit/certification.md",
+            "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+            "source_sha256": "adfa4af602d3e44883fa4b03000aaa4db59362179dcdbca2923d2c05b3736d2e",
+            "public": {
+              "path": "docs/source/physics/low-energy/active-gauge/audit-certification.md",
+              "sha256": "adfa4af602d3e44883fa4b03000aaa4db59362179dcdbca2923d2c05b3736d2e"
+            },
+            "original_recorded_status": null,
+            "scope": "Original exact source/data/receipt certification; distinct from a new public execution"
+          },
+          {
+            "source_path": "Verification/physics/low-energy-phenomenology/active-gauge/quotient-audit/certification.md",
+            "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+            "source_sha256": "5150353eb5bcbe5450bdc18beea5236a24056bcb523b381d309caa763df3c1eb",
+            "public": {
+              "path": "docs/source/physics/low-energy/active-gauge/quotient-audit-certification.md",
+              "sha256": "5150353eb5bcbe5450bdc18beea5236a24056bcb523b381d309caa763df3c1eb"
+            },
+            "original_recorded_status": null,
+            "scope": "Original exact source/data/receipt certification; distinct from a new public execution"
+          },
+          {
+            "source_path": "Verification/physics/low-energy-phenomenology/active-gauge/propagation-audit/certification.md",
+            "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+            "source_sha256": "f1105f683070e094417bfc34c70fa47cfdefa194d03b4a97af87863b8af57699",
+            "public": {
+              "path": "docs/source/physics/low-energy/active-gauge/propagation-audit-certification.md",
+              "sha256": "f1105f683070e094417bfc34c70fa47cfdefa194d03b4a97af87863b8af57699"
+            },
+            "original_recorded_status": null,
+            "scope": "Original exact source/data/receipt certification; distinct from a new public execution"
+          },
+          {
+            "source_path": "Verification/physics/low-energy-phenomenology/active-gauge/rotation/audit/certification.md",
+            "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+            "source_sha256": "919ef0b63c034baa42b3ce0381495b3eba57835f27943795772e2f5f9c246f8a",
+            "public": {
+              "path": "docs/source/physics/low-energy/active-gauge/rotation/audit-certification.md",
+              "sha256": "919ef0b63c034baa42b3ce0381495b3eba57835f27943795772e2f5f9c246f8a"
+            },
+            "original_recorded_status": null,
+            "scope": "Original exact source/data/receipt certification; distinct from a new public execution"
+          }
+        ],
+        "full_producer_recalculation": false
       }
     },
     {
@@ -1985,6 +2101,23 @@
             "source_sha256": "ba317e38b8323ca831b5ca08cdbdd31a50cf5a0e228ec409d2899dcb6209079c",
             "execution_scope": "Original fixed-source program/data/receipt identity; no scientific replay by this generator."
           }
+        },
+        {
+          "kind": "artifact",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_path": "Verification/physics/low-energy-phenomenology/canonical-peripheral/phase-match.json",
+          "source_sha256": "6f0dd9d5adb0b04355db7416baa39a0dafc02b275c2c1232ea4ade88eaa73000",
+          "public": {
+            "path": "evidence/physics/low-energy/canonical-peripheral/phase-match.json",
+            "sha256": "6f0dd9d5adb0b04355db7416baa39a0dafc02b275c2c1232ea4ade88eaa73000"
+          },
+          "verification": {
+            "identity": "mapped"
+          },
+          "original_identity": {
+            "source_sha256": "6f0dd9d5adb0b04355db7416baa39a0dafc02b275c2c1232ea4ade88eaa73000",
+            "execution_scope": "Original fixed-source program/data/receipt identity; no scientific replay by this generator."
+          }
         }
       ],
       "original_certification_inheritance": [
@@ -2056,10 +2189,87 @@
         "source_byte_identity_summary": 2271
       },
       "scientific_verification": {
-        "status": "pending",
-        "check_ids": [],
-        "original_source_certification": "Inherited at its recorded scope",
-        "public_edition_replay": "No new scientific execution by this identity-map generator"
+        "status": "passed",
+        "check_ids": [
+          "original-consumer-low1-l7"
+        ],
+        "receipt": {
+          "path": "evidence/second-edition/acceptance/low-energy-original-consumers-20261009/low1-L7/result.json",
+          "sha256": "e7ead792bfdd3cc04fbf4331579616033f1b530eb71887f9a77cd75e806df9da"
+        },
+        "new_execution": {
+          "status": "passed",
+          "scope": "original_selected_consumer_executed_with_other_original_certification_inherited"
+        },
+        "original_certification_inheritance": [
+          {
+            "source_path": "Verification/physics/low-energy-phenomenology/full-phase/audit/certification.md",
+            "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+            "source_sha256": "9d3f3df94d3f2fa34410f9229da8a1a0b0679e1dbd8ea928d5830fb32ac042a3",
+            "public": {
+              "path": "docs/source/physics/low-energy/full-phase/audit-certification.md",
+              "sha256": "9d3f3df94d3f2fa34410f9229da8a1a0b0679e1dbd8ea928d5830fb32ac042a3"
+            },
+            "original_recorded_status": null,
+            "scope": "Original exact source/data/receipt certification; distinct from a new public execution"
+          },
+          {
+            "source_path": "Verification/physics/low-energy-phenomenology/canonical-active/audit/certification.md",
+            "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+            "source_sha256": "f24c4912393076cac7ef1b564de4811d59f3c3aff47a5bd1ed80185f6845b0ec",
+            "public": {
+              "path": "docs/source/physics/low-energy/canonical-active/audit-certification.md",
+              "sha256": "f24c4912393076cac7ef1b564de4811d59f3c3aff47a5bd1ed80185f6845b0ec"
+            },
+            "original_recorded_status": null,
+            "scope": "Original exact source/data/receipt certification; distinct from a new public execution"
+          },
+          {
+            "source_path": "Verification/physics/low-energy-phenomenology/canonical-active/spectrum/audit/certification.md",
+            "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+            "source_sha256": "1827a53fccf36070ba675d15ac94ec05be1ecaeeff87112acd39dc2ae3c17b8d",
+            "public": {
+              "path": "docs/source/physics/low-energy/canonical-active/spectrum-audit-certification.md",
+              "sha256": "1827a53fccf36070ba675d15ac94ec05be1ecaeeff87112acd39dc2ae3c17b8d"
+            },
+            "original_recorded_status": null,
+            "scope": "Original exact source/data/receipt certification; distinct from a new public execution"
+          },
+          {
+            "source_path": "Verification/physics/low-energy-phenomenology/canonical-peripheral/audit/certification.md",
+            "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+            "source_sha256": "de031ac3b81b7c6edc7277f87788273ddf1d5fd6aed9d8e6fe33028ef8ba9600",
+            "public": {
+              "path": "docs/source/physics/low-energy/canonical-peripheral/audit-certification.md",
+              "sha256": "de031ac3b81b7c6edc7277f87788273ddf1d5fd6aed9d8e6fe33028ef8ba9600"
+            },
+            "original_recorded_status": null,
+            "scope": "Original exact source/data/receipt certification; distinct from a new public execution"
+          },
+          {
+            "source_path": "Verification/physics/low-energy-phenomenology/canonical-peripheral/rotation/audit/certification.md",
+            "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+            "source_sha256": "a8bbc92aa98a76176f5e17ab70d128cc89c947097fee8c82ca25cd0942f9faab",
+            "public": {
+              "path": "docs/source/physics/low-energy/canonical-peripheral/rotation-audit-certification.md",
+              "sha256": "a8bbc92aa98a76176f5e17ab70d128cc89c947097fee8c82ca25cd0942f9faab"
+            },
+            "original_recorded_status": null,
+            "scope": "Original exact source/data/receipt certification; distinct from a new public execution"
+          },
+          {
+            "source_path": "Verification/physics/low-energy-phenomenology/real-scalar-sector/audit/certification.md",
+            "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+            "source_sha256": "ba317e38b8323ca831b5ca08cdbdd31a50cf5a0e228ec409d2899dcb6209079c",
+            "public": {
+              "path": "docs/source/physics/low-energy/real-scalar-sector/audit-certification.md",
+              "sha256": "ba317e38b8323ca831b5ca08cdbdd31a50cf5a0e228ec409d2899dcb6209079c"
+            },
+            "original_recorded_status": null,
+            "scope": "Original exact source/data/receipt certification; distinct from a new public execution"
+          }
+        ],
+        "full_producer_recalculation": false
       }
     },
     {
@@ -2313,10 +2523,40 @@
         "source_byte_identity_summary": 2271
       },
       "scientific_verification": {
-        "status": "pending",
-        "check_ids": [],
-        "original_source_certification": "Inherited at its recorded scope",
-        "public_edition_replay": "No new scientific execution by this identity-map generator"
+        "status": "verified",
+        "check_ids": [
+          "original-certification-low1-l8"
+        ],
+        "scope": "Fixed original scientific certification inherited at its exact source/data/receipt scope; current public identity verified.",
+        "new_execution": {
+          "status": "not_run",
+          "reason": "No selected source or result changed; original producer recomputation is outside this migration."
+        },
+        "original_certification_inheritance": [
+          {
+            "source_path": "Verification/physics/low-energy-phenomenology/soft-phase/audit/independent-receipt.json",
+            "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+            "source_sha256": "3afe231208853e3583e0e8c05e7017476a449097479330d3661257219ff8a5b7",
+            "public": {
+              "path": "evidence/physics/low-energy/soft-phase/audit-independent-receipt.json",
+              "sha256": "3afe231208853e3583e0e8c05e7017476a449097479330d3661257219ff8a5b7"
+            },
+            "original_recorded_status": null,
+            "scope": "Original exact source/data/receipt certification; distinct from a new public execution"
+          },
+          {
+            "source_path": "Verification/physics/low-energy-phenomenology/soft-phase/audit/certification.md",
+            "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+            "source_sha256": "7a1f61d988da98e67714d1791376395cc8b059adef74c8e5e798a300db2b771a",
+            "public": {
+              "path": "docs/source/physics/low-energy/soft-phase/audit-certification.md",
+              "sha256": "7a1f61d988da98e67714d1791376395cc8b059adef74c8e5e798a300db2b771a"
+            },
+            "original_recorded_status": null,
+            "scope": "Original exact source/data/receipt certification; distinct from a new public execution"
+          }
+        ],
+        "full_producer_recalculation": false
       }
     },
     {
@@ -2944,10 +3184,73 @@
         "source_byte_identity_summary": 2271
       },
       "scientific_verification": {
-        "status": "pending",
-        "check_ids": [],
-        "original_source_certification": "Inherited at its recorded scope",
-        "public_edition_replay": "No new scientific execution by this identity-map generator"
+        "status": "verified",
+        "check_ids": [
+          "original-certification-low1-l9"
+        ],
+        "scope": "Fixed original scientific certification inherited at its exact source/data/receipt scope; current public identity verified.",
+        "new_execution": {
+          "status": "not_run",
+          "reason": "No selected source or result changed; original producer recomputation is outside this migration."
+        },
+        "original_certification_inheritance": [
+          {
+            "source_path": "Verification/physics/low-energy-phenomenology/matter-vertices/audit/independent-receipt.json",
+            "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+            "source_sha256": "f0711d2811465abfd8b60794800c2d5bfcc23127a44532a3611d26c3de565283",
+            "public": {
+              "path": "evidence/physics/low-energy/matter-vertices/audit-independent-receipt.json",
+              "sha256": "f0711d2811465abfd8b60794800c2d5bfcc23127a44532a3611d26c3de565283"
+            },
+            "original_recorded_status": "PASS",
+            "scope": "Original exact source/data/receipt certification; distinct from a new public execution"
+          },
+          {
+            "source_path": "Verification/physics/low-energy-phenomenology/scalar-exchange/audit/independent-receipt.json",
+            "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+            "source_sha256": "0d629f5a06ce0d1f0c15243936fe495363491b9323a1ac82d6cbc97d947365dd",
+            "public": {
+              "path": "evidence/physics/low-energy/scalar-exchange/audit-independent-receipt.json",
+              "sha256": "0d629f5a06ce0d1f0c15243936fe495363491b9323a1ac82d6cbc97d947365dd"
+            },
+            "original_recorded_status": "PASS",
+            "scope": "Original exact source/data/receipt certification; distinct from a new public execution"
+          },
+          {
+            "source_path": "Verification/physics/low-energy-phenomenology/matter-vertices/audit/certification.md",
+            "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+            "source_sha256": "37fc81ab88b78ced1efa5cddfd7d4a230e8fa54d721bbd9ca16eeef2c90a2cbd",
+            "public": {
+              "path": "docs/source/physics/low-energy/matter-vertices/audit-certification.md",
+              "sha256": "37fc81ab88b78ced1efa5cddfd7d4a230e8fa54d721bbd9ca16eeef2c90a2cbd"
+            },
+            "original_recorded_status": null,
+            "scope": "Original exact source/data/receipt certification; distinct from a new public execution"
+          },
+          {
+            "source_path": "Verification/physics/low-energy-phenomenology/scalar-exchange/audit/certification.md",
+            "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+            "source_sha256": "f87d5c4efedba84c18a86adb16d8847a3f1bab866ab074a6a2a7e69845ba3175",
+            "public": {
+              "path": "docs/source/physics/low-energy/scalar-exchange/audit-certification.md",
+              "sha256": "f87d5c4efedba84c18a86adb16d8847a3f1bab866ab074a6a2a7e69845ba3175"
+            },
+            "original_recorded_status": null,
+            "scope": "Original exact source/data/receipt certification; distinct from a new public execution"
+          },
+          {
+            "source_path": "Verification/physics/low-energy-phenomenology/fermion-two-particle/audit/certification.md",
+            "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+            "source_sha256": "ec8517654a4c144c23fa4c51671774efb5d9fe65006e74768744b847c871a2fb",
+            "public": {
+              "path": "docs/source/physics/low-energy/fermion-two-particle/audit-certification.md",
+              "sha256": "ec8517654a4c144c23fa4c51671774efb5d9fe65006e74768744b847c871a2fb"
+            },
+            "original_recorded_status": null,
+            "scope": "Original exact source/data/receipt certification; distinct from a new public execution"
+          }
+        ],
+        "full_producer_recalculation": false
       }
     },
     {
@@ -3508,10 +3811,84 @@
         "source_byte_identity_summary": 2271
       },
       "scientific_verification": {
-        "status": "pending",
-        "check_ids": [],
-        "original_source_certification": "Inherited at its recorded scope",
-        "public_edition_replay": "No new scientific execution by this identity-map generator"
+        "status": "verified",
+        "check_ids": [
+          "original-certification-low1-l10"
+        ],
+        "scope": "Fixed original scientific certification inherited at its exact source/data/receipt scope; current public identity verified.",
+        "new_execution": {
+          "status": "not_run",
+          "reason": "No selected source or result changed; original producer recomputation is outside this migration."
+        },
+        "original_certification_inheritance": [
+          {
+            "source_path": "Verification/physics/low-energy-phenomenology/onshell-sources/audit/exchange-receipt.json",
+            "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+            "source_sha256": "b2d662d53cb638e4cb34acb888ff0947ec2039cecd54d8df30253f2abb146d54",
+            "public": {
+              "path": "evidence/low-energy-releases/s/onshell-sources/audit/exchange-receipt.json",
+              "sha256": "b2d662d53cb638e4cb34acb888ff0947ec2039cecd54d8df30253f2abb146d54"
+            },
+            "original_recorded_status": "PASS",
+            "scope": "Original exact source/data/receipt certification; distinct from a new public execution"
+          },
+          {
+            "source_path": "Verification/physics/low-energy-phenomenology/onshell-sources/audit/source-receipt.json",
+            "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+            "source_sha256": "6dfedda0de71ef9705e2b6d2cf03370dbe25255e4f694786ac58207fcb9b4592",
+            "public": {
+              "path": "evidence/low-energy-releases/s/onshell-sources/audit/source-receipt.json",
+              "sha256": "6dfedda0de71ef9705e2b6d2cf03370dbe25255e4f694786ac58207fcb9b4592"
+            },
+            "original_recorded_status": "PASS",
+            "scope": "Original exact source/data/receipt certification; distinct from a new public execution"
+          },
+          {
+            "source_path": "Verification/physics/low-energy-phenomenology/kinetic-residue/audit/independent-receipt.json",
+            "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+            "source_sha256": "4d173766771d978d26eb7660c04fcbd978790654e541ec758960cd9ac317aa3c",
+            "public": {
+              "path": "evidence/physics/low-energy/kinetic-residue/audit-independent-receipt.json",
+              "sha256": "4d173766771d978d26eb7660c04fcbd978790654e541ec758960cd9ac317aa3c"
+            },
+            "original_recorded_status": "PASS",
+            "scope": "Original exact source/data/receipt certification; distinct from a new public execution"
+          },
+          {
+            "source_path": "Verification/physics/low-energy-phenomenology/matter-modes/audit/certification.md",
+            "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+            "source_sha256": "132e73b4897d834bb00500a3db6f520c21c318bf221b6afcd9596ceeae06b3ef",
+            "public": {
+              "path": "docs/source/physics/low-energy/matter-modes/audit-certification.md",
+              "sha256": "132e73b4897d834bb00500a3db6f520c21c318bf221b6afcd9596ceeae06b3ef"
+            },
+            "original_recorded_status": null,
+            "scope": "Original exact source/data/receipt certification; distinct from a new public execution"
+          },
+          {
+            "source_path": "Verification/physics/low-energy-phenomenology/onshell-sources/audit/certification.md",
+            "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+            "source_sha256": "8f13bd3e6a47d2b79fd14b63fe914bba58c9469ef5e618608d9ed2fc94005136",
+            "public": {
+              "path": "docs/source/physics/low-energy/onshell-sources/audit-certification.md",
+              "sha256": "8f13bd3e6a47d2b79fd14b63fe914bba58c9469ef5e618608d9ed2fc94005136"
+            },
+            "original_recorded_status": null,
+            "scope": "Original exact source/data/receipt certification; distinct from a new public execution"
+          },
+          {
+            "source_path": "Verification/physics/low-energy-phenomenology/kinetic-residue/audit/certification.md",
+            "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+            "source_sha256": "4fe1775f22a93ee6dae29e69475d1542a8bfcc9d299274da97d55ff9233bdcf0",
+            "public": {
+              "path": "docs/source/physics/low-energy/kinetic-residue/audit-certification.md",
+              "sha256": "4fe1775f22a93ee6dae29e69475d1542a8bfcc9d299274da97d55ff9233bdcf0"
+            },
+            "original_recorded_status": null,
+            "scope": "Original exact source/data/receipt certification; distinct from a new public execution"
+          }
+        ],
+        "full_producer_recalculation": false
       }
     },
     {
@@ -4206,10 +4583,84 @@
         "source_byte_identity_summary": 2271
       },
       "scientific_verification": {
-        "status": "pending",
-        "check_ids": [],
-        "original_source_certification": "Inherited at its recorded scope",
-        "public_edition_replay": "No new scientific execution by this identity-map generator"
+        "status": "verified",
+        "check_ids": [
+          "original-certification-low1-l11"
+        ],
+        "scope": "Fixed original scientific certification inherited at its exact source/data/receipt scope; current public identity verified.",
+        "new_execution": {
+          "status": "not_run",
+          "reason": "No selected source or result changed; original producer recomputation is outside this migration."
+        },
+        "original_certification_inheritance": [
+          {
+            "source_path": "Verification/physics/low-energy-phenomenology/principal-normalization/audit/independent-receipt.json",
+            "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+            "source_sha256": "d90d5712f619cdd384c405425ac03a2fe89b8c2153525fcee2054f5a07789ec2",
+            "public": {
+              "path": "evidence/physics/low-energy/principal-normalization/audit-independent-receipt.json",
+              "sha256": "d90d5712f619cdd384c405425ac03a2fe89b8c2153525fcee2054f5a07789ec2"
+            },
+            "original_recorded_status": "PASS",
+            "scope": "Original exact source/data/receipt certification; distinct from a new public execution"
+          },
+          {
+            "source_path": "Verification/physics/low-energy-phenomenology/charge-response/audit/independent-receipt.json",
+            "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+            "source_sha256": "7fb92ca301182275094f942d30924dadeee33c1b5e41503823b04ddf06f583f7",
+            "public": {
+              "path": "evidence/physics/low-energy/charge-response/audit-independent-receipt.json",
+              "sha256": "7fb92ca301182275094f942d30924dadeee33c1b5e41503823b04ddf06f583f7"
+            },
+            "original_recorded_status": "PASS",
+            "scope": "Original exact source/data/receipt certification; distinct from a new public execution"
+          },
+          {
+            "source_path": "Verification/physics/low-energy-phenomenology/metric-response/audit/independent-receipt.json",
+            "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+            "source_sha256": "f148b251b1fcf02a1a47b598271e86784a61fe4d42aff4915d1deb09f69496be",
+            "public": {
+              "path": "evidence/physics/low-energy/metric-response/audit-independent-receipt.json",
+              "sha256": "f148b251b1fcf02a1a47b598271e86784a61fe4d42aff4915d1deb09f69496be"
+            },
+            "original_recorded_status": null,
+            "scope": "Original exact source/data/receipt certification; distinct from a new public execution"
+          },
+          {
+            "source_path": "Verification/physics/low-energy-phenomenology/principal-normalization/audit/certification.md",
+            "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+            "source_sha256": "3d17e3af2772c3d22b91b5873a5106c662aecbcb172c2f2838843dde2d7c27c7",
+            "public": {
+              "path": "docs/source/physics/low-energy/principal-normalization/audit-certification.md",
+              "sha256": "3d17e3af2772c3d22b91b5873a5106c662aecbcb172c2f2838843dde2d7c27c7"
+            },
+            "original_recorded_status": null,
+            "scope": "Original exact source/data/receipt certification; distinct from a new public execution"
+          },
+          {
+            "source_path": "Verification/physics/low-energy-phenomenology/charge-response/audit/certification.md",
+            "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+            "source_sha256": "125a698c16988e966a9982bbf4f22aa99293bd33f68220115afb2331a704112a",
+            "public": {
+              "path": "docs/source/physics/low-energy/charge-response/audit-certification.md",
+              "sha256": "125a698c16988e966a9982bbf4f22aa99293bd33f68220115afb2331a704112a"
+            },
+            "original_recorded_status": null,
+            "scope": "Original exact source/data/receipt certification; distinct from a new public execution"
+          },
+          {
+            "source_path": "Verification/physics/low-energy-phenomenology/metric-response/audit/certification.md",
+            "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+            "source_sha256": "bd031b5a21d58e6e09aac1852b48532f473dd2ae5ff862022b03a381f48b3c43",
+            "public": {
+              "path": "docs/source/physics/low-energy/metric-response/audit-certification.md",
+              "sha256": "bd031b5a21d58e6e09aac1852b48532f473dd2ae5ff862022b03a381f48b3c43"
+            },
+            "original_recorded_status": null,
+            "scope": "Original exact source/data/receipt certification; distinct from a new public execution"
+          }
+        ],
+        "full_producer_recalculation": false
       }
     },
     {
@@ -4513,10 +4964,73 @@
         "source_byte_identity_summary": 2271
       },
       "scientific_verification": {
-        "status": "pending",
-        "check_ids": [],
-        "original_source_certification": "Inherited at its recorded scope",
-        "public_edition_replay": "No new scientific execution by this identity-map generator"
+        "status": "verified",
+        "check_ids": [
+          "original-certification-low1-l12"
+        ],
+        "scope": "Fixed original scientific certification inherited at its exact source/data/receipt scope; current public identity verified.",
+        "new_execution": {
+          "status": "not_run",
+          "reason": "No selected source or result changed; original producer recomputation is outside this migration."
+        },
+        "original_certification_inheritance": [
+          {
+            "source_path": "Verification/physics/low-energy-phenomenology/occupied-response/audit/response-receipt.json",
+            "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+            "source_sha256": "0bb641d3ad65f4312523a646884a8e7b6580801513e58fa4b2c8da6c5fbc7b1c",
+            "public": {
+              "path": "evidence/low-energy-releases/s/occupied-response/audit/response-receipt.json",
+              "sha256": "0bb641d3ad65f4312523a646884a8e7b6580801513e58fa4b2c8da6c5fbc7b1c"
+            },
+            "original_recorded_status": "PASS",
+            "scope": "Original exact source/data/receipt certification; distinct from a new public execution"
+          },
+          {
+            "source_path": "Verification/physics/low-energy-phenomenology/occupied-response/audit/source-receipt.json",
+            "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+            "source_sha256": "1d7c73ec8940f91d97fe96b738fff41dcb383be92fe74fca15159586d1c31e86",
+            "public": {
+              "path": "evidence/low-energy-releases/s/occupied-response/audit/source-receipt.json",
+              "sha256": "1d7c73ec8940f91d97fe96b738fff41dcb383be92fe74fca15159586d1c31e86"
+            },
+            "original_recorded_status": "PASS",
+            "scope": "Original exact source/data/receipt certification; distinct from a new public execution"
+          },
+          {
+            "source_path": "Verification/physics/low-energy-phenomenology/occupied-response/causal/audit/independent-receipt.json",
+            "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+            "source_sha256": "e3c2ba8db16e81d42dd20fa7ab655cde516cceee77dc7ceeea86e6ef9fc9f55e",
+            "public": {
+              "path": "evidence/physics/low-energy/occupied-response/causal-audit-independent-receipt.json",
+              "sha256": "e3c2ba8db16e81d42dd20fa7ab655cde516cceee77dc7ceeea86e6ef9fc9f55e"
+            },
+            "original_recorded_status": "PASS",
+            "scope": "Original exact source/data/receipt certification; distinct from a new public execution"
+          },
+          {
+            "source_path": "Verification/physics/low-energy-phenomenology/occupied-response/audit/certification.md",
+            "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+            "source_sha256": "09820e7147635020161b4c85364e142bd7845ca6e32afd62db65da3fec6dc348",
+            "public": {
+              "path": "docs/source/physics/low-energy/occupied-response/audit-certification.md",
+              "sha256": "09820e7147635020161b4c85364e142bd7845ca6e32afd62db65da3fec6dc348"
+            },
+            "original_recorded_status": null,
+            "scope": "Original exact source/data/receipt certification; distinct from a new public execution"
+          },
+          {
+            "source_path": "Verification/physics/low-energy-phenomenology/occupied-response/causal/audit/certification.md",
+            "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+            "source_sha256": "615dc53764d8ad6074fa840712016f94496bc3b0e5891a028a1917c65ee2a30b",
+            "public": {
+              "path": "docs/source/physics/low-energy/occupied-response/causal-audit-certification.md",
+              "sha256": "615dc53764d8ad6074fa840712016f94496bc3b0e5891a028a1917c65ee2a30b"
+            },
+            "original_recorded_status": null,
+            "scope": "Original exact source/data/receipt certification; distinct from a new public execution"
+          }
+        ],
+        "full_producer_recalculation": false
       }
     },
     {
@@ -5931,10 +6445,65 @@
         "source_byte_identity_summary": 2271
       },
       "scientific_verification": {
-        "status": "pending",
-        "check_ids": [],
-        "original_source_certification": "Inherited at its recorded scope",
-        "public_edition_replay": "No new scientific execution by this identity-map generator"
+        "status": "passed",
+        "check_ids": [
+          "original-consumer-low1-l17"
+        ],
+        "receipt": {
+          "path": "evidence/second-edition/acceptance/low-energy-original-consumers-20261009/low1-L17/result.json",
+          "sha256": "56358d6f0472f83ed9089ebea83bf5fca3515b18c7e675809525d89a23a2e996"
+        },
+        "new_execution": {
+          "status": "passed",
+          "scope": "original_independent_consumers_executed"
+        },
+        "original_certification_inheritance": [
+          {
+            "source_path": "Verification/physics/low-energy-phenomenology/occupied-response/spatial/finite-coupling/derivative/audit/independent-receipt.json",
+            "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+            "source_sha256": "3958096de38a67acbda38148f18669eb9a01d8e4a29cb082c2d400a4bc26329c",
+            "public": {
+              "path": "evidence/physics/low-energy/occupied-response/spatial/finite-coupling-derivative-audit-independent-receipt.json",
+              "sha256": "3958096de38a67acbda38148f18669eb9a01d8e4a29cb082c2d400a4bc26329c"
+            },
+            "original_recorded_status": "PASS",
+            "scope": "Original exact source/data/receipt certification; distinct from a new public execution"
+          },
+          {
+            "source_path": "Verification/physics/low-energy-phenomenology/occupied-response/spatial/global/audit/independent-receipt.json",
+            "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+            "source_sha256": "6302e9e4c4fd5dbb606198ca91be0b0a9fd2798fb007645dc5cdff580e679704",
+            "public": {
+              "path": "evidence/physics/low-energy/occupied-response/spatial/global-audit-independent-receipt.json",
+              "sha256": "6302e9e4c4fd5dbb606198ca91be0b0a9fd2798fb007645dc5cdff580e679704"
+            },
+            "original_recorded_status": "PASS",
+            "scope": "Original exact source/data/receipt certification; distinct from a new public execution"
+          },
+          {
+            "source_path": "Verification/physics/low-energy-phenomenology/occupied-response/spatial/finite-coupling/derivative/audit/certification.md",
+            "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+            "source_sha256": "50c311ad3877eaad58c1d719997318af552235055e770fe6b783e60953fcfaa8",
+            "public": {
+              "path": "docs/source/physics/low-energy/occupied-response/spatial/finite-coupling-derivative-audit-certification.md",
+              "sha256": "50c311ad3877eaad58c1d719997318af552235055e770fe6b783e60953fcfaa8"
+            },
+            "original_recorded_status": null,
+            "scope": "Original exact source/data/receipt certification; distinct from a new public execution"
+          },
+          {
+            "source_path": "Verification/physics/low-energy-phenomenology/occupied-response/spatial/global/audit/certification.md",
+            "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+            "source_sha256": "1e60fd541a61d2b5897d11d9e319bc5ba31d8a665a6dc56e0d32874d0dd8704a",
+            "public": {
+              "path": "docs/source/physics/low-energy/occupied-response/spatial/global-audit-certification.md",
+              "sha256": "1e60fd541a61d2b5897d11d9e319bc5ba31d8a665a6dc56e0d32874d0dd8704a"
+            },
+            "original_recorded_status": null,
+            "scope": "Original exact source/data/receipt certification; distinct from a new public execution"
+          }
+        ],
+        "full_producer_recalculation": false
       }
     },
     {
@@ -10486,10 +11055,40 @@
         "new_execution": false
       },
       "scientific_verification": {
-        "status": "pending",
-        "check_ids": [],
-        "original_source_certification": "Inherited at its recorded scope",
-        "public_edition_replay": "No new scientific execution by this identity-map generator"
+        "status": "verified",
+        "check_ids": [
+          "original-certification-low2-q1"
+        ],
+        "scope": "Fixed original scientific certification inherited at its exact source/data/receipt scope; current public identity verified.",
+        "new_execution": {
+          "status": "not_run",
+          "reason": "No selected source or result changed; original producer recomputation is outside this migration."
+        },
+        "original_certification_inheritance": [
+          {
+            "source_path": "Verification/physics/low-energy-phenomenology/full-quantum/closed-loops/audit/certification.md",
+            "source_commit": "85cb5386ca132818f74d90470d87a252e4a27ea7",
+            "source_sha256": "0a4e3f2d7c5108e057d1074eba9f77748512e57bf38f4bc1c4053939d8219adf",
+            "public": {
+              "path": "docs/source/physics/low-energy/full-quantum/closed-loops/audit/certification.md",
+              "sha256": "0a4e3f2d7c5108e057d1074eba9f77748512e57bf38f4bc1c4053939d8219adf"
+            },
+            "original_recorded_status": null,
+            "scope": "Original exact source/data/receipt certification; distinct from a new public execution"
+          },
+          {
+            "source_path": "Verification/physics/low-energy-phenomenology/full-quantum/closed-loops/audit/independent-receipt.json",
+            "source_commit": "85cb5386ca132818f74d90470d87a252e4a27ea7",
+            "source_sha256": "2a8a3cbc87640f2dab62b9fac10f36e319cb14c6dcd4428b023bc0f92ba66510",
+            "public": {
+              "path": "evidence/physics/low-energy/full-quantum/closed-loops/audit/independent-receipt.json",
+              "sha256": "2a8a3cbc87640f2dab62b9fac10f36e319cb14c6dcd4428b023bc0f92ba66510"
+            },
+            "original_recorded_status": "PASS",
+            "scope": "Original exact source/data/receipt certification; distinct from a new public execution"
+          }
+        ],
+        "full_producer_recalculation": false
       }
     },
     {
@@ -11073,10 +11672,40 @@
         "new_execution": false
       },
       "scientific_verification": {
-        "status": "pending",
-        "check_ids": [],
-        "original_source_certification": "Inherited at its recorded scope",
-        "public_edition_replay": "No new scientific execution by this identity-map generator"
+        "status": "verified",
+        "check_ids": [
+          "original-certification-low2-q2"
+        ],
+        "scope": "Fixed original scientific certification inherited at its exact source/data/receipt scope; current public identity verified.",
+        "new_execution": {
+          "status": "not_run",
+          "reason": "No selected source or result changed; original producer recomputation is outside this migration."
+        },
+        "original_certification_inheritance": [
+          {
+            "source_path": "Verification/physics/low-energy-phenomenology/full-quantum/prepared-loops/audit/certification.md",
+            "source_commit": "85cb5386ca132818f74d90470d87a252e4a27ea7",
+            "source_sha256": "25e76a759e6c822b0988f8d6ce83af521bb53d2eabc0a46f40fa91504b70593c",
+            "public": {
+              "path": "docs/source/physics/low-energy/full-quantum/prepared-loops/audit/certification.md",
+              "sha256": "25e76a759e6c822b0988f8d6ce83af521bb53d2eabc0a46f40fa91504b70593c"
+            },
+            "original_recorded_status": null,
+            "scope": "Original exact source/data/receipt certification; distinct from a new public execution"
+          },
+          {
+            "source_path": "Verification/physics/low-energy-phenomenology/full-quantum/prepared-loops/audit/independent-receipt.json",
+            "source_commit": "85cb5386ca132818f74d90470d87a252e4a27ea7",
+            "source_sha256": "5e1fb1cd9b18648a21f8fc44dc299aba3dd471c43aecd98860ae1745a02645c9",
+            "public": {
+              "path": "evidence/physics/low-energy/full-quantum/prepared-loops/audit/independent-receipt.json",
+              "sha256": "5e1fb1cd9b18648a21f8fc44dc299aba3dd471c43aecd98860ae1745a02645c9"
+            },
+            "original_recorded_status": "PASS",
+            "scope": "Original exact source/data/receipt certification; distinct from a new public execution"
+          }
+        ],
+        "full_producer_recalculation": false
       }
     },
     {
@@ -12443,10 +13072,40 @@
         "new_execution": false
       },
       "scientific_verification": {
-        "status": "pending",
-        "check_ids": [],
-        "original_source_certification": "Inherited at its recorded scope",
-        "public_edition_replay": "No new scientific execution by this identity-map generator"
+        "status": "verified",
+        "check_ids": [
+          "original-certification-low2-q3"
+        ],
+        "scope": "Fixed original scientific certification inherited at its exact source/data/receipt scope; current public identity verified.",
+        "new_execution": {
+          "status": "not_run",
+          "reason": "No selected source or result changed; original producer recomputation is outside this migration."
+        },
+        "original_certification_inheritance": [
+          {
+            "source_path": "Verification/physics/low-energy-phenomenology/full-quantum/boson-effective/audit/certification.md",
+            "source_commit": "85cb5386ca132818f74d90470d87a252e4a27ea7",
+            "source_sha256": "0ec36cfc5c2c183cd174f932532cf3dcfb10e16dd9a8b2e2c536c6d7a58d3ecb",
+            "public": {
+              "path": "docs/source/physics/low-energy/full-quantum/boson-effective/audit/certification.md",
+              "sha256": "0ec36cfc5c2c183cd174f932532cf3dcfb10e16dd9a8b2e2c536c6d7a58d3ecb"
+            },
+            "original_recorded_status": null,
+            "scope": "Original exact source/data/receipt certification; distinct from a new public execution"
+          },
+          {
+            "source_path": "Verification/physics/low-energy-phenomenology/full-quantum/light-kernel/audit/certification.md",
+            "source_commit": "85cb5386ca132818f74d90470d87a252e4a27ea7",
+            "source_sha256": "a417d2c63a123e7d29c98d559f155b374d69f5fe948ef6bc618e28f74aa67d97",
+            "public": {
+              "path": "docs/source/physics/low-energy/full-quantum/light-kernel/audit/certification.md",
+              "sha256": "a417d2c63a123e7d29c98d559f155b374d69f5fe948ef6bc618e28f74aa67d97"
+            },
+            "original_recorded_status": null,
+            "scope": "Original exact source/data/receipt certification; distinct from a new public execution"
+          }
+        ],
+        "full_producer_recalculation": false
       }
     },
     {
@@ -13151,10 +13810,142 @@
         "new_execution": false
       },
       "scientific_verification": {
-        "status": "pending",
-        "check_ids": [],
-        "original_source_certification": "Inherited at its recorded scope",
-        "public_edition_replay": "No new scientific execution by this identity-map generator"
+        "status": "passed",
+        "check_ids": [
+          "original-consumer-low2-q4"
+        ],
+        "receipt": {
+          "path": "evidence/second-edition/acceptance/low-energy-original-consumers-20261009/low2-Q4/result.json",
+          "sha256": "2f09f72020a369621b0ca7d768bd6ba5217c7679ecdbd405b0a2d4c56d83672f"
+        },
+        "new_execution": {
+          "status": "passed",
+          "scope": "original_selected_consumer_executed_with_other_original_certification_inherited"
+        },
+        "original_certification_inheritance": [
+          {
+            "source_path": "Verification/physics/low-energy-phenomenology/full-quantum/packet-curvature-coefficients/audit/certification.md",
+            "source_commit": "85cb5386ca132818f74d90470d87a252e4a27ea7",
+            "source_sha256": "71336fb335f9a03e31f0a8acb691768f4a3342c70a2650ad758d5bed3a1872b7",
+            "public": {
+              "path": "docs/source/physics/low-energy/full-quantum/packet-curvature-coefficients/audit/certification.md",
+              "sha256": "71336fb335f9a03e31f0a8acb691768f4a3342c70a2650ad758d5bed3a1872b7"
+            },
+            "original_recorded_status": null,
+            "scope": "Original exact source/data/receipt certification; distinct from a new public execution"
+          },
+          {
+            "source_path": "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-spatial-propagation-curvature/audit/captured-source-series.json.gz",
+            "source_commit": "85cb5386ca132818f74d90470d87a252e4a27ea7",
+            "source_sha256": "80abb49e572f0385dea8342b097273f1b8fd3e4d3f3239582f5753d5bf968870",
+            "public": {
+              "path": "evidence/physics/low-energy/full-quantum/packet-gauge-spatial-propagation-curvature/audit/captured-source-series.json.gz",
+              "sha256": "80abb49e572f0385dea8342b097273f1b8fd3e4d3f3239582f5753d5bf968870"
+            },
+            "original_recorded_status": null,
+            "scope": "Original exact source/data/receipt certification; distinct from a new public execution"
+          },
+          {
+            "source_path": "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-spatial-propagation-curvature/audit/certification.md",
+            "source_commit": "85cb5386ca132818f74d90470d87a252e4a27ea7",
+            "source_sha256": "fa6e9c233d933d3cffff22c6b83e15541e937491bbbf7997245a7da0882a2f7e",
+            "public": {
+              "path": "docs/source/physics/low-energy/full-quantum/packet-gauge-spatial-propagation-curvature/audit/certification.md",
+              "sha256": "fa6e9c233d933d3cffff22c6b83e15541e937491bbbf7997245a7da0882a2f7e"
+            },
+            "original_recorded_status": null,
+            "scope": "Original exact source/data/receipt certification; distinct from a new public execution"
+          },
+          {
+            "source_path": "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-spatial-propagation-curvature/audit/focused.json",
+            "source_commit": "85cb5386ca132818f74d90470d87a252e4a27ea7",
+            "source_sha256": "df6e0e654a21efe833ef1da14a3538283f2325a535231e1436171057caea0f45",
+            "public": {
+              "path": "evidence/physics/low-energy/full-quantum/packet-gauge-spatial-propagation-curvature/audit/focused.json",
+              "sha256": "df6e0e654a21efe833ef1da14a3538283f2325a535231e1436171057caea0f45"
+            },
+            "original_recorded_status": null,
+            "scope": "Original exact source/data/receipt certification; distinct from a new public execution"
+          },
+          {
+            "source_path": "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-spatial-propagation-curvature/audit/independent-angular.json",
+            "source_commit": "85cb5386ca132818f74d90470d87a252e4a27ea7",
+            "source_sha256": "9f71264f82f64d2a3ca452c3244b09cf0d76569cdf4a7ee56c8e5cdc7f832bd5",
+            "public": {
+              "path": "evidence/physics/low-energy/full-quantum/packet-gauge-spatial-propagation-curvature/audit/independent-angular.json",
+              "sha256": "9f71264f82f64d2a3ca452c3244b09cf0d76569cdf4a7ee56c8e5cdc7f832bd5"
+            },
+            "original_recorded_status": null,
+            "scope": "Original exact source/data/receipt certification; distinct from a new public execution"
+          },
+          {
+            "source_path": "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-spatial-propagation-curvature/audit/independent-bounds.json",
+            "source_commit": "85cb5386ca132818f74d90470d87a252e4a27ea7",
+            "source_sha256": "7b5c39102a56065949b896e61996b3e5db0adde06e1a0fa3d76b3bd78f390622",
+            "public": {
+              "path": "evidence/physics/low-energy/full-quantum/packet-gauge-spatial-propagation-curvature/audit/independent-bounds.json",
+              "sha256": "7b5c39102a56065949b896e61996b3e5db0adde06e1a0fa3d76b3bd78f390622"
+            },
+            "original_recorded_status": null,
+            "scope": "Original exact source/data/receipt certification; distinct from a new public execution"
+          },
+          {
+            "source_path": "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-spatial-propagation-curvature/audit/independent-series.json",
+            "source_commit": "85cb5386ca132818f74d90470d87a252e4a27ea7",
+            "source_sha256": "d6b58519dc071ea720b0b12d2e645f0ad75dd608e91617c5d7e35cffea63f8d6",
+            "public": {
+              "path": "evidence/physics/low-energy/full-quantum/packet-gauge-spatial-propagation-curvature/audit/independent-series.json",
+              "sha256": "d6b58519dc071ea720b0b12d2e645f0ad75dd608e91617c5d7e35cffea63f8d6"
+            },
+            "original_recorded_status": null,
+            "scope": "Original exact source/data/receipt certification; distinct from a new public execution"
+          },
+          {
+            "source_path": "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-spatial-propagation-curvature/audit/replay.json",
+            "source_commit": "85cb5386ca132818f74d90470d87a252e4a27ea7",
+            "source_sha256": "3ffb40bdc66c8f468cecf4c7c38e9fc7653f21849ff70ece09050540df923493",
+            "public": {
+              "path": "evidence/physics/low-energy/full-quantum/packet-gauge-spatial-propagation-curvature/audit/replay.json",
+              "sha256": "3ffb40bdc66c8f468cecf4c7c38e9fc7653f21849ff70ece09050540df923493"
+            },
+            "original_recorded_status": null,
+            "scope": "Original exact source/data/receipt certification; distinct from a new public execution"
+          },
+          {
+            "source_path": "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-spatial-propagation-curvature/complete.json",
+            "source_commit": "85cb5386ca132818f74d90470d87a252e4a27ea7",
+            "source_sha256": "2a07d83e3322f29990a2f0df75f96740dc5f3d4a92582015075721eebc8dc1b7",
+            "public": {
+              "path": "evidence/physics/low-energy/full-quantum/packet-gauge-spatial-propagation-curvature/complete.json",
+              "sha256": "2a07d83e3322f29990a2f0df75f96740dc5f3d4a92582015075721eebc8dc1b7"
+            },
+            "original_recorded_status": null,
+            "scope": "Original exact source/data/receipt certification; distinct from a new public execution"
+          },
+          {
+            "source_path": "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-spatial-reader-curvature/audit/certification.md",
+            "source_commit": "85cb5386ca132818f74d90470d87a252e4a27ea7",
+            "source_sha256": "25109b06d0e2643772c0251c944fbf3376320048bb8a86858bec94313ce1bce2",
+            "public": {
+              "path": "docs/source/physics/low-energy/full-quantum/packet-gauge-spatial-reader-curvature/audit/certification.md",
+              "sha256": "25109b06d0e2643772c0251c944fbf3376320048bb8a86858bec94313ce1bce2"
+            },
+            "original_recorded_status": null,
+            "scope": "Original exact source/data/receipt certification; distinct from a new public execution"
+          },
+          {
+            "source_path": "Verification/physics/low-energy-phenomenology/full-quantum/packet-window-second-order/audit/certification.md",
+            "source_commit": "85cb5386ca132818f74d90470d87a252e4a27ea7",
+            "source_sha256": "1a05cfc870aae46051e99d7c68be7d71c186781800bc79911269c8f1d7fa98c2",
+            "public": {
+              "path": "docs/source/physics/low-energy/full-quantum/packet-window-second-order/audit/certification.md",
+              "sha256": "1a05cfc870aae46051e99d7c68be7d71c186781800bc79911269c8f1d7fa98c2"
+            },
+            "original_recorded_status": null,
+            "scope": "Original exact source/data/receipt certification; distinct from a new public execution"
+          }
+        ],
+        "full_producer_recalculation": false
       }
     },
     {
@@ -64249,6 +65040,7 @@
         "Verification/physics/low-energy-phenomenology/full-quantum/packet-current-hessian/integrals.py",
         "Verification/physics/low-energy-phenomenology/full-quantum/packet-current-hessian/kernels.py",
         "Verification/physics/low-energy-phenomenology/full-quantum/packet-current-moments/compute.py",
+        "Verification/physics/low-energy-phenomenology/full-quantum/packet-curvature-coefficients/README.md",
         "Verification/physics/low-energy-phenomenology/full-quantum/packet-field/source_data.py",
         "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-causal/causal.json",
         "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-causal/causal.py",
@@ -64258,6 +65050,7 @@
         "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-causal/transfer.py",
         "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-constitutive-reduction/reduction.py",
         "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-constitutive-vertex/vertices.py",
+        "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-cosine-curvature/README.md",
         "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-cosine-curvature/consume.py",
         "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-cosine-curvature/integrals.py",
         "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-cosine-curvature/kernels.py",
@@ -64279,6 +65072,7 @@
         "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-family/source.json",
         "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-family/source.py",
         "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-fixed-section-domain/source.py",
+        "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-global-transfer/README.md",
         "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-global-transfer/source.py",
         "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-joint-causal/algebra.py",
         "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-joint-causal/full-maps.json",
@@ -64321,6 +65115,7 @@
         "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-momentum-domain/domain.json",
         "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-momentum-domain/domain.py",
         "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-momentum-domain/source.py",
+        "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-native-response/README.md",
         "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-native-response/construction.json",
         "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-native-response/response.json",
         "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-native-response/response.log",
@@ -64328,7 +65123,10 @@
         "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-noise/evaluate.py",
         "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-noise/intervals.json",
         "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-noise/selected.py",
+        "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-probe-fourth/README.md",
+        "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-probe-fourth/audit/promotion/README.md",
         "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-probe-fourth/compute.py",
+        "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-probe-laplace/README.md",
         "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-probe-laplace/bounds.py",
         "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-probe-laplace/resolvent.py",
         "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-probe-moments/algebra.py",
@@ -64337,27 +65135,33 @@
         "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-probe-moments/operators.py",
         "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-probe-moments/vectors.py",
         "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-probe-moments/wave.py",
+        "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-projected-source-reader/README.md",
         "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-projected-source-reader/compute.py",
+        "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-radial-window/README.md",
         "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-radial-window/compute.py",
         "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-radial-window/receipt.json",
         "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-reduced-contact/contact.py",
         "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-reduced-current/current.py",
         "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-response/response.json",
         "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-response/response.py",
+        "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-spatial-current/README.md",
         "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-spatial-current/assembly.json",
         "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-spatial-current/assembly.py",
+        "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-spatial-propagation-curvature/README.md",
+        "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-spatial-reader-curvature/README.md",
+        "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-spatial-source-curvature/README.md",
         "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-spatial-source-curvature/compute.py",
+        "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-uniform-spatial-contact/README.md",
         "Verification/physics/low-energy-phenomenology/full-quantum/packet-noise/kernel-audit/check.py",
         "Verification/physics/low-energy-phenomenology/full-quantum/packet-noise/kernel-audit/replay-receipt.json",
         "Verification/physics/low-energy-phenomenology/full-quantum/packet-noise/kernel-audit/replay-summary.md",
         "Verification/physics/low-energy-phenomenology/full-quantum/packet-noise/kernel-audit/replay.log",
-        "Verification/physics/low-energy-phenomenology/full-quantum/packet-seed-regularity/compute.py"
+        "Verification/physics/low-energy-phenomenology/full-quantum/packet-seed-regularity/compute.py",
+        "Verification/physics/low-energy-phenomenology/full-quantum/packet-window-second-order/README.md"
       ],
       "resource_bundles": [],
-      "selection_status": "pending",
-      "pending_source_paths": [
-        "README.md"
-      ],
+      "selection_status": "mapped",
+      "pending_source_paths": [],
       "ambiguous_source_paths": [],
       "pending_bindings": [],
       "commands": [
@@ -64369,6 +65173,240 @@
         "low-energy-q4-materials-t",
         "--output",
         ".local/low-energy-views/low-energy-q4-materials-t-RUN"
+      ],
+      "receipt_resource_resolution": [
+        {
+          "receipt": "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-spatial-propagation-curvature/construction.json",
+          "table": "candidate_sha256",
+          "original_bare_key": "README.md",
+          "resolved_source_path": "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-spatial-propagation-curvature/README.md",
+          "source_sha256": "3f066e61f3dc7b35f80baabe7d18f8752d1d86bf22c9e52b50e3a422956da890",
+          "public_paths": [
+            "docs/source/physics/low-energy/full-quantum/packet-gauge-spatial-propagation-curvature/README.md"
+          ],
+          "resolution": "Unique fixed-Git package ancestor whose original bytes match the signed receipt hash"
+        },
+        {
+          "receipt": "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-native-response/construction.json",
+          "table": "candidate_sha256",
+          "original_bare_key": "README.md",
+          "resolved_source_path": "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-native-response/README.md",
+          "source_sha256": "6c588c07ef64bebf18fdbeeaf56e1f58d98fa3da4a0710ff53c150d603c0562e",
+          "public_paths": [],
+          "resolution": "Unique fixed-Git package ancestor whose original bytes match the signed receipt hash"
+        },
+        {
+          "receipt": "Verification/physics/low-energy-phenomenology/full-quantum/packet-curvature-coefficients/construction.json",
+          "table": "candidate_sha256",
+          "original_bare_key": "README.md",
+          "resolved_source_path": "Verification/physics/low-energy-phenomenology/full-quantum/packet-curvature-coefficients/README.md",
+          "source_sha256": "fef80c3aba309c640d735a248dfcce97eeb5d51d5c0af1888d170e8bf49874f2",
+          "public_paths": [
+            "docs/source/physics/low-energy/full-quantum/packet-curvature-coefficients/README.md"
+          ],
+          "resolution": "Unique fixed-Git package ancestor whose original bytes match the signed receipt hash"
+        },
+        {
+          "receipt": "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-cosine-curvature/construction.json",
+          "table": "candidate_sha256",
+          "original_bare_key": "README.md",
+          "resolved_source_path": "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-cosine-curvature/README.md",
+          "source_sha256": "6d214a15e77345786b54902f8a5c969878ed4f8907aef9b5b8625f4cbdefb38a",
+          "public_paths": [],
+          "resolution": "Unique fixed-Git package ancestor whose original bytes match the signed receipt hash"
+        },
+        {
+          "receipt": "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-cosine/audit/focused.json",
+          "table": "candidate_sha256",
+          "original_bare_key": "README.md",
+          "resolved_source_path": "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-cosine/README.md",
+          "source_sha256": "cd4e5c1794b86a345f77232da2603ca38e4605a928c2e6b53e30c049c283ba18",
+          "public_paths": [
+            "evidence/low-energy-releases/t/full-quantum/packet-gauge-cosine/README.md"
+          ],
+          "resolution": "Unique fixed-Git package ancestor whose original bytes match the signed receipt hash"
+        },
+        {
+          "receipt": "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-global-transfer/construction.json",
+          "table": "candidate_sha256",
+          "original_bare_key": "README.md",
+          "resolved_source_path": "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-global-transfer/README.md",
+          "source_sha256": "656e48dbcbba7269697ab30d5a25f1f592ff92fb0ad31359df352d93a8ee4886",
+          "public_paths": [],
+          "resolution": "Unique fixed-Git package ancestor whose original bytes match the signed receipt hash"
+        },
+        {
+          "receipt": "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-probe-fourth/audit/promotion/construction.json",
+          "table": "candidate_sha256",
+          "original_bare_key": "README.md",
+          "resolved_source_path": "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-probe-fourth/audit/promotion/README.md",
+          "source_sha256": "b3cda52125b4b615bd2b4750e7090725e89bc725fee4182321eb9c0f66bdab4c",
+          "public_paths": [],
+          "resolution": "Unique fixed-Git package ancestor whose original bytes match the signed receipt hash"
+        },
+        {
+          "receipt": "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-probe-fourth/audit/replay.json",
+          "table": "final_candidate_sha256",
+          "original_bare_key": "README.md",
+          "resolved_source_path": "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-probe-fourth/README.md",
+          "source_sha256": "a0d97796a86499d22f403f7e27391db7d41b512bc99fab21b84ce82e27dee316",
+          "public_paths": [],
+          "resolution": "Unique fixed-Git package ancestor whose original bytes match the signed receipt hash"
+        },
+        {
+          "receipt": "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-probe-fourth/construction.json",
+          "table": "candidate_sha256",
+          "original_bare_key": "README.md",
+          "resolved_source_path": "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-probe-fourth/README.md",
+          "source_sha256": "a0d97796a86499d22f403f7e27391db7d41b512bc99fab21b84ce82e27dee316",
+          "public_paths": [],
+          "resolution": "Unique fixed-Git package ancestor whose original bytes match the signed receipt hash"
+        },
+        {
+          "receipt": "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-probe-laplace/construction.json",
+          "table": "candidate_sha256",
+          "original_bare_key": "README.md",
+          "resolved_source_path": "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-probe-laplace/README.md",
+          "source_sha256": "fe23831537b3f2f560a7b6bf0a4c925cef1588a7ad6a709be1ca6ecee5a4c600",
+          "public_paths": [],
+          "resolution": "Unique fixed-Git package ancestor whose original bytes match the signed receipt hash"
+        },
+        {
+          "receipt": "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-projected-source-reader/audit/focused.json",
+          "table": "candidate_sha256",
+          "original_bare_key": "README.md",
+          "resolved_source_path": "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-projected-source-reader/README.md",
+          "source_sha256": "727a3c31acb13ab124de845a2a67a079654fa1c4e1ca2c3a80aa358fb589ca95",
+          "public_paths": [],
+          "resolution": "Unique fixed-Git package ancestor whose original bytes match the signed receipt hash"
+        },
+        {
+          "receipt": "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-projected-source-reader/audit/independent.json",
+          "table": "candidate_sha256",
+          "original_bare_key": "README.md",
+          "resolved_source_path": "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-projected-source-reader/README.md",
+          "source_sha256": "727a3c31acb13ab124de845a2a67a079654fa1c4e1ca2c3a80aa358fb589ca95",
+          "public_paths": [],
+          "resolution": "Unique fixed-Git package ancestor whose original bytes match the signed receipt hash"
+        },
+        {
+          "receipt": "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-projected-source-reader/construction.json",
+          "table": "candidate_sha256",
+          "original_bare_key": "README.md",
+          "resolved_source_path": "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-projected-source-reader/README.md",
+          "source_sha256": "727a3c31acb13ab124de845a2a67a079654fa1c4e1ca2c3a80aa358fb589ca95",
+          "public_paths": [],
+          "resolution": "Unique fixed-Git package ancestor whose original bytes match the signed receipt hash"
+        },
+        {
+          "receipt": "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-radial-window/construction.json",
+          "table": "candidate_sha256",
+          "original_bare_key": "README.md",
+          "resolved_source_path": "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-radial-window/README.md",
+          "source_sha256": "1b27338ec2d4c7087b6133ff6a90ae0bfebab071613f810309792ce426b5c485",
+          "public_paths": [],
+          "resolution": "Unique fixed-Git package ancestor whose original bytes match the signed receipt hash"
+        },
+        {
+          "receipt": "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-spatial-current/audit/focused.json",
+          "table": "candidate_sha256",
+          "original_bare_key": "README.md",
+          "resolved_source_path": "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-spatial-current/README.md",
+          "source_sha256": "71cb21d718de500eacf2f7050304cf733a857e541c672fd477118a95caee01fa",
+          "public_paths": [],
+          "resolution": "Unique fixed-Git package ancestor whose original bytes match the signed receipt hash"
+        },
+        {
+          "receipt": "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-spatial-current/construction.json",
+          "table": "candidate_sha256",
+          "original_bare_key": "README.md",
+          "resolved_source_path": "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-spatial-current/README.md",
+          "source_sha256": "71cb21d718de500eacf2f7050304cf733a857e541c672fd477118a95caee01fa",
+          "public_paths": [],
+          "resolution": "Unique fixed-Git package ancestor whose original bytes match the signed receipt hash"
+        },
+        {
+          "receipt": "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-spatial-reader-curvature/construction.json",
+          "table": "candidate_sha256",
+          "original_bare_key": "README.md",
+          "resolved_source_path": "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-spatial-reader-curvature/README.md",
+          "source_sha256": "ab2f4cb3ec0b7404f3c2a06853537be54c1a96f1642485f8418ad0d692d9e21e",
+          "public_paths": [
+            "docs/source/physics/low-energy/full-quantum/packet-gauge-spatial-reader-curvature/README.md"
+          ],
+          "resolution": "Unique fixed-Git package ancestor whose original bytes match the signed receipt hash"
+        },
+        {
+          "receipt": "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-spatial-source-curvature/audit/focused.json",
+          "table": "candidate_sha256",
+          "original_bare_key": "README.md",
+          "resolved_source_path": "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-spatial-source-curvature/README.md",
+          "source_sha256": "cf154cbe81ebf179093db92629d3c684dee3184507aed936f718a8a3fb862c47",
+          "public_paths": [],
+          "resolution": "Unique fixed-Git package ancestor whose original bytes match the signed receipt hash"
+        },
+        {
+          "receipt": "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-spatial-source-curvature/construction.json",
+          "table": "candidate_sha256",
+          "original_bare_key": "README.md",
+          "resolved_source_path": "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-spatial-source-curvature/README.md",
+          "source_sha256": "cf154cbe81ebf179093db92629d3c684dee3184507aed936f718a8a3fb862c47",
+          "public_paths": [],
+          "resolution": "Unique fixed-Git package ancestor whose original bytes match the signed receipt hash"
+        },
+        {
+          "receipt": "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-uniform-spatial-contact/construction.json",
+          "table": "candidate_sha256",
+          "original_bare_key": "README.md",
+          "resolved_source_path": "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-uniform-spatial-contact/README.md",
+          "source_sha256": "6396cf4e9ef86d447d0deab70ad4f4432a8ee84e2d71ff9d28232bdafa4a90fe",
+          "public_paths": [],
+          "resolution": "Unique fixed-Git package ancestor whose original bytes match the signed receipt hash"
+        },
+        {
+          "receipt": "Verification/physics/low-energy-phenomenology/full-quantum/packet-window-second-order/audit/focused.json",
+          "table": "candidate_sha256",
+          "original_bare_key": "README.md",
+          "resolved_source_path": "Verification/physics/low-energy-phenomenology/full-quantum/packet-window-second-order/README.md",
+          "source_sha256": "0227abbb11dec3552ecc7173094d88e6c89625e01032a15b883c0adda0cb45a8",
+          "public_paths": [
+            "docs/source/physics/low-energy/full-quantum/packet-window-second-order/README.md"
+          ],
+          "resolution": "Unique fixed-Git package ancestor whose original bytes match the signed receipt hash"
+        },
+        {
+          "receipt": "Verification/physics/low-energy-phenomenology/full-quantum/packet-window-second-order/audit/receipt.json",
+          "table": "candidate_sha256",
+          "original_bare_key": "README.md",
+          "resolved_source_path": "Verification/physics/low-energy-phenomenology/full-quantum/packet-window-second-order/README.md",
+          "source_sha256": "0227abbb11dec3552ecc7173094d88e6c89625e01032a15b883c0adda0cb45a8",
+          "public_paths": [
+            "docs/source/physics/low-energy/full-quantum/packet-window-second-order/README.md"
+          ],
+          "resolution": "Unique fixed-Git package ancestor whose original bytes match the signed receipt hash"
+        },
+        {
+          "receipt": "Verification/physics/low-energy-phenomenology/full-quantum/packet-window-second-order/construction.json",
+          "table": "candidate_sha256",
+          "original_bare_key": "README.md",
+          "resolved_source_path": "Verification/physics/low-energy-phenomenology/full-quantum/packet-window-second-order/README.md",
+          "source_sha256": "0227abbb11dec3552ecc7173094d88e6c89625e01032a15b883c0adda0cb45a8",
+          "public_paths": [
+            "docs/source/physics/low-energy/full-quantum/packet-window-second-order/README.md"
+          ],
+          "resolution": "Unique fixed-Git package ancestor whose original bytes match the signed receipt hash"
+        }
+      ],
+      "historical_documentation_bindings": [
+        {
+          "receipt": "Verification/physics/low-energy-phenomenology/full-quantum/packet-band-kernel/audit/receipt.json",
+          "table": "frozen_sha256",
+          "expected_historical_sha256": "7feba018857d5e76a1c36257dcdf99751e59c163398a0b5f5e1f10f56f3d2276",
+          "current_source_path": "Verification/physics/low-energy-phenomenology/full-quantum/packet-band-kernel/README.md",
+          "current_source_sha256": "48caf335bcfedd1531591f50ee61027c944ab88728ac130560029d89f5a0d270",
+          "scope": "Original frozen documentation hash retained as receipt history. The actual check.py reads HERE.parent/README.md and compares fresh before/after hashes; it does not assert this old receipt hash as a current runtime premise.",
+          "source_authority": "Verification/physics/low-energy-phenomenology/full-quantum/packet-band-kernel/audit/check.py:291-307"
+        }
       ]
     },
     "low-energy-q6-source-unit-3bbcbd59": {
@@ -79686,6 +80724,7 @@
         "Verification/physics/low-energy-phenomenology/active-gauge/propagation.py",
         "Verification/physics/low-energy-phenomenology/active-gauge/quotient-audit/certification.md",
         "Verification/physics/low-energy-phenomenology/active-gauge/quotient.json",
+        "Verification/physics/low-energy-phenomenology/active-gauge/receipt.json",
         "Verification/physics/low-energy-phenomenology/active-gauge/rotation/audit/certification.md",
         "Verification/physics/low-energy-phenomenology/active-gauge/rotation/catalog.py",
         "Verification/physics/low-energy-phenomenology/active-gauge/rotation/finite.json",
@@ -79715,6 +80754,7 @@
         "Verification/physics/low-energy-phenomenology/exact_readout.py",
         "Verification/physics/low-energy-phenomenology/fermion-two-particle/audit/certification.md",
         "Verification/physics/low-energy-phenomenology/full-phase/audit/certification.md",
+        "Verification/physics/low-energy-phenomenology/full-phase/receipt.json",
         "Verification/physics/low-energy-phenomenology/initial-variation/certification.md",
         "Verification/physics/low-energy-phenomenology/kinetic-residue/audit/certification.md",
         "Verification/physics/low-energy-phenomenology/kinetic-residue/audit/independent-receipt.json",
@@ -79734,6 +80774,7 @@
         "Verification/physics/low-energy-phenomenology/matter-vertices/compute.py",
         "Verification/physics/low-energy-phenomenology/matter-vertices/exchange.json",
         "Verification/physics/low-energy-phenomenology/matter-vertices/exchange.py",
+        "Verification/physics/low-energy-phenomenology/matter-vertices/receipt.json",
         "Verification/physics/low-energy-phenomenology/metric-response/audit/certification.md",
         "Verification/physics/low-energy-phenomenology/metric-response/audit/independent-receipt.json",
         "Verification/physics/low-energy-phenomenology/metric-response/audit/independent_check.py",
@@ -79807,42 +80848,10 @@
         "Verification/physics/low-energy-phenomenology/weak-exchange/spatial/receipt.json"
       ],
       "resource_bundles": [],
-      "selection_status": "pending",
+      "selection_status": "mapped",
       "pending_source_paths": [],
-      "ambiguous_source_paths": [
-        "Verification/physics/low-energy-phenomenology/active-gauge/receipt.json",
-        "Verification/physics/low-energy-phenomenology/full-phase/receipt.json",
-        "Verification/physics/low-energy-phenomenology/matter-vertices/receipt.json"
-      ],
-      "pending_bindings": [
-        {
-          "source_path": "Verification/physics/low-energy-phenomenology/active-gauge/receipt.json",
-          "reason": "ambiguous_export_rows",
-          "candidate_count": 2,
-          "same_byte_rows_at_other_epochs": [
-            "evidence/physics/low-energy/active-gauge/receipt.json",
-            "evidence/physics/low-energy/shared/active-gauge/receipt.json"
-          ]
-        },
-        {
-          "source_path": "Verification/physics/low-energy-phenomenology/full-phase/receipt.json",
-          "reason": "ambiguous_export_rows",
-          "candidate_count": 2,
-          "same_byte_rows_at_other_epochs": [
-            "evidence/physics/low-energy/full-phase/receipt.json",
-            "evidence/physics/low-energy/shared/full-phase/receipt.json"
-          ]
-        },
-        {
-          "source_path": "Verification/physics/low-energy-phenomenology/matter-vertices/receipt.json",
-          "reason": "ambiguous_export_rows",
-          "candidate_count": 2,
-          "same_byte_rows_at_other_epochs": [
-            "evidence/physics/low-energy/matter-vertices/receipt.json",
-            "evidence/physics/low-energy/shared/matter-vertices/receipt.json"
-          ]
-        }
-      ],
+      "ambiguous_source_paths": [],
+      "pending_bindings": [],
       "commands": [
         "python3",
         "tools/edition_materials.py",
@@ -79937,13 +80946,67 @@
         "--output",
         ".local/low-energy-views/low-energy-history-c688c8f7-RUN"
       ]
+    },
+    "low-energy-q4-receipt-readmes-t": {
+      "source_commit": "85cb5386ca132818f74d90470d87a252e4a27ea7",
+      "paths": [
+        "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-cosine-curvature/README.md",
+        "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-global-transfer/README.md",
+        "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-native-response/README.md",
+        "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-probe-fourth/README.md",
+        "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-probe-fourth/audit/promotion/README.md",
+        "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-probe-laplace/README.md",
+        "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-projected-source-reader/README.md",
+        "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-radial-window/README.md",
+        "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-spatial-current/README.md",
+        "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-spatial-source-curvature/README.md",
+        "Verification/physics/low-energy-phenomenology/full-quantum/packet-gauge-uniform-spatial-contact/README.md"
+      ],
+      "resource_bundles": [],
+      "selection_status": "mapped",
+      "pending_source_paths": [],
+      "ambiguous_source_paths": [],
+      "pending_bindings": [],
+      "commands": [
+        "python3",
+        "tools/edition_materials.py",
+        "--edition",
+        "low-energy",
+        "--view",
+        "low-energy-q4-receipt-readmes-t",
+        "--output",
+        ".local/low-energy-views/low-energy-q4-receipt-readmes-t-RUN"
+      ]
+    },
+    "low-energy-s-scientific-receipts": {
+      "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+      "paths": [
+        "Verification/physics/low-energy-phenomenology/active-gauge/rotation/quotient-transport.json",
+        "Verification/physics/low-energy-phenomenology/canonical-peripheral/phase-match.json"
+      ],
+      "resource_bundles": [],
+      "selection_status": "mapped",
+      "pending_source_paths": [],
+      "ambiguous_source_paths": [],
+      "pending_bindings": [],
+      "commands": [
+        "python3",
+        "tools/edition_materials.py",
+        "--edition",
+        "low-energy",
+        "--view",
+        "low-energy-s-scientific-receipts",
+        "--output",
+        ".local/low-energy-views/low-energy-s-scientific-receipts-RUN"
+      ]
     }
   },
   "acceptance": {
     "source_identity": "bound only to actual registered source/target rows",
     "kernel": "pending",
-    "scientific_execution": "Original history separate from any new public replay",
-    "new_public_acceptance_commit": null
+    "scientific_execution": "5 actual original consumers plus 8 fixed original certification scopes; no new producer research.",
+    "new_public_acceptance_commit": null,
+    "source_material_commit": "53fd2a31c9ddd2c5fc2f8a2fd83e17bec5833c5e"
   },
   "inheritance": {
     "low1_S_base_source_bytes": {
@@ -79956,6 +81019,6 @@
   },
   "generator_identity": {
     "mode": "final-export-map",
-    "export_record_sha256": "6137af5c1ee19ef986ffc73caa7c5d3a863e5b90051bc8db59a99cea6be75bdd"
+    "export_record_sha256": "19a80acb275350c7276c15dcd4e6c5c82b653f73c8211814eef0aa61db6b417b"
   }
 }

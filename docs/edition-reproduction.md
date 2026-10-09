@@ -58,6 +58,6 @@ python3 tools/edition_materials.py --edition low-energy --view low-energy-l26-ac
 
 ## 历史来源与兼容
 
-核心 PR／C62 的历史 `InventoryTransport.born_kernel_member` 有已定位的 rewrite 失败。选集采用收稿上限前的纯证明修正，类型和前提保持；`source_origin`登记补充提交与原 SHA，独立原失败源码和失败运行仍可查。低能 S/base 同字节关系限定于本轮实际选定源，按每个导出记录的 `source_revisions`核验。
+核心 PR／C62 的历史 `InventoryTransport.born_kernel_member` 采用收稿上限前的纯证明修正。H0 另外修正了实际 receiver 的付费证明、泛型环境输入合同及有限配置的实际计算 reader 接线；定义变化与纯证明补充分别登记。原源码、原失败、本次实际构建与声明审查保持各自身份，详情见[环境与计算合同](source-action-environment.md)及映射中的 `source_origin`。低能 S/base 同字节关系限定于本轮实际选定源，按每个导出记录的 `source_revisions`核验。
 
 第一版成品、60 条主张、原命令和冻结结果继续使用[首发复现指南](first-release-reproduction.md)。CI 新模块追加到独立阶段；旧模块、资源、库强选项与分片身份的实际保留结果由准备状态链接的回执记录。

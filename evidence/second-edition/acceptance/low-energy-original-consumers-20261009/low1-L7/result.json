@@ -1,0 +1,50 @@
+{
+  "schema": "h0mework/low-energy-original-consumer-check@1",
+  "claim_id": "low1.L7",
+  "runs": [
+    {
+      "command": [
+        "/opt/homebrew/opt/python@3.12/bin/python3.12",
+        "tools/source_view.py",
+        "--output",
+        ".local/second-edition-20261009/low-energy-l7-original-consumer-run/view",
+        "--at",
+        "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+        "--path",
+        "Verification/physics/low-energy-phenomenology/canonical-peripheral/phase_match.py",
+        "--path",
+        "Verification/physics/low-energy-phenomenology/full-phase/receipt.json",
+        "--path",
+        "Verification/physics/low-energy-phenomenology/canonical-peripheral/generator.json",
+        "--path",
+        "Verification/physics/low-energy-phenomenology/canonical-peripheral/phase-match.json"
+      ],
+      "exit_code": 0,
+      "seconds": 0.31902783300029114,
+      "log": ".local/second-edition-20261009/low-energy-l7-original-consumer-run/0.log"
+    },
+    {
+      "command": [
+        ".local/venv/bin/python",
+        ".local/second-edition-20261009/low-energy-l7-original-consumer-run/view/Verification/physics/low-energy-phenomenology/canonical-peripheral/phase_match.py",
+        "--phase",
+        "Verification/physics/low-energy-phenomenology/full-phase/receipt.json",
+        "--generator",
+        "Verification/physics/low-energy-phenomenology/canonical-peripheral/generator.json",
+        "--out",
+        ".local/second-edition-20261009/low-energy-l7-original-consumer-run/fresh.json"
+      ],
+      "exit_code": 0,
+      "seconds": 1.9685315829701722,
+      "log": ".local/second-edition-20261009/low-energy-l7-original-consumer-run/1.log"
+    }
+  ],
+  "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+  "producer_execution": false,
+  "original_receipt_fields_equal": true,
+  "scientific_scope": "Original fixed full-phase/peripheral temporal/spatial/scalar coefficients",
+  "status": "passed",
+  "original_receipt_matches_public_bytes": true,
+  "original_receipt_source_sha256": "6f0dd9d5adb0b04355db7416baa39a0dafc02b275c2c1232ea4ade88eaa73000",
+  "comparison_source": "Exact original fixed-Git receipt and its byte-identical public artifact; this receipt lacked the S compatibility label and was not copied into the initial S view."
+}

@@ -1,0 +1,61 @@
+{
+  "schema": "h0mework/low-energy-original-consumer-check@1",
+  "claim_id": "low1.L6",
+  "runs": [
+    {
+      "command": [
+        "/opt/homebrew/opt/python@3.12/bin/python3.12",
+        "tools/source_view.py",
+        "--output",
+        ".local/second-edition-20261009/low-energy-l6-original-consumer-repaired-run/view",
+        "--at",
+        "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+        "--path",
+        "Verification/physics/low-energy-phenomenology/active-gauge/rotation/quotient_transport.py",
+        "--path",
+        "Verification/physics/low-energy-phenomenology/active-gauge/rotation/finite.py",
+        "--path",
+        "Verification/physics/low-energy-phenomenology/active-gauge/compute.py",
+        "--path",
+        "Verification/physics/low-energy-phenomenology/exact_readout.py",
+        "--path",
+        "Verification/physics/low-energy-phenomenology/nonlinear-contact/slice_checks.py",
+        "--path",
+        "Verification/physics/low-energy-phenomenology/active-sector/compute.py",
+        "--path",
+        "Verification/physics/low-energy-phenomenology/active-gauge/symmetries.json",
+        "--path",
+        "Verification/physics/low-energy-phenomenology/active-gauge/receipt.json",
+        "--path",
+        "Verification/physics/low-energy-phenomenology/active-gauge/rotation/finite.json"
+      ],
+      "exit_code": 0,
+      "seconds": 1.1145839579985477,
+      "log": ".local/second-edition-20261009/low-energy-l6-original-consumer-repaired-run/0.log"
+    },
+    {
+      "command": [
+        ".local/venv/bin/python",
+        ".local/second-edition-20261009/low-energy-l6-original-consumer-repaired-run/view/Verification/physics/low-energy-phenomenology/active-gauge/rotation/quotient_transport.py",
+        "--symmetries",
+        "Verification/physics/low-energy-phenomenology/active-gauge/symmetries.json",
+        "--receipt",
+        "Verification/physics/low-energy-phenomenology/active-gauge/receipt.json",
+        "--finite",
+        "Verification/physics/low-energy-phenomenology/active-gauge/rotation/finite.json",
+        "--out",
+        ".local/second-edition-20261009/low-energy-l6-original-consumer-repaired-run/fresh.json"
+      ],
+      "exit_code": 0,
+      "seconds": 6.414364499971271,
+      "log": ".local/second-edition-20261009/low-energy-l6-original-consumer-repaired-run/1.log"
+    }
+  ],
+  "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+  "producer_execution": false,
+  "original_receipt_fields_equal": true,
+  "original_receipt_matches_public_bytes": true,
+  "original_receipt_source_sha256": "cbe86397b52b99bf0bf29db388f7f66f531dcc7105cc3a3b8616a6dda44907ce",
+  "scientific_scope": "Original finite polynomial transport of stored 112 quotient and nine source symmetry images, importing producer definitions without executing the producer",
+  "status": "passed"
+}

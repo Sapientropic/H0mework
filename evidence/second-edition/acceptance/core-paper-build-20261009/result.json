@@ -1,0 +1,629 @@
+{
+  "schema": "h0mework/first-release-build@1",
+  "kind": "build",
+  "ok": true,
+  "input_identity": {
+    "sha256": {
+      "claim_map": "adc862c99fb83cd19f6bd7e76f9adda092559018ebfec6941b54e314507e1cc2",
+      "export_map": "65fde8533a1f837a7b3dbb581401d796f87b28ceed492ff7adb0be41ccdfd3ff",
+      "lakefile": "41659610733e6ae72a3e552a4d2ebee719916ebf29f5c7240ac244749ef26b7f",
+      "toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+      "manifest": "2fe02acc26899fd57d82018e711e79c251e26d0b6d2bb370af81db0ed312fbfd"
+    },
+    "package_inputs": {
+      "v2-core-action-reader": "86c10316587550d1ad1bbbaae1f98e8bae7f8bf3a2bb669c78a425907131713b",
+      "v2-core-difference-feedback": "7c2d202c7b94c329d2ff80ba2b78b28f6c14db2b71dee06af8c1fd6b7d380745",
+      "v2-core-completion": "b6a7e0340474ad8ad4bdbff1b4d6728a3d609330605ead7745943a0988a2c6fb",
+      "v2-core-full-stock": "85244d68ecc8dfe2a24a2140c39b15ce5da1a6d35f74ed51c4c8c24a81d014f4",
+      "v2-core-runtime-calculation": "c4f55cab577948aff72afbdafdbea94b9c328f2ddf529fc08015b1d8ab880602"
+    }
+  },
+  "settings": {
+    "toolchain_pin": "leanprover/lean4:v4.33.0",
+    "package_moreLeanArgs": [
+      "--trust=0",
+      "-Dweak.linter.unnecessarySimpa=false",
+      "-Dweak.linter.style.haveILetI=false",
+      "-Dweak.linter.unusedSimpArgs=false"
+    ],
+    "package_weakLeanArgs": [
+      "-DmaxHeartbeats=2000000",
+      "-Dweak.linter.unusedSectionVars=false",
+      "-Dweak.linter.unnecessarySeqFocus=false",
+      "-Dweak.linter.unusedVariables=false",
+      "-Dweak.linter.unreachableTactic=false",
+      "-Dweak.linter.unusedTactic=false",
+      "-Dweak.linter.defProp=false",
+      "-Dweak.linter.deprecated=false",
+      "-Dlinter.deprecated=false",
+      "-Dweak.linter.tacticAnalysis.introMerge=false",
+      "-Dweak.linter.constructorNameAsVariable=false"
+    ],
+    "libraries": [
+      {
+        "name": "H0mework",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_15a9a7f1af9edd94",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_3606f5269412e357",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_d700e8a5f12a0c72",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_1e1ae4b55cfaa424",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_5d60190f8c552243",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_c8f26eb536eba11f",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_05819243d0f03058",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_42d0393dda443953",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_662d860139605627",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_c5ce7c98c6fb2afe",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_4306926d26d3e100",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_524380564da88277",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_598bc2100d4a470f",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_f16f09d592d9fed1",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_38dd326bee1881e5",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_a5be13c98d55de59",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_a8ba570880d786e7",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_e94628c12cb5af16",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_e615fc1eae897d2f",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_3ec8ead604397acb",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_f3b844eed8451357",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_fb8213f28d86d220",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_343b97a439466c84",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_e7aebe388314d626",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_5ee63fcc1d2eabc2",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_048d35b0f13ffddc",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_8a02641b81044b03",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_efa122af6a18f938",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "H0meworkRelaxed",
+        "moreLeanArgs": []
+      },
+      {
+        "name": "H0meworkPinned",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      }
+    ]
+  },
+  "identity_scope": {
+    "packages": [
+      "v2-core-action-reader",
+      "v2-core-difference-feedback",
+      "v2-core-completion",
+      "v2-core-full-stock",
+      "v2-core-runtime-calculation"
+    ],
+    "proof_entries": 61
+  },
+  "cache": {
+    "kind": "existing_workspace_cache",
+    "clean_clone": false,
+    "build_directory_preexisted": true,
+    "lean_num_threads": "8",
+    "compiled_targets_before": {
+      "H0mework.Papers.V2CoreActionReader": "9da016ede87ab0e1fae3784f6715d215b32e7091c99eddd3886446efd31310d9",
+      "H0mework.Papers.V2CoreDifferenceFeedback": null,
+      "H0mework.Papers.V2CoreCompletion": "cef8946d0088e7561922bd27fd7c352a2ebe4dde652c0d0d26b25530f69d9c9b",
+      "H0mework.Papers.V2CoreFullStock": "80f64be012db62529bb6d91265eee799b17897b916c09224ee9c4f78cfff7a26",
+      "H0mework.Papers.V2CoreRuntimeCalculation": "6bf388210e1ad49b3ef7e347356abdc2810d815256bfde79987393b8e5c15b15"
+    }
+  },
+  "packages": [
+    {
+      "id": "v2-core-action-reader",
+      "paper": "source-process-core",
+      "source_commit": "e05558097256e86b537c019c8ca63cd449d6b2d2",
+      "lean_target": "H0mework.Papers.V2CoreActionReader",
+      "claim_ids": [
+        "core.C35",
+        "core.C36"
+      ],
+      "commands": {
+        "build": "python3 tools/edition_release.py --edition second build --package v2-core-action-reader --output .local/second-edition-runs/<new>/build",
+        "trust": "python3 tools/edition_release.py --edition second trust --package v2-core-action-reader --output .local/second-edition-runs/<new>/trust"
+      },
+      "source_supplements": [
+        {
+          "public_path": "Lean/H0mework/Versions/PR/Realization/Operations/Inquiry/Context/Faces/Execution/Activation/Inventory/Pair/Residual/Joint/Past/InventoryTransport.lean",
+          "source_sha256": "82aa734b69587af0bf28063d342c870aecc874958c72d3039562b21b3de5e499",
+          "target_sha256": "075a214c68eeea86f548a87b26e412a80569937a13bb97bb81a12304505316f6",
+          "source_origin": {
+            "dependency_epoch": "e05558097256e86b537c019c8ca63cd449d6b2d2",
+            "kind": "committed-proof-only-source-supplement",
+            "original_source_sha256": "ec0e21ea7fdcac684c226658ff09a2426abb6ffa5a23a0d01a64eb8475619daa",
+            "reason": "Committed Eq.mpr/congrArg proof replaces a historical rewrite transparency failure; declaration types and premises retained.",
+            "source_commit": "87735dd9a2d5dd9d0b4693f5721bfd803030f170",
+            "source_path": "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Inventory/Pair/Residual/Joint/Past/InventoryTransport.lean"
+          },
+          "original_failure_receipt": "evidence/second-edition/acceptance/core-build-failure-20261009/result.json",
+          "original_source_archive": "docs/source/second-edition/core/historical/InventoryTransport-e0555809.lean"
+        },
+        {
+          "public_path": "Lean/H0mework/Versions/PR/Realization/Operations/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/SourceFamily/Effect/Payment.lean",
+          "source_sha256": "98ee38adc3bd17717a09909210e71bf04bd8f08c61ddcae12d6e756a6b3cc100",
+          "target_sha256": "a8e0cc11de09e2dcac88b89b8bcf0d4d9d31a8e8f8b886bbaa22e55a53c46807",
+          "source_origin": {
+            "kind": "H0-proof-elaboration-only-supplement",
+            "source_repository": "https://github.com/Sapientropic/H0mework.git",
+            "source_commit": "dd60317f95f03945142c5f70c11e60d50d350889",
+            "source_path": "docs/source/second-edition/core/supplements/EffectPayment-e0555809.lean",
+            "dependency_epoch": "e05558097256e86b537c019c8ca63cd449d6b2d2",
+            "original_source_path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/SourceFamily/Effect/Payment.lean",
+            "original_source_commit": "e05558097256e86b537c019c8ca63cd449d6b2d2",
+            "original_source_sha256": "304e5802c31fb1074966aa15e88320673fee44d67eb1be7f5e4c4449f7a270b7",
+            "original_failure_source_artifact": "docs/source/second-edition/core/historical/EffectPayment-e0555809.lean",
+            "edit_scope": "Proof commands only; statements, premises and all data definitions are byte-identical.",
+            "focused_build_log": ".local/second-edition-20261009/core-elaboration-repair-focus.log"
+          }
+        }
+      ]
+    },
+    {
+      "id": "v2-core-difference-feedback",
+      "paper": "source-process-core",
+      "source_commit": "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46",
+      "lean_target": "H0mework.Papers.V2CoreDifferenceFeedback",
+      "claim_ids": [
+        "core.C37",
+        "core.C38"
+      ],
+      "commands": {
+        "build": "python3 tools/edition_release.py --edition second build --package v2-core-difference-feedback --output .local/second-edition-runs/<new>/build",
+        "trust": "python3 tools/edition_release.py --edition second trust --package v2-core-difference-feedback --output .local/second-edition-runs/<new>/trust"
+      },
+      "source_supplements": [
+        {
+          "public_path": "Lean/H0mework/Versions/C62/Realization/Operations/Inquiry/Context/Faces/Execution/Activation/Inventory/Pair/Residual/Joint/Past/InventoryTransport.lean",
+          "source_sha256": "82aa734b69587af0bf28063d342c870aecc874958c72d3039562b21b3de5e499",
+          "target_sha256": "075a214c68eeea86f548a87b26e412a80569937a13bb97bb81a12304505316f6",
+          "source_origin": {
+            "dependency_epoch": "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46",
+            "kind": "committed-proof-only-source-supplement",
+            "original_source_sha256": "ec0e21ea7fdcac684c226658ff09a2426abb6ffa5a23a0d01a64eb8475619daa",
+            "reason": "Committed Eq.mpr/congrArg proof replaces a historical rewrite transparency failure; declaration types and premises retained.",
+            "source_commit": "87735dd9a2d5dd9d0b4693f5721bfd803030f170",
+            "source_path": "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Inventory/Pair/Residual/Joint/Past/InventoryTransport.lean"
+          },
+          "original_failure_receipt": "evidence/second-edition/acceptance/core-build-failure-20261009/result.json",
+          "original_source_archive": "docs/source/second-edition/core/historical/InventoryTransport-e0555809.lean"
+        },
+        {
+          "public_path": "Lean/H0mework/Versions/C62/Realization/Operations/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/Future/Actual.lean",
+          "source_sha256": "4a1b6fd48226a942408d0cc8531db0cc5a94a51f0fe0c07a02297895c3f51755",
+          "target_sha256": "324798a0ca8483ba165592e7ab6c49317f2dd691cd854c066e9a33a7571d006c",
+          "source_origin": {
+            "kind": "H0-proof-elaboration-only-supplement",
+            "source_repository": "https://github.com/Sapientropic/H0mework.git",
+            "source_commit": "dd60317f95f03945142c5f70c11e60d50d350889",
+            "source_path": "docs/source/second-edition/core/supplements/FutureActual-c62f3d25.lean",
+            "dependency_epoch": "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46",
+            "original_source_path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/Future/Actual.lean",
+            "original_source_commit": "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46",
+            "original_source_sha256": "e3360786c0b3afa39b2f7fd2dffe09eaf58e3e34e465b72a32df6160d6b6a243",
+            "original_failure_source_artifact": "docs/source/second-edition/core/historical/FutureActual-c62f3d25.lean",
+            "edit_scope": "Proof commands only; statements, premises and all data definitions are byte-identical.",
+            "focused_build_log": ".local/second-edition-20261009/core-elaboration-repair-focus.log"
+          }
+        },
+        {
+          "public_path": "Lean/H0mework/Versions/C62/Realization/Operations/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/SourceFamily/Effect/Payment.lean",
+          "source_sha256": "98ee38adc3bd17717a09909210e71bf04bd8f08c61ddcae12d6e756a6b3cc100",
+          "target_sha256": "10ed3676ab28a3e8a509e3588c358667a99534dec6d0b0f86da19295de0e01ba",
+          "source_origin": {
+            "kind": "H0-proof-elaboration-only-supplement",
+            "source_repository": "https://github.com/Sapientropic/H0mework.git",
+            "source_commit": "dd60317f95f03945142c5f70c11e60d50d350889",
+            "source_path": "docs/source/second-edition/core/supplements/EffectPayment-c62f3d25.lean",
+            "dependency_epoch": "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46",
+            "original_source_path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/SourceFamily/Effect/Payment.lean",
+            "original_source_commit": "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46",
+            "original_source_sha256": "304e5802c31fb1074966aa15e88320673fee44d67eb1be7f5e4c4449f7a270b7",
+            "original_failure_source_artifact": "docs/source/second-edition/core/historical/EffectPayment-c62f3d25.lean",
+            "edit_scope": "Proof commands only; statements, premises and all data definitions are byte-identical.",
+            "focused_build_log": ".local/second-edition-20261009/core-elaboration-repair-focus.log"
+          }
+        },
+        {
+          "public_path": "Lean/H0mework/Versions/C62/Realization/Operations/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/SourceFamily/Effect/Installed.lean",
+          "source_sha256": "d1dcc63ce0131ec1ad1f3e0ff11ee5b246d051cb3093a649d978835b56c0fcbd",
+          "target_sha256": "c100b2ba1bf58481c1257512c50cc8f7eb69526258004f757719383455b67d07",
+          "source_origin": {
+            "kind": "H0-proof-elaboration-only-supplement",
+            "source_repository": "https://github.com/Sapientropic/H0mework.git",
+            "source_commit": "4c2f8c5ccb1c2601849b5f414410625c7d36c6b5",
+            "source_path": "docs/source/second-edition/core/supplements/EffectInstalled-c62f3d25.lean",
+            "dependency_epoch": "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46",
+            "original_source_path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/SourceFamily/Effect/Installed.lean",
+            "original_source_commit": "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46",
+            "original_source_sha256": "53108308b611565e86f43a84111bd7187dad60f05568848f2b915bb4ee4be02e",
+            "original_failure_source_artifact": "docs/source/second-edition/core/historical/EffectInstalled-c62f3d25.lean",
+            "edit_scope": "Private proof lemma and proof commands only; all original public statements, premises and data definitions are byte-identical. The actual residual request pays two AST nodes; its first paid step leaves a positive receiver budget, independently of an optional calculation reader.",
+            "focused_build_log": ".local/second-edition-20261009/installed-proof-probe/lean.log"
+          }
+        },
+        {
+          "public_path": "Lean/H0mework/Versions/C62/Realization/Operations/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/SourceFamily/Effect/Environment.lean",
+          "source_sha256": "a55cf5326dd69529af15954a07e71d44cc3b5ddf92c44b67c960d2212b29fec6",
+          "target_sha256": "238f2659388d6da3e54de6bb78842d666a66f0a6b1b917f4eb89bd77ea0ec3c4",
+          "source_origin": {
+            "kind": "H0-source-action-environment-contract-repair",
+            "source_repository": "https://github.com/Sapientropic/H0mework.git",
+            "source_commit": "06fe5ede76de8954633cdae179feafd9e482b359",
+            "source_path": "docs/source/second-edition/core/supplements/ActualNativeEnvironment-c62f3d25.lean",
+            "dependency_epoch": "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46",
+            "original_source_path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/SourceFamily/Effect/Environment.lean",
+            "original_source_commit": "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46",
+            "original_source_sha256": "de109ae75696572b4858097fb0221c8093fb1afef8ed55a70b1b7482a5d46030",
+            "original_failure_source_artifact": "docs/source/second-edition/core/historical/ActualNativeEnvironment-c62f3d25.lean",
+            "edit_scope": "Proof commands and the produced factory environment argument only; all original public statements, premises and data definitions are byte-identical. The actual source-action environment contract is discharged by the factory producer.",
+            "focused_build_log": ".local/second-edition-20261009/generated-environment-probe/focused-build-2.log"
+          }
+        },
+        {
+          "public_path": "Lean/H0mework/Versions/C62/Realization/Operations/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/SourceFamily/Effect/Environment/Generated.lean",
+          "source_sha256": "c356429a6006d3db72ec7825c65d8c413efb2548d1685068e1a82b2b8892f5ae",
+          "target_sha256": "c34e7c4c495d22afbc2ea95dfc95ccab4907cebceed23d723f85b3ce4055fbef",
+          "source_origin": {
+            "kind": "H0-source-action-environment-contract-repair",
+            "source_repository": "https://github.com/Sapientropic/H0mework.git",
+            "source_commit": "06fe5ede76de8954633cdae179feafd9e482b359",
+            "source_path": "docs/source/second-edition/core/supplements/GeneratedEnvironment-c62f3d25.lean",
+            "dependency_epoch": "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46",
+            "original_source_path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/SourceFamily/Effect/Environment/Generated.lean",
+            "original_source_commit": "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46",
+            "original_source_sha256": "332f72f9ae404f2d39223dc637b45ba9184f1f9a640a7d33db58ac4c61f2533c",
+            "original_failure_source_artifact": "docs/source/second-edition/core/historical/GeneratedEnvironment-c62f3d25.lean",
+            "edit_scope": "All original data definitions are unchanged. Three previously unconstrained generic environment lemmas now require actionReader environment preservation as an input-source contract; the actual factory produces this contract. The failed unconstrained original statements are retained separately.",
+            "focused_build_log": ".local/second-edition-20261009/generated-environment-probe/focused-build-2.log"
+          }
+        },
+        {
+          "public_path": "Lean/H0mework/Versions/C62/Realization/Operations/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/SourceFamily/Foresight/Contextual/Factory.lean",
+          "source_sha256": "9e0f382d9fc3944fa730a719246b72bc4a27325177fb97fbbff0003715cfe4ce",
+          "target_sha256": "89661cd599595899fdf5c4508ec0e07ae3a63893314ef8a8bdf1d4bb13b9dffb",
+          "source_origin": {
+            "kind": "H0-source-action-environment-contract-repair",
+            "source_repository": "https://github.com/Sapientropic/H0mework.git",
+            "source_commit": "06fe5ede76de8954633cdae179feafd9e482b359",
+            "source_path": "docs/source/second-edition/core/supplements/ContextualFactory-c62f3d25.lean",
+            "dependency_epoch": "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46",
+            "original_source_path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/SourceFamily/Foresight/Contextual/Factory.lean",
+            "original_source_commit": "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46",
+            "original_source_sha256": "72914d6c56df4c303cfd61d5bb2893a7982a1223e08eb94bcfd910bbaff69e15",
+            "original_failure_source_artifact": "docs/source/second-edition/core/historical/ContextualFactory-c62f3d25.lean",
+            "edit_scope": "All original declarations and data definitions are unchanged. Added factory_action_environment, proved by the actual Incoming none/some construction for every occurrence, preserves the original reader environment while allowing independent calculation syntax.",
+            "focused_build_log": ".local/second-edition-20261009/generated-environment-probe/focused-build-2.log"
+          }
+        },
+        {
+          "public_path": "Lean/H0mework/Versions/C62/Realization/Operations/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/SourceFamily/Foresight/Contextual/Profile/ActiveClaim/Environment.lean",
+          "source_sha256": "524b3dee5605bddcf8f239fabf1e8b55d63320fa8ccb5187bdfbf1d3204a6b4e",
+          "target_sha256": "74d57e5966c42833e9e2b669e15ad28421cd2de6fde123b64d5c7ae58393770d",
+          "source_origin": {
+            "kind": "H0-source-action-environment-contract-repair",
+            "source_repository": "https://github.com/Sapientropic/H0mework.git",
+            "source_commit": "06fe5ede76de8954633cdae179feafd9e482b359",
+            "source_path": "docs/source/second-edition/core/supplements/ActiveClaimEnvironment-c62f3d25.lean",
+            "dependency_epoch": "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46",
+            "original_source_path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/SourceFamily/Foresight/Contextual/Profile/ActiveClaim/Environment.lean",
+            "original_source_commit": "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46",
+            "original_source_sha256": "956c977e49544d79d0ba5f64db8ffc23921d75dacfcefbe594fe9b39e03106df",
+            "original_failure_source_artifact": "docs/source/second-edition/core/historical/ActiveClaimEnvironment-c62f3d25.lean",
+            "edit_scope": "Proof commands and the produced factory environment argument only; all original public statements, premises and data definitions are byte-identical. The actual source-action environment contract is discharged by the factory producer.",
+            "focused_build_log": ".local/second-edition-20261009/generated-environment-probe/focused-build-2.log"
+          }
+        },
+        {
+          "public_path": "Lean/H0mework/Versions/C62/Realization/Operations/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/SourceFamily/Foresight/Contextual/Profile/Erasure.lean",
+          "source_sha256": "849e14a38989433c180ef619e46245127c657e715f1c288ae71ed21f6b085a16",
+          "target_sha256": "3c884554f03ddc137d59f74f4e6309ce01fcd050b690808539a56fa672a16098",
+          "source_origin": {
+            "kind": "H0-source-action-environment-contract-repair",
+            "source_repository": "https://github.com/Sapientropic/H0mework.git",
+            "source_commit": "06fe5ede76de8954633cdae179feafd9e482b359",
+            "source_path": "docs/source/second-edition/core/supplements/EnvironmentErasure-c62f3d25.lean",
+            "dependency_epoch": "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46",
+            "original_source_path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/SourceFamily/Foresight/Contextual/Profile/Erasure.lean",
+            "original_source_commit": "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46",
+            "original_source_sha256": "cec2be6a7a097e8a5d6402412bedf42eb2cbce12b7c16f71051cd49d00c71634",
+            "original_failure_source_artifact": "docs/source/second-edition/core/historical/EnvironmentErasure-c62f3d25.lean",
+            "edit_scope": "Proof commands and the produced factory environment argument only; all original public statements, premises and data definitions are byte-identical. The actual source-action environment contract is discharged by the factory producer.",
+            "focused_build_log": ".local/second-edition-20261009/generated-environment-probe/focused-build-2.log"
+          }
+        },
+        {
+          "public_path": "Lean/H0mework/Versions/C62/Realization/Operations/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/SourceFamily/Foresight/Contextual/Profile/Finite/Reader/Difference/Incoming.lean",
+          "source_sha256": "646ae7ac110cc1015ab16c4dffa6b70195bb0bd101c9415641c06162b5b5de67",
+          "target_sha256": "622e85a6dcc75f0c92cd14fe07c28531c2ffd07b6a411bfbc8979e09931c0721",
+          "source_origin": {
+            "kind": "H0-finite-calculation-source-identity-repair",
+            "source_repository": "https://github.com/Sapientropic/H0mework.git",
+            "source_commit": "e6908c97bb87417071dcefc4edcf4c6793517e56",
+            "source_path": "docs/source/second-edition/core/supplements/FiniteIncoming-c62f3d25.lean",
+            "dependency_epoch": "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46",
+            "original_source_path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/SourceFamily/Foresight/Contextual/Profile/Finite/Reader/Difference/Incoming.lean",
+            "original_source_commit": "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46",
+            "original_source_sha256": "b319e6a83d51134e35a2fb914b39d5fbc086c5a466655b83b9bab70413f11da3",
+            "original_failure_source_artifact": "docs/source/second-edition/core/historical/FiniteIncoming-c62f3d25.lean",
+            "edit_scope": "Dependency import moved below finite Installation; all Incoming data definitions and public declaration statements are unchanged.",
+            "focused_build_log": ".local/second-edition-20261009/finite-calculation-probe-2/build.log"
+          }
+        },
+        {
+          "public_path": "Lean/H0mework/Versions/C62/Realization/Operations/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/SourceFamily/Foresight/Contextual/Profile/Finite/Installation.lean",
+          "source_sha256": "68b48e4a0c16c925504b2e34755d52ea11044bb373c094aa233136a627a7ab7c",
+          "target_sha256": "30210b03cb8e16eb70eedae7e4577edf9ee3e1a299860a8fea582584e0ce4dd0",
+          "source_origin": {
+            "kind": "H0-finite-calculation-source-identity-repair",
+            "source_repository": "https://github.com/Sapientropic/H0mework.git",
+            "source_commit": "e6908c97bb87417071dcefc4edcf4c6793517e56",
+            "source_path": "docs/source/second-edition/core/supplements/FiniteCalculationInstallation-c62f3d25.lean",
+            "dependency_epoch": "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46",
+            "original_source_path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/SourceFamily/Foresight/Contextual/Profile/Finite/Installation.lean",
+            "original_source_commit": "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46",
+            "original_source_sha256": "9d3dfa1ba8f79bca03ac6dcac6603f9a2e6f18d612319daeec5e5ecbc84f6430",
+            "original_failure_source_artifact": "docs/source/second-edition/core/historical/FiniteCalculationInstallation-c62f3d25.lean",
+            "edit_scope": "Finite configuration now uses the already generated Incoming calculationReader instead of none. This is a construction/source-identity repair, not a proof-only transformation: the actual raw expression and its paid trace now coincide with the actual factory; reader/environment and inventory construction fields, declaration headers and final premises retain their statements.",
+            "focused_build_log": ".local/second-edition-20261009/finite-calculation-probe-2/build.log"
+          }
+        },
+        {
+          "public_path": "Lean/H0mework/Versions/C62/Realization/Operations/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/SourceFamily/Foresight/Contextual/Psi/Source.lean",
+          "source_sha256": "57df93a0798c4292ed50a269b83320f1fda4d662ddd0ca2772b7e49c631a0942",
+          "target_sha256": "301e0eee2439c8e0aee99bcdea2e215553c7ec42837cad2520fee5844c422937",
+          "source_origin": {
+            "kind": "H0-finite-calculation-source-identity-repair",
+            "source_repository": "https://github.com/Sapientropic/H0mework.git",
+            "source_commit": "e6908c97bb87417071dcefc4edcf4c6793517e56",
+            "source_path": "docs/source/second-edition/core/supplements/FinitePsiSource-c62f3d25.lean",
+            "dependency_epoch": "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46",
+            "original_source_path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/SourceFamily/Foresight/Contextual/Psi/Source.lean",
+            "original_source_commit": "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46",
+            "original_source_sha256": "eae4703cc56ea167dd19a0473812bb50a91d7082f282d422d315345a0b7882e1",
+            "original_failure_source_artifact": "docs/source/second-edition/core/historical/FinitePsiSource-c62f3d25.lean",
+            "edit_scope": "Added direct finite Installation import after lowering Incoming dependency; all Psi data definitions, original public declaration statements and premises are unchanged. Its existing cfg0 already consumed Incoming.",
+            "focused_build_log": ".local/second-edition-20261009/finite-calculation-probe-2/build.log"
+          }
+        }
+      ]
+    },
+    {
+      "id": "v2-core-completion",
+      "paper": "source-process-core",
+      "source_commit": "71e94e8261d67cf4849a05eb14ac95aa2f7dcbb9",
+      "lean_target": "H0mework.Papers.V2CoreCompletion",
+      "claim_ids": [
+        "core.C39"
+      ],
+      "commands": {
+        "build": "python3 tools/edition_release.py --edition second build --package v2-core-completion --output .local/second-edition-runs/<new>/build",
+        "trust": "python3 tools/edition_release.py --edition second trust --package v2-core-completion --output .local/second-edition-runs/<new>/trust"
+      },
+      "verification": {
+        "kernel": "passed",
+        "receipt": "evidence/second-edition/acceptance/core-cap-trust-20261009/receipt.json"
+      }
+    },
+    {
+      "id": "v2-core-full-stock",
+      "paper": "source-process-core",
+      "source_commit": "71e94e8261d67cf4849a05eb14ac95aa2f7dcbb9",
+      "lean_target": "H0mework.Papers.V2CoreFullStock",
+      "claim_ids": [
+        "core.C40"
+      ],
+      "commands": {
+        "build": "python3 tools/edition_release.py --edition second build --package v2-core-full-stock --output .local/second-edition-runs/<new>/build",
+        "trust": "python3 tools/edition_release.py --edition second trust --package v2-core-full-stock --output .local/second-edition-runs/<new>/trust"
+      },
+      "verification": {
+        "kernel": "passed",
+        "receipt": "evidence/second-edition/acceptance/core-cap-trust-20261009/receipt.json"
+      }
+    },
+    {
+      "id": "v2-core-runtime-calculation",
+      "paper": "source-process-core",
+      "source_commit": "71e94e8261d67cf4849a05eb14ac95aa2f7dcbb9",
+      "lean_target": "H0mework.Papers.V2CoreRuntimeCalculation",
+      "claim_ids": [
+        "core.C41"
+      ],
+      "commands": {
+        "build": "python3 tools/edition_release.py --edition second build --package v2-core-runtime-calculation --output .local/second-edition-runs/<new>/build",
+        "trust": "python3 tools/edition_release.py --edition second trust --package v2-core-runtime-calculation --output .local/second-edition-runs/<new>/trust"
+      },
+      "verification": {
+        "kernel": "passed",
+        "receipt": "evidence/second-edition/acceptance/core-cap-trust-20261009/receipt.json"
+      }
+    }
+  ],
+  "results": [
+    {
+      "command": [
+        "lake",
+        "build",
+        "H0mework.Papers.V2CoreActionReader",
+        "H0mework.Papers.V2CoreDifferenceFeedback",
+        "H0mework.Papers.V2CoreCompletion",
+        "H0mework.Papers.V2CoreFullStock",
+        "H0mework.Papers.V2CoreRuntimeCalculation"
+      ],
+      "cwd": "Lean",
+      "started_at": "2026-10-09T14:01:00.822112+00:00",
+      "finished_at": "2026-10-09T14:03:42.452625+00:00",
+      "elapsed_seconds": 161.631,
+      "exit_code": 0,
+      "error": null,
+      "log": ".local/second-edition-20261009/core-paper-public-build/build.log"
+    }
+  ],
+  "publication_readiness": "not_assessed",
+  "input_identity_after": {
+    "sha256": {
+      "claim_map": "adc862c99fb83cd19f6bd7e76f9adda092559018ebfec6941b54e314507e1cc2",
+      "export_map": "65fde8533a1f837a7b3dbb581401d796f87b28ceed492ff7adb0be41ccdfd3ff",
+      "lakefile": "41659610733e6ae72a3e552a4d2ebee719916ebf29f5c7240ac244749ef26b7f",
+      "toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+      "manifest": "2fe02acc26899fd57d82018e711e79c251e26d0b6d2bb370af81db0ed312fbfd"
+    },
+    "package_inputs": {
+      "v2-core-action-reader": "86c10316587550d1ad1bbbaae1f98e8bae7f8bf3a2bb669c78a425907131713b",
+      "v2-core-difference-feedback": "7c2d202c7b94c329d2ff80ba2b78b28f6c14db2b71dee06af8c1fd6b7d380745",
+      "v2-core-completion": "b6a7e0340474ad8ad4bdbff1b4d6728a3d609330605ead7745943a0988a2c6fb",
+      "v2-core-full-stock": "85244d68ecc8dfe2a24a2140c39b15ce5da1a6d35f74ed51c4c8c24a81d014f4",
+      "v2-core-runtime-calculation": "c4f55cab577948aff72afbdafdbea94b9c328f2ddf529fc08015b1d8ab880602"
+    }
+  },
+  "inputs_unchanged": true,
+  "receipt": ".local/second-edition-20261009/core-paper-public-build/result.json",
+  "compiled_targets_after": {
+    "H0mework.Papers.V2CoreActionReader": "9da016ede87ab0e1fae3784f6715d215b32e7091c99eddd3886446efd31310d9",
+    "H0mework.Papers.V2CoreDifferenceFeedback": "8f73110594f9673175bbf1ea03db30281ba9707226252839a5bd9d208b6f8551",
+    "H0mework.Papers.V2CoreCompletion": "cef8946d0088e7561922bd27fd7c352a2ebe4dde652c0d0d26b25530f69d9c9b",
+    "H0mework.Papers.V2CoreFullStock": "80f64be012db62529bb6d91265eee799b17897b916c09224ee9c4f78cfff7a26",
+    "H0mework.Papers.V2CoreRuntimeCalculation": "6bf388210e1ad49b3ef7e347356abdc2810d815256bfde79987393b8e5c15b15"
+  }
+}

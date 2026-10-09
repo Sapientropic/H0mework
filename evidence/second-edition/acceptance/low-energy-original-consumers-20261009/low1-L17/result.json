@@ -1,0 +1,57 @@
+{
+  "schema": "h0mework/low-energy-original-consumer-check@1",
+  "claim_id": "low1.L17",
+  "runs": [
+    {
+      "command": [
+        "/opt/homebrew/opt/python@3.12/bin/python3.12",
+        "tools/source_view.py",
+        "--output",
+        ".local/second-edition-20261009/low-energy-l17-original-consumer-run/view",
+        "--at",
+        "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+        "--receipt",
+        "evidence/physics/low-energy/occupied-response/receipt.json",
+        "--path",
+        "Lean/SaturationMonoid/PhysicsCore/DiracCliffordRepresentation.lean",
+        "--path",
+        "Verification/physics/low-energy-phenomenology/occupied-response/spatial/finite-coupling/derivative/audit/independent-receipt.json",
+        "--path",
+        "Verification/physics/low-energy-phenomenology/occupied-response/spatial/global/audit/independent-receipt.json"
+      ],
+      "exit_code": 0,
+      "seconds": 0.8218138749944046,
+      "log": ".local/second-edition-20261009/low-energy-l17-original-consumer-run/0.log"
+    },
+    {
+      "command": [
+        ".local/venv/bin/python",
+        "scripts/physics/low-energy/occupied-response/spatial/global/independent_check.py",
+        "--root",
+        ".local/second-edition-20261009/low-energy-l17-original-consumer-run/view"
+      ],
+      "exit_code": 0,
+      "seconds": 1.2849584999494255,
+      "log": ".local/second-edition-20261009/low-energy-l17-original-consumer-run/1.log"
+    },
+    {
+      "command": [
+        ".local/venv/bin/python",
+        "scripts/physics/low-energy/occupied-response/spatial/finite-coupling-derivative/independent_check.py",
+        "--root",
+        ".local/second-edition-20261009/low-energy-l17-original-consumer-run/view"
+      ],
+      "exit_code": 0,
+      "seconds": 12.83521066600224,
+      "log": ".local/second-edition-20261009/low-energy-l17-original-consumer-run/2.log"
+    }
+  ],
+  "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+  "producer_execution": false,
+  "scientific_scope": "Original source-owned finite four-space noncommuting epsilon/global controls; no ODE or continuum integral recomputation",
+  "original_receipt_byte_comparisons": {
+    "occupied-response/spatial/global/audit/independent-receipt.json": true,
+    "occupied-response/spatial/finite-coupling/derivative/audit/independent-receipt.json": true
+  },
+  "status": "passed"
+}

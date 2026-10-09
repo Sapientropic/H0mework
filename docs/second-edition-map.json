@@ -11,7 +11,7 @@
     "map": "docs/first-release-map.json",
     "claim_count": 60
   },
-  "status": "core material identity mapped; public build/audit and remaining intakes pending",
+  "status": "source-process-core kernel scopes accepted; independent paper kernel scopes remain pending.",
   "intake": [
     {
       "id": "v2.core.same-event-feedback",
@@ -22,7 +22,7 @@
         "exact-realization:R32-R35",
         "observation-dynamics:O46-O49"
       ],
-      "status": "core-mapped"
+      "status": "public source and independent kernel acceptance passed"
     },
     {
       "id": "v2.core.type-completion",
@@ -31,7 +31,7 @@
         "source-process-core:C39",
         "whole-ledger-accounting:WA32"
       ],
-      "status": "core-mapped"
+      "status": "public source and independent kernel acceptance passed"
     },
     {
       "id": "v2.core.full-stock-next",
@@ -42,7 +42,7 @@
         "exact-realization:R36-R37",
         "observation-dynamics:O50"
       ],
-      "status": "core-mapped"
+      "status": "public source and independent kernel acceptance passed"
     },
     {
       "id": "v2.core.runtime-calculation",
@@ -51,7 +51,7 @@
         "source-process-core:C41",
         "whole-ledger-accounting:WA33"
       ],
-      "status": "core-mapped"
+      "status": "public source and independent kernel acceptance passed"
     },
     {
       "id": "v2.phys.prepared-actual",
@@ -62,7 +62,7 @@
         "low-energy-phenomenology:L26-L28",
         "matter-selection:S16"
       ],
-      "status": "material identity mapped; new kernel/runtime acceptance pending",
+      "status": "public material identity verified; independent kernel acceptance pending",
       "claim_ids": [
         "phys.P37"
       ],
@@ -77,7 +77,7 @@
         "physics-common-source:P38",
         "constrained-local-quantum:K54-K55"
       ],
-      "status": "material identity mapped; new kernel/runtime acceptance pending",
+      "status": "public material identity verified; independent kernel acceptance pending",
       "claim_ids": [
         "phys.P38"
       ],
@@ -93,7 +93,7 @@
         "composite-source-response:D64-D66",
         "matter-selection:S17"
       ],
-      "status": "material identity mapped; new kernel/runtime acceptance pending",
+      "status": "public material identity verified; independent kernel acceptance pending",
       "claim_ids": [
         "phys.P39"
       ],
@@ -108,7 +108,7 @@
         "physics-common-source:P40",
         "bell-readout-identification:BE19-BE22"
       ],
-      "status": "material identity mapped; new kernel/runtime acceptance pending",
+      "status": "public material identity verified; independent kernel acceptance pending",
       "claim_ids": [
         "phys.P40"
       ],
@@ -170,8 +170,37 @@
             "variant": "PR"
           },
           "verification": {
-            "kernel": "pending",
-            "scope": "new public package build and independent declaration audit"
+            "kernel": "passed",
+            "scope": "Actual package build and independent full declaration closure audit; scoped source digest and exact declaration roots rechecked against the current map.",
+            "proof_package": "v2-core-action-reader",
+            "build": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-paper-build-20261009/result.json",
+                "sha256": "9054cc8f5fcfd6b600f02c27fdea7f90aae67e72185161e8b92c313974f72e17"
+              },
+              "source_scope_sha256": "86c10316587550d1ad1bbbaae1f98e8bae7f8bf3a2bb669c78a425907131713b"
+            },
+            "trust": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-action-trust-20261009/result.json",
+                "sha256": "844c422a938417043cc15ea7fb0b49367c31f23860caf4775931db1aa2fca859"
+              },
+              "source_scope_sha256": "86c10316587550d1ad1bbbaae1f98e8bae7f8bf3a2bb669c78a425907131713b",
+              "audit": {
+                "axioms": [
+                  "Quot.sound",
+                  "Classical.choice",
+                  "propext"
+                ],
+                "constants": 28645,
+                "edges": 648944,
+                "full_metadata": true,
+                "partial": 0,
+                "roots": 361,
+                "token": "58a810db6a8581eba334c047139ae7b4d94d284a560732061680347eaadd5691",
+                "unsafe": 0
+              }
+            }
           }
         },
         {
@@ -219,8 +248,37 @@
             "variant": "PR"
           },
           "verification": {
-            "kernel": "pending",
-            "scope": "new public package build and independent declaration audit"
+            "kernel": "passed",
+            "scope": "Actual package build and independent full declaration closure audit; scoped source digest and exact declaration roots rechecked against the current map.",
+            "proof_package": "v2-core-action-reader",
+            "build": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-paper-build-20261009/result.json",
+                "sha256": "9054cc8f5fcfd6b600f02c27fdea7f90aae67e72185161e8b92c313974f72e17"
+              },
+              "source_scope_sha256": "86c10316587550d1ad1bbbaae1f98e8bae7f8bf3a2bb669c78a425907131713b"
+            },
+            "trust": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-action-trust-20261009/result.json",
+                "sha256": "844c422a938417043cc15ea7fb0b49367c31f23860caf4775931db1aa2fca859"
+              },
+              "source_scope_sha256": "86c10316587550d1ad1bbbaae1f98e8bae7f8bf3a2bb669c78a425907131713b",
+              "audit": {
+                "axioms": [
+                  "Quot.sound",
+                  "Classical.choice",
+                  "propext"
+                ],
+                "constants": 28645,
+                "edges": 648944,
+                "full_metadata": true,
+                "partial": 0,
+                "roots": 361,
+                "token": "58a810db6a8581eba334c047139ae7b4d94d284a560732061680347eaadd5691",
+                "unsafe": 0
+              }
+            }
           }
         },
         {
@@ -343,8 +401,37 @@
             "variant": "PR"
           },
           "verification": {
-            "kernel": "pending",
-            "scope": "new public package build and independent declaration audit"
+            "kernel": "passed",
+            "scope": "Actual package build and independent full declaration closure audit; scoped source digest and exact declaration roots rechecked against the current map.",
+            "proof_package": "v2-core-action-reader",
+            "build": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-paper-build-20261009/result.json",
+                "sha256": "9054cc8f5fcfd6b600f02c27fdea7f90aae67e72185161e8b92c313974f72e17"
+              },
+              "source_scope_sha256": "86c10316587550d1ad1bbbaae1f98e8bae7f8bf3a2bb669c78a425907131713b"
+            },
+            "trust": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-action-trust-20261009/result.json",
+                "sha256": "844c422a938417043cc15ea7fb0b49367c31f23860caf4775931db1aa2fca859"
+              },
+              "source_scope_sha256": "86c10316587550d1ad1bbbaae1f98e8bae7f8bf3a2bb669c78a425907131713b",
+              "audit": {
+                "axioms": [
+                  "Quot.sound",
+                  "Classical.choice",
+                  "propext"
+                ],
+                "constants": 28645,
+                "edges": 648944,
+                "full_metadata": true,
+                "partial": 0,
+                "roots": 361,
+                "token": "58a810db6a8581eba334c047139ae7b4d94d284a560732061680347eaadd5691",
+                "unsafe": 0
+              }
+            }
           }
         },
         {
@@ -464,8 +551,37 @@
             "variant": "PR"
           },
           "verification": {
-            "kernel": "pending",
-            "scope": "new public package build and independent declaration audit"
+            "kernel": "passed",
+            "scope": "Actual package build and independent full declaration closure audit; scoped source digest and exact declaration roots rechecked against the current map.",
+            "proof_package": "v2-core-action-reader",
+            "build": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-paper-build-20261009/result.json",
+                "sha256": "9054cc8f5fcfd6b600f02c27fdea7f90aae67e72185161e8b92c313974f72e17"
+              },
+              "source_scope_sha256": "86c10316587550d1ad1bbbaae1f98e8bae7f8bf3a2bb669c78a425907131713b"
+            },
+            "trust": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-action-trust-20261009/result.json",
+                "sha256": "844c422a938417043cc15ea7fb0b49367c31f23860caf4775931db1aa2fca859"
+              },
+              "source_scope_sha256": "86c10316587550d1ad1bbbaae1f98e8bae7f8bf3a2bb669c78a425907131713b",
+              "audit": {
+                "axioms": [
+                  "Quot.sound",
+                  "Classical.choice",
+                  "propext"
+                ],
+                "constants": 28645,
+                "edges": 648944,
+                "full_metadata": true,
+                "partial": 0,
+                "roots": 361,
+                "token": "58a810db6a8581eba334c047139ae7b4d94d284a560732061680347eaadd5691",
+                "unsafe": 0
+              }
+            }
           }
         },
         {
@@ -549,8 +665,37 @@
             "variant": "PR"
           },
           "verification": {
-            "kernel": "pending",
-            "scope": "new public package build and independent declaration audit"
+            "kernel": "passed",
+            "scope": "Actual package build and independent full declaration closure audit; scoped source digest and exact declaration roots rechecked against the current map.",
+            "proof_package": "v2-core-action-reader",
+            "build": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-paper-build-20261009/result.json",
+                "sha256": "9054cc8f5fcfd6b600f02c27fdea7f90aae67e72185161e8b92c313974f72e17"
+              },
+              "source_scope_sha256": "86c10316587550d1ad1bbbaae1f98e8bae7f8bf3a2bb669c78a425907131713b"
+            },
+            "trust": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-action-trust-20261009/result.json",
+                "sha256": "844c422a938417043cc15ea7fb0b49367c31f23860caf4775931db1aa2fca859"
+              },
+              "source_scope_sha256": "86c10316587550d1ad1bbbaae1f98e8bae7f8bf3a2bb669c78a425907131713b",
+              "audit": {
+                "axioms": [
+                  "Quot.sound",
+                  "Classical.choice",
+                  "propext"
+                ],
+                "constants": 28645,
+                "edges": 648944,
+                "full_metadata": true,
+                "partial": 0,
+                "roots": 361,
+                "token": "58a810db6a8581eba334c047139ae7b4d94d284a560732061680347eaadd5691",
+                "unsafe": 0
+              }
+            }
           }
         },
         {
@@ -583,8 +728,37 @@
             "variant": "PR"
           },
           "verification": {
-            "kernel": "pending",
-            "scope": "new public package build and independent declaration audit"
+            "kernel": "passed",
+            "scope": "Actual package build and independent full declaration closure audit; scoped source digest and exact declaration roots rechecked against the current map.",
+            "proof_package": "v2-core-action-reader",
+            "build": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-paper-build-20261009/result.json",
+                "sha256": "9054cc8f5fcfd6b600f02c27fdea7f90aae67e72185161e8b92c313974f72e17"
+              },
+              "source_scope_sha256": "86c10316587550d1ad1bbbaae1f98e8bae7f8bf3a2bb669c78a425907131713b"
+            },
+            "trust": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-action-trust-20261009/result.json",
+                "sha256": "844c422a938417043cc15ea7fb0b49367c31f23860caf4775931db1aa2fca859"
+              },
+              "source_scope_sha256": "86c10316587550d1ad1bbbaae1f98e8bae7f8bf3a2bb669c78a425907131713b",
+              "audit": {
+                "axioms": [
+                  "Quot.sound",
+                  "Classical.choice",
+                  "propext"
+                ],
+                "constants": 28645,
+                "edges": 648944,
+                "full_metadata": true,
+                "partial": 0,
+                "roots": 361,
+                "token": "58a810db6a8581eba334c047139ae7b4d94d284a560732061680347eaadd5691",
+                "unsafe": 0
+              }
+            }
           }
         }
       ],
@@ -649,8 +823,37 @@
             "variant": "PR"
           },
           "verification": {
-            "kernel": "pending",
-            "scope": "new public package build and independent declaration audit"
+            "kernel": "passed",
+            "scope": "Actual package build and independent full declaration closure audit; scoped source digest and exact declaration roots rechecked against the current map.",
+            "proof_package": "v2-core-action-reader",
+            "build": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-paper-build-20261009/result.json",
+                "sha256": "9054cc8f5fcfd6b600f02c27fdea7f90aae67e72185161e8b92c313974f72e17"
+              },
+              "source_scope_sha256": "86c10316587550d1ad1bbbaae1f98e8bae7f8bf3a2bb669c78a425907131713b"
+            },
+            "trust": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-action-trust-20261009/result.json",
+                "sha256": "844c422a938417043cc15ea7fb0b49367c31f23860caf4775931db1aa2fca859"
+              },
+              "source_scope_sha256": "86c10316587550d1ad1bbbaae1f98e8bae7f8bf3a2bb669c78a425907131713b",
+              "audit": {
+                "axioms": [
+                  "Quot.sound",
+                  "Classical.choice",
+                  "propext"
+                ],
+                "constants": 28645,
+                "edges": 648944,
+                "full_metadata": true,
+                "partial": 0,
+                "roots": 361,
+                "token": "58a810db6a8581eba334c047139ae7b4d94d284a560732061680347eaadd5691",
+                "unsafe": 0
+              }
+            }
           }
         },
         {
@@ -1364,8 +1567,37 @@
             "variant": "PR"
           },
           "verification": {
-            "kernel": "pending",
-            "scope": "new public package build and independent declaration audit"
+            "kernel": "passed",
+            "scope": "Actual package build and independent full declaration closure audit; scoped source digest and exact declaration roots rechecked against the current map.",
+            "proof_package": "v2-core-action-reader",
+            "build": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-paper-build-20261009/result.json",
+                "sha256": "9054cc8f5fcfd6b600f02c27fdea7f90aae67e72185161e8b92c313974f72e17"
+              },
+              "source_scope_sha256": "86c10316587550d1ad1bbbaae1f98e8bae7f8bf3a2bb669c78a425907131713b"
+            },
+            "trust": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-action-trust-20261009/result.json",
+                "sha256": "844c422a938417043cc15ea7fb0b49367c31f23860caf4775931db1aa2fca859"
+              },
+              "source_scope_sha256": "86c10316587550d1ad1bbbaae1f98e8bae7f8bf3a2bb669c78a425907131713b",
+              "audit": {
+                "axioms": [
+                  "Quot.sound",
+                  "Classical.choice",
+                  "propext"
+                ],
+                "constants": 28645,
+                "edges": 648944,
+                "full_metadata": true,
+                "partial": 0,
+                "roots": 361,
+                "token": "58a810db6a8581eba334c047139ae7b4d94d284a560732061680347eaadd5691",
+                "unsafe": 0
+              }
+            }
           }
         }
       ],
@@ -1467,8 +1699,37 @@
             "variant": "PR"
           },
           "verification": {
-            "kernel": "pending",
-            "scope": "new public package build and independent declaration audit"
+            "kernel": "passed",
+            "scope": "Actual package build and independent full declaration closure audit; scoped source digest and exact declaration roots rechecked against the current map.",
+            "proof_package": "v2-core-action-reader",
+            "build": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-paper-build-20261009/result.json",
+                "sha256": "9054cc8f5fcfd6b600f02c27fdea7f90aae67e72185161e8b92c313974f72e17"
+              },
+              "source_scope_sha256": "86c10316587550d1ad1bbbaae1f98e8bae7f8bf3a2bb669c78a425907131713b"
+            },
+            "trust": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-action-trust-20261009/result.json",
+                "sha256": "844c422a938417043cc15ea7fb0b49367c31f23860caf4775931db1aa2fca859"
+              },
+              "source_scope_sha256": "86c10316587550d1ad1bbbaae1f98e8bae7f8bf3a2bb669c78a425907131713b",
+              "audit": {
+                "axioms": [
+                  "Quot.sound",
+                  "Classical.choice",
+                  "propext"
+                ],
+                "constants": 28645,
+                "edges": 648944,
+                "full_metadata": true,
+                "partial": 0,
+                "roots": 361,
+                "token": "58a810db6a8581eba334c047139ae7b4d94d284a560732061680347eaadd5691",
+                "unsafe": 0
+              }
+            }
           }
         },
         {
@@ -1516,8 +1777,37 @@
             "variant": "PR"
           },
           "verification": {
-            "kernel": "pending",
-            "scope": "new public package build and independent declaration audit"
+            "kernel": "passed",
+            "scope": "Actual package build and independent full declaration closure audit; scoped source digest and exact declaration roots rechecked against the current map.",
+            "proof_package": "v2-core-action-reader",
+            "build": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-paper-build-20261009/result.json",
+                "sha256": "9054cc8f5fcfd6b600f02c27fdea7f90aae67e72185161e8b92c313974f72e17"
+              },
+              "source_scope_sha256": "86c10316587550d1ad1bbbaae1f98e8bae7f8bf3a2bb669c78a425907131713b"
+            },
+            "trust": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-action-trust-20261009/result.json",
+                "sha256": "844c422a938417043cc15ea7fb0b49367c31f23860caf4775931db1aa2fca859"
+              },
+              "source_scope_sha256": "86c10316587550d1ad1bbbaae1f98e8bae7f8bf3a2bb669c78a425907131713b",
+              "audit": {
+                "axioms": [
+                  "Quot.sound",
+                  "Classical.choice",
+                  "propext"
+                ],
+                "constants": 28645,
+                "edges": 648944,
+                "full_metadata": true,
+                "partial": 0,
+                "roots": 361,
+                "token": "58a810db6a8581eba334c047139ae7b4d94d284a560732061680347eaadd5691",
+                "unsafe": 0
+              }
+            }
           }
         },
         {
@@ -1640,8 +1930,37 @@
             "variant": "PR"
           },
           "verification": {
-            "kernel": "pending",
-            "scope": "new public package build and independent declaration audit"
+            "kernel": "passed",
+            "scope": "Actual package build and independent full declaration closure audit; scoped source digest and exact declaration roots rechecked against the current map.",
+            "proof_package": "v2-core-action-reader",
+            "build": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-paper-build-20261009/result.json",
+                "sha256": "9054cc8f5fcfd6b600f02c27fdea7f90aae67e72185161e8b92c313974f72e17"
+              },
+              "source_scope_sha256": "86c10316587550d1ad1bbbaae1f98e8bae7f8bf3a2bb669c78a425907131713b"
+            },
+            "trust": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-action-trust-20261009/result.json",
+                "sha256": "844c422a938417043cc15ea7fb0b49367c31f23860caf4775931db1aa2fca859"
+              },
+              "source_scope_sha256": "86c10316587550d1ad1bbbaae1f98e8bae7f8bf3a2bb669c78a425907131713b",
+              "audit": {
+                "axioms": [
+                  "Quot.sound",
+                  "Classical.choice",
+                  "propext"
+                ],
+                "constants": 28645,
+                "edges": 648944,
+                "full_metadata": true,
+                "partial": 0,
+                "roots": 361,
+                "token": "58a810db6a8581eba334c047139ae7b4d94d284a560732061680347eaadd5691",
+                "unsafe": 0
+              }
+            }
           }
         },
         {
@@ -1761,8 +2080,37 @@
             "variant": "PR"
           },
           "verification": {
-            "kernel": "pending",
-            "scope": "new public package build and independent declaration audit"
+            "kernel": "passed",
+            "scope": "Actual package build and independent full declaration closure audit; scoped source digest and exact declaration roots rechecked against the current map.",
+            "proof_package": "v2-core-action-reader",
+            "build": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-paper-build-20261009/result.json",
+                "sha256": "9054cc8f5fcfd6b600f02c27fdea7f90aae67e72185161e8b92c313974f72e17"
+              },
+              "source_scope_sha256": "86c10316587550d1ad1bbbaae1f98e8bae7f8bf3a2bb669c78a425907131713b"
+            },
+            "trust": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-action-trust-20261009/result.json",
+                "sha256": "844c422a938417043cc15ea7fb0b49367c31f23860caf4775931db1aa2fca859"
+              },
+              "source_scope_sha256": "86c10316587550d1ad1bbbaae1f98e8bae7f8bf3a2bb669c78a425907131713b",
+              "audit": {
+                "axioms": [
+                  "Quot.sound",
+                  "Classical.choice",
+                  "propext"
+                ],
+                "constants": 28645,
+                "edges": 648944,
+                "full_metadata": true,
+                "partial": 0,
+                "roots": 361,
+                "token": "58a810db6a8581eba334c047139ae7b4d94d284a560732061680347eaadd5691",
+                "unsafe": 0
+              }
+            }
           }
         },
         {
@@ -1846,8 +2194,37 @@
             "variant": "PR"
           },
           "verification": {
-            "kernel": "pending",
-            "scope": "new public package build and independent declaration audit"
+            "kernel": "passed",
+            "scope": "Actual package build and independent full declaration closure audit; scoped source digest and exact declaration roots rechecked against the current map.",
+            "proof_package": "v2-core-action-reader",
+            "build": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-paper-build-20261009/result.json",
+                "sha256": "9054cc8f5fcfd6b600f02c27fdea7f90aae67e72185161e8b92c313974f72e17"
+              },
+              "source_scope_sha256": "86c10316587550d1ad1bbbaae1f98e8bae7f8bf3a2bb669c78a425907131713b"
+            },
+            "trust": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-action-trust-20261009/result.json",
+                "sha256": "844c422a938417043cc15ea7fb0b49367c31f23860caf4775931db1aa2fca859"
+              },
+              "source_scope_sha256": "86c10316587550d1ad1bbbaae1f98e8bae7f8bf3a2bb669c78a425907131713b",
+              "audit": {
+                "axioms": [
+                  "Quot.sound",
+                  "Classical.choice",
+                  "propext"
+                ],
+                "constants": 28645,
+                "edges": 648944,
+                "full_metadata": true,
+                "partial": 0,
+                "roots": 361,
+                "token": "58a810db6a8581eba334c047139ae7b4d94d284a560732061680347eaadd5691",
+                "unsafe": 0
+              }
+            }
           }
         },
         {
@@ -1880,8 +2257,37 @@
             "variant": "PR"
           },
           "verification": {
-            "kernel": "pending",
-            "scope": "new public package build and independent declaration audit"
+            "kernel": "passed",
+            "scope": "Actual package build and independent full declaration closure audit; scoped source digest and exact declaration roots rechecked against the current map.",
+            "proof_package": "v2-core-action-reader",
+            "build": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-paper-build-20261009/result.json",
+                "sha256": "9054cc8f5fcfd6b600f02c27fdea7f90aae67e72185161e8b92c313974f72e17"
+              },
+              "source_scope_sha256": "86c10316587550d1ad1bbbaae1f98e8bae7f8bf3a2bb669c78a425907131713b"
+            },
+            "trust": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-action-trust-20261009/result.json",
+                "sha256": "844c422a938417043cc15ea7fb0b49367c31f23860caf4775931db1aa2fca859"
+              },
+              "source_scope_sha256": "86c10316587550d1ad1bbbaae1f98e8bae7f8bf3a2bb669c78a425907131713b",
+              "audit": {
+                "axioms": [
+                  "Quot.sound",
+                  "Classical.choice",
+                  "propext"
+                ],
+                "constants": 28645,
+                "edges": 648944,
+                "full_metadata": true,
+                "partial": 0,
+                "roots": 361,
+                "token": "58a810db6a8581eba334c047139ae7b4d94d284a560732061680347eaadd5691",
+                "unsafe": 0
+              }
+            }
           }
         }
       ],
@@ -1946,8 +2352,37 @@
             "variant": "PR"
           },
           "verification": {
-            "kernel": "pending",
-            "scope": "new public package build and independent declaration audit"
+            "kernel": "passed",
+            "scope": "Actual package build and independent full declaration closure audit; scoped source digest and exact declaration roots rechecked against the current map.",
+            "proof_package": "v2-core-action-reader",
+            "build": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-paper-build-20261009/result.json",
+                "sha256": "9054cc8f5fcfd6b600f02c27fdea7f90aae67e72185161e8b92c313974f72e17"
+              },
+              "source_scope_sha256": "86c10316587550d1ad1bbbaae1f98e8bae7f8bf3a2bb669c78a425907131713b"
+            },
+            "trust": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-action-trust-20261009/result.json",
+                "sha256": "844c422a938417043cc15ea7fb0b49367c31f23860caf4775931db1aa2fca859"
+              },
+              "source_scope_sha256": "86c10316587550d1ad1bbbaae1f98e8bae7f8bf3a2bb669c78a425907131713b",
+              "audit": {
+                "axioms": [
+                  "Quot.sound",
+                  "Classical.choice",
+                  "propext"
+                ],
+                "constants": 28645,
+                "edges": 648944,
+                "full_metadata": true,
+                "partial": 0,
+                "roots": 361,
+                "token": "58a810db6a8581eba334c047139ae7b4d94d284a560732061680347eaadd5691",
+                "unsafe": 0
+              }
+            }
           }
         },
         {
@@ -2661,8 +3096,37 @@
             "variant": "PR"
           },
           "verification": {
-            "kernel": "pending",
-            "scope": "new public package build and independent declaration audit"
+            "kernel": "passed",
+            "scope": "Actual package build and independent full declaration closure audit; scoped source digest and exact declaration roots rechecked against the current map.",
+            "proof_package": "v2-core-action-reader",
+            "build": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-paper-build-20261009/result.json",
+                "sha256": "9054cc8f5fcfd6b600f02c27fdea7f90aae67e72185161e8b92c313974f72e17"
+              },
+              "source_scope_sha256": "86c10316587550d1ad1bbbaae1f98e8bae7f8bf3a2bb669c78a425907131713b"
+            },
+            "trust": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-action-trust-20261009/result.json",
+                "sha256": "844c422a938417043cc15ea7fb0b49367c31f23860caf4775931db1aa2fca859"
+              },
+              "source_scope_sha256": "86c10316587550d1ad1bbbaae1f98e8bae7f8bf3a2bb669c78a425907131713b",
+              "audit": {
+                "axioms": [
+                  "Quot.sound",
+                  "Classical.choice",
+                  "propext"
+                ],
+                "constants": 28645,
+                "edges": 648944,
+                "full_metadata": true,
+                "partial": 0,
+                "roots": 361,
+                "token": "58a810db6a8581eba334c047139ae7b4d94d284a560732061680347eaadd5691",
+                "unsafe": 0
+              }
+            }
           }
         }
       ],
@@ -2806,8 +3270,37 @@
             "variant": "C62"
           },
           "verification": {
-            "kernel": "pending",
-            "scope": "New selected public environment; original claim source bytes unchanged."
+            "kernel": "passed",
+            "scope": "Actual package build and independent full declaration closure audit; scoped source digest and exact declaration roots rechecked against the current map.",
+            "proof_package": "v2-core-difference-feedback",
+            "build": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-paper-build-20261009/result.json",
+                "sha256": "9054cc8f5fcfd6b600f02c27fdea7f90aae67e72185161e8b92c313974f72e17"
+              },
+              "source_scope_sha256": "7c2d202c7b94c329d2ff80ba2b78b28f6c14db2b71dee06af8c1fd6b7d380745"
+            },
+            "trust": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-difference-trust-20261009/result.json",
+                "sha256": "889ed20317ebbe5a07b6b923a8afdcd68058c312d8be33926ac6e9c8b0cee4db"
+              },
+              "source_scope_sha256": "7c2d202c7b94c329d2ff80ba2b78b28f6c14db2b71dee06af8c1fd6b7d380745",
+              "audit": {
+                "axioms": [
+                  "Quot.sound",
+                  "Classical.choice",
+                  "propext"
+                ],
+                "constants": 27056,
+                "edges": 577413,
+                "full_metadata": true,
+                "partial": 0,
+                "roots": 202,
+                "token": "5516affc65987f241e513728dd3a156312cc11fca56427677c7c94cc85a7f979",
+                "unsafe": 0
+              }
+            }
           }
         },
         {
@@ -2858,8 +3351,37 @@
             "variant": "C62"
           },
           "verification": {
-            "kernel": "pending",
-            "scope": "New selected public environment; original claim source bytes unchanged."
+            "kernel": "passed",
+            "scope": "Actual package build and independent full declaration closure audit; scoped source digest and exact declaration roots rechecked against the current map.",
+            "proof_package": "v2-core-difference-feedback",
+            "build": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-paper-build-20261009/result.json",
+                "sha256": "9054cc8f5fcfd6b600f02c27fdea7f90aae67e72185161e8b92c313974f72e17"
+              },
+              "source_scope_sha256": "7c2d202c7b94c329d2ff80ba2b78b28f6c14db2b71dee06af8c1fd6b7d380745"
+            },
+            "trust": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-difference-trust-20261009/result.json",
+                "sha256": "889ed20317ebbe5a07b6b923a8afdcd68058c312d8be33926ac6e9c8b0cee4db"
+              },
+              "source_scope_sha256": "7c2d202c7b94c329d2ff80ba2b78b28f6c14db2b71dee06af8c1fd6b7d380745",
+              "audit": {
+                "axioms": [
+                  "Quot.sound",
+                  "Classical.choice",
+                  "propext"
+                ],
+                "constants": 27056,
+                "edges": 577413,
+                "full_metadata": true,
+                "partial": 0,
+                "roots": 202,
+                "token": "5516affc65987f241e513728dd3a156312cc11fca56427677c7c94cc85a7f979",
+                "unsafe": 0
+              }
+            }
           }
         },
         {
@@ -2901,8 +3423,37 @@
             "variant": "C62"
           },
           "verification": {
-            "kernel": "pending",
-            "scope": "New selected public environment; original claim source bytes unchanged."
+            "kernel": "passed",
+            "scope": "Actual package build and independent full declaration closure audit; scoped source digest and exact declaration roots rechecked against the current map.",
+            "proof_package": "v2-core-difference-feedback",
+            "build": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-paper-build-20261009/result.json",
+                "sha256": "9054cc8f5fcfd6b600f02c27fdea7f90aae67e72185161e8b92c313974f72e17"
+              },
+              "source_scope_sha256": "7c2d202c7b94c329d2ff80ba2b78b28f6c14db2b71dee06af8c1fd6b7d380745"
+            },
+            "trust": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-difference-trust-20261009/result.json",
+                "sha256": "889ed20317ebbe5a07b6b923a8afdcd68058c312d8be33926ac6e9c8b0cee4db"
+              },
+              "source_scope_sha256": "7c2d202c7b94c329d2ff80ba2b78b28f6c14db2b71dee06af8c1fd6b7d380745",
+              "audit": {
+                "axioms": [
+                  "Quot.sound",
+                  "Classical.choice",
+                  "propext"
+                ],
+                "constants": 27056,
+                "edges": 577413,
+                "full_metadata": true,
+                "partial": 0,
+                "roots": 202,
+                "token": "5516affc65987f241e513728dd3a156312cc11fca56427677c7c94cc85a7f979",
+                "unsafe": 0
+              }
+            }
           }
         },
         {
@@ -2986,8 +3537,37 @@
             "variant": "C62"
           },
           "verification": {
-            "kernel": "pending",
-            "scope": "New selected public environment; original claim source bytes unchanged."
+            "kernel": "passed",
+            "scope": "Actual package build and independent full declaration closure audit; scoped source digest and exact declaration roots rechecked against the current map.",
+            "proof_package": "v2-core-difference-feedback",
+            "build": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-paper-build-20261009/result.json",
+                "sha256": "9054cc8f5fcfd6b600f02c27fdea7f90aae67e72185161e8b92c313974f72e17"
+              },
+              "source_scope_sha256": "7c2d202c7b94c329d2ff80ba2b78b28f6c14db2b71dee06af8c1fd6b7d380745"
+            },
+            "trust": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-difference-trust-20261009/result.json",
+                "sha256": "889ed20317ebbe5a07b6b923a8afdcd68058c312d8be33926ac6e9c8b0cee4db"
+              },
+              "source_scope_sha256": "7c2d202c7b94c329d2ff80ba2b78b28f6c14db2b71dee06af8c1fd6b7d380745",
+              "audit": {
+                "axioms": [
+                  "Quot.sound",
+                  "Classical.choice",
+                  "propext"
+                ],
+                "constants": 27056,
+                "edges": 577413,
+                "full_metadata": true,
+                "partial": 0,
+                "roots": 202,
+                "token": "5516affc65987f241e513728dd3a156312cc11fca56427677c7c94cc85a7f979",
+                "unsafe": 0
+              }
+            }
           }
         },
         {
@@ -3071,8 +3651,37 @@
             "variant": "C62"
           },
           "verification": {
-            "kernel": "pending",
-            "scope": "New selected public environment; original claim source bytes unchanged."
+            "kernel": "passed",
+            "scope": "Actual package build and independent full declaration closure audit; scoped source digest and exact declaration roots rechecked against the current map.",
+            "proof_package": "v2-core-difference-feedback",
+            "build": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-paper-build-20261009/result.json",
+                "sha256": "9054cc8f5fcfd6b600f02c27fdea7f90aae67e72185161e8b92c313974f72e17"
+              },
+              "source_scope_sha256": "7c2d202c7b94c329d2ff80ba2b78b28f6c14db2b71dee06af8c1fd6b7d380745"
+            },
+            "trust": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-difference-trust-20261009/result.json",
+                "sha256": "889ed20317ebbe5a07b6b923a8afdcd68058c312d8be33926ac6e9c8b0cee4db"
+              },
+              "source_scope_sha256": "7c2d202c7b94c329d2ff80ba2b78b28f6c14db2b71dee06af8c1fd6b7d380745",
+              "audit": {
+                "axioms": [
+                  "Quot.sound",
+                  "Classical.choice",
+                  "propext"
+                ],
+                "constants": 27056,
+                "edges": 577413,
+                "full_metadata": true,
+                "partial": 0,
+                "roots": 202,
+                "token": "5516affc65987f241e513728dd3a156312cc11fca56427677c7c94cc85a7f979",
+                "unsafe": 0
+              }
+            }
           }
         },
         {
@@ -3213,8 +3822,37 @@
             "variant": "C62"
           },
           "verification": {
-            "kernel": "pending",
-            "scope": "New selected public environment; original claim source bytes unchanged."
+            "kernel": "passed",
+            "scope": "Actual package build and independent full declaration closure audit; scoped source digest and exact declaration roots rechecked against the current map.",
+            "proof_package": "v2-core-difference-feedback",
+            "build": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-paper-build-20261009/result.json",
+                "sha256": "9054cc8f5fcfd6b600f02c27fdea7f90aae67e72185161e8b92c313974f72e17"
+              },
+              "source_scope_sha256": "7c2d202c7b94c329d2ff80ba2b78b28f6c14db2b71dee06af8c1fd6b7d380745"
+            },
+            "trust": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-difference-trust-20261009/result.json",
+                "sha256": "889ed20317ebbe5a07b6b923a8afdcd68058c312d8be33926ac6e9c8b0cee4db"
+              },
+              "source_scope_sha256": "7c2d202c7b94c329d2ff80ba2b78b28f6c14db2b71dee06af8c1fd6b7d380745",
+              "audit": {
+                "axioms": [
+                  "Quot.sound",
+                  "Classical.choice",
+                  "propext"
+                ],
+                "constants": 27056,
+                "edges": 577413,
+                "full_metadata": true,
+                "partial": 0,
+                "roots": 202,
+                "token": "5516affc65987f241e513728dd3a156312cc11fca56427677c7c94cc85a7f979",
+                "unsafe": 0
+              }
+            }
           }
         },
         {
@@ -3256,8 +3894,37 @@
             "variant": "C62"
           },
           "verification": {
-            "kernel": "pending",
-            "scope": "New selected public environment; original claim source bytes unchanged."
+            "kernel": "passed",
+            "scope": "Actual package build and independent full declaration closure audit; scoped source digest and exact declaration roots rechecked against the current map.",
+            "proof_package": "v2-core-difference-feedback",
+            "build": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-paper-build-20261009/result.json",
+                "sha256": "9054cc8f5fcfd6b600f02c27fdea7f90aae67e72185161e8b92c313974f72e17"
+              },
+              "source_scope_sha256": "7c2d202c7b94c329d2ff80ba2b78b28f6c14db2b71dee06af8c1fd6b7d380745"
+            },
+            "trust": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-difference-trust-20261009/result.json",
+                "sha256": "889ed20317ebbe5a07b6b923a8afdcd68058c312d8be33926ac6e9c8b0cee4db"
+              },
+              "source_scope_sha256": "7c2d202c7b94c329d2ff80ba2b78b28f6c14db2b71dee06af8c1fd6b7d380745",
+              "audit": {
+                "axioms": [
+                  "Quot.sound",
+                  "Classical.choice",
+                  "propext"
+                ],
+                "constants": 27056,
+                "edges": 577413,
+                "full_metadata": true,
+                "partial": 0,
+                "roots": 202,
+                "token": "5516affc65987f241e513728dd3a156312cc11fca56427677c7c94cc85a7f979",
+                "unsafe": 0
+              }
+            }
           }
         },
         {
@@ -3302,8 +3969,37 @@
             "variant": "C62"
           },
           "verification": {
-            "kernel": "pending",
-            "scope": "New selected public environment; original claim source bytes unchanged."
+            "kernel": "passed",
+            "scope": "Actual package build and independent full declaration closure audit; scoped source digest and exact declaration roots rechecked against the current map.",
+            "proof_package": "v2-core-difference-feedback",
+            "build": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-paper-build-20261009/result.json",
+                "sha256": "9054cc8f5fcfd6b600f02c27fdea7f90aae67e72185161e8b92c313974f72e17"
+              },
+              "source_scope_sha256": "7c2d202c7b94c329d2ff80ba2b78b28f6c14db2b71dee06af8c1fd6b7d380745"
+            },
+            "trust": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-difference-trust-20261009/result.json",
+                "sha256": "889ed20317ebbe5a07b6b923a8afdcd68058c312d8be33926ac6e9c8b0cee4db"
+              },
+              "source_scope_sha256": "7c2d202c7b94c329d2ff80ba2b78b28f6c14db2b71dee06af8c1fd6b7d380745",
+              "audit": {
+                "axioms": [
+                  "Quot.sound",
+                  "Classical.choice",
+                  "propext"
+                ],
+                "constants": 27056,
+                "edges": 577413,
+                "full_metadata": true,
+                "partial": 0,
+                "roots": 202,
+                "token": "5516affc65987f241e513728dd3a156312cc11fca56427677c7c94cc85a7f979",
+                "unsafe": 0
+              }
+            }
           }
         },
         {
@@ -3360,8 +4056,37 @@
             "variant": "C62"
           },
           "verification": {
-            "kernel": "pending",
-            "scope": "New selected public environment; original claim source bytes unchanged."
+            "kernel": "passed",
+            "scope": "Actual package build and independent full declaration closure audit; scoped source digest and exact declaration roots rechecked against the current map.",
+            "proof_package": "v2-core-difference-feedback",
+            "build": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-paper-build-20261009/result.json",
+                "sha256": "9054cc8f5fcfd6b600f02c27fdea7f90aae67e72185161e8b92c313974f72e17"
+              },
+              "source_scope_sha256": "7c2d202c7b94c329d2ff80ba2b78b28f6c14db2b71dee06af8c1fd6b7d380745"
+            },
+            "trust": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-difference-trust-20261009/result.json",
+                "sha256": "889ed20317ebbe5a07b6b923a8afdcd68058c312d8be33926ac6e9c8b0cee4db"
+              },
+              "source_scope_sha256": "7c2d202c7b94c329d2ff80ba2b78b28f6c14db2b71dee06af8c1fd6b7d380745",
+              "audit": {
+                "axioms": [
+                  "Quot.sound",
+                  "Classical.choice",
+                  "propext"
+                ],
+                "constants": 27056,
+                "edges": 577413,
+                "full_metadata": true,
+                "partial": 0,
+                "roots": 202,
+                "token": "5516affc65987f241e513728dd3a156312cc11fca56427677c7c94cc85a7f979",
+                "unsafe": 0
+              }
+            }
           }
         }
       ],
@@ -3423,8 +4148,37 @@
             "variant": "C62"
           },
           "verification": {
-            "kernel": "pending",
-            "scope": "New selected public environment; original claim source bytes unchanged."
+            "kernel": "passed",
+            "scope": "Actual package build and independent full declaration closure audit; scoped source digest and exact declaration roots rechecked against the current map.",
+            "proof_package": "v2-core-difference-feedback",
+            "build": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-paper-build-20261009/result.json",
+                "sha256": "9054cc8f5fcfd6b600f02c27fdea7f90aae67e72185161e8b92c313974f72e17"
+              },
+              "source_scope_sha256": "7c2d202c7b94c329d2ff80ba2b78b28f6c14db2b71dee06af8c1fd6b7d380745"
+            },
+            "trust": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-difference-trust-20261009/result.json",
+                "sha256": "889ed20317ebbe5a07b6b923a8afdcd68058c312d8be33926ac6e9c8b0cee4db"
+              },
+              "source_scope_sha256": "7c2d202c7b94c329d2ff80ba2b78b28f6c14db2b71dee06af8c1fd6b7d380745",
+              "audit": {
+                "axioms": [
+                  "Quot.sound",
+                  "Classical.choice",
+                  "propext"
+                ],
+                "constants": 27056,
+                "edges": 577413,
+                "full_metadata": true,
+                "partial": 0,
+                "roots": 202,
+                "token": "5516affc65987f241e513728dd3a156312cc11fca56427677c7c94cc85a7f979",
+                "unsafe": 0
+              }
+            }
           }
         },
         {
@@ -3490,8 +4244,37 @@
             "variant": "C62"
           },
           "verification": {
-            "kernel": "pending",
-            "scope": "New selected public environment; original claim source bytes unchanged."
+            "kernel": "passed",
+            "scope": "Actual package build and independent full declaration closure audit; scoped source digest and exact declaration roots rechecked against the current map.",
+            "proof_package": "v2-core-difference-feedback",
+            "build": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-paper-build-20261009/result.json",
+                "sha256": "9054cc8f5fcfd6b600f02c27fdea7f90aae67e72185161e8b92c313974f72e17"
+              },
+              "source_scope_sha256": "7c2d202c7b94c329d2ff80ba2b78b28f6c14db2b71dee06af8c1fd6b7d380745"
+            },
+            "trust": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-difference-trust-20261009/result.json",
+                "sha256": "889ed20317ebbe5a07b6b923a8afdcd68058c312d8be33926ac6e9c8b0cee4db"
+              },
+              "source_scope_sha256": "7c2d202c7b94c329d2ff80ba2b78b28f6c14db2b71dee06af8c1fd6b7d380745",
+              "audit": {
+                "axioms": [
+                  "Quot.sound",
+                  "Classical.choice",
+                  "propext"
+                ],
+                "constants": 27056,
+                "edges": 577413,
+                "full_metadata": true,
+                "partial": 0,
+                "roots": 202,
+                "token": "5516affc65987f241e513728dd3a156312cc11fca56427677c7c94cc85a7f979",
+                "unsafe": 0
+              }
+            }
           }
         },
         {
@@ -3518,8 +4301,37 @@
             "variant": "C62"
           },
           "verification": {
-            "kernel": "pending",
-            "scope": "New selected public environment; original claim source bytes unchanged."
+            "kernel": "passed",
+            "scope": "Actual package build and independent full declaration closure audit; scoped source digest and exact declaration roots rechecked against the current map.",
+            "proof_package": "v2-core-difference-feedback",
+            "build": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-paper-build-20261009/result.json",
+                "sha256": "9054cc8f5fcfd6b600f02c27fdea7f90aae67e72185161e8b92c313974f72e17"
+              },
+              "source_scope_sha256": "7c2d202c7b94c329d2ff80ba2b78b28f6c14db2b71dee06af8c1fd6b7d380745"
+            },
+            "trust": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-difference-trust-20261009/result.json",
+                "sha256": "889ed20317ebbe5a07b6b923a8afdcd68058c312d8be33926ac6e9c8b0cee4db"
+              },
+              "source_scope_sha256": "7c2d202c7b94c329d2ff80ba2b78b28f6c14db2b71dee06af8c1fd6b7d380745",
+              "audit": {
+                "axioms": [
+                  "Quot.sound",
+                  "Classical.choice",
+                  "propext"
+                ],
+                "constants": 27056,
+                "edges": 577413,
+                "full_metadata": true,
+                "partial": 0,
+                "roots": 202,
+                "token": "5516affc65987f241e513728dd3a156312cc11fca56427677c7c94cc85a7f979",
+                "unsafe": 0
+              }
+            }
           }
         },
         {
@@ -3576,8 +4388,37 @@
             "variant": "C62"
           },
           "verification": {
-            "kernel": "pending",
-            "scope": "New selected public environment; original claim source bytes unchanged."
+            "kernel": "passed",
+            "scope": "Actual package build and independent full declaration closure audit; scoped source digest and exact declaration roots rechecked against the current map.",
+            "proof_package": "v2-core-difference-feedback",
+            "build": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-paper-build-20261009/result.json",
+                "sha256": "9054cc8f5fcfd6b600f02c27fdea7f90aae67e72185161e8b92c313974f72e17"
+              },
+              "source_scope_sha256": "7c2d202c7b94c329d2ff80ba2b78b28f6c14db2b71dee06af8c1fd6b7d380745"
+            },
+            "trust": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-difference-trust-20261009/result.json",
+                "sha256": "889ed20317ebbe5a07b6b923a8afdcd68058c312d8be33926ac6e9c8b0cee4db"
+              },
+              "source_scope_sha256": "7c2d202c7b94c329d2ff80ba2b78b28f6c14db2b71dee06af8c1fd6b7d380745",
+              "audit": {
+                "axioms": [
+                  "Quot.sound",
+                  "Classical.choice",
+                  "propext"
+                ],
+                "constants": 27056,
+                "edges": 577413,
+                "full_metadata": true,
+                "partial": 0,
+                "roots": 202,
+                "token": "5516affc65987f241e513728dd3a156312cc11fca56427677c7c94cc85a7f979",
+                "unsafe": 0
+              }
+            }
           }
         }
       ],
@@ -3744,8 +4585,37 @@
             "variant": "C62"
           },
           "verification": {
-            "kernel": "pending",
-            "scope": "New selected public environment; original claim source bytes unchanged."
+            "kernel": "passed",
+            "scope": "Actual package build and independent full declaration closure audit; scoped source digest and exact declaration roots rechecked against the current map.",
+            "proof_package": "v2-core-difference-feedback",
+            "build": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-paper-build-20261009/result.json",
+                "sha256": "9054cc8f5fcfd6b600f02c27fdea7f90aae67e72185161e8b92c313974f72e17"
+              },
+              "source_scope_sha256": "7c2d202c7b94c329d2ff80ba2b78b28f6c14db2b71dee06af8c1fd6b7d380745"
+            },
+            "trust": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-difference-trust-20261009/result.json",
+                "sha256": "889ed20317ebbe5a07b6b923a8afdcd68058c312d8be33926ac6e9c8b0cee4db"
+              },
+              "source_scope_sha256": "7c2d202c7b94c329d2ff80ba2b78b28f6c14db2b71dee06af8c1fd6b7d380745",
+              "audit": {
+                "axioms": [
+                  "Quot.sound",
+                  "Classical.choice",
+                  "propext"
+                ],
+                "constants": 27056,
+                "edges": 577413,
+                "full_metadata": true,
+                "partial": 0,
+                "roots": 202,
+                "token": "5516affc65987f241e513728dd3a156312cc11fca56427677c7c94cc85a7f979",
+                "unsafe": 0
+              }
+            }
           }
         },
         {
@@ -3796,8 +4666,37 @@
             "variant": "C62"
           },
           "verification": {
-            "kernel": "pending",
-            "scope": "New selected public environment; original claim source bytes unchanged."
+            "kernel": "passed",
+            "scope": "Actual package build and independent full declaration closure audit; scoped source digest and exact declaration roots rechecked against the current map.",
+            "proof_package": "v2-core-difference-feedback",
+            "build": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-paper-build-20261009/result.json",
+                "sha256": "9054cc8f5fcfd6b600f02c27fdea7f90aae67e72185161e8b92c313974f72e17"
+              },
+              "source_scope_sha256": "7c2d202c7b94c329d2ff80ba2b78b28f6c14db2b71dee06af8c1fd6b7d380745"
+            },
+            "trust": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-difference-trust-20261009/result.json",
+                "sha256": "889ed20317ebbe5a07b6b923a8afdcd68058c312d8be33926ac6e9c8b0cee4db"
+              },
+              "source_scope_sha256": "7c2d202c7b94c329d2ff80ba2b78b28f6c14db2b71dee06af8c1fd6b7d380745",
+              "audit": {
+                "axioms": [
+                  "Quot.sound",
+                  "Classical.choice",
+                  "propext"
+                ],
+                "constants": 27056,
+                "edges": 577413,
+                "full_metadata": true,
+                "partial": 0,
+                "roots": 202,
+                "token": "5516affc65987f241e513728dd3a156312cc11fca56427677c7c94cc85a7f979",
+                "unsafe": 0
+              }
+            }
           }
         },
         {
@@ -3839,8 +4738,37 @@
             "variant": "C62"
           },
           "verification": {
-            "kernel": "pending",
-            "scope": "New selected public environment; original claim source bytes unchanged."
+            "kernel": "passed",
+            "scope": "Actual package build and independent full declaration closure audit; scoped source digest and exact declaration roots rechecked against the current map.",
+            "proof_package": "v2-core-difference-feedback",
+            "build": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-paper-build-20261009/result.json",
+                "sha256": "9054cc8f5fcfd6b600f02c27fdea7f90aae67e72185161e8b92c313974f72e17"
+              },
+              "source_scope_sha256": "7c2d202c7b94c329d2ff80ba2b78b28f6c14db2b71dee06af8c1fd6b7d380745"
+            },
+            "trust": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-difference-trust-20261009/result.json",
+                "sha256": "889ed20317ebbe5a07b6b923a8afdcd68058c312d8be33926ac6e9c8b0cee4db"
+              },
+              "source_scope_sha256": "7c2d202c7b94c329d2ff80ba2b78b28f6c14db2b71dee06af8c1fd6b7d380745",
+              "audit": {
+                "axioms": [
+                  "Quot.sound",
+                  "Classical.choice",
+                  "propext"
+                ],
+                "constants": 27056,
+                "edges": 577413,
+                "full_metadata": true,
+                "partial": 0,
+                "roots": 202,
+                "token": "5516affc65987f241e513728dd3a156312cc11fca56427677c7c94cc85a7f979",
+                "unsafe": 0
+              }
+            }
           }
         },
         {
@@ -3924,8 +4852,37 @@
             "variant": "C62"
           },
           "verification": {
-            "kernel": "pending",
-            "scope": "New selected public environment; original claim source bytes unchanged."
+            "kernel": "passed",
+            "scope": "Actual package build and independent full declaration closure audit; scoped source digest and exact declaration roots rechecked against the current map.",
+            "proof_package": "v2-core-difference-feedback",
+            "build": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-paper-build-20261009/result.json",
+                "sha256": "9054cc8f5fcfd6b600f02c27fdea7f90aae67e72185161e8b92c313974f72e17"
+              },
+              "source_scope_sha256": "7c2d202c7b94c329d2ff80ba2b78b28f6c14db2b71dee06af8c1fd6b7d380745"
+            },
+            "trust": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-difference-trust-20261009/result.json",
+                "sha256": "889ed20317ebbe5a07b6b923a8afdcd68058c312d8be33926ac6e9c8b0cee4db"
+              },
+              "source_scope_sha256": "7c2d202c7b94c329d2ff80ba2b78b28f6c14db2b71dee06af8c1fd6b7d380745",
+              "audit": {
+                "axioms": [
+                  "Quot.sound",
+                  "Classical.choice",
+                  "propext"
+                ],
+                "constants": 27056,
+                "edges": 577413,
+                "full_metadata": true,
+                "partial": 0,
+                "roots": 202,
+                "token": "5516affc65987f241e513728dd3a156312cc11fca56427677c7c94cc85a7f979",
+                "unsafe": 0
+              }
+            }
           }
         },
         {
@@ -4009,8 +4966,37 @@
             "variant": "C62"
           },
           "verification": {
-            "kernel": "pending",
-            "scope": "New selected public environment; original claim source bytes unchanged."
+            "kernel": "passed",
+            "scope": "Actual package build and independent full declaration closure audit; scoped source digest and exact declaration roots rechecked against the current map.",
+            "proof_package": "v2-core-difference-feedback",
+            "build": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-paper-build-20261009/result.json",
+                "sha256": "9054cc8f5fcfd6b600f02c27fdea7f90aae67e72185161e8b92c313974f72e17"
+              },
+              "source_scope_sha256": "7c2d202c7b94c329d2ff80ba2b78b28f6c14db2b71dee06af8c1fd6b7d380745"
+            },
+            "trust": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-difference-trust-20261009/result.json",
+                "sha256": "889ed20317ebbe5a07b6b923a8afdcd68058c312d8be33926ac6e9c8b0cee4db"
+              },
+              "source_scope_sha256": "7c2d202c7b94c329d2ff80ba2b78b28f6c14db2b71dee06af8c1fd6b7d380745",
+              "audit": {
+                "axioms": [
+                  "Quot.sound",
+                  "Classical.choice",
+                  "propext"
+                ],
+                "constants": 27056,
+                "edges": 577413,
+                "full_metadata": true,
+                "partial": 0,
+                "roots": 202,
+                "token": "5516affc65987f241e513728dd3a156312cc11fca56427677c7c94cc85a7f979",
+                "unsafe": 0
+              }
+            }
           }
         },
         {
@@ -4151,8 +5137,37 @@
             "variant": "C62"
           },
           "verification": {
-            "kernel": "pending",
-            "scope": "New selected public environment; original claim source bytes unchanged."
+            "kernel": "passed",
+            "scope": "Actual package build and independent full declaration closure audit; scoped source digest and exact declaration roots rechecked against the current map.",
+            "proof_package": "v2-core-difference-feedback",
+            "build": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-paper-build-20261009/result.json",
+                "sha256": "9054cc8f5fcfd6b600f02c27fdea7f90aae67e72185161e8b92c313974f72e17"
+              },
+              "source_scope_sha256": "7c2d202c7b94c329d2ff80ba2b78b28f6c14db2b71dee06af8c1fd6b7d380745"
+            },
+            "trust": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-difference-trust-20261009/result.json",
+                "sha256": "889ed20317ebbe5a07b6b923a8afdcd68058c312d8be33926ac6e9c8b0cee4db"
+              },
+              "source_scope_sha256": "7c2d202c7b94c329d2ff80ba2b78b28f6c14db2b71dee06af8c1fd6b7d380745",
+              "audit": {
+                "axioms": [
+                  "Quot.sound",
+                  "Classical.choice",
+                  "propext"
+                ],
+                "constants": 27056,
+                "edges": 577413,
+                "full_metadata": true,
+                "partial": 0,
+                "roots": 202,
+                "token": "5516affc65987f241e513728dd3a156312cc11fca56427677c7c94cc85a7f979",
+                "unsafe": 0
+              }
+            }
           }
         },
         {
@@ -4194,8 +5209,37 @@
             "variant": "C62"
           },
           "verification": {
-            "kernel": "pending",
-            "scope": "New selected public environment; original claim source bytes unchanged."
+            "kernel": "passed",
+            "scope": "Actual package build and independent full declaration closure audit; scoped source digest and exact declaration roots rechecked against the current map.",
+            "proof_package": "v2-core-difference-feedback",
+            "build": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-paper-build-20261009/result.json",
+                "sha256": "9054cc8f5fcfd6b600f02c27fdea7f90aae67e72185161e8b92c313974f72e17"
+              },
+              "source_scope_sha256": "7c2d202c7b94c329d2ff80ba2b78b28f6c14db2b71dee06af8c1fd6b7d380745"
+            },
+            "trust": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-difference-trust-20261009/result.json",
+                "sha256": "889ed20317ebbe5a07b6b923a8afdcd68058c312d8be33926ac6e9c8b0cee4db"
+              },
+              "source_scope_sha256": "7c2d202c7b94c329d2ff80ba2b78b28f6c14db2b71dee06af8c1fd6b7d380745",
+              "audit": {
+                "axioms": [
+                  "Quot.sound",
+                  "Classical.choice",
+                  "propext"
+                ],
+                "constants": 27056,
+                "edges": 577413,
+                "full_metadata": true,
+                "partial": 0,
+                "roots": 202,
+                "token": "5516affc65987f241e513728dd3a156312cc11fca56427677c7c94cc85a7f979",
+                "unsafe": 0
+              }
+            }
           }
         },
         {
@@ -4240,8 +5284,37 @@
             "variant": "C62"
           },
           "verification": {
-            "kernel": "pending",
-            "scope": "New selected public environment; original claim source bytes unchanged."
+            "kernel": "passed",
+            "scope": "Actual package build and independent full declaration closure audit; scoped source digest and exact declaration roots rechecked against the current map.",
+            "proof_package": "v2-core-difference-feedback",
+            "build": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-paper-build-20261009/result.json",
+                "sha256": "9054cc8f5fcfd6b600f02c27fdea7f90aae67e72185161e8b92c313974f72e17"
+              },
+              "source_scope_sha256": "7c2d202c7b94c329d2ff80ba2b78b28f6c14db2b71dee06af8c1fd6b7d380745"
+            },
+            "trust": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-difference-trust-20261009/result.json",
+                "sha256": "889ed20317ebbe5a07b6b923a8afdcd68058c312d8be33926ac6e9c8b0cee4db"
+              },
+              "source_scope_sha256": "7c2d202c7b94c329d2ff80ba2b78b28f6c14db2b71dee06af8c1fd6b7d380745",
+              "audit": {
+                "axioms": [
+                  "Quot.sound",
+                  "Classical.choice",
+                  "propext"
+                ],
+                "constants": 27056,
+                "edges": 577413,
+                "full_metadata": true,
+                "partial": 0,
+                "roots": 202,
+                "token": "5516affc65987f241e513728dd3a156312cc11fca56427677c7c94cc85a7f979",
+                "unsafe": 0
+              }
+            }
           }
         },
         {
@@ -4298,8 +5371,37 @@
             "variant": "C62"
           },
           "verification": {
-            "kernel": "pending",
-            "scope": "New selected public environment; original claim source bytes unchanged."
+            "kernel": "passed",
+            "scope": "Actual package build and independent full declaration closure audit; scoped source digest and exact declaration roots rechecked against the current map.",
+            "proof_package": "v2-core-difference-feedback",
+            "build": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-paper-build-20261009/result.json",
+                "sha256": "9054cc8f5fcfd6b600f02c27fdea7f90aae67e72185161e8b92c313974f72e17"
+              },
+              "source_scope_sha256": "7c2d202c7b94c329d2ff80ba2b78b28f6c14db2b71dee06af8c1fd6b7d380745"
+            },
+            "trust": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-difference-trust-20261009/result.json",
+                "sha256": "889ed20317ebbe5a07b6b923a8afdcd68058c312d8be33926ac6e9c8b0cee4db"
+              },
+              "source_scope_sha256": "7c2d202c7b94c329d2ff80ba2b78b28f6c14db2b71dee06af8c1fd6b7d380745",
+              "audit": {
+                "axioms": [
+                  "Quot.sound",
+                  "Classical.choice",
+                  "propext"
+                ],
+                "constants": 27056,
+                "edges": 577413,
+                "full_metadata": true,
+                "partial": 0,
+                "roots": 202,
+                "token": "5516affc65987f241e513728dd3a156312cc11fca56427677c7c94cc85a7f979",
+                "unsafe": 0
+              }
+            }
           }
         }
       ],
@@ -4361,8 +5463,37 @@
             "variant": "C62"
           },
           "verification": {
-            "kernel": "pending",
-            "scope": "New selected public environment; original claim source bytes unchanged."
+            "kernel": "passed",
+            "scope": "Actual package build and independent full declaration closure audit; scoped source digest and exact declaration roots rechecked against the current map.",
+            "proof_package": "v2-core-difference-feedback",
+            "build": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-paper-build-20261009/result.json",
+                "sha256": "9054cc8f5fcfd6b600f02c27fdea7f90aae67e72185161e8b92c313974f72e17"
+              },
+              "source_scope_sha256": "7c2d202c7b94c329d2ff80ba2b78b28f6c14db2b71dee06af8c1fd6b7d380745"
+            },
+            "trust": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-difference-trust-20261009/result.json",
+                "sha256": "889ed20317ebbe5a07b6b923a8afdcd68058c312d8be33926ac6e9c8b0cee4db"
+              },
+              "source_scope_sha256": "7c2d202c7b94c329d2ff80ba2b78b28f6c14db2b71dee06af8c1fd6b7d380745",
+              "audit": {
+                "axioms": [
+                  "Quot.sound",
+                  "Classical.choice",
+                  "propext"
+                ],
+                "constants": 27056,
+                "edges": 577413,
+                "full_metadata": true,
+                "partial": 0,
+                "roots": 202,
+                "token": "5516affc65987f241e513728dd3a156312cc11fca56427677c7c94cc85a7f979",
+                "unsafe": 0
+              }
+            }
           }
         },
         {
@@ -4428,8 +5559,37 @@
             "variant": "C62"
           },
           "verification": {
-            "kernel": "pending",
-            "scope": "New selected public environment; original claim source bytes unchanged."
+            "kernel": "passed",
+            "scope": "Actual package build and independent full declaration closure audit; scoped source digest and exact declaration roots rechecked against the current map.",
+            "proof_package": "v2-core-difference-feedback",
+            "build": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-paper-build-20261009/result.json",
+                "sha256": "9054cc8f5fcfd6b600f02c27fdea7f90aae67e72185161e8b92c313974f72e17"
+              },
+              "source_scope_sha256": "7c2d202c7b94c329d2ff80ba2b78b28f6c14db2b71dee06af8c1fd6b7d380745"
+            },
+            "trust": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-difference-trust-20261009/result.json",
+                "sha256": "889ed20317ebbe5a07b6b923a8afdcd68058c312d8be33926ac6e9c8b0cee4db"
+              },
+              "source_scope_sha256": "7c2d202c7b94c329d2ff80ba2b78b28f6c14db2b71dee06af8c1fd6b7d380745",
+              "audit": {
+                "axioms": [
+                  "Quot.sound",
+                  "Classical.choice",
+                  "propext"
+                ],
+                "constants": 27056,
+                "edges": 577413,
+                "full_metadata": true,
+                "partial": 0,
+                "roots": 202,
+                "token": "5516affc65987f241e513728dd3a156312cc11fca56427677c7c94cc85a7f979",
+                "unsafe": 0
+              }
+            }
           }
         },
         {
@@ -4456,8 +5616,37 @@
             "variant": "C62"
           },
           "verification": {
-            "kernel": "pending",
-            "scope": "New selected public environment; original claim source bytes unchanged."
+            "kernel": "passed",
+            "scope": "Actual package build and independent full declaration closure audit; scoped source digest and exact declaration roots rechecked against the current map.",
+            "proof_package": "v2-core-difference-feedback",
+            "build": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-paper-build-20261009/result.json",
+                "sha256": "9054cc8f5fcfd6b600f02c27fdea7f90aae67e72185161e8b92c313974f72e17"
+              },
+              "source_scope_sha256": "7c2d202c7b94c329d2ff80ba2b78b28f6c14db2b71dee06af8c1fd6b7d380745"
+            },
+            "trust": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-difference-trust-20261009/result.json",
+                "sha256": "889ed20317ebbe5a07b6b923a8afdcd68058c312d8be33926ac6e9c8b0cee4db"
+              },
+              "source_scope_sha256": "7c2d202c7b94c329d2ff80ba2b78b28f6c14db2b71dee06af8c1fd6b7d380745",
+              "audit": {
+                "axioms": [
+                  "Quot.sound",
+                  "Classical.choice",
+                  "propext"
+                ],
+                "constants": 27056,
+                "edges": 577413,
+                "full_metadata": true,
+                "partial": 0,
+                "roots": 202,
+                "token": "5516affc65987f241e513728dd3a156312cc11fca56427677c7c94cc85a7f979",
+                "unsafe": 0
+              }
+            }
           }
         },
         {
@@ -4514,8 +5703,37 @@
             "variant": "C62"
           },
           "verification": {
-            "kernel": "pending",
-            "scope": "New selected public environment; original claim source bytes unchanged."
+            "kernel": "passed",
+            "scope": "Actual package build and independent full declaration closure audit; scoped source digest and exact declaration roots rechecked against the current map.",
+            "proof_package": "v2-core-difference-feedback",
+            "build": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-paper-build-20261009/result.json",
+                "sha256": "9054cc8f5fcfd6b600f02c27fdea7f90aae67e72185161e8b92c313974f72e17"
+              },
+              "source_scope_sha256": "7c2d202c7b94c329d2ff80ba2b78b28f6c14db2b71dee06af8c1fd6b7d380745"
+            },
+            "trust": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-difference-trust-20261009/result.json",
+                "sha256": "889ed20317ebbe5a07b6b923a8afdcd68058c312d8be33926ac6e9c8b0cee4db"
+              },
+              "source_scope_sha256": "7c2d202c7b94c329d2ff80ba2b78b28f6c14db2b71dee06af8c1fd6b7d380745",
+              "audit": {
+                "axioms": [
+                  "Quot.sound",
+                  "Classical.choice",
+                  "propext"
+                ],
+                "constants": 27056,
+                "edges": 577413,
+                "full_metadata": true,
+                "partial": 0,
+                "roots": 202,
+                "token": "5516affc65987f241e513728dd3a156312cc11fca56427677c7c94cc85a7f979",
+                "unsafe": 0
+              }
+            }
           }
         }
       ],
@@ -4639,7 +5857,36 @@
           "verification": {
             "kernel": "passed",
             "receipt": "evidence/second-edition/acceptance/core-cap-trust-20261009/receipt.json",
-            "scope": "Independent complete declaration audit of selected type/value/inductive/recursor metadata; trust0/werror, Std3, unsafe0, partial0."
+            "scope": "Actual package build and independent full declaration closure audit; scoped source digest and exact declaration roots rechecked against the current map.",
+            "proof_package": "v2-core-completion",
+            "build": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-paper-build-20261009/result.json",
+                "sha256": "9054cc8f5fcfd6b600f02c27fdea7f90aae67e72185161e8b92c313974f72e17"
+              },
+              "source_scope_sha256": "b6a7e0340474ad8ad4bdbff1b4d6728a3d609330605ead7745943a0988a2c6fb"
+            },
+            "trust": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-cap-trust-20261009/receipt.json",
+                "sha256": "51170b83425f0f831b84fb953dbe0a2e79bd80977b653671bf5802d86a2aa5cf"
+              },
+              "source_scope_sha256": "b6a7e0340474ad8ad4bdbff1b4d6728a3d609330605ead7745943a0988a2c6fb",
+              "audit": {
+                "axioms": [
+                  "Quot.sound",
+                  "Classical.choice",
+                  "propext"
+                ],
+                "constants": 13701,
+                "edges": 237506,
+                "full_metadata": true,
+                "partial": 0,
+                "roots": 38,
+                "token": "610beaf214ad31e1f2fe4b803e8a575ce2b7ada9e0ebc2cd59933fd17d327d78",
+                "unsafe": 0
+              }
+            }
           }
         }
       ],
@@ -4697,7 +5944,36 @@
           "verification": {
             "kernel": "passed",
             "receipt": "evidence/second-edition/acceptance/core-cap-trust-20261009/receipt.json",
-            "scope": "Independent complete declaration audit of selected type/value/inductive/recursor metadata; trust0/werror, Std3, unsafe0, partial0."
+            "scope": "Actual package build and independent full declaration closure audit; scoped source digest and exact declaration roots rechecked against the current map.",
+            "proof_package": "v2-core-completion",
+            "build": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-paper-build-20261009/result.json",
+                "sha256": "9054cc8f5fcfd6b600f02c27fdea7f90aae67e72185161e8b92c313974f72e17"
+              },
+              "source_scope_sha256": "b6a7e0340474ad8ad4bdbff1b4d6728a3d609330605ead7745943a0988a2c6fb"
+            },
+            "trust": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-cap-trust-20261009/receipt.json",
+                "sha256": "51170b83425f0f831b84fb953dbe0a2e79bd80977b653671bf5802d86a2aa5cf"
+              },
+              "source_scope_sha256": "b6a7e0340474ad8ad4bdbff1b4d6728a3d609330605ead7745943a0988a2c6fb",
+              "audit": {
+                "axioms": [
+                  "Quot.sound",
+                  "Classical.choice",
+                  "propext"
+                ],
+                "constants": 13701,
+                "edges": 237506,
+                "full_metadata": true,
+                "partial": 0,
+                "roots": 38,
+                "token": "610beaf214ad31e1f2fe4b803e8a575ce2b7ada9e0ebc2cd59933fd17d327d78",
+                "unsafe": 0
+              }
+            }
           }
         },
         {
@@ -4735,7 +6011,36 @@
           "verification": {
             "kernel": "passed",
             "receipt": "evidence/second-edition/acceptance/core-cap-trust-20261009/receipt.json",
-            "scope": "Independent complete declaration audit of selected type/value/inductive/recursor metadata; trust0/werror, Std3, unsafe0, partial0."
+            "scope": "Actual package build and independent full declaration closure audit; scoped source digest and exact declaration roots rechecked against the current map.",
+            "proof_package": "v2-core-completion",
+            "build": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-paper-build-20261009/result.json",
+                "sha256": "9054cc8f5fcfd6b600f02c27fdea7f90aae67e72185161e8b92c313974f72e17"
+              },
+              "source_scope_sha256": "b6a7e0340474ad8ad4bdbff1b4d6728a3d609330605ead7745943a0988a2c6fb"
+            },
+            "trust": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-cap-trust-20261009/receipt.json",
+                "sha256": "51170b83425f0f831b84fb953dbe0a2e79bd80977b653671bf5802d86a2aa5cf"
+              },
+              "source_scope_sha256": "b6a7e0340474ad8ad4bdbff1b4d6728a3d609330605ead7745943a0988a2c6fb",
+              "audit": {
+                "axioms": [
+                  "Quot.sound",
+                  "Classical.choice",
+                  "propext"
+                ],
+                "constants": 13701,
+                "edges": 237506,
+                "full_metadata": true,
+                "partial": 0,
+                "roots": 38,
+                "token": "610beaf214ad31e1f2fe4b803e8a575ce2b7ada9e0ebc2cd59933fd17d327d78",
+                "unsafe": 0
+              }
+            }
           }
         },
         {
@@ -4776,7 +6081,36 @@
           "verification": {
             "kernel": "passed",
             "receipt": "evidence/second-edition/acceptance/core-cap-trust-20261009/receipt.json",
-            "scope": "Independent complete declaration audit of selected type/value/inductive/recursor metadata; trust0/werror, Std3, unsafe0, partial0."
+            "scope": "Actual package build and independent full declaration closure audit; scoped source digest and exact declaration roots rechecked against the current map.",
+            "proof_package": "v2-core-completion",
+            "build": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-paper-build-20261009/result.json",
+                "sha256": "9054cc8f5fcfd6b600f02c27fdea7f90aae67e72185161e8b92c313974f72e17"
+              },
+              "source_scope_sha256": "b6a7e0340474ad8ad4bdbff1b4d6728a3d609330605ead7745943a0988a2c6fb"
+            },
+            "trust": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-cap-trust-20261009/receipt.json",
+                "sha256": "51170b83425f0f831b84fb953dbe0a2e79bd80977b653671bf5802d86a2aa5cf"
+              },
+              "source_scope_sha256": "b6a7e0340474ad8ad4bdbff1b4d6728a3d609330605ead7745943a0988a2c6fb",
+              "audit": {
+                "axioms": [
+                  "Quot.sound",
+                  "Classical.choice",
+                  "propext"
+                ],
+                "constants": 13701,
+                "edges": 237506,
+                "full_metadata": true,
+                "partial": 0,
+                "roots": 38,
+                "token": "610beaf214ad31e1f2fe4b803e8a575ce2b7ada9e0ebc2cd59933fd17d327d78",
+                "unsafe": 0
+              }
+            }
           }
         },
         {
@@ -4814,7 +6148,36 @@
           "verification": {
             "kernel": "passed",
             "receipt": "evidence/second-edition/acceptance/core-cap-trust-20261009/receipt.json",
-            "scope": "Independent complete declaration audit of selected type/value/inductive/recursor metadata; trust0/werror, Std3, unsafe0, partial0."
+            "scope": "Actual package build and independent full declaration closure audit; scoped source digest and exact declaration roots rechecked against the current map.",
+            "proof_package": "v2-core-completion",
+            "build": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-paper-build-20261009/result.json",
+                "sha256": "9054cc8f5fcfd6b600f02c27fdea7f90aae67e72185161e8b92c313974f72e17"
+              },
+              "source_scope_sha256": "b6a7e0340474ad8ad4bdbff1b4d6728a3d609330605ead7745943a0988a2c6fb"
+            },
+            "trust": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-cap-trust-20261009/receipt.json",
+                "sha256": "51170b83425f0f831b84fb953dbe0a2e79bd80977b653671bf5802d86a2aa5cf"
+              },
+              "source_scope_sha256": "b6a7e0340474ad8ad4bdbff1b4d6728a3d609330605ead7745943a0988a2c6fb",
+              "audit": {
+                "axioms": [
+                  "Quot.sound",
+                  "Classical.choice",
+                  "propext"
+                ],
+                "constants": 13701,
+                "edges": 237506,
+                "full_metadata": true,
+                "partial": 0,
+                "roots": 38,
+                "token": "610beaf214ad31e1f2fe4b803e8a575ce2b7ada9e0ebc2cd59933fd17d327d78",
+                "unsafe": 0
+              }
+            }
           }
         }
       ],
@@ -5348,7 +6711,36 @@
           "verification": {
             "kernel": "passed",
             "receipt": "evidence/second-edition/acceptance/core-cap-trust-20261009/receipt.json",
-            "scope": "Independent complete declaration audit of selected type/value/inductive/recursor metadata; trust0/werror, Std3, unsafe0, partial0."
+            "scope": "Actual package build and independent full declaration closure audit; scoped source digest and exact declaration roots rechecked against the current map.",
+            "proof_package": "v2-core-full-stock",
+            "build": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-paper-build-20261009/result.json",
+                "sha256": "9054cc8f5fcfd6b600f02c27fdea7f90aae67e72185161e8b92c313974f72e17"
+              },
+              "source_scope_sha256": "85244d68ecc8dfe2a24a2140c39b15ce5da1a6d35f74ed51c4c8c24a81d014f4"
+            },
+            "trust": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-cap-trust-20261009/receipt.json",
+                "sha256": "51170b83425f0f831b84fb953dbe0a2e79bd80977b653671bf5802d86a2aa5cf"
+              },
+              "source_scope_sha256": "85244d68ecc8dfe2a24a2140c39b15ce5da1a6d35f74ed51c4c8c24a81d014f4",
+              "audit": {
+                "axioms": [
+                  "Quot.sound",
+                  "Classical.choice",
+                  "propext"
+                ],
+                "constants": 57545,
+                "edges": 1378311,
+                "full_metadata": true,
+                "partial": 0,
+                "roots": 128,
+                "token": "0e6c7a54fb6e991d285c2d020d838687c0f1526f1f1f6f4c3e757fd264c86250",
+                "unsafe": 0
+              }
+            }
           }
         },
         {
@@ -5425,7 +6817,36 @@
           "verification": {
             "kernel": "passed",
             "receipt": "evidence/second-edition/acceptance/core-cap-trust-20261009/receipt.json",
-            "scope": "Independent complete declaration audit of selected type/value/inductive/recursor metadata; trust0/werror, Std3, unsafe0, partial0."
+            "scope": "Actual package build and independent full declaration closure audit; scoped source digest and exact declaration roots rechecked against the current map.",
+            "proof_package": "v2-core-full-stock",
+            "build": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-paper-build-20261009/result.json",
+                "sha256": "9054cc8f5fcfd6b600f02c27fdea7f90aae67e72185161e8b92c313974f72e17"
+              },
+              "source_scope_sha256": "85244d68ecc8dfe2a24a2140c39b15ce5da1a6d35f74ed51c4c8c24a81d014f4"
+            },
+            "trust": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-cap-trust-20261009/receipt.json",
+                "sha256": "51170b83425f0f831b84fb953dbe0a2e79bd80977b653671bf5802d86a2aa5cf"
+              },
+              "source_scope_sha256": "85244d68ecc8dfe2a24a2140c39b15ce5da1a6d35f74ed51c4c8c24a81d014f4",
+              "audit": {
+                "axioms": [
+                  "Quot.sound",
+                  "Classical.choice",
+                  "propext"
+                ],
+                "constants": 57545,
+                "edges": 1378311,
+                "full_metadata": true,
+                "partial": 0,
+                "roots": 128,
+                "token": "0e6c7a54fb6e991d285c2d020d838687c0f1526f1f1f6f4c3e757fd264c86250",
+                "unsafe": 0
+              }
+            }
           }
         }
       ],
@@ -5474,7 +6895,36 @@
           "verification": {
             "kernel": "passed",
             "receipt": "evidence/second-edition/acceptance/core-cap-trust-20261009/receipt.json",
-            "scope": "Independent complete declaration audit of selected type/value/inductive/recursor metadata; trust0/werror, Std3, unsafe0, partial0."
+            "scope": "Actual package build and independent full declaration closure audit; scoped source digest and exact declaration roots rechecked against the current map.",
+            "proof_package": "v2-core-full-stock",
+            "build": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-paper-build-20261009/result.json",
+                "sha256": "9054cc8f5fcfd6b600f02c27fdea7f90aae67e72185161e8b92c313974f72e17"
+              },
+              "source_scope_sha256": "85244d68ecc8dfe2a24a2140c39b15ce5da1a6d35f74ed51c4c8c24a81d014f4"
+            },
+            "trust": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-cap-trust-20261009/receipt.json",
+                "sha256": "51170b83425f0f831b84fb953dbe0a2e79bd80977b653671bf5802d86a2aa5cf"
+              },
+              "source_scope_sha256": "85244d68ecc8dfe2a24a2140c39b15ce5da1a6d35f74ed51c4c8c24a81d014f4",
+              "audit": {
+                "axioms": [
+                  "Quot.sound",
+                  "Classical.choice",
+                  "propext"
+                ],
+                "constants": 57545,
+                "edges": 1378311,
+                "full_metadata": true,
+                "partial": 0,
+                "roots": 128,
+                "token": "0e6c7a54fb6e991d285c2d020d838687c0f1526f1f1f6f4c3e757fd264c86250",
+                "unsafe": 0
+              }
+            }
           }
         },
         {
@@ -5554,7 +7004,36 @@
           "verification": {
             "kernel": "passed",
             "receipt": "evidence/second-edition/acceptance/core-cap-trust-20261009/receipt.json",
-            "scope": "Independent complete declaration audit of selected type/value/inductive/recursor metadata; trust0/werror, Std3, unsafe0, partial0."
+            "scope": "Actual package build and independent full declaration closure audit; scoped source digest and exact declaration roots rechecked against the current map.",
+            "proof_package": "v2-core-full-stock",
+            "build": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-paper-build-20261009/result.json",
+                "sha256": "9054cc8f5fcfd6b600f02c27fdea7f90aae67e72185161e8b92c313974f72e17"
+              },
+              "source_scope_sha256": "85244d68ecc8dfe2a24a2140c39b15ce5da1a6d35f74ed51c4c8c24a81d014f4"
+            },
+            "trust": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-cap-trust-20261009/receipt.json",
+                "sha256": "51170b83425f0f831b84fb953dbe0a2e79bd80977b653671bf5802d86a2aa5cf"
+              },
+              "source_scope_sha256": "85244d68ecc8dfe2a24a2140c39b15ce5da1a6d35f74ed51c4c8c24a81d014f4",
+              "audit": {
+                "axioms": [
+                  "Quot.sound",
+                  "Classical.choice",
+                  "propext"
+                ],
+                "constants": 57545,
+                "edges": 1378311,
+                "full_metadata": true,
+                "partial": 0,
+                "roots": 128,
+                "token": "0e6c7a54fb6e991d285c2d020d838687c0f1526f1f1f6f4c3e757fd264c86250",
+                "unsafe": 0
+              }
+            }
           }
         },
         {
@@ -5634,7 +7113,36 @@
           "verification": {
             "kernel": "passed",
             "receipt": "evidence/second-edition/acceptance/core-cap-trust-20261009/receipt.json",
-            "scope": "Independent complete declaration audit of selected type/value/inductive/recursor metadata; trust0/werror, Std3, unsafe0, partial0."
+            "scope": "Actual package build and independent full declaration closure audit; scoped source digest and exact declaration roots rechecked against the current map.",
+            "proof_package": "v2-core-full-stock",
+            "build": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-paper-build-20261009/result.json",
+                "sha256": "9054cc8f5fcfd6b600f02c27fdea7f90aae67e72185161e8b92c313974f72e17"
+              },
+              "source_scope_sha256": "85244d68ecc8dfe2a24a2140c39b15ce5da1a6d35f74ed51c4c8c24a81d014f4"
+            },
+            "trust": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-cap-trust-20261009/receipt.json",
+                "sha256": "51170b83425f0f831b84fb953dbe0a2e79bd80977b653671bf5802d86a2aa5cf"
+              },
+              "source_scope_sha256": "85244d68ecc8dfe2a24a2140c39b15ce5da1a6d35f74ed51c4c8c24a81d014f4",
+              "audit": {
+                "axioms": [
+                  "Quot.sound",
+                  "Classical.choice",
+                  "propext"
+                ],
+                "constants": 57545,
+                "edges": 1378311,
+                "full_metadata": true,
+                "partial": 0,
+                "roots": 128,
+                "token": "0e6c7a54fb6e991d285c2d020d838687c0f1526f1f1f6f4c3e757fd264c86250",
+                "unsafe": 0
+              }
+            }
           }
         },
         {
@@ -5684,7 +7192,36 @@
           "verification": {
             "kernel": "passed",
             "receipt": "evidence/second-edition/acceptance/core-cap-trust-20261009/receipt.json",
-            "scope": "Independent complete declaration audit of selected type/value/inductive/recursor metadata; trust0/werror, Std3, unsafe0, partial0."
+            "scope": "Actual package build and independent full declaration closure audit; scoped source digest and exact declaration roots rechecked against the current map.",
+            "proof_package": "v2-core-full-stock",
+            "build": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-paper-build-20261009/result.json",
+                "sha256": "9054cc8f5fcfd6b600f02c27fdea7f90aae67e72185161e8b92c313974f72e17"
+              },
+              "source_scope_sha256": "85244d68ecc8dfe2a24a2140c39b15ce5da1a6d35f74ed51c4c8c24a81d014f4"
+            },
+            "trust": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-cap-trust-20261009/receipt.json",
+                "sha256": "51170b83425f0f831b84fb953dbe0a2e79bd80977b653671bf5802d86a2aa5cf"
+              },
+              "source_scope_sha256": "85244d68ecc8dfe2a24a2140c39b15ce5da1a6d35f74ed51c4c8c24a81d014f4",
+              "audit": {
+                "axioms": [
+                  "Quot.sound",
+                  "Classical.choice",
+                  "propext"
+                ],
+                "constants": 57545,
+                "edges": 1378311,
+                "full_metadata": true,
+                "partial": 0,
+                "roots": 128,
+                "token": "0e6c7a54fb6e991d285c2d020d838687c0f1526f1f1f6f4c3e757fd264c86250",
+                "unsafe": 0
+              }
+            }
           }
         },
         {
@@ -5719,7 +7256,36 @@
           "verification": {
             "kernel": "passed",
             "receipt": "evidence/second-edition/acceptance/core-cap-trust-20261009/receipt.json",
-            "scope": "Independent complete declaration audit of selected type/value/inductive/recursor metadata; trust0/werror, Std3, unsafe0, partial0."
+            "scope": "Actual package build and independent full declaration closure audit; scoped source digest and exact declaration roots rechecked against the current map.",
+            "proof_package": "v2-core-full-stock",
+            "build": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-paper-build-20261009/result.json",
+                "sha256": "9054cc8f5fcfd6b600f02c27fdea7f90aae67e72185161e8b92c313974f72e17"
+              },
+              "source_scope_sha256": "85244d68ecc8dfe2a24a2140c39b15ce5da1a6d35f74ed51c4c8c24a81d014f4"
+            },
+            "trust": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-cap-trust-20261009/receipt.json",
+                "sha256": "51170b83425f0f831b84fb953dbe0a2e79bd80977b653671bf5802d86a2aa5cf"
+              },
+              "source_scope_sha256": "85244d68ecc8dfe2a24a2140c39b15ce5da1a6d35f74ed51c4c8c24a81d014f4",
+              "audit": {
+                "axioms": [
+                  "Quot.sound",
+                  "Classical.choice",
+                  "propext"
+                ],
+                "constants": 57545,
+                "edges": 1378311,
+                "full_metadata": true,
+                "partial": 0,
+                "roots": 128,
+                "token": "0e6c7a54fb6e991d285c2d020d838687c0f1526f1f1f6f4c3e757fd264c86250",
+                "unsafe": 0
+              }
+            }
           }
         },
         {
@@ -5769,7 +7335,36 @@
           "verification": {
             "kernel": "passed",
             "receipt": "evidence/second-edition/acceptance/core-cap-trust-20261009/receipt.json",
-            "scope": "Independent complete declaration audit of selected type/value/inductive/recursor metadata; trust0/werror, Std3, unsafe0, partial0."
+            "scope": "Actual package build and independent full declaration closure audit; scoped source digest and exact declaration roots rechecked against the current map.",
+            "proof_package": "v2-core-full-stock",
+            "build": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-paper-build-20261009/result.json",
+                "sha256": "9054cc8f5fcfd6b600f02c27fdea7f90aae67e72185161e8b92c313974f72e17"
+              },
+              "source_scope_sha256": "85244d68ecc8dfe2a24a2140c39b15ce5da1a6d35f74ed51c4c8c24a81d014f4"
+            },
+            "trust": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-cap-trust-20261009/receipt.json",
+                "sha256": "51170b83425f0f831b84fb953dbe0a2e79bd80977b653671bf5802d86a2aa5cf"
+              },
+              "source_scope_sha256": "85244d68ecc8dfe2a24a2140c39b15ce5da1a6d35f74ed51c4c8c24a81d014f4",
+              "audit": {
+                "axioms": [
+                  "Quot.sound",
+                  "Classical.choice",
+                  "propext"
+                ],
+                "constants": 57545,
+                "edges": 1378311,
+                "full_metadata": true,
+                "partial": 0,
+                "roots": 128,
+                "token": "0e6c7a54fb6e991d285c2d020d838687c0f1526f1f1f6f4c3e757fd264c86250",
+                "unsafe": 0
+              }
+            }
           }
         },
         {
@@ -5834,7 +7429,36 @@
           "verification": {
             "kernel": "passed",
             "receipt": "evidence/second-edition/acceptance/core-cap-trust-20261009/receipt.json",
-            "scope": "Independent complete declaration audit of selected type/value/inductive/recursor metadata; trust0/werror, Std3, unsafe0, partial0."
+            "scope": "Actual package build and independent full declaration closure audit; scoped source digest and exact declaration roots rechecked against the current map.",
+            "proof_package": "v2-core-full-stock",
+            "build": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-paper-build-20261009/result.json",
+                "sha256": "9054cc8f5fcfd6b600f02c27fdea7f90aae67e72185161e8b92c313974f72e17"
+              },
+              "source_scope_sha256": "85244d68ecc8dfe2a24a2140c39b15ce5da1a6d35f74ed51c4c8c24a81d014f4"
+            },
+            "trust": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-cap-trust-20261009/receipt.json",
+                "sha256": "51170b83425f0f831b84fb953dbe0a2e79bd80977b653671bf5802d86a2aa5cf"
+              },
+              "source_scope_sha256": "85244d68ecc8dfe2a24a2140c39b15ce5da1a6d35f74ed51c4c8c24a81d014f4",
+              "audit": {
+                "axioms": [
+                  "Quot.sound",
+                  "Classical.choice",
+                  "propext"
+                ],
+                "constants": 57545,
+                "edges": 1378311,
+                "full_metadata": true,
+                "partial": 0,
+                "roots": 128,
+                "token": "0e6c7a54fb6e991d285c2d020d838687c0f1526f1f1f6f4c3e757fd264c86250",
+                "unsafe": 0
+              }
+            }
           }
         },
         {
@@ -5881,7 +7505,36 @@
           "verification": {
             "kernel": "passed",
             "receipt": "evidence/second-edition/acceptance/core-cap-trust-20261009/receipt.json",
-            "scope": "Independent complete declaration audit of selected type/value/inductive/recursor metadata; trust0/werror, Std3, unsafe0, partial0."
+            "scope": "Actual package build and independent full declaration closure audit; scoped source digest and exact declaration roots rechecked against the current map.",
+            "proof_package": "v2-core-full-stock",
+            "build": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-paper-build-20261009/result.json",
+                "sha256": "9054cc8f5fcfd6b600f02c27fdea7f90aae67e72185161e8b92c313974f72e17"
+              },
+              "source_scope_sha256": "85244d68ecc8dfe2a24a2140c39b15ce5da1a6d35f74ed51c4c8c24a81d014f4"
+            },
+            "trust": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-cap-trust-20261009/receipt.json",
+                "sha256": "51170b83425f0f831b84fb953dbe0a2e79bd80977b653671bf5802d86a2aa5cf"
+              },
+              "source_scope_sha256": "85244d68ecc8dfe2a24a2140c39b15ce5da1a6d35f74ed51c4c8c24a81d014f4",
+              "audit": {
+                "axioms": [
+                  "Quot.sound",
+                  "Classical.choice",
+                  "propext"
+                ],
+                "constants": 57545,
+                "edges": 1378311,
+                "full_metadata": true,
+                "partial": 0,
+                "roots": 128,
+                "token": "0e6c7a54fb6e991d285c2d020d838687c0f1526f1f1f6f4c3e757fd264c86250",
+                "unsafe": 0
+              }
+            }
           }
         }
       ],
@@ -6684,7 +8337,36 @@
           "verification": {
             "kernel": "passed",
             "receipt": "evidence/second-edition/acceptance/core-cap-trust-20261009/receipt.json",
-            "scope": "Independent complete declaration audit of selected type/value/inductive/recursor metadata; trust0/werror, Std3, unsafe0, partial0."
+            "scope": "Actual package build and independent full declaration closure audit; scoped source digest and exact declaration roots rechecked against the current map.",
+            "proof_package": "v2-core-runtime-calculation",
+            "build": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-paper-build-20261009/result.json",
+                "sha256": "9054cc8f5fcfd6b600f02c27fdea7f90aae67e72185161e8b92c313974f72e17"
+              },
+              "source_scope_sha256": "c4f55cab577948aff72afbdafdbea94b9c328f2ddf529fc08015b1d8ab880602"
+            },
+            "trust": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-cap-trust-20261009/receipt.json",
+                "sha256": "51170b83425f0f831b84fb953dbe0a2e79bd80977b653671bf5802d86a2aa5cf"
+              },
+              "source_scope_sha256": "c4f55cab577948aff72afbdafdbea94b9c328f2ddf529fc08015b1d8ab880602",
+              "audit": {
+                "axioms": [
+                  "Quot.sound",
+                  "Classical.choice",
+                  "propext"
+                ],
+                "constants": 75718,
+                "edges": 2172637,
+                "full_metadata": true,
+                "partial": 0,
+                "roots": 58,
+                "token": "959992d079c8212d162ee008391a6c7078d4fdfbaa3e0317ffcc1172c5ce394b",
+                "unsafe": 0
+              }
+            }
           }
         },
         {
@@ -6764,7 +8446,36 @@
           "verification": {
             "kernel": "passed",
             "receipt": "evidence/second-edition/acceptance/core-cap-trust-20261009/receipt.json",
-            "scope": "Independent complete declaration audit of selected type/value/inductive/recursor metadata; trust0/werror, Std3, unsafe0, partial0."
+            "scope": "Actual package build and independent full declaration closure audit; scoped source digest and exact declaration roots rechecked against the current map.",
+            "proof_package": "v2-core-runtime-calculation",
+            "build": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-paper-build-20261009/result.json",
+                "sha256": "9054cc8f5fcfd6b600f02c27fdea7f90aae67e72185161e8b92c313974f72e17"
+              },
+              "source_scope_sha256": "c4f55cab577948aff72afbdafdbea94b9c328f2ddf529fc08015b1d8ab880602"
+            },
+            "trust": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-cap-trust-20261009/receipt.json",
+                "sha256": "51170b83425f0f831b84fb953dbe0a2e79bd80977b653671bf5802d86a2aa5cf"
+              },
+              "source_scope_sha256": "c4f55cab577948aff72afbdafdbea94b9c328f2ddf529fc08015b1d8ab880602",
+              "audit": {
+                "axioms": [
+                  "Quot.sound",
+                  "Classical.choice",
+                  "propext"
+                ],
+                "constants": 75718,
+                "edges": 2172637,
+                "full_metadata": true,
+                "partial": 0,
+                "roots": 58,
+                "token": "959992d079c8212d162ee008391a6c7078d4fdfbaa3e0317ffcc1172c5ce394b",
+                "unsafe": 0
+              }
+            }
           }
         },
         {
@@ -6814,7 +8525,36 @@
           "verification": {
             "kernel": "passed",
             "receipt": "evidence/second-edition/acceptance/core-cap-trust-20261009/receipt.json",
-            "scope": "Independent complete declaration audit of selected type/value/inductive/recursor metadata; trust0/werror, Std3, unsafe0, partial0."
+            "scope": "Actual package build and independent full declaration closure audit; scoped source digest and exact declaration roots rechecked against the current map.",
+            "proof_package": "v2-core-runtime-calculation",
+            "build": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-paper-build-20261009/result.json",
+                "sha256": "9054cc8f5fcfd6b600f02c27fdea7f90aae67e72185161e8b92c313974f72e17"
+              },
+              "source_scope_sha256": "c4f55cab577948aff72afbdafdbea94b9c328f2ddf529fc08015b1d8ab880602"
+            },
+            "trust": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-cap-trust-20261009/receipt.json",
+                "sha256": "51170b83425f0f831b84fb953dbe0a2e79bd80977b653671bf5802d86a2aa5cf"
+              },
+              "source_scope_sha256": "c4f55cab577948aff72afbdafdbea94b9c328f2ddf529fc08015b1d8ab880602",
+              "audit": {
+                "axioms": [
+                  "Quot.sound",
+                  "Classical.choice",
+                  "propext"
+                ],
+                "constants": 75718,
+                "edges": 2172637,
+                "full_metadata": true,
+                "partial": 0,
+                "roots": 58,
+                "token": "959992d079c8212d162ee008391a6c7078d4fdfbaa3e0317ffcc1172c5ce394b",
+                "unsafe": 0
+              }
+            }
           }
         }
       ],
@@ -6884,7 +8624,36 @@
           "verification": {
             "kernel": "passed",
             "receipt": "evidence/second-edition/acceptance/core-cap-trust-20261009/receipt.json",
-            "scope": "Independent complete declaration audit of selected type/value/inductive/recursor metadata; trust0/werror, Std3, unsafe0, partial0."
+            "scope": "Actual package build and independent full declaration closure audit; scoped source digest and exact declaration roots rechecked against the current map.",
+            "proof_package": "v2-core-runtime-calculation",
+            "build": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-paper-build-20261009/result.json",
+                "sha256": "9054cc8f5fcfd6b600f02c27fdea7f90aae67e72185161e8b92c313974f72e17"
+              },
+              "source_scope_sha256": "c4f55cab577948aff72afbdafdbea94b9c328f2ddf529fc08015b1d8ab880602"
+            },
+            "trust": {
+              "receipt": {
+                "path": "evidence/second-edition/acceptance/core-cap-trust-20261009/receipt.json",
+                "sha256": "51170b83425f0f831b84fb953dbe0a2e79bd80977b653671bf5802d86a2aa5cf"
+              },
+              "source_scope_sha256": "c4f55cab577948aff72afbdafdbea94b9c328f2ddf529fc08015b1d8ab880602",
+              "audit": {
+                "axioms": [
+                  "Quot.sound",
+                  "Classical.choice",
+                  "propext"
+                ],
+                "constants": 75718,
+                "edges": 2172637,
+                "full_metadata": true,
+                "partial": 0,
+                "roots": 58,
+                "token": "959992d079c8212d162ee008391a6c7078d4fdfbaa3e0317ffcc1172c5ce394b",
+                "unsafe": 0
+              }
+            }
           }
         }
       ],
@@ -78932,7 +80701,12 @@
             "shared_background_intake_rha0030.consume()"
           ],
           "verification": {
-            "status": "pending"
+            "status": "passed",
+            "receipt": {
+              "path": "evidence/second-edition/acceptance/bell-replay-20261009/receipt.json",
+              "sha256": "b5bab2c7ff37d64fa716cb1dc0a4af13b85f172af85a03122ffb8e234a19af59"
+            },
+            "scientific_freeze_commit": null
           }
         },
         {
@@ -79198,7 +80972,12 @@
             "registered_duhamel_run_rha0031.execute(original RHA31 freeze, fresh output)"
           ],
           "verification": {
-            "status": "pending"
+            "status": "passed",
+            "receipt": {
+              "path": "evidence/second-edition/acceptance/bell-replay-20261009/receipt.json",
+              "sha256": "b5bab2c7ff37d64fa716cb1dc0a4af13b85f172af85a03122ffb8e234a19af59"
+            },
+            "scientific_freeze_commit": "d56c6b46078426b3acca16e5854c80ef4a14a5f5"
           }
         },
         {
@@ -79465,18 +81244,29 @@
             "registered_forcing_independent_rha0034.check(full original DAG, law, bank)"
           ],
           "verification": {
-            "status": "pending"
+            "status": "passed",
+            "receipt": {
+              "path": "evidence/second-edition/acceptance/bell-replay-20261009/receipt.json",
+              "sha256": "b5bab2c7ff37d64fa716cb1dc0a4af13b85f172af85a03122ffb8e234a19af59"
+            },
+            "scientific_freeze_commit": "aa6102e4d4fd397e3bf66950e7bc5af46e103e58"
           }
         }
       ],
       "scientific_verification": {
-        "status": "pending",
+        "status": "passed",
         "check_ids": [
-          "v2-bell-shared-background",
+          "v2-bell-first-registered-forcing",
           "v2-bell-registered-duhamel",
-          "v2-bell-first-registered-forcing"
+          "v2-bell-shared-background"
         ],
-        "scope": "new public execution of existing frozen consumers; no new solves"
+        "receipt": {
+          "path": "evidence/second-edition/acceptance/bell-replay-20261009/receipt.json",
+          "sha256": "b5bab2c7ff37d64fa716cb1dc0a4af13b85f172af85a03122ffb8e234a19af59"
+        },
+        "scope": "Original frozen consumers, full independent DAG/prices/data comparisons; separate original certifications preserved.",
+        "new_pump_or_free_curve_solves": 0,
+        "Git_ancestry_replayed": false
       }
     }
   ],
@@ -79509,8 +81299,59 @@
           },
           "original_failure_receipt": "evidence/second-edition/acceptance/core-build-failure-20261009/result.json",
           "original_source_archive": "docs/source/second-edition/core/historical/InventoryTransport-e0555809.lean"
+        },
+        {
+          "public_path": "Lean/H0mework/Versions/PR/Realization/Operations/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/SourceFamily/Effect/Payment.lean",
+          "source_sha256": "98ee38adc3bd17717a09909210e71bf04bd8f08c61ddcae12d6e756a6b3cc100",
+          "target_sha256": "a8e0cc11de09e2dcac88b89b8bcf0d4d9d31a8e8f8b886bbaa22e55a53c46807",
+          "source_origin": {
+            "kind": "H0-proof-elaboration-only-supplement",
+            "source_repository": "https://github.com/Sapientropic/H0mework.git",
+            "source_commit": "dd60317f95f03945142c5f70c11e60d50d350889",
+            "source_path": "docs/source/second-edition/core/supplements/EffectPayment-e0555809.lean",
+            "dependency_epoch": "e05558097256e86b537c019c8ca63cd449d6b2d2",
+            "original_source_path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/SourceFamily/Effect/Payment.lean",
+            "original_source_commit": "e05558097256e86b537c019c8ca63cd449d6b2d2",
+            "original_source_sha256": "304e5802c31fb1074966aa15e88320673fee44d67eb1be7f5e4c4449f7a270b7",
+            "original_failure_source_artifact": "docs/source/second-edition/core/historical/EffectPayment-e0555809.lean",
+            "edit_scope": "Proof commands only; statements, premises and all data definitions are byte-identical.",
+            "focused_build_log": ".local/second-edition-20261009/core-elaboration-repair-focus.log"
+          }
         }
-      ]
+      ],
+      "verification": {
+        "kernel": "passed",
+        "proof_package": "v2-core-action-reader",
+        "build": {
+          "receipt": {
+            "path": "evidence/second-edition/acceptance/core-paper-build-20261009/result.json",
+            "sha256": "9054cc8f5fcfd6b600f02c27fdea7f90aae67e72185161e8b92c313974f72e17"
+          },
+          "source_scope_sha256": "86c10316587550d1ad1bbbaae1f98e8bae7f8bf3a2bb669c78a425907131713b"
+        },
+        "trust": {
+          "receipt": {
+            "path": "evidence/second-edition/acceptance/core-action-trust-20261009/result.json",
+            "sha256": "844c422a938417043cc15ea7fb0b49367c31f23860caf4775931db1aa2fca859"
+          },
+          "source_scope_sha256": "86c10316587550d1ad1bbbaae1f98e8bae7f8bf3a2bb669c78a425907131713b",
+          "audit": {
+            "axioms": [
+              "Quot.sound",
+              "Classical.choice",
+              "propext"
+            ],
+            "constants": 28645,
+            "edges": 648944,
+            "full_metadata": true,
+            "partial": 0,
+            "roots": 361,
+            "token": "58a810db6a8581eba334c047139ae7b4d94d284a560732061680347eaadd5691",
+            "unsafe": 0
+          }
+        },
+        "scope": "Actual package build and independent full declaration closure audit; scoped source digest and exact declaration roots rechecked against the current map."
+      }
     },
     {
       "id": "v2-core-difference-feedback",
@@ -79540,8 +81381,239 @@
           },
           "original_failure_receipt": "evidence/second-edition/acceptance/core-build-failure-20261009/result.json",
           "original_source_archive": "docs/source/second-edition/core/historical/InventoryTransport-e0555809.lean"
+        },
+        {
+          "public_path": "Lean/H0mework/Versions/C62/Realization/Operations/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/Future/Actual.lean",
+          "source_sha256": "4a1b6fd48226a942408d0cc8531db0cc5a94a51f0fe0c07a02297895c3f51755",
+          "target_sha256": "324798a0ca8483ba165592e7ab6c49317f2dd691cd854c066e9a33a7571d006c",
+          "source_origin": {
+            "kind": "H0-proof-elaboration-only-supplement",
+            "source_repository": "https://github.com/Sapientropic/H0mework.git",
+            "source_commit": "dd60317f95f03945142c5f70c11e60d50d350889",
+            "source_path": "docs/source/second-edition/core/supplements/FutureActual-c62f3d25.lean",
+            "dependency_epoch": "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46",
+            "original_source_path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/Future/Actual.lean",
+            "original_source_commit": "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46",
+            "original_source_sha256": "e3360786c0b3afa39b2f7fd2dffe09eaf58e3e34e465b72a32df6160d6b6a243",
+            "original_failure_source_artifact": "docs/source/second-edition/core/historical/FutureActual-c62f3d25.lean",
+            "edit_scope": "Proof commands only; statements, premises and all data definitions are byte-identical.",
+            "focused_build_log": ".local/second-edition-20261009/core-elaboration-repair-focus.log"
+          }
+        },
+        {
+          "public_path": "Lean/H0mework/Versions/C62/Realization/Operations/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/SourceFamily/Effect/Payment.lean",
+          "source_sha256": "98ee38adc3bd17717a09909210e71bf04bd8f08c61ddcae12d6e756a6b3cc100",
+          "target_sha256": "10ed3676ab28a3e8a509e3588c358667a99534dec6d0b0f86da19295de0e01ba",
+          "source_origin": {
+            "kind": "H0-proof-elaboration-only-supplement",
+            "source_repository": "https://github.com/Sapientropic/H0mework.git",
+            "source_commit": "dd60317f95f03945142c5f70c11e60d50d350889",
+            "source_path": "docs/source/second-edition/core/supplements/EffectPayment-c62f3d25.lean",
+            "dependency_epoch": "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46",
+            "original_source_path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/SourceFamily/Effect/Payment.lean",
+            "original_source_commit": "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46",
+            "original_source_sha256": "304e5802c31fb1074966aa15e88320673fee44d67eb1be7f5e4c4449f7a270b7",
+            "original_failure_source_artifact": "docs/source/second-edition/core/historical/EffectPayment-c62f3d25.lean",
+            "edit_scope": "Proof commands only; statements, premises and all data definitions are byte-identical.",
+            "focused_build_log": ".local/second-edition-20261009/core-elaboration-repair-focus.log"
+          }
+        },
+        {
+          "public_path": "Lean/H0mework/Versions/C62/Realization/Operations/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/SourceFamily/Effect/Installed.lean",
+          "source_sha256": "d1dcc63ce0131ec1ad1f3e0ff11ee5b246d051cb3093a649d978835b56c0fcbd",
+          "target_sha256": "c100b2ba1bf58481c1257512c50cc8f7eb69526258004f757719383455b67d07",
+          "source_origin": {
+            "kind": "H0-proof-elaboration-only-supplement",
+            "source_repository": "https://github.com/Sapientropic/H0mework.git",
+            "source_commit": "4c2f8c5ccb1c2601849b5f414410625c7d36c6b5",
+            "source_path": "docs/source/second-edition/core/supplements/EffectInstalled-c62f3d25.lean",
+            "dependency_epoch": "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46",
+            "original_source_path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/SourceFamily/Effect/Installed.lean",
+            "original_source_commit": "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46",
+            "original_source_sha256": "53108308b611565e86f43a84111bd7187dad60f05568848f2b915bb4ee4be02e",
+            "original_failure_source_artifact": "docs/source/second-edition/core/historical/EffectInstalled-c62f3d25.lean",
+            "edit_scope": "Private proof lemma and proof commands only; all original public statements, premises and data definitions are byte-identical. The actual residual request pays two AST nodes; its first paid step leaves a positive receiver budget, independently of an optional calculation reader.",
+            "focused_build_log": ".local/second-edition-20261009/installed-proof-probe/lean.log"
+          }
+        },
+        {
+          "public_path": "Lean/H0mework/Versions/C62/Realization/Operations/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/SourceFamily/Effect/Environment.lean",
+          "source_sha256": "a55cf5326dd69529af15954a07e71d44cc3b5ddf92c44b67c960d2212b29fec6",
+          "target_sha256": "238f2659388d6da3e54de6bb78842d666a66f0a6b1b917f4eb89bd77ea0ec3c4",
+          "source_origin": {
+            "kind": "H0-source-action-environment-contract-repair",
+            "source_repository": "https://github.com/Sapientropic/H0mework.git",
+            "source_commit": "06fe5ede76de8954633cdae179feafd9e482b359",
+            "source_path": "docs/source/second-edition/core/supplements/ActualNativeEnvironment-c62f3d25.lean",
+            "dependency_epoch": "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46",
+            "original_source_path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/SourceFamily/Effect/Environment.lean",
+            "original_source_commit": "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46",
+            "original_source_sha256": "de109ae75696572b4858097fb0221c8093fb1afef8ed55a70b1b7482a5d46030",
+            "original_failure_source_artifact": "docs/source/second-edition/core/historical/ActualNativeEnvironment-c62f3d25.lean",
+            "edit_scope": "Proof commands and the produced factory environment argument only; all original public statements, premises and data definitions are byte-identical. The actual source-action environment contract is discharged by the factory producer.",
+            "focused_build_log": ".local/second-edition-20261009/generated-environment-probe/focused-build-2.log"
+          }
+        },
+        {
+          "public_path": "Lean/H0mework/Versions/C62/Realization/Operations/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/SourceFamily/Effect/Environment/Generated.lean",
+          "source_sha256": "c356429a6006d3db72ec7825c65d8c413efb2548d1685068e1a82b2b8892f5ae",
+          "target_sha256": "c34e7c4c495d22afbc2ea95dfc95ccab4907cebceed23d723f85b3ce4055fbef",
+          "source_origin": {
+            "kind": "H0-source-action-environment-contract-repair",
+            "source_repository": "https://github.com/Sapientropic/H0mework.git",
+            "source_commit": "06fe5ede76de8954633cdae179feafd9e482b359",
+            "source_path": "docs/source/second-edition/core/supplements/GeneratedEnvironment-c62f3d25.lean",
+            "dependency_epoch": "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46",
+            "original_source_path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/SourceFamily/Effect/Environment/Generated.lean",
+            "original_source_commit": "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46",
+            "original_source_sha256": "332f72f9ae404f2d39223dc637b45ba9184f1f9a640a7d33db58ac4c61f2533c",
+            "original_failure_source_artifact": "docs/source/second-edition/core/historical/GeneratedEnvironment-c62f3d25.lean",
+            "edit_scope": "All original data definitions are unchanged. Three previously unconstrained generic environment lemmas now require actionReader environment preservation as an input-source contract; the actual factory produces this contract. The failed unconstrained original statements are retained separately.",
+            "focused_build_log": ".local/second-edition-20261009/generated-environment-probe/focused-build-2.log"
+          }
+        },
+        {
+          "public_path": "Lean/H0mework/Versions/C62/Realization/Operations/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/SourceFamily/Foresight/Contextual/Factory.lean",
+          "source_sha256": "9e0f382d9fc3944fa730a719246b72bc4a27325177fb97fbbff0003715cfe4ce",
+          "target_sha256": "89661cd599595899fdf5c4508ec0e07ae3a63893314ef8a8bdf1d4bb13b9dffb",
+          "source_origin": {
+            "kind": "H0-source-action-environment-contract-repair",
+            "source_repository": "https://github.com/Sapientropic/H0mework.git",
+            "source_commit": "06fe5ede76de8954633cdae179feafd9e482b359",
+            "source_path": "docs/source/second-edition/core/supplements/ContextualFactory-c62f3d25.lean",
+            "dependency_epoch": "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46",
+            "original_source_path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/SourceFamily/Foresight/Contextual/Factory.lean",
+            "original_source_commit": "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46",
+            "original_source_sha256": "72914d6c56df4c303cfd61d5bb2893a7982a1223e08eb94bcfd910bbaff69e15",
+            "original_failure_source_artifact": "docs/source/second-edition/core/historical/ContextualFactory-c62f3d25.lean",
+            "edit_scope": "All original declarations and data definitions are unchanged. Added factory_action_environment, proved by the actual Incoming none/some construction for every occurrence, preserves the original reader environment while allowing independent calculation syntax.",
+            "focused_build_log": ".local/second-edition-20261009/generated-environment-probe/focused-build-2.log"
+          }
+        },
+        {
+          "public_path": "Lean/H0mework/Versions/C62/Realization/Operations/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/SourceFamily/Foresight/Contextual/Profile/ActiveClaim/Environment.lean",
+          "source_sha256": "524b3dee5605bddcf8f239fabf1e8b55d63320fa8ccb5187bdfbf1d3204a6b4e",
+          "target_sha256": "74d57e5966c42833e9e2b669e15ad28421cd2de6fde123b64d5c7ae58393770d",
+          "source_origin": {
+            "kind": "H0-source-action-environment-contract-repair",
+            "source_repository": "https://github.com/Sapientropic/H0mework.git",
+            "source_commit": "06fe5ede76de8954633cdae179feafd9e482b359",
+            "source_path": "docs/source/second-edition/core/supplements/ActiveClaimEnvironment-c62f3d25.lean",
+            "dependency_epoch": "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46",
+            "original_source_path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/SourceFamily/Foresight/Contextual/Profile/ActiveClaim/Environment.lean",
+            "original_source_commit": "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46",
+            "original_source_sha256": "956c977e49544d79d0ba5f64db8ffc23921d75dacfcefbe594fe9b39e03106df",
+            "original_failure_source_artifact": "docs/source/second-edition/core/historical/ActiveClaimEnvironment-c62f3d25.lean",
+            "edit_scope": "Proof commands and the produced factory environment argument only; all original public statements, premises and data definitions are byte-identical. The actual source-action environment contract is discharged by the factory producer.",
+            "focused_build_log": ".local/second-edition-20261009/generated-environment-probe/focused-build-2.log"
+          }
+        },
+        {
+          "public_path": "Lean/H0mework/Versions/C62/Realization/Operations/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/SourceFamily/Foresight/Contextual/Profile/Erasure.lean",
+          "source_sha256": "849e14a38989433c180ef619e46245127c657e715f1c288ae71ed21f6b085a16",
+          "target_sha256": "3c884554f03ddc137d59f74f4e6309ce01fcd050b690808539a56fa672a16098",
+          "source_origin": {
+            "kind": "H0-source-action-environment-contract-repair",
+            "source_repository": "https://github.com/Sapientropic/H0mework.git",
+            "source_commit": "06fe5ede76de8954633cdae179feafd9e482b359",
+            "source_path": "docs/source/second-edition/core/supplements/EnvironmentErasure-c62f3d25.lean",
+            "dependency_epoch": "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46",
+            "original_source_path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/SourceFamily/Foresight/Contextual/Profile/Erasure.lean",
+            "original_source_commit": "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46",
+            "original_source_sha256": "cec2be6a7a097e8a5d6402412bedf42eb2cbce12b7c16f71051cd49d00c71634",
+            "original_failure_source_artifact": "docs/source/second-edition/core/historical/EnvironmentErasure-c62f3d25.lean",
+            "edit_scope": "Proof commands and the produced factory environment argument only; all original public statements, premises and data definitions are byte-identical. The actual source-action environment contract is discharged by the factory producer.",
+            "focused_build_log": ".local/second-edition-20261009/generated-environment-probe/focused-build-2.log"
+          }
+        },
+        {
+          "public_path": "Lean/H0mework/Versions/C62/Realization/Operations/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/SourceFamily/Foresight/Contextual/Profile/Finite/Reader/Difference/Incoming.lean",
+          "source_sha256": "646ae7ac110cc1015ab16c4dffa6b70195bb0bd101c9415641c06162b5b5de67",
+          "target_sha256": "622e85a6dcc75f0c92cd14fe07c28531c2ffd07b6a411bfbc8979e09931c0721",
+          "source_origin": {
+            "kind": "H0-finite-calculation-source-identity-repair",
+            "source_repository": "https://github.com/Sapientropic/H0mework.git",
+            "source_commit": "e6908c97bb87417071dcefc4edcf4c6793517e56",
+            "source_path": "docs/source/second-edition/core/supplements/FiniteIncoming-c62f3d25.lean",
+            "dependency_epoch": "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46",
+            "original_source_path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/SourceFamily/Foresight/Contextual/Profile/Finite/Reader/Difference/Incoming.lean",
+            "original_source_commit": "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46",
+            "original_source_sha256": "b319e6a83d51134e35a2fb914b39d5fbc086c5a466655b83b9bab70413f11da3",
+            "original_failure_source_artifact": "docs/source/second-edition/core/historical/FiniteIncoming-c62f3d25.lean",
+            "edit_scope": "Dependency import moved below finite Installation; all Incoming data definitions and public declaration statements are unchanged.",
+            "focused_build_log": ".local/second-edition-20261009/finite-calculation-probe-2/build.log"
+          }
+        },
+        {
+          "public_path": "Lean/H0mework/Versions/C62/Realization/Operations/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/SourceFamily/Foresight/Contextual/Profile/Finite/Installation.lean",
+          "source_sha256": "68b48e4a0c16c925504b2e34755d52ea11044bb373c094aa233136a627a7ab7c",
+          "target_sha256": "30210b03cb8e16eb70eedae7e4577edf9ee3e1a299860a8fea582584e0ce4dd0",
+          "source_origin": {
+            "kind": "H0-finite-calculation-source-identity-repair",
+            "source_repository": "https://github.com/Sapientropic/H0mework.git",
+            "source_commit": "e6908c97bb87417071dcefc4edcf4c6793517e56",
+            "source_path": "docs/source/second-edition/core/supplements/FiniteCalculationInstallation-c62f3d25.lean",
+            "dependency_epoch": "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46",
+            "original_source_path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/SourceFamily/Foresight/Contextual/Profile/Finite/Installation.lean",
+            "original_source_commit": "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46",
+            "original_source_sha256": "9d3dfa1ba8f79bca03ac6dcac6603f9a2e6f18d612319daeec5e5ecbc84f6430",
+            "original_failure_source_artifact": "docs/source/second-edition/core/historical/FiniteCalculationInstallation-c62f3d25.lean",
+            "edit_scope": "Finite configuration now uses the already generated Incoming calculationReader instead of none. This is a construction/source-identity repair, not a proof-only transformation: the actual raw expression and its paid trace now coincide with the actual factory; reader/environment and inventory construction fields, declaration headers and final premises retain their statements.",
+            "focused_build_log": ".local/second-edition-20261009/finite-calculation-probe-2/build.log"
+          }
+        },
+        {
+          "public_path": "Lean/H0mework/Versions/C62/Realization/Operations/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/SourceFamily/Foresight/Contextual/Psi/Source.lean",
+          "source_sha256": "57df93a0798c4292ed50a269b83320f1fda4d662ddd0ca2772b7e49c631a0942",
+          "target_sha256": "301e0eee2439c8e0aee99bcdea2e215553c7ec42837cad2520fee5844c422937",
+          "source_origin": {
+            "kind": "H0-finite-calculation-source-identity-repair",
+            "source_repository": "https://github.com/Sapientropic/H0mework.git",
+            "source_commit": "e6908c97bb87417071dcefc4edcf4c6793517e56",
+            "source_path": "docs/source/second-edition/core/supplements/FinitePsiSource-c62f3d25.lean",
+            "dependency_epoch": "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46",
+            "original_source_path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/SourceFamily/Foresight/Contextual/Psi/Source.lean",
+            "original_source_commit": "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46",
+            "original_source_sha256": "eae4703cc56ea167dd19a0473812bb50a91d7082f282d422d315345a0b7882e1",
+            "original_failure_source_artifact": "docs/source/second-edition/core/historical/FinitePsiSource-c62f3d25.lean",
+            "edit_scope": "Added direct finite Installation import after lowering Incoming dependency; all Psi data definitions, original public declaration statements and premises are unchanged. Its existing cfg0 already consumed Incoming.",
+            "focused_build_log": ".local/second-edition-20261009/finite-calculation-probe-2/build.log"
+          }
         }
-      ]
+      ],
+      "verification": {
+        "kernel": "passed",
+        "proof_package": "v2-core-difference-feedback",
+        "build": {
+          "receipt": {
+            "path": "evidence/second-edition/acceptance/core-paper-build-20261009/result.json",
+            "sha256": "9054cc8f5fcfd6b600f02c27fdea7f90aae67e72185161e8b92c313974f72e17"
+          },
+          "source_scope_sha256": "7c2d202c7b94c329d2ff80ba2b78b28f6c14db2b71dee06af8c1fd6b7d380745"
+        },
+        "trust": {
+          "receipt": {
+            "path": "evidence/second-edition/acceptance/core-difference-trust-20261009/result.json",
+            "sha256": "889ed20317ebbe5a07b6b923a8afdcd68058c312d8be33926ac6e9c8b0cee4db"
+          },
+          "source_scope_sha256": "7c2d202c7b94c329d2ff80ba2b78b28f6c14db2b71dee06af8c1fd6b7d380745",
+          "audit": {
+            "axioms": [
+              "Quot.sound",
+              "Classical.choice",
+              "propext"
+            ],
+            "constants": 27056,
+            "edges": 577413,
+            "full_metadata": true,
+            "partial": 0,
+            "roots": 202,
+            "token": "5516affc65987f241e513728dd3a156312cc11fca56427677c7c94cc85a7f979",
+            "unsafe": 0
+          }
+        },
+        "scope": "Actual package build and independent full declaration closure audit; scoped source digest and exact declaration roots rechecked against the current map."
+      }
     },
     {
       "id": "v2-core-completion",
@@ -79557,7 +81629,36 @@
       },
       "verification": {
         "kernel": "passed",
-        "receipt": "evidence/second-edition/acceptance/core-cap-trust-20261009/receipt.json"
+        "proof_package": "v2-core-completion",
+        "build": {
+          "receipt": {
+            "path": "evidence/second-edition/acceptance/core-paper-build-20261009/result.json",
+            "sha256": "9054cc8f5fcfd6b600f02c27fdea7f90aae67e72185161e8b92c313974f72e17"
+          },
+          "source_scope_sha256": "b6a7e0340474ad8ad4bdbff1b4d6728a3d609330605ead7745943a0988a2c6fb"
+        },
+        "trust": {
+          "receipt": {
+            "path": "evidence/second-edition/acceptance/core-cap-trust-20261009/receipt.json",
+            "sha256": "51170b83425f0f831b84fb953dbe0a2e79bd80977b653671bf5802d86a2aa5cf"
+          },
+          "source_scope_sha256": "b6a7e0340474ad8ad4bdbff1b4d6728a3d609330605ead7745943a0988a2c6fb",
+          "audit": {
+            "axioms": [
+              "Quot.sound",
+              "Classical.choice",
+              "propext"
+            ],
+            "constants": 13701,
+            "edges": 237506,
+            "full_metadata": true,
+            "partial": 0,
+            "roots": 38,
+            "token": "610beaf214ad31e1f2fe4b803e8a575ce2b7ada9e0ebc2cd59933fd17d327d78",
+            "unsafe": 0
+          }
+        },
+        "scope": "Actual package build and independent full declaration closure audit; scoped source digest and exact declaration roots rechecked against the current map."
       }
     },
     {
@@ -79574,7 +81675,36 @@
       },
       "verification": {
         "kernel": "passed",
-        "receipt": "evidence/second-edition/acceptance/core-cap-trust-20261009/receipt.json"
+        "proof_package": "v2-core-full-stock",
+        "build": {
+          "receipt": {
+            "path": "evidence/second-edition/acceptance/core-paper-build-20261009/result.json",
+            "sha256": "9054cc8f5fcfd6b600f02c27fdea7f90aae67e72185161e8b92c313974f72e17"
+          },
+          "source_scope_sha256": "85244d68ecc8dfe2a24a2140c39b15ce5da1a6d35f74ed51c4c8c24a81d014f4"
+        },
+        "trust": {
+          "receipt": {
+            "path": "evidence/second-edition/acceptance/core-cap-trust-20261009/receipt.json",
+            "sha256": "51170b83425f0f831b84fb953dbe0a2e79bd80977b653671bf5802d86a2aa5cf"
+          },
+          "source_scope_sha256": "85244d68ecc8dfe2a24a2140c39b15ce5da1a6d35f74ed51c4c8c24a81d014f4",
+          "audit": {
+            "axioms": [
+              "Quot.sound",
+              "Classical.choice",
+              "propext"
+            ],
+            "constants": 57545,
+            "edges": 1378311,
+            "full_metadata": true,
+            "partial": 0,
+            "roots": 128,
+            "token": "0e6c7a54fb6e991d285c2d020d838687c0f1526f1f1f6f4c3e757fd264c86250",
+            "unsafe": 0
+          }
+        },
+        "scope": "Actual package build and independent full declaration closure audit; scoped source digest and exact declaration roots rechecked against the current map."
       }
     },
     {
@@ -79591,7 +81721,36 @@
       },
       "verification": {
         "kernel": "passed",
-        "receipt": "evidence/second-edition/acceptance/core-cap-trust-20261009/receipt.json"
+        "proof_package": "v2-core-runtime-calculation",
+        "build": {
+          "receipt": {
+            "path": "evidence/second-edition/acceptance/core-paper-build-20261009/result.json",
+            "sha256": "9054cc8f5fcfd6b600f02c27fdea7f90aae67e72185161e8b92c313974f72e17"
+          },
+          "source_scope_sha256": "c4f55cab577948aff72afbdafdbea94b9c328f2ddf529fc08015b1d8ab880602"
+        },
+        "trust": {
+          "receipt": {
+            "path": "evidence/second-edition/acceptance/core-cap-trust-20261009/receipt.json",
+            "sha256": "51170b83425f0f831b84fb953dbe0a2e79bd80977b653671bf5802d86a2aa5cf"
+          },
+          "source_scope_sha256": "c4f55cab577948aff72afbdafdbea94b9c328f2ddf529fc08015b1d8ab880602",
+          "audit": {
+            "axioms": [
+              "Quot.sound",
+              "Classical.choice",
+              "propext"
+            ],
+            "constants": 75718,
+            "edges": 2172637,
+            "full_metadata": true,
+            "partial": 0,
+            "roots": 58,
+            "token": "959992d079c8212d162ee008391a6c7078d4fdfbaa3e0317ffcc1172c5ce394b",
+            "unsafe": 0
+          }
+        },
+        "scope": "Actual package build and independent full declaration closure audit; scoped source digest and exact declaration roots rechecked against the current map."
       }
     },
     {
@@ -79668,10 +81827,20 @@
     }
   ],
   "acceptance": {
-    "public_identity": "pending execution",
-    "kernel": "pending",
-    "original_certification": "separate original receipt migration in progress",
+    "public_identity": "verified",
+    "kernel": "partial",
+    "original_certification": "Migrated with original source/SHA and scope; separate from actual public execution.",
     "accepted_new_core_packages": [
+      "v2-core-action-reader",
+      "v2-core-difference-feedback",
+      "v2-core-completion",
+      "v2-core-full-stock",
+      "v2-core-runtime-calculation"
+    ],
+    "source_material_commit": "53fd2a31c9ddd2c5fc2f8a2fd83e17bec5833c5e",
+    "accepted_proof_packages": [
+      "v2-core-action-reader",
+      "v2-core-difference-feedback",
       "v2-core-completion",
       "v2-core-full-stock",
       "v2-core-runtime-calculation"
@@ -85014,8 +87183,10 @@
         "phys.P40"
       ],
       "verification": {
-        "status": "pending",
-        "scope": "new public source view and actual consumers"
+        "status": "passed",
+        "receipt": "evidence/second-edition/acceptance/bell-replay-20261009/receipt.json",
+        "source_files": 250,
+        "frozen_resources": 30
       },
       "restore_command": "python3 tools/edition_materials.py --edition second --view second-edition-physics-registered-forcing --output .local/second-edition-runs/<new>/view"
     }

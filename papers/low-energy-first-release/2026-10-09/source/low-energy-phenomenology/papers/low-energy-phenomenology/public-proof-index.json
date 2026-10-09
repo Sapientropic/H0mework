@@ -1,0 +1,3602 @@
+{
+  "schema": "low1-public-proof-index/v1",
+  "scope": "L1-L28; inherited public export and added fixed-source proofs are distinguished.",
+  "source_epochs": {
+    "S": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+    "base": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+    "e055": "e05558097256e86b537c019c8ca63cd449d6b2d2",
+    "c62": "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46",
+    "71e": "71e94e8261d67cf4849a05eb14ac95aa2f7dcbb9"
+  },
+  "public_evidence": {
+    "complete": false,
+    "acceptance_commit": null,
+    "entry_modules": [],
+    "inherited": {
+      "commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+      "tree": "74bdb74b084f7353038522c5715969929ba5d30f",
+      "entry": "H0mework.Papers.LowEnergyPhenomenology",
+      "tag": "papers-2026-09",
+      "annotated_tag_object": "e85d98864daf411bd782dcd3bfb6779b1e8300f9",
+      "tag_peels_to": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+      "GitHub_fixed_commit_accessible": true,
+      "GitHub_url": "https://github.com/Sapientropic/H0mework/commit/ba591b43e13a59ac676919aa153569615f8d4cb2"
+    },
+    "inherited_claims": [
+      "low1.L1",
+      "low1.L2",
+      "low1.L3",
+      "low1.L4",
+      "low1.L5",
+      "low1.L6",
+      "low1.L7",
+      "low1.L8",
+      "low1.L9",
+      "low1.L10",
+      "low1.L11",
+      "low1.L12",
+      "low1.L13",
+      "low1.L14",
+      "low1.L15",
+      "low1.L16",
+      "low1.L17"
+    ],
+    "addition_claims": [
+      "low1.L18",
+      "low1.L19",
+      "low1.L20",
+      "low1.L21",
+      "low1.L22",
+      "low1.L23",
+      "low1.L24",
+      "low1.L25",
+      "low1.L26",
+      "low1.L27",
+      "low1.L28"
+    ],
+    "observation": {
+      "commit": "51867c59042460646e57d5ead4c405cbca05c240",
+      "tree": "b05a81c3834762abef15a196944a77b1a60e0adb",
+      "export_map_sha256": "29f101e7cf69200cc60ec561935e2d223f54a0c9606e0c9c348fb82ad2d2c0b4",
+      "modules": 25362,
+      "artifacts": 2225,
+      "snapshot_fixed_once": true
+    },
+    "request": "h0-evidence-request.md",
+    "actual_new_reproduction_commands": null,
+    "followup_observation": {
+      "commit": "04067b1bcce9828f93e0d670fa473e6bfc39b076",
+      "export_map_sha256": "29f101e7cf69200cc60ec561935e2d223f54a0c9606e0c9c348fb82ad2d2c0b4",
+      "same_export_map_as_fixed_observation": true,
+      "changed_paths": [
+        "docs/ci.md",
+        "docs/evidence-publication.md",
+        "tools/first_release_cache.py",
+        "tools/source_view.py",
+        "tools/test_first_release_cache.py",
+        "tools/test_publication.py"
+      ],
+      "new_claim_binding_status": "unchanged: added production mapping and acceptance still absent"
+    }
+  },
+  "claims": [
+    {
+      "id": "low1.L1",
+      "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+      "precise_claim": "单份原 Weyl 库存加复 Λ⁴ 标量，代入既有一圈代数公式得 b₀ 为 `(56/3,4,1/3,−28)`。原三个本构参数均为1/2；母 U(1) 迹配对为原生配对的两倍。指定坐标的 `I₃=1+4t`、`I₂=1+t/3`、`I₁=1/2−7t` 在 `−1/4<t<1/14` 同时为正，三条曲线无共同交点。",
+      "conditions": [],
+      "written_proof": {
+        "zh": {
+          "file": "manuscript.md",
+          "location": "§2; A.1",
+          "proof": "(A.1)–(A.2), no-common-crossing proof"
+        },
+        "en": {
+          "file": "manuscript-en.md",
+          "location": "§2; A.1",
+          "proof": "(A.1)–(A.2), no-common-crossing proof"
+        }
+      },
+      "production": [
+        {
+          "source_path": "Lean/SaturationMonoid/PhysicsCore/LowEnergy/ScalarInventory.lean",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "61ff3e91bc8bf4b3b54b7d4b05f046a3f572f9057b099f4b9237ef111f394cf1",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "Lean/H0mework/Physics/LowEnergy/ScalarInventory.lean",
+              "source_sha256_matches": true,
+              "target_sha256": "6f33859711cc22cb70d83d893aac446e025269282b482299f23ed76d2afdf46a",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "inverse_import/resource/digest_rewrites"
+            }
+          ],
+          "declaration": "b0_table"
+        },
+        {
+          "source_path": "Lean/SaturationMonoid/PhysicsCore/LowEnergy/Normalization.lean",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "731c83b7ffef5aca0f9688d2941c017524ab091f9492ba3df3d5de5abcd3c605",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "Lean/H0mework/Physics/LowEnergy/Normalization.lean",
+              "source_sha256_matches": true,
+              "target_sha256": "0acd8ef5938298d577de58faeea71e6ba21d43ec9e30b83395d2c11674748699",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "inverse_import/resource/digest_rewrites"
+            }
+          ],
+          "declaration": "native_boundary"
+        },
+        {
+          "source_path": "Lean/SaturationMonoid/PhysicsCore/LowEnergy/Running.lean",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "7938b12ddba0cf32f89ab20aa7da48586cf507c24a53bdc50a49d406b400e292",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "Lean/H0mework/Physics/LowEnergy/Running.lean",
+              "source_sha256_matches": true,
+              "target_sha256": "bf4940234f5cf9fb6d562f0d9213fec38f5af0cca021c82865b6c6f75db15897",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "inverse_import/resource/digest_rewrites"
+            }
+          ],
+          "declaration": "normal_forms"
+        }
+      ],
+      "direct_consumers": [
+        {
+          "source_path": "Lean/SaturationMonoid/PhysicsCore/LowEnergy/Consumer.lean",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "4b7edaec3d4f8d9d14891150091a0c80438f5eb904a79caf0daa04e530b143ed",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "Lean/H0mework/Physics/LowEnergy/Consumer.lean",
+              "source_sha256_matches": true,
+              "target_sha256": "db396e8a70ad780de4aaecff9b3cc1fa977eaa739df54e63ee5250929b585537",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "inverse_import/resource/digest_rewrites"
+            }
+          ],
+          "declaration": "source_inventory_beta"
+        },
+        {
+          "source_path": "Lean/SaturationMonoid/PhysicsCore/LowEnergy/Consumer.lean",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "4b7edaec3d4f8d9d14891150091a0c80438f5eb904a79caf0daa04e530b143ed",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "Lean/H0mework/Physics/LowEnergy/Consumer.lean",
+              "source_sha256_matches": true,
+              "target_sha256": "db396e8a70ad780de4aaecff9b3cc1fa977eaa739df54e63ee5250929b585537",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "inverse_import/resource/digest_rewrites"
+            }
+          ],
+          "declaration": "source_fixed_inventory_diagnostic"
+        }
+      ],
+      "public_binding": {
+        "status": "verified_inherited",
+        "commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+        "entry": "H0mework.Papers.LowEnergyPhenomenology",
+        "evidence_available": true,
+        "runtime_consumer_scripts_available": true
+      }
+    },
+    {
+      "id": "low1.L2",
+      "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+      "precise_claim": "原四项真空的完整 7×21 Yukawa 矩阵满足 `YY†=diag(2,2,2,4,2,0,0)`，秩5、输入核16。原 P286 标量—规范二次块秩9，谱为 `0[3],1[6]` 及 `6x³−26x²+27x−8` 的三根。裸标量母紧稳定子为 `(SU(2)×USp(4)×U(1))/Z₂`，与 P286 相交为指定嵌入 SU(2)。",
+      "conditions": [],
+      "written_proof": {
+        "zh": {
+          "file": "manuscript.md",
+          "location": "§2; A.2–A.3",
+          "proof": "(A.3)–(A.6); complete stabilizer proof"
+        },
+        "en": {
+          "file": "manuscript-en.md",
+          "location": "§2; A.2–A.3",
+          "proof": "(A.3)–(A.6); complete stabilizer proof"
+        }
+      },
+      "production": [
+        {
+          "source_path": "Lean/SaturationMonoid/PhysicsCore/LowEnergy/JointMassCoordinates.lean",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "add329db38cdd8c88f7879a066e1167dd059096cd53011983b812bb6a925b0b3",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "Lean/H0mework/Physics/LowEnergy/JointMassCoordinates.lean",
+              "source_sha256_matches": true,
+              "target_sha256": "dbb36424c02c5b088aca2ab991745f6cf1978b12a33ed12a9e90213f56fb9f0e",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "inverse_import/resource/digest_rewrites"
+            }
+          ],
+          "declaration": "coefficient_actual"
+        },
+        {
+          "source_path": "Lean/SaturationMonoid/PhysicsCore/LowEnergy/JointMassCoordinates.lean",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "add329db38cdd8c88f7879a066e1167dd059096cd53011983b812bb6a925b0b3",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "Lean/H0mework/Physics/LowEnergy/JointMassCoordinates.lean",
+              "source_sha256_matches": true,
+              "target_sha256": "dbb36424c02c5b088aca2ab991745f6cf1978b12a33ed12a9e90213f56fb9f0e",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "inverse_import/resource/digest_rewrites"
+            }
+          ],
+          "declaration": "outputGram_actual"
+        },
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/exact_readout.py",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "ee15e7ec6dae104f2c38050b4b6440267dd2f0d5220dcaf32aafbaddb94249b4",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "scripts/physics/low-energy/exact_readout.py",
+              "source_sha256_matches": true,
+              "target_sha256": "ee15e7ec6dae104f2c38050b4b6440267dd2f0d5220dcaf32aafbaddb94249b4",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "byte_identity"
+            }
+          ]
+        }
+      ],
+      "direct_consumers": [
+        {
+          "source_path": "Lean/SaturationMonoid/PhysicsCore/LowEnergy/Consumer.lean",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "4b7edaec3d4f8d9d14891150091a0c80438f5eb904a79caf0daa04e530b143ed",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "Lean/H0mework/Physics/LowEnergy/Consumer.lean",
+              "source_sha256_matches": true,
+              "target_sha256": "db396e8a70ad780de4aaecff9b3cc1fa977eaa739df54e63ee5250929b585537",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "inverse_import/resource/digest_rewrites"
+            }
+          ],
+          "declaration": "source_mass_entry"
+        },
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/check_readout.py",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "ec1a36d6690c82d99d047f0a633a8daee44c49f44e34e42d953acecdbfa82c73",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "scripts/physics/low-energy/check_readout.py",
+              "source_sha256_matches": true,
+              "target_sha256": "ec1a36d6690c82d99d047f0a633a8daee44c49f44e34e42d953acecdbfa82c73",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "byte_identity"
+            }
+          ]
+        },
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/stabilizer_check.py",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "051e5e9a278c9ea38b7c131e849c198c9938f2d0bd3e0c0551b7c05cd70c265c",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "scripts/physics/low-energy/stabilizer_check.py",
+              "source_sha256_matches": true,
+              "target_sha256": "051e5e9a278c9ea38b7c131e849c198c9938f2d0bd3e0c0551b7c05cd70c265c",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "byte_identity"
+            }
+          ]
+        }
+      ],
+      "public_binding": {
+        "status": "verified_inherited",
+        "commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+        "entry": "H0mework.Papers.LowEnergyPhenomenology",
+        "evidence_available": true,
+        "runtime_consumer_scripts_available": true
+      }
+    },
+    {
+      "id": "low1.L3",
+      "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+      "precise_claim": "每个允许的七维空间齐次初值附近，存在同一正初值半径、双向时间条带和统一 Lipschitz 解族，整个闭初值球都生成完整九场联合零残差。原背景 seed 处的初值 Fréchet 导数是 `exp(tJ)`，并满足同一 Jacobi 方程；导数基点保持为原 seed。",
+      "conditions": [],
+      "written_proof": {
+        "zh": {
+          "file": "manuscript.md",
+          "location": "§3.1–3.2; B.1",
+          "proof": "Theorems 3.1–3.2, (3.1)–(3.9), (B.1)–(B.2)"
+        },
+        "en": {
+          "file": "manuscript-en.md",
+          "location": "§3.1–3.2; B.1",
+          "proof": "Theorems 3.1–3.2, (3.1)–(3.9), (B.1)–(B.2)"
+        }
+      },
+      "production": [
+        {
+          "source_path": "Lean/SaturationMonoid/PhysicsCore/LowEnergy/Evolution/Uniform.lean",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "8d477c3405d36521c3ae818d95cd4472a715fde24aff12f9d611d4f221b813d3",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "Lean/H0mework/Physics/LowEnergyEvolution/Uniform.lean",
+              "source_sha256_matches": true,
+              "target_sha256": "56f329446de218ff91ee42e16ce5c7ed40cda8ea5e2e75fe00d2dfefb3584435",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "inverse_import/resource/digest_rewrites"
+            }
+          ],
+          "declaration": "uniformDevelopment_exists"
+        },
+        {
+          "source_path": "Lean/SaturationMonoid/PhysicsCore/LowEnergy/Evolution/VariationDerivative.lean",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "97757972869a4ae41d00dbf3b767fe6c33314f1b00a67605ba91f3633d128385",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "Lean/H0mework/Physics/LowEnergyEvolution/VariationDerivative.lean",
+              "source_sha256_matches": true,
+              "target_sha256": "d4a2ec8ab136c7a5cd884b76d26c9ce90ffa208d3b1a2e6a8c25572ce721cc2e",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "inverse_import/resource/digest_rewrites"
+            }
+          ],
+          "declaration": "initial_derivative"
+        },
+        {
+          "source_path": "Lean/SaturationMonoid/PhysicsCore/LowEnergy/Evolution/VariationDerivative.lean",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "97757972869a4ae41d00dbf3b767fe6c33314f1b00a67605ba91f3633d128385",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "Lean/H0mework/Physics/LowEnergyEvolution/VariationDerivative.lean",
+              "source_sha256_matches": true,
+              "target_sha256": "d4a2ec8ab136c7a5cd884b76d26c9ce90ffa208d3b1a2e6a8c25572ce721cc2e",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "inverse_import/resource/digest_rewrites"
+            }
+          ],
+          "declaration": "initial_fderiv"
+        }
+      ],
+      "direct_consumers": [
+        {
+          "source_path": "Lean/SaturationMonoid/PhysicsCore/LowEnergy/Evolution/Uniform.lean",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "8d477c3405d36521c3ae818d95cd4472a715fde24aff12f9d611d4f221b813d3",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "Lean/H0mework/Physics/LowEnergyEvolution/Uniform.lean",
+              "source_sha256_matches": true,
+              "target_sha256": "56f329446de218ff91ee42e16ce5c7ed40cda8ea5e2e75fe00d2dfefb3584435",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "inverse_import/resource/digest_rewrites"
+            }
+          ],
+          "declaration": "UniformDevelopment.joint_zero"
+        },
+        {
+          "source_path": "Lean/SaturationMonoid/PhysicsCore/LowEnergy/Evolution/Uniform.lean",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "8d477c3405d36521c3ae818d95cd4472a715fde24aff12f9d611d4f221b813d3",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "Lean/H0mework/Physics/LowEnergyEvolution/Uniform.lean",
+              "source_sha256_matches": true,
+              "target_sha256": "56f329446de218ff91ee42e16ce5c7ed40cda8ea5e2e75fe00d2dfefb3584435",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "inverse_import/resource/digest_rewrites"
+            }
+          ],
+          "declaration": "UniformDevelopment.norm_control"
+        },
+        {
+          "source_path": "Lean/SaturationMonoid/PhysicsCore/LowEnergy/Evolution/Full.lean",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "11c428e5e472dc10a8718c9b114fb42cd5593b158955adbb6db2e9f325d5735b",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "Lean/H0mework/Physics/LowEnergyEvolution/Full.lean",
+              "source_sha256_matches": true,
+              "target_sha256": "5af4798ae652f31ae7dd8d648905e68e5b0591c7a7a6c217fb76b4cbc270bb03",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "inverse_import/resource/digest_rewrites"
+            }
+          ],
+          "declaration": "Solution.joint_zero"
+        },
+        {
+          "source_path": "Lean/SaturationMonoid/PhysicsCore/LowEnergy/Evolution/VariationDerivative.lean",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "97757972869a4ae41d00dbf3b767fe6c33314f1b00a67605ba91f3633d128385",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "Lean/H0mework/Physics/LowEnergyEvolution/VariationDerivative.lean",
+              "source_sha256_matches": true,
+              "target_sha256": "d4a2ec8ab136c7a5cd884b76d26c9ce90ffa208d3b1a2e6a8c25572ce721cc2e",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "inverse_import/resource/digest_rewrites"
+            }
+          ],
+          "declaration": "initial_variation_evolves"
+        }
+      ],
+      "public_binding": {
+        "status": "verified_inherited",
+        "commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+        "entry": "H0mework.Papers.LowEnergyPhenomenology",
+        "evidence_available": true,
+        "runtime_consumer_scripts_available": true
+      }
+    },
+    {
+      "id": "low1.L4",
+      "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+      "precise_claim": "原外幂基与四个 Dirac 分量生成252复坐标及完整算子代数；压缩保留返回项 `C(AB)=C(A)C(B)+C(AQB)`。同一已生成九场配置上，独立对偶响应为 `χ(Aψ)=4s a⁻³⟨ψ̂θ,SAψ̂θ⟩`，实际密度满足 `a³ρ=4s`。",
+      "conditions": [],
+      "written_proof": {
+        "zh": {
+          "file": "manuscript.md",
+          "location": "§2; §3.4; D.3",
+          "proof": "(3.13)–(3.15), (D.2)"
+        },
+        "en": {
+          "file": "manuscript-en.md",
+          "location": "§2; §3.4; D.3",
+          "proof": "(3.13)–(3.15), (D.2)"
+        }
+      },
+      "production": [
+        {
+          "source_path": "Lean/SaturationMonoid/PhysicsCore/LowEnergy/Quantum/Compression.lean",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "72511f833c0e3e36eb7ab79721721d3c3bfd9af0190c46f3c3de5ddffe93960d",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "Lean/H0mework/Physics/LowEnergyQuantum/Compression.lean",
+              "source_sha256_matches": true,
+              "target_sha256": "ab52a5020f7dd632be5081601cc518198806e938d7c0779725bc6282149d0c0d",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "inverse_import/resource/digest_rewrites"
+            }
+          ],
+          "declaration": "compression_product"
+        },
+        {
+          "source_path": "Lean/SaturationMonoid/PhysicsCore/LowEnergy/Quantum/Readout.lean",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "48f6bd152b6353d3736da9acc987a3931dd75522f36966d71833fada2bc52654",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "Lean/H0mework/Physics/LowEnergyQuantum/Readout.lean",
+              "source_sha256_matches": true,
+              "target_sha256": "468bd6a6e9d814daba633bb94d844925fc5a9299e9a5c006d8fc190c12361ae3",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "inverse_import/resource/digest_rewrites"
+            }
+          ],
+          "declaration": "moving_response"
+        },
+        {
+          "source_path": "Lean/SaturationMonoid/PhysicsCore/LowEnergy/Quantum/Density.lean",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "5af4dd1bfb5ef868edb3572f2f048060b021d124b80e4094d274aaf00e52d7cc",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "Lean/H0mework/Physics/LowEnergyQuantum/Density.lean",
+              "source_sha256_matches": true,
+              "target_sha256": "55c9ec92af3e8975fd6c5e5532520f11ed4577b1a3984f51bcf3319f2b6c6bae",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "inverse_import/resource/digest_rewrites"
+            }
+          ],
+          "declaration": "spatial_volume_response"
+        }
+      ],
+      "direct_consumers": [
+        {
+          "source_path": "Lean/SaturationMonoid/PhysicsCore/LowEnergy/Quantum/Readout.lean",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "48f6bd152b6353d3736da9acc987a3931dd75522f36966d71833fada2bc52654",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "Lean/H0mework/Physics/LowEnergyQuantum/Readout.lean",
+              "source_sha256_matches": true,
+              "target_sha256": "468bd6a6e9d814daba633bb94d844925fc5a9299e9a5c006d8fc190c12361ae3",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "inverse_import/resource/digest_rewrites"
+            }
+          ],
+          "declaration": "moving_composite_response"
+        },
+        {
+          "source_path": "Lean/SaturationMonoid/PhysicsCore/LowEnergy/Quantum/Readout.lean",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "48f6bd152b6353d3736da9acc987a3931dd75522f36966d71833fada2bc52654",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "Lean/H0mework/Physics/LowEnergyQuantum/Readout.lean",
+              "source_sha256_matches": true,
+              "target_sha256": "468bd6a6e9d814daba633bb94d844925fc5a9299e9a5c006d8fc190c12361ae3",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "inverse_import/resource/digest_rewrites"
+            }
+          ],
+          "declaration": "source_joint_and_response"
+        },
+        {
+          "source_path": "Lean/SaturationMonoid/PhysicsCore/LowEnergy/MatterSpace/SpatialCARNative.lean",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "ac823a53d5c11a04499d9179501481f6ba8b13ee2ae4f019afa64962200c2397",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "Lean/H0mework/Physics/LowEnergyMatterSpace/SpatialCARNative.lean",
+              "source_sha256_matches": true,
+              "target_sha256": "3d3a7d16cc377e72983c2b5b01b4ed04b066126eb763cae869e79b70b17bac0f",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "inverse_import/resource/digest_rewrites"
+            }
+          ],
+          "declaration": "source_native_allWord"
+        }
+      ],
+      "public_binding": {
+        "status": "verified_inherited",
+        "commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+        "entry": "H0mework.Papers.LowEnergyPhenomenology",
+        "evidence_available": true,
+        "runtime_consumer_scripts_available": true
+      }
+    },
+    {
+      "id": "low1.L5",
+      "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+      "precise_claim": "原径向方程是 `∂t²f/N²−Δf−2f=0`。任意实三动量的基本解分别由 sinh、临界线性函数、sin 给出，初值为零、初速度为 `cos(k·x)`。代回原九场后八类残差精确为零，完整余标架残差为 ε² 乘原二阶负载，故九场第一变分为零。",
+      "conditions": [],
+      "written_proof": {
+        "zh": {
+          "file": "manuscript.md",
+          "location": "§3.3",
+          "proof": "Theorem 3.3, (3.10)–(3.12)"
+        },
+        "en": {
+          "file": "manuscript-en.md",
+          "location": "§3.3",
+          "proof": "Theorem 3.3, (3.10)–(3.12)"
+        }
+      },
+      "production": [
+        {
+          "source_path": "Lean/SaturationMonoid/PhysicsCore/LowEnergy/Spacetime/Propagation.lean",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "f8815e5c8b0e08b2072694cc66f82014e26d463da03aaa817a626095f2c4593c",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "Lean/H0mework/Physics/LowEnergySpacetime/Propagation.lean",
+              "source_sha256_matches": true,
+              "target_sha256": "42544c52243fd7ad1e008491642ffe81dc4818fe06361477d65526cf3f9f7ad9",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "inverse_import/resource/digest_rewrites"
+            }
+          ],
+          "declaration": "fundamentalTime_equation"
+        },
+        {
+          "source_path": "Lean/SaturationMonoid/PhysicsCore/LowEnergy/Spacetime/Propagation.lean",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "f8815e5c8b0e08b2072694cc66f82014e26d463da03aaa817a626095f2c4593c",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "Lean/H0mework/Physics/LowEnergySpacetime/Propagation.lean",
+              "source_sha256_matches": true,
+              "target_sha256": "42544c52243fd7ad1e008491642ffe81dc4818fe06361477d65526cf3f9f7ad9",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "inverse_import/resource/digest_rewrites"
+            }
+          ],
+          "declaration": "fundamentalWave_operator"
+        }
+      ],
+      "direct_consumers": [
+        {
+          "source_path": "Lean/SaturationMonoid/PhysicsCore/LowEnergy/Spacetime/Cauchy.lean",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "240e54186de8652d69e33eef53a14402ec4f09b5f4b67acd81b967955fabebeb",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "Lean/H0mework/Physics/LowEnergySpacetime/Cauchy.lean",
+              "source_sha256_matches": true,
+              "target_sha256": "7743645388eeda98e5c4eaf429dfe5d0b7d707953880845c4f2ed5aab1270230",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "inverse_import/resource/digest_rewrites"
+            }
+          ],
+          "declaration": "fundamentalWave_residual"
+        },
+        {
+          "source_path": "Lean/SaturationMonoid/PhysicsCore/LowEnergy/Spacetime/Cauchy.lean",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "240e54186de8652d69e33eef53a14402ec4f09b5f4b67acd81b967955fabebeb",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "Lean/H0mework/Physics/LowEnergySpacetime/Cauchy.lean",
+              "source_sha256_matches": true,
+              "target_sha256": "7743645388eeda98e5c4eaf429dfe5d0b7d707953880845c4f2ed5aab1270230",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "inverse_import/resource/digest_rewrites"
+            }
+          ],
+          "declaration": "fundamentalWave_nine_channels"
+        },
+        {
+          "source_path": "Lean/SaturationMonoid/PhysicsCore/LowEnergy/Spacetime/Cauchy.lean",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "240e54186de8652d69e33eef53a14402ec4f09b5f4b67acd81b967955fabebeb",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "Lean/H0mework/Physics/LowEnergySpacetime/Cauchy.lean",
+              "source_sha256_matches": true,
+              "target_sha256": "7743645388eeda98e5c4eaf429dfe5d0b7d707953880845c4f2ed5aab1270230",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "inverse_import/resource/digest_rewrites"
+            }
+          ],
+          "declaration": "fundamentalWave_actual_nonzero_speed"
+        },
+        {
+          "source_path": "Lean/SaturationMonoid/PhysicsCore/LowEnergy/Spacetime/Jacobi.lean",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "d6219ada1a3934721406d8d0007decf118e67ae3dbabbe164fe73c683a9d47df",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "Lean/H0mework/Physics/LowEnergySpacetime/Jacobi.lean",
+              "source_sha256_matches": true,
+              "target_sha256": "dd7fac54f6d0947be1153f6ecaa35ef67b2ab386f8bd4ef51b1504274fd51692",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "inverse_import/resource/digest_rewrites"
+            }
+          ],
+          "declaration": "radial_residual"
+        }
+      ],
+      "public_binding": {
+        "status": "verified_inherited",
+        "commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+        "entry": "H0mework.Papers.LowEnergyPhenomenology",
+        "evidence_available": true,
+        "runtime_consumer_scripts_available": true
+      }
+    },
+    {
+      "id": "low1.L6",
+      "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+      "precise_claim": "原289实字段一阶 jet 的二次作用逐次消元为217、145、121变量；Ward 行变换保留112个等价方程。九个源对称方向的常数可逆 minor 生成103维截面；原点秩98，额外五维核保留。轴向十块产生22个不同有理因子、总时间次数126；同步空间／spin／color 旋转将完整原字段及方程运输到所有实三动量，径向目录有14个因子乘积块。",
+      "conditions": [],
+      "written_proof": {
+        "zh": {
+          "file": "manuscript.md",
+          "location": "§4.1–4.3; B.2",
+          "proof": "Proposition 4.1, (4.1)–(4.9), (B.3)"
+        },
+        "en": {
+          "file": "manuscript-en.md",
+          "location": "§4.1–4.3; B.2",
+          "proof": "Proposition 4.1, (4.1)–(4.9), (B.3)"
+        }
+      },
+      "production": [
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/active-gauge/compute.py",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "fcabed5494e3194c3b66815e5fe740910323a085558d8613e97217976b7bb7c7",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "scripts/physics/low-energy/active-gauge/compute.py",
+              "source_sha256_matches": true,
+              "target_sha256": "fcabed5494e3194c3b66815e5fe740910323a085558d8613e97217976b7bb7c7",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "byte_identity"
+            }
+          ]
+        },
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/active-gauge/propagation.py",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "a2929d2a9ead3ff0c201d283cfbd78f6624c89c11a7dde9c2c466f125c350bef",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "scripts/physics/low-energy/active-gauge/propagation.py",
+              "source_sha256_matches": true,
+              "target_sha256": "a2929d2a9ead3ff0c201d283cfbd78f6624c89c11a7dde9c2c466f125c350bef",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "byte_identity"
+            }
+          ]
+        },
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/active-gauge/rotation/generators.py",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "00f0bb703589ec3e16bbd138f90a24a13bc1becd2fef54e8dc2001d352b90239",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "scripts/physics/low-energy/active-gauge/rotation/generators.py",
+              "source_sha256_matches": true,
+              "target_sha256": "00f0bb703589ec3e16bbd138f90a24a13bc1becd2fef54e8dc2001d352b90239",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "byte_identity"
+            }
+          ]
+        },
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/active-gauge/rotation/finite.py",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "60b6f46dfd1ff34071703e4111921b9439841f1de85f648b40df9d575bf64d34",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "scripts/physics/low-energy/active-gauge/rotation/finite.py",
+              "source_sha256_matches": true,
+              "target_sha256": "60b6f46dfd1ff34071703e4111921b9439841f1de85f648b40df9d575bf64d34",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "byte_identity"
+            }
+          ]
+        },
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/active-gauge/rotation/catalog.py",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "8e7f90d5997ea98f859ae4cccf6c837bb4963f4aaf8aa860aa3aa97d9914ebc3",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "scripts/physics/low-energy/active-gauge/rotation/catalog.py",
+              "source_sha256_matches": true,
+              "target_sha256": "8e7f90d5997ea98f859ae4cccf6c837bb4963f4aaf8aa860aa3aa97d9914ebc3",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "byte_identity"
+            }
+          ]
+        }
+      ],
+      "direct_consumers": [
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/active-gauge/audit/independent_check.py",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "3c60610d55b01164ddf524082d1425d3dbfeec55a7dfa89992fbb7d05bb73973",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "6726f385356cb327e7c158687e6e37f5f086fe71",
+              "public_path": "scripts/physics/low-energy/active-gauge/audit/independent_check.py",
+              "source_sha256_matches": true,
+              "target_sha256": "3c60610d55b01164ddf524082d1425d3dbfeec55a7dfa89992fbb7d05bb73973",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "byte_identity"
+            }
+          ]
+        },
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/active-gauge/rotation/quotient_transport.py",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "c1fd6c47f3cbb68fc3050e2cab00afb50a7ca66745f28d9f4898235b5d98477a",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "scripts/physics/low-energy/active-gauge/rotation/quotient_transport.py",
+              "source_sha256_matches": true,
+              "target_sha256": "c1fd6c47f3cbb68fc3050e2cab00afb50a7ca66745f28d9f4898235b5d98477a",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "byte_identity"
+            }
+          ]
+        }
+      ],
+      "public_binding": {
+        "status": "verified_inherited",
+        "commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+        "entry": "H0mework.Papers.LowEnergyPhenomenology",
+        "evidence_available": true,
+        "runtime_consumer_scripts_available": true
+      }
+    },
+    {
+      "id": "low1.L7",
+      "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+      "precise_claim": "完整252上的 `Q=γ⁵+2P₆` 相位变换常化原算子，原时间由同一相位恢复。既有 canonical 制备切向满足 `K₈₈=CᵀH₁₁₂C`、`H₁₁₂C=RK₈₈`、`CᵀR=I`；九条对称方向生成79维商，103系统保真分成79＋24。外围 canonical 最大发展纤维为一般522、原点524、`|k|²=5929/1800` 球上530维，全部原1078行回写。\n\n另由原70实标量的Yukawa混合核与实规范轨道正交条件生成43维背景不变空间，适配为23实单态及5个四实维块。程序给源矩阵及适配基，正式Lean给四维块行列式、逆及原参数代入。",
+      "conditions": [],
+      "written_proof": {
+        "zh": {
+          "file": "manuscript.md",
+          "location": "§2.5; §4.4–4.5; B.2",
+          "proof": "(2.19)–(2.20), (4.10)–(4.11), (B.4)"
+        },
+        "en": {
+          "file": "manuscript-en.md",
+          "location": "§2.5; §4.4–4.5; B.2",
+          "proof": "(2.19)–(2.20), (4.10)–(4.11), (B.4)"
+        }
+      },
+      "production": [
+        {
+          "source_path": "Lean/SaturationMonoid/PhysicsCore/LowEnergy/FullPhase/Operator.lean",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "9d3ebca643a35f19f1d7d5297b2978bf51b81f5792ebd301fe27cfe9eb0ca4a3",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "Lean/H0mework/Physics/LowEnergyFullPhase/Operator.lean",
+              "source_sha256_matches": true,
+              "target_sha256": "af652832ba77c600c7bfee020c4beb968c06b643a06fa9560a7ed25a471f129e",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "inverse_import/resource/digest_rewrites"
+            }
+          ],
+          "declaration": "gamma_preserved"
+        },
+        {
+          "source_path": "Lean/SaturationMonoid/PhysicsCore/LowEnergy/FullPhase/Operator.lean",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "9d3ebca643a35f19f1d7d5297b2978bf51b81f5792ebd301fe27cfe9eb0ca4a3",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "Lean/H0mework/Physics/LowEnergyFullPhase/Operator.lean",
+              "source_sha256_matches": true,
+              "target_sha256": "af652832ba77c600c7bfee020c4beb968c06b643a06fa9560a7ed25a471f129e",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "inverse_import/resource/digest_rewrites"
+            }
+          ],
+          "declaration": "yukawa_preserved"
+        },
+        {
+          "source_path": "Lean/SaturationMonoid/PhysicsCore/LowEnergy/FullPhase/Derivative.lean",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "9db2479c315e5a0cdad63e33df028ee40079f9b1e6cfdff1301bcce2b22f5cbd",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "Lean/H0mework/Physics/LowEnergyFullPhase/Derivative.lean",
+              "source_sha256_matches": true,
+              "target_sha256": "bfc85aaf74e83f8ce9114b9e6aaa6ce9c15bd69e42bcff72030f82ddddd9f3ec",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "inverse_import/resource/digest_rewrites"
+            }
+          ],
+          "declaration": "kinetic_phase_term"
+        },
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/canonical-active/compute.py",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "73687ba516d812c80607bdd5fc40576c11bf71d6ab756bf873c2fe47b441fa10",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "scripts/physics/low-energy/canonical-active/compute.py",
+              "source_sha256_matches": true,
+              "target_sha256": "73687ba516d812c80607bdd5fc40576c11bf71d6ab756bf873c2fe47b441fa10",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "byte_identity"
+            }
+          ]
+        },
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/canonical-active/spectrum/compute.py",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "146c1a3a6edc9d03d87827edb8544f695ab0831fa752933dac9f99c0ccb87c97",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "scripts/physics/low-energy/canonical-active/spectrum/compute.py",
+              "source_sha256_matches": true,
+              "target_sha256": "146c1a3a6edc9d03d87827edb8544f695ab0831fa752933dac9f99c0ccb87c97",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "byte_identity"
+            }
+          ]
+        },
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/canonical-peripheral/compute.py",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "c8371d35eebe7e3cf458bc78131de8fb897b04ab0e14d8627c663a17756e747a",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "scripts/physics/low-energy/canonical-peripheral/compute.py",
+              "source_sha256_matches": true,
+              "target_sha256": "c8371d35eebe7e3cf458bc78131de8fb897b04ab0e14d8627c663a17756e747a",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "byte_identity"
+            }
+          ]
+        },
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/real-scalar-sector/compute.py",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "48eb9c83e035d4d208061fa54a95f92c9455c7d342269ddb1bfd1584c61ae22e",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "scripts/physics/low-energy/real-scalar-sector/compute.py",
+              "source_sha256_matches": true,
+              "target_sha256": "48eb9c83e035d4d208061fa54a95f92c9455c7d342269ddb1bfd1584c61ae22e",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "byte_identity"
+            }
+          ]
+        }
+      ],
+      "direct_consumers": [
+        {
+          "source_path": "Lean/SaturationMonoid/PhysicsCore/LowEnergy/FullPhase/Preparation.lean",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "b9ea8988884ce1a39ec8b03e36ae54cb63752730754f7710e31fda62170e4ae6",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "Lean/H0mework/Physics/LowEnergyFullPhase/Preparation.lean",
+              "source_sha256_matches": true,
+              "target_sha256": "908a5144fb48b8137cc9ac16fbac56aca2b95f960c5c5b936ca43caf27927f8f",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "inverse_import/resource/digest_rewrites"
+            }
+          ],
+          "declaration": "canonical_preserved"
+        },
+        {
+          "source_path": "Lean/SaturationMonoid/PhysicsCore/LowEnergy/FullPhase/Preparation.lean",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "b9ea8988884ce1a39ec8b03e36ae54cb63752730754f7710e31fda62170e4ae6",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "Lean/H0mework/Physics/LowEnergyFullPhase/Preparation.lean",
+              "source_sha256_matches": true,
+              "target_sha256": "908a5144fb48b8137cc9ac16fbac56aca2b95f960c5c5b936ca43caf27927f8f",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "inverse_import/resource/digest_rewrites"
+            }
+          ],
+          "declaration": "prepared_pair_preserved"
+        },
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/canonical-peripheral/closure.py",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "f6fe67d326da95f49e9354b7895f34ff38ea88d36f5537905200115257233bb2",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "scripts/physics/low-energy/canonical-peripheral/closure.py",
+              "source_sha256_matches": true,
+              "target_sha256": "f6fe67d326da95f49e9354b7895f34ff38ea88d36f5537905200115257233bb2",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "byte_identity"
+            }
+          ]
+        },
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/canonical-peripheral/phase_match.py",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "82cf663e5079881f76494a46ff026e5047dd212c4c2a9e6ae14f878abfa67016",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "scripts/physics/low-energy/canonical-peripheral/phase_match.py",
+              "source_sha256_matches": true,
+              "target_sha256": "82cf663e5079881f76494a46ff026e5047dd212c4c2a9e6ae14f878abfa67016",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "byte_identity"
+            }
+          ]
+        },
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/real-scalar-sector/check.py",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "89a0422901162035f2e79eff86d69e36ca558d9c19d92a0666cecdc0713d9956",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "scripts/physics/low-energy/real-scalar-sector/check.py",
+              "source_sha256_matches": true,
+              "target_sha256": "89a0422901162035f2e79eff86d69e36ca558d9c19d92a0666cecdc0713d9956",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "byte_identity"
+            }
+          ]
+        }
+      ],
+      "public_binding": {
+        "status": "verified_inherited",
+        "commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+        "entry": "H0mework.Papers.LowEnergyPhenomenology",
+        "evidence_available": true,
+        "runtime_consumer_scripts_available": true
+      }
+    },
+    {
+      "id": "low1.L8",
+      "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+      "precise_claim": "从原canonical79算子消去原点可逆的77方向，得到原向量相位ϕ与轴向相位θ的二次幅度、四阶导数有效作用。低动量支为\n\n$$\\lambda_\\varphi^2=-\\frac{594}{1675}|k|^2-\\frac{10152864}{939884375}|k|^4+O(|k|^6),\\qquad\n\\lambda_\\theta^2=\\frac13|k|^2-\\frac{3053}{29160}|k|^4+O(|k|^6).$$",
+      "conditions": [],
+      "written_proof": {
+        "zh": {
+          "file": "manuscript.md",
+          "location": "§5; B.3; Figure 2",
+          "proof": "(5.1)–(5.14), (B.5)"
+        },
+        "en": {
+          "file": "manuscript-en.md",
+          "location": "§5; B.3; Figure 2",
+          "proof": "(5.1)–(5.14), (B.5)"
+        }
+      },
+      "production": [
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/soft-phase/compute.py",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "94bae1b082707d41165cd537f8ca7c11418cd93ccc32aa53b04bd6cd959b08e2",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "scripts/physics/low-energy/soft-phase/compute.py",
+              "source_sha256_matches": true,
+              "target_sha256": "94bae1b082707d41165cd537f8ca7c11418cd93ccc32aa53b04bd6cd959b08e2",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "byte_identity"
+            }
+          ]
+        },
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/soft-phase/receipt.json",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "1f3db8dd45665ec4544bdeef64d2892a5a7a7f559b167ff376a2a51aa7c603b2",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "evidence/physics/low-energy/soft-phase/receipt.json",
+              "source_sha256_matches": true,
+              "target_sha256": "1f3db8dd45665ec4544bdeef64d2892a5a7a7f559b167ff376a2a51aa7c603b2",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "byte_identity"
+            }
+          ]
+        }
+      ],
+      "direct_consumers": [
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/soft-phase/audit/independent_check.py",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "1a6397cd0fea19231e3061c2f7175f4fca66beebb1ba00d17239a841c3a469df",
+          "public_targets": []
+        }
+      ],
+      "public_binding": {
+        "status": "verified_inherited",
+        "commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+        "entry": "H0mework.Papers.LowEnergyPhenomenology",
+        "evidence_available": true,
+        "runtime_consumer_scripts_available": false
+      }
+    },
+    {
+      "id": "low1.L9",
+      "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+      "precise_claim": "完整252物质载体产生158个顶点：48规范、24 Lorentz、16余标架、70标量。97个活跃源进入79＋24动态块、辅助接触与九行源相容条件；prepared 实源的24补块顶点消去。连接逆给出 `3N/16 η_ab AᵃAᵇ` 轴向四费米项。外围61标量源由实际投影逆消费，非零Yukawa返回及独立对偶方程保持。",
+      "conditions": [],
+      "written_proof": {
+        "zh": {
+          "file": "manuscript.md",
+          "location": "§6.1–6.3; C.2",
+          "proof": "(6.1)–(6.10), (C.3)–(C.4)"
+        },
+        "en": {
+          "file": "manuscript-en.md",
+          "location": "§6.1–6.3; C.2",
+          "proof": "(6.1)–(6.10), (C.3)–(C.4)"
+        }
+      },
+      "production": [
+        {
+          "source_path": "Lean/SaturationMonoid/PhysicsCore/LowEnergy/Exchange/Current.lean",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "b3a609f75fbd2832c6b8cf42ea164d9f51eb9b99cb9273e6396a83641af1a198",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "Lean/H0mework/Physics/LowEnergyExchange/Current.lean",
+              "source_sha256_matches": true,
+              "target_sha256": "424948d02068c78a301610612490d471341a86cc58a08bb4a0842c76400c0d1a",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "inverse_import/resource/digest_rewrites"
+            }
+          ],
+          "declaration": "original_current"
+        },
+        {
+          "source_path": "Lean/SaturationMonoid/PhysicsCore/LowEnergy/Exchange/Static.lean",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "be33d20e06ff131a7673d5f34178539a17e9e549333e513b14b078b4bb0a0c55",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "Lean/H0mework/Physics/LowEnergyExchange/Static.lean",
+              "source_sha256_matches": true,
+              "target_sha256": "8f402c2ae823f6819915bb14237e66f84741279b8b2840951107a78cc579ff70",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "inverse_import/resource/digest_rewrites"
+            }
+          ],
+          "declaration": "original_current_exchange"
+        },
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/matter-vertices/compute.py",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "2b1b5568049269e08f7a46941e62cd3a856c15ad818e4f5e420345a8faf0434c",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "scripts/physics/low-energy/matter-vertices/compute.py",
+              "source_sha256_matches": true,
+              "target_sha256": "2b1b5568049269e08f7a46941e62cd3a856c15ad818e4f5e420345a8faf0434c",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "byte_identity"
+            }
+          ]
+        },
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/matter-vertices/exchange.py",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "417a023847ad0f3cea0202920fa235ae3f2ffd4821d6151a6f0bdf4684d23492",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "scripts/physics/low-energy/matter-vertices/exchange.py",
+              "source_sha256_matches": true,
+              "target_sha256": "417a023847ad0f3cea0202920fa235ae3f2ffd4821d6151a6f0bdf4684d23492",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "byte_identity"
+            }
+          ]
+        },
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/scalar-exchange/compute.py",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "588ed9163848199606b61a4415173f082197ee528d16f7091d666224b978d31f",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "scripts/physics/low-energy/scalar-exchange/compute.py",
+              "source_sha256_matches": true,
+              "target_sha256": "588ed9163848199606b61a4415173f082197ee528d16f7091d666224b978d31f",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "byte_identity"
+            }
+          ]
+        }
+      ],
+      "direct_consumers": [
+        {
+          "source_path": "Lean/SaturationMonoid/PhysicsCore/LowEnergy/Fermion/Consumer.lean",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "9947014f5899ce0a93162e6384e2f803eee1b2a8bb944439e2fa1131bf77baa6",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "Lean/H0mework/Physics/LowEnergyFermion/Consumer.lean",
+              "source_sha256_matches": true,
+              "target_sha256": "6677d6cd7a624ac8dde9715f69c5d2e8ed86310fa7e4dda46c71422a9670e2fd",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "inverse_import/resource/digest_rewrites"
+            }
+          ],
+          "declaration": "actual_color_fourFermion"
+        },
+        {
+          "source_path": "Lean/SaturationMonoid/PhysicsCore/LowEnergy/Fermion/Consumer.lean",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "9947014f5899ce0a93162e6384e2f803eee1b2a8bb944439e2fa1131bf77baa6",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "Lean/H0mework/Physics/LowEnergyFermion/Consumer.lean",
+              "source_sha256_matches": true,
+              "target_sha256": "6677d6cd7a624ac8dde9715f69c5d2e8ed86310fa7e4dda46c71422a9670e2fd",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "inverse_import/resource/digest_rewrites"
+            }
+          ],
+          "declaration": "actual_color_fourFermion_normalized"
+        },
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/matter-vertices/audit/independent_check.py",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "97814df59ebf6a2d411307b6eda51a0396370e327e50afcfbda5f681438c3d00",
+          "public_targets": []
+        },
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/scalar-exchange/audit/independent_check.py",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "2bdb0ad0081d270c17d578222f5ccfc4cead979c8915c83b87d9a764b330cfe8",
+          "public_targets": []
+        }
+      ],
+      "public_binding": {
+        "status": "verified_inherited",
+        "commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+        "entry": "H0mework.Papers.LowEnergyPhenomenology",
+        "evidence_available": true,
+        "runtime_consumer_scripts_available": true
+      }
+    },
+    {
+      "id": "low1.L10",
+      "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+      "precise_claim": "原自由投影生成216复维全动量 Hermitian 谱、原／共转频率及252字段外腿。两条实际Dirac方程支付18项源条件；真实守恒四外腿的两种排列均消费完整79动态块并回写289行。原作用动能及留数确定归一；已核右手尺度 `2^(−1/4)`，相应四腿树系数精确减半。",
+      "conditions": [],
+      "written_proof": {
+        "zh": {
+          "file": "manuscript.md",
+          "location": "§6.4–6.6; C.1; C.3",
+          "proof": "(6.11)–(6.19), (C.1)–(C.2)"
+        },
+        "en": {
+          "file": "manuscript-en.md",
+          "location": "§6.4–6.6; C.1; C.3",
+          "proof": "(6.11)–(6.19), (C.1)–(C.2)"
+        }
+      },
+      "production": [
+        {
+          "source_path": "Lean/SaturationMonoid/PhysicsCore/LowEnergy/Kinetic/Density.lean",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "e0d2f433db619150289344662bb526e747b0c44a135f48647c2d82a0333b53de",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "Lean/H0mework/Physics/LowEnergyKinetic/Density.lean",
+              "source_sha256_matches": true,
+              "target_sha256": "ba0c8f2ef1ccfdba0bd2db3158fa350a58fdfbc8e49f11919b8c1bda639b9492",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "inverse_import/resource/digest_rewrites"
+            }
+          ],
+          "declaration": "original_action_time_affine"
+        },
+        {
+          "source_path": "Lean/SaturationMonoid/PhysicsCore/LowEnergy/Kinetic/Scale.lean",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "9408cdd4285caa605ff8c2abc287ff236181c6723283dddff18fe2ea5930fa89",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "Lean/H0mework/Physics/LowEnergyKinetic/Scale.lean",
+              "source_sha256_matches": true,
+              "target_sha256": "e04edb661699a13251b277b0e5d04d12f6ca0794f136db183643d180d89f2358",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "inverse_import/resource/digest_rewrites"
+            }
+          ],
+          "declaration": "normalized_right_unit"
+        },
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/matter-modes/compute.py",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "4ded63ba24cba335dcfc0008ee705fb1b906e782b1a16fb60861335c1e239fa1",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "scripts/physics/low-energy/matter-modes/compute.py",
+              "source_sha256_matches": true,
+              "target_sha256": "4ded63ba24cba335dcfc0008ee705fb1b906e782b1a16fb60861335c1e239fa1",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "byte_identity"
+            }
+          ]
+        },
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/matter-modes/spectral.py",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "5de81e1d99a54de8bb679e77792c5c7d85b23332a1d5a2b492c6d570f92b7e96",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "scripts/physics/low-energy/matter-modes/spectral.py",
+              "source_sha256_matches": true,
+              "target_sha256": "5de81e1d99a54de8bb679e77792c5c7d85b23332a1d5a2b492c6d570f92b7e96",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "byte_identity"
+            }
+          ]
+        },
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/matter-modes/external.py",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "ba8b62db296a34eda58890a619cb369a520e92a051ab9c9dda615273bb6357e4",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "scripts/physics/low-energy/matter-modes/external.py",
+              "source_sha256_matches": true,
+              "target_sha256": "ba8b62db296a34eda58890a619cb369a520e92a051ab9c9dda615273bb6357e4",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "byte_identity"
+            }
+          ]
+        },
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/matter-modes/scalar_readback.py",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "0b60c575353911adbb2781ac7afcb25f52e9cef79415024306beb00cd136249a",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "scripts/physics/low-energy/matter-modes/scalar_readback.py",
+              "source_sha256_matches": true,
+              "target_sha256": "0b60c575353911adbb2781ac7afcb25f52e9cef79415024306beb00cd136249a",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "byte_identity"
+            }
+          ]
+        },
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/onshell-sources/compute.py",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "b36f175eba3ead12554dbbe51f0f03d081e4b2bac609bcca8dc0cfb12afeab58",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "scripts/physics/low-energy/onshell-sources/compute.py",
+              "source_sha256_matches": true,
+              "target_sha256": "b36f175eba3ead12554dbbe51f0f03d081e4b2bac609bcca8dc0cfb12afeab58",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "byte_identity"
+            }
+          ]
+        },
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/kinetic-residue/compute.py",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "9214d83b675f37c592088d8d49d44acd291e08db4cc4e9c5e3494963b2477278",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "scripts/physics/low-energy/kinetic-residue/compute.py",
+              "source_sha256_matches": true,
+              "target_sha256": "9214d83b675f37c592088d8d49d44acd291e08db4cc4e9c5e3494963b2477278",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "byte_identity"
+            }
+          ]
+        }
+      ],
+      "direct_consumers": [
+        {
+          "source_path": "Lean/SaturationMonoid/PhysicsCore/LowEnergy/Kinetic/Scale.lean",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "9408cdd4285caa605ff8c2abc287ff236181c6723283dddff18fe2ea5930fa89",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "Lean/H0mework/Physics/LowEnergyKinetic/Scale.lean",
+              "source_sha256_matches": true,
+              "target_sha256": "e04edb661699a13251b277b0e5d04d12f6ca0794f136db183643d180d89f2358",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "inverse_import/resource/digest_rewrites"
+            }
+          ],
+          "declaration": "four_leg_amplitude_normalized"
+        },
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/onshell-sources/audit/exchange_check.py",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "aa62a91d654b72409216e4392ba504f94ed7aa7b7a88f529bfb4ed37406922d3",
+          "public_targets": []
+        },
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/kinetic-residue/audit/independent_check.py",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "83e555468c46ba492ac54c292f453941a549b720a656367d4176eab0335ce394",
+          "public_targets": []
+        }
+      ],
+      "public_binding": {
+        "status": "verified_inherited",
+        "commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+        "entry": "H0mework.Papers.LowEnergyPhenomenology",
+        "evidence_available": true,
+        "runtime_consumer_scripts_available": true
+      }
+    },
+    {
+      "id": "low1.L11",
+      "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+      "precise_claim": "原Hodge消元得到 `L=N/(2σ)κ(E,E)−1/(2σN)κ(B,B)`。共同转换固有钟、连接一形式和密度后，native配对中的电／磁逆系数为 `108/125`、`125/27`；横向规范波相对于原物质／标量的特征速度比为 `125/54`（原坐标速度分别为 `1/N` 与 `N`）。12静态电荷源回写289行，144电荷响应在零动量正则，全方向零动量Coulomb留数为零。",
+      "conditions": [],
+      "written_proof": {
+        "zh": {
+          "file": "manuscript.md",
+          "location": "§6.7; C.3; §14.1",
+          "proof": "(6.20)–(6.24)"
+        },
+        "en": {
+          "file": "manuscript-en.md",
+          "location": "§6.7; C.3; §14.1",
+          "proof": "(6.20)–(6.24)"
+        }
+      },
+      "production": [
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/principal-normalization/compute.py",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "f768dd974e10d4f554afe1c27bb3b33806bee35e7195a9f7aa79db62ba1be983",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "scripts/physics/low-energy/principal-normalization/compute.py",
+              "source_sha256_matches": true,
+              "target_sha256": "f768dd974e10d4f554afe1c27bb3b33806bee35e7195a9f7aa79db62ba1be983",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "byte_identity"
+            }
+          ]
+        },
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/charge-response/compute.py",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "215547ac6225edc862bae1adce59e42732a7266116b3482cd2fae1f9d8b95958",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "scripts/physics/low-energy/charge-response/compute.py",
+              "source_sha256_matches": true,
+              "target_sha256": "215547ac6225edc862bae1adce59e42732a7266116b3482cd2fae1f9d8b95958",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "byte_identity"
+            }
+          ]
+        },
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/metric-response/compute.py",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "566725bdf344870565f58a4da5b5fc557c5c1532078415a3cabe8c6579399499",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "scripts/physics/low-energy/metric-response/compute.py",
+              "source_sha256_matches": true,
+              "target_sha256": "566725bdf344870565f58a4da5b5fc557c5c1532078415a3cabe8c6579399499",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "byte_identity"
+            }
+          ]
+        }
+      ],
+      "direct_consumers": [
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/principal-normalization/audit/independent_check.py",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "a0cb6d5f6107ba4af6865c78f205debcd04eea74b249c1d86c5072b4ca03e1e7",
+          "public_targets": []
+        },
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/charge-response/audit/independent_check.py",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "2a937879764bbc742307fea0112f2728e11f1d155543e5af63f0843b9ef213bf",
+          "public_targets": []
+        },
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/metric-response/audit/independent_check.py",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "b085fa72241cd86dae5522783ff1928daa1bc5023cef0fa861f1184805ccc83f",
+          "public_targets": []
+        }
+      ],
+      "public_binding": {
+        "status": "verified_inherited",
+        "commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+        "entry": "H0mework.Papers.LowEnergyPhenomenology",
+        "evidence_available": true,
+        "runtime_consumer_scripts_available": false
+      }
+    },
+    {
+      "id": "low1.L12",
+      "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+      "precise_claim": "原 `H₁₂=spin₄⊗span{e₀₅,e₁₅,e₂₅}` 对全部48规范力封闭。两侧物质方程生成48×48响应，等于原289作用的物质Schur消元；三处非空逆点的2304条目逐项核对。零空间动量下由正时间方程、delta jump及正阻尼半轴积分恢复同一响应，保留原零模。",
+      "conditions": [],
+      "written_proof": {
+        "zh": {
+          "file": "manuscript.md",
+          "location": "§7.1",
+          "proof": "(7.1)–(7.5), two-leg resolvent/Laplace derivation"
+        },
+        "en": {
+          "file": "manuscript-en.md",
+          "location": "§7.1",
+          "proof": "(7.1)–(7.5), two-leg resolvent/Laplace derivation"
+        }
+      },
+      "production": [
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/occupied-response/compute.py",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "7543ab00253cd8a5c82a1878ffce874c107271d63c110abf1993b339df1c604b",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "scripts/physics/low-energy/occupied-response/compute.py",
+              "source_sha256_matches": true,
+              "target_sha256": "7543ab00253cd8a5c82a1878ffce874c107271d63c110abf1993b339df1c604b",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "byte_identity"
+            }
+          ]
+        },
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/occupied-response/causal/compute.py",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "e07f3e1191a5e3cb85a5326cffea4d3b9edb02f1f174a2701fbffe13015180ee",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "scripts/physics/low-energy/occupied-response/causal/compute.py",
+              "source_sha256_matches": true,
+              "target_sha256": "e07f3e1191a5e3cb85a5326cffea4d3b9edb02f1f174a2701fbffe13015180ee",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "byte_identity"
+            }
+          ]
+        }
+      ],
+      "direct_consumers": [
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/occupied-response/audit/response_check.py",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "34c6f42d5fce85ca72a0b95f9d36077261f6c6497d7880fce32896d398e753e8",
+          "public_targets": []
+        },
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/occupied-response/causal/audit/independent_check.py",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "ad0c5a1c94fcfa39f2b5236df9a1570407645effe48d8621c283ad1ad32445c6",
+          "public_targets": []
+        },
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/occupied-response/causal/compute.py",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "e07f3e1191a5e3cb85a5326cffea4d3b9edb02f1f174a2701fbffe13015180ee",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "scripts/physics/low-energy/occupied-response/causal/compute.py",
+              "source_sha256_matches": true,
+              "target_sha256": "e07f3e1191a5e3cb85a5326cffea4d3b9edb02f1f174a2701fbffe13015180ee",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "byte_identity"
+            }
+          ]
+        }
+      ],
+      "public_binding": {
+        "status": "verified_inherited",
+        "commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+        "entry": "H0mework.Papers.LowEnergyPhenomenology",
+        "evidence_available": true,
+        "runtime_consumer_scripts_available": true
+      }
+    },
+    {
+      "id": "low1.L13",
+      "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+      "precise_claim": "原12维占据系数生成 `L²(ℝ³,ℂ¹²)` 上强连续幺正发展、零过去Bochner受迫解及同初值mild唯一性。实际自伴生成元满足 `f∈Dom(H) ↔ h(2πξ)f̂∈L²`，Schwartz测试读回原偏导算子。真实holonomic原场在同一系数中给出 `H_original(0)=h₀+ωQ`；原独立对偶弱式保持。",
+      "conditions": [],
+      "written_proof": {
+        "zh": {
+          "file": "manuscript.md",
+          "location": "§7.2–7.3; D.1",
+          "proof": "Theorem 7.1, (7.6)–(7.10), (D.1)"
+        },
+        "en": {
+          "file": "manuscript-en.md",
+          "location": "§7.2–7.3; D.1",
+          "proof": "Theorem 7.1, (7.6)–(7.10), (D.1)"
+        }
+      },
+      "production": [
+        {
+          "source_path": "Lean/SaturationMonoid/PhysicsCore/LowEnergy/MatterSpace/Source.lean",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "0a9891b1e45e8e0dfc18bb86f9fe2b3f46bbfcff74556c3a1248cfe2794d4154",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "Lean/H0mework/Physics/LowEnergyMatterSpace/Source.lean",
+              "source_sha256_matches": true,
+              "target_sha256": "34dd70d5ab4facfbf5823777cd39383a2155af71d751305c155d6b337c0cb40f",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "inverse_import/resource/digest_rewrites"
+            }
+          ],
+          "declaration": "sourceHamiltonian_hermitian"
+        },
+        {
+          "source_path": "Lean/SaturationMonoid/PhysicsCore/LowEnergy/MatterSpace/Spatial.lean",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "48f51319b8311a5df669a1d983d10a8b4c2f9359f487ef8db2825df56033bc5b",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "Lean/H0mework/Physics/LowEnergyMatterSpace/Spatial.lean",
+              "source_sha256_matches": true,
+              "target_sha256": "0744917a472d043e7e8e48e530c3b49edf6b5a8a03d24a90e607948490531251",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "inverse_import/resource/digest_rewrites"
+            }
+          ],
+          "declaration": "spatialUnitary_add"
+        },
+        {
+          "source_path": "Lean/SaturationMonoid/PhysicsCore/LowEnergy/MatterSpace/GeneratorDomain.lean",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "f1048037055d4f08ea52357067c4dfbe3f0b1da01fbf73df8662e4690a58472b",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "Lean/H0mework/Physics/LowEnergyMatterSpace/GeneratorDomain.lean",
+              "source_sha256_matches": true,
+              "target_sha256": "f2893403822c560c6f4d3485dfe7e90268984e44da4c914506e3aa1af0b1141c",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "inverse_import/resource/digest_rewrites"
+            }
+          ],
+          "declaration": "source_domain_iff"
+        },
+        {
+          "source_path": "Lean/SaturationMonoid/PhysicsCore/LowEnergy/MatterSpace/GeneratorDomain.lean",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "f1048037055d4f08ea52357067c4dfbe3f0b1da01fbf73df8662e4690a58472b",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "Lean/H0mework/Physics/LowEnergyMatterSpace/GeneratorDomain.lean",
+              "source_sha256_matches": true,
+              "target_sha256": "f2893403822c560c6f4d3485dfe7e90268984e44da4c914506e3aa1af0b1141c",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "inverse_import/resource/digest_rewrites"
+            }
+          ],
+          "declaration": "source_hamiltonian_value"
+        }
+      ],
+      "direct_consumers": [
+        {
+          "source_path": "Lean/SaturationMonoid/PhysicsCore/LowEnergy/MatterSpace/GeneratorSchwartz.lean",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "f2b38dbef9bec864fdd0933c7278de4a87c43e07d2ee7708f4b3067091e719e8",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "Lean/H0mework/Physics/LowEnergyMatterSpace/GeneratorSchwartz.lean",
+              "source_sha256_matches": true,
+              "target_sha256": "58c031deb258718c68b22bea581493e6e40ad3d562baa5e6bcb136de86fbed06",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "inverse_import/resource/digest_rewrites"
+            }
+          ],
+          "declaration": "schwartz_hamiltonian_value"
+        },
+        {
+          "source_path": "Lean/SaturationMonoid/PhysicsCore/LowEnergy/MatterSpace/PrimalSymbol.lean",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "ab942c28df5085bdfee91bd2a1936b91214f7fbdf9cfe7094225faac366a4f45",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "Lean/H0mework/Physics/LowEnergyMatterSpace/PrimalSymbol.lean",
+              "source_sha256_matches": true,
+              "target_sha256": "0836504fd1f7fa82d79af9dc2477b9dcbe969793d2eb931243ee1a88508ee673",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "inverse_import/resource/digest_rewrites"
+            }
+          ],
+          "declaration": "original_primal_hamiltonian"
+        },
+        {
+          "source_path": "Lean/SaturationMonoid/PhysicsCore/LowEnergy/MatterSpace/DualWeak.lean",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "2160657d39233c4d0eea4779c268b618bda55283150bb3f13e1844e272ece00b",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "Lean/H0mework/Physics/LowEnergyMatterSpace/DualWeak.lean",
+              "source_sha256_matches": true,
+              "target_sha256": "0e457f05e1454fe652e5018c336683027f28a17d1d001bf62d63ff7e8c31ac51",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "inverse_import/resource/digest_rewrites"
+            }
+          ],
+          "declaration": "duhamel_dual_weak"
+        }
+      ],
+      "public_binding": {
+        "status": "verified_inherited",
+        "commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+        "entry": "H0mework.Papers.LowEnergyPhenomenology",
+        "evidence_available": true,
+        "runtime_consumer_scripts_available": true
+      }
+    },
+    {
+      "id": "low1.L14",
+      "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+      "precise_claim": "连续L²规范控制历史由真实Duhamel产生有界准备映射K；对任意实时间t，范数界为 $\\|K_t\\|\\leq|\\int_0^t\\|F(\\tau)\\|\\,d\\tau|$。原占据向量给出 `Kρ₀K†`。真实非零控制生成某个正时间非零准备，归一后为单位正泛函。完整空间观测A先拉回 `K†AK`，再形成252维母作用；`pairedMother 1` 在完整算子之后施加原自旋交换S，独立对偶读回的因子 `4 spinScale` 保持，见正文(7.13a)及(D.2)。",
+      "conditions": [],
+      "written_proof": {
+        "zh": {
+          "file": "manuscript.md",
+          "location": "§7.3; D.3",
+          "proof": "(7.11)–(7.13a), (D.2)"
+        },
+        "en": {
+          "file": "manuscript-en.md",
+          "location": "§7.3; D.3",
+          "proof": "(7.11)–(7.13a), (D.2)"
+        }
+      },
+      "production": [
+        {
+          "source_path": "Lean/SaturationMonoid/PhysicsCore/LowEnergy/MatterSpace/PreparationHistory.lean",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "5c00ca64b47adf120acddb0d59d9feb13634cb9dd07f7548b6c46a1ae8cff50d",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "Lean/H0mework/Physics/LowEnergyMatterSpace/PreparationHistory.lean",
+              "source_sha256_matches": true,
+              "target_sha256": "f023e87bf98ede030fc01e073d5788fa2f4add54e1af44a667ce07c340dcc3f4",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "inverse_import/resource/digest_rewrites"
+            }
+          ],
+          "declaration": "preparationMap_norm"
+        },
+        {
+          "source_path": "Lean/SaturationMonoid/PhysicsCore/LowEnergy/MatterSpace/PreparationGauge.lean",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "b8e694785250ed30d14b6c4eb7b70ebda4751b4a8e2524678d3e583a8e9f8a17",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "Lean/H0mework/Physics/LowEnergyMatterSpace/PreparationGauge.lean",
+              "source_sha256_matches": true,
+              "target_sha256": "bb90340c2c8e3af704893a4a85fd8dcbd42b5b711b4cfeeecde786ece7fe35d2",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "inverse_import/resource/digest_rewrites"
+            }
+          ],
+          "declaration": "gauge_history_prepares_nonempty"
+        }
+      ],
+      "direct_consumers": [
+        {
+          "source_path": "Lean/SaturationMonoid/PhysicsCore/LowEnergy/MatterSpace/PreparationNative.lean",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "01054bd7b658c0f6519948f0b28817961e8a8e9278851c22b1e36df4ae433762",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "Lean/H0mework/Physics/LowEnergyMatterSpace/PreparationNative.lean",
+              "source_sha256_matches": true,
+              "target_sha256": "6dc37a6491cdafe7e426b23dd146661769d3a2d2cbb9d1e3f6e7eb7044096e76",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "inverse_import/resource/digest_rewrites"
+            }
+          ],
+          "declaration": "preparationNative_sourceResponse"
+        },
+        {
+          "source_path": "Lean/SaturationMonoid/PhysicsCore/LowEnergy/MatterSpace/PreparationNative.lean",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "01054bd7b658c0f6519948f0b28817961e8a8e9278851c22b1e36df4ae433762",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "Lean/H0mework/Physics/LowEnergyMatterSpace/PreparationNative.lean",
+              "source_sha256_matches": true,
+              "target_sha256": "6dc37a6491cdafe7e426b23dd146661769d3a2d2cbb9d1e3f6e7eb7044096e76",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "inverse_import/resource/digest_rewrites"
+            }
+          ],
+          "declaration": "preparationNative_original_dual"
+        },
+        {
+          "source_path": "Lean/SaturationMonoid/PhysicsCore/LowEnergy/MatterSpace/PreparationNative.lean",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "01054bd7b658c0f6519948f0b28817961e8a8e9278851c22b1e36df4ae433762",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "Lean/H0mework/Physics/LowEnergyMatterSpace/PreparationNative.lean",
+              "source_sha256_matches": true,
+              "target_sha256": "6dc37a6491cdafe7e426b23dd146661769d3a2d2cbb9d1e3f6e7eb7044096e76",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "inverse_import/resource/digest_rewrites"
+            }
+          ],
+          "declaration": "normalizedPreparationNative_sourceResponse"
+        }
+      ],
+      "public_binding": {
+        "status": "verified_inherited",
+        "commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+        "entry": "H0mework.Papers.LowEnergyPhenomenology",
+        "evidence_available": true,
+        "runtime_consumer_scripts_available": true
+      }
+    },
+    {
+      "id": "low1.L15",
+      "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+      "precise_claim": "任意有限L²测试族与准备向量的共同span提供真实有限Fock载体；CAR递推产生全部有限词矩、伴随正性与测试族扩张一致性。测试可不正交、相关或重复。完整词先在Fock中组合，再经 `J†WJ` 与同一准备映射进入母作用读数。",
+      "conditions": [],
+      "written_proof": {
+        "zh": {
+          "file": "manuscript.md",
+          "location": "§7.4; D.3",
+          "proof": "(7.14)–(7.16a), (D.2)"
+        },
+        "en": {
+          "file": "manuscript-en.md",
+          "location": "§7.4; D.3",
+          "proof": "(7.14)–(7.16a), (D.2)"
+        }
+      },
+      "production": [
+        {
+          "source_path": "Lean/SaturationMonoid/PhysicsCore/LowEnergy/MatterSpace/SpatialCARWords.lean",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "cf8f2c910576fa527d632cf6c3b80e83b47e582429091b8dcbb7b891b064fe8f",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "Lean/H0mework/Physics/LowEnergyMatterSpace/SpatialCARWords.lean",
+              "source_sha256_matches": true,
+              "target_sha256": "8bb4164f65c6d0cfedd34c8aa34f2dcfe579a471cb9a78388d8dc96dfe01acc6",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "inverse_import/resource/digest_rewrites"
+            }
+          ],
+          "declaration": "wordOperator"
+        },
+        {
+          "source_path": "Lean/SaturationMonoid/PhysicsCore/LowEnergy/MatterSpace/SpatialCARState.lean",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "f69973fc314a9959f2d3de1f7443f44d9c52b98f9679682bf0411ebcd1e46115",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "Lean/H0mework/Physics/LowEnergyMatterSpace/SpatialCARState.lean",
+              "source_sha256_matches": true,
+              "target_sha256": "ab753e7a097a9e11c102b4a06cdde90d1164703e4d17f0766586ee7b01330fbc",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "inverse_import/resource/digest_rewrites"
+            }
+          ],
+          "declaration": "spatialMoment_positive"
+        }
+      ],
+      "direct_consumers": [
+        {
+          "source_path": "Lean/SaturationMonoid/PhysicsCore/LowEnergy/MatterSpace/SpatialCARNative.lean",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "ac823a53d5c11a04499d9179501481f6ba8b13ee2ae4f019afa64962200c2397",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "Lean/H0mework/Physics/LowEnergyMatterSpace/SpatialCARNative.lean",
+              "source_sha256_matches": true,
+              "target_sha256": "3d3a7d16cc377e72983c2b5b01b4ed04b066126eb763cae869e79b70b17bac0f",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "inverse_import/resource/digest_rewrites"
+            }
+          ],
+          "declaration": "wordObservable_response"
+        },
+        {
+          "source_path": "Lean/SaturationMonoid/PhysicsCore/LowEnergy/MatterSpace/SpatialCARNative.lean",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "ac823a53d5c11a04499d9179501481f6ba8b13ee2ae4f019afa64962200c2397",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "Lean/H0mework/Physics/LowEnergyMatterSpace/SpatialCARNative.lean",
+              "source_sha256_matches": true,
+              "target_sha256": "3d3a7d16cc377e72983c2b5b01b4ed04b066126eb763cae869e79b70b17bac0f",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "inverse_import/resource/digest_rewrites"
+            }
+          ],
+          "declaration": "source_native_allWord"
+        }
+      ],
+      "public_binding": {
+        "status": "verified_inherited",
+        "commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+        "entry": "H0mework.Papers.LowEnergyPhenomenology",
+        "evidence_available": true,
+        "runtime_consumer_scripts_available": true
+      }
+    },
+    {
+      "id": "low1.L16",
+      "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+      "precise_claim": "原P286作用生成局域有界自伴力T与电流B，`B=−spinScale QT`；真实 `L∞×L²` 乘法使电流密度可积。Duhamel给出双侧响应 `i∫⟨u,[R_H(s),B_H(t)]u⟩ds`，完整CAR四点及原Stage10共同消费。原时间由 `U_original` 与准备总相位 `P(t+preparedAt)` 恢复，多时CAR逐腿保留相位。",
+      "conditions": [],
+      "written_proof": {
+        "zh": {
+          "file": "manuscript.md",
+          "location": "§7.5; §8.3; D.4",
+          "proof": "(7.17)–(7.18), (8.9)–(8.13)"
+        },
+        "en": {
+          "file": "manuscript-en.md",
+          "location": "§7.5; §8.3; D.4",
+          "proof": "(7.17)–(7.18), (8.9)–(8.13)"
+        }
+      },
+      "production": [
+        {
+          "source_path": "Lean/SaturationMonoid/PhysicsCore/LowEnergy/MatterSpace/CurrentOperator.lean",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "8614dde423e9bf93dab979cc030c34da3b374eba24f075ee99f52c8bf67cf519",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "Lean/H0mework/Physics/LowEnergyMatterSpace/CurrentOperator.lean",
+              "source_sha256_matches": true,
+              "target_sha256": "57fc0634fe87a75fed055de3c6b4d6dfe469d481c7d261159b7835bf6ab15c09",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "inverse_import/resource/digest_rewrites"
+            }
+          ],
+          "declaration": "gaugeCurrentMatrix_weight"
+        },
+        {
+          "source_path": "Lean/SaturationMonoid/PhysicsCore/LowEnergy/MatterSpace/SpatialResponseKubo.lean",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "46bb608c2e7710e48faf0b9f7d998167584779e625282a1285d034da4c35a9df",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "Lean/H0mework/Physics/LowEnergyMatterSpace/SpatialResponseKubo.lean",
+              "source_sha256_matches": true,
+              "target_sha256": "ed780ee101c41a8442cf784f49a2f8814507e0b2bf52b7c2bbf1db5952653301",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "inverse_import/resource/digest_rewrites"
+            }
+          ],
+          "declaration": "currentVariation_kubo"
+        }
+      ],
+      "direct_consumers": [
+        {
+          "source_path": "Lean/SaturationMonoid/PhysicsCore/LowEnergy/MatterSpace/SpatialResponseSource.lean",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "49783565bb44d585e79a6dc8f28d6605a10c122fce244a8547a298cc33cdfba9",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "Lean/H0mework/Physics/LowEnergyMatterSpace/SpatialResponseSource.lean",
+              "source_sha256_matches": true,
+              "target_sha256": "7e3a285e4eec2a666b954f17b022476d76668c07586263a1080b509c9cadd6d9",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "inverse_import/resource/digest_rewrites"
+            }
+          ],
+          "declaration": "local_native_kubo"
+        },
+        {
+          "source_path": "Lean/SaturationMonoid/PhysicsCore/LowEnergy/MatterSpace/SpatialResponseSource.lean",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "49783565bb44d585e79a6dc8f28d6605a10c122fce244a8547a298cc33cdfba9",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "Lean/H0mework/Physics/LowEnergyMatterSpace/SpatialResponseSource.lean",
+              "source_sha256_matches": true,
+              "target_sha256": "7e3a285e4eec2a666b954f17b022476d76668c07586263a1080b509c9cadd6d9",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "inverse_import/resource/digest_rewrites"
+            }
+          ],
+          "declaration": "local_source_CAR"
+        },
+        {
+          "source_path": "Lean/SaturationMonoid/PhysicsCore/LowEnergy/MatterSpace/SpatialResponsePhaseKubo.lean",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "8fe3446e13aaf0fc4fcd1a5e12a6ece41010a5a1f53de9b35525b4df369faa0d",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "Lean/H0mework/Physics/LowEnergyMatterSpace/SpatialResponsePhaseKubo.lean",
+              "source_sha256_matches": true,
+              "target_sha256": "2e2681d09c0134dc6beb56e01967080d655aa33eb451239a949d8e90917ec97e",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "inverse_import/resource/digest_rewrites"
+            }
+          ],
+          "declaration": "originalKernel_prepared_readback"
+        }
+      ],
+      "public_binding": {
+        "status": "verified_inherited",
+        "commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+        "entry": "H0mework.Papers.LowEnergyPhenomenology",
+        "evidence_available": true,
+        "runtime_consumer_scripts_available": true
+      }
+    },
+    {
+      "id": "low1.L17",
+      "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+      "precise_claim": "对范数连续的有界自伴算子历史R（每个紧时间区间有界即可），对任意实ε、任意起止时刻和任意L²初态，生成真实发展、唯一性、范数守恒、双时刻幺正传播及原弱方程。每个固定实时间上的真实传播在ε=0有算子范数导数D(t)；原字段导数是原时间Duhamel积分，原电流导数是同一Kubo核与Stage10响应。零过去控制保持自由过去，准备相位保持。",
+      "conditions": [],
+      "written_proof": {
+        "zh": {
+          "file": "manuscript.md",
+          "location": "§1; §8; D.2; D.4; Figure 3",
+          "proof": "Theorems 8.1–8.2; (1.8)–(1.12), (8.1)–(8.15)"
+        },
+        "en": {
+          "file": "manuscript-en.md",
+          "location": "§1; §8; D.2; D.4; Figure 3",
+          "proof": "Theorems 8.1–8.2; (1.8)–(1.12), (8.1)–(8.15)"
+        }
+      },
+      "production": [
+        {
+          "source_path": "Lean/SaturationMonoid/PhysicsCore/LowEnergy/MatterSpace/GlobalGlue.lean",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "a3c785012d97eef044a42209bfb90befeea1d9e4dff28577aaf78cf677fd58a5",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "Lean/H0mework/Physics/LowEnergyMatterSpace/GlobalGlue.lean",
+              "source_sha256_matches": true,
+              "target_sha256": "d8aff7fc0e5893d4a5ad938c103116a66a14bd6e21d3c87f6f020cc4ce983006",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "inverse_import/resource/digest_rewrites"
+            }
+          ],
+          "declaration": "perturbed_global_exists"
+        },
+        {
+          "source_path": "Lean/SaturationMonoid/PhysicsCore/LowEnergy/MatterSpace/GlobalFlow.lean",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "f1e30d2457f6165b5e8acdd67980ff6b059155b0266b0fddac3c9d1d103e7496",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "Lean/H0mework/Physics/LowEnergyMatterSpace/GlobalFlow.lean",
+              "source_sha256_matches": true,
+              "target_sha256": "e89270a7a058d0b2f2ebca4cc457ff3ece38ca685465889d7b658bed4966f7f9",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "inverse_import/resource/digest_rewrites"
+            }
+          ],
+          "declaration": "globalPerturbedDevelopment"
+        },
+        {
+          "source_path": "Lean/SaturationMonoid/PhysicsCore/LowEnergy/MatterSpace/PerturbedVariation.lean",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "d672cb419c42ef8478b180b3d0f098fa88c46d09b3060399ea893b813fd3f373",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "Lean/H0mework/Physics/LowEnergyMatterSpace/PerturbedVariation.lean",
+              "source_sha256_matches": true,
+              "target_sha256": "84135ee511f83c227b1e1f3e6243f98526e9ab9c58763cda911cf1a26217d30f",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "inverse_import/resource/digest_rewrites"
+            }
+          ],
+          "declaration": "perturbed_quadratic_remainder"
+        },
+        {
+          "source_path": "Lean/SaturationMonoid/PhysicsCore/LowEnergy/MatterSpace/PerturbedOperator.lean",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "5005507f1525aaa47d0fa2e179fe3d2915aa3d1a25330adaa289aed3895b26fd",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "Lean/H0mework/Physics/LowEnergyMatterSpace/PerturbedOperator.lean",
+              "source_sha256_matches": true,
+              "target_sha256": "a21f325bfb5686c53386d7cd0e4f2552b97437c85c6bd16d99647024a2b2e885",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "inverse_import/resource/digest_rewrites"
+            }
+          ],
+          "declaration": "couplingOperator_derivative"
+        }
+      ],
+      "direct_consumers": [
+        {
+          "source_path": "Lean/SaturationMonoid/PhysicsCore/LowEnergy/MatterSpace/GlobalFlow.lean",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "f1e30d2457f6165b5e8acdd67980ff6b059155b0266b0fddac3c9d1d103e7496",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "Lean/H0mework/Physics/LowEnergyMatterSpace/GlobalFlow.lean",
+              "source_sha256_matches": true,
+              "target_sha256": "e89270a7a058d0b2f2ebca4cc457ff3ece38ca685465889d7b658bed4966f7f9",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "inverse_import/resource/digest_rewrites"
+            }
+          ],
+          "declaration": "GlobalPerturbedDevelopment.unitary"
+        },
+        {
+          "source_path": "Lean/SaturationMonoid/PhysicsCore/LowEnergy/MatterSpace/GlobalResponse.lean",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "ae9ac48e14520f2f8ce803d84f6b053dd93189ee9143b0636f737bdfbb0847cc",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "Lean/H0mework/Physics/LowEnergyMatterSpace/GlobalResponse.lean",
+              "source_sha256_matches": true,
+              "target_sha256": "d772373754ba88f63e267f5ca2669d095302990753b0e0f587a4068288ad3c5c",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "inverse_import/resource/digest_rewrites"
+            }
+          ],
+          "declaration": "GlobalPerturbedDevelopment.operator_derivative"
+        },
+        {
+          "source_path": "Lean/SaturationMonoid/PhysicsCore/LowEnergy/MatterSpace/GlobalResponse.lean",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "ae9ac48e14520f2f8ce803d84f6b053dd93189ee9143b0636f737bdfbb0847cc",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "Lean/H0mework/Physics/LowEnergyMatterSpace/GlobalResponse.lean",
+              "source_sha256_matches": true,
+              "target_sha256": "d772373754ba88f63e267f5ca2669d095302990753b0e0f587a4068288ad3c5c",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "inverse_import/resource/digest_rewrites"
+            }
+          ],
+          "declaration": "GlobalPerturbedDevelopment.current_kubo"
+        },
+        {
+          "source_path": "Lean/SaturationMonoid/PhysicsCore/LowEnergy/MatterSpace/GlobalResponse.lean",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "ae9ac48e14520f2f8ce803d84f6b053dd93189ee9143b0636f737bdfbb0847cc",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "Lean/H0mework/Physics/LowEnergyMatterSpace/GlobalResponse.lean",
+              "source_sha256_matches": true,
+              "target_sha256": "d772373754ba88f63e267f5ca2669d095302990753b0e0f587a4068288ad3c5c",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "inverse_import/resource/digest_rewrites"
+            }
+          ],
+          "declaration": "GlobalPerturbedDevelopment.current_source"
+        },
+        {
+          "source_path": "Lean/SaturationMonoid/PhysicsCore/LowEnergy/MatterSpace/GlobalOriginal.lean",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "b2ffb3aecdc6f6c84b6287d298daada8f68ff7cef1490d417caa7e5cc4d5d029",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "Lean/H0mework/Physics/LowEnergyMatterSpace/GlobalOriginal.lean",
+              "source_sha256_matches": true,
+              "target_sha256": "b134ee20082f37a2d91d856c8bbcfb6fcf6a7a0d65b78acad049ee90f44f57a7",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "inverse_import/resource/digest_rewrites"
+            }
+          ],
+          "declaration": "original_field_derivative"
+        },
+        {
+          "source_path": "Lean/SaturationMonoid/PhysicsCore/LowEnergy/MatterSpace/GlobalOriginal.lean",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "b2ffb3aecdc6f6c84b6287d298daada8f68ff7cef1490d417caa7e5cc4d5d029",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "Lean/H0mework/Physics/LowEnergyMatterSpace/GlobalOriginal.lean",
+              "source_sha256_matches": true,
+              "target_sha256": "b134ee20082f37a2d91d856c8bbcfb6fcf6a7a0d65b78acad049ee90f44f57a7",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "inverse_import/resource/digest_rewrites"
+            }
+          ],
+          "declaration": "original_current_derivative"
+        },
+        {
+          "source_path": "Lean/SaturationMonoid/PhysicsCore/LowEnergy/MatterSpace/GlobalOriginal.lean",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "b2ffb3aecdc6f6c84b6287d298daada8f68ff7cef1490d417caa7e5cc4d5d029",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "Lean/H0mework/Physics/LowEnergyMatterSpace/GlobalOriginal.lean",
+              "source_sha256_matches": true,
+              "target_sha256": "b134ee20082f37a2d91d856c8bbcfb6fcf6a7a0d65b78acad049ee90f44f57a7",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "inverse_import/resource/digest_rewrites"
+            }
+          ],
+          "declaration": "original_prepared_source_derivative"
+        },
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/occupied-response/spatial/finite-coupling/derivative/audit/independent_check.py",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "eedb5462bf323072a5f537a7ab3d5334886e018ebbc06104c907c330d05a8d72",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "scripts/physics/low-energy/occupied-response/spatial/finite-coupling-derivative/independent_check.py",
+              "source_sha256_matches": true,
+              "target_sha256": "eedb5462bf323072a5f537a7ab3d5334886e018ebbc06104c907c330d05a8d72",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "byte_identity"
+            }
+          ]
+        },
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/occupied-response/spatial/global/audit/independent_check.py",
+          "source_commit": "30218c1aea92640eae09b1d9204a09b01a2d0e47",
+          "source_sha256": "3736f19596907ed66fbfea7d2adab3c3d04d1daa299ec019753145992e28b21c",
+          "public_targets": [
+            {
+              "public_commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+              "export_source_commit": "8e29b8e1e58f9846fdddedaaeab9fc8724cdcb87",
+              "public_path": "scripts/physics/low-energy/occupied-response/spatial/global/independent_check.py",
+              "source_sha256_matches": true,
+              "target_sha256": "3736f19596907ed66fbfea7d2adab3c3d04d1daa299ec019753145992e28b21c",
+              "target_sha256_matches": true,
+              "transformation_verified": true,
+              "transformation": "byte_identity"
+            }
+          ]
+        }
+      ],
+      "public_binding": {
+        "status": "verified_inherited",
+        "commit": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+        "entry": "H0mework.Papers.LowEnergyPhenomenology",
+        "evidence_available": true,
+        "runtime_consumer_scripts_available": true
+      }
+    },
+    {
+      "id": "low1.L18",
+      "source_commit": "e05558097256e86b537c019c8ca63cd449d6b2d2",
+      "precise_claim": "Joint full-exterior/scalar/matter/independent-dual EM action generates relative real CAR increments +/-1/2 and retains the input/scalar charge remainder. The actual composite current has J_i=0 for i>=73 and F0^T J=(e0+e1)w_J, with complete native/coframe/density/matter/complement/retained configuration integral and both original inverse prices. Each unit real spatial direction gives the whole static Schur/contact/complement return, -kappa^2 residue and original O(kappa) finite-factor bound.",
+      "conditions": [
+        "Original independent complex-linear dual and both elementary scalar/matter variations.",
+        "Positive epsilon for each preparation, all p,k,F,cut,z,w and discrete endpoint arguments retained; norm prices require Im(z),Im(w)!=0.",
+        "Static direction spatialSquare(n)=1 and kappa in the source-generated staticDomain approaching 0.",
+        "Whole field satisfies KX=J-rowLift*nullProjection*readback(J); KX=J requires original compatibility to vanish.",
+        "Zero no-slice columns concern the configuration fieldForm current; actual raw age windows use the full reader with compensation."
+      ],
+      "written_proof": {
+        "zh": {
+          "sections": [
+            "§9.1–9.4",
+            "§9.5",
+            "Appendix F.2"
+          ],
+          "equations": [
+            "9.1–9.10",
+            "9.12–9.16",
+            "F.5–F.10"
+          ],
+          "file": "manuscript.md"
+        },
+        "en": {
+          "sections": [
+            "§9.1–9.4",
+            "§9.5",
+            "Appendix F.2"
+          ],
+          "equations": [
+            "9.1–9.10",
+            "9.12–9.16",
+            "F.5–F.10"
+          ],
+          "file": "manuscript-en.md"
+        }
+      },
+      "production": [
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/SourceJointPhaseAction.lean",
+          "source_commit": "e05558097256e86b537c019c8ca63cd449d6b2d2",
+          "source_sha256": "02686ce90fef262c32de6a19dd75bf3ed27f020fc61e070d34bd04adf323c6c7",
+          "public_status": "missing_path",
+          "public_targets": [],
+          "declarations": [
+            "LowEnergy.PreparationPhysicalJointEMCouplingUnitReturn.sourceJoint_exterior",
+            "LowEnergy.PreparationPhysicalJointEMCouplingUnitReturn.sourceJoint_read",
+            "LowEnergy.PreparationPhysicalJointEMCouplingUnitReturn.sourceJoint_dual",
+            "LowEnergy.PreparationPhysicalJointEMCouplingUnitReturn.sourceJoint_creation_charge",
+            "LowEnergy.PreparationPhysicalJointEMCouplingUnitReturn.sourceJoint_annihilation_charge"
+          ]
+        },
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/SourceJointPreparedCoupling.lean",
+          "source_commit": "e05558097256e86b537c019c8ca63cd449d6b2d2",
+          "source_sha256": "e42fd5d216f435cde691d25ee99dbe89922b99d9a7eaabed1467f7921e8dc573",
+          "public_status": "missing_path",
+          "public_targets": [],
+          "declarations": [
+            "LowEnergy.PreparationPhysicalJointEMCouplingUnitReturn.sourceJointInputCore_generated",
+            "LowEnergy.PreparationPhysicalJointEMCouplingUnitReturn.sourceJointCompleted_charge",
+            "LowEnergy.PreparationPhysicalJointEMCouplingUnitReturn.sourceJointChargedCurrent_generated",
+            "LowEnergy.PreparationPhysicalJointEMCouplingUnitReturn.sourceJointPhotonEmitter_generated",
+            "LowEnergy.PreparationPhysicalJointEMCouplingUnitReturn.sourceJointPhotonCoupling_generated"
+          ]
+        },
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/SourceStaticCompositeProjection.lean",
+          "source_commit": "e05558097256e86b537c019c8ca63cd449d6b2d2",
+          "source_sha256": "4d1096cc9d878e3b000bb3e4a7fb7dc4eef157ebb888af864130a3dfa0cda4db",
+          "public_status": "missing_path",
+          "public_targets": [],
+          "declarations": [
+            "LowEnergy.PreparationPhysicalStaticCompositeProjectionReturn.sourceStaticComposite_inactive",
+            "LowEnergy.PreparationPhysicalStaticCompositeProjectionReturn.sourceStaticComposite_origin"
+          ]
+        },
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/SourceStaticCompositeCurrent.lean",
+          "source_commit": "e05558097256e86b537c019c8ca63cd449d6b2d2",
+          "source_sha256": "cf706a1e52cb908ee2c28b1fb06a69ad4e1f516097c5306100fd8ba27d09c796",
+          "public_status": "missing_path",
+          "public_targets": [],
+          "declarations": [
+            "LowEnergy.PreparationPhysicalStaticCompositeProjectionReturn.sourceStaticCompositeGauge_slots",
+            "LowEnergy.PreparationPhysicalStaticCompositeProjectionReturn.sourceStaticCompositeConfiguration_generated",
+            "LowEnergy.PreparationPhysicalStaticCompositeProjectionReturn.sourceStaticCompositeWeight_generated",
+            "LowEnergy.PreparationPhysicalStaticCompositeProjectionReturn.sourceStaticCompositeWeight_price",
+            "LowEnergy.PreparationPhysicalStaticCompositeProjectionReturn.sourceStaticCompositeLeading_return"
+          ]
+        },
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/SourceStaticSpatialTensor.lean",
+          "source_commit": "e05558097256e86b537c019c8ca63cd449d6b2d2",
+          "source_sha256": "aceb9005376a3b4ef0cc3376edc2c1e4a8278cc8e6ac175ceac6d9c692e1b920",
+          "public_status": "missing_path",
+          "public_targets": [],
+          "declarations": [
+            "LowEnergy.PreparationPhysicalStaticSpatialCouplingReturn.sourceStaticSpatialTensor_generated",
+            "LowEnergy.PreparationPhysicalStaticSpatialCouplingReturn.sourceStaticSpatialKernel_neumann_price",
+            "LowEnergy.PreparationPhysicalStaticSpatialCouplingReturn.sourceStaticSpatialKernel_inverse_delta"
+          ]
+        },
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/SourceStaticSpatialCoupling.lean",
+          "source_commit": "e05558097256e86b537c019c8ca63cd449d6b2d2",
+          "source_sha256": "005be4c42517545b7ee1d3af70ac3d42cdd3f90765b91f9092893d0f48c7fe54",
+          "public_status": "missing_path",
+          "public_targets": [],
+          "declarations": [
+            "LowEnergy.PreparationPhysicalStaticSpatialCouplingReturn.sourceSpatialStaticNativeFieldWhole",
+            "LowEnergy.PreparationPhysicalStaticSpatialCouplingReturn.sourceSpatialStaticNativeFieldSchur",
+            "LowEnergy.PreparationPhysicalStaticSpatialCouplingReturn.sourceSpatialStaticNativeFieldResidue",
+            "LowEnergy.PreparationPhysicalStaticSpatialCouplingReturn.sourceStaticSpatialContraction_price",
+            "LowEnergy.PreparationPhysicalStaticSpatialCouplingReturn.sourceStaticSpatialInteraction_generated"
+          ]
+        }
+      ],
+      "direct_consumers": [
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/PhysicalEMCompleteStaticScalar.lean",
+          "source_commit": "e05558097256e86b537c019c8ca63cd449d6b2d2",
+          "source_sha256": "c06d88fa59c0480f66c7b3a621daa97094c33095dcc930699684b3c2614eefb8",
+          "public_status": "missing_path",
+          "public_targets": [],
+          "declarations": [
+            "LowEnergy.GaussComposite.PhysicalEMCompleteStaticScalar.em_static_seed_generated",
+            "LowEnergy.GaussComposite.PhysicalEMCompleteStaticScalar.em_complete_static_residue",
+            "LowEnergy.GaussComposite.PhysicalEMCompleteStaticScalar.em_complete_static_limit",
+            "LowEnergy.GaussComposite.PhysicalEMCompleteStaticScalar.em_complete_static_reduced_limit"
+          ]
+        },
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/PhysicalEMCompleteStaticCharge.lean",
+          "source_commit": "e05558097256e86b537c019c8ca63cd449d6b2d2",
+          "source_sha256": "a9068ad5639230e878fdda91e0c66d5e8217dd3e486c93089355839da7afe2f8",
+          "public_status": "missing_path",
+          "public_targets": [],
+          "declarations": [
+            "LowEnergy.GaussComposite.PhysicalEMCompleteStaticCharge.emCompleteStaticChargeInteraction",
+            "LowEnergy.GaussComposite.PhysicalEMCompleteStaticCharge.emCompleteStaticInputInteraction",
+            "LowEnergy.GaussComposite.PhysicalEMCompleteStaticCharge.emCompleteStaticInputResidue",
+            "LowEnergy.GaussComposite.PhysicalEMCompleteStaticCharge.em_complete_static_charge_split",
+            "LowEnergy.GaussComposite.PhysicalEMCompleteStaticCharge.em_complete_static_charge_limit",
+            "LowEnergy.GaussComposite.PhysicalEMCompleteStaticCharge.em_complete_static_charge_reduced_limit"
+          ]
+        },
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/PhysicalEMCompleteStaticAudit.lean",
+          "source_commit": "e05558097256e86b537c019c8ca63cd449d6b2d2",
+          "source_sha256": "5c1a0f8457bebaaac39c5e39ba1da4432a26fd1fbb94e127c40fa045b44d75fc",
+          "public_status": "missing_path",
+          "public_targets": [],
+          "declarations": [
+            "LowEnergy.GaussComposite.PhysicalEMCompleteStaticAudit.checked_complete_source_seed",
+            "LowEnergy.GaussComposite.PhysicalEMCompleteStaticAudit.checked_ordinary_full_static_scalar",
+            "LowEnergy.GaussComposite.PhysicalEMCompleteStaticAudit.checked_actual_charge_full_static_scalar"
+          ]
+        }
+      ],
+      "public_binding": {
+        "status": "needs_authorized_intake",
+        "acceptance_commit": null,
+        "entry": null,
+        "observation_commit": "51867c59042460646e57d5ead4c405cbca05c240"
+      }
+    },
+    {
+      "id": "low1.L19",
+      "source_commit": "e05558097256e86b537c019c8ca63cd449d6b2d2",
+      "precise_claim": "K*=(9023/9000)sqrt(30) is generated from the actual static inverse. For independent preparations C_comp=K*w_D*w_S; their full original static residue contraction is -C_comp, while +kappa^2 times the all-direction complete interaction tends to +C_comp. The reduced scalar divides once by h_source*c_source(0).",
+      "conditions": [
+        "Each source and detector preparation is independently chosen with its positive precision and complete parameters.",
+        "Unit real direction; original staticApproach.",
+        "C_T=-C_comp is the -kappa^2 residue convention; C_comp is the +kappa^2 convention.",
+        "No experimental alpha or Thomson identification."
+      ],
+      "written_proof": {
+        "zh": {
+          "sections": [
+            "§9.4",
+            "Appendix F.2"
+          ],
+          "equations": [
+            "9.12–9.15",
+            "F.5–F.10"
+          ],
+          "file": "manuscript.md"
+        },
+        "en": {
+          "sections": [
+            "§9.4",
+            "Appendix F.2"
+          ],
+          "equations": [
+            "9.12–9.15",
+            "F.5–F.10"
+          ],
+          "file": "manuscript-en.md"
+        }
+      },
+      "production": [
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/PhysicalEMCompleteStaticScalar.lean",
+          "source_commit": "e05558097256e86b537c019c8ca63cd449d6b2d2",
+          "source_sha256": "c06d88fa59c0480f66c7b3a621daa97094c33095dcc930699684b3c2614eefb8",
+          "public_status": "missing_path",
+          "public_targets": [],
+          "declarations": [
+            "LowEnergy.GaussComposite.PhysicalEMCompleteStaticScalar.em_static_seed_generated",
+            "LowEnergy.GaussComposite.PhysicalEMCompleteStaticScalar.em_complete_static_residue",
+            "LowEnergy.GaussComposite.PhysicalEMCompleteStaticScalar.em_complete_static_limit",
+            "LowEnergy.GaussComposite.PhysicalEMCompleteStaticScalar.em_complete_static_reduced_limit"
+          ]
+        }
+      ],
+      "direct_consumers": [
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/PhysicalEMCompleteStaticAudit.lean",
+          "source_commit": "e05558097256e86b537c019c8ca63cd449d6b2d2",
+          "source_sha256": "5c1a0f8457bebaaac39c5e39ba1da4432a26fd1fbb94e127c40fa045b44d75fc",
+          "public_status": "missing_path",
+          "public_targets": [],
+          "declarations": [
+            "LowEnergy.GaussComposite.PhysicalEMCompleteStaticAudit.checked_complete_source_seed",
+            "LowEnergy.GaussComposite.PhysicalEMCompleteStaticAudit.checked_ordinary_full_static_scalar",
+            "LowEnergy.GaussComposite.PhysicalEMCompleteStaticAudit.checked_actual_charge_full_static_scalar"
+          ]
+        },
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/SourceThomsonStaticResponse.lean",
+          "source_commit": "e05558097256e86b537c019c8ca63cd449d6b2d2",
+          "source_sha256": "5ef4b6a089df35f79b45d78adfc0e0e0e7f0f305a80493b073ad912c50be2ed4",
+          "public_status": "missing_path",
+          "public_targets": [],
+          "declarations": [
+            "LowEnergy.PreparationPhysicalThomsonMatchingReturn.sourceThomsonStaticInteraction_generated",
+            "LowEnergy.PreparationPhysicalThomsonMatchingReturn.sourceThomsonSchur_split"
+          ]
+        }
+      ],
+      "public_binding": {
+        "status": "needs_authorized_intake",
+        "acceptance_commit": null,
+        "entry": null,
+        "observation_commit": "51867c59042460646e57d5ead4c405cbca05c240"
+      }
+    },
+    {
+      "id": "low1.L20",
+      "source_commit": "e05558097256e86b537c019c8ca63cd449d6b2d2",
+      "precise_claim": "The literal EM direction generates exterior weights and the dressed joint charge unit 1/2. Creation and annihilation characters are +i/2 and -i/2. The complete prepared covector is (conj(c_left)+c_right)J on the same completed profile. GT character/completed/current readers are the real multiple -10/11, without equality of full generators.",
+      "conditions": [
+        "Full504 matrix and full CAR precede state restriction.",
+        "Scalar and independent-dual variations retained with negative dual composition.",
+        "The dressed half-unit is distinct from the edge0 absolute electron unit."
+      ],
+      "written_proof": {
+        "zh": {
+          "sections": [
+            "§9.3"
+          ],
+          "equations": [
+            "9.7–9.10"
+          ],
+          "file": "manuscript.md"
+        },
+        "en": {
+          "sections": [
+            "§9.3"
+          ],
+          "equations": [
+            "9.7–9.10"
+          ],
+          "file": "manuscript-en.md"
+        }
+      },
+      "production": [
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/PhysicalEMDressedCharacter.lean",
+          "source_commit": "e05558097256e86b537c019c8ca63cd449d6b2d2",
+          "source_sha256": "8d150b8a2147ca4c1e6122085a9417f75a79f59bf6115a861f7c46604a46bb9d",
+          "public_status": "missing_path",
+          "public_targets": [],
+          "declarations": [
+            "LowEnergy.GaussComposite.PhysicalEMDressedCharacter.emDressedChargeUnit_value",
+            "LowEnergy.GaussComposite.PhysicalEMDressedCharacter.em_dressed_read",
+            "LowEnergy.GaussComposite.PhysicalEMDressedCharacter.em_dressed_dual"
+          ]
+        },
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/PhysicalEMDressedPreparedRead.lean",
+          "source_commit": "e05558097256e86b537c019c8ca63cd449d6b2d2",
+          "source_sha256": "6cdb8c67320f9b7c187c50649c0d16cebbdafd4a49782ad6cc8519e8ec29670b",
+          "public_status": "missing_path",
+          "public_targets": [],
+          "declarations": [
+            "LowEnergy.GaussComposite.PhysicalEMDressedPreparedRead.emDressedCompleted_return",
+            "LowEnergy.GaussComposite.PhysicalEMDressedPreparedRead.em_dressed_prepared_source",
+            "LowEnergy.GaussComposite.PhysicalEMDressedPreparedRead.em_dressed_gt_prepared"
+          ]
+        }
+      ],
+      "direct_consumers": [
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/PhysicalEMDressedAudit.lean",
+          "source_commit": "e05558097256e86b537c019c8ca63cd449d6b2d2",
+          "source_sha256": "aa6ec1c10c24f4e09af2e623b59fde85821a4b3149b4a3da7d3e315c101a0664",
+          "public_status": "missing_path",
+          "public_targets": [],
+          "declarations": [
+            "LowEnergy.GaussComposite.PhysicalEMDressedAudit.checked_em_joint_source_unit",
+            "LowEnergy.GaussComposite.PhysicalEMDressedAudit.checked_em_actual_prepared_source",
+            "LowEnergy.GaussComposite.PhysicalEMDressedAudit.checked_gt_actual_em_prepared_normalization"
+          ]
+        }
+      ],
+      "public_binding": {
+        "status": "needs_authorized_intake",
+        "acceptance_commit": null,
+        "entry": null,
+        "observation_commit": "51867c59042460646e57d5ead4c405cbca05c240"
+      }
+    },
+    {
+      "id": "low1.L21",
+      "source_commit": "e05558097256e86b537c019c8ca63cd449d6b2d2",
+      "precise_claim": "Actual edge0 electronUnit=1; its independent-dual Noether current equals h_source and filtered current keeps the charge-commutator remainder. The complete static residue C_T, finite pole/contact/complement Schur and C_T/(h_source*c_source) are generated; the source matching return is conditional on ordinaryFull-lightResponse=sourceCEM+contactResponse.",
+      "conditions": [
+        "Joint increments +/-1/2 remain distinct from absolute electronUnit=1.",
+        "C_T is the original negative complete-static contraction.",
+        "ordinaryFull-lightResponse=sourceCEM+contactResponse remains an owner return.",
+        "Both normalized source electron units multiply the unchanged complete static residue.",
+        "No alpha(0) interval or Thomson identity."
+      ],
+      "written_proof": {
+        "zh": {
+          "sections": [
+            "§9.3–9.5",
+            "§10.1",
+            "Appendix F.2"
+          ],
+          "equations": [
+            "9.11",
+            "9.15",
+            "9.18–9.19",
+            "10.1–10.3",
+            "F.9–F.10"
+          ],
+          "file": "manuscript.md"
+        },
+        "en": {
+          "sections": [
+            "§9.3–9.5",
+            "§10.1",
+            "Appendix F.2"
+          ],
+          "equations": [
+            "9.11",
+            "9.15",
+            "9.18–9.19",
+            "10.1–10.3",
+            "F.9–F.10"
+          ],
+          "file": "manuscript-en.md"
+        }
+      },
+      "production": [
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/SourceElectronChargeUnit.lean",
+          "source_commit": "e05558097256e86b537c019c8ca63cd449d6b2d2",
+          "source_sha256": "028d0e6e5091a0504b3857c18c912ccda82acf1295119eff1e3d15a069ffe841",
+          "public_status": "missing_path",
+          "public_targets": [],
+          "declarations": [
+            "LowEnergy.PreparationPhysicalElectronChargeUnitReturn.sourceElectronChargeUnit_generated",
+            "LowEnergy.PreparationPhysicalElectronChargeUnitReturn.sourceElectronIndependent_current",
+            "LowEnergy.PreparationPhysicalElectronChargeUnitReturn.sourceElectronFiltered_current"
+          ]
+        },
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/SourceElectronStaticConsumer.lean",
+          "source_commit": "e05558097256e86b537c019c8ca63cd449d6b2d2",
+          "source_sha256": "8376e05019ca91a8b56d6a961ffe99d508985e578f36fea3fcb842ac0cf0d9b3",
+          "public_status": "missing_path",
+          "public_targets": [],
+          "declarations": [
+            "LowEnergy.PreparationPhysicalElectronChargeUnitReturn.sourceElectronStaticResidue_generated",
+            "LowEnergy.PreparationPhysicalElectronChargeUnitReturn.sourceElectronStatic_rescale_invariant"
+          ]
+        },
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/SourceThomsonStaticResponse.lean",
+          "source_commit": "e05558097256e86b537c019c8ca63cd449d6b2d2",
+          "source_sha256": "5ef4b6a089df35f79b45d78adfc0e0e0e7f0f305a80493b073ad912c50be2ed4",
+          "public_status": "missing_path",
+          "public_targets": [],
+          "declarations": [
+            "LowEnergy.PreparationPhysicalThomsonMatchingReturn.sourceThomsonStaticInteraction_generated",
+            "LowEnergy.PreparationPhysicalThomsonMatchingReturn.sourceThomsonSchur_split"
+          ]
+        },
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/SourceThomsonMatchingConsumer.lean",
+          "source_commit": "e05558097256e86b537c019c8ca63cd449d6b2d2",
+          "source_sha256": "5ceb111bc8b682078c2626d3796a5af46d7f1a2afebfd6bbc0669431455629e7",
+          "public_status": "missing_path",
+          "public_targets": [],
+          "declarations": [
+            "LowEnergy.PreparationPhysicalThomsonMatchingReturn.SourceThomsonMatchingContract",
+            "LowEnergy.PreparationPhysicalThomsonMatchingReturn.sourceThomsonMatching_return"
+          ]
+        }
+      ],
+      "direct_consumers": [
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/SourcePreparedThomsonMatchingBridge.lean",
+          "source_commit": "e05558097256e86b537c019c8ca63cd449d6b2d2",
+          "source_sha256": "7923be315ff21f5896fa6902e15c7f3a41c1bde56df9b56d01940e4005a4654d",
+          "public_status": "missing_path",
+          "public_targets": [],
+          "declarations": [
+            "LowEnergy.PreparationPhysicalPreparedThomsonMatchingBridge.SourcePreparedThomsonOwnerContract",
+            "LowEnergy.PreparationPhysicalPreparedThomsonMatchingBridge.sourcePreparedThomsonOwner_readout",
+            "LowEnergy.PreparationPhysicalPreparedThomsonMatchingBridge.SourcePreparedThomsonOwnerContract.toSourceThomsonContract",
+            "LowEnergy.PreparationPhysicalPreparedThomsonMatchingBridge.sourcePreparedThomsonOwner_readout_as_matching"
+          ]
+        }
+      ],
+      "public_binding": {
+        "status": "needs_authorized_intake",
+        "acceptance_commit": null,
+        "entry": null,
+        "observation_commit": "51867c59042460646e57d5ead4c405cbca05c240"
+      }
+    },
+    {
+      "id": "low1.L22",
+      "source_commit": "e05558097256e86b537c019c8ca63cd449d6b2d2",
+      "precise_claim": "The same source-generated SourcePreparation supplies sourceProfile, its configuration-background unit state, nativeY=-1 and completed source legs. The full photon amplitude A and A/(h_source*c_source), with complete polarization/double-resolvent bound and full-Y domain/cutoff, form the generated typed ordinary input.",
+      "conditions": [
+        "Positive preparation precision; source operator, remainder and energy fixed independently of epsilon.",
+        "Typed amplitude/price: e!=0, Im(z)!=0, Im(w)!=0.",
+        "All branch,e,s,n,p,k,F,cut,z,w and endpoint arguments remain.",
+        "The configuration-background unit differs from a later actually created N2 unit vector, whose nonzero creation and norm are independently generated.",
+        "No physical transverse carrier, width, or full-light/contact identity."
+      ],
+      "written_proof": {
+        "zh": {
+          "sections": [
+            "§9.2",
+            "§9.5",
+            "Appendix F.1"
+          ],
+          "equations": [
+            "9.3–9.6",
+            "9.16–9.17",
+            "F.1–F.4"
+          ],
+          "file": "manuscript.md"
+        },
+        "en": {
+          "sections": [
+            "§9.2",
+            "§9.5",
+            "Appendix F.1"
+          ],
+          "equations": [
+            "9.3–9.6",
+            "9.16–9.17",
+            "F.1–F.4"
+          ],
+          "file": "manuscript-en.md"
+        }
+      },
+      "production": [
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/SourcePreparedPhotonAmplitude.lean",
+          "source_commit": "e05558097256e86b537c019c8ca63cd449d6b2d2",
+          "source_sha256": "47a0ad6dab619b2edfacf4f38d35f9f443af1dfa98e6f1dfb3c58a1259fce854",
+          "public_status": "missing_path",
+          "public_targets": [],
+          "declarations": [
+            "LowEnergy.PreparationPhysicalSourcePreparedPhotonReturn.sourcePreparedPhotonProfile_generated",
+            "LowEnergy.PreparationPhysicalSourcePreparedPhotonReturn.sourcePreparedPhoton_unit",
+            "LowEnergy.PreparationPhysicalSourcePreparedPhotonReturn.sourcePreparedPhoton_charge",
+            "LowEnergy.PreparationPhysicalSourcePreparedPhotonReturn.sourcePreparedPhotonAmplitude_normalized",
+            "LowEnergy.PreparationPhysicalSourcePreparedPhotonReturn.sourcePreparedPhotonAmplitude_price"
+          ]
+        },
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/SourcePreparedThomsonInput.lean",
+          "source_commit": "e05558097256e86b537c019c8ca63cd449d6b2d2",
+          "source_sha256": "47ab358783f898ba24e7d8e4fa83d0df6c93abd7074b5e3676171d8862bc9666",
+          "public_status": "missing_path",
+          "public_targets": [],
+          "declarations": [
+            "LowEnergy.PreparationPhysicalSourcePreparedThomsonInputReturn.SourcePreparedThomsonInput",
+            "LowEnergy.PreparationPhysicalSourcePreparedThomsonInputReturn.sourcePreparedThomsonInput",
+            "LowEnergy.PreparationPhysicalSourcePreparedThomsonInputReturn.sourcePreparedThomsonOrdinaryFull_normalized"
+          ]
+        }
+      ],
+      "direct_consumers": [
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSourcePreparedPhotonAmplitude.lean",
+          "source_commit": "e05558097256e86b537c019c8ca63cd449d6b2d2",
+          "source_sha256": "5236eed7f1e3944db949ffb50c5e296004a4f2f6610be54c42ab2270c871d9fc",
+          "public_status": "missing_path",
+          "public_targets": [],
+          "declarations": []
+        },
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSourcePreparedThomsonInput.lean",
+          "source_commit": "e05558097256e86b537c019c8ca63cd449d6b2d2",
+          "source_sha256": "1e158be0dd470ca7f5d33e4b8de5b86703f9087047980aebb2466e1c84e1ab4e",
+          "public_status": "missing_path",
+          "public_targets": [],
+          "declarations": []
+        },
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/SourcePreparedThomsonMatchingBridge.lean",
+          "source_commit": "e05558097256e86b537c019c8ca63cd449d6b2d2",
+          "source_sha256": "7923be315ff21f5896fa6902e15c7f3a41c1bde56df9b56d01940e4005a4654d",
+          "public_status": "missing_path",
+          "public_targets": [],
+          "declarations": [
+            "LowEnergy.PreparationPhysicalPreparedThomsonMatchingBridge.SourcePreparedThomsonOwnerContract",
+            "LowEnergy.PreparationPhysicalPreparedThomsonMatchingBridge.sourcePreparedThomsonOwner_readout",
+            "LowEnergy.PreparationPhysicalPreparedThomsonMatchingBridge.SourcePreparedThomsonOwnerContract.toSourceThomsonContract",
+            "LowEnergy.PreparationPhysicalPreparedThomsonMatchingBridge.sourcePreparedThomsonOwner_readout_as_matching"
+          ]
+        },
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/SourcePreparedThomsonInput.lean",
+          "source_commit": "e05558097256e86b537c019c8ca63cd449d6b2d2",
+          "source_sha256": "47ab358783f898ba24e7d8e4fa83d0df6c93abd7074b5e3676171d8862bc9666",
+          "public_status": "missing_path",
+          "public_targets": [],
+          "declarations": [
+            "LowEnergy.PreparationPhysicalSourcePreparedThomsonInputReturn.SourcePreparedThomsonInput",
+            "LowEnergy.PreparationPhysicalSourcePreparedThomsonInputReturn.sourcePreparedThomsonInput",
+            "LowEnergy.PreparationPhysicalSourcePreparedThomsonInputReturn.sourcePreparedThomsonOrdinaryFull_normalized"
+          ]
+        }
+      ],
+      "public_binding": {
+        "status": "needs_authorized_intake",
+        "acceptance_commit": null,
+        "entry": null,
+        "observation_commit": "51867c59042460646e57d5ead4c405cbca05c240"
+      }
+    },
+    {
+      "id": "low1.L23",
+      "source_commit": "e05558097256e86b537c019c8ca63cd449d6b2d2",
+      "precise_claim": "The owner binds ordinaryFull to input.normalizedAmplitude=A/(h_source*c_source). Keeping the original full-light/contact equation, its difference readout, itself divided by h_source*c_source, equals sourceCEM/(h_source*c_source). Conversion to the earlier matching consumer preserves the same values and equation.",
+      "conditions": [
+        "ordinaryFull is already A/(h_source*c_source); the contract explicitly divides its difference by h_source*c_source again.",
+        "ordinaryFull-lightResponse=sourceCEM+contactResponse is a supplied condition.",
+        "Existing 17-companion Riesz/six-test source and window obligations retain their identities.",
+        "No new physical transverse carrier, zero-transfer/Thomson/alpha(0) matching."
+      ],
+      "written_proof": {
+        "zh": {
+          "sections": [
+            "§9.5"
+          ],
+          "equations": [
+            "9.18–9.19"
+          ],
+          "file": "manuscript.md"
+        },
+        "en": {
+          "sections": [
+            "§9.5"
+          ],
+          "equations": [
+            "9.18–9.19"
+          ],
+          "file": "manuscript-en.md"
+        }
+      },
+      "production": [
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/SourcePreparedThomsonMatchingBridge.lean",
+          "source_commit": "e05558097256e86b537c019c8ca63cd449d6b2d2",
+          "source_sha256": "7923be315ff21f5896fa6902e15c7f3a41c1bde56df9b56d01940e4005a4654d",
+          "public_status": "missing_path",
+          "public_targets": [],
+          "declarations": [
+            "LowEnergy.PreparationPhysicalPreparedThomsonMatchingBridge.SourcePreparedThomsonOwnerContract",
+            "LowEnergy.PreparationPhysicalPreparedThomsonMatchingBridge.sourcePreparedThomsonOwner_readout",
+            "LowEnergy.PreparationPhysicalPreparedThomsonMatchingBridge.SourcePreparedThomsonOwnerContract.toSourceThomsonContract",
+            "LowEnergy.PreparationPhysicalPreparedThomsonMatchingBridge.sourcePreparedThomsonOwner_readout_as_matching"
+          ]
+        }
+      ],
+      "direct_consumers": [
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSourcePreparedThomsonMatchingBridge.lean",
+          "source_commit": "e05558097256e86b537c019c8ca63cd449d6b2d2",
+          "source_sha256": "372d56bbf60b52d0395294aa81f6ebbb49c39e378863ccd427d0adc6a0aa8607",
+          "public_status": "missing_path",
+          "public_targets": [],
+          "declarations": []
+        },
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/SourceThomsonMatchingConsumer.lean",
+          "source_commit": "e05558097256e86b537c019c8ca63cd449d6b2d2",
+          "source_sha256": "5ceb111bc8b682078c2626d3796a5af46d7f1a2afebfd6bbc0669431455629e7",
+          "public_status": "missing_path",
+          "public_targets": [],
+          "declarations": [
+            "LowEnergy.PreparationPhysicalThomsonMatchingReturn.SourceThomsonMatchingContract",
+            "LowEnergy.PreparationPhysicalThomsonMatchingReturn.sourceThomsonMatching_return"
+          ]
+        },
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/SourcePreparedThomsonMatchingBridge.lean",
+          "source_commit": "e05558097256e86b537c019c8ca63cd449d6b2d2",
+          "source_sha256": "7923be315ff21f5896fa6902e15c7f3a41c1bde56df9b56d01940e4005a4654d",
+          "public_status": "missing_path",
+          "public_targets": [],
+          "declarations": [
+            "LowEnergy.PreparationPhysicalPreparedThomsonMatchingBridge.SourcePreparedThomsonOwnerContract",
+            "LowEnergy.PreparationPhysicalPreparedThomsonMatchingBridge.sourcePreparedThomsonOwner_readout",
+            "LowEnergy.PreparationPhysicalPreparedThomsonMatchingBridge.SourcePreparedThomsonOwnerContract.toSourceThomsonContract",
+            "LowEnergy.PreparationPhysicalPreparedThomsonMatchingBridge.sourcePreparedThomsonOwner_readout_as_matching"
+          ]
+        }
+      ],
+      "public_binding": {
+        "status": "needs_authorized_intake",
+        "acceptance_commit": null,
+        "entry": null,
+        "observation_commit": "51867c59042460646e57d5ead4c405cbca05c240"
+      }
+    },
+    {
+      "id": "low1.L24",
+      "source_commit": "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46",
+      "precise_claim": "The same actual charged edge0 rest leg (side,1) has native temporal expectation -1 and literal EM eigenvalue +1, using original actionScale*phaseMomentum=1. The original once-Coulomb scalar is N_D[K*D_actual*W_cf-c_D(A_D(V_C))]. Both full 64-weight ends, complete static reader, oriented physicalTime/jointResolvent age windows, coframe false/true exchange and every single/cross leg correction are retained; separate source normalization produces the exact two-end correction formula.",
+      "conditions": [
+        "Im(q_D.z),Im(q_D.w),Im(q_S.z),Im(q_S.w) are all nonzero.",
+        "Arbitrary branch and actual-electron side indices, real T and real spatial momentum n.",
+        "All 8x8 weights at each end and original physicalTime/jointResolvent factors remain.",
+        "Original detector=-raw bilinear; normalized field read=-normalized leg read, giving the correct minus correction.",
+        "Once-Coulomb V_C already includes one inverse; no second staticResidue(V_C).",
+        "Complete compression, both Green, preparation, equal-energy and zero-velocity resonance commutators retained."
+      ],
+      "written_proof": {
+        "zh": {
+          "sections": [
+            "§10.1–10.4",
+            "Appendix F.3"
+          ],
+          "equations": [
+            "10.1–10.14",
+            "F.11–F.17"
+          ],
+          "file": "manuscript.md"
+        },
+        "en": {
+          "sections": [
+            "§10.1–10.4",
+            "Appendix F.3"
+          ],
+          "equations": [
+            "10.1–10.14",
+            "F.11–F.17"
+          ],
+          "file": "manuscript-en.md"
+        }
+      },
+      "production": [
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/PhysicalNativeEMChargeBridge.lean",
+          "source_commit": "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46",
+          "source_sha256": "7523814b8bafaa990e1d9a4ad7693bd9872dcb870c57afef02591a8363975191",
+          "public_status": "missing_path",
+          "public_targets": [],
+          "declarations": [
+            "LowEnergy.GaussComposite.PhysicalNativeEMChargeBridge.sourceNativeElectronState_source",
+            "LowEnergy.GaussComposite.PhysicalNativeEMChargeBridge.native_charged_current_unit",
+            "LowEnergy.GaussComposite.PhysicalNativeEMChargeBridge.em_reader_same_electron_state",
+            "LowEnergy.GaussComposite.PhysicalNativeEMChargeBridge.em_filtered_electron_pair"
+          ]
+        },
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/PhysicalEMStaticReaderRecognition.lean",
+          "source_commit": "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46",
+          "source_sha256": "ebc022806d6f8141da1189b1703a256b92ad4c97fe445e8df19af0ac3d6c675e",
+          "public_status": "missing_path",
+          "public_targets": [],
+          "declarations": [
+            "LowEnergy.GaussComposite.PhysicalEMStaticReaderRecognition.em_static_reader_field_generated",
+            "LowEnergy.GaussComposite.PhysicalEMStaticReaderRecognition.em_static_reader_currentRestriction_generated"
+          ]
+        },
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/PhysicalEMActualStaticWindow.lean",
+          "source_commit": "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46",
+          "source_sha256": "c030b663b2b112af82540a61fd1607d6ef6f57ec6799ceb6a70d70fc5daff6d6",
+          "public_status": "missing_path",
+          "public_targets": [],
+          "declarations": [
+            "LowEnergy.GaussComposite.PhysicalEMActualStaticWindow.em_actual_origin_window_split",
+            "LowEnergy.GaussComposite.PhysicalEMActualStaticWindow.em_actual_origin_window_weighted"
+          ]
+        },
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/PhysicalEMActualCoulombScalar.lean",
+          "source_commit": "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46",
+          "source_sha256": "fa8d729ea81f561c73f797d7bb7640fefd407ec0f3efb0f38075e1b9334c7c27",
+          "public_status": "missing_path",
+          "public_targets": [],
+          "declarations": [
+            "LowEnergy.GaussComposite.PhysicalEMActualCoulombScalar.em_staticCEM_scalar_generated",
+            "LowEnergy.GaussComposite.PhysicalEMActualCoulombScalar.em_staticCEM_window_generated"
+          ]
+        },
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/PhysicalEMActualElectronCoulomb.lean",
+          "source_commit": "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46",
+          "source_sha256": "6526334f3b271400e1f40f3e707aaee08a4a86a9c9e296ad97e36074e020e1c4",
+          "public_status": "missing_path",
+          "public_targets": [],
+          "declarations": [
+            "LowEnergy.GaussComposite.PhysicalEMActualElectronCoulomb.coframeScalar_sameCharge",
+            "LowEnergy.GaussComposite.PhysicalEMActualElectronCoulomb.rawCEM_electron_generated",
+            "LowEnergy.GaussComposite.PhysicalEMActualElectronCoulomb.rawCEM_bothElectronLegs_generated"
+          ]
+        }
+      ],
+      "direct_consumers": [
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/PhysicalEMActualCoulombAudit.lean",
+          "source_commit": "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46",
+          "source_sha256": "1e8d1f891df356e54a3a74cf3dafe9e3704d3d75ccee3f8e177fa882648313ec",
+          "public_status": "missing_path",
+          "public_targets": [],
+          "declarations": [
+            "LowEnergy.GaussComposite.PhysicalEMActualCoulombAudit.checked_complete_source_reader",
+            "LowEnergy.GaussComposite.PhysicalEMActualCoulombAudit.checked_original_age_window",
+            "LowEnergy.GaussComposite.PhysicalEMActualCoulombAudit.checked_source_configuration_age",
+            "LowEnergy.GaussComposite.PhysicalEMActualCoulombAudit.checked_zero_age",
+            "LowEnergy.GaussComposite.PhysicalEMActualCoulombAudit.checked_original_raw_scalar",
+            "LowEnergy.GaussComposite.PhysicalEMActualCoulombAudit.checked_single_source_unit"
+          ]
+        },
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/PhysicalEMActualElectronAudit.lean",
+          "source_commit": "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46",
+          "source_sha256": "21025b9110e102a728d57709d81ad73f87173c233bd9672b5e4b4478e3031bc4",
+          "public_status": "missing_path",
+          "public_targets": [],
+          "declarations": [
+            "LowEnergy.GaussComposite.PhysicalEMActualElectronAudit.checked_coframeScalar_actual",
+            "LowEnergy.GaussComposite.PhysicalEMActualElectronAudit.checked_coframeScalar_sameCharge",
+            "LowEnergy.GaussComposite.PhysicalEMActualElectronAudit.checked_rawCEM_electron_generated",
+            "LowEnergy.GaussComposite.PhysicalEMActualElectronAudit.checked_coframeScalar_unit_sameCharge",
+            "LowEnergy.GaussComposite.PhysicalEMActualElectronAudit.checked_rawCEM_bothElectronLegs_generated",
+            "LowEnergy.GaussComposite.PhysicalEMActualElectronAudit.checked_rawAlpha_electron_generated",
+            "LowEnergy.GaussComposite.PhysicalEMActualElectronAudit.checked_actualElectronOrdinary_generated",
+            "LowEnergy.GaussComposite.PhysicalEMActualElectronAudit.checked_actual_electron_rest_index",
+            "LowEnergy.GaussComposite.PhysicalEMActualElectronAudit.checked_same_actual_electron",
+            "LowEnergy.GaussComposite.PhysicalEMActualElectronAudit.checked_actual_em_unit",
+            "LowEnergy.GaussComposite.PhysicalEMActualElectronAudit.checked_neutral_edge",
+            "LowEnergy.GaussComposite.PhysicalEMActualElectronAudit.checked_complete_em_defect"
+          ]
+        }
+      ],
+      "public_binding": {
+        "status": "needs_authorized_intake",
+        "acceptance_commit": null,
+        "entry": null,
+        "observation_commit": "51867c59042460646e57d5ead4c405cbca05c240"
+      }
+    },
+    {
+      "id": "low1.L25",
+      "source_commit": "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46",
+      "precise_claim": "For the same actual edge0 electrons, the original whole ordinary photon response is N_D/(h_source*c_source(branch))*[beta_source(e)*D_D(polarization(e))-c_D(A_D(P_omega(e)J_source;lambda,T))], eventually on the original pole sheet. beta_source is the actual sourcePhotonLeftReader on the full source current and is not divided out. Both independent complex/real age windows and all original parameters remain.",
+      "conditions": [
+        "Each branch; spatialSquare(n)=1.",
+        "Detector Im(q_D.z)!=0 and Im(q_D.w)!=0 are explicit hypotheses.",
+        "Arbitrary q_D/q_S and all side indices; lambda,mu complex and T,S real independently.",
+        "Eventually in scaleApproach at sourceSheet(branch,n,e), not arbitrary finite momentum.",
+        "Physical ray=(-i e^2 s_branch(e,n),i e^2 n); physical frequency=e^2 s_branch(e,n).",
+        "No source nonreal condition silently added to this theorem mouth.",
+        "Actual beta_source, polarization, both endpoint and cross defects retained.",
+        "Full-light/contact, zero-transfer/Thomson and alpha(0) matching remain independent returns."
+      ],
+      "written_proof": {
+        "zh": {
+          "sections": [
+            "§9.5",
+            "§10.5"
+          ],
+          "equations": [
+            "9.16–9.17",
+            "10.15–10.16"
+          ],
+          "file": "manuscript.md"
+        },
+        "en": {
+          "sections": [
+            "§9.5",
+            "§10.5"
+          ],
+          "equations": [
+            "9.16–9.17",
+            "10.15–10.16"
+          ],
+          "file": "manuscript-en.md"
+        }
+      },
+      "production": [
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/PhysicalEMActualElectronOrdinary.lean",
+          "source_commit": "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46",
+          "source_sha256": "63d0d4dca4deb5e037e3d80eb262082e93dfe13fd9916cdad43570274d98806f",
+          "public_status": "missing_path",
+          "public_targets": [],
+          "declarations": [
+            "LowEnergy.GaussComposite.PhysicalEMActualElectronOrdinary.actualElectronOrdinary_generated"
+          ]
+        }
+      ],
+      "direct_consumers": [
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/PhysicalEMActualElectronAudit.lean",
+          "source_commit": "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46",
+          "source_sha256": "21025b9110e102a728d57709d81ad73f87173c233bd9672b5e4b4478e3031bc4",
+          "public_status": "missing_path",
+          "public_targets": [],
+          "declarations": [
+            "LowEnergy.GaussComposite.PhysicalEMActualElectronAudit.checked_coframeScalar_actual",
+            "LowEnergy.GaussComposite.PhysicalEMActualElectronAudit.checked_coframeScalar_sameCharge",
+            "LowEnergy.GaussComposite.PhysicalEMActualElectronAudit.checked_rawCEM_electron_generated",
+            "LowEnergy.GaussComposite.PhysicalEMActualElectronAudit.checked_coframeScalar_unit_sameCharge",
+            "LowEnergy.GaussComposite.PhysicalEMActualElectronAudit.checked_rawCEM_bothElectronLegs_generated",
+            "LowEnergy.GaussComposite.PhysicalEMActualElectronAudit.checked_rawAlpha_electron_generated",
+            "LowEnergy.GaussComposite.PhysicalEMActualElectronAudit.checked_actualElectronOrdinary_generated",
+            "LowEnergy.GaussComposite.PhysicalEMActualElectronAudit.checked_actual_electron_rest_index",
+            "LowEnergy.GaussComposite.PhysicalEMActualElectronAudit.checked_same_actual_electron",
+            "LowEnergy.GaussComposite.PhysicalEMActualElectronAudit.checked_actual_em_unit",
+            "LowEnergy.GaussComposite.PhysicalEMActualElectronAudit.checked_neutral_edge",
+            "LowEnergy.GaussComposite.PhysicalEMActualElectronAudit.checked_complete_em_defect"
+          ]
+        }
+      ],
+      "public_binding": {
+        "status": "needs_authorized_intake",
+        "acceptance_commit": null,
+        "entry": null,
+        "observation_commit": "51867c59042460646e57d5ead4c405cbca05c240"
+      }
+    },
+    {
+      "id": "low1.L26",
+      "source_commit": "71e94e8261d67cf4849a05eb14ac95aa2f7dcbb9",
+      "precise_claim": "原E=−color2−Y/2进入四原gauge slots，先保全部289输出／constraints再生成EᵀG_wholeE与EᵀR E。真实原repaired density在nativeLocalPoint上的二阶变分恰为同K；原carrier解全289齐次方程，物理频率residue消费同作用K′并返回自身flux。任正clock scale，重表达的实际Green在移动pole生成R_clock=Rω/scale，实际Jacobi导数为scale·K′，完整flux归一恒等式保持；两边的原留数张量同缩为原值的1/scale，R K′投影不变。actual rest电流的pole factor与visibility由同source left reader返回；原E背景两非零color导数及全混合行保留。",
+      "conditions": [
+        "Every complex four-momentum for the Hessian/Jacobi identity.",
+        "Each fixed source branch, unit direction and generated simple-pole range for residue/flux.",
+        "Every positive clock scale c; both flux tensors scale by 1/c."
+      ],
+      "written_proof": {
+        "zh": {
+          "file": "manuscript.md",
+          "location": "§11.1–11.3; Appendix G.1–G.2; Figure 4",
+          "equations": [
+            "11.1–11.11",
+            "G.1–G.5"
+          ]
+        },
+        "en": {
+          "file": "manuscript-en.md",
+          "location": "§11.1–11.3; Appendix G.1–G.2; Figure 4",
+          "equations": [
+            "11.1–11.11",
+            "G.1–G.5"
+          ]
+        }
+      },
+      "production": [
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualEMCarrier.lean",
+          "source_commit": "71e94e8261d67cf4849a05eb14ac95aa2f7dcbb9",
+          "source_sha256": "f2405395948f8014a1225229c557eb1c3604525d13d345a47b646c3c8da36e76",
+          "public_status": "missing_path",
+          "public_targets": []
+        },
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualEMAction.lean",
+          "source_commit": "71e94e8261d67cf4849a05eb14ac95aa2f7dcbb9",
+          "source_sha256": "f372ef58e59164d7a56a727ef712c5cd9dc58d23636d9dcf33ba6fa42c18f8c6",
+          "public_status": "missing_path",
+          "public_targets": []
+        },
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualEMClock.lean",
+          "source_commit": "71e94e8261d67cf4849a05eb14ac95aa2f7dcbb9",
+          "source_sha256": "12d1cc1e13192e4a4d95fac3b3d86b88e0b91315774ca247a0c7e54001a42426",
+          "public_status": "missing_path",
+          "public_targets": []
+        }
+      ],
+      "direct_consumers": [
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualEMActionAudit.lean",
+          "source_commit": "71e94e8261d67cf4849a05eb14ac95aa2f7dcbb9",
+          "source_sha256": "99bdf72178c63cac15b8fbe40b2f44e735a786f1d61560b0b2eb90877b6528db",
+          "public_status": "missing_path",
+          "public_targets": []
+        },
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualEMDressedGaugePole.lean",
+          "source_commit": "71e94e8261d67cf4849a05eb14ac95aa2f7dcbb9",
+          "source_sha256": "c204f743ea3816b057df5fad06fc4007d2a74bd7f89cad0479c99b2ee5ae8d3c",
+          "public_status": "missing_path",
+          "public_targets": []
+        }
+      ],
+      "public_binding": {
+        "status": "needs_authorized_intake",
+        "acceptance_commit": null,
+        "entry": null,
+        "observation_commit": "51867c59042460646e57d5ead4c405cbca05c240"
+      }
+    },
+    {
+      "id": "low1.L27",
+      "source_commit": "71e94e8261d67cf4849a05eb14ac95aa2f7dcbb9",
+      "precise_claim": "同源全方向static operator-norm极限与原Schwartz/Newton可积价生成真实Bochner矩阵Fourier积分；actual双unit current保64权、全leg corrections与独立两窗，极限系数为K·W_DW_S/(h c)。profile／position／三维Jacobian共同伸缩给−1次，原Fourier仅一次4π。实际source-created unit减background的两connected currents再以相反转移进入同一个whole289积分，连续性自产共同IR半径与domination价；极限是原Newton convolution乘`−dot(F0ᵀJ_D(0),staticInverse(F0ᵀJ_S(0)))`，joint cross及return-return同在。",
+      "conditions": [
+        "Positive spatial scale tending to zero, Schwartz input and the source-generated punctured IR window.",
+        "Whole289 Green with k=2*pi*xi and exactly one Newton 4*pi.",
+        "Created N2 detector/source currents have independent preparations and windows and opposite momenta of the same transfer.",
+        "Continuity of the actual endpoints at zero transfer pays the common IR radius and dominance budget."
+      ],
+      "written_proof": {
+        "zh": {
+          "file": "manuscript.md",
+          "location": "§12.1–12.3; Appendix G.3–G.5; Figure 5",
+          "equations": [
+            "12.1–12.12",
+            "G.6–G.13"
+          ]
+        },
+        "en": {
+          "file": "manuscript-en.md",
+          "location": "§12.1–12.3; Appendix G.3–G.5; Figure 5",
+          "equations": [
+            "12.1–12.12",
+            "G.6–G.13"
+          ]
+        }
+      },
+      "production": [
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualWholeCoulombPacket.lean",
+          "source_commit": "71e94e8261d67cf4849a05eb14ac95aa2f7dcbb9",
+          "source_sha256": "05398658f6c07fbdc20b57049e2fd839d538942e4c28951fe9d3b8fc35af55e4",
+          "public_status": "missing_path",
+          "public_targets": []
+        },
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedFullCoulomb.lean",
+          "source_commit": "71e94e8261d67cf4849a05eb14ac95aa2f7dcbb9",
+          "source_sha256": "f9773a2c6de4f001afba16f947d531b085910af3b63bc1fa7e06ffc9677280b7",
+          "public_status": "missing_path",
+          "public_targets": []
+        },
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedMovingCoulomb.lean",
+          "source_commit": "71e94e8261d67cf4849a05eb14ac95aa2f7dcbb9",
+          "source_sha256": "b639a7afc61bb1ff4681d7e6fcb69ce0a9c04012f8c078bceafbb9fd90a2ba36",
+          "public_status": "missing_path",
+          "public_targets": []
+        }
+      ],
+      "direct_consumers": [
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedMovingCoulomb.lean",
+          "source_commit": "71e94e8261d67cf4849a05eb14ac95aa2f7dcbb9",
+          "source_sha256": "b639a7afc61bb1ff4681d7e6fcb69ce0a9c04012f8c078bceafbb9fd90a2ba36",
+          "public_status": "missing_path",
+          "public_targets": []
+        },
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualCompositeCoulombDressing.lean",
+          "source_commit": "71e94e8261d67cf4849a05eb14ac95aa2f7dcbb9",
+          "source_sha256": "971310f37c55a7b9879379191cd6cffb045f0e5d317831a998507460629888dd",
+          "public_status": "missing_path",
+          "public_targets": []
+        }
+      ],
+      "public_binding": {
+        "status": "needs_authorized_intake",
+        "acceptance_commit": null,
+        "entry": null,
+        "observation_commit": "51867c59042460646e57d5ead4c405cbca05c240"
+      }
+    },
+    {
+      "id": "low1.L28",
+      "source_commit": "71e94e8261d67cf4849a05eb14ac95aa2f7dcbb9",
+      "precise_claim": "每个完整N3 fullY／独sharp腿自产非零response与唯一norm1；原bottom overlap=‖base‖/‖full response‖严格在(0,1]，其平方就是原(3,0)的unit Born值，sharp恰为1。detector pair及source pair各至少一端为independent sharp时，四actual overlaps之积乘原normalized base coefficient精确等于complete Coulomb coefficient；差范数恰为(1−product)乘原base coefficient范数。它直接进入原whole289 Newton空间观测，没有外供Z或matching scale。",
+      "conditions": [
+        "Nonreal energy and the actual nonzero N3 response for each of four independent legs.",
+        "At least one independent sharp leg in the detector pair and at least one in the source pair.",
+        "Every bottom overlap lies in (0,1]; no pointwise strict damping is inferred from the integrated excess."
+      ],
+      "written_proof": {
+        "zh": {
+          "file": "manuscript.md",
+          "location": "§13.1–13.3; Appendix G.6; Figure 6",
+          "equations": [
+            "13.1–13.9",
+            "G.14–G.18"
+          ]
+        },
+        "en": {
+          "file": "manuscript-en.md",
+          "location": "§13.1–13.3; Appendix G.6; Figure 6",
+          "equations": [
+            "13.1–13.9",
+            "G.14–G.18"
+          ]
+        }
+      },
+      "production": [
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualCompositeFieldCurrent.lean",
+          "source_commit": "71e94e8261d67cf4849a05eb14ac95aa2f7dcbb9",
+          "source_sha256": "3138133047b13ec444a0de8698203c7f5403e4f3e3e8f26ce0da935ac5afea50",
+          "public_status": "missing_path",
+          "public_targets": []
+        },
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualCompositeGaugeBand.lean",
+          "source_commit": "71e94e8261d67cf4849a05eb14ac95aa2f7dcbb9",
+          "source_sha256": "0a02b059a27850f7b0585b91b890a21dfa8ed384b31164f9677ce18b2e0790ba",
+          "public_status": "missing_path",
+          "public_targets": []
+        },
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualCompositeCoulombDressing.lean",
+          "source_commit": "71e94e8261d67cf4849a05eb14ac95aa2f7dcbb9",
+          "source_sha256": "971310f37c55a7b9879379191cd6cffb045f0e5d317831a998507460629888dd",
+          "public_status": "missing_path",
+          "public_targets": []
+        }
+      ],
+      "direct_consumers": [
+        {
+          "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualCompositeCoulombDressing.lean",
+          "source_commit": "71e94e8261d67cf4849a05eb14ac95aa2f7dcbb9",
+          "source_sha256": "971310f37c55a7b9879379191cd6cffb045f0e5d317831a998507460629888dd",
+          "public_status": "missing_path",
+          "public_targets": []
+        }
+      ],
+      "public_binding": {
+        "status": "needs_authorized_intake",
+        "acceptance_commit": null,
+        "entry": null,
+        "observation_commit": "51867c59042460646e57d5ead4c405cbca05c240"
+      }
+    }
+  ]
+}
