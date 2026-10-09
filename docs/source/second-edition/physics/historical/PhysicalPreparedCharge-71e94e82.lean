@@ -1,5 +1,5 @@
-import H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.PhysicalChargeResolventRead
-import H0mework.Versions.AB.Physics.LowEnergy.AlphaSource.CanonicalPreparedGraph
+import PhysicalChargeResolventRead
+import CanonicalPreparedGraph
 
 /-! The increment vertex on the actual prepared legs. On the original
 same-source kernel section a created completed leg carries increment
@@ -216,7 +216,8 @@ theorem prepared_increment_ward (left right : Bool) (a s b t : Fin 2)
     (inclusion (completedLeg left a s f)) (inclusion (completedLeg right b t g))
     hward (prepared_leg_increment right b t g) (prepared_leg_increment left a s f)
     (fun u v => (history_increment_pair nativeY u v).symm) sc
-  simpa only [preparedTwoPoint,product,mul_apply_eq_comp] using base
+  simp only [preparedTwoPoint,product,mul_apply_eq_comp]
+  linear_combination base
 
 theorem prepared_increment_ward_created (a s b t : Fin 2) (p k : PhysicalMomentum)
     (z w : ℂ) (hz : z.im≠0) (hw : w.im≠0) (f g : Profile) :

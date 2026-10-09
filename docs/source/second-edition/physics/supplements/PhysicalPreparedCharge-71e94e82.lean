@@ -1,5 +1,5 @@
-import H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.PhysicalChargeResolventRead
-import H0mework.Versions.AB.Physics.LowEnergy.AlphaSource.CanonicalPreparedGraph
+import PhysicalChargeResolventRead
+import CanonicalPreparedGraph
 
 /-! The increment vertex on the actual prepared legs. On the original
 same-source kernel section a created completed leg carries increment
