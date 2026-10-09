@@ -295,6 +295,12 @@ def rewrite_private_owner_expressions(text: str, rewrites, *, reverse: bool = Fa
         elif private:
             named = re.fullmatch(r'\(`_private\.(H0mework\.[A-Za-z_][A-Za-z0-9_.]*)\)', target)
             valid = named is not None and named[1].endswith('.' + private[1])
+        elif source == '(Name.str `_private file)':
+            named = re.fullmatch(r'\(Name\.append `_private \("(H0mework\.[A-Za-z_][A-Za-z0-9_.]*\.)" \+\+ file\)\.toName\)', target)
+            valid = named is not None and MODULE.fullmatch(named[1][:-1]) is not None
+        elif source == '(Name.str `_private moduleName)':
+            named = re.fullmatch(r'\(Name\.append `_private \("(H0mework\.[A-Za-z_][A-Za-z0-9_.]*\.)" \+\+ moduleName\)\.toName\)', target)
+            valid = named is not None and MODULE.fullmatch(named[1][:-1]) is not None
         if not valid:
             raise ViewError("Unsupported private-owner Name construction")
         before, after = (target, source) if reverse else (source, target)

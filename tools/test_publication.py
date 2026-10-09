@@ -45,6 +45,25 @@ class ModuleImportTests(unittest.TestCase):
 
 
 class DynamicPrivateOwnerTests(unittest.TestCase):
+    def test_indexed_schema_keeps_its_original_file_and_certificate(self):
+        raw = ('let file := if i=0 then "SourcePilot" else "SourceRows" ++ toString(i/16)\n'
+               'let schema := Name.str (Name.num (Name.str `_private file) 0) "schema"\n')
+        rule = {'source_expression': '(Name.str `_private file)',
+                'target_expression': '(Name.append `_private ("H0mework.P." ++ file).toName)', 'count': 1}
+        public = s.rewrite_private_owner_expressions(raw, [rule])
+        self.assertTrue(public.startswith(raw.splitlines(keepends=True)[0]))
+        self.assertIn(' 0) "schema"', public)
+        self.assertEqual(s.rewrite_private_owner_expressions(public, [rule], reverse=True), raw)
+
+    def test_string_module_name_preserves_the_row_selection(self):
+        raw = ('let moduleName := if row=0 then "SourcePilot" else "SourceRows" ++ toString(row/16)\n'
+               'let current := Name.num (Name.str `_private moduleName) 0\n')
+        rule = {'source_expression': '(Name.str `_private moduleName)',
+                'target_expression': '(Name.append `_private ("H0mework.P." ++ moduleName).toName)', 'count': 1}
+        public = s.rewrite_private_owner_expressions(raw, [rule])
+        self.assertTrue(public.startswith(raw.splitlines(keepends=True)[0]))
+        self.assertEqual(s.rewrite_private_owner_expressions(public, [rule], reverse=True), raw)
+
     def test_family_and_private_index_are_preserved(self):
         raw = ('  let moduleName := Name.mkSimple ("SourceValues"++family)\n'
                '  let paid := Name.str (Name.num (Name.str `_private moduleName.toString) 0) "value"\n')
