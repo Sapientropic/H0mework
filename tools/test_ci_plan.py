@@ -136,6 +136,37 @@ class PlanTests(unittest.TestCase):
     def test_plan_is_deterministic(self):
         self.assertEqual(make_plan(self.root, SPLIT), make_plan(self.root, SPLIT))
 
+    def test_appended_stage_preserves_existing_part_inputs(self):
+        before = make_plan(self.root)
+        (self.root / 'tools').mkdir(exist_ok=True)
+        write_layout(self.root / LAYOUT, before['assignment'])
+        name = 'H0mework.Versions.New.Delivery'
+        self.sources[name] = 'import H0mework.Physics.Independent\ndef delivery := 1\n'
+        self.write_module(name, self.sources[name])
+        self.write_config()
+        with (self.root / LAYOUT).open('a') as stream:
+            stream.write(f's9-01\t{name}\n')
+        after = make_plan(self.root)
+        for part, record in before['parts'].items():
+            if part == 'complete':
+                continue
+            for field in ('fingerprint', 'modules', 'targets', 'progress_modules', 'solo', 'upstream'):
+                self.assertEqual(record[field], after['parts'][part][field], (part, field))
+        self.assertEqual(after['parts']['s9-01']['modules'], [name])
+        self.assertNotEqual(before['selection'], after['selection'])
+        with self.assertRaisesRegex(ValueError, 'stage jobs'):
+            make_plan(self.root, Layout(max_stages=1))
+
+    def test_workflow_exposes_every_supported_stage(self):
+        workflow = (Path(__file__).resolve().parents[1] / '.github/workflows/ci.yml').read_text()
+        complete = workflow.split('  lean-complete:', 1)[1].split('\n  continue:', 1)[0]
+        continuation = workflow.split('\n  continue:', 1)[1].split('\n  first-release-', 1)[0]
+        for stage in range(1, Layout().max_stages + 1):
+            self.assertIn(f's{stage}: ${{{{ steps.plan.outputs.s{stage} }}}}', workflow)
+            self.assertIn(f'  lean-s{stage}:', workflow)
+            self.assertIn(f'lean-s{stage}', complete)
+            self.assertIn(f'lean-s{stage}', continuation)
+
     def test_weak_lean_args_preserve_source_and_the_complete_plan(self):
         before = make_plan(self.root, SPLIT)
         source_bytes = {p: p.read_bytes() for p in (self.root / "Lean").rglob("*.lean")}

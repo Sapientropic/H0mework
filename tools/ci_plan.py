@@ -123,7 +123,7 @@ class Layout:
     shared_users: int = 3             # shards that would each rebuild a module
     shared_chain: float = 0.5 * 3600  # longest chain worth a short stage of its own
     max_shards: int = 20              # concurrent jobs on a free account
-    max_stages: int = 8               # stage jobs defined in ci.yml
+    max_stages: int = 9               # stage jobs defined in ci.yml
     copy_share: float = 0.05          # rebuilt same-stage imports a new module may cost a shard
 
     @property
