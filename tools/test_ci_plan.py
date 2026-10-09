@@ -389,13 +389,24 @@ class MemoryRegistryTests(unittest.TestCase):
                   for tag in ['C62', 'E055', 'R3bbcbd59', 'R71e', 'Rc015842c', 'Rf13ed87d']]
         self.assertEqual(solo_modules(names, self.registry()), names)
 
+    def test_all_original_dictionary_identity_layouts_compile_alone(self):
+        suffix = "AlphaSource.CanonicalSourcePropagationNativeOriginalDictionaryIdentity"
+        names = [f"H0mework.Versions.{tag}.Physics.LowEnergy.{suffix}" for tag in ['AD', 'AE', 'CAP']]
+        names += [f"H0mework.Versions.{tag}.ReleaseMaterials.Physics.LowEnergyPhenomenology.{suffix}"
+                  for tag in ['C62', 'E055', 'R3bbcbd59', 'R71e', 'Rc015842c', 'Rf13ed87d']]
+        self.assertEqual(solo_modules(names, self.registry()), names)
+
     def test_exact_module_override_takes_precedence_over_layout_peak(self):
-        name = f"H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.{self.suffix}"
-        self.assertEqual(solo_modules([name], {**self.registry(), name: 13.9}), [])
+        for suffix in [self.suffix, "AlphaSource.CanonicalSourcePropagationNativeOriginalDictionaryIdentity"]:
+            name = f"H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.{suffix}"
+            with self.subTest(suffix=suffix):
+                self.assertEqual(solo_modules([name], {**self.registry(), name: 13.9}), [])
 
     def test_similar_module_name_does_not_inherit_gravity_scalar_return_peak(self):
-        name = f"H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.{self.suffix}Control"
-        self.assertEqual(solo_modules([name], self.registry()), [])
+        for suffix in [self.suffix, "AlphaSource.CanonicalSourcePropagationNativeOriginalDictionaryIdentity"]:
+            name = f"H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.{suffix}Control"
+            with self.subTest(suffix=suffix):
+                self.assertEqual(solo_modules([name], self.registry()), [])
 
 
 class StagePlanTests(unittest.TestCase):
