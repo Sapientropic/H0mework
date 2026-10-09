@@ -926,7 +926,7 @@ def continuation_parts(store: ReleaseStore, plan: dict, run: str, attempt: str) 
     markers = {a["name"] for a in items("artifacts") if not a["expired"]}
     interrupted = set()
     for job in items("jobs"):
-        match = re.search(r"\((s[1-8]-[0-9]+)\) / build$", job["name"])
+        match = re.search(r"\((s[1-9]-[0-9]+)\) / build$", job["name"])
         if job["conclusion"] != "failure":
             continue
         # A real compiler/setup/evidence failure must stop the whole continuation.

@@ -876,8 +876,8 @@ class ContinuationTests(unittest.TestCase):
         name += "-checkpoint-10.tar.zst" if checkpoint else ".tar.zst"
         self.store.assets[name] = {"id": name, "created_at": "2026-10-07"}
 
-    def job(self, conclusion="cancelled"):
-        self.jobs.append({"name": "Lean 阶段 1 (s1-01) / build", "conclusion": "failure",
+    def job(self, conclusion="cancelled", part="s1-01"):
+        self.jobs.append({"name": f"Lean 阶段 {ci_plan.stage_number(part)} ({part}) / build", "conclusion": "failure",
                           "steps": [{"name": "Build part using Lake freshness checks", "conclusion": conclusion}]})
 
     def resume(self):
@@ -894,6 +894,26 @@ class ContinuationTests(unittest.TestCase):
         self.job()
         self.saved()
         self.assertEqual(self.resume(), ["s1-01"])
+
+    def test_stage_nine_runner_shutdown_resumes_its_current_checkpoint(self):
+        self.plan["parts"]["s9-01"] = {"fingerprint": "nine"}
+        self.job(part="s9-01")
+        self.saved(part="s9-01")
+        self.assertEqual(self.resume(), ["s9-01"])
+
+    def test_stage_nine_compiler_failure_requires_the_current_deadline_marker(self):
+        self.plan["parts"]["s9-01"] = {"fingerprint": "nine"}
+        self.job("failure", part="s9-01")
+        self.saved(part="s9-01", checkpoint=False)
+        self.assertEqual(self.resume(), [])
+        self.artifacts = [{"name": "lean-incomplete-s9-01-2", "expired": False}]
+        self.assertEqual(self.resume(), ["s9-01"])
+
+    def test_stage_like_non_part_failure_stops_continuation(self):
+        self.job()
+        self.saved()
+        self.jobs.append({"name": "Lean 阶段 10 (s10-01) / build", "conclusion": "failure", "steps": []})
+        self.assertEqual(self.resume(), [])
 
     def test_compiler_failure_is_not_retried_even_with_saved_progress(self):
         self.job("failure")
