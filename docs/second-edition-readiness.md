@@ -37,7 +37,7 @@ GSR 九份副本已同步稀疏证明适配：先用原 `originalRho_fast`，再
 - [低能继承包构建](../evidence/second-edition/acceptance/low-inherited-build-20261009/result.json)与[完整审查](../evidence/second-edition/acceptance/low-inherited-trust-20261009/result.json)：五包通过，输入前后一致。
 - [Ward 完整文件探针](../evidence/second-edition/acceptance/physics-prepared-proof-probe-20261010/result.json)、[公开模块构建](../evidence/second-edition/acceptance/physics-prepared-public-build-20261010/result.json)、[prepared current](../evidence/second-edition/acceptance/physics-prepared-current-build-20261010/result.json)与[Coulomb 消费者](../evidence/second-edition/acceptance/physics-prepared-coulomb-build-20261010/result.json)：原设置均通过。
 - [Bell 包构建](../evidence/second-edition/acceptance/physics-forcing-build-20261010/result.json)与[完整审查](../evidence/second-edition/acceptance/physics-forcing-trust-20261010/result.json)、[低能 Q3 材料包构建](../evidence/second-edition/acceptance/low-q3-materials-build-20261010/result.json)与[完整审查](../evidence/second-edition/acceptance/low-q3-materials-trust-20261010/result.json)：两包通过，源闭包摘要与精确声明根在回填时重新核对。
-- [GSR 适配前缓存保留](../evidence/second-edition/acceptance/cache-preservation-20261009.json)：源接线与 Ward 补充后，42 个旧分片键保持。GSR 的三个旧副本全在未建成的 `s7-01`；远端原 run 已结束为 failure，阶段 1–6 的 41 个完整缓存逐一确认存在。本次适配的缓存合同是保持这 41 个键，允许 `s7` 换键并按同 prefix 恢复进度；内存记录仍使九份 GSR 单独编译。
+- [GSR 缓存保留](../evidence/second-edition/acceptance/cache-preservation-gsr-20261010.json)：阶段 1–6 的 41 个已建完整缓存及全部分片身份实测保持。三个旧 GSR 仅在未建成的 `s7-01`，该片仅指纹改变、原进度恢复 prefix 保持；42 个旧 solo 序列保持，六个新增副本均进入 solo。[适配前回执](../evidence/second-edition/acceptance/cache-preservation-20261009.json)保留原 42 键的历史核对。
 - 最终门口为 `make check-map`、两份映射的 `verify-map --require-ready` 及[四篇论文的独立构建／审查](edition-reproduction.md)。只有真实通过才回填签收状态。
 
 ## 权威源码入口
