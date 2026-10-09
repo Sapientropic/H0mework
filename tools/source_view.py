@@ -222,6 +222,48 @@ def rewrite_private_names(text: str, rewrites, *, reverse: bool = False) -> str:
     return text
 
 
+def rewrite_private_owner_strings(text: str, rewrites, *, reverse: bool = False) -> str:
+    """Relocate registered private-owner prefixes used by declaration lookup."""
+    if rewrites is None:
+        return text
+    if not isinstance(rewrites, list):
+        raise ViewError("Private-owner string rewrites must be a list")
+    mapping, targets = {}, set()
+    for rule in rewrites:
+        if not isinstance(rule, dict) or set(rule) != {"source_owner", "target_owner"}:
+            raise ViewError("Private-owner string rewrites need source_owner and target_owner")
+        source, target = rule["source_owner"], rule["target_owner"]
+        if any(not isinstance(name, str) or not name.startswith("_private.")
+               or not MODULE.fullmatch(name) for name in (source, target)):
+            raise ViewError("Invalid private-owner string prefix")
+        if source in mapping or target in targets:
+            raise ViewError("Private-owner string rewrites must be invertible")
+        mapping[source] = target
+        targets.add(target)
+    if not mapping:
+        return text
+    if reverse:
+        mapping = {target: source for source, target in mapping.items()}
+    masked = mask_comments_and_strings(text)
+    literals = {'"' + owner + '."': owner for owner in mapping}
+    matches = {owner: [] for owner in mapping}
+    for index, token in enumerate(masked):
+        if token != '"' or not re.search(r"\.startsWith\s*\Z", masked[:index]):
+            continue
+        literal = re.match(r'"(?:\\.|[^"\\])*"', text[index:])
+        if literal is not None and literal[0] in literals:
+            matches[literals[literal[0]]].append((index, index + len(literal[0])))
+    edits = []
+    for owner, spans in matches.items():
+        if len(spans) != 1:
+            raise ViewError("Declared private-owner prefix literal is absent or duplicated")
+        begin, end = spans[0]
+        edits.append((begin, end, '"' + mapping[owner] + '."'))
+    for begin, end, replacement in sorted(edits, reverse=True):
+        text = text[:begin] + replacement + text[end:]
+    return text
+
+
 def audit_observer_start(text: str) -> int | None:
     """Locate one executable observer body, without matching comments or strings."""
     masked = mask_comments_and_strings(text)
@@ -404,6 +446,7 @@ def module_views(row: dict, inverse: dict) -> tuple[bytes, bytes]:
     text = rewrite_audit_module_names(text, row.get("audit_module_rewrites"), reverse=True)
     text = rewrite_private_names(text, row.get("private_name_rewrites"),
                                  reverse=True)
+    text = rewrite_private_owner_strings(text, row.get("private_owner_string_rewrites"), reverse=True)
     tokens = import_tokens(text)
     reverse = {}
     for _, _, module in tokens:

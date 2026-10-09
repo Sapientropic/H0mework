@@ -31,6 +31,8 @@
 
 Lean 私有声明的名称包含所属模块地址。模块迁移时，显式引用这些名称的源码用 `private_name_rewrites` 登记原／新地址；[`source_view.py`](../tools/source_view.py) 的 `rewrite_private_names` 只改声明的名称引用，保留注释、字符串和相似长名称。原路径视图恢复所属模块地址并核对原摘要。
 
+通过 `Name.toString.startsWith` 查找私有函数的原宏使用 `private_owner_string_rewrites` 登记原／新 owner。`rewrite_private_owner_strings` 只改唯一的、已登记的可执行 `.startsWith` 完整前缀字面量；保留普通消息、注释、raw／转义字符串及相似长名称。逆向恢复后仍核对完整原源码摘要，宏的唯一 owner 条件与实际函数值保持。
+
 同一命名空间的不同模块若生成了冲突的匿名局部实例名，`local_instance_names` 登记对应声明前缀与显式名称。`name_local_instances` 只插入名称，保留实例类型、值和定理正文；恢复原路径视图时移除该名称并核对原摘要。
 
 认证消费者保留数学定义与证明的原字节。末尾的 `run_cmd` 或 `elab` 观察命令用 `audit_module_rewrites` 对齐所查询的模块地址；`audit_command_name` 为独立审查固定各自的命令注册名，使其可以合并导入。Bell 消费者的 `audit_boundary_fallbacks` 保留原边界文件覆盖，在没有提供文件时完整遍历依赖图，委托边界为空；`audit_full_closure` 只调整其观察命令的执行预算。`rewrite_audit_module_names`、`name_audit_command` 与 `rewrite_audit_runtime` 将这些变换逆向恢复，原路径视图继续核对固定来源摘要。选定声明的完整 trust0／werror 审查由[首发验收入口](first-release-reproduction.md#完整检查)执行。

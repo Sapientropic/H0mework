@@ -168,6 +168,84 @@ class PrivateNameRewriteTests(unittest.TestCase):
                 s.rewrite_private_names("", rules)
 
 
+class PrivateOwnerStringRewriteTests(unittest.TestCase):
+    source = "_private.SourceChannelFundamentalPotential"
+    target = "_private.H0mework.Versions.LE1.Physics.AlphaSource.SourceChannelFundamentalPotential"
+
+    def rules(self):
+        return [{"source_owner": self.source, "target_owner": self.target}]
+
+    def lookup(self, owner=None):
+        return '  name.toString.startsWith "' + (owner or self.source) + '." && privateToUserName name == wanted\n'
+
+    def test_registered_executable_prefix_round_trips_without_touching_other_strings(self):
+        untouched = (f'-- name.toString.startsWith "{self.source}."\n'
+                     f'/- nested /- name.toString.startsWith "{self.source}." -/ comment -/\n'
+                     f'def ordinary := "{self.source}."\n'
+                     f'def message := "owner {self.source}."\n'
+                     f'def escaped := "\\\"{self.source}.\\\""\n'
+                     f'def raw := r##"{self.source}."##\n'
+                     f'#check «name.startsWith "{self.source}."»\n'
+                     f'name.startsWith "{self.source}Longer."\n'
+                     f'name.startsWith "{self.source}.Child."\n'
+                     f'name.startsWith "{self.source}.0.function"\n')
+        original = untouched + self.lookup()
+        exported = s.rewrite_private_owner_strings(original, self.rules())
+        self.assertEqual(exported, untouched + self.lookup(self.target))
+        self.assertEqual(s.rewrite_private_owner_strings(exported, self.rules(), reverse=True), original)
+        self.assertEqual(s.rewrite_private_owner_strings(original, None), original)
+        self.assertEqual(s.rewrite_private_owner_strings(original, []), original)
+
+    def test_missing_raw_or_duplicate_prefix_is_rejected(self):
+        for text in (f'def ordinary := "{self.source}."\n',
+                     '-- ' + self.lookup(),
+                     f'name.startsWith r##"{self.source}."##\n',
+                     f'name.startsWith "{self.source}.Child."\n',
+                     self.lookup() * 2):
+            with self.subTest(text=text), self.assertRaises(s.ViewError):
+                s.rewrite_private_owner_strings(text, self.rules())
+
+    def test_rules_are_bijective_and_applied_simultaneously(self):
+        rules = [{"source_owner": "_private.A", "target_owner": "_private.B"},
+                 {"source_owner": "_private.B", "target_owner": "_private.C"}]
+        original = 'name.startsWith "_private.A."\nname.startsWith "_private.B."\n'
+        exported = 'name.startsWith "_private.B."\nname.startsWith "_private.C."\n'
+        self.assertEqual(s.rewrite_private_owner_strings(original, rules), exported)
+        self.assertEqual(s.rewrite_private_owner_strings(exported, rules, reverse=True), original)
+        invalid = [{}, [None], self.rules() * 2,
+                   self.rules() + [{"source_owner": "_private.Other", "target_owner": self.target}],
+                   [{"source_owner": self.source, "target_owner": self.target, "extra": True}]]
+        for name in (None, 1, "Source", "_private.", "_private.A.0", "_private.A B", self.source + "."):
+            invalid.append([{"source_owner": name, "target_owner": self.target}])
+            invalid.append([{"source_owner": self.source, "target_owner": name}])
+        for rules in invalid:
+            with self.subTest(rules=rules), self.assertRaises(s.ViewError):
+                s.rewrite_private_owner_strings(original, rules)
+
+    def test_source_view_restores_owner_literal_and_rejects_resigned_proof_tampering(self):
+        original = ('import SourceChannelRadialLayer\n'
+                    'elab "paidRadialGreen% " id:ident : term => do\n' + self.lookup()
+                    + 'theorem paid : True := by trivial\n')
+        exported = s.rewrite_private_owner_strings(original, self.rules())
+        exported = s.transform(exported, s.import_tokens(exported),
+                               {"SourceChannelRadialLayer": "H0mework.LE1.SourceChannelRadialLayer"})
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "Slope.lean").write_bytes(exported)
+            row = {"path": "Slope.lean", "source_path": "Original.lean", "target_sha256": p.sha(exported),
+                   "source_sha256": p.sha(original.encode()),
+                   "import_map": {"H0mework.LE1.SourceChannelRadialLayer": "SourceChannelRadialLayer"},
+                   "private_owner_string_rewrites": self.rules()}
+            with patch.object(s, "ROOT", root):
+                self.assertEqual(s.module_views(row, {}), (original.encode(), original.encode()))
+                with self.assertRaisesRegex(s.ViewError, "Reconstructed source digest differs"):
+                    s.module_views({**row, "private_owner_string_rewrites": []}, {})
+                changed = exported.replace(b": True :=", b": False :=")
+                (root / "Slope.lean").write_bytes(changed)
+                with self.assertRaisesRegex(s.ViewError, "Reconstructed source digest differs"):
+                    s.module_views({**row, "target_sha256": p.sha(changed)}, {})
+
+
 class AuditRewriteTests(unittest.TestCase):
     source = "SaturationMonoid.PhysicsCore.Bell.Source"
     target = "H0mework.Versions.AE.Physics.Bell.Source"
