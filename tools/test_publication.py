@@ -1,5 +1,6 @@
 """Checks for receipt publication and public/exact source-view identity."""
 import json
+import gzip
 from pathlib import Path
 import sys
 import tempfile
@@ -11,6 +12,36 @@ import publication as p
 import source_view as s
 
 FIXTURE_ROOT = "/".join(["", "Users", "sample", "Documents", "Homework"])
+
+
+class ModuleImportTests(unittest.TestCase):
+    def test_module_visibility_and_exact_relocation(self):
+        raw = 'module\npublic import Source.A\npublic meta import Source.B\nimport all Source.C\ndef value := 1\n'
+        tokens = s.import_tokens(raw)
+        self.assertEqual([name for _, _, name in tokens], ['Source.A', 'Source.B', 'Source.C'])
+        mapping = {name: 'H0mework.' + name for _, _, name in tokens}
+        public = s.transform(raw, tokens, mapping).decode()
+        self.assertIn('public meta import H0mework.Source.B', public)
+        self.assertEqual(s.transform(public, s.import_tokens(public),
+                                     {target: source for source, target in mapping.items()}), raw.encode())
+
+    def test_plain_import_still_accepts_continuations(self):
+        self.assertEqual([token[2] for token in s.import_tokens('import Source.A\n  Source.B\n')],
+                         ['Source.A', 'Source.B'])
+
+    def test_pinned_external_import_is_preserved(self):
+        raw = 'module\npublic import Aesop\npublic import QuantumInfo.Entropy.DPI\n'
+        public = s.transform(raw, s.import_tokens(raw),
+                             {'QuantumInfo.Entropy.DPI': 'H0mework.ThirdParty.QuantumInfo.Entropy.DPI'})
+        self.assertIn(b'public import Aesop\n', public)
+        self.assertIn(b'public import H0mework.ThirdParty.QuantumInfo.Entropy.DPI\n', public)
+
+    def test_invalid_visibility_is_rejected(self):
+        for raw in ('public import Source.A\n', 'module\npublic import all Source.A\n',
+                    'module\nprivate import Source.A\n', 'module\npublic import\n',
+                    'module\ndef x := 1\npublic import Source.A\n'):
+            with self.subTest(raw=raw), self.assertRaises(s.ViewError):
+                s.import_tokens(raw)
 
 
 def fixture(raw: bytes) -> bytes:
@@ -91,6 +122,36 @@ class PublicationSizeTests(unittest.TestCase):
             with (root / "fresh-retarded-inlet.json.gz").open("wb") as handle:
                 handle.truncate(55 * 1024 * 1024)
             self.assertEqual(p.verify_file_sizes(root, ["fresh-retarded-inlet.json.gz"]), 1)
+
+    def test_lossless_artifact_restores_source_identity(self):
+        original = b'[{"name":"producer","unsafe":false,"partial":false}]\n'
+        compressed = gzip.compress(original, mtime=0)
+        row = {'source_sha256': p.sha(original), 'target_sha256': p.sha(compressed),
+               'compression': {'kind': 'gzip', 'uncompressed_bytes': len(original),
+                               'uncompressed_sha256': p.sha(original)}}
+        self.assertEqual(p.verify_artifact(compressed, row), original)
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / 'declarations.json.gz').write_bytes(compressed)
+            with patch.object(s, 'ROOT', root):
+                self.assertEqual(s.artifact_views({**row, 'path': 'declarations.json.gz'}),
+                                 (original, original))
+        row['compression']['uncompressed_bytes'] += 1
+        with self.assertRaisesRegex(p.PublicationError, 'Uncompressed artifact'):
+            p.verify_artifact(compressed, row)
+
+    def test_compressed_receipt_retains_declared_payload(self):
+        original = fixture(b'{"root":"@ROOT@","value":17}\n')
+        public, _ = p.normalize_paths(original)
+        compressed = gzip.compress(public, mtime=0)
+        row = {'source_sha256': p.sha(original), 'target_sha256': p.sha(compressed),
+               'compression': {'kind': 'gzip', 'uncompressed_bytes': len(public),
+                               'uncompressed_sha256': p.sha(public)},
+               'publication': {'kind': p.KIND, 'payload_sha256': p.sha(public)}}
+        self.assertEqual(p.verify_artifact(compressed, row, original), public)
+        bad = {**row, 'compression': {**row['compression'], 'kind': 'zstd'}}
+        with self.assertRaisesRegex(p.PublicationError, 'Unsupported'):
+            p.verify_artifact(compressed, bad)
 
     def test_export_rejects_size_before_mutating_metadata(self):
         class Oversized:

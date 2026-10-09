@@ -6,6 +6,7 @@ and declared receipt digest bindings. Original source digests remain unchanged.
 from __future__ import annotations
 
 import hashlib
+import gzip
 import json
 from pathlib import Path
 import re
@@ -232,11 +233,24 @@ def payload_bytes(raw: bytes, publication: dict) -> bytes:
 def verify_artifact(raw: bytes, row: dict, original: bytes | None = None):
     if sha(raw) != row["target_sha256"]:
         raise PublicationError("Published artifact digest differs")
+    compression = row.get("compression")
+    if compression is not None:
+        if (not isinstance(compression, dict) or compression.get("kind") != "gzip"
+                or not isinstance(compression.get("uncompressed_bytes"), int)
+                or compression["uncompressed_bytes"] < 0):
+            raise PublicationError("Unsupported or invalid artifact compression")
+        try:
+            raw = gzip.decompress(raw)
+        except (OSError, EOFError) as error:
+            raise PublicationError("Compressed artifact is invalid") from error
+        if (len(raw) != compression["uncompressed_bytes"]
+                or sha(raw) != compression.get("uncompressed_sha256")):
+            raise PublicationError("Uncompressed artifact identity differs")
     publication = row.get("publication")
     if publication is None:
         if sha(raw) != row["source_sha256"]:
             raise PublicationError("Original artifact digest differs")
-        return
+        return raw
     normalized, count = (declared_runtime_paths(raw, publication.get("runtime_paths", []))
                          if publication.get("kind") == DECLARED_KIND else normalize_paths(raw))
     if count:
@@ -250,6 +264,7 @@ def verify_artifact(raw: bytes, row: dict, original: bytes | None = None):
                             if publication.get("kind") == DECLARED_KIND else normalize_paths(original)[0])
         if sha(original_payload) != publication["payload_sha256"]:
             raise PublicationError("Private original and public payload differ")
+    return raw
 
 
 def publish_outputs(outputs: dict[str, bytes], modules: list[dict],

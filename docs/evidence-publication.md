@@ -10,12 +10,13 @@
 | --- | --- |
 | `source_sha256` | 固定来源提交中的原始字节摘要 |
 | `target_sha256` | 本仓文件的完整字节摘要 |
+| `compression` | 可选的无损 gzip 编码及解压后的字节数、SHA256；来源摘要保持原件身份 |
 | `publication.kind` | 声明的公开变换；原选集使用 `relative-runtime-paths/v1`，首发运行记录另使用 `declared-runtime-paths/v2` |
 | `publication.runtime_paths` | v2 的精确 JSON 指针、字典键位置及对应相对地址 |
 | `publication.payload_sha256` | 路径规范化后的原始序列化字节摘要；保留数值的原始写法 |
 | `publication.digest_rewrites` | 公开回执读取另一个公开回执时，对绑定摘要的明确更新 |
 
-没有 `publication` 的工件保持原字节，两个文件摘要相同。带 `publication` 的工件使用派生字节；其原始提交和 `source_sha256` 保留。
+没有 `publication` 的工件内容保持原字节。若另有 `compression`，工具先核对压缩文件，再解压并核对完整原件；否则两个文件摘要相同。带 `publication` 的工件使用派生字节；其原始提交和 `source_sha256` 保留。原路径视图自动恢复解压后的文件，路径变换与压缩分别核验。
 
 [`publication.py`](../tools/publication.py) 的 `normalize_paths` 只改运行根目录、命令路径及 `source_inputs`／`input_sha256` 中的路径键，并检查键碰撞。原始输入摘要保留为计算来源记录。`digest_rewrite` 更新指定的 `bindings` 字段；`payload_bytes` 反转这项绑定更新后核对完整 payload。
 
@@ -55,6 +56,8 @@ python3 tools/source_view.py --verify-all --exact \
 ## 生成与验证
 
 迁移生成的收尾调用 `publish_outputs`，随后导出公开字节身份及变换记录。生成产物的身份检查使用 `make check-map`。
+
+公开单文件上限为 100 MiB。`python3 tools/publication.py --check-file-sizes` 检查已跟踪和未忽略的新文件；`source_view --verify-all` 同时检查。超限原件必须无损压缩，并登记新引用、压缩摘要和解压身份。运行日志的 `.log.zst` 编码与原始字节身份由相邻 `publication.json` 登记。
 
 针对变换、路径碰撞、结果篡改、公开视图和精确视图的测试：
 

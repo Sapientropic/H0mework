@@ -39,7 +39,7 @@ from publication import (PublicationError, verify_artifact, verify_file_sizes,
 ROOT = Path(__file__).resolve().parents[1]
 EXPORT_MAP = ROOT / "tools" / "export-map.json"
 MODULE = re.compile(r"[A-Za-z_][A-Za-z0-9_']*(?:\.[A-Za-z_][A-Za-z0-9_']*)*\Z")
-EXTERNAL = {"Mathlib", "Batteries", "Lean", "Std", "Init", "ImportGraph"}
+EXTERNAL = {"Mathlib", "Batteries", "Lean", "Std", "Init", "ImportGraph", "Aesop"}
 
 
 class ViewError(Exception):
@@ -129,16 +129,21 @@ def import_tokens(text: str) -> list[tuple[int, int, str]]:
     header = True
     continuation = False
     imported = False
+    module_header = False
     current_count = None
     for line in masked.splitlines(keepends=True):
         stripped = line.strip()
         if not stripped:
             offset += len(line)
             continue
-        if re.match(r"(?:public|private|protected)\s+import\b", stripped):
+        if re.match(r"(?:private|protected)\s+import\b", stripped):
             raise ViewError("Unsupported Lean import modifier")
-        match = re.match(r"\s*import\b", line)
+        match = re.match(r"\s*(?P<public>public\s+)?(?P<meta>meta\s+)?import\b(?P<all>\s+all\b)?", line)
         if match:
+            if any(match[name] for name in ("public", "meta", "all")) and not module_header:
+                raise ViewError("Lean import modifiers require a module header")
+            if match["public"] and match["all"]:
+                raise ViewError("Lean public import cannot import all")
             if current_count == 0:
                 raise ViewError("Empty Lean import declaration")
             current_count = 0
@@ -150,6 +155,7 @@ def import_tokens(text: str) -> list[tuple[int, int, str]]:
         elif header and continuation and line[0].isspace():
             start = 0
         elif header and stripped in ("prelude", "module") and not imported:
+            module_header = module_header or stripped == "module"
             offset += len(line)
             continue
         else:
@@ -516,7 +522,7 @@ def artifact_views(row: dict, private_originals=None) -> tuple[bytes, bytes | No
             raise ViewError("Private original receipt is unavailable")
         original = path.read_bytes()
     try:
-        verify_artifact(raw, row, original)
+        raw = verify_artifact(raw, row, original)
     except PublicationError as error:
         raise ViewError(f"Artifact identity failed: {row['path']}: {error}") from error
     return raw, original if row.get("publication") else raw
