@@ -1,0 +1,999 @@
+{
+  "schema": "h0mework/cache-preservation@1",
+  "status": "passed",
+  "evidence_kind": "source-and-planner-preservation",
+  "baseline_commit": "51867c59042460646e57d5ead4c405cbca05c240",
+  "baseline_run": 37889526550,
+  "baseline_selection": "c0fd8f4579aa096fbdd7f8de7b20af3ba88531402ee70eb98a294cef1f395861",
+  "selection": "b898118c5bae0429f8c84382f3bb1cbdf70674e6a3f7c13e8f4512d45bd17bca",
+  "compatibility": "23f23031eec00a03d30ee31d",
+  "contract": "registered-gsr-proof-adaptations",
+  "old_modules_byte_and_owner_identical": 25401,
+  "old_module_owners_identical": 25404,
+  "old_default_module_placements_identical": 25259,
+  "old_resource_inputs_identical": 29,
+  "old_strong_options_identical": true,
+  "old_runtime_model_identical": true,
+  "old_part_identities_identical": 41,
+  "old_part_scheduling_identities_identical": 42,
+  "part_identity_fields": [
+    "fingerprint",
+    "stage",
+    "modules",
+    "targets",
+    "progress_modules",
+    "solo",
+    "upstream",
+    "module_count"
+  ],
+  "protected_fingerprints": {
+    "s1-01": "45d3bce20ba3c741690c987bffa2339ccd6bd3583d4cfde6d0551344c295f3c1",
+    "s1-02": "f976b54849d7539e2b4e9091be09fc75bb55793b4fbab4d5f56e2c2676f312f4",
+    "s1-03": "e6b1f7be5071080ed846a71270b228c576b333591064bace7d4d79b9e08cd711",
+    "s1-04": "0b582d9087beb46d61ab736bf9a12a57ae4354bcf56ecc1f968ad7728bccc794",
+    "s1-05": "4248766b6059683c03d114dda21b6ddba589c32392c30bbac2d0c187240bf273",
+    "s2-01": "d43bdd8c7a26b4cdf2846dbe8c2df933d7a61e692875778cc9f18b755af73328",
+    "s2-02": "1c34193eaa055a3b30e644fa9c87662ce2aea3da62214e7d81257383f1da3768",
+    "s2-03": "0c5a39d8e6876e6ae859af8833ce9943652fe5fc8573087c25581310f1cd9a97",
+    "s3-01": "8ad7c88a7f9eba2e922a80d536a1c3898b055d8baaf788bfd1f384e03757ccd2",
+    "s3-02": "b3dc15af984f7337ab633401cb984ac6886105f6d15579f007322fdf8e7857c5",
+    "s3-03": "28516b79d419c012de1ce6e7c09a9fa1dac1d80f5f1cad979e564543cc126f0c",
+    "s3-04": "1f4cc5e18a85ab531a78bb7f2da5173226df94e0d2507fb01c19869e04043c5a",
+    "s3-05": "764d67e9fd8e6ccbd628d6ffb4e983fbe68a014fd278f1bde7297e86c9095243",
+    "s3-06": "063be1feddac09b35f4f410de8ad6ec035665a597371efa21c1e95b8cb134663",
+    "s3-07": "2a8ae75db313d50ad172f646f8f87ec38454d104626e5e2956caad8dc8e319ee",
+    "s3-08": "f2245ecf8406cc7a2440a3a149183bdd9370115a84f19562e7033a365767cfd2",
+    "s4-01": "1d493260700cc61b7fa01548a1cec104b2164106ed5b13cbd5087bbdf7f70a11",
+    "s4-02": "e34468ca20edec0b21e79dac44eb1a11b262dcab88a586a16c431ea9e63eb9d0",
+    "s4-03": "0a4c648726f7638148125e03cdc9525292730274ccc49b39f627bab30ed371b2",
+    "s4-04": "38794432ce4a0eb6daa707c9e577f104e553b6ac48b3508ebf2eb39f1d56ff24",
+    "s4-05": "cffdfbe722130c9eed58e0d7e70d4fd2214faaaa0aee7347934c0368ef59dd90",
+    "s4-06": "27aff7819f2c79593797ad215b4ebe4480194f9ea6370ac6408087a08138a51c",
+    "s4-07": "28469333f6960b147c528ee3b8a414a1246d5bc5a25783616044be75c530602e",
+    "s4-08": "9ca073548bc1ee89fbebc9fe467343a98a40d939c5278ee26bf023f187ea3e67",
+    "s4-09": "7b9361e8f6f06830231fddfbf457b5b90c02f43365ad35c76515653db1f43777",
+    "s4-10": "03b7c2679ed6190ac4008830e07092cdbb2d55d7491c369f5bdf0e71e23a4a7e",
+    "s4-11": "9f0a6fb12c1fcfc2592668880696155010c9df17e9175f3df15294298373c49a",
+    "s4-12": "e4f23e5b23eb47d7160fcfdff83bb54126fe9b4f0590203caa53f7e320564f6e",
+    "s4-13": "26378035cfb7a34286cdb63e89aacdf627f6bbbc4e03a84b6ee5c63d67d9fd18",
+    "s4-14": "76c5ae2fd993f9d1c22fcb6b60d7cd95002d0d678cb4817a0507d32d47cc73df",
+    "s4-15": "f7a613b6787a82038195f67d3c9a826b35a1c835e55a5718284b029baae497e0",
+    "s4-16": "bef34fc74482b069af24cebbb5f0ae01d633809a37fbcbceaa6d2ed994a15fad",
+    "s4-17": "e715d53b0b7f7defb6197b0808477d56a63abd9615d08019774fa7497cf424b7",
+    "s4-18": "dca68fb4773aaf85a0b04d3c997c1dcf090dcc3a7a605e33c84fcd0149251581",
+    "s4-19": "eb882af5fb563689912e64cb73f710749b04cf1d099767c6cd80c917aff268c0",
+    "s4-20": "365fef83cee0758395583bc89b5d2ed3fffce4ef0ad48b3e45f448e8177a8a02",
+    "s5-01": "2e0a648458cfe63ed38da874b3df8be57c75d45fc0f982a2d254b37312f92f45",
+    "s5-02": "defbbfac20ea2aa9ea7487e938bd897462ab21b7b6ad4e797f6c18b8e575abdd",
+    "s6-01": "e29a5a8b4c17d53ba44cd3385d72b10e66269d6568144d7ea51e674ade3c3849",
+    "s6-02": "098f5d27a1177a6de08376169558f42d877f9aac2fd1c4dfc9f8fee3ae0c137c",
+    "s6-03": "1d1d5a6eb0b3e771917f1de33e6456a10099da38f9414ed90d7b6827096e4620"
+  },
+  "new_default_modules": 22451,
+  "stage8_parts": {
+    "s8-01": {
+      "fingerprint": "b9a8d820c31dbea6529c2209309c43589d5ff5406c4f68ac8de0e8c6f2a2a67b",
+      "modules": 4362,
+      "build_scope_modules": 4362,
+      "solo_modules": 10,
+      "estimated_hours": 2.29,
+      "upstream": [
+        "s1-01",
+        "s1-02",
+        "s1-03",
+        "s1-04",
+        "s1-05",
+        "s2-01",
+        "s2-02",
+        "s2-03",
+        "s3-01",
+        "s3-02",
+        "s3-04",
+        "s3-05",
+        "s3-06",
+        "s3-07",
+        "s3-08",
+        "s4-01",
+        "s5-01",
+        "s5-02",
+        "s6-01",
+        "s6-02",
+        "s6-03"
+      ]
+    },
+    "s8-02": {
+      "fingerprint": "70579405ef41680fca3b5b9db04d99f31779fedd1dc1ae82be3565923e300a0a",
+      "modules": 2523,
+      "build_scope_modules": 2859,
+      "solo_modules": 2,
+      "estimated_hours": 1.55,
+      "upstream": [
+        "s1-01",
+        "s1-02",
+        "s1-03",
+        "s1-04",
+        "s1-05",
+        "s2-01",
+        "s2-02",
+        "s2-03",
+        "s3-01",
+        "s3-02",
+        "s3-04",
+        "s3-05",
+        "s3-06",
+        "s3-07",
+        "s3-08",
+        "s4-01",
+        "s4-02",
+        "s4-18",
+        "s5-01",
+        "s5-02",
+        "s6-01",
+        "s6-02",
+        "s6-03"
+      ]
+    }
+  },
+  "registered_proof_adaptations": {
+    "H0mework.Versions.AD.Physics.LowEnergy.AlphaSource.CanonicalSourcePropagationNativeGravityScalarReturn": {
+      "old_target_sha256": "9d7c2cf18652333f44f6efb65dccc9c04f0db63ab30a6b38d224a81de16f6e91",
+      "target_sha256": "2e9e3277e773aeea0886d9172fef81f81304adc24611216b0421046ac6da6dba",
+      "original_source_sha256": "db77bbe6fd166b57969997d13a8da2469718704310b3448f4f69c9cc06d2a4b3",
+      "adapted_view_sha256": "c42bdf3ae1a427b99cb800fbfaf5b712044b822201b65cec0e9c6d370f5d69b0",
+      "source_revision": "aef0ad2a26199d9fd6da9bc9e7ec1a65636ef63f",
+      "exact_original_restored": true,
+      "prior_exported_bytes_restored": true,
+      "declaration": "LowEnergy.SourcePropagationNativeActionHessian.originalScalarOrbit_code"
+    },
+    "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalSourcePropagationNativeGravityScalarReturn": {
+      "old_target_sha256": "0147853fa822665105bb8a28e5b850d9ab41352f7569ab2d31e64c0b0ed718d4",
+      "target_sha256": "d97f6c39a092c21cdf0bf3f0ab8f612fe70526ce877986aacbddd5564d1c517f",
+      "original_source_sha256": "db77bbe6fd166b57969997d13a8da2469718704310b3448f4f69c9cc06d2a4b3",
+      "adapted_view_sha256": "c42bdf3ae1a427b99cb800fbfaf5b712044b822201b65cec0e9c6d370f5d69b0",
+      "source_revision": "26b91feb6b507fdc3f43be9c429edb63fb9395ef",
+      "exact_original_restored": true,
+      "prior_exported_bytes_restored": true,
+      "declaration": "LowEnergy.SourcePropagationNativeActionHessian.originalScalarOrbit_code"
+    },
+    "H0mework.Versions.C62.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalSourcePropagationNativeGravityScalarReturn": {
+      "old_target_sha256": "57793a5e391a7f16809f506bedadad9e6a50f0cc3db990b74cd10443722cfb03",
+      "target_sha256": "18cf3bd63f6cd9ecdbe7aec5340f0607766758c927d92ab9176c4fadcaeac158",
+      "original_source_sha256": "db77bbe6fd166b57969997d13a8da2469718704310b3448f4f69c9cc06d2a4b3",
+      "adapted_view_sha256": "c42bdf3ae1a427b99cb800fbfaf5b712044b822201b65cec0e9c6d370f5d69b0",
+      "source_revision": "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46",
+      "exact_original_restored": true,
+      "prior_exported_bytes_restored": true,
+      "declaration": "LowEnergy.SourcePropagationNativeActionHessian.originalScalarOrbit_code"
+    },
+    "H0mework.Versions.CAP.Physics.LowEnergy.AlphaSource.CanonicalSourcePropagationNativeGravityScalarReturn": {
+      "old_target_sha256": "a5fcea21f1735407a2d63a836b90af9bd8737a537ba156fc778c6d862dcff74f",
+      "target_sha256": "c95b56a896e95e3477aa07ede0adc381cba0612a8be8e9977e30ebd98033bef0",
+      "original_source_sha256": "db77bbe6fd166b57969997d13a8da2469718704310b3448f4f69c9cc06d2a4b3",
+      "adapted_view_sha256": "c42bdf3ae1a427b99cb800fbfaf5b712044b822201b65cec0e9c6d370f5d69b0",
+      "source_revision": "59409a512c435cad5c5113fdedc91a451af88883",
+      "exact_original_restored": true,
+      "prior_exported_bytes_restored": true,
+      "declaration": "LowEnergy.SourcePropagationNativeActionHessian.originalScalarOrbit_code"
+    },
+    "H0mework.Versions.E055.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalSourcePropagationNativeGravityScalarReturn": {
+      "old_target_sha256": "55dffdd16998417c2437ad72859980d7f73cdf7e792ac156d9ed0f7f1d2b8f92",
+      "target_sha256": "df41ca4100048d52a1f72e222531fc7f8d5191a0f400f924745808c3b3dc4cda",
+      "original_source_sha256": "db77bbe6fd166b57969997d13a8da2469718704310b3448f4f69c9cc06d2a4b3",
+      "adapted_view_sha256": "c42bdf3ae1a427b99cb800fbfaf5b712044b822201b65cec0e9c6d370f5d69b0",
+      "source_revision": "e05558097256e86b537c019c8ca63cd449d6b2d2",
+      "exact_original_restored": true,
+      "prior_exported_bytes_restored": true,
+      "declaration": "LowEnergy.SourcePropagationNativeActionHessian.originalScalarOrbit_code"
+    },
+    "H0mework.Versions.R3bbcbd59.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalSourcePropagationNativeGravityScalarReturn": {
+      "old_target_sha256": "64778a5a79e0df92a9aeff5cb519c293f9a0ccae1437119563e0574c13f32bf7",
+      "target_sha256": "f8eaf5d953b9b0c460758d01d84b3829b0070b6523c2d16dc4f84671a6c3f15a",
+      "original_source_sha256": "db77bbe6fd166b57969997d13a8da2469718704310b3448f4f69c9cc06d2a4b3",
+      "adapted_view_sha256": "c42bdf3ae1a427b99cb800fbfaf5b712044b822201b65cec0e9c6d370f5d69b0",
+      "source_revision": "3bbcbd590fbd1892661b8f5f0a09b555e7b9c7d4",
+      "exact_original_restored": true,
+      "prior_exported_bytes_restored": true,
+      "declaration": "LowEnergy.SourcePropagationNativeActionHessian.originalScalarOrbit_code"
+    },
+    "H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalSourcePropagationNativeGravityScalarReturn": {
+      "old_target_sha256": "c9a99191d905715a669394cf3fe18f278f18ac95cf9505e48861817e6d7c6ba4",
+      "target_sha256": "2a3c79a5d07bb913784423152cbc8bbf253ea545cf0eba62e02912424a9db216",
+      "original_source_sha256": "db77bbe6fd166b57969997d13a8da2469718704310b3448f4f69c9cc06d2a4b3",
+      "adapted_view_sha256": "c42bdf3ae1a427b99cb800fbfaf5b712044b822201b65cec0e9c6d370f5d69b0",
+      "source_revision": "71e94e8261d67cf4849a05eb14ac95aa2f7dcbb9",
+      "exact_original_restored": true,
+      "prior_exported_bytes_restored": true,
+      "declaration": "LowEnergy.SourcePropagationNativeActionHessian.originalScalarOrbit_code"
+    },
+    "H0mework.Versions.Rc015842c.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalSourcePropagationNativeGravityScalarReturn": {
+      "old_target_sha256": "373726a075c3e7f0b454eb7066b78a7bfcb6398e76df474a915f2530bf226b2f",
+      "target_sha256": "5e28ef7f088be7b62d5876e75f2c09f0d6c1e7c9e91e04c04aa81f5ef553ce6d",
+      "original_source_sha256": "db77bbe6fd166b57969997d13a8da2469718704310b3448f4f69c9cc06d2a4b3",
+      "adapted_view_sha256": "c42bdf3ae1a427b99cb800fbfaf5b712044b822201b65cec0e9c6d370f5d69b0",
+      "source_revision": "c015842c42751dc786dcce9522e67887b6b6d9e8",
+      "exact_original_restored": true,
+      "prior_exported_bytes_restored": true,
+      "declaration": "LowEnergy.SourcePropagationNativeActionHessian.originalScalarOrbit_code"
+    },
+    "H0mework.Versions.Rf13ed87d.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalSourcePropagationNativeGravityScalarReturn": {
+      "old_target_sha256": "ffced34ae8bd0d626f31b6422abea5bd32276fe8504f40a422bbbbbcfcad9282",
+      "target_sha256": "575729d6b84ce435f6680b7be465af14f5ee1f609ac20a9984a3b35b1232be35",
+      "original_source_sha256": "db77bbe6fd166b57969997d13a8da2469718704310b3448f4f69c9cc06d2a4b3",
+      "adapted_view_sha256": "c42bdf3ae1a427b99cb800fbfaf5b712044b822201b65cec0e9c6d370f5d69b0",
+      "source_revision": "f13ed87d6340e2cb041334eedfdc881dfb209abd",
+      "exact_original_restored": true,
+      "prior_exported_bytes_restored": true,
+      "declaration": "LowEnergy.SourcePropagationNativeActionHessian.originalScalarOrbit_code"
+    }
+  },
+  "registered_memory_rows": {
+    "H0mework.Physics.LowEnergy.AlphaSource.CanonicalSourcePropagationNativeGravityScalarReturn": 18.6,
+    "H0mework.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalSourcePropagationNativeGravityScalarReturn": 18.6,
+    "H0mework.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalSourcePropagationNativeOriginalDictionaryIdentity": 17.5
+  },
+  "old_solo_sequences_identical": 42,
+  "uncached_stage7": {
+    "old_fingerprint": "d96be59fa59040e62c6a508cb10031f3f3da087e835c0f6544f46bbf61af5475",
+    "fingerprint": "454687d0f09029a948146ed4a93e0d3786d6bc4dee7691429e7db2c20897fee7",
+    "unchanged_identity_fields": [
+      "stage",
+      "modules",
+      "targets",
+      "progress_modules",
+      "solo",
+      "upstream",
+      "module_count"
+    ],
+    "existing_progress_prefix_preserved": true
+  },
+  "new_gsr_solo": {
+    "H0mework.Versions.C62.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalSourcePropagationNativeGravityScalarReturn": [
+      "s8-01"
+    ],
+    "H0mework.Versions.E055.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalSourcePropagationNativeGravityScalarReturn": [
+      "s8-01"
+    ],
+    "H0mework.Versions.R3bbcbd59.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalSourcePropagationNativeGravityScalarReturn": [
+      "s8-02"
+    ],
+    "H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalSourcePropagationNativeGravityScalarReturn": [
+      "s8-01"
+    ],
+    "H0mework.Versions.Rc015842c.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalSourcePropagationNativeGravityScalarReturn": [
+      "s8-01"
+    ],
+    "H0mework.Versions.Rf13ed87d.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalSourcePropagationNativeGravityScalarReturn": [
+      "s8-01"
+    ]
+  },
+  "proof_adaptation_provenance_reference": "4be2f53b3f73ae5898a7eb6d32f0c7e65ccf2377",
+  "proof_adaptation_git_artifacts_verified": 9,
+  "new_dictionary_solo": {
+    "H0mework.Versions.C62.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalSourcePropagationNativeOriginalDictionaryIdentity": [
+      "s8-01"
+    ],
+    "H0mework.Versions.E055.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalSourcePropagationNativeOriginalDictionaryIdentity": [
+      "s8-01"
+    ],
+    "H0mework.Versions.R3bbcbd59.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalSourcePropagationNativeOriginalDictionaryIdentity": [
+      "s8-02"
+    ],
+    "H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalSourcePropagationNativeOriginalDictionaryIdentity": [
+      "s8-01"
+    ],
+    "H0mework.Versions.Rc015842c.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalSourcePropagationNativeOriginalDictionaryIdentity": [
+      "s8-01"
+    ],
+    "H0mework.Versions.Rf13ed87d.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalSourcePropagationNativeOriginalDictionaryIdentity": [
+      "s8-01"
+    ]
+  },
+  "existing_adapted_part_fields_identical": 42,
+  "existing_adapted_fingerprints": {
+    "s1-01": "45d3bce20ba3c741690c987bffa2339ccd6bd3583d4cfde6d0551344c295f3c1",
+    "s1-02": "f976b54849d7539e2b4e9091be09fc75bb55793b4fbab4d5f56e2c2676f312f4",
+    "s1-03": "e6b1f7be5071080ed846a71270b228c576b333591064bace7d4d79b9e08cd711",
+    "s1-04": "0b582d9087beb46d61ab736bf9a12a57ae4354bcf56ecc1f968ad7728bccc794",
+    "s1-05": "4248766b6059683c03d114dda21b6ddba589c32392c30bbac2d0c187240bf273",
+    "s2-01": "d43bdd8c7a26b4cdf2846dbe8c2df933d7a61e692875778cc9f18b755af73328",
+    "s2-02": "1c34193eaa055a3b30e644fa9c87662ce2aea3da62214e7d81257383f1da3768",
+    "s2-03": "0c5a39d8e6876e6ae859af8833ce9943652fe5fc8573087c25581310f1cd9a97",
+    "s3-01": "8ad7c88a7f9eba2e922a80d536a1c3898b055d8baaf788bfd1f384e03757ccd2",
+    "s3-02": "b3dc15af984f7337ab633401cb984ac6886105f6d15579f007322fdf8e7857c5",
+    "s3-03": "28516b79d419c012de1ce6e7c09a9fa1dac1d80f5f1cad979e564543cc126f0c",
+    "s3-04": "1f4cc5e18a85ab531a78bb7f2da5173226df94e0d2507fb01c19869e04043c5a",
+    "s3-05": "764d67e9fd8e6ccbd628d6ffb4e983fbe68a014fd278f1bde7297e86c9095243",
+    "s3-06": "063be1feddac09b35f4f410de8ad6ec035665a597371efa21c1e95b8cb134663",
+    "s3-07": "2a8ae75db313d50ad172f646f8f87ec38454d104626e5e2956caad8dc8e319ee",
+    "s3-08": "f2245ecf8406cc7a2440a3a149183bdd9370115a84f19562e7033a365767cfd2",
+    "s4-01": "1d493260700cc61b7fa01548a1cec104b2164106ed5b13cbd5087bbdf7f70a11",
+    "s4-02": "e34468ca20edec0b21e79dac44eb1a11b262dcab88a586a16c431ea9e63eb9d0",
+    "s4-03": "0a4c648726f7638148125e03cdc9525292730274ccc49b39f627bab30ed371b2",
+    "s4-04": "38794432ce4a0eb6daa707c9e577f104e553b6ac48b3508ebf2eb39f1d56ff24",
+    "s4-05": "cffdfbe722130c9eed58e0d7e70d4fd2214faaaa0aee7347934c0368ef59dd90",
+    "s4-06": "27aff7819f2c79593797ad215b4ebe4480194f9ea6370ac6408087a08138a51c",
+    "s4-07": "28469333f6960b147c528ee3b8a414a1246d5bc5a25783616044be75c530602e",
+    "s4-08": "9ca073548bc1ee89fbebc9fe467343a98a40d939c5278ee26bf023f187ea3e67",
+    "s4-09": "7b9361e8f6f06830231fddfbf457b5b90c02f43365ad35c76515653db1f43777",
+    "s4-10": "03b7c2679ed6190ac4008830e07092cdbb2d55d7491c369f5bdf0e71e23a4a7e",
+    "s4-11": "9f0a6fb12c1fcfc2592668880696155010c9df17e9175f3df15294298373c49a",
+    "s4-12": "e4f23e5b23eb47d7160fcfdff83bb54126fe9b4f0590203caa53f7e320564f6e",
+    "s4-13": "26378035cfb7a34286cdb63e89aacdf627f6bbbc4e03a84b6ee5c63d67d9fd18",
+    "s4-14": "76c5ae2fd993f9d1c22fcb6b60d7cd95002d0d678cb4817a0507d32d47cc73df",
+    "s4-15": "f7a613b6787a82038195f67d3c9a826b35a1c835e55a5718284b029baae497e0",
+    "s4-16": "bef34fc74482b069af24cebbb5f0ae01d633809a37fbcbceaa6d2ed994a15fad",
+    "s4-17": "e715d53b0b7f7defb6197b0808477d56a63abd9615d08019774fa7497cf424b7",
+    "s4-18": "dca68fb4773aaf85a0b04d3c997c1dcf090dcc3a7a605e33c84fcd0149251581",
+    "s4-19": "eb882af5fb563689912e64cb73f710749b04cf1d099767c6cd80c917aff268c0",
+    "s4-20": "365fef83cee0758395583bc89b5d2ed3fffce4ef0ad48b3e45f448e8177a8a02",
+    "s5-01": "2e0a648458cfe63ed38da874b3df8be57c75d45fc0f982a2d254b37312f92f45",
+    "s5-02": "defbbfac20ea2aa9ea7487e938bd897462ab21b7b6ad4e797f6c18b8e575abdd",
+    "s6-01": "e29a5a8b4c17d53ba44cd3385d72b10e66269d6568144d7ea51e674ade3c3849",
+    "s6-02": "098f5d27a1177a6de08376169558f42d877f9aac2fd1c4dfc9f8fee3ae0c137c",
+    "s6-03": "1d1d5a6eb0b3e771917f1de33e6456a10099da38f9414ed90d7b6827096e4620",
+    "s7-01": "454687d0f09029a948146ed4a93e0d3786d6bc4dee7691429e7db2c20897fee7"
+  },
+  "stage9_ci_authorization": {
+    "expected_file_hashes": {
+      "tools/ci_plan.py": "503329e647183610f3ec289d7bb4c973c837c4fa50395af5e4aaea69e605a945",
+      ".github/workflows/ci.yml": "d9bd04032ea364b8b0a81630af515e82cbf7adc822a3033163c90c86da87ec55",
+      ".github/workflows/lean-part.yml": "8f7fa41d83f1dcffed057dae9ddf58700d606459fa89ce3aaa306186022af7c9"
+    },
+    "max_stages": 9,
+    "stage9_plan_output": true,
+    "stage9_job": true,
+    "stage9_continuation": true,
+    "complete_and_continuation_depend_on_stage9": true
+  },
+  "registered_charged_local_names": {
+    "H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.ExternalCompositeDecay.MixedSpectatorCAR": {
+      "old_target_sha256": "f02be51f92140e9c2b48016d68e948133df0570f6d671d1d3fe05e21bbeccfea",
+      "target_sha256": "ca11ec7c5acf0bdec34337bbd418d9f8597303c4c75f040a0a8fa65dcfa0b468",
+      "source_sha256": "f8ad3c730ff87b2e2085e42b2926f2ee8f3fafa355bc686a8b8092a07a362076",
+      "original_target_restored": true,
+      "named_local_instances": 1
+    },
+    "H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.ExternalCompositeDecay.MixedSpectatorColorAction": {
+      "old_target_sha256": "9da6c90929912766741d6f3367941f9534676a1c03dd268c3706da06fcc43d8e",
+      "target_sha256": "90434cb759559e86d2d25624232405d0d2b3d2a5c1e29a220867a41fdf34e785",
+      "source_sha256": "36b92ef604a91c1ad09db39358e3a133d9b03470513aea035b29ee013e44becf",
+      "original_target_restored": true,
+      "named_local_instances": 1
+    },
+    "H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.ExternalCompositeDecay.MixedSpectatorColorColumns": {
+      "old_target_sha256": "228929dbe8eb4045d5c6296dab9e70baee399e681fdfe98aec6fe9e68617a060",
+      "target_sha256": "3439cdecdc2b9c7d0e0340dc91cb6afe811cd8b0c401f9ba9e05eb2a93638cf2",
+      "source_sha256": "8ff2a52f94909d016998e8662d92b5b94862743cc14f3c1ef0cd822d9becab89",
+      "original_target_restored": true,
+      "named_local_instances": 1
+    },
+    "H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.ExternalCompositeDecay.MixedSpectatorColorMatrix": {
+      "old_target_sha256": "040086883b15ab23f03597fb49426b8305393acfd2e134f78ac971fee9904d7b",
+      "target_sha256": "06e7caf824ff668a65d5efa4526aaa12abcc41feefef82d8da68a2456d0f7d88",
+      "source_sha256": "56cfadaf9775381a572d07eb8b393664c0ebacb4d5482f5d57dd76530dafb13d",
+      "original_target_restored": true,
+      "named_local_instances": 1
+    },
+    "H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.ExternalCompositeDecay.MixedSpectatorExchangeSelection": {
+      "old_target_sha256": "0691ecdc042ef9daccb018474afcbc63beac61b785059bd272bbde888412531b",
+      "target_sha256": "2b2a7c39c05a7d71ddf3a054bcaef155e8ff307ae019d920ce128009d2d2da89",
+      "source_sha256": "3772bfeb8b9cc2da568664a316245605b64362043865183df35eae5baa410bbb",
+      "original_target_restored": true,
+      "named_local_instances": 1
+    },
+    "H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.ExternalCompositeDecay.MixedSpectatorGram": {
+      "old_target_sha256": "ce79e42952d2dc470da62f66bd6739b8a62bf786175014a5f2d5992762f3b0ed",
+      "target_sha256": "93da25409d0ca2420494ee65b88daeb7c500ba3547efa37928f1e9fc0d337a7a",
+      "source_sha256": "51fdfa42fb6f72a6f41204cecd3c36ccde57098e631d2c5c6a14dee6e318db50",
+      "original_target_restored": true,
+      "named_local_instances": 1
+    },
+    "H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.ExternalCompositeDecay.MixedSpectatorOccupation": {
+      "old_target_sha256": "ba02ac48c0c28443fdb770c10df032bcd2bbfa90044f66e3ff3e9af0e6de0d3f",
+      "target_sha256": "f8755d13e7c48778cef230992bb1dabb9cf67d24870b6fb379f11463d6e77735",
+      "source_sha256": "c894abc3ba8ab27abff8d7687026b41399f27a8e38f12322e1c9bcd1c8be5d39",
+      "original_target_restored": true,
+      "named_local_instances": 1
+    },
+    "H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.ExternalCompositeDecay.MixedSpectatorPhaseCharge": {
+      "old_target_sha256": "d2c2efc21380ec271fcb4069ca65e9cebc578df3537363717b815582cce0655e",
+      "target_sha256": "d52528784e821cca9c7f195d1e7abf0ef8a40c588c47c73763eea2c61b68c2c2",
+      "source_sha256": "7ca08e33e6ac9dfde6c0b658877c10da6dc7f797040244ab45f37517900eae5e",
+      "original_target_restored": true,
+      "named_local_instances": 2
+    },
+    "H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.ExternalCompositeDecay.MixedSpectatorSpin": {
+      "old_target_sha256": "63ddeffc415cff9fceeb9a8e1a3a785400006eb70eadc0a98e8dc3e0a8f8809e",
+      "target_sha256": "1c182b34bb05bad1c82c67ef52e2e912dfcc51f86e94750c55ddd693852fa867",
+      "source_sha256": "bd033826302f7a9f51ad5855579d4bafb63fa665be4ce84b19030960bafba797",
+      "original_target_restored": true,
+      "named_local_instances": 2
+    },
+    "H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.ExternalCompositeDecay.MixedSpectatorYukawaColumn": {
+      "old_target_sha256": "97f218ead913e22f8921d90bcde7818d8207a8ee09d57a94e8cd1d617ba84b39",
+      "target_sha256": "8c063ed9ce856ce8a9e1dd5a3df822cf1501df4185c0c76d84c66f0c32453de5",
+      "source_sha256": "63ce966ed073623a17d5e8f2d56a0497fea12907e20832b8782be59850f625e5",
+      "original_target_restored": true,
+      "named_local_instances": 2
+    },
+    "H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.ExternalCompositeDecay.MixedSpectatorYukawaMatrix": {
+      "old_target_sha256": "117b38626e3f25ba8305cf558593b1df391881ca68c05d3bd85315467d2da24d",
+      "target_sha256": "53959a929017827cf0bc36b26847724255bb229d740d4615f4c0ecd2ffeea016",
+      "source_sha256": "fe260ad4e984c0b5cc48c8f293a94adddc9e98783ded782eb873c8b9bd2ed668",
+      "original_target_restored": true,
+      "named_local_instances": 2
+    }
+  },
+  "registered_charged_dynamic_owners": {
+    "H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.ExternalCompositeDecay.SourceActualCandidateVertexRowAliases": {
+      "old_target_sha256": "a015ced1b8d79b7fa6d281077abe1030883a624fa0ae2a0acf36359edacdca9b",
+      "target_sha256": "ef25d437da9b20f2a999ebdff53b7a32b7da4b2dc5ca07651d890d53a7ac627e",
+      "source_sha256": "aad08c8a958c25d61954cc4d3227c68540cb9aa6b95cedf0e47c2b5d88109030",
+      "source_revision": "71e94e8261d67cf4849a05eb14ac95aa2f7dcbb9",
+      "original_target_restored": true,
+      "exact_original_source_restored": true,
+      "private_owner_expression_rules": 2
+    },
+    "H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.ExternalCompositeDecay.SourceActualFourBlockRealTransferCanonicalSource": {
+      "old_target_sha256": "3c5f2eb68bfb0bcb249e58174e8166189f391df9f5e046470b5cb7e7e2d24405",
+      "target_sha256": "34ae7f84168ff41a8f156880ed488a1226b4ea72ecdd6f429236e3ef489d773b",
+      "source_sha256": "f411b5beae57728ca95e5a268065b5f5860b8b3dec8d64c5ad5a4edee311a6e3",
+      "source_revision": "71e94e8261d67cf4849a05eb14ac95aa2f7dcbb9",
+      "original_target_restored": true,
+      "exact_original_source_restored": true,
+      "private_owner_expression_rules": 1
+    },
+    "H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.ExternalCompositeDecay.SourceActualFourBlockSharpCausalMass": {
+      "old_target_sha256": "c026c6b097a2a73ec146c24994884c4ac31a98eae9e2728fea9dfa81c7e4853c",
+      "target_sha256": "44f4f8afd7b1bc16c31dcf8c388146a4ef5d01cdbd662392627db0841056dd60",
+      "source_sha256": "26227f0f98ce20ff613697aeda2921c772367d42367bc62405617d91613665bd",
+      "source_revision": "71e94e8261d67cf4849a05eb14ac95aa2f7dcbb9",
+      "original_target_restored": true,
+      "exact_original_source_restored": true,
+      "private_owner_expression_rules": 1
+    },
+    "H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.ExternalCompositeDecay.SourceCanonical79BraCurrentFastFold": {
+      "old_target_sha256": "858a474b571cd733f4e734ba201a2b10aeaf61d878a58d802a94446a123b8e0f",
+      "target_sha256": "2c9e91e8f72eff9ba1fd590697cf111ab82b555d3310352c2694550bf9d7b0a5",
+      "source_sha256": "88e2f573f4fc9ae9cc18f70b3d488cc90fffdb80354d14ca28ad75ef3dc6972d",
+      "source_revision": "71e94e8261d67cf4849a05eb14ac95aa2f7dcbb9",
+      "original_target_restored": true,
+      "exact_original_source_restored": true,
+      "private_owner_expression_rules": 1
+    },
+    "H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.ExternalCompositeDecay.SourceCanonical79BraCurrentFold": {
+      "old_target_sha256": "4235a512ad2d32fc9cd274a704562bceb098e95dab01ee9c3a7b8c415ab98225",
+      "target_sha256": "e9f6dd47b537c3bf08e37e13850ca8190557101379d2ec66810d490d6c143db3",
+      "source_sha256": "39ed05d5bb2b7da974f6b8d39496a2471e67d798df18fc90c7e3c0de91356d15",
+      "source_revision": "71e94e8261d67cf4849a05eb14ac95aa2f7dcbb9",
+      "original_target_restored": true,
+      "exact_original_source_restored": true,
+      "private_owner_expression_rules": 1
+    },
+    "H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.ExternalCompositeDecay.SourceCanonical79BraCurrentFunctionFold": {
+      "old_target_sha256": "611a7d34dc5c36dd53cb36058f30248ca4de600cd1fd2f04bd6e4f114e90b162",
+      "target_sha256": "82d44d12190327c8ef5ab53ca3a198f29038378a83b201dce2ebfe9ef12faff9",
+      "source_sha256": "28213fd17cc4dfb791e93ea233ed751bb22ce28d5895fb8387833727abc1c5b2",
+      "source_revision": "71e94e8261d67cf4849a05eb14ac95aa2f7dcbb9",
+      "original_target_restored": true,
+      "exact_original_source_restored": true,
+      "private_owner_expression_rules": 1
+    },
+    "H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.ExternalCompositeDecay.SourceCanonical79BraHeavyDeltaFold": {
+      "old_target_sha256": "20f3305ab30fb4107d878cde14d1a0cc7882df05473d6b5875cfcea3b91cf37b",
+      "target_sha256": "7e50811e0e89cd72a5aa6ff6ba1460a67a6f72cbc51e2c1647beac5bda84793b",
+      "source_sha256": "f15c6ebae032aab5c279dff087f73c582e920b23048c4d05de040b68f96ba851",
+      "source_revision": "71e94e8261d67cf4849a05eb14ac95aa2f7dcbb9",
+      "original_target_restored": true,
+      "exact_original_source_restored": true,
+      "private_owner_expression_rules": 1
+    },
+    "H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.ExternalCompositeDecay.SourceCanonical79BraNativeCurrentFold": {
+      "old_target_sha256": "ec2e5cbdc34b4d2583121f626ef1290c59368a0d701ac9d1891ed0630d989157",
+      "target_sha256": "d0f46bef1a5effb6f50b2620fbd3600b03c2524f6fbea9d9612d1a8102e194b5",
+      "source_sha256": "ffa28da68fed5d12cdb0c79f853b47c74f2088b03a495298b1ec49c7d62e1948",
+      "source_revision": "71e94e8261d67cf4849a05eb14ac95aa2f7dcbb9",
+      "original_target_restored": true,
+      "exact_original_source_restored": true,
+      "private_owner_expression_rules": 1
+    }
+  },
+  "registered_source_selection": {
+    "source_alias_interface_commit": "e4daafc7",
+    "source_alias_identity_changes": 3,
+    "runtime_outside_identity_selection_identical": true,
+    "package_source_paths_commit": "dda881025feadda8c6673545ad2a883ea2bfd54c",
+    "package_source_paths_changed_functions": [
+      "package_entries"
+    ]
+  },
+  "registered_physics_environment_partitions": {
+    "H0mework.Papers.SecondEditionPhysicsPreparedActual": {
+      "path": "Lean/H0mework/Papers/SecondEditionPhysicsPreparedActual.lean",
+      "old_target_sha256": "1fb9c6b8a411aab2698a76feb8d57eb432ade9e6ab6be164a68d007286aa3bb3",
+      "target_sha256": "2d9d450b31af2f73abbff661a77378f9f9630042b39623e42acaba1655584f1f",
+      "old_direct_imports": 1635,
+      "current_direct_imports": 22,
+      "production_source_paths": [
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualChargedIdentityAudit.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualCompositeCoulombDressing.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualCompositeCoulombDressingAudit.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedCoulombAudit.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedCreationSupport.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedFullCoulomb.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedMovingCoulomb.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedNoetherAction.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedNoetherHistory.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedSourceAudit.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedSourcePreparation.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedSourceResponse.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedTemporalCurrent.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedTemporalNormalization.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedTemporalNormalizationAudit.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualEMAction.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualEMCarrier.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualEMClock.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualEMDressedGaugePole.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualEMExternalRepresentation.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualEMMovingCoulombAudit.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualWholeCoulombPacket.lean"
+      ],
+      "original_consumer_package": "second-edition-physics-prepared-actual-certification-consumers",
+      "mathematical_source_bytes_changed": 0
+    },
+    "H0mework.Papers.SecondEditionPhysicsSignalField": {
+      "path": "Lean/H0mework/Papers/SecondEditionPhysicsSignalField.lean",
+      "old_target_sha256": "da0a87ac9113694eb7c1b304b2573d950c1161c74777de18238fc4ccf26c8e6f",
+      "target_sha256": "954745d7aacb825edffa84a5cdd969cbf785ed616def5770462c5630a4140ef8",
+      "old_direct_imports": 1537,
+      "current_direct_imports": 23,
+      "production_source_paths": [
+        "Verification/physics/low-energy-phenomenology/alpha-source/SourceUnitAmputatedFourPoint.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/SourceUnitMixedDerivative.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/SourceUnitPhysicalCurrent.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedCutReturn.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedNoetherAction.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedNoetherAudit.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedNoetherBoundary.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedNoetherCauchy.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedNoetherHistory.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedNoetherResponse.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedReaderComponents.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedReaderMatching.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedReaderMatchingAudit.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedSignalAudit.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedSignalCausal.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedSignalOperator.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedSignalPencil.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedSignalPencilAudit.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedSignalPrice.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedSignalTensor.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualEMDressedGaugePole.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualEMDressedGaugePoleAudit.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualEMGaugeCurvature.lean"
+      ],
+      "original_consumer_package": "second-edition-physics-signal-field-certification-consumers",
+      "mathematical_source_bytes_changed": 0
+    }
+  },
+  "registered_family_prefix_helpers": {
+    "reference_commit": "181fb0baaa5b9e696c5c2c5969278b070282edf7",
+    "copies": {
+      "H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.ExternalCompositeDecay.SourceActualCandidateBraLeftFold": {
+        "old_target_sha256": "a93db0b7ea25885751713282167ede76059fc2196129f398221f92e67790dbe0",
+        "target_sha256": "c5fc1a8470046c303b5dd96a392c7114da57f51424d927a494372bce6037940b",
+        "source_sha256": "b0834048f6b7268b91c626c94c182f0a3738b9f2e3c9907ba316a2f3ed6026bc",
+        "source_revision": "71e94e8261d67cf4849a05eb14ac95aa2f7dcbb9",
+        "exact_frozen_target_restored": true,
+        "exact_original_source_restored": true,
+        "private_owner_family_rules": 1
+      },
+      "H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.ExternalCompositeDecay.SourceActualCandidateBraPairFold": {
+        "old_target_sha256": "3f08bbdd728f5f01ba431361a6ee16691f102b7271da7b631605d049413803bb",
+        "target_sha256": "b627fc488d97ecf6dd36181d9b4719fcb9f4caaf51ab811f78339be4f808249b",
+        "source_sha256": "2b6ac8624ade3c483dccdd1e08d2a5f9c1d824960d9bcfb4c35b36135e3254cf",
+        "source_revision": "71e94e8261d67cf4849a05eb14ac95aa2f7dcbb9",
+        "exact_frozen_target_restored": true,
+        "exact_original_source_restored": true,
+        "private_owner_family_rules": 1
+      },
+      "H0mework.Versions.R9c73a630.ReleaseMaterials.Scratch.LowEnergyRetardedCouncil.ActualFourBlockElastic.SourceActualCandidateBraLeftFold": {
+        "old_target_sha256": "e418ba7512e4365810e47c52a27e19809c89d7c4c2d660b2299b781fc39e7b78",
+        "target_sha256": "0345f40d0ac9523809e4f7536460b3501857b2b8d85b8083230070773441377e",
+        "source_sha256": "b0834048f6b7268b91c626c94c182f0a3738b9f2e3c9907ba316a2f3ed6026bc",
+        "source_revision": "9c73a630ce05bea062ec889b188f5105c0afb796",
+        "exact_frozen_target_restored": true,
+        "exact_original_source_restored": true,
+        "private_owner_family_rules": 1
+      },
+      "H0mework.Versions.R9c73a630.ReleaseMaterials.Scratch.LowEnergyRetardedCouncil.ActualFourBlockElastic.SourceActualCandidateBraPairFold": {
+        "old_target_sha256": "378ec51262c512c274026bfd2698e98ac07af4dea642b0180f2352430980cf70",
+        "target_sha256": "991780ea13a8ba4c9189e0b66922907d75d834e200e68aed7305edbce469f23f",
+        "source_sha256": "2b6ac8624ade3c483dccdd1e08d2a5f9c1d824960d9bcfb4c35b36135e3254cf",
+        "source_revision": "9c73a630ce05bea062ec889b188f5105c0afb796",
+        "exact_frozen_target_restored": true,
+        "exact_original_source_restored": true,
+        "private_owner_family_rules": 1
+      }
+    },
+    "source_view_changed_functions": [
+      "rewrite_private_owner_strings"
+    ],
+    "source_view_original_sha256": "0c85519f1ff7d1e106321d4f07eba2f31e1ffb067478868229e03e122421d7de",
+    "source_view_sha256": "4699138984c50041730853dd79d9cc4eb89493aeb126109a18cefc6b2c38ddf4",
+    "mathematical_bytes_outside_prefix_literals_changed": 0
+  },
+  "registered_coframe_local_instances": {
+    "reference_commit": "181fb0baaa5b9e696c5c2c5969278b070282edf7",
+    "copies": {
+      "H0mework.Versions.C62.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalSourcePropagationCoframeInverseJets": {
+        "old_target_sha256": "02956549bc9b98d2a226c7b4421479fbcbcee265cce69450158ea8a4048dc16f",
+        "target_sha256": "9299d38248271f63ddc5e2ceff17aa12bb56e5baf0cf0ee7f628c85246dec761",
+        "source_sha256": "48a5dc3f35fe3cad76b2e32e5a27f39fe48c9a323a2bb175781baf6a21d7ff48",
+        "source_revision": "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46",
+        "exact_frozen_target_restored": true,
+        "exact_pushed_target_restored": true,
+        "exact_original_source_restored": true,
+        "named_local_instances": 3
+      },
+      "H0mework.Versions.E055.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalSourcePropagationCoframeInverseJets": {
+        "old_target_sha256": "fd3fe7f217383551552aaa65503b24ce61e72bfb4b74d7cc757adff72bf696f0",
+        "target_sha256": "f3308fca65eeba9afd445a446feb0ebe13a361297e754deedd80bd1ab42d3dfe",
+        "source_sha256": "48a5dc3f35fe3cad76b2e32e5a27f39fe48c9a323a2bb175781baf6a21d7ff48",
+        "source_revision": "e05558097256e86b537c019c8ca63cd449d6b2d2",
+        "exact_frozen_target_restored": true,
+        "exact_pushed_target_restored": true,
+        "exact_original_source_restored": true,
+        "named_local_instances": 3
+      },
+      "H0mework.Versions.R3bbcbd59.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalSourcePropagationCoframeInverseJets": {
+        "old_target_sha256": "90ca80384c79b9fcd843fbcdbe0a3b47cd8fa96c863ab7b009d890b25f520d5f",
+        "target_sha256": "e1450f0b6c167927f3305615a2ea27959d5d88d1e665fcd8454a143bfda645c5",
+        "source_sha256": "48a5dc3f35fe3cad76b2e32e5a27f39fe48c9a323a2bb175781baf6a21d7ff48",
+        "source_revision": "3bbcbd590fbd1892661b8f5f0a09b555e7b9c7d4",
+        "exact_frozen_target_restored": true,
+        "exact_pushed_target_restored": true,
+        "exact_original_source_restored": true,
+        "named_local_instances": 3
+      },
+      "H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalSourcePropagationCoframeInverseJets": {
+        "old_target_sha256": "6576277c5d1f06eb30ec2f8ba80b3b353d3ab42352b7eb9c8d509627daacacc2",
+        "target_sha256": "222a13bbfab2c902c3afcd2fc4d907975241de654cd5a1d2d860547e187686f6",
+        "source_sha256": "48a5dc3f35fe3cad76b2e32e5a27f39fe48c9a323a2bb175781baf6a21d7ff48",
+        "source_revision": "71e94e8261d67cf4849a05eb14ac95aa2f7dcbb9",
+        "exact_frozen_target_restored": true,
+        "exact_pushed_target_restored": true,
+        "exact_original_source_restored": true,
+        "named_local_instances": 3
+      },
+      "H0mework.Versions.Rc015842c.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalSourcePropagationCoframeInverseJets": {
+        "old_target_sha256": "07a4999af05280bd41cb695a97288a773cf67ed1328ca9d5d451cd50e7e1931f",
+        "target_sha256": "2a781e6b5acfb276a0d2652170706bc5dc294aa1c627bf5b416bed8cdca4d672",
+        "source_sha256": "48a5dc3f35fe3cad76b2e32e5a27f39fe48c9a323a2bb175781baf6a21d7ff48",
+        "source_revision": "c015842c42751dc786dcce9522e67887b6b6d9e8",
+        "exact_frozen_target_restored": true,
+        "exact_pushed_target_restored": true,
+        "exact_original_source_restored": true,
+        "named_local_instances": 3
+      },
+      "H0mework.Versions.Rf13ed87d.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalSourcePropagationCoframeInverseJets": {
+        "old_target_sha256": "cef4b9f1303683a67e2cd1893939625698e71eb1a3bafd8bcfd6520d61296128",
+        "target_sha256": "b1081bf572cbc1d212b0102c27fe63aea55b8d95e377c01d03e6d4da010c265b",
+        "source_sha256": "48a5dc3f35fe3cad76b2e32e5a27f39fe48c9a323a2bb175781baf6a21d7ff48",
+        "source_revision": "f13ed87d6340e2cb041334eedfdc881dfb209abd",
+        "exact_frozen_target_restored": true,
+        "exact_pushed_target_restored": true,
+        "exact_original_source_restored": true,
+        "named_local_instances": 3
+      }
+    },
+    "preserved_named_copies": {
+      "H0mework.Versions.AD.Physics.LowEnergy.AlphaSource.CanonicalSourcePropagationCoframeInverseJets": {
+        "target_sha256": "3d774ec6f9fef7851483b19006107bd3e0d9d70723394a8e18909807795e1683",
+        "metadata_and_public_bytes_identical": true
+      },
+      "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalSourcePropagationCoframeInverseJets": {
+        "target_sha256": "e96e99e9b6b84ee585669b38397a1b43451a6dc97450ce0e2cb86338e876f6b4",
+        "metadata_and_public_bytes_identical": true
+      },
+      "H0mework.Versions.CAP.Physics.LowEnergy.AlphaSource.CanonicalSourcePropagationCoframeInverseJets": {
+        "target_sha256": "9702a4eefa6a9677876f5389bd60bed55e64cc671c749962026f117a7e8a43ec",
+        "metadata_and_public_bytes_identical": true
+      },
+      "H0mework.Versions.R9c73a630.Physics.LowEnergy.AlphaSource.CanonicalSourcePropagationCoframeInverseJets": {
+        "target_sha256": "dc3d178a6b78444e5e0bad78d60b6c64863108e9b0622e153b670fa8a42ccec5",
+        "metadata_and_public_bytes_identical": true
+      }
+    },
+    "changed_type_value_and_proof_bytes": 0,
+    "full_original_source_sha256": "48a5dc3f35fe3cad76b2e32e5a27f39fe48c9a323a2bb175781baf6a21d7ff48"
+  },
+  "registered_prepared_ward_proof": {
+    "reference_commit": "181fb0baaa5b9e696c5c2c5969278b070282edf7",
+    "target": "H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.PhysicalPreparedCharge",
+    "old_target_sha256": "ddfd65a024c9017dc2fa3587a4b093b7fdcfe07f3d8a8b7cb4f929baa3a065df",
+    "target_sha256": "a987229c98a82df6b2ec1793988b49645cac20da204f6ada68d4823bed0eb880",
+    "source_sha256": "bf25d14314ea3c4f83938c5aceea22fae1178a614d51f38625d41f234a5affda",
+    "view_sha256": "a80901183fe34d1b202dbed58c823c348c1e1d37c995d6d53c44c17d35fb116d",
+    "source_revision": "71e94e8261d67cf4849a05eb14ac95aa2f7dcbb9",
+    "plan_sha256": "14992a1b386932eca2b92471a03ba9a0b1ff7d84e9722fb545c1ebe2741d0a86",
+    "proof_declaration": "prepared_increment_ward",
+    "theorem_statement_and_budgets_identical": true,
+    "exact_frozen_and_pushed_target_restored": true,
+    "exact_recorded_original_source_restored": true,
+    "source_origin_unchanged": true,
+    "formal_kernel_acceptance": "pending"
+  },
+  "registered_dirac_local_instances": {
+    "reference_commit": "5c627eb4783af2c39e4c22d2c48a11637e3bdd88",
+    "copies": {
+      "H0mework.Versions.C62.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalSourcePropagationNativeDiracRay": {
+        "old_target_sha256": "3a85af8e9e3b1088102631f73fefc205248e0fa5a10820b64f7b8ddc1573ceca",
+        "target_sha256": "4a5a492207ae5774e30a72ac71807838e629a5f7a8dde660be104a9ab40e05e2",
+        "source_sha256": "e959ecb24e4a8d5a7abf4761eb516dc4e361978f15b5303d5cf991253d2864f4",
+        "source_revision": "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46",
+        "exact_frozen_and_pushed_target_restored": true,
+        "exact_original_source_restored": true,
+        "named_local_instances": 3
+      },
+      "H0mework.Versions.E055.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalSourcePropagationNativeDiracRay": {
+        "old_target_sha256": "59b77dddb74e6257ebf860e053ad611bd106905cf852fdcefaf87bb70f99c1b8",
+        "target_sha256": "4957b3e6f54b119d948dd0c3d5c65628f1c196a09aae7f1042bbe8897fbd73a3",
+        "source_sha256": "e959ecb24e4a8d5a7abf4761eb516dc4e361978f15b5303d5cf991253d2864f4",
+        "source_revision": "e05558097256e86b537c019c8ca63cd449d6b2d2",
+        "exact_frozen_and_pushed_target_restored": true,
+        "exact_original_source_restored": true,
+        "named_local_instances": 3
+      },
+      "H0mework.Versions.R3bbcbd59.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalSourcePropagationNativeDiracRay": {
+        "old_target_sha256": "5d31b07a26b6295663ade24075555e57c169c993768b283310b296cf4a80f28a",
+        "target_sha256": "6a3487edea420f04f4ed78116d0e2eed0d31766bf59865f60e1b1293552582ca",
+        "source_sha256": "e959ecb24e4a8d5a7abf4761eb516dc4e361978f15b5303d5cf991253d2864f4",
+        "source_revision": "3bbcbd590fbd1892661b8f5f0a09b555e7b9c7d4",
+        "exact_frozen_and_pushed_target_restored": true,
+        "exact_original_source_restored": true,
+        "named_local_instances": 3
+      },
+      "H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalSourcePropagationNativeDiracRay": {
+        "old_target_sha256": "b5db7e33de718fe47f848ea09b8e5ec3100010e591d3dc258a0c7b3cd87e33b0",
+        "target_sha256": "5babe74529d3b27ac8ee86df874037d30c2185976885a76c765a94f5a1b8ab7d",
+        "source_sha256": "e959ecb24e4a8d5a7abf4761eb516dc4e361978f15b5303d5cf991253d2864f4",
+        "source_revision": "71e94e8261d67cf4849a05eb14ac95aa2f7dcbb9",
+        "exact_frozen_and_pushed_target_restored": true,
+        "exact_original_source_restored": true,
+        "named_local_instances": 3
+      },
+      "H0mework.Versions.Rc015842c.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalSourcePropagationNativeDiracRay": {
+        "old_target_sha256": "19d0abe6afd03a2ccab9b8a58bbe59ea838b34323d51cec541f88e725993b919",
+        "target_sha256": "c33c15db48c18f9cb062ca83041f4518ab9c60929eef725341e3638fba23fb8c",
+        "source_sha256": "e959ecb24e4a8d5a7abf4761eb516dc4e361978f15b5303d5cf991253d2864f4",
+        "source_revision": "c015842c42751dc786dcce9522e67887b6b6d9e8",
+        "exact_frozen_and_pushed_target_restored": true,
+        "exact_original_source_restored": true,
+        "named_local_instances": 3
+      },
+      "H0mework.Versions.Rf13ed87d.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalSourcePropagationNativeDiracRay": {
+        "old_target_sha256": "27abc1dcc1b25ac73fbd5158314701fd106f26844ae5de08c06c1650a5d1599a",
+        "target_sha256": "2bf3038814b7e05f418aa9fcc9c82ec77367e76db81ab680ba4ee542d1c172dc",
+        "source_sha256": "e959ecb24e4a8d5a7abf4761eb516dc4e361978f15b5303d5cf991253d2864f4",
+        "source_revision": "f13ed87d6340e2cb041334eedfdc881dfb209abd",
+        "exact_frozen_and_pushed_target_restored": true,
+        "exact_original_source_restored": true,
+        "named_local_instances": 3
+      }
+    },
+    "preserved_named_copies": {
+      "H0mework.Versions.AD.Physics.LowEnergy.AlphaSource.CanonicalSourcePropagationNativeDiracRay": {
+        "target_sha256": "434746471bcc889b0b5dcc18d93268ae463db850ed0282e1ff802587c58f8c4e",
+        "existing_names": 7,
+        "metadata_and_public_bytes_identical": true
+      },
+      "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalSourcePropagationNativeDiracRay": {
+        "target_sha256": "4fe87fcd1df23f0bd3ca743a11a60655c350fa4cc2ce7f65f8629272e5ee23d5",
+        "existing_names": 7,
+        "metadata_and_public_bytes_identical": true
+      },
+      "H0mework.Versions.CAP.Physics.LowEnergy.AlphaSource.CanonicalSourcePropagationNativeDiracRay": {
+        "target_sha256": "e9b747afc5b6e6aa988acdd67d8761448ddf927ce56457fe0d3ea870d8cde3cb",
+        "existing_names": 7,
+        "metadata_and_public_bytes_identical": true
+      },
+      "H0mework.Versions.R9c73a630.Physics.LowEnergy.AlphaSource.CanonicalSourcePropagationNativeDiracRay": {
+        "target_sha256": "e27262f58396362d72725b26899e1eaf832b9945b6c7d7aa5c2c8fa4d8652b68",
+        "existing_names": 7,
+        "metadata_and_public_bytes_identical": true
+      }
+    },
+    "changed_type_value_and_proof_bytes": 0,
+    "full_original_source_sha256": "e959ecb24e4a8d5a7abf4761eb516dc4e361978f15b5303d5cf991253d2864f4"
+  },
+  "registered_new9_charged_local_names": {
+    "reference_commit": "c762e7806b91e721d86e0938666e413765e6029a",
+    "copies": {
+      "H0mework.Versions.R9c73a630.ReleaseMaterials.Scratch.LowEnergyRetardedCouncil.NamedColorQtNext.Charge.MixedSpectatorCAR": {
+        "old_target_sha256": "f02be51f92140e9c2b48016d68e948133df0570f6d671d1d3fe05e21bbeccfea",
+        "target_sha256": "c6c5daf6077b7b80b20ddf001a858f33a5b859d25c53698b1396ab1f1cc00c92",
+        "source_sha256": "f8ad3c730ff87b2e2085e42b2926f2ee8f3fafa355bc686a8b8092a07a362076",
+        "source_revision": "9c73a630ce05bea062ec889b188f5105c0afb796",
+        "named_instances": 1,
+        "exact_frozen_source_restored": true,
+        "exact_original_source_restored": true
+      },
+      "H0mework.Versions.R9c73a630.ReleaseMaterials.Scratch.LowEnergyRetardedCouncil.NamedColorQtNext.Charge.MixedSpectatorColorAction": {
+        "old_target_sha256": "efda6f381d37b59f197c924988b958cdbd0a1f4901f8db88450281bf25a11fb9",
+        "target_sha256": "5e2365af72fa12ce15544e6937b919efa528e0c88f2b1af51b2cb7adf1ec0f83",
+        "source_sha256": "36b92ef604a91c1ad09db39358e3a133d9b03470513aea035b29ee013e44becf",
+        "source_revision": "9c73a630ce05bea062ec889b188f5105c0afb796",
+        "named_instances": 1,
+        "exact_frozen_source_restored": true,
+        "exact_original_source_restored": true
+      },
+      "H0mework.Versions.R9c73a630.ReleaseMaterials.Scratch.LowEnergyRetardedCouncil.NamedColorQtNext.Charge.MixedSpectatorColorColumns": {
+        "old_target_sha256": "510097352693e292d338b15c75a4de250df17e65073e33c1800a4fefcb63cf2d",
+        "target_sha256": "7baf2852cdb7e0cafd3faad719c72aeab9ee6e079ade08f3faefc3be03e40a3c",
+        "source_sha256": "8ff2a52f94909d016998e8662d92b5b94862743cc14f3c1ef0cd822d9becab89",
+        "source_revision": "9c73a630ce05bea062ec889b188f5105c0afb796",
+        "named_instances": 1,
+        "exact_frozen_source_restored": true,
+        "exact_original_source_restored": true
+      },
+      "H0mework.Versions.R9c73a630.ReleaseMaterials.Scratch.LowEnergyRetardedCouncil.NamedColorQtNext.Charge.MixedSpectatorColorMatrix": {
+        "old_target_sha256": "0009922383b92438b509588e3dc3997cd26e76ea57fdc81f83b2b3c48ea33f81",
+        "target_sha256": "f8990741fc84b1e361bf5ddc743faf350c31eecec6911fd6480e32a408bac7ab",
+        "source_sha256": "56cfadaf9775381a572d07eb8b393664c0ebacb4d5482f5d57dd76530dafb13d",
+        "source_revision": "9c73a630ce05bea062ec889b188f5105c0afb796",
+        "named_instances": 1,
+        "exact_frozen_source_restored": true,
+        "exact_original_source_restored": true
+      },
+      "H0mework.Versions.R9c73a630.ReleaseMaterials.Scratch.LowEnergyRetardedCouncil.NamedColorQtNext.Charge.MixedSpectatorExchangeSelection": {
+        "old_target_sha256": "ce0e74a1c214fa0dfe482ebc43ee8658db623381c68d5eaa3c51273a4a828240",
+        "target_sha256": "ea21b1a96c97d35f196b0bc0c7df4622fdef4082c06df0dd49c47a6372ee9e4e",
+        "source_sha256": "3772bfeb8b9cc2da568664a316245605b64362043865183df35eae5baa410bbb",
+        "source_revision": "9c73a630ce05bea062ec889b188f5105c0afb796",
+        "named_instances": 1,
+        "exact_frozen_source_restored": true,
+        "exact_original_source_restored": true
+      },
+      "H0mework.Versions.R9c73a630.ReleaseMaterials.Scratch.LowEnergyRetardedCouncil.NamedColorQtNext.Charge.MixedSpectatorGram": {
+        "old_target_sha256": "4ebb81f6b0a189aef2a396392c36fbf85e139345590e57e36dfba274d1ae9d71",
+        "target_sha256": "b0d93a8247c021c346f7082ec01fce6f20fb3f6508db087371afda096e3e776b",
+        "source_sha256": "51fdfa42fb6f72a6f41204cecd3c36ccde57098e631d2c5c6a14dee6e318db50",
+        "source_revision": "9c73a630ce05bea062ec889b188f5105c0afb796",
+        "named_instances": 1,
+        "exact_frozen_source_restored": true,
+        "exact_original_source_restored": true
+      },
+      "H0mework.Versions.R9c73a630.ReleaseMaterials.Scratch.LowEnergyRetardedCouncil.NamedColorQtNext.Charge.MixedSpectatorOccupation": {
+        "old_target_sha256": "8a2efba6d6ad2274a0ab2d51a4ed51dddc3848c19e8ed97df9b0e77305d30614",
+        "target_sha256": "ae3f3a22b68c132e64bf4975d97e2d14aa924d6d938d29da58c2aab2c1b16c6c",
+        "source_sha256": "c894abc3ba8ab27abff8d7687026b41399f27a8e38f12322e1c9bcd1c8be5d39",
+        "source_revision": "9c73a630ce05bea062ec889b188f5105c0afb796",
+        "named_instances": 1,
+        "exact_frozen_source_restored": true,
+        "exact_original_source_restored": true
+      },
+      "H0mework.Versions.R9c73a630.ReleaseMaterials.Scratch.LowEnergyRetardedCouncil.NamedColorQtNext.Charge.MixedSpectatorPhaseCharge": {
+        "old_target_sha256": "4ffc1b8b1a35bccdb084f56ab04a5830d6fefe94f215f5064e4b18b2a8c6fe13",
+        "target_sha256": "a1b39d748c8ac4b278478192bf53ade2e7e173cbf7eb66bc9736e1db2a5e3a9b",
+        "source_sha256": "7ca08e33e6ac9dfde6c0b658877c10da6dc7f797040244ab45f37517900eae5e",
+        "source_revision": "9c73a630ce05bea062ec889b188f5105c0afb796",
+        "named_instances": 2,
+        "exact_frozen_source_restored": true,
+        "exact_original_source_restored": true
+      },
+      "H0mework.Versions.R9c73a630.ReleaseMaterials.Scratch.LowEnergyRetardedCouncil.NamedColorQtNext.Charge.MixedSpectatorSpin": {
+        "old_target_sha256": "9f2ecae3e790954d4fd4cd2941996d37c552a82d2f50434bebbbd4f1fbcb1c0c",
+        "target_sha256": "d751a1f0ed972470e651f1b1b0b67b625f27c8fd21db2a941273ceed4bf859cc",
+        "source_sha256": "bd033826302f7a9f51ad5855579d4bafb63fa665be4ce84b19030960bafba797",
+        "source_revision": "9c73a630ce05bea062ec889b188f5105c0afb796",
+        "named_instances": 2,
+        "exact_frozen_source_restored": true,
+        "exact_original_source_restored": true
+      }
+    },
+    "preserved_source_files": {
+      "Lean/H0mework/Versions/R71e/ReleaseMaterials/Physics/LowEnergyPhenomenology/ExternalCompositeDecay/MixedSpectatorYukawaColumn.lean": "8c063ed9ce856ce8a9e1dd5a3df822cf1501df4185c0c76d84c66f0c32453de5",
+      "Lean/H0mework/Versions/R71e/ReleaseMaterials/Physics/LowEnergyPhenomenology/ExternalCompositeDecay/MixedSpectatorYukawaMatrix.lean": "53959a929017827cf0bc36b26847724255bb229d740d4615f4c0ecd2ffeea016",
+      "Lean/H0mework/Versions/R9c73a630/ReleaseMaterials/Scratch/LowEnergyRetardedCouncil/NamedColorQtNext/Charge/ActualMotherTripleGram.lean": "a0b105fbf422331da8fd45662e538b0cca24c0df2ce90625fd2f51c82aec64ff",
+      "Lean/H0mework/Versions/R9c73a630/ReleaseMaterials/Scratch/LowEnergyRetardedCouncil/NamedColorQtNext/Charge/MixedSpectatorCanonical79Exchange.lean": "3f8d35da82ff633b29b043b5319f7e9ef9e14aad7c5579bb4c434003e5ebb069",
+      "Lean/H0mework/Versions/R9c73a630/ReleaseMaterials/Scratch/LowEnergyRetardedCouncil/NamedColorQtNext/Charge/MixedSpectatorContactExchange.lean": "e25f468cec2d5d4bad3b7691ada6520ef51d686899bf593908a255f05edf43b4",
+      "Lean/H0mework/Versions/R9c73a630/ReleaseMaterials/Scratch/LowEnergyRetardedCouncil/NamedColorQtNext/Charge/MixedSpectatorContactVertices.lean": "cf751652e5890ad18938a4e472a876488889e78fc28f6921695a94ec11a75b07",
+      "Lean/H0mework/Versions/R9c73a630/ReleaseMaterials/Scratch/LowEnergyRetardedCouncil/NamedColorQtNext/Charge/MixedSpectatorDual24Exchange.lean": "187d523944d26b86ab52c4085ab9762d1f00525f764babb04c534b738806927d",
+      "Lean/H0mework/Versions/R9c73a630/ReleaseMaterials/Scratch/LowEnergyRetardedCouncil/NamedColorQtNext/Charge/MixedSpectatorScalar61Exchange.lean": "4db6400b7e351d801898ce4feb744f05be1c41c5176b9845bfb203a63faf93dd"
+    },
+    "mathematical_bytes_changed": 0
+  },
+  "current_ci_reference_run": 37981352421,
+  "current_ci_reference_part_fields_identical": 42,
+  "stage8_deltas": {
+    "s8-01": {
+      "fingerprint": {
+        "old": "1535a5d2beb4ca21965486c8c551c546602a1b4f8a2b16912ec1c173dd65e465",
+        "current": "b9a8d820c31dbea6529c2209309c43589d5ff5406c4f68ac8de0e8c6f2a2a67b"
+      },
+      "targets": {
+        "old": [
+          "+H0mework.Papers.LowEnergyL18L20E055",
+          "+H0mework.Papers.LowEnergyL21L23E055",
+          "+H0mework.Papers.LowEnergyL24L25C62",
+          "+H0mework.Papers.LowEnergyL26ActionClock71e",
+          "+H0mework.Papers.LowEnergyL27NewtonDressing71eRelease",
+          "+H0mework.Papers.LowEnergyQ6ActualNoetherF13ed87d",
+          "+H0mework.Papers.LowEnergyQ6ActualPencilC015842c",
+          "+H0mework.Papers.SecondEditionPhysicsPreparedActual",
+          "+H0mework.Papers.SecondEditionPhysicsSignalField"
+        ],
+        "current": [
+          "+H0mework.Papers.LowEnergyL18L20E055",
+          "+H0mework.Papers.LowEnergyL21L23E055",
+          "+H0mework.Papers.LowEnergyL24L25C62",
+          "+H0mework.Papers.LowEnergyL26ActionClock71e",
+          "+H0mework.Papers.LowEnergyL27NewtonDressing71eRelease",
+          "+H0mework.Papers.LowEnergyQ6ActualNoetherF13ed87d",
+          "+H0mework.Papers.LowEnergyQ6ActualPencilC015842c",
+          "+H0mework.Papers.SecondEditionPhysicsPreparedActual",
+          "+H0mework.Papers.SecondEditionPhysicsSignalField",
+          "+H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualChargedIdentityAuditProductionConsumers",
+          "+H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualCompositeCoulombDressingAuditProductionConsumers",
+          "+H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualDressedCoulombAuditProductionConsumers",
+          "+H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualDressedNoetherAuditProductionConsumers",
+          "+H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualDressedReaderMatchingAuditProductionConsumers",
+          "+H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualDressedSignalAuditProductionConsumers",
+          "+H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualDressedSignalPencilAuditProductionConsumers",
+          "+H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualDressedSourceAuditProductionConsumers",
+          "+H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualDressedTemporalNormalizationAuditProductionConsumers",
+          "+H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualEMDressedGaugePoleAuditProductionConsumers",
+          "+H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualEMMovingCoulombAuditProductionConsumers",
+          "+H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualEMNewtonConvolutionAuditProductionConsumers"
+        ]
+      },
+      "solo": {
+        "old": [
+          "H0mework.Versions.E055.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalSourcePropagationNativeGravityScalarReturn",
+          "H0mework.Versions.C62.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalSourcePropagationNativeGravityScalarReturn",
+          "H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalSourcePropagationNativeGravityScalarReturn",
+          "H0mework.Versions.Rf13ed87d.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalSourcePropagationNativeGravityScalarReturn",
+          "H0mework.Versions.Rc015842c.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalSourcePropagationNativeGravityScalarReturn"
+        ],
+        "current": [
+          "H0mework.Versions.E055.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalSourcePropagationNativeGravityScalarReturn",
+          "H0mework.Versions.E055.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalSourcePropagationNativeOriginalDictionaryIdentity",
+          "H0mework.Versions.C62.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalSourcePropagationNativeGravityScalarReturn",
+          "H0mework.Versions.C62.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalSourcePropagationNativeOriginalDictionaryIdentity",
+          "H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalSourcePropagationNativeGravityScalarReturn",
+          "H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalSourcePropagationNativeOriginalDictionaryIdentity",
+          "H0mework.Versions.Rf13ed87d.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalSourcePropagationNativeGravityScalarReturn",
+          "H0mework.Versions.Rf13ed87d.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalSourcePropagationNativeOriginalDictionaryIdentity",
+          "H0mework.Versions.Rc015842c.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalSourcePropagationNativeGravityScalarReturn",
+          "H0mework.Versions.Rc015842c.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalSourcePropagationNativeOriginalDictionaryIdentity"
+        ]
+      }
+    },
+    "s8-02": {
+      "fingerprint": {
+        "old": "2121982ba638baf889dbc099830e96c131acd75d615a3460c6d66711d6d9271d",
+        "current": "70579405ef41680fca3b5b9db04d99f31779fedd1dc1ae82be3565923e300a0a"
+      },
+      "solo": {
+        "old": [
+          "H0mework.Versions.R3bbcbd59.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalSourcePropagationNativeGravityScalarReturn"
+        ],
+        "current": [
+          "H0mework.Versions.R3bbcbd59.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalSourcePropagationNativeGravityScalarReturn",
+          "H0mework.Versions.R3bbcbd59.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalSourcePropagationNativeOriginalDictionaryIdentity"
+        ]
+      }
+    }
+  },
+  "stage9_parts": {
+    "s9-01": {
+      "fingerprint": "cd505e1fa572ebec6f25ed1268702b1d5e78db188d7f94c3cfce8f7a219cb9d1",
+      "modules": 2090
+    },
+    "s9-02": {
+      "fingerprint": "f4c96a784158fe583c8c6d3af0664e821467554c5fd56df2c98e6d9be666ad99",
+      "modules": 13476
+    }
+  }
+}

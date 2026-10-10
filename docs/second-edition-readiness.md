@@ -10,6 +10,8 @@
 
 9c73 的 same-event-feedback、type-completion、full-stock-next 已独立构建及完整审查，分别覆盖 176／232／508 根，执行输入与 HEAD 前后一致。Type 覆盖 73,337 常量、2,047,952 依赖边；三包当前完整来源范围与实际回执一致，正式登记到第二版地图。
 
+71e 的 charged-transfer 已独立构建及完整审查，覆盖 78 根、129,502 常量、3,449,931 依赖边，完整元数据与 Std3／unsafe0／partial0。稳定 `c762e7806b91e721d86e0938666e413765e6029a` 的执行输入前后一致，源码范围与当前包相同；原长构建的实际全局身份变化及其已支付对象分别保留。
+
 低能 13 个科学消费范围已签收：五项原消费者实际重放，八项继承固定原认证。Bell 三项消费者重放与完整比较通过，30 件冻结输入共 1,143,760,250 字节按原 SHA 恢复。两稿的[成品快照](../papers/low-energy-first-release/2026-10-09/README.md)保留四份双语 PDF、两个可编辑 ZIP 与原解包字节。
 
 固定 9c73 八个 intake 的完整材料已提交为 `53779d64cf2215f87db80bbe59d8a98d4928e127`：新增 15,554 个源、728 件工件和 12 个聚合入口。真实 `make check-map` 通过 47,737 个逻辑源码视图，生产、消费者与资源身份缺项为零。CPS1 原 LAlanine／临床依赖与固定 Physlib 63 模块随完整闭包接入。
@@ -18,7 +20,7 @@
 
 原计算读口、receiver 费用、factory 生成环境与有限 Incoming 已对齐；稳定合同见[源与环境接口](source-action-environment.md)。完整递归签名相同的视图共享声明 owner，同时精确恢复各原路径与原 SHA。
 
-GSR 稀疏证明保留原定理及 kernel 检查，降低实际编译内存，九份旧副本的来源、内存调度与受影响包重验已同步。动态私有 owner 按真实环境定位；Jets／DiracRay 三类局部实例精确命名；prepared Ward 直接消费同一算子恒等式与实际左右 leg。原陈述、类型、数值、证明责任和预算保持，完整逆验与独立消费者通过。机制只在[证明构建适配](proof-build-adaptations.md)详述。
+GSR 稀疏证明保留原定理及 kernel 检查，降低实际编译内存，九份旧副本的来源、内存调度与受影响包重验已同步。动态私有 owner 按真实环境定位；Jets／DiracRay 及同 namespace 的 charged 局部实例精确命名；prepared Ward 直接消费同一算子恒等式与实际左右 leg。原陈述、类型、数值、证明责任和预算保持，完整逆验与独立消费者通过。机制只在[证明构建适配](proof-build-adaptations.md)详述。
 
 ## 当前最高杠杆的结构责任
 
@@ -26,9 +28,9 @@ GSR 稀疏证明保留原定理及 kernel 检查，降低实际编译内存，�
 
 九个低能新增包需正式收尾。已通过的 24 目标补建保留；六份 DiracRay 修复消除已确认的联合导入冲突。九包所选 55 个生产模块由 15 个最高原生消费者一次支付共享依赖，随后逐包实际构建与完整审查。旧 prepared／signal 主包及独立认证消费者四包消费同批共享产出。
 
-物理 charged-transfer 正在实际构建；六份 DiracRay 修复与其完整源码范围、runtime、Type、已签包及旧 42 片递归源码均不相交。新 9c73 四物理主包与两独立认证消费者继续验收，新 GSR 副本按原预算单独编译。原整批因身份变化未获整体签收的结果如实归档，已支付对象由新的稳定整包验收消费。
+新 9c73 四物理主包与两独立认证消费者继续验收。charged 的九个源／十一局部实例已修复联合导入重名；两原 owner、九个完整 canonical 源、原 Candidate／JointFacts 及完整联合 theorem 消费者共十四步实际通过。已命名的 Yukawa 源与六个其他 namespace 的局部实例保持。该修复与全部已签包、runtime、低能十五目标及正在构建的新 GSR 完整源码范围不相交，后续稳定整包验收消费现有对象。新 GSR 副本按原预算单独编译，长祖先保持原计算。原整批因身份变化未获整体签收的结果如实归档。
 
-远端 [CI 38012233973](https://github.com/Sapientropic/H0mework/actions/runs/38012233973) 已实际复用全部 41 个旧完整分片，附件 ID／大小／摘要保持；Bell、量子及冻结证据通过。真实规划 47 片与本地一致，阶段 1–7 的 42 片全部八字段和缓存键保持。s7 已实际构建成功，旧 42 片现全部具备完整存档；阶段 8 两片继续构建并保存进度。整轮通过后签收 CI。
+远端 [CI 38015786104](https://github.com/Sapientropic/H0mework/actions/runs/38015786104) 已实际复用全部 42 个旧完整分片，附件 ID／大小／摘要保持；Bell、量子、规划及冻结证据通过。真实规划 47 片与本地一致。九源修复后的实际规划继续保持阶段 1–8 的 44 片全部八字段与缓存键，只改变 s9-01 及总选集指纹。当前阶段 8 两片继续构建并保存进度；等待其缓存落稳后推送下一批，整轮通过后签收 CI。
 
 核心／物理第二版成品待写作侧 final；低能成品已完成，公开绑定待完整材料验收。成品按独立版本接入。
 
@@ -36,6 +38,8 @@ GSR 稀疏证明保留原定理及 kernel 检查，降低实际编译内存，�
 
 - 9c73 [same-event 构建](../evidence/second-edition/acceptance/core-9c73-same-event-build-20261010/result.json)／[审查](../evidence/second-edition/acceptance/core-9c73-same-event-trust-20261010/result.json)、[Type 构建](../evidence/second-edition/acceptance/core-9c73-type-completion-build-20261010/result.json)／[审查](../evidence/second-edition/acceptance/core-9c73-type-completion-trust-20261010/result.json)、[full-stock 构建](../evidence/second-edition/acceptance/core-9c73-full-stock-build-20261010/result.json)／[审查](../evidence/second-edition/acceptance/core-9c73-full-stock-trust-20261010/result.json)。
 - [低能 24 目标补建](../evidence/second-edition/acceptance/low-24-focused-build-20261010/result.json)、[独立 coframe／adjoint 消费者](../evidence/second-edition/acceptance/physics-direct-coframe-adjoint-build-20261010/result.json)及[Dirac／GSR 联合消费者](../evidence/second-edition/acceptance/dirac-ray-owner-consumer-compatibility-20261010/result.json)按各自实际范围签收；[原导入失败](../evidence/second-edition/acceptance/low-e055-selected-proof-failed-20261010/result.json)及[原三包身份变化批次](../evidence/second-edition/acceptance/core-9c73-three-package-drift-failed-20261010/result.json)保持原结果。
+- 71e charged [构建](../evidence/second-edition/acceptance/physics-charged-transfer-build-20261010/result.json)／[完整审查](../evidence/second-edition/acceptance/physics-charged-transfer-trust-20261010/result.json)、[原长构建身份变化](../evidence/second-edition/acceptance/physics-charged-transfer-drift-failed-20261010/result.json)及[新 9c73 十四步完整联合消费者](../evidence/second-edition/acceptance/physics-new9-instance-consumer-compatibility-20261010/result.json)均保留原执行与源码。
+- [当前 CI 真实规划](../evidence/second-edition/acceptance/ci-actual-plan-38015786104-20261010.json)、[科学回执复用](../evidence/second-edition/acceptance/ci-scientific-reuse-38015786104-20261010.json)、[42 片实际完整复用](../evidence/second-edition/acceptance/ci-old42-reuse-38015786104-20261010.json)及[九源修复后阶段 1–8 保持](../evidence/second-edition/acceptance/cache-preservation-new9-actual-ci-20261010.json)。
 - [完整材料落地](../evidence/second-edition/acceptance/fixed-cap-9c73-material-apply-20261010.json)、[11 源修复缓存核验](../evidence/second-edition/acceptance/cache-preservation-coframe-ward-20261010.json)、[远端真实规划](../evidence/second-edition/acceptance/ci-actual-plan-38012233973-20261010.json)、[41 片实际复用](../evidence/second-edition/acceptance/ci-old41-reuse-38012233973-20261010.json)及[s7 完整存档](../evidence/second-edition/acceptance/ci-s7-complete-38012233973-20261010.json)。超限日志、引用及未推送历史已修复并推送，[原执行标签](../evidence/second-edition/acceptance/local-history-rewrite-20261010.json)保留。
 
 最终验收是两份 `verify-map --require-ready`、[四篇论文实际构建／审查](edition-reproduction.md)、有限成品交接及实际提交的远端 CI 成功。

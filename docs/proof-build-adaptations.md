@@ -18,6 +18,8 @@
 
 `local_instance_names` 给匿名局部实例显式、唯一的名称，保持类型、值和证明正文。Jets 或 DiracRay 与 GSR 共同导入时，`NormedAddCommGroup`、`SeminormedAddCommGroup`、`NormedSpace` 三类匿名实例都会产生同名声明，因此三类必须一并命名。DiracRay 六份晚期副本只命名这三类，其余四个局部实例保持原字节；四份已经命名的副本也保持原字节。原路径恢复时精确去除登记的名称。
 
+charged 的 `MixedSpectatorCandidate` 下各模块也会生成同名 `DecidableEq` 等局部实例，必须按真实联合进口一起命名。71e 的十一源／十五实例与 9c73 的九源／十一实例分别登记；后者复用已命名的两份 Yukawa owner，其余不同 namespace 的局部实例保持。命名规则由完整源码逆验及原联合 theorem 消费者核对，不扩大 source epoch 或改变证明预算。
+
 `private_owner_string_rewrites` 将执行中的 `.startsWith` 查询绑定到真实生产模块的完整私有 owner。登记区分带末尾点的 owner 与不带末尾点的 family 前缀；行数、后缀筛选和数学正文保持。只改唯一匹配的执行字符串，注释、与该调用无关的字符串及不匹配的长前缀不能命中。
 
 ## Prepared Ward

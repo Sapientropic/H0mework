@@ -1,0 +1,1067 @@
+{
+  "schema": "h0mework/private-new9-mixed-spectator-actual-source-scope-impact@1",
+  "formal_acceptance": false,
+  "observed_at": "2026-10-10T02:25:10.652561+00:00",
+  "candidate_plan_path": "evidence/second-edition/acceptance/physics-new9-instance-consumer-compatibility-20261010/plan/plan.json",
+  "candidate_plan_sha256": "066ed1cdaa8bf29e5e1fa2663eab5cda7a4e33eebf86077eca22450986ef4d15",
+  "inputs_unchanged": true,
+  "input_before": {
+    "head": "c762e7806b91e721d86e0938666e413765e6029a",
+    "files": {
+      ".github/workflows/ci.yml": "d9bd04032ea364b8b0a81630af515e82cbf7adc822a3033163c90c86da87ec55",
+      ".github/workflows/lean-part.yml": "8f7fa41d83f1dcffed057dae9ddf58700d606459fa89ce3aaa306186022af7c9",
+      "Lean/lake-manifest.json": "2fe02acc26899fd57d82018e711e79c251e26d0b6d2bb370af81db0ed312fbfd",
+      "Lean/lakefile.toml": "569a9b64188a28c7299cb6204068b4f6e72ce74cd257da0964f881821ecfa872",
+      "Lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+      "docs/first-release-map.json": "70a109c44e4fa0907f817e5ff7751029562415d82b0a1b48cb854053aeba78be",
+      "docs/low-energy-release-map.json": "ab316fcb61e2438740dc7c444a9eebb32355fbfa4501c89c93e0a673f684e8c4",
+      "docs/second-edition-map.json": "9073a2f0aa33e1890e9d5c7fe05f06580fbfd3a10e19ca1298be6bd6bc44e8e4",
+      "tools/ci_layout.tsv": "b976231de2c1622f513096ea2156f686c49149dbb94d8b334f64d603fd361ed8",
+      "tools/ci_memory.tsv": "3020a5796440139c2e2e28ca59bdcce7af2d7f9e5d6c4d29ec138de440b89cf0",
+      "tools/ci_plan.py": "503329e647183610f3ec289d7bb4c973c837c4fa50395af5e4aaea69e605a945",
+      "tools/ci_times.tsv": "c9d7f609aeee594c8deb7161f3c503fae6d8ce3b2af94607f06a8cb93abdbb14",
+      "tools/edition_release.py": "b92c17bd94f29e24693edd264b1da38036a66a249d658e5fc403c355a9207137",
+      "tools/export-map.json": "58f4bcc80ec20e9585ce353968047d966330d12f6af4c65bb785c262dc53c1df",
+      "tools/first_release.py": "3c8e5048474126dd59822f640e3256dc6a6d5d5bfc4bc63375d1e9a7f3631526",
+      "tools/publication.py": "449d283eff9c76073a98159eeb2884a4bcf313a8229d6a40baf22ba3f6d67ce1",
+      "tools/source_view.py": "4699138984c50041730853dd79d9cc4eb89493aeb126109a18cefc6b2c38ddf4"
+    }
+  },
+  "input_after": {
+    "head": "c762e7806b91e721d86e0938666e413765e6029a",
+    "files": {
+      ".github/workflows/ci.yml": "d9bd04032ea364b8b0a81630af515e82cbf7adc822a3033163c90c86da87ec55",
+      ".github/workflows/lean-part.yml": "8f7fa41d83f1dcffed057dae9ddf58700d606459fa89ce3aaa306186022af7c9",
+      "Lean/lake-manifest.json": "2fe02acc26899fd57d82018e711e79c251e26d0b6d2bb370af81db0ed312fbfd",
+      "Lean/lakefile.toml": "569a9b64188a28c7299cb6204068b4f6e72ce74cd257da0964f881821ecfa872",
+      "Lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+      "docs/first-release-map.json": "70a109c44e4fa0907f817e5ff7751029562415d82b0a1b48cb854053aeba78be",
+      "docs/low-energy-release-map.json": "ab316fcb61e2438740dc7c444a9eebb32355fbfa4501c89c93e0a673f684e8c4",
+      "docs/second-edition-map.json": "9073a2f0aa33e1890e9d5c7fe05f06580fbfd3a10e19ca1298be6bd6bc44e8e4",
+      "tools/ci_layout.tsv": "b976231de2c1622f513096ea2156f686c49149dbb94d8b334f64d603fd361ed8",
+      "tools/ci_memory.tsv": "3020a5796440139c2e2e28ca59bdcce7af2d7f9e5d6c4d29ec138de440b89cf0",
+      "tools/ci_plan.py": "503329e647183610f3ec289d7bb4c973c837c4fa50395af5e4aaea69e605a945",
+      "tools/ci_times.tsv": "c9d7f609aeee594c8deb7161f3c503fae6d8ce3b2af94607f06a8cb93abdbb14",
+      "tools/edition_release.py": "b92c17bd94f29e24693edd264b1da38036a66a249d658e5fc403c355a9207137",
+      "tools/export-map.json": "58f4bcc80ec20e9585ce353968047d966330d12f6af4c65bb785c262dc53c1df",
+      "tools/first_release.py": "3c8e5048474126dd59822f640e3256dc6a6d5d5bfc4bc63375d1e9a7f3631526",
+      "tools/publication.py": "449d283eff9c76073a98159eeb2884a4bcf313a8229d6a40baf22ba3f6d67ce1",
+      "tools/source_view.py": "4699138984c50041730853dd79d9cc4eb89493aeb126109a18cefc6b2c38ddf4"
+    }
+  },
+  "candidate_paths": [
+    "Lean/H0mework/Versions/R9c73a630/ReleaseMaterials/Scratch/LowEnergyRetardedCouncil/NamedColorQtNext/Charge/MixedSpectatorCAR.lean",
+    "Lean/H0mework/Versions/R9c73a630/ReleaseMaterials/Scratch/LowEnergyRetardedCouncil/NamedColorQtNext/Charge/MixedSpectatorColorAction.lean",
+    "Lean/H0mework/Versions/R9c73a630/ReleaseMaterials/Scratch/LowEnergyRetardedCouncil/NamedColorQtNext/Charge/MixedSpectatorColorColumns.lean",
+    "Lean/H0mework/Versions/R9c73a630/ReleaseMaterials/Scratch/LowEnergyRetardedCouncil/NamedColorQtNext/Charge/MixedSpectatorColorMatrix.lean",
+    "Lean/H0mework/Versions/R9c73a630/ReleaseMaterials/Scratch/LowEnergyRetardedCouncil/NamedColorQtNext/Charge/MixedSpectatorExchangeSelection.lean",
+    "Lean/H0mework/Versions/R9c73a630/ReleaseMaterials/Scratch/LowEnergyRetardedCouncil/NamedColorQtNext/Charge/MixedSpectatorGram.lean",
+    "Lean/H0mework/Versions/R9c73a630/ReleaseMaterials/Scratch/LowEnergyRetardedCouncil/NamedColorQtNext/Charge/MixedSpectatorOccupation.lean",
+    "Lean/H0mework/Versions/R9c73a630/ReleaseMaterials/Scratch/LowEnergyRetardedCouncil/NamedColorQtNext/Charge/MixedSpectatorPhaseCharge.lean",
+    "Lean/H0mework/Versions/R9c73a630/ReleaseMaterials/Scratch/LowEnergyRetardedCouncil/NamedColorQtNext/Charge/MixedSpectatorSpin.lean"
+  ],
+  "package_intersections": [
+    {
+      "map": "docs/second-edition-map.json",
+      "package": "v2-core-action-reader",
+      "kernel": "passed",
+      "lean_target": "H0mework.Papers.V2CoreActionReader",
+      "scope_modules": 922,
+      "source_scope_sha256": "86c10316587550d1ad1bbbaae1f98e8bae7f8bf3a2bb669c78a425907131713b",
+      "registered_build_source_scope_sha256": "86c10316587550d1ad1bbbaae1f98e8bae7f8bf3a2bb669c78a425907131713b",
+      "matches_registered_digest": true,
+      "candidate_intersections": []
+    },
+    {
+      "map": "docs/second-edition-map.json",
+      "package": "v2-core-difference-feedback",
+      "kernel": "passed",
+      "lean_target": "H0mework.Papers.V2CoreDifferenceFeedback",
+      "scope_modules": 835,
+      "source_scope_sha256": "7c2d202c7b94c329d2ff80ba2b78b28f6c14db2b71dee06af8c1fd6b7d380745",
+      "registered_build_source_scope_sha256": "7c2d202c7b94c329d2ff80ba2b78b28f6c14db2b71dee06af8c1fd6b7d380745",
+      "matches_registered_digest": true,
+      "candidate_intersections": []
+    },
+    {
+      "map": "docs/second-edition-map.json",
+      "package": "v2-core-completion",
+      "kernel": "passed",
+      "lean_target": "H0mework.Papers.V2CoreCompletion",
+      "scope_modules": 551,
+      "source_scope_sha256": "b6a7e0340474ad8ad4bdbff1b4d6728a3d609330605ead7745943a0988a2c6fb",
+      "registered_build_source_scope_sha256": "b6a7e0340474ad8ad4bdbff1b4d6728a3d609330605ead7745943a0988a2c6fb",
+      "matches_registered_digest": true,
+      "candidate_intersections": []
+    },
+    {
+      "map": "docs/second-edition-map.json",
+      "package": "v2-core-full-stock",
+      "kernel": "passed",
+      "lean_target": "H0mework.Papers.V2CoreFullStock",
+      "scope_modules": 779,
+      "source_scope_sha256": "85244d68ecc8dfe2a24a2140c39b15ce5da1a6d35f74ed51c4c8c24a81d014f4",
+      "registered_build_source_scope_sha256": "85244d68ecc8dfe2a24a2140c39b15ce5da1a6d35f74ed51c4c8c24a81d014f4",
+      "matches_registered_digest": true,
+      "candidate_intersections": []
+    },
+    {
+      "map": "docs/second-edition-map.json",
+      "package": "v2-core-runtime-calculation",
+      "kernel": "passed",
+      "lean_target": "H0mework.Papers.V2CoreRuntimeCalculation",
+      "scope_modules": 802,
+      "source_scope_sha256": "c4f55cab577948aff72afbdafdbea94b9c328f2ddf529fc08015b1d8ab880602",
+      "registered_build_source_scope_sha256": "c4f55cab577948aff72afbdafdbea94b9c328f2ddf529fc08015b1d8ab880602",
+      "matches_registered_digest": true,
+      "candidate_intersections": []
+    },
+    {
+      "map": "docs/second-edition-map.json",
+      "package": "second-edition-physics-prepared-actual",
+      "kernel": null,
+      "lean_target": "H0mework.Papers.SecondEditionPhysicsPreparedActual",
+      "scope_modules": 5281,
+      "source_scope_sha256": "22a71b340e80f59fc65455d82aa304106947a40b394178073774565cf8c6dfc2",
+      "registered_build_source_scope_sha256": null,
+      "matches_registered_digest": null,
+      "candidate_intersections": []
+    },
+    {
+      "map": "docs/second-edition-map.json",
+      "package": "second-edition-physics-signal-field",
+      "kernel": null,
+      "lean_target": "H0mework.Papers.SecondEditionPhysicsSignalField",
+      "scope_modules": 5185,
+      "source_scope_sha256": "74284547ebb74eb61dee5d7f883ccdb36d866b4f1c30620b9cc054c2c6893155",
+      "registered_build_source_scope_sha256": null,
+      "matches_registered_digest": null,
+      "candidate_intersections": []
+    },
+    {
+      "map": "docs/second-edition-map.json",
+      "package": "second-edition-physics-charged-transfer",
+      "kernel": null,
+      "lean_target": "H0mework.Papers.SecondEditionPhysicsChargedTransfer",
+      "scope_modules": 2772,
+      "source_scope_sha256": "4fcffa8d99357e739ecee856d3df6f5819cb580e1390621bd25f4e4abcecdc84",
+      "registered_build_source_scope_sha256": null,
+      "matches_registered_digest": null,
+      "candidate_intersections": []
+    },
+    {
+      "map": "docs/second-edition-map.json",
+      "package": "second-edition-physics-registered-forcing",
+      "kernel": "passed",
+      "lean_target": "H0mework.Papers.SecondEditionPhysicsRegisteredForcing",
+      "scope_modules": 4,
+      "source_scope_sha256": "da0466d79015e8d0de54ad13d685204ca90727c3df821d60a015a45f083a32e0",
+      "registered_build_source_scope_sha256": "da0466d79015e8d0de54ad13d685204ca90727c3df821d60a015a45f083a32e0",
+      "matches_registered_digest": true,
+      "candidate_intersections": []
+    },
+    {
+      "map": "docs/second-edition-map.json",
+      "package": "v2-9c73-same-event-feedback",
+      "kernel": "passed",
+      "lean_target": "H0mework.Papers.SecondEdition9c73SameEventFeedback",
+      "scope_modules": 1474,
+      "source_scope_sha256": "def53024bf85736ac87b6d1a9f68427f7af9e994de1289c78a0af6c1ba603658",
+      "registered_build_source_scope_sha256": "def53024bf85736ac87b6d1a9f68427f7af9e994de1289c78a0af6c1ba603658",
+      "matches_registered_digest": true,
+      "candidate_intersections": []
+    },
+    {
+      "map": "docs/second-edition-map.json",
+      "package": "v2-9c73-type-completion",
+      "kernel": "passed",
+      "lean_target": "H0mework.Papers.SecondEdition9c73TypeCompletion",
+      "scope_modules": 1407,
+      "source_scope_sha256": "1db53fa24cb08eed702437b3d63760d608e03d8e9950dbcf265e92b647e48490",
+      "registered_build_source_scope_sha256": "1db53fa24cb08eed702437b3d63760d608e03d8e9950dbcf265e92b647e48490",
+      "matches_registered_digest": true,
+      "candidate_intersections": []
+    },
+    {
+      "map": "docs/second-edition-map.json",
+      "package": "v2-9c73-full-stock-next",
+      "kernel": "passed",
+      "lean_target": "H0mework.Papers.SecondEdition9c73FullStockNext",
+      "scope_modules": 1408,
+      "source_scope_sha256": "4d74abbb5a6fa7a35453816d985852c4f9c82d0a5446aa99c26c97052bf82a8b",
+      "registered_build_source_scope_sha256": "4d74abbb5a6fa7a35453816d985852c4f9c82d0a5446aa99c26c97052bf82a8b",
+      "matches_registered_digest": true,
+      "candidate_intersections": []
+    },
+    {
+      "map": "docs/second-edition-map.json",
+      "package": "v2-9c73-runtime-calculation",
+      "kernel": "pending",
+      "lean_target": "H0mework.Papers.SecondEdition9c73RuntimeCalculation",
+      "scope_modules": 18240,
+      "source_scope_sha256": "8ad299861a9d6cfb166e7983c1aab874f17f3316fc50d664407400b4839c3db2",
+      "registered_build_source_scope_sha256": null,
+      "matches_registered_digest": null,
+      "candidate_intersections": []
+    },
+    {
+      "map": "docs/second-edition-map.json",
+      "package": "v2-9c73-prepared-actual",
+      "kernel": "pending",
+      "lean_target": "H0mework.Papers.SecondEdition9c73PreparedActual",
+      "scope_modules": 5243,
+      "source_scope_sha256": "74a7647bd4e9a847937aa9e41e113abd816bae9a3e5ac9530b96814ad16809ec",
+      "registered_build_source_scope_sha256": null,
+      "matches_registered_digest": null,
+      "candidate_intersections": []
+    },
+    {
+      "map": "docs/second-edition-map.json",
+      "package": "v2-9c73-signal-field",
+      "kernel": "pending",
+      "lean_target": "H0mework.Papers.SecondEdition9c73SignalField",
+      "scope_modules": 5350,
+      "source_scope_sha256": "1eb92c0eff54c42d55575d958d48aa0558015698d675061073f3c04dfec94ee3",
+      "registered_build_source_scope_sha256": null,
+      "matches_registered_digest": null,
+      "candidate_intersections": []
+    },
+    {
+      "map": "docs/second-edition-map.json",
+      "package": "v2-9c73-charged-transfer",
+      "kernel": "pending",
+      "lean_target": "H0mework.Papers.SecondEdition9c73ChargedTransfer",
+      "scope_modules": 3191,
+      "source_scope_sha256": "d2f0a2c40c17a1959a49970a9feba1f8fabac3ad6473a1017a70752529e2d476",
+      "registered_build_source_scope_sha256": null,
+      "matches_registered_digest": null,
+      "candidate_intersections": [
+        "Lean/H0mework/Versions/R9c73a630/ReleaseMaterials/Scratch/LowEnergyRetardedCouncil/NamedColorQtNext/Charge/MixedSpectatorCAR.lean",
+        "Lean/H0mework/Versions/R9c73a630/ReleaseMaterials/Scratch/LowEnergyRetardedCouncil/NamedColorQtNext/Charge/MixedSpectatorColorAction.lean",
+        "Lean/H0mework/Versions/R9c73a630/ReleaseMaterials/Scratch/LowEnergyRetardedCouncil/NamedColorQtNext/Charge/MixedSpectatorColorColumns.lean",
+        "Lean/H0mework/Versions/R9c73a630/ReleaseMaterials/Scratch/LowEnergyRetardedCouncil/NamedColorQtNext/Charge/MixedSpectatorColorMatrix.lean",
+        "Lean/H0mework/Versions/R9c73a630/ReleaseMaterials/Scratch/LowEnergyRetardedCouncil/NamedColorQtNext/Charge/MixedSpectatorExchangeSelection.lean",
+        "Lean/H0mework/Versions/R9c73a630/ReleaseMaterials/Scratch/LowEnergyRetardedCouncil/NamedColorQtNext/Charge/MixedSpectatorGram.lean",
+        "Lean/H0mework/Versions/R9c73a630/ReleaseMaterials/Scratch/LowEnergyRetardedCouncil/NamedColorQtNext/Charge/MixedSpectatorOccupation.lean",
+        "Lean/H0mework/Versions/R9c73a630/ReleaseMaterials/Scratch/LowEnergyRetardedCouncil/NamedColorQtNext/Charge/MixedSpectatorPhaseCharge.lean",
+        "Lean/H0mework/Versions/R9c73a630/ReleaseMaterials/Scratch/LowEnergyRetardedCouncil/NamedColorQtNext/Charge/MixedSpectatorSpin.lean"
+      ]
+    },
+    {
+      "map": "docs/second-edition-map.json",
+      "package": "v2-9c73-registered-forcing",
+      "kernel": "pending",
+      "lean_target": "H0mework.Papers.SecondEdition9c73RegisteredForcing",
+      "scope_modules": 4,
+      "source_scope_sha256": "316de75dc1c8e7d2a1a356431ab715af33566d1383040f1f379bead28b0a2485",
+      "registered_build_source_scope_sha256": null,
+      "matches_registered_digest": null,
+      "candidate_intersections": []
+    },
+    {
+      "map": "docs/second-edition-map.json",
+      "package": "second-edition-physics-prepared-actual-certification-consumers",
+      "kernel": null,
+      "lean_target": "H0mework.Papers.SecondEditionPhysicsPreparedActualCertificationConsumers",
+      "scope_modules": 5257,
+      "source_scope_sha256": "668a15a7bbf81c39b141e60bdeb547f4ad49b10913cd1260bf279a4addee49d5",
+      "registered_build_source_scope_sha256": null,
+      "matches_registered_digest": null,
+      "candidate_intersections": []
+    },
+    {
+      "map": "docs/second-edition-map.json",
+      "package": "second-edition-physics-signal-field-certification-consumers",
+      "kernel": null,
+      "lean_target": "H0mework.Papers.SecondEditionPhysicsSignalFieldCertificationConsumers",
+      "scope_modules": 5185,
+      "source_scope_sha256": "cede5c5723ef53abe593ed06926cdac648dbb4eb50ddac628a937dc8c960b847",
+      "registered_build_source_scope_sha256": null,
+      "matches_registered_digest": null,
+      "candidate_intersections": []
+    },
+    {
+      "map": "docs/second-edition-map.json",
+      "package": "v2-9c73-prepared-actual-certification-consumers",
+      "kernel": "pending",
+      "lean_target": "H0mework.Papers.SecondEdition9c73PreparedActualCertificationConsumers",
+      "scope_modules": 5180,
+      "source_scope_sha256": "ab95a4771833c9a30a0e89b5e4fd61d6f40e72acd11a404e2e8321fd6c71b74d",
+      "registered_build_source_scope_sha256": null,
+      "matches_registered_digest": null,
+      "candidate_intersections": []
+    },
+    {
+      "map": "docs/second-edition-map.json",
+      "package": "v2-9c73-signal-field-certification-consumers",
+      "kernel": "pending",
+      "lean_target": "H0mework.Papers.SecondEdition9c73SignalFieldCertificationConsumers",
+      "scope_modules": 5350,
+      "source_scope_sha256": "17bd8d57232e1d3716331c9dc3ea8bbbe0c5e113cd5ce446402791ffcf5bf09d",
+      "registered_build_source_scope_sha256": null,
+      "matches_registered_digest": null,
+      "candidate_intersections": []
+    },
+    {
+      "map": "docs/low-energy-release-map.json",
+      "package": "low-energy-phenomenology",
+      "kernel": "passed",
+      "lean_target": "H0mework.Papers.LowEnergyPhenomenology",
+      "scope_modules": 2187,
+      "source_scope_sha256": "414cb8c7c74ff810f5e2a7bc3e1715e68da3e17242fec0c695ac13ca482b9625",
+      "registered_build_source_scope_sha256": "414cb8c7c74ff810f5e2a7bc3e1715e68da3e17242fec0c695ac13ca482b9625",
+      "matches_registered_digest": true,
+      "candidate_intersections": []
+    },
+    {
+      "map": "docs/low-energy-release-map.json",
+      "package": "low-energy-l18-l20-e055",
+      "kernel": "pending",
+      "lean_target": "H0mework.Papers.LowEnergyL18L20E055",
+      "scope_modules": 5083,
+      "source_scope_sha256": "c14e47b6ba4d3d8fac7f0fae09ddc34c1ef6c7337eccc54bb219fc5419c66aa2",
+      "registered_build_source_scope_sha256": null,
+      "matches_registered_digest": null,
+      "candidate_intersections": []
+    },
+    {
+      "map": "docs/low-energy-release-map.json",
+      "package": "low-energy-l21-l23-e055",
+      "kernel": "pending",
+      "lean_target": "H0mework.Papers.LowEnergyL21L23E055",
+      "scope_modules": 5077,
+      "source_scope_sha256": "af91996185d92aa9f50cac55a57bbf4ed13280e49b5f271114052e31e3a09bd4",
+      "registered_build_source_scope_sha256": null,
+      "matches_registered_digest": null,
+      "candidate_intersections": []
+    },
+    {
+      "map": "docs/low-energy-release-map.json",
+      "package": "low-energy-l24-l25-c62",
+      "kernel": "pending",
+      "lean_target": "H0mework.Papers.LowEnergyL24L25C62",
+      "scope_modules": 5082,
+      "source_scope_sha256": "681001a04d49e891002ced235dfdaf27f3da4712a4d934854b37d103f3529914",
+      "registered_build_source_scope_sha256": null,
+      "matches_registered_digest": null,
+      "candidate_intersections": []
+    },
+    {
+      "map": "docs/low-energy-release-map.json",
+      "package": "low-energy-l26-action-clock-71e",
+      "kernel": "pending",
+      "lean_target": "H0mework.Papers.LowEnergyL26ActionClock71e",
+      "scope_modules": 5154,
+      "source_scope_sha256": "b27569ee32d77ba6fbc507985e73f6951af50a218e0fc62d498fdec1e383508e",
+      "registered_build_source_scope_sha256": null,
+      "matches_registered_digest": null,
+      "candidate_intersections": []
+    },
+    {
+      "map": "docs/low-energy-release-map.json",
+      "package": "low-energy-l27-newton-71e",
+      "kernel": "pending",
+      "lean_target": "H0mework.Papers.LowEnergyL27NewtonDressing71eRelease",
+      "scope_modules": 5242,
+      "source_scope_sha256": "143ea4fc0cfde78f6de3ea941edee20ccbe3e67b7adacf3a0aa1b061a1123557",
+      "registered_build_source_scope_sha256": null,
+      "matches_registered_digest": null,
+      "candidate_intersections": []
+    },
+    {
+      "map": "docs/low-energy-release-map.json",
+      "package": "low-energy-l28-born-71e",
+      "kernel": "pending",
+      "lean_target": "H0mework.Papers.LowEnergyL28Born71e",
+      "scope_modules": 5208,
+      "source_scope_sha256": "69344b355915b257bcdbd5bd32a81465d1e3fda5f98bbcedef3ea9ac6bb449d5",
+      "registered_build_source_scope_sha256": null,
+      "matches_registered_digest": null,
+      "candidate_intersections": []
+    },
+    {
+      "map": "docs/low-energy-release-map.json",
+      "package": "low-energy-q3-materials-t",
+      "kernel": "passed",
+      "lean_target": "H0mework.Papers.LowEnergyQ3MaterialsT",
+      "scope_modules": 1010,
+      "source_scope_sha256": "176ce6fac4e575ed7f8b63b6dc7a7322589e96f0ab83cb48cc6a081fa6fd54cb",
+      "registered_build_source_scope_sha256": "176ce6fac4e575ed7f8b63b6dc7a7322589e96f0ab83cb48cc6a081fa6fd54cb",
+      "matches_registered_digest": true,
+      "candidate_intersections": []
+    },
+    {
+      "map": "docs/low-energy-release-map.json",
+      "package": "low-energy-q6-source-unit-3bbcbd59",
+      "kernel": "pending",
+      "lean_target": "H0mework.Papers.LowEnergyQ6SourceUnit3bbcbd59",
+      "scope_modules": 4924,
+      "source_scope_sha256": "cb9a4fae007bc9588aed2fc8ef95ccfdce43d9459e40684b6002fb51f6251cd1",
+      "registered_build_source_scope_sha256": null,
+      "matches_registered_digest": null,
+      "candidate_intersections": []
+    },
+    {
+      "map": "docs/low-energy-release-map.json",
+      "package": "low-energy-q6-actual-noether-f13ed87d",
+      "kernel": "pending",
+      "lean_target": "H0mework.Papers.LowEnergyQ6ActualNoetherF13ed87d",
+      "scope_modules": 5148,
+      "source_scope_sha256": "0ebb40f59097d8428ef16e8d7ad069bce4d7355af15a95ad964b1551d037b94b",
+      "registered_build_source_scope_sha256": null,
+      "matches_registered_digest": null,
+      "candidate_intersections": []
+    },
+    {
+      "map": "docs/low-energy-release-map.json",
+      "package": "low-energy-q6-actual-pencil-c015842c",
+      "kernel": "pending",
+      "lean_target": "H0mework.Papers.LowEnergyQ6ActualPencilC015842c",
+      "scope_modules": 5153,
+      "source_scope_sha256": "3c9d6847d67fc84a4f1697645bbeb4bfeb1e0d91c23e696e35d89625bad0998f",
+      "registered_build_source_scope_sha256": null,
+      "matches_registered_digest": null,
+      "candidate_intersections": []
+    },
+    {
+      "map": "docs/low-energy-release-map.json",
+      "package": "low-energy-loop-response",
+      "kernel": "passed",
+      "lean_target": "H0mework.Papers.LowEnergyLoopResponse",
+      "scope_modules": 2386,
+      "source_scope_sha256": "d0f24c2b22dd4dcc40d0c44273a7e7806c4a2176a9fdf2e6bd9269e12a913765",
+      "registered_build_source_scope_sha256": "d0f24c2b22dd4dcc40d0c44273a7e7806c4a2176a9fdf2e6bd9269e12a913765",
+      "matches_registered_digest": true,
+      "candidate_intersections": []
+    },
+    {
+      "map": "docs/low-energy-release-map.json",
+      "package": "low-energy-inherited-26b91feb-physics-common-source-ae",
+      "kernel": "passed",
+      "lean_target": "H0mework.Papers.PhysicsCommonSourceAeRelease",
+      "scope_modules": 4761,
+      "source_scope_sha256": "50a32ff6d94498615b098acf4b3f28e4de1bbee829e5517ad900298a5298763a",
+      "registered_build_source_scope_sha256": "50a32ff6d94498615b098acf4b3f28e4de1bbee829e5517ad900298a5298763a",
+      "matches_registered_digest": true,
+      "candidate_intersections": []
+    },
+    {
+      "map": "docs/low-energy-release-map.json",
+      "package": "low-energy-inherited-aef0ad2a-physics-common-source-ad",
+      "kernel": "passed",
+      "lean_target": "H0mework.Papers.PhysicsCommonSourceAdRelease",
+      "scope_modules": 4625,
+      "source_scope_sha256": "8b86b2d18a58460fc813a082663226f1da88b7808130db9eae68308fc778bb3c",
+      "registered_build_source_scope_sha256": "8b86b2d18a58460fc813a082663226f1da88b7808130db9eae68308fc778bb3c",
+      "matches_registered_digest": true,
+      "candidate_intersections": []
+    },
+    {
+      "map": "docs/low-energy-release-map.json",
+      "package": "low-energy-inherited-b67aa48c-physics-common-source-ac",
+      "kernel": "passed",
+      "lean_target": "H0mework.Papers.PhysicsCommonSourceAcRelease",
+      "scope_modules": 4358,
+      "source_scope_sha256": "37be1fdcacb1c3f3858d409d937d7b47beb6f067bf67526e19c7ebcca5b66cc6",
+      "registered_build_source_scope_sha256": "37be1fdcacb1c3f3858d409d937d7b47beb6f067bf67526e19c7ebcca5b66cc6",
+      "matches_registered_digest": true,
+      "candidate_intersections": []
+    },
+    {
+      "map": "docs/first-release-map.json",
+      "package": "source-process-core-base",
+      "kernel": "passed",
+      "lean_target": "H0mework.Papers.SourceProcessCore",
+      "scope_modules": 2452,
+      "source_scope_sha256": "b64e22c0fbd9f8283d6e63e156fe37b9183513e365570cc03ea3ae614b200a4b",
+      "registered_build_source_scope_sha256": null,
+      "matches_registered_digest": null,
+      "candidate_intersections": []
+    },
+    {
+      "map": "docs/first-release-map.json",
+      "package": "source-process-core-h",
+      "kernel": "passed",
+      "lean_target": "H0mework.Papers.SourceProcessCoreHRelease",
+      "scope_modules": 2308,
+      "source_scope_sha256": "7d55d717fe338eb6b210e5222ec4491428ec9d5cb988d231bdf58abc8db44427",
+      "registered_build_source_scope_sha256": null,
+      "matches_registered_digest": null,
+      "candidate_intersections": []
+    },
+    {
+      "map": "docs/first-release-map.json",
+      "package": "source-process-core-ab",
+      "kernel": "passed",
+      "lean_target": "H0mework.Papers.SourceProcessCoreAb",
+      "scope_modules": 351,
+      "source_scope_sha256": "da7cf70f66ae03c16f7985501a3fd617b1fc7c86042203cde38d3f799aaa22eb",
+      "registered_build_source_scope_sha256": null,
+      "matches_registered_digest": null,
+      "candidate_intersections": []
+    },
+    {
+      "map": "docs/first-release-map.json",
+      "package": "source-process-core-ac",
+      "kernel": "passed",
+      "lean_target": "H0mework.Papers.SourceProcessCoreAc",
+      "scope_modules": 260,
+      "source_scope_sha256": "492d101bc4ab8a722c80453eb2a881c5e1751532295f610538bf69771513476d",
+      "registered_build_source_scope_sha256": null,
+      "matches_registered_digest": null,
+      "candidate_intersections": []
+    },
+    {
+      "map": "docs/first-release-map.json",
+      "package": "source-process-core-ad",
+      "kernel": "passed",
+      "lean_target": "H0mework.Papers.SourceProcessCoreAd",
+      "scope_modules": 630,
+      "source_scope_sha256": "8252aac54caf86aa8375fb39a5dc2488d3a4a3007aecd7187ab763c9fe9163cb",
+      "registered_build_source_scope_sha256": null,
+      "matches_registered_digest": null,
+      "candidate_intersections": []
+    },
+    {
+      "map": "docs/first-release-map.json",
+      "package": "source-process-core-ae",
+      "kernel": "passed",
+      "lean_target": "H0mework.Papers.SourceProcessCoreAe",
+      "scope_modules": 754,
+      "source_scope_sha256": "24ad48f9d6839719784b5cc25df5d24ba0f63a7f7c364c35a691723f1ed79091",
+      "registered_build_source_scope_sha256": null,
+      "matches_registered_digest": null,
+      "candidate_intersections": []
+    },
+    {
+      "map": "docs/first-release-map.json",
+      "package": "physics-common-source-h",
+      "kernel": "passed",
+      "lean_target": "H0mework.Papers.PhysicsCommonSourceHRelease",
+      "scope_modules": 2715,
+      "source_scope_sha256": "96b9469b9a2b664891f4fa7d96df93b4e0df9f87465a7cacc2ae09b3125b1d63",
+      "registered_build_source_scope_sha256": null,
+      "matches_registered_digest": null,
+      "candidate_intersections": []
+    },
+    {
+      "map": "docs/first-release-map.json",
+      "package": "physics-common-source-f",
+      "kernel": "passed",
+      "lean_target": "H0mework.Papers.PhysicsCommonSourceFRelease",
+      "scope_modules": 2666,
+      "source_scope_sha256": "4212f5d448596efa04bf7f5fd5d6a0dc3e867b377c25d583f48e6042239143d4",
+      "registered_build_source_scope_sha256": null,
+      "matches_registered_digest": null,
+      "candidate_intersections": []
+    },
+    {
+      "map": "docs/first-release-map.json",
+      "package": "physics-common-source-ab",
+      "kernel": "passed",
+      "lean_target": "H0mework.Papers.PhysicsCommonSourceAbRelease",
+      "scope_modules": 4285,
+      "source_scope_sha256": "20cf96554a129557f8becf9c2a59eeeaf142a4c7c47363f9423a0c093955af98",
+      "registered_build_source_scope_sha256": null,
+      "matches_registered_digest": null,
+      "candidate_intersections": []
+    },
+    {
+      "map": "docs/first-release-map.json",
+      "package": "physics-common-source-ac",
+      "kernel": "passed",
+      "lean_target": "H0mework.Papers.PhysicsCommonSourceAcRelease",
+      "scope_modules": 4358,
+      "source_scope_sha256": "37be1fdcacb1c3f3858d409d937d7b47beb6f067bf67526e19c7ebcca5b66cc6",
+      "registered_build_source_scope_sha256": null,
+      "matches_registered_digest": null,
+      "candidate_intersections": []
+    },
+    {
+      "map": "docs/first-release-map.json",
+      "package": "physics-common-source-ad",
+      "kernel": "passed",
+      "lean_target": "H0mework.Papers.PhysicsCommonSourceAdRelease",
+      "scope_modules": 4625,
+      "source_scope_sha256": "8b86b2d18a58460fc813a082663226f1da88b7808130db9eae68308fc778bb3c",
+      "registered_build_source_scope_sha256": null,
+      "matches_registered_digest": null,
+      "candidate_intersections": []
+    },
+    {
+      "map": "docs/first-release-map.json",
+      "package": "physics-common-source-ae",
+      "kernel": "passed",
+      "lean_target": "H0mework.Papers.PhysicsCommonSourceAeRelease",
+      "scope_modules": 4761,
+      "source_scope_sha256": "50a32ff6d94498615b098acf4b3f28e4de1bbee829e5517ad900298a5298763a",
+      "registered_build_source_scope_sha256": null,
+      "matches_registered_digest": null,
+      "candidate_intersections": []
+    },
+    {
+      "map": "docs/first-release-map.json",
+      "package": "physics-common-source-cap",
+      "kernel": "passed",
+      "lean_target": "H0mework.Papers.PhysicsCommonSourceCapRelease",
+      "scope_modules": 4556,
+      "source_scope_sha256": "163f6be919e8990e62dea59260523be2bc31e09cf8e2da01190ea595967f7a57",
+      "registered_build_source_scope_sha256": null,
+      "matches_registered_digest": null,
+      "candidate_intersections": []
+    },
+    {
+      "map": "docs/first-release-map.json",
+      "package": "physics-common-source-p26-carrier-v",
+      "kernel": "passed",
+      "lean_target": "H0mework.Papers.ConstrainedLocalQuantumV",
+      "scope_modules": 2115,
+      "source_scope_sha256": "182e05307c541e71af209cf1dd817b66b6665798cd4c884de3596f76dba37bc4",
+      "registered_build_source_scope_sha256": null,
+      "matches_registered_digest": null,
+      "candidate_intersections": []
+    },
+    {
+      "map": "docs/first-release-map.json",
+      "package": "physics-common-source-p26-carrier-x",
+      "kernel": "passed",
+      "lean_target": "H0mework.Papers.ConstrainedLocalQuantumX",
+      "scope_modules": 8,
+      "source_scope_sha256": "21e8f7f1c3d90d35ad32a1f402548688a7c3939e9de1de19a927a8b0a5f41818",
+      "registered_build_source_scope_sha256": null,
+      "matches_registered_digest": null,
+      "candidate_intersections": []
+    }
+  ],
+  "current_passed_package_count": 30,
+  "current_passed_intersections": [],
+  "registered_passed_scope_mismatches": [],
+  "current_type_passed_but_not_signed": {
+    "map": "docs/second-edition-map.json",
+    "package": "v2-9c73-type-completion",
+    "kernel": "passed",
+    "lean_target": "H0mework.Papers.SecondEdition9c73TypeCompletion",
+    "scope_modules": 1407,
+    "source_scope_sha256": "1db53fa24cb08eed702437b3d63760d608e03d8e9950dbcf265e92b647e48490",
+    "registered_build_source_scope_sha256": "1db53fa24cb08eed702437b3d63760d608e03d8e9950dbcf265e92b647e48490",
+    "matches_registered_digest": true,
+    "candidate_intersections": []
+  },
+  "actual_native_run_intersections": [
+    {
+      "run": "runtime-independent-frontier-build-after-repair",
+      "input_path": ".local/acceptance-execution-20261010/runtime-independent-frontier-build-after-repair/input-before.json",
+      "actual_before_head": "5c627eb4783af2c39e4c22d2c48a11637e3bdd88",
+      "scope_modules": 18238,
+      "source_scope_sha256": "ecddd6367ebcc0c091bdb7e0dc9a1643ec3109ebc696fc27594051c8cd0b65d2",
+      "candidate_intersections": [],
+      "terminal": false,
+      "actual_result": null
+    },
+    {
+      "run": "low-nine-owning-proof-frontier-build-c762e780",
+      "input_path": ".local/acceptance-execution-20261010/low-nine-owning-proof-frontier-build-c762e780/input-before.json",
+      "actual_before_head": "c762e7806b91e721d86e0938666e413765e6029a",
+      "scope_modules": 8971,
+      "source_scope_sha256": "3a6025889fc874257c2fc9e3ff82b388341b88a32be453784352e04568047fa6",
+      "candidate_intersections": [],
+      "terminal": false,
+      "actual_result": null
+    },
+    {
+      "run": "r9-gsr-single-native-build-c762e780",
+      "input_path": ".local/physics-acceptance-20261010/r9-gsr-single-native-build-c762e780/provenance-before.json",
+      "actual_before_head": "c762e7806b91e721d86e0938666e413765e6029a",
+      "scope_modules": 4114,
+      "source_scope_sha256": "aa7f1afd8a7645487c1ee61ef6583bc063c4248bf14bb92bea39fd4670b6fb5f",
+      "candidate_intersections": [],
+      "terminal": false,
+      "actual_result": null
+    },
+    {
+      "run": "charged-transfer-trust-c762e780",
+      "input_path": ".local/physics-acceptance-20261010/charged-transfer-trust-c762e780-provenance/before.json",
+      "scope_modules": 2772,
+      "source_scope_sha256": "4fcffa8d99357e739ecee856d3df6f5819cb580e1390621bd25f4e4abcecdc84",
+      "candidate_intersections": [],
+      "terminal": true
+    }
+  ],
+  "protected_ci_plan_path": ".local/v2-9c73-intake/candidate-ci-plan.json",
+  "protected_ci_plan_sha256": "564dde09a55eee3797c763d21be8c867d601e552d43b74d7e93572bff86ff194",
+  "protected_ci_parts": [
+    {
+      "part": "s1-01",
+      "original_placements": 1109,
+      "recursive_source_modules": 1223,
+      "source_scope_sha256": "6e2d74b0e71bcee8eeb812733b3c1778c6825dbc65f5bb91af00beb131ac9902",
+      "candidate_intersections": []
+    },
+    {
+      "part": "s1-02",
+      "original_placements": 430,
+      "recursive_source_modules": 697,
+      "source_scope_sha256": "92acfa63056bc0270e486587bbe8d387d9666daaaccb48e6a648510a63a88037",
+      "candidate_intersections": []
+    },
+    {
+      "part": "s1-03",
+      "original_placements": 322,
+      "recursive_source_modules": 542,
+      "source_scope_sha256": "354c747d7571083671b8928f7df7c6575bd9ef3d130fa30fce8e1d16be371355",
+      "candidate_intersections": []
+    },
+    {
+      "part": "s1-04",
+      "original_placements": 157,
+      "recursive_source_modules": 423,
+      "source_scope_sha256": "6826863fddd97b842a27c65df17571a1d1f3794b6079c16bc19f1b82e0ce643d",
+      "candidate_intersections": []
+    },
+    {
+      "part": "s1-05",
+      "original_placements": 233,
+      "recursive_source_modules": 560,
+      "source_scope_sha256": "8b77630252742b34c88ce48f4ad988657470c2038796998f1f227d7d01a1d8d8",
+      "candidate_intersections": []
+    },
+    {
+      "part": "s2-01",
+      "original_placements": 2486,
+      "recursive_source_modules": 4426,
+      "source_scope_sha256": "e455c445e31c2acbbffde260ebd094f5fe23c9942385476aec79020f3080fa5e",
+      "candidate_intersections": []
+    },
+    {
+      "part": "s2-02",
+      "original_placements": 2433,
+      "recursive_source_modules": 5292,
+      "source_scope_sha256": "96d6fa6c1802984fab5b6f8b55bd75ec5e664d837701c7fd520b5d08468ee62c",
+      "candidate_intersections": []
+    },
+    {
+      "part": "s2-03",
+      "original_placements": 909,
+      "recursive_source_modules": 3093,
+      "source_scope_sha256": "3f630379259eecc427fc386b0ef225ea929254b74c69b307ec9904cb7f9ed9bf",
+      "candidate_intersections": []
+    },
+    {
+      "part": "s3-01",
+      "original_placements": 157,
+      "recursive_source_modules": 1629,
+      "source_scope_sha256": "4840cb211cf70f8f18284e1ebc0174c146f81e6124a08ec3c14e0327effe5d35",
+      "candidate_intersections": []
+    },
+    {
+      "part": "s3-02",
+      "original_placements": 73,
+      "recursive_source_modules": 1794,
+      "source_scope_sha256": "b5f9aa9a4dbd87dcc99d0f1687cd3d3702bae5864d1b99e90b3a1e9db324035e",
+      "candidate_intersections": []
+    },
+    {
+      "part": "s3-03",
+      "original_placements": 55,
+      "recursive_source_modules": 491,
+      "source_scope_sha256": "bdcb07c12350e03a15ae8992d34a022104d630f3b528b7c940570e707ec9b567",
+      "candidate_intersections": []
+    },
+    {
+      "part": "s3-04",
+      "original_placements": 273,
+      "recursive_source_modules": 1400,
+      "source_scope_sha256": "42bae848486e3ddd2333452dd1729424e5ae2e23deb8f48cbe342bd995f8fe2d",
+      "candidate_intersections": []
+    },
+    {
+      "part": "s3-05",
+      "original_placements": 182,
+      "recursive_source_modules": 2494,
+      "source_scope_sha256": "3ae08a36138fbb5e1c39a2de670d8a289e5f5bdce868118f0611ebe860c386b9",
+      "candidate_intersections": []
+    },
+    {
+      "part": "s3-06",
+      "original_placements": 45,
+      "recursive_source_modules": 1550,
+      "source_scope_sha256": "ea823b851d21a14b00e0ee08ab0597f03a601e0d668e0d82de15f18db1eaefcd",
+      "candidate_intersections": []
+    },
+    {
+      "part": "s3-07",
+      "original_placements": 46,
+      "recursive_source_modules": 1465,
+      "source_scope_sha256": "59c39a9ffc6fae1661c8aa4c8d934f270fb6750adacd8495f60f60c4c26db7e3",
+      "candidate_intersections": []
+    },
+    {
+      "part": "s3-08",
+      "original_placements": 50,
+      "recursive_source_modules": 1551,
+      "source_scope_sha256": "9663c0945da089f66d797107eb646c18122b3f38892560071ccca6776087570d",
+      "candidate_intersections": []
+    },
+    {
+      "part": "s4-01",
+      "original_placements": 1143,
+      "recursive_source_modules": 3897,
+      "source_scope_sha256": "fd8badc04c10097568edcaed1f8803bcefc0718cc1ec143005831678b41bc574",
+      "candidate_intersections": []
+    },
+    {
+      "part": "s4-02",
+      "original_placements": 431,
+      "recursive_source_modules": 3324,
+      "source_scope_sha256": "bafd940c12d2c7df13261113f9653e0eeee146cf762e569f9e7bfeeddcb2650e",
+      "candidate_intersections": []
+    },
+    {
+      "part": "s4-03",
+      "original_placements": 355,
+      "recursive_source_modules": 1143,
+      "source_scope_sha256": "e28cdafa5bb52328594abe999e4bea3f9caaf507914cf87124a895239e976a7f",
+      "candidate_intersections": []
+    },
+    {
+      "part": "s4-04",
+      "original_placements": 331,
+      "recursive_source_modules": 2956,
+      "source_scope_sha256": "98171bedc155ac3851aadf1e717244038b49678b3ad7366c7d4b8c868ecca3d8",
+      "candidate_intersections": []
+    },
+    {
+      "part": "s4-05",
+      "original_placements": 326,
+      "recursive_source_modules": 1135,
+      "source_scope_sha256": "77a325c1b43c74910268168cae896592bb03ca9afddbf246bdf510e434332ed3",
+      "candidate_intersections": []
+    },
+    {
+      "part": "s4-06",
+      "original_placements": 267,
+      "recursive_source_modules": 1103,
+      "source_scope_sha256": "1e09fa0ad7841504cb8ed79a00565ced4ce74892f11592f2cdd41df0e7c85cba",
+      "candidate_intersections": []
+    },
+    {
+      "part": "s4-07",
+      "original_placements": 527,
+      "recursive_source_modules": 1308,
+      "source_scope_sha256": "05892eb83d27a3574df1a97f0138ed8af98bedf65de4e67ffa701b5394599050",
+      "candidate_intersections": []
+    },
+    {
+      "part": "s4-08",
+      "original_placements": 318,
+      "recursive_source_modules": 1163,
+      "source_scope_sha256": "ec55397d4d9b3bf4ffc74b3010e687040f9d0935b5419049cd52904ce1a49880",
+      "candidate_intersections": []
+    },
+    {
+      "part": "s4-09",
+      "original_placements": 365,
+      "recursive_source_modules": 1186,
+      "source_scope_sha256": "2a71e2dae452d3a06d657831083b680ad02726ac8d21c5aa018f2a8972a03ffc",
+      "candidate_intersections": []
+    },
+    {
+      "part": "s4-10",
+      "original_placements": 331,
+      "recursive_source_modules": 1150,
+      "source_scope_sha256": "b6001fe0df1afbed2f9512f13df99c6e38fbe446b04d2529660f6dc797498489",
+      "candidate_intersections": []
+    },
+    {
+      "part": "s4-11",
+      "original_placements": 275,
+      "recursive_source_modules": 1114,
+      "source_scope_sha256": "6ee68bad662a9deaf5254940f937b85e848888860812c3287593e4b4ec2b9782",
+      "candidate_intersections": []
+    },
+    {
+      "part": "s4-12",
+      "original_placements": 366,
+      "recursive_source_modules": 1183,
+      "source_scope_sha256": "1f1dbd292b168271306b8eda40fe358d094b2dd71727eb41ae5d3f995eaff9b4",
+      "candidate_intersections": []
+    },
+    {
+      "part": "s4-13",
+      "original_placements": 486,
+      "recursive_source_modules": 1258,
+      "source_scope_sha256": "baa7c9dc47665517c0751792224d74092c2539b3430a9169fe20d9935eb213ef",
+      "candidate_intersections": []
+    },
+    {
+      "part": "s4-14",
+      "original_placements": 398,
+      "recursive_source_modules": 1222,
+      "source_scope_sha256": "a6834f5a3edd3f9047d3cea841f49f28169e27e994d52959875bbd29fdeda5f4",
+      "candidate_intersections": []
+    },
+    {
+      "part": "s4-15",
+      "original_placements": 486,
+      "recursive_source_modules": 1258,
+      "source_scope_sha256": "b366e9baaca68e01d59864085b0abaa10df9d5a17d744d0c1b7c865b6811635f",
+      "candidate_intersections": []
+    },
+    {
+      "part": "s4-16",
+      "original_placements": 474,
+      "recursive_source_modules": 1258,
+      "source_scope_sha256": "0dfefbb1f1b5946d33e04ef9309981df2eecea02e43f110ddb9415a46b4181fa",
+      "candidate_intersections": []
+    },
+    {
+      "part": "s4-17",
+      "original_placements": 541,
+      "recursive_source_modules": 4139,
+      "source_scope_sha256": "41b64ae4434ab22fe8bbd59c049f3ff5490348fafcc991685c5ad18134cc37d3",
+      "candidate_intersections": []
+    },
+    {
+      "part": "s4-18",
+      "original_placements": 346,
+      "recursive_source_modules": 3307,
+      "source_scope_sha256": "5c6520e45f9ca3e22f8aa6e0b6661e50c41b2d9c2e14b10214d0e53ee2227256",
+      "candidate_intersections": []
+    },
+    {
+      "part": "s4-19",
+      "original_placements": 263,
+      "recursive_source_modules": 3445,
+      "source_scope_sha256": "261da492fc4470267ae386a9aa1882b9ccae183831246038dae6294da6349a64",
+      "candidate_intersections": []
+    },
+    {
+      "part": "s4-20",
+      "original_placements": 264,
+      "recursive_source_modules": 1124,
+      "source_scope_sha256": "d2e49aa5cd6b4956cc60a46078a85ed1cf418ac23519ccfa9eaaabcbecec7e49",
+      "candidate_intersections": []
+    },
+    {
+      "part": "s5-01",
+      "original_placements": 1282,
+      "recursive_source_modules": 12930,
+      "source_scope_sha256": "0b614fc1b401969c8c5183d73ce7b12d789a01d08ebdaca30142e0e777d61d04",
+      "candidate_intersections": []
+    },
+    {
+      "part": "s5-02",
+      "original_placements": 904,
+      "recursive_source_modules": 5483,
+      "source_scope_sha256": "a0e94ad5872718e457b0ee7b1ceec332dd3fb6f340a93b472a6a9284cf53df5f",
+      "candidate_intersections": []
+    },
+    {
+      "part": "s6-01",
+      "original_placements": 1818,
+      "recursive_source_modules": 4672,
+      "source_scope_sha256": "f43165de21939e5b785cfdccdb1025cf9a534e2500569477782a3e78a7e00dc7",
+      "candidate_intersections": []
+    },
+    {
+      "part": "s6-02",
+      "original_placements": 1344,
+      "recursive_source_modules": 3705,
+      "source_scope_sha256": "5504a1748de016a867ed1610f1c7ec7521eeb94ecbfe3c1b71f634d5ede5b7b6",
+      "candidate_intersections": []
+    },
+    {
+      "part": "s6-03",
+      "original_placements": 1345,
+      "recursive_source_modules": 4469,
+      "source_scope_sha256": "5dffd2c79a12bb73c0bb0e3e70b0c889bf9c5eac392c3ca19d413d6925b83817",
+      "candidate_intersections": []
+    },
+    {
+      "part": "s7-01",
+      "original_placements": 1313,
+      "recursive_source_modules": 8278,
+      "source_scope_sha256": "20e5e3c289c0ae0eb3a45df49a262d1e7325d590356e7a9e2f43fc2c0abaf430",
+      "candidate_intersections": []
+    }
+  ],
+  "protected_ci_recursive_sources": 25259,
+  "protected_ci_source_scope_sha256": "1061cc34508962970804b472077b0ec3602f2d876da7530b4e7b2f4c83a181f6",
+  "protected_ci_candidate_intersections": [],
+  "actual_live_compilers": [
+    {
+      "pid": 80010,
+      "ppid": 71694,
+      "elapsed": "06:36",
+      "cpu_percent": "49.9",
+      "rss_kib": 8463472,
+      "source_path": "Lean/H0mework/Versions/R9c73a630/Physics/LowEnergy/AlphaSource/CanonicalPreparationOriginalPreparedGreen.lean",
+      "is_candidate_source": false
+    },
+    {
+      "pid": 83882,
+      "ppid": 70537,
+      "elapsed": "03:28",
+      "cpu_percent": "53.9",
+      "rss_kib": 6597168,
+      "source_path": "Lean/H0mework/Versions/C62/ReleaseMaterials/Physics/LowEnergyPhenomenology/AlphaSource/CanonicalPreparationOriginalGaussKinetic.lean",
+      "is_candidate_source": false
+    },
+    {
+      "pid": 85733,
+      "ppid": 71985,
+      "elapsed": "01:09",
+      "cpu_percent": "49.3",
+      "rss_kib": 6644240,
+      "source_path": "Lean/H0mework/Versions/R9c73a630/Physics/LowEnergy/Quantum/SourceClockYukawaRadialJoinedHessian.lean",
+      "is_candidate_source": false
+    },
+    {
+      "pid": 85905,
+      "ppid": 70537,
+      "elapsed": "01:03",
+      "cpu_percent": "162.3",
+      "rss_kib": 7169680,
+      "source_path": "Lean/H0mework/Versions/C62/ReleaseMaterials/Physics/LowEnergyPhenomenology/AlphaSource/CanonicalSourcePropagationActualFieldPencil.lean",
+      "is_candidate_source": false
+    },
+    {
+      "pid": 86491,
+      "ppid": 71694,
+      "elapsed": "00:25",
+      "cpu_percent": "50.4",
+      "rss_kib": 6958032,
+      "source_path": "Lean/H0mework/Versions/R9c73a630/Physics/LowEnergy/AlphaSource/CanonicalPreparationHalfDensitySourceJets.lean",
+      "is_candidate_source": false
+    },
+    {
+      "pid": 86568,
+      "ppid": 71985,
+      "elapsed": "00:15",
+      "cpu_percent": "230.9",
+      "rss_kib": 6309888,
+      "source_path": "Lean/H0mework/Versions/R9c73a630/Physics/LowEnergy/Quantum/SourceClockYukawaSpinJointForce.lean",
+      "is_candidate_source": false
+    },
+    {
+      "pid": 86600,
+      "ppid": 35300,
+      "elapsed": "00:11",
+      "cpu_percent": "49.9",
+      "rss_kib": 5831584,
+      "source_path": "Lean/H0mework/Versions/R9c73a630/ReleaseMaterials/SaturationMonoid/NoIslandNoMagic/Consciousness/Immortality/Embodied/Molecule/LAlanine40K2025/Thermal/Recovery/Reservoir/Feedback/Renewal/Direction/Blocks/EnergyFrame/Inverse/Scaled/Finite/Data/Block4.lean",
+      "is_candidate_source": false
+    },
+    {
+      "pid": 86644,
+      "ppid": 35300,
+      "elapsed": "00:10",
+      "cpu_percent": "50.5",
+      "rss_kib": 5756032,
+      "source_path": "Lean/H0mework/Versions/R9c73a630/ReleaseMaterials/SaturationMonoid/NoIslandNoMagic/Consciousness/Immortality/Embodied/Molecule/LAlanine40K2025/Thermal/Recovery/Reservoir/Feedback/Renewal/Direction/Blocks/EnergyFrame/Inverse/Scaled/Finite/Expansion/Rows0.lean",
+      "is_candidate_source": false
+    }
+  ],
+  "actual_live_candidate_compiler_intersections": [],
+  "scope": "Actual registered public import closures, selected proof consumption, live source inputs, and 42 original CI part recursive inputs. This is impact evidence, not a kernel acceptance receipt."
+}
