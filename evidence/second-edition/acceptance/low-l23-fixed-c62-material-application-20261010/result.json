@@ -1,0 +1,97 @@
+{
+  "schema": "h0mework/L23-fixed-source-material-application@1",
+  "mode": "apply",
+  "ok": true,
+  "head_before": "62da11e06ce55da48c1d8e6b8be8bd6047040eae",
+  "source_commit": "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46",
+  "source_upper_bound_unchanged": true,
+  "new_complete_modules": 4,
+  "original_declaration_roots": 13,
+  "existing_inputs": 5070,
+  "existing_input_epoch_aliases_added": 733,
+  "embedded_resources_verified": 23,
+  "new_original_receipt_sha256": "51df21231d163e828d8196b8bbfbcdbc915999eda1f7cb8a93fd6382e80e6b7e",
+  "new_package": {
+    "id": "low-energy-l23-prepared-owner-c62",
+    "paper": "low-energy-phenomenology",
+    "source_commit": "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46",
+    "source_commits": [
+      "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46"
+    ],
+    "claim_ids": [
+      "low1.L23"
+    ],
+    "lean_target": "H0mework.Papers.LowEnergyL23PreparedOwnerC62",
+    "verification": {
+      "build": "pending",
+      "kernel": "pending",
+      "scope": "Revised L23 fixed-source producer and full-light direct consumer; new package execution required."
+    },
+    "commands": {
+      "build": [
+        "python3",
+        "tools/edition_release.py",
+        "--edition",
+        "low-energy",
+        "build",
+        "--package",
+        "low-energy-l23-prepared-owner-c62",
+        "--output",
+        ".local/low-energy-release-runs/low-energy-l23-prepared-owner-c62-build-RUN"
+      ],
+      "trust": [
+        "python3",
+        "tools/edition_release.py",
+        "--edition",
+        "low-energy",
+        "trust",
+        "--package",
+        "low-energy-l23-prepared-owner-c62",
+        "--output",
+        ".local/low-energy-release-runs/low-energy-l23-prepared-owner-c62-trust-RUN"
+      ]
+    },
+    "source_supplements": [
+      {
+        "public_path": "Lean/H0mework/Versions/R71e/ReleaseMaterials/Physics/LowEnergyPhenomenology/AlphaSource/EmIdentification/PhysicalPreparedCharge.lean",
+        "source_sha256": "bf25d14314ea3c4f83938c5aceea22fae1178a614d51f38625d41f234a5affda",
+        "target_sha256": "ddfd65a024c9017dc2fa3587a4b093b7fdcfe07f3d8a8b7cb4f929baa3a065df",
+        "source_origin": {
+          "kind": "H0-proof-elaboration-only-supplement",
+          "source_repository": "https://github.com/Sapientropic/H0mework.git",
+          "source_commit": "ca96ff382e5eaff4b231422202d5a7b051a5d0bf",
+          "source_path": "docs/source/second-edition/physics/supplements/PhysicalPreparedCharge-71e94e82.lean",
+          "dependency_epoch": "71e94e8261d67cf4849a05eb14ac95aa2f7dcbb9",
+          "original_source_path": "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/PhysicalPreparedCharge.lean",
+          "original_source_commit": "71e94e8261d67cf4849a05eb14ac95aa2f7dcbb9",
+          "original_source_sha256": "f080c717b8a12d4870761de8285b25aeb002980635ff6f360309ddfcff7c1910",
+          "original_failure_source_artifact": "docs/source/second-edition/physics/historical/PhysicalPreparedCharge-71e94e82.lean",
+          "edit_scope": "Proof commands only: prepared_increment_ward directly consumes increment_wedge through simpa; all original declarations, premises and data definitions are byte-identical. Original heartbeat and trust settings retained.",
+          "focused_build_log": "evidence/second-edition/acceptance/physics-prepared-proof-probe-20261010/lean.log"
+        }
+      }
+    ]
+  },
+  "tracked_changed_files": [
+    "Lean/H0mework/Papers/LowEnergyL23PreparedOwnerC62.lean",
+    "Lean/H0mework/Versions/C62/ReleaseMaterials/Physics/LowEnergyPhenomenology/AlphaSource/CanonicalPreparationSourcePreparedThomsonMatchingBridge.lean",
+    "Lean/H0mework/Versions/C62/ReleaseMaterials/Physics/LowEnergyPhenomenology/AlphaSource/SourcePreparedThomsonFullLightReturn.lean",
+    "Lean/H0mework/Versions/C62/ReleaseMaterials/Physics/LowEnergyPhenomenology/AlphaSource/SourcePreparedThomsonMatchingBridge.lean",
+    "Lean/H0mework/Versions/C62/ReleaseMaterials/Physics/LowEnergyPhenomenology/AlphaSource/SourcePreparedThomsonOrdinaryInteraction.lean",
+    "docs/low-energy-release-map.json",
+    "evidence/low-energy-releases/c62/alpha-source/canonical_preparation_physical_prepared_thomson_matching_bridge_certification.json",
+    "tools/ci_layout.tsv",
+    "tools/export-map.json"
+  ],
+  "existing_public_module_bytes_unchanged": true,
+  "existing_CI_placements_unchanged": 47710,
+  "new_CI_module_placements": {
+    "H0mework.Papers.LowEnergyL23PreparedOwnerC62": "s9-02",
+    "H0mework.Versions.C62.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalPreparationSourcePreparedThomsonMatchingBridge": "s9-02",
+    "H0mework.Versions.C62.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.SourcePreparedThomsonFullLightReturn": "s9-02",
+    "H0mework.Versions.C62.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.SourcePreparedThomsonMatchingBridge": "s9-02",
+    "H0mework.Versions.C62.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.SourcePreparedThomsonOrdinaryInteraction": "s9-02"
+  },
+  "original_E055_source_and_receipt_retained": true,
+  "formal_kernel_acceptance": false
+}

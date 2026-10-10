@@ -1,0 +1,133 @@
+{
+  "schema": "h0mework/private-one-import-locked-carrier-verification@1",
+  "ok": true,
+  "inputs_unchanged": true,
+  "formal_acceptance": false,
+  "original_source_sha256": "ece508c2a60069bfaf10e4ef89b0d2261d6656db2187523247e794241fac462e",
+  "before_target_sha256": "33929f5f602bf39be3c2fd467e4899dfadfefde99d36656ae8e8d898b93e591d",
+  "after_target_sha256": "dc698a4c576aa8a8aa5a78180eb96a855d4ec5c77324a5535e0fdb0fce3da8b9",
+  "full_original_and_public_inverse_exact": true,
+  "candidate_row": {
+    "import_map": {
+      "H0mework.Versions.R9c73a630.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualEMOriginFields": "ActualEMOriginFields",
+      "H0mework.Versions.R9c73a630.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.SourceBackgroundLockedDirection": "SourceBackgroundLockedDirection",
+      "H0mework.Versions.R9c73a630.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalPreparationSourceLockedFieldReturn": "SourceLockedFieldReturn"
+    },
+    "path": "Lean/H0mework/Versions/R9c73a630/ReleaseMaterials/Verification/Physics/LowEnergyPhenomenology/AlphaSource/EmIdentification/ActualEMSourceLockedCarrier.lean",
+    "source": "file:Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualEMSourceLockedCarrier.lean",
+    "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualEMSourceLockedCarrier.lean",
+    "source_revision": "9c73a630ce05bea062ec889b188f5105c0afb796",
+    "source_revisions": [
+      "9c73a630ce05bea062ec889b188f5105c0afb796"
+    ],
+    "source_sha256": "ece508c2a60069bfaf10e4ef89b0d2261d6656db2187523247e794241fac462e",
+    "target": "H0mework.Versions.R9c73a630.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualEMSourceLockedCarrier",
+    "target_sha256": "dc698a4c576aa8a8aa5a78180eb96a855d4ec5c77324a5535e0fdb0fce3da8b9",
+    "variant": "R9c73a630"
+  },
+  "old_import": "H0mework.Versions.R9c73a630.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.SourceLockedFieldReturn",
+  "new_import": "H0mework.Versions.R9c73a630.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalPreparationSourceLockedFieldReturn",
+  "steps": [
+    {
+      "name": "actual-canonical-locked-payers",
+      "exit_code": 0,
+      "elapsed_seconds": 8.919,
+      "command": [
+        "lean",
+        "--root=.local/physics-acceptance-20261010/locked-carrier-layout/environment-verification-62da11e0/src",
+        "--trust=0",
+        "-Dweak.linter.unnecessarySimpa=false",
+        "-Dweak.linter.style.haveILetI=false",
+        "-Dweak.linter.unusedSimpArgs=false",
+        "-DmaxHeartbeats=2000000",
+        "-Dweak.linter.unusedSectionVars=false",
+        "-Dweak.linter.unnecessarySeqFocus=false",
+        "-Dweak.linter.unusedVariables=false",
+        "-Dweak.linter.unreachableTactic=false",
+        "-Dweak.linter.unusedTactic=false",
+        "-Dweak.linter.defProp=false",
+        "-Dweak.linter.deprecated=false",
+        "-Dlinter.deprecated=false",
+        "-Dweak.linter.tacticAnalysis.introMerge=false",
+        "-Dweak.linter.constructorNameAsVariable=false",
+        "-DwarningAsError=true",
+        "evidence/second-edition/acceptance/locked-carrier-layout-consumer-20261010/src/CanonicalLockedPayers.lean",
+        "-o",
+        ".local/physics-acceptance-20261010/locked-carrier-layout/environment-verification-62da11e0/payers.olean"
+      ],
+      "source_sha256": "014973cbbcbbc842585ce3677f01067082e3fffdb50bf2d5e08ea527a3c8d089",
+      "log_sha256": "c67cfe8a803cd7d9a3ed38d93c111f5571daeed14850038be0108b516da20eb5",
+      "object_sha256": "bde8b9e28bb85b737a9e87f54abba622315bc4f416e09bbcf9b0f2b2fa10efc5"
+    },
+    {
+      "name": "complete-original-locked-carrier",
+      "exit_code": 0,
+      "elapsed_seconds": 6.894,
+      "command": [
+        "lean",
+        "--root=.local/physics-acceptance-20261010/locked-carrier-layout/environment-verification-62da11e0/src",
+        "--trust=0",
+        "-Dweak.linter.unnecessarySimpa=false",
+        "-Dweak.linter.style.haveILetI=false",
+        "-Dweak.linter.unusedSimpArgs=false",
+        "-DmaxHeartbeats=2000000",
+        "-Dweak.linter.unusedSectionVars=false",
+        "-Dweak.linter.unnecessarySeqFocus=false",
+        "-Dweak.linter.unusedVariables=false",
+        "-Dweak.linter.unreachableTactic=false",
+        "-Dweak.linter.unusedTactic=false",
+        "-Dweak.linter.defProp=false",
+        "-Dweak.linter.deprecated=false",
+        "-Dlinter.deprecated=false",
+        "-Dweak.linter.tacticAnalysis.introMerge=false",
+        "-Dweak.linter.constructorNameAsVariable=false",
+        "-DwarningAsError=true",
+        "evidence/second-edition/acceptance/locked-carrier-layout-consumer-20261010/src/H0mework/Versions/R9c73a630/ReleaseMaterials/Verification/Physics/LowEnergyPhenomenology/AlphaSource/EmIdentification/ActualEMSourceLockedCarrier.lean",
+        "-o",
+        ".local/physics-acceptance-20261010/locked-carrier-layout/environment-verification-62da11e0/lib/H0mework/Versions/R9c73a630/ReleaseMaterials/Verification/Physics/LowEnergyPhenomenology/AlphaSource/EmIdentification/ActualEMSourceLockedCarrier.olean"
+      ],
+      "source_sha256": "dc698a4c576aa8a8aa5a78180eb96a855d4ec5c77324a5535e0fdb0fce3da8b9",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "object_sha256": "a4f36f2ecb9148f51fb2a3b341601ab929c6c0f0ba8dfc0f42d393d113c8cf1e"
+    },
+    {
+      "name": "original-locked-statement-consumer",
+      "exit_code": 0,
+      "elapsed_seconds": 7.376,
+      "command": [
+        "lean",
+        "--root=.local/physics-acceptance-20261010/locked-carrier-layout/environment-verification-62da11e0/src",
+        "--trust=0",
+        "-Dweak.linter.unnecessarySimpa=false",
+        "-Dweak.linter.style.haveILetI=false",
+        "-Dweak.linter.unusedSimpArgs=false",
+        "-DmaxHeartbeats=2000000",
+        "-Dweak.linter.unusedSectionVars=false",
+        "-Dweak.linter.unnecessarySeqFocus=false",
+        "-Dweak.linter.unusedVariables=false",
+        "-Dweak.linter.unreachableTactic=false",
+        "-Dweak.linter.unusedTactic=false",
+        "-Dweak.linter.defProp=false",
+        "-Dweak.linter.deprecated=false",
+        "-Dlinter.deprecated=false",
+        "-Dweak.linter.tacticAnalysis.introMerge=false",
+        "-Dweak.linter.constructorNameAsVariable=false",
+        "-DwarningAsError=true",
+        "evidence/second-edition/acceptance/locked-carrier-layout-consumer-20261010/src/IndependentLockedConsumer.lean",
+        "-o",
+        ".local/physics-acceptance-20261010/locked-carrier-layout/environment-verification-62da11e0/consumer.olean"
+      ],
+      "source_sha256": "c963053baf04b1690f7ee43d3591301f49a767a1c26b303c93376bf91debaa57",
+      "log_sha256": "561b2279e4b37f7321e7ad5a2889643014076cd1b6240f55fb0920bc99101380",
+      "object_sha256": "a302eab9f493ef727ac555de59585f1db678c638abd5d5a9a4ce76dd12ded58b"
+    }
+  ],
+  "source_options": [
+    "set_option autoImplicit false",
+    "set_option maxHeartbeats 600000",
+    "set_option maxRecDepth 8192",
+    "set_option backward.isDefEq.respectTransparency false"
+  ],
+  "recursive_parity_sha256": "eeacd25534987abe4e27dcfafd5da6a28f94ab983490ae4ac661de97d263468c",
+  "private_source_files": 5462
+}

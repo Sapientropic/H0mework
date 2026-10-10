@@ -1,0 +1,310 @@
+{
+  "id": "low1.L23",
+  "paper": "low-energy-phenomenology",
+  "selection_status": "selected",
+  "statement": "The repaired owner binds ordinaryFull in raw action units: ordinaryFull = (h_source*c_source)*beta*input.normalizedAmplitude = beta*input.amplitude, where beta is the source photon-left-reader of the same prepared covector. Keeping the original full-light/contact equation ordinaryFull-lightResponse=sourceCEM+contactResponse, the single (h_source*c_source)^-1 readout equals sourceCEM/(h_source*c_source). Conversion to the earlier matching consumer preserves the same values and equation; the full-light return consumes this owner.",
+  "quantifiers_premises": [
+    "ordinaryFull, lightResponse, contactResponse and sourceCEM share raw action units; the readout applies (h_source*c_source)^-1 once.",
+    "ordinaryFull-lightResponse=sourceCEM+contactResponse is a supplied condition; lightResponse and contactResponse are matching-owner values.",
+    "The input is the nativeY-prepared photon amplitude, not the actual edge-0 electron; existing 17-companion Riesz/six-test obligations retain their identities.",
+    "No new physical transverse carrier, zero-transfer/Thomson/alpha(0) matching."
+  ],
+  "written_proof": {
+    "zh": {
+      "sections": [
+        "§9.5"
+      ],
+      "equations": [
+        "9.18–9.19"
+      ],
+      "file": "manuscript.md"
+    },
+    "en": {
+      "sections": [
+        "§9.5"
+      ],
+      "equations": [
+        "9.18–9.19"
+      ],
+      "file": "manuscript-en.md"
+    }
+  },
+  "source": {
+    "commit": "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46"
+  },
+  "producers": [
+    {
+      "kind": "lean",
+      "source_commit": "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46",
+      "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/SourcePreparedThomsonMatchingBridge.lean",
+      "source_sha256": "b5dc5de27d3572002f6f2d9f066f1a4343604e22f6c38d190c26b9cb475632ec",
+      "public": {
+        "path": "Lean/H0mework/Versions/C62/ReleaseMaterials/Physics/LowEnergyPhenomenology/AlphaSource/SourcePreparedThomsonMatchingBridge.lean",
+        "sha256": "c697c347be481dcde6e65e27e7542439fbffaf1c9198433d1bb62ef7db4d6fdc",
+        "module": "H0mework.Versions.C62.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.SourcePreparedThomsonMatchingBridge",
+        "variant": "file"
+      },
+      "verification": {
+        "identity": "candidate-only",
+        "kernel": "pending"
+      },
+      "declaration_scope": "Declarations explicitly selected by the revised L23 manuscript.",
+      "declarations": [
+        {
+          "name": "SourcePreparedThomsonOwnerContract",
+          "namespace": "LowEnergy.PreparationPhysicalPreparedThomsonMatchingBridge",
+          "qualified_name": "LowEnergy.PreparationPhysicalPreparedThomsonMatchingBridge.SourcePreparedThomsonOwnerContract",
+          "kind": "structure",
+          "line": 28
+        },
+        {
+          "name": "sourcePreparedThomsonOwner_prepared_full",
+          "namespace": "LowEnergy.PreparationPhysicalPreparedThomsonMatchingBridge",
+          "qualified_name": "LowEnergy.PreparationPhysicalPreparedThomsonMatchingBridge.sourcePreparedThomsonOwner_prepared_full",
+          "kind": "theorem",
+          "line": 51
+        },
+        {
+          "name": "sourcePreparedThomsonOwner_readout",
+          "namespace": "LowEnergy.PreparationPhysicalPreparedThomsonMatchingBridge",
+          "qualified_name": "LowEnergy.PreparationPhysicalPreparedThomsonMatchingBridge.sourcePreparedThomsonOwner_readout",
+          "kind": "theorem",
+          "line": 61
+        },
+        {
+          "name": "SourcePreparedThomsonOwnerContract.toSourceThomsonContract",
+          "namespace": "LowEnergy.PreparationPhysicalPreparedThomsonMatchingBridge",
+          "qualified_name": "LowEnergy.PreparationPhysicalPreparedThomsonMatchingBridge.SourcePreparedThomsonOwnerContract.toSourceThomsonContract",
+          "kind": "def",
+          "line": 71
+        },
+        {
+          "name": "sourcePreparedThomsonOwner_readout_as_matching",
+          "namespace": "LowEnergy.PreparationPhysicalPreparedThomsonMatchingBridge",
+          "qualified_name": "LowEnergy.PreparationPhysicalPreparedThomsonMatchingBridge.sourcePreparedThomsonOwner_readout_as_matching",
+          "kind": "theorem",
+          "line": 82
+        }
+      ],
+      "owner_selection": {
+        "actual_package_imports": [
+          "H0mework.Papers.LowEnergyL23PreparedOwnerC62"
+        ],
+        "scope": "candidate expected import closure; not formally accepted"
+      }
+    }
+  ],
+  "direct_consumers": [
+    {
+      "kind": "lean",
+      "source_commit": "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46",
+      "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/SourceThomsonMatchingConsumer.lean",
+      "source_sha256": "5ceb111bc8b682078c2626d3796a5af46d7f1a2afebfd6bbc0669431455629e7",
+      "public": {
+        "path": "Lean/H0mework/Versions/E055/ReleaseMaterials/Physics/LowEnergyPhenomenology/AlphaSource/SourceThomsonMatchingConsumer.lean",
+        "sha256": "555ae43593586b72267163d7883b2caafddc1714577ceb55ae4e914254fc14db",
+        "module": "H0mework.Versions.E055.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.SourceThomsonMatchingConsumer",
+        "variant": "file"
+      },
+      "verification": {
+        "identity": "candidate-only",
+        "kernel": "pending"
+      },
+      "declaration_scope": "Declarations explicitly selected by the revised L23 manuscript.",
+      "declarations": [
+        {
+          "name": "SourceThomsonMatchingContract",
+          "namespace": "LowEnergy.PreparationPhysicalThomsonMatchingReturn",
+          "qualified_name": "LowEnergy.PreparationPhysicalThomsonMatchingReturn.SourceThomsonMatchingContract",
+          "kind": "structure",
+          "line": 56
+        },
+        {
+          "name": "sourceThomsonMatching_return",
+          "namespace": "LowEnergy.PreparationPhysicalThomsonMatchingReturn",
+          "qualified_name": "LowEnergy.PreparationPhysicalThomsonMatchingReturn.sourceThomsonMatching_return",
+          "kind": "theorem",
+          "line": 71
+        }
+      ],
+      "owner_selection": {
+        "actual_package_imports": [
+          "H0mework.Papers.LowEnergyL23PreparedOwnerC62"
+        ],
+        "scope": "candidate expected import closure; not formally accepted"
+      }
+    },
+    {
+      "kind": "lean",
+      "source_commit": "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46",
+      "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/SourcePreparedThomsonMatchingBridge.lean",
+      "source_sha256": "b5dc5de27d3572002f6f2d9f066f1a4343604e22f6c38d190c26b9cb475632ec",
+      "public": {
+        "path": "Lean/H0mework/Versions/C62/ReleaseMaterials/Physics/LowEnergyPhenomenology/AlphaSource/SourcePreparedThomsonMatchingBridge.lean",
+        "sha256": "c697c347be481dcde6e65e27e7542439fbffaf1c9198433d1bb62ef7db4d6fdc",
+        "module": "H0mework.Versions.C62.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.SourcePreparedThomsonMatchingBridge",
+        "variant": "file"
+      },
+      "verification": {
+        "identity": "candidate-only",
+        "kernel": "pending"
+      },
+      "declaration_scope": "Declarations explicitly selected by the revised L23 manuscript.",
+      "declarations": [
+        {
+          "name": "SourcePreparedThomsonOwnerContract",
+          "namespace": "LowEnergy.PreparationPhysicalPreparedThomsonMatchingBridge",
+          "qualified_name": "LowEnergy.PreparationPhysicalPreparedThomsonMatchingBridge.SourcePreparedThomsonOwnerContract",
+          "kind": "structure",
+          "line": 28
+        },
+        {
+          "name": "sourcePreparedThomsonOwner_prepared_full",
+          "namespace": "LowEnergy.PreparationPhysicalPreparedThomsonMatchingBridge",
+          "qualified_name": "LowEnergy.PreparationPhysicalPreparedThomsonMatchingBridge.sourcePreparedThomsonOwner_prepared_full",
+          "kind": "theorem",
+          "line": 51
+        },
+        {
+          "name": "sourcePreparedThomsonOwner_readout",
+          "namespace": "LowEnergy.PreparationPhysicalPreparedThomsonMatchingBridge",
+          "qualified_name": "LowEnergy.PreparationPhysicalPreparedThomsonMatchingBridge.sourcePreparedThomsonOwner_readout",
+          "kind": "theorem",
+          "line": 61
+        },
+        {
+          "name": "SourcePreparedThomsonOwnerContract.toSourceThomsonContract",
+          "namespace": "LowEnergy.PreparationPhysicalPreparedThomsonMatchingBridge",
+          "qualified_name": "LowEnergy.PreparationPhysicalPreparedThomsonMatchingBridge.SourcePreparedThomsonOwnerContract.toSourceThomsonContract",
+          "kind": "def",
+          "line": 71
+        },
+        {
+          "name": "sourcePreparedThomsonOwner_readout_as_matching",
+          "namespace": "LowEnergy.PreparationPhysicalPreparedThomsonMatchingBridge",
+          "qualified_name": "LowEnergy.PreparationPhysicalPreparedThomsonMatchingBridge.sourcePreparedThomsonOwner_readout_as_matching",
+          "kind": "theorem",
+          "line": 82
+        }
+      ],
+      "owner_selection": {
+        "actual_package_imports": [
+          "H0mework.Papers.LowEnergyL23PreparedOwnerC62"
+        ],
+        "scope": "candidate expected import closure; not formally accepted"
+      }
+    },
+    {
+      "kind": "lean",
+      "source_commit": "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46",
+      "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/SourcePreparedThomsonFullLightReturn.lean",
+      "source_sha256": "691211aecf374b028924d6805a19eb244ef6fdd3a1fcda1c0664f5f1e7952c9b",
+      "public": {
+        "path": "Lean/H0mework/Versions/C62/ReleaseMaterials/Physics/LowEnergyPhenomenology/AlphaSource/SourcePreparedThomsonFullLightReturn.lean",
+        "sha256": "17e3bab4f4ab069677cc2bf032f9000708981481f2127660d64b601bf323dbf4",
+        "module": "H0mework.Versions.C62.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.SourcePreparedThomsonFullLightReturn",
+        "variant": "file"
+      },
+      "verification": {
+        "identity": "candidate-only",
+        "kernel": "pending"
+      },
+      "declaration_scope": "Declarations explicitly selected by the revised L23 manuscript.",
+      "declarations": [
+        {
+          "name": "SourcePreparedThomsonFullLightReturn",
+          "namespace": "LowEnergy.PreparationPhysicalPreparedThomsonFullLightReturn",
+          "qualified_name": "LowEnergy.PreparationPhysicalPreparedThomsonFullLightReturn.SourcePreparedThomsonFullLightReturn",
+          "kind": "structure",
+          "line": 36
+        },
+        {
+          "name": "sourcePreparedThomsonNormalizedCEM",
+          "namespace": "LowEnergy.PreparationPhysicalPreparedThomsonFullLightReturn",
+          "qualified_name": "LowEnergy.PreparationPhysicalPreparedThomsonFullLightReturn.sourcePreparedThomsonNormalizedCEM",
+          "kind": "def",
+          "line": 49
+        },
+        {
+          "name": "SourcePreparedThomsonFullLightReturn.toMatchingContract",
+          "namespace": "LowEnergy.PreparationPhysicalPreparedThomsonFullLightReturn",
+          "qualified_name": "LowEnergy.PreparationPhysicalPreparedThomsonFullLightReturn.SourcePreparedThomsonFullLightReturn.toMatchingContract",
+          "kind": "def",
+          "line": 52
+        },
+        {
+          "name": "sourcePreparedThomsonFullLightReturn_zeroTransfer",
+          "namespace": "LowEnergy.PreparationPhysicalPreparedThomsonFullLightReturn",
+          "qualified_name": "LowEnergy.PreparationPhysicalPreparedThomsonFullLightReturn.sourcePreparedThomsonFullLightReturn_zeroTransfer",
+          "kind": "theorem",
+          "line": 60
+        },
+        {
+          "name": "sourcePreparedThomsonFullLightReturn_error_bound",
+          "namespace": "LowEnergy.PreparationPhysicalPreparedThomsonFullLightReturn",
+          "qualified_name": "LowEnergy.PreparationPhysicalPreparedThomsonFullLightReturn.sourcePreparedThomsonFullLightReturn_error_bound",
+          "kind": "theorem",
+          "line": 81
+        },
+        {
+          "name": "sourcePreparedThomsonFullLightReturn_readout_as_matching",
+          "namespace": "LowEnergy.PreparationPhysicalPreparedThomsonFullLightReturn",
+          "qualified_name": "LowEnergy.PreparationPhysicalPreparedThomsonFullLightReturn.sourcePreparedThomsonFullLightReturn_readout_as_matching",
+          "kind": "theorem",
+          "line": 93
+        }
+      ],
+      "owner_selection": {
+        "actual_package_imports": [
+          "H0mework.Papers.LowEnergyL23PreparedOwnerC62"
+        ],
+        "scope": "candidate expected import closure; not formally accepted"
+      }
+    }
+  ],
+  "resources": [
+    {
+      "kind": "artifact",
+      "source_commit": "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46",
+      "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/canonical_preparation_physical_prepared_thomson_matching_bridge_certification.json",
+      "source_sha256": "51df21231d163e828d8196b8bbfbcdbc915999eda1f7cb8a93fd6382e80e6b7e",
+      "public": {
+        "path": "evidence/low-energy-releases/c62/alpha-source/canonical_preparation_physical_prepared_thomson_matching_bridge_certification.json",
+        "sha256": "51df21231d163e828d8196b8bbfbcdbc915999eda1f7cb8a93fd6382e80e6b7e"
+      },
+      "verification": {
+        "identity": "candidate-only"
+      }
+    }
+  ],
+  "import_bridges": [
+    {
+      "source_commit": "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46",
+      "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSourcePreparedThomsonMatchingBridge.lean",
+      "source_sha256": "372d56bbf60b52d0395294aa81f6ebbb49c39e378863ccd427d0adc6a0aa8607",
+      "role": "direct_consumers",
+      "declaration_scope": "Import-only selected Lean source; exact canonical entry compiled in the new package.",
+      "public": {
+        "path": "Lean/H0mework/Versions/C62/ReleaseMaterials/Physics/LowEnergyPhenomenology/AlphaSource/CanonicalPreparationSourcePreparedThomsonMatchingBridge.lean",
+        "sha256": "90c0ecd415968d494c61a8c528d0d8bc166d844f5dd10a54d25402ffbf13ab49",
+        "module": "H0mework.Versions.C62.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalPreparationSourcePreparedThomsonMatchingBridge",
+        "variant": "file"
+      },
+      "verification": {
+        "identity": "candidate-only",
+        "kernel": "pending"
+      }
+    }
+  ],
+  "original_certification_inheritance": [
+    {
+      "source_commit": "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46",
+      "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/canonical_preparation_physical_prepared_thomson_matching_bridge_certification.json",
+      "source_sha256": "51df21231d163e828d8196b8bbfbcdbc915999eda1f7cb8a93fd6382e80e6b7e",
+      "status": "CERTIFY",
+      "scope": "subordinate nativeY-prepared owner contract with raw ordinary units; not actual electron matching",
+      "execution_reused": true,
+      "new_execution": false
+    }
+  ]
+}

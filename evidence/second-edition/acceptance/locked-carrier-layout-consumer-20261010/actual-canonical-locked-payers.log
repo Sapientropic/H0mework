@@ -1,0 +1,37 @@
+OWNER LowEnergy.PreparationVacuumPhysicalElectromagneticDirection.sourceRestLockedMixing = H0mework.Versions.R9c73a630.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalPreparationSourceLockedPoleCurrent
+TYPE LowEnergy.PreparationVacuumPhysicalElectromagneticDirection.sourceRestLockedMixing = Fin 4 →
+  Fin 3 →
+    Matrix LowEnergy.PreparationVacuumElectromagneticIdentity.RestStateIndex
+      LowEnergy.PreparationVacuumElectromagneticIdentity.RestStateIndex ℂ
+OWNER LowEnergy.PreparationVacuumPhysicalElectromagneticDirection.actualRestState_locked_current = H0mework.Versions.R9c73a630.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalPreparationSourceLockedPoleCurrent
+TYPE LowEnergy.PreparationVacuumPhysicalElectromagneticDirection.actualRestState_locked_current = ∀ (mu : Fin 4)
+  (i : Fin 3) (point : SaturationMonoid.PhysicsCore.ProofFreeRicherAnholonomicSource.BasePoint)
+  (left right : LowEnergy.PreparationVacuumElectromagneticIdentity.RestStateIndex),
+  (SaturationMonoid.PhysicsCore.Stage9C.Material.SpinPair.actual.conjugateMatter point)
+      ((SaturationMonoid.PhysicsCore.Stage10.CanonicalMatter.canonicalDual
+          (LowEnergy.PreparationVacuumElectromagneticIdentity.actualRestStatePreparation left))
+        ((LowEnergy.PreparationVacuumPhysicalElectromagneticDirection.sourceLockedCurrent mu i)
+          ((LowEnergy.PreparationVacuumElectromagneticIdentity.actualRestStatePreparation right)
+            (SaturationMonoid.PhysicsCore.Stage9C.Material.SpinPair.actual.matter point)))) =
+    ↑SaturationMonoid.PhysicsCore.Stage10.ActionNormalization.phaseMomentum *
+      LowEnergy.PreparationVacuumPhysicalElectromagneticDirection.sourceRestLockedMixing mu i left right
+OWNER LowEnergy.PreparationVacuumPhysicalElectromagneticDirection.sourceLockedField = H0mework.Versions.R9c73a630.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalPreparationSourceLockedFieldReturn
+TYPE LowEnergy.PreparationVacuumPhysicalElectromagneticDirection.sourceLockedField = Fin 4 →
+  Fin 3 → LowEnergy.PreparationVacuumMixedFieldReturn.Field289
+OWNER LowEnergy.PreparationVacuumPhysicalElectromagneticDirection.sourceLockedField_lorentz = H0mework.Versions.R9c73a630.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalPreparationSourceLockedFieldReturn
+TYPE LowEnergy.PreparationVacuumPhysicalElectromagneticDirection.sourceLockedField_lorentz = ∀ (mu nu : Fin 4)
+  (i : Fin 3) (a : Fin 6),
+  LowEnergy.PreparationVacuumMixedFieldReturn.fieldLorentz
+      (LowEnergy.PreparationVacuumPhysicalElectromagneticDirection.sourceLockedField mu i) nu a =
+    if nu = mu ∧ a = LowEnergy.PreparationVacuumPhysicalElectromagneticDirection.sourceSpinSlot i then 1 else 0
+OWNER LowEnergy.PreparationVacuumPhysicalElectromagneticDirection.sourceLockedField_connection = H0mework.Versions.R9c73a630.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalPreparationSourceLockedFieldReturn
+TYPE LowEnergy.PreparationVacuumPhysicalElectromagneticDirection.sourceLockedField_connection = ∀ (mu nu : Fin 4)
+  (i : Fin 3),
+  SaturationMonoid.PhysicsCore.LowEnergy.Electromagnetic.CanonicalCoframe.connectionDirection
+      (LowEnergy.PreparationVacuumMixedFieldReturn.sourceField
+        (LowEnergy.PreparationVacuumPhysicalElectromagneticDirection.sourceLockedField mu i))
+      nu =
+    if nu = mu then
+      SaturationMonoid.PhysicsCore.LowEnergy.Quantum.operatorMatrix
+        (LowEnergy.PreparationVacuumPhysicalElectromagneticDirection.sourceLockedAction i)
+    else 0

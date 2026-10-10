@@ -37,6 +37,8 @@ python3 tools/edition_release.py --edition low-energy --paper low-energy-loop-re
 
 P37／P38 的完整 Audit 与原认证 ProductionConsumers 定义同名声明，各自属于原独立编译环境。映射用精确 `source_paths` 选择完整源文件，并分别登记聚合入口与根声明；两种包分别构建和审查。每份原认证消费者的完整生产正文、原测试根、原 source／object SHA 与认证回执均保留。
 
+低能稿 1 的最终 L23 使用固定 c62 原单位修复，独立包为 `low-energy-l23-prepared-owner-c62`，入口为 `H0mework.Papers.LowEnergyL23PreparedOwnerC62`。其 13 个选定根包含原单位 owner、匹配转换与完整 full-light 消费者；旧 E055 源和原回执保持，原 E055 包继续用于 L21／L22。整篇 `--paper low-energy-phenomenology` 命令包含该独立包；原路径视图使用同名 view ID。
+
 构建执行实际选定生产与消费者的 import 闭包，沿用 trust0／werror。`trust`先以 `lake --no-build`检查现有编译结果与当前源一致，再检查选定声明的完整类型、值、归纳与 recursor 元数据闭包，记录标准公理、unsafe／partial 与检查数量。运行记录注明缓存和实际输入；本轮本地执行复用了工作区编译缓存。
 
 ## 原路径与冻结资源

@@ -37,3 +37,7 @@ charged 的 `MixedSpectatorCandidate` 下各模块也会生成同名 `DecidableE
 `sourcePinnedResolvent_boundary` 的非共振分支已进入 `ContinuousLinearMap.ext`。此时先用 `ContinuousLinearMap.add_apply`、`smul_apply`、`zero_apply` 将算子运算送到点值，再消费值空间的 `smul_zero` 与 `zero_add`，避免在整个 `SourceOp` 上搜索标量零实例。
 
 七份副本的完整原源码 SHA 为 `ecdd416e7bf8cff2a7449a0f49e9ad7dae2ada3d8bff7bbacec8d4bd68e824ee`，适配原路径视图 SHA 为 `f47d8897c1a373d8f14fc19b76d3fa3439be1c23acf2441f47f57ba761a80e72`。原陈述、定义、前提、导入、选项及 attributes 逐字保持；两百万总预算与默认实例搜索预算保持。完整 C62 模块及[原陈述独立消费者](../evidence/second-edition/acceptance/pinned-pole-boundary-consumer-20261010/result.json)实际通过，[七源逆验](../evidence/second-edition/acceptance/pinned-pole-boundary-proof-identity-20261010/result.json)保留完整源码比较，原首轮消费者夹具失败另存。
+
+`SourceFirstFullGaugeRemainder` 的六份既有私有 owner 规则指向实际 `CanonicalPreparationSourceChargedStaticLaurent`，原 namespace、`linear_matrix` 名称、声明与预算保持；真实 owner、完整 R9 模块及三个原陈述消费者通过。见[完整消费者](../evidence/second-edition/acceptance/gauge-remainder-owner-consumer-20261010/result.json)与[应用逆验](../evidence/second-edition/acceptance/gauge-remainder-owner-application-20261010/result.json)。
+
+R9 的 `ActualEMSourceLockedCarrier` 消费同一 canonical LockedFieldReturn owner。两支 20 份完整程序在精确替换实际 import token 后正文及递归输入相同，另三份原零声明 import alias 已核对。迁移改动这一条 import，原始两支完整源继续保留，原载体源码严格逆回；[完整模块与原陈述消费者](../evidence/second-edition/acceptance/locked-carrier-layout-consumer-20261010/result.json)及[递归来源与应用](../evidence/second-edition/acceptance/locked-carrier-layout-application-20261010/result.json)保存实际记录。

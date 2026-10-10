@@ -1,0 +1,592 @@
+ALL LowEnergy.PreparationVacuumChargedLongRangeRead.linear_matrix: [_private.H0mework.Versions.R9c73a630.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalPreparationSourceChargedStaticLaurent.0.LowEnergy.PreparationVacuumChargedLongRangeRead.linear_matrix]
+OWNER _private.H0mework.Versions.R9c73a630.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalPreparationSourceChargedStaticLaurent.0.LowEnergy.PreparationVacuumChargedLongRangeRead.linear_matrix MODULE H0mework.Versions.R9c73a630.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalPreparationSourceChargedStaticLaurent
+TYPE _private.H0mework.Versions.R9c73a630.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalPreparationSourceChargedStaticLaurent.0.LowEnergy.PreparationVacuumChargedLongRangeRead.linear_matrix = ∀
+  (terms : List LowEnergy.PreparationVacuumOriginalGreenFeedback.SourceTerm),
+  (∀ a ∈ terms, a.powers.total = 1) →
+    ∀ (p q : Fin 4 → ℂ) (z : ℂ),
+      LowEnergy.PreparationVacuumOriginalGreenFeedback.sourceMatrix terms (p + z • q) =
+        LowEnergy.PreparationVacuumOriginalGreenFeedback.sourceMatrix terms p +
+          z • LowEnergy.PreparationVacuumOriginalGreenFeedback.sourceMatrix terms q
+VALUE _private.H0mework.Versions.R9c73a630.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalPreparationSourceChargedStaticLaurent.0.LowEnergy.PreparationVacuumChargedLongRangeRead.linear_matrix = fun
+    terms degree p q z =>
+  List.rec (motive := fun terms =>
+    (∀ a ∈ terms, a.powers.total = 1) →
+      LowEnergy.PreparationVacuumOriginalGreenFeedback.sourceMatrix terms (p + z • q) =
+        LowEnergy.PreparationVacuumOriginalGreenFeedback.sourceMatrix terms p +
+          z • LowEnergy.PreparationVacuumOriginalGreenFeedback.sourceMatrix terms q)
+    (fun degree =>
+      of_eq_true
+        (Eq.trans
+          (congr (congrArg Eq (congrArg List.sum List.map_nil))
+            (Eq.trans
+              (congr (congrArg HAdd.hAdd (congrArg List.sum List.map_nil))
+                (Eq.trans (congrArg (HSMul.hSMul z) (congrArg List.sum List.map_nil)) (smul_zero z)))
+              (add_zero 0)))
+          (eq_self 0)))
+    (fun a rest ih degree =>
+      have first :=
+        Matrix.ext fun i j =>
+          id
+            (if h : a.row = i ∧ a.column = j then
+              Eq.mpr
+                (id
+                  (congr (congrArg Eq (if_pos h))
+                    (congr (congrArg HAdd.hAdd (if_pos h)) (congrArg (HSMul.hSMul z) (if_pos h)))))
+                (Eq.mpr
+                  (id
+                    (congrFun'
+                      (congrArg Eq
+                        (Eq.trans
+                          (congrArg
+                            (HMul.hMul
+                              (LowEnergy.PreparationVacuumOriginalGreenFeedback.coefficientValue a.coefficient))
+                            ((fun p q z =>
+                                LowEnergy.PreparationVacuumChargedLongRangeRead.linear_power✝ a.powers
+                                  (degree a
+                                    (of_eq_true
+                                      (Eq.trans List.mem_cons._simp_1
+                                        (Eq.trans (congrFun' (congrArg Or (eq_self a)) (a ∈ rest))
+                                          (true_or (a ∈ rest))))))
+                                  p q z)
+                              p q z))
+                          (mul_add (LowEnergy.PreparationVacuumOriginalGreenFeedback.coefficientValue a.coefficient)
+                            (a.powers.value p) (z * a.powers.value q))))
+                      (LowEnergy.PreparationVacuumOriginalGreenFeedback.coefficientValue a.coefficient *
+                          a.powers.value p +
+                        z *
+                          (LowEnergy.PreparationVacuumOriginalGreenFeedback.coefficientValue a.coefficient *
+                            a.powers.value q))))
+                  (Mathlib.Tactic.Ring.of_eq
+                    (Mathlib.Tactic.Ring.Common.add_congr
+                      (Mathlib.Tactic.Ring.Common.mul_congr
+                        (Mathlib.Tactic.Ring.Common.atom_pf
+                          (LowEnergy.PreparationVacuumOriginalGreenFeedback.coefficientValue a.coefficient) rfl
+                          (Eq.mpr
+                            (id
+                              (congrArg
+                                (fun _a =>
+                                  LowEnergy.PreparationVacuumOriginalGreenFeedback.coefficientValue a.coefficient ^
+                                        Nat.rawCast 1 *
+                                      Nat.rawCast 1 =
+                                    LowEnergy.PreparationVacuumOriginalGreenFeedback.coefficientValue a.coefficient ^
+                                        Nat.rawCast 1 *
+                                      _a)
+                                (Eq.symm rfl)))
+                            (Eq.refl
+                              (LowEnergy.PreparationVacuumOriginalGreenFeedback.coefficientValue a.coefficient ^
+                                  Nat.rawCast 1 *
+                                Nat.rawCast 1))))
+                        (Mathlib.Tactic.Ring.Common.atom_pf (a.powers.value p) rfl
+                          (Eq.mpr
+                            (id
+                              (congrArg
+                                (fun _a =>
+                                  a.powers.value p ^ Nat.rawCast 1 * Nat.rawCast 1 =
+                                    a.powers.value p ^ Nat.rawCast 1 * _a)
+                                (Eq.symm rfl)))
+                            (Eq.refl (a.powers.value p ^ Nat.rawCast 1 * Nat.rawCast 1))))
+                        (Mathlib.Tactic.Ring.Common.add_mul
+                          (Mathlib.Tactic.Ring.Common.mul_add
+                            (Mathlib.Tactic.Ring.Common.mul_pf_left
+                              (LowEnergy.PreparationVacuumOriginalGreenFeedback.coefficientValue a.coefficient)
+                              (Nat.rawCast 1)
+                              (Mathlib.Tactic.Ring.Common.mul_pf_right (a.powers.value p) (Nat.rawCast 1)
+                                (Mathlib.Meta.NormNum.IsNat.to_raw_eq
+                                  (Mathlib.Meta.NormNum.isNat_mul (Eq.refl HMul.hMul)
+                                    (Mathlib.Meta.NormNum.IsNat.of_raw ℂ 1) (Mathlib.Meta.NormNum.IsNat.of_raw ℂ 1)
+                                    (Eq.refl 1)))))
+                            (Mathlib.Tactic.Ring.Common.mul_zero
+                              (LowEnergy.PreparationVacuumOriginalGreenFeedback.coefficientValue a.coefficient ^
+                                  Nat.rawCast 1 *
+                                Nat.rawCast 1))
+                            (Mathlib.Tactic.Ring.Common.add_pf_add_zero
+                              (LowEnergy.PreparationVacuumOriginalGreenFeedback.coefficientValue a.coefficient ^
+                                    Nat.rawCast 1 *
+                                  (a.powers.value p ^ Nat.rawCast 1 * Nat.rawCast 1) +
+                                0)))
+                          (Mathlib.Tactic.Ring.Common.zero_mul (a.powers.value p ^ Nat.rawCast 1 * Nat.rawCast 1 + 0))
+                          (Mathlib.Tactic.Ring.Common.add_pf_add_zero
+                            (LowEnergy.PreparationVacuumOriginalGreenFeedback.coefficientValue a.coefficient ^
+                                  Nat.rawCast 1 *
+                                (a.powers.value p ^ Nat.rawCast 1 * Nat.rawCast 1) +
+                              0))))
+                      (Mathlib.Tactic.Ring.Common.mul_congr
+                        (Mathlib.Tactic.Ring.Common.atom_pf
+                          (LowEnergy.PreparationVacuumOriginalGreenFeedback.coefficientValue a.coefficient) rfl
+                          (Eq.mpr
+                            (id
+                              (congrArg
+                                (fun _a =>
+                                  LowEnergy.PreparationVacuumOriginalGreenFeedback.coefficientValue a.coefficient ^
+                                        Nat.rawCast 1 *
+                                      Nat.rawCast 1 =
+                                    LowEnergy.PreparationVacuumOriginalGreenFeedback.coefficientValue a.coefficient ^
+                                        Nat.rawCast 1 *
+                                      _a)
+                                (Eq.symm rfl)))
+                            (Eq.refl
+                              (LowEnergy.PreparationVacuumOriginalGreenFeedback.coefficientValue a.coefficient ^
+                                  Nat.rawCast 1 *
+                                Nat.rawCast 1))))
+                        (Mathlib.Tactic.Ring.Common.mul_congr
+                          (Mathlib.Tactic.Ring.Common.atom_pf z rfl
+                            (Eq.mpr
+                              (id
+                                (congrArg (fun _a => z ^ Nat.rawCast 1 * Nat.rawCast 1 = z ^ Nat.rawCast 1 * _a)
+                                  (Eq.symm rfl)))
+                              (Eq.refl (z ^ Nat.rawCast 1 * Nat.rawCast 1))))
+                          (Mathlib.Tactic.Ring.Common.atom_pf (a.powers.value q) rfl
+                            (Eq.mpr
+                              (id
+                                (congrArg
+                                  (fun _a =>
+                                    a.powers.value q ^ Nat.rawCast 1 * Nat.rawCast 1 =
+                                      a.powers.value q ^ Nat.rawCast 1 * _a)
+                                  (Eq.symm rfl)))
+                              (Eq.refl (a.powers.value q ^ Nat.rawCast 1 * Nat.rawCast 1))))
+                          (Mathlib.Tactic.Ring.Common.add_mul
+                            (Mathlib.Tactic.Ring.Common.mul_add
+                              (Mathlib.Tactic.Ring.Common.mul_pf_left z (Nat.rawCast 1)
+                                (Mathlib.Tactic.Ring.Common.mul_pf_right (a.powers.value q) (Nat.rawCast 1)
+                                  (Mathlib.Meta.NormNum.IsNat.to_raw_eq
+                                    (Mathlib.Meta.NormNum.isNat_mul (Eq.refl HMul.hMul)
+                                      (Mathlib.Meta.NormNum.IsNat.of_raw ℂ 1) (Mathlib.Meta.NormNum.IsNat.of_raw ℂ 1)
+                                      (Eq.refl 1)))))
+                              (Mathlib.Tactic.Ring.Common.mul_zero (z ^ Nat.rawCast 1 * Nat.rawCast 1))
+                              (Mathlib.Tactic.Ring.Common.add_pf_add_zero
+                                (z ^ Nat.rawCast 1 * (a.powers.value q ^ Nat.rawCast 1 * Nat.rawCast 1) + 0)))
+                            (Mathlib.Tactic.Ring.Common.zero_mul (a.powers.value q ^ Nat.rawCast 1 * Nat.rawCast 1 + 0))
+                            (Mathlib.Tactic.Ring.Common.add_pf_add_zero
+                              (z ^ Nat.rawCast 1 * (a.powers.value q ^ Nat.rawCast 1 * Nat.rawCast 1) + 0))))
+                        (Mathlib.Tactic.Ring.Common.add_mul
+                          (Mathlib.Tactic.Ring.Common.mul_add
+                            (Mathlib.Tactic.Ring.Common.mul_pf_left
+                              (LowEnergy.PreparationVacuumOriginalGreenFeedback.coefficientValue a.coefficient)
+                              (Nat.rawCast 1)
+                              (Mathlib.Tactic.Ring.Common.mul_pf_right z (Nat.rawCast 1)
+                                (Mathlib.Tactic.Ring.Common.mul_pf_right (a.powers.value q) (Nat.rawCast 1)
+                                  (Mathlib.Meta.NormNum.IsNat.to_raw_eq
+                                    (Mathlib.Meta.NormNum.isNat_mul (Eq.refl HMul.hMul)
+                                      (Mathlib.Meta.NormNum.IsNat.of_raw ℂ 1) (Mathlib.Meta.NormNum.IsNat.of_raw ℂ 1)
+                                      (Eq.refl 1))))))
+                            (Mathlib.Tactic.Ring.Common.mul_zero
+                              (LowEnergy.PreparationVacuumOriginalGreenFeedback.coefficientValue a.coefficient ^
+                                  Nat.rawCast 1 *
+                                Nat.rawCast 1))
+                            (Mathlib.Tactic.Ring.Common.add_pf_add_zero
+                              (LowEnergy.PreparationVacuumOriginalGreenFeedback.coefficientValue a.coefficient ^
+                                    Nat.rawCast 1 *
+                                  (z ^ Nat.rawCast 1 * (a.powers.value q ^ Nat.rawCast 1 * Nat.rawCast 1)) +
+                                0)))
+                          (Mathlib.Tactic.Ring.Common.zero_mul
+                            (z ^ Nat.rawCast 1 * (a.powers.value q ^ Nat.rawCast 1 * Nat.rawCast 1) + 0))
+                          (Mathlib.Tactic.Ring.Common.add_pf_add_zero
+                            (LowEnergy.PreparationVacuumOriginalGreenFeedback.coefficientValue a.coefficient ^
+                                  Nat.rawCast 1 *
+                                (z ^ Nat.rawCast 1 * (a.powers.value q ^ Nat.rawCast 1 * Nat.rawCast 1)) +
+                              0))))
+                      (Mathlib.Tactic.Ring.Common.add_pf_add_lt
+                        (LowEnergy.PreparationVacuumOriginalGreenFeedback.coefficientValue a.coefficient ^
+                            Nat.rawCast 1 *
+                          (a.powers.value p ^ Nat.rawCast 1 * Nat.rawCast 1))
+                        (Mathlib.Tactic.Ring.Common.add_pf_zero_add
+                          (LowEnergy.PreparationVacuumOriginalGreenFeedback.coefficientValue a.coefficient ^
+                                Nat.rawCast 1 *
+                              (z ^ Nat.rawCast 1 * (a.powers.value q ^ Nat.rawCast 1 * Nat.rawCast 1)) +
+                            0))))
+                    (Mathlib.Tactic.Ring.Common.add_congr
+                      (Mathlib.Tactic.Ring.Common.mul_congr
+                        (Mathlib.Tactic.Ring.Common.atom_pf
+                          (LowEnergy.PreparationVacuumOriginalGreenFeedback.coefficientValue a.coefficient) rfl
+                          (Eq.mpr
+                            (id
+                              (congrArg
+                                (fun _a =>
+                                  LowEnergy.PreparationVacuumOriginalGreenFeedback.coefficientValue a.coefficient ^
+                                        Nat.rawCast 1 *
+                                      Nat.rawCast 1 =
+                                    LowEnergy.PreparationVacuumOriginalGreenFeedback.coefficientValue a.coefficient ^
+                                        Nat.rawCast 1 *
+                                      _a)
+                                (Eq.symm rfl)))
+                            (Eq.refl
+                              (LowEnergy.PreparationVacuumOriginalGreenFeedback.coefficientValue a.coefficient ^
+                                  Nat.rawCast 1 *
+                                Nat.rawCast 1))))
+                        (Mathlib.Tactic.Ring.Common.atom_pf (a.powers.value p) rfl
+                          (Eq.mpr
+                            (id
+                              (congrArg
+                                (fun _a =>
+                                  a.powers.value p ^ Nat.rawCast 1 * Nat.rawCast 1 =
+                                    a.powers.value p ^ Nat.rawCast 1 * _a)
+                                (Eq.symm rfl)))
+                            (Eq.refl (a.powers.value p ^ Nat.rawCast 1 * Nat.rawCast 1))))
+                        (Mathlib.Tactic.Ring.Common.add_mul
+                          (Mathlib.Tactic.Ring.Common.mul_add
+                            (Mathlib.Tactic.Ring.Common.mul_pf_left
+                              (LowEnergy.PreparationVacuumOriginalGreenFeedback.coefficientValue a.coefficient)
+                              (Nat.rawCast 1)
+                              (Mathlib.Tactic.Ring.Common.mul_pf_right (a.powers.value p) (Nat.rawCast 1)
+                                (Mathlib.Meta.NormNum.IsNat.to_raw_eq
+                                  (Mathlib.Meta.NormNum.isNat_mul (Eq.refl HMul.hMul)
+                                    (Mathlib.Meta.NormNum.IsNat.of_raw ℂ 1) (Mathlib.Meta.NormNum.IsNat.of_raw ℂ 1)
+                                    (Eq.refl 1)))))
+                            (Mathlib.Tactic.Ring.Common.mul_zero
+                              (LowEnergy.PreparationVacuumOriginalGreenFeedback.coefficientValue a.coefficient ^
+                                  Nat.rawCast 1 *
+                                Nat.rawCast 1))
+                            (Mathlib.Tactic.Ring.Common.add_pf_add_zero
+                              (LowEnergy.PreparationVacuumOriginalGreenFeedback.coefficientValue a.coefficient ^
+                                    Nat.rawCast 1 *
+                                  (a.powers.value p ^ Nat.rawCast 1 * Nat.rawCast 1) +
+                                0)))
+                          (Mathlib.Tactic.Ring.Common.zero_mul (a.powers.value p ^ Nat.rawCast 1 * Nat.rawCast 1 + 0))
+                          (Mathlib.Tactic.Ring.Common.add_pf_add_zero
+                            (LowEnergy.PreparationVacuumOriginalGreenFeedback.coefficientValue a.coefficient ^
+                                  Nat.rawCast 1 *
+                                (a.powers.value p ^ Nat.rawCast 1 * Nat.rawCast 1) +
+                              0))))
+                      (Mathlib.Tactic.Ring.Common.mul_congr
+                        (Mathlib.Tactic.Ring.Common.atom_pf z rfl
+                          (Eq.mpr
+                            (id
+                              (congrArg (fun _a => z ^ Nat.rawCast 1 * Nat.rawCast 1 = z ^ Nat.rawCast 1 * _a)
+                                (Eq.symm rfl)))
+                            (Eq.refl (z ^ Nat.rawCast 1 * Nat.rawCast 1))))
+                        (Mathlib.Tactic.Ring.Common.mul_congr
+                          (Mathlib.Tactic.Ring.Common.atom_pf
+                            (LowEnergy.PreparationVacuumOriginalGreenFeedback.coefficientValue a.coefficient) rfl
+                            (Eq.mpr
+                              (id
+                                (congrArg
+                                  (fun _a =>
+                                    LowEnergy.PreparationVacuumOriginalGreenFeedback.coefficientValue a.coefficient ^
+                                          Nat.rawCast 1 *
+                                        Nat.rawCast 1 =
+                                      LowEnergy.PreparationVacuumOriginalGreenFeedback.coefficientValue a.coefficient ^
+                                          Nat.rawCast 1 *
+                                        _a)
+                                  (Eq.symm rfl)))
+                              (Eq.refl
+                                (LowEnergy.PreparationVacuumOriginalGreenFeedback.coefficientValue a.coefficient ^
+                                    Nat.rawCast 1 *
+                                  Nat.rawCast 1))))
+                          (Mathlib.Tactic.Ring.Common.atom_pf (a.powers.value q) rfl
+                            (Eq.mpr
+                              (id
+                                (congrArg
+                                  (fun _a =>
+                                    a.powers.value q ^ Nat.rawCast 1 * Nat.rawCast 1 =
+                                      a.powers.value q ^ Nat.rawCast 1 * _a)
+                                  (Eq.symm rfl)))
+                              (Eq.refl (a.powers.value q ^ Nat.rawCast 1 * Nat.rawCast 1))))
+                          (Mathlib.Tactic.Ring.Common.add_mul
+                            (Mathlib.Tactic.Ring.Common.mul_add
+                              (Mathlib.Tactic.Ring.Common.mul_pf_left
+                                (LowEnergy.PreparationVacuumOriginalGreenFeedback.coefficientValue a.coefficient)
+                                (Nat.rawCast 1)
+                                (Mathlib.Tactic.Ring.Common.mul_pf_right (a.powers.value q) (Nat.rawCast 1)
+                                  (Mathlib.Meta.NormNum.IsNat.to_raw_eq
+                                    (Mathlib.Meta.NormNum.isNat_mul (Eq.refl HMul.hMul)
+                                      (Mathlib.Meta.NormNum.IsNat.of_raw ℂ 1) (Mathlib.Meta.NormNum.IsNat.of_raw ℂ 1)
+                                      (Eq.refl 1)))))
+                              (Mathlib.Tactic.Ring.Common.mul_zero
+                                (LowEnergy.PreparationVacuumOriginalGreenFeedback.coefficientValue a.coefficient ^
+                                    Nat.rawCast 1 *
+                                  Nat.rawCast 1))
+                              (Mathlib.Tactic.Ring.Common.add_pf_add_zero
+                                (LowEnergy.PreparationVacuumOriginalGreenFeedback.coefficientValue a.coefficient ^
+                                      Nat.rawCast 1 *
+                                    (a.powers.value q ^ Nat.rawCast 1 * Nat.rawCast 1) +
+                                  0)))
+                            (Mathlib.Tactic.Ring.Common.zero_mul (a.powers.value q ^ Nat.rawCast 1 * Nat.rawCast 1 + 0))
+                            (Mathlib.Tactic.Ring.Common.add_pf_add_zero
+                              (LowEnergy.PreparationVacuumOriginalGreenFeedback.coefficientValue a.coefficient ^
+                                    Nat.rawCast 1 *
+                                  (a.powers.value q ^ Nat.rawCast 1 * Nat.rawCast 1) +
+                                0))))
+                        (Mathlib.Tactic.Ring.Common.add_mul
+                          (Mathlib.Tactic.Ring.Common.mul_add
+                            (Mathlib.Tactic.Ring.Common.mul_pf_right
+                              (LowEnergy.PreparationVacuumOriginalGreenFeedback.coefficientValue a.coefficient)
+                              (Nat.rawCast 1)
+                              (Mathlib.Tactic.Ring.Common.mul_pf_left z (Nat.rawCast 1)
+                                (Mathlib.Tactic.Ring.Common.mul_pf_right (a.powers.value q) (Nat.rawCast 1)
+                                  (Mathlib.Meta.NormNum.IsNat.to_raw_eq
+                                    (Mathlib.Meta.NormNum.isNat_mul (Eq.refl HMul.hMul)
+                                      (Mathlib.Meta.NormNum.IsNat.of_raw ℂ 1) (Mathlib.Meta.NormNum.IsNat.of_raw ℂ 1)
+                                      (Eq.refl 1))))))
+                            (Mathlib.Tactic.Ring.Common.mul_zero (z ^ Nat.rawCast 1 * Nat.rawCast 1))
+                            (Mathlib.Tactic.Ring.Common.add_pf_add_zero
+                              (LowEnergy.PreparationVacuumOriginalGreenFeedback.coefficientValue a.coefficient ^
+                                    Nat.rawCast 1 *
+                                  (z ^ Nat.rawCast 1 * (a.powers.value q ^ Nat.rawCast 1 * Nat.rawCast 1)) +
+                                0)))
+                          (Mathlib.Tactic.Ring.Common.zero_mul
+                            (LowEnergy.PreparationVacuumOriginalGreenFeedback.coefficientValue a.coefficient ^
+                                  Nat.rawCast 1 *
+                                (a.powers.value q ^ Nat.rawCast 1 * Nat.rawCast 1) +
+                              0))
+                          (Mathlib.Tactic.Ring.Common.add_pf_add_zero
+                            (LowEnergy.PreparationVacuumOriginalGreenFeedback.coefficientValue a.coefficient ^
+                                  Nat.rawCast 1 *
+                                (z ^ Nat.rawCast 1 * (a.powers.value q ^ Nat.rawCast 1 * Nat.rawCast 1)) +
+                              0))))
+                      (Mathlib.Tactic.Ring.Common.add_pf_add_lt
+                        (LowEnergy.PreparationVacuumOriginalGreenFeedback.coefficientValue a.coefficient ^
+                            Nat.rawCast 1 *
+                          (a.powers.value p ^ Nat.rawCast 1 * Nat.rawCast 1))
+                        (Mathlib.Tactic.Ring.Common.add_pf_zero_add
+                          (LowEnergy.PreparationVacuumOriginalGreenFeedback.coefficientValue a.coefficient ^
+                                Nat.rawCast 1 *
+                              (z ^ Nat.rawCast 1 * (a.powers.value q ^ Nat.rawCast 1 * Nat.rawCast 1)) +
+                            0))))))
+            else
+              Eq.mpr
+                (id
+                  (congr (congrArg Eq (if_neg h))
+                    (congr (congrArg HAdd.hAdd (if_neg h)) (congrArg (HSMul.hSMul z) (if_neg h)))))
+                (id
+                  (Mathlib.Tactic.Ring.of_eq
+                    (Mathlib.Tactic.Ring.cast_zero (Mathlib.Meta.NormNum.isNat_ofNat ℂ Nat.cast_zero))
+                    (Mathlib.Tactic.Ring.Common.add_congr
+                      (Mathlib.Tactic.Ring.cast_zero (Mathlib.Meta.NormNum.isNat_ofNat ℂ Nat.cast_zero))
+                      (Mathlib.Tactic.Ring.Common.mul_congr
+                        (Mathlib.Tactic.Ring.Common.atom_pf z rfl
+                          (Eq.mpr
+                            (id
+                              (congrArg (fun _a => z ^ Nat.rawCast 1 * Nat.rawCast 1 = z ^ Nat.rawCast 1 * _a)
+                                (Eq.symm rfl)))
+                            (Eq.refl (z ^ Nat.rawCast 1 * Nat.rawCast 1))))
+                        (Mathlib.Tactic.Ring.cast_zero (Mathlib.Meta.NormNum.isNat_ofNat ℂ Nat.cast_zero))
+                        (Mathlib.Tactic.Ring.Common.add_mul
+                          (Mathlib.Tactic.Ring.Common.mul_zero (z ^ Nat.rawCast 1 * Nat.rawCast 1))
+                          (Mathlib.Tactic.Ring.Common.zero_mul 0) (Mathlib.Tactic.Ring.Common.add_pf_zero_add 0)))
+                      (Mathlib.Tactic.Ring.Common.add_pf_zero_add 0)))));
+      Eq.mpr
+        (id
+          (congrArg
+            (fun _a =>
+              _a =
+                LowEnergy.PreparationVacuumOriginalGreenFeedback.sourceMatrix (a :: rest) p +
+                  z • LowEnergy.PreparationVacuumOriginalGreenFeedback.sourceMatrix (a :: rest) q)
+            (LowEnergy.PreparationVacuumOriginalGreenFeedback.sourceMatrix_cons a rest (p + z • q))))
+        (Eq.mpr
+          (id
+            (congrArg
+              (fun _a =>
+                a.matrix (p + z • q) + LowEnergy.PreparationVacuumOriginalGreenFeedback.sourceMatrix rest (p + z • q) =
+                  _a + z • LowEnergy.PreparationVacuumOriginalGreenFeedback.sourceMatrix (a :: rest) q)
+              (LowEnergy.PreparationVacuumOriginalGreenFeedback.sourceMatrix_cons a rest p)))
+          (Eq.mpr
+            (id
+              (congrArg
+                (fun _a =>
+                  a.matrix (p + z • q) +
+                      LowEnergy.PreparationVacuumOriginalGreenFeedback.sourceMatrix rest (p + z • q) =
+                    a.matrix p + LowEnergy.PreparationVacuumOriginalGreenFeedback.sourceMatrix rest p + z • _a)
+                (LowEnergy.PreparationVacuumOriginalGreenFeedback.sourceMatrix_cons a rest q)))
+            (Eq.mpr
+              (id
+                (congrArg
+                  (fun _a =>
+                    _a + LowEnergy.PreparationVacuumOriginalGreenFeedback.sourceMatrix rest (p + z • q) =
+                      a.matrix p + LowEnergy.PreparationVacuumOriginalGreenFeedback.sourceMatrix rest p +
+                        z • (a.matrix q + LowEnergy.PreparationVacuumOriginalGreenFeedback.sourceMatrix rest q))
+                  first))
+              (Eq.mpr
+                (id
+                  (congrArg
+                    (fun _a =>
+                      a.matrix p + z • a.matrix q + _a =
+                        a.matrix p + LowEnergy.PreparationVacuumOriginalGreenFeedback.sourceMatrix rest p +
+                          z • (a.matrix q + LowEnergy.PreparationVacuumOriginalGreenFeedback.sourceMatrix rest q))
+                    (ih fun b hb =>
+                      degree b
+                        (of_eq_true
+                          (Eq.trans List.mem_cons._simp_1
+                            (Eq.trans (congrArg (Or (b = a)) (eq_true hb)) (or_true (b = a))))))))
+                (Mathlib.Tactic.Module.NF.eq_of_eval_eq_eval
+                  (Mathlib.Tactic.Module.NF.add_eq_eval
+                    (Mathlib.Tactic.Module.NF.add_eq_eval (Mathlib.Tactic.Module.NF.atom_eq_eval (a.matrix p))
+                      (Mathlib.Tactic.Module.NF.smul_eq_eval (Mathlib.Tactic.Module.NF.atom_eq_eval (a.matrix q))
+                        (Mathlib.Tactic.Module.NF.eval_algebraMap ℂ ((1, a.matrix q) ::ᵣ [])) rfl)
+                      (Mathlib.Tactic.Module.NF.eval_algebraMap ℂ ((1, a.matrix p) ::ᵣ [])) rfl
+                      (Mathlib.Tactic.Module.NF.add_eq_eval₁ ((algebraMap ℕ ℂ) 1, a.matrix p)
+                        (zero_add ((z * (algebraMap ℕ ℂ) 1, a.matrix q) ::ᵣ []).eval)))
+                    (Mathlib.Tactic.Module.NF.add_eq_eval
+                      (Mathlib.Tactic.Module.NF.atom_eq_eval
+                        (LowEnergy.PreparationVacuumOriginalGreenFeedback.sourceMatrix rest p))
+                      (Mathlib.Tactic.Module.NF.smul_eq_eval
+                        (Mathlib.Tactic.Module.NF.atom_eq_eval
+                          (LowEnergy.PreparationVacuumOriginalGreenFeedback.sourceMatrix rest q))
+                        (Mathlib.Tactic.Module.NF.eval_algebraMap ℂ
+                          ((1, LowEnergy.PreparationVacuumOriginalGreenFeedback.sourceMatrix rest q) ::ᵣ []))
+                        rfl)
+                      (Mathlib.Tactic.Module.NF.eval_algebraMap ℂ
+                        ((1, LowEnergy.PreparationVacuumOriginalGreenFeedback.sourceMatrix rest p) ::ᵣ []))
+                      rfl
+                      (Mathlib.Tactic.Module.NF.add_eq_eval₁
+                        ((algebraMap ℕ ℂ) 1, LowEnergy.PreparationVacuumOriginalGreenFeedback.sourceMatrix rest p)
+                        (zero_add
+                          ((z * (algebraMap ℕ ℂ) 1,
+                                LowEnergy.PreparationVacuumOriginalGreenFeedback.sourceMatrix rest q) ::ᵣ
+                              []).eval)))
+                    rfl rfl
+                    (Mathlib.Tactic.Module.NF.add_eq_eval₁ ((algebraMap ℕ ℂ) 1, a.matrix p)
+                      (Mathlib.Tactic.Module.NF.add_eq_eval₁ (z * (algebraMap ℕ ℂ) 1, a.matrix q)
+                        (zero_add
+                          (((algebraMap ℕ ℂ) 1,
+                                LowEnergy.PreparationVacuumOriginalGreenFeedback.sourceMatrix rest p) ::ᵣ
+                              ((z * (algebraMap ℕ ℂ) 1,
+                                  LowEnergy.PreparationVacuumOriginalGreenFeedback.sourceMatrix rest q) ::ᵣ
+                                [])).eval))))
+                  (Mathlib.Tactic.Module.NF.add_eq_eval
+                    (Mathlib.Tactic.Module.NF.add_eq_eval (Mathlib.Tactic.Module.NF.atom_eq_eval (a.matrix p))
+                      (Mathlib.Tactic.Module.NF.atom_eq_eval
+                        (LowEnergy.PreparationVacuumOriginalGreenFeedback.sourceMatrix rest p))
+                      rfl rfl
+                      (Mathlib.Tactic.Module.NF.add_eq_eval₁ (1, a.matrix p)
+                        (zero_add
+                          ((1, LowEnergy.PreparationVacuumOriginalGreenFeedback.sourceMatrix rest p) ::ᵣ []).eval)))
+                    (Mathlib.Tactic.Module.NF.smul_eq_eval
+                      (Mathlib.Tactic.Module.NF.add_eq_eval (Mathlib.Tactic.Module.NF.atom_eq_eval (a.matrix q))
+                        (Mathlib.Tactic.Module.NF.atom_eq_eval
+                          (LowEnergy.PreparationVacuumOriginalGreenFeedback.sourceMatrix rest q))
+                        rfl rfl
+                        (Mathlib.Tactic.Module.NF.add_eq_eval₁ (1, a.matrix q)
+                          (zero_add
+                            ((1, LowEnergy.PreparationVacuumOriginalGreenFeedback.sourceMatrix rest q) ::ᵣ []).eval)))
+                      (Mathlib.Tactic.Module.NF.eval_algebraMap ℂ
+                        ((1, a.matrix q) ::ᵣ
+                          ((1, LowEnergy.PreparationVacuumOriginalGreenFeedback.sourceMatrix rest q) ::ᵣ [])))
+                      rfl)
+                    (Mathlib.Tactic.Module.NF.eval_algebraMap ℂ
+                      ((1, a.matrix p) ::ᵣ
+                        ((1, LowEnergy.PreparationVacuumOriginalGreenFeedback.sourceMatrix rest p) ::ᵣ [])))
+                    rfl
+                    (Mathlib.Tactic.Module.NF.add_eq_eval₁ ((algebraMap ℕ ℂ) 1, a.matrix p)
+                      (Mathlib.Tactic.Module.NF.add_eq_eval₃ (z * (algebraMap ℕ ℂ) 1, a.matrix q)
+                        (Mathlib.Tactic.Module.NF.add_eq_eval₁
+                          ((algebraMap ℕ ℂ) 1, LowEnergy.PreparationVacuumOriginalGreenFeedback.sourceMatrix rest p)
+                          (zero_add
+                            ((z * (algebraMap ℕ ℂ) 1,
+                                  LowEnergy.PreparationVacuumOriginalGreenFeedback.sourceMatrix rest q) ::ᵣ
+                                []).eval)))))
+                  rfl rfl
+                  (Mathlib.Tactic.Module.NF.eq_cons_cons (a.matrix p)
+                    (Eq.mpr
+                      (id
+                        (congr (congrArg Eq (Eq.trans (eq_natCast (algebraMap ℕ ℂ) 1) Nat.cast_one))
+                          (Eq.trans (eq_natCast (algebraMap ℕ ℂ) 1) Nat.cast_one)))
+                      (Mathlib.Tactic.Ring.of_eq
+                        (Mathlib.Tactic.Ring.cast_pos (Mathlib.Meta.NormNum.isNat_ofNat ℂ Nat.cast_one))
+                        (Mathlib.Tactic.Ring.cast_pos (Mathlib.Meta.NormNum.isNat_ofNat ℂ Nat.cast_one))))
+                    (Mathlib.Tactic.Module.NF.eq_cons_cons (a.matrix q)
+                      (Eq.mpr
+                        (id
+                          (congr
+                            (congrArg Eq
+                              (congrArg (HMul.hMul z) (Eq.trans (eq_natCast (algebraMap ℕ ℂ) 1) Nat.cast_one)))
+                            (congrArg (HMul.hMul z) (Eq.trans (eq_natCast (algebraMap ℕ ℂ) 1) Nat.cast_one))))
+                        (Mathlib.Tactic.Ring.of_eq
+                          (Mathlib.Tactic.Ring.Common.mul_congr
+                            (Mathlib.Tactic.Ring.Common.atom_pf z rfl
+                              (Eq.mpr
+                                (id
+                                  (congrArg (fun _a => z ^ Nat.rawCast 1 * Nat.rawCast 1 = z ^ Nat.rawCast 1 * _a)
+                                    (Eq.symm rfl)))
+                                (Eq.refl (z ^ Nat.rawCast 1 * Nat.rawCast 1))))
+                            (Mathlib.Tactic.Ring.cast_pos (Mathlib.Meta.NormNum.isNat_ofNat ℂ Nat.cast_one))
+                            (Mathlib.Tactic.Ring.Common.add_mul
+                              (Mathlib.Tactic.Ring.Common.mul_add
+                                (Mathlib.Tactic.Ring.Common.mul_pf_left z (Nat.rawCast 1)
+                                  (Mathlib.Meta.NormNum.IsNat.to_raw_eq
+                                    (Mathlib.Meta.NormNum.isNat_mul (Eq.refl HMul.hMul)
+                                      (Mathlib.Meta.NormNum.IsNat.of_raw ℂ 1) (Mathlib.Meta.NormNum.IsNat.of_raw ℂ 1)
+                                      (Eq.refl 1))))
+                                (Mathlib.Tactic.Ring.Common.mul_zero (z ^ Nat.rawCast 1 * Nat.rawCast 1))
+                                (Mathlib.Tactic.Ring.Common.add_pf_add_zero (z ^ Nat.rawCast 1 * Nat.rawCast 1 + 0)))
+                              (Mathlib.Tactic.Ring.Common.zero_mul (Nat.rawCast 1 + 0))
+                              (Mathlib.Tactic.Ring.Common.add_pf_add_zero (z ^ Nat.rawCast 1 * Nat.rawCast 1 + 0))))
+                          (Mathlib.Tactic.Ring.Common.mul_congr
+                            (Mathlib.Tactic.Ring.Common.atom_pf z rfl
+                              (Eq.mpr
+                                (id
+                                  (congrArg (fun _a => z ^ Nat.rawCast 1 * Nat.rawCast 1 = z ^ Nat.rawCast 1 * _a)
+                                    (Eq.symm rfl)))
+                                (Eq.refl (z ^ Nat.rawCast 1 * Nat.rawCast 1))))
+                            (Mathlib.Tactic.Ring.cast_pos (Mathlib.Meta.NormNum.isNat_ofNat ℂ Nat.cast_one))
+                            (Mathlib.Tactic.Ring.Common.add_mul
+                              (Mathlib.Tactic.Ring.Common.mul_add
+                                (Mathlib.Tactic.Ring.Common.mul_pf_left z (Nat.rawCast 1)
+                                  (Mathlib.Meta.NormNum.IsNat.to_raw_eq
+                                    (Mathlib.Meta.NormNum.isNat_mul (Eq.refl HMul.hMul)
+                                      (Mathlib.Meta.NormNum.IsNat.of_raw ℂ 1) (Mathlib.Meta.NormNum.IsNat.of_raw ℂ 1)
+                                      (Eq.refl 1))))
+                                (Mathlib.Tactic.Ring.Common.mul_zero (z ^ Nat.rawCast 1 * Nat.rawCast 1))
+                                (Mathlib.Tactic.Ring.Common.add_pf_add_zero (z ^ Nat.rawCast 1 * Nat.rawCast 1 + 0)))
+                              (Mathlib.Tactic.Ring.Common.zero_mul (Nat.rawCast 1 + 0))
+                              (Mathlib.Tactic.Ring.Common.add_pf_add_zero (z ^ Nat.rawCast 1 * Nat.rawCast 1 + 0))))))
+                      (Mathlib.Tactic.Module.NF.eq_cons_cons
+                        (LowEnergy.PreparationVacuumOriginalGreenFeedback.sourceMatrix rest p)
+                        (Eq.mpr
+                          (id
+                            (congr (congrArg Eq (Eq.trans (eq_natCast (algebraMap ℕ ℂ) 1) Nat.cast_one))
+                              (Eq.trans (eq_natCast (algebraMap ℕ ℂ) 1) Nat.cast_one)))
+                          (Mathlib.Tactic.Ring.of_eq
+                            (Mathlib.Tactic.Ring.cast_pos (Mathlib.Meta.NormNum.isNat_ofNat ℂ Nat.cast_one))
+                            (Mathlib.Tactic.Ring.cast_pos (Mathlib.Meta.NormNum.isNat_ofNat ℂ Nat.cast_one))))
+                        (Mathlib.Tactic.Module.NF.eq_cons_cons
+                          (LowEnergy.PreparationVacuumOriginalGreenFeedback.sourceMatrix rest q)
+                          (Eq.mpr
+                            (id
+                              (congr
+                                (congrArg Eq
+                                  (congrArg (HMul.hMul z) (Eq.trans (eq_natCast (algebraMap ℕ ℂ) 1) Nat.cast_one)))
+                                (congrArg (HMul.hMul z) (Eq.trans (eq_natCast (algebraMap ℕ ℂ) 1) Nat.cast_one))))
+                            (Mathlib.Tactic.Ring.of_eq
+                              (Mathlib.Tactic.Ring.Common.mul_congr
+                                (Mathlib.Tactic.Ring.Common.atom_pf z rfl
+                                  (Eq.mpr
+                                    (id
+                                      (congrArg (fun _a => z ^ Nat.rawCast 1 * Nat.rawCast 1 = z ^ Nat.rawCast 1 * _a)
+                                        (Eq.symm rfl)))
+                                    (Eq.refl (z ^ Nat.rawCast 1 * Nat.rawCast 1))))
+                                (Mathlib.Tactic.Ring.cast_pos (Mathlib.Meta.NormNum.isNat_ofNat ℂ Nat.cast_one))
+                                (Mathlib.Tactic.Ring.Common.add_mul
+                                  (Mathlib.Tactic.Ring.Common.mul_add
+                                    (Mathlib.Tactic.Ring.Common.mul_pf_left z (Nat.rawCast 1)
+                                      (Mathlib.Meta.NormNum.IsNat.to_raw_eq
+                                        (Mathlib.Meta.NormNum.isNat_mul (Eq.refl HMul.hMul)
+                                          (Mathlib.Meta.NormNum.IsNat.of_raw ℂ 1)
+                                          (Mathlib.Meta.NormNum.IsNat.of_raw ℂ 1) (Eq.refl 1))))
+                                    (Mathlib.Tactic.Ring.Common.mul_zero (z ^ Nat.rawCast 1 * Nat.rawCast 1))
+                                    (Mathlib.Tactic.Ring.Common.add_pf_add_zero
+                                      (z ^ Nat.rawCast 1 * Nat.rawCast 1 + 0)))
+                                  (Mathlib.Tactic.Ring.Common.zero_mul (Nat.rawCast 1 + 0))
+                                  (Mathlib.Tactic.Ring.Common.add_pf_add_zero (z ^ Nat.rawCast 1 * Nat.rawCast 1 + 0))))
+                              (Mathlib.Tactic.Ring.Common.mul_congr
+                                (Mathlib.Tactic.Ring.Common.atom_pf z rfl
+                                  (Eq.mpr
+                                    (id
+                                      (congrArg (fun _a => z ^ Nat.rawCast 1 * Nat.rawCast 1 = z ^ Nat.rawCast 1 * _a)
+                                        (Eq.symm rfl)))
+                                    (Eq.refl (z ^ Nat.rawCast 1 * Nat.rawCast 1))))
+                                (Mathlib.Tactic.Ring.cast_pos (Mathlib.Meta.NormNum.isNat_ofNat ℂ Nat.cast_one))
+                                (Mathlib.Tactic.Ring.Common.add_mul
+                                  (Mathlib.Tactic.Ring.Common.mul_add
+                                    (Mathlib.Tactic.Ring.Common.mul_pf_left z (Nat.rawCast 1)
+                                      (Mathlib.Meta.NormNum.IsNat.to_raw_eq
+                                        (Mathlib.Meta.NormNum.isNat_mul (Eq.refl HMul.hMul)
+                                          (Mathlib.Meta.NormNum.IsNat.of_raw ℂ 1)
+                                          (Mathlib.Meta.NormNum.IsNat.of_raw ℂ 1) (Eq.refl 1))))
+                                    (Mathlib.Tactic.Ring.Common.mul_zero (z ^ Nat.rawCast 1 * Nat.rawCast 1))
+                                    (Mathlib.Tactic.Ring.Common.add_pf_add_zero
+                                      (z ^ Nat.rawCast 1 * Nat.rawCast 1 + 0)))
+                                  (Mathlib.Tactic.Ring.Common.zero_mul (Nat.rawCast 1 + 0))
+                                  (Mathlib.Tactic.Ring.Common.add_pf_add_zero
+                                    (z ^ Nat.rawCast 1 * Nat.rawCast 1 + 0))))))
+                          rfl))))))))))
+    terms degree

@@ -1,0 +1,750 @@
+{
+  "schema": "h0mework/first-release-build@1",
+  "kind": "build",
+  "ok": false,
+  "input_identity": {
+    "sha256": {
+      "claim_map": "bc18148057a0c0457766aa2c87599bcdfe2ec9164f325754a09c088a7edb0b03",
+      "export_map": "b36f4f001d083dc471d108a59d5459b72d45d51b39e4cb8a0a580e8f470f9f20",
+      "lakefile": "569a9b64188a28c7299cb6204068b4f6e72ce74cd257da0964f881821ecfa872",
+      "toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+      "manifest": "2fe02acc26899fd57d82018e711e79c251e26d0b6d2bb370af81db0ed312fbfd"
+    },
+    "package_inputs": {
+      "v2-9c73-prepared-actual": "532c05494966b13275fa560dd7573b9270fd4ea47f927958e0acdf6fb23527ce",
+      "v2-9c73-signal-field": "5a125a8eeeded90ed4688cd9fd09bc7c38870820c20e191d4774511229fff1d7",
+      "v2-9c73-prepared-actual-certification-consumers": "564674fec7bfc3e218da887c970c18067c1080c775b99d42adb1f2016f51e621",
+      "v2-9c73-signal-field-certification-consumers": "02b7008c4545c3691f0372400a739b1bf23f61fd1afdcb22970757c9245807b8"
+    }
+  },
+  "settings": {
+    "toolchain_pin": "leanprover/lean4:v4.33.0",
+    "package_moreLeanArgs": [
+      "--trust=0",
+      "-Dweak.linter.unnecessarySimpa=false",
+      "-Dweak.linter.style.haveILetI=false",
+      "-Dweak.linter.unusedSimpArgs=false"
+    ],
+    "package_weakLeanArgs": [
+      "-DmaxHeartbeats=2000000",
+      "-Dweak.linter.unusedSectionVars=false",
+      "-Dweak.linter.unnecessarySeqFocus=false",
+      "-Dweak.linter.unusedVariables=false",
+      "-Dweak.linter.unreachableTactic=false",
+      "-Dweak.linter.unusedTactic=false",
+      "-Dweak.linter.defProp=false",
+      "-Dweak.linter.deprecated=false",
+      "-Dlinter.deprecated=false",
+      "-Dweak.linter.tacticAnalysis.introMerge=false",
+      "-Dweak.linter.constructorNameAsVariable=false"
+    ],
+    "libraries": [
+      {
+        "name": "H0mework",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_15a9a7f1af9edd94",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_3606f5269412e357",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_d700e8a5f12a0c72",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_1e1ae4b55cfaa424",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_5d60190f8c552243",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_c8f26eb536eba11f",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_05819243d0f03058",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_42d0393dda443953",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_662d860139605627",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_c5ce7c98c6fb2afe",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_4306926d26d3e100",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_524380564da88277",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_598bc2100d4a470f",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_f16f09d592d9fed1",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_38dd326bee1881e5",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_a5be13c98d55de59",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_a8ba570880d786e7",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_e94628c12cb5af16",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_e615fc1eae897d2f",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_3ec8ead604397acb",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_f3b844eed8451357",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_fb8213f28d86d220",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_343b97a439466c84",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_e7aebe388314d626",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_5ee63fcc1d2eabc2",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_048d35b0f13ffddc",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_8a02641b81044b03",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_efa122af6a18f938",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "H0meworkRelaxed",
+        "moreLeanArgs": []
+      },
+      {
+        "name": "H0meworkPinned",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_27de91880f85717a",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_84273b86d41c7cc1",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_b0054fdd1430293f",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_df027f387d2e7e21",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_a9cfcb862f08d790",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_da6d7ec0232b12e5",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_384fd6d4ee850ec5",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_70f37e98e05b9a24",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_bc8736156be163cd",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_ca63848ccd9141be",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      }
+    ]
+  },
+  "identity_scope": {
+    "packages": [
+      "v2-9c73-prepared-actual",
+      "v2-9c73-signal-field",
+      "v2-9c73-prepared-actual-certification-consumers",
+      "v2-9c73-signal-field-certification-consumers"
+    ],
+    "proof_entries": 108
+  },
+  "cache": {
+    "kind": "existing_workspace_cache",
+    "clean_clone": false,
+    "build_directory_preexisted": true,
+    "lean_num_threads": "2",
+    "compiled_targets_before": {
+      "H0mework.Papers.SecondEdition9c73PreparedActual": null,
+      "H0mework.Papers.SecondEdition9c73SignalField": null,
+      "H0mework.Papers.SecondEdition9c73PreparedActualCertificationConsumers": null,
+      "H0mework.Papers.SecondEdition9c73SignalFieldCertificationConsumers": null
+    }
+  },
+  "packages": [
+    {
+      "claim_ids": [
+        "phys.P37"
+      ],
+      "commands": {
+        "build": "python3 tools/edition_release.py --edition second build --package v2-9c73-prepared-actual --output .local/second-edition-runs/<new>/build",
+        "trust": "python3 tools/edition_release.py --edition second trust --package v2-9c73-prepared-actual --output .local/second-edition-runs/<new>/trust"
+      },
+      "environment_scope": "Complete original Audit sources in their owning production environment.",
+      "id": "v2-9c73-prepared-actual",
+      "intake_id": "v2.phys.prepared-actual",
+      "lean_target": "H0mework.Papers.SecondEdition9c73PreparedActual",
+      "original_certifications": [
+        {
+          "original_source_commit": "9c73a630ce05bea062ec889b188f5105c0afb796",
+          "path": "evidence/second-edition/v2/original/Verification/physics/low-energy-phenomenology/alpha-source/em-identification/physical_dressed_p286_certification.json",
+          "source_sha256": "9b1c4ac9660cc6147b5371647f45ba96028a3da0a2a51c86b93a3d6c67c78f74"
+        },
+        {
+          "original_source_commit": "9c73a630ce05bea062ec889b188f5105c0afb796",
+          "path": "evidence/second-edition/v2/original/Verification/physics/low-energy-phenomenology/alpha-source/em-identification/physical_dressed_weighted_creation_certification.json",
+          "source_sha256": "9e61d374905b5a20131367b767894360dda27ab81b8a5d8a32ac4cd61344276b"
+        },
+        {
+          "original_source_commit": "9c73a630ce05bea062ec889b188f5105c0afb796",
+          "path": "evidence/second-edition/v2/original/Verification/physics/low-energy-phenomenology/alpha-source/em-identification/actual_dressed_uncut_coulomb_certification.json",
+          "source_sha256": "527371f89dc9179bab89881bc34a1a0ed765c0fbc9a4776741d111c17d7e86ae"
+        },
+        {
+          "original_source_commit": "9c73a630ce05bea062ec889b188f5105c0afb796",
+          "path": "evidence/second-edition/v2/original/Verification/physics/low-energy-phenomenology/alpha-source/em-identification/actual_dressed_uncut_moving_certification.json",
+          "source_sha256": "08a341af4b2a3c393c8c746ef9be2a1801e01c93878c72ea07c1d1facc61ed1f"
+        }
+      ],
+      "paper": "physics-common-source",
+      "source_commit": "9c73a630ce05bea062ec889b188f5105c0afb796",
+      "source_paths": [
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedUncutCoulomb.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedUncutCoulombAudit.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedUncutCurrent.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedUncutMomentum.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedUncutMovingAudit.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedUncutMovingCoulomb.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/PhysicalDressedP286Audit.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/PhysicalDressedP286Character.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/PhysicalDressedP286Scalar.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/PhysicalDressedScalarColumns.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/PhysicalDressedScalarSkew.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/PhysicalDressedWeightedAudit.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/PhysicalDressedWeightedCreation.lean"
+      ],
+      "verification": {
+        "kernel": "pending"
+      }
+    },
+    {
+      "claim_ids": [
+        "phys.P38"
+      ],
+      "commands": {
+        "build": "python3 tools/edition_release.py --edition second build --package v2-9c73-signal-field --output .local/second-edition-runs/<new>/build",
+        "trust": "python3 tools/edition_release.py --edition second trust --package v2-9c73-signal-field --output .local/second-edition-runs/<new>/trust"
+      },
+      "environment_scope": "Complete original Audit sources in their owning production environment.",
+      "id": "v2-9c73-signal-field",
+      "intake_id": "v2.phys.signal-field",
+      "lean_target": "H0mework.Papers.SecondEdition9c73SignalField",
+      "original_certifications": [
+        {
+          "original_source_commit": "9c73a630ce05bea062ec889b188f5105c0afb796",
+          "path": "evidence/second-edition/v2/original/Verification/physics/low-energy-phenomenology/alpha-source/em-identification/actual_dressed_nonlinear_half_certification.json",
+          "source_sha256": "a889d4d0a7d860f30e696e163d0990ceb9aa9890f23e9eeca6a7e835b14b592d"
+        },
+        {
+          "original_source_commit": "9c73a630ce05bea062ec889b188f5105c0afb796",
+          "path": "evidence/second-edition/v2/original/Verification/physics/low-energy-phenomenology/alpha-source/em-identification/actual_em_dressed_anchor_schur_certification.json",
+          "source_sha256": "d8e565607843ce2dd93ce46a1e5bc69837e188134de7593d4106cdd1838374ff"
+        },
+        {
+          "original_source_commit": "9c73a630ce05bea062ec889b188f5105c0afb796",
+          "path": "evidence/second-edition/v2/original/Verification/physics/low-energy-phenomenology/alpha-source/em-identification/actual_dressed_constraint_ward_certification.json",
+          "source_sha256": "3e106b50b97eaf09672750d80df61d1a5c72222e82a200d47a0515f0429d55cc"
+        },
+        {
+          "original_source_commit": "9c73a630ce05bea062ec889b188f5105c0afb796",
+          "path": "evidence/second-edition/v2/original/Verification/physics/low-energy-phenomenology/alpha-source/em-identification/actual_dressed_full_schur_flux_certification.json",
+          "source_sha256": "92572e7a5629f0a79b522a0a103d2b5ae84eecf0bbb7c7fedc5e7a5837b3f868"
+        },
+        {
+          "original_source_commit": "9c73a630ce05bea062ec889b188f5105c0afb796",
+          "path": "evidence/second-edition/v2/original/Verification/physics/low-energy-phenomenology/alpha-source/em-identification/actual_dressed_half_ir_certification.json",
+          "source_sha256": "d18273028c7691483397a4e8755a15728688a28083ca65b7ff5fc95783f2dd93"
+        },
+        {
+          "original_source_commit": "9c73a630ce05bea062ec889b188f5105c0afb796",
+          "path": "evidence/second-edition/v2/original/Verification/physics/low-energy-phenomenology/alpha-source/em-identification/actual_dressed_cubic_price_certification.json",
+          "source_sha256": "0b74defc00bb05935b120bcd7a3a489f1dce894fd444a06d2a0927b38d971bb4"
+        },
+        {
+          "original_source_commit": "9c73a630ce05bea062ec889b188f5105c0afb796",
+          "path": "evidence/second-edition/v2/original/Verification/physics/low-energy-phenomenology/alpha-source/em-identification/actual_dressed_cubic_ir_certification.json",
+          "source_sha256": "c50de1cea8603a9196d73b7e4dfa43d1207b35a654a139cb8b064fd03bb5f308"
+        },
+        {
+          "original_source_commit": "9c73a630ce05bea062ec889b188f5105c0afb796",
+          "path": "evidence/second-edition/v2/original/Verification/physics/low-energy-phenomenology/alpha-source/em-identification/actual_dressed_native_quantum_ward_certification.json",
+          "source_sha256": "040da29a50daf57142c72d8f512c2232e923f0959bffb4ebb20595571f528309"
+        },
+        {
+          "original_source_commit": "9c73a630ce05bea062ec889b188f5105c0afb796",
+          "path": "evidence/second-edition/v2/original/Verification/physics/low-energy-phenomenology/alpha-source/em-identification/actual_dressed_frequency_inverse_certification.json",
+          "source_sha256": "44993c23a1ff76fdfa7d5af143a7db1eed04a3b6e572f50eef82d75b3dbc18ba"
+        },
+        {
+          "original_source_commit": "9c73a630ce05bea062ec889b188f5105c0afb796",
+          "path": "evidence/second-edition/v2/original/Verification/physics/low-energy-phenomenology/alpha-source/em-identification/actual_dressed_field_time_certification.json",
+          "source_sha256": "99b631c01cea60c3aaf19f283e57306d7fbb8942c94bcfee713385cb093a02dd"
+        },
+        {
+          "original_source_commit": "9c73a630ce05bea062ec889b188f5105c0afb796",
+          "path": "evidence/second-edition/v2/original/Verification/physics/low-energy-phenomenology/alpha-source/em-identification/actual_dressed_prepared_static_certification.json",
+          "source_sha256": "13b32589a724f716ba1716f4aec02ec71dc453b4cba8b15309797f6d2459b2f5"
+        },
+        {
+          "original_source_commit": "9c73a630ce05bea062ec889b188f5105c0afb796",
+          "path": "evidence/second-edition/v2/original/Verification/physics/low-energy-phenomenology/alpha-source/em-identification/actual_dressed_observed_pole_certification.json",
+          "source_sha256": "fb9456547b8ccaeb6dd6e579e0049b317445aecc39e5944ded44eec4c642c760"
+        },
+        {
+          "original_source_commit": "9c73a630ce05bea062ec889b188f5105c0afb796",
+          "path": "evidence/second-edition/v2/original/Verification/physics/low-energy-phenomenology/alpha-source/em-identification/actual_dressed_physical_clock_certification.json",
+          "source_sha256": "0767abe86065366a1da51321d25c5ced7beecff0bc8041baf19fe79df28fcf68"
+        },
+        {
+          "original_source_commit": "9c73a630ce05bea062ec889b188f5105c0afb796",
+          "path": "evidence/second-edition/v2/original/Verification/physics/low-energy-phenomenology/alpha-source/em-identification/actual_dressed_temporal_residual_certification.json",
+          "source_sha256": "86a1c251567c47ac6f97c4f2db39da9b6fed5a99193bfddf43c59a175e9a4a3f"
+        },
+        {
+          "original_source_commit": "9c73a630ce05bea062ec889b188f5105c0afb796",
+          "path": "evidence/second-edition/v2/original/Verification/physics/low-energy-phenomenology/alpha-source/em-identification/actual_dressed_constraint_endpoint_certification.json",
+          "source_sha256": "cc8b5c10ad1b926d845e5d05d8d138b8f258677a6ee01dc296e275e2d99a116f"
+        },
+        {
+          "original_source_commit": "9c73a630ce05bea062ec889b188f5105c0afb796",
+          "path": "evidence/second-edition/v2/original/Verification/physics/low-energy-phenomenology/alpha-source/em-identification/actual_em_invariant_curvature_pole_certification.json",
+          "source_sha256": "2c51343a527a015a1c1458a2980f76df2676cbc966862834704c0d784cf27e5d"
+        }
+      ],
+      "paper": "physics-common-source",
+      "source_commit": "9c73a630ce05bea062ec889b188f5105c0afb796",
+      "source_paths": [
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedCommonPreparationConsumer.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedCompleteNoetherPrice.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedConstraintClockColumns.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedConstraintEndpointAudit.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedConstraintHistory.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedConstraintTranspose.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedConstraintWardAudit.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedCubicIRAudit.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedCubicIRFactor.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedCubicIRReturn.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedCubicLaplacePrice.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedCubicNoetherPrice.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedCubicPriceAudit.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedCubicStaticPrice.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedFieldTimeAudit.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedFieldTimeConsumer.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedFieldTimeFull.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedFieldTimeSector.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedFifthLaplacePrice.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedFiniteStaticRead.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedFourierInverse.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedFrequencyConvolution.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedFrequencyInverseAudit.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedFrequencyMemory.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedFullSchurFlux.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedFullSchurFluxAudit.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedGradedSlopePrice.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedHalfFeedback.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedHalfIRAudit.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedHalfPhysicalConsumer.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedHalfSchur.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedIRAnalytic.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedIRFactor.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedIRReturn.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedLeftFreeJet.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedN1SlopePrice.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedN1TimePrice.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedNativeClockFlux.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedNativeColorColumn.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedNativeColorConstraint.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedNativeColorReader.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedNativeColorSource.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedNativeColorWard.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedNativePreparedWard.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedNativeQuantumWardAudit.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedNoetherBackground.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedNoetherHalfIntegral.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedNonlinearHalfAudit.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedNonlinearHalfResponse.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedNonlinearPolarization.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedObservedPoleAudit.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedObservedPolePrice.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedPhaseConstraintAction.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedPhaseSeedCharge.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedPhysicalClockAudit.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedPhysicalClockJet.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedPlaneInverse.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedPreparationWardResidual.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedPreparedSlopeGrowth.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedPreparedSlopePrice.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedPreparedStaticAudit.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedPreparedTimePrice.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedRationalFourier.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedStaticPoleWard.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedTemporalHalfResidual.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedTemporalQuantumResidual.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedTemporalResidualAudit.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedUpperCurrent.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualEMDressedAnchorInverse.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualEMDressedAnchorSchurAudit.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualEMDressedConstraint.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualEMDressedSchur.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualEMDressedSourceAnchor.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualEMInvariantCurvature.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualEMInvariantPole.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualEMInvariantPoleAudit.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/FiniteFlagVariationPrice.lean"
+      ],
+      "verification": {
+        "kernel": "pending"
+      }
+    },
+    {
+      "claim_ids": [
+        "phys.P37"
+      ],
+      "commands": {
+        "build": "python3 tools/edition_release.py --edition second build --package v2-9c73-prepared-actual-certification-consumers --output .local/second-edition-runs/<new>/build",
+        "trust": "python3 tools/edition_release.py --edition second trust --package v2-9c73-prepared-actual-certification-consumers --output .local/second-edition-runs/<new>/trust"
+      },
+      "environment_scope": "Exact original certification consumer prefixes in their independent owning environments.",
+      "id": "v2-9c73-prepared-actual-certification-consumers",
+      "intake_id": "v2.phys.prepared-actual",
+      "lean_target": "H0mework.Papers.SecondEdition9c73PreparedActualCertificationConsumers",
+      "original_certifications": [
+        {
+          "original_source_commit": "9c73a630ce05bea062ec889b188f5105c0afb796",
+          "path": "evidence/second-edition/v2/original/Verification/physics/low-energy-phenomenology/alpha-source/em-identification/physical_dressed_p286_certification.json",
+          "source_sha256": "9b1c4ac9660cc6147b5371647f45ba96028a3da0a2a51c86b93a3d6c67c78f74"
+        },
+        {
+          "original_source_commit": "9c73a630ce05bea062ec889b188f5105c0afb796",
+          "path": "evidence/second-edition/v2/original/Verification/physics/low-energy-phenomenology/alpha-source/em-identification/physical_dressed_weighted_creation_certification.json",
+          "source_sha256": "9e61d374905b5a20131367b767894360dda27ab81b8a5d8a32ac4cd61344276b"
+        },
+        {
+          "original_source_commit": "9c73a630ce05bea062ec889b188f5105c0afb796",
+          "path": "evidence/second-edition/v2/original/Verification/physics/low-energy-phenomenology/alpha-source/em-identification/actual_dressed_uncut_coulomb_certification.json",
+          "source_sha256": "527371f89dc9179bab89881bc34a1a0ed765c0fbc9a4776741d111c17d7e86ae"
+        },
+        {
+          "original_source_commit": "9c73a630ce05bea062ec889b188f5105c0afb796",
+          "path": "evidence/second-edition/v2/original/Verification/physics/low-energy-phenomenology/alpha-source/em-identification/actual_dressed_uncut_moving_certification.json",
+          "source_sha256": "08a341af4b2a3c393c8c746ef9be2a1801e01c93878c72ea07c1d1facc61ed1f"
+        }
+      ],
+      "paper": "physics-common-source",
+      "source_commit": "9c73a630ce05bea062ec889b188f5105c0afb796",
+      "source_paths": [
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedUncutCoulombAuditProductionConsumers.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedUncutMovingAuditProductionConsumers.lean"
+      ],
+      "verification": {
+        "kernel": "pending"
+      }
+    },
+    {
+      "claim_ids": [
+        "phys.P38"
+      ],
+      "commands": {
+        "build": "python3 tools/edition_release.py --edition second build --package v2-9c73-signal-field-certification-consumers --output .local/second-edition-runs/<new>/build",
+        "trust": "python3 tools/edition_release.py --edition second trust --package v2-9c73-signal-field-certification-consumers --output .local/second-edition-runs/<new>/trust"
+      },
+      "environment_scope": "Exact original certification consumer prefixes in their independent owning environments.",
+      "id": "v2-9c73-signal-field-certification-consumers",
+      "intake_id": "v2.phys.signal-field",
+      "lean_target": "H0mework.Papers.SecondEdition9c73SignalFieldCertificationConsumers",
+      "original_certifications": [
+        {
+          "original_source_commit": "9c73a630ce05bea062ec889b188f5105c0afb796",
+          "path": "evidence/second-edition/v2/original/Verification/physics/low-energy-phenomenology/alpha-source/em-identification/actual_dressed_nonlinear_half_certification.json",
+          "source_sha256": "a889d4d0a7d860f30e696e163d0990ceb9aa9890f23e9eeca6a7e835b14b592d"
+        },
+        {
+          "original_source_commit": "9c73a630ce05bea062ec889b188f5105c0afb796",
+          "path": "evidence/second-edition/v2/original/Verification/physics/low-energy-phenomenology/alpha-source/em-identification/actual_em_dressed_anchor_schur_certification.json",
+          "source_sha256": "d8e565607843ce2dd93ce46a1e5bc69837e188134de7593d4106cdd1838374ff"
+        },
+        {
+          "original_source_commit": "9c73a630ce05bea062ec889b188f5105c0afb796",
+          "path": "evidence/second-edition/v2/original/Verification/physics/low-energy-phenomenology/alpha-source/em-identification/actual_dressed_constraint_ward_certification.json",
+          "source_sha256": "3e106b50b97eaf09672750d80df61d1a5c72222e82a200d47a0515f0429d55cc"
+        },
+        {
+          "original_source_commit": "9c73a630ce05bea062ec889b188f5105c0afb796",
+          "path": "evidence/second-edition/v2/original/Verification/physics/low-energy-phenomenology/alpha-source/em-identification/actual_dressed_full_schur_flux_certification.json",
+          "source_sha256": "92572e7a5629f0a79b522a0a103d2b5ae84eecf0bbb7c7fedc5e7a5837b3f868"
+        },
+        {
+          "original_source_commit": "9c73a630ce05bea062ec889b188f5105c0afb796",
+          "path": "evidence/second-edition/v2/original/Verification/physics/low-energy-phenomenology/alpha-source/em-identification/actual_dressed_half_ir_certification.json",
+          "source_sha256": "d18273028c7691483397a4e8755a15728688a28083ca65b7ff5fc95783f2dd93"
+        },
+        {
+          "original_source_commit": "9c73a630ce05bea062ec889b188f5105c0afb796",
+          "path": "evidence/second-edition/v2/original/Verification/physics/low-energy-phenomenology/alpha-source/em-identification/actual_dressed_cubic_price_certification.json",
+          "source_sha256": "0b74defc00bb05935b120bcd7a3a489f1dce894fd444a06d2a0927b38d971bb4"
+        },
+        {
+          "original_source_commit": "9c73a630ce05bea062ec889b188f5105c0afb796",
+          "path": "evidence/second-edition/v2/original/Verification/physics/low-energy-phenomenology/alpha-source/em-identification/actual_dressed_cubic_ir_certification.json",
+          "source_sha256": "c50de1cea8603a9196d73b7e4dfa43d1207b35a654a139cb8b064fd03bb5f308"
+        },
+        {
+          "original_source_commit": "9c73a630ce05bea062ec889b188f5105c0afb796",
+          "path": "evidence/second-edition/v2/original/Verification/physics/low-energy-phenomenology/alpha-source/em-identification/actual_dressed_native_quantum_ward_certification.json",
+          "source_sha256": "040da29a50daf57142c72d8f512c2232e923f0959bffb4ebb20595571f528309"
+        },
+        {
+          "original_source_commit": "9c73a630ce05bea062ec889b188f5105c0afb796",
+          "path": "evidence/second-edition/v2/original/Verification/physics/low-energy-phenomenology/alpha-source/em-identification/actual_dressed_frequency_inverse_certification.json",
+          "source_sha256": "44993c23a1ff76fdfa7d5af143a7db1eed04a3b6e572f50eef82d75b3dbc18ba"
+        },
+        {
+          "original_source_commit": "9c73a630ce05bea062ec889b188f5105c0afb796",
+          "path": "evidence/second-edition/v2/original/Verification/physics/low-energy-phenomenology/alpha-source/em-identification/actual_dressed_field_time_certification.json",
+          "source_sha256": "99b631c01cea60c3aaf19f283e57306d7fbb8942c94bcfee713385cb093a02dd"
+        },
+        {
+          "original_source_commit": "9c73a630ce05bea062ec889b188f5105c0afb796",
+          "path": "evidence/second-edition/v2/original/Verification/physics/low-energy-phenomenology/alpha-source/em-identification/actual_dressed_prepared_static_certification.json",
+          "source_sha256": "13b32589a724f716ba1716f4aec02ec71dc453b4cba8b15309797f6d2459b2f5"
+        },
+        {
+          "original_source_commit": "9c73a630ce05bea062ec889b188f5105c0afb796",
+          "path": "evidence/second-edition/v2/original/Verification/physics/low-energy-phenomenology/alpha-source/em-identification/actual_dressed_observed_pole_certification.json",
+          "source_sha256": "fb9456547b8ccaeb6dd6e579e0049b317445aecc39e5944ded44eec4c642c760"
+        },
+        {
+          "original_source_commit": "9c73a630ce05bea062ec889b188f5105c0afb796",
+          "path": "evidence/second-edition/v2/original/Verification/physics/low-energy-phenomenology/alpha-source/em-identification/actual_dressed_physical_clock_certification.json",
+          "source_sha256": "0767abe86065366a1da51321d25c5ced7beecff0bc8041baf19fe79df28fcf68"
+        },
+        {
+          "original_source_commit": "9c73a630ce05bea062ec889b188f5105c0afb796",
+          "path": "evidence/second-edition/v2/original/Verification/physics/low-energy-phenomenology/alpha-source/em-identification/actual_dressed_temporal_residual_certification.json",
+          "source_sha256": "86a1c251567c47ac6f97c4f2db39da9b6fed5a99193bfddf43c59a175e9a4a3f"
+        },
+        {
+          "original_source_commit": "9c73a630ce05bea062ec889b188f5105c0afb796",
+          "path": "evidence/second-edition/v2/original/Verification/physics/low-energy-phenomenology/alpha-source/em-identification/actual_dressed_constraint_endpoint_certification.json",
+          "source_sha256": "cc8b5c10ad1b926d845e5d05d8d138b8f258677a6ee01dc296e275e2d99a116f"
+        },
+        {
+          "original_source_commit": "9c73a630ce05bea062ec889b188f5105c0afb796",
+          "path": "evidence/second-edition/v2/original/Verification/physics/low-energy-phenomenology/alpha-source/em-identification/actual_em_invariant_curvature_pole_certification.json",
+          "source_sha256": "2c51343a527a015a1c1458a2980f76df2676cbc966862834704c0d784cf27e5d"
+        }
+      ],
+      "paper": "physics-common-source",
+      "source_commit": "9c73a630ce05bea062ec889b188f5105c0afb796",
+      "source_paths": [
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedConstraintEndpointAuditProductionConsumers.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedConstraintWardAuditProductionConsumers.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedCubicIRAuditProductionConsumers.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedCubicPriceAuditProductionConsumers.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedFieldTimeAuditProductionConsumers.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedFrequencyInverseAuditProductionConsumers.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedFullSchurFluxAuditProductionConsumers.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedHalfIRAuditProductionConsumers.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedNativeQuantumWardAuditProductionConsumers.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedNonlinearHalfAuditProductionConsumers.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedObservedPoleAuditProductionConsumers.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedPhysicalClockAuditProductionConsumers.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedPreparedStaticAuditProductionConsumers.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedTemporalResidualAuditProductionConsumers.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualEMDressedAnchorSchurAuditProductionConsumers.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualEMInvariantPoleAuditProductionConsumers.lean"
+      ],
+      "verification": {
+        "kernel": "pending"
+      }
+    }
+  ],
+  "results": [
+    {
+      "command": [
+        "lake",
+        "build",
+        "H0mework.Papers.SecondEdition9c73PreparedActual",
+        "H0mework.Papers.SecondEdition9c73SignalField",
+        "H0mework.Papers.SecondEdition9c73PreparedActualCertificationConsumers",
+        "H0mework.Papers.SecondEdition9c73SignalFieldCertificationConsumers"
+      ],
+      "cwd": "Lean",
+      "started_at": "2026-10-10T08:07:12.732282+00:00",
+      "finished_at": "2026-10-10T08:14:37.318017+00:00",
+      "elapsed_seconds": 444.583,
+      "exit_code": 1,
+      "error": null,
+      "log": "evidence/second-edition/acceptance/physics-9c73-prepared-signal-locked-gauge-failed-20261010/build.log"
+    }
+  ],
+  "publication_readiness": "not_assessed",
+  "input_identity_after": {
+    "sha256": {
+      "claim_map": "bc18148057a0c0457766aa2c87599bcdfe2ec9164f325754a09c088a7edb0b03",
+      "export_map": "b36f4f001d083dc471d108a59d5459b72d45d51b39e4cb8a0a580e8f470f9f20",
+      "lakefile": "569a9b64188a28c7299cb6204068b4f6e72ce74cd257da0964f881821ecfa872",
+      "toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+      "manifest": "2fe02acc26899fd57d82018e711e79c251e26d0b6d2bb370af81db0ed312fbfd"
+    },
+    "package_inputs": {
+      "v2-9c73-prepared-actual": "532c05494966b13275fa560dd7573b9270fd4ea47f927958e0acdf6fb23527ce",
+      "v2-9c73-signal-field": "5a125a8eeeded90ed4688cd9fd09bc7c38870820c20e191d4774511229fff1d7",
+      "v2-9c73-prepared-actual-certification-consumers": "564674fec7bfc3e218da887c970c18067c1080c775b99d42adb1f2016f51e621",
+      "v2-9c73-signal-field-certification-consumers": "02b7008c4545c3691f0372400a739b1bf23f61fd1afdcb22970757c9245807b8"
+    }
+  },
+  "inputs_unchanged": true,
+  "receipt": "evidence/second-edition/acceptance/physics-9c73-prepared-signal-locked-gauge-failed-20261010/result.json",
+  "compiled_targets_after": {
+    "H0mework.Papers.SecondEdition9c73PreparedActual": null,
+    "H0mework.Papers.SecondEdition9c73SignalField": null,
+    "H0mework.Papers.SecondEdition9c73PreparedActualCertificationConsumers": null,
+    "H0mework.Papers.SecondEdition9c73SignalFieldCertificationConsumers": null
+  }
+}
