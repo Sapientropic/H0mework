@@ -1,0 +1,64 @@
+{
+  "schema": "h0mework/edition-execution-archive@1",
+  "status": "failed",
+  "kind": "build",
+  "inputs_unchanged": false,
+  "packages": [
+    "v2-9c73-same-event-feedback",
+    "v2-9c73-type-completion",
+    "v2-9c73-full-stock-next"
+  ],
+  "files": [
+    {
+      "original_runtime_path": ".local/acceptance-execution-20261010/core-first-three-build-after-apply/build.log",
+      "public_path": "evidence/second-edition/acceptance/core-9c73-three-package-drift-failed-20261010/build.log",
+      "source_sha256": "cd81f74ff975f2d139e7216eadd46a83e2a2de32e857838f47c28c57ffc425e9",
+      "target_sha256": "935d7d0d10281587ed5be2c651d435707aaec910fcf94d4a3d16a37003563fed",
+      "transforms": [
+        {
+          "kind": "literal-runtime-roots",
+          "project_replacement": ".",
+          "elan_replacement": "runtime/elan"
+        }
+      ]
+    },
+    {
+      "original_runtime_path": ".local/acceptance-execution-20261010/core-first-three-build-after-apply/result.json",
+      "public_path": "evidence/second-edition/acceptance/core-9c73-three-package-drift-failed-20261010/result.json",
+      "source_sha256": "41b29a37e8530ca36c5a3ec6ecdad8fd58ecc17a7fcd1dcc87112a3042dae2f7",
+      "target_sha256": "de988cec30c52894533e1aaa15586025625008cf2870bdf6b3c986c123ebd149",
+      "publication": {
+        "kind": "declared-runtime-paths/v2",
+        "runtime_paths": [
+          {
+            "pointer": "/results/0/log",
+            "relative": "evidence/second-edition/acceptance/core-9c73-three-package-drift-failed-20261010/build.log"
+          },
+          {
+            "pointer": "/receipt",
+            "relative": "evidence/second-edition/acceptance/core-9c73-three-package-drift-failed-20261010/result.json"
+          }
+        ],
+        "payload_sha256": "de988cec30c52894533e1aaa15586025625008cf2870bdf6b3c986c123ebd149"
+      }
+    },
+    {
+      "original_runtime_path": ".local/acceptance-execution-20261010/core-first-three-build-after-apply/run-provenance.json",
+      "public_path": "evidence/second-edition/acceptance/core-9c73-three-package-drift-failed-20261010/run-provenance.json",
+      "source_sha256": "80be86aa8b011ef6ea4c89cf96807db026932c253b9b6b74f43f96c58336c69c",
+      "target_sha256": "140a3d2b3383fc539d79c964c951dcb25790ca0ca17c9112a18ddefdd9b50217",
+      "publication": {
+        "kind": "declared-runtime-paths/v2",
+        "runtime_paths": [
+          {
+            "pointer": "/official_acceptance_receipt",
+            "relative": "evidence/second-edition/acceptance/core-9c73-three-package-drift-failed-20261010/result.json"
+          }
+        ],
+        "payload_sha256": "140a3d2b3383fc539d79c964c951dcb25790ca0ca17c9112a18ddefdd9b50217"
+      }
+    }
+  ],
+  "receipt": "evidence/second-edition/acceptance/core-9c73-three-package-drift-failed-20261010/result.json",
+  "original_source_certification": "Separate from this local public execution."
+}

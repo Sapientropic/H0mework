@@ -1,0 +1,62 @@
+{
+  "schema": "h0mework/edition-execution-archive@1",
+  "status": "passed",
+  "kind": "build",
+  "inputs_unchanged": true,
+  "packages": [
+    "v2-9c73-type-completion"
+  ],
+  "files": [
+    {
+      "original_runtime_path": ".local/acceptance-execution-20261010/core-type-completion-build-after-repair/build.log",
+      "public_path": "evidence/second-edition/acceptance/core-9c73-type-completion-build-20261010/build.log",
+      "source_sha256": "3868e7c3b2bd2d19e92a38cca441ffdf069ecebecf7c27be687707012a9edf27",
+      "target_sha256": "770789946859cb7e1490f2caef1835bc064bb47edb7e4db8f4bf08d15fb1aafe",
+      "transforms": [
+        {
+          "kind": "literal-runtime-roots",
+          "project_replacement": ".",
+          "elan_replacement": "runtime/elan"
+        }
+      ]
+    },
+    {
+      "original_runtime_path": ".local/acceptance-execution-20261010/core-type-completion-build-after-repair/result.json",
+      "public_path": "evidence/second-edition/acceptance/core-9c73-type-completion-build-20261010/result.json",
+      "source_sha256": "40de7155fc9559247896c77303cd7359bf307e9a1988bfc63821e339fdad36c2",
+      "target_sha256": "7d7d4c69e2a50f5e874cf8338f3f2eb93d87a5c435c18faf229517e1e3903621",
+      "publication": {
+        "kind": "declared-runtime-paths/v2",
+        "runtime_paths": [
+          {
+            "pointer": "/results/0/log",
+            "relative": "evidence/second-edition/acceptance/core-9c73-type-completion-build-20261010/build.log"
+          },
+          {
+            "pointer": "/receipt",
+            "relative": "evidence/second-edition/acceptance/core-9c73-type-completion-build-20261010/result.json"
+          }
+        ],
+        "payload_sha256": "7d7d4c69e2a50f5e874cf8338f3f2eb93d87a5c435c18faf229517e1e3903621"
+      }
+    },
+    {
+      "original_runtime_path": ".local/acceptance-execution-20261010/core-type-completion-build-after-repair/run-provenance.json",
+      "public_path": "evidence/second-edition/acceptance/core-9c73-type-completion-build-20261010/run-provenance.json",
+      "source_sha256": "e8d257eb11ae53d3a8631f07d654ce168e533e60bf41790355fd6dc4e5ed6e5f",
+      "target_sha256": "a4d10660e4b86a5b16a12553c02fb6aa45ee1b2d4216435c2b1ecbea8405622a",
+      "publication": {
+        "kind": "declared-runtime-paths/v2",
+        "runtime_paths": [
+          {
+            "pointer": "/official_acceptance_receipt",
+            "relative": "evidence/second-edition/acceptance/core-9c73-type-completion-build-20261010/result.json"
+          }
+        ],
+        "payload_sha256": "a4d10660e4b86a5b16a12553c02fb6aa45ee1b2d4216435c2b1ecbea8405622a"
+      }
+    }
+  ],
+  "receipt": "evidence/second-edition/acceptance/core-9c73-type-completion-build-20261010/result.json",
+  "original_source_certification": "Separate from this local public execution."
+}

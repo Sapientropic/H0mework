@@ -28,7 +28,7 @@ Lean 分片在托管 runner 上先加 56 GiB swap，再按 CPU 数设置 `LEAN_N
 - 本阶段多片都需要、自身链又很短的模块，先在一个短阶段里单独发布。
 - 其余共享依赖由需要它的各片各自构建，完整存档只打包自己负责的模块；进度存档保存范围见[跨运行续建](#跨运行续建)。
 - 要等本阶段多片结果才能编译的模块，推迟到下一阶段。
-- 每个阶段最多 20 片，对应免费账户的并发上限；阶段数不超过 `ci.yml` 定义的 8 个阶段 job。
+- 每个阶段最多 20 片，对应免费账户的并发上限；阶段数不超过 `ci.yml` 定义的 9 个阶段 job。
 
 分工结果记在 [`ci_layout.tsv`](../tools/ci_layout.tsv)，即每个模块归哪一片。规划时，已登记的模块留在原片。新模块放进它所 import 的分片，或该阶段里还有余量的分片；如果那样要在另一片重编较多依赖，就推迟一个阶段。因此迁入新内容时，已有分片只会增加模块，已存的产物基本都能复用。
 
@@ -36,7 +36,7 @@ Lean 分片在托管 runner 上先加 56 GiB swap，再按 CPU 数设置 `LEAN_N
 
 ## 迁入新稿件
 
-第二版与低能选集按固定 epoch 将新模块追加到阶段 8／9，既有模块保留分片位置。9c73 迁入及随后 11 源修复后，阶段 1–7 的 42 个分片均保留完整字段与缓存键；新增范围必要的证明 owner、独立环境聚合入口与证明适配造成的缓存变化，登记在[材料迁入核验](../evidence/second-edition/acceptance/cache-preservation-final-9c73-20261010.json)及[修复后核验](../evidence/second-edition/acceptance/cache-preservation-coframe-ward-20261010.json)。新阶段沿用 checkpoint 与自动续跑。
+第二版与低能选集按固定 epoch 将新模块追加到阶段 8／9，既有模块保留分片位置。9c73 迁入及后续证明构建修复均保持阶段 1–7 的 42 个分片完整字段与缓存键；核验见[材料迁入](../evidence/second-edition/acceptance/cache-preservation-final-9c73-20261010.json)、[Coframe／Ward 修复](../evidence/second-edition/acceptance/cache-preservation-coframe-ward-20261010.json)及[DiracRay 修复与实际远端规划](../evidence/second-edition/acceptance/cache-preservation-dirac-actual-ci-20261010.json)。[41 片实际复用](../evidence/second-edition/acceptance/ci-old41-reuse-38012233973-20261010.json)另记远端结果。新阶段沿用 checkpoint 与自动续跑。
 
 1. 迁入 Lean 模块后照常提交。CI 会为新模块安排分片，日志会提示有多少模块不在分工表里。
 2. 一批迁入告一段落后，运行下面的命令，把新模块的位置写进分工表并提交。此后的迁入不会再挪动它们。

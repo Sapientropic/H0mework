@@ -1,0 +1,472 @@
+{
+  "schema": "h0mework/private-dirac-gravity-environment-verification@1",
+  "formal_acceptance": false,
+  "ok": true,
+  "inputs_unchanged": true,
+  "source_identity": {
+    "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalSourcePropagationNativeDiracRay.lean",
+    "source_revision": "e05558097256e86b537c019c8ca63cd449d6b2d2",
+    "source_revisions": [
+      "e05558097256e86b537c019c8ca63cd449d6b2d2"
+    ],
+    "source_sha256": "e959ecb24e4a8d5a7abf4761eb516dc4e361978f15b5303d5cf991253d2864f4"
+  },
+  "original_constant_names": [
+    "LowEnergy.SourcePropagationNativeActionHessian.instNormedAddCommGroupLorentzianCoframe_1",
+    "LowEnergy.SourcePropagationNativeActionHessian.instSeminormedAddCommGroupLorentzianCoframe_1",
+    "LowEnergy.SourcePropagationNativeActionHessian.instNormedSpaceRealLorentzianCoframe_1"
+  ],
+  "named_constant_names": [
+    "LowEnergy.SourcePropagationNativeActionHessian.h0meworkNativeDiracRayNormedAddCommGroup",
+    "LowEnergy.SourcePropagationNativeActionHessian.h0meworkNativeDiracRaySeminormedAddCommGroup",
+    "LowEnergy.SourcePropagationNativeActionHessian.h0meworkNativeDiracRayNormedSpace"
+  ],
+  "candidate_module": "H0mework.Versions.E055.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalSourcePropagationNativeDiracRay",
+  "unchanged_gsr_module": "H0mework.Versions.E055.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalSourcePropagationNativeGravityScalarReturn",
+  "settings": {
+    "toolchain_pin": "leanprover/lean4:v4.33.0",
+    "package_moreLeanArgs": [
+      "--trust=0",
+      "-Dweak.linter.unnecessarySimpa=false",
+      "-Dweak.linter.style.haveILetI=false",
+      "-Dweak.linter.unusedSimpArgs=false"
+    ],
+    "package_weakLeanArgs": [
+      "-DmaxHeartbeats=2000000",
+      "-Dweak.linter.unusedSectionVars=false",
+      "-Dweak.linter.unnecessarySeqFocus=false",
+      "-Dweak.linter.unusedVariables=false",
+      "-Dweak.linter.unreachableTactic=false",
+      "-Dweak.linter.unusedTactic=false",
+      "-Dweak.linter.defProp=false",
+      "-Dweak.linter.deprecated=false",
+      "-Dlinter.deprecated=false",
+      "-Dweak.linter.tacticAnalysis.introMerge=false",
+      "-Dweak.linter.constructorNameAsVariable=false"
+    ],
+    "libraries": [
+      {
+        "name": "H0mework",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_15a9a7f1af9edd94",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_3606f5269412e357",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_d700e8a5f12a0c72",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_1e1ae4b55cfaa424",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_5d60190f8c552243",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_c8f26eb536eba11f",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_05819243d0f03058",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_42d0393dda443953",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_662d860139605627",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_c5ce7c98c6fb2afe",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_4306926d26d3e100",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_524380564da88277",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_598bc2100d4a470f",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_f16f09d592d9fed1",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_38dd326bee1881e5",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_a5be13c98d55de59",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_a8ba570880d786e7",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_e94628c12cb5af16",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_e615fc1eae897d2f",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_3ec8ead604397acb",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_f3b844eed8451357",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_fb8213f28d86d220",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_343b97a439466c84",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_e7aebe388314d626",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_5ee63fcc1d2eabc2",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_048d35b0f13ffddc",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_8a02641b81044b03",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_efa122af6a18f938",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "H0meworkRelaxed",
+        "moreLeanArgs": []
+      },
+      {
+        "name": "H0meworkPinned",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_27de91880f85717a",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_84273b86d41c7cc1",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_b0054fdd1430293f",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_df027f387d2e7e21",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_a9cfcb862f08d790",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_da6d7ec0232b12e5",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_384fd6d4ee850ec5",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_70f37e98e05b9a24",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_bc8736156be163cd",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_ca63848ccd9141be",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      }
+    ]
+  },
+  "input_before": {
+    "head": "5c627eb4783af2c39e4c22d2c48a11637e3bdd88",
+    "files": {
+      ".local/acceptance-execution-20261010/dirac-ray-local-instance/e0555809.lean": "4957b3e6f54b119d948dd0c3d5c65628f1c196a09aae7f1042bbe8897fbd73a3",
+      ".local/acceptance-execution-20261010/dirac-ray-local-instance/plan.json": "a5add8d508ca6b628788dbccff689617dc5cab23557e2df8b57c6eb40cbd3982",
+      "Lean/H0mework/Versions/E055/ReleaseMaterials/Physics/LowEnergyPhenomenology/AlphaSource/CanonicalSourcePropagationNativeDiracRay.lean": "59b77dddb74e6257ebf860e053ad611bd106905cf852fdcefaf87bb70f99c1b8",
+      "Lean/H0mework/Versions/E055/ReleaseMaterials/Physics/LowEnergyPhenomenology/AlphaSource/CanonicalSourcePropagationNativeGravityScalarReturn.lean": "df41ca4100048d52a1f72e222531fc7f8d5191a0f400f924745808c3b3dc4cda",
+      "Lean/lake-manifest.json": "2fe02acc26899fd57d82018e711e79c251e26d0b6d2bb370af81db0ed312fbfd",
+      "Lean/lakefile.toml": "569a9b64188a28c7299cb6204068b4f6e72ce74cd257da0964f881821ecfa872",
+      "Lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+      "docs/first-release-map.json": "70a109c44e4fa0907f817e5ff7751029562415d82b0a1b48cb854053aeba78be",
+      "docs/low-energy-release-map.json": "ab316fcb61e2438740dc7c444a9eebb32355fbfa4501c89c93e0a673f684e8c4",
+      "docs/second-edition-map.json": "a215b9f14e0dd508385ee5cf6fcfe93bb5ac325cac251c05ba8a97e09d13ef67",
+      "tools/edition_release.py": "b92c17bd94f29e24693edd264b1da38036a66a249d658e5fc403c355a9207137",
+      "tools/export-map.json": "96a7d0a8129bfea93040d35e58f5327e69a8f6cf949acb0038060ac10495e7ad",
+      "tools/first_release.py": "3c8e5048474126dd59822f640e3256dc6a6d5d5bfc4bc63375d1e9a7f3631526",
+      "tools/publication.py": "449d283eff9c76073a98159eeb2884a4bcf313a8229d6a40baf22ba3f6d67ce1",
+      "tools/source_view.py": "4699138984c50041730853dd79d9cc4eb89493aeb126109a18cefc6b2c38ddf4"
+    }
+  },
+  "input_after": {
+    "head": "5c627eb4783af2c39e4c22d2c48a11637e3bdd88",
+    "files": {
+      ".local/acceptance-execution-20261010/dirac-ray-local-instance/e0555809.lean": "4957b3e6f54b119d948dd0c3d5c65628f1c196a09aae7f1042bbe8897fbd73a3",
+      ".local/acceptance-execution-20261010/dirac-ray-local-instance/plan.json": "a5add8d508ca6b628788dbccff689617dc5cab23557e2df8b57c6eb40cbd3982",
+      "Lean/H0mework/Versions/E055/ReleaseMaterials/Physics/LowEnergyPhenomenology/AlphaSource/CanonicalSourcePropagationNativeDiracRay.lean": "59b77dddb74e6257ebf860e053ad611bd106905cf852fdcefaf87bb70f99c1b8",
+      "Lean/H0mework/Versions/E055/ReleaseMaterials/Physics/LowEnergyPhenomenology/AlphaSource/CanonicalSourcePropagationNativeGravityScalarReturn.lean": "df41ca4100048d52a1f72e222531fc7f8d5191a0f400f924745808c3b3dc4cda",
+      "Lean/lake-manifest.json": "2fe02acc26899fd57d82018e711e79c251e26d0b6d2bb370af81db0ed312fbfd",
+      "Lean/lakefile.toml": "569a9b64188a28c7299cb6204068b4f6e72ce74cd257da0964f881821ecfa872",
+      "Lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+      "docs/first-release-map.json": "70a109c44e4fa0907f817e5ff7751029562415d82b0a1b48cb854053aeba78be",
+      "docs/low-energy-release-map.json": "ab316fcb61e2438740dc7c444a9eebb32355fbfa4501c89c93e0a673f684e8c4",
+      "docs/second-edition-map.json": "a215b9f14e0dd508385ee5cf6fcfe93bb5ac325cac251c05ba8a97e09d13ef67",
+      "tools/edition_release.py": "b92c17bd94f29e24693edd264b1da38036a66a249d658e5fc403c355a9207137",
+      "tools/export-map.json": "96a7d0a8129bfea93040d35e58f5327e69a8f6cf949acb0038060ac10495e7ad",
+      "tools/first_release.py": "3c8e5048474126dd59822f640e3256dc6a6d5d5bfc4bc63375d1e9a7f3631526",
+      "tools/publication.py": "449d283eff9c76073a98159eeb2884a4bcf313a8229d6a40baf22ba3f6d67ce1",
+      "tools/source_view.py": "4699138984c50041730853dd79d9cc4eb89493aeb126109a18cefc6b2c38ddf4"
+    }
+  },
+  "steps": [
+    {
+      "name": "OriginalDiracOwners",
+      "command": [
+        "lean",
+        "--root=.local/acceptance-execution-20261010/dirac-ray-local-instance/environment-verification-5c627eb4/src",
+        "--trust=0",
+        "-Dweak.linter.unnecessarySimpa=false",
+        "-Dweak.linter.style.haveILetI=false",
+        "-Dweak.linter.unusedSimpArgs=false",
+        "-DmaxHeartbeats=2000000",
+        "-Dweak.linter.unusedSectionVars=false",
+        "-Dweak.linter.unnecessarySeqFocus=false",
+        "-Dweak.linter.unusedVariables=false",
+        "-Dweak.linter.unreachableTactic=false",
+        "-Dweak.linter.unusedTactic=false",
+        "-Dweak.linter.defProp=false",
+        "-Dweak.linter.deprecated=false",
+        "-Dlinter.deprecated=false",
+        "-Dweak.linter.tacticAnalysis.introMerge=false",
+        "-Dweak.linter.constructorNameAsVariable=false",
+        "-DwarningAsError=true",
+        "evidence/second-edition/acceptance/dirac-ray-owner-consumer-compatibility-20261010/src/OriginalDiracOwners.lean",
+        "-o",
+        ".local/acceptance-execution-20261010/dirac-ray-local-instance/environment-verification-5c627eb4/OriginalDiracOwners.olean"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 12.851,
+      "started_at": "2026-10-10T01:25:08.692616+00:00",
+      "source_sha256": "b6424ee332ff0078aceef1c572f2f01d5663dffb4940ddb04cfafd9f70e3d9ba",
+      "object_sha256": "e636128dfd029d0c8d6643b149ad813c9b5348109f952c6cc15b06c036dee7cf",
+      "log_sha256": "53b01927e7ee53566352d57e97a41d6eb250f00a7950942d702d0d49331a4410",
+      "expected_owner": "H0mework.Versions.E055.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalSourcePropagationNativeDiracRay",
+      "owner_verified": true
+    },
+    {
+      "name": "OriginalGravityOwners",
+      "command": [
+        "lean",
+        "--root=.local/acceptance-execution-20261010/dirac-ray-local-instance/environment-verification-5c627eb4/src",
+        "--trust=0",
+        "-Dweak.linter.unnecessarySimpa=false",
+        "-Dweak.linter.style.haveILetI=false",
+        "-Dweak.linter.unusedSimpArgs=false",
+        "-DmaxHeartbeats=2000000",
+        "-Dweak.linter.unusedSectionVars=false",
+        "-Dweak.linter.unnecessarySeqFocus=false",
+        "-Dweak.linter.unusedVariables=false",
+        "-Dweak.linter.unreachableTactic=false",
+        "-Dweak.linter.unusedTactic=false",
+        "-Dweak.linter.defProp=false",
+        "-Dweak.linter.deprecated=false",
+        "-Dlinter.deprecated=false",
+        "-Dweak.linter.tacticAnalysis.introMerge=false",
+        "-Dweak.linter.constructorNameAsVariable=false",
+        "-DwarningAsError=true",
+        "evidence/second-edition/acceptance/dirac-ray-owner-consumer-compatibility-20261010/src/OriginalGravityOwners.lean",
+        "-o",
+        ".local/acceptance-execution-20261010/dirac-ray-local-instance/environment-verification-5c627eb4/OriginalGravityOwners.olean"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 13.763,
+      "started_at": "2026-10-10T01:25:21.545010+00:00",
+      "source_sha256": "cd90f622f3badf19e967aef391b14ca65c94204ecfc3ac18fa93eef0a992f9e6",
+      "object_sha256": "0c85b57b419f998af66393b2556343021cc93cf98fadb6e048ceb5542f3c3ac0",
+      "log_sha256": "4a055d34746cfe78a28f14b0b226f484f63adfcdc77ccf282612a2ccdcb2f827",
+      "expected_owner": "H0mework.Versions.E055.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalSourcePropagationNativeGravityScalarReturn",
+      "owner_verified": true
+    },
+    {
+      "name": "CanonicalDiracCandidate",
+      "command": [
+        "lean",
+        "--root=.local/acceptance-execution-20261010/dirac-ray-local-instance/environment-verification-5c627eb4/src",
+        "--trust=0",
+        "-Dweak.linter.unnecessarySimpa=false",
+        "-Dweak.linter.style.haveILetI=false",
+        "-Dweak.linter.unusedSimpArgs=false",
+        "-DmaxHeartbeats=2000000",
+        "-Dweak.linter.unusedSectionVars=false",
+        "-Dweak.linter.unnecessarySeqFocus=false",
+        "-Dweak.linter.unusedVariables=false",
+        "-Dweak.linter.unreachableTactic=false",
+        "-Dweak.linter.unusedTactic=false",
+        "-Dweak.linter.defProp=false",
+        "-Dweak.linter.deprecated=false",
+        "-Dlinter.deprecated=false",
+        "-Dweak.linter.tacticAnalysis.introMerge=false",
+        "-Dweak.linter.constructorNameAsVariable=false",
+        "-DwarningAsError=true",
+        "evidence/second-edition/acceptance/dirac-ray-owner-consumer-compatibility-20261010/src/H0mework/Versions/E055/ReleaseMaterials/Physics/LowEnergyPhenomenology/AlphaSource/CanonicalSourcePropagationNativeDiracRay.lean",
+        "-o",
+        ".local/acceptance-execution-20261010/dirac-ray-local-instance/environment-verification-5c627eb4/lib/H0mework/Versions/E055/ReleaseMaterials/Physics/LowEnergyPhenomenology/AlphaSource/CanonicalSourcePropagationNativeDiracRay.olean"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 36.672,
+      "started_at": "2026-10-10T01:25:35.508381+00:00",
+      "source_sha256": "4957b3e6f54b119d948dd0c3d5c65628f1c196a09aae7f1042bbe8897fbd73a3",
+      "object_sha256": "ac63b83f66efb252c01d573360ea226dd7fb074b49d07b577cef8c063c193ea9",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "expected_owner": null,
+      "owner_verified": true
+    },
+    {
+      "name": "IndependentDiracGravityConsumer",
+      "command": [
+        "lean",
+        "--root=.local/acceptance-execution-20261010/dirac-ray-local-instance/environment-verification-5c627eb4/src",
+        "--trust=0",
+        "-Dweak.linter.unnecessarySimpa=false",
+        "-Dweak.linter.style.haveILetI=false",
+        "-Dweak.linter.unusedSimpArgs=false",
+        "-DmaxHeartbeats=2000000",
+        "-Dweak.linter.unusedSectionVars=false",
+        "-Dweak.linter.unnecessarySeqFocus=false",
+        "-Dweak.linter.unusedVariables=false",
+        "-Dweak.linter.unreachableTactic=false",
+        "-Dweak.linter.unusedTactic=false",
+        "-Dweak.linter.defProp=false",
+        "-Dweak.linter.deprecated=false",
+        "-Dlinter.deprecated=false",
+        "-Dweak.linter.tacticAnalysis.introMerge=false",
+        "-Dweak.linter.constructorNameAsVariable=false",
+        "-DwarningAsError=true",
+        "evidence/second-edition/acceptance/dirac-ray-owner-consumer-compatibility-20261010/src/IndependentDiracGravityConsumer.lean",
+        "-o",
+        ".local/acceptance-execution-20261010/dirac-ray-local-instance/environment-verification-5c627eb4/consumer.olean"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 9.703,
+      "started_at": "2026-10-10T01:26:12.193587+00:00",
+      "source_sha256": "dc9a5ddb2078d3e7098e970065da57230d0900e9074bd56e3793200239fbb96b",
+      "object_sha256": "61bb7736fbfe7c7e6336911b524fae11c136955e1bb6babd0b159c5956139df2",
+      "log_sha256": "7b2fc0badfac06658f1982c010e4905dcaf3a2e9801f840e70086da262d4eafa",
+      "expected_owner": "H0mework.Versions.E055.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalSourcePropagationNativeDiracRay",
+      "owner_verified": true
+    }
+  ]
+}
