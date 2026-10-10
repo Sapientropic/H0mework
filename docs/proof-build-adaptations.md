@@ -22,6 +22,10 @@ charged 的 `MixedSpectatorCandidate` 下各模块也会生成同名 `DecidableE
 
 `private_owner_string_rewrites` 将执行中的 `.startsWith` 查询绑定到真实生产模块的完整私有 owner。登记区分带末尾点的 owner 与不带末尾点的 family 前缀；行数、后缀筛选和数学正文保持。只改唯一匹配的执行字符串，注释、与该调用无关的字符串及不匹配的长前缀不能命中。
 
+`SourceMasterCorrectionJointPrice` 先在两分支中绑定 `(owner, namespaceName)`，再按原 member、原 namespace 与唯一候选取常量。相同登记也覆盖这条完整查找链的两个 owner 字符串；namespace、member、单例匹配、定义和预算保持。六份副本恢复同一原源码 SHA `ffe4fe9efc08edfe7493f4dcace742739bb6e37e661694474af004d0aa29dde2`。真实两个生产声明的类型、值和模块身份、完整 canonical 模块及[独立消费者](../evidence/second-edition/acceptance/joint-price-owner-consumer-20261010/result.json)已核对；[应用与逆验](../evidence/second-edition/acceptance/joint-price-owner-application-20261010/result.json)保存逐份规则，正式包验收消费新的公开源码摘要。
+
+`private_owner_expression_rewrites` 将登记的 `Name.str` 私有模块构造恢复到实际完整模块名，保持其后 private counter 与原 namespace/member。`SourceActualThreeParticleCutoffTime` 的 causal／Parseval 两组来自真实 canonical R71 模块，平方可积声明来自 R9 模块；十个实际声明均核对类型、值和模块身份。三条规则不改变数学正文、导入及原 1,200,000 预算，精确恢复原源码 SHA `6fa9a820792b2a8332be92dd4e5cf5704a6b335a760351e16079c559ebf7f71d`。完整 canonical 模块及[三个原陈述消费者](../evidence/second-edition/acceptance/cutoff-time-owner-consumer-20261010/result.json)已通过，[单源应用](../evidence/second-edition/acceptance/cutoff-time-owner-application-20261010/result.json)保存实际规则与逆验。
+
 ## Prepared Ward
 
 [prepared_increment_ward](../Lean/H0mework/Versions/R71e/ReleaseMaterials/Physics/LowEnergyPhenomenology/AlphaSource/EmIdentification/PhysicalPreparedCharge.lean) 用局部 `x/y` 保存左右实际 prepared leg，将同一 `increment_ward` 通过内积读口送入，再消费左右本征向量关系与自伴性。这样避免末尾 `simpa` 展开巨大 carrier 和乘积。原定理陈述、前提、定义与预算逐字保持，`proof_body_rewrites` 恢复完整原证明及原 SHA；后续包验收绑定适配后的完整源码范围。

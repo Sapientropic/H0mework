@@ -1,0 +1,83 @@
+OWNER LowEnergy.FullYDynamicSourceNext.oriented_causal_limit = _private.H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.ExternalCompositeDecay.SourceFullYUncutRetardedKernel.0.LowEnergy.FullYDynamicSourceNext.oriented_causal_limit MODULE H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.ExternalCompositeDecay.SourceFullYUncutRetardedKernel
+TYPE _private.H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.ExternalCompositeDecay.SourceFullYUncutRetardedKernel.0.LowEnergy.FullYDynamicSourceNext.oriented_causal_limit = ∀
+  {E : Type u_1} [inst : NormedAddCommGroup E] [inst_1 : InnerProductSpace ℂ E] [inst_2 : CompleteSpace E]
+  (A R : E →L[ℂ] E) (advanced : Bool) (z : ℂ),
+  (if advanced = true then z.im < 0 else 0 < z.im) →
+    (A - z • 1) * R = 1 →
+      ∀ (C : ℝ),
+        (∀ (t : ℝ), ‖LowEnergy.SourceFiniteUnitary.time A t‖ ≤ ∑ j ∈ Finset.range 57, (|t| * C) ^ j) →
+          Filter.Tendsto (LowEnergy.FullYDynamicSourceNext.orientedSourceCausal A advanced z) Filter.atTop (nhds R)
+OWNER LowEnergy.FullYDynamicSourceNext.causal_apply = _private.H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.ExternalCompositeDecay.SourceFullYUncutRetardedKernel.0.LowEnergy.FullYDynamicSourceNext.causal_apply MODULE H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.ExternalCompositeDecay.SourceFullYUncutRetardedKernel
+TYPE _private.H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.ExternalCompositeDecay.SourceFullYUncutRetardedKernel.0.LowEnergy.FullYDynamicSourceNext.causal_apply = ∀
+  {E : Type u_1} {D : Type u_2} [inst : NormedAddCommGroup E] [inst_1 : InnerProductSpace ℂ E]
+  [inst_2 : CompleteSpace E] [inst_3 : NormedAddCommGroup D] [inst_4 : InnerProductSpace ℂ D] [CompleteSpace D]
+  (A : E →L[ℂ] E) (J : E →L[ℂ] D) (x : E) (z : ℂ) (T : ℝ),
+  J ((LowEnergy.FullYDynamicSourceNext.sourceCausal A z T) x) =
+    Complex.I •
+      ∫ (s : ℝ) in 0..T,
+        LowEnergy.FullYDynamicSourceNext.retardedPhase✝ z s • J ((LowEnergy.SourceFiniteUnitary.time A s) x)
+OWNER LowEnergy.FullYDynamicSourceNext.time_negative = _private.H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.ExternalCompositeDecay.SourceFullYUncutRetardedKernel.0.LowEnergy.FullYDynamicSourceNext.time_negative MODULE H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.ExternalCompositeDecay.SourceFullYUncutRetardedKernel
+TYPE _private.H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.ExternalCompositeDecay.SourceFullYUncutRetardedKernel.0.LowEnergy.FullYDynamicSourceNext.time_negative = ∀
+  {E : Type u_1} [inst : NormedAddCommGroup E] [inst_1 : InnerProductSpace ℂ E] [inst_2 : CompleteSpace E]
+  (A : E →L[ℂ] E) (t : ℝ), LowEnergy.SourceFiniteUnitary.time (-A) t = LowEnergy.SourceFiniteUnitary.time A (-t)
+OWNER LowEnergy.FourGradeOutputParseval.baseline_time_square_integrable = _private.H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.ExternalCompositeDecay.SourceFullYPositiveOutputParseval.0.LowEnergy.FourGradeOutputParseval.baseline_time_square_integrable MODULE H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.ExternalCompositeDecay.SourceFullYPositiveOutputParseval
+TYPE _private.H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.ExternalCompositeDecay.SourceFullYPositiveOutputParseval.0.LowEnergy.FourGradeOutputParseval.baseline_time_square_integrable = ∀
+  {E : Type u_1} [inst : NormedAddCommGroup E] [inst_1 : NormedSpace ℂ E] [CompleteSpace E] (x : E) (μ : ℝ),
+  0 < μ →
+    MeasureTheory.Integrable (fun t => ‖LowEnergy.FullYPairedParseval.causalWave μ (fun x_1 => x) t‖ ^ 2)
+      MeasureTheory.volume
+OWNER LowEnergy.FourGradeOutputParseval.baseline_frequency_square_integrable = _private.H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.ExternalCompositeDecay.SourceFullYPositiveOutputParseval.0.LowEnergy.FourGradeOutputParseval.baseline_frequency_square_integrable MODULE H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.ExternalCompositeDecay.SourceFullYPositiveOutputParseval
+TYPE _private.H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.ExternalCompositeDecay.SourceFullYPositiveOutputParseval.0.LowEnergy.FourGradeOutputParseval.baseline_frequency_square_integrable = ∀
+  {E : Type u_1} [inst : NormedAddCommGroup E] [inst_1 : NormedSpace ℂ E] [CompleteSpace E] (x : E) (μ : ℝ),
+  0 < μ →
+    MeasureTheory.Integrable
+      (fun ξ => ‖FourierTransform.fourier (LowEnergy.FullYPairedParseval.causalWave μ fun x_1 => x) ξ‖ ^ 2)
+      MeasureTheory.volume
+OWNER LowEnergy.FourGradeOutputParseval.baseline_square_mass = _private.H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.ExternalCompositeDecay.SourceFullYPositiveOutputParseval.0.LowEnergy.FourGradeOutputParseval.baseline_square_mass MODULE H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.ExternalCompositeDecay.SourceFullYPositiveOutputParseval
+TYPE _private.H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.ExternalCompositeDecay.SourceFullYPositiveOutputParseval.0.LowEnergy.FourGradeOutputParseval.baseline_square_mass = ∀
+  {E : Type u_1} [inst : NormedAddCommGroup E] [inst_1 : NormedSpace ℂ E] [CompleteSpace E] (x : E) (μ : ℝ),
+  0 < μ →
+    ∫ (ξ : ℝ), ‖FourierTransform.fourier (LowEnergy.FullYPairedParseval.causalWave μ fun x_1 => x) ξ‖ ^ 2 =
+        ‖x‖ ^ 2 / (2 * μ) ∧
+      ∫ (t : ℝ), ‖LowEnergy.FullYPairedParseval.causalWave μ (fun x_1 => x) t‖ ^ 2 = ‖x‖ ^ 2 / (2 * μ)
+OWNER LowEnergy.FourGradeOutputParseval.positive_output_parseval = _private.H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.ExternalCompositeDecay.SourceFullYPositiveOutputParseval.0.LowEnergy.FourGradeOutputParseval.positive_output_parseval MODULE H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.ExternalCompositeDecay.SourceFullYPositiveOutputParseval
+TYPE _private.H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.ExternalCompositeDecay.SourceFullYPositiveOutputParseval.0.LowEnergy.FourGradeOutputParseval.positive_output_parseval = ∀
+  {E : Type u_1} [inst : NormedAddCommGroup E] [inst_1 : InnerProductSpace ℂ E] [CompleteSpace E] (u b : ℝ → E),
+  MeasureTheory.Integrable u MeasureTheory.volume →
+    MeasureTheory.Integrable b MeasureTheory.volume →
+      Continuous (u - b) →
+        MeasureTheory.Integrable (FourierTransform.fourier (u - b)) MeasureTheory.volume →
+          MeasureTheory.Integrable (fun ξ => inner ℂ (FourierTransform.fourier b ξ) (FourierTransform.fourier b ξ))
+              MeasureTheory.volume →
+            MeasureTheory.Integrable (fun t => inner ℂ (b t) (b t)) MeasureTheory.volume →
+              MeasureTheory.Integrable (fun t => inner ℂ ((u - b) t) (b t)) MeasureTheory.volume →
+                MeasureTheory.Integrable (fun t => inner ℂ (u t) ((u - b) t)) MeasureTheory.volume →
+                  ∫ (ξ : ℝ), inner ℂ (FourierTransform.fourier b ξ) (FourierTransform.fourier b ξ) =
+                      ∫ (t : ℝ), inner ℂ (b t) (b t) →
+                    ∫ (ξ : ℝ), inner ℂ (FourierTransform.fourier u ξ) (FourierTransform.fourier u ξ) =
+                      ∫ (t : ℝ), inner ℂ (u t) (u t)
+OWNER LowEnergy.FourGradeOutputParseval.square_pair_integrable = _private.H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.ExternalCompositeDecay.SourceFullYPositiveOutputParseval.0.LowEnergy.FourGradeOutputParseval.square_pair_integrable MODULE H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.ExternalCompositeDecay.SourceFullYPositiveOutputParseval
+TYPE _private.H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.ExternalCompositeDecay.SourceFullYPositiveOutputParseval.0.LowEnergy.FourGradeOutputParseval.square_pair_integrable = ∀
+  {E : Type u_1} [inst : NormedAddCommGroup E] [inst_1 : InnerProductSpace ℂ E] (u v : ℝ → E),
+  MeasureTheory.AEStronglyMeasurable u MeasureTheory.volume →
+    MeasureTheory.AEStronglyMeasurable v MeasureTheory.volume →
+      MeasureTheory.Integrable (fun t => ‖u t‖ ^ 2) MeasureTheory.volume →
+        MeasureTheory.Integrable (fun t => ‖v t‖ ^ 2) MeasureTheory.volume →
+          MeasureTheory.Integrable (fun t => inner ℂ (u t) (v t)) MeasureTheory.volume
+OWNER LowEnergy.FourGradeOutputParseval.one_sided_positive_parseval = _private.H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.ExternalCompositeDecay.SourceFullYPositiveOutputParseval.0.LowEnergy.FourGradeOutputParseval.one_sided_positive_parseval MODULE H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.ExternalCompositeDecay.SourceFullYPositiveOutputParseval
+TYPE _private.H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.ExternalCompositeDecay.SourceFullYPositiveOutputParseval.0.LowEnergy.FourGradeOutputParseval.one_sided_positive_parseval = ∀
+  {E : Type u_1} [inst : NormedAddCommGroup E] [inst_1 : InnerProductSpace ℂ E] [CompleteSpace E] (f g : ℝ → E),
+  MeasureTheory.Integrable f MeasureTheory.volume →
+    MeasureTheory.Integrable g MeasureTheory.volume →
+      Continuous g →
+        MeasureTheory.Integrable (FourierTransform.fourier g) MeasureTheory.volume →
+          ∫ (ξ : ℝ), inner ℂ (FourierTransform.fourier f ξ) (FourierTransform.fourier g ξ) =
+            ∫ (t : ℝ), inner ℂ (f t) (g t)
+OWNER LowEnergy.ActualFourBlockSharpCausalMass.polynomial_wave_square_integrable = _private.H0mework.Versions.R9c73a630.ReleaseMaterials.Scratch.LowEnergyRetardedCouncil.ActualFourBlockResponse.SourceActualFourBlockSharpCausalMass.0.LowEnergy.ActualFourBlockSharpCausalMass.polynomial_wave_square_integrable MODULE H0mework.Versions.R9c73a630.ReleaseMaterials.Scratch.LowEnergyRetardedCouncil.ActualFourBlockResponse.SourceActualFourBlockSharpCausalMass
+TYPE _private.H0mework.Versions.R9c73a630.ReleaseMaterials.Scratch.LowEnergyRetardedCouncil.ActualFourBlockResponse.SourceActualFourBlockSharpCausalMass.0.LowEnergy.ActualFourBlockSharpCausalMass.polynomial_wave_square_integrable = ∀
+  {E : Type u_1} [inst : NormedAddCommGroup E] [inst_1 : NormedSpace ℂ E] (μ C D : ℝ),
+  0 < μ →
+    ∀ (u : ℝ → E),
+      Continuous u →
+        (∀ (t : ℝ), ‖u t‖ ≤ (∑ j ∈ Finset.range 57, (|t| * C) ^ j) * D) →
+          MeasureTheory.Integrable (fun t => ‖LowEnergy.FullYPairedParseval.causalWave μ u t‖ ^ 2) MeasureTheory.volume

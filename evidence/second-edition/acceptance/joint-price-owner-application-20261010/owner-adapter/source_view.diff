@@ -1,0 +1,58 @@
+--- a/tools/source_view.py
++++ b/tools/source_view.py
+@@ -229,6 +229,44 @@
+     return text
+ 
+ 
++
++def _private_owner_tuple_literals(text: str, masked: str):
++    """Recognize the observed paired provider binding and its singleton lookup."""
++    namespace = r"[A-Za-z_][A-Za-z0-9_']*(?:\.[A-Za-z_][A-Za-z0-9_']*)*"
++    flow = re.compile(
++        r"\blet\s+member\s*:=\s*id\.getId\s+"
++        r"let\s*\(\s*owner\s*,\s*namespaceName\s*\)\s*←(?P<arms>.*?)"
++        r"\blet\s+wanted\s*:=\s*namespaceName\s*\+\+\s*member\s+"
++        r"let\s+candidates\s*:=\s*\(\s*←\s*getEnv\s*\)\.constants\.toList\.filter\s+"
++        r"fun\s*\(\s*name\s*,\s*_\s*\)\s*=>\s*name\.toString\.startsWith\s+owner\s*&&\s*"
++        r"privateToUserName\s+name\s*==\s*wanted\s+"
++        r"match\s+candidates\s+with\s*\|\s*\[\s*\(\s*name\s*,\s*_\s*\)\s*\]\s*=>\s*"
++        r'(?:logInfo\s+m!"[ \t]*;\s*)?return\s+mkConst\s+name\s*'
++        r'\|\s*_\s*=>\s*throwError\s*"[ \t]*', re.DOTALL)
++    arms = re.compile(
++        r"\s*if\s+member\s*==\s*`(?P<member1>" + namespace + r")\s+then\s+pure\s*\(\s*"
++        r'(?P<owner1>"[ \t]*)\s*,\s*`(?P<namespace1>' + namespace + r")\s*\)\s*"
++        r"else\s+if\s+member\s*==\s*`(?P<member2>" + namespace + r")\s+then\s+pure\s*\(\s*"
++        r'(?P<owner2>"[ \t]*)\s*,\s*`(?P<namespace2>' + namespace + r")\s*\)\s*"
++        r'else\s+throwError\s*"[ \t]*\s*')
++    found = []
++    for binding in flow.finditer(masked):
++        branch = arms.fullmatch(binding['arms'])
++        if (branch is None or branch['namespace1'] != branch['namespace2']
++                or branch['member1'] == branch['member2']):
++            continue
++        for group in ('owner1', 'owner2'):
++            begin = binding.start('arms') + branch.start(group)
++            original_literal = re.match(r'"(?:\\.|[^"\\])*"', text[begin:])
++            if original_literal is None:
++                continue
++            literal = original_literal[0]
++            end = begin + len(literal)
++            # This binding has exact module owners, each ending before its index.
++            if re.fullmatch(r'"_private\.' + namespace + r'\."', literal):
++                found.append((begin, end, literal))
++    return found
++
+ def rewrite_private_owner_strings(text: str, rewrites, *, reverse: bool = False) -> str:
+     """Relocate registered private-owner prefixes used by declaration lookup."""
+     if rewrites is None:
+@@ -262,6 +300,10 @@
+         if literal is not None and literal[0] in literals:
+             owner, suffix = literals[literal[0]]
+             matches[owner].append((index, index + len(literal[0]), suffix))
++    for begin, end, literal in _private_owner_tuple_literals(text, masked):
++        if literal in literals:
++            owner, suffix = literals[literal]
++            matches[owner].append((begin, end, suffix))
+     edits = []
+     for owner, spans in matches.items():
+         if len(spans) != 1:

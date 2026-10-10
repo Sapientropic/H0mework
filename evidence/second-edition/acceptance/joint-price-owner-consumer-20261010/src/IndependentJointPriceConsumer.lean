@@ -1,0 +1,132 @@
+import H0mework.Versions.R9c73a630.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.SourceMasterCorrectionJointPrice
+set_option autoImplicit false
+set_option maxHeartbeats 2400000
+set_option maxRecDepth 16384
+set_option backward.isDefEq.respectTransparency false
+noncomputable section
+namespace LowEnergy.PreparationPhysicalMasterCorrectionReturn
+open SaturationMonoid SaturationMonoid.PhysicsCore SaturationMonoid.PhysicsCore.LowEnergy
+open FullQuantum FullSpace
+open PreparationPhysicalNormalizedFullField PreparationPhysicalChargedEnergyVariation
+open PreparationPhysicalChargedEnergyPoleReturn PreparationPhysicalChargedPacketQuantumReturn
+open PreparationPhysicalChargedPacketVoltage PreparationVacuumVoltageGaussGreen
+open PreparationVacuumSourceFieldFamily PreparationVacuumActionFieldLift
+open PreparationVacuumActualFieldQuantization PreparationVacuumNonlinearFieldCurve
+open PreparationVacuumOriginalGreenFeedback PreparationVacuumPhysicalChargedFieldFactor
+open PreparationVacuumChargedLongRangeRead PreparationVacuumCausalPoleResponse
+open PreparationVacuumChargedSpatialResponse PreparationVacuumNativeSlowCoupling
+open PreparationVacuumFullSlowFieldResponse PreparationVacuumQuantumSlowResidue
+open PreparationVacuumPhysicalFeedback PreparationVacuumChargedPacketGreen
+open PreparationVacuumPhysicalQuantumLockedCharge PreparationVacuumElectromagneticIdentity
+open CanonicalGradedSpatialSource FullQuantum.CoframeResponse FullQuantum.StateGreen
+open GaussHistoryHilbert PreparationVacuumStaticVoltageSource
+open MeasureTheory Filter
+open scoped BigOperators Matrix Topology InnerProductSpace
+local instance IndependentCorrectionPriceIndex : DecidableEq Quantum.Index:=Classical.decEq _
+attribute [local instance] SourceRealScalarFock.branchOrder
+
+open Stage10 DiracCliffordRepresentation DiracExteriorMatterAction YangMills.FullPairing
+open PreparationPhysicalEnergyWeightsReturn PreparationPhysicalFilteredChargeVoltage
+open PreparationPhysicalVoltageEnergyIdentity
+
+open PreparationPhysicalEnergyPoleChargeReturn
+open Stage9C.Material.SpinPair ProofFreeRicherAnholonomicSource StageNineHolonomicField
+open FullQuantum.Triangular
+
+open PreparationPhysicalEnergyCurrentWardReturn PreparationPhysicalJointGeneratorEnergyReturn
+open PreparationVacuumMixedFieldReturn GaussComposite.PhysicalFullFieldScattering
+open Electromagnetic.CanonicalCoframe
+
+open PreparationPhysicalChargedHamiltonianRead PreparationPhysicalChargedScatteringPoleReturn
+
+open PreparationPhysicalChargedVertexDomainReturn PreparationPhysicalChargedScatteringFourierReturn
+
+open PreparationPhysicalChargedScatteringDomainPrice
+
+open PreparationVacuumSoftPoleSelection PreparationVacuumNativePoleTensor PreparationVacuumSharedPoleCarrier
+open PreparationVacuumPhysicalPoleSheet PreparationVacuumPhysicalCharacteristic PreparationVacuumWholeOrigin
+
+open PreparationPhysicalChargedSoftScatteringReturn PreparationPhysicalNativePoleChargeReturn
+open PreparationPhysicalScatteringFrequencyWard
+
+open Stage10.CanonicalMatter StageNineCurrentCoframeMatterTemporalPrincipal
+open PreparationVacuumGaugeSourceInjection GaussNativeMatter SourceQuantumFockGauge
+open SourceQuantumGaugeSliceCoordinates SU7MotherLieAlgebra
+
+
+open SaturationMonoid SaturationMonoid.PhysicsCore SaturationMonoid.PhysicsCore.LowEnergy
+open FullQuantum FullSpace YangMills.FullPairing Stage9C.Material.SpinPair
+open PreparationPhysicalNativeOriginPhaseWard PreparationPhysicalNativePoleChargeReturn
+open PreparationPhysicalEnergyCurrentWardReturn PreparationPhysicalChargedSoftObservable
+open PreparationPhysicalChargedPacketQuantumReturn PreparationPhysicalChargedSoftScatteringReturn
+open PreparationPhysicalNormalizedFullField PreparationVacuumOriginalGreenFeedback
+open PreparationVacuumPhysicalPoleSheet PreparationVacuumPhysicalCharacteristic
+open Electromagnetic.CanonicalCoframe FullQuantum.Triangular
+open MeasureTheory Filter
+open scoped Topology InnerProductSpace
+
+open PreparationPhysicalNativeSoftWardBoundary
+open Set
+
+open PreparationPhysicalFinitePoleVertices PreparationPhysicalFiniteOriginCovariance
+open PreparationPhysicalNativePhotonFluxReturn PreparationPhysicalNativeWardFiniteObservation
+open PreparationPhysicalNativePolarizationEmitter
+
+open PreparationVacuumFullPoleContinuation PreparationVacuumPhysicalPoleHalfResponse
+open PreparationVacuumMovingPoleGaussReturn PreparationVacuumPhysicalCurrentLaplaceReturn
+open PreparationPhysicalFiniteObservationSoftReturn PreparationVacuumSoftPoleSelection
+
+open PreparationVacuumStaticPoleResponse PreparationVacuumFullOriginResponse
+
+open PreparationVacuumStaticSpatialSource PreparationVacuumStaticSimpleCoupling
+
+open PreparationPhysicalCommonCurrentStaticRead PreparationPhysicalActualRetardedWard
+
+open PreparationPhysicalCommonObservableUnits PreparationVacuumPhysicalPinnedVelocity
+open PreparationVacuumGaugeSlowFrequency PreparationVacuumQuantumSlowResidue
+open PreparationVacuumPhysicalSlowBlock PreparationVacuumSharedPoleCarrier
+open PreparationVacuumObservedPoleTensor
+open PreparationVacuumActualSpatialPacket
+open scoped Matrix.Norms.Operator SchwartzMap
+
+open PreparationPhysicalCommonSpatialGreen PreparationPhysicalActualGaussChargeCurrent
+open PreparationPhysicalActualNoetherVertexReturn PreparationPhysicalActualPhaseChargeReturn
+
+open Set GaussianFourier
+
+
+open PreparationPhysicalChannelGreen
+
+
+open PreparationPhysicalChannelRadialJet PreparationVacuumObservedStaticResidue
+
+
+open GaussCoreHilbert SourceJointResidualEnergy PreparationVacuumQuantumSlowResponse
+open PreparationPhysicalJointRadialForcing
+
+open PreparationVacuumPhysicalHalfAxis CanonicalGradedCurrent GaussUnitaryHistory
+open PreparationPhysicalRetainerResolventSquare PreparationVacuumStaticSpatialSource
+open PreparationPhysicalCausalSpatialDilation
+attribute [local irreducible] sourceMasterCurrent sourceMasterNative sourceNativeReaderFirst sourcePoleRead
+
+example (n : PhysicalMomentum) (nonzero : n≠0) (zeta : ℂ) (i : Fin 3) :
+    Tendsto (fun d : ℝ=>(sourceChargedDenominator n ((d:ℂ)*zeta) i)⁻¹) (𝓝[>] 0)
+      (𝓝 ((sourceChargedDenominator n 0 i)⁻¹)) := sourceCorrectionInverse_return n nonzero zeta i
+
+example (q : PhysicalResponsePoint) (c eta : ℝ)
+    (frequency : c≠0) (causal : 0<eta) (d : ℝ) (radial : 0<d) (l r : RestStateIndex) (i : Fin 3)
+    (test : 𝓢(PhysicalMomentum,ℂ)) (x n : PhysicalMomentum) (nonzero : n≠0) :
+    ‖sourceSpatialPhase n x*test n*((d:ℂ)*sourceDenominatorCorrection q (sourceSpatialMomentum n)
+      ((d:ℂ)*sourcePoleSide c eta) l r i)‖≤ sourceDenominatorCorrectionPrice q c eta l r i*sourceRadialSchwartzPrice test n := sourceDenominatorCorrection_fourier_bound q c eta frequency causal d radial l r i test x n nonzero
+
+example (q : PhysicalResponsePoint) (c eta : ℝ)
+    (frequency : c≠0) (causal : 0<eta) (l r : RestStateIndex) (i : Fin 3)
+    (test : 𝓢(PhysicalMomentum,ℂ)) (x : PhysicalMomentum) :
+    Tendsto (fun d : ℝ=>∫n : PhysicalMomentum,sourceSpatialPhase n x*test n*((d:ℂ)*
+      sourceDenominatorCorrection q (sourceSpatialMomentum n) ((d:ℂ)*sourcePoleSide c eta) l r i))
+      (𝓝[>] 0) (𝓝 0) := sourceDenominatorCorrection_spatial_zero q c eta frequency causal l r i test x
+
+end LowEnergy.PreparationPhysicalMasterCorrectionReturn
+#print axioms LowEnergy.PreparationPhysicalMasterCorrectionReturn.sourceCorrectionInverse_return
+#print axioms LowEnergy.PreparationPhysicalMasterCorrectionReturn.sourceDenominatorCorrection_fourier_bound
+#print axioms LowEnergy.PreparationPhysicalMasterCorrectionReturn.sourceDenominatorCorrection_spatial_zero
