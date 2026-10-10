@@ -19,9 +19,9 @@ open SourceQuantumScalarChart SourceQuantumGaugeSliceCoordinates
 open PreparationVacuumMixedFieldReturn
 open scoped BigOperators ContDiff Topology Matrix.Norms.Elementwise
 attribute [local irreducible] Stage9C.Material.SpinPair.actual
-local instance : NormedAddCommGroup LorentzianCoframe := Matrix.normedAddCommGroup
-local instance : SeminormedAddCommGroup LorentzianCoframe := Matrix.seminormedAddCommGroup
-local instance : NormedSpace ℝ LorentzianCoframe := Matrix.normedSpace
+local instance h0meworkNativeDiracRayNormedAddCommGroup : NormedAddCommGroup LorentzianCoframe := Matrix.normedAddCommGroup
+local instance h0meworkNativeDiracRaySeminormedAddCommGroup : SeminormedAddCommGroup LorentzianCoframe := Matrix.seminormedAddCommGroup
+local instance h0meworkNativeDiracRayNormedSpace : NormedSpace ℝ LorentzianCoframe := Matrix.normedSpace
 local instance : Module.Finite ℝ P286LieBlockData :=
   FiniteDimensional.of_injective p286AmbientLinear p286AmbientLinear_injective
 local instance : Fintype P286CoordinateIndex := Fintype.ofFinite _
