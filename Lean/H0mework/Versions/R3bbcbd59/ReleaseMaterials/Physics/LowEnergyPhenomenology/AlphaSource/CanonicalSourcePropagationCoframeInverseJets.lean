@@ -11,9 +11,9 @@ open SaturationMonoid.PhysicsCore
 open ProofFreeRicherAnholonomicSource StageNineCoframeVariation
 open Filter
 open scoped BigOperators ContDiff Topology Matrix.Norms.Elementwise
-local instance : NormedAddCommGroup LorentzianCoframe := Matrix.normedAddCommGroup
-local instance : SeminormedAddCommGroup LorentzianCoframe := Matrix.seminormedAddCommGroup
-local instance : NormedSpace ℝ LorentzianCoframe := Matrix.normedSpace
+local instance h0meworkCoframeInverseJetsNormedAddCommGroup : NormedAddCommGroup LorentzianCoframe := Matrix.normedAddCommGroup
+local instance h0meworkCoframeInverseJetsSeminormedAddCommGroup : SeminormedAddCommGroup LorentzianCoframe := Matrix.seminormedAddCommGroup
+local instance h0meworkCoframeInverseJetsNormedSpace : NormedSpace ℝ LorentzianCoframe := Matrix.normedSpace
 
 theorem matrixRay_mul_derivative {n m k : Type*}
     [Fintype n] [Fintype m] [Fintype k]

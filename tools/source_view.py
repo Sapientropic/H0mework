@@ -252,20 +252,22 @@ def rewrite_private_owner_strings(text: str, rewrites, *, reverse: bool = False)
     if reverse:
         mapping = {target: source for source, target in mapping.items()}
     masked = mask_comments_and_strings(text)
-    literals = {'"' + owner + '."': owner for owner in mapping}
+    literals = {'"' + owner + suffix + '"': (owner, suffix)
+                for owner in mapping for suffix in (".", "")}
     matches = {owner: [] for owner in mapping}
     for index, token in enumerate(masked):
         if token != '"' or not re.search(r"\.startsWith\s*\Z", masked[:index]):
             continue
         literal = re.match(r'"(?:\\.|[^"\\])*"', text[index:])
         if literal is not None and literal[0] in literals:
-            matches[literals[literal[0]]].append((index, index + len(literal[0])))
+            owner, suffix = literals[literal[0]]
+            matches[owner].append((index, index + len(literal[0]), suffix))
     edits = []
     for owner, spans in matches.items():
         if len(spans) != 1:
             raise ViewError("Declared private-owner prefix literal is absent or duplicated")
-        begin, end = spans[0]
-        edits.append((begin, end, '"' + mapping[owner] + '."'))
+        begin, end, suffix = spans[0]
+        edits.append((begin, end, '"' + mapping[owner] + suffix + '"'))
     for begin, end, replacement in sorted(edits, reverse=True):
         text = text[:begin] + replacement + text[end:]
     return text

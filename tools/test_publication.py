@@ -465,6 +465,67 @@ class PrivateOwnerStringRewriteTests(unittest.TestCase):
                     s.module_views({**row, "target_sha256": p.sha(changed)}, {})
 
 
+class PrivateOwnerFamilyPrefixTests(unittest.TestCase):
+    source = "_private.SourceActualCandidateVertexValues"
+    target = "_private.H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.ExternalCompositeDecay.SourceActualCandidateVertexValues"
+
+    def rules(self):
+        return [{"source_owner": self.source, "target_owner": self.target}]
+
+    def lookup(self, owner=None):
+        return ('    if name.toString.startsWith "' + (owner or self.source) + '" &&\n'
+                '        name.toString.endsWith (".row_"++toString index.getNat) then\n'
+                '      some (mkIdent name) else none\n'
+                '  unless rows.size = 1 do throwError "Expected exactly the paid actual source row"\n')
+
+    def test_family_prefix_preserves_row_selection_and_existing_program(self):
+        untouched = (f'-- name.toString.startsWith "{self.source}"\n'
+                     f'/- nested /- name.toString.startsWith "{self.source}" -/ comment -/\n'
+                     f'def ordinary := "{self.source}"\n'
+                     f'def raw := r##"{self.source}"##\n'
+                     f'#check «name.startsWith "{self.source}"»\n'
+                     f'name.startsWith "{self.source}Longer"\n')
+        original = untouched + self.lookup() + 'theorem paid : True := by trivial\n'
+        public = s.rewrite_private_owner_strings(original, self.rules())
+        self.assertEqual(public, untouched + self.lookup(self.target) + 'theorem paid : True := by trivial\n')
+        self.assertEqual(s.rewrite_private_owner_strings(public, self.rules(), reverse=True), original)
+
+    def test_dotted_mode_retains_its_exact_terminal_dot(self):
+        original = f'name.toString.startsWith "{self.source}."\n'
+        public = f'name.toString.startsWith "{self.target}."\n'
+        self.assertEqual(s.rewrite_private_owner_strings(original, self.rules()), public)
+        self.assertEqual(s.rewrite_private_owner_strings(public, self.rules(), reverse=True), original)
+
+    def test_family_missing_or_duplicate_execution_rejects(self):
+        for raw in ('-- ' + self.lookup(),
+                    '/- ' + self.lookup() + '-/\n',
+                    f'def ordinary := "{self.source}"\n',
+                    f'name.startsWith r##"{self.source}"##\n',
+                    f'name.startsWith "{self.source}Longer"\n',
+                    self.lookup() * 2,
+                    self.lookup() + f'name.startsWith "{self.source}."\n'):
+            with self.subTest(raw=raw), self.assertRaises(s.ViewError):
+                s.rewrite_private_owner_strings(raw, self.rules())
+
+    def test_source_view_rejects_changed_row_guard_even_with_new_target_digest(self):
+        original = ('import SourceRows\n' + 'elab "paidFamily" : tactic => do\n' + self.lookup()
+                    + 'theorem paid : True := by trivial\n')
+        public = s.rewrite_private_owner_strings(original, self.rules())
+        public = s.transform(public, s.import_tokens(public), {'SourceRows': 'H0mework.SourceRows'})
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / 'Fold.lean').write_bytes(public)
+            row = {'path': 'Fold.lean', 'source_path': 'Original.lean', 'target_sha256': p.sha(public),
+                   'source_sha256': p.sha(original.encode()), 'private_owner_string_rewrites': self.rules(),
+                   'import_map': {'H0mework.SourceRows': 'SourceRows'}}
+            with patch.object(s, 'ROOT', root):
+                self.assertEqual(s.module_views(row, {}), (original.encode(), original.encode()))
+                tampered = public.replace(b'rows.size = 1', b'rows.size = 2')
+                (root / 'Fold.lean').write_bytes(tampered)
+                with self.assertRaisesRegex(s.ViewError, 'Reconstructed source digest differs'):
+                    s.module_views({**row, 'target_sha256': p.sha(tampered)}, {})
+
+
 class AuditRewriteTests(unittest.TestCase):
     source = "SaturationMonoid.PhysicsCore.Bell.Source"
     target = "H0mework.Versions.AE.Physics.Bell.Source"

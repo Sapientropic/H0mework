@@ -31,7 +31,7 @@ elab "eval_bra_pair_row" index:num : tactic => withMainContext do
       ActualCandidateVertexLiterals.coefficient]))
     unless (← getGoals).isEmpty do
       let ids := (← (← getMainGoal).getType).getUsedConstants.filterMap fun name =>
-        if name.toString.startsWith "_private.SourceActualCandidateVertexValues" ||
+        if name.toString.startsWith "_private.H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.ExternalCompositeDecay.SourceActualCandidateVertexValues" ||
             name.toString.startsWith "LowEnergy.ActualCandidateBra.leftCoefficient" ||
             name.toString.startsWith "LowEnergy.ActualCandidateBra.pairCoefficient" then
           some (mkIdent name) else none

@@ -196,27 +196,23 @@ theorem prepared_increment_ward (left right : Bool) (a s b t : Fin 2)
       inner ℂ (inclusion (completedLeg left a s f))
         (torque (chargeReader nativeY+1) p k z w hz hw
           (inclusion (completedLeg right b t g))) := by
-  have product : incrementVertex (chargeReader nativeY) p k z w hz hw=
-      sourceResolvent (p+k) z hz*reader (chargeReader nativeY+1)*
-        sourceResolvent p w hw :=
-    vertex_return (chargeReader nativeY+1) p k z w hz hw
-  have hward : (z-w)•(sourceResolvent (p+k) z hz*reader (chargeReader nativeY+1)*
-      sourceResolvent p w hw)=
-      sourceResolvent (p+k) z hz*reader (chargeReader nativeY+1)-
-        reader (chargeReader nativeY+1)*sourceResolvent p w hw+
-          torque (chargeReader nativeY+1) p k z w hz hw := by
-    rw [←product]
-    exact increment_ward (chargeReader nativeY) p k z w hz hw
-  have sc : (starRingEnd ℂ) (incrementSign left)=incrementSign left := by
-    rw [starRingEnd_apply]
-    exact star_incrementSign left
-  have base := increment_wedge (sourceResolvent (p+k) z hz) (sourceResolvent p w hw)
-    (reader (chargeReader nativeY+1)) (torque (chargeReader nativeY+1) p k z w hz hw)
-    (z-w) (incrementSign right) (incrementSign left)
-    (inclusion (completedLeg left a s f)) (inclusion (completedLeg right b t g))
-    hward (prepared_leg_increment right b t g) (prepared_leg_increment left a s f)
-    (fun u v => (history_increment_pair nativeY u v).symm) sc
-  simpa only [preparedTwoPoint,product,mul_apply_eq_comp] using base
+  let x : HistorySpace := inclusion (completedLeg left a s f)
+  let y : HistorySpace := inclusion (completedLeg right b t g)
+  have hx : reader (chargeReader nativeY+1) x=incrementSign left•x :=
+    prepared_leg_increment left a s f
+  have hy : reader (chargeReader nativeY+1) y=incrementSign right•y :=
+    prepared_leg_increment right b t g
+  have ward := congrArg (fun T : HistorySpace →L[ℂ] HistorySpace => inner ℂ x (T y))
+    (increment_ward (chargeReader nativeY) p k z w hz hw)
+  simp only [smul_apply,sub_apply,add_apply,mul_apply_eq_comp,inner_smul_right,inner_sub_right,
+    inner_add_right,hy,map_smul] at ward
+  rw [←history_increment_pair nativeY x (sourceResolvent p w hw y),hx,inner_smul_left] at ward
+  simp only [starRingEnd_apply,star_incrementSign] at ward
+  change (z-w)*inner ℂ x (incrementVertex (chargeReader nativeY) p k z w hz hw y)=
+    incrementSign right*inner ℂ x (sourceResolvent (p+k) z hz y)-
+      incrementSign left*inner ℂ x (sourceResolvent p w hw y)+
+      inner ℂ x (torque (chargeReader nativeY+1) p k z w hz hw y)
+  exact ward
 
 theorem prepared_increment_ward_created (a s b t : Fin 2) (p k : PhysicalMomentum)
     (z w : ℂ) (hz : z.im≠0) (hw : w.im≠0) (f g : Profile) :

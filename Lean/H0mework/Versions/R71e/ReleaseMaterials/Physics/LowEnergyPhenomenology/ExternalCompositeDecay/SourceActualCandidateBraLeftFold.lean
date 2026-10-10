@@ -10,7 +10,7 @@ elab "eval_bra_left" index:num : tactic => withMainContext do
   let goal ← getMainGoal
   let target ← goal.getType
   let rows := target.getUsedConstants.filterMap fun name =>
-    if name.toString.startsWith "_private.SourceActualCandidateVertexValues" &&
+    if name.toString.startsWith "_private.H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.ExternalCompositeDecay.SourceActualCandidateVertexValues" &&
         name.toString.endsWith (".row_"++toString index.getNat) then
       some (mkIdent name) else none
   unless rows.size = 1 do throwError "Expected exactly the paid actual source row"
