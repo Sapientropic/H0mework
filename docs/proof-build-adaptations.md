@@ -13,3 +13,13 @@
 原源码 SHA 为 `db77bbe6fd166b57969997d13a8da2469718704310b3448f4f69c9cc06d2a4b3`，适配原路径视图 SHA 为 `c42bdf3ae1a427b99cb800fbfaf5b712044b822201b65cec0e9c6d370f5d69b0`。实际适配提交为 `7ece6168f129032b804c9841dddbf616d140e0ba`。
 
 `ci_memory.tsv` 为旧路径和 `ReleaseMaterials` 路径各登记内存键，九份副本均保持单独编译。逐包执行与缓存签收只在[当前验收状态](second-edition-readiness.md)维护。
+
+## 局部实例与私有环境 owner
+
+`local_instance_names` 给匿名局部实例显式、唯一的名称，保持类型、值和证明正文。Jets 与 GSR 共同导入时，`NormedAddCommGroup`、`SeminormedAddCommGroup`、`NormedSpace` 三类匿名实例都会产生同名声明，因此 Jets 三类必须一并命名。已命名副本保持原字节，原路径恢复时精确去除登记的名称。
+
+`private_owner_string_rewrites` 将执行中的 `.startsWith` 查询绑定到真实生产模块的完整私有 owner。登记区分带末尾点的 owner 与不带末尾点的 family 前缀；行数、后缀筛选和数学正文保持。只改唯一匹配的执行字符串，注释、与该调用无关的字符串及不匹配的长前缀不能命中。
+
+## Prepared Ward
+
+[prepared_increment_ward](../Lean/H0mework/Versions/R71e/ReleaseMaterials/Physics/LowEnergyPhenomenology/AlphaSource/EmIdentification/PhysicalPreparedCharge.lean) 用局部 `x/y` 保存左右实际 prepared leg，将同一 `increment_ward` 通过内积读口送入，再消费左右本征向量关系与自伴性。这样避免末尾 `simpa` 展开巨大 carrier 和乘积。原定理陈述、前提、定义与预算逐字保持，`proof_body_rewrites` 恢复完整原证明及原 SHA；后续包验收绑定适配后的完整源码范围。

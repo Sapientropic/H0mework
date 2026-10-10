@@ -1,0 +1,62 @@
+{
+  "schema": "h0mework/edition-execution-archive@1",
+  "status": "passed",
+  "kind": "build",
+  "inputs_unchanged": true,
+  "packages": [
+    "v2-9c73-full-stock-next"
+  ],
+  "files": [
+    {
+      "original_runtime_path": ".local/acceptance-execution-20261010/core-full-stock-build-after-apply/build.log",
+      "public_path": "evidence/second-edition/acceptance/core-9c73-full-stock-build-20261010/build.log",
+      "source_sha256": "8ac012e9955d886732139c812e39175bcece1d7c61cab61abc8d3b233484093e",
+      "target_sha256": "cfc679124df5b31c4bf677111daf6a6c86dbfadedcf68f64f5be1a09a1312f1b",
+      "transforms": [
+        {
+          "kind": "literal-runtime-roots",
+          "project_replacement": ".",
+          "elan_replacement": "runtime/elan"
+        }
+      ]
+    },
+    {
+      "original_runtime_path": ".local/acceptance-execution-20261010/core-full-stock-build-after-apply/result.json",
+      "public_path": "evidence/second-edition/acceptance/core-9c73-full-stock-build-20261010/result.json",
+      "source_sha256": "a9099040bdd19feabbdfe9f15d6258bb25f88a472b63feb34010bfb21a7e4954",
+      "target_sha256": "4e89de644b3ce30f3c0c550a6f4766a828fa9b7e2e1aae8d3422ba60726156ac",
+      "publication": {
+        "kind": "declared-runtime-paths/v2",
+        "runtime_paths": [
+          {
+            "pointer": "/results/0/log",
+            "relative": "evidence/second-edition/acceptance/core-9c73-full-stock-build-20261010/build.log"
+          },
+          {
+            "pointer": "/receipt",
+            "relative": "evidence/second-edition/acceptance/core-9c73-full-stock-build-20261010/result.json"
+          }
+        ],
+        "payload_sha256": "4e89de644b3ce30f3c0c550a6f4766a828fa9b7e2e1aae8d3422ba60726156ac"
+      }
+    },
+    {
+      "original_runtime_path": ".local/acceptance-execution-20261010/core-full-stock-build-after-apply/run-provenance.json",
+      "public_path": "evidence/second-edition/acceptance/core-9c73-full-stock-build-20261010/run-provenance.json",
+      "source_sha256": "06c035766e6abb3e8ae6568c22996306435b725b2c769e2fb0a8526d3da97e15",
+      "target_sha256": "bf86bbd715aede10e5726ce98068029e9dfe4bf3192701aa1bffd8efdef9d8d4",
+      "publication": {
+        "kind": "declared-runtime-paths/v2",
+        "runtime_paths": [
+          {
+            "pointer": "/official_acceptance_receipt",
+            "relative": "evidence/second-edition/acceptance/core-9c73-full-stock-build-20261010/result.json"
+          }
+        ],
+        "payload_sha256": "bf86bbd715aede10e5726ce98068029e9dfe4bf3192701aa1bffd8efdef9d8d4"
+      }
+    }
+  ],
+  "receipt": "evidence/second-edition/acceptance/core-9c73-full-stock-build-20261010/result.json",
+  "original_source_certification": "Separate from this local public execution."
+}

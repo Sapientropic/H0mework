@@ -36,7 +36,7 @@ Lean 分片在托管 runner 上先加 56 GiB swap，再按 CPU 数设置 `LEAN_N
 
 ## 迁入新稿件
 
-第二版与低能选集按固定 epoch 将新模块追加到阶段 8／9，既有模块保留分片位置。9c73 迁入时，阶段 1–7 的 42 个分片保留完整字段与缓存键；阶段 8 必要的证明 owner 和独立环境聚合入口修复对应的缓存变化，逐项登记在[核验回执](../evidence/second-edition/acceptance/cache-preservation-final-9c73-20261010.json)。新阶段沿用 checkpoint 与自动续跑。
+第二版与低能选集按固定 epoch 将新模块追加到阶段 8／9，既有模块保留分片位置。9c73 迁入及随后 11 源修复后，阶段 1–7 的 42 个分片均保留完整字段与缓存键；新增范围必要的证明 owner、独立环境聚合入口与证明适配造成的缓存变化，登记在[材料迁入核验](../evidence/second-edition/acceptance/cache-preservation-final-9c73-20261010.json)及[修复后核验](../evidence/second-edition/acceptance/cache-preservation-coframe-ward-20261010.json)。新阶段沿用 checkpoint 与自动续跑。
 
 1. 迁入 Lean 模块后照常提交。CI 会为新模块安排分片，日志会提示有多少模块不在分工表里。
 2. 一批迁入告一段落后，运行下面的命令，把新模块的位置写进分工表并提交。此后的迁入不会再挪动它们。

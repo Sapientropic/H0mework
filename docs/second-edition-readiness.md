@@ -10,6 +10,8 @@
 
 71e 核心五包全部通过实际构建与完整声明审查：整篇 6,288 个构建任务；PR／C62／completion／full-stock／runtime 分别 361／202／38／128／58 根。Bell 新增证明与低能 Q3 材料包分别 39／94 根通过。各自的原源码 scope、类型、值、归纳及 recursor 元数据已绑定实际回执，Std3／unsafe0／partial0。
 
+9c73 的 same-event-feedback 与 full-stock-next 已独立完成实际构建及完整声明审查，分别覆盖 176／508 根；来源范围、输入、执行 HEAD 与工具前后一致，Std3／unsafe0／partial0。两包当前完整源码范围与原执行逐字相同，已登记到第二版地图。
+
 低能 13 个科学消费范围已签收：五项原消费者实际重放，其余八项继承固定原认证。S／T／AC 的签收范围保持；AD／AE 的 GSR 适配范围已重新构建并完整审查，覆盖 1／286 根，共 13 条唯一证明项，输入前后一致。[两稿成品快照](../papers/low-energy-first-release/2026-10-09/README.md)保留四份双语 PDF、两个可编辑 ZIP 和原解包字节。
 
 GSR 九份副本的来源、适配和内存调度已同步；R71e／AD／AE／CAP／E055／C62 六份专项模块构建通过。第一版 AD／AE／CAP 已独立补验：构建通过，完整审查覆盖 640／841／224 根，源 scope 与新构建一致，Std3／unsafe0／partial0。原首发 map、原回执与 root token 保持。
@@ -22,24 +24,30 @@ Bell 原三项消费者重放和完整比较通过，30 件冻结输入共 1,143
 
 GSR 的稀疏证明保留原定理、定义与 kernel 检查，降低实际编译内存；受影响的首版与低能 AD／AE 已按当前适配字节重新签收。完整递归签名一致的源布局共享完整声明 owner，原路径各自恢复完整源码及原 SHA。
 
+私有环境查询按实际完整 owner 定位；Jets 的三类局部实例使用独立名称；prepared Ward 直接消费同一算子恒等式和左右实际 leg。联合修复保留原陈述、类型、数值与预算，全部精确恢复原来源。稳定机制见[证明构建适配](proof-build-adaptations.md)。
+
 ## 当前结构责任
 
-9c73 的八个固定 intake 已提交为 `53779d64cf2215f87db80bbe59d8a98d4928e127`：15,554 个完整源、728 件工件与 12 个独立聚合入口，保留已签 71e 及历史 epoch。真实 `make check-map` 通过 47,737 个逻辑源码视图、3,766 件工件；21 个包的所选根均由实际入口消费。四个新核心包按各自精确 source_paths 验收 176／232／508／740 根，随后完成四篇论文实际构建与完整审查。CPS1 原 LAlanine／临床依赖和固定 Physlib 63 模块随完整闭包接入，原参数、源单位与科学计算保持。
+9c73 的八个固定 intake 已提交为 `53779d64cf2215f87db80bbe59d8a98d4928e127`：15,554 个完整源、728 件工件与 12 个独立聚合入口，保留已签 71e 及历史 epoch。真实 `make check-map` 通过 47,737 个逻辑源码视图；21 个包的所选根均由实际入口消费。新核心剩 type-completion／runtime 的 232／740 根及四篇论文完整验收。CPS1 原 LAlanine／临床依赖和固定 Physlib 63 模块随完整闭包接入，原参数、源单位与科学计算保持。
 
-旧 71e 的三个物理包及九个低能新增 epoch 包仍需收尾验收。charged-transfer 的 11 文件／15 匿名实例命名已越过原冲突；八个动态私有 `Name` owner 修复模块实际构建通过，输入前后一致。P37／P38 的完整 Audit 与原独立认证消费者使用同名声明，分别保留原环境、完整正文和根声明，并按独立包构建与审查。原 16-target 批次已发生的失败与后续缓存产出分别记录；新签收使用稳定输入下的实际回执。Q6 新增 21 根按 Noether／完整量子响应合同审查。
+Type 的 `AdmissionStops` 保持原进程继续计算。11 源修复与其真实 1,407 模块闭包完全不相交，构建配置与进口不变；原三包批次保留实际全局身份变化，终态后按稳定提交单独补建并审查 Type。runtime 闭包包含该模块，先构建不包含它及其反向依赖的独立生产前沿，避免重复编译。
 
-远端 [CI 37981352421](https://github.com/Sapientropic/H0mework/actions/runs/37981352421) 已复用全部 41 个旧完整分片，Bell、量子与冻结证据检查成功。s7 仍在有效推进，s8 等上游。新增阶段 9 保留现有布局；相对于本轮远端 plan，阶段 1–7 的 42 片完整字段和缓存键实测保持。积累修复与验收后批量推送，完成全轮 CI。
+旧 71e 的三个物理包及九个低能新增 epoch 包仍需收尾验收。charged-transfer 的 11 文件／15 匿名实例及八个动态私有 `Name` owner 已完成修复与专项构建。`f1bf0e4f4787f1aeb3c3c40a3493db2889ece371` 再修复四个 family 查询、六份 Jets 的三类实例及一条 prepared Ward 证明；65 项工具测试、完整来源逆验和独立 Lean 消费测试通过，接着验收公开直接消费者及受影响包。P37／P38 的完整 Audit 与原独立认证消费者保留各自原环境、完整正文和根声明，按独立包构建与审查。原 16-target 批次已终态失败并如实归档，其缓存产出由后续实际包验收消费。Q6 新增 21 根按 Noether／完整量子响应合同审查。
+
+远端 [CI 37981352421](https://github.com/Sapientropic/H0mework/actions/runs/37981352421) 已复用全部 41 个旧完整分片，Bell、量子与冻结证据检查成功。s7 已保存 23:37 UTC 的新进度缓存，s8 等上游。11 源修复后的真实规划再次保持阶段 1–7 的 42 片全部八字段、缓存键和既有模块位置；新增变化仅为 s8-01／s8-02／s9-01 的 fingerprint，s9-02 完整字段保持。待本轮 s7 缓存落稳后批量推送，完成全轮 CI。
 
 核心／物理第二版成品等待写作侧 final；低能成品已完成，公开代码绑定待完整材料验收。四篇论文按独立版本接入并交付实际提交。
 
 ## 本 checkpoint 的机器验收
 
 - [核心整篇构建](../evidence/second-edition/acceptance/core-paper-build-20261009/result.json)、[PR](../evidence/second-edition/acceptance/core-action-trust-20261009/result.json)、[C62](../evidence/second-edition/acceptance/core-difference-trust-20261009/result.json)及[C39–C41 审查](../evidence/second-edition/acceptance/core-cap-trust-20261009/receipt.json)。
+- 9c73 [same-event 构建](../evidence/second-edition/acceptance/core-9c73-same-event-build-20261010/result.json)／[完整审查](../evidence/second-edition/acceptance/core-9c73-same-event-trust-20261010/result.json)，[full-stock 构建](../evidence/second-edition/acceptance/core-9c73-full-stock-build-20261010/result.json)／[完整审查](../evidence/second-edition/acceptance/core-9c73-full-stock-trust-20261010/result.json)，各保留原执行 provenance。
 - [低能 AD／AE 构建](../evidence/second-edition/acceptance/low-ad-ae-build-20261010/result.json)与[完整审查](../evidence/second-edition/acceptance/low-ad-ae-trust-20261010/result.json)；[第一版三包补充构建](../evidence/second-edition/acceptance/first-v1-gsr-build-20261010/result.json)与[完整审查](../evidence/second-edition/acceptance/first-v1-gsr-trust-20261010/result.json)。
 - [Bell 科学消费](../evidence/second-edition/acceptance/bell-replay-20261009/receipt.json)、[低能科学消费](../evidence/second-edition/acceptance/low-energy-original-consumers-20261009/contracts.json)、[Bell 证明审查](../evidence/second-edition/acceptance/physics-forcing-trust-20261010/result.json)与[Q3 材料审查](../evidence/second-edition/acceptance/low-q3-materials-trust-20261010/result.json)。
 - [动态 owner 八模块构建](../evidence/second-edition/acceptance/physics-dynamic-owner-focused-build-20261010/result.json)保留实际输出摘要；[第一版适配后源码 scope](../evidence/second-edition/acceptance/first-v1-gsr-source-scopes-20261010.json)与冻结主张映射分列。
 - [GSR 缓存保留](../evidence/second-edition/acceptance/cache-preservation-gsr-20261010.json)、[Dictionary 独占调度](../evidence/second-edition/acceptance/cache-preservation-dictionary-20261010.json)及[阶段 9 接线／42 片核验](../evidence/second-edition/acceptance/cache-preservation-stage9-20261010.json)。新源迁入后再核对实际最终分工。
 - [完整材料落地](../evidence/second-edition/acceptance/fixed-cap-9c73-material-apply-20261010.json)及[最终缓存字段核验](../evidence/second-edition/acceptance/cache-preservation-final-9c73-20261010.json)通过；真实工作区身份检查已完成。
+- [11 源修复后真实缓存核验](../evidence/second-edition/acceptance/cache-preservation-coframe-ward-20261010.json)及[原 16-target 失败批次](../evidence/second-edition/acceptance/remaining-public-build-failed-20261010/result.json)分别保留实际身份与结果。
 - 最终签收条件：两份 `verify-map --require-ready`、[四篇论文实际构建／审查](edition-reproduction.md)，以及实际提交的远端 CI 成功。
 
 ## 权威源码入口

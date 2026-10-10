@@ -1,0 +1,62 @@
+{
+  "schema": "h0mework/edition-execution-archive@1",
+  "status": "passed",
+  "kind": "build",
+  "inputs_unchanged": true,
+  "packages": [
+    "v2-9c73-same-event-feedback"
+  ],
+  "files": [
+    {
+      "original_runtime_path": ".local/acceptance-execution-20261010/core-same-event-build-after-apply/build.log",
+      "public_path": "evidence/second-edition/acceptance/core-9c73-same-event-build-20261010/build.log",
+      "source_sha256": "75a4f1beca351263d5d7c9ad051db334b98f8654d7655cb248ccd90b2ed47d40",
+      "target_sha256": "9cce1eed0e3f2c857c0f663faf1cc6c00d460257127c96a7dbdcf19bb8390469",
+      "transforms": [
+        {
+          "kind": "literal-runtime-roots",
+          "project_replacement": ".",
+          "elan_replacement": "runtime/elan"
+        }
+      ]
+    },
+    {
+      "original_runtime_path": ".local/acceptance-execution-20261010/core-same-event-build-after-apply/result.json",
+      "public_path": "evidence/second-edition/acceptance/core-9c73-same-event-build-20261010/result.json",
+      "source_sha256": "dd43a2e406266e42739ae2dff6d5d8913ccf6e710465fed5cfe38edc40681d45",
+      "target_sha256": "6bf933ac71dcda038b15cb3832025dd7536ada1cb69e3176be7a54d8ad4fe216",
+      "publication": {
+        "kind": "declared-runtime-paths/v2",
+        "runtime_paths": [
+          {
+            "pointer": "/results/0/log",
+            "relative": "evidence/second-edition/acceptance/core-9c73-same-event-build-20261010/build.log"
+          },
+          {
+            "pointer": "/receipt",
+            "relative": "evidence/second-edition/acceptance/core-9c73-same-event-build-20261010/result.json"
+          }
+        ],
+        "payload_sha256": "6bf933ac71dcda038b15cb3832025dd7536ada1cb69e3176be7a54d8ad4fe216"
+      }
+    },
+    {
+      "original_runtime_path": ".local/acceptance-execution-20261010/core-same-event-build-after-apply/run-provenance.json",
+      "public_path": "evidence/second-edition/acceptance/core-9c73-same-event-build-20261010/run-provenance.json",
+      "source_sha256": "e8f11ab76e6ac8760d2d02f53c1519982465e1b6d65b047207a958639f9fcd78",
+      "target_sha256": "9580f3c69ef6c88aa2003d27d6f5f2e7076bd6bf8226af25388b678cc88c3c67",
+      "publication": {
+        "kind": "declared-runtime-paths/v2",
+        "runtime_paths": [
+          {
+            "pointer": "/official_acceptance_receipt",
+            "relative": "evidence/second-edition/acceptance/core-9c73-same-event-build-20261010/result.json"
+          }
+        ],
+        "payload_sha256": "9580f3c69ef6c88aa2003d27d6f5f2e7076bd6bf8226af25388b678cc88c3c67"
+      }
+    }
+  ],
+  "receipt": "evidence/second-edition/acceptance/core-9c73-same-event-build-20261010/result.json",
+  "original_source_certification": "Separate from this local public execution."
+}

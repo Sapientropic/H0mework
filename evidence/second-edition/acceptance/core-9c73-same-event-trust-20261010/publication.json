@@ -1,0 +1,92 @@
+{
+  "schema": "h0mework/edition-execution-archive@1",
+  "status": "passed",
+  "kind": "trust",
+  "inputs_unchanged": true,
+  "packages": [
+    "v2-9c73-same-event-feedback"
+  ],
+  "files": [
+    {
+      "original_runtime_path": ".local/acceptance-execution-20261010/core-same-event-trust-after-apply/audit-001.lean",
+      "public_path": "evidence/second-edition/acceptance/core-9c73-same-event-trust-20261010/audit-001.lean",
+      "source_sha256": "82e2369e0dc9f84a70306bf42fa9da743233012c61851b10c5a652d1628d0406",
+      "target_sha256": "82e2369e0dc9f84a70306bf42fa9da743233012c61851b10c5a652d1628d0406",
+      "transforms": []
+    },
+    {
+      "original_runtime_path": ".local/acceptance-execution-20261010/core-same-event-trust-after-apply/audit-001.log",
+      "public_path": "evidence/second-edition/acceptance/core-9c73-same-event-trust-20261010/audit-001.log",
+      "source_sha256": "53860ec93b06e69a2451def9ab347f2e56196dd485bdcef6714a80bce3b2680b",
+      "target_sha256": "6aa29aa9fd4d35ed14d6f22cc5e44a72e11eb3acd547cf1d6e6cfb6834c4632d",
+      "transforms": [
+        {
+          "kind": "literal-runtime-roots",
+          "project_replacement": ".",
+          "elan_replacement": "runtime/elan"
+        }
+      ]
+    },
+    {
+      "original_runtime_path": ".local/acceptance-execution-20261010/core-same-event-trust-after-apply/preflight.log",
+      "public_path": "evidence/second-edition/acceptance/core-9c73-same-event-trust-20261010/preflight.log",
+      "source_sha256": "cf30780bd7eb09f9631c72eb17310c7c31946945b3155a8d74def8bc729e36c2",
+      "target_sha256": "c96612d8e47d649686e787cf11432fa615cf078c096e92ca47b59b94c8e7efbd",
+      "transforms": [
+        {
+          "kind": "literal-runtime-roots",
+          "project_replacement": ".",
+          "elan_replacement": "runtime/elan"
+        }
+      ]
+    },
+    {
+      "original_runtime_path": ".local/acceptance-execution-20261010/core-same-event-trust-after-apply/audit-001-scope.json",
+      "public_path": "evidence/second-edition/acceptance/core-9c73-same-event-trust-20261010/audit-001-scope.json",
+      "source_sha256": "456cc3db26f248b2a8a3e9c20ebb4f283257920fbae52119880f1e5cd5844bfd",
+      "target_sha256": "456cc3db26f248b2a8a3e9c20ebb4f283257920fbae52119880f1e5cd5844bfd"
+    },
+    {
+      "original_runtime_path": ".local/acceptance-execution-20261010/core-same-event-trust-after-apply/result.json",
+      "public_path": "evidence/second-edition/acceptance/core-9c73-same-event-trust-20261010/result.json",
+      "source_sha256": "993d43eec059faa1f04bdb7c33fe42df69ef7de493492d866e28e740f9b899f7",
+      "target_sha256": "df52f6ac8ae4cac60f8599b9ec7564ff40f75a31299964123e2f2d4940fe5519",
+      "publication": {
+        "kind": "declared-runtime-paths/v2",
+        "runtime_paths": [
+          {
+            "pointer": "/results/0/log",
+            "relative": "evidence/second-edition/acceptance/core-9c73-same-event-trust-20261010/audit-001.log"
+          },
+          {
+            "pointer": "/preflight/log",
+            "relative": "evidence/second-edition/acceptance/core-9c73-same-event-trust-20261010/preflight.log"
+          },
+          {
+            "pointer": "/receipt",
+            "relative": "evidence/second-edition/acceptance/core-9c73-same-event-trust-20261010/result.json"
+          }
+        ],
+        "payload_sha256": "df52f6ac8ae4cac60f8599b9ec7564ff40f75a31299964123e2f2d4940fe5519"
+      }
+    },
+    {
+      "original_runtime_path": ".local/acceptance-execution-20261010/core-same-event-trust-after-apply/run-provenance.json",
+      "public_path": "evidence/second-edition/acceptance/core-9c73-same-event-trust-20261010/run-provenance.json",
+      "source_sha256": "44a61cdd3becb8aafc3b615a0e85b64b158fa484f8096503c72df9a4030b25c5",
+      "target_sha256": "0c7b1a73494681e0ea9fa924179a2bfc7b72c827ea4ab7df24e4e29d9ef40650",
+      "publication": {
+        "kind": "declared-runtime-paths/v2",
+        "runtime_paths": [
+          {
+            "pointer": "/official_acceptance_receipt",
+            "relative": "evidence/second-edition/acceptance/core-9c73-same-event-trust-20261010/result.json"
+          }
+        ],
+        "payload_sha256": "0c7b1a73494681e0ea9fa924179a2bfc7b72c827ea4ab7df24e4e29d9ef40650"
+      }
+    }
+  ],
+  "receipt": "evidence/second-edition/acceptance/core-9c73-same-event-trust-20261010/result.json",
+  "original_source_certification": "Separate from this local public execution."
+}

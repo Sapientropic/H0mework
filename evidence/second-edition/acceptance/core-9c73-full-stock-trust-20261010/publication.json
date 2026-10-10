@@ -1,0 +1,92 @@
+{
+  "schema": "h0mework/edition-execution-archive@1",
+  "status": "passed",
+  "kind": "trust",
+  "inputs_unchanged": true,
+  "packages": [
+    "v2-9c73-full-stock-next"
+  ],
+  "files": [
+    {
+      "original_runtime_path": ".local/acceptance-execution-20261010/core-full-stock-trust-after-apply/audit-001.lean",
+      "public_path": "evidence/second-edition/acceptance/core-9c73-full-stock-trust-20261010/audit-001.lean",
+      "source_sha256": "4c5235162a6758a00951f440733578fbeaa668658dd745500ba6f12364b5decb",
+      "target_sha256": "4c5235162a6758a00951f440733578fbeaa668658dd745500ba6f12364b5decb",
+      "transforms": []
+    },
+    {
+      "original_runtime_path": ".local/acceptance-execution-20261010/core-full-stock-trust-after-apply/audit-001.log",
+      "public_path": "evidence/second-edition/acceptance/core-9c73-full-stock-trust-20261010/audit-001.log",
+      "source_sha256": "a09d581bfed3442736ec7083566d10d758e253d4a3fa52d187f77ea4beed82b6",
+      "target_sha256": "57d5e6f402087173943f0d20d6414b11c4129afe710944039cc547672a1be096",
+      "transforms": [
+        {
+          "kind": "literal-runtime-roots",
+          "project_replacement": ".",
+          "elan_replacement": "runtime/elan"
+        }
+      ]
+    },
+    {
+      "original_runtime_path": ".local/acceptance-execution-20261010/core-full-stock-trust-after-apply/preflight.log",
+      "public_path": "evidence/second-edition/acceptance/core-9c73-full-stock-trust-20261010/preflight.log",
+      "source_sha256": "2fe73813297c6c6d960eaa707e226a2d5bf65c500c9c2b281c4035eed006c079",
+      "target_sha256": "41a761426a0ff1b1cde389facea64035c9ebcdaf0382570dfccae1227b787222",
+      "transforms": [
+        {
+          "kind": "literal-runtime-roots",
+          "project_replacement": ".",
+          "elan_replacement": "runtime/elan"
+        }
+      ]
+    },
+    {
+      "original_runtime_path": ".local/acceptance-execution-20261010/core-full-stock-trust-after-apply/audit-001-scope.json",
+      "public_path": "evidence/second-edition/acceptance/core-9c73-full-stock-trust-20261010/audit-001-scope.json",
+      "source_sha256": "92dfea1627bdd1a1e8b9cb2f678b0bcc37f8cdf56e5047e892fa011333cc7724",
+      "target_sha256": "92dfea1627bdd1a1e8b9cb2f678b0bcc37f8cdf56e5047e892fa011333cc7724"
+    },
+    {
+      "original_runtime_path": ".local/acceptance-execution-20261010/core-full-stock-trust-after-apply/result.json",
+      "public_path": "evidence/second-edition/acceptance/core-9c73-full-stock-trust-20261010/result.json",
+      "source_sha256": "351807c2bf56cc02b77e94869857ae44f9a202d36ca16fd799e053b13ab887c0",
+      "target_sha256": "da8884f63fb7b1a60ff1a7dbb859e1862b2ee5d8a4dff2b63df7fd6831b4c80f",
+      "publication": {
+        "kind": "declared-runtime-paths/v2",
+        "runtime_paths": [
+          {
+            "pointer": "/results/0/log",
+            "relative": "evidence/second-edition/acceptance/core-9c73-full-stock-trust-20261010/audit-001.log"
+          },
+          {
+            "pointer": "/preflight/log",
+            "relative": "evidence/second-edition/acceptance/core-9c73-full-stock-trust-20261010/preflight.log"
+          },
+          {
+            "pointer": "/receipt",
+            "relative": "evidence/second-edition/acceptance/core-9c73-full-stock-trust-20261010/result.json"
+          }
+        ],
+        "payload_sha256": "da8884f63fb7b1a60ff1a7dbb859e1862b2ee5d8a4dff2b63df7fd6831b4c80f"
+      }
+    },
+    {
+      "original_runtime_path": ".local/acceptance-execution-20261010/core-full-stock-trust-after-apply/run-provenance.json",
+      "public_path": "evidence/second-edition/acceptance/core-9c73-full-stock-trust-20261010/run-provenance.json",
+      "source_sha256": "0c20b5d38ae1d33bd9465de763a5be0c5751b12c982a2f7aa88d1b4f2e772ee1",
+      "target_sha256": "9714e876a9c6b775a996fa703ddba8bae16277a5bcc74725674b42ceca306b67",
+      "publication": {
+        "kind": "declared-runtime-paths/v2",
+        "runtime_paths": [
+          {
+            "pointer": "/official_acceptance_receipt",
+            "relative": "evidence/second-edition/acceptance/core-9c73-full-stock-trust-20261010/result.json"
+          }
+        ],
+        "payload_sha256": "9714e876a9c6b775a996fa703ddba8bae16277a5bcc74725674b42ceca306b67"
+      }
+    }
+  ],
+  "receipt": "evidence/second-edition/acceptance/core-9c73-full-stock-trust-20261010/result.json",
+  "original_source_certification": "Separate from this local public execution."
+}

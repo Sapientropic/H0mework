@@ -1,0 +1,37 @@
+{
+  "schema": "h0mework/actual-edition-execution-provenance@1",
+  "started_at": "2026-10-09T23:43:05.209236+00:00",
+  "finished_at": "2026-10-09T23:43:18.117396+00:00",
+  "command": [
+    "python3",
+    "tools/edition_release.py",
+    "--edition",
+    "second",
+    "--paper",
+    "source-process-core",
+    "build",
+    "--package",
+    "v2-9c73-same-event-feedback",
+    "--output",
+    ".local/acceptance-execution-20261010/core-same-event-build-after-apply"
+  ],
+  "cwd": ".",
+  "lean_num_threads": 2,
+  "head_before": "181fb0baaa5b9e696c5c2c5969278b070282edf7",
+  "head_after": "181fb0baaa5b9e696c5c2c5969278b070282edf7",
+  "head_unchanged": true,
+  "tools_before": {
+    "tools/edition_release.py": "b92c17bd94f29e24693edd264b1da38036a66a249d658e5fc403c355a9207137",
+    "tools/first_release.py": "3c8e5048474126dd59822f640e3256dc6a6d5d5bfc4bc63375d1e9a7f3631526",
+    "tools/source_view.py": "0c85519f1ff7d1e106321d4f07eba2f31e1ffb067478868229e03e122421d7de"
+  },
+  "tools_after": {
+    "tools/edition_release.py": "b92c17bd94f29e24693edd264b1da38036a66a249d658e5fc403c355a9207137",
+    "tools/first_release.py": "3c8e5048474126dd59822f640e3256dc6a6d5d5bfc4bc63375d1e9a7f3631526",
+    "tools/source_view.py": "0c85519f1ff7d1e106321d4f07eba2f31e1ffb067478868229e03e122421d7de"
+  },
+  "tools_unchanged": true,
+  "exit_code": 0,
+  "official_acceptance_receipt": "evidence/second-edition/acceptance/core-9c73-same-event-build-20261010/result.json",
+  "scope": "Actual official edition command. Its result separately records exact package source scopes, declaration audit roots and before/after configuration identity."
+}
