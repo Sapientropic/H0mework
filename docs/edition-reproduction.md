@@ -41,7 +41,7 @@ P37／P38 的完整 Audit 与原认证 ProductionConsumers 定义同名声明，
 
 ## 原路径与冻结资源
 
-两份 map 的 `runtime_views`登记精确原路径、source epoch、原资源大小与 SHA256。恢复只读取 H0 的公开材料：
+两份 map 的 `runtime_views`登记精确原路径、source epoch、原资源大小与 SHA256。`paths`包含源码及其嵌入资源，`resource_bundles`另外恢复冻结的大型数据。恢复只读取 H0 的公开材料：
 
 ```sh
 python3 tools/edition_materials.py --edition second --view second-edition-physics-registered-forcing --output .local/edition-runs/bell-view-NEW
@@ -49,6 +49,14 @@ python3 tools/edition_materials.py --edition low-energy --view low-energy-l26-ac
 ```
 
 其他 view ID 由对应 map 选择。`view-identity.json`登记实际恢复的每个源文件和资源。Bell 的 30 件冻结输入以确定性压缩副本保存；解码恢复原科学 payload，并逐项核对原大小和 SHA。恢复会使用约 1.14 GB 磁盘空间。
+
+固定 9c73 的核心、物理、Physlib 与 CPS1 完整原路径视图使用：
+
+```sh
+python3 tools/source_view.py --at 9c73a630 --path-prefix Lean --path-prefix Verification/physics --path-prefix Verification/no-island/riemann-comb-source --path-prefix Verification/framework/source-policy --path-prefix third-party/Physlib --path-prefix Biomedical/runtime --output .local/edition-runs/new9-source-view-NEW
+```
+
+[实际恢复验收](../evidence/second-edition/acceptance/fixed-cap-9c73-public-source-view-20261010/result.json)覆盖 21,168 个源码布局、84 件工件及 38 个嵌入资源；178 条资源相对地址全部通过。低能九个新增视图均带齐 23 个嵌入资源，[实际恢复](../evidence/second-edition/acceptance/low-reader-resources-candidate-20261010/result.json)核对了全部 288 条资源地址。默认视图使用已登记的公开资源与构建适配字节；原始摘要与公开摘要在各回执分列。
 
 ## Bell 已冻结消费者
 
