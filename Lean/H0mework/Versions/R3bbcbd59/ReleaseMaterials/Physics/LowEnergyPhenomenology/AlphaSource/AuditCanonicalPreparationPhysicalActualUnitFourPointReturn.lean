@@ -73,13 +73,13 @@ elab "#audit_physical_actual_unit_four_point_return" : command => do
   let modules := env.header.moduleNames
   let owner := fun name => (env.getModuleIdxFor? name).map fun i => modules[i.toNat]!
   let aliasOwned := env.constants.toList.filterMap fun (name, _) =>
-    if owner name == some `RawActionDensity then some name else none
+    if owner name == some `H0mework.Versions.R3bbcbd59.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.RawActionDensity then some name else none
   unless aliasOwned.isEmpty do throwError m!"NONEMPTY_SOURCE_ONLY_ALIAS {aliasOwned}"
-  unless modules.contains `CanonicalPreparationOriginalRawActionDensity do
+  unless modules.contains `H0mework.Versions.R3bbcbd59.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalPreparationOriginalRawActionDensity do
     throwError "MISSING_ORIGINAL_CANONICAL_RAW_DENSITY"
-  let candidates := #[`SourceUnitMixedDerivative,
-    `SourceUnitAmputatedFourPoint,
-    `SourceUnitPhysicalCurrent]
+  let candidates := #[`H0mework.Versions.R3bbcbd59.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.SourceUnitMixedDerivative,
+    `H0mework.Versions.R3bbcbd59.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.SourceUnitAmputatedFourPoint,
+    `H0mework.Versions.R3bbcbd59.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.SourceUnitPhysicalCurrent]
   let owned := env.constants.toList.filterMap fun (name, _) =>
     if (owner name).any candidates.contains then some name else none
   let mouths := #[``LowEnergy.PreparationPhysicalActualUnitFourPointReturn.sourceUnitRead,
