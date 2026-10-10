@@ -57,7 +57,9 @@ theorem sourcePinnedResolvent_boundary (F : GaussUnitaryHistory.Index) (n : Phys
   · rw [if_neg resonant,if_neg resonant]
     apply ContinuousLinearMap.ext
     intro x
-    simp only [smul_apply,smul_zero,zero_add]
+    simp only [ContinuousLinearMap.add_apply, ContinuousLinearMap.smul_apply,
+      ContinuousLinearMap.zero_apply]
+    simp only [smul_zero, zero_add]
 
 theorem sourceResonance_eigen (F : GaussUnitaryHistory.Index) (n : PhysicalMomentum) (c : ℝ) :
     sourcePinnedVelocity F n*sourceResonanceProjection F n c=(-c:ℂ) • sourceResonanceProjection F n c := by

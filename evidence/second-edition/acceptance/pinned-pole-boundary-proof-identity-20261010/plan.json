@@ -1,0 +1,154 @@
+{
+  "schema": "h0mework/private-pinned-boundary-pure-proof-plan@1",
+  "formal_acceptance": false,
+  "planning_only": true,
+  "budget_change": false,
+  "definition_change": false,
+  "premise_change": false,
+  "statement_unchanged": true,
+  "original_source_sha256": "ecdd416e7bf8cff2a7449a0f49e9ad7dae2ada3d8bff7bbacec8d4bd68e824ee",
+  "declaration": "sourcePinnedResolvent_boundary",
+  "rows": [
+    {
+      "path": "Lean/H0mework/Versions/C62/ReleaseMaterials/Physics/LowEnergyPhenomenology/AlphaSource/CanonicalPreparationSourcePinnedPoleBoundary.lean",
+      "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSourcePinnedPoleBoundary.lean",
+      "source_revision": "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46",
+      "source_revisions": [
+        "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46"
+      ],
+      "source_sha256": "ecdd416e7bf8cff2a7449a0f49e9ad7dae2ada3d8bff7bbacec8d4bd68e824ee",
+      "target": "H0mework.Versions.C62.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalPreparationSourcePinnedPoleBoundary",
+      "before_public_sha256": "98c7e3fd2479e5f3d8fbdf9a05d25784a038c391ff5fd9704c10ee7d9aa52a15",
+      "candidate_public_sha256": "457289a01a9af73e5397a8fa7fd4b1cdcfb8d1d4211eafa4c2497bb8ec011b34",
+      "candidate_path": "evidence/second-edition/acceptance/pinned-pole-boundary-proof-identity-20261010/source-candidates/H0mework/Versions/C62/ReleaseMaterials/Physics/LowEnergyPhenomenology/AlphaSource/CanonicalPreparationSourcePinnedPoleBoundary.lean",
+      "proof_body_rewrites": [
+        {
+          "declaration": "sourcePinnedResolvent_boundary",
+          "source": "theorem sourcePinnedResolvent_boundary (F : GaussUnitaryHistory.Index) (n : PhysicalMomentum) (c eta : ℝ) (positive : 0<eta) :\n    sourcePinnedResolvent F n (sourcePoleSide c eta)=\n      (eta:ℂ)⁻¹ • sourceResonanceProjection F n c+sourceOffPoleReturn F n c eta := by\n  have realPart : (sourcePoleSide c eta).re=eta := by simp [sourcePoleSide]\n  rw [sourcePinnedResolvent_channels F n _ (by rw [realPart];exact positive)]\n  unfold sourceResonanceProjection sourceOffPoleReturn\n  rw [Finset.smul_sum,←Finset.sum_add_distrib]\n  apply Finset.sum_congr rfl\n  intro i _\n  have denominator : sourcePoleSide c eta+Complex.I*(sourcePinnedValue F n i:ℂ)=\n      (eta:ℂ)+Complex.I*(sourceVelocityGap F n c i:ℂ) := by\n    simp only [sourcePoleSide,sourceVelocityGap,Complex.ofReal_add]\n    ring\n  rw [denominator]\n  by_cases resonant : sourceVelocityGap F n c i=0\n  · rw [if_pos resonant]\n    simp only [resonant,Complex.ofReal_zero,mul_zero,add_zero,if_true]\n\n  · rw [if_neg resonant,if_neg resonant]\n    apply ContinuousLinearMap.ext\n    intro x\n    simp only [smul_apply,smul_zero,zero_add]\n",
+          "public": "theorem sourcePinnedResolvent_boundary (F : GaussUnitaryHistory.Index) (n : PhysicalMomentum) (c eta : ℝ) (positive : 0<eta) :\n    sourcePinnedResolvent F n (sourcePoleSide c eta)=\n      (eta:ℂ)⁻¹ • sourceResonanceProjection F n c+sourceOffPoleReturn F n c eta := by\n  have realPart : (sourcePoleSide c eta).re=eta := by simp [sourcePoleSide]\n  rw [sourcePinnedResolvent_channels F n _ (by rw [realPart];exact positive)]\n  unfold sourceResonanceProjection sourceOffPoleReturn\n  rw [Finset.smul_sum,←Finset.sum_add_distrib]\n  apply Finset.sum_congr rfl\n  intro i _\n  have denominator : sourcePoleSide c eta+Complex.I*(sourcePinnedValue F n i:ℂ)=\n      (eta:ℂ)+Complex.I*(sourceVelocityGap F n c i:ℂ) := by\n    simp only [sourcePoleSide,sourceVelocityGap,Complex.ofReal_add]\n    ring\n  rw [denominator]\n  by_cases resonant : sourceVelocityGap F n c i=0\n  · rw [if_pos resonant]\n    simp only [resonant,Complex.ofReal_zero,mul_zero,add_zero,if_true]\n\n  · rw [if_neg resonant,if_neg resonant]\n    apply ContinuousLinearMap.ext\n    intro x\n    simp only [ContinuousLinearMap.add_apply, ContinuousLinearMap.smul_apply,\n      ContinuousLinearMap.zero_apply]\n    simp only [smul_zero, zero_add]\n"
+        }
+      ]
+    },
+    {
+      "path": "Lean/H0mework/Versions/E055/ReleaseMaterials/Physics/LowEnergyPhenomenology/AlphaSource/CanonicalPreparationSourcePinnedPoleBoundary.lean",
+      "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSourcePinnedPoleBoundary.lean",
+      "source_revision": "e05558097256e86b537c019c8ca63cd449d6b2d2",
+      "source_revisions": [
+        "e05558097256e86b537c019c8ca63cd449d6b2d2"
+      ],
+      "source_sha256": "ecdd416e7bf8cff2a7449a0f49e9ad7dae2ada3d8bff7bbacec8d4bd68e824ee",
+      "target": "H0mework.Versions.E055.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalPreparationSourcePinnedPoleBoundary",
+      "before_public_sha256": "c447c5c8eece62ff181ef466818d4a6126907a460fa463a05118b09cb220bb89",
+      "candidate_public_sha256": "65f1664221377a3570a3018b7b135f96f21fa11e6022d8441865baba9673345f",
+      "candidate_path": "evidence/second-edition/acceptance/pinned-pole-boundary-proof-identity-20261010/source-candidates/H0mework/Versions/E055/ReleaseMaterials/Physics/LowEnergyPhenomenology/AlphaSource/CanonicalPreparationSourcePinnedPoleBoundary.lean",
+      "proof_body_rewrites": [
+        {
+          "declaration": "sourcePinnedResolvent_boundary",
+          "source": "theorem sourcePinnedResolvent_boundary (F : GaussUnitaryHistory.Index) (n : PhysicalMomentum) (c eta : ℝ) (positive : 0<eta) :\n    sourcePinnedResolvent F n (sourcePoleSide c eta)=\n      (eta:ℂ)⁻¹ • sourceResonanceProjection F n c+sourceOffPoleReturn F n c eta := by\n  have realPart : (sourcePoleSide c eta).re=eta := by simp [sourcePoleSide]\n  rw [sourcePinnedResolvent_channels F n _ (by rw [realPart];exact positive)]\n  unfold sourceResonanceProjection sourceOffPoleReturn\n  rw [Finset.smul_sum,←Finset.sum_add_distrib]\n  apply Finset.sum_congr rfl\n  intro i _\n  have denominator : sourcePoleSide c eta+Complex.I*(sourcePinnedValue F n i:ℂ)=\n      (eta:ℂ)+Complex.I*(sourceVelocityGap F n c i:ℂ) := by\n    simp only [sourcePoleSide,sourceVelocityGap,Complex.ofReal_add]\n    ring\n  rw [denominator]\n  by_cases resonant : sourceVelocityGap F n c i=0\n  · rw [if_pos resonant]\n    simp only [resonant,Complex.ofReal_zero,mul_zero,add_zero,if_true]\n\n  · rw [if_neg resonant,if_neg resonant]\n    apply ContinuousLinearMap.ext\n    intro x\n    simp only [smul_apply,smul_zero,zero_add]\n",
+          "public": "theorem sourcePinnedResolvent_boundary (F : GaussUnitaryHistory.Index) (n : PhysicalMomentum) (c eta : ℝ) (positive : 0<eta) :\n    sourcePinnedResolvent F n (sourcePoleSide c eta)=\n      (eta:ℂ)⁻¹ • sourceResonanceProjection F n c+sourceOffPoleReturn F n c eta := by\n  have realPart : (sourcePoleSide c eta).re=eta := by simp [sourcePoleSide]\n  rw [sourcePinnedResolvent_channels F n _ (by rw [realPart];exact positive)]\n  unfold sourceResonanceProjection sourceOffPoleReturn\n  rw [Finset.smul_sum,←Finset.sum_add_distrib]\n  apply Finset.sum_congr rfl\n  intro i _\n  have denominator : sourcePoleSide c eta+Complex.I*(sourcePinnedValue F n i:ℂ)=\n      (eta:ℂ)+Complex.I*(sourceVelocityGap F n c i:ℂ) := by\n    simp only [sourcePoleSide,sourceVelocityGap,Complex.ofReal_add]\n    ring\n  rw [denominator]\n  by_cases resonant : sourceVelocityGap F n c i=0\n  · rw [if_pos resonant]\n    simp only [resonant,Complex.ofReal_zero,mul_zero,add_zero,if_true]\n\n  · rw [if_neg resonant,if_neg resonant]\n    apply ContinuousLinearMap.ext\n    intro x\n    simp only [ContinuousLinearMap.add_apply, ContinuousLinearMap.smul_apply,\n      ContinuousLinearMap.zero_apply]\n    simp only [smul_zero, zero_add]\n"
+        }
+      ]
+    },
+    {
+      "path": "Lean/H0mework/Versions/R3bbcbd59/ReleaseMaterials/Physics/LowEnergyPhenomenology/AlphaSource/CanonicalPreparationSourcePinnedPoleBoundary.lean",
+      "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSourcePinnedPoleBoundary.lean",
+      "source_revision": "3bbcbd590fbd1892661b8f5f0a09b555e7b9c7d4",
+      "source_revisions": [
+        "3bbcbd590fbd1892661b8f5f0a09b555e7b9c7d4"
+      ],
+      "source_sha256": "ecdd416e7bf8cff2a7449a0f49e9ad7dae2ada3d8bff7bbacec8d4bd68e824ee",
+      "target": "H0mework.Versions.R3bbcbd59.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalPreparationSourcePinnedPoleBoundary",
+      "before_public_sha256": "210c3484193fa5740a67d98d34b2806a905097a406daf5bce34f4f9d628c40bc",
+      "candidate_public_sha256": "dcc3026c8ddf342ac83506292c5f73d6fbbc2fee6f0982ac63578a5a56250f51",
+      "candidate_path": "evidence/second-edition/acceptance/pinned-pole-boundary-proof-identity-20261010/source-candidates/H0mework/Versions/R3bbcbd59/ReleaseMaterials/Physics/LowEnergyPhenomenology/AlphaSource/CanonicalPreparationSourcePinnedPoleBoundary.lean",
+      "proof_body_rewrites": [
+        {
+          "declaration": "sourcePinnedResolvent_boundary",
+          "source": "theorem sourcePinnedResolvent_boundary (F : GaussUnitaryHistory.Index) (n : PhysicalMomentum) (c eta : ℝ) (positive : 0<eta) :\n    sourcePinnedResolvent F n (sourcePoleSide c eta)=\n      (eta:ℂ)⁻¹ • sourceResonanceProjection F n c+sourceOffPoleReturn F n c eta := by\n  have realPart : (sourcePoleSide c eta).re=eta := by simp [sourcePoleSide]\n  rw [sourcePinnedResolvent_channels F n _ (by rw [realPart];exact positive)]\n  unfold sourceResonanceProjection sourceOffPoleReturn\n  rw [Finset.smul_sum,←Finset.sum_add_distrib]\n  apply Finset.sum_congr rfl\n  intro i _\n  have denominator : sourcePoleSide c eta+Complex.I*(sourcePinnedValue F n i:ℂ)=\n      (eta:ℂ)+Complex.I*(sourceVelocityGap F n c i:ℂ) := by\n    simp only [sourcePoleSide,sourceVelocityGap,Complex.ofReal_add]\n    ring\n  rw [denominator]\n  by_cases resonant : sourceVelocityGap F n c i=0\n  · rw [if_pos resonant]\n    simp only [resonant,Complex.ofReal_zero,mul_zero,add_zero,if_true]\n\n  · rw [if_neg resonant,if_neg resonant]\n    apply ContinuousLinearMap.ext\n    intro x\n    simp only [smul_apply,smul_zero,zero_add]\n",
+          "public": "theorem sourcePinnedResolvent_boundary (F : GaussUnitaryHistory.Index) (n : PhysicalMomentum) (c eta : ℝ) (positive : 0<eta) :\n    sourcePinnedResolvent F n (sourcePoleSide c eta)=\n      (eta:ℂ)⁻¹ • sourceResonanceProjection F n c+sourceOffPoleReturn F n c eta := by\n  have realPart : (sourcePoleSide c eta).re=eta := by simp [sourcePoleSide]\n  rw [sourcePinnedResolvent_channels F n _ (by rw [realPart];exact positive)]\n  unfold sourceResonanceProjection sourceOffPoleReturn\n  rw [Finset.smul_sum,←Finset.sum_add_distrib]\n  apply Finset.sum_congr rfl\n  intro i _\n  have denominator : sourcePoleSide c eta+Complex.I*(sourcePinnedValue F n i:ℂ)=\n      (eta:ℂ)+Complex.I*(sourceVelocityGap F n c i:ℂ) := by\n    simp only [sourcePoleSide,sourceVelocityGap,Complex.ofReal_add]\n    ring\n  rw [denominator]\n  by_cases resonant : sourceVelocityGap F n c i=0\n  · rw [if_pos resonant]\n    simp only [resonant,Complex.ofReal_zero,mul_zero,add_zero,if_true]\n\n  · rw [if_neg resonant,if_neg resonant]\n    apply ContinuousLinearMap.ext\n    intro x\n    simp only [ContinuousLinearMap.add_apply, ContinuousLinearMap.smul_apply,\n      ContinuousLinearMap.zero_apply]\n    simp only [smul_zero, zero_add]\n"
+        }
+      ]
+    },
+    {
+      "path": "Lean/H0mework/Versions/R71e/ReleaseMaterials/Physics/LowEnergyPhenomenology/AlphaSource/CanonicalPreparationSourcePinnedPoleBoundary.lean",
+      "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSourcePinnedPoleBoundary.lean",
+      "source_revision": "71e94e8261d67cf4849a05eb14ac95aa2f7dcbb9",
+      "source_revisions": [
+        "71e94e8261d67cf4849a05eb14ac95aa2f7dcbb9"
+      ],
+      "source_sha256": "ecdd416e7bf8cff2a7449a0f49e9ad7dae2ada3d8bff7bbacec8d4bd68e824ee",
+      "target": "H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalPreparationSourcePinnedPoleBoundary",
+      "before_public_sha256": "05cdd7de36a326f7552763595e8fc76d869dbd401f12f6a36845713c8dbd5556",
+      "candidate_public_sha256": "b6b44a9cd3a51b8fb85fbcc425448e9fd302a62923de6970fc37bfbba62a7f99",
+      "candidate_path": "evidence/second-edition/acceptance/pinned-pole-boundary-proof-identity-20261010/source-candidates/H0mework/Versions/R71e/ReleaseMaterials/Physics/LowEnergyPhenomenology/AlphaSource/CanonicalPreparationSourcePinnedPoleBoundary.lean",
+      "proof_body_rewrites": [
+        {
+          "declaration": "sourcePinnedResolvent_boundary",
+          "source": "theorem sourcePinnedResolvent_boundary (F : GaussUnitaryHistory.Index) (n : PhysicalMomentum) (c eta : ℝ) (positive : 0<eta) :\n    sourcePinnedResolvent F n (sourcePoleSide c eta)=\n      (eta:ℂ)⁻¹ • sourceResonanceProjection F n c+sourceOffPoleReturn F n c eta := by\n  have realPart : (sourcePoleSide c eta).re=eta := by simp [sourcePoleSide]\n  rw [sourcePinnedResolvent_channels F n _ (by rw [realPart];exact positive)]\n  unfold sourceResonanceProjection sourceOffPoleReturn\n  rw [Finset.smul_sum,←Finset.sum_add_distrib]\n  apply Finset.sum_congr rfl\n  intro i _\n  have denominator : sourcePoleSide c eta+Complex.I*(sourcePinnedValue F n i:ℂ)=\n      (eta:ℂ)+Complex.I*(sourceVelocityGap F n c i:ℂ) := by\n    simp only [sourcePoleSide,sourceVelocityGap,Complex.ofReal_add]\n    ring\n  rw [denominator]\n  by_cases resonant : sourceVelocityGap F n c i=0\n  · rw [if_pos resonant]\n    simp only [resonant,Complex.ofReal_zero,mul_zero,add_zero,if_true]\n\n  · rw [if_neg resonant,if_neg resonant]\n    apply ContinuousLinearMap.ext\n    intro x\n    simp only [smul_apply,smul_zero,zero_add]\n",
+          "public": "theorem sourcePinnedResolvent_boundary (F : GaussUnitaryHistory.Index) (n : PhysicalMomentum) (c eta : ℝ) (positive : 0<eta) :\n    sourcePinnedResolvent F n (sourcePoleSide c eta)=\n      (eta:ℂ)⁻¹ • sourceResonanceProjection F n c+sourceOffPoleReturn F n c eta := by\n  have realPart : (sourcePoleSide c eta).re=eta := by simp [sourcePoleSide]\n  rw [sourcePinnedResolvent_channels F n _ (by rw [realPart];exact positive)]\n  unfold sourceResonanceProjection sourceOffPoleReturn\n  rw [Finset.smul_sum,←Finset.sum_add_distrib]\n  apply Finset.sum_congr rfl\n  intro i _\n  have denominator : sourcePoleSide c eta+Complex.I*(sourcePinnedValue F n i:ℂ)=\n      (eta:ℂ)+Complex.I*(sourceVelocityGap F n c i:ℂ) := by\n    simp only [sourcePoleSide,sourceVelocityGap,Complex.ofReal_add]\n    ring\n  rw [denominator]\n  by_cases resonant : sourceVelocityGap F n c i=0\n  · rw [if_pos resonant]\n    simp only [resonant,Complex.ofReal_zero,mul_zero,add_zero,if_true]\n\n  · rw [if_neg resonant,if_neg resonant]\n    apply ContinuousLinearMap.ext\n    intro x\n    simp only [ContinuousLinearMap.add_apply, ContinuousLinearMap.smul_apply,\n      ContinuousLinearMap.zero_apply]\n    simp only [smul_zero, zero_add]\n"
+        }
+      ]
+    },
+    {
+      "path": "Lean/H0mework/Versions/Rc015842c/ReleaseMaterials/Physics/LowEnergyPhenomenology/AlphaSource/CanonicalPreparationSourcePinnedPoleBoundary.lean",
+      "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSourcePinnedPoleBoundary.lean",
+      "source_revision": "c015842c42751dc786dcce9522e67887b6b6d9e8",
+      "source_revisions": [
+        "c015842c42751dc786dcce9522e67887b6b6d9e8"
+      ],
+      "source_sha256": "ecdd416e7bf8cff2a7449a0f49e9ad7dae2ada3d8bff7bbacec8d4bd68e824ee",
+      "target": "H0mework.Versions.Rc015842c.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalPreparationSourcePinnedPoleBoundary",
+      "before_public_sha256": "f608c657a56a61470e1cd881e5e49f9b03f891cc69845126d95c8896d65b1af3",
+      "candidate_public_sha256": "491d48cc6fed74f3a773769238b70543fd704c46c101aebfb8ce6e865ae6ff9c",
+      "candidate_path": "evidence/second-edition/acceptance/pinned-pole-boundary-proof-identity-20261010/source-candidates/H0mework/Versions/Rc015842c/ReleaseMaterials/Physics/LowEnergyPhenomenology/AlphaSource/CanonicalPreparationSourcePinnedPoleBoundary.lean",
+      "proof_body_rewrites": [
+        {
+          "declaration": "sourcePinnedResolvent_boundary",
+          "source": "theorem sourcePinnedResolvent_boundary (F : GaussUnitaryHistory.Index) (n : PhysicalMomentum) (c eta : ℝ) (positive : 0<eta) :\n    sourcePinnedResolvent F n (sourcePoleSide c eta)=\n      (eta:ℂ)⁻¹ • sourceResonanceProjection F n c+sourceOffPoleReturn F n c eta := by\n  have realPart : (sourcePoleSide c eta).re=eta := by simp [sourcePoleSide]\n  rw [sourcePinnedResolvent_channels F n _ (by rw [realPart];exact positive)]\n  unfold sourceResonanceProjection sourceOffPoleReturn\n  rw [Finset.smul_sum,←Finset.sum_add_distrib]\n  apply Finset.sum_congr rfl\n  intro i _\n  have denominator : sourcePoleSide c eta+Complex.I*(sourcePinnedValue F n i:ℂ)=\n      (eta:ℂ)+Complex.I*(sourceVelocityGap F n c i:ℂ) := by\n    simp only [sourcePoleSide,sourceVelocityGap,Complex.ofReal_add]\n    ring\n  rw [denominator]\n  by_cases resonant : sourceVelocityGap F n c i=0\n  · rw [if_pos resonant]\n    simp only [resonant,Complex.ofReal_zero,mul_zero,add_zero,if_true]\n\n  · rw [if_neg resonant,if_neg resonant]\n    apply ContinuousLinearMap.ext\n    intro x\n    simp only [smul_apply,smul_zero,zero_add]\n",
+          "public": "theorem sourcePinnedResolvent_boundary (F : GaussUnitaryHistory.Index) (n : PhysicalMomentum) (c eta : ℝ) (positive : 0<eta) :\n    sourcePinnedResolvent F n (sourcePoleSide c eta)=\n      (eta:ℂ)⁻¹ • sourceResonanceProjection F n c+sourceOffPoleReturn F n c eta := by\n  have realPart : (sourcePoleSide c eta).re=eta := by simp [sourcePoleSide]\n  rw [sourcePinnedResolvent_channels F n _ (by rw [realPart];exact positive)]\n  unfold sourceResonanceProjection sourceOffPoleReturn\n  rw [Finset.smul_sum,←Finset.sum_add_distrib]\n  apply Finset.sum_congr rfl\n  intro i _\n  have denominator : sourcePoleSide c eta+Complex.I*(sourcePinnedValue F n i:ℂ)=\n      (eta:ℂ)+Complex.I*(sourceVelocityGap F n c i:ℂ) := by\n    simp only [sourcePoleSide,sourceVelocityGap,Complex.ofReal_add]\n    ring\n  rw [denominator]\n  by_cases resonant : sourceVelocityGap F n c i=0\n  · rw [if_pos resonant]\n    simp only [resonant,Complex.ofReal_zero,mul_zero,add_zero,if_true]\n\n  · rw [if_neg resonant,if_neg resonant]\n    apply ContinuousLinearMap.ext\n    intro x\n    simp only [ContinuousLinearMap.add_apply, ContinuousLinearMap.smul_apply,\n      ContinuousLinearMap.zero_apply]\n    simp only [smul_zero, zero_add]\n"
+        }
+      ]
+    },
+    {
+      "path": "Lean/H0mework/Versions/Rf13ed87d/ReleaseMaterials/Physics/LowEnergyPhenomenology/AlphaSource/CanonicalPreparationSourcePinnedPoleBoundary.lean",
+      "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSourcePinnedPoleBoundary.lean",
+      "source_revision": "f13ed87d6340e2cb041334eedfdc881dfb209abd",
+      "source_revisions": [
+        "f13ed87d6340e2cb041334eedfdc881dfb209abd"
+      ],
+      "source_sha256": "ecdd416e7bf8cff2a7449a0f49e9ad7dae2ada3d8bff7bbacec8d4bd68e824ee",
+      "target": "H0mework.Versions.Rf13ed87d.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalPreparationSourcePinnedPoleBoundary",
+      "before_public_sha256": "0db17f94b9db3bfba4a98f2aaf172df65aeff75ca1697fe6345a241764e91f56",
+      "candidate_public_sha256": "82499a5ebe1546a4f20f2ce98a16ba1074e63b386c81f15c9467c86247ad7138",
+      "candidate_path": "evidence/second-edition/acceptance/pinned-pole-boundary-proof-identity-20261010/source-candidates/H0mework/Versions/Rf13ed87d/ReleaseMaterials/Physics/LowEnergyPhenomenology/AlphaSource/CanonicalPreparationSourcePinnedPoleBoundary.lean",
+      "proof_body_rewrites": [
+        {
+          "declaration": "sourcePinnedResolvent_boundary",
+          "source": "theorem sourcePinnedResolvent_boundary (F : GaussUnitaryHistory.Index) (n : PhysicalMomentum) (c eta : ℝ) (positive : 0<eta) :\n    sourcePinnedResolvent F n (sourcePoleSide c eta)=\n      (eta:ℂ)⁻¹ • sourceResonanceProjection F n c+sourceOffPoleReturn F n c eta := by\n  have realPart : (sourcePoleSide c eta).re=eta := by simp [sourcePoleSide]\n  rw [sourcePinnedResolvent_channels F n _ (by rw [realPart];exact positive)]\n  unfold sourceResonanceProjection sourceOffPoleReturn\n  rw [Finset.smul_sum,←Finset.sum_add_distrib]\n  apply Finset.sum_congr rfl\n  intro i _\n  have denominator : sourcePoleSide c eta+Complex.I*(sourcePinnedValue F n i:ℂ)=\n      (eta:ℂ)+Complex.I*(sourceVelocityGap F n c i:ℂ) := by\n    simp only [sourcePoleSide,sourceVelocityGap,Complex.ofReal_add]\n    ring\n  rw [denominator]\n  by_cases resonant : sourceVelocityGap F n c i=0\n  · rw [if_pos resonant]\n    simp only [resonant,Complex.ofReal_zero,mul_zero,add_zero,if_true]\n\n  · rw [if_neg resonant,if_neg resonant]\n    apply ContinuousLinearMap.ext\n    intro x\n    simp only [smul_apply,smul_zero,zero_add]\n",
+          "public": "theorem sourcePinnedResolvent_boundary (F : GaussUnitaryHistory.Index) (n : PhysicalMomentum) (c eta : ℝ) (positive : 0<eta) :\n    sourcePinnedResolvent F n (sourcePoleSide c eta)=\n      (eta:ℂ)⁻¹ • sourceResonanceProjection F n c+sourceOffPoleReturn F n c eta := by\n  have realPart : (sourcePoleSide c eta).re=eta := by simp [sourcePoleSide]\n  rw [sourcePinnedResolvent_channels F n _ (by rw [realPart];exact positive)]\n  unfold sourceResonanceProjection sourceOffPoleReturn\n  rw [Finset.smul_sum,←Finset.sum_add_distrib]\n  apply Finset.sum_congr rfl\n  intro i _\n  have denominator : sourcePoleSide c eta+Complex.I*(sourcePinnedValue F n i:ℂ)=\n      (eta:ℂ)+Complex.I*(sourceVelocityGap F n c i:ℂ) := by\n    simp only [sourcePoleSide,sourceVelocityGap,Complex.ofReal_add]\n    ring\n  rw [denominator]\n  by_cases resonant : sourceVelocityGap F n c i=0\n  · rw [if_pos resonant]\n    simp only [resonant,Complex.ofReal_zero,mul_zero,add_zero,if_true]\n\n  · rw [if_neg resonant,if_neg resonant]\n    apply ContinuousLinearMap.ext\n    intro x\n    simp only [ContinuousLinearMap.add_apply, ContinuousLinearMap.smul_apply,\n      ContinuousLinearMap.zero_apply]\n    simp only [smul_zero, zero_add]\n"
+        }
+      ]
+    },
+    {
+      "path": "Lean/H0mework/Versions/R9c73a630/ReleaseMaterials/Physics/LowEnergyPhenomenology/AlphaSource/CanonicalPreparationSourcePinnedPoleBoundary.lean",
+      "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSourcePinnedPoleBoundary.lean",
+      "source_revision": "9c73a630ce05bea062ec889b188f5105c0afb796",
+      "source_revisions": [
+        "9c73a630ce05bea062ec889b188f5105c0afb796"
+      ],
+      "source_sha256": "ecdd416e7bf8cff2a7449a0f49e9ad7dae2ada3d8bff7bbacec8d4bd68e824ee",
+      "target": "H0mework.Versions.R9c73a630.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalPreparationSourcePinnedPoleBoundary",
+      "before_public_sha256": "86a3db1cc5672a4bc5793878fba97b5096d0ae6c48ff1725f7bd51d32451ca93",
+      "candidate_public_sha256": "be0d516e95e0c5b5b53db6426f3a82b945660ca031d197a66ee9bd3abfd6511d",
+      "candidate_path": "evidence/second-edition/acceptance/pinned-pole-boundary-proof-identity-20261010/source-candidates/H0mework/Versions/R9c73a630/ReleaseMaterials/Physics/LowEnergyPhenomenology/AlphaSource/CanonicalPreparationSourcePinnedPoleBoundary.lean",
+      "proof_body_rewrites": [
+        {
+          "declaration": "sourcePinnedResolvent_boundary",
+          "source": "theorem sourcePinnedResolvent_boundary (F : GaussUnitaryHistory.Index) (n : PhysicalMomentum) (c eta : ℝ) (positive : 0<eta) :\n    sourcePinnedResolvent F n (sourcePoleSide c eta)=\n      (eta:ℂ)⁻¹ • sourceResonanceProjection F n c+sourceOffPoleReturn F n c eta := by\n  have realPart : (sourcePoleSide c eta).re=eta := by simp [sourcePoleSide]\n  rw [sourcePinnedResolvent_channels F n _ (by rw [realPart];exact positive)]\n  unfold sourceResonanceProjection sourceOffPoleReturn\n  rw [Finset.smul_sum,←Finset.sum_add_distrib]\n  apply Finset.sum_congr rfl\n  intro i _\n  have denominator : sourcePoleSide c eta+Complex.I*(sourcePinnedValue F n i:ℂ)=\n      (eta:ℂ)+Complex.I*(sourceVelocityGap F n c i:ℂ) := by\n    simp only [sourcePoleSide,sourceVelocityGap,Complex.ofReal_add]\n    ring\n  rw [denominator]\n  by_cases resonant : sourceVelocityGap F n c i=0\n  · rw [if_pos resonant]\n    simp only [resonant,Complex.ofReal_zero,mul_zero,add_zero,if_true]\n\n  · rw [if_neg resonant,if_neg resonant]\n    apply ContinuousLinearMap.ext\n    intro x\n    simp only [smul_apply,smul_zero,zero_add]\n",
+          "public": "theorem sourcePinnedResolvent_boundary (F : GaussUnitaryHistory.Index) (n : PhysicalMomentum) (c eta : ℝ) (positive : 0<eta) :\n    sourcePinnedResolvent F n (sourcePoleSide c eta)=\n      (eta:ℂ)⁻¹ • sourceResonanceProjection F n c+sourceOffPoleReturn F n c eta := by\n  have realPart : (sourcePoleSide c eta).re=eta := by simp [sourcePoleSide]\n  rw [sourcePinnedResolvent_channels F n _ (by rw [realPart];exact positive)]\n  unfold sourceResonanceProjection sourceOffPoleReturn\n  rw [Finset.smul_sum,←Finset.sum_add_distrib]\n  apply Finset.sum_congr rfl\n  intro i _\n  have denominator : sourcePoleSide c eta+Complex.I*(sourcePinnedValue F n i:ℂ)=\n      (eta:ℂ)+Complex.I*(sourceVelocityGap F n c i:ℂ) := by\n    simp only [sourcePoleSide,sourceVelocityGap,Complex.ofReal_add]\n    ring\n  rw [denominator]\n  by_cases resonant : sourceVelocityGap F n c i=0\n  · rw [if_pos resonant]\n    simp only [resonant,Complex.ofReal_zero,mul_zero,add_zero,if_true]\n\n  · rw [if_neg resonant,if_neg resonant]\n    apply ContinuousLinearMap.ext\n    intro x\n    simp only [ContinuousLinearMap.add_apply, ContinuousLinearMap.smul_apply,\n      ContinuousLinearMap.zero_apply]\n    simp only [smul_zero, zero_add]\n"
+        }
+      ]
+    }
+  ],
+  "cause": "Implicit smul_zero simp lemma at SourceOp type exhausts default synthesis budget; first expose pointwise continuous-linear-map operations, then simplify the same equality."
+}

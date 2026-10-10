@@ -25,3 +25,9 @@ charged 的 `MixedSpectatorCandidate` 下各模块也会生成同名 `DecidableE
 ## Prepared Ward
 
 [prepared_increment_ward](../Lean/H0mework/Versions/R71e/ReleaseMaterials/Physics/LowEnergyPhenomenology/AlphaSource/EmIdentification/PhysicalPreparedCharge.lean) 用局部 `x/y` 保存左右实际 prepared leg，将同一 `increment_ward` 通过内积读口送入，再消费左右本征向量关系与自伴性。这样避免末尾 `simpa` 展开巨大 carrier 和乘积。原定理陈述、前提、定义与预算逐字保持，`proof_body_rewrites` 恢复完整原证明及原 SHA；后续包验收绑定适配后的完整源码范围。
+
+## Pinned pole 点值证明
+
+`sourcePinnedResolvent_boundary` 的非共振分支已进入 `ContinuousLinearMap.ext`。此时先用 `ContinuousLinearMap.add_apply`、`smul_apply`、`zero_apply` 将算子运算送到点值，再消费值空间的 `smul_zero` 与 `zero_add`，避免在整个 `SourceOp` 上搜索标量零实例。
+
+七份副本的完整原源码 SHA 为 `ecdd416e7bf8cff2a7449a0f49e9ad7dae2ada3d8bff7bbacec8d4bd68e824ee`，适配原路径视图 SHA 为 `f47d8897c1a373d8f14fc19b76d3fa3439be1c23acf2441f47f57ba761a80e72`。原陈述、定义、前提、导入、选项及 attributes 逐字保持；两百万总预算与默认实例搜索预算保持。完整 C62 模块及[原陈述独立消费者](../evidence/second-edition/acceptance/pinned-pole-boundary-consumer-20261010/result.json)实际通过，[七源逆验](../evidence/second-edition/acceptance/pinned-pole-boundary-proof-identity-20261010/result.json)保留完整源码比较，原首轮消费者夹具失败另存。

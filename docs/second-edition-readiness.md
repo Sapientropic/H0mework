@@ -30,11 +30,11 @@ GSR 稀疏证明保留原定理及 kernel 检查，降低实际编译内存，�
 
 核心剩 9c73 runtime 的 740 根及四篇论文的完整构建／审查。原 `AdmissionStops` 已完成；runtime 的 13 个原生生产前沿覆盖 18,238 个模块，计算产出随后由稳定提交上的正式整包验收消费。
 
-九个低能新增包需正式收尾。已通过的 24 目标补建保留；六份 DiracRay 修复消除已确认的联合导入冲突。九包所选 55 个生产模块由 15 个最高原生消费者一次支付共享依赖，随后逐包实际构建与完整审查。旧 prepared／signal 主包及独立认证消费者四包消费同批共享产出。
+九个低能新增包需正式收尾。已通过的 24 目标补建保留；六份 DiracRay 修复消除已确认的联合导入冲突。九包所选 55 个生产模块由 15 个最高原生消费者继续支付共享依赖，旧 C62／E055 的 PinnedPoleBoundary 实例搜索失败按原记录保留。七份同陈述证明已改为显式 CLM 点值，完整 C62 模块与原陈述独立消费者通过；当前物理原运行已实际消费 R9 修复。独立叶继续产出，随后只补真实缺项并逐包构建／审查。旧 prepared／signal 主包及独立认证消费者四包消费同批共享产出。
 
 新 9c73 charged、prepared、signal 及两独立认证消费者继续验收。charged 的九个源／十一局部实例已修复联合导入重名；两原 owner、九个完整 canonical 源、原 Candidate／JointFacts 及完整联合 theorem 消费者共十四步实际通过。已命名的 Yukawa 源与六个其他 namespace 的局部实例保持。该修复与全部已签包、runtime、低能十五目标及新 GSR 完整源码范围不相交。新 GSR 原生构建已按原预算实际退出 0、完整 4,114 源前后一致；原全局身份变化记录保留，正式包验收消费该对象。原 charged／forcing 联合导入失败保持，forcing 已由独立 21 根验收签收；后续稳定验收消费现有对象。
 
-远端 [CI 38015786104](https://github.com/Sapientropic/H0mework/actions/runs/38015786104) 已实际复用全部 42 个旧完整分片，附件 ID／大小／摘要保持；Bell、量子、规划及冻结证据通过。真实规划 47 片与本地一致。九源修复后的实际规划继续保持阶段 1–8 的 44 片全部八字段与缓存键，只改变 s9-01 及总选集指纹。当前阶段 8 两片继续构建并保存进度；等待其缓存落稳后推送下一批，整轮通过后签收 CI。
+远端 [CI 38015786104](https://github.com/Sapientropic/H0mework/actions/runs/38015786104) 已实际复用全部 42 个旧完整分片，附件 ID／大小／摘要保持；Bell、量子、规划及冻结证据通过。七份 Pinned proof 修复后的真实规划保持旧 42 片全部八字段、47 片名称、47,710 个模块位置及原 compatibility；s8-01／s8-02／s9-01 与总选集指纹变化。阶段 8 的旧指纹进度按现有同 compatibility／part 协议恢复，再由 Lake 检查 freshness，保留仍有效的已支付对象。当前两片继续构建并保存进度；等待终态及最终进度落稳后推送，整轮通过后签收 CI。
 
 核心／物理第二版成品待写作侧 final；低能成品已完成，公开绑定待完整材料验收。成品按独立版本接入。
 
@@ -45,6 +45,7 @@ GSR 稀疏证明保留原定理及 kernel 检查，降低实际编译内存，�
 - 71e charged [构建](../evidence/second-edition/acceptance/physics-charged-transfer-build-20261010/result.json)／[完整审查](../evidence/second-edition/acceptance/physics-charged-transfer-trust-20261010/result.json)、[原长构建身份变化](../evidence/second-edition/acceptance/physics-charged-transfer-drift-failed-20261010/result.json)及[新 9c73 十四步完整联合消费者](../evidence/second-edition/acceptance/physics-new9-instance-consumer-compatibility-20261010/result.json)均保留原执行与源码。
 - 9c73 forcing [构建](../evidence/second-edition/acceptance/physics-9c73-registered-forcing-build-20261010/result.json)／[完整审查](../evidence/second-edition/acceptance/physics-9c73-registered-forcing-trust-20261010/result.json)、[原联合导入失败](../evidence/second-edition/acceptance/physics-9c73-charged-forcing-failed-20261010/result.json)及[GSR 原构建身份变化](../evidence/second-edition/acceptance/physics-9c73-gsr-native-drift-20261010/result.json)按实际范围分列。
 - [固定 9c73 完整公开恢复](../evidence/second-edition/acceptance/fixed-cap-9c73-public-source-view-20261010/result.json)与[低能九视图资源修复](../evidence/second-edition/acceptance/low-reader-resources-candidate-20261010/result.json)保留原缺项、全部恢复及生成器的实际记录。
+- [七份 Pinned 同陈述应用](../evidence/second-edition/acceptance/pinned-pole-boundary-application-20261010.json)、[完整 C62 与独立消费者](../evidence/second-edition/acceptance/pinned-pole-boundary-consumer-20261010/result.json)、[真实规划旧 42 片保持](../evidence/second-edition/acceptance/cache-preservation-pinned-pole-actual-ci-20261010.json)及[旧指纹缓存恢复合同](../evidence/second-edition/acceptance/cache-pinned-pole-old-fingerprint-fallback-20261010.json)。
 - [当前 CI 真实规划](../evidence/second-edition/acceptance/ci-actual-plan-38015786104-20261010.json)、[科学回执复用](../evidence/second-edition/acceptance/ci-scientific-reuse-38015786104-20261010.json)、[42 片实际完整复用](../evidence/second-edition/acceptance/ci-old42-reuse-38015786104-20261010.json)及[九源修复后阶段 1–8 保持](../evidence/second-edition/acceptance/cache-preservation-new9-actual-ci-20261010.json)。
 - [完整材料落地](../evidence/second-edition/acceptance/fixed-cap-9c73-material-apply-20261010.json)、[11 源修复缓存核验](../evidence/second-edition/acceptance/cache-preservation-coframe-ward-20261010.json)、[远端真实规划](../evidence/second-edition/acceptance/ci-actual-plan-38012233973-20261010.json)、[41 片实际复用](../evidence/second-edition/acceptance/ci-old41-reuse-38012233973-20261010.json)及[s7 完整存档](../evidence/second-edition/acceptance/ci-s7-complete-38012233973-20261010.json)。超限日志、引用及未推送历史已修复并推送，[原执行标签](../evidence/second-edition/acceptance/local-history-rewrite-20261010.json)保留。
 
