@@ -9,7 +9,7 @@ open SourceQuantumConfigurationHilbert SourceQuantumFockGauge
 open QuantizationCheck.Fermion
 open scoped BigOperators InnerProductSpace
 attribute [local instance] SourceRealScalarFock.branchOrder
-local instance : DecidableEq Mode := SourceRealScalarFock.branchOrder.toDecidableEq
+local instance h0R9c73a630MixedSpectatorCARLocal1 : DecidableEq Mode := SourceRealScalarFock.branchOrder.toDecidableEq
 
 abbrev NamedMode := Fin 4 × Fin 3 × Fin 2
 

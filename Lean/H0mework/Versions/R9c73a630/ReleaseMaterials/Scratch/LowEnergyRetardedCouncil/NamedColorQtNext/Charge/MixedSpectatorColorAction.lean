@@ -11,7 +11,7 @@ open SourceQuantumConfigurationHilbert SourceQuantumFockGauge SourceQuantumGauge
 open GaussCoreDifferential GaussCoreHilbert GaussDensityCore
 open scoped BigOperators InnerProductSpace Matrix ContDiff
 attribute [local instance] SourceRealScalarFock.branchOrder
-local instance : DecidableEq Mode:=SourceRealScalarFock.branchOrder.toDecidableEq
+local instance h0R9c73a630MixedSpectatorColorActionLocal1 : DecidableEq Mode:=SourceRealScalarFock.branchOrder.toDecidableEq
 
 private theorem collapse_column {V:Type*}[AddCommGroup V][Module ℂ V]
     {ι:Type*}[Fintype ι][DecidableEq ι](roots:Fin 3→ι)(b:Fin 3→ℂ)(X:ι→V):

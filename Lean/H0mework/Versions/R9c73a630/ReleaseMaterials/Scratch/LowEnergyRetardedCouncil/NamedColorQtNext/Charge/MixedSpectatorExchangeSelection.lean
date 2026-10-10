@@ -9,7 +9,7 @@ open SourceQuantumConfigurationHilbert SourceQuantumFockGauge SourceQuantumScala
 open SourceQuantumGaugeSliceCoordinates QuantizationCheck.Fermion ActiveMatterSectorCharge
 open scoped BigOperators Matrix
 attribute [local instance] SourceRealScalarFock.branchOrder
-local instance : DecidableEq Mode := SourceRealScalarFock.branchOrder.toDecidableEq
+local instance h0R9c73a630MixedSpectatorExchangeSelectionLocal1 : DecidableEq Mode := SourceRealScalarFock.branchOrder.toDecidableEq
 
 /-- Each constructor evaluates to an existing full source matrix. -/
 inductive SourceTreeVertex

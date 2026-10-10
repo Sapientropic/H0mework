@@ -11,8 +11,8 @@ open QuantizationCheck.Fermion
 open SourceQuantumConfigurationHilbert SourceQuantumFockGauge
 open scoped BigOperators InnerProductSpace Matrix
 attribute [local instance] SourceRealScalarFock.branchOrder
-local instance : DecidableEq LowEnergy.Quantum.Index:=Classical.decEq _
-local instance : DecidableEq Mode:=SourceRealScalarFock.branchOrder.toDecidableEq
+local instance h0R9c73a630MixedSpectatorSpinLocal1 : DecidableEq LowEnergy.Quantum.Index:=Classical.decEq _
+local instance h0R9c73a630MixedSpectatorSpinLocal2 : DecidableEq Mode:=SourceRealScalarFock.branchOrder.toDecidableEq
 
 def spinEntry(dual:Bool)(a:Fin 7)(r c:Fin 4):ℂ:=
   if dual then (if a.val<3 then star (GaussCoframeSpin.sourceSpin a r c)

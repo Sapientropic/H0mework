@@ -12,8 +12,8 @@ open SourceQuantumScalarChart QuantizationCheck.Fermion GaussComposite
 open PreparationPhysicalPhaseGaugeRealization
 open scoped BigOperators InnerProductSpace Matrix
 attribute [local instance] SourceRealScalarFock.branchOrder
-local instance : DecidableEq Mode := SourceRealScalarFock.branchOrder.toDecidableEq
-local instance : DecidableEq LowEnergy.Quantum.Index := Classical.decEq _
+local instance h0R9c73a630MixedSpectatorPhaseChargeLocal1 : DecidableEq Mode := SourceRealScalarFock.branchOrder.toDecidableEq
+local instance h0R9c73a630MixedSpectatorPhaseChargeLocal2 : DecidableEq LowEnergy.Quantum.Index := Classical.decEq _
 
 theorem actual_spectator_weight (c : Fin 3) (h : Fin 2) :
     exteriorHyperchargeWeight (internalBasis c h) = if h = 0 then 1 else 0 := by
