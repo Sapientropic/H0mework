@@ -26,6 +26,8 @@ charged 的 `MixedSpectatorCandidate` 下各模块也会生成同名 `DecidableE
 
 `private_owner_expression_rewrites` 将登记的 `Name.str` 私有模块构造恢复到实际完整模块名，保持其后 private counter 与原 namespace/member。`SourceActualThreeParticleCutoffTime` 的 causal／Parseval 两组来自真实 canonical R71 模块，平方可积声明来自 R9 模块；十个实际声明均核对类型、值和模块身份。三条规则不改变数学正文、导入及原 1,200,000 预算，精确恢复原源码 SHA `6fa9a820792b2a8332be92dd4e5cf5704a6b335a760351e16079c559ebf7f71d`。完整 canonical 模块及[三个原陈述消费者](../evidence/second-edition/acceptance/cutoff-time-owner-consumer-20261010/result.json)已通过，[单源应用](../evidence/second-edition/acceptance/cutoff-time-owner-application-20261010/result.json)保存实际规则与逆验。
 
+私有声明的 owner 按实际生产模块绑定。`SourceWholeConfigurationPotential` 的 `source_scale` 定义在 `CanonicalPreparationSourceNativePoleBalance`，同名导入 shim 不拥有该声明。六份副本只校正现有规则的 `target_owner`，原 namespace/member、单例筛选和数学正文保持；完整逆验恢复原源码 SHA `f601c670aec227888ddb99cab320a8f979e1221e613767308142d7b050219ee1`。[真实 owner、完整模块与原陈述消费者](../evidence/second-edition/acceptance/origin-config-owner-consumer-20261010/result.json)及[六源应用](../evidence/second-edition/acceptance/origin-config-owner-application-20261010/result.json)分别保存实际记录。
+
 ## Prepared Ward
 
 [prepared_increment_ward](../Lean/H0mework/Versions/R71e/ReleaseMaterials/Physics/LowEnergyPhenomenology/AlphaSource/EmIdentification/PhysicalPreparedCharge.lean) 用局部 `x/y` 保存左右实际 prepared leg，将同一 `increment_ward` 通过内积读口送入，再消费左右本征向量关系与自伴性。这样避免末尾 `simpa` 展开巨大 carrier 和乘积。原定理陈述、前提、定义与预算逐字保持，`proof_body_rewrites` 恢复完整原证明及原 SHA；后续包验收绑定适配后的完整源码范围。

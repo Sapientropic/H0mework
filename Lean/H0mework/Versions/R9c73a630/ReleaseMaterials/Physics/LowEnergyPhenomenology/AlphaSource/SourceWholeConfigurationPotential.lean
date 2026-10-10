@@ -135,7 +135,7 @@ open Lean Elab Term in
 elab "paidOriginConfigurationScale%" : term => do
   let wanted:=`LowEnergy.PreparationVacuumPoleConstraintReturn.source_scale
   let all:=(←getEnv).constants.toList
-  let candidates:=all.filter fun (name,_)=>name.toString.startsWith "_private.H0mework.Versions.R9c73a630.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.SourceNativePoleBalance." && privateToUserName name==wanted
+  let candidates:=all.filter fun (name,_)=>name.toString.startsWith "_private.H0mework.Versions.R9c73a630.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalPreparationSourceNativePoleBalance." && privateToUserName name==wanted
   match candidates with
   | [(name,_)]=>logInfo m!"Original private payer: {name}";return mkConst name
   | _=>throwError "Expected unique original SourceNativePoleBalance.source_scale; actual candidates: {all.filterMap (fun (name,_)=>if privateToUserName name==wanted then some name else none)}"
