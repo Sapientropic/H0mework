@@ -180,7 +180,7 @@ elab "#audit_actual_em_carrier" : command => do
   let env ← getEnv
   let modules := env.header.moduleNames
   let owner := fun name => (env.getModuleIdxFor? name).map fun i => modules[i.toNat]!
-  let candidates := #[`ActualEMCarrier,`ActualEMResidueTensor,`H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualEMPreparedResidue]
+  let candidates := #[`H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualEMCarrier,`H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualEMResidueTensor,`H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualEMPreparedResidue]
   let owned := env.constants.toList.filterMap fun (name, _) =>
     if (owner name).any candidates.contains then some name else none
   let mouths := #[

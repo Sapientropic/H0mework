@@ -106,8 +106,8 @@ private def dressedP286Closure (env : Environment) (roots : List Name) :
 elab "#audit_dressed_p286" : command => do
   let env ← getEnv
   let modules := env.header.moduleNames
-  let owners := #[`PhysicalDressedScalarColumns, `PhysicalDressedScalarSkew,
-    `PhysicalDressedP286Scalar, `H0mework.Versions.R9c73a630.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.PhysicalDressedP286Character]
+  let owners := #[`H0mework.Versions.R9c73a630.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.PhysicalDressedScalarColumns, `H0mework.Versions.R9c73a630.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.PhysicalDressedScalarSkew,
+    `H0mework.Versions.R9c73a630.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.PhysicalDressedP286Scalar, `H0mework.Versions.R9c73a630.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.PhysicalDressedP286Character]
   for name in owners do
     unless modules.contains name do throwError m!"MISSING_MODULE {name}"
   let owned := env.constants.toList.filterMap fun (name, _) =>

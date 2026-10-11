@@ -182,7 +182,7 @@ elab "#audit_actual_em_newton_convolution" : command => do
   for target in payerTargets do
     let found := all.toArray.filter fun name => privateToUserName name == target
     unless found.size == 1 do throwError m!"PRIVATE_PAYER_AMBIGUITY {target} {found}"
-    unless (owner found[0]!).any (fun name => name == `SourceChannelFundamentalPotential) do
+    unless (owner found[0]!).any (fun name => name == `H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.SourceChannelFundamentalPotential) do
       throwError m!"WRONG_PRIVATE_PAYER {found[0]!}"
     payerNames := payerNames.push found[0]!
   let allowed := #[``propext,``Classical.choice,``Quot.sound]
