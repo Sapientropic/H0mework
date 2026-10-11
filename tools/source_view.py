@@ -684,30 +684,42 @@ def source_path(value: str) -> str:
     return value
 
 
-def source_record(row: dict, path: str) -> dict | None:
-    """Select an original layout while retaining its shared complete body owner."""
-    if path == row.get("source_path", row.get("source")):
+def alias_record(row: dict, alias) -> dict:
+    """The row as seen through one of its shared source identities."""
+    if (not isinstance(alias, dict)
+            or set(alias) & {"path", "target", "target_sha256", "import_map", "proof_body_rewrites"}
+            or alias.get("source_sha256") != row["source_sha256"]
+            or not MODULE.fullmatch(str(alias.get("original_module_name", "")))
+            or not re.fullmatch(r"[0-9a-f]{40}", str(alias.get("source_revision", "")))
+            or not isinstance(alias.get("source_revisions"), list)
+            or any(not re.fullmatch(r"[0-9a-f]{40}", str(ref)) for ref in alias["source_revisions"])
+            or alias["source_revision"] not in alias["source_revisions"]):
+        raise ViewError("Invalid shared source-layout identity")
+    original_path = source_path(alias.get("source_path"))
+    result = {**row, **{key: alias[key] for key in
+                      ("source_path", "source_sha256", "source_revision", "source_revisions", "source_origin")
+                      if key in alias}}
+    if original_path != row["source_path"]:
+        result["source"] = "file:" + original_path
+    if "source_origin" not in alias:
+        result.pop("source_origin", None)
+    return result
+
+
+def source_record(row: dict, path: str, revision: str | None = None) -> dict | None:
+    """Select an original layout while retaining its shared complete body owner.
+
+    An alias at the row's own path carries the same bytes under another provenance
+    (a different pinned epoch or retained origin); ``revision`` selects between them.
+    """
+    own = path == row.get("source_path", row.get("source"))
+    if own and (revision is None or row_at(row, revision)):
         return row
     for alias in row.get("source_aliases", []):
-        if (not isinstance(alias, dict)
-                or set(alias) & {"path", "target", "target_sha256", "import_map", "proof_body_rewrites"}
-                or alias.get("source_sha256") != row["source_sha256"]
-                or not MODULE.fullmatch(str(alias.get("original_module_name", "")))
-                or not re.fullmatch(r"[0-9a-f]{40}", str(alias.get("source_revision", "")))
-                or not isinstance(alias.get("source_revisions"), list)
-                or any(not re.fullmatch(r"[0-9a-f]{40}", str(ref)) for ref in alias["source_revisions"])
-                or alias["source_revision"] not in alias["source_revisions"]):
-            raise ViewError("Invalid shared source-layout identity")
-        original_path = source_path(alias.get("source_path"))
-        if original_path != path:
-            continue
-        result = {**row, **{key: alias[key] for key in
-                          ("source_path", "source_sha256", "source_revision", "source_revisions", "source_origin")
-                          if key in alias}, "source": "file:" + original_path}
-        if "source_origin" not in alias:
-            result.pop("source_origin", None)
-        return result
-    return None
+        record = alias_record(row, alias)
+        if record["source_path"] == path and (revision is None or row_at(record, revision)):
+            return record
+    return row if own else None
 
 
 def load_map():
@@ -732,21 +744,106 @@ def load_map():
             raise ViewError(f"Ambiguous inverse mapping for {row['target']}")
         inverse[row["target"]] = row
     for row in data.get("modules", []):
-        seen = set()
+        # Identities at one path must not claim the same pinned revision twice.
+        seen = {row["source_path"]: set(row.get("source_revisions", [row["source_revision"]]))}
         for alias in row.get("source_aliases", []):
-            if not isinstance(alias, dict):
-                raise ViewError("Invalid shared source-layout identity")
-            key = source_path(alias.get("source_path"))
-            if key == row["source_path"] or key in seen:
+            record = alias_record(row, alias)
+            key, revisions = record["source_path"], set(record["source_revisions"])
+            if revisions & seen.get(key, set()):
                 raise ViewError("Duplicate shared source-layout address")
-            seen.add(key)
-            modules.setdefault(key, []).append(source_record(row, key))
+            seen.setdefault(key, set()).update(revisions)
+            modules.setdefault(key, []).append(record)
     artifacts: dict[str, list[dict]] = {}
     for row in data.get("artifacts", []):
         artifacts.setdefault(row["source"], []).append(row)
     if set(modules) & set(artifacts):
         raise ViewError("Ambiguous original module/artifact path")
     return data, modules, artifacts, inverse
+
+
+# Version tags exported before shared owners were enforced. Their repeated layouts
+# are built, cached and bound by published receipts, so they stay as exported.
+LEGACY_LAYOUT_TAGS = frozenset({
+    "base", "AB", "AC", "AD", "AE", "C62", "CAP", "E055", "I", "MF", "PR", "R2", "R30218c1a",
+    "R3bbcbd59", "R71e", "R9c73a630", "Rc015842c", "Rf13ed87d", "T", "V2", "X", "Y", "Y1", "Z"})
+
+
+def semantic_origin(origin) -> dict:
+    """The part of a source origin that can change what the module means.
+
+    Git versus retained or generated storage is provenance and is kept per alias. H0
+    repairs and vendored third-party sources carry their own ownership contracts.
+    """
+    origin = origin or {}
+    kind = origin.get("kind", "")
+    if kind.startswith("H0-"):
+        keys = ("kind", "source_repository", "source_commit", "original_source_sha256")
+    elif kind == "vendored-fixed-third-party-source":
+        keys = ("kind", "source_repository", "source_commit", "license", "license_path")
+    else:
+        return {"kind": "unchanged-original-source"}
+    return {key: origin.get(key) for key in keys}
+
+
+def layout_identity(source_path: str, source_sha256: str, origin, dependencies) -> str:
+    """Compile identity: original bytes, semantic origin and the identities of all imports."""
+    return sha(json.dumps([source_path, source_sha256, semantic_origin(origin), sorted(dependencies)],
+                          sort_keys=True).encode())
+
+
+def layout_identities(rows) -> dict[str, str]:
+    """Layout identity of every exported module target, from its actual imports."""
+    by_target = {row["target"]: row for row in rows}
+    imports = {}
+    for target, row in by_target.items():
+        text = (ROOT / row["path"]).read_text(encoding="utf-8")
+        imports[target] = [name for _, _, name in import_tokens(text) if name in by_target]
+    identities: dict[str, str] = {}
+    for start in by_target:
+        stack = [start]
+        while stack:
+            target = stack[-1]
+            if target in identities:
+                stack.pop()
+                continue
+            missing = [name for name in imports[target] if name not in identities]
+            if missing:
+                stack.extend(missing)
+                if len(stack) > len(by_target):
+                    raise ViewError(f"Import cycle through {target}")
+                continue
+            row = by_target[target]
+            identities[target] = layout_identity(row["source_path"], row["source_sha256"], row.get("source_origin"),
+                                                 [identities[name] for name in imports[target]])
+            stack.pop()
+    return identities
+
+
+def layout_tag(target: str) -> str:
+    return target.split(".")[2] if target.startswith("H0mework.Versions.") else "base"
+
+
+def verify_shared_owners(rows, legacy=LEGACY_LAYOUT_TAGS) -> int:
+    """Reject a newly exported copy of an already exported layout.
+
+    Same bytes compiled against the same imports produce the same proofs, so a later
+    source identity joins the existing owner as a ``source_aliases`` entry instead of
+    adding a module that CI would compile again. Returns the number of legacy copies.
+    """
+    owners: dict[str, list[str]] = {}
+    for target, identity in layout_identities(rows).items():
+        owners.setdefault(identity, []).append(target)
+    legacy_copies = 0
+    for targets in owners.values():
+        if len(targets) < 2:
+            continue
+        new = sorted(target for target in targets if layout_tag(target) not in legacy)
+        if new:
+            other = min(target for target in targets if target != new[0])
+            raise ViewError(f"{new[0]} repeats the compiled layout of {other}; "
+                            "record its source identity as a source_aliases entry of the existing owner")
+        legacy_copies += len(targets) - 1
+    return legacy_copies
 
 
 def row_at(row: dict, rev: str) -> bool:
@@ -965,6 +1062,7 @@ def verify_all(private_originals=None) -> dict:
         for row in rows:
             module_views(row, inverse)
             checked += 1
+    legacy_copies = verify_shared_owners(data.get("modules", []))
     artifact_checked = 0
     published = 0
     private_checked = 0
@@ -975,7 +1073,7 @@ def verify_all(private_originals=None) -> dict:
                 published += 1
                 private_checked += original is not None
             artifact_checked += 1
-    return {"modules": checked, "artifacts": artifact_checked,
+    return {"modules": checked, "legacy_layout_copies": legacy_copies, "artifacts": artifact_checked,
             "published_receipts": published, "private_originals_verified": private_checked}
 
 

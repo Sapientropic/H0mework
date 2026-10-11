@@ -204,7 +204,7 @@ def verify_map(root: Path = ROOT, path: Path | str = MAP, require_ready: bool = 
                     raise ReleaseError(f"Expected one {index_kind} export row for {public_path}; found {len(candidates)}")
                 row = candidates[0]
                 if kind == "lean":
-                    selected_source = source_record(row, source)
+                    selected_source = source_record(row, source, commit)
                     if selected_source is None:
                         raise ReleaseError(f"Source path differs from export row: {public_path}")
                     row = selected_source

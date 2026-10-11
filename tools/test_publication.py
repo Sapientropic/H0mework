@@ -1123,6 +1123,47 @@ class SourceViewTests(unittest.TestCase):
         with self.assertRaisesRegex(s.ViewError, 'Invalid shared'):
             s.source_record(row, 'Lean/scratch/Tail.lean')
 
+    def test_same_path_provenance_alias_is_selected_by_revision(self):
+        row = {'source_path': 'Lean/A.lean', 'source_sha256': 'a' * 64,
+               'source_revision': 'b' * 40, 'source_revisions': ['b' * 40],
+               'source_origin': {'kind': 'retained-generated-source', 'receipt': 'old'},
+               'source_aliases': [{'source_path': 'Lean/A.lean', 'source_sha256': 'a' * 64,
+                                   'source_revision': 'c' * 40, 'source_revisions': ['c' * 40],
+                                   'original_module_name': 'A',
+                                   'source_origin': {'kind': 'retained-generated-source', 'receipt': 'new'}}]}
+        self.assertIs(s.source_record(row, 'Lean/A.lean', 'b' * 40), row)
+        later = s.source_record(row, 'Lean/A.lean', 'c' * 40)
+        self.assertEqual((later['source_revision'], later['source_origin']['receipt']), ('c' * 40, 'new'))
+        self.assertNotIn('source', later)
+
+    def write_layouts(self, modules):
+        rows = []
+        for target, (raw, origin) in modules.items():
+            path = target.replace('.', '/') + '.lean'
+            (self.root / path).parent.mkdir(parents=True, exist_ok=True)
+            (self.root / path).write_text(raw)
+            source = raw.replace('H0mework.Versions.R1.', 'H0mework.').replace('H0mework.Versions.Rnew.', 'H0mework.')
+            rows.append({'target': target, 'path': path, 'source_path': 'Lean/' + target.split('.')[-1] + '.lean',
+                         'source_sha256': p.sha(source.encode()), **({'source_origin': origin} if origin else {})})
+        return rows
+
+    def test_new_import_must_share_the_owner_of_an_identical_layout(self):
+        base = {'H0mework.A': ('import Mathlib\n', None), 'H0mework.B': ('import H0mework.A\n', None)}
+        legacy = {'H0mework.Versions.R1.A': ('import Mathlib\n', {'kind': 'retained-generated-source'}),
+                  'H0mework.Versions.R1.B': ('import H0mework.Versions.R1.A\n', None)}
+        fresh = {'H0mework.Versions.Rnew.A': ('import Mathlib\n', {'kind': 'git-source-supplement'}),
+                 'H0mework.Versions.Rnew.B': ('import H0mework.Versions.Rnew.A\n', None)}
+        legacy_tags = frozenset({'base', 'R1'})
+        rows = self.write_layouts({**base, **legacy})
+        self.assertEqual(s.verify_shared_owners(rows, legacy_tags), 2)
+        rows = self.write_layouts({**base, **fresh})
+        with self.assertRaisesRegex(s.ViewError, 'Versions.Rnew.A repeats the compiled layout of H0mework.A'):
+            s.verify_shared_owners(rows, legacy_tags)
+        # An H0 repair is a different module even with the same original bytes, and so is
+        # everything compiled against it.
+        repaired = {**fresh, 'H0mework.Versions.Rnew.A': ('import Mathlib\n', {'kind': 'H0-source-repair', 'source_commit': 'd' * 40})}
+        self.assertEqual(s.verify_shared_owners(self.write_layouts({**base, **repaired}), legacy_tags), 0)
+
     def test_exact_override_needs_and_checks_original(self):
         with self.assertRaises(s.ViewError):
             s.reconstruct(paths=["source/receipt.json"], exact=True)

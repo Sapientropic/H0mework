@@ -38,6 +38,8 @@ Lean 分片在托管 runner 上先加 56 GiB swap，再按 CPU 数设置 `LEAN_N
 
 第二版与低能选集按固定 epoch 将新模块追加到阶段 8／9，既有模块保留分片位置。9c73 迁入及后续证明构建修复均保持阶段 1–7 的 42 个分片完整字段与缓存键；核验见[材料迁入](../evidence/second-edition/acceptance/cache-preservation-final-9c73-20261010.json)、[Coframe／Ward](../evidence/second-edition/acceptance/cache-preservation-coframe-ward-20261010.json)及[DiracRay](../evidence/second-edition/acceptance/cache-preservation-dirac-actual-ci-20261010.json)。[9c73 charged 的九源修复](../evidence/second-edition/acceptance/cache-preservation-new9-actual-ci-20261010.json)进一步保持阶段 1–8 的 44 片，改变 s9-01 及总选集指纹；[42 片实际完整复用](../evidence/second-edition/acceptance/ci-old42-reuse-38015786104-20261010.json)另记远端结果。新阶段沿用 checkpoint 与自动续跑。
 
+迁入的模块若与已导出模块的源码和递归 import 完全相同，挂到原 owner 下，不再生成需要另编的副本；规则与检查见[共享布局](evidence-publication.md)。阶段 8 的 s8-01 约三分之二编译量属于规则生效前的这类副本。
+
 1. 迁入 Lean 模块后照常提交。CI 会为新模块安排分片，日志会提示有多少模块不在分工表里。
 2. 一批迁入告一段落后，运行下面的命令，把新模块的位置写进分工表并提交。此后的迁入不会再挪动它们。
 

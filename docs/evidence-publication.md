@@ -38,7 +38,7 @@ Lean 私有声明的名称包含所属模块地址。模块迁移时，显式引
 
 同一命名空间的不同模块若生成了冲突的匿名局部实例名，`local_instance_names` 登记对应声明前缀与显式名称。`name_local_instances` 只插入名称，保留实例类型、值和定理正文；恢复原路径视图时移除该名称并核对原摘要。
 
-同一原模块在不同恢复布局中出现时，原模块名、完整源码及递归 import 签名一致的布局共享一个完整证明 owner。`source_aliases` 保留各原路径、SHA、epoch 和来源；原路径视图为每个地址恢复完整源码，逐项映射按该地址的来源核验。实际包只导入一次该声明 owner。
+同一原模块在不同恢复布局中出现时，原模块名、完整源码及递归 import 签名一致的布局共享一个完整证明 owner。`source_aliases` 保留各原路径、SHA、epoch 和来源；原路径视图为每个地址恢复完整源码，逐项映射按该地址的来源核验。实际包只导入一次该声明 owner。同一路径的字节在不同 epoch 只换了存储来源（Git、保留或生成回执）时同样共享 owner，同路径 alias 按 revision 选取各自来源；H0 修复与第三方源码的来源合同属于模块语义，另立 owner。`source_view.py --verify-all` 按原源码、语义来源和递归 import 计算每个模块的编译身份，新导出的版本若重复已有身份即失败。`LEGACY_LAYOUT_TAGS` 列出规则生效前的版本标签，其 8525 个重复副本已编译并被回执绑定，保持原地址。
 
 认证消费者保留数学定义与证明的原字节。末尾的 `run_cmd` 或 `elab` 观察命令用 `audit_module_rewrites` 对齐所查询的模块地址；`audit_command_name` 为独立审查固定各自的命令注册名，使其可以合并导入。Bell 消费者的 `audit_boundary_fallbacks` 保留原边界文件覆盖，在没有提供文件时完整遍历依赖图，委托边界为空；`audit_full_closure` 只调整其观察命令的执行预算。`rewrite_audit_module_names`、`name_audit_command` 与 `rewrite_audit_runtime` 将这些变换逆向恢复，原路径视图继续核对固定来源摘要。选定声明的完整 trust0／werror 审查由[首发验收入口](first-release-reproduction.md#完整检查)执行。
 
