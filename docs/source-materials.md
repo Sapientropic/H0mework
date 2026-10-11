@@ -8,6 +8,36 @@
 
 本仓的有效用法见[复现指南](reproduction.md)，主张与源码对应见[证据表](evidence-map.md)。本页负责定位研究来源、冻结认证与历史过程记录。
 
+## 四篇论文的源码绑定
+
+本轮论文使用的公开源码提交为 [`b9d66048342b1a5aeac3e112d920ed85401bb20a`](https://github.com/Sapientropic/H0mework/tree/b9d66048342b1a5aeac3e112d920ed85401bb20a)。过程核心与同源物理第二版固定收稿上界 `9c73a630`；低能两稿固定 `71e94e82`。各条历史生产证明、直接消费者和认证继续沿用映射登记的原 epoch。
+
+| 论文 | 本轮选定主张 | 逐项权威映射 | 版本选择 |
+| --- | --- | --- | --- |
+| 过程核心第二版 | C35–C45；继承首版项见原 map | [第二版 map](https://github.com/Sapientropic/H0mework/blob/b9d66048342b1a5aeac3e112d920ed85401bb20a/docs/second-edition-map.json) | `--edition second --paper source-process-core` |
+| 同源物理第二版 | P37–P40；继承首版项见原 map | [第二版 map](https://github.com/Sapientropic/H0mework/blob/b9d66048342b1a5aeac3e112d920ed85401bb20a/docs/second-edition-map.json) | `--edition second --paper physics-common-source` |
+| 低能唯象首发 | L1–L28，L23 使用 c62 原单位修复 | [低能 map](https://github.com/Sapientropic/H0mework/blob/b9d66048342b1a5aeac3e112d920ed85401bb20a/docs/low-energy-release-map.json) | `--edition low-energy --paper low-energy-phenomenology` |
+| 低能环响应首发 | Q1–Q6 | [低能 map](https://github.com/Sapientropic/H0mework/blob/b9d66048342b1a5aeac3e112d920ed85401bb20a/docs/low-energy-release-map.json) | `--edition low-energy --paper low-energy-loop-response` |
+
+第二版 15 项与低能 34 项已实际通过源码身份、资源和运行材料的映射检查，相关缺项均为 0；全仓可逆导出检查通过。每项的 `producers`、`direct_consumers`、`resources` 和 `proof_packages` 给出原路径、公开路径、声明、SHA 与实际入口。固定导航见[绑定清单](assets/paper-source-binding-b9d66048.json)；它引用上述固定 map，后续验收以[材料入口](second-edition-readiness.md)及真实回执登记。
+
+在固定提交上检查绑定：
+
+```sh
+git checkout b9d66048342b1a5aeac3e112d920ed85401bb20a
+make check-map
+python3 tools/edition_release.py --edition second verify-map
+python3 tools/edition_release.py --edition low-energy verify-map
+```
+
+每篇整包的 build／trust 以及原路径和冻结资源恢复命令见[版本复现](https://github.com/Sapientropic/H0mework/blob/b9d66048342b1a5aeac3e112d920ed85401bb20a/docs/edition-reproduction.md)。源码绑定可直接用于论文；完整整包 kernel 验收与远端 CI 继续分别签收。
+
+论文“代码与数据可得性”可使用以下表述，并选择上表对应的 map 链接：
+
+> 本文所用证明源码、直接消费者与冻结计算证据，固定于 H0mework 提交 `b9d66048342b1a5aeac3e112d920ed85401bb20a`。逐项来源、原始修订与复现命令见对应版本映射及 `docs/edition-reproduction.md`。
+
+> The proof sources, direct consumers, and frozen computational evidence used in this paper are available in H0mework at commit `b9d66048342b1a5aeac3e112d920ed85401bb20a`. The corresponding edition map records their individual source revisions; reproduction commands are provided in `docs/edition-reproduction.md`.
+
 ## 固定来源的阅读方式
 
 [`docs/source/`](source/) 和 [`docs/physics/`](physics/) 内的材料均作为固定来源工件导出。每份文件的原路径、来源修订与 SHA256 记录在 [`export-map.json`](../tools/export-map.json) 的 `artifacts` 中；正文保持该版本的原字节。
