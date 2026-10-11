@@ -16,7 +16,7 @@
 
 冻结证据 job 每次运行导出映射校验、低能唯象复核、首发入口检查与工具测试。Bell 与量子载体 job 在主分支推送和手动运行时都会显示；先校验最近一次成功的独立复现 artifact。报告的映射摘要须对应其原提交，原配置、科学程序和外部输入须保持；历史与当前视图引擎分别解析实际选择器，所得来源身份、公开输入字节与冻结比较对象全部相同，才复用 artifact 并保存回执。无关稿件或版本的映射追加可复用，相关前缀捕获的新输入、来源主身份变化或输入增删改都会重新执行。手动运行将 `full_replay` 设为 true 时也重新执行。证明编译继续由分片 job 承担。私有期间，Lean 只在手动运行时执行。
 
-Lean 分片在托管 runner 上先加 56 GiB swap，再按 CPU 数设置 `LEAN_NUM_THREADS`，与分工所设的四线程一致。runner 只有 16 GiB 内存，个别生成证明单个模块峰值可达 58 GiB；内存耗尽的 runner 会在步骤中途被关闭，日志里只剩 shutdown signal。swap 承接这类峰值；构建结束时日志打印本 job 的内存与 swap 峰值。[`ci_memory.tsv`](../tools/ci_memory.tsv) 记录本机实测的单模块内存峰值（`Versions` 下各版本副本共用一条）；峰值达到 14 GiB 的模块在分片构建开始时按 import 顺序逐个单独编译，再并行构建其余模块，避免几个大模块同时把 runner 的内存和 swap 用尽。本地构建仍由 [`build_environment`](../tools/first_release.py) 按每 16 GiB 一槽计算并发；运行日志打印实际并发上限。
+Lean 分片在托管 runner 上先加 56 GiB swap，再按 CPU 数设置 `LEAN_NUM_THREADS`，与分工所设的四线程一致。runner 只有 16 GiB 内存，个别生成证明单个模块峰值可达 58 GiB；内存耗尽的 runner 会在步骤中途被关闭，日志里只剩 shutdown signal。swap 承接这类峰值；构建结束时日志打印本 job 的内存与 swap 峰值。[`ci_memory.tsv`](../tools/ci_memory.tsv) 记录本机实测的单模块内存峰值（`Versions` 下各版本副本共用一条）；峰值达到 14 GiB 的模块在分片构建开始时按 import 顺序逐个单独编译，再并行构建其余模块，避免几个大模块同时把 runner 的内存和 swap 用尽。[`ci_solo.txt`](../tools/ci_solo.txt) 另外登记精确模块或共用规范名的单编策略；ActualEffective 的两个路径保留原 import 顺序调度，避免共享 imports 在并发时占满内存。策略只改变执行次序，分片位置、compatibility 与各片源码指纹保持；策略文件参与完整选集指纹。本地构建仍由 [`build_environment`](../tools/first_release.py) 按每 16 GiB 一槽计算并发；运行日志打印实际并发上限。
 
 ## 分工
 

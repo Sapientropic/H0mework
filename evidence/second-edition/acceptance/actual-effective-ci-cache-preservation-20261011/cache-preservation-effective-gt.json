@@ -1,0 +1,962 @@
+{
+  "schema": "h0mework/actual-effective-gt-cache-preservation@1",
+  "ok": true,
+  "observed_at": "2026-10-11T09:46:09.844668+00:00",
+  "baseline": {
+    "head": "2635e6d9fbeccbc58a1f9235dec840b1002988cf",
+    "run_id": 38120348253,
+    "artifact_id": 11695626004,
+    "plan_sha256": "65c8ee16fc1786a7b79d995bfbecaf63c210eb66455c8c816cd822b19f9d9b96",
+    "selection": "71bbce08504395e16ac824b6754f3d2615f0b382b25b6c967439fb817da81227"
+  },
+  "current": {
+    "plan_sha256": "b7aaf9bad069e67b27a03f557b40305be47366637a983004943f596c0e78e3fe",
+    "selection": "983c72b8464948ba593155268eda98acb8648e64057af4d53a198ea9c3de006f",
+    "module_count": 47616,
+    "placed": 0
+  },
+  "compatibility": "23f23031eec00a03d30ee31d",
+  "compatibility_unchanged": true,
+  "all_module_positions_unchanged": true,
+  "all_part_names_unchanged": true,
+  "all_geometry_fields_unchanged": true,
+  "all_solo_orders_unchanged": true,
+  "geometry_fields": [
+    "stage",
+    "modules",
+    "targets",
+    "progress_modules",
+    "upstream",
+    "module_count",
+    "hours"
+  ],
+  "part_count_including_complete": 47,
+  "changed_parts": [
+    {
+      "part": "s7-01",
+      "before_fingerprint": "454687d0f09029a948146ed4a93e0d3786d6bc4dee7691429e7db2c20897fee7",
+      "after_fingerprint": "4c992e8c97c9abfc6756c73669064ca73f559800734b32c99aa9cd27cbfddc93"
+    },
+    {
+      "part": "s8-01",
+      "before_fingerprint": "3eacb9d1d505c94a189487bb08fee462dcaa5f8e728e14630b1c35a9f7992bac",
+      "after_fingerprint": "67a228cdcb30551d18520db772f9ffa1b4b2b2cd35a7be25d048d8f843b3dec9"
+    },
+    {
+      "part": "s8-02",
+      "before_fingerprint": "2eb596b0978300487c9fd5044bb019d386287e0ef8579e739be40e2aa3a97dcf",
+      "after_fingerprint": "df16e0c307090e3829936589e6c7995627fa4a4a2178d6b4dcfe51781eedd205"
+    },
+    {
+      "part": "s9-01",
+      "before_fingerprint": "f8ca2a52e2f7db7a1045b9f4400da3eebbaa581ad16d63996c9c30ac93e855ed",
+      "after_fingerprint": "3d57387ca70d97897f248c421dea3b0f0b12a1dfc1db956c87af584708f6e433"
+    },
+    {
+      "part": "s9-02",
+      "before_fingerprint": "0994cd7a42998ee00abe6dc015612b95b204fc37da47658521af4399f458d16c",
+      "after_fingerprint": "70a021b06f50b394cfc8f88cfd8b0bdc5a8541db2ae0df143f3740632dfd32ef"
+    },
+    {
+      "part": "complete",
+      "before_fingerprint": "71bbce08504395e16ac824b6754f3d2615f0b382b25b6c967439fb817da81227",
+      "after_fingerprint": "983c72b8464948ba593155268eda98acb8648e64057af4d53a198ea9c3de006f"
+    }
+  ],
+  "source_changes": [
+    {
+      "path": "Lean/H0mework/Versions/AE/Physics/LowEnergy/AlphaSource/CanonicalPreparationSourceActualEffective.lean",
+      "module": "H0mework.Versions.AE.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceActualEffective",
+      "kind": "proof-body-optimization",
+      "before_sha256": "a534aa9e2248edd2926bff277866d7bebc44086b7f0a04df8f121f5cbef75249",
+      "after_sha256": "daea88b9ebca46a3044a2ca10d2dd768cb70b2fa132605eb4135445d53bf0dd6",
+      "owning_part": "s7-01"
+    },
+    {
+      "path": "Lean/H0mework/Versions/C62/ReleaseMaterials/Physics/LowEnergyPhenomenology/AlphaSource/CanonicalPreparationSourceActualEffective.lean",
+      "module": "H0mework.Versions.C62.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalPreparationSourceActualEffective",
+      "kind": "proof-body-optimization",
+      "before_sha256": "c3be25a9a853c0c99c67c554191cf963cb8ccb69064f241df561d1263a301f3f",
+      "after_sha256": "814d2b7112c91f2a462441624f4740d23294b0a10435c9ed8ab260d1aa4a7af2",
+      "owning_part": "s8-01"
+    },
+    {
+      "path": "Lean/H0mework/Versions/C62/ReleaseMaterials/Physics/LowEnergyPhenomenology/AlphaSource/SourceDressedGTSampleWard.lean",
+      "module": "H0mework.Versions.C62.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.SourceDressedGTSampleWard",
+      "kind": "canonical-private-owner-binding",
+      "before_sha256": "9d898e5155552ea88aab4088955b53f4822d9f09a2a223fb13fa9115ff408a7f",
+      "after_sha256": "69331582a1d798e74f5420322b23ab469199daaf1e4bcac750bd2388d6bd4467",
+      "owning_part": "s8-01"
+    },
+    {
+      "path": "Lean/H0mework/Versions/CAP/Physics/LowEnergy/AlphaSource/CanonicalPreparationSourceActualEffective.lean",
+      "module": "H0mework.Versions.CAP.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceActualEffective",
+      "kind": "proof-body-optimization",
+      "before_sha256": "93002c4f725701b0bc4b5f1aa183fda15cc974f2e0862f81fb21baa3912bfe82",
+      "after_sha256": "54541d920e8707a63de138ee84c400d51e92e9ca9ae27a912041e08e666df9eb",
+      "owning_part": "s7-01"
+    },
+    {
+      "path": "Lean/H0mework/Versions/E055/ReleaseMaterials/Physics/LowEnergyPhenomenology/AlphaSource/CanonicalPreparationSourceActualEffective.lean",
+      "module": "H0mework.Versions.E055.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalPreparationSourceActualEffective",
+      "kind": "proof-body-optimization",
+      "before_sha256": "d0dca5e42d29c910e9dfd44120718205ca6bff5a5298dc2cfaef6c90212d995e",
+      "after_sha256": "ac78db4da81e881797d5e49bcfb4ca40d3af2cba20001b39743e0b8576232422",
+      "owning_part": "s8-01"
+    },
+    {
+      "path": "Lean/H0mework/Versions/E055/ReleaseMaterials/Physics/LowEnergyPhenomenology/AlphaSource/SourceDressedGTSampleWard.lean",
+      "module": "H0mework.Versions.E055.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.SourceDressedGTSampleWard",
+      "kind": "canonical-private-owner-binding",
+      "before_sha256": "8b02bb653b27871d9ab752e5985bffc65329cb9288278c6fca54b601407f6ca3",
+      "after_sha256": "3109823f5fa0d2f93e542160d4af1f5917b86000f3e640f7609f767827fd7727",
+      "owning_part": "s8-01"
+    },
+    {
+      "path": "Lean/H0mework/Versions/R3bbcbd59/ReleaseMaterials/Physics/LowEnergyPhenomenology/AlphaSource/CanonicalPreparationSourceActualEffective.lean",
+      "module": "H0mework.Versions.R3bbcbd59.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalPreparationSourceActualEffective",
+      "kind": "proof-body-optimization",
+      "before_sha256": "aafc83d81ab876ff46763b1405743eed03ab856c6584f0b9f30605f53b92ee49",
+      "after_sha256": "3586db6d06be17f58a19c9cf8f3c1b00f1af1eb6e2c22b88e3954869fc10b0ef",
+      "owning_part": "s8-02"
+    },
+    {
+      "path": "Lean/H0mework/Versions/R71e/ReleaseMaterials/Physics/LowEnergyPhenomenology/AlphaSource/CanonicalPreparationSourceActualEffective.lean",
+      "module": "H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalPreparationSourceActualEffective",
+      "kind": "proof-body-optimization",
+      "before_sha256": "1ab9bd963bb59f4416318145a0703d3c01228466e3d71484847f6d5a8268be00",
+      "after_sha256": "0882f4f1dfad8be78fcf0aec68b92c34f0cf1618b4f6d2e846f01170e95ca557",
+      "owning_part": "s8-01"
+    },
+    {
+      "path": "Lean/H0mework/Versions/R71e/ReleaseMaterials/Physics/LowEnergyPhenomenology/AlphaSource/SourceDressedGTSampleWard.lean",
+      "module": "H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.SourceDressedGTSampleWard",
+      "kind": "canonical-private-owner-binding",
+      "before_sha256": "0c5855e0d0a89ea788f315ecb54d3132af50d1e56f3ff28373baced3705e86f0",
+      "after_sha256": "d3f67e33c77520f7b3ee4d40aa655c4916916c97950795561b9c9fb8f809f0d2",
+      "owning_part": "s8-01"
+    },
+    {
+      "path": "Lean/H0mework/Versions/R9c73a630/Physics/LowEnergy/AlphaSource/CanonicalPreparationSourceActualEffective.lean",
+      "module": "H0mework.Versions.R9c73a630.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceActualEffective",
+      "kind": "proof-body-optimization",
+      "before_sha256": "161be129abbad2192278a2c9657948eae01a6c6ec9a2635211fe415cfd769a88",
+      "after_sha256": "130631b8f1e1846b3d1c85b919dd5a5e4276e2a089e00e2459ea138d5754c175",
+      "owning_part": "s9-01"
+    },
+    {
+      "path": "Lean/H0mework/Versions/R9c73a630/ReleaseMaterials/Physics/LowEnergyPhenomenology/AlphaSource/SourceDressedGTSampleWard.lean",
+      "module": "H0mework.Versions.R9c73a630.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.SourceDressedGTSampleWard",
+      "kind": "canonical-private-owner-binding",
+      "before_sha256": "769c697a913f2d0d7e10279ffdb8dd027f475babbaf991e499878ba747e503ff",
+      "after_sha256": "a44b78303b9895827badc71487b0155b93e27b087a4b94927bc4d7ccdd1eefff",
+      "owning_part": "s9-01"
+    },
+    {
+      "path": "Lean/H0mework/Versions/Rc015842c/ReleaseMaterials/Physics/LowEnergyPhenomenology/AlphaSource/CanonicalPreparationSourceActualEffective.lean",
+      "module": "H0mework.Versions.Rc015842c.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalPreparationSourceActualEffective",
+      "kind": "proof-body-optimization",
+      "before_sha256": "a3be00a39116551a0e0d346645e448d8c03ef6398be89ac6154e20a1053fce93",
+      "after_sha256": "ae52691faffff7aa730feeda98a404ce514e4d223d9ad0d69d1952dc18f662dd",
+      "owning_part": "s8-01"
+    },
+    {
+      "path": "Lean/H0mework/Versions/Rc015842c/ReleaseMaterials/Physics/LowEnergyPhenomenology/AlphaSource/SourceDressedGTSampleWard.lean",
+      "module": "H0mework.Versions.Rc015842c.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.SourceDressedGTSampleWard",
+      "kind": "canonical-private-owner-binding",
+      "before_sha256": "00131c806dcc73849735fca66bcdbd96ad63358ffd4a51f671ef3504e8bffceb",
+      "after_sha256": "54d3b8d643f40a8847bc00adcf759134587c849b4f537e447aec6a41c43df07b",
+      "owning_part": "s8-01"
+    },
+    {
+      "path": "Lean/H0mework/Versions/Rf13ed87d/ReleaseMaterials/Physics/LowEnergyPhenomenology/AlphaSource/CanonicalPreparationSourceActualEffective.lean",
+      "module": "H0mework.Versions.Rf13ed87d.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalPreparationSourceActualEffective",
+      "kind": "proof-body-optimization",
+      "before_sha256": "b0e370aa59db1c24db7d8b087ace2eb210fd6434d2575c62bf458b81201fa081",
+      "after_sha256": "e580d6e9b686fd5a29a82e2630e5a20434a1c50aef986d6cb79376f2550af283",
+      "owning_part": "s8-01"
+    },
+    {
+      "path": "Lean/H0mework/Versions/Rf13ed87d/ReleaseMaterials/Physics/LowEnergyPhenomenology/AlphaSource/SourceDressedGTSampleWard.lean",
+      "module": "H0mework.Versions.Rf13ed87d.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.SourceDressedGTSampleWard",
+      "kind": "canonical-private-owner-binding",
+      "before_sha256": "ed328cc811bbc7d7544faf311c10c5c23658b8eed2143d78ac2f777e29fa218e",
+      "after_sha256": "a5bc24056f95201faaff10257a1ecb1c15c383e50189bc344ba93ba9b7d0c39e",
+      "owning_part": "s8-01"
+    }
+  ],
+  "exact_full_archives_retained": [
+    {
+      "part": "s1-01",
+      "id": 619522306,
+      "name": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s1-01-45d3bce20ba3c741690c987bffa2339ccd6bd3583d4cfde6d0551344c295f3c1.tar.zst",
+      "size": 148145396,
+      "digest": "sha256:0eaf84d33fa0b933025d92a175b9d4c19bce3cfe739e8dde967740bb39b07eab",
+      "identical": true
+    },
+    {
+      "part": "s1-02",
+      "id": 618932537,
+      "name": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s1-02-f976b54849d7539e2b4e9091be09fc75bb55793b4fbab4d5f56e2c2676f312f4.tar.zst",
+      "size": 39357294,
+      "digest": "sha256:1e28fc330e1d5342f3a2de76e7c902e1112f193835d930652c5646b004f23117",
+      "identical": true
+    },
+    {
+      "part": "s1-03",
+      "id": 618573733,
+      "name": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s1-03-e6b1f7be5071080ed846a71270b228c576b333591064bace7d4d79b9e08cd711.tar.zst",
+      "size": 39592180,
+      "digest": "sha256:3abf2737e7abdae79c5dbe79c564d4e7f1482f3887c4e3464a36ac91d2d0b8c6",
+      "identical": true
+    },
+    {
+      "part": "s1-04",
+      "id": 619506243,
+      "name": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s1-04-0b582d9087beb46d61ab736bf9a12a57ae4354bcf56ecc1f968ad7728bccc794.tar.zst",
+      "size": 19448814,
+      "digest": "sha256:28caf058501dbb772c1af637317c2109e4ba9928bdaa8ce9fe41d5a9d193645a",
+      "identical": true
+    },
+    {
+      "part": "s1-05",
+      "id": 619575250,
+      "name": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s1-05-4248766b6059683c03d114dda21b6ddba589c32392c30bbac2d0c187240bf273.tar.zst",
+      "size": 38494495,
+      "digest": "sha256:f51a4c064ad5e99959d4bc910c5e30fc453e8d2165fe3ac258de74629fd724f7",
+      "identical": true
+    },
+    {
+      "part": "s2-01",
+      "id": 620196507,
+      "name": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s2-01-d43bdd8c7a26b4cdf2846dbe8c2df933d7a61e692875778cc9f18b755af73328.tar.zst",
+      "size": 483484301,
+      "digest": "sha256:7d2e4cbddf7aab34c5b777e32e3970448141bd91e80f122e45a2341847baedbf",
+      "identical": true
+    },
+    {
+      "part": "s2-02",
+      "id": 620026044,
+      "name": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s2-02-1c34193eaa055a3b30e644fa9c87662ce2aea3da62214e7d81257383f1da3768.tar.zst",
+      "size": 152559125,
+      "digest": "sha256:120cedf5300278437258c8c24d0130dedf7fa98b9fac765cc0149419a3c3fb45",
+      "identical": true
+    },
+    {
+      "part": "s2-03",
+      "id": 620426361,
+      "name": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s2-03-0c5a39d8e6876e6ae859af8833ce9943652fe5fc8573087c25581310f1cd9a97.tar.zst",
+      "size": 205145433,
+      "digest": "sha256:ee3ab3b88bc20d98f446f39e3ab99dbaea6c61ef33ec898ba6d477442b89fbaf",
+      "identical": true
+    },
+    {
+      "part": "s3-01",
+      "id": 620474958,
+      "name": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s3-01-8ad7c88a7f9eba2e922a80d536a1c3898b055d8baaf788bfd1f384e03757ccd2.tar.zst",
+      "size": 67633467,
+      "digest": "sha256:64ff0da0c95ab1bb421304638e2384729d073d90e2cd465a888f69853f18045b",
+      "identical": true
+    },
+    {
+      "part": "s3-02",
+      "id": 620477269,
+      "name": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s3-02-b3dc15af984f7337ab633401cb984ac6886105f6d15579f007322fdf8e7857c5.tar.zst",
+      "size": 48956798,
+      "digest": "sha256:22592ba838a07aaa6231fdcd7397c999a890bbdf951c21cb55e351eb84aaa2eb",
+      "identical": true
+    },
+    {
+      "part": "s3-03",
+      "id": 620479440,
+      "name": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s3-03-28516b79d419c012de1ce6e7c09a9fa1dac1d80f5f1cad979e564543cc126f0c.tar.zst",
+      "size": 48552728,
+      "digest": "sha256:8d00357728efa15dff88ad52b2575b3303cdc5295e04036bbda447d9188e722f",
+      "identical": true
+    },
+    {
+      "part": "s3-04",
+      "id": 620551195,
+      "name": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s3-04-1f4cc5e18a85ab531a78bb7f2da5173226df94e0d2507fb01c19869e04043c5a.tar.zst",
+      "size": 59474091,
+      "digest": "sha256:d1a7eafcb77828a33890a43a6682eb8a9942e7b29685c90769611ff48f06e3a1",
+      "identical": true
+    },
+    {
+      "part": "s3-05",
+      "id": 620487182,
+      "name": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s3-05-764d67e9fd8e6ccbd628d6ffb4e983fbe68a014fd278f1bde7297e86c9095243.tar.zst",
+      "size": 42640558,
+      "digest": "sha256:231ab1251471b8fe2ace5713e1af8c93eaa0d36bbb93dad2b5f373d0bc0e8cbe",
+      "identical": true
+    },
+    {
+      "part": "s3-06",
+      "id": 620474089,
+      "name": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s3-06-063be1feddac09b35f4f410de8ad6ec035665a597371efa21c1e95b8cb134663.tar.zst",
+      "size": 35848014,
+      "digest": "sha256:71503cefe463e063a611306f60f8651f03dc3e6455c00edff838355b2466c5e4",
+      "identical": true
+    },
+    {
+      "part": "s3-07",
+      "id": 620473994,
+      "name": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s3-07-2a8ae75db313d50ad172f646f8f87ec38454d104626e5e2956caad8dc8e319ee.tar.zst",
+      "size": 35947738,
+      "digest": "sha256:d1d02b34237b561c9a3ebf15c0989fdf01ee5b32404be606559039efc7fc81ac",
+      "identical": true
+    },
+    {
+      "part": "s3-08",
+      "id": 620492594,
+      "name": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s3-08-f2245ecf8406cc7a2440a3a149183bdd9370115a84f19562e7033a365767cfd2.tar.zst",
+      "size": 39996855,
+      "digest": "sha256:317bef25c0f20205967999bf509141defa99b57cdb8724997cc9f7fdedf9d18a",
+      "identical": true
+    },
+    {
+      "part": "s4-01",
+      "id": 620727297,
+      "name": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-01-1d493260700cc61b7fa01548a1cec104b2164106ed5b13cbd5087bbdf7f70a11.tar.zst",
+      "size": 277006158,
+      "digest": "sha256:a47985f8e75a209f6eb1eb7a4a85b4518be481434c4cafa2d46c0c49b5b73458",
+      "identical": true
+    },
+    {
+      "part": "s4-02",
+      "id": 620791088,
+      "name": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-02-e34468ca20edec0b21e79dac44eb1a11b262dcab88a586a16c431ea9e63eb9d0.tar.zst",
+      "size": 112214911,
+      "digest": "sha256:143537d22d75bfdd72854621ce97a6fdffb5f3ac301b1fbb2b5f345f3244767f",
+      "identical": true
+    },
+    {
+      "part": "s4-03",
+      "id": 620714022,
+      "name": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-03-0a4c648726f7638148125e03cdc9525292730274ccc49b39f627bab30ed371b2.tar.zst",
+      "size": 212509072,
+      "digest": "sha256:1f0725f42144c8bc55a2df81486b2ab5bee5fc730a5d3ef789fdc634eb9a2fa1",
+      "identical": true
+    },
+    {
+      "part": "s4-04",
+      "id": 620713375,
+      "name": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-04-38794432ce4a0eb6daa707c9e577f104e553b6ac48b3508ebf2eb39f1d56ff24.tar.zst",
+      "size": 205805446,
+      "digest": "sha256:2a0ed58572d8fd8688d0c7bc17d33c6cc8b12f2304b04251650249d1f29453d8",
+      "identical": true
+    },
+    {
+      "part": "s4-05",
+      "id": 620732023,
+      "name": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-05-cffdfbe722130c9eed58e0d7e70d4fd2214faaaa0aee7347934c0368ef59dd90.tar.zst",
+      "size": 212646780,
+      "digest": "sha256:c5cfbe658f27ecece86b4ace2edbb49ae8cc009596372e60b7114ed8646c70a1",
+      "identical": true
+    },
+    {
+      "part": "s4-06",
+      "id": 620666909,
+      "name": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-06-27aff7819f2c79593797ad215b4ebe4480194f9ea6370ac6408087a08138a51c.tar.zst",
+      "size": 212263019,
+      "digest": "sha256:8613f447081254a4952817d58bc70cfc1f939395bceb6bf01afaf9861fbab206",
+      "identical": true
+    },
+    {
+      "part": "s4-07",
+      "id": 620811745,
+      "name": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-07-28469333f6960b147c528ee3b8a414a1246d5bc5a25783616044be75c530602e.tar.zst",
+      "size": 325839446,
+      "digest": "sha256:33e3ae356857b77c38564aca383fee1b2d00b09fb44ce7ad0a894508a0892c0d",
+      "identical": true
+    },
+    {
+      "part": "s4-08",
+      "id": 620765316,
+      "name": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-08-9ca073548bc1ee89fbebc9fe467343a98a40d939c5278ee26bf023f187ea3e67.tar.zst",
+      "size": 257875103,
+      "digest": "sha256:b0e633986bfa6e01cabdf74a3a523b1858d17e509496880070a4727f00aa0d11",
+      "identical": true
+    },
+    {
+      "part": "s4-09",
+      "id": 620765411,
+      "name": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-09-7b9361e8f6f06830231fddfbf457b5b90c02f43365ad35c76515653db1f43777.tar.zst",
+      "size": 262431747,
+      "digest": "sha256:cc69ef18dbf3177444d199f3894e1cd44c1a0c3792fb32d81d6039352385f1df",
+      "identical": true
+    },
+    {
+      "part": "s4-10",
+      "id": 620732066,
+      "name": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-10-03b7c2679ed6190ac4008830e07092cdbb2d55d7491c369f5bdf0e71e23a4a7e.tar.zst",
+      "size": 222143655,
+      "digest": "sha256:6566b75bc27c13ce68879a8103e310eca01a817708b3a45889b16ac1f872dc09",
+      "identical": true
+    },
+    {
+      "part": "s4-11",
+      "id": 620722212,
+      "name": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-11-9f0a6fb12c1fcfc2592668880696155010c9df17e9175f3df15294298373c49a.tar.zst",
+      "size": 195247898,
+      "digest": "sha256:8ca98375af54c3a51e5be573e9d2c2a7d82d34b2f685dd3793ac41ae7d6c7a48",
+      "identical": true
+    },
+    {
+      "part": "s4-12",
+      "id": 620767604,
+      "name": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-12-e4f23e5b23eb47d7160fcfdff83bb54126fe9b4f0590203caa53f7e320564f6e.tar.zst",
+      "size": 261865444,
+      "digest": "sha256:dc36d8b6c0d7c720c74eed073c058d3b02a5ac7f81f8881effc885aa5d949162",
+      "identical": true
+    },
+    {
+      "part": "s4-13",
+      "id": 620759086,
+      "name": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-13-26378035cfb7a34286cdb63e89aacdf627f6bbbc4e03a84b6ee5c63d67d9fd18.tar.zst",
+      "size": 327843184,
+      "digest": "sha256:58a7f4bd8c18b3271972a8010baaa2cd449dd598edd5f27920969060f7b18f32",
+      "identical": true
+    },
+    {
+      "part": "s4-14",
+      "id": 620779010,
+      "name": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-14-76c5ae2fd993f9d1c22fcb6b60d7cd95002d0d678cb4817a0507d32d47cc73df.tar.zst",
+      "size": 283114958,
+      "digest": "sha256:d1909fc534806ef4a8059dad691f949887f8c04926d5ffc064f976cce637df7d",
+      "identical": true
+    },
+    {
+      "part": "s4-15",
+      "id": 620687422,
+      "name": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-15-f7a613b6787a82038195f67d3c9a826b35a1c835e55a5718284b029baae497e0.tar.zst",
+      "size": 327878173,
+      "digest": "sha256:a1bca915f2b61bcb406a64f41b76b53a1c63fcae038aa1c581355d664661ed93",
+      "identical": true
+    },
+    {
+      "part": "s4-16",
+      "id": 620757815,
+      "name": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-16-bef34fc74482b069af24cebbb5f0ae01d633809a37fbcbceaa6d2ed994a15fad.tar.zst",
+      "size": 319929749,
+      "digest": "sha256:f82b9f4f776d4961b12cf3bdfc5645485578b60c9ef269367ff526c6d644b755",
+      "identical": true
+    },
+    {
+      "part": "s4-17",
+      "id": 620767908,
+      "name": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-17-e715d53b0b7f7defb6197b0808477d56a63abd9615d08019774fa7497cf424b7.tar.zst",
+      "size": 102540709,
+      "digest": "sha256:6f94f87a99ba73a530177a85845330d478f14ebf5970e68badcc368ac5595b47",
+      "identical": true
+    },
+    {
+      "part": "s4-18",
+      "id": 620692014,
+      "name": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-18-dca68fb4773aaf85a0b04d3c997c1dcf090dcc3a7a605e33c84fcd0149251581.tar.zst",
+      "size": 85218109,
+      "digest": "sha256:2be22cc8d9b04397174ef873727c3c84da02d1a249f51de30838214fdd581885",
+      "identical": true
+    },
+    {
+      "part": "s4-19",
+      "id": 620800491,
+      "name": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-19-eb882af5fb563689912e64cb73f710749b04cf1d099767c6cd80c917aff268c0.tar.zst",
+      "size": 90390868,
+      "digest": "sha256:770bdb1ebd78be1dfc8b9c847d4377e5d36297ff16efd5e38dc1d0c6f4e0f7ab",
+      "identical": true
+    },
+    {
+      "part": "s4-20",
+      "id": 620755360,
+      "name": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-20-365fef83cee0758395583bc89b5d2ed3fffce4ef0ad48b3e45f448e8177a8a02.tar.zst",
+      "size": 222668327,
+      "digest": "sha256:02ca35aae5857e7fac704b63656bd7280111cdb22fc9a35c69e3e118d64c9c2b",
+      "identical": true
+    },
+    {
+      "part": "s5-01",
+      "id": 620970293,
+      "name": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s5-01-2e0a648458cfe63ed38da874b3df8be57c75d45fc0f982a2d254b37312f92f45.tar.zst",
+      "size": 287226544,
+      "digest": "sha256:6f2bc0785a686e686ad54b4b76bdc7bb3dda1ace837b8b3946eab5459ad37034",
+      "identical": true
+    },
+    {
+      "part": "s5-02",
+      "id": 620998320,
+      "name": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s5-02-defbbfac20ea2aa9ea7487e938bd897462ab21b7b6ad4e797f6c18b8e575abdd.tar.zst",
+      "size": 193202884,
+      "digest": "sha256:8decbfaa6e76a73631af51308bcce495998a3eee1e82efd8370678b638085dfa",
+      "identical": true
+    },
+    {
+      "part": "s6-01",
+      "id": 622496616,
+      "name": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s6-01-e29a5a8b4c17d53ba44cd3385d72b10e66269d6568144d7ea51e674ade3c3849.tar.zst",
+      "size": 625387105,
+      "digest": "sha256:2a02aeb839476ca9ef9446fe2f9d3228a2163257b0c6979ae926f52cd3869271",
+      "identical": true
+    },
+    {
+      "part": "s6-02",
+      "id": 621692622,
+      "name": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s6-02-098f5d27a1177a6de08376169558f42d877f9aac2fd1c4dfc9f8fee3ae0c137c.tar.zst",
+      "size": 529235625,
+      "digest": "sha256:5c460e22ddcff20d7c1f2fb4d6aa66b24dd2f42c977ab6f71b5336107ca5538a",
+      "identical": true
+    },
+    {
+      "part": "s6-03",
+      "id": 622046310,
+      "name": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s6-03-1d1d5a6eb0b3e771917f1de33e6456a10099da38f9414ed90d7b6827096e4620.tar.zst",
+      "size": 553006146,
+      "digest": "sha256:49eee7e6d7ba62393f29f93826bf3c23fa6b74717e337a58297ba4d991d4a65b",
+      "identical": true
+    },
+    {
+      "part": "s7-01",
+      "id": 626698741,
+      "name": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s7-01-454687d0f09029a948146ed4a93e0d3786d6bc4dee7691429e7db2c20897fee7.tar.zst",
+      "size": 1072760763,
+      "digest": "sha256:9e398441fde9869139b68765b04264c0c261d6930ebb0ef3398d6397e2b08d18",
+      "identical": true
+    },
+    {
+      "part": "s8-02",
+      "id": 627978896,
+      "name": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s8-02-2eb596b0978300487c9fd5044bb019d386287e0ef8579e739be40e2aa3a97dcf.tar.zst",
+      "size": 1378595108,
+      "digest": "sha256:7a35ceb8a5625ddcfb550bf7e34ba247f04df02aae2cc6db66443f51cee4edd9",
+      "identical": true
+    }
+  ],
+  "retained_full_archive_count": 43,
+  "restore_choices": [
+    {
+      "part": "s1-01",
+      "exact": true,
+      "matched": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s1-01-45d3bce20ba3c741690c987bffa2339ccd6bd3583d4cfde6d0551344c295f3c1.tar.zst",
+      "asset_id": 619522306,
+      "size": 148145396,
+      "digest": "sha256:0eaf84d33fa0b933025d92a175b9d4c19bce3cfe739e8dde967740bb39b07eab",
+      "cache_mode": "full-exact"
+    },
+    {
+      "part": "s1-02",
+      "exact": true,
+      "matched": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s1-02-f976b54849d7539e2b4e9091be09fc75bb55793b4fbab4d5f56e2c2676f312f4.tar.zst",
+      "asset_id": 618932537,
+      "size": 39357294,
+      "digest": "sha256:1e28fc330e1d5342f3a2de76e7c902e1112f193835d930652c5646b004f23117",
+      "cache_mode": "full-exact"
+    },
+    {
+      "part": "s1-03",
+      "exact": true,
+      "matched": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s1-03-e6b1f7be5071080ed846a71270b228c576b333591064bace7d4d79b9e08cd711.tar.zst",
+      "asset_id": 618573733,
+      "size": 39592180,
+      "digest": "sha256:3abf2737e7abdae79c5dbe79c564d4e7f1482f3887c4e3464a36ac91d2d0b8c6",
+      "cache_mode": "full-exact"
+    },
+    {
+      "part": "s1-04",
+      "exact": true,
+      "matched": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s1-04-0b582d9087beb46d61ab736bf9a12a57ae4354bcf56ecc1f968ad7728bccc794.tar.zst",
+      "asset_id": 619506243,
+      "size": 19448814,
+      "digest": "sha256:28caf058501dbb772c1af637317c2109e4ba9928bdaa8ce9fe41d5a9d193645a",
+      "cache_mode": "full-exact"
+    },
+    {
+      "part": "s1-05",
+      "exact": true,
+      "matched": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s1-05-4248766b6059683c03d114dda21b6ddba589c32392c30bbac2d0c187240bf273.tar.zst",
+      "asset_id": 619575250,
+      "size": 38494495,
+      "digest": "sha256:f51a4c064ad5e99959d4bc910c5e30fc453e8d2165fe3ac258de74629fd724f7",
+      "cache_mode": "full-exact"
+    },
+    {
+      "part": "s2-01",
+      "exact": true,
+      "matched": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s2-01-d43bdd8c7a26b4cdf2846dbe8c2df933d7a61e692875778cc9f18b755af73328.tar.zst",
+      "asset_id": 620196507,
+      "size": 483484301,
+      "digest": "sha256:7d2e4cbddf7aab34c5b777e32e3970448141bd91e80f122e45a2341847baedbf",
+      "cache_mode": "full-exact"
+    },
+    {
+      "part": "s2-02",
+      "exact": true,
+      "matched": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s2-02-1c34193eaa055a3b30e644fa9c87662ce2aea3da62214e7d81257383f1da3768.tar.zst",
+      "asset_id": 620026044,
+      "size": 152559125,
+      "digest": "sha256:120cedf5300278437258c8c24d0130dedf7fa98b9fac765cc0149419a3c3fb45",
+      "cache_mode": "full-exact"
+    },
+    {
+      "part": "s2-03",
+      "exact": true,
+      "matched": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s2-03-0c5a39d8e6876e6ae859af8833ce9943652fe5fc8573087c25581310f1cd9a97.tar.zst",
+      "asset_id": 620426361,
+      "size": 205145433,
+      "digest": "sha256:ee3ab3b88bc20d98f446f39e3ab99dbaea6c61ef33ec898ba6d477442b89fbaf",
+      "cache_mode": "full-exact"
+    },
+    {
+      "part": "s3-01",
+      "exact": true,
+      "matched": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s3-01-8ad7c88a7f9eba2e922a80d536a1c3898b055d8baaf788bfd1f384e03757ccd2.tar.zst",
+      "asset_id": 620474958,
+      "size": 67633467,
+      "digest": "sha256:64ff0da0c95ab1bb421304638e2384729d073d90e2cd465a888f69853f18045b",
+      "cache_mode": "full-exact"
+    },
+    {
+      "part": "s3-02",
+      "exact": true,
+      "matched": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s3-02-b3dc15af984f7337ab633401cb984ac6886105f6d15579f007322fdf8e7857c5.tar.zst",
+      "asset_id": 620477269,
+      "size": 48956798,
+      "digest": "sha256:22592ba838a07aaa6231fdcd7397c999a890bbdf951c21cb55e351eb84aaa2eb",
+      "cache_mode": "full-exact"
+    },
+    {
+      "part": "s3-03",
+      "exact": true,
+      "matched": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s3-03-28516b79d419c012de1ce6e7c09a9fa1dac1d80f5f1cad979e564543cc126f0c.tar.zst",
+      "asset_id": 620479440,
+      "size": 48552728,
+      "digest": "sha256:8d00357728efa15dff88ad52b2575b3303cdc5295e04036bbda447d9188e722f",
+      "cache_mode": "full-exact"
+    },
+    {
+      "part": "s3-04",
+      "exact": true,
+      "matched": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s3-04-1f4cc5e18a85ab531a78bb7f2da5173226df94e0d2507fb01c19869e04043c5a.tar.zst",
+      "asset_id": 620551195,
+      "size": 59474091,
+      "digest": "sha256:d1a7eafcb77828a33890a43a6682eb8a9942e7b29685c90769611ff48f06e3a1",
+      "cache_mode": "full-exact"
+    },
+    {
+      "part": "s3-05",
+      "exact": true,
+      "matched": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s3-05-764d67e9fd8e6ccbd628d6ffb4e983fbe68a014fd278f1bde7297e86c9095243.tar.zst",
+      "asset_id": 620487182,
+      "size": 42640558,
+      "digest": "sha256:231ab1251471b8fe2ace5713e1af8c93eaa0d36bbb93dad2b5f373d0bc0e8cbe",
+      "cache_mode": "full-exact"
+    },
+    {
+      "part": "s3-06",
+      "exact": true,
+      "matched": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s3-06-063be1feddac09b35f4f410de8ad6ec035665a597371efa21c1e95b8cb134663.tar.zst",
+      "asset_id": 620474089,
+      "size": 35848014,
+      "digest": "sha256:71503cefe463e063a611306f60f8651f03dc3e6455c00edff838355b2466c5e4",
+      "cache_mode": "full-exact"
+    },
+    {
+      "part": "s3-07",
+      "exact": true,
+      "matched": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s3-07-2a8ae75db313d50ad172f646f8f87ec38454d104626e5e2956caad8dc8e319ee.tar.zst",
+      "asset_id": 620473994,
+      "size": 35947738,
+      "digest": "sha256:d1d02b34237b561c9a3ebf15c0989fdf01ee5b32404be606559039efc7fc81ac",
+      "cache_mode": "full-exact"
+    },
+    {
+      "part": "s3-08",
+      "exact": true,
+      "matched": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s3-08-f2245ecf8406cc7a2440a3a149183bdd9370115a84f19562e7033a365767cfd2.tar.zst",
+      "asset_id": 620492594,
+      "size": 39996855,
+      "digest": "sha256:317bef25c0f20205967999bf509141defa99b57cdb8724997cc9f7fdedf9d18a",
+      "cache_mode": "full-exact"
+    },
+    {
+      "part": "s4-01",
+      "exact": true,
+      "matched": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-01-1d493260700cc61b7fa01548a1cec104b2164106ed5b13cbd5087bbdf7f70a11.tar.zst",
+      "asset_id": 620727297,
+      "size": 277006158,
+      "digest": "sha256:a47985f8e75a209f6eb1eb7a4a85b4518be481434c4cafa2d46c0c49b5b73458",
+      "cache_mode": "full-exact"
+    },
+    {
+      "part": "s4-02",
+      "exact": true,
+      "matched": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-02-e34468ca20edec0b21e79dac44eb1a11b262dcab88a586a16c431ea9e63eb9d0.tar.zst",
+      "asset_id": 620791088,
+      "size": 112214911,
+      "digest": "sha256:143537d22d75bfdd72854621ce97a6fdffb5f3ac301b1fbb2b5f345f3244767f",
+      "cache_mode": "full-exact"
+    },
+    {
+      "part": "s4-03",
+      "exact": true,
+      "matched": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-03-0a4c648726f7638148125e03cdc9525292730274ccc49b39f627bab30ed371b2.tar.zst",
+      "asset_id": 620714022,
+      "size": 212509072,
+      "digest": "sha256:1f0725f42144c8bc55a2df81486b2ab5bee5fc730a5d3ef789fdc634eb9a2fa1",
+      "cache_mode": "full-exact"
+    },
+    {
+      "part": "s4-04",
+      "exact": true,
+      "matched": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-04-38794432ce4a0eb6daa707c9e577f104e553b6ac48b3508ebf2eb39f1d56ff24.tar.zst",
+      "asset_id": 620713375,
+      "size": 205805446,
+      "digest": "sha256:2a0ed58572d8fd8688d0c7bc17d33c6cc8b12f2304b04251650249d1f29453d8",
+      "cache_mode": "full-exact"
+    },
+    {
+      "part": "s4-05",
+      "exact": true,
+      "matched": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-05-cffdfbe722130c9eed58e0d7e70d4fd2214faaaa0aee7347934c0368ef59dd90.tar.zst",
+      "asset_id": 620732023,
+      "size": 212646780,
+      "digest": "sha256:c5cfbe658f27ecece86b4ace2edbb49ae8cc009596372e60b7114ed8646c70a1",
+      "cache_mode": "full-exact"
+    },
+    {
+      "part": "s4-06",
+      "exact": true,
+      "matched": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-06-27aff7819f2c79593797ad215b4ebe4480194f9ea6370ac6408087a08138a51c.tar.zst",
+      "asset_id": 620666909,
+      "size": 212263019,
+      "digest": "sha256:8613f447081254a4952817d58bc70cfc1f939395bceb6bf01afaf9861fbab206",
+      "cache_mode": "full-exact"
+    },
+    {
+      "part": "s4-07",
+      "exact": true,
+      "matched": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-07-28469333f6960b147c528ee3b8a414a1246d5bc5a25783616044be75c530602e.tar.zst",
+      "asset_id": 620811745,
+      "size": 325839446,
+      "digest": "sha256:33e3ae356857b77c38564aca383fee1b2d00b09fb44ce7ad0a894508a0892c0d",
+      "cache_mode": "full-exact"
+    },
+    {
+      "part": "s4-08",
+      "exact": true,
+      "matched": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-08-9ca073548bc1ee89fbebc9fe467343a98a40d939c5278ee26bf023f187ea3e67.tar.zst",
+      "asset_id": 620765316,
+      "size": 257875103,
+      "digest": "sha256:b0e633986bfa6e01cabdf74a3a523b1858d17e509496880070a4727f00aa0d11",
+      "cache_mode": "full-exact"
+    },
+    {
+      "part": "s4-09",
+      "exact": true,
+      "matched": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-09-7b9361e8f6f06830231fddfbf457b5b90c02f43365ad35c76515653db1f43777.tar.zst",
+      "asset_id": 620765411,
+      "size": 262431747,
+      "digest": "sha256:cc69ef18dbf3177444d199f3894e1cd44c1a0c3792fb32d81d6039352385f1df",
+      "cache_mode": "full-exact"
+    },
+    {
+      "part": "s4-10",
+      "exact": true,
+      "matched": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-10-03b7c2679ed6190ac4008830e07092cdbb2d55d7491c369f5bdf0e71e23a4a7e.tar.zst",
+      "asset_id": 620732066,
+      "size": 222143655,
+      "digest": "sha256:6566b75bc27c13ce68879a8103e310eca01a817708b3a45889b16ac1f872dc09",
+      "cache_mode": "full-exact"
+    },
+    {
+      "part": "s4-11",
+      "exact": true,
+      "matched": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-11-9f0a6fb12c1fcfc2592668880696155010c9df17e9175f3df15294298373c49a.tar.zst",
+      "asset_id": 620722212,
+      "size": 195247898,
+      "digest": "sha256:8ca98375af54c3a51e5be573e9d2c2a7d82d34b2f685dd3793ac41ae7d6c7a48",
+      "cache_mode": "full-exact"
+    },
+    {
+      "part": "s4-12",
+      "exact": true,
+      "matched": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-12-e4f23e5b23eb47d7160fcfdff83bb54126fe9b4f0590203caa53f7e320564f6e.tar.zst",
+      "asset_id": 620767604,
+      "size": 261865444,
+      "digest": "sha256:dc36d8b6c0d7c720c74eed073c058d3b02a5ac7f81f8881effc885aa5d949162",
+      "cache_mode": "full-exact"
+    },
+    {
+      "part": "s4-13",
+      "exact": true,
+      "matched": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-13-26378035cfb7a34286cdb63e89aacdf627f6bbbc4e03a84b6ee5c63d67d9fd18.tar.zst",
+      "asset_id": 620759086,
+      "size": 327843184,
+      "digest": "sha256:58a7f4bd8c18b3271972a8010baaa2cd449dd598edd5f27920969060f7b18f32",
+      "cache_mode": "full-exact"
+    },
+    {
+      "part": "s4-14",
+      "exact": true,
+      "matched": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-14-76c5ae2fd993f9d1c22fcb6b60d7cd95002d0d678cb4817a0507d32d47cc73df.tar.zst",
+      "asset_id": 620779010,
+      "size": 283114958,
+      "digest": "sha256:d1909fc534806ef4a8059dad691f949887f8c04926d5ffc064f976cce637df7d",
+      "cache_mode": "full-exact"
+    },
+    {
+      "part": "s4-15",
+      "exact": true,
+      "matched": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-15-f7a613b6787a82038195f67d3c9a826b35a1c835e55a5718284b029baae497e0.tar.zst",
+      "asset_id": 620687422,
+      "size": 327878173,
+      "digest": "sha256:a1bca915f2b61bcb406a64f41b76b53a1c63fcae038aa1c581355d664661ed93",
+      "cache_mode": "full-exact"
+    },
+    {
+      "part": "s4-16",
+      "exact": true,
+      "matched": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-16-bef34fc74482b069af24cebbb5f0ae01d633809a37fbcbceaa6d2ed994a15fad.tar.zst",
+      "asset_id": 620757815,
+      "size": 319929749,
+      "digest": "sha256:f82b9f4f776d4961b12cf3bdfc5645485578b60c9ef269367ff526c6d644b755",
+      "cache_mode": "full-exact"
+    },
+    {
+      "part": "s4-17",
+      "exact": true,
+      "matched": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-17-e715d53b0b7f7defb6197b0808477d56a63abd9615d08019774fa7497cf424b7.tar.zst",
+      "asset_id": 620767908,
+      "size": 102540709,
+      "digest": "sha256:6f94f87a99ba73a530177a85845330d478f14ebf5970e68badcc368ac5595b47",
+      "cache_mode": "full-exact"
+    },
+    {
+      "part": "s4-18",
+      "exact": true,
+      "matched": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-18-dca68fb4773aaf85a0b04d3c997c1dcf090dcc3a7a605e33c84fcd0149251581.tar.zst",
+      "asset_id": 620692014,
+      "size": 85218109,
+      "digest": "sha256:2be22cc8d9b04397174ef873727c3c84da02d1a249f51de30838214fdd581885",
+      "cache_mode": "full-exact"
+    },
+    {
+      "part": "s4-19",
+      "exact": true,
+      "matched": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-19-eb882af5fb563689912e64cb73f710749b04cf1d099767c6cd80c917aff268c0.tar.zst",
+      "asset_id": 620800491,
+      "size": 90390868,
+      "digest": "sha256:770bdb1ebd78be1dfc8b9c847d4377e5d36297ff16efd5e38dc1d0c6f4e0f7ab",
+      "cache_mode": "full-exact"
+    },
+    {
+      "part": "s4-20",
+      "exact": true,
+      "matched": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-20-365fef83cee0758395583bc89b5d2ed3fffce4ef0ad48b3e45f448e8177a8a02.tar.zst",
+      "asset_id": 620755360,
+      "size": 222668327,
+      "digest": "sha256:02ca35aae5857e7fac704b63656bd7280111cdb22fc9a35c69e3e118d64c9c2b",
+      "cache_mode": "full-exact"
+    },
+    {
+      "part": "s5-01",
+      "exact": true,
+      "matched": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s5-01-2e0a648458cfe63ed38da874b3df8be57c75d45fc0f982a2d254b37312f92f45.tar.zst",
+      "asset_id": 620970293,
+      "size": 287226544,
+      "digest": "sha256:6f2bc0785a686e686ad54b4b76bdc7bb3dda1ace837b8b3946eab5459ad37034",
+      "cache_mode": "full-exact"
+    },
+    {
+      "part": "s5-02",
+      "exact": true,
+      "matched": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s5-02-defbbfac20ea2aa9ea7487e938bd897462ab21b7b6ad4e797f6c18b8e575abdd.tar.zst",
+      "asset_id": 620998320,
+      "size": 193202884,
+      "digest": "sha256:8decbfaa6e76a73631af51308bcce495998a3eee1e82efd8370678b638085dfa",
+      "cache_mode": "full-exact"
+    },
+    {
+      "part": "s6-01",
+      "exact": true,
+      "matched": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s6-01-e29a5a8b4c17d53ba44cd3385d72b10e66269d6568144d7ea51e674ade3c3849.tar.zst",
+      "asset_id": 622496616,
+      "size": 625387105,
+      "digest": "sha256:2a02aeb839476ca9ef9446fe2f9d3228a2163257b0c6979ae926f52cd3869271",
+      "cache_mode": "full-exact"
+    },
+    {
+      "part": "s6-02",
+      "exact": true,
+      "matched": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s6-02-098f5d27a1177a6de08376169558f42d877f9aac2fd1c4dfc9f8fee3ae0c137c.tar.zst",
+      "asset_id": 621692622,
+      "size": 529235625,
+      "digest": "sha256:5c460e22ddcff20d7c1f2fb4d6aa66b24dd2f42c977ab6f71b5336107ca5538a",
+      "cache_mode": "full-exact"
+    },
+    {
+      "part": "s6-03",
+      "exact": true,
+      "matched": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s6-03-1d1d5a6eb0b3e771917f1de33e6456a10099da38f9414ed90d7b6827096e4620.tar.zst",
+      "asset_id": 622046310,
+      "size": 553006146,
+      "digest": "sha256:49eee7e6d7ba62393f29f93826bf3c23fa6b74717e337a58297ba4d991d4a65b",
+      "cache_mode": "full-exact"
+    },
+    {
+      "part": "s7-01",
+      "exact": false,
+      "matched": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s7-01-454687d0f09029a948146ed4a93e0d3786d6bc4dee7691429e7db2c20897fee7.tar.zst",
+      "asset_id": 626698741,
+      "size": 1072760763,
+      "digest": "sha256:9e398441fde9869139b68765b04264c0c261d6930ebb0ef3398d6397e2b08d18",
+      "cache_mode": "same-compatibility-part-fallback"
+    },
+    {
+      "part": "s8-01",
+      "exact": false,
+      "matched": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s8-01-3eacb9d1d505c94a189487bb08fee462dcaa5f8e728e14630b1c35a9f7992bac-38120348253-1-checkpoint-1791711696211425317.tar.zst",
+      "asset_id": 630355945,
+      "size": 1814421900,
+      "digest": "sha256:0c6eac59f5ff56daedb91368009ab66b23b5b0092d4bc3303ff754c4b45e1739",
+      "cache_mode": "same-compatibility-part-fallback"
+    },
+    {
+      "part": "s8-02",
+      "exact": false,
+      "matched": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s8-02-2eb596b0978300487c9fd5044bb019d386287e0ef8579e739be40e2aa3a97dcf.tar.zst",
+      "asset_id": 627978896,
+      "size": 1378595108,
+      "digest": "sha256:7a35ceb8a5625ddcfb550bf7e34ba247f04df02aae2cc6db66443f51cee4edd9",
+      "cache_mode": "same-compatibility-part-fallback"
+    },
+    {
+      "part": "s9-01",
+      "exact": false,
+      "matched": null,
+      "asset_id": null,
+      "size": null,
+      "digest": null,
+      "cache_mode": "no-existing-archive"
+    },
+    {
+      "part": "s9-02",
+      "exact": false,
+      "matched": null,
+      "asset_id": null,
+      "size": null,
+      "digest": null,
+      "cache_mode": "no-existing-archive"
+    }
+  ],
+  "asset_observation_at": "2026-10-11T09:45:35.813887+00:00",
+  "cache_contract": "Uploaded old archives remain. Changed source parts restore same-compatibility/part outputs with exact=false; current upstream outputs override older outputs and Lake checks freshness. Only actual stale or missing modules rebuild.",
+  "complete_selection": {
+    "fingerprint_changed": true,
+    "archive_fallback": false,
+    "reason": "complete is the whole-selection check; the workflow deliberately skips archive fetch for this pseudo-part. It consumes current upstream part outputs and writes a new selection seal after success."
+  },
+  "formal_package_acceptance": false,
+  "remote_ci_complete": false,
+  "real_repository_planner_repeated": false,
+  "remote_dispatch_cancel_push_or_cache_deletion": false
+}

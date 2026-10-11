@@ -1,0 +1,152 @@
+{
+  "schema": "h0mework/private-gt-owner-verification@1",
+  "ok": true,
+  "inputs_unchanged": true,
+  "formal_acceptance": false,
+  "original_source_sha256": "80e50a01efcd9d791d477b3f5594294361b12f3bcc38a8ebf8e1fdcb0e004f67",
+  "before_target_sha256": "769c697a913f2d0d7e10279ffdb8dd027f475babbaf991e499878ba747e503ff",
+  "after_target_sha256": "a44b78303b9895827badc71487b0155b93e27b087a4b94927bc4d7ccdd1eefff",
+  "full_original_and_public_inverse_exact": true,
+  "candidate_row": {
+    "import_map": {
+      "H0mework.Versions.R9c73a630.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.SourceDressedPreparedFieldReturn": "SourceDressedPreparedFieldReturn",
+      "H0mework.Versions.R9c73a630.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.SourceFirstGaugeCurrentWard": "SourceFirstGaugeCurrentWard",
+      "H0mework.Versions.R9c73a630.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.SourceFirstMaterialVertexReturn": "SourceFirstMaterialVertexReturn"
+    },
+    "path": "Lean/H0mework/Versions/R9c73a630/ReleaseMaterials/Physics/LowEnergyPhenomenology/AlphaSource/SourceDressedGTSampleWard.lean",
+    "source": "file:Verification/physics/low-energy-phenomenology/alpha-source/SourceDressedGTSampleWard.lean",
+    "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/SourceDressedGTSampleWard.lean",
+    "source_revision": "9c73a630ce05bea062ec889b188f5105c0afb796",
+    "source_revisions": [
+      "9c73a630ce05bea062ec889b188f5105c0afb796"
+    ],
+    "source_sha256": "80e50a01efcd9d791d477b3f5594294361b12f3bcc38a8ebf8e1fdcb0e004f67",
+    "target": "H0mework.Versions.R9c73a630.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.SourceDressedGTSampleWard",
+    "target_sha256": "a44b78303b9895827badc71487b0155b93e27b087a4b94927bc4d7ccdd1eefff",
+    "variant": "R9c73a630",
+    "private_owner_string_rewrites": [
+      {
+        "source_owner": "_private.SourceFirstChargeDifference",
+        "target_owner": "_private.H0mework.Versions.R9c73a630.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.SourceFirstChargeDifference"
+      },
+      {
+        "source_owner": "_private.SourceFirstDifferenceCoreWard",
+        "target_owner": "_private.H0mework.Versions.R9c73a630.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.SourceFirstDifferenceCoreWard"
+      }
+    ]
+  },
+  "private_owner_string_rewrites": [
+    {
+      "source_owner": "_private.SourceFirstChargeDifference",
+      "target_owner": "_private.H0mework.Versions.R9c73a630.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.SourceFirstChargeDifference"
+    },
+    {
+      "source_owner": "_private.SourceFirstDifferenceCoreWard",
+      "target_owner": "_private.H0mework.Versions.R9c73a630.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.SourceFirstDifferenceCoreWard"
+    }
+  ],
+  "steps": [
+    {
+      "name": "actual-original-gt-payers",
+      "exit_code": 0,
+      "elapsed_seconds": 10.029,
+      "command": [
+        "lean",
+        "--root=./.local/physics-acceptance-20261010/gt-source-owner/environment-verification-60109675/src",
+        "--trust=0",
+        "-Dweak.linter.unnecessarySimpa=false",
+        "-Dweak.linter.style.haveILetI=false",
+        "-Dweak.linter.unusedSimpArgs=false",
+        "-DmaxHeartbeats=2000000",
+        "-Dweak.linter.unusedSectionVars=false",
+        "-Dweak.linter.unnecessarySeqFocus=false",
+        "-Dweak.linter.unusedVariables=false",
+        "-Dweak.linter.unreachableTactic=false",
+        "-Dweak.linter.unusedTactic=false",
+        "-Dweak.linter.defProp=false",
+        "-Dweak.linter.deprecated=false",
+        "-Dlinter.deprecated=false",
+        "-Dweak.linter.tacticAnalysis.introMerge=false",
+        "-Dweak.linter.constructorNameAsVariable=false",
+        "-DwarningAsError=true",
+        "./.local/physics-acceptance-20261010/gt-source-owner/environment-verification-60109675/src/ActualGTPayers.lean",
+        "-o",
+        "./.local/physics-acceptance-20261010/gt-source-owner/environment-verification-60109675/payers.olean"
+      ],
+      "source_sha256": "db900689ea405878ef52e417f100ff8d9af8d568de64f345ab655aa94f2e3959",
+      "log_sha256": "b6a179d1bf764741b607ae49d4ce9b427364f7f249d1801c370bf778348fa16c",
+      "object_sha256": "6eb2dc87a86f9726c5c43b76f5306a33a0e82e4a421aeb3ea577a3827e871b59"
+    },
+    {
+      "name": "complete-original-gt-source",
+      "exit_code": 0,
+      "elapsed_seconds": 14.815,
+      "command": [
+        "lean",
+        "--root=./.local/physics-acceptance-20261010/gt-source-owner/environment-verification-60109675/src",
+        "--trust=0",
+        "-Dweak.linter.unnecessarySimpa=false",
+        "-Dweak.linter.style.haveILetI=false",
+        "-Dweak.linter.unusedSimpArgs=false",
+        "-DmaxHeartbeats=2000000",
+        "-Dweak.linter.unusedSectionVars=false",
+        "-Dweak.linter.unnecessarySeqFocus=false",
+        "-Dweak.linter.unusedVariables=false",
+        "-Dweak.linter.unreachableTactic=false",
+        "-Dweak.linter.unusedTactic=false",
+        "-Dweak.linter.defProp=false",
+        "-Dweak.linter.deprecated=false",
+        "-Dlinter.deprecated=false",
+        "-Dweak.linter.tacticAnalysis.introMerge=false",
+        "-Dweak.linter.constructorNameAsVariable=false",
+        "-DwarningAsError=true",
+        "./.local/physics-acceptance-20261010/gt-source-owner/environment-verification-60109675/src/H0mework/Versions/R9c73a630/ReleaseMaterials/Physics/LowEnergyPhenomenology/AlphaSource/SourceDressedGTSampleWard.lean",
+        "-o",
+        "./.local/physics-acceptance-20261010/gt-source-owner/environment-verification-60109675/lib/H0mework/Versions/R9c73a630/ReleaseMaterials/Physics/LowEnergyPhenomenology/AlphaSource/SourceDressedGTSampleWard.olean"
+      ],
+      "source_sha256": "a44b78303b9895827badc71487b0155b93e27b087a4b94927bc4d7ccdd1eefff",
+      "log_sha256": "64cb0038f700823706744970798f83a78c0ffe9e1a8f9da28b0f5f8d0aa3e28f",
+      "object_sha256": "eef12ca6402a52c1845fa68a6ee65caf03c6cadd68617bc7974d657907c7489b"
+    },
+    {
+      "name": "original-gt-statement-consumer",
+      "exit_code": 0,
+      "elapsed_seconds": 7.235,
+      "command": [
+        "lean",
+        "--root=./.local/physics-acceptance-20261010/gt-source-owner/environment-verification-60109675/src",
+        "--trust=0",
+        "-Dweak.linter.unnecessarySimpa=false",
+        "-Dweak.linter.style.haveILetI=false",
+        "-Dweak.linter.unusedSimpArgs=false",
+        "-DmaxHeartbeats=2000000",
+        "-Dweak.linter.unusedSectionVars=false",
+        "-Dweak.linter.unnecessarySeqFocus=false",
+        "-Dweak.linter.unusedVariables=false",
+        "-Dweak.linter.unreachableTactic=false",
+        "-Dweak.linter.unusedTactic=false",
+        "-Dweak.linter.defProp=false",
+        "-Dweak.linter.deprecated=false",
+        "-Dlinter.deprecated=false",
+        "-Dweak.linter.tacticAnalysis.introMerge=false",
+        "-Dweak.linter.constructorNameAsVariable=false",
+        "-DwarningAsError=true",
+        "./.local/physics-acceptance-20261010/gt-source-owner/environment-verification-60109675/src/IndependentDressedGTConsumer.lean",
+        "-o",
+        "./.local/physics-acceptance-20261010/gt-source-owner/environment-verification-60109675/consumer.olean"
+      ],
+      "source_sha256": "1d13bdb320c62f5b0dad895b8084d02c68b649361c26563a9d920ba633f95905",
+      "log_sha256": "97174fa3e11e61dffbcb6cc30ee35ee310d09a9d00cada6bde031d3518fa40cb",
+      "object_sha256": "6703699bed8f659aa08f3aad81b97de0b4715471fe1a92169efee59b72b51bb9"
+    }
+  ],
+  "source_options": [
+    "set_option autoImplicit false",
+    "set_option maxHeartbeats 2400000",
+    "set_option maxRecDepth 16384",
+    "set_option synthInstance.maxHeartbeats 20000",
+    "set_option backward.isDefEq.respectTransparency false"
+  ],
+  "source_view_tuple_adapter_pending": true,
+  "private_source_files": 5462
+}

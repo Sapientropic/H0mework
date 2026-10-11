@@ -1,0 +1,43 @@
+{
+  "schema": "h0mework/private-ci-solo-override-focused-verification@1",
+  "observed_at": "2026-10-11T08:41:29.989532+00:00",
+  "ok": true,
+  "files": {
+    "tools/ci_plan.py": "5c7c603d027932584dbb761e114a398e3d752ecfc187acb2a6d9c94f0fea482e",
+    "tools/test_ci_plan.py": "0362f2b7cbbb067a5a90bf1547d28ac368b1eea0c11b529bb65cdf7c07dd041c",
+    "tools/ci_solo.txt": "f684a6c00c4a5da4d92615a0e7b36a03c2e30ba2aafe281b219b86312a04d910"
+  },
+  "command": [
+    "python3",
+    "-m",
+    "unittest",
+    "test_ci_plan.ForcedSoloTests",
+    "test_ci_plan.PlanTests",
+    "test_ci_plan.MemoryRegistryTests",
+    "-v"
+  ],
+  "cwd": "tools",
+  "exit_code": 0,
+  "tests": 28,
+  "elapsed_seconds": 57.038,
+  "log": "solo-focused-tests.log",
+  "log_sha256": "4eac85871ea2a1d0f48cbd8cee049960f6731e5bb19ef8fcd099cfa6f448f2f8",
+  "coverage": [
+    "nine canonical version pins at 9.1 GiB retain input order",
+    "exact-version explicit pin does not force other versions",
+    "similar name exclusion",
+    "missing file preserves 14.0 GiB threshold and optional two-argument behavior",
+    "comments and duplicate entries",
+    "synthetic plan compatibility/assignment/stages/part fingerprints unchanged, selection updated",
+    "existing exact measured peak precedence and micro-Lake freshness/cancellation tests"
+  ],
+  "diff_check_exit_code": 0,
+  "real_repository_planner_invoked": false,
+  "ci_memory_layout_workflow_or_budget_changed": false,
+  "head_or_index_changed": false,
+  "files_owned": [
+    "tools/ci_plan.py",
+    "tools/test_ci_plan.py",
+    "tools/ci_solo.txt"
+  ]
+}

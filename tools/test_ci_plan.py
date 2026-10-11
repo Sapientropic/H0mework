@@ -133,6 +133,27 @@ class PlanTests(unittest.TestCase):
                  "H0mework.Physics.Heavy", "H0mework.Versions.AD.Physics.Light", "H0mework.Physics.Other"]
         self.assertEqual(solo_modules(names, peaks), names[:3])
 
+    def test_explicit_solo_preserves_part_fingerprints_and_assignment(self):
+        (self.root / "tools").mkdir()
+        name = "H0mework.Physics.Independent"
+        (self.root / ci_plan.MEMORY).write_text(f"9.1\t{name}\n")
+        before = make_plan(self.root, SPLIT)
+        (self.root / ci_plan.SOLO).write_text(name + "\n")
+        after = make_plan(self.root, SPLIT)
+        self.assertEqual(before["compatibility"], after["compatibility"])
+        self.assertEqual(before["assignment"], after["assignment"])
+        self.assertEqual(before["stages"], after["stages"])
+        for part, record in before["parts"].items():
+            if part == "complete":
+                continue
+            for field in ("fingerprint", "modules", "targets", "progress_modules", "upstream", "module_count"):
+                self.assertEqual(record[field], after["parts"][part][field], (part, field))
+        before_solo = {m for p in before["parts"].values() for m in p.get("solo", [])}
+        after_solo = {m for p in after["parts"].values() for m in p.get("solo", [])}
+        self.assertEqual(before_solo, set())
+        self.assertEqual(after_solo, {name})
+        self.assertNotEqual(before["selection"], after["selection"])
+
     def test_plan_is_deterministic(self):
         self.assertEqual(make_plan(self.root, SPLIT), make_plan(self.root, SPLIT))
 
@@ -406,6 +427,42 @@ class PlanTests(unittest.TestCase):
         self.assertEqual(build_part(second, part, output=output), 0)
         self.assertIn("built=1", output.read_text().splitlines())
         self.assertEqual(trace.stat().st_mtime_ns, timestamp)
+
+
+class ForcedSoloTests(unittest.TestCase):
+    canonical = "H0mework.Physics.LowEnergy.AlphaSource.CanonicalPreparationSourceActualEffective"
+    release = "H0mework.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.CanonicalPreparationSourceActualEffective"
+
+    def test_canonical_pins_keep_low_peak_versions_in_given_order(self):
+        names = [f"H0mework.Versions.{tag}.{self.canonical.removeprefix('H0mework.')}"
+                 for tag in ["CAP", "AE", "R9c73a630"]]
+        names += [f"H0mework.Versions.{tag}.{self.release.removeprefix('H0mework.')}"
+                  for tag in ["Rf13ed87d", "C62", "R3bbcbd59", "E055", "Rc015842c", "R71e"]]
+        peaks = {self.canonical: 9.1, self.release: 9.1}
+        self.assertEqual(solo_modules(names, peaks), [])
+        self.assertEqual(solo_modules(names, peaks, {self.canonical, self.release}), names)
+
+    def test_exact_version_pin_does_not_force_other_versions(self):
+        names = [f"H0mework.Versions.{tag}.{self.release.removeprefix('H0mework.')}"
+                 for tag in ["R71e", "C62"]]
+        self.assertEqual(solo_modules(names, {self.release: 9.1}, {names[0]}), names[:1])
+
+    def test_similar_name_does_not_inherit_pin(self):
+        name = f"H0mework.Versions.R71e.{self.release.removeprefix('H0mework.')}Control"
+        self.assertEqual(solo_modules([name], {self.release: 9.1}, {self.release}), [])
+
+    def test_missing_policy_file_keeps_measured_default(self):
+        with tempfile.TemporaryDirectory() as directory:
+            forced = ci_plan.read_solo(Path(directory) / "missing.txt")
+        self.assertEqual(forced, set())
+        self.assertEqual(solo_modules([self.canonical], {self.canonical: 13.9}, forced), [])
+        self.assertEqual(solo_modules([self.canonical], {self.canonical: 14.0}, forced), [self.canonical])
+
+    def test_policy_reads_names_comments_and_duplicate_lines(self):
+        with tempfile.TemporaryDirectory() as directory:
+            policy = Path(directory) / "solo.txt"
+            policy.write_text(f"# shared imports\n\n{self.canonical}\n{self.release} # pin\n{self.canonical}\n")
+            self.assertEqual(ci_plan.read_solo(policy), {self.canonical, self.release})
 
 
 class MemoryRegistryTests(unittest.TestCase):

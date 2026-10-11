@@ -290,6 +290,114 @@ class ProofBodyRewriteTests(unittest.TestCase):
                 s.module_views(row, {})
 
 
+class CompactProofBodyRewriteTests(unittest.TestCase):
+    private_source = "private theorem certificate : True :=by decide +kernel\n"
+    private_public = "private theorem certificate : True :=by\n  exact True.intro\n"
+
+    def rule(self, source=None, public=None, declaration="certificate"):
+        return [{"declaration": declaration, "source": source or self.private_source,
+                 "public": public or self.private_public}]
+
+    def test_private_inline_and_compact_public_round_trip(self):
+        for source, public, declaration in (
+                (self.private_source, self.private_public, "certificate"),
+                ("theorem total (n : Nat) : n = n :=by\n  rfl\n",
+                 "theorem total (n : Nat) : n = n :=by\n  exact Eq.refl n\n", "total")):
+            with self.subTest(declaration=declaration):
+                text = "import Mathlib\n" + source + "def unchanged := 7\n"
+                rules = self.rule(source, public, declaration)
+                adapted = s.rewrite_proof_bodies(text, rules)
+                self.assertEqual(adapted, text.replace(source, public))
+                self.assertEqual(s.rewrite_proof_bodies(adapted, rules, reverse=True), text)
+                self.assertEqual(s.rewrite_proof_bodies(text, None), text)
+
+    def test_private_default_view_and_exact_override(self):
+        original = ("import Mathlib\n" + self.private_source).encode()
+        adapted = ("import Mathlib\n" + self.private_public).encode()
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "Proof.lean").write_bytes(adapted)
+            row = {"source": "Original.Proof", "source_path": "Lean/Original/Proof.lean",
+                   "source_revision": "a" * 40, "target": "H0mework.Proof", "path": "Proof.lean",
+                   "source_sha256": p.sha(original), "target_sha256": p.sha(adapted),
+                   "view_sha256": p.sha(adapted), "proof_body_rewrites": self.rule()}
+            mapping = root / "export-map.json"
+            mapping.write_text(json.dumps({"schema": 2, "lean_directory": "Lean",
+                                           "modules": [row], "artifacts": []}))
+            with patch.object(s, "ROOT", root), patch.object(s, "EXPORT_MAP", mapping):
+                self.assertEqual(s.module_views(row, {}), (adapted, original))
+                path = "Lean/Original/Proof.lean"
+                self.assertEqual(s.reconstruct(paths=[path])[0][path], adapted)
+                self.assertEqual(s.reconstruct(paths=[path], exact=True)[0][path], original)
+
+    def test_default_parameter_proof_is_part_of_the_immutable_statement(self):
+        source = "theorem defaulted (h : True := by trivial) : True :=by\n  exact h\n"
+        public = source.replace("  exact h", "  simpa using h")
+        rules = self.rule(source, public, "defaulted")
+        self.assertEqual(s.rewrite_proof_bodies(source, rules), public)
+        changed = public.replace("by trivial", "by exact True.intro")
+        with self.assertRaises(s.ViewError):
+            s.rewrite_proof_bodies(source, self.rule(source, changed, "defaulted"))
+
+    def test_comment_string_and_nested_delimiters_do_not_start_the_outer_proof(self):
+        headers = [
+            'theorem header (label : String := " :=by ") : True :=by',
+            'theorem header (label : String := r#"[ := by ]"#) : True :=by',
+            'theorem header (label : String := "[ ) := by") : True :=by',
+            'theorem header (h : True := by /- :=by ignored -/ trivial) : True :=by',
+            'theorem header {h : True := by trivial} : True :=by',
+            'theorem header ⦃h : True := by trivial⦄ : True :=by',
+            'theorem header [inst : Inhabited Nat := by infer_instance] : True :=by',
+            'theorem header /- :=by\n  bogus -/ : True :=by',
+        ]
+        for header in headers:
+            source = header + "\n  trivial\n"
+            public = header + "\n  exact True.intro\n"
+            with self.subTest(header=header):
+                rules = self.rule(source, public, "header")
+                self.assertEqual(s.rewrite_proof_bodies(source, rules), public)
+                self.assertEqual(s.rewrite_proof_bodies(public, rules, reverse=True), source)
+
+    def test_definition_visibility_type_premise_and_header_bytes_are_rejected(self):
+        bad = [self.private_public.replace("private theorem", "theorem"),
+               self.private_public.replace("private theorem", "private def"),
+               self.private_public.replace("private theorem", "protected theorem"),
+               self.private_public.replace("True", "False", 1),
+               self.private_public.replace("certificate :", "certificate (h : True) :"),
+               self.private_public.replace("certificate", "other", 1),
+               self.private_public.replace(" :=by", " := by")]
+        for public in bad:
+            with self.subTest(public=public), self.assertRaises(s.ViewError):
+                s.rewrite_proof_bodies(self.private_source, self.rule(public=public))
+        with self.assertRaises(s.ViewError):
+            source = "def certificate : True :=by decide +kernel\n"
+            s.rewrite_proof_bodies(source, self.rule(source=source))
+
+    def test_appended_top_level_commands_are_rejected(self):
+        for command in ("def smuggled := 0", "axiom smuggled : False", "namespace Hidden",
+                        "set_option maxHeartbeats 0", "theorem other : True :=by trivial"):
+            for prefix in (self.private_public, self.private_source):
+                with self.subTest(command=command, inline=prefix == self.private_source), self.assertRaises(s.ViewError):
+                    public = prefix + command + "\n"
+                    s.rewrite_proof_bodies(self.private_source, self.rule(public=public))
+
+    def test_duplicate_anchor_and_reverse_duplicate_are_rejected(self):
+        for text, reverse in ((self.private_source * 2, False), (self.private_public * 2, True),
+                              ("/-\n" + self.private_source + "-/\n" + self.private_source, False)):
+            with self.subTest(reverse=reverse), self.assertRaises(s.ViewError):
+                s.rewrite_proof_bodies(text, self.rule(), reverse=reverse)
+
+    def test_malformed_statement_or_unterminated_literal_is_rejected(self):
+        for header in ('theorem broken (h : True : True :=by',
+                       'theorem broken ] : True :=by',
+                       'theorem broken (s : String := "unterminated) : True :=by',
+                       'theorem broken /- unterminated : True :=by'):
+            source = header + "\n  trivial\n"
+            public = header + "\n  exact True.intro\n"
+            with self.subTest(header=header), self.assertRaises(s.ViewError):
+                s.rewrite_proof_bodies(source, self.rule(source, public, "broken"))
+
+
 class DeclaredRuntimePathTests(unittest.TestCase):
     def test_only_selected_pointer_changes_and_number_bytes_survive(self):
         raw = fixture(b'{"log":"@ROOT@/audit.log","same":"@ROOT@/audit.log","value":1.2300000000000000001,"failed":true}')
@@ -549,6 +657,94 @@ class PrivateOwnerTupleBindingTests(unittest.TestCase):
                     path.write_bytes(changed)
                     with self.subTest(changed=changed),self.assertRaises(s.ViewError):
                         s.module_views({**row,'target_sha256':p.sha(changed)}, {})
+
+class PrivateOwnerGuardedTupleTests(unittest.TestCase):
+    def rules(self):
+        return [{"source_owner": "_private.SourceCharge", "target_owner": "_private.H0mework.SourceCharge"},
+                {"source_owner": "_private.SourceCore", "target_owner": "_private.H0mework.SourceCore"}]
+
+    def lookup(self, charge="_private.SourceCharge", core="_private.SourceCore"):
+        return ('elab "paidGT%" member:ident : term => do\n'
+                '  let (owner,scope):=if member.getId==`native_lie then\n'
+                f'    ("{charge}.",`World.Material)\n'
+                f'    else ("{core}.",`World.Material)\n'
+                '  unless member.getId==`native_lie || member.getId==`spin_native do throwError "Unknown GT source payer"\n'
+                '  let wanted:=scope++member.getId\n'
+                '  let all:=(←getEnv).constants.toList\n'
+                '  let candidates:=all.filter fun (name,_)=>name.toString.startsWith owner && privateToUserName name==wanted\n'
+                '  match candidates with\n'
+                '  | [(name,_)]=>logInfo m!"Original GT payer: {name}";return mkConst name\n'
+                '  | _=>throwError "Expected unique original GT payer {wanted}"\n')
+
+    def test_guarded_pair_round_trip_and_explicit_subset(self):
+        raw=self.lookup();public=self.lookup("_private.H0mework.SourceCharge","_private.H0mework.SourceCore")
+        self.assertEqual(s.rewrite_private_owner_strings(raw,self.rules()),public)
+        self.assertEqual(s.rewrite_private_owner_strings(public,self.rules(),reverse=True),raw)
+        self.assertEqual(s.rewrite_private_owner_strings(raw,None),raw)
+        self.assertEqual(s.rewrite_private_owner_strings(raw,[]),raw)
+        self.assertEqual(s.rewrite_private_owner_strings(raw,self.rules()[:1]),self.lookup("_private.H0mework.SourceCharge"))
+
+    def test_unrelated_comments_raw_strings_and_longer_owners_are_unchanged(self):
+        untouched=('def ordinary := "_private.SourceCharge."\n'
+                   'def raw := r##"_private.SourceCharge."##\n'
+                   '-- '+self.lookup().replace('\n','\n-- ')+'\n'
+                   '/- '+self.lookup()+'-/\n'
+                   +self.lookup("_private.SourceChargeLonger","_private.SourceCoreLonger"))
+        raw=untouched+self.lookup()
+        public=untouched+self.lookup("_private.H0mework.SourceCharge","_private.H0mework.SourceCore")
+        self.assertEqual(s.rewrite_private_owner_strings(raw,self.rules()),public)
+        self.assertEqual(s.rewrite_private_owner_strings(public,self.rules(),reverse=True),raw)
+
+    def test_guard_scope_filter_singleton_and_duplicate_reject(self):
+        raw=self.lookup()
+        bad=(raw.replace('unless member.getId==`native_lie || member.getId==`spin_native do throwError "Unknown GT source payer"',''),
+             raw.replace('unless member.getId==`native_lie','unless member.getId==`other'),
+             raw.replace('|| member.getId==`spin_native','|| member.getId==`native_lie'),
+             raw.replace('`World.Material)', '`World.Other)',1),
+             raw.replace('scope++member.getId','scope++other.getId'),
+             raw.replace('startsWith owner','startsWith other'),
+             raw.replace('privateToUserName name==wanted','privateToUserName name==other'),
+             raw.replace('return mkConst name','return mkConst other'),
+             raw.replace('| [(name,_)]','| (name,_)::_'),
+             raw.replace('"_private.SourceCharge."','r##"_private.SourceCharge."##'),
+             raw.replace('"_private.SourceCharge."','"_private.SourceChargeLonger."'),
+             raw+raw,
+             raw+'name.startsWith "_private.SourceCharge."\n',
+             'def ordinary := "_private.SourceCharge."\n',
+             '-- '+raw.replace('\n','\n-- '))
+        for text in bad:
+            with self.subTest(text=text), self.assertRaises(s.ViewError):
+                s.rewrite_private_owner_strings(text,self.rules())
+
+    def test_existing_direct_family_and_monadic_tuple_remain_compatible(self):
+        direct={"source_owner":"_private.Direct","target_owner":"_private.H0mework.Direct"}
+        monadic=PrivateOwnerTupleBindingTests()
+        raw='name.startsWith "_private.Direct"\n'+monadic.lookup()+self.lookup()
+        public=('name.startsWith "_private.H0mework.Direct"\n'
+                +monadic.lookup("_private.H0mework.SourceSpatial","_private.H0mework.SourcePrice")
+                +self.lookup("_private.H0mework.SourceCharge","_private.H0mework.SourceCore"))
+        rules=[direct]+monadic.rules()+self.rules()
+        self.assertEqual(s.rewrite_private_owner_strings(raw,rules),public)
+        self.assertEqual(s.rewrite_private_owner_strings(public,rules,reverse=True),raw)
+
+    def test_source_view_keeps_original_identity_and_rejects_resigned_guard_or_math(self):
+        raw='import SourceProducer\n'+self.lookup()+'theorem paid : True := by trivial\n'
+        public=s.rewrite_private_owner_strings(raw,self.rules())
+        public=s.transform(public,s.import_tokens(public),{'SourceProducer':'H0mework.SourceProducer'})
+        with tempfile.TemporaryDirectory() as directory:
+            root=Path(directory);path=root/'Consumer.lean';path.write_bytes(public)
+            row={'path':'Consumer.lean','source_path':'Original.lean','target_sha256':p.sha(public),
+                 'source_sha256':p.sha(raw.encode()),'private_owner_string_rewrites':self.rules(),
+                 'import_map':{'H0mework.SourceProducer':'SourceProducer'}}
+            with patch.object(s,'ROOT',root):
+                self.assertEqual(s.module_views(row,{}),(raw.encode(),raw.encode()))
+                for changed in (public.replace(b': True :=',b': False :='),
+                                public.replace(b'`World.Material',b'`World.Other'),
+                                public.replace(b'|| member.getId==`spin_native',b'|| member.getId==`native_lie')):
+                    path.write_bytes(changed)
+                    with self.subTest(changed=changed),self.assertRaises(s.ViewError):
+                        s.module_views({**row,'target_sha256':p.sha(changed)}, {})
+
 
 class PrivateOwnerFamilyPrefixTests(unittest.TestCase):
     source = "_private.SourceActualCandidateVertexValues"

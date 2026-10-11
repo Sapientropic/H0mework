@@ -1,0 +1,245 @@
+import took 31.2s
+parsing took 380ms
+parsing took 106ms
+elaboration took 53ms
+runtime/actual-effective-compile/chunked-local-transparency-profile/src/H0mework/Versions/R71e/ReleaseMaterials/Physics/LowEnergyPhenomenology/AlphaSource/CanonicalPreparationSourceActualEffective.lean:3626:64: error: Application type mismatch: The argument
+  congrArg₂ List.append hl13 (Eq.trans (product_append b14 (b15 ++ b16) plane) ?m.196505)
+has type
+  @Eq (List SourceTerm) ((productTerms b13 plane).append (productTerms (b14 ++ (b15 ++ b16)) plane))
+    (outL13.append ?m.196483)
+but is expected to have type
+  @Eq (List SourceTerm) (productTerms b13 plane ++ productTerms (b14 ++ b15 ++ b16) plane) ?m.196467
+in the application
+  Eq.trans (product_append b13 (b14 ++ b15 ++ b16) plane)
+    (congrArg₂ List.append hl13 (Eq.trans (product_append b14 (b15 ++ b16) plane) ?m.196505))
+runtime/actual-effective-compile/chunked-local-transparency-profile/src/H0mework/Versions/R71e/ReleaseMaterials/Physics/LowEnergyPhenomenology/AlphaSource/CanonicalPreparationSourceActualEffective.lean:3661:60: error: Application type mismatch: The argument
+  congrArg₂ List.append hr12 (Eq.trans (negative_product_append p13 (p14 ++ p15) block) ?m.197171)
+has type
+  @Eq (List SourceTerm)
+    ((negativeTerms (productTerms p12 block)).append (negativeTerms (productTerms (p13 ++ (p14 ++ p15)) block)))
+    (outR12.append ?m.197149)
+but is expected to have type
+  @Eq (List SourceTerm)
+    (negativeTerms (productTerms p12 block) ++ negativeTerms (productTerms (p13 ++ p14 ++ p15) block)) ?m.197133
+in the application
+  Eq.trans (negative_product_append p12 (p13 ++ p14 ++ p15) block)
+    (congrArg₂ List.append hr12 (Eq.trans (negative_product_append p13 (p14 ++ p15) block) ?m.197171))
+runtime/actual-effective-compile/chunked-local-transparency-profile/src/H0mework/Versions/R71e/ReleaseMaterials/Physics/LowEnergyPhenomenology/AlphaSource/CanonicalPreparationSourceActualEffective.lean:3673:12: error: Application type mismatch: The argument
+  congrArg₂ List.append leftProduct rightProduct
+has type
+  @Eq (List SourceTerm) ((productTerms block plane).append (negativeTerms (productTerms plane block)))
+    ((outL0 ++ outL1 ++ outL2 ++ outL3 ++ outL4 ++ outL5 ++ outL6 ++ outL7 ++ outL8 ++ outL9 ++ outL10 ++ outL11 ++
+                  outL12 ++
+                outL13 ++
+              outL14 ++
+            outL15 ++
+          outL16).append
+      (outR0 ++ outR1 ++ outR2 ++ outR3 ++ outR4 ++ outR5 ++ outR6 ++ outR7 ++ outR8 ++ outR9 ++ outR10 ++ outR11 ++
+              outR12 ++
+            outR13 ++
+          outR14 ++
+        outR15))
+but is expected to have type
+  @Eq (List SourceTerm) (productTerms block plane ++ negativeTerms (productTerms plane block))
+    (outL0 ++ outL1 ++ outL2 ++ outL3 ++ outL4 ++ outL5 ++ outL6 ++ outL7 ++ outL8 ++ outL9 ++ outL10 ++ outL11 ++
+                outL12 ++
+              outL13 ++
+            outL14 ++
+          outL15 ++
+        outL16 ++
+      (outR0 ++ outR1 ++ outR2 ++ outR3 ++ outR4 ++ outR5 ++ outR6 ++ outR7 ++ outR8 ++ outR9 ++ outR10 ++ outR11 ++
+              outR12 ++
+            outR13 ++
+          outR14 ++
+        outR15))
+in the application
+  Eq.trans (congrArg₂ (fun b a => productTerms b a ++ negativeTerms (productTerms a b)) hb hp)
+    (congrArg₂ List.append leftProduct rightProduct)
+tactic execution of Lean.Parser.Tactic.refine took 54.8ms
+tactic execution of Lean.Parser.Tactic.refine took 61.7ms
+tactic execution of Lean.Parser.Tactic.refine took 60.4ms
+tactic execution of Lean.Parser.Tactic.refine took 55.6ms
+tactic execution of Lean.Parser.Tactic.refine took 62.1ms
+tactic execution of Lean.Parser.Tactic.refine took 52ms
+tactic execution of Lean.Parser.Tactic.refine took 58ms
+tactic execution of Lean.Parser.Tactic.refine took 52.5ms
+tactic execution of Lean.Parser.Tactic.refine took 53.5ms
+tactic execution of Lean.Parser.Tactic.refine took 50.4ms
+tactic execution of Lean.Parser.Tactic.refine took 190ms
+tactic execution of Lean.Parser.Tactic.refine took 244ms
+tactic execution of Lean.Parser.Tactic.refine took 186ms
+tactic execution of Lean.Parser.Tactic.refine took 179ms
+tactic execution of Lean.Parser.Tactic.refine took 191ms
+tactic execution of Lean.Parser.Tactic.refine took 193ms
+tactic execution of Lean.Parser.Tactic.refine took 219ms
+tactic execution of Lean.Parser.Tactic.refine took 199ms
+tactic execution of Lean.Parser.Tactic.refine took 199ms
+tactic execution of Lean.Parser.Tactic.refine took 200ms
+tactic execution of Lean.Parser.Tactic.refine took 361ms
+tactic execution of Lean.Parser.Tactic.refine took 247ms
+tactic execution of Lean.Parser.Tactic.refine took 414ms
+tactic execution of Lean.Parser.Tactic.refine took 249ms
+tactic execution of Lean.Parser.Tactic.refine took 248ms
+tactic execution of Lean.Parser.Tactic.refine took 267ms
+type checking took 1.19s
+type checking took 2.48s
+tactic execution of Lean.Parser.Tactic.refine took 427ms
+type checking took 2.09s
+tactic execution of Lean.Parser.Tactic.refine took 567ms
+type checking took 2.38s
+tactic execution of Lean.Parser.Tactic.refine took 587ms
+type checking took 2.64s
+tactic execution of Lean.Parser.Tactic.refine took 771ms
+type checking took 3.64s
+tactic execution of Lean.Parser.Tactic.refine took 620ms
+type checking took 2.48s
+tactic execution of Lean.Parser.Tactic.refine took 287ms
+type checking took 1.79s
+tactic execution of Lean.Parser.Tactic.refine took 127ms
+type checking took 1.54s
+type checking took 1.11s
+type checking took 1.13s
+type checking took 1.17s
+type checking took 1.23s
+type checking took 1.15s
+type checking took 1.21s
+type checking took 1.16s
+type checking took 1.14s
+type checking took 1.07s
+type checking took 1.17s
+tactic execution of Lean.Parser.Tactic.refine took 197ms
+type checking took 1.8s
+tactic execution of Lean.Parser.Tactic.refine took 212ms
+type checking took 2.24s
+tactic execution of Lean.Parser.Tactic.refine took 232ms
+type checking took 2.03s
+tactic execution of Lean.Parser.Tactic.refine took 226ms
+type checking took 1.89s
+tactic execution of Lean.Parser.Tactic.refine took 245ms
+type checking took 2.16s
+tactic execution of Lean.Parser.Tactic.refine took 207ms
+type checking took 1.88s
+tactic execution of Lean.Parser.Tactic.refine took 272ms
+type checking took 2.28s
+tactic execution of Lean.Parser.Tactic.refine took 211ms
+type checking took 1.84s
+tactic execution of Lean.Parser.Tactic.refine took 196ms
+type checking took 1.74s
+tactic execution of Lean.Parser.Tactic.refine took 203ms
+type checking took 1.92s
+tactic execution of Lean.Parser.Tactic.refine took 211ms
+type checking took 1.84s
+tactic execution of Lean.Parser.Tactic.refine took 260ms
+type checking took 1.65s
+tactic execution of Lean.Parser.Tactic.refine took 187ms
+type checking took 1.68s
+tactic execution of Lean.Parser.Tactic.refine took 176ms
+type checking took 1.67s
+tactic execution of Lean.Parser.Tactic.refine took 180ms
+type checking took 2.01s
+tactic execution of Lean.Parser.Tactic.refine took 249ms
+type checking took 1.83s
+type checking took 6.82s
+interpretation of Lean.Elab.Tactic._aux_Mathlib_Tactic_Widget_Calc___elabRules_Lean_calcTactic_1._boxed took 141ms
+process pre-definitions took 517ms
+elaboration took 110ms
+type checking took 79.6ms
+linting took 57.5ms
+type checking took 699ms
+type checking took 702ms
+runtime/actual-effective-compile/chunked-local-transparency-profile/src/H0mework/Versions/R71e/ReleaseMaterials/Physics/LowEnergyPhenomenology/AlphaSource/CanonicalPreparationSourceActualEffective.lean:4742:64: error: Application type mismatch: The argument
+  congrArg₂ List.append hc13 (Eq.trans (negative_product_append c14 (c15 ++ c16) difference) ?m.50225)
+has type
+  @Eq (List SourceTerm)
+    ((negativeTerms (productTerms c13 difference)).append
+      (negativeTerms (productTerms (c14 ++ (c15 ++ c16)) difference)))
+    (out13.append ?m.50203)
+but is expected to have type
+  @Eq (List SourceTerm)
+    (negativeTerms (productTerms c13 difference) ++ negativeTerms (productTerms (c14 ++ c15 ++ c16) difference))
+    ?m.50187
+in the application
+  Eq.trans (negative_product_append c13 (c14 ++ c15 ++ c16) difference)
+    (congrArg₂ List.append hc13 (Eq.trans (negative_product_append c14 (c15 ++ c16) difference) ?m.50225))
+tactic execution of Lean.Parser.Tactic.refine took 1.22s
+type checking took 919ms
+tactic execution of Lean.Parser.Tactic.refine took 52ms
+tactic execution of Lean.Parser.Tactic.refine took 52.9ms
+type checking took 857ms
+type checking took 377ms
+tactic execution of Lean.Parser.Tactic.refine took 50.7ms
+type checking took 424ms
+tactic execution of Lean.Parser.Tactic.refine took 57.3ms
+type checking took 394ms
+type checking took 400ms
+tactic execution of Lean.Parser.Tactic.refine took 58.6ms
+type checking took 447ms
+type checking took 423ms
+tactic execution of Lean.Parser.Tactic.refine took 54.7ms
+type checking took 646ms
+tactic execution of Lean.Parser.Tactic.refine took 107ms
+type checking took 483ms
+tactic execution of Lean.Parser.Tactic.refine took 110ms
+type checking took 563ms
+tactic execution of Lean.Parser.Tactic.refine took 57.9ms
+type checking took 481ms
+tactic execution of Lean.Parser.Tactic.refine took 69.9ms
+type checking took 531ms
+type checking took 399ms
+type checking took 446ms
+type checking took 612ms
+tactic execution of Lean.Parser.Tactic.refine took 63.1ms
+type checking took 464ms
+type checking took 381ms
+type checking took 429ms
+type checking took 1.68s
+interpretation of Lean.Elab.Tactic._aux_Mathlib_Tactic_Widget_Calc___elabRules_Lean_calcTactic_1._boxed took 158ms
+process pre-definitions took 131ms
+tactic execution of Lean.Parser.Tactic.refine took 83.8ms
+typeclass inference of CharZero took 66.8ms
+cumulative profiling times:
+	attribute application 0.243ms
+	blocked (unaccounted) 255s
+	compilation (IR) 0.301ms
+	compilation (LCNF base) 3.51ms
+	compilation (LCNF impure) 0.282ms
+	compilation (LCNF mono) 0.877ms
+	congr simp thm 2.05ms
+	elaboration 286ms
+	fix level params 1.18ms
+	import 31.2s
+	initialization 25.5ms
+	instantiate metavars 2.2ms
+	interpretation 1.59s
+	let-to-have transformation 0.398ms
+	linting 85.5ms
+	module linting 0.00137ms
+	norm_num 9.36ms
+	overlappingInstancesLinter 53.9ms
+	parsing 493ms
+	process pre-definitions 656ms
+	ring 12ms
+	share common exprs 62ms
+	simp 124ms
+	tactic execution 15.9s
+	tacticAnalysis 1.07ms
+	type checking 82s
+	typeclass inference 7.54s
+      141.43 real       103.83 user         9.34 sys
+          9661857792  maximum resident set size
+                   0  average shared memory size
+                   0  average unshared data size
+                   0  average unshared stack size
+              391577  page reclaims
+              285153  page faults
+                   0  swaps
+                   0  block input operations
+                   0  block output operations
+                   0  messages sent
+                   0  messages received
+                   0  signals received
+               85495  voluntary context switches
+              713698  involuntary context switches
+        912737794869  instructions retired
+        476901538483  cycles elapsed
+          3637336616  peak memory footprint

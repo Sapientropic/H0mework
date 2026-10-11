@@ -267,6 +267,41 @@ def _private_owner_tuple_literals(text: str, masked: str):
                 found.append((begin, end, literal))
     return found
 
+def _private_owner_guarded_tuple_literals(text: str, masked: str):
+    """Recognize the GT two-provider binding with its explicit member guard."""
+    namespace = r"[A-Za-z_][A-Za-z0-9_']*(?:\.[A-Za-z_][A-Za-z0-9_']*)*"
+    pattern = re.compile(
+        r"\blet\s*\(\s*owner\s*,\s*scope\s*\)\s*:=\s*"
+        r"if\s+member\.getId\s*==\s*`(?P<member1>" + namespace + r")\s+then\s*\(\s*"
+        r'(?P<owner1>"[ \t]*)\s*,\s*`(?P<namespace1>' + namespace + r")\s*\)\s*"
+        r"else\s*\(\s*"
+        r'(?P<owner2>"[ \t]*)\s*,\s*`(?P<namespace2>' + namespace + r")\s*\)\s*"
+        r"unless\s+member\.getId\s*==\s*`(?P<guard1>" + namespace + r")\s*\|\|\s*"
+        r"member\.getId\s*==\s*`(?P<guard2>" + namespace + r')\s+do\s+throwError\s*"[ \t]*'
+        r"\s+let\s+wanted\s*:=\s*scope\s*\+\+\s*member\.getId\s+"
+        r"let\s+all\s*:=\s*\(\s*←\s*getEnv\s*\)\.constants\.toList\s+"
+        r"let\s+candidates\s*:=\s*all\.filter\s+fun\s*\(\s*name\s*,\s*_\s*\)\s*=>\s*"
+        r"name\.toString\.startsWith\s+owner\s*&&\s*privateToUserName\s+name\s*==\s*wanted\s+"
+        r"match\s+candidates\s+with\s*\|\s*\[\s*\(\s*name\s*,\s*_\s*\)\s*\]\s*=>\s*"
+        r'(?:logInfo\s+m!"[ \t]*;\s*)?return\s+mkConst\s+name\s*'
+        r'\|\s*_\s*=>\s*throwError\s*"[ \t]*')
+    found = []
+    for binding in pattern.finditer(masked):
+        if (binding['namespace1'] != binding['namespace2']
+                or binding['member1'] != binding['guard1']
+                or binding['guard1'] == binding['guard2']):
+            continue
+        for group in ('owner1', 'owner2'):
+            begin = binding.start(group)
+            original_literal = re.match(r'"(?:\\.|[^"\\])*"', text[begin:])
+            if original_literal is None:
+                continue
+            literal = original_literal[0]
+            if re.fullmatch(r'"_private\.' + namespace + r'\."', literal):
+                found.append((begin, begin + len(literal), literal))
+    return found
+
+
 def rewrite_private_owner_strings(text: str, rewrites, *, reverse: bool = False) -> str:
     """Relocate registered private-owner prefixes used by declaration lookup."""
     if rewrites is None:
@@ -300,7 +335,8 @@ def rewrite_private_owner_strings(text: str, rewrites, *, reverse: bool = False)
         if literal is not None and literal[0] in literals:
             owner, suffix = literals[literal[0]]
             matches[owner].append((index, index + len(literal[0]), suffix))
-    for begin, end, literal in _private_owner_tuple_literals(text, masked):
+    for begin, end, literal in (_private_owner_tuple_literals(text, masked)
+                                + _private_owner_guarded_tuple_literals(text, masked)):
         if literal in literals:
             owner, suffix = literals[literal]
             matches[owner].append((begin, end, suffix))
@@ -529,6 +565,32 @@ def invert_resource_digests(raw: bytes, row: dict) -> bytes:
     return raw
 
 
+def proof_body_start(block: str, declaration: str) -> int:
+    masked = mask_comments_and_strings(block)
+    if not re.match(r"^(?:private[ \t]+)?theorem[ \t]+" + re.escape(declaration)
+                    + r"(?=[\s(:{\[⦃])", masked):
+        raise ViewError("Rewrite must contain the declared public or private theorem")
+    # Defaults may themselves use := by; only the declaration's outer proof is mutable.
+    closing = {"(": ")", "[": "]", "{": "}", "⦃": "⦄"}
+    stack = []
+    for position, char in enumerate(masked):
+        if char in closing:
+            stack.append(closing[char])
+        elif char in closing.values():
+            if not stack or stack.pop() != char:
+                raise ViewError("Unbalanced theorem statement in proof-body rewrite")
+        elif not stack and char == ":":
+            delimiter = re.match(r":=\s*by\b", masked[position:])
+            if delimiter:
+                begin = position + delimiter.end()
+                body = masked[begin:]
+                if (not body.strip() or any(line and not line[0].isspace()
+                                           for line in body.splitlines()[1:])):
+                    raise ViewError("Rewrite must contain one theorem and its proof")
+                return begin
+    raise ViewError("Proof-body rewrite needs an outer := by proof")
+
+
 def rewrite_proof_bodies(text: str, rewrites, *, reverse: bool = False) -> str:
     """Apply declared compilation proofs while retaining the exact theorem statement."""
     if rewrites is None:
@@ -546,11 +608,8 @@ def rewrite_proof_bodies(text: str, rewrites, *, reverse: bool = False) -> str:
         for block in (source, public):
             if not isinstance(block, str) or not block.endswith("\n"):
                 raise ViewError("Invalid proof-body block")
-            statement, separator, body = block.partition(" := by\n")
-            if (not separator or not re.match(r"^theorem\s+" + re.escape(declaration) + r"(?:\s|:)", statement)
-                    or not body.strip() or any(line and not line[0].isspace() for line in body.splitlines())):
-                raise ViewError("Rewrite must contain one theorem and its indented proof")
-            statements.append(statement)
+            begin = proof_body_start(block, declaration)
+            statements.append(block[:begin])
         if statements[0] != statements[1]:
             raise ViewError("Proof-body rewrite changes the theorem statement")
         before, after = (public, source) if reverse else (source, public)

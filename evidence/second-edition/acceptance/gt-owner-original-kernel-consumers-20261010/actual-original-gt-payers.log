@@ -1,0 +1,11 @@
+OWNER _private.H0mework.Versions.R9c73a630.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.SourceFirstChargeDifference.0.LowEnergy.PreparationPhysicalFirstGaugeMaterialDifference.native_lie = H0mework.Versions.R9c73a630.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.SourceFirstChargeDifference
+TYPE _private.H0mework.Versions.R9c73a630.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.SourceFirstChargeDifference.0.LowEnergy.PreparationPhysicalFirstGaugeMaterialDifference.native_lie = ∀
+  (a b : LowEnergy.SourceQuantumScalarChart.NativeLie),
+  LowEnergy.GaussNativeMatter.nativeFull a * LowEnergy.GaussNativeMatter.nativeFull b -
+      LowEnergy.GaussNativeMatter.nativeFull b * LowEnergy.GaussNativeMatter.nativeFull a =
+    LowEnergy.GaussNativeMatter.nativeFull (LowEnergy.PreparationVacuumNativeFieldInjection.lie a b)
+OWNER _private.H0mework.Versions.R9c73a630.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.SourceFirstDifferenceCoreWard.0.LowEnergy.PreparationPhysicalFirstGaugeMaterialDifference.spin_native = H0mework.Versions.R9c73a630.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.SourceFirstDifferenceCoreWard
+TYPE _private.H0mework.Versions.R9c73a630.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.SourceFirstDifferenceCoreWard.0.LowEnergy.PreparationPhysicalFirstGaugeMaterialDifference.spin_native = ∀
+  (a : Fin 7) (h : LowEnergy.SourceQuantumScalarChart.NativeLie),
+  LowEnergy.GaussCoframeSpin.full a * LowEnergy.GaussNativeMatter.nativeFull h =
+    LowEnergy.GaussNativeMatter.nativeFull h * LowEnergy.GaussCoframeSpin.full a

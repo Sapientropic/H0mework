@@ -14,6 +14,14 @@
 
 `ci_memory.tsv` 为旧路径和 `ReleaseMaterials` 路径各登记内存键，九份副本均保持单独编译。逐包执行与缓存签收只在[当前验收状态](second-edition-readiness.md)维护。
 
+## ActualEffective 分块内核证书
+
+`CanonicalPreparationSourceActualEffective` 的两份私有证书先由正常 kernel 核对原投影与平面源表，再分别核对 50 块精确产品，用列表连接的结构等式组成完整差表，继续执行原规范化证书。顺序、重复项与零系数都保留。组合步骤局部控制 elaboration 的透明度；定理陈述、定义、全局选项、原心跳预算与 `--trust=0` 保持。
+
+九份视图共享[原源码](source/second-edition/physics/historical/CanonicalPreparationSourceActualEffective.lean)与[适配源码](source/second-edition/physics/adaptations/CanonicalPreparationSourceActualEffective.lean)，原源码 SHA 为 `5cd278149be2a21c61f2848071bf1206cb0f9082bf9aca3dba902c782f8d33d2`。R71e 单线程完整模块实测峰值 RSS 从 21.3 GiB 降到 9.1 GiB，耗时从 170.389 秒降到 156.234 秒；[原始测量与失败尝试](../evidence/second-edition/acceptance/actual-effective-proof-measurement-20261011/result.json)、[完整 CoefficientPrice 与六条原陈述消费者](../evidence/second-edition/acceptance/actual-effective-proof-consumers-20261011/result.json)均保存实际输入身份。
+
+每个导出记录保存同一可逆证明规则，默认原路径视图使用适配证明，`--exact` 恢复原字节。九环境的实际 Lake 构建与受影响包的完整审查按[当前验收状态](second-edition-readiness.md)签收；原回执保留原源码范围。
+
 ## 局部实例与私有环境 owner
 
 `local_instance_names` 给匿名局部实例显式、唯一的名称，保持类型、值和证明正文。Jets 或 DiracRay 与 GSR 共同导入时，`NormedAddCommGroup`、`SeminormedAddCommGroup`、`NormedSpace` 三类匿名实例都会产生同名声明，因此三类必须一并命名。DiracRay 六份晚期副本只命名这三类，其余四个局部实例保持原字节；四份已经命名的副本也保持原字节。原路径恢复时精确去除登记的名称。
@@ -41,3 +49,7 @@ charged 的 `MixedSpectatorCandidate` 下各模块也会生成同名 `DecidableE
 `SourceFirstFullGaugeRemainder` 的六份既有私有 owner 规则指向实际 `CanonicalPreparationSourceChargedStaticLaurent`，原 namespace、`linear_matrix` 名称、声明与预算保持；真实 owner、完整 R9 模块及三个原陈述消费者通过。见[完整消费者](../evidence/second-edition/acceptance/gauge-remainder-owner-consumer-20261010/result.json)与[应用逆验](../evidence/second-edition/acceptance/gauge-remainder-owner-application-20261010/result.json)。
 
 R9 的 `ActualEMSourceLockedCarrier` 消费同一 canonical LockedFieldReturn owner。两支 20 份完整程序在精确替换实际 import token 后正文及递归输入相同，另三份原零声明 import alias 已核对。迁移改动这一条 import，原始两支完整源继续保留，原载体源码严格逆回；[完整模块与原陈述消费者](../evidence/second-edition/acceptance/locked-carrier-layout-consumer-20261010/result.json)及[递归来源与应用](../evidence/second-edition/acceptance/locked-carrier-layout-application-20261010/result.json)保存实际记录。
+
+## GT 原程序的双 provider 查找
+
+`SourceDressedGTSampleWard` 的原 `native_lie`／`spin_native` 查找按两个真实 provider、固定 member、namespace 和单例条件绑定完整私有 owner。六个公开环境登记 12 条字符串变换，精确恢复同一原 SHA `80e50a01efcd9d791d477b3f5594294361b12f3bcc38a8ebf8e1fdcb0e004f67`。原完整程序、真实声明类型／值／模块和三条原陈述消费者的[kernel 回执](../evidence/second-edition/acceptance/gt-owner-original-kernel-consumers-20261010/result.json)保留原 60109675 身份；[六源当前应用与逆验](../evidence/second-edition/acceptance/gt-six-owner-application-20261011/result.json)及 83 项工具测试通过。当前 52 包成员核对确认它影响 17 个待验包；正式包构建支付公开目标后再签收当前范围。

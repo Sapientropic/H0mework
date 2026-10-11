@@ -1,0 +1,56 @@
+import took 39.6s
+.olean serialization took 1.69s
+type checking took 108s
+type checking took 879ms
+type checking took 857ms
+type checking took 15.7s
+tactic execution of Lean.Parser.Tactic.refine took 116ms
+typeclass inference of CharZero took 51.9ms
+simp took 62.7ms
+cumulative profiling times:
+	.olean serialization 1.69s
+	attribute application 0.245ms
+	blocked (unaccounted) 329s
+	compilation (IR) 0.383ms
+	compilation (LCNF base) 4.43ms
+	compilation (LCNF impure) 0.275ms
+	compilation (LCNF mono) 0.808ms
+	congr simp thm 2.55ms
+	elaboration 173ms
+	fix level params 0.565ms
+	import 39.6s
+	initialization 19.1ms
+	instantiate metavars 1.64ms
+	interpretation 2.18s
+	let-to-have transformation 0.401ms
+	linting 10.7ms
+	module linting 0.00179ms
+	norm_num 23.9ms
+	overlappingInstancesLinter 16.3ms
+	parsing 11.4ms
+	process pre-definitions 23.1ms
+	ring 16.8ms
+	share common exprs 9.81ms
+	simp 243ms
+	tactic execution 391ms
+	tacticAnalysis 1.78ms
+	type checking 125s
+	typeclass inference 257ms
+      170.38 real       101.23 user        13.23 sys
+         22888267776  maximum resident set size
+                   0  average shared memory size
+                   0  average unshared data size
+                   0  average unshared stack size
+             1185928  page reclaims
+              298085  page faults
+                   0  swaps
+                   0  block input operations
+                   0  block output operations
+                   0  messages sent
+                   0  messages received
+                   0  signals received
+               78418  voluntary context switches
+              728986  involuntary context switches
+        636015885807  instructions retired
+        469719707091  cycles elapsed
+         16655433256  peak memory footprint

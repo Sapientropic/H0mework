@@ -31,8 +31,9 @@ from first_release import build_environment
 
 
 CACHE_VERSION = "lean-parts-v1"
+SOLO = "tools/ci_solo.txt"
 # Changing these re-runs the complete-selection check; part caches stay valid.
-CI_FILES = ("tools/ci_plan.py", ".github/workflows/ci.yml", ".github/workflows/lean-part.yml")
+CI_FILES = ("tools/ci_plan.py", ".github/workflows/ci.yml", ".github/workflows/lean-part.yml", SOLO)
 # Seconds per module on a hosted runner, refreshed from CI logs with `ci_plan.py times`.
 TIMES = "tools/ci_times.tsv"
 # Peak resident GiB of memory-heavy modules, measured locally; `Versions.<v>.` copies share an entry.
@@ -141,11 +142,23 @@ def read_times(path: Path) -> dict[str, float]:
     return times
 
 
-def solo_modules(modules, peaks: dict[str, float]) -> list[str]:
-    """Modules whose measured peak needs the runner to themselves, in the given order."""
-    def peak(name):
-        return peaks.get(name, peaks.get(re.sub(r"^H0mework\.Versions\.[^.]+\.", "H0mework.", name), 0.0))
-    return [n for n in modules if peak(n) >= SOLO_GIB]
+def read_solo(path: Path) -> set[str]:
+    if not path.is_file():
+        return set()
+    return {name for line in path.read_text().splitlines()
+            if (name := line.split("#", 1)[0].strip())}
+
+
+def solo_modules(modules, peaks: dict[str, float], force: set[str] | None = None) -> list[str]:
+    """Measured or explicitly pinned modules, preserving import order."""
+    force = force or set()
+    selected = []
+    for name in modules:
+        canonical = re.sub(r"^H0mework\.Versions\.[^.]+\.", "H0mework.", name)
+        if (name in force or canonical in force
+                or peaks.get(name, peaks.get(canonical, 0.0)) >= SOLO_GIB):
+            selected.append(name)
+    return selected
 
 
 def estimate_costs(modules, times: dict[str, float]) -> dict[str, float]:
@@ -315,6 +328,7 @@ def make_plan(root: Path, layout: Layout = Layout(), rebalance: bool = False) ->
     dependencies = {n: local[n] for n in selected}
     cost = estimate_costs(dependencies, read_times(root / TIMES))
     peaks = read_times(root / MEMORY)
+    forced_solo = read_solo(root / SOLO)
     previous = {} if rebalance else read_layout(root / LAYOUT)
     if previous:
         assignment = sticky_assignment(dependencies, cost, previous, layout)
@@ -363,7 +377,7 @@ def make_plan(root: Path, layout: Layout = Layout(), rebalance: bool = False) ->
         parts[name] = {
             "stage": shard["stage"], "modules": shard["owned"], "targets": targets,
             "progress_modules": sorted(shard["build"]),
-            "solo": solo_modules(sorted(shard["build"], key=position.get), peaks),
+            "solo": solo_modules(sorted(shard["build"], key=position.get), peaks, forced_solo),
             "upstream": upstream, "fingerprint": fingerprint, "module_count": len(shard["owned"]),
             "hours": round(max(shard["work"] / layout.workers, max(chain.values())) / 3600, 2),
         }

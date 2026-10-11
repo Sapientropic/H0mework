@@ -1,0 +1,68 @@
+import took 38.5s
+parsing took 227ms
+parsing took 71.1ms
+.olean serialization took 1.76s
+tactic execution of Lean.Parser.Tactic.refine took 7.33s
+type checking took 79.5s
+tactic execution of Lean.Parser.Tactic.decide took 54.5ms
+type checking took 6.42s
+share common exprs took 89.5ms
+process pre-definitions took 185ms
+elaboration took 79ms
+type checking took 168ms
+interpretation of _private.Mathlib.Tactic.Linter.DocString.0.Mathlib.Linter.Style.docStringLinter._lam_0._boxed took 60.8ms
+interpretation of _private.Mathlib.Tactic.Linter.GlobalAttributeIn.0.Mathlib.Linter.globalAttributeInLinter.globalAttributeIn._lam_0._boxed took 91.8ms
+linting took 58.3ms
+type checking took 790ms
+type checking took 808ms
+tactic execution of Lean.Parser.Tactic.refine took 2.35s
+type checking took 10.6s
+type checking took 1.36s
+tactic execution of Lean.Parser.Tactic.refine took 57ms
+cumulative profiling times:
+	.olean serialization 1.76s
+	attribute application 0.223ms
+	blocked (unaccounted) 275s
+	compilation (IR) 0.0589ms
+	compilation (LCNF base) 3.13ms
+	compilation (LCNF impure) 0.284ms
+	compilation (LCNF mono) 0.85ms
+	congr simp thm 1.59ms
+	elaboration 220ms
+	fix level params 1.39ms
+	import 38.5s
+	initialization 41.2ms
+	instantiate metavars 1.14ms
+	interpretation 1.43s
+	let-to-have transformation 0.308ms
+	linting 84.6ms
+	module linting 0.00121ms
+	norm_num 7.79ms
+	overlappingInstancesLinter 34.8ms
+	parsing 305ms
+	process pre-definitions 239ms
+	ring 5.65ms
+	share common exprs 113ms
+	simp 109ms
+	tactic execution 10s
+	tacticAnalysis 1.07ms
+	type checking 99.8s
+	typeclass inference 4.71s
+      158.03 real       107.91 user        14.54 sys
+         22123724800  maximum resident set size
+                   0  average shared memory size
+                   0  average unshared data size
+                   0  average unshared stack size
+             1150340  page reclaims
+              287019  page faults
+                   0  swaps
+                   0  block input operations
+                   0  block output operations
+                   0  messages sent
+                   0  messages received
+                   0  signals received
+               99830  voluntary context switches
+              956737  involuntary context switches
+        785640904049  instructions retired
+        516437631478  cycles elapsed
+         15892249576  peak memory footprint

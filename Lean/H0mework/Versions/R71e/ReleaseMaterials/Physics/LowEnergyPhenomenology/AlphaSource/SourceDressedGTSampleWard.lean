@@ -140,8 +140,8 @@ theorem sourceGTActualSample (p : PhysicalMomentum) (a b : QuantumTest) (z : Sou
 open Lean Elab Term in
 elab "paidGTSource%" member:ident : term => do
   let (owner,scope):=if member.getId==`native_lie then
-    ("_private.SourceFirstChargeDifference.",`LowEnergy.PreparationPhysicalFirstGaugeMaterialDifference)
-    else ("_private.SourceFirstDifferenceCoreWard.",`LowEnergy.PreparationPhysicalFirstGaugeMaterialDifference)
+    ("_private.H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.SourceFirstChargeDifference.",`LowEnergy.PreparationPhysicalFirstGaugeMaterialDifference)
+    else ("_private.H0mework.Versions.R71e.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.SourceFirstDifferenceCoreWard.",`LowEnergy.PreparationPhysicalFirstGaugeMaterialDifference)
   unless member.getId==`native_lie || member.getId==`spin_native do throwError "Unknown GT source payer"
   let wanted:=scope++member.getId
   let all:=(←getEnv).constants.toList
