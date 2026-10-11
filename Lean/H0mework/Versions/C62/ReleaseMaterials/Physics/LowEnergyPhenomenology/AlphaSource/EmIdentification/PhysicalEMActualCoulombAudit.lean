@@ -119,7 +119,7 @@ private def actualCoulombClosure (env : Environment)
 elab "#audit_actual_coulomb" : command => do
   let env ← getEnv
   let modules := env.header.moduleNames
-  let owners := #[`PhysicalEMStaticReaderRecognition,`PhysicalEMActualStaticWindow,
+  let owners := #[`H0mework.Versions.C62.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.PhysicalEMStaticReaderRecognition,`H0mework.Versions.C62.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.PhysicalEMActualStaticWindow,
     `H0mework.Versions.C62.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.PhysicalEMActualCoulombScalar]
   for name in owners do
     unless modules.contains name do throwError m!"MISSING_MODULE {name}"

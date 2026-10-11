@@ -175,7 +175,7 @@ elab "#audit_actual_electron" : command => do
   let env ← getEnv
   let modules := env.header.moduleNames
   let owner := fun name => (env.getModuleIdxFor? name).map fun i => modules[i.toNat]!
-  let candidates := #[`PhysicalEMActualElectronCoulomb,`H0mework.Versions.C62.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.PhysicalEMActualElectronOrdinary]
+  let candidates := #[`H0mework.Versions.C62.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.PhysicalEMActualElectronCoulomb,`H0mework.Versions.C62.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.PhysicalEMActualElectronOrdinary]
   let owned := env.constants.toList.filterMap fun (name, _) =>
     if (owner name).any candidates.contains then some name else none
   if owned.isEmpty then throwError "EMPTY_OWNED_CLOSURE"

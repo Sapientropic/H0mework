@@ -82,7 +82,7 @@ private def dressedClosure (env : Environment) (roots : List Name) : CommandElab
 elab "#audit_actual_em_dressed_read" : command => do
   let env ← getEnv
   let modules := env.header.moduleNames
-  let owners := #[`PhysicalEMDressedCharacter,`H0mework.Versions.E055.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.PhysicalEMDressedPreparedRead]
+  let owners := #[`H0mework.Versions.E055.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.PhysicalEMDressedCharacter,`H0mework.Versions.E055.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.PhysicalEMDressedPreparedRead]
   for name in owners do
     unless modules.contains name do throwError m!"MISSING_MODULE {name}"
   let owned := env.constants.toList.filterMap fun (name, _) =>

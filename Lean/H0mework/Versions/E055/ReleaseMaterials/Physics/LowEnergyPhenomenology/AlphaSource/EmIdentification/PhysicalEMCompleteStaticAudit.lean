@@ -93,7 +93,7 @@ private def completeStaticClosure (env : Environment)
 elab "#audit_complete_static_scalar" : command => do
   let env ← getEnv
   let modules := env.header.moduleNames
-  let owners := #[`PhysicalEMCompleteStaticScalar,`H0mework.Versions.E055.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.PhysicalEMCompleteStaticCharge]
+  let owners := #[`H0mework.Versions.E055.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.PhysicalEMCompleteStaticScalar,`H0mework.Versions.E055.ReleaseMaterials.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.PhysicalEMCompleteStaticCharge]
   for name in owners do
     unless modules.contains name do throwError m!"MISSING_MODULE {name}"
   let owned := env.constants.toList.filterMap fun (name, _) =>
