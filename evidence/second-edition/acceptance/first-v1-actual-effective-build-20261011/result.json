@@ -1,0 +1,436 @@
+{
+  "schema": "h0mework/first-release-build@1",
+  "kind": "build",
+  "ok": true,
+  "input_identity": {
+    "sha256": {
+      "claim_map": "70a109c44e4fa0907f817e5ff7751029562415d82b0a1b48cb854053aeba78be",
+      "export_map": "3a3319fed915a237a9197e36de8decfd4e4211ea6bdd1c61e06f888546e9df3f",
+      "lakefile": "64123b9e8e64f835c8e5c22f5cd62327d3dce6fb4ea624ceff7aee6e69256919",
+      "toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+      "manifest": "2fe02acc26899fd57d82018e711e79c251e26d0b6d2bb370af81db0ed312fbfd"
+    },
+    "package_inputs": {
+      "physics-common-source-ae": "25a367ed1180d98e0db6a42a62aa1f4ca432414056b3ae951275b8798c20ea69",
+      "physics-common-source-cap": "214cb36bbcdf6646812b6f222c9849abe2aac49be5eb2da28c8088adbc2cdc71"
+    }
+  },
+  "settings": {
+    "toolchain_pin": "leanprover/lean4:v4.33.0",
+    "package_moreLeanArgs": [
+      "--trust=0",
+      "-Dweak.linter.unnecessarySimpa=false",
+      "-Dweak.linter.style.haveILetI=false",
+      "-Dweak.linter.unusedSimpArgs=false"
+    ],
+    "package_weakLeanArgs": [
+      "-DmaxHeartbeats=2000000",
+      "-Dweak.linter.unusedSectionVars=false",
+      "-Dweak.linter.unnecessarySeqFocus=false",
+      "-Dweak.linter.unusedVariables=false",
+      "-Dweak.linter.unreachableTactic=false",
+      "-Dweak.linter.unusedTactic=false",
+      "-Dweak.linter.defProp=false",
+      "-Dweak.linter.deprecated=false",
+      "-Dlinter.deprecated=false",
+      "-Dweak.linter.tacticAnalysis.introMerge=false",
+      "-Dweak.linter.constructorNameAsVariable=false"
+    ],
+    "libraries": [
+      {
+        "name": "H0mework",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_15a9a7f1af9edd94",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_3606f5269412e357",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_d700e8a5f12a0c72",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_1e1ae4b55cfaa424",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_5d60190f8c552243",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_c8f26eb536eba11f",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_05819243d0f03058",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_42d0393dda443953",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_662d860139605627",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_c5ce7c98c6fb2afe",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_4306926d26d3e100",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_524380564da88277",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_598bc2100d4a470f",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_f16f09d592d9fed1",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_38dd326bee1881e5",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_a5be13c98d55de59",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_a8ba570880d786e7",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_e94628c12cb5af16",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_e615fc1eae897d2f",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_3ec8ead604397acb",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_f3b844eed8451357",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_fb8213f28d86d220",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_343b97a439466c84",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_e7aebe388314d626",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_5ee63fcc1d2eabc2",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_048d35b0f13ffddc",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_8a02641b81044b03",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_efa122af6a18f938",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "H0meworkRelaxed",
+        "moreLeanArgs": []
+      },
+      {
+        "name": "H0meworkPinned",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_27de91880f85717a",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_84273b86d41c7cc1",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_b0054fdd1430293f",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_df027f387d2e7e21",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_a9cfcb862f08d790",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_da6d7ec0232b12e5",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_384fd6d4ee850ec5",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_70f37e98e05b9a24",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_bc8736156be163cd",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_ca63848ccd9141be",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      }
+    ]
+  },
+  "identity_scope": {
+    "packages": [
+      "physics-common-source-ae",
+      "physics-common-source-cap"
+    ],
+    "proof_entries": 60
+  },
+  "cache": {
+    "kind": "existing_workspace_cache",
+    "clean_clone": false,
+    "build_directory_preexisted": true,
+    "lean_num_threads": "2",
+    "compiled_targets_before": {
+      "H0mework.Papers.PhysicsCommonSourceAeRelease": "590d3d296759e4eb9f858a4f71c891b7cb427b7067fc80f800eea8fc1558d7dd",
+      "H0mework.Papers.PhysicsCommonSourceCapRelease": "8332f0d486a7f4c2cdd791714810f7a03e2894708b044f0425b6043061bbc355"
+    }
+  },
+  "packages": [
+    {
+      "id": "physics-common-source-ae",
+      "paper": "physics-common-source",
+      "source_alias": "AE",
+      "source_commit": "26b91feb6b507fdc3f43be9c429edb63fb9395ef",
+      "source_commits": [
+        "26b91feb6b507fdc3f43be9c429edb63fb9395ef"
+      ],
+      "claim_ids": [
+        "phys.P33",
+        "phys.P34",
+        "phys.P35"
+      ],
+      "lean_target": "H0mework.Papers.PhysicsCommonSourceAeRelease",
+      "verification": {
+        "build": "passed",
+        "kernel": "passed",
+        "receipt": {
+          "path": "evidence/first-release/acceptance/proof-root-supplement-20261007/receipt.json",
+          "sha256": "fce024e638563a21fd526ae087b2eb8062c9a7cb3a824649074551c553161ec1"
+        },
+        "scope_token": "395a192449ddd623703921eeeb9c715af0b4df072419cd8369560dc67e716a22",
+        "build_receipt": {
+          "path": "evidence/first-release/acceptance/proof-20261007/receipt.json",
+          "sha256": "c0e7872ea7f795a25b784870fd43468d306465c60087dde962d3827208462ce8"
+        }
+      },
+      "commands": {
+        "build": [
+          "python3",
+          "tools/first_release.py",
+          "build",
+          "--package",
+          "physics-common-source-ae",
+          "--output",
+          ".local/first-release-build/physics-common-source-ae-RUN"
+        ],
+        "trust": [
+          "python3",
+          "tools/first_release.py",
+          "trust",
+          "--package",
+          "physics-common-source-ae",
+          "--output",
+          ".local/first-release-trust/physics-common-source-ae-RUN"
+        ]
+      }
+    },
+    {
+      "id": "physics-common-source-cap",
+      "paper": "physics-common-source",
+      "source_alias": "CAP",
+      "source_commit": "59409a512c435cad5c5113fdedc91a451af88883",
+      "source_commits": [
+        "59409a512c435cad5c5113fdedc91a451af88883"
+      ],
+      "claim_ids": [
+        "phys.P36"
+      ],
+      "lean_target": "H0mework.Papers.PhysicsCommonSourceCapRelease",
+      "verification": {
+        "build": "passed",
+        "kernel": "passed",
+        "receipt": {
+          "path": "evidence/first-release/acceptance/proof-root-supplement-20261007/receipt.json",
+          "sha256": "fce024e638563a21fd526ae087b2eb8062c9a7cb3a824649074551c553161ec1"
+        },
+        "scope_token": "dd88b36ef18cc432239986bf65a1af062dc72a4caadac98a027e40310b78be85",
+        "build_receipt": {
+          "path": "evidence/first-release/acceptance/proof-20261007/receipt.json",
+          "sha256": "c0e7872ea7f795a25b784870fd43468d306465c60087dde962d3827208462ce8"
+        }
+      },
+      "commands": {
+        "build": [
+          "python3",
+          "tools/first_release.py",
+          "build",
+          "--package",
+          "physics-common-source-cap",
+          "--output",
+          ".local/first-release-build/physics-common-source-cap-RUN"
+        ],
+        "trust": [
+          "python3",
+          "tools/first_release.py",
+          "trust",
+          "--package",
+          "physics-common-source-cap",
+          "--output",
+          ".local/first-release-trust/physics-common-source-cap-RUN"
+        ]
+      }
+    }
+  ],
+  "results": [
+    {
+      "command": [
+        "lake",
+        "build",
+        "H0mework.Papers.PhysicsCommonSourceAeRelease",
+        "H0mework.Papers.PhysicsCommonSourceCapRelease"
+      ],
+      "cwd": "Lean",
+      "started_at": "2026-10-11T10:00:35.440766+00:00",
+      "finished_at": "2026-10-11T10:16:29.250835+00:00",
+      "elapsed_seconds": 953.792,
+      "exit_code": 0,
+      "error": null,
+      "log": "evidence/second-edition/acceptance/first-v1-actual-effective-build-20261011/build.log.zst"
+    }
+  ],
+  "publication_readiness": "not_assessed",
+  "input_identity_after": {
+    "sha256": {
+      "claim_map": "70a109c44e4fa0907f817e5ff7751029562415d82b0a1b48cb854053aeba78be",
+      "export_map": "3a3319fed915a237a9197e36de8decfd4e4211ea6bdd1c61e06f888546e9df3f",
+      "lakefile": "64123b9e8e64f835c8e5c22f5cd62327d3dce6fb4ea624ceff7aee6e69256919",
+      "toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+      "manifest": "2fe02acc26899fd57d82018e711e79c251e26d0b6d2bb370af81db0ed312fbfd"
+    },
+    "package_inputs": {
+      "physics-common-source-ae": "25a367ed1180d98e0db6a42a62aa1f4ca432414056b3ae951275b8798c20ea69",
+      "physics-common-source-cap": "214cb36bbcdf6646812b6f222c9849abe2aac49be5eb2da28c8088adbc2cdc71"
+    }
+  },
+  "inputs_unchanged": true,
+  "receipt": "evidence/second-edition/acceptance/first-v1-actual-effective-build-20261011/result.json",
+  "compiled_targets_after": {
+    "H0mework.Papers.PhysicsCommonSourceAeRelease": "590d3d296759e4eb9f858a4f71c891b7cb427b7067fc80f800eea8fc1558d7dd",
+    "H0mework.Papers.PhysicsCommonSourceCapRelease": "8332f0d486a7f4c2cdd791714810f7a03e2894708b044f0425b6043061bbc355"
+  }
+}

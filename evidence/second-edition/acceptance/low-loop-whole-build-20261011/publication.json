@@ -1,0 +1,99 @@
+{
+  "schema": "h0mework/edition-execution-archive@1",
+  "status": "passed",
+  "kind": "build",
+  "inputs_unchanged": true,
+  "packages": [
+    "low-energy-q3-materials-t",
+    "low-energy-q6-source-unit-3bbcbd59",
+    "low-energy-q6-actual-noether-f13ed87d",
+    "low-energy-q6-actual-pencil-c015842c",
+    "low-energy-loop-response",
+    "low-energy-inherited-26b91feb-physics-common-source-ae",
+    "low-energy-inherited-aef0ad2a-physics-common-source-ad",
+    "low-energy-inherited-b67aa48c-physics-common-source-ac"
+  ],
+  "files": [
+    {
+      "original_runtime_path": ".local/actual-effective-official-20261011/low2-b9d66048-build/build.log",
+      "public_path": "evidence/second-edition/acceptance/low-loop-whole-build-20261011/build.log.zst",
+      "source_sha256": "b9a78d964c3447d91493d9fc39fa2d83f25adb697354a364c1d8c886bece84b7",
+      "target_sha256": "ff52ed17a274a112d93a630022414ba3fb7e28ac4ecfdd59f134f100e11a42b9",
+      "transforms": [
+        {
+          "kind": "literal-runtime-roots",
+          "project_replacement": ".",
+          "elan_replacement": "runtime/elan",
+          "official_run_replacement": "runtime/official-acceptance"
+        },
+        {
+          "kind": "zstd",
+          "level": 19,
+          "uncompressed_sha256": "6e835fc90e298d53e751dd64167070b8c1b6b50f4c2af1b5eb743c27897df58f",
+          "uncompressed_bytes": 298831589,
+          "compressed_bytes": 15702018
+        }
+      ]
+    },
+    {
+      "original_runtime_path": ".local/actual-effective-official-20261011/low2-b9d66048-build/output-allocator.json",
+      "public_path": "evidence/second-edition/acceptance/low-loop-whole-build-20261011/output-allocator.json",
+      "source_sha256": "103e2aeadd597b66624d533fd3942cb6e156d21030dbe87d13a8bcd37438519c",
+      "target_sha256": "880d9381f02a377d57091e0d674e082825f2b70bef87f5de93efb5e03fbc0d0c",
+      "publication": {
+        "kind": "declared-runtime-paths/v2",
+        "runtime_paths": [
+          {
+            "pointer": "/ssd_output",
+            "relative": "runtime/official-acceptance"
+          }
+        ],
+        "payload_sha256": "880d9381f02a377d57091e0d674e082825f2b70bef87f5de93efb5e03fbc0d0c"
+      }
+    },
+    {
+      "original_runtime_path": ".local/actual-effective-official-20261011/low2-b9d66048-build/result.json",
+      "public_path": "evidence/second-edition/acceptance/low-loop-whole-build-20261011/result.json",
+      "source_sha256": "888c821c0ea5c8864aae335748ea12e726631f75c2d66083b959d28c445dfaf3",
+      "target_sha256": "0e474a054fcc430685997d2490a9f566f304b8f3f91ef6c07c500a9ee3a3f1c6",
+      "publication": {
+        "kind": "declared-runtime-paths/v2",
+        "runtime_paths": [
+          {
+            "pointer": "/results/0/log",
+            "relative": "evidence/second-edition/acceptance/low-loop-whole-build-20261011/build.log.zst"
+          },
+          {
+            "pointer": "/receipt",
+            "relative": "evidence/second-edition/acceptance/low-loop-whole-build-20261011/result.json"
+          }
+        ],
+        "payload_sha256": "0e474a054fcc430685997d2490a9f566f304b8f3f91ef6c07c500a9ee3a3f1c6"
+      }
+    },
+    {
+      "original_runtime_path": ".local/actual-effective-official-20261011/low2-b9d66048-build/run-provenance.json",
+      "public_path": "evidence/second-edition/acceptance/low-loop-whole-build-20261011/run-provenance.json",
+      "source_sha256": "4144dcd1f6794476abeae39d07865b6ce2f3bee593d52321b0f956561ca1f261",
+      "target_sha256": "8713fa6b6a917d3ad3adee88da8bd8ea86c2c78e2095f38da50f405ce015a152",
+      "publication": {
+        "kind": "declared-runtime-paths/v2",
+        "runtime_paths": [
+          {
+            "pointer": "/output_allocator/ssd_output",
+            "relative": "runtime/official-acceptance"
+          },
+          {
+            "pointer": "/actual_official_receipt",
+            "relative": "evidence/second-edition/acceptance/low-loop-whole-build-20261011/result.json"
+          }
+        ],
+        "payload_sha256": "8713fa6b6a917d3ad3adee88da8bd8ea86c2c78e2095f38da50f405ce015a152"
+      }
+    }
+  ],
+  "receipt": "evidence/second-edition/acceptance/low-loop-whole-build-20261011/result.json",
+  "original_source_certification": "Separate from this actual local public execution.",
+  "actual_source_head": "b9d66048342b1a5aeac3e112d920ed85401bb20a",
+  "streaming_log_compression_verified": true
+}

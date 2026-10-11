@@ -1,0 +1,271 @@
+{
+  "schema": "low1-local-release-validation/v1",
+  "date": "2026-10-10",
+  "claim_scope": "L1-L28",
+  "bilingual_writing_and_full_proofs_complete": true,
+  "local_release_checks_complete": true,
+  "public_binding_complete": false,
+  "overall_publication_ready": false,
+  "selection": "release-selection.json",
+  "focused_checks": {
+    "math-checks.json": {
+      "count": 80,
+      "all_passed": true,
+      "record": "build/release-checks/math-checks.json"
+    },
+    "new-math-checks.json": {
+      "count": 21,
+      "all_passed": true,
+      "record": "build/release-checks/new-math-checks.json"
+    },
+    "asset-checks.json": {
+      "count": 54,
+      "all_passed": true,
+      "record": "build/release-checks/asset-checks.json"
+    },
+    "release-alignment.json": {
+      "count": 50,
+      "all_passed": true,
+      "record": "build/release-checks/release-alignment.json"
+    }
+  },
+  "total_focused_checks": 205,
+  "formulas": {
+    "release_equation_labels": 251,
+    "display_equations_per_edition": 282,
+    "original_149_labels_retained": true,
+    "original_display_formulas_retained": true,
+    "English_inline_additions": "Only existing 2x2/4x4 block sizes and the original spin symbol S are made explicit.",
+    "math_guard": {
+      "exit_code": 1,
+      "authorized_scientific_expansion_reviewed": true,
+      "record": "validation/math-guard-review.json",
+      "added_spans": 728,
+      "removed_spans": 1,
+      "editorial_pass_20261010": "validation/math-guard-editorial-20261010.json"
+    }
+  },
+  "source_verification": {
+    "record": "validation/release-source-audit.json",
+    "new_original_production_SHA_bindings_matched": 36,
+    "inherited_public_focused_replay_steps": 6,
+    "historical_Lean_and_scientific_matrix_certifications_reused": true,
+    "new_Lean_or_full_scientific_matrix_certification": false
+  },
+  "frozen_preservation": {
+    "all_unchanged": true,
+    "files": 33,
+    "record": "build/release-checks/frozen-preservation.json"
+  },
+  "figures": {
+    "per_edition": 9,
+    "main": 6,
+    "appendix": 3,
+    "formats": [
+      "svg",
+      "pdf",
+      "png"
+    ],
+    "dashed_geometry_actual_PDF_reviewed": true,
+    "all_complete_captions_share_figure_page": true
+  },
+  "pdfs": [
+    {
+      "language": "zh",
+      "file": "build/low-energy-phenomenology.pdf",
+      "pages": 63,
+      "bytes": 1263960,
+      "sha256": "dcd0177eef3dddb8361930c8c36a95294cf1549433d641506289496aa65fd08a",
+      "overfull_boxes": 0,
+      "missing_characters": [],
+      "all_pages_rendered_and_visually_reviewed": true
+    },
+    {
+      "language": "en",
+      "file": "build/low-energy-phenomenology-en.pdf",
+      "pages": 77,
+      "bytes": 1096422,
+      "sha256": "3b227e6a4d7ec6140d40526fe630cca07c7727839051e990d8b1429a7e695d9b",
+      "overfull_boxes": 0,
+      "missing_characters": [],
+      "all_pages_rendered_and_visually_reviewed": true
+    }
+  ],
+  "visual_review": {
+    "all_pages_rendered": 140,
+    "all_page_contact_sheets_inspected": 13,
+    "scope": "All final Chinese and English pages inspected in page contact sheets after the 2026-10-10 editorial pass. Abstract pages, revised Sections 9-12, Figure 5, the Appendix E notation table and F.5 additionally inspected at reading-page resolution. This is layout QA, not a fresh theorem certification.",
+    "full_size_final_page_samples": {
+      "zh": [
+        1,
+        2,
+        4,
+        6,
+        30,
+        31,
+        32,
+        33,
+        34,
+        36,
+        37,
+        40,
+        41,
+        53,
+        54,
+        55,
+        56,
+        63
+      ],
+      "en": [
+        1,
+        3,
+        5,
+        36,
+        40,
+        41,
+        43,
+        50,
+        76
+      ]
+    },
+    "render_command": "python3 papers/source-process-core/scripts/render_review.py PDF OUTPUT",
+    "review_directories": [
+      "build/pdf-review-zh",
+      "build/pdf-review-en"
+    ],
+    "result": "passed; no clipping, missing glyphs or split complete captions",
+    "dpi": 120,
+    "render_reports": {
+      "zh": {
+        "pages": 63,
+        "near_page_edge_cases": 0
+      },
+      "en": {
+        "pages": 77,
+        "near_page_edge_cases": 0
+      }
+    },
+    "fitted_displays": {
+      "zh": 0,
+      "en": 0
+    }
+  },
+  "editable_package_rebuild": {
+    "command": "python3 papers/low-energy-phenomenology/scripts/build_pdf.py",
+    "run_from": "build/package-review (clean archive extraction)",
+    "exit_code": 0,
+    "pdfs": [
+      {
+        "language": "zh",
+        "pages": 63,
+        "all_page_text_identical": true,
+        "all_page_renders_identical_at_72dpi": true,
+        "missing_characters": [],
+        "overfull_boxes": 0
+      },
+      {
+        "language": "en",
+        "pages": 77,
+        "all_page_text_identical": true,
+        "all_page_renders_identical_at_72dpi": true,
+        "missing_characters": [],
+        "overfull_boxes": 0
+      }
+    ],
+    "scope": "Rebuilt both editions using only archived editable sources and shared dependencies; every rebuilt page matches the reviewed edition in text and actual pixels.",
+    "final_archive_build_inputs_equal_tested_inputs": true,
+    "final_archive_sha256": "366e4e9cbdb3d1394afac7d1aedde2ef45a5ebcc8c9c4dcf739e3192f4f5d722"
+  },
+  "public_intake": {
+    "fixed_observation": "51867c59042460646e57d5ead4c405cbca05c240",
+    "inherited_binding": "ba591b43e13a59ac676919aa153569615f8d4cb2",
+    "missing_claims": [
+      "low1.L18",
+      "low1.L19",
+      "low1.L20",
+      "low1.L21",
+      "low1.L22",
+      "low1.L23",
+      "low1.L24",
+      "low1.L25",
+      "low1.L26",
+      "low1.L27",
+      "low1.L28"
+    ],
+    "request": "h0-evidence-request.md",
+    "closure": "validation/release-public-closure.json.gz",
+    "acceptance_commit": null,
+    "followup_observation": {
+      "commit": "04067b1bcce9828f93e0d670fa473e6bfc39b076",
+      "export_map_sha256": "29f101e7cf69200cc60ec561935e2d223f54a0c9606e0c9c348fb82ad2d2c0b4",
+      "same_export_map_as_fixed_observation": true,
+      "changed_paths": [
+        "docs/ci.md",
+        "docs/evidence-publication.md",
+        "tools/first_release_cache.py",
+        "tools/source_view.py",
+        "tools/test_first_release_cache.py",
+        "tools/test_publication.py"
+      ],
+      "new_claim_binding_status": "unchanged: added production mapping and acceptance still absent"
+    }
+  },
+  "metadata": {
+    "file": "zenodo-metadata.md",
+    "own_DOI_assigned": false,
+    "publication_date_assigned": false,
+    "physics_predecessor_DOI": "10.5281/zenodo.23210292",
+    "identity_check_record": "validation/release-predecessors.json"
+  },
+  "external_writes": false,
+  "source_repositories_written": false,
+  "editable_package": {
+    "file": "build/zenodo/low-energy-phenomenology-editable-v1.zip",
+    "members": 104,
+    "bytes": 5826811,
+    "sha256": "366e4e9cbdb3d1394afac7d1aedde2ef45a5ebcc8c9c4dcf739e3192f4f5d722",
+    "privacy_scan_passed": true,
+    "reopened_and_verified": true,
+    "scope": "Complete editable L1-L28 manuscripts, figures and build dependencies; new public proof acceptance is pending.",
+    "all_source_bytes_current": true,
+    "manuscript_and_evidence_links_resolve_inside_archive": true
+  },
+  "staged_diff_whitespace_check_passed": true,
+  "editorial_pass_20261010": {
+    "scope": "Notation and readability in Sections 9-13 with bilingual alignment; no theorem, quantifier, numerical value or equation label changed.",
+    "changes": [
+      "source identifiers replaced by defined notation, mapped in Appendix E.2",
+      "h_src and c_src(b) defined at first use",
+      "N_k sectors, G_T, F_i, fullY defined",
+      "duplicate Hessian count in 9.1 replaced by reference to Theorem 11.1",
+      "Proposition 9.2 restated as Remark 9.2 with the two normalization positions of the fixed matching contract",
+      "six auto-shrunk displays split; Figure 5 label regenerated",
+      "abstract shortened with the modulus difference written as |.|"
+    ],
+    "fitted_displays_before": {
+      "zh": 6,
+      "en": 6
+    },
+    "fitted_displays_after": {
+      "zh": 0,
+      "en": 0
+    }
+  },
+  "l23_rebinding_20261010": {
+    "from": "e05558097256e86b537c019c8ca63cd449d6b2d2",
+    "to": "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46",
+    "repair_commit": "320c1651574858b917397c563458e0d4673dfe94",
+    "production_sha256": "b5dc5de27d3572002f6f2d9f066f1a4343604e22f6c38d190c26b9cb475632ec",
+    "receipt": "prepared-thomson-matching-bridge/v2",
+    "direct_consumer_added": "SourcePreparedThomsonFullLightReturn.lean",
+    "closure_nodes": 4944,
+    "independent_sha_check": "all L23 production, consumer and receipt SHA-256 equal Homework c62 blobs; repaired bridge identical at c62, 71e and HEAD",
+    "manuscript_change": "Remark 9.2 binds O=beta*A_gamma in original action units with one (h_src c_src)^-1 readout; Appendix E.1 and code availability epochs L18-L22/L23-L25",
+    "figure_5": "window radius min(rho,rho_DS), budget B_DS and observable P_a^conn aligned with (12.10)-(12.11)"
+  },
+  "derivation_statement_20261010": {
+    "scope": "abstract, §1.1 and §1.3 in both languages; brief abstract synced",
+    "content": "Spin×SU(7) group structure, matter carrier, unique vacuum and the constants (1.1) are generated from the fixed source data of [1] (Definition 2.1, Propositions 2.2–2.4, Theorem 4.4); no fitted parameter; readout settings are universally quantified in the theorems",
+    "wording": "\"common-source Spin×SU(7) model\" replaced by \"theory\""
+  }
+}

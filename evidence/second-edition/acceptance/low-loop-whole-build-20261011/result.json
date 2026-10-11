@@ -1,0 +1,940 @@
+{
+  "schema": "h0mework/first-release-build@1",
+  "kind": "build",
+  "ok": true,
+  "input_identity": {
+    "sha256": {
+      "claim_map": "8d79f28f106013d151013b9e2db92d7afc86ff2cb4e3b81ec94523a34dbb864c",
+      "export_map": "3a3319fed915a237a9197e36de8decfd4e4211ea6bdd1c61e06f888546e9df3f",
+      "lakefile": "64123b9e8e64f835c8e5c22f5cd62327d3dce6fb4ea624ceff7aee6e69256919",
+      "toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+      "manifest": "2fe02acc26899fd57d82018e711e79c251e26d0b6d2bb370af81db0ed312fbfd"
+    },
+    "package_inputs": {
+      "low-energy-q3-materials-t": "176ce6fac4e575ed7f8b63b6dc7a7322589e96f0ab83cb48cc6a081fa6fd54cb",
+      "low-energy-q6-source-unit-3bbcbd59": "dc44b3a337ac940e80312f404c5eb087c4be1dcca7993fd4e28085bda9c75966",
+      "low-energy-q6-actual-noether-f13ed87d": "f05cb86e36c5a9bf2dc9a655e1499d16b354ed917b5837397792f8600d33773b",
+      "low-energy-q6-actual-pencil-c015842c": "f439acb24f98f5aaf6e1cb863c93676fa9450ec1f3a23f893f39a6e842a265b6",
+      "low-energy-loop-response": "d0f24c2b22dd4dcc40d0c44273a7e7806c4a2176a9fdf2e6bd9269e12a913765",
+      "low-energy-inherited-26b91feb-physics-common-source-ae": "25a367ed1180d98e0db6a42a62aa1f4ca432414056b3ae951275b8798c20ea69",
+      "low-energy-inherited-aef0ad2a-physics-common-source-ad": "8b86b2d18a58460fc813a082663226f1da88b7808130db9eae68308fc778bb3c",
+      "low-energy-inherited-b67aa48c-physics-common-source-ac": "37be1fdcacb1c3f3858d409d937d7b47beb6f067bf67526e19c7ebcca5b66cc6"
+    }
+  },
+  "settings": {
+    "toolchain_pin": "leanprover/lean4:v4.33.0",
+    "package_moreLeanArgs": [
+      "--trust=0",
+      "-Dweak.linter.unnecessarySimpa=false",
+      "-Dweak.linter.style.haveILetI=false",
+      "-Dweak.linter.unusedSimpArgs=false"
+    ],
+    "package_weakLeanArgs": [
+      "-DmaxHeartbeats=2000000",
+      "-Dweak.linter.unusedSectionVars=false",
+      "-Dweak.linter.unnecessarySeqFocus=false",
+      "-Dweak.linter.unusedVariables=false",
+      "-Dweak.linter.unreachableTactic=false",
+      "-Dweak.linter.unusedTactic=false",
+      "-Dweak.linter.defProp=false",
+      "-Dweak.linter.deprecated=false",
+      "-Dlinter.deprecated=false",
+      "-Dweak.linter.tacticAnalysis.introMerge=false",
+      "-Dweak.linter.constructorNameAsVariable=false"
+    ],
+    "libraries": [
+      {
+        "name": "H0mework",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_15a9a7f1af9edd94",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_3606f5269412e357",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_d700e8a5f12a0c72",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_1e1ae4b55cfaa424",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_5d60190f8c552243",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_c8f26eb536eba11f",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_05819243d0f03058",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_42d0393dda443953",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_662d860139605627",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_c5ce7c98c6fb2afe",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_4306926d26d3e100",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_524380564da88277",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_598bc2100d4a470f",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_f16f09d592d9fed1",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_38dd326bee1881e5",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_a5be13c98d55de59",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_a8ba570880d786e7",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_e94628c12cb5af16",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_e615fc1eae897d2f",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_3ec8ead604397acb",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_f3b844eed8451357",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_fb8213f28d86d220",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_343b97a439466c84",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_e7aebe388314d626",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_5ee63fcc1d2eabc2",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_048d35b0f13ffddc",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_8a02641b81044b03",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_efa122af6a18f938",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "H0meworkRelaxed",
+        "moreLeanArgs": []
+      },
+      {
+        "name": "H0meworkPinned",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_27de91880f85717a",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_84273b86d41c7cc1",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_b0054fdd1430293f",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_df027f387d2e7e21",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_a9cfcb862f08d790",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_da6d7ec0232b12e5",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_384fd6d4ee850ec5",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_70f37e98e05b9a24",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_bc8736156be163cd",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_ca63848ccd9141be",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      }
+    ]
+  },
+  "identity_scope": {
+    "packages": [
+      "low-energy-q3-materials-t",
+      "low-energy-q6-source-unit-3bbcbd59",
+      "low-energy-q6-actual-noether-f13ed87d",
+      "low-energy-q6-actual-pencil-c015842c",
+      "low-energy-loop-response",
+      "low-energy-inherited-26b91feb-physics-common-source-ae",
+      "low-energy-inherited-aef0ad2a-physics-common-source-ad",
+      "low-energy-inherited-b67aa48c-physics-common-source-ac"
+    ],
+    "proof_entries": 53
+  },
+  "cache": {
+    "kind": "existing_workspace_cache",
+    "clean_clone": false,
+    "build_directory_preexisted": true,
+    "lean_num_threads": "2",
+    "compiled_targets_before": {
+      "H0mework.Papers.LowEnergyQ3MaterialsT": "f150c485b541ed44ae438fc13f5644f0f61992dd5c668d48e8c2b8d93b821599",
+      "H0mework.Papers.LowEnergyQ6SourceUnit3bbcbd59": null,
+      "H0mework.Papers.LowEnergyQ6ActualNoetherF13ed87d": null,
+      "H0mework.Papers.LowEnergyQ6ActualPencilC015842c": null,
+      "H0mework.Papers.LowEnergyLoopResponse": "c5fe5ac679c16aa04c50a450e5e1f272f8e58edda6811634548b6adc5a24ef9b",
+      "H0mework.Papers.PhysicsCommonSourceAeRelease": "590d3d296759e4eb9f858a4f71c891b7cb427b7067fc80f800eea8fc1558d7dd",
+      "H0mework.Papers.PhysicsCommonSourceAdRelease": "649b0cdf80446c37bfbf20f73f48b871f2d91737a008936dec5de5459ac63cde",
+      "H0mework.Papers.PhysicsCommonSourceAcRelease": "c13cfc7b949cc7bfc6af555132bed0f3449af10549f92199c67435eea3ebec2a"
+    }
+  },
+  "packages": [
+    {
+      "id": "low-energy-q3-materials-t",
+      "paper": "low-energy-loop-response",
+      "source_commit": "85cb5386ca132818f74d90470d87a252e4a27ea7",
+      "source_commits": [
+        "85cb5386ca132818f74d90470d87a252e4a27ea7"
+      ],
+      "claim_ids": [
+        "low2.Q3"
+      ],
+      "lean_target": "H0mework.Papers.LowEnergyQ3MaterialsT",
+      "verification": {
+        "kernel": "passed",
+        "proof_package": "low-energy-q3-materials-t",
+        "build": {
+          "receipt": {
+            "path": "evidence/second-edition/acceptance/low-q3-materials-build-20261010/result.json",
+            "sha256": "7fc803eff03aa17c2f28f5dbae2b6e89bfc78e3704ba8a3c315e606fc780c61a"
+          },
+          "source_scope_sha256": "176ce6fac4e575ed7f8b63b6dc7a7322589e96f0ab83cb48cc6a081fa6fd54cb"
+        },
+        "trust": {
+          "receipt": {
+            "path": "evidence/second-edition/acceptance/low-q3-materials-trust-20261010/result.json",
+            "sha256": "0dc7ea4aa6a03a129bd13d7084b786309c635468c112a33303aeadd420215e86"
+          },
+          "source_scope_sha256": "176ce6fac4e575ed7f8b63b6dc7a7322589e96f0ab83cb48cc6a081fa6fd54cb",
+          "audit": {
+            "axioms": [
+              "Quot.sound",
+              "Classical.choice",
+              "propext"
+            ],
+            "constants": 19295,
+            "edges": 340878,
+            "full_metadata": true,
+            "partial": 0,
+            "roots": 94,
+            "token": "8c73a14db3edc90391ffc16de8f275e7ece9e02ccc0c0b7fba538c49bce6cac9",
+            "unsafe": 0
+          }
+        },
+        "scope": "Actual package build and independent full declaration closure audit; scoped source digest and exact declaration roots rechecked against the current map."
+      },
+      "commands": {
+        "build": [
+          "python3",
+          "tools/edition_release.py",
+          "--edition",
+          "low-energy",
+          "build",
+          "--package",
+          "low-energy-q3-materials-t",
+          "--output",
+          ".local/low-energy-release-runs/low-energy-q3-materials-t-build-RUN"
+        ],
+        "trust": [
+          "python3",
+          "tools/edition_release.py",
+          "--edition",
+          "low-energy",
+          "trust",
+          "--package",
+          "low-energy-q3-materials-t",
+          "--output",
+          ".local/low-energy-release-runs/low-energy-q3-materials-t-trust-RUN"
+        ]
+      }
+    },
+    {
+      "id": "low-energy-q6-source-unit-3bbcbd59",
+      "paper": "low-energy-loop-response",
+      "source_commit": "3bbcbd590fbd1892661b8f5f0a09b555e7b9c7d4",
+      "source_commits": [
+        "3bbcbd590fbd1892661b8f5f0a09b555e7b9c7d4"
+      ],
+      "claim_ids": [
+        "low2.Q6"
+      ],
+      "lean_target": "H0mework.Papers.LowEnergyQ6SourceUnit3bbcbd59",
+      "verification": {
+        "build": "pending",
+        "kernel": "pending",
+        "scope": "New selected public edition package execution"
+      },
+      "commands": {
+        "build": [
+          "python3",
+          "tools/edition_release.py",
+          "--edition",
+          "low-energy",
+          "build",
+          "--package",
+          "low-energy-q6-source-unit-3bbcbd59",
+          "--output",
+          ".local/low-energy-release-runs/low-energy-q6-source-unit-3bbcbd59-build-RUN"
+        ],
+        "trust": [
+          "python3",
+          "tools/edition_release.py",
+          "--edition",
+          "low-energy",
+          "trust",
+          "--package",
+          "low-energy-q6-source-unit-3bbcbd59",
+          "--output",
+          ".local/low-energy-release-runs/low-energy-q6-source-unit-3bbcbd59-trust-RUN"
+        ]
+      }
+    },
+    {
+      "id": "low-energy-q6-actual-noether-f13ed87d",
+      "paper": "low-energy-loop-response",
+      "source_commit": "f13ed87d6340e2cb041334eedfdc881dfb209abd",
+      "source_commits": [
+        "f13ed87d6340e2cb041334eedfdc881dfb209abd"
+      ],
+      "claim_ids": [
+        "low2.Q6"
+      ],
+      "lean_target": "H0mework.Papers.LowEnergyQ6ActualNoetherF13ed87d",
+      "verification": {
+        "build": "pending",
+        "kernel": "pending",
+        "scope": "New selected public edition package execution"
+      },
+      "commands": {
+        "build": [
+          "python3",
+          "tools/edition_release.py",
+          "--edition",
+          "low-energy",
+          "build",
+          "--package",
+          "low-energy-q6-actual-noether-f13ed87d",
+          "--output",
+          ".local/low-energy-release-runs/low-energy-q6-actual-noether-f13ed87d-build-RUN"
+        ],
+        "trust": [
+          "python3",
+          "tools/edition_release.py",
+          "--edition",
+          "low-energy",
+          "trust",
+          "--package",
+          "low-energy-q6-actual-noether-f13ed87d",
+          "--output",
+          ".local/low-energy-release-runs/low-energy-q6-actual-noether-f13ed87d-trust-RUN"
+        ]
+      },
+      "source_supplements": [
+        {
+          "public_path": "Lean/H0mework/Versions/R71e/ReleaseMaterials/Physics/LowEnergyPhenomenology/AlphaSource/EmIdentification/PhysicalPreparedCharge.lean",
+          "source_sha256": "bf25d14314ea3c4f83938c5aceea22fae1178a614d51f38625d41f234a5affda",
+          "target_sha256": "ddfd65a024c9017dc2fa3587a4b093b7fdcfe07f3d8a8b7cb4f929baa3a065df",
+          "source_origin": {
+            "kind": "H0-proof-elaboration-only-supplement",
+            "source_repository": "https://github.com/Sapientropic/H0mework.git",
+            "source_commit": "ca96ff382e5eaff4b231422202d5a7b051a5d0bf",
+            "source_path": "docs/source/second-edition/physics/supplements/PhysicalPreparedCharge-71e94e82.lean",
+            "dependency_epoch": "71e94e8261d67cf4849a05eb14ac95aa2f7dcbb9",
+            "original_source_path": "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/PhysicalPreparedCharge.lean",
+            "original_source_commit": "71e94e8261d67cf4849a05eb14ac95aa2f7dcbb9",
+            "original_source_sha256": "f080c717b8a12d4870761de8285b25aeb002980635ff6f360309ddfcff7c1910",
+            "original_failure_source_artifact": "docs/source/second-edition/physics/historical/PhysicalPreparedCharge-71e94e82.lean",
+            "edit_scope": "Proof commands only: prepared_increment_ward directly consumes increment_wedge through simpa; all original declarations, premises and data definitions are byte-identical. Original heartbeat and trust settings retained.",
+            "focused_build_log": "evidence/second-edition/acceptance/physics-prepared-proof-probe-20261010/lean.log"
+          }
+        }
+      ]
+    },
+    {
+      "id": "low-energy-q6-actual-pencil-c015842c",
+      "paper": "low-energy-loop-response",
+      "source_commit": "c015842c42751dc786dcce9522e67887b6b6d9e8",
+      "source_commits": [
+        "c015842c42751dc786dcce9522e67887b6b6d9e8"
+      ],
+      "claim_ids": [
+        "low2.Q6"
+      ],
+      "lean_target": "H0mework.Papers.LowEnergyQ6ActualPencilC015842c",
+      "verification": {
+        "build": "pending",
+        "kernel": "pending",
+        "scope": "New selected public edition package execution"
+      },
+      "commands": {
+        "build": [
+          "python3",
+          "tools/edition_release.py",
+          "--edition",
+          "low-energy",
+          "build",
+          "--package",
+          "low-energy-q6-actual-pencil-c015842c",
+          "--output",
+          ".local/low-energy-release-runs/low-energy-q6-actual-pencil-c015842c-build-RUN"
+        ],
+        "trust": [
+          "python3",
+          "tools/edition_release.py",
+          "--edition",
+          "low-energy",
+          "trust",
+          "--package",
+          "low-energy-q6-actual-pencil-c015842c",
+          "--output",
+          ".local/low-energy-release-runs/low-energy-q6-actual-pencil-c015842c-trust-RUN"
+        ]
+      },
+      "source_supplements": [
+        {
+          "public_path": "Lean/H0mework/Versions/R71e/ReleaseMaterials/Physics/LowEnergyPhenomenology/AlphaSource/EmIdentification/PhysicalPreparedCharge.lean",
+          "source_sha256": "bf25d14314ea3c4f83938c5aceea22fae1178a614d51f38625d41f234a5affda",
+          "target_sha256": "ddfd65a024c9017dc2fa3587a4b093b7fdcfe07f3d8a8b7cb4f929baa3a065df",
+          "source_origin": {
+            "kind": "H0-proof-elaboration-only-supplement",
+            "source_repository": "https://github.com/Sapientropic/H0mework.git",
+            "source_commit": "ca96ff382e5eaff4b231422202d5a7b051a5d0bf",
+            "source_path": "docs/source/second-edition/physics/supplements/PhysicalPreparedCharge-71e94e82.lean",
+            "dependency_epoch": "71e94e8261d67cf4849a05eb14ac95aa2f7dcbb9",
+            "original_source_path": "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/PhysicalPreparedCharge.lean",
+            "original_source_commit": "71e94e8261d67cf4849a05eb14ac95aa2f7dcbb9",
+            "original_source_sha256": "f080c717b8a12d4870761de8285b25aeb002980635ff6f360309ddfcff7c1910",
+            "original_failure_source_artifact": "docs/source/second-edition/physics/historical/PhysicalPreparedCharge-71e94e82.lean",
+            "edit_scope": "Proof commands only: prepared_increment_ward directly consumes increment_wedge through simpa; all original declarations, premises and data definitions are byte-identical. Original heartbeat and trust settings retained.",
+            "focused_build_log": "evidence/second-edition/acceptance/physics-prepared-proof-probe-20261010/lean.log"
+          }
+        }
+      ]
+    },
+    {
+      "id": "low-energy-loop-response",
+      "paper": "low-energy-loop-response",
+      "source_commit": "85cb5386ca132818f74d90470d87a252e4a27ea7",
+      "source_commits": [
+        "85cb5386ca132818f74d90470d87a252e4a27ea7"
+      ],
+      "claim_ids": [
+        "low2.Q1",
+        "low2.Q2"
+      ],
+      "lean_target": "H0mework.Papers.LowEnergyLoopResponse",
+      "verification": {
+        "kernel": "passed",
+        "proof_package": "low-energy-loop-response",
+        "build": {
+          "receipt": {
+            "path": "evidence/second-edition/acceptance/low-inherited-build-20261009/result.json",
+            "sha256": "1fbbe85515f4ad0d4a73bafcb511c45eadc30aaa46805511b09f677f86697f0e"
+          },
+          "source_scope_sha256": "d0f24c2b22dd4dcc40d0c44273a7e7806c4a2176a9fdf2e6bd9269e12a913765"
+        },
+        "trust": {
+          "receipt": {
+            "path": "evidence/second-edition/acceptance/low-inherited-trust-20261009/result.json",
+            "sha256": "132023f0e3f7098f5460122333cfc2dfadb30505ab32e72ae7ad1e9010553535"
+          },
+          "source_scope_sha256": "d0f24c2b22dd4dcc40d0c44273a7e7806c4a2176a9fdf2e6bd9269e12a913765",
+          "audit": {
+            "axioms": [
+              "Quot.sound",
+              "Classical.choice",
+              "propext"
+            ],
+            "constants": 82595,
+            "edges": 2614331,
+            "full_metadata": true,
+            "partial": 0,
+            "roots": 91,
+            "token": "028bb85d23cfb3eb02c8f73612a1e8d2049edc0a7843e6a99b2d008f1a151af3",
+            "unsafe": 0
+          }
+        },
+        "scope": "Actual package build and independent full declaration closure audit; scoped source digest and exact declaration roots rechecked against the current map."
+      },
+      "commands": {
+        "build": [
+          "python3",
+          "tools/edition_release.py",
+          "--edition",
+          "low-energy",
+          "build",
+          "--package",
+          "low-energy-loop-response",
+          "--output",
+          ".local/low-energy-release-runs/low-energy-loop-response-build-RUN"
+        ],
+        "trust": [
+          "python3",
+          "tools/edition_release.py",
+          "--edition",
+          "low-energy",
+          "trust",
+          "--package",
+          "low-energy-loop-response",
+          "--output",
+          ".local/low-energy-release-runs/low-energy-loop-response-trust-RUN"
+        ]
+      }
+    },
+    {
+      "id": "low-energy-inherited-26b91feb-physics-common-source-ae",
+      "paper": "low-energy-loop-response",
+      "source_commit": "26b91feb6b507fdc3f43be9c429edb63fb9395ef",
+      "source_commits": [
+        "26b91feb6b507fdc3f43be9c429edb63fb9395ef"
+      ],
+      "claim_ids": [
+        "low2.Q5",
+        "low2.Q6"
+      ],
+      "lean_target": "H0mework.Papers.PhysicsCommonSourceAeRelease",
+      "verification": {
+        "kernel": "passed",
+        "proof_package": "low-energy-inherited-26b91feb-physics-common-source-ae",
+        "build": {
+          "receipt": {
+            "path": "evidence/second-edition/acceptance/low-ad-ae-build-20261010/result.json",
+            "sha256": "ce96822fc90efc05f07dbfae31d19009652dec37f522e575b5b5c5d3d296b0f7"
+          },
+          "source_scope_sha256": "50a32ff6d94498615b098acf4b3f28e4de1bbee829e5517ad900298a5298763a"
+        },
+        "trust": {
+          "receipt": {
+            "path": "evidence/second-edition/acceptance/low-ad-ae-trust-20261010/result.json",
+            "sha256": "a46d0361ae4ad69e63701ce305a0479842a1c200c70e7adfc101c61040fc4433"
+          },
+          "source_scope_sha256": "50a32ff6d94498615b098acf4b3f28e4de1bbee829e5517ad900298a5298763a",
+          "audit": {
+            "axioms": [
+              "Quot.sound",
+              "Classical.choice",
+              "propext"
+            ],
+            "constants": 107243,
+            "edges": 4060683,
+            "full_metadata": true,
+            "partial": 0,
+            "roots": 286,
+            "token": "c08a64cb242acf1fad528fefcf1136a61c9388a9920cbd20a014a89d8238a520",
+            "unsafe": 0
+          }
+        },
+        "scope": "Actual package build and independent full declaration closure audit; scoped source digest and exact declaration roots rechecked against the current map."
+      },
+      "commands": {
+        "build": [
+          "python3",
+          "tools/edition_release.py",
+          "--edition",
+          "low-energy",
+          "build",
+          "--package",
+          "low-energy-inherited-26b91feb-physics-common-source-ae",
+          "--output",
+          ".local/low-energy-release-runs/low-energy-inherited-26b91feb-physics-common-source-ae-build-RUN"
+        ],
+        "trust": [
+          "python3",
+          "tools/edition_release.py",
+          "--edition",
+          "low-energy",
+          "trust",
+          "--package",
+          "low-energy-inherited-26b91feb-physics-common-source-ae",
+          "--output",
+          ".local/low-energy-release-runs/low-energy-inherited-26b91feb-physics-common-source-ae-trust-RUN"
+        ]
+      },
+      "inheritance": {
+        "original_package": "physics-common-source-ae",
+        "claim_map": "docs/first-release-map.json",
+        "original_verification": {
+          "build": "passed",
+          "kernel": "passed",
+          "receipt": {
+            "path": "evidence/first-release/acceptance/proof-root-supplement-20261007/receipt.json",
+            "sha256": "fce024e638563a21fd526ae087b2eb8062c9a7cb3a824649074551c553161ec1"
+          },
+          "scope_token": "395a192449ddd623703921eeeb9c715af0b4df072419cd8369560dc67e716a22",
+          "build_receipt": {
+            "path": "evidence/first-release/acceptance/proof-20261007/receipt.json",
+            "sha256": "c0e7872ea7f795a25b784870fd43468d306465c60087dde962d3827208462ce8"
+          }
+        }
+      }
+    },
+    {
+      "id": "low-energy-inherited-aef0ad2a-physics-common-source-ad",
+      "paper": "low-energy-loop-response",
+      "source_commit": "aef0ad2a26199d9fd6da9bc9e7ec1a65636ef63f",
+      "source_commits": [
+        "aef0ad2a26199d9fd6da9bc9e7ec1a65636ef63f"
+      ],
+      "claim_ids": [
+        "low2.Q5",
+        "low2.Q6"
+      ],
+      "lean_target": "H0mework.Papers.PhysicsCommonSourceAdRelease",
+      "verification": {
+        "kernel": "passed",
+        "proof_package": "low-energy-inherited-aef0ad2a-physics-common-source-ad",
+        "build": {
+          "receipt": {
+            "path": "evidence/second-edition/acceptance/low-ad-ae-build-20261010/result.json",
+            "sha256": "ce96822fc90efc05f07dbfae31d19009652dec37f522e575b5b5c5d3d296b0f7"
+          },
+          "source_scope_sha256": "8b86b2d18a58460fc813a082663226f1da88b7808130db9eae68308fc778bb3c"
+        },
+        "trust": {
+          "receipt": {
+            "path": "evidence/second-edition/acceptance/low-ad-ae-trust-20261010/result.json",
+            "sha256": "a46d0361ae4ad69e63701ce305a0479842a1c200c70e7adfc101c61040fc4433"
+          },
+          "source_scope_sha256": "8b86b2d18a58460fc813a082663226f1da88b7808130db9eae68308fc778bb3c",
+          "audit": {
+            "axioms": [
+              "Quot.sound",
+              "Classical.choice",
+              "propext"
+            ],
+            "constants": 74369,
+            "edges": 2314703,
+            "full_metadata": true,
+            "partial": 0,
+            "roots": 1,
+            "token": "48d961b757e1e99567712baf6e42c3756bcfe34b2310d0617c68b3bc5c0c7a67",
+            "unsafe": 0
+          }
+        },
+        "scope": "Actual package build and independent full declaration closure audit; scoped source digest and exact declaration roots rechecked against the current map."
+      },
+      "commands": {
+        "build": [
+          "python3",
+          "tools/edition_release.py",
+          "--edition",
+          "low-energy",
+          "build",
+          "--package",
+          "low-energy-inherited-aef0ad2a-physics-common-source-ad",
+          "--output",
+          ".local/low-energy-release-runs/low-energy-inherited-aef0ad2a-physics-common-source-ad-build-RUN"
+        ],
+        "trust": [
+          "python3",
+          "tools/edition_release.py",
+          "--edition",
+          "low-energy",
+          "trust",
+          "--package",
+          "low-energy-inherited-aef0ad2a-physics-common-source-ad",
+          "--output",
+          ".local/low-energy-release-runs/low-energy-inherited-aef0ad2a-physics-common-source-ad-trust-RUN"
+        ]
+      },
+      "inheritance": {
+        "original_package": "physics-common-source-ad",
+        "claim_map": "docs/first-release-map.json",
+        "original_verification": {
+          "build": "passed",
+          "kernel": "passed",
+          "receipt": {
+            "path": "evidence/first-release/acceptance/proof-root-supplement-20261007/receipt.json",
+            "sha256": "fce024e638563a21fd526ae087b2eb8062c9a7cb3a824649074551c553161ec1"
+          },
+          "scope_token": "7f6938e366c13b1d7c1c0f31e091a4c73a181a45f73514510757b2d4c77dfea6",
+          "build_receipt": {
+            "path": "evidence/first-release/acceptance/proof-20261007/receipt.json",
+            "sha256": "c0e7872ea7f795a25b784870fd43468d306465c60087dde962d3827208462ce8"
+          }
+        }
+      }
+    },
+    {
+      "id": "low-energy-inherited-b67aa48c-physics-common-source-ac",
+      "paper": "low-energy-loop-response",
+      "source_commit": "b67aa48c75b3cd7738766ed40093bb3f7c1d7a1a",
+      "source_commits": [
+        "b67aa48c75b3cd7738766ed40093bb3f7c1d7a1a"
+      ],
+      "claim_ids": [
+        "low2.Q6"
+      ],
+      "lean_target": "H0mework.Papers.PhysicsCommonSourceAcRelease",
+      "verification": {
+        "kernel": "passed",
+        "proof_package": "low-energy-inherited-b67aa48c-physics-common-source-ac",
+        "build": {
+          "receipt": {
+            "path": "evidence/second-edition/acceptance/low-inherited-build-20261009/result.json",
+            "sha256": "1fbbe85515f4ad0d4a73bafcb511c45eadc30aaa46805511b09f677f86697f0e"
+          },
+          "source_scope_sha256": "37be1fdcacb1c3f3858d409d937d7b47beb6f067bf67526e19c7ebcca5b66cc6"
+        },
+        "trust": {
+          "receipt": {
+            "path": "evidence/second-edition/acceptance/low-inherited-trust-20261009/result.json",
+            "sha256": "132023f0e3f7098f5460122333cfc2dfadb30505ab32e72ae7ad1e9010553535"
+          },
+          "source_scope_sha256": "37be1fdcacb1c3f3858d409d937d7b47beb6f067bf67526e19c7ebcca5b66cc6",
+          "audit": {
+            "axioms": [
+              "Quot.sound",
+              "Classical.choice",
+              "propext"
+            ],
+            "constants": 101352,
+            "edges": 3670302,
+            "full_metadata": true,
+            "partial": 0,
+            "roots": 1,
+            "token": "f615441ffa958c9745294765420fbbb675fa857143fd1a3358f0e0a8e7f5f2cd",
+            "unsafe": 0
+          }
+        },
+        "scope": "Actual package build and independent full declaration closure audit; scoped source digest and exact declaration roots rechecked against the current map."
+      },
+      "commands": {
+        "build": [
+          "python3",
+          "tools/edition_release.py",
+          "--edition",
+          "low-energy",
+          "build",
+          "--package",
+          "low-energy-inherited-b67aa48c-physics-common-source-ac",
+          "--output",
+          ".local/low-energy-release-runs/low-energy-inherited-b67aa48c-physics-common-source-ac-build-RUN"
+        ],
+        "trust": [
+          "python3",
+          "tools/edition_release.py",
+          "--edition",
+          "low-energy",
+          "trust",
+          "--package",
+          "low-energy-inherited-b67aa48c-physics-common-source-ac",
+          "--output",
+          ".local/low-energy-release-runs/low-energy-inherited-b67aa48c-physics-common-source-ac-trust-RUN"
+        ]
+      },
+      "inheritance": {
+        "original_package": "physics-common-source-ac",
+        "claim_map": "docs/first-release-map.json",
+        "original_verification": {
+          "build": "passed",
+          "kernel": "passed",
+          "receipt": {
+            "path": "evidence/first-release/acceptance/proof-root-supplement-20261007/receipt.json",
+            "sha256": "fce024e638563a21fd526ae087b2eb8062c9a7cb3a824649074551c553161ec1"
+          },
+          "scope_token": "7e6ca510e5df3c161309a0142fb4b064edf74cf3e10489c0de13132a9d092d94",
+          "build_receipt": {
+            "path": "evidence/first-release/acceptance/proof-20261007/receipt.json",
+            "sha256": "c0e7872ea7f795a25b784870fd43468d306465c60087dde962d3827208462ce8"
+          }
+        }
+      }
+    }
+  ],
+  "results": [
+    {
+      "command": [
+        "lake",
+        "build",
+        "H0mework.Papers.LowEnergyQ3MaterialsT",
+        "H0mework.Papers.LowEnergyQ6SourceUnit3bbcbd59",
+        "H0mework.Papers.LowEnergyQ6ActualNoetherF13ed87d",
+        "H0mework.Papers.LowEnergyQ6ActualPencilC015842c",
+        "H0mework.Papers.LowEnergyLoopResponse",
+        "H0mework.Papers.PhysicsCommonSourceAeRelease",
+        "H0mework.Papers.PhysicsCommonSourceAdRelease",
+        "H0mework.Papers.PhysicsCommonSourceAcRelease"
+      ],
+      "cwd": "Lean",
+      "started_at": "2026-10-11T13:05:26.132137+00:00",
+      "finished_at": "2026-10-11T17:26:13.250970+00:00",
+      "elapsed_seconds": 15647.1,
+      "exit_code": 0,
+      "error": null,
+      "log": "evidence/second-edition/acceptance/low-loop-whole-build-20261011/build.log.zst"
+    }
+  ],
+  "publication_readiness": "not_assessed",
+  "input_identity_after": {
+    "sha256": {
+      "claim_map": "8d79f28f106013d151013b9e2db92d7afc86ff2cb4e3b81ec94523a34dbb864c",
+      "export_map": "3a3319fed915a237a9197e36de8decfd4e4211ea6bdd1c61e06f888546e9df3f",
+      "lakefile": "64123b9e8e64f835c8e5c22f5cd62327d3dce6fb4ea624ceff7aee6e69256919",
+      "toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+      "manifest": "2fe02acc26899fd57d82018e711e79c251e26d0b6d2bb370af81db0ed312fbfd"
+    },
+    "package_inputs": {
+      "low-energy-q3-materials-t": "176ce6fac4e575ed7f8b63b6dc7a7322589e96f0ab83cb48cc6a081fa6fd54cb",
+      "low-energy-q6-source-unit-3bbcbd59": "dc44b3a337ac940e80312f404c5eb087c4be1dcca7993fd4e28085bda9c75966",
+      "low-energy-q6-actual-noether-f13ed87d": "f05cb86e36c5a9bf2dc9a655e1499d16b354ed917b5837397792f8600d33773b",
+      "low-energy-q6-actual-pencil-c015842c": "f439acb24f98f5aaf6e1cb863c93676fa9450ec1f3a23f893f39a6e842a265b6",
+      "low-energy-loop-response": "d0f24c2b22dd4dcc40d0c44273a7e7806c4a2176a9fdf2e6bd9269e12a913765",
+      "low-energy-inherited-26b91feb-physics-common-source-ae": "25a367ed1180d98e0db6a42a62aa1f4ca432414056b3ae951275b8798c20ea69",
+      "low-energy-inherited-aef0ad2a-physics-common-source-ad": "8b86b2d18a58460fc813a082663226f1da88b7808130db9eae68308fc778bb3c",
+      "low-energy-inherited-b67aa48c-physics-common-source-ac": "37be1fdcacb1c3f3858d409d937d7b47beb6f067bf67526e19c7ebcca5b66cc6"
+    }
+  },
+  "inputs_unchanged": true,
+  "receipt": "evidence/second-edition/acceptance/low-loop-whole-build-20261011/result.json",
+  "compiled_targets_after": {
+    "H0mework.Papers.LowEnergyQ3MaterialsT": "f150c485b541ed44ae438fc13f5644f0f61992dd5c668d48e8c2b8d93b821599",
+    "H0mework.Papers.LowEnergyQ6SourceUnit3bbcbd59": "7debc177988dfde8622bac9e32f67b466f317aee44fb7d0ab118e4389d1ce7e1",
+    "H0mework.Papers.LowEnergyQ6ActualNoetherF13ed87d": "84de719bc37ef4fb3e603a213b27cb13ce2dfad6ebd105a6c5adb9c934010a96",
+    "H0mework.Papers.LowEnergyQ6ActualPencilC015842c": "4603303619af8a895e7e839e262f7c8f7716f07dc47e3ffc99f3978e73f9a46a",
+    "H0mework.Papers.LowEnergyLoopResponse": "c5fe5ac679c16aa04c50a450e5e1f272f8e58edda6811634548b6adc5a24ef9b",
+    "H0mework.Papers.PhysicsCommonSourceAeRelease": "590d3d296759e4eb9f858a4f71c891b7cb427b7067fc80f800eea8fc1558d7dd",
+    "H0mework.Papers.PhysicsCommonSourceAdRelease": "649b0cdf80446c37bfbf20f73f48b871f2d91737a008936dec5de5459ac63cde",
+    "H0mework.Papers.PhysicsCommonSourceAcRelease": "c13cfc7b949cc7bfc6af555132bed0f3449af10549f92199c67435eea3ebec2a"
+  }
+}

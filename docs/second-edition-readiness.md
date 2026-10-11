@@ -24,11 +24,11 @@ GT 六份原程序的双 provider owner 已可逆修复，原完整 kernel 消�
 
 ## 当前最高杠杆的结构责任
 
-低能稿 2 的 `b9d66048` 整包 build 正在执行；先保存它的真实终态，再进入下一源码 cohort。低能稿 1 的实际整包 build 失败于四个 audit 的导出模块名和三次 Mathlib 文件读取错误（ENFILE）。四 audit 的可逆修复已在独立提交树完成原参数编译，精确影响 E055／C62 两个低能包；本轮 build 终态后应用该树，利用现有热缓存重验低能稿 1，并完成两稿与两篇第二版的整包 build／trust。实际通过后登记回执，执行两份 `verify-map --require-ready`。
+低能稿 2 的 `b9d66048` 整包 build 已真实通过，8 个选定包入口、18,786 个 Lake jobs 完成，执行输入不变；[实际回执](../evidence/second-edition/acceptance/low-loop-whole-build-20261011/result.json)保留原源码提交。第一版 build／trust 与低能稿 2 build 按精确 package scope 复用。低能稿 1 的原失败保留在独立历史归档：四个 audit 的导出模块名及三次 Mathlib 文件读取错误（ENFILE）。四 audit 已完成原参数编译、完整源码逆验和本地应用，精确影响 E055／C62 两个包。下一队列使用现有热缓存重验低能稿 1 build／trust、低能稿 2 trust，以及两篇第二版的整包 build／trust；真实通过后登记回执并执行两份 `verify-map --require-ready`。
 
-写作提交 `6850c950` 的最终成品已按原 SHA 核验：第二版 10 份 PDF／751 页、两份可编辑 ZIP 与两个 arXiv 源包；低能两稿四份 PDF／241 页与两份可编辑 ZIP。当前 build 终态后，将成品与已通过回执独立接入 `2026-10-11` 版本，不等待剩余整包队列；原低能 `2026-10-09` 快照保留。
+写作提交 `6850c950` 的最终成品已按原 SHA 核验并接入独立 `2026-10-11` 快照：[第二版](../papers/second-edition/2026-10-11/README.md)含 10 份 PDF／751 页、两份可编辑 ZIP 与两个 arXiv 源包；[低能两稿](../papers/low-energy-first-release/2026-10-11/README.md)含四份 PDF／241 页与两份可编辑 ZIP。46 个成品文件与第一版、低能稿 2 的 21 个通过归档文件已登记；原 PDF／ZIP／arXiv／manifest 字节和 `b9d66048` 历史快照身份保留。论文源码绑定为 `643721f1`，原低能 `2026-10-09` 快照保留。
 
-远端已自动进入 [CI 38154135554](https://github.com/Sapientropic/H0mework/actions/runs/38154135554)，HEAD 为导航提交 `e9734c69`，源码仍为 `b9d66048`。前轮 [38129862129](https://github.com/Sapientropic/H0mework/actions/runs/38129862129) 到达既定构建时限后退出 75，最终 s8-01 续跑缓存已保存。该轮实际复用了 41 个旧完整分片，s7-01／s8-02 的新完整分片已完成并上传；s9 尚待执行。自动续跑已实际复用 43 个完整分片（41 旧分片加两个新完整分片），原 43 份完整缓存全部保留。[缓存合同](../evidence/second-edition/acceptance/actual-effective-ci-cache-preservation-20261011/cache-preservation-effective-gt.json)中的 compatibility、分片位置和顺序保持；四 audit 修复只改变 s8-01 及完整选集指纹。ActualEffective 内存表向上取整为 9.3 GiB，单编策略与原 import 顺序保持，28 项 focused 测试通过。
+远端正在执行 [CI 38156677490](https://github.com/Sapientropic/H0mework/actions/runs/38156677490)，导航 HEAD 为 `29e97eb9`，源码绑定为 `643721f1`。[新实际计划与缓存合同](../evidence/second-edition/acceptance/ci-source-fix-29e-20261012/ci-source-fix-plan-cache-29e.json)确认只有 s8-01 与完整选集指纹变化，其他 45 个真实分片及 compatibility、分片位置、顺序和成本字段不变；[实际复用回执](../evidence/second-edition/acceptance/ci-source-fix-29e-20261012/ci-source-fix43-actual-full-reuse-29e.json)确认 43 个完整分片 Fetch success／Build skipped／job success。s8-01 已取回前轮最终续跑缓存 `631259065`，继续真实构建；原完整缓存与新 s7-01／s8-02 完整缓存身份保留。远端最终结果由实际终态另行签收。
 
 ## 本 checkpoint 的机器验收
 

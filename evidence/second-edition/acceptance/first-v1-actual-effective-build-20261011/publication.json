@@ -1,0 +1,93 @@
+{
+  "schema": "h0mework/edition-execution-archive@1",
+  "status": "passed",
+  "kind": "build",
+  "inputs_unchanged": true,
+  "packages": [
+    "physics-common-source-ae",
+    "physics-common-source-cap"
+  ],
+  "files": [
+    {
+      "original_runtime_path": ".local/actual-effective-official-20261011/first-ae-cap-b9d66048-build/build.log",
+      "public_path": "evidence/second-edition/acceptance/first-v1-actual-effective-build-20261011/build.log.zst",
+      "source_sha256": "7738f81168ee29cb950c5f67e9224c4bb4c5e0637e5eea994d057fc00f270707",
+      "target_sha256": "481099231d6179b428a783c0905596849238b438534b633af41cd1a49357a8e8",
+      "transforms": [
+        {
+          "kind": "literal-runtime-roots",
+          "project_replacement": ".",
+          "elan_replacement": "runtime/elan",
+          "official_run_replacement": "runtime/official-acceptance"
+        },
+        {
+          "kind": "zstd",
+          "level": 19,
+          "uncompressed_sha256": "fd4d9a872756ead1bd2a9b78faa2b68ea0a19c5c3158e050578451759329ddca",
+          "uncompressed_bytes": 223781145,
+          "compressed_bytes": 11778802
+        }
+      ]
+    },
+    {
+      "original_runtime_path": ".local/actual-effective-official-20261011/first-ae-cap-b9d66048-build/output-allocator.json",
+      "public_path": "evidence/second-edition/acceptance/first-v1-actual-effective-build-20261011/output-allocator.json",
+      "source_sha256": "668ede4e3a06e0d1a894ad30d98815c681eaf74b01abddae2af36babe3b54231",
+      "target_sha256": "a213c7f6d65332a7232f99985db929c04fb670692bdff6da4a838f9bccc4d09b",
+      "publication": {
+        "kind": "declared-runtime-paths/v2",
+        "runtime_paths": [
+          {
+            "pointer": "/ssd_output",
+            "relative": "runtime/official-acceptance"
+          }
+        ],
+        "payload_sha256": "a213c7f6d65332a7232f99985db929c04fb670692bdff6da4a838f9bccc4d09b"
+      }
+    },
+    {
+      "original_runtime_path": ".local/actual-effective-official-20261011/first-ae-cap-b9d66048-build/result.json",
+      "public_path": "evidence/second-edition/acceptance/first-v1-actual-effective-build-20261011/result.json",
+      "source_sha256": "1ff8e4c3f30c635702dc4bf7e071f54ec0875124a826acb709ea97d8912d9328",
+      "target_sha256": "76ea4da7dad7104314084830b9fe460ee2a7c5de295f877855f8d260de921498",
+      "publication": {
+        "kind": "declared-runtime-paths/v2",
+        "runtime_paths": [
+          {
+            "pointer": "/results/0/log",
+            "relative": "evidence/second-edition/acceptance/first-v1-actual-effective-build-20261011/build.log.zst"
+          },
+          {
+            "pointer": "/receipt",
+            "relative": "evidence/second-edition/acceptance/first-v1-actual-effective-build-20261011/result.json"
+          }
+        ],
+        "payload_sha256": "76ea4da7dad7104314084830b9fe460ee2a7c5de295f877855f8d260de921498"
+      }
+    },
+    {
+      "original_runtime_path": ".local/actual-effective-official-20261011/first-ae-cap-b9d66048-build/run-provenance.json",
+      "public_path": "evidence/second-edition/acceptance/first-v1-actual-effective-build-20261011/run-provenance.json",
+      "source_sha256": "8ce848182d4db7b80b762d1cba6f663d491eb7dea53430f648e7821a50688da6",
+      "target_sha256": "8d89b10ae12461c9eb23e82b6cdfedc49a0bdad4a973db2aa1c92d0c79333cac",
+      "publication": {
+        "kind": "declared-runtime-paths/v2",
+        "runtime_paths": [
+          {
+            "pointer": "/output_allocator/ssd_output",
+            "relative": "runtime/official-acceptance"
+          },
+          {
+            "pointer": "/actual_official_receipt",
+            "relative": "evidence/second-edition/acceptance/first-v1-actual-effective-build-20261011/result.json"
+          }
+        ],
+        "payload_sha256": "8d89b10ae12461c9eb23e82b6cdfedc49a0bdad4a973db2aa1c92d0c79333cac"
+      }
+    }
+  ],
+  "receipt": "evidence/second-edition/acceptance/first-v1-actual-effective-build-20261011/result.json",
+  "original_source_certification": "Separate from this actual local public execution.",
+  "actual_source_head": "b9d66048342b1a5aeac3e112d920ed85401bb20a",
+  "streaming_log_compression_verified": true
+}
