@@ -1,0 +1,921 @@
+{
+  "schema": "h0mework/paper-source-navigation@1",
+  "h0_source_commit": "643721f170e563ee607329ac55c951aabad3e1b1",
+  "writing_commit": "6850c9501e55786ce1701a7310a253ae49c2b868",
+  "source_identity": "verified",
+  "maps": {
+    "second": {
+      "path": "docs/second-edition-map.json",
+      "sha256": "fcb5aed8b75fff4bb8e4855e7cd910aee333fef3a6e14d4eabc39f34b124b0f3",
+      "url": "https://github.com/Sapientropic/H0mework/blob/643721f170e563ee607329ac55c951aabad3e1b1/docs/second-edition-map.json"
+    },
+    "low-energy": {
+      "path": "docs/low-energy-release-map.json",
+      "sha256": "18f62886e20e145e23afd301354c3b7d34778604d2913c681a707fdce83cc1d0",
+      "url": "https://github.com/Sapientropic/H0mework/blob/643721f170e563ee607329ac55c951aabad3e1b1/docs/low-energy-release-map.json"
+    }
+  },
+  "papers": [
+    {
+      "id": "source-process-core",
+      "edition": "second",
+      "map": "second",
+      "writing_selection": {
+        "commit": "6850c9501e55786ce1701a7310a253ae49c2b868",
+        "path": "shared/second-edition-selection.json",
+        "sha256": "a0df5507b4a150f2e48e3f4b24171a42767e2e34ab6ee6b0d7920a86ad864876"
+      },
+      "claims": [
+        "core.C35",
+        "core.C36",
+        "core.C37",
+        "core.C38",
+        "core.C39",
+        "core.C40",
+        "core.C41",
+        "core.C42",
+        "core.C44",
+        "core.C43",
+        "core.C45"
+      ],
+      "aggregators": [
+        {
+          "package": "v2-core-action-reader",
+          "module": "H0mework.Papers.V2CoreActionReader",
+          "map_pointer": "/proof_packages/0"
+        },
+        {
+          "package": "v2-core-difference-feedback",
+          "module": "H0mework.Papers.V2CoreDifferenceFeedback",
+          "map_pointer": "/proof_packages/1"
+        },
+        {
+          "package": "v2-core-completion",
+          "module": "H0mework.Papers.V2CoreCompletion",
+          "map_pointer": "/proof_packages/2"
+        },
+        {
+          "package": "v2-core-full-stock",
+          "module": "H0mework.Papers.V2CoreFullStock",
+          "map_pointer": "/proof_packages/3"
+        },
+        {
+          "package": "v2-core-runtime-calculation",
+          "module": "H0mework.Papers.V2CoreRuntimeCalculation",
+          "map_pointer": "/proof_packages/4"
+        },
+        {
+          "package": "v2-9c73-same-event-feedback",
+          "module": "H0mework.Papers.SecondEdition9c73SameEventFeedback",
+          "map_pointer": "/proof_packages/9"
+        },
+        {
+          "package": "v2-9c73-type-completion",
+          "module": "H0mework.Papers.SecondEdition9c73TypeCompletion",
+          "map_pointer": "/proof_packages/10"
+        },
+        {
+          "package": "v2-9c73-full-stock-next",
+          "module": "H0mework.Papers.SecondEdition9c73FullStockNext",
+          "map_pointer": "/proof_packages/11"
+        },
+        {
+          "package": "v2-9c73-runtime-calculation",
+          "module": "H0mework.Papers.SecondEdition9c73RuntimeCalculation",
+          "map_pointer": "/proof_packages/12"
+        }
+      ],
+      "commands": {
+        "identity": "python3 tools/edition_release.py --edition second verify-map",
+        "build": "run=\"$(date -u +%Y%m%dT%H%M%SZ)-$$\"; LEAN_NUM_THREADS=2 python3 tools/edition_release.py --edition second --paper source-process-core build --output \".local/paper-source-replay/source-process-core-build-$run\"",
+        "trust": "run=\"$(date -u +%Y%m%dT%H%M%SZ)-$$\"; LEAN_NUM_THREADS=2 python3 tools/edition_release.py --edition second --paper source-process-core trust --output \".local/paper-source-replay/source-process-core-trust-$run\"",
+        "restore_example": "run=\"$(date -u +%Y%m%dT%H%M%SZ)-$$\"; python3 tools/source_view.py --output \".local/paper-source-replay/source-process-core-source-$run\" --at e05558097256e86b537c019c8ca63cd449d6b2d2 --path Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Programme.lean"
+      },
+      "restore_contract": "Repeat the official source_view command with any entry source_commit and source_path. Default restores the verified original-path public view; --exact restores exact original bytes and requires private originals for sanitized receipt artifacts."
+    },
+    {
+      "id": "physics-common-source",
+      "edition": "second",
+      "map": "second",
+      "writing_selection": {
+        "commit": "6850c9501e55786ce1701a7310a253ae49c2b868",
+        "path": "shared/second-edition-selection.json",
+        "sha256": "a0df5507b4a150f2e48e3f4b24171a42767e2e34ab6ee6b0d7920a86ad864876"
+      },
+      "claims": [
+        "phys.P37",
+        "phys.P38",
+        "phys.P39",
+        "phys.P40"
+      ],
+      "aggregators": [
+        {
+          "package": "second-edition-physics-prepared-actual",
+          "module": "H0mework.Papers.SecondEditionPhysicsPreparedActual",
+          "map_pointer": "/proof_packages/5"
+        },
+        {
+          "package": "second-edition-physics-signal-field",
+          "module": "H0mework.Papers.SecondEditionPhysicsSignalField",
+          "map_pointer": "/proof_packages/6"
+        },
+        {
+          "package": "second-edition-physics-charged-transfer",
+          "module": "H0mework.Papers.SecondEditionPhysicsChargedTransfer",
+          "map_pointer": "/proof_packages/7"
+        },
+        {
+          "package": "second-edition-physics-registered-forcing",
+          "module": "H0mework.Papers.SecondEditionPhysicsRegisteredForcing",
+          "map_pointer": "/proof_packages/8"
+        },
+        {
+          "package": "v2-9c73-prepared-actual",
+          "module": "H0mework.Papers.SecondEdition9c73PreparedActual",
+          "map_pointer": "/proof_packages/13"
+        },
+        {
+          "package": "v2-9c73-signal-field",
+          "module": "H0mework.Papers.SecondEdition9c73SignalField",
+          "map_pointer": "/proof_packages/14"
+        },
+        {
+          "package": "v2-9c73-charged-transfer",
+          "module": "H0mework.Papers.SecondEdition9c73ChargedTransfer",
+          "map_pointer": "/proof_packages/15"
+        },
+        {
+          "package": "v2-9c73-registered-forcing",
+          "module": "H0mework.Papers.SecondEdition9c73RegisteredForcing",
+          "map_pointer": "/proof_packages/16"
+        },
+        {
+          "package": "second-edition-physics-prepared-actual-certification-consumers",
+          "module": "H0mework.Papers.SecondEditionPhysicsPreparedActualCertificationConsumers",
+          "map_pointer": "/proof_packages/17"
+        },
+        {
+          "package": "second-edition-physics-signal-field-certification-consumers",
+          "module": "H0mework.Papers.SecondEditionPhysicsSignalFieldCertificationConsumers",
+          "map_pointer": "/proof_packages/18"
+        },
+        {
+          "package": "v2-9c73-prepared-actual-certification-consumers",
+          "module": "H0mework.Papers.SecondEdition9c73PreparedActualCertificationConsumers",
+          "map_pointer": "/proof_packages/19"
+        },
+        {
+          "package": "v2-9c73-signal-field-certification-consumers",
+          "module": "H0mework.Papers.SecondEdition9c73SignalFieldCertificationConsumers",
+          "map_pointer": "/proof_packages/20"
+        }
+      ],
+      "commands": {
+        "identity": "python3 tools/edition_release.py --edition second verify-map",
+        "build": "run=\"$(date -u +%Y%m%dT%H%M%SZ)-$$\"; LEAN_NUM_THREADS=2 python3 tools/edition_release.py --edition second --paper physics-common-source build --output \".local/paper-source-replay/physics-common-source-build-$run\"",
+        "trust": "run=\"$(date -u +%Y%m%dT%H%M%SZ)-$$\"; LEAN_NUM_THREADS=2 python3 tools/edition_release.py --edition second --paper physics-common-source trust --output \".local/paper-source-replay/physics-common-source-trust-$run\"",
+        "restore_example": "run=\"$(date -u +%Y%m%dT%H%M%SZ)-$$\"; python3 tools/source_view.py --output \".local/paper-source-replay/physics-common-source-source-$run\" --at 71e94e8261d67cf4849a05eb14ac95aa2f7dcbb9 --path Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedSourcePreparation.lean"
+      },
+      "restore_contract": "Repeat the official source_view command with any entry source_commit and source_path. Default restores the verified original-path public view; --exact restores exact original bytes and requires private originals for sanitized receipt artifacts."
+    },
+    {
+      "id": "low-energy-phenomenology",
+      "edition": "low-energy",
+      "map": "low-energy",
+      "writing_selection": {
+        "commit": "6850c9501e55786ce1701a7310a253ae49c2b868",
+        "path": "papers/low-energy-phenomenology/release-selection.json",
+        "sha256": "1d4f2f5e7b47cc0ba4c92ebf5d95a7ff671f86ab40e993a4ead871329b76cb88"
+      },
+      "claims": [
+        "low1.L1",
+        "low1.L2",
+        "low1.L3",
+        "low1.L4",
+        "low1.L5",
+        "low1.L6",
+        "low1.L7",
+        "low1.L8",
+        "low1.L9",
+        "low1.L10",
+        "low1.L11",
+        "low1.L12",
+        "low1.L13",
+        "low1.L14",
+        "low1.L15",
+        "low1.L16",
+        "low1.L17",
+        "low1.L18",
+        "low1.L19",
+        "low1.L20",
+        "low1.L21",
+        "low1.L22",
+        "low1.L23",
+        "low1.L24",
+        "low1.L25",
+        "low1.L26",
+        "low1.L27",
+        "low1.L28"
+      ],
+      "aggregators": [
+        {
+          "package": "low-energy-phenomenology",
+          "module": "H0mework.Papers.LowEnergyPhenomenology",
+          "map_pointer": "/proof_packages/0"
+        },
+        {
+          "package": "low-energy-l18-l20-e055",
+          "module": "H0mework.Papers.LowEnergyL18L20E055",
+          "map_pointer": "/proof_packages/1"
+        },
+        {
+          "package": "low-energy-l21-l23-e055",
+          "module": "H0mework.Papers.LowEnergyL21L23E055",
+          "map_pointer": "/proof_packages/2"
+        },
+        {
+          "package": "low-energy-l24-l25-c62",
+          "module": "H0mework.Papers.LowEnergyL24L25C62",
+          "map_pointer": "/proof_packages/3"
+        },
+        {
+          "package": "low-energy-l26-action-clock-71e",
+          "module": "H0mework.Papers.LowEnergyL26ActionClock71e",
+          "map_pointer": "/proof_packages/4"
+        },
+        {
+          "package": "low-energy-l27-newton-71e",
+          "module": "H0mework.Papers.LowEnergyL27NewtonDressing71eRelease",
+          "map_pointer": "/proof_packages/5"
+        },
+        {
+          "package": "low-energy-l28-born-71e",
+          "module": "H0mework.Papers.LowEnergyL28Born71e",
+          "map_pointer": "/proof_packages/6"
+        },
+        {
+          "package": "low-energy-l23-prepared-owner-c62",
+          "module": "H0mework.Papers.LowEnergyL23PreparedOwnerC62",
+          "map_pointer": "/proof_packages/15"
+        }
+      ],
+      "commands": {
+        "identity": "python3 tools/edition_release.py --edition low-energy verify-map",
+        "build": "run=\"$(date -u +%Y%m%dT%H%M%SZ)-$$\"; LEAN_NUM_THREADS=2 python3 tools/edition_release.py --edition low-energy --paper low-energy-phenomenology build --output \".local/paper-source-replay/low-energy-phenomenology-build-$run\"",
+        "trust": "run=\"$(date -u +%Y%m%dT%H%M%SZ)-$$\"; LEAN_NUM_THREADS=2 python3 tools/edition_release.py --edition low-energy --paper low-energy-phenomenology trust --output \".local/paper-source-replay/low-energy-phenomenology-trust-$run\"",
+        "restore_example": "run=\"$(date -u +%Y%m%dT%H%M%SZ)-$$\"; python3 tools/source_view.py --output \".local/paper-source-replay/low-energy-phenomenology-source-$run\" --at 30218c1aea92640eae09b1d9204a09b01a2d0e47 --path Lean/SaturationMonoid/PhysicsCore/LowEnergy/ScalarInventory.lean"
+      },
+      "restore_contract": "Repeat the official source_view command with any entry source_commit and source_path. Default restores the verified original-path public view; --exact restores exact original bytes and requires private originals for sanitized receipt artifacts."
+    },
+    {
+      "id": "low-energy-loop-response",
+      "edition": "low-energy",
+      "map": "low-energy",
+      "writing_selection": {
+        "commit": "6850c9501e55786ce1701a7310a253ae49c2b868",
+        "path": "papers/low-energy-loop-response/release-selection.json",
+        "sha256": "4a960a428496a7f7fa392d02cd77426671b0e7f787639d8ad01bb37ebd10518c"
+      },
+      "claims": [
+        "low2.Q1",
+        "low2.Q2",
+        "low2.Q3",
+        "low2.Q4",
+        "low2.Q5",
+        "low2.Q6"
+      ],
+      "aggregators": [
+        {
+          "package": "low-energy-q3-materials-t",
+          "module": "H0mework.Papers.LowEnergyQ3MaterialsT",
+          "map_pointer": "/proof_packages/7"
+        },
+        {
+          "package": "low-energy-q6-source-unit-3bbcbd59",
+          "module": "H0mework.Papers.LowEnergyQ6SourceUnit3bbcbd59",
+          "map_pointer": "/proof_packages/8"
+        },
+        {
+          "package": "low-energy-q6-actual-noether-f13ed87d",
+          "module": "H0mework.Papers.LowEnergyQ6ActualNoetherF13ed87d",
+          "map_pointer": "/proof_packages/9"
+        },
+        {
+          "package": "low-energy-q6-actual-pencil-c015842c",
+          "module": "H0mework.Papers.LowEnergyQ6ActualPencilC015842c",
+          "map_pointer": "/proof_packages/10"
+        },
+        {
+          "package": "low-energy-loop-response",
+          "module": "H0mework.Papers.LowEnergyLoopResponse",
+          "map_pointer": "/proof_packages/11"
+        },
+        {
+          "package": "low-energy-inherited-26b91feb-physics-common-source-ae",
+          "module": "H0mework.Papers.PhysicsCommonSourceAeRelease",
+          "map_pointer": "/proof_packages/12"
+        },
+        {
+          "package": "low-energy-inherited-aef0ad2a-physics-common-source-ad",
+          "module": "H0mework.Papers.PhysicsCommonSourceAdRelease",
+          "map_pointer": "/proof_packages/13"
+        },
+        {
+          "package": "low-energy-inherited-b67aa48c-physics-common-source-ac",
+          "module": "H0mework.Papers.PhysicsCommonSourceAcRelease",
+          "map_pointer": "/proof_packages/14"
+        }
+      ],
+      "commands": {
+        "identity": "python3 tools/edition_release.py --edition low-energy verify-map",
+        "build": "run=\"$(date -u +%Y%m%dT%H%M%SZ)-$$\"; LEAN_NUM_THREADS=2 python3 tools/edition_release.py --edition low-energy --paper low-energy-loop-response build --output \".local/paper-source-replay/low-energy-loop-response-build-$run\"",
+        "trust": "run=\"$(date -u +%Y%m%dT%H%M%SZ)-$$\"; LEAN_NUM_THREADS=2 python3 tools/edition_release.py --edition low-energy --paper low-energy-loop-response trust --output \".local/paper-source-replay/low-energy-loop-response-trust-$run\"",
+        "restore_example": "run=\"$(date -u +%Y%m%dT%H%M%SZ)-$$\"; python3 tools/source_view.py --output \".local/paper-source-replay/low-energy-loop-response-source-$run\" --at 85cb5386ca132818f74d90470d87a252e4a27ea7 --path Lean/SaturationMonoid/PhysicsCore/LowEnergy/FullQuantum/ClosedLoops/Grading.lean"
+      },
+      "restore_contract": "Repeat the official source_view command with any entry source_commit and source_path. Default restores the verified original-path public view; --exact restores exact original bytes and requires private originals for sanitized receipt artifacts."
+    }
+  ],
+  "claims": [
+    {
+      "id": "core.C35",
+      "paper": "source-process-core",
+      "map": "second",
+      "pointer": "/claims/0",
+      "written_navigation": [
+        {
+          "selection_pointer": "/intake/0",
+          "intake_id": "v2.core.same-event-feedback",
+          "fields": [
+            "actual_text",
+            "actual_written_proof"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "core.C36",
+      "paper": "source-process-core",
+      "map": "second",
+      "pointer": "/claims/1",
+      "written_navigation": [
+        {
+          "selection_pointer": "/intake/0",
+          "intake_id": "v2.core.same-event-feedback",
+          "fields": [
+            "actual_text",
+            "actual_written_proof"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "core.C37",
+      "paper": "source-process-core",
+      "map": "second",
+      "pointer": "/claims/2",
+      "written_navigation": [
+        {
+          "selection_pointer": "/intake/0",
+          "intake_id": "v2.core.same-event-feedback",
+          "fields": [
+            "actual_text",
+            "actual_written_proof"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "core.C38",
+      "paper": "source-process-core",
+      "map": "second",
+      "pointer": "/claims/3",
+      "written_navigation": [
+        {
+          "selection_pointer": "/intake/0",
+          "intake_id": "v2.core.same-event-feedback",
+          "fields": [
+            "actual_text",
+            "actual_written_proof"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "core.C39",
+      "paper": "source-process-core",
+      "map": "second",
+      "pointer": "/claims/4",
+      "written_navigation": [
+        {
+          "selection_pointer": "/intake/1",
+          "intake_id": "v2.core.type-completion",
+          "fields": [
+            "actual_text",
+            "actual_written_proof"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "core.C40",
+      "paper": "source-process-core",
+      "map": "second",
+      "pointer": "/claims/5",
+      "written_navigation": [
+        {
+          "selection_pointer": "/intake/2",
+          "intake_id": "v2.core.full-stock-next",
+          "fields": [
+            "actual_text",
+            "actual_written_proof"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "core.C41",
+      "paper": "source-process-core",
+      "map": "second",
+      "pointer": "/claims/6",
+      "written_navigation": [
+        {
+          "selection_pointer": "/intake/3",
+          "intake_id": "v2.core.runtime-calculation",
+          "fields": [
+            "actual_text",
+            "actual_written_proof"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phys.P37",
+      "paper": "physics-common-source",
+      "map": "second",
+      "pointer": "/claims/7",
+      "written_navigation": [
+        {
+          "selection_pointer": "/intake/4",
+          "intake_id": "v2.phys.prepared-actual",
+          "fields": [
+            "actual_text",
+            "actual_written_proof"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phys.P38",
+      "paper": "physics-common-source",
+      "map": "second",
+      "pointer": "/claims/8",
+      "written_navigation": [
+        {
+          "selection_pointer": "/intake/5",
+          "intake_id": "v2.phys.signal-field",
+          "fields": [
+            "actual_text",
+            "actual_written_proof"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phys.P39",
+      "paper": "physics-common-source",
+      "map": "second",
+      "pointer": "/claims/9",
+      "written_navigation": [
+        {
+          "selection_pointer": "/intake/6",
+          "intake_id": "v2.phys.charged-transfer",
+          "fields": [
+            "actual_text",
+            "actual_written_proof"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phys.P40",
+      "paper": "physics-common-source",
+      "map": "second",
+      "pointer": "/claims/10",
+      "written_navigation": [
+        {
+          "selection_pointer": "/intake/7",
+          "intake_id": "v2.phys.registered-forcing",
+          "fields": [
+            "actual_text",
+            "actual_written_proof"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "core.C42",
+      "paper": "source-process-core",
+      "map": "second",
+      "pointer": "/claims/11",
+      "written_navigation": [
+        {
+          "selection_pointer": "/intake/0",
+          "intake_id": "v2.core.same-event-feedback",
+          "fields": [
+            "actual_text",
+            "actual_written_proof"
+          ]
+        },
+        {
+          "selection_pointer": "/intake/3",
+          "intake_id": "v2.core.runtime-calculation",
+          "fields": [
+            "actual_text",
+            "actual_written_proof"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "core.C44",
+      "paper": "source-process-core",
+      "map": "second",
+      "pointer": "/claims/12",
+      "written_navigation": [
+        {
+          "selection_pointer": "/intake/0",
+          "intake_id": "v2.core.same-event-feedback",
+          "fields": [
+            "actual_text",
+            "actual_written_proof"
+          ]
+        },
+        {
+          "selection_pointer": "/intake/2",
+          "intake_id": "v2.core.full-stock-next",
+          "fields": [
+            "actual_text",
+            "actual_written_proof"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "core.C43",
+      "paper": "source-process-core",
+      "map": "second",
+      "pointer": "/claims/13",
+      "written_navigation": [
+        {
+          "selection_pointer": "/intake/1",
+          "intake_id": "v2.core.type-completion",
+          "fields": [
+            "actual_text",
+            "actual_written_proof"
+          ]
+        },
+        {
+          "selection_pointer": "/intake/2",
+          "intake_id": "v2.core.full-stock-next",
+          "fields": [
+            "actual_text",
+            "actual_written_proof"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "core.C45",
+      "paper": "source-process-core",
+      "map": "second",
+      "pointer": "/claims/14",
+      "written_navigation": [
+        {
+          "selection_pointer": "/intake/2",
+          "intake_id": "v2.core.full-stock-next",
+          "fields": [
+            "actual_text",
+            "actual_written_proof"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "low1.L1",
+      "paper": "low-energy-phenomenology",
+      "map": "low-energy",
+      "pointer": "/claims/0",
+      "written_navigation": {
+        "map_pointer": "/claims/0/written_proof"
+      }
+    },
+    {
+      "id": "low1.L2",
+      "paper": "low-energy-phenomenology",
+      "map": "low-energy",
+      "pointer": "/claims/1",
+      "written_navigation": {
+        "map_pointer": "/claims/1/written_proof"
+      }
+    },
+    {
+      "id": "low1.L3",
+      "paper": "low-energy-phenomenology",
+      "map": "low-energy",
+      "pointer": "/claims/2",
+      "written_navigation": {
+        "map_pointer": "/claims/2/written_proof"
+      }
+    },
+    {
+      "id": "low1.L4",
+      "paper": "low-energy-phenomenology",
+      "map": "low-energy",
+      "pointer": "/claims/3",
+      "written_navigation": {
+        "map_pointer": "/claims/3/written_proof"
+      }
+    },
+    {
+      "id": "low1.L5",
+      "paper": "low-energy-phenomenology",
+      "map": "low-energy",
+      "pointer": "/claims/4",
+      "written_navigation": {
+        "map_pointer": "/claims/4/written_proof"
+      }
+    },
+    {
+      "id": "low1.L6",
+      "paper": "low-energy-phenomenology",
+      "map": "low-energy",
+      "pointer": "/claims/5",
+      "written_navigation": {
+        "map_pointer": "/claims/5/written_proof"
+      }
+    },
+    {
+      "id": "low1.L7",
+      "paper": "low-energy-phenomenology",
+      "map": "low-energy",
+      "pointer": "/claims/6",
+      "written_navigation": {
+        "map_pointer": "/claims/6/written_proof"
+      }
+    },
+    {
+      "id": "low1.L8",
+      "paper": "low-energy-phenomenology",
+      "map": "low-energy",
+      "pointer": "/claims/7",
+      "written_navigation": {
+        "map_pointer": "/claims/7/written_proof"
+      }
+    },
+    {
+      "id": "low1.L9",
+      "paper": "low-energy-phenomenology",
+      "map": "low-energy",
+      "pointer": "/claims/8",
+      "written_navigation": {
+        "map_pointer": "/claims/8/written_proof"
+      }
+    },
+    {
+      "id": "low1.L10",
+      "paper": "low-energy-phenomenology",
+      "map": "low-energy",
+      "pointer": "/claims/9",
+      "written_navigation": {
+        "map_pointer": "/claims/9/written_proof"
+      }
+    },
+    {
+      "id": "low1.L11",
+      "paper": "low-energy-phenomenology",
+      "map": "low-energy",
+      "pointer": "/claims/10",
+      "written_navigation": {
+        "map_pointer": "/claims/10/written_proof"
+      }
+    },
+    {
+      "id": "low1.L12",
+      "paper": "low-energy-phenomenology",
+      "map": "low-energy",
+      "pointer": "/claims/11",
+      "written_navigation": {
+        "map_pointer": "/claims/11/written_proof"
+      }
+    },
+    {
+      "id": "low1.L13",
+      "paper": "low-energy-phenomenology",
+      "map": "low-energy",
+      "pointer": "/claims/12",
+      "written_navigation": {
+        "map_pointer": "/claims/12/written_proof"
+      }
+    },
+    {
+      "id": "low1.L14",
+      "paper": "low-energy-phenomenology",
+      "map": "low-energy",
+      "pointer": "/claims/13",
+      "written_navigation": {
+        "map_pointer": "/claims/13/written_proof"
+      }
+    },
+    {
+      "id": "low1.L15",
+      "paper": "low-energy-phenomenology",
+      "map": "low-energy",
+      "pointer": "/claims/14",
+      "written_navigation": {
+        "map_pointer": "/claims/14/written_proof"
+      }
+    },
+    {
+      "id": "low1.L16",
+      "paper": "low-energy-phenomenology",
+      "map": "low-energy",
+      "pointer": "/claims/15",
+      "written_navigation": {
+        "map_pointer": "/claims/15/written_proof"
+      }
+    },
+    {
+      "id": "low1.L17",
+      "paper": "low-energy-phenomenology",
+      "map": "low-energy",
+      "pointer": "/claims/16",
+      "written_navigation": {
+        "map_pointer": "/claims/16/written_proof"
+      }
+    },
+    {
+      "id": "low1.L18",
+      "paper": "low-energy-phenomenology",
+      "map": "low-energy",
+      "pointer": "/claims/17",
+      "written_navigation": {
+        "map_pointer": "/claims/17/written_proof"
+      }
+    },
+    {
+      "id": "low1.L19",
+      "paper": "low-energy-phenomenology",
+      "map": "low-energy",
+      "pointer": "/claims/18",
+      "written_navigation": {
+        "map_pointer": "/claims/18/written_proof"
+      }
+    },
+    {
+      "id": "low1.L20",
+      "paper": "low-energy-phenomenology",
+      "map": "low-energy",
+      "pointer": "/claims/19",
+      "written_navigation": {
+        "map_pointer": "/claims/19/written_proof"
+      }
+    },
+    {
+      "id": "low1.L21",
+      "paper": "low-energy-phenomenology",
+      "map": "low-energy",
+      "pointer": "/claims/20",
+      "written_navigation": {
+        "map_pointer": "/claims/20/written_proof"
+      }
+    },
+    {
+      "id": "low1.L22",
+      "paper": "low-energy-phenomenology",
+      "map": "low-energy",
+      "pointer": "/claims/21",
+      "written_navigation": {
+        "map_pointer": "/claims/21/written_proof"
+      }
+    },
+    {
+      "id": "low1.L23",
+      "paper": "low-energy-phenomenology",
+      "map": "low-energy",
+      "pointer": "/claims/22",
+      "written_navigation": {
+        "map_pointer": "/claims/22/written_proof"
+      }
+    },
+    {
+      "id": "low1.L24",
+      "paper": "low-energy-phenomenology",
+      "map": "low-energy",
+      "pointer": "/claims/23",
+      "written_navigation": {
+        "map_pointer": "/claims/23/written_proof"
+      }
+    },
+    {
+      "id": "low1.L25",
+      "paper": "low-energy-phenomenology",
+      "map": "low-energy",
+      "pointer": "/claims/24",
+      "written_navigation": {
+        "map_pointer": "/claims/24/written_proof"
+      }
+    },
+    {
+      "id": "low1.L26",
+      "paper": "low-energy-phenomenology",
+      "map": "low-energy",
+      "pointer": "/claims/25",
+      "written_navigation": {
+        "map_pointer": "/claims/25/written_proof"
+      }
+    },
+    {
+      "id": "low1.L27",
+      "paper": "low-energy-phenomenology",
+      "map": "low-energy",
+      "pointer": "/claims/26",
+      "written_navigation": {
+        "map_pointer": "/claims/26/written_proof"
+      }
+    },
+    {
+      "id": "low1.L28",
+      "paper": "low-energy-phenomenology",
+      "map": "low-energy",
+      "pointer": "/claims/27",
+      "written_navigation": {
+        "map_pointer": "/claims/27/written_proof"
+      }
+    },
+    {
+      "id": "low2.Q1",
+      "paper": "low-energy-loop-response",
+      "map": "low-energy",
+      "pointer": "/claims/28",
+      "written_navigation": {
+        "map_pointer": "/claims/28/written_proof"
+      }
+    },
+    {
+      "id": "low2.Q2",
+      "paper": "low-energy-loop-response",
+      "map": "low-energy",
+      "pointer": "/claims/29",
+      "written_navigation": {
+        "map_pointer": "/claims/29/written_proof"
+      }
+    },
+    {
+      "id": "low2.Q3",
+      "paper": "low-energy-loop-response",
+      "map": "low-energy",
+      "pointer": "/claims/30",
+      "written_navigation": {
+        "map_pointer": "/claims/30/written_proof"
+      }
+    },
+    {
+      "id": "low2.Q4",
+      "paper": "low-energy-loop-response",
+      "map": "low-energy",
+      "pointer": "/claims/31",
+      "written_navigation": {
+        "map_pointer": "/claims/31/written_proof"
+      }
+    },
+    {
+      "id": "low2.Q5",
+      "paper": "low-energy-loop-response",
+      "map": "low-energy",
+      "pointer": "/claims/32",
+      "written_navigation": {
+        "map_pointer": "/claims/32/written_proof"
+      }
+    },
+    {
+      "id": "low2.Q6",
+      "paper": "low-energy-loop-response",
+      "map": "low-energy",
+      "pointer": "/claims/33",
+      "written_navigation": {
+        "map_pointer": "/claims/33/written_proof"
+      }
+    }
+  ],
+  "authority": {
+    "source_paths_original_epochs_sha_and_producer_consumer_mouths": "Pinned source claim maps; JSON pointers locate their authoritative entries.",
+    "kernel_and_readiness": "Actual recorded map scopes and separate build/trust receipts; source identity does not promote pending kernel status.",
+    "written_proof_navigation": "Pinned 6850c950 selections and proof navigation fields; no second theorem map."
+  },
+  "checkout_commands": [
+    "git clone https://github.com/Sapientropic/H0mework.git",
+    "cd H0mework",
+    "git checkout 643721f170e563ee607329ac55c951aabad3e1b1"
+  ],
+  "reproduction_commands_executed_by_this_navigation": false
+}

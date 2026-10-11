@@ -2,7 +2,7 @@
 
 ## 全局目标
 
-交齐过程核心、同源物理旗舰与低能首发采用的生产证明、直接消费者、资源及成品，推送 H0 并完成远端 CI。第二版固定 `9c73a630ce05bea062ec889b188f5105c0afb796`；低能 L1–L28／Q1–Q6 固定 `71e94e8261d67cf4849a05eb14ac95aa2f7dcbb9`。各历史证明与认证保持原 epoch；第一版 60 条主张继承 `234817b3c3f7a1023226e7a4fdb8660ddcbc9d0a` 与[冻结映射](first-release-map.json)。Homework／写作仓只读。
+交齐过程核心、同源物理旗舰与低能首发采用的生产证明、直接消费者、资源及成品。先交付论文可引用的固定源码绑定，整包 kernel 验收与远端 CI 分别继续签收。第二版固定 `9c73a630ce05bea062ec889b188f5105c0afb796`；低能 L1–L28／Q1–Q6 固定 `71e94e8261d67cf4849a05eb14ac95aa2f7dcbb9`。各历史证明与认证保持原 epoch；第一版 60 条主张继承 `234817b3c3f7a1023226e7a4fdb8660ddcbc9d0a` 与[冻结映射](first-release-map.json)。Homework／写作仓只读。
 
 ## 已闭合的权威证明链
 
@@ -12,6 +12,10 @@
 
 ActualEffective 九份适配已逐环境完成真实 Lake 全模块／CoefficientPrice 构建、freshness 和六条原陈述消费者，共 27 步全部退出 0，执行输入及消费者对象稳定。单线程可比 R71e 峰值 RSS 从 21.3 GiB 降至 9.1 GiB；九环境公开构建峰值为 8.95–9.21 GiB。原定理、定义、预算及完整源码逆验保持。
 
+四篇论文的 49 条选定主张已绑定公开源码 `643721f170e563ee607329ac55c951aabad3e1b1`，写作选择固定 `6850c9501e55786ce1701a7310a253ae49c2b868`。第二版 15 项与低能 34 项的源码身份、资源、运行材料缺项均为 0；[固定绑定导航与双语可得性表述](source-materials.md#四篇论文的源码绑定)沿用固定写作选择，源码修复提交 `643721f1` 的四个 EM audit 均实际编译通过。原 `b9d66048` 绑定保留为历史固定导航。
+
+第一版 AE／CAP 在 `b9d66048` 上的实际整包 build 与完整元数据审查均通过：分别为 841／224 根、Std3、unsafe0、partial0，执行输入不变。新回执已本地归档，冻结第一版 map 保留原身份。
+
 ## 这些闭合改变了什么
 
 原计算 reader、receiver 费用、factory 环境与有限 Incoming 已对齐；[源与环境接口](source-action-environment.md)维护稳定合同。GSR 与 ActualEffective 的证明适配减少实际内存；匿名实例、动态私有 owner、prepared Ward 与共享 carrier 按真实类型接线。详述集中在[构建适配](proof-build-adaptations.md)。
@@ -20,11 +24,11 @@ GT 六份原程序的双 provider owner 已可逆修复，原完整 kernel 消�
 
 ## 当前最高杠杆的结构责任
 
-在本轮稳定提交上重验 ActualEffective 影响的第一版 AE／CAP 及低能继承 AE 三个已签范围；保留冻结第一版 map 和原回执，另签当前源码范围。当前地图还登记 19 个待验包：18 个与九份适配相交，另一个是独立 9c73 runtime 的 740 根。完整构建与全元数据审查必须实际通过后登记。
+低能稿 2 的 `b9d66048` 整包 build 正在执行；先保存它的真实终态，再进入下一源码 cohort。低能稿 1 的实际整包 build 失败于四个 audit 的导出模块名和三次 Mathlib 文件读取错误（ENFILE）。四 audit 的可逆修复已在独立提交树完成原参数编译，精确影响 E055／C62 两个低能包；本轮 build 终态后应用该树，利用现有热缓存重验低能稿 1，并完成两稿与两篇第二版的整包 build／trust。实际通过后登记回执，执行两份 `verify-map --require-ready`。
 
-继续完成四篇论文的整体 build／trust、两份 `verify-map --require-ready`、最终成品绑定及真实提交的远端 CI。核心／物理第二版成品待写作侧 final；低能成品已完成，公开绑定待材料整体验收。
+写作提交 `6850c950` 的最终成品已按原 SHA 核验：第二版 10 份 PDF／751 页、两份可编辑 ZIP 与两个 arXiv 源包；低能两稿四份 PDF／241 页与两份可编辑 ZIP。当前 build 终态后，将成品与已通过回执独立接入 `2026-10-11` 版本，不等待剩余整包队列；原低能 `2026-10-09` 快照保留。
 
-远端当前 [CI 38120348253](https://github.com/Sapientropic/H0mework/actions/runs/38120348253) 运行在 `2635e6d9`，43 个完整缓存（原 42 加 s8-02）仍保留，s8-01 持续上传进度。[实际规划与缓存比较](../evidence/second-edition/acceptance/actual-effective-ci-cache-preservation-20261011/cache-preservation-effective-gt.json)确认 47 个计划项（含 complete）的位置、顺序与兼容标识保持，五个源码分片及完整选集指纹更新：41 个旧完整片精确复用，s7-01／s8-02 旧完整片与 s8-01 进度片按同 compatibility／part 恢复并由 Lake 检查 freshness，s9 两片尚无旧缓存。ActualEffective 的实测内存表更新为向上取整 9.3 GiB；精确单编策略保持原 import 顺序，28 项 focused 测试通过。
+远端已自动进入 [CI 38154135554](https://github.com/Sapientropic/H0mework/actions/runs/38154135554)，HEAD 为导航提交 `e9734c69`，源码仍为 `b9d66048`。前轮 [38129862129](https://github.com/Sapientropic/H0mework/actions/runs/38129862129) 到达既定构建时限后退出 75，最终 s8-01 续跑缓存已保存。该轮实际复用了 41 个旧完整分片，s7-01／s8-02 的新完整分片已完成并上传；s9 尚待执行。自动续跑已实际复用 43 个完整分片（41 旧分片加两个新完整分片），原 43 份完整缓存全部保留。[缓存合同](../evidence/second-edition/acceptance/actual-effective-ci-cache-preservation-20261011/cache-preservation-effective-gt.json)中的 compatibility、分片位置和顺序保持；四 audit 修复只改变 s8-01 及完整选集指纹。ActualEffective 内存表向上取整为 9.3 GiB，单编策略与原 import 顺序保持，28 项 focused 测试通过。
 
 ## 本 checkpoint 的机器验收
 
