@@ -29,6 +29,12 @@ export const renderMarkdown = (text: string) => String(markdown.processSync(text
 const manuscriptPath = (slug: string, lang: Lang) =>
   `papers/first-release/source/papers/${slug}/manuscript${lang === "en" ? "-en" : ""}.md`;
 
+// Both papers are titled "main: subtitle"; the two parts are shown at two levels.
+function splitTitle(title: string) {
+  const at = title.search(/：|: /);
+  return at < 0 ? { main: title, sub: "" } : { main: title.slice(0, at), sub: title.slice(at).replace(/^(：|: )/, "") };
+}
+
 export function paperOf(slug: string, lang: Lang) {
   const meta = PAPERS.find((paper) => paper.slug === slug);
   if (!meta) throw new Error(`unknown paper ${slug}`);
@@ -42,7 +48,9 @@ export function paperOf(slug: string, lang: Lang) {
   return {
     ...meta,
     title,
+    ...splitTitle(title),
     other,
+    date: JSON.parse(read("papers/first-release/manifest.json")).date as string,
     abstractLead: renderMarkdown(paragraphs[0]),
     abstractRest: renderMarkdown(paragraphs.slice(1).join("\n\n")),
     links: {
@@ -79,9 +87,22 @@ const claimMap = () => (mapCache ??= JSON.parse(read("docs/first-release-map.jso
 // mathematical object; the full name stays in the link title.
 const shortModule = (module: string) => module.split(".").slice(-3).join(".");
 
+// Reading order: by the first section the claim cites; appendices come after the main text.
+function orderOf(location: string): number[] {
+  const appendix = location.match(/附录\s*([A-Z])(?:\.(\d+))?/);
+  if (appendix && location.indexOf(appendix[0]) === location.search(/[§附构定命例]/)) return [100 + appendix[1].charCodeAt(0), Number(appendix[2] ?? 0)];
+  const numbers = location.match(/(\d+)(?:\.(\d+))?/);
+  return numbers ? [Number(numbers[1]), Number(numbers[2] ?? 0)] : [999, 0];
+}
+const byReading = (a: Claim, b: Claim) => {
+  const [x, y] = [orderOf(a.text_location.selection.zh), orderOf(b.text_location.selection.zh)];
+  return x[0] - y[0] || x[1] - y[1];
+};
+
 export function claimsOf(slug: string, lang: Lang) {
   return claimMap()
     .claims.filter((claim) => claim.paper === slug)
+    .sort(byReading)
     .map((claim) => {
       const lean = claim.producers.filter((producer) => producer.kind === "lean" && producer.public?.module);
       return {
@@ -91,6 +112,8 @@ export function claimsOf(slug: string, lang: Lang) {
         premises: claim.quantifiers_premises,
         status: claim.status,
         location: claim.text_location.selection[lang],
+        // The row shows only the leading section ("§3.4", "§8.1–§8.3"); the body shows the rest.
+        section: claim.text_location.selection[lang].split(/[\s；;]/)[0],
         kernelPassed: lean.every((producer) => producer.verification?.kernel === "passed"),
         declarationCount: lean.reduce((sum, producer) => sum + (producer.declarations?.length ?? 0), 0),
         lean: lean.map((producer) => ({

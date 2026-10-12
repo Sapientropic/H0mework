@@ -27,7 +27,15 @@ const t = T[lang];
     </header>
     <main><slot /></main>
     <footer class="site">
-      <div class="wrap">Apache-2.0 · CC BY 4.0 · H0mework</div>
+      <div class="wrap footer-grid">
+        <a class="brand" href={t.home}>H<b>0</b>mework</a>
+        <nav>
+          <a href="https://github.com/Sapientropic/H0mework">{t.repo}</a>
+          <a href="https://github.com/Sapientropic/H0mework/blob/main/docs/first-release-reproduction.md">{t.guide}</a>
+          <a href="https://github.com/Sapientropic/H0mework/blob/main/docs/evidence-map.md">{t.evidence}</a>
+        </nav>
+        <p>{t.license}</p>
+      </div>
     </footer>
   </body>
 </html>

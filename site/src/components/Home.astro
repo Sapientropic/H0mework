@@ -10,12 +10,11 @@ const t = T[lang];
 const papers = PAPERS.map((paper) => ({ ...paperOf(paper.slug, lang), stats: statsOf(paper.slug), thumb: paper.figure ? figureSvgOf(paper.figure.name) : "" }));
 const guide = "https://github.com/Sapientropic/H0mework/blob/main/docs/first-release-reproduction.md";
 ---
-<Base lang={lang} title={`${t.site} · ${t.tagline}`} alternate={t.otherHref}>
+<Base lang={lang} title={`${t.site} · ${t.tagline.replace("|", "")}`} alternate={t.otherHref}>
   <style is:global set:html={isoCss}></style>
   <div class="wrap">
     <section class="hero prose">
-      <p class="eyebrow">H0mework</p>
-      <h1>{t.tagline}</h1>
+      <h1>{t.tagline.split("|").map((phrase) => <span class="phrase">{phrase}</span>)}</h1>
       <p class="lede">{t.lede}</p>
     </section>
     <section class="section">
@@ -23,8 +22,9 @@ const guide = "https://github.com/Sapientropic/H0mework/blob/main/docs/first-rel
       {papers.map((paper) => (
         <a class="paper-card" href={paperHref(lang, paper.slug)}>
           <div>
-            <h3>{paper.title}</h3>
-            <p>{paper.other}</p>
+            <h3>{paper.main}</h3>
+            {paper.sub && <p class="card-sub">{paper.sub}</p>}
+            <p class="other">{paper.other}</p>
             <ul class="stats">
               <li><b>{paper.stats.claims}</b>{t.statClaims}</li>
               <li><b>{paper.stats.modules}</b>{t.statModules}</li>

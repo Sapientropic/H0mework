@@ -16,14 +16,15 @@ const ordered = featured ? [...claims.filter((c) => c.id === featured), ...claim
 <Base lang={lang} title={paper.title} alternate={paperHref(lang === "zh" ? "en" : "zh", slug)}>
   <div class="wrap">
     <header class="hero">
-      <p class="eyebrow">{t.papers}</p>
-      <h1 class="prose">{paper.title}</h1>
-      <p class="subtitle prose">{paper.other}</p>
+      <p class="eyebrow">{t.papers} · {paper.date}</p>
+      <h1 class="prose">{paper.main}</h1>
+      {paper.sub && <p class="title-sub prose">{paper.sub}</p>}
+      <p class="other prose">{paper.other}</p>
       <div class="actions">
         <a class="button primary" href={paper.links.pdf}>{t.pdf}</a>
         <a class="button" href={paper.links.supplement}>{t.supplement}</a>
         <a class="button" href={paper.links.arxiv}>{t.arxiv}</a>
-        <a class="button" href={paper.links.doi}>DOI {paper.doi}</a>
+        <a class="doi" href={paper.links.doi}>DOI {paper.doi}</a>
       </div>
       <ul class="stats">
         <li><b>{stats.claims}</b>{t.statClaims}</li>
@@ -45,7 +46,7 @@ const ordered = featured ? [...claims.filter((c) => c.id === featured), ...claim
     </section>
     <section class="section">
       <h2>{t.claims}</h2>
-      <p class="subtitle prose">{t.claimsNote}</p>
+      <p class="note prose">{t.claimsNote}</p>
       <ol class="claims">
         {ordered.map((claim) => (
           <li class="claim" id={claim.id}>
@@ -53,24 +54,28 @@ const ordered = featured ? [...claims.filter((c) => c.id === featured), ...claim
               <summary>
                 <span class="id">{claim.id}</span>
                 <span class="title">{claim.title}{claim.id === featured && <span class="tag">{t.figure}</span>}</span>
-                <span class="where">{claim.location}</span>
+                <span class="where" title={claim.location}>{claim.section}</span>
               </summary>
               <div class="body prose">
                 <p>{claim.statement}</p>
                 {claim.premises && <p class="premise">{t.premises}：{claim.premises}</p>}
+                <p class="premise">{t.location}：{claim.location}</p>
                 {claim.lean.length > 0 && (
                   <>
                     <h4>{t.lean} · {claim.lean.length}</h4>
                     <ul class="modules">
                       {claim.lean.map((lean) => (
                         <li>
-                          <a href={lean.link} title={lean.module}>{lean.short}</a>
-                          <span class="count">{lean.declarations.length} {t.declarations}</span>
-                          {lean.declarations.length > 0 && (
+                          {lean.declarations.length > 0 ? (
                             <details>
-                              <summary>{t.showDeclarations}</summary>
+                              <summary>
+                                <a href={lean.link} title={lean.module}>{lean.short}</a>
+                                <span class="count" title={t.showDeclarations}>{lean.declarations.length} {t.declarations}</span>
+                              </summary>
                               <div class="decls">{lean.declarations.map((decl) => <a href={decl.link}>{decl.name}</a>)}</div>
                             </details>
+                          ) : (
+                            <a href={lean.link} title={lean.module}>{lean.short}</a>
                           )}
                         </li>
                       ))}

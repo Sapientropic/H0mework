@@ -3,7 +3,7 @@ import type { Lang } from "./papers";
 export const T = {
   zh: {
     site: "H0mework",
-    tagline: "一组论文背后的证明与证据。",
+    tagline: "一组论文背后的|证明与证据。",
     lede: "论文用文字讲故事，这里把每一句写成定理的话交给机器，从头再核一遍。读者不必相信作者，你可以亲手检验。",
     papers: "首发论文",
     read: "阅读论文",
@@ -15,6 +15,7 @@ export const T = {
     supplement: "补充材料",
     arxiv: "arXiv 版",
     premises: "前提",
+    location: "位置",
     lean: "Lean 模块",
     artifacts: "复现程序与证据",
     declarations: "个声明",
@@ -33,10 +34,12 @@ export const T = {
     otherHref: "/en/",
     home: "/",
     repo: "源码仓库",
+    evidence: "证据对应表",
+    license: "代码与证据 Apache-2.0；论文 CC BY 4.0。",
   },
   en: {
     site: "H0mework",
-    tagline: "The proofs and evidence behind a set of papers.",
+    tagline: "The proofs and evidence|behind a set of papers.",
     lede: "The papers tell the story in words; here every sentence written as a theorem goes to a machine and is checked from scratch. You don't have to trust the author: you can check it yourself.",
     papers: "First-release papers",
     read: "Read the paper",
@@ -48,6 +51,7 @@ export const T = {
     supplement: "Supplement",
     arxiv: "arXiv version",
     premises: "Premises",
+    location: "Location",
     lean: "Lean modules",
     artifacts: "Replay programs and evidence",
     declarations: "declarations",
@@ -66,6 +70,8 @@ export const T = {
     otherHref: "/",
     home: "/en/",
     repo: "Repository",
+    evidence: "Evidence map",
+    license: "Code and evidence Apache-2.0; papers CC BY 4.0.",
   },
 } satisfies Record<Lang, Record<string, string>>;
 

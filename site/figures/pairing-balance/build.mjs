@@ -36,7 +36,7 @@ const P = k.fitProjection(
   [...k.boxCorners(PLATE, -PLATE_H - FOOT_H, 0), [-BEAM.half - 4, 0, PIVOT[2] + 20], [BEAM.half + 4, 0, PIVOT[2] + 20], [0, 0, PIVOT[2] + 12]],
   WIDTH,
   HEIGHT,
-  { pad: 26, azimuth: 86 },
+  { pad: 26, azimuth: 90 },
 );
 
 const at = (point) => k.iso(point, P);
@@ -312,7 +312,7 @@ function draw(dt) {
   const z = panTop(0, 1)[2] + 4.2;
   part("phase-upper").setAttribute("d", pointerOnTop(kit, P, [BEAM.arm, 0], UP + b.theta, 6.4, 9.6, z - 1.2 + 0.05));
   part("phase-lower").setAttribute("d", pointerOnTop(kit, P, [BEAM.arm, 0], UP - b.theta, 0, 4.4, z + 1.6));
-  part("clock").setAttribute("d", pointerOnTop(kit, P, CLOCK.at, UP + (u * Math.PI) / 2, -2, CLOCK.r - 3.6, CLOCK.h + 1.05));
+  part("clock").setAttribute("d", pointerOnTop(kit, P, CLOCK.at, UP + (u * Math.PI) / 2, -2, CLOCK.r - 2.8, CLOCK.h + 1.05));
   knobX = still.matches || !dt ? SWITCH[withS ? "on" : "off"] : knobX + (SWITCH[withS ? "on" : "off"] - knobX) * (1 - Math.exp(-dt / 0.15));
   part("knob").setAttribute("transform", translateAlong(P, [knobX, 0, 0]));
   const shown = (u % 4).toFixed(2);
