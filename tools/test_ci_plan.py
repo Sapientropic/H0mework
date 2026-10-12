@@ -793,15 +793,15 @@ class ArtifactTests(unittest.TestCase):
         self.assertFalse((restored / "Untraced.olean").exists())
 
     def test_outputs_changed_or_removed_during_copy_are_not_checkpointed(self):
-        original_copy = shutil.copy2
+        original_link = os.link
         for remove in (False, True):
             with self.subTest(remove=remove):
                 self.file("lib/lean/H0mework/Done.olean")
                 trace = self.file("lib/lean/H0mework/Done.trace")
 
-                def copy(source, target):
-                    result = original_copy(source, target)
-                    if source.suffix == ".olean":
+                def link(source, target):
+                    result = original_link(source, target)
+                    if Path(source).suffix == ".olean":
                         if remove:
                             trace.unlink()
                         else:
@@ -809,7 +809,7 @@ class ArtifactTests(unittest.TestCase):
                     return result
 
                 archive = self.root / "unstable.tar.zst"
-                with patch("ci_plan.shutil.copy2", side_effect=copy):
+                with patch("ci_plan.os.link", side_effect=link):
                     self.assertEqual(pack_checkpoint(self.root, ["H0mework.Done"], archive), 0)
                 self.assertFalse(archive.exists())
 

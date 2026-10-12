@@ -675,7 +675,12 @@ def pack_checkpoint(root: Path, modules: list[str], archive: Path) -> int:
                     target = snapshot / "Lean/.lake/build" / source.relative_to(build)
                     target.parent.mkdir(parents=True, exist_ok=True)
                     destinations.append(target)
-                    shutil.copy2(source, target)
+                    # Settled outputs are not rewritten, so a hard link snapshots them without
+                    # doubling the disk use of a large part.
+                    try:
+                        os.link(source, target)
+                    except OSError:
+                        shutil.copy2(source, target)
                 after = {p: (p.stat().st_size, p.stat().st_mtime_ns) for p in files}
                 unchanged = before == after and files == list(artifact_files(build, [name]))
             except FileNotFoundError:
