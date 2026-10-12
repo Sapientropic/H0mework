@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "figures": "bun figures/source-tape/check.mjs && bun figures/source-tape/build.mjs --fragment",
+    "figures": "bun figures/source-tape/check.mjs && bun figures/source-tape/build.mjs --fragment && bun figures/pairing-balance/check.mjs && bun figures/pairing-balance/build.mjs --fragment",
     "dev": "bun run figures && bun --bun astro dev",
     "build": "bun run figures && bun --bun astro build",
     "preview": "bun --bun astro preview"

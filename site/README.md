@@ -20,3 +20,4 @@ bun run build      # 先跑图的模型自检与构建，再出 dist/
 | 图 | 论文 | 主张 | 定理 |
 | --- | --- | --- | --- |
 | `source-tape` | source-process-core | core.C23 | 定理 3.9：整树程序的执行、计费与独立逆读 |
+| `pairing-balance` | physics-common-source | phys.P4 | 定理 6.2 与例 6.6：经典—量子配对与暗时刻反例 |

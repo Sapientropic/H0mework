@@ -19,7 +19,7 @@ export const repoLink = (path: string, line?: number) => `${REPO}/${path}${line 
 // DOIs are registered in the root README; slugs and figures belong to the site.
 export const PAPERS = [
   { slug: "source-process-core", doi: "10.5281/zenodo.23210084", figure: { name: "source-tape", claim: "core.C23" } },
-  { slug: "physics-common-source", doi: "10.5281/zenodo.23210292", figure: null },
+  { slug: "physics-common-source", doi: "10.5281/zenodo.23210292", figure: { name: "pairing-balance", claim: "phys.P4" } },
 ] as const;
 export type Slug = (typeof PAPERS)[number]["slug"];
 
