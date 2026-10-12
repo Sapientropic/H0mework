@@ -16,7 +16,7 @@ const ordered = featured ? [...claims.filter((c) => c.id === featured), ...claim
 <Base lang={lang} title={paper.title} alternate={paperHref(lang === "zh" ? "en" : "zh", slug)}>
   <div class="wrap">
     <header class="hero">
-      <p class="eyebrow">{t.papers} · {paper.date}</p>
+      <p class="eyebrow">{t.paper} · {paper.date}</p>
       <h1 class="prose">{paper.main}</h1>
       {paper.sub && <p class="title-sub prose">{paper.sub}</p>}
       <p class="other prose">{paper.other}</p>
@@ -58,8 +58,7 @@ const ordered = featured ? [...claims.filter((c) => c.id === featured), ...claim
               </summary>
               <div class="body prose">
                 <p>{claim.statement}</p>
-                {claim.premises && <p class="premise">{t.premises}：{claim.premises}</p>}
-                <p class="premise">{t.location}：{claim.location}</p>
+                <p class="meta">{t.location}{lang === "zh" ? "：" : ": "}{claim.location}</p>
                 {claim.lean.length > 0 && (
                   <>
                     <h4>{t.lean} · {claim.lean.length}</h4>

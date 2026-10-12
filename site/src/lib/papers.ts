@@ -1,5 +1,6 @@
 // Build-time view of the repository: papers, abstracts and the claim → Lean map.
 // Every fact shown on the site is read from these files, never retyped.
+import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { unified } from "unified";
@@ -74,7 +75,6 @@ type Claim = {
   paper: string;
   title: string;
   statement: string;
-  quantifiers_premises: string;
   status: string;
   text_location: { selection: Record<Lang, string> };
   producers: Producer[];
@@ -82,6 +82,19 @@ type Claim = {
 
 let mapCache: { claims: Claim[] } | null = null;
 const claimMap = () => (mapCache ??= JSON.parse(read("docs/first-release-map.json")));
+
+// English claims are translated from the registered Chinese ones. Each entry carries a
+// fingerprint of the Chinese it was translated from; a changed claim falls back to Chinese.
+type English = Record<string, { title: string; statement: string; zh: string }>;
+let englishCache: English | null = null;
+const fingerprint = (claim: Claim) => createHash("sha256").update(`${claim.title}\n${claim.statement}`).digest("hex").slice(0, 16);
+function textOf(claim: Claim, lang: Lang) {
+  if (lang === "zh") return { title: claim.title, statement: claim.statement };
+  const entry = (englishCache ??= JSON.parse(readFileSync(resolve(process.cwd(), "src/data/claims-en.json"), "utf8")))[claim.id];
+  if (entry?.zh === fingerprint(claim)) return { title: entry.title, statement: entry.statement };
+  console.warn(`[claims-en] ${claim.id}: English text missing or stale; showing the registered Chinese`);
+  return { title: claim.title, statement: claim.statement };
+}
 
 // "H0mework.Realization.Operations.Tree.Fold.Source" → "Tree.Fold.Source": the tail names the
 // mathematical object; the full name stays in the link title.
@@ -107,13 +120,11 @@ export function claimsOf(slug: string, lang: Lang) {
       const lean = claim.producers.filter((producer) => producer.kind === "lean" && producer.public?.module);
       return {
         id: claim.id,
-        title: claim.title,
-        statement: claim.statement,
-        premises: claim.quantifiers_premises,
+        ...textOf(claim, lang),
         status: claim.status,
         location: claim.text_location.selection[lang],
-        // The row shows only the leading section ("§3.4", "§8.1–§8.3"); the body shows the rest.
-        section: claim.text_location.selection[lang].split(/[\s；;]/)[0],
+        // The row shows only the leading reference ("§3.4", "§8.1–§8.3", "Theorem 6.2"); the body shows the rest.
+        section: claim.text_location.selection[lang].match(/^(§[^\s；;,，]+|[^\s\d；;,，、]*\s?[\d.A-Z]+[\d.–()]*)/)?.[1] ?? claim.text_location.selection[lang],
         kernelPassed: lean.every((producer) => producer.verification?.kernel === "passed"),
         declarationCount: lean.reduce((sum, producer) => sum + (producer.declarations?.length ?? 0), 0),
         lean: lean.map((producer) => ({
