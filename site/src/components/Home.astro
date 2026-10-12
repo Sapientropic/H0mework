@@ -1,23 +1,47 @@
 ---
 import Base from "../layouts/Base.astro";
-import { PAPERS, paperOf, type Lang } from "../lib/papers";
+import isoCss from "../../figures/kit/iso.css?raw";
+import { PAPERS, figureSvgOf, paperOf, statsOf, type Lang } from "../lib/papers";
 import { T, paperHref } from "../lib/i18n";
 
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const t = T[lang];
-const papers = PAPERS.map((paper) => paperOf(paper.slug, lang));
+const papers = PAPERS.map((paper) => ({ ...paperOf(paper.slug, lang), stats: statsOf(paper.slug), thumb: paper.figure ? figureSvgOf(paper.figure.name) : "" }));
+const guide = "https://github.com/Sapientropic/H0mework/blob/main/docs/first-release-reproduction.md";
 ---
-<Base lang={lang} title={`${t.site} · ${t.papers}`} alternate={t.otherHref}>
+<Base lang={lang} title={`${t.site} · ${t.tagline}`} alternate={t.otherHref}>
+  <style is:global set:html={isoCss}></style>
   <div class="wrap">
-    <h1>H0mework</h1>
-    <p class="lede">{t.tagline}</p>
-    <h2>{t.papers}</h2>
-    {papers.map((paper) => (
-      <a class="card" href={paperHref(lang, paper.slug)}>
-        <h3>{paper.title}</h3>
-        <p>{paper.other}</p>
-      </a>
-    ))}
+    <section class="hero prose">
+      <p class="eyebrow">H0mework</p>
+      <h1>{t.tagline}</h1>
+      <p class="lede">{t.lede}</p>
+    </section>
+    <section class="section">
+      <h2>{t.papers}</h2>
+      {papers.map((paper) => (
+        <a class="paper-card" href={paperHref(lang, paper.slug)}>
+          <div>
+            <h3>{paper.title}</h3>
+            <p>{paper.other}</p>
+            <ul class="stats">
+              <li><b>{paper.stats.claims}</b>{t.statClaims}</li>
+              <li><b>{paper.stats.modules}</b>{t.statModules}</li>
+              {paper.stats.kernel && <li class="ok">✓ {t.statKernel}</li>}
+            </ul>
+          </div>
+          {paper.thumb && <div class="thumb iso" data-theme="light" aria-hidden="true" set:html={paper.thumb} />}
+        </a>
+      ))}
+    </section>
+    <section class="section">
+      <div class="prose">
+        <h2>{t.check}</h2>
+        <p>{t.checkNote}</p>
+        <pre class="command">make check-first-release-entry</pre>
+        <p>{t.checkMore}<a href={guide}>{t.guide}</a></p>
+      </div>
+    </section>
   </div>
 </Base>

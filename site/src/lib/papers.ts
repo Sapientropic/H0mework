@@ -37,13 +37,14 @@ export function paperOf(slug: string, lang: Lang) {
   const other = (lines.find((line) => /^\*\*[^*]+\*\*$/.test(line)) ?? "").replace(/\*\*/g, "");
   const start = lines.findIndex((line) => line === (lang === "zh" ? "## 摘要" : "## Abstract"));
   const end = lines.findIndex((line, index) => index > start && /^(##|---)/.test(line));
-  const abstract = lines.slice(start + 1, end).join("\n").trim();
+  const paragraphs = lines.slice(start + 1, end).join("\n").trim().split(/\n\s*\n/);
   const pdf = (suffix: string) => repoLink(`papers/first-release/pdf/${slug}${suffix}.pdf`);
   return {
     ...meta,
     title,
     other,
-    abstractHtml: renderMarkdown(abstract),
+    abstractLead: renderMarkdown(paragraphs[0]),
+    abstractRest: renderMarkdown(paragraphs.slice(1).join("\n\n")),
     links: {
       doi: `https://doi.org/${meta.doi}`,
       pdf: pdf(lang === "en" ? "-en" : ""),
@@ -56,7 +57,7 @@ export function paperOf(slug: string, lang: Lang) {
 type Declaration = { name: string; qualified_name: string; kind: string; line: number };
 type Producer = {
   kind: string;
-  public?: { path: string; module: string };
+  public?: { path: string; module?: string };
   verification?: { kernel?: string; identity?: string };
   declarations?: Declaration[];
 };
@@ -67,7 +68,6 @@ type Claim = {
   statement: string;
   quantifiers_premises: string;
   status: string;
-  classification: string;
   text_location: { selection: Record<Lang, string> };
   producers: Producer[];
 };
@@ -75,28 +75,52 @@ type Claim = {
 let mapCache: { claims: Claim[] } | null = null;
 const claimMap = () => (mapCache ??= JSON.parse(read("docs/first-release-map.json")));
 
+// "H0mework.Realization.Operations.Tree.Fold.Source" → "Tree.Fold.Source": the tail names the
+// mathematical object; the full name stays in the link title.
+const shortModule = (module: string) => module.split(".").slice(-3).join(".");
+
 export function claimsOf(slug: string, lang: Lang) {
   return claimMap()
     .claims.filter((claim) => claim.paper === slug)
-    .map((claim) => ({
-      id: claim.id,
-      title: claim.title,
-      statement: claim.statement,
-      premises: claim.quantifiers_premises,
-      status: claim.status,
-      classification: claim.classification,
-      location: claim.text_location.selection[lang],
-      lean: claim.producers
-        .filter((producer) => producer.kind === "lean" && producer.public)
-        .map((producer) => ({
-          module: producer.public!.module,
-          path: producer.public!.path,
-          kernel: producer.verification?.kernel ?? "",
-          declarations: (producer.declarations ?? []).map((decl) => ({
-            name: decl.name,
-            kind: decl.kind,
-            link: repoLink(producer.public!.path, decl.line),
-          })),
+    .map((claim) => {
+      const lean = claim.producers.filter((producer) => producer.kind === "lean" && producer.public?.module);
+      return {
+        id: claim.id,
+        title: claim.title,
+        statement: claim.statement,
+        premises: claim.quantifiers_premises,
+        status: claim.status,
+        location: claim.text_location.selection[lang],
+        kernelPassed: lean.every((producer) => producer.verification?.kernel === "passed"),
+        declarationCount: lean.reduce((sum, producer) => sum + (producer.declarations?.length ?? 0), 0),
+        lean: lean.map((producer) => ({
+          module: producer.public!.module!,
+          short: shortModule(producer.public!.module!),
+          link: repoLink(producer.public!.path, producer.declarations?.[0]?.line),
+          declarations: (producer.declarations ?? []).map((decl) => ({ name: decl.name, link: repoLink(producer.public!.path, decl.line) })),
         })),
-    }));
+        artifacts: claim.producers
+          .filter((producer) => producer.kind !== "lean" && producer.public)
+          .map((producer) => ({ path: producer.public!.path, name: producer.public!.path.split("/").pop()!, link: repoLink(producer.public!.path) })),
+      };
+    });
+}
+
+export function statsOf(slug: string) {
+  const claims = claimsOf(slug, "zh");
+  const modules = new Set(claims.flatMap((claim) => claim.lean.map((lean) => lean.module)));
+  return {
+    claims: claims.length,
+    verified: claims.filter((claim) => claim.status === "verified").length,
+    modules: modules.size,
+    declarations: claims.reduce((sum, claim) => sum + claim.declarationCount, 0),
+    kernel: claims.every((claim) => claim.kernelPassed),
+    artifacts: claims.reduce((sum, claim) => sum + claim.artifacts.length, 0),
+  };
+}
+
+// The static first frame of a figure, for thumbnails.
+export function figureSvgOf(name: string) {
+  const fragment = JSON.parse(readFileSync(resolve(process.cwd(), "src/generated", `${name}.json`), "utf8"));
+  return String(fragment.html.zh.match(/<svg[\s\S]*?<\/svg>/)?.[0] ?? "");
 }
