@@ -1,0 +1,7 @@
+---
+import PaperPage from "../../components/PaperPage.astro";
+import { PAPERS } from "../../lib/papers";
+
+export const getStaticPaths = () => PAPERS.map((paper) => ({ params: { slug: paper.slug } }));
+---
+<PaperPage lang="zh" slug={Astro.params.slug!} />

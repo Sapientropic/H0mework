@@ -1,0 +1,33 @@
+---
+import "katex/dist/katex.min.css";
+import "../styles/site.css";
+import { T } from "../lib/i18n";
+import type { Lang } from "../lib/papers";
+
+interface Props { lang: Lang; title: string; alternate: string }
+const { lang, title, alternate } = Astro.props;
+const t = T[lang];
+---
+<!doctype html>
+<html lang={lang === "zh" ? "zh-CN" : "en"}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <header class="site">
+      <div class="wide">
+        <a class="brand" href={t.home}>H<b>0</b>mework</a>
+        <nav class="site">
+          <a href="https://github.com/Sapientropic/H0mework">{t.repo}</a>
+          <a href={alternate} hreflang={lang === "zh" ? "en" : "zh"}>{t.other}</a>
+        </nav>
+      </div>
+    </header>
+    <main><slot /></main>
+    <footer class="site">
+      <div class="wide">Apache-2.0 · CC BY 4.0 · H0mework</div>
+    </footer>
+  </body>
+</html>

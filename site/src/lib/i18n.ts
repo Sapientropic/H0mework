@@ -1,0 +1,46 @@
+import type { Lang } from "./papers";
+
+export const T = {
+  zh: {
+    site: "H0mework",
+    tagline: "一组论文背后的证明与证据。读者不必相信作者，你可以亲手检验。",
+    papers: "首发论文",
+    read: "阅读",
+    abstract: "摘要",
+    claims: "主张与证明",
+    claimsNote: "每条主张都登记在逐主张映射中，并链接到公开仓库里的 Lean 声明。",
+    pdf: "正文 PDF",
+    supplement: "补充材料",
+    arxiv: "arXiv 版",
+    lean: "Lean",
+    kernel: "内核检查",
+    premises: "前提",
+    location: "位置",
+    other: "English",
+    otherHref: "/en/",
+    home: "/",
+    repo: "源码仓库",
+  },
+  en: {
+    site: "H0mework",
+    tagline: "The proofs and evidence behind a set of papers. You don't have to trust the author; you can check it yourself.",
+    papers: "First-release papers",
+    read: "Read",
+    abstract: "Abstract",
+    claims: "Claims and proofs",
+    claimsNote: "Each claim is registered in the claim map and linked to its Lean declarations in the public repository. Claim summaries are kept in their registered (Chinese) form.",
+    pdf: "Paper PDF",
+    supplement: "Supplement",
+    arxiv: "arXiv version",
+    lean: "Lean",
+    kernel: "Kernel",
+    premises: "Premises",
+    location: "Location",
+    other: "中文",
+    otherHref: "/",
+    home: "/en/",
+    repo: "Repository",
+  },
+} satisfies Record<Lang, Record<string, string>>;
+
+export const paperHref = (lang: Lang, slug: string) => `${lang === "en" ? "/en" : ""}/papers/${slug}/`;

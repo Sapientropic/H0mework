@@ -1,0 +1,53 @@
+:root {
+  --paper: #fbfbfa;
+  --page: #f2f2ef;
+  --ink: #18181a;
+  --text: #46464a;
+  --muted: #8c8c90;
+  --rule: #dcdcd9;
+  --cinnabar: #c8372d;
+  --serif: "Noto Serif SC", "Source Han Serif SC", "Songti SC", Georgia, serif;
+  --sans: ui-sans-serif, system-ui, -apple-system, "PingFang SC", "Segoe UI", sans-serif;
+  --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--text); font: 16px/1.75 var(--sans); -webkit-font-smoothing: antialiased; }
+a { color: var(--ink); text-decoration-color: var(--rule); text-underline-offset: 3px; }
+a:hover { text-decoration-color: var(--cinnabar); }
+.wrap { width: min(760px, 100% - 32px); margin: 0 auto; }
+.wide { width: min(980px, 100% - 32px); margin: 0 auto; }
+header.site { border-bottom: 1px solid var(--rule); background: var(--paper); }
+header.site .wide { display: flex; justify-content: space-between; align-items: center; height: 56px; }
+.brand { font: 600 15px/1 var(--mono); letter-spacing: .06em; text-decoration: none; }
+.brand b { color: var(--cinnabar); font-weight: 600; }
+nav.site { display: flex; gap: 20px; font-size: 14px; }
+nav.site a { text-decoration: none; color: var(--muted); }
+nav.site a:hover { color: var(--ink); }
+h1, h2, h3 { font-family: var(--serif); color: var(--ink); font-weight: 600; line-height: 1.35; }
+h1 { font-size: clamp(26px, 4vw, 36px); margin: 56px 0 8px; }
+h2 { font-size: 22px; margin: 56px 0 16px; padding-top: 16px; border-top: 1px solid var(--rule); }
+.subtitle { color: var(--muted); font-family: var(--serif); margin: 0 0 24px; }
+.lede { font-size: 18px; color: var(--ink); }
+.actions { display: flex; flex-wrap: wrap; gap: 8px 20px; font: 13px/1.6 var(--mono); }
+.actions a { text-decoration: none; border-bottom: 1px solid var(--rule); }
+.actions a:hover { border-color: var(--cinnabar); }
+.card { display: block; padding: 22px 24px; margin: 16px 0; background: var(--paper); box-shadow: 0 0 0 1px var(--rule); text-decoration: none; }
+.card:hover { box-shadow: 0 0 0 1px var(--muted); }
+.card h3 { margin: 0 0 4px; font-size: 20px; }
+.card p { margin: 0; color: var(--muted); font-size: 14px; }
+.abstract p { margin: 0 0 1em; }
+.claims { list-style: none; padding: 0; margin: 0; }
+.claim { padding: 18px 0; border-bottom: 1px solid var(--rule); }
+.claim header { display: flex; gap: 12px; align-items: baseline; flex-wrap: wrap; }
+.claim .id { font: 12px/1 var(--mono); color: var(--cinnabar); }
+.claim h3 { margin: 0; font-size: 17px; }
+.claim .where { font: 12px/1 var(--mono); color: var(--muted); margin-left: auto; }
+.claim p { margin: 8px 0 0; font-size: 14.5px; }
+.claim .premise { color: var(--muted); font-size: 13.5px; }
+.claim .lean { margin-top: 8px; font: 12px/1.7 var(--mono); color: var(--muted); }
+.claim .lean a { color: var(--text); }
+.claim.featured { background: var(--paper); box-shadow: 0 0 0 1px var(--rule); padding: 18px 20px; margin: 8px -20px; }
+.figure-slot { margin: 40px 0 8px; }
+.figure-slot .iso-figure { margin: 0; }
+footer.site { margin: 96px 0 0; padding: 32px 0 48px; border-top: 1px solid var(--rule); color: var(--muted); font-size: 13px; }

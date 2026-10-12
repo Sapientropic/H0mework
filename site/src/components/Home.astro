@@ -1,0 +1,23 @@
+---
+import Base from "../layouts/Base.astro";
+import { PAPERS, paperOf, type Lang } from "../lib/papers";
+import { T, paperHref } from "../lib/i18n";
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = T[lang];
+const papers = PAPERS.map((paper) => paperOf(paper.slug, lang));
+---
+<Base lang={lang} title={`${t.site} · ${t.papers}`} alternate={t.otherHref}>
+  <div class="wrap">
+    <h1>H0mework</h1>
+    <p class="lede">{t.tagline}</p>
+    <h2>{t.papers}</h2>
+    {papers.map((paper) => (
+      <a class="card" href={paperHref(lang, paper.slug)}>
+        <h3>{paper.title}</h3>
+        <p>{paper.other}</p>
+      </a>
+    ))}
+  </div>
+</Base>

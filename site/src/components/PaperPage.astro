@@ -1,0 +1,54 @@
+---
+import Base from "../layouts/Base.astro";
+import Figure from "./Figure.astro";
+import { claimsOf, paperOf, type Lang } from "../lib/papers";
+import { T, paperHref } from "../lib/i18n";
+
+interface Props { lang: Lang; slug: string }
+const { lang, slug } = Astro.props;
+const t = T[lang];
+const paper = paperOf(slug, lang);
+const claims = claimsOf(slug, lang);
+const featured = paper.figure?.claim;
+const ordered = featured ? [...claims.filter((c) => c.id === featured), ...claims.filter((c) => c.id !== featured)] : claims;
+---
+<Base lang={lang} title={paper.title} alternate={paperHref(lang === "zh" ? "en" : "zh", slug)}>
+  <article class="wrap">
+    <h1>{paper.title}</h1>
+    <p class="subtitle">{paper.other}</p>
+    <div class="actions">
+      <a href={paper.links.doi}>DOI {paper.doi}</a>
+      <a href={paper.links.pdf}>{t.pdf}</a>
+      <a href={paper.links.supplement}>{t.supplement}</a>
+      <a href={paper.links.arxiv}>{t.arxiv}</a>
+    </div>
+  </article>
+  {paper.figure && <div class="wide"><Figure name={paper.figure.name} lang={lang} /></div>}
+  <article class="wrap">
+    <h2>{t.abstract}</h2>
+    <div class="abstract" set:html={paper.abstractHtml} />
+    <h2>{t.claims}</h2>
+    <p class="subtitle">{t.claimsNote}</p>
+    <ol class="claims">
+      {ordered.map((claim) => (
+        <li class:list={["claim", { featured: claim.id === featured }]} id={claim.id}>
+          <header>
+            <span class="id">{claim.id}</span>
+            <h3>{claim.title}</h3>
+            <span class="where">{claim.location}</span>
+          </header>
+          <p>{claim.statement}</p>
+          {claim.premises && <p class="premise">{t.premises}：{claim.premises}</p>}
+          {claim.lean.map((lean) => (
+            <div class="lean">
+              {t.lean} · <a href={lean.declarations[0]?.link ?? ""}>{lean.module}</a>
+              {lean.kernel && <> · {t.kernel} {lean.kernel}</>}
+              <br />
+              {lean.declarations.map((decl, index) => (<>{index > 0 && " · "}<a href={decl.link}>{decl.name}</a></>))}
+            </div>
+          ))}
+        </li>
+      ))}
+    </ol>
+  </article>
+</Base>
