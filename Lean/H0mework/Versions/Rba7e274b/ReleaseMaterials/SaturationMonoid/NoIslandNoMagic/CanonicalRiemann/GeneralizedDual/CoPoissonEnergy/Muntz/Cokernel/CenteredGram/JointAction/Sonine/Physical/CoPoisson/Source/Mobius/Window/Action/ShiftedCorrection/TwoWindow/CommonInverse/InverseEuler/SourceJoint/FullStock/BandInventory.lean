@@ -1,0 +1,133 @@
+import H0mework.Versions.Rba7e274b.ReleaseMaterials.SaturationMonoid.NoIslandNoMagic.CanonicalRiemann.GeneralizedDual.CoPoissonEnergy.Muntz.Cokernel.CenteredGram.JointAction.Sonine.Physical.CoPoisson.Source.Mobius.Window.Action.ShiftedCorrection.TwoWindow.CommonInverse.InverseEuler.SourceJoint.FullStock.Source
+
+set_option autoImplicit false
+set_option Elab.async false
+set_option maxHeartbeats 1000000
+noncomputable section
+namespace SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot
+namespace NoIslandNoMagic.CanonicalRiemann.ClozelGeneralizedDual.BurnolPhysicalState
+namespace OriginalCommonInverseForcing.SourceJoint.FullStock
+open Complex MeasureTheory Set Filter
+open scoped InnerProductSpace Topology
+open OriginalPaPhysicalGreen OriginalRieszFinitePairing OriginalRieszFiniteSource OriginalRieszFiniteColumns OriginalRieszFiniteSynthesis
+local notation "q" => (1/4:ℝ)
+local notation "P" => burnolEvenAmbientProjection
+local notation "F" => evenFaceFourierEquiv burnolUnscaledCommonGapRadius
+
+local instance inventoryAmbientComplete : CompleteSpace BurnolPaAmbientCarrier := by
+  apply IsComplete.completeSpace_coe
+  exact (evenBurnolClosedFace burnolUnscaledCommonGapRadius).isClosed.isComplete
+
+private theorem physical_gap_ae (value : BurnolPaAmbientCarrier) :
+    (value : ℝ→ℂ)=ᵐ[volume.restrict (symmetricInterval q)]
+      fun _=>burnolConstantGapCoefficient q value := by
+  have gap:=burnolGenericPhysicalValue_gap value
+  change burnolConstantGapCoefficient q value • intervalConstant q=burnolQuarterRestriction (value:BurnolL2) at gap
+  filter_upwards [LpToLpRestrictCLM_coeFn ℂ (symmetricInterval q) (value:BurnolL2),
+    Lp.coeFn_smul (burnolConstantGapCoefficient q value) (intervalConstant q),intervalConstant_coeFn q]
+    with x restricted scaled constant
+  change burnolQuarterRestriction (value:BurnolL2) x=(value:BurnolL2) x at restricted
+  rw [← gap,scaled] at restricted
+  simpa only [Pi.smul_apply,smul_eq_mul,constant,mul_one] using restricted.symm
+
+private theorem cutoff_pair (column : BurnolL2) (value : BurnolPaAmbientCarrier) :
+    inner ℂ (originalPhysicalCutoff q column) (value:BurnolL2)=
+      star (∫ x : ℝ,originalPhysicalCutoff q column x)*burnolConstantGapCoefficient q value := by
+  have actual:=(ae_restrict_iff' (measurableSet_symmetricInterval q)).mp (physical_gap_ae value)
+  rw [L2.inner_def]
+  calc
+    _=∫ x : ℝ,star (originalPhysicalCutoff q column x)*burnolConstantGapCoefficient q value := by
+      apply integral_congr_ae
+      filter_upwards [originalPhysicalCutoff_coeFn q column,actual] with x cutoff source
+      by_cases inside : x∈symmetricInterval q
+      · rw [source inside,RCLike.inner_apply]
+        simp only [starRingEnd_apply]
+        ring
+      · rw [cutoff,indicator_of_notMem inside]
+        simp
+    _=_ := by rw [integral_mul_const];simp only [star_def,integral_conj]
+
+private theorem projected_cutoff (column : BurnolL2) :
+    P (originalPhysicalCutoff q column)=gapMeanAdjoint (∫ x : ℝ,originalPhysicalCutoff q column x) := by
+  apply ext_inner_right ℂ
+  intro value
+  have projected:=(evenBurnolClosedFace burnolUnscaledCommonGapRadius).toSubmodule
+    |>.inner_orthogonalProjectionOnto_eq_of_mem_right value (originalPhysicalCutoff q column)
+  change inner ℂ (P (originalPhysicalCutoff q column)) value=inner ℂ (originalPhysicalCutoff q column) (value:BurnolL2) at projected
+  rw [projected,cutoff_pair,gapMeanAdjoint_eq,ContinuousLinearMap.adjoint_inner_left]
+  simp only [RCLike.inner_apply,starRingEnd_apply,mul_comm]
+  rfl
+
+private theorem cutoff_mass_split (column : BurnolL2) (regular : Integrable (column:ℝ→ℂ)) :
+    (∫ x : ℝ,(column-originalPhysicalCutoff q column:BurnolL2) x)=
+      (∫ x : ℝ,column x)-(∫ x : ℝ,originalPhysicalCutoff q column x) := by
+  have cut:Integrable (originalPhysicalCutoff q column:ℝ→ℂ):=
+    (regular.indicator (measurableSet_symmetricInterval q)).congr (originalPhysicalCutoff_coeFn q column).symm
+  rw [integral_congr_ae (Lp.coeFn_sub column (originalPhysicalCutoff q column))]
+  exact integral_sub regular cut
+
+private theorem physical_fourier_projection (value : BurnolL2) : P (fourierL2 value)=F (P value) := by
+  apply ext_inner_right ℂ
+  intro test
+  have left:=(evenBurnolClosedFace burnolUnscaledCommonGapRadius).toSubmodule
+    |>.inner_orthogonalProjectionOnto_eq_of_mem_right test (fourierL2 value)
+  have right:=(evenBurnolClosedFace burnolUnscaledCommonGapRadius).toSubmodule
+    |>.inner_orthogonalProjectionOnto_eq_of_mem_right (F test) value
+  change inner ℂ (P (fourierL2 value)) test=inner ℂ (fourierL2 value) (test:BurnolL2) at left
+  change inner ℂ (P value) (F test)=inner ℂ value (F test:BurnolL2) at right
+  rw [left,fourier_pairing,right]
+  have even:=mem_evenL2ClosedFace_iff.mp test.property.2
+  have twice:fourierL2 (fourierL2 (test:BurnolL2))=test := by rw [fourierL2_fourierL2,even]
+  have paired:=fourierL2.inner_map_map value (fourierL2 (test:BurnolL2))
+  rwa [twice] at paired
+
+/-- Both original seed masses are generated by the literal inside restrictions
+of the same columns, rather than provided as boundary prices. -/
+def meanDebt (coordinate : BurnolCompletedMellinCoordinate) (h : ℝ) : BurnolPaAmbientCarrier :=
+  gapMeanAdjoint (∫ x : ℝ,Seed.positionSeed coordinate h x)+
+    F (gapMeanAdjoint (∫ x : ℝ,Seed.fourierSeed coordinate h x))
+
+theorem actual_inside_mean_debt (coordinate : BurnolCompletedMellinCoordinate)
+    (h : ℝ) (nonnegative : 0≤h) :
+    P (positionColumn coordinate h+originalPhysicalCutoff q (positionColumn coordinate (-h)))+
+      F (P (fourierColumn coordinate (-h)+originalPhysicalCutoff q (fourierColumn coordinate h)))=
+        -meanDebt coordinate h := by
+  have positionZero:P (positionColumn coordinate h)=0 := by
+    rw [← positionColumn_quarter coordinate h nonnegative,projected_cutoff]
+    rw [positionColumn_quarter coordinate h nonnegative,positionColumn_integral_zero,map_zero]
+  have fourierZero:P (fourierColumn coordinate (-h))=0 := by
+    rw [← fourierColumn_negative_quarter coordinate h nonnegative,projected_cutoff]
+    rw [fourierColumn_negative_quarter coordinate h nonnegative,fourierColumn_integral_zero,map_zero]
+  have positionMass:=cutoff_mass_split (positionColumn coordinate (-h)) (positionColumn_integrable coordinate (-h))
+  have fourierMass:=cutoff_mass_split (fourierColumn coordinate h) (fourierColumn_integrable coordinate h)
+  rw [positionColumn_integral_zero,zero_sub,← OriginalRieszFinitePairing.CoPoisson.positionSeed_eq_exterior coordinate h nonnegative] at positionMass
+  rw [fourierColumn_integral_zero,zero_sub,← OriginalRieszFinitePairing.CoPoisson.fourierSeed_eq_exterior coordinate h nonnegative] at fourierMass
+  have pm:(∫ x : ℝ,originalPhysicalCutoff q (positionColumn coordinate (-h)) x)=
+      -(∫ x : ℝ,Seed.positionSeed coordinate h x) := by linear_combination positionMass
+  have fm:(∫ x : ℝ,originalPhysicalCutoff q (fourierColumn coordinate h) x)=
+      -(∫ x : ℝ,Seed.fourierSeed coordinate h x) := by linear_combination fourierMass
+  rw [map_add,map_add,positionZero,fourierZero,zero_add,zero_add,projected_cutoff,projected_cutoff,pm,fm,map_neg,map_neg,map_neg]
+  unfold meanDebt
+  module
+
+theorem actual_whole_forcing_source (coordinate : BurnolCompletedMellinCoordinate)
+    (h : ℝ) (nonnegative : 0≤h) :
+    P (forcingIntegral coordinate h+forcingIntegral coordinate (-h))=
+      P (Seed.positionSeed coordinate h+fourierL2 (Seed.fourierSeed coordinate h))-meanDebt coordinate h := by
+  have columns : forcingIntegral coordinate h+forcingIntegral coordinate (-h)=
+      (Seed.positionSeed coordinate h+fourierL2 (Seed.fourierSeed coordinate h))+
+      (positionColumn coordinate h+originalPhysicalCutoff q (positionColumn coordinate (-h)))+
+      fourierL2 (fourierColumn coordinate (-h)+originalPhysicalCutoff q (fourierColumn coordinate h)) := by
+    rw [OriginalRieszFinitePairing.CoPoisson.positionSeed_eq_exterior coordinate h nonnegative,
+      OriginalRieszFinitePairing.CoPoisson.fourierSeed_eq_exterior coordinate h nonnegative,
+      forcingIntegral_columns,forcingIntegral_columns,map_sub,map_add]
+    module
+  rw [columns,map_add,map_add,physical_fourier_projection]
+  have inside:=actual_inside_mean_debt coordinate h nonnegative
+  rw [add_assoc,inside]
+  exact (sub_eq_add_neg _ _).symm
+
+end OriginalCommonInverseForcing.SourceJoint.FullStock
+end NoIslandNoMagic.CanonicalRiemann.ClozelGeneralizedDual.BurnolPhysicalState
+end SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot
+end

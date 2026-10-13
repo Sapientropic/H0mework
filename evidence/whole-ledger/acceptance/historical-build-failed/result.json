@@ -1,0 +1,2887 @@
+{
+  "schema": "h0mework/first-release-build@1",
+  "kind": "build",
+  "ok": false,
+  "input_identity": {
+    "sha256": {
+      "claim_map": "80be66a5c4285bb4b3f2a1c8330c8e959d81a100a10a6b24780be9dfa720d8d0",
+      "export_map": "fddb7e7686e8ec3b5bc4c2925bbd5e20931812679277160f75c7481f7fecb44e",
+      "lakefile": "334b9f881cdbcbcf459ba8d5baf26ead9c11df0b5ef597513e806daf5f2f8a24",
+      "toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+      "manifest": "2fe02acc26899fd57d82018e711e79c251e26d0b6d2bb370af81db0ed312fbfd"
+    },
+    "package_inputs": {
+      "whole-ledger-b81a4438": "29b1f65c126c6176dcfe51e45c1f821200e1d577a5882f50e3c5d661ab5a485f",
+      "whole-ledger-296292fc": "fe0610999991854e3df9bdecd29465cbe3baf359eb057e9224067f625f14f8ed",
+      "whole-ledger-453de275": "c4772e8e4d825692bb652c23160628f9eb2d7b7652f7f5a310748e50ee0c44b8",
+      "whole-ledger-c19e94a5": "1886fe9facc9d58fe8baf94aaae8a66ba8d08622c7d5559927280e2d859ffd69",
+      "whole-ledger-fde5c14d": "9795ebf71967579308a61172ff4a777c2bd1aa0a942529826d6f87c58c4e7b7c",
+      "whole-ledger-b67aa48c": "5cbd927932f3c608c69632c3763083c2bda8d46f99aa223d955193336fbad797",
+      "whole-ledger-aef0ad2a": "e68d46ed2023fcdc49a278a79470553635caa7c9ace08c5b5d76603d5d46298f",
+      "whole-ledger-26b91feb": "c36f1610d95804f3e322985dee9722fcc727997148b8d08b1bb2e8d358490416",
+      "whole-ledger-e0555809": "94a714e2d6e3ed0e2a3dae6d6b67ff0bb835cb2f565787a20c2a808dee2468de",
+      "whole-ledger-c62f3d25": "71ca3ab45ec7354f4c92e02ea2b4b0417012ecb3c48d2927b1c11959387fc16d",
+      "whole-ledger-71e94e82": "c6cd9c00e2ffcf5b6fbbc97c49884acecdaf382a89398b5fb26da93ac87c1cc2",
+      "whole-ledger-9c73a630": "ce7e0890a42a2cffbba08c5c92d572b8eb5d6a877cda6e856d1ec617dcc83c69"
+    }
+  },
+  "settings": {
+    "toolchain_pin": "leanprover/lean4:v4.33.0",
+    "package_moreLeanArgs": [
+      "--trust=0",
+      "-Dweak.linter.unnecessarySimpa=false",
+      "-Dweak.linter.style.haveILetI=false",
+      "-Dweak.linter.unusedSimpArgs=false"
+    ],
+    "package_weakLeanArgs": [
+      "-DmaxHeartbeats=2000000",
+      "-Dweak.linter.unusedSectionVars=false",
+      "-Dweak.linter.unnecessarySeqFocus=false",
+      "-Dweak.linter.unusedVariables=false",
+      "-Dweak.linter.unreachableTactic=false",
+      "-Dweak.linter.unusedTactic=false",
+      "-Dweak.linter.defProp=false",
+      "-Dweak.linter.deprecated=false",
+      "-Dlinter.deprecated=false",
+      "-Dweak.linter.tacticAnalysis.introMerge=false",
+      "-Dweak.linter.constructorNameAsVariable=false"
+    ],
+    "libraries": [
+      {
+        "name": "H0mework",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_15a9a7f1af9edd94",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_3606f5269412e357",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_d700e8a5f12a0c72",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_1e1ae4b55cfaa424",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_5d60190f8c552243",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_c8f26eb536eba11f",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_05819243d0f03058",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_42d0393dda443953",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_662d860139605627",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_c5ce7c98c6fb2afe",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_4306926d26d3e100",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_524380564da88277",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_598bc2100d4a470f",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_f16f09d592d9fed1",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_38dd326bee1881e5",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_a5be13c98d55de59",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_a8ba570880d786e7",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_e94628c12cb5af16",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_e615fc1eae897d2f",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_3ec8ead604397acb",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_f3b844eed8451357",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_fb8213f28d86d220",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_343b97a439466c84",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_e7aebe388314d626",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_5ee63fcc1d2eabc2",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_048d35b0f13ffddc",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_8a02641b81044b03",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_efa122af6a18f938",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "H0meworkRelaxed",
+        "moreLeanArgs": []
+      },
+      {
+        "name": "H0meworkPinned",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_27de91880f85717a",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_84273b86d41c7cc1",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_b0054fdd1430293f",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_df027f387d2e7e21",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_a9cfcb862f08d790",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_da6d7ec0232b12e5",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_384fd6d4ee850ec5",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_70f37e98e05b9a24",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_bc8736156be163cd",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_ca63848ccd9141be",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "WholeLedgerAccountingRelease",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      }
+    ]
+  },
+  "identity_scope": {
+    "packages": [
+      "whole-ledger-b81a4438",
+      "whole-ledger-296292fc",
+      "whole-ledger-453de275",
+      "whole-ledger-c19e94a5",
+      "whole-ledger-fde5c14d",
+      "whole-ledger-b67aa48c",
+      "whole-ledger-aef0ad2a",
+      "whole-ledger-26b91feb",
+      "whole-ledger-e0555809",
+      "whole-ledger-c62f3d25",
+      "whole-ledger-71e94e82",
+      "whole-ledger-9c73a630"
+    ],
+    "proof_entries": 260
+  },
+  "cache": {
+    "kind": "existing_workspace_cache",
+    "clean_clone": false,
+    "build_directory_preexisted": true,
+    "lean_num_threads": "1",
+    "compiled_targets_before": {
+      "H0mework.Papers.WholeLedgerAccountingRb81a4438": null,
+      "H0mework.Papers.WholeLedgerAccountingR296292fc": null,
+      "H0mework.Papers.WholeLedgerAccountingR453de275": null,
+      "H0mework.Papers.WholeLedgerAccountingRc19e94a5": null,
+      "H0mework.Papers.WholeLedgerAccountingRfde5c14d": null,
+      "H0mework.Papers.WholeLedgerAccountingRb67aa48c": null,
+      "H0mework.Papers.WholeLedgerAccountingRaef0ad2a": null,
+      "H0mework.Papers.WholeLedgerAccountingR26b91feb": null,
+      "H0mework.Papers.WholeLedgerAccountingRe0555809": null,
+      "H0mework.Papers.WholeLedgerAccountingRc62f3d25": null,
+      "H0mework.Papers.WholeLedgerAccountingR71e94e82": null,
+      "H0mework.Papers.WholeLedgerAccountingR9c73a630": null
+    }
+  },
+  "packages": [
+    {
+      "id": "whole-ledger-b81a4438",
+      "paper": "whole-ledger-accounting",
+      "source_commit": "b81a443863f4d7135ebaca92c5bb7d208ccc18ca",
+      "lean_target": "H0mework.Papers.WholeLedgerAccountingRb81a4438",
+      "claim_ids": [
+        "WA1",
+        "WA2",
+        "WA3",
+        "WA4",
+        "WA5",
+        "WA6",
+        "WA7",
+        "WA8",
+        "WA9",
+        "WA10",
+        "WA11"
+      ],
+      "controls": [
+        {
+          "source_commit": "b81a443863f4d7135ebaca92c5bb7d208ccc18ca",
+          "source_path": "Lean/SaturationMonoid/LivingLawRootTotalRealityRegression.lean",
+          "source_sha256": "b0ef89eac1c906cd26a38e8125f278131ac700de9e157f3567d955f0650fbe03",
+          "original_git_source_sha256": "b0ef89eac1c906cd26a38e8125f278131ac700de9e157f3567d955f0650fbe03",
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.RootTotalRealityRegression.actual_difference_has_structural_identity",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.RootTotalRealityRegression.same_registered_occurrence_not_real_difference",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.RootTotalRealityRegression.root_rejects_magic",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.RootTotalRealityRegression.local_terminal_handoff_has_structural_identity",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.RootTotalRealityRegression.living_process_rejects_magic",
+              "kind": "theorem"
+            }
+          ],
+          "kind": "lean",
+          "public": {
+            "path": "Lean/H0mework/Arithmetic/PrimeShadow/LivingLawRootTotalRealityRegression.lean",
+            "module": "H0mework.Arithmetic.PrimeShadow.LivingLawRootTotalRealityRegression",
+            "variant": "base",
+            "sha256": "25d4063f92fb5704123eeb88b378b240e6fe8ab7ef1343ec593dff59b836ba91"
+          },
+          "classification": "control",
+          "verification": {
+            "kernel": "pending",
+            "proof_package": "whole-ledger-b81a4438"
+          },
+          "kernel_scope": "original commands and anonymous examples compiled at trust=0; observer metaprograms are not logical axiom roots",
+          "anonymous_kernel_examples": 0
+        },
+        {
+          "source_commit": "b81a443863f4d7135ebaca92c5bb7d208ccc18ca",
+          "source_path": "Lean/SaturationMonoid/LivingLawRootSourceNativeAuthorityRegression.lean",
+          "source_sha256": "d496db78dbbdfe63c51e4a195c5ca41e5e6146a338c20821ff04febcf8d04a7a",
+          "original_git_source_sha256": "d496db78dbbdfe63c51e4a195c5ca41e5e6146a338c20821ff04febcf8d04a7a",
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.SourceNativeRootAuthorityRegression.LedgerRoot",
+              "kind": "abbrev"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.SourceNativeRootAuthorityRegression.RestructuringSource",
+              "kind": "abbrev"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.SourceNativeRootAuthorityRegression.boolProjectionLaw",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.SourceNativeRootAuthorityRegression.ify",
+              "kind": "class"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.SourceNativeRootAuthorityRegression.boolSource",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.SourceNativeRootAuthorityRegression.boolWorld",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.SourceNativeRootAuthorityRegression.initialVisit",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.SourceNativeRootAuthorityRegression.generatedBoolOutcome",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.SourceNativeRootAuthorityRegression.projection_boolean_is_part_of_source_identity",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.SourceNativeRootAuthorityRegression.outcomeCode",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.SourceNativeRootAuthorityRegression.canonical_outcome_is_active_false",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.SourceNativeRootAuthorityRegression.projection_source_cannot_be_erased_and_reused",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.SourceNativeRootAuthorityRegression.projection_has_no_caller_ledger_mouth",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.SourceNativeRootAuthorityRegression.inactiveBoolProjectionLaw",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.SourceNativeRootAuthorityRegression.ify",
+              "kind": "class"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.SourceNativeRootAuthorityRegression.inactive_classifier_cannot_select_true",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.SourceNativeRootAuthorityRegression.questionProjectionLaw",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.SourceNativeRootAuthorityRegression.ify",
+              "kind": "class"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.SourceNativeRootAuthorityRegression.questionSource",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.SourceNativeRootAuthorityRegression.questionWorld",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.SourceNativeRootAuthorityRegression.questionVisit",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.SourceNativeRootAuthorityRegression.completedOracleProjectionLaw",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.SourceNativeRootAuthorityRegression.ify",
+              "kind": "class"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.SourceNativeRootAuthorityRegression.completedOracleSource",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.SourceNativeRootAuthorityRegression.completedOracleWorld",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.SourceNativeRootAuthorityRegression.completedOracleVisit",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.SourceNativeRootAuthorityRegression.completedOracleReadout",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.SourceNativeRootAuthorityRegression.completed_oracle_remains_a_readout",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.SourceNativeRootAuthorityRegression.questionPayload",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.SourceNativeRootAuthorityRegression.both_questions_are_source_law_readouts",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.SourceNativeRootAuthorityRegression.mixedWriteIsActualOutgoing",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.SourceNativeRootAuthorityRegression.terminalOccurrence_subsingleton",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.SourceNativeRootAuthorityRegression.mixedOccurrenceCode",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.SourceNativeRootAuthorityRegression.mixed_inventory_cannot_be_pruned_to_terminal",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.SourceNativeRootAuthorityRegression.mixed_inventory_is_not_terminally_exhausted",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.SourceNativeRootAuthorityRegression.mixed_terminal_cannot_pay_identity_admission",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.SourceNativeRootAuthorityRegression.complete_admission_cannot_relabel_native_as_relation",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.SourceNativeRootAuthorityRegression.complete_admission_cannot_invent_cofinal_boundary",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.SourceNativeRootAuthorityRegression.complete_admission_cannot_erase_cofinal_boundary",
+              "kind": "theorem"
+            }
+          ],
+          "kind": "lean",
+          "public": {
+            "path": "Lean/H0mework/Arithmetic/PrimeShadow/LivingLawRootSourceNativeAuthorityRegression.lean",
+            "module": "H0mework.Arithmetic.PrimeShadow.LivingLawRootSourceNativeAuthorityRegression",
+            "variant": "base",
+            "sha256": "99c2e1a4ad1aac105548ff1aaf5e27e638ad6ec2c65cadd91953ea4e03f05313"
+          },
+          "classification": "control",
+          "verification": {
+            "kernel": "pending",
+            "proof_package": "whole-ledger-b81a4438"
+          },
+          "kernel_scope": "original commands and anonymous examples compiled at trust=0; observer metaprograms are not logical axiom roots",
+          "anonymous_kernel_examples": 0
+        },
+        {
+          "source_commit": "b81a443863f4d7135ebaca92c5bb7d208ccc18ca",
+          "source_path": "Lean/SaturationMonoid/ResponsibilityLifecycleRegression.lean",
+          "source_sha256": "d2dec0a969ec03cf745796a5d14c6a63c46e928f9354ff4f1293dcebed2ce227",
+          "original_git_source_sha256": "d2dec0a969ec03cf745796a5d14c6a63c46e928f9354ff4f1293dcebed2ce227",
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.SourceEvent",
+              "kind": "inductive"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.Content",
+              "kind": "inductive"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.Bearer",
+              "kind": "inductive"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.ProtectedInterest",
+              "kind": "inductive"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.Scope",
+              "kind": "inductive"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.Lineage",
+              "kind": "inductive"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.fixtureVocabulary",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.V",
+              "kind": "abbrev"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.acceptedPayload",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.mandatedPayload",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.AdmissionEvent",
+              "kind": "inductive"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.BoundaryEvent",
+              "kind": "inductive"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.boundaryDisposition",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.reopenPayload",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.process",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.P",
+              "kind": "abbrev"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.emptyState",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.acceptedEdge",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.acceptedState",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.mandatedEdge",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.mandatedState",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.explicit_commitment_and_acceptance_admit",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.standing_mandate_override_admits",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.acceptedFreshAllocation",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.acceptedAdmissionWitness",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.fixtureObstruction",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.fixtureDemand",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.obstruction_generates_demand_not_bearer_assignment",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.noAssumptionVocabulary",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.noAssumptionPayloadIsEmpty",
+              "kind": "instance"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.obstruction_only_does_not_admit",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.next_actor_and_age_do_not_mutate_lifecycle",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.acceptedSlot",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.acceptedPresent",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.maintainEdge",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.transferEdge",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.progressTransferEdge",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.terminalEdge",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.supersedeEdge",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.review_generates_typed_carry",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.accepted_transfer_changes_bearer_preserves_lineage",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.accepted_progress_and_transfer_updates_one_exact_target",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.terminal_exit_is_the_only_disappearance",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.terminalDisappears",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.terminalReceiptWitness",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.supersession_keeps_live_successor",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.terminalArchive",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.terminalState",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.terminalSlot",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.terminalPresent",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.reopenEdge",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.reopen_restores_live_same_lineage",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.invisibleObserver",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.invisible_admission_is_hidden_not_safe",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.full_observer_sees_admission",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.full_observer_is_consumer_safe",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.certifiedFullObserver",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.factoredFullObserver",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.factored_full_observer_commutes",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.unclassifiedFixture",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.unclassified_does_not_default_safe",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.TriggerState",
+              "kind": "inductive"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.triggerObserver",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.triggerConsumer",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.unreachableTriggerHiddenNull",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.unreachable_trigger_is_not_certified_safe",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.noDeferVocabulary",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.noDeferReceiptIsEmpty",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.transfer_offer_is_not_acceptance",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.restructuringVocabulary",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.splitReceipt",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.split_retains_children_and_local_criteria",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.renameReceipt",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.rename_does_not_reset_debt",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.mergeReceipt",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.merge_retains_each_local_criterion",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.incidenceLedger",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.incidence_ledger_has_no_phantom_lineage",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.boolLineageVocabulary",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.BoolLineageV",
+              "kind": "abbrev"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.lineageParentPayload",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.lineageChildPayload",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.boolLineageRestructuringVocabulary",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.split_cannot_change_debt_lineage",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.merge_cannot_change_debt_lineage",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.descendant_family_cannot_change_debt_lineage",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.inherited_origin_cannot_change_debt_lineage",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.supersession_cannot_change_debt_lineage",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.scopeAnchorVocabulary",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.ScopeAnchorV",
+              "kind": "abbrev"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.scopeParentPayload",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.scopeChildPayload",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.scopeParentState",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.scopeChildState",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.full_observer_does_not_erase_source_anchor_scope",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.scopeAnchorRestructuringVocabulary",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.split_cannot_launder_source_anchor_scope",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.merge_cannot_launder_source_anchor_scope",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.descendant_family_cannot_launder_source_anchor_scope",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.inherited_origin_cannot_launder_source_anchor_scope",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.capacityVocabulary",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.shortageReadout",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.sufficientReadout",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.capacityProcess",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.shortage_generates_capacity_obstruction",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.actual_capacity_event_generates_obstruction",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.sufficient_capacity_generates_no_obstruction",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.zeroDebits",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.oneDebit",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.twoDebits",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.threeDebits",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.strictBudgetRun_arithmetic_bound",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.lifecycleBudgetAt",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.firstMaintenanceDebit",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.firstMaintenanceDebitOwnership",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.actual_maintenance_debit_preserves_anchor_and_incidence",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.FixtureDebitEvent",
+              "kind": "inductive"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.lifecycleBudgetProcess",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.oneMaintenanceRun",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.oneMaintenanceDebited",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.actual_lifecycle_run_is_budget_bounded",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.maintainedSlot",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.maintainedPresent",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.secondMaintainEdge",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.Regression.zero_budget_rejects_further_maintenance_debit",
+              "kind": "theorem"
+            }
+          ],
+          "kind": "lean",
+          "public": {
+            "path": "Lean/H0mework/Foundation/Responsibility/LifecycleRegression.lean",
+            "module": "H0mework.Foundation.Responsibility.LifecycleRegression",
+            "variant": "base",
+            "sha256": "46eac06050e41b0ce9ea329a827668ff403789d0de425457c7eea146e69e6ed6"
+          },
+          "classification": "control",
+          "verification": {
+            "kernel": "pending",
+            "proof_package": "whole-ledger-b81a4438"
+          },
+          "kernel_scope": "original commands and anonymous examples compiled at trust=0; observer metaprograms are not logical axiom roots",
+          "anonymous_kernel_examples": 0
+        },
+        {
+          "source_commit": "b81a443863f4d7135ebaca92c5bb7d208ccc18ca",
+          "source_path": "Lean/SaturationMonoid/LivingLawRootSourceNativeLedgerRestructuringRegression.lean",
+          "source_sha256": "a03c0e832dd9e9a02f46186c92f4ebc85af6128e7396b0edabd2283c5a68c53e",
+          "original_git_source_sha256": "a03c0e832dd9e9a02f46186c92f4ebc85af6128e7396b0edabd2283c5a68c53e",
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.SourceNativeLedgerRestructuringRegression.network",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.SourceNativeLedgerRestructuringRegression.N",
+              "kind": "abbrev"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.SourceNativeLedgerRestructuringRegression.networkOpenAtSubsingleton",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.SourceNativeLedgerRestructuringRegression.rootVocabulary",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.SourceNativeLedgerRestructuringRegression.V",
+              "kind": "abbrev"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.SourceNativeLedgerRestructuringRegression.inventoryPresentation",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.SourceNativeLedgerRestructuringRegression.sourceLaw",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.SourceNativeLedgerRestructuringRegression.source",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.SourceNativeLedgerRestructuringRegression.emitted",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.SourceNativeLedgerRestructuringRegression.ledger",
+              "kind": "abbrev"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.SourceNativeLedgerRestructuringRegression.falseEntry",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.SourceNativeLedgerRestructuringRegression.trueEntry",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.SourceNativeLedgerRestructuringRegression.identityEvolution",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.SourceNativeLedgerRestructuringRegression.weakAmplifier",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.SourceNativeLedgerRestructuringRegression.ExactPairTransition",
+              "kind": "structure"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.SourceNativeLedgerRestructuringRegression.ledgerCompiler",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.SourceNativeLedgerRestructuringRegression.responsibilityVocabulary",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.SourceNativeLedgerRestructuringRegression.ResponsibilityV",
+              "kind": "abbrev"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.SourceNativeLedgerRestructuringRegression.payload",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.SourceNativeLedgerRestructuringRegression.noCoverageVocabulary",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.SourceNativeLedgerRestructuringRegression.obligationAt",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.SourceNativeLedgerRestructuringRegression.obligationAt_responsibilityKey",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.SourceNativeLedgerRestructuringRegression.obligationAt_injective",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.SourceNativeLedgerRestructuringRegression.restructuringLaw",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.SourceNativeLedgerRestructuringRegression.identityRestructuringCertification",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.SourceNativeLedgerRestructuringRegression.restructuringCompiler",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.SourceNativeLedgerRestructuringRegression.restructuringSource",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.SourceNativeLedgerRestructuringRegression.injective_identity_branch_needs_no_coverage",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.SourceNativeLedgerRestructuringRegression.weak_amplifier_split_cannot_be_certified",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.SourceNativeLedgerRestructuringRegression.zero_budget_split_authority_is_empty",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.SourceNativeLedgerRestructuringRegression.weak_amplifier_merge_cannot_be_certified",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.SourceNativeLedgerRestructuringRegression.weak_amplifier_cannot_acquire_restructuring_authority",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.SourceNativeLedgerRestructuringRegression.identity_only_raw_admission_mouths_are_private",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.SourceNativeLedgerRestructuringRegression.identity_only_admission_is_exact_open_row",
+              "kind": "theorem"
+            }
+          ],
+          "kind": "lean",
+          "public": {
+            "path": "Lean/H0mework/Arithmetic/PrimeShadow/LivingLawRootSourceNativeLedgerRestructuringRegression.lean",
+            "module": "H0mework.Arithmetic.PrimeShadow.LivingLawRootSourceNativeLedgerRestructuringRegression",
+            "variant": "base",
+            "sha256": "5d9916cd75df6bb39d961240af387b9a311bbe75889c29b2c070b1bf3f2e8464"
+          },
+          "classification": "control",
+          "verification": {
+            "kernel": "pending",
+            "proof_package": "whole-ledger-b81a4438"
+          },
+          "kernel_scope": "original commands and anonymous examples compiled at trust=0; observer metaprograms are not logical axiom roots",
+          "anonymous_kernel_examples": 0
+        },
+        {
+          "source_commit": "b81a443863f4d7135ebaca92c5bb7d208ccc18ca",
+          "source_path": "Lean/SaturationMonoid/LivingLawRootNoetherianDebtClosureRegression.lean",
+          "source_sha256": "5de9f0ec6ccc33877458b23a6a8db6acf7f016e922aeb349bee548af18b593ba",
+          "original_git_source_sha256": "5de9f0ec6ccc33877458b23a6a8db6acf7f016e922aeb349bee548af18b593ba",
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.generated_noetherianDebtSettlementReceipt",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.carried_root_faces_have_equal_budget",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.generated_paidMacro_of_exactPayment",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.equality_only_step_cannot_pay",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.noetherianDebtClosure_emits_settlement_of_budget_eq_zero",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.no_paidRootDebtMacroContinuation_to_self",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.localTerminal_with_sameDebtTarget_not_settlement",
+              "kind": "theorem"
+            }
+          ],
+          "kind": "lean",
+          "public": {
+            "path": "Lean/H0mework/Foundation/Responsibility/NoetherianClosureRegression.lean",
+            "module": "H0mework.Foundation.Responsibility.NoetherianClosureRegression",
+            "variant": "base",
+            "sha256": "2697f74608bfdb1caf9cd860b89921629161eba3aff4814efa0ed787a372bec6"
+          },
+          "classification": "control",
+          "verification": {
+            "kernel": "pending",
+            "proof_package": "whole-ledger-b81a4438"
+          },
+          "kernel_scope": "original commands and anonymous examples compiled at trust=0; observer metaprograms are not logical axiom roots",
+          "anonymous_kernel_examples": 0
+        },
+        {
+          "source_commit": "b81a443863f4d7135ebaca92c5bb7d208ccc18ca",
+          "source_path": "Lean/SaturationMonoid/NavierStokes/NativeAccumulation/NativeFluidMediumCurrentSideExitNoGo.lean",
+          "source_sha256": "bd00962774a1026ff7df360eef5db1759823325cb7e930ecbe8c2935804ecc8b",
+          "original_git_source_sha256": "bd00962774a1026ff7df360eef5db1759823325cb7e930ecbe8c2935804ecc8b",
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.NavierStokes.ThreeDimensionalVorticityCoefficientNativeFluidMediumCurrentSideExitNoGo.operationalDebtCurrent",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.NavierStokes.ThreeDimensionalVorticityCoefficientNativeFluidMediumCurrentSideExitNoGo.operationalDebtCurrent_budget_eq_zero",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.NavierStokes.ThreeDimensionalVorticityCoefficientNativeFluidMediumCurrentSideExitNoGo.operationalDebtCurrent_noLocalTerminal",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.NavierStokes.ThreeDimensionalVorticityCoefficientNativeFluidMediumCurrentSideExitNoGo.operationalDebtCurrent_noPaidContinuation",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.NavierStokes.ThreeDimensionalVorticityCoefficientNativeFluidMediumCurrentSideExitNoGo.operationalDebtCurrent_noSettlement",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.NavierStokes.ThreeDimensionalVorticityCoefficientNativeFluidMediumCurrentSideExitNoGo.operationalDebtCurrent_noNoetherianClosure",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.NavierStokes.ThreeDimensionalVorticityCoefficientNativeFluidMediumCurrentSideExitNoGo.nativeFluidMediumU7AnswersAt_isEmpty",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.NavierStokes.ThreeDimensionalVorticityCoefficientNativeFluidMediumCurrentSideExitNoGo.theoryAuditRootDispositionCommutes_isEmpty",
+              "kind": "theorem"
+            }
+          ],
+          "kind": "lean",
+          "public": {
+            "path": "Lean/H0mework/Versions/Y/NavierStokes/NativeWorkNative/FluidMediumCurrentSideExitNoGo.lean",
+            "module": "H0mework.Versions.Y.NavierStokes.NativeWorkNative.FluidMediumCurrentSideExitNoGo",
+            "variant": "Y",
+            "sha256": "07798033d8570a497d827898c3ad37af2a75804a90f3eb58a3394c35959703c6"
+          },
+          "classification": "control",
+          "verification": {
+            "kernel": "pending",
+            "proof_package": "whole-ledger-b81a4438"
+          },
+          "kernel_scope": "original commands and anonymous examples compiled at trust=0; observer metaprograms are not logical axiom roots",
+          "anonymous_kernel_examples": 0
+        },
+        {
+          "source_commit": "b81a443863f4d7135ebaca92c5bb7d208ccc18ca",
+          "source_path": "Lean/SaturationMonoid/LivingLawTypedSemanticWorldNetworkU8RecoveryRegression.lean",
+          "source_sha256": "f57b3d6ac71a0202da10972aef3add34a4a972678fbbd906fb13effbaf7160b5",
+          "original_git_source_sha256": "f57b3d6ac71a0202da10972aef3add34a4a972678fbbd906fb13effbaf7160b5",
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.TypedSemanticWorldNetworkU8RecoveryRegression.every_generated_initial_entry_is_carried_and_answered",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.TypedSemanticWorldNetworkU8RecoveryRegression.old_target_answer_and_next",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.TypedSemanticWorldNetworkU8RecoveryRegression.new_target_answer_and_next",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.TypedSemanticWorldNetworkU8RecoveryRegression.generated_initial_entry_next_is_recovery_next",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.TypedSemanticWorldNetworkU8RecoveryRegression.rooted_failure_entry_is_source_event",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.TypedSemanticWorldNetworkU8RecoveryRegression.rooted_failure_entry_is_canonical_u7_event",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.TypedSemanticWorldNetworkU8RecoveryRegression.recovery_exposes_no_post_root_failure_entry_court",
+              "kind": "theorem"
+            }
+          ],
+          "kind": "lean",
+          "public": {
+            "path": "Lean/H0mework/Arithmetic/PrimeShadow/LivingLawTypedSemanticWorldNetworkU8RecoveryRegression.lean",
+            "module": "H0mework.Arithmetic.PrimeShadow.LivingLawTypedSemanticWorldNetworkU8RecoveryRegression",
+            "variant": "base",
+            "sha256": "2393e9fa9d5382b2a5a2810ac43fd2af9117f55de2e0edfac4edc836d55adaa8"
+          },
+          "classification": "control",
+          "verification": {
+            "kernel": "pending",
+            "proof_package": "whole-ledger-b81a4438"
+          },
+          "kernel_scope": "original commands and anonymous examples compiled at trust=0; observer metaprograms are not logical axiom roots",
+          "anonymous_kernel_examples": 0
+        }
+      ],
+      "verification": "pending"
+    },
+    {
+      "id": "whole-ledger-296292fc",
+      "paper": "whole-ledger-accounting",
+      "source_commit": "296292fc8287a538ef52249277c02dd1edb39742",
+      "lean_target": "H0mework.Papers.WholeLedgerAccountingR296292fc",
+      "claim_ids": [
+        "WA7",
+        "WA8"
+      ],
+      "controls": [],
+      "verification": "pending"
+    },
+    {
+      "id": "whole-ledger-453de275",
+      "paper": "whole-ledger-accounting",
+      "source_commit": "453de27572a4d6d00034d167e7b0704aa54c2523",
+      "lean_target": "H0mework.Papers.WholeLedgerAccountingR453de275",
+      "claim_ids": [
+        "WA12"
+      ],
+      "controls": [],
+      "verification": "pending"
+    },
+    {
+      "id": "whole-ledger-c19e94a5",
+      "paper": "whole-ledger-accounting",
+      "source_commit": "c19e94a5e0cf8f9371ec841a886fefc0cc78152c",
+      "lean_target": "H0mework.Papers.WholeLedgerAccountingRc19e94a5",
+      "claim_ids": [
+        "WA13",
+        "WA14",
+        "WA15"
+      ],
+      "controls": [],
+      "verification": "pending"
+    },
+    {
+      "id": "whole-ledger-fde5c14d",
+      "paper": "whole-ledger-accounting",
+      "source_commit": "fde5c14df36b6064c87064acd20830d3df0500bb",
+      "lean_target": "H0mework.Papers.WholeLedgerAccountingRfde5c14d",
+      "claim_ids": [
+        "WA16",
+        "WA17",
+        "WA18",
+        "WA19"
+      ],
+      "controls": [],
+      "verification": "pending"
+    },
+    {
+      "id": "whole-ledger-b67aa48c",
+      "paper": "whole-ledger-accounting",
+      "source_commit": "b67aa48c75b3cd7738766ed40093bb3f7c1d7a1a",
+      "lean_target": "H0mework.Papers.WholeLedgerAccountingRb67aa48c",
+      "claim_ids": [
+        "WA20"
+      ],
+      "controls": [],
+      "verification": "pending"
+    },
+    {
+      "id": "whole-ledger-aef0ad2a",
+      "paper": "whole-ledger-accounting",
+      "source_commit": "aef0ad2a26199d9fd6da9bc9e7ec1a65636ef63f",
+      "lean_target": "H0mework.Papers.WholeLedgerAccountingRaef0ad2a",
+      "claim_ids": [
+        "WA21",
+        "WA22",
+        "WA23",
+        "WA24"
+      ],
+      "controls": [],
+      "verification": "pending"
+    },
+    {
+      "id": "whole-ledger-26b91feb",
+      "paper": "whole-ledger-accounting",
+      "source_commit": "26b91feb6b507fdc3f43be9c429edb63fb9395ef",
+      "lean_target": "H0mework.Papers.WholeLedgerAccountingR26b91feb",
+      "claim_ids": [
+        "WA25",
+        "WA26",
+        "WA27",
+        "WA28"
+      ],
+      "controls": [],
+      "verification": "pending"
+    },
+    {
+      "id": "whole-ledger-e0555809",
+      "paper": "whole-ledger-accounting",
+      "source_commit": "e05558097256e86b537c019c8ca63cd449d6b2d2",
+      "lean_target": "H0mework.Papers.WholeLedgerAccountingRe0555809",
+      "claim_ids": [
+        "WA29"
+      ],
+      "controls": [],
+      "verification": "pending"
+    },
+    {
+      "id": "whole-ledger-c62f3d25",
+      "paper": "whole-ledger-accounting",
+      "source_commit": "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46",
+      "lean_target": "H0mework.Papers.WholeLedgerAccountingRc62f3d25",
+      "claim_ids": [
+        "WA30",
+        "WA31"
+      ],
+      "controls": [],
+      "verification": "pending"
+    },
+    {
+      "id": "whole-ledger-71e94e82",
+      "paper": "whole-ledger-accounting",
+      "source_commit": "71e94e8261d67cf4849a05eb14ac95aa2f7dcbb9",
+      "lean_target": "H0mework.Papers.WholeLedgerAccountingR71e94e82",
+      "claim_ids": [
+        "WA32",
+        "WA33"
+      ],
+      "controls": [
+        {
+          "source_commit": "71e94e8261d67cf4849a05eb14ac95aa2f7dcbb9",
+          "source_path": "Verification/framework/source-policy/Births.lean",
+          "source_sha256": "360ec72a0132a9d204f6c6f01df9e1fc7854ac0cc5306880a58adc0b80d2ee2b",
+          "original_git_source_sha256": "360ec72a0132a9d204f6c6f01df9e1fc7854ac0cc5306880a58adc0b80d2ee2b",
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyBirthControls.covered_tick_read",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyBirthControls.cover_after",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyBirthControls.actual_birth_receipt",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyBirthControls.born_raw_environment",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyBirthControls.birth_raw_environment",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyBirthControls.observed_after_birth",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyBirthControls.birth_stage_delta",
+              "kind": "theorem"
+            }
+          ],
+          "kind": "lean",
+          "public": {
+            "path": "Lean/H0mework/Checks/SecondEdition/V2/Framework/SourcePolicy/Births.lean",
+            "module": "H0mework.Checks.SecondEdition.V2.Framework.SourcePolicy.Births",
+            "variant": "file",
+            "sha256": "75a88acd58ca0892f5f901168b8ccdd99c16d326594a98c88b3b977a0aff36ef"
+          },
+          "classification": "control",
+          "verification": {
+            "kernel": "pending",
+            "proof_package": "whole-ledger-71e94e82"
+          },
+          "kernel_scope": "original commands and anonymous examples compiled at trust=0; observer metaprograms are not logical axiom roots",
+          "anonymous_kernel_examples": 0
+        },
+        {
+          "source_commit": "71e94e8261d67cf4849a05eb14ac95aa2f7dcbb9",
+          "source_path": "Verification/framework/source-policy/PaidPrefix.lean",
+          "source_sha256": "da5be83846c2889ef054ed9f51def51394e1d92e989ddd1627853c1280a6ed9d",
+          "original_git_source_sha256": "da5be83846c2889ef054ed9f51def51394e1d92e989ddd1627853c1280a6ed9d",
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyPaidPrefixControls.actual_birth_after_positive",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyPaidPrefixControls.actual_first_paid",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyPaidPrefixControls.actual_settled_zero",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyPaidPrefixControls.actual_settled_next",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyPaidPrefixControls.actual_settled_compiles",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyPaidPrefixControls.actual_environment",
+              "kind": "theorem"
+            }
+          ],
+          "kind": "lean",
+          "public": {
+            "path": "Lean/H0mework/Checks/SecondEdition/V2/Framework/SourcePolicy/Paidprefix.lean",
+            "module": "H0mework.Checks.SecondEdition.V2.Framework.SourcePolicy.Paidprefix",
+            "variant": "file",
+            "sha256": "52661ef1c8d92b974cfa1dfca8d8aeca86969a836938f83a5556f9473ad17e0b"
+          },
+          "classification": "control",
+          "verification": {
+            "kernel": "pending",
+            "proof_package": "whole-ledger-71e94e82"
+          },
+          "kernel_scope": "original commands and anonymous examples compiled at trust=0; observer metaprograms are not logical axiom roots",
+          "anonymous_kernel_examples": 0
+        },
+        {
+          "source_commit": "71e94e8261d67cf4849a05eb14ac95aa2f7dcbb9",
+          "source_path": "Verification/framework/source-policy/StockQuery.lean",
+          "source_sha256": "164faecac41846ba7d845f25653634c615178d16462aa0f4ddecf9f91dc9b1fd",
+          "original_git_source_sha256": "164faecac41846ba7d845f25653634c615178d16462aa0f4ddecf9f91dc9b1fd",
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyStockQueryControls.actor_decoder",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyStockQueryControls.all_query_outputs",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyStockQueryControls.exact_query_charge",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyStockQueryControls.low_raw_ignores_stock",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyStockQueryControls.same_runtime_next",
+              "kind": "theorem"
+            }
+          ],
+          "kind": "lean",
+          "public": {
+            "path": "Lean/H0mework/Checks/SecondEdition/V2/Framework/SourcePolicy/Stockquery.lean",
+            "module": "H0mework.Checks.SecondEdition.V2.Framework.SourcePolicy.Stockquery",
+            "variant": "file",
+            "sha256": "c4b3a711d1fd1cc7f6a7a61347245f6ee8be8bec67f825784b510821a2bebcd6"
+          },
+          "classification": "control",
+          "verification": {
+            "kernel": "pending",
+            "proof_package": "whole-ledger-71e94e82"
+          },
+          "kernel_scope": "original commands and anonymous examples compiled at trust=0; observer metaprograms are not logical axiom roots",
+          "anonymous_kernel_examples": 0
+        },
+        {
+          "source_commit": "71e94e8261d67cf4849a05eb14ac95aa2f7dcbb9",
+          "source_path": "Verification/framework/source-policy/TraceCoordinates.lean",
+          "source_sha256": "e27a69934a2ca81d98993d20696c1f35b5bb50df36807d8091acdd5305e184f2",
+          "original_git_source_sha256": "e27a69934a2ca81d98993d20696c1f35b5bb50df36807d8091acdd5305e184f2",
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyTraceCoordinatesControls.intoActual",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyTraceCoordinatesControls.intoActual_injective",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyTraceCoordinatesControls.intoActual_read",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyTraceCoordinatesControls.completed",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyTraceCoordinatesControls.completed_value",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyTraceCoordinatesControls.indexed_update",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyTraceCoordinatesControls.different_positions",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyTraceCoordinatesControls.same_value_distinct_positions",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyTraceCoordinatesControls.cofinal_word",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyTraceCoordinatesControls.cofinal_next",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyTraceCoordinatesControls.cofinal_ledger",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyTraceCoordinatesControls.actual_whole",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyTraceCoordinatesControls.actual_math_next",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyTraceCoordinatesControls.cofinal_whole",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyTraceCoordinatesControls.cofinal_math_next",
+              "kind": "theorem"
+            }
+          ],
+          "kind": "lean",
+          "public": {
+            "path": "Lean/H0mework/Checks/SecondEdition/V2/Framework/SourcePolicy/Tracecoordinates.lean",
+            "module": "H0mework.Checks.SecondEdition.V2.Framework.SourcePolicy.Tracecoordinates",
+            "variant": "file",
+            "sha256": "fb730744621f9de279bc331eda23cd2f375e886662e14f34d9ef7c8d9d8363e9"
+          },
+          "classification": "control",
+          "verification": {
+            "kernel": "pending",
+            "proof_package": "whole-ledger-71e94e82"
+          },
+          "kernel_scope": "original commands and anonymous examples compiled at trust=0; observer metaprograms are not logical axiom roots",
+          "anonymous_kernel_examples": 0
+        },
+        {
+          "source_commit": "71e94e8261d67cf4849a05eb14ac95aa2f7dcbb9",
+          "source_path": "Verification/framework/source-policy/SelectedStockBirth.lean",
+          "source_sha256": "e5e791af8000dcf3bfa03efe0cce445da1cf3c3a56dc3998fabf501adbb38a93",
+          "original_git_source_sha256": "e5e791af8000dcf3bfa03efe0cce445da1cf3c3a56dc3998fabf501adbb38a93",
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicySelectedStockBirthControls.selected_macro_answer",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicySelectedStockBirthControls.selected_macro_current",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicySelectedStockBirthControls.selected_actual_stock",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicySelectedStockBirthControls.selected_current_stock",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicySelectedStockBirthControls.selected_receipt",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicySelectedStockBirthControls.canonical_visit",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicySelectedStockBirthControls.initial_ne_first_next",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicySelectedStockBirthControls.actual_paid_after_birth",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicySelectedStockBirthControls.actual_paid_compiler",
+              "kind": "theorem"
+            }
+          ],
+          "kind": "lean",
+          "public": {
+            "path": "Lean/H0mework/Checks/SecondEdition/V2/Framework/SourcePolicy/Selectedstockbirth.lean",
+            "module": "H0mework.Checks.SecondEdition.V2.Framework.SourcePolicy.Selectedstockbirth",
+            "variant": "file",
+            "sha256": "e732dbb85a09c5b968c301d40cde0071ee7fd5e2495e7313f14370e87ceda33e"
+          },
+          "classification": "control",
+          "verification": {
+            "kernel": "pending",
+            "proof_package": "whole-ledger-71e94e82"
+          },
+          "kernel_scope": "original commands and anonymous examples compiled at trust=0; observer metaprograms are not logical axiom roots",
+          "anonymous_kernel_examples": 0
+        },
+        {
+          "source_commit": "71e94e8261d67cf4849a05eb14ac95aa2f7dcbb9",
+          "source_path": "Verification/no-island/riemann-comb-source/RuntimeCalculation.lean",
+          "source_sha256": "400a7604730ede7752852f24404440344bf8fcd81fc95f813d6810d7f86b1d95",
+          "original_git_source_sha256": "400a7604730ede7752852f24404440344bf8fcd81fc95f813d6810d7f86b1d95",
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.RuntimeCombCalculationGate.Value",
+              "kind": "abbrev"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.RuntimeCombCalculationGate.Var",
+              "kind": "abbrev"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.RuntimeCombCalculationGate.half",
+              "kind": "abbrev"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.RuntimeCombCalculationGate.occurrence",
+              "kind": "abbrev"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.RuntimeCombCalculationGate.origin",
+              "kind": "abbrev"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.RuntimeCombCalculationGate.read",
+              "kind": "abbrev"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.RuntimeCombCalculationGate.raw",
+              "kind": "abbrev"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.RuntimeCombCalculationGate.inputReader",
+              "kind": "abbrev"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.RuntimeCombCalculationGate.installed_value",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.RuntimeCombCalculationGate.installed_trace",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.RuntimeCombCalculationGate.installed_targetState",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.RuntimeCombCalculationGate.installed_relation",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.RuntimeCombCalculationGate.installed_inverse",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.RuntimeCombCalculationGate.installed_cochain",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.RuntimeCombCalculationGate.installed_physical",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.RuntimeCombCalculationGate.math_trace_not_one",
+              "kind": "theorem"
+            }
+          ],
+          "kind": "lean",
+          "public": {
+            "path": "Lean/H0mework/Checks/SecondEdition/V2/NoIsland/RiemannCombSource/Runtimecalculation.lean",
+            "module": "H0mework.Checks.SecondEdition.V2.NoIsland.RiemannCombSource.Runtimecalculation",
+            "variant": "file",
+            "sha256": "49e1273fbc74bc32c8658667815b109e196048298eafb803313c2d6b086a0683"
+          },
+          "classification": "control",
+          "verification": {
+            "kernel": "pending",
+            "proof_package": "whole-ledger-71e94e82"
+          },
+          "kernel_scope": "original commands and anonymous examples compiled at trust=0; observer metaprograms are not logical axiom roots",
+          "anonymous_kernel_examples": 9
+        }
+      ],
+      "verification": "pending"
+    },
+    {
+      "id": "whole-ledger-9c73a630",
+      "paper": "whole-ledger-accounting",
+      "source_commit": "9c73a630ce05bea062ec889b188f5105c0afb796",
+      "lean_target": "H0mework.Papers.WholeLedgerAccountingR9c73a630",
+      "claim_ids": [
+        "WA34",
+        "WA35",
+        "WA36",
+        "WA37"
+      ],
+      "controls": [
+        {
+          "source_commit": "9c73a630ce05bea062ec889b188f5105c0afb796",
+          "source_path": "Verification/no-island/riemann-comb-source/ReceiptFeedback.lean",
+          "source_sha256": "a2cebd24c71bc7e26a6304b7b6ca7bfaa39d42a33297e3bb76bd93eac8b2f56e",
+          "original_git_source_sha256": "a2cebd24c71bc7e26a6304b7b6ca7bfaa39d42a33297e3bb76bd93eac8b2f56e",
+          "declarations": [],
+          "kind": "lean",
+          "public": {
+            "path": "Lean/H0mework/Versions/R9c73a630/ReleaseMaterials/Verification/NoIsland/RiemannCombSource/ReceiptFeedback.lean",
+            "module": "H0mework.Versions.R9c73a630.ReleaseMaterials.Verification.NoIsland.RiemannCombSource.ReceiptFeedback",
+            "variant": "R9c73a630",
+            "sha256": "c392f5e4056cd4f7cb0c4fc68bd53dd95076e9dd8c6effaafd45cf98adba41b5"
+          },
+          "classification": "control",
+          "verification": {
+            "kernel": "pending",
+            "proof_package": "whole-ledger-9c73a630"
+          },
+          "kernel_scope": "original commands and anonymous examples compiled at trust=0; observer metaprograms are not logical axiom roots",
+          "anonymous_kernel_examples": 12
+        },
+        {
+          "source_commit": "9c73a630ce05bea062ec889b188f5105c0afb796",
+          "source_path": "Verification/no-island/riemann-comb-source/PhysicalFeedback.lean",
+          "source_sha256": "181dc65d55248db501ef6695e17ae73008b413664796feec8ee10a4d365a05af",
+          "original_git_source_sha256": "181dc65d55248db501ef6695e17ae73008b413664796feec8ee10a4d365a05af",
+          "declarations": [],
+          "kind": "lean",
+          "public": {
+            "path": "Lean/H0mework/Versions/R9c73a630/ReleaseMaterials/Verification/NoIsland/RiemannCombSource/PhysicalFeedback.lean",
+            "module": "H0mework.Versions.R9c73a630.ReleaseMaterials.Verification.NoIsland.RiemannCombSource.PhysicalFeedback",
+            "variant": "R9c73a630",
+            "sha256": "faab20b839d9fdcb2486e4090a6a557a066d6f90689d5a9cf76359e4878e4a23"
+          },
+          "classification": "control",
+          "verification": {
+            "kernel": "pending",
+            "proof_package": "whole-ledger-9c73a630"
+          },
+          "kernel_scope": "original commands and anonymous examples compiled at trust=0; observer metaprograms are not logical axiom roots",
+          "anonymous_kernel_examples": 13
+        },
+        {
+          "source_commit": "9c73a630ce05bea062ec889b188f5105c0afb796",
+          "source_path": "Verification/no-island/riemann-comb-source/ConfiguredPairWriteback.lean",
+          "source_sha256": "67851dc24bbdf38d675c296673658b2956bb08702eb4aee442adb8bbf5995993",
+          "original_git_source_sha256": "67851dc24bbdf38d675c296673658b2956bb08702eb4aee442adb8bbf5995993",
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceGeneratedInquiryReceiptAction.Configured.Writeback.Controls.ScalarFrame",
+              "kind": "abbrev"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceGeneratedInquiryReceiptAction.Configured.Writeback.Controls.constantConfiguration",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceGeneratedInquiryReceiptAction.Configured.Writeback.Controls.writePair",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceGeneratedInquiryReceiptAction.Configured.Writeback.Controls.old_one",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceGeneratedInquiryReceiptAction.Configured.Writeback.Controls.native_zero",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceGeneratedInquiryReceiptAction.Configured.Writeback.Controls.written_one",
+              "kind": "theorem"
+            }
+          ],
+          "kind": "lean",
+          "public": {
+            "path": "Lean/H0mework/Versions/R9c73a630/ReleaseMaterials/Verification/NoIsland/RiemannCombSource/ConfiguredPairWriteback.lean",
+            "module": "H0mework.Versions.R9c73a630.ReleaseMaterials.Verification.NoIsland.RiemannCombSource.ConfiguredPairWriteback",
+            "variant": "R9c73a630",
+            "sha256": "d17a018041a2ed3824332e2bf8905080e8e1912cc160158397fbb8ee6f7d371c"
+          },
+          "classification": "control",
+          "verification": {
+            "kernel": "pending",
+            "proof_package": "whole-ledger-9c73a630"
+          },
+          "kernel_scope": "original commands and anonymous examples compiled at trust=0; observer metaprograms are not logical axiom roots",
+          "anonymous_kernel_examples": 19
+        },
+        {
+          "source_commit": "9c73a630ce05bea062ec889b188f5105c0afb796",
+          "source_path": "Verification/no-island/riemann-comb-source/RegisteredSourceFeed.lean",
+          "source_sha256": "1498ba75277e7e1fb7dc42e392fccf7deedba5971899a5dcde96d545f5fdf667",
+          "original_git_source_sha256": "1498ba75277e7e1fb7dc42e392fccf7deedba5971899a5dcde96d545f5fdf667",
+          "declarations": [],
+          "kind": "lean",
+          "public": {
+            "path": "Lean/H0mework/Versions/R9c73a630/ReleaseMaterials/Verification/NoIsland/RiemannCombSource/RegisteredSourceFeed.lean",
+            "module": "H0mework.Versions.R9c73a630.ReleaseMaterials.Verification.NoIsland.RiemannCombSource.RegisteredSourceFeed",
+            "variant": "R9c73a630",
+            "sha256": "46243d61c0938aaab2ee2a597b7fa1f6ea7d6cc2aa823f291e317e1108a8835f"
+          },
+          "classification": "control",
+          "verification": {
+            "kernel": "pending",
+            "proof_package": "whole-ledger-9c73a630"
+          },
+          "kernel_scope": "original commands and anonymous examples compiled at trust=0; observer metaprograms are not logical axiom roots",
+          "anonymous_kernel_examples": 24
+        },
+        {
+          "source_commit": "9c73a630ce05bea062ec889b188f5105c0afb796",
+          "source_path": "Verification/no-island/riemann-comb-source/SourceSuccessor.lean",
+          "source_sha256": "398d3ebba2556694191ff095f56408ab0b557248c42ac57fb6a89427bd2c4282",
+          "original_git_source_sha256": "398d3ebba2556694191ff095f56408ab0b557248c42ac57fb6a89427bd2c4282",
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceGeneratedInquiryReceiptAction.Configured.Writeback.Successor.Controls.ScalarValue",
+              "kind": "abbrev"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceGeneratedInquiryReceiptAction.Configured.Writeback.Successor.Controls.ScalarVar",
+              "kind": "abbrev"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceGeneratedInquiryReceiptAction.Configured.Writeback.Successor.Controls.ScalarFrame",
+              "kind": "abbrev"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceGeneratedInquiryReceiptAction.Configured.Writeback.Successor.Controls.factory",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceGeneratedInquiryReceiptAction.Configured.Writeback.Successor.Controls.sourceCfg",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceGeneratedInquiryReceiptAction.Configured.Writeback.Successor.Controls.data",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceGeneratedInquiryReceiptAction.Configured.Writeback.Successor.Controls.first_old_paid",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceGeneratedInquiryReceiptAction.Configured.Writeback.Successor.Controls.first_native_zero",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceGeneratedInquiryReceiptAction.Configured.Writeback.Successor.Controls.first_written",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceGeneratedInquiryReceiptAction.Configured.Writeback.Successor.Controls.second_old_paid",
+              "kind": "theorem"
+            }
+          ],
+          "kind": "lean",
+          "public": {
+            "path": "Lean/H0mework/Versions/R9c73a630/ReleaseMaterials/Verification/NoIsland/RiemannCombSource/SourceSuccessor.lean",
+            "module": "H0mework.Versions.R9c73a630.ReleaseMaterials.Verification.NoIsland.RiemannCombSource.SourceSuccessor",
+            "variant": "R9c73a630",
+            "sha256": "a281aa364bad85bdf2949c81e4b6bf665a9ca65b078a215563667f189e42fe0b"
+          },
+          "classification": "control",
+          "verification": {
+            "kernel": "pending",
+            "proof_package": "whole-ledger-9c73a630"
+          },
+          "kernel_scope": "original commands and anonymous examples compiled at trust=0; observer metaprograms are not logical axiom roots",
+          "anonymous_kernel_examples": 27
+        },
+        {
+          "source_commit": "9c73a630ce05bea062ec889b188f5105c0afb796",
+          "source_path": "Verification/framework/source-policy/StockSourceBranch.lean",
+          "source_sha256": "6a1c6b29e819b3d84d21ca9cd4fdba8c33d531ba31fc7a03ec7b378fb3e67c89",
+          "original_git_source_sha256": "6a1c6b29e819b3d84d21ca9cd4fdba8c33d531ba31fc7a03ec7b378fb3e67c89",
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyStockSourceBranch.selected",
+              "kind": "abbrev"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyStockSourceBranch.paidFrame",
+              "kind": "abbrev"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyStockSourceBranch.actual_paid_compiles",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyStockSourceBranch.actual_paid_native_next",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyStockSourceBranch.actual_paid_preserves",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyStockSourceBranch.actual_settled_compiles",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyStockSourceBranch.actual_settled_not_answered",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyStockSourceBranch.actual_settled_literal_next",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyStockSourceBranch.actual_settled_preserves",
+              "kind": "theorem"
+            }
+          ],
+          "kind": "lean",
+          "public": {
+            "path": "Lean/H0mework/Versions/R9c73a630/ReleaseMaterials/Verification/Framework/SourcePolicy/StockSourceBranch.lean",
+            "module": "H0mework.Versions.R9c73a630.ReleaseMaterials.Verification.Framework.SourcePolicy.StockSourceBranch",
+            "variant": "R9c73a630",
+            "sha256": "75545956b19071fff7606c9c4e63e4597e5ca8b1236e71c4edf3538e590e3375"
+          },
+          "classification": "control",
+          "verification": {
+            "kernel": "pending",
+            "proof_package": "whole-ledger-9c73a630"
+          },
+          "kernel_scope": "original commands and anonymous examples compiled at trust=0; observer metaprograms are not logical axiom roots",
+          "anonymous_kernel_examples": 13
+        },
+        {
+          "source_commit": "9c73a630ce05bea062ec889b188f5105c0afb796",
+          "source_path": "Verification/framework/source-policy/SourceActivation.lean",
+          "source_sha256": "42b92577bfc94e1c40b99d011f63600165f35f740e8872ee74b99709a33c1288",
+          "original_git_source_sha256": "42b92577bfc94e1c40b99d011f63600165f35f740e8872ee74b99709a33c1288",
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyActualSourceActivation.actual_first_paid_budget",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyActualSourceActivation.actual_first_paid",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyActualSourceActivation.paid_compilation",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyActualSourceActivation.settled_compilation",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyActualSourceActivation.settled_not_old_answered",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyActualSourceActivation.actual_paid_activation",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyActualSourceActivation.actual_settled_activation",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyActualSourceActivation.NamedOriginalK.actualSourceRuntime",
+              "kind": "def"
+            }
+          ],
+          "kind": "lean",
+          "public": {
+            "path": "Lean/H0mework/Versions/R9c73a630/ReleaseMaterials/Verification/Framework/SourcePolicy/SourceActivation.lean",
+            "module": "H0mework.Versions.R9c73a630.ReleaseMaterials.Verification.Framework.SourcePolicy.SourceActivation",
+            "variant": "R9c73a630",
+            "sha256": "3fbf5a7a4ce6e0554e55d2ba9df4c000276c2790ed28440093c0e4cc85bde00f"
+          },
+          "classification": "control",
+          "verification": {
+            "kernel": "pending",
+            "proof_package": "whole-ledger-9c73a630"
+          },
+          "kernel_scope": "original commands and anonymous examples compiled at trust=0; observer metaprograms are not logical axiom roots",
+          "anonymous_kernel_examples": 17
+        },
+        {
+          "source_commit": "9c73a630ce05bea062ec889b188f5105c0afb796",
+          "source_path": "Verification/framework/source-policy/AdmissionStops.lean",
+          "source_sha256": "4fdcd7b29b9e2b8498d774c8515b891600f6590c3ecd096085dc94cf5014f412",
+          "original_git_source_sha256": "4fdcd7b29b9e2b8498d774c8515b891600f6590c3ecd096085dc94cf5014f412",
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyActualAdmissionStops.paid_compilation",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyActualAdmissionStops.paid_not_settled",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyActualAdmissionStops.settled_compilation",
+              "kind": "theorem"
+            }
+          ],
+          "kind": "lean",
+          "public": {
+            "path": "Lean/H0mework/Versions/R9c73a630/ReleaseMaterials/Verification/Framework/SourcePolicy/AdmissionStops.lean",
+            "module": "H0mework.Versions.R9c73a630.ReleaseMaterials.Verification.Framework.SourcePolicy.AdmissionStops",
+            "variant": "R9c73a630",
+            "sha256": "29bf1cf042616b1bd0cef1d73c3154daaa47029696505fe6ae908701529e55c3"
+          },
+          "classification": "control",
+          "verification": {
+            "kernel": "pending",
+            "proof_package": "whole-ledger-9c73a630"
+          },
+          "kernel_scope": "original commands and anonymous examples compiled at trust=0; observer metaprograms are not logical axiom roots",
+          "anonymous_kernel_examples": 23
+        },
+        {
+          "source_commit": "9c73a630ce05bea062ec889b188f5105c0afb796",
+          "source_path": "Verification/framework/source-policy/FullSourcePacket.lean",
+          "source_sha256": "6b2bbc1bb6c207d744bb32d11b3377958eb6afb10b48e2b4a6d0948d7d9690df",
+          "original_git_source_sha256": "6b2bbc1bb6c207d744bb32d11b3377958eb6afb10b48e2b4a6d0948d7d9690df",
+          "declarations": [],
+          "kind": "lean",
+          "public": {
+            "path": "Lean/H0mework/Versions/R9c73a630/ReleaseMaterials/Verification/Framework/SourcePolicy/FullSourcePacket.lean",
+            "module": "H0mework.Versions.R9c73a630.ReleaseMaterials.Verification.Framework.SourcePolicy.FullSourcePacket",
+            "variant": "R9c73a630",
+            "sha256": "f1d2fbfc99daf4c7ae1bde3b0c8c00ed105855ffa4495b6911c112020e11538c"
+          },
+          "classification": "control",
+          "verification": {
+            "kernel": "pending",
+            "proof_package": "whole-ledger-9c73a630"
+          },
+          "kernel_scope": "original commands and anonymous examples compiled at trust=0; observer metaprograms are not logical axiom roots",
+          "anonymous_kernel_examples": 14
+        },
+        {
+          "source_commit": "9c73a630ce05bea062ec889b188f5105c0afb796",
+          "source_path": "Verification/framework/source-policy/InquiryCofinalDiagram.lean",
+          "source_sha256": "44431b76b6c505f00aab603ccf2406450adb03d5fb348e2677fb5fccb441e705",
+          "original_git_source_sha256": "44431b76b6c505f00aab603ccf2406450adb03d5fb348e2677fb5fccb441e705",
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyActualInquiryDiagram.erased",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyActualInquiryDiagram.scalar_equal",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyActualInquiryDiagram.occurrences_distinct",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyActualInquiryDiagram.full_field_nonzero",
+              "kind": "theorem"
+            }
+          ],
+          "kind": "lean",
+          "public": {
+            "path": "Lean/H0mework/Versions/R9c73a630/ReleaseMaterials/Verification/Framework/SourcePolicy/InquiryCofinalDiagram.lean",
+            "module": "H0mework.Versions.R9c73a630.ReleaseMaterials.Verification.Framework.SourcePolicy.InquiryCofinalDiagram",
+            "variant": "R9c73a630",
+            "sha256": "4ec9aa7967542c8453f5069cb0d3f6ec4f2982e4cf785c4c7148adfd94bd6dce"
+          },
+          "classification": "control",
+          "verification": {
+            "kernel": "pending",
+            "proof_package": "whole-ledger-9c73a630"
+          },
+          "kernel_scope": "original commands and anonymous examples compiled at trust=0; observer metaprograms are not logical axiom roots",
+          "anonymous_kernel_examples": 15
+        },
+        {
+          "source_commit": "9c73a630ce05bea062ec889b188f5105c0afb796",
+          "source_path": "Verification/framework/source-policy/NativeRelationWriteback.lean",
+          "source_sha256": "c7325b924fc88b0cc6f816d6da20544c08e023dbe0b2337fc9d9985c461e7670",
+          "original_git_source_sha256": "c7325b924fc88b0cc6f816d6da20544c08e023dbe0b2337fc9d9985c461e7670",
+          "declarations": [],
+          "kind": "lean",
+          "public": {
+            "path": "Lean/H0mework/Versions/R9c73a630/ReleaseMaterials/Verification/Framework/SourcePolicy/NativeRelationWriteback.lean",
+            "module": "H0mework.Versions.R9c73a630.ReleaseMaterials.Verification.Framework.SourcePolicy.NativeRelationWriteback",
+            "variant": "R9c73a630",
+            "sha256": "ea1a7e0b58719eb0ca39f8ad128b12bc6a70a15d052dff69954f946a37838e08"
+          },
+          "classification": "control",
+          "verification": {
+            "kernel": "pending",
+            "proof_package": "whole-ledger-9c73a630"
+          },
+          "kernel_scope": "original commands and anonymous examples compiled at trust=0; observer metaprograms are not logical axiom roots",
+          "anonymous_kernel_examples": 20
+        },
+        {
+          "source_commit": "9c73a630ce05bea062ec889b188f5105c0afb796",
+          "source_path": "Verification/framework/source-policy/ActualBornSegment.lean",
+          "source_sha256": "937b05e2bebf4b1d2154b71bfe49419278ab017397ab5294c43d5d90b3b83985",
+          "original_git_source_sha256": "937b05e2bebf4b1d2154b71bfe49419278ab017397ab5294c43d5d90b3b83985",
+          "declarations": [],
+          "kind": "lean",
+          "public": {
+            "path": "Lean/H0mework/Versions/R9c73a630/ReleaseMaterials/Verification/Framework/SourcePolicy/ActualBornSegment.lean",
+            "module": "H0mework.Versions.R9c73a630.ReleaseMaterials.Verification.Framework.SourcePolicy.ActualBornSegment",
+            "variant": "R9c73a630",
+            "sha256": "baf33b7bf058b42266ecb39ae1ebe6c56040d566f2a576338c4f5aa9fad86bfa"
+          },
+          "classification": "control",
+          "verification": {
+            "kernel": "pending",
+            "proof_package": "whole-ledger-9c73a630"
+          },
+          "kernel_scope": "original commands and anonymous examples compiled at trust=0; observer metaprograms are not logical axiom roots",
+          "anonymous_kernel_examples": 17
+        },
+        {
+          "source_commit": "9c73a630ce05bea062ec889b188f5105c0afb796",
+          "source_path": "Verification/framework/source-policy/CanonicalRegisteredBornEffect.lean",
+          "source_sha256": "f99aae956c96d58013dd76b28625d1ee7fb77e27edf8e3d1dca94624393b1964",
+          "original_git_source_sha256": "f99aae956c96d58013dd76b28625d1ee7fb77e27edf8e3d1dca94624393b1964",
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.CanonicalBornGate.RegisteredControls.V",
+              "kind": "abbrev"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.CanonicalBornGate.RegisteredControls.X",
+              "kind": "abbrev"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.CanonicalBornGate.RegisteredControls.seedCfg",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.CanonicalBornGate.RegisteredControls.write",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.CanonicalBornGate.RegisteredControls.stopped",
+              "kind": "abbrev"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.CanonicalBornGate.RegisteredControls.base",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.CanonicalBornGate.RegisteredControls.actual_after",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.CanonicalBornGate.RegisteredControls.stopped_raw",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.CanonicalBornGate.RegisteredControls.old_paid_zero",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.CanonicalBornGate.RegisteredControls.native_zero",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.CanonicalBornGate.RegisteredControls.stopped_endpoint",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.CanonicalBornGate.RegisteredControls.registered_value",
+              "kind": "theorem"
+            }
+          ],
+          "kind": "lean",
+          "public": {
+            "path": "Lean/H0mework/Versions/R9c73a630/ReleaseMaterials/Verification/Framework/SourcePolicy/CanonicalRegisteredBornEffect.lean",
+            "module": "H0mework.Versions.R9c73a630.ReleaseMaterials.Verification.Framework.SourcePolicy.CanonicalRegisteredBornEffect",
+            "variant": "R9c73a630",
+            "sha256": "3546fc205b7fa2ec9ab683a34843e6571e159449e933ebe4afb0a271e536ec25"
+          },
+          "classification": "control",
+          "verification": {
+            "kernel": "pending",
+            "proof_package": "whole-ledger-9c73a630"
+          },
+          "kernel_scope": "original commands and anonymous examples compiled at trust=0; observer metaprograms are not logical axiom roots",
+          "anonymous_kernel_examples": 30
+        },
+        {
+          "source_commit": "9c73a630ce05bea062ec889b188f5105c0afb796",
+          "source_path": "Verification/framework/source-policy/InstalledCanonicalRaw.lean",
+          "source_sha256": "29043b1a54ed5eb1d7e92fde3cdff0369228c864e59e42ad51ab2ff8ce4daded",
+          "original_git_source_sha256": "29043b1a54ed5eb1d7e92fde3cdff0369228c864e59e42ad51ab2ff8ce4daded",
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.InstalledGate.RegisteredControls.V",
+              "kind": "abbrev"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.InstalledGate.RegisteredControls.X",
+              "kind": "abbrev"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.InstalledGate.RegisteredControls.seedCfg",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.InstalledGate.RegisteredControls.write",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.InstalledGate.RegisteredControls.stopped",
+              "kind": "abbrev"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.InstalledGate.RegisteredControls.base",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.InstalledGate.RegisteredControls.actual_after",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.InstalledGate.RegisteredControls.stopped_raw",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.InstalledGate.RegisteredControls.old_paid_zero",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.InstalledGate.RegisteredControls.native_zero",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.InstalledGate.RegisteredControls.stopped_endpoint",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.InstalledGate.RegisteredControls.registered_value",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.InstalledGate.RegisteredControls.installed_value",
+              "kind": "theorem"
+            }
+          ],
+          "kind": "lean",
+          "public": {
+            "path": "Lean/H0mework/Versions/R9c73a630/ReleaseMaterials/Verification/Framework/SourcePolicy/InstalledCanonicalRaw.lean",
+            "module": "H0mework.Versions.R9c73a630.ReleaseMaterials.Verification.Framework.SourcePolicy.InstalledCanonicalRaw",
+            "variant": "R9c73a630",
+            "sha256": "e4edde22335a3c998216e115b7d612c7bba39ab561612b2bb3fd48ae6fc06006"
+          },
+          "classification": "control",
+          "verification": {
+            "kernel": "pending",
+            "proof_package": "whole-ledger-9c73a630"
+          },
+          "kernel_scope": "original commands and anonymous examples compiled at trust=0; observer metaprograms are not logical axiom roots",
+          "anonymous_kernel_examples": 21
+        },
+        {
+          "source_commit": "9c73a630ce05bea062ec889b188f5105c0afb796",
+          "source_path": "Verification/framework/source-policy/CofinalInstalledRaw.lean",
+          "source_sha256": "48d6f9fa2f85fd8657ef80862c5a5a4ddec9eb85d8a0448b92d856f76e602a16",
+          "original_git_source_sha256": "48d6f9fa2f85fd8657ef80862c5a5a4ddec9eb85d8a0448b92d856f76e602a16",
+          "declarations": [],
+          "kind": "lean",
+          "public": {
+            "path": "Lean/H0mework/Versions/R9c73a630/ReleaseMaterials/Verification/Framework/SourcePolicy/CofinalInstalledRaw.lean",
+            "module": "H0mework.Versions.R9c73a630.ReleaseMaterials.Verification.Framework.SourcePolicy.CofinalInstalledRaw",
+            "variant": "R9c73a630",
+            "sha256": "b320d7baa7606a5eafffc68334a3be39a78976521d76d526dd68e5afaf8e6177"
+          },
+          "classification": "control",
+          "verification": {
+            "kernel": "pending",
+            "proof_package": "whole-ledger-9c73a630"
+          },
+          "kernel_scope": "original commands and anonymous examples compiled at trust=0; observer metaprograms are not logical axiom roots",
+          "anonymous_kernel_examples": 15
+        },
+        {
+          "source_commit": "9c73a630ce05bea062ec889b188f5105c0afb796",
+          "source_path": "Verification/no-island/riemann-comb-source/ActualMaterialFourFace.lean",
+          "source_sha256": "94919a88818176fbbb222d1cf99e331f6c38a63374ddb630d9571ab5f06a826c",
+          "original_git_source_sha256": "94919a88818176fbbb222d1cf99e331f6c38a63374ddb630d9571ab5f06a826c",
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceGeneratedInquiryReceiptAction.Configured.Writeback.Successor.FourFace.Controls.ScalarValue",
+              "kind": "abbrev"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceGeneratedInquiryReceiptAction.Configured.Writeback.Successor.FourFace.Controls.ScalarVar",
+              "kind": "abbrev"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceGeneratedInquiryReceiptAction.Configured.Writeback.Successor.FourFace.Controls.ScalarFrame",
+              "kind": "abbrev"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceGeneratedInquiryReceiptAction.Configured.Writeback.Successor.FourFace.Controls.sourceCfg",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceGeneratedInquiryReceiptAction.Configured.Writeback.Successor.FourFace.Controls.writePair",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceGeneratedInquiryReceiptAction.Configured.Writeback.Successor.FourFace.Controls.first_old_paid",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceGeneratedInquiryReceiptAction.Configured.Writeback.Successor.FourFace.Controls.first_native_zero",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceGeneratedInquiryReceiptAction.Configured.Writeback.Successor.FourFace.Controls.first_written",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceGeneratedInquiryReceiptAction.Configured.Writeback.Successor.FourFace.Controls.current",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceGeneratedInquiryReceiptAction.Configured.Writeback.Successor.FourFace.Controls.positiveCfg",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceGeneratedInquiryReceiptAction.Configured.Writeback.Successor.FourFace.Controls.negativeCfg",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceGeneratedInquiryReceiptAction.Configured.Writeback.Successor.FourFace.Controls.positive",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceGeneratedInquiryReceiptAction.Configured.Writeback.Successor.FourFace.Controls.negative",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceGeneratedInquiryReceiptAction.Configured.Writeback.Successor.FourFace.Controls.writeHigher",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceGeneratedInquiryReceiptAction.Configured.Writeback.Successor.FourFace.Controls.current_zero",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceGeneratedInquiryReceiptAction.Configured.Writeback.Successor.FourFace.Controls.current_uniform",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceGeneratedInquiryReceiptAction.Configured.Writeback.Successor.FourFace.Controls.positive_next_environment",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceGeneratedInquiryReceiptAction.Configured.Writeback.Successor.FourFace.Controls.positive_old",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceGeneratedInquiryReceiptAction.Configured.Writeback.Successor.FourFace.Controls.positive_after",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceGeneratedInquiryReceiptAction.Configured.Writeback.Successor.FourFace.Controls.same_raw",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceGeneratedInquiryReceiptAction.Configured.Writeback.Successor.FourFace.Controls.same_state",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceGeneratedInquiryReceiptAction.Configured.Writeback.Successor.FourFace.Controls.same_boundary",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceGeneratedInquiryReceiptAction.Configured.Writeback.Successor.FourFace.Controls.same_literal",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceGeneratedInquiryReceiptAction.Configured.Writeback.Successor.FourFace.Controls.positive_native",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceGeneratedInquiryReceiptAction.Configured.Writeback.Successor.FourFace.Controls.negative_after",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceGeneratedInquiryReceiptAction.Configured.Writeback.Successor.FourFace.Controls.negative_native",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceGeneratedInquiryReceiptAction.Configured.Writeback.Successor.FourFace.Controls.positive_read",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceGeneratedInquiryReceiptAction.Configured.Writeback.Successor.FourFace.Controls.negative_read",
+              "kind": "theorem"
+            }
+          ],
+          "kind": "lean",
+          "public": {
+            "path": "Lean/H0mework/Versions/R9c73a630/ReleaseMaterials/Verification/NoIsland/RiemannCombSource/ActualMaterialFourFace.lean",
+            "module": "H0mework.Versions.R9c73a630.ReleaseMaterials.Verification.NoIsland.RiemannCombSource.ActualMaterialFourFace",
+            "variant": "R9c73a630",
+            "sha256": "d1e73cbb2a1919047a66fd30725a57282501d7aa66e5f62e372dde89076e0808"
+          },
+          "classification": "control",
+          "verification": {
+            "kernel": "pending",
+            "proof_package": "whole-ledger-9c73a630"
+          },
+          "kernel_scope": "original commands and anonymous examples compiled at trust=0; observer metaprograms are not logical axiom roots",
+          "anonymous_kernel_examples": 17
+        },
+        {
+          "source_commit": "9c73a630ce05bea062ec889b188f5105c0afb796",
+          "source_path": "Verification/framework/source-policy/ActualNativeCoefficientTower.lean",
+          "source_sha256": "e34675d4261a45d493f9493a557d335c007baba39e5ef266f6739f030dac6219",
+          "original_git_source_sha256": "e34675d4261a45d493f9493a557d335c007baba39e5ef266f6739f030dac6219",
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.CP117Gate.RegisteredControls.V",
+              "kind": "abbrev"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.CP117Gate.RegisteredControls.X",
+              "kind": "abbrev"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.CP117Gate.RegisteredControls.seedCfg",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.CP117Gate.RegisteredControls.write",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.CP117Gate.RegisteredControls.stopped",
+              "kind": "abbrev"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.CP117Gate.RegisteredControls.base",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.CP117Gate.RegisteredControls.actual_after",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.CP117Gate.RegisteredControls.stopped_raw",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.CP117Gate.RegisteredControls.old_paid_zero",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.CP117Gate.RegisteredControls.native_zero",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.CP117Gate.RegisteredControls.stopped_endpoint",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.CP117Gate.RegisteredControls.registered_value",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.CP117Gate.SourceControls.initial",
+              "kind": "abbrev"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.CP117Gate.SourceControls.factory",
+              "kind": "abbrev"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.CP117Gate.SourceControls.site_old",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.CP117Gate.SourceControls.site_updated",
+              "kind": "theorem"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.CP117Gate.SourceControls.site_inventory",
+              "kind": "theorem"
+            }
+          ],
+          "kind": "lean",
+          "public": {
+            "path": "Lean/H0mework/Versions/R9c73a630/ReleaseMaterials/Verification/Framework/SourcePolicy/ActualNativeCoefficientTower.lean",
+            "module": "H0mework.Versions.R9c73a630.ReleaseMaterials.Verification.Framework.SourcePolicy.ActualNativeCoefficientTower",
+            "variant": "R9c73a630",
+            "sha256": "bbcb96ce15f4f37276699dd99d9c4102a9bc84ccfdf328a0d354fb597a07ec47"
+          },
+          "classification": "control",
+          "verification": {
+            "kernel": "pending",
+            "proof_package": "whole-ledger-9c73a630"
+          },
+          "kernel_scope": "original commands and anonymous examples compiled at trust=0; observer metaprograms are not logical axiom roots",
+          "anonymous_kernel_examples": 11
+        },
+        {
+          "source_commit": "9c73a630ce05bea062ec889b188f5105c0afb796",
+          "source_path": "Verification/framework/source-policy/ActualCofinalSourceAction.lean",
+          "source_sha256": "3f977cc861c044a1c640792af7e8f521ddd6be6b37265fd30b192f5872225e95",
+          "original_git_source_sha256": "3f977cc861c044a1c640792af7e8f521ddd6be6b37265fd30b192f5872225e95",
+          "declarations": [],
+          "kind": "lean",
+          "public": {
+            "path": "Lean/H0mework/Versions/R9c73a630/ReleaseMaterials/Verification/Framework/SourcePolicy/ActualCofinalSourceAction.lean",
+            "module": "H0mework.Versions.R9c73a630.ReleaseMaterials.Verification.Framework.SourcePolicy.ActualCofinalSourceAction",
+            "variant": "R9c73a630",
+            "sha256": "5e869ce5505cd79864ff0fc82a972b5875b41432677108bde9825db6f072fff7"
+          },
+          "classification": "control",
+          "verification": {
+            "kernel": "pending",
+            "proof_package": "whole-ledger-9c73a630"
+          },
+          "kernel_scope": "original commands and anonymous examples compiled at trust=0; observer metaprograms are not logical axiom roots",
+          "anonymous_kernel_examples": 18
+        },
+        {
+          "source_commit": "9c73a630ce05bea062ec889b188f5105c0afb796",
+          "source_path": "Verification/framework/source-policy/ActualCommonSourceAction.lean",
+          "source_sha256": "62440e17104df34bd9c79312926b72dee66f78f1140a64827f8b00f1865ae8f0",
+          "original_git_source_sha256": "62440e17104df34bd9c79312926b72dee66f78f1140a64827f8b00f1865ae8f0",
+          "declarations": [],
+          "kind": "lean",
+          "public": {
+            "path": "Lean/H0mework/Versions/R9c73a630/ReleaseMaterials/Verification/Framework/SourcePolicy/ActualCommonSourceAction.lean",
+            "module": "H0mework.Versions.R9c73a630.ReleaseMaterials.Verification.Framework.SourcePolicy.ActualCommonSourceAction",
+            "variant": "R9c73a630",
+            "sha256": "8b1fa6d730d737e1c0fa776af04ecdd15f8d68e8131f33163cad6fbc8741ae56"
+          },
+          "classification": "control",
+          "verification": {
+            "kernel": "pending",
+            "proof_package": "whole-ledger-9c73a630"
+          },
+          "kernel_scope": "original commands and anonymous examples compiled at trust=0; observer metaprograms are not logical axiom roots",
+          "anonymous_kernel_examples": 12
+        },
+        {
+          "source_commit": "9c73a630ce05bea062ec889b188f5105c0afb796",
+          "source_path": "Verification/framework/source-policy/SourceActionPreservation.lean",
+          "source_sha256": "cafae53ada42f22864abce3ab0af645e64e8d10b6d60b9e69ba45c1514ac3194",
+          "original_git_source_sha256": "cafae53ada42f22864abce3ab0af645e64e8d10b6d60b9e69ba45c1514ac3194",
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyActionPreservation.Value",
+              "kind": "abbrev"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyActionPreservation.Var",
+              "kind": "abbrev"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyActionPreservation.Frame",
+              "kind": "abbrev"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyActionPreservation.constRaw",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyActionPreservation.defaultSource",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyActionPreservation.overriddenSource",
+              "kind": "def"
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourcePolicyActionPreservation.lookalikeSource",
+              "kind": "def"
+            }
+          ],
+          "kind": "lean",
+          "public": {
+            "path": "Lean/H0mework/Versions/R9c73a630/ReleaseMaterials/Verification/Framework/SourcePolicy/SourceActionPreservation.lean",
+            "module": "H0mework.Versions.R9c73a630.ReleaseMaterials.Verification.Framework.SourcePolicy.SourceActionPreservation",
+            "variant": "R9c73a630",
+            "sha256": "0c6e1b6782c71337edd42ed6b81457f56d54781f590b44438b86c1f0e3978b67"
+          },
+          "classification": "control",
+          "verification": {
+            "kernel": "pending",
+            "proof_package": "whole-ledger-9c73a630"
+          },
+          "kernel_scope": "original commands and anonymous examples compiled at trust=0; observer metaprograms are not logical axiom roots",
+          "anonymous_kernel_examples": 11
+        }
+      ],
+      "verification": "pending"
+    }
+  ],
+  "results": [
+    {
+      "command": [
+        "lake",
+        "build",
+        "H0mework.Papers.WholeLedgerAccountingRb81a4438",
+        "H0mework.Papers.WholeLedgerAccountingR296292fc",
+        "H0mework.Papers.WholeLedgerAccountingR453de275",
+        "H0mework.Papers.WholeLedgerAccountingRc19e94a5",
+        "H0mework.Papers.WholeLedgerAccountingRfde5c14d",
+        "H0mework.Papers.WholeLedgerAccountingRb67aa48c",
+        "H0mework.Papers.WholeLedgerAccountingRaef0ad2a",
+        "H0mework.Papers.WholeLedgerAccountingR26b91feb",
+        "H0mework.Papers.WholeLedgerAccountingRe0555809",
+        "H0mework.Papers.WholeLedgerAccountingRc62f3d25",
+        "H0mework.Papers.WholeLedgerAccountingR71e94e82",
+        "H0mework.Papers.WholeLedgerAccountingR9c73a630"
+      ],
+      "cwd": "Lean",
+      "started_at": "2026-10-13T11:35:22.607361+00:00",
+      "finished_at": "2026-10-13T11:44:22.496522+00:00",
+      "elapsed_seconds": 539.888,
+      "exit_code": 1,
+      "error": null,
+      "log": "evidence/whole-ledger/acceptance/historical-build-failed/build.log"
+    }
+  ],
+  "publication_readiness": "not_assessed",
+  "input_identity_after": {
+    "sha256": {
+      "claim_map": "80be66a5c4285bb4b3f2a1c8330c8e959d81a100a10a6b24780be9dfa720d8d0",
+      "export_map": "fddb7e7686e8ec3b5bc4c2925bbd5e20931812679277160f75c7481f7fecb44e",
+      "lakefile": "334b9f881cdbcbcf459ba8d5baf26ead9c11df0b5ef597513e806daf5f2f8a24",
+      "toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+      "manifest": "2fe02acc26899fd57d82018e711e79c251e26d0b6d2bb370af81db0ed312fbfd"
+    },
+    "package_inputs": {
+      "whole-ledger-b81a4438": "29b1f65c126c6176dcfe51e45c1f821200e1d577a5882f50e3c5d661ab5a485f",
+      "whole-ledger-296292fc": "fe0610999991854e3df9bdecd29465cbe3baf359eb057e9224067f625f14f8ed",
+      "whole-ledger-453de275": "c4772e8e4d825692bb652c23160628f9eb2d7b7652f7f5a310748e50ee0c44b8",
+      "whole-ledger-c19e94a5": "1886fe9facc9d58fe8baf94aaae8a66ba8d08622c7d5559927280e2d859ffd69",
+      "whole-ledger-fde5c14d": "9795ebf71967579308a61172ff4a777c2bd1aa0a942529826d6f87c58c4e7b7c",
+      "whole-ledger-b67aa48c": "5cbd927932f3c608c69632c3763083c2bda8d46f99aa223d955193336fbad797",
+      "whole-ledger-aef0ad2a": "e68d46ed2023fcdc49a278a79470553635caa7c9ace08c5b5d76603d5d46298f",
+      "whole-ledger-26b91feb": "c36f1610d95804f3e322985dee9722fcc727997148b8d08b1bb2e8d358490416",
+      "whole-ledger-e0555809": "94a714e2d6e3ed0e2a3dae6d6b67ff0bb835cb2f565787a20c2a808dee2468de",
+      "whole-ledger-c62f3d25": "71ca3ab45ec7354f4c92e02ea2b4b0417012ecb3c48d2927b1c11959387fc16d",
+      "whole-ledger-71e94e82": "c6cd9c00e2ffcf5b6fbbc97c49884acecdaf382a89398b5fb26da93ac87c1cc2",
+      "whole-ledger-9c73a630": "ce7e0890a42a2cffbba08c5c92d572b8eb5d6a877cda6e856d1ec617dcc83c69"
+    }
+  },
+  "inputs_unchanged": true,
+  "receipt": "evidence/whole-ledger/acceptance/historical-build-failed/result.json",
+  "compiled_targets_after": {
+    "H0mework.Papers.WholeLedgerAccountingRb81a4438": "31729d15ca8d64e45e0f74a0eb3bf68ed07800ed45a2115e86f84443d4c5f9c2",
+    "H0mework.Papers.WholeLedgerAccountingR296292fc": "829e7f85b674b80ecf32f2cb6e35b14e74c56a53c99e5b9f9af80c7a045d535a",
+    "H0mework.Papers.WholeLedgerAccountingR453de275": "d222b9b1fa91fe5b6eed7b4ac586c0f82442dd91eafe704affeb6fa1d9604220",
+    "H0mework.Papers.WholeLedgerAccountingRc19e94a5": "048b44fa2861f31688dab9dc70e654e947506cd622e54f5fb2020cad9408c43d",
+    "H0mework.Papers.WholeLedgerAccountingRfde5c14d": null,
+    "H0mework.Papers.WholeLedgerAccountingRb67aa48c": "8ce93410a5709f8297e105f3764d7fda15ae7f0eab258f7049bb8b8b9f936a3f",
+    "H0mework.Papers.WholeLedgerAccountingRaef0ad2a": null,
+    "H0mework.Papers.WholeLedgerAccountingR26b91feb": null,
+    "H0mework.Papers.WholeLedgerAccountingRe0555809": "157f250d2686f9b9a6a79c0da24dcb8227c190c0b784c9e9c1428df82c1ae394",
+    "H0mework.Papers.WholeLedgerAccountingRc62f3d25": "392dbf7a2daff15a67c73dcee835d4903f04053edbc449667da30b38ae8e47f0",
+    "H0mework.Papers.WholeLedgerAccountingR71e94e82": "f6e3f997a55cd451efa455adbefd3ba2a742a3e136d8f7785ecd9e29eaab4990",
+    "H0mework.Papers.WholeLedgerAccountingR9c73a630": "f33015b49aa769fa196a85ccb317c3d05f3b4ef0f794dd8958e1e191ca35ffd8"
+  }
+}

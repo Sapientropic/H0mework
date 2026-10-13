@@ -1,0 +1,38 @@
+{
+  "schema": "h0mework/whole-ledger-direct-type-probe@1",
+  "status": "passed",
+  "run": {
+    "command": [
+      "lake",
+      "env",
+      "lean",
+      "--root=..",
+      "--trust=0",
+      "-Dweak.linter.unnecessarySimpa=false",
+      "-Dweak.linter.style.haveILetI=false",
+      "-Dweak.linter.unusedSimpArgs=false",
+      "-DmaxHeartbeats=2000000",
+      "-Dweak.linter.unusedSectionVars=false",
+      "-Dweak.linter.unnecessarySeqFocus=false",
+      "-Dweak.linter.unusedVariables=false",
+      "-Dweak.linter.unreachableTactic=false",
+      "-Dweak.linter.unusedTactic=false",
+      "-Dweak.linter.defProp=false",
+      "-Dweak.linter.deprecated=false",
+      "-Dlinter.deprecated=false",
+      "-Dweak.linter.tacticAnalysis.introMerge=false",
+      "-Dweak.linter.constructorNameAsVariable=false",
+      "-DwarningAsError=true",
+      "../evidence/whole-ledger/acceptance/type-dag-direct-kernel-passed/check.lean"
+    ],
+    "cwd": "Lean",
+    "started_at": "2026-10-13T19:14:05.100192+00:00",
+    "finished_at": "2026-10-13T19:14:43.809383+00:00",
+    "elapsed_seconds": 38.707,
+    "exit_code": 0,
+    "error": null,
+    "log": "evidence/whole-ledger/acceptance/type-dag-direct-kernel-passed/check.log"
+  },
+  "declarations": 82,
+  "inspection_program_sha256": "7952feb547364cfc38f7749cf162e43961aff523ac820f120d3dbaabfac62d59"
+}

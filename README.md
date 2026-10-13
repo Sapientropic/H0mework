@@ -21,6 +21,8 @@
 
 已交低能两稿的双语阅读版与可编辑材料见[独立成品快照](papers/low-energy-first-release/2026-10-09/README.md)，逐文件来源及实际代码绑定由该目录清单登记。
 
+整账法 WA1–WA40 的完整证明与原直接消费者见[逐项映射](docs/whole-ledger-map.json)、[准备状态](docs/whole-ledger-readiness.md)和[读者复现](docs/whole-ledger-reproduction.md)。
+
 ## 更多研究线
 
 | 研究线 | 内容 | Lean 入口 |

@@ -1,0 +1,22 @@
+-- Whole-ledger proof selection, fixed source fde5c14df36b6064c87064acd20830d3df0500bb.
+import H0mework.Realization.Operations.Execution.Coefficients.Source
+import H0mework.Realization.Operations.Execution.Coefficients.Words
+import H0mework.Versions.Rfde5c14d.Realization.Operations.Execution.Substitution.Installation.Mother
+import H0mework.Versions.Rfde5c14d.Realization.Operations.Inquiry.Context.Faces.Execution.Activation.Payment.Consumer
+import H0mework.Versions.Rfde5c14d.Realization.Operations.Inquiry.Context.Faces.Reverse.Coefficients.Family
+import H0mework.Versions.Rfde5c14d.ReleaseMaterials.SaturationMonoid.GenericFoundation.Operations.Inquiry.Context.Faces.Reverse.Coefficients.Mother
+import H0mework.Versions.R2.Foundation.Responsibility.JointSource.Native.Restructuring.Certificate
+import H0mework.Versions.R2.Foundation.Responsibility.JointSource.Native.Restructuring.Compiler
+import H0mework.Versions.R2.Foundation.Responsibility.JointSource.Native.Restructuring.Consumer
+import H0mework.Versions.R2.Foundation.Responsibility.JointSource.Native.Restructuring.Law
+import H0mework.Versions.AB.Foundation.Responsibility.JointSource.OwnerFree.Compiler
+import H0mework.Versions.AB.Foundation.Responsibility.JointSource.OwnerFree.Completion
+import H0mework.Versions.AB.Foundation.Responsibility.JointSource.OwnerFree.Consumer
+import H0mework.Versions.AB.Foundation.Responsibility.JointSource.OwnerFree.Payment
+import H0mework.Versions.R2.Foundation.Responsibility.JointSource.OwnerFree.Source
+import H0mework.Foundation.Responsibility.JointSource.Successor.Compiler
+import H0mework.Versions.R2.Foundation.Responsibility.JointSource.Successor.Restructuring.Authority
+import H0mework.Versions.R2.Foundation.Responsibility.JointSource.Successor.Restructuring.Certificate
+import H0mework.Versions.R2.Foundation.Responsibility.JointSource.Successor.Restructuring.Runtime
+import H0mework.Foundation.Responsibility.JointSource.Successor.Source
+import H0mework.Foundation.Responsibility.JointSource.Successor.Step

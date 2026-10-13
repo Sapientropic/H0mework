@@ -2,6 +2,8 @@
 
 第二版与低能首发选集的生产、直接消费者和原认证材料分别由[第二版映射](second-edition-map.json)与[低能映射](low-energy-release-map.json)登记。原认证、原失败和本次公开执行分列，验收入口见[版本复现](edition-reproduction.md)。
 
+整账法原认证、有效源补充与失败原件由[整账法映射](whole-ledger-map.json)定位，公开源恢复与完整核查见[整账法复现](whole-ledger-reproduction.md)。
+
 核心查询与计算 reader 的源责任、实际环境 producer 及有限配置接线见[环境合同](source-action-environment.md)；原定义和 H0 补充来源由映射分列。
 
 保持原源码身份的公开证明适配、默认视图与精确原件合同见[证明构建适配](proof-build-adaptations.md)。

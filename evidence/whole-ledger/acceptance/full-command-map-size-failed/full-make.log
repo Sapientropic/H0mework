@@ -1,0 +1,5 @@
+/Library/Developer/CommandLineTools/usr/bin/make check-whole-ledger-entry
+.local/venv/bin/python tools/source_view.py --verify-all
+{"ok": false, "error": "Published file exceeds 104857600 bytes: tools/export-map.json (106538770 bytes); compress it and update its receipt before committing"}
+make[1]: *** [check-map] Error 1
+make: *** [check-whole-ledger-full] Error 2

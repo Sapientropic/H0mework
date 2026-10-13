@@ -108,6 +108,104 @@ class FirstReleaseTests(unittest.TestCase):
         self.data["claims"][0]["direct_consumers"].append(consumer)
         return consumer, package
 
+    def add_kernel_control(self, *, imported=True, named=True):
+        self.add_package("Control", "1" * 40)
+        control = self.data["claims"].pop()["producers"][0]
+        self.data["proof_packages"].pop()
+        row = self.export["modules"][-1]
+        source = ("namespace Example\nlocal instance controlGroups : Inhabited Nat := ⟨0⟩\n"
+                  "example : Nat := default\nend Example\n" if named else "example : Nat := 0\n")
+        file = self.root / row["path"]
+        file.write_text(source)
+        digest = f.sha(file.read_bytes())
+        row.update(source_sha256=digest, target_sha256=digest)
+        control.update(kind="lean", source_sha256=digest,
+                       declarations=[{"qualified_name": "Example.controlGroups", "kind": "instance"}] if named else [])
+        control["public"]["sha256"] = digest
+        control["verification"]["proof_package"] = self.data["proof_packages"][0]["id"]
+        self.data["proof_packages"][0]["controls"] = [control]
+        if imported:
+            aggregator = self.root / f.module_path(self.data["proof_packages"][0]["lean_target"])
+            aggregator.write_text(aggregator.read_text() + "import " + row["target"] + "\n")
+        self.save()
+        return control
+
+    def test_controls_absent_preserves_the_original_audit_and_entry_list(self):
+        package = self.data["proof_packages"][0]
+        entries = f.package_entries(f.selected_claims(self.data), package)
+        self.assertIs(f.proof_audit_entries(package, entries), entries)
+        before = f.audit_source(package, entries)
+        package["controls"] = []
+        self.assertIs(f.proof_audit_entries(package, entries), entries)
+        self.assertEqual(f.audit_source(package, entries), before)
+
+    def test_explicit_named_control_has_its_own_trust_owner_without_becoming_a_producer(self):
+        control = self.add_kernel_control()
+        package = self.data["proof_packages"][0]
+        entries = f.package_entries(f.selected_claims(self.data), package)
+        audit_entries = f.proof_audit_entries(package, entries)
+        self.assertEqual(len(entries), 1)
+        self.assertEqual([item[1] for item in audit_entries], ["producers", "controls"])
+        with patch.object(f, "run_process", side_effect=self.fake_run):
+            result = f.execute("trust", self.root, f.MAP, ".local/explicit-control")
+        self.assertTrue(result["ok"])
+        scope = result["results"][0]["audit_scope"]
+        self.assertEqual(scope["declarations"], {"Example.value": self.entry["public"]["module"],
+                                               "Example.controlGroups": control["public"]["module"]})
+        self.assertIn(control["public"]["module"], scope["public_modules"])
+        self.assertEqual(result["identity_scope"]["proof_entries"], 1)
+        self.assertEqual(self.data["claims"][0]["producers"], [self.entry])
+
+    def test_similar_control_metadata_never_adds_a_logical_root(self):
+        package = self.data["proof_packages"][0]
+        entries = f.package_entries(f.selected_claims(self.data), package)
+        before = f.audit_source(package, entries)
+        package.update(control={"public": {"module": "Wrong.Owner"}},
+                       original_controls=[{"declarations": ["Wrong.root"]}],
+                       controls_metadata={"named": "Wrong.root"})
+        self.assertIs(f.proof_audit_entries(package, entries), entries)
+        self.assertEqual(f.audit_source(package, entries), before)
+
+    def test_anonymous_control_is_compiled_in_scope_without_inventing_an_audit_root(self):
+        control = self.add_kernel_control(named=False)
+        package = self.data["proof_packages"][0]
+        entries = f.package_entries(f.selected_claims(self.data), package)
+        self.assertEqual(f.audit_source(package, entries)[1]["declarations"],
+                         {"Example.value": self.entry["public"]["module"]})
+        scope = f.package_inputs(self.root, self.export, package, entries)
+        self.assertIn(control["public"]["path"], scope["files"])
+
+    def test_original_control_must_actually_be_imported_before_any_build(self):
+        self.add_kernel_control(imported=False, named=False)
+        with patch.object(f, "run_process", side_effect=self.fake_run), \
+                self.assertRaisesRegex(f.ReleaseError, "control is not consumed"):
+            f.execute("build", self.root, f.MAP, ".local/unconsumed-control")
+        self.assertEqual(self.calls, [])
+
+    def test_control_name_cannot_point_at_a_different_public_owner(self):
+        control = self.add_kernel_control()
+        control["declarations"] = [{"qualified_name": "Example.value"}]
+        package = self.data["proof_packages"][0]
+        entries = f.package_entries(f.selected_claims(self.data), package)
+        with self.assertRaisesRegex(f.ReleaseError, "mixes different owners"):
+            f.audit_source(package, entries)
+        control["declarations"] = [{"qualified_name": "Example.controlGroups"}]
+        control["public"]["module"] = self.entry["public"]["module"]
+        with self.assertRaisesRegex(f.ReleaseError, "module/path differs"):
+            f.proof_audit_entries(package, entries)
+
+    def test_control_epoch_path_and_byte_bindings_cannot_be_inferred(self):
+        control = self.add_kernel_control()
+        original = copy.deepcopy(control)
+        package = self.data["proof_packages"][0]
+        entries = f.package_entries(f.selected_claims(self.data), package)
+        for changes in ({"source_commit": "2" * 40}, {"source_path": "Lean/Original/Control.bak.lean"},
+                        {"source_sha256": "f" * 64}):
+            with self.subTest(changes=changes), self.assertRaises(f.ReleaseError):
+                control.clear()
+                control.update(copy.deepcopy(original))
+                control.update(changes)
+                f.package_inputs(self.root, self.export, package, entries)
     def test_mapped_identity_does_not_certify_pending_kernel(self):
         result = f.verify_map(self.root)
         self.assertTrue(result["ok"])

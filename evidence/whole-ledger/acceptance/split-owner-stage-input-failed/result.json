@@ -1,0 +1,67 @@
+{
+  "schema": "h0mework/whole-ledger-private-split-owner-kernel@1",
+  "status": "failed",
+  "inputs_unchanged": true,
+  "input_identity": {
+    "sha256": {
+      "claim_map": "1f324b1699355f27a37f73ec2a172e06ea710483dfbd9337c441601a714be0ab",
+      "export_map": "f20060e7120bd1f26a2419d872be6c2148cea2ed639ed43d2aafa56c6df53006",
+      "lakefile": "334b9f881cdbcbcf459ba8d5baf26ead9c11df0b5ef597513e806daf5f2f8a24",
+      "toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+      "manifest": "2fe02acc26899fd57d82018e711e79c251e26d0b6d2bb370af81db0ed312fbfd"
+    },
+    "package_inputs": {
+      "consumer": "d493fd1d7c40542273fb274f960f46a2acd0cbe97fc7fec56d71173d7bee490a"
+    }
+  },
+  "input_identity_after": {
+    "sha256": {
+      "claim_map": "1f324b1699355f27a37f73ec2a172e06ea710483dfbd9337c441601a714be0ab",
+      "export_map": "f20060e7120bd1f26a2419d872be6c2148cea2ed639ed43d2aafa56c6df53006",
+      "lakefile": "334b9f881cdbcbcf459ba8d5baf26ead9c11df0b5ef597513e806daf5f2f8a24",
+      "toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+      "manifest": "2fe02acc26899fd57d82018e711e79c251e26d0b6d2bb370af81db0ed312fbfd"
+    },
+    "package_inputs": {
+      "consumer": "d493fd1d7c40542273fb274f960f46a2acd0cbe97fc7fec56d71173d7bee490a"
+    }
+  },
+  "runs": [
+    {
+      "command": [
+        "runtime/elan/manual/lean-4.33.0-darwin_aarch64/bin/lean",
+        "--trust=0",
+        "-Dweak.linter.unnecessarySimpa=false",
+        "-Dweak.linter.style.haveILetI=false",
+        "-Dweak.linter.unusedSimpArgs=false",
+        "-DmaxHeartbeats=2000000",
+        "-Dweak.linter.unusedSectionVars=false",
+        "-Dweak.linter.unnecessarySeqFocus=false",
+        "-Dweak.linter.unusedVariables=false",
+        "-Dweak.linter.unreachableTactic=false",
+        "-Dweak.linter.unusedTactic=false",
+        "-Dweak.linter.defProp=false",
+        "-Dweak.linter.deprecated=false",
+        "-Dlinter.deprecated=false",
+        "-Dweak.linter.tacticAnalysis.introMerge=false",
+        "-Dweak.linter.constructorNameAsVariable=false",
+        "-DwarningAsError=true",
+        "--root=./.local/whole-ledger-work/split-owner-adaptation/stage/Lean",
+        "./.local/whole-ledger-work/split-owner-adaptation/stage/Lean/H0mework/Versions/Rba7e274b/ReleaseMaterials/SaturationMonoid/NoIslandNoMagic/CanonicalRiemann/GeneralizedDual/CoPoissonEnergy/Muntz/Cokernel/CenteredGram/JointAction/Runtime/Feedback/ClozelOriginalKCompactAdjointRSource/Source.lean",
+        "-o",
+        "./.local/whole-ledger-work/split-owner-adaptation/lib/H0mework/Versions/Rba7e274b/ReleaseMaterials/SaturationMonoid/NoIslandNoMagic/CanonicalRiemann/GeneralizedDual/CoPoissonEnergy/Muntz/Cokernel/CenteredGram/JointAction/Runtime/Feedback/ClozelOriginalKCompactAdjointRSource/Source.olean"
+      ],
+      "exit_code": 1,
+      "elapsed_seconds": 0.979,
+      "log": "source.log",
+      "log_sha256": "1ba296a38de66298cb39b96db5c9886e502cb959e2a9639810e4c7a4cfd93e6f"
+    }
+  ],
+  "source_scope_sha256": "d493fd1d7c40542273fb274f960f46a2acd0cbe97fc7fec56d71173d7bee490a",
+  "source_modules": 1797,
+  "candidate": {
+    "files": 10,
+    "owner_occurrences": 13
+  },
+  "original_private_indices_and_members_unchanged": true
+}

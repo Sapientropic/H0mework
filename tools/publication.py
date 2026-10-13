@@ -16,7 +16,10 @@ import subprocess
 KIND = "relative-runtime-paths/v1"
 DECLARED_KIND = "declared-runtime-paths/v2"
 TEXT_KIND = "declared-text-runtime-paths/v1"
+TEXT_RUNTIME_KIND = "declared-text-runtime-paths/v2"
 PRIVATE_PATH = re.compile(r"^/(?:Users|home)/[^/]+/")
+TEXT_RUNTIME_ROOT = re.compile(
+    r"^/(?:Users|home|home2)/[^/]+/|^/(?:tmp|Volumes)/|^/private/(?:tmp|var)/|^/var/folders/")
 JSON_STRING = re.compile(r'"(?:[^"\\]|\\.)*"')
 PROJECTS = {"Homework", "H0mework"}
 PIN_TABLES = {"source_inputs", "input_sha256"}
@@ -69,9 +72,11 @@ def relative_path(value: str) -> str:
     raise PublicationError("Runtime path has no recognized project root")
 
 
-def text_runtime_paths(raw: bytes, declarations: list[dict]) -> bytes:
+def text_runtime_paths(raw: bytes, declarations: list[dict], *, kind: str = TEXT_KIND) -> bytes:
     """Relabel fixed source-text path spans without reserializing its body."""
     text = raw.decode("utf-8")
+    if kind not in {TEXT_KIND, TEXT_RUNTIME_KIND}:
+        raise PublicationError("Unsupported source-text runtime path kind")
     previous = 0
     for rule in sorted(declarations, key=lambda item: item["begin"]):
         begin, end, relative = rule["begin"], rule["end"], rule["relative"]
@@ -79,12 +84,17 @@ def text_runtime_paths(raw: bytes, declarations: list[dict]) -> bytes:
                 or not 0 <= previous <= begin < end <= len(text)
                 or not isinstance(relative, str) or relative.startswith("/")
                 or any(char in relative for char in ('\x00', '\n', '\r'))
-                or not re.match(r"^/(?:Users|home|home2)/[^/]+/|^/var/folders/", text[begin:end])):
+                or not (TEXT_RUNTIME_ROOT.match(text[begin:end]) if kind == TEXT_RUNTIME_KIND
+                        else re.match(r"^/(?:Users|home|home2)/[^/]+/|^/var/folders/", text[begin:end]))):
             raise PublicationError("Invalid source-text runtime path declaration")
         previous = end
-    for rule in sorted(declarations, key=lambda item: item["begin"], reverse=True):
-        text = text[:rule["begin"]] + rule["relative"] + text[rule["end"]:]
-    return text.encode("utf-8")
+    chunks = []
+    previous = 0
+    for rule in sorted(declarations, key=lambda item: item["begin"]):
+        chunks.extend((text[previous:rule["begin"]], rule["relative"]))
+        previous = rule["end"]
+    chunks.append(text[previous:])
+    return "".join(chunks).encode("utf-8")
 
 
 def normalize_paths(raw: bytes) -> tuple[bytes, int]:
@@ -208,8 +218,13 @@ def declared_runtime_paths(raw: bytes, declarations: list[dict]) -> tuple[bytes,
     expected = set(keys) | set(replacements)
     if found != expected:
         raise PublicationError("Declared runtime string location is absent or not a string")
-    for begin, end, value in sorted(edits, reverse=True):
-        text = text[:begin] + value + text[end:]
+    chunks = []
+    previous = 0
+    for begin, end, value in sorted(edits):
+        chunks.extend((text[previous:begin], value))
+        previous = end
+    chunks.append(text[previous:])
+    text = "".join(chunks)
     def unique_keys(pairs):
         if len({key for key, value in pairs}) != len(pairs):
             raise PublicationError("Relative runtime input path collision")
@@ -270,15 +285,18 @@ def verify_artifact(raw: bytes, row: dict, original: bytes | None = None):
         if sha(raw) != row["source_sha256"]:
             raise PublicationError("Original artifact digest differs")
         return raw
-    if publication.get("kind") == TEXT_KIND:
+    if publication.get("kind") in {TEXT_KIND, TEXT_RUNTIME_KIND}:
         if sha(raw) != publication["payload_sha256"]:
             raise PublicationError("Published source-text payload differs")
         if re.search(rb"/(?:Users|home|home2)/[^/]+/|/var/folders/", raw):
             raise PublicationError("Published source text still contains machine paths")
+        if (publication["kind"] == TEXT_RUNTIME_KIND
+                and re.search(rb"(?<![A-Za-z0-9_/-])/(?:tmp|Volumes)/|/private/(?:tmp|var)/", raw)):
+            raise PublicationError("Published source text still contains an absolute runtime root")
         if original is not None:
             if sha(original) != row["source_sha256"]:
                 raise PublicationError("Private original digest differs")
-            if text_runtime_paths(original, publication["runtime_paths"]) != raw:
+            if text_runtime_paths(original, publication["runtime_paths"], kind=publication["kind"]) != raw:
                 raise PublicationError("Private original and public source text differ")
         return raw
     normalized, count = (declared_runtime_paths(raw, publication.get("runtime_paths", []))
@@ -325,7 +343,10 @@ def publish_outputs(outputs: dict[str, bytes], modules: list[dict],
     for row in changed:
         raw = outputs[row["target"]]
         document = json.loads(raw)
-        for name, digest in document.get("bindings", {}).items():
+        bindings = document.get("bindings", {}) if isinstance(document, dict) else {}
+        if not isinstance(bindings, dict):
+            raise PublicationError("Receipt bindings must be a JSON object")
+        for name, digest in bindings.items():
             source = row["source"].rsplit("/", 1)[0] + "/" + name
             bound = by_source.get(source)
             if bound and digest == bound["source_sha256"] and digest != bound["target_sha256"]:

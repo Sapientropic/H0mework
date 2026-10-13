@@ -20,7 +20,7 @@ import sys
 import time
 import tomllib
 
-from source_view import EXTERNAL, MODULE, ViewError, import_tokens, source_record
+from source_view import EXTERNAL, MODULE, ViewError, import_tokens, row_at, source_record
 
 ROOT = Path(__file__).resolve().parents[1]
 MAP = "docs/first-release-map.json"
@@ -354,7 +354,50 @@ def package_entries(claims: list[dict], package: dict) -> list[tuple[dict, str, 
     return selected
 
 
+def proof_audit_entries(package: dict, entries: list) -> list:
+    """Add explicitly registered named kernel controls without making claims.
+
+    Anonymous examples remain in the package's compiled import closure. Only
+    named declarations can also be roots of the complete metadata audit.
+    """
+    controls = package.get("controls", [])
+    if not isinstance(controls, list):
+        raise ReleaseError(f"Package controls must be an array: {package['id']}")
+    if not controls:
+        return entries
+    result = list(entries)
+    commits = package.get("source_commits", [package["source_commit"]])
+    for index, control in enumerate(controls):
+        label = f"{package['id']}.controls[{index}]"
+        if not isinstance(control, dict) or entry_kind("controls", control) != "lean":
+            raise ReleaseError(f"Kernel control must be a Lean entry: {label}")
+        commit = control.get("source_commit")
+        if not isinstance(commit, str) or not HEX40.fullmatch(commit) or commit not in commits:
+            raise ReleaseError(f"Kernel control has no same-epoch package binding: {label}")
+        path = relative_path(control.get("source_path"))
+        if PurePosixPath(path).suffix != ".lean":
+            raise ReleaseError(f"Kernel control needs an exact original Lean path: {label}")
+        public = control.get("public")
+        if not isinstance(public, dict):
+            raise ReleaseError(f"Kernel control has no public owner: {label}")
+        module = module_name(public.get("module"))
+        if relative_path(public.get("path")) != module_path(module):
+            raise ReleaseError(f"Kernel control public module/path differs: {label}")
+        if (not HEX64.fullmatch(str(control.get("source_sha256", "")))
+                or not HEX64.fullmatch(str(public.get("sha256", "")))):
+            raise ReleaseError(f"Kernel control needs original and public byte identities: {label}")
+        declarations = control.get("declarations")
+        if not isinstance(declarations, list):
+            raise ReleaseError(f"Kernel control needs an explicit declaration array: {label}")
+        for declaration in declarations:
+            declaration_name(declaration)
+        if declarations:
+            result.append(({"id": package["id"], "paper": package.get("paper")}, "controls", index, control))
+    return result
+
+
 def package_inputs(root: Path, exported: dict, package: dict, entries, *, parse_cache=None) -> dict:
+    proof_audit_entries(package, entries)
     index = export_indexes(exported)["modules"]
     parse_cache = {} if parse_cache is None else parse_cache
     targets = exported.get("paper_aggregators", {})
@@ -388,6 +431,19 @@ def package_inputs(root: Path, exported: dict, package: dict, entries, *, parse_
     for _, _, _, entry in entries:
         if entry["public"]["module"] not in reached:
             raise ReleaseError(f"Selected proof module is not consumed by {package['id']}: {entry['public']['module']}")
+    for control in package.get("controls", []):
+        public = control["public"]
+        if public["module"] not in reached:
+            raise ReleaseError(f"Original kernel control is not consumed by {package['id']}: {public['module']}")
+        rows = index.get(public["path"], [])
+        record = (source_record(rows[0], control["source_path"], control["source_commit"])
+                  if len(rows) == 1 else None)
+        if (record is None or not row_at(record, control["source_commit"])
+                or control.get("source_sha256") != record.get("source_sha256")
+                or control.get("source_origin") != record.get("source_origin")
+                or public.get("sha256") != rows[0].get("target_sha256")
+                or public.get("variant") != rows[0].get("variant")):
+            raise ReleaseError(f"Original kernel control identity differs from export row: {public['path']}")
     return {"files": files, "digest": sha(json.dumps(files, sort_keys=True).encode()), "modules": len(reached)}
 
 
@@ -561,7 +617,7 @@ run_cmd do
 
 def audit_source(package: dict, entries) -> tuple[str, dict]:
     roots = {}
-    for claim, role, _, entry in entries:
+    for claim, role, _, entry in proof_audit_entries(package, entries):
         module = entry["public"]["module"]
         for declaration in entry["declarations"]:
             name = declaration_name(declaration)
@@ -605,7 +661,7 @@ def run_trust_audit(index: int, package: dict, entries: list, root: Path,
         file = directory / f"audit-{index:03d}.lean"
         file.write_text(source, encoding="utf-8")
         scope["source_sha256"] = sha(source.encode())
-        scope["public_modules"] = sorted({item[3]['public']['module'] for item in entries})
+        scope["public_modules"] = sorted({item[3]['public']['module'] for item in proof_audit_entries(package, entries)})
         (directory / f"audit-{index:03d}-scope.json").write_text(json.dumps(scope, indent=2) + "\n")
         flags = configured["package_moreLeanArgs"] + configured["package_weakLeanArgs"]
         flags = list(dict.fromkeys(flags + ["--trust=0", "-DwarningAsError=true"]))

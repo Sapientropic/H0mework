@@ -41,6 +41,16 @@ class EditionSelectionTests(unittest.TestCase):
         self.assertEqual(forwarded, ['verify-map'])
         self.assertEqual((edition.first_release.MAP, edition.first_release.SCHEMA), original)
 
+    def test_whole_ledger_is_an_explicit_independent_edition(self):
+        data = self.data()
+        data["schema"] = edition.EDITIONS['whole-ledger'][1]
+        with patch.object(edition.first_release, 'read_json', return_value=data), \
+             patch.object(edition.first_release, 'packages', side_effect=lambda value: value['proof_packages']), \
+             patch.object(edition.first_release, 'main', return_value=0) as run:
+            self.assertEqual(edition.main(['--edition', 'whole-ledger', '--paper', 'core',
+                                          'build', '--output', '.local/new']), 0)
+            self.assertEqual(run.call_args.args[0][-4:], ['--package', 'one', '--package', 'two'])
+
 
 if __name__ == '__main__':
     unittest.main()

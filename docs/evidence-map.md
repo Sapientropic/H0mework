@@ -4,6 +4,8 @@
 
 第二版的新增 C35–C45／P37–P40 见[第二版映射](second-edition-map.json)，低能首发 L1–L28／Q1–Q6 见[低能映射](low-energy-release-map.json)。原 60 条首发主张按固定提交继承；新选集的命令见[版本复现](edition-reproduction.md)，实际验收见[准备状态](second-edition-readiness.md)。
 
+整账法 WA1–WA40 的生产证明、原消费者、完整类型与资源见[整账法映射](whole-ledger-map.json)，实际验收见[准备状态](whole-ledger-readiness.md)。
+
 本表将各稿主张连接到固定源码、程序和回执。执行命令见[复现指南](reproduction.md)，来源文档的角色与阅读方式见[来源材料索引](source-materials.md)。
 
 ## 来源与地址变换

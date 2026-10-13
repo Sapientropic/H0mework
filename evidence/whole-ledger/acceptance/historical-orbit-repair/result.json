@@ -1,0 +1,93 @@
+{
+  "schema": "whole-ledger-historical-compatibility-candidates/v1",
+  "status": "passed",
+  "source_commit": "fde5c14df36b6064c87064acd20830d3df0500bb",
+  "source_path": "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Native/Orbit/Installation/Source.lean",
+  "original_source_sha256": "073d50ae43edebd0b6e804a4982cfb956fa73656128c6c187c9f1f377d323711",
+  "effective_source_sha256": "e33b52d982596930fb0878798ead842adb30ce3d3a3a4b3a887fa26525f5747e",
+  "original_bytes": "original/073d50ae43edebd0b6e804a4982cfb956fa73656128c6c187c9f1f377d323711.lean",
+  "effective_bytes": "effective/e33b52d982596930fb0878798ead842adb30ce3d3a3a4b3a887fa26525f5747e.lean",
+  "supplement_commit": "089a1727993bec51c27ee72a0311022fec8111ab",
+  "supplement_path": "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Native/Orbit/Installation/Source.lean",
+  "classification": "committed-proof-only-source-supplement",
+  "public_mouth": "SourceOperationInquiry.Context.Native.Orbit.Installation.frame_next",
+  "exact_transform": "--- fde5c14df36b6064c87064acd20830d3df0500bb:Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Native/Orbit/Installation/Source.lean\n+++ 089a1727993bec51c27ee72a0311022fec8111ab:Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Native/Orbit/Installation/Source.lean\n@@ -144,6 +144,7 @@\n   unfold Cursor.next\n   rw [actionEq]\n   unfold SourceOperationInquiry.Context.Faces.Execution.Activation.next\n+    SourceOperationInquiry.Context.Faces.Execution.Activation.Shared.next\n   cases selected : frame.action with\n   | inr paid => rfl\n   | inl settled => rfl\n",
+  "candidate_public_path": "stage/Lean/H0mework/Versions/Rfde5c14d/Realization/Operations/Inquiry/Context/Native/Orbit/Installation/Source.lean",
+  "candidate_public_sha256": "6b59c959af960559fd561ff56d1e0687b5d4c6be6174a16986d632a51951d12e",
+  "candidate_export_row": {
+    "import_map": {
+      "H0mework.Versions.R2.Realization.Operations.Inquiry.Context.Native.Orbit.Relations": "SaturationMonoid.GenericFoundation.Operations.Inquiry.Context.Native.Orbit.Relations",
+      "H0mework.Versions.Rfde5c14d.Realization.Operations.Inquiry.Context.Faces.Execution.Activation.Observation.Source": "SaturationMonoid.GenericFoundation.Operations.Inquiry.Context.Faces.Execution.Activation.Observation.Source"
+    },
+    "path": "Lean/H0mework/Versions/Rfde5c14d/Realization/Operations/Inquiry/Context/Native/Orbit/Installation/Source.lean",
+    "source": "SaturationMonoid.GenericFoundation.Operations.Inquiry.Context.Native.Orbit.Installation.Source",
+    "source_path": "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Native/Orbit/Installation/Source.lean",
+    "source_revision": "fde5c14df36b6064c87064acd20830d3df0500bb",
+    "source_revisions": [
+      "fde5c14df36b6064c87064acd20830d3df0500bb"
+    ],
+    "source_sha256": "e33b52d982596930fb0878798ead842adb30ce3d3a3a4b3a887fa26525f5747e",
+    "target": "H0mework.Versions.Rfde5c14d.Realization.Operations.Inquiry.Context.Native.Orbit.Installation.Source",
+    "target_sha256": "6b59c959af960559fd561ff56d1e0687b5d4c6be6174a16986d632a51951d12e",
+    "variant": "Rfde5c14d",
+    "source_origin": {
+      "kind": "committed-proof-only-source-supplement",
+      "dependency_epoch": "fde5c14df36b6064c87064acd20830d3df0500bb",
+      "original_source_commit": "fde5c14df36b6064c87064acd20830d3df0500bb",
+      "original_source_path": "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Native/Orbit/Installation/Source.lean",
+      "original_source_sha256": "073d50ae43edebd0b6e804a4982cfb956fa73656128c6c187c9f1f377d323711",
+      "source_commit": "089a1727993bec51c27ee72a0311022fec8111ab",
+      "source_path": "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Native/Orbit/Installation/Source.lean",
+      "reason": "Restore the already committed frame_next proof expansion of Shared.next; all declaration statements, binders, premises and data definitions remain byte-identical."
+    }
+  },
+  "effective_source_inverse_sha256": "e33b52d982596930fb0878798ead842adb30ce3d3a3a4b3a887fa26525f5747e",
+  "toolchain_pin": "leanprover/lean4:v4.33.0",
+  "focused": {
+    "command": [
+      "lake",
+      "env",
+      "lean",
+      "--trust=0",
+      "-Dweak.linter.unnecessarySimpa=false",
+      "-Dweak.linter.style.haveILetI=false",
+      "-Dweak.linter.unusedSimpArgs=false",
+      "-DmaxHeartbeats=2000000",
+      "-Dweak.linter.unusedSectionVars=false",
+      "-Dweak.linter.unnecessarySeqFocus=false",
+      "-Dweak.linter.unusedVariables=false",
+      "-Dweak.linter.unreachableTactic=false",
+      "-Dweak.linter.unusedTactic=false",
+      "-Dweak.linter.defProp=false",
+      "-Dweak.linter.deprecated=false",
+      "-Dlinter.deprecated=false",
+      "-Dweak.linter.tacticAnalysis.introMerge=false",
+      "-Dweak.linter.constructorNameAsVariable=false",
+      "-DwarningAsError=true",
+      "--root=./.local/whole-ledger-work/historical-repair-2/stage/Lean",
+      "./.local/whole-ledger-work/historical-repair-2/stage/Lean/H0mework/Versions/Rfde5c14d/Realization/Operations/Inquiry/Context/Native/Orbit/Installation/Source.lean",
+      "-o",
+      "./.local/whole-ledger-work/historical-repair-2/lib/H0mework/Versions/Rfde5c14d/Realization/Operations/Inquiry/Context/Native/Orbit/Installation/Source.olean"
+    ],
+    "exit_code": 0,
+    "seconds": 5.1456029415130615,
+    "log": "focused.log",
+    "log_sha256": "21a031d5a61407f1111b5d9b532d2b6879cb1611f0febbbc70c6c2c65ff2f0e8",
+    "olean": "lib/H0mework/Versions/Rfde5c14d/Realization/Operations/Inquiry/Context/Native/Orbit/Installation/Source.olean",
+    "olean_sha256": "616e06d46389e51ba28fc496993638f8b7fd2453b77310bac9d0dc64c3207744",
+    "scope": "isolated target file; current H0 dependency cache; no complete package trust claimed"
+  },
+  "protected_files_before": {
+    "tools/export-map.json": "4f0353366c4f73575bf1143f65cfb07176e840eb81ff19da69823507b271b45b",
+    "docs/whole-ledger-map.json": "16ea91b4b5af82f87060402c3e527335aae2a4d2219d65fd5045d5a6ec66e01c",
+    "Lean/lakefile.toml": "334b9f881cdbcbcf459ba8d5baf26ead9c11df0b5ef597513e806daf5f2f8a24",
+    "Lean/H0mework/Versions/Rfde5c14d/Realization/Operations/Inquiry/Context/Native/Orbit/Installation/Source.lean": "8538950b25227092e9a0ec1e42b54fcd0799e09deaffce8716c3b0188c1795c5"
+  },
+  "protected_files_after": {
+    "tools/export-map.json": "4f0353366c4f73575bf1143f65cfb07176e840eb81ff19da69823507b271b45b",
+    "docs/whole-ledger-map.json": "16ea91b4b5af82f87060402c3e527335aae2a4d2219d65fd5045d5a6ec66e01c",
+    "Lean/lakefile.toml": "334b9f881cdbcbcf459ba8d5baf26ead9c11df0b5ef597513e806daf5f2f8a24",
+    "Lean/H0mework/Versions/Rfde5c14d/Realization/Operations/Inquiry/Context/Native/Orbit/Installation/Source.lean": "8538950b25227092e9a0ec1e42b54fcd0799e09deaffce8716c3b0188c1795c5"
+  },
+  "protected_inputs_unchanged": true
+}

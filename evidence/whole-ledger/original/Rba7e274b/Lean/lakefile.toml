@@ -1,0 +1,517 @@
+name = "SaturationMonoid"
+version = "0.1.0"
+# The active graph is the named constructive core plus narrow domain roots.
+# Historical Proposition modules remain available through an explicit
+# `lake build SaturationMonoid`.
+defaultTargets = ["LivingLawActive"]
+
+[[lean_lib]]
+name = "SaturationMonoid"
+
+[[lean_lib]]
+name = "RepresentationArithmeticAtomProjectionDefect"
+
+[[lean_lib]]
+name = "FactorHolonomySourceCover"
+
+[[lean_lib]]
+name = "GoldbachPrimePairTrace"
+
+[[lean_lib]]
+name = "LivingLawActive"
+roots = [
+  "SaturationMonoid.Tracks.LivingLawAxiomFreeCore",
+  "SaturationMonoid.Tracks.LivingLawConstructiveCore",
+  "SaturationMonoid.LivingLawConstructiveFoundationIntegrationRegression",
+  "SaturationMonoid.LivingLawRootGeneratedCofinalHistorySettlementRegression",
+  "SaturationMonoid.LivingLawRootGeneratedCofinalHistorySettlementFaceRegression",
+  "SaturationMonoid.LivingLawRootGeneratedCofinalFaithfulResidualCoordinateRegression",
+  "SaturationMonoid.LivingLawRootGeneratedCofinalFaithfulSettlementFaceRegression",
+  "SaturationMonoid.LivingLawRootGeneratedCofinalPresentedComplexSettlementFaceRegression",
+  "SaturationMonoid.LivingLawRootGeneratedCofinalPresentedComplexDerivedResidualCoordinateRegression",
+  "SaturationMonoid.LivingLawRootGeneratedCofinalHistoryDeterminantDispositionRegression",
+  "SaturationMonoid.LivingLawRootGeneratedCofinalHistoryCochainCommonOccurrenceRegression",
+  "SaturationMonoid.GenericFoundation.LivingLawRootGeneratedCofinalDualityTransportRegression",
+  "SaturationMonoid.GenericFoundation.LivingLawRootGeneratedCofinalPerfectAmbientDispositionRegression",
+  "SaturationMonoid.GenericFoundation.LivingLawRootGeneratedProjectionCofaceRegression",
+  "SaturationMonoid.GenericFoundation.LivingLawRootGeneratedSourcePerfectificationRegression",
+  "SaturationMonoid.GenericFoundation.LivingLawRootGeneratedCanonicalPerfectPairRegression",
+  "SaturationMonoid.GenericFoundation.LivingLawRootGeneratedExactPerfectEnvelopeBoundedDispositionRegression",
+  "SaturationMonoid.GenericFoundation.LivingLawRootGeneratedCofinalSourcePerfectificationRegression",
+  "SaturationMonoid.GenericFoundation.LivingLawRootGeneratedPerfectAmbientExtensionKernel",
+  "SaturationMonoid.GenericFoundation.LivingLawRootGeneratedPerfectAmbientExtensionRegression",
+  "SaturationMonoid.GenericFoundation.LivingLawRootGeneratedUnifiedFourFaceRegression",
+  "SaturationMonoid.GenericFoundation.LivingLawRootGeneratedUnifiedFourFaceCofinalAdapterRegression",
+  "SaturationMonoid.GenericFoundation.LivingLawRootGeneratedUniversalCofinalPerfectificationRegression",
+  "SaturationMonoid.GenericFoundation.LivingLawRootGeneratedDependentCarrierRegression",
+  "SaturationMonoid.GenericFoundation.LivingLawRootGeneratedDependentCofinalAxiomFreeCore",
+  "SaturationMonoid.GenericFoundation.LivingLawRootGeneratedDependentCofinalPerfectificationKernel",
+  "SaturationMonoid.GenericFoundation.LivingLawRootGeneratedDependentCofinalPerfectificationRegression",
+  "SaturationMonoid.GenericFoundation.LivingLawRootGeneratedCofinalNaturalityKernel",
+  "SaturationMonoid.GenericFoundation.LivingLawRootGeneratedCofinalNaturalityRegression",
+  "SaturationMonoid.GenericFoundation.LivingLawRootGeneratedDependentCofinalProfileNaturalityKernel",
+  "SaturationMonoid.GenericFoundation.LivingLawRootGeneratedDependentCofinalProfileNaturalityRegression",
+  "SaturationMonoid.GenericFoundation.Scalar.LivingLawRootGeneratedScalarExactEnvelopeRegression",
+  "SaturationMonoid.GenericFoundation.Scalar.LivingLawRootGeneratedScalarSemilinearNaturalityRegression",
+  "SaturationMonoid.GenericFoundation.Scalar.Character.LivingLawPositiveRealComplexCharacterRegression",
+  "SaturationMonoid.GenericFoundation.Integral.Localization.LivingLawRootGeneratedFaithfulIntegralPrimeResidualRegression",
+  "SaturationMonoid.GenericFoundation.Integral.Localization.LivingLawRootGeneratedCharacterOrbitNormDispositionRegression",
+  "SaturationMonoid.GenericFoundation.Integral.Completion.LivingLawRootGeneratedPrimePowerCompletionIntegerRegression",
+  "SaturationMonoid.GenericFoundation.Integral.Completion.LivingLawRootGeneratedPrimePowerCompletionLocalizedRegression",
+  "SaturationMonoid.GenericFoundation.Integral.Completion.LivingLawRootGeneratedPrimePowerEvaluatorTowerRegression",
+  "SaturationMonoid.GenericFoundation.Integral.Completion.LivingLawRootGeneratedRelativeSourceEvaluatorNormalizationRegression",
+  "SaturationMonoid.GenericFoundation.Integral.Character.LivingLawRootGeneratedIntegralCharacterGroupRingRegression",
+  "SaturationMonoid.GenericFoundation.Integral.Coherent.LivingLawRootGeneratedIntegralCoherentCompletionRegression",
+  "SaturationMonoid.GenericFoundation.Integral.Coherent.Covariance.LivingLawRootGeneratedIntegralCoherentCovarianceRegression",
+  "SaturationMonoid.GenericFoundation.Integral.Coherent.PerfectRealization.LivingLawRootGeneratedIntegralEquivariantPerfectRealizationRegression",
+  "SaturationMonoid.GenericFoundation.Integral.Coherent.PerfectRealization.LivingLawRootGeneratedIntegralEquivariantPerfectRealizationNaturalityRegression",
+  "SaturationMonoid.GenericFoundation.Integral.Coherent.PerfectRealization.Dependent.LivingLawRootGeneratedDependentJointStateRegression",
+  "SaturationMonoid.GenericFoundation.Integral.Coherent.JointAction.Occurrence.LivingLawRootGeneratedIntegralCoherentJointActionOccurrenceRegression",
+  "SaturationMonoid.GenericFoundation.Integral.Coherent.JointAction.Naturality.LivingLawRootGeneratedIntegralCoherentJointActionNaturalityRegression",
+  "SaturationMonoid.GenericFoundation.Integral.Coherent.JointAction.Controller.LivingLawRootGeneratedDependentJointActionControllerRegression",
+  "SaturationMonoid.GenericFoundation.Integral.Coherent.PerfectRealization.Dependent.Controller.LivingLawRootGeneratedDependentJointStateControllerRegression",
+  "SaturationMonoid.GenericFoundation.Integral.Cofinal.Transition.LivingLawRootGeneratedCofinalHistoryTransitionRegression",
+  "SaturationMonoid.GenericFoundation.Integral.Coherent.PerfectRealization.Dependent.Transition.LivingLawRootGeneratedDependentJointTransitionRegression",
+  "SaturationMonoid.GenericFoundation.Occurrence.Transition.LivingLawRootedAccountedUnfoldingZipRegression",
+  "SaturationMonoid.GenericFoundation.Integral.Coherent.PerfectRealization.Dependent.Effect.LivingLawRootGeneratedDependentJointPassiveEffectRegression",
+  "SaturationMonoid.GenericFoundation.Occurrence.Residual.Admission.LivingLawRootGeneratedResidualWorldCofaceRegression",
+  "SaturationMonoid.GenericFoundation.Occurrence.Residual.Admission.LivingLawRootGeneratedResidualAuditLedgerRootRegression",
+  "SaturationMonoid.GenericFoundation.Occurrence.Residual.Admission.LivingLawRootGeneratedResidualLivingAuthorityRegression",
+  "SaturationMonoid.GenericFoundation.Integral.Coherent.PerfectRealization.Dependent.Effect.Residual.LivingLawRootGeneratedDependentJointPassiveResidualCofaceRegression",
+  "SaturationMonoid.GenericFoundation.Scalar.EquivariantPerfect.LivingLawRootGeneratedScalarEquivariantPerfectActionRegression",
+  "SaturationMonoid.GenericFoundation.Scalar.Feature.LivingLawRootGeneratedScalarFeaturePerfectificationRegression",
+  "SaturationMonoid.GenericFoundation.Scalar.Feature.LivingLawRootGeneratedScalarFeatureHilbertRealizationRegression",
+  "SaturationMonoid.GenericFoundation.Scalar.Topological.LivingLawRootGeneratedScalarGeneralizedDualRegression",
+  "SaturationMonoid.GenericFoundation.Scalar.Topological.Cokernel.LivingLawRootGeneratedScalarHilbertCokernelRegression",
+  "SaturationMonoid.GenericFoundation.Scalar.Topological.Graph.LivingLawRootGeneratedScalarFunctionalGraphRegression",
+  "SaturationMonoid.GenericFoundation.Scalar.Topological.Graph.LivingLawRootGeneratedScalarFunctionalGraphNaturalityRegression",
+  "SaturationMonoid.GenericFoundation.Scalar.Topological.GraphCokernel.LivingLawRootGeneratedScalarFunctionalGraphCokernelRegression",
+  "SaturationMonoid.GenericFoundation.Scalar.Topological.GraphCokernel.LivingLawRootGeneratedScalarFunctionalGraphCokernelNaturalityRegression",
+  "SaturationMonoid.GenericFoundation.Scalar.Topological.GraphCokernel.LivingLawRootGeneratedScalarFunctionalGraphCokernelDualityRegression",
+  "SaturationMonoid.GenericFoundation.Scalar.Topological.GraphCokernel.RieszRealization.LivingLawRootGeneratedScalarFunctionalGraphCokernelRieszRealizationRegression",
+  "SaturationMonoid.GenericFoundation.Scalar.Topological.Gram.LivingLawRootGeneratedScalarCenteredGramRegression",
+  "SaturationMonoid.GenericFoundation.FirstOrder.LivingLawRootGeneratedScalarSquareZeroFirstOrderRegression",
+  "SaturationMonoid.GenericFoundation.Scalar.Factorization.LivingLawRootGeneratedScalarSubfaceFactorizationRegression",
+  "SaturationMonoid.GenericFoundation.Scalar.Factorization.LivingLawRootGeneratedScalarCochainSubfaceCokernelRegression",
+  "SaturationMonoid.GenericFoundation.Scalar.LivingLawRootGeneratedScalarRelationPresentationRegression",
+  "SaturationMonoid.GenericFoundation.Scalar.LivingLawRootGeneratedScalarCochainRelationRegression",
+  "SaturationMonoid.GenericFoundation.Scalar.LivingLawRootGeneratedScalarDifferentialResidualRegression",
+  "SaturationMonoid.GenericFoundation.Scalar.Cofinal.LivingLawRootGeneratedScalarCofinalKernelCompletionRegression",
+  "SaturationMonoid.GenericFoundation.Scalar.Cofinal.LivingLawRootGeneratedScalarCofinalExactEnvelopeRegression",
+  "SaturationMonoid.GenericFoundation.Scalar.Observation.LivingLawRootGeneratedScalarObservationDispositionRegression",
+  "SaturationMonoid.GenericFoundation.Scalar.Bounded.LivingLawRootGeneratedScalarBoundedObservationDispositionRegression",
+  "SaturationMonoid.GenericFoundation.Scalar.Determinant.LivingLawRootGeneratedScalarFiniteFreeDeterminantDispositionRegression",
+  "SaturationMonoid.GenericFoundation.Scalar.Determinant.LivingLawRootGeneratedScalarNontrivialPicardLineRegression",
+  "SaturationMonoid.GenericFoundation.Scalar.Determinant.LivingLawRootGeneratedScalarRankComponentDispositionRegression",
+  "SaturationMonoid.GenericFoundation.Scalar.Determinant.LivingLawRootGeneratedScalarConstantRankDeterminantRegression",
+  "SaturationMonoid.GenericFoundation.Scalar.Determinant.LivingLawRootGeneratedScalarProjectiveDeterminantDispositionRegression",
+  "SaturationMonoid.GenericFoundation.Scalar.Determinant.Naturality.LivingLawRootGeneratedScalarProjectiveDeterminantNaturalityRegression",
+  "SaturationMonoid.GenericFoundation.Scalar.Controller.LivingLawRootGeneratedScalarCofinalProjectiveDeterminantControllerAdmissionRegression",
+  "SaturationMonoid.GenericFoundation.NoGo.LivingLawUniversalAlgebraicPerfectAmbientNoGoRegression",
+  "SaturationMonoid.DomainConsumers.CanonicalArithmetic.LivingLawCanonicalUnitArithmeticFoundationConsumerRegression",
+  "SaturationMonoid.DomainConsumers.CanonicalArithmetic.LivingLawCanonicalUnitArithmeticNormalizedPairingRegression",
+  "SaturationMonoid.DomainConsumers.CanonicalArithmetic.LivingLawCanonicalUnitArithmeticExactEnvelopeConsumerRegression",
+  "SaturationMonoid.NoIslandNoMagic.Regression.ProperMellinScalarEnvelopeRegression",
+  "SaturationMonoid.NoIslandNoMagic.Regression.ClozelProperMellinFullRowIncidenceRegression",
+  "SaturationMonoid.NoIslandNoMagic.Regression.ClozelProperMellinScalarRelationIncidenceRegression",
+  "SaturationMonoid.NoIslandNoMagic.Regression.ClozelProperMellinL1StarInversionRegression",
+  "SaturationMonoid.NoIslandNoMagic.Regression.ClozelProperMellinLowHighRelativeOccurrenceRegression",
+  "SaturationMonoid.NoIslandNoMagic.Regression.ClozelLocalEndpointDifferentialResidualRegression",
+  "SaturationMonoid.NoIslandNoMagic.Regression.ClozelEndpointCoPoissonEffectRegression",
+  "SaturationMonoid.NoIslandNoMagic.Regression.ClozelGeneralizedDualResidualRegression",
+  "SaturationMonoid.NoIslandNoMagic.Regression.ClozelFunctionalGraphPerfectificationRegression",
+  "SaturationMonoid.NoIslandNoMagic.Regression.ClozelFunctionalGraphActionRegression",
+  "SaturationMonoid.NoIslandNoMagic.Regression.ClozelGraphWeightedContactDispositionRegression",
+  "SaturationMonoid.NoIslandNoMagic.CanonicalRiemann.GeneralizedDual.GraphContact.Regression.ClozelGraphResidualSupportSeparation",
+  "SaturationMonoid.NoIslandNoMagic.CanonicalRiemann.GeneralizedDual.Rigged.Regression.ClozelPositiveOrbitCoPoissonRigging",
+  "SaturationMonoid.NoIslandNoMagic.CanonicalRiemann.GeneralizedDual.CoPoissonEnergy.Regression.ClozelCoPoissonEnergyCarrier",
+  "SaturationMonoid.NoIslandNoMagic.CanonicalRiemann.GeneralizedDual.CoPoissonEnergy.Regression.ClozelCoPoissonQuarterChart",
+  "SaturationMonoid.NoIslandNoMagic.CanonicalRiemann.GeneralizedDual.CoPoissonEnergy.Regression.ClozelCoPoissonQuarterMellinConvergence",
+  "SaturationMonoid.NoIslandNoMagic.CanonicalRiemann.Character.Regression.ClozelZeroMultiplicativeCharacterReadouts",
+  "SaturationMonoid.NoIslandNoMagic.CanonicalRiemann.Character.Integral.Regression.ClozelZeroIntegralCharacterGroupRing",
+  "SaturationMonoid.NoIslandNoMagic.CanonicalRiemann.Character.Integral.Regression.ClozelZeroIntegralCharacterFullRowCycle",
+  "SaturationMonoid.NoIslandNoMagic.CanonicalRiemann.Character.Integral.Regression.ClozelZeroGlobalCoPoissonCurrent",
+  "SaturationMonoid.NoIslandNoMagic.CanonicalRiemann.Character.Integral.NoGo.Regression.ClozelRieszIntegralChargeCouplingNoGo",
+  "SaturationMonoid.NoIslandNoMagic.CanonicalRiemann.Character.Integral.Regression.ClozelZeroRieszCurrentCoupling",
+  "SaturationMonoid.NoIslandNoMagic.CanonicalRiemann.Character.Integral.Regression.ClozelZeroRieszJConservation",
+  "SaturationMonoid.NoIslandNoMagic.CanonicalRiemann.GeneralizedDual.CoPoissonEnergy.Muntz.Regression.ClozelCoPoissonMuntzFactorization",
+  "SaturationMonoid.NoIslandNoMagic.CanonicalRiemann.GeneralizedDual.CoPoissonEnergy.Muntz.Cokernel.Regression.ClozelCoPoissonMuntzGraphCokernel",
+  "SaturationMonoid.NoIslandNoMagic.CanonicalRiemann.GeneralizedDual.CoPoissonEnergy.Muntz.Cokernel.Regression.ClozelCoPoissonMuntzGraphCokernelDilationAction",
+  "SaturationMonoid.NoIslandNoMagic.CanonicalRiemann.GeneralizedDual.CoPoissonEnergy.Muntz.Cokernel.NoGo.Regression.ClozelMuntzRelationCurrentSectorNoGo",
+  "SaturationMonoid.NoIslandNoMagic.CanonicalRiemann.GeneralizedDual.CoPoissonEnergy.Muntz.Cokernel.CenteredGram.Regression.ClozelIntegralGraphOrbit",
+  "SaturationMonoid.NoIslandNoMagic.CanonicalRiemann.GeneralizedDual.CoPoissonEnergy.Muntz.Cokernel.CenteredGram.Regression.ClozelStageZeroCenteredGramDisposition",
+  "SaturationMonoid.NoIslandNoMagic.CanonicalRiemann.GeneralizedDual.CoPoissonEnergy.Muntz.Cokernel.CenteredGram.Prism.Regression.ClozelStageZeroResidualPrism",
+  "SaturationMonoid.NoIslandNoMagic.CanonicalRiemann.GeneralizedDual.CoPoissonEnergy.Muntz.Cokernel.CenteredGram.JointAction.ClozelIntegralGraphJointAction",
+  "SaturationMonoid.NoIslandNoMagic.CanonicalRiemann.GeneralizedDual.CoPoissonEnergy.Muntz.Cokernel.CenteredGram.PerfectRealization.Regression.ClozelIntegralGraphPerfectRealization",
+  "SaturationMonoid.NoIslandNoMagic.CanonicalRiemann.GeneralizedDual.CoPoissonEnergy.Muntz.Integral.Regression.ThetaPrimePowerFace",
+  "SaturationMonoid.NoIslandNoMagic.CanonicalRiemann.GeneralizedDual.CoPoissonEnergy.Muntz.Integral.CharacterGroupRing.Regression.ThetaJRoleRepresentation",
+  "SaturationMonoid.NoIslandNoMagic.CanonicalRiemann.GeneralizedDual.CoPoissonEnergy.Muntz.Integral.CharacterGroupRing.Regression.ThetaJRoleMuntzCoupling",
+  "SaturationMonoid.NoIslandNoMagic.CanonicalRiemann.GeneralizedDual.CoPoissonEnergy.Muntz.Integral.CharacterGroupRing.Regression.ThetaJRoleRelationQuotient",
+  "SaturationMonoid.NoIslandNoMagic.CanonicalRiemann.GeneralizedDual.CoPoissonEnergy.Muntz.Integral.CharacterGroupRing.Regression.GlobalCoPoissonRoleRepresentation",
+  "SaturationMonoid.NoIslandNoMagic.CanonicalRiemann.QRich.Integral.Regression.ClozelZeroPositiveMellinCyclicIntegralFace",
+  "SaturationMonoid.NoIslandNoMagic.CanonicalRiemann.GeneralizedDual.Rigged.NoGo.Regression.ClozelPositiveOrbitTranslationRiggingNoGo",
+  "SaturationMonoid.NoIslandNoMagic.CanonicalRiemann.GeneralizedDual.CoPoissonEnergy.Cokernel.Regression.ClozelCoPoissonHilbertCokernel",
+  "SaturationMonoid.NoIslandNoMagic.CanonicalRiemann.GeneralizedDual.CoPoissonEnergy.Cokernel.NoGo.Regression.ClozelCoPoissonBoundedMellinEvaluatorNoGo",
+  "SaturationMonoid.UniversalBSDTate.Clay.FirstOrder.Regression.ParentConnectingReadout",
+  "SaturationMonoid.UniversalBSDTate.Clay.Subface.Regression.CanonicalDispositionRegression",
+  "SaturationMonoid.UniversalBSDTate.Clay.Subface.CategoricalResidualNaturality",
+  "SaturationMonoid.UniversalBSDTateClaySourceGeneratedBSDRegression",
+  "SaturationMonoid.Tracks.LivingLawSingleRootAuthorityFacadeRegression",
+  "SaturationMonoid.Tracks.ResponsibilityConservation",
+  # Closed domain facades and active root-controlled domain organs belong
+  # here.  Unregistered mathematical probes remain explicit research targets.
+  "SaturationMonoid.Tracks.LivingLawNavierStokesRootInstance",
+  "SaturationMonoid.NavierStokes.NativeAccumulation.BoundaryInquiryAuthorityRegression",
+  "SaturationMonoid.Tracks.LivingLawPhysicsRootInstanceActive",
+  "SaturationMonoid.PhysicsCore.StageTenPhysicalRootCurrentAdmissionRegression",
+  "SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.Thermal.Recovery.Runtime.RecoveryActionRuntime",
+  "SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.Thermal.Recovery.Charging.Runtime.ChargingRuntime",
+  "SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.Thermal.Recovery.Reservoir.Runtime.ReservoirRuntimeAccount",
+  "SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.Thermal.Recovery.Reservoir.Pointer.Runtime.PointerRuntimeAccount",
+  "SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.Thermal.Recovery.Reservoir.Feedback.Runtime.FeedbackRuntimeResources",
+  "SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.Inertia.Runtime.InertiaRuntimeRegression",
+  "SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.ElectronicFrame.Runtime.ElectronicFrameRuntimeRegression",
+  "SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.HeldForce.Runtime.HeldForceRuntimeRegression",
+  "SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.JointNext.Runtime.JointRuntimeRegression",
+  "SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.Reentry.Runtime.ReentryRuntimeRegression",
+  "SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.BondReadout.Runtime.BondRuntimeRegression",
+  "SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.ChargeIdentity.Runtime.ChargeRuntimeRegression",
+  "SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.BasinPartition.Runtime.BasinRuntimeRegression",
+  "SaturationMonoid.Tracks.LivingLawGoldbachResidualInstance",
+  "SaturationMonoid.Tracks.LivingLawUniversalBSDRootInstance",
+]
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+rev = "v4.33.0"
+
+[[require]]
+name = "Physlib"
+git = "https://github.com/leanprover-community/physlib.git"
+rev = "v4.33.0"
+
+[[lean_lib]]
+name = "LAlanineMolecularBudget"
+srcDir = "DomainProofs/LAlanineMolecularBudget"
+roots = [
+  "scratch.LAlanineRampBudget.AttractionEnergyPrice",
+  "scratch.LAlanineRampBudget.AttractionExcursion",
+  "scratch.LAlanineRampBudget.BudgetAdmission",
+  "scratch.LAlanineRampBudget.CommutatorTransfer",
+  "scratch.LAlanineRampBudget.ComplexFields",
+  "scratch.LAlanineRampBudget.CoulombBounds",
+  "scratch.LAlanineRampBudget.CoulombForm",
+  "scratch.LAlanineRampBudget.CoulombIBP",
+  "scratch.LAlanineRampBudget.CoulombLimit",
+  "scratch.LAlanineRampBudget.CoulombRadialLp",
+  "scratch.LAlanineRampBudget.CoulombVector",
+  "scratch.LAlanineRampBudget.CoulombWeightedHardy",
+  "scratch.LAlanineRampBudget.CoulombWeightedSpace",
+  "scratch.LAlanineRampBudget.DensityDifference",
+  "scratch.LAlanineRampBudget.ElectronicBudget",
+  "scratch.LAlanineRampBudget.ElectronicFlow",
+  "scratch.LAlanineRampBudget.EnergyTrace",
+  "scratch.LAlanineRampBudget.FieldEnergyChange",
+  "scratch.LAlanineRampBudget.FieldGram",
+  "scratch.LAlanineRampBudget.FockAlgebra",
+  "scratch.LAlanineRampBudget.FockBounds",
+  "scratch.LAlanineRampBudget.FockEntry",
+  "scratch.LAlanineRampBudget.FockMagnitude",
+  "scratch.LAlanineRampBudget.FockProductData",
+  "scratch.LAlanineRampBudget.FockProducts",
+  "scratch.LAlanineRampBudget.FockRecognition",
+  "scratch.LAlanineRampBudget.FockRowProduct",
+  "scratch.LAlanineRampBudget.FockSource",
+  "scratch.LAlanineRampBudget.GaussianCoulomb",
+  "scratch.LAlanineRampBudget.GradientFrameSourcePrice",
+  "scratch.LAlanineRampBudget.GradientSquare",
+  "scratch.LAlanineRampBudget.GramExcursion",
+  "scratch.LAlanineRampBudget.GramRateBudget",
+  "scratch.LAlanineRampBudget.HessianBounds",
+  "scratch.LAlanineRampBudget.HessianPrice0",
+  "scratch.LAlanineRampBudget.HessianPrices",
+  "scratch.LAlanineRampBudget.HessianPrices.Batch01",
+  "scratch.LAlanineRampBudget.HessianPrices.Batch02",
+  "scratch.LAlanineRampBudget.HessianPrices.Batch03",
+  "scratch.LAlanineRampBudget.HessianPrices.Batch04",
+  "scratch.LAlanineRampBudget.HessianPrices.Batch05",
+  "scratch.LAlanineRampBudget.HessianPrices.Batch06",
+  "scratch.LAlanineRampBudget.HessianPrices.Batch07",
+  "scratch.LAlanineRampBudget.HessianPrices.Batch08",
+  "scratch.LAlanineRampBudget.HessianPrices.Batch09",
+  "scratch.LAlanineRampBudget.HessianPrices.Batch10",
+  "scratch.LAlanineRampBudget.HessianPrices.Batch11",
+  "scratch.LAlanineRampBudget.HessianPrices.Batch12",
+  "scratch.LAlanineRampBudget.HessianPrices.Batch13",
+  "scratch.LAlanineRampBudget.HessianReifier",
+  "scratch.LAlanineRampBudget.HessianReuse",
+  "scratch.LAlanineRampBudget.HessianRows",
+  "scratch.LAlanineRampBudget.HessianSource",
+  "scratch.LAlanineRampBudget.HistoricalMotionPrice",
+  "scratch.LAlanineRampBudget.IntegralPositive",
+  "scratch.LAlanineRampBudget.KineticGeometry",
+  "scratch.LAlanineRampBudget.MechanicalKineticPrice",
+  "scratch.LAlanineRampBudget.MixedCurvaturePrice",
+  "scratch.LAlanineRampBudget.MixedGradientGeometry",
+  "scratch.LAlanineRampBudget.NucleusRelativePrice",
+  "scratch.LAlanineRampBudget.OneBodyNucleusFields",
+  "scratch.LAlanineRampBudget.OneBodySigns",
+  "scratch.LAlanineRampBudget.OneBodyTraceConsumer",
+  "scratch.LAlanineRampBudget.PairCoefficientBudget",
+  "scratch.LAlanineRampBudget.PairCoefficientOperator",
+  "scratch.LAlanineRampBudget.PairEffectiveSource",
+  "scratch.LAlanineRampBudget.PairEnergyChange",
+  "scratch.LAlanineRampBudget.PairEnergyContraction",
+  "scratch.LAlanineRampBudget.PairExcursion",
+  "scratch.LAlanineRampBudget.PairFieldGeometry",
+  "scratch.LAlanineRampBudget.PairFieldTotals",
+  "scratch.LAlanineRampBudget.PairFrameEnergy",
+  "scratch.LAlanineRampBudget.PairGeometryBudget",
+  "scratch.LAlanineRampBudget.PairGeometryTotals",
+  "scratch.LAlanineRampBudget.PairHardy",
+  "scratch.LAlanineRampBudget.PairMixedFields",
+  "scratch.LAlanineRampBudget.PairNumericalEnergy",
+  "scratch.LAlanineRampBudget.PairRateBudget",
+  "scratch.LAlanineRampBudget.PairRelativeFields",
+  "scratch.LAlanineRampBudget.PairWaveCoulomb",
+  "scratch.LAlanineRampBudget.PairWaveDifference",
+  "scratch.LAlanineRampBudget.PairWaveH1",
+  "scratch.LAlanineRampBudget.PairWaveProduct",
+  "scratch.LAlanineRampBudget.PairWedgePositive",
+  "scratch.LAlanineRampBudget.PairWeightedSpace",
+  "scratch.LAlanineRampBudget.ProjectorSourcePrice",
+  "scratch.LAlanineRampBudget.RampJointAccount",
+  "scratch.LAlanineRampBudget.RampJointInventory",
+  "scratch.LAlanineRampBudget.SourceFieldNormHelper",
+  "scratch.LAlanineRampBudget.SourceFieldTotals",
+  "scratch.LAlanineRampBudget.SpinGradientEnergy",
+  "scratch.LAlanineRampBudget.StockFloor",
+  "scratch.LAlanineRampBudget.TensorRate",
+  "scratch.LAlanineRampBudget.TightGeometryBudget",
+  "scratch.LAlanineRampBudget.TotalEnergyPrice",
+  "scratch.LAlanineRampBudget.WeightedFieldSpace",
+]
+
+[[lean_lib]]
+name = "LAlanineMolecularControl"
+srcDir = "DomainProofs/LAlanineMolecularControl"
+roots = [
+  "scratch.LAlanineNextEnergy.ConfiguredFields",
+  "scratch.LAlanineNextEnergy.ConfiguredSourceEnergy",
+  "scratch.LAlanineNextEnergy.ConfiguredDerivatives",
+  "scratch.LAlanineNextEnergy.ConfiguredOccupiedVariation",
+  "scratch.LAlanineNextEnergy.ConfiguredPower",
+  "scratch.LAlanineNextEnergy.ActualMetricElectronicControl",
+  "scratch.LAlanineNextEnergy.ActualMetricOccupiedLift",
+  "scratch.LAlanineNextEnergy.ConfiguredAction",
+  "scratch.LAlanineNextEnergy.UnifiedControlPotential",
+  "scratch.LAlanineNextEnergy.OccupiedTraceAlgebra",
+  "scratch.LAlanineNextEnergy.MetricElectronicAlgebra",
+  "scratch.LAlanineNextEnergy.OccupiedOperatorResponse",
+  "scratch.LAlanineNextEnergy.UnifiedControlAlgebra",
+  "scratch.LAlanineNextEnergy.MetricOccupiedLift",
+  "scratch.LAlanineNextEnergy.NormalizedProjectionFrameRate",
+  "scratch.LAlanineSpatialControl.TranslationRemainder",
+  "scratch.LAlanineSpatialControl.TranslationDifferentiability",
+  "scratch.LAlanineSpatialControl.SpatialProjectionAlgebra",
+  "scratch.LAlanineSpatialControl.SpatialProjectionDynamics",
+  "scratch.LAlanineSpatialControl.SpatialEnergyVariation",
+  "scratch.LAlanineSpatialControl.ActualSpatialRates",
+  "scratch.LAlanineSpatialControl.ActualSpatialProjection",
+  "scratch.LAlanineSpatialControl.ActualSpatialEnergy",
+]
+
+[[lean_lib]]
+name = "CPS1ResourceExecution"
+srcDir = "DomainProofs/CPS1ResourceExecution"
+roots = ["CPS1ResourceExecution.Consumer"]
+
+[[lean_lib]]
+name = "CPS1Deamination"
+srcDir = "DomainProofs/CPS1ResourceExecution"
+roots = ["CPS1Deamination.ContinuedCoding"]
+
+[[lean_lib]]
+name = "CPS1EndogenousTranslation"
+srcDir = "DomainProofs/CPS1ResourceExecution"
+roots = ["CPS1EndogenousTranslation.Program"]
+
+[[lean_lib]]
+name = "CPS1InitiationTermination"
+srcDir = "DomainProofs/CPS1ResourceExecution"
+roots = ["CPS1InitiationTermination.Source"]
+
+[[lean_lib]]
+name = "CPS1Recycling"
+srcDir = "DomainProofs/CPS1ResourceExecution"
+roots = ["CPS1Recycling.Source"]
+
+[[lean_lib]]
+name = "CPS1Reinitiation"
+srcDir = "DomainProofs/CPS1ResourceExecution"
+roots = ["CPS1Reinitiation.HandoverLedger"]
+
+[[lean_lib]]
+name = "CPS1StockRecursion"
+srcDir = "DomainProofs/CPS1ResourceExecution"
+roots = ["CPS1StockRecursion.Source"]
+
+[[lean_lib]]
+name = "CPS1LocalChemicalExecution"
+srcDir = "DomainProofs/CPS1ResourceExecution"
+roots = ["CPS1LocalChemicalExecution.Source"]
+
+[[lean_lib]]
+name = "CPS1EditingChemicalJoin"
+srcDir = "DomainProofs/CPS1ResourceExecution"
+roots = ["CPS1EditingChemicalJoin.Contract"]
+
+[[lean_lib]]
+name = "CPS1AtomicSource"
+srcDir = "DomainProofs/CPS1ResourceExecution"
+roots = ["CPS1AtomicSource.Contract"]
+
+[[lean_lib]]
+name = "CPS1AtomicDynamics"
+srcDir = "DomainProofs/CPS1ResourceExecution"
+roots = ["CPS1AtomicDynamics.Contract"]
+
+[[lean_lib]]
+name = "CPS1EnzymeBath"
+srcDir = "DomainProofs/CPS1ResourceExecution"
+roots = ["CPS1EnzymeBath.Contract"]
+
+[[lean_lib]]
+name = "CPS1ElectronicSource"
+srcDir = "DomainProofs/CPS1ResourceExecution"
+roots = ["CPS1ElectronicSource.Contract"]
+
+[[lean_lib]]
+name = "CPS1QuantumNuclear"
+srcDir = "DomainProofs/CPS1ResourceExecution"
+roots = ["CPS1QuantumNuclear.Contract"]
+
+[[lean_lib]]
+name = "CPS1Following"
+srcDir = "DomainProofs/CPS1ResourceExecution"
+roots = ["CPS1Following.Contract"]
+
+[[lean_lib]]
+name = "CPS1MolecularFrame"
+srcDir = "DomainProofs/CPS1ResourceExecution"
+roots = ["CPS1MolecularFrame.Contract"]
+
+[[lean_lib]]
+name = "CPS1Deformation"
+srcDir = "DomainProofs/CPS1ResourceExecution"
+roots = ["CPS1Deformation.Contract"]
+
+[[lean_lib]]
+name = "CPS1PositivePulse"
+srcDir = "DomainProofs/CPS1ResourceExecution"
+roots = ["CPS1PositivePulse.Contract"]
+
+[[lean_lib]]
+name = "CPS1PositiveContinuation"
+srcDir = "DomainProofs/CPS1ResourceExecution"
+roots = ["CPS1PositiveContinuation.Contract"]
+
+[[lean_lib]]
+name = "CPS1AddressedTransfer"
+srcDir = "DomainProofs/CPS1ResourceExecution"
+roots = ["CPS1AddressedTransfer.Contract"]
+
+[[lean_lib]]
+name = "CPS1AddressedRenewal"
+srcDir = "DomainProofs/CPS1ResourceExecution"
+roots = ["CPS1AddressedRenewal.Contract"]
+
+[[lean_lib]]
+name = "CPS1AddressedBondResponse"
+srcDir = "DomainProofs/CPS1ResourceExecution"
+roots = ["CPS1AddressedBondResponse.Contract"]
+
+[[lean_lib]]
+name = "CPS1AddressedBondRenewal"
+srcDir = "DomainProofs/CPS1ResourceExecution"
+roots = ["CPS1AddressedBondRenewal.Contract"]
+
+[[lean_lib]]
+name = "CPS1AddressedInteraction"
+srcDir = "DomainProofs/CPS1ResourceExecution"
+roots = ["CPS1AddressedInteraction.Current"]
+
+[[lean_lib]]
+name = "CPS1AddressedCurrentPair"
+srcDir = "DomainProofs/CPS1ResourceExecution"
+roots = ["CPS1AddressedCurrentPair.Current"]
+
+[[lean_lib]]
+name = "CPS1AddressedChemicalReaction"
+srcDir = "DomainProofs/CPS1ResourceExecution"
+roots = ["CPS1AddressedChemicalReaction.Source"]
+[[lean_lib]]
+name = "CPS1AddressedHydrolysis"
+srcDir = "DomainProofs/CPS1ResourceExecution"
+roots = ["CPS1AddressedHydrolysis.Atomic"]
+
+[[lean_lib]]
+name = "CPS1AddressedReactiveJoint"
+srcDir = "DomainProofs/CPS1ResourceExecution"
+roots = ["CPS1AddressedReactiveJoint.Current"]
+
+[[lean_lib]]
+name = "CPS1ReactiveField"
+srcDir = "DomainProofs/CPS1ResourceExecution"
+roots = ["CPS1ReactiveField.Continuation"]
+
+[[lean_lib]]
+name = "CPS1ReactiveFieldPresentation"
+srcDir = "DomainProofs/CPS1ResourceExecution"
+roots = ["CPS1ReactiveFieldPresentation.Mouths"]
+
+[[lean_lib]]
+name = "CPS1ReactiveFieldDynamics"
+srcDir = "DomainProofs/CPS1ResourceExecution"
+roots = ["CPS1ReactiveFieldDynamics.Consumers"]
+
+[[lean_lib]]
+name = "CPS1ReactiveNuclear"
+srcDir = "DomainProofs/CPS1ResourceExecution"
+roots = ["CPS1ReactiveNuclear.Differential"]
+
+[[lean_lib]]
+name = "CPS1ReactiveJointNuclear"
+srcDir = "DomainProofs/CPS1ResourceExecution"
+roots = ["CPS1ReactiveJointNuclear.Contract"]
+
+[[lean_lib]]
+name = "CPS1ReactiveSourceEntry"
+srcDir = "DomainProofs/CPS1ResourceExecution"
+roots = ["CPS1ReactiveSourceEntry.Programme"]
+
+[[lean_lib]]
+name = "CPS1LiveEditing"
+srcDir = "DomainProofs/CPS1ResourceExecution"
+roots = ["CPS1LiveEditing.Selected"]
+
+[[lean_lib]]
+name = "CPS1BiologicalUpdate"
+srcDir = "DomainProofs/CPS1ResourceExecution"
+roots = ["CPS1BiologicalUpdate.RepairPositive", "CPS1BiologicalUpdate.Controls"]
+
+[[lean_lib]]
+name = "CPS1SameEventFunction"
+srcDir = "DomainProofs/CPS1ResourceExecution"
+roots = ["CPS1SameEventFunction.SelectedFunction", "CPS1SameEventFunction.Controls", "CPS1SameEventFunction.Whole", "CPS1SameEventFunction.RepairCurrent"]
+
+[[lean_lib]]
+name = "CPS1PhosphorylExchange"
+srcDir = "DomainProofs/CPS1ResourceExecution"
+roots = ["CPS1PhosphorylExchange.Actual", "CPS1PhosphorylExchange.ReadControls"]
+
+[[lean_lib]]
+name = "CPS1MaterialIncidence"
+srcDir = "DomainProofs/CPS1ResourceExecution"
+roots = ["CPS1MaterialIncidence.SourceCAR", "CPS1MaterialIncidence.ChargedAction", "CPS1MaterialIncidence.AtomSectors", "CPS1MaterialIncidence.NativeIncidence", "CPS1MaterialIncidence.FiniteCAR", "CPS1MaterialIncidence.SourceWordStock", "CPS1MaterialIncidence.CanonicalOperatorSquare", "CPS1MaterialIncidence.CanonicalTransport", "CPS1MaterialIncidence.CanonicalChain", "CPS1MaterialIncidence.CanonicalPairChain", "CPS1MaterialIncidence.CanonicalOperatorTransport", "CPS1MaterialIncidence.CommonModeContraction", "CPS1MaterialIncidence.NormalSlaterAction", "CPS1MaterialIncidence.ActualNormalTrace", "CPS1MaterialIncidence.ActualUpdateWholeStock", "CPS1MaterialIncidence.ActualEventTrace", "CPS1MaterialIncidence.ActualEventContinuation", "CPS1MaterialIncidence.ActualEventNoRepeat", "CPS1MaterialIncidence.ActualLiteralWholeNext", "CPS1MaterialIncidence.ActualSerialContinuation", "CPS1MaterialIncidence.ActualSerialProductRead", "CPS1MaterialIncidence.ActualSerialChargeBoundary", "CPS1MaterialIncidence.ActualSourceChargedContinuation", "CPS1MaterialIncidence.ActualNativeSelection", "CPS1MaterialIncidence.ActualNativeIncidencePositive", "CPS1MaterialIncidence.ActualFirstProducts", "CPS1MaterialIncidence.ActualAmmoniaSubstitution", "CPS1MaterialIncidence.ActualAmmoniaDynamics", "CPS1MaterialIncidence.CarbamoylSource", "CPS1MaterialIncidence.CarbamoylSerial", "CPS1MaterialIncidence.ActualCarbamoylProducts", "CPS1MaterialIncidence.NativePaidSource", "CPS1MaterialIncidence.NativePaidEvents", "CPS1MaterialIncidence.ActualNativePaidReturn", "CPS1MaterialIncidence.PaidPositiveHead", "CPS1MaterialIncidence.PaidPositiveSource", "CPS1MaterialIncidence.PaidPositiveInstance", "CPS1MaterialIncidence.ActualRootPaidDisposition", "CPS1MaterialIncidence.NativeGatherSource", "CPS1MaterialIncidence.NativeCPProjection", "CPS1MaterialIncidence.NativeJointAtoms", "CPS1MaterialIncidence.NativeJointRows", "CPS1MaterialIncidence.ActualNativeJointGeometry", "CPS1MaterialIncidence.NativeJointWhole", "CPS1MaterialIncidence.NativeCPFocus", "CPS1MaterialIncidence.ActualNativeCPContinuation", "CPS1MaterialIncidence.NativeAfterGeometry", "CPS1MaterialIncidence.NativePrepareSourceGuard", "CPS1MaterialIncidence.NativePrepareSourceStock", "CPS1MaterialIncidence.NativePrepareSourceCut", "CPS1MaterialIncidence.NativePreparedOccurrence", "CPS1MaterialIncidence.NativePrepareExecution", "CPS1MaterialIncidence.ActualNativePrepareNext", "CPS1MaterialIncidence.NativePreparedOriginGerm", "CPS1MaterialIncidence.ActualNativePreparedBinding", "CPS1MaterialIncidence.NativeResumablePhysics", "CPS1MaterialIncidence.NativeAdoptionExecution", "CPS1MaterialIncidence.ActualNativeAdoptedNext", "CPS1MaterialIncidence.NativeBiologicalBody", "CPS1MaterialIncidence.NativeBodyGenome", "CPS1MaterialIncidence.ActualNativeBodyUpdate", "CPS1MaterialIncidence.PaidPositiveGenericSource", "CPS1MaterialIncidence.NativeRootData", "CPS1MaterialIncidence.NativeRootMaterialData", "CPS1MaterialIncidence.NativeRootFromInput", "CPS1MaterialIncidence.NativeRootNextLaw", "CPS1MaterialIncidence.NativeBodyFunction", "CPS1MaterialIncidence.NativeRawRegularity", "CPS1MaterialIncidence.NativeFullSmooth", "CPS1MaterialIncidence.NativeBodyPaidSource", "CPS1MaterialIncidence.NativeBodyDirectionSource", "CPS1MaterialIncidence.NativeBodyDirectionDrive", "CPS1MaterialIncidence.NativeBodyDirectionKernel", "CPS1MaterialIncidence.NativeBodyFockTimeJet", "CPS1MaterialIncidence.NativeBodySecondTimeJet", "CPS1MaterialIncidence.NativeBodyNuclearSecondJet", "CPS1MaterialIncidence.NativeBodyKernelSecondJet", "CPS1MaterialIncidence.NativeBodyCurvatureSource", "CPS1MaterialIncidence.NativeBodyGovernedSource", "CPS1MaterialIncidence.NativeGovernedAdmissionInput", "CPS1MaterialIncidence.NativeCatalyticTurnoverSource", "CPS1MaterialIncidence.NativeCatalyticTurnoverLaws", "CPS1MaterialIncidence.NativeCatalyticTurnoverInput", "CPS1MaterialIncidence.NativeCatalyticTurnoverReadout", "CPS1MaterialIncidence.NativeCPSourceResources", "CPS1MaterialIncidence.NativeCatalyticResourceInput", "CPS1MaterialIncidence.NativeCPSourceContinuation", "CPS1MaterialIncidence.NativeResourceAtomicCarrier", "CPS1MaterialIncidence.NativeResourceAtomicSource", "CPS1MaterialIncidence.NativeResourceAtomicLaws", "CPS1MaterialIncidence.NativeResourcePrimitiveSource", "CPS1MaterialIncidence.NativeResourceFieldSource", "CPS1MaterialIncidence.NativeResourcePhysicalSource", "CPS1MaterialIncidence.NativeResourcePhysicalLaws", "CPS1MaterialIncidence.NativeResourcePhysicalPhase", "CPS1MaterialIncidence.NativeResourcePrimitiveLaw", "CPS1MaterialIncidence.NativeResourceScalarPayment", "CPS1MaterialIncidence.NativeResourceScalarAlgorithm", "CPS1MaterialIncidence.NativeResourceScalarCertificate", "CPS1MaterialIncidence.NativeResourceAtomicPositiveProbe", "CPS1MaterialIncidence.NativeResourceAtomicPositiveReceipt", "CPS1MaterialIncidence.NativeResourceAtomicPositiveReferenceFirst", "CPS1MaterialIncidence.NativeResourceAtomicPositiveFirstInputs", "CPS1MaterialIncidence.NativeResourceAtomicPositiveFirstResult", "CPS1MaterialIncidence.NativeResourceAtomicPositiveFirst", "CPS1MaterialIncidence.NativeResourceAtomicPositiveFirstProduct", "CPS1MaterialIncidence.NativeResourceAtomicPositiveReferenceSecond", "CPS1MaterialIncidence.NativeResourceAtomicPositiveSecondInputs", "CPS1MaterialIncidence.NativeResourceAtomicPositiveSecondResult", "CPS1MaterialIncidence.NativeResourceAtomicPositiveSecond", "CPS1MaterialIncidence.NativeResourceAtomicPositiveSecondProduct", "CPS1MaterialIncidence.NativeResourceAtomicPositiveReferenceThird", "CPS1MaterialIncidence.NativeResourceAtomicPositiveThirdInputs", "CPS1MaterialIncidence.NativeResourceAtomicPositiveThirdResult", "CPS1MaterialIncidence.NativeResourceAtomicPositiveThird", "CPS1MaterialIncidence.NativeResourceAtomicPositiveThirdProduct", "CPS1MaterialIncidence.NativeResourceAtomicPositive", "CPS1MaterialIncidence.NativeResourceAtomicPositiveLocalEvents", "CPS1MaterialIncidence.NativeResourceAtomicPositiveLocalHistory", "CPS1MaterialIncidence.NativeResourceAtomicPositiveLocalResolve", "CPS1MaterialIncidence.NativeResourceNativeMaterialSource", "CPS1MaterialIncidence.NativeResourceNativeSlotTransport", "CPS1MaterialIncidence.NativeResourceNativeSeedTape", "CPS1MaterialIncidence.NativeResourceNativePhysicalTape", "CPS1MaterialIncidence.NativeResourceNativeInventoryTape", "CPS1MaterialIncidence.NativeResourceNativeRawAtoms", "CPS1MaterialIncidence.NativeResourceNativeMotherRawSource", "CPS1MaterialIncidence.NativeResourceNativeGTPGraph", "CPS1MaterialIncidence.NativeResourceNativeChemicalBirth", "CPS1MaterialIncidence.NativeResourceNativeGTPProducts", "CPS1MaterialIncidence.NativeResourceNativeCofactorSource", "CPS1MaterialIncidence.NativeResourceNativeBoundaryAtoms", "CPS1MaterialIncidence.NativeResourceNativeFieldSource", "CPS1MaterialIncidence.NativeResourceNativeSourceBank", "CPS1MaterialIncidence.NativeResourceNativePhysicalSource", "CPS1MaterialIncidence.NativeResourceNativePhysicalConsumer", "CPS1MaterialIncidence.NativeResourceNativePhase", "CPS1MaterialIncidence.NativeResourceNativeSourceLaw", "CPS1MaterialIncidence.NativeResourceNativeSourceLawConsumer", "CPS1MaterialIncidence.NativeResourceNativeGTPPositiveModel", "CPS1MaterialIncidence.NativeResourceNativeGTPPositiveReference", "CPS1MaterialIncidence.NativeResourceNativeGTPPositiveTransport", "CPS1MaterialIncidence.NativeResourceNativeGTPPositive", "CPS1MaterialIncidence.NativeResourceNativeGTPEventPositive", "CPS1MaterialIncidence.NativeResourceNativeControls", "CPS1MaterialIncidence.NativeResourceNativeRawPreparation", "CPS1MaterialIncidence.NativeResourceNativeRawPreparationPulse", "CPS1MaterialIncidence.NativeResourceNativeRawPreparationPaidStored", "CPS1MaterialIncidence.NativeResourceNativeSavedPulseCore", "CPS1MaterialIncidence.NativeResourceNativeRawPreparationSavedPulseConsumer", "CPS1MaterialIncidence.NativeResourceNativeRawPreparationControls", "CPS1MaterialIncidence.NativeResourceNativeSourcePulse", "CPS1MaterialIncidence.NativeResourceNativeObservationSession", "CPS1MaterialIncidence.NativeResourceNativeObservationSessionConsumer", "CPS1MaterialIncidence.NativeCatalyticObservationRootConsumer", "CPS1MaterialIncidence.NativeObservationBalanceContinuation", "CPS1MaterialIncidence.NativeObservationEmitterConsumer", "CPS1MaterialIncidence.NativeObservationCreditSegments", "CPS1MaterialIncidence.NativeObservationLedgerRootSource", "CPS1MaterialIncidence.NativeObservationSourceEnergy", "CPS1MaterialIncidence.NativeResourceNativeAdaptivePulse", "CPS1MaterialIncidence.NativeResourceNativeAdaptiveMaterial", "CPS1MaterialIncidence.NativeResourceNativeRegenerativePulse", "CPS1MaterialIncidence.NativeResourceCurrentProductSource", "CPS1MaterialIncidence.NativeResourceNativeLocalField", "CPS1MaterialIncidence.NativeResourceNativeLocalFieldInput", "CPS1MaterialIncidence.NativeResourceNativeLocalHistoryField", "CPS1MaterialIncidence.NativeResourceNativeLocalHistoryInput", "CPS1MaterialIncidence.NativeResourceNativeLocalHistoryContinuation"]

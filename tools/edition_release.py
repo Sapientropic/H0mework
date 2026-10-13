@@ -13,6 +13,7 @@ import first_release
 EDITIONS = {
     "second": ("docs/second-edition-map.json", "h0mework/second-edition-map@1"),
     "low-energy": ("docs/low-energy-release-map.json", "h0mework/low-energy-release-map@1"),
+    "whole-ledger": ("docs/whole-ledger-map.json", "h0mework/whole-ledger-map@1"),
 }
 
 

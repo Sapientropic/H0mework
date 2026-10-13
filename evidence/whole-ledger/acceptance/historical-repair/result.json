@@ -1,0 +1,403 @@
+{
+  "schema": "whole-ledger-historical-compatibility-candidates/v1",
+  "mode": "fixed committed repair restoration; isolated target-source focused compilation; no source research or science",
+  "original_failure_receipt": ".local/whole-ledger-work/historical-build/result.json",
+  "original_failure_receipt_sha256": "69e58ab23c9a50556a83e9d6802397d5680d38584d3276b4d4a9afc6ed0eda72",
+  "provider_file": "providers.json",
+  "protected_files_before": {
+    "tools/export-map.json": "fddb7e7686e8ec3b5bc4c2925bbd5e20931812679277160f75c7481f7fecb44e",
+    "docs/whole-ledger-map.json": "80be66a5c4285bb4b3f2a1c8330c8e959d81a100a10a6b24780be9dfa720d8d0",
+    "Lean/lakefile.toml": "334b9f881cdbcbcf459ba8d5baf26ead9c11df0b5ef597513e806daf5f2f8a24"
+  },
+  "toolchain_pin": "leanprover/lean4:v4.33.0",
+  "flags": [
+    "--trust=0",
+    "-Dweak.linter.unnecessarySimpa=false",
+    "-Dweak.linter.style.haveILetI=false",
+    "-Dweak.linter.unusedSimpArgs=false",
+    "-DmaxHeartbeats=2000000",
+    "-Dweak.linter.unusedSectionVars=false",
+    "-Dweak.linter.unnecessarySeqFocus=false",
+    "-Dweak.linter.unusedVariables=false",
+    "-Dweak.linter.unreachableTactic=false",
+    "-Dweak.linter.unusedTactic=false",
+    "-Dweak.linter.defProp=false",
+    "-Dweak.linter.deprecated=false",
+    "-Dlinter.deprecated=false",
+    "-Dweak.linter.tacticAnalysis.introMerge=false",
+    "-Dweak.linter.constructorNameAsVariable=false",
+    "-DwarningAsError=true"
+  ],
+  "candidates": [
+    {
+      "source_commit": "fde5c14df36b6064c87064acd20830d3df0500bb",
+      "source_path": "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Observation/Source.lean",
+      "original_source_sha256": "a3ef1369164d3a638dda5464609f927e1043280d51559e6d9ff8f224240fbb1d",
+      "effective_source_sha256": "bbf4155a200f4c36c3e95061640dd3d3eac49f722a9b037af6b7afbed9ff3be0",
+      "original_bytes": "original/a3ef1369164d3a638dda5464609f927e1043280d51559e6d9ff8f224240fbb1d.lean",
+      "effective_bytes": "effective/bbf4155a200f4c36c3e95061640dd3d3eac49f722a9b037af6b7afbed9ff3be0.lean",
+      "supplement_commit": "089a1727993bec51c27ee72a0311022fec8111ab",
+      "supplement_path": "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Observation/Source.lean",
+      "classification": "committed-proof-only-source-supplement",
+      "reason": "Unfold the existing Shared.next in the next_raw proof; all declaration statements, premises and data definitions remain byte-identical.",
+      "exact_transform": "--- fde5c14df36b6064c87064acd20830d3df0500bb:Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Observation/Source.lean\n+++ 089a1727993bec51c27ee72a0311022fec8111ab:Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Observation/Source.lean\n@@ -95,6 +95,7 @@\n   unfold RootGeneratedDebtActivationJointSource.Successor.Inquiry.Continuation.Frame.next\n     RootGeneratedDebtActivationJointSource.Successor.Inquiry.Continuation.Frame.nextFrom\n     SourceOperationInquiry.Context.Faces.Execution.Activation.next\n+    SourceOperationInquiry.Context.Faces.Execution.Activation.Shared.next\n   cases frame.action <;> rfl\n \n end SourceOperationInquiry.Context.Faces.Execution.Activation.Observation\n",
+      "original_public_path": "Lean/H0mework/Versions/Rfde5c14d/Realization/Operations/Inquiry/Context/Faces/Execution/Activation/Observation/Source.lean",
+      "original_public_sha256": "a57e12845b2e9dd9fc0fde833b07076be4af20151032840e38e6440d529da548",
+      "candidate_public_path": "stage/Lean/H0mework/Versions/Rfde5c14d/Realization/Operations/Inquiry/Context/Faces/Execution/Activation/Observation/Source.lean",
+      "candidate_public_sha256": "7f35bd6f15b3439ba0c13a2bd18e364e8842ed7131c0a8939e5acb45a17595fb",
+      "module": "H0mework.Versions.Rfde5c14d.Realization.Operations.Inquiry.Context.Faces.Execution.Activation.Observation.Source",
+      "target_import_relocations": {
+        "SaturationMonoid.GenericFoundation.Operations.Inquiry.Context.Faces.Execution.Activation.Runtime": "H0mework.Versions.Rfde5c14d.Realization.Operations.Inquiry.Context.Faces.Execution.Activation.Runtime",
+        "SaturationMonoid.GenericFoundation.Operations.Inquiry.Context.Installation.Runtime": "H0mework.Versions.R2.Realization.Operations.Inquiry.Context.Installation.Runtime"
+      },
+      "effective_source_inverse_sha256": "bbf4155a200f4c36c3e95061640dd3d3eac49f722a9b037af6b7afbed9ff3be0",
+      "candidate_export_row": {
+        "import_map": {
+          "H0mework.Versions.R2.Realization.Operations.Inquiry.Context.Installation.Runtime": "SaturationMonoid.GenericFoundation.Operations.Inquiry.Context.Installation.Runtime",
+          "H0mework.Versions.Rfde5c14d.Realization.Operations.Inquiry.Context.Faces.Execution.Activation.Runtime": "SaturationMonoid.GenericFoundation.Operations.Inquiry.Context.Faces.Execution.Activation.Runtime"
+        },
+        "path": "Lean/H0mework/Versions/Rfde5c14d/Realization/Operations/Inquiry/Context/Faces/Execution/Activation/Observation/Source.lean",
+        "source": "SaturationMonoid.GenericFoundation.Operations.Inquiry.Context.Faces.Execution.Activation.Observation.Source",
+        "source_path": "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Observation/Source.lean",
+        "source_revision": "fde5c14df36b6064c87064acd20830d3df0500bb",
+        "source_revisions": [
+          "fde5c14df36b6064c87064acd20830d3df0500bb"
+        ],
+        "source_sha256": "bbf4155a200f4c36c3e95061640dd3d3eac49f722a9b037af6b7afbed9ff3be0",
+        "target": "H0mework.Versions.Rfde5c14d.Realization.Operations.Inquiry.Context.Faces.Execution.Activation.Observation.Source",
+        "target_sha256": "7f35bd6f15b3439ba0c13a2bd18e364e8842ed7131c0a8939e5acb45a17595fb",
+        "variant": "Rfde5c14d",
+        "source_origin": {
+          "kind": "committed-proof-only-source-supplement",
+          "dependency_epoch": "fde5c14df36b6064c87064acd20830d3df0500bb",
+          "original_source_commit": "fde5c14df36b6064c87064acd20830d3df0500bb",
+          "original_source_path": "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Observation/Source.lean",
+          "original_source_sha256": "a3ef1369164d3a638dda5464609f927e1043280d51559e6d9ff8f224240fbb1d",
+          "source_commit": "089a1727993bec51c27ee72a0311022fec8111ab",
+          "source_path": "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Observation/Source.lean",
+          "reason": "Unfold the existing Shared.next in the next_raw proof; all declaration statements, premises and data definitions remain byte-identical.",
+          "existing_fix_first_reused_in_H0": true
+        }
+      },
+      "focused": {
+        "status": "passed",
+        "exit_code": 0,
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "--trust=0",
+          "-Dweak.linter.unnecessarySimpa=false",
+          "-Dweak.linter.style.haveILetI=false",
+          "-Dweak.linter.unusedSimpArgs=false",
+          "-DmaxHeartbeats=2000000",
+          "-Dweak.linter.unusedSectionVars=false",
+          "-Dweak.linter.unnecessarySeqFocus=false",
+          "-Dweak.linter.unusedVariables=false",
+          "-Dweak.linter.unreachableTactic=false",
+          "-Dweak.linter.unusedTactic=false",
+          "-Dweak.linter.defProp=false",
+          "-Dweak.linter.deprecated=false",
+          "-Dlinter.deprecated=false",
+          "-Dweak.linter.tacticAnalysis.introMerge=false",
+          "-Dweak.linter.constructorNameAsVariable=false",
+          "-DwarningAsError=true",
+          "--root=./.local/whole-ledger-work/historical-repair/stage/Lean",
+          "./.local/whole-ledger-work/historical-repair/stage/Lean/H0mework/Versions/Rfde5c14d/Realization/Operations/Inquiry/Context/Faces/Execution/Activation/Observation/Source.lean",
+          "-o",
+          "./.local/whole-ledger-work/historical-repair/lib/H0mework/Versions/Rfde5c14d/Realization/Operations/Inquiry/Context/Faces/Execution/Activation/Observation/Source.olean"
+        ],
+        "cwd": "./Lean",
+        "seconds": 9.14345097541809,
+        "log": "focused-1.log",
+        "log_sha256": "21a031d5a61407f1111b5d9b532d2b6879cb1611f0febbbc70c6c2c65ff2f0e8",
+        "olean": "lib/H0mework/Versions/Rfde5c14d/Realization/Operations/Inquiry/Context/Faces/Execution/Activation/Observation/Source.olean",
+        "olean_sha256": "80c1efba0c68a2106c77805d4bc17d62aaed19cd63c1cf1f02908eb039b829e2",
+        "shared_build_cache_written": false,
+        "dependency_cache": "current H0 imports; complete historical build/trust remains separate"
+      }
+    },
+    {
+      "source_commit": "aef0ad2a26199d9fd6da9bc9e7ec1a65636ef63f",
+      "source_path": "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Observation/Source.lean",
+      "original_source_sha256": "a3ef1369164d3a638dda5464609f927e1043280d51559e6d9ff8f224240fbb1d",
+      "effective_source_sha256": "bbf4155a200f4c36c3e95061640dd3d3eac49f722a9b037af6b7afbed9ff3be0",
+      "original_bytes": "original/a3ef1369164d3a638dda5464609f927e1043280d51559e6d9ff8f224240fbb1d.lean",
+      "effective_bytes": "effective/bbf4155a200f4c36c3e95061640dd3d3eac49f722a9b037af6b7afbed9ff3be0.lean",
+      "supplement_commit": "089a1727993bec51c27ee72a0311022fec8111ab",
+      "supplement_path": "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Observation/Source.lean",
+      "classification": "committed-proof-only-source-supplement",
+      "reason": "Unfold the existing Shared.next in the next_raw proof; all declaration statements, premises and data definitions remain byte-identical.",
+      "exact_transform": "--- aef0ad2a26199d9fd6da9bc9e7ec1a65636ef63f:Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Observation/Source.lean\n+++ 089a1727993bec51c27ee72a0311022fec8111ab:Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Observation/Source.lean\n@@ -95,6 +95,7 @@\n   unfold RootGeneratedDebtActivationJointSource.Successor.Inquiry.Continuation.Frame.next\n     RootGeneratedDebtActivationJointSource.Successor.Inquiry.Continuation.Frame.nextFrom\n     SourceOperationInquiry.Context.Faces.Execution.Activation.next\n+    SourceOperationInquiry.Context.Faces.Execution.Activation.Shared.next\n   cases frame.action <;> rfl\n \n end SourceOperationInquiry.Context.Faces.Execution.Activation.Observation\n",
+      "original_public_path": "Lean/H0mework/Versions/Raef0ad2a/Realization/Operations/Inquiry/Context/Faces/Execution/Activation/Observation/Source.lean",
+      "original_public_sha256": "fd709a3a98fd00ab6a692033a403f294220d8c292b7a51728cf5f9d95b368a17",
+      "candidate_public_path": "stage/Lean/H0mework/Versions/Raef0ad2a/Realization/Operations/Inquiry/Context/Faces/Execution/Activation/Observation/Source.lean",
+      "candidate_public_sha256": "343bb9d258b87851aa67f109ed5ff8480556c6c7f42e4585e59574b3881882ee",
+      "module": "H0mework.Versions.Raef0ad2a.Realization.Operations.Inquiry.Context.Faces.Execution.Activation.Observation.Source",
+      "target_import_relocations": {
+        "SaturationMonoid.GenericFoundation.Operations.Inquiry.Context.Faces.Execution.Activation.Runtime": "H0mework.Versions.AD.Realization.Operations.Inquiry.Context.Faces.Execution.Activation.Runtime",
+        "SaturationMonoid.GenericFoundation.Operations.Inquiry.Context.Installation.Runtime": "H0mework.Versions.AD.Realization.Operations.Inquiry.Context.Installation.Runtime"
+      },
+      "effective_source_inverse_sha256": "bbf4155a200f4c36c3e95061640dd3d3eac49f722a9b037af6b7afbed9ff3be0",
+      "candidate_export_row": {
+        "import_map": {
+          "H0mework.Versions.AD.Realization.Operations.Inquiry.Context.Faces.Execution.Activation.Runtime": "SaturationMonoid.GenericFoundation.Operations.Inquiry.Context.Faces.Execution.Activation.Runtime",
+          "H0mework.Versions.AD.Realization.Operations.Inquiry.Context.Installation.Runtime": "SaturationMonoid.GenericFoundation.Operations.Inquiry.Context.Installation.Runtime"
+        },
+        "path": "Lean/H0mework/Versions/Raef0ad2a/Realization/Operations/Inquiry/Context/Faces/Execution/Activation/Observation/Source.lean",
+        "source": "SaturationMonoid.GenericFoundation.Operations.Inquiry.Context.Faces.Execution.Activation.Observation.Source",
+        "source_path": "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Observation/Source.lean",
+        "source_revision": "aef0ad2a26199d9fd6da9bc9e7ec1a65636ef63f",
+        "source_revisions": [
+          "aef0ad2a26199d9fd6da9bc9e7ec1a65636ef63f"
+        ],
+        "source_sha256": "bbf4155a200f4c36c3e95061640dd3d3eac49f722a9b037af6b7afbed9ff3be0",
+        "target": "H0mework.Versions.Raef0ad2a.Realization.Operations.Inquiry.Context.Faces.Execution.Activation.Observation.Source",
+        "target_sha256": "343bb9d258b87851aa67f109ed5ff8480556c6c7f42e4585e59574b3881882ee",
+        "variant": "Raef0ad2a",
+        "source_origin": {
+          "kind": "committed-proof-only-source-supplement",
+          "dependency_epoch": "aef0ad2a26199d9fd6da9bc9e7ec1a65636ef63f",
+          "original_source_commit": "aef0ad2a26199d9fd6da9bc9e7ec1a65636ef63f",
+          "original_source_path": "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Observation/Source.lean",
+          "original_source_sha256": "a3ef1369164d3a638dda5464609f927e1043280d51559e6d9ff8f224240fbb1d",
+          "source_commit": "089a1727993bec51c27ee72a0311022fec8111ab",
+          "source_path": "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Observation/Source.lean",
+          "reason": "Unfold the existing Shared.next in the next_raw proof; all declaration statements, premises and data definitions remain byte-identical.",
+          "existing_fix_first_reused_in_H0": true
+        }
+      },
+      "focused": {
+        "status": "passed",
+        "exit_code": 0,
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "--trust=0",
+          "-Dweak.linter.unnecessarySimpa=false",
+          "-Dweak.linter.style.haveILetI=false",
+          "-Dweak.linter.unusedSimpArgs=false",
+          "-DmaxHeartbeats=2000000",
+          "-Dweak.linter.unusedSectionVars=false",
+          "-Dweak.linter.unnecessarySeqFocus=false",
+          "-Dweak.linter.unusedVariables=false",
+          "-Dweak.linter.unreachableTactic=false",
+          "-Dweak.linter.unusedTactic=false",
+          "-Dweak.linter.defProp=false",
+          "-Dweak.linter.deprecated=false",
+          "-Dlinter.deprecated=false",
+          "-Dweak.linter.tacticAnalysis.introMerge=false",
+          "-Dweak.linter.constructorNameAsVariable=false",
+          "-DwarningAsError=true",
+          "--root=./.local/whole-ledger-work/historical-repair/stage/Lean",
+          "./.local/whole-ledger-work/historical-repair/stage/Lean/H0mework/Versions/Raef0ad2a/Realization/Operations/Inquiry/Context/Faces/Execution/Activation/Observation/Source.lean",
+          "-o",
+          "./.local/whole-ledger-work/historical-repair/lib/H0mework/Versions/Raef0ad2a/Realization/Operations/Inquiry/Context/Faces/Execution/Activation/Observation/Source.olean"
+        ],
+        "cwd": "./Lean",
+        "seconds": 10.952478885650635,
+        "log": "focused-2.log",
+        "log_sha256": "21a031d5a61407f1111b5d9b532d2b6879cb1611f0febbbc70c6c2c65ff2f0e8",
+        "olean": "lib/H0mework/Versions/Raef0ad2a/Realization/Operations/Inquiry/Context/Faces/Execution/Activation/Observation/Source.olean",
+        "olean_sha256": "62ceb278d2f4be1ff9bcfd69b8dbf4cc11514ff066e3424420e64d70d67a7c15",
+        "shared_build_cache_written": false,
+        "dependency_cache": "current H0 imports; complete historical build/trust remains separate"
+      }
+    },
+    {
+      "source_commit": "26b91feb6b507fdc3f43be9c429edb63fb9395ef",
+      "source_path": "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Observation/Source.lean",
+      "original_source_sha256": "a3ef1369164d3a638dda5464609f927e1043280d51559e6d9ff8f224240fbb1d",
+      "effective_source_sha256": "bbf4155a200f4c36c3e95061640dd3d3eac49f722a9b037af6b7afbed9ff3be0",
+      "original_bytes": "original/a3ef1369164d3a638dda5464609f927e1043280d51559e6d9ff8f224240fbb1d.lean",
+      "effective_bytes": "effective/bbf4155a200f4c36c3e95061640dd3d3eac49f722a9b037af6b7afbed9ff3be0.lean",
+      "supplement_commit": "089a1727993bec51c27ee72a0311022fec8111ab",
+      "supplement_path": "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Observation/Source.lean",
+      "classification": "committed-proof-only-source-supplement",
+      "reason": "Unfold the existing Shared.next in the next_raw proof; all declaration statements, premises and data definitions remain byte-identical.",
+      "exact_transform": "--- 26b91feb6b507fdc3f43be9c429edb63fb9395ef:Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Observation/Source.lean\n+++ 089a1727993bec51c27ee72a0311022fec8111ab:Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Observation/Source.lean\n@@ -95,6 +95,7 @@\n   unfold RootGeneratedDebtActivationJointSource.Successor.Inquiry.Continuation.Frame.next\n     RootGeneratedDebtActivationJointSource.Successor.Inquiry.Continuation.Frame.nextFrom\n     SourceOperationInquiry.Context.Faces.Execution.Activation.next\n+    SourceOperationInquiry.Context.Faces.Execution.Activation.Shared.next\n   cases frame.action <;> rfl\n \n end SourceOperationInquiry.Context.Faces.Execution.Activation.Observation\n",
+      "original_public_path": "Lean/H0mework/Versions/R26b91feb/Realization/Operations/Inquiry/Context/Faces/Execution/Activation/Observation/Source.lean",
+      "original_public_sha256": "23804644ca13b3b32b6be8e91f2e4b4ff62252e1f85d7a56e4027a0a0c66d766",
+      "candidate_public_path": "stage/Lean/H0mework/Versions/R26b91feb/Realization/Operations/Inquiry/Context/Faces/Execution/Activation/Observation/Source.lean",
+      "candidate_public_sha256": "5b216466b7561ae8f7ac7123d60b1633437860126ce9c1546fca7a832fadc743",
+      "module": "H0mework.Versions.R26b91feb.Realization.Operations.Inquiry.Context.Faces.Execution.Activation.Observation.Source",
+      "target_import_relocations": {
+        "SaturationMonoid.GenericFoundation.Operations.Inquiry.Context.Faces.Execution.Activation.Runtime": "H0mework.Versions.AE.Realization.Operations.Inquiry.Context.Faces.Execution.Activation.Runtime",
+        "SaturationMonoid.GenericFoundation.Operations.Inquiry.Context.Installation.Runtime": "H0mework.Versions.AD.Realization.Operations.Inquiry.Context.Installation.Runtime"
+      },
+      "effective_source_inverse_sha256": "bbf4155a200f4c36c3e95061640dd3d3eac49f722a9b037af6b7afbed9ff3be0",
+      "candidate_export_row": {
+        "import_map": {
+          "H0mework.Versions.AD.Realization.Operations.Inquiry.Context.Installation.Runtime": "SaturationMonoid.GenericFoundation.Operations.Inquiry.Context.Installation.Runtime",
+          "H0mework.Versions.AE.Realization.Operations.Inquiry.Context.Faces.Execution.Activation.Runtime": "SaturationMonoid.GenericFoundation.Operations.Inquiry.Context.Faces.Execution.Activation.Runtime"
+        },
+        "path": "Lean/H0mework/Versions/R26b91feb/Realization/Operations/Inquiry/Context/Faces/Execution/Activation/Observation/Source.lean",
+        "source": "SaturationMonoid.GenericFoundation.Operations.Inquiry.Context.Faces.Execution.Activation.Observation.Source",
+        "source_path": "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Observation/Source.lean",
+        "source_revision": "26b91feb6b507fdc3f43be9c429edb63fb9395ef",
+        "source_revisions": [
+          "26b91feb6b507fdc3f43be9c429edb63fb9395ef"
+        ],
+        "source_sha256": "bbf4155a200f4c36c3e95061640dd3d3eac49f722a9b037af6b7afbed9ff3be0",
+        "target": "H0mework.Versions.R26b91feb.Realization.Operations.Inquiry.Context.Faces.Execution.Activation.Observation.Source",
+        "target_sha256": "5b216466b7561ae8f7ac7123d60b1633437860126ce9c1546fca7a832fadc743",
+        "variant": "R26b91feb",
+        "source_origin": {
+          "kind": "committed-proof-only-source-supplement",
+          "dependency_epoch": "26b91feb6b507fdc3f43be9c429edb63fb9395ef",
+          "original_source_commit": "26b91feb6b507fdc3f43be9c429edb63fb9395ef",
+          "original_source_path": "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Observation/Source.lean",
+          "original_source_sha256": "a3ef1369164d3a638dda5464609f927e1043280d51559e6d9ff8f224240fbb1d",
+          "source_commit": "089a1727993bec51c27ee72a0311022fec8111ab",
+          "source_path": "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Observation/Source.lean",
+          "reason": "Unfold the existing Shared.next in the next_raw proof; all declaration statements, premises and data definitions remain byte-identical.",
+          "existing_fix_first_reused_in_H0": true
+        }
+      },
+      "focused": {
+        "status": "passed",
+        "exit_code": 0,
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "--trust=0",
+          "-Dweak.linter.unnecessarySimpa=false",
+          "-Dweak.linter.style.haveILetI=false",
+          "-Dweak.linter.unusedSimpArgs=false",
+          "-DmaxHeartbeats=2000000",
+          "-Dweak.linter.unusedSectionVars=false",
+          "-Dweak.linter.unnecessarySeqFocus=false",
+          "-Dweak.linter.unusedVariables=false",
+          "-Dweak.linter.unreachableTactic=false",
+          "-Dweak.linter.unusedTactic=false",
+          "-Dweak.linter.defProp=false",
+          "-Dweak.linter.deprecated=false",
+          "-Dlinter.deprecated=false",
+          "-Dweak.linter.tacticAnalysis.introMerge=false",
+          "-Dweak.linter.constructorNameAsVariable=false",
+          "-DwarningAsError=true",
+          "--root=./.local/whole-ledger-work/historical-repair/stage/Lean",
+          "./.local/whole-ledger-work/historical-repair/stage/Lean/H0mework/Versions/R26b91feb/Realization/Operations/Inquiry/Context/Faces/Execution/Activation/Observation/Source.lean",
+          "-o",
+          "./.local/whole-ledger-work/historical-repair/lib/H0mework/Versions/R26b91feb/Realization/Operations/Inquiry/Context/Faces/Execution/Activation/Observation/Source.olean"
+        ],
+        "cwd": "./Lean",
+        "seconds": 9.93706202507019,
+        "log": "focused-3.log",
+        "log_sha256": "21a031d5a61407f1111b5d9b532d2b6879cb1611f0febbbc70c6c2c65ff2f0e8",
+        "olean": "lib/H0mework/Versions/R26b91feb/Realization/Operations/Inquiry/Context/Faces/Execution/Activation/Observation/Source.olean",
+        "olean_sha256": "08c6815e9c83db1f880a15ddb43944c1de14ec86b9af4602381e9eb1aa7437ba",
+        "shared_build_cache_written": false,
+        "dependency_cache": "current H0 imports; complete historical build/trust remains separate"
+      }
+    },
+    {
+      "source_commit": "26b91feb6b507fdc3f43be9c429edb63fb9395ef",
+      "source_path": "Lean/SaturationMonoid/GenericFoundation/LivingLawRootGeneratedCofinalPerfectAmbientDispositionKernel.lean",
+      "original_source_sha256": "bfd1a9c550062b634ecb96421021757d2b0ccd7d275a9cd477462f57b930ac95",
+      "effective_source_sha256": "55a41d0a4a53684ab99498b75623c2f28fa5b5453f8706d713a0b82acaeae398",
+      "original_bytes": "original/bfd1a9c550062b634ecb96421021757d2b0ccd7d275a9cd477462f57b930ac95.lean",
+      "effective_bytes": "effective/55a41d0a4a53684ab99498b75623c2f28fa5b5453f8706d713a0b82acaeae398.lean",
+      "supplement_commit": "089a1727993bec51c27ee72a0311022fec8111ab",
+      "supplement_path": "Lean/SaturationMonoid/GenericFoundation/LivingLawRootGeneratedCofinalPerfectAmbientDispositionKernel.lean",
+      "classification": "committed-installed-face-projection-type-source-supplement",
+      "reason": "Recover the already committed installed-duality readout correction: the two PUnit components are injected through Sum.inr into the actual material projection. This corrects the original ill-typed declaration expression; it does not add a premise or generate a new source witness. The proof directly remains step.installedDuality_factorizes.",
+      "exact_transform": "--- 26b91feb6b507fdc3f43be9c429edb63fb9395ef:Lean/SaturationMonoid/GenericFoundation/LivingLawRootGeneratedCofinalPerfectAmbientDispositionKernel.lean\n+++ 089a1727993bec51c27ee72a0311022fec8111ab:Lean/SaturationMonoid/GenericFoundation/LivingLawRootGeneratedCofinalPerfectAmbientDispositionKernel.lean\n@@ -145,9 +145,9 @@\n     (step : RootGeneratedCofinalHistoryCochainDualityStepAt recognition visit) :\n     HEq\n       (root.toAuthoritativeRoot.source.projectionLaw.outcomeAt\n-        (recognition.installation.embed PUnit.unit) step.sourceOccurrence)\n+        (recognition.installation.embed (.inr PUnit.unit)) step.sourceOccurrence)\n       (recognition.materialLaw.toProjectionLaw.outcomeAt\n-        PUnit.unit step.sourceOccurrence) :=\n+        (.inr PUnit.unit) step.sourceOccurrence) :=\n   step.installedDuality_factorizes\n \n end\n",
+      "original_public_path": "Lean/H0mework/Versions/R26b91feb/Realization/Perfectification/AmbientDisposition.lean",
+      "original_public_sha256": "5038f7a12e96fdf5f39fd7710e9a0893a69c9dc71862e06d475029e8dca45cef",
+      "candidate_public_path": "stage/Lean/H0mework/Versions/R26b91feb/Realization/Perfectification/AmbientDisposition.lean",
+      "candidate_public_sha256": "f19b37491f5486591f1187a92ebed44cb4a1571ee4a08c4473292d9bd5b36cde",
+      "module": "H0mework.Versions.R26b91feb.Realization.Perfectification.AmbientDisposition",
+      "target_import_relocations": {
+        "SaturationMonoid.GenericFoundation.LivingLawRootGeneratedCofinalDualityTransportKernel": "H0mework.Versions.R2.Realization.Faces.DualityTransport"
+      },
+      "effective_source_inverse_sha256": "55a41d0a4a53684ab99498b75623c2f28fa5b5453f8706d713a0b82acaeae398",
+      "candidate_export_row": {
+        "import_map": {
+          "H0mework.Versions.R2.Realization.Faces.DualityTransport": "SaturationMonoid.GenericFoundation.LivingLawRootGeneratedCofinalDualityTransportKernel"
+        },
+        "path": "Lean/H0mework/Versions/R26b91feb/Realization/Perfectification/AmbientDisposition.lean",
+        "source": "SaturationMonoid.GenericFoundation.LivingLawRootGeneratedCofinalPerfectAmbientDispositionKernel",
+        "source_path": "Lean/SaturationMonoid/GenericFoundation/LivingLawRootGeneratedCofinalPerfectAmbientDispositionKernel.lean",
+        "source_revision": "26b91feb6b507fdc3f43be9c429edb63fb9395ef",
+        "source_revisions": [
+          "26b91feb6b507fdc3f43be9c429edb63fb9395ef",
+          "aef0ad2a26199d9fd6da9bc9e7ec1a65636ef63f"
+        ],
+        "source_sha256": "55a41d0a4a53684ab99498b75623c2f28fa5b5453f8706d713a0b82acaeae398",
+        "target": "H0mework.Versions.R26b91feb.Realization.Perfectification.AmbientDisposition",
+        "target_sha256": "f19b37491f5486591f1187a92ebed44cb4a1571ee4a08c4473292d9bd5b36cde",
+        "variant": "R26b91feb",
+        "source_origin": {
+          "kind": "committed-installed-face-projection-type-source-supplement",
+          "dependency_epoch": "26b91feb6b507fdc3f43be9c429edb63fb9395ef",
+          "original_source_commit": "26b91feb6b507fdc3f43be9c429edb63fb9395ef",
+          "original_source_path": "Lean/SaturationMonoid/GenericFoundation/LivingLawRootGeneratedCofinalPerfectAmbientDispositionKernel.lean",
+          "original_source_sha256": "bfd1a9c550062b634ecb96421021757d2b0ccd7d275a9cd477462f57b930ac95",
+          "source_commit": "089a1727993bec51c27ee72a0311022fec8111ab",
+          "source_path": "Lean/SaturationMonoid/GenericFoundation/LivingLawRootGeneratedCofinalPerfectAmbientDispositionKernel.lean",
+          "reason": "Recover the already committed installed-duality readout correction: the two PUnit components are injected through Sum.inr into the actual material projection. This corrects the original ill-typed declaration expression; it does not add a premise or generate a new source witness. The proof directly remains step.installedDuality_factorizes.",
+          "existing_fix_first_reused_in_H0": true
+        }
+      },
+      "focused": {
+        "status": "passed",
+        "exit_code": 0,
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "--trust=0",
+          "-Dweak.linter.unnecessarySimpa=false",
+          "-Dweak.linter.style.haveILetI=false",
+          "-Dweak.linter.unusedSimpArgs=false",
+          "-DmaxHeartbeats=2000000",
+          "-Dweak.linter.unusedSectionVars=false",
+          "-Dweak.linter.unnecessarySeqFocus=false",
+          "-Dweak.linter.unusedVariables=false",
+          "-Dweak.linter.unreachableTactic=false",
+          "-Dweak.linter.unusedTactic=false",
+          "-Dweak.linter.defProp=false",
+          "-Dweak.linter.deprecated=false",
+          "-Dlinter.deprecated=false",
+          "-Dweak.linter.tacticAnalysis.introMerge=false",
+          "-Dweak.linter.constructorNameAsVariable=false",
+          "-DwarningAsError=true",
+          "--root=./.local/whole-ledger-work/historical-repair/stage/Lean",
+          "./.local/whole-ledger-work/historical-repair/stage/Lean/H0mework/Versions/R26b91feb/Realization/Perfectification/AmbientDisposition.lean",
+          "-o",
+          "./.local/whole-ledger-work/historical-repair/lib/H0mework/Versions/R26b91feb/Realization/Perfectification/AmbientDisposition.olean"
+        ],
+        "cwd": "./Lean",
+        "seconds": 5.857411861419678,
+        "log": "focused-4.log",
+        "log_sha256": "21a031d5a61407f1111b5d9b532d2b6879cb1611f0febbbc70c6c2c65ff2f0e8",
+        "olean": "lib/H0mework/Versions/R26b91feb/Realization/Perfectification/AmbientDisposition.olean",
+        "olean_sha256": "52f56ced556694cb8c0e7a9d24acba69d2291baf0e8eabb280f1a1e3129cea3d",
+        "shared_build_cache_written": false,
+        "dependency_cache": "current H0 imports; complete historical build/trust remains separate"
+      }
+    }
+  ],
+  "protected_files_after": {
+    "tools/export-map.json": "fddb7e7686e8ec3b5bc4c2925bbd5e20931812679277160f75c7481f7fecb44e",
+    "docs/whole-ledger-map.json": "80be66a5c4285bb4b3f2a1c8330c8e959d81a100a10a6b24780be9dfa720d8d0",
+    "Lean/lakefile.toml": "334b9f881cdbcbcf459ba8d5baf26ead9c11df0b5ef597513e806daf5f2f8a24"
+  },
+  "protected_inputs_unchanged": true,
+  "status": "passed",
+  "handoff": {
+    "phase": "compiled repair candidate for independent public application and complete historical package acceptance",
+    "public_mouths": [
+      "SourceOperationInquiry.Context.Faces.Execution.Activation.Observation.next_raw",
+      "CofinalPerfectAmbient.installedAmbient_factorizes"
+    ],
+    "source_provenance": "existing committed Homework repair 089a1727993bec51c27ee72a0311022fec8111ab; original historical epoch bytes retained separately",
+    "direct_consumer": "original 12 historical WholeLedgerAccounting epoch packages; full resumed build/metadata trust owned by main agent after application",
+    "owning_scope": "four staged compatibility targets and their retained source/diff/provider metadata; formal source and import maps unchanged",
+    "assumptions": "no new theorem premise, target witness or scientific input; current H0 dependency OLean cache reused at the exact staged target imports",
+    "verification_scope": "four candidate files at trust=0 and warningAsError; no fresh complete historical package certification claimed"
+  }
+}

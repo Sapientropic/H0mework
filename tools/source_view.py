@@ -351,6 +351,78 @@ def rewrite_private_owner_strings(text: str, rewrites, *, reverse: bool = False)
     return text
 
 
+PRIVATE_SPLIT_OWNER = re.compile(
+    r'\("_private\.([A-Za-z_][A-Za-z0-9_.\']*)"\.splitOn "\."\)'
+    r'\.foldl Lean\.Name\.str Lean\.Name\.anonymous')
+
+
+def private_str_owner(expression: str):
+    """Parse a literal nested Name.str owner; no dynamic expressions are accepted."""
+    tokens = re.findall(r'Lean\.Name\.(?:str|anonymous)|"[A-Za-z_][A-Za-z0-9_\']*"|[()]', expression)
+    if re.sub(r'\s+', '', expression) != ''.join(tokens):
+        return None
+    index = 0
+    def parse():
+        nonlocal index
+        if index >= len(tokens):
+            raise ValueError
+        if tokens[index] == 'Lean.Name.anonymous':
+            index += 1
+            return []
+        if tokens[index] != '(':
+            raise ValueError
+        index += 1
+        if index < len(tokens) and tokens[index] == 'Lean.Name.str':
+            index += 1
+            parts = parse()
+            if index >= len(tokens) or not tokens[index].startswith('"'):
+                raise ValueError
+            parts.append(tokens[index][1:-1]); index += 1
+        else:
+            parts = parse()
+        if index >= len(tokens) or tokens[index] != ')':
+            raise ValueError
+        index += 1
+        return parts
+    try:
+        parts = parse()
+    except (ValueError, RecursionError):
+        return None
+    return parts if (index == len(tokens) and len(parts) > 1 and parts[0] == '_private'
+                     and MODULE.fullmatch('.'.join(parts[1:]))) else None
+
+
+def private_str_owner_literals(text: str):
+    masked = mask_comments_and_strings(text)
+    found = []
+    for match in re.finditer(r'\(Lean\.Name\.num\s+', masked):
+        begin = match.end()
+        if begin >= len(text) or text[begin] != '(':
+            continue
+        depth = 0
+        for end in range(begin, len(text)):
+            if masked[end] == '(':
+                depth += 1
+            elif masked[end] == ')':
+                depth -= 1
+                if depth == 0:
+                    expression = text[begin:end + 1]
+                    parts = private_str_owner(expression)
+                    if parts is not None and re.match(r'\s+[0-9]+\s*\)', masked[end + 1:]):
+                        found.append((begin, end + 1, expression, '.'.join(parts[1:])))
+                    break
+    return found
+
+
+def private_str_owner_expression(owner: str):
+    if not MODULE.fullmatch(owner):
+        raise ViewError('Invalid nested private module owner')
+    result = '(Lean.Name.anonymous)'
+    for part in ['_private', *owner.split('.')]:
+        result = f'(Lean.Name.str {result} "{part}")'
+    return result
+
+
 def rewrite_private_owner_expressions(text: str, rewrites, *, reverse: bool = False) -> str:
     """Relocate declared dynamic Name constructors, preserving the private index."""
     if rewrites is None:
@@ -360,16 +432,33 @@ def rewrite_private_owner_expressions(text: str, rewrites, *, reverse: bool = Fa
     seen = set()
     for rule in rewrites:
         if (not isinstance(rule, dict) or set(rule) != {"source_expression", "target_expression", "count"}
-                or rule["count"] != 1):
-            raise ViewError("Private-owner expressions require one exact source and target")
+                or type(rule["count"]) is not int or rule["count"] < 1):
+            raise ViewError("Private-owner expressions require an exact source, target and positive count")
         source, target = rule["source_expression"], rule["target_expression"]
         if not isinstance(source, str) or not isinstance(target, str) or source in seen:
             raise ViewError("Invalid private-owner expression")
         seen.add(source)
         family = re.fullmatch(r'\s*let moduleName := Name\.mkSimple \("([A-Za-z_][A-Za-z0-9_]*)"\+\+family\)', source)
         private = re.fullmatch(r'\(Name\.str `_private "([A-Za-z_][A-Za-z0-9_]*)"\)', source)
+        quoted = re.fullmatch(r"Lean\.mkPrivateNameCore `([A-Za-z_][A-Za-z0-9_.']*) `([A-Za-z_][A-Za-z0-9_.']*)", source)
+        split_owner = PRIVATE_SPLIT_OWNER.fullmatch(source)
+        str_owner = private_str_owner(source)
+        if split_owner is None and str_owner is None and rule["count"] != 1:
+            raise ViewError("This private-owner expression requires a single occurrence")
         valid = source == '(Name.str `_private moduleName.toString)' and target == '(Name.append `_private moduleName)'
-        if family:
+        if str_owner:
+            target_parts = private_str_owner(target)
+            valid = target_parts is not None and target_parts[1] == 'H0mework'
+        elif split_owner:
+            named = PRIVATE_SPLIT_OWNER.fullmatch(target)
+            valid = (named is not None and named[1].startswith('H0mework.')
+                     and MODULE.fullmatch(split_owner[1]) is not None
+                     and MODULE.fullmatch(named[1]) is not None)
+        elif quoted:
+            named = re.fullmatch(r"Lean\.mkPrivateNameCore `(H0mework\.[A-Za-z_][A-Za-z0-9_.']*) `([A-Za-z_][A-Za-z0-9_.']*)", target)
+            valid = (named is not None and named[2] == quoted[2]
+                     and MODULE.fullmatch(quoted[1]) is not None and MODULE.fullmatch(named[1]) is not None)
+        elif family:
             named = re.fullmatch(r'\s*let moduleName := \("(H0mework\.[A-Za-z_][A-Za-z0-9_.]*)"\+\+family\)\.toName', target)
             valid = named is not None and named[1].endswith('.' + family[1])
         elif private:
@@ -388,10 +477,13 @@ def rewrite_private_owner_expressions(text: str, rewrites, *, reverse: bool = Fa
         offset = len(before) - len(before.lstrip())
         positions = [match.start() for match in re.finditer(re.escape(before), text)
                      if masked[match.start() + offset] == before[offset]]
-        if len(positions) != 1:
+        if str_owner:
+            positions = [begin for begin, _, expression, _ in private_str_owner_literals(text)
+                         if expression == before]
+        if len(positions) != rule["count"]:
             raise ViewError("Declared private-owner expression is absent or duplicated")
-        begin = positions[0]
-        text = text[:begin] + after + text[begin + len(before):]
+        for begin in reversed(positions):
+            text = text[:begin] + after + text[begin + len(before):]
     return text
 
 
@@ -619,6 +711,33 @@ def rewrite_proof_bodies(text: str, rewrites, *, reverse: bool = False) -> str:
     return text
 
 
+def suggestion_index_postlude(text: str, components, *, reverse=False) -> str:
+    """Exclude exact local namespaces from Lean's optional premise index."""
+    if components is None or components == []:
+        return text
+    if (not isinstance(components, list)
+            or any(not isinstance(value, str) or not re.fullmatch(r"[A-Za-z_][A-Za-z0-9_']*", value)
+                   for value in components) or len(set(components)) != len(components)):
+        raise ViewError("Suggestion index exclusions must be unique namespace components")
+    postlude = "\n" + "".join(
+        'open Lean Elab Command in\nrun_cmd modifyEnv fun env =>\n'
+        '  Lean.LibrarySuggestions.nameDenyListExt.addEntry env "' + value + '"\n'
+        for value in components)
+    if reverse:
+        if not text.endswith(postlude):
+            raise ViewError("Declared suggestion index postlude is absent")
+        source = text[:-len(postlude)]
+    else:
+        if text.endswith(postlude):
+            raise ViewError("Suggestion index postlude is already present")
+        source = text
+    namespaces = {part for name in re.findall(r"(?m)^\s*namespace\s+([A-Za-z_][A-Za-z0-9_.']*)",
+                                              mask_comments_and_strings(source)) for part in name.split(".")}
+    if set(components) - namespaces:
+        raise ViewError("Suggestion index exclusion is outside the original namespace")
+    return source if reverse else source + postlude
+
+
 def module_views(row: dict, inverse: dict) -> tuple[bytes, bytes]:
     """Return the public source-layout view and its exact pinned source."""
     raw = (ROOT / row["path"]).read_bytes()
@@ -650,7 +769,8 @@ def module_views(row: dict, inverse: dict) -> tuple[bytes, bytes]:
                             row.get("resource_rewrites")).encode("utf-8")
     import_tokens(view.decode("utf-8"))
     original = invert_resource_digests(view, row)
-    original = rewrite_proof_bodies(original.decode("utf-8"), row.get("proof_body_rewrites"), reverse=True).encode("utf-8")
+    original = suggestion_index_postlude(original.decode("utf-8"), row.get("suggestion_name_exclusions"), reverse=True)
+    original = rewrite_proof_bodies(original, row.get("proof_body_rewrites"), reverse=True).encode("utf-8")
     if sha(original) != row["source_sha256"]:
         raise ViewError(f"Reconstructed source digest differs: {row['source_path']}")
     if sha(view) != row.get("view_sha256", row["source_sha256"]):
@@ -687,7 +807,8 @@ def source_path(value: str) -> str:
 def alias_record(row: dict, alias) -> dict:
     """The row as seen through one of its shared source identities."""
     if (not isinstance(alias, dict)
-            or set(alias) & {"path", "target", "target_sha256", "import_map", "proof_body_rewrites"}
+            or set(alias) & {"path", "target", "target_sha256", "import_map", "proof_body_rewrites",
+                             "suggestion_name_exclusions"}
             or alias.get("source_sha256") != row["source_sha256"]
             or not MODULE.fullmatch(str(alias.get("original_module_name", "")))
             or not re.fullmatch(r"[0-9a-f]{40}", str(alias.get("source_revision", "")))

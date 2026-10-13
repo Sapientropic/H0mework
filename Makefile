@@ -176,3 +176,25 @@ check-first-release-full: $(VENV)/bin/python
 	$(MAKE) trust-first-release
 	$(MAKE) check-first-release-map
 	$(VENV)/bin/python tools/first_release_replay.py full --config $(FR_RUNTIME) --output $(FR_RUN)/full --archive-dir $(FR_ARCHIVES) --python $(ROOT)/$(VENV)/bin/python
+
+# Whole-ledger histories retain separate Lean environments for their original epochs.
+WLA_RUN := .local/whole-ledger-runs/$(shell python3 -c 'import uuid; print(uuid.uuid4().hex)')
+.PHONY: build-whole-ledger trust-whole-ledger types-whole-ledger check-whole-ledger-entry check-whole-ledger-full
+
+build-whole-ledger:
+	python3 tools/edition_release.py --edition whole-ledger build --output $(WLA_RUN)/build
+
+trust-whole-ledger:
+	python3 tools/edition_release.py --edition whole-ledger trust --output $(WLA_RUN)/trust
+
+types-whole-ledger:
+	python3 tools/whole_ledger.py types --output $(WLA_RUN)/types
+
+check-whole-ledger-entry: check-map
+	python3 tools/whole_ledger.py entry --output $(WLA_RUN)/entry
+
+check-whole-ledger-full:
+	$(MAKE) check-whole-ledger-entry WLA_RUN="$(WLA_RUN)"
+	$(MAKE) build-whole-ledger WLA_RUN="$(WLA_RUN)"
+	$(MAKE) trust-whole-ledger WLA_RUN="$(WLA_RUN)"
+	$(MAKE) types-whole-ledger WLA_RUN="$(WLA_RUN)"

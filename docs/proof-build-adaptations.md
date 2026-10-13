@@ -6,6 +6,22 @@
 
 `build_adaptations` 登记原因、范围、原件／适配源工件及实际 H0 提交，不改变原研究来源。源码闭包摘要包含公开模块字节，因此同一陈述的证明适配仍要求受影响包重新构建和审查；原回执保留为原源码范围的历史事实。
 
+整账法的 `ClozelOriginalKFiniteWardGram.Bindings` 用 `Lean.mkPrivateNameCore` 读取两枚原私有声明。其明确 owner 改写登记在 `private_owner_expression_rewrites`，保留原成员名、私有索引、完整类型和值；公开模块地址与原地址逐字节反转。该地址适配沿用既有私有 owner 机制，失败原运行与新 kernel 验收分列。
+
+同一字段也登记 10 个整账法依赖文件中的 13 处 `String.splitOn`／`Lean.Name.str` 私有模块地址。每个 provider 由原 epoch 和该文件的实际 import 闭包绑定；重复的相同表达式保存精确次数，成员名与数字索引保持。原 CompactAdjointR 的 Source／Rank 消费者及完整 metadata 闭包已通过[隔离 kernel 验收](../evidence/whole-ledger/acceptance/split-owner-adaptation/result.json)，[逐文件应用与逆验](../evidence/whole-ledger/acceptance/split-owner-adaptation/application.json)保留原 SHA 和失败字节。
+
+RealCoordinate 的两条 Abel 读口使用嵌套的字面量 `Lean.Name.str` 构造。该构造先严格解析为模块 owner，再按同一 import 闭包迁移；原 `Name.num` 索引及后续成员链保持，精确逆验登记在[应用记录](../evidence/whole-ledger/acceptance/nested-owner-adaptation/application.json)。
+
+整账法历史 AB／AD／AE 的观测源恢复 `089a1727993bec51c27ee72a0311022fec8111ab` 已提交的 `Shared.next` 展开修复，声明与数据定义保持。AE 的 `installedAmbient_factorizes` 恢复同提交的安装面类型校正：两处 `PUnit.unit` 经 `.inr` 注入真实投影，由原 `step.installedDuality_factorizes` 消费；它登记为类型补充。精确差额、失败原件与有效 SHA 见[补充应用](../evidence/whole-ledger/adaptations/application.json)，实际隔离构建见[修复验收](../evidence/whole-ledger/acceptance/historical-repair/result.json)。
+
+AB 的原生轨道安装读口也恢复同提交的 `Shared.next` 展开，见[原消费者修复](../evidence/whole-ledger/acceptance/historical-orbit-repair/result.json)。
+
+恢复有效历史修复后，255 个递归编译体与既有 owner 完全同形。它们复用旧 owner，逐 epoch 保留原 source 身份；必要的 14 条新别名与全部接线差额登记在[完整布局去重](../evidence/whole-ledger/acceptance/layout-canonicalization/application.json)。既有公开源码字节保持。
+
+`ClozelOriginalKNativeRuntimeFace.Source` 的 `suggestion_name_exclusions` 在全部原声明之后调用 Lean 的 `nameDenyListExt`，精确排除 `OriginalKNativeRuntimeFace` 的自动建议索引。原 source、imports、选项、声明类型与证明保持；完整类型、证明值及所有依赖的 trust 审查照常执行。默认原路径视图保留该尾命令，`--exact` 移除它并恢复原 SHA。独立[模块与逻辑验收](../evidence/whole-ledger/acceptance/native-runtime-index-adaptation/result.json)核对全部 44 个原声明及扩展操作前后全部常量元数据；该规则不改变逻辑信任面。
+
+同一规则应用于 `ClozelOriginalKPairedResponseGramAction.Consumer`，精确组件为 `OriginalKPairedResponseGramAction`。该模块全部 24 个声明的完整类型、证明值及依赖信任闭包通过[独立验收](../evidence/whole-ledger/acceptance/paired-response-index-adaptation/result.json)，[正式应用与精确逆验](../evidence/whole-ledger/acceptance/paired-response-index-adaptation/application.json)保留原 source epoch；[原索引中止运行](../evidence/whole-ledger/acceptance/focused-paired-index-interrupted/paired-response-index-restart.json)独立保留实际 SIGTERM 身份。
+
 ## GSR 稀疏证明
 
 `originalScalarOrbit_code` 先消费原 `originalRho_fast`，再用 `vacuumColumn` 的四个非零位置把 70 项求和化为四项，最后继续 `decide +kernel`。九份副本共享[原源码](source/second-edition/physics/historical/NativeGravityScalarReturn.lean)与[适配源码](source/second-edition/physics/adaptations/NativeGravityScalarReturn.lean)，陈述、前提、定义与编译选项保持。

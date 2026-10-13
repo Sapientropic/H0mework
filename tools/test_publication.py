@@ -44,7 +44,76 @@ class ModuleImportTests(unittest.TestCase):
                 s.import_tokens(raw)
 
 
+class SuggestionIndexPostludeTests(unittest.TestCase):
+    def test_exact_namespace_postlude_is_reversible_and_optional(self):
+        raw = 'namespace A.NativeFace\ntheorem result : True := True.intro\nend A.NativeFace\n'
+        public = s.suggestion_index_postlude(raw, ['NativeFace'])
+        self.assertTrue(public.startswith(raw))
+        self.assertIn('nameDenyListExt.addEntry env "NativeFace"', public)
+        self.assertEqual(s.suggestion_index_postlude(public, ['NativeFace'], reverse=True), raw)
+        self.assertEqual(s.suggestion_index_postlude(raw, []), raw)
+        self.assertEqual(s.suggestion_index_postlude(raw, None), raw)
+
+    def test_similar_namespace_and_comment_cannot_authorize_exclusion(self):
+        raw = '-- namespace NativeFace\nnamespace A.NativeFaceExtra\nend A.NativeFaceExtra\n'
+        with self.assertRaises(s.ViewError):
+            s.suggestion_index_postlude(raw, ['NativeFace'])
+        with self.assertRaises(s.ViewError):
+            s.suggestion_index_postlude(raw, ['NativeFace'], reverse=True)
+        with self.assertRaises(s.ViewError):
+            s.suggestion_index_postlude(raw, ['NativeFaceExtra', 'NativeFaceExtra'])
+
+
 class DynamicPrivateOwnerTests(unittest.TestCase):
+    def test_nested_owner_moves_only_the_literal_owner(self):
+        expression = s.private_str_owner_expression('Original.Provider')
+        target = s.private_str_owner_expression('H0mework.Versions.New.Provider')
+        source_name = '(Lean.Name.num ' + expression + ' 7)'
+        untouched = '-- ' + source_name + '\ndef message := r##"' + source_name + '"##\n'
+        raw = untouched + 'let first := Lean.Name.str ' + source_name + ' "member"\nlet second := ' + source_name + '\n'
+        rule = {'source_expression': expression, 'target_expression': target, 'count': 2}
+        public = s.rewrite_private_owner_expressions(raw, [rule])
+        self.assertEqual(public, untouched + raw[len(untouched):].replace(expression, target))
+        self.assertEqual(s.rewrite_private_owner_expressions(public, [rule], reverse=True), raw)
+        self.assertIn(' 7) "member"', public)
+        self.assertEqual(s.rewrite_private_owner_expressions(raw, []), raw)
+        override = s.private_str_owner_expression('H0mework.Explicit.Provider')
+        self.assertIn(override, s.rewrite_private_owner_expressions(raw, [{**rule, 'target_expression': override}]))
+        for wrong in [s.private_str_owner_expression('Other.Provider'), '(True.intro)', target.replace('Lean.Name.str', 'Lean.Name.num')]:
+            with self.assertRaises(s.ViewError):
+                s.rewrite_private_owner_expressions(raw, [{**rule, 'target_expression': wrong}])
+        for other in [untouched, 'let owner := ' + expression, raw + 'let third := ' + source_name]:
+            with self.assertRaises(s.ViewError):
+                s.rewrite_private_owner_expressions(other, [rule])
+
+    def test_split_owner_preserves_member_index_and_round_trips(self):
+        expression = '("_private.Original.Qualification".splitOn ".").foldl Lean.Name.str Lean.Name.anonymous'
+        target = expression.replace('_private.Original.Qualification',
+                                    '_private.H0mework.Versions.New.Qualification')
+        rules = [{'source_expression': expression, 'target_expression': target, 'count': 1}]
+        untouched = '-- ' + expression + '\ndef message := r##"' + expression + '"##\n'
+        raw = untouched + 'let head := ' + expression + '\nlet full := Lean.Name.num head 0\n'
+        public = s.rewrite_private_owner_expressions(raw, rules)
+        self.assertEqual(public, untouched + 'let head := ' + target + '\nlet full := Lean.Name.num head 0\n')
+        self.assertEqual(s.rewrite_private_owner_expressions(public, rules, reverse=True), raw)
+        self.assertEqual(s.rewrite_private_owner_expressions(raw, None), raw)
+        override = target.replace('.Versions.New.', '.Explicit.')
+        self.assertIn(override, s.rewrite_private_owner_expressions(raw, [{**rules[0], 'target_expression': override}]))
+        for wrong in (target.replace('H0mework.', 'Other.'), target.replace('Lean.Name.str', 'Lean.Name.num')):
+            with self.assertRaises(s.ViewError):
+                s.rewrite_private_owner_expressions(raw, [{**rules[0], 'target_expression': wrong}])
+        with self.assertRaises(s.ViewError):
+            s.rewrite_private_owner_expressions(untouched, rules)
+        with self.assertRaises(s.ViewError):
+            s.rewrite_private_owner_expressions(raw + 'let another := ' + expression, rules)
+        repeated = raw + 'let another := ' + expression
+        repeated_rule = [{**rules[0], 'count': 2}]
+        public = s.rewrite_private_owner_expressions(repeated, repeated_rule)
+        self.assertEqual(s.rewrite_private_owner_expressions(public, repeated_rule, reverse=True), repeated)
+        for count in (True, 0, -1, 3):
+            with self.assertRaises(s.ViewError):
+                s.rewrite_private_owner_expressions(repeated, [{**rules[0], 'count': count}])
+
     def test_indexed_schema_keeps_its_original_file_and_certificate(self):
         raw = ('let file := if i=0 then "SourcePilot" else "SourceRows" ++ toString(i/16)\n'
                'let schema := Name.str (Name.num (Name.str `_private file) 0) "schema"\n')
@@ -94,6 +163,45 @@ def fixture(raw: bytes) -> bytes:
 
 
 class PublicationTests(unittest.TestCase):
+    def test_quoted_private_owner_retains_the_original_member(self):
+        source = 'Lean.mkPrivateNameCore `Original.Source `Domain.value'
+        target = 'Lean.mkPrivateNameCore `H0mework.Versions.New.Source `Domain.value'
+        rules = [{'source_expression': source, 'target_expression': target, 'count': 1}]
+        untouched = '-- ' + source + '\ndef message := "' + source + '"\n'
+        raw = untouched + 'let name := ' + source + '\n'
+        public = s.rewrite_private_owner_expressions(raw, rules)
+        self.assertEqual(public, untouched + 'let name := ' + target + '\n')
+        self.assertEqual(s.rewrite_private_owner_expressions(public, rules, reverse=True), raw)
+        self.assertEqual(s.rewrite_private_owner_expressions(raw, []), raw)
+        for wrong in [target.replace('Domain.value', 'Domain.other'),
+                      target.replace('H0mework.', 'Other.'), target + 'Extra']:
+            with self.assertRaises(s.ViewError):
+                s.rewrite_private_owner_expressions(raw, [{**rules[0], 'target_expression': wrong}])
+        with self.assertRaises(s.ViewError):
+            s.rewrite_private_owner_expressions(untouched, rules)
+
+    def test_explicit_v2_text_runtime_roots_preserve_historical_results(self):
+        raw = b'Verdict `/tmp/cp132/verdict.json`; status=certified; sha=abcd\n'
+        address = '/tmp/cp132/verdict.json'
+        begin = raw.decode().index(address)
+        rules = [{'begin': begin, 'end': begin + len(address),
+                  'relative': 'runtime/CP132/verdict.json'}]
+        with self.assertRaises(p.PublicationError):
+            p.text_runtime_paths(raw, rules)
+        public = p.text_runtime_paths(raw, rules, kind=p.TEXT_RUNTIME_KIND)
+        self.assertEqual(public, b'Verdict `runtime/CP132/verdict.json`; status=certified; sha=abcd\n')
+        row = {'source_sha256': p.sha(raw), 'target_sha256': p.sha(public),
+               'publication': {'kind': p.TEXT_RUNTIME_KIND, 'runtime_paths': rules,
+                               'payload_sha256': p.sha(public)}}
+        self.assertEqual(p.verify_artifact(public, row, raw), public)
+        lookalike = b'Verdict `/tmpx/cp132/verdict.json`; status=certified\n'
+        with self.assertRaises(p.PublicationError):
+            p.text_runtime_paths(lookalike, rules, kind=p.TEXT_RUNTIME_KIND)
+        changed = public.replace(b'certified', b'pending')
+        row['target_sha256'] = p.sha(changed)
+        with self.assertRaises(p.PublicationError):
+            p.verify_artifact(changed, row, raw)
+
     def test_source_text_runtime_spans_preserve_the_program(self):
         raw = fixture(b'ROOT = Path("@ROOT@")\nvalue = 1.2300000000000000001\n')
         text = raw.decode()
@@ -163,6 +271,24 @@ class PublicationTests(unittest.TestCase):
                          p.sha(outputs["evidence/replay.json"]))
         p.verify_artifact(outputs["evidence/independent.json"], artifacts[1], verifier)
         self.assertEqual(s.invert_resource_digests(outputs["Lean/A.lean"], modules[0]), source)
+
+    def test_array_receipt_uses_explicit_runtime_pointers_without_inventing_bindings(self):
+        original = b'[{"path":"/tmp/cp/decl.json","status":"certified","value":1.2300001}]\n'
+        row = {'source': 'pkg/declarations.json', 'target': 'evidence/declarations.json',
+               'source_sha256': p.sha(original), 'target_sha256': p.sha(original)}
+        outputs = {row['target']: original}
+        rules = [{'pointer': '/0/path', 'relative': 'runtime/CP/decl.json'}]
+        result = p.publish_outputs(outputs, [], [row], None,
+                                   {(None, row['source']): rules})
+        self.assertEqual(result['artifacts'], 1)
+        self.assertEqual(outputs[row['target']], original.replace(b'/tmp/cp/', b'runtime/CP/'))
+        p.verify_artifact(outputs[row['target']], row, original)
+        self.assertIsInstance(json.loads(outputs[row['target']]), list)
+        bad = fixture(b'{"root":"@ROOT@","bindings":[],"result":17}')
+        invalid = {'source': 'pkg/bad.json', 'target': 'evidence/bad.json',
+                   'source_sha256': p.sha(bad), 'target_sha256': p.sha(bad)}
+        with self.assertRaisesRegex(p.PublicationError, 'bindings'):
+            p.publish_outputs({invalid['target']: bad}, [], [invalid], None)
 
 
 class PublicationSizeTests(unittest.TestCase):
