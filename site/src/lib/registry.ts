@@ -101,6 +101,7 @@ export const PAPERS: PaperEntry[] = [
     slug: "low-energy-phenomenology",
     editions: [{ release: "low-energy", doi: "10.5281/zenodo.23299174" }],
     series: { zh: "低能系列 1", en: "Low-energy series 1" },
+    figure: { name: "current-witness", claim: "low1.L17" },
   },
   {
     slug: "low-energy-loop-response",
