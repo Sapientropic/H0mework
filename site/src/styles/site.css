@@ -37,6 +37,7 @@ h1, h2, h3 { font-family: var(--serif); color: var(--ink); font-weight: 600; lin
 p { text-wrap: pretty; }
 h1 { font-size: clamp(28px, 4.2vw, 40px); margin: 0 0 10px; letter-spacing: .01em; }
 h2 { font-size: 22px; margin: 0 0 18px; }
+h2 .count { margin-left: 10px; font: 13px/1 var(--mono); color: var(--muted); vertical-align: 3px; }
 .eyebrow { font: 12px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--cinnabar); margin: 0 0 14px; }
 .title-sub { font-family: var(--serif); color: var(--text); font-size: clamp(19px, 2.4vw, 23px); line-height: 1.5; margin: 0 0 12px; text-wrap: balance; }
 .other { color: var(--muted); font-size: 14px; line-height: 1.6; margin: 0 0 26px; }
@@ -58,6 +59,10 @@ h2 { font-size: 22px; margin: 0 0 18px; }
 .stats { display: flex; flex-wrap: wrap; gap: 6px 22px; margin: 22px 0 0; padding: 0; list-style: none; font: 13.5px/1.6 var(--sans); color: var(--muted); }
 .stats b { font: 600 13.5px/1.6 var(--mono); color: var(--ink); margin-right: 5px; }
 .stats .ok { color: #2f7d4f; }
+.editions { margin: 14px 0 0; font-size: 13.5px; color: var(--muted); }
+.editions span + span::before { content: " · "; }
+.editions a { color: var(--muted); }
+.editions a:hover { color: var(--ink); }
 
 .figure-slot { margin: 40px 0 0; }
 .figure-slot .iso-figure { margin: 0; }
@@ -72,20 +77,32 @@ h2 { font-size: 22px; margin: 0 0 18px; }
 .abstract details summary::before { content: "＋ "; }
 .abstract details[open] summary { display: none; }
 
-/* Claims: one line each, opened on demand. */
+/* Claims: one line each, opened on demand, under the chapter they first cite. */
 .claims { list-style: none; padding: 0; margin: 0; border-top: 1px solid var(--rule); }
-.claim { border-bottom: 1px solid var(--rule); }
-.claim > details > summary { display: grid; grid-template-columns: 76px 1fr auto; gap: 14px; align-items: baseline; padding: 14px 4px; cursor: pointer; list-style: none; }
+.claims > .chapter { display: flex; gap: 12px; align-items: baseline; padding: 26px 4px 8px; border-bottom: 1px solid var(--rule); font: 13px/1.5 var(--sans); color: var(--muted); }
+.claims > .chapter .n { flex: none; width: 100px; font: 12px/1.5 var(--mono); color: var(--ink); }
+.claims > .chapter .t { font-family: var(--serif); font-size: 14.5px; color: var(--text); }
+.claims > .chapter:first-child { padding-top: 12px; }
+.claim { border-bottom: 1px solid var(--rule); scroll-margin-top: 24px; }
+.claim:target > details > summary { background: var(--soft); }
+.claim > details > summary { display: grid; grid-template-columns: 100px 1fr auto; gap: 14px; align-items: baseline; padding: 14px 4px; cursor: pointer; list-style: none; }
 .claim > details > summary::-webkit-details-marker { display: none; }
 .claim > details > summary:hover { background: var(--soft); }
-.claim .id { font: 12px/1.4 var(--mono); color: var(--muted); }
+.claim .id { position: relative; padding-left: 13px; font: 12px/1.4 var(--mono); color: var(--muted); }
+.claim .id::before { content: ""; position: absolute; left: 0; top: .42em; width: 7px; height: 7px; border-radius: 50%; box-sizing: border-box; }
+.claim .id.proved::before { background: #2f7d4f; }
 .claim > details[open] > summary .id { color: var(--cinnabar); }
-.claim .title { font-family: var(--serif); color: var(--ink); font-size: 16px; line-height: 1.45; }
-.claim .tag { margin-left: 8px; font: 11px/1 var(--mono); color: var(--paper); background: var(--cinnabar); padding: 2px 5px; border-radius: 2px; vertical-align: 2px; }
+.claim .title { font-family: var(--serif); color: var(--ink); font-size: 16px; line-height: 1.45; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.claim > details[open] > summary .title { -webkit-line-clamp: unset; display: block; }
+.claim .title code, .claim .statement code { font: .86em/1 var(--mono); color: var(--ink); background: var(--soft); padding: 1px 4px; border-radius: 2px; word-break: break-word; }
+.claim .tag { margin-left: 8px; font: 11px/1 var(--mono); color: var(--paper); background: var(--cinnabar); padding: 2px 5px; border-radius: 2px; vertical-align: 2px; white-space: nowrap; }
+.claim .tag.later { color: var(--ink); background: none; box-shadow: inset 0 0 0 1px var(--rule); }
 .claim .where { font: 12px/1.4 var(--mono); color: var(--muted); text-align: right; white-space: nowrap; }
-.claim .body { padding: 2px 4px 20px 94px; }
+.claim .body { padding: 2px 4px 20px 118px; }
 .claim .body p { margin: 0 0 10px; font-size: 14.5px; }
-.claim .meta { color: var(--muted); font-size: 13.5px; }
+.claim .statement { overflow-x: auto; }
+.claim .meta { display: flex; flex-wrap: wrap; gap: 4px 18px; color: var(--muted); font-size: 13.5px; }
+.claim .kernel { color: #2f7d4f; }
 .claim h4 { margin: 16px 0 6px; font: 600 12.5px/1.4 var(--sans); color: var(--muted); }
 .claim .modules { list-style: none; margin: 0; padding: 0; font: 12.5px/1.9 var(--mono); }
 .claim .modules summary { display: flex; flex-wrap: wrap; gap: 0 10px; align-items: baseline; list-style: none; cursor: pointer; width: fit-content; }
@@ -97,16 +114,41 @@ h2 { font-size: 22px; margin: 0 0 18px; }
 .claim .decls { display: flex; flex-wrap: wrap; gap: 2px 10px; padding: 4px 0 8px 12px; font-size: 11.5px; line-height: 1.7; }
 .claim .decls a { color: var(--text); }
 
-/* Home */
-.paper-card { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 28px; align-items: center; padding: 26px; margin: 0 0 18px; background: var(--paper); box-shadow: 0 0 0 1px var(--rule); text-decoration: none; }
-.paper-card:hover { box-shadow: 0 0 0 1px var(--muted); }
-.paper-card h3 { margin: 0 0 4px; font-size: 23px; }
-.paper-card .card-sub { margin: 0 0 10px; font-family: var(--serif); color: var(--text); font-size: 16px; line-height: 1.5; text-wrap: balance; }
-.paper-card .other { margin: 0; font-size: 13px; }
-.paper-card .stats { margin-top: 14px; }
-.paper-card .thumb { height: 230px; display: flex; align-items: center; justify-content: center; }
-.paper-card .thumb .iso-svg { width: auto; max-width: 100%; height: 100%; }
+/* Claim tape: one hole per row, grouped by chapter. */
+.tape { display: flex; flex-wrap: wrap; gap: 10px 14px; margin: 0 0 6px; }
+.tape-group { display: flex; flex-direction: column; gap: 5px; }
+.holes { display: flex; flex-wrap: wrap; gap: 4px; }
+.hole { display: block; width: 10px; height: 10px; border-radius: 50%; box-sizing: border-box; background: var(--ink); }
+.hole.program { background: var(--rule); }
+.hole.featured { background: var(--cinnabar); }
+.tape-label { font: 10.5px/1 var(--mono); color: var(--muted); border-top: 1px solid var(--rule); padding-top: 4px; min-width: 10px; }
+.tape.linked .hole:hover { box-shadow: 0 0 0 2px var(--page), 0 0 0 3px var(--cinnabar); }
+.tape-note { margin: 0 0 22px; font-size: 12.5px; color: var(--muted); }
+
+.pager { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 72px 0 0; padding-top: 22px; border-top: 1px solid var(--rule); }
+.pager a { display: flex; flex-direction: column; gap: 4px; text-decoration: none; font-family: var(--serif); color: var(--ink); font-size: 16px; line-height: 1.4; }
+.pager a span { font: 12px/1 var(--mono); color: var(--muted); }
+.pager a:hover span { color: var(--cinnabar); }
+.pager .next { text-align: right; align-items: flex-end; }
+
+/* Home: an index that stays readable as papers are added. */
+.paper-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+.paper-row { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 28px; align-items: center; padding: 22px 24px; background: var(--paper); box-shadow: 0 0 0 1px var(--rule); text-decoration: none; }
+.paper-row:hover { box-shadow: 0 0 0 1px var(--muted); }
+.paper-row .row-meta { margin: 0 0 8px; font: 12.5px/1.4 var(--sans); color: var(--muted); }
+.paper-row h3 { margin: 0 0 4px; font-size: 22px; }
+.paper-row .card-sub { margin: 0 0 8px; font-family: var(--serif); color: var(--text); font-size: 15.5px; line-height: 1.5; text-wrap: balance; }
+.paper-row .other { margin: 0; font-size: 13px; }
+.paper-row .stats { margin-top: 12px; }
+.paper-row .thumb { height: 170px; display: flex; align-items: center; justify-content: center; }
+.paper-row .thumb .iso-svg { width: auto; max-width: 100%; height: 100%; }
+.punch-card { position: relative; width: 240px; height: 150px; padding: 34px 20px 18px; background: #fffef9 repeating-linear-gradient(transparent 0 5.5px, var(--soft) 5.5px 6.5px, transparent 6.5px 20px) 0 34px / 100% calc(100% - 46px) no-repeat; box-shadow: inset 0 0 0 1px var(--rule); clip-path: polygon(16px 0, 100% 0, 100% 100%, 0 100%, 0 16px); }
+.punch-card::before { content: ""; position: absolute; left: 0; top: 0; width: 23px; height: 1px; background: var(--rule); transform-origin: 0 0; transform: translate(0, 16px) rotate(-45deg); }
+.punch-card .range { position: absolute; top: 10px; right: 14px; font: 10.5px/1 var(--mono); letter-spacing: .08em; color: var(--muted); }
+.punch-card .holes { gap: 8px; }
+.punch-card .hole { width: 12px; height: 12px; }
 pre.command { margin: 14px 0; padding: 14px 16px; background: var(--paper); box-shadow: 0 0 0 1px var(--rule); font: 13.5px/1.6 var(--mono); color: var(--ink); overflow-x: auto; }
+pre.command .comment { color: var(--muted); }
 
 footer.site { margin: 96px 0 0; padding: 32px 0 56px; border-top: 1px solid var(--rule); background: var(--paper); color: var(--muted); font-size: 13px; }
 .footer-grid { display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px 28px; }
@@ -116,11 +158,15 @@ footer.site { margin: 96px 0 0; padding: 32px 0 56px; border-top: 1px solid var(
 .footer-grid p { margin: 0 0 0 auto; }
 
 @media (max-width: 720px) {
-  .paper-card { grid-template-columns: 1fr; padding: 20px; }
-  .paper-card .thumb { order: -1; height: 180px; }
+  .paper-row { grid-template-columns: 1fr; padding: 18px; gap: 16px; }
+  .paper-row .thumb { order: -1; height: 160px; }
   .doi { margin-left: 0; flex-basis: 100%; padding-top: 6px; }
   .footer-grid p { margin-left: 0; }
   .claim > details > summary { grid-template-columns: 1fr; gap: 2px; }
   .claim .where { text-align: left; }
   .claim .body { padding-left: 4px; }
+  .claims > .chapter .n { width: auto; }
+  .pager { grid-template-columns: 1fr; }
+  .pager .next { text-align: left; align-items: flex-start; }
 }
+html[lang="zh-CN"] .eyebrow { letter-spacing: .05em; }

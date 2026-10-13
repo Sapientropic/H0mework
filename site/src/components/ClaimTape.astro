@@ -1,0 +1,34 @@
+---
+// One hole per claim row, grouped by chapter: the claim list's index on a paper page and its
+// thumbnail on the home page. Filled holes are proved in Lean; grey ones rest on replay programs.
+import type { ClaimRow } from "../lib/claims";
+import type { Lang } from "../lib/registry";
+import { T, fill } from "../lib/i18n";
+
+interface Props { rows: ClaimRow[]; lang: Lang; featured?: string; link?: boolean; grouped?: boolean }
+const { rows, lang, featured, link = false, grouped = true } = Astro.props;
+const t = T[lang];
+const groups: { chapter: string | null; rows: ClaimRow[] }[] = [];
+for (const row of rows) {
+  const last = groups.at(-1);
+  if (last && (!grouped || last.chapter === row.chapter)) last.rows.push(row);
+  else groups.push({ chapter: row.chapter, rows: [row] });
+}
+const Hole = link ? "a" : "span";
+---
+<div class={`tape${link ? " linked" : ""}`} aria-label={link ? t.claims : undefined} aria-hidden={link ? undefined : "true"}>
+  {groups.map((group) => (
+    <div class="tape-group">
+      <div class="holes">
+        {group.rows.map((row) => (
+          <Hole
+            class={`hole${row.proved ? "" : " program"}${row.key === featured ? " featured" : ""}`}
+            href={link ? `#${row.key}` : undefined}
+            title={link ? `${row.label} · ${row.title}` : undefined}
+          />
+        ))}
+      </div>
+      {grouped && <span class="tape-label" title={group.chapter && !/\d/.test(group.chapter) ? fill(t.appendix, group.chapter) : undefined}>{group.chapter ?? ""}</span>}
+    </div>
+  ))}
+</div>

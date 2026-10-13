@@ -1,36 +1,61 @@
 ---
 import Base from "../layouts/Base.astro";
 import Figure from "./Figure.astro";
-import { claimsOf, paperOf, statsOf, type Lang } from "../lib/papers";
-import { T, paperHref } from "../lib/i18n";
+import ClaimTape from "./ClaimTape.astro";
+import { PAPERS, chaptersOf, paperOf, renderClaim, renderClaimTitle, statsOf, type Lang } from "../lib/papers";
+import { claimsOf, type ClaimRow } from "../lib/claims";
+import { T, fill, paperHref } from "../lib/i18n";
 
 interface Props { lang: Lang; slug: string }
 const { lang, slug } = Astro.props;
 const t = T[lang];
+const sep = lang === "zh" ? "：" : ": ";
 const paper = paperOf(slug, lang);
 const stats = statsOf(slug);
 const claims = claimsOf(slug, lang);
-const featured = paper.figure?.claim;
-const ordered = featured ? [...claims.filter((c) => c.id === featured), ...claims.filter((c) => c.id !== featured)] : claims;
+const chapters = chaptersOf(slug, lang);
+const featured = claims.find((claim) => paper.figure && claim.ids.includes(paper.figure.claim))?.key;
+const latest = paper.current;
+const earlier = paper.editions.slice(0, -1).reverse();
+const index = PAPERS.findIndex((entry) => entry.slug === slug);
+const [prev, next] = [PAPERS[index - 1], PAPERS[index + 1]].map((entry) => entry && { href: paperHref(lang, entry.slug), title: paperOf(entry.slug, lang).main });
+const checks = paper.editions.map((edition) => ({ label: paper.editions.length > 1 ? fill(t.edition, edition.number) : "", command: edition.check, guide: edition.guide }));
+
+// In a long list a divider opens each chapter the list enters; a short list reads without them.
+const grouped = claims.length >= 12;
+const items: ({ kind: "chapter"; key: string; title?: string } | { kind: "claim"; claim: ClaimRow })[] = [];
+claims.forEach((claim, i) => {
+  if (grouped && claim.chapter && claim.chapter !== claims[i - 1]?.chapter) items.push({ kind: "chapter", key: claim.chapter, title: chapters.get(claim.chapter) });
+  items.push({ kind: "claim", claim });
+});
+const chapterLabel = (key: string) => (/\d/.test(key) ? fill(t.chapter, key) : fill(t.appendix, key));
 ---
 <Base lang={lang} title={paper.title} alternate={paperHref(lang === "zh" ? "en" : "zh", slug)}>
   <div class="wrap">
     <header class="hero">
-      <p class="eyebrow">{t.paper} · {paper.date}</p>
+      <p class="eyebrow">{[paper.series?.[lang] ?? t.paper, paper.editions.length > 1 ? fill(t.edition, latest.number) : null, latest.date].filter(Boolean).join(" · ")}</p>
       <h1 class="prose">{paper.main}</h1>
       {paper.sub && <p class="title-sub prose">{paper.sub}</p>}
       <p class="other prose">{paper.other}</p>
       <div class="actions">
-        <a class="button primary" href={paper.links.pdf}>{t.pdf}</a>
-        <a class="button" href={paper.links.supplement}>{t.supplement}</a>
-        <a class="button" href={paper.links.arxiv}>{t.arxiv}</a>
-        <a class="doi" href={paper.links.doi}>DOI {paper.doi}</a>
+        <a class="button primary" href={latest.pdf}>{t.pdf}</a>
+        {latest.supplement && <a class="button" href={latest.supplement}>{t.supplement}</a>}
+        {latest.arxiv && <a class="button" href={latest.arxiv}>{t.arxiv}</a>}
+        <a class="doi" href={latest.doiLink}>DOI {latest.doi}</a>
       </div>
+      {earlier.length > 0 && (
+        <p class="editions">
+          {t.earlier}{sep}
+          {earlier.map((edition) => (
+            <span>{fill(t.edition, edition.number)} · {edition.date} · <a href={edition.pdf}>PDF</a> · <a href={edition.doiLink}>DOI {edition.doi}</a></span>
+          ))}
+        </p>
+      )}
       <ul class="stats">
         <li><b>{stats.claims}</b>{t.statClaims}</li>
         <li><b>{stats.modules}</b>{t.statModules}</li>
         <li><b>{stats.declarations}</b>{t.statDeclarations}</li>
-        {stats.kernel && <li class="ok">✓ {t.statKernel}</li>}
+        <li class="ok">✓ {t.statKernel}</li>
       </ul>
     </header>
     {paper.figure && <Figure name={paper.figure.name} lang={lang} />}
@@ -38,60 +63,87 @@ const ordered = featured ? [...claims.filter((c) => c.id === featured), ...claim
       <div class="prose abstract">
         <h2>{t.abstract}</h2>
         <Fragment set:html={paper.abstractLead} />
-        <details>
-          <summary>{t.more}</summary>
-          <Fragment set:html={paper.abstractRest} />
-        </details>
+        {paper.abstractRest && (
+          <details>
+            <summary>{t.more}</summary>
+            <Fragment set:html={paper.abstractRest} />
+          </details>
+        )}
       </div>
     </section>
-    <section class="section">
+    <section class="section" id="claims">
       <h2>{t.claims}</h2>
-      <p class="note prose">{t.claimsNote}</p>
+      <p class="note prose">{t.claimsNote}{paper.editions.length > 1 && (lang === "zh" ? t.claimsNoteEditions : ` ${t.claimsNoteEditions}`)}</p>
+      <ClaimTape rows={claims} lang={lang} featured={featured} link grouped={grouped} />
+      <p class="tape-note">{t.index}</p>
       <ol class="claims">
-        {ordered.map((claim) => (
-          <li class="claim" id={claim.id}>
-            <details open={claim.id === featured}>
-              <summary>
-                <span class="id">{claim.id}</span>
-                <span class="title">{claim.title}{claim.id === featured && <span class="tag">{t.figure}</span>}</span>
-                <span class="where" title={claim.location}>{claim.section}</span>
-              </summary>
-              <div class="body prose">
-                <p>{claim.statement}</p>
-                <p class="meta">{t.location}{lang === "zh" ? "：" : ": "}{claim.location}</p>
-                {claim.lean.length > 0 && (
-                  <>
-                    <h4>{t.lean} · {claim.lean.length}</h4>
-                    <ul class="modules">
-                      {claim.lean.map((lean) => (
-                        <li>
-                          {lean.declarations.length > 0 ? (
-                            <details>
-                              <summary>
-                                <a href={lean.link} title={lean.module}>{lean.short}</a>
-                                <span class="count" title={t.showDeclarations}>{lean.declarations.length} {t.declarations}</span>
-                              </summary>
-                              <div class="decls">{lean.declarations.map((decl) => <a href={decl.link}>{decl.name}</a>)}</div>
-                            </details>
-                          ) : (
-                            <a href={lean.link} title={lean.module}>{lean.short}</a>
-                          )}
-                        </li>
-                      ))}
-                    </ul>
-                  </>
-                )}
-                {claim.artifacts.length > 0 && (
-                  <>
-                    <h4>{t.artifacts} · {claim.artifacts.length}</h4>
-                    <ul class="modules">{claim.artifacts.map((artifact) => <li><a href={artifact.link} title={artifact.path}>{artifact.name}</a></li>)}</ul>
-                  </>
-                )}
-              </div>
-            </details>
-          </li>
-        ))}
+        {items.map((item) =>
+          item.kind === "chapter" ? (
+            <li class="chapter" aria-hidden="true"><span class="n">{chapterLabel(item.key)}</span>{item.title && <span class="t" set:html={item.title} />}</li>
+          ) : (
+            <li class="claim" id={item.claim.key}>
+              <details open={item.claim.key === featured}>
+                <summary>
+                  <span class={`id${item.claim.proved ? " proved" : ""}`} title={item.claim.proved ? t.kernelPassed : undefined}>{item.claim.label}</span>
+                  <span class="title">
+                    <span set:html={renderClaimTitle(item.claim.title)} />
+                    {item.claim.edition > 1 && <span class="tag later">{fill(t.edition, item.claim.edition)}</span>}
+                    {item.claim.key === featured && <span class="tag">{t.figure}</span>}
+                  </span>
+                  <span class="where" title={item.claim.location ?? undefined}>{item.claim.section}</span>
+                </summary>
+                <div class="body prose">
+                  {item.claim.statement && <div class="statement" set:html={renderClaim(item.claim.statement)} />}
+                  <p class="meta">
+                    {item.claim.location && <span>{t.location}{sep}{item.claim.location}</span>}
+                    {item.claim.proved && <span class="kernel">✓ {t.kernelPassed}</span>}
+                  </p>
+                  {item.claim.lean.length > 0 && (
+                    <>
+                      <h4>{t.lean} · {item.claim.lean.length}</h4>
+                      <ul class="modules">
+                        {item.claim.lean.map((lean) => (
+                          <li>
+                            {lean.declarations.length > 0 ? (
+                              <details>
+                                <summary>
+                                  <a href={lean.link} title={lean.module}>{lean.short}</a>
+                                  <span class="count" title={t.showDeclarations}>{lean.declarations.length} {t.declarations}</span>
+                                </summary>
+                                <div class="decls">{lean.declarations.map((decl) => <a href={decl.link} title={decl.qualified}>{decl.name}</a>)}</div>
+                              </details>
+                            ) : (
+                              <a href={lean.link} title={lean.module}>{lean.short}</a>
+                            )}
+                          </li>
+                        ))}
+                      </ul>
+                    </>
+                  )}
+                  {item.claim.artifacts.length > 0 && (
+                    <>
+                      <h4>{t.artifacts} · {item.claim.artifacts.length}</h4>
+                      <ul class="modules">{item.claim.artifacts.map((artifact) => <li><a href={artifact.link} title={artifact.path}>{artifact.name}</a></li>)}</ul>
+                    </>
+                  )}
+                </div>
+              </details>
+            </li>
+          ),
+        )}
       </ol>
     </section>
+    <section class="section">
+      <div class="prose">
+        <h2>{t.check}</h2>
+        <p>{t.checkPaper}</p>
+        <pre class="command">{checks.map((check, i) => <>{i > 0 && "\n\n"}{check.label && <span class="comment"># {check.label}{"\n"}</span>}{check.command}</>)}</pre>
+        <p>{t.checkMore}{checks.map((check, i) => <>{i > 0 && (lang === "zh" ? "、" : ", ")}<a href={check.guide}>{t.guide}{check.label && (lang === "zh" ? `（${check.label}）` : ` (${check.label})`)}</a></>)}</p>
+      </div>
+    </section>
+    <nav class="pager">
+      {prev ? <a class="prev" href={prev.href}><span>← {t.prev}</span>{prev.title}</a> : <span />}
+      {next ? <a class="next" href={next.href}><span>{t.next} →</span>{next.title}</a> : <span />}
+    </nav>
   </div>
 </Base>

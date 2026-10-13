@@ -1,14 +1,22 @@
 ---
 import Base from "../layouts/Base.astro";
+import ClaimTape from "./ClaimTape.astro";
 import isoCss from "../../figures/kit/iso.css?raw";
 import { PAPERS, figureSvgOf, paperOf, statsOf, type Lang } from "../lib/papers";
-import { T, paperHref } from "../lib/i18n";
+import { claimsOf } from "../lib/claims";
+import { RELEASES } from "../lib/registry";
+import { T, fill, paperHref } from "../lib/i18n";
 
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const t = T[lang];
-const papers = PAPERS.map((paper) => ({ ...paperOf(paper.slug, lang), stats: statsOf(paper.slug), thumb: paper.figure ? figureSvgOf(paper.figure.name) : "" }));
-const guide = "https://github.com/Sapientropic/H0mework/blob/main/docs/first-release-reproduction.md";
+const papers = PAPERS.map((entry) => {
+  const paper = paperOf(entry.slug, lang);
+  const claims = claimsOf(entry.slug, lang);
+  const ids = claims.flatMap((claim) => claim.ids).map((id) => id.split(".").pop()!).sort((a, b) => Number(a.slice(1)) - Number(b.slice(1)));
+  return { ...paper, stats: statsOf(entry.slug), claims, range: ids.length > 1 ? `${ids[0]}–${ids.at(-1)}` : ids[0], thumb: entry.figure ? figureSvgOf(entry.figure.name) : "" };
+});
+const checks = Object.values(RELEASES).map((release) => ({ label: release.label[lang], command: release.check }));
 ---
 <Base lang={lang} title={`${t.site} · ${t.tagline.replace("|", "")}`} alternate={t.otherHref}>
   <style is:global set:html={isoCss}></style>
@@ -17,30 +25,44 @@ const guide = "https://github.com/Sapientropic/H0mework/blob/main/docs/first-rel
       <h1>{t.tagline.split("|").map((phrase) => <span class="phrase">{phrase}</span>)}</h1>
       <p class="lede">{t.lede}</p>
     </section>
-    <section class="section">
-      <h2>{t.papers}</h2>
-      {papers.map((paper) => (
-        <a class="paper-card" href={paperHref(lang, paper.slug)}>
-          <div>
-            <h3>{paper.main}</h3>
-            {paper.sub && <p class="card-sub">{paper.sub}</p>}
-            <p class="other">{paper.other}</p>
-            <ul class="stats">
-              <li><b>{paper.stats.claims}</b>{t.statClaims}</li>
-              <li><b>{paper.stats.modules}</b>{t.statModules}</li>
-              {paper.stats.kernel && <li class="ok">✓ {t.statKernel}</li>}
-            </ul>
-          </div>
-          {paper.thumb && <div class="thumb iso" data-theme="light" aria-hidden="true" set:html={paper.thumb} />}
-        </a>
-      ))}
+    <section class="section" id="papers">
+      <h2>{t.papers}<span class="count">{papers.length}</span></h2>
+      <ol class="paper-list">
+        {papers.map((paper) => (
+          <li>
+            <a class="paper-row" href={paperHref(lang, paper.slug)}>
+              <div class="info">
+                <p class="row-meta">{[paper.series?.[lang], paper.editions.length > 1 ? fill(t.edition, paper.current.number) : null, paper.current.date].filter(Boolean).join(" · ")}</p>
+                <h3>{paper.main}</h3>
+                {paper.sub && <p class="card-sub">{paper.sub}</p>}
+                <p class="other">{paper.other}</p>
+                <ul class="stats">
+                  <li><b>{paper.stats.claims}</b>{t.statClaims}</li>
+                  <li><b>{paper.stats.modules}</b>{t.statModules}</li>
+                  <li class="ok">✓ {t.statKernel}</li>
+                </ul>
+              </div>
+              {paper.thumb ? (
+                <div class="thumb iso" data-theme="light" aria-hidden="true" set:html={paper.thumb} />
+              ) : (
+                <div class="thumb" aria-hidden="true">
+                  <div class="punch-card">
+                    <span class="range">{paper.range}</span>
+                    <ClaimTape rows={paper.claims} lang={lang} grouped={false} />
+                  </div>
+                </div>
+              )}
+            </a>
+          </li>
+        ))}
+      </ol>
     </section>
-    <section class="section">
+    <section class="section" id="check">
       <div class="prose">
         <h2>{t.check}</h2>
         <p>{t.checkNote}</p>
-        <pre class="command">make check-first-release-entry</pre>
-        <p>{t.checkMore}<a href={guide}>{t.guide}</a></p>
+        <pre class="command">{checks.map((check, i) => <>{i > 0 && "\n\n"}<span class="comment"># {check.label}{"\n"}</span>{check.command}</>)}</pre>
+        <p>{t.checkHome}</p>
       </div>
     </section>
   </div>

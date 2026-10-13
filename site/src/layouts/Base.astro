@@ -2,7 +2,7 @@
 import "katex/dist/katex.min.css";
 import "../styles/site.css";
 import { T } from "../lib/i18n";
-import type { Lang } from "../lib/papers";
+import type { Lang } from "../lib/registry";
 
 interface Props { lang: Lang; title: string; alternate: string }
 const { lang, title, alternate } = Astro.props;
@@ -20,6 +20,7 @@ const t = T[lang];
       <div class="wrap">
         <a class="brand" href={t.home}>H<b>0</b>mework</a>
         <nav class="site">
+          <a href={`${t.home}#papers`}>{t.papers}</a>
           <a href="https://github.com/Sapientropic/H0mework">{t.repo}</a>
           <a href={alternate} hreflang={lang === "zh" ? "en" : "zh"}>{t.other}</a>
         </nav>
