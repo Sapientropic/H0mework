@@ -4,8 +4,8 @@ import "../styles/site.css";
 import { T } from "../lib/i18n";
 import type { Lang } from "../lib/registry";
 
-interface Props { lang: Lang; title: string; alternate: string }
-const { lang, title, alternate } = Astro.props;
+interface Props { lang: Lang; title: string; alternate: string; description?: string }
+const { lang, title, alternate, description = T[lang].lede } = Astro.props;
 const t = T[lang];
 ---
 <!doctype html>
@@ -14,6 +14,11 @@ const t = T[lang];
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <link rel="alternate" hreflang={lang === "zh" ? "en" : "zh"} href={alternate} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   </head>
   <body>
     <header class="site">
@@ -32,7 +37,7 @@ const t = T[lang];
         <a class="brand" href={t.home}>H<b>0</b>mework</a>
         <nav>
           <a href="https://github.com/Sapientropic/H0mework">{t.repo}</a>
-          <a href="https://github.com/Sapientropic/H0mework/blob/main/docs/first-release-reproduction.md">{t.guide}</a>
+          <a href={`${t.home}#check`}>{t.check}</a>
           <a href="https://github.com/Sapientropic/H0mework/blob/main/docs/evidence-map.md">{t.evidence}</a>
         </nav>
         <p>{t.license}</p>

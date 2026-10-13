@@ -18,6 +18,7 @@ const markdown = unified().use(remarkParse).use(remarkMath).use(remarkRehype).us
 // Some manuscripts write math as \( \) and \[ \]; remark-math reads only dollars.
 const dollars = (text: string) => text.replace(/\\\[([\s\S]+?)\\\]/g, (_, m) => `$$${m}$$`).replace(/\\\(([\s\S]+?)\\\)/g, (_, m) => `$${m}$`);
 export const renderMarkdown = (text: string) => String(markdown.processSync(dollars(text)));
+const plain = (text: string) => text.replace(/\$+([^$]*)\$+/g, "$1").replace(/\\[()[\]]/g, "").replace(/[*_`]/g, "").replace(/\s+/g, " ").trim();
 export const renderInline = (text: string) => renderMarkdown(text).replace(/^<p>|<\/p>\s*$/g, "");
 
 // Claim texts are plain text with `code` and $math$ only: "*" there is multiplication, not emphasis.
@@ -84,6 +85,8 @@ export function paperOf(slug: string, lang: Lang) {
     editions,
     current: editions.at(-1)!,
     abstractLead: renderMarkdown(abstract[0]),
+    // Plain first sentences of the abstract for the page description.
+    summary: plain(abstract[0]).match(/^.{40,160}?(。|[.!?](?=\s|$))/)?.[0] ?? plain(abstract[0]).slice(0, 160),
     abstractRest: renderMarkdown(abstract.slice(1).join("\n\n")),
   };
 }

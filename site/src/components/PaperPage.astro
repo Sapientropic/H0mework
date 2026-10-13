@@ -32,7 +32,7 @@ claims.forEach((claim, i) => {
 const translated = lang === "zh" ? labelOf(claims.filter((claim) => claim.translated).flatMap((claim) => claim.ids)) : "";
 const chapterLabel = (key: string) => (/\d/.test(key) ? fill(t.chapter, key) : fill(t.appendix, key));
 ---
-<Base lang={lang} title={paper.title} alternate={paperHref(lang === "zh" ? "en" : "zh", slug)}>
+<Base lang={lang} title={paper.title} alternate={paperHref(lang === "zh" ? "en" : "zh", slug)} description={paper.summary}>
   <div class="wrap">
     <header class="hero">
       <p class="eyebrow">{[paper.series?.[lang] ?? t.paper, paper.editions.length > 1 ? fill(t.edition, latest.number) : null, latest.date].filter(Boolean).join(" · ")}</p>
