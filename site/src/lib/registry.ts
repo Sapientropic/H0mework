@@ -107,6 +107,7 @@ export const PAPERS: PaperEntry[] = [
     slug: "low-energy-loop-response",
     editions: [{ release: "low-energy", doi: "10.5281/zenodo.23299177" }],
     series: { zh: "低能系列 2", en: "Low-energy series 2" },
+    figure: { name: "curvature-dome", claim: "low2.Q4" },
   },
 ];
 
