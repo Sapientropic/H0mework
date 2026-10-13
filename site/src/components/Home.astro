@@ -1,6 +1,7 @@
 ---
 import Base from "../layouts/Base.astro";
 import ClaimTape from "./ClaimTape.astro";
+import CheckCommands from "./CheckCommands.astro";
 import isoCss from "../../figures/kit/iso.css?raw";
 import { PAPERS, figureSvgOf, paperOf, statsOf, type Lang } from "../lib/papers";
 import { claimsOf } from "../lib/claims";
@@ -18,7 +19,7 @@ const papers = PAPERS.map((entry) => {
 });
 const checks = Object.values(RELEASES).map((release) => ({ label: release.label[lang], command: release.check }));
 ---
-<Base lang={lang} title={`${t.site} · ${t.tagline.replace("|", "")}`} alternate={t.otherHref}>
+<Base lang={lang} title={`${t.site} · ${t.tagline.replace("|", lang === "zh" ? "" : " ")}`} alternate={t.otherHref}>
   <style is:global set:html={isoCss}></style>
   <div class="wrap">
     <section class="hero prose">
@@ -61,7 +62,7 @@ const checks = Object.values(RELEASES).map((release) => ({ label: release.label[
       <div class="prose">
         <h2>{t.check}</h2>
         <p>{t.checkNote}</p>
-        <pre class="command">{checks.map((check, i) => <>{i > 0 && "\n\n"}<span class="comment"># {check.label}{"\n"}</span>{check.command}</>)}</pre>
+        <CheckCommands lang={lang} checks={checks} />
         <p>{t.checkHome}</p>
       </div>
     </section>

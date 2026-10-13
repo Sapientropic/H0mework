@@ -1,0 +1,41 @@
+---
+import { T } from "../lib/i18n";
+import type { Lang } from "../lib/registry";
+
+// A check-command block with a copy button; the click handler is delegated so one script serves every block on the page.
+interface Props { lang: Lang; checks: { label: string; command: string }[] }
+const { lang, checks } = Astro.props;
+const t = T[lang];
+---
+<div class="cmdblock">
+  <pre class="command">{checks.map((check, i) => <>{i > 0 && "\n\n"}{check.label && <span class="comment"># {check.label}{"\n"}</span>}{check.command}</>)}</pre>
+  <button class="copy" type="button" data-label={t.copy} data-done={t.copied}>{t.copy}</button>
+</div>
+<script>
+  document.addEventListener("click", (event) => {
+    const button = (event.target as Element | null)?.closest?.("button.copy");
+    if (!button) return;
+    const pre = button.closest(".cmdblock")?.querySelector("pre");
+    if (!pre) return;
+    // Feedback is immediate: a background tab can leave the clipboard promise pending forever.
+    button.textContent = button.getAttribute("data-done");
+    button.classList.add("done");
+    setTimeout(() => {
+      button.textContent = button.getAttribute("data-label");
+      button.classList.remove("done");
+    }, 1600);
+    // Without clipboard permission, select the text instead so a manual copy still works.
+    const fallback = () => {
+      const range = document.createRange();
+      range.selectNodeContents(pre);
+      const selection = getSelection();
+      selection?.removeAllRanges();
+      selection?.addRange(range);
+    };
+    try {
+      navigator.clipboard.writeText(pre.textContent ?? "").catch(fallback);
+    } catch {
+      fallback();
+    }
+  });
+</script>

@@ -15,8 +15,15 @@ bun run build      # 先跑图的模型自检与构建，再出 dist/
 - `src/lib/claims.ts`：把各发布映射的不同 schema 读成同一种主张行。第二版映射按发布选集的证明包成行。映射里的 `kernel: pending` 只表示公开包在 CI 中的重新验收，页面不把它当作状态。
 - `src/lib/papers.ts`：标题、摘要（KaTeX 渲染）、章节标题与统计，取自最新一版正文。
 - `src/data/claims-<lang>.json`：登记原文不是页面语言时显示的译文（英文页译中文主张，中文页译以英文登记的主张），每条带所译原文的指纹；原文改动后构建告警并回退原文。`bun scripts/translations.ts --lang en|zh` 列出缺译与过期条目，`--merge <file>` 并入新译文。
+- `src/components/CheckCommands.astro`：入口检查命令块，右上角带复制按钮；剪贴板不可用时退化为全选文本。
 - `figures/kit/`：取自 [anatomy](https://github.com/wheresryan22/anatomy)（MIT，commit `689dcf9`）的等轴测绘图核心。
 - `figures/<name>/`：一张图一个目录。`model.mjs` 是真值模型，`check.mjs` 用论文定理校验它，`build.mjs --fragment` 输出到 `src/generated/` 供页面挂载；不带参数时输出独立页到 `out/` 用于截图与线端检查。
+
+## 站点元信息
+
+`astro.config.mjs` 设了 `site: https://h0mework.wiki` 并启用 `@astrojs/sitemap`（双语 hreflang，404 不入册）；`public/robots.txt` 指向 sitemap。每页带 canonical、双向 hreflang + x-default、OG/Twitter 卡片。
+
+`public/og/` 是分享预览图：有配图的论文用配图的机器图，其余页面用 `default.png`（打孔卡）。配图更新后重新生成：`bun scripts/og.mjs` 把 1200×630 的静态页写进 `.og/`，逐页截图覆盖 `public/og/<name>.png`（`.og/` 不入库）。
 
 ## 新增论文
 

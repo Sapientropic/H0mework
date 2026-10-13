@@ -2,6 +2,7 @@
 import Base from "../layouts/Base.astro";
 import Figure from "./Figure.astro";
 import ClaimTape from "./ClaimTape.astro";
+import CheckCommands from "./CheckCommands.astro";
 import { PAPERS, chaptersOf, paperOf, renderClaim, renderClaimTitle, statsOf, type Lang } from "../lib/papers";
 import { claimsOf, labelOf, type ClaimRow } from "../lib/claims";
 import { T, fill, paperHref } from "../lib/i18n";
@@ -32,7 +33,7 @@ claims.forEach((claim, i) => {
 const translated = lang === "zh" ? labelOf(claims.filter((claim) => claim.translated).flatMap((claim) => claim.ids)) : "";
 const chapterLabel = (key: string) => (/\d/.test(key) ? fill(t.chapter, key) : fill(t.appendix, key));
 ---
-<Base lang={lang} title={paper.title} alternate={paperHref(lang === "zh" ? "en" : "zh", slug)} description={paper.summary}>
+<Base lang={lang} title={paper.title} alternate={paperHref(lang === "zh" ? "en" : "zh", slug)} description={paper.summary} ogImage={paper.figure ? `/og/${paper.figure.name}.png` : undefined}>
   <div class="wrap">
     <header class="hero">
       <p class="eyebrow">{[paper.series?.[lang] ?? t.paper, paper.editions.length > 1 ? fill(t.edition, latest.number) : null, latest.date].filter(Boolean).join(" · ")}</p>
@@ -139,7 +140,7 @@ const chapterLabel = (key: string) => (/\d/.test(key) ? fill(t.chapter, key) : f
       <div class="prose">
         <h2>{t.check}</h2>
         <p>{t.checkPaper}</p>
-        <pre class="command">{checks.map((check, i) => <>{i > 0 && "\n\n"}{check.label && <span class="comment"># {check.label}{"\n"}</span>}{check.command}</>)}</pre>
+        <CheckCommands lang={lang} checks={checks} />
         <p>{t.checkMore}{checks.map((check, i) => <>{i > 0 && (lang === "zh" ? "、" : ", ")}<a href={check.guide}>{t.guide}{check.label && (lang === "zh" ? `（${check.label}）` : ` (${check.label})`)}</a></>)}</p>
       </div>
     </section>

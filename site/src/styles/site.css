@@ -153,6 +153,10 @@ h2 .count { margin-left: 10px; font: 13px/1 var(--mono); color: var(--muted); ve
 .punch-card .hole { width: 12px; height: 12px; }
 pre.command { margin: 14px 0; padding: 14px 16px; background: var(--paper); box-shadow: 0 0 0 1px var(--rule); font: 13.5px/1.6 var(--mono); color: var(--ink); overflow-x: auto; }
 pre.command .comment { color: var(--muted); }
+.cmdblock { position: relative; }
+.cmdblock .copy { position: absolute; top: 10px; right: 10px; padding: 5px 10px; border: 1px solid var(--rule); border-radius: 4px; background: var(--paper); font: 12px/1 var(--mono); color: var(--muted); cursor: pointer; }
+.cmdblock .copy:hover { color: var(--ink); border-color: var(--muted); }
+.cmdblock .copy.done { color: #2f7d4f; border-color: #2f7d4f; }
 
 footer.site { margin: 96px 0 0; padding: 32px 0 56px; border-top: 1px solid var(--rule); background: var(--paper); color: var(--muted); font-size: 13px; }
 .footer-grid { display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px 28px; }
