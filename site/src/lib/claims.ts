@@ -12,7 +12,7 @@ type Producer = {
   declarations?: Declaration[];
 };
 type Text = { title: string | null; statement: string | null };
-type Source = { key: string; ids: string[]; edition: number; text: Text; location: Record<Lang, string | null>; producers: Producer[] };
+export type Source = { key: string; ids: string[]; edition: number; text: Text; location: Record<Lang, string | null>; producers: Producer[] };
 
 // Every mapped Lean producer passed its kernel check before release. A map's "pending" marks only
 // the later re-acceptance of the public package in CI, so the site does not show it as a status.
@@ -111,20 +111,24 @@ const ADAPTERS: Record<ReleaseId, (slug: string, edition: number) => Source[]> =
   "low-energy": lowEnergy,
 };
 
-// --- English ----------------------------------------------------------------------------------
+// --- translations -----------------------------------------------------------------------------
 
-// English rows are translated from the registered Chinese. Each entry carries a fingerprint of
-// the Chinese it was translated from; a changed claim falls back to Chinese with a build warning.
-type English = Record<string, { title?: string; statement?: string; zh: string }>;
+// A row shows its registered text when that text is in the page language, and otherwise a
+// translation from src/data/claims-<lang>.json. Each translation carries a fingerprint of the
+// registered text it was made from; a changed claim falls back to the registered text and warns.
+type Translations = Record<string, { title?: string; statement?: string; from: string }>;
 export const fingerprint = (text: Text) => createHash("sha256").update(`${text.title ?? ""}\n${text.statement ?? ""}`).digest("hex").slice(0, 16);
-const english = () => once<English>("claims-en", () => JSON.parse(readFileSync(resolve(process.cwd(), "src/data/claims-en.json"), "utf8")));
+export const translationsOf = (lang: Lang) =>
+  once<Translations>(`claims-${lang}`, () => JSON.parse(readFileSync(resolve(process.cwd(), `src/data/claims-${lang}.json`), "utf8")));
+const isChinese = (text: Text) => /[\u4e00-\u9fff]/.test(`${text.title ?? ""}${text.statement ?? ""}`);
+export const needsTranslation = (source: Source, lang: Lang) => (lang === "zh") !== isChinese(source.text);
 
-function textOf(source: Source, lang: Lang): Text {
-  if (lang === "zh") return source.text;
-  const entry = english()[source.key];
-  if (entry?.zh === fingerprint(source.text)) return { title: entry.title ?? null, statement: entry.statement ?? null };
-  console.warn(`[claims-en] ${source.key}: English text missing or stale; showing the registered Chinese`);
-  return source.text;
+function textOf(source: Source, lang: Lang): Text & { translated: boolean } {
+  if (!needsTranslation(source, lang)) return { ...source.text, translated: false };
+  const entry = translationsOf(lang)[source.key];
+  if (entry?.from === fingerprint(source.text)) return { title: entry.title ?? null, statement: entry.statement ?? null, translated: true };
+  console.warn(`[claims-${lang}] ${source.key}: translation missing or stale; showing the registered text`);
+  return { ...source.text, translated: false };
 }
 
 // A claim without a registered title is listed by the first sentence of its statement.
@@ -175,7 +179,7 @@ export const chapterOf = (order: number[]) => (order[0] >= 999 ? null : order[0]
 const idNumber = (id: string) => Number(id.match(/\d+$/)?.[0] ?? 0);
 
 // "core.C35", "core.C36", "core.C37", "core.C42" → "C35–C37 · C42"
-function labelOf(ids: string[]): string {
+export function labelOf(ids: string[]): string {
   const parts = [...ids].sort((a, b) => idNumber(a) - idNumber(b)).map((id) => id.split(".").pop()!).map((tail) => ({ tail, prefix: tail.replace(/\d+$/, ""), n: Number(tail.match(/\d+$/)?.[0]) }));
   const runs: string[] = [];
   for (let i = 0; i < parts.length; ) {
@@ -202,6 +206,7 @@ function rowOf(source: Source, lang: Lang) {
     edition: source.edition,
     title,
     statement,
+    translated: text.translated,
     location,
     // The row shows only the leading reference ("§3.4", "§8.1–§8.3", "Theorem 6.2"); the body shows the rest.
     section: location?.match(/^(§[^\s；;,，]+|[^\s\d；;,，、]*\s?[\d.A-Z]+[\d.–()]*)/)?.[1] ?? location,
@@ -225,5 +230,5 @@ export function claimsOf(slug: string, lang: Lang) {
   );
 }
 
-// Sources keyed for the English layer, used by scripts that refresh fingerprints.
+// Sources keyed for the translation layers, used by scripts/translations.ts.
 export const sourcesOf = (slug: string) => entryOf(slug).editions.flatMap((edition, index) => ADAPTERS[edition.release](slug, index + 1));

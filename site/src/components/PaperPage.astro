@@ -3,7 +3,7 @@ import Base from "../layouts/Base.astro";
 import Figure from "./Figure.astro";
 import ClaimTape from "./ClaimTape.astro";
 import { PAPERS, chaptersOf, paperOf, renderClaim, renderClaimTitle, statsOf, type Lang } from "../lib/papers";
-import { claimsOf, type ClaimRow } from "../lib/claims";
+import { claimsOf, labelOf, type ClaimRow } from "../lib/claims";
 import { T, fill, paperHref } from "../lib/i18n";
 
 interface Props { lang: Lang; slug: string }
@@ -28,6 +28,8 @@ claims.forEach((claim, i) => {
   if (grouped && claim.chapter && claim.chapter !== claims[i - 1]?.chapter) items.push({ kind: "chapter", key: claim.chapter, title: chapters.get(claim.chapter) });
   items.push({ kind: "claim", claim });
 });
+// The English note covers every row; a Chinese page names the rows registered in English.
+const translated = lang === "zh" ? labelOf(claims.filter((claim) => claim.translated).flatMap((claim) => claim.ids)) : "";
 const chapterLabel = (key: string) => (/\d/.test(key) ? fill(t.chapter, key) : fill(t.appendix, key));
 ---
 <Base lang={lang} title={paper.title} alternate={paperHref(lang === "zh" ? "en" : "zh", slug)}>
@@ -73,7 +75,7 @@ const chapterLabel = (key: string) => (/\d/.test(key) ? fill(t.chapter, key) : f
     </section>
     <section class="section" id="claims">
       <h2>{t.claims}</h2>
-      <p class="note prose">{t.claimsNote}{paper.editions.length > 1 && (lang === "zh" ? t.claimsNoteEditions : ` ${t.claimsNoteEditions}`)}</p>
+      <p class="note prose">{t.claimsNote}{paper.editions.length > 1 && (lang === "zh" ? t.claimsNoteEditions : ` ${t.claimsNoteEditions}`)}{translated && fill(t.translatedNote, translated)}</p>
       <ClaimTape rows={claims} lang={lang} featured={featured} link grouped={grouped} />
       <p class="tape-note">{t.index}</p>
       <ol class="claims">
