@@ -1,0 +1,116 @@
+---
+// The home map: one 0 at the root, a branch per theme, a node per paper. Solid nodes are published
+// papers and link to them; hollow nodes are papers in preparation, counted in UPCOMING without titles,
+// and fill as they condense. A panel beside the forest describes the node under the pointer.
+import { ORDERED, THEMES, paperOf, statsOf, type Lang } from "../lib/papers";
+import { UPCOMING } from "../lib/registry";
+import { T, fill, paperHref, papersHref } from "../lib/i18n";
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = T[lang];
+const ROW = 46; // row height in px; the branch line sits LINE px below a row's top
+const LINE = 30;
+const FAN = 80; // width of the fan of branches from the 0, drawn 1:1
+let phase = 0;
+const rows = THEMES.map((theme) => {
+  const published = ORDERED.filter((entry) => entry.theme === theme.id).map((entry) => {
+    const paper = paperOf(entry.slug, lang);
+    const stats = statsOf(entry.slug);
+    return {
+      href: paperHref(lang, entry.slug),
+      title: paper.main,
+      sub: paper.sub,
+      meta: [paper.series?.[lang] ?? theme.label[lang], paper.editions.length > 1 ? fill(t.edition, paper.current.number) : null, paper.current.date].filter(Boolean).join(" · "),
+      stats: `${stats.claims} ${t.statClaims} · ${stats.modules} ${t.statModules}`,
+    };
+  });
+  const upcoming = UPCOMING[theme.id] ?? { count: 0 };
+  // Written papers sit next to the published ones; each hollow node starts its cycle at its own phase.
+  const hollow = Array.from({ length: upcoming.count }, (_, i) => ({ soon: i < (upcoming.soon ?? 0), phase: (phase++ * 0.618) % 1 }));
+  return { ...theme, published, hollow };
+}).filter((row) => row.published.length + row.hollow.length > 0);
+const height = rows.length * ROW;
+const counted = (template: string, n: number, m: number) => template.replace("{n}", String(n)).replace("{m}", String(m));
+const totals = { published: rows.reduce((n, row) => n + row.published.length, 0), hollow: rows.reduce((n, row) => n + row.hollow.length, 0) };
+---
+<section class="section" id="forest">
+  <h2>{t.forest}</h2>
+  <div class="forest" style={`--row:${ROW}px;--line:${LINE}px`}>
+    <div class="grove">
+      <span class="seed" aria-hidden="true">0</span>
+      <svg class="fan" viewBox={`0 0 ${FAN} ${height}`} width={FAN} height={height} aria-hidden="true">
+        {rows.map((_, i) => <path d={`M0 ${height / 2} C${FAN / 2} ${height / 2} ${FAN / 2} ${i * ROW + LINE} ${FAN} ${i * ROW + LINE}`} pathLength="1" style={`--i:${i}`} />)}
+      </svg>
+      <ol class="trees">
+        {rows.map((row, i) => (
+          <li class="tree" style={`--i:${i}`}>
+            <span class="tree-name">
+              {row.published.length > 0 ? <a href={`${papersHref(lang)}#theme-${row.id}`}>{row.label[lang]}</a> : row.label[lang]}
+              <span class="tree-count">{row.published.length}/{row.published.length + row.hollow.length}{row.hollow.length > 0 && "+"}</span>
+            </span>
+            <span class="branch">
+              {row.published.map((paper, j) => (
+                <a class="node pub" href={paper.href} aria-label={paper.title} style={`--j:${j}`} data-meta={paper.meta} data-title={paper.title} data-sub={paper.sub} data-stats={paper.stats} />
+              ))}
+              {row.hollow.map((node, j) => (
+                <span class={`node up${node.soon ? " soon" : ""}`} aria-hidden="true" style={`--j:${row.published.length + j};--p:${node.phase.toFixed(3)}`} data-meta={row.label[lang]} data-title={node.soon ? t.nodeSoon : t.nodeUpcoming} />
+              ))}
+            </span>
+            <span class="sr-only">{counted(t.forestRow, row.published.length, row.hollow.length)}</span>
+          </li>
+        ))}
+      </ol>
+    </div>
+    <aside class="forest-panel" aria-hidden="true">
+      <div class="idle">
+        <p class="legend"><span class="node pub" />{t.legendPublished}</p>
+        <p class="legend"><span class="node up soon" />{t.legendSoon}</p>
+        <p class="legend"><span class="node up" />{t.legendUpcoming}</p>
+        <p class="totals">{counted(t.forestTotals, totals.published, totals.hollow)}</p>
+      </div>
+      <div class="detail" hidden>
+        <span class="meta" />
+        <span class="t" />
+        <span class="sub" />
+        <span class="st" />
+      </div>
+    </aside>
+  </div>
+  <script is:inline>
+    // Armed before first paint, so the forest can grow in when it scrolls into view.
+    if (!matchMedia("(prefers-reduced-motion: reduce)").matches) document.currentScript.closest("section").querySelector(".forest").classList.add("armed");
+  </script>
+</section>
+<script>
+  const forest = document.querySelector(".forest") as HTMLElement | null;
+  if (forest) {
+    const view = new IntersectionObserver(([entry]) => {
+      forest.classList.toggle("live", entry.isIntersecting);
+      if (entry.isIntersecting) forest.classList.add("grown");
+    }, { rootMargin: "0px 0px -15% 0px" });
+    view.observe(forest);
+
+    const idle = forest.querySelector(".idle") as HTMLElement;
+    const detail = forest.querySelector(".detail") as HTMLElement;
+    const fields = ["meta", "t", "sub", "st"].map((name) => detail.querySelector(`.${name}`) as HTMLElement);
+    const keys = ["meta", "title", "sub", "stats"] as const;
+    let current: HTMLElement | null = null;
+    const show = (node: HTMLElement | null) => {
+      if (node === current) return;
+      current?.classList.remove("on");
+      current = node;
+      node?.classList.add("on");
+      idle.hidden = Boolean(node);
+      detail.hidden = !node;
+      if (node) keys.forEach((key, i) => (fields[i].textContent = node.dataset[key] ?? ""));
+      detail.classList.toggle("pending", Boolean(node?.classList.contains("up")));
+    };
+    forest.querySelectorAll<HTMLElement>(".grove .node").forEach((node) => {
+      node.addEventListener("pointerenter", () => show(node));
+      node.addEventListener("focus", () => show(node));
+      node.addEventListener("blur", () => show(null));
+    });
+    forest.querySelector(".grove")!.addEventListener("pointerleave", () => show(null));
+  }
+</script>

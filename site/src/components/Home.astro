@@ -1,12 +1,13 @@
 ---
 import Base from "../layouts/Base.astro";
 import ClaimTape from "./ClaimTape.astro";
+import Forest from "./Forest.astro";
 import isoCss from "../../figures/kit/iso.css?raw";
 import { PAPERS, figureSvgOf, paperOf, statsOf, vtFigure, vtTitle, type Lang } from "../lib/papers";
 import { claimsOf } from "../lib/claims";
 import { T, fill, paperHref, papersHref } from "../lib/i18n";
 
-// The opening frame, one line of what the site is, and the latest papers; the full index is /papers/.
+// The opening frame, one line of what the site is, the forest of papers and the latest ones; the full index is /papers/.
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const t = T[lang];
@@ -27,6 +28,7 @@ const latest = [...papers]
       <p class="lede">{t.lede}</p>
       <p class="tally"><b>{papers.length}</b>{t.statPapers} · <b>{tally.claims}</b>{t.statClaims} · <b>{tally.modules}</b>{t.statModules} · <span class="ok">✓ {t.statKernel}</span></p>
     </section>
+    <Forest lang={lang} />
     <section class="section" id="latest">
       <h2>{t.latest}</h2>
       <div class="cards">

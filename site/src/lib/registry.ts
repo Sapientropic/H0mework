@@ -85,6 +85,20 @@ export const THEMES: { id: ThemeId; label: Record<Lang, string> }[] = [
   { id: "life", label: { zh: "生命与神经", en: "Life & neuroscience" } },
   { id: "mind", label: { zh: "心智与社会", en: "Mind & society" } },
 ];
+// Papers in preparation, by theme, drawn as hollow nodes in the home forest. Counts only: a title is
+// published with its paper. `soon` of them are written and await release. A released paper moves to
+// PAPERS and leaves this count. A series can grow, so the page shows these counts as lower bounds.
+export const UPCOMING: Partial<Record<ThemeId, { count: number; soon?: number }>> = {
+  core: { count: 3, soon: 1 },
+  computation: { count: 2 },
+  physics: { count: 1 },
+  "low-energy": { count: 5 },
+  math: { count: 6 },
+  chemistry: { count: 4 },
+  metrology: { count: 3 },
+  life: { count: 3 },
+  mind: { count: 3 },
+};
 export type PaperEntry = {
   slug: string;
   theme: ThemeId;

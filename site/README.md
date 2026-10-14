@@ -16,7 +16,8 @@ bun run build      # 先跑图的模型自检与构建，再出 dist/
 - `src/lib/papers.ts`：标题、摘要（KaTeX 渲染）、章节标题与统计，取自最新一版正文。`citesOf` 从两种语言正文的参考文献段读出引用了哪些兄弟稿：按任一版 DOI 或主标题匹配（同系列稿在有 DOI 前按标题引用），论文页据此列出“它引用 / 引用它的”。`ORDERED` 是目录顺序（按主题，再按登记），翻页也按它。
 - `src/data/claims-<lang>.json`：登记原文不是页面语言时显示的译文（英文页译中文主张，中文页译以英文登记的主张），每条带所译原文的指纹；原文改动后构建告警并回退原文。`bun scripts/translations.ts --lang en|zh` 列出缺译与过期条目，`--merge <file>` 并入新译文。
 - `src/components/CheckCommands.astro`：入口检查命令块，右上角带复制按钮；剪贴板不可用时退化为全选文本。
-- `src/components/Home.astro`（`/`）：留空的开场画框（创世框占位，只有一句话）、一句介绍与全局统计、最近三篇的配图卡片，以及到全部论文的入口。
+- `src/components/Home.astro`（`/`）：留空的开场画框（创世框占位，只有一句话）、一句介绍与全局统计、论文森林、最近三篇的配图卡片，以及到全部论文的入口。
+- `src/components/Forest.astro`：首页的论文森林。朱红的 0 为根，每个主题一根枝，实心节点是已发布论文（链接），空心节点是 `registry.ts` 里 `UPCOMING` 登记的在写稿件（只登记各主题篇数，不写题目；`soon` 为已写成待发布）。旁边的面板随指针显示节点详情。入视口时生长一次；空心节点的虚线环慢转、核心反复凝聚，只在视口内运行；`prefers-reduced-motion` 下静止。
 - `src/components/PaperIndex.astro`（`/papers/`）：按主题分区的全部论文；桌面左侧主题导航随滚动标出当前主题，窄屏为吸顶 chips；行尾是迷你主张打孔带。
 - `src/components/CheckPage.astro`（`/check/`）：各次发布的入口检查命令，以及每次发布包含哪些论文与复现指南。
 - 跨页过渡：支持的浏览器在页面间用 View Transitions，论文标题与配图从卡片或目录行移到论文页的位置（`vtTitle`、`vtFigure` 命名）；不支持的浏览器照常跳转，`prefers-reduced-motion` 下关闭。
@@ -31,7 +32,7 @@ bun run build      # 先跑图的模型自检与构建，再出 dist/
 
 ## 新增论文
 
-1. 在 `PAPERS` 加一项：slug、`theme`（`THEMES` 之一，新主题同时在 `THEMES` 登记双语名）、各版 `{ release, doi }`，系列稿可加 `series`。
+1. 在 `PAPERS` 加一项，并从 `UPCOMING` 对应主题减一：slug、`theme`（`THEMES` 之一，新主题同时在 `THEMES` 登记双语名）、各版 `{ release, doi }`，系列稿可加 `series`。
 2. 新的发布目录在 `RELEASES` 登记；映射 schema 与已有发布不同时，在 `claims.ts` 的 `ADAPTERS` 加一个读取函数。
 3. 分别以 `--lang en`、`--lang zh` 运行 `bun scripts/translations.ts`，为列出的条目补译文后 `--merge`。
 4. 没有配图的论文在首页卡片里显示主张打孔卡；配图做好后在该项加 `figure`，并在 `scripts/og.mjs` 的 `FIGURES` 加同名条目，重截该论文的 og 图。
