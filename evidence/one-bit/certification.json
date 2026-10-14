@@ -1,0 +1,45 @@
+{
+  "schema": "h0mework/one-bit-certification@1",
+  "status": "passed",
+  "verdict": "certified",
+  "scope": "OB2 original raw ghost counterexample and direct admission producer; inherited OB inputs retain their own accepted proof scopes.",
+  "named_control_declarations": 17,
+  "direct_admission_declarations": 6,
+  "complete_type_rows": 23,
+  "trust": {
+    "axioms": [],
+    "constants": 753,
+    "edges": 7161,
+    "full_metadata": true,
+    "partial": 0,
+    "roots": 23,
+    "token": "d87608433ff06919ffa42fb27065b90b5cf4c434d085cf9614cc1c0a009e3586",
+    "unsafe": 0
+  },
+  "source_view": {
+    "command": [
+      "python3",
+      "tools/one_bit.py",
+      "source",
+      "--output",
+      ".local/one-bit-original-view"
+    ],
+    "exit_code": 0,
+    "source_files": 32,
+    "control_source_sha256": "59132da0687ab67b235ac4fdffb9fe585ed02c104787571ee5f1d0928f2aaf06",
+    "receipt": "evidence/one-bit/acceptance/source-view/result.json"
+  },
+  "original_diagnostic_controls": "Two True declarations retain fail_if_success elaboration rejection tests; logical equality/inequality controls are separately certified.",
+  "original_source_files_modified": false,
+  "private_source_reads": 0,
+  "scientific_recalculation": false,
+  "machine_receipts": {
+    "entry": "evidence/one-bit/acceptance/entry/result.json",
+    "build": "evidence/one-bit/acceptance/build/result.json",
+    "trust": "evidence/one-bit/acceptance/trust/result.json",
+    "types": "evidence/one-bit/acceptance/types/result.json",
+    "ready": "evidence/one-bit/acceptance/ready/result.json"
+  },
+  "reused_proof_scope": "Exact original source/import digests and 1315 same-owner audit roots across five already accepted environments.",
+  "defects": []
+}

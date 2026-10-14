@@ -23,6 +23,8 @@
 
 整账法 WA1–WA40 的完整证明与原直接消费者见[逐项映射](docs/whole-ledger-map.json)、[准备状态](docs/whole-ledger-readiness.md)和[读者复现](docs/whole-ledger-reproduction.md)。
 
+一比特 OB1–OB11 的已签包复用与新增 ghost 反例见[逐项映射](docs/one-bit-map.json)、[准备状态](docs/one-bit-readiness.md)和[读者复现](docs/one-bit-reproduction.md)。
+
 ## 更多研究线
 
 | 研究线 | 内容 | Lean 入口 |

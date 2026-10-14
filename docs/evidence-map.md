@@ -6,6 +6,8 @@
 
 整账法 WA1–WA40 的生产证明、原消费者、完整类型与资源见[整账法映射](whole-ledger-map.json)，实际验收见[准备状态](whole-ledger-readiness.md)。
 
+一比特 OB1–OB11 的原包复用和独立 ghost 反例由[一比特映射](one-bit-map.json)定位，实际验收见[准备状态](one-bit-readiness.md)。
+
 本表将各稿主张连接到固定源码、程序和回执。执行命令见[复现指南](reproduction.md)，来源文档的角色与阅读方式见[来源材料索引](source-materials.md)。
 
 ## 来源与地址变换

@@ -1,0 +1,386 @@
+{
+  "schema": "h0mework/whole-ledger-declarations@1",
+  "status": "passed",
+  "toolchain": "leanprover/lean4:v4.33.0",
+  "runs": [
+    {
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--root=..",
+        "--trust=0",
+        "-Dweak.linter.unnecessarySimpa=false",
+        "-Dweak.linter.style.haveILetI=false",
+        "-Dweak.linter.unusedSimpArgs=false",
+        "-DmaxHeartbeats=2000000",
+        "-Dweak.linter.unusedSectionVars=false",
+        "-Dweak.linter.unnecessarySeqFocus=false",
+        "-Dweak.linter.unusedVariables=false",
+        "-Dweak.linter.unreachableTactic=false",
+        "-Dweak.linter.unusedTactic=false",
+        "-Dweak.linter.defProp=false",
+        "-Dweak.linter.deprecated=false",
+        "-Dlinter.deprecated=false",
+        "-Dweak.linter.tacticAnalysis.introMerge=false",
+        "-Dweak.linter.constructorNameAsVariable=false",
+        "-DwarningAsError=true",
+        "../evidence/one-bit/acceptance/types/types-001.lean"
+      ],
+      "cwd": "Lean",
+      "started_at": "2026-10-14T10:29:08.239590+00:00",
+      "finished_at": "2026-10-14T10:29:14.676366+00:00",
+      "elapsed_seconds": 6.435,
+      "exit_code": 0,
+      "error": null,
+      "log": "evidence/one-bit/acceptance/types/types-001.log",
+      "package": "one-bit-ghost-y"
+    }
+  ],
+  "declarations": [
+    {
+      "package": "one-bit-ghost-y",
+      "axioms": [],
+      "kernel_equivalent": true,
+      "kind": "definition",
+      "module": "H0mework.Foundation.Authority.ZeroLawAdmission",
+      "partial": false,
+      "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.ZeroLawRootAdmission.LawfulWorldStateAt",
+      "type": "{\"nodes\":[{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"WorldRelationNetwork\"]},\"levels\":[{\"param\":{\"str\":[null,\"u\"]}}]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ConstructiveRoot\"]},\"Vocabulary\"]},\"levels\":[{\"param\":{\"str\":[null,\"u\"]}}]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ConstructiveRoot\"]},\"SourceNativeAuthoritativeRootClosure\"]},\"levels\":[{\"param\":{\"str\":[null,\"u\"]}}]},{\"bvar\":1},{\"app\":[2,3]},{\"bvar\":0},{\"app\":[4,5]},{\"sort\":{\"succ\":{\"succ\":{\"param\":{\"str\":[null,\"u\"]}}}}},{\"forallE\":{\"bi\":\"default\",\"body\":7,\"name\":{\"str\":[null,\"root\"]},\"type\":6}},{\"forallE\":{\"bi\":\"implicit\",\"body\":8,\"name\":{\"str\":[null,\"V\"]},\"type\":1}},{\"forallE\":{\"bi\":\"implicit\",\"body\":9,\"name\":{\"str\":[null,\"N\"]},\"type\":0}}],\"root\":10,\"schema\":\"lean-expr-dag@1\"}",
+      "type_format": "lean-expr-dag@1",
+      "universe_parameters": [
+        "u"
+      ],
+      "unsafe": false
+    },
+    {
+      "package": "one-bit-ghost-y",
+      "axioms": [],
+      "kernel_equivalent": true,
+      "kind": "definition",
+      "module": "H0mework.Foundation.Authority.ZeroLawAdmission",
+      "partial": false,
+      "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.ZeroLawRootAdmission.LawfulWorldStateAt.authoritativeEvolution",
+      "type": "{\"nodes\":[{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"WorldRelationNetwork\"]},\"levels\":[{\"param\":{\"str\":[null,\"u\"]}}]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ConstructiveRoot\"]},\"Vocabulary\"]},\"levels\":[{\"param\":{\"str\":[null,\"u\"]}}]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ConstructiveRoot\"]},\"SourceNativeAuthoritativeRootClosure\"]},\"levels\":[{\"param\":{\"str\":[null,\"u\"]}}]},{\"bvar\":1},{\"app\":[2,3]},{\"bvar\":0},{\"app\":[4,5]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ConstructiveRoot\"]},\"ZeroLawRootAdmission\"]},\"LawfulWorldStateAt\"]},\"levels\":[{\"param\":{\"str\":[null,\"u\"]}}]},{\"bvar\":2},{\"app\":[7,8]},{\"app\":[9,3]},{\"app\":[10,5]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ConstructiveRoot\"]},\"SourceNativeAuthoritativeTemporalEvolutionAt\"]},\"levels\":[{\"param\":{\"str\":[null,\"u\"]}}]},{\"bvar\":3},{\"app\":[12,13]},{\"app\":[14,8]},{\"app\":[15,3]},{\"app\":[16,5]},{\"forallE\":{\"bi\":\"default\",\"body\":17,\"name\":{\"str\":[null,\"state\"]},\"type\":11}},{\"forallE\":{\"bi\":\"implicit\",\"body\":18,\"name\":{\"str\":[null,\"root\"]},\"type\":6}},{\"forallE\":{\"bi\":\"implicit\",\"body\":19,\"name\":{\"str\":[null,\"V\"]},\"type\":1}},{\"forallE\":{\"bi\":\"implicit\",\"body\":20,\"name\":{\"str\":[null,\"N\"]},\"type\":0}}],\"root\":21,\"schema\":\"lean-expr-dag@1\"}",
+      "type_format": "lean-expr-dag@1",
+      "universe_parameters": [
+        "u"
+      ],
+      "unsafe": false
+    },
+    {
+      "package": "one-bit-ghost-y",
+      "axioms": [],
+      "kernel_equivalent": true,
+      "kind": "theorem",
+      "module": "H0mework.Foundation.Authority.ZeroLawAdmission",
+      "partial": false,
+      "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.ZeroLawRootAdmission.LawfulWorldStateAt.eq_of_registeredOccurrence_eq",
+      "type": "{\"nodes\":[{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"WorldRelationNetwork\"]},\"levels\":[{\"param\":{\"str\":[null,\"u\"]}}]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ConstructiveRoot\"]},\"Vocabulary\"]},\"levels\":[{\"param\":{\"str\":[null,\"u\"]}}]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ConstructiveRoot\"]},\"SourceNativeAuthoritativeRootClosure\"]},\"levels\":[{\"param\":{\"str\":[null,\"u\"]}}]},{\"bvar\":1},{\"app\":[2,3]},{\"bvar\":0},{\"app\":[4,5]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ConstructiveRoot\"]},\"ZeroLawRootAdmission\"]},\"LawfulWorldStateAt\"]},\"levels\":[{\"param\":{\"str\":[null,\"u\"]}}]},{\"bvar\":2},{\"app\":[7,8]},{\"app\":[9,3]},{\"app\":[10,5]},{\"bvar\":3},{\"app\":[7,12]},{\"app\":[13,8]},{\"app\":[14,3]},{\"const\":{\"str\":[null,\"Eq\"]},\"levels\":[{\"succ\":{\"succ\":{\"param\":{\"str\":[null,\"u\"]}}}}]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ConstructiveRoot\"]},\"ExactTemporalCausalRootEvent\"]},\"levels\":[{\"param\":{\"str\":[null,\"u\"]}}]},{\"bvar\":4},{\"app\":[17,18]},{\"app\":[19,12]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ConstructiveRoot\"]},\"SourceNativeAuthoritativeRootClosure\"]},\"toLedgerRoot\"]},\"levels\":[{\"param\":{\"str\":[null,\"u\"]}}]},{\"app\":[21,18]},{\"app\":[22,12]},{\"app\":[23,8]},{\"app\":[20,24]},{\"app\":[16,25]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ConstructiveRoot\"]},\"ZeroLawRootAdmission\"]},\"LawfulWorldStateAt\"]},\"registeredOccurrence\"]},\"levels\":[{\"param\":{\"str\":[null,\"u\"]}}]},{\"app\":[27,18]},{\"app\":[28,12]},{\"app\":[29,8]},{\"app\":[30,3]},{\"app\":[26,31]},{\"app\":[30,5]},{\"app\":[32,33]},{\"bvar\":5},{\"app\":[7,35]},{\"app\":[36,18]},{\"app\":[37,12]},{\"app\":[16,38]},{\"app\":[39,8]},{\"app\":[40,3]},{\"forallE\":{\"bi\":\"default\",\"body\":41,\"name\":{\"str\":[null,\"same\"]},\"type\":34}},{\"forallE\":{\"bi\":\"implicit\",\"body\":42,\"name\":{\"str\":[null,\"right\"]},\"type\":15}},{\"forallE\":{\"bi\":\"implicit\",\"body\":43,\"name\":{\"str\":[null,\"left\"]},\"type\":11}},{\"forallE\":{\"bi\":\"implicit\",\"body\":44,\"name\":{\"str\":[null,\"root\"]},\"type\":6}},{\"forallE\":{\"bi\":\"implicit\",\"body\":45,\"name\":{\"str\":[null,\"V\"]},\"type\":1}},{\"forallE\":{\"bi\":\"implicit\",\"body\":46,\"name\":{\"str\":[null,\"N\"]},\"type\":0}}],\"root\":47,\"schema\":\"lean-expr-dag@1\"}",
+      "type_format": "lean-expr-dag@1",
+      "universe_parameters": [
+        "u"
+      ],
+      "unsafe": false
+    },
+    {
+      "package": "one-bit-ghost-y",
+      "axioms": [],
+      "kernel_equivalent": true,
+      "kind": "definition",
+      "module": "H0mework.Foundation.Authority.ZeroLawAdmission",
+      "partial": false,
+      "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.ZeroLawRootAdmission.LawfulWorldStateAt.positiveDisposition",
+      "type": "{\"nodes\":[{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"WorldRelationNetwork\"]},\"levels\":[{\"param\":{\"str\":[null,\"u\"]}}]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ConstructiveRoot\"]},\"Vocabulary\"]},\"levels\":[{\"param\":{\"str\":[null,\"u\"]}}]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ConstructiveRoot\"]},\"SourceNativeAuthoritativeRootClosure\"]},\"levels\":[{\"param\":{\"str\":[null,\"u\"]}}]},{\"bvar\":1},{\"app\":[2,3]},{\"bvar\":0},{\"app\":[4,5]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ConstructiveRoot\"]},\"ZeroLawRootAdmission\"]},\"LawfulWorldStateAt\"]},\"levels\":[{\"param\":{\"str\":[null,\"u\"]}}]},{\"bvar\":2},{\"app\":[7,8]},{\"app\":[9,3]},{\"app\":[10,5]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ConstructiveRoot\"]},\"SourceNativeLedgerEvolutionAt\"]},\"levels\":[{\"param\":{\"str\":[null,\"u\"]}}]},{\"bvar\":3},{\"app\":[12,13]},{\"app\":[14,8]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ConstructiveRoot\"]},\"SourceNativeRestructuringLedgerSource\"]},\"source\"]},\"levels\":[{\"param\":{\"str\":[null,\"u\"]}}]},{\"app\":[16,13]},{\"app\":[17,8]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ConstructiveRoot\"]},\"SourceNativeAuthoritySource\"]},\"restructuringSource\"]},\"levels\":[{\"param\":{\"str\":[null,\"u\"]}}]},{\"app\":[19,13]},{\"app\":[20,8]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ConstructiveRoot\"]},\"SourceNativeAuthoritativeRootClosure\"]},\"source\"]},\"levels\":[{\"param\":{\"str\":[null,\"u\"]}}]},{\"app\":[22,13]},{\"app\":[23,8]},{\"app\":[24,3]},{\"app\":[21,25]},{\"app\":[18,26]},{\"app\":[15,27]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ConstructiveRoot\"]},\"SourceNativeTemporalVisitAt\"]},\"current\"]},\"levels\":[{\"param\":{\"str\":[null,\"u\"]}}]},{\"app\":[29,13]},{\"app\":[30,8]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ConstructiveRoot\"]},\"SourceNativeAuthoritativeRootClosure\"]},\"toLedgerRoot\"]},\"levels\":[{\"param\":{\"str\":[null,\"u\"]}}]},{\"app\":[32,13]},{\"app\":[33,8]},{\"app\":[34,3]},{\"app\":[31,35]},{\"app\":[36,5]},{\"app\":[28,37]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ConstructiveRoot\"]},\"SourceNativeAuthoritativeRootClosure\"]},\"emitted\"]},\"levels\":[{\"param\":{\"str\":[null,\"u\"]}}]},{\"app\":[39,13]},{\"app\":[40,8]},{\"app\":[41,3]},{\"app\":[42,37]},{\"app\":[38,43]},{\"forallE\":{\"bi\":\"default\",\"body\":44,\"name\":{\"str\":[null,\"state\"]},\"type\":11}},{\"forallE\":{\"bi\":\"implicit\",\"body\":45,\"name\":{\"str\":[null,\"root\"]},\"type\":6}},{\"forallE\":{\"bi\":\"implicit\",\"body\":46,\"name\":{\"str\":[null,\"V\"]},\"type\":1}},{\"forallE\":{\"bi\":\"implicit\",\"body\":47,\"name\":{\"str\":[null,\"N\"]},\"type\":0}}],\"root\":48,\"schema\":\"lean-expr-dag@1\"}",
+      "type_format": "lean-expr-dag@1",
+      "universe_parameters": [
+        "u"
+      ],
+      "unsafe": false
+    },
+    {
+      "package": "one-bit-ghost-y",
+      "axioms": [],
+      "kernel_equivalent": true,
+      "kind": "definition",
+      "module": "H0mework.Foundation.Authority.ZeroLawAdmission",
+      "partial": false,
+      "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.ZeroLawRootAdmission.LawfulWorldStateAt.registeredOccurrence",
+      "type": "{\"nodes\":[{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"WorldRelationNetwork\"]},\"levels\":[{\"param\":{\"str\":[null,\"u\"]}}]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ConstructiveRoot\"]},\"Vocabulary\"]},\"levels\":[{\"param\":{\"str\":[null,\"u\"]}}]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ConstructiveRoot\"]},\"SourceNativeAuthoritativeRootClosure\"]},\"levels\":[{\"param\":{\"str\":[null,\"u\"]}}]},{\"bvar\":1},{\"app\":[2,3]},{\"bvar\":0},{\"app\":[4,5]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ConstructiveRoot\"]},\"ZeroLawRootAdmission\"]},\"LawfulWorldStateAt\"]},\"levels\":[{\"param\":{\"str\":[null,\"u\"]}}]},{\"bvar\":2},{\"app\":[7,8]},{\"app\":[9,3]},{\"app\":[10,5]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ConstructiveRoot\"]},\"ExactTemporalCausalRootEvent\"]},\"levels\":[{\"param\":{\"str\":[null,\"u\"]}}]},{\"bvar\":3},{\"app\":[12,13]},{\"app\":[14,8]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ConstructiveRoot\"]},\"SourceNativeAuthoritativeRootClosure\"]},\"toLedgerRoot\"]},\"levels\":[{\"param\":{\"str\":[null,\"u\"]}}]},{\"app\":[16,13]},{\"app\":[17,8]},{\"app\":[18,3]},{\"app\":[15,19]},{\"forallE\":{\"bi\":\"default\",\"body\":20,\"name\":{\"str\":[null,\"state\"]},\"type\":11}},{\"forallE\":{\"bi\":\"implicit\",\"body\":21,\"name\":{\"str\":[null,\"root\"]},\"type\":6}},{\"forallE\":{\"bi\":\"implicit\",\"body\":22,\"name\":{\"str\":[null,\"V\"]},\"type\":1}},{\"forallE\":{\"bi\":\"implicit\",\"body\":23,\"name\":{\"str\":[null,\"N\"]},\"type\":0}}],\"root\":24,\"schema\":\"lean-expr-dag@1\"}",
+      "type_format": "lean-expr-dag@1",
+      "universe_parameters": [
+        "u"
+      ],
+      "unsafe": false
+    },
+    {
+      "package": "one-bit-ghost-y",
+      "axioms": [],
+      "kernel_equivalent": true,
+      "kind": "theorem",
+      "module": "H0mework.Foundation.Authority.ZeroLawAdmission",
+      "partial": false,
+      "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.ZeroLawRootAdmission.LawfulWorldStateAt.registeredOccurrence_ne_of_ne",
+      "type": "{\"nodes\":[{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"WorldRelationNetwork\"]},\"levels\":[{\"param\":{\"str\":[null,\"u\"]}}]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ConstructiveRoot\"]},\"Vocabulary\"]},\"levels\":[{\"param\":{\"str\":[null,\"u\"]}}]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ConstructiveRoot\"]},\"SourceNativeAuthoritativeRootClosure\"]},\"levels\":[{\"param\":{\"str\":[null,\"u\"]}}]},{\"bvar\":1},{\"app\":[2,3]},{\"bvar\":0},{\"app\":[4,5]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ConstructiveRoot\"]},\"ZeroLawRootAdmission\"]},\"LawfulWorldStateAt\"]},\"levels\":[{\"param\":{\"str\":[null,\"u\"]}}]},{\"bvar\":2},{\"app\":[7,8]},{\"app\":[9,3]},{\"app\":[10,5]},{\"bvar\":3},{\"app\":[7,12]},{\"app\":[13,8]},{\"app\":[14,3]},{\"const\":{\"str\":[null,\"Ne\"]},\"levels\":[{\"succ\":{\"succ\":{\"param\":{\"str\":[null,\"u\"]}}}}]},{\"bvar\":4},{\"app\":[7,17]},{\"app\":[18,12]},{\"app\":[19,8]},{\"app\":[16,20]},{\"app\":[21,3]},{\"app\":[22,5]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ConstructiveRoot\"]},\"ExactTemporalCausalRootEvent\"]},\"levels\":[{\"param\":{\"str\":[null,\"u\"]}}]},{\"bvar\":5},{\"app\":[24,25]},{\"app\":[26,17]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ConstructiveRoot\"]},\"SourceNativeAuthoritativeRootClosure\"]},\"toLedgerRoot\"]},\"levels\":[{\"param\":{\"str\":[null,\"u\"]}}]},{\"app\":[28,25]},{\"app\":[29,17]},{\"app\":[30,12]},{\"app\":[27,31]},{\"app\":[16,32]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ConstructiveRoot\"]},\"ZeroLawRootAdmission\"]},\"LawfulWorldStateAt\"]},\"registeredOccurrence\"]},\"levels\":[{\"param\":{\"str\":[null,\"u\"]}}]},{\"app\":[34,25]},{\"app\":[35,17]},{\"app\":[36,12]},{\"app\":[37,8]},{\"app\":[33,38]},{\"app\":[37,3]},{\"app\":[39,40]},{\"forallE\":{\"bi\":\"default\",\"body\":41,\"name\":{\"str\":[null,\"different\"]},\"type\":23}},{\"forallE\":{\"bi\":\"implicit\",\"body\":42,\"name\":{\"str\":[null,\"right\"]},\"type\":15}},{\"forallE\":{\"bi\":\"implicit\",\"body\":43,\"name\":{\"str\":[null,\"left\"]},\"type\":11}},{\"forallE\":{\"bi\":\"implicit\",\"body\":44,\"name\":{\"str\":[null,\"root\"]},\"type\":6}},{\"forallE\":{\"bi\":\"implicit\",\"body\":45,\"name\":{\"str\":[null,\"V\"]},\"type\":1}},{\"forallE\":{\"bi\":\"implicit\",\"body\":46,\"name\":{\"str\":[null,\"N\"]},\"type\":0}}],\"root\":47,\"schema\":\"lean-expr-dag@1\"}",
+      "type_format": "lean-expr-dag@1",
+      "universe_parameters": [
+        "u"
+      ],
+      "unsafe": false
+    },
+    {
+      "package": "one-bit-ghost-y",
+      "axioms": [],
+      "kernel_equivalent": true,
+      "kind": "definition",
+      "module": "H0mework.Checks.OneBit.ZeroLawRootAdmissionRegression",
+      "partial": false,
+      "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ZeroLawRootAdmissionRegression.GhostWrappedState",
+      "type": "{\"nodes\":[{\"sort\":{\"succ\":{\"succ\":{\"zero\":null}}}}],\"root\":0,\"schema\":\"lean-expr-dag@1\"}",
+      "type_format": "lean-expr-dag@1",
+      "universe_parameters": [],
+      "unsafe": false
+    },
+    {
+      "package": "one-bit-ghost-y",
+      "axioms": [],
+      "kernel_equivalent": true,
+      "kind": "definition",
+      "module": "H0mework.Checks.OneBit.ZeroLawRootAdmissionRegression",
+      "partial": false,
+      "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ZeroLawRootAdmissionRegression.admittedRoot",
+      "type": "{\"nodes\":[{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ConstructiveRoot\"]},\"SourceNativeAuthoritativeRootClosure\"]},\"levels\":[{\"zero\":null}]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"SourceNativeLedgerCompilerRegression\"]},\"N\"]},\"levels\":[]},{\"app\":[0,1]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"SourceNativeLedgerCompilerRegression\"]},\"V\"]},\"levels\":[]},{\"app\":[2,3]}],\"root\":4,\"schema\":\"lean-expr-dag@1\"}",
+      "type_format": "lean-expr-dag@1",
+      "universe_parameters": [],
+      "unsafe": false
+    },
+    {
+      "package": "one-bit-ghost-y",
+      "axioms": [],
+      "kernel_equivalent": true,
+      "kind": "definition",
+      "module": "H0mework.Checks.OneBit.ZeroLawRootAdmissionRegression",
+      "partial": false,
+      "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ZeroLawRootAdmissionRegression.first",
+      "type": "{\"nodes\":[{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ConstructiveRoot\"]},\"ZeroLawRootAdmission\"]},\"LawfulWorldStateAt\"]},\"levels\":[{\"zero\":null}]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"SourceNativeLedgerCompilerRegression\"]},\"N\"]},\"levels\":[]},{\"app\":[0,1]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"SourceNativeLedgerCompilerRegression\"]},\"V\"]},\"levels\":[]},{\"app\":[2,3]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ZeroLawRootAdmissionRegression\"]},\"admittedRoot\"]},\"levels\":[]},{\"app\":[4,5]}],\"root\":6,\"schema\":\"lean-expr-dag@1\"}",
+      "type_format": "lean-expr-dag@1",
+      "universe_parameters": [],
+      "unsafe": false
+    },
+    {
+      "package": "one-bit-ghost-y",
+      "axioms": [],
+      "kernel_equivalent": true,
+      "kind": "definition",
+      "module": "H0mework.Checks.OneBit.ZeroLawRootAdmissionRegression",
+      "partial": false,
+      "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ZeroLawRootAdmissionRegression.firstVisit",
+      "type": "{\"nodes\":[{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ConstructiveRoot\"]},\"RootVisit\"]},\"levels\":[{\"zero\":null}]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"SourceNativeLedgerCompilerRegression\"]},\"N\"]},\"levels\":[]},{\"app\":[0,1]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"SourceNativeLedgerCompilerRegression\"]},\"V\"]},\"levels\":[]},{\"app\":[2,3]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ConstructiveRoot\"]},\"SourceNativeAuthoritativeRootClosure\"]},\"toRoot\"]},\"levels\":[{\"zero\":null}]},{\"app\":[5,1]},{\"app\":[6,3]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ZeroLawRootAdmissionRegression\"]},\"admittedRoot\"]},\"levels\":[]},{\"app\":[7,8]},{\"app\":[4,9]}],\"root\":10,\"schema\":\"lean-expr-dag@1\"}",
+      "type_format": "lean-expr-dag@1",
+      "universe_parameters": [],
+      "unsafe": false
+    },
+    {
+      "package": "one-bit-ghost-y",
+      "axioms": [],
+      "kernel_equivalent": true,
+      "kind": "definition",
+      "module": "H0mework.Checks.OneBit.ZeroLawRootAdmissionRegression",
+      "partial": false,
+      "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ZeroLawRootAdmissionRegression.ghostFalse",
+      "type": "{\"nodes\":[{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ZeroLawRootAdmissionRegression\"]},\"GhostWrappedState\"]},\"levels\":[]}],\"root\":0,\"schema\":\"lean-expr-dag@1\"}",
+      "type_format": "lean-expr-dag@1",
+      "universe_parameters": [],
+      "unsafe": false
+    },
+    {
+      "package": "one-bit-ghost-y",
+      "axioms": [],
+      "kernel_equivalent": true,
+      "kind": "definition",
+      "module": "H0mework.Checks.OneBit.ZeroLawRootAdmissionRegression",
+      "partial": false,
+      "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ZeroLawRootAdmissionRegression.ghostTrue",
+      "type": "{\"nodes\":[{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ZeroLawRootAdmissionRegression\"]},\"GhostWrappedState\"]},\"levels\":[]}],\"root\":0,\"schema\":\"lean-expr-dag@1\"}",
+      "type_format": "lean-expr-dag@1",
+      "universe_parameters": [],
+      "unsafe": false
+    },
+    {
+      "package": "one-bit-ghost-y",
+      "axioms": [],
+      "kernel_equivalent": true,
+      "kind": "theorem",
+      "module": "H0mework.Checks.OneBit.ZeroLawRootAdmissionRegression",
+      "partial": false,
+      "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ZeroLawRootAdmissionRegression.ghost_wrappers_differ_as_raw_data",
+      "type": "{\"nodes\":[{\"const\":{\"str\":[null,\"Ne\"]},\"levels\":[{\"succ\":{\"succ\":{\"zero\":null}}}]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ZeroLawRootAdmissionRegression\"]},\"GhostWrappedState\"]},\"levels\":[]},{\"app\":[0,1]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ZeroLawRootAdmissionRegression\"]},\"ghostFalse\"]},\"levels\":[]},{\"app\":[2,3]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ZeroLawRootAdmissionRegression\"]},\"ghostTrue\"]},\"levels\":[]},{\"app\":[4,5]}],\"root\":6,\"schema\":\"lean-expr-dag@1\"}",
+      "type_format": "lean-expr-dag@1",
+      "universe_parameters": [],
+      "unsafe": false
+    },
+    {
+      "package": "one-bit-ghost-y",
+      "axioms": [],
+      "kernel_equivalent": true,
+      "kind": "theorem",
+      "module": "H0mework.Checks.OneBit.ZeroLawRootAdmissionRegression",
+      "partial": false,
+      "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ZeroLawRootAdmissionRegression.ghost_wrappers_have_one_authoritative_evolution",
+      "type": "{\"nodes\":[{\"const\":{\"str\":[null,\"Eq\"]},\"levels\":[{\"succ\":{\"succ\":{\"zero\":null}}}]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ConstructiveRoot\"]},\"SourceNativeAuthoritativeTemporalEvolutionAt\"]},\"levels\":[{\"zero\":null}]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"SourceNativeLedgerCompilerRegression\"]},\"N\"]},\"levels\":[]},{\"app\":[1,2]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"SourceNativeLedgerCompilerRegression\"]},\"V\"]},\"levels\":[]},{\"app\":[3,4]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ZeroLawRootAdmissionRegression\"]},\"admittedRoot\"]},\"levels\":[]},{\"app\":[5,6]},{\"const\":{\"str\":[{\"str\":[null,\"Prod\"]},\"fst\"]},\"levels\":[{\"succ\":{\"zero\":null}},{\"zero\":null}]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ConstructiveRoot\"]},\"ZeroLawRootAdmission\"]},\"LawfulWorldStateAt\"]},\"levels\":[{\"zero\":null}]},{\"app\":[9,2]},{\"app\":[10,4]},{\"app\":[11,6]},{\"app\":[8,12]},{\"const\":{\"str\":[null,\"Bool\"]},\"levels\":[]},{\"app\":[13,14]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ZeroLawRootAdmissionRegression\"]},\"ghostFalse\"]},\"levels\":[]},{\"app\":[15,16]},{\"app\":[7,17]},{\"app\":[0,18]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ConstructiveRoot\"]},\"ZeroLawRootAdmission\"]},\"LawfulWorldStateAt\"]},\"authoritativeEvolution\"]},\"levels\":[{\"zero\":null}]},{\"app\":[20,2]},{\"app\":[21,4]},{\"app\":[22,6]},{\"app\":[23,17]},{\"app\":[19,24]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ZeroLawRootAdmissionRegression\"]},\"ghostTrue\"]},\"levels\":[]},{\"app\":[15,26]},{\"app\":[23,27]},{\"app\":[25,28]}],\"root\":29,\"schema\":\"lean-expr-dag@1\"}",
+      "type_format": "lean-expr-dag@1",
+      "universe_parameters": [],
+      "unsafe": false
+    },
+    {
+      "package": "one-bit-ghost-y",
+      "axioms": [],
+      "kernel_equivalent": true,
+      "kind": "theorem",
+      "module": "H0mework.Checks.OneBit.ZeroLawRootAdmissionRegression",
+      "partial": false,
+      "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ZeroLawRootAdmissionRegression.ghost_wrappers_have_one_lawful_state",
+      "type": "{\"nodes\":[{\"const\":{\"str\":[null,\"Eq\"]},\"levels\":[{\"succ\":{\"succ\":{\"zero\":null}}}]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ConstructiveRoot\"]},\"ZeroLawRootAdmission\"]},\"LawfulWorldStateAt\"]},\"levels\":[{\"zero\":null}]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"SourceNativeLedgerCompilerRegression\"]},\"N\"]},\"levels\":[]},{\"app\":[1,2]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"SourceNativeLedgerCompilerRegression\"]},\"V\"]},\"levels\":[]},{\"app\":[3,4]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ZeroLawRootAdmissionRegression\"]},\"admittedRoot\"]},\"levels\":[]},{\"app\":[5,6]},{\"app\":[0,7]},{\"const\":{\"str\":[{\"str\":[null,\"Prod\"]},\"fst\"]},\"levels\":[{\"succ\":{\"zero\":null}},{\"zero\":null}]},{\"app\":[9,7]},{\"const\":{\"str\":[null,\"Bool\"]},\"levels\":[]},{\"app\":[10,11]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ZeroLawRootAdmissionRegression\"]},\"ghostFalse\"]},\"levels\":[]},{\"app\":[12,13]},{\"app\":[8,14]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ZeroLawRootAdmissionRegression\"]},\"ghostTrue\"]},\"levels\":[]},{\"app\":[12,16]},{\"app\":[15,17]}],\"root\":18,\"schema\":\"lean-expr-dag@1\"}",
+      "type_format": "lean-expr-dag@1",
+      "universe_parameters": [],
+      "unsafe": false
+    },
+    {
+      "package": "one-bit-ghost-y",
+      "axioms": [],
+      "kernel_equivalent": true,
+      "kind": "theorem",
+      "module": "H0mework.Checks.OneBit.ZeroLawRootAdmissionRegression",
+      "partial": false,
+      "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ZeroLawRootAdmissionRegression.ghost_wrappers_have_one_registered_occurrence",
+      "type": "{\"nodes\":[{\"const\":{\"str\":[null,\"Eq\"]},\"levels\":[{\"succ\":{\"succ\":{\"zero\":null}}}]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ConstructiveRoot\"]},\"ExactTemporalCausalRootEvent\"]},\"levels\":[{\"zero\":null}]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"SourceNativeLedgerCompilerRegression\"]},\"N\"]},\"levels\":[]},{\"app\":[1,2]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"SourceNativeLedgerCompilerRegression\"]},\"V\"]},\"levels\":[]},{\"app\":[3,4]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ConstructiveRoot\"]},\"SourceNativeAuthoritativeRootClosure\"]},\"toLedgerRoot\"]},\"levels\":[{\"zero\":null}]},{\"app\":[6,2]},{\"app\":[7,4]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ZeroLawRootAdmissionRegression\"]},\"admittedRoot\"]},\"levels\":[]},{\"app\":[8,9]},{\"app\":[5,10]},{\"app\":[0,11]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ConstructiveRoot\"]},\"ZeroLawRootAdmission\"]},\"LawfulWorldStateAt\"]},\"registeredOccurrence\"]},\"levels\":[{\"zero\":null}]},{\"app\":[13,2]},{\"app\":[14,4]},{\"app\":[15,9]},{\"const\":{\"str\":[{\"str\":[null,\"Prod\"]},\"fst\"]},\"levels\":[{\"succ\":{\"zero\":null}},{\"zero\":null}]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ConstructiveRoot\"]},\"ZeroLawRootAdmission\"]},\"LawfulWorldStateAt\"]},\"levels\":[{\"zero\":null}]},{\"app\":[18,2]},{\"app\":[19,4]},{\"app\":[20,9]},{\"app\":[17,21]},{\"const\":{\"str\":[null,\"Bool\"]},\"levels\":[]},{\"app\":[22,23]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ZeroLawRootAdmissionRegression\"]},\"ghostFalse\"]},\"levels\":[]},{\"app\":[24,25]},{\"app\":[16,26]},{\"app\":[12,27]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ZeroLawRootAdmissionRegression\"]},\"ghostTrue\"]},\"levels\":[]},{\"app\":[24,29]},{\"app\":[16,30]},{\"app\":[28,31]}],\"root\":32,\"schema\":\"lean-expr-dag@1\"}",
+      "type_format": "lean-expr-dag@1",
+      "universe_parameters": [],
+      "unsafe": false
+    },
+    {
+      "package": "one-bit-ghost-y",
+      "axioms": [],
+      "kernel_equivalent": true,
+      "kind": "theorem",
+      "module": "H0mework.Checks.OneBit.ZeroLawRootAdmissionRegression",
+      "partial": false,
+      "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ZeroLawRootAdmissionRegression.no_ghost_argument_in_world_state_producer",
+      "type": "{\"nodes\":[{\"const\":{\"str\":[null,\"True\"]},\"levels\":[]}],\"root\":0,\"schema\":\"lean-expr-dag@1\"}",
+      "type_format": "lean-expr-dag@1",
+      "universe_parameters": [],
+      "unsafe": false
+    },
+    {
+      "package": "one-bit-ghost-y",
+      "axioms": [],
+      "kernel_equivalent": true,
+      "kind": "theorem",
+      "module": "H0mework.Checks.OneBit.ZeroLawRootAdmissionRegression",
+      "partial": false,
+      "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ZeroLawRootAdmissionRegression.raw_mixed_terminal_root_has_no_world_admission",
+      "type": "{\"nodes\":[{\"const\":{\"str\":[null,\"True\"]},\"levels\":[]}],\"root\":0,\"schema\":\"lean-expr-dag@1\"}",
+      "type_format": "lean-expr-dag@1",
+      "universe_parameters": [],
+      "unsafe": false
+    },
+    {
+      "package": "one-bit-ghost-y",
+      "axioms": [],
+      "kernel_equivalent": true,
+      "kind": "theorem",
+      "module": "H0mework.Checks.OneBit.ZeroLawRootAdmissionRegression",
+      "partial": false,
+      "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ZeroLawRootAdmissionRegression.registered_occurrences_are_distinct",
+      "type": "{\"nodes\":[{\"const\":{\"str\":[null,\"Ne\"]},\"levels\":[{\"succ\":{\"succ\":{\"zero\":null}}}]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ConstructiveRoot\"]},\"ExactTemporalCausalRootEvent\"]},\"levels\":[{\"zero\":null}]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"SourceNativeLedgerCompilerRegression\"]},\"N\"]},\"levels\":[]},{\"app\":[1,2]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"SourceNativeLedgerCompilerRegression\"]},\"V\"]},\"levels\":[]},{\"app\":[3,4]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ConstructiveRoot\"]},\"SourceNativeAuthoritativeRootClosure\"]},\"toLedgerRoot\"]},\"levels\":[{\"zero\":null}]},{\"app\":[6,2]},{\"app\":[7,4]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ZeroLawRootAdmissionRegression\"]},\"admittedRoot\"]},\"levels\":[]},{\"app\":[8,9]},{\"app\":[5,10]},{\"app\":[0,11]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ConstructiveRoot\"]},\"ZeroLawRootAdmission\"]},\"LawfulWorldStateAt\"]},\"registeredOccurrence\"]},\"levels\":[{\"zero\":null}]},{\"app\":[13,2]},{\"app\":[14,4]},{\"app\":[15,9]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ZeroLawRootAdmissionRegression\"]},\"first\"]},\"levels\":[]},{\"app\":[16,17]},{\"app\":[12,18]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ZeroLawRootAdmissionRegression\"]},\"second\"]},\"levels\":[]},{\"app\":[16,20]},{\"app\":[19,21]}],\"root\":22,\"schema\":\"lean-expr-dag@1\"}",
+      "type_format": "lean-expr-dag@1",
+      "universe_parameters": [],
+      "unsafe": false
+    },
+    {
+      "package": "one-bit-ghost-y",
+      "axioms": [],
+      "kernel_equivalent": true,
+      "kind": "theorem",
+      "module": "H0mework.Checks.OneBit.ZeroLawRootAdmissionRegression",
+      "partial": false,
+      "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ZeroLawRootAdmissionRegression.registered_states_are_distinct",
+      "type": "{\"nodes\":[{\"const\":{\"str\":[null,\"Ne\"]},\"levels\":[{\"succ\":{\"succ\":{\"zero\":null}}}]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ConstructiveRoot\"]},\"ZeroLawRootAdmission\"]},\"LawfulWorldStateAt\"]},\"levels\":[{\"zero\":null}]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"SourceNativeLedgerCompilerRegression\"]},\"N\"]},\"levels\":[]},{\"app\":[1,2]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"SourceNativeLedgerCompilerRegression\"]},\"V\"]},\"levels\":[]},{\"app\":[3,4]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ZeroLawRootAdmissionRegression\"]},\"admittedRoot\"]},\"levels\":[]},{\"app\":[5,6]},{\"app\":[0,7]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ZeroLawRootAdmissionRegression\"]},\"first\"]},\"levels\":[]},{\"app\":[8,9]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ZeroLawRootAdmissionRegression\"]},\"second\"]},\"levels\":[]},{\"app\":[10,11]}],\"root\":12,\"schema\":\"lean-expr-dag@1\"}",
+      "type_format": "lean-expr-dag@1",
+      "universe_parameters": [],
+      "unsafe": false
+    },
+    {
+      "package": "one-bit-ghost-y",
+      "axioms": [],
+      "kernel_equivalent": true,
+      "kind": "definition",
+      "module": "H0mework.Checks.OneBit.ZeroLawRootAdmissionRegression",
+      "partial": false,
+      "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ZeroLawRootAdmissionRegression.second",
+      "type": "{\"nodes\":[{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ConstructiveRoot\"]},\"ZeroLawRootAdmission\"]},\"LawfulWorldStateAt\"]},\"levels\":[{\"zero\":null}]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"SourceNativeLedgerCompilerRegression\"]},\"N\"]},\"levels\":[]},{\"app\":[0,1]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"SourceNativeLedgerCompilerRegression\"]},\"V\"]},\"levels\":[]},{\"app\":[2,3]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ZeroLawRootAdmissionRegression\"]},\"admittedRoot\"]},\"levels\":[]},{\"app\":[4,5]}],\"root\":6,\"schema\":\"lean-expr-dag@1\"}",
+      "type_format": "lean-expr-dag@1",
+      "universe_parameters": [],
+      "unsafe": false
+    },
+    {
+      "package": "one-bit-ghost-y",
+      "axioms": [],
+      "kernel_equivalent": true,
+      "kind": "definition",
+      "module": "H0mework.Checks.OneBit.ZeroLawRootAdmissionRegression",
+      "partial": false,
+      "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ZeroLawRootAdmissionRegression.secondVisit",
+      "type": "{\"nodes\":[{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ConstructiveRoot\"]},\"RootVisit\"]},\"levels\":[{\"zero\":null}]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"SourceNativeLedgerCompilerRegression\"]},\"N\"]},\"levels\":[]},{\"app\":[0,1]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"SourceNativeLedgerCompilerRegression\"]},\"V\"]},\"levels\":[]},{\"app\":[2,3]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ConstructiveRoot\"]},\"SourceNativeAuthoritativeRootClosure\"]},\"toRoot\"]},\"levels\":[{\"zero\":null}]},{\"app\":[5,1]},{\"app\":[6,3]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ZeroLawRootAdmissionRegression\"]},\"admittedRoot\"]},\"levels\":[]},{\"app\":[7,8]},{\"app\":[4,9]}],\"root\":10,\"schema\":\"lean-expr-dag@1\"}",
+      "type_format": "lean-expr-dag@1",
+      "universe_parameters": [],
+      "unsafe": false
+    },
+    {
+      "package": "one-bit-ghost-y",
+      "axioms": [],
+      "kernel_equivalent": true,
+      "kind": "theorem",
+      "module": "H0mework.Checks.OneBit.ZeroLawRootAdmissionRegression",
+      "partial": false,
+      "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ZeroLawRootAdmissionRegression.visits_are_distinct",
+      "type": "{\"nodes\":[{\"const\":{\"str\":[null,\"Ne\"]},\"levels\":[{\"succ\":{\"zero\":null}}]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ConstructiveRoot\"]},\"RootVisit\"]},\"levels\":[{\"zero\":null}]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"SourceNativeLedgerCompilerRegression\"]},\"N\"]},\"levels\":[]},{\"app\":[1,2]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"SourceNativeLedgerCompilerRegression\"]},\"V\"]},\"levels\":[]},{\"app\":[3,4]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ConstructiveRoot\"]},\"SourceNativeAuthoritativeRootClosure\"]},\"toRoot\"]},\"levels\":[{\"zero\":null}]},{\"app\":[6,2]},{\"app\":[7,4]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ZeroLawRootAdmissionRegression\"]},\"admittedRoot\"]},\"levels\":[]},{\"app\":[8,9]},{\"app\":[5,10]},{\"app\":[0,11]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ZeroLawRootAdmissionRegression\"]},\"firstVisit\"]},\"levels\":[]},{\"app\":[12,13]},{\"const\":{\"str\":[{\"str\":[{\"str\":[{\"str\":[{\"str\":[null,\"SaturationMonoid\"]},\"ResponsibilityLifecycle\"]},\"LivingLawEvolution\"]},\"ZeroLawRootAdmissionRegression\"]},\"secondVisit\"]},\"levels\":[]},{\"app\":[14,15]}],\"root\":16,\"schema\":\"lean-expr-dag@1\"}",
+      "type_format": "lean-expr-dag@1",
+      "universe_parameters": [],
+      "unsafe": false
+    }
+  ],
+  "source_scopes": {
+    "one-bit-ghost-y": {
+      "source_scope_sha256": "fecd42561f513305573b2316f7a937502fe9a3ffac0ad0f21f5258e41ccd5b93",
+      "modules": 32
+    }
+  },
+  "input_identity": {
+    "sha256": {
+      "claim_map": "ddca271691837dd89c5a84fab61376641dcdf7118bb1c5eccb1a8f991fd4e7cf",
+      "export_map": "22b913287e905d0f2755b1b26e6faa71eb71e9be446cc46fe10a2f9b829034bb",
+      "lakefile": "7cd4b84fd2724b46118f734f991fcebcd60f71f2effc8fd10e6548a410b0a414",
+      "toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+      "manifest": "2fe02acc26899fd57d82018e711e79c251e26d0b6d2bb370af81db0ed312fbfd"
+    },
+    "package_inputs": {
+      "one-bit-ghost-y": "fecd42561f513305573b2316f7a937502fe9a3ffac0ad0f21f5258e41ccd5b93"
+    }
+  },
+  "input_identity_after": {
+    "sha256": {
+      "claim_map": "ddca271691837dd89c5a84fab61376641dcdf7118bb1c5eccb1a8f991fd4e7cf",
+      "export_map": "22b913287e905d0f2755b1b26e6faa71eb71e9be446cc46fe10a2f9b829034bb",
+      "lakefile": "7cd4b84fd2724b46118f734f991fcebcd60f71f2effc8fd10e6548a410b0a414",
+      "toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+      "manifest": "2fe02acc26899fd57d82018e711e79c251e26d0b6d2bb370af81db0ed312fbfd"
+    },
+    "package_inputs": {
+      "one-bit-ghost-y": "fecd42561f513305573b2316f7a937502fe9a3ffac0ad0f21f5258e41ccd5b93"
+    }
+  },
+  "inputs_unchanged": true,
+  "inspection_program_sha256": "7952feb547364cfc38f7749cf162e43961aff523ac820f120d3dbaabfac62d59",
+  "type_scope": "complete shared Lean Expr DAG; exact names, universes, binders, literals, projections and proof terms; nonlogical annotations stripped; independently reconstructed and checked definitionally equal in Lean"
+}

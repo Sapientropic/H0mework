@@ -198,3 +198,25 @@ check-whole-ledger-full:
 	$(MAKE) build-whole-ledger WLA_RUN="$(WLA_RUN)"
 	$(MAKE) trust-whole-ledger WLA_RUN="$(WLA_RUN)"
 	$(MAKE) types-whole-ledger WLA_RUN="$(WLA_RUN)"
+
+# Reuse accepted One Bit dependencies; execute only the added original ghost control.
+ONE_BIT_RUN := .local/one-bit-runs/$(shell python3 -c 'import uuid; print(uuid.uuid4().hex)')
+.PHONY: check-one-bit-entry build-one-bit trust-one-bit types-one-bit check-one-bit-full
+
+check-one-bit-entry:
+	python3 tools/one_bit.py entry --output $(ONE_BIT_RUN)/entry
+
+build-one-bit:
+	python3 tools/edition_release.py --edition one-bit build --output $(ONE_BIT_RUN)/build
+
+trust-one-bit:
+	python3 tools/edition_release.py --edition one-bit trust --output $(ONE_BIT_RUN)/trust
+
+types-one-bit:
+	python3 tools/one_bit.py types --output $(ONE_BIT_RUN)/types
+
+check-one-bit-full:
+	$(MAKE) check-one-bit-entry ONE_BIT_RUN="$(ONE_BIT_RUN)"
+	$(MAKE) build-one-bit ONE_BIT_RUN="$(ONE_BIT_RUN)"
+	$(MAKE) trust-one-bit ONE_BIT_RUN="$(ONE_BIT_RUN)"
+	$(MAKE) types-one-bit ONE_BIT_RUN="$(ONE_BIT_RUN)"

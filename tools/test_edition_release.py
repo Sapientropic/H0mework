@@ -51,6 +51,18 @@ class EditionSelectionTests(unittest.TestCase):
                                           'build', '--output', '.local/new']), 0)
             self.assertEqual(run.call_args.args[0][-4:], ['--package', 'one', '--package', 'two'])
 
+    def test_one_bit_routes_only_its_control_map_and_restores_defaults(self):
+        original = edition.first_release.MAP, edition.first_release.SCHEMA
+        def inspect(arguments):
+            self.assertEqual((edition.first_release.MAP, edition.first_release.SCHEMA),
+                             ('checks/one-bit-control-map.json', 'h0mework/one-bit-control-map@1'))
+            self.assertEqual(arguments, ['build', '--output', '.local/one-bit-run'])
+            return 0
+        with patch.object(edition.first_release, 'main', side_effect=inspect):
+            self.assertEqual(edition.main(['--edition', 'one-bit', 'build',
+                                          '--output', '.local/one-bit-run']), 0)
+        self.assertEqual((edition.first_release.MAP, edition.first_release.SCHEMA), original)
+
 
 if __name__ == '__main__':
     unittest.main()
