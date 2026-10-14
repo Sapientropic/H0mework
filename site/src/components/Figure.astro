@@ -3,12 +3,13 @@
 import isoCss from "../../figures/kit/iso.css?raw";
 import type { Lang } from "../lib/papers";
 
-interface Props { name: string; lang: Lang }
-const { name, lang } = Astro.props;
+// `transition` names the drawing for a cross-page view transition from a thumbnail of it.
+interface Props { name: string; lang: Lang; transition?: string }
+const { name, lang, transition } = Astro.props;
 const fragments = import.meta.glob<{ html: Record<Lang, string>; css: string; script: string }>("../generated/*.json", { eager: true, import: "default" });
 const figure = fragments[`../generated/${name}.json`];
 if (!figure) throw new Error(`figure ${name} not built: run bun run figures`);
 ---
 <style is:global set:html={isoCss + figure.css}></style>
-<div class="iso figure-slot" data-theme="light" set:html={figure.html[lang]} />
+<div class="iso figure-slot vt-fig" data-theme="light" style={transition && `--vt:${transition}`} set:html={figure.html[lang]} />
 <script is:inline type="module" set:html={figure.script}></script>

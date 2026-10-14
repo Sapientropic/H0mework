@@ -1,6 +1,6 @@
 ---
 import Base from "../layouts/Base.astro";
-import { T } from "../lib/i18n";
+import { T, papersHref } from "../lib/i18n";
 
 // Cloudflare Pages serves this for unknown paths; without it every path returns the home page.
 ---
@@ -10,7 +10,7 @@ import { T } from "../lib/i18n";
       <p class="eyebrow">404</p>
       <h1>这一页不存在。</h1>
       <p class="lede">This page does not exist.</p>
-      <p><a href={`${T.zh.home}#papers`}>{T.zh.papers}</a> · <a href={`${T.en.home}#papers`}>{T.en.papers}</a></p>
+      <p><a href={papersHref("zh")}>{T.zh.papers}</a> · <a href={papersHref("en")}>{T.en.papers}</a></p>
     </section>
   </div>
 </Base>

@@ -1,0 +1,40 @@
+---
+import Base from "../layouts/Base.astro";
+import CheckCommands from "./CheckCommands.astro";
+import { ORDERED, paperOf, type Lang } from "../lib/papers";
+import { RELEASES, repoLink, type ReleaseId } from "../lib/registry";
+import { T, paperHref } from "../lib/i18n";
+
+// The entry checks of every release, and which papers each release carries.
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = T[lang];
+const releases = (Object.keys(RELEASES) as ReleaseId[]).map((id) => ({
+  ...RELEASES[id],
+  papers: ORDERED.filter((entry) => entry.editions.some((edition) => edition.release === id)).map((entry) => ({ href: paperHref(lang, entry.slug), title: paperOf(entry.slug, lang).main })),
+}));
+---
+<Base lang={lang} title={`${t.check} · ${t.site}`} alternate={lang === "zh" ? "/en/check/" : "/check/"}>
+  <div class="wrap">
+    <section class="hero prose">
+      <h1>{t.check}</h1>
+      <p class="lede">{t.checkNote}</p>
+    </section>
+    <div class="prose">
+      <CheckCommands lang={lang} checks={releases.map((release) => ({ label: release.label[lang], command: release.check }))} />
+      <p>{t.checkHome}</p>
+    </div>
+    <section class="section prose">
+      <h2>{t.releases}</h2>
+      <ul class="release-list">
+        {releases.map((release) => (
+          <li>
+            <span class="meta"><b>{release.label[lang]}</b>{release.date}</span>
+            <span class="papers">{release.papers.map((paper) => <a href={paper.href}>{paper.title}</a>)}</span>
+            <a class="guide" href={repoLink(release.guide)}>{t.guide}</a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  </div>
+</Base>

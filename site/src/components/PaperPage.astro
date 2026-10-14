@@ -3,9 +3,9 @@ import Base from "../layouts/Base.astro";
 import Figure from "./Figure.astro";
 import ClaimTape from "./ClaimTape.astro";
 import CheckCommands from "./CheckCommands.astro";
-import { PAPERS, chaptersOf, paperOf, renderClaim, renderClaimTitle, statsOf, type Lang } from "../lib/papers";
+import { ORDERED, chaptersOf, citedByOf, citesOf, paperOf, renderClaim, renderClaimTitle, statsOf, themeOf, vtFigure, vtTitle, type Lang } from "../lib/papers";
 import { claimsOf, labelOf, type ClaimRow } from "../lib/claims";
-import { T, fill, paperHref } from "../lib/i18n";
+import { T, fill, paperHref, papersHref } from "../lib/i18n";
 
 interface Props { lang: Lang; slug: string }
 const { lang, slug } = Astro.props;
@@ -18,8 +18,18 @@ const chapters = chaptersOf(slug, lang);
 const featured = claims.find((claim) => paper.figure && claim.ids.includes(paper.figure.claim))?.key;
 const latest = paper.current;
 const earlier = paper.editions.slice(0, -1).reverse();
-const index = PAPERS.findIndex((entry) => entry.slug === slug);
-const [prev, next] = [PAPERS[index - 1], PAPERS[index + 1]].map((entry) => entry && { href: paperHref(lang, entry.slug), title: paperOf(entry.slug, lang).main });
+const index = ORDERED.findIndex((entry) => entry.slug === slug);
+const [prev, next] = [ORDERED[index - 1], ORDERED[index + 1]].map((entry) => entry && { href: paperHref(lang, entry.slug), title: paperOf(entry.slug, lang).main });
+// The eyebrow opens with the paper's place in the index: its series if it has one, else its theme.
+const place = { href: `${papersHref(lang)}#theme-${paper.theme}`, label: paper.series?.[lang] ?? themeOf(paper.theme).label[lang] };
+const linkOf = (other: string) => {
+  const entry = paperOf(other, lang);
+  return { href: paperHref(lang, other), label: entry.series?.[lang] ?? themeOf(entry.theme).label[lang], title: entry.main };
+};
+const related = [
+  { heading: t.cites, papers: citesOf(slug).map(linkOf) },
+  { heading: t.citedBy, papers: citedByOf(slug).map(linkOf) },
+].filter((group) => group.papers.length > 0);
 const checks = paper.editions.map((edition) => ({ label: paper.editions.length > 1 ? fill(t.edition, edition.number) : "", command: edition.check, guide: edition.guide }));
 
 // In a long list a divider opens each chapter the list enters; a short list reads without them.
@@ -36,8 +46,8 @@ const chapterLabel = (key: string) => (/\d/.test(key) ? fill(t.chapter, key) : f
 <Base lang={lang} title={paper.title} alternate={paperHref(lang === "zh" ? "en" : "zh", slug)} description={paper.summary} ogImage={paper.figure ? `/og/${paper.figure.name}.png` : undefined}>
   <div class="wrap">
     <header class="hero">
-      <p class="eyebrow">{[paper.series?.[lang] ?? t.paper, paper.editions.length > 1 ? fill(t.edition, latest.number) : null, latest.date].filter(Boolean).join(" · ")}</p>
-      <h1 class="prose">{paper.main}</h1>
+      <p class="eyebrow"><a href={place.href}>{place.label}</a>{[paper.editions.length > 1 ? fill(t.edition, latest.number) : null, latest.date].filter(Boolean).map((part) => ` · ${part}`)}</p>
+      <h1 class="prose vt-title" style={`view-transition-name:${vtTitle(slug)}`}>{paper.main}</h1>
       {paper.sub && <p class="title-sub prose">{paper.sub}</p>}
       <p class="other prose">{paper.other}</p>
       <div class="actions">
@@ -61,7 +71,7 @@ const chapterLabel = (key: string) => (/\d/.test(key) ? fill(t.chapter, key) : f
         <li class="ok">✓ {t.statKernel}</li>
       </ul>
     </header>
-    {paper.figure && <Figure name={paper.figure.name} lang={lang} />}
+    {paper.figure && <Figure name={paper.figure.name} lang={lang} transition={vtFigure(slug)} />}
     <section class="section">
       <div class="prose abstract">
         <h2>{t.abstract}</h2>
@@ -144,6 +154,16 @@ const chapterLabel = (key: string) => (/\d/.test(key) ? fill(t.chapter, key) : f
         <p>{t.checkMore}{checks.map((check, i) => <>{i > 0 && (lang === "zh" ? "、" : ", ")}<a href={check.guide}>{t.guide}{check.label && (lang === "zh" ? `（${check.label}）` : ` (${check.label})`)}</a></>)}</p>
       </div>
     </section>
+    {related.length > 0 && (
+      <section class="related">
+        {related.map((group) => (
+          <div>
+            <h2>{group.heading}</h2>
+            <ul>{group.papers.map((other) => <li><a href={other.href}><span>{other.label}</span>{other.title}</a></li>)}</ul>
+          </div>
+        ))}
+      </section>
+    )}
     <nav class="pager">
       {prev ? <a class="prev" href={prev.href}><span>← {t.prev}</span>{prev.title}</a> : <span />}
       {next ? <a class="next" href={next.href}><span>{t.next} →</span>{next.title}</a> : <span />}

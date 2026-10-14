@@ -135,22 +135,83 @@ h2 .count { margin-left: 10px; font: 13px/1 var(--mono); color: var(--muted); ve
 .pager a:hover span { color: var(--cinnabar); }
 .pager .next { text-align: right; align-items: flex-end; }
 
-/* Home: an index that stays readable as papers are added. */
-.paper-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
-.paper-row { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 28px; align-items: center; padding: 22px 24px; background: var(--paper); box-shadow: 0 0 0 1px var(--rule); text-decoration: none; }
-.paper-row:hover { box-shadow: 0 0 0 1px var(--muted); }
-.paper-row .row-meta { margin: 0 0 8px; font: 12.5px/1.4 var(--sans); color: var(--muted); }
-.paper-row h3 { margin: 0 0 4px; font-size: 22px; }
-.paper-row .card-sub { margin: 0 0 8px; font-family: var(--serif); color: var(--text); font-size: 15.5px; line-height: 1.5; text-wrap: balance; }
-.paper-row .other { margin: 0; font-size: 13px; }
-.paper-row .stats { margin-top: 12px; }
-.paper-row .thumb { height: 170px; display: flex; align-items: center; justify-content: center; }
-.paper-row .thumb .iso-svg { width: auto; max-width: 100%; height: 100%; }
+/* Home: the opening frame (empty for now), then the latest papers as cards. */
+.creation-frame { display: flex; align-items: center; justify-content: center; min-height: clamp(180px, 30vw, 320px); margin-top: 40px; padding: 24px; border: 2.5px solid var(--ink); border-radius: 14px; box-shadow: inset 0 0 0 10px var(--paper), inset 0 0 0 11.5px var(--rule); background: var(--paper); }
+.creation-frame p { margin: 0; font-family: var(--serif); font-size: clamp(17px, 2.4vw, 24px); color: var(--ink); text-align: center; text-wrap: balance; }
+.tally { margin: 18px 0 0; font: 13.5px/1.6 var(--sans); color: var(--muted); }
+.tally b { font: 600 13.5px/1.6 var(--mono); color: var(--ink); margin-right: 5px; }
+.tally .ok { color: #2f7d4f; white-space: nowrap; }
+.cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.card { display: flex; flex-direction: column; gap: 3px; padding: 0 20px 20px; background: var(--paper); box-shadow: 0 0 0 1px var(--rule); text-decoration: none; }
+.card:hover { box-shadow: 0 0 0 1px var(--muted); }
+.card-art { display: flex; align-items: center; justify-content: center; height: 184px; margin: 0 -8px 12px; padding-top: 16px; }
+.card-art .iso-svg { width: auto; max-width: 100%; height: 100%; }
+.card .meta, .idx-row .meta { font: 11.5px/1.5 var(--mono); color: var(--muted); }
+.card .t, .idx-row .t { font-family: var(--serif); font-size: 17px; font-weight: 600; color: var(--ink); line-height: 1.4; }
+.card .sub { font-size: 13px; line-height: 1.5; color: var(--muted); }
+.card .st, .idx-row .st { margin-top: 3px; font: 11.5px/1.5 var(--mono); color: var(--muted); }
+.card .st b, .idx-row .st b { margin-right: 4px; font-weight: 600; color: var(--text); }
 .punch-card { position: relative; width: 240px; height: 150px; padding: 34px 20px 18px; background: #fffef9 repeating-linear-gradient(transparent 0 5.5px, var(--soft) 5.5px 6.5px, transparent 6.5px 20px) 0 34px / 100% calc(100% - 46px) no-repeat; box-shadow: inset 0 0 0 1px var(--rule); clip-path: polygon(16px 0, 100% 0, 100% 100%, 0 100%, 0 16px); }
 .punch-card::before { content: ""; position: absolute; left: 0; top: 0; width: 23px; height: 1px; background: var(--rule); transform-origin: 0 0; transform: translate(0, 16px) rotate(-45deg); }
-.punch-card .range { position: absolute; top: 10px; right: 14px; font: 10.5px/1 var(--mono); letter-spacing: .08em; color: var(--muted); }
 .punch-card .holes { gap: 8px; }
 .punch-card .hole { width: 12px; height: 12px; }
+.all { margin: 22px 0 0; font-size: 14.5px; }
+.all a { text-decoration: none; }
+.all a:hover { color: var(--cinnabar); }
+
+/* Paper index: themes beside the rows; the theme list follows the reader. */
+.idx { display: grid; grid-template-columns: 184px minmax(0, 1fr); gap: 40px; margin-top: 36px; }
+.idx-nav { position: sticky; top: 24px; align-self: start; display: flex; flex-direction: column; gap: 2px; }
+.idx-nav a { position: relative; display: flex; justify-content: space-between; align-items: baseline; padding: 7px 0 7px 18px; text-decoration: none; color: var(--muted); font-size: 13.5px; }
+.idx-nav a b { margin-left: 6px; font: 11px/1 var(--mono); color: var(--muted); }
+.idx-nav a::before { content: ""; position: absolute; left: 0; top: 50%; width: 8px; height: 8px; border-radius: 50%; background: var(--rule); transform: translateY(-50%); transition: background .18s, transform .18s; }
+.idx-nav a:hover, .idx-nav a.on { color: var(--ink); }
+.idx-nav a.on::before { background: var(--cinnabar); transform: translateY(-50%) scale(1.25); }
+.theme { scroll-margin-top: 16px; }
+.theme + .theme { margin-top: 30px; padding-top: 30px; border-top: 1px solid var(--rule); }
+.theme h2 { margin: 0 0 6px; font-size: 18px; }
+.rows { display: flex; flex-direction: column; }
+.idx-row { display: grid; grid-template-columns: minmax(0, 1fr) 132px; gap: 20px; align-items: center; padding: 15px 12px; text-decoration: none; border-bottom: 1px solid var(--soft); transition: background .12s; }
+.idx-row:last-child { border-bottom: none; }
+.idx-row:hover { background: var(--paper); }
+.idx-row .info { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.idx-row .sub { font-size: 13px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.slot { display: flex; justify-content: flex-end; align-items: center; min-height: 40px; }
+.idx-tape .holes { display: flex; flex-wrap: wrap; gap: 3px; justify-content: flex-end; }
+.idx-tape .hole { width: 7px; height: 7px; }
+
+/* Check page: one row per release, with the papers it carries. */
+.release-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); }
+.release-list li { display: grid; grid-template-columns: 170px minmax(0, 1fr) auto; gap: 14px; align-items: baseline; padding: 14px 4px; border-bottom: 1px solid var(--rule); }
+.release-list .meta { display: flex; flex-direction: column; font: 12px/1.6 var(--mono); color: var(--muted); }
+.release-list .meta b { font: 13.5px/1.5 var(--sans); color: var(--ink); }
+.release-list .papers { display: flex; flex-direction: column; gap: 2px; font-family: var(--serif); line-height: 1.5; }
+.release-list .papers a { text-decoration: none; }
+.release-list .papers a:hover { text-decoration: underline; text-decoration-color: var(--cinnabar); }
+.release-list .guide { font-size: 13px; color: var(--muted); }
+
+/* Paper page: the papers it cites and those citing it, read from the reference lists. */
+.eyebrow a { color: inherit; text-decoration: none; }
+.eyebrow a:hover { text-decoration: underline; text-decoration-color: currentColor; }
+.related { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px 40px; margin: 72px 0 0; padding-top: 22px; border-top: 1px solid var(--rule); }
+.related h2 { margin: 0 0 12px; font: 12px/1 var(--mono); color: var(--muted); }
+.related ul { display: grid; gap: 18px; margin: 0; padding: 0; list-style: none; }
+.related a { display: flex; flex-direction: column; gap: 4px; text-decoration: none; font-family: var(--serif); color: var(--ink); font-size: 16px; line-height: 1.4; }
+.related a span { font: 12px/1 var(--mono); color: var(--muted); }
+.related a:hover span { color: var(--cinnabar); }
+.related + .pager { margin-top: 28px; }
+
+/* Cross-page view transitions: a paper's title and figure carry over from a list into its page.
+   Browsers without them navigate as before; reduced motion turns them off. */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition { navigation: auto; }
+  html { scroll-behavior: smooth; }
+}
+header.site { view-transition-name: site-header; }
+.vt-fig .iso-svg { view-transition-name: var(--vt, none); }
+/* A title box hugs its text, so the move scales the words rather than stretching a column. */
+.vt-title { width: fit-content; }
+::view-transition-group(*) { animation-duration: .34s; animation-timing-function: cubic-bezier(.2, .7, .2, 1); }
 pre.command { margin: 14px 0; padding: 14px 16px; background: var(--paper); box-shadow: 0 0 0 1px var(--rule); font: 13.5px/1.6 var(--mono); color: var(--ink); overflow-x: auto; }
 pre.command .comment { color: var(--muted); }
 .cmdblock { position: relative; }
@@ -166,8 +227,20 @@ footer.site { margin: 96px 0 0; padding: 32px 0 56px; border-top: 1px solid var(
 .footer-grid p { margin: 0 0 0 auto; }
 
 @media (max-width: 720px) {
-  .paper-row { grid-template-columns: 1fr; padding: 18px; gap: 16px; }
-  .paper-row .thumb { order: -1; height: 160px; }
+  nav.site { gap: 16px; }
+  .cards { grid-template-columns: 1fr; gap: 12px; }
+  .card { display: grid; grid-template-columns: 112px minmax(0, 1fr); grid-template-rows: repeat(4, auto); column-gap: 14px; row-gap: 2px; align-content: center; padding: 14px 16px 14px 8px; }
+  .card-art { grid-row: 1 / span 4; height: 92px; margin: 0; padding: 0; }
+  .card-art .punch-card { transform: scale(.42); transform-origin: center; flex: none; }
+  .idx { grid-template-columns: 1fr; gap: 0; margin-top: 20px; }
+  .idx-nav { position: sticky; top: 0; z-index: 5; flex-direction: row; overflow-x: auto; gap: 14px; padding: 10px 20px; margin: 0 -20px 18px; background: var(--page); border-bottom: 1px solid var(--rule); }
+  .idx-nav a { white-space: nowrap; padding: 4px 0 4px 14px; }
+  .theme { scroll-margin-top: 56px; }
+  .idx-row { grid-template-columns: 1fr; gap: 10px; padding: 14px 6px; }
+  .slot { justify-content: flex-start; }
+  .idx-tape .holes { justify-content: flex-start; }
+  .idx-row .sub { white-space: normal; }
+  .release-list li { grid-template-columns: 1fr; gap: 4px; }
   .doi { margin-left: 0; flex-basis: 100%; padding-top: 6px; }
   .footer-grid p { margin-left: 0; }
   .claim > details > summary { grid-template-columns: 1fr; gap: 2px; }

@@ -9,10 +9,17 @@ import remarkRehype from "remark-rehype";
 import rehypeKatex from "rehype-katex";
 import rehypeStringify from "rehype-stringify";
 import katex from "katex";
-import { PAPERS, RELEASES, entryOf, manuscriptOf, once, repoLink, type Lang } from "./registry";
+import { PAPERS, RELEASES, THEMES, entryOf, manuscriptOf, once, repoLink, type Lang, type ThemeId } from "./registry";
 import { claimsOf } from "./claims";
 
-export { PAPERS, type Lang };
+export { PAPERS, THEMES, type Lang };
+
+// Index order: by theme, then as registered. The paper index and the pager both follow it.
+export const ORDERED = THEMES.flatMap((theme) => PAPERS.filter((paper) => paper.theme === theme.id));
+export const themeOf = (id: ThemeId) => THEMES.find((theme) => theme.id === id)!;
+// View-transition names: a paper's title and figure keep their place across pages.
+export const vtTitle = (slug: string) => `vt-t-${slug}`;
+export const vtFigure = (slug: string) => `vt-f-${slug}`;
 
 const markdown = unified().use(remarkParse).use(remarkMath).use(remarkRehype).use(rehypeKatex, { throwOnError: false }).use(rehypeStringify);
 // Some manuscripts write math as \( \) and \[ \]; remark-math reads only dollars.
@@ -112,6 +119,26 @@ export function statsOf(slug: string) {
     declarations: new Set(leans.flatMap((lean) => lean.declarations.map((decl) => decl.qualified))).size,
   };
 }
+
+const latestOf = (slug: string, lang: Lang) => manuscriptOf(entryOf(slug).editions.at(-1)!.release, slug, lang);
+const mainOf = (slug: string, lang: Lang) => splitTitle(titleOf(latestOf(slug, lang))).main;
+
+// The sibling papers a paper's reference list cites, matched by any edition's DOI or by main title:
+// a same-series manuscript is cited by title before it has a DOI. Both languages are read.
+export function citesOf(slug: string) {
+  return once(`cites:${slug}`, () => {
+    const refs = (["zh", "en"] as const)
+      .map((lang) => {
+        const text = latestOf(slug, lang);
+        const at = text.search(/^##\s+(References|参考文献)\s*$/m);
+        return at < 0 ? "" : text.slice(at);
+      })
+      .join("\n");
+    const doiIn = (doi: string) => new RegExp(`${doi.replace(/\./g, "\\.")}(?!\\d)`).test(refs);
+    return PAPERS.filter((other) => other.slug !== slug && (other.editions.some((edition) => doiIn(edition.doi)) || (["zh", "en"] as const).some((lang) => refs.includes(mainOf(other.slug, lang))))).map((other) => other.slug);
+  });
+}
+export const citedByOf = (slug: string) => PAPERS.filter((other) => citesOf(other.slug).includes(slug)).map((other) => other.slug);
 
 // The static first frame of a figure, for thumbnails.
 export function figureSvgOf(name: string) {

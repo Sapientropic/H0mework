@@ -6,7 +6,11 @@ export const T = {
     tagline: "一组论文背后的|证明与证据。",
     lede: "论文用文字讲故事，这里把每一句写成定理的话交给机器，从头再核一遍。读者不必相信作者，你可以亲手检验。",
     papers: "论文",
-    paper: "论文",
+    latest: "最近发布",
+    allPapers: "全部 {n} 篇论文",
+    cites: "它引用",
+    citedBy: "引用它的",
+    releases: "各次发布",
     edition: "第 {n} 版",
     earlier: "早先版本",
     read: "阅读论文",
@@ -30,7 +34,9 @@ export const T = {
     statVerified: "已验证",
     statModules: "个 Lean 模块",
     statDeclarations: "个声明",
+    statPapers: "篇论文",
     statKernel: "内核检查全部通过",
+    creationCaption: "没有谁把生命递给谁。我们只是相遇了。",
     kernelPassed: "内核检查已通过",
     chapter: "§{n}",
     appendix: "附录 {n}",
@@ -38,6 +44,7 @@ export const T = {
     next: "下一篇",
     checkPaper: "在仓库根目录运行入口检查：",
     check: "亲手检验",
+    checkNav: "检验",
     checkNote: "入口检查只需要 Git、make 和 Python 3。在仓库根目录运行：",
     checkMore: "构建 Lean 证明与完整验收的步骤见",
     checkHome: "每篇论文页列出它自己的检查与复现指南。",
@@ -56,7 +63,11 @@ export const T = {
     tagline: "The proofs and evidence|behind a set of papers.",
     lede: "The papers tell the story in words; here every sentence written as a theorem goes to a machine and is checked from scratch. You don't have to trust the author: you can check it yourself.",
     papers: "Papers",
-    paper: "Paper",
+    latest: "Latest",
+    allPapers: "All {n} papers",
+    cites: "Builds on",
+    citedBy: "Cited by",
+    releases: "Releases",
     edition: "Edition {n}",
     earlier: "Earlier editions",
     read: "Read the paper",
@@ -80,7 +91,9 @@ export const T = {
     statVerified: "verified",
     statModules: "Lean modules",
     statDeclarations: "declarations",
+    statPapers: "papers",
     statKernel: "all kernel checks passed",
+    creationCaption: "No one hands life to anyone. We simply met.",
     kernelPassed: "Kernel check passed",
     chapter: "§{n}",
     appendix: "Appendix {n}",
@@ -88,6 +101,7 @@ export const T = {
     next: "Next",
     checkPaper: "Run the entry check from the repository root:",
     check: "Check it yourself",
+    checkNav: "Check",
     checkNote: "The entry check needs only Git, make and Python 3. From the repository root:",
     checkMore: "Building the Lean proofs and the full acceptance run: ",
     checkHome: "Each paper page lists its own check and reproduction guide.",
@@ -104,4 +118,7 @@ export const T = {
 } satisfies Record<Lang, Record<string, string>>;
 
 export const fill = (template: string, n: string | number) => template.replace("{n}", String(n));
-export const paperHref = (lang: Lang, slug: string) => `${lang === "en" ? "/en" : ""}/papers/${slug}/`;
+const base = (lang: Lang) => (lang === "en" ? "/en" : "");
+export const paperHref = (lang: Lang, slug: string) => `${base(lang)}/papers/${slug}/`;
+export const papersHref = (lang: Lang) => `${base(lang)}/papers/`;
+export const checkHref = (lang: Lang) => `${base(lang)}/check/`;

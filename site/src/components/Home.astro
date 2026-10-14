@@ -1,70 +1,50 @@
 ---
 import Base from "../layouts/Base.astro";
 import ClaimTape from "./ClaimTape.astro";
-import CheckCommands from "./CheckCommands.astro";
 import isoCss from "../../figures/kit/iso.css?raw";
-import { PAPERS, figureSvgOf, paperOf, statsOf, type Lang } from "../lib/papers";
+import { PAPERS, figureSvgOf, paperOf, statsOf, vtFigure, vtTitle, type Lang } from "../lib/papers";
 import { claimsOf } from "../lib/claims";
-import { RELEASES } from "../lib/registry";
-import { T, fill, paperHref } from "../lib/i18n";
+import { T, fill, paperHref, papersHref } from "../lib/i18n";
 
+// The opening frame, one line of what the site is, and the latest papers; the full index is /papers/.
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const t = T[lang];
-const papers = PAPERS.map((entry) => {
-  const paper = paperOf(entry.slug, lang);
-  const claims = claimsOf(entry.slug, lang);
-  const ids = claims.flatMap((claim) => claim.ids).map((id) => id.split(".").pop()!).sort((a, b) => Number(a.slice(1)) - Number(b.slice(1)));
-  return { ...paper, stats: statsOf(entry.slug), claims, range: ids.length > 1 ? `${ids[0]}–${ids.at(-1)}` : ids[0], thumb: entry.figure ? figureSvgOf(entry.figure.name) : "" };
-});
-const checks = Object.values(RELEASES).map((release) => ({ label: release.label[lang], command: release.check }));
+const papers = PAPERS.map((entry, order) => ({ ...paperOf(entry.slug, lang), order, stats: statsOf(entry.slug) }));
+const tally = papers.reduce((sum, paper) => ({ claims: sum.claims + paper.stats.claims, modules: sum.modules + paper.stats.modules }), { claims: 0, modules: 0 });
+// Newest first; within one date, the later registration.
+const latest = [...papers]
+  .sort((a, b) => b.current.date.localeCompare(a.current.date) || b.order - a.order)
+  .slice(0, 3)
+  .map((paper) => ({ ...paper, thumb: paper.figure ? figureSvgOf(paper.figure.name) : "", claims: claimsOf(paper.slug, lang) }));
 ---
 <Base lang={lang} title={`${t.site} · ${t.tagline.replace("|", lang === "zh" ? "" : " ")}`} alternate={t.otherHref}>
   <style is:global set:html={isoCss}></style>
   <div class="wrap">
+    <div class="creation-frame"><p>{t.creationCaption}</p></div>
     <section class="hero prose">
       <h1>{t.tagline.split("|").map((phrase) => <span class="phrase">{phrase}</span>)}</h1>
       <p class="lede">{t.lede}</p>
+      <p class="tally"><b>{papers.length}</b>{t.statPapers} · <b>{tally.claims}</b>{t.statClaims} · <b>{tally.modules}</b>{t.statModules} · <span class="ok">✓ {t.statKernel}</span></p>
     </section>
-    <section class="section" id="papers">
-      <h2>{t.papers}<span class="count">{papers.length}</span></h2>
-      <ol class="paper-list">
-        {papers.map((paper) => (
-          <li>
-            <a class="paper-row" href={paperHref(lang, paper.slug)}>
-              <div class="info">
-                <p class="row-meta">{[paper.series?.[lang], paper.editions.length > 1 ? fill(t.edition, paper.current.number) : null, paper.current.date].filter(Boolean).join(" · ")}</p>
-                <h3>{paper.main}</h3>
-                {paper.sub && <p class="card-sub">{paper.sub}</p>}
-                <p class="other">{paper.other}</p>
-                <ul class="stats">
-                  <li><b>{paper.stats.claims}</b>{t.statClaims}</li>
-                  <li><b>{paper.stats.modules}</b>{t.statModules}</li>
-                  <li class="ok">✓ {t.statKernel}</li>
-                </ul>
-              </div>
-              {paper.thumb ? (
-                <div class="thumb iso" data-theme="light" aria-hidden="true" set:html={paper.thumb} />
-              ) : (
-                <div class="thumb" aria-hidden="true">
-                  <div class="punch-card">
-                    <span class="range">{paper.range}</span>
-                    <ClaimTape rows={paper.claims} lang={lang} grouped={false} />
-                  </div>
-                </div>
-              )}
-            </a>
-          </li>
+    <section class="section" id="latest">
+      <h2>{t.latest}</h2>
+      <div class="cards">
+        {latest.map((paper) => (
+          <a class="card" href={paperHref(lang, paper.slug)}>
+            {paper.thumb ? (
+              <span class="card-art iso vt-fig" data-theme="light" aria-hidden="true" style={`--vt:${vtFigure(paper.slug)}`} set:html={paper.thumb} />
+            ) : (
+              <span class="card-art" aria-hidden="true"><span class="punch-card"><ClaimTape rows={paper.claims} lang={lang} grouped={false} /></span></span>
+            )}
+            <span class="meta">{[paper.series?.[lang], paper.editions.length > 1 ? fill(t.edition, paper.current.number) : null, paper.current.date].filter(Boolean).join(" · ")}</span>
+            <span class="t vt-title" style={`view-transition-name:${vtTitle(paper.slug)}`}>{paper.main}</span>
+            {paper.sub && <span class="sub">{paper.sub}</span>}
+            <span class="st"><b>{paper.stats.claims}</b>{t.statClaims} · <b>{paper.stats.modules}</b>{t.statModules}</span>
+          </a>
         ))}
-      </ol>
-    </section>
-    <section class="section" id="check">
-      <div class="prose">
-        <h2>{t.check}</h2>
-        <p>{t.checkNote}</p>
-        <CheckCommands lang={lang} checks={checks} />
-        <p>{t.checkHome}</p>
       </div>
+      <p class="all"><a href={papersHref(lang)}>{fill(t.allPapers, papers.length)} →</a></p>
     </section>
   </div>
 </Base>

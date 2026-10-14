@@ -1,7 +1,7 @@
 ---
 import "katex/dist/katex.min.css";
 import "../styles/site.css";
-import { T } from "../lib/i18n";
+import { T, checkHref, papersHref } from "../lib/i18n";
 import type { Lang } from "../lib/registry";
 
 interface Props { lang: Lang; title: string; alternate: string; description?: string; ogImage?: string; indexable?: boolean }
@@ -43,7 +43,8 @@ const [zhPath, enPath] = lang === "zh" ? [selfPath, alternate] : [alternate, sel
       <div class="wrap">
         <a class="brand" href={t.home}>H<b>0</b>mework</a>
         <nav class="site">
-          <a href={`${t.home}#papers`}>{t.papers}</a>
+          <a href={papersHref(lang)}>{t.papers}</a>
+          <a href={checkHref(lang)}>{t.checkNav}</a>
           <a href="https://github.com/Sapientropic/H0mework">{t.repo}</a>
           <a href={alternate} hreflang={lang === "zh" ? "en" : "zh"}>{t.other}</a>
         </nav>
@@ -55,7 +56,7 @@ const [zhPath, enPath] = lang === "zh" ? [selfPath, alternate] : [alternate, sel
         <a class="brand" href={t.home}>H<b>0</b>mework</a>
         <nav>
           <a href="https://github.com/Sapientropic/H0mework">{t.repo}</a>
-          <a href={`${t.home}#check`}>{t.check}</a>
+          <a href={checkHref(lang)}>{t.check}</a>
           <a href="https://github.com/Sapientropic/H0mework/blob/main/docs/evidence-map.md">{t.evidence}</a>
         </nav>
         <p>{t.license}</p>

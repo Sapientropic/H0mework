@@ -1,0 +1,68 @@
+---
+import Base from "../layouts/Base.astro";
+import ClaimTape from "./ClaimTape.astro";
+import { ORDERED, THEMES, paperOf, statsOf, vtTitle, type Lang } from "../lib/papers";
+import { claimsOf } from "../lib/claims";
+import { T, fill, paperHref } from "../lib/i18n";
+
+// Every paper, grouped by theme: a sticky theme list beside the rows on wide screens, chips on narrow ones.
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = T[lang];
+const papers = ORDERED.map((entry) => ({ ...paperOf(entry.slug, lang), stats: statsOf(entry.slug), claims: claimsOf(entry.slug, lang) }));
+const tally = papers.reduce((sum, paper) => ({ claims: sum.claims + paper.stats.claims, modules: sum.modules + paper.stats.modules }), { claims: 0, modules: 0 });
+const themes = THEMES.map((theme) => ({ ...theme, papers: papers.filter((paper) => paper.theme === theme.id) })).filter((theme) => theme.papers.length > 0);
+---
+<Base lang={lang} title={`${t.papers} · ${t.site}`} alternate={lang === "zh" ? "/en/papers/" : "/papers/"}>
+  <div class="wrap">
+    <section class="hero prose">
+      <h1>{t.papers}</h1>
+      <p class="tally"><b>{papers.length}</b>{t.statPapers} · <b>{tally.claims}</b>{t.statClaims} · <b>{tally.modules}</b>{t.statModules} · <span class="ok">✓ {t.statKernel}</span></p>
+    </section>
+    <div class="idx">
+      <nav class="idx-nav" aria-label={t.papers}>
+        {themes.map((theme) => <a href={`#theme-${theme.id}`} data-spy={`theme-${theme.id}`}>{theme.label[lang]}<b>{theme.papers.length}</b></a>)}
+      </nav>
+      <div>
+        {themes.map((theme) => (
+          <section class="theme" id={`theme-${theme.id}`}>
+            <h2>{theme.label[lang]}<span class="count">{theme.papers.length}</span></h2>
+            <div class="rows">
+              {theme.papers.map((paper) => (
+                <a class="idx-row" href={paperHref(lang, paper.slug)}>
+                  <span class="info">
+                    <span class="meta">{[paper.series?.[lang], paper.editions.length > 1 ? fill(t.edition, paper.current.number) : null, paper.current.date].filter(Boolean).join(" · ")}</span>
+                    <span class="t vt-title" style={`view-transition-name:${vtTitle(paper.slug)}`}>{paper.main}</span>
+                    {paper.sub && <span class="sub">{paper.sub}</span>}
+                    <span class="st"><b>{paper.stats.claims}</b>{t.statClaims} · <b>{paper.stats.modules}</b>{t.statModules}</span>
+                  </span>
+                  <span class="slot"><span class="idx-tape"><ClaimTape rows={paper.claims} lang={lang} grouped={false} /></span></span>
+                </a>
+              ))}
+            </div>
+          </section>
+        ))}
+      </div>
+    </div>
+  </div>
+  <script>
+    // The current theme is the last one whose heading has passed 30% of the viewport; at the end of
+    // a page too short to bring a theme that high, the last theme in view. A click names its theme
+    // until the scroll it starts has settled.
+    const themes = [...document.querySelectorAll(".theme")] as HTMLElement[];
+    const links = [...document.querySelectorAll("[data-spy]")] as HTMLElement[];
+    const mark = (id: string) => links.forEach((a) => a.classList.toggle("on", a.dataset.spy === id));
+    let held = 0, queued = false;
+    const update = () => {
+      queued = false;
+      if (performance.now() < held) return;
+      const tops = themes.map((theme) => theme.getBoundingClientRect().top);
+      let at = Math.max(0, tops.findLastIndex((top) => top < innerHeight * 0.3));
+      if (scrollY > 0 && innerHeight + scrollY >= document.documentElement.scrollHeight - 2) at = Math.max(at, tops.findLastIndex((top) => top < innerHeight));
+      mark(themes[at].id);
+    };
+    addEventListener("scroll", () => { if (!queued) { queued = true; requestAnimationFrame(update); } }, { passive: true });
+    links.forEach((a) => a.addEventListener("click", () => { mark(a.dataset.spy!); held = performance.now() + 900; }));
+    update();
+  </script>
+</Base>

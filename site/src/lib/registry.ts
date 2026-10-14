@@ -72,8 +72,22 @@ export const RELEASES: Record<ReleaseId, Release> = {
 };
 
 type Edition = { release: ReleaseId; doi: string };
+export type ThemeId = "core" | "computation" | "physics" | "low-energy" | "math" | "chemistry" | "metrology" | "life" | "mind";
+// Home groups the index by these themes, in this order; a paper's theme lives on its PAPERS entry.
+export const THEMES: { id: ThemeId; label: Record<Lang, string> }[] = [
+  { id: "core", label: { zh: "核心方法", en: "Core methods" } },
+  { id: "computation", label: { zh: "计算与博弈", en: "Computation & games" } },
+  { id: "physics", label: { zh: "物理", en: "Physics" } },
+  { id: "low-energy", label: { zh: "低能系列", en: "Low-energy series" } },
+  { id: "math", label: { zh: "数学", en: "Mathematics" } },
+  { id: "chemistry", label: { zh: "化学与材料", en: "Chemistry & materials" } },
+  { id: "metrology", label: { zh: "计量与仪器", en: "Metrology & instruments" } },
+  { id: "life", label: { zh: "生命与神经", en: "Life & neuroscience" } },
+  { id: "mind", label: { zh: "心智与社会", en: "Mind & society" } },
+];
 export type PaperEntry = {
   slug: string;
+  theme: ThemeId;
   editions: Edition[];
   series?: Record<Lang, string>;
   figure?: { name: string; claim: string };
@@ -83,6 +97,7 @@ export type PaperEntry = {
 export const PAPERS: PaperEntry[] = [
   {
     slug: "source-process-core",
+    theme: "core",
     editions: [
       { release: "first-release", doi: "10.5281/zenodo.23210084" },
       { release: "second-edition", doi: "10.5281/zenodo.23297175" },
@@ -91,6 +106,7 @@ export const PAPERS: PaperEntry[] = [
   },
   {
     slug: "physics-common-source",
+    theme: "physics",
     editions: [
       { release: "first-release", doi: "10.5281/zenodo.23210292" },
       { release: "second-edition", doi: "10.5281/zenodo.23297179" },
@@ -99,12 +115,14 @@ export const PAPERS: PaperEntry[] = [
   },
   {
     slug: "low-energy-phenomenology",
+    theme: "low-energy",
     editions: [{ release: "low-energy", doi: "10.5281/zenodo.23299174" }],
     series: { zh: "低能系列 1", en: "Low-energy series 1" },
     figure: { name: "current-witness", claim: "low1.L17" },
   },
   {
     slug: "low-energy-loop-response",
+    theme: "low-energy",
     editions: [{ release: "low-energy", doi: "10.5281/zenodo.23299177" }],
     series: { zh: "低能系列 2", en: "Low-energy series 2" },
     figure: { name: "curvature-dome", claim: "low2.Q4" },
