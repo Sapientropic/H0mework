@@ -101,13 +101,14 @@ jobs:
           done
           df -h /
           rm -rf .local/ci/upstream
-      - name: Add swap and use every runner thread
+      - name: Add swap and size the build to memory
         if: steps.mode.outputs.build == 'true' && inputs.part != 'complete'
         # Single generated proofs peak at up to 58 GiB, far above the runner's 16 GiB,
-        # and a hosted runner out of memory is shut down mid-step. Swap absorbs those peaks,
-        # so the build runs the four threads its plan assumes instead of one memory slot.
+        # and a hosted runner out of memory is shut down mid-step. Swap absorbs those peaks.
         # It is sized after the restore, leaving 16 GiB of the root disk to new outputs
-        # and the progress archive; the rest becomes swap, which the late heavy parts need.
+        # and the progress archive. Each concurrent module gets a 16 GiB slot of memory
+        # plus swap: modules importing the large chemistry closure hold ~11 GiB each, and
+        # four at once beside 24 GiB of swap left the s9-02 runner unresponsive.
         run: |
           free_gib=$(df --output=avail -B1G / | tail -1)
           size=$(( free_gib - 16 < 56 ? free_gib - 16 : 56 ))
@@ -117,7 +118,10 @@ jobs:
           sudo mkswap /lean.swap > /dev/null
           sudo swapon /lean.swap
           df -h /
-          echo "LEAN_NUM_THREADS=$(nproc)" >> "$GITHUB_ENV"
+          memory_gib=$(( ($(awk '/MemTotal/ {print $2}' /proc/meminfo) + 1048575) / 1048576 ))
+          threads=$(( (memory_gib + size) / 16 ))
+          threads=$(( threads < 1 ? 1 : threads > $(nproc) ? $(nproc) : threads ))
+          echo "LEAN_NUM_THREADS=$threads" >> "$GITHUB_ENV"
           free -h
       - name: Build part using Lake freshness checks
         if: steps.mode.outputs.build == 'true' && inputs.part != 'complete'
