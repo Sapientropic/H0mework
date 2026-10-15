@@ -771,6 +771,22 @@ def superseded(entries: dict[str, str], keep: set[str]) -> list[str]:
     return sorted(n for n in entries if n.startswith(ours) and n not in keep)
 
 
+class _Limited(io.RawIOBase):
+    """Reads at most `limit` bytes from a file."""
+
+    def __init__(self, source, limit: int):
+        self.source, self.left = source, limit
+
+    def readable(self):
+        return True
+
+    def readinto(self, buffer):
+        data = self.source.read(min(len(buffer), self.left))
+        self.left -= len(data)
+        buffer[:len(data)] = data
+        return len(data)
+
+
 class ReleaseStore:
     """Checked part archives kept as assets of one draft release of this repository.
 
@@ -875,8 +891,10 @@ class ReleaseStore:
         with tempfile.TemporaryDirectory() as temporary, path.open("rb") as source:
             for i in range(count):
                 piece = Path(temporary) / f"{i:03d}"
+                # Copied in blocks: one read of a whole piece would hold ~2 GiB in memory
+                # beside a build that already fills the runner's RAM and swap.
                 with piece.open("wb") as output:
-                    output.write(source.read(ASSET_LIMIT))
+                    shutil.copyfileobj(io.BufferedReader(_Limited(source, ASSET_LIMIT)), output, 2**24)
                 self.upload(f"{name}.{i:03d}", piece)
                 piece.unlink()
             record = Path(temporary) / "parts"

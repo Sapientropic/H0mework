@@ -106,10 +106,11 @@ jobs:
         # Single generated proofs peak at up to 58 GiB, far above the runner's 16 GiB,
         # and a hosted runner out of memory is shut down mid-step. Swap absorbs those peaks,
         # so the build runs the four threads its plan assumes instead of one memory slot.
-        # It is sized after the restore, leaving 24 GiB of the root disk to new outputs.
+        # It is sized after the restore, leaving 16 GiB of the root disk to new outputs
+        # and the progress archive; the rest becomes swap, which the late heavy parts need.
         run: |
           free_gib=$(df --output=avail -B1G / | tail -1)
-          size=$(( free_gib - 24 < 56 ? free_gib - 24 : 56 ))
+          size=$(( free_gib - 16 < 56 ? free_gib - 16 : 56 ))
           if [ "$size" -lt 8 ]; then size=8; fi
           sudo fallocate -l "${size}G" /lean.swap
           sudo chmod 600 /lean.swap
