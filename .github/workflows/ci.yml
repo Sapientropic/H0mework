@@ -58,6 +58,8 @@ jobs:
       s7: ${{ steps.plan.outputs.s7 }}
       s8: ${{ steps.plan.outputs.s8 }}
       s9: ${{ steps.plan.outputs.s9 }}
+      s10: ${{ steps.plan.outputs.s10 }}
+      s11: ${{ steps.plan.outputs.s11 }}
       verified: ${{ steps.seal.outputs.verified }}
     steps:
       - uses: actions/checkout@v4
@@ -214,9 +216,35 @@ jobs:
     with:
       part: ${{ matrix.part }}
 
+  lean-s10:
+    name: Lean 阶段 10
+    permissions:
+      contents: write
+    needs: [plan, lean-s9]
+    if: fromJSON(needs.plan.outputs.stages) >= 10
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJSON(needs.plan.outputs.s10) }}
+    uses: ./.github/workflows/lean-part.yml
+    with:
+      part: ${{ matrix.part }}
+
+  lean-s11:
+    name: Lean 阶段 11
+    permissions:
+      contents: write
+    needs: [plan, lean-s10]
+    if: fromJSON(needs.plan.outputs.stages) >= 11
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJSON(needs.plan.outputs.s11) }}
+    uses: ./.github/workflows/lean-part.yml
+    with:
+      part: ${{ matrix.part }}
+
   lean-complete:
     name: Lean · 完整选集
-    needs: [plan, lean-s1, lean-s2, lean-s3, lean-s4, lean-s5, lean-s6, lean-s7, lean-s8, lean-s9]
+    needs: [plan, lean-s1, lean-s2, lean-s3, lean-s4, lean-s5, lean-s6, lean-s7, lean-s8, lean-s9, lean-s10, lean-s11]
     # Stages past the plan's last one are skipped; any failed or cancelled stage stops here.
     if: >-
       always() && needs.lean-s1.result == 'success'
@@ -229,7 +257,7 @@ jobs:
 
   continue:
     name: 中断续跑
-    needs: [lean-s1, lean-s2, lean-s3, lean-s4, lean-s5, lean-s6, lean-s7, lean-s8, lean-s9, lean-complete]
+    needs: [lean-s1, lean-s2, lean-s3, lean-s4, lean-s5, lean-s6, lean-s7, lean-s8, lean-s9, lean-s10, lean-s11, lean-complete]
     if: >-
       !cancelled() && contains(needs.*.result, 'failure') && github.ref == 'refs/heads/main'
       && github.event_name != 'pull_request' && !github.event.repository.private

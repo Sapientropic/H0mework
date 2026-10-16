@@ -122,8 +122,10 @@ jobs:
           threads=$(( (memory_gib + size) / 16 ))
           threads=$(( threads < 1 ? 1 : threads > $(nproc) ? $(nproc) : threads ))
           # Parts whose modules each fill the runner's RAM compile faster one at a time.
-          cap=$(awk -F'\t' -v part="$PART" '$1 == part {print $2}' tools/ci_threads.tsv)
-          if [ -n "$cap" ] && [ "$cap" -lt "$threads" ]; then threads=$cap; fi
+          while IFS=$'\t' read -r pattern cap; do
+            # shellcheck disable=SC2053  # the first column is a shell pattern
+            if [[ $pattern != \#* && $PART == $pattern && $cap -lt $threads ]]; then threads=$cap; fi
+          done < tools/ci_threads.tsv
           echo "LEAN_NUM_THREADS=$threads" >> "$GITHUB_ENV"
           free -h
       - name: Build part using Lake freshness checks

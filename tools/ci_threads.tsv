@@ -1,4 +1,5 @@
-# part	maximum LEAN_NUM_THREADS on a 16 GiB runner
-# s9-02: the remaining LAlanine rows each hold ~14 GiB (4.6 GiB private) while compiling;
-# two at once ran 15-17x slower than alone (890 s vs 54 s locally) from swapping.
+# part (shell pattern)	maximum LEAN_NUM_THREADS on a 16 GiB runner
+# The LAlanine attraction row blocks hold 14-25 GiB each while compiling (4.6-21 GiB
+# private, measured locally); two at once on the runner mostly swapped.
 s9-02	1
+s10-*	1
