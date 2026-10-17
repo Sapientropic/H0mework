@@ -966,6 +966,13 @@ class ContinuationTests(unittest.TestCase):
         self.artifacts = [{"name": "lean-incomplete-s9-01-2", "expired": False}]
         self.assertEqual(self.resume(), ["s9-01"])
 
+    def test_two_digit_stage_deadline_stop_resumes(self):
+        self.plan["parts"]["s11-01"] = {"fingerprint": "eleven"}
+        self.job("failure", part="s11-01")
+        self.saved(part="s11-01", checkpoint=False)
+        self.artifacts = [{"name": "lean-incomplete-s11-01-2", "expired": False}]
+        self.assertEqual(self.resume(), ["s11-01"])
+
     def test_stage_like_non_part_failure_stops_continuation(self):
         self.job()
         self.saved()

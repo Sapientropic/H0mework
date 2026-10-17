@@ -963,11 +963,11 @@ def continuation_parts(store: ReleaseStore, plan: dict, run: str, attempt: str) 
     markers = {a["name"] for a in items("artifacts") if not a["expired"]}
     interrupted = set()
     for job in items("jobs"):
-        match = re.search(r"\((s[1-9]-[0-9]+)\) / build$", job["name"])
+        match = re.search(r"\((s[1-9][0-9]*-[0-9]+)\) / build$", job["name"])
         if job["conclusion"] != "failure":
             continue
         # A real compiler/setup/evidence failure must stop the whole continuation.
-        if not match:
+        if not match or match[1] not in plan["parts"]:
             return []
         name = match[1]
         if (any(s["conclusion"] == "failure" for s in job["steps"])
