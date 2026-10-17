@@ -4,18 +4,22 @@
 
 This repository contains the proofs and evidence behind a family of research papers.
 
-The papers begin with a common source: how a process retains its history, how fields and particles arise together, how classical and quantum descriptions correspond, why debt persists after settlement, and what observation pays for compression. The arguments are developed in the papers; their Lean 4 proofs, reproduction programs and frozen results are available here for independent checking.
+The papers begin with a common source: how a process retains its history, how fields and particles arise together, how classical and quantum descriptions correspond, why debt persists after the books balance, and what observation pays for compression. The arguments are developed in the papers; their Lean 4 proofs, reproduction programs and frozen results are available here for independent checking.
 
 ## Published papers
 
-| Paper | Zenodo | English editions | Proofs |
-| --- | --- | --- | --- |
-| **The State Is Not the History, the Source Is: Identity, Responsibility, and Minimal Revision in Processes** | [DOI](https://doi.org/10.5281/zenodo.23210084) | [Paper](papers/first-release/pdf/source-process-core-en.pdf) · [Supplement](papers/first-release/pdf/source-process-core-supplement-en.pdf) | [Reproduction guide](docs/first-release-reproduction.md) |
-| **We Found No Magic in This Mighty Universe: Common-Source Generation and Classical–Quantum Correspondence in a Spin×SU(7) Theory** | [DOI](https://doi.org/10.5281/zenodo.23210292) | [Paper](papers/first-release/pdf/physics-common-source-en.pdf) · [Supplement](papers/first-release/pdf/physics-common-source-supplement-en.pdf) | [Claim-to-source map](docs/first-release-map.json) |
+| Paper | Zenodo version | Lean proofs and reproduction |
+| --- | --- | --- |
+| **The State Is Not the History, the Source Is: Identity, Responsibility, and Minimal Revision in Processes** | [v2](https://doi.org/10.5281/zenodo.23297175) | [Claim map](docs/second-edition-map.json) · [Reproduction](docs/edition-reproduction.md) |
+| **We Found No Magic in This Mighty Universe: Common-Source Generation and Classical–Quantum Correspondence in a Spin×SU(7) Theory** | [v2](https://doi.org/10.5281/zenodo.23297179) | [Claim map](docs/second-edition-map.json) · [Reproduction](docs/edition-reproduction.md) |
+| **The Current Takes the Stand: From Coupled Propagation to Actual Electrons, Coulomb Response, and Born Dressing** (Low-energy 1) | [v1](https://doi.org/10.5281/zenodo.23299174) | [Claim map](docs/low-energy-release-map.json) · [Reproduction](docs/edition-reproduction.md) |
+| **Two Minuses, One Plus, and a Bare Trace Under Oath: Ordered Closed Traces and Whole-Ball Response Curvature** (Low-energy 2) | [v1](https://doi.org/10.5281/zenodo.23299177) | [Claim map](docs/low-energy-release-map.json) · [Reproduction](docs/edition-reproduction.md) |
+| **Book-Balancing Magic Has Nowhere to Hide: Source-Native Accounting and Actual Continuation** | [v1](https://doi.org/10.5281/zenodo.23437454) | [Claim map](docs/whole-ledger-map.json) · [Reproduction](docs/whole-ledger-reproduction.md) |
+| **1 Bit Is All You Need: The Weakest Superpower: No Unaccounted Differences** | [v1](https://doi.org/10.5281/zenodo.23437456) | [Claim map](docs/one-bit-map.json) · [Reproduction](docs/one-bit-reproduction.md) |
 
-Chinese editions, editable manuscripts, figure sources and English arXiv source packages are listed in the [paper package](papers/first-release/README.md).
+The main texts, necessary proof supplements and editable sources are available from each Zenodo record. The first versions of the process-core and physics papers retain their original DOIs ([process core](https://doi.org/10.5281/zenodo.23210084), [physics](https://doi.org/10.5281/zenodo.23210292)) and [first-release package](papers/first-release/README.md). The [2026-10-09 low-energy snapshot](papers/low-energy-first-release/2026-10-09/README.md) retains its original file and source identities.
 
-The second editions of the process-core and common-source physics papers, and the low-energy selections L1–L28 and Q1–Q6, have separate [claim maps](docs/second-edition-map.json), a [low-energy map](docs/low-energy-release-map.json), and [reproduction commands](docs/edition-reproduction.md). Actual material acceptance and local delivery are recorded in the [edition readiness card](docs/second-edition-readiness.md).
+The published second editions and the two low-energy papers cite source commit `b9d66048`. Subsequent public-source repairs and their `643721f1` binding are described in the [source index](docs/source-materials.md#四篇论文的源码绑定); actual material acceptance is recorded in the [edition status](docs/second-edition-readiness.md). Whole-ledger accounting and One Bit cite [`4301fa8c`](https://github.com/Sapientropic/H0mework/tree/4301fa8c5bb19bb1e8c3824d7c69be406264ed12) and [`6bff9d40`](https://github.com/Sapientropic/H0mework/tree/6bff9d4046b3f89004678244482b1c403837150c), respectively. Their accepted material scopes are recorded in the [whole-ledger](docs/whole-ledger-readiness.md) and [One Bit](docs/one-bit-readiness.md) acceptance cards.
 
 ## Other research threads
 
@@ -50,9 +54,9 @@ Run `make check-first-release-full` for the complete acceptance suite. The [repr
 - [Evidence map](docs/evidence-map.md): proof modules, reproduction programs and recorded results for the paper claims, including independent checks of Bell data.
 - [Source materials](docs/source-materials.md): mechanism descriptions, verification reports, research history and third-party sources.
 - [CI and incremental builds](docs/ci.md): job splitting, proof storage and reuse of unchanged compiled modules.
-- Earlier paper editions are bound to the [`papers-2026-09`](https://github.com/Sapientropic/H0mework/tree/papers-2026-09) tag. The current two-paper release follows the fixed versions in the [claim-to-source map](docs/first-release-map.json).
+- Earlier paper editions are bound to the [`papers-2026-09`](https://github.com/Sapientropic/H0mework/tree/papers-2026-09) tag. The first two-paper release follows the fixed versions in the [claim-to-source map](docs/first-release-map.json).
 
-`Lean/` contains proofs, `scripts/` contains reproduction programs, and `evidence/` contains frozen results. The [export map](tools/export-map.json) records file origins and hashes. `papers/first-release/` contains the two published papers, supplements, editable sources and distribution packages.
+`Lean/` contains proofs, `scripts/` contains reproduction programs, and `evidence/` contains frozen results. The [export map](tools/export-map.json) records file origins and hashes. `papers/first-release/` contains the two first-release papers, supplements, editable sources and distribution packages.
 
 ## License
 

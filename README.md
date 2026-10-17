@@ -8,22 +8,20 @@
 
 读者不必相信作者。你可以亲手检验。
 
-## 首发论文
+## 已发布论文
 
-| 论文 | Zenodo | 正文与补充 | 证明选集 |
-| --- | --- | --- | --- |
-| **状态不是历史，源才是**：过程同一性、责任承接与最小修订<br>*The State Is Not the History, the Source Is* | [DOI](https://doi.org/10.5281/zenodo.23210084) | [首发成品](papers/first-release/README.md) | [首发证明与复现](docs/first-release-reproduction.md) |
-| **这浩瀚宇宙里，我们没找到魔法**：Spin×SU(7) 理论的同源生成与经典—量子对应<br>*We Found No Magic in This Mighty Universe* | [DOI](https://doi.org/10.5281/zenodo.23210292) | [首发成品](papers/first-release/README.md) | [逐主张映射](docs/first-release-map.json) |
+| 论文 | Zenodo 版本 | Lean 证明与复现 |
+| --- | --- | --- |
+| **状态不是历史，源才是**：过程同一性、责任承接与最小修订<br>*The State Is Not the History, the Source Is* | [v2](https://doi.org/10.5281/zenodo.23297175) | [逐项映射](docs/second-edition-map.json) · [复现](docs/edition-reproduction.md) |
+| **这浩瀚宇宙里，我们没找到魔法**：Spin×SU(7) 理论的同源生成与经典—量子对应<br>*We Found No Magic in This Mighty Universe* | [v2](https://doi.org/10.5281/zenodo.23297179) | [逐项映射](docs/second-edition-map.json) · [复现](docs/edition-reproduction.md) |
+| **电流出庭**：从耦合传播到实际电子、Coulomb 返回与 Born 修饰（低能1）<br>*The Current Takes the Stand* | [v1](https://doi.org/10.5281/zenodo.23299174) | [逐项映射](docs/low-energy-release-map.json) · [复现](docs/edition-reproduction.md) |
+| **两负一正，裸迹宣誓**：有序闭迹与整球响应曲率（低能2）<br>*Two Minuses, One Plus, and a Bare Trace Under Oath* | [v1](https://doi.org/10.5281/zenodo.23299177) | [逐项映射](docs/low-energy-release-map.json) · [复现](docs/edition-reproduction.md) |
+| **平账魔法别想逃**：源生整账与真实续行<br>*Book-Balancing Magic Has Nowhere to Hide* | [v1](https://doi.org/10.5281/zenodo.23437454) | [逐项映射](docs/whole-ledger-map.json) · [复现](docs/whole-ledger-reproduction.md) |
+| **1 Bit Is All You Need：世界，不许赖账**<br>*The Weakest Superpower: No Unaccounted Differences* | [v1](https://doi.org/10.5281/zenodo.23437456) | [逐项映射](docs/one-bit-map.json) · [复现](docs/one-bit-reproduction.md) |
 
-第二版过程核心／同源物理旗舰，以及低能首发选集 L1–L28／Q1–Q6，使用独立的[逐项映射](docs/second-edition-map.json)、[低能映射](docs/low-energy-release-map.json)和[复现入口](docs/edition-reproduction.md)。实际材料验收与本地交付见[第二版准备状态](docs/second-edition-readiness.md)。
+正文、必要证明补充及可编辑源码均从各自 Zenodo 记录下载。过程核心与物理旗舰的第一版分别保留[原 DOI](https://doi.org/10.5281/zenodo.23210084)、[原 DOI](https://doi.org/10.5281/zenodo.23210292)及[首发成品](papers/first-release/README.md)；低能两稿的[2026-10-09 成品快照](papers/low-energy-first-release/2026-10-09/README.md)保留其原文件与绑定身份。
 
-四篇论文可固定绑定公开源码 `643721f1`，入口与中英代码可得性表述见[源码绑定](docs/source-materials.md#四篇论文的源码绑定)。
-
-已交低能两稿的双语阅读版与可编辑材料见[独立成品快照](papers/low-energy-first-release/2026-10-09/README.md)，逐文件来源及实际代码绑定由该目录清单登记。
-
-整账法 WA1–WA40 的完整证明与原直接消费者见[逐项映射](docs/whole-ledger-map.json)、[准备状态](docs/whole-ledger-readiness.md)和[读者复现](docs/whole-ledger-reproduction.md)。
-
-一比特 OB1–OB11 的已签包复用与新增 ghost 反例见[逐项映射](docs/one-bit-map.json)、[准备状态](docs/one-bit-readiness.md)和[读者复现](docs/one-bit-reproduction.md)。
+过程核心／物理旗舰第二版及低能两稿的已发布版本固定引用公开源码 `b9d66048`；后续公开源码修复与 `643721f1` 对应关系见[源码绑定](docs/source-materials.md#四篇论文的源码绑定)，材料验收见[版本状态](docs/second-edition-readiness.md)。整账法与一比特分别固定引用 [`4301fa8c`](https://github.com/Sapientropic/H0mework/tree/4301fa8c5bb19bb1e8c3824d7c69be406264ed12) 与 [`6bff9d40`](https://github.com/Sapientropic/H0mework/tree/6bff9d4046b3f89004678244482b1c403837150c)；各自已签材料范围见[整账法验收](docs/whole-ledger-readiness.md)与[一比特验收](docs/one-bit-readiness.md)。
 
 ## 更多研究线
 
