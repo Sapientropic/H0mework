@@ -36,8 +36,8 @@ structure JointAlleleClosure : Prop where
 noncomputable abbrev parentRuntime := CPS1Personalized2025.Runtime.afterSecond
 abbrev ParentN := Root.N
 abbrev ParentV := Root.V
-abbrev ParentBase := Root.authoritySource
-abbrev ParentLedger := ParentBase.restructuringSource.toLedgerSource
+noncomputable abbrev ParentBase := Root.authoritySource
+noncomputable abbrev ParentLedger := ParentBase.restructuringSource.toLedgerSource
  theorem complete_parent : CPS1Personalized2025.Runtime.InstalledOriginalProgramClosure :=
    CPS1Personalized2025.Runtime.sourceGeneratedCPS1ProgramAndClinicalAtNext
 

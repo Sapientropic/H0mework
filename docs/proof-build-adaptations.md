@@ -73,3 +73,7 @@ R9 的 `ActualEMSourceLockedCarrier` 消费同一 canonical LockedFieldReturn ow
 ## SpatialContinuation 投影证明
 
 9c73 `ReceiverBody.SpatialContinuation.Step` 的五条定理原为项证明，kernel 核对时会归约具体的下一连续态。适配证明先用 `lift`／`pullback` 的投影等式改写目标；这些等式在证明内对抽象参数陈述，kernel 不再展开具体状态。陈述字节到外层 `:=` 为止保持，原证明由 `proof_body_rewrites` 逆转恢复。同一工具链两线程下，本机时间从 479.5 s 降到 57.9 s，私有内存从 26.0 GiB 降到 2.1 GiB；公理仍为 `propext`、`Classical.choice` 与 `Quot.sound`。
+
+## CPS1 NGS 父源计算性
+
+9c73 的 `Root.authoritySource` 不可计算，`CPS1Personalized2025.Ngs.Closure` 中未标注的 `ParentBase`／`ParentLedger` 简写因此不能编译。H0 修复只为这两枚简写加 `noncomputable`，与 Supply、Longitudinal、Delivery 三个 closure 的写法一致；类型、值与其余字节保持。导出记录以 `H0-noncomputable-marker-repair` 登记，原件与修复件分别存于 [historical](source/second-edition/core/historical/NgsClosure-9c73a630.lean) 与 [supplements](source/second-edition/core/supplements/NgsClosure-9c73a630.lean)。
