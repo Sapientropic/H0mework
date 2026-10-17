@@ -456,6 +456,21 @@ class CompactProofBodyRewriteTests(unittest.TestCase):
                 self.assertEqual(s.reconstruct(paths=[path])[0][path], adapted)
                 self.assertEqual(s.reconstruct(paths=[path], exact=True)[0][path], original)
 
+    def test_term_proof_may_become_a_tactic_proof_with_the_same_statement(self):
+        source = "theorem total (n : Nat) : n = n :=\n  rfl\n"
+        public = "theorem total (n : Nat) : n = n := by\n  exact Eq.refl n\n"
+        rules = self.rule(source, public, "total")
+        text = "import Mathlib\n" + source + "def unchanged := 7\n"
+        adapted = s.rewrite_proof_bodies(text, rules)
+        self.assertEqual(adapted, text.replace(source, public))
+        self.assertEqual(s.rewrite_proof_bodies(adapted, rules, reverse=True), text)
+        for bad_source, bad_public in (
+                (source, public.replace("n = n", "n = n + 0")),
+                ("theorem total (n : Nat) : n = n := rfl\n", public),
+                ("theorem total (n : Nat) (m : Nat := 1) : n = n :=\n  rfl\n", public)):
+            with self.subTest(public=bad_public), self.assertRaises(s.ViewError):
+                s.rewrite_proof_bodies(bad_source, self.rule(bad_source, bad_public, "total"))
+
     def test_default_parameter_proof_is_part_of_the_immutable_statement(self):
         source = "theorem defaulted (h : True := by trivial) : True :=by\n  exact h\n"
         public = source.replace("  exact h", "  simpa using h")

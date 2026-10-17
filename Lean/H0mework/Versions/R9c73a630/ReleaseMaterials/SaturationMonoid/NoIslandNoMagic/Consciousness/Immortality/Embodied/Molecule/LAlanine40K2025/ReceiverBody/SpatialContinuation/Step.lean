@@ -56,22 +56,68 @@ theorem next_relative_geometry (current : Material) (a b : Atom) (k : Axis) :
 theorem next_reserve (current : Material) : (nextMaterial current).reserve=current.reserve/2 := rfl
 
 theorem next_positive_reserve (current : Material) (valid : Admissible current) :
-    0 < (nextMaterial current).reserve ∧ ((nextMaterial current).reserve : ℝ)<(nextMaterial current).lab.resource.momentum :=
-  FiniteContinuation.next_reserve (pullback current) valid
+    0 < (nextMaterial current).reserve ∧ ((nextMaterial current).reserve : ℝ)<(nextMaterial current).lab.resource.momentum := by
+  have asLift : nextMaterial current=lift (FiniteContinuation.nextMaterial (pullback current))
+      (fun k => offset current k+increment current k) := rfl
+  have liftLab : ∀ (base : FiniteContinuation.Material) (shift : Axis → ℚ),
+      (lift base shift).lab.resource=base.body.resource ∧ (lift base shift).lab.bodyClock=base.body.bodyClock ∧
+        (lift base shift).lab.frame.total=base.body.frame.total ∧ (lift base shift).reserve=base.reserve :=
+    fun _ _ => ⟨rfl,rfl,rfl,rfl⟩
+  have pullbackBody : ∀ c : Material,
+      (pullback c).body.resource=c.lab.resource ∧ (pullback c).body.bodyClock=c.lab.bodyClock ∧
+        (pullback c).body.frame.total=c.lab.frame.total ∧ (pullback c).reserve=c.reserve :=
+    fun _ => ⟨rfl,rfl,rfl,rfl⟩
+  rw [asLift,(liftLab _ _).2.2.2,(liftLab _ _).1]
+  exact FiniteContinuation.next_reserve (pullback current) valid
 
 theorem next_positive_stock (current : Material) (valid : Admissible current) :
-    0 < (nextMaterial current).lab.resource.momentum :=
-  (half_pos (FiniteContinuation.stock_positive (pullback current) valid)).trans
+    0 < (nextMaterial current).lab.resource.momentum := by
+  have asLift : nextMaterial current=lift (FiniteContinuation.nextMaterial (pullback current))
+      (fun k => offset current k+increment current k) := rfl
+  have liftLab : ∀ (base : FiniteContinuation.Material) (shift : Axis → ℚ),
+      (lift base shift).lab.resource=base.body.resource ∧ (lift base shift).lab.bodyClock=base.body.bodyClock ∧
+        (lift base shift).lab.frame.total=base.body.frame.total ∧ (lift base shift).reserve=base.reserve :=
+    fun _ _ => ⟨rfl,rfl,rfl,rfl⟩
+  have pullbackBody : ∀ c : Material,
+      (pullback c).body.resource=c.lab.resource ∧ (pullback c).body.bodyClock=c.lab.bodyClock ∧
+        (pullback c).body.frame.total=c.lab.frame.total ∧ (pullback c).reserve=c.reserve :=
+    fun _ => ⟨rfl,rfl,rfl,rfl⟩
+  rw [asLift,(liftLab _ _).1]
+  exact (half_pos (FiniteContinuation.stock_positive (pullback current) valid)).trans
     (FiniteContinuation.next_stock (pullback current) valid)
 
 theorem next_whole_account (current : Material) (valid : Admissible current) :
-    SpatialActuation.wholeBodyAccount (nextMaterial current).lab=SpatialActuation.wholeBodyAccount current.lab :=
-  FiniteContinuation.next_whole_account (pullback current) valid
+    SpatialActuation.wholeBodyAccount (nextMaterial current).lab=SpatialActuation.wholeBodyAccount current.lab := by
+  have asLift : nextMaterial current=lift (FiniteContinuation.nextMaterial (pullback current))
+      (fun k => offset current k+increment current k) := rfl
+  have liftLab : ∀ (base : FiniteContinuation.Material) (shift : Axis → ℚ),
+      (lift base shift).lab.resource=base.body.resource ∧ (lift base shift).lab.bodyClock=base.body.bodyClock ∧
+        (lift base shift).lab.frame.total=base.body.frame.total ∧ (lift base shift).reserve=base.reserve :=
+    fun _ _ => ⟨rfl,rfl,rfl,rfl⟩
+  have pullbackBody : ∀ c : Material,
+      (pullback c).body.resource=c.lab.resource ∧ (pullback c).body.bodyClock=c.lab.bodyClock ∧
+        (pullback c).body.frame.total=c.lab.frame.total ∧ (pullback c).reserve=c.reserve :=
+    fun _ => ⟨rfl,rfl,rfl,rfl⟩
+  rw [asLift]
+  unfold SpatialActuation.wholeBodyAccount
+  rw [(liftLab _ _).1,(liftLab _ _).2.2.1,← (pullbackBody current).1,← (pullbackBody current).2.2.1]
+  exact FiniteContinuation.next_whole_account (pullback current) valid
 
 theorem next_clocks (current : Material) :
     (nextMaterial current).lab.resource.quantum.localClock=current.lab.resource.quantum.localClock+3*Propagation.Producer.nativeClockStep ∧
-    (nextMaterial current).lab.bodyClock=current.lab.bodyClock+3*Propagation.Producer.nativeClockStep :=
-  FiniteContinuation.next_clocks (pullback current)
+    (nextMaterial current).lab.bodyClock=current.lab.bodyClock+3*Propagation.Producer.nativeClockStep := by
+  have asLift : nextMaterial current=lift (FiniteContinuation.nextMaterial (pullback current))
+      (fun k => offset current k+increment current k) := rfl
+  have liftLab : ∀ (base : FiniteContinuation.Material) (shift : Axis → ℚ),
+      (lift base shift).lab.resource=base.body.resource ∧ (lift base shift).lab.bodyClock=base.body.bodyClock ∧
+        (lift base shift).lab.frame.total=base.body.frame.total ∧ (lift base shift).reserve=base.reserve :=
+    fun _ _ => ⟨rfl,rfl,rfl,rfl⟩
+  have pullbackBody : ∀ c : Material,
+      (pullback c).body.resource=c.lab.resource ∧ (pullback c).body.bodyClock=c.lab.bodyClock ∧
+        (pullback c).body.frame.total=c.lab.frame.total ∧ (pullback c).reserve=c.reserve :=
+    fun _ => ⟨rfl,rfl,rfl,rfl⟩
+  rw [asLift,(liftLab _ _).1,(liftLab _ _).2.1,← (pullbackBody current).1,← (pullbackBody current).2.1]
+  exact FiniteContinuation.next_clocks (pullback current)
 
 theorem first_clocks :
     (nextMaterial initialMaterial).lab.resource.quantum.localClock=31*Propagation.Producer.nativeClockStep ∧
@@ -83,8 +129,22 @@ theorem first_clocks :
 def unreserved (current : Material) : ℝ := current.lab.resource.momentum-(current.reserve : ℝ)
 
 theorem next_unreserved_increases (current : Material) (valid : Admissible current) :
-    unreserved current<unreserved (nextMaterial current) :=
-  FiniteContinuation.next_unreserved_increases (pullback current) valid
+    unreserved current<unreserved (nextMaterial current) := by
+  have asLift : nextMaterial current=lift (FiniteContinuation.nextMaterial (pullback current))
+      (fun k => offset current k+increment current k) := rfl
+  have liftLab : ∀ (base : FiniteContinuation.Material) (shift : Axis → ℚ),
+      (lift base shift).lab.resource=base.body.resource ∧ (lift base shift).lab.bodyClock=base.body.bodyClock ∧
+        (lift base shift).lab.frame.total=base.body.frame.total ∧ (lift base shift).reserve=base.reserve :=
+    fun _ _ => ⟨rfl,rfl,rfl,rfl⟩
+  have pullbackBody : ∀ c : Material,
+      (pullback c).body.resource=c.lab.resource ∧ (pullback c).body.bodyClock=c.lab.bodyClock ∧
+        (pullback c).body.frame.total=c.lab.frame.total ∧ (pullback c).reserve=c.reserve :=
+    fun _ => ⟨rfl,rfl,rfl,rfl⟩
+  have generated := FiniteContinuation.next_unreserved_increases (pullback current) valid
+  unfold FiniteContinuation.unreserved at generated
+  unfold unreserved
+  rw [asLift,(liftLab _ _).1,(liftLab _ _).2.2.2,← (pullbackBody current).1,← (pullbackBody current).2.2.2]
+  exact generated
 
 end
 end SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.ReceiverBody.SpatialContinuation

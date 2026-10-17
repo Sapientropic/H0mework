@@ -751521,10 +751521,53 @@
    "variant": "R9c73a630"
   },
   {
+   "build_adaptations": [
+    {
+     "adapted_source_view_sha256": "fc6866db311aeae5cfedadbc7d38be5104ce6613f9aba6053790ca2298765e46",
+     "declarations": [
+      "next_positive_reserve",
+      "next_positive_stock",
+      "next_whole_account",
+      "next_clocks",
+      "next_unreserved_increases"
+     ],
+     "kind": "proof-elaboration-build-adaptation",
+     "original_source_sha256": "ded4591aeb7a9653a55b16392f264bd6d44070708191141660037104e087ca76",
+     "reason": "The kernel checked the five term proofs by reducing the concrete next continuation state. The tactic proofs first rewrite through lift and pullback projections stated over abstract arguments. Same toolchain, two threads: 479.5 s, 26.0 GiB private footprint (36.9 GiB RSS) to 57.9 s, 2.1 GiB (13.8 GiB RSS); axioms remain propext, Classical.choice and Quot.sound.",
+     "scope": "Proof bodies only; exact statement prefix, visibility, definitions, imports, options and attributes preserved."
+    }
+   ],
    "import_map": {
     "H0mework.Versions.R9c73a630.ReleaseMaterials.SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.ReceiverBody.SpatialContinuation.Source": "SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.ReceiverBody.SpatialContinuation.Source"
    },
    "path": "Lean/H0mework/Versions/R9c73a630/ReleaseMaterials/SaturationMonoid/NoIslandNoMagic/Consciousness/Immortality/Embodied/Molecule/LAlanine40K2025/ReceiverBody/SpatialContinuation/Step.lean",
+   "proof_body_rewrites": [
+    {
+     "declaration": "next_positive_reserve",
+     "public": "theorem next_positive_reserve (current : Material) (valid : Admissible current) :\n    0 < (nextMaterial current).reserve ∧ ((nextMaterial current).reserve : ℝ)<(nextMaterial current).lab.resource.momentum := by\n  have asLift : nextMaterial current=lift (FiniteContinuation.nextMaterial (pullback current))\n      (fun k => offset current k+increment current k) := rfl\n  have liftLab : ∀ (base : FiniteContinuation.Material) (shift : Axis → ℚ),\n      (lift base shift).lab.resource=base.body.resource ∧ (lift base shift).lab.bodyClock=base.body.bodyClock ∧\n        (lift base shift).lab.frame.total=base.body.frame.total ∧ (lift base shift).reserve=base.reserve :=\n    fun _ _ => ⟨rfl,rfl,rfl,rfl⟩\n  have pullbackBody : ∀ c : Material,\n      (pullback c).body.resource=c.lab.resource ∧ (pullback c).body.bodyClock=c.lab.bodyClock ∧\n        (pullback c).body.frame.total=c.lab.frame.total ∧ (pullback c).reserve=c.reserve :=\n    fun _ => ⟨rfl,rfl,rfl,rfl⟩\n  rw [asLift,(liftLab _ _).2.2.2,(liftLab _ _).1]\n  exact FiniteContinuation.next_reserve (pullback current) valid\n",
+     "source": "theorem next_positive_reserve (current : Material) (valid : Admissible current) :\n    0 < (nextMaterial current).reserve ∧ ((nextMaterial current).reserve : ℝ)<(nextMaterial current).lab.resource.momentum :=\n  FiniteContinuation.next_reserve (pullback current) valid\n"
+    },
+    {
+     "declaration": "next_positive_stock",
+     "public": "theorem next_positive_stock (current : Material) (valid : Admissible current) :\n    0 < (nextMaterial current).lab.resource.momentum := by\n  have asLift : nextMaterial current=lift (FiniteContinuation.nextMaterial (pullback current))\n      (fun k => offset current k+increment current k) := rfl\n  have liftLab : ∀ (base : FiniteContinuation.Material) (shift : Axis → ℚ),\n      (lift base shift).lab.resource=base.body.resource ∧ (lift base shift).lab.bodyClock=base.body.bodyClock ∧\n        (lift base shift).lab.frame.total=base.body.frame.total ∧ (lift base shift).reserve=base.reserve :=\n    fun _ _ => ⟨rfl,rfl,rfl,rfl⟩\n  have pullbackBody : ∀ c : Material,\n      (pullback c).body.resource=c.lab.resource ∧ (pullback c).body.bodyClock=c.lab.bodyClock ∧\n        (pullback c).body.frame.total=c.lab.frame.total ∧ (pullback c).reserve=c.reserve :=\n    fun _ => ⟨rfl,rfl,rfl,rfl⟩\n  rw [asLift,(liftLab _ _).1]\n  exact (half_pos (FiniteContinuation.stock_positive (pullback current) valid)).trans\n    (FiniteContinuation.next_stock (pullback current) valid)\n",
+     "source": "theorem next_positive_stock (current : Material) (valid : Admissible current) :\n    0 < (nextMaterial current).lab.resource.momentum :=\n  (half_pos (FiniteContinuation.stock_positive (pullback current) valid)).trans\n    (FiniteContinuation.next_stock (pullback current) valid)\n"
+    },
+    {
+     "declaration": "next_whole_account",
+     "public": "theorem next_whole_account (current : Material) (valid : Admissible current) :\n    SpatialActuation.wholeBodyAccount (nextMaterial current).lab=SpatialActuation.wholeBodyAccount current.lab := by\n  have asLift : nextMaterial current=lift (FiniteContinuation.nextMaterial (pullback current))\n      (fun k => offset current k+increment current k) := rfl\n  have liftLab : ∀ (base : FiniteContinuation.Material) (shift : Axis → ℚ),\n      (lift base shift).lab.resource=base.body.resource ∧ (lift base shift).lab.bodyClock=base.body.bodyClock ∧\n        (lift base shift).lab.frame.total=base.body.frame.total ∧ (lift base shift).reserve=base.reserve :=\n    fun _ _ => ⟨rfl,rfl,rfl,rfl⟩\n  have pullbackBody : ∀ c : Material,\n      (pullback c).body.resource=c.lab.resource ∧ (pullback c).body.bodyClock=c.lab.bodyClock ∧\n        (pullback c).body.frame.total=c.lab.frame.total ∧ (pullback c).reserve=c.reserve :=\n    fun _ => ⟨rfl,rfl,rfl,rfl⟩\n  rw [asLift]\n  unfold SpatialActuation.wholeBodyAccount\n  rw [(liftLab _ _).1,(liftLab _ _).2.2.1,← (pullbackBody current).1,← (pullbackBody current).2.2.1]\n  exact FiniteContinuation.next_whole_account (pullback current) valid\n",
+     "source": "theorem next_whole_account (current : Material) (valid : Admissible current) :\n    SpatialActuation.wholeBodyAccount (nextMaterial current).lab=SpatialActuation.wholeBodyAccount current.lab :=\n  FiniteContinuation.next_whole_account (pullback current) valid\n"
+    },
+    {
+     "declaration": "next_clocks",
+     "public": "theorem next_clocks (current : Material) :\n    (nextMaterial current).lab.resource.quantum.localClock=current.lab.resource.quantum.localClock+3*Propagation.Producer.nativeClockStep ∧\n    (nextMaterial current).lab.bodyClock=current.lab.bodyClock+3*Propagation.Producer.nativeClockStep := by\n  have asLift : nextMaterial current=lift (FiniteContinuation.nextMaterial (pullback current))\n      (fun k => offset current k+increment current k) := rfl\n  have liftLab : ∀ (base : FiniteContinuation.Material) (shift : Axis → ℚ),\n      (lift base shift).lab.resource=base.body.resource ∧ (lift base shift).lab.bodyClock=base.body.bodyClock ∧\n        (lift base shift).lab.frame.total=base.body.frame.total ∧ (lift base shift).reserve=base.reserve :=\n    fun _ _ => ⟨rfl,rfl,rfl,rfl⟩\n  have pullbackBody : ∀ c : Material,\n      (pullback c).body.resource=c.lab.resource ∧ (pullback c).body.bodyClock=c.lab.bodyClock ∧\n        (pullback c).body.frame.total=c.lab.frame.total ∧ (pullback c).reserve=c.reserve :=\n    fun _ => ⟨rfl,rfl,rfl,rfl⟩\n  rw [asLift,(liftLab _ _).1,(liftLab _ _).2.1,← (pullbackBody current).1,← (pullbackBody current).2.1]\n  exact FiniteContinuation.next_clocks (pullback current)\n",
+     "source": "theorem next_clocks (current : Material) :\n    (nextMaterial current).lab.resource.quantum.localClock=current.lab.resource.quantum.localClock+3*Propagation.Producer.nativeClockStep ∧\n    (nextMaterial current).lab.bodyClock=current.lab.bodyClock+3*Propagation.Producer.nativeClockStep :=\n  FiniteContinuation.next_clocks (pullback current)\n"
+    },
+    {
+     "declaration": "next_unreserved_increases",
+     "public": "theorem next_unreserved_increases (current : Material) (valid : Admissible current) :\n    unreserved current<unreserved (nextMaterial current) := by\n  have asLift : nextMaterial current=lift (FiniteContinuation.nextMaterial (pullback current))\n      (fun k => offset current k+increment current k) := rfl\n  have liftLab : ∀ (base : FiniteContinuation.Material) (shift : Axis → ℚ),\n      (lift base shift).lab.resource=base.body.resource ∧ (lift base shift).lab.bodyClock=base.body.bodyClock ∧\n        (lift base shift).lab.frame.total=base.body.frame.total ∧ (lift base shift).reserve=base.reserve :=\n    fun _ _ => ⟨rfl,rfl,rfl,rfl⟩\n  have pullbackBody : ∀ c : Material,\n      (pullback c).body.resource=c.lab.resource ∧ (pullback c).body.bodyClock=c.lab.bodyClock ∧\n        (pullback c).body.frame.total=c.lab.frame.total ∧ (pullback c).reserve=c.reserve :=\n    fun _ => ⟨rfl,rfl,rfl,rfl⟩\n  have generated := FiniteContinuation.next_unreserved_increases (pullback current) valid\n  unfold FiniteContinuation.unreserved at generated\n  unfold unreserved\n  rw [asLift,(liftLab _ _).1,(liftLab _ _).2.2.2,← (pullbackBody current).1,← (pullbackBody current).2.2.2]\n  exact generated\n",
+     "source": "theorem next_unreserved_increases (current : Material) (valid : Admissible current) :\n    unreserved current<unreserved (nextMaterial current) :=\n  FiniteContinuation.next_unreserved_increases (pullback current) valid\n"
+    }
+   ],
    "source": "SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.ReceiverBody.SpatialContinuation.Step",
    "source_path": "Lean/SaturationMonoid/NoIslandNoMagic/Consciousness/Immortality/Embodied/Molecule/LAlanine40K2025/ReceiverBody/SpatialContinuation/Step.lean",
    "source_revision": "9c73a630ce05bea062ec889b188f5105c0afb796",
@@ -751533,8 +751576,9 @@
    ],
    "source_sha256": "ded4591aeb7a9653a55b16392f264bd6d44070708191141660037104e087ca76",
    "target": "H0mework.Versions.R9c73a630.ReleaseMaterials.SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.ReceiverBody.SpatialContinuation.Step",
-   "target_sha256": "3c4310103966bb8c93cddc9e1bc2df674d6bc8b48531008fd8448f17ce4826bb",
-   "variant": "R9c73a630"
+   "target_sha256": "c15fd1ee19a3e94657b356ca6ea855021e85a3b12ee221185b80495cd4825243",
+   "variant": "R9c73a630",
+   "view_sha256": "fc6866db311aeae5cfedadbc7d38be5104ce6613f9aba6053790ca2298765e46"
   },
   {
    "import_map": {

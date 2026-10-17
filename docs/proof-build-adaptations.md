@@ -69,3 +69,7 @@ R9 的 `ActualEMSourceLockedCarrier` 消费同一 canonical LockedFieldReturn ow
 ## GT 原程序的双 provider 查找
 
 `SourceDressedGTSampleWard` 的原 `native_lie`／`spin_native` 查找按两个真实 provider、固定 member、namespace 和单例条件绑定完整私有 owner。六个公开环境登记 12 条字符串变换，精确恢复同一原 SHA `80e50a01efcd9d791d477b3f5594294361b12f3bcc38a8ebf8e1fdcb0e004f67`。原完整程序、真实声明类型／值／模块和三条原陈述消费者的[kernel 回执](../evidence/second-edition/acceptance/gt-owner-original-kernel-consumers-20261010/result.json)保留原 60109675 身份；[六源当前应用与逆验](../evidence/second-edition/acceptance/gt-six-owner-application-20261011/result.json)及 83 项工具测试通过。当前 52 包成员核对确认它影响 17 个待验包；正式包构建支付公开目标后再签收当前范围。
+
+## SpatialContinuation 投影证明
+
+9c73 `ReceiverBody.SpatialContinuation.Step` 的五条定理原为项证明，kernel 核对时会归约具体的下一连续态。适配证明先用 `lift`／`pullback` 的投影等式改写目标；这些等式在证明内对抽象参数陈述，kernel 不再展开具体状态。陈述字节到外层 `:=` 为止保持，原证明由 `proof_body_rewrites` 逆转恢复。同一工具链两线程下，本机时间从 479.5 s 降到 57.9 s，私有内存从 26.0 GiB 降到 2.1 GiB；公理仍为 `propext`、`Classical.choice` 与 `Quot.sound`。

@@ -657,7 +657,8 @@ def invert_resource_digests(raw: bytes, row: dict) -> bytes:
     return raw
 
 
-def proof_body_start(block: str, declaration: str) -> int:
+def proof_body_start(block: str, declaration: str) -> tuple[int, int, bool]:
+    """Return the end of the outer `:=`, the start of the proof body and whether it is a tactic proof."""
     masked = mask_comments_and_strings(block)
     if not re.match(r"^(?:private[ \t]+)?theorem[ \t]+" + re.escape(declaration)
                     + r"(?=[\s(:{\[⦃])", masked):
@@ -672,15 +673,18 @@ def proof_body_start(block: str, declaration: str) -> int:
             if not stack or stack.pop() != char:
                 raise ViewError("Unbalanced theorem statement in proof-body rewrite")
         elif not stack and char == ":":
-            delimiter = re.match(r":=\s*by\b", masked[position:])
+            # A term proof starts on the line after `:=`; a `:=` with a same-line value
+            # belongs to the statement (for example a `let`).
+            delimiter = re.match(r":=\s*by\b", masked[position:]) or re.match(r":=[ \t]*\n", masked[position:])
             if delimiter:
-                begin = position + delimiter.end()
+                tactic = delimiter.group().rstrip().endswith("by")
+                begin = position + (delimiter.end() if tactic else 2)
                 body = masked[begin:]
                 if (not body.strip() or any(line and not line[0].isspace()
                                            for line in body.splitlines()[1:])):
                     raise ViewError("Rewrite must contain one theorem and its proof")
-                return begin
-    raise ViewError("Proof-body rewrite needs an outer := by proof")
+                return position + 2, begin, tactic
+    raise ViewError("Proof-body rewrite needs an outer := by proof or a term proof on its own lines")
 
 
 def rewrite_proof_bodies(text: str, rewrites, *, reverse: bool = False) -> str:
@@ -696,12 +700,15 @@ def rewrite_proof_bodies(text: str, rewrites, *, reverse: bool = False) -> str:
         source, public = rewrite["source"], rewrite["public"]
         if not isinstance(declaration, str) or not MODULE.fullmatch(declaration):
             raise ViewError("Invalid proof declaration")
-        statements = []
+        heads = []
         for block in (source, public):
             if not isinstance(block, str) or not block.endswith("\n"):
                 raise ViewError("Invalid proof-body block")
-            begin = proof_body_start(block, declaration)
-            statements.append(block[:begin])
+            heads.append(proof_body_start(block, declaration))
+        # Two tactic proofs keep every header byte through `by`; a term proof that becomes
+        # a tactic proof (or back) keeps every byte through the outer `:=`.
+        cut = 1 if all(tactic for _, _, tactic in heads) else 0
+        statements = [block[:head[cut]] for block, head in zip((source, public), heads)]
         if statements[0] != statements[1]:
             raise ViewError("Proof-body rewrite changes the theorem statement")
         before, after = (public, source) if reverse else (source, public)
