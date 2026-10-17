@@ -61,6 +61,8 @@ jobs:
       s10: ${{ steps.plan.outputs.s10 }}
       s11: ${{ steps.plan.outputs.s11 }}
       verified: ${{ steps.seal.outputs.verified }}
+      verified_run: ${{ steps.seal.outputs.verified_run }}
+      verified_commit: ${{ steps.seal.outputs.verified_commit }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -100,7 +102,7 @@ jobs:
       - run: make check-map check check-first-release-entry
 
   lean-s1:
-    name: Lean 阶段 1
+    name: ${{ needs.plan.outputs.verified == 'true' && 'Lean 阶段 1 · 已验证，复用' || 'Lean 阶段 1' }}
     permissions:
       contents: write
     needs: plan
@@ -113,7 +115,7 @@ jobs:
       part: ${{ matrix.part }}
 
   lean-s2:
-    name: Lean 阶段 2
+    name: ${{ needs.plan.outputs.verified == 'true' && 'Lean 阶段 2 · 已验证，复用' || 'Lean 阶段 2' }}
     permissions:
       contents: write
     needs: [plan, lean-s1]
@@ -126,7 +128,7 @@ jobs:
       part: ${{ matrix.part }}
 
   lean-s3:
-    name: Lean 阶段 3
+    name: ${{ needs.plan.outputs.verified == 'true' && 'Lean 阶段 3 · 已验证，复用' || 'Lean 阶段 3' }}
     permissions:
       contents: write
     needs: [plan, lean-s2]
@@ -139,7 +141,7 @@ jobs:
       part: ${{ matrix.part }}
 
   lean-s4:
-    name: Lean 阶段 4
+    name: ${{ needs.plan.outputs.verified == 'true' && 'Lean 阶段 4 · 已验证，复用' || 'Lean 阶段 4' }}
     permissions:
       contents: write
     needs: [plan, lean-s3]
@@ -152,7 +154,7 @@ jobs:
       part: ${{ matrix.part }}
 
   lean-s5:
-    name: Lean 阶段 5
+    name: ${{ needs.plan.outputs.verified == 'true' && 'Lean 阶段 5 · 已验证，复用' || 'Lean 阶段 5' }}
     permissions:
       contents: write
     needs: [plan, lean-s4]
@@ -165,7 +167,7 @@ jobs:
       part: ${{ matrix.part }}
 
   lean-s6:
-    name: Lean 阶段 6
+    name: ${{ needs.plan.outputs.verified == 'true' && 'Lean 阶段 6 · 已验证，复用' || 'Lean 阶段 6' }}
     permissions:
       contents: write
     needs: [plan, lean-s5]
@@ -178,7 +180,7 @@ jobs:
       part: ${{ matrix.part }}
 
   lean-s7:
-    name: Lean 阶段 7
+    name: ${{ needs.plan.outputs.verified == 'true' && 'Lean 阶段 7 · 已验证，复用' || 'Lean 阶段 7' }}
     permissions:
       contents: write
     needs: [plan, lean-s6]
@@ -191,7 +193,7 @@ jobs:
       part: ${{ matrix.part }}
 
   lean-s8:
-    name: Lean 阶段 8
+    name: ${{ needs.plan.outputs.verified == 'true' && 'Lean 阶段 8 · 已验证，复用' || 'Lean 阶段 8' }}
     permissions:
       contents: write
     needs: [plan, lean-s7]
@@ -204,7 +206,7 @@ jobs:
       part: ${{ matrix.part }}
 
   lean-s9:
-    name: Lean 阶段 9
+    name: ${{ needs.plan.outputs.verified == 'true' && 'Lean 阶段 9 · 已验证，复用' || 'Lean 阶段 9' }}
     permissions:
       contents: write
     needs: [plan, lean-s8]
@@ -217,7 +219,7 @@ jobs:
       part: ${{ matrix.part }}
 
   lean-s10:
-    name: Lean 阶段 10
+    name: ${{ needs.plan.outputs.verified == 'true' && 'Lean 阶段 10 · 已验证，复用' || 'Lean 阶段 10' }}
     permissions:
       contents: write
     needs: [plan, lean-s9]
@@ -230,7 +232,7 @@ jobs:
       part: ${{ matrix.part }}
 
   lean-s11:
-    name: Lean 阶段 11
+    name: ${{ needs.plan.outputs.verified == 'true' && 'Lean 阶段 11 · 已验证，复用' || 'Lean 阶段 11' }}
     permissions:
       contents: write
     needs: [plan, lean-s10]
@@ -242,8 +244,28 @@ jobs:
     with:
       part: ${{ matrix.part }}
 
+  lean-verified:
+    name: Lean · 选集已验证
+    # This exact selection already passed every stage in an earlier run, so the stage
+    # jobs are skipped; this job names that run instead of leaving only skipped jobs.
+    needs: plan
+    if: needs.plan.outputs.verified == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - env:
+          RUN: ${{ needs.plan.outputs.verified_run }}
+          COMMIT: ${{ needs.plan.outputs.verified_commit }}
+          SERVER: ${{ github.server_url }}
+          REPOSITORY: ${{ github.repository }}
+        run: |
+          run_link=${RUN:+"[run $RUN]($SERVER/$REPOSITORY/actions/runs/$RUN)"}
+          message="本提交的 Lean 选集与 ${run_link:-先前一次运行}${COMMIT:+（提交 ${COMMIT:0:8}）}完全相同，那次已通过全部阶段与完整选集检查。各 Lean 阶段因此跳过，没有需要重编的变化。"
+          echo "$message"
+          echo "$message" >> "$GITHUB_STEP_SUMMARY"
+
   lean-complete:
-    name: Lean · 完整选集
+    name: ${{ needs.plan.outputs.verified == 'true' && 'Lean · 完整选集 · 已验证，复用' || 'Lean · 完整选集' }}
     needs: [plan, lean-s1, lean-s2, lean-s3, lean-s4, lean-s5, lean-s6, lean-s7, lean-s8, lean-s9, lean-s10, lean-s11]
     # Stages past the plan's last one are skipped; any failed or cancelled stage stops here.
     if: >-

@@ -907,6 +907,13 @@ class StoreTests(unittest.TestCase):
         self.assertFalse(verified)
         self.assertFalse((self.root / ".local/ci/cache/s1-01.checkpoint.tar.zst").exists())
 
+    def test_seal_record_names_the_run_that_verified_the_selection(self):
+        plan = {"selection": "abc"}
+        store = FakeStore()
+        self.assertEqual(ci_plan.seal_record(store, plan), {})
+        store.put(ci_plan.seal_name(plan), self.file("seal", b'{"commit": "c0ffee", "run": "42"}'))
+        self.assertEqual(ci_plan.seal_record(store, plan), {"run": "42", "commit": "c0ffee"})
+
     def test_prune_keeps_current_archives_and_waits_until_all_are_stored(self):
         store, archive = FakeStore(), self.file("part", b"outputs")
         tag = ci_plan.platform_tag()

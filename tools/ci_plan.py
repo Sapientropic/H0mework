@@ -754,6 +754,15 @@ def seal_name(plan: dict) -> str:
     return f"{platform_tag()}-lean-selection-{plan['selection']}.json"
 
 
+def seal_record(store, plan: dict) -> dict:
+    """The run and commit that built and verified this exact selection, if it is sealed."""
+    record = Path(tempfile.mkdtemp()) / "selection.json"
+    if not store.fetch(seal_name(plan), record):
+        return {}
+    data = json.loads(record.read_text())
+    return {k: str(data[k]) for k in ("run", "commit") if data.get(k)}
+
+
 def restore_choice(entries: dict[str, str], key: str, prefix: str):
     """Exact archive, else the newest progress for this content, else the newest of this part."""
     exact = key + ".tar.zst"
@@ -1071,7 +1080,12 @@ def main():
             store.dump(snapshot)
         print(f"Proof store holds {len(entries)} archives" if entries or (store and store.release_id)
               else "No proof store found")
-        append_outputs(args.output, {"verified": str(seal_name(plan) in entries).lower()})
+        verified = seal_name(plan) in entries
+        outputs = {"verified": str(verified).lower()}
+        if verified:
+            record = store_call(lambda: seal_record(store, plan), {})
+            outputs.update({f"verified_{k}": v for k, v in record.items()})
+        append_outputs(args.output, outputs)
         return
     if args.command == "seal":
         record = Path(tempfile.mkdtemp()) / "selection.json"
