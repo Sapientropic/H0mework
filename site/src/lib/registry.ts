@@ -154,6 +154,7 @@ export const PAPERS: PaperEntry[] = [
     slug: "whole-ledger-accounting",
     theme: "core",
     editions: [{ release: "whole-ledger", doi: "10.5281/zenodo.23437454" }],
+    figure: { name: "whole-ledger-tower", claim: "wla.WA10" },
   },
   {
     slug: "physics-common-source",
