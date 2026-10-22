@@ -1,0 +1,399 @@
+---
+// The opening: a dot-matrix screen. Dithered noise flows like weather; particles condense out of it
+// into an empty cell, a null, where a cursor waits; a cinnabar value streams in and fills it, ripples
+// order the noise for a moment, and the particles write one line before scattering back. The pointer
+// stirs the field; a click drops a value of one's own, whose mark stays on this browser's screen.
+import { T } from "../lib/i18n";
+import type { Lang } from "../lib/registry";
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = T[lang];
+---
+<figure class="nullscreen" data-lines={JSON.stringify([t.nullEmpty, t.nullSource])} role="img" aria-label={t.nullLabel}>
+  <canvas class="ns-screen"></canvas>
+</figure>
+<script>
+  const root = document.querySelector<HTMLElement>(".nullscreen");
+  if (root) {
+    const [EMPTY, SOURCE]: string[] = JSON.parse(root.dataset.lines!);
+    const canvas = root.querySelector<HTMLCanvasElement>(".ns-screen")!;
+    const ctx = canvas.getContext("2d")!;
+    const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const STORE = "h0mework.null.marks";
+    const INK = [29, 29, 31], RED = [200, 55, 45], OFF = [224, 220, 210], GLASS = "#eeebe3";
+    const CELL = 16;
+
+    // --- glyphs: the system font at its native 16 px, thresholded at half coverage (one-dot strokes).
+    const scratch = document.createElement("canvas");
+    scratch.width = scratch.height = 16;
+    const sx = scratch.getContext("2d", { willReadFrequently: true })!;
+    const glyphs = new Map<string, { w: number; bits: Uint8Array; wide: boolean }>();
+    function glyph(ch: string) {
+      let g = glyphs.get(ch);
+      if (g) return g;
+      const wide = ch.charCodeAt(0) > 0x2e7f;
+      const w = wide ? CELL : CELL / 2;
+      sx.clearRect(0, 0, 16, 16);
+      sx.fillStyle = "#000";
+      sx.textAlign = "center";
+      sx.textBaseline = "middle";
+      sx.font = wide ? `16px "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif` : `14px ui-monospace, "SF Mono", Menlo, Consolas, monospace`;
+      sx.fillText(ch, w / 2, 8.5);
+      const data = sx.getImageData(0, 0, w, CELL).data;
+      let bits = new Uint8Array(w * CELL);
+      for (let i = 0; i < bits.length; i++) bits[i] = data[i * 4 + 3] > 127 ? 1 : 0;
+      let width = w;
+      // Latin is set proportionally: a narrow glyph keeps only the columns it inks (a space keeps four).
+      if (!wide) {
+        const used = [...Array(w).keys()].filter((x) => [...Array(CELL).keys()].some((y) => bits[y * w + x]));
+        const from = used[0] ?? 0, to = used.at(-1) ?? 3;
+        width = used.length ? to - from + 1 : 4;
+        const trimmed = new Uint8Array(width * CELL);
+        if (used.length) for (let y = 0; y < CELL; y++) for (let x = 0; x < width; x++) trimmed[y * width + x] = bits[y * w + from + x];
+        bits = trimmed;
+      }
+      glyphs.set(ch, (g = { w: width, bits, wide }));
+      return g;
+    }
+    const advance = (ch: string) => glyph(ch).w + (glyph(ch).wide ? 2 : 2);
+    const widthOf = (text: string) => [...text].reduce((n, ch) => n + advance(ch), 0) - 1;
+    // Lines break between characters, or between words in Latin text; closing punctuation keeps the
+    // unit before it company on the next line rather than start one.
+    const CLOSING = "。，、；：？！）」』…”,.;:?!)";
+    // A line that does not fit breaks first after its commas; each clause is then balanced: the fewest
+    // lines the room allows, at the narrowest measure that keeps that count.
+    function wrap(text: string, room: number) {
+      if (greedy(text, room).length === 1) return [text];
+      const clauses = text.split(/(?<=[，,；;])\s*/u).filter(Boolean);
+      return clauses.length > 1 ? clauses.flatMap((clause) => balance(clause, room)) : balance(text, room);
+    }
+    function balance(text: string, room: number) {
+      const lines = greedy(text, room);
+      let lo = 1, hi = room;
+      while (lo < hi) { const mid = (lo + hi) >> 1; if (greedy(text, mid).length <= lines.length) hi = mid; else lo = mid + 1; }
+      return greedy(text, lo);
+    }
+    function greedy(text: string, room: number) {
+      const units = text.match(/[A-Za-z0-9'’-]+|\s+|./gu) ?? [];
+      const out: string[] = [];
+      let line: string[] = [];
+      for (const unit of units) {
+        if (line.length && widthOf(line.join("") + unit.trimEnd()) > room) {
+          const carried = CLOSING.includes(unit) && line.length > 1 ? line.splice(-1) : [];
+          out.push(line.join("").trimEnd());
+          line = carried;
+          if (/^\s+$/.test(unit)) continue;
+        }
+        line.push(unit);
+      }
+      out.push(line.join("").trimEnd());
+      return out;
+    }
+    // The dots a text lights, laid out from (x, y): a list of [x, y].
+    function dotsOf(lines: string[], x0: number, y0: number, centred = false) {
+      const out: [number, number][] = [];
+      lines.forEach((line, row) => {
+        let x = centred ? Math.round(x0 - widthOf(line) / 2) : x0;
+        for (const ch of line) {
+          const g = glyph(ch);
+          for (let y = 0; y < CELL; y++) for (let gx = 0; gx < g.w; gx++) if (g.bits[y * g.w + gx]) out.push([x + gx, y0 + row * 19 + y]);
+          x += advance(ch);
+        }
+      });
+      return out;
+    }
+
+    // --- value noise in 3D, smooth enough to flow, cheap enough for every dot every frame.
+    const hash = (x: number, y: number, z: number) => {
+      let h = (x * 374761393 + y * 668265263 + z * 2147483647) | 0;
+      h = Math.imul(h ^ (h >>> 13), 1274126177);
+      return ((h ^ (h >>> 16)) >>> 0) / 4294967295;
+    };
+    const fade = (t: number) => t * t * (3 - 2 * t);
+    function noise(x: number, y: number, z: number) {
+      const xi = Math.floor(x), yi = Math.floor(y), zi = Math.floor(z);
+      const u = fade(x - xi), v = fade(y - yi), w = fade(z - zi);
+      const l = (a: number, b: number, t: number) => a + (b - a) * t;
+      const c = (dx: number, dy: number, dz: number) => hash(xi + dx, yi + dy, zi + dz);
+      return l(l(l(c(0, 0, 0), c(1, 0, 0), u), l(c(0, 1, 0), c(1, 1, 0), u), v), l(l(c(0, 0, 1), c(1, 0, 1), u), l(c(0, 1, 1), c(1, 1, 1), u), v), w);
+    }
+    const fbm = (x: number, y: number, z: number) => noise(x, y, z) * 0.65 + noise(x * 2.1, y * 2.1, z * 1.7) * 0.35;
+    // Ordered dithering: a continuous field becomes dots the way old screens drew shade.
+    const BAYER = [0, 8, 2, 10, 12, 4, 14, 6, 3, 11, 1, 9, 15, 7, 13, 5].map((v) => (v + 0.5) / 16);
+
+    // --- the screen
+    let cols = 0, rows = 0, pitch = 5;
+    let level = new Float32Array(0), target = new Float32Array(0), red = new Uint8Array(0), mark = new Uint8Array(0), calm = new Uint8Array(0);
+    function resize() {
+      const width = canvas.clientWidth;
+      pitch = Math.max(2.2, Math.min(4.4, width / 230));
+      cols = Math.floor(width / pitch);
+      // A wide screen is a band; a narrow one grows as tall as the scene needs.
+      rows = Math.max(44, Math.min(64, Math.round(cols / 4.2)));
+      rows = Math.max(rows, layout());
+      layout();
+      const dpr = Math.min(2, devicePixelRatio || 1);
+      canvas.style.height = `${rows * pitch}px`;
+      canvas.width = Math.round(width * dpr);
+      canvas.height = Math.round(rows * pitch * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, ((width - cols * pitch) / 2) * dpr, 0);
+      const n = cols * rows;
+      level = new Float32Array(n); target = new Float32Array(n); red = new Uint8Array(n); mark = new Uint8Array(n); calm = new Uint8Array(n);
+      for (const [u, v] of marks()) mark[Math.round(v * (rows - 1)) * cols + Math.round(u * (cols - 1))] = 1;
+    }
+
+    // Visitors' marks, as fractions of the screen, kept in this browser.
+    const marks = (): [number, number][] => { try { return JSON.parse(localStorage.getItem(STORE) || "[]"); } catch { return []; } };
+    const keep = (u: number, v: number) => { try { localStorage.setItem(STORE, JSON.stringify([...marks(), [u, v]].slice(-60))); } catch { /* the mark lasts this visit */ } };
+
+    // --- particles: points that flow with the noise, or spring toward a dot, or scatter and fade.
+    type Particle = { x: number; y: number; vx: number; vy: number; tx: number; ty: number; seek: boolean; delay: number; red: boolean; life: number };
+    let particles: Particle[] = [];
+    const spawn = (x: number, y: number, isRed = false): Particle => ({ x, y, vx: 0, vy: 0, tx: x, ty: y, seek: false, delay: 0, red: isRed, life: Infinity });
+    const resting = () => particles.filter((p) => !p.seek && p.life === Infinity);
+    // Send resting particles to these dots, the nearer ends of the sweep first.
+    function gather(dots: [number, number][], isRed = false, sweep = 0.9) {
+      for (let n = dots.length - resting().length; n > 0; n--) particles.push(spawn(Math.random() * cols, Math.random() * rows));
+      const pool = resting();
+      const minX = Math.min(...dots.map((d) => d[0])), span = Math.max(1, Math.max(...dots.map((d) => d[0])) - minX);
+      return dots.map(([x, y], i) => Object.assign(pool[i], { tx: x, ty: y, seek: true, delay: ((x - minX) / span) * sweep + Math.random() * 0.15, red: isRed }));
+    }
+    function scatter(group: Particle[] = [], force = 18) {
+      for (const p of group) {
+        const a = Math.random() * Math.PI * 2;
+        p.vx += Math.cos(a) * force * (0.4 + Math.random());
+        p.vy += Math.sin(a) * force * (0.4 + Math.random()) * 0.6;
+        p.seek = false;
+        p.red = false;
+      }
+    }
+
+    // --- ripples: rings that run out from a point, still inside, bright on the ring.
+    type Ripple = { x: number; y: number; t0: number };
+    let ripples: Ripple[] = [];
+
+    // --- the scene for this screen size
+    let cell = { x: 0, y: 0, s: 24 }, empty: [number, number][] = [], source: [number, number][] = [];
+    const NONE = { x0: 0, y0: 0, x1: -1, y1: -1 };
+    let textBox = NONE;
+    // Lays out the cell and both lines for the current grid; returns the rows the scene needs.
+    function layout() {
+      const lines = wrap(EMPTY, cols - 12);
+      const sourceLines = wrap(SOURCE, cols - 10);
+      const sourceHeight = sourceLines.length * 19 - 3;
+      let s = 24, need: number;
+      if (lines.length === 1 && s + 10 + widthOf(lines[0]) < cols - 10) {
+        const group = s + 10 + widthOf(lines[0]);
+        cell = { x: Math.round((cols - group) / 2), y: Math.round((rows - s) / 2), s };
+        empty = dotsOf(lines, cell.x + s + 10, Math.round(rows / 2 - 8));
+        need = Math.max(s, sourceHeight) + 12;
+      } else {
+        s = 20;
+        const height = s + 6 + lines.length * 19 - 3;
+        const top = Math.round((rows - height) / 2);
+        cell = { x: Math.round((cols - s) / 2), y: top, s };
+        empty = dotsOf(lines, Math.round(cols / 2), top + s + 6, true);
+        need = Math.max(height, sourceHeight) + 10;
+      }
+      source = dotsOf(sourceLines, Math.round(cols / 2), Math.round(rows / 2 - sourceHeight / 2), true);
+      return need;
+    }
+    const outline = () => {
+      const { x, y, s } = cell, out: [number, number][] = [];
+      for (let i = 0; i < s; i++) out.push([x + i, y], [x + i, y + s - 1], [x, y + i], [x + s - 1, y + i]);
+      return out;
+    };
+    const boxOf = (dots: [number, number][], pad = 3) => ({ x0: Math.min(...dots.map((d) => d[0])) - pad, y0: Math.min(...dots.map((d) => d[1])) - pad, x1: Math.max(...dots.map((d) => d[0])) + pad, y1: Math.max(...dots.map((d) => d[1])) + pad });
+
+    // A value arrives as a cinnabar stream from the left edge and pours into the cell.
+    function signal() {
+      const group: Particle[] = [];
+      let i = 0;
+      for (let y = cell.y + 3; y < cell.y + cell.s - 3; y += 2) for (let x = cell.x + 3; x < cell.x + cell.s - 3; x += 2) {
+        const p = Object.assign(spawn(-2 - Math.random() * 8, cell.y + cell.s / 2 + Math.sin(i * 0.7) * 5, true), { tx: x, ty: y, seek: true, delay: i++ * 0.012 });
+        particles.push(p);
+        group.push(p);
+      }
+      return group;
+    }
+
+    // --- the score: one pass of about twenty seconds, looped
+    let clock = 0, next = 0, chaos = 1, cellOpen = false, cursor = false, filled = false;
+    const groups: Record<string, Particle[]> = {};
+    const SCORE: [number, () => void][] = [
+      [0, () => { chaos = 1; cellOpen = cursor = filled = false; textBox = NONE; }],
+      [3.2, () => { groups.cell = gather(outline(), false, 0.5); }],
+      [4.4, () => { cellOpen = cursor = true; chaos = 0.75; }],
+      [5.2, () => { groups.empty = gather(empty); textBox = boxOf(empty); }],
+      [8.6, () => { groups.signal = signal(); }],
+      [10.0, () => { cursor = false; filled = true; ripples.push({ x: cell.x + cell.s / 2, y: cell.y + cell.s / 2, t0: clock }); }],
+      [11.6, () => { scatter(groups.empty); scatter(groups.signal, 10); textBox = NONE; }],
+      [12.2, () => { scatter(groups.cell, 22); cellOpen = filled = false; groups.source = gather(source, false, 1.1); textBox = boxOf(source, 4); chaos = 0.6; }],
+      [17.4, () => { scatter(groups.source, 24); textBox = NONE; chaos = 1; }],
+      [20.5, () => { clock = 0; next = 0; }],
+    ];
+
+    // --- pointer: the field swirls around it; a click drops a value there and leaves a mark.
+    let pointer: { x: number; y: number } | null = null;
+    const toGrid = (event: PointerEvent) => {
+      const box = canvas.getBoundingClientRect();
+      return { x: ((event.clientX - box.left) / box.width) * cols, y: ((event.clientY - box.top) / box.height) * rows };
+    };
+    canvas.addEventListener("pointermove", (event) => { pointer = toGrid(event); });
+    canvas.addEventListener("pointerleave", () => { pointer = null; });
+    canvas.addEventListener("pointerdown", (event) => {
+      const at = toGrid(event);
+      ripples.push({ x: at.x, y: at.y, t0: clock });
+      const burst = Array.from({ length: 28 }, () => Object.assign(spawn(at.x, at.y, true), { life: 1.6 }));
+      scatter(burst, 26);
+      burst.forEach((p) => (p.red = true));
+      particles.push(...burst);
+      const x = Math.max(0, Math.min(cols - 1, Math.round(at.x))), y = Math.max(0, Math.min(rows - 1, Math.round(at.y)));
+      mark[y * cols + x] = 1;
+      keep(x / (cols - 1), y / (rows - 1));
+      if (reduce) still();
+    });
+
+    // --- a frame: the field, the cell, the particles and the ripples set each dot's target.
+    function step(dt: number) {
+      clock += dt;
+      while (next < SCORE.length && clock >= SCORE[next][0]) SCORE[next++][1]();
+      const z = clock * 0.18;
+      target.fill(0);
+      red.fill(0);
+      calm.fill(0);
+      // Still regions: the cell once it has an edge, and a margin around any text.
+      if (cellOpen) for (let y = Math.max(0, cell.y - 1); y <= Math.min(rows - 1, cell.y + cell.s); y++) for (let x = Math.max(0, cell.x - 1); x <= Math.min(cols - 1, cell.x + cell.s); x++) calm[y * cols + x] = 1;
+      for (let y = Math.max(0, textBox.y0); y <= Math.min(rows - 1, textBox.y1); y++) for (let x = Math.max(0, textBox.x0); x <= Math.min(cols - 1, textBox.x1); x++) calm[y * cols + x] = 1;
+      for (let y = 0; y < rows; y++) for (let x = 0; x < cols; x++) {
+        const i = y * cols + x;
+        let fx = x * 0.045, fy = y * 0.09;
+        if (pointer) {
+          const dx = x - pointer.x, dy = (y - pointer.y) * 2, k = Math.exp(-Math.hypot(dx, dy) / 14) * 0.028;
+          fx -= dy * k;
+          fy += dx * k;
+        }
+        let f = fbm(fx, fy, z);
+        // Ripples: still water inside, a bright ring, the noise beyond pulled into bands.
+        for (const r of ripples) {
+          const age = clock - r.t0, radius = age * 34, d = Math.hypot(x - r.x, (y - r.y) * 1.9), strength = Math.max(0, 1 - age / 2.2);
+          if (d < radius - 2) f *= 1 - 0.75 * strength;
+          const ring = Math.exp(-((d - radius) ** 2) / 3) * strength;
+          if (ring > 0.3) { target[i] = Math.max(target[i], ring); red[i] = 1; }
+        }
+        // The field stays light and grey so the ink particles read as currents through it.
+        const shade = Math.max(0, (f - 0.46) * 1.7) * chaos * (1 - calm[i]);
+        if (shade > BAYER[(y & 3) * 4 + (x & 3)]) target[i] = Math.max(target[i], 0.32 + shade * 0.35);
+      }
+      ripples = ripples.filter((r) => clock - r.t0 < 2.4);
+      // A filled cell: a cinnabar weave. An empty one: a blinking cursor.
+      if (filled) for (let y = cell.y + 2; y < cell.y + cell.s - 2; y++) for (let x = cell.x + 2; x < cell.x + cell.s - 2; x++) if ((x + y) % 2 === 0) { target[y * cols + x] = 1; red[y * cols + x] = 1; }
+      if (cursor && Math.floor(clock * 2.2) % 2 === 0) {
+        const cx = cell.x + Math.round(cell.s / 2) - 2, cy = cell.y + Math.round(cell.s / 2) - 4;
+        for (let y = cy; y < cy + 8; y++) for (let x = cx; x < cx + 4; x++) target[y * cols + x] = 1;
+      }
+      for (const p of particles) {
+        if (p.seek && p.delay > 0) p.delay -= dt;
+        if (p.seek && p.delay <= 0) {
+          // A critically damped spring toward its dot.
+          const k = 60, c = 2 * Math.sqrt(k);
+          p.vx += ((p.tx - p.x) * k - p.vx * c) * dt;
+          p.vy += ((p.ty - p.y) * k - p.vy * c) * dt;
+        } else if (!p.seek) {
+          // Flow along the curl of the noise, so the swarm circulates instead of draining away.
+          const e = 0.5, fx = p.x * 0.045, fy = p.y * 0.09;
+          const gx = fbm(fx + e, fy, z) - fbm(fx - e, fy, z), gy = fbm(fx, fy + e, z) - fbm(fx, fy - e, z);
+          p.vx += (gy * 60 - p.vx * 1.2) * dt;
+          p.vy += (-gx * 30 - p.vy * 1.2) * dt;
+          if (pointer) {
+            const dx = p.x - pointer.x, dy = (p.y - pointer.y) * 2, d = Math.hypot(dx, dy) + 0.01;
+            if (d < 16) { const k = (1 - d / 16) * 40; p.vx += (-dy / d) * k * dt; p.vy += (dx / d) * k * dt * 0.5; }
+          }
+        }
+        p.x += p.vx * dt;
+        p.y += p.vy * dt;
+        if (!p.seek && p.life === Infinity) { p.x = (p.x + cols) % cols; p.y = (p.y + rows) % rows; }
+        if (p.life !== Infinity) p.life -= dt;
+        const x = Math.round(p.x), y = Math.round(p.y);
+        if (x < 0 || y < 0 || x >= cols || y >= rows) continue;
+        target[y * cols + x] = 1;
+        if (p.red) red[y * cols + x] = 1;
+      }
+      // Spent bursts leave; the resting swarm keeps a steady size.
+      particles = particles.filter((p) => p.life > 0);
+      const free = resting();
+      if (free.length > 420) { const extra = new Set(free.slice(420)); particles = particles.filter((p) => !extra.has(p)); }
+    }
+
+    function draw() {
+      const r = pitch * 0.36;
+      ctx.fillStyle = GLASS;
+      ctx.fillRect(-pitch, 0, cols * pitch + 2 * pitch, rows * pitch);
+      // One fill per colour: dots are batched by their quantised shade.
+      const batches = new Map<string, number[]>();
+      for (let y = 0; y < rows; y++) for (let x = 0; x < cols; x++) {
+        const i = y * cols + x;
+        const q = Math.round(level[i] * 8) / 8;
+        const base = mark[i] ? OFF.map((c, k) => c + (RED[k] - c) * 0.45) : OFF;
+        const on = red[i] ? RED : INK;
+        const colour = base.map((c, k) => Math.round(c + (on[k] - c) * q)).join(",");
+        let list = batches.get(colour);
+        if (!list) batches.set(colour, (list = []));
+        list.push(x, y);
+      }
+      for (const [colour, list] of batches) {
+        ctx.fillStyle = `rgb(${colour})`;
+        ctx.beginPath();
+        for (let k = 0; k < list.length; k += 2) {
+          const cx = (list[k] + 0.5) * pitch, cy = (list[k + 1] + 0.5) * pitch;
+          ctx.moveTo(cx + r, cy);
+          ctx.arc(cx, cy, r, 0, Math.PI * 2);
+        }
+        ctx.fill();
+      }
+    }
+
+    let running = false, last = 0;
+    function frame(now: number) {
+      const dt = Math.min(0.05, (now - last) / 1000);
+      last = now;
+      step(dt);
+      // Liquid crystal: dots darken toward their target and clear more slowly, so motion leaves a trail.
+      const rise = 1 - Math.exp(-dt * 26), fall = 1 - Math.exp(-dt * 11);
+      for (let i = 0; i < level.length; i++) { const d = target[i] - level[i]; level[i] += d * (d > 0 ? rise : fall); }
+      draw();
+      if (running) requestAnimationFrame(frame);
+    }
+    // Reduced motion: one still frame, the noise held and the line formed.
+    function still() {
+      particles = [];
+      clock = 13; next = SCORE.length;
+      chaos = 0.6;
+      textBox = boxOf(source, 4);
+      step(0);
+      for (const [x, y] of source) target[y * cols + x] = 1;
+      level.set(target);
+      draw();
+    }
+    function restart() {
+      particles = [];
+      ripples = [];
+      for (let n = 0; n < 340; n++) particles.push(spawn(Math.random() * cols, Math.random() * rows));
+      clock = 0; next = 0;
+    }
+    new IntersectionObserver(([entry]) => {
+      const was = running;
+      running = entry.isIntersecting && !reduce;
+      if (running && !was) { last = performance.now(); requestAnimationFrame(frame); }
+    }).observe(root);
+    let width = 0;
+    new ResizeObserver(() => {
+      if (canvas.clientWidth === width) return;
+      width = canvas.clientWidth;
+      resize();
+      restart();
+      if (reduce) still();
+    }).observe(canvas);
+  }
+</script>

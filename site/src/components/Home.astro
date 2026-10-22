@@ -2,12 +2,13 @@
 import Base from "../layouts/Base.astro";
 import ClaimTape from "./ClaimTape.astro";
 import Forest from "./Forest.astro";
+import NullScreen from "./NullScreen.astro";
 import isoCss from "../../figures/kit/iso.css?raw";
 import { PAPERS, figureSvgOf, paperOf, statsOf, vtFigure, vtTitle, type Lang } from "../lib/papers";
 import { claimsOf } from "../lib/claims";
 import { T, fill, paperHref, papersHref } from "../lib/i18n";
 
-// The opening frame, one line of what the site is, the forest of papers and the latest ones; the full index is /papers/.
+// The opening screen, one line of what the site is, the forest of papers and the latest ones; the full index is /papers/.
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const t = T[lang];
@@ -22,7 +23,7 @@ const latest = [...papers]
 <Base lang={lang} title={`${t.site} · ${t.tagline.replace("|", lang === "zh" ? "" : " ")}`} alternate={t.otherHref}>
   <style is:global set:html={isoCss}></style>
   <div class="wrap">
-    <div class="creation-frame"><p>{t.creationCaption}</p></div>
+    <NullScreen lang={lang} />
     <section class="hero prose">
       <h1>{t.tagline.split("|").map((phrase) => <span class="phrase">{phrase}</span>)}</h1>
       <p class="lede">{t.lede}</p>

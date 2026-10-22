@@ -135,9 +135,10 @@ h2 .count { margin-left: 10px; font: 13px/1 var(--mono); color: var(--muted); ve
 .pager a:hover span { color: var(--cinnabar); }
 .pager .next { text-align: right; align-items: flex-end; }
 
-/* Home: the opening frame (empty for now), then the latest papers as cards. */
-.creation-frame { display: flex; align-items: center; justify-content: center; min-height: clamp(180px, 30vw, 320px); margin-top: 40px; padding: 24px; border: 2.5px solid var(--ink); border-radius: 14px; box-shadow: inset 0 0 0 10px var(--paper), inset 0 0 0 11.5px var(--rule); background: var(--paper); }
-.creation-frame p { margin: 0; font-family: var(--serif); font-size: clamp(17px, 2.4vw, 24px); color: var(--ink); text-align: center; text-wrap: balance; }
+/* Home: the opening screen, then the latest papers as cards. */
+/* The opening: a dot-matrix screen in an inked bezel. */
+.nullscreen { margin: 40px 0 0; padding: 18px; background: var(--paper); border: 2.5px solid var(--ink); border-radius: 14px; box-shadow: inset 0 0 0 10px var(--paper), inset 0 0 0 11.5px var(--rule); cursor: crosshair; -webkit-tap-highlight-color: transparent; }
+.ns-screen { display: block; width: 100%; border-radius: 3px; touch-action: pan-y; }
 .tally { margin: 18px 0 0; font: 13.5px/1.6 var(--sans); color: var(--muted); }
 .tally b { font: 600 13.5px/1.6 var(--mono); color: var(--ink); margin-right: 5px; }
 .tally .ok { color: #2f7d4f; white-space: nowrap; }
@@ -285,6 +286,7 @@ footer.site { margin: 96px 0 0; padding: 32px 0 56px; border-top: 1px solid var(
 
 @media (max-width: 720px) {
   nav.site { gap: 16px; }
+  .nullscreen { margin-top: 24px; padding: 12px; border-radius: 10px; box-shadow: inset 0 0 0 7px var(--paper), inset 0 0 0 8.5px var(--rule); }
   .forest { grid-template-columns: 1fr; gap: 20px; }
   .grove { grid-template-columns: 30px 80px minmax(0, 1fr); }
   .seed { padding-right: 4px; font-size: 30px; }
