@@ -9,7 +9,7 @@ import { fileURLToPath } from "node:url";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const OUT = join(HERE, "../.og");
-const FIGURES = ["source-tape", "pairing-balance", "current-witness", "curvature-dome"];
+const FIGURES = ["source-tape", "pairing-balance", "current-witness", "curvature-dome", "ghost-register"];
 const isoCss = readFileSync(join(HERE, "../figures/kit/iso.css"), "utf8");
 
 const PAGE_CSS = `

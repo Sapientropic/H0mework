@@ -139,6 +139,7 @@ export const PAPERS: PaperEntry[] = [
     slug: "one-bit",
     theme: "preface",
     editions: [{ release: "one-bit", doi: "10.5281/zenodo.23437456" }],
+    figure: { name: "ghost-register", claim: "ob.OB2" },
   },
   {
     slug: "source-process-core",
