@@ -1,6 +1,6 @@
 name: Site
 
-# Builds site/ (which reads papers/, docs/ and the Lean files the claim maps name at build time)
+# Builds site/ (which reads papers/, docs/, tools/export-map.json and the Lean files its claim rows name)
 # and publishes it to Cloudflare Pages: main → h0mework.wiki, other branches and PRs → preview URLs.
 on:
   push:
@@ -9,6 +9,7 @@ on:
       - site/**
       - papers/**
       - docs/*-map.json
+      - tools/export-map.json
       - .github/workflows/site.yml
   pull_request:
     paths: *site-inputs
@@ -36,21 +37,15 @@ jobs:
             /site/
             /papers/
             /docs/
-      # Later maps list declarations without line numbers; the build finds them in the mapped files.
-      - name: Check out mapped Lean files
-        run: |
-          python3 - <<'PY' | git sparse-checkout add --stdin
-          import glob, json
-          paths = {producer["public"]["path"]
-                   for map_path in glob.glob("docs/*-map.json")
-                   for claim in json.load(open(map_path)).get("claims", [])
-                   for producer in claim.get("producers", [])
-                   if producer.get("kind") == "lean" and producer.get("public")}
-          print("\n".join("/" + path for path in sorted(paths)))
-          PY
+            /tools/export-map.json
       - uses: oven-sh/setup-bun@v2
         with:
           bun-version: 1.3.9
+      # Later maps list declarations without line numbers; the build finds them in the Lean files it
+      # reads. The site lists those files itself, from the same adapters that build the claim rows.
+      - name: Check out the Lean files the site reads
+        working-directory: site
+        run: bun scripts/lean-paths.ts | git sparse-checkout add --stdin
       - name: Build
         working-directory: site
         run: |

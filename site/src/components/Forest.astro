@@ -13,18 +13,22 @@ const ROW = 46; // row height in px; the branch line sits LINE px below a row's 
 const LINE = 30;
 const FAN = 80; // width of the fan of branches from the 0, drawn 1:1
 let phase = 0;
-const rows = THEMES.map((theme) => {
-  const published = ORDERED.filter((entry) => entry.theme === theme.id).map((entry) => {
-    const paper = paperOf(entry.slug, lang);
-    const stats = statsOf(entry.slug);
-    return {
-      href: paperHref(lang, entry.slug),
-      title: paper.main,
-      sub: paper.sub,
-      meta: [paper.series?.[lang] ?? theme.label[lang], paper.editions.length > 1 ? fill(t.edition, paper.current.number) : null, paper.current.date].filter(Boolean).join(" · "),
-      stats: `${stats.claims} ${t.statClaims} · ${stats.modules} ${t.statModules}`,
-    };
-  });
+const card = (slug: string, fallback: string) => {
+  const paper = paperOf(slug, lang);
+  const stats = statsOf(slug);
+  return {
+    href: paperHref(lang, slug),
+    title: paper.main,
+    sub: paper.sub,
+    meta: [paper.series?.[lang] ?? fallback, paper.editions.length > 1 ? fill(t.edition, paper.current.number) : null, paper.current.date].filter(Boolean).join(" · "),
+    stats: `${stats.claims} ${t.statClaims} · ${stats.modules} ${t.statModules}`,
+  };
+};
+// The preface is the root the branches grow from: the 0 itself, not one of the branches.
+const preface = ORDERED.find((entry) => entry.theme === "preface");
+const root = preface && card(preface.slug, THEMES.find((theme) => theme.id === "preface")!.label[lang]);
+const rows = THEMES.filter((theme) => theme.id !== "preface").map((theme) => {
+  const published = ORDERED.filter((entry) => entry.theme === theme.id).map((entry) => card(entry.slug, theme.label[lang]));
   const upcoming = UPCOMING[theme.id] ?? { count: 0 };
   // Written papers sit next to the published ones; each hollow node starts its cycle at its own phase.
   const hollow = Array.from({ length: upcoming.count }, (_, i) => ({ soon: i < (upcoming.soon ?? 0), phase: (phase++ * 0.618) % 1 }));
@@ -32,13 +36,17 @@ const rows = THEMES.map((theme) => {
 }).filter((row) => row.published.length + row.hollow.length > 0);
 const height = rows.length * ROW;
 const counted = (template: string, n: number, m: number) => template.replace("{n}", String(n)).replace("{m}", String(m));
-const totals = { published: rows.reduce((n, row) => n + row.published.length, 0), hollow: rows.reduce((n, row) => n + row.hollow.length, 0) };
+const totals = { published: rows.reduce((n, row) => n + row.published.length, root ? 1 : 0), hollow: rows.reduce((n, row) => n + row.hollow.length, 0) };
 ---
 <section class="section" id="forest">
   <h2>{t.forest}</h2>
   <div class="forest" style={`--row:${ROW}px;--line:${LINE}px`}>
     <div class="grove">
-      <span class="seed" aria-hidden="true">0</span>
+      {root ? (
+        <a class="seed" href={root.href} aria-label={root.title} data-meta={root.meta} data-title={root.title} data-sub={root.sub} data-stats={root.stats}>0</a>
+      ) : (
+        <span class="seed" aria-hidden="true">0</span>
+      )}
       <svg class="fan" viewBox={`0 0 ${FAN} ${height}`} width={FAN} height={height} aria-hidden="true">
         {rows.map((_, i) => <path d={`M0 ${height / 2} C${FAN / 2} ${height / 2} ${FAN / 2} ${i * ROW + LINE} ${FAN} ${i * ROW + LINE}`} pathLength="1" style={`--i:${i}`} />)}
       </svg>
@@ -106,7 +114,7 @@ const totals = { published: rows.reduce((n, row) => n + row.published.length, 0)
       if (node) keys.forEach((key, i) => (fields[i].textContent = node.dataset[key] ?? ""));
       detail.classList.toggle("pending", Boolean(node?.classList.contains("up")));
     };
-    forest.querySelectorAll<HTMLElement>(".grove .node").forEach((node) => {
+    forest.querySelectorAll<HTMLElement>(".grove .node, .grove .seed[data-title]").forEach((node) => {
       node.addEventListener("pointerenter", () => show(node));
       node.addEventListener("focus", () => show(node));
       node.addEventListener("blur", () => show(null));

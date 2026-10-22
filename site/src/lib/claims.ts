@@ -3,7 +3,7 @@
 import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
-import { RELEASES, entryOf, manuscriptOf, mapOf, once, read, readJson, repoLink, type Lang, type ReleaseId } from "./registry";
+import { entryOf, manuscriptOf, mapOf, once, read, readJson, repoLink, selectionOf, type Lang, type ReleaseId } from "./registry";
 
 type Declaration = { name?: string; qualified_name: string; line?: number };
 type Producer = {
@@ -89,7 +89,7 @@ function resultsAt(intake: any, slug: string, lang: Lang) {
 
 function secondEdition(slug: string, edition: number): Source[] {
   const claims = mapOf("second-edition").claims.filter((claim: any) => claim.paper === slug);
-  const selection = once("selection:second", () => readJson(RELEASES["second-edition"].selection!));
+  const selection = selectionOf("second-edition");
   return selection.intake
     .filter((intake: any) => intake.paper === slug)
     .map((intake: any) => {
@@ -105,10 +105,98 @@ function secondEdition(slug: string, edition: number): Source[] {
     });
 }
 
+// The whole-ledger map names each producer by its research source and commit; the export map says
+// which public module carries that source at that commit.
+const moduleOf = (path: string) => path.replace(/^Lean\//, "").replace(/\.lean$/, "").replace(/\//g, ".");
+const exportIndex = () =>
+  once("export-index", () => {
+    const index = new Map<string, { path: string; revisions: string[] }[]>();
+    for (const row of readJson("tools/export-map.json").modules) {
+      const rows = index.get(row.source_path) ?? [];
+      rows.push({ path: row.path, revisions: row.source_revisions ?? [row.source_revision] });
+      index.set(row.source_path, rows);
+    }
+    return index;
+  });
+function publicOf(commit: string, sourcePath: string) {
+  const row = exportIndex().get(sourcePath)?.find((candidate) => candidate.revisions.includes(commit));
+  return row && { path: row.path, module: moduleOf(row.path) };
+}
+
+// Locations are registered in Chinese; the English page names the same results in English and keeps
+// only the section of a reference that is a description rather than a result.
+const TERMS: [RegExp, string][] = [
+  [/主定理/g, "Main theorem "], [/定理/g, "Theorem "], [/命题/g, "Proposition "], [/引理/g, "Lemma "], [/推论/g, "Corollary "],
+  [/定义/g, "Definition "], [/反例/g, "Counterexample "], [/反证/g, "Refutation "], [/实例/g, "Example "], [/图/g, "Figure "],
+  [/具名复用/g, "Named reuse "], [/补充|補充/g, "Supplement "], [/附录/g, "Appendix "], [/及/g, " and "], [/、/g, ", "], [/；/g, "; "],
+];
+function englishLocation(zh: string) {
+  const parts = zh.split(/\s*\/\s*/).map((part) => {
+    let text = part;
+    for (const [pattern, word] of TERMS) text = text.replace(pattern, word);
+    text = text.replace(/\s+/g, " ").replace(/\s+([,;])/g, "$1").trim();
+    return /[\u4e00-\u9fff]/.test(text) ? text.match(/^§[\d.,–§ ]*\d/)?.[0] ?? null : text;
+  });
+  return parts.filter(Boolean).join(" / ") || null;
+}
+
+function wholeLedger(slug: string, edition: number): Source[] {
+  const published = new Map<string, any>(selectionOf("whole-ledger").claims.map((claim: any) => [claim.id, claim]));
+  return mapOf("whole-ledger")
+    .claims.filter((claim: any) => claim.paper === slug)
+    .map((claim: any) => {
+      const zh = published.get(claim.id)?.body?.location ?? null;
+      return {
+        key: `wla.${claim.id}`,
+        ids: [`wla.${claim.id}`],
+        edition,
+        text: { title: claim.title.replace(/^WA\d+\s*/, ""), statement: claim.statement_scope ?? null },
+        location: { zh, en: zh && englishLocation(zh) },
+        producers: claim.producers
+          .map((producer: any) => ({ kind: "lean", public: publicOf(producer.source_commit, producer.source_path), declarations: producer.declarations.map((decl: any) => ({ qualified_name: decl.qualified_name })) }))
+          .filter((producer: Producer) => producer.public),
+      };
+    });
+}
+
+// One-bit rows come from the published selection: its titles, its manuscript anchors, and each
+// claim's verified H0 bindings, the public modules of the claims it reuses and of its own control.
+const ANCHORS: Record<string, Record<Lang, string>> = {
+  thm: { zh: "定理", en: "Theorem" }, def: { zh: "定义", en: "Definition" }, prop: { zh: "命题", en: "Proposition" },
+  cor: { zh: "推论", en: "Corollary" }, lem: { zh: "引理", en: "Lemma" },
+};
+function anchorLabel(anchor: string, lang: Lang) {
+  const [kind, ...rest] = anchor.split("#").pop()!.split("-");
+  if (kind === "sec") return `§${rest.join(".")}`;
+  if (kind === "appendix") return `${lang === "zh" ? "附录" : "Appendix"} ${rest[0].toUpperCase()}`;
+  return ANCHORS[kind] ? `${ANCHORS[kind][lang]} ${rest.map((part) => part.toUpperCase()).join(".")}` : anchor;
+}
+function oneBit(slug: string, edition: number): Source[] {
+  return selectionOf("one-bit").claims.map((claim: any) => ({
+    key: `ob.${claim.id}`,
+    ids: [`ob.${claim.id}`],
+    edition,
+    text: { title: claim.title, statement: null },
+    location: {
+      zh: claim.written.zh.map((anchor: string) => anchorLabel(anchor, "zh")).join("；"),
+      en: claim.written.en.map((anchor: string) => anchorLabel(anchor, "en")).join("; "),
+    },
+    producers: claim.h0
+      .filter((binding: any) => binding.identity === "verified")
+      .map((binding: any) => {
+        const path = binding.target_path ?? `Lean/${binding.target_module.replace(/\./g, "/")}.lean`;
+        const source = claim.sources.find((entry: any) => entry.path === binding.source_path);
+        return { kind: "lean", public: { path, module: binding.target_module }, declarations: (source?.declarations ?? []).map((name: string) => ({ qualified_name: name })) };
+      }),
+  }));
+}
+
 const ADAPTERS: Record<ReleaseId, (slug: string, edition: number) => Source[]> = {
   "first-release": firstRelease,
   "second-edition": secondEdition,
   "low-energy": lowEnergy,
+  "whole-ledger": wholeLedger,
+  "one-bit": oneBit,
 };
 
 // --- translations -----------------------------------------------------------------------------
@@ -169,7 +257,7 @@ function modulesOf(producers: Producer[]) {
 // Reading order from the first reference: chapters by number, appendices after the main text.
 function orderOf(location: string | null): number[] {
   const head = location?.split(/[；;]/)[0] ?? "";
-  const appendix = head.match(/(?:附录|Appendix)\s*([A-Z])(?:\.(\d+))?/) ?? head.match(/^([A-Z])\.(\d+)/);
+  const appendix = head.match(/(?:附录|Appendix)\s*([A-Z])(?:\.(\d+))?/) ?? head.match(/(?:^|\s)([A-Z])\.(\d+)/);
   if (appendix) return [100 + appendix[1].charCodeAt(0) - 65, Number(appendix[2] ?? 0)];
   const numbers = head.match(/(\d+)(?:\.(\d+))?/);
   return numbers ? [Number(numbers[1]), Number(numbers[2] ?? 0)] : [999, 0];
@@ -232,3 +320,6 @@ export function claimsOf(slug: string, lang: Lang) {
 
 // Sources keyed for the translation layers, used by scripts/translations.ts.
 export const sourcesOf = (slug: string) => entryOf(slug).editions.flatMap((edition, index) => ADAPTERS[edition.release](slug, index + 1));
+
+// Every public Lean file the pages read, for the site workflow's sparse checkout (scripts/lean-paths.ts).
+export const leanPaths = (slugs: string[]) => [...new Set(slugs.flatMap(sourcesOf).flatMap((source) => leanOf(source.producers).map((producer) => producer.public!.path)))].sort();
