@@ -7,6 +7,7 @@ import { fileURLToPath } from "node:url";
 import * as k from "../kit/iso-kit.mjs";
 import * as G from "../kit/lathe.mjs";
 import { balance, classicalCurrent } from "./model.mjs";
+import { shipped, SWING_CSS, swingSource } from "../swing.mjs";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const theme = process.argv.includes("--light") ? "light" : "dark";
@@ -32,12 +33,10 @@ const CLOCK = { at: [-66, 30], r: 13, h: 5 };
 const SWITCH = { x: 34, y: 26, w: 42, d: 10, r: 2, on: 47, off: 69 };
 const LEVEL = [-36, 34];
 
-const P = k.fitProjection(
-  [...k.boxCorners(PLATE, -PLATE_H - FOOT_H, 0), [-BEAM.half - 4, 0, PIVOT[2] + 20], [BEAM.half + 4, 0, PIVOT[2] + 20], [0, 0, PIVOT[2] + 12]],
-  WIDTH,
-  HEIGHT,
-  { pad: 26, azimuth: 90 },
-);
+const FIT = [...k.boxCorners(PLATE, -PLATE_H - FOOT_H, 0), [-BEAM.half - 4, 0, PIVOT[2] + 20], [BEAM.half + 4, 0, PIVOT[2] + 20], [0, 0, PIVOT[2] + 12]];
+const P = k.fitProjection(FIT, WIDTH, HEIGHT, { pad: 26, azimuth: 90 });
+// The page swings the view (../swing.mjs), framed by the same fit, and redraws `composition` there.
+const FRAME = { points: FIT, width: WIDTH, height: HEIGHT, pad: 26 };
 
 const at = (point) => k.iso(point, P);
 const S = (paths, style) => k.solidSvg(paths, style);
@@ -235,13 +234,8 @@ const side = (sideSign) => [
   `<g data-part="strings-front-${sideSign < 0 ? "left" : "right"}">${strings(kitLocal, P, 0, sideSign, true)}</g>`,
 ].join("");
 
-const svg = k.figureSvg({
-  width: WIDTH,
-  height: HEIGHT,
-  className: "pb-svg",
-  label:
-    "An equal-arm balance. The left pan holds brass weights: the classical current J, computed by hand. The right pan holds the quantum state, two discs whose phases turn in opposite directions. A slide marked S on the base chooses whether the quantum side is read with the independent dual's exchange. With S in, the beam stays level at every time; with S out, it tips as time runs and falls fully to the classical side at the dark moment.",
-  body: [
+function composition() {
+  return [
     plate(),
     plinth(),
     level(),
@@ -257,41 +251,52 @@ const svg = k.figureSvg({
     clock(),
     switchPlate(),
     `<g data-part="knob" transform="${k.translateAlong(P, [SWITCH.on, 0, 0])}">${switchKnob()}</g>`,
-  ],
+  ].join("");
+}
+
+const svg = k.figureSvg({
+  width: WIDTH,
+  height: HEIGHT,
+  className: "pb-svg",
+  label:
+    "An equal-arm balance. The left pan holds brass weights: the classical current J, computed by hand. The right pan holds the quantum state, two discs whose phases turn in opposite directions. A slide marked S on the base chooses whether the quantum side is read with the independent dual's exchange. With S in, the beam stays level at every time; with S out, it tips as time runs and falls fully to the classical side at the dark moment.",
+  body: composition(),
 });
 
 const CSS = `
 .iso-stage{outline:none;cursor:pointer;touch-action:pan-y}
 .iso-stage:focus-visible{box-shadow:0 0 0 1px var(--anatomy-mid)}
+${SWING_CSS}
 @media (max-width:560px){.iso-plate:has(.pb-svg){overflow:hidden}.pb-svg.iso-svg{width:116%;max-width:none;margin:0 -8%}}
 `;
 
 const strip = (file) => readFileSync(join(HERE, file), "utf8").replace(/^export /gm, "");
 const kitSource = strip("../kit/iso-kit.mjs");
 // lathe.mjs shares a few helper names with the core, so it lives in its own scope.
-const latheSource = `const LATHE = (() => {\n${strip("../kit/lathe.mjs").replace(/^import .*$/gm, "")}\nreturn { prismOf, frameOf };\n})();`;
-const modelSource = strip("model.mjs");
+const latheSource = `const LATHE = (() => {\n${strip("../kit/lathe.mjs").replace(/^import .*$/gm, "")}\nreturn { ${Object.keys(G).join(", ")} };\n})();`;
+// The model has its own k and S, so it too lives in its own scope.
+const modelSource = `const { balance, classicalCurrent } = (() => {\n${strip("model.mjs")}\nreturn { balance, classicalCurrent };\n})();`;
 const live = `
-const P = ${JSON.stringify(P)};
-const PIVOT = ${JSON.stringify(PIVOT)}, BEAM = ${JSON.stringify(BEAM)}, DROP = ${DROP}, PAN = ${JSON.stringify(PAN)}, TILT = ${TILT};
-const NEEDLE = ${JSON.stringify(NEEDLE)}, CLOCK = ${JSON.stringify(CLOCK)}, SWITCH = ${JSON.stringify(SWITCH)}, UP = ${UP};
-const STRING_ANGLES = ${JSON.stringify(STRING_ANGLES)};
-const kit = { lineOnTop, solidSvg, lineSvg, dotsSvg, wireSvg, pathOf, iso };
+const P0 = ${JSON.stringify(P)};
+let P = P0;
+${shipped({ PLATE, PLATE_H, FOOT_H, PLINTH, PILLAR, PIVOT, BEAM, DROP, PAN, TILT, NEEDLE, SCALE, CLOCK, SWITCH, LEVEL, UP, STRING_ANGLES, FRAME })}
+const k = { ${Object.keys(k).join(", ")} };
+const kit = k, kitLocal = k;
 const G = LATHE;
-const beamFrame = ${beamFrame.toString()};
-const hookOf = ${hookOf.toString()};
-const panTop = ${panTop.toString()};
-const strings = ${strings.toString()};
-const beamSvg = ${beamSvg.toString()};
-const needleD = ${needleD.toString()};
-const pointerOnTop = ${pointerOnTop.toString()};
+const at = (point) => k.iso(point, P);
+const S = (paths, style) => k.solidSvg(paths, style);
+const L = (d, style) => k.lineSvg(d, style);
+const D = (points, style) => k.dotsSvg(points, style);
+const byDepth = ${byDepth.toString()};
+${shipped({ beamFrame, hookOf, panTop, strings, beamSvg, needleD, pointerOnTop, plate, plinth, pillar, scale, pan, weights, statePuck, clock, level, switchPlate, switchKnob, panGroup, side, composition })}
+${swingSource}
 const root = document.querySelector('[data-figure="pairing-balance"]');
 const stage = root.querySelector(".iso-stage");
 const part = (name) => stage.querySelector('[data-part="' + name + '"]');
 const readout = root.querySelector("[data-readout]");
 const still = matchMedia("(prefers-reduced-motion: reduce)");
 const BEAM_AT = PIVOT, J = classicalCurrent;
-let u = 1, withS = true, phi = 0, rate = 0, knobX = SWITCH.on, clock = 0;
+let u = 1, withS = true, phi = 0, rate = 0, knobX = SWITCH.on, tourClock = 0;
 let touring = !still.matches, visible = false, frame = 0, last = 0, idle = 0, target = null;
 // Idle tour: time runs; every 9 s the slide flips, so the beam alternates level and swinging.
 const tourS = (t) => Math.floor(t / 9) % 2 === 0;
@@ -301,6 +306,10 @@ function draw(dt) {
   const want = (TILT * b.gap) / (2 * J);
   if (still.matches || !dt) { phi = want; rate = 0; }
   else for (let i = 0; i < 4; i++) { rate += ((want - phi) * 40 - rate * 7) * dt / 4; phi += rate * dt / 4; }
+  knobX = still.matches || !dt ? SWITCH[withS ? "on" : "off"] : knobX + (SWITCH[withS ? "on" : "off"] - knobX) * (1 - Math.exp(-dt / 0.15));
+  paint(b);
+}
+function paint(b = balance(u, withS)) {
   part("beam").innerHTML = beamSvg(kit, G, P, phi);
   part("needle").setAttribute("d", needleD(kit, P, phi));
   for (const [sign, name] of [[-1, "left"], [1, "right"]]) {
@@ -313,7 +322,6 @@ function draw(dt) {
   part("phase-upper").setAttribute("d", pointerOnTop(kit, P, [BEAM.arm, 0], UP + b.theta, 6.4, 9.6, z - 1.2 + 0.05));
   part("phase-lower").setAttribute("d", pointerOnTop(kit, P, [BEAM.arm, 0], UP - b.theta, 0, 4.4, z + 1.6));
   part("clock").setAttribute("d", pointerOnTop(kit, P, CLOCK.at, UP + (u * Math.PI) / 2, -2, CLOCK.r - 2.8, CLOCK.h + 1.05));
-  knobX = still.matches || !dt ? SWITCH[withS ? "on" : "off"] : knobX + (SWITCH[withS ? "on" : "off"] - knobX) * (1 - Math.exp(-dt / 0.15));
   part("knob").setAttribute("transform", translateAlong(P, [knobX, 0, 0]));
   const shown = (u % 4).toFixed(2);
   const text = "u " + shown + " · " + (withS ? root.dataset.with : root.dataset.without) + " · " + root.dataset.classical + " " + fmt(b.classical) + " · " + root.dataset.quantum + " " + fmt(b.quantum);
@@ -323,13 +331,13 @@ function draw(dt) {
 function tick(time) {
   const dt = last ? Math.min((time - last) / 1000, 1 / 30) : 1 / 60;
   last = time;
-  if (touring) { clock += dt; u = (u + dt * 0.25) % 4; withS = tourS(clock); }
+  if (touring) { tourClock += dt; u = (u + dt * 0.25) % 4; withS = tourS(tourClock); }
   else if (target !== null) { u += (target - u) * (1 - Math.exp(-dt / 0.25)); if (Math.abs(target - u) < 1e-4) { u = target; target = null; } }
   draw(dt);
   frame = visible ? requestAnimationFrame(tick) : 0;
 }
 const run = () => { if (!frame && visible && !still.matches) { last = 0; frame = requestAnimationFrame(tick); } };
-const hold = () => { touring = false; clearTimeout(idle); idle = setTimeout(() => { touring = !still.matches; clock = withS ? 0 : 9; run(); }, 6000); };
+const hold = () => { touring = false; clearTimeout(idle); idle = setTimeout(() => { touring = !still.matches; tourClock = withS ? 0 : 9; run(); }, 6000); };
 const steer = (next) => { hold(); target = next; if (still.matches) { u = next; target = null; draw(0); } run(); };
 const flip = () => { hold(); withS = !withS; if (still.matches) draw(0); run(); };
 stage.addEventListener("keydown", (event) => {
@@ -346,12 +354,15 @@ stage.addEventListener("click", flip);
 new IntersectionObserver((entries) => { visible = entries[entries.length - 1].isIntersecting; if (visible) run(); }, { rootMargin: "120px 0px" }).observe(stage);
 if (still.matches) { withS = false; touring = false; }
 draw(0);
+// A sideways drag swings the view (../swing.mjs): everything is redrawn from there, then the moving parts.
+const svg = stage.querySelector("svg");
+mountSwing(stage, { onHold: hold, onSwing: (angle) => { P = swingOf(iso, P0, FRAME, angle); svg.innerHTML = composition(); paint(); } });
 `;
 
 const COPY = {
   en: {
     title: "Classical–quantum pairing",
-    hint: "Click: slide S in or out · ← →: time",
+    hint: "Drag: look round · click: slide S · ← →: time",
     keys: ["Beam: level means the two sides read the same current", "Left pan J by hand; right pan the state's two phases", "S: read with the independent dual's exchange"],
     refs: ["Theorem 6.2", "Example 6.6"],
     caption: [
@@ -368,7 +379,7 @@ const COPY = {
   },
   zh: {
     title: "经典—量子配对",
-    hint: "点击：推入或拉出 S · ← →：时间",
+    hint: "拖动侧看 · 点击推拉 S · ← → 时间",
     keys: ["横梁：水平即两侧读出同一个电流", "左盘为手算的 J；右盘为占据态的两个相位", "S：按独立对偶的交换读数"],
     refs: ["定理 6.2", "例 6.6"],
     caption: [

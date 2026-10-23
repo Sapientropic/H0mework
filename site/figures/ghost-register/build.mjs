@@ -8,6 +8,7 @@ import { fileURLToPath } from "node:url";
 import * as k from "../kit/iso-kit.mjs";
 import * as G from "../kit/lathe.mjs";
 import * as M from "./model.mjs";
+import { shipped, SWING_CSS, swingSource } from "../swing.mjs";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const theme = process.argv.includes("--light") ? "light" : "dark";
@@ -56,6 +57,8 @@ const HEIGHT = (() => {
   return Math.ceil(Math.max(...ys) - Math.min(...ys) + 2 * VIEW.pad);
 })();
 const P = k.fitProjection(FIT, WIDTH, HEIGHT, VIEW);
+// The page swings the view (../swing.mjs), framed by the same fit, and redraws `composition` there.
+const FRAME = { points: FIT, width: WIDTH, height: HEIGHT, pad: VIEW.pad };
 
 // --- live drawing: one factory shared by the build (first frame) and the page --------------
 
@@ -439,8 +442,10 @@ function recess({ x0, x1, z0, z1, r, depth }, y, back = "", backPaint = PAINT.we
     // The wall's normal points into the window; it is seen when it faces the viewer.
     if (nx * G.viewOf(P)[0] + nz * G.viewOf(P)[2] <= 0) return;
     const quad = k.pathOf([at([ax, y, az]), at([bx, y, bz]), at([bx, y - depth, bz]), at([ax, y - depth, az])], true);
-    if (nz > 0.7) tops.push(quad);
-    else sides[G.bandOf(nx * light[0] + nz * light[2])].push(quad);
+    // The lightest band is the kit's top tone, as on a turned part: a wall turned full to the light (which a
+    // swung view can do) shades like a top.
+    const band = nz > 0.7 ? 4 : G.bandOf(nx * light[0] + nz * light[2]);
+    (band === 4 ? tops : sides[band]).push(quad);
   });
   const shape = faceRect(x0, z0, x1, z1, r);
   return [
@@ -501,7 +506,7 @@ function mat() {
   return out.join("");
 }
 
-function register() {
+function cashRegister() {
   const { PLINTH, CAB, UPPER, CAP, Z: H, DRAWER: DR, JOURNAL: JO, COUNTER: CN, NAME } = C;
   const out = [`<path class="iso-halo" d="${k.haloOf(PLINTH, 0, 10, P)}"/>`];
   // Bun feet under the plinth.
@@ -530,7 +535,7 @@ function register() {
   // The till opening; the drawer front covers it until the crank lets the drawer out.
   const opening = { x0: DR.x0, x1: DR.x1, z0: DR.z0, z1: DR.z1, r: 0.8, depth: 4 };
   out.push(recess(opening, C.FRONT, "", PAINT.dark));
-  out.push(`<g data-part="till">${LIVE.drawer(0)}</g>`);
+  out.push(`<g data-part="till">${rest(() => LIVE.drawer(0))}</g>`);
   // The ledge in front of the upper case.
   out.push(L(k.planOutline({ x: CAB.x + 4, y: C.UFRONT + 3, w: CAB.w - 8, d: C.FRONT - C.UFRONT - 6, r: 1.5 }, H.cab, P, 4), { tone: "faint" }));
   // The upper case, with bands at its foot and under its cap.
@@ -542,7 +547,7 @@ function register() {
   const paper = jBack + 0.6;
   const roller = (z) => `<g transform="${front(paper + 1.4)}"><path style="${PAINT["roller"]}" d="${rect(JO.x0 - 2, -(z + 2.2), JO.x1 + 2, -(z - 2.2), 0)}"/>${L(`M${JO.x0 - 2} ${-(z + 1.1)}H${JO.x1 + 2}M${JO.x0 - 2} ${-(z - 1.3)}H${JO.x1 + 2}`, { tone: "faint" })}${L(`M${JO.x0 - 2} ${-(z + 2.2)}H${JO.x1 + 2}M${JO.x0 - 2} ${-(z - 2.2)}H${JO.x1 + 2}`, { tone: "lo" })}</g>`;
   const ribbon = `<g transform="${front(paper + 1)}"><path style="${PAINT["ribbon"]}" d="${rect(JO.x0 - 2, -(JO.print - 2.2), JO.x1 + 2, -(JO.print - 4.2), 0)}"/>${L(`M${JO.x0 - 2} ${-(JO.print - 2.2)}H${JO.x1 + 2}M${JO.x0 - 2} ${-(JO.print - 4.2)}H${JO.x1 + 2}`, { tone: "lo" })}</g>`;
-  const strip = `<g transform="${front(paper)}"><path style="${PAINT["paper"]}" d="${rect(JO.x0 + 1.4, -(JO.z1 + 2), JO.x1 - 1.4, -(JO.z0 - 2), 0)}"/>${L(`M${JO.x0 + 1.4} ${-(JO.z1 + 2)}V${-(JO.z0 - 2)}M${JO.x1 - 1.4} ${-(JO.z1 + 2)}V${-(JO.z0 - 2)}`, { tone: "faint" })}<g data-part="journal">${LIVE.journal({ lines: [M.journalOf(M.stateAt(1))], scroll: 0, ink: 1 })}</g></g>`;
+  const strip = `<g transform="${front(paper)}"><path style="${PAINT["paper"]}" d="${rect(JO.x0 + 1.4, -(JO.z1 + 2), JO.x1 - 1.4, -(JO.z0 - 2), 0)}"/>${L(`M${JO.x0 + 1.4} ${-(JO.z1 + 2)}V${-(JO.z0 - 2)}M${JO.x1 - 1.4} ${-(JO.z1 + 2)}V${-(JO.z0 - 2)}`, { tone: "faint" })}<g data-part="journal">${rest(() => LIVE.journal({ lines: [M.journalOf(M.stateAt(1))], scroll: 0, ink: 1 }))}</g></g>`;
   const glare = `<g transform="${front(C.UFRONT - 0.3)}">${L(`M${JO.x0 + 4} ${-(JO.z1 + 1)}L${JO.x0 - 2} ${-(JO.z1 - 14)}M${JO.x1 + 1} ${-(JO.z0 + 30)}L${JO.x0 + 9} ${-(JO.z0 - 1)}`, { tone: "faint" })}</g>`;
   out.push(recess(JO, C.UFRONT, strip + roller(JO.z1 - 1) + roller(JO.z0 + 1) + ribbon, PAINT.well, glare));
   // A bezel round the journal window, with four screws.
@@ -552,7 +557,7 @@ function register() {
   // The counter window: four wheels on one shaft, with a fence between them.
   const cellW = (CN.x1 - CN.x0) / M.DIGITS;
   const fences = Array.from({ length: M.DIGITS - 1 }, (_, i) => `M${CN.x0 + cellW * (i + 1)} ${-(CN.z1 + 1)}V${-(CN.z0 - 1)}`).join("");
-  const wheels = `<g transform="${front(C.UFRONT - CN.depth + 0.4)}"><path style="${PAINT["drum"]}" d="${faceRect(CN.x0, CN.z0, CN.x1, CN.z1, 0)}"/><g data-part="counter">${LIVE.counter(1)}</g>${L(fences, { tone: "lo" })}<path style="${PAINT["drum-shade"]}" d="${faceRect(CN.x0, CN.z1 - 2.2, CN.x1, CN.z1 + 1, 0)}${faceRect(CN.x0, CN.z0 - 1, CN.x1, CN.z0 + 2.2, 0)}"/><path style="${PAINT["drum-shade"]}" d="${faceRect(CN.x0, CN.z1 - 1, CN.x1, CN.z1 + 1, 0)}${faceRect(CN.x0, CN.z0 - 1, CN.x1, CN.z0 + 1, 0)}"/></g>`;
+  const wheels = `<g transform="${front(C.UFRONT - CN.depth + 0.4)}"><path style="${PAINT["drum"]}" d="${faceRect(CN.x0, CN.z0, CN.x1, CN.z1, 0)}"/><g data-part="counter">${rest(() => LIVE.counter(1))}</g>${L(fences, { tone: "lo" })}<path style="${PAINT["drum-shade"]}" d="${faceRect(CN.x0, CN.z1 - 2.2, CN.x1, CN.z1 + 1, 0)}${faceRect(CN.x0, CN.z0 - 1, CN.x1, CN.z0 + 2.2, 0)}"/><path style="${PAINT["drum-shade"]}" d="${faceRect(CN.x0, CN.z1 - 1, CN.x1, CN.z1 + 1, 0)}${faceRect(CN.x0, CN.z0 - 1, CN.x1, CN.z0 + 1, 0)}"/></g>`;
   out.push(recess(CN, C.UFRONT, wheels, PAINT.well));
   // The nameplate, proud of the face.
   out.push(S(k.slabOf({ x: NAME.x0, y: C.UFRONT, w: NAME.x1 - NAME.x0, d: 0.8, r: 0.3 }, NAME.z0, NAME.z1 - NAME.z0, P, 2), { tone: "lo", crease: "none" }));
@@ -568,15 +573,15 @@ function register() {
   const cup = [C.SIDE + 0.8, C.CRANK.y, C.CRANK.z + 7.4];
   out.push(S(k.cylinder(cup[0], cup[1], 1.3, cup[2], 2.4, P, 18), { tone: "mid" }));
   out.push(S(k.cylinder(cup[0], cup[1], 1.7, cup[2] + 2.4, 0.9, P, 18, 0.3), { tone: "hi" }));
-  out.push(`<g data-part="crank-back">${LIVE.crankBack(0)}</g>`);
-  out.push(`<g data-part="trip-low">${LIVE.tripLow(0)}</g>`);
+  out.push(`<g data-part="crank-back">${rest(() => LIVE.crankBack(0))}</g>`);
+  out.push(`<g data-part="trip-low">${rest(() => LIVE.tripLow(0))}</g>`);
   // The rod's guide bracket, standing off the case side.
   const RD = LIVE.ROD, BR = LIVE.BRACKET;
   out.push(S(k.slabOf({ x: C.SIDE, y: RD.y - 3, w: RD.x - C.SIDE + 2.4, d: 6, r: 0.8 }, BR.z0, BR.z1 - BR.z0, P, 3, 0.4), { tone: "mid", inner: "" }));
   out.push(L(k.ring(RD.x, RD.y, RD.r + 0.4, BR.z1, P, 20), { tone: "lo" }));
   out.push(D([at([C.SIDE + 1.6, RD.y - 1.8, BR.z1]), at([C.SIDE + 1.6, RD.y + 1.8, BR.z1])], { size: 0.38 }));
-  out.push(`<g data-part="trip-high">${LIVE.tripHigh(0)}</g>`);
-  out.push(`<g data-part="crank">${LIVE.crankFront(0)}</g>`);
+  out.push(`<g data-part="trip-high">${rest(() => LIVE.tripHigh(0))}</g>`);
+  out.push(`<g data-part="crank">${rest(() => LIVE.crankFront(0))}</g>`);
   // An invisible target over the crank's whole sweep, so the crank is easy to hit.
   const sweep = Array.from({ length: 36 }, (_, i) => at(G.pointOf(F0, 6, C.CRANK.len + 4, (i / 36) * Math.PI * 2)));
   out.push(`<path data-part="crank-hit" fill="transparent" d="${k.pathOf(sweep, true)}"/>`);
@@ -603,7 +608,7 @@ function register() {
   const post = (x, y) => S(k.slabOf({ x: x - 1.2, y: y - 1.2, w: 2.4, d: 2.4, r: 0.5 }, baseTop, MQ.z1 - baseTop, P, 2), { tone: "mid" });
   out.push(post(MQ.x0 + 1.2, MQ.y0 + 1.2), post(MQ.x1 - 1.2, MQ.y0 + 1.2));
   const tabClip = k.pathOf([[TAB.x0 - 2, baseTop], [TAB.x1 + 2, baseTop], [TAB.x1 + 2, MQ.z1], [TAB.x0 - 2, MQ.z1]].map(([x, z]) => at([x, TAB.y, z])), true);
-  out.push(`<clipPath id="gr-tab-clip"><path d="${tabClip}"/></clipPath><g clip-path="url(#gr-tab-clip)" data-part="marquee">${LIVE.marquee({ index: 1, pop: null })}</g>`);
+  out.push(`<clipPath id="gr-tab-clip"><path d="${tabClip}"/></clipPath><g clip-path="url(#gr-tab-clip)" data-part="marquee">${rest(() => LIVE.marquee({ index: 1, pop: null }))}</g>`);
   out.push(post(MQ.x0 + 1.2, MQ.y1 - 1.2), post(MQ.x1 - 1.2, MQ.y1 - 1.2));
   // Glare on the front and side panes, running up under the cap.
   const pane = (a, b) => L(k.pathOf([at(a), at(b)]), { tone: "faint" });
@@ -623,28 +628,39 @@ function register() {
   out.push(S(G.sphereOf(G.pointOf(FB, 14.6, 0, 0), 1.3, P), { tone: "mid" }));
   out.push(S(k.cylinder(LIVE.POST[0], LIVE.POST[1], 2.2, H.cap, 0.8, P, 20), { tone: "mid" }));
   out.push(S(k.cylinder(LIVE.POST[0], LIVE.POST[1], 0.9, H.cap + 0.8, 7.7, P, 14), { tone: "mid" }));
-  out.push(`<g data-part="striker">${LIVE.striker(0)}</g>`);
+  out.push(`<g data-part="striker">${rest(() => LIVE.striker(0))}</g>`);
   return out.join("");
 }
 
 const REST = M.stateAt(1);
+// The moving parts at rest; a swing leaves them hollow (`composition(true)`) and paints them where they are.
+let hollow = false;
+const rest = (draw) => (hollow ? "" : draw());
+// The coin lies with its face across the front of the counter (the design view's screen), not the
+// swung one's.
+function composition(empty = false) {
+  hollow = empty;
+  clips = 0;
+  return [
+    bench(),
+    cashRegister(),
+    mat(),
+    `<g data-part="coin-slot">${rest(() => LIVE.coin({ c: [C.COIN.x, C.COIN.y, 1.4 + C.COIN.t / 2], a: [0, 0, 1], u: [Math.sin((VIEW.azimuth * Math.PI) / 180), -Math.cos((VIEW.azimuth * Math.PI) / 180), 0] }))}</g>`,
+    `<path data-part="coin-hit" fill="transparent" d="${k.pathOf(k.circleRing(C.COIN.x, C.COIN.y, C.COIN.r + 7, 32).map(([x, y]) => at([x, y, 1.4])), true)}"/>`,
+  ].join("");
+}
 const svg = k.figureSvg({
   width: WIDTH,
   height: HEIGHT,
   className: "gr-svg",
   label:
     "A cash register on a counter, with a coin on a change mat beside it. The register has one input, a crank on its side; each turn steps the root once, pops up the new state on the tab on top, rolls the counter on, prints the visit on the audit strip, and near its end a cam pushes a trip rod that lifts the drawer's bolt, so the bell rings and the drawer springs out. The coin flips between its 0 and 1 faces when clicked, and nothing in the register moves: there is no slot for it.",
-  body: [
-    bench(),
-    register(),
-    mat(),
-    `<g data-part="coin-slot">${LIVE.coin({ c: [C.COIN.x, C.COIN.y, 1.4 + C.COIN.t / 2], a: [0, 0, 1], u: [Math.sin((P.azimuth * Math.PI) / 180), -Math.cos((P.azimuth * Math.PI) / 180), 0] })}</g>`,
-    `<path data-part="coin-hit" fill="transparent" d="${k.pathOf(k.circleRing(C.COIN.x, C.COIN.y, C.COIN.r + 7, 32).map(([x, y]) => at([x, y, 1.4])), true)}"/>`,
-  ],
+  body: composition(),
 });
 
 const CSS = `
 .iso-stage{outline:none;touch-action:pan-y}
+${SWING_CSS}
 .iso-stage:focus-visible{box-shadow:0 0 0 1px var(--anatomy-mid)}
 .gr-svg [data-part="coin-slot"],.gr-svg [data-part="coin-hit"],.gr-svg [data-part="crank"],.gr-svg [data-part="crank-back"],.gr-svg [data-part="crank-hit"],.gr-svg [data-part="till"]{cursor:pointer}
 @media (max-width:560px){.gr-svg.iso-svg{width:106%;max-width:none;margin:0 -3%}}
@@ -653,7 +669,7 @@ const CSS = `
 const COPY = {
   en: {
     title: "Two Booleans, one world",
-    hint: "Click: coin · crank · drawer",
+    hint: "Drag: look round · click: coin, crank, drawer",
     keys: ["Counter and audit strip: the registered occurrence of each visit", "The coin: a Boolean set beside the world", "Crank and ratchet: the root's one step, next"],
     refs: ["Proposition 2.3", "Lemma 2.2", "Theorem 2.6"],
     caption: [
@@ -667,7 +683,7 @@ const COPY = {
   },
   zh: {
     title: "两枚布尔值，一个世界",
-    hint: "点击：硬币 · 摇柄 · 钱屉",
+    hint: "拖动侧看 · 点击硬币、摇柄、钱屉",
     keys: ["计数窗与流水纸带：每次访问的登记发生", "硬币：贴在世界旁边的布尔值", "摇柄与棘轮：根唯一的一步 next"],
     refs: ["命题 2.3", "引理 2.2", "定理 2.6"],
     caption: [
@@ -704,21 +720,37 @@ const bodyOf = (lang) => {
 
 const strip = (file) => readFileSync(join(HERE, file), "utf8").replace(/^export /gm, "");
 const kitSource = strip("../kit/iso-kit.mjs");
-const latheSource = `const LATHE = (() => {\n${strip("../kit/lathe.mjs").replace(/^import .*$/gm, "")}\nreturn { disc, frameOf, frameAlong, pointOf, radialOf, prismOf, stadium, sphereOf, circleOf, arcOf, ribsOf, dotsOf, solidOf, viewOf, hullOf };\n})();`;
+const latheSource = `const LATHE = (() => {\n${strip("../kit/lathe.mjs").replace(/^import .*$/gm, "")}\nreturn { ${Object.keys(G).join(", ")} };\n})();`;
 const modelSource = `const MODEL = (() => {\n${strip("model.mjs")}\nreturn { DIGITS, stateAt, journalOf, counterOf, indexOf, sub };\n})();`;
 
 const live = `
-const P = ${JSON.stringify(P)};
-const C = ${JSON.stringify(C)};
-const kit = { iso, pathOf, roundedPlan, solidSvg, lineSvg, dotsSvg, fadedSvg, slabOf, cylinder, sideMatrix };
-const LIVE = (${makeLive.toString()})(kit, LATHE, P, C, MODEL);
+const P0 = ${JSON.stringify(P)};
+let P = P0;
+${shipped({ C, VIEW, FRAME })}
+const kit = { ${Object.keys(k).join(", ")} };
+const k = kit, G = LATHE, M = MODEL;
+const makeLive = ${makeLive.toString()};
+// The factory reads P when it is made, so a swing makes it again, and the static art takes its helpers anew.
+let LIVE, front, rect, planeMatrix, PAINT;
+const relive = () => { LIVE = makeLive(kit, LATHE, P, C, MODEL); ({ front, rect, planeMatrix, PAINT } = LIVE); };
+relive();
+const at = (point) => k.iso(point, P);
+const S = (paths, style) => k.solidSvg(paths, style);
+const L = (d, style) => k.lineSvg(d, style);
+const D = (points, style) => k.dotsSvg(points, style);
+const X = [1, 0, 0], Y = [0, 1, 0], Z = [0, 0, 1];
+let clips = 0, hollow = false;
+const rest = (draw) => (hollow ? "" : draw());
+${shipped({ byDepth, side, faceRect, recess, bench, mat, cashRegister, composition })}
+${swingSource}
 const readoutOf = ${readoutOf.toString()};
 const counterDigits = (index) => String(index % 10 ** MODEL.DIGITS).padStart(MODEL.DIGITS, "0");
 const root = document.querySelector('[data-figure="ghost-register"]');
 const stage = root.querySelector(".iso-stage");
 const readout = root.querySelector("[data-readout]");
 const parts = {};
-for (const node of stage.querySelectorAll("[data-part]")) parts[node.dataset.part] = node;
+const bindParts = () => { for (const node of stage.querySelectorAll("[data-part]")) parts[node.dataset.part] = node; };
+bindParts();
 const still = matchMedia("(prefers-reduced-motion: reduce)");
 const TAU = Math.PI * 2;
 const RAD = Math.PI / 180;
@@ -961,6 +993,10 @@ stage.addEventListener("keydown", (event) => {
 });
 new IntersectionObserver((entries) => { visible = entries[entries.length - 1].isIntersecting; if (visible) run(); }, { rootMargin: "120px 0px" }).observe(stage);
 say();
+// A sideways drag swings the view (../swing.mjs): the counter and register are redrawn from there, then
+// every moving part where it is.
+const svg = stage.querySelector("svg");
+mountSwing(stage, { onHold: hold, onSwing: (angle) => { P = swingOf(iso, P0, FRAME, angle); relive(); svg.innerHTML = composition(true); bindParts(); draw(ALL); } });
 `;
 
 const script = `{\n${kitSource}\n${latheSource}\n${modelSource}\n${live}\n}`.replace(/<\/(script)/gi, "<\\/$1");

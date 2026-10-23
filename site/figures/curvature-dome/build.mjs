@@ -119,8 +119,9 @@ function makeLive(k, G, P, C, M) {
   };
 
   // Directions. n is in the paper's basis (e1, e2, e3); the world puts e2 up and e1, e3 on the bench.
-  const h1 = C.E1 * RAD, h3 = (C.E1 - 90) * RAD;
-  const E1 = [Math.cos(h1), Math.sin(h1), 0], E3 = [Math.cos(h3), Math.sin(h3), 0];
+  // The dome sits on a turntable: `turn` swings e1 and e3 round the vertical by `spin` degrees, and the
+  // stamps, the arm and the axis pins go with them. The glass, its ring and the stand are round and stay.
+  let spin = 0, E1, E3, STAMPS;
   const world = (n) => [n[0] * E1[0] + n[2] * E3[0], n[0] * E1[1] + n[2] * E3[1], n[1]];
   const HUB = [C.DOME.c[0], C.DOME.c[1], C.DOME.z];
   const nOf = (state) => M.directionOf(state.el, state.az);
@@ -129,14 +130,21 @@ function makeLive(k, G, P, C, M) {
   const PAINT = { 1: "fill:var(--anatomy-lit)", 0: "fill:var(--anatomy-mid)", [-1]: "fill:var(--anatomy-lo)" };
   const GLASS = "fill:var(--anatomy-face);opacity:.5";
   // The stamps on the glass: a small disc in the tangent plane, its state written by the arm.
-  const STAMPS = M.stamps().map((stamp) => {
-    const w = world(stamp.n);
-    const t1 = Math.abs(w[2]) > 0.99 ? [1, 0, 0] : unit(cross([0, 0, 1], w));
-    const t2 = cross(w, t1);
-    const c = add(HUB, mul(C.DOME.R, w));
-    const rim = Array.from({ length: 12 }, (_, i) => add(c, add(mul(C.STAMP * Math.cos((i / 12) * TAU), t1), mul(C.STAMP * Math.sin((i / 12) * TAU), t2))));
-    return { ...stamp, w, front: dot(w, V) > 0, rim, c };
-  });
+  function turn(degrees) {
+    spin = degrees;
+    const h1 = (C.E1 + spin) * RAD, h3 = (C.E1 + spin - 90) * RAD;
+    E1 = [Math.cos(h1), Math.sin(h1), 0];
+    E3 = [Math.cos(h3), Math.sin(h3), 0];
+    STAMPS = M.stamps().map((stamp) => {
+      const w = world(stamp.n);
+      const t1 = Math.abs(w[2]) > 0.99 ? [1, 0, 0] : unit(cross([0, 0, 1], w));
+      const t2 = cross(w, t1);
+      const c = add(HUB, mul(C.DOME.R, w));
+      const rim = Array.from({ length: 12 }, (_, i) => add(c, add(mul(C.STAMP * Math.cos((i / 12) * TAU), t1), mul(C.STAMP * Math.sin((i / 12) * TAU), t2))));
+      return { ...stamp, w, front: dot(w, V) > 0, rim, c };
+    });
+  }
+  turn(0);
   function stampSvg(stamp, v) {
     if (v === 2) return "";
     const d = poly(stamp.rim, true);
@@ -368,7 +376,19 @@ function makeLive(k, G, P, C, M) {
       L(k.lineOnTop([x + Math.cos(a) * 1.2, y + Math.sin(a) * 1.2], [x + Math.cos(a) * 3.6, y + Math.sin(a) * 3.6], z + 3.65, P), { tone: "lit" }),
     ].join("");
   }
-  return { arm, stamps, cord, heads, screws, needle, spring, clutch, rangeLever, selector, valueOf };
+  // Pins outside the glass on ±e1, ±e3, riding the turntable: the far ones are seen through it, the near
+  // ones in front.
+  function pins(side) {
+    const [x0, y0] = C.DOME.c, z = C.DOME.z;
+    const ref = depth(HUB);
+    return [[C.E1 + spin, 1], [C.E1 + spin - 90, 1], [C.E1 + spin + 180, 0], [C.E1 + spin + 90, 0]]
+      .map(([h, plus]) => [x0 + 61.7 * Math.cos(h * RAD), y0 + 61.7 * Math.sin(h * RAD), plus])
+      .filter(([x, y]) => (depth([x, y, z]) > ref) === (side === "front"))
+      .sort((a, b) => depth([a[0], a[1], 0]) - depth([b[0], b[1], 0]))
+      .map(([x, y, plus]) => S(k.cylinder(x, y, plus ? 1.2 : 0.95, z, plus ? 3.4 : 2, P, 14), { tone: plus ? "hi" : "mid" }))
+      .join("");
+  }
+  return { arm, stamps, pins, turn, cord, heads, screws, needle, spring, clutch, rangeLever, selector, valueOf };
 }
 
 const LIVE = makeLive(k, G, P, C, M);
@@ -460,20 +480,6 @@ function domeRing() {
   out.push(S(G.ringBand(0, C.RING.h, C.RING.rIn, C.RING.rOut, F, P), { tone: "mid" }));
   // The glass lip resting on the ring.
   out.push(S(G.ringBand(C.RING.h, C.RING.h + 1.5, C.DOME.R - 0.6, C.DOME.R + 1.6, F, P), { tone: "lo" }));
-  return out.join("");
-}
-// Pins outside the glass on ±e1, ±e3: the far ones are seen through it, the near ones in front.
-function axisPins(side) {
-  const z = C.DOME.z;
-  const out = [];
-  const ref = k.depthOf([DX, DY, z], P);
-  const pins = [[C.E1, 1], [C.E1 - 90, 1], [C.E1 + 180, 0], [C.E1 + 90, 0]]
-    .map(([h, plus]) => [DX + 61.7 * Math.cos(h * RAD), DY + 61.7 * Math.sin(h * RAD), plus])
-    .filter(([x, y]) => (k.depthOf([x, y, z], P) > ref) === (side === "front"))
-    .sort((a, b) => k.depthOf([a[0], a[1], 0], P) - k.depthOf([b[0], b[1], 0], P));
-  for (const [x, y, plus] of pins) {
-    out.push(S(k.cylinder(x, y, plus ? 1.2 : 0.95, z, plus ? 3.4 : 2, P, 14), { tone: plus ? "hi" : "mid" }));
-  }
   return out.join("");
 }
 // The glass: a back surface, the rim seen through it, the outline and two reflections in front.
@@ -643,14 +649,14 @@ function body(state) {
     part("cable", cable()),
     domeStand(),
     domeRing(),
-    axisPins("back"),
+    part("pins-back", LIVE.pins("back")),
     glassBack(),
     L(halvesOf(rimLoop()).back, { tone: "lo" }),
     part("stamps-back", `<g style="opacity:.45">${LIVE.stamps(state, "back")}</g>`),
     part("arm", LIVE.arm(state)),
     part("stamps-front", LIVE.stamps(state, "front")),
     glassFront(),
-    axisPins("front"),
+    part("pins-front", LIVE.pins("front")),
     knob(),
     // The frame.
     frameBack(),
@@ -695,6 +701,8 @@ const svg = k.figureSvg({
 
 const CSS = `
 .iso-stage{outline:none;cursor:pointer;touch-action:pan-y}
+.iso-stage.on-dome{cursor:grab}
+.iso-stage.turning{cursor:grabbing}
 .iso-stage:focus-visible{box-shadow:0 0 0 1px var(--anatomy-mid)}
 @media (max-width:560px){.cd-svg.iso-svg{width:104%;max-width:none;margin:0 -2%}}
 `;
@@ -702,7 +710,7 @@ const CSS = `
 const COPY = {
   en: {
     title: "Two minuses, one plus",
-    hint: "Click: witnesses · ← →: axis",
+    hint: "Drag the dome: turn · click: witnesses · ← →: axis",
     keys: ["Solid stamp: curvature certainly positive along that direction", "Faint stamp: certainly negative · half: enclosure touches zero", "Pulleys: quantum legs ×2 · reader contact · field legs ×2"],
     refs: ["Theorem 1.2", "§§7–11"],
     caption: [
@@ -712,12 +720,12 @@ const COPY = {
       "The whole e₁–e₃ plane comes out negative and e₂ positive, so the tensor’s inertia is (2, 1, 0): for the full tensor, mixed entries included, not just three axes. The leading tensor’s zero cone rises 37.6° above the plane toward e₁ and 41.3° toward e₃; the four half stamps sit where the enclosure cannot yet tell.",
       "Unhook the field legs and the contact, and leave only the quantum source legs, whose windows do not move: every direction reads negative, [−3.13, −2.67]·10⁻²² on the dial’s fine range.",
     ],
-    aria: "Curvature dome: arrow keys point the arm at e1, e2, e3; click or Space switches between all five terms and the quantum legs alone",
+    aria: "Curvature dome: drag the dome to turn it on its turntable; arrow keys point the arm at e1, e2, e3; click or Space switches between all five terms and the quantum legs alone",
     labels: { undecided: "undecided", quantum: "2 legs", axes: ["e₁", "e₂", "e₃"] },
   },
   zh: {
     title: "两负一正",
-    hint: "点击：换证人 · ← →：轴",
+    hint: "拖罩转动 · 点击换证人 · ← → 选轴",
     keys: ["实印：该方向曲率确定为正", "淡印：确定为负 · 半印：区间触及零", "滑轮：量子源腿 ×2 · 读出接触 · 场传播腿 ×2"],
     refs: ["定理 1.2", "§§7–11"],
     caption: [
@@ -727,7 +735,7 @@ const COPY = {
       "整个 e₁–e₃ 平面为负、e₂ 为正，于是张量惯性是 (2, 1, 0)——这是含混合项在内的整个张量，不只三根轴。主张量的零锥在 e₁ 一侧离平面 37.6°，在 e₃ 一侧 41.3°；四枚半印落在区间还分不出正负的地方。",
       "把场传播腿与接触脱开，只留窗口不动的量子源两腿：每个方向都读负，表盘细档上是 [−3.13, −2.67]·10⁻²²。",
     ],
-    aria: "曲率罩：方向键把臂指向 e₁、e₂、e₃；点击或空格在五项俱全与只留量子源腿之间切换",
+    aria: "曲率罩：拖动罩子让它在转台上转动；方向键把臂指向 e₁、e₂、e₃；点击或空格在五项俱全与只留量子源腿之间切换",
     labels: { undecided: "未定", quantum: "两腿", axes: ["e₁", "e₂", "e₃"] },
   },
 };
@@ -806,6 +814,16 @@ let queue = [], task = null, touring = !still.matches, visible = false, frame = 
 // The tour: read the three axes, swap in the quantum legs alone and scan, read e2, swap back and scan.
 const TOUR = [["dwell", 1, 3.2], ["go", 0], ["dwell", 0, 3.2], ["go", 2], ["dwell", 2, 3.2], ["alter"], ["go", "start"], ["scan"], ["go", 1], ["dwell", 1, 4], ["alter"], ["go", "start"], ["scan"], ["go", 1]];
 let tourAt = 0;
+// The turntable: drag the dome to spin it, a flick coasts and slows, and when the tour comes back the
+// dome turns home the short way round.
+let spin = 0, spinV = 0, drawnSpin = 0, press = null, quiet = 0;
+const wrap = (a) => a - 360 * Math.round(a / 360);
+function turnStep(dt) {
+  if (press && press.moved) return;
+  if (Math.abs(spinV) > 2) { spin += spinV * dt; spinV *= Math.exp(-3 * dt); return; }
+  spinV = 0;
+  if (touring && spin !== 0) { spin = wrap(spin); spin = Math.abs(spin) < 0.02 ? 0 : spin * Math.exp(-1.6 * dt); }
+}
 function say() {
   const text = readoutOf(labels, state, MODEL);
   if (readout.textContent !== text) readout.textContent = text;
@@ -819,6 +837,7 @@ function draw() {
   state.terms = { G: five.G * state.engaged + quantum.G * (1 - state.engaged), Q: five.Q, C: 0 };
   state.nib = verdictHere();
   const set = (name, html) => { parts[name].innerHTML = html; };
+  if (spin !== drawnSpin) { LIVE.turn(spin); drawnSpin = spin; dirty = true; }
   set("arm", LIVE.arm(state));
   set("cord", LIVE.cord(state));
   set("screws", LIVE.screws(state));
@@ -832,6 +851,8 @@ function draw() {
   if (dirty) {
     set("stamps-back", '<g style="opacity:.45">' + LIVE.stamps(state, "back") + "</g>");
     set("stamps-front", LIVE.stamps(state, "front"));
+    set("pins-back", LIVE.pins("back"));
+    set("pins-front", LIVE.pins("front"));
     dirty = false;
   }
   say();
@@ -912,6 +933,7 @@ function tick(time) {
   const dt = last ? Math.min((time - last) / 1000, 1 / 30) : 1 / 60;
   last = time;
   step(dt);
+  turnStep(dt);
   draw();
   frame = visible && !still.matches ? requestAnimationFrame(tick) : 0;
 }
@@ -957,7 +979,49 @@ stage.addEventListener("keydown", (event) => {
   else return;
   event.preventDefault();
 });
-stage.addEventListener("click", alter);
+// Only a press on the dome turns it; anywhere else a click still swaps the witnesses.
+const svg = stage.querySelector("svg");
+const hub = iso([C.DOME.c[0], C.DOME.c[1], C.DOME.z + C.DOME.R * 0.35], P);
+const toSvg = (event) => new DOMPoint(event.clientX, event.clientY).matrixTransform(svg.getScreenCTM().inverse());
+const onDome = (event) => { const p = toSvg(event); return Math.hypot(p.x - hub[0], (p.y - hub[1]) * 1.25) < C.DOME.R * P.scale * 1.08; };
+// The glass's front follows the pointer: a turn of dθ moves it R·dθ.
+const degPerPx = () => 180 / Math.PI / (C.DOME.R * P.scale * (svg.getBoundingClientRect().width / svg.viewBox.baseVal.width));
+const show = () => { if (still.matches) draw(); else run(); };
+stage.addEventListener("pointerdown", (event) => {
+  if (event.button !== 0 || !onDome(event)) return;
+  press = { id: event.pointerId, x: event.clientX, spin, moved: false, trail: [[event.timeStamp, event.clientX]] };
+});
+stage.addEventListener("pointermove", (event) => {
+  if (!press) { stage.classList.toggle("on-dome", onDome(event)); return; }
+  if (event.pointerId !== press.id) return;
+  const dx = event.clientX - press.x;
+  if (!press.moved) {
+    if (Math.abs(dx) < 6) return;
+    press.moved = true; spinV = 0; hold();
+    stage.setPointerCapture(event.pointerId);
+    stage.classList.add("turning");
+  }
+  spin = press.spin + dx * degPerPx();
+  press.trail.push([event.timeStamp, event.clientX]);
+  while (press.trail.length > 2 && event.timeStamp - press.trail[0][0] > 90) press.trail.shift();
+  show();
+});
+const release = (event) => {
+  if (!press || event.pointerId !== press.id) return;
+  if (press.moved) {
+    const [t0, x0] = press.trail[0];
+    const span = (event.timeStamp - t0) / 1000;
+    spinV = !still.matches && span > 0.01 ? Math.max(-720, Math.min(720, ((event.clientX - x0) / span) * degPerPx())) : 0;
+    quiet = event.timeStamp;
+    stage.classList.remove("turning");
+  }
+  press = null;
+};
+stage.addEventListener("pointerup", release);
+stage.addEventListener("pointercancel", release);
+stage.addEventListener("click", (event) => { if (event.timeStamp - quiet >= 80) alter(); });
+// The kit's turn hook (drive.mjs turn and orbit): sets the turntable and holds the tour.
+window.__isoTurn = { set: (value) => { hold(); spinV = 0; spin = Number(value); draw(); }, get: () => spin };
 new IntersectionObserver((entries) => { visible = entries[entries.length - 1].isIntersecting; if (visible) run(); }, { rootMargin: "120px 0px" }).observe(stage);
 if (still.matches) task = { kind: "dwell", arg: 1, time: 1e9, t: 0 };
 say();

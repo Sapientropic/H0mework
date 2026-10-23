@@ -47,7 +47,13 @@ const P = k.fitProjection(FIT, WIDTH, HEIGHT, VIEW);
 
 // --- live drawing: one factory shared by the build (first frame) and the page --------------
 
-function makeLive(k, G, P, C) {
+// The whole machine turns on the spindle's axis. The kit's light is camera-locked, so turning it by θ is
+// the kit's own drawing from azimuth FRONT + θ: `view` swaps the camera, and every part below reads `P`
+// when it draws. Paths, shades and depth sorts all follow; only the order of whole groups (`order`) is
+// decided here.
+function makeLive(k, G, P0, C) {
+  let P = P0;
+  const view = (yaw) => { P = { ...P0, azimuth: C.FRONT + yaw }; };
   const at = (p) => k.iso(p, P);
   const S = (paths, style) => k.solidSvg(paths, style);
   const L = (d, style) => k.lineSvg(d, style);
@@ -80,7 +86,7 @@ function makeLive(k, G, P, C) {
   };
   const FV = (x, y) => G.frameOf([x, y, 0], Z, X, Y);
   const FT = FV(0, 0);
-  const HV = [Math.sin(P.azimuth * RAD), -Math.cos(P.azimuth * RAD), 0]; // across the screen
+  const HV = [Math.sin(C.FRONT * RAD), -Math.cos(C.FRONT * RAD), 0]; // across the front, fixed to the deck
   const polar = (r, deg, z) => [r * Math.cos(deg * RAD), r * Math.sin(deg * RAD), z];
   const PK = C.PUCK;
   const PG = C.PAGES;
@@ -89,60 +95,80 @@ function makeLive(k, G, P, C) {
   const spot = (debt, z) => polar(C.LANES[debt.bearer], C.ANGLES[debt.lineage], z);
   const ring = (c, r, n = 24) => k.pathOf(Array.from({ length: n }, (_, i) => at([c[0] + r * Math.cos((i / n) * TAU), c[1] + r * Math.sin((i / n) * TAU), c[2]])), true);
 
+  // A body turned about a vertical axis draws the same from every azimuth, because the kit's light turns
+  // with the camera, and moving it only shifts its picture. So it is drawn once, standing at the origin,
+  // and placed with a translate: a turn redraws only what has a direction (marks, levels, levers, bolts).
+  const memo = new Map();
+  const once = (key, draw) => {
+    let svg = memo.get(key);
+    if (svg === undefined) { if (memo.size > 800) memo.clear(); svg = draw(); memo.set(key, svg); }
+    return svg;
+  };
+  const upright = (key, c, draw) => {
+    const a = at(c), o = at([0, 0, 0]);
+    return `<g transform="translate(${n2(a[0] - o[0])} ${n2(a[1] - o[1])})">${once(key, draw)}</g>`;
+  };
+
   // --- a debt on a page: a puck, a ring per unit of budget, the seal of its terminal receipt -----
   function puck(debt, c, { isA = false, seal = false, knot = false } = {}) {
     const out = [];
-    const F = FV(c[0], c[1]);
     // Debt A carries the dark edge; the others stay quiet, so the eye follows the red thread.
     const edge = isA ? "hi" : "mid";
-    out.push(S(G.disc(c[2], c[2] + PK.h, PK.r, F, P), { tone: edge, lit: isA, inner: L(G.arcOf(F, c[2] + PK.h * 0.55, PK.r, P), { tone: "faint" }) }));
+    out.push(upright("puck" + isA, c, () => S(G.disc(0, PK.h, PK.r, FT, P), { tone: edge, lit: isA, inner: L(G.arcOf(FT, PK.h * 0.55, PK.r, P), { tone: "faint" }) })));
     let z = c[2] + PK.h;
     for (let i = 0; i < debt.budget; i++) {
-      out.push(S(G.disc(z + PK.gap, z + PK.gap + PK.ringH, PK.ring, F, P), { tone: isA ? "mid" : "lo" }));
+      out.push(upright("ring" + isA, [c[0], c[1], z + PK.gap], () => S(G.disc(0, PK.ringH, PK.ring, FT, P), { tone: isA ? "mid" : "lo" })));
       z += PK.gap + PK.ringH;
     }
     if (seal) {
       // The seal of the terminal receipt, a cinnabar cap with a square cut in its face.
-      const cap = G.disc(z, z + 1.3, 3.8, F, P);
-      out.push(S(cap, { tone: "hi" }));
-      out.push(`<path style="${PAINT.seal}" d="${cap.fill}"/>`);
+      out.push(upright("seal", [c[0], c[1], z], () => { const cap = G.disc(0, 1.3, 3.8, FT, P); return S(cap, { tone: "hi" }) + `<path style="${PAINT.seal}" d="${cap.fill}"/>`; }));
       const sq = [[-1.5, -1.5], [1.5, -1.5], [1.5, 1.5], [-1.5, 1.5]].map(([u, v]) => at([c[0] + u, c[1] + v, z + 1.3]));
       out.push(`<path style="${PAINT.sealMark}" d="${k.pathOf(sq, true)}"/>`);
     } else if (knot) {
-      out.push(`<path style="${PAINT.knot}" d="${ring([c[0], c[1], z], 1)}"/>`);
+      out.push(upright("knot", [c[0], c[1], z], () => `<path style="${PAINT.knot}" d="${ring([0, 0, 0], 1)}"/>`));
     }
     return out.join("");
   }
 
   // --- a glass page in its rim: the whole ledger at one tick ----------------------------------
-  function page(z, { vacant = [], wobble = 0, ping = 0 } = {}) {
+  function page(z, { vacant = [], ping = 0 } = {}) {
     const out = [];
     const gTop = glassTop(z);
-    const glass = G.disc(z + 0.6, gTop, PG.glass, FT, P);
-    out.push(`<path style="${PAINT.glass}" d="${glass.fill}"/>`);
     // Two engraved tracks: the outer lane is bearer P, the inner one bearer Q.
-    out.push(L(G.circleOf(FT, gTop, C.LANES.P, P) + G.circleOf(FT, gTop, C.LANES.Q, P), { tone: "faint" }));
+    out.push(upright("glass", [0, 0, z], () => `<path style="${PAINT.glass}" d="${G.disc(0.6, glassTop(0), PG.glass, FT, P).fill}"/>`
+      + L(G.circleOf(FT, glassTop(0), C.LANES.P, P) + G.circleOf(FT, glassTop(0), C.LANES.Q, P), { tone: "faint" })));
     // Where a debt stood on the page below and is gone from this one, its socket is left empty, ringed in
     // cinnabar; when the settlement lands, a ripple goes out from it.
     for (const v of vacant) {
       const c = spot(v, gTop);
-      out.push(`<path style="${PAINT.vacant}" d="${ring(c, PK.r + 0.8, 28)}"/>`, L(ring(c, PK.r - 1.8), { tone: "faint" }));
+      out.push(upright("vacant", c, () => `<path style="${PAINT.vacant}" d="${ring([0, 0, 0], PK.r + 0.8, 28)}"/>` + L(ring([0, 0, 0], PK.r - 1.8), { tone: "faint" })));
       if (ping > 0 && ping < 1) out.push(`<path style="${PAINT.vacant};opacity:${n2(1 - ping)}" d="${ring(c, PK.r + 0.8 + 7 * ping, 32)}"/>`);
     }
     // The rim: a thin metal band round the glass, marked at the four bearings and holding the level.
     // The kit's ring would fill its whole face, so the rim is drawn by hand: the outer wall's visible
     // shades, a top face cut to an annulus, and the edges.
     const top = z + PG.rimH;
-    const wall = G.disc(z, top, PG.r, FT, P);
-    wall.shades.forEach((d, i) => d && out.push(`<path class="iso-shade" data-shade="${i}" d="${d}"/>`));
-    out.push(`<path class="iso-top" fill-rule="evenodd" d="${G.circleOf(FT, top, PG.r, P)}${G.circleOf(FT, top, PG.glass - 0.4, P)}"/>`);
-    out.push(L(wall.crease, { tone: "faint" }), L(G.circleOf(FT, top, PG.glass - 0.4, P), { tone: "lo" }), L(wall.outline, { tone: "mid" }));
+    out.push(upright("rim", [0, 0, z], () => {
+      const h = PG.rimH, wall = G.disc(0, h, PG.r, FT, P);
+      return wall.shades.map((d, i) => (d ? `<path class="iso-shade" data-shade="${i}" d="${d}"/>` : "")).join("")
+        + `<path class="iso-top" fill-rule="evenodd" d="${G.circleOf(FT, h, PG.r, P)}${G.circleOf(FT, h, PG.glass - 0.4, P)}"/>`
+        + L(wall.crease, { tone: "faint" }) + L(G.circleOf(FT, h, PG.glass - 0.4, P), { tone: "lo" }) + L(wall.outline, { tone: "mid" });
+    }));
     out.push(L(Object.values(C.ANGLES).map((a) => k.pathOf([at(polar(PG.glass + 0.4, a, top)), at(polar(PG.r - 0.2, a, top))])).join(""), { tone: "lo" }));
-    // The spirit level on the rim's front: double entry reads every page as balanced, its bubble always home.
+    return out.join("");
+  }
+
+  // The spirit level on the rim's front: double entry reads every page as balanced, its bubble always home.
+  // It stands on the rim, so it sorts with the pucks and threads of its page, not under them.
+  const vialAt = (z) => polar((PG.glass + PG.r) / 2, C.VIAL.angle, z + PG.rimH);
+  function vial(z, wobble) {
+    const out = [];
+    const top = z + PG.rimH;
     const va = C.VIAL.angle, VL = C.VIAL;
     const tan = [-Math.sin(va * RAD), Math.cos(va * RAD), 0];
     const rad = [Math.cos(va * RAD), Math.sin(va * RAD), 0];
-    const mid = polar((PG.glass + PG.r) / 2, va, top);
+    const mid = vialAt(z);
     const FC = G.frameOf(add(mid, mul(-(VL.len / 2 + 1.4), tan)), tan, Z, rad);
     out.push(S(G.prismOf(FC, [[0, -2.2], [0.9, -2.2], [0.9, 2.2], [0, 2.2]], 0, VL.len + 2.8, P), { tone: "mid", crease: "faint" }));
     const vc = add(mid, [0, 0, 0.9 + VL.radius]);
@@ -160,7 +186,7 @@ function makeLive(k, G, P, C) {
   const SP = C.SPINDLE;
   const z0 = C.DECK.z1 + 7;
   const spR = (z) => SP.r0 + (SP.r1 - SP.r0) * Math.min(1, Math.max(0, (z - z0) / (C.CROWN - z0)));
-  const spindle = (za, zb) => (zb - za < 0.05 ? "" : S(G.solidOf([[za, spR(za)], [zb, spR(zb)]], FT, P), { tone: "mid" }));
+  const spindle = (za, zb) => (zb - za < 0.05 ? "" : once(`spindle${n2(za)}:${n2(zb)}`, () => S(G.solidOf([[za, spR(za)], [zb, spR(zb)]], FT, P), { tone: "mid" })));
 
   // --- the tower: eyelets, pages bottom to top, each level's pucks, threads and spindle by depth ---
   function tower(st) {
@@ -173,7 +199,7 @@ function makeLive(k, G, P, C) {
     for (const debt of (first ? first.p.ledger : [])) {
       const e = spot(debt, C.DECK.z1);
       const isA = debt.lineage === "a";
-      out.push(`<path style="fill:var(--anatomy-face);stroke:var(--anatomy-mid);stroke-width:.6px" d="${ring(e, 1.8)}"/>`, D([at(e)], { size: 0.6, tone: "hi" }));
+      out.push(upright("eyelet", e, () => `<path style="fill:var(--anatomy-face);stroke:var(--anatomy-mid);stroke-width:.6px" d="${ring([0, 0, 0], 1.8)}"/>` + D([at([0, 0, 0])], { size: 0.6, tone: "hi" })));
       const to = spot(debt, glassTop(first.z));
       items0.push({ d: depth(mul(0.5, add(e, to))), svg: fade(`<path style="${isA ? PAINT.threadA : PAINT.thread}" d="${k.pathOf([at(e), at(to)])}"/>`, first.opacity) });
     }
@@ -183,8 +209,8 @@ function makeLive(k, G, P, C) {
       const gTop = glassTop(lv.z);
       const below = levels[i - 1];
       const vacant = below ? below.p.ledger.filter((e) => !lv.p.ledger.some((f) => f.lineage === e.lineage)) : [];
-      out.push(fade(S(G.disc(lv.z - 1.2, lv.z, 3.6, FT, P), { tone: "mid" }) + page(lv.z, { vacant, wobble: lv.p.wobble || 0, ping: lv.p.ping || 0 }), lv.opacity));
-      const items = [];
+      out.push(fade(upright("hub", [0, 0, lv.z - 1.2], () => S(G.disc(0, 1.2, 3.6, FT, P), { tone: "mid" })) + page(lv.z, { vacant, ping: lv.p.ping || 0 }), lv.opacity));
+      const items = [{ d: depth(add(vialAt(lv.z), [0, 0, 2])), svg: fade(vial(lv.z, lv.p.wobble || 0), lv.opacity) }];
       const above = levels[i + 1];
       for (const debt of lv.p.ledger) {
         const c = spot(debt, gTop);
@@ -205,10 +231,12 @@ function makeLive(k, G, P, C) {
     });
     if (!levels.length) out.push(spindle(z0 + 6, C.CROWN));
     // The crown: a cap, a short cone and a bead.
-    out.push(S(G.disc(C.CROWN, C.CROWN + 1.6, 5.2, FT, P, { bevel: 0.5 }), { tone: "mid" }));
-    const cz = C.CROWN + 1.6;
-    out.push(S(G.solidOf([[cz, 2.4], [cz + 0.8, 2.1, 1], [cz + 2.6, 1.1, 1], [cz + 5.4, 0.55, 1], [cz + 7, 0.4]], FT, P, { smooth: { slope: (q) => -0.42 * Math.exp(-(q - cz) / 2.6), radius: (q) => 0.4 + 2 * Math.exp(-(q - cz) / 2.6) } }), { tone: "mid" }));
-    out.push(S(G.sphereOf([0, 0, cz + 8], 1.2, P), { tone: "hi" }));
+    out.push(once("crown", () => {
+      const cz = C.CROWN + 1.6;
+      return S(G.disc(C.CROWN, C.CROWN + 1.6, 5.2, FT, P, { bevel: 0.5 }), { tone: "mid" })
+        + S(G.solidOf([[cz, 2.4], [cz + 0.8, 2.1, 1], [cz + 2.6, 1.1, 1], [cz + 5.4, 0.55, 1], [cz + 7, 0.4]], FT, P, { smooth: { slope: (q) => -0.42 * Math.exp(-(q - cz) / 2.6), radius: (q) => 0.4 + 2 * Math.exp(-(q - cz) / 2.6) } }), { tone: "mid" })
+        + S(G.sphereOf([0, 0, cz + 8], 1.2, P), { tone: "hi" });
+    }));
     return out.join("");
   }
 
@@ -227,113 +255,106 @@ function makeLive(k, G, P, C) {
     const out = [];
     out.push(S(G.disc(-3, 3, 2.4, G.frameAlong(base, tangent(name)), P), { tone: "mid" }));
     out.push(S(G.disc(0, 17, 0.95, G.frameAlong(base, dir), P), { tone: "mid" }));
-    out.push(S(G.sphereOf(add(tip, mul(2, dir)), 2.8, P), { tone: "hi", lit: pull > 0.02 }));
+    out.push(upright("tip" + (pull > 0.02), add(tip, mul(2, dir)), () => S(G.sphereOf([0, 0, 0], 2.8, P), { tone: "hi", lit: pull > 0.02 })));
     return out.join("");
   }
   const BEAD = { half: 15.5, step: 4.2 };
   function beads(slide, pair, lamps) {
-    const out = [];
     const c0 = onArc("beads", C.ARC, deckTop + 1.6);
     const t = tangent("beads");
     const along = (s) => add(c0, mul(s, t));
     const left = Array.from({ length: pair[0] }, (_, i) => -BEAD.half + 2.4 + BEAD.step * (i + 0.5));
     const right = Array.from({ length: pair[1] }, (_, i) => BEAD.half - 2.4 - BEAD.step * (pair[1] - i - 0.5));
     if (slide > 0) right[0] += (-BEAD.half + 2.4 + BEAD.step * (pair[0] + 0.5) - right[0]) * slide;
-    [...left, ...right].sort((a, b) => depth(along(a)) - depth(along(b))).forEach((s) => out.push(S(G.sphereOf(along(s), 1.9, P), { tone: "hi" })));
-    [[-BEAD.half / 2, lamps[0]], [BEAD.half / 2, lamps[1]]].forEach(([s, on]) => {
+    // Seen end-on the groove lines up its beads, the centre pin and both lamps, so they share one sort.
+    const items = [...left, ...right].map((s) => ({ d: depth(along(s)), svg: upright("bead", along(s), () => S(G.sphereOf([0, 0, 0], 1.9, P), { tone: "hi" })) }));
+    const pin = onArc("beads");
+    items.push({ d: depth(add(pin, [0, 0, 1.7])), svg: upright("pin", pin, () => S(k.cylinder(0, 0, 0.8, 0, 3.4, P, 12), { tone: "mid" })) });
+    [[-1, lamps[0]], [1, lamps[1]]].forEach(([side, on]) => {
       // A prime lamp at each end of the groove.
-      const c = add(polar(C.ARC, slot("beads"), deckTop), mul(Math.sign(s) * (BEAD.half + 2.6), t));
-      const F = FV(c[0], c[1]);
-      out.push(S(G.disc(deckTop, deckTop + 1, 1.8, F, P), { tone: on ? "hi" : "mid" }));
-      if (on) out.push(`<path style="${PAINT.lampOn}" d="${G.circleOf(F, deckTop + 1, 1.8, P)}"/>`);
+      const c = add(polar(C.ARC, slot("beads"), deckTop), mul(side * (BEAD.half + 2.6), t));
+      const lamp = upright("lamp" + on, c, () => S(G.disc(0, 1, 1.8, FT, P), { tone: on ? "hi" : "mid" }) + (on ? `<path style="${PAINT.lampOn}" d="${G.circleOf(FT, 1, 1.8, P)}"/>` : ""));
+      items.push({ d: depth(add(c, [0, 0, 0.5])), svg: lamp });
     });
-    return out.join("");
+    return items.sort((a, b) => a.d - b.d).map((it) => it.svg).join("");
   }
-  function keys(turned) {
-    const out = [];
-    ["receipt", "successor"].forEach((name, i) => {
-      const c = onArc(name);
-      // At rest the bow faces the viewer; home, it has turned a quarter and stands edge-on.
-      const a = Math.atan2(HV[1], HV[0]) + (turned[i] * Math.PI) / 2;
-      const u = [Math.cos(a), Math.sin(a), 0];
-      out.push(S(G.disc(0, 1.6, 1.05, G.frameOf([c[0], c[1], c[2] + 1.8], Z, u, cross(Z, u)), P), { tone: "mid" }));
-      out.push(S(G.prismOf(G.frameOf([c[0], c[1], c[2] + 3.4], cross(Z, u), Z, u), G.stadium(2.1, 2.1, 3, 18).map(([x, y]) => [x + 1.2, y]), -0.4, 0.4, P), { tone: "hi", lit: turned[i] > 0.98 }));
-    });
+  function key(name, turned) {
+    const c = onArc(name);
+    // At rest the bow faces the front; home, it has turned a quarter and stands edge-on.
+    const a = Math.atan2(HV[1], HV[0]) + (turned * Math.PI) / 2;
+    const u = [Math.cos(a), Math.sin(a), 0];
+    return upright("shaft", [c[0], c[1], c[2] + 1.8], () => S(G.disc(0, 1.6, 1.05, FT, P), { tone: "mid" }))
+      + S(G.prismOf(G.frameOf([c[0], c[1], c[2] + 3.4], cross(Z, u), Z, u), G.stadium(2.1, 2.1, 3, 18).map(([x, y]) => [x + 1.2, y]), -0.4, 0.4, P), { tone: "hi", lit: turned > 0.98 });
+  }
+
+  // --- the deck: feet, the graphite disc, the boss, and everything flat or low on its top ---------
+  // The deck is graphite: its own token set, inline so it holds wherever the SVG is shown. The glass and
+  // the metal controls keep the page's tokens, so they stand light on the dark deck.
+  const GRAPHITE = [
+    "--anatomy-paper:#76767a", "--anatomy-face:#7c7c80", "--anatomy-top:#808084",
+    "--anatomy-shade-0:#5c5c60", "--anatomy-shade-1:#646468", "--anatomy-shade-2:#6c6c70", "--anatomy-shade-3:#747478",
+    "--anatomy-hi:#2a2a2d", "--anatomy-mid:#47474b", "--anatomy-lo:#5a5a5e", "--anatomy-faint:#69696d", "--anatomy-dot:#ececee",
+  ].join(";");
+  function deck() {
+    const { DECK, FEET, FRONT } = C;
+    const out = [once("halo", () => `<path class="iso-halo" d="${k.haloOf({ x: -DECK.r, y: -DECK.r, w: DECK.r * 2, d: DECK.r * 2, r: DECK.r }, 0, 6, P)}"/>`), `<g style="${GRAPHITE}">`];
+    // Three feet under the rim, far to near; the deck covers whatever of them it overhangs.
+    [FRONT + 60, FRONT - 60, FRONT + 180].map((a) => polar(FEET.r, a, 0)).sort((a, b) => depth(a) - depth(b))
+      .forEach((c) => out.push(upright("foot", c, () => S(k.cylinder(0, 0, FEET.radius, 0, FEET.h, P, 24), { tone: "lo" }))));
+    // The deck: a disc with a chamfered top edge, a groove outside the control arc, a bolt circle.
+    out.push(once("deck", () => {
+      const profile = [[DECK.z0, DECK.r - 2], [DECK.z0 + 1.2, DECK.r], [DECK.z1 - 1.4, DECK.r], [DECK.z1, DECK.r - 1.6]];
+      return S(G.solidOf(profile, FT, P), { tone: "mid", inner: L(G.arcOf(FT, DECK.z0 + 4.2, DECK.r, P), { tone: "faint" }) })
+        + L(G.circleOf(FT, DECK.z1, DECK.r - 3.6, P), { tone: "faint" }) + L(G.circleOf(FT, DECK.z1, C.ARC - 6.5, P), { tone: "faint" });
+    }));
+    out.push(D(G.dotsOf(FT, DECK.z1, DECK.r - 2, 36, P, { all: true, phase: 0.13 }), { size: 0.38 }));
+    // Lever gates: a slot running outward under each lever.
+    for (const name of ["transfer", "act"]) {
+      const o = outward(name), t = tangent(name), c = onArc(name);
+      const quad = [[-1.4, -5], [1.4, -5], [1.4, 7], [-1.4, 7]].map(([u, v]) => at([c[0] + u * t[0] + v * o[0], c[1] + u * t[1] + v * o[1], deckTop]));
+      out.push(`<path style="${PAINT.dark}" d="${k.pathOf(quad, true)}"/>`, L(k.pathOf(quad, true), { tone: "lo" }));
+    }
+    // The bead groove, along the arc's tangent at the front.
+    const c = onArc("beads"), t = tangent("beads"), o = outward("beads");
+    const groove = [[-BEAD.half, -2.6], [BEAD.half, -2.6], [BEAD.half, 2.6], [-BEAD.half, 2.6]].map(([u, v]) => at([c[0] + u * t[0] + v * o[0], c[1] + u * t[1] + v * o[1], deckTop]));
+    out.push(`<path style="${PAINT.dark}" d="${k.pathOf(groove, true)}"/>`, L(k.pathOf(groove, true), { tone: "lo" }));
+    // The boss the spindle stands in.
+    out.push(once("boss", () => S(G.disc(DECK.z1, DECK.z1 + 3, 15, FT, P, { bevel: 0.6 }), { tone: "mid" })));
+    out.push(D(G.dotsOf(FT, DECK.z1 + 3, 12, 8, P, { all: true }), { size: 0.4 }));
+    out.push(once("collar", () => S(G.disc(DECK.z1 + 3, DECK.z1 + 7, 7.5, FT, P), { tone: "mid", inner: L(G.arcOf(FT, DECK.z1 + 5, 7.5, P), { tone: "faint" }) })));
+    out.push("</g>");
+    // Key barrels: low enough that nothing on the tower ever passes under them on screen.
+    for (const name of ["receipt", "successor"]) {
+      const k0 = onArc(name);
+      out.push(upright("barrel", k0, () => S(k.cylinder(0, 0, 3.8, 0, 1.8, P, 28, 0.3), { tone: "mid" }) + L(k.ring(0, 0, 2.5, 1.8, P, 24), { tone: "lo" })));
+    }
     return out.join("");
   }
 
-  return { PAINT, tower, lever, beads, keys, onArc, outward, tangent, slot, polar, BEAD, deckTop };
+  // The standing controls sit on the arc outside the pages and the threads, so each one is wholly in
+  // front of the tower or wholly behind it, by which side of the axis it is on; where it crosses over, at
+  // the tower's flank, the two never overlap on screen and the swap shows nothing.
+  const STANDING = { "lever-transfer": "transfer", "lever-act": "act", beads: "beads", "key-receipt": "receipt", "key-successor": "successor" };
+  const order = () => [["tower", depth([0, 0, 0])], ...Object.entries(STANDING).map(([part, name]) => [part, depth(onArc(name))])]
+    .sort((a, b) => a[1] - b[1]).map(([part]) => part);
+
+  return { PAINT, view, deck, tower, lever, beads, key, order, onArc, outward, tangent, slot, polar, BEAD, deckTop };
 }
 
 const LIVE = makeLive(k, G, P, C);
-
-// --- static drawing ---------------------------------------------------------------------------
-
-const at = (point) => k.iso(point, P);
-const S = (paths, style) => k.solidSvg(paths, style);
-const L = (d, style) => k.lineSvg(d, style);
-const D = (points, style) => k.dotsSvg(points, style);
-const X = [1, 0, 0], Y = [0, 1, 0], Z = [0, 0, 1];
-const FT = G.frameOf([0, 0, 0], Z, X, Y);
-
-// The deck is graphite: its own token set, inline so it holds wherever the SVG is shown. The glass and
-// the metal controls keep the page's tokens, so they stand light on the dark deck.
-const GRAPHITE = [
-  "--anatomy-paper:#76767a", "--anatomy-face:#7c7c80", "--anatomy-top:#808084",
-  "--anatomy-shade-0:#5c5c60", "--anatomy-shade-1:#646468", "--anatomy-shade-2:#6c6c70", "--anatomy-shade-3:#747478",
-  "--anatomy-hi:#2a2a2d", "--anatomy-mid:#47474b", "--anatomy-lo:#5a5a5e", "--anatomy-faint:#69696d", "--anatomy-dot:#ececee",
-].join(";");
-
-function deck() {
-  const { DECK, FEET, FRONT } = C;
-  const out = [`<path class="iso-halo" d="${k.haloOf({ x: -DECK.r, y: -DECK.r, w: DECK.r * 2, d: DECK.r * 2, r: DECK.r }, 0, 6, P)}"/>`, `<g style="${GRAPHITE}">`];
-  // Three feet, the back one hidden.
-  for (const a of [FRONT + 60, FRONT - 60]) {
-    const c = LIVE.polar(FEET.r, a, 0);
-    out.push(S(k.cylinder(c[0], c[1], FEET.radius, 0, FEET.h, P, 24), { tone: "lo" }));
-  }
-  // The deck: a disc with a chamfered top edge, a groove outside the control arc, a bolt circle.
-  const profile = [[DECK.z0, DECK.r - 2], [DECK.z0 + 1.2, DECK.r], [DECK.z1 - 1.4, DECK.r], [DECK.z1, DECK.r - 1.6]];
-  out.push(S(G.solidOf(profile, FT, P), { tone: "mid", inner: L(G.arcOf(FT, DECK.z0 + 4.2, DECK.r, P), { tone: "faint" }) }));
-  out.push(L(G.circleOf(FT, DECK.z1, DECK.r - 3.6, P), { tone: "faint" }));
-  out.push(L(G.circleOf(FT, DECK.z1, C.ARC - 6.5, P), { tone: "faint" }));
-  out.push(D(G.dotsOf(FT, DECK.z1, DECK.r - 2, 36, P, { all: true, phase: 0.13 }), { size: 0.38 }));
-  // The boss the spindle stands in.
-  out.push(S(G.disc(DECK.z1, DECK.z1 + 3, 15, FT, P, { bevel: 0.6 }), { tone: "mid" }));
-  out.push(D(G.dotsOf(FT, DECK.z1 + 3, 12, 8, P, { all: true }), { size: 0.4 }));
-  out.push(S(G.disc(DECK.z1 + 3, DECK.z1 + 7, 7.5, FT, P), { tone: "mid", inner: L(G.arcOf(FT, DECK.z1 + 5, 7.5, P), { tone: "faint" }) }));
-  out.push("</g>");
-  return out.join("");
-}
-
-function controls() {
-  const top = LIVE.deckTop;
-  const out = [`<g style="${GRAPHITE}">`];
-  // Lever gates: a slot running outward under each lever.
-  for (const name of ["transfer", "act"]) {
-    const o = LIVE.outward(name), t = LIVE.tangent(name), c = LIVE.onArc(name);
-    const quad = [[-1.4, -5], [1.4, -5], [1.4, 7], [-1.4, 7]].map(([u, v]) => at([c[0] + u * t[0] + v * o[0], c[1] + u * t[1] + v * o[1], top]));
-    out.push(`<path style="${LIVE.PAINT.dark}" d="${k.pathOf(quad, true)}"/>`, L(k.pathOf(quad, true), { tone: "lo" }));
-  }
-  // The bead groove, along the arc's tangent at the front, with its centre pin.
-  const c = LIVE.onArc("beads"), t = LIVE.tangent("beads"), o = LIVE.outward("beads");
-  const groove = [[-LIVE.BEAD.half, -2.6], [LIVE.BEAD.half, -2.6], [LIVE.BEAD.half, 2.6], [-LIVE.BEAD.half, 2.6]].map(([u, v]) => at([c[0] + u * t[0] + v * o[0], c[1] + u * t[1] + v * o[1], top]));
-  out.push(`<path style="${LIVE.PAINT.dark}" d="${k.pathOf(groove, true)}"/>`, L(k.pathOf(groove, true), { tone: "lo" }));
-  out.push("</g>");
-  out.push(S(k.cylinder(c[0], c[1], 0.8, top, 3.4, P, 12), { tone: "mid" }));
-  // Key barrels.
-  for (const name of ["receipt", "successor"]) {
-    const k0 = LIVE.onArc(name);
-    out.push(S(k.cylinder(k0[0], k0[1], 3.8, top, 1.8, P, 28, 0.3), { tone: "mid" }));
-    out.push(L(k.ring(k0[0], k0[1], 2.5, top + 1.8, P, 24), { tone: "lo" }));
-  }
-  return out.join("");
-}
 
 // The drawing at rest shows the whole run the tour plays, ending settled.
 const RUN = ["transfer", "carry", "act", "carry"];
 const REST_PAGES = RUN.reduce((pages, event) => [...pages, M.nextPage(pages[pages.length - 1], event)], [M.firstPage()]);
 const REST = { pages: REST_PAGES };
+const REST_PARTS = {
+  tower: LIVE.tower(REST),
+  "lever-transfer": LIVE.lever("transfer", 0),
+  "lever-act": LIVE.lever("act", 0),
+  beads: LIVE.beads(0, [3, 3], [true, true]),
+  "key-receipt": LIVE.key("receipt", 1),
+  "key-successor": LIVE.key("successor", 1),
+};
 
 const svg = k.figureSvg({
   width: WIDTH,
@@ -342,18 +363,14 @@ const svg = k.figureSvg({
   label:
     "A tower of glass pages on a spindle above a round deck, one page per tick. Each debt is a puck on every page, joined page to page by a taut thread that starts at an eyelet in the deck. Debt A's thread is cinnabar. A transfer moves A from the outer lane to the inner one, so its thread bends while its ring stays. The target-six action slides a bead from 2 + 4 to 3 + 3 and pays A's ring; that page carries a cinnabar seal, the terminal receipt, and the page above has no A, so A's thread stops at the seal. The spirit level in every page's rim stays level throughout.",
   body: [
-    deck(),
-    controls(),
-    `<g data-part="tower">${LIVE.tower(REST)}</g>`,
-    `<g data-part="lever-transfer">${LIVE.lever("transfer", 0)}</g>`,
-    `<g data-part="lever-act">${LIVE.lever("act", 0)}</g>`,
-    `<g data-part="beads">${LIVE.beads(0, [3, 3], [true, true])}</g>`,
-    `<g data-part="keys">${LIVE.keys([1, 1])}</g>`,
+    `<g data-part="deck">${LIVE.deck()}</g>`,
+    ...LIVE.order().map((part) => `<g data-part="${part}">${REST_PARTS[part]}</g>`),
   ],
 });
 
 const CSS = `
-.iso-stage{outline:none;touch-action:pan-y}
+.iso-stage{outline:none;touch-action:pan-y;cursor:grab}
+.iso-stage.turning,.iso-stage.turning [data-part]{cursor:grabbing}
 .iso-stage:focus-visible{box-shadow:0 0 0 1px var(--anatomy-mid)}
 .wt-svg [data-part="tower"],.wt-svg [data-part^="lever"],.wt-svg [data-part="beads"]{cursor:pointer}
 [data-figure="whole-ledger-tower"] .iso-swatch[data-mark="red"] path{stroke:var(--cinnabar,#c8372d)}
@@ -363,7 +380,7 @@ const CSS = `
 const COPY = {
   en: {
     title: "This is no migration",
-    hint: "Levers: transfer · act",
+    hint: "Drag to turn · levers: transfer · act",
     keys: ["Red thread: debt A through every page; the seal is its terminal receipt, the red ring its empty place on the next page", "Outer and inner track: bearers P and Q; one ring per unit of budget", "Spirit level on each page: double entry, level every time"],
     refs: ["Theorem 6.2", "Proposition 5.2", "settlement type (44)"],
     caption: [
@@ -375,12 +392,12 @@ const COPY = {
       "Settlement waits for the page above. The source’s continuation no longer activates A, so its place on that page stays empty, ringed in red; its thread stops at the seal, and the second key turns. B, C and D keep rising.",
       "A level page was never the evidence.",
     ],
-    aria: "Whole-ledger tower: T transfers debt A to the other bearer, A runs the target-six action, Space adds a page",
+    aria: "Whole-ledger tower: drag or ← → to turn it, T transfers debt A to the other bearer, A runs the target-six action, Space adds a page",
     labels: { page: "page", receipt: ["receipt —", "receipt ✓"], next: ["next: A", "next: no A"], settled: "settled", archived: "A closed", dr: "Dr", cr: "Cr" },
   },
   zh: {
     title: "这次不是迁账",
-    hint: "左杆迁账 · 右杆行动",
+    hint: "拖动转塔 · 左杆迁账 · 右杆行动",
     keys: ["红线：债 A 穿过每一页；朱印是它的终回执，红圈是它在下一页留下的空位", "外圈、内圈：承担者 P、Q；每环一单位预算", "页前水平仪：复式记账，每页都平"],
     refs: ["定理 6.2", "命题 5.2", "结清类型 (44)"],
     caption: [
@@ -392,7 +409,7 @@ const COPY = {
       "结清还要看塔上再高一层：源的接续不再激活 A，它在那一页的位置空着，圈着一道红圈；线停在朱印上，第二把钥匙才转。B、C、D 继续往上长。",
       "页页都平，从来不是证据。",
     ],
-    aria: "整账塔：T 把债 A 迁给另一个承担者，A 执行目标六行动，空格加一页",
+    aria: "整账塔：拖动或 ← → 转动，T 把债 A 迁给另一个承担者，A 执行目标六行动，空格加一页",
     labels: { page: "页", receipt: ["终回执 —", "终回执 ✓"], next: ["下一页仍有 A", "下一页无 A"], settled: "结清", archived: "A 已了结", dr: "借", cr: "贷" },
   },
 };
@@ -432,10 +449,11 @@ const modelSource = `const MODEL = (() => {\n${strip("model.mjs")}\nreturn { fir
 
 const live = `
 const P = ${JSON.stringify(P)};
+const WIDTH = ${WIDTH};
 const C = ${JSON.stringify(C, (key, value) => (typeof value === "function" ? undefined : value))};
 C.pageZ = (i) => C.PAGES.z0 + C.PAGES.gap * i;
 C.TOP = C.pageZ(C.PAGES.count - 1);
-const kit = { iso, depthOf, pathOf, solidSvg, lineSvg, dotsSvg, ring };
+const kit = { iso, depthOf, pathOf, solidSvg, lineSvg, dotsSvg, ring, cylinder, haloOf };
 const LIVE = (${makeLive.toString()})(kit, LATHE, P, C);
 const readoutOf = ${readoutOf.toString()};
 const root = document.querySelector('[data-figure="whole-ledger-tower"]');
@@ -461,18 +479,40 @@ let st = full();
 let queue = [], task = null, touring = !still.matches, visible = false, frame = 0, last = 0, idle = 0;
 const TOUR = [["wait", 3.2], ["reset"], ["wait", 1.2], ["page", "transfer"], ["wait", 1.2], ["page", "carry"], ["wait", 0.9], ["page", "act"], ["wait", 1.4], ["page", "carry"], ["wait", 2]];
 let tourAt = 0;
+// The turn: yaw in degrees from the front. A drag turns it under the finger, a flick spins on and slows,
+// and while the tour runs the machine sways gently either side of its front so the threads show their depth.
+const SWAY = { amp: 16, period: 19 };
+let yaw = 0, spin = 0, swayT = 0, press = null, quiet = 0, drawnYaw = null, layout = "";
 
 function say() {
   const text = readoutOf(st.pages, labels, st.settledFlag);
   if (readout.textContent !== text) readout.textContent = text;
 }
 function draw() {
+  LIVE.view(yaw);
+  if (drawnYaw !== yaw) parts.deck.innerHTML = LIVE.deck();
   parts.tower.innerHTML = LIVE.tower(st);
   parts["lever-transfer"].innerHTML = LIVE.lever("transfer", st.pull.transfer);
   parts["lever-act"].innerHTML = LIVE.lever("act", st.pull.act);
   parts.beads.innerHTML = LIVE.beads(st.slide, st.pair, st.lamps);
-  parts.keys.innerHTML = LIVE.keys(st.keys);
+  parts["key-receipt"].innerHTML = LIVE.key("receipt", st.keys[0]);
+  parts["key-successor"].innerHTML = LIVE.key("successor", st.keys[1]);
+  const order = LIVE.order();
+  if (order.join() !== layout) { layout = order.join(); for (const part of order) parts.deck.parentNode.appendChild(parts[part]); }
+  drawnYaw = yaw;
   say();
+}
+const wrap = (a) => a - 360 * Math.round(a / 360);
+function turn(dt) {
+  if (press && press.moved) return;
+  if (Math.abs(spin) > 2) { yaw += spin * dt; spin *= Math.exp(-3 * dt); return; }
+  spin = 0;
+  if (!touring) return;
+  // Back to the sway the short way round, however far a spin carried it.
+  swayT += dt;
+  yaw = wrap(yaw);
+  const target = SWAY.amp * Math.sin((2 * Math.PI * swayT) / SWAY.period);
+  yaw += (target - yaw) * (1 - Math.exp(-1.4 * dt));
 }
 const last2 = () => st.pages[st.pages.length - 1];
 const prev2 = (i) => st.pages[i - 1];
@@ -557,8 +597,9 @@ function tick(time) {
   if (!task) { const n = nextTask(); if (n) begin(n); }
   const moving = task && task.kind !== "wait";
   if (task) stepTask(dt);
-  if (moving || drawn !== st) { draw(); drawn = st; }
-  const busy = touring || task || queue.length;
+  turn(dt);
+  if (moving || drawn !== st || drawnYaw !== yaw) { draw(); drawn = st; }
+  const busy = touring || task || queue.length || spin;
   frame = visible && busy ? requestAnimationFrame(tick) : 0;
 }
 const run = () => { if (!frame && visible && !still.matches) { last = 0; frame = requestAnimationFrame(tick); } };
@@ -573,7 +614,43 @@ function request(event) {
   if (still.matches) { while (queue.length) { begin(queue.shift()); let guard = 0; while (task && guard++ < 2000) stepTask(1 / 30); } draw(); return; }
   run();
 }
+// Drag sideways to turn: the pages' rim follows the pointer. A press that stays put is still a click.
+const degPerPx = () => 180 / Math.PI / (C.PAGES.r * P.scale * (stage.getBoundingClientRect().width / WIDTH));
+const show = () => { if (still.matches || !frame) draw(); run(); };
+stage.addEventListener("pointerdown", (event) => {
+  if (event.button !== 0) return;
+  press = { id: event.pointerId, x: event.clientX, yaw, moved: false, trail: [[event.timeStamp, event.clientX]] };
+});
+stage.addEventListener("pointermove", (event) => {
+  if (!press || event.pointerId !== press.id) return;
+  const dx = event.clientX - press.x;
+  if (!press.moved) {
+    if (Math.abs(dx) < 6) return;
+    press.moved = true; spin = 0; hold();
+    stage.setPointerCapture(event.pointerId);
+    stage.classList.add("turning");
+  }
+  yaw = press.yaw + dx * degPerPx();
+  press.trail.push([event.timeStamp, event.clientX]);
+  while (press.trail.length > 2 && event.timeStamp - press.trail[0][0] > 90) press.trail.shift();
+  show();
+});
+const release = (event) => {
+  if (!press || event.pointerId !== press.id) return;
+  if (press.moved) {
+    const [t0, x0] = press.trail[0];
+    const span = (event.timeStamp - t0) / 1000;
+    spin = !still.matches && span > 0.01 ? Math.max(-720, Math.min(720, ((event.clientX - x0) / span) * degPerPx())) : 0;
+    quiet = event.timeStamp;
+    stage.classList.remove("turning");
+    run();
+  }
+  press = null;
+};
+stage.addEventListener("pointerup", release);
+stage.addEventListener("pointercancel", release);
 stage.addEventListener("click", (event) => {
+  if (event.timeStamp - quiet < 80) return;
   const part = event.target.closest("[data-part]");
   if (!part) return;
   const name = part.dataset.part;
@@ -586,9 +663,17 @@ stage.addEventListener("keydown", (event) => {
   if (key === "t") request("transfer");
   else if (key === "a") request("act");
   else if (key === " " || key === "arrowup") request("carry");
+  else if (key === "arrowleft" || key === "arrowright") {
+    // A quarter-ish turn per press: the spin coasts 30° and stops.
+    const way = key === "arrowleft" ? -1 : 1;
+    hold();
+    if (still.matches) { yaw = wrap(yaw + 30 * way); draw(); } else { spin += 90 * way; run(); }
+  }
   else return;
   event.preventDefault();
 });
+// The kit's turn hook, so drive.mjs can turn and orbit this figure like an engine-built one; it holds the tour.
+window.__isoTurn = { set: (value) => { hold(); spin = 0; yaw = Number(value); draw(); }, get: () => yaw };
 new IntersectionObserver((entries) => { visible = entries[entries.length - 1].isIntersecting; if (visible) run(); }, { rootMargin: "120px 0px" }).observe(stage);
 say();
 `;

@@ -7,6 +7,7 @@ import { fileURLToPath } from "node:url";
 import * as k from "../kit/iso-kit.mjs";
 import * as G from "../kit/lathe.mjs";
 import * as M from "./model.mjs";
+import { shipped, SWING_CSS, swingSource } from "../swing.mjs";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const theme = process.argv.includes("--light") ? "light" : "dark";
@@ -84,6 +85,8 @@ const HEIGHT = (() => {
   return Math.ceil(Math.max(...ys) - Math.min(...ys) + 2 * VIEW.pad);
 })();
 const P = k.fitProjection(FIT, WIDTH, HEIGHT, VIEW);
+// The page swings the view (../swing.mjs), framed by the same fit, and redraws `body` there.
+const FRAME = { points: FIT, width: WIDTH, height: HEIGHT, pad: VIEW.pad };
 
 // --- live drawing: one factory shared by the build (first frame) and the page --------------
 
@@ -753,57 +756,60 @@ function timeColumn() {
   return out.join("");
 }
 
-const part = (name, inner) => `<g data-part="${name}">${inner}</g>`;
+// A moving part at rest; a swing redraws the figure hollow (`body(state, true)`) and paints them after.
+let hollow = false;
+const part = (name, inner) => `<g data-part="${name}">${hollow ? "" : inner()}</g>`;
 const REST = restingState();
-function body(state) {
+function body(state, empty = false) {
+  hollow = empty;
   const pens = LIVE.lanesOf(state);
   return [
     base(),
     board(),
-    part("paper", LIVE.paper(state)),
-    part("traces", LIVE.traces(state)),
+    part("paper", () => LIVE.paper(state)),
+    part("traces", () => LIVE.traces(state)),
     spool(C.SPOOL.take, "take"),
     spool(C.SPOOL.supply, "supply"),
-    part("spools", LIVE.spoolMarks(state)),
+    part("spools", () => LIVE.spoolMarks(state)),
     column(),
     ...C.POSTS.map((p) => post(p, C.TIERS[2].z + C.TIERS[2].h)),
     timeColumn(),
     // Bottom shelf: the integrator.
     tier(C.TIERS[0], 0),
-    part("bar-2", LIVE.penBar(pens[2], 2)),
-    part("rack", LIVE.rack(state)),
+    part("bar-2", () => LIVE.penBar(pens[2], 2)),
+    part("rack", () => LIVE.rack(state)),
     station3Back(),
-    part("disc", LIVE.integrator(state)),
-    part("axle", LIVE.axle(state)),
+    part("disc", () => LIVE.integrator(state)),
+    part("axle", () => LIVE.axle(state)),
     rails(),
     yokeFrame(),
-    part("yoke", LIVE.yoke(state)),
+    part("yoke", () => LIVE.yoke(state)),
     // Middle shelf: the two legs.
     tier(C.TIERS[1], 1),
-    part("bar-1", LIVE.penBar(pens[1], 1)),
+    part("bar-1", () => LIVE.penBar(pens[1], 1)),
     station2Back(),
-    part("gears", LIVE.gears(state)),
+    part("gears", () => LIVE.gears(state)),
     station2Guide(),
     latchBracket(),
-    part("yokes", LIVE.yokes(state)),
+    part("yokes", () => LIVE.yokes(state)),
     switchPlate(1),
-    part("switch-1", LIVE.switchKnob(1, state.unhooked)),
+    part("switch-1", () => LIVE.switchKnob(1, state.unhooked)),
     // Top shelf: the finite evolution.
     tier(C.TIERS[2], 2),
-    part("bar-0", LIVE.penBar(pens[0], 0)),
+    part("bar-0", () => LIVE.penBar(pens[0], 0)),
     station1Back(),
-    part("pulley", LIVE.pulley(state)),
-    part("cord", LIVE.penCord(state, pens[0])),
-    part("beam", LIVE.beam(state)),
+    part("pulley", () => LIVE.pulley(state)),
+    part("cord", () => LIVE.penCord(state, pens[0])),
+    part("beam", () => LIVE.beam(state)),
     fork(0),
-    part("sphere-0", LIVE.sphere(state, 0)),
+    part("sphere-0", () => LIVE.sphere(state, 0)),
     fork(1),
-    part("sphere-1", LIVE.sphere(state, 1)),
+    part("sphere-1", () => LIVE.sphere(state, 1)),
     guideBridge(),
     epsilonDial(),
-    part("knob", LIVE.knob(state.a)),
+    part("knob", () => LIVE.knob(state.a)),
     switchPlate(0),
-    part("switch-0", LIVE.switchKnob(0, 1 - state.mu / Math.PI)),
+    part("switch-0", () => LIVE.switchKnob(0, 1 - state.mu / Math.PI)),
   ].join("");
 }
 
@@ -818,6 +824,7 @@ const svg = k.figureSvg({
 
 const CSS = `
 .iso-stage{outline:none;cursor:pointer;touch-action:pan-y}
+${SWING_CSS}
 .iso-stage:focus-visible{box-shadow:0 0 0 1px var(--anatomy-mid)}
 @media (max-width:560px){.iso-plate:has(.cw-svg){overflow:hidden}.cw-svg.iso-svg{width:112%;max-width:none;margin:0 -6%}}
 `;
@@ -825,7 +832,7 @@ const CSS = `
 const COPY = {
   en: {
     title: "One current, three testimonies",
-    hint: "Click: alter · ← →: amplitude",
+    hint: "Drag: look round · click: alter · ← →: amplitude",
     keys: ["Traces: ωJ/(sε), the same current read three ways", "Shelves: finite evolution ÷ ε · two-leg derivative · Kubo integral", "Altered: one leg only, or the force T read for the current B"],
     refs: ["Section 1", "Theorems 8.1–8.2"],
     caption: [
@@ -841,7 +848,7 @@ const COPY = {
   },
   zh: {
     title: "同一电流的三份证词",
-    hint: "点击：改口 · ← →：幅度",
+    hint: "拖动侧看 · 点击改口 · ← → 幅度",
     keys: ["迹线：ωJ/(sε)，同一电流的三种读法", "三层：有限发展 ÷ ε · 双侧求导 · Kubo 积分", "改口：只取一条腿，或用推力 T 代替电流 B 读数"],
     refs: ["§1", "定理 8.1–8.2"],
     caption: [
@@ -885,21 +892,34 @@ const bodyOf = (lang) => {
 const strip = (file) => readFileSync(join(HERE, file), "utf8").replace(/^export /gm, "");
 const kitSource = strip("../kit/iso-kit.mjs");
 // lathe.mjs and the model share helper names with the core, so each lives in its own scope.
-const latheSource = `const LATHE = (() => {\n${strip("../kit/lathe.mjs").replace(/^import .*$/gm, "")}\nreturn { disc, frameOf, frameAlong, sphereOf, prismOf, spokesOf, circleOf };\n})();`;
+const latheSource = `const LATHE = (() => {\n${strip("../kit/lathe.mjs").replace(/^import .*$/gm, "")}\nreturn { ${Object.keys(G).join(", ")} };\n})();`;
 const modelSource = `const MODEL = (() => {\n${strip("model.mjs")}\nreturn { bloch, testimony, AMPLITUDES, MODES };\n})();`;
 const round = (x) => Math.round(x * 100) / 100;
 const restJson = JSON.stringify({ ...REST, runs: REST.runs.map((run) => ({ ...run, p0: round(run.p0), samples: run.samples.map(({ p, z }) => ({ p: round(p), z: z.map(round) })) })) });
 const live = `
-const P = ${JSON.stringify(P)};
-const C = ${JSON.stringify(C)};
-const kit = { iso, depthOf, pathOf, solidSvg, lineSvg, dotsSvg, segment, slabOf, cylinder, lineOnTop, knurl };
-const LIVE = (${makeLive.toString()})(kit, LATHE, P, C, MODEL);
+const P0 = ${JSON.stringify(P)};
+let P = P0;
+${shipped({ C, FRAME })}
+const kit = { ${Object.keys(k).join(", ")} };
+const k = kit, G = LATHE, M = MODEL;
+const makeLive = ${makeLive.toString()};
+// The factory reads P when it is made, so a swing makes it again.
+let LIVE = makeLive(kit, LATHE, P, C, MODEL);
+const at = (point) => k.iso(point, P);
+const S = (paths, style) => k.solidSvg(paths, style);
+const L = (d, style) => k.lineSvg(d, style);
+const D = (points, style) => k.dotsSvg(points, style);
+const seg = (a, b) => k.segment(a, b, P);
+let hollow = false;
+${shipped({ loop, base, board, spool, column, post, tier, station1Back, fork, guideBridge, epsilonDial, switchPlate, station2Back, station2Guide, latchBracket, station3Back, rails, yokeFrame, timeColumn, part, body })}
+${swingSource}
 const root = document.querySelector('[data-figure="current-witness"]');
 const stage = root.querySelector(".iso-stage");
 const readout = root.querySelector("[data-readout]");
 const labels = JSON.parse(root.dataset.labels);
 const parts = {};
-for (const node of stage.querySelectorAll("[data-part]")) parts[node.dataset.part] = node;
+const bindParts = () => { for (const node of stage.querySelectorAll("[data-part]")) parts[node.dataset.part] = node; };
+bindParts();
 const still = matchMedia("(prefers-reduced-motion: reduce)");
 const A = MODEL.AMPLITUDES;
 // The tour: ε/ω steps down, then the two altered testimonies.
@@ -1044,6 +1064,9 @@ if (still.matches) pending = { a: state.a, mode: state.mode };
 startGap(pending);
 state.reset = { a: state.a, f: 0 };
 say();
+// A sideways drag swings the view (../swing.mjs): the rack is redrawn from there, then every moving part.
+const svg = stage.querySelector("svg");
+mountSwing(stage, { onHold: hold, onSwing: (angle) => { P = swingOf(iso, P0, FRAME, angle); LIVE = makeLive(kit, LATHE, P, C, MODEL); svg.innerHTML = body(state, true); bindParts(); draw(); } });
 `;
 
 const script = `{\n${kitSource}\n${latheSource}\n${modelSource}\n${live}\n}`.replace(/<\/(script)/gi, "<\\/$1");

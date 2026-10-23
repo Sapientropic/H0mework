@@ -6,6 +6,7 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import * as k from "../kit/iso-kit.mjs";
 import { CHANNELS, READ_CHANNELS, figureData } from "./model.mjs";
+import { shipped, SWING_CSS, swingSource } from "../swing.mjs";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const theme = process.argv.includes("--light") ? "light" : "dark";
@@ -51,17 +52,15 @@ const KAPPA = { x: -50, y: 64, w: 34, d: 12, r: 2 };
 const KAPPA_H = 3;
 const KAPPA_STOPS = { zero: KAPPA.x + 9, size: KAPPA.x + KAPPA.w - 7 };
 
-const P = k.fitProjection(
-  [
-    ...k.boxCorners(PLATE, -PLATE_H - FOOT_H, 0),
-    [EXEC_X, 0, CHEEK_H + BRIDGE_H + 6],
-    [BIN_L.x, BIN_L.y, BIN_H + 4],
-    [BIN_R.x + BIN_R.w, BIN_R.y + BIN_R.d, BIN_H + 4],
-  ],
-  WIDTH,
-  HEIGHT,
-  { pad: 26, azimuth: 58 },
-);
+const FIT = [
+  ...k.boxCorners(PLATE, -PLATE_H - FOOT_H, 0),
+  [EXEC_X, 0, CHEEK_H + BRIDGE_H + 6],
+  [BIN_L.x, BIN_L.y, BIN_H + 4],
+  [BIN_R.x + BIN_R.w, BIN_R.y + BIN_R.d, BIN_H + 4],
+];
+const P = k.fitProjection(FIT, WIDTH, HEIGHT, { pad: 26, azimuth: 58 });
+// The page swings the view (../swing.mjs), framed by the same fit, and redraws `composition` there.
+const FRAME = { points: FIT, width: WIDTH, height: HEIGHT, pad: 26 };
 
 const at = (point) => k.iso(point, P);
 const S = (paths, style) => k.solidSvg(paths, style);
@@ -332,23 +331,16 @@ function firstFrame() {
   };
 }
 
-const first = firstFrame();
 const clipId = "st-tape-clip";
-const tapeClip = loop([[TAPE.from, TAPE.y, TAPE_TOP], [TAPE.to, TAPE.y, TAPE_TOP], [TAPE.to, TAPE.y + TAPE.d, TAPE_TOP], [TAPE.from, TAPE.y + TAPE.d, TAPE_TOP]]);
 
-const svg = k.figureSvg({
-  width: WIDTH,
-  height: HEIGHT,
-  className: "st-svg",
-  label:
-    "A paper-tape reader on a bench. A pegboard on the left holds a rooted tree; its whole-tree program is punched on a tape that runs from a supply bin through two heads into a take-up bin. The first head executes the program: its counter totals the punched cost channel, and a wire takes the value to a dial. The second head only feels the holes with pins and rebuilds the tree on a second pegboard. With the constructor set to zero the dial reads 0 for every tree, while the tape and the rebuilt tree still differ tree by tree.",
-  body: [
+// The pegboards stand in front of the heads, so they are drawn after them: low as they are, from
+// either side of the swing a peg can rise over a head's front cheek.
+function composition() {
+  const first = firstFrame();
+  const tapeClip = loop([[TAPE.from, TAPE.y, TAPE_TOP], [TAPE.to, TAPE.y, TAPE_TOP], [TAPE.to, TAPE.y + TAPE.d, TAPE_TOP], [TAPE.from, TAPE.y + TAPE.d, TAPE_TOP]]);
+  return [
     `<defs><clipPath id="${clipId}"><path d="${tapeClip}"/></clipPath></defs>`,
     plate(),
-    board(SRC_BOARD),
-    `<g data-part="source">${first.source}</g>`,
-    board(READ_BOARD),
-    `<g data-part="read">${first.read}</g>`,
     bin(BIN_L, "left"),
     headBack(EXEC_X),
     headBack(READ_X),
@@ -359,12 +351,25 @@ const svg = k.figureSvg({
     headFront(EXEC_X, "exec"),
     headFront(READ_X, "read"),
     bin(BIN_R, "right"),
+    board(SRC_BOARD),
+    `<g data-part="source">${first.source}</g>`,
+    board(READ_BOARD),
+    `<g data-part="read">${first.read}</g>`,
     dialWire(),
     dial(),
     `<path data-part="needle" class="iso-line" data-tone="hi" data-free="start" d="${needleAt(k, P, 0)}" style="stroke-width:1.1"/>`,
     kappaSwitch(),
     `<g data-part="knob" transform="${k.translateAlong(P, [KAPPA_STOPS.zero, 0, 0])}">${kappaKnob()}</g>`,
-  ],
+  ].join("");
+}
+
+const svg = k.figureSvg({
+  width: WIDTH,
+  height: HEIGHT,
+  className: "st-svg",
+  label:
+    "A paper-tape reader on a bench. A pegboard on the left holds a rooted tree; its whole-tree program is punched on a tape that runs from a supply bin through two heads into a take-up bin. The first head executes the program: its counter totals the punched cost channel, and a wire takes the value to a dial. The second head only feels the holes with pins and rebuilds the tree on a second pegboard. With the constructor set to zero the dial reads 0 for every tree, while the tape and the rebuilt tree still differ tree by tree.",
+  body: composition(),
 });
 
 const CSS = `
@@ -374,32 +379,39 @@ const CSS = `
 .st-svg [data-part="map"]{transition:opacity .4s var(--anatomy-ease)}
 .st-svg .st-lamp{fill:var(--anatomy-shade-0);stroke:none}
 .st-svg .st-lamp[data-on]{fill:var(--anatomy-hi)}
-.iso-stage{outline:none;cursor:pointer}
+.iso-stage{outline:none;cursor:pointer;touch-action:pan-y}
+${SWING_CSS}
 @media (max-width:560px){.iso-plate:has(.st-svg){overflow:hidden}.st-svg.iso-svg{width:118%;max-width:none;margin:0 -9%}}
 .iso-stage:focus-visible{box-shadow:0 0 0 1px var(--anatomy-mid)}
 `;
 
 const live = `
-const P = ${JSON.stringify(P)};
-const TAPE = ${JSON.stringify(TAPE)}, PITCH = ${PITCH}, CH_Y = ${JSON.stringify(CH_Y)}, CHANNELS = ${JSON.stringify(CHANNELS)};
-const HOLE_R = ${HOLE_R}, FEED_R = ${FEED_R}, TAPE_TOP = ${TAPE_TOP}, DIAL = ${JSON.stringify(DIAL)}, DIAL_R = ${DIAL_R}, DIAL_TOP = ${DIAL_TOP}, PER_TURN = ${PER_TURN};
-const EXEC_X = ${EXEC_X}, READ_X = ${READ_X}, BOARD_H = ${BOARD_H};
-const SRC_BOARD = ${JSON.stringify(SRC_BOARD)}, READ_BOARD = ${JSON.stringify(READ_BOARD)}, KAPPA_STOPS = ${JSON.stringify(KAPPA_STOPS)};
-const DATA = ${JSON.stringify(DATA)};
-const SEQ = ${JSON.stringify(SEQ)};
-const N = ${N}, REST_S = ${REST_S}, PIN_Z = ${CHEEK_H + BRIDGE_H + 2};
-const kit = { ${kitNames.join(", ")} };
-${treeLayout.toString()}
-${boardPegs.toString()}
-const needleAt = ${needleAt.toString()};
+const P0 = ${JSON.stringify(P)};
+let P = P0;
+${shipped({ PLATE, PLATE_H, FOOT_H, TAPE_Z, TAPE_T, TAPE_TOP, TAPE, PITCH, CH_Y, HOLE_R, FEED_R, EXEC_X, READ_X, CHEEK_H, BRIDGE_H, SHOES, BIN_H, BIN_L, BIN_R, SRC_BOARD, READ_BOARD, BOARD_H, DIAL, DIAL_R, DIAL_Z, DIAL_TOP, PER_TURN, KAPPA, KAPPA_H, KAPPA_STOPS, CHANNELS, READ_CHANNELS, DATA, SEQ, N, VISIBLE, LAST, REST_S, FRAME, clipId })}
+const PIN_Z = ${CHEEK_H + BRIDGE_H + 2};
+const k = { ${Object.keys(k).join(", ")} };
+const kit = k, kitLocal = k;
+const at = (point) => k.iso(point, P);
+const S = (paths, style) => k.solidSvg(paths, style);
+const L = (d, style) => k.lineSvg(d, style);
+const D = (points, style) => k.dotsSvg(points, style);
+${shipped({ byDepth, loop, plate, board, bin, cheek, bridge, headBack, shoe, guide, shoeFront, tape, headFront, dial, kappaSwitch, kappaKnob, dialWire, treeLayout, boardPegs, holesOf, needleAt, firstFrame, composition })}
+${swingSource}
 const root = document.querySelector('[data-figure="source-tape"]');
 const stage = root.querySelector(".iso-stage");
 const part = (name) => stage.querySelector('[data-part="' + name + '"]');
-const holes = part("holes"), mapHoles = part("map"), source = part("source"), readBoard = part("read");
-const needle = part("needle"), knob = part("knob"), counter = part("counter"), payLamp = part("pay");
-const lamps = Object.fromEntries([...stage.querySelectorAll("[data-lamp]")].map((node) => [node.dataset.lamp, node]));
+// The live nodes, found again whenever a swing redraws the figure; the pins keep how far they had dropped.
+let holes, mapHoles, source, readBoard, needle, knob, counter, payLamp, lamps, pins = [];
+function bind() {
+  holes = part("holes"); mapHoles = part("map"); source = part("source"); readBoard = part("read");
+  needle = part("needle"); knob = part("knob"); counter = part("counter"); payLamp = part("pay");
+  lamps = Object.fromEntries([...stage.querySelectorAll("[data-lamp]")].map((node) => [node.dataset.lamp, node]));
+  const dropOf = Object.fromEntries(pins.map((pin) => [pin.name, pin.drop]));
+  pins = [...stage.querySelectorAll("[data-pin]")].map((node) => ({ node, name: node.dataset.pin, drop: dropOf[node.dataset.pin] ?? 0 }));
+}
+bind();
 let flash = 0, lastPaid = { tree: -1, paid: 0 };
-const pins = [...stage.querySelectorAll("[data-pin]")].map((node) => ({ node, name: node.dataset.pin, drop: 0 }));
 const readout = root.querySelector("[data-readout]");
 const still = matchMedia("(prefers-reduced-motion: reduce)");
 const SPEED = 30; // tape units per second: five rows a second
@@ -514,12 +526,23 @@ stage.addEventListener("keydown", (event) => {
 stage.addEventListener("click", flip);
 new IntersectionObserver((entries) => { visible = entries[entries.length - 1].isIntersecting; if (visible) run(); }, { rootMargin: "120px 0px" }).observe(stage);
 draw(0);
+// A sideways drag swings the view (../swing.mjs): the bench is redrawn from there, then the moving parts
+// are painted again where they were (a draw with no time passing).
+const svg = stage.querySelector("svg");
+const hold = () => { touring = false; settleIdle(); };
+mountSwing(stage, { onHold: hold, onSwing: (angle) => {
+  P = swingOf(iso, P0, FRAME, angle);
+  svg.innerHTML = composition();
+  bind();
+  shown = { source: "", read: "" };
+  draw(1e-6);
+} });
 `;
 
 const COPY = {
   en: {
     title: "Whole-tree program",
-    hint: "Click: flip constructor · ← →: tree",
+    hint: "Drag: look round · click: flip constructor · ← →: tree",
     keys: ["The tape: prog κ(T), the source", "Pegboards: T on the left, read(prog T) on the right; peg height is the root label a, b, c", "Dial: the reading ev = fold κ(T)"],
     refs: ["Theorem 3.9"],
     caption: [
@@ -532,7 +555,7 @@ const COPY = {
   },
   zh: {
     title: "整树程序",
-    hint: "点击：切换构造子 · ← →：换树",
+    hint: "拖动侧看 · 点击切换构造子 · ← → 换树",
     keys: ["纸带：源程序 prog κ(T)", "钉板：左为 T，右为 read(prog T)；钉高即根标签 a、b、c", "表盘：读数 ev = fold κ(T)"],
     refs: ["定理 3.9"],
     caption: [
