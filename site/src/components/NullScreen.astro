@@ -103,7 +103,7 @@ const t = T[lang];
     const fbm = (x: number, y: number, z: number) => noise(x, y, z) * 0.7 + noise(x * 2.03, y * 2.03, z * 1.6 + 7) * 0.3;
 
     // --- the board and the scene laid out on it
-    let dpr = 1, P = 9, pitch = 4.5, cols = 0, rows = 0, ox = 0;
+    let dpr = 1, P = 9, pitch = 4.5, cols = 0, rows = 0, ox = 0, hx = 0, hy = 0;
     let cell = { x: 0, y: 0, s: 20 }, box = { x: 0, y: 0, w: 0, h: 0 };
     let well = { cx: 0, cy: 0, a: 10, rc: 4 }, hit = { x: 0, y: 0 };
     let covA = new Float32Array(0), covB = new Float32Array(0), rag = new Float32Array(0);
@@ -115,6 +115,9 @@ const t = T[lang];
     let T = new Float32Array(0), I = new Float32Array(0), R = new Float32Array(0);
     // The ink and red the beads leave on the pins they cross, fading behind them into short trails.
     let Dk = new Float32Array(0), Dr = new Float32Array(0);
+    // The halo: calm is how far a pin is inside the board (1 on the inner board, toward 0 at its outer
+    // edge); edge is the scale it is drawn at, 0 for the pins the halftone leaves out.
+    let calm = new Float32Array(0), edge = new Float32Array(0), sheen = new Float32Array(0);
     function layout(width: number) {
       dpr = Math.min(3, devicePixelRatio || 1);
       // Pins big enough for their heads to read as domes: about 170 across a wide screen, 94 on a phone,
@@ -123,6 +126,12 @@ const t = T[lang];
       P = Math.max(3, Math.round((narrow ? Math.max(3.2, width / 94) : Math.min(6, width / 170)) * dpr));
       pitch = P / dpr;
       cols = Math.floor(width / pitch);
+      // The board runs on past the text column into a halo where the pins thin out and shrink into the
+      // page, so the screen needs no frame; the scene is laid out on the inner board.
+      const halo = Math.max(0, -parseFloat(getComputedStyle(root!).marginLeft) || 0);
+      hx = Math.round(halo / pitch);
+      hy = Math.round(hx * 0.7);
+      const inner = cols - 2 * hx;
       const wide = !narrow, gap = wide ? 10 : 6, margin = wide ? 6 : 6;
       // The largest type from 16 pins down whose lines, broken after the comma, come to at most two;
       // the well is sized to the type.
@@ -130,7 +139,7 @@ const t = T[lang];
       for (G = 16; G >= 11; G--) {
         scratch.font = FONT(G);
         size = 2 * Math.round(G * (wide ? 0.95 : 0.78));
-        room = wide ? cols - size - gap - 2 * margin : cols - 2 * margin;
+        room = wide ? inner - size - gap - 2 * margin : inner - 2 * margin;
         A = wrap(EMPTY, room);
         B = wrap(SOURCE, room);
         if (Math.max(A.length, B.length) <= 2) break;
@@ -139,7 +148,7 @@ const t = T[lang];
         G = wide ? 14 : 13;
         scratch.font = FONT(G);
         size = 2 * Math.round(G * (wide ? 0.95 : 0.78));
-        room = wide ? cols - size - gap - 2 * margin : cols - 2 * margin;
+        room = wide ? inner - size - gap - 2 * margin : inner - 2 * margin;
         A = wrap(EMPTY, room);
         B = wrap(SOURCE, room);
       }
@@ -151,14 +160,19 @@ const t = T[lang];
         // Centre the well and the line on what they ink: a closing 。 leaves half its box blank.
         let right = 0;
         for (const c of [covA, covB]) for (let i = 0; i < c.length; i++) if (c[i] > 0.3) right = Math.max(right, i % bw);
-        rows = Math.max(Math.round(cols / 4.4), Math.max(size, bh) + 2 * margin);
-        cell = { x: Math.round((cols - (size + gap + right)) / 2), y: Math.round((rows - size) / 2), s: size };
+        rows = Math.max(Math.round(inner / 4.4), Math.max(size, bh) + 2 * margin);
+        cell = { x: Math.round((inner - (size + gap + right)) / 2), y: Math.round((rows - size) / 2), s: size };
         box = { x: cell.x + size + gap - 1, y: Math.round(rows / 2 - bh / 2), w: bw, h: bh };
       } else {
         rows = size + gap + bh + 2 * margin;
-        cell = { x: Math.round((cols - size) / 2), y: margin, s: size };
-        box = { x: Math.round((cols - bw) / 2), y: margin + size + gap, w: bw, h: bh };
+        cell = { x: Math.round((inner - size) / 2), y: margin, s: size };
+        box = { x: Math.round((inner - bw) / 2), y: margin + size + gap, w: bw, h: bh };
       }
+      rows += 2 * hy;
+      cell.x += hx;
+      cell.y += hy;
+      box.x += hx;
+      box.y += hy;
       const a = size / 2 - 0.5;
       well = { cx: cell.x + a, cy: cell.y + a, a, rc: a * 0.42 };
       // The value lands a little off centre, so the splash and the bleed are not symmetric.
@@ -174,7 +188,19 @@ const t = T[lang];
         rag[y * cols + x] = 3.4 * (noise(x * 0.5, y * 0.5, 5.1) - 0.5);
         loss[y * cols + x] = 0.006 + 0.1 * smooth(8, 0, Math.min(x, y, cols - 1 - x, rows - 1 - y));
       }
-      for (const [u, q] of marks()) mark[Math.round(q * (rows - 1)) * cols + Math.round(u * (cols - 1))] = 1;
+      // Halftone: toward the outside of the halo fewer pins are left, and those smaller.
+      calm = new Float32Array(n);
+      edge = new Float32Array(n);
+      sheen = new Float32Array(n);
+      // The fade also reaches a few pins into the inner board's empty margin, so a narrow halo still dissolves.
+      const inset = narrow ? 4 : 3, fade = (d: number, band: number) => smooth(-0.5, band + inset, d);
+      for (let y = 0; y < rows; y++) for (let x = 0; x < cols; x++) {
+        const i = y * cols + x, e = fade(Math.min(x, cols - 1 - x), hx) * fade(Math.min(y, rows - 1 - y), hy);
+        calm[i] = e;
+        edge[i] = e >= 1 ? 1 : hash(x, y, 17) < e * 1.6 ? 0.35 + 0.65 * e : 0;
+      }
+      const ix = cols - 2 * hx - 1, iy = rows - 2 * hy - 1;
+      for (const [u, q] of marks()) mark[(hy + Math.round(q * iy)) * cols + hx + Math.round(u * ix)] = 1;
       // Every pin a line inks is a place for one bead, ordered left to right.
       const goalsOf = (cov: Float32Array) => {
         const out: [number, number][] = [];
@@ -200,7 +226,8 @@ const t = T[lang];
     // on it by a taller pin toward the lamp: that is what makes a well read as a hole and a wave as a
     // surface, not just pins of different sizes.
     const LO = -12, HI = 18, HS = 12, TINTS = 9, DARK = 6, LIGHTS = 11;
-    const atlas = document.createElement("canvas"), shade = document.createElement("canvas"), base = document.createElement("canvas");
+    const atlas = document.createElement("canvas"), shade = document.createElement("canvas"), base = document.createElement("canvas"), drops = document.createElement("canvas");
+    const DROPS = 8;
     const tintOf = (k: number) => (k === 0 ? PIN : k <= 4 ? mix(PIN, INK, k / 4) : mix(PIN, RED, (k - 4) / 4));
     const tintIndex = (a: number, r: number) => (r > 0.06 && r >= a ? 4 + Math.min(4, Math.max(1, Math.round(r * 4))) : Math.min(4, Math.round(a * 4)));
     const headRadius = (h: number) => P * (0.34 + 0.07 * Math.min(Math.max(h, 0), 1.4));
@@ -247,11 +274,35 @@ const t = T[lang];
         sg.fillStyle = grad;
         sg.fillRect(cx - P, 0, 2 * P, 2 * P);
       }
+      // Lit pins, for the sheen: a head washed toward white with a hard highlight, in a soft bloom that
+      // spills onto its neighbours. On a light page light reads by brightness and bloom, never by a
+      // shadow, so a lit pin keeps its height. Each sprite is two pins wide to hold its bloom.
+      drops.width = DROPS * 2 * P;
+      drops.height = 2 * P;
+      const dg = drops.getContext("2d")!;
+      for (let d = 1; d <= DROPS; d++) {
+        const u = d / DROPS, cx = (2 * d - 1) * P, cy = P, r = headRadius(0) * (1 + 0.12 * u);
+        const bloom = dg.createRadialGradient(cx, cy, r * 0.6, cx, cy, P);
+        bloom.addColorStop(0, `rgba(255,255,255,${0.9 * u})`);
+        bloom.addColorStop(1, "rgba(255,255,255,0)");
+        dg.fillStyle = bloom;
+        dg.fillRect(cx - P, 0, 2 * P, 2 * P);
+        head(dg, cx, cy, 0.15 * u, mix(lit(PIN, 4), WHITE, 0.55 * u), 0);
+        const spec = dg.createRadialGradient(cx - 0.3 * r, cy - 0.34 * r, 0, cx - 0.3 * r, cy - 0.34 * r, 0.3 * r);
+        spec.addColorStop(0, `rgba(255,255,255,${u})`);
+        spec.addColorStop(1, "rgba(255,255,255,0)");
+        dg.fillStyle = spec;
+        dg.beginPath();
+        dg.arc(cx, cy, r, 0, Math.PI * 2);
+        dg.fill();
+      }
       // The board at rest never changes: painted once, copied under every frame.
       const b = base.getContext("2d")!;
-      b.fillStyle = `rgb(${SCREEN})`;
-      b.fillRect(0, 0, base.width, base.height);
-      for (let y = 0; y < rows; y++) for (let x = 0; x < cols; x++) b.drawImage(atlas, -LO * P, DARK * P, P, P, ox + x * P, y * P, P, P);
+      b.clearRect(0, 0, base.width, base.height);
+      for (let y = 0; y < rows; y++) for (let x = 0; x < cols; x++) {
+        const e = edge[y * cols + x], z = P * e, o = (P - z) / 2;
+        if (e) b.drawImage(atlas, -LO * P, DARK * P, P, P, ox + x * P + o, y * P + o, z, z);
+      }
     }
 
     // --- the score, in seconds of one loop
@@ -280,6 +331,16 @@ const t = T[lang];
       return { x: a * x0 + b * x1 + d * hit.x, y: a * y0 + b * y1 + d * hit.y, z: 2.8 * (1 - u) };
     }
 
+    // Light on water: two wave trains, each bent by the other, cancel along thin wandering lines;
+    // sharpened, they are a drifting net of caustics, and each pin on it flickers on its own phase, so
+    // the net glitters as it moves.
+    function shimmer(x: number, y: number, z: number) {
+      const u = x * 0.28, q = y * 0.28;
+      const a = Math.sin(u + 1.3 * Math.sin(q * 1.6 + z * 1.1) + z * 0.8);
+      const b = Math.sin(q * 1.25 + 1.3 * Math.sin(u * 1.35 - z * 0.9) - z * 0.7);
+      return (1 - Math.abs(a + b) / 2) ** 7 * (0.3 + 0.7 * (0.5 + 0.5 * Math.sin(z * 4.2 + 6.283 * hash(x, y, 41))) ** 2);
+    }
+
     // What every pin is reaching for at time t: its height, its ink and its red.
     function targets(t: number, z: number) {
       const here = presence(t);
@@ -296,10 +357,13 @@ const t = T[lang];
         let churn = 0, f = 0;
         if (c > 0) {
           const q = fbm(x * 0.045, y * 0.07, z * 0.35);
-          churn = c * 2 * (fbm(x * 0.05 + 3 * q, y * 0.07 + 2 * q, z * 0.42 + 3.1) - 0.5);
+          churn = c * calm[i] * 2 * (fbm(x * 0.05 + 3 * q, y * 0.07 + 2 * q, z * 0.42 + 3.1) - 0.5);
         }
         if (c < 1) f = (1 - c) * hold * 0.24 * smooth(0.5, 0.84, fbm((x + z * 7) * 0.026, y * 0.05, z * 0.55));
         F[i] = f;
+        // Light on water in the halo: it is strongest midway out, where the pins have begun to thin.
+        const band = 4 * calm[i] * (1 - calm[i]);
+        sheen[i] = band > 0.02 ? Math.min(1, 1.7 * band * shimmer(x, y, z)) : 0;
         // The beads: a pin under one rises with its ink.
         const inked = Math.max(Dk[i], Dr[i]);
         T[i] = churn + f + mark[i] * 0.3 + inked;
@@ -495,7 +559,7 @@ const t = T[lang];
       const at = toGrid(event);
       const x = Math.max(0, Math.min(cols - 1, Math.round(at.x))), y = Math.max(0, Math.min(rows - 1, Math.round(at.y)));
       mark[y * cols + x] = 1;
-      keep(x / (cols - 1), y / (rows - 1));
+      keep(clamp01((x - hx) / (cols - 2 * hx - 1)), clamp01((y - hy) / (rows - 2 * hy - 1)));
       if (reduce) return still();
       impulse(x, y, -1.1, 1.3);
       for (const b of beads) {
@@ -511,15 +575,16 @@ const t = T[lang];
     let H = new Float32Array(0), L = new Float32Array(0);
     function draw(t: number) {
       ctx.setTransform(1, 0, 0, 1, 0, 0);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.drawImage(base, 0, 0);
       if (H.length !== s.length) { H = new Float32Array(s.length); L = new Float32Array(s.length); }
       for (let i = 0; i < H.length; i++) { H[i] = s[i] + w[i]; L[i] = s[i] - F[i] + 3 * w[i]; }
       const fall = t > FALL[0] && t < HIT ? fallAt((t - FALL[0]) / FALL[1]) : null;
       for (let y = 0; y < rows; y++) for (let x = 0; x < cols; x++) {
-        const l = Math.min(HI, Math.round(H[y * cols + x] * HS));
-        if (l < 1) continue;
-        const h = l / HS;
-        ctx.drawImage(shade, (l - 1) * 2 * P, 0, 2 * P, 2 * P, ox + x * P - P / 2 + 0.24 * P * h, y * P - P / 2 + 0.32 * P * h, 2 * P, 2 * P);
+        const l = Math.min(HI, Math.round(H[y * cols + x] * HS)), e = edge[y * cols + x];
+        if (l < 1 || !e) continue;
+        const h = l / HS, z = 2 * P * e, o = P - z / 2;
+        ctx.drawImage(shade, (l - 1) * 2 * P, 0, 2 * P, 2 * P, ox + x * P - P / 2 + o + 0.24 * P * h * e, y * P - P / 2 + o + 0.32 * P * h * e, z, z);
       }
       // The falling value's shadow lies on the board, far off while it is high, meeting it as it lands.
       if (fall) {
@@ -538,9 +603,12 @@ const t = T[lang];
           let light = Math.round((L[i + right] - L[i + left] + L[i + down] - L[i + up]) * 4);
           for (let k = 1; k <= 3 && x - k >= 0 && y - k >= 0; k++) if (H[i - k * (cols + 1)] - h > k * 0.42) { light -= 2; if (k === 1) light -= 2; }
           light = Math.max(-DARK, Math.min(LIGHTS - 1 - DARK, light));
-          const l = Math.max(LO, Math.min(HI, Math.round(h * HS))), k = tintIndex(ink[i], red[i]);
-          if (l === 0 && k === 0 && light === 0) continue;
-          ctx.drawImage(atlas, (l - LO) * P, (k * LIGHTS + light + DARK) * P, P, P, ox + x * P, y * P, P, P);
+          const l = Math.max(LO, Math.min(HI, Math.round(h * HS))), k = tintIndex(ink[i], red[i]), e = edge[i];
+          const d = l === 0 && k === 0 ? Math.round(sheen[i] * DROPS) : 0;
+          if ((l === 0 && k === 0 && light === 0 && !d) || !e) continue;
+          const z = P * e, o = (P - z) / 2;
+          if (d) ctx.drawImage(drops, (d - 1) * 2 * P, 0, 2 * P, 2 * P, ox + x * P + o - z / 2, y * P + o - z / 2, 2 * z, 2 * z);
+          else ctx.drawImage(atlas, (l - LO) * P, (k * LIGHTS + light + DARK) * P, P, P, ox + x * P + o, y * P + o, z, z);
         }
       }
       if (fall) {
@@ -562,7 +630,6 @@ const t = T[lang];
         ctx.globalAlpha = 1;
       }
     }
-
     let clock = 0, last = 0, lastT = 0, running = false, pending = 0;
     const crossed = (from: number, to: number, at: number) => (from <= to ? from < at && at <= to : at > from || at <= to);
     function frame(now: number) {

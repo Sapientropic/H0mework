@@ -14,10 +14,9 @@ const { lang } = Astro.props;
 const t = T[lang];
 const papers = PAPERS.map((entry, order) => ({ ...paperOf(entry.slug, lang), order, stats: statsOf(entry.slug) }));
 const tally = papers.reduce((sum, paper) => ({ claims: sum.claims + paper.stats.claims, modules: sum.modules + paper.stats.modules }), { claims: 0, modules: 0 });
-// Newest first; within one date, the later registration.
+// Every paper on one shelf, newest first; within one date, the later registration.
 const latest = [...papers]
   .sort((a, b) => b.current.date.localeCompare(a.current.date) || b.order - a.order)
-  .slice(0, 3)
   .map((paper) => ({ ...paper, claims: claimsOf(paper.slug, lang) }));
 ---
 <Base lang={lang} title={`${t.site} · ${t.tagline.replace("|", lang === "zh" ? "" : " ")}`} alternate={t.otherHref}>
@@ -30,10 +29,16 @@ const latest = [...papers]
     </section>
     <Forest lang={lang} />
     <section class="section" id="latest">
-      <h2>{t.latest}</h2>
-      <div class="cards">
+      <div class="shelf-head">
+        <h2>{t.latest}</h2>
+        <div class="shelf-holes" hidden>
+          {latest.map((paper, i) => <button type="button" class="hole" data-i={i} aria-label={paper.main} title={paper.main} />)}
+        </div>
+        <a class="all" href={papersHref(lang)}>{fill(t.allPapers, papers.length)} →</a>
+      </div>
+      <div class="shelf">
         {latest.map((paper) => (
-          <a class="card" href={paperHref(lang, paper.slug)}>
+          <a class="card" href={paperHref(lang, paper.slug)} draggable="false">
             {paper.figure ? (
               <span class="card-art" aria-hidden="true"><Thumb name={paper.figure.name} transition={vtFigure(paper.slug)} /></span>
             ) : (
@@ -46,7 +51,56 @@ const latest = [...papers]
           </a>
         ))}
       </div>
-      <p class="all"><a href={papersHref(lang)}>{fill(t.allPapers, papers.length)} →</a></p>
     </section>
   </div>
+  <script>
+    // The shelf scrolls sideways by touch, trackpad or a dragged mouse, and settles on a card; the
+    // holes above it are its pages: filled for the cards in view, and a click brings that card in.
+    const shelf = document.querySelector<HTMLElement>(".shelf");
+    const holes = [...document.querySelectorAll<HTMLButtonElement>(".shelf-holes .hole")];
+    if (shelf) {
+      const cards = [...shelf.querySelectorAll<HTMLElement>(".card")];
+      const smooth = matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
+      const pad = () => parseFloat(getComputedStyle(shelf).scrollPaddingLeft) || 0;
+      const go = (i: number) => shelf.scrollTo({ left: cards[i].offsetLeft - pad(), behavior: smooth });
+      const nearest = () => cards.reduce((best, card, i) => (Math.abs(card.offsetLeft - pad() - shelf.scrollLeft) < Math.abs(cards[best].offsetLeft - pad() - shelf.scrollLeft) ? i : best), 0);
+      // A card is in view when most of it lies inside the column, not in the faded gutters.
+      const mark = () => {
+        const left = shelf.scrollLeft + pad(), right = left + shelf.clientWidth - 2 * pad();
+        cards.forEach((card, i) => holes[i]?.classList.toggle("on", Math.min(right, card.offsetLeft + card.offsetWidth) - Math.max(left, card.offsetLeft) > card.offsetWidth * 0.6));
+      };
+      let queued = false;
+      shelf.addEventListener("scroll", () => { if (!queued) { queued = true; requestAnimationFrame(() => { queued = false; mark(); }); } }, { passive: true });
+      new ResizeObserver(() => {
+        holes[0]?.parentElement?.toggleAttribute("hidden", shelf.scrollWidth <= shelf.clientWidth + 1);
+        mark();
+      }).observe(shelf);
+      holes.forEach((hole, i) => hole.addEventListener("click", () => go(i)));
+      // A mouse drags the shelf; past a few pixels it is a drag, not a click, and on release it settles.
+      let from: { x: number; left: number } | null = null, dragging = false, quiet = 0;
+      shelf.addEventListener("dragstart", (event) => event.preventDefault());
+      // The click that ends a drag opens nothing.
+      shelf.addEventListener("click", (event) => { if (performance.now() < quiet) { event.preventDefault(); event.stopPropagation(); } }, { capture: true });
+      shelf.addEventListener("pointerdown", (event) => {
+        if (event.pointerType === "mouse" && event.button === 0) { from = { x: event.clientX, left: shelf.scrollLeft }; dragging = false; }
+      });
+      shelf.addEventListener("pointermove", (event) => {
+        if (!from) return;
+        const dx = event.clientX - from.x;
+        if (!dragging && Math.abs(dx) > 6) { dragging = true; shelf.classList.add("dragging"); shelf.setPointerCapture(event.pointerId); }
+        if (dragging) shelf.scrollLeft = from.left - dx;
+      });
+      const drop = () => {
+        if (!from) return;
+        from = null;
+        if (!dragging) return;
+        dragging = false;
+        quiet = performance.now() + 80;
+        shelf.classList.remove("dragging");
+        go(nearest());
+      };
+      shelf.addEventListener("pointerup", drop);
+      shelf.addEventListener("pointercancel", drop);
+    }
+  </script>
 </Base>
