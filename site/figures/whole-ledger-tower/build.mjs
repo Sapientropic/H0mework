@@ -58,6 +58,8 @@ function makeLive(k, G, P0, C) {
   const S = (paths, style) => k.solidSvg(paths, style);
   const L = (d, style) => k.lineSvg(d, style);
   const D = (points, style) => k.dotsSvg(points, style);
+  // Stone (kit iso.css, data-mat): an ink deck, marble pages' furniture, jade where the hand goes.
+  const M = (material, ...svg) => `<g data-mat="${material}">${svg.join("")}</g>`;
   const X = [1, 0, 0], Y = [0, 1, 0], Z = [0, 0, 1];
   const TAU = Math.PI * 2;
   const RAD = Math.PI / 180;
@@ -114,10 +116,10 @@ function makeLive(k, G, P0, C) {
     const out = [];
     // Debt A carries the dark edge; the others stay quiet, so the eye follows the red thread.
     const edge = isA ? "hi" : "mid";
-    out.push(upright("puck" + isA, c, () => S(G.disc(0, PK.h, PK.r, FT, P), { tone: edge, lit: isA, inner: L(G.arcOf(FT, PK.h * 0.55, PK.r, P), { tone: "faint" }) })));
+    out.push(upright("puck" + isA, c, () => M("marble", S(G.disc(0, PK.h, PK.r, FT, P), { tone: edge, lit: isA, inner: L(G.arcOf(FT, PK.h * 0.55, PK.r, P), { tone: "faint" }) }))));
     let z = c[2] + PK.h;
     for (let i = 0; i < debt.budget; i++) {
-      out.push(upright("ring" + isA, [c[0], c[1], z + PK.gap], () => S(G.disc(0, PK.ringH, PK.ring, FT, P), { tone: isA ? "mid" : "lo" })));
+      out.push(upright("ring" + isA, [c[0], c[1], z + PK.gap], () => M("marble", S(G.disc(0, PK.ringH, PK.ring, FT, P), { tone: isA ? "mid" : "lo" }))));
       z += PK.gap + PK.ringH;
     }
     if (seal) {
@@ -151,9 +153,9 @@ function makeLive(k, G, P0, C) {
     const top = z + PG.rimH;
     out.push(upright("rim", [0, 0, z], () => {
       const h = PG.rimH, wall = G.disc(0, h, PG.r, FT, P);
-      return wall.shades.map((d, i) => (d ? `<path class="iso-shade" data-shade="${i}" d="${d}"/>` : "")).join("")
+      return M("jade", k.shadeSvg(wall)
         + `<path class="iso-top" fill-rule="evenodd" d="${G.circleOf(FT, h, PG.r, P)}${G.circleOf(FT, h, PG.glass - 0.4, P)}"/>`
-        + L(wall.crease, { tone: "faint" }) + L(G.circleOf(FT, h, PG.glass - 0.4, P), { tone: "lo" }) + L(wall.outline, { tone: "mid" });
+        + L(wall.crease, { tone: "faint" }) + L(G.circleOf(FT, h, PG.glass - 0.4, P), { tone: "lo" }) + L(wall.outline, { tone: "mid" }));
     }));
     out.push(L(Object.values(C.ANGLES).map((a) => k.pathOf([at(polar(PG.glass + 0.4, a, top)), at(polar(PG.r - 0.2, a, top))])).join(""), { tone: "lo" }));
     return out.join("");
@@ -170,7 +172,7 @@ function makeLive(k, G, P0, C) {
     const rad = [Math.cos(va * RAD), Math.sin(va * RAD), 0];
     const mid = vialAt(z);
     const FC = G.frameOf(add(mid, mul(-(VL.len / 2 + 1.4), tan)), tan, Z, rad);
-    out.push(S(G.prismOf(FC, [[0, -2.2], [0.9, -2.2], [0.9, 2.2], [0, 2.2]], 0, VL.len + 2.8, P), { tone: "mid", crease: "faint" }));
+    out.push(M("jade", S(G.prismOf(FC, [[0, -2.2], [0.9, -2.2], [0.9, 2.2], [0, 2.2]], 0, VL.len + 2.8, P), { tone: "mid", crease: "faint" })));
     const vc = add(mid, [0, 0, 0.9 + VL.radius]);
     const FVL = G.frameOf(add(vc, mul(-VL.len / 2, tan)), tan, Z, rad);
     const L0 = VL.len, R0 = VL.radius;
@@ -186,7 +188,7 @@ function makeLive(k, G, P0, C) {
   const SP = C.SPINDLE;
   const z0 = C.DECK.z1 + 7;
   const spR = (z) => SP.r0 + (SP.r1 - SP.r0) * Math.min(1, Math.max(0, (z - z0) / (C.CROWN - z0)));
-  const spindle = (za, zb) => (zb - za < 0.05 ? "" : once(`spindle${n2(za)}:${n2(zb)}`, () => S(G.solidOf([[za, spR(za)], [zb, spR(zb)]], FT, P), { tone: "mid" })));
+  const spindle = (za, zb) => (zb - za < 0.05 ? "" : once(`spindle${n2(za)}:${n2(zb)}`, () => M("marble", S(G.solidOf([[za, spR(za)], [zb, spR(zb)]], FT, P), { tone: "mid" }))));
 
   // --- the tower: eyelets, pages bottom to top, each level's pucks, threads and spindle by depth ---
   function tower(st) {
@@ -209,7 +211,7 @@ function makeLive(k, G, P0, C) {
       const gTop = glassTop(lv.z);
       const below = levels[i - 1];
       const vacant = below ? below.p.ledger.filter((e) => !lv.p.ledger.some((f) => f.lineage === e.lineage)) : [];
-      out.push(fade(upright("hub", [0, 0, lv.z - 1.2], () => S(G.disc(0, 1.2, 3.6, FT, P), { tone: "mid" })) + page(lv.z, { vacant, ping: lv.p.ping || 0 }), lv.opacity));
+      out.push(fade(upright("hub", [0, 0, lv.z - 1.2], () => M("jade", S(G.disc(0, 1.2, 3.6, FT, P), { tone: "mid" }))) + page(lv.z, { vacant, ping: lv.p.ping || 0 }), lv.opacity));
       const items = [{ d: depth(add(vialAt(lv.z), [0, 0, 2])), svg: fade(vial(lv.z, lv.p.wobble || 0), lv.opacity) }];
       const above = levels[i + 1];
       for (const debt of lv.p.ledger) {
@@ -233,9 +235,9 @@ function makeLive(k, G, P0, C) {
     // The crown: a cap, a short cone and a bead.
     out.push(once("crown", () => {
       const cz = C.CROWN + 1.6;
-      return S(G.disc(C.CROWN, C.CROWN + 1.6, 5.2, FT, P, { bevel: 0.5 }), { tone: "mid" })
+      return M("jade", S(G.disc(C.CROWN, C.CROWN + 1.6, 5.2, FT, P, { bevel: 0.5 }), { tone: "mid" })
         + S(G.solidOf([[cz, 2.4], [cz + 0.8, 2.1, 1], [cz + 2.6, 1.1, 1], [cz + 5.4, 0.55, 1], [cz + 7, 0.4]], FT, P, { smooth: { slope: (q) => -0.42 * Math.exp(-(q - cz) / 2.6), radius: (q) => 0.4 + 2 * Math.exp(-(q - cz) / 2.6) } }), { tone: "mid" })
-        + S(G.sphereOf([0, 0, cz + 8], 1.2, P), { tone: "hi" });
+        + S(G.sphereOf([0, 0, cz + 8], 1.2, P), { tone: "hi" }));
     }));
     return out.join("");
   }
@@ -253,9 +255,9 @@ function makeLive(k, G, P0, C) {
     const dir = add(mul(Math.cos(ang), Z), mul(Math.sin(ang), outward(name)));
     const tip = add(base, mul(17, dir));
     const out = [];
-    out.push(S(G.disc(-3, 3, 2.4, G.frameAlong(base, tangent(name)), P), { tone: "mid" }));
-    out.push(S(G.disc(0, 17, 0.95, G.frameAlong(base, dir), P), { tone: "mid" }));
-    out.push(upright("tip" + (pull > 0.02), add(tip, mul(2, dir)), () => S(G.sphereOf([0, 0, 0], 2.8, P), { tone: "hi", lit: pull > 0.02 })));
+    out.push(M("ink", S(G.disc(-3, 3, 2.4, G.frameAlong(base, tangent(name)), P), { tone: "mid" })));
+    out.push(M("marble", S(G.disc(0, 17, 0.95, G.frameAlong(base, dir), P), { tone: "mid" })));
+    out.push(upright("tip" + (pull > 0.02), add(tip, mul(2, dir)), () => M("jade", S(G.sphereOf([0, 0, 0], 2.8, P), { tone: "hi", lit: pull > 0.02 }))));
     return out.join("");
   }
   const BEAD = { half: 15.5, step: 4.2 };
@@ -267,9 +269,9 @@ function makeLive(k, G, P0, C) {
     const right = Array.from({ length: pair[1] }, (_, i) => BEAD.half - 2.4 - BEAD.step * (pair[1] - i - 0.5));
     if (slide > 0) right[0] += (-BEAD.half + 2.4 + BEAD.step * (pair[0] + 0.5) - right[0]) * slide;
     // Seen end-on the groove lines up its beads, the centre pin and both lamps, so they share one sort.
-    const items = [...left, ...right].map((s) => ({ d: depth(along(s)), svg: upright("bead", along(s), () => S(G.sphereOf([0, 0, 0], 1.9, P), { tone: "hi" })) }));
+    const items = [...left, ...right].map((s) => ({ d: depth(along(s)), svg: upright("bead", along(s), () => M("jade", S(G.sphereOf([0, 0, 0], 1.9, P), { tone: "hi" }))) }));
     const pin = onArc("beads");
-    items.push({ d: depth(add(pin, [0, 0, 1.7])), svg: upright("pin", pin, () => S(k.cylinder(0, 0, 0.8, 0, 3.4, P, 12), { tone: "mid" })) });
+    items.push({ d: depth(add(pin, [0, 0, 1.7])), svg: upright("pin", pin, () => M("ink", S(k.cylinder(0, 0, 0.8, 0, 3.4, P, 12), { tone: "mid" }))) });
     [[-1, lamps[0]], [1, lamps[1]]].forEach(([side, on]) => {
       // A prime lamp at each end of the groove.
       const c = add(polar(C.ARC, slot("beads"), deckTop), mul(side * (BEAD.half + 2.6), t));
@@ -283,21 +285,15 @@ function makeLive(k, G, P0, C) {
     // At rest the bow faces the front; home, it has turned a quarter and stands edge-on.
     const a = Math.atan2(HV[1], HV[0]) + (turned * Math.PI) / 2;
     const u = [Math.cos(a), Math.sin(a), 0];
-    return upright("shaft", [c[0], c[1], c[2] + 1.8], () => S(G.disc(0, 1.6, 1.05, FT, P), { tone: "mid" }))
-      + S(G.prismOf(G.frameOf([c[0], c[1], c[2] + 3.4], cross(Z, u), Z, u), G.stadium(2.1, 2.1, 3, 18).map(([x, y]) => [x + 1.2, y]), -0.4, 0.4, P), { tone: "hi", lit: turned > 0.98 });
+    return upright("shaft", [c[0], c[1], c[2] + 1.8], () => M("ink", S(G.disc(0, 1.6, 1.05, FT, P), { tone: "mid" })))
+      + M("jade", S(G.prismOf(G.frameOf([c[0], c[1], c[2] + 3.4], cross(Z, u), Z, u), G.stadium(2.1, 2.1, 3, 18).map(([x, y]) => [x + 1.2, y]), -0.4, 0.4, P), { tone: "hi", lit: turned > 0.98 }));
   }
 
   // --- the deck: feet, the graphite disc, the boss, and everything flat or low on its top ---------
-  // The deck is graphite: its own token set, inline so it holds wherever the SVG is shown. The glass and
-  // the metal controls keep the page's tokens, so they stand light on the dark deck.
-  const GRAPHITE = [
-    "--anatomy-paper:#76767a", "--anatomy-face:#7c7c80", "--anatomy-top:#808084",
-    "--anatomy-shade-0:#5c5c60", "--anatomy-shade-1:#646468", "--anatomy-shade-2:#6c6c70", "--anatomy-shade-3:#747478",
-    "--anatomy-hi:#2a2a2d", "--anatomy-mid:#47474b", "--anatomy-lo:#5a5a5e", "--anatomy-faint:#69696d", "--anatomy-dot:#ececee",
-  ].join(";");
+  // The deck is ink stone; the glass and the controls on it stand light against it.
   function deck() {
     const { DECK, FEET, FRONT } = C;
-    const out = [once("halo", () => `<path class="iso-halo" d="${k.haloOf({ x: -DECK.r, y: -DECK.r, w: DECK.r * 2, d: DECK.r * 2, r: DECK.r }, 0, 6, P)}"/>`), `<g style="${GRAPHITE}">`];
+    const out = [once("halo", () => `<path class="iso-halo" d="${k.haloOf({ x: -DECK.r, y: -DECK.r, w: DECK.r * 2, d: DECK.r * 2, r: DECK.r }, 0, 6, P)}"/>`), `<g data-mat="ink">`];
     // Three feet under the rim, far to near; the deck covers whatever of them it overhangs.
     [FRONT + 60, FRONT - 60, FRONT + 180].map((a) => polar(FEET.r, a, 0)).sort((a, b) => depth(a) - depth(b))
       .forEach((c) => out.push(upright("foot", c, () => S(k.cylinder(0, 0, FEET.radius, 0, FEET.h, P, 24), { tone: "lo" }))));
@@ -319,14 +315,14 @@ function makeLive(k, G, P0, C) {
     const groove = [[-BEAD.half, -2.6], [BEAD.half, -2.6], [BEAD.half, 2.6], [-BEAD.half, 2.6]].map(([u, v]) => at([c[0] + u * t[0] + v * o[0], c[1] + u * t[1] + v * o[1], deckTop]));
     out.push(`<path style="${PAINT.dark}" d="${k.pathOf(groove, true)}"/>`, L(k.pathOf(groove, true), { tone: "lo" }));
     // The boss the spindle stands in.
-    out.push(once("boss", () => S(G.disc(DECK.z1, DECK.z1 + 3, 15, FT, P, { bevel: 0.6 }), { tone: "mid" })));
-    out.push(D(G.dotsOf(FT, DECK.z1 + 3, 12, 8, P, { all: true }), { size: 0.4 }));
-    out.push(once("collar", () => S(G.disc(DECK.z1 + 3, DECK.z1 + 7, 7.5, FT, P), { tone: "mid", inner: L(G.arcOf(FT, DECK.z1 + 5, 7.5, P), { tone: "faint" }) })));
+    out.push(once("boss", () => M("jade", S(G.disc(DECK.z1, DECK.z1 + 3, 15, FT, P, { bevel: 0.6 }), { tone: "mid" }))));
+    out.push(M("jade", D(G.dotsOf(FT, DECK.z1 + 3, 12, 8, P, { all: true }), { size: 0.4 })));
+    out.push(once("collar", () => M("marble", S(G.disc(DECK.z1 + 3, DECK.z1 + 7, 7.5, FT, P), { tone: "mid", inner: L(G.arcOf(FT, DECK.z1 + 5, 7.5, P), { tone: "faint" }) }))));
     out.push("</g>");
     // Key barrels: low enough that nothing on the tower ever passes under them on screen.
     for (const name of ["receipt", "successor"]) {
       const k0 = onArc(name);
-      out.push(upright("barrel", k0, () => S(k.cylinder(0, 0, 3.8, 0, 1.8, P, 28, 0.3), { tone: "mid" }) + L(k.ring(0, 0, 2.5, 1.8, P, 24), { tone: "lo" })));
+      out.push(upright("barrel", k0, () => M("marble", S(k.cylinder(0, 0, 3.8, 0, 1.8, P, 28, 0.3), { tone: "mid" }) + L(k.ring(0, 0, 2.5, 1.8, P, 24), { tone: "lo" }))));
     }
     return out.join("");
   }
@@ -453,7 +449,7 @@ const WIDTH = ${WIDTH};
 const C = ${JSON.stringify(C, (key, value) => (typeof value === "function" ? undefined : value))};
 C.pageZ = (i) => C.PAGES.z0 + C.PAGES.gap * i;
 C.TOP = C.pageZ(C.PAGES.count - 1);
-const kit = { iso, depthOf, pathOf, solidSvg, lineSvg, dotsSvg, ring, cylinder, haloOf };
+const kit = { iso, depthOf, pathOf, solidSvg, shadeSvg, lineSvg, dotsSvg, ring, cylinder, haloOf };
 const LIVE = (${makeLive.toString()})(kit, LATHE, P, C);
 const readoutOf = ${readoutOf.toString()};
 const root = document.querySelector('[data-figure="whole-ledger-tower"]');

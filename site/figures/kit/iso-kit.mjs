@@ -1,6 +1,9 @@
 export const AZIMUTH = 45;
 export const ELEVATION = 30;
 export const SHADES = 4;
+// Side faces shade continuously: a facet's tone sits one of LEVELS steps between two neighbouring
+// shades (the CSS mixes them by --f), so curved sides read smooth and a turning face never jumps a band.
+export const LEVELS = 8;
 const RADIANS = Math.PI / 180;
 const UNIT = Math.sqrt(1.6);
 export function cameraOf({ scale, azimuth = AZIMUTH, elevation = ELEVATION }) {
@@ -147,7 +150,7 @@ export function extrude(ring, z, height, projection, options = {}) {
         }
         fill = parts.join("");
     }
-    const buckets = Array.from({ length: SHADES }, () => []);
+    const buckets = Array.from({ length: (SHADES - 1) * LEVELS + 1 }, () => []);
     if (height > 0) {
         const [lx, ly] = [-sinA, cosA];
         for (let index = 0; index < count; index++) {
@@ -155,7 +158,7 @@ export function extrude(ring, z, height, projection, options = {}) {
                 continue;
             const [nx, ny] = normals[index];
             const lit = (nx * lx + ny * ly + 1) / 2;
-            const shade = Math.min(SHADES - 1, Math.max(0, Math.floor(lit * SHADES)));
+            const shade = Math.round(Math.min(SHADES - 1, Math.max(0, lit * SHADES - 0.5)) * LEVELS);
             const next = (index + 1) % count;
             buckets[shade].push(pathOf(oriented([top[index], top[next], bottom[next], bottom[index]]), true));
         }
@@ -182,6 +185,7 @@ export function extrude(ring, z, height, projection, options = {}) {
         crease: crease.join(""),
         top: pathOf(oriented(top), true),
         shades: buckets.map((paths) => paths.join("")),
+        levels: LEVELS,
         bevel,
     };
 }
@@ -412,16 +416,25 @@ const attrs = (pairs) => Object.entries(pairs)
     .filter(([, value]) => value !== undefined && value !== false)
     .map(([key, value]) => ` ${key}="${escape(String(value))}"`)
     .join("");
+// Shade paths: four entries are the four plain tones; with `levels`, entry n sits n / levels of the way up
+// the ramp of shades and top, and the CSS mixes its two neighbours by --f.
+export function shadeSvg({ shades, levels }) {
+    if (!levels)
+        return shades.map((d, shade) => (d ? `<path class="iso-shade" data-shade="${shade}" d="${d}"/>` : "")).join("");
+    return shades.map((d, level) => {
+        if (!d)
+            return "";
+        const shade = Math.min(SHADES - 1, Math.floor(level / levels));
+        return `<path class="iso-shade" data-shade="${shade}" data-fine="" style="--f:${level / levels - shade}" d="${d}"/>`;
+    }).join("");
+}
 export function solidSvg(paths, { tone = "hi", crease = "faint", halo = false, lit = false, flat = false, className, inner = "" } = {}) {
     const parts = [];
     if (halo)
         parts.push(`<path class="iso-halo" d="${paths.fill}"/>`);
     parts.push(`<path class="iso-fill" d="${paths.fill}"/>`);
     if (!flat) {
-        paths.shades.forEach((d, shade) => {
-            if (d)
-                parts.push(`<path class="iso-shade" data-shade="${shade}" d="${d}"/>`);
-        });
+        parts.push(shadeSvg(paths));
         parts.push(`<path class="iso-top" d="${paths.top}"/>`);
     }
     if (crease !== "none" && paths.crease)
@@ -549,6 +562,12 @@ function swatchSvg(mark) {
 }
 // caption is one string, or paragraphs: a string, or [term, text] for a paragraph that opens on a bold term.
 // refs name the statements the figure draws, set on their own line above the caption.
+// Polished stone: on the light page the tops of ink and jade parts carry a soft diagonal reflection
+// (iso.css points their .iso-top here). The defs sit beside the drawing, so a figure that redraws its
+// SVG keeps them; a drawing shown without them falls back to the flat top.
+export const SHEEN_DEFS = '<linearGradient id="iso-sheen-ink" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4c5355"/><stop offset=".3" stop-color="#626b6d"/><stop offset=".5" stop-color="#454b4c"/><stop offset="1" stop-color="#383d3e"/></linearGradient>'
+    + '<linearGradient id="iso-sheen-jade" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#cfe2d2"/><stop offset=".3" stop-color="#e3efe3"/><stop offset=".5" stop-color="#c6dcc9"/><stop offset="1" stop-color="#b8d1bd"/></linearGradient>';
+const SHEEN_SVG = `<svg class="iso-defs" width="0" height="0" aria-hidden="true" focusable="false"><defs>${SHEEN_DEFS}</defs></svg>`;
 export function plateHtml({ fig, title, hint, readout = "", keys = [], caption, refs = [], body }) {
     const corner = (name, text, extra = "") => `<span class="iso-plate-corner" data-corner="${name}"${extra}>${escape(text)}</span>`;
     const para = (p) => `<p class="iso-para">${Array.isArray(p) ? `<b>${escape(p[0])}</b>${escape(p[1])}` : escape(p)}</p>`;
@@ -556,7 +575,7 @@ export function plateHtml({ fig, title, hint, readout = "", keys = [], caption, 
     const legend = keys.length || caption
         ? `<figcaption class="iso-legend">${keys.length ? `<span class="iso-keys">${keys.map((key) => `<span class="iso-key">${swatchSvg(key.mark)}${escape(key.label)}</span>`).join("")}</span>` : ""}${refs.length ? `<span class="iso-refs">${refs.map((ref) => `<span>${escape(ref)}</span>`).join("")}</span>` : ""}${text}</figcaption>`
         : "";
-    return `<figure class="iso-figure"><div class="iso-plate"><div class="iso-plate-corners" aria-hidden="true">${corner("fig", fig)}${title ? corner("title", title) : ""}${hint ? corner("hint", hint) : ""}${corner("readout", readout, " data-readout")}</div>${body}</div>${legend}</figure>`;
+    return `<figure class="iso-figure"><div class="iso-plate"><div class="iso-plate-corners" aria-hidden="true">${corner("fig", fig)}${title ? corner("title", title) : ""}${hint ? corner("hint", hint) : ""}${corner("readout", readout, " data-readout")}</div>${body}${SHEEN_SVG}</div>${legend}</figure>`;
 }
 export function pageHtml({ title, theme = "dark", body, script = "", width = 650 }) {
     return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>${escape(title)}</title><style>${ISO_CSS}${PAGE_CSS.replace("__WIDTH__", String(width))}</style></head><body class="iso" data-theme="${theme}"><main class="iso-page">${body}</main>${script ? `<script type="module">${script.replace(/<\/(script)/gi, "<\\/$1")}</script>` : ""}</body></html>`;
@@ -596,21 +615,17 @@ export const ISO_CSS = `
 .iso-fill{fill:var(--anatomy-paper);stroke:none}
 .iso-solid[data-lit]>.iso-fill{fill:var(--anatomy-face)}
 .iso-shade,.iso-top{stroke:none}
-.iso-shade[data-shade="0"]{fill:var(--anatomy-shade-0)}
-.iso-shade[data-shade="1"]{fill:var(--anatomy-shade-1)}
-.iso-shade[data-shade="2"]{fill:var(--anatomy-shade-2)}
-.iso-shade[data-shade="3"]{fill:var(--anatomy-shade-3)}
+.iso-shade[data-shade="0"]{--sh:color-mix(in srgb,var(--anatomy-shade-0) calc(100% - var(--f,0) * 100%),var(--anatomy-shade-1))}
+.iso-shade[data-shade="1"]{--sh:color-mix(in srgb,var(--anatomy-shade-1) calc(100% - var(--f,0) * 100%),var(--anatomy-shade-2))}
+.iso-shade[data-shade="2"]{--sh:color-mix(in srgb,var(--anatomy-shade-2) calc(100% - var(--f,0) * 100%),var(--anatomy-shade-3))}
+.iso-shade[data-shade="3"]{--sh:color-mix(in srgb,var(--anatomy-shade-3) calc(100% - var(--f,0) * 100%),var(--anatomy-top))}
+.iso-shade{fill:var(--sh)}
 .iso-top{fill:var(--anatomy-top)}
 .iso-solid[data-lit]>.iso-top{fill:var(--anatomy-lit-top)}
-.iso-solid[data-lit]>.iso-shade{fill:var(--anatomy-lit-shade)}
-.iso-solid[data-seamless]>.iso-shade,.iso-solid[data-seamless]>.iso-top{stroke-width:.4;stroke-linejoin:round}
-.iso-solid[data-seamless]>.iso-shade[data-shade="0"]{stroke:var(--anatomy-shade-0)}
-.iso-solid[data-seamless]>.iso-shade[data-shade="1"]{stroke:var(--anatomy-shade-1)}
-.iso-solid[data-seamless]>.iso-shade[data-shade="2"]{stroke:var(--anatomy-shade-2)}
-.iso-solid[data-seamless]>.iso-shade[data-shade="3"]{stroke:var(--anatomy-shade-3)}
-.iso-solid[data-seamless]>.iso-top{stroke:var(--anatomy-top)}
+.iso-solid[data-lit]>.iso-shade{--sh:var(--anatomy-lit-shade)}
+.iso-shade[data-fine],.iso-solid[data-seamless]>.iso-shade{stroke:var(--sh);stroke-width:.4;stroke-linejoin:round}
+.iso-solid[data-seamless]>.iso-top{stroke-width:.4;stroke-linejoin:round;stroke:var(--anatomy-top)}
 .iso-solid[data-seamless][data-lit]>.iso-top{stroke:var(--anatomy-lit-top)}
-.iso-solid[data-seamless][data-lit]>.iso-shade{stroke:var(--anatomy-lit-shade)}
 .iso-solid[data-lit]>.iso-edge{stroke:var(--anatomy-lit)}
 .iso-halo{fill:var(--anatomy-halo);stroke:none;filter:blur(9px);opacity:var(--anatomy-halo-opacity);transform:translateY(3px)}
 .iso-line{fill:none;stroke:var(--anatomy-lo);stroke-width:var(--anatomy-weight);stroke-linecap:round;stroke-linejoin:round}
@@ -678,6 +693,19 @@ export const ISO_CSS = `
 .iso-swatch[data-mark="green"] path{stroke:var(--anatomy-green)}
 .iso-swatch[data-mark="blue"] path{stroke:var(--anatomy-blue)}
 .iso-swatch-crease{stroke:var(--anatomy-lo)!important}
+/* Stone materials: a group with data-mat remaps the tone ramp (marble, jade, ink). */
+[data-mat="marble"]{--anatomy-paper:#232422;--anatomy-face:#2b2c2a;--anatomy-top:#2f302e;--anatomy-shade-0:#181918;--anatomy-shade-1:#1d1e1c;--anatomy-shade-2:#222321;--anatomy-shade-3:#282927;--anatomy-lit-top:#363735;--anatomy-lit-shade:#2c2d2b;--anatomy-hi:#dadad6;--anatomy-mid:#77797d;--anatomy-lo:#4b4d50;--anatomy-faint:#343634;--anatomy-dot:#dadad6;--anatomy-lit:#ffffff}
+.iso[data-theme="light"] [data-mat="marble"]{--anatomy-paper:#f1f0ec;--anatomy-face:#f7f6f2;--anatomy-top:#fbfaf8;--anatomy-shade-0:#cfcfca;--anatomy-shade-1:#dbdad5;--anatomy-shade-2:#e6e5e0;--anatomy-shade-3:#efeeea;--anatomy-lit-top:#ffffff;--anatomy-lit-shade:#eae9e4;--anatomy-hi:#30333a;--anatomy-mid:#7a7e86;--anatomy-lo:#a7aab0;--anatomy-faint:#cdcfd2;--anatomy-dot:#474b52;--anatomy-lit:#000000}
+.iso[data-theme="dark"] [data-mat="marble"]{--anatomy-paper:#232422;--anatomy-face:#2b2c2a;--anatomy-top:#2f302e;--anatomy-shade-0:#181918;--anatomy-shade-1:#1d1e1c;--anatomy-shade-2:#222321;--anatomy-shade-3:#282927;--anatomy-lit-top:#363735;--anatomy-lit-shade:#2c2d2b;--anatomy-hi:#dadad6;--anatomy-mid:#77797d;--anatomy-lo:#4b4d50;--anatomy-faint:#343634;--anatomy-dot:#dadad6;--anatomy-lit:#ffffff}
+[data-mat="jade"]{--anatomy-paper:#1e2b23;--anatomy-face:#25352c;--anatomy-top:#2a3b31;--anatomy-shade-0:#22322a;--anatomy-shade-1:#17221c;--anatomy-shade-2:#1c2921;--anatomy-shade-3:#223128;--anatomy-lit-top:#34473b;--anatomy-lit-shade:#293a30;--anatomy-hi:#cde3d3;--anatomy-mid:#6c8d77;--anatomy-lo:#43604e;--anatomy-faint:#2e4236;--anatomy-dot:#cde3d3;--anatomy-lit:#f0fff4}
+.iso[data-theme="light"] [data-mat="jade"]{--anatomy-paper:#9dbea6;--anatomy-face:#bcd5c0;--anatomy-top:#c6dcc9;--anatomy-shade-0:#a6c4ad;--anatomy-shade-1:#7a9f86;--anatomy-shade-2:#91b49b;--anatomy-shade-3:#b0cdb7;--anatomy-lit-top:#d6e7d8;--anatomy-lit-shade:#a9c8b1;--anatomy-hi:#163222;--anatomy-mid:#3f634d;--anatomy-lo:#5f8a70;--anatomy-faint:#dcebdc;--anatomy-dot:#173322;--anatomy-lit:#06180d}
+.iso[data-theme="dark"] [data-mat="jade"]{--anatomy-paper:#1e2b23;--anatomy-face:#25352c;--anatomy-top:#2a3b31;--anatomy-shade-0:#22322a;--anatomy-shade-1:#17221c;--anatomy-shade-2:#1c2921;--anatomy-shade-3:#223128;--anatomy-lit-top:#34473b;--anatomy-lit-shade:#293a30;--anatomy-hi:#cde3d3;--anatomy-mid:#6c8d77;--anatomy-lo:#43604e;--anatomy-faint:#2e4236;--anatomy-dot:#cde3d3;--anatomy-lit:#f0fff4}
+[data-mat="ink"]{--anatomy-paper:#141616;--anatomy-face:#191c1c;--anatomy-top:#1d2020;--anatomy-shade-0:#0d0f0f;--anatomy-shade-1:#111313;--anatomy-shade-2:#151717;--anatomy-shade-3:#1a1c1c;--anatomy-lit-top:#262a2a;--anatomy-lit-shade:#1b1e1e;--anatomy-hi:#b9bebf;--anatomy-mid:#565c5d;--anatomy-lo:#2f3434;--anatomy-faint:#222626;--anatomy-dot:#c7cbcd;--anatomy-lit:#ffffff}
+.iso[data-theme="light"] [data-mat="ink"]{--anatomy-paper:#353a3b;--anatomy-face:#3e4445;--anatomy-top:#454b4c;--anatomy-shade-0:#232728;--anatomy-shade-1:#2a2f30;--anatomy-shade-2:#323738;--anatomy-shade-3:#3a3f40;--anatomy-lit-top:#525a5c;--anatomy-lit-shade:#3c4243;--anatomy-hi:#0b0d0e;--anatomy-mid:#191c1d;--anatomy-lo:#4b5456;--anatomy-faint:#6e7779;--anatomy-dot:#c7cbcd;--anatomy-lit:#000000}
+.iso[data-theme="dark"] [data-mat="ink"]{--anatomy-paper:#141616;--anatomy-face:#191c1c;--anatomy-top:#1d2020;--anatomy-shade-0:#0d0f0f;--anatomy-shade-1:#111313;--anatomy-shade-2:#151717;--anatomy-shade-3:#1a1c1c;--anatomy-lit-top:#262a2a;--anatomy-lit-shade:#1b1e1e;--anatomy-hi:#b9bebf;--anatomy-mid:#565c5d;--anatomy-lo:#2f3434;--anatomy-faint:#222626;--anatomy-dot:#c7cbcd;--anatomy-lit:#ffffff}
+.iso-defs{position:absolute;width:0;height:0;overflow:hidden}
+.iso[data-theme="light"] [data-mat="ink"] :not([data-lit])>.iso-top{fill:url(#iso-sheen-ink) var(--anatomy-top)}
+.iso[data-theme="light"] [data-mat="jade"] :not([data-lit])>.iso-top{fill:url(#iso-sheen-jade) var(--anatomy-top)}
 @media (max-width:560px){.iso-plate{padding:48px 12px 70px}.iso-plate-corner[data-corner="hint"]{bottom:18px}}
 @media (prefers-reduced-motion:reduce){.iso-line[data-flow],.iso-dots circle[data-pulse]{animation:none}}
 `;

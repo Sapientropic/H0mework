@@ -241,10 +241,16 @@ export function thumbOf(name: string) {
 }
 // An SVG file is parsed as XML, so a bare HTML boolean attribute (data-on) needs a value.
 const xmlAttributes = (svg: string) => svg.replace(/<[a-zA-Z][^>]*>/g, (tag) => tag.replace(/("[^"]*")|\s([a-zA-Z_:][-\w:.]*)(?=\s|\/?>)/g, (match, quoted, name) => quoted ?? ` ${name}=""`));
+// The paint servers the plate keeps beside the drawing (the stone sheen), for a drawing shown on its own.
+const defsOf = (name: string) =>
+  once(`defs:${name}`, () => {
+    const fragment = JSON.parse(readFileSync(resolve(process.cwd(), "src/generated", `${name}.json`), "utf8"));
+    return String(fragment.html.zh.match(/<svg class="iso-defs"[^>]*>([\s\S]*?)<\/svg>/)?.[1] ?? "");
+  });
 export function thumbSvgOf(name: string, css: string) {
   const { width, height } = thumbOf(name);
   return xmlAttributes(figureSvgOf(name)).replace(/^<svg([^>]*)>/, (_, attrs: string) => {
     const kept = attrs.replace(/\s(role|aria-label)="[^"]*"/g, "").replace(/class="/, 'class="iso ');
-    return `<svg${kept} data-theme="light" width="${width}" height="${height}"><style><![CDATA[${css}]]></style>`;
+    return `<svg${kept} data-theme="light" width="${width}" height="${height}"><style><![CDATA[${css}]]></style>${defsOf(name)}`;
   });
 }

@@ -67,6 +67,8 @@ function makeLive(k, G, P, C, M) {
   const S = (paths, style) => k.solidSvg(paths, style);
   const L = (d, style) => k.lineSvg(d, style);
   const D = (points, style) => k.dotsSvg(points, style);
+  // Stone (kit iso.css, data-mat): a group remaps the tone ramp of what it holds.
+  const stone = (material, ...svg) => `<g data-mat="${material}">${svg.join("")}</g>`;
   const V = G.viewOf(P);
   const X = [1, 0, 0], Y = [0, 1, 0], Z = [0, 0, 1];
   const TAU = Math.PI * 2;
@@ -146,11 +148,11 @@ function makeLive(k, G, P, C, M) {
       ];
       const mid = a0 - span * 0.6;
       const facing = dot(G.radialOf(F0, mid), V);
-      teeth.push({ facing, svg: S(G.prismOf(F0, poly, S_WHEEL[0], S_WHEEL[1], P), { tone: "mid" }) });
+      teeth.push({ facing, svg: stone("jade", S(G.prismOf(F0, poly, S_WHEEL[0], S_WHEEL[1], P), { tone: "mid" })) });
     }
     teeth.sort((a, b) => a.facing - b.facing);
     teeth.filter((t) => t.facing < 0).forEach((t) => out.push(t.svg));
-    out.push(S(G.disc(S_WHEEL[0], S_WHEEL[1], R_ROOT, F0, P), { tone: "mid" }));
+    out.push(stone("jade", S(G.disc(S_WHEEL[0], S_WHEEL[1], R_ROOT, F0, P), { tone: "mid" })));
     teeth.filter((t) => t.facing >= 0).forEach((t) => out.push(t.svg));
     // The pawl rides the tooth under its tip; the wheel can only go forward.
     const ride = toothAt(PAWL.tip - theta + span * 0.18);
@@ -160,7 +162,7 @@ function makeLive(k, G, P, C, M) {
     const along = base - lift;
     const length = Math.hypot(tip[1] - pivot[1], tip[2] - pivot[2]);
     const FP = G.frameOf([C.SIDE, pivot[1], pivot[2]], X, [0, Math.sin(along), Math.cos(along)], [0, Math.cos(along), -Math.sin(along)]);
-    out.push(S(G.prismOf(FP, G.stadium(1.7, 0.6, length, 20), S_WHEEL[0], S_WHEEL[1], P), { tone: "hi" }));
+    out.push(stone("ink", S(G.prismOf(FP, G.stadium(1.7, 0.6, length, 20), S_WHEEL[0], S_WHEEL[1], P), { tone: "hi" })));
     out.push(S(G.disc(S_WHEEL[1], S_WHEEL[1] + 0.7, 1.1, G.frameOf([C.SIDE, pivot[1], pivot[2]], X, Z, Y), P), { tone: "mid" }));
     // The pawl's spring: from a pin on the case down to the pawl's back, holding its tip on the teeth.
     const sMid = (S_WHEEL[0] + S_WHEEL[1]) / 2;
@@ -179,13 +181,13 @@ function makeLive(k, G, P, C, M) {
   function crankFront(theta) {
     const out = [];
     out.push(S(G.disc(S_WHEEL[1], S_CAM[0], 2.6, F0, P), { tone: "mid" }));
-    out.push(S(G.prismOf(F0, camPolygon(theta), S_CAM[0], S_CAM[1], P), { tone: "hi" }));
+    out.push(stone("ink", S(G.prismOf(F0, camPolygon(theta), S_CAM[0], S_CAM[1], P), { tone: "hi" })));
     // The hub, its set screw turning with it.
-    out.push(S(G.disc(S_HUB[0], S_HUB[1], 3.5, F0, P), { tone: "mid", inner: L(G.arcOf(F0, S_HUB[0] + 1.2, 3.5, P), { tone: "faint" }) }));
+    out.push(stone("jade", S(G.disc(S_HUB[0], S_HUB[1], 3.5, F0, P), { tone: "mid", inner: L(G.arcOf(F0, S_HUB[0] + 1.2, 3.5, P), { tone: "faint" }) })));
     out.push(D([at(G.pointOf(F0, S_HUB[1], 2.1, theta + Math.PI))], { size: 0.45, tone: "mid" }));
     const d = dirOf(theta);
     const FA = G.frameOf(HUB, X, d, dirOf(theta + Math.PI / 2));
-    out.push(S(G.prismOf(FA, G.stadium(3.3, 2.1, CR.len, 28), S_ARM[0], S_ARM[1], P), { tone: "mid" }));
+    out.push(stone("ink", S(G.prismOf(FA, G.stadium(3.3, 2.1, CR.len, 28), S_ARM[0], S_ARM[1], P), { tone: "mid" })));
     const end = add(HUB, mul(CR.len, d));
     const FE = G.frameOf(end, X, Z, Y);
     out.push(S(G.disc(S_ARM[1], S_ARM[1] + 1.2, 1.2, FE, P), { tone: "mid" }));
@@ -196,7 +198,7 @@ function makeLive(k, G, P, C, M) {
     const profile = Array.from({ length: 13 }, (_, i) => { const s = g0 + (gl * i) / 12; return [s, radius(s), 1]; });
     profile[0][2] = 0;
     profile[12][2] = 0;
-    out.push(S(G.solidOf(profile, FE, P, { smooth: { slope, radius } }), { tone: "hi" }));
+    out.push(stone("jade", S(G.solidOf(profile, FE, P, { smooth: { slope, radius } }), { tone: "hi" })));
     return out.join("");
   }
 
@@ -234,7 +236,7 @@ function makeLive(k, G, P, C, M) {
     const u = unit([0, B[1] - A[1], B[2] - A[2]]);
     const FL = G.frameOf(A, X, u, cross(X, u));
     const out = [];
-    out.push(S(G.prismOf(FL, G.stadium(LEVER.half, LEVER.half, LEVER.back + LEVER.front, 20), LEVER.s[0], LEVER.s[1], P), { tone: "hi" }));
+    out.push(stone("jade", S(G.prismOf(FL, G.stadium(LEVER.half, LEVER.half, LEVER.back + LEVER.front, 20), LEVER.s[0], LEVER.s[1], P), { tone: "hi" })));
     const FP = G.frameOf([cabSide, LEVER.y, LEVER.z], X, Z, Y);
     out.push(S(G.disc(LEVER.s[1], LEVER.s[1] + 0.8, 0.95, FP, P), { tone: "mid" }));
     const bottom = rollerZ(drop) - ROD_LEN;
@@ -249,9 +251,9 @@ function makeLive(k, G, P, C, M) {
     const out = [L(coil.back, { tone: "lo" })];
     out.push(S(G.disc(0, rollerZ(drop) - BRACKET.z1, ROD.r, FROD(BRACKET.z1), P), { tone: "mid" }));
     out.push(L(coil.front, { tone: "mid" }));
-    out.push(S(G.disc(-0.5, 0.5, 1.9, FROD(collar), P), { tone: "mid" }));
+    out.push(stone("ink", S(G.disc(-0.5, 0.5, 1.9, FROD(collar), P), { tone: "mid" })));
     const FR = G.frameOf([C.SIDE, ROD.y, rollerZ(drop)], X, Z, Y);
-    out.push(S(G.disc(S_CAM[0] + 0.1, S_CAM[1] - 0.1, ROD.roller, FR, P), { tone: "mid", inner: L(G.circleOf(FR, S_CAM[1] - 0.1, 0.5, P), { tone: "lo" }) }));
+    out.push(stone("jade", S(G.disc(S_CAM[0] + 0.1, S_CAM[1] - 0.1, ROD.roller, FR, P), { tone: "mid", inner: L(G.circleOf(FR, S_CAM[1] - 0.1, 0.5, P), { tone: "lo" }) })));
     return out.join("");
   }
 
@@ -283,11 +285,11 @@ function makeLive(k, G, P, C, M) {
     // The pull: two posts and a round bar.
     const pz = 28.5, px = [-88, -58];
     const bar = add([0, 0, 0], [0, face + 3.6, pz]);
-    for (const x of px) out.push(S(G.disc(0, 3.6 - 0.62, 1.05, G.frameOf([x, face, pz], Y, Z, X), P), { tone: "mid" }));
-    out.push(S(G.disc(px[0] - 3, px[1] + 3, 1.25, G.frameOf([0, bar[1], pz], X, Z, Y), P), { tone: "hi" }));
+    for (const x of px) out.push(stone("ink", S(G.disc(0, 3.6 - 0.62, 1.05, G.frameOf([x, face, pz], Y, Z, X), P), { tone: "mid" })));
+    out.push(stone("jade", S(G.disc(px[0] - 3, px[1] + 3, 1.25, G.frameOf([0, bar[1], pz], X, Z, Y), P), { tone: "hi" })));
     // The lock: an escutcheon and its keyhole. The bolt behind it holds the drawer until the crank releases it.
     const lock = [-30, face, 28];
-    out.push(S(G.disc(0, 0.7, 3.3, G.frameOf(lock, Y, Z, X), P), { tone: "mid", inner: L(G.circleOf(G.frameOf(lock, Y, Z, X), 0.7, 2.4, P), { tone: "faint" }) }));
+    out.push(stone("jade", S(G.disc(0, 0.7, 3.3, G.frameOf(lock, Y, Z, X), P), { tone: "mid", inner: L(G.circleOf(G.frameOf(lock, Y, Z, X), 0.7, 2.4, P), { tone: "faint" }) })));
     const hole = `M${-0.75} ${-1.6}A0.95 0.95 0 1 1 ${0.75} ${-1.6}L0.5 0.9H-0.5Z`;
     out.push(`<g transform="${planeMatrix([lock[0], face + 0.72, lock[2]], X, [0, 0, -1])}"><path style="${PAINT.hole}" d="${hole}"/></g>`);
     out.push(D([at([x0 + 2.4, face, z1 - 2.4]), at([x1 - 2.4, face, z1 - 2.4]), at([x0 + 2.4, face, z0 + 2.4]), at([x1 - 2.4, face, z0 + 2.4])], { size: 0.4 }));
@@ -308,7 +310,7 @@ function makeLive(k, G, P, C, M) {
     const lift = Math.max(0, c[2] - 1.4 - hT);
     if (lift > 0.6) out.push(`<path style="${PAINT.shadow};opacity:${n2(0.5 / (1 + lift / 14))}" d="${k.pathOf(Array.from({ length: 40 }, (_, i) => at([c[0] + (CO.r + lift * 0.08) * Math.cos((i / 40) * TAU), c[1] + (CO.r + lift * 0.08) * Math.sin((i / 40) * TAU), 1.45])), true)}"/>`);
     const ribs = G.ribsOf(F, -hT, hT, CO.r, 64, P, { fade: [0.1, 0.55] });
-    out.push(S(G.disc(-hT, hT, CO.r, F, P), { tone: "hi", inner: k.fadedSvg(ribs, { tone: "lo" }) }));
+    out.push(stone("jade", S(G.disc(-hT, hT, CO.r, F, P), { tone: "hi", inner: k.fadedSvg(ribs, { tone: "lo" }) })));
     const facing = dot(a, V);
     if (Math.abs(facing) > 0.04) {
       const sgn = facing > 0 ? 1 : -1;
@@ -340,8 +342,8 @@ function makeLive(k, G, P, C, M) {
     const ball = add(from, mul(6.4, d));
     const out = [];
     out.push(S(G.disc(0, 6.4 - 1.25, 0.45, G.frameAlong(from, d), P), { tone: "mid" }));
-    out.push(S(G.sphereOf(ball, 1.5, P), { tone: "hi" }));
-    out.push(S(k.cylinder(POST[0], POST[1], 1.25, ARM_Z - 0.9, 1.8, P, 16), { tone: "mid" }));
+    out.push(stone("jade", S(G.sphereOf(ball, 1.5, P), { tone: "hi" })));
+    out.push(stone("ink", S(k.cylinder(POST[0], POST[1], 1.25, ARM_Z - 0.9, 1.8, P, 16), { tone: "mid" })));
     return out.join("");
   }
 
@@ -420,6 +422,8 @@ const L = (d, style) => k.lineSvg(d, style);
 const D = (points, style) => k.dotsSvg(points, style);
 const X = [1, 0, 0], Y = [0, 1, 0], Z = [0, 0, 1];
 const byDepth = (points) => [...points].sort((a, b) => k.depthOf([a[0], a[1], 0], P) - k.depthOf([b[0], b[1], 0], P));
+// Stone (kit iso.css, data-mat): a group remaps the tone ramp of what it holds.
+const stone = (material, ...svg) => `<g data-mat="${material}">${svg.join("")}</g>`;
 const { front, rect, planeMatrix, PAINT } = LIVE;
 const side = (x) => planeMatrix([x, 0, 0], [0, -1, 0], [0, 0, -1]); // local (−y, −z) on a face that looks along +x
 const faceRect = (x0, z0, x1, z1, r) => rect(x0, -z1, x1, -z0, r);
@@ -465,20 +469,18 @@ function bench() {
   const { PLATE, PLATE_H, FOOT_H } = C;
   const out = [`<path class="iso-halo" d="${k.haloOf(PLATE, -PLATE_H - FOOT_H, PLATE_H, P)}"/>`];
   for (const [x, y] of byDepth(k.corners(PLATE, 22))) {
-    out.push(S(k.cylinder(x, y, 7, -PLATE_H - FOOT_H, 1.6, P, 28), { tone: "lo" }));
-    out.push(S(k.cylinder(x, y, 5.4, -PLATE_H - FOOT_H + 1.6, FOOT_H - 1.6, P, 28), { tone: "mid" }));
+    out.push(stone("ink", S(k.cylinder(x, y, 7, -PLATE_H - FOOT_H, 1.6, P, 28), { tone: "lo" }), S(k.cylinder(x, y, 5.4, -PLATE_H - FOOT_H + 1.6, FOOT_H - 1.6, P, 28), { tone: "mid" })));
   }
-  out.push(S(k.slabOf(PLATE, -PLATE_H, PLATE_H, P, 8, 1.6), { tone: "mid" }));
+  out.push(stone("marble", S(k.slabOf(PLATE, -PLATE_H, PLATE_H, P, 8, 1.6), { tone: "mid" })));
   out.push(L(k.planOutline(k.insetPlan(PLATE, 5), 0, P), { tone: "lo" }));
   const screws = k.corners(PLATE, 10);
   out.push(L(screws.map(([x, y]) => k.ring(x, y, 2.2, 0, P, 16)).join(""), { tone: "lo" }));
   out.push(D(screws.map(([x, y]) => at([x, y, 0])), { size: 0.5 }));
   // The label plate, back right.
   const label = { x: 36, y: -66, w: 42, d: 13, r: 1.4 };
-  out.push(S(k.slabOf(label, 0, 0.8, P, 3), { tone: "lo", crease: "none" }));
-  out.push(L(k.planOutline(k.insetPlan(label, 1.6), 0.8, P, 3), { tone: "faint" }));
-  out.push(L([30, 22, 26].map((w, i) => k.lineOnTop([label.x + 4.5, label.y + 3.8 + i * 2.7], [label.x + 4.5 + w, label.y + 3.8 + i * 2.7], 0.8, P)).join(""), { tone: "lo", free: true }));
-  out.push(D([at([label.x + label.w - 3.4, label.y + 3.4, 0.8]), at([label.x + label.w - 3.4, label.y + label.d - 3.4, 0.8])], { size: 0.45 }));
+  out.push(stone("ink", S(k.slabOf(label, 0, 0.8, P, 3), { tone: "lo", crease: "none" }), L(k.planOutline(k.insetPlan(label, 1.6), 0.8, P, 3), { tone: "faint" }),
+    L([30, 22, 26].map((w, i) => k.lineOnTop([label.x + 4.5, label.y + 3.8 + i * 2.7], [label.x + 4.5 + w, label.y + 3.8 + i * 2.7], 0.8, P)).join(""), { tone: "faint", free: true }),
+    D([at([label.x + label.w - 3.4, label.y + 3.4, 0.8]), at([label.x + label.w - 3.4, label.y + label.d - 3.4, 0.8])], { size: 0.45 })));
   return out.join("");
 }
 
@@ -503,7 +505,7 @@ function mat() {
   }
   out.push(D(pts, { size: 0.42, tone: "lo" }));
   out.push(L(k.ring(C.COIN.x, C.COIN.y, C.COIN.r + 1.2, 1.4, P, 48), { tone: "faint" }));
-  return out.join("");
+  return stone("ink", ...out);
 }
 
 function cashRegister() {
@@ -512,11 +514,11 @@ function cashRegister() {
   // Bun feet under the plinth.
   for (const [x, y] of byDepth(k.corners(PLINTH, 9))) {
     const F = G.frameOf([x, y, 0], Z, X, Y);
-    out.push(S(G.solidOf([[0, 4.2], [0.6, 5, 1], [2.2, 5.3, 1], [3.8, 4.7, 1], [H.foot, 3.6]], F, P), { tone: "mid" }));
+    out.push(stone("ink", S(G.solidOf([[0, 4.2], [0.6, 5, 1], [2.2, 5.3, 1], [3.8, 4.7, 1], [H.foot, 3.6]], F, P), { tone: "mid" })));
   }
-  out.push(S(k.slabOf(PLINTH, H.foot, H.plinth - H.foot, P, 4, 0.6), { tone: "lo" }));
+  out.push(stone("ink", S(k.slabOf(PLINTH, H.foot, H.plinth - H.foot, P, 4, 0.6), { tone: "lo" })));
   // The cabinet, with a base band and its side panel.
-  out.push(S(k.slabOf(CAB, H.plinth, H.cab - H.plinth, P, 4, 0.8), { tone: "mid", inner: L(k.sideSeam(CAB, H.plinth + 2.4, P, 4), { tone: "faint" }) }));
+  out.push(stone("marble", S(k.slabOf(CAB, H.plinth, H.cab - H.plinth, P, 4, 0.8), { tone: "mid", inner: L(k.sideSeam(CAB, H.plinth + 2.4, P, 4), { tone: "faint" }) })));
   const cabSide = CAB.x + CAB.w;
   const sidePanel = (x, y0, y1, z0, z1, screws = true) => {
     const panel = rect(-y1, -z1, -y0, -z0, 1.6);
@@ -529,7 +531,7 @@ function cashRegister() {
   const LV = LIVE.LEVER;
   out.push(`<g transform="${side(cabSide)}"><path style="${PAINT["dark"]}" d="${rect(-(LV.y + LV.front + 2), -(LV.z + 4.6), -(LV.y + LV.front - 2), -(LV.z - 3.4), 1.6)}"/>${L(rect(-(LV.y + LV.front + 2), -(LV.z + 4.6), -(LV.y + LV.front - 2), -(LV.z - 3.4), 1.6), { tone: "lo" })}</g>`);
   const stopF = G.frameOf([cabSide, LV.y - LV.back + 1.5, LV.z - LV.half - 3.2], X, Z, Y);
-  out.push(S(G.disc(0, 1.8, 0.8, stopF, P), { tone: "mid" }));
+  out.push(stone("ink", S(G.disc(0, 1.8, 0.8, stopF, P), { tone: "mid" })));
   const bossF = G.frameOf([cabSide, LV.y, LV.z], X, Z, Y);
   out.push(S(G.disc(0, 0.2, 2.4, bossF, P), { tone: "lo" }));
   // The till opening; the drawer front covers it until the crank lets the drawer out.
@@ -540,7 +542,7 @@ function cashRegister() {
   out.push(L(k.planOutline({ x: CAB.x + 4, y: C.UFRONT + 3, w: CAB.w - 8, d: C.FRONT - C.UFRONT - 6, r: 1.5 }, H.cab, P, 4), { tone: "faint" }));
   // The upper case, with bands at its foot and under its cap.
   const bands = L(k.sideSeam(UPPER, H.cab + 3.2, P, 4) + k.sideSeam(UPPER, H.upper - 3.2, P, 4), { tone: "faint" });
-  out.push(S(k.slabOf(UPPER, H.cab, H.upper - H.cab, P, 4, 0.8), { tone: "mid", inner: bands }));
+  out.push(stone("marble", S(k.slabOf(UPPER, H.cab, H.upper - H.cab, P, 4, 0.8), { tone: "mid", inner: bands })));
   out.push(sidePanel(C.SIDE, UPPER.y + 6, C.UFRONT - 6, H.cab + 13, H.upper - 7));
   // The journal window: the strip between two rollers, the ribbon bar under its print line.
   const jBack = C.UFRONT - JO.depth;
@@ -560,24 +562,23 @@ function cashRegister() {
   const wheels = `<g transform="${front(C.UFRONT - CN.depth + 0.4)}"><path style="${PAINT["drum"]}" d="${faceRect(CN.x0, CN.z0, CN.x1, CN.z1, 0)}"/><g data-part="counter">${rest(() => LIVE.counter(1))}</g>${L(fences, { tone: "lo" })}<path style="${PAINT["drum-shade"]}" d="${faceRect(CN.x0, CN.z1 - 2.2, CN.x1, CN.z1 + 1, 0)}${faceRect(CN.x0, CN.z0 - 1, CN.x1, CN.z0 + 2.2, 0)}"/><path style="${PAINT["drum-shade"]}" d="${faceRect(CN.x0, CN.z1 - 1, CN.x1, CN.z1 + 1, 0)}${faceRect(CN.x0, CN.z0 - 1, CN.x1, CN.z0 + 1, 0)}"/></g>`;
   out.push(recess(CN, C.UFRONT, wheels, PAINT.well));
   // The nameplate, proud of the face.
-  out.push(S(k.slabOf({ x: NAME.x0, y: C.UFRONT, w: NAME.x1 - NAME.x0, d: 0.8, r: 0.3 }, NAME.z0, NAME.z1 - NAME.z0, P, 2), { tone: "lo", crease: "none" }));
-  out.push(`<g transform="${front(C.UFRONT + 0.8)}">${k.faceTextSvg("translate(" + ((NAME.x0 + NAME.x1) / 2) + " " + -(NAME.z0 + 1.9) + ")", "H0MEWORK", { size: 4.1, tone: "mid", anchor: "middle" })}</g>`);
+  out.push(stone("jade", S(k.slabOf({ x: NAME.x0, y: C.UFRONT, w: NAME.x1 - NAME.x0, d: 0.8, r: 0.3 }, NAME.z0, NAME.z1 - NAME.z0, P, 2), { tone: "lo", crease: "none" })));
+  out.push(`<g transform="${front(C.UFRONT + 0.8)}">${k.faceTextSvg("translate(" + ((NAME.x0 + NAME.x1) / 2) + " " + -(NAME.z0 + 1.9) + ")", "H0MEWORK", { size: 4.1, tone: "hi", anchor: "middle" })}</g>`);
   out.push(D([at([NAME.x0 + 1.8, C.UFRONT + 0.8, (NAME.z0 + NAME.z1) / 2]), at([NAME.x1 - 1.8, C.UFRONT + 0.8, (NAME.z0 + NAME.z1) / 2])], { size: 0.4 }));
   // The crank's boss and the pawl's stud, fixed to the case side.
   const F0 = G.frameOf([C.SIDE, C.CRANK.y, C.CRANK.z], X, Z, Y);
-  out.push(S(G.disc(0, 1.6, 7.8, F0, P), { tone: "mid", inner: L(G.circleOf(F0, 1.6, 6.8, P), { tone: "faint" }) }));
-  out.push(D(G.dotsOf(F0, 1.6, 7.3, 6, P, { all: true, phase: 0.5 }), { size: 0.38 }));
+  out.push(stone("jade", S(G.disc(0, 1.6, 7.8, F0, P), { tone: "mid", inner: L(G.circleOf(F0, 1.6, 6.8, P), { tone: "faint" }) }), D(G.dotsOf(F0, 1.6, 7.3, 6, P, { all: true, phase: 0.5 }), { size: 0.38 })));
   const pinF = G.frameOf(LIVE.PAWL_PIN, X, Z, Y);
-  out.push(S(G.disc(0, 3.2, 0.7, pinF, P), { tone: "mid" }));
+  out.push(stone("ink", S(G.disc(0, 3.2, 0.7, pinF, P), { tone: "mid" })));
   // An oil cup on the bearing, its cap on a short stem.
   const cup = [C.SIDE + 0.8, C.CRANK.y, C.CRANK.z + 7.4];
   out.push(S(k.cylinder(cup[0], cup[1], 1.3, cup[2], 2.4, P, 18), { tone: "mid" }));
-  out.push(S(k.cylinder(cup[0], cup[1], 1.7, cup[2] + 2.4, 0.9, P, 18, 0.3), { tone: "hi" }));
+  out.push(stone("jade", S(k.cylinder(cup[0], cup[1], 1.7, cup[2] + 2.4, 0.9, P, 18, 0.3), { tone: "hi" })));
   out.push(`<g data-part="crank-back">${rest(() => LIVE.crankBack(0))}</g>`);
   out.push(`<g data-part="trip-low">${rest(() => LIVE.tripLow(0))}</g>`);
   // The rod's guide bracket, standing off the case side.
   const RD = LIVE.ROD, BR = LIVE.BRACKET;
-  out.push(S(k.slabOf({ x: C.SIDE, y: RD.y - 3, w: RD.x - C.SIDE + 2.4, d: 6, r: 0.8 }, BR.z0, BR.z1 - BR.z0, P, 3, 0.4), { tone: "mid", inner: "" }));
+  out.push(stone("ink", S(k.slabOf({ x: C.SIDE, y: RD.y - 3, w: RD.x - C.SIDE + 2.4, d: 6, r: 0.8 }, BR.z0, BR.z1 - BR.z0, P, 3, 0.4), { tone: "mid", inner: "" })));
   out.push(L(k.ring(RD.x, RD.y, RD.r + 0.4, BR.z1, P, 20), { tone: "lo" }));
   out.push(D([at([C.SIDE + 1.6, RD.y - 1.8, BR.z1]), at([C.SIDE + 1.6, RD.y + 1.8, BR.z1])], { size: 0.38 }));
   out.push(`<g data-part="trip-high">${rest(() => LIVE.tripHigh(0))}</g>`);
@@ -586,7 +587,7 @@ function cashRegister() {
   const sweep = Array.from({ length: 36 }, (_, i) => at(G.pointOf(F0, 6, C.CRANK.len + 4, (i / 36) * Math.PI * 2)));
   out.push(`<path data-part="crank-hit" fill="transparent" d="${k.pathOf(sweep, true)}"/>`);
   // The cap, then the marquee on it: a glazed box whose tab shows the admitted state.
-  out.push(S(k.slabOf(CAP, H.upper, H.cap - H.upper, P, 4, 1), { tone: "mid" }));
+  out.push(stone("ink", S(k.slabOf(CAP, H.upper, H.cap - H.upper, P, 4, 1), { tone: "mid" })));
   // The lid over the journal roll, hinged at the back, with a finger notch at the front.
   const lid = { x: CAP.x + 5, y: CAP.y + 6, w: 22, d: 54, r: 1.6 };
   out.push(L(k.planOutline(lid, H.cap, P, 4), { tone: "lo" }));
@@ -601,7 +602,7 @@ function cashRegister() {
   const MQ = C.MARQUEE;
   const mqPlan = { x: MQ.x0, y: MQ.y0, w: MQ.x1 - MQ.x0, d: MQ.y1 - MQ.y0, r: 1.2 };
   const baseTop = MQ.z0 + MQ.base;
-  out.push(S(k.slabOf(mqPlan, MQ.z0, MQ.base, P, 3, 0.6), { tone: "mid" }));
+  out.push(stone("jade", S(k.slabOf(mqPlan, MQ.z0, MQ.base, P, 3, 0.6), { tone: "mid" })));
   const TAB = LIVE.TAB;
   out.push(L(k.planOutline({ x: TAB.x0 - 1.2, y: TAB.y - 1.1, w: TAB.x1 - TAB.x0 + 2.4, d: 2.2, r: 0.8 }, baseTop, P, 3), { tone: "lo" }));
   out.push(S(k.slabOf({ x: MQ.x0 + 1.5, y: MQ.y0, w: MQ.x1 - MQ.x0 - 3, d: 1.4, r: 0.2 }, baseTop, MQ.z1 - baseTop, P, 2), { tone: "lo", crease: "none" }));
@@ -614,20 +615,18 @@ function cashRegister() {
   const pane = (a, b) => L(k.pathOf([at(a), at(b)]), { tone: "faint" });
   out.push(pane([MQ.x0 + 5, MQ.y1, MQ.z1 + 1.5], [MQ.x0 + 15, MQ.y1, baseTop]), pane([MQ.x0 + 10, MQ.y1, MQ.z1 + 1.5], [MQ.x0 + 20, MQ.y1, baseTop]));
   out.push(pane([MQ.x1, MQ.y0 + 4, MQ.z1 + 1.5], [MQ.x1, MQ.y0 + 13, baseTop]));
-  out.push(S(k.slabOf(k.insetPlan(mqPlan, -0.8), MQ.z1, MQ.cap, P, 3, 0.7), { tone: "mid" }));
-  out.push(S(k.slabOf({ x: (MQ.x0 + MQ.x1) / 2 - 9, y: MQ.y0 + 6, w: 18, d: MQ.y1 - MQ.y0 - 12, r: 1 }, MQ.z1 + MQ.cap, 1.4, P, 3, 0.4), { tone: "lo" }));
+  out.push(stone("jade", S(k.slabOf(k.insetPlan(mqPlan, -0.8), MQ.z1, MQ.cap, P, 3, 0.7), { tone: "mid" })));
+  out.push(stone("ink", S(k.slabOf({ x: (MQ.x0 + MQ.x1) / 2 - 9, y: MQ.y0 + 6, w: 18, d: MQ.y1 - MQ.y0 - 12, r: 1 }, MQ.z1 + MQ.cap, 1.4, P, 3, 0.4), { tone: "lo" })));
   const BE = C.BELL;
   const FB = G.frameOf([BE.x, BE.y, H.cap], Z, X, Y);
-  out.push(S(G.disc(0, 1.4, 5.6, FB, P), { tone: "mid" }));
-  out.push(S(G.disc(1.4, 4.6, 1.3, FB, P), { tone: "mid" }));
+  out.push(stone("ink", S(G.disc(0, 1.4, 5.6, FB, P), { tone: "mid" }), S(G.disc(1.4, 4.6, 1.3, FB, P), { tone: "mid" })));
   const bell = (s) => BE.r * Math.sqrt(Math.max(0, 1 - ((s - 4.6) / 9.6) ** 2));
   const bellSlope = (s) => { const t = (s - 4.6) / 9.6; return t >= 0.999 ? -40 : (-BE.r * t) / (9.6 * Math.sqrt(1 - t * t)); };
   const dome = Array.from({ length: 22 }, (_, i) => { const s = 4.6 + 0.2 + (9.3 * i) / 21; return [s, bell(s), 1]; });
   dome[0][2] = 0;
-  out.push(S(G.solidOf([[4.6, BE.r], ...dome], FB, P, { smooth: { slope: bellSlope, radius: (s) => (s <= 4.8 ? BE.r : bell(s)) } }), { tone: "hi" }));
-  out.push(S(G.sphereOf(G.pointOf(FB, 14.6, 0, 0), 1.3, P), { tone: "mid" }));
-  out.push(S(k.cylinder(LIVE.POST[0], LIVE.POST[1], 2.2, H.cap, 0.8, P, 20), { tone: "mid" }));
-  out.push(S(k.cylinder(LIVE.POST[0], LIVE.POST[1], 0.9, H.cap + 0.8, 7.7, P, 14), { tone: "mid" }));
+  out.push(stone("jade", S(G.solidOf([[4.6, BE.r], ...dome], FB, P, { smooth: { slope: bellSlope, radius: (s) => (s <= 4.8 ? BE.r : bell(s)) } }), { tone: "hi" })));
+  out.push(stone("ink", S(G.sphereOf(G.pointOf(FB, 14.6, 0, 0), 1.3, P), { tone: "mid" })));
+  out.push(stone("ink", S(k.cylinder(LIVE.POST[0], LIVE.POST[1], 2.2, H.cap, 0.8, P, 20), { tone: "mid" }), S(k.cylinder(LIVE.POST[0], LIVE.POST[1], 0.9, H.cap + 0.8, 7.7, P, 14), { tone: "mid" })));
   out.push(`<g data-part="striker">${rest(() => LIVE.striker(0))}</g>`);
   return out.join("");
 }
@@ -741,6 +740,7 @@ const D = (points, style) => k.dotsSvg(points, style);
 const X = [1, 0, 0], Y = [0, 1, 0], Z = [0, 0, 1];
 let clips = 0, hollow = false;
 const rest = (draw) => (hollow ? "" : draw());
+const stone = ${stone.toString()};
 ${shipped({ byDepth, side, faceRect, recess, bench, mat, cashRegister, composition })}
 ${swingSource}
 const readoutOf = ${readoutOf.toString()};

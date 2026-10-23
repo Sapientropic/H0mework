@@ -95,6 +95,8 @@ function makeLive(k, G, P, C, M) {
   const S = (paths, style) => k.solidSvg(paths, style);
   const L = (d, style) => k.lineSvg(d, style);
   const D = (points, style) => k.dotsSvg(points, style);
+  // Stone (kit iso.css, data-mat): a group remaps the tone ramp of what it holds.
+  const stone = (material, ...svg) => `<g data-mat="${material}">${svg.join("")}</g>`;
   const seg = (a, b) => k.segment(a, b, P);
   const poly = (points, closed = false) => k.pathOf(points.map(at), closed);
   const depth = (p) => k.depthOf(p, P);
@@ -173,9 +175,9 @@ function makeLive(k, G, P, C, M) {
       L(rings.map((ring) => ring.back).join(""), { tone: "faint" }),
       L(cone, { tone: "faint" }),
       rod(add(c, mul(-3.6, axis)), add(c, mul(3.6, axis)), 1.15, { tone: "mid" }),
-      S(G.sphereOf(c, 1.9, P, { steps: 20 }), { tone: "mid" }),
+      stone("ink", S(G.sphereOf(c, 1.9, P, { steps: 20 }), { tone: "mid" })),
       rod(c, tip, 0.5, { tone: "hi" }),
-      S(G.sphereOf(tip, 1.15, P, { steps: 16 }), { tone: "hi", lit: true }),
+      stone("jade", S(G.sphereOf(tip, 1.15, P, { steps: 16 }), { tone: "hi", lit: true })),
       feeler,
       L(rings.map((ring) => ring.front).join(""), { tone: "lo" }),
       L(glass, { tone: "mid" }),
@@ -186,7 +188,7 @@ function makeLive(k, G, P, C, M) {
   function feelerAt(tip, index) {
     const { c } = C.SPHERES[index];
     const x = c[0] + C.FEELER.dx, z = tip[2] + 1.15;
-    return S(k.cylinder(x, c[1], C.FEELER.foot, z, 0.6, P, 28), { tone: "lo", crease: "none" }) + S(k.cylinder(x, c[1], 0.7, z + 0.6, C.FEELER.rod - 0.6, P, 10), { tone: "mid", crease: "none" });
+    return stone("ink", S(k.cylinder(x, c[1], C.FEELER.foot, z, 0.6, P, 28), { tone: "lo", crease: "none" })) + S(k.cylinder(x, c[1], 0.7, z + 0.6, C.FEELER.rod - 0.6, P, 10), { tone: "mid", crease: "none" });
   }
   const tipHeight = (state, index) => {
     const { c } = C.SPHERES[index];
@@ -210,9 +212,9 @@ function makeLive(k, G, P, C, M) {
     const z = mid[2];
     return [
       // The slide block on the stand, its arm forward to the beam's middle pin.
-      S(k.slabOf(block, z - 4, 8, P, 2, 0.3), { tone: "mid" }),
+      stone("ink", S(k.slabOf(block, z - 4, 8, P, 2, 0.3), { tone: "mid" })),
       S(G.prismOf(G.frameOf([C.STAND[0], C.STAND[1] + 9.4, z], [0, 1, 0], [1, 0, 0], [0, 0, 1]), [[-1.2, -1.2], [1.2, -1.2], [1.2, 1.2], [-1.2, 1.2]], 0, mid[1] - C.STAND[1] - 9.4, P), { tone: "mid" }),
-      S(G.prismOf(Fb, [[-1.4, -1.6], [1.4, -1.6], [1.4, 1.6], [-1.4, 1.6]], 0, length + 6, P), { tone: "hi" }),
+      stone("jade", S(G.prismOf(Fb, [[-1.4, -1.6], [1.4, -1.6], [1.4, 1.6], [-1.4, 1.6]], 0, length + 6, P), { tone: "hi" })),
       D([at([a[0], a[1] + 1.5, a[2]]), at([b[0], b[1] + 1.5, b[2]]), at([mid[0], mid[1] + 1.5, mid[2]])], { size: 0.8, tone: "hi" }),
     ].join("");
   }
@@ -225,10 +227,9 @@ function makeLive(k, G, P, C, M) {
     const turn = lift / step;
     const F = G.frameOf([C.CONE.x, C.STAND[1] + 3, C.CONE.z], [0, -1, 0], [1, 0, 0], [0, 0, 1]);
     const out = [];
-    out.push(S(G.disc(0, 3.2, C.CONE.R, F, P), { tone: "mid" }));
-    out.push(L(G.spokesOf(F, 0, 3, C.CONE.R - 2, 6, P, { phase: -turn }), { tone: "lo" }));
     const steps = M.AMPLITUDES.map(stepOf);
-    for (const [index, r] of steps.entries()) out.push(S(G.disc(-1.6 - index * 1.6, -index * 1.6, r + 0.8, F, P, { steps: 28 }), { tone: r === step ? "hi" : "mid" }));
+    out.push(stone("jade", S(G.disc(0, 3.2, C.CONE.R, F, P), { tone: "mid" }), L(G.spokesOf(F, 0, 3, C.CONE.R - 2, 6, P, { phase: -turn }), { tone: "lo" }),
+      ...steps.map((r, index) => S(G.disc(-1.6 - index * 1.6, -index * 1.6, r + 0.8, F, P, { steps: 28 }), { tone: r === step ? "hi" : "mid" }))));
     // Cord from the step's right side up to the slide block.
     const blockBottom = middleOf(state) - 4;
     const cordX = C.CONE.x + step;
@@ -264,17 +265,19 @@ function makeLive(k, G, P, C, M) {
       const mirror = index === 1;
       const back = gearFace(cx, cy - g.t / 2, cz, phi, mirror), front = gearFace(cx, cy + g.t / 2, cz, phi, mirror);
       const hull = poly(back, true);
-      out.push(`<path class="iso-fill" d="${hull}"/><path class="iso-shade" data-shade="1" d="${hull}"/>`);
+      const gear = [];
+      gear.push(`<path class="iso-fill" d="${hull}"/><path class="iso-shade" data-shade="1" d="${hull}"/>`);
       // Tooth flanks between the faces, then the front face.
       const flanks = [];
       for (let i = 0; i < front.length; i += 2) flanks.push(seg(back[i + 1], front[i + 1]));
       const face = poly(front, true);
-      out.push(L(hull, { tone: "lo" }));
-      out.push(`<path class="iso-fill" d="${face}"/><path class="iso-top" d="${face}"/>`);
-      out.push(L(face, { tone: "hi" }));
+      gear.push(L(hull, { tone: "lo" }));
+      gear.push(`<path class="iso-fill" d="${face}"/><path class="iso-top" d="${face}"/>`);
+      gear.push(L(face, { tone: "hi" }));
       const F = G.frameOf([cx, cy + g.t / 2, cz], [0, 1, 0], [1, 0, 0], [0, 0, 1]);
-      out.push(L(G.circleOf(F, 0, 3.4, P, 24), { tone: "lo" }));
-      out.push(S(G.disc(0, 1.2, 2.2, F, P, { steps: 18 }), { tone: "mid" }));
+      gear.push(L(G.circleOf(F, 0, 3.4, P, 24), { tone: "lo" }));
+      out.push(stone("jade", ...gear));
+      out.push(stone("ink", S(G.disc(0, 1.2, 2.2, F, P, { steps: 18 }), { tone: "mid" })));
     });
     return out.join("");
   }
@@ -292,18 +295,18 @@ function makeLive(k, G, P, C, M) {
       const z = yokeZ(state, index);
       const y0 = cy + g.t / 2 + 0.6;
       const hooked = !(index === 1 && state.unhooked > 0.5);
-      out.push(S(G.disc(0, hooked ? 3.6 : 1.4, 1.1, G.frameOf(pin, [0, 1, 0], [1, 0, 0], [0, 0, 1]), P, { steps: 14 }), { tone: "hi" }));
+      out.push(stone("jade", S(G.disc(0, hooked ? 3.6 : 1.4, 1.1, G.frameOf(pin, [0, 1, 0], [1, 0, 0], [0, 0, 1]), P, { steps: 14 }), { tone: "hi" })));
       const slot = { x: cx - g.pin - 2.4, y: y0 + 1.4, w: 2 * g.pin + 4.8, d: 1.6, r: 0.4 };
-      out.push(S(k.slabOf(slot, z - 1.8, 3.6, P, 2), { tone: "mid" }));
+      out.push(stone("ink", S(k.slabOf(slot, z - 1.8, 3.6, P, 2), { tone: "mid" })));
       out.push(L(k.pathOf([[cx - g.pin - 1, z - 0.5], [cx + g.pin + 1, z - 0.5], [cx + g.pin + 1, z + 0.5], [cx - g.pin - 1, z + 0.5]].map(([x, zz]) => at([x, y0 + 3, zz])), true), { tone: "lo" }));
-      out.push(S(k.slabOf({ x: cx - 1, y: y0 + 1.6, w: 2, d: 1.4, r: 0.3 }, z + 1.8, g.stem - 1.8, P, 2), { tone: "mid" }));
+      out.push(stone("ink", S(k.slabOf({ x: cx - 1, y: y0 + 1.6, w: 2, d: 1.4, r: 0.3 }, z + 1.8, g.stem - 1.8, P, 2), { tone: "mid" })));
     });
     // Whiffletree: one bar across the two stems; its middle drives the lane-2 pen bar.
     const [l, r] = g.c.map(([cx], index) => [cx, g.c[0][1] + g.t / 2 + 2.3, yokeZ(state, index) + g.stem]);
     const mid = [(l[0] + r[0]) / 2, l[1], (l[2] + r[2]) / 2];
     const dir = unit([r[0] - l[0], 0, r[2] - l[2]]);
     const Fb = G.frameOf(add(l, mul(-2.4, dir)), dir, [0, 1, 0], [-dir[2], 0, dir[0]]);
-    out.push(S(G.prismOf(Fb, [[-1.2, -1.5], [1.2, -1.5], [1.2, 1.5], [-1.2, 1.5]], 0, Math.hypot(r[0] - l[0], r[2] - l[2]) + 4.8, P), { tone: "hi" }));
+    out.push(stone("jade", S(G.prismOf(Fb, [[-1.2, -1.5], [1.2, -1.5], [1.2, 1.5], [-1.2, 1.5]], 0, Math.hypot(r[0] - l[0], r[2] - l[2]) + 4.8, P), { tone: "hi" })));
     out.push(D([l, r, mid].map((p) => at([p[0], p[1] + 1.3, p[2]])), { size: 0.8, tone: "hi" }));
     // The middle pin reaches back to the lane-2 pen bar.
     out.push(S(k.slabOf({ x: mid[0] - 1, y: C.Y_BAR + 1, w: 2, d: mid[1] - 1.2 - C.Y_BAR - 1, r: 0.3 }, mid[2] - 1, 2, P, 2), { tone: "mid" }));
@@ -334,15 +337,13 @@ function makeLive(k, G, P, C, M) {
     // The wheel (axis along x) and its fork on the carriage.
     const F = G.frameOf([wx, c[1], C.WHEEL.axle], [1, 0, 0], [0, 1, 0], [0, 0, 1]);
     const turn = wheelTurn(state);
-    out.push(S(G.disc(-1.4, 1.4, C.WHEEL.r, F, P, { steps: 36 }), { tone: "hi" }));
-    out.push(L(G.spokesOf(F, 1.45, 1.4, C.WHEEL.r - 0.8, 5, P, { phase: turn }), { tone: "mid" }));
-    out.push(L(G.circleOf(F, 1.45, C.WHEEL.r - 0.8, P, 32), { tone: "lo" }));
+    out.push(stone("jade", S(G.disc(-1.4, 1.4, C.WHEEL.r, F, P, { steps: 36 }), { tone: "hi" }), L(G.spokesOf(F, 1.45, 1.4, C.WHEEL.r - 0.8, 5, P, { phase: turn }), { tone: "mid" }),
+      L(G.circleOf(F, 1.45, C.WHEEL.r - 0.8, P, 32), { tone: "lo" })));
     const fork = { x: wx - 4.8, y: c[1] - 5, w: 9.6, d: 10, r: 1 };
-    out.push(S(k.slabOf({ x: fork.x, y: fork.y + 1, w: 1.6, d: 8, r: 0.3 }, C.WHEEL.axle - 1, 9, P, 2), { tone: "mid" }));
-    out.push(S(k.slabOf({ x: fork.x + fork.w - 1.6, y: fork.y + 1, w: 1.6, d: 8, r: 0.3 }, C.WHEEL.axle - 1, 9, P, 2), { tone: "mid" }));
-    out.push(S(k.slabOf(fork, C.WHEEL.axle + 8, 2.4, P, 2, 0.3), { tone: "mid" }));
+    out.push(stone("ink", S(k.slabOf({ x: fork.x, y: fork.y + 1, w: 1.6, d: 8, r: 0.3 }, C.WHEEL.axle - 1, 9, P, 2), { tone: "mid" }),
+      S(k.slabOf({ x: fork.x + fork.w - 1.6, y: fork.y + 1, w: 1.6, d: 8, r: 0.3 }, C.WHEEL.axle - 1, 9, P, 2), { tone: "mid" }), S(k.slabOf(fork, C.WHEEL.axle + 8, 2.4, P, 2, 0.3), { tone: "mid" })));
     // Rail sleeves and the connecting rod to the yoke's crosshead.
-    for (const dy of [-9, 9]) out.push(S(G.disc(-3, 3, 1.9, G.frameOf([wx, c[1] + dy, 22], [1, 0, 0], [0, 1, 0], [0, 0, 1]), P, { steps: 16 }), { tone: "mid" }));
+    for (const dy of [-9, 9]) out.push(stone("ink", S(G.disc(-3, 3, 1.9, G.frameOf([wx, c[1] + dy, 22], [1, 0, 0], [0, 1, 0], [0, 0, 1]), P, { steps: 16 }), { tone: "mid" })));
     return out.join("");
   }
   function axle(state) {
@@ -351,8 +352,7 @@ function makeLive(k, G, P, C, M) {
     const out = [];
     out.push(S(G.disc(0, C.DISC.c[0] + C.WHEEL.travel + 12 - C.X_IN, 0.9, F, P, { steps: 12 }), { tone: "mid" }));
     // Pinion at the left end; rack behind it rising with the integral.
-    out.push(S(G.disc(-0.8, 3.2, C.WHEEL.pinion, F, P, { steps: 22 }), { tone: "mid" }));
-    out.push(L(G.spokesOf(F, 3.25, 0.8, C.WHEEL.pinion - 0.4, 3, P, { phase: turn }), { tone: "lo" }));
+    out.push(stone("jade", S(G.disc(-0.8, 3.2, C.WHEEL.pinion, F, P, { steps: 22 }), { tone: "mid" }), L(G.spokesOf(F, 3.25, 0.8, C.WHEEL.pinion - 0.4, 3, P, { phase: turn }), { tone: "lo" })));
     return out.join("");
   }
   const lane3Z = (state) => C.LANES[2] + C.WHEEL.pinion * wheelTurn(state);
@@ -366,7 +366,7 @@ function makeLive(k, G, P, C, M) {
     out.push(L(teeth.join(""), { tone: "lo" }));
     // Stub back to the pen bar.
     out.push(S(k.slabOf({ x: C.X_IN - 1, y: C.Y_BAR, w: 2, d: y - 1.2 - C.Y_BAR, r: 0.3 }, top - 1.2, 2.4, P, 2), { tone: "mid" }));
-    return out.join("");
+    return stone("ink", ...out);
   }
   function yoke(state) {
     const [x, y, z] = C.YOKE.c;
@@ -376,10 +376,10 @@ function makeLive(k, G, P, C, M) {
     const wx = wheelX(state);
     const out = [];
     out.push(L(G.spokesOf(F, 2.45, 2.4, C.YOKE.r + 0.4, 4, P, { phase: Math.PI / 2 - a }), { tone: "lo" }));
-    out.push(S(G.disc(2.4, 4.4, 1.2, G.frameOf(pin, [0, 1, 0], [1, 0, 0], [0, 0, 1]), P, { steps: 12 }), { tone: "hi" }));
+    out.push(stone("jade", S(G.disc(2.4, 4.4, 1.2, G.frameOf(pin, [0, 1, 0], [1, 0, 0], [0, 0, 1]), P, { steps: 12 }), { tone: "hi" })));
     // Crosshead: a vertical slotted bar at the pin's x, joined to the carriage by a rod along x.
     const slot = { x: pin[0] - 1.6, y: y + 4.4, w: 3.2, d: 1.6, r: 0.4 };
-    out.push(S(k.slabOf(slot, z - C.YOKE.r - 3, 2 * C.YOKE.r + 6, P, 2), { tone: "mid" }));
+    out.push(stone("ink", S(k.slabOf(slot, z - C.YOKE.r - 3, 2 * C.YOKE.r + 6, P, 2), { tone: "mid" })));
     out.push(L(k.pathOf([[-0.5, -C.YOKE.r - 1.5], [0.5, -C.YOKE.r - 1.5], [0.5, C.YOKE.r + 1.5], [-0.5, C.YOKE.r + 1.5]].map(([dx, dz]) => at([pin[0] + dx, y + 6, z + dz])), true), { tone: "lo" }));
     out.push(S(G.disc(0, pin[0] - wx - 3, 0.9, G.frameOf([wx + 3, C.DISC.c[1] + 9, 22], [1, 0, 0], [0, 1, 0], [0, 0, 1]), P, { steps: 10 }), { tone: "mid" }));
     return out.join("");
@@ -431,12 +431,12 @@ function makeLive(k, G, P, C, M) {
     const y = C.Y_BAR;
     const right = lane === 1 ? (C.GEARS.c[0][0] + C.GEARS.c[1][0]) / 2 : C.X_IN;
     const out = [];
-    out.push(S(k.slabOf({ x: C.X_PEN - 2, y: y - 1, w: right - C.X_PEN + 3, d: 2, r: 0.4 }, z - 1, 2, P, 2), { tone: "hi" }));
+    out.push(stone("jade", S(k.slabOf({ x: C.X_PEN - 2, y: y - 1, w: right - C.X_PEN + 3, d: 2, r: 0.4 }, z - 1, 2, P, 2), { tone: "hi" })));
     // Slide block on the column.
     const [cx, cy] = C.COLUMN;
-    out.push(S(k.slabOf({ x: cx - 3.2, y: cy - 3, w: 6.4, d: 6.2, r: 0.8 }, z - 3.5, 7, P, 2, 0.3), { tone: "mid" }));
+    out.push(stone("ink", S(k.slabOf({ x: cx - 3.2, y: cy - 3, w: 6.4, d: 6.2, r: 0.8 }, z - 3.5, 7, P, 2, 0.3), { tone: "mid" })));
     // Stylus holder and the stylus to the paper.
-    out.push(S(k.slabOf({ x: C.X_PEN - 2.2, y: C.Y_P + 0.8, w: 4.4, d: y - C.Y_P - 1.6, r: 0.5 }, z - 1.6, 3.2, P, 2), { tone: "mid" }));
+    out.push(stone("ink", S(k.slabOf({ x: C.X_PEN - 2.2, y: C.Y_P + 0.8, w: 4.4, d: y - C.Y_P - 1.6, r: 0.5 }, z - 1.6, 3.2, P, 2), { tone: "mid" })));
     out.push(L(seg([C.X_PEN, C.Y_P + 0.9, z], [C.X_PEN, C.Y_P + 0.05, z]), { tone: "lit" }));
     return out.join("");
   }
@@ -448,11 +448,11 @@ function makeLive(k, G, P, C, M) {
     const [x, y] = C.DIAL;
     const z0 = C.TIERS[2].z + C.TIERS[2].h + 1.6;
     const angle = -0.9 + Math.max(0, M.AMPLITUDES.indexOf(a)) * 0.9;
-    return [
+    return stone("jade",
       S(k.cylinder(x, y, 3.6, z0, 3.4, P, 26), { tone: "hi" }),
       L(k.knurl(x, y, 3.6, z0, z0 + 3.4, 24, P), { tone: "lo" }),
-      L(k.lineOnTop([x, y], [x + Math.sin(angle) * 3.2, y - Math.cos(angle) * 3.2], z0 + 3.45, P), { tone: "mid" }),
-    ].join("");
+      L(k.lineOnTop([x, y], [x + Math.sin(angle) * 3.2, y - Math.cos(angle) * 3.2], z0 + 3.45, P), { tone: "hi" }),
+    );
   }
 
   // A switch's knob slides from its first mark to its second as f goes 0 → 1.
@@ -460,7 +460,7 @@ function makeLive(k, G, P, C, M) {
     const { tier, plan } = C.SWITCHES[index];
     const z0 = C.TIERS[tier].z + C.TIERS[tier].h + 2.4;
     const x = plan.x + 4.5 + f * (plan.w - 9), y = plan.y + plan.d / 2;
-    return [S(k.cylinder(x, y, 1, z0, 1.6, P, 12), { tone: "mid" }), S(k.cylinder(x, y, 2.6, z0 + 1.6, 3.4, P, 22), { tone: "hi" }), L(k.knurl(x, y, 2.6, z0 + 1.6, z0 + 5, 18, P), { tone: "lo" })].join("");
+    return stone("jade", S(k.cylinder(x, y, 1, z0, 1.6, P, 12), { tone: "mid" }), S(k.cylinder(x, y, 2.6, z0 + 1.6, 3.4, P, 22), { tone: "hi" }), L(k.knurl(x, y, 2.6, z0 + 1.6, z0 + 5, 18, P), { tone: "lo" }));
   }
   const lanesOf = (state) => [lane1Z(state), lane2Z(state), lane3Z(state)];
   return { sphere, beam, pulley, penCord, gears, yokes, integrator, axle, rack, yoke, paper, traces, spoolMarks, penBar, knob, switchKnob, lanesOf };
@@ -511,31 +511,29 @@ const L = (d, style) => k.lineSvg(d, style);
 const D = (points, style) => k.dotsSvg(points, style);
 const seg = (a, b) => k.segment(a, b, P);
 const loop = (points) => k.pathOf(points.map(at)) + "Z";
+// Stone (kit iso.css, data-mat): a group remaps the tone ramp of what it holds.
+const stone = (material, ...svg) => `<g data-mat="${material}">${svg.join("")}</g>`;
 
 function base() {
   const { PLATE, PLATE_H, FOOT_H } = C;
   const out = [`<path class="iso-halo" d="${k.haloOf(PLATE, -PLATE_H - FOOT_H, PLATE_H, P)}"/>`];
   const feet = k.corners(PLATE, 24).sort((a, b) => k.depthOf([...a, 0], P) - k.depthOf([...b, 0], P));
   for (const [x, y] of feet) {
-    out.push(S(k.cylinder(x, y, 8, -PLATE_H - FOOT_H, 1.6, P, 28), { tone: "lo" }));
-    out.push(S(k.cylinder(x, y, 6, -PLATE_H - FOOT_H + 1.6, FOOT_H - 1.6, P, 28), { tone: "mid" }));
+    out.push(stone("ink", S(k.cylinder(x, y, 8, -PLATE_H - FOOT_H, 1.6, P, 28), { tone: "lo" }), S(k.cylinder(x, y, 6, -PLATE_H - FOOT_H + 1.6, FOOT_H - 1.6, P, 28), { tone: "mid" })));
   }
-  out.push(S(k.slabOf(PLATE, -PLATE_H, PLATE_H, P, 8, 1.6), { tone: "mid", inner: L(k.sideSeam(PLATE, -4, P, 8), { tone: "faint" }) }));
-  out.push(L(k.planOutline(k.insetPlan(PLATE, 5), 0, P), { tone: "lo" }));
   const screws = k.corners(PLATE, 11);
-  out.push(L(screws.map(([x, y]) => k.ring(x, y, 2.2, 0, P, 16)).join(""), { tone: "lo" }));
-  out.push(D(screws.map(([x, y]) => at([x, y, 0])), { size: 0.5 }));
+  out.push(stone("marble", S(k.slabOf(PLATE, -PLATE_H, PLATE_H, P, 8, 1.6), { tone: "mid", inner: L(k.sideSeam(PLATE, -4, P, 8), { tone: "faint" }) }),
+    L(k.planOutline(k.insetPlan(PLATE, 5), 0, P), { tone: "lo" }), L(screws.map(([x, y]) => k.ring(x, y, 2.2, 0, P, 16)).join(""), { tone: "lo" }), D(screws.map(([x, y]) => at([x, y, 0])), { size: 0.5 })));
   // Front ruler in units of ωt: one major tick per π/2 at the paper's speed.
   const strip = { x: C.PLATE.x + 14, y: C.PLATE.y + C.PLATE.d - 13, w: 150, d: 6, r: 1 };
-  out.push(S(k.slabOf(strip, 0, 0.6, P, 3), { tone: "lo", crease: "none" }));
   const ticks = k.topTicks(strip.x + 4, strip.x + strip.w - 4, (C.PAPER_V * Math.PI) / 8, 4, strip.y + 0.8, 0.6, [1.6, 3], P);
-  out.push(L(ticks.minor, { tone: "lo" }), L(ticks.major, { tone: "mid" }));
-  out.push(D([at([strip.x + 2, strip.y + 3, 0.6]), at([strip.x + strip.w - 2, strip.y + 3, 0.6])], { size: 0.45 }));
+  out.push(stone("jade", S(k.slabOf(strip, 0, 0.6, P, 3), { tone: "lo", crease: "none" }), L(ticks.minor, { tone: "lo" }), L(ticks.major, { tone: "mid" }),
+    D([at([strip.x + 2, strip.y + 3, 0.6]), at([strip.x + strip.w - 2, strip.y + 3, 0.6])], { size: 0.45 })));
   // Label plate.
   const label = { x: -150 + 186, y: 24, w: 44, d: 12, r: 1.5 };
-  out.push(S(k.slabOf(label, 0, 0.8, P, 3, 0.3), { tone: "lo", crease: "none" }));
-  for (const [index, y] of [label.y + 4, label.y + 7.6].entries()) out.push(L(k.lineOnTop([label.x + 5, y], [label.x + (index ? 26 : 38), y], 0.8, P), { tone: "faint", free: true }));
-  out.push(D([at([label.x + 2, label.y + 2.4, 0.8]), at([label.x + label.w - 2, label.y + label.d - 2.4, 0.8])], { size: 0.4 }));
+  out.push(stone("ink", S(k.slabOf(label, 0, 0.8, P, 3, 0.3), { tone: "lo", crease: "none" }),
+    ...[label.y + 4, label.y + 7.6].map((y, index) => L(k.lineOnTop([label.x + 5, y], [label.x + (index ? 26 : 38), y], 0.8, P), { tone: "faint", free: true })),
+    D([at([label.x + 2, label.y + 2.4, 0.8]), at([label.x + label.w - 2, label.y + label.d - 2.4, 0.8])], { size: 0.4 })));
   return out.join("");
 }
 
@@ -543,8 +541,8 @@ function board() {
   const { BOARD, BOARD_H, PAPER_Z, Y_P } = C;
   const out = [`<path class="iso-halo" d="${k.haloOf(BOARD, 0, BOARD_H, P)}" style="filter:blur(6px)"/>`];
   // Two feet holding the board upright.
-  for (const x of [BOARD.x + 18, BOARD.x + BOARD.w - 18]) out.push(S(k.slabOf({ x: x - 5, y: BOARD.y - 6, w: 10, d: 18, r: 1.5 }, 0, 4, P, 3, 0.4), { tone: "mid" }));
-  out.push(S(k.slabOf(BOARD, 0, BOARD_H, P, 3, 0.6), { tone: "mid", inner: L(k.sideSeam(BOARD, 6, P, 3), { tone: "faint" }) }));
+  for (const x of [BOARD.x + 18, BOARD.x + BOARD.w - 18]) out.push(stone("ink", S(k.slabOf({ x: x - 5, y: BOARD.y - 6, w: 10, d: 18, r: 1.5 }, 0, 4, P, 3, 0.4), { tone: "mid" })));
+  out.push(stone("ink", S(k.slabOf(BOARD, 0, BOARD_H, P, 3, 0.6), { tone: "mid", inner: L(k.sideSeam(BOARD, 6, P, 3), { tone: "faint" }) })));
   // The paper on the face, its lanes ruled.
   const paper = [[BOARD.x + 1, Y_P, PAPER_Z[0]], [BOARD.x + BOARD.w - 1, Y_P, PAPER_Z[0]], [BOARD.x + BOARD.w - 1, Y_P, PAPER_Z[1]], [BOARD.x + 1, Y_P, PAPER_Z[1]]];
   out.push(`<path class="iso-fill" d="${loop(paper)}" style="fill:var(--anatomy-face)"/>`);
@@ -562,8 +560,7 @@ function board() {
   out.push(D(holes, { size: 0.45, tone: "lo" }));
   // Top rail with screws.
   const rail = { x: BOARD.x - 2, y: BOARD.y - 1, w: BOARD.w + 4, d: BOARD.d + 2, r: 1 };
-  out.push(S(k.slabOf(rail, BOARD_H, 3, P, 2, 0.4), { tone: "mid" }));
-  out.push(D([BOARD.x + 6, BOARD.x + BOARD.w / 2, BOARD.x + BOARD.w - 6].map((x) => at([x, BOARD.y + BOARD.d / 2, BOARD_H + 3])), { size: 0.45 }));
+  out.push(stone("jade", S(k.slabOf(rail, BOARD_H, 3, P, 2, 0.4), { tone: "mid" }), D([BOARD.x + 6, BOARD.x + BOARD.w / 2, BOARD.x + BOARD.w - 6].map((x) => at([x, BOARD.y + BOARD.d / 2, BOARD_H + 3])), { size: 0.45 })));
   return out.join("");
 }
 
@@ -572,14 +569,13 @@ function spool(x, kind) {
   // The paper leaves the roll tangent to the board's face.
   const wound = kind === "take" ? SPOOL.r + 1.2 : SPOOL.r + 2.4;
   const y = Y_P - wound;
-  const out = [S(k.cylinder(x, y, SPOOL.flange + 1.5, 0, 3, P, 32, 0.4), { tone: "mid" })];
-  out.push(S(k.cylinder(x, y, 2.2, 3, PAPER_Z[0] - 5, P, 16), { tone: "mid" }));
-  out.push(S(k.cylinder(x, y, SPOOL.flange, PAPER_Z[0] - 2, 1.6, P, 40, 0.3), { tone: "mid" }));
+  const out = [stone("ink", S(k.cylinder(x, y, SPOOL.flange + 1.5, 0, 3, P, 32, 0.4), { tone: "mid" }))];
+  out.push(stone("ink", S(k.cylinder(x, y, 2.2, 3, PAPER_Z[0] - 5, P, 16), { tone: "mid" })));
+  out.push(stone("jade", S(k.cylinder(x, y, SPOOL.flange, PAPER_Z[0] - 2, 1.6, P, 40, 0.3), { tone: "mid" })));
   out.push(S(k.cylinder(x, y, wound, PAPER_Z[0] - 0.4, PAPER_Z[1] - PAPER_Z[0] + 0.8, P, 40), { tone: "hi", crease: "none" }));
   out.push(L([0.25, 0.5, 0.75].map((f) => k.sideArc(x, y, wound, PAPER_Z[0] + f * (PAPER_Z[1] - PAPER_Z[0]), P, 24)).join(""), { tone: "faint" }));
-  out.push(S(k.cylinder(x, y, SPOOL.flange, PAPER_Z[1] + 0.4, 1.6, P, 40, 0.3), { tone: "mid" }));
-  out.push(L(k.ring(x, y, 3.4, PAPER_Z[1] + 2, P, 24), { tone: "lo" }));
-  out.push(S(k.cylinder(x, y, 2.2, PAPER_Z[1] + 2, 3, P, 16), { tone: "mid" }));
+  out.push(stone("jade", S(k.cylinder(x, y, SPOOL.flange, PAPER_Z[1] + 0.4, 1.6, P, 40, 0.3), { tone: "mid" }), L(k.ring(x, y, 3.4, PAPER_Z[1] + 2, P, 24), { tone: "lo" })));
+  out.push(stone("ink", S(k.cylinder(x, y, 2.2, PAPER_Z[1] + 2, 3, P, 16), { tone: "mid" })));
   return out.join("");
 }
 
@@ -592,7 +588,7 @@ function column() {
   const stops = [];
   for (const base of C.LANES) for (const z of [base - 4.5, base + 2 * C.GAIN + 4.5]) stops.push(at([x, y + 1.6, z]));
   out.push(D(stops, { size: 0.55, tone: "mid" }));
-  return out.join("");
+  return stone("ink", ...out);
 }
 
 function post([x, y], top) {
@@ -714,13 +710,13 @@ function latchBracket() {
 function station3Back() {
   const { c, r, z, h } = C.DISC;
   const out = [`<path class="iso-halo" d="${k.haloOf({ x: c[0] - r, y: c[1] - r, w: 2 * r, d: 2 * r, r }, 3, 4, P)}" style="filter:blur(5px)"/>`];
-  out.push(S(k.cylinder(c[0], c[1], 7, 3, z - 3, P, 28), { tone: "mid" }));
+  out.push(stone("ink", S(k.cylinder(c[0], c[1], 7, 3, z - 3, P, 28), { tone: "mid" })));
   out.push(S(k.cylinder(c[0], c[1], r, z, h, P, 72, 0.6), { tone: "hi", crease: "lo" }));
   out.push(L(k.ring(c[0], c[1], r - 2, z + h, P, 64) + k.ring(c[0], c[1], 4.5, z + h, P, 24), { tone: "lo" }));
   out.push(L(k.knurl(c[0], c[1], r, z, z + h, 96, P, 0.6), { tone: "faint" }));
   // Rails above the disc for the wheel carriage, on four standards.
   for (const dy of [-9, 9]) {
-    for (const x of [c[0] - r - 4, c[0] + r + 4]) out.push(S(k.slabOf({ x: x - 1.4, y: c[1] + dy - 1.4, w: 2.8, d: 2.8, r: 0.4 }, 3, 22 - 3, P, 2), { tone: "mid" }));
+    for (const x of [c[0] - r - 4, c[0] + r + 4]) out.push(stone("ink", S(k.slabOf({ x: x - 1.4, y: c[1] + dy - 1.4, w: 2.8, d: 2.8, r: 0.4 }, 3, 22 - 3, P, 2), { tone: "mid" })));
   }
   return out.join("");
 }
@@ -772,43 +768,43 @@ function body(state, empty = false) {
     spool(C.SPOOL.supply, "supply"),
     part("spools", () => LIVE.spoolMarks(state)),
     column(),
-    ...C.POSTS.map((p) => post(p, C.TIERS[2].z + C.TIERS[2].h)),
-    timeColumn(),
+    ...C.POSTS.map((p) => stone("ink", post(p, C.TIERS[2].z + C.TIERS[2].h))),
+    stone("ink", timeColumn()),
     // Bottom shelf: the integrator.
-    tier(C.TIERS[0], 0),
+    stone("marble", tier(C.TIERS[0], 0)),
     part("bar-2", () => LIVE.penBar(pens[2], 2)),
     part("rack", () => LIVE.rack(state)),
     station3Back(),
     part("disc", () => LIVE.integrator(state)),
     part("axle", () => LIVE.axle(state)),
     rails(),
-    yokeFrame(),
+    stone("marble", yokeFrame()),
     part("yoke", () => LIVE.yoke(state)),
     // Middle shelf: the two legs.
-    tier(C.TIERS[1], 1),
+    stone("marble", tier(C.TIERS[1], 1)),
     part("bar-1", () => LIVE.penBar(pens[1], 1)),
-    station2Back(),
+    stone("marble", station2Back()),
     part("gears", () => LIVE.gears(state)),
-    station2Guide(),
-    latchBracket(),
+    stone("ink", station2Guide()),
+    stone("ink", latchBracket()),
     part("yokes", () => LIVE.yokes(state)),
-    switchPlate(1),
+    stone("marble", switchPlate(1)),
     part("switch-1", () => LIVE.switchKnob(1, state.unhooked)),
     // Top shelf: the finite evolution.
-    tier(C.TIERS[2], 2),
+    stone("marble", tier(C.TIERS[2], 2)),
     part("bar-0", () => LIVE.penBar(pens[0], 0)),
-    station1Back(),
+    stone("ink", station1Back()),
     part("pulley", () => LIVE.pulley(state)),
     part("cord", () => LIVE.penCord(state, pens[0])),
     part("beam", () => LIVE.beam(state)),
-    fork(0),
+    stone("ink", fork(0)),
     part("sphere-0", () => LIVE.sphere(state, 0)),
-    fork(1),
+    stone("ink", fork(1)),
     part("sphere-1", () => LIVE.sphere(state, 1)),
-    guideBridge(),
-    epsilonDial(),
+    stone("ink", guideBridge()),
+    stone("jade", epsilonDial()),
     part("knob", () => LIVE.knob(state.a)),
-    switchPlate(0),
+    stone("marble", switchPlate(0)),
     part("switch-0", () => LIVE.switchKnob(0, 1 - state.mu / Math.PI)),
   ].join("");
 }
@@ -911,6 +907,7 @@ const L = (d, style) => k.lineSvg(d, style);
 const D = (points, style) => k.dotsSvg(points, style);
 const seg = (a, b) => k.segment(a, b, P);
 let hollow = false;
+const stone = ${stone.toString()};
 ${shipped({ loop, base, board, spool, column, post, tier, station1Back, fork, guideBridge, epsilonDial, switchPlate, station2Back, station2Guide, latchBracket, station3Back, rails, yokeFrame, timeColumn, part, body })}
 ${swingSource}
 const root = document.querySelector('[data-figure="current-witness"]');
