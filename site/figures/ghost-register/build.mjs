@@ -655,16 +655,28 @@ const COPY = {
     title: "Two Booleans, one world",
     hint: "Click: coin · crank · drawer",
     keys: ["Counter and audit strip: the registered occurrence of each visit", "The coin: a Boolean set beside the world", "Crank and ratchet: the root's one step, next"],
-    caption:
-      "Proposition 2.3 with Lemma 2.2 and Theorem 2.6. The register takes one input. A turn of the crank steps the root once along next: the tab on top shows the new state, the counter rolls on and the audit strip prints the visit's registered occurrence. A legal world state is that registered visit, and there is no second register. The coin on the mat is a Boolean set beside the world: g₀ = (w₁, false) and g₁ = (w₁, true) really are different pairs, and a click really flips it. Admission keeps only the first component, though, so the state, the occurrence and the authoritative evolution stay where they were, and the register has no slot a Boolean could go into. The drawer opens only on a registered turn, when the cam on the crank pushes the trip rod down and the lever lifts the bolt; pulled by hand, it holds. The real difference w₁ ≠ w₂ comes from two different visits of the root, which is why their occurrences differ. One more bit of raw data is not one more world.",
+    refs: ["Proposition 2.3", "Lemma 2.2", "Theorem 2.6"],
+    caption: [
+      "A cash register that takes one input: each turn of the crank steps the root once along next.",
+      "The tab on top shows the new state, the counter rolls on, and the audit strip prints the visit’s registered occurrence. A lawful world state is that registered visit; there is no second register.",
+      "The coin on the mat is a Boolean set beside the world. g₀ = (w₁, false) and g₁ = (w₁, true) really are different pairs, and a click really flips it. Admission keeps only the first component, though: the state, the occurrence and the authoritative evolution stay where they were, and the register has no slot a Boolean could go into.",
+      "The drawer opens only on a registered turn: at the end of the stroke the cam on the crank pushes the trip rod down and the lever lifts the bolt. Pulled by hand, it holds. The real difference w₁ ≠ w₂ comes from two different visits of the root, which is why their occurrences differ.",
+      "One more bit of raw data is not one more world.",
+    ],
     aria: "Cash register and coin: Space flips the coin, the right arrow turns the crank, the down arrow tries the drawer",
   },
   zh: {
     title: "两枚布尔值，一个世界",
     hint: "点击：硬币 · 摇柄 · 钱屉",
     keys: ["计数窗与流水纸带：每次访问的登记发生", "硬币：贴在世界旁边的布尔值", "摇柄与棘轮：根唯一的一步 next"],
-    caption:
-      "命题 2.3，连同引理 2.2 与定理 2.6。这台收银机只收一种输入：摇柄转一圈，根沿 next 推进一步，顶上的标牌换成新状态，计数窗进一位，流水纸带印下这次访问的登记发生。合法世界状态就是这次登记访问，没有第二份登记表。垫上的硬币是贴在世界旁边的布尔值：g₀ = (w₁, false) 与 g₁ = (w₁, true) 确实是两个不同的二元组，点一下，它真的翻面。可准入只取第一分量，状态、登记发生与权威演化都纹丝不动；机器上也没有能塞进布尔值的槽。钱屉只随一次登记弹开：转到末尾，摇柄上的凸轮压下顶杆，杠杆抬起锁舌；徒手拉，它不动。真正的差异 w₁ ≠ w₂ 来自根的两次不同访问，所以它们的登记发生不同。原始数据多一位，世界并不多一个。",
+    refs: ["命题 2.3", "引理 2.2", "定理 2.6"],
+    caption: [
+      "一台只收一种输入的收银机：摇柄每转一圈，根沿 next 推进一步。",
+      "顶上的标牌换成新状态，计数窗进一位，流水纸带印下这次访问的登记发生。合法世界状态就是这次登记访问，没有第二份登记表。",
+      "垫上的硬币是贴在世界旁边的布尔值。g₀ = (w₁, false) 与 g₁ = (w₁, true) 确实是两个不同的二元组，点一下，它真的翻面。可准入只取第一分量：状态、登记发生与权威演化纹丝不动，机器上也没有能塞进布尔值的槽。",
+      "钱屉只随一次登记弹开：摇柄转到底，凸轮压下顶杆，杠杆抬起锁舌；徒手去拉，它不动。真正的差异 w₁ ≠ w₂ 来自根的两次不同访问，所以它们的登记发生也不同。",
+      "原始数据多一位，世界并不多一个。",
+    ],
     aria: "收银机与硬币：空格翻硬币，右方向键转摇柄，下方向键试拉钱屉",
   },
 };
@@ -685,6 +697,7 @@ const bodyOf = (lang) => {
       { mark: "edge", label: copy.keys[2] },
     ],
     caption: copy.caption,
+    refs: copy.refs,
     body: `<div class="iso-stage" tabindex="0" role="group" aria-label="${copy.aria}">${svg}</div>`,
   })}</div>`;
 };

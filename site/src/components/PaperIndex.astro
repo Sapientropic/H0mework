@@ -1,7 +1,8 @@
 ---
 import Base from "../layouts/Base.astro";
 import ClaimTape from "./ClaimTape.astro";
-import { ORDERED, THEMES, paperOf, statsOf, vtTitle, type Lang } from "../lib/papers";
+import Thumb from "./Thumb.astro";
+import { ORDERED, THEMES, paperOf, statsOf, vtFigure, vtTitle, type Lang } from "../lib/papers";
 import { claimsOf } from "../lib/claims";
 import { T, fill, paperHref } from "../lib/i18n";
 
@@ -9,7 +10,7 @@ import { T, fill, paperHref } from "../lib/i18n";
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const t = T[lang];
-const papers = ORDERED.map((entry) => ({ ...paperOf(entry.slug, lang), stats: statsOf(entry.slug), claims: claimsOf(entry.slug, lang) }));
+const papers = ORDERED.map((entry) => ({ ...paperOf(entry.slug, lang), stats: statsOf(entry.slug) }));
 const tally = papers.reduce((sum, paper) => ({ claims: sum.claims + paper.stats.claims, modules: sum.modules + paper.stats.modules }), { claims: 0, modules: 0 });
 const themes = THEMES.map((theme) => ({ ...theme, papers: papers.filter((paper) => paper.theme === theme.id) })).filter((theme) => theme.papers.length > 0);
 ---
@@ -36,7 +37,9 @@ const themes = THEMES.map((theme) => ({ ...theme, papers: papers.filter((paper) 
                     {paper.sub && <span class="sub">{paper.sub}</span>}
                     <span class="st"><b>{paper.stats.claims}</b>{t.statClaims} · <b>{paper.stats.modules}</b>{t.statModules}</span>
                   </span>
-                  <span class="slot"><span class="idx-tape"><ClaimTape rows={paper.claims} lang={lang} grouped={false} /></span></span>
+                  <span class="idx-art" aria-hidden="true">
+                    {paper.figure ? <Thumb name={paper.figure.name} transition={vtFigure(paper.slug)} /> : <span class="idx-tape"><ClaimTape rows={claimsOf(paper.slug, lang)} lang={lang} grouped={false} /></span>}
+                  </span>
                 </a>
               ))}
             </div>

@@ -40,7 +40,8 @@ h2 { font-size: 22px; margin: 0 0 18px; }
 h2 .count { margin-left: 10px; font: 13px/1 var(--mono); color: var(--muted); vertical-align: 3px; }
 .eyebrow { font: 12px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--cinnabar); margin: 0 0 14px; }
 .title-sub { font-family: var(--serif); color: var(--text); font-size: clamp(19px, 2.4vw, 23px); line-height: 1.5; margin: 0 0 12px; text-wrap: balance; }
-.other { color: var(--muted); font-size: 14px; line-height: 1.6; margin: 0 0 26px; }
+.other { color: var(--muted); font-size: 14px; line-height: 1.6; margin: 0; }
+.hero .actions { margin-top: 26px; }
 .note { color: var(--muted); font-size: 14.5px; margin: -6px 0 22px; }
 .section { padding: 56px 0 0; }
 .section + .section { margin-top: 56px; border-top: 1px solid var(--rule); }
@@ -59,6 +60,8 @@ h2 .count { margin-left: 10px; font: 13px/1 var(--mono); color: var(--muted); ve
 .stats { display: flex; flex-wrap: wrap; gap: 6px 22px; margin: 22px 0 0; padding: 0; list-style: none; font: 13.5px/1.6 var(--sans); color: var(--muted); }
 .stats b { font: 600 13.5px/1.6 var(--mono); color: var(--ink); margin-right: 5px; }
 .stats .ok { color: #2f7d4f; }
+.stats .ok a { color: inherit; text-decoration: none; }
+.stats .ok a:hover { text-decoration: underline; text-decoration-color: currentColor; }
 .editions { margin: 14px 0 0; font-size: 13.5px; color: var(--muted); }
 .editions span + span::before { content: " · "; }
 .editions a { color: var(--muted); }
@@ -67,12 +70,26 @@ h2 .count { margin-left: 10px; font: 13px/1 var(--mono); color: var(--muted); ve
 .figure-slot { margin: 40px 0 0; }
 .figure-slot .iso-figure { margin: 0; }
 .figure-slot .iso-plate { box-shadow: 0 0 0 1px var(--rule); }
-.figure-slot .iso-legend { max-width: var(--measure); }
+/* Figure caption: the keys under the drawing, then the statements it draws (a link to its claim row), then the text. */
+.figure-slot .iso-legend { max-width: var(--measure); gap: 0; margin-top: 14px; }
+.figure-slot .iso-keys { font-size: 12.5px; line-height: 1.6; }
+.figure-slot .iso-refs { width: fit-content; margin: 24px 0 8px; font: 11.5px/1.5 var(--mono); color: var(--muted); text-decoration: none; }
+.figure-slot a.iso-refs::after { content: "↓"; margin-left: 6px; }
+.figure-slot a.iso-refs:hover { color: var(--cinnabar); }
+.figure-slot .iso-caption { display: block; color: var(--text); font-size: 14.5px; line-height: 1.8; }
+.figure-slot .iso-para { margin: 0 0 .75em; }
+.figure-slot .iso-para:first-child { margin-bottom: .6em; font: 17px/1.65 var(--serif); color: var(--ink); }
+.figure-slot .iso-para b { color: var(--ink); }
 
 /* KaTeX's default 1.21em makes lines with formulas taller than their neighbours. */
 .katex { font-size: 1.04em; }
 
 .abstract p { margin: 0 0 1em; }
+.abstract .lead { margin: 0 0 .8em; font: 19px/1.6 var(--serif); color: var(--ink); }
+/* Enumerated steps share a rule down their left edge. */
+.abstract .step { margin: 0; padding: 0 0 .9em 16px; border-left: 2px solid var(--rule); }
+.abstract .step + :not(.step) { margin-top: 1em; }
+.abstract .step strong { font-weight: 600; color: var(--ink); }
 .abstract details summary { cursor: pointer; color: var(--muted); font-size: 14px; list-style: none; }
 .abstract details summary::before { content: "＋ "; }
 .abstract details[open] summary { display: none; }
@@ -90,7 +107,9 @@ h2 .count { margin-left: 10px; font: 13px/1 var(--mono); color: var(--muted); ve
 .claim > details > summary:hover { background: var(--soft); }
 .claim .id { position: relative; padding-left: 13px; font: 12px/1.4 var(--mono); color: var(--muted); }
 .claim .id::before { content: ""; position: absolute; left: 0; top: .42em; width: 7px; height: 7px; border-radius: 50%; box-sizing: border-box; }
-.claim .id.proved::before { background: #2f7d4f; }
+.claim .id::before { background: var(--ink); }
+.claim .id.program::before { background: var(--rule); }
+.claim .id.featured::before { background: var(--cinnabar); }
 .claim > details[open] > summary .id { color: var(--cinnabar); }
 .claim .title { font-family: var(--serif); color: var(--ink); font-size: 16px; line-height: 1.45; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .claim > details[open] > summary .title { -webkit-line-clamp: unset; display: block; }
@@ -101,8 +120,7 @@ h2 .count { margin-left: 10px; font: 13px/1 var(--mono); color: var(--muted); ve
 .claim .body { padding: 2px 4px 20px 118px; }
 .claim .body p { margin: 0 0 10px; font-size: 14.5px; }
 .claim .statement { overflow-x: auto; }
-.claim .meta { display: flex; flex-wrap: wrap; gap: 4px 18px; color: var(--muted); font-size: 13.5px; }
-.claim .kernel { color: #2f7d4f; }
+.claim .body .meta { color: var(--muted); font-size: 13.5px; }
 .claim h4 { margin: 16px 0 6px; font: 600 12.5px/1.4 var(--sans); color: var(--muted); }
 .claim .modules { list-style: none; margin: 0; padding: 0; font: 12.5px/1.9 var(--mono); }
 .claim .modules summary { display: flex; flex-wrap: wrap; gap: 0 10px; align-items: baseline; list-style: none; cursor: pointer; width: fit-content; }
@@ -127,7 +145,9 @@ h2 .count { margin-left: 10px; font: 13px/1 var(--mono); color: var(--muted); ve
 .hole.featured { background: var(--cinnabar); }
 .tape-label { font: 10.5px/1 var(--mono); color: var(--muted); border-top: 1px solid var(--rule); padding-top: 4px; min-width: 10px; }
 .tape.linked .hole:hover { box-shadow: 0 0 0 2px var(--page), 0 0 0 3px var(--cinnabar); }
-.tape-note { margin: 0 0 22px; font-size: 12.5px; color: var(--muted); }
+.tape-key { display: flex; flex-wrap: wrap; gap: 4px 18px; margin: 2px 0 22px; font-size: 12.5px; color: var(--muted); }
+.tape-key span { display: inline-flex; align-items: center; gap: 7px; }
+.tape-key .hole { width: 8px; height: 8px; }
 
 .pager { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 72px 0 0; padding-top: 22px; border-top: 1px solid var(--rule); }
 .pager a { display: flex; flex-direction: column; gap: 4px; text-decoration: none; font-family: var(--serif); color: var(--ink); font-size: 16px; line-height: 1.4; }
@@ -146,7 +166,8 @@ h2 .count { margin-left: 10px; font: 13px/1 var(--mono); color: var(--muted); ve
 .card { display: flex; flex-direction: column; gap: 3px; padding: 0 20px 20px; background: var(--paper); box-shadow: 0 0 0 1px var(--rule); text-decoration: none; }
 .card:hover { box-shadow: 0 0 0 1px var(--muted); }
 .card-art { display: flex; align-items: center; justify-content: center; height: 184px; margin: 0 -8px 12px; padding-top: 16px; }
-.card-art .iso-svg { width: auto; max-width: 100%; height: 100%; }
+.card-art .thumb { width: auto; max-width: 100%; height: 100%; object-fit: contain; transition: transform .3s cubic-bezier(.2, .7, .2, 1); }
+@media (prefers-reduced-motion: no-preference) { .card:hover .thumb, .idx-row:hover .thumb, .related a:hover .thumb { transform: translateY(-3px); } }
 .card .meta, .idx-row .meta { font: 11.5px/1.5 var(--mono); color: var(--muted); }
 .card .t, .idx-row .t { font-family: var(--serif); font-size: 17px; font-weight: 600; color: var(--ink); line-height: 1.4; }
 .card .sub { font-size: 13px; line-height: 1.5; color: var(--muted); }
@@ -231,12 +252,15 @@ a.seed:hover, a.seed.on, a.seed:focus-visible { color: #a62a22; }
 .theme + .theme { margin-top: 30px; padding-top: 30px; border-top: 1px solid var(--rule); }
 .theme h2 { margin: 0 0 6px; font-size: 18px; }
 .rows { display: flex; flex-direction: column; }
-.idx-row { display: grid; grid-template-columns: minmax(0, 1fr) 132px; gap: 20px; align-items: center; padding: 15px 12px; text-decoration: none; border-bottom: 1px solid var(--soft); transition: background .12s; }
+.idx-row { display: grid; grid-template-columns: minmax(0, 1fr) 224px; gap: 28px; align-items: center; padding: 16px 12px; text-decoration: none; border-bottom: 1px solid var(--soft); transition: background .12s; }
 .idx-row:last-child { border-bottom: none; }
 .idx-row:hover { background: var(--paper); }
 .idx-row .info { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
 .idx-row .sub { font-size: 13px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.slot { display: flex; justify-content: flex-end; align-items: center; min-height: 40px; }
+/* Each row ends on the paper's machine, its figure's first frame, in a fixed box so rows keep one height. */
+.idx-art { display: flex; justify-content: center; align-items: center; height: 136px; padding: 12px 14px; background: var(--paper); box-shadow: 0 0 0 1px var(--rule); transition: box-shadow .15s; }
+.idx-row:hover .idx-art { box-shadow: 0 0 0 1px var(--muted); }
+.idx-art .thumb { width: auto; height: auto; max-width: 100%; max-height: 100%; transition: transform .3s cubic-bezier(.2, .7, .2, 1); }
 .idx-tape .holes { display: flex; flex-wrap: wrap; gap: 3px; justify-content: flex-end; }
 .idx-tape .hole { width: 7px; height: 7px; }
 
@@ -253,12 +277,17 @@ a.seed:hover, a.seed.on, a.seed:focus-visible { color: #a62a22; }
 /* Paper page: the papers it cites and those citing it, read from the reference lists. */
 .eyebrow a { color: inherit; text-decoration: none; }
 .eyebrow a:hover { text-decoration: underline; text-decoration-color: currentColor; }
-.related { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px 40px; margin: 72px 0 0; padding-top: 22px; border-top: 1px solid var(--rule); }
+/* Two columns, cites and cited-by, even when only one has papers, so a card never spans the page. */
+.related { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(380px, 100%), 1fr)); gap: 28px 20px; margin: 72px 0 0; padding-top: 22px; border-top: 1px solid var(--rule); }
 .related h2 { margin: 0 0 12px; font: 12px/1 var(--mono); color: var(--muted); }
-.related ul { display: grid; gap: 18px; margin: 0; padding: 0; list-style: none; }
-.related a { display: flex; flex-direction: column; gap: 4px; text-decoration: none; font-family: var(--serif); color: var(--ink); font-size: 16px; line-height: 1.4; }
-.related a span { font: 12px/1 var(--mono); color: var(--muted); }
-.related a:hover span { color: var(--cinnabar); }
+.related ul { display: grid; gap: 12px; margin: 0; padding: 0; list-style: none; }
+.related a { display: grid; grid-template-columns: 92px minmax(0, 1fr); gap: 16px; align-items: center; min-height: 84px; padding: 10px 16px 10px 10px; background: var(--paper); box-shadow: 0 0 0 1px var(--rule); text-decoration: none; transition: box-shadow .15s; }
+.related a:hover { box-shadow: 0 0 0 1px var(--muted); }
+.rel-art { display: flex; justify-content: center; align-items: center; height: 64px; }
+.rel-art .thumb { width: auto; height: auto; max-width: 100%; max-height: 100%; transition: transform .3s cubic-bezier(.2, .7, .2, 1); }
+.rel-text { display: flex; flex-direction: column; gap: 4px; font-family: var(--serif); font-size: 16px; line-height: 1.4; color: var(--ink); }
+.rel-label { font: 11.5px/1.2 var(--mono); color: var(--muted); }
+.related a:hover .rel-label { color: var(--cinnabar); }
 .related + .pager { margin-top: 28px; }
 
 /* Cross-page view transitions: a paper's title and figure carry over from a list into its page.
@@ -302,9 +331,8 @@ footer.site { margin: 96px 0 0; padding: 32px 0 56px; border-top: 1px solid var(
   .idx-nav { position: sticky; top: 0; z-index: 5; flex-direction: row; overflow-x: auto; gap: 14px; padding: 10px 20px; margin: 0 -20px 18px; background: var(--page); border-bottom: 1px solid var(--rule); }
   .idx-nav a { white-space: nowrap; padding: 4px 0 4px 14px; }
   .theme { scroll-margin-top: 56px; }
-  .idx-row { grid-template-columns: 1fr; gap: 10px; padding: 14px 6px; }
-  .slot { justify-content: flex-start; }
-  .idx-tape .holes { justify-content: flex-start; }
+  .idx-row { grid-template-columns: minmax(0, 1fr) 108px; gap: 14px; padding: 14px 6px; }
+  .idx-art { height: 80px; padding: 6px; }
   .idx-row .sub { white-space: normal; }
   .release-list li { grid-template-columns: 1fr; gap: 4px; }
   .doi { margin-left: 0; flex-basis: 100%; padding-top: 6px; }

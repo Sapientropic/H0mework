@@ -704,8 +704,14 @@ const COPY = {
     title: "Two minuses, one plus",
     hint: "Click: witnesses · ← →: axis",
     keys: ["Solid stamp: curvature certainly positive along that direction", "Faint stamp: certainly negative · half: enclosure touches zero", "Pulleys: quantum legs ×2 · reader contact · field legs ×2"],
-    caption:
-      "Theorem 1.2 and §§7–11. The external momentum d = sn shifts the observation window along n; the complete response reads R(0) + a(n)|s| + s²·nᵀKn + o(s²). The two-ball intersection at the hub thins at once, so the |s| term (the cusp of the sharp window) is taken out first; the curvature K is what is left at second order. Every point of the dome is a direction (n and −n read the same, so the upper half is all of them). The arm visits each and stamps the sign of nᵀKn from its strict enclosure: the field legs' leading tensor diag(−1.3032, 2.1923, −1.6906)·10⁻²⁰ of (10.7), widened by the whole-ball remainder 2.07·10⁻²² and the quantum legs with contact, [−3.130, −2.672]·10⁻²². The cord adds the five terms on the dial. The whole e1–e3 plane comes out negative and e2 positive, so the tensor's inertia is (2, 1, 0) — for the full tensor, mixed entries included, not just three axes. The leading tensor's zero cone rises 37.6° above the plane toward e1 and 41.3° toward e3; the four half stamps sit where the enclosure cannot yet tell. Unhook the field legs and the contact, and leave only the quantum source legs, whose windows do not move: every direction reads negative, [−3.13, −2.67]·10⁻²² on the dial's fine range.",
+    refs: ["Theorem 1.2", "§§7–11"],
+    caption: [
+      "A dome of directions: every point on it is a direction n, and the arm visits each one to stamp the sign of the response curvature there.",
+      "The external momentum d = sn shifts the observation window along n; the complete response reads R(0) + a(n)|s| + s²·nᵀKn + o(s²). The two-ball intersection at the hub thins at once, so the |s| term (the cusp of the sharp window) is taken out first; the curvature K is what is left at second order. n and −n read the same, so the upper half holds every direction.",
+      "Each stamp comes from the strict enclosure of nᵀKn: the field legs’ leading tensor diag(−1.3032, 2.1923, −1.6906)·10⁻²⁰ of (10.7), widened by the whole-ball remainder 2.07·10⁻²² and the quantum legs with contact, [−3.130, −2.672]·10⁻²². The cord adds the five terms on the dial.",
+      "The whole e₁–e₃ plane comes out negative and e₂ positive, so the tensor’s inertia is (2, 1, 0): for the full tensor, mixed entries included, not just three axes. The leading tensor’s zero cone rises 37.6° above the plane toward e₁ and 41.3° toward e₃; the four half stamps sit where the enclosure cannot yet tell.",
+      "Unhook the field legs and the contact, and leave only the quantum source legs, whose windows do not move: every direction reads negative, [−3.13, −2.67]·10⁻²² on the dial’s fine range.",
+    ],
     aria: "Curvature dome: arrow keys point the arm at e1, e2, e3; click or Space switches between all five terms and the quantum legs alone",
     labels: { undecided: "undecided", quantum: "2 legs", axes: ["e₁", "e₂", "e₃"] },
   },
@@ -713,8 +719,14 @@ const COPY = {
     title: "两负一正",
     hint: "点击：换证人 · ← →：轴",
     keys: ["实印：该方向曲率确定为正", "淡印：确定为负 · 半印：区间触及零", "滑轮：量子源腿 ×2 · 读出接触 · 场传播腿 ×2"],
-    caption:
-      "定理 1.2 与 §§7–11。外动量 d = sn 把观察窗沿 n 推开，完整响应读作 R(0) + a(n)|s| + s²·nᵀKn + o(s²)。罩心的两球交集一推就变薄，所以先扣掉 |s| 项（尖窗的尖点），曲率 K 是剩下的二阶系数。罩上每一点是一个方向（n 与 −n 读数相同，半球即全部）。臂逐一走过，按 nᵀKn 的严格区间盖章：场传播腿的主张量 (10.7) diag(−1.3032, 2.1923, −1.6906)·10⁻²⁰，加上整球余项 2.07·10⁻²²，再加量子源腿与接触 [−3.130, −2.672]·10⁻²²。绳子在表盘上把五项相加。整个 e₁–e₃ 平面为负、e₂ 为正，于是张量惯性是 (2, 1, 0)——这是含混合项在内的整个张量，不只三根轴。主张量的零锥在 e₁ 一侧离平面 37.6°，在 e₃ 一侧 41.3°；四枚半印落在区间还分不出正负的地方。把场传播腿与接触脱开，只留窗口不动的量子源两腿：每个方向都读负，表盘细档上是 [−3.13, −2.67]·10⁻²²。",
+    refs: ["定理 1.2", "§§7–11"],
+    caption: [
+      "一座方向罩：罩上每一点是一个方向 n，悬臂逐一走过，给那个方向的响应曲率盖上正负。",
+      "外动量 d = sn 把观察窗沿 n 推开，完整响应读作 R(0) + a(n)|s| + s²·nᵀKn + o(s²)。罩心的两球交集一推就变薄，所以先扣掉 |s| 项（尖窗的尖点），曲率 K 是剩下的二阶系数。n 与 −n 读数相同，半球即全部方向。",
+      "每枚印都按 nᵀKn 的严格区间盖下：场传播腿的主张量 (10.7) diag(−1.3032, 2.1923, −1.6906)·10⁻²⁰，加上整球余项 2.07·10⁻²²，再加量子源腿与接触 [−3.130, −2.672]·10⁻²²。绳子在表盘上把五项相加。",
+      "整个 e₁–e₃ 平面为负、e₂ 为正，于是张量惯性是 (2, 1, 0)——这是含混合项在内的整个张量，不只三根轴。主张量的零锥在 e₁ 一侧离平面 37.6°，在 e₃ 一侧 41.3°；四枚半印落在区间还分不出正负的地方。",
+      "把场传播腿与接触脱开，只留窗口不动的量子源两腿：每个方向都读负，表盘细档上是 [−3.13, −2.67]·10⁻²²。",
+    ],
     aria: "曲率罩：方向键把臂指向 e₁、e₂、e₃；点击或空格在五项俱全与只留量子源腿之间切换",
     labels: { undecided: "未定", quantum: "两腿", axes: ["e₁", "e₂", "e₃"] },
   },
@@ -744,6 +756,7 @@ const bodyOf = (lang) => {
       { mark: "raised", label: copy.keys[2] },
     ],
     caption: copy.caption,
+    refs: copy.refs,
     body: `<div class="iso-stage" tabindex="0" role="slider" aria-label="${copy.aria}" aria-valuemin="0" aria-valuemax="2" aria-valuenow="1">${svg}</div>`,
   })}</div>`;
 };

@@ -91,6 +91,11 @@
 .iso-legend{display:grid;gap:8px;margin-top:12px;color:var(--anatomy-muted);font-size:13px;line-height:1.55}
 .iso-keys{display:flex;flex-wrap:wrap;gap:6px 18px}
 .iso-key{display:inline-flex;align-items:center;gap:7px}
+.iso-refs{display:flex;flex-wrap:wrap;font:11.5px/1.6 var(--anatomy-mono);color:var(--anatomy-muted)}
+.iso-refs>span+span::before{content:"·";margin:0 .5em}
+.iso-para{margin:0 0 .6em}
+.iso-para:last-child{margin-bottom:0}
+.iso-para b{font-weight:600;color:var(--anatomy-strong)}
 .iso-swatch{width:16px;height:10px;flex:none;overflow:visible}
 .iso-swatch path{fill:none;stroke:var(--anatomy-hi);stroke-width:1;vector-effect:non-scaling-stroke;stroke-linejoin:round;stroke-linecap:round}
 .iso-swatch[data-mark="raised"] path,.iso-swatch[data-mark="flat"] path{stroke:var(--anatomy-mid)}

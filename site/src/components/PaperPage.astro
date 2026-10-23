@@ -3,6 +3,7 @@ import Base from "../layouts/Base.astro";
 import Figure from "./Figure.astro";
 import ClaimTape from "./ClaimTape.astro";
 import CheckCommands from "./CheckCommands.astro";
+import Thumb from "./Thumb.astro";
 import { ORDERED, chaptersOf, citedByOf, citesOf, paperOf, renderClaim, renderClaimTitle, statsOf, themeOf, vtFigure, vtTitle, type Lang } from "../lib/papers";
 import { claimsOf, labelOf, type ClaimRow } from "../lib/claims";
 import { T, fill, paperHref, papersHref } from "../lib/i18n";
@@ -22,9 +23,12 @@ const index = ORDERED.findIndex((entry) => entry.slug === slug);
 const [prev, next] = [ORDERED[index - 1], ORDERED[index + 1]].map((entry) => entry && { href: paperHref(lang, entry.slug), title: paperOf(entry.slug, lang).main });
 // The eyebrow opens with the paper's place in the index: its series if it has one, else its theme.
 const place = { href: `${papersHref(lang)}#theme-${paper.theme}`, label: paper.series?.[lang] ?? themeOf(paper.theme).label[lang] };
+// A paper both cited and citing appears twice; only its first thumbnail carries the view transition, as names must be unique.
+const named = new Set<string>();
 const linkOf = (other: string) => {
   const entry = paperOf(other, lang);
-  return { href: paperHref(lang, other), label: entry.series?.[lang] ?? themeOf(entry.theme).label[lang], title: entry.main };
+  const transition = named.has(other) ? undefined : (named.add(other), vtFigure(other));
+  return { href: paperHref(lang, other), label: entry.series?.[lang] ?? themeOf(entry.theme).label[lang], title: entry.main, figure: entry.figure?.name, transition };
 };
 const related = [
   { heading: t.cites, papers: citesOf(slug).map(linkOf) },
@@ -49,7 +53,7 @@ const chapterLabel = (key: string) => (/\d/.test(key) ? fill(t.chapter, key) : f
       <p class="eyebrow"><a href={place.href}>{place.label}</a>{[paper.editions.length > 1 ? fill(t.edition, latest.number) : null, latest.date].filter(Boolean).map((part) => ` · ${part}`)}</p>
       <h1 class="prose vt-title" style={`view-transition-name:${vtTitle(slug)}`}>{paper.main}</h1>
       {paper.sub && <p class="title-sub prose">{paper.sub}</p>}
-      <p class="other prose">{paper.other}</p>
+      {paper.other && <p class="other prose">{paper.other}</p>}
       <div class="actions">
         <a class="button primary" href={latest.pdf}>{t.pdf}</a>
         {latest.supplement && <a class="button" href={latest.supplement}>{t.supplement}</a>}
@@ -68,18 +72,19 @@ const chapterLabel = (key: string) => (/\d/.test(key) ? fill(t.chapter, key) : f
         <li><b>{stats.claims}</b>{t.statClaims}</li>
         <li><b>{stats.modules}</b>{t.statModules}</li>
         <li><b>{stats.declarations}</b>{t.statDeclarations}</li>
-        <li class="ok">✓ {t.statKernel}</li>
+        <li class="ok"><a href="#check">✓ {t.statKernel}</a></li>
       </ul>
     </header>
-    {paper.figure && <Figure name={paper.figure.name} lang={lang} transition={vtFigure(slug)} />}
+    {paper.figure && <Figure name={paper.figure.name} lang={lang} transition={vtFigure(slug)} claim={featured} />}
     <section class="section">
       <div class="prose abstract">
         <h2>{t.abstract}</h2>
-        <Fragment set:html={paper.abstractLead} />
-        {paper.abstractRest && (
+        {paper.abstract.lead && <p class="lead" set:html={paper.abstract.lead} />}
+        <Fragment set:html={paper.abstract.shown.join("")} />
+        {paper.abstract.folded.length > 0 && (
           <details>
             <summary>{t.more}</summary>
-            <Fragment set:html={paper.abstractRest} />
+            <Fragment set:html={paper.abstract.folded.join("")} />
           </details>
         )}
       </div>
@@ -88,7 +93,11 @@ const chapterLabel = (key: string) => (/\d/.test(key) ? fill(t.chapter, key) : f
       <h2>{t.claims}</h2>
       <p class="note prose">{t.claimsNote}{paper.editions.length > 1 && (lang === "zh" ? t.claimsNoteEditions : ` ${t.claimsNoteEditions}`)}{translated && fill(t.translatedNote, translated)}</p>
       <ClaimTape rows={claims} lang={lang} featured={featured} link grouped={grouped} />
-      <p class="tape-note">{t.index}</p>
+      <p class="tape-key" aria-hidden="true">
+        <span><i class="hole" />{t.keyLean}</span>
+        {claims.some((claim) => !claim.proved) && <span><i class="hole program" />{t.keyProgram}</span>}
+        {featured && <span><i class="hole featured" />{t.keyFigure}</span>}
+      </p>
       <ol class="claims">
         {items.map((item) =>
           item.kind === "chapter" ? (
@@ -97,7 +106,7 @@ const chapterLabel = (key: string) => (/\d/.test(key) ? fill(t.chapter, key) : f
             <li class="claim" id={item.claim.key}>
               <details open={item.claim.key === featured}>
                 <summary>
-                  <span class={`id${item.claim.proved ? " proved" : ""}`} title={item.claim.proved ? t.kernelPassed : undefined}>{item.claim.label}</span>
+                  <span class={`id${item.claim.proved ? "" : " program"}${item.claim.key === featured ? " featured" : ""}`}>{item.claim.label}</span>
                   <span class="title">
                     <span set:html={renderClaimTitle(item.claim.title)} />
                     {item.claim.edition > 1 && <span class="tag later">{fill(t.edition, item.claim.edition)}</span>}
@@ -107,10 +116,7 @@ const chapterLabel = (key: string) => (/\d/.test(key) ? fill(t.chapter, key) : f
                 </summary>
                 <div class="body prose">
                   {item.claim.statement && <div class="statement" set:html={renderClaim(item.claim.statement)} />}
-                  <p class="meta">
-                    {item.claim.location && <span>{t.location}{sep}{item.claim.location}</span>}
-                    {item.claim.proved && <span class="kernel">✓ {t.kernelPassed}</span>}
-                  </p>
+                  {item.claim.location && <p class="meta">{t.location}{sep}{item.claim.location}</p>}
                   {item.claim.lean.length > 0 && (
                     <>
                       <h4>{t.lean} · {item.claim.lean.length}</h4>
@@ -146,7 +152,7 @@ const chapterLabel = (key: string) => (/\d/.test(key) ? fill(t.chapter, key) : f
         )}
       </ol>
     </section>
-    <section class="section">
+    <section class="section" id="check">
       <div class="prose">
         <h2>{t.check}</h2>
         <p>{t.checkPaper}</p>
@@ -159,7 +165,16 @@ const chapterLabel = (key: string) => (/\d/.test(key) ? fill(t.chapter, key) : f
         {related.map((group) => (
           <div>
             <h2>{group.heading}</h2>
-            <ul>{group.papers.map((other) => <li><a href={other.href}><span>{other.label}</span>{other.title}</a></li>)}</ul>
+            <ul>
+              {group.papers.map((other) => (
+                <li>
+                  <a href={other.href}>
+                    {other.figure && <span class="rel-art" aria-hidden="true"><Thumb name={other.figure} transition={other.transition} /></span>}
+                    <span class="rel-text"><span class="rel-label">{other.label}</span>{other.title}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
         ))}
       </section>

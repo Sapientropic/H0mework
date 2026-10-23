@@ -60,7 +60,80 @@ function abstractOf(manuscript: string, lang: Lang) {
     .join("\n")
     .trim()
     .split(/\n\s*\n/)
-    .filter((paragraph) => !/^\*\*(关键词|Keywords)/.test(paragraph));
+    // Keywords stay in the PDF; a bare section anchor is markup, not a paragraph.
+    .filter((paragraph) => !/^\*\*(关键词|Keywords)/.test(paragraph) && paragraph.replace(/<[^>]+>/g, "").trim());
+}
+
+// Sentences of a markdown paragraph, cut after 。！？ or an English full stop before a capital; math is
+// masked first so a stop inside a formula never cuts, and common abbreviations do not end a sentence.
+function sentencesOf(paragraph: string, lang: Lang) {
+  const math: string[] = [];
+  const text = dollars(paragraph).replace(/\$\$[\s\S]+?\$\$|\$[^$\n]+?\$/g, (m) => `\u0000${math.push(m) - 1}\u0000`);
+  const stop = lang === "zh" ? /[。！？][”」』）]*/g : /[.!?][”’")\]]*(?=\s+[A-Z“‘"(\u0000])/g;
+  const cuts: number[] = [];
+  for (const m of text.matchAll(stop)) {
+    if (lang === "en" && /\b(e\.g|i\.e|cf|vs|etc|al|Fig|Eq|Sec|No)$/.test(text.slice(0, m.index))) continue;
+    cuts.push(m.index + m[0].length);
+  }
+  return [0, ...cuts]
+    .map((at, i) => text.slice(at, cuts[i] ?? text.length).trim())
+    .filter(Boolean)
+    .map((sentence) => sentence.replace(/\u0000(\d+)\u0000/g, (_, i) => math[+i]));
+}
+
+// Contiguous pieces of near-equal length: the fewest pieces of about `target` each, cut where the longest is shortest.
+function balanced(sentences: string[], target: number) {
+  const k = Math.max(1, Math.min(sentences.length, Math.round(sentences.reduce((sum, s) => sum + s.length, 0) / target)));
+  const prefix = sentences.reduce((acc, s) => [...acc, acc.at(-1)! + s.length], [0]);
+  const n = sentences.length;
+  // best[j][i]: the smallest possible longest piece when the first i sentences form j pieces.
+  const best = Array.from({ length: k + 1 }, () => Array(n + 1).fill(Infinity));
+  const from = Array.from({ length: k + 1 }, () => Array(n + 1).fill(0));
+  best[0][0] = 0;
+  for (let j = 1; j <= k; j++)
+    for (let i = j; i <= n; i++)
+      for (let h = j - 1; h < i; h++) {
+        const worst = Math.max(best[j - 1][h], prefix[i] - prefix[h]);
+        if (worst < best[j][i]) [best[j][i], from[j][i]] = [worst, h];
+      }
+  const pieces: string[][] = [];
+  for (let j = k, i = n; j > 0; i = from[j][i], j--) pieces.unshift(sentences.slice(from[j][i], i));
+  return pieces;
+}
+
+// The abstract set for a screen, word for word: a short first sentence as the lead, each enumerated step
+// (第一，/First,) as its own paragraph, and long paragraphs cut at sentence ends into balanced pieces.
+// A long abstract shows its opening and folds the rest. Lengths are in characters, so English runs about
+// three times the Chinese figures for the same text.
+const LAYOUT = { zh: { lead: 80, piece: 210, fold: 420, shown: 150 }, en: { lead: 240, piece: 680, fold: 1400, shown: 500 } };
+function abstractLayout(paragraphs: string[], lang: Lang) {
+  const { lead: short, piece, fold, shown } = LAYOUT[lang];
+  const step = lang === "zh" ? /^(第[一二三四五六七八九十]|其[一二三四五])(?=[，、])/ : /^(First|Second|Third|Fourth|Fifth)(?=,)/;
+  const sentences = paragraphs.map((paragraph) => sentencesOf(paragraph, lang));
+  const lead = sentences[0][0].length <= short ? sentences[0].shift()! : "";
+  const join = (part: string[]) => part.join(lang === "zh" ? "" : " ");
+  const blocks: { text: string; step: boolean }[] = [];
+  const prose = (run: string[]) => run.length && blocks.push(...balanced(run, piece).map((part) => ({ text: join(part), step: false })));
+  for (const paragraph of sentences) {
+    const starts = paragraph.flatMap((sentence, i) => (step.test(sentence) ? [i] : []));
+    if (starts.length < 2) {
+      prose(paragraph);
+      continue;
+    }
+    // A step runs to the next one; the last takes as many sentences as the first, and the rest is prose again.
+    const end = starts.at(-1)! + starts[1] - starts[0];
+    prose(paragraph.slice(0, starts[0]));
+    starts.forEach((at, k) => {
+      const item = paragraph.slice(at, starts[k + 1] ?? end);
+      blocks.push({ text: join([item[0].replace(step, "**$1**"), ...item.slice(1)]), step: true });
+    });
+    prose(paragraph.slice(end));
+  }
+  const html = blocks.map((block) => renderMarkdown(block.text).replace(/^<p>/, block.step ? '<p class="step">' : "<p>"));
+  const total = blocks.reduce((sum, block) => sum + block.text.length, 0);
+  let cut = blocks.length;
+  if (total > fold) for (let i = 0, seen = 0; i < blocks.length; i++) if ((seen += blocks[i].text.length) >= shown) { cut = i + 1; break; }
+  return { lead: lead && renderInline(lead), shown: html.slice(0, cut), folded: html.slice(cut) };
 }
 
 export function paperOf(slug: string, lang: Lang) {
@@ -84,17 +157,18 @@ export function paperOf(slug: string, lang: Lang) {
   const manuscript = manuscriptOf(latest, slug, lang);
   const title = titleOf(manuscript);
   const abstract = abstractOf(manuscript, lang);
+  const other = titleOf(manuscriptOf(latest, slug, lang === "zh" ? "en" : "zh"));
   return {
     ...entry,
     title,
     ...splitTitle(title),
-    other: titleOf(manuscriptOf(latest, slug, lang === "zh" ? "en" : "zh")),
+    // The other language's title, less a main title both languages share.
+    other: splitTitle(other).main === splitTitle(title).main ? splitTitle(other).sub : other,
     editions,
     current: editions.at(-1)!,
-    abstractLead: renderMarkdown(abstract[0]),
+    abstract: abstractLayout(abstract, lang),
     // Plain first sentences of the abstract for the page description.
     summary: plain(abstract[0]).match(/^.{40,160}?(。|[.!?](?=\s|$))/)?.[0] ?? plain(abstract[0]).slice(0, 160),
-    abstractRest: renderMarkdown(abstract.slice(1).join("\n\n")),
   };
 }
 
@@ -140,8 +214,25 @@ export function citesOf(slug: string) {
 }
 export const citedByOf = (slug: string) => PAPERS.filter((other) => citesOf(other.slug).includes(slug)).map((other) => other.slug);
 
-// The static first frame of a figure, for thumbnails.
-export function figureSvgOf(name: string) {
-  const fragment = JSON.parse(readFileSync(resolve(process.cwd(), "src/generated", `${name}.json`), "utf8"));
-  return String(fragment.html.zh.match(/<svg[\s\S]*?<\/svg>/)?.[0] ?? "");
+// The static first frame of a figure.
+export const figureSvgOf = (name: string) =>
+  once(`svg:${name}`, () => {
+    const fragment = JSON.parse(readFileSync(resolve(process.cwd(), "src/generated", `${name}.json`), "utf8"));
+    return String(fragment.html.zh.match(/<svg[\s\S]*?<\/svg>/)?.[0] ?? "");
+  });
+
+// Thumbnails are that frame as a standalone light-theme SVG file (src/pages/thumbs), so a list loads one
+// cached image per paper instead of inlining every drawing into its HTML.
+export function thumbOf(name: string) {
+  const [, width, height] = figureSvgOf(name).match(/viewBox="0 0 ([\d.]+) ([\d.]+)"/) ?? [];
+  return { src: `/thumbs/${name}.svg`, width: Number(width), height: Number(height) };
+}
+// An SVG file is parsed as XML, so a bare HTML boolean attribute (data-on) needs a value.
+const xmlAttributes = (svg: string) => svg.replace(/<[a-zA-Z][^>]*>/g, (tag) => tag.replace(/("[^"]*")|\s([a-zA-Z_:][-\w:.]*)(?=\s|\/?>)/g, (match, quoted, name) => quoted ?? ` ${name}=""`));
+export function thumbSvgOf(name: string, css: string) {
+  const { width, height } = thumbOf(name);
+  return xmlAttributes(figureSvgOf(name)).replace(/^<svg([^>]*)>/, (_, attrs: string) => {
+    const kept = attrs.replace(/\s(role|aria-label)="[^"]*"/g, "").replace(/class="/, 'class="iso ');
+    return `<svg${kept} data-theme="light" width="${width}" height="${height}"><style><![CDATA[${css}]]></style>`;
+  });
 }

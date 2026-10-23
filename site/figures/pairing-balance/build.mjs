@@ -353,7 +353,13 @@ const COPY = {
     title: "Classical–quantum pairing",
     hint: "Click: slide S in or out · ← →: time",
     keys: ["Beam: level means the two sides read the same current", "Left pan J by hand; right pan the state's two phases", "S: read with the independent dual's exchange"],
-    caption: `Theorem 6.2 and Example 6.6. The left pan holds the classical current J = 4Nk·½ = ${classicalCurrent.toFixed(4)}, computed from the source constants alone. The right pan holds the occupied state, whose upper and lower phases turn in opposite directions; it weighs 4Nk·⟨v, R(A) v⟩. With the independent dual's exchange S the beam is level at every time, with no counterweight to tune: the factor 4Nk is computed, not fitted. Slide S out and the reading becomes J·cos 2θ: level only at u = 0 and 2, and at the dark moment u = 1 the quantum side reads −J and the beam falls fully to the classical side.`,
+    refs: ["Theorem 6.2", "Example 6.6"],
+    caption: [
+      "A balance that weighs one current twice: worked out by hand on the left, read from the quantum state on the right.",
+      `The left pan holds the classical current J = 4Nk·½ = ${classicalCurrent.toFixed(4)}, computed from the source constants alone. The right pan holds the occupied state, whose upper and lower phases turn in opposite directions; it weighs 4Nk·⟨v, R(A) v⟩.`,
+      "With the independent dual’s exchange S slid in, the beam is level at every time, with no counterweight to tune: the factor 4Nk is computed, not fitted.",
+      "Slide S out and the reading becomes J·cos 2θ, level only at u = 0 and 2. At the dark moment u = 1 the quantum side reads −J, and the beam falls fully to the classical side.",
+    ],
     aria: "Balance: arrow keys step the time u in halves, S slides the exchange in or out",
     with: "with S",
     without: "without S",
@@ -364,7 +370,13 @@ const COPY = {
     title: "经典—量子配对",
     hint: "点击：推入或拉出 S · ← →：时间",
     keys: ["横梁：水平即两侧读出同一个电流", "左盘为手算的 J；右盘为占据态的两个相位", "S：按独立对偶的交换读数"],
-    caption: `定理 6.2 与例 6.6。左盘是经典电流 J = 4Nk·½ = ${classicalCurrent.toFixed(4)}，只用源常数手算得出。右盘是占据态，上下两个相位反向转动，其重量为 4Nk·⟨v, R(A) v⟩。带上独立对偶的交换 S，横梁在每个时刻都保持水平，无需任何配重微调：系数 4Nk 是算出的，不是拟合的。拉出 S，读数变成 J·cos 2θ：只在 u = 0 与 2 时水平；到暗时刻 u = 1，量子侧读出 −J，横梁整个倒向经典侧。`,
+    refs: ["定理 6.2", "例 6.6"],
+    caption: [
+      "一架天平，两盘称同一个电流：左盘是手算的，右盘从量子态读出。",
+      `左盘是经典电流 J = 4Nk·½ = ${classicalCurrent.toFixed(4)}，只用源常数手算得出。右盘是占据态，上下两个相位反向转动，重量为 4Nk·⟨v, R(A) v⟩。`,
+      "推入独立对偶的交换 S，横梁在每个时刻都保持水平，无需任何配重微调：系数 4Nk 是算出的，不是拟合的。",
+      "拉出 S，读数变成 J·cos 2θ，只在 u = 0 与 2 时水平；到暗时刻 u = 1，量子侧读出 −J，横梁整个倒向经典侧。",
+    ],
     aria: "天平：方向键按半步拨动时间 u，S 键推入或拉出交换",
     with: "有 S",
     without: "无 S",
@@ -386,6 +398,7 @@ const bodyOf = (lang) => {
       { mark: "dim", label: copy.keys[2] },
     ],
     caption: copy.caption,
+    refs: copy.refs,
     body: `<div class="iso-stage" tabindex="0" role="slider" aria-label="${copy.aria}" aria-valuemin="0" aria-valuemax="4" aria-valuenow="1">${svg}</div>`,
   })}</div>`;
 };

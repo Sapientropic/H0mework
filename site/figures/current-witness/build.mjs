@@ -827,8 +827,15 @@ const COPY = {
     title: "One current, three testimonies",
     hint: "Click: alter · ← →: amplitude",
     keys: ["Traces: ωJ/(sε), the same current read three ways", "Shelves: finite evolution ÷ ε · two-leg derivative · Kubo integral", "Altered: one leg only, or the force T read for the current B"],
-    caption:
-      "Section 1 and Theorems 8.1–8.2. Three machines share one clock and read the same occupied state. Top: each block of the four-dimensional window is a Bloch sphere; the control ε tilts the precession axis by atan(ε/ω). Feelers read the arrows' heights; Q mounts the + block upside down, so the beam lifts by the current of B = −sQT, and the stepped pulley, one step per ε, writes ωJ_ε/(sε) = (1 − cos(2ωt√(1+ε²/ω²)))/(1+ε²/ω²). Middle: the bra and ket legs of δu are two gears in mesh, turning opposite ways; the balance bar adds the legs and writes 1 − cos 2ωt. Bottom: a disc integrator sums the Kubo kernel 2s·sin 2ω(t−τ) and writes the same curve. As ε/ω steps from 1/2 to 1/8 the top trace closes onto the other two, the gap shrinking with ε as the remainder bound of Theorem 8.2 says. Altered testimony shows at once: drop one leg and the middle trace halves; turn the + sphere upright, which reads the force T in place of the current B, and the two blocks cancel to zero.",
+    refs: ["Section 1", "Theorems 8.1–8.2"],
+    caption: [
+      "Three machines share one clock and read the same occupied state: three testimonies to one current.",
+      ["Top: ", "each block of the four-dimensional window is a Bloch sphere, and the control ε tilts the precession axis by atan(ε/ω). Feelers read the arrows’ heights; Q mounts the + block upside down, so the beam lifts by the current of B = −sQT, and the stepped pulley, one step per ε, writes ωJ_ε/(sε) = (1 − cos(2ωt√(1+ε²/ω²)))/(1+ε²/ω²)."],
+      ["Middle: ", "the bra and ket legs of δu are two gears in mesh, turning opposite ways; the balance bar adds the legs and writes 1 − cos 2ωt."],
+      ["Bottom: ", "a disc integrator sums the Kubo kernel 2s·sin 2ω(t−τ) and writes the same curve."],
+      "As ε/ω steps from 1/2 to 1/8 the top trace closes onto the other two, the gap shrinking with ε as the remainder bound of Theorem 8.2 says.",
+      "Altered testimony shows at once: drop one leg and the middle trace halves; turn the + sphere upright, which reads the force T in place of the current B, and the two blocks cancel to zero.",
+    ],
     aria: "Chart recorder: arrow keys change ε/ω, click or Space alters the testimony",
     labels: { oneLeg: "one leg", readT: "read T" },
   },
@@ -836,8 +843,15 @@ const COPY = {
     title: "同一电流的三份证词",
     hint: "点击：改口 · ← →：幅度",
     keys: ["迹线：ωJ/(sε)，同一电流的三种读法", "三层：有限发展 ÷ ε · 双侧求导 · Kubo 积分", "改口：只取一条腿，或用推力 T 代替电流 B 读数"],
-    caption:
-      "§1 与定理 8.1–8.2。三台机器共用一个时钟，读同一个原占据态。上层：四维窗口的两块各是一个 Bloch 球，控制 ε 把进动轴抬起 atan(ε/ω)。触杆读出箭头的高度；Q 把 + 块倒装，于是横梁的升高就是 B = −sQT 的电流，阶梯轮每个 ε 一档，笔写下 ωJ_ε/(sε) = (1 − cos(2ωt√(1+ε²/ω²)))/(1+ε²/ω²)。中层：δu 的 bra 腿与 ket 腿是两只反向啮合的齿轮，平衡杆把两腿相加，写下 1 − cos 2ωt。下层：圆盘积分器累加 Kubo 核 2s·sin 2ω(t−τ)，写下同一条曲线。ε/ω 从 1/2 降到 1/8，上层迹线收拢到另外两条上，差距随 ε 缩小，正如定理 8.2 的余项界。改口当场露馅：只取一条腿，中层减半；把 + 块翻回正装，等于用推力 T 代替电流 B 读数，两块互相抵消，上层归零。",
+    refs: ["§1", "定理 8.1–8.2"],
+    caption: [
+      "三台机器共用一个时钟，读同一个原占据态：同一电流的三份证词。",
+      ["上层：", "四维窗口的两块各是一个 Bloch 球，控制 ε 把进动轴抬起 atan(ε/ω)。触杆读出箭头的高度；Q 把 + 块倒装，于是横梁的升高就是 B = −sQT 的电流，阶梯轮每个 ε 一档，笔写下 ωJ_ε/(sε) = (1 − cos(2ωt√(1+ε²/ω²)))/(1+ε²/ω²)。"],
+      ["中层：", "δu 的 bra 腿与 ket 腿是两只反向啮合的齿轮，平衡杆把两腿相加，写下 1 − cos 2ωt。"],
+      ["下层：", "圆盘积分器累加 Kubo 核 2s·sin 2ω(t−τ)，写下同一条曲线。"],
+      "ε/ω 从 1/2 降到 1/8，上层迹线收拢到另外两条上，差距随 ε 缩小，正如定理 8.2 的余项界。",
+      "改口当场露馅：只取一条腿，中层减半；把 + 块翻回正装，等于用推力 T 代替电流 B 读数，两块互相抵消，上层归零。",
+    ],
     aria: "记录仪：方向键调 ε/ω，点击或空格键改口",
     labels: { oneLeg: "单腿", readT: "读 T" },
   },
@@ -863,6 +877,7 @@ const bodyOf = (lang) => {
       { mark: "dim", label: copy.keys[2] },
     ],
     caption: copy.caption,
+    refs: copy.refs,
     body: `<div class="iso-stage" tabindex="0" role="slider" aria-label="${copy.aria}" aria-valuemin="0" aria-valuemax="${M.AMPLITUDES.length - 1}" aria-valuenow="${M.AMPLITUDES.indexOf(REST.a)}">${svg}</div>`,
   })}</div>`;
 };

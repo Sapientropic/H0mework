@@ -521,16 +521,26 @@ const COPY = {
     title: "Whole-tree program",
     hint: "Click: flip constructor · ← →: tree",
     keys: ["The tape: prog κ(T), the source", "Pegboards: T on the left, read(prog T) on the right; peg height is the root label a, b, c", "Dial: the reading ev = fold κ(T)"],
-    caption:
-      "Theorem 3.9. Each tree's whole-tree program is punched row by row: one row per syntax node, a cost hole on every variable and bilinear node. The first head totals the cost holes, r(prog T) = β(T) = 2, 5, 8, 11, 14, fixed by the tree's shape alone. With κ ≡ 0 the dial reads 0 for every tree; the second head never evaluates, its pins skip the map channel, and it still rebuilds each tree exactly. Flip κ to count nodes: only the map channel and the dial change.",
+    refs: ["Theorem 3.9"],
+    caption: [
+      "A paper-tape reader: each tree’s whole-tree program is punched on a tape, and two heads read it.",
+      "The punching rule: one row per syntax node, and a cost hole on every variable and bilinear node. The first head totals the cost holes, r(prog T) = β(T) = 2, 5, 8, 11, 14, fixed by the tree’s shape alone.",
+      "With κ ≡ 0 the dial reads 0 for every tree. The second head never evaluates: its pins skip the map channel, and it still rebuilds each tree exactly.",
+      "Flip κ to count nodes, and only the map channel and the dial change.",
+    ],
     aria: "Paper-tape reader: arrow keys choose a tree, K flips the constructor",
   },
   zh: {
     title: "整树程序",
     hint: "点击：切换构造子 · ← →：换树",
     keys: ["纸带：源程序 prog κ(T)", "钉板：左为 T，右为 read(prog T)；钉高即根标签 a、b、c", "表盘：读数 ev = fold κ(T)"],
-    caption:
-      "定理 3.9。每棵树的整树程序逐行打孔：每个语法节点一行，变量与双线性节点各打一个计费孔。第一读头累计计费孔，r(prog T) = β(T) = 2、5、8、11、14，只由树形决定。κ ≡ 0 时，表盘对每棵树都读 0；第二读头从不求值，探针跳过映射通道，仍逐棵重建原树。把 κ 切到节点计数：只有映射通道和表盘改变。",
+    refs: ["定理 3.9"],
+    caption: [
+      "一台纸带读带机：每棵树的整树程序打在一条纸带上，两只读头各读一遍。",
+      "打孔规则是：每个语法节点一行，变量与双线性节点各打一个计费孔。第一读头累计计费孔，r(prog T) = β(T) = 2、5、8、11、14，只由树形决定。",
+      "κ ≡ 0 时，表盘对每棵树都读 0。第二读头从不求值，探针跳过映射通道，照样逐棵重建原树。",
+      "把 κ 切到节点计数，改变的只有映射通道和表盘。",
+    ],
     aria: "纸带读带机：方向键选树，K 切换构造子",
   },
 };
@@ -549,6 +559,7 @@ const bodyOf = (lang) => {
       { mark: "dim", label: copy.keys[2] },
     ],
     caption: copy.caption,
+    refs: copy.refs,
     body: `<div class="iso-stage" tabindex="0" role="slider" aria-label="${copy.aria}" aria-valuemin="1" aria-valuemax="${DATA.zero.length}" aria-valuenow="${DATA.zero.length}">${svg}</div>`,
   })}</div>`;
 };

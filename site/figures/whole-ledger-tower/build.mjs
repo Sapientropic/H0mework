@@ -365,8 +365,16 @@ const COPY = {
     title: "This is no migration",
     hint: "Levers: transfer · act",
     keys: ["Red thread: debt A through every page; the seal is its terminal receipt, the red ring its empty place on the next page", "Outer and inner track: bearers P and Q; one ring per unit of budget", "Spirit level on each page: double entry, level every time"],
-    caption:
-      "Theorem 6.2, with Proposition 5.2 and the settlement type (44). Each glass page is the whole ledger at one tick, and the tower grows a page per tick. A debt is a puck with one ring per unit of budget, on the same bearing on every page, and a taut thread runs from its eyelet in the deck, where its source is, up through every page: four threads, four debts that no page turn can lose. Debt A's thread is the red one. The outer track of each page belongs to bearer P, the inner track to bearer Q. The spirit level at the front of each page is the double-entry reading: every posting debits and credits the same amount, so whenever a page lands its bubble swings and settles back in the middle. The left lever transfers debt A from bearer P on the outer lane to bearer Q on the inner one. Its thread bends inward and its ring rides on: same debt, b(f) = b(e), legal and unpaid, however often it is pulled. The right lever runs the target-six action: 4 is not prime, a bead slides, and 2 + 4 becomes 3 + 3, which to double entry is one more balanced unit moved across. On the next page A's ring is gone, a strict payment from 1 to 0. Both sides are prime, so that page carries a cinnabar seal, the terminal receipt, and the first key turns. Settlement waits for the page above. The source's continuation no longer activates A, so its place on that page stays empty, ringed in red, its thread stops at the seal, and the second key turns. B, C and D keep rising. A level page was never the evidence.",
+    refs: ["Theorem 6.2", "Proposition 5.2", "settlement type (44)"],
+    caption: [
+      "A tower of glass pages: each page is the whole ledger at one tick, and the tower grows a page per tick.",
+      "A debt is a puck with one ring per unit of budget, on the same bearing on every page. A taut thread runs from its eyelet in the deck, where its source is, up through every page: four threads, four debts that no page turn can lose. Debt A’s thread is the red one. The outer track of each page belongs to bearer P, the inner track to bearer Q.",
+      "The spirit level at the front of each page is the double-entry reading: every posting debits and credits the same amount, so whenever a page lands its bubble swings and settles back in the middle.",
+      ["Left lever: transfer. ", "Debt A moves from bearer P on the outer lane to bearer Q on the inner one. Its thread bends inward and its ring rides on: same debt, b(f) = b(e), legal and unpaid, however often it is pulled."],
+      ["Right lever: the target-six action. ", "4 is not prime, a bead slides, and 2 + 4 becomes 3 + 3, which to double entry is one more balanced unit moved across. On the next page A’s ring is gone, a strict payment from 1 to 0. Both sides are prime, so that page carries a cinnabar seal, the terminal receipt, and the first key turns."],
+      "Settlement waits for the page above. The source’s continuation no longer activates A, so its place on that page stays empty, ringed in red; its thread stops at the seal, and the second key turns. B, C and D keep rising.",
+      "A level page was never the evidence.",
+    ],
     aria: "Whole-ledger tower: T transfers debt A to the other bearer, A runs the target-six action, Space adds a page",
     labels: { page: "page", receipt: ["receipt —", "receipt ✓"], next: ["next: A", "next: no A"], settled: "settled", archived: "A closed", dr: "Dr", cr: "Cr" },
   },
@@ -374,8 +382,16 @@ const COPY = {
     title: "这次不是迁账",
     hint: "左杆迁账 · 右杆行动",
     keys: ["红线：债 A 穿过每一页；朱印是它的终回执，红圈是它在下一页留下的空位", "外圈、内圈：承担者 P、Q；每环一单位预算", "页前水平仪：复式记账，每页都平"],
-    caption:
-      "定理 6.2，连同命题 5.2 与结清类型 (44)。每一层玻璃页是某一拍时的整本账，每走一拍，塔长高一页。每笔债是一枚圆盘，预算有几单位就叠几环，在每一页都占同一个方位；一根绷紧的线从它在台座上的线眼——它的来源——出发，一页一页穿上去。四根线就是四笔债，翻哪一页都丢不掉；红的那根是债 A。每页外圈的轨道属于承担者 P，内圈属于承担者 Q。每页正前方的水平仪是复式记账的读法：每笔分录借贷同额，所以每落下一页，气泡晃一晃，又回到正中。左拉杆迁账，把债 A 从外圈的承担者 P 搬到内圈的承担者 Q：线向内折了一下，环照样跟着走——同一笔债，b(f) = b(e)，合法，但没付款，拉多少次都一样。右拉杆执行目标六行动：4 不是素数，拨过一颗珠，2 + 4 成了 3 + 3。在复式眼里，这又是一笔平衡的等额挪动。下一页上 A 的环没了，预算从 1 严格降到 0。两侧都是素数，这一页压上一枚朱印——终回执，第一把钥匙转动。结清还要看下一页，也就是塔上再高一层：源的接续不再激活 A，它在那一页的位置空着，圈着一道红圈；线停在朱印上，第二把钥匙才转。B、C、D 继续往上长。页页都平，从来不是证据。",
+    refs: ["定理 6.2", "命题 5.2", "结清类型 (44)"],
+    caption: [
+      "一座玻璃页叠成的塔：每一页是某一拍时的整本账，每走一拍，塔长高一页。",
+      "每笔债是一枚圆盘，预算有几单位就叠几环，在每一页都占同一个方位。一根绷紧的线从它在台座上的线眼——它的来源——出发，一页一页穿上去：四根线就是四笔债，翻哪一页都丢不掉。红的那根是债 A。每页外圈的轨道属于承担者 P，内圈属于承担者 Q。",
+      "每页正前方的水平仪是复式记账的读法：每笔分录借贷同额，所以每落下一页，气泡晃一晃，又回到正中。",
+      ["左拉杆：迁账。", "把债 A 从外圈的承担者 P 搬到内圈的承担者 Q：线向内折了一下，环照样跟着走——同一笔债，b(f) = b(e)，合法，但没付款，拉多少次都一样。"],
+      ["右拉杆：目标六行动。", "4 不是素数，拨过一颗珠，2 + 4 成了 3 + 3；在复式眼里，这又是一笔平衡的等额挪动。下一页上 A 的环没了，预算从 1 严格降到 0。两侧都是素数，这一页压上一枚朱印——终回执，第一把钥匙转动。"],
+      "结清还要看塔上再高一层：源的接续不再激活 A，它在那一页的位置空着，圈着一道红圈；线停在朱印上，第二把钥匙才转。B、C、D 继续往上长。",
+      "页页都平，从来不是证据。",
+    ],
     aria: "整账塔：T 把债 A 迁给另一个承担者，A 执行目标六行动，空格加一页",
     labels: { page: "页", receipt: ["终回执 —", "终回执 ✓"], next: ["下一页仍有 A", "下一页无 A"], settled: "结清", archived: "A 已了结", dr: "借", cr: "贷" },
   },
@@ -404,6 +420,7 @@ const bodyOf = (lang) => {
       { mark: "edge", label: copy.keys[2] },
     ],
     caption: copy.caption,
+    refs: copy.refs,
     body: `<div class="iso-stage" tabindex="0" role="group" aria-label="${copy.aria}">${svg}</div>`,
   })}</div>`;
 };

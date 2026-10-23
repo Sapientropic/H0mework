@@ -547,10 +547,14 @@ function swatchSvg(mark) {
     }
     return `<svg class="iso-swatch" data-mark="${mark}" viewBox="0 0 16 10" aria-hidden="true"><path d="M1.5 5h13"/></svg>`;
 }
-export function plateHtml({ fig, title, hint, readout = "", keys = [], caption, body }) {
+// caption is one string, or paragraphs: a string, or [term, text] for a paragraph that opens on a bold term.
+// refs name the statements the figure draws, set on their own line above the caption.
+export function plateHtml({ fig, title, hint, readout = "", keys = [], caption, refs = [], body }) {
     const corner = (name, text, extra = "") => `<span class="iso-plate-corner" data-corner="${name}"${extra}>${escape(text)}</span>`;
+    const para = (p) => `<p class="iso-para">${Array.isArray(p) ? `<b>${escape(p[0])}</b>${escape(p[1])}` : escape(p)}</p>`;
+    const text = !caption ? "" : Array.isArray(caption) ? `<span class="iso-caption">${caption.map(para).join("")}</span>` : `<span class="iso-caption">${escape(caption)}</span>`;
     const legend = keys.length || caption
-        ? `<figcaption class="iso-legend">${keys.length ? `<span class="iso-keys">${keys.map((key) => `<span class="iso-key">${swatchSvg(key.mark)}${escape(key.label)}</span>`).join("")}</span>` : ""}${caption ? `<span class="iso-caption">${escape(caption)}</span>` : ""}</figcaption>`
+        ? `<figcaption class="iso-legend">${keys.length ? `<span class="iso-keys">${keys.map((key) => `<span class="iso-key">${swatchSvg(key.mark)}${escape(key.label)}</span>`).join("")}</span>` : ""}${refs.length ? `<span class="iso-refs">${refs.map((ref) => `<span>${escape(ref)}</span>`).join("")}</span>` : ""}${text}</figcaption>`
         : "";
     return `<figure class="iso-figure"><div class="iso-plate"><div class="iso-plate-corners" aria-hidden="true">${corner("fig", fig)}${title ? corner("title", title) : ""}${hint ? corner("hint", hint) : ""}${corner("readout", readout, " data-readout")}</div>${body}</div>${legend}</figure>`;
 }
@@ -658,6 +662,11 @@ export const ISO_CSS = `
 .iso-legend{display:grid;gap:8px;margin-top:12px;color:var(--anatomy-muted);font-size:13px;line-height:1.55}
 .iso-keys{display:flex;flex-wrap:wrap;gap:6px 18px}
 .iso-key{display:inline-flex;align-items:center;gap:7px}
+.iso-refs{display:flex;flex-wrap:wrap;font:11.5px/1.6 var(--anatomy-mono);color:var(--anatomy-muted)}
+.iso-refs>span+span::before{content:"·";margin:0 .5em}
+.iso-para{margin:0 0 .6em}
+.iso-para:last-child{margin-bottom:0}
+.iso-para b{font-weight:600;color:var(--anatomy-strong)}
 .iso-swatch{width:16px;height:10px;flex:none;overflow:visible}
 .iso-swatch path{fill:none;stroke:var(--anatomy-hi);stroke-width:1;vector-effect:non-scaling-stroke;stroke-linejoin:round;stroke-linecap:round}
 .iso-swatch[data-mark="raised"] path,.iso-swatch[data-mark="flat"] path{stroke:var(--anatomy-mid)}

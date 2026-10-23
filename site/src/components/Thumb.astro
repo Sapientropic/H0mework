@@ -1,0 +1,9 @@
+---
+// A paper's figure as a thumbnail; `transition` names it for a view transition into the paper's own figure.
+import { thumbOf } from "../lib/papers";
+
+interface Props { name: string; transition?: string }
+const { name, transition } = Astro.props;
+const thumb = thumbOf(name);
+---
+<img class="thumb" src={thumb.src} width={thumb.width} height={thumb.height} alt="" loading="lazy" decoding="async" style={transition && `view-transition-name:${transition}`} />

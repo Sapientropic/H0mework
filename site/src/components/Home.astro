@@ -3,8 +3,8 @@ import Base from "../layouts/Base.astro";
 import ClaimTape from "./ClaimTape.astro";
 import Forest from "./Forest.astro";
 import NullScreen from "./NullScreen.astro";
-import isoCss from "../../figures/kit/iso.css?raw";
-import { PAPERS, figureSvgOf, paperOf, statsOf, vtFigure, vtTitle, type Lang } from "../lib/papers";
+import Thumb from "./Thumb.astro";
+import { PAPERS, paperOf, statsOf, vtFigure, vtTitle, type Lang } from "../lib/papers";
 import { claimsOf } from "../lib/claims";
 import { T, fill, paperHref, papersHref } from "../lib/i18n";
 
@@ -18,10 +18,9 @@ const tally = papers.reduce((sum, paper) => ({ claims: sum.claims + paper.stats.
 const latest = [...papers]
   .sort((a, b) => b.current.date.localeCompare(a.current.date) || b.order - a.order)
   .slice(0, 3)
-  .map((paper) => ({ ...paper, thumb: paper.figure ? figureSvgOf(paper.figure.name) : "", claims: claimsOf(paper.slug, lang) }));
+  .map((paper) => ({ ...paper, claims: claimsOf(paper.slug, lang) }));
 ---
 <Base lang={lang} title={`${t.site} · ${t.tagline.replace("|", lang === "zh" ? "" : " ")}`} alternate={t.otherHref}>
-  <style is:global set:html={isoCss}></style>
   <div class="wrap">
     <NullScreen lang={lang} />
     <section class="hero prose">
@@ -35,8 +34,8 @@ const latest = [...papers]
       <div class="cards">
         {latest.map((paper) => (
           <a class="card" href={paperHref(lang, paper.slug)}>
-            {paper.thumb ? (
-              <span class="card-art iso vt-fig" data-theme="light" aria-hidden="true" style={`--vt:${vtFigure(paper.slug)}`} set:html={paper.thumb} />
+            {paper.figure ? (
+              <span class="card-art" aria-hidden="true"><Thumb name={paper.figure.name} transition={vtFigure(paper.slug)} /></span>
             ) : (
               <span class="card-art" aria-hidden="true"><span class="punch-card"><ClaimTape rows={paper.claims} lang={lang} grouped={false} /></span></span>
             )}
