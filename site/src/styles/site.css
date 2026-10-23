@@ -96,10 +96,12 @@ h2 .count { margin-left: 10px; font: 13px/1 var(--mono); color: var(--muted); ve
 
 /* Claims: one line each, opened on demand, under the chapter they first cite. */
 .claims { list-style: none; padding: 0; margin: 0; border-top: 1px solid var(--rule); }
-.claims > .chapter { display: flex; gap: 12px; align-items: baseline; padding: 26px 4px 8px; border-bottom: 1px solid var(--rule); font: 13px/1.5 var(--sans); color: var(--muted); }
-.claims > .chapter .n { flex: none; width: 100px; font: 12px/1.5 var(--mono); color: var(--ink); }
-.claims > .chapter .t { font-family: var(--serif); font-size: 14.5px; color: var(--text); }
-.claims > .chapter:first-child { padding-top: 12px; }
+/* A chapter is a heading over its rows: larger, bold, ruled in ink, so it never reads as one more row. */
+.claims:has(> .chapter:first-child) { border-top: 0; }
+.claims > .chapter { display: flex; gap: 14px; align-items: baseline; padding: 44px 4px 10px; border-bottom: 1px solid var(--ink); }
+.claims > .chapter .n { flex: none; width: 100px; font: 600 12.5px/1.5 var(--mono); color: var(--cinnabar); }
+.claims > .chapter .t { font: 600 19px/1.4 var(--serif); color: var(--ink); }
+.claims > .chapter:first-child { padding-top: 8px; }
 .claim { border-bottom: 1px solid var(--rule); scroll-margin-top: 24px; }
 .claim:target > details > summary { background: var(--soft); }
 .claim > details > summary { display: grid; grid-template-columns: 100px 1fr auto; gap: 14px; align-items: baseline; padding: 14px 4px; cursor: pointer; list-style: none; }
@@ -117,10 +119,50 @@ h2 .count { margin-left: 10px; font: 13px/1 var(--mono); color: var(--muted); ve
 .claim .tag { margin-left: 8px; font: 11px/1 var(--mono); color: var(--paper); background: var(--cinnabar); padding: 2px 5px; border-radius: 2px; vertical-align: 2px; white-space: nowrap; }
 .claim .tag.later { color: var(--ink); background: none; box-shadow: inset 0 0 0 1px var(--rule); }
 .claim .where { font: 12px/1.4 var(--mono); color: var(--muted); text-align: right; white-space: nowrap; }
-.claim .body { padding: 2px 4px 20px 118px; }
+.claim .body { padding: 2px 4px 24px 118px; }
 .claim .body p { margin: 0 0 10px; font-size: 14.5px; }
 .claim .statement { overflow-x: auto; }
 .claim .body .meta { color: var(--muted); font-size: 13.5px; }
+/* The paper's own words, quoted under a rule: a small label, each result's number and name, then its statement. */
+.claim .paper-text { margin: 4px 0 16px; padding-left: 16px; border-left: 2px solid var(--rule); }
+.claim .paper-text .label { margin: 0 0 8px; font: 500 11.5px/1.5 var(--sans); letter-spacing: .08em; color: var(--muted); }
+.claim .result + .result { margin-top: 12px; }
+.claim .result-head { display: flex; flex-wrap: wrap; gap: 0 10px; align-items: baseline; margin: 0 0 4px; font-size: 15px; line-height: 1.55; list-style: none; }
+.claim summary.result-head { cursor: pointer; width: fit-content; }
+.claim summary.result-head::-webkit-details-marker { display: none; }
+.claim summary.result-head::after { content: "▸"; font: 12px/1 var(--sans); color: var(--muted); }
+.claim summary.result-head:hover::after, .claim summary.result-head:hover .result-name { color: var(--cinnabar); }
+.claim details.result[open] > summary.result-head::after { content: "▾"; }
+.claim .result-id { flex: none; font: 600 12.5px/1.55 var(--mono); color: var(--ink); }
+.claim .result-name { font-family: var(--serif); color: var(--ink); }
+.claim .result-parts { font: 12px/1.55 var(--sans); color: var(--cinnabar); }
+.claim .result-body { font: 15px/1.8 var(--serif); color: var(--text); overflow-x: auto; }
+.claim .result-body p, .claim .result-body li { font-size: 15px; }
+.claim .result-body p { margin: 0 0 .6em; }
+.claim .result-body ol, .claim .result-body ul { margin: 0 0 .6em; padding-left: 1.4em; }
+.claim .result-body strong { color: var(--ink); font-weight: 600; }
+.claim .result-body .katex-display { margin: .5em 0; overflow-x: auto; overflow-y: hidden; }
+/* KaTeX pins an equation number to the right edge, over a formula wider than the column; here it follows the formula. */
+.claim .result-body .katex-display > .katex > .katex-html { white-space: nowrap; }
+.claim .result-body .katex-display > .katex > .katex-html > .tag { position: static; display: inline-block; margin-left: 1.5em; }
+/* The map's own wording stays one click away, below the paper's. */
+.claim .registered { margin: 0 0 12px; }
+.claim .registered > summary { width: fit-content; cursor: pointer; list-style: none; font: 12.5px/1.6 var(--sans); color: var(--muted); }
+.claim .registered > summary::-webkit-details-marker { display: none; }
+.claim .registered > summary::after { content: " ▸"; }
+.claim .registered[open] > summary::after { content: " ▾"; }
+.claim .registered > summary:hover { color: var(--ink); }
+.claim .registered .statement { margin-top: 6px; }
+.claim .registered .statement p { font-size: 13.5px; color: var(--muted); }
+.claim .registered .registered-title { margin: 6px 0 0; font: 13.5px/1.6 var(--serif); color: var(--text); }
+/* Open, it is the row's only text: full size, under the same small label as the paper's quotation. */
+.claim .registered.open .label { margin: 4px 0 6px; font: 500 11.5px/1.5 var(--sans); letter-spacing: .08em; color: var(--muted); }
+.claim .registered.open .registered-title { margin: 0 0 6px; font-size: 14.5px; }
+.claim .registered.open .statement { margin-top: 0; }
+.claim .registered.open .statement p { font-size: 14.5px; color: var(--text); }
+/* A restatement is the site's wording, so it is labelled as such and set apart from the paper's quotation. */
+.claim .restated { margin: 4px 0 14px; }
+.claim .restated .label { margin: 0 0 6px; font: 500 11.5px/1.5 var(--sans); letter-spacing: .08em; color: var(--muted); }
 .claim h4 { margin: 16px 0 6px; font: 600 12.5px/1.4 var(--sans); color: var(--muted); }
 .claim .modules { list-style: none; margin: 0; padding: 0; font: 12.5px/1.9 var(--mono); }
 .claim .modules summary { display: flex; flex-wrap: wrap; gap: 0 10px; align-items: baseline; list-style: none; cursor: pointer; width: fit-content; }
@@ -356,6 +398,7 @@ footer.site { margin: 96px 0 0; padding: 32px 0 56px; border-top: 1px solid var(
   .claim > details > summary { grid-template-columns: 1fr; gap: 2px; }
   .claim .where { text-align: left; }
   .claim .body { padding-left: 4px; }
+  .claim .paper-text { padding-left: 12px; }
   .claims > .chapter .n { width: auto; }
   .pager { grid-template-columns: 1fr; }
   .pager .next { text-align: left; align-items: flex-start; }

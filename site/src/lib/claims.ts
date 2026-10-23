@@ -4,6 +4,7 @@ import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { entryOf, manuscriptOf, mapOf, once, read, readJson, repoLink, selectionOf, type Lang, type ReleaseId } from "./registry";
+import { excerptsOf } from "./excerpts";
 
 type Declaration = { name?: string; qualified_name: string; line?: number };
 type Producer = {
@@ -40,7 +41,7 @@ function lowEnergyLocation(claim: any, lang: Lang): string | null {
   const own = proof[lang];
   const raw = typeof own === "object" && own ? own.location ?? own.sections?.join("; ") : proof.sections?.map((s: string) => (/^\d/.test(s) ? `§${s}` : s)).join("; ");
   if (!raw) return null;
-  return lang === "zh" ? raw.replace(/Appendix\s*/g, "附录 ").replace(/Figure\s*/g, "图 ").replace(/;\s*/g, "；") : raw;
+  return lang === "zh" ? raw.replace(/Appendi(?:x|ces)\s*/g, "附录 ").replace(/Figure\s*/g, "图 ").replace(/;\s*/g, "；") : raw;
 }
 
 function lowEnergy(slug: string, edition: number): Source[] {
@@ -222,6 +223,35 @@ function textOf(source: Source, lang: Lang): Text & { translated: boolean } {
 // A claim without a registered title is listed by the first sentence of its statement.
 const firstSentence = (text: string) => text.match(/^.+?(。|\.(?=\s|$))/)?.[0] ?? text;
 
+// --- reading layer ----------------------------------------------------------------------------
+
+// The maps are bound by their acceptance receipts, and their wording is written for the machine
+// check. src/data/reading-<lang>.json gives a row reader wording instead: a title, a restatement of a
+// registered statement the paper does not state as one result, and where to quote the paper (results
+// by number, passages by their opening words). Each entry fingerprints the registered text it was
+// written from; a changed claim drops the entry and warns. The registered text stays under the row.
+type Reading = { title?: string; statement?: string; cite?: string[]; passages?: string[]; from: string };
+export const readingOf = (lang: Lang) =>
+  once<Record<string, Reading>>(`reading-${lang}`, () => JSON.parse(readFileSync(resolve(process.cwd(), `src/data/reading-${lang}.json`), "utf8")));
+function readingFor(source: Source, lang: Lang) {
+  const entry = readingOf(lang)[source.key];
+  if (!entry || entry.from === fingerprint(source.text)) return entry ?? null;
+  console.warn(`[reading-${lang}] ${source.key}: written from an earlier registered text; showing the registered wording`);
+  return null;
+}
+
+// Chinese next to Latin letters, digits, Greek or inline code and math takes a space, as the
+// manuscripts set it ("完整 typed 库存"); formulas and code are left as they are.
+function spaced(text: string) {
+  const kept: string[] = [];
+  const masked = text.replace(/\$[^$]+\$|`[^`]+`/g, (m) => `\u0001${kept.push(m) - 1}\u0002`);
+  const latin = "A-Za-z0-9\u0370-\u03ff\u2070-\u209f%\u0001\u0002";
+  return masked
+    .replace(new RegExp(`([\u4e00-\u9fff])([${latin}])`, "g"), "$1 $2")
+    .replace(new RegExp(`([${latin}])([\u4e00-\u9fff])`, "g"), "$1 $2")
+    .replace(/\u0001(\d+)\u0002/g, (_, i) => kept[+i]);
+}
+
 // --- rows -------------------------------------------------------------------------------------
 
 // "H0mework.Realization.Operations.Tree.Fold.Source" → "Tree.Fold.Source": the tail names the
@@ -280,11 +310,16 @@ export function labelOf(ids: string[]): string {
 }
 
 export type ClaimRow = ReturnType<typeof rowOf>;
-function rowOf(source: Source, lang: Lang) {
+function rowOf(source: Source, release: ReleaseId, slug: string, lang: Lang) {
   const text = textOf(source, lang);
-  const title = text.title ?? firstSentence(text.statement ?? source.key);
-  const statement = text.statement && text.statement !== title ? text.statement : null;
+  const reading = readingFor(source, lang);
+  const derived = text.title ?? firstSentence(text.statement ?? source.key);
+  // A title taken from the statement's first sentence is not repeated under it.
+  const rest = text.statement && !text.title && !reading?.title ? text.statement.slice(derived.length).trim() : text.statement;
+  const statement = rest && rest !== derived ? rest : null;
   const location = source.location[lang];
+  // Results are found by number, so the registered location (Chinese where both exist) names them for either page.
+  const paper = excerptsOf(release, slug, lang, source.location.zh ?? source.location.en, reading ?? {});
   const lean = modulesOf(source.producers);
   const order = orderOf(source.location.zh ?? source.location.en);
   return {
@@ -292,12 +327,20 @@ function rowOf(source: Source, lang: Lang) {
     ids: source.ids,
     label: labelOf(source.ids),
     edition: source.edition,
-    title,
+    title: spaced(reading?.title ?? derived),
+    // The registered wording (or its translation): the statement, and the title a reading title replaced.
     statement,
+    registeredTitle: reading?.title && text.title ? text.title : null,
+    // A restatement for readers where the paper gives no single result or passage to quote.
+    restated: reading?.statement ?? null,
     translated: text.translated,
+    // The paper's own statements of the results the location cites; `cited` is false when they were
+    // found by the sections the location names rather than by result numbers.
+    excerpts: paper.results,
+    excerptsCited: paper.cited,
     location,
     // The row shows only the leading reference ("§3.4", "§8.1–§8.3", "Theorem 6.2"); the body shows the rest.
-    section: location?.match(/^(§[^\s；;,，]+|[^\s\d；;,，、]*\s?[\d.A-Z]+[\d.–()]*)/)?.[1] ?? location,
+    section: location?.match(/^(§[\dA-Z.]+(?:[–-]§?[\dA-Z.]+)?|[^\s\d；;,，、]*\s?[\d.A-Z]+[\d.–()]*)/)?.[1] ?? location,
     order,
     chapter: chapterOf(order),
     proved: lean.length > 0,
@@ -312,8 +355,7 @@ function rowOf(source: Source, lang: Lang) {
 export function claimsOf(slug: string, lang: Lang) {
   return once(`claims:${slug}:${lang}`, () =>
     entryOf(slug)
-      .editions.flatMap((edition, index) => ADAPTERS[edition.release](slug, index + 1))
-      .map((source) => rowOf(source, lang))
+      .editions.flatMap((edition, index) => ADAPTERS[edition.release](slug, index + 1).map((source) => rowOf(source, edition.release, slug, lang)))
       .sort((a, b) => a.order[0] - b.order[0] || a.order[1] - b.order[1] || idNumber(a.ids[0] ?? "") - idNumber(b.ids[0] ?? "")),
   );
 }

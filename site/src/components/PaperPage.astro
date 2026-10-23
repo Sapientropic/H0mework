@@ -4,7 +4,7 @@ import Figure from "./Figure.astro";
 import ClaimTape from "./ClaimTape.astro";
 import CheckCommands from "./CheckCommands.astro";
 import Thumb from "./Thumb.astro";
-import { ORDERED, chaptersOf, citedByOf, citesOf, paperOf, renderClaim, renderClaimTitle, statsOf, themeOf, vtFigure, vtTitle, type Lang } from "../lib/papers";
+import { ORDERED, chaptersOf, citedByOf, citesOf, paperOf, renderClaim, renderClaimTitle, renderPaperText, statsOf, themeOf, vtFigure, vtTitle, type Lang } from "../lib/papers";
 import { claimsOf, labelOf, type ClaimRow } from "../lib/claims";
 import { T, fill, paperHref, papersHref } from "../lib/i18n";
 
@@ -115,7 +115,47 @@ const chapterLabel = (key: string) => (/\d/.test(key) ? fill(t.chapter, key) : f
                   <span class="where" title={item.claim.location ?? undefined}>{item.claim.section}</span>
                 </summary>
                 <div class="body prose">
-                  {item.claim.statement && <div class="statement" set:html={renderClaim(item.claim.statement)} />}
+                  {item.claim.excerpts.length > 0 && (
+                    <div class="paper-text">
+                      <p class="label">{item.claim.excerptsCited ? t.inPaper : t.inSections}</p>
+                      {item.claim.excerpts.map((result, i) => {
+                        const head = (
+                          <>
+                            <span class="result-id">{result.label}</span>
+                            {result.name && <span class="result-name" set:html={renderPaperText(result.name).replace(/^<p>|<\/p>\s*$/g, "")} />}
+                            {result.parts && <span class="result-parts">{fill(t.parts, result.parts)}</span>}
+                          </>
+                        );
+                        const body = result.body && <div class="result-body" set:html={renderPaperText(result.body)} />;
+                        // One result reads as a quotation; several list their names and open the first.
+                        return item.claim.excerpts.length === 1 ? (
+                          <div class="result"><p class="result-head">{head}</p>{body}</div>
+                        ) : (
+                          <details class="result" open={i === 0}><summary class="result-head">{head}</summary>{body}</details>
+                        );
+                      })}
+                    </div>
+                  )}
+                  {item.claim.excerpts.length === 0 && item.claim.restated && (
+                    <div class="restated">
+                      <p class="label">{t.restated}</p>
+                      <div class="statement" set:html={renderClaim(item.claim.restated)} />
+                    </div>
+                  )}
+                  {(item.claim.statement || item.claim.registeredTitle) && (() => {
+                    const registered = (
+                      <>
+                        {item.claim.registeredTitle && <p class="registered-title" set:html={renderClaimTitle(item.claim.registeredTitle)} />}
+                        {item.claim.statement && <div class="statement" set:html={renderClaim(item.claim.statement)} />}
+                      </>
+                    );
+                    // With nothing else to read, the registered wording is the body, named as the map's.
+                    return item.claim.excerpts.length > 0 || item.claim.restated ? (
+                      <details class="registered"><summary>{t.registered}</summary>{registered}</details>
+                    ) : (
+                      <div class="registered open"><p class="label">{t.registered}</p>{registered}</div>
+                    );
+                  })()}
                   {item.claim.location && <p class="meta">{t.location}{sep}{item.claim.location}</p>}
                   {item.claim.lean.length > 0 && (
                     <>

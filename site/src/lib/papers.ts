@@ -41,6 +41,18 @@ function claimInline(text: string) {
     })
     .join("");
 }
+// A statement quoted from a manuscript: formulas are typeset first, so a display written on one line
+// with its text or inside a list item stays a display, and Markdown never reads inside a formula.
+export function renderPaperText(text: string) {
+  const formulas: string[] = [];
+  const keep = (tex: string, displayMode: boolean) => `KATEX${formulas.push(katex.renderToString(tex.trim(), { displayMode, throwOnError: false })) - 1}X`;
+  const masked = text
+    .replace(/\$\$([\s\S]+?)\$\$|\\\[([\s\S]+?)\\\]/g, (_, a, b) => keep(a ?? b, true))
+    // Inline math may wrap across lines, never across paragraphs.
+    .replace(/\$((?:[^$\n]|\n(?!\s*\n))+?)\$|\\\(([\s\S]+?)\\\)/g, (_, a, b) => keep(a ?? b, false));
+  return String(markdown.processSync(masked)).replace(/KATEX(\d+)X/g, (_, i) => formulas[+i]);
+}
+
 export const renderClaim = (text: string) => text.split(/\n\s*\n/).map((paragraph) => `<p>${claimInline(paragraph.trim())}</p>`).join("");
 export const renderClaimTitle = claimInline;
 
