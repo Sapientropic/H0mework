@@ -1,8 +1,12 @@
 ---
-// The opening: a dot-matrix screen. Dithered noise flows like weather; particles condense out of it
-// into an empty cell, a null, where a cursor waits; a cinnabar value streams in and fills it, ripples
-// order the noise for a moment, and the particles write one line before scattering back. The pointer
-// stirs the field; a click drops a value of one's own, whose mark stays on this browser's screen.
+// The opening: a pin screen. Every dot is a pin with a round head that rises and sinks, lit from the
+// upper left and casting its shadow. The board starts in chaos: its surface churns and a swarm of ink
+// beads streams across it. A well sinks out of the churn, a null, where a cursor bobs, and the swarm is
+// recruited bead by bead into one line. A cinnabar value falls in and splashes; real waves run out across
+// the pins and the board falls still behind their front, while ink bleeds through the well until it fills
+// flush. The line changes, the beads it lacks rising out of the red well; then the beads scatter, the
+// churn creeps back in from the edges, and it begins again. The pins rise under the pointer and trail a
+// wake; a click drops a value of one's own, whose mark stays on this browser's board.
 import { T } from "../lib/i18n";
 import type { Lang } from "../lib/registry";
 
@@ -21,43 +25,17 @@ const t = T[lang];
     const ctx = canvas.getContext("2d")!;
     const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
     const STORE = "h0mework.null.marks";
-    const INK = [29, 29, 31], RED = [200, 55, 45], OFF = [224, 220, 210], GLASS = "#eeebe3";
-    const CELL = 16;
+    const SCREEN = [244, 244, 241], PIN = [233, 233, 228], INK = [28, 28, 31], RED = [200, 55, 45], WHITE = [255, 255, 255], BLACK = [0, 0, 0];
+    const FONT = (px: number) => `${px}px -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", system-ui, sans-serif`;
+    const mix = (a: number[], b: number[], u: number) => a.map((v, k) => Math.round(v + (b[k] - v) * u));
+    const clamp01 = (v: number) => (v < 0 ? 0 : v > 1 ? 1 : v);
+    const smooth = (a: number, b: number, v: number) => { const u = clamp01((v - a) / (b - a)); return u * u * (3 - 2 * u); };
 
-    // --- glyphs: the system font at its native 16 px, thresholded at half coverage (one-dot strokes).
-    const scratch = document.createElement("canvas");
-    scratch.width = scratch.height = 16;
-    const sx = scratch.getContext("2d", { willReadFrequently: true })!;
-    const glyphs = new Map<string, { w: number; bits: Uint8Array; wide: boolean }>();
-    function glyph(ch: string) {
-      let g = glyphs.get(ch);
-      if (g) return g;
-      const wide = ch.charCodeAt(0) > 0x2e7f;
-      const w = wide ? CELL : CELL / 2;
-      sx.clearRect(0, 0, 16, 16);
-      sx.fillStyle = "#000";
-      sx.textAlign = "center";
-      sx.textBaseline = "middle";
-      sx.font = wide ? `16px "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif` : `14px ui-monospace, "SF Mono", Menlo, Consolas, monospace`;
-      sx.fillText(ch, w / 2, 8.5);
-      const data = sx.getImageData(0, 0, w, CELL).data;
-      let bits = new Uint8Array(w * CELL);
-      for (let i = 0; i < bits.length; i++) bits[i] = data[i * 4 + 3] > 127 ? 1 : 0;
-      let width = w;
-      // Latin is set proportionally: a narrow glyph keeps only the columns it inks (a space keeps four).
-      if (!wide) {
-        const used = [...Array(w).keys()].filter((x) => [...Array(CELL).keys()].some((y) => bits[y * w + x]));
-        const from = used[0] ?? 0, to = used.at(-1) ?? 3;
-        width = used.length ? to - from + 1 : 4;
-        const trimmed = new Uint8Array(width * CELL);
-        if (used.length) for (let y = 0; y < CELL; y++) for (let x = 0; x < width; x++) trimmed[y * width + x] = bits[y * w + from + x];
-        bits = trimmed;
-      }
-      glyphs.set(ch, (g = { w: width, bits, wide }));
-      return g;
-    }
-    const advance = (ch: string) => glyph(ch).w + (glyph(ch).wide ? 2 : 2);
-    const widthOf = (text: string) => [...text].reduce((n, ch) => n + advance(ch), 0) - 1;
+    // --- type: widths in dots at glyph size G
+    const scratch = document.createElement("canvas").getContext("2d")!;
+    let G = 14;
+    const LEAD = () => Math.round(G * 1.3);
+    const widthOf = (text: string) => scratch.measureText(text).width;
     // Lines break between characters, or between words in Latin text; closing punctuation keeps the
     // unit before it company on the next line rather than start one.
     const CLOSING = "。，、；：？！）」』…”,.;:?!)";
@@ -90,297 +68,545 @@ const t = T[lang];
       out.push(line.join("").trimEnd());
       return out;
     }
-    // The dots a text lights, laid out from (x, y): a list of [x, y].
-    function dotsOf(lines: string[], x0: number, y0: number, centred = false) {
-      const out: [number, number][] = [];
-      lines.forEach((line, row) => {
-        let x = centred ? Math.round(x0 - widthOf(line) / 2) : x0;
-        for (const ch of line) {
-          const g = glyph(ch);
-          for (let y = 0; y < CELL; y++) for (let gx = 0; gx < g.w; gx++) if (g.bits[y * g.w + gx]) out.push([x + gx, y0 + row * 19 + y]);
-          x += advance(ch);
-        }
-      });
-      return out;
+    // A block of lines rasterised at its native size, one pixel per pin, where the system font keeps
+    // its strokes one pin wide; each pin is up or down, as on a real pin board.
+    function raster(lines: string[], w: number, h: number, align: "left" | "center") {
+      const c = document.createElement("canvas");
+      c.width = w;
+      c.height = h;
+      const g = c.getContext("2d", { willReadFrequently: true })!;
+      g.font = FONT(G);
+      g.fillStyle = "#000";
+      g.textBaseline = "middle";
+      g.textAlign = align;
+      const lead = LEAD(), top = Math.round(h / 2 - ((lines.length - 1) * lead) / 2);
+      lines.forEach((line, k) => g.fillText(line, align === "left" ? 1 : Math.round(w / 2), top + k * lead));
+      const data = g.getImageData(0, 0, w, h).data, cov = new Float32Array(w * h);
+      for (let i = 0; i < cov.length; i++) cov[i] = smooth(0.4, 0.5, data[i * 4 + 3] / 255);
+      return cov;
     }
 
-    // --- value noise in 3D, smooth enough to flow, cheap enough for every dot every frame.
+    // --- value noise: the board's slow swell and the ragged front of the ink
     const hash = (x: number, y: number, z: number) => {
       let h = (x * 374761393 + y * 668265263 + z * 2147483647) | 0;
       h = Math.imul(h ^ (h >>> 13), 1274126177);
       return ((h ^ (h >>> 16)) >>> 0) / 4294967295;
     };
-    const fade = (t: number) => t * t * (3 - 2 * t);
     function noise(x: number, y: number, z: number) {
       const xi = Math.floor(x), yi = Math.floor(y), zi = Math.floor(z);
-      const u = fade(x - xi), v = fade(y - yi), w = fade(z - zi);
+      const fx = x - xi, fy = y - yi, fz = z - zi;
+      const u = fx * fx * (3 - 2 * fx), v = fy * fy * (3 - 2 * fy), w = fz * fz * (3 - 2 * fz);
       const l = (a: number, b: number, t: number) => a + (b - a) * t;
       const c = (dx: number, dy: number, dz: number) => hash(xi + dx, yi + dy, zi + dz);
       return l(l(l(c(0, 0, 0), c(1, 0, 0), u), l(c(0, 1, 0), c(1, 1, 0), u), v), l(l(c(0, 0, 1), c(1, 0, 1), u), l(c(0, 1, 1), c(1, 1, 1), u), v), w);
     }
-    const fbm = (x: number, y: number, z: number) => noise(x, y, z) * 0.65 + noise(x * 2.1, y * 2.1, z * 1.7) * 0.35;
-    // Ordered dithering: a continuous field becomes dots the way old screens drew shade.
-    const BAYER = [0, 8, 2, 10, 12, 4, 14, 6, 3, 11, 1, 9, 15, 7, 13, 5].map((v) => (v + 0.5) / 16);
+    const fbm = (x: number, y: number, z: number) => noise(x, y, z) * 0.7 + noise(x * 2.03, y * 2.03, z * 1.6 + 7) * 0.3;
 
-    // --- the screen
-    let cols = 0, rows = 0, pitch = 5;
-    let level = new Float32Array(0), target = new Float32Array(0), red = new Uint8Array(0), mark = new Uint8Array(0), calm = new Uint8Array(0);
-    function resize() {
-      const width = canvas.clientWidth;
-      pitch = Math.max(2.2, Math.min(4.4, width / 230));
+    // --- the board and the scene laid out on it
+    let dpr = 1, P = 9, pitch = 4.5, cols = 0, rows = 0, ox = 0;
+    let cell = { x: 0, y: 0, s: 20 }, box = { x: 0, y: 0, w: 0, h: 0 };
+    let well = { cx: 0, cy: 0, a: 10, rc: 4 }, hit = { x: 0, y: 0 };
+    let covA = new Float32Array(0), covB = new Float32Array(0), rag = new Float32Array(0);
+    let goalsA: [number, number][] = [], goalsB: [number, number][] = [];
+    // Each pin: a sprung height s (velocity v) chasing its target T, plus the wave field w on top; ink
+    // and red are its tint, eased toward I and R.
+    let s = new Float32Array(0), v = new Float32Array(0), w = new Float32Array(0), wPrev = new Float32Array(0), wNext = new Float32Array(0);
+    let ink = new Float32Array(0), red = new Float32Array(0), mark = new Float32Array(0), loss = new Float32Array(0), F = new Float32Array(0);
+    let T = new Float32Array(0), I = new Float32Array(0), R = new Float32Array(0);
+    // The ink and red the beads leave on the pins they cross, fading behind them into short trails.
+    let Dk = new Float32Array(0), Dr = new Float32Array(0);
+    function layout(width: number) {
+      dpr = Math.min(3, devicePixelRatio || 1);
+      // Pins big enough for their heads to read as domes: about 170 across a wide screen, 94 on a phone,
+      // and a whole number of device pixels each, so every head is drawn without resampling.
+      const narrow = width < 560;
+      P = Math.max(3, Math.round((narrow ? Math.max(3.2, width / 94) : Math.min(6, width / 170)) * dpr));
+      pitch = P / dpr;
       cols = Math.floor(width / pitch);
-      // A wide screen is a band; a narrow one grows as tall as the scene needs.
-      rows = Math.max(44, Math.min(64, Math.round(cols / 4.2)));
-      rows = Math.max(rows, layout());
-      layout();
-      const dpr = Math.min(2, devicePixelRatio || 1);
-      canvas.style.height = `${rows * pitch}px`;
-      canvas.width = Math.round(width * dpr);
-      canvas.height = Math.round(rows * pitch * dpr);
-      ctx.setTransform(dpr, 0, 0, dpr, ((width - cols * pitch) / 2) * dpr, 0);
-      const n = cols * rows;
-      level = new Float32Array(n); target = new Float32Array(n); red = new Uint8Array(n); mark = new Uint8Array(n); calm = new Uint8Array(n);
-      for (const [u, v] of marks()) mark[Math.round(v * (rows - 1)) * cols + Math.round(u * (cols - 1))] = 1;
-    }
-
-    // Visitors' marks, as fractions of the screen, kept in this browser.
-    const marks = (): [number, number][] => { try { return JSON.parse(localStorage.getItem(STORE) || "[]"); } catch { return []; } };
-    const keep = (u: number, v: number) => { try { localStorage.setItem(STORE, JSON.stringify([...marks(), [u, v]].slice(-60))); } catch { /* the mark lasts this visit */ } };
-
-    // --- particles: points that flow with the noise, or spring toward a dot, or scatter and fade.
-    type Particle = { x: number; y: number; vx: number; vy: number; tx: number; ty: number; seek: boolean; delay: number; red: boolean; life: number };
-    let particles: Particle[] = [];
-    const spawn = (x: number, y: number, isRed = false): Particle => ({ x, y, vx: 0, vy: 0, tx: x, ty: y, seek: false, delay: 0, red: isRed, life: Infinity });
-    const resting = () => particles.filter((p) => !p.seek && p.life === Infinity);
-    // Send resting particles to these dots, the nearer ends of the sweep first.
-    function gather(dots: [number, number][], isRed = false, sweep = 0.9) {
-      for (let n = dots.length - resting().length; n > 0; n--) particles.push(spawn(Math.random() * cols, Math.random() * rows));
-      const pool = resting();
-      const minX = Math.min(...dots.map((d) => d[0])), span = Math.max(1, Math.max(...dots.map((d) => d[0])) - minX);
-      return dots.map(([x, y], i) => Object.assign(pool[i], { tx: x, ty: y, seek: true, delay: ((x - minX) / span) * sweep + Math.random() * 0.15, red: isRed }));
-    }
-    function scatter(group: Particle[] = [], force = 18) {
-      for (const p of group) {
-        const a = Math.random() * Math.PI * 2;
-        p.vx += Math.cos(a) * force * (0.4 + Math.random());
-        p.vy += Math.sin(a) * force * (0.4 + Math.random()) * 0.6;
-        p.seek = false;
-        p.red = false;
+      const wide = !narrow, gap = wide ? 10 : 6, margin = wide ? 6 : 6;
+      // The largest type from 16 pins down whose lines, broken after the comma, come to at most two;
+      // the well is sized to the type.
+      let A: string[] = [], B: string[] = [], size = 0, room = 0;
+      for (G = 16; G >= 11; G--) {
+        scratch.font = FONT(G);
+        size = 2 * Math.round(G * (wide ? 0.95 : 0.78));
+        room = wide ? cols - size - gap - 2 * margin : cols - 2 * margin;
+        A = wrap(EMPTY, room);
+        B = wrap(SOURCE, room);
+        if (Math.max(A.length, B.length) <= 2) break;
       }
-    }
-
-    // --- ripples: rings that run out from a point, still inside, bright on the ring.
-    type Ripple = { x: number; y: number; t0: number };
-    let ripples: Ripple[] = [];
-
-    // --- the scene for this screen size
-    let cell = { x: 0, y: 0, s: 24 }, empty: [number, number][] = [], source: [number, number][] = [];
-    const NONE = { x0: 0, y0: 0, x1: -1, y1: -1 };
-    let textBox = NONE;
-    // Lays out the cell and both lines for the current grid; returns the rows the scene needs.
-    function layout() {
-      const lines = wrap(EMPTY, cols - 12);
-      const sourceLines = wrap(SOURCE, cols - 10);
-      const sourceHeight = sourceLines.length * 19 - 3;
-      let s = 24, need: number;
-      if (lines.length === 1 && s + 10 + widthOf(lines[0]) < cols - 10) {
-        const group = s + 10 + widthOf(lines[0]);
-        cell = { x: Math.round((cols - group) / 2), y: Math.round((rows - s) / 2), s };
-        empty = dotsOf(lines, cell.x + s + 10, Math.round(rows / 2 - 8));
-        need = Math.max(s, sourceHeight) + 12;
+      if (G < 11) {
+        G = wide ? 14 : 13;
+        scratch.font = FONT(G);
+        size = 2 * Math.round(G * (wide ? 0.95 : 0.78));
+        room = wide ? cols - size - gap - 2 * margin : cols - 2 * margin;
+        A = wrap(EMPTY, room);
+        B = wrap(SOURCE, room);
+      }
+      const bw = Math.ceil(Math.max(...[...A, ...B].map(widthOf))) + 3;
+      const bh = Math.ceil(G * 1.2 + (Math.max(A.length, B.length) - 1) * LEAD()) + 4;
+      covA = raster(A, bw, bh, wide ? "left" : "center");
+      covB = raster(B, bw, bh, wide ? "left" : "center");
+      if (wide) {
+        // Centre the well and the line on what they ink: a closing 。 leaves half its box blank.
+        let right = 0;
+        for (const c of [covA, covB]) for (let i = 0; i < c.length; i++) if (c[i] > 0.3) right = Math.max(right, i % bw);
+        rows = Math.max(Math.round(cols / 4.4), Math.max(size, bh) + 2 * margin);
+        cell = { x: Math.round((cols - (size + gap + right)) / 2), y: Math.round((rows - size) / 2), s: size };
+        box = { x: cell.x + size + gap - 1, y: Math.round(rows / 2 - bh / 2), w: bw, h: bh };
       } else {
-        s = 20;
-        const height = s + 6 + lines.length * 19 - 3;
-        const top = Math.round((rows - height) / 2);
-        cell = { x: Math.round((cols - s) / 2), y: top, s };
-        empty = dotsOf(lines, Math.round(cols / 2), top + s + 6, true);
-        need = Math.max(height, sourceHeight) + 10;
+        rows = size + gap + bh + 2 * margin;
+        cell = { x: Math.round((cols - size) / 2), y: margin, s: size };
+        box = { x: Math.round((cols - bw) / 2), y: margin + size + gap, w: bw, h: bh };
       }
-      source = dotsOf(sourceLines, Math.round(cols / 2), Math.round(rows / 2 - sourceHeight / 2), true);
-      return need;
-    }
-    const outline = () => {
-      const { x, y, s } = cell, out: [number, number][] = [];
-      for (let i = 0; i < s; i++) out.push([x + i, y], [x + i, y + s - 1], [x, y + i], [x + s - 1, y + i]);
-      return out;
-    };
-    const boxOf = (dots: [number, number][], pad = 3) => ({ x0: Math.min(...dots.map((d) => d[0])) - pad, y0: Math.min(...dots.map((d) => d[1])) - pad, x1: Math.max(...dots.map((d) => d[0])) + pad, y1: Math.max(...dots.map((d) => d[1])) + pad });
+      const a = size / 2 - 0.5;
+      well = { cx: cell.x + a, cy: cell.y + a, a, rc: a * 0.42 };
+      // The value lands a little off centre, so the splash and the bleed are not symmetric.
+      hit = { x: well.cx + 1.6, y: well.cy - 1.1 };
 
-    // A value arrives as a cinnabar stream from the left edge and pours into the cell.
-    function signal() {
-      const group: Particle[] = [];
-      let i = 0;
-      for (let y = cell.y + 3; y < cell.y + cell.s - 3; y += 2) for (let x = cell.x + 3; x < cell.x + cell.s - 3; x += 2) {
-        const p = Object.assign(spawn(-2 - Math.random() * 8, cell.y + cell.s / 2 + Math.sin(i * 0.7) * 5, true), { tx: x, ty: y, seek: true, delay: i++ * 0.012 });
-        particles.push(p);
-        group.push(p);
+      ox = Math.round(((width - cols * pitch) / 2) * dpr);
+      canvas.style.height = `${rows * pitch}px`;
+      canvas.width = base.width = Math.round(width * dpr);
+      canvas.height = base.height = rows * P;
+      const n = cols * rows;
+      [s, v, w, wPrev, wNext, ink, red, mark, T, I, R, rag, loss, F, Dk, Dr] = Array.from({ length: 16 }, () => new Float32Array(n));
+      for (let y = 0; y < rows; y++) for (let x = 0; x < cols; x++) {
+        rag[y * cols + x] = 3.4 * (noise(x * 0.5, y * 0.5, 5.1) - 0.5);
+        loss[y * cols + x] = 0.006 + 0.1 * smooth(8, 0, Math.min(x, y, cols - 1 - x, rows - 1 - y));
       }
-      return group;
+      for (const [u, q] of marks()) mark[Math.round(q * (rows - 1)) * cols + Math.round(u * (cols - 1))] = 1;
+      // Every pin a line inks is a place for one bead, ordered left to right.
+      const goalsOf = (cov: Float32Array) => {
+        const out: [number, number][] = [];
+        for (let x = 0; x < bw; x++) for (let y = 0; y < bh; y++) if (cov[y * bw + x] >= 0.5) out.push([box.x + x, box.y + y]);
+        return out;
+      };
+      goalsA = goalsOf(covA);
+      goalsB = goalsOf(covB);
+      paintSprites();
+      reseat(clock % LOOP);
+      targets(clock % LOOP, clock);
+      s.set(T);
+      ink.set(I);
+      red.set(R);
     }
 
-    // --- the score: one pass of about twenty seconds, looped
-    let clock = 0, next = 0, chaos = 1, cellOpen = false, cursor = false, filled = false;
-    const groups: Record<string, Particle[]> = {};
-    const SCORE: [number, () => void][] = [
-      [0, () => { chaos = 1; cellOpen = cursor = filled = false; textBox = NONE; }],
-      [3.2, () => { groups.cell = gather(outline(), false, 0.5); }],
-      [4.4, () => { cellOpen = cursor = true; chaos = 0.75; }],
-      [5.2, () => { groups.empty = gather(empty); textBox = boxOf(empty); }],
-      [8.6, () => { groups.signal = signal(); }],
-      [10.0, () => { cursor = false; filled = true; ripples.push({ x: cell.x + cell.s / 2, y: cell.y + cell.s / 2, t0: clock }); }],
-      [11.6, () => { scatter(groups.empty); scatter(groups.signal, 10); textBox = NONE; }],
-      [12.2, () => { scatter(groups.cell, 22); cellOpen = filled = false; groups.source = gather(source, false, 1.1); textBox = boxOf(source, 4); chaos = 0.6; }],
-      [17.4, () => { scatter(groups.source, 24); textBox = NONE; chaos = 1; }],
-      [20.5, () => { clock = 0; next = 0; }],
-    ];
+    // Visitors' marks, as fractions of the board, kept in this browser.
+    const marks = (): [number, number][] => { try { return JSON.parse(localStorage.getItem(STORE) || "[]"); } catch { return []; } };
+    const keep = (u: number, q: number) => { try { localStorage.setItem(STORE, JSON.stringify([...marks(), [u, q]].slice(-60))); } catch { /* the mark lasts this visit */ } };
 
-    // --- pointer: the field swirls around it; a click drops a value there and leaves a mark.
+    // --- sprites: one pin head per height level, tint and light, one soft shadow per height level.
+    // Light is how the board's slope under a pin faces the lamp at the upper left, less any shade cast
+    // on it by a taller pin toward the lamp: that is what makes a well read as a hole and a wave as a
+    // surface, not just pins of different sizes.
+    const LO = -12, HI = 18, HS = 12, TINTS = 9, DARK = 6, LIGHTS = 11;
+    const atlas = document.createElement("canvas"), shade = document.createElement("canvas"), base = document.createElement("canvas");
+    const tintOf = (k: number) => (k === 0 ? PIN : k <= 4 ? mix(PIN, INK, k / 4) : mix(PIN, RED, (k - 4) / 4));
+    const tintIndex = (a: number, r: number) => (r > 0.06 && r >= a ? 4 + Math.min(4, Math.max(1, Math.round(r * 4))) : Math.min(4, Math.round(a * 4)));
+    const headRadius = (h: number) => P * (0.34 + 0.07 * Math.min(Math.max(h, 0), 1.4));
+    // A raised head is a lit dome; a sunk one is a dimple, dark on the side toward the light.
+    function head(g: CanvasRenderingContext2D, cx: number, cy: number, h: number, tint: number[], k: number) {
+      g.beginPath();
+      if (h >= 0) {
+        const u = Math.min(1, h), r = headRadius(h);
+        const grad = g.createRadialGradient(cx - 0.38 * r, cy - 0.42 * r, 0.05 * r, cx, cy, r);
+        grad.addColorStop(0, `rgb(${mix(tint, WHITE, 0.4 + 0.25 * u)})`);
+        grad.addColorStop(0.55, `rgb(${tint})`);
+        grad.addColorStop(1, `rgb(${mix(tint, BLACK, 0.07 + 0.2 * u)})`);
+        g.fillStyle = grad;
+        g.arc(cx, cy, r, 0, Math.PI * 2);
+      } else {
+        const d = Math.min(1, -h), r = P * 0.34;
+        const floor = mix(k === 0 ? SCREEN : tint, BLACK, 0.03 + 0.16 * d);
+        const grad = g.createLinearGradient(cx - 0.7 * r, cy - 0.7 * r, cx + 0.7 * r, cy + 0.7 * r);
+        grad.addColorStop(0, `rgb(${mix(floor, BLACK, 0.06 + 0.24 * d)})`);
+        grad.addColorStop(0.55, `rgb(${floor})`);
+        grad.addColorStop(1, `rgb(${mix(floor, WHITE, 0.25 + 0.45 * d)})`);
+        g.fillStyle = grad;
+        g.arc(cx, cy, r + 0.4, 0, Math.PI * 2);
+      }
+      g.fill();
+    }
+    // Light comes in fine steps, so a long low wave shades smoothly instead of in bands.
+    const lit = (tint: number[], light: number) => (light > 0 ? mix(tint, WHITE, 0.065 * light) : mix(tint, BLACK, -0.05 * light));
+    function paintSprites() {
+      atlas.width = (HI - LO + 1) * P;
+      atlas.height = TINTS * LIGHTS * P;
+      const g = atlas.getContext("2d")!;
+      for (let l = LO; l <= HI; l++) for (let k = 0; k < TINTS; k++) for (let j = 0; j < LIGHTS; j++)
+        head(g, (l - LO + 0.5) * P, ((k * LIGHTS + j) + 0.5) * P, l / HS, lit(tintOf(k), j - DARK), k);
+      shade.width = HI * 2 * P;
+      shade.height = 2 * P;
+      const sg = shade.getContext("2d")!;
+      for (let l = 1; l <= HI; l++) {
+        const h = l / HS, cx = (2 * l - 1) * P, r = headRadius(h) * 1.18;
+        const grad = sg.createRadialGradient(cx, P, 0, cx, P, r);
+        grad.addColorStop(0, `rgba(24,24,34,${0.32 * Math.min(1, h) ** 1.5})`);
+        grad.addColorStop(0.6, `rgba(24,24,34,${0.2 * Math.min(1, h) ** 1.5})`);
+        grad.addColorStop(1, "rgba(24,24,34,0)");
+        sg.fillStyle = grad;
+        sg.fillRect(cx - P, 0, 2 * P, 2 * P);
+      }
+      // The board at rest never changes: painted once, copied under every frame.
+      const b = base.getContext("2d")!;
+      b.fillStyle = `rgb(${SCREEN})`;
+      b.fillRect(0, 0, base.width, base.height);
+      for (let y = 0; y < rows; y++) for (let x = 0; x < cols; x++) b.drawImage(atlas, -LO * P, DARK * P, P, P, ox + x * P, y * P, P, P);
+    }
+
+    // --- the score, in seconds of one loop
+    const LOOP = 17;
+    const WELL = 1.6, CURSOR = 2.3, GATHER = 2.4, FALL = [4.6, 1.3], HIT = 5.9, SHIFT = 7, RELEASE = 12.8, DRAIN = 13, UNWELL = 13.9;
+    const WAVE = 66; // how fast the waves run, in pins a second: C2 at 120 steps a second
+    const presence = (t: number) => smooth(WELL, WELL + 0.5, t) * (1 - smooth(UNWELL + 0.3, UNWELL + 1.2, t));
+    // How much chaos a pin is in: all of it until the value lands; then none, from the moment the wave
+    // front passes it; after the release it creeps back in from the edges toward the middle.
+    function chaosAt(x: number, y: number, t: number) {
+      if (t < HIT) return 1;
+      if (t < RELEASE) return 1 - smooth(0, 0.5, t - HIT - Math.hypot(x - hit.x, y - hit.y) / WAVE);
+      const inward = Math.min(x, y, cols - 1 - x, rows - 1 - y) / (Math.min(cols, rows) / 2);
+      return smooth(0, 1, (t - RELEASE - 0.3 - inward * 1.6) / 1.2);
+    }
+
+    // The rounded square of the well, as a signed distance in pins (negative inside).
+    function wallDistance(x: number, y: number) {
+      const { cx, cy, a, rc } = well, qx = Math.abs(x - cx) - (a - rc), qy = Math.abs(y - cy) - (a - rc);
+      return Math.hypot(Math.max(qx, 0), Math.max(qy, 0)) + Math.min(Math.max(qx, qy), 0) - rc;
+    }
+    // The falling value: in from the upper right, gathering speed, its height above the board falling to 0.
+    function fallAt(p: number) {
+      const u = clamp01(p) ** 1.7, a = (1 - u) * (1 - u), b = 2 * u * (1 - u), d = u * u;
+      const x0 = hit.x + 38, y0 = hit.y - 30, x1 = hit.x + 6, y1 = hit.y - 30;
+      return { x: a * x0 + b * x1 + d * hit.x, y: a * y0 + b * y1 + d * hit.y, z: 2.8 * (1 - u) };
+    }
+
+    // What every pin is reaching for at time t: its height, its ink and its red.
+    function targets(t: number, z: number) {
+      const here = presence(t);
+      const px = cell.x - 3, py = cell.y - 3, pw = cell.s + 6, bx = box.x - 1, by = box.y, bw = box.w + 2;
+      for (let y = 0; y < rows; y++) for (let x = 0; x < cols; x++) {
+        const i = y * cols + x;
+        // Near the well and the line, while they show, the board is held flat.
+        const dc = Math.hypot(Math.max(px - x, 0, x - px - pw), Math.max(py - y, 0, y - py - pw));
+        const db = Math.hypot(Math.max(bx - x, 0, x - bx - bw), Math.max(by - y, 0, y - by - box.h));
+        const hold = 1 - here * (1 - smooth(0, 6, Math.min(dc, db)));
+        // Chaos: a churning surface, folded by domain warping, lit like the rest; in order, only the
+        // board's soft swell drifting right, which lifts pins but is kept out of the light.
+        const c = chaosAt(x, y, t) * hold;
+        let churn = 0, f = 0;
+        if (c > 0) {
+          const q = fbm(x * 0.045, y * 0.07, z * 0.35);
+          churn = c * 2 * (fbm(x * 0.05 + 3 * q, y * 0.07 + 2 * q, z * 0.42 + 3.1) - 0.5);
+        }
+        if (c < 1) f = (1 - c) * hold * 0.24 * smooth(0.5, 0.84, fbm((x + z * 7) * 0.026, y * 0.05, z * 0.55));
+        F[i] = f;
+        // The beads: a pin under one rises with its ink.
+        const inked = Math.max(Dk[i], Dr[i]);
+        T[i] = churn + f + mark[i] * 0.3 + inked;
+        I[i] = Dk[i];
+        R[i] = Math.max(mark[i] * 0.75, Dr[i]);
+      }
+      if (lens.on > 0) {
+        const x0 = Math.max(0, Math.floor(lens.x - 10)), x1 = Math.min(cols - 1, Math.ceil(lens.x + 10));
+        const y0 = Math.max(0, Math.floor(lens.y - 10)), y1 = Math.min(rows - 1, Math.ceil(lens.y + 10));
+        for (let y = y0; y <= y1; y++) for (let x = x0; x <= x1; x++) T[y * cols + x] += lens.on * 0.6 * Math.exp(-((x - lens.x) ** 2 + (y - lens.y) ** 2) / 22);
+      }
+      // The well: pins give way from the centre out, deepest in the middle, with a lip pushed up
+      // round the rim; the ink bleeds from where the value landed, raggedly and slowing, and lifts
+      // the pins it reaches flush; it drains from the rim inward before the well closes.
+      const { cx, cy, a } = well, reachEnd = 1.25 * a + 4;
+      for (let y = Math.max(0, cell.y - 3); y < Math.min(rows, cell.y + cell.s + 3); y++) for (let x = Math.max(0, cell.x - 3); x < Math.min(cols, cell.x + cell.s + 3); x++) {
+        const i = y * cols + x, d = Math.hypot(x - cx, y - cy), sd = wallDistance(x, y);
+        if (t < WELL + d / 24 || t >= UNWELL + (a * 1.4 - d) / 24) continue;
+        const inside = smooth(0.7, -0.7, sd), lip = 0.22 * Math.exp(-((sd - 1.1) ** 2) / 0.7);
+        const reach = Math.hypot(x - hit.x, y - hit.y) + rag[i];
+        const wet = inside > 0.5 && t >= HIT && reach < 17 * Math.sqrt((t - HIT) / 0.9) && t < DRAIN + (reachEnd - reach) / 14;
+        // A filled well is a liquid surface: it keeps a slow, faint swell of its own.
+        T[i] += wet ? 0.18 + 0.14 * (fbm(x * 0.22 - z * 0.9, y * 0.22, z * 0.8 + 11) - 0.5) + lip : inside * -(0.7 + 0.3 * clamp01(1 - d / (a * 1.2))) + lip;
+        if (wet) R[i] = 1;
+      }
+      // The cursor: a bar of inked pins that bob up from the floor and back, until the value lands.
+      if (t >= CURSOR && t < HIT && ((t - CURSOR) % 1.1) < 0.55) {
+        for (let y = cell.y + Math.round(cell.s * 0.26); y < cell.y + cell.s - Math.round(cell.s * 0.26); y++) for (const x of [Math.floor(cx), Math.ceil(cx)]) {
+          T[y * cols + x] = 0.45;
+          I[y * cols + x] = 1;
+        }
+      }
+    }
+
+    // --- physics: pins on springs, and a damped wave across the board, at a fixed 120 Hz
+    const STEP = 1 / 120, K = 190, DAMPING = 2 * 0.42 * Math.sqrt(190), C2 = 0.3;
+    function stepPhysics() {
+      for (let i = 0; i < s.length; i++) {
+        v[i] += (K * (T[i] - s[i]) - DAMPING * v[i]) * STEP;
+        s[i] += v[i] * STEP;
+      }
+      // A nine-point Laplacian keeps the rings round on a square grid; a soft margin absorbs what reaches
+      // the edge, so waves leave the board instead of piling up into a muddle.
+      for (let y = 0; y < rows; y++) {
+        const up = y > 0 ? -cols : 0, down = y < rows - 1 ? cols : 0;
+        for (let x = 0; x < cols; x++) {
+          const i = y * cols + x, left = x > 0 ? -1 : 0, right = x < cols - 1 ? 1 : 0, c = w[i];
+          const lap = (4 * (w[i + left] + w[i + right] + w[i + up] + w[i + down]) + w[i + up + left] + w[i + up + right] + w[i + down + left] + w[i + down + right] - 20 * c) / 6;
+          wNext[i] = c + (c - wPrev[i]) * (1 - loss[i]) + C2 * lap;
+        }
+      }
+      [wPrev, w, wNext] = [w, wNext, wPrev];
+    }
+    // A push into the wave field: a dent that springs back and rings outward.
+    function impulse(px: number, py: number, amp: number, sigma: number) {
+      const reach = Math.ceil(sigma * 3), k = -1 / (2 * sigma * sigma);
+      for (let y = Math.max(0, Math.round(py) - reach); y <= Math.min(rows - 1, Math.round(py) + reach); y++)
+        for (let x = Math.max(0, Math.round(px) - reach); x <= Math.min(cols - 1, Math.round(px) + reach); x++) {
+          const i = y * cols + x, d = amp * Math.exp(((x - px) ** 2 + (y - py) ** 2) * k);
+          w[i] += d;
+          wPrev[i] += d;
+        }
+    }
+
+    // --- the swarm: beads that stream with the flow, or spring to a place in the line, or are absorbed
+    type Bead = { x: number; y: number; vx: number; vy: number; tx: number; ty: number; seek: boolean; delay: number; tint: number; alpha: number; dying: boolean; sink: boolean; life: number; leave: number };
+    let beads: Bead[] = [];
+    const bead = (x: number, y: number, alpha = 1): Bead => ({ x, y, vx: 0, vy: 0, tx: x, ty: y, seek: false, delay: 0, tint: 0, alpha, dying: false, sink: false, life: Infinity, leave: Infinity });
+    const swarmSize = () => Math.round((cols * rows) / 38);
+    const anywhere = (alpha = 1) => bead(Math.random() * cols, Math.random() * rows, alpha);
+    // The flow: the curl of a slow noise, so the swarm circulates in eddies instead of draining away,
+    // and its trails curve.
+    function flowAt(x: number, y: number, z: number) {
+      const at = (px: number, py: number) => fbm(px * 0.042, py * 0.042, z * 0.22);
+      return { x: (at(x, y + 1) - at(x, y - 1)) * 480, y: -(at(x + 1, y) - at(x - 1, y)) * 480 };
+    }
+    // Send beads to places, the left end first; each still drifts until its turn comes.
+    function send(group: Bead[], goals: [number, number][], sweep: number, after = 0) {
+      const minX = goals[0]?.[0] ?? 0, span = Math.max(1, (goals.at(-1)?.[0] ?? 1) - minX);
+      group.forEach((b, k) => Object.assign(b, { tx: goals[k][0], ty: goals[k][1], seek: true, sink: false, delay: after + ((goals[k][0] - minX) / span) * sweep + Math.random() * 0.18 }));
+    }
+    // The first line gathers out of the swarm: the beads nearest the line are called, matched to places
+    // in order across, so each flies about as far as its neighbours.
+    function gather() {
+      const free = beads.filter((b) => !b.seek && !b.dying);
+      while (free.length < goalsA.length) { const b = anywhere(0); beads.push(b); free.push(b); }
+      const cx = box.x + box.w / 2, cy = box.y + box.h / 2;
+      const called = free.sort((p, q) => Math.hypot(p.x - cx, p.y - cy) - Math.hypot(q.x - cx, q.y - cy)).slice(0, goalsA.length);
+      send(called.sort((p, q) => p.x - q.x), goalsA, 1.0);
+    }
+    // The line changes: its beads move to the new places, spread evenly; places left over are filled by
+    // new beads that rise red out of the well, and beads left over sink into it.
+    function shift() {
+      const line = beads.filter((b) => b.seek).sort((p, q) => p.tx - q.tx || p.ty - q.ty);
+      const n = Math.min(line.length, goalsB.length), m = Math.max(line.length, goalsB.length);
+      const picks = Array.from({ length: n }, (_, k) => Math.floor(((k + 0.5) * m) / n));
+      const moving = line.length <= goalsB.length ? line : picks.map((j) => line[j]);
+      const places = line.length <= goalsB.length ? picks.map((j) => goalsB[j]) : goalsB;
+      send(moving, places, 0.7);
+      const taken = new Set(line.length <= goalsB.length ? picks : []);
+      const rest = goalsB.filter((_, j) => line.length <= goalsB.length && !taken.has(j));
+      const risen = rest.map(() => {
+        const a = Math.random() * Math.PI * 2, r = Math.sqrt(Math.random()) * well.a * 0.7;
+        return Object.assign(bead(well.cx + Math.cos(a) * r, well.cy + Math.sin(a) * r), { tint: 1 });
+      });
+      beads.push(...risen);
+      send(risen, rest, 0.7, 0.25);
+      for (const b of line) if (!moving.includes(b)) Object.assign(b, { tx: well.cx, ty: well.cy, sink: true, delay: Math.random() * 0.4 });
+    }
+    // The line lets go, unravelling from left to right: each bead is flung back into the flow in turn;
+    // beyond the swarm's size a bead fades out soon after, and the swarm is made up to size.
+    function release() {
+      const line = beads.filter((b) => b.seek), keepN = swarmSize(), every = Math.max(1, Math.round(line.length / keepN));
+      const minX = Math.min(...line.map((b) => b.tx)), span = Math.max(1, Math.max(...line.map((b) => b.tx)) - minX);
+      line.forEach((b, k) => Object.assign(b, { leave: ((b.tx - minX) / span) * 0.9 + Math.random() * 0.25, life: k % every ? 0.2 + Math.random() * 0.7 : Infinity }));
+      for (let k = beads.length; k < keepN; k++) beads.push(anywhere(0));
+    }
+    // The beads for any moment of the score, without the motion that led there: after a resize, and
+    // for the still frame.
+    function reseat(t: number) {
+      beads = [];
+      const goals = t >= GATHER + 1.5 && t < RELEASE ? (t >= SHIFT + 1.2 ? goalsB : goalsA) : null;
+      if (goals) beads = goals.map(([x, y]) => Object.assign(bead(x, y), { seek: true }));
+      else for (let k = 0; k < swarmSize(); k++) beads.push(anywhere());
+      Dk.fill(0);
+      Dr.fill(0);
+      for (const b of beads) if (b.seek) Dk[Math.round(b.y) * cols + Math.round(b.x)] = 1;
+    }
+    function moveBeads(dt: number, t: number, z: number) {
+      const ordered = t >= HIT && t < RELEASE;
+      for (const b of beads) {
+        if (b.seek && (b.leave -= dt) <= 0) {
+          // A light push, then the flow takes it: the line unravels into streams, not a haze.
+          const a = Math.random() * Math.PI * 2, speed = 2 + Math.random() * 5;
+          Object.assign(b, { seek: false, leave: Infinity, vx: Math.cos(a) * speed, vy: Math.sin(a) * speed });
+        }
+        if (b.seek && b.delay <= 0) {
+          // A spring to its place, a touch under critical damping, so it lands with a small give.
+          const k = 55, c = 2 * 0.8 * Math.sqrt(k);
+          b.vx += (k * (b.tx - b.x) - c * b.vx) * dt;
+          b.vy += (k * (b.ty - b.y) - c * b.vy) * dt;
+          if (b.sink && Math.hypot(b.tx - b.x, b.ty - b.y) < 1.5) b.dying = true;
+        } else {
+          if (b.seek) b.delay -= dt;
+          const f = flowAt(b.x, b.y, z), ease = 1 - Math.exp(-dt * 2.5);
+          b.vx += (f.x - b.vx) * ease;
+          b.vy += (f.y - b.vy) * ease;
+          if (lens.on > 0) {
+            const dx = b.x - lens.x, dy = b.y - lens.y, d = Math.hypot(dx, dy) + 0.01;
+            if (d < 9) { const push = lens.on * (1 - d / 9) * 40 * dt; b.vx += (-dy / d) * push; b.vy += (dx / d) * push; }
+          }
+          // In order, a stray bead is taken up as the wave front passes it.
+          if (ordered && !b.seek && t - HIT > Math.hypot(b.x - hit.x, b.y - hit.y) / WAVE) b.dying = true;
+        }
+        b.x += b.vx * dt;
+        b.y += b.vy * dt;
+        if (!b.seek) { b.x = (b.x + cols) % cols; b.y = (b.y + rows) % rows; }
+        if (!b.seek && (b.life -= dt) <= 0) b.dying = true;
+        b.alpha = b.dying ? b.alpha - dt * 3 : Math.min(1, b.alpha + dt * 2);
+        b.tint *= Math.exp(-dt * 0.9);
+      }
+      beads = beads.filter((b) => b.alpha > 0);
+      // Each bead inks the four pins around it by how near it is, over what is left of its trail.
+      const fade = Math.exp(-dt * 2.6);
+      for (let i = 0; i < Dk.length; i++) { Dk[i] *= fade; Dr[i] *= fade; }
+      for (const b of beads) {
+        const x0 = Math.floor(b.x), y0 = Math.floor(b.y), fx = b.x - x0, fy = b.y - y0;
+        const strength = b.alpha * (b.seek && b.delay <= 0 ? 1 : b.life < Infinity ? 0.35 : 0.55);
+        for (const [dx, dy, wgt] of [[0, 0, (1 - fx) * (1 - fy)], [1, 0, fx * (1 - fy)], [0, 1, (1 - fx) * fy], [1, 1, fx * fy]]) {
+          const x = (x0 + dx + cols) % cols, y = y0 + dy;
+          if (y < 0 || y >= rows) continue;
+          const i = y * cols + x, v = wgt * strength;
+          Dk[i] = Math.max(Dk[i], v * (1 - b.tint));
+          Dr[i] = Math.max(Dr[i], v * b.tint);
+        }
+      }
+    }
+
+    // --- pointer: the pins rise under it and trail a wake; a click drops a value and leaves a mark.
     let pointer: { x: number; y: number } | null = null;
+    const lens = { x: 0, y: 0, on: 0 };
     const toGrid = (event: PointerEvent) => {
-      const box = canvas.getBoundingClientRect();
-      return { x: ((event.clientX - box.left) / box.width) * cols, y: ((event.clientY - box.top) / box.height) * rows };
+      const r = canvas.getBoundingClientRect();
+      return { x: (event.clientX - r.left - ox / dpr) / pitch - 0.5, y: (event.clientY - r.top) / pitch - 0.5 };
     };
-    canvas.addEventListener("pointermove", (event) => { pointer = toGrid(event); });
+    canvas.addEventListener("pointermove", (event) => {
+      if (event.pointerType !== "mouse") return;
+      pointer = toGrid(event);
+      if (lens.on === 0) Object.assign(lens, pointer);
+    });
     canvas.addEventListener("pointerleave", () => { pointer = null; });
     canvas.addEventListener("pointerdown", (event) => {
       const at = toGrid(event);
-      ripples.push({ x: at.x, y: at.y, t0: clock });
-      const burst = Array.from({ length: 28 }, () => Object.assign(spawn(at.x, at.y, true), { life: 1.6 }));
-      scatter(burst, 26);
-      burst.forEach((p) => (p.red = true));
-      particles.push(...burst);
       const x = Math.max(0, Math.min(cols - 1, Math.round(at.x))), y = Math.max(0, Math.min(rows - 1, Math.round(at.y)));
       mark[y * cols + x] = 1;
       keep(x / (cols - 1), y / (rows - 1));
-      if (reduce) still();
+      if (reduce) return still();
+      impulse(x, y, -1.1, 1.3);
+      for (const b of beads) {
+        const dx = b.x - x, dy = b.y - y, d = Math.hypot(dx, dy) + 0.01;
+        if (!b.seek && d < 10) { b.vx += (dx / d) * 30 * (1 - d / 10); b.vy += (dy / d) * 30 * (1 - d / 10); }
+      }
     });
 
-    // --- a frame: the field, the cell, the particles and the ripples set each dot's target.
-    function step(dt: number) {
-      clock += dt;
-      while (next < SCORE.length && clock >= SCORE[next][0]) SCORE[next++][1]();
-      const z = clock * 0.18;
-      target.fill(0);
-      red.fill(0);
-      calm.fill(0);
-      // Still regions: the cell once it has an edge, and a margin around any text.
-      if (cellOpen) for (let y = Math.max(0, cell.y - 1); y <= Math.min(rows - 1, cell.y + cell.s); y++) for (let x = Math.max(0, cell.x - 1); x <= Math.min(cols - 1, cell.x + cell.s); x++) calm[y * cols + x] = 1;
-      for (let y = Math.max(0, textBox.y0); y <= Math.min(rows - 1, textBox.y1); y++) for (let x = Math.max(0, textBox.x0); x <= Math.min(cols - 1, textBox.x1); x++) calm[y * cols + x] = 1;
+    // --- drawing: shadows first, then every pin that is off its rest, in sprites
+    // H is each pin's height; L is the surface the lamp sees, where waves count more than they lift,
+    // so a low ripple far from its source still reads as light and shade, and the board's slow swell
+    // does not count at all: it only lifts pins, or its gentle slopes would shade into grey patches.
+    let H = new Float32Array(0), L = new Float32Array(0);
+    function draw(t: number) {
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+      ctx.drawImage(base, 0, 0);
+      if (H.length !== s.length) { H = new Float32Array(s.length); L = new Float32Array(s.length); }
+      for (let i = 0; i < H.length; i++) { H[i] = s[i] + w[i]; L[i] = s[i] - F[i] + 3 * w[i]; }
+      const fall = t > FALL[0] && t < HIT ? fallAt((t - FALL[0]) / FALL[1]) : null;
       for (let y = 0; y < rows; y++) for (let x = 0; x < cols; x++) {
-        const i = y * cols + x;
-        let fx = x * 0.045, fy = y * 0.09;
-        if (pointer) {
-          const dx = x - pointer.x, dy = (y - pointer.y) * 2, k = Math.exp(-Math.hypot(dx, dy) / 14) * 0.028;
-          fx -= dy * k;
-          fy += dx * k;
+        const l = Math.min(HI, Math.round(H[y * cols + x] * HS));
+        if (l < 1) continue;
+        const h = l / HS;
+        ctx.drawImage(shade, (l - 1) * 2 * P, 0, 2 * P, 2 * P, ox + x * P - P / 2 + 0.24 * P * h, y * P - P / 2 + 0.32 * P * h, 2 * P, 2 * P);
+      }
+      // The falling value's shadow lies on the board, far off while it is high, meeting it as it lands.
+      if (fall) {
+        const sx = ox + (fall.x + 0.5 + 0.24 * fall.z * 2.6) * P, sy = (fall.y + 0.5 + 0.32 * fall.z * 2.6) * P, r = P * (0.5 + 0.3 * fall.z);
+        const grad = ctx.createRadialGradient(sx, sy, 0, sx, sy, r);
+        grad.addColorStop(0, `rgba(24,24,34,${0.3 / (1 + fall.z)})`);
+        grad.addColorStop(1, "rgba(24,24,34,0)");
+        ctx.fillStyle = grad;
+        ctx.fillRect(sx - r, sy - r, 2 * r, 2 * r);
+      }
+      for (let y = 0; y < rows; y++) {
+        const up = y > 0 ? -cols : 0, down = y < rows - 1 ? cols : 0;
+        for (let x = 0; x < cols; x++) {
+          const i = y * cols + x, h = H[i], left = x > 0 ? -1 : 0, right = x < cols - 1 ? 1 : 0;
+          // Slope toward the lamp, and shade from up to three pins along the line to it.
+          let light = Math.round((L[i + right] - L[i + left] + L[i + down] - L[i + up]) * 4);
+          for (let k = 1; k <= 3 && x - k >= 0 && y - k >= 0; k++) if (H[i - k * (cols + 1)] - h > k * 0.42) { light -= 2; if (k === 1) light -= 2; }
+          light = Math.max(-DARK, Math.min(LIGHTS - 1 - DARK, light));
+          const l = Math.max(LO, Math.min(HI, Math.round(h * HS))), k = tintIndex(ink[i], red[i]);
+          if (l === 0 && k === 0 && light === 0) continue;
+          ctx.drawImage(atlas, (l - LO) * P, (k * LIGHTS + light + DARK) * P, P, P, ox + x * P, y * P, P, P);
         }
-        let f = fbm(fx, fy, z);
-        // Ripples: still water inside, a bright ring, the noise beyond pulled into bands.
-        for (const r of ripples) {
-          const age = clock - r.t0, radius = age * 34, d = Math.hypot(x - r.x, (y - r.y) * 1.9), strength = Math.max(0, 1 - age / 2.2);
-          if (d < radius - 2) f *= 1 - 0.75 * strength;
-          const ring = Math.exp(-((d - radius) ** 2) / 3) * strength;
-          if (ring > 0.3) { target[i] = Math.max(target[i], ring); red[i] = 1; }
-        }
-        // The field stays light and grey so the ink particles read as currents through it.
-        const shade = Math.max(0, (f - 0.46) * 1.7) * chaos * (1 - calm[i]);
-        if (shade > BAYER[(y & 3) * 4 + (x & 3)]) target[i] = Math.max(target[i], 0.32 + shade * 0.35);
       }
-      ripples = ripples.filter((r) => clock - r.t0 < 2.4);
-      // A filled cell: a cinnabar weave. An empty one: a blinking cursor.
-      if (filled) for (let y = cell.y + 2; y < cell.y + cell.s - 2; y++) for (let x = cell.x + 2; x < cell.x + cell.s - 2; x++) if ((x + y) % 2 === 0) { target[y * cols + x] = 1; red[y * cols + x] = 1; }
-      if (cursor && Math.floor(clock * 2.2) % 2 === 0) {
-        const cx = cell.x + Math.round(cell.s / 2) - 2, cy = cell.y + Math.round(cell.s / 2) - 4;
-        for (let y = cy; y < cy + 8; y++) for (let x = cx; x < cx + 4; x++) target[y * cols + x] = 1;
-      }
-      for (const p of particles) {
-        if (p.seek && p.delay > 0) p.delay -= dt;
-        if (p.seek && p.delay <= 0) {
-          // A critically damped spring toward its dot.
-          const k = 60, c = 2 * Math.sqrt(k);
-          p.vx += ((p.tx - p.x) * k - p.vx * c) * dt;
-          p.vy += ((p.ty - p.y) * k - p.vy * c) * dt;
-        } else if (!p.seek) {
-          // Flow along the curl of the noise, so the swarm circulates instead of draining away.
-          const e = 0.5, fx = p.x * 0.045, fy = p.y * 0.09;
-          const gx = fbm(fx + e, fy, z) - fbm(fx - e, fy, z), gy = fbm(fx, fy + e, z) - fbm(fx, fy - e, z);
-          p.vx += (gy * 60 - p.vx * 1.2) * dt;
-          p.vy += (-gx * 30 - p.vy * 1.2) * dt;
-          if (pointer) {
-            const dx = p.x - pointer.x, dy = (p.y - pointer.y) * 2, d = Math.hypot(dx, dy) + 0.01;
-            if (d < 16) { const k = (1 - d / 16) * 40; p.vx += (-dy / d) * k * dt; p.vy += (dx / d) * k * dt * 0.5; }
-          }
-        }
-        p.x += p.vx * dt;
-        p.y += p.vy * dt;
-        if (!p.seek && p.life === Infinity) { p.x = (p.x + cols) % cols; p.y = (p.y + rows) % rows; }
-        if (p.life !== Infinity) p.life -= dt;
-        const x = Math.round(p.x), y = Math.round(p.y);
-        if (x < 0 || y < 0 || x >= cols || y >= rows) continue;
-        target[y * cols + x] = 1;
-        if (p.red) red[y * cols + x] = 1;
-      }
-      // Spent bursts leave; the resting swarm keeps a steady size.
-      particles = particles.filter((p) => p.life > 0);
-      const free = resting();
-      if (free.length > 420) { const extra = new Set(free.slice(420)); particles = particles.filter((p) => !extra.has(p)); }
-    }
-
-    function draw() {
-      const r = pitch * 0.36;
-      ctx.fillStyle = GLASS;
-      ctx.fillRect(-pitch, 0, cols * pitch + 2 * pitch, rows * pitch);
-      // One fill per colour: dots are batched by their quantised shade.
-      const batches = new Map<string, number[]>();
-      for (let y = 0; y < rows; y++) for (let x = 0; x < cols; x++) {
-        const i = y * cols + x;
-        const q = Math.round(level[i] * 8) / 8;
-        const base = mark[i] ? OFF.map((c, k) => c + (RED[k] - c) * 0.45) : OFF;
-        const on = red[i] ? RED : INK;
-        const colour = base.map((c, k) => Math.round(c + (on[k] - c) * q)).join(",");
-        let list = batches.get(colour);
-        if (!list) batches.set(colour, (list = []));
-        list.push(x, y);
-      }
-      for (const [colour, list] of batches) {
-        ctx.fillStyle = `rgb(${colour})`;
-        ctx.beginPath();
-        for (let k = 0; k < list.length; k += 2) {
-          const cx = (list[k] + 0.5) * pitch, cy = (list[k + 1] + 0.5) * pitch;
-          ctx.moveTo(cx + r, cy);
+      if (fall) {
+        // A short trail of fading heads behind, then the value itself, larger for being nearer.
+        for (let k = 6; k >= 0; k--) {
+          const at = k ? fallAt((t - FALL[0] - k * 0.028) / FALL[1]) : fall;
+          if (t - FALL[0] - k * 0.028 < 0) continue;
+          const cx = ox + (at.x + 0.5) * P, cy = (at.y + 0.5) * P, r = P * (0.42 + 0.16 * at.z) * (1 - k * 0.08);
+          ctx.globalAlpha = k ? 0.4 * (1 - k / 7) : 1;
+          const grad = ctx.createRadialGradient(cx - 0.38 * r, cy - 0.42 * r, 0.05 * r, cx, cy, r);
+          grad.addColorStop(0, `rgb(${mix(RED, WHITE, 0.55)})`);
+          grad.addColorStop(0.55, `rgb(${RED})`);
+          grad.addColorStop(1, `rgb(${mix(RED, BLACK, 0.3)})`);
+          ctx.fillStyle = grad;
+          ctx.beginPath();
           ctx.arc(cx, cy, r, 0, Math.PI * 2);
+          ctx.fill();
         }
-        ctx.fill();
+        ctx.globalAlpha = 1;
       }
     }
 
-    let running = false, last = 0;
+    let clock = 0, last = 0, lastT = 0, running = false, pending = 0;
+    const crossed = (from: number, to: number, at: number) => (from <= to ? from < at && at <= to : at > from || at <= to);
     function frame(now: number) {
       const dt = Math.min(0.05, (now - last) / 1000);
       last = now;
-      step(dt);
-      // Liquid crystal: dots darken toward their target and clear more slowly, so motion leaves a trail.
-      const rise = 1 - Math.exp(-dt * 26), fall = 1 - Math.exp(-dt * 11);
-      for (let i = 0; i < level.length; i++) { const d = target[i] - level[i]; level[i] += d * (d > 0 ? rise : fall); }
-      draw();
+      clock += dt;
+      const t = clock % LOOP;
+      // The well's thud as it sinks, the swarm called in, the value's splash, the line changing, the
+      // line let go, the well's knock as it closes.
+      if (crossed(lastT, t, WELL)) impulse(well.cx, well.cy, -0.3, 3.5);
+      if (crossed(lastT, t, GATHER)) gather();
+      if (crossed(lastT, t, HIT)) impulse(hit.x, hit.y, -2.2, 2.1);
+      if (crossed(lastT, t, SHIFT)) shift();
+      if (crossed(lastT, t, RELEASE)) release();
+      if (crossed(lastT, t, UNWELL + 0.2)) impulse(well.cx, well.cy, 0.25, 3.5);
+      lastT = t;
+      // The pointer: the rise under it eases after it, and its motion pushes a wake into the pins.
+      const follow = 1 - Math.exp(-dt * 14);
+      if (pointer) {
+        const mx = (pointer.x - lens.x) * follow, my = (pointer.y - lens.y) * follow;
+        lens.x += mx;
+        lens.y += my;
+        const moved = Math.hypot(mx, my);
+        if (moved > 0.05) impulse(lens.x, lens.y, -Math.min(0.12, moved * 0.04), 1.6);
+      }
+      lens.on += ((pointer ? 1 : 0) - lens.on) * (1 - Math.exp(-dt * 6));
+      if (lens.on < 0.002) lens.on = 0;
+      moveBeads(dt, t, clock);
+      targets(t, clock);
+      for (pending += dt; pending >= STEP; pending -= STEP) stepPhysics();
+      const ease = 1 - Math.exp(-dt * 12), bleed = 1 - Math.exp(-dt * 9);
+      for (let i = 0; i < ink.length; i++) { ink[i] += (I[i] - ink[i]) * ease; red[i] += (R[i] - red[i]) * bleed; }
+      draw(t);
       if (running) requestAnimationFrame(frame);
     }
-    // Reduced motion: one still frame, the noise held and the line formed.
+    // Reduced motion: one still frame, the well filled and the second line standing.
     function still() {
-      particles = [];
-      clock = 13; next = SCORE.length;
-      chaos = 0.6;
-      textBox = boxOf(source, 4);
-      step(0);
-      for (const [x, y] of source) target[y * cols + x] = 1;
-      level.set(target);
-      draw();
-    }
-    function restart() {
-      particles = [];
-      ripples = [];
-      for (let n = 0; n < 340; n++) particles.push(spawn(Math.random() * cols, Math.random() * rows));
-      clock = 0; next = 0;
+      reseat(9.5);
+      targets(9.5, 4);
+      s.set(T);
+      w.fill(0);
+      ink.set(I);
+      red.set(R);
+      draw(9.5);
     }
     new IntersectionObserver(([entry]) => {
       const was = running;
@@ -389,11 +615,12 @@ const t = T[lang];
     }).observe(root);
     let width = 0;
     new ResizeObserver(() => {
-      if (canvas.clientWidth === width) return;
+      // A hidden or collapsing screen (width 0) keeps its last layout.
+      if (!canvas.clientWidth || canvas.clientWidth === width) return;
       width = canvas.clientWidth;
-      resize();
-      restart();
+      layout(width);
       if (reduce) still();
+      else if (!running) draw(clock % LOOP);
     }).observe(canvas);
   }
 </script>
