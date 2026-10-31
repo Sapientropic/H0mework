@@ -31,6 +31,8 @@
 | compatibility | `23f23031eec00a03d30ee31d` |
 | CACHE_VERSION | `lean-parts-v1` |
 
+本次复核重新计算仍得到同一 `f0b3feec…` 选集、11 阶段；plan 的唯一 notice 是基线已存在但未写入固定布局的 `H0mework.Checks.OneBit.ZeroLawRootAdmissionRegression`（动态落在 `s2-01`）。它不属于本稿增量，未追加布局，避免无关旧分片失效；详情见 authority recheck。
+
 工具链、manifest、工作流及缓存算法逐字保持。固定布局只追加 2926 行；未执行 `--rebalance`、远端 seal/save/prune 或缓存删除。远端 76 项资产的前后 metadata 完全一致。13 处 `open private … from` 地址迁移、9 个文件的非计算代码生成标记均逐条可逆，未改变数学声明或证明体。
 
 Bell 与量子载体的原成功报告、原程序／配置、输入选择和资源身份保持，实际双引擎比较见[科学输入核对](../evidence/generated-society/acceptance/scientific-input-binding.json)。`full_replay=false`，本篇没有科学重跑。最近远端科学 artifact 已按原七天策略过期；较早本机回执在现有 verifier 中因历史 Makefile 差异保留原 `miss` 状态，均未改写为新执行或新缓存命中。

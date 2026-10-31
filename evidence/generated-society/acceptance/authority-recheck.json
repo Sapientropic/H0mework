@@ -125,5 +125,22 @@
     "interpretation": "The publish-authority correction changes map metadata only. The previous complete semantic build, trust, and type receipts remain retained at their recorded input identity; current map entry --require-ready and the affected source modules were rechecked separately."
   },
   "remote_CI_executed_for_new_selection": false,
-  "remote_cache_writes": false
+  "remote_cache_writes": false,
+  "ci_plan_recheck": {
+    "status": "passed",
+    "selection": "f0b3feec6ad427afa32bb28cbef5c06b762c9b56fad196a8bf5299b7603b6a82",
+    "module_count": 50543,
+    "stages": 11,
+    "parts_including_complete": 63,
+    "layout_existing_modules": 50542,
+    "preexisting_layout_gap": {
+      "module": "H0mework.Checks.OneBit.ZeroLawRootAdmissionRegression",
+      "planned_assignment": "s2-01",
+      "present_at_baseline_commit": "48dc9ad13ffa79d9c2e9a93a8bc755a2388320bc",
+      "baseline_source_sha256": "aa8c48f22ce0de9ecf48c03bbd90a715970814a095d961194eb72b6221e1eb2d",
+      "current_source_sha256": "aa8c48f22ce0de9ecf48c03bbd90a715970814a095d961194eb72b6221e1eb2d",
+      "layout_updated_in_this_task": false,
+      "reason": "This one-bit module predates the society delta and is absent from the verified baseline layout; appending it now would change unrelated shard s2-01 and invalidate the append-only cache-preservation comparison."
+    }
+  }
 }
