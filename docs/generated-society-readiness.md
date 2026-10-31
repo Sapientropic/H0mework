@@ -4,7 +4,7 @@
 
 ## 本地状态
 
-完整来源接入、公开／原字节逆恢复、Lean 构建、trust=0 metadata 审查和完整类型 DAG 验收均已通过。
+完整来源接入、公开／原字节逆恢复、原 map 身份下的 11,921-job Lean 构建、trust=0 metadata 审查和完整类型 DAG 验收均已通过；当前 map authority 修正见下方复核记录。
 
 | 对象 | 实际验收 |
 | --- | --- |
@@ -40,3 +40,7 @@ Bell 与量子载体的原成功报告、原程序／配置、输入选择和资
 只读核实了[原完整内核运行 39025063045](https://github.com/Sapientropic/H0mework/actions/runs/39025063045)、[迁入前当前选集验收 39036946868](https://github.com/Sapientropic/H0mework/actions/runs/39036946868)及[最近成功复用 39771257871](https://github.com/Sapientropic/H0mework/actions/runs/39771257871)。现存旧 seal 实际绑定 `587596253b08df5461d398b4b4505837cce1fbd8`／run `39036946868`。
 
 本稿的新指纹没有执行远端 CI，也没有取得远端 seal。新提交的远端完整验收须在获准推送和运行后单独取得。
+
+## 2026-11-01 authority recheck
+
+并行写作窗口后来更新了 `claims.md` 的书面对照段；本地 map 的 `claims_authority` 已同步到 publish 当前提交 `054d2ee92f226e36166cb33cb5ab8b772fcca39f` 与当前 SHA。另恢复了 3 个导入源码的原始 EOF 字节，使 export-map 与实际文件完全一致。三份受影响源码分别通过 `lake env lean --root=.. --trust=0 -DwarningAsError=true` focused 检查；当前 map 的 `entry --require-ready` 重新通过（194 映射项、3213 owner、75 资源、535 完整类型声明）。完整 11,921-job 语义构建的原回执保留；authority 修正只改变 map 元数据，未重新冒充新的全量构建。逐项回执见[authority recheck](../evidence/generated-society/acceptance/authority-recheck.json)。

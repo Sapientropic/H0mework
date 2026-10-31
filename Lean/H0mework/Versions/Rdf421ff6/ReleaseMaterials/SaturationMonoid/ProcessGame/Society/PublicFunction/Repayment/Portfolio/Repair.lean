@@ -92,3 +92,4 @@ theorem every_order_is_an_actual_requested_suffix (current : RawCurrent Party Go
   exact List.mem_append_right _ (List.mem_map.mpr ⟨order, present, rfl⟩)
 
 end SaturationMonoid.ProcessGame.Society.PublicFunction.Repayment.Portfolio.Repair
+

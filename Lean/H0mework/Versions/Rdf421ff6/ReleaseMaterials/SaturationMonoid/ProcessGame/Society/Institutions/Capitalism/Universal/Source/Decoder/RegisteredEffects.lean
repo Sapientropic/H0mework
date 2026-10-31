@@ -437,3 +437,4 @@ theorem compiled_keeps_all_original_gates {current : (Root.ProgrammeSource.V inp
 #print axioms rawEffects
 
 end SaturationMonoid.ProcessGame.Society.Institutions.Capitalism.Universal.Source.Decoder.RegisteredEffects
+
