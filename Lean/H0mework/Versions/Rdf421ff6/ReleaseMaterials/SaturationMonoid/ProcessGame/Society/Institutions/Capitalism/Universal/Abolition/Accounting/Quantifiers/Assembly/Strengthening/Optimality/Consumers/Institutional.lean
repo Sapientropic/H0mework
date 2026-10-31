@@ -1,0 +1,21 @@
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.SaturationMonoid.ProcessGame.Society.Institutions.Capitalism.Universal.Abolition.Accounting.Quantifiers.Assembly.Strengthening.Optimality.Root.Institutional
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.SaturationMonoid.ProcessGame.Society.Institutions.Capitalism.Universal.Abolition.Accounting.Quantifiers.Assembly.Strengthening.Optimality.Consumers.Registered
+
+set_option autoImplicit false
+
+namespace SaturationMonoid.ProcessGame.Society.Institutions.Capitalism.Universal.Abolition.Accounting.Quantifiers.Assembly.Strengthening.Optimality.Consumers
+
+open Source.Program Innovation
+open Quantifiers.Joint.Consumers.Compact (seed grossClaim)
+noncomputable section
+
+theorem the_original_registered_root_consumes_the_actual_institutional_cost_comparison :
+    Root.InstitutionalCostedCapitalRootAt seed grossClaim :=
+  Root.the_original_root_compares_every_actual_institutional_clearing_strategy seed grossClaim
+
+theorem the_institutional_comparison_keeps_the_entire_previous_capital_contract :
+    Total.CapitalLineStrengthenedAt seed grossClaim :=
+  the_original_registered_root_consumes_the_actual_institutional_cost_comparison.toCapitalLineStrengthenedAt
+
+end
+end SaturationMonoid.ProcessGame.Society.Institutions.Capitalism.Universal.Abolition.Accounting.Quantifiers.Assembly.Strengthening.Optimality.Consumers

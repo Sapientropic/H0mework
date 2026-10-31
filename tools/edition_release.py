@@ -15,6 +15,7 @@ EDITIONS = {
     "low-energy": ("docs/low-energy-release-map.json", "h0mework/low-energy-release-map@1"),
     "whole-ledger": ("docs/whole-ledger-map.json", "h0mework/whole-ledger-map@1"),
     "one-bit": ("checks/one-bit-control-map.json", "h0mework/one-bit-control-map@1"),
+    "generated-society": ("docs/generated-society-map.json", "h0mework/generated-society-map@1"),
 }
 
 

@@ -98,6 +98,30 @@ class ExportTests(unittest.TestCase):
         self.assertEqual(row["private_name_rewrites"][0]["source_name"], "_private.A")
         self.assertEqual(self.export["modules"], [])
 
+    def test_explicit_artifact_namespace_preserves_source_identity(self):
+        raw = b'{"status":"failed","result":1.00}\n'
+        self.write(self.source, "Verification/receipt.json", raw)
+        revision = self.commit(self.source)
+        path = self.selection([{"source_commit": revision, "artifacts": ["Verification/receipt.json"]}])
+        value = json.loads(path.read_bytes())
+        value["artifact_namespace"] = "generated-society"
+        path.write_text(json.dumps(value))
+        plan = w.stage(self.public, self.source, path, self.directory / "stage")
+        row = plan["artifacts"][0]
+        self.assertTrue(row["path"].startswith("evidence/generated-society/original/"))
+        self.assertEqual(row["source_sha256"], w.sha(raw))
+        self.assertEqual((self.directory / "stage/stage" / row["path"]).read_bytes(), raw)
+
+    def test_artifact_namespace_rejects_paths_and_lookalikes(self):
+        for namespace in ("../society", "society/receipt", "Generated-society", "society--receipt", "", None):
+            with self.subTest(namespace=namespace):
+                path = self.selection([{"source_commit": "a" * 40, "artifacts": ["receipt.json"]}])
+                value = json.loads(path.read_bytes())
+                value["artifact_namespace"] = namespace
+                path.write_text(json.dumps(value))
+                with self.assertRaisesRegex(w.ExportError, "artifact_namespace"):
+                    w.load_selection(path)
+
     def test_unchanged_body_with_changed_dependency_gets_distinct_owner(self):
         self.write(self.source, "Lean/A.lean", b'import Mathlib\ndef a := 1\n')
         self.write(self.source, "Lean/Root.lean", b'import A\ndef root := a\n')
@@ -279,6 +303,35 @@ class ExportTests(unittest.TestCase):
         self.assertEqual(row["source_sha256"], w.sha(raw))
         self.assertEqual(row["compression"]["uncompressed_sha256"], w.sha(restored))
 
+    def test_existing_artifact_sidecar_reuses_the_actual_public_root(self):
+        raw = b'{"root":"/Users/fixture/Homework","status":"certified","result":1.00}\n'
+        self.write(self.source, "Verification/receipt.json", raw)
+        revision = self.commit(self.source)
+        rules = [{"pointer": "/root", "relative": "."}]
+        public = w.pub.declared_runtime_paths(raw, rules)[0]
+        path = "evidence/receipt.json"
+        self.write(self.public, path, public)
+        row = {"source": "Verification/receipt.json", "source_revision": revision, "source_revisions": [revision],
+               "path": path, "target": path, "source_sha256": w.sha(raw), "target_sha256": w.sha(public),
+               "publication": {"kind": w.pub.DECLARED_KIND, "runtime_paths": rules, "payload_sha256": w.sha(public)}}
+        w.pub.externalize_runtime_paths(row, self.public, "evidence/generated-society/publication")
+        self.export["artifacts"].append(row)
+        self.write_map()
+        plan = self.run_stage([{"source_commit": revision, "artifacts": ["Verification/receipt.json"]}])
+        self.assertEqual(plan["artifacts"], [])
+        self.assertEqual(plan["summary"]["reused_artifacts"], 1)
+        planner = w.Planner(self.public, self.source, {"selections": []})
+        try:
+            latest = json.loads(planner.export_bytes)
+            latest["scope"] = "Unrelated source-owner admission"
+            w.reconcile_artifact_baseline(planner, plan, json.dumps(latest).encode())
+        finally:
+            planner.close()
+        sidecar = self.public / row["publication"]["runtime_paths_ref"]["path"]
+        sidecar.unlink()
+        with self.assertRaisesRegex(w.pub.PublicationError, "sidecar is unavailable"):
+            self.run_stage([{"source_commit": revision, "artifacts": ["Verification/receipt.json"]}], name="missing-metadata")
+
     def test_linked_original_certification_requires_the_actual_verdict_digest(self):
         linked = b'{"exactType":"Nat", "status":"certified"}'
         verdict = json.dumps({"manifest": {"sha256": w.sha(linked)}, "status": "certified"}).encode()
@@ -311,6 +364,65 @@ class ExportTests(unittest.TestCase):
         plan = self.run_stage([{"source_commit": revision, "artifacts": ["Verification/list.json"]}])
         row = plan["artifacts"][0]
         self.assertEqual((self.directory / "stage/stage" / row["path"]).read_bytes(), raw.replace(b'/Users/fixture/Homework', b'.'))
+
+    def original_verification_fixture(self):
+        child = b'{"scope":"original source/artifact closure","status":"frozen","result":1.00}\n'
+        verification = (b'{"phase":"certify","status":"T1","capsule_sha256":"'
+                        + w.sha(child).encode() + b'","seconds":121.101}\n')
+        ledger = b'Original verification SHA256 ' + w.sha(verification).encode() + b'\n'
+        self.write(self.source, "Verification/ledger.md", ledger)
+        revision = self.commit(self.source)
+        rows = []
+        for name, raw in (("verification.json", verification), ("audit-input.json", child)):
+            self.write(self.directory, name, raw)
+            rows.append({"source_commit": revision, "source_path": "Verification/original/" + name,
+                         "source_sha256": w.sha(raw), "provider": name, "source_origin": {
+                "kind": "retained-original-certification", "original_artifact_name": name,
+                "original_source_sha256": w.sha(raw), "original_certification_sha256": w.sha(verification),
+                "original_certification_artifact_name": "verification.json",
+                "original_certification_sha_bindings": [] if name == "verification.json" else ["capsule_sha256"],
+                "ledger_commit": revision, "ledger_path": "Verification/ledger.md", "ledger_sha256": w.sha(ledger)}})
+        document = self.directory / "providers.json"
+        selection = [{"source_commit": revision, "artifacts": [row["source_path"] for row in rows]}]
+        return child, verification, rows, document, selection
+
+    def test_verification_named_root_binds_original_capsule_without_becoming_a_verdict(self):
+        child, verification, rows, document, selection = self.original_verification_fixture()
+        document.write_text(json.dumps(rows))
+        plan = self.run_stage(selection, [document])
+        self.assertEqual(len(plan["artifacts"]), 2)
+        for row in plan["artifacts"]:
+            raw = child if row["source"].endswith("audit-input.json") else verification
+            self.assertEqual((self.directory / "stage/stage" / row["path"]).read_bytes(), raw)
+            self.assertNotIn("original_verdict_sha256", row["source_origin"])
+
+    def test_changed_original_verification_root_child_or_binding_is_rejected(self):
+        import copy
+        child, verification, rows, document, selection = self.original_verification_fixture()
+        for change in ("root", "child", "binding", "binding-type", "root-name", "ambiguous-fields", "incomplete-fields"):
+            with self.subTest(change=change):
+                changed = copy.deepcopy(rows)
+                self.write(self.directory, "verification.json", verification)
+                self.write(self.directory, "audit-input.json", child)
+                if change in {"root", "child"}:
+                    index = 0 if change == "root" else 1
+                    raw = (verification if index == 0 else child).replace(b'1.00', b'2.00').replace(b'121.101', b'122.101')
+                    self.write(self.directory, changed[index]["provider"], raw)
+                    changed[index]["source_sha256"] = w.sha(raw)
+                    changed[index]["source_origin"]["original_source_sha256"] = w.sha(raw)
+                elif change == "binding":
+                    changed[1]["source_origin"]["original_certification_sha_bindings"] = ["unrelated.sha256"]
+                elif change == "binding-type":
+                    changed[1]["source_origin"]["original_certification_sha_bindings"] = [{"sha256": w.sha(child)}]
+                elif change == "root-name":
+                    changed[1]["source_origin"]["original_certification_artifact_name"] = "verdict.json"
+                elif change == "ambiguous-fields":
+                    changed[1]["source_origin"]["original_verdict_sha256"] = w.sha(verification)
+                else:
+                    changed[1]["source_origin"].pop("original_certification_artifact_name")
+                document.write_text(json.dumps(changed))
+                with self.assertRaises(w.ExportError):
+                    self.run_stage(selection, [document], name="bad-" + change)
 
     def test_explicit_text_runtime_spans_use_the_registered_v2_contract(self):
         raw = b'Original certified runtime: /Volumes/Fixture/audit/run.lean\nMachine fact: True\n'
@@ -358,6 +470,65 @@ class ExportTests(unittest.TestCase):
         self.assertEqual(rule["source_expression"], "Lean.mkPrivateNameCore `A `Domain.value")
         self.assertEqual(rule["target_expression"], "Lean.mkPrivateNameCore `" + owner + " `Domain.value")
         with patch.object(sv, "ROOT", self.directory / "stage/stage"):
+            self.assertEqual(sv.module_views(row, {})[1], raw)
+
+    def test_private_open_owner_uses_exact_actual_import_closure_and_restores_full_source(self):
+        raw = (b'import A\nimport Mathlib\n'
+               b'-- open private fake from Missing\n'
+               b'def text := r##"open private fake from Missing"##\n'
+               b'open private first Nested.member from\n  A\n'
+               b'open private external from Mathlib.Provider\n'
+               b'theorem root : True := True.intro\n')
+        self.write(self.source, 'Lean/A.lean', b'import Mathlib\nprivate def first := 1\n')
+        self.write(self.source, 'Lean/Root.lean', raw)
+        revision = self.commit(self.source)
+        plan = self.run_stage([{'source_commit': revision, 'roots': ['Lean/Root.lean']}])
+        key = w.source_key(revision, 'Lean/A.lean')
+        row = next(row for row in plan['additions'] if row['source_path'] == 'Lean/Root.lean')
+        self.assertEqual(row['private_open_module_rewrites'],
+                         [{'source_module': 'A', 'target_module': plan['assignments'][key], 'count': 1}])
+        public = (self.directory / 'stage/stage' / row['path']).read_bytes()
+        self.assertIn(b'first Nested.member from\n  ' + plan['assignments'][key].encode(), public)
+        self.assertIn(b'open private external from Mathlib.Provider', public)
+        with patch.object(sv, 'ROOT', self.directory / 'stage/stage'):
+            self.assertEqual(sv.module_views(row, {})[1], raw)
+
+    def test_private_open_outside_or_ambiguous_actual_import_closure_is_rejected(self):
+        self.write(self.source, 'Lean/A/Owner.lean', b'import Shared\n')
+        self.write(self.source, 'Lean/B/Owner.lean', b'import Shared\n')
+        self.write(self.source, 'Lean/A/Shared.lean', b'import Mathlib\nprivate def value := 1\n')
+        self.write(self.source, 'Lean/B/Shared.lean', b'import Mathlib\nprivate def value := 2\n')
+        self.write(self.source, 'Lean/Root.lean', b'import A.Owner\nimport B.Owner\nopen private value from Shared\n')
+        revision = self.commit(self.source)
+        with self.assertRaisesRegex(w.ExportError, 'Unresolved exact private owner Shared'):
+            self.run_stage([{'source_commit': revision, 'roots': ['Lean/Root.lean']}])
+        self.write(self.source, 'Lean/Root.lean', b'import A.Owner\nopen private value from Missing\n')
+        revision = self.commit(self.source)
+        with self.assertRaisesRegex(w.ExportError, 'Unresolved exact private owner Missing'):
+            self.run_stage([{'source_commit': revision, 'roots': ['Lean/Root.lean']}], name='outside-imports')
+
+    def test_registered_noncomputable_marker_survives_new_dependency_owner_and_exact_inverse(self):
+        raw = b'import Dep\ndef submit (n : Nat) : Nat :=\n  n + dependency\n'
+        rules = [{'declaration': 'submit', 'source_head': 'def submit (n : Nat) : Nat :='}]
+        self.write(self.source, 'Lean/Dep.lean', b'import Mathlib\ndef dependency := 1\n')
+        self.write(self.source, 'Lean/Root.lean', raw)
+        first = self.commit(self.source)
+        self.existing('Lean/Dep.lean', b'import Mathlib\ndef dependency := 1\n', first, target='H0mework.Dep')
+        owner = self.existing('Lean/Root.lean', raw, first, target='H0mework.Root', imports={'Dep': 'H0mework.Dep'})
+        public = sv.rewrite_noncomputable_markers((self.public / owner['path']).read_text(), rules).encode()
+        self.write(self.public, owner['path'], public)
+        view = sv.rewrite_noncomputable_markers(raw.decode(), rules).encode()
+        owner.update(noncomputable_marker_rewrites=rules, target_sha256=w.sha(public), view_sha256=w.sha(view))
+        self.write_map()
+        self.write(self.source, 'Lean/Dep.lean', b'import Mathlib\ndef dependency := 2\n')
+        second = self.commit(self.source)
+        plan = self.run_stage([{'source_commit': second, 'roots': ['Lean/Root.lean']}])
+        row = next(row for row in plan['additions'] if row['source_path'] == 'Lean/Root.lean')
+        self.assertEqual(row['noncomputable_marker_rewrites'], rules)
+        self.assertEqual(row['source_sha256'], w.sha(raw))
+        self.assertEqual(row['view_sha256'], w.sha(view))
+        self.assertIn(b'noncomputable def submit', (self.directory / 'stage/stage' / row['path']).read_bytes())
+        with patch.object(sv, 'ROOT', self.directory / 'stage/stage'):
             self.assertEqual(sv.module_views(row, {})[1], raw)
 
     def test_split_private_owner_follows_the_actual_import_and_ignores_lookalikes(self):

@@ -80,10 +80,11 @@ def verify_types(root, control, scope):
     require(receipt.get("source_scopes", {}).get(package) == {
         "source_scope_sha256": scope["digest"], "modules": scope["modules"]}, "Control type source scope changed")
     accepted = receipt["input_identity"]["sha256"]
-    for key, path in (("lakefile", "Lean/lakefile.toml"), ("toolchain", "Lean/lean-toolchain"),
+    for key, path in (("toolchain", "Lean/lean-toolchain"),
                       ("manifest", "Lean/lake-manifest.json")):
         require(release.sha(release.repo_file(root, path).read_bytes()) == accepted[key],
                 "Control type environment changed: " + key)
+    release.verify_build_configuration(root, accepted["lakefile"], data=control, scopes={package: scope})
     for row in rows:
         whole_ledger.validate_complete_type(row)
         require(row.get("package") == package and row.get("unsafe") is False and row.get("partial") is False

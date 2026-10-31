@@ -10,6 +10,8 @@ source_commit, original-path roots, and original-path artifacts. Output plan.jso
 contains assignments keyed by commit:path, full additions/artifacts rows,
 reused owners, and explicit revision/alias updates. New public bytes are under
 stage/<row.path>; exact effective inputs are under raw/<source_sha256>.
+An optional artifact_namespace changes only new artifact destinations; the
+default remains whole-ledger and existing owners retain their public paths.
 
 An optional h0mework/whole-ledger-providers@1 document contains providers with
 source_commit, source_path, source_sha256, provider (relative to that document),
@@ -39,7 +41,8 @@ PROVIDER_SCHEMA = "h0mework/whole-ledger-providers@1"
 PLAN_SCHEMA = "h0mework/whole-ledger-export-plan@1"
 REVISION = re.compile(r"[0-9a-f]{40}\Z")
 DIGEST = re.compile(r"[0-9a-f]{64}\Z")
-INHERITED_FIELDS = ("local_instance_names", "proof_body_rewrites", "build_adaptations", "suggestion_name_exclusions")
+INHERITED_FIELDS = ("local_instance_names", "proof_body_rewrites", "build_adaptations", "suggestion_name_exclusions",
+                    "noncomputable_marker_rewrites")
 PRIVATE_PATH = re.compile(r'/(?:Users|home|home2)/[^/\s"\\]+/[^\s"\\:;]*|/var/folders/[^\s"\\:;]*')
 UNDECLARED_PATH = re.compile(r'/(?:Users|home|home2|tmp|Volumes)/[^\s"\\:;]+|/var/folders/[^\s"\\:;]*')
 
@@ -81,6 +84,9 @@ def load_selection(path: Path) -> dict:
     value = json.loads(path.read_bytes())
     if not isinstance(value, dict) or value.get("schema") != SELECTION_SCHEMA:
         raise ExportError("Unsupported whole-ledger selection schema")
+    namespace = value.get("artifact_namespace", "whole-ledger")
+    if not isinstance(namespace, str) or not re.fullmatch(r"[a-z][a-z0-9]*(?:-[a-z0-9]+)*", namespace):
+        raise ExportError("artifact_namespace must be one lower-case path component")
     selections = value.get("selections")
     if not isinstance(selections, list) or not selections:
         raise ExportError("selections must be a nonempty list")
@@ -393,16 +399,36 @@ class Planner:
                     token = token.replace("~1", "/").replace("~0", "~")
                     bound = bound[int(token)] if isinstance(bound, list) else bound[token]
                 ledger = json.dumps(bound).encode()
-            verdict_digest = origin.get("original_verdict_sha256", sha(raw))
+            generic_fields = {"original_certification_sha256", "original_certification_artifact_name",
+                              "original_certification_sha_bindings"}
+            generic = bool(generic_fields & origin.keys())
+            if generic:
+                if (not generic_fields <= origin.keys()
+                        or any(key.startswith("original_verdict_") for key in origin)):
+                    raise ExportError("An explicit original certification link needs its digest, artifact name and bindings")
+                certification_name = origin["original_certification_artifact_name"]
+                if (not isinstance(certification_name, str) or not certification_name
+                        or PurePosixPath(certification_name).name != certification_name
+                        or certification_name in (".", "..") or "\\" in certification_name):
+                    raise ExportError("An original certification link needs an exact artifact basename")
+                verdict_digest = origin["original_certification_sha256"]
+                bindings = origin["original_certification_sha_bindings"]
+                if not isinstance(bindings, list) or any(not isinstance(binding, str) or not binding for binding in bindings):
+                    raise ExportError("An original certification link needs explicit SHA-binding paths")
+            else:
+                certification_name = "verdict.json"
+                verdict_digest = origin.get("original_verdict_sha256", sha(raw))
+                bindings = origin.get("original_verdict_sha_bindings")
+            certification_label = "certification" if generic else "verdict"
             if (origin.get("original_source_sha256") != sha(raw)
                     or not isinstance(verdict_digest, str) or not DIGEST.fullmatch(verdict_digest)
                     or not re.search(rb"(?<![0-9a-f])" + verdict_digest.encode() + rb"(?![0-9a-f])", ledger)):
                 raise ExportError("Fixed ledger does not bind the retained original SHA: " + origin["ledger_path"])
             if verdict_digest != sha(raw):
                 matches = [(body, metadata) for body, metadata in self.providers.values()
-                           if sha(body) == verdict_digest and metadata.get("original_artifact_name") == "verdict.json"]
+                           if sha(body) == verdict_digest and metadata.get("original_artifact_name") == certification_name]
                 if len(matches) != 1:
-                    raise ExportError("A linked certification artifact needs its exact retained original verdict")
+                    raise ExportError("A linked certification artifact needs its exact retained original " + certification_label)
                 verdict, verdict_origin = matches[0]
                 self.verify_origin(verdict_origin, verdict, epoch)
                 values = {}
@@ -416,15 +442,17 @@ class Planner:
                     else:
                         values.setdefault(path, []).append(value)
                 walk(json.loads(verdict))
-                bindings = origin.get("original_verdict_sha_bindings")
                 if (not isinstance(bindings, list) or not bindings
                         or any(values.get(binding) != [sha(raw)] for binding in bindings)):
-                    raise ExportError("Original verdict does not bind the linked artifact SHA: " + str(bindings))
-            elif origin.get("original_artifact_name") == "verdict.json":
-                document = json.loads(raw)
-                for field, origin_field in (("checkpoint", "checkpoint"), ("fixed_head", "original_fixed_head")):
-                    if origin_field in origin and document.get(field) != origin[origin_field]:
-                        raise ExportError("Original verdict execution identity differs: " + field)
+                    raise ExportError("Original " + certification_label + " does not bind the linked artifact SHA: " + str(bindings))
+            else:
+                if generic and (origin.get("original_artifact_name") != certification_name or bindings != []):
+                    raise ExportError("The original certification root needs its own exact name and empty child bindings")
+                if origin.get("original_artifact_name") == "verdict.json":
+                    document = json.loads(raw)
+                    for field, origin_field in (("checkpoint", "checkpoint"), ("fixed_head", "original_fixed_head")):
+                        if origin_field in origin and document.get(field) != origin[origin_field]:
+                            raise ExportError("Original verdict execution identity differs: " + field)
             return
         receipt_path = origin.get("receipt_path")
         digest = origin.get("receipt_sha256")
@@ -588,7 +616,7 @@ class Planner:
                           and (key not in self.resource_includes or not row.get("compression"))]
             if candidates:
                 row = min(candidates, key=lambda value: (not sv.row_at(value, commit), value["path"]))
-                pub.verify_artifact((self.root / row["path"]).read_bytes(), row, raw)
+                pub.verify_artifact((self.root / row["path"]).read_bytes(), row, raw, root=self.root)
                 bindings[key] = row["path"]
                 reuse.append({"source_key": key, "source_sha256": digest, "public_path": row["path"],
                               "target_sha256": row["target_sha256"]})
@@ -601,7 +629,7 @@ class Planner:
                 bindings[key] = row["path"]
                 continue
             prefix = "scripts" if path.endswith(".py") else "evidence"
-            target = prefix + "/whole-ledger/original/R" + commit[:8] + "/" + path
+            target = prefix + "/" + self.selection.get("artifact_namespace", "whole-ledger") + "/original/R" + commit[:8] + "/" + path
             if target.casefold() in taken or (self.root / target).exists():
                 raise ExportError("New artifact target collision: " + target)
             taken.add(target.casefold())
@@ -658,7 +686,7 @@ class Planner:
                             yield pointer
                     pointers = list(find_path(json.loads(raw)))
                     raise ExportError("Artifact needs explicit runtime_paths at " + source_key(commit, row["source"]) + ": " + ", ".join(pointers))
-                pub.verify_artifact(raw, row, originals[source_key(commit, row["source"])])
+                pub.verify_artifact(raw, row, originals[source_key(commit, row["source"])], root=self.root)
         by_target = {row["path"]: row for row in self.export["artifacts"] + additions}
         for key, target in bindings.items():
             row = by_target[target]
@@ -677,7 +705,7 @@ class Planner:
                     if bindings[key] == previous:
                         bindings[key] = row["path"]
                         self.resources[key].update(target=row["path"], target_sha256=row["target_sha256"])
-                pub.verify_artifact(compressed, row, originals[source_key(row["source_revision"], row["source"])])
+                pub.verify_artifact(compressed, row, originals[source_key(row["source_revision"], row["source"])], root=self.root)
         return additions, reuse, bindings, outputs, updates, originals, publication_summary
 
     def public_layout(self, target):
@@ -761,6 +789,7 @@ class Planner:
             if values:
                 row[field] = json.loads(next(iter(values)))
         work = sv.rewrite_proof_bodies(raw.decode(), row.get("proof_body_rewrites"))
+        work = sv.rewrite_noncomputable_markers(work, row.get("noncomputable_marker_rewrites"))
         resource_rules, digest_rules = [], []
         for resource in source["resources"]:
             artifact = artifacts[resource["source_key"]]
@@ -787,6 +816,14 @@ class Planner:
             text = text[:begin] + address + text[end:]
         if resource_rules:
             row["resource_rewrites"] = resource_rules
+        private_open_counts = collections.Counter(name for _, _, name in sv.private_open_module_tokens(text)
+                                                 if name.split(".")[0] not in sv.EXTERNAL)
+        private_open_rules = [{"source_module": name, "target_module": self.private_target(name, key, assignments),
+                               "count": count} for name, count in sorted(private_open_counts.items())]
+        private_open_rules = [rule for rule in private_open_rules if rule["source_module"] != rule["target_module"]]
+        if private_open_rules:
+            text = sv.rewrite_private_open_modules(text, private_open_rules)
+            row["private_open_module_rewrites"] = private_open_rules
         masked = sv.mask_comments_and_strings(text)
         names = set()
         for name in re.findall(r"(?<![\w.])_private\.([A-Za-z_][A-Za-z0-9_.']*)", masked):
@@ -864,7 +901,9 @@ class Planner:
         text = sv.name_local_instances(text, row.get("local_instance_names"))
         text = sv.suggestion_index_postlude(text, row.get("suggestion_name_exclusions"))
         view = sv.suggestion_index_postlude(
-            sv.rewrite_proof_bodies(raw.decode(), row.get("proof_body_rewrites")),
+            sv.rewrite_noncomputable_markers(
+                sv.rewrite_proof_bodies(raw.decode(), row.get("proof_body_rewrites")),
+                row.get("noncomputable_marker_rewrites")),
             row.get("suggestion_name_exclusions")).encode()
         encoded = text.encode()
         for rule in digest_rules:
@@ -1052,7 +1091,7 @@ def reconcile_artifact_baseline(planner, plan, latest_bytes):
         current, prior = by_path.get(path), previous[path]
         if current is None or any(current.get(field) != prior.get(field) for field in identity_fields):
             raise ExportError("Selected artifact changed during planning; rerun against the new map: " + path)
-        pub.verify_artifact((planner.root / path).read_bytes(), current)
+        pub.verify_artifact((planner.root / path).read_bytes(), current, root=planner.root)
     for row in plan["artifacts"]:
         if (row["path"] in by_path or (planner.root / row["path"]).exists()
                 or any(old["source"] == row["source"] and old["source_sha256"] == row["source_sha256"]

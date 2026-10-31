@@ -1,0 +1,21 @@
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.SaturationMonoid.ProcessGame.Society.Institutions.Capitalism.Universal.Abolition.Accounting.Quantifiers.Assembly.Strengthening.Optimality.Completion.Complete
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.SaturationMonoid.ProcessGame.Society.Institutions.Capitalism.Universal.Abolition.Accounting.Quantifiers.Assembly.Strengthening.Optimality.Consumers.Institutional
+
+set_option autoImplicit false
+
+namespace SaturationMonoid.ProcessGame.Society.Institutions.Capitalism.Universal.Abolition.Accounting.Quantifiers.Assembly.Strengthening.Optimality.Consumers
+
+open Source.Program Innovation
+open Quantifiers.Joint.Consumers.Compact (seed grossClaim)
+noncomputable section
+
+theorem the_original_registered_root_consumes_the_complete_cost_quantifier_contract :
+    Completion.ClearingCostClaimsClosedAt seed grossClaim :=
+  Completion.the_original_capital_root_closes_the_actual_clearing_cost_and_delay_quantifiers seed grossClaim
+
+theorem the_cost_quantifier_contract_preserves_the_entire_original_capital_theorem :
+    Total.CapitalLineStrengthenedAt seed grossClaim :=
+  the_original_registered_root_consumes_the_complete_cost_quantifier_contract.toCapitalLineStrengthenedAt
+
+end
+end SaturationMonoid.ProcessGame.Society.Institutions.Capitalism.Universal.Abolition.Accounting.Quantifiers.Assembly.Strengthening.Optimality.Consumers

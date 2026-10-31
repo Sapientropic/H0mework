@@ -83,12 +83,13 @@ def verify_recorded_types(data, scopes, *, root=release.ROOT):
     result = json.loads(raw)
     if result.get("status") != "passed" or result.get("inputs_unchanged") is not True:
         raise release.ReleaseError("Complete types have no stable actual acceptance")
-    fixed_inputs = {"lakefile": "Lean/lakefile.toml", "toolchain": "Lean/lean-toolchain",
+    fixed_inputs = {"toolchain": "Lean/lean-toolchain",
                     "manifest": "Lean/lake-manifest.json"}
     accepted_inputs = result.get("input_identity", {}).get("sha256", {})
     for name, path in fixed_inputs.items():
         if release.sha(release.repo_file(root, path).read_bytes()) != accepted_inputs.get(name):
             raise release.ReleaseError("Recorded complete type build input changed: " + name)
+    release.verify_build_configuration(root, accepted_inputs.get("lakefile"), data=data, scopes=scopes)
     for name, scope in scopes.items():
         if result.get("source_scopes", {}).get(name) != scope:
             raise release.ReleaseError("Recorded complete type source scope changed: " + name)

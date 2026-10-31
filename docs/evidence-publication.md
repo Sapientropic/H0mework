@@ -13,6 +13,7 @@
 | `compression` | 可选的无损 gzip 编码及解压后的字节数、SHA256；来源摘要保持原件身份 |
 | `publication.kind` | 声明的公开变换；JSON 使用相对路径或精确指针，程序及文本使用 `declared-text-runtime-paths/v1` |
 | `publication.runtime_paths` | v2 的精确 JSON 指针、字典键位置及对应相对地址 |
+| `publication.runtime_paths_ref` | 可选的规则列表 gzip 侧载：仓内相对路径、压缩 SHA256、解压 SHA256 与字节数；与内联列表互斥 |
 | `publication.payload_sha256` | 路径规范化后的原始序列化字节摘要；保留数值的原始写法 |
 | `publication.digest_rewrites` | 公开回执读取另一个公开回执时，对绑定摘要的明确更新 |
 
@@ -30,6 +31,8 @@
 
 整账法的新文本工件显式选用 `declared-text-runtime-paths/v2`，增加临时目录和存储卷的运行地址区间。旧 v1 与默认规则保持原含义；新版同样只替换已登记的字符区间，原 certified／pending 状态、数字及回执 SHA 不变。
 
+社会稿新增工件的长规则列表可调用 `externalize_runtime_paths(row, root, "evidence/generated-society/publication")` 单独无损压缩，避免导出映射超过单文件上限。侧载只压缩工具元数据，科学工件字节、原 SHA、公开 SHA 及变换算法保持；既有内联记录不自动改写。读端从实际仓库根解析安全相对路径，先核对压缩文件、解压字节及两份摘要，再执行同一规则；缺失、损坏或路径越界均失败。原路径恢复与历史视图同样使用各自的实际仓库根。
+
 ## Lean 资源消费者
 
 包含公开回执的 Lean 模块继续校验文件的完整 SHA256。导出记录用 `resource_sha256_rewrites` 登记原、新资源摘要，用 `view_sha256` 登记公开原路径视图的字节身份。
@@ -37,6 +40,8 @@
 `resource_rewrites.data_sha256` 保留原始资源身份，`target_artifact` 指向公开资源；公开资源的摘要取其工件记录的 `target_sha256`。这些地址及摘要改写可逆，模块的原 `source_sha256` 可以逐字节复核。
 
 Lean 私有声明的名称包含所属模块地址。模块迁移时，显式引用这些名称的源码用 `private_name_rewrites` 登记原／新地址；[`source_view.py`](../tools/source_view.py) 的 `rewrite_private_names` 只改声明的名称引用，保留注释、字符串和相似长名称。原路径视图恢复所属模块地址并核对原摘要。
+
+`private_open_module_rewrites` 同样登记 `open private … from` 的完整模块 owner 及精确次数，目标由同一实际 import 闭包认回。只改 `from` 后的模块 token，成员、定义、声明和证明字节保持；外部模块不改写。缺匹配、次数或 owner 混淆均拒绝，原路径视图先逆转该地址，再恢复 imports 并核对原源码 SHA。
 
 通过 `Name.toString.startsWith` 查找私有函数的原宏使用 `private_owner_string_rewrites` 登记原／新 owner。`rewrite_private_owner_strings` 只改唯一的、已登记的可执行 `.startsWith` 完整前缀字面量；保留普通消息、注释、raw／转义字符串及相似长名称。逆向恢复后仍核对完整原源码摘要，宏的唯一 owner 条件与实际函数值保持。
 

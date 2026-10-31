@@ -66,6 +66,14 @@ charged 的 `MixedSpectatorCandidate` 下各模块也会生成同名 `DecidableE
 
 R9 的 `ActualEMSourceLockedCarrier` 消费同一 canonical LockedFieldReturn owner。两支 20 份完整程序在精确替换实际 import token 后正文及递归输入相同，另三份原零声明 import alias 已核对。迁移改动这一条 import，原始两支完整源继续保留，原载体源码严格逆回；[完整模块与原陈述消费者](../evidence/second-edition/acceptance/locked-carrier-layout-consumer-20261010/result.json)及[递归来源与应用](../evidence/second-edition/acceptance/locked-carrier-layout-application-20261010/result.json)保存实际记录。
 
+## 追加库时保留既有验收
+
+新增论文的库、globs 和默认目标会改变整个 `lakefile.toml` 的 SHA。整账法与一比特的原完整类型回执继续保留该文件的固定摘要；`first_release.verify_build_configuration` 在摘要不同时读取[配置兼容登记](../checks/build-configuration-compatibility.json)，核对保留的原 Lake 快照，并从本仓固定 Git 基线 `48dc9ad13ffa79d9c2e9a93a8bc755a2388320bc` 读取原配置及实际所用资源的原字节。
+
+兼容检查重新计算原论文包的完整源码闭包，要求每个模块在原、新配置中均有且只有一个同名库 owner。全局强弱编译选项、依赖声明、旧库全部配置、`needs`、所用资源定义及字节保持；既有库、globs 和默认目标仅允许追加。工具链与 manifest 仍按原回执逐字节核对。资源摘要是本次固定基线的身份保全证据，原类型回执的签收范围保持原样。
+
+检查只读本仓，不访问研究仓、不重编 Lean、不联网取回对象。浅克隆缺少该基线时明确失败，并给出 `git fetch --no-tags origin 48dc9ad13ffa79d9c2e9a93a8bc755a2388320bc` 恢复命令。登记表、资源同时改动也须通过固定 Git 字节核对。此机制保留旧包的验收身份；新增社会选集由其独立构建、公理及完整类型验收签收。
+
 ## GT 原程序的双 provider 查找
 
 `SourceDressedGTSampleWard` 的原 `native_lie`／`spin_native` 查找按两个真实 provider、固定 member、namespace 和单例条件绑定完整私有 owner。六个公开环境登记 12 条字符串变换，精确恢复同一原 SHA `80e50a01efcd9d791d477b3f5594294361b12f3bcc38a8ebf8e1fdcb0e004f67`。原完整程序、真实声明类型／值／模块和三条原陈述消费者的[kernel 回执](../evidence/second-edition/acceptance/gt-owner-original-kernel-consumers-20261010/result.json)保留原 60109675 身份；[六源当前应用与逆验](../evidence/second-edition/acceptance/gt-six-owner-application-20261011/result.json)及 83 项工具测试通过。当前 52 包成员核对确认它影响 17 个待验包；正式包构建支付公开目标后再签收当前范围。
@@ -77,3 +85,5 @@ R9 的 `ActualEMSourceLockedCarrier` 消费同一 canonical LockedFieldReturn ow
 ## CPS1 NGS 父源计算性
 
 9c73 的 `Root.authoritySource` 不可计算，`CPS1Personalized2025.Ngs.Closure` 中未标注的 `ParentBase`／`ParentLedger` 简写因此不能编译。H0 修复只为这两枚简写加 `noncomputable`，与 Supply、Longitudinal、Delivery 三个 closure 的写法一致；类型、值与其余字节保持。导出记录以 `H0-noncomputable-marker-repair` 登记，原件与修复件分别存于 [historical](source/second-edition/core/historical/NgsClosure-9c73a630.lean) 与 [supplements](source/second-edition/core/supplements/NgsClosure-9c73a630.lean)。
+
+同类定义可用 `noncomputable_marker_rewrites` 按精确声明名及完整 `def … :=` 头登记代码生成标记，保持类型、值和正文。社会 `Pending.Joint.Source` 的 `submit`／`actual` 沿此口处理；默认原路径视图保留标记，`--exact` 移除并核原 SHA。重复声明、已有标记或头不匹配均拒绝，默认 `-C` 覆盖及编译选项保持。

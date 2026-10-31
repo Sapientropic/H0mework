@@ -14,6 +14,7 @@ import hashlib
 import json
 import os
 from pathlib import Path, PurePosixPath
+import posixpath
 import re
 import subprocess
 import sys
@@ -26,6 +27,7 @@ ROOT = Path(__file__).resolve().parents[1]
 MAP = "docs/first-release-map.json"
 EXPORT_MAP = "tools/export-map.json"
 SCHEMA = "h0mework/first-release-map@1"
+BUILD_COMPATIBILITY = "checks/build-configuration-compatibility.json"
 HEX40 = re.compile(r"[0-9a-f]{40}\Z")
 HEX64 = re.compile(r"[0-9a-f]{64}\Z")
 
@@ -445,6 +447,134 @@ def package_inputs(root: Path, exported: dict, package: dict, entries, *, parse_
                 or public.get("variant") != rows[0].get("variant")):
             raise ReleaseError(f"Original kernel control identity differs from export row: {public['path']}")
     return {"files": files, "digest": sha(json.dumps(files, sort_keys=True).encode()), "modules": len(reached)}
+
+
+def verify_build_configuration(root: Path, accepted_digest: str, *, data: dict, scopes: dict) -> dict:
+    """Preserve signed package acceptance across explicitly bound library additions.
+
+    The receipt's original Lake file stays authoritative. A changed file is
+    admitted only through its retained snapshot and unchanged module owners,
+    compiler settings and resource inputs in the actual accepted proof scopes.
+    """
+    current_raw = repo_file(root, "Lean/lakefile.toml").read_bytes()
+    if sha(current_raw) == accepted_digest:
+        return {"mode": "exact", "lakefile_sha256": accepted_digest}
+    compatibility = read_json(repo_file(root, BUILD_COMPATIBILITY))
+    if compatibility.get("schema") != "h0mework/build-configuration-compatibility@1":
+        raise ReleaseError("Build configuration compatibility schema differs")
+    candidates = [row for row in compatibility.get("baselines", [])
+                  if row.get("accepted_lakefile_sha256") == accepted_digest]
+    if len(candidates) != 1:
+        raise ReleaseError("Changed Lake configuration has no unique accepted baseline")
+    baseline = candidates[0]
+    if (not HEX40.fullmatch(str(baseline.get("source_commit", "")))
+            or baseline.get("source_path") != "Lean/lakefile.toml"):
+        raise ReleaseError("Build configuration baseline has no exact source identity")
+    snapshot = baseline.get("snapshot", {})
+    old_raw = repo_file(root, snapshot.get("path", "")).read_bytes()
+    if sha(old_raw) != accepted_digest or snapshot.get("sha256") != accepted_digest:
+        raise ReleaseError("Build configuration snapshot differs from the signed Lake file")
+    commit = baseline["source_commit"]
+    resolved = subprocess.run(["git", "--no-optional-locks", "-C", str(root), "rev-parse", "--verify",
+                               "--end-of-options", commit + "^{commit}"], capture_output=True)
+    if resolved.returncode or resolved.stdout.decode().strip() != commit:
+        raise ReleaseError("Build compatibility baseline " + commit
+                           + " is unavailable; restore this public repository's fixed baseline with: "
+                           + "git fetch --no-tags origin " + commit)
+
+    def fixed_blob(path):
+        relative_path(path)
+        result = subprocess.run(["git", "--no-optional-locks", "-C", str(root), "show", commit + ":" + path],
+                                capture_output=True)
+        if result.returncode:
+            raise ReleaseError("Build compatibility input is unavailable at fixed baseline " + commit + ": " + path
+                               + "; restore it with: git fetch --no-tags origin " + commit)
+        return result.stdout
+
+    if sha(fixed_blob(baseline["source_path"])) != accepted_digest:
+        raise ReleaseError("Fixed Git baseline Lake file differs from the signed receipt")
+    old, current = tomllib.loads(old_raw.decode()), tomllib.loads(current_raw.decode())
+    ignored = {"defaultTargets", "lean_lib", "input_file"}
+    if ({key: value for key, value in old.items() if key not in ignored}
+            != {key: value for key, value in current.items() if key not in ignored}):
+        raise ReleaseError("Signed package compiler or dependency settings changed")
+
+    def append_only(before, after, label):
+        if not isinstance(before, list) or not isinstance(after, list) or after[:len(before)] != before:
+            raise ReleaseError("Build configuration is not an append-only extension: " + label)
+
+    append_only(old.get("defaultTargets", []), current.get("defaultTargets", []), "defaultTargets")
+
+    def named(values, label):
+        result = {}
+        for value in values:
+            name = value.get("name")
+            if not isinstance(name, str) or name in result:
+                raise ReleaseError("Build configuration has an invalid or duplicate " + label)
+            result[name] = value
+        return result
+
+    old_libs = named(old.get("lean_lib", []), "library")
+    current_libs = named(current.get("lean_lib", []), "library")
+    append_only(list(old_libs), list(current_libs), "lean_lib")
+    for name, before in old_libs.items():
+        after = current_libs[name]
+        if ({key: value for key, value in before.items() if key != "globs"}
+                != {key: value for key, value in after.items() if key != "globs"}):
+            raise ReleaseError("Signed library settings or resource needs changed: " + name)
+        append_only(before.get("globs"), after.get("globs"), name + ".globs")
+    old_resources = named(old.get("input_file", []), "resource input")
+    current_resources = named(current.get("input_file", []), "resource input")
+    for name, before in old_resources.items():
+        if current_resources.get(name) != before:
+            raise ReleaseError("Signed resource input definition changed: " + name)
+
+    exported, claims = read_json(repo_file(root, EXPORT_MAP)), selected_claims(data)
+    package_by_id = {package["id"]: package for package in packages(data)}
+    if not scopes or not set(scopes) <= set(package_by_id):
+        raise ReleaseError("Build compatibility needs the actual accepted proof packages")
+    module_names, parse_cache = set(), {}
+    for name, expected in scopes.items():
+        package = package_by_id[name]
+        actual = package_inputs(root, exported, package, package_entries(claims, package), parse_cache=parse_cache)
+        if (actual["digest"] != expected.get("digest", expected.get("source_scope_sha256"))
+                or actual["modules"] != expected.get("modules")):
+            raise ReleaseError("Build compatibility proof source scope changed: " + name)
+        for path in actual["files"]:
+            if not path.startswith("Lean/") or not path.endswith(".lean"):
+                raise ReleaseError("Build compatibility scope contains a non-module path")
+            module_names.add(module_name(path[5:-5].replace("/", ".")))
+
+    def matches(module, glob):
+        # The explicit Lake globs have the same semantics as ci_plan.matches.
+        if glob.endswith(".+"):
+            return module.startswith(glob[:-1])
+        if glob.endswith(".*"):
+            return module == glob[:-2] or module.startswith(glob[:-1])
+        return module == glob
+
+    needed = set()
+    for module in sorted(module_names):
+        owners = [[lib for lib in libraries.values()
+                   if any(matches(module, glob) for glob in lib.get("globs", []))]
+                  for libraries in (old_libs, current_libs)]
+        if len(owners[0]) != 1 or len(owners[1]) != 1 or owners[0][0]["name"] != owners[1][0]["name"]:
+            raise ReleaseError("Signed module library owner changed or became ambiguous: " + module)
+        needed.update(owners[0][0].get("needs", []))
+    resource_bindings = baseline.get("resources", {})
+    for name in sorted(needed):
+        if name not in old_resources or name not in resource_bindings:
+            raise ReleaseError("Signed resource input has no retained byte identity: " + name)
+        path = posixpath.normpath(posixpath.join("Lean", old_resources[name]["path"]))
+        reference = resource_bindings[name]
+        if (reference.get("path") != path or not HEX64.fullmatch(str(reference.get("sha256", "")))
+                or sha(repo_file(root, path).read_bytes()) != reference["sha256"]):
+            raise ReleaseError("Signed resource input bytes changed: " + name)
+        if sha(fixed_blob(path)) != reference["sha256"]:
+            raise ReleaseError("Resource input differs from its fixed Git preservation baseline: " + name)
+    return {"mode": "append-only-equivalent", "accepted_lakefile_sha256": accepted_digest,
+            "current_lakefile_sha256": sha(current_raw), "source_commit": baseline["source_commit"],
+            "modules": len(module_names), "resources": len(needed)}
 
 
 def new_output(root: Path, value: Path | str) -> Path:

@@ -7,11 +7,15 @@ from __future__ import annotations
 
 import hashlib
 import gzip
+import io
 import json
-from pathlib import Path
+import os
+from pathlib import Path, PurePosixPath
 import re
 import stat
 import subprocess
+import tempfile
+import zlib
 
 KIND = "relative-runtime-paths/v1"
 DECLARED_KIND = "declared-runtime-paths/v2"
@@ -32,6 +36,106 @@ class PublicationError(ValueError):
 
 def sha(raw: bytes) -> str:
     return hashlib.sha256(raw).hexdigest()
+
+
+def runtime_metadata_file(root: Path, value: str) -> Path:
+    if (not isinstance(value, str) or not value or value.startswith("/")
+            or any(char in value for char in ("\\", ":", "\0", "\n", "\r"))
+            or any(part in ("", ".", "..") for part in value.split("/"))
+            or PurePosixPath(value).as_posix() != value):
+        raise PublicationError("Runtime metadata reference needs a safe repository-relative path")
+    root = Path(root).resolve()
+    target = root / value
+    if not target.resolve().is_relative_to(root):
+        raise PublicationError("Runtime metadata reference escapes the repository")
+    return target
+
+
+def runtime_path_rules(publication: dict, *, root: Path | None = None) -> list[dict]:
+    """Read inline rules, or verify an explicitly referenced metadata sidecar."""
+    if "runtime_paths_ref" not in publication:
+        return publication.get("runtime_paths", [])
+    reference = publication["runtime_paths_ref"]
+    if "runtime_paths" in publication:
+        raise PublicationError("Runtime metadata has both inline and referenced rules")
+    if root is None:
+        raise PublicationError("Runtime metadata reference requires its actual repository root")
+    required = {"path", "sha256", "compression", "uncompressed_sha256", "uncompressed_bytes"}
+    if (not isinstance(reference, dict) or set(reference) != required
+            or reference.get("compression") != "gzip"
+            or type(reference.get("uncompressed_bytes")) is not int
+            or not 0 <= reference["uncompressed_bytes"] <= MAX_PUBLIC_FILE_BYTES
+            or any(not re.fullmatch(r"[0-9a-f]{64}", str(reference.get(key, "")))
+                   for key in ("sha256", "uncompressed_sha256"))):
+        raise PublicationError("Invalid compressed runtime metadata reference")
+    path = runtime_metadata_file(root, reference["path"])
+    try:
+        stored = path.read_bytes()
+    except OSError as error:
+        raise PublicationError("Runtime metadata sidecar is unavailable: " + reference["path"]) from error
+    verify_file_size(len(stored), reference["path"])
+    if sha(stored) != reference["sha256"]:
+        raise PublicationError("Compressed runtime metadata digest differs")
+    try:
+        with gzip.GzipFile(fileobj=io.BytesIO(stored), mode="rb") as stream:
+            payload = stream.read(reference["uncompressed_bytes"] + 1)
+    except (OSError, EOFError, zlib.error) as error:
+        raise PublicationError("Compressed runtime metadata is invalid") from error
+    if (len(payload) != reference["uncompressed_bytes"]
+            or sha(payload) != reference["uncompressed_sha256"]):
+        raise PublicationError("Uncompressed runtime metadata identity differs")
+    try:
+        rules = json.loads(payload)
+    except (ValueError, UnicodeError) as error:
+        raise PublicationError("Runtime metadata sidecar is not valid JSON") from error
+    if not isinstance(rules, list) or any(not isinstance(rule, dict) for rule in rules):
+        raise PublicationError("Runtime metadata sidecar must contain the original rule list")
+    return rules
+
+
+def externalize_runtime_paths(row: dict, root: Path, prefix: str) -> dict | None:
+    """Externalize one explicitly selected row's rules; artifact bytes stay fixed."""
+    publication = row.get("publication")
+    if publication is None:
+        return None
+    if "runtime_paths_ref" in publication:
+        runtime_path_rules(publication, root=root)
+        return publication["runtime_paths_ref"]
+    rules = publication.get("runtime_paths")
+    if not rules:
+        return None
+    if (publication.get("kind") not in {DECLARED_KIND, TEXT_KIND, TEXT_RUNTIME_KIND}
+            or not isinstance(rules, list) or any(not isinstance(rule, dict) for rule in rules)):
+        raise PublicationError("Only explicit runtime rule lists can be externalized")
+    payload = (json.dumps(rules, ensure_ascii=False, separators=(",", ":")) + "\n").encode("utf-8")
+    verify_file_size(len(payload), "runtime rule metadata")
+    digest = sha(payload)
+    if not isinstance(prefix, str):
+        raise PublicationError("Runtime metadata prefix needs a safe repository-relative path")
+    relative = prefix + "/" + digest + ".json.gz"
+    destination = runtime_metadata_file(root, relative)
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    if not destination.exists():
+        stored = gzip.compress(payload, compresslevel=9, mtime=0)
+        temporary = None
+        try:
+            with tempfile.NamedTemporaryFile(prefix=".runtime-paths-", dir=destination.parent, delete=False) as stream:
+                temporary = Path(stream.name)
+                stream.write(stored)
+            try:
+                os.link(temporary, destination)
+            except FileExistsError:
+                pass  # An identical metadata list may be shared by concurrent new rows.
+        finally:
+            if temporary is not None:
+                temporary.unlink(missing_ok=True)
+    reference = {"path": relative, "sha256": sha(destination.read_bytes()), "compression": "gzip",
+                 "uncompressed_sha256": digest, "uncompressed_bytes": len(payload)}
+    if runtime_path_rules({"runtime_paths_ref": reference}, root=root) != rules:
+        raise PublicationError("Existing runtime metadata differs from the original rule list")
+    publication["runtime_paths_ref"] = reference
+    publication.pop("runtime_paths")
+    return reference
 
 
 def verify_file_size(size: int, path: str, *, limit: int = MAX_PUBLIC_FILE_BYTES):
@@ -254,17 +358,19 @@ def digest_rewrite(raw: bytes, rule: dict, reverse=False) -> bytes:
     return raw.replace(old, new)
 
 
-def payload_bytes(raw: bytes, publication: dict) -> bytes:
+def payload_bytes(raw: bytes, publication: dict, *, root: Path | None = None) -> bytes:
     if publication.get("kind") not in {KIND, DECLARED_KIND}:
         raise PublicationError("Unsupported publication transform")
+    if "runtime_paths_ref" in publication and publication.get("kind") != DECLARED_KIND:
+        raise PublicationError("Referenced runtime rules require an explicit declaration transform")
     for rule in reversed(publication.get("digest_rewrites", [])):
         raw = digest_rewrite(raw, rule, reverse=True)
     if publication.get("kind") == DECLARED_KIND:
-        return declared_runtime_paths(raw, publication.get("runtime_paths", []))[0]
+        return declared_runtime_paths(raw, runtime_path_rules(publication, root=root))[0]
     return normalize_paths(raw)[0]
 
 
-def verify_artifact(raw: bytes, row: dict, original: bytes | None = None):
+def verify_artifact(raw: bytes, row: dict, original: bytes | None = None, *, root: Path | None = None):
     if sha(raw) != row["target_sha256"]:
         raise PublicationError("Published artifact digest differs")
     compression = row.get("compression")
@@ -285,6 +391,12 @@ def verify_artifact(raw: bytes, row: dict, original: bytes | None = None):
         if sha(raw) != row["source_sha256"]:
             raise PublicationError("Original artifact digest differs")
         return raw
+    if "runtime_paths_ref" in publication:
+        if publication.get("kind") not in {DECLARED_KIND, TEXT_KIND, TEXT_RUNTIME_KIND}:
+            raise PublicationError("Referenced runtime rules require an explicit declaration transform")
+        rules = runtime_path_rules(publication, root=root)
+        publication = {key: value for key, value in publication.items() if key != "runtime_paths_ref"}
+        publication["runtime_paths"] = rules
     if publication.get("kind") in {TEXT_KIND, TEXT_RUNTIME_KIND}:
         if sha(raw) != publication["payload_sha256"]:
             raise PublicationError("Published source-text payload differs")
@@ -303,7 +415,7 @@ def verify_artifact(raw: bytes, row: dict, original: bytes | None = None):
                          if publication.get("kind") == DECLARED_KIND else normalize_paths(raw))
     if count:
         raise PublicationError("Published artifact still contains machine paths")
-    if sha(payload_bytes(normalized, publication)) != publication["payload_sha256"]:
+    if sha(payload_bytes(normalized, publication, root=root)) != publication["payload_sha256"]:
         raise PublicationError("Published receipt payload differs")
     if original is not None:
         if sha(original) != row["source_sha256"]:

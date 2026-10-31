@@ -1,0 +1,21 @@
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.SaturationMonoid.ProcessGame.Society.Institutions.Capitalism.Universal.Abolition.Accounting.Quantifiers.Assembly.Strengthening.Optimality.Root.Complete
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.SaturationMonoid.ProcessGame.Society.Institutions.Capitalism.Universal.Abolition.Accounting.Quantifiers.Assembly.Strengthening.Total.Consumers.Registered
+
+set_option autoImplicit false
+
+namespace SaturationMonoid.ProcessGame.Society.Institutions.Capitalism.Universal.Abolition.Accounting.Quantifiers.Assembly.Strengthening.Optimality.Consumers
+
+open Source.Program Innovation
+open Quantifiers.Joint.Consumers.Compact (seed grossClaim)
+noncomputable section
+
+theorem the_original_registered_root_consumes_the_actual_minimum_and_arbitrary_strategy_theorem :
+    Root.CostedCapitalRootAt seed grossClaim :=
+  Root.the_original_root_consumes_actual_cost_minimisation_and_every_delay_comparison seed grossClaim
+
+theorem the_costed_registered_root_keeps_its_entire_previous_capital_contract :
+    Total.CapitalLineStrengthenedAt seed grossClaim :=
+  the_original_registered_root_consumes_the_actual_minimum_and_arbitrary_strategy_theorem.toCapitalLineStrengthenedAt
+
+end
+end SaturationMonoid.ProcessGame.Society.Institutions.Capitalism.Universal.Abolition.Accounting.Quantifiers.Assembly.Strengthening.Optimality.Consumers

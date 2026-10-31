@@ -1,0 +1,35 @@
+{
+  "schema": "h0mework/generated-society-regression@1",
+  "status": "passed",
+  "checks": [
+    {
+      "id": "tools",
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tools",
+        "-p",
+        "test_*.py",
+        "-q"
+      ],
+      "started_at": "2026-10-31T11:16:58.091333+00:00",
+      "exit_code": 0,
+      "log": ".local/generated-society/regression/tools.log"
+    },
+    {
+      "id": "frozen-entry",
+      "command": [
+        "make",
+        "check-map",
+        "check",
+        "check-first-release-entry"
+      ],
+      "started_at": "2026-10-31T11:20:07.726002+00:00",
+      "exit_code": 0,
+      "log": ".local/generated-society/regression/frozen-entry.log"
+    }
+  ]
+}

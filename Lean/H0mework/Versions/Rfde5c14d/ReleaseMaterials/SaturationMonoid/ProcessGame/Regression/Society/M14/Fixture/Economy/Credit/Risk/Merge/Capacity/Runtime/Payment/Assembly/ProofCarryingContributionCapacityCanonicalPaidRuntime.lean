@@ -1,0 +1,40 @@
+import H0mework.Versions.Rfde5c14d.ReleaseMaterials.SaturationMonoid.ProcessGame.Regression.Society.M14.Fixture.Economy.Credit.Risk.Merge.Capacity.Runtime.Payment.Assembly.ProofCarryingContributionCapacityDepthZeroToTwelveNoFreeRuntime
+import H0mework.Versions.Rfde5c14d.ReleaseMaterials.SaturationMonoid.ProcessGame.Regression.Society.M14.Fixture.Economy.Credit.Risk.Merge.Capacity.Runtime.Payment.Coherence.ProofCarryingContributionCapacityNoDivergentPaidNext
+
+/-!
+# Canonical paid runtime authority
+
+One Prop certificate combines the already generated thirteen-tick history
+with pointwise no-divergent-next coherence.  It stores neither a state table
+nor future receipts.
+-/
+
+set_option autoImplicit false
+
+namespace SaturationMonoid
+namespace ProcessGame
+namespace Society
+namespace M14ProofCarryingContributionCapacityCanonicalPaidRuntime
+
+open M14ProofCarryingContributionCapacityDepthZeroToTwelveNoFreeRuntime
+open M14ProofCarryingContributionCapacityNoDivergentPaidNext
+
+structure ProofCarryingContributionCapacityCanonicalPaidRuntime : Prop where
+  namedHistory :
+    ProofCarryingContributionCapacityDepthZeroToTwelveNoFreeRuntime
+  noDivergentPaidNext :
+    ProofCarryingContributionCapacityNoDivergentPaidNext
+
+theorem proofCarryingContributionCapacityCanonicalPaidRuntime :
+    ProofCarryingContributionCapacityCanonicalPaidRuntime where
+  namedHistory :=
+    proofCarryingContributionCapacityDepthZeroToTwelveNoFreeRuntime
+  noDivergentPaidNext :=
+    proofCarryingContributionCapacityNoDivergentPaidNext
+
+end M14ProofCarryingContributionCapacityCanonicalPaidRuntime
+end Society
+end ProcessGame
+end SaturationMonoid
+
+#print axioms SaturationMonoid.ProcessGame.Society.M14ProofCarryingContributionCapacityCanonicalPaidRuntime.proofCarryingContributionCapacityCanonicalPaidRuntime

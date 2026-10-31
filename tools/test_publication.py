@@ -1,6 +1,7 @@
 """Checks for receipt publication and public/exact source-view identity."""
 import json
 import gzip
+import copy
 from pathlib import Path
 import sys
 import tempfile
@@ -1390,6 +1391,308 @@ class SourceViewTests(unittest.TestCase):
         (self.root / "Consumer.lean").write_bytes(changed)
         with self.assertRaisesRegex(s.ViewError, "Reconstructed source digest differs"):
             s.module_views({**row, "target_sha256": p.sha(changed)}, {})
+
+
+class NoncomputableMarkerTests(unittest.TestCase):
+    def rules(self):
+        return [{'declaration': 'submit', 'source_head': 'def submit (n : Nat) : Nat :='},
+                {'declaration': 'actual', 'source_head': 'def actual (n : Nat) :='}]
+
+    def source(self):
+        return ('import Original.A\n'
+                '/- def submit (n : Nat) : Nat := -/\n'
+                'def message := r##"def actual (n : Nat) :="##\n'
+                'def submitLong (n : Nat) := n\n'
+                'def submit.child (n : Nat) := n\n'
+                'def submit (n : Nat) : Nat :=\n  n + 1\n'
+                'def actual (n : Nat) :=\n  submit n\n')
+
+    def test_exact_markers_preserve_bodies_comments_strings_and_long_names(self):
+        original = self.source()
+        public = s.rewrite_noncomputable_markers(original, self.rules())
+        self.assertEqual(public, original.replace('\ndef submit (', '\nnoncomputable def submit (')
+                         .replace('\ndef actual (', '\nnoncomputable def actual ('))
+        self.assertEqual(s.rewrite_noncomputable_markers(public, self.rules(), reverse=True), original)
+        self.assertEqual(s.rewrite_noncomputable_markers(original, None), original)
+        self.assertIn('def submitLong', public)
+        self.assertIn('def submit.child', public)
+        with self.assertRaisesRegex(s.ViewError, 'already marked'):
+            s.rewrite_noncomputable_markers(public, self.rules())
+        with self.assertRaisesRegex(s.ViewError, 'already marked'):
+            s.rewrite_noncomputable_markers(original, self.rules(), reverse=True)
+
+    def test_missing_duplicate_partial_or_wrong_definition_head_is_rejected(self):
+        original = self.source()
+        for changed in (original.replace('def submit (n : Nat) : Nat :=\n  n + 1\n', ''),
+                        original.replace('def submit (n : Nat) : Nat :=', 'def submit (n : Int) : Nat :='),
+                        original + '\nnamespace Other\ndef submit (n : Nat) : Nat := n\nend Other\n'):
+            with self.assertRaises(s.ViewError):
+                s.rewrite_noncomputable_markers(changed, self.rules())
+        for head in ('def submit (n : Nat)', 'def submitLong (n : Nat) : Nat :=',
+                     'noncomputable def submit (n : Nat) : Nat :=',
+                     'def submit (n : Nat) : Nat :=\n  let x :='):
+            with self.subTest(head=head), self.assertRaises(s.ViewError):
+                s.rewrite_noncomputable_markers(original, [{'declaration': 'submit', 'source_head': head}])
+        with self.assertRaises(s.ViewError):
+            s.rewrite_noncomputable_markers(original, self.rules() + [self.rules()[0]])
+
+    def test_outer_head_keeps_default_binder_assignments_and_exact_multiline_type(self):
+        head = 'def submit\n  (n : Nat := 0)\n  : Nat :='
+        original = head + '\n  n\n'
+        rules = [{'declaration': 'submit', 'source_head': head}]
+        public = s.rewrite_noncomputable_markers(original, rules)
+        self.assertEqual(public, 'noncomputable ' + original)
+        self.assertEqual(s.rewrite_noncomputable_markers(public, rules, reverse=True), original)
+
+    def test_recursive_heads_accept_only_pattern_form_and_roundtrip_three_definitions(self):
+        original = ("def advance := submit ready inventory (emit ready inventory)\n"
+                    "def run : Nat → Inventory ready originInputs\n"
+                    "  | 0 => inventory\n"
+                    "  | count + 1 => advance ready (run count)\n"
+                    "def alternate (inventory : Inventory ready originInputs) : List (List Action) → Inventory ready originInputs\n"
+                    "  | [] => inventory\n"
+                    "  | word :: tail => alternate (submit ready (advance ready inventory) word) tail\n")
+        rules = [
+            {'declaration': 'advance', 'source_head': 'def advance :='},
+            {'declaration': 'run', 'source_head': 'def run : Nat → Inventory ready originInputs\n'},
+            {'declaration': 'alternate', 'source_head': 'def alternate (inventory : Inventory ready originInputs) : List (List Action) → Inventory ready originInputs\n'},
+        ]
+        public = s.rewrite_noncomputable_markers(original, rules)
+        self.assertEqual(public.count('noncomputable def '), 3)
+        self.assertEqual(s.rewrite_noncomputable_markers(public, rules, reverse=True), original)
+        for rule in rules[1:]:
+            malformed = original.replace(rule['source_head'], rule['source_head'].rstrip('\n') + ' :=\n', 1)
+            with self.subTest(rule=rule), self.assertRaises(s.ViewError):
+                s.rewrite_noncomputable_markers(malformed, [rule])
+
+    def test_public_view_retains_marker_while_exact_view_checks_original_sha(self):
+        original = self.source().encode()
+        view = s.rewrite_noncomputable_markers(original.decode(), self.rules()).encode()
+        public = s.transform(view.decode(), s.import_tokens(view.decode()), {'Original.A': 'H0mework.A'})
+        row = {'path': 'Root.lean', 'source_path': 'Lean/Root.lean', 'source_sha256': p.sha(original),
+               'target_sha256': p.sha(public), 'view_sha256': p.sha(view),
+               'import_map': {'H0mework.A': 'Original.A'}, 'noncomputable_marker_rewrites': self.rules()}
+        with tempfile.TemporaryDirectory() as name:
+            root = Path(name); (root / 'Root.lean').write_bytes(public)
+            with patch.object(s, 'ROOT', root):
+                self.assertEqual(s.module_views(row, {}), (view, original))
+                with self.assertRaisesRegex(s.ViewError, 'Reconstructed source digest differs'):
+                    s.module_views({**row, 'noncomputable_marker_rewrites': []}, {})
+                changed = public.replace(b'n + 1', b'n + 2'); (root / 'Root.lean').write_bytes(changed)
+                with self.assertRaisesRegex(s.ViewError, 'Reconstructed source digest differs'):
+                    s.module_views({**row, 'target_sha256': p.sha(changed)}, {})
+
+
+class PrivateOpenModuleTests(unittest.TestCase):
+    def rules(self, count=1):
+        return [{'source_module': 'Original.Provider', 'target_module': 'H0mework.Provider', 'count': count}]
+
+    def source(self):
+        return ('import Original.Provider\n'
+                '/- open private comment from Original.Provider -/\n'
+                'def message := r##"open private text from Original.Provider"##\n'
+                'open private\n  allocateLive Allocation.append\nfrom\n  Original.Provider\n'
+                'open private external from Mathlib.Provider\n'
+                'open private longer from Original.ProviderExtra\n'
+                'namespace Demo\ntheorem result : True := True.intro\nend Demo\n')
+
+    def test_only_actual_multiline_from_owner_changes_and_roundtrips(self):
+        original = self.source()
+        public = s.rewrite_private_open_modules(original, self.rules())
+        self.assertEqual(public, original.replace('from\n  Original.Provider\n', 'from\n  H0mework.Provider\n'))
+        self.assertEqual(s.rewrite_private_open_modules(public, self.rules(), reverse=True), original)
+        self.assertIn('allocateLive Allocation.append', public)
+        self.assertIn('from Mathlib.Provider', public)
+        self.assertIn('from Original.ProviderExtra', public)
+        self.assertEqual(s.rewrite_private_open_modules(original, None), original)
+
+    def test_absent_or_miscounted_commands_cannot_be_replaced_by_comments_or_prefixes(self):
+        original = self.source()
+        for changed in (original.replace('from\n  Original.Provider\n', 'from\n  Original.ProviderExtra\n'),
+                        original.replace('open private\n  allocateLive Allocation.append\nfrom\n  Original.Provider\n', ''),
+                        original + 'open private again from Original.Provider\n'):
+            with self.assertRaisesRegex(s.ViewError, 'count differs'):
+                s.rewrite_private_open_modules(changed, self.rules())
+        with self.assertRaisesRegex(s.ViewError, 'count differs'):
+            s.rewrite_private_open_modules(original, self.rules(2))
+        public = s.rewrite_private_open_modules(original, self.rules())
+        with self.assertRaisesRegex(s.ViewError, 'count differs'):
+            s.rewrite_private_open_modules(public, self.rules(2), reverse=True)
+
+    def test_ambiguous_external_or_invalid_rule_owners_are_rejected(self):
+        for rules in (self.rules() * 2,
+                      self.rules() + [{'source_module': 'Other.Provider', 'target_module': 'H0mework.Provider', 'count': 1}],
+                      [{'source_module': 'Mathlib.Provider', 'target_module': 'H0mework.Provider', 'count': 1}],
+                      [{'source_module': 'Original.Provider', 'target_module': 'Mathlib.Provider', 'count': 1}],
+                      [{'source_module': 'Original..Provider', 'target_module': 'H0mework.Provider', 'count': 1}],
+                      self.rules(True), self.rules(0), self.rules(-1)):
+            with self.subTest(rules=rules), self.assertRaises(s.ViewError):
+                s.rewrite_private_open_modules(self.source(), rules)
+
+    def test_source_view_reverses_private_open_before_original_imports_and_sha(self):
+        original = self.source().encode()
+        public = s.transform(original.decode(), s.import_tokens(original.decode()),
+                             {'Original.Provider': 'H0mework.Provider'}).decode()
+        public = s.rewrite_private_open_modules(public, self.rules()).encode()
+        row = {'path': 'Root.lean', 'source_path': 'Lean/Root.lean', 'source_sha256': p.sha(original),
+               'target_sha256': p.sha(public), 'private_open_module_rewrites': self.rules(),
+               'import_map': {'H0mework.Provider': 'Original.Provider'}}
+        with tempfile.TemporaryDirectory() as name:
+            root = Path(name); (root / 'Root.lean').write_bytes(public)
+            with patch.object(s, 'ROOT', root):
+                self.assertEqual(s.module_views(row, {}), (original, original))
+                with self.assertRaisesRegex(s.ViewError, 'Reconstructed source digest differs'):
+                    s.module_views({**row, 'private_open_module_rewrites': []}, {})
+                changed = public.replace(b'True.intro', b'by trivial')
+                (root / 'Root.lean').write_bytes(changed)
+                with self.assertRaisesRegex(s.ViewError, 'Reconstructed source digest differs'):
+                    s.module_views({**row, 'target_sha256': p.sha(changed)}, {})
+
+
+class RuntimePathSidecarTests(unittest.TestCase):
+    PREFIX = "evidence/generated-society/publication"
+
+    def fixture(self, root, *, text=False, compressed=False):
+        if text:
+            original = b'Original T1: /Volumes/Fixture/audit/run.lean\nValue: 1.00\n'
+            begin = original.index(b'/Volumes/')
+            rules = [{'begin': begin, 'end': original.index(b'\n', begin), 'relative': 'runtime/audit/run.lean'}]
+            public = p.text_runtime_paths(original, rules, kind=p.TEXT_RUNTIME_KIND)
+            kind = p.TEXT_RUNTIME_KIND
+        else:
+            original = b'{"path":"/Users/sample/Homework/run","signal":1.00,"status":"failed"}\n'
+            rules = [{'pointer': '/path', 'relative': 'run'}]
+            public = p.declared_runtime_paths(original, rules)[0]
+            kind = p.DECLARED_KIND
+        stored = gzip.compress(public, mtime=0) if compressed else public
+        path = 'receipt.gz' if compressed else 'receipt.txt' if text else 'receipt.json'
+        row = {'source': 'Verification/receipt.txt' if text else 'Verification/receipt.json',
+               'source_revision': 'a' * 40, 'source_revisions': ['a' * 40],
+               'path': path, 'target': path, 'source_sha256': p.sha(original), 'target_sha256': p.sha(stored),
+               'publication': {'kind': kind, 'runtime_paths': rules, 'payload_sha256': p.sha(public)}}
+        if compressed:
+            row['compression'] = {'kind': 'gzip', 'uncompressed_bytes': len(public), 'uncompressed_sha256': p.sha(public)}
+        (root / path).write_bytes(stored)
+        return row, original, public, stored
+
+    def test_explicit_new_row_sidecar_retains_inline_default_and_scientific_bytes(self):
+        for text in (False, True):
+            with self.subTest(text=text), tempfile.TemporaryDirectory() as name:
+                root = Path(name)
+                inline, original, public, stored = self.fixture(root, text=text)
+                original_row = copy.deepcopy(inline)
+                self.assertEqual(p.verify_artifact(stored, inline, original), public)
+                row = copy.deepcopy(inline)
+                reference = p.externalize_runtime_paths(row, root, self.PREFIX)
+                self.assertEqual(inline, original_row)
+                self.assertNotIn('runtime_paths', row['publication'])
+                self.assertEqual(p.runtime_path_rules(row['publication'], root=root), inline['publication']['runtime_paths'])
+                self.assertEqual(p.verify_artifact(stored, row, original, root=root), public)
+                self.assertEqual((root / row['path']).read_bytes(), stored)
+                self.assertEqual((row['source_sha256'], row['target_sha256']),
+                                 (inline['source_sha256'], inline['target_sha256']))
+                self.assertIn(b'1.00', public)
+                self.assertEqual(p.externalize_runtime_paths(row, root, self.PREFIX), reference)
+                another = copy.deepcopy(inline)
+                self.assertEqual(p.externalize_runtime_paths(another, root, self.PREFIX), reference)
+                self.assertEqual(len(list((root / self.PREFIX).glob('*.gz'))), 1)
+                if not text:
+                    self.assertEqual(p.payload_bytes(public, row['publication'], root=root), public)
+
+    def test_source_view_uses_actual_root_for_public_and_exact_compressed_artifact(self):
+        with tempfile.TemporaryDirectory() as name:
+            root = Path(name)
+            row, original, public, stored = self.fixture(root, compressed=True)
+            p.externalize_runtime_paths(row, root, self.PREFIX)
+            originals = root / 'private'; originals.mkdir()
+            (originals / p.sha(original)).write_bytes(original)
+            with self.assertRaisesRegex(p.PublicationError, 'actual repository root'):
+                p.verify_artifact(stored, row, original)
+            with patch.object(s, 'ROOT', root):
+                self.assertEqual(s.artifact_views(row), (public, None))
+                self.assertEqual(s.artifact_views(row, originals), (public, original))
+            with patch.object(s, 'ROOT', root / 'other-checkout'):
+                other = root / 'other-checkout'; other.mkdir()
+                (other / row['path']).write_bytes(stored)
+                with self.assertRaisesRegex(s.ViewError, 'sidecar is unavailable'):
+                    s.artifact_views(row)
+
+    def test_loaded_historical_view_engine_resolves_sidecar_under_selected_checkout(self):
+        import first_release_cache as cache
+        with tempfile.TemporaryDirectory() as name:
+            root = Path(name) / 'checkout'; root.mkdir()
+            row, _, public, _ = self.fixture(root)
+            p.externalize_runtime_paths(row, root, self.PREFIX)
+            map_file = root / 'map.json'
+            map_file.write_text(json.dumps({'schema': 2, 'lean_directory': 'Lean', 'modules': [],
+                                           'artifacts': [row], 'revisions': {'PIN': 'a' * 40}}))
+            source_root = Path(__file__).resolve().parents[1]
+            blobs = {path: (source_root / path).read_bytes() for path in cache.VIEW_ENGINES}
+            view, replay = cache.load_view_engines(blobs, Path(name) / 'engine-snapshot')
+            with replay.map_root(root, map_file):
+                restored, skipped = view.reconstruct(paths=[row['source']], at='PIN')
+            self.assertEqual(restored, {row['source']: public})
+            self.assertEqual(skipped, [])
+
+    def test_missing_corrupt_or_forged_metadata_cannot_verify_public_or_original(self):
+        for text in (False, True):
+            for change in ('missing', 'compressed-sha', 'payload-sha', 'bytes', 'boolean-bytes',
+                           'corrupt-gzip', 'bad-json', 'wrong-shape', 'null-ref', 'inline-and-ref'):
+                with self.subTest(text=text, change=change), tempfile.TemporaryDirectory() as name:
+                    root = Path(name)
+                    row, original, _, stored = self.fixture(root, text=text)
+                    rules = copy.deepcopy(row['publication']['runtime_paths'])
+                    reference = p.externalize_runtime_paths(row, root, self.PREFIX)
+                    sidecar = root / reference['path']
+                    if change == 'missing': sidecar.unlink()
+                    elif change == 'compressed-sha': reference['sha256'] = '0' * 64
+                    elif change == 'payload-sha': reference['uncompressed_sha256'] = '0' * 64
+                    elif change == 'bytes': reference['uncompressed_bytes'] += 1
+                    elif change == 'boolean-bytes': reference['uncompressed_bytes'] = True
+                    elif change == 'null-ref': row['publication']['runtime_paths_ref'] = None
+                    elif change == 'inline-and-ref': row['publication']['runtime_paths'] = rules
+                    else:
+                        payload = b'{' if change == 'bad-json' else b'{}'
+                        corrupt = b'not gzip' if change == 'corrupt-gzip' else gzip.compress(payload, mtime=0)
+                        sidecar.write_bytes(corrupt)
+                        reference.update(sha256=p.sha(corrupt), uncompressed_sha256=p.sha(payload), uncompressed_bytes=len(payload))
+                    for private in (None, original):
+                        with self.assertRaises(p.PublicationError):
+                            p.verify_artifact(stored, row, private, root=root)
+
+    def test_relative_path_and_symlink_escapes_are_rejected(self):
+        with tempfile.TemporaryDirectory() as name:
+            root = Path(name) / 'checkout'; root.mkdir()
+            outside = Path(name) / 'outside'; outside.mkdir()
+            row, original, _, stored = self.fixture(root)
+            inline = copy.deepcopy(row)
+            reference = p.externalize_runtime_paths(row, root, self.PREFIX)
+            for path in ('../outside/rules.gz', '/absolute/rules.gz', 'evidence//rules.gz',
+                         'evidence/./rules.gz', 'evidence/../rules.gz', 'C:/rules.gz', 'evidence\\rules.gz'):
+                changed = copy.deepcopy(row); changed['publication']['runtime_paths_ref']['path'] = path
+                with self.subTest(path=path), self.assertRaises(p.PublicationError):
+                    p.verify_artifact(stored, changed, original, root=root)
+            (root / 'linked').symlink_to(outside, target_is_directory=True)
+            (outside / 'rules.gz').write_bytes((root / reference['path']).read_bytes())
+            escaped = copy.deepcopy(row); escaped['publication']['runtime_paths_ref']['path'] = 'linked/rules.gz'
+            with self.assertRaises(p.PublicationError):
+                p.verify_artifact(stored, escaped, original, root=root)
+            for prefix in ('../outside', '/absolute', 'linked'):
+                with self.subTest(prefix=prefix), self.assertRaises(p.PublicationError):
+                    p.externalize_runtime_paths(copy.deepcopy(inline), root, prefix)
+
+    def test_existing_sidecar_corruption_does_not_rewrite_it_or_drop_inline_rules(self):
+        with tempfile.TemporaryDirectory() as name:
+            root = Path(name)
+            row, _, _, _ = self.fixture(root)
+            inline = copy.deepcopy(row)
+            reference = p.externalize_runtime_paths(row, root, self.PREFIX)
+            sidecar = root / reference['path']; sidecar.write_bytes(b'corrupt original metadata')
+            with self.assertRaises(p.PublicationError):
+                p.externalize_runtime_paths(inline, root, self.PREFIX)
+            self.assertIn('runtime_paths', inline['publication'])
+            self.assertNotIn('runtime_paths_ref', inline['publication'])
+            self.assertEqual(sidecar.read_bytes(), b'corrupt original metadata')
 
 
 if __name__ == "__main__":

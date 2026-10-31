@@ -188,6 +188,75 @@ def transform(text: str, tokens, mapping: dict[str, str]) -> bytes:
     return text.encode("utf-8")
 
 
+def private_open_module_tokens(text: str) -> list[tuple[int, int, str]]:
+    """Locate only the module token in actual `open private ... from` commands."""
+    masked = mask_comments_and_strings(text)
+    name = re.compile(r"[A-Za-z_][A-Za-z0-9_']*(?:\.[A-Za-z_][A-Za-z0-9_']*)*")
+    tokens = []
+    for command in re.finditer(r"(?m)^[ \t]*open\s+private\b", masked):
+        cursor, members = command.end(), 0
+        while True:
+            space = re.match(r"\s+", masked[cursor:])
+            if space is None:
+                raise ViewError("Unsupported private-open module syntax")
+            cursor += space.end()
+            token = name.match(masked, cursor)
+            if token is None:
+                raise ViewError("Private-open command needs named members and an exact module")
+            cursor = token.end()
+            if token.group() == "from":
+                if not members:
+                    raise ViewError("Private-open command has no named members")
+                space = re.match(r"\s+", masked[cursor:])
+                if space is None:
+                    raise ViewError("Private-open command has no source module")
+                module = name.match(masked, cursor + space.end())
+                if module is None or (module.end() < len(masked)
+                        and (masked[module.end()].isalnum() or masked[module.end()] in "_'.!?")):
+                    raise ViewError("Private-open command has an unsupported module name")
+                tokens.append((module.start(), module.end(), module.group()))
+                break
+            members += 1
+    return tokens
+
+
+def rewrite_private_open_modules(text: str, rewrites, *, reverse: bool = False) -> str:
+    """Relocate exact private-open module owners, retaining members and counts."""
+    if rewrites is None:
+        return text
+    if not isinstance(rewrites, list):
+        raise ViewError("Private-open module rewrites must be a list")
+    mapping, targets, counts = {}, set(), {}
+    for rule in rewrites:
+        if not isinstance(rule, dict) or set(rule) != {"source_module", "target_module", "count"}:
+            raise ViewError("Private-open module rewrites need exact owners and count")
+        source, target, count = rule["source_module"], rule["target_module"], rule["count"]
+        if (any(not isinstance(owner, str) or not MODULE.fullmatch(owner)
+                or owner.split(".")[0] in EXTERNAL for owner in (source, target))
+                or source == target or type(count) is not int or count <= 0):
+            raise ViewError("Invalid local private-open module owner or count")
+        if source in mapping or target in targets:
+            raise ViewError("Private-open module rewrites must have unique sources and targets")
+        mapping[source], counts[source] = target, count
+        targets.add(target)
+    if not mapping:
+        return text
+    if reverse:
+        counts = {target: counts[source] for source, target in mapping.items()}
+        mapping = {target: source for source, target in mapping.items()}
+    hits = {owner: 0 for owner in mapping}
+    edits = []
+    for begin, end, owner in private_open_module_tokens(text):
+        if owner in mapping:
+            hits[owner] += 1
+            edits.append((begin, end, mapping[owner]))
+    if hits != counts:
+        raise ViewError("Private-open module count differs from its exact declaration")
+    for begin, end, replacement in reversed(edits):
+        text = text[:begin] + replacement + text[end:]
+    return text
+
+
 def rewrite_private_names(text: str, rewrites, *, reverse: bool = False) -> str:
     """Relocate only declared private module owners; reverse restores source names.
 
@@ -718,6 +787,57 @@ def rewrite_proof_bodies(text: str, rewrites, *, reverse: bool = False) -> str:
     return text
 
 
+def rewrite_noncomputable_markers(text: str, rewrites, *, reverse: bool = False) -> str:
+    """Add only a code-generation marker to an explicitly anchored definition."""
+    if rewrites is None:
+        return text
+    if not isinstance(rewrites, list):
+        raise ViewError("Noncomputable marker rewrites must be a list")
+    seen = set()
+    for rule in rewrites:
+        if not isinstance(rule, dict) or set(rule) != {"declaration", "source_head"}:
+            raise ViewError("Noncomputable marker needs an exact declaration and full definition head")
+        declaration, head = rule["declaration"], rule["source_head"]
+        recursive_head = isinstance(head, str) and head.endswith("\n")
+        if (not isinstance(declaration, str) or not MODULE.fullmatch(declaration)
+                or declaration in seen or not isinstance(head, str)
+                or not (head.endswith(":=") or recursive_head)):
+            raise ViewError("Invalid or repeated noncomputable marker declaration")
+        seen.add(declaration)
+        boundary = r"(?=[ \t\r\n({\[:])"
+        masked_head = mask_comments_and_strings(head)
+        if not re.match(r"(?:def|abbrev)[ \t]+" + re.escape(declaration) + boundary, masked_head):
+            raise ViewError("Noncomputable marker head names a different definition")
+        stack, assignment = [], None
+        pairs = {')': '(', ']': '[', '}': '{', '⦄': '⦃'}
+        for index, char in enumerate(masked_head):
+            if char in "([{⦃":
+                stack.append(char)
+            elif char in pairs:
+                if not stack or stack.pop() != pairs[char]:
+                    raise ViewError("Noncomputable marker head has unbalanced binders")
+            elif not stack and masked_head[index:index + 2] == ":=":
+                assignment = index
+                break
+        if stack or (not recursive_head and assignment != len(head) - 2):
+            raise ViewError("Noncomputable marker requires the complete outer definition head")
+        if recursive_head and assignment is not None:
+            raise ViewError("Recursive noncomputable marker head cannot contain an outer assignment")
+        pattern = re.compile(r"(?m)^[ \t]*(?P<definition>(?P<marker>noncomputable[ \t]+)?(?:def|abbrev)[ \t]+"
+                             + re.escape(declaration) + boundary + ")")
+        matches = list(pattern.finditer(mask_comments_and_strings(text)))
+        if len(matches) != 1 or bool(matches[0]["marker"]) != reverse:
+            raise ViewError("Noncomputable marker definition is absent, duplicated or already marked")
+        before, after = ("noncomputable " + head, head) if reverse else (head, "noncomputable " + head)
+        begin = matches[0].start("definition")
+        if not text.startswith(before, begin):
+            raise ViewError("Noncomputable marker full definition head differs")
+        if recursive_head and not mask_comments_and_strings(text)[begin + len(before):].lstrip().startswith("|"):
+            raise ViewError("Noncomputable recursive marker must precede an equation compiler")
+        text = text[:begin] + after + text[begin + len(before):]
+    return text
+
+
 def suggestion_index_postlude(text: str, components, *, reverse=False) -> str:
     """Exclude exact local namespaces from Lean's optional premise index."""
     if components is None or components == []:
@@ -759,6 +879,7 @@ def module_views(row: dict, inverse: dict) -> tuple[bytes, bytes]:
                                  reverse=True)
     text = rewrite_private_owner_strings(text, row.get("private_owner_string_rewrites"), reverse=True)
     text = rewrite_private_owner_expressions(text, row.get("private_owner_expression_rewrites"), reverse=True)
+    text = rewrite_private_open_modules(text, row.get("private_open_module_rewrites"), reverse=True)
     tokens = import_tokens(text)
     reverse = {}
     for _, _, module in tokens:
@@ -777,7 +898,8 @@ def module_views(row: dict, inverse: dict) -> tuple[bytes, bytes]:
     import_tokens(view.decode("utf-8"))
     original = invert_resource_digests(view, row)
     original = suggestion_index_postlude(original.decode("utf-8"), row.get("suggestion_name_exclusions"), reverse=True)
-    original = rewrite_proof_bodies(original, row.get("proof_body_rewrites"), reverse=True).encode("utf-8")
+    original = rewrite_proof_bodies(original, row.get("proof_body_rewrites"), reverse=True)
+    original = rewrite_noncomputable_markers(original, row.get("noncomputable_marker_rewrites"), reverse=True).encode("utf-8")
     if sha(original) != row["source_sha256"]:
         raise ViewError(f"Reconstructed source digest differs: {row['source_path']}")
     if sha(view) != row.get("view_sha256", row["source_sha256"]):
@@ -797,7 +919,7 @@ def artifact_views(row: dict, private_originals=None) -> tuple[bytes, bytes | No
             raise ViewError("Private original receipt is unavailable")
         original = path.read_bytes()
     try:
-        raw = verify_artifact(raw, row, original)
+        raw = verify_artifact(raw, row, original, root=ROOT)
     except PublicationError as error:
         raise ViewError(f"Artifact identity failed: {row['path']}: {error}") from error
     return raw, original if row.get("publication") else raw
