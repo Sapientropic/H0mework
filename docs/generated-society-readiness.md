@@ -1,48 +1,59 @@
 # 典范社会总定理：选集与验收
 
-来源、原路径恢复和完整类型归[逐主张映射](generated-society-map.json)，可执行命令归[复现](generated-society-reproduction.md)。本稿主体为 G0–G9，G10–G12 仅接受实际引用接口。
+当前选集为 G0–G27 加 G2a，其中 G10–G12 只接收实际引用接口。原声明、完整类型、直接消费者、来源 epoch、公开 owner 和资源归[逐主张映射](generated-society-map.json)；执行命令和可引用声明归[复现](generated-society-reproduction.md)。
 
-## 本地状态
+## 本地验收
 
-完整来源接入、公开／原字节逆恢复、原 map 身份下的 11,921-job Lean 构建、trust=0 metadata 审查和完整类型 DAG 验收均已通过；当前 map authority 修正见下方复核记录。
+完整五包构建、trust 和完整类型验收全部通过；[本次实际回执](../evidence/generated-society/acceptance/expanded-g0-g27/summary.json)绑定执行时的 map 快照、固定源闭包和配置 SHA，三次执行的输入均前后不变。最终 map 绑定真实类型与回执，并按原类型明确了 G20／G27 的严格进展预算及 G26 的依赖类型 HEq。
 
-| 对象 | 实际验收 |
+| 检查 | 实际结果 |
 | --- | --- |
-| 原来源闭包 | e60 1077、AB 1036、MV5 接口 1583 个模块身份；全部 imports 完整 |
-| 公开 owner | 3213 个，新增 2923 个、复用 290 个旧 owner；原证明正文与定义保持 |
-| 原材料 | 12 个 epoch 身份、8 份独立文档；保持原字节及原认证状态 |
-| 原路径视图 | 公开视图和原字节精确恢复均通过 |
-| 原论文合同 | 整账法 40 主张／13 包／5025 类型及一比特 11 主张／23 control 类型的原 `require-ready` 入口通过 |
-| 工具 | 385 项完整工具测试通过；固定 Git 配置兼容补强另经 7 项 focused 测试通过 |
-| 默认覆盖 | Lake 实际覆盖检查通过：50543 模块，新增 2926 个默认模块（含三个论文入口） |
-| H0 独立验收 | `entry --require-ready` 通过：194 映射项、75 资源、535 完整类型声明；构建、trust、types 输入身份保持不变 |
+| Lean 完整构建 | 12463／12463 jobs；新增 542 个默认模块实际完成，旧模块重编译 0 |
+| 五包 trust | 967 个声明根；完整 type/value、互递归和归纳元数据闭包；unsafe=0、partial=0 |
+| 完整类型 | 967 项 Lean Expr DAG 独立重建并经 Lean 检查；全部保留 universe、量词和前提 |
+| 选集身份 | 29 主张、428 映射项、3753 公开证明 owner、80 项资源、10 个选定 epoch |
+| 公开与精确恢复 | 两种视图均通过；全部原认证资源的精确恢复使用按源 SHA 保存的原件 |
+| 默认覆盖 | Lake 实际枚举 51085 个默认模块；全部模块恰有一个库 owner |
+| 旧材料与入口 | 六篇固定材料身份不变；整账法 40 主张／13 包／5025 类型、一比特 23 control 类型及首发入口检查通过 |
+| 工具 | 409 项完整工具测试通过；`make check-map` 通过 |
 
-原来源记录中的 strict／T1 与本次 H0 执行分别记账。社会总口的真实公理身份为 `propext`、`Classical.choice`、`Quot.sound`；本次声明审查按完整 type/value 与归纳／互递归元数据验收。
+社会总口保留真实标准三公理 `propext`、`Classical.choice`、`Quot.sound`。原 strict／T1 认证按各自实际 epoch 保留，本次 H0 执行单独记账；历史失败与未恢复原件的状态保持。
+
+| 独立入口 | 固定来源 | 实际闭包模块数（含入口） |
+| --- | --- | --- |
+| `GeneratedSocietyMInfinity` | e60 | 1078 |
+| `GeneratedSocietyRegeneration` | AB | 1037 |
+| `GeneratedSocietyInterfaces` | df | 1584 |
+| `GeneratedSocietyProgress` | 1d7 | 1042 |
+| `GeneratedSocietyEconomy` | df | 1042 |
+
+五个入口均位于 `H0mework.Papers`。G13 保留历史 1d7 环境，并显式核对 df 当前实例；不同 epoch 的 Cycle／Payment 未被等同。G14–G27 及语法、路由／服务、关系再选择和记忆链的真实 producer、直接消费者与 whole 均进入完整构建。
+
+## 来源与补稿
+
+本次接入按 publish 固定提交 `a21f8b21a8c9bce2707f59f34e4cc6c731feabf9` 的 claims 及逐结果来源恢复；收稿上限仍为 Homework `df421ff600085cbc290a7ae946193961bed7c83b`，各历史证明保留实际 epoch。[独立来源审查](../evidence/generated-society/acceptance/expanded-g0-g27/source-review.json)核对了 245 项相关论文来源引用、完整 producer／consumer 和资源闭包；[最新补稿复核](../evidence/generated-society/acceptance/expanded-g0-g27/paper-review.json)确认社科读者改写未改变证明范围。并行未提交的 5.12 所用声明及实际 value 依赖另有明确记录。
+
+独立附录 C13／PT15 的 receipt-window 接口保持原未闭合记录，未由本次 G13–G27 的验收转授认证。论文正文及其未提交文件保持由写作窗口负责。
 
 ## 缓存保全
 
-[独立逐片报告](../evidence/generated-society/acceptance/cache-preservation.json)确认全部 49055 个旧模块的 owner、源码、递归 imports、强弱选项、资源、默认覆盖和分片归属不变。61 个旧分片的完整记录、指纹和缓存键全部相同；只新增 `s3-09`，2926 模块，预计 3.45 runner 小时。总计划为 11 阶段、62 片，每阶段最多 20 片。
+[本次逐片报告](../evidence/generated-society/acceptance/expanded-g0-g27/cache-preservation.json)确认：相对接入前提交 `6edbad82`，全部 51981 个旧模块的源码、owner、递归 imports、有效强弱选项、39 个编译资源和默认分片归属保持；相对最初 main 的 49055 个模块身份也全部保持。新增 540 个证明 owner、两个入口及五份来源文档，1036 处来源 epoch 标签只追加不删减。
 
-| 身份 | 指纹 |
+原有 62 个分片的完整记录、指纹和缓存键不变，仅新增 `s5-03`：542 模块，预计 0.77 runner 小时。计划为 11 阶段、63 片，每阶段最多 20 片；`plan --update-layout` 前、后及最终完整计划相同，固定布局只追加新模块位置，未执行 `--rebalance`。
+
+| 完整选集身份 | 指纹 |
 | --- | --- |
-| 迁入前完整选集 | `345402a3c337566e053d60f264f8dca9487d594f2adfaf1daec37ed5765ec9f2` |
-| 本稿加入后的完整选集 | `f0b3feec6ad427afa32bb28cbef5c06b762c9b56fad196a8bf5299b7603b6a82` |
-| 最终公开 export-map | `e9ab6f1e9b800573a67171eacd8bedd5533a36ec444220965b1bb55829bab526` |
-| compatibility | `23f23031eec00a03d30ee31d` |
-| CACHE_VERSION | `lean-parts-v1` |
+| 最初 main 基线 | `345402a3c337566e053d60f264f8dca9487d594f2adfaf1daec37ed5765ec9f2` |
+| 本次扩展前 | `f0b3feec6ad427afa32bb28cbef5c06b762c9b56fad196a8bf5299b7603b6a82` |
+| G13–G27 接入后 | `b1bf6b3260efaf715795900878404e87a7dc624ad888a9087297b84918144f39` |
+| compatibility／CACHE_VERSION | `23f23031eec00a03d30ee31d`／`lean-parts-v1` |
 
-本次复核重新计算仍得到同一 `f0b3feec…` 选集、11 阶段；plan 的唯一 notice 是基线已存在但未写入固定布局的 `H0mework.Checks.OneBit.ZeroLawRootAdmissionRegression`（动态落在 `s2-01`）。它不属于本稿增量，未追加布局，避免无关旧分片失效；详情见 authority recheck。
+原 61 片的 Linux 完整成功存档齐全，包括两组分卷的全部六个载荷；`s3-09` 保持其本地已验收身份，尚无远端成功存档。新旧选集的远端待验部分为 `s3-09` 与 `s5-03`，共 3468 个 owned 模块，预计 4.22 runner 小时。本机 Darwin 产物与 Linux runner 身份分别处理。
 
-工具链、manifest、工作流及缓存算法逐字保持。固定布局只追加 2926 行；未执行 `--rebalance`、远端 seal/save/prune 或缓存删除。远端 76 项资产的前后 metadata 完全一致。13 处 `open private … from` 地址迁移、9 个文件的非计算代码生成标记均逐条可逆，未改变数学声明或证明体。
+工具链、manifest、工作流、CI 算法及缓存版本保持。9 个固定依赖的 Git 身份和既有源码状态前后一致。Bell 与量子载体的程序、配置、资源及双引擎科学输入比较均相同，保留原成功回执，`full_replay=false`；旧 artifact 过期及历史 Makefile 导致的 verifier `miss` 保留原状态，详见[科学输入核对](../evidence/generated-society/acceptance/expanded-g0-g27/scientific-input-binding.json)。
 
-Bell 与量子载体的原成功报告、原程序／配置、输入选择和资源身份保持，实际双引擎比较见[科学输入核对](../evidence/generated-society/acceptance/scientific-input-binding.json)。`full_replay=false`，本篇没有科学重跑。最近远端科学 artifact 已按原七天策略过期；较早本机回执在现有 verifier 中因历史 Makefile 差异保留原 `miss` 状态，均未改写为新执行或新缓存命中。
+## 远端 CI
 
-## 远端 CI 身份
+[只读收尾核对](../evidence/generated-society/acceptance/expanded-g0-g27/remote-cache-preservation.json)确认远端 main 仍为 `48dc9ad13ffa79d9c2e9a93a8bc755a2388320bc`，proof-cache 的 76 项资产 metadata 前后相同；[最近成功运行 39771257871](https://github.com/Sapientropic/H0mework/actions/runs/39771257871)仍绑定历史来源 `8d6e6f09007e759bc07dea0d8c34d3379207bf61`。
 
-只读核实了[原完整内核运行 39025063045](https://github.com/Sapientropic/H0mework/actions/runs/39025063045)、[迁入前当前选集验收 39036946868](https://github.com/Sapientropic/H0mework/actions/runs/39036946868)及[最近成功复用 39771257871](https://github.com/Sapientropic/H0mework/actions/runs/39771257871)。现存旧 seal 实际绑定 `587596253b08df5461d398b4b4505837cce1fbd8`／run `39036946868`。
-
-本稿的新指纹没有执行远端 CI，也没有取得远端 seal。新提交的远端完整验收须在获准推送和运行后单独取得。
-
-## 2026-11-01 authority recheck
-
-并行写作窗口后来更新了 `claims.md` 的书面对照段；本地 map 的 `claims_authority` 已同步到 publish 当前提交 `054d2ee92f226e36166cb33cb5ab8b772fcca39f` 与当前 SHA。另恢复了 3 个导入源码的原始 EOF 字节，使 export-map 与实际文件完全一致。三份受影响源码分别通过 `lake env lean --root=.. --trust=0 -DwarningAsError=true` focused 检查；当前 map 的 `entry --require-ready` 重新通过（194 映射项、3213 owner、75 资源、535 完整类型声明）。完整 11,921-job 语义构建的原回执保留；authority 修正只改变 map 元数据，未重新冒充新的全量构建。逐项回执见[authority recheck](../evidence/generated-society/acceptance/authority-recheck.json)。
+本次新选集已通过本地完整验收，尚未运行远端 CI，也未取得新 seal。没有推送、远端合并、工作流触发、手工 seal／save／prune 或缓存删除。

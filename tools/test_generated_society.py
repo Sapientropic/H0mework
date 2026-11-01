@@ -24,15 +24,23 @@ class SocietyContractTests(unittest.TestCase):
 
     def test_core_contract_and_explicit_interface_override(self):
         claims = self.claims()
-        self.assertEqual(len(self.document(claims)["claims"]), 11)
+        self.assertEqual(len(self.document(claims)["claims"]), len(society.CORE_CLAIMS))
         interface = {"id": "G10", "paper": "generated-society", "direct_consumers": [{}], "interface_only": True}
-        self.assertEqual(len(self.document([*claims, interface])["claims"]), 12)
+        self.assertEqual(len(self.document([*claims, interface])["claims"]), len(society.CORE_CLAIMS) + 1)
         for change in (claims[:-1], [*claims, {**interface, "interface_only": False}],
                        [{**claims[0], "id": "G00"}, *claims[1:]],
                        [{**claims[0], "selected": False}, *claims[1:]],
                        [{**claims[0], "direct_consumers": []}, *claims[1:]]):
             with self.assertRaises(society.release.ReleaseError):
                 self.document(change)
+
+    def test_previous_scope_cannot_certify_expanded_selection(self):
+        previous = {"G2a", *(f"G{i}" for i in range(10))}
+        with self.assertRaises(society.release.ReleaseError):
+            self.document([claim for claim in self.claims() if claim["id"] in previous])
+        for missing in (f"G{i}" for i in range(13, 28)):
+            with self.subTest(missing=missing), self.assertRaises(society.release.ReleaseError):
+                self.document([claim for claim in self.claims() if claim["id"] != missing])
 
     def test_edition_registration_does_not_change_old_defaults(self):
         self.assertEqual(edition_release.EDITIONS["generated-society"], (society.MAP, society.SCHEMA))

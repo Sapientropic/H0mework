@@ -1,0 +1,207 @@
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.SaturationMonoid.ProcessGame.Regression.Society.M14.Fixture.Economy.Credit.Risk.Merge.Capacity.Renewal.Settlement.Joint.Renewal.Submission.Action.Transport.Renewal.Consumer.ProofCarryingPostSettlementObserverPaidSuccessorRenewal
+
+/-!
+# Fresh paid authority re-enters source-owned self-U8
+
+For boundary `b`, the current right replay and paid-renewal source have index
+`b + 2`; the paid target has index `b + 3`.  The cofinal novelty at boundary
+`b + 1` has exactly those two indices as its left and right replays.  Hence
+the already generated paid-renewal pair is the next cofinal kernel pair.
+
+This producer consumes the complete current no-free/fresh-renewal certificate.
+It generates the next novelty, span and morphism from existing producers,
+proves both replay and both endpoint bridges, and exposes the next morphism's
+full PCL/self-U8 chain.  It accepts no replay, target, Payment, authority,
+core, runtime or next from the caller.
+-/
+
+set_option autoImplicit false
+
+namespace SaturationMonoid
+namespace ProcessGame
+namespace Society
+namespace M14SourceGeneratedPostSettlementObserverPaidSelfU8Recurrence
+
+noncomputable section
+
+open ResponsibilityLifecycle LivingLawEvolution ConstructiveRoot
+open ConstructiveRoot.RootInquiryCompletion
+open Renewal UniversalRootGrammar
+open M14SourceGeneratedContributionMergeActionSource
+open M14SourceGeneratedContributionCapacityCofinalProductiveNovelty
+open M14SourceGeneratedPostSettlementObserverSubmissionU8
+open M14SourceGeneratedPostSettlementObserverSubmissionExternalPaymentLegislation
+open M14SourceGeneratedPostSettlementObserverSubmissionExternalPaymentLegislation.SourceGeneratedPostSettlementObserverSubmissionExternalPaymentLegislationAt
+open M14SourceGeneratedPostSettlementObserverAuthorityRevisedDispositionMorphism
+open M14SourceGeneratedPostSettlementObserverAuthorityRevisedDispositionMorphism.SourceGeneratedPostSettlementObserverAuthorityRevisedDispositionMorphismAt
+open M14ProofCarryingPostSettlementObserverAuthorityRevisedDispositionMorphism
+open M14SourceGeneratedPostSettlementObserverPaidSuccessorRenewal
+open M14ProofCarryingPostSettlementObserverPaidSuccessorRenewal
+
+/-- One exact one-step recurrence, indexed by the current morphism and its
+complete no-free/fresh-renewal consumer. -/
+inductive SourceGeneratedPostSettlementObserverPaidSelfU8RecurrenceAt
+    {oldVisit : OldVisit} {sourceIndex boundary : Nat}
+    {span :
+      SourceGeneratedPostSettlementObserverSubmissionExternalPaymentLegislationAt
+        oldVisit sourceIndex boundary}
+    {authority :
+      SourceNativeObserverConsumerRootedAuthorityAt (sourceSubmission span)}
+    (morphism :
+      SourceGeneratedPostSettlementObserverAuthorityRevisedDispositionMorphismAt
+        span authority)
+    (_current :
+      ProofCarryingPostSettlementObserverPaidSuccessorRenewalAt morphism) :
+    Type 32
+  | private generated
+
+/-- Sole producer from the already consumed current checkpoint. -/
+def sourceGeneratedPostSettlementObserverPaidSelfU8RecurrenceAt
+    {oldVisit : OldVisit} {sourceIndex boundary : Nat}
+    {span :
+      SourceGeneratedPostSettlementObserverSubmissionExternalPaymentLegislationAt
+        oldVisit sourceIndex boundary}
+    {authority :
+      SourceNativeObserverConsumerRootedAuthorityAt (sourceSubmission span)}
+    (morphism :
+      SourceGeneratedPostSettlementObserverAuthorityRevisedDispositionMorphismAt
+        span authority)
+    (current :
+      ProofCarryingPostSettlementObserverPaidSuccessorRenewalAt morphism) :
+    SourceGeneratedPostSettlementObserverPaidSelfU8RecurrenceAt morphism
+      current :=
+  .generated
+
+namespace SourceGeneratedPostSettlementObserverPaidSelfU8RecurrenceAt
+
+variable {oldVisit : OldVisit} {sourceIndex boundary : Nat}
+variable
+  {span :
+    SourceGeneratedPostSettlementObserverSubmissionExternalPaymentLegislationAt
+      oldVisit sourceIndex boundary}
+  {authority :
+    SourceNativeObserverConsumerRootedAuthorityAt (sourceSubmission span)}
+  {morphism :
+    SourceGeneratedPostSettlementObserverAuthorityRevisedDispositionMorphismAt
+      span authority}
+  {current :
+    ProofCarryingPostSettlementObserverPaidSuccessorRenewalAt morphism}
+  (recurrence :
+    SourceGeneratedPostSettlementObserverPaidSelfU8RecurrenceAt morphism
+      current)
+
+include recurrence
+
+def currentMorphism := by
+  cases recurrence
+  exact morphism
+
+theorem currentCertificate :
+    ProofCarryingPostSettlementObserverPaidSuccessorRenewalAt
+      (currentMorphism recurrence) := by
+  cases recurrence
+  exact current
+
+def currentPaidRenewal := paidRenewalAt (currentMorphism recurrence)
+
+def nextNovelty := by
+  cases recurrence
+  exact sourceGeneratedContributionCapacitySourceProductiveNoveltyAt oldVisit
+    sourceIndex (boundary + 1)
+
+def nextSpan := by
+  cases recurrence
+  exact
+    sourceGeneratedPostSettlementObserverSubmissionExternalPaymentLegislationAt
+      oldVisit sourceIndex (boundary + 1)
+
+/-- Fresh authority generated by the next source compiler occurrence. -/
+def nextAuthority :
+    SourceNativeObserverConsumerRootedAuthorityAt
+      (sourceSubmission (nextSpan recurrence)) :=
+  Classical.choice (sourceRootedAuthority (nextSpan recurrence))
+
+def nextMorphism :=
+  sourceGeneratedPostSettlementObserverAuthorityRevisedDispositionMorphismAt
+    (nextSpan recurrence) (nextAuthority recurrence)
+
+/-- The new novelty's left replay is the complete current right replay. -/
+theorem nextNoveltyLeft_isCurrentRightReplay :
+    (nextNovelty recurrence).leftReplay =
+      rightReplayAt oldVisit sourceIndex boundary := by
+  cases recurrence
+  rfl
+
+theorem nextNoveltyLeftPayload_isCurrentSpanReplay :
+    (nextNovelty recurrence).leftReplay.2 =
+      replay (legislationSpan (currentMorphism recurrence)) := by
+  cases recurrence
+  rfl
+
+/-- The next span consumes the new novelty's right replay. -/
+theorem nextSpanReplay_isNextNoveltyRight :
+    replay (nextSpan recurrence) =
+      (nextNovelty recurrence).rightReplay.2 := by
+  cases recurrence
+  rfl
+
+/-- The paid target is exactly the next source submission event. -/
+theorem currentPaidTargetEvent_isNextSourceEvent :
+    (currentPaidRenewal recurrence).targetConsequence.outerRootEvent =
+      (sourceSubmission (nextSpan recurrence)).exactEvent := by
+  cases recurrence
+  rfl
+
+/-- The paid target's actual-exit Payment is exactly the next span Payment. -/
+theorem currentPaidTargetPayment_isNextSpanPayment :
+    ((currentPaidRenewal recurrence).targetConsequence.actualExit
+      ).paymentOccurrence =
+      targetPaymentOccurrence (nextSpan recurrence) := by
+  cases recurrence
+  rfl
+
+/-- The next exact source witness is consumed without replacement. -/
+theorem nextMorphism_sourceAuthority_isFreshInput :
+    (nextMorphism recurrence).sourceAuthority = nextAuthority recurrence :=
+  sourceAuthority_isInput (nextMorphism recurrence)
+
+theorem nextMorphism_disposition_isInstalled :
+    transportedDisposition (nextMorphism recurrence) =
+      (activatedSubmissionAt oldVisit sourceIndex (boundary + 1)
+        ).payload.disposition :=
+  transportedDisposition_isInstalled (nextMorphism recurrence)
+
+/-- Full next PCL/self-U8 target chain, including source K, new-only row,
+coface, runtime and macro next. -/
+theorem nextMorphismCertificate :
+    ProofCarryingPostSettlementObserverAuthorityRevisedDispositionMorphismAt
+      (nextMorphism recurrence) :=
+  proofCarryingPostSettlementObserverAuthorityRevisedDispositionMorphism
+    (nextMorphism recurrence)
+
+/-- Complete next-cycle mouth.  Downstream recursion must consume this output,
+not independently rebuild the canonical cycle at `boundary + 1`. -/
+def nextCycle :
+    AnyProofCarryingPostSettlementObserverAuthorityRevisedDispositionMorphismAt
+      oldVisit sourceIndex (boundary + 1) :=
+  ⟨nextSpan recurrence, nextAuthority recurrence,
+    ⟨nextMorphism recurrence, nextMorphismCertificate recurrence⟩⟩
+
+theorem nextCycle_morphism_isGeneratedNext :
+    (nextCycle recurrence).2.2.1 = nextMorphism recurrence :=
+  rfl
+
+end SourceGeneratedPostSettlementObserverPaidSelfU8RecurrenceAt
+
+end
+end M14SourceGeneratedPostSettlementObserverPaidSelfU8Recurrence
+end Society
+end ProcessGame
+end SaturationMonoid
+
+#print axioms SaturationMonoid.ProcessGame.Society.M14SourceGeneratedPostSettlementObserverPaidSelfU8Recurrence.sourceGeneratedPostSettlementObserverPaidSelfU8RecurrenceAt
+#print axioms SaturationMonoid.ProcessGame.Society.M14SourceGeneratedPostSettlementObserverPaidSelfU8Recurrence.SourceGeneratedPostSettlementObserverPaidSelfU8RecurrenceAt.nextNoveltyLeft_isCurrentRightReplay
+#print axioms SaturationMonoid.ProcessGame.Society.M14SourceGeneratedPostSettlementObserverPaidSelfU8Recurrence.SourceGeneratedPostSettlementObserverPaidSelfU8RecurrenceAt.currentPaidTargetEvent_isNextSourceEvent
+#print axioms SaturationMonoid.ProcessGame.Society.M14SourceGeneratedPostSettlementObserverPaidSelfU8Recurrence.SourceGeneratedPostSettlementObserverPaidSelfU8RecurrenceAt.currentPaidTargetPayment_isNextSpanPayment
+#print axioms SaturationMonoid.ProcessGame.Society.M14SourceGeneratedPostSettlementObserverPaidSelfU8Recurrence.SourceGeneratedPostSettlementObserverPaidSelfU8RecurrenceAt.nextMorphismCertificate
+#print axioms SaturationMonoid.ProcessGame.Society.M14SourceGeneratedPostSettlementObserverPaidSelfU8Recurrence.SourceGeneratedPostSettlementObserverPaidSelfU8RecurrenceAt.nextCycle

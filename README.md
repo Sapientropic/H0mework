@@ -66,7 +66,7 @@ make check-first-release-full                 # 完整验收
 | 约束局部量子 | 原作用约束、量子约束与共同族时间演化 | [ConstrainedLocalQuantumK17](Lean/H0mework/Papers/ConstrainedLocalQuantumK17.lean) |
 | 原生长河 | Navier–Stokes 的原生演化与历史消费者 | [NativeFlow](Lean/H0mework/Papers/NativeFlow.lean) |
 | 整账会计 | 整账结构、债务结算与不可伪造的结算 | [WholeLedgerAccountingY1](Lean/H0mework/Papers/WholeLedgerAccountingY1.lean) |
-| 典范社会 | 主体生成、非空根法、真实退出与同发生续生 | [GeneratedSocietyMInfinity](Lean/H0mework/Papers/GeneratedSocietyMInfinity.lean) · [选集与验收](docs/generated-society-readiness.md) |
+| 典范社会 | 主体生成、非空根法、真实退出、同发生续生及完整经济责任链 | [GeneratedSocietyMInfinity](Lean/H0mework/Papers/GeneratedSocietyMInfinity.lean) · [选集与验收](docs/generated-society-readiness.md) |
 | 动态观察 | 计数观察、版本证明与压缩的精确代价 | [ObservationDynamics](Lean/H0mework/Papers/ObservationDynamics.lean) |
 
 ## 仓库地图

@@ -1,0 +1,72 @@
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.SaturationMonoid.ProcessGame.Regression.Society.M14.Fixture.Economy.Credit.Risk.Merge.Capacity.U8.Payment.Revision.Consumer.ProofCarryingContributionCapacityU8RevisionNoFreeReceipt
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.SaturationMonoid.ProcessGame.Regression.Society.M14.Fixture.Economy.Credit.Risk.Merge.Capacity.Renewal.Payment.Action.Reopening.Consumer.ProofCarryingContributionCapacityReopeningActionPayment
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.SaturationMonoid.ProcessGame.Regression.Society.M14.Fixture.Economy.Credit.Risk.Merge.Capacity.Renewal.Payment.Consumer.ProofCarryingContributionCapacityReopeningRuntimePayment
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.SaturationMonoid.ProcessGame.Regression.Society.M14.Fixture.Economy.Credit.Risk.Merge.Capacity.Renewal.Settlement.Payment.Action.Consumer.ProofCarryingContributionCapacitySettlementCrossRootPayment
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.SaturationMonoid.ProcessGame.Regression.Society.M14.Fixture.Economy.Credit.Risk.Merge.Capacity.Renewal.Settlement.Payment.Terminal.Consumer.ProofCarryingContributionCapacitySettlementTerminalNoFreeReceipt
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.SaturationMonoid.ProcessGame.Regression.Society.M14.Fixture.Economy.Credit.Risk.Merge.Capacity.Renewal.Runtime.Payment.Consumer.ProofCarryingContributionCapacitySettlementSurvivorRuntimePayment
+
+/-!
+# Complete no-free runtime receipt from depth three through twelve
+
+This is a product of the existing dependent branch receipts, not a new
+runtime branch grammar.  Paid same-root continuations, cross-root actual
+actions, rooted U8 revision and faithful-terminal handoff retain their
+distinct authorities while every named successor from depth three through
+twelve has a source-generated no-free mouth.
+-/
+
+set_option autoImplicit false
+
+namespace SaturationMonoid
+namespace ProcessGame
+namespace Society
+namespace M14ProofCarryingContributionCapacityDepthThreeToTwelveNoFreeRuntime
+
+noncomputable section
+
+open M14ProofCarryingContributionCapacityU8RevisionNoFreeReceipt
+open M14ProofCarryingContributionCapacityReopeningActionPayment
+open M14ProofCarryingContributionCapacityReopeningRuntimePayment
+open M14ProofCarryingContributionCapacitySettlementCrossRootPayment
+open M14ProofCarryingContributionCapacitySettlementTerminalNoFreeReceipt
+open M14ProofCarryingContributionCapacitySettlementSurvivorRuntimePayment
+
+/-- One canonical fixed-history authority.  The field split follows existing
+dependent receipts and introduces no new sum of outcomes. -/
+structure ProofCarryingContributionCapacityDepthThreeToTwelveNoFreeRuntime :
+    Prop where
+  depthThreeU8Revision :
+    ProofCarryingContributionCapacityU8RevisionNoFreeReceipt
+  depthFourFiveReopeningAction :
+    CanonicalContributionCapacityReopeningActionPaymentCertificate
+  depthSixToEightReopening :
+    CanonicalContributionCapacityReopeningRuntimePaymentCertificate
+  depthEightSettlementAction :
+    ProofCarryingContributionCapacitySettlementCrossRootPayment
+  depthNineFaithfulTerminal :
+    ProofCarryingContributionCapacitySettlementTerminalNoFreeReceipt
+  depthTenToTwelveSurvivor :
+    ProofCarryingContributionCapacitySettlementSurvivorRuntimePayment
+
+theorem proofCarryingContributionCapacityDepthThreeToTwelveNoFreeRuntime :
+    ProofCarryingContributionCapacityDepthThreeToTwelveNoFreeRuntime where
+  depthThreeU8Revision :=
+    proofCarryingContributionCapacityU8RevisionNoFreeReceipt
+  depthFourFiveReopeningAction :=
+    canonicalContributionCapacityReopeningActionPaymentCertificate
+  depthSixToEightReopening :=
+    canonicalContributionCapacityReopeningRuntimePaymentCertificate
+  depthEightSettlementAction :=
+    proofCarryingContributionCapacitySettlementCrossRootPayment
+  depthNineFaithfulTerminal :=
+    proofCarryingContributionCapacitySettlementTerminalNoFreeReceipt
+  depthTenToTwelveSurvivor :=
+    proofCarryingContributionCapacitySettlementSurvivorRuntimePayment
+
+end
+end M14ProofCarryingContributionCapacityDepthThreeToTwelveNoFreeRuntime
+end Society
+end ProcessGame
+end SaturationMonoid
+
+#print axioms SaturationMonoid.ProcessGame.Society.M14ProofCarryingContributionCapacityDepthThreeToTwelveNoFreeRuntime.proofCarryingContributionCapacityDepthThreeToTwelveNoFreeRuntime

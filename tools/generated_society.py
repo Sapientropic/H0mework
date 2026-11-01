@@ -20,7 +20,7 @@ import whole_ledger_export
 MAP = "docs/generated-society-map.json"
 SCHEMA = "h0mework/generated-society-map@1"
 SELECTION = "checks/generated-society-selection.json"
-CORE_CLAIMS = {"G0", "G1", "G2", "G2a", *(f"G{i}" for i in range(3, 10))}
+CORE_CLAIMS = {"G2a", *(f"G{i}" for i in range(10)), *(f"G{i}" for i in range(13, 28))}
 INTERFACES = {"G10", "G11", "G12"}
 ALLOWED_AXIOMS = {"propext", "Classical.choice", "Quot.sound"}
 
@@ -36,11 +36,11 @@ def document(root=release.ROOT):
     claims = release.selected_claims(data)
     ids = {claim["id"] for claim in claims}
     require(CORE_CLAIMS <= ids <= CORE_CLAIMS | INTERFACES,
-            "Society must retain G0–G9 and G2a; later claims are interfaces")
+            "Society must retain G0–G9, G2a and G13–G27; G10–G12 are explicit interfaces")
     for claim in claims:
         if claim["id"] in INTERFACES:
             require(claim.get("interface_only") is True,
-                    "Later society claim must be explicitly interface_only: " + claim["id"])
+                    "Society interface must be explicitly interface_only: " + claim["id"])
         require(bool(claim.get("direct_consumers")), "Society claim has no direct consumer: " + claim["id"])
     return data
 

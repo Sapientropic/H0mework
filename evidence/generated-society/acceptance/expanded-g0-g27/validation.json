@@ -1,0 +1,43 @@
+{
+  "schema": "h0mework/generated-society-local-validation@1",
+  "status": "passed",
+  "commands_exit_zero": {
+    "make check-map": 0,
+    "ci_plan coverage --plan .local/economic-plan-before-update.json": 0,
+    "unittest discover tools test_*.py": 0
+  },
+  "tool_tests": 409,
+  "selection_sha256": "bc9123c1f7a2cf577cc51f9a87bd01b667564bae4df79d99df5cfe8e754b48a6",
+  "checks": {
+    "source-public": {
+      "status": "passed",
+      "result_sha256": "520c9690a45b78bd1b66a34a644bd3abeab3e780458c5e2c8ac0f0a7eb46a59f"
+    },
+    "source-exact": {
+      "status": "passed",
+      "result_sha256": "5f4b0bbcf7ed74eb2b4d44702eb3fc3f1c5f3450361b7de37d06af74e515a34d"
+    },
+    "frozen-whole-ledger": {
+      "status": "passed",
+      "result_sha256": "df0eb76affabf1695a2efc8c786bf7e6495466ffd6705c2a8f1e34627a591a3a"
+    },
+    "frozen-one-bit": {
+      "status": "passed",
+      "result_sha256": "7836c3b5aede88d6a746fe20317e7964198ab8b9ec57450308c1e8171a57603a"
+    },
+    "frozen-first-release": {
+      "status": "passed",
+      "result_sha256": "1c9a9cf27228684133d596e11d8b6bc698e681ed576f1c7a9f08a8ddca8a6803",
+      "Lean_build_executed": false
+    },
+    "check-map": {
+      "ok": true,
+      "modules": 52502,
+      "legacy_layout_copies": 8525,
+      "artifacts": 4460,
+      "published_receipts": 413,
+      "private_originals_verified": 0
+    }
+  },
+  "kernel_acceptance": "Reported separately by actual build/trust/types receipts."
+}
