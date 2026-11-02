@@ -31,7 +31,7 @@ const releases = (Object.keys(RELEASES) as ReleaseId[]).map((id) => ({
           <li>
             <span class="meta"><b>{release.label[lang]}</b>{release.date}</span>
             <span class="papers">{release.papers.map((paper) => <a href={paper.href}>{paper.title}</a>)}</span>
-            <a class="guide" href={repoLink(release.guide)}>{t.guide}</a>
+            <a class="guide" href={repoLink(release.guide, undefined, release.sourceCommit)}>{t.guide}</a>
           </li>
         ))}
       </ul>

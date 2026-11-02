@@ -9,13 +9,13 @@ export type Lang = "zh" | "en";
 export const ROOT = resolve(process.cwd(), "..");
 export const read = (path: string) => readFileSync(resolve(ROOT, path), "utf8");
 export const readJson = <T = any>(path: string): T => JSON.parse(read(path));
-const REPO = "https://github.com/Sapientropic/H0mework/blob/main";
-export const repoLink = (path: string, line?: number) => `${REPO}/${path}${line ? `#L${line}` : ""}`;
+const REPO = "https://github.com/Sapientropic/H0mework/blob";
+export const repoLink = (path: string, line?: number, commit = "main") => `${REPO}/${commit}/${path}${line ? `#L${line}` : ""}`;
 
 const suffix = (lang: Lang) => (lang === "en" ? "-en" : "");
 const unzip = (zip: string, member: string) => execFileSync("unzip", ["-p", resolve(ROOT, zip), member], { encoding: "utf8", maxBuffer: 1 << 26 });
 
-export type ReleaseId = "first-release" | "second-edition" | "low-energy" | "whole-ledger" | "one-bit";
+export type ReleaseId = "first-release" | "second-edition" | "low-energy" | "whole-ledger" | "one-bit" | "generated-society" | "economic-constitution";
 type Release = {
   label: Record<Lang, string>;
   date: string;
@@ -23,9 +23,13 @@ type Release = {
   // The release selection: a JSON file, or a member of an archive.
   selection?: { path: string; member?: string };
   manuscript: (slug: string, lang: Lang) => string;
+  supplement?: (slug: string, lang: Lang) => string;
   files: (slug: string, lang: Lang) => { pdf: string; supplement?: string; arxiv?: string };
   check: string;
   guide: string;
+  sourceCommit?: string;
+  acceptance?: Record<Lang, string>;
+  claimsNote?: Record<Lang, string>;
 };
 
 const FIRST = "papers/first-release";
@@ -34,6 +38,21 @@ const LOW = "papers/low-energy-first-release/2026-10-11";
 const LEDGER = "papers/whole-ledger-one-bit/2026-10-17";
 // The 2026-10-17 papers ship their manuscripts and selections inside the editable archive uploaded to Zenodo.
 const ledgerArchive = (slug: string) => `${LEDGER}/editable/${slug}-v1-editable.zip`;
+const SOCIETY = "papers/society-economic/2026-11-03";
+const SOCIETY_SOURCE = "2d6fbc96e33b7c4c3cfd91104fda74e3caeda045";
+const societyArchive = (slug: string) => `${SOCIETY}/editable/${slug}-v1-editable.zip`;
+const societyPaper = (slug: string) => {
+  const paper = readJson(`${SOCIETY}/manifest.json`).papers.find((paper: any) => paper.paper === slug);
+  if (!paper?.doi || !/^10\.\d{4,9}\/\S+$/.test(paper.doi) || paper.source_commit !== SOCIETY_SOURCE)
+    throw new Error(`release manifest has no fixed proof source and DOI for ${slug}`);
+  return paper;
+};
+export const publishedPaperJson = (slug: string, path: string) =>
+  once(`published:${slug}:${path}`, () => JSON.parse(unzip(societyArchive(slug), `papers/${slug}/${path}`)));
+const localAcceptance = {
+  zh: "固定回执中的完整本地构建、trust 与完整类型验收通过；该回执不含新选集的远端 CI 通过记录。",
+  en: "The fixed receipts record a passed complete local build, trust, and complete-type acceptance. They contain no remote CI pass for the new selection.",
+};
 
 export const RELEASES: Record<ReleaseId, Release> = {
   "first-release": {
@@ -93,6 +112,40 @@ export const RELEASES: Record<ReleaseId, Release> = {
     check: "make check-one-bit-entry",
     guide: "docs/one-bit-reproduction.md",
   },
+  "generated-society": {
+    label: { zh: "典范社会总定理", en: "Canonical society" },
+    date: "2026-11-03",
+    map: "docs/generated-society-map.json",
+    selection: { path: societyArchive("generated-society"), member: "papers/generated-society/release-selection.json" },
+    manuscript: (slug, lang) => unzip(societyArchive(slug), `papers/${slug}/manuscript${suffix(lang)}.md`),
+    supplement: (slug, lang) => unzip(societyArchive(slug), `papers/${slug}/supplement${suffix(lang)}.md`),
+    files: (slug, lang) => ({ pdf: `${SOCIETY}/pdf/${slug}${suffix(lang)}.pdf`, supplement: `${SOCIETY}/pdf/${slug}-supplement${suffix(lang)}.pdf` }),
+    check: "python3 tools/generated_society.py entry --require-ready --output .local/generated-society-entry",
+    guide: "docs/generated-society-reproduction.md",
+    sourceCommit: SOCIETY_SOURCE,
+    acceptance: localAcceptance,
+    claimsNote: {
+      zh: "G0–G27 与 G2a 按实际来源映射列示。展开可读论文原文、生产声明、直接消费者及原认证；G10–G12 保持引用接口。",
+      en: "G0–G27 and G2a follow the actual source map. Open a row for the paper's wording, producers, direct consumers, and original evidence. G10–G12 remain cited interfaces.",
+    },
+  },
+  "economic-constitution": {
+    label: { zh: "可能性的经济宪法", en: "Economic constitution" },
+    date: "2026-11-03",
+    map: "docs/economic-constitution-map.json",
+    selection: { path: societyArchive("economic-constitution"), member: "papers/economic-constitution/release-selection.json" },
+    manuscript: (slug, lang) => unzip(societyArchive(slug), `papers/${slug}/manuscript${suffix(lang)}.md`),
+    supplement: (slug, lang) => unzip(societyArchive(slug), `papers/${slug}/supplement${suffix(lang)}.md`),
+    files: (slug, lang) => ({ pdf: `${SOCIETY}/pdf/${slug}${suffix(lang)}.pdf`, supplement: `${SOCIETY}/pdf/${slug}-supplement${suffix(lang)}.pdf` }),
+    check: "python3 tools/economic_constitution.py entry --require-ready --output .local/economic-constitution-entry",
+    guide: "docs/economic-constitution-reproduction.md",
+    sourceCommit: SOCIETY_SOURCE,
+    acceptance: localAcceptance,
+    claimsNote: {
+      zh: "八项制度原则与八项采用的形式结果分别列示。原则由规范论证承担；Lean 模块证明其明确采用的形式支撑。每条可展开原文、实际声明、直接消费者及原证据。",
+      en: "Eight institutional principles and eight adopted formal results are listed separately. The principles have normative arguments; Lean checks their explicitly adopted formal support. Each row opens the original text, actual declarations, direct consumers, and evidence.",
+    },
+  },
 };
 
 type Edition = { release: ReleaseId; doi: string };
@@ -123,7 +176,7 @@ export const UPCOMING: Partial<Record<ThemeId, { count: number; soon?: number }>
   chemistry: { count: 4 },
   metrology: { count: 3 },
   life: { count: 3 },
-  mind: { count: 3 },
+  mind: { count: 1 },
 };
 export type PaperEntry = {
   slug: string;
@@ -179,6 +232,16 @@ export const PAPERS: PaperEntry[] = [
     series: { zh: "低能系列 2", en: "Low-energy series 2" },
     figure: { name: "curvature-dome", claim: "low2.Q4" },
   },
+  {
+    slug: "generated-society",
+    theme: "mind",
+    editions: [{ release: "generated-society", doi: societyPaper("generated-society").doi }],
+  },
+  {
+    slug: "economic-constitution",
+    theme: "mind",
+    editions: [{ release: "economic-constitution", doi: societyPaper("economic-constitution").doi }],
+  },
 ];
 
 export const entryOf = (slug: string) => {
@@ -194,6 +257,8 @@ export const once = <T>(key: string, make: () => T): T => {
 };
 export const manuscriptOf = (release: ReleaseId, slug: string, lang: Lang) =>
   once(`manuscript:${release}:${slug}:${lang}`, () => RELEASES[release].manuscript(slug, lang));
+export const supplementOf = (release: ReleaseId, slug: string, lang: Lang) =>
+  once(`supplement:${release}:${slug}:${lang}`, () => RELEASES[release].supplement?.(slug, lang) ?? "");
 export const mapOf = (release: ReleaseId) => once(`map:${release}`, () => readJson(RELEASES[release].map));
 export const selectionOf = (release: ReleaseId) =>
   once(`selection:${release}`, () => {

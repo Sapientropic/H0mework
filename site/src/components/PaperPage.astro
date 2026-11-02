@@ -72,8 +72,9 @@ const chapterLabel = (key: string) => (/\d/.test(key) ? fill(t.chapter, key) : f
         <li><b>{stats.claims}</b>{t.statClaims}</li>
         <li><b>{stats.modules}</b>{t.statModules}</li>
         <li><b>{stats.declarations}</b>{t.statDeclarations}</li>
-        <li class="ok"><a href="#check">✓ {t.statKernel}</a></li>
+        <li class="ok"><a href="#check">✓ {latest.acceptance ? t.localKernel : t.statKernel}</a></li>
       </ul>
+      {latest.acceptance && <p class="note prose">{latest.acceptance} <a href={latest.sourceMap}>{t.evidence} · {latest.sourceCommit?.slice(0, 8)}</a></p>}
     </header>
     {paper.figure && <Figure name={paper.figure.name} lang={lang} transition={vtFigure(slug)} claim={featured} />}
     <section class="section">
@@ -91,11 +92,12 @@ const chapterLabel = (key: string) => (/\d/.test(key) ? fill(t.chapter, key) : f
     </section>
     <section class="section" id="claims">
       <h2>{t.claims}</h2>
-      <p class="note prose">{t.claimsNote}{paper.editions.length > 1 && (lang === "zh" ? t.claimsNoteEditions : ` ${t.claimsNoteEditions}`)}{translated && fill(t.translatedNote, translated)}</p>
+      <p class="note prose">{paper.claimsNote ?? t.claimsNote}{paper.editions.length > 1 && (lang === "zh" ? t.claimsNoteEditions : ` ${t.claimsNoteEditions}`)}{translated && fill(t.translatedNote, translated)}</p>
       <ClaimTape rows={claims} lang={lang} featured={featured} link grouped={grouped} />
       <p class="tape-key" aria-hidden="true">
         <span><i class="hole" />{t.keyLean}</span>
-        {claims.some((claim) => !claim.proved) && <span><i class="hole program" />{t.keyProgram}</span>}
+        {claims.some((claim) => !claim.proved && claim.category !== "principle") && <span><i class="hole program" />{t.keyProgram}</span>}
+        {claims.some((claim) => claim.category === "principle") && <span><i class="hole principle" />{t.keyPrinciple}</span>}
         {featured && <span><i class="hole featured" />{t.keyFigure}</span>}
       </p>
       <ol class="claims">
@@ -106,9 +108,11 @@ const chapterLabel = (key: string) => (/\d/.test(key) ? fill(t.chapter, key) : f
             <li class="claim" id={item.claim.key}>
               <details open={item.claim.key === featured}>
                 <summary>
-                  <span class={`id${item.claim.proved ? "" : " program"}${item.claim.key === featured ? " featured" : ""}`}>{item.claim.label}</span>
+                  <span class={`id${item.claim.proved ? "" : " program"}${item.claim.category === "principle" ? " principle" : ""}${item.claim.key === featured ? " featured" : ""}`}>{item.claim.label}</span>
                   <span class="title">
                     <span set:html={renderClaimTitle(item.claim.title)} />
+                    {item.claim.category === "interface" && <span class="tag later">{t.keyInterface}</span>}
+                    {item.claim.category === "principle" && <span class="tag later">{t.principle}</span>}
                     {item.claim.edition > 1 && <span class="tag later">{fill(t.edition, item.claim.edition)}</span>}
                     {item.claim.key === featured && <span class="tag">{t.figure}</span>}
                   </span>
@@ -159,7 +163,7 @@ const chapterLabel = (key: string) => (/\d/.test(key) ? fill(t.chapter, key) : f
                   {item.claim.location && <p class="meta">{t.location}{sep}{item.claim.location}</p>}
                   {item.claim.lean.length > 0 && (
                     <>
-                      <h4>{t.lean} · {item.claim.lean.length}</h4>
+                      <h4>{item.claim.category === "principle" ? t.formalSupport : t.lean} · {item.claim.lean.length}</h4>
                       <ul class="modules">
                         {item.claim.lean.map((lean) => (
                           <li>

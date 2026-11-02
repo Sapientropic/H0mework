@@ -111,6 +111,7 @@ h2 .count { margin-left: 10px; font: 13px/1 var(--mono); color: var(--muted); ve
 .claim .id::before { content: ""; position: absolute; left: 0; top: .42em; width: 7px; height: 7px; border-radius: 50%; box-sizing: border-box; }
 .claim .id::before { background: var(--ink); }
 .claim .id.program::before { background: var(--rule); }
+.claim .id.principle::before { background: transparent; border: 1px solid var(--muted); }
 .claim .id.featured::before { background: var(--cinnabar); }
 .claim > details[open] > summary .id { color: var(--cinnabar); }
 .claim .title { font-family: var(--serif); color: var(--ink); font-size: 16px; line-height: 1.45; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
@@ -184,6 +185,7 @@ h2 .count { margin-left: 10px; font: 13px/1 var(--mono); color: var(--muted); ve
 .holes { display: flex; flex-wrap: wrap; gap: 4px; }
 .hole { display: block; width: 10px; height: 10px; border-radius: 50%; box-sizing: border-box; background: var(--ink); }
 .hole.program { background: var(--rule); }
+.hole.principle { background: transparent; border: 1px solid var(--muted); }
 .hole.featured { background: var(--cinnabar); }
 .tape-label { font: 10.5px/1 var(--mono); color: var(--muted); border-top: 1px solid var(--rule); padding-top: 4px; min-width: 10px; }
 .tape.linked .hole:hover { box-shadow: 0 0 0 2px var(--page), 0 0 0 3px var(--cinnabar); }

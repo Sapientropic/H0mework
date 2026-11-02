@@ -3,7 +3,7 @@
 <p align="center">
   <a href="https://github.com/Sapientropic/H0mework/actions/workflows/ci.yml"><img alt="CI" src="https://img.shields.io/github/actions/workflow/status/Sapientropic/H0mework/ci.yml?branch=main&style=flat-square&label=CI"></a>
   <a href="https://h0mework.wiki"><img alt="网站 h0mework.wiki" src="https://img.shields.io/badge/%E7%BD%91%E7%AB%99-h0mework.wiki-b3372c?style=flat-square"></a>
-  <a href="#论文"><img alt="Zenodo 论文 6 篇" src="https://img.shields.io/badge/Zenodo-6%20%E7%AF%87%E8%AE%BA%E6%96%87-3c679f?style=flat-square"></a>
+  <a href="#论文"><img alt="Zenodo 论文 8 篇" src="https://img.shields.io/badge/Zenodo-8%20%E7%AF%87%E8%AE%BA%E6%96%87-3c679f?style=flat-square"></a>
   <a href="LICENSE"><img alt="Apache-2.0" src="https://img.shields.io/badge/license-Apache--2.0-3a332b?style=flat-square"></a>
 </p>
 
@@ -32,8 +32,10 @@
 | [**两负一正，裸迹宣誓**](https://h0mework.wiki/papers/low-energy-loop-response/)：有序闭迹与整球响应曲率 | [v1](https://doi.org/10.5281/zenodo.23299177) | [映射](docs/low-energy-release-map.json) · [复现](docs/edition-reproduction.md) |
 | [**平账魔法别想逃**](https://h0mework.wiki/papers/whole-ledger-accounting/)：源生整账与真实续行 | [v1](https://doi.org/10.5281/zenodo.23437454) | [映射](docs/whole-ledger-map.json) · [复现](docs/whole-ledger-reproduction.md) |
 | [**1 Bit Is All You Need**](https://h0mework.wiki/papers/one-bit/)：世界，不许赖账 | [v1](https://doi.org/10.5281/zenodo.23437456) | [映射](docs/one-bit-map.json) · [复现](docs/one-bit-reproduction.md) |
+| [**典范社会总定理**](https://h0mework.wiki/papers/generated-society/)：主体、完整制度、真实退出与全深度续生 | [v1](https://doi.org/10.5281/zenodo.23892126) | [映射](docs/generated-society-map.json) · [复现](docs/generated-society-reproduction.md) |
+| [**可能性的经济宪法**](https://h0mework.wiki/papers/economic-constitution/)：真实自由的生产、贡献的清算与权力的续约 | [v1](https://doi.org/10.5281/zenodo.23892128) | [映射](docs/economic-constitution-map.json) · [复现](docs/economic-constitution-reproduction.md) |
 
-正文、证明补充与可编辑源码从各自 Zenodo 记录下载；映射逐条给出每个主张落在哪个 Lean 声明。
+正文、证明补充与可编辑源码从各自 Zenodo 记录下载；映射逐条给出每个主张落在哪个 Lean 声明。 社会总定理与经济宪法固定引用 `2d6fbc96e33b`；七包／十六包的完整本地 build、trust 与 1012／3313 项类型验收分别见[社会稿](docs/generated-society-readiness.md)和[经济宪法](docs/economic-constitution-readiness.md)，远端 CI 按实际运行另记。
 
 <details>
 <summary>旧版本与源码绑定</summary>

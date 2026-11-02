@@ -3,7 +3,7 @@
 import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
-import { entryOf, manuscriptOf, mapOf, once, read, readJson, repoLink, selectionOf, type Lang, type ReleaseId } from "./registry";
+import { RELEASES, entryOf, manuscriptOf, mapOf, once, publishedPaperJson, read, readJson, repoLink, selectionOf, type Lang, type ReleaseId } from "./registry";
 import { excerptsOf } from "./excerpts";
 
 type Declaration = { name?: string; qualified_name: string; line?: number };
@@ -13,7 +13,7 @@ type Producer = {
   declarations?: Declaration[];
 };
 type Text = { title: string | null; statement: string | null };
-export type Source = { key: string; ids: string[]; edition: number; text: Text; location: Record<Lang, string | null>; producers: Producer[] };
+export type Source = { key: string; ids: string[]; edition: number; text: Text; location: Record<Lang, string | null>; producers: Producer[]; category?: "principle" | "interface" | "formal"; passages?: Partial<Record<Lang, string[]>> };
 
 // Every mapped Lean producer passed its kernel check before release. A map's "pending" marks only
 // the later re-acceptance of the public package in CI, so the site does not show it as a status.
@@ -192,12 +192,98 @@ function oneBit(slug: string, edition: number): Source[] {
   }));
 }
 
+// These accepted maps already select exact owners, including aliases and provider revisions.
+// Do not resolve their entries again by a matching path or a single-file digest.
+const acceptedEntries = (entries: any[]): Producer[] => entries.map((entry) => ({
+  kind: entry.declarations?.length ? "lean" : "artifact",
+  public: entry.public,
+  declarations: entry.declarations?.map((decl: any) => ({ qualified_name: decl.public_name ?? decl.qualified_name })),
+}));
+function societyIds(text: string): string[] {
+  return [...text.matchAll(/G(\d+)(a)?(?:[–-]G(\d+))?/g)].flatMap((match) =>
+    match[3] ? Array.from({ length: +match[3] - +match[1] + 1 }, (_, i) => `G${+match[1] + i}`) : [`G${match[1]}${match[2] ?? ""}`]);
+}
+function generatedSociety(slug: string, edition: number): Source[] {
+  const correspondence = publishedPaperJson(slug, "records/theorem-correspondence.json").rows;
+  return mapOf("generated-society").claims.map((claim: any) => {
+    const all = correspondence.filter((row: any) => societyIds(row.claims).includes(claim.id)
+      || (claim.cited_interface_contracts?.length && row.claims === "PT15 independent"));
+    const specific = all.filter((row: any) => row.main !== "1.1");
+    // Lead with the result devoted to this claim, before a broader assembly that also cites it.
+    const references = (specific.length ? specific : all).sort((a: any, b: any) =>
+      (new Set(societyIds(a.claims)).size || 999) - (new Set(societyIds(b.claims)).size || 999));
+    const locations = (lang: Lang) => [...new Set(references.map((row: any) => row.main
+      ? `${kindOf(manuscriptOf("generated-society", slug, lang), row.main, lang)} ${row.main}`
+      : `${lang === "zh" ? "附录" : "Appendix"} ${row.supplement}`))].join(lang === "zh" ? "；" : "; ") || null;
+    return {
+      key: `soc.${claim.id}`, ids: [claim.id], edition,
+      text: { title: claim.title, statement: claim.statement_scope === claim.title ? null : claim.statement_scope },
+      location: { zh: locations("zh"), en: locations("en") },
+      category: claim.interface_only ? "interface" : "formal",
+      producers: acceptedEntries([...claim.producers, ...claim.direct_consumers, ...claim.resources]),
+    };
+  });
+}
+
+const PRINCIPLES = { zh: ["一", "二", "三", "四", "五", "六", "七", "八"], en: ["One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight"] };
+function principleAt(slug: string, ordinal: number, lang: Lang) {
+  const text = manuscriptOf("economic-constitution", slug, lang);
+  const opening = `**${lang === "zh" ? "原则" : "Principle "}${PRINCIPLES[lang][ordinal - 1]}`;
+  const paragraph = text.split(/\n\s*\n/).find((paragraph) => paragraph.startsWith(opening));
+  if (!paragraph) throw new Error(`paper has no principle ${ordinal}: ${lang}`);
+  const before = text.slice(0, text.indexOf(paragraph));
+  const section = [...before.matchAll(/^#{2,4}\s+(\d+(?:\.\d+)*)\s/gm)].at(-1)?.[1];
+  return { opening, location: section ? `§${section}` : null };
+}
+function formalResultAt(slug: string, ordinal: string, lang: Lang) {
+  const text = manuscriptOf("economic-constitution", slug, lang);
+  const pattern = new RegExp(`^\\*\\*${lang === "zh" ? "结果" : "Result "}\\s*${ordinal}(?!\\d)`, "m");
+  const at = text.search(pattern);
+  if (at < 0) throw new Error(`paper has no formal result ${ordinal}: ${lang}`);
+  const section = [...text.slice(0, at).matchAll(/^#{2,4}\s+(\d+(?:\.\d+)*)\s/gm)].at(-1)?.[1];
+  return `${section ? `§${section} ` : ""}${lang === "zh" ? "结果" : "Result"} ${ordinal}`;
+}
+function economicConstitution(slug: string, edition: number): Source[] {
+  const map = mapOf("economic-constitution");
+  const principles: Source[] = map.claims.map((claim: any, index: number) => {
+    if (claim.claim_kind !== "normative_argument_with_exact_formal_support" || !claim.formal_support_only)
+      throw new Error(`economic principle classification changed: ${claim.id}`);
+    const zh = principleAt(slug, index + 1, "zh"), en = principleAt(slug, index + 1, "en");
+    return {
+      key: `ecn.${claim.id}`, ids: [claim.id], edition, category: "principle",
+      text: { title: claim.title, statement: claim.statement_scope },
+      location: { zh: zh.location, en: en.location }, passages: { zh: [zh.opening], en: [en.opening] },
+      producers: acceptedEntries([...claim.producers, ...claim.direct_consumers, ...claim.resources]),
+    };
+  });
+  const entries = map.claims.flatMap((claim: any) => [...claim.producers, ...claim.direct_consumers]);
+  const results: Source[] = map.paper_formal_results.map((result: any) => {
+    const bindings = map.paper_interface_registry.bindings.filter((binding: any) => result.source_keys.includes(binding.source_key));
+    const selected = entries.flatMap((entry: any) => {
+      const names = new Set(bindings.filter((binding: any) => binding.source_commit === entry.source_commit && binding.source_path === entry.source_path)
+        .flatMap((binding: any) => binding.declarations.map((decl: any) => decl.qualified_name)));
+      const declarations = entry.declarations.filter((decl: any) => names.has(decl.qualified_name));
+      return declarations.length ? [{ ...entry, declarations }] : [];
+    });
+    if (!selected.length) throw new Error(`formal result has no accepted declarations: ${result.id}`);
+    return {
+      key: `ecn.${result.id}`, ids: [result.id], edition, category: "formal",
+      text: { title: result.paper_label, statement: result.statement },
+      location: { zh: formalResultAt(slug, result.id.slice(1), "zh"), en: formalResultAt(slug, result.id.slice(1), "en") },
+      producers: acceptedEntries(selected),
+    };
+  });
+  return [...principles, ...results];
+}
+
 const ADAPTERS: Record<ReleaseId, (slug: string, edition: number) => Source[]> = {
   "first-release": firstRelease,
   "second-edition": secondEdition,
   "low-energy": lowEnergy,
   "whole-ledger": wholeLedger,
   "one-bit": oneBit,
+  "generated-society": generatedSociety,
+  "economic-constitution": economicConstitution,
 };
 
 // --- translations -----------------------------------------------------------------------------
@@ -268,7 +354,7 @@ function lineOf(path: string, qualified: string) {
   return index < 0 ? undefined : index + 1;
 }
 
-function modulesOf(producers: Producer[]) {
+function modulesOf(producers: Producer[], commit?: string) {
   const modules = new Map<string, { path: string; declarations: Map<string, Declaration> }>();
   for (const producer of leanOf(producers)) {
     const entry = modules.get(producer.public!.module!) ?? { path: producer.public!.path, declarations: new Map() };
@@ -278,9 +364,9 @@ function modulesOf(producers: Producer[]) {
   return [...modules].map(([module, { path, declarations }]) => {
     const decls = [...declarations.values()].map((decl) => {
       const line = decl.line ?? lineOf(path, decl.qualified_name);
-      return { name: decl.name ?? decl.qualified_name.split(".").pop()!, qualified: decl.qualified_name, line, link: repoLink(path, line) };
+      return { name: decl.name ?? decl.qualified_name.split(".").pop()!, qualified: decl.qualified_name, line, link: repoLink(path, line, commit) };
     });
-    return { module, short: shortModule(module), link: repoLink(path, decls[0]?.line), declarations: decls };
+    return { module, short: shortModule(module), link: repoLink(path, decls[0]?.line, commit), declarations: decls };
   });
 }
 
@@ -319,11 +405,17 @@ function rowOf(source: Source, release: ReleaseId, slug: string, lang: Lang) {
   const statement = rest && rest !== derived ? rest : null;
   const location = source.location[lang];
   // Results are found by number, so the registered location (Chinese where both exist) names them for either page.
-  const paper = excerptsOf(release, slug, lang, source.location.zh ?? source.location.en, reading ?? {});
-  const lean = modulesOf(source.producers);
+  const paper = excerptsOf(release, slug, lang, source.location.zh ?? source.location.en,
+    { ...reading, passages: [...(reading?.passages ?? []), ...(source.passages?.[lang] ?? [])] });
+  const commit = RELEASES[release].sourceCommit;
+  const lean = modulesOf(source.producers, commit);
   const order = orderOf(source.location.zh ?? source.location.en);
+  const artifacts = source.producers
+    .filter((producer) => producer.kind !== "lean" && producer.public)
+    .map((producer) => ({ path: producer.public!.path, name: producer.public!.path.split("/").pop()!, link: repoLink(producer.public!.path, undefined, commit) }));
   return {
     key: source.key,
+    category: source.category,
     ids: source.ids,
     label: labelOf(source.ids),
     edition: source.edition,
@@ -343,12 +435,10 @@ function rowOf(source: Source, release: ReleaseId, slug: string, lang: Lang) {
     section: location?.match(/^(§[\dA-Z.]+(?:[–-]§?[\dA-Z.]+)?|[^\s\d；;,，、]*\s?[\d.A-Z]+[\d.–()]*)/)?.[1] ?? location,
     order,
     chapter: chapterOf(order),
-    proved: lean.length > 0,
+    proved: source.category !== "principle" && lean.length > 0,
     declarationCount: lean.reduce((sum, module) => sum + module.declarations.length, 0),
     lean,
-    artifacts: source.producers
-      .filter((producer) => producer.kind !== "lean" && producer.public)
-      .map((producer) => ({ path: producer.public!.path, name: producer.public!.path.split("/").pop()!, link: repoLink(producer.public!.path) })),
+    artifacts: source.category ? [...new Map(artifacts.map((artifact) => [artifact.path, artifact])).values()] : artifacts,
   };
 }
 

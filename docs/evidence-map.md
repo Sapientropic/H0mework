@@ -1,5 +1,7 @@
 # 证据对应表
 
+社会稿G0–G27、G2a及所用独立接口由[社会映射](generated-society-map.json)登记，七包与1012项完整类型验收见[准备状态](generated-society-readiness.md)。经济宪法ECN1–ECN8的形式支撑与结果1–8见[经济映射](economic-constitution-map.json)，十六包与3313项完整类型验收见[准备状态](economic-constitution-readiness.md)；规范原则保留本篇独立论证。固定成品与DOI见[发布清单](../papers/society-economic/2026-11-03/manifest.json)。
+
 两篇首发修订以[首发映射](first-release-map.json)登记生产声明、消费者和验证身份，命令见[首发复现指南](first-release-reproduction.md)。本页保存原八稿与历史选集对应。
 
 第二版的新增 C35–C45／P37–P40 见[第二版映射](second-edition-map.json)，低能首发 L1–L28／Q1–Q6 见[低能映射](low-energy-release-map.json)。原 60 条首发主张按固定提交继承；新选集的命令见[版本复现](edition-reproduction.md)，实际验收见[准备状态](second-edition-readiness.md)。

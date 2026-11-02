@@ -22,7 +22,7 @@ const Hole = link ? "a" : "span";
       <div class="holes">
         {group.rows.map((row) => (
           <Hole
-            class={`hole${row.proved ? "" : " program"}${row.key === featured ? " featured" : ""}`}
+            class={`hole${row.proved ? "" : " program"}${row.category === "principle" ? " principle" : ""}${row.key === featured ? " featured" : ""}`}
             href={link ? `#${row.key}` : undefined}
             title={link ? `${row.label} · ${row.title}` : undefined}
           />

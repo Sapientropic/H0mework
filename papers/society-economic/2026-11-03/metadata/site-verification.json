@@ -1,0 +1,83 @@
+{
+  "schema": "h0mework/site-society-economic-local-check@1",
+  "status": "passed",
+  "source_commit": "2d6fbc96e33b7c4c3cfd91104fda74e3caeda045",
+  "release_date": "2026-11-03",
+  "manifest": "papers/society-economic/2026-11-03/manifest.json",
+  "commands": [
+    {
+      "command": "bun scripts/check-society-economic.ts",
+      "exit_code": 0
+    },
+    {
+      "command": "bun run build",
+      "exit_code": 0,
+      "includes": "All six unchanged figure-model checks and generated fragments, followed by Astro."
+    },
+    {
+      "command": "bun --bun astro build",
+      "exit_code": 0,
+      "phase": "Final updated manifest/ZIPs and final display edits."
+    }
+  ],
+  "pages_built": 23,
+  "build_warnings_or_translation_gaps": 0,
+  "published_papers": 8,
+  "mind_upcoming": 1,
+  "generated_society": {
+    "rows": 29,
+    "interface_rows": [
+      "G10",
+      "G11",
+      "G12"
+    ],
+    "actual_owner_declaration_pairs": 1010,
+    "provider_control_roots_in_receipt": 2,
+    "leading_G2_excerpt": "Theorem 4.3",
+    "leading_G18_excerpt": "Theorem 6.4",
+    "doi": "10.5281/zenodo.23892126"
+  },
+  "economic_constitution": {
+    "rows": 16,
+    "normative_principles": 8,
+    "adopted_formal_results": 8,
+    "actual_owner_declaration_pairs": 3313,
+    "doi": "10.5281/zenodo.23892128",
+    "title_and_separate_subtitle_from_published_zip": true
+  },
+  "english_registered_text_additions": 45,
+  "existing_six_papers": {
+    "all_claim_rows_and_paper_fields_compared_to_HEAD_in_both_languages": "exactly identical",
+    "original_translation_entries": "unchanged"
+  },
+  "browser": {
+    "local_only": true,
+    "viewports_checked": [
+      {
+        "width": 390,
+        "height": 844
+      },
+      {
+        "width": 1200,
+        "height": 635
+      },
+      {
+        "width": 1280,
+        "height": 850
+      }
+    ],
+    "new_bilingual_routes_all_http_200": true,
+    "canonical_and_DOI_links_verified": true,
+    "source_links_point_to_fixed_commit": true,
+    "no_horizontal_page_overflow": true,
+    "principle_and_formal_result_expansion_verified": true,
+    "latest_page_console_errors": 0,
+    "home_lists_both_papers_first": true
+  },
+  "temporary_QA_files_removed": 17,
+  "browser_tab_closed": true,
+  "remote_write_or_deploy_by_this_task": false,
+  "commit_by_this_task": false,
+  "scope": "site directory only; official release bytes and remote publication remain ROOT-owned.",
+  "preview_server_stopped": true
+}

@@ -3,7 +3,7 @@
 // as the paper states it; the map's acceptance wording stays a secondary layer. A location that names
 // a passage rather than a result ("§8.2 / 两次执行的独立差账") is served by the reading layer, which
 // gives the opening words of that paragraph.
-import { manuscriptOf, once, type Lang, type ReleaseId } from "./registry";
+import { manuscriptOf, supplementOf, once, type Lang, type ReleaseId } from "./registry";
 
 type Result = { kind: string; number: string; name: string; body: string; section: string };
 // `label` heads the quotation: a result's kind and number, or a passage's section.
@@ -53,7 +53,7 @@ function continuation(paragraphs: string[], at: number, inline: boolean, body: s
 // A manuscript as paragraphs, each with the subsection it sits in, and its numbered results by number.
 function indexOf(release: ReleaseId, slug: string, lang: Lang) {
   return once(`results:${release}:${slug}:${lang}`, () => {
-    const paragraphs = manuscriptOf(release, slug, lang)
+    const paragraphs = (manuscriptOf(release, slug, lang) + "\n\n" + supplementOf(release, slug, lang))
       .split(/\n\s*\n/)
       .flatMap((block) => block.replace(ANCHOR, "").split(/\n(?=#)/))
       // Indentation is kept: it is what holds a display or a paragraph inside its list item.
@@ -160,6 +160,9 @@ const quoted = (result: Result, parts: string | null): Excerpt => ({ label: `${r
 export function excerptsOf(release: ReleaseId, slug: string, lang: Lang, location: string | null, more: { cite?: string[]; passages?: string[] } = {}) {
   const { results } = indexOf(release, slug, lang);
   const cited = [...(location ? citedResults(location) : []), ...(more.cite ?? []).map((number) => ({ number, parts: null }))];
+  // This paper numbers its adopted formal results 1–8; its principles are quoted as passages.
+  if (release === "economic-constitution" && location)
+    cited.push(...[...location.matchAll(/结果\s*(\d+)(?![\d.])/g)].map((match) => ({ number: match[1], parts: null })));
   const passages = (more.passages ?? []).flatMap((opening) => passageOf(release, slug, lang, opening) ?? []);
   if (cited.length > 0 || passages.length > 0) {
     const seen = new Set<string>();

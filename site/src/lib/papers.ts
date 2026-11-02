@@ -162,22 +162,30 @@ export function paperOf(slug: string, lang: Lang) {
       supplement: files.supplement && repoLink(files.supplement),
       arxiv: files.arxiv && repoLink(files.arxiv),
       check: release.check,
-      guide: repoLink(release.guide),
+      guide: repoLink(release.guide, undefined, release.sourceCommit),
+      acceptance: release.acceptance?.[lang],
+      sourceCommit: release.sourceCommit,
+      sourceMap: release.sourceCommit && repoLink(release.map, undefined, release.sourceCommit),
     };
   });
   const latest = entry.editions.at(-1)!.release;
   const manuscript = manuscriptOf(latest, slug, lang);
   const title = titleOf(manuscript);
+  const parts = splitTitle(title);
+  // This paper places its subtitle on a separate heading before the abstract.
+  if (latest === "economic-constitution" && !parts.sub)
+    parts.sub = manuscript.split(/^##\s+(?:摘要|Abstract)\s*$/m)[0].match(/^##\s+(.+)$/m)?.[1] ?? "";
   const abstract = abstractOf(manuscript, lang);
   const other = titleOf(manuscriptOf(latest, slug, lang === "zh" ? "en" : "zh"));
   return {
     ...entry,
-    title,
-    ...splitTitle(title),
+    title: parts.sub && latest === "economic-constitution" ? `${title}: ${parts.sub}` : title,
+    ...parts,
     // The other language's title, less a main title both languages share.
     other: splitTitle(other).main === splitTitle(title).main ? splitTitle(other).sub : other,
     editions,
     current: editions.at(-1)!,
+    claimsNote: RELEASES[latest].claimsNote?.[lang],
     abstract: abstractLayout(abstract, lang),
     // Plain first sentences of the abstract for the page description.
     summary: plain(abstract[0]).match(/^.{40,160}?(。|[.!?](?=\s|$))/)?.[0] ?? plain(abstract[0]).slice(0, 160),
@@ -199,10 +207,11 @@ export function chaptersOf(slug: string, lang: Lang) {
 export function statsOf(slug: string) {
   const rows = claimsOf(slug, "zh");
   const leans = rows.flatMap((row) => row.lean);
+  const exactOwners = entryOf(slug).editions.some((edition) => RELEASES[edition.release].sourceCommit);
   return {
     claims: new Set(rows.flatMap((row) => row.ids)).size,
     modules: new Set(leans.map((lean) => lean.module)).size,
-    declarations: new Set(leans.flatMap((lean) => lean.declarations.map((decl) => decl.qualified))).size,
+    declarations: new Set(leans.flatMap((lean) => lean.declarations.map((decl) => exactOwners ? `${lean.module}:${decl.qualified}` : decl.qualified))).size,
   };
 }
 

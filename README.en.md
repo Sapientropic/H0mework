@@ -3,7 +3,7 @@
 <p align="center">
   <a href="https://github.com/Sapientropic/H0mework/actions/workflows/ci.yml"><img alt="CI" src="https://img.shields.io/github/actions/workflow/status/Sapientropic/H0mework/ci.yml?branch=main&style=flat-square&label=CI"></a>
   <a href="https://h0mework.wiki/en/"><img alt="Site h0mework.wiki" src="https://img.shields.io/badge/site-h0mework.wiki-b3372c?style=flat-square"></a>
-  <a href="#papers"><img alt="6 papers on Zenodo" src="https://img.shields.io/badge/Zenodo-6%20papers-3c679f?style=flat-square"></a>
+  <a href="#papers"><img alt="8 papers on Zenodo" src="https://img.shields.io/badge/Zenodo-8%20papers-3c679f?style=flat-square"></a>
   <a href="LICENSE"><img alt="Apache-2.0" src="https://img.shields.io/badge/license-Apache--2.0-3a332b?style=flat-square"></a>
 </p>
 
@@ -32,8 +32,10 @@ Lean 4 proofs, reproduction programs and frozen evidence behind a family of rese
 | [**Two Minuses, One Plus, and a Bare Trace Under Oath**](https://h0mework.wiki/en/papers/low-energy-loop-response/): Ordered Closed Traces and Whole-Ball Response Curvature | [v1](https://doi.org/10.5281/zenodo.23299177) | [Map](docs/low-energy-release-map.json) · [Reproduce](docs/edition-reproduction.md) |
 | [**Book-Balancing Magic Has Nowhere to Hide**](https://h0mework.wiki/en/papers/whole-ledger-accounting/): Source-Native Accounting and Actual Continuation | [v1](https://doi.org/10.5281/zenodo.23437454) | [Map](docs/whole-ledger-map.json) · [Reproduce](docs/whole-ledger-reproduction.md) |
 | [**1 Bit Is All You Need**](https://h0mework.wiki/en/papers/one-bit/): The Weakest Superpower: No Unaccounted Differences | [v1](https://doi.org/10.5281/zenodo.23437456) | [Map](docs/one-bit-map.json) · [Reproduce](docs/one-bit-reproduction.md) |
+| [**The Canonical Society Theorem**](https://h0mework.wiki/en/papers/generated-society/) | [v1](https://doi.org/10.5281/zenodo.23892126) | [Map](docs/generated-society-map.json) · [Reproduce](docs/generated-society-reproduction.md) |
+| [**An Economic Constitution of Possibility**](https://h0mework.wiki/en/papers/economic-constitution/): Producing Real Freedom, Settling Contributions, and Renewing Authority | [v1](https://doi.org/10.5281/zenodo.23892128) | [Map](docs/economic-constitution-map.json) · [Reproduce](docs/economic-constitution-reproduction.md) |
 
-Main texts, proof supplements and editable sources are available from each Zenodo record; each map lists, claim by claim, the Lean declaration it rests on.
+Main texts, proof supplements and editable sources are available from each Zenodo record; each map lists, claim by claim, the Lean declaration it rests on. The society and economic-constitution papers cite `2d6fbc96e33b`. Their complete local builds, trust audits and 1012/3313 full declaration types are accepted in the [society](docs/generated-society-readiness.md) and [economic-constitution](docs/economic-constitution-readiness.md) records; remote CI retains its actual run status.
 
 <details>
 <summary>Earlier editions and source bindings</summary>
