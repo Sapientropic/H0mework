@@ -1,0 +1,40 @@
+{
+  "accepted": true,
+  "source": "Lean/scripts/verification/public-source-owned-iteration-consumer.lean",
+  "source_sha256": "db3a9bcb828258762bd91b58ec60aa1ea43f1e3c1d68110ad4f952d59ecf72fc",
+  "command": [
+    "lean",
+    "--trust=0",
+    "-DwarningAsError=true",
+    "-DElab.async=false",
+    "-j1",
+    "-M12000",
+    "-R",
+    ".agents/tmp/public-autonomous-origin-20261101/current-frame/production/consumer-source",
+    "-o",
+    ".agents/tmp/public-autonomous-origin-20261101/current-frame/production/lib/PublicDefaultActualNative.olean",
+    "-c",
+    ".agents/tmp/public-autonomous-origin-20261101/current-frame/production/installed-consumer.c",
+    ".agents/tmp/public-autonomous-origin-20261101/current-frame/production/consumer-source/PublicDefaultActualNative.lean"
+  ],
+  "exit": 0,
+  "seconds": 8.455,
+  "trust": 0,
+  "werror": true,
+  "elab_async": false,
+  "imports": {
+    ".agents/tmp/public-autonomous-origin-20261101/current-frame/production/lib/SaturationMonoid/ProcessGame/Society/PublicFunction/Mandate/Financed/Continuing/Closure/Objection/Opening/ScopeRevision/Pending/Joint/Handoff/World/TaskSource/Iteration.olean": "50a948af033680d95d44e445a5d30049a33ab91ac295b68a12942d8b1751f84e",
+    ".agents/tmp/public-autonomous-origin-20261101/current-frame/production/lib/SaturationMonoid/ProcessGame/Society/PublicFunction/Mandate/Financed/Continuing/Closure/Objection/Opening/ScopeRevision/Pending/Joint/Future/Regression.olean": "6c0d3b57a66f83002203b286fff8e73f9903ea1f1a987bc67fa1e09462304269"
+  },
+  "artifact": ".agents/tmp/public-autonomous-origin-20261101/current-frame/production/lib/PublicDefaultActualNative.olean",
+  "artifact_sha256": "62baa44302fd56536afaf891dd9992723c8071fcd1b20715a405cfd5d02c9ce4",
+  "reference_artifact_sha256": "62baa44302fd56536afaf891dd9992723c8071fcd1b20715a405cfd5d02c9ce4",
+  "complete_c": ".agents/tmp/public-autonomous-origin-20261101/current-frame/production/installed-consumer.c",
+  "complete_c_sha256": "95e55792b725c1a1359d075128dc4811d880c8a203a7b06c8fc0410700185c95",
+  "executed_complete_c_sha256": "95e55792b725c1a1359d075128dc4811d880c8a203a7b06c8fc0410700185c95",
+  "complete_module_c_byte_identical": true,
+  "identity_output": "INTEGRATED LOGICAL IDENTITY PASS: modules=1; unchangedOriginalBodiesAndTypes=19; additiveDeclarations=0\n",
+  "reused_actual_receipt_sha256": "98a829b521b95b6ab4fb0b9990376d3bcf1e762ef85b24b156d8dafaefac485a",
+  "actual_cases": 12,
+  "verification_script_sha256": "21e18bbc5bcd27c832b54b4704d42bedb5ff63667dac8e2cae533b2e3c703b6e"
+}

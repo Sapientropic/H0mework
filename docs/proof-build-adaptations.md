@@ -87,3 +87,17 @@ R9 的 `ActualEMSourceLockedCarrier` 消费同一 canonical LockedFieldReturn ow
 9c73 的 `Root.authoritySource` 不可计算，`CPS1Personalized2025.Ngs.Closure` 中未标注的 `ParentBase`／`ParentLedger` 简写因此不能编译。H0 修复只为这两枚简写加 `noncomputable`，与 Supply、Longitudinal、Delivery 三个 closure 的写法一致；类型、值与其余字节保持。导出记录以 `H0-noncomputable-marker-repair` 登记，原件与修复件分别存于 [historical](source/second-edition/core/historical/NgsClosure-9c73a630.lean) 与 [supplements](source/second-edition/core/supplements/NgsClosure-9c73a630.lean)。
 
 同类定义可用 `noncomputable_marker_rewrites` 按精确声明名及完整 `def … :=` 头登记代码生成标记，保持类型、值和正文。社会 `Pending.Joint.Source` 的 `submit`／`actual` 沿此口处理；默认原路径视图保留标记，`--exact` 移除并核原 SHA。重复声明、已有标记或头不匹配均拒绝，默认 `-C` 覆盖及编译选项保持。
+
+
+## 原匿名消费者的类型观测
+
+`anonymous_consumer_names` 逐项记录原 `example` 的序号与实际公开模块下的唯一名称。公开源码将该命令头改为显式 `noncomputable def`，保留全部原类型、参数和证明／值正文；原 `noncomputable example` 另登记其完整命令头。命名让原匿名合同可以进入完整类型和公理依赖验收，不新增科学命题。默认原路径视图保留名称，`--exact` 恢复原命令及原 SHA。
+
+规则只接受真实顶层命令，必须覆盖源文件的每个原匿名例；缺项、重复、碰撞、错序或不同 owner 前缀均拒绝。不同递归环境的新 owner 重新绑定自身前缀，相同完整身份继续复用已有 owner。原脚本分别作为独立 proof package 构建，保留各自环境。原实际运行程序作为可恢复源资源保存，是否重跑由独立科学复现合同决定。
+
+
+## 依赖基数的默认函数重绑定
+
+`signal_memory_default_rebindings` 处理 `Distributed.Regression.stale` 的结构更新：把 `signals` 从 1 改为 2 时，继承的四个记忆函数仍带原有限域。公开源码显式写出实际执行器原本采用的四个默认函数，其他字段、全部定理与预算保持。修复体与固定源 `7e2cc053821fedbb638122b3b2f8c82134c61ac0` 及 `59df7e39d81e8698f3cf8507e64b93829bb1cac3` 相同。
+
+规则验证完整原声明、默认基对象和四个精确函数，只允许这项基数更新；默认原路径视图保留修复，`--exact` 恢复原源 SHA。该编译适配由本轮独立 Lean 检查承担，不扩大历史资本认证的范围。

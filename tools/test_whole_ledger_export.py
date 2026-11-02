@@ -122,6 +122,37 @@ class ExportTests(unittest.TestCase):
                 with self.assertRaisesRegex(w.ExportError, "artifact_namespace"):
                     w.load_selection(path)
 
+    def test_relative_tmp_addresses_are_not_runtime_roots(self):
+        raw = b'{"receipt":".agents/tmp/run/receipt.json","source":"Verification/Original/Users/fixture/input","status":"failed","value":1.00}\n'
+        self.write(self.source, "Verification/relative.json", raw)
+        revision = self.commit(self.source)
+        plan = self.run_stage([{"source_commit": revision, "artifacts": ["Verification/relative.json"]}])
+        row = plan["artifacts"][0]
+        self.assertEqual((self.directory / "stage/stage" / row["path"]).read_bytes(), raw)
+        self.assertFalse(w.UNDECLARED_PATH.search(".agents/tmp/run/receipt.json"))
+        for value in ("/tmp/run/receipt.json", "-I/Users/fixture/include", "line\\n/Volumes/device/run",
+                      "/private/var/run/receipt.json"):
+            self.assertTrue(w.UNDECLARED_PATH.search(value), value)
+
+    def test_absolute_runtime_root_still_requires_an_explicit_declaration(self):
+        raw = b'{"receipt":"/tmp/run/receipt.json","status":"failed","value":1.00}\n'
+        self.write(self.source, "Verification/absolute.json", raw)
+        revision = self.commit(self.source)
+        selected = [{"source_commit": revision, "artifacts": ["Verification/absolute.json"]}]
+        with self.assertRaisesRegex(w.ExportError, "explicit runtime_paths"):
+            self.run_stage(selected, name="undeclared")
+        self.write(self.directory, "absolute.json", raw)
+        origin = {"kind": "fixed-git-original-material", "source_commit": revision,
+                  "source_path": "Verification/absolute.json"}
+        providers = self.directory / "absolute-providers.json"
+        providers.write_text(json.dumps([{"source_commit": revision, "source_path": "Verification/absolute.json",
+            "source_sha256": w.sha(raw), "provider": "absolute.json", "source_origin": origin,
+            "runtime_paths": [{"pointer": "/receipt", "relative": "runtime/receipt.json"}]}]))
+        plan = self.run_stage(selected, [providers], name="explicit")
+        stored = (self.directory / "explicit/stage" / plan["artifacts"][0]["path"]).read_bytes()
+        self.assertIn(b'"value":1.00', stored)
+        self.assertEqual(json.loads(stored)["receipt"], "runtime/receipt.json")
+
     def test_unchanged_body_with_changed_dependency_gets_distinct_owner(self):
         self.write(self.source, "Lean/A.lean", b'import Mathlib\ndef a := 1\n')
         self.write(self.source, "Lean/Root.lean", b'import A\ndef root := a\n')
@@ -234,6 +265,56 @@ class ExportTests(unittest.TestCase):
         document.write_text(json.dumps(rows))
         with self.assertRaisesRegex(w.ExportError, "ledger SHA differs"):
             self.run_stage([{"source_commit": revision, "roots": ["Lean/Generated.lean"]}], [document], name="bad-stage")
+
+    def test_public_custody_ledger_preserves_original_epoch_and_fixed_bytes(self):
+        raw = b'import Mathlib\ndef retained := 19\n'
+        self.write(self.source, "README", b"Scientific source epoch\n")
+        epoch = self.commit(self.source)
+        ledger = json.dumps({"retained_sha256": w.sha(raw), "scientific_epoch": epoch}).encode()
+        self.write(self.public, "evidence/custody.json", ledger)
+        custody = self.commit(self.public)
+        self.write(self.directory, "retained.lean", raw)
+        origin = {"kind": "retained-original-source", "ledger_repository": "https://example.org/H0mework.git",
+                  "ledger_commit": custody, "ledger_path": "evidence/custody.json",
+                  "ledger_sha256": w.sha(ledger), "original_source_sha256": w.sha(raw)}
+        rows = [{"source_commit": epoch, "source_path": "Lean/Retained.lean", "source_sha256": w.sha(raw),
+                 "provider": "retained.lean", "source_origin": origin}]
+        document = self.directory / "custody-providers.json"
+        document.write_text(json.dumps(rows))
+        self.write(self.public, "evidence/custody.json", b"changed current ledger\n")
+        plan = self.run_stage([{"source_commit": epoch, "roots": ["Lean/Retained.lean"]}], [document])
+        self.assertEqual(plan["sources"][w.source_key(epoch, "Lean/Retained.lean")]["source_origin"], origin)
+        self.assertEqual(plan["additions"][0]["source_revision"], epoch)
+        rows[0]["source_origin"]["ledger_repository"] = "https://example.org/H0mework.git.lookalike"
+        document.write_text(json.dumps(rows))
+        with self.assertRaisesRegex(w.ExportError, "Unsupported fixed evidence repository"):
+            self.run_stage([{"source_commit": epoch, "roots": ["Lean/Retained.lean"]}], [document], name="lookalike")
+
+    def test_public_receipt_pointer_is_explicit_and_cannot_bypass_source_digest(self):
+        raw = b'import Mathlib\ndef retained := 23\n'
+        self.write(self.source, "README", b"Scientific source epoch\n")
+        epoch = self.commit(self.source)
+        receipt = json.dumps({"original": {"source_sha256": w.sha(raw)}}).encode()
+        self.write(self.public, "evidence/receipt.json", receipt)
+        custody = self.commit(self.public)
+        self.write(self.directory, "retained.lean", raw)
+        origin = {"kind": "retained-original-source", "receipt_repository": "https://example.org/H0mework.git",
+                  "receipt_commit": custody, "receipt_path": "evidence/receipt.json",
+                  "receipt_sha256": w.sha(receipt), "receipt_pointer": "/original"}
+        rows = [{"source_commit": epoch, "source_path": "Lean/Retained.lean", "source_sha256": w.sha(raw),
+                 "provider": "retained.lean", "source_origin": origin}]
+        document = self.directory / "receipt-providers.json"
+        document.write_text(json.dumps(rows))
+        self.run_stage([{"source_commit": epoch, "roots": ["Lean/Retained.lean"]}], [document])
+        rows[0]["source_origin"].pop("receipt_repository")
+        document.write_text(json.dumps(rows))
+        with self.assertRaises(w.ExportError):
+            self.run_stage([{"source_commit": epoch, "roots": ["Lean/Retained.lean"]}], [document], name="implicit")
+        rows[0]["source_origin"]["receipt_repository"] = "https://example.org/H0mework.git"
+        self.write(self.directory, "retained.lean", b'import Mathlib\ndef retained := 24\n')
+        document.write_text(json.dumps(rows))
+        with self.assertRaisesRegex(w.ExportError, "Provider bytes differ"):
+            self.run_stage([{"source_commit": epoch, "roots": ["Lean/Retained.lean"]}], [document], name="changed")
 
     def test_paid_h0_definition_repair_keeps_effective_and_original_identities(self):
         original = b'import Mathlib\ndef receiverFee := 0\n'

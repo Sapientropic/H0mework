@@ -1,0 +1,160 @@
+{
+  "schema": "h0mework/economic-constitution-frozen-entry-checks@1",
+  "checked_at": "2026-11-02T13:34:57.781175+00:00",
+  "status": "passed",
+  "CLI_help": [
+    {
+      "id": "first-release-entry-help",
+      "argv": [
+        ".local/venv/bin/python",
+        "tools/first_release_replay.py",
+        "entry",
+        "--help"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.11421516700647771,
+      "stdout": ".local/economic-constitution/frozen-entry-checks/first-release-entry-help.stdout.log",
+      "stdout_sha256": "15d8f9e2ec2693ef621178b0b6d7ba5509e13f7ddd82016c33ca8a0c8675a7a9",
+      "stderr": ".local/economic-constitution/frozen-entry-checks/first-release-entry-help.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "first-release-map-help",
+      "argv": [
+        "python3",
+        "tools/first_release.py",
+        "verify-map",
+        "--help"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.09121558396145701,
+      "stdout": ".local/economic-constitution/frozen-entry-checks/first-release-map-help.stdout.log",
+      "stdout_sha256": "addaa1954e1692f80099dd1a652b25377501e0051586ed7f5962204fb600ab52",
+      "stderr": ".local/economic-constitution/frozen-entry-checks/first-release-map-help.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "whole-ledger-help",
+      "argv": [
+        "python3",
+        "tools/whole_ledger.py",
+        "entry",
+        "--help"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.08873666706494987,
+      "stdout": ".local/economic-constitution/frozen-entry-checks/whole-ledger-help.stdout.log",
+      "stdout_sha256": "bb252882b7501badbf4658af31843566bceb8c115139deeb03272e6cc99e48c7",
+      "stderr": ".local/economic-constitution/frozen-entry-checks/whole-ledger-help.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "one-bit-help",
+      "argv": [
+        "python3",
+        "tools/one_bit.py",
+        "--help"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.09249695902690291,
+      "stdout": ".local/economic-constitution/frozen-entry-checks/one-bit-help.stdout.log",
+      "stdout_sha256": "6c8cbd3346bc843f76a3cee9721812ad3a6ecdb112409fc5bdc9d953d25e936e",
+      "stderr": ".local/economic-constitution/frozen-entry-checks/one-bit-help.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "checks": [
+    {
+      "id": "first-release-map",
+      "argv": [
+        "python3",
+        "tools/first_release.py",
+        "verify-map",
+        "--require-ready"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 2.150505917146802,
+      "stdout": ".local/economic-constitution/frozen-entry-checks/first-release-map.stdout.log",
+      "stdout_sha256": "1f0a23c70652c902ce8dc2452953dc522249b02f8525756e28f155064e23cb1f",
+      "stderr": ".local/economic-constitution/frozen-entry-checks/first-release-map.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "first-release-entry",
+      "argv": [
+        ".local/venv/bin/python",
+        "tools/first_release_replay.py",
+        "entry",
+        "--config",
+        "checks/first-release-runtime.json",
+        "--output",
+        ".local/economic-constitution/frozen-entry-checks/first-release-entry",
+        "--python",
+        ".local/venv/bin/python"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 11.240508292103186,
+      "stdout": ".local/economic-constitution/frozen-entry-checks/first-release-entry.stdout.log",
+      "stdout_sha256": "90c917fe2d34e67ad5906302973eb013879ae3a9f5b0fda8691e9828cf514380",
+      "stderr": ".local/economic-constitution/frozen-entry-checks/first-release-entry.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "whole-ledger-entry",
+      "argv": [
+        "python3",
+        "tools/whole_ledger.py",
+        "entry",
+        "--require-ready",
+        "--output",
+        ".local/economic-constitution/frozen-entry-checks/whole-ledger-entry"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 120.144024083158,
+      "stdout": ".local/economic-constitution/frozen-entry-checks/whole-ledger-entry.stdout.log",
+      "stdout_sha256": "df0eb76affabf1695a2efc8c786bf7e6495466ffd6705c2a8f1e34627a591a3a",
+      "stderr": ".local/economic-constitution/frozen-entry-checks/whole-ledger-entry.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "one-bit-entry",
+      "argv": [
+        "python3",
+        "tools/one_bit.py",
+        "entry",
+        "--require-ready",
+        "--output",
+        ".local/economic-constitution/frozen-entry-checks/one-bit-entry"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 37.06808579200879,
+      "stdout": ".local/economic-constitution/frozen-entry-checks/one-bit-entry.stdout.log",
+      "stdout_sha256": "7836c3b5aede88d6a746fe20317e7964198ab8b9ec57450308c1e8171a57603a",
+      "stderr": ".local/economic-constitution/frozen-entry-checks/one-bit-entry.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "frozen_ECN_inputs_before": {
+    "docs/economic-constitution-map.json": "f7a914a5966c0884de3f46d7718f9f158b7a8a32618e6c0d861aaa9fdbc16acf",
+    "checks/economic-constitution-selection.json": "b9c1cd7d0677fe108da34155e65c78467343cadf8eb5dd19b247045330d0c26d",
+    "Lean/H0mework/Papers/EconomicConstitutionE60.lean": "4574d9ffd8668e0085044f7ea6e25437557e2ae9b9da365b32241f38bff79570",
+    "Lean/H0mework/Papers/EconomicConstitutionSourceDF.lean": "a0669f2e336b9c130044f07636990a7f002cf8b4bebce01e266ba3c7ac8e6028",
+    "Lean/H0mework/Papers/EconomicConstitutionPaidProgress.lean": "19195718c348cd26d10bc7f4494fee45224418eff3e281e62e7cacc3501925f8",
+    "Lean/H0mework/Papers/EconomicConstitutionPublicFunction.lean": "3a7992989516473cab214d432dae01be46f886343d62169a0ec307875435216a",
+    "Lean/H0mework/Papers/EconomicConstitutionPlanning.lean": "76292e0f3c2906a9beb8305024bede19727b7524da50af7c1331b2bd91fae9e9"
+  },
+  "frozen_ECN_inputs_after": {
+    "docs/economic-constitution-map.json": "f7a914a5966c0884de3f46d7718f9f158b7a8a32618e6c0d861aaa9fdbc16acf",
+    "checks/economic-constitution-selection.json": "b9c1cd7d0677fe108da34155e65c78467343cadf8eb5dd19b247045330d0c26d",
+    "Lean/H0mework/Papers/EconomicConstitutionE60.lean": "4574d9ffd8668e0085044f7ea6e25437557e2ae9b9da365b32241f38bff79570",
+    "Lean/H0mework/Papers/EconomicConstitutionSourceDF.lean": "a0669f2e336b9c130044f07636990a7f002cf8b4bebce01e266ba3c7ac8e6028",
+    "Lean/H0mework/Papers/EconomicConstitutionPaidProgress.lean": "19195718c348cd26d10bc7f4494fee45224418eff3e281e62e7cacc3501925f8",
+    "Lean/H0mework/Papers/EconomicConstitutionPublicFunction.lean": "3a7992989516473cab214d432dae01be46f886343d62169a0ec307875435216a",
+    "Lean/H0mework/Papers/EconomicConstitutionPlanning.lean": "76292e0f3c2906a9beb8305024bede19727b7524da50af7c1331b2bd91fae9e9"
+  },
+  "ECN_inputs_unchanged": true,
+  "Lean_build_executed": false,
+  "Lean_trust_executed": false,
+  "Bell_quantum_or_original_public_actual_replayed": false,
+  "remote_writes": false
+}

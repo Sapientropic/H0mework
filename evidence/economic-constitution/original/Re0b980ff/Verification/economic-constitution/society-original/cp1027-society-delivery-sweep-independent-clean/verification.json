@@ -1,0 +1,45 @@
+{
+  "schema": "society-delivery-sweep/v1",
+  "exit": 0,
+  "authentication_receipt_sha256": "d42458569e2ebadd89d49dfb702b3efcb8f38e6a6bc4a8c48ee3555579cc01d1",
+  "exposure_receipt_sha256": "85f022b1ca2b3caa854df1de3801236163ef8edcefa2366bef5a9fb14a0b8d9d",
+  "progress_receipt_sha256": "eacecbe7d8eec89438428529a383170a297e4b9f057c7eb4b78994a25a3a4845",
+  "settlement_receipt_sha256": "f0d2c44dd5c8e3d784b591bc81300d5014c03befcf0ff44de352960c41df9f93",
+  "checks": [
+    {
+      "module": "SaturationMonoid.ProcessGame.Society.PublicFunction.Distributed.Reaction.Observation",
+      "source_sha256": "92a10bd8d1455f58e98aa376e1f04ea018152a3c750f9ced6f4e2900f603cbe8",
+      "exit": 0,
+      "seconds": 3.37,
+      "artifact_sha256": "52bfdf57f4830ce472c0ff4e3d8e66fd3f4680b125c7cfe738a14c78fced46d1"
+    },
+    {
+      "module": "SaturationMonoid.ProcessGame.Society.PublicFunction.Protocol.SymbolicAuthentication.DeliverySweep",
+      "source_sha256": "5829f7d757df33c2c8d6930631281612abeb3b9160559287e751aa6e9554f427",
+      "exit": 0,
+      "seconds": 4.09,
+      "artifact_sha256": "d1a91ed2955ee6fb3b9b5dc2f34343216113ed4e63ffe856767ba55b64cf6dee"
+    },
+    {
+      "module": "SaturationMonoid.ProcessGame.Society.PublicFunction.Protocol.SymbolicAuthentication.SweepSource",
+      "source_sha256": "a87dd8a8c94b24e44123d9556594e377d24ae81a74a4bf39e78f719afd45c70f",
+      "exit": 0,
+      "seconds": 7.79,
+      "artifact_sha256": "7607f1c84d883eb64ec0d8cc2dcaee266978a4e3dec36932cf42d17b6a7c7d35"
+    },
+    {
+      "module": "SaturationMonoid.ProcessGame.Society.PublicFunction.Protocol.SymbolicAuthentication.SweepControls",
+      "source_sha256": "ac1616bcbfc178ef2f68d881a5a6d36c4e85ff0193375f936a3218312170dd4a",
+      "exit": 0,
+      "seconds": 9.95,
+      "artifact_sha256": "fb074a45c5da5a2ddd670d4a9f8570bf9c51e8136e291ed955393af99cfc3c78"
+    },
+    {
+      "module": "SocietyDeliverySweepKernel",
+      "source_sha256": "c92989413317332581b645cab71101b17a16d1f5a218790bad84ca281b5bab52",
+      "exit": 0,
+      "seconds": 12.62
+    }
+  ],
+  "kernel": "KERNEL REPLAY PASS: roots=151, closure=7617, private=810, axioms=[Quot.sound, Classical.choice, propext]"
+}

@@ -1,0 +1,10 @@
+import SaturationMonoid.Tracks.LivingLawPublicInWindowBurdenInstance
+
+open SaturationMonoid.ProcessGame.Society.PublicFunction.Mandate.Financed.Continuing.Closure.Objection.Opening.ScopeRevision.Pending.Joint.Handoff
+#print axioms Registered.Loss.Appraisal.the_source_produces_an_unpaid_baseline_or_actual_improvement_or_paid_cost_bound
+#print axioms Registered.Loss.Appraisal.the_budget_minus_all_gains_is_the_exact_signed_cost
+#print axioms Registered.Loss.Appraisal.every_checked_window_has_its_own_actual_payment_cut_and_signature
+#print axioms SaturationMonoid.Tracks.LivingLawPublicInWindowBurdenInstance.publicSourceDecision
+#print axioms SaturationMonoid.Tracks.LivingLawPublicInWindowBurdenInstance.the_selected_actual_alternative_has_its_own_whole_ledger_and_next
+#print axioms SaturationMonoid.Tracks.LivingLawPublicInWindowBurdenInstance.the_same_root_consumes_the_full_financial_run_and_its_exact_net
+#eval IO.println "FINAL RENT SOURCE MOUTHS PASS: generated decision; exact complete signed costs; actual paid/self-controlled window; same root, finance and own next"

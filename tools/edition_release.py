@@ -16,6 +16,7 @@ EDITIONS = {
     "whole-ledger": ("docs/whole-ledger-map.json", "h0mework/whole-ledger-map@1"),
     "one-bit": ("checks/one-bit-control-map.json", "h0mework/one-bit-control-map@1"),
     "generated-society": ("docs/generated-society-map.json", "h0mework/generated-society-map@1"),
+    "economic-constitution": ("docs/economic-constitution-map.json", "h0mework/economic-constitution-map@1"),
 }
 
 

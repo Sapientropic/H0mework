@@ -51,6 +51,12 @@ Lean 私有声明的名称包含所属模块地址。模块迁移时，显式引
 
 认证消费者保留数学定义与证明的原字节。末尾的 `run_cmd` 或 `elab` 观察命令用 `audit_module_rewrites` 对齐所查询的模块地址；`audit_command_name` 为独立审查固定各自的命令注册名，使其可以合并导入。Bell 消费者的 `audit_boundary_fallbacks` 保留原边界文件覆盖，在没有提供文件时完整遍历依赖图，委托边界为空；`audit_full_closure` 只调整其观察命令的执行预算。`rewrite_audit_module_names`、`name_audit_command` 与 `rewrite_audit_runtime` 将这些变换逆向恢复，原路径视图继续核对固定来源摘要。选定声明的完整 trust0／werror 审查由[首发验收入口](first-release-reproduction.md#完整检查)执行。
 
+## 后收原件的固定托管
+
+原执行留下但当时未收入科研 Git 的原件，可以由后来的 H0 固定托管清单保存原 SHA、原路径、科研上下文及原绑定类别。托管提交记录收存身份，与原科学执行及本次公开移植验收分别记账；不补造原先不存在的认证。原 verdict、失败、数字及已核绑定保持。
+
+显式 provider 的 `ledger_repository`／`receipt_repository` 默认仍指 Homework；声明 H0mework 时，从本仓完整固定提交读取托管清单或回执指针。两者都必须核对固定 Git 字节、摘要及原件 SHA，不读取当前工作树作为历史回退。未知仓名及同名伪后缀拒绝。带路径清理的原件仍按公开变换保留原 SHA，精确恢复使用私有原件。
+
 ## 两种视图
 
 [`source_view.py`](../tools/source_view.py) 默认重建公开原路径视图：恢复本地 import 与资源地址，保留公开回执及其新资源摘要。它只需要本仓文件。
@@ -79,3 +85,8 @@ python3 -m unittest discover -s tools -p 'test_publication.py' -v
 ```
 
 公开分支从已核验的干净基线接入导出内容，论文标签绑定该分支的新提交。原始回执由固定源版本保存；公开分支携带已清理的文件。
+
+
+### 实际依赖源与被替代原件
+
+收稿树的辅助源与实际执行器不兼容时，`source_origin` 分别记录收稿上下文、实际固定 Git provider 和被替代原件 SHA。provider 修改了类型或载体时，必须按实际修订声明登记；不能记成保持类型的证明体适配。被替代源码单独作为资源保存，旧失败回执保持失败，新公开闭包通过自己的 build、trust 和完整类型验收。`source_view --exact` 恢复明确选定 provider 的原字节，并一并恢复选集登记的旧原件。

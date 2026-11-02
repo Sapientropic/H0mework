@@ -1,0 +1,218 @@
+import H0mework.Papers.EconomicConstitutionE60
+
+import Lean
+set_option autoImplicit false
+set_option maxRecDepth 200000
+set_option maxHeartbeats 0
+
+-- Name, level, binder and literal encoding follows Lean.Idbg (Apache-2.0).
+open Lean Elab Command Meta
+namespace WholeLedgerTypeCodec
+
+/-- Custom `Name` serialization that preserves the exact structure.
+The standard `ToJson`/`FromJson Name` uses `toString`/`toName` which doesn't
+round-trip for hygienic names (e.g., names containing `@`). -/
+def nameToJson : Name → Json
+  | .anonymous => Json.null
+  | .str p s   => Json.mkObj [("str", Json.arr #[nameToJson p, toJson s])]
+  | .num p n   => Json.mkObj [("num", Json.arr #[nameToJson p, n])]
+
+/-- Inverse of `nameToJson`. -/
+partial def nameFromJson? (j : Json) : Except String Name := do
+  if j.isNull then return .anonymous
+  if let some arr := (j.getObjVal? "str").toOption then
+    let #[p, s] := (← fromJson? arr : Array Json) | .error "str expects 2 elements"
+    return .str (← nameFromJson? p) (← fromJson? s)
+  if let some arr := (j.getObjVal? "num").toOption then
+    let #[p, n] := (← fromJson? arr : Array Json) | .error "num expects 2 elements"
+    return .num (← nameFromJson? p) (← fromJson? n)
+  .error s!"expected Name, got {j}"
+
+/-- Serialize `BinderInfo` to JSON. -/
+def binderInfoToJson : BinderInfo → Json
+  | .default        => "default"
+  | .implicit       => "implicit"
+  | .strictImplicit => "strictImplicit"
+  | .instImplicit   => "instImplicit"
+
+/-- Deserialize `BinderInfo` from JSON. -/
+def binderInfoFromJson? : Json → Except String BinderInfo
+  | .str "default"        => .ok .default
+  | .str "implicit"       => .ok .implicit
+  | .str "strictImplicit" => .ok .strictImplicit
+  | .str "instImplicit"   => .ok .instImplicit
+  | j => .error s!"expected BinderInfo, got {j}"
+
+/-- Serialize `Literal` to JSON. -/
+def literalToJson : Literal → Json
+  | .natVal n => Json.mkObj [("natVal", n)]
+  | .strVal s => Json.mkObj [("strVal", s)]
+
+/-- Deserialize `Literal` from JSON. -/
+def literalFromJson? (j : Json) : Except String Literal := do
+  if let some n := (j.getObjVal? "natVal").toOption then
+    return .natVal (← fromJson? n)
+  if let some s := (j.getObjVal? "strVal").toOption then
+    return .strVal (← fromJson? s)
+  .error s!"expected Literal, got {j}"
+
+/-- Serialize `Level` to JSON. -/
+partial def levelToJson : Level → Json
+  | .zero     => Json.mkObj [("zero", Json.null)]
+  | .succ l   => Json.mkObj [("succ", levelToJson l)]
+  | .max a b  => Json.mkObj [("max", Json.arr #[levelToJson a, levelToJson b])]
+  | .imax a b => Json.mkObj [("imax", Json.arr #[levelToJson a, levelToJson b])]
+  | .param n  => Json.mkObj [("param", nameToJson n)]
+  | .mvar id  => Json.mkObj [("mvar", nameToJson id.name)]
+
+/-- Deserialize `Level` from JSON. -/
+partial def levelFromJson? (j : Json) : Except String Level := do
+  if (j.getObjVal? "zero").toOption.isSome then
+    return .zero
+  if let some l := (j.getObjVal? "succ").toOption then
+    return .succ (← levelFromJson? l)
+  if let some arr := (j.getObjVal? "max").toOption then
+    let #[a, b] := (← fromJson? arr : Array Json) | .error "max expects 2 elements"
+    return .max (← levelFromJson? a) (← levelFromJson? b)
+  if let some arr := (j.getObjVal? "imax").toOption then
+    let #[a, b] := (← fromJson? arr : Array Json) | .error "imax expects 2 elements"
+    return .imax (← levelFromJson? a) (← levelFromJson? b)
+  if let some n := (j.getObjVal? "param").toOption then
+    return .param (← nameFromJson? n)
+  if let some n := (j.getObjVal? "mvar").toOption then
+    return .mvar ⟨← nameFromJson? n⟩
+  .error s!"expected Level, got {j}"
+
+
+end WholeLedgerTypeCodec
+open Lean Elab Command Meta
+private structure WholeLedgerDag where
+  nodes : Array Json := #[]
+  seen : ExprStructMap Nat := {}
+private partial def wholeLedgerDagEncode (e : Expr) : StateM WholeLedgerDag Nat := do
+  if let some i := (← get).seen.get? ⟨e⟩ then return i
+  if let .mdata _ child := e then
+    let i ← wholeLedgerDagEncode child
+    modify fun state => { state with seen := state.seen.insert ⟨e⟩ i }
+    return i
+  let node ← match e with
+    | .bvar i => pure <| Json.mkObj [("bvar", toJson i)]
+    | .fvar id => pure <| Json.mkObj [("fvar", WholeLedgerTypeCodec.nameToJson id.name)]
+    | .mvar id => pure <| Json.mkObj [("mvar", WholeLedgerTypeCodec.nameToJson id.name)]
+    | .sort level => pure <| Json.mkObj [("sort", WholeLedgerTypeCodec.levelToJson level)]
+    | .const name levels => pure <| Json.mkObj [("const", WholeLedgerTypeCodec.nameToJson name), ("levels", Json.arr (levels.toArray.map WholeLedgerTypeCodec.levelToJson))]
+    | .app fn arg => do
+        let fn ← wholeLedgerDagEncode fn
+        let arg ← wholeLedgerDagEncode arg
+        pure <| Json.mkObj [("app", toJson #[fn, arg])]
+    | .lam name type body bi | .forallE name type body bi => do
+        let type ← wholeLedgerDagEncode type
+        let body ← wholeLedgerDagEncode body
+        let tag := if e.isLambda then "lam" else "forallE"
+        pure <| Json.mkObj [(tag, Json.mkObj [("name", WholeLedgerTypeCodec.nameToJson name), ("type", toJson type), ("body", toJson body), ("bi", WholeLedgerTypeCodec.binderInfoToJson bi)])]
+    | .letE name type value body nondep => do
+        let type ← wholeLedgerDagEncode type
+        let value ← wholeLedgerDagEncode value
+        let body ← wholeLedgerDagEncode body
+        pure <| Json.mkObj [("letE", Json.mkObj [("name", WholeLedgerTypeCodec.nameToJson name), ("type", toJson type), ("value", toJson value), ("body", toJson body), ("nondep", toJson nondep)])]
+    | .lit literal => pure <| Json.mkObj [("lit", WholeLedgerTypeCodec.literalToJson literal)]
+    | .proj typeName index value => do
+        let value ← wholeLedgerDagEncode value
+        pure <| Json.mkObj [("proj", Json.mkObj [("typeName", WholeLedgerTypeCodec.nameToJson typeName), ("idx", toJson index), ("struct", toJson value)])]
+    | .mdata _ _ => unreachable!
+  let i := (← get).nodes.size
+  modify fun state => { nodes := state.nodes.push node, seen := state.seen.insert ⟨e⟩ i }
+  return i
+private def wholeLedgerDagRef (prior : Array Expr) (j : Json) : Except String Expr := do
+  let i : Nat ← fromJson? j
+  match prior[i]? with
+  | some e => return e
+  | none => throw "Type DAG references a missing or forward node"
+private def wholeLedgerDagNode (prior : Array Expr) (j : Json) : Except String Expr := do
+  if let some i := (j.getObjVal? "bvar").toOption then return .bvar (← fromJson? i)
+  if (j.getObjVal? "fvar").toOption.isSome || (j.getObjVal? "mvar").toOption.isSome then
+    throw "Checked declaration type contains an unresolved variable"
+  if let some level := (j.getObjVal? "sort").toOption then return .sort (← WholeLedgerTypeCodec.levelFromJson? level)
+  if (j.getObjVal? "const").toOption.isSome then
+    let name ← WholeLedgerTypeCodec.nameFromJson? (← j.getObjVal? "const")
+    let levels : Array Json ← fromJson? (← j.getObjVal? "levels")
+    return .const name (← levels.toList.mapM WholeLedgerTypeCodec.levelFromJson?)
+  if let some arr := (j.getObjVal? "app").toOption then
+    let #[fn,arg] := (← fromJson? arr : Array Json) | throw "Type DAG app needs two nodes"
+    return .app (← wholeLedgerDagRef prior fn) (← wholeLedgerDagRef prior arg)
+  for tag in ["lam", "forallE"] do
+    if let some obj := (j.getObjVal? tag).toOption then
+      let name ← WholeLedgerTypeCodec.nameFromJson? (← obj.getObjVal? "name")
+      let type ← wholeLedgerDagRef prior (← obj.getObjVal? "type")
+      let body ← wholeLedgerDagRef prior (← obj.getObjVal? "body")
+      let bi ← WholeLedgerTypeCodec.binderInfoFromJson? (← obj.getObjVal? "bi")
+      return if tag == "lam" then .lam name type body bi else .forallE name type body bi
+  if let some obj := (j.getObjVal? "letE").toOption then
+    return .letE (← WholeLedgerTypeCodec.nameFromJson? (← obj.getObjVal? "name"))
+      (← wholeLedgerDagRef prior (← obj.getObjVal? "type"))
+      (← wholeLedgerDagRef prior (← obj.getObjVal? "value"))
+      (← wholeLedgerDagRef prior (← obj.getObjVal? "body"))
+      (← fromJson? (← obj.getObjVal? "nondep"))
+  if let some literal := (j.getObjVal? "lit").toOption then return .lit (← WholeLedgerTypeCodec.literalFromJson? literal)
+  if let some obj := (j.getObjVal? "proj").toOption then
+    return .proj (← WholeLedgerTypeCodec.nameFromJson? (← obj.getObjVal? "typeName"))
+      (← fromJson? (← obj.getObjVal? "idx"))
+      (← wholeLedgerDagRef prior (← obj.getObjVal? "struct"))
+  throw "Unknown type DAG node"
+private def wholeLedgerDagDecode (nodes : Array Json) (root : Nat) : Except String Expr := do
+  let mut prior := #[]
+  for node in nodes do prior := prior.push (← wholeLedgerDagNode prior node)
+  wholeLedgerDagRef prior (toJson root)
+private def wholeLedgerCompleteType (type : Expr) : MetaM String := do
+  let (root, graph) := (wholeLedgerDagEncode type).run {}
+  let serialized := Json.mkObj [("schema", toJson "lean-expr-dag@1"), ("nodes", Json.arr graph.nodes), ("root", toJson root)]
+  let parsed ← match Json.parse serialized.compress with
+    | .ok value => pure value
+    | .error error => throwError "Type DAG JSON does not round trip: {error}"
+  let nodes : Array Json ← match (parsed.getObjVal? "nodes" >>= fromJson?) with
+    | .ok value => pure value
+    | .error error => throwError "Type DAG nodes are invalid: {error}"
+  let root : Nat ← match (parsed.getObjVal? "root" >>= fromJson?) with
+    | .ok value => pure value
+    | .error error => throwError "Type DAG root is invalid: {error}"
+  let decoded ← match wholeLedgerDagDecode nodes root with
+    | .ok value => pure value
+    | .error error => throwError "Type DAG does not reconstruct: {error}"
+  unless (← isDefEq type decoded) do throwError "Type DAG differs from the original declaration type"
+  return serialized.compress
+
+private def wholeLedgerName (value : String) : Name :=
+  (value.splitOn ".").foldl Name.str .anonymous
+run_cmd do
+  let env ← getEnv
+  let owners : List String := ["H0mework.Versions.Re60a8605.ReleaseMaterials.SaturationMonoid.ProcessGame.Regression.Society.M13.M13WholeProgramRegression", "H0mework.Versions.Re60a8605.ReleaseMaterials.SaturationMonoid.ProcessGame.Regression.Society.M14.Consumer.Economy.Clearing.ProofCarryingPeriodicCommonClearingRegression", "H0mework.Versions.Re60a8605.ReleaseMaterials.SaturationMonoid.ProcessGame.Regression.Society.M14.Consumer.Economy.Credit.ProofCarryingPeriodicClearingCreditRegression", "H0mework.Versions.Re60a8605.ReleaseMaterials.SaturationMonoid.ProcessGame.Regression.Society.M14.Consumer.Identification.ZeroCapacityCausalNonidentifiabilityRegression", "H0mework.Versions.Re60a8605.ReleaseMaterials.SaturationMonoid.ProcessGame.Regression.Society.M14.Consumer.PeriodicActualServiceCapacityRegression", "H0mework.Versions.Re60a8605.ReleaseMaterials.SaturationMonoid.ProcessGame.Regression.Society.M14.Consumer.Policy.ProofCarryingExitRepairRegression", "H0mework.Versions.Re60a8605.ReleaseMaterials.SaturationMonoid.ProcessGame.Regression.Society.M14.Consumer.Policy.TenureCaptureRouteRepairNoGoRegression", "H0mework.Versions.Re60a8605.ReleaseMaterials.SaturationMonoid.ProcessGame.Regression.Society.M14.Fixture.Economy.Credit.Risk.Merge.Capacity.Renewal.Settlement.Joint.Renewal.Submission.Action.Transport.Renewal.Recurrence.Iteration.Lifecycle.Constitution.RootLaw.Cofinality.Recognition.Archive.Revision.Gain.Explosion.Fair.Pro.Noncompact.Local.Threshold.Fibre.Flux.Cumulative.Adaptive.Terminating.ActionableExit.Acceptance.Enactment.Cascade.Proposal.Recourse.Constitution.Consumer.ProofCarryingCanonicalSocietyFirstRefusalSourceOwnedRecourseConstitution", "H0mework.Versions.Re60a8605.ReleaseMaterials.SaturationMonoid.ProcessGame.Regression.Society.M14.Fixture.Economy.Credit.Risk.Merge.Capacity.Renewal.Settlement.Joint.Renewal.Submission.Action.Transport.Renewal.Recurrence.Iteration.Lifecycle.Constitution.RootLaw.Cofinality.Recognition.Archive.Revision.Gain.Explosion.Fair.Pro.Noncompact.Local.Threshold.Fibre.Flux.Cumulative.Adaptive.Terminating.ActionableExit.Acceptance.Enactment.Cascade.Proposal.Recourse.Consumer.ProofCarryingCanonicalSocietyFirstRefusalSourceOwnedRecourse", "H0mework.Versions.Re60a8605.ReleaseMaterials.SaturationMonoid.ProcessGame.Regression.Society.M14.Fixture.Economy.Credit.Risk.Merge.Capacity.Renewal.Settlement.Joint.Renewal.Submission.Action.Transport.Renewal.Recurrence.Iteration.Lifecycle.Constitution.RootLaw.Cofinality.Recognition.Archive.Revision.Gain.Explosion.Fair.Pro.Noncompact.Local.Threshold.Fibre.Flux.Cumulative.Adaptive.Terminating.ActionableExit.Acceptance.Enactment.Cascade.Proposal.Recourse.Source.SourceGeneratedCanonicalSocietyFirstRefusalPaymentRecourse", "H0mework.Versions.Re60a8605.ReleaseMaterials.SaturationMonoid.ProcessGame.Regression.Society.M14.Fixture.Economy.Credit.SourceClearingBackstopCreditStanding", "H0mework.Versions.Re60a8605.ReleaseMaterials.SaturationMonoid.ProcessGame.Regression.Society.M14.Fixture.EssentialAccess.ActualUpdate.Selection.Append.CrossCompiler.Readout.Recognition.Admission.Constitution.RootLaw.Completion.Consumer.ProofCarryingCanonicalSocietyRootLawComplete", "H0mework.Versions.Re60a8605.ReleaseMaterials.SaturationMonoid.ProcessGame.Regression.Society.M14.M14WholeProgramRegression", "H0mework.Versions.Re60a8605.ReleaseMaterials.SaturationMonoid.ProcessGame.Regression.Society.M14.Root.Economy.Clearing.PeriodicCommonClearingRenewal", "H0mework.Versions.Re60a8605.ReleaseMaterials.SaturationMonoid.ProcessGame.Regression.Society.M14.Root.Economy.Credit.PeriodicClearingCreditClaimLifecycle", "H0mework.Versions.Re60a8605.ReleaseMaterials.SaturationMonoid.ProcessGame.Regression.Society.M14.Root.UBIPeriodicActualServiceCapacity", "H0mework.Versions.Re60a8605.ReleaseMaterials.SaturationMonoid.ProcessGame.Regression.Society.MInfinity.MInfinityWholeProgramRegression", "H0mework.Versions.Re60a8605.ReleaseMaterials.SaturationMonoid.ProcessGame.Society.Clearing.SourceGeneratedSymmetricClearing", "H0mework.Versions.Re60a8605.ReleaseMaterials.SaturationMonoid.ProcessGame.Society.Settlement.AutomaticFullFulfillment", "H0mework.Versions.Re60a8605.ReleaseMaterials.SaturationMonoid.ProcessGame.Society.UBI.Capacity.ActionableExitCapacity", "H0mework.Versions.Re60a8605.ReleaseMaterials.SaturationMonoid.ProcessGame.Society.UBI.Capacity.CanonicalMaximumMatching"]
+  let wanted : List String := ["SaturationMonoid.ProcessGame.Society.Clearing.SourceGeneratedSymmetricClearingAt.oneSided_counterpartyFulfilled_isEmpty", "SaturationMonoid.ProcessGame.Society.M13WholeProgramRegression.M13WholeProgramCertificate", "SaturationMonoid.ProcessGame.Society.M13WholeProgramRegression.m13WholeProgramConsumer", "SaturationMonoid.ProcessGame.Society.M14PeriodicActualServiceCapacityRegression.PeriodicActualServiceCapacityCertificate", "SaturationMonoid.ProcessGame.Society.M14PeriodicActualServiceCapacityRegression.actual_exit_authority_cannot_retype_at_next_visit", "SaturationMonoid.ProcessGame.Society.M14PeriodicActualServiceCapacityRegression.adjacent_actual_exit_occurrences_are_distinct", "SaturationMonoid.ProcessGame.Society.M14PeriodicActualServiceCapacityRegression.every_period_anomie_keeps_exit", "SaturationMonoid.ProcessGame.Society.M14PeriodicActualServiceCapacityRegression.every_period_captured_capacity_zero", "SaturationMonoid.ProcessGame.Society.M14PeriodicActualServiceCapacityRegression.every_period_exact_capacity", "SaturationMonoid.ProcessGame.Society.M14PeriodicActualServiceCapacityRegression.every_period_payment_route_service_join", "SaturationMonoid.ProcessGame.Society.M14PeriodicActualServiceCapacityRegression.every_period_strongest_iff", "SaturationMonoid.ProcessGame.Society.M14PeriodicActualServiceCapacityRegression.periodicActualServiceCapacityDirectConsumer", "SaturationMonoid.ProcessGame.Society.M14PeriodicClearingCreditClaimLifecycle.fixed_row_is_identity_carry_not_strict_haircut", "SaturationMonoid.ProcessGame.Society.M14PeriodicCommonClearingRenewal.sourceGeneratedProofCarryingPeriodicSymmetricClearingAt", "SaturationMonoid.ProcessGame.Society.M14ProofCarryingCanonicalSocietyFirstRefusalSourceOwnedRecourse.CanonicalSocietyFirstRefusalSourceOwnedRecourseAt", "SaturationMonoid.ProcessGame.Society.M14ProofCarryingCanonicalSocietyFirstRefusalSourceOwnedRecourse.FirstRefusalSourceOwnedRecourseAt", "SaturationMonoid.ProcessGame.Society.M14ProofCarryingCanonicalSocietyFirstRefusalSourceOwnedRecourse.adjacentActualPaymentRefusal_exposesSourceOwnedRecourse", "SaturationMonoid.ProcessGame.Society.M14ProofCarryingCanonicalSocietyFirstRefusalSourceOwnedRecourse.canonicalSocietyFirstRefusalSourceOwnedRecourse", "SaturationMonoid.ProcessGame.Society.M14ProofCarryingCanonicalSocietyFirstRefusalSourceOwnedRecourse.firstRefusal_exposesSourceOwnedRecourse", "SaturationMonoid.ProcessGame.Society.M14ProofCarryingCanonicalSocietyFirstRefusalSourceOwnedRecourseConstitution.CanonicalCofinalFirstRefusalSourceOwnedRecourseAt", "SaturationMonoid.ProcessGame.Society.M14ProofCarryingCanonicalSocietyFirstRefusalSourceOwnedRecourseConstitution.canonicalCofinalFirstRefusalSourceOwnedRecourse_directConsumer", "SaturationMonoid.ProcessGame.Society.M14ProofCarryingCanonicalSocietyRootLawComplete.CanonicalSocietyMInfinityRootLawCompleteAt", "SaturationMonoid.ProcessGame.Society.M14ProofCarryingCanonicalSocietyRootLawComplete.CanonicalSocietyMInfinityU8AvailableAt", "SaturationMonoid.ProcessGame.Society.M14ProofCarryingCanonicalSocietyRootLawComplete.CanonicalSocietyRootLawCompleteAt", "SaturationMonoid.ProcessGame.Society.M14ProofCarryingCanonicalSocietyRootLawComplete.CanonicalSocietyRootLawCompletionAt", "SaturationMonoid.ProcessGame.Society.M14ProofCarryingCanonicalSocietyRootLawComplete.CanonicalSocietyRootLawCompletionAt.everyInstalledProgram_rootLawComplete_and_u8Available", "SaturationMonoid.ProcessGame.Society.M14ProofCarryingCanonicalSocietyRootLawComplete.CanonicalSocietyRootLawCompletionAt.everyRawSubmission_exhaustive", "SaturationMonoid.ProcessGame.Society.M14ProofCarryingCanonicalSocietyRootLawComplete.CanonicalSocietyRootLawCompletionAt.everyRawSubmission_rootLawComplete_and_u8Available", "SaturationMonoid.ProcessGame.Society.M14ProofCarryingCanonicalSocietyRootLawComplete.CanonicalSocietyRootLawCompletionAt.installedProgram_hasNoFifthClass", "SaturationMonoid.ProcessGame.Society.M14ProofCarryingCanonicalSocietyRootLawComplete.CanonicalSocietyRootLawCompletionAt.installedProgram_nonWritingAndWritingDisjointControls", "SaturationMonoid.ProcessGame.Society.M14ProofCarryingCanonicalSocietyRootLawComplete.CanonicalSocietyRootLawCompletionAt.noFifthOffLedgerAuthority", "SaturationMonoid.ProcessGame.Society.M14ProofCarryingCanonicalSocietyRootLawComplete.CanonicalSocietyRootLawCompletionAt.rootLawComplete_and_u8Available", "SaturationMonoid.ProcessGame.Society.M14ProofCarryingCanonicalSocietyRootLawComplete.CanonicalSocietyU8AvailableAt", "SaturationMonoid.ProcessGame.Society.M14ProofCarryingCanonicalSocietyRootLawComplete.canonicalSocietyRootLawCompletion_directConsumer", "SaturationMonoid.ProcessGame.Society.M14ProofCarryingExitRepairRegression.ProofCarryingExitRepairCertificate", "SaturationMonoid.ProcessGame.Society.M14ProofCarryingExitRepairRegression.SourceGeneratedProofCarryingExitRepairAt", "SaturationMonoid.ProcessGame.Society.M14ProofCarryingExitRepairRegression.SourceGeneratedProofCarryingExitRepairAt.candidate_eq_canonical", "SaturationMonoid.ProcessGame.Society.M14ProofCarryingExitRepairRegression.SourceGeneratedProofCarryingExitRepairAt.effective", "SaturationMonoid.ProcessGame.Society.M14ProofCarryingExitRepairRegression.SourceGeneratedProofCarryingExitRepairAt.generate", "SaturationMonoid.ProcessGame.Society.M14ProofCarryingExitRepairRegression.canonicalRepairAt", "SaturationMonoid.ProcessGame.Society.M14ProofCarryingExitRepairRegression.canonical_repair_is_effective", "SaturationMonoid.ProcessGame.Society.M14ProofCarryingExitRepairRegression.canonical_repair_outcome_eq_one", "SaturationMonoid.ProcessGame.Society.M14ProofCarryingExitRepairRegression.effective_repair_iff_eq_canonical", "SaturationMonoid.ProcessGame.Society.M14ProofCarryingExitRepairRegression.exact_causes_generate_different_repairs", "SaturationMonoid.ProcessGame.Society.M14ProofCarryingExitRepairRegression.no_capacity_only_canonical_repair_reconstruction", "SaturationMonoid.ProcessGame.Society.M14ProofCarryingExitRepairRegression.proofCarryingExitRepairDirectConsumer", "SaturationMonoid.ProcessGame.Society.M14ProofCarryingExitRepairRegression.same_capacity_but_different_canonical_repairs", "SaturationMonoid.ProcessGame.Society.M14ProofCarryingPeriodicClearingCreditRegression.proofCarryingPeriodicClearingCreditDirectConsumer", "SaturationMonoid.ProcessGame.Society.M14ProofCarryingPeriodicCommonClearingRegression.proofCarryingPeriodicCommonClearingDirectConsumer", "SaturationMonoid.ProcessGame.Society.M14SourceClearingBackstopCreditStanding.sourceGeneratedClearingBackstopCreditStanding", "SaturationMonoid.ProcessGame.Society.M14SourceGeneratedCanonicalSocietyFirstRefusalPaymentRecourse.firstRefusalExitAuditAt", "SaturationMonoid.ProcessGame.Society.M14SourceGeneratedCanonicalSocietyFirstRefusalPaymentRecourse.firstRefusalOrdinaryNext_ne_revolutionaryLawNext", "SaturationMonoid.ProcessGame.Society.M14SourceGeneratedCanonicalSocietyFirstRefusalPaymentRecourse.firstRefusalRepairDepthAt", "SaturationMonoid.ProcessGame.Society.M14SourceGeneratedCanonicalSocietyFirstRefusalPaymentRecourse.firstRefusalRepairRenewalAt", "SaturationMonoid.ProcessGame.Society.M14SourceGeneratedCanonicalSocietyFirstRefusalPaymentRecourse.firstRefusalRepairRoot_isReplayPaymentRoot", "SaturationMonoid.ProcessGame.Society.M14SourceGeneratedCanonicalSocietyFirstRefusalPaymentRecourse.firstRefusalRepairStanding_exact", "SaturationMonoid.ProcessGame.Society.M14SourceGeneratedCanonicalSocietyFirstRefusalPaymentRecourse.firstRefusalReplayAt", "SaturationMonoid.ProcessGame.Society.M14TenureCaptureRouteRepairNoGoRegression.ActualRouteOriginProvenanceAt", "SaturationMonoid.ProcessGame.Society.M14TenureCaptureRouteRepairNoGoRegression.EffectiveRepairAt", "SaturationMonoid.ProcessGame.Society.M14TenureCaptureRouteRepairNoGoRegression.RepairFailureOriginAt", "SaturationMonoid.ProcessGame.Society.M14TenureCaptureRouteRepairNoGoRegression.RepairFailureOriginAt.exactTemporalPayment", "SaturationMonoid.ProcessGame.Society.M14TenureCaptureRouteRepairNoGoRegression.RepairFailureOriginAt.failureKind", "SaturationMonoid.ProcessGame.Society.M14TenureCaptureRouteRepairNoGoRegression.RouteBottleneckFailureAt", "SaturationMonoid.ProcessGame.Society.M14TenureCaptureRouteRepairNoGoRegression.TenureCaptureFailureAt", "SaturationMonoid.ProcessGame.Society.M14TenureCaptureRouteRepairNoGoRegression.TenureCaptureRouteRepairNoGoCertificate", "SaturationMonoid.ProcessGame.Society.M14TenureCaptureRouteRepairNoGoRegression.each_failure_has_unique_effective_repair", "SaturationMonoid.ProcessGame.Society.M14TenureCaptureRouteRepairNoGoRegression.failureCapacityReadoutAt", "SaturationMonoid.ProcessGame.Society.M14TenureCaptureRouteRepairNoGoRegression.failure_readouts_equal", "SaturationMonoid.ProcessGame.Society.M14TenureCaptureRouteRepairNoGoRegression.no_capacity_only_effective_repair_selector", "SaturationMonoid.ProcessGame.Society.M14TenureCaptureRouteRepairNoGoRegression.no_single_repair_handles_both_failures", "SaturationMonoid.ProcessGame.Society.M14TenureCaptureRouteRepairNoGoRegression.remove_capture_does_not_repair_route_at", "SaturationMonoid.ProcessGame.Society.M14TenureCaptureRouteRepairNoGoRegression.remove_capture_repairs_tenure_at", "SaturationMonoid.ProcessGame.Society.M14TenureCaptureRouteRepairNoGoRegression.repairOutcomeCapacityAt", "SaturationMonoid.ProcessGame.Society.M14TenureCaptureRouteRepairNoGoRegression.repairs_preserve_every_non_target_axis", "SaturationMonoid.ProcessGame.Society.M14TenureCaptureRouteRepairNoGoRegression.restore_route_does_not_repair_capture_at", "SaturationMonoid.ProcessGame.Society.M14TenureCaptureRouteRepairNoGoRegression.restore_route_repairs_bottleneck_at", "SaturationMonoid.ProcessGame.Society.M14TenureCaptureRouteRepairNoGoRegression.routeBottleneckFailureAt", "SaturationMonoid.ProcessGame.Society.M14TenureCaptureRouteRepairNoGoRegression.routeBottleneckFailure_actual_provenance", "SaturationMonoid.ProcessGame.Society.M14TenureCaptureRouteRepairNoGoRegression.routeBottleneckOriginAt", "SaturationMonoid.ProcessGame.Society.M14TenureCaptureRouteRepairNoGoRegression.route_bottleneck_failure_readout_eq_zero", "SaturationMonoid.ProcessGame.Society.M14TenureCaptureRouteRepairNoGoRegression.route_effective_repair_iff", "SaturationMonoid.ProcessGame.Society.M14TenureCaptureRouteRepairNoGoRegression.tenureCaptureFailureAt", "SaturationMonoid.ProcessGame.Society.M14TenureCaptureRouteRepairNoGoRegression.tenureCaptureOriginAt", "SaturationMonoid.ProcessGame.Society.M14TenureCaptureRouteRepairNoGoRegression.tenureCaptureRouteRepairNoGoDirectConsumer", "SaturationMonoid.ProcessGame.Society.M14TenureCaptureRouteRepairNoGoRegression.tenure_capture_failure_readout_eq_zero", "SaturationMonoid.ProcessGame.Society.M14TenureCaptureRouteRepairNoGoRegression.tenure_effective_repair_iff", "SaturationMonoid.ProcessGame.Society.M14UBIPeriodicActualServiceCapacity.ActualServiceExitAtVisit", "SaturationMonoid.ProcessGame.Society.M14UBIPeriodicActualServiceCapacity.AnyPeriodicActualServiceExit", "SaturationMonoid.ProcessGame.Society.M14UBIPeriodicActualServiceCapacity.AnyPeriodicActualServiceExit.paymentOccurrence", "SaturationMonoid.ProcessGame.Society.M14UBIPeriodicActualServiceCapacity.AnyPeriodicActualServiceExit.paymentOccurrence_visit_eq", "SaturationMonoid.ProcessGame.Society.M14UBIPeriodicActualServiceCapacity.PeriodicActualServiceExitAt", "SaturationMonoid.ProcessGame.Society.M14UBIPeriodicActualServiceCapacity.PeriodicServiceReceiptAt", "SaturationMonoid.ProcessGame.Society.M14UBIPeriodicActualServiceCapacity.actionableExitCapacity_eq_one_at", "SaturationMonoid.ProcessGame.Society.M14UBIPeriodicActualServiceCapacity.actionableExitRenewalAt", "SaturationMonoid.ProcessGame.Society.M14UBIPeriodicActualServiceCapacity.actualServiceExitAtVisit", "SaturationMonoid.ProcessGame.Society.M14UBIPeriodicActualServiceCapacity.actualSettlementAt", "SaturationMonoid.ProcessGame.Society.M14UBIPeriodicActualServiceCapacity.anomiePhaseAt", "SaturationMonoid.ProcessGame.Society.M14UBIPeriodicActualServiceCapacity.anomiePhaseAt_capacity", "SaturationMonoid.ProcessGame.Society.M14UBIPeriodicActualServiceCapacity.anomiePhaseAt_served_length", "SaturationMonoid.ProcessGame.Society.M14UBIPeriodicActualServiceCapacity.anomiePhaseAt_tag", "SaturationMonoid.ProcessGame.Society.M14UBIPeriodicActualServiceCapacity.anomiePrefixAt", "SaturationMonoid.ProcessGame.Society.M14UBIPeriodicActualServiceCapacity.anomie_with_positive_exit_capacity_at", "SaturationMonoid.ProcessGame.Society.M14UBIPeriodicActualServiceCapacity.capacity_bounded_by_actual_service_and_root_at", "SaturationMonoid.ProcessGame.Society.M14UBIPeriodicActualServiceCapacity.capacity_positive_at", "SaturationMonoid.ProcessGame.Society.M14UBIPeriodicActualServiceCapacity.capturedGeometryCompilerAt", "SaturationMonoid.ProcessGame.Society.M14UBIPeriodicActualServiceCapacity.captured_nominal_capacity_eq_zero_at", "SaturationMonoid.ProcessGame.Society.M14UBIPeriodicActualServiceCapacity.crossingCompilerAt", "SaturationMonoid.ProcessGame.Society.M14UBIPeriodicActualServiceCapacity.every_generated_period_has_actual_service_exit", "SaturationMonoid.ProcessGame.Society.M14UBIPeriodicActualServiceCapacity.firstFeasibleExitAt", "SaturationMonoid.ProcessGame.Society.M14UBIPeriodicActualServiceCapacity.firstServiceReceiptAt", "SaturationMonoid.ProcessGame.Society.M14UBIPeriodicActualServiceCapacity.firstSlotAt", "SaturationMonoid.ProcessGame.Society.M14UBIPeriodicActualServiceCapacity.geometryCompilerAt", "SaturationMonoid.ProcessGame.Society.M14UBIPeriodicActualServiceCapacity.installedCompilerAt", "SaturationMonoid.ProcessGame.Society.M14UBIPeriodicActualServiceCapacity.installedCompilerAt_queue_length", "SaturationMonoid.ProcessGame.Society.M14UBIPeriodicActualServiceCapacity.middleServiceReceiptAt", "SaturationMonoid.ProcessGame.Society.M14UBIPeriodicActualServiceCapacity.periodicActualServiceExitAt", "SaturationMonoid.ProcessGame.Society.M14UBIPeriodicActualServiceCapacity.periodicActualServiceExitAt_eq_canonical", "SaturationMonoid.ProcessGame.Society.M14UBIPeriodicActualServiceCapacity.periodicActualServiceExitOccurrenceAt", "SaturationMonoid.ProcessGame.Society.M14UBIPeriodicActualServiceCapacity.periodicActualServiceExitOccurrenceAt_injective", "SaturationMonoid.ProcessGame.Society.M14UBIPeriodicActualServiceCapacity.periodicActualServiceExit_choice_eq_canonical", "SaturationMonoid.ProcessGame.Society.M14UBIPeriodicActualServiceCapacity.periodicActualServiceExit_paymentOccurrence", "SaturationMonoid.ProcessGame.Society.M14UBIPeriodicActualServiceCapacity.root_payload_has_no_completed_periodic_service", "SaturationMonoid.ProcessGame.Society.M14UBIPeriodicActualServiceCapacity.serviceCompilerAt", "SaturationMonoid.ProcessGame.Society.M14UBIPeriodicActualServiceCapacity.strongest_actual_exit_renewal_iff_at", "SaturationMonoid.ProcessGame.Society.M14WholeProgramRegression.CanonicalSocietyAt", "SaturationMonoid.ProcessGame.Society.M14WholeProgramRegression.canonicalSociety", "SaturationMonoid.ProcessGame.Society.M14WholeProgramRegression.canonicalSociety_actualPeriodicClearingCreditAt", "SaturationMonoid.ProcessGame.Society.M14WholeProgramRegression.canonicalSociety_employmentOutsideOptionPowerGeometry", "SaturationMonoid.ProcessGame.Society.M14WholeProgramRegression.canonicalSociety_exitCapacityRenewal_iff", "SaturationMonoid.ProcessGame.Society.M14WholeProgramRegression.canonicalSociety_noCapacityOnlyEffectiveRepairSelector", "SaturationMonoid.ProcessGame.Society.M14WholeProgramRegression.canonicalSociety_paidExitLifecycleMaximum", "SaturationMonoid.ProcessGame.Society.M14WholeProgramRegression.canonicalSociety_paidSuccessorAfterRefusalAntiRetaliation", "SaturationMonoid.ProcessGame.Society.M14WholeProgramRegression.canonicalSociety_paidSuccessorBearerLeaveExecution", "SaturationMonoid.ProcessGame.Society.M14WholeProgramRegression.canonicalSociety_paidSuccessorBearerRoleIndependentContinuation", "SaturationMonoid.ProcessGame.Society.M14WholeProgramRegression.canonicalSociety_paidSuccessorPostContinuationExternalResidualDisposition", "SaturationMonoid.ProcessGame.Society.M14WholeProgramRegression.canonicalSociety_periodicCommonClearing", "SaturationMonoid.ProcessGame.Society.M14WholeProgramRegression.canonicalSociety_rootLawComplete_and_u8Available", "SaturationMonoid.ProcessGame.Society.M14WholeProgramRegression.canonicalSociety_sourceAwareProofCarryingRepair", "SaturationMonoid.ProcessGame.Society.M14WholeProgramRegression.canonicalSociety_ubiProofCarryingLegislation", "SaturationMonoid.ProcessGame.Society.M14WholeProgramRegression.canonicalSociety_zeroCapacityCausalNonidentifiability", "SaturationMonoid.ProcessGame.Society.M14ZeroCapacityCausalNonidentifiabilityRegression.ActualServiceAt", "SaturationMonoid.ProcessGame.Society.M14ZeroCapacityCausalNonidentifiabilityRegression.PaymentIncidenceMissingSignatureAt", "SaturationMonoid.ProcessGame.Society.M14ZeroCapacityCausalNonidentifiabilityRegression.PriceCaptureSignatureAt", "SaturationMonoid.ProcessGame.Society.M14ZeroCapacityCausalNonidentifiabilityRegression.RouteIncidenceMissingSignatureAt", "SaturationMonoid.ProcessGame.Society.M14ZeroCapacityCausalNonidentifiabilityRegression.ZeroCapacityCausalNonidentifiabilityCertificate", "SaturationMonoid.ProcessGame.Society.M14ZeroCapacityCausalNonidentifiabilityRegression.ZeroCapacityCausalOriginAt", "SaturationMonoid.ProcessGame.Society.M14ZeroCapacityCausalNonidentifiabilityRegression.actual_service_present_at", "SaturationMonoid.ProcessGame.Society.M14ZeroCapacityCausalNonidentifiabilityRegression.all_three_interventions_share_program_axes", "SaturationMonoid.ProcessGame.Society.M14ZeroCapacityCausalNonidentifiabilityRegression.capacityReadoutAt", "SaturationMonoid.ProcessGame.Society.M14ZeroCapacityCausalNonidentifiabilityRegression.capacityReadout_eq_zero_at", "SaturationMonoid.ProcessGame.Society.M14ZeroCapacityCausalNonidentifiabilityRegression.capacityReadout_not_injective_at", "SaturationMonoid.ProcessGame.Society.M14ZeroCapacityCausalNonidentifiabilityRegression.captured_payment_and_route_present_at", "SaturationMonoid.ProcessGame.Society.M14ZeroCapacityCausalNonidentifiabilityRegression.firstServicedCrossingAt", "SaturationMonoid.ProcessGame.Society.M14ZeroCapacityCausalNonidentifiabilityRegression.no_capacity_only_causal_reconstruction_at", "SaturationMonoid.ProcessGame.Society.M14ZeroCapacityCausalNonidentifiabilityRegression.paymentIncidenceMissingGeometryAt", "SaturationMonoid.ProcessGame.Society.M14ZeroCapacityCausalNonidentifiabilityRegression.paymentIncidenceMissingOriginAt", "SaturationMonoid.ProcessGame.Society.M14ZeroCapacityCausalNonidentifiabilityRegression.paymentIncidenceMissingSignatureAt", "SaturationMonoid.ProcessGame.Society.M14ZeroCapacityCausalNonidentifiabilityRegression.payment_incidence_missing_at", "SaturationMonoid.ProcessGame.Society.M14ZeroCapacityCausalNonidentifiabilityRegression.payment_missing_capacity_eq_zero_at", "SaturationMonoid.ProcessGame.Society.M14ZeroCapacityCausalNonidentifiabilityRegression.payment_missing_route_present_at", "SaturationMonoid.ProcessGame.Society.M14ZeroCapacityCausalNonidentifiabilityRegression.priceCaptureOriginAt", "SaturationMonoid.ProcessGame.Society.M14ZeroCapacityCausalNonidentifiabilityRegression.priceCaptureSignatureAt", "SaturationMonoid.ProcessGame.Society.M14ZeroCapacityCausalNonidentifiabilityRegression.routeIncidenceMissingGeometryAt", "SaturationMonoid.ProcessGame.Society.M14ZeroCapacityCausalNonidentifiabilityRegression.routeIncidenceMissingOriginAt", "SaturationMonoid.ProcessGame.Society.M14ZeroCapacityCausalNonidentifiabilityRegression.routeIncidenceMissingSignatureAt", "SaturationMonoid.ProcessGame.Society.M14ZeroCapacityCausalNonidentifiabilityRegression.route_incidence_missing_at", "SaturationMonoid.ProcessGame.Society.M14ZeroCapacityCausalNonidentifiabilityRegression.route_missing_capacity_eq_zero_at", "SaturationMonoid.ProcessGame.Society.M14ZeroCapacityCausalNonidentifiabilityRegression.route_missing_payment_present_at", "SaturationMonoid.ProcessGame.Society.M14ZeroCapacityCausalNonidentifiabilityRegression.three_causal_origins_are_pairwise_distinct", "SaturationMonoid.ProcessGame.Society.M14ZeroCapacityCausalNonidentifiabilityRegression.zeroCapacityCausalNonidentifiabilityDirectConsumer", "SaturationMonoid.ProcessGame.Society.M14ZeroCapacityCausalNonidentifiabilityRegression.zero_capacity_fiber_has_three_distinct_origins", "SaturationMonoid.ProcessGame.Society.MInfinityWholeProgramRegression.MInfinityWholeProgramCertificate", "SaturationMonoid.ProcessGame.Society.MInfinityWholeProgramRegression.mInfinityWholeProgramConsumer", "SaturationMonoid.ProcessGame.Society.Settlement.AutomaticFullFulfillment.fullResult", "SaturationMonoid.ProcessGame.Society.UBI.Capacity.CanonicalBipartiteFeasibility.positive_capacity_iff_feasible_edge", "SaturationMonoid.ProcessGame.Society.UBI.Capacity.SourceOwnedExitGeometryCompilerAt", "SaturationMonoid.ProcessGame.Society.UBI.Capacity.SourceOwnedExitGeometryCompilerAt.ExactFeasibleExitEdgeAt", "SaturationMonoid.ProcessGame.Society.UBI.Capacity.SourceOwnedExitGeometryCompilerAt.FeasibleExitEdgeAt", "SaturationMonoid.ProcessGame.Society.UBI.Capacity.SourceOwnedExitGeometryCompilerAt.FeasibleExitEdgeAt.generate", "SaturationMonoid.ProcessGame.Society.UBI.Capacity.SourceOwnedExitGeometryCompilerAt.SourceGeneratedActionableExitRenewalAt", "SaturationMonoid.ProcessGame.Society.UBI.Capacity.SourceOwnedExitGeometryCompilerAt.actionableExitCapacity", "SaturationMonoid.ProcessGame.Society.UBI.Capacity.SourceOwnedExitGeometryCompilerAt.actionableExitRenewal_nonempty_iff_full_contract", "SaturationMonoid.ProcessGame.Society.UBI.Capacity.SourceOwnedExitGeometryCompilerAt.capacity_le_actual_served_slots", "SaturationMonoid.ProcessGame.Society.UBI.Capacity.SourceOwnedExitGeometryCompilerAt.capacity_le_rootOperationalCapacity", "SaturationMonoid.ProcessGame.Society.UBI.Capacity.SourceOwnedExitGeometryCompilerAt.capacity_le_surviving_actionable_codes", "SaturationMonoid.ProcessGame.Society.UBI.Capacity.SourceOwnedExitGeometryCompilerAt.capacity_positive_iff_actionableExitRenewal", "SaturationMonoid.ProcessGame.Society.UBI.Capacity.SourceOwnedExitGeometryCompilerAt.capacity_positive_iff_feasible_edge", "SaturationMonoid.ProcessGame.Society.UBI.Capacity.SourceOwnedExitGeometryCompilerAt.full_capture_no_exit_capacity", "SaturationMonoid.ProcessGame.Society.UBI.Capacity.SourceOwnedExitGeometryCompilerAt.matchingGeometry", "SaturationMonoid.ProcessGame.Society.UBI.Capacity.SourceOwnedExitGeometryCompilerAt.no_actual_service_no_exit_capacity", "SaturationMonoid.ProcessGame.Society.UBI.Capacity.SourceOwnedExitGeometryCompilerAt.no_payment_receipts_no_exit_capacity", "SaturationMonoid.ProcessGame.Society.UBI.Capacity.SourceOwnedExitGeometryCompilerAt.no_route_receipts_no_exit_capacity", "SaturationMonoid.ProcessGame.Society.UBI.Capacity.SourceOwnedExitGeometryCompilerAt.nominal_transfer_no_exit_capacity"]
+  let moduleNames := env.header.moduleNames
+  for value in wanted do
+    let name := wholeLedgerName value
+    let some info := env.checked.get.find? name |
+      throwError "MISSING_WHOLE_LEDGER_DECLARATION {value}"
+    let some index := env.getModuleIdxFor? name |
+      throwError "MISSING_WHOLE_LEDGER_OWNER {value}"
+    let owner := moduleNames[index]!.toString
+    unless owners.contains owner do
+      throwError "WRONG_WHOLE_LEDGER_OWNER {value} actual={owner}"
+    let kind := match info with
+      | .thmInfo _ => "theorem"
+      | .defnInfo _ => "definition"
+      | .opaqueInfo _ => "opaque"
+      | .axiomInfo _ => "axiom"
+      | .inductInfo _ => "inductive"
+      | .ctorInfo _ => "constructor"
+      | .recInfo _ => "recursor"
+      | .quotInfo _ => "quotient"
+    let type ← liftTermElabM (wholeLedgerCompleteType info.type)
+    let axioms ← liftTermElabM do collectAxioms name
+    let row := Json.mkObj [
+      ("qualified_name", toJson name.toString), ("module", toJson owner),
+      ("kind", toJson kind), ("type", toJson type),
+      ("type_format", toJson "lean-expr-dag@1"), ("kernel_equivalent", toJson true),
+      ("universe_parameters", toJson (info.levelParams.map Name.toString)),
+      ("axioms", toJson (axioms.toList.map Name.toString)),
+      ("unsafe", toJson info.isUnsafe), ("partial", toJson info.isPartial)]
+    logInfo m!"WHOLE_LEDGER_DECLARATION {row.compress}"

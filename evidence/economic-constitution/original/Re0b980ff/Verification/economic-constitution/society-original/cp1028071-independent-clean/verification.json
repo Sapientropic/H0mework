@@ -1,0 +1,89 @@
+{
+  "schema": "society-batch-reentry/v1",
+  "exit": 0,
+  "intent_service_receipt_sha256": "43e02e949b76e77b4a96e4dd2895d21802779a71ef3b203afa31a880bfbe2a2b",
+  "retained_receipts": 50,
+  "source_refreshes": {},
+  "checks": [
+    {
+      "module": "SaturationMonoid.ProcessGame.Society.PublicFunction.Protocol.SymbolicAuthentication.BatchReentry",
+      "exit": 0,
+      "seconds": 10.81,
+      "compiler_flags": [
+        "--trust=0",
+        "-j1",
+        "-M12000",
+        "-DElab.async=false",
+        "-DwarningAsError=true"
+      ],
+      "source_sha256": "0358c74b4a30162f97cf1dbee3e4528bb994ec201e17d3d52b6ea13052e17404",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "setup_sha256": "52e650e141c3629795f1ed507243eec7fc0191ad1bce42074e6355be3bb959f1",
+      "artifact_sha256": "ad6527ddf2291a84719f50c74263d9db26faa1184f7ba33aaee129e5b68a7169"
+    },
+    {
+      "module": "SaturationMonoid.ProcessGame.Society.PublicFunction.Protocol.SymbolicAuthentication.BatchReentryRuntime",
+      "exit": 0,
+      "seconds": 103.58,
+      "compiler_flags": [
+        "--trust=0",
+        "-j1",
+        "-M12000",
+        "-DElab.async=false",
+        "-DwarningAsError=true"
+      ],
+      "source_sha256": "4444ed6c95568659cd1316a289ad15ca3055e72eb44f64cc22bae5ebf8f4e438",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "setup_sha256": "2b2d205a1e8e164ea7ea857ceab24593165189b77fd22831de84746507d69d07",
+      "artifact_sha256": "9fe8ba091565c1b3eae1771100762fa9a0da384256181c6101f3345dbcb8918f"
+    },
+    {
+      "module": "SaturationMonoid.ProcessGame.Society.PublicFunction.Protocol.SymbolicAuthentication.BatchReentrySource",
+      "exit": 0,
+      "seconds": 3.17,
+      "compiler_flags": [
+        "--trust=0",
+        "-j1",
+        "-M12000",
+        "-DElab.async=false",
+        "-DwarningAsError=true"
+      ],
+      "source_sha256": "667355280e6866f943b47fb0a13bc8c2dec67d5c9b0a5f57c816b020b7ffaea1",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "setup_sha256": "04849b6b7f229a1631a27ce75550d43a214153d87a867bca5efa12dfc5e261e7",
+      "artifact_sha256": "809803f81cf8bffbcc259f5d7b84f3683a5cbc245498206b9ac3220398c2e6a6"
+    },
+    {
+      "module": "SaturationMonoid.ProcessGame.Society.PublicFunction.Protocol.SymbolicAuthentication.BatchReentryControls",
+      "exit": 0,
+      "seconds": 32.8,
+      "compiler_flags": [
+        "--trust=0",
+        "-j1",
+        "-M12000",
+        "-DElab.async=false",
+        "-DwarningAsError=true"
+      ],
+      "source_sha256": "3813bea3d5430820d89bcae706028cc62f31b2b6c981b86a881886a34adf6704",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "setup_sha256": "a023a7f1ce11b0b0abbd0c27c8fee3d717ed4ab65a2f076b2c51d9c49281ea7a",
+      "artifact_sha256": "13b26c5bfca86decc47f8f7c7152a0f0010b83b7e772b1c2ab7d79713e6d0ec8"
+    },
+    {
+      "module": "SocietyBatchReentryKernel",
+      "exit": 0,
+      "seconds": 161.4,
+      "compiler_flags": [
+        "--trust=0",
+        "-j1",
+        "-M12000",
+        "-DElab.async=false",
+        "-DwarningAsError=true"
+      ],
+      "source_sha256": "7f82c3ba8254f12614e2cd7e3c083b169a0d385ad4e704efc181f9fe6effa001",
+      "log_sha256": "ac1f757ae2af737c2cacad8d62ac9abe2c40e472716a0e32f22ba27c8b4009f3",
+      "setup_sha256": "6fe8bd3350d82f45ad40b66754ce15febc33290cb8dbf4e11b9b514aa030d1eb"
+    }
+  ],
+  "kernel": "KERNEL REPLAY PASS: roots=1093, closure=14057, private=1403, axioms=[Quot.sound, Classical.choice, propext]"
+}

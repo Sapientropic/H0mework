@@ -1,59 +1,43 @@
 # 典范社会总定理：选集与验收
 
-当前选集为 G0–G27 加 G2a，其中 G10–G12 只接收实际引用接口。原声明、完整类型、直接消费者、来源 epoch、公开 owner 和资源归[逐主张映射](generated-society-map.json)；执行命令和可引用声明归[复现](generated-society-reproduction.md)。
+[逐主张映射](generated-society-map.json)与[选集](../checks/generated-society-selection.json)覆盖 G0–G27、G2a 及实际引用接口。G10–G12 保持 `interface_only`；C.13／PT15 按原协议上下文独立验收。
 
-## 本地验收
+## 本轮状态
 
-完整五包构建、trust 和完整类型验收全部通过；[本次实际回执](../evidence/generated-society/acceptance/expanded-g0-g27/summary.json)绑定执行时的 map 快照、固定源闭包和配置 SHA，三次执行的输入均前后不变。最终 map 绑定真实类型与回执，并按原类型明确了 G20／G27 的严格进展预算及 G26 的依赖类型 HEq。
+完整七包本地构建、1012 个声明的 trust 与完整类型验收均已通过。构建耗时 189.546 秒，输入前后身份一致；完整 type/value 闭包仅依赖标准三公理 `Classical.choice`、`Quot.sound`、`propext`，`unsafe=0`、`partial=0`。全部类型均由 Lean 重建并检查等价。独立审查核对了实际回执、审计程序、日志及完整 owner／声明清单。
 
-| 检查 | 实际结果 |
+[本轮真实回执](../evidence/generated-society/acceptance/final-manuscript/summary.json)保存执行输入快照与最终类型绑定；`entry --require-ready` 已通过，核实 4091 个完整证明 owner、156 项公开资源身份和 1012 项完整类型。两次失败原件与[此前五包验收](../evidence/generated-society/acceptance/expanded-g0-g27/)分别保留，此前 967 项类型保持原身份。
+
+| 检查 | 当前状态 |
 | --- | --- |
-| Lean 完整构建 | 12463／12463 jobs；新增 542 个默认模块实际完成，旧模块重编译 0 |
-| 五包 trust | 967 个声明根；完整 type/value、互递归和归纳元数据闭包；unsafe=0、partial=0 |
-| 完整类型 | 967 项 Lean Expr DAG 独立重建并经 Lean 检查；全部保留 universe、量词和前提 |
-| 选集身份 | 29 主张、428 映射项、3753 公开证明 owner、80 项资源、10 个选定 epoch |
-| 公开与精确恢复 | 两种视图均通过；全部原认证资源的精确恢复使用按源 SHA 保存的原件 |
-| 默认覆盖 | Lake 实际枚举 51085 个默认模块；全部模块恰有一个库 owner |
-| 旧材料与入口 | 六篇固定材料身份不变；整账法 40 主张／13 包／5025 类型、一比特 23 control 类型及首发入口检查通过 |
-| 工具 | 409 项完整工具测试通过；`make check-map` 通过 |
+| 七包完整 Lean 构建 | 通过；189.546 秒，输入身份保持 |
+| 完整 type/value trust 闭包 | 1012 根通过；标准三公理，unsafe=0、partial=0 |
+| 完整 Lean Expr DAG 类型 | 1012 项通过；owner／声明及内核类型等价一致 |
+| 固定来源与包归属 | 29 主张、12 个来源 epoch；351 个 Lean 文件根、165 个资源来源键 |
+| 原五包 source scope | 五个摘要均与此前实际验收一致 |
+| 新生产接口 source scope | 562 模块，含独立入口 |
+| 新协议接口 source scope | 635 模块，含独立入口 |
+| 公开恢复与资源核对 | 4091 个证明 owner、156 项公开资源身份通过 |
+| 默认覆盖与旧材料身份 | 通过；详见共用缓存报告 |
 
-社会总口保留真实标准三公理 `propext`、`Classical.choice`、`Quot.sound`。原 strict／T1 认证按各自实际 epoch 保留，本次 H0 执行单独记账；历史失败与未恢复原件的状态保持。
+原五个入口、owner 与源码保留。新增 `H0mework.Papers.GeneratedSocietyProductivitySupplement` 和 `H0mework.Papers.GeneratedSocietyProtocolInterface` 分别承接本稿实际引用的生产消费者与协议接口；完整 producer、消费者和 imports 都进入各包范围。
 
-| 独立入口 | 固定来源 | 实际闭包模块数（含入口） |
-| --- | --- | --- |
-| `GeneratedSocietyMInfinity` | e60 | 1078 |
-| `GeneratedSocietyRegeneration` | AB | 1037 |
-| `GeneratedSocietyInterfaces` | df | 1584 |
-| `GeneratedSocietyProgress` | 1d7 | 1042 |
-| `GeneratedSocietyEconomy` | df | 1042 |
+## 固定来源
 
-五个入口均位于 `H0mework.Papers`。G13 保留历史 1d7 环境，并显式核对 df 当前实例；不同 epoch 的 Cycle／Payment 未被等同。G14–G27 及语法、路由／服务、关系再选择和记忆链的真实 producer、直接消费者与 whole 均进入完整构建。
+命题合同固定于 publish `d7253ee2c6db3ff52e709f78aa602ab0a6c921c5`。十份完整来源清单的全部 345 项与原有选集并集保留，包含 G13 的 df 当前来源实例和原认证资源。整理上限仍为 Homework `df421ff600085cbc290a7ae946193961bed7c83b`，各证明保留自己的实际 epoch。
 
-## 来源与补稿
+publish 后续提交 `99860025b4c810011ef37d7e04c197fb6e7bf41c` 更新图件及双语图2图注；claims、逐结果对应、完整来源清单和附录字节保持，未增加证明根。本轮保持固定合同身份。
 
-本次接入按 publish 固定提交 `a21f8b21a8c9bce2707f59f34e4cc6c731feabf9` 的 claims 及逐结果来源恢复；收稿上限仍为 Homework `df421ff600085cbc290a7ae946193961bed7c83b`，各历史证明保留实际 epoch。[独立来源审查](../evidence/generated-society/acceptance/expanded-g0-g27/source-review.json)核对了 245 项相关论文来源引用、完整 producer／consumer 和资源闭包；[最新补稿复核](../evidence/generated-society/acceptance/expanded-g0-g27/paper-review.json)确认社科读者改写未改变证明范围。并行未提交的 5.12 所用声明及实际 value 依赖另有明确记录。
+C.13／PT15 的真实原认证上下文为 `e0b980ffb69e638c9f1e000932f6bb14f778dcdc`。原 window 的 9 份检查源码、9 份 setup 和 8 份 olean 身份已恢复核对；原 61 个 parent 回执与 window 回执及支持文件共 68 项材料逐项映射。后置 custody 提交 `de213ed9d6ac05cf7acfd6ec2c974ce8c1df78d6` 只固定恢复原件的 SHA，不改写原执行身份。原 review 状态和 exit=1 的负例拒绝均保留；本轮 H0 执行单独记账。
 
-独立附录 C13／PT15 的 receipt-window 接口保持原未闭合记录，未由本次 G13–G27 的验收转授认证。论文正文及其未提交文件保持由写作窗口负责。
+本轮实际辅助来源另行明确：`Trace.Challenge` 使用固定6c版本补全 `scopeBoundary` carrier与第六事件分支；`Quota.Plan` 使用固定59df版本的真实 `memoryReady` 门控等式。它们是实际源修订。`Distributed.Regression` 则按实际 Code 的四个默认记忆字段作可逆依赖类型重绑定，保留原定理类型及证明。三个原坏体按4个来源键保于G12资源；[首轮失败](../evidence/generated-society/acceptance/final-manuscript/attempt-original-provider/)保留原错误、超时和执行输入。所选主根源码签名保持，本轮完整类型与公理依赖重新机器验收。
 
-## 缓存保全
+第二次完整构建只在 `Feedback.Regression` 的 signals=3 依赖域更新失败，[该次回执](../evidence/generated-society/acceptance/final-manuscript/attempt-feedback-defaults/)独立保留。现采用固定 `7e2cc053821fedbb638122b3b2f8c82134c61ac0` 中确有的四个默认字段重绑定版本（与59df同字节）；整份源文件的原定理类型、证明和其余字节保持，完整源与四项字段 `rfl` 检查已经通过。有限调用点扫描未发现其他同族漏项；修复后的完整七包构建、trust 与类型均由本轮实际执行签收。
 
-[本次逐片报告](../evidence/generated-society/acceptance/expanded-g0-g27/cache-preservation.json)确认：相对接入前提交 `6edbad82`，全部 51981 个旧模块的源码、owner、递归 imports、有效强弱选项、39 个编译资源和默认分片归属保持；相对最初 main 的 49055 个模块身份也全部保持。新增 540 个证明 owner、两个入口及五份来源文档，1036 处来源 epoch 标签只追加不删减。
+## 缓存与远端
 
-原有 62 个分片的完整记录、指纹和缓存键不变，仅新增 `s5-03`：542 模块，预计 0.77 runner 小时。计划为 11 阶段、63 片，每阶段最多 20 片；`plan --update-layout` 前、后及最终完整计划相同，固定布局只追加新模块位置，未执行 `--rebalance`。
+[当前缓存报告](../evidence/economic-constitution/acceptance/initial-intake/cache/current-report.json)固定选集指纹 `c3e4f6280b9b8b450e2aa582acde2547549d97162174c7da7d992434314e8bc8`，逐片记录本轮两稿接入：旧 52523 个模块及入口的源码／递归身份、63 个完整分片记录均保持；新增 2106 个证明 owner、7 个论文入口及 306 项资源，只追加两个分片。默认构建覆盖 53198 个模块，唯一 owner 与原六篇材料身份检查通过。
 
-| 完整选集身份 | 指纹 |
-| --- | --- |
-| 最初 main 基线 | `345402a3c337566e053d60f264f8dca9487d594f2adfaf1daec37ed5765ec9f2` |
-| 本次扩展前 | `f0b3feec6ad427afa32bb28cbef5c06b762c9b56fad196a8bf5299b7603b6a82` |
-| G13–G27 接入后 | `b1bf6b3260efaf715795900878404e87a7dc624ad888a9087297b84918144f39` |
-| compatibility／CACHE_VERSION | `23f23031eec00a03d30ee31d`／`lean-parts-v1` |
+工具链、manifest、工作流、固定布局和缓存版本沿用项目机制；本机 Darwin 产物与 Linux 分片存档分别处理。Bell 与量子载体输入及原回执身份保持，`full_replay=false`，未重跑科学任务。
 
-原 61 片的 Linux 完整成功存档齐全，包括两组分卷的全部六个载荷；`s3-09` 保持其本地已验收身份，尚无远端成功存档。新旧选集的远端待验部分为 `s3-09` 与 `s5-03`，共 3468 个 owned 模块，预计 4.22 runner 小时。本机 Darwin 产物与 Linux runner 身份分别处理。
-
-工具链、manifest、工作流、CI 算法及缓存版本保持。9 个固定依赖的 Git 身份和既有源码状态前后一致。Bell 与量子载体的程序、配置、资源及双引擎科学输入比较均相同，保留原成功回执，`full_replay=false`；旧 artifact 过期及历史 Makefile 导致的 verifier `miss` 保留原状态，详见[科学输入核对](../evidence/generated-society/acceptance/expanded-g0-g27/scientific-input-binding.json)。
-
-## 远端 CI
-
-[只读收尾核对](../evidence/generated-society/acceptance/expanded-g0-g27/remote-cache-preservation.json)确认远端 main 仍为 `48dc9ad13ffa79d9c2e9a93a8bc755a2388320bc`，proof-cache 的 76 项资产 metadata 前后相同；[最近成功运行 39771257871](https://github.com/Sapientropic/H0mework/actions/runs/39771257871)仍绑定历史来源 `8d6e6f09007e759bc07dea0d8c34d3379207bf61`。
-
-本次新选集已通过本地完整验收，尚未运行远端 CI，也未取得新 seal。没有推送、远端合并、工作流触发、手工 seal／save／prune 或缓存删除。
+本轮尚无新提交的远端 CI 或新 seal。没有推送、远端合并、工作流触发、手工 seal／save／prune 或远端缓存删除。

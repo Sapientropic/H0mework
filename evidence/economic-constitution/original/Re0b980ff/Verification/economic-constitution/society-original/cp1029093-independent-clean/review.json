@@ -1,0 +1,71 @@
+{
+  "schema": "society-receipt-window-semantic-review/v1",
+  "verdict": "pass_with_machine_verification_pending",
+  "review_mode": "read_only_semantic_review",
+  "date": "2026-10-29",
+  "lean_executed_by_reviewer": false,
+  "binding": {
+    "manifest": "owned.json",
+    "manifest_sha256": "4e3fa8dbae64015dba0cd72b8782c2906e345c9c44f3001295eef662c9409519",
+    "head_before": "bdcd86e9d600e3b3f1f452307c1df5849bd2fab9",
+    "owned_file_sha256": {
+      "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Protocol/SymbolicAuthentication/ReceiptWindowObstruction.lean": "7afffa54edf2689c434778c3236e6512f060d07eda221ba16f88c2177ef89452",
+      "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Protocol/SymbolicAuthentication/ReceiptBranchCoverage.lean": "b16c4faf628edd51aa318d418892c13d444396c9ee6446e11e4cf4886f428f9a",
+      "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Protocol/SymbolicAuthentication/ReceiptWindowSource.lean": "230adbc98448c70c2fe71cb34b7e98cf21694b50ec7ab373ed7adeba5136c2af",
+      "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Protocol/SymbolicAuthentication/ReceiptWindowTrace.lean": "e052e77e17d0c1bdf64a32661fcfe40f83f1607b225469108a274a019d080027",
+      "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Protocol/SymbolicAuthentication/ReceiptWindowService.lean": "38a3b92e70c1139ac8b934a6d6cbf746055bd935da36fd8e7601b3d4cf821218",
+      "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Protocol/SymbolicAuthentication/ReceiptWindowCompletion.lean": "f8f7ac6ec391a84a31fc5288b41a1c5e83e8b552e0a8ec3cc6285f2cf701dc12",
+      "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Protocol/SymbolicAuthentication/ReceiptWindowConsumer.lean": "ed3a7309b5e4647ddc4c78648d8267dc4ee1357cda1058a602a3e63dc994eade",
+      "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Protocol/SymbolicAuthentication/ReceiptWindowControls.lean": "64e802c249ceceb2459f9f6ee2fe2b3aa8ae96f01199610be5891c1b10774d79",
+      "Lean/scripts/verification/verify_society_receipt_window.py": "88384d4775eb6ac9730338de68c55948dd2d91089d37c736876356dfab8c13ef",
+      "Lean/scripts/verification/society-receipt-window-kernel.lean": "eed016e554133dde0b7c1e3fcb16c65f750b83adf27187b449e6f0ed9405e350",
+      "Lean/docs/mechanisms/society/source-spaced-receipt-completion.md": "657ecfe8b76eb5addc8244313232da26c92d1dcdca121bfa40463a8c3c5e8125"
+    },
+    "support_dependencies_sha256": {
+      "Lean/scripts/verification/verify_society_symbolic_authentication.py": "42b959f983aefb249813791369acefd6d213bbb5048572f582c003d68327f7af"
+    }
+  },
+  "intended_mouth": "ReceiptWindowCompletion.every_original_compliant_adaptive_callback_completes_before_the_source_deadline, consumed by ReceiptWindowConsumer on the existing ReceiptDrivenRuntime emitter root.",
+  "candidate_and_provenance": "ReceiptWindowSource fixes a public 24-step programme over the existing normal ReceiptDrivenSource model and allowance=1. ReceiptBranchCoverage enumerates four source-generated delivery timings; the active ReceiptDrivenRun.produce receives only the public programme and actual callback, not the path table or coverage certificate.",
+  "findings": [
+    "Coverage is over the recursive actual-prefix state: for every move in InterferenceEnvelope.choices it selects paths by the exact head move, checks every matching path head against the full generated Rule and per-site mailbox transition, then recurses on the common generated next state. Its soundness theorem uses only the actual run input-compliance premise to produce a ReceiptDrivenMaterialization.verify path. No final Goal or success status is an input to covers or its soundness theorem.",
+    "The four timing paths are (delivery0, delivery1)=(5,13),(5,15),(7,13),(7,15), with receiver service at (6,14),(6,18),(10,14),(10,18), respectively. eventLimit=0 removes extras; allowance=1 permits one no-op before the fresh delivery becomes forced. The source spaces the second send after the latest first service. Timing and service windows fit the 24-step physical budget and maxDelay=3.",
+    "ReceiptWindowService classifies all 25 snapshots for each timing. Every nonempty local responsibility lies in one of the actual receipt-to-service windows; the Rule at the service row equals the full original RetainedIntent.protocol, and the row is the original owned activation with the retained local word and per-item law.Valid. The exact InterferenceValidity.Goal is constructed, including the unchanged native clear and final-idle conditions.",
+    "ReceiptWindowCompletion lifts each finite path to complete communication, empty pending queue, jointComplete and original Goal; the universal callback theorem then transports these via the path-completeness theorem and ReceiptDrivenRun.success_keeps_the_entire_original_goal. ReceiptWindowConsumer uses the sealed answer from ReceiptDrivenRuntime and connects the same emitter root, whole-ledger write-back, and literal next.",
+    "The table/certificate is proof-side only: ReceiptWindowSource.actual is ReceiptDrivenRun.produce with the fixed programme and callback; neither actual nor the runtime generator accepts paths or a Goal-success witness. Negative controls reject a missing timing branch, no-delivery completion, insufficient physical clock, unconditional completion, and status-as-Goal; raw owned-event impersonation is normalized/rejected while the compliant actual run still completes.",
+    "ReceiptWindowObstruction is a concrete compliant counterexample to the older 16-step schedule under a different callback. It is correctly scoped to that older schedule and does not contradict the already accepted eager 16-step execution theorem."
+  ],
+  "reviewed_files": [
+    "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Protocol/SymbolicAuthentication/ReceiptWindowObstruction.lean",
+    "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Protocol/SymbolicAuthentication/ReceiptBranchCoverage.lean",
+    "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Protocol/SymbolicAuthentication/ReceiptWindowSource.lean",
+    "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Protocol/SymbolicAuthentication/ReceiptWindowTrace.lean",
+    "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Protocol/SymbolicAuthentication/ReceiptWindowService.lean",
+    "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Protocol/SymbolicAuthentication/ReceiptWindowCompletion.lean",
+    "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Protocol/SymbolicAuthentication/ReceiptWindowConsumer.lean",
+    "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Protocol/SymbolicAuthentication/ReceiptWindowControls.lean",
+    "Lean/scripts/verification/verify_society_receipt_window.py",
+    "Lean/scripts/verification/society-receipt-window-kernel.lean",
+    "Lean/docs/mechanisms/society/source-spaced-receipt-completion.md"
+  ],
+  "context_files_read": [
+    "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Protocol/SymbolicAuthentication/ReceiptDrivenRun.lean",
+    "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Protocol/SymbolicAuthentication/ReceiptDrivenMaterialization.lean",
+    "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Protocol/SymbolicAuthentication/ReceiptDrivenRuntime.lean",
+    "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Protocol/SymbolicAuthentication/ReceiptDrivenConsumer.lean",
+    "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Protocol/SymbolicAuthentication/InterferenceEnvelope.lean",
+    "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Protocol/SymbolicAuthentication/CompletionEnvelope.lean",
+    "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Protocol/SymbolicAuthentication/FreshReception.lean",
+    "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Protocol/SymbolicAuthentication/RetainedIntent.lean",
+    "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Protocol/SymbolicAuthentication/InterferenceValidity.lean"
+  ],
+  "defects": [],
+  "machine_evidence": "Reviewer did not run Lean. Parent reports all eight candidate modules passed strict compilation before the verifier-only namespace fix; the focused evidence was reused only after exact source/setup/log/artifact matching. The corrected negative controls and fresh empty-environment kernel replay remain pending; this review does not certify them.",
+  "residual_scope": "The guarantee is conditional on this named source programme, original model, allowance=1, and all actual inputs satisfying the original InterferenceEnvelope condition. It does not assert termination for arbitrary Code or unbounded asynchronous delivery.",
+  "verifier_harness_update": {
+    "file": "Lean/scripts/verification/verify_society_receipt_window.py",
+    "change_review": "The generated negative source is now placed inside namespace OWN, with autoImplicit false set there. This fixes name resolution of the imported Distributed namespace in the temporary test file; it changes no candidate Lean module, theorem statement, source schedule, proof term, or kernel replay source.",
+    "theorem_impact": "none",
+    "status": "parent reports strict compilation passed 8/8 and exact cached source/setup/log/artifact checks were reused; corrected negative-control rerun and fresh kernel replay are still pending at this review update."
+  }
+}

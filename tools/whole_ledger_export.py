@@ -42,9 +42,12 @@ PLAN_SCHEMA = "h0mework/whole-ledger-export-plan@1"
 REVISION = re.compile(r"[0-9a-f]{40}\Z")
 DIGEST = re.compile(r"[0-9a-f]{64}\Z")
 INHERITED_FIELDS = ("local_instance_names", "proof_body_rewrites", "build_adaptations", "suggestion_name_exclusions",
-                    "noncomputable_marker_rewrites")
-PRIVATE_PATH = re.compile(r'/(?:Users|home|home2)/[^/\s"\\]+/[^\s"\\:;]*|/var/folders/[^\s"\\:;]*')
-UNDECLARED_PATH = re.compile(r'/(?:Users|home|home2|tmp|Volumes)/[^\s"\\:;]+|/var/folders/[^\s"\\:;]*')
+                    "noncomputable_marker_rewrites", "anonymous_consumer_names", "signal_memory_default_rebindings")
+# A project-relative address such as .agents/tmp/x is not an absolute /tmp/x.
+# Compiler -I/-L paths and escaped console newlines still begin runtime roots.
+RUNTIME_BOUNDARY = r'(?:(?<![A-Za-z0-9_./])|(?<=\\n)|(?<=\\r)|(?<=\\t)|(?<=-I)|(?<=-L)|(?<=-R)|(?<=-o)|(?<=-c))'
+PRIVATE_PATH = re.compile(RUNTIME_BOUNDARY + r'(?:/(?:Users|home|home2)/[^/\s"\\]+/[^\s"\\:;]*|/var/folders/[^\s"\\:;]*)')
+UNDECLARED_PATH = re.compile(RUNTIME_BOUNDARY + r'(?:/(?:Users|home|home2|tmp|Volumes)/[^\s"\\:;]+|/private/(?:tmp|var)/[^\s"\\:;]*|/var/folders/[^\s"\\:;]*)')
 
 
 class ExportError(ValueError):
@@ -380,6 +383,15 @@ class Planner:
                 sv.ROOT = before
         return self.existing_raw[target][1]
 
+    def evidence_reader(self, repository):
+        # A later custody ledger preserves original bytes without changing
+        # the original scientific execution epoch.
+        if repository is None or (isinstance(repository, str) and repository.rstrip("/").endswith("/Homework.git")):
+            return self.git
+        if isinstance(repository, str) and repository.rstrip("/").endswith("/H0mework.git"):
+            return self.h0_git
+        raise ExportError("Unsupported fixed evidence repository")
+
     def verify_origin(self, origin, raw: bytes, epoch: str):
         if not isinstance(origin, dict) or not origin.get("kind"):
             raise ExportError("A retained provider needs a source_origin contract")
@@ -390,7 +402,8 @@ class Planner:
                 raise ExportError("Provider differs from its fixed source_origin Git body: " + path)
             return
         if origin.get("ledger_path"):
-            ledger = self.git.read(origin.get("ledger_commit", epoch), origin["ledger_path"])
+            reader = self.evidence_reader(origin.get("ledger_repository"))
+            ledger = reader.read(origin.get("ledger_commit", epoch), origin["ledger_path"])
             if sha(ledger) != origin.get("ledger_sha256"):
                 raise ExportError("Retained source fixed ledger SHA differs: " + origin["ledger_path"])
             if origin.get("ledger_pointer") is not None:
@@ -459,7 +472,8 @@ class Planner:
         pointer = origin.get("receipt_pointer")
         if not receipt_path or not digest or not isinstance(pointer, str):
             raise ExportError("Retained source lacks a fixed Git or receipt-pointer binding")
-        receipt = self.git.read(origin.get("receipt_commit", epoch), receipt_path)
+        reader = self.evidence_reader(origin.get("receipt_repository"))
+        receipt = reader.read(origin.get("receipt_commit", epoch), receipt_path)
         if sha(receipt) != digest:
             raise ExportError("Retained source receipt SHA differs: " + receipt_path)
         bound = json.loads(receipt)
@@ -674,7 +688,7 @@ class Planner:
                         row["target_sha256"] = sha(raw)
                     if UNDECLARED_PATH.search(raw.decode()):
                         raise ExportError("Text artifact needs explicit runtime_paths spans: " + source_key(commit, row["source"]))
-                if row["path"].endswith(".json") and UNDECLARED_PATH.search(raw.decode()):
+                if row["path"].endswith(".json"):
                     def find_path(value, pointer=""):
                         if isinstance(value, dict):
                             for name, child in value.items():
@@ -685,7 +699,8 @@ class Planner:
                         elif isinstance(value, str) and UNDECLARED_PATH.search(value):
                             yield pointer
                     pointers = list(find_path(json.loads(raw)))
-                    raise ExportError("Artifact needs explicit runtime_paths at " + source_key(commit, row["source"]) + ": " + ", ".join(pointers))
+                    if pointers:
+                        raise ExportError("Artifact needs explicit runtime_paths at " + source_key(commit, row["source"]) + ": " + ", ".join(pointers))
                 pub.verify_artifact(raw, row, originals[source_key(commit, row["source"])], root=self.root)
         by_target = {row["path"]: row for row in self.export["artifacts"] + additions}
         for key, target in bindings.items():
@@ -783,12 +798,26 @@ class Planner:
         candidates = [owner for owner, record in self.by_path[path] if record["source_sha256"] == source["source_sha256"]
                       and sv.semantic_origin(record.get("source_origin")) == sv.semantic_origin(source.get("source_origin"))]
         for field in INHERITED_FIELDS:
-            values = {json.dumps(prior[field], sort_keys=True) for prior in candidates if prior.get(field)}
+            values = set()
+            for prior in candidates:
+                if not prior.get(field):
+                    continue
+                value = prior[field]
+                if field == "anonymous_consumer_names":
+                    validated = sv._anonymous_consumer_rules(value)
+                    heads = {rule["ordinal"]: rule.get("source_head", "example") for rule in value}
+                    reducible = {rule["ordinal"] for rule in value if rule.get("instance_reducible")}
+                    value = [{"ordinal": ordinal, "target_name": sv.anonymous_consumer_name(target, ordinal),
+                              **({"source_head": heads[ordinal]} if heads[ordinal] != "example" else {}),
+                              **({"instance_reducible": True} if ordinal in reducible else {})}
+                             for ordinal, _ in validated]
+                values.add(json.dumps(value, sort_keys=True))
             if len(values) > 1:
                 raise ExportError("Conflicting inherited " + field + " in " + key)
             if values:
                 row[field] = json.loads(next(iter(values)))
-        work = sv.rewrite_proof_bodies(raw.decode(), row.get("proof_body_rewrites"))
+        work = sv.rebind_signal_memory_defaults(raw.decode(), row.get("signal_memory_default_rebindings"))
+        work = sv.rewrite_proof_bodies(work, row.get("proof_body_rewrites"))
         work = sv.rewrite_noncomputable_markers(work, row.get("noncomputable_marker_rewrites"))
         resource_rules, digest_rules = [], []
         for resource in source["resources"]:
@@ -899,11 +928,16 @@ class Planner:
         text, audit = adapt_observer(text, imports, target)
         row.update(audit)
         text = sv.name_local_instances(text, row.get("local_instance_names"))
+        text = sv.name_anonymous_consumers(text, row.get("anonymous_consumer_names"))
         text = sv.suggestion_index_postlude(text, row.get("suggestion_name_exclusions"))
         view = sv.suggestion_index_postlude(
-            sv.rewrite_noncomputable_markers(
-                sv.rewrite_proof_bodies(raw.decode(), row.get("proof_body_rewrites")),
-                row.get("noncomputable_marker_rewrites")),
+            sv.name_anonymous_consumers(
+                sv.rewrite_noncomputable_markers(
+                    sv.rewrite_proof_bodies(
+                        sv.rebind_signal_memory_defaults(raw.decode(), row.get("signal_memory_default_rebindings")),
+                        row.get("proof_body_rewrites")),
+                    row.get("noncomputable_marker_rewrites")),
+                row.get("anonymous_consumer_names")),
             row.get("suggestion_name_exclusions")).encode()
         encoded = text.encode()
         for rule in digest_rules:

@@ -1,0 +1,22 @@
+runtime/Homework-runtime/audit-tmp/cp1029093-independent-clean/RejectUnconditionalWindow.lean:6:147: error: Type mismatch
+  ReceiptWindowCompletion.every_original_compliant_adaptive_callback_completes_before_the_source_deadline rival
+has type
+  ((ReceiptWindowSource.actual rival).inputs.all fun input => input.within) = true →
+    (ReceiptWindowSource.actual rival).status = LocalWindowRun.Status.jointComplete ∧
+      List.length (ReceiptWindowSource.actual rival).state.past = ReceiptWindowSource.horizon ∧
+        InterferenceValidity.Goal (ReceiptDrivenSource.model RequestResponseSource.Mode.normal)
+          ReceiptWindowSource.initial ReceiptDrivenSource.vocabulary
+          (ReceiptDrivenSource.encoding RequestResponseSource.Mode.normal)
+          (ReceiptDrivenSource.law RequestResponseSource.Mode.normal) (ReceiptWindowSource.actual rival).state
+but is expected to have type
+  (ReceiptWindowSource.actual rival).status = LocalWindowRun.Status.jointComplete
+runtime/Homework-runtime/audit-tmp/cp1029093-independent-clean/RejectUnconditionalWindow.lean:7:272: error: Type mismatch
+  LocalWindowRun.Status.jointComplete
+has type
+  LocalWindowRun.Status
+of sort `Type` but is expected to have type
+  InterferenceValidity.Goal (ReceiptDrivenSource.model RequestResponseSource.Mode.normal) ReceiptWindowSource.initial
+    ReceiptDrivenSource.vocabulary (ReceiptDrivenSource.encoding RequestResponseSource.Mode.normal)
+    (ReceiptDrivenSource.law RequestResponseSource.Mode.normal)
+    (LocalWindowRun.audit (ReceiptDrivenSource.model RequestResponseSource.Mode.normal) [] [])
+of sort `Prop`

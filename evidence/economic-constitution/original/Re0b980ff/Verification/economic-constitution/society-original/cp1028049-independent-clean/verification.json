@@ -1,0 +1,104 @@
+{
+  "schema": "society-local-claim-gate/v1",
+  "exit": 0,
+  "withdrawal_inquiry_receipt_sha256": "b2092cd96c052a25946142aedd754f03c48e6d2ce0648c25b8396c220bae0a92",
+  "retained_receipts": 34,
+  "checks": [
+    {
+      "module": "SaturationMonoid.ProcessGame.Society.PublicFunction.Protocol.SymbolicAuthentication.CausalClaim",
+      "exit": 0,
+      "seconds": 11.6,
+      "compiler_flags": [
+        "--trust=0",
+        "-j1",
+        "-M12000",
+        "-DElab.async=false",
+        "-DwarningAsError=true"
+      ],
+      "source_sha256": "87931dd39e0dbb0ff94de79f6b531c4d6752e2f9a486fd225843dc20f56402c2",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "setup_sha256": "1e4c55957add148e08812ee21c92270abc586f57dc767b9de17fde590778cd59",
+      "artifact_sha256": "7975617810647852a75252aa98aa53a7eb33d01bfb7336f35eb6943f9d13a286"
+    },
+    {
+      "module": "SaturationMonoid.ProcessGame.Society.PublicFunction.Protocol.SymbolicAuthentication.LocalClaimGate",
+      "exit": 0,
+      "seconds": 8.79,
+      "compiler_flags": [
+        "--trust=0",
+        "-j1",
+        "-M12000",
+        "-DElab.async=false",
+        "-DwarningAsError=true"
+      ],
+      "source_sha256": "21593fa9ce56a485cb4b6c0c7306c0c5dbf5fe632d4d7009a2a0c5afa7c8518a",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "setup_sha256": "a19efd73d7fcfedbd3f6a09276a1ad9d46442e1fb1fc439e0245847a377d3400",
+      "artifact_sha256": "2ec19a943cd643302df896e8bd6eb276a2721a1c4d2ec5bc0b8da2e62ce3b940"
+    },
+    {
+      "module": "SaturationMonoid.ProcessGame.Society.PublicFunction.Protocol.SymbolicAuthentication.LocalClaimSource",
+      "exit": 0,
+      "seconds": 6.94,
+      "compiler_flags": [
+        "--trust=0",
+        "-j1",
+        "-M12000",
+        "-DElab.async=false",
+        "-DwarningAsError=true"
+      ],
+      "source_sha256": "6c5d66afcaa9c809f57dab7daf0bd65d0a15644b0d7a49ebd4234b74c0695194",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "setup_sha256": "113819218dfd59d5dd7302d3bc9adc53711c52fa5108fc98c18897411ceeb0c5",
+      "artifact_sha256": "929076da6dac0394f2d040e9aca5ec543c9d0da47e399146e0a060e3b6e216f4"
+    },
+    {
+      "module": "SaturationMonoid.ProcessGame.Society.PublicFunction.Protocol.SymbolicAuthentication.LocalClaimControls",
+      "exit": 0,
+      "seconds": 9.76,
+      "compiler_flags": [
+        "--trust=0",
+        "-j1",
+        "-M12000",
+        "-DElab.async=false",
+        "-DwarningAsError=true"
+      ],
+      "source_sha256": "ff5d9559c3f6bfd9b9fbe8d3761d466d83c06b1b17e98a2e914ec4546a6337d2",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "setup_sha256": "33f3d917939a4777db56a6747555c931a43e6c4e3ece717519d89785eac0d2a3",
+      "artifact_sha256": "e5f9ec53221bdb80819bf5234078f635c61aa2512d5e1687ffd14b36d411aebf"
+    },
+    {
+      "module": "SaturationMonoid.ProcessGame.Society.PublicFunction.Protocol.SymbolicAuthentication.LocalClaimRefusal",
+      "exit": 0,
+      "seconds": 7.33,
+      "compiler_flags": [
+        "--trust=0",
+        "-j1",
+        "-M12000",
+        "-DElab.async=false",
+        "-DwarningAsError=true"
+      ],
+      "source_sha256": "c310b1c361ca00c46f637dd3c69f7eef82e702ab59dde915fc00f101a1a9e31f",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "setup_sha256": "d4831eca4b555e0bbb020ac1e22be194cf4a91ac72a5fa20288f9858cd5f9588",
+      "artifact_sha256": "0b8b6d074128d7374cc25c0e71c99a5e52bcf2e541ea9ba403d85a5bc44529ab"
+    },
+    {
+      "module": "SocietyLocalClaimGateKernel",
+      "exit": 0,
+      "seconds": 45.46,
+      "compiler_flags": [
+        "--trust=0",
+        "-j1",
+        "-M12000",
+        "-DElab.async=false",
+        "-DwarningAsError=true"
+      ],
+      "source_sha256": "35e5cb3c551305b6092f1dcabef4d5f75f233515ddab90c829d480d2379bd9fd",
+      "log_sha256": "66481f49d3e40ef1fc6e8e82ce0803494cabd725544522943486374e0b768f9d",
+      "setup_sha256": "5004e1098ccb1976068ed82dcc85c0f0b9e7249589857a822c3ae7a9d72ba2d3"
+    }
+  ],
+  "kernel": "KERNEL REPLAY PASS: roots=237, closure=10261, private=914, axioms=[Quot.sound, Classical.choice, propext]"
+}

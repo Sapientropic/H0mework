@@ -704,6 +704,185 @@ def name_local_instances(text: str, rules, *, reverse: bool = False) -> str:
     return text
 
 
+def anonymous_consumer_name(module: str, ordinal: int) -> str:
+    if (not isinstance(module, str) or not MODULE.fullmatch(module) or not module.startswith("H0mework.")
+            or type(ordinal) is not int or ordinal < 1):
+        raise ViewError("Anonymous consumer needs an exact module and positive ordinal")
+    return f"H0mework.OriginalConsumerChecks.{module.removeprefix('H0mework.')}.case{ordinal:03d}"
+
+
+def _anonymous_consumer_rules(rules):
+    if not isinstance(rules, list):
+        raise ViewError("Anonymous consumer names must be a list")
+    result, names, modules = {}, set(), set()
+    prefix = "H0mework.OriginalConsumerChecks."
+    for rule in rules:
+        if (not isinstance(rule, dict) or not {"ordinal", "target_name"} <= set(rule)
+                or set(rule) - {"ordinal", "target_name", "source_head", "instance_reducible"}):
+            raise ViewError("Anonymous consumers need ordinal and target_name")
+        if "instance_reducible" in rule and rule["instance_reducible"] is not True:
+            raise ViewError("Anonymous consumer instance_reducible must be explicitly true")
+        head = rule.get("source_head", "example")
+        if not isinstance(head, str) or not re.fullmatch(r"(?:noncomputable\s+)?example", head):
+            raise ViewError("Anonymous consumer source_head must be its exact example command head")
+        ordinal, name = rule["ordinal"], rule["target_name"]
+        if not isinstance(name, str) or not name.startswith(prefix):
+            raise ViewError("Anonymous consumer name is outside the observation namespace")
+        module, _, _ = name[len(prefix):].rpartition(".")
+        if name != anonymous_consumer_name("H0mework." + module, ordinal):
+            raise ViewError("Anonymous consumer name differs from its module and ordinal")
+        if ordinal in result or name in names:
+            raise ViewError("Anonymous consumer ordinals and names must be unique")
+        result[ordinal] = name
+        names.add(name)
+        modules.add(module)
+    if set(result) != set(range(1, len(result) + 1)) or len(modules) > 1:
+        raise ViewError("Anonymous consumers need one module and consecutive ordinals")
+    return sorted(result.items())
+
+
+def _anonymous_command_positions(masked: str, pattern):
+    matches, stack, cursor = [], [], 0
+    closing = {")": "(", "]": "[", "}": "{", "⦄": "⦃"}
+    for match in pattern.finditer(masked):
+        for char in masked[cursor:match.start()]:
+            if char in "([{⦃":
+                stack.append(char)
+            elif char in closing and stack and stack[-1] == closing[char]:
+                stack.pop()
+        cursor = match.end()
+        line = masked[masked.rfind("\n", 0, match.start()) + 1:match.start()]
+        if stack or line.strip():
+            raise ViewError("Anonymous consumer token is not a standalone declaration command")
+        matches.append(match)
+    return matches
+
+
+def _consumer_declarations(masked: str):
+    namespace, scopes, names = [], [], []
+    identifier = r"[A-Za-z_][A-Za-z0-9_']*(?:\.[A-Za-z_][A-Za-z0-9_']*)*"
+    commands = re.compile(
+        r"(?m)^[ \t]*(?:@\[[^\n]*\][ \t]*)*(?:(?:noncomputable|private|protected|unsafe|partial)[ \t]+)*"
+        r"(?:(?P<scope>namespace|section|end)\b(?:[ \t]+(?P<scope_name>" + identifier + r"))?"
+        r"|(?:def|abbrev|theorem|lemma|opaque|axiom|structure|class|inductive|instance)[ \t]+(?P<name>" + identifier + r"))")
+    for command in commands.finditer(masked):
+        scope, name = command["scope"], command["scope_name"]
+        if scope in {"namespace", "section"}:
+            scopes.append(namespace[:])
+            if scope == "namespace":
+                if name is None:
+                    raise ViewError("Anonymous consumer collision check needs an exact namespace")
+                namespace = name[7:].split(".") if name.startswith("_root_.") else namespace + name.split(".")
+        elif scope == "end":
+            if scopes:
+                namespace = scopes.pop()
+        else:
+            name = command["name"]
+            names.append(name[7:] if name.startswith("_root_.") else ".".join(namespace + name.split(".")))
+    return names
+
+
+def name_anonymous_consumers(text: str, rules, *, reverse: bool = False) -> str:
+    """Name all original example commands for observation; retain type/value bytes."""
+    if rules is None:
+        return text
+    registered = _anonymous_consumer_rules(rules)
+    if not reverse and any(name.split('.').count('H0mework') != 1 for _,name in registered):
+        raise ViewError("Anonymous consumer observation name repeats its root namespace")
+    heads = {rule["ordinal"]: rule.get("source_head", "example") for rule in rules}
+    public_heads = {rule["ordinal"]: ("@[instance_reducible] " if rule.get("instance_reducible") else "")
+                    + "noncomputable def _root_." + rule["target_name"] for rule in rules}
+    masked = mask_comments_and_strings(text)
+    examples = _anonymous_command_positions(masked, re.compile(r"(?<![\w'.`])(?:noncomputable\s+)?example(?![\w'.!?])"))
+    if reverse:
+        if examples:
+            raise ViewError("Named anonymous consumers contain an unconverted example")
+        declared = _consumer_declarations(masked)
+        if any(declared.count(name) != 1 for _, name in registered):
+            raise ViewError("Named anonymous consumer collides with another declaration")
+        matches = []
+        for ordinal, name in registered:
+            head = public_heads[ordinal]
+            found = _anonymous_command_positions(masked, re.compile(re.escape(head) + r"(?![\w'.!?])"))
+            if len(found) != 1:
+                raise ViewError("Named anonymous consumer is absent or duplicated")
+            matches.append((found[0].start(), found[0].end(), ordinal))
+        if [n for _, _, n in sorted(matches)] != list(range(1, len(registered) + 1)):
+            raise ViewError("Named anonymous consumers differ from their source ordinals")
+        edits = [(begin, end, heads[ordinal]) for begin, end, ordinal in matches]
+    else:
+        if len(examples) != len(registered):
+            raise ViewError("Anonymous consumer names must cover every real example command")
+        if any(text[match.start():match.end()] != heads[ordinal]
+               for match, (ordinal, _) in zip(examples, registered)):
+            raise ViewError("Anonymous consumer source_head differs from its real command token")
+        declared = set(_consumer_declarations(masked))
+        for _, name in registered:
+            if name in declared or re.search(r"(?<![\w'.])(?:_root_\.)?" + re.escape(name) + r"(?![\w'.!?])", masked):
+                raise ViewError("Anonymous consumer name collides with existing source code")
+        edits = [(match.start(), match.end(), public_heads[ordinal])
+                 for match, (ordinal, _) in zip(examples, registered)]
+    for begin, end, replacement in sorted(edits, reverse=True):
+        text = text[:begin] + replacement + text[end:]
+    return text
+
+
+def rebind_signal_memory_defaults(text: str, rules, *, reverse: bool = False) -> str:
+    """Restate Code's four defaults when its inherited signal domain grows 1→2."""
+    if rules is None:
+        return text
+    if not isinstance(rules, list):
+        raise ViewError("Signal-memory default rebindings must be a list")
+    defaults = ("memoryReady := fun _ => true", "afterSend := fun _ _ old _ => old",
+                "afterDelivery := fun _ _ _ reading => reading", "afterAction := fun _ old _ => old")
+    fields = "(?:memoryReady|afterSend|afterDelivery|afterAction)"
+    name = r"[A-Za-z_][A-Za-z0-9_']*(?:\.[A-Za-z_][A-Za-z0-9_']*)*"
+    code = r"Code[ \t]+Bool(?:[ \t]+Unit){4}"
+    seen_sources, seen_targets, seen_definitions = set(), set(), set()
+    for rule in rules:
+        if not isinstance(rule, dict) or set(rule) != {"source_declaration", "target_declaration"}:
+            raise ViewError("Signal-memory defaults need exact source and target declarations")
+        source, target = rule["source_declaration"], rule["target_declaration"]
+        if not isinstance(source, str) or not isinstance(target, str):
+            raise ViewError("Signal-memory default anchors must be text")
+        declaration = re.fullmatch(
+            r"(?P<head>(?:abbrev|def)[ \t]+(?P<name>" + name + r")[ \t]*:[ \t]*" + code + r"[ \t]*:=[ \t]*\r?\n)"
+            r"[ \t]+\{[ \t]*(?P<base>" + name + r")[ \t]+with[ \t]*\r?\n[\s\S]*\}[ \t]*(?:\r?\n)?", source)
+        if declaration is None:
+            raise ViewError("Signal-memory rebinding must address one explicit Code structure update")
+        if source in seen_sources or target in seen_targets or declaration['name'] in seen_definitions:
+            raise ViewError("Signal-memory default rebindings must be unique")
+        seen_sources.add(source); seen_targets.add(target); seen_definitions.add(declaration['name'])
+        masked_source = mask_comments_and_strings(source)
+        if re.search(r"(?m)^[ \t]*" + fields + r"[ \t]*:=", masked_source):
+            raise ViewError("Signal-memory update already overrides a registered default")
+        signals = list(re.finditer(r"(?m)^(?P<indent>[ \t]+)signals[ \t]*:=[ \t]*2[ \t]*(?P<newline>\r?\n)", source))
+        if len(signals) != 1 or not masked_source[signals[0].start():signals[0].end()].strip().startswith("signals"):
+            raise ViewError("Signal-memory rebinding needs its unique signal-domain update")
+        point = signals[0]
+        inserted = ''.join(point['indent'] + line + point['newline'] for line in defaults)
+        if target != source[:point.end()] + inserted + source[point.end():]:
+            raise ViewError("Signal-memory repair may only restate the four certified default fields")
+        masked = mask_comments_and_strings(text)
+        bases = list(re.finditer(r"(?m)^(?:abbrev|def)[ \t]+" + re.escape(declaration['base'])
+                                 + r"[ \t]*:[ \t]*" + code + r"[ \t]+where[ \t]*\r?\n", masked))
+        if len(bases) != 1:
+            raise ViewError("Signal-memory defaults require the unique original base Code record")
+        tail = masked[bases[0].end():]
+        end = re.search(r"(?m)^(?:def|abbrev|theorem|lemma|instance|end|namespace|section)\b", tail)
+        base_body = tail[:end.start()] if end else tail
+        if (re.search(r"(?m)^[ \t]*" + fields + r"[ \t]*:=", base_body)
+                or len(re.findall(r"(?m)^[ \t]+signals[ \t]*:=[ \t]*1[ \t]*\r?$", base_body)) != 1):
+            raise ViewError("Original base Code must use the unmodified signal-one memory defaults")
+        before, after = (target, source) if reverse else (source, target)
+        matches = _anonymous_command_positions(masked, re.compile(re.escape(declaration['head'])))
+        if len(matches) != 1 or text.count(before) != 1 or not text.startswith(before, matches[0].start()):
+            raise ViewError("Signal-memory declaration anchor is absent, changed or duplicated")
+        start = matches[0].start()
+        text = text[:start] + after + text[start + len(before):]
+    return text
+
+
 def invert_resources(text: str, rewrites) -> str:
     """Map relocated include_str literals back to their original addresses."""
     for rewrite in rewrites or []:
@@ -898,8 +1077,16 @@ def module_views(row: dict, inverse: dict) -> tuple[bytes, bytes]:
     import_tokens(view.decode("utf-8"))
     original = invert_resource_digests(view, row)
     original = suggestion_index_postlude(original.decode("utf-8"), row.get("suggestion_name_exclusions"), reverse=True)
+    anonymous = row.get("anonymous_consumer_names")
+    if anonymous is not None:
+        if any(name not in {anonymous_consumer_name(row["target"], ordinal),
+                            f'H0mework.OriginalConsumerChecks.{row["target"]}.case{ordinal:03d}'}
+               for ordinal, name in _anonymous_consumer_rules(anonymous)):
+            raise ViewError("Anonymous consumer observation prefix differs from its public module owner")
+        original = name_anonymous_consumers(original, anonymous, reverse=True)
     original = rewrite_proof_bodies(original, row.get("proof_body_rewrites"), reverse=True)
-    original = rewrite_noncomputable_markers(original, row.get("noncomputable_marker_rewrites"), reverse=True).encode("utf-8")
+    original = rewrite_noncomputable_markers(original, row.get("noncomputable_marker_rewrites"), reverse=True)
+    original = rebind_signal_memory_defaults(original, row.get("signal_memory_default_rebindings"), reverse=True).encode("utf-8")
     if sha(original) != row["source_sha256"]:
         raise ViewError(f"Reconstructed source digest differs: {row['source_path']}")
     if sha(view) != row.get("view_sha256", row["source_sha256"]):

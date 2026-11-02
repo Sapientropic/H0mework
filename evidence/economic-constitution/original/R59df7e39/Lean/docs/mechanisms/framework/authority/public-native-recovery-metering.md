@@ -1,0 +1,1149 @@
+# 原残尾恢复的实际计量与支出
+
+单轮入口为 `Native.Future.Recovery.Metering.produce receipt tariffPosition`；
+多轮入口为原 `Native.Future.Recovery.produceWorkload tariffPosition receipt`，沿原 `Walk` 执行。
+`receipt` 是原旧词运输的真实 Receipt；费用动作从该实际 source 的 `actions[tariffPosition]?` 取得。
+索引只配置价格身份，不提供付款、恢复成功或目标评估证书。
+
+## 两次预留与实际后继
+
+运行时检查费用由原残头本人签名、同意者均为本人，是本人非负且含正量的外部物料支出，
+并排除原 scope 的 `TaskUse`。非费用动作或越界索引产生 `unpriced`，不改用另一费用。
+
+先把一单位目录构造／计量费用交给原 `Mandate.Replay.compile` 并在同一 source 实际执行。
+成功后才从收费后的真实 current 生成 `Search.repairs`。目录结构自产比较预留量，
+再次实际支出成功后，`Ranked` 才计算并缓存各候选评分，随后比较缓存值。
+所有候选在第二次支出后的同一 current 评估；选中准备合法，且对这个目录最大化原位置消费。
+选中准备与原残尾的实际输出追加到同一 `Machine.Continuation`，并生成自己的实际后继。
+
+`comparisonUnits` 为一单位、目录项数、baseline 原残尾长度与每项
+`3 × preparation.length + residual.length` 之和。
+`every_evaluated_request_visit_is_reserved` 证明 baseline、全部候选的 `requestVisits` 及选择比较数严格小于该预留。
+这里的计量单位是声明的请求解释器检查；目录构造按一项登记服务计价，不是通用 CPU 时间定理。
+
+## 失败与完整原账
+
+构造或比较账单拒绝时，真实合法费用前缀与首拒绝都保留，原任务的 consumed／residual 不变。
+`a_refused_invoice_has_its_exact_actual_financial_or_permission_obstruction` 给出同一实际 item 的失败。
+支付费用不能成为原任务位置的履责信用。恢复执行只追加实际消费的原位置，完整原词分割始终保持。
+
+`Prefix` 保存较早实际事件和 current，生成完整金融账户／出生／档案的 `Coupling.Match`。
+它不要求账单前后的账户相等。`Output` 将同一次结果及完整 native 清单装到自己的根；
+读回、whole-ledger writeback 和 own next 都由同一 `active.tick` 消费。
+
+`reportFrom` 直接对该实际 source 调用原 `Window.evaluate`，保留费用、原损失和恢复成本坐标。
+在 `start ≤ begin.depth` 下，窗口到达实际恢复后继并包含期间全部费用／恢复 ordinal。
+## 双段原请求词与完整选择
+
+`Metering.Quoted.Fees` 分别保存 construction 和 selection 的完整请求词。
+Task 携带原 Quote；`Supported` 在每个实际 cursor 上自行检查两段属于原 code.actions 的有界 words，
+且每个请求是本人签名、本人同意、非 TaskUse 的正量 external 物料支出。
+该检查不是调用者提供的付款或覆盖证书；原词顺序、重复和两段身份都保留。
+
+先实际尝试 construction 一次，成功后从实际收费后 current 生成本词目录。
+`comparisonUnits` 据此生成 selection 单位数，invoice 按整段 selection 词重复后实际尝试。
+第二次成功才计算评分并执行选中准备／原 retry；部分支出、首拒绝及旧原词始终分开记录。
+新 `Quoted.Stage` 缓存结果及真实 endpoint，直接进入原 Walk 的 quoted 递归／停止旧尝试。
+
+`Pricing.workloadQuote` 直连该 producer；`fromWords [] []` 保留旧显式免费 batch。
+旧 unpriced、batch、单 source-position workload 和有类型的 Option 转换保持各自语义。
+原 Task 的 `Preservation.Restoration.pricing` 读取 Quote 两段，原 Service、Repair、Feedback 和 restore 同口消费。
+
+原 Whole.Source 的 recover／readBeginning 共用 Pricing.execute；原 outcome/Tensor 保存同次 Report 与 Funding。
+共同公共表、全部原同一 scoped 对手、完整接受、strict、全池非支配和独立 review 均按同一 Pricing 参数计算。
+selected execute 的 pricing、完整实际报告和资金失败分别认回所选 Tensor；原 recovery 根继续消费整账与自己的 next。
+
+## 原实际输入与比较域
+
+原 `Future.produce` 与 `Machine.Continuation.extend` 接受任意具体有限词，在原 cut 校验合法性、
+在各实际 target cut 生成重放与残尾。逐词运行不依赖 `historyAlphabet`。
+`Recovery.capabilities` 将当期 `old.source.actualExecution oldDepth` 的 submitted word 插入种子词表，
+再统一按原 cut 的 `Mandate.Replay.Legal` 过滤；原登记合法词保留，重复词不增列。
+
+这是 source 自己当期实际事件的读取，无调用者给定 word、Permit、coverage 或恢复终点。
+原 Tensor 的 future Report／Funding 两项与 Task futureComparison 同用这个域；
+每个公共 world 的旧源固定，同一候选 protocol 对全部生成 world／同一实际对手接受检验，
+不按被选目标或隐藏分支挑词。固定 cut 的新实际词覆盖不等于未发射合法词的全称覆盖。
+
+## 已声明旧续行的逐词非擦除
+
+`Machine.Continuation.extend` 从同源 actualExecution 重建已发生 past，再把本次原始词插入
+`source.continuation.drop count` 前。旧尾是显式已声明计划，不是外部异步接收队列。
+`pending_tail` 保完整词序；`every_pending_word_is_actually_emitted_at_its_shifted_own_cut`
+逐词证明它在自己的移动后 source cut 实际发射，不只证明 list membership。
+
+`Cursor.pending` 被 appendActual／emit／charged／attempt／after／replayPreparation 保持，
+`Metering.Prefix.pending` 沿两段 invoice、真实评分终点和重试传递；Walk 的所有成功、停止、
+无价、拒付及 fallback 分支同口保留。Output 把原尾词的实际未来发射与原 facade 的读回、
+whole-ledger writeback 及自己的 next 联合消费，旧 source 先前金融前缀保持。
+
+原 `Machine.withContinuation` 仍显式替换 continuation 并清 feedback；
+`Feedback.Future.Reification` 的共同实际 source 等式继续使用原空尾前提。
+这不把动态 Feedback.Input 保持藏入静态证明；新的在线输入机制须按当时实际帧与预算生成。
+
+## 原实付输出后的在线输入
+
+`Native.Online.Cursor` 只由原反馈 cut 与生成步骤构造。初始 state 来自原 `feedbackState`，
+其 current 由 `feedback_current_is_actual` 认回实际发生；没有 caller 提供的帧、endpoint 或未来输入表。
+`submit` 把 raw 请求写入原 source，用 `observeRaw` 更新 current／history／累计 word，保留通信记忆和反馈预算。
+`poll` 按 source 的 feedbackIndex 调原 `Feedback.advance`，新词也由 Continuation.extend 实际发射；
+`aligned` 保证所有下一决策的物量 current 就是该 source 的真实 next。
+
+`Online.Recovery.execute` 直接调用原 Future.produce 和 Pricing.produceWith。
+`Cursor.recover` 从该 Output 的真实已发射区间重建 history 和 frame.word，不从提案或未来成功表读取；
+事件 past、inbox、sent 与反馈预算保持，材料工作不冒充通信事件。下一 poll 继续原 input.opponent，
+按更新后的 history／past／frame 决定；source count 与 feedbackIndex 分开，包时间戳沿原步核累计。
+
+`Runtime.the_paid_recovery_frame_is_consumed_by_the_same_online_root` 联合消费恢复源认同、
+完整实际 frame、通信记忆、Authority.fullGenerate、原根 readout、whole-ledger writeback 与 own next。
+原 Machine API 无改动；withContinuation 继续显式清反馈，在线续行由其生成游标承担。
+
+## 新在线帧的完整候选与共同对手
+
+`Native.Online.Planning.Source` 直接从已生成cursor.state.remaining和原controlMenu枚举候选。
+共同表的key来自该state的history／past／frame，而非清反馈后的Machine.feedbackState。
+`one_joint_table_preserves_every_forecast_word` 将原Residual全状态等价降到实际逐词相等；
+`one_joint_table_preserves_the_entire_actual_source` 保存整台候选Machine。
+
+`Cursor.install` 从真实已发射past保留前缀，将候选词插在原pending尾前；`realize`
+以同一Residual.run生成下一current、完整记忆、remaining和feedbackIndex，并证明实际源认同forecast。
+`Planning.Tensor` 调用原Window.evaluate，恢复每个原capabilities词时直接调用原Future.produce、
+produceWith pricing、Assessment.reportFrom与Funding.ofWalk，覆盖完整实际窗口，不去掉invoice或重试。
+任意Tensor二元关系的有限共同表检查，都在n≤remaining时等价于每个同一自适应对手的检查。
+
+`Selection.rows` 逐表登记present、每个旧合法词的future及funding行；blocked为每个候选返回具体行及违反证明。
+准入保完整Profile、native admission／due与所有经济轴；Benefit省略档案admitted维度，比较真实合法／完成、
+经济／服务／未偿余额、live责任残差、恢复进度及资金失败。生成的0/1测试向量是此偏序的有限保序表示，
+不是效用加权；向量不劣与Benefit有双向证明。因此terminal档案增加自身不会创造严格红利。
+直接Benefit偏序扫描生成原Selected类型的全池非支配Choice，严格比较与0/1保序向量等价；独立verify重扫全部项；choiceOfVerified重建替换规划者的同一可执行合同。
+
+`Planning.Runtime` 继承选中实际cursor的Online.root，使完整Choice、同源Tensor、实际记忆、
+Authority.fullGenerate、整账与own next由同一发生消费。这里的pricing结算的是恢复搜索；
+新完整选择器自己的运行工作量仍由active卡规定的下一实付producer承担。
+
+## 当前合法来源、真实新输入与付费递归
+
+`Online.boundAt` 将任意已生成 `Authority.Sources` 保持为原Bound。
+`Recovery.ReceiptFrom` 同时携带具名origin／oldDepth及当前在线cursor；`executeFrom`
+先调用原Future.produce检查旧词在原cut合法，再直接调用原produceWith pricing。
+`executeCurrent` 的原cut是cursor.depth；原Authority.currentAt已对应Machine的下一before，不能另加一。
+
+`Cursor.assimilate` 从原Output的实际raw区间逐词恢复history、past及frame.word，
+完整原生状态直接来自同一输出源；事件、邮箱、地址、remaining与feedbackIndex保持。
+旧`recover`及历史seed接口由该构造特化，原调用方语义保留。
+
+`Planning.Paid.attempt before proposal` 在before源验证原请求，先生成before.poll作为实际新目标，
+再调用原收费／恢复内核；Funding成功且residual为空才在receipt.next执行原Selection.compile。
+selected用原Cursor.realize实际发射，blocked保post-invoice终点；非法原请求仍保poll的新观察，
+拒付及未恢复残尾保完整实际前缀。下一Controller只读取该endpoint生成下一Proposal，Trace按此递归。
+原Runtime从Trace自身生成endpoint，读取start.depth至该终点的完整Window、native整账及own next，
+未输入独立endpoint或未来状态证书。
+
+每轮完整选择继承原Selection的bounded-horizon全对手比较。整段Window覆盖真实输入、invoice、
+修复和选择执行；它是整段评价读出，跨轮全政策不劣仍须另行生成。恢复的工作量收费不冒充完整
+Selection运行时间／构造／核验／公告工作量。预算为零时poll按原语义不生成新的对手输入。
+
+## 原恢复内部的输入交错与搜索失效
+
+`Online.Recovery.Interleaved.Cursor` 将原Recovery.Cursor与Online.Cursor指向同一实际source／count，
+actual before相等由Online.aligned导出，不输入独立endpoint。begin直接消费原Future.Receipt并在两侧
+发射同一plan.output；poll、charge、repair分别调用原appendActual、Metering.charged与replayPreparation。
+任何收费／输入保原consumed与residual，只有原retry的split可增加已执行位置。
+
+`Phase` 以实际游标为索引：constructed来自原quote及construction-paid证明，compared来自同次构造费与
+comparison-paid证明；目录和单位由原Search.repairs／comparisonUnits生成。State与Change封闭构造。
+State.receive使用原真实poll并回ready，保全部已付历史、未执行原词与pending，同时丢弃旧目录。
+因此新输入改变物量后，旧目录不能被当作新cut的完整覆盖；下一advance重新生成并支付。
+修复只在compared阶段调用原choose及replayPreparation，实际current、原词消费与本地记忆共同推进。
+
+`Failure` 保无登记tariff或实际拒付原cut、invoice与succeeded=false；拒付可回读原raw first-invalid-item。
+Trace中的失败不因后续输入而抹掉，Prefix逐步合成保所有历史金融账户及原pending；fuel为有限观察长度，
+不冒充全未来终止证明。Controller的下一动作读取实际State，输入仍只经原driver与剩余预算生成。
+
+`Planning.Paid.Interleaved.invoke` 在before原cut验证合法词，初始poll后建立共同游标并运行Trace；
+review仅在原residual为空后调用原完整Selection。Runtime从同一Protocol生成终点，读取before.depth
+至终点的完整Window及native整账，原Online根、whole-ledger与own next共同消费。
+非法原请求的Refusal同样携带精确before.poll及旧cut非法性，其观察可直接由原Online根消费。
+该整段成本读出不替代跨轨迹全政策Pareto证明；恢复搜索计量不替代完整Selection自身计量。
+
+## 选择执行迹与控制工作结算
+
+`Online.Planning.Selection.Execution`从同一cursor自产原terms／rows／tables。collect逐项运行完整
+NoWorse准入；scan执行当前候选与previous的正反红利比较，分别记录替换及不替换；输出仍是原
+Selection.Choice，保原reference不劣、存在严格改进则实际选中改进及全池非支配证明。
+这是独立执行算法，不用旧compile结果补写工作计数。
+
+`Check`记录实际短路逻辑。Operation明确区分native Query与branch／negate／retain／select四种
+控制转移。Query直接命名原admission行、presentBenefit、futureBenefit、funding及其实际答案；
+这些Query内部仍须展开计量，不能把一次完整评价当成一条CPU指令。原native full责任及typed Funding
+保留于各自Query，不用经济标量代替。verify独立重扫原全池，判定与原Selection.verify完全一致；
+checkedWork把该独立核验也纳入选中工作，blocked分支则生成每个候选的原精确失败行并纳入报错工作。
+工作迹长度严格等于显式控制数与未结算原生Query数之和，私有Compilation防止调用者注入空迹。
+
+`Settlement.feeAt`只从实际source.actions的登记位置取非任务、本人签署且只由本人同意的正物量
+external使用。invoice由checkedWork的实际控制数复制该原生请求，Mandate.Replay在同一当前状态执行，
+Bill.endpoint发射其真实output。成功时全部invoice为原实际事件；部分拒付保实际已扣前缀，缺登记
+或错误承担者不生成扣料。Settlement私有构造绑定原compile及原bill；nativePending保所有Query。
+
+这是先生成选择／核验工作，再结算显式控制转移；不声称完整计算预付。付款后形成新的实际source，
+冻结旧Choice保持在原cursor，不自动搬作新source的非支配结论。Runtime同时保两者，从真实账单终点
+读取整个费用Window、native整账、工作迹及未结算Query；原Online根／whole-ledger／own next共同消费。
+目录分配、Query内部评价、存储与公告及付款后全责任重规划由active约束下的下一个producer生成。
+
+## 原生红利的责任计数与经济比较执行
+
+`Selection.NativeBenefit.present`直接实现原evaluationBenefit：旧legal／complete蕴涵新值，
+新due库存Subperm旧due，逐个原Window.axes比较新旧ℚ。`future`展开两个Option的实际分支；
+两边有Report时先比较consumed，再运行同一present。输出的Decidable证明原谓词，Bool与原判定完全一致。
+
+Subperm不调用整段目标判定。`count`逐元素运行实际key equality，命中才递增并记录increment；
+`countLe`读取这两次生成计数并执行Nat≤；`subperm`由subperm_ext_iff把有限计数扫描接回原多重集关系。
+每个保留／失败的key和每个执行的数值比较均入迹；短路分支保实际执行前缀。Check／Counted私有构造
+防止外部注入答案、删工作或改计数。键取原Lawful.inventory，经济坐标取同一cursor的原Window.axes。
+
+原Execution.atom的presentBenefit／futureBenefit不再使用整段inferInstanceAs：实际调用此解释器，
+每个叶通过Operation.comparison进入原checkedWork。原controlSteps保兼容名称，现计外层控制转移和
+这些显式语义比较指令；原Settlement发射相应登记物量invoice，原Runtime读取实际完整费用区间，
+原Choice、独立verify、whole-ledger和own next继续保持。admission／funding未静默换路。
+
+这些工作数是声明的语义指令数，不是任意抽象DecidableEq或ℚ实例的位运算／墙钟总量。
+原native Query标记没有删除，继续保守承载快照／恢复生成及内部未展开计算；本次已付比较不能
+被称为整个native Query已结清。该后付入口继续保留；执行前物量额度与真实付款后重选由下一节Prepaid直接生成。
+
+## 显式指令源生上界与执行前物量额度
+
+NativeBenefit.Budget只取数据形状：count最多3L个声明指令，countLe最多3(L+R)+1，
+subperm最多L·(3(L+R)+2)，present最多9+subpermBudget+2A，future至多presentBudget+3。
+这些界不输入判定答案。原Execution把同样的短路、filter／scan、独立verify及blocked全项reject
+逐层组合；benefitCeiling遍历原全部term对和共同对手表，数据取原tensor／恢复快照而非接受池。
+workBudget不调用compile／verify／NoWorse／Benefit判定。其完整覆盖定理包含独立核验和所有精确拒绝报告，
+controlSteps始终排除native Query标记，未给整枚原生调用虚构单位成本。
+
+Prepaid.units是初始cursor的workBudget。feeAt仍从同一source登记位置取本人、非任务、非负且有正物量的
+external单位；scaled按源生units缩放其bundle，payment由原Mandate.Replay生成单枚实际资源请求。
+只有真实succeeded=true才建立已付规划切点；reindex直接保reference.val，controls菜单与feedback剩余
+预算在原submit下保持，因此不搬运旧Choice、tensor或endpoint。新切点重新计算required，covered后
+才运行该切点的原compile／verify；所有显式工作由already-paid bound覆盖。费用与选中计划均为自己的实际源。
+
+Result.unpriced不发付款／选择；refused保真实失败付款事件而不生成Choice；shortfall在付款后原生
+capabilities扩大等情形返回exact required-units，保已付source并停止编译；ready即便公共任务不完整，
+也由原编译返回逐候选精确失败行。Protocol私有构造且result=produce，不能绕过付款与覆盖判断。
+
+Pending.setup／quote和原native Query按自己的cursor保留；bound的数据获取和报价本身未被说成已付款。
+抽象Eq／数值原语内部、快照／恢复生成、admission／Funding其余逻辑、存储和公告同样未据此结清。
+额度通过external实际耗用，未使用的上界差额不隐式退款。Runtime把indexed work／Pending、付款切点、
+选中执行终点以及从原初始cut到终点的完整Window／native整账交给原Online根、whole-ledger和own next。
+这关闭声明指令的预付和新源重选，不把后切点Choice提升为原初始cut的整链Pareto。
+
+## 各候选自身付款的初始cut整链比较
+
+Prepaid.Whole.prepare以原cursor／pricing／n／reference／actor／position调用原invoke，ready分支自产私有Scope，保注册fee、实际payment.succeeded、required≤units及原封印header。Intent保未付规划费的原reference与该fee实际付款后所有源生Term；Scope尚固定一个登记invoice。target保每个Intent自己的Machine，extent分别为原span和付款一步加n，count随实际source推进。tensor从原cursor.depth读取各自Window，restoration也以原初始model／depth及该目标的实际count调用Future.produce、produceWith、reportFrom及Funding.ofWalk。keep精确等于原Planning.tensor。
+
+Residual.Joint从旧帧与实际付款后帧自产查询keys，去重后生成全响应表；同一key共享同一响应。限制任意自适应Opponent到这张联合表，在每侧horizon≤remaining时精确保全全部候选的source及完整Tensor。有限表比较因此等价于所有同一自适应对手比较，不把两侧对手独立选择，也不把不同source历史强行认同。
+
+Whole.Decision使用原Planning.accepts／benefit，联合完整Profile／Manifest、Window经济轴、固定capabilities完整恢复及Funding。以实际benefit预序的有限0／1保序嵌入调用Distributed.choose；完整候选池、精确拒绝row、无完整责任支配者、存在严格预序改进则选中严格改进、全池独立verify及choiceOfVerified均保原关系。0／1是预序编码，不是各经济量加权求和。Whole.execute安装所选自己的source；actual_installation_is_the_compared_full_initial_cut_window证明实际同区间Window就是该所选Tensor的present。
+
+Whole.Runtime.invoke封印prepare与完整重选结果；失败保持原协议的实际endpoint，比较无可接受候选保初始cursor，选中时取该Intent自己的实际endpoint。原Online.Runtime.root增加同源投影coface，保ProgrammeLiving原根；Snapshot消费封印结果、全部Obligation、同初始cut完整Window、native处置、同tick projection与whole-ledger及自己的next。Obligation保initialPreparation、原全部Pending以及wholeComparison的实际Scope；新外层比较、报价及opaque内部计算继续是待内生计费的具体计算对象。
+
+## 有序原生费用前缀与执行前实付预留
+
+原Online.Source.Cursor.submitPrefix生成多事件实际续行，空词精确保原cursor。Whole.Prefix.Entry以.action／.bill共用ordered Journal；第i个entry.before等同前i个实际Path.output构成的词前缀。every_entry_is_its_actual_source_word和each_entry_has_its_own_actual_before认回每个原生提交与真实前态。Bill保持原登记fee、units与精确Mandate.Replay支付Path；Journal.bills是有序账单投影，Journal.append bill保持原调用，实际words／point始终来自全部entries。
+
+Prefix.Own从原Search.menu与code.actionLimit生成全部有界本人行动词；筛选要求signer=actor且每个consent均为actor。动态许可／库存由真实before上的原Replay.compile判定，不由菜单预判。每个Own保requested、registered及精确execution；原词严格分为consumed与residual，output保重建的revision target及实际首个拒绝。个人控制沿原Replay定理传给实际output。coverage theorem覆盖每个符合该静态授权的原code.actions有界词，空词也保留。
+
+Whole.Scope保原paidPoint，以continuation生成实际comparisonPoint；extendOwn与extend Bill均保原header、paidWord及其原生成付款身份。Intent保持keep／paid两构造；paid接Continuation.control或Continuation.own，原Term以control嵌入；具体旧consumer的paid参数显式标注.control，原检查保持。comparisonTerm／originalTerm保持，continuation逐实际Own输出重索引全部控制。原reference与每个付费控制候选仍从原cursor.depth评价完整Window，行动与费用不会因移动cut消失。
+
+Reservation.propose生成probe与实际Bill，真实付款后再检needed≤units；只有paid且覆盖账后workBudget才运行原Work.compileFunded和独立verify，并缓存同一次checkedWork。原全控制池只改变扫描顺序；the_whole_comparison_and_independent_verifier_fit_the_already_paid_invoice证明完整显式controlSteps已由实际物量覆盖。keep／blocked保实际comparisonPoint；若选keep，定理排除每个paid控制候选的原NoWorse。已发生费用的回退端点不自动获得原cut不劣证明。
+
+Reservation.resumeFrom在给定源生Scope上生成同一套报价／实付／覆盖／完整比较；Protocol.origin的Some保该实际来源，原invoke保持None入口。私有构造和generated字段把结果固定在这同一次factory，不接收已完成Choice、服务成功、coverage或外部目标端点。
+
+Production.prepare从原输入生成原失败header或Scope与本方行动候选族。每个Candidate先以同一个原paidPoint各自生成一条互斥行动前缀，再由Candidate.run复用原resume，支付后完整比较控制策略；这些互斥前缀没有被串成一条实际历史。真实消费已从零服务库存和静默对手生成生产与交付，并保反序词的实际首拒绝／残尾。
+
+原Reservation.Runtime沿固定Online.Runtime.root／ProgrammeLiving.livingRoot同源coface消费完整准备、行动／账单前缀、报价、实付、原语Query、完整Window／whole ledger／own next。Protocol.origin与.prefix Scope保完整Own源操作数及Replay.Path；Own枚举／筛选／Replay内部费用和原quote／预算／rootReadout仍是待合流责任，未冒称已计全CPU。Source.withOwnFamily显式开启完整continuations：全部直接control，加上ownOptions×全部control。ownOptions仅来自该actual before上的原Prefix.ownCandidates，包含空词、成功与首拒绝输出；every_registered_own_control_pair_is_generated证明完整生成。frames只保原cursor、共同comparisonPoint及每个Own点；every_continuation_frame_is_generated与原Joint全run定理保证同一个响应函数下整个初始cut Tensor不变。
+
+Decision.NoWorse同时要求可部署与原全部责任关系。默认ownFamily=false保持旧语义；开启后keep的Deployable为False，它仍在benefit测试域作为原未付费reference，但不能成为实际回滚。deployment是显式原生行，原Work.atom记录其分支工作；经济／未来／Funding仍逐项执行原Materialization与NativeAdmission，未改成opaque unit oracle。全族Work.compileFunded／独立verify及形状预算沿原intents扩展；原Reservation在模式开启后报价，实际付款且账后覆盖才释放比较。
+
+Production.selectFamily固定顺序为原header→共同全族计算费→选中续行（直接control或Own×control）。Ready.an_open_family_selection_is_an_actual_paid_full_protocol排除keep并认回selected的原cut完整Window；blocked保已付共同前缀及所有候选的具体拒绝。旧Candidate.run仍支持Own→其账单→原control比较；两种事件顺序不被认成同一实际历史。扩展账单族按下述原生分支机制合流。
+
+Prefix.Settlement将Own与原quote输出封在同一源：quote before严格为own.before++[own.execution.output]，每张Bill仍含原注册及精确Replay.Path；appendTo从该Own的真实before追加.action再追加.bill，缺报价时只保Own，绝不把不同候选账单串联。appendTo_words认回完整branch words，各原entry实际提交／前态定理沿原Journal消费。
+
+Scope.invoiceQuotes为raw(word,units)表，不是付款／coverage凭证。Source.invoiceOptions只给实际生成且匹配的Own重调settle；InvoiceOption的私有来源保实际before，every_quoted_own_pair_is_generated保证不先丢局部非winner。Continuation.invoiced携带该源，invoiceFrame进入同一Joint表，原完整Window仍从原cursor.depth评价；paid Bool为false的invoiced方案不部署，quoted Option仍区分未定价与Replay拒付。旧direct与unbilled Own始终保留。
+
+Production.invoiceQuotations在原Candidate.source上只调用Reservation.propose获取数量，None时用原Work.workBudget作raw数量fallback，不把提案当成功付款。selectInvoicedFamily在共同比较预付后的实际Own点重新报价支付；先前提案Bill和新Bill不是同一实际发生。原Reservation对扩大后的整个Work池报价、付款后复验与覆盖，再执行原全族比较／独立verify。有报价分支保真实Bill／Replay支付路径（包括拒付），不自动证明或执行另一轮local Work；其独立分支Bill不覆盖另一轮local Work；共同全族工作由下述同源回执复用。
+
+
+
+### 同源已付核验回执与实际放行
+
+Work.Receipt以精确Compilation为index，私有review字段必须等于原inspect；selected路径保存原verify产生的Check，blocked路径保存每个原Rejected的完整工作与责任拒绝。certify从该编译结果生成回执，不接受调用者Choice、成功位或端点。Receipt.comparisonWork精确认回原checkedWork，原API保持。
+
+Reservation.resumeFrom在原paid／covered守卫之后只执行一次compileFunded、一次certify，并把已生成comparisonWork保存为Ready.work。Ready.endpoint只消费Receipt.authorized：它读取缓存Check.value，未授权／blocked保实际费用前缀，授权paid交原Whole.execute，keep保原已付前缀。Receipt.work在同一轨迹末尾保唯一.branch review.value；原workBudget增加该一步的预留，checkedWork+1的源生界在原实际付款前生成，完整receipt工作由同一Ticket覆盖。不存在分支读面再跑verify或再收费的步骤。
+
+原Reservation.Runtime.computation的Ready带同一回执，native obligations从receipt.work读取；the_original_computation_face_consumes_the_same_paid_cached_review同时认回实际endpoint、缓存核验、已付工作界、原facade occurrence、whole-ledger及own next。selected paid源仍由原完整Window定理认回其比较present。闭族选中keep与开族blocked的实跑保留真实已付前缀，不是付费计划改善；分支Bill自己的支付事实与共享工作回执不混同。此语义轨迹不代表所有CPU／内存或异步信息已计量。
+
+
+### 公开回执工作头与原生行动接线
+
+Whole.Observation.prepare缓存原Rolling.Receipt.rule；其views由原Transcript.views从公开法、发布前缀和预算生成。Prepared私有构造保持该来源，不接收实际Cursor、实际信号、选中政策或coverage。requested只按site与当前frame.inbox读取缓存work；任意两个原生cursor（允许不同driver）在该信号相同时请求相同。原rule的event另保readout，raw工作口不冒充执行整个event／通信／时间／内存策略。
+
+Prefix.issue先判原ownWords登记性；own_words_are_exactly_bounded_personal_requests将其精确认回原有界菜单和本人署名。准入后直接在pointFor before的原current调用Mandate.Replay.compile，不以执行成功为输入。Production.fromRequested从原paidPoint生成该同字Candidate，避免先依据隐藏资源状态选行动。Observation.receive的成功准入等价于该已生成有界词的Personal；执行失败仍以原Path的consumed／residual及实际output保存。
+
+Observation.run将该Candidate交原Candidate.run；every_issued_head_reaches_the_original_paid_consumer同时认回同一原生actualExecution提交、完整请求残尾、Protocol.origin、实际learning端点、原facade computation coface、whole-ledger及own next。此接线保存原付费完整比较，不将局部请求一致性推广为完整Native Choice的观察一致性；原生兼容域还须保手动raw Journal／continuation并自产实际成员关系。
+
+
+### 带真实raw后缀的公开原生域
+
+Observation.Domain.commands以原本人有界工作菜单、显式units账单菜单和poll生成命令语法；programs穷举≤horizon的全部词。每步Receipt私有构造并绑定evaluate：work保原Mandate.Replay，bill保当前cursor的原Prefix.quote及成功／拒付／无报价分支，poll保原事件核。Trace保存这些逐步发生结果与实际endpoint，证明完整state.history、真实count和未执行Machine.continuation尾保持；每发出词都认回自己的原actualExecution坐标。
+
+Point由原Information.World和该原生命令词生成，不接收实际目标cursor或覆盖证书。canonicalWorld用原合法历史、none对手的原restriction生成定理、replicate-none programme及phase0构造；canonicalPoint取空命令，故公开points统一非空。fiber按Point最终实际inbox筛选；任意Point自动进入自己的signal fiber。这是新原生Point成员定理，不借旧Knowledge.Contains，也不强迫不同实际历史相等。
+
+Domain.requested只取已缓存的完整公开回执规则（含显式original／reference／fallback）及该Point的site／signal；相同signal的不同原生Point得到同字请求。原菜单／个人准入后，Domain.run把请求实际装入各自Candidate；every_issued_domain_request_reaches_its_original_paid_root认回该实际行动源、完整残尾、原付费比较／学习端点、whole-ledger与own next。整域公共比较已由下述Policy直接消费新域。原World／actor-position／units／horizon界保留，canonical账单金额全覆盖及新driver由上游继续生成。
+
+
+### 原生兼容域的统一完整政策
+
+Policy.Input给公开法、actor／position、命令金额与horizon、预算、原pricing、future／span及当时site／reading。私有Prepared从其精确fiber生成所有Cell；每Cell只由原Whole.prepare与canonical Production.invoiceQuotations生成自己的open完整Scope或保原header失败。所有原Intent的List.pi组合构成Section全族；任意原本地分支都有生成扩张，不把逐点赢家当成公共赢家。
+
+公共Coherent比较原header账单、Own.requested、可选invoice真正缩放的raw请求及Code.keys全控制值；不比较成功位／目标端点。NoWorse同时要求fiber非空、公共签名一致和每点原Decision.NoWorse；原present／future／funding及经济轴保各自实际账单。原benefit用每个点×每个完整Section探针嵌入0/1偏序（无权重和价格），chooser生成整域非支配及有统一真实改进时的严格改善。Row是非空、两点签名和原native责任行；compile为空时给每Section一个确切拒绝。verify重放全池，任意通过它的替代规划者满足同一合同。
+
+Runtime.invoke固定baseline，缓存一次compile、独立verify和源生成Coverage；生成域的实际index随后只消费该同一缓存结果；已登记NativePoint到该index的完整绑定由下述Binding生成。Coverage逐Cell检查span≤初始remaining、future≤comparisonPoint.remaining；授权时原finite_relation定理保全部同一自适应对手。已授权selected调用原Whole.execute；未授权或blocked用原header.endpoint／comparisonPoint保准备付款，未用原初始cursor回滚。私有Snapshot与原ProgrammeLiving同root的computation face携带同一次Protocol、实际learning、从原初始cut起的Window、原FullDisposition、whole-ledger及自己的next。
+
+publicPreparation、逐点invoiceQuotation／nativePreparation、publicComparison、independentVerification和rootReadout分别作为typed outstanding进入根。nativePreparation是生成该Cell原Whole.prepare的计算工作；已发生的header付款仍保在Protocol.outcome的Cell／原Scope内，不被重复列为欠付。这批新计算没有被旧scope.covered结清。整域非支配口径是原有限Joint表；Runtime此处提升的是相对baseline的全自适应对手不劣。当前有限域政策的请求签名一致与实际原Intent消费已证明；从公共签名独立生成统一请求解释器、全原语费用和动态开放未来由唯一active继续。
+
+
+### 实际登记源绑定与完整自适应对手提升
+
+Binding.locate消费原NativePoint（原Information.World×已登记command Program）及既有Prepared，先检查Point.signal site与当期reading。完整源相等由有限Table在全部attach成员上的值列表比较、再经funext生成；World的origin／programme／rival／phase及原命令program都保留，绝不以库存摘要替代。scan在keys中找saved[index].point与原Point精确相等者；原fiber成员定理与Prepared.generated证明相同观察下必找到，不需要caller给Index、覆盖证书、目标Cursor或成功位。不相同观察返回精确信号不匹配。
+
+私有Linked保自动生成index、完整Point等式及原scan结果。Linked.current认回Point.trace.endpoint；Linked.endpoint仅用该等式运输同一Protocol的原endpoint，保完整source input。不同实际Point不因观察相同而相等；它们保各自实际索引／history。Binding.Installed.facade继承原Policy.Runtime根和全部Face，新增binding dependent face，Snapshot保同一Linked、Protocol、原Snapshot与所有旧obligations，并把sourceLookup计算工作具名追加。原facade.seed.advance激活，readoutAt_factorizes同时给出原projection、whole-ledger及own next。
+
+Adaptive.noWorse_iff／benefit_iff只消费该Protocol生成的authorized_coverage，把每点原有限Joint全关系双向提升到全部同一自适应对手。原chooser的整域非支配和“有统一真实改进则所选严格改善”由这两个等价直接运输，未另选规划器或指定对手。它不结清公共扫描／locator费用，也不把原World×登记Program域推广为任意外部Cursor。
+
+## 公共整域解释器的原生工作与缓存放行
+
+Policy.Work直接消费原Prepared、完整sections与原责任行。atom按informed／coherence／native行检查；native分支调用原Whole.Work.atom，Benefit逐index调用原Whole.Work.realBenefit，每项源帧、Profile、Manifest和责任比较运算携带自己的原index／scope原样提升。collect用该NoWorse检查筛选完整原池；scan以Benefit及反向否定执行严格改进，strict_iff认回原Improves。compileOrdered只接受原sections的排列，自产原Choice或逐Section原Rejection。没有目标结果、覆盖或赢家输入。ready阶段的公共签名cachedShape直接消费原Scope已保存的paidWord；paid_header_exact从登记物量fee及原Replay生成的付款词证明其等于原invoice，cached_signature_is_the_original_public_request对全stage／全Local认回原shape。signature检查据此运输判定，不在每条coherence行反复重做同一Prepaid.units probe。
+
+独立verify重放原完整合同，verify_matches_the_original_independent_verifier保原Policy.verify的Bool。certify缓存同次检查；selected检查原NoWorse和全池非支配，blocked对原sections逐项生成拒绝工作。Receipt.work包含筛选／扫描、独立复核或全部拒绝，以及实际release branch，不能只取Compilation.work遗漏blocked拒绝重放。Policy.invoke默认使用该Compilation及Receipt；私有Protocol的release_exact把verified认回缓存authorized，verified_exact保原检查器；放行不另跑第二个求解器。
+
+Operation.obligation保留签名操作数生成、typed字段原子与底层native查询，保原index／scope／query、实际值和answer。其余是expanded运算，work.length=controlSteps+pending.length；lifted_control_work_is_preserved证明每项局部提升与原Whole.Work.controlSteps计数完全相等。签名查询及底层opaque调用没有被计成单个已付control。域生成、准备／报价、Coverage、sourceLookup、公告／存储与原根取读仍由原具名责任继续承担。
+
+Runtime.Snapshot增加同一record.work及精确pending。the_original_root_retains_the_native_public_work_and_every_typed_debt保完整原工作、每项未结调用与精确计数分解；已有原根Window、whole-ledger／own next及Binding dependent face保持。该trace已接管默认计算和审查，作为下节统一预留和账后重选的工作源。
+
+## 公共预算预付与账后完整重选
+
+Work.workBudget从Prepared原责任行、完整sections、各ready Scope局部界及公开签名／动作源形状计算。局部admission／Benefit界运输到公共原子，合取／蕴含／否定及全行扫描逐项给界；collect、严格scan、独立verification、blocked全候选拒绝重放及唯一release全部计入。receipt_release_fits_the_generated_budget适用于原sections的任意完整排列、selected和blocked两支，不取实际胜出项或选择答案作预算输入。
+
+Policy.Prepared与Cell携带source-generated Recipe。reserve映射已保存的同次原cells，保原Point／fiber证据并更新recipe；cellsFor_preserves_every_original_point和Binding定位覆盖递归保原域。reserveStage成功经Prefix.quote生成原Bill，用Whole.extend追加同一次Replay的实际output，再withOwnInvoices重建原Own／invoice候选；无报价保存原scope，拒付保存原failed attempt，blocked后续吸收。Signature.prefix及cachedShape都保完整committed continuation，任何不同的技术前缀都不能被旧签名遮蔽。
+
+Reservation.produce先验原域非空及所有stage ready。私有Ticket消费原、仅供形状预算的probe及实际actual三份Budget.generate；units和完整覆盖守卫见下节。actual从原Prepared独立生成，probe不叠加进actual；全部actual stage ready且totalNeeded≤units后才调用原Policy.invoke actual。uniform feeAt定理从同一原code／base／scope生成相同公开物量收费请求；实际付款成败仍由每个原状态的Replay决定。实际不足产生shortfall，绝不运行后续选择器补背书。整个服务不读取用于消费的隐藏Point或外部Index。
+
+Ready.every_ready_cell_contains_its_actual_paid_reservation从recipe／Cell.generated提取原Bill、精确units、success和continuation.words = before.words ++ [bill.payment.output]。the_whole_cached_execution_fits_the_actual_reserved_units把原完整选择／核验工作界认回同一实付units。原比较仍从initial cursor的Window消费Scope header、全部continuation和每个候选各自实际账单，重新选择原Choice或原Rejection。
+
+Reservation.Installed在原Binding.Installed.root上增加reservation coface，继承全部旧facade faces。其Snapshot消费同一Ready、Binding、原完整Snapshot、展开计数／预付界和十二类额外服务欠项，激活该实际endpoint深度并给出whole-ledger及own next。Work.pending中的每个原signature／字段／native操作数与答案由原Snapshot原样继承。统一Reservation.Runtime公开口只消费sealed Protocol与自动定位结果，内部按Outcome生成既有root／facade并逐分支继承全部面，再安装outcome coface；Snapshot保精确自产Outcome、binding、原work／typed pending、全部旧责任与额外服务项、初始cut完整Window及原生FullDisposition，readout与whole-ledger／own next同源。empty域没有绑定Point，不制造phantom root。实际缺失收费位的preparationFailure在原源上验收；fundingFailure／shortfall的真实retained端点由相同通用分支消费。该机制按声明工作语言结算显式运算；预算结构控制由下节进一步结算，报价、预算原语内部、准备、sourceLookup、Coverage、存储、公告及底层opaque调用保原typed责任。
+
+## 源生预算运算与同一实际付款
+
+Policy.Budget.generate从原Prepared直接构造Run，不调用Work.workBudget取得value；期望预算只出现在依赖索引和exact定理中。request／operation逐原Request字段与八类操作，lists／optional逐双列表及Option，signature逐六类原签名和prefix递归；字段query保实际Atom两端，包括完整Mandate.State和精确ℚ。signatureAt消费原cachedShape，signatureCeiling对真实sections×keys×keys作逐项max；随后合流native admission ceiling，由原rows／keys／sections长度及显式加、乘、max生成完整预算。
+
+nativeAdmissionCeiling不再读取整枚准入结果：它按原Index取saved.stage，ready使用该stage自产scope，逐全部previous／new Intent及Decision.rows运行admissionRow；stopped／blocked保原1分支。各层ceiling实际展开fold并通过Whole.Work.ceiling_eq_foldr回原公式。deployment逐分支生成1；future／funding保完整scope、intent、row的typed rowBudget query，原词和table不丢失。
+
+presentRow分别调用两侧Materialization.present各一次。同次current.value／original.value进入PresentShape.present；present_exact将生成值认回原tensor.present。PresentShape不读完成的预算或判定答案：unitLists／lists递归原债、新债、rights双层列表、claims及services形状，合成profileBudget；slotSum逐原Challenge的after／current slots生成长度和，rowCount及inventory展开原Grant／Challenge组的源公式；两个subpermBudget按原左右长度乘加，最后合流真实Window.axes长度。每份Run的依赖索引逐式证明值精确等于原presentBudget。重复的rowCount依原公式重新生成并计入实际工作，不冒充缓存。
+
+comparisonShape保同次两份完整Evaluation并留作取源责任；两侧原生work按原序逐项映成带Index／scope／intent／table的sourceStep。present_row_counts_exactly_its_evaluation_and_both_shape_traces精确计入两侧work及源预算pair、比较形状两段程序的控制量。admission／sourceBudget／comparisonBudget／rowBudget／benefit构造器为兼容保留，但默认Budget.generate不再读取这些native成品预算query。字段／Use原子和其取值责任继续保留。
+
+NativeSourceShape从原Materialization.bound、实际start／extent生成原源预算。payload逐八类原Request操作；validity获取原debit／credit／requiredPorts／consents／payload长度并按原式乘加；instruction逐原instruction?结果，movement读取实际before槽。frameFold逐真实origin消费Financial.consume的next，frames逐原visit／inventory／account；profile读取first／finish账户槽及原code的parties／instruments／task，manifest读取原recordsAt／challengesAt。withNat以先前生成值驱动真实下标，exact运输原Nat索引；pair合两侧evaluation预算，presentRow直接使用该生成值，不读取成品预算。nativeFrameInputs／Instruction／Transition／Movement／Validity／Profile／Manifest七类标记保存原操作数并留在pending；它们的局部Valid=True不充当原生金融／源事件的语义证明，也不声明取源CPU内部费用已付。
+
+NativeFutureShape.produce对每个原scope／intent／table／word调用原Future.produce；无receipt生成none及0预算，有receipt则用同一produceWith输出生成Report、原生work及原evaluation预算。futureRow消费两份Emission及其同次Report字段预算。fundingRow直接生成原常量3并保原候选／能力词输入。NativeBenefitShape按原intents的双max fold、全部tables和capabilities逐原presentAtom／futureAtom／table／pair生成原benefit ceiling；每个present atom保两次evaluation取得责任，每个future atom保同次恢复输入。sumCosts与各Run的exact认回原sum／max公式，原默认benefitCeiling直接消费stage。nativeFutureInputs／futureShape／benefitInputs／fundingInputs保存原始操作数而留pending，不能被解释为已经付清CPU／取得费用。
+
+Budget.Dispatch.Programme以源字段、字面量、同次缓存、乘加及寄存器保存实际组合原Budget.Run和固定指令trace；generic rfl分别认回原Budget.generate和固定code。默认Protocol.invoke先原生reserve三次code长度，之后才调用produce与三份Programme；原Ticket直接消费其run，probe保持假设分支，actual总量守卫保持。原始Prepared与初始reference单独保留，原keep tensor仍是未付基线；generated ready cell的ownFamily为true，接受条件的Deployable排除unpaid keep，实际paid候选与拒绝终点继续承接已发生前缀。
+
+Phase×Fin code.length由injective ordinal进入Fin(3N)。Protocol.fundingAt从原实际预留stage生成每个cell的PaidExtension；InstructionCharge同时记录实际cached phase指令及该成功账单内的Fin槽，DispatchAllocation证明槽不重复、全数与bill.units相等。instructionAccount保unfunded的精确失败、已付未启动的完整unused额度，以及三次计算后fundingFailure／shortfall／ready的ticket和allocation。这是同一批量实际账单内的派发分配；各cell属于各自账单，未生成重复金融扣款。body／quote／meta费用另保原债，投影或slot记录不是canonical新债行的首写。
+
+Budget.Arithmetic与Program从原指令、live stack和原source字段生成实付微程序；每个构造步骤先付，成功只读同次accumulator，失败保未执行程序、实际端点及已发生费用。generateFamily沿原keys／stage逐格缓存。终止失败也计为一次attempt；统一次数从实际缓存取max，纯materialSteps仅作Prop中的上界／成功等长证明，不再计算一份运行预算。逐次quote／extend／refresh与原reserveStage 1逐分支相等，blocked／stopped的补齐不执行新付款。
+
+Counter.Paid.Outcome.family使用各分支实际Funding.installed；拒付仍保存同次已成功／部分支出的各原point，unavailable／exhausted／shortfall及选择blocked保付款后原stage。只有released且实际Work.outcome为selected时执行该Choice.endpoint。Record.originalIndex由原point列表同序等式生成，不混用quota索引；nativeEndpoint经同枚point equality运输，原source input保持。
+
+Counter.Paid.Runtime从该实际游标原Online.Runtime.root加computation coface，继承全部原faces。同次Snapshot保存Record／binding／原Index及point／pending／learning、整个初始cut到actual endpoint的Window和native disposition；readoutAt_factorizes给原whole-ledger和own next，所有Counter原债保留。该安装没有产生新的预算canonical责任行，pending仍由自身生成账保持。
+
+Counter.Paid.invoke input q point是新原始输入口，不接完成Release／Choice。先检本地reading，拒绝不匹配的point后才prepare／record；相符时从付款后的family定位同枚point并实际调用Runtime.read。planner_is_blind_to_the_actual_point证明同Input／q下prepare及Record相同，actual point只控制真实消费。q在本口显式给定，源生全q的跨Record协议选择及旧Reservation默认入口仍由active推进；保所有旧接口语义。
+
+### 全源生额度与全部已付政策的统一选择
+
+Automatic.ready只接受released且完成原计量／正文／选择守卫的Record；offers对每个ready的actual.pool调用全部PublicPolicy.candidates，不读取各release局部chosen。所有原Record和各自pending依旧保存在完整menu；不足额及失败项不成为已付Offer。Offer.view通过paidIndex和完整point列表同序／重数等式回到同一原point，tensor是原始cut至该实际政策endpoint的完整Window。
+
+每Index把全Offer的scopes交QuotaJoint构造共同对手表；finite_relation_iff_every_same_adaptive_opponent对任意Tensor关系给全部同一自适应对手的等价。vector_iff将原benefit偏序精确嵌入0/1逻辑向量，统一Selected／verify在完整Offer上工作；选择非支配，基准有严格改进则所选也严格改进。空offers给当前已付合格目录的精确阻塞。
+
+Protocol的私有构造器把menu绑定Counter.Paid.generateAll prepared，Decision须核验；replace只换独立验证成功的决策，保完整源菜单。不同选择各有endpoint与next。Automatic.invoke input point先检reading再prepare与生成全部q；不收q或完成Choice。匹配后以原binding执行全局Offer.view的确切intent，原Online root继承全部faces，Snapshot读同次完整Window／native disposition、全部原债与新增pending，whole-ledger及own next来自同枚root。规划对actual point盲。
+
+原Record的计量、正文及内部选择票据仍逐自身actual历史计入；不同q是备选历史，不合并付款。新全局源枚举、联合、比较、核验及端点构造等费用仍由Automatic.pending逐项保留；其先付执行和费用后重选由唯一active推进。
+
+### 同一owner尾额共享的逐probe全局核验
+
+Review.Frame把一枚候选的核验拆为rivals／forward／reverse及verified／dominated状态；单步只检查一个共同原point／joint-table上的native benefit，证明缓存仅保存已经通过的前缀。正反两向完成才生成Maximal，反例携带具体其他Offer及Strict。Trace每个事件由advance生成，execute在0信用时不调用advance；rank下降及充分容量完成由源列表结构证明，未以完成trace长度定预算。
+
+Review.Search对一个Ready owner运行一次，逐该记录的全部PublicPolicy.candidates，切换候选沿用剩余容量，不给每policy另开余额。Generated自产run capacity start，不收完成Choice／Maximal或外部frame；completed仅从released状态构造Choice。所有报告是不同q备选历史，actual只选一条真实消费；未获证时保该owner funding.installed的原生游标，不执行本地旧chosen。
+
+可用连续尾区从offset=calculation.spent+Release.value开始；Release.value=Body.units+Work.workBudget，故旧所有token<offset≤q。capacity=q-offset，新event槽offset+ordinal逐步对本owner各原Index的同枚成功invoice；injective及与旧槽分离。Release.unused按实际work长度计算，不能拿它作尾区起点，旧selection按预算上界偏移可能在该位置之后。旧包络内部的gap保留。
+
+Review.Runtime的Record保原完整menu、所有报告与源生成等式；Snapshot在实际获证政策或付款前缀的原Online root消费Record／原债／trace／余额／残态、完整Window／native disposition、whole-ledger及own next。raw invoke不收q，先检reading，规划对actual point盲。列表构建／共同表／外层报告选择、native benefit内部、guard／allocation／存储／公告和新canonical责任行仍由active推进；这里支付probe调用及源状态控制，不改原比较窗口。
+
+### 原生准入预留与实际历史槽的逐项认同
+
+Admission默认先进入finishing，其Budget.Cursor初始Frame固定为Counter源表达式.selection(.admission term row)，History逐次记录原Counter.advance的实际Update。每次budgetStep只推进一个原更新，由原Joint外层事件槽支付；运行仍用原Review.capacity，不调用rank或quotationCeiling。Counter.Termination的语法／Task剩余成本加原算术State.weight证明所有活跃原更新下降，有效Frame的原execute有限到达stack。Cursor.finite_source_completion从其真实History推出固定源的完成值，不输入target budget或已完成Frame；source展开一次到无source的Formula.render，算术micro消耗原weight。quote?只读已完成stack.headD，认同原atomBudget并严格小于sourceUnits。
+
+默认finishing未完成就继续同一Cursor，外层余额不足则保原Frame／History／已付前缀；旧有界quoting及cap耗尽的完整Cursor／work／保守Quote保留为override。报价的有限界仅供证明，现有invoice是否足够由原实际执行与残尾决定。
+
+Quote封cursor、amount、computed/exhausted来源、完整native work覆盖与原预算上界。Admission随后逐credit预留Quote.amount，归零才调用一次原Work.atom；Receipt封同一allowance／checked／generated／prepaid认同／覆盖，checked.decision仍生成原Accepted或精确原row拒绝。报价程序没有提前运行native判定或运行atomBudget取数；源Formula的构造／取源与原语内部成本仍按原pending推进。
+
+
+Credit.Tag保source owner／term／row，Packet保同一Receipt。mark只读当前reserving计数；Rule由真实step逐项推出。Bank保存完整前段末尾的连续credits，Funded为每个tested产生对应Segment；归纳允许空history与未完预留。Segment.credit_at按原receipt.slot选择此前credit，Segment.separate证明后段不能越过任何旧tested事件，不要求tag／term／函数判等。
+
+Enumeration、Offers、Joint逐层映射creditMark／creditLog；每条外层Action恰产一条Log，非目标事件产silent，保长度与原位置。challenger.localStep按其source owner读原生回执，policy按当前owner读；History.creditTrace从原Joint.History生成整个Funded。NativePayment.At由实际tested动作产生，creditEvent用receipt偏移生成真实外层Fin，actual_credit逐项认同tag／ordinal；slot与allocation直接消费原Generated.slot／allocation，同一payer原成功invoice认同paid／size／operation／offset，receipt内injective、跨receipt事件和旧tokens均不复用。原checked.work由同一At读，不重跑Work.atom。
+
+NativePayment.Book按全部实际work的Fin范围生成回执目录，完整性定理保每枚已观察receipt。Runtime.paymentsFor逐原report生成独立Book，不跨owner合并invoice；Snapshot向原programme root交完整Book与原Record／pending／Window／native disposition，原wholeLedgerWriteBack因子化及自身next保持，原root定理口不改。
+
+结构操作槽认同与CPU／bit／energy计量分层；已付cache复用、完整取源／原语／外层／Book费用、新canonical预算行首写及动态未来由唯一active推进。预算事件须接原ProgrammeSource指令／发射源；Financial.Registration的issue保留原生本金责任，不把已支付的计算工作铸作金融本金。
+
+### 实际付费执行到责任首付
+
+Joint.Responsibility从原Generated.execution.history生成每个位置的真实move：前态是原execute n的endpoint，后态是原execute(n+1)的endpoint，action字面等于原work[n]；成功原invoice／slot及native credit桥接随行。固定law的DebtState为完整原Joint.State，claim／identity为同一Ready，budget为原State.rank；StepAt包含实际move等式，each_step_progresses生成strict payment。First只从非空work、固定ordinal0／原initial生成DebtAdmissionFirstWrite；Book封一次可选birth和全部实际位置。空work无birth，SettlementAt与SupportTerminalAt为空。
+
+Canonical.Source固定同一report.endpoint的ProgrammeSource.N、ProgrammeHistory原depth与完整Joint状态前缀；support是原programme support与该debt state的扩展。源current为tick，后继为tick+1。baseOffset在首步推进一次，在剩余已付前缀内固定，前缀结束后恢复原programme successor。BaseAdvance恰在tick0及paid-work边界以后成立；实际债步严格消费原rank，完成前缀后的状态和budget保持，不补回。
+
+Canonical.Ledger内部枚举有限完整entry fibre：新增debt行及所有原ProgrammeSource行，claim／旧预算不变。逐项rowEvolution自产source／target，覆盖证明封入.complete patch，origin／destination单射供identity-only restructuring消费。旧行在BaseAdvance上字面使用原ProgrammeWorld.transferReceipt，其余记账步使用真实debt-step receipt；新行使用其自身receipt，不调用空的TransportAt。Canonical.Living从此compiler生成livingRoot与初始whole write，通过canonicalGeneratedEntryRow?取出born行和任意旧行，再由generatedFromInitialRow生成出生行因果authority、answerAndNext与firstSuccessor；born entry等于原First.write.initialEntry，首次目标等于原first.event.target。
+
+原root所有投影face保留在inventory，原component照原endpoint类型输运。继承face仅在BaseAdvance激活并字面读取原projection；纯记账微步分类为inactive，防止固定物理current被重复宣称为新物理event。own ledger／Book face持续激活。Canonical.Runtime从同一livingRoot建立具名facade／process，消费完整Book与whole-ledger并生成自身next。密封Installed只能由install?从实际First生成；不接caller root／已安装row／coverage。原Joint.Runtime用同一actual选择结果生成Snapshot.installation；nextFor／Activation.next对实际非空report返回新authority current，空执行、无report、empty／blocked保原入口。
+
+这是已付历史的canonical责任记账与默认后继，不将记录该历史所需的新工作认作已付款。rank是终止测度，非物量、能源或金融本金。新增登记／Book／查表／source构造及完整协议费用的实际结算、账后经济比较与动态全部开放未来归唯一active；不输入目标终点或清除原pending。
+
+#### canonical初始patch的独立实付构造
+
+Payment.Cursor固定同一made／index／First，从空cache／空work开始；下一操作只由原registrationSize确定，为各行依次生成RawRowAt及其GeneratedLedgerWriteRow，最后执行完整patch组装。每步先检查done<made.unused，才生成该行或组装值；达到完整序列即停止，不重复遍历空操作。私有cursor保持done≤unused、cache_exact、output_exact与work.map Fin.val=List.range done。execute只使用原实际unused；produce在真实output上生成Built或精确shortfall，不接足额／已付款／完成值premise。
+
+unused来自原Joint实际消费后的成功预付invoice尾，非新增金融本金。新operation的槽为Review.offset+原spent+新ordinal，严格小于原invoice.units=owner.quota；与全部Joint原event、release.Token及NativePayment.creditEvent槽分离。已有invoice整额先前真实付款，不需要重扣一单；旧占用槽不复用。零额度保持initial，不存在Built；部分额度的work与residual长度之和恒为完整序列长度，残尾为units-unused。
+
+最终assembly调用实际before.cache构造table／.complete patch；Built.patch取自该output。Payment.Runtime.patchAt 0字面为paid.patch，compiler.compilePatch emitted0直接为该缓存patch。原canonical source、完整row fibre、physical BaseAdvance规则不改；具名facade新增construction face，联合消费实际cursor、缓存patch、完整writeback及自身next。原Joint.Runtime从同一actual report生成Snapshot.construction；默认next仅.ready进入付费根，empty／shortfall走原根next，legacy未计新费用的canonical install?保留显式原consumer。
+
+本节支付初始行构造与完整patch组装两类声明语义操作。未来tick仍调用常规canonical patch，初始原语内部、控制检查、Book／facade／source、全协议与独立核验费用不随此结清。shortfall只属于选中report，非全候选不可行证明；它保存缓存与精确残尾，不宣称自动补资或跨cut恢复。原全责任选择须接入新增结果与费用，当前责任由唯一active维护。
+
+#### 实付构造资格与全报告非支配选择
+
+Accounting.Report与原Runtime.Report为同一Sigma源值。inspect逐report读取completed、真实first?及每个prepared key的Payment.produce；只有全部index均ready才生成私有Candidate，其余Entry保存原report、具体未完成／空首事件／shortfall及实际cursor和不足量。Book以原顺序保存全部Entry；compile直接从这份缓存过滤pool。每个原report必在Book，符合正工作与全部index足额的完成report必在pool；不以调用方给定的安装、费用或endpoint充当资格producer。
+
+axes保原Automatic全部坐标，再为每个index追加实际construction.work.length与负的剩余预付额度。vector_iff精确等价于原完整Automatic.Benefit与逐index工作不增／额度不减；原关系仍量化同一全部自适应对手，未用加权总和替换任一责任。refine先在不劣于原合格基准的池内择非支配者，再由传递性证明其全池非支配；严格改进若存在，实际结果必严格改善。基准已列入原池是比较问题的输入，不是替代／最优性premise。
+
+私有Result保同一生成Book与selected／empty verdict。候选池为空给出每条原Entry均不被接纳的完整目录，不能推出未来任务或全部Offer不可行。独立verify可检查全池非支配；verifyRefinement额外检查指定基准不劣。refinementOfVerified只从原池Fin位置构造替代，不能用全池最优核验偷换基准保全。
+
+Candidate.endpoint_is_the_compared_policy证明原report端点就是被比较政策在该index的端点。默认accountedActual与nextFor消费同一compile；selectedNext将所选原report的生成First及实际Built交给Payment.Runtime.active，使用paid.patch、完整whole-ledger与自身next。独立核验替换结果可调用同一selectedNext。Snapshot.selection保完整Result／Book；空池或原空源继续原next，旧显式actual／install接口保留。
+
+这是当前原reports内合格报告的统一选择；不是新增费用下所有可能Offer实现的枚举定理。每个候选的构造使用自己的已付款尾槽；生成全目录、测试所有候选、外层选择及独立核验本身的实际费用仍须从一个真实执行源生成并接入账后比较，不把互斥invoice相加支付一次计算。内部原语、后续tick与动态开放未来由唯一active维护。
+
+#### 原任务源预付与逐坐标原生选择
+
+Accounting.Machine.State.reading逐原report执行inspect，缓存实际Row并同步积累accept?得到的pool；conserved／pooled分别保存原目录次序及缓存过滤等式。全部读完才将这个cache和pool交Scanner。Scanner.Frame按原增强axes逐项执行cost≤比较，正反向成功／失败各生成实际event，frame保存剩余坐标、累积证据及具体dominator；Search据这些结果逐candidate释放全池Maximal。最终Selected从该实际pool转回原candidates的身份，不调用旧compile或opaque NoWorse decide重做选择。状态rank严格下降，有限execute具有实际History／work／capacity界；未完成工作量精确等于当前allowance，终态空池保完整失败目录。
+
+Prepayment.generate先从原Prepared／显式units生成EscrowBudget.reserve并检查各index的真实funded，再在funding.installed建立Joint.build，运行上面的机器。Started私有字段固定Funding、付款、付款后body和实际run的生成等式。每index从自己的原任务invoice顺序分配Fin spent槽，slot injective；spent+unused=units。源family各index的账单相互独立，只有对应实际point的票沿实际历史消费，不称整个family为一张票。Funding.installed保持原point次序与重数，并把实际支付前缀写入新recipe／stage；后续候选不会从扣款前快照重复生成。
+
+Started.cursor只有机器实际释放selection时才取该report endpoint；partial／菜单拒绝保实际付款后stage。Result.unpaid保完整Funding和具体失败index，所有已发生费用继续存在。Result.next成功分支使用同一choice的First／Built／paid.patch，并在同一Payment.Runtime.root上追加常活audit coface；Attachment.facade是固定过程及seed，首拍直接read实际Result，readoutAt_factorizes同时给出同次wholeLedgerWriteBack及自身stateAt 1。该audit面独立于原BaseAdvance物理门控，原物理面保持。失败分支用实际post-fee cursor生成原合法next；观测不匹配在付款前拒绝。
+
+该入口的units为显式公共有限allowance；自动源生结构额度由下述Quotation生成；报价自身实付与原默认入口接线由active维护。Machine全池搜索与指定基准保全已由下述Reference同账尾部合流；旧Accounting.refine保持。所付的是逐report inspect、逐增强axis比较和选择控制的声明语义操作。inspect内部全index构造、域／reports／pool／axes生成、取源／付款检查／独立核验、原语内部、后续tick／存储／公告费用需继续原生展开。
+
+#### 原目录基准的同账实付筛选与替代
+
+Reference.Payment.generate内部调用Prepayment.generate并固定实际生成等式。只有父Machine目录完整，才从该实际rows／pool建私有Cache；请求的自然数位置经rows[position]?及Entry.accept?取得Candidate。anchor_is_listed由原目录身份和accept?证明该基准属于原池，无外供Candidate／Selected。目录未完为parentPending；位置缺失或该行不合格才为referenceInvalid，保原缓存及实际失败证据。
+
+Refinement.move逐原candidate进入检查，逐原增强axis产生成功／失败事件；全轴通过才写入实际filtered cache，之后同一cache进入原Machine.Scanner。filtered定义仅用于守恒证明，不代替实际逐轴执行。Resolution把原生scanner的实际selection提升回原pool：任何可支配该结果的原项，由NoWorse传递必在子池，故原池非支配。Choice.full_responsibility用原vector_iff读出完整ResponsibilityLe；actual_strict_improvement证明原池若有对基准的严格改进，最终实际所选也严格改善。有限源rank保证完成；合格基准在原池，故完成后不会空解。
+
+尾部容量是同一父Started.unused，实际槽为parent.spent+event；distinct_slots、no_tail_event_reuses_a_parent_slot及entire_invoice_is_consumed_or_retained证明同一成功原invoice上的顺序、不复用和总额守恒。每个源index各自一票，互斥实际点的票不拼合。尾部未完成／基准无效时endpointFor保真实付款后Prepared的stage，不执行父机器无基准choice；所有父／尾实际work和残尾在新Result内保留。
+
+成功Result.next直接消费新尾部Choice，在同一chosen Payment.Runtime.root增加常活audit coface。固定Attachment.facade.seed的read等于完整新Result；同次projection、wholeLedgerWriteBack与自身stateAt 1由原readoutAt_factorizes消费。原物理面门控不变。raw invoke(input, units, requestedRow, point)先拒观测不符，再在实际付款后source定位原point。units仍显式；基准保全量词在付款后原Report域，跨付款前基准及全部协议／原语内部成本与动态未来由active维护。
+
+#### 同额度付款后域的源生结构预算
+
+Allowance.Shape固定funding=EscrowBudget.reserve prepared q与body=Joint.build funding.installed。requiredFor只从该body的原reports／axes结构求父界+尾界；父界为Machine.initial.rank，尾界为n*(a+2)+Machine.ceiling items+3，其中n=reports.length、a=原完整axes.length。由候选filterMap长度≤reports证明任何实际父endpoint的Reference初态rank≤尾界；actual trace严格下降给父实际work≤父界。故同q满足required≤q时，父Machine完成且其未用尾槽足够Reference完成。quoted_source_bound_finishes_the_actual_execution通过原funding_generated／body_generated把报价Shape与实际Funded对齐，不接受完成run／Selected或实际work长度作为报价输入。
+
+Quotation从原SourceQuota.generate构建目录；每个Catalogue.quota生成自己的Assessment／Shape。Check依次查全部原index实际funded、ready域、shape.amount≤q，保存unpaid index／非ready／short或Qualification。私有Book固定rows=directory、selection=search rows。Search取首个Qualified，dispatch才调用Reference.Payment.generate，同一行额度与实际付款／重建域一致，交付父／尾两个finished证据。新invoke(input, requestedRow, point)不接受units；旧显式Reference.Payment.invoke保持。
+
+全部物量可付q由原Catalogue.quotas覆盖，every_affordable_quantity_has_its_own_post_fee_assessment给该q本身的assessment；excluded_covers_every_affordable_quantity及no_qualification_has_an_exact_source_reason给逐q的完整结构预算障碍。充分rank界可较实际实耗宽，因此此障碍不代表经济任务不可行。选择首个结构合格额度不代表跨q全责任最优；任意付款前基准的跨费用保全由active维护。
+
+完整报价Result保存原SourceQuota、全部Book及获选Pick／实际Dispatch。成功Result.next只从实际Reference尾部Choice进入同一chosen Payment.Runtime.root，常活Attachment.facade.seed读回完整Result，wholeLedgerWriteBack和自身stateAt 1同次。没有有效Choice保真实付款后stage；无合格额度保原Prepared。原point次序／重数与观察拒绝保持。
+
+此处生成的是保证父机及Reference声明语义事件足额的源结构额度。Shape／域／reports／axes生成、报价目录和资格检查／Search扫描本身、内部原语和后续协议工作尚未由本额度证明付清；这些工作须原生计量、执行前预留及总责任比较，不得把SourceQuota最大物量bound当工作足额证书。
+
+#### 先付费的增量报价与独立执行票
+
+Quotation.Incremental替代实付路径上的eager全Book：State.waiting保拒绝cached与remaining，checking保当前q的Frame，released保已拒绝前缀／获选Approval／未检查额度尾部，exhausted保完整原额度目录及逐项denied。cached的quota顺序与当前／remaining共同等于原Catalogue.quotas；逐q调用Allowance.describe，不先运行Quotation.directory／compile／assess／examine。Frame逐原Index检查该q的实际funded，接ready／结构amount≤q比较；失败Receipt保unpaid index／非ready／short，成功Approval含来源等式及完整资格。每步实际event／Trace严格降低源rank，execute足额则完成，未完则已用尽本次native capacity。此处的describe、capture和整数比较仍是声明原语，内部成本另细化。
+
+Quotation.Reservation.BudgetChoice保存原SourceQuota生成式或显式override。默认units=原catalogue.bound/2，是公开尝试策略，保留一部分物量给dispatch；不宣称足额／最优。generateFor先原Prepared生成实际Funding并检查全部原index票据成功；units>0后Program.generate只读Funding.installed，先capture再执行Incremental的units-1步。units=0不运行Program；unpaid保存实际已发生Funding与具体失败index。Bootstrap原source读取与预算策略／原票获取的内部费用仍由active维护。
+
+Started.program.events=capture::native work，每个观察index用自己的同一outer成功invoice；slot(event)=event.ordinal，capture槽0、native槽ordinal+1，注入且不交叠。spent+unused=units；pending_has_no_unused_quote_credit证明未完成时实际spend=units且unused=0，保当前Frame、cache及未检查tail，不将pending当全域不可行。exhausted_covers_every_original_quota只在完整native exhausted终态覆盖该报价后source的原全部q。
+
+仅获选native Approval才调用Reference.Payment.generate，其Prepared为outer Funding.installed。dispatch的inner invoice在这个报价后source上生成，Allowance证明inner父机／Reference尾部完成；outer unused不recredit或转成inner额度，未选Shape只是潜在分支，不能叫已激活付款。Service.retained保outer付款后stage；inner tail没有有效Choice保inner实际付款后stage。两层支出及各自source在完整Result内保存。
+
+Result.next从实际Service／inner尾部Choice进入同一chosen Payment.Runtime.root；常活Attachment.facade.seed首拍read整个Result，readoutAt_factorizes同时给同次projection／wholeLedgerWriteBack／自身stateAt 1。无choice分支从真实保留cursor继续。raw invoke先拒不匹配观测，再生成预算／Funding／Program并Binding，原point次序／重数与俘获零退出输入保持。旧Quotation.invoke与显式Reference.Payment.invoke保持。
+
+这条实付链覆盖source capture、逐q describe、逐index资格、ready／结构预算比较及cache／选择控制的声明事件。原语内部域／目录／axes／capacity／整数运算、bootstrap自身、原票与独立核验／存储公告／后续tick的完整成本，以及跨outer／inner费用前缀的全责任重选与动态未来，由active继续闭合。
+
+#### 逐项取得观察与缓存界直接报价
+
+SourceQuota.Acquisition追加于原Capacity的构造器owner。Snapshot／Catalogue／Generated及旧定义原字节保持；新执行以付款后Prepared的keys开始，observing保cached++remaining.map observeCell=observations。每个当前Index只调用observeCell一次，将实际CellResult同时写cache及Event.observed；所有观察完成后直接构造原Snapshot，生成式与keys_exact来自守恒证明。预算不足只有实际State／Trace，不能构造部分Generated.blocked。
+
+validating逐cell检查availableTag，只判CellResult构造器，不计算随后会被丢弃的Nat capacity；availableTag_exact在证明层对齐旧units.isSome。通过前缀的Inspection continuation保持与原Distributed.inspect完全一致，故首个失败产生原首拒／完整snapshot；全部通过才直接构造原Catalogue。seeding读首cell.units，folding逐后续cell读capacity，reducing单独取min，守恒minimum accumulator remaining=catalogue.bound；完成输出缓存limit与其精确bound证明。原capture／inspect／generate只出现在证明等式中，执行不重建观察／资格目录。
+
+Acquired.Program只从实际Acquisition.execute.endpoint继续。pending保原partial cache／remaining／validation／fold状态；.finished.unavailable保完整原首拒或原空域。只有.finished.domain才启动后段；若无余预算则queued，连额度目录也不生成。有预算时从缓存limit生成Fin目录并独占enumerated事件，initialCached_is_original证明该目录直接是原Incremental等待态；随后原增量报价只用本次剩余额度。输出的Generated／Catalogue与后段run为同一依赖对象，不再次调用Catalogue.bound求值。
+
+先outer Funding再Program的预付顺序保持。events=opening::acquisition.work++tail.events，每观察index按全局ordinal使用自己的原outer成功invoice；Started.acquisitionEvent与quotationEvent生成互斥区间，开场槽亦不重用。spent+unused=units；Acquisition及整Program的pending均精确耗尽对应容量，保真实endpoint。获选后的独立inner Reference.Payment以outer付款后Prepared为输入，父／尾完成及其真实cursor保持，不把outer unused转作inner票。完整Result由原chosen Payment.Runtime.root常活审核首拍、wholeLedgerWriteBack及自身next消费。
+
+新Acquired.invoke沿原观察先拒绝与Binding，保默认无units的源预算尝试及显式override；旧入口保持。这里付费的粒度为逐观察、tag、capacity read、min、额度枚举及原增量报价的声明事件。observeCell内部Fee.read／analyse／floor、list／closure／整数内部、describe的Funding／Joint／report／axis，以及bootstrap／原票获取及完整协议成本，仍由active单独推进；跨outer／inner费用的全责任重选和动态全部未来不由缓存恒等式替代。
+
+#### 逐charge与报告原生描述
+
+原Funding／Joint／Joint.Runtime／Allowance各私有构造器owner追加native producer，旧字节前缀及接口保持。EscrowBudget.Acquisition逐原Index取charge，cached与remaining保原charges等式；全cache才直接构造Funding。Description接同一Funding.installed的BodyAcquisition，完成原Record后直接构造Shape，并单独读取amount到Output缓存。所有来源等式在Prop，执行不调用reserve／Joint.build／Allowance.describe来重造已缓存目标。
+
+ReportAcquisition.State缓存left、current、work与原History；work.length+left=原Review.capacity，并在证明层守恒原execute的endpoint和work。每实际move只调用一次Joint.move并把原Action写入缓存；left=0或move=none直接构造原Run／Generated。原Joint.generate允许预算用尽后unfinished，native producer保这种报告而不增加完成前提；原execute只用于已擦除的证明。BodyAcquisition按原ready顺序保全部reports的prefix／remaining，每报告开场、每Joint action、写cache与完成均为事件，完成直接构造原Record。
+
+Detailed.Frame.describing持Description.State，完成才把缓存Shape／amount交原逐index检查。budget比较用缓存amount及amount_exact，source相同。remainingWeight对每q的Description.initial.rank及后段检查成本求和，替代旧固定width；证明不使用付款前后fee单调假设。rank用于有限完成／pending证明，运行时execute不求该全规格rank；已预付capacity逐move耗用，未完精确用尽并保状态。
+
+Described复用实际SourceQuota.Acquisition与缓存额度，余预算启动Detailed；所有取得观察、逐charge、report action及描述／报价控制事件共享outer原成功invoice的injective ordinal槽，开场／取得观察／后段槽互斥，spent+unused守恒。获选才在outer实际付款后源生成独立inner票，原Allowance保证其父／尾完成；候选q资料并不激活未选inner付款。整个实际Result在同一chosen Payment.Runtime.root常活首拍、wholeLedgerWriteBack与own next消费。
+
+BodyAcquisition.menu仍把Paid.generateAll作为一条事件，它内部的SourceQuota／全q record／Counter生成与ready目录是后续原生化责任；amount读取的requiredFor／axes／整数、charge与source观察内部、list／closure／存储、bootstrap／原票及完整协议费用同由active维护。跨两层费用前缀的完整责任重选与动态全部未来继续从实际endpoint生成。
+
+#### 原生跨额度菜单与原计数轨迹
+
+Counter.Acquisition追加于原Calculation owner：running保left／current／原Run前缀wrap及wrap(execute left current)=原execute的Prop恒等。实际move调用一次原advance，把updated的原Run.next与Update保存进wrap；done、exhausted、malformed直接封原尾，再构造原Calculation。原execute不在这条生成路径运行，前缀closure是实际Run数据的构造过程，不把完成终点当输入。
+
+Paid.RecordAcquisition从prepared／units开始，分别产生原pay、付后acquire、Counter小步、处置、Body.generate与Work.generate事件。原calculation及Outcome从缓存Programme直接生成，涵盖付款拒绝、无域、耗尽、shortfall及released；完成直接构造原Record。pay／acquire与Body／Work仍各为声明原语，内部成本按active继续细化。
+
+MenuAcquisition复用原SourceQuota.Acquisition；拿到同一cached limit后生成原Fin额度目录，逐q运行RecordAcquisition。缓存与remaining守恒原全部quota.map record，未开始的候选不求值；完成原Candidates由缓存字段封装，原DomainResult与generateAll的等式只作证明。空／blocked保完整原snapshot与首拒。每q初始rank=units+9，菜单按q.val+12加权，Counter更新严格下降；这部分界不预求候选生成结果。
+
+MenuBodyAcquisition把本次实际生成菜单直接交原BodyAcquisition.reportsInitial及reportMove；MenuDescription接该cursor，再交MenuDetailed逐q报价，消费同一原Shape与缓存amount。用于原report部分的canonical规格rank只在证明中，实际execute仍按已预付capacity逐拍执行。所有source／候选／counter／body／work／report／quote事件包含在同一outer实际成功invoice独立ordinal槽内，pending精确用尽并保真实状态。
+
+MenuRuntime完整Result沿实际所选Approval在outer付款后源另生独立inner执行票；候选分支资料不等于未选inner付款，outer unused不转记。原chosen付款根首拍read、wholeLedgerWriteBack及自身next保持。旧入口及默认无units／override／zero／观察不符拒绝保持。更深的pay／acquire、Comparison内层enter、Body／Work、ready／amount／原语及完整协议费用、跨费用全责任和动态全部未来只由active维护。
+
+#### 原生候选付款与付后取源
+
+PaidSelection.PaymentAcquisition追加原Funded owner，先空检查，再调用原EscrowBudget.Acquisition逐Index生成全部Charge与Funding。之后按原keys检查funded：剩余Inspection的embed／coherent保存原inspect身份；head正例只延续，首负例立即结束资格检查且完整Funding已保留。私有fromCheck直接构造原Attempt与Funded，pay／reserve等式只在Prop，不以旧生成器重建。
+
+SourceAcquisition从实际paid.family调用原SourceQuota.Acquisition，保存完整原snapshot、首拒、catalogue与缓存limit；Comparison.Acquisition按limit生成原Fin列表并逐q缓存enter，结束由cached字段直接封原Pool，原顺序与重数保持。SourceAcquisition在Paid owner直接构造原Available，source与pool的generated等式将其识别为原acquire。当前enter仍将offer／continueAttempt作为单次原语，其内部与Body／Work由active继续推进。
+
+CandidateAcquisition将上述两游标接原Counter小步／Run缓存及原Outcome／Record；CandidateMenu按每q的实际初始rank+3加权，直接生成完整Candidates／DomainResult。afterPay与sourceTail的canonical规格仅用于证明下降，执行不预求其结果。CandidateBodyAcquisition交原report cursor；CandidateDescription／CandidateDetailed／CandidateRuntime保持原Shape、amount与所有拒绝分支。所有新增声明事件进入同一outer实际成功invoice的独立ordinal槽，pending精确耗尽；最终获选另生独立inner票，完整Result沿同一Payment.Runtime.root首拍／整账／自身next消费，旧入口及默认／override／zero／观察先拒绝保持。
+
+#### 原生比较报价与释放
+
+EscrowBudget.CalculationAcquisition位于原Calculation owner。running保存left／current／原Run前缀wrap及其与原execute的Prop恒等；实际每拍调用一次原advance，直接构造原Run.next，done／exhausted／malformed按原语义封尾，再直接构造原Calculation。advance所含SourceBudgetMachine.evaluate等内部原语由active继续展开。
+
+OfferAcquisition位于原Programme owner：empty先拒；非空时完成原Funding.Acquisition，原keys逐项Inspection continuation保精确首拒与全部Charge，正支才启动付款后预算机，最后直接构造原Programme／Attempt。Programme.ContinuationAcquisition分开原calculation.result／affordable处置和正支[原生公共协议](#原生公共协议)，保原exhausted／shortfall／ready字段，直接用缓存Protocol构造原Release／Outcome；旧generate／release／invoke不用于重建。
+
+EntryAcquisition在原Entry owner用同一原quota的上述Attempt／Outcome直接封Entry，原enter只作canonical恒等。Comparison.OfferAcquisition逐q启动该游标，保cached++remaining.map enter=原entries，按Entry初始rank+3加权；收尾直接封原Pool，额度零、顺序、重数及失败保持。原Comparison.Acquisition不改。PaidSelection.SourceAcquisition直接升级至新pool与加权sourceTail；其上原Candidate／report／Shape／quote／Result消费者源码保持，重编译确认全部新微步沿同一outer原invoice独立槽消费，pending精确耗尽、获选独立inner付款、同根首拍／整账／自身next保持。rank中的canonical规格仅在证明使用，实际execute不预求其值。
+
+#### 原生公共协议
+
+Work.Builders在原owner直接封装private Pool／Scan／Compilation／Check／Receipt。CollectionAcquisition逐section保存noWorse检查，ScanAcquisition逐cached strict.decision保持原pivot与Scan全部字段；Compilation由这些缓存直接构造。CoverageAcquisition逐原keys保持Inspection的精确首拒。ProtocolAcquisition.initial只取prepared，固定baseline／sections，自产编译、核验与覆盖，再读缓存authorized直接生成原Protocol=invoke；完成结果和next不在公共producer输入中。
+
+Escrow正支实际推进Protocol游标；原collect／scan／compile／inspect／certify／invoke仅作身份规格，不用于重建。Entry按afterOffer证明权重衔接，八原下游源码保持并重编译。同一outer成功invoice独立槽实付、精确pending、获选独立inner票及完整Result同根首拍／整账／own next保持。
+
+#### 原生内部检查
+
+Work.Checks.Code的固定源叶子是原row atom与localBenefit查询；其余构造只有truth、and、not、implication和证明等价输运。rowsCode／benefitsCode／noWorseCode／strictCode／othersCode／verifyCode由原目录及原逻辑生成，eval与原完整Check相等，保决定、work顺序及短路。
+
+Checks.move以Kont显式缓存左侧Check；false返回原branch而不求右侧，true进入右侧源程序。Code.eval／Kont.apply只在Prop规格内，move不先求整段检查再遍历work。State.rank严格下降，Code.weight给结构预算而非原work.length；每个实际move仍进入既有实付事件槽。Code构树、叶子内部原语与完整底层费用由active列出的producer继续展开。
+
+Rejection.move按原rows逐atom，真行积累原work前缀，首假行直接构造原Rejected；rejectSpecification仅用于生成等式。公共Protocol从自身Compilation.generated进入ReceiptAcquisition.initialKnown；canonicalRejected只在Prop把新report识别为原rejected term，不运行旧reject。selected逐verifyCode，blocked逐新Rejection，再从缓存封原Check／Receipt。泛型ReceiptAcquisition.initial/.opening仍保旧闭包口，公共Protocol已走openingKnown／rejectingKnown。
+
+#### 跨费用案例池
+
+CandidateRuntime.openFor在原owner生成outer Started并停在dispatch之前；Opening.deliver逐分支等于原generateFor，原默认入口保持。CrossFee.generateFor只取prepared／budget／requested，Exploration.generate读取该outer同次Acquisition.endpoint的原source／catalogue／limit，未重新SourceQuota.generate。每个原q用同一outer.funding.installed调用原Reference.Payment.generate，直接产Case.payment及生成等式；Case保empty／unpaid／ready全部分支与各自after／cursor，ready仅表示该原付款结果类型。
+
+State.walking逐q追加Case，cached.map quota＋remaining恒等原catalogue.quotas；完成时每个原affordable q都有原Payment.Result。execute只按capacity与move运行，rank提供源结构完成界。Exploration使用outer.unused，案例事件槽为outer.spent＋ordinal，保同原成功invoice、互异及不重用quote槽；支出＋剩余精确守恒。source acquisition或Case生成未完时unused为零，工作态保原remaining；默认预算不保证完整目录。
+
+Reference.Payment.Audit.next只接actual Result及audit payload，内部读取该Result自己的tail selection后选原付款根。CrossFee.Result.nextAt／invokeWith／Activation.next把整个Case池audit交该分支实际root：已选中付款用固定coface及原facade.seed首拍；未选中保cursor的实际temporal visit与whole ledger／next。Invocation.unlisted另绑定Result.after的实际point，直接生成自身retainedNext；outer付款后不回退，不运行旧inner deliver，mismatch的next?为none。Case族是同一postouter源的独立可实付分支，不合并各inner历史。ordinal是本Case消费接口的显式请求；完整金融与全对手CrossFeeChoice是active负责生成的后续选择。Case.materialize的原Payment.generate内部仍是具名原语。
+
+#### 跨费用完整责任重选
+
+Pool.collect从每Case的parent.run.endpoint直接读取Reference.fromCursor完整rows／pool；不重跑inspect／generateBook，也不以tail.selection丢掉未选候选。Pick保各自dependent all、Case和真实成员证；两层paid_point将Local统一到共同原point，实际source和付款历史仍各自独立。parent reading及原失败都在完整audit内，collect最大性对应已实际封齐的缓存池。
+
+Full.EvaluationLe以原evaluationBenefit比较服务／必要劳动／残责／真实values，另比较完整Profile与admitted整表等式；Profile六组字段全部进入决定。FutureLe逐原capability保同类完整evaluation／consumed与无新增funding失败。ResponsibilityLe添加原inner实付q、parent＋tail实际work／unused以及逐Index canonical构造work／credit；保护身份不冒充收益。所有Pick scope联合的QuotaJoint表对任意完整Tensor关系保存同一adaptive opponent。
+
+source probes将固定完整非劣关系嵌入原NoWorse，vector_iff由自反／传递给精确双向等价。refine从原列内reference自产非劣的全池非支配替代，有严格改善则严格；verify不依赖原planner运行。generateProposalFor直接核验raw candidate ordinal，accepted接自身candidate，rejected／noCandidate保原reference，noReference保原实际cursor。
+
+CandidateSupport让任一已付candidate直接消费自身原Canonical.Payment.Runtime.root与完整原patch，旧Selected Support API作同值入口保持。Record／Proposal所有返回路径都安装完整新payload，含原audit、resolution与pending；固定coface首拍或原cursor temporal visit保整账及own next。新缓存读取、完整比较、选择、核验、安装／存储费用保为Record.pending八类责任，当前未将其冒充已付。
+
+#### 选择自身预付与付后原生重选
+
+Computation.Checks以NativeBenefit.Check组合原完整ResponsibilityLe：legal／complete蕴含、due多重子集、admitted按顺序整表相等、完整Profile六字段、全部原经济轴与未来capability、funding以及真实付款／work／credit。inventory每侧只编译一次，due与admitted共享同次NativeInventory缓存。原生自然数／有理数／key查询、分支及源构造事件组成实际短路work；responsibility_is_the_original_complete_relation给原关系精确决定，预算独立由源字段形状递归生成。
+
+Scan.maxBudget对原池全部pair的strictBudget取最大，不读取比较决定或已完成work。locate原生逐项查ordinal，scan每次实际匹配Checks.strict.decision后keep／replace，保存原池归属、相对reference非劣及全池maximal；存在原池严格改善时结果实际严格。独立Choice.verify接受生成结果。查询、keep／replace／finish与skip／found／missing都有实际记录，源池N的执行界为N×(maxBudget＋1)＋N＋2。
+
+Payment.generateFor只收原prepared／fee budget／outer override／position／ordinal。先EscrowBudget.reserve并检查原全部Index成功，排除零票后才在funding.installed重新产生outer预算和CrossFee.generateFor；Scan.budget通过才调用Scan.compile。失败返回原首拒付，预留界不足返回reservePending。后者表示安全预留额度不足；空池预留界2、实际missing工作1，不能将其当实际稀疏执行不可行。
+
+Executed.spent为实际resolution.work.length，每个事件注入原成功fee invoice独立槽，slots_are_distinct及spent＋unused守恒。所比较的reference与全部候选来自此次付后Pool；这给付后非劣、严格改善及非支配，不自动证明任一付前旧baseline保全。selected直接用自己的Pick.next承载完整Payment.Result；noReference／reservePending沿自己实际audit.cursor，empty／unpaid／zero沿实际保留stage，所有分支保新结果及remaining费用责任进入原whole ledger与own next。invokeWith显式分开fee／outer override，匹配观察自产Activation，mismatch精确拒绝，默认两者none。
+
+executed分支的原生选择事件层已实付并解除selection债；empty／unpaid／zero／reservePending未运行Scan，仍保原八类computationDebts。操作数与预算生成、抽象DecidableEq／有理数／自然数原语内部、收费检查、存储／核验／安装及bootstrap费用由Payment.pending继续记录；不能以事件数代替完整机器成本或任意动态开放未来。
+
+#### 逐项缓存与同票完整选择
+
+Pool.Pick.fromListed只封装既有Case候选及其原缓存成员证；不选择政策，不造相同账本。Computation.Collection.initial只放原audit.branches与空acc。Stage.move依次读分支原casePool、逐candidate构造Pick、关闭分支、逐cons逆转并finish；失败／空Case也保在audit并实际经过branch／close，候选不去重、不换序。
+
+Cursor私有封装stage.meaning＝原Pool.collect audit，Run私有保真实endpoint、work、capacity及rank守恒；Completed只有实际done阶段才生成items与原整池等式。实际run只按容量推进move，不读rank或meaning。每步rank精确减一，初始rank＝2×branches.length＋2×全部casePool长度之和＋2；run_sufficient由守恒生成足额完成，不收完成池或结果作为输入。零容量保原cursor；空源的一拍仍未完成，第二拍实际发出beginReverse／finish。meaning／pack／collect整表仅作denotation规格与证明，不能从这些字段获得未执行的权威输出。
+
+Payment.Collection.generateFor先reserve原fee且核原全部Index成功，再在funding.installed生成全新CrossFee；Reading保存Collection.run的源生成式与部分endpoint。Decision.reading精确保未完cursor；完成后Cached.budget／compile仅消费Completed.items，不再值层调用Pool.collect。locate／refine仍用已签收的原完整关系，is_original_full_choice只在Prop证明中经Completed.exact回接原pool的独立verify。
+
+缓存工作在同票前段，selectionSlot从实际run.work.length偏移；两类slot不重叠、整个slot单射、原invoice真实成功、spent＋unused守恒。query扫描只在剩余额度满足源形状界后执行，预留不足保reservePending。每条返回路径向实际candidate付款根或audit.cursor传完整新Result（含Reading、Decision、未完cursor与债），保原whole ledger及own next；empty／unpaid／zero也保实际原stage。新入口invokeWith分开fee／outer override并核原观察，默认none／none。
+
+这里结清显式native分支读取、Pick构造、逆转控制与既有查询／扫描事件；casePool低层读取、共同对手表／Tensor／预算与query程序构造、抽象原语内部及核验／安装等完整费用仍由原cacheRead等债保留。执行扫描才去selection，未执行仍保原八类债；比较范围仍为这次付后捕获池。
+
+#### 逐查询独立核验与实付中断
+
+Query.Core用Kind.truth与带精确计数证明的Kind.number携带Type0结果。Code只由pure、原始atom与bind组成，Kont保存真实后续程序；每个Phase.move执行enter／resume／finish或一个boolean、Key相等、Nat≤、ℚ≤、increment原语。Atom.perform只构造一次decider，事件的true／false从同一答案读取。State私有封装执行意义，只有实际done才暴露completed；Code.eval／Kont.apply及Code.cost／Kont.cost均是denotation或有限正规化规格，不进入runtime run。每步rank精确减一，Run保endpoint.rank＋work.length＝start.rank；run_sufficient证明足额容量完成，不以已完成答案作为输入。
+
+Source.Generic.lists逐位置比较，count对实际列表逐项比较并执行increment，subperm对每个原key独立计左右重数；不把List等式或Subperm整项decide放入一个atom。Profile六字段、admitted顺序、due重数、服务、完整future／funding、全部共同对手表及work／credit／innerq／invoice轴按原ResponsibilityLe方向编译。verify同时核candidate不劣reference与不存在池内严格支配candidate者；每个后续分支延迟到已有查询结果产生后执行。
+
+Payment.generateFor先reserve原fee、核全部Index成功，再从funding.installed生成fresh CrossFee与逐项缓存。公开口只收原prepared、预算override及reference／proposal序号；Session私有字段固定为实际cache.items生成的Source.verify与Query.run，不接caller Code、Check、Value或比较证明。review直接匹配实际completed：accepted生成原完整verify与Refined，rejected保精确否定，pending保原State／Code／Kont。pending_exhausts_actual_capacity证明未完成必耗尽真实剩余槽；它不把形状上界不足冒充不可行。
+
+Decision在缓存真实work之后偏移querySlot；同票成功、总slot单射、缓存与查询互斥及spent＋unused守恒。accepted交candidate.next，rejected／pending／noCandidate交reference.next，未读完／noReference保原audit cursor；所有分支携完整新Result（含Session、Verdict及剩余程序）进入自身actual root、whole ledger及next。invokeWith分开fee／outer override并核原观察，默认none／none。accepted_is_original_full_verification仅在Prop中经cache.exact回接原池；原任意adaptive opponent比较保持。
+
+本口生成独立proposal核验，完整自动选择继续走已签收父链，尚需原生消费这一逐查询机。八类computationDebts完整保留：序号查找与操作数／table／Tensor与Code生成、抽象原语内部、收费检查、预算／bootstrap／存储／安装等费用未由一个semantic动作事件结清。rank不是可实付报价，构树不是免费预先求值，实际查询完成不解除自动selection债。
+
+#### 逐查询完整自动选择
+
+Query.Refiner复用现有Kind.number(Nat→Prop)，将输出序号与Evidence置于同一结果，不扩充结果宇宙或引入外部选择器。Generic.scan从真实current及原序finRange开始，每项bind原始strict查询；false递归保current，true递归从head继续；递归只在查询答案返回的continuation内生成。返回序号的Evidence保在原池内、对入参current不劣，并不被已扫描清单中任一项严格支配；反身／传递律只以Prop使用，替换及保留两支各由实际答案建立不变量。
+
+program先执行native Nat≤检查reference界：失败输出0并证明原序号不存在，成功才生成单遍scan；选择完成后执行increment将实际选中slot编码成slot＋1。finRange保持原候选位置和重复项，严格改善才更换current，故同等／不可比较候选不被强制排序。Evidence.full_maximal把全部位置读回原pool成员；selected_is_independently_verified与every_available_improvement_is_selected由实际输出证据生成原完整verify、不劣／非支配及有改善则严格改善。其证明不在runtime重跑Choice.verify、Choice.refine、Checks.strict或Code.eval。Core的有限rank与run_sufficient直接覆盖整段选择程序及其真实中断State／Kont。
+
+Payment.Refiner.generateFor先reserve原成功fee，再在funding.installed生成fresh CrossFee与实际逐项缓存；Session私有run／generated固定为cache.items自产的Refiner.program，不接proposal、caller Code或已完成关系。finish直接匹配实际completed的Nat编码：0给精确absent，successor给实际slot与完整证据，none给pending。pending_exhausts_actual_capacity证明剩余槽真实用尽；sufficient_completes给足额容量完成，不读取rank来执行或预先选择预算。
+
+缓存与选择的所有显式query/control事件用原invoice按真实缓存长度分槽，成功、单射、互斥及spent＋unused守恒保持。selected交所选Pick自身next；absent交audit保留next；pending有原reference时交其next，否则交audit next；缓存未完保原cursor。全部分支携完整新Result、Session、残余Code／Kont与费用责任进入原whole ledger及own next。实际completed的selected／absent才去selection，pending及其他未执行分支保八类责任。
+
+finRange／序号操作数读取、共同表／Tensor／Code生成以及抽象原语内部和完整服务费用仍由七类原责任承接；它们不因已有query/control原生槽而结清。预算仍是原源选择或显式override；有限正规化rank不是实付报价。这里的完整关系作用于本次成功费用后的真实池，跨费用前缀的付前保全由active另列。
+
+#### 源结构足额执行容量
+
+CapacityBound.Core只用原始列表结构和各项原生动作容量生成纯Nat上界。pure为1、atom为2、bind覆盖所有Value的continuation；transport／negative加2，conjunction／implication用a＋b＋3，rows／lists每层另含transport控制，count每项真分支计test＋tail＋6以覆盖increment。countLe覆盖两个计数及Nat比较，subperm按原左表每项计数，原顺序与重复均保留。预算值不读取Code.eval、Code.cost、Check.decision或完成答案；cost／eval仅出现在Prop证明中。
+
+Shapes按原inventory、六字段Profile、legal／complete、全部经济轴、future／funding、完整共同对手表和work／credit／invoice结构递推，直接支配既有Query.Source各Code的cost。future的Option形状及原Table／Tensor操作数取自同一原池；不会把另一条实际路径或旧Check.work当成本次查询的上界。maximum在原pool²折叠Shapes.strict，涵盖单遍扫描中任意动态current／head；无集合去重或数值成本排序。
+
+Uniform.scan_bound以所有有限原序号的统一strict上界M覆盖每项的两条真实continuation，S(n)≤1＋n×(M＋3)。完整Refiner.program的reference Nat界查询、scan bind、真实increment编码及返回控制给B＝9＋n×(M＋3)。program_bound／initial_rank_bound证明B足额，source_capacity_completes直接以源B运行原Query程序并保证完成；rank不是预算生成器的输入。
+
+actual_session_completes消费既有Payment.Refiner.Session的固定自产程序与真实余量：B≤remaining则实际run完成；完成工作量也不超过B。actual_pending_is_below_bound只证明pending⇒remaining＜B。原机器仍按真实容量执行，remaining＜B不会提前生成不可行或停机；短路可能在更小容量完成，反控覆盖这一反例。源预算不改变原invoice、slot互斥、Outcome、完整Result、七／八类债或原root／whole ledger／next。
+
+本界覆盖显式原始query和选择control事件。取得inventory／Tensor／table等操作数、折叠原pool²生成预算以及Code／finRange／Nat内部计算、核验／bootstrap／存储／安装的完整费用仍由原责任承接。源B是可消费的结构容量；下节Meter以原成功资源实际计量预算算术，并把返回值交完整选择。操作数／代码构造、原语内部与完整资源供给由active继续推进。
+
+#### 预算算术实付与选择合流
+
+Meter.Arithmetic把预算中的Nat加法、乘法、长度、最大值与列表递推编为原Query.Code。加法每次实际increment，最大值实际natural比较，所有bind／resume／finish均由原Query.run记录。Number仅在类型中规定返回值等于源公式；Compiler只用小常数pure，预算值由执行返回的值串接，未pure完整B，也不运行Code.eval／cost求数。multiply和length的代码构树仍有递归求值；本关计量显式Query事件，不结清构树或抽象原语内部费用。
+
+Compiler按原inventory、Profile六字段、legal／complete、经济轴、future／funding、共同对手表及work／credit／invoice结构编译预算；原pool²最大值与长度再经真实乘加生成B＝9＋n×(M＋3)。Quote中断保存真实Code／Kont与工作词，不以公式的纯读回替代实际返回值。
+
+Meter.Payment先预留原成功fee，再从funding.installed重建CrossFee和实际Collection。Quoting仅用缓存后的余量执行Compiler.program；真实quoted.val送Sizing的原生Nat查询，与quote后余量减两步比较。Sizing完成恰有两个事件，不足两步保pending。实际isTrue取quoted.val为选择容量，isFalse取真正剩余量；后者仍实际运行，不把容量上界当最小不可行证。accepted_capacity_completes用quoted.property和原program_bound保证接受分支的完整选择实际完成。
+
+Decision.spent计缓存、预算、额度判断、选择四段真实work.length；covered／conservation与原成功invoice绑定，slot injective，quote／gate／selection直接偏移槽位两两互斥，与cache分离。全部阶段的实际Run及完成等式都在私有构造的Result中；中断保完整Result和原reference或audit next，完成才将完整责任证及所选候选自己的next交原whole ledger。pending八债／完成七债，只有selection得到结算。
+
+本关的table枚举与实际缓存接入由下节进一步闭合；操作数／Tensor／Code构树、抽象原语内部及完整协议费用仍保原债。原成功资源为实际成功账单，不由B制造资源。付前基准保全、跨费用、任意任务准入和动态全部开放未来由active承接。
+
+#### 公共对手表源生成与实际消费
+
+Operand.Tables.Core直接取这次完整实际cache.items，逐Pick.view发射scope，保原scopes顺序与重复。随后分frame、raw-frame／key、原dedup控制与Product阶段；Product.step逐read／extend／emit／close生成各key赋值表，不运行整张List.pi取数。Task.denote／rank及probes只作Prop语义和终止度量。Cursor.initial只有原池与空cached，move保存一枚实际source事件、发射表和残尾；私有Completed仅在队列空时从实际cached封装，items精确认回原跨费用共同域全部probes。
+
+Completed.at以extract读取这份实际表词；extract_indices利用原keys的Nodup与完整覆盖认回各index原tables，不更改表次序或重复。空pool仍对每个index生成唯一空键赋值表，不能把它当成没有对手。Cached.responsibility在运行数据上使用actual缓存；私有relationFrom的lookup等式由Completed自产，生成的Code等于原Source.responsibility。Cached.program直接用缓存strict，保持原完整Claim；Cached.quote从同一缓存执行预算算术并返回原B。等式用于Prop运输，未运行原tables重新生产runtime表。
+
+Payment先预留原成功fee并重建原CrossFee池；Collection完成后，Gathering用实际余量运行Table source。真实source完成值进入Quoting及Session，预算与选择共同消费此值；其后仍实际两步Nat额度判断。新增事件扣减余量，不伪造旧Query.run在未扣source费用时的generated等式。原cache／table source／quote／gate／selection五段work.length统一受原invoice覆盖；全局slot injective、cache与extra分离、四子段六对互斥共同保证五段不复用。
+
+Table source保存actual History、typed Cursor、完整工作词与守恒；中断保整个Gathering及原reference／audit next，完整新Result由自己的原根whole ledger消费。表生成完成本身不清任何费用债；只有完整选择完成才去selection，仍为原八／七债。全adaptive opponent覆盖沿精确原表与原Choice定理保留。
+
+范围是公共表的枚举／构造控制及实际缓存消费。Whole.frames和keysOf各宏步取得列表，Reaction.moves、append、dedup membership、extract与Choice.rival内部frames／keys重取的内部费用未结算；Tensor／Window／future操作数、Code构树、抽象原语及完整协议费用仍开放。后续封闭source-job机由active维护，不以本表缓存冒充整个取源／构树执行器。
+
+
+#### 逐步forecast源与实付成对消费
+
+Operand.Forecast.Core从原state／schedule／input／horizon建立空words、offset0游标。每拍直接以当前state及实际offset生成Feedback.word和Feedback.advance，保存完整partial state／words；Residual.run、forecastWords只在Prop规格中出现。私有Completed仅在offset=horizon时封实际产物，Run保实际History／work／残尾，精确work=min(capacity,rank)，足额完成；恢复从实际endpoint继续，未重置源或历史。
+
+WholeTarget按原keep／paid intent选原cursor或实际paid continuation point、schedule和horizon。完成words交原install，source_exact认回原Whole.target。Address从已完成公共表的index／table序号和原Pick池policy序号读取scope／intent，不接caller state／schedule／目标源。render直接消费该实际源，tensor_exact保原Whole.tensor；pairQuery限定同一table序号并消费两份实际Materialized，输出原Full.TensorLe全部字段的原生查询。
+
+Forecast.Payment显式消费原真实Quoting的余量，先运行第一侧实际source，完成后才运行第二侧，二者完成才启动原Tensor查询。已付cache／table／quote前缀及新增两侧source／query合计守恒受原成功invoice覆盖；全局槽注入、前缀分离与三子段两两互斥保不重用。Decision保完整typed中断与实际端点，reading／cache／quote／decision完整载荷交第一侧原Pick自己的next，全部八债不清。该内部consumer没有替换默认全池重选。
+
+本关闭合forecast循环及实际源到成对查询的实付消费。Feedback.word／advance与install内部、Window各字段、恢复／funding内部、完整Code构造和协议费用仍开放；render保原宏定义供后续逐字段展开，不把整个Tensor登记成一个已结算动作。全池Tensor缓存与预算／完整选择的实际读取由active继续推进。
+
+#### 全池forecast缓存与完整选择
+
+Forecast.Bank按原keys prepared、实际Completed.at的表序号及原pool policy序号列出全部地址。地址只有有限位置，不要求对Table函数或Pick判等；相同表值／相同policy值的不同位置完整保留。私有Cursor初始cached为空，Job只装该地址的原Forecast初态；每拍推进真实forecast事件；原源完成转同源窗口字段游标，两者完成才发射Value。Value保存实际Completed源、已完成window及由这些产物组装的Tensor，原目标只在Prop等式中认同，不用作运行时fallback。Cursor保cached keys与剩余jobs等于原地址词，Completed仅在无剩余job时封装，lookup沿实际缓存判有限地址并读取Value；不存在目标重算兜底。
+
+Bank.Cached.responsibility按index／表Fin地址读两侧cached Tensor，连同原inner work／credit、outer q／invoice完整字段，经rows_iff认回原ResponsibilityLe。预算shape与Meter算术也读取这些Tensor，maxPairs在全部Fin policy位置上计算上界，不运行Code.eval／cost求值。FinScan保原Generic.Evidence和Refiner.Claim，以位置传递strict查询，支持相同Pick值的不同出现；可用改善、全池非支配与独立核验沿原定理直接消费。原完整同adaptive opponent域未缩小。
+
+Bank.Payment从成功原fee后的实际Collection与公共表起步，Harvesting用真实余量运行Bank。只有全池Bank Completed才可开始报价，返回值经原两步Nat gate交完整FinScan；接受的实际额度保证完成。cache／table／bank／quote／gate／selection六段work守恒受原invoice覆盖，phaseSlot对任意不同phase统一证明互斥。所有pending保完整游标、缓存与History，完整Result载荷沿原reference／所选Pick own next交原whole ledger；只有选择实际完成才结清selection。
+
+该闭合覆盖全池forecast缓存与实际预算／选择消费。新公共Bank.Payment.invoke保默认参数与显式override；旧全局canonical入口未改。初始地址表构造、lookup／append、render及Window／恢复内部、Feedback原语、Code构树和全部协议费用仍开放；TensorGeneration债没有因缓存完成而删除。有限字段／capability行物化及付前／动态未来责任由active推进。
+
+#### 窗口物量与合法性实付折叠
+
+Native.Window.Fold从原bound／start／span生成全部原Settlement.materials位置与Job，保顺序及重复。debit／credit／admissibility的Cell从0与true起，remaining为原List.range span；每拍只消费当前offset，读actualExecution(start+offset)并累积实际totalDebit、负totalCredit或Open.Legal的Bool AND。balance与legality保实际amount／lawful加残尾等于原完整时间折叠。inventory与clock的静态Cell无offset，完成时读原终端。每个完成Row保存实际值及原Window.material／legal认同；Completed只在全部Job完成时生成，lookup沿实际缓存读取，对全部Material无重算fallback。工作量精确为min(额度,rank)，零额度保持原状态与缓存，足额必完成。
+
+Completed.evaluation实际material与legal从行缓存取值；complete／profile／native／unpaid／service保原直接读出，运行体不调用Window.evaluate或Window.material。evaluation_exact在Prop中认回原完整Evaluation。该共同源使预算与查询读取同一实际字段，不另造候选Tensor或比较端点。
+
+Bank的Stage.forecast完成后发begin，转由该次实际emitted source、原cursor.depth与Whole.extent生成的窗口Cursor；结构fieldCost只读原code与extent。窗口read／materialized逐拍推进，只有其完成才能发Value；Value含source与window，fieldTensor从窗口实值组装Tensor并认回原值。更新的Job.rank将窗口剩余工作与转换／发射纳入，原全地址coherent／Run／Completed、Cached与Payment接口保持；新增事件自动纳入原bank实付段、同成功invoice守恒与互斥槽。所有pending沿原完整Result.next保源、窗口残尾与原whole ledger／own next；仅完整选择完成清selection债。
+
+这里结清的是material／legal时间折叠及其实际全池消费。单次源读取、Open.Legal／totalDebit／totalCredit／terminal、lookup／Q运算内部与其余窗口／恢复／协议成本仍由原债承接。
+
+#### 服务双快照与完成度实付生成
+
+Window.Service对原task的全部Fin槽位逐个生成Cell，初态ordinal=0／first=none，不读完成历史。每拍在first为空时检查同源Native.Paid当前depth，否则保留更早first；first_succ从原Native.Prefix／advance给出精确后继，known把实际值认回原Identity.firstService已扫描前缀。到达start的那一步捕获saved，start=0直接捕获空前缀。saved:Option(Option Nat)保未捕获与已捕获none的区别；只有ordinal=start+span且saved已捕获才发Row，分别给atStart／atEnd认同。Paid0可真，但depth0保持none，只在succ1记some0。
+
+Service.Cursor保原完整Fin槽位次序、未完Cell与实际缓存；每行emit同时AND atEnd.isSome更新complete。Completed仅在残余Job为空时封装，startValues是实际行的起点值列表，at按有限槽号只读缓存，complete_actual与原all终点读数认同。Report.Cursor先逐拍运行原material Fold，完成后以一个明确事件启动同源Service，再逐拍运行至完成；rank与结构capacity精确覆盖两段和转换，work=min(额度,rank)，零额度保持，足额完成。
+
+Report.Completed.profile显式保原五个金融／control字段，firstServices读services.startValues；evaluation的complete读已累积Bool，service轴读atEnd并用原finish缺省值，material／legal读原实值缓存。运行体没有Identity.firstService／historyAt重算，也没有Window.profile／evaluate整块重建；profile_exact与evaluation_exact在Prop中认回原完整结构。原Manifest和unpaid仍为直接读出。
+
+Bank的FieldCursor／Done由material单段改为Report，仍绑定同一实际forecast source、原depth及Whole.extent，fieldCost只依赖code／depth／extent。Report服务read／emit各映射成原Bank事件，完整Value.window及partial Report随原六段成功invoice／Result.next进入原整账和所选own next。原完整责任查询、预算与Refiner.Claim实读新Tensor；原八七债处置保持。
+
+服务字段实付不结清Native.Paid／源读、缓存／数值／Code或其余金融／Manifest／恢复／协议内部工作。其责任由唯一active推进。
+
+#### 金融原生前缀与双账本实付生成
+
+Window.Finance固定同一Authority.Bound的实际source.input，从Financial.process.initial空账生成完整金融历史。Cursor保ordinal、当前GeneratedState、saved:Option GeneratedState；known将当前值认回accountAt ordinal，checkpoint区分尚未到达start+1与已保存该cut。每个move调用原Financial.oneVisit input (ProgrammeHistory.visitAt input ordinal) 当前ledger，随后ordinal增加1；该值只使用实际前驱，不在运行体中调用accountAt或读取Window.first／last。到达start+1的这一步保存next，到finish=start+span+1时仅从saved和当前ledger封装Completed。私有mk及依赖参数保证源、窗口与账本不能替换。
+
+rank=finish-ordinal；每次实际visit严格减1，真实History保每次move；run的work=min(额度,rank)，零额度保持endpoint，足额完成。capacity=finish只依start/span。这里计入的是原native金融visit外层推进次数：一次oneVisit内部的inventory／consumeOrigins／allocation／review仍由原计算债承接，没有把全部访内工作声称为一枚已支付原语。
+
+Completed.originalDebts对实际atStart读financeImage，admittedDebts对实际atEnd读financeImage并按atStart槽数drop，unmatchedClaims对同一atEnd读ledgerClaims。三个等式在Prop中认回原Window Profile字段。它们已经改读实际产生的完整账本；各slot-map和instrument×party×party折叠本身仍为有限读出，未声称逐槽费用闭合。rights／unpaid保持原Migration路径。
+
+Report在原material／service完成后以明确beginFinance事件开始同源Finance，再逐visit消费。Completed只在三段均完成时封装；profile显式消费上述三个金融读数，保其余字段，evaluation_exact保原完整Evaluation。Bank把beginFinance和每个finance depth映射为新事件，fieldCost与rank新增finish+1；事件交原bank票，实际及partial Finance状态随原六段invoice、完整Result、原whole ledger和own next保持。原完整责任关系与Refiner.Claim不改。
+
+#### 金融原指令逐项实付
+
+Finance.Origin从同一Financial.process.initial空账与ordinal0开始。beginVisit载入当前ProgrammeHistory.visitAt的原inventory；Batch同时保remaining、与原清单的后缀等式，以及consumeOrigins remaining ledger等于同一次accountAt后继。每个origin拍从remaining取head，以原Installation.sourceAction.next推进实际累积账本；sourceAction_is_actual_consumer精确接回原consume.next。remaining弹出一项，行政行、拒绝和非金融retain同样计拍。finishVisit仅在remaining=[]时提交ordinal+1，按start+1捕获saved，finish=start+span+1封装同次双账本。没有按position重算已付金融前缀。
+
+每次move都产生beginVisit／origin／finishVisit之一，History与Run保真实轨迹，完整原后缀与partial账本可续行。逻辑rank在未开始visit时为其余inventory.length+2之和，当前batch则为remaining.length+1加以后各visit的和；两个边界拍真实收费，故每步减1、work=min(额度,rank)、零额保持与足额完成精确成立。
+
+laterWork／capacity、Accounting.rank及Bank.fieldCost／rank均为noncomputable数学势函数，只在证明字段和终止定理中使用；运行move／run／Payment仍由外部原票fuel驱动，不调用势函数或Whole.target重算未来源。Bank.fieldCost可在数学规格中使用目标源给出相同势；boundFor把同源Source与target的绑定构造共用，fields_rank仅在Prop中消费原source_exact。普通def把capacity当运行预算会被Lean编译器拒绝，正式反控由#guard_msgs验收；这不等于已经生成执行前预算。
+
+Report.Accounting保原material／service两段，再逐项消费Origin，完整Evaluation等于原Window.evaluate。Bank.financeEvent同时携带原Key、实际Done source与完整Origin.Event，原origin身份及依赖源不被投影丢弃；新增所有事件交原Bank.work和原六段invoice，完成或partial结果走原whole ledger／own next。旧Report／Finance独立接口保留，父consumer原字节继续通过，实际Bank仅走新Accounting。
+
+此项结清访内原指令逐项消费；当前inventory生成与单个sourceAction内allocate／review、金融slot/holder/claim字段循环、其余Manifest／恢复／funding及全协议成本仍是原责任。
+
+#### 金融槽位与实际记录字段实付
+
+Finance.Fields直接消费Origin.Completed的实际双账本。records取end.current.history.drop start.current.history.length，finalSlot读取end的原槽位；这两者的运行数据来自原sourceAction逐项生成的账本。records_exact用Run.history_eq及List.drop_left在Prop中认回fromActualCut的事件，finalSlot_exact认回原Migration.slot；reference为noncomputable规格，不提供运行后缀或目标账本。
+
+Mapping每拍取一个原槽，缓存旧债与先drop后的新准入债务。Rows对每个原键保remaining、amount与完整和的不变量，每拍读取实际head并累计，余项为空才发射实际行。债权键为原instruments×parties×parties，逐终端槽累计slotClaims；持有者键为原Fin槽位×parties，逐records按稳定slot身份累加sourceEvent的实际received。holdingEmit从实际终端slot生成owed并与累计实收相加得到right。所有重复键和清单原序保留；空源行仍有一次发射，空键清单直接完成。
+
+四段Cursor按旧债→新债→债权→持有者推进，三个转换均产生真实事件。完整缓存输出originalDebts／admittedDebts／unmatchedClaims／rights，以及所有Nat槽位的unpaid（域外为零），精确认回原Window.Profile与value。History由实际move构造，work=min(票额度,rank)，未完状态和零额保持，足额完成。capacity及Report／Bank的rank为noncomputable证明势，普通运行def读取它或Migration参考会被编译器拒绝；普通move／run仍可编译。
+
+Report.Fields先生成原Accounting，再从其实际finance产物启动Fields。它显式构造Profile六字段，不先计算旧完整profile再覆盖；value.unpaid读新实际缓存，物量与服务复用原缓存，整个Evaluation保持原值。Bank.windowEvent携带实际Key、同次Done source和完整Report.Fields.Event，包含实际origin、槽、键、记录和阶段事件；原bankWork计数与成功六段票据结算全部新增事件。完整选择、原责任／pending／whole ledger／own next消费保持。
+
+此项结清金融有限字段的逐槽／逐记录生成；单槽DebtImage内部、源清单和lookup／copy／数值原语及完整协议预算的费用由原责任保留。control／Manifest与恢复／funding仍由后续源生成口承接。
+
+#### 清单与终端控制逐项实付
+
+Window.Manifest.Worlds.Cursor从同一ProgrammeLiving root的initialVisit开始，ordinal为0，缓存为空。每次move读取当前visit的occurrenceImage，追加一行并以visit.next rfl生成实际后继；known在Prop中认回ProgrammeHistory.visitAt，coherent认回0..<ordinal的原世界序列。ordinal=finish时生成私有Completed，世界行正好覆盖0..<finish，保存的visit正好为finish终点；从该同次visit.current的rawCurrent生成control三字段，不重放终端前缀或金融fold。
+
+Manifest的其余四段复用原Authority.recordsAt／challengesAt原生清单。旧授权逐记录生成start−1与start+span−1的两次grantImage，严格保birth<start；新授权严格保birth<start+span。旧挑战逐记录生成claim／原状态／through finish状态，新挑战生成claim／当前状态。Mapping逐head保存实际变换产物，拒绝授权保存空段但仍发出原record事件，完成后只flatten已生成段；原序、重复与未付remaining保留。原source清单及grant／challenge内部历史仍是独立成本。
+
+主Cursor按worlds→旧授权→旧挑战→新授权→新挑战推进，四个转换与全部读取发出Event。History由真实move建立，work=min(额度,rank)，零额保状态，足额才完成；全五字段manifest_exact和control_exact认回原Window。rank／capacity为noncomputable证明势，普通运行def读取capacity被编译器拒绝；执行由原票fuel驱动。
+
+Report.Manifest先消费原Report.Fields，再启动同源Manifest.Cursor；Profile六字段显式复用原金融／服务缓存及新control，Evaluation.native直接读新manifest，完整Evaluation等于原值。Bank.windowEvent保同次Key／Forecast.Done source和完整typed窗口事件；所有新增work交原bank票段，完整责任／全对手非支配、完整pending、原整账和own next保持。
+
+此项结清Manifest逐记录和终点控制生成；root.next、原清单、grant／challenge through与image／list等原语内部、恢复／funding及完整协议预算费用由原责任承接。
+
+#### 逐词联合恢复与资金缓存
+
+Forecast.Restoration以同一Online.Cursor、pricing、实际SameCodeTarget和count为索引，initial只载原capabilities清单。generate对一个实际词调用原Future.produce：拒绝保原PLift非法证据，成功保同次传输Receipt与Recovery.produceWith所产Output，Output保实际walk与原根native责任。Row的私有构造同时存Outcome及生成时物化的value；generated与value_generated把该value认回同次Outcome，不把报告或资金失败作为producer输入。
+
+Cursor每次move仅取remaining的真实head，生成一个Entry，同时追加缓存并发出该完整Entry；coherent保cached.keys++remaining等于原词清单。重复、原序与partial状态保持，只有remaining=[]才生成私有Completed；History由实际move构造，work=min(额度,rank)，零额保持，足额完成。capacity为noncomputable证明势，运行仍用原票fuel。
+
+Completed.at使用依赖词lookup取得实际Row；read以实际缓存keys判断，命中直接读Row.value，未命中才调用同一actual source原restoration。使用分支而非eager getD，避免命中时执行未用的回退。read_exact保持整个原函数；read_from_cache与cached_future／cached_funding证明原比较清单内两投影共读同一物化value。合法但未登记的词保原入口，不能被缩成none；原Query.Source.tensor只查询生成的capability清单。
+
+Bank在window完成后进入restoring，不提前构造Tensor；restorationEvent携带同次Done source与完整依赖Entry，词内Receipt／walk／value身份保留。完成Value只含source／window／recovery，tensor从这三者派生，exact_tensor是认同定理。该Tensor的present、future与funding交原完整查询／报价／非支配选择；新增begin、每词生成与最终emit进入原bankWork及六段成功invoice，pending／原整账／own next保持。
+
+此项结清原比较域的联合恢复结果物化和消费。cap源、Future.produce／produceWith、search／walk、未来报告窗口字段、Funding.ofWalk与其他原语内部及完整协议预算费用仍由原责任承接。
+
+#### 实际恢复单步与同次执行历史
+
+Recovery.Source.Stepper.Task.advance以当前Recovery.Cursor为输入。ready分支按原Pricing生成一层实际迁移；batch成功扣费后保charged Point进入searching，下一步只从此Point决定推进或阻塞。workload与quoted保同次原Metering.Stage。Segment是billed／advanced／workload／quoted四种迁移的索引类型，wrap与event来自同一构造子，event_exact给出事件和实际Walk节点认同。终止事件由headEvent从实际叶节点生成，不接受分离的事件标签。
+
+私有Running保存当前Task及已走前缀的Walk续接。initial只创建ready与恒等续接；move只执行一次Task.advance，继续时保存当前Point及前缀，终止时将实际叶接入前缀而生成Completed.walk。canonical把该结果认回原Pricing.execute；expected和rank为noncomputable证明参照，运行数据不从它们取完整Walk。History记录原move，Run保真实endpoint、work、额度与耗尽；work=min(额度,rank)，足额完成。
+
+allowance直接读取当前残尾长度，取2×length＋1。execute_bound／paid_bound／workload_bound／quoted_bound对原严格消耗残尾递归证明此上界，合成pricing_bound。Stepper.execute用该源额度运行实际游标，并把同次Run、Completed和at_end一起保存于私有Execution；Execution.output经Runtime.Output.fromWalk从该完成Walk生成原Output，output_exact认回produceWith。工厂消费给定Walk／生成等式是内部组装口，公开execute不把目标Walk或完成证书当输入。
+
+Forecast.Restoration.Trace按同次Outcome索引。row对真实word只调用一次Future.produce；拒绝保存同一reason，成功只生成一次Stepper.Execution，Outcome.Output由该Execution的完成Walk产生，Trace保存同一Execution／Run／work。Row.value仍在此时物化，generated与value_generated认回原联合恢复函数。Bank原restorationEvent携带完整Entry，因而直接保该同次Trace，完整责任／全对手比较、原whole ledger和own next继续消费。当前原票按整词结算，Trace内的步骤尚待逐项接入原票；Stage／报告／Funding及原语内部费用另由原责任承接。
+
+#### 词内增量恢复与原票逐步结算
+
+Stepper.Session保存当前Cursor、已发work及从同一initial到当前Cursor的实际History。initial不取完成对象；move只调用一次当前Cursor.move，追加原事件并以History.append延长同次历史。rank就是当前Cursor.rank，move严格减1，conservation把未完rank与已走work认回原初始步数。completed只在当前游标完成时调用owner内Execution.fromHistory，把原endpoint／work／History与该完成对象封装为Execution；Run.covered从实际History守恒与已证残尾额度得出，完成不执行run或execute。
+
+Restoration.Cursor有ready、recovering、reporting与下述financing状态。ready仅从原remaining的head调用一次Future.produce：拒绝生成原reason行，成功发出begin并保存同次receipt、produced等式与Session.initial。recovering每次发出一个advance，其类型保同词receipt、前后Session、原事件与before.move=some(event,after)；不能把未完Session变成Completed。Session完成后保存同次Execution／Output并交下述reporting字段阶段；报告完成后交下述资金阶段，两类结果均完成后的独立emit才物化Row.value与原Row.Trace。remaining在emit前保word::tail，cached只在实际行发出时增长，原顺序、重复与部分状态保持。
+
+每词证明势wordCost为拒绝1或成功恢复steps＋同Output报告字段capacity＋同Walk资金steps＋4，listCost／capacity对原capabilities逐词求和；Bank.restoreCost以同次Done.source经source_exact认回原Whole.target，pricing和count不被消去。Bank原restorationEvent改为完整Restoration.Event，begin、每次advance、beginReport、每次field、beginFunding、每次资金inspect与最终emit各成为一个Bank.move，原Payment.bankWork与phaseSlot直接按真实Bank.Run.work计入同一预付成功invoice。实际槽单射、六阶段互斥、spent＋unused守恒仍由原票消费者兑现；容量耗尽保Recovering.Session于原Result完整payload，再由原whole ledger／own next消费。
+
+原完整Tensor／责任关系不改变：完成缓存的read仍为原联合恢复函数，报告与资金失败共读原存储value，清单外保同源fallback。generate／row继续提供旧独立入口，增量Cursor不调用它们整体重跑。恢复循环、报告字段与资金递归均已接原票；Future.produce、Stage内部、叶节点判断与字段内原语及完整协议费用由唯一active推进。
+
+#### 同次恢复输出的未来报告字段
+
+Assessment.Fields以实际Output的bound、请求start和finish.depth-start别名化既有Report.Manifest游标。report读取完成缓存的evaluation，经made.source_code_is_the_target_code.trans sameCode运输到原Report类型，consumed直接取同walk；report_exact由既有evaluation_exact和两次运输合成证明认回原reportFrom。此认同对任意start成立，不把code相等当作深度关系；原earlier终点定理的binder不变。
+
+Restoration在同次Session.completed后保存execution、该次made及generated等式，发出beginReport并从Fields.initial启动私有Reporting。每次field保存同word／receipt／made、前后字段游标和真实move等式；不完成的字段游标与同次Output随原未完payload保留。Row.reported保留独立builder语义；主路径在fields.completed后保存完成字段并交下述资金阶段，Row.funded消费两类完成缓存。Trace.reported与Trace.funded均保同次execution／Output认同；最后emit才pop原词并追加缓存。
+
+成功词证明势为恢复steps＋同Output字段capacity＋资金steps＋4；Recovering保后置字段与资金费用，Reporting保当前fields.rank＋资金费用和两次阶段发射。进入reporting时，Execution.output_exact仅在证明里把实际Output字段势认回原势，不运行参考恢复来求fuel。字段每一步已通过原Restoration.Event进入Bank.restorationEvent，原Payment.bankWork和phaseSlot按同次实际事件工作占原预付成功票；Bank.Core／Source／Payment无需修改实现。原完整Tensor／任意对手比较和Result各分支的whole ledger及own next保留。
+
+原generate／row独立入口及清单外fallback继续保语义。资金递归见下节；Stage内部、字段单步内原语和完整协议费用由唯一active推进。
+
+#### 同次Walk的资金递归与原票结算
+
+Funding.Source.initial只消费已生成Walk，不取完成Failure或额外成功前提。私有Cursor保当前Focus及current.value=Funding.ofWalk original的证明；coherent只作语义守恒，不计算运行时目标。Focus.walking保存当前Point与该实际Walk后缀；move按构造子析构，billed／advanced／workloadAdvanced／quotedAdvanced只携带原later，叶节点原样构造typed失败或none。Event.inspect标记检查原Step节点，不重复其恢复动作。
+
+Focus.move_preserves对所有Walk构造子保原ofWalk；rank取当前后缀steps，done为0，每次实际move严格减1。Completed仅在done时封装已存value与认同证明。零额run保原游标，History／conservation、精确work及足额完成由同次迁移生成；不调用Pricing.execute、Task.expected或原资金递归重建后缀。
+
+Restoration.Reporting完成字段后发beginFunding，原Financing保存同次receipt／execution／Output／generated、完整报告字段及Source.initial made.walk。每次funding事件保前后资金游标及真实move等式，暂停保原未完词／cached／完成字段／当前资金后缀。仅在资金完成后，Row.funded以Fields.report和funding.value物化原联合value；Fields.report_exact和funding.exact_value认回原Outcome.value，Trace.funded保两类完成产物。
+
+每个检查进入原Bank.restorationEvent，再由原Payment.bankWork按Bank.Run.work计入原预付成功票和互斥phaseSlot。资金不是另立总计数器，Bank.Core／Source／Payment实现字节保持。proof-only fundingCost由同次Output.walk步数给出，公开游标仍按实际票余量运行，不用参考Walk求运行时fuel。原完整Tensor／责任／全对手域、各Result分支整账与own next保持。
+
+#### 逐请求Replay与同次缓存消费
+
+Mandate.Replay保Path私有构造子，在原owner提供Materialized.empty／refused／accepted。装配只接受当前请求的实际rebase等式与Valid或拒绝证明、以及对应step后current的已完成tail；接受节点用保存emitted和tail缓存构造四项结果，拒绝保head::tail原残尾。所有Path由exact_compile认回原确定compile，四个缓存各有精确对应证明。
+
+Replay.Source.initial只取原base／scope／current／word。typed Spine保已经接受的原请求与其实际emitted、rebase等式、Valid证明及step后current；reading每次只处理一个原请求。首拒或空词后进入building，每次仅取一个已有frame并调用owner装配，最终finish交完整缓存；没有运行时compile、反转或Path字段整段递归。
+
+rank为reading的2×remaining.length＋spine.length＋2、building的spine.length＋1、done的0。每次move保after.rank＋1＋event.released＝before.rank；首拒释放的是未执行后缀的计算势2×(tail.length＋1)，其它事件为0。Run保实际History、容量覆盖、耗尽状态及rank＋work.length＋released守恒。capacity＝2×原词长＋2只读原输入长度，由run_sufficient证明执行必完成；Execution封装该次Run终点与其Materialized。
+
+Recovery.Source.Cursor.feeReplay／attemptReplay从当前before和具体fee／residual调用execute。charged以局部绑定的同次cache.output发原费用事件；attempt以同次cache.output／consumed／residual发原重试。cache精确证明只在Prop中建立split及旧feePath／attemptPath投影认同，运行体不从Path重读字段。Walk通过原emit的历史及源事件不变量继续保持原cut／pending／原词位置；Bank.Core／Source／Payment重编及原父consumer消费，完整责任与自身next保持。
+
+本机制提供Stage可以持有的请求级子游标。请求子事件进入Bank计票、Stage与search其余内部生成、原语／服务与完整协议费用由唯一active推进；首拒的计算势不作金融退款。
+
+#### 双发票Stage的同次源程序
+
+Replay.Program.Code由done与replay组成，replay携当前cut、原发票词和接收该词Materialized的typed continuation，depth每层递减。Cursor.ready先begin，reading持真实Source.Cursor；每个实际子move转为request事件，child完成才collect该缓存。没有完成缓存时不得进入continuation；有限run保存当前Code／child及实际History、调用额度覆盖与耗尽状态。
+
+Program.execute按有限Code递归：每个replay仅生成一次Source.Execution，History.child把该次子Run的原work／History提升为request事件，collect只消费该次cache，然后接续后续Execution。完整Execution保存value、work与从ready code到done value的实际History；Execution.replayed由确定move历史证明相同长度的partial run到达这个value，不在证明中重跑领域求解。
+
+Metering.stageProgram只从原cursor和Nat报价位置开始；Quoted.stageProgram保原Fees.construction及selection两个词。第一invoice从cursor.before发起，first.output直接append生成实际built。只有first.succeeded才构造第二invoice，报价单位数来自此built后的原catalogue，第二cut是built.before。第二cache直接生成staged，成功才进入原restored搜索；拒绝分别生成原constructionRefused／comparisonRefused与相应实际付款端点。Result.canonical认回原run，cached_charged只在Prop中认回原finish涉及的费用动作。
+
+StageValue保存已生成result／endpoint及两项认同，构造子私有；Stage私有载荷现为下节StageProgram.Execution；固定Stage Code以NativeProgram承载两张invoice与中间目录effect；每张invoice leaf仍用Replay.Program，搜索由其实际Tail单独承载。result／generated／endpoint／exact继续是同次execution.value的投影，不重新执行run、Result.finish或发票compile。原Walk／Stepper继续保存这一made及endpoint，Bank／完整责任与own next直接消费者重编保持。
+
+Stage程序的实际发生由下节默认逐事件入口消费；内部计算费用由唯一active推进。
+
+#### Stage逐事件实付
+
+Program.Session持固定Code的current／work／History，move消费当前一个事件，completed从实际done封装owner Execution；Execution.unique认回同code完成值。两类Stage的统一owner见[发票与搜索Session](#发票与搜索的统一逐事件session)，发票与搜索的实际事件均经该口逐项交付。
+
+Recovery.Micro保旧Stepper.Cursor或进行中的StageProgram.Session。begin及程序事件不改变旧世界，完成才由同次Stage产生原Next和world迁移；move_core保原Stepper.History投影，move_decreases每步恰一格。Micro.Session的coarseHistory生成原Stepper.Execution，报告与Funding.Source仍读旧Walk；Funding节点检查保原Stepper.steps。
+
+默认Restoration每次Owner→Micro move产生一个advance，Bank包装成一个restorationEvent并加入work，成功invoice的bank段slot逐项互斥，与其余五段不交。coarse投影删除内部事件不删除Bank工作。执行体不读noncomputable势求fuel。
+
+#### 搜索评分的同次源程序
+
+原Ranked／rank／prefer／choose及费用规范搬到Metering.Selection，原namespace／签名保持。Selection.Source的SearchSource.Scored以原stage及preparation为索引，私有载荷是两枚实际Replay.Materialized；retryPoint只消费prepared.output，质量由缓存succeeded及retry.consumed.length生成。准备拒绝仍保该候选和retry，评分为零，保持原无条件Proposal.word／endpoint语义。
+
+Scores stage preparations按完整列表索引，nil／cons保存原顺序及重复；compile对每项发prepared与retry两次Replay，mapResult只重组typed continuation结果，不重跑子解释器。program从[]基线加原catalogue生成固定有限Code；完整Execution保存真实work／History，现有Program.Session可逐事件暂停并从实际完成历史生成同code Execution。
+
+Winner.prefer只比较缓存Nats，相等保左；Scores.fold_exact及winner_exact认回原cached Ranked fold与choose。Execution.endpoint从胜者两枚缓存的output／consumed／residual直接Cursor.emit，endpoint_exact认回原restored，不另跑compile／replayPreparation。目录、原Stage及原Program的外部输入均不包含完成评分或胜者。
+
+普通与Quoted.stageProgram在实际第二invoice成功后，生成持同次staged／catalogue的搜索Tail；统一Session逐步消费其SearchSource程序，实际完成Execution的缓存endpoint成为StageValue.endpoint，archive保其stage／catalogue／Execution。SearchEvidence按Result构造子索引：searched必须持archive及archive.endpoint＝同一StageValue.endpoint，其他分支为PUnit。原Stage四读口、原根整账和own next继续消费；两费用词与拒绝端点保持。
+
+SearchSource保原评分程序及兼容History；默认搜索由下节SearchPaid联合评分与逐项比较Session，逐move交原Micro／Bank。quote／catalogue及原语内部实付由唯一active推进。comparisonUnits的requestVisits上界保持，不将新增程序总事件数冒充已预留单位数。
+
+#### 发票与搜索的统一逐事件Session
+
+Selection.Comparison消费同次SearchSource的完整typed Scores。Cursor.state保未处理Scores与当前Winner；baseline作初始Winner不发比较，其后每个catalogue位置一次Primitive.compare：真实Decidable(left.value+1≤right.value)同时生成选择与naturalLe(left+1,right,answer)事件，false保左。该Nat atom位于Recovery下层；上层Query.Core经NativeAdmission／Tensor／Recovery.Funding依赖Stage，不能反向导入。
+
+History只由Cursor.move生成，value保持旧Scores.fold，rank每次减一。私有Execution保存实际完成Winner、work与History；winner_exact等于原fold，work_length等于catalogue.length。Session保实际暂停点与前缀，completed_work／conservation保证每项比较只支付一次；empty目录直接完成，重复候选仍逐位置比较，准备拒绝项保零质量及原retry缓存。selected.endpoint直接从完成Winner的两段缓存Cursor.emit，endpoint_exact与chosen认回原restored／choose。
+
+Selection.Paid中的SearchPaid.Execution私有保原source评分Execution及只按source.value索引的Selection.Execution。work为原Replay事件map replay与比较事件map comparison的拼接；replay_work／comparison_work精确给出两条完整投影，comparison_count等于cat.length，work_length等于source.work.length＋cat.length。评分和比较各只产生一次，没有caller提供完成缓存或endpoint。
+
+SearchPaid.Cursor.scoring持原当前评分Session，selecting持同次已完source及当前比较Session。评分完成后只读取其value启动比较；非空首move就是第一真实comparison，空目录在原完成点给出零比较回执。完成须由该当前Selection.Session封装，无先验未来fuel或第二次fold。Session的History／move_appends／move_decreases／completed_work／conservation认同连续工作及同次完成。
+
+Selection.Stage中的StageProgram.Code固定为NativeProgram.Code (Choice R) 3，顺次承载两张invoice和中间目录effect。Tail保实际staged／catalogue及只接收该SearchPaid.Execution的finish；统一Execution保实际invoice及可选同Tail搜索完成。完整native work直接保留，search事件通过NativeProgram.Event.search保原replay／comparison身份。Cursor.invoice未完只走一次原Session，完成search时直接消费SearchPaid初始的一次真实事件；Cursor.searching只走当前搜索Session，全部比较完成才给StageValue和Archive，不生成handoff付款。
+
+Metering／Quoted的成功invoice continuation返回search Tail；finish只用实际搜索的缓存端点构造原Result.searched、canonical、endpoint认同和SearchPaid.Archive。Micro.WorkSession／QuoteSession接该owner，ProgramEvent alias认同联合事件；每个replay／comparison独立经过workload／quoted、Restoration.advance和Bank.restorationEvent进入原成功invoice的bankWork／互斥slot。原World只在全部完成后迁移，完整责任与own next直接消费。
+
+
+#### 目录与额度的同次源程序
+
+Selection.Catalogue中的CatalogueSource以Input保存source生成的menu／work／actionLimit／count range／原残尾长度。Job.counts只保原count后缀；word保production／stem／depth；branches保当前stem与菜单位置后缀。Cursor.move逐项发counted／emitted／prefixed／closed，word先发当前stem，再按菜单原序递归其子树，严格重现原words的前缀递归顺序；不按长度重新排列，也不去重。
+
+Job.rows及Cursor.meaning只用于证明，表示已发rows＋未处理描述符。move_meaning保持完整源目录；History.rows／Execution.emitted_rows把全部真实emitted事件投影认回最终rows。wordCost从菜单长度和depth递归，Job.cost覆盖count／分支关闭及每个word；move_decreases每步减一，run据此良基终止，不先生成未来目录求fuel。私有Execution／Session持同次History、实际endpoint、work和未完状态。
+
+units初值1＋pendingLength，每个emitted row仅累加charge＝1＋pendingLength＋3×row.length。move_accounting及History.accounting给units_exact；source以真实收费后Cursor、原head.signer及原residual取得Input，source_rows精确等于原Search.repairs，source_units精确等于Metering.comparisonUnits original rows。原Scope的Search.Counting/Context授权目录属于另一母源，不作为这里的producer或预算前提。
+
+Metering／Quoted的first invoice成功continuation建立目录effect；Native解释器实际推进该CatalogueSource.Session，并将同次完成Execution交给后续continuation。catalogue／units直接读取该Execution.rows／units，第二invoice请求实际units，搜索Tail保持同一rows。CatalogueEvidence在comparisonRefused与searched两支都要求Archive绑定原charged-built、head.signer及原residual；searched另认同该Archive.rows就是同次SearchPaid archive.catalogue。Stage.catalogue读出这枚保留回执，拒付不会丢掉已发生的目录工作；首invoice拒绝不产生目录。
+
+NativeProgram.Code原生表达replay／catalogue效果；默认Stage按first invoice→CatalogueSource.Session→second invoice→SearchPaid推进。replay leaf复用原Replay.Program.Session；catalogue复用原CatalogueSource.Session。Cursor只访问当期子Session的completed／move；完成才将该子Session产出的Execution交给next。暂停保实际子游标和已发前缀，不重算目录；Code的有限深度约束continuation嵌套。
+
+Event.catalogue独立于replay／comparison；Native工作流为实际child.work的标签映射及后继work，done发一次finish，每张invoice leaf自身的finish亦保留。Cursor.move_appends每步只追加该事件，move_decreases每步rank减一，Session.history从原ready保存真实移动；completed_work认同最终work。非计算Cursor.rank可以引用默认完成值作势能，运行时move／completed不读取rank或执行未来next。私有Execution／Session避免调用者伪造child回执或跨Code替换。
+
+Stage完整保留Native工作流，并将SearchPaid事件逐项嵌入相同Event。Micro.ProgramEvent直接别名该Event；workload／quoted游标逐次消费Stage Session，fullWork包含新增目录与控制事件。Restoration.Event.advance持该次Micro.move见证，Bank.Event.restorationEvent保该事件；Bank.run以已给余额逐步推进，Payment.Decision.workAt 2／phaseSlot把每个实际Bank工作序号注入Opened原成功invoice，槽位及跨phase互异。该事实给逐实际事件预付及余额不足时的真实暂停，不把有限余额的covered定理解释成整轮足额界。
+
+CatalogueSource.source的menu／limit／range、输入及Code构造、列表和算术原语内部等完整费用与原comparisonUnits的业务请求预算分别核算；付前保全、自动足额预算与动态未来的当前责任由唯一active维护。
+
+### 全部挑战目录与实际rivals缓存
+
+Offers.start取原all.entries.attach，逐readyOf跳过非released或进入该owner的原Enumeration.start。source-only调用原move，复用BranchSource、Cartesian构造、逐Section准入及原前缀／filterMap认同；进入searching.candidates前由SourceOnly封印cached=policies。外层随后逐项发射Offer，精确保原offers顺序／重数，包括未被owner选择的全部合法Section。Cursor.owner保who和其实际源态，付款owner由外层Joint另存，二者不混同。
+
+Joint在probes完成后进入challengers阶段，完整挑战cache才交原本owner政策生成／Search。initialUsing直接把该cache存入Frame.rivals，moveWith保持原Maximal／Strict语义且逐状态等于旧口；旧Using API保留。一个execute／History及当前payer原invoice tail支付共同表、全局挑战源、当前owner政策／准入和核验；不足保新游标、两个cache和真实已付前缀。原Runtime无需新wrapper，重新严格编译即读完整新Record与同原root／ledger／next。rank／denote只用于证明，execute不求其值。
+
+源入门仍接原已生成all.entries与pool，Accepted／benefit原生内部、branch/frame/key/move/membership内部、外层report选择及完整费用由唯一active承担；本关支付的是逐源控制／构造／原生调用事件，不把这些内部展开冒报为已付原子。canonical新预算行首写、任意新源和动态全部开放未来继续保原债。
+
+### 共同对手域源生成与实际probes缓存
+
+Common.start只取原all.entries.attach，逐条readyOf判别；released项才进入该owner自己的inner catalogue quota，逐enter／stage yield一次ready scope，stopped／blocked继续。Cell保来源owner及其原paid family scope，project仅用该owner paid_point运输到原点；Common.every_offer_scope_is_included由原branch.scope_included给覆盖，不输入Accepted目录。Choice.scopes改用此源域；the_source_domain_preserves_every_old_pair_relation给新旧表上任意完整Tensor二元关系等价，无需让不同域table列表或不同owner实际账本相等。
+
+Joint.Task从每原Index的Common cursor开始，完整scope cache逐项生成Whole.frames；逐frame取得原生Residual.keys后，逐raw key形成完整原键流，再按原List.dedup保最后一次出现的规则逐决策去重。实际key cache才初始化Product.build，逐Move assignment发出table probe，不输入完整tables／probes。每phase保源等式，Task.rank仅用于完成证明；实际额度仍为当前payer owner原tail。frames／key的原生函数内部和membership扫描没有伪装为逐原子已付。
+
+缓存完整才由prefix＋residual=probes认同，把实际cache交advanceUsing／moveUsing；其与旧函数逐状态相等，而运行数据来自cache。旧函数保原定义。一个execute贯穿共同源、该owner政策构造、原生准入及Search；所有事件均用该payer原invoice尾额，不借其他源owner额度。Runtime保scope owner／源队列／cache／History／原债和partial实际付款前缀，同原root给Window／whole-ledger和自身next。native frame/key/move菜单/membership及完整经济／服务费用、global Offer挑战目录和outer选择仍由唯一active推进。
+
+### 原quota分支生成接入同一票据
+
+BranchSource.start从原catalogue.quotas开始，游标不遍历已有pool.cached。每个quota先占一槽生成原enter，再占一槽判stage；ready进入IntentSource，stopped／blocked直接续下一quota。IntentSource以keep、loadControl、loadOwn、loadInvoice为初态，分别到达才读取原生terms／ownOptions／invoiceOptions，再逐term／own／invoice语法发出原Whole.Intent。block及denote只用于剩余目录的证明，逐step等式和exact rank保持原branches顺序与重数。
+
+Enumeration遇到非空build字段先进入loading，保source prefix／残余游标及prefix＋denote=原branches；每次BranchSource.step占用原tail的新事件槽。停止时由denote空生成prefix=原branches，实际prefix交Product.alternatives。外层Product／admission／review与源生成只有一个execute，不重置额度；Generated固定从start执行，外部不能提供已完成目录或任意cursor。rank加权只用于完成证明，运行额度仍取原invoice tail。
+
+Source调用粒度与内部成本分开：enter／stageAt／terms／ownOptions／invoiceOptions到达本轮已计为事件；其内部金融、terms树生成、ownCandidates与settle等仍归原语内部费用。这里没有完成源取数／原生内核／服务／存储／公告的全成本计量。
+
+### 政策笛卡尔积逐构造生成与核验共票
+
+Enumeration.Product.Task只有build与alternatives；初始queue是原keys上的build id。step分别读取一个branch字段、选择一个值并扩展过去前缀、发出一个完整Section或关闭空分支。没有预建整棵乘积树；continuation来自原List.Pi.cons的过去选择，raw入口不收任意wrap或完成Section。one_step_conserves_order_and_multiplicity给yielded.toList＋remaining与原List.pi的逐步等式，保原顺序／重复项／空因子。Task.cost及cardinality从源字段长度递归，仅用于证明，不用完成trace给实际预算。
+
+Enumeration.State.constructing保done／cached及cached=done.filterMap check、done＋remaining=原sections；emit后进入admitting，再占一槽原生检查Accepted。source cursor空时由这些生成等式认回cached=原policies，才用实际cached初始化旧Search；runtime不调用原policies来取得完成目录。一个execute从source start贯穿整个核验，所有source／admission／review事件共用Review原tail，不在handoff重置容量。
+
+Generated每个事件仍用同owner各原Index的同枚成功invoice，所有新ordinal在旧预留包络之后，injective且与旧工作分离。Runtime保完整队列／缓存／history／原债，获证才执行同源policy，未完保本owner真实funding.installed游标；原Window／whole-ledger及own next同次消费。报告仍是备选q历史，不叠加物理付款。
+
+Product的denote仍用原Comparison.branches作规格；Enumeration的字段读取由BranchSource生成实际缓存后交付。原生entry／stage／intent操作数内部、全域scope／frame／key／table生成、原生准入／比较内部、outerSelection及完整服务费用由唯一active推进。
+
+Counter.Expand.Formula只有literal／binary，不存在source成本构造器。Amount与Count分别从原列表、operation／request／signature及native Profile／Manifest／financial shape生成预算值和正文计数；原始ordinal start／span的literal只用于生成原Window.finish，不能装入完整成本。Financial.frameFold使用同一原origin／before，经Financial.consume.next递归；FutureParts私有构造器从同一Future.produce分支／receipt生成报告及两套公式，失败保none／0／2。
+
+Expand.body／selection按全部Work.Query构造器合并这些Formula；body_value／selection_value精确认回原Body.atom／Work.atomBudget。新Machine.advance的source分支只生成sourceExpansion并把resolve.render接回Task.expression，后续每个算术节点都经原PaidBudgetArithmetic；不再将整个声明成本一次性push进栈。render为任意Formula均无opaque source节点，由direct consumer归纳核验。原Counter.Paid未更换付款／pool，直接重建消费该Machine，缓存值、实际spent守卫和三族同票槽保持。
+
+sourceExpansion内部仍一次生成整棵Formula并读取／生成原Materialization、Financial或Future物件；这些真实源生成与构树费用继续typed pending。这里关闭的是成本公式中的atomic预算叶及其算术派发，不是全部CPU／source服务计费。
+
+Counter.Source.Expression的literal只来自固定语法常量，length沿原列表cons递归；bodyCeiling保逐项累加、ceiling保原max，Source.bodyFormula／selection按原公式组合，joint_value精确认回Body.units＋Work.workBudget。逐Query动态源为显式Operand.body／selection，分别读取原Body.atom／Work.atomBudget；其声明成本现由Expand逐结构生成封闭Formula，再回到同一原机器；真实源物件生成与构树内部仍保独立费用责任。
+
+Counter.Machine的Task.expression／apply与Frame.program／arithmetic保存实际表达式后缀、栈、原PaidBudgetArithmetic.Operation及命令状态。每一步由已付fuel先取得槽，再展开／取源／literal或推进原advance；0立即exhausted，pure meaning逐步保持。Calculation完成只读实际stack.headD，correct等式由同次stack证明；不会用规格值反向生成返回数据。耗尽保真实Frame和spent＝fuel；原source生成的joint排除malformed。
+
+Counter.Paid.generate先原pay／acquire同一Funding.installed的actual pool，以q执行唯一Calculation；只有完成且spent＋实际缓存value≤q才构造原Body.generate与Work.generate。counter／正文／选择的三族token分别占起始计量区间、spent偏移正文区间、spent＋Body.units偏移选择区间，每Index实际invoice上整体injective；payload、已付／余槽和完整旧债保持。全部0..bound替代分支与uniform合法数量保留。expressionConstruction／operandInternals／guard／allocation和源服务等typed pending仍保留；这里结算的是声明的表达式控制、算术及源操作派发，未将其扩写为CPU／全部底层费用闭合。
+
+CandidatePayment.execute先以原PaidSelection.pay prepared q生成逐原Index的真实Funding，再从各自Funding.installed经acquire重建actual SourceQuota及Pool。源Body.units＋Work.workBudget守卫通过后才生成原Body.generate与Work.generate；短缺不构造这两枚成品，而保实际Funding、源／Pool和精确数量关系。每张原Index invoice都按正文区间与选择offset分配Sum token，ordinal及slot共同injective；allocation读同枚成功付款、原事件payload及q，余槽守恒。原Point次序／重数及全部原债保留，零／拒付／缺域不被过滤。
+
+CandidatePayment.generateAll从SourceQuota.generate的完整0..bound目录生成所有替代分支；每一uniform合法收费量都有原Record，未筛掉失败。它没有假定付款前后Pool费用单调，也没有把不同q历史强同一。这里结算的是预算正文与完整选择的语义事件；counter、取源服务、报价／原语内部、实际账首写、存储与公告继续typed pending。invoice slot归属不是额外逐原子扣账；源码guard是先付执行门，非CPU或机器指令费用的完整证明。
+
+PublicPolicy.BodySource按原Budget生成器结构计数，数据函数不读取完成Run、work.length或成品额度。lists／optional保空分支，length为3n＋2；request、operation和递归Signature按原构造逐步相加。Source.frameFold沿Financial.consume产生的实际next状态递归，frames沿原inventoryAt／accountAt递归；profile／manifest／evaluation从原账字段生成单位数。Present、NativeFuture和NativeBenefit shape按原重复读取／列表／算术结构计数；所有计数精确认回原Budget.Run.work.length。private acquired／withNat只在证明展开，cast只运输同一原迹。
+
+Body.atom逐Work.Query合并这些字段单位数、同枚原Materialization的native emission源界和所有marker；futureSource预算体的成功／失败均精确计数，失败仍保2。Body.ceiling用逐项总和加分支／max事件，不能把所有被访问项只记一次max。Body.units从完整queries、keys、table及capability字、rows和sections生成整体正文额度；Body.generate交付额度、原Bound.generate和work.length覆盖，不接成品work或预算叶。source_body_and_full_selection_fit_the_joint_source_allowance直接生成正文＋完整Work receipt的联合源界，f9实际Release读其actual.pool即可消费。原生源服务、该额度计算自身、primitive内部与CPU成本继续保留；CandidatePayment进一步消费该联合界进行逐候选同票语义事件结算。
+
+PublicPolicy.PaidSelection.generate仅接原Prepared。先EscrowBudget.reserve 138并检查每原Index付款成功，随后对Funding.installed调用SourceQuota.generate／Comparison.generate，固定源派发程序自产forecast。再按forecast.value实付，第二次安装后重新生成actual source／pool／budget；仅actual budget≤forecast才生成原Work.generate actual.pool。空源、拒付、取源无目录、执行后取源失败及预算短缺分别保对应Funding、cached charge、source／pool、预算事件和全部旧债；并非以成功Release或成品额度作输入。
+
+PaidDispatch的69条固定code与两次实际Programme.trace精确认回，Run等于原Bound.generate。首票138单位按Phase×Fin69生成互异槽；成功Release读各期实际缓存指令。完整原Work包含选择、拒绝重放、独立核验和release事件，以完整源预算覆盖后按原序映入第二张实际invoice的互异Fin槽，逐槽保原Operation载荷、paid和units。每个原Point两次安装后的次序与重数保持，未用执行单位留在账单额度内，不生成物量退款。失败保票据和未完成责任，不宣称保留槽已被执行。
+
+此链已支付固定预算派发和被覆盖的语义事件槽；`.source`的一槽不结算Bound正文、取源、枚举、源服务和原语内部。protocol shortfall不等于经济任务不可行，原默认Reservation／root、不同协议公共费用的整责任比较以及动态全部开放未来继续由active卡负责。
+
+PublicPolicy.Bound.generate的唯一数据输入为原pool。Work.queries包含全部Section×原rows，以及全部Section对×Index×共同Table×原capability word。atomBudget由原缓存shape字段、两端Materialization的源界及原NativeAdmission／NativeBenefit界组成，不读取完成的atom.work或编译结果。source ceiling、表数／字数界与完整结构递归生成统一workBudget；上界覆盖任意源Section完整排列的筛选、strict扫描、逐政策拒绝、独立verify和最终release全部事件长度，因而直接覆盖原Work.generate。
+
+Bound.Run保存数值与每项计算事件，parent原预算事件保持原source；自然数加／乘／最大值逐项有有效性证明。每个present／future预算由原源字段计算，futureSource对任意joint rival在同一Future.produce分支生成值、NativeTensor工作和对应源预算，三者认回原Materialization。借用只读同次缓存值，不重放其产生工作。Bound.pending保所有父pool债和全部本次预算事件，以及枚举、原语内部、报价／预付、存储和公告。事件级源预算界没有宣称这些内部工作或新费用已结算。
+
+PublicPolicy.Work.generate从固定Comparison.Pool自产新的选择工作。accepted逐原rows检查；coherence由Policy.Work.cachedShape认回原请求，再用SignatureWork.Generic／ActionWork逐字段比较。present／future分别由当前和原scope的Materialization生成值与NativeTensor事件，再接原NativeAdmission／NativeBenefit；joint表和能力字域沿用原PublicPolicy，不缩成单scope表。候选由全部Section过滤，扫描只沿原Benefit的非对称严格序推进，返回原Choice；空池为每个policy生成具体首条原坏行。compileOrdered的外部顺序必须是源sections的完整排列。
+
+同次Receipt缓存独立native verify，布尔结果精确等于原PublicPolicy.verify；工作包含筛选、扫描和独立重放。Operation保完整query与answer、source／signature／admission／benefit子事件；控制事件和完整原生余项按出现次数守恒，每项余项认回原work。Generated.debts保父Pool债、全部本次原生事件以及枚举、联合frame、原语内部、预算／预付、存储／公告责任。该工作生成不预设完成费用，也不重用父Release槽。所选Choice直接消费既有actualRelease／endpoint／Window接口。
+
+PublicPolicy在Comparison.Pool上生成全部跨原Index的Branch Section。nonempty、同一quota、原Policy.shape一致、每个Entry的全局readyFlag、原／新覆盖和部署同口检查；单cell ready不代替全局释放。ReleasedEntry只从该Entry的真实running／ready Continuation消元，保同次Programme、Release和Attempt。所有Index同q的Attempt由Entry.generated认同。
+
+接受门以各原初始cursor的固定Planning.tensor baseline为基准，在共同表逐present／future／funding检查，并提升到每个相同adaptiveOpponent。候选由全部Section过滤自产；cost是原Planning.benefit预序的有限0／1 order embedding。choose输出无可准入跨q native责任dominator；存在Accepted且原基准不能反向benefit的公开向量时，选中结果也严格。strict是完整生成公开向量的非对称改善；准入／archive身份本身不造红利。无候选则给每个Section一条具体坏行；独立verify重放接受与maximality。
+
+Choice.actualRelease读实际全局实付与原预算门，endpoint读所选branch的Whole.execute，实际Window认回各自原始cut tensor。父Pool／Matrix及新policy生成、coherence、释放检查、tensor比较、verify、存储债保留。原Release.executionSlot覆盖原Policy.invoke工作；新增cross-quota工作需生成自己的实付迹、预算及槽，不能由旧槽定理代结。
+
+QuotaJoint从同一原cursor索引的多个实际Scope共同生成frames／tables。联合表不是不同scope各取一张表；restriction把同一个完整Opponent投到全部已生成帧，逐run保持其target，继而保持完整Planning.Tensor（present及原capability的future／funding）。有覆盖时，有限共同表关系当且仅当对每个同一自适应对手成立；不同付款历史无需相等。
+
+SourceQuota.Comparison.Pool按原0..bound逐q缓存EscrowBudget.generate与同次Continuation（empty／unpaid／全局耗尽／shortfall／ready），chargeAt沿共同原Index读缓存Funding结果。每个ready stage的全部Intent生成Branch；联合scope表与完整Branch×Branch矩阵保持q、原键及所有失败。比较行自产原窗口覆盖、两侧future覆盖、原Intent部署、present、future与funding；接受可独立verify，拒绝给具体原行。consumer认回各branch原始cut到实际执行端点的完整Window。Pool／Matrix继续携带SourceQuota、原准备与每个候选付款／计算／矩阵债；本地比较不代替统一publicpolicy、全局all_paid／release或完整CPU付费。
+
+SourceQuota.generate prepared先逐原Index读取ready scope的feeAt。库存来自Prefix.pointFor(paidPoint scope, continuation.words)的实际current；费用键取原bundle.map fst，重复键按amount聚合，目录外键继续检查，零费键的负库存同样阻断。对全部键库存非负的实际收费，正聚合费用项自产floor(stock/unit)并取最小值；每个n≤bound当且仅当原缩放debit的逐entry物量门成立，bound+1有具体物品短缺。原Mandate.Valid的合法收费量都在该域，但物量门不替代其余合法性检查。
+
+全部原cell共同界自产Fin(bound+1)和完整finRange，保原point次序、重数、既有失败、无报价及负库存证据。Catalogue.offer按需把选定量交给原EscrowBudget.generate，不先耗尽上界，也不伪造付款。枚举、容量分析与比较费用独立保留Debt；由完整责任比较选择支出，供给及动态扩域承接各自实际源。
+
+EscrowBudget改用一次实付后冻结源：charge逐原cell只生成一次quote／bill／Replay／refresh，并缓存成功与失败；Funding经原Prepared.installCached安装同次端点。原域为空或有账单失败时不启动解释器。全部已付后，机器固定funding.installed，普通源指令和算术构造步分别消耗同票ordinal槽，不再追加付款。预算完成值来自同次core.stack，精确等于付款后源的Work.workBudget；fuel耗尽保留程序、stack、内存及算术余项。
+
+Programme的每个已执行转移（包括最终exhausted／shortfall）都有同cell成功invoice和唯一Fin槽。release在spent+needed≤quota后才调用原Policy.invoke；执行槽从spent之后开始，算术／执行槽不交，余槽守恒。quota由调用投入指定，尚非自动供给producer；当前不足是该额度的阻塞。原准备、实际付款、sourceBody、机器／allocation等债随carrier保留；完整内核、报价刷新、存储公告及服务费用不由这些槽位定理代结。
+
+原Policy拥有者的Prepared.installCached只消费已有stage字段及其同一recipe证明。Program.installInitial从prepared自产Family、实际count、unitRecipe及alignment，再由该口构成新Prepared；保point／original／顺序／重数和全部原缓存。新attemptCounter／cachedLookup／cellWrite及旧债继续pending。生产链只依赖Budget／Policy.Runtime，原Policy.invoke的consumer可直接编译；默认多期Ticket尚待消费它，恢复重试不强塞旧blocked recipe。单位付款对齐不表示完整CPU、metadata、报价刷新或body费用已结清。
+
+Run私有构造保生成值=原公式及全部自产Event的局部Valid。Event保literal、源query和值、加法／乘法／max两端及结果、结构branch、缓存reuse、evaluation／comparisonShape、七类native输入标记及三类NativeTensor源事件。count／admission／benefit／strict／verification各生成一次；borrow记录缓存槽和值而不重放生成迹，retain按依赖序拼接各迹一次。私有源程序与依赖证明负责来源及顺序；Event.Valid只核单项局部关系，不是接受任意外部event list的控制流／缓存解析器。
+
+Ticket.initialCalculation、probeCalculation、actualCalculation分别固定为其原Prepared的Budget.generate，initialBudget／probeBudget／needed实际取各自value。令三轮已展开工作数为C₀／C₁／C₂，统一units=max(initialBudget+3C₀,probeBudget+3C₁)，actual从原Prepared独立支付这份units，probe不成为实际前缀。totalNeeded=needed+C₀+C₁+C₂；全部actual stage ready且totalNeeded≤units才释放原Policy.invoke。selection_and_all_budget_control_fit_the_same_actual_reserved_units给出actual选择工作+C₀+C₁+C₂≤同一实际bill.units；不足保精确shortfall，不假定probe总能预知actual成本。
+
+Budget.Event.expanded认branch及sourceStep：后者与Whole.Work对共同源／Profile／Manifest的声明指令计数一致。literal、取源evaluation／comparisonShape／native输入标记、未展开query、自然数原语内部和reuse均由pending保留。ready Snapshot过滤本次实际结算的展开工作，totalCovered绑定预算与选择之和。initial／probe预算先于actual付款，actual预算在付款后生成；总覆盖成功才签收三段工作，不将整个预算生成说成执行前全费用预付。fundingFailure／shortfall不运行选择，BudgetAccount保全部三段原迹为欠项；empty／preparationFailure发生在Ticket前，没有虚构预算运行。Installed及Reservation.Runtime在原root保精确预算账，继承旧十二类服务责任、完整Window、whole-ledger与own next。
+
+## 公开签名结构比较的实付接线
+
+SignatureWork.Generic.compare逐keep、direct、own、invoiced、stopped、prefix的36个配对生成NativeBenefit.Check；相同构造器消费各字段、list／Option／控制词，prefix递归比较committed词和后缀。它接收叶子test及其源形状cost；Generic.work_bound只从每次叶检查的工作界组合。原SignatureWork.compare／budget及word等兼容口固定旧NativeBenefit.equal与单位叶界，不改变原判定；真实生产Work.signature固定用ActionWork.compare／budget，不接收调用方选择的checker或目标。
+
+ActionWork直接消费原Program.Request五字段（signer、consents、purpose、gates、operation），request_iff把字段合取认回原left=right。Operation的produce／transfer／use／issue／assign／settle／revise／present逐构造、字段检查，异构显式false；Use五类逐tag检查；有序consents、gates和Bundle逐项扫描。Bundle项保Good与ℚ。Atom分别保存Party、Good、Port、Technology、Instrument及ℚ；生产Action的Technology就是完整Mandate.State Party Technology，revision目标不降成裸Technology或摘要。NativeAdmission.encodedEqual的injectivity把每种实际字段值的keyEqual认回原字段相等；没有把字段答案编码成整枚Action的相等。
+
+ActionWork.budget及work_bound镜像Request、Operation、列表、短路合取及tag；quantity／party等原子检查的事件长度界不声称覆盖其内部计算。默认Work.signature从原cachedShape生成同次Generic Check，以cached_signature_is_the_original_public_request认回原Query并消费全部decision／work。signatureStep和signatureLeaf使用同一typed字段Atom，始终携原Query；boolean／branch入controlSteps，字段keyEqual保原操作数和回答为pending。原Query继续承担签名操作数生成责任。every_operation_is_an_expanded_step_or_a_retained_obligation及原Snapshot整迹、typed pending等式覆盖新迹。
+
+signatureBudget用同次ActionWork.budget；signatureCeiling覆盖全部sections×keys×keys，every_section_is_generated和finRange覆盖把任意Section及两端索引认回该界。与nativeAdmissionCeiling取max后，完整collect／scan、独立verify、blocked全拒绝及release的原预算定理覆盖新增结构工作。既有Reservation在真实付费前缀下重新生成完整界，足额后调用原选择器；原Runtime／Binding／Reservation Snapshot保完整新迹、字段原子残项、旧责任、初始cut Window、whole ledger与own next。字段相等内部、操作数生成、预算与quote服务仍承担原责任。
+
+## 完整比较的原生工作与原物量结算
+
+`Whole.Materialization`对每个自己的target／extent／count调用原NativeTensor.evaluation；present_exact和future_exact认回原Whole.tensor的两项，工作迹保源帧、Profile、Manifest和恢复报告构造。`Whole.Work`直接执行原admission／benefit关系、有限全池扫描、精确拒绝及独立verify，生成原Decision.Choice或逐Intent拒绝；verify_matches_the_original_independent_verifier证明原独立检查器的Bool不变。源生形状界覆盖compile与独立复验／拒绝的全部显式工作。Scope.paidWord保存原payment.output，paidPoint只提交该词；the_paid_point_is_the_original_generated_payment保原源身份。
+
+每个work项是显式control或保留的native Query。`work.length = controlSteps + nativePending.length`精确分解；opaque admission、funding等原函数调用没有因生成外层迹而被宣告已测全CPU。原preparation header也完整保留，包含此前quote、预算及pending，不以新接口覆盖旧费用责任。
+
+`Whole.Metering.invoke`从原cursor／pricing／n／reference／actor／position／span调用prepare并自产编译、checkedWork和一次原Mandate.Replay.compile。私有Settlement保存这同一次结果及exact字段；本人原登记物量bundle按实际controlSteps缩放，非零时仅提交该Path.output。成功定理保一个精确账单及实际原cut词；拒付定理保consumed／residual分割与同一原raw失败项。共同continuation同时构造付款后的实际cursor及reindex的原reference；不同账前／账后source没有被强迫相等。
+
+这是事后显式工作结算接口。付款改变来源后，原账前Choice不直接安装；结果自产新endpoint／reference作为重比较输入。`Metering.Runtime`保整个preparation header、accounting、每个native Query和该实际recompare输入，在原Online.Runtime.root的同源coface消费完整Window、whole-ledger和自己的next。主定理the_original_root_consumes_native_work_its_actual_material_bill_and_the_fresh_comparison_cut给出同次根读回和账后端点。
+
+## 原Valid内部的源生检查与数据形状预算
+
+Source.Program.Validity的RawLaw.ValiditySource仅以原law／current／request为输入，不取Valid结论或其Decidable总判定。signer按原操作检查署名；policy保原operationAllowed；逐requiredPort调用原allowed，拒绝时取原controller并扫描原consents各位置；ClaimGuard逐原issue／assign／settle／use分支检查量、原claims、原rate及必要品／维护的清单相等；debit／credit逐项检查非负，debit的每个位置另扫描整个debit计算相同(Party,Good)键的总量，再与原stock比较。重复位置完整保留。bundleEqual逐键及ℚ比较并保原列表长度，不能用相同总量替代原清单。
+
+Compilation私有构造，accepted／work与同次produce绑定；exact给accepted=true iff原RawLaw.Valid。原InstructionSource以该Bool分支并由exact生成原accepted／refused证明；运行时没有额外decide Valid。工作迹嵌入InstructionSource.validityStep后，随同一封印源件只计入一次，issue／movement／全部原槽review继续共享。原金融读出及消费语义精确保持。
+
+令d/c/p为原debit／credit／requiredPorts长度、s为consents长度、u为use的原清单长度。Validity.budget=(s+4)·p+(2d+6)·d+2c+2u+20；consent扫描线性，按原每个debit位置求全总量给出二次项，预算不读取accepted或比较答案。InstructionSource.budget在原instruction?为none时为1，存在时为该原before/request的Validity预算+2；NativeMovement.budget因此显式接origin，每origin≤15·incomingSlots+14+InstructionSource.budget。原SourceFrames.foldBudget逐原origin消费此界，完整选择、quote探测、实际预付新源复验及原root消费保持。
+
+这些是源字段读取、分支、清单位置及聚合操作。operand三源调用（原debit／credit／requiredPorts）、policy／其他opaque函数、root指令恢复、ActualBirth、标量／有理数位运算和内存的内部费用继续原typed责任；并未由此次展开声明CPU或整机能耗完成。预算的原清单形状求值仍在原quote Pending中。
+
+## 同源指令与合法性共享
+
+InstructionSource位于原Financial.Origin模块，只接input与实际InstructionOrigin；produce执行一次origin.instruction?，存在时执行一次ValiditySource.compile（等价原law.Valid），生成absent／refused／accepted三种携带原来源等式及实际判定证明的Decoded与源工作迹。Compilation私有构造且generated将Decoded和work绑定到本次produce；外部不能用现成ExecutionItem、Valid证明或目标分类拼成可准入源件。compile以一个let绑定同一produce结果的两个投影，源迹按原instruction形状界定。
+
+IssueSource.compileFrom在同一原模块用该源件生成原私有IssuedClaim和双方ActualBirth；MovementSource.compileFrom位于原Instruction模块，以该源件生成原私有Movement；ReviewSource.compileFrom位于原Review模块，直接从同源accepted指令执行操作／工具／债务人匹配并生成原私有Review。每个sealed结果精确回原readIssue／readMovement／readReview。invalid issue仍rejected，invalid非issue仍nonfinancial而movement为none，因而原consume仍retained；missingBirth分类口保持。其界分别≤5／3／5，均不重复instruction?与law.Valid。
+
+NativeMovement.produce只生成一次InstructionSource，随后同一source经produceWith、allocation、整个scan、allocateOne、AllocationSource.compileFrom到各槽ReviewSource.compileFrom；同一对象没有在槽循环中重编译。AllocationSource.compileFrom仍直接调用已有源live构造，保同一Boundary实际cross及after／remaining，结果精确回原allocateAt。共享单槽界≤13、scan≤15·slots+1、allocation≤15·slots+3、每origin≤15·incomingSlots+14+InstructionSource.budget(origin)；源工作、issue及movement匹配工作和各槽工作分别嵌入原NativeMovement.Event并进入原SourceFrames／Tensor／完整选择、预付新源及root整账／own next。常数项计入新展开的发行／movement组装工作；不将此界解释成所有库存大小下统一少于旧界。
+
+这些共享是显式源操作及同一实际指令的消费；源取读／Validity、ActualBirth取读、生命周期／share-map、数值／内存及quote内部CPU由原typed责任继续承担。以下独立compile仍保原接口与各自界；原完整实付链采用共享compileFrom及上列新界。
+
+## 源Review与同Boundary实际跨越
+
+ReviewSource编译口位于原Financial.Review模块，以原claim与实际InstructionOrigin为全部输入；执行instruction?／law.Valid源调用，并展开操作种类及工具／债务人匹配分支。只有同源匹配成功才由原私有Review构造口组装回执。Compilation私有构造，receipt精确回原readReview；origin_exact保本次实际movement来源，分支迹≤6。无指令、拒绝、非金融操作与不匹配均生成对应分支迹及none；输入没有现成Review或accepted结论。
+
+AllocationSource位于原Allocation模块，只接origin、state、position、available和非负证明；原槽及live obligation由当前位置读取，Coherent和残余非负从该GeneratedState的live_sound推出。匹配Review后由min available quantity生成cap，再由原残余份额生成used与available-used；显式构造Boundary的source event、lawful、content／before、owns与scope，随后同一boundary交给实际edge.cross、state.step、transition及原私有Allocation构造口。live_exact定义归约回原allocateLive，compile.exact回原allocateAt；原allocateLive不作为该新源程序的运行时回调。review.origin是本次付款／转让发生，Boundary锚是原发行债务，两个实际来源按原类型保存。
+
+AllocationSource.Event保range、slot、嵌入ReviewSource分支、review命中、idle、cap、allocated、boundary、cross与live读数；每个匹配review恰生成一次boundary及一次cross。独立compile单槽迹≤14；共享compileFrom单槽迹≤13。NativeMovement的allocationStep保全部共享子迹，scan≤15·slots+1，每origin≤15·incomingSlots+14+InstructionSource.budget(origin)。原SourceFrames.foldBudget自动消费新界，Profile／Manifest、完整compile／verify／blocked拒绝、Prepaid及原root的实际费用Window／整账／own next保持。零配额cross不冒充该movement整额支付；整笔used／remaining仍由外层原quantity配额控制。
+
+这些是显式源分支及边界生成／跨越指令。instruction?／law.Valid、share-map取值与更新、生命周期state.step／终结判断、根遍历、Eq／标量／复制／内存及quote内部CPU继续原typed费用责任。
+
+## 源生金融movement与逐槽配额
+
+NativeMovement.compile只接同一ProgrammeSource.Input、实际InstructionOrigin和当前GeneratedState。共享InstructionSource先供IssueSource.compileFrom生成与原readIssue等价的issued、rejected、missingBirth、nonfinancial四分类；只有nonfinancial才由同一源件的MovementSource.compileFrom生成与原readMovement等价的结果。命中payment／assignment后，以源quantity为available，按当前原slots长度递归扫描；每步在自己的after和remaining继续，终结槽与不匹配review保持idle，匹配槽由AllocationSource生成并消费同一Boundary的实际Allocation，再按原append组合。构造器私有，exact逐级证明回原allocateAt／allocateFrom／allocate／consume，next及原债档案／完整history保持；没有外部供给Movement、Review、Allocation或完成结果。
+
+同一实际分配的used+remaining=源quantity，非负量来自原Allocation；未分配正余额不会变成原债准入。自转让的used表示本次配额消耗，不等于本金减少。Event记录源分类、movement种类和数量、range／slot／review分支、live的available／requested／cap／used／remaining及finish三元组；事件是可执行源调用／分支迹，非全CPU计量。共享单槽迹≤13，扫描≤15·slots+1，分配≤15·slots+3，每原origin总迹≤15·incomingSlots+14+InstructionSource.budget(origin)。
+
+NativeSourceFrames.fold直接取compile.result.next作为下一行账户，原consume／write外层迹夹住row-indexed financial子迹。foldBudget从原consume.next的真实入槽数递归生成上界，不输入Choice或比较答案；NativeTensor的完整工作界消费work_bound，原独立verify／blocked全项拒绝、Prepaid付款后复验及原root费用Window／整账／own next继续直接消费。instruction?／Validity、ActualBirth、生命周期／share-map内核、元数据数值计算、复制／内存及quote形状求值仍是原typed费用责任。
+
+## 共同实际visit与金融账户前缀
+
+NativeSourceFrames.compile只接实际ProgrammeSource.Input与有限count。它从原initialVisit和Financial.process.initial起步；每次仅由上一步最后visit.next生成新的visit。有限visits／accounts用Fin索引保存已发生前缀，空前缀不生成visit，非空count只生成0..count-1，不额外计算visitAt count。前一末账户与该visit的实际Financial.inventoryAt进入逐origin fold；每行调用NativeMovement.compile并取自己的result.next，留下consume／financial／write事件，原始顺序与多重项不变。编译产物私有构造，visit_exact、account_exact和endpoint_exact证明所有投影分别回原ProgrammeHistory.visitAt／Financial.accountAt。
+
+预算从原源形状递归取1+Σᵢ<count(3+foldBudgetᵢ)：1为initial，3为每步visit／inventory／account写入；foldBudget沿原consume.next逐origin累加2+NativeMovement.budget，2为外层consume／write。work_bound是上界，覆盖内含逐槽分配迹，不接比较答案或成品账户。inventory生成、root.next及尚未展开的金融／数值／内存内核继续原native责任，报价取形状本身仍是quote Pending。Event保ordinal／row索引与行数，不序列化origin payload。
+
+NativeProfile.compileFrom只接同input、finish的sealed前缀：原槽／drop／rights初槽／claims末账直接读其accounts(start+1)与endpoint，rightsUsing以生成账户的lookup证明交给原Migration.actual，证明中的accountAt等式不变成运行时重算。NativeManifest.compileFrom把同一visits逐项映成worlds，完整原／候选Grant／Challenge及其原顺序不动。两者的value和work逐项等于各自原生成程序；legacy compile保原独立接口。NativeTensor.evaluation先生成一份frames，再调用两compileFrom，Event.source迹只拼一次；恢复侧仍用该Output自己的bound和实际finish，原Evaluation／reportFrom等式保持。
+
+Execution.frameConstruction接收共同源事件，sourceConstruction把source／profile／manifest三类迹分别写入原完整编译／独立verify／blocked拒绝账。NativeTensor.evaluationBudget把共同前缀界加入两消费界，原Prepaid的源发票探测和实际付款后required≤units复验继续消费新界，原Runtime保持实际费用Window、整账及own next。共享的是已生成同源前缀；没有在不同实际付款或不同恢复源之间强等账户／历史。实跑投影检查在抽象bound上定义，再传入真实恢复／游标源，避免依赖类型检查反复展开具体历史；断言与实际输入不变。
+
+## 完整Manifest源程序与共同Evaluation
+
+NativeManifest.compile只接bound/start/span，不收Manifest或GrantImage结果。worlds遍历range(finish)，逐actual ordinal取同一source.input
+的ProgrammeHistory current并生成occurrence image。原Grant扫描recordsAt start，只接受birth<start；同一原grant的before last=start-1，
+after last=start+span-1。候选Grant扫描recordsAt(start+span)，只接受birth<start+span，last=start+span-1。两个严格过滤均实际执行
+并留下birthCheck／branch，预算不预读其结果。GrantImage由实际TracedGrant的birth、proposal、acceptance、initial、final、history六字段组装。
+
+原Challenge取challengesAt(start+1)的实际record，保claim、原state与同一claim通过through(finish)后的state；候选Challenge取
+challengesAt(finish)的实际current state。sourceIndex固定为各自bound的原接口。五组顺序、世界ordinal、完整状态／历史及多重项逐列表
+证明等于Window.manifest；私有Compilation.generated禁止换清单或工作迹。recordsAt／challengesAt、各image／history及through内核
+是实际调用，不把其内部CPU冒充已展开。
+
+W=finish；G₀、G₁分别为recordsAt start与recordsAt(start+span)的原列表长度，C₀、C₁分别为challengesAt(start+1)与challengesAt finish
+的长度。源形状预算为10+2W+17G₀+5C₀+10G₁+3C₁，按全部Grant通过过滤取上界；不调用Window.manifest或生成成品图像来取得该界。
+固定10为五组入口、两records调用、两challenges调用和assemble；每world 2项；原Grant通过最多17项、候选最多10项，拒绝各2项；
+原Challenge 5项、候选3项。Grant六字段调用/写入保留真实值与birth/last。
+
+NativeTensor.evaluation由共同源前缀喂给两compileFrom生成Profile和Manifest，直接逐字段组装Evaluation，不调用Window.evaluate再覆盖。
+Event用profile／manifest区分两种源工作；原present与实际恢复Output自己的bound/finish调用同一程序。evaluation_exact与report_exact回原
+Window.evaluate／reportFrom，工作界为共同前缀界与两消费预算之和。Execution.Operation.sourceConstruction把共同前缀／profile／manifest三类事件分别落到frameConstruction／profileConstruction／manifestConstruction；同一controlSteps计数进入原完整选择／verify／reject工作界与Prepaid额度，原Runtime继续消费费用Window、整账及own next。
+
+原Prepaid以原源完整workBudget为baseUnits，逐登记owner-only外部物量fee生成同源probeInvoice与各自probePoint；units取原界与所有探测后界的最大值。每个由feeAt取得的真实登记fee都证明属于probeFees，逐probe工作界均被预留。这里的probe是报价计划；实际发票用最终units重新生成，不把probe与真实付款后的源强等。真实payment仍由原Replay执行，只有其自己的required≤units才进入ready，否则保原shortfall。新增invoiceProbe把每个探测的pricing/horizon/fee/base reservation保留在原cursor的typed Pending；无报价内部CPU结清或未用额度退款主张。
+
+完整Manifest源组装已接线；legal／complete／value、图像／历史／金融／服务与恢复native内核、原预算读取源形状及quote／setup、Eq／数值／
+复制／内存primitive CPU仍在原typed Pending责任内。该预算是源调用和组装指令界，不能解释为全套native源函数CPU结清。
+
+## 完整Profile的源侧生成与实际恢复端点
+
+NativeProfile.compile输入只有bound/start/span，不收Profile、Evaluation或Report。源程序从Financial.accountAt的原槽
+读取债图像生成originalDebts，从末账户先drop原槽前缀再调用债图像生成newbornDebts，避免先构造全部末图像再丢弃。
+rights按原slot和code.parties取实际migration.slot的slotBalance及同path.receivedBy后相加；claims按原instrument／debtor／
+creditor分别读取terminal.claims和ledgerClaims后相减。firstServices使用原source/start，control取同一terminal的技术、时钟及轮次。
+六字段由同次generate组装，Compilation.exact证明逐字段等于原Window.profile，私有generated不允许调用者换输出或工作迹。
+
+Event保留account／terminal调用、六组入口、skipOriginal、债图像读写、holder两量、加法与rights写入、claims两量与减法写入、
+服务读写和三个control读数。N为原槽数、M为末槽数、H为parties数、I为instruments数、S为任务槽数；源形状预算是
+13+3N+2M+N(1+3H)+3IH²+2S，不读成品Profile或比较答案。M对新生图像数给保守上界，已付额度仍按原Prepaid整体扣除。
+这计源调用／组装指令；尚未展开的金融读取／live边界、inventory与根next内核、DebtImage、migration／firstService历史内核及数值／复制／内存primitive CPU仍各有未结责任。
+
+NativeProfile.Compilation.evaluation保留Profile原接口；实际NativeTensor评价由上节共同Evaluation生成Profile与Manifest，避免旧结构的隐性重算。
+NativeTensor.present从原candidate源生成；report从原Recovery.Output自己的bound和实际finish-depth生成，经原code equality返回
+reportFrom。futureWords仍由原Future.produce／Recovery.produceWith实际输出进入，非法分支none不冒充报告，合法分支保原consumed。
+精确等式保持原Tensor.future与完整Holds，不接受已算好的Profile／Report来反推生成迹。
+
+Execution.atom的present／future Benefit与Admission直接使用两侧NativeTensor结果，profileConstruction指令先于原比较叶入work；
+sourcePresentBudget／sourceFutureBudget加入原admission与benefit ceilings，完整compile、独立verify和blocked全项reject保原工作界。
+原Prepaid据新workBudget实际扣料，在付款新source检查额度再选原Choice或精确阻塞，原Runtime消费整个费用区间、原金融整账和own next。
+原funding分支保持原口；图像／trace／history、恢复／Funding内核、原比较预算读取数据形状的计算及quote／setup继续原typed Pending，
+不将这段组装指令界误当整套源函数的CPU上界。
+
+## 源生双库存与逐次生成成本
+
+NativeInventory.compile只消费原Manifest，不接受库存、NoWorse或目标工作迹。源程序逐组读取originalGrants、
+candidateGrants、originalChallenges的after state与candidateChallenges的current state；每个Grant读取birth／proposal／
+acceptance／initial，每个Challenge obligation读取admission／admittedBearer／admittedScope／content／beneficiary／scope／lineage。
+四种tag和claim保留原身份，按源顺序联合写入admitted与due。live写两表；terminal写admitted并留下archived事件，
+不重新生成due。原列表重复次数全部保留。Compilation.exact逐列表证明与Lawful.inventory相等。
+
+Event是带真实操作数的字段读取、constructed、admitted、lifecycle、due／archived及group／challengeContext。
+库存生成预算精确为4+8G+C+11S；G是两类Grant条目数，C是两类Challenge上下文数，S是它们全部slot数。
+work_exact对任意Manifest成立，不以比较答案、接受池或Choice为输入。两个比较预算使用rowCount源清单形状上界，
+不调用Lawful.inventory重建身份；admitted_length及due_length_bound将实际比较长度接回该界。compile共享同一个generate结果；每一项比较
+调用仍独立生成其新旧清单，不声称跨查询缓存或免除重复成本。
+
+NativeBenefit.inventoryDue和NativeAdmission.inventory对新旧Manifest各调用一次compile，直接用其双库存执行原
+Subperm扫描，用Compilation.exact回到原关系。源事件以Event.source保留typed construction操作数；NativeBenefit的WorkKey
+区分原责任identity和construction，NativeAdmission.Atom新增construction。全部事件进入原Operation和controlSteps，
+完整工作界加入两次源生budget；原compile／verify／reject证明、Prepaid新源界和实际物量扣除、原根整账／next原口消费。
+
+该程序覆盖已生成Manifest上的键和双库存构建；Manifest／Image／history及Profile上游生成、Eq／数值／字段复制及
+内存原语CPU仍是原native计算责任。这里的8／11是显式源程序指令数，不是硬件CPU时钟上界。
+
+## 完整准入档案、原生责任库存与资金条件的执行
+
+NativeAdmission复用原NativeBenefit.Check与语义Event。equal实际比较身份，rekey要求faithful injection，
+把原native key逐值保存在typed Atom.native中；债档身份、数量、服务Option及控制状态分别有自己的Atom。
+不接受现成NoWorse／admission答案。listsEqual按两边空／cons形状递归，逐叶比较；rights再套同一列表程序，
+不能把多余零行或缺少维度压成默认零。profile的六字段经Profile.mk.injEq回原完整相等合同。
+
+inventory通过上节源程序生成完整原生Manifest的双库存：old.admitted.Subperm new.admitted和
+new.due.Subperm old.due都调用原逐key equality／count程序，保留Grant、Challenge的身份与multiplicity。
+present执行新legal／complete、完整profile相等、两向原生库存及每个原经济axis；report还执行旧consumed≤新consumed、
+旧legal／complete到新保证的蕴含。future严格保原futureNoWorse：只有some/some可通过，none/none也拒绝。
+funding执行原Option.isNone守卫和蕴含，不将原已有失败误当新增失败。
+
+listsBudget按对应数据形状递归，空边界1，双cons为headBudget+1+tailBudget；profileBudget是五个列表／矩阵界加6，
+inventoryBudget是两次源生库存界加两次Subperm界及1；present至多6+profileBudget+inventoryBudget+2A，report至多12+同两界+2A，
+future双some再加2、其他形状1，funding最多3。所有界来自已生成操作数的数据形状，不读取比较判定或Choice。
+原Execution.atom对admission和funding真正调用这些解释器，typed叶进入admissionComparison；admissionCeiling在
+原全部reference／term／row上取有限上界，admissionWorkBudget覆盖原整个rows扫描。完整compile、独立verify、blocked全项reject
+全部消费这一预算；原Prepaid据此先实际扣料，再从付款新source生成原Choice／原精确拒绝或精确预算缺口。
+
+native Query标记保留尚未展开的账户／图像／历史内核、forecast／replay／资金报告生成及抽象身份／数值原语内部；setup、原源与付款后quote及各invoiceProbe同样保留。这里签收原语义准入与资金条件的实际指令，不给任意源函数虚构CPU上界。
+新增叶直接进入原Runtime的indexed work、整个实际费用Window、native整账、whole-ledger和own next。
+
+## 原消费者的多轮执行
+
+`Metering.Stage` 从同一 cursor 生成 `result = run` 及缓存 `endpoint = result.finish`。
+`executeWorkload` 在空残尾直接 finished；否则读取同一 endpoint 判断进展。
+严格缩短原残尾才进入下一轮，各轮重新从自己的实际 current 付款和搜索。
+评分终点由 Stage 保存，进展判断和最终根读回不会重复评分。
+`run` 和 `Result.finish` 各构造一次目录；这不提供目录构造或 CPU 总量的计数证书。
+
+`workloadStopped` 的最终输出是 `endpoint.attempt`：无报价、拒付或付费搜索无进展，
+都保真实账单前缀后实际尝试原残尾，不赋予计量服务否决旧工作的权力。
+`Funding.ofWalk` 提取同一 Stage 的 typed 失败，原 source、登记位置及拒绝证明保留。
+`WorkloadMetered` 由原 producer 递归生成，每个释放搜索对应自己的两个先行实付。
+
+原 `Recovery.Output` 的 Pricing 区分 unpriced、batch 和 workload；batch 含显式空词。
+同一个原 recovery face 消费 Metered、Closed、原词分割、完整 native disposition、
+whole-ledger writeback 和自己的 next；`Evaluation／Assessment` 从同一最终 source 读整窗费用。
+当前开放未来与计算自身计量由[唯一 active route](../../../handoffs/process-generated-society-active-route.md)维护。
+
+源码：`Distributed/Reaction/Native/Future/Recovery/{Source/Cursor,Source/Walk,Runtime,Evaluation,Funding,Metering,Metering/Runtime}.lean`。
+独立消费者：`scripts/verification/public-workload-recovery-{consumer,kernel}.lean`；单轮兼容由 `public-native-recovery-metering-consumer.lean` 保持。

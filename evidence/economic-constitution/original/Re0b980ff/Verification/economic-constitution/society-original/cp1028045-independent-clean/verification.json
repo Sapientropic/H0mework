@@ -1,0 +1,72 @@
+{
+  "schema": "society-local-withdrawal/v1",
+  "exit": 0,
+  "joint_response_receipt_sha256": "cfcc27a5694f473c8bd2863c67e3df455698fb5320884e681e5dc248e4166585",
+  "retained_receipts": 32,
+  "checks": [
+    {
+      "module": "SaturationMonoid.ProcessGame.Society.PublicFunction.Protocol.SymbolicAuthentication.LocalWithdrawal",
+      "exit": 0,
+      "seconds": 12.45,
+      "compiler_flags": [
+        "--trust=0",
+        "-j1",
+        "-M12000",
+        "-DElab.async=false",
+        "-DwarningAsError=true"
+      ],
+      "source_sha256": "eef019b5d83a0164f8f8a1c7e3d5a47ed810cbf1655440df64d24d21f5a58dc0",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "setup_sha256": "3642e2d115ced64e37bfe975442f4d7f4b45c48b2f483e8de7a50f75aecd57eb",
+      "artifact_sha256": "dbe7899cec9a45860789323072a16f896a14adba47f84870925a587a10511a9c"
+    },
+    {
+      "module": "SaturationMonoid.ProcessGame.Society.PublicFunction.Protocol.SymbolicAuthentication.LocalWithdrawalControls",
+      "exit": 0,
+      "seconds": 55.41,
+      "compiler_flags": [
+        "--trust=0",
+        "-j1",
+        "-M12000",
+        "-DElab.async=false",
+        "-DwarningAsError=true"
+      ],
+      "source_sha256": "d78560b096b2b16598815b52acef7f8cbca656d7b7207fe342259595e141e1dd",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "setup_sha256": "6728738a82bb7abb3402158ee519284338de16d7c4ac8d06575b38108e1a7903",
+      "artifact_sha256": "d1277a5e47f5417d44edd4a0d0edfd3cfad8abf8e04f07bd42950a596a73aba8"
+    },
+    {
+      "module": "SaturationMonoid.ProcessGame.Society.PublicFunction.Protocol.SymbolicAuthentication.LocalWithdrawalFailures",
+      "exit": 0,
+      "seconds": 37.28,
+      "compiler_flags": [
+        "--trust=0",
+        "-j1",
+        "-M12000",
+        "-DElab.async=false",
+        "-DwarningAsError=true"
+      ],
+      "source_sha256": "5d119efe1f1f7bf31cb9ab9778bb446f2e19566889147486db6e7d99a8487c93",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "setup_sha256": "e961394b9d99cb7309b5df35e6051f5e43f411f586e6d4862cf69bc7947d9787",
+      "artifact_sha256": "f4c0c3265efa7ec5cb7f05bdff47a91e496eff5d853a9e091a7e701f010a7df0"
+    },
+    {
+      "module": "SocietyLocalWithdrawalKernel",
+      "exit": 0,
+      "seconds": 123.12,
+      "compiler_flags": [
+        "--trust=0",
+        "-j1",
+        "-M12000",
+        "-DElab.async=false",
+        "-DwarningAsError=true"
+      ],
+      "source_sha256": "d38a4eb1707b0a8fc10e97b92dea6fd2550ca49faa972161f207f3bef23d164a",
+      "log_sha256": "784dfd0fffa16750fafdeaf43357759c8e1c76832f91e74240b3a2ac2a4a4039",
+      "setup_sha256": "8d0302b126e2c6ed0c754d2d848200d690dd7ecdfc01d15b786ab65fee9ba572"
+    }
+  ],
+  "kernel": "KERNEL REPLAY PASS: roots=268, closure=12817, private=1161, axioms=[Quot.sound, Classical.choice, propext]"
+}

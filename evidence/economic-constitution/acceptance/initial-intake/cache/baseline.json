@@ -1,0 +1,625 @@
+{
+  "CACHE_VERSION": "lean-parts-v1",
+  "actual_config_sha256": "31ab06790e1aaf33c2057c50969a1c5819da03577a67a98d482eaf46d0096bd3",
+  "actual_source_and_recursive_identity_changes": {},
+  "all_modules": 52523,
+  "ci_control_files": {
+    ".github/workflows/ci.yml": "5e2200fd9902d06df4b5e171819adc18e1289c0ff858b597c3a5a410e84c0068",
+    ".github/workflows/lean-part.yml": "3ce432d993368fa957b9aa9e65650c9ce158339a72461f4f8b67d2a4188486b9",
+    "Lean/lake-manifest.json": "2fe02acc26899fd57d82018e711e79c251e26d0b6d2bb370af81db0ed312fbfd",
+    "Lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+    "Makefile": "809d7359090c5a60ce50843bb668568e46d798bc901eb4233569c5a8afb0392d",
+    "tools/ci_memory.tsv": "c47cf10f6ecb96ecd8d9c3a325ad034764a6cfdad0a4bbdc36be7572e0687de9",
+    "tools/ci_plan.py": "337ddeb4194d7972644c93dcd2dccdd0f6ad06cef0a35fc5010b5b16ecf110b4",
+    "tools/ci_solo.txt": "f684a6c00c4a5da4d92615a0e7b36a03c2e30ba2aafe281b219b86312a04d910",
+    "tools/ci_threads.tsv": "6c11c7d009fd7450dc5fe00424e5106ca7a74982a438aeb722048f93a1a0ac25",
+    "tools/ci_times.tsv": "b5bbbb9edb0c90601fad474a51f0166b757b3458a8a3918f7e27f93255f1065f"
+  },
+  "compatibility": "23f23031eec00a03d30ee31d",
+  "complete_plan": {
+    "compression": "gzip",
+    "path": "evidence/generated-society/acceptance/expanded-g0-g27/ci-plan.json.gz",
+    "payload_sha256": "98deee114c0c5fe3a1e90705c7aaa5484923435d4707bfb894eccb4b7f9b3e3d",
+    "sha256": "c38f1fdab362d9c440521276b94bbbb9e8ed5e37f32dab62ff8b415995305f01"
+  },
+  "default_modules": 51085,
+  "dependencies": [
+    {
+      "name": "mathlib",
+      "revision": "db584cd6d46c92f209a44c0f1c829460d327499d",
+      "tracked_Lean_source_changes": []
+    },
+    {
+      "name": "plausible",
+      "revision": "b7eb3304aeae834b12dda98993a37f6a41f6f0bb",
+      "tracked_Lean_source_changes": []
+    },
+    {
+      "name": "LeanSearchClient",
+      "revision": "5f4d51b81cbd3f6b32b156bfad9056621a040404",
+      "tracked_Lean_source_changes": []
+    },
+    {
+      "name": "importGraph",
+      "revision": "16f02aa7642864af59f1ff0e384a015994db9118",
+      "tracked_Lean_source_changes": []
+    },
+    {
+      "name": "proofwidgets",
+      "revision": "4be2e3d5087eeb272cf5a8853b8f9dd025ef5957",
+      "tracked_Lean_source_changes": []
+    },
+    {
+      "name": "aesop",
+      "revision": "3448c0bcc5ce01b2d1546e483ec3620e32df3d0e",
+      "tracked_Lean_source_changes": []
+    },
+    {
+      "name": "Qq",
+      "revision": "92c15be17b7caf78c2ad767ec40f89052d908d81",
+      "tracked_Lean_source_changes": []
+    },
+    {
+      "name": "batteries",
+      "revision": "4488d40d070b9700d4d5a6aa342f0d40c31b2a2d",
+      "tracked_Lean_source_changes": []
+    },
+    {
+      "name": "Cli",
+      "revision": "6130a47896ce867c6a4a55373441e59e565bad0f",
+      "tracked_Lean_source_changes": []
+    }
+  ],
+  "dependency_cache_reused": true,
+  "export_map_sha256": "0f71646aaceccecd6474e884a4a81a7b089fb44c02edd7dace2d92d0744dfd9d",
+  "fixed_published_and_society_materials": {
+    "Lean/H0mework/Papers/ConstrainedLocalQuantumK15.lean": "ab124f5f641e087482ae3eeb7047fe48d792fc84bc0571d1bd34e69046e70b44",
+    "Lean/H0mework/Papers/ConstrainedLocalQuantumK16.lean": "7f4cc5810063c46886457c7cb8f54ea27d9cf90038ce3bbd747e90c80030cb6d",
+    "Lean/H0mework/Papers/ConstrainedLocalQuantumK17.lean": "eb013f30079127602b4be9dccc9e85bb213b8dc1685229c17215188700cc2717",
+    "Lean/H0mework/Papers/ConstrainedLocalQuantumT.lean": "15460597b7b89fa12704e4f6c056cdaa57d7d509393e3ee8a72c53d77d1be63a",
+    "Lean/H0mework/Papers/ConstrainedLocalQuantumV.lean": "e3f2b17d584fefbde8779c3e462c4d09d6aa6924e1699d563f69eee64cf3ea2d",
+    "Lean/H0mework/Papers/ConstrainedLocalQuantumX.lean": "e6b13cd25a7eb5c17f97879362e2467f68c642e25dd1618645311cd5b7ba9937",
+    "Lean/H0mework/Papers/GeneratedSocietyEconomy.lean": "c1e46868ac8ee8e6d5b1c79989d64a22aba0f329d22040b61c0025ac7336806b",
+    "Lean/H0mework/Papers/GeneratedSocietyInterfaces.lean": "5bcb9f9cf60085a7a8fdc400abb30f38bb61069a44247066ee536f6ea62da3f2",
+    "Lean/H0mework/Papers/GeneratedSocietyMInfinity.lean": "26b36edc5b052bc162e4fed1d5668e8ca16392049b1479dcff3354f7f178ec84",
+    "Lean/H0mework/Papers/GeneratedSocietyProgress.lean": "19195718c348cd26d10bc7f4494fee45224418eff3e281e62e7cacc3501925f8",
+    "Lean/H0mework/Papers/GeneratedSocietyRegeneration.lean": "2ceae811c6232422278c465dec737553e023d6ae39c8f5e3618a4146fbabe9ba",
+    "Lean/H0mework/Papers/LowEnergyL18L20E055.lean": "d1a9a1e3898778e9ac844928690e71d88b50b8f193b614d283aee9b3759f95e6",
+    "Lean/H0mework/Papers/LowEnergyL21L23E055.lean": "95c75ccd0c31de4d7d1d0cc23bea5eb54f8fccbfbf0adef198e8853d3674edbd",
+    "Lean/H0mework/Papers/LowEnergyL23PreparedOwnerC62.lean": "4581e4ba03e2a7fbdea6552db32c2fcdef102e57a98b59349452efed46263b09",
+    "Lean/H0mework/Papers/LowEnergyL24L25C62.lean": "42e4487c091fa4df9699719bccc5617034e7125701b46a8764a6651cbdafd254",
+    "Lean/H0mework/Papers/LowEnergyL26ActionClock71e.lean": "fc961f159ec670440f2a8c7b05125b46f3821e7c9277b98afc4a9faba0c0b116",
+    "Lean/H0mework/Papers/LowEnergyL27Newton71e.lean": "199b59a2abd17ffc7849a01e4ea18c36c2e570204f67bbe68628a4156abae5be",
+    "Lean/H0mework/Papers/LowEnergyL27NewtonDressing71eRelease.lean": "e7230f1e1c43cd623084c3d8062074e616661704de818b1f5a2275f1f2c95284",
+    "Lean/H0mework/Papers/LowEnergyL28Born71e.lean": "0057a725d1620a2c1e64a80678176345752e8bc64d2dcf95dbd0e6481c4bbd88",
+    "Lean/H0mework/Papers/LowEnergyLoopResponse.lean": "0d1ccc6bdf797add9ef3c90e6688bdc3722dae01b520b5662e36f63bfccef3b0",
+    "Lean/H0mework/Papers/LowEnergyPhenomenology.lean": "5c1812ca0e1a6c6591ad23d3f9cc9a997d0274e3d4f8dc64d70f691ef432cff0",
+    "Lean/H0mework/Papers/LowEnergyQ3MaterialsT.lean": "e32bdf5a88a59553a132215b45c3f853ff491928f19c660ed646325d2ca11fad",
+    "Lean/H0mework/Papers/LowEnergyQ4MaterialsT.lean": "b51da5281b4a29bd33d545cf60aa4e93b3169e59c958fef3885938592061c5dd",
+    "Lean/H0mework/Papers/LowEnergyQ6ActualNoetherF13ed87d.lean": "859e74e03c57e05e8800fef5433419b54646bd3be4198b139837c5866e11c029",
+    "Lean/H0mework/Papers/LowEnergyQ6ActualPencilC015842c.lean": "bf7ac9900d086763ac673644ee41bcd539c7b911cb41b8e31a8e5285b2bc3d00",
+    "Lean/H0mework/Papers/LowEnergyQ6SourceUnit3bbcbd59.lean": "f3e5f328c596e68f66acc44f932b8a8fd9c9e1c17cd8c72b73400f3a82f1b84c",
+    "Lean/H0mework/Papers/NativeFlow.lean": "e1d34ef922866f709efac4b718abaf28f0c59475785166b1be72401f3823691c",
+    "Lean/H0mework/Papers/NativeFlowX.lean": "b997a9877d037fbe4ef7fcb105ef879035fb2a0bbce986fa60d46e07afba506e",
+    "Lean/H0mework/Papers/ObservationDynamics.lean": "26d5cec3acaf1cc80bab3f13492798e2b83c69a4526cc874cca2908ceab2bf10",
+    "Lean/H0mework/Papers/ObservationDynamicsE.lean": "b8219d47a5caebef8eb206b7054d48a26c3cac94000eadf1fe415cd539a3b2ea",
+    "Lean/H0mework/Papers/ObservationDynamicsI.lean": "093ea62d79467b0122ec6b972c774b90d94ac1d730d791a99aca6714b8b2d4bf",
+    "Lean/H0mework/Papers/ObservationDynamicsX.lean": "800ef5f469a6368ddc1f8ff5c7620bf1cfb5bf0e267e97f82dc0efdd330af2db",
+    "Lean/H0mework/Papers/PhysicsCommonSource.lean": "ed9c734e02b86d57a0fc5f8e6378d3eccbbd48dbc62b32670cf8412a763aaf8a",
+    "Lean/H0mework/Papers/PhysicsCommonSourceAbRelease.lean": "129a4866974db4ca6c0b68e350089422d6a5f8acee1b0b4dfb3a0a1eff936f63",
+    "Lean/H0mework/Papers/PhysicsCommonSourceAcRelease.lean": "ad3499f15dcf71a4079d4afcd171bae249b09b712f961c86270b920aba7edaa4",
+    "Lean/H0mework/Papers/PhysicsCommonSourceAdRelease.lean": "6a3b930e167f786d5038935c833ad91139171b38b82279c29e621cccafb29cce",
+    "Lean/H0mework/Papers/PhysicsCommonSourceAeRelease.lean": "fa171cf4160b9c36fb7e9ebbeaa3f407193827c4ab51749b4ba72579f11a92d6",
+    "Lean/H0mework/Papers/PhysicsCommonSourceCapRelease.lean": "ff55786b04971cc816b53afd7fbc499ce4244dd3108a0cc98d20d35f6cae0f26",
+    "Lean/H0mework/Papers/PhysicsCommonSourceF.lean": "f4124fd784aa499a7f29bd6c4679fae4ec3c82fbcbab39d9ab4585f6149f5a1a",
+    "Lean/H0mework/Papers/PhysicsCommonSourceFRelease.lean": "f4db569a345a9ed6e9b7942f9bae18bbf60d0448453e0ffb1207e5715a52e2e1",
+    "Lean/H0mework/Papers/PhysicsCommonSourceHRelease.lean": "7359cdec0cf6fa20a0db35a805393318f8c5b645b4101cd512e033161e2644a3",
+    "Lean/H0mework/Papers/PhysicsCommonSourceK15Release.lean": "2c3207135a8adb2164477f58401becba9ae0b4fcea899682ea4efe5714d9f692",
+    "Lean/H0mework/Papers/PhysicsCommonSourceK17Release.lean": "cba46227580b85263bec6f6f38e03f7d12101f575b14551dc2fd8b7c3beb5f86",
+    "Lean/H0mework/Papers/PhysicsCommonSourceR2.lean": "cab3a52760edd2953c7d2bc4f14a69312c4d18ba426caacedbe15c1c0089f8fb",
+    "Lean/H0mework/Papers/PhysicsCommonSourceTRelease.lean": "155f307bc42560682dfce265f94e8390c7b06792e5360b0453d811d15320fdf9",
+    "Lean/H0mework/Papers/PhysicsCommonSourceVRelease.lean": "5764d1e9285ae98e73db0150b547094028a049bba807f6c52e61e7420f932623",
+    "Lean/H0mework/Papers/PhysicsCommonSourceX.lean": "60e416518811cf05ccb3ee6b14ff14f6822c9dd2dd3c53b6016dfcb5b7c3a42b",
+    "Lean/H0mework/Papers/PhysicsCommonSourceXRelease.lean": "e49b0529fb98726fae4d5628aa7599109dfd3e7421c9e84302b3f4d03889b529",
+    "Lean/H0mework/Papers/PhysicsCommonSourceZRelease.lean": "d425b52ad4e9e14622bfa69f8b954be2542592ab26483fe198af3c5a690334dc",
+    "Lean/H0mework/Papers/SecondEdition9c73ChargedTransfer.lean": "34e1aa6cafa1e7b1607223c9cbd790f1808662de07b840c87dfcc0e17c260b05",
+    "Lean/H0mework/Papers/SecondEdition9c73FullStockNext.lean": "4c99b1b783d46cede0d270158dcf0cbab5df01b5bdf792c04fabbb9a4fbe5a61",
+    "Lean/H0mework/Papers/SecondEdition9c73PreparedActual.lean": "2ecea5357ccecf7ebd49b14d5b0b9c7a0929515578dc403649121468cfb0e36c",
+    "Lean/H0mework/Papers/SecondEdition9c73PreparedActualCertificationConsumers.lean": "e2070009bb8e097086294c2b1cf0a8b4be13306bcc8f5f0e3ff46ebcd57715cc",
+    "Lean/H0mework/Papers/SecondEdition9c73RegisteredForcing.lean": "eb50ed137926556f98db52c15ec12255989ff509e110eca990d3e6f03adc1908",
+    "Lean/H0mework/Papers/SecondEdition9c73RuntimeCalculation.lean": "0688d4601a9e447401cadcd3fe9c09209dd1a06d6aa3a63379b8fe04c35e1d6f",
+    "Lean/H0mework/Papers/SecondEdition9c73SameEventFeedback.lean": "8f87c87c9a279b9b9a1f410cfe5cf23f4456f2bfc419aa72609ebf5528164936",
+    "Lean/H0mework/Papers/SecondEdition9c73SignalField.lean": "ca1f7c9701da7fded2dc5cdda6bfafc77834c1f8a894b0e31f07414706b24a17",
+    "Lean/H0mework/Papers/SecondEdition9c73SignalFieldCertificationConsumers.lean": "374b8fd31c1554e62fa57f59b0f840fb20335c76f8ef2c61f07e3962ddca5cc5",
+    "Lean/H0mework/Papers/SecondEdition9c73TypeCompletion.lean": "791a70d662015d2759de944e5f34b109bb5739f42b81fa808d1ff754e1a368bd",
+    "Lean/H0mework/Papers/SecondEditionPhysicsChargedTransfer.lean": "bec8e7c6d4420caf02db82bcb78cdcc7f15c4b19f8ca8bfbc99978ca04be7a94",
+    "Lean/H0mework/Papers/SecondEditionPhysicsPreparedActual.lean": "2d9d450b31af2f73abbff661a77378f9f9630042b39623e42acaba1655584f1f",
+    "Lean/H0mework/Papers/SecondEditionPhysicsPreparedActualCertificationConsumers.lean": "948540c465188a9796f15ce44299cb3a5e74d6d59f6a66b48f70064d8c67daa5",
+    "Lean/H0mework/Papers/SecondEditionPhysicsRegisteredForcing.lean": "ca16cb53a5b90ef7895f765c14b336f67de7552c8adb9294ae686db8e0e8dd7f",
+    "Lean/H0mework/Papers/SecondEditionPhysicsSignalField.lean": "954745d7aacb825edffa84a5cdd969cbf785ed616def5770462c5630a4140ef8",
+    "Lean/H0mework/Papers/SecondEditionPhysicsSignalFieldCertificationConsumers.lean": "aabe0cba2ccecbbd933e6cd2505aeb7618ef3a4aa0780db0b5fe4bcc2f59a908",
+    "Lean/H0mework/Papers/SourceProcessCore.lean": "f75e192badcdb8571da57fbca49c740b4e1a6aac1eb8d6dee4523eb0c2047eff",
+    "Lean/H0mework/Papers/SourceProcessCoreAb.lean": "a3db065ad812fff1bee9e2e6081a2cf93f8ade9722d67bc198b3c226c12f3518",
+    "Lean/H0mework/Papers/SourceProcessCoreAc.lean": "fbae4826a5eb32840d0379a597ba511d24fbabee10894ffe348c5bc00e4de5c6",
+    "Lean/H0mework/Papers/SourceProcessCoreAd.lean": "3d520ba2482518990efd738da49f002314f05265c4ea370e92f30330eaafd290",
+    "Lean/H0mework/Papers/SourceProcessCoreAe.lean": "67e2d423d021c5df176f70d6050024e4a0b07eab9a50c36ea76d4b4ef9e53597",
+    "Lean/H0mework/Papers/SourceProcessCoreHRelease.lean": "103dd38c248bd5b4c672e6b42b86778de91ee836a913cdc64a920dfe0c1d3211",
+    "Lean/H0mework/Papers/SourceProcessCoreR2.lean": "d1de3530ee03d0b5bc2e14775c2b2b84d7fda7df86f72a37ce3177ede0563d6a",
+    "Lean/H0mework/Papers/SourceProcessCoreSupplement.lean": "12cd62e4f0e6b49f398c582157b2a831bf1d98d4bb4526dfad098af1498489f8",
+    "Lean/H0mework/Papers/V2CoreActionReader.lean": "7b81ab4d88ea2084d3244fe8199edb839c5aea9efb7d90195a5f448d06079531",
+    "Lean/H0mework/Papers/V2CoreCompletion.lean": "6d2525db42387143b07113ce8576cf228746307de0b4709404cbf12c7145cb29",
+    "Lean/H0mework/Papers/V2CoreDifferenceFeedback.lean": "4afccfd2dfccf65866e69f537a3943a178d0ee87bb42e5ad60cb9662d7f654d2",
+    "Lean/H0mework/Papers/V2CoreFullStock.lean": "1d06e631d8f48e7a4c304aab645f74ba2937494a02debda3ad15c3b2e0ba7e86",
+    "Lean/H0mework/Papers/V2CoreRuntimeCalculation.lean": "169bbe97cca5ccf9db7ddadd9230fe7897f2e856259e218bd23c1950c9dc4e2a",
+    "Lean/H0mework/Papers/WholeLedgerAccounting.lean": "5abdea78395f760070ec00fe1a0e0498fe91f2149ca18a947ad98f159b114d25",
+    "Lean/H0mework/Papers/WholeLedgerAccountingR26b91feb.lean": "5037e3e10e7ed1a0c8a9ff457162b5aa0d5305daa6d1d5132a33cc1bcd5746d6",
+    "Lean/H0mework/Papers/WholeLedgerAccountingR296292fc.lean": "99471af051f912cd52039a2348970c71dd3d8cf69a9f9d70eb54e3b6473b5548",
+    "Lean/H0mework/Papers/WholeLedgerAccountingR453de275.lean": "7254198a6031ee775d1f725099ef8cfde2f3af3f7feed86136dece429b2703a0",
+    "Lean/H0mework/Papers/WholeLedgerAccountingR71e94e82.lean": "d5d6b81c0b6525f375ff88fd41b732d7da100af4421e3f62b9529e1222ae552f",
+    "Lean/H0mework/Papers/WholeLedgerAccountingR9c73a630.lean": "ee97f3a82ca523c9a8ba77b14725b6aaf70d4a53a9d3dc01676b54edbf8a14de",
+    "Lean/H0mework/Papers/WholeLedgerAccountingRaef0ad2a.lean": "12b1785cfc0fa83147047226d08cc64e80ade3b06f1e71634a04b0305f2c16a2",
+    "Lean/H0mework/Papers/WholeLedgerAccountingRb67aa48c.lean": "f1a1a9a4d1fd8076485fe06c9b9f3357fdeb56f4d045d035d00e4bb3b77bf47c",
+    "Lean/H0mework/Papers/WholeLedgerAccountingRb81a4438.lean": "e0728f2c569b05344bcf1cc37b76250c41de6442201485240388a33e42cd4a93",
+    "Lean/H0mework/Papers/WholeLedgerAccountingRba7e274b.lean": "962bee26eeb2a20a1b98e130a3d2117a245e3094b9e4c063726a714e5aeda5bd",
+    "Lean/H0mework/Papers/WholeLedgerAccountingRc19e94a5.lean": "5320d5898907dcdb2023a87cde722d2a5cb32f9ae2d4f352727c7cab6cff75f8",
+    "Lean/H0mework/Papers/WholeLedgerAccountingRc62f3d25.lean": "179d47627aebce1791232d462d4ef039959df5fe77514fc044e9fd8f151e5842",
+    "Lean/H0mework/Papers/WholeLedgerAccountingRe0555809.lean": "3f3e7fbac6b80823eb1fee7470679bfedfb58ce162d250265c263d089481c0f7",
+    "Lean/H0mework/Papers/WholeLedgerAccountingRfde5c14d.lean": "cc04693f2f5d00e4b1f1cc43792bd86b2e3c0182c4619ebde250e1076d75fcb4",
+    "Lean/H0mework/Papers/WholeLedgerAccountingY1.lean": "ac913c3776202239499c8b86a2967f353ee0f86d1a70e85b85e7f4828f072989",
+    "checks/first-release-quantum.json": "b68eacdc9a578c07212505a8e468353056f127616f2915241037e6a6c0097bbd",
+    "checks/first-release-runtime.json": "cc3f1507168ea0b0c38aa8ff2ad6a8ddc7735a8e0624a0a58b4c28d81d847cce",
+    "checks/generated-society-selection.json": "bc9123c1f7a2cf577cc51f9a87bd01b667564bae4df79d99df5cfe8e754b48a6",
+    "checks/one-bit-control-map.json": "2b9b4b0c2d7d11ad7acabfb691c3073c2e9e88a649108b54f9c7503dc05e2173",
+    "checks/one-bit-control-selection.json": "01aea3bd755f2b2dcc13214a7d56e27c9872813fefdad78aa82d04f5e849927a",
+    "checks/whole-ledger-selection.json": "463bd47289d48d2b4ebed74ff1b7a4a8b0ced846a9ca77b671e0f9b0e01a1575",
+    "docs/first-release-map.json": "70a109c44e4fa0907f817e5ff7751029562415d82b0a1b48cb854053aeba78be",
+    "docs/first-release-readiness.md": "952aec39fc9156fedd0e37d929808a1b2ab846db13646ee849a83d0315c602c3",
+    "docs/first-release-reproduction.md": "880f7d25211cc82f3fecd55c3533582d8856d15ffeb4c8e65b24b362c5417ba2",
+    "docs/generated-society-map.json": "555aeb3dd86d78b74f6aeba3000b49910002079fbdde8c46dfb07586d90c859b",
+    "docs/generated-society-readiness.md": "b782978f0e08c216160f58f83d04e27a9a359808eb6a0b81d41bd46680b0b6ec",
+    "docs/generated-society-reproduction.md": "a8ae1c69aa2d92b4f80e223007279547083fc99e55782f5c6f7d4dae4c198c37",
+    "docs/low-energy-release-map.json": "7e2fce71592d8349dba4ee61dc67b8f9ef91f7b913a9e80a67a92caa3cc274e2",
+    "docs/one-bit-map.json": "9e975136c0c7185a2a97ed135f6df501605cad506d19a0afbee1f36cf1a4cb43",
+    "docs/one-bit-readiness.md": "d4a4c7dd3cda5df4c230636be827e846544119533b848c6ec9fac78715113801",
+    "docs/one-bit-reproduction.md": "2f8916fe18ea42262c943fa9391bf73e6ff8322d5db3baaba8386456c57c6b22",
+    "docs/second-edition-map.json": "729c472505df96cf890b0d7ffe7e6db43c7fc6204c23926503dd17fad3d5af05",
+    "docs/second-edition-readiness.md": "31103f8dab7265bb003304f8db88083ca51c1d9506b6c8314f9291abffb70307",
+    "docs/whole-ledger-map.json": "6d1703102f3f06f2eff31571d563986796f096e8ab63d79e752d8bad422bf9df",
+    "docs/whole-ledger-readiness.md": "c34966598436c97e44f3b537a33e4f7f8e1928f19b0a02efb373f8e1b876678f",
+    "docs/whole-ledger-reproduction.md": "32b4ae279f8c69396318786da5e0cb05824ff689a60338165079d01480431d67"
+  },
+  "formal_files_modified": false,
+  "full_replay": false,
+  "immutable_frozen_evidence_and_paper_trees": {
+    "evidence": "69c1a0181f2e7a5847768145b45a6fc3a5015768",
+    "papers": "55e79eeae057f8323b91b303acb84aaf1089f327",
+    "scripts": "8a3a4f3f7617e15a3004fb70b418440ac587d346"
+  },
+  "increment_layout_hint": {
+    "path": ".local/economic-constitution/cache-audit/layout-hint.json",
+    "sha256": "7e55befac9894573316cce874df183b529dc92dbac46419a526febfaa044a6ab"
+  },
+  "layout_sha256": "7593569a1e8929a09eb842ec8b54c112abe4e308ba99b4adf841aa5e604c4680",
+  "module_identity_method": "Reuse the accepted import parses only after exact source SHA256 and Git15bb blob checks; recompute every unique owner, effective strong/weak option, compiler resource, default/shard membership and recursive identity.",
+  "module_identity_parts": [
+    {
+      "compression": "gzip",
+      "modules": 51981,
+      "path": "evidence/generated-society/acceptance/expanded-g0-g27/protected-pre-expansion-identities.json.gz",
+      "payload_sha256": "e45c468dcc2f628e51e0e0487eb7aa9a045926d2fa026be640a732b7d795d1a6",
+      "sha256": "7c0fcac19e09ac7759473ce6bfc5ad99d717adf57c5f69a8e218df57aa41d7d4"
+    },
+    {
+      "compression": "gzip",
+      "modules": 542,
+      "path": "evidence/generated-society/acceptance/expanded-g0-g27/increment-module-identities.json.gz",
+      "payload_sha256": "97567ff0baf3371e2fc59d668b22cd363b2ab6ed30a06f7e2623225a6d84a55c",
+      "sha256": "1af2ebf23a34b22ca82bde522ac3c2f5163b34805cbc494a66300dad11f206da"
+    }
+  ],
+  "native_proof_cache_preserved": true,
+  "package_options": {
+    "moreLeanArgs": [
+      "--trust=0",
+      "-Dweak.linter.unnecessarySimpa=false",
+      "-Dweak.linter.style.haveILetI=false",
+      "-Dweak.linter.unusedSimpArgs=false"
+    ],
+    "name": "H0mework",
+    "require": [
+      {
+        "name": "mathlib",
+        "rev": "v4.33.0",
+        "scope": "leanprover-community"
+      }
+    ],
+    "version": "0.1.0",
+    "weakLeanArgs": [
+      "-DmaxHeartbeats=2000000",
+      "-Dweak.linter.unusedSectionVars=false",
+      "-Dweak.linter.unnecessarySeqFocus=false",
+      "-Dweak.linter.unusedVariables=false",
+      "-Dweak.linter.unreachableTactic=false",
+      "-Dweak.linter.unusedTactic=false",
+      "-Dweak.linter.defProp=false",
+      "-Dweak.linter.deprecated=false",
+      "-Dlinter.deprecated=false",
+      "-Dweak.linter.tacticAnalysis.introMerge=false",
+      "-Dweak.linter.constructorNameAsVariable=false"
+    ]
+  },
+  "plan_identity_method": "The committed complete plan is retained directly; every source/module set, library/config/strong+weak option, resource, layout, toolchain/manifest, CI algorithm and cost/memory policy input was independently matched, so its complete records remain current.",
+  "platform": "Darwin-arm64",
+  "prior_actual_acceptance": {
+    "cache-preservation.json": {
+      "path": "evidence/generated-society/acceptance/expanded-g0-g27/cache-preservation.json",
+      "sha256": "cf8e677bee4426df973ec31087ed55cd8f73b908e572e39729405cd0a42fa9cb"
+    },
+    "ci-plan.json.gz": {
+      "compression": "gzip",
+      "path": "evidence/generated-society/acceptance/expanded-g0-g27/ci-plan.json.gz",
+      "payload_sha256": "98deee114c0c5fe3a1e90705c7aaa5484923435d4707bfb894eccb4b7f9b3e3d",
+      "sha256": "c38f1fdab362d9c440521276b94bbbb9e8ed5e37f32dab62ff8b415995305f01"
+    },
+    "dependency-cache.json": {
+      "path": "evidence/generated-society/acceptance/expanded-g0-g27/dependency-cache.json",
+      "sha256": "fa305f93f5648ee8d39c51baff294e5acbbbdeb37d44143e6f0aaa38f8d0a338"
+    },
+    "finalized-map.json.gz": {
+      "compression": "gzip",
+      "path": "evidence/generated-society/acceptance/expanded-g0-g27/finalized-map.json.gz",
+      "payload_sha256": "555aeb3dd86d78b74f6aeba3000b49910002079fbdde8c46dfb07586d90c859b",
+      "sha256": "35098abaa3877e24c957c7e2a7d35da8d081fd2fed33f2d7afca3b8923a6011d"
+    },
+    "readiness.json": {
+      "path": "evidence/generated-society/acceptance/expanded-g0-g27/readiness.json",
+      "sha256": "83c3ccbb1c72cbc73e6c12b39aeb1389073200564de504f98aaced40ee7ee021"
+    },
+    "scientific-input-binding.json": {
+      "path": "evidence/generated-society/acceptance/expanded-g0-g27/scientific-input-binding.json",
+      "sha256": "34847ed337e72da0c207a886c2153f3ddeec275a3482e2561d9edc6fc19c2303"
+    }
+  },
+  "real_parts": 63,
+  "rebalance_executed": false,
+  "remote_baseline": {
+    "path": ".local/economic-constitution/cache-audit/remote-before.json",
+    "sha256": "b54502df28cfdc75aa9abde9617819d72090a6a24c3ca6665b999962365d416e"
+  },
+  "remote_cache_writes": false,
+  "remote_products_mixed": false,
+  "resources": {
+    "ResourceInput_048d35b0f13ffddc": {
+      "definition": {
+        "name": "ResourceInput_048d35b0f13ffddc",
+        "path": "../evidence/biomedical/evidence/lalanine40k-quantum-bond-density.json",
+        "text": false
+      },
+      "sha256": "6480c37593da5498d2ffd046e34fb3a886806f0d7b5c898a7c575268c008af78"
+    },
+    "ResourceInput_05819243d0f03058": {
+      "definition": {
+        "name": "ResourceInput_05819243d0f03058",
+        "path": "../evidence/biomedical/calculations/lalanine40k-target-erased-quantum-bond-density/inertia/basin_refinement/continuous/source/field0-group-cache.json",
+        "text": false
+      },
+      "sha256": "69c46abe167ac4d85158ff580fa049575de9a39e56f8c4a1ce80576b9690d53a"
+    },
+    "ResourceInput_18f66192d2e986db": {
+      "definition": {
+        "name": "ResourceInput_18f66192d2e986db",
+        "path": "../evidence/biomedical/calculations/lalanine40k-target-erased-quantum-bond-density/propagation/source/lalanine40k-frozen-electronic-propagation.json",
+        "text": false
+      },
+      "sha256": "1bc55ed9898a673ba14acffaaea6ba816fb9eddcbb234d0958c02a63ad5b0867"
+    },
+    "ResourceInput_27de91880f85717a": {
+      "definition": {
+        "name": "ResourceInput_27de91880f85717a",
+        "path": "../evidence/second-edition/v2/original/Biomedical/runtime/calculations/cps1-actual-delivery/source/packet.json",
+        "text": false
+      },
+      "sha256": "785758affa08e8965c87c58dc79a6c1f56fe1f4dbc03bd8b7e85c2ce5d75a8a6"
+    },
+    "ResourceInput_2b1ec488615c2638": {
+      "definition": {
+        "name": "ResourceInput_2b1ec488615c2638",
+        "path": "../evidence/biomedical/calculations/lalanine40k-target-erased-quantum-bond-density/inertia/basin_refinement/continuous/source/rectangle-jet-cell16.json",
+        "text": false
+      },
+      "sha256": "db80f45167d86dc293673f0bea526273d353403c5f377addb0822ed27248fb5f"
+    },
+    "ResourceInput_384fd6d4ee850ec5": {
+      "definition": {
+        "name": "ResourceInput_384fd6d4ee850ec5",
+        "path": "../evidence/second-edition/v2/original/Biomedical/runtime/calculations/lalanine40k-si-work/source/packet.json",
+        "text": false
+      },
+      "sha256": "7c6036f022f1918f92553fb238d251bbb7711951afe549b0d704a5e41fa11928"
+    },
+    "ResourceInput_3ed41fe9115497d9": {
+      "definition": {
+        "name": "ResourceInput_3ed41fe9115497d9",
+        "path": "../evidence/biomedical/lalanine40k-orbitals-occupation-factor.json",
+        "text": false
+      },
+      "sha256": "0506411c6282acf61fcbfcb3e7946b6d0ae9d8e35782847fd136d5fcd2fbde32"
+    },
+    "ResourceInput_42d0393dda443953": {
+      "definition": {
+        "name": "ResourceInput_42d0393dda443953",
+        "path": "../evidence/biomedical/calculations/lalanine40k-target-erased-quantum-bond-density/inertia/basin_refinement/continuous/source/field0-signed-matrix.json",
+        "text": false
+      },
+      "sha256": "04dad9752f5f99a6d500ec4317120587c6a990c576323536292c17b1ba0f4cf8"
+    },
+    "ResourceInput_4306926d26d3e100": {
+      "definition": {
+        "name": "ResourceInput_4306926d26d3e100",
+        "path": "../evidence/biomedical/calculations/lalanine40k-target-erased-quantum-bond-density/inertia/basin_refinement/continuous/true_tube/source.json",
+        "text": false
+      },
+      "sha256": "be6ad841a6dced9d6402125c5d669ba646d097420ad38abd25d16d4e8ad9c8be"
+    },
+    "ResourceInput_524380564da88277": {
+      "definition": {
+        "name": "ResourceInput_524380564da88277",
+        "path": "../evidence/biomedical/calculations/lalanine40k-target-erased-quantum-bond-density/inertia/basin_refinement/continuous/whole_band/source.json",
+        "text": false
+      },
+      "sha256": "7dda20015b407afdd42a30019289b272f67e8798523267aa5a63ce715448e60e"
+    },
+    "ResourceInput_598bc2100d4a470f": {
+      "definition": {
+        "name": "ResourceInput_598bc2100d4a470f",
+        "path": "../evidence/biomedical/calculations/lalanine40k-target-erased-quantum-bond-density/inertia/basin_refinement/continuous/whole_cell/source.json",
+        "text": false
+      },
+      "sha256": "599442b28c2624f1a5d07d5f7a01daeba8f139113257aecc2a494322209fe3de"
+    },
+    "ResourceInput_5bda8a9aeaf69286": {
+      "definition": {
+        "name": "ResourceInput_5bda8a9aeaf69286",
+        "path": "../evidence/biomedical/calculations/lalanine40k-target-erased-quantum-bond-density/inertia/held_force/source/held-force.json",
+        "text": false
+      },
+      "sha256": "0d4ead67192b1965c224a723ded0273599e714ad2dd1a467a932ad8a41ebacad"
+    },
+    "ResourceInput_5d60190f8c552243": {
+      "definition": {
+        "name": "ResourceInput_5d60190f8c552243",
+        "path": "../evidence/biomedical/calculations/lalanine40k-target-erased-quantum-bond-density/inertia/basin_partition/source/basin-partition.json",
+        "text": false
+      },
+      "sha256": "f70bf04a3deea6a0221baef8fe9a6aefdae988f2a57ba1cd785d2477c2eabd69"
+    },
+    "ResourceInput_5ee63fcc1d2eabc2": {
+      "definition": {
+        "name": "ResourceInput_5ee63fcc1d2eabc2",
+        "path": "../evidence/biomedical/calculations/lalanine40k-target-erased-quantum-bond-density/source/lalanine40k-source-only-quantum-bond-density.json",
+        "text": false
+      },
+      "sha256": "7b042ae4fb66516165dcbc77fa66dd19e9fa6ea0160a4b99147f7862e2a8ba09"
+    },
+    "ResourceInput_662d860139605627": {
+      "definition": {
+        "name": "ResourceInput_662d860139605627",
+        "path": "../evidence/biomedical/calculations/lalanine40k-target-erased-quantum-bond-density/inertia/basin_refinement/continuous/source/field1-ao-cache.json",
+        "text": false
+      },
+      "sha256": "a391e18639dc08d5b29fbf2d8c4f1ca9f01fc2b175f51684181b088f8a2cf75e"
+    },
+    "ResourceInput_6c9a5996e019555e": {
+      "definition": {
+        "name": "ResourceInput_6c9a5996e019555e",
+        "path": "../evidence/biomedical/calculations/lalanine40k-target-erased-quantum-bond-density/inertia/electronic_frame/source/electronic-frame.json",
+        "text": false
+      },
+      "sha256": "4fef4ec2e7e0a692dafa0c169f0f744f898669213df1d66dc23d4c44f09e80d5"
+    },
+    "ResourceInput_70f37e98e05b9a24": {
+      "definition": {
+        "name": "ResourceInput_70f37e98e05b9a24",
+        "path": "../evidence/second-edition/v2/original/Biomedical/runtime/calculations/lalanine40k-target-erased-quantum-bond-density/propagation/source/native-duration-frame.json",
+        "text": false
+      },
+      "sha256": "96eebce2da4e4ec94c00d747b428131a333b41852ee563c2b9909950f960b1f8"
+    },
+    "ResourceInput_7dd38e2c924dbb52": {
+      "definition": {
+        "name": "ResourceInput_7dd38e2c924dbb52",
+        "path": "../evidence/biomedical/calculations/lalanine40k-target-erased-quantum-bond-density/energy/source/lalanine40k-same-computation-energy.json",
+        "text": false
+      },
+      "sha256": "b9b3973bc908f5a14d3deadbd687223c7cb03097b4936ac9e2f039aa70844d35"
+    },
+    "ResourceInput_81aeed3465d4d703": {
+      "definition": {
+        "name": "ResourceInput_81aeed3465d4d703",
+        "path": "../evidence/biomedical/calculations/lalanine40k-target-erased-quantum-bond-density/inertia/joint_step/source/joint-step.json",
+        "text": false
+      },
+      "sha256": "34e31dd42fe56752526a26f9d9e219305f98c5d0cc4320d96c467b4b9f4645e1"
+    },
+    "ResourceInput_84273b86d41c7cc1": {
+      "definition": {
+        "name": "ResourceInput_84273b86d41c7cc1",
+        "path": "../evidence/second-edition/v2/original/Biomedical/runtime/calculations/cps1-joint-alleles/source/packet.json",
+        "text": false
+      },
+      "sha256": "de60281a4eaf701673a929403d135a320b75abc89cf79e7e22adfaed11659013"
+    },
+    "ResourceInput_8a02641b81044b03": {
+      "definition": {
+        "name": "ResourceInput_8a02641b81044b03",
+        "path": "../evidence/biomedical/lalanine40k-ao-metric-packet.json",
+        "text": false
+      },
+      "sha256": "bba2a493933f05026b03b352fa1a8961b3ab63ae5e858213bdecf22452d604d0"
+    },
+    "ResourceInput_8e0a78fb67de5210": {
+      "definition": {
+        "name": "ResourceInput_8e0a78fb67de5210",
+        "path": "../evidence/biomedical/calculations/lalanine40k-target-erased-quantum-bond-density/inertia/basin_refinement/continuous/source/field0-ao-cache.json",
+        "text": false
+      },
+      "sha256": "c90a34819cd8854b8fc4f7ab22ab19b493683b2e9523b154627bf2684fb743fd"
+    },
+    "ResourceInput_902c26aacbd4fab9": {
+      "definition": {
+        "name": "ResourceInput_902c26aacbd4fab9",
+        "path": "../evidence/biomedical/calculations/lalanine40k-target-erased-quantum-bond-density/inertia/basin_refinement/source/jet-contractions.json",
+        "text": false
+      },
+      "sha256": "a148a9ff86752a80c0907e5f6976ed7ae4fc62d74eaf7cffbb399894f751b5dc"
+    },
+    "ResourceInput_9f7d60855cfa23a1": {
+      "definition": {
+        "name": "ResourceInput_9f7d60855cfa23a1",
+        "path": "../evidence/biomedical/calculations/lalanine40k-target-erased-quantum-bond-density/inertia/basin_refinement/continuous/source/rk4-cell16-run0.json",
+        "text": false
+      },
+      "sha256": "a366023f2256f1e53c045b6fe9ae951b78876fca4679d7b3ead3e7ca9167c011"
+    },
+    "ResourceInput_a5be13c98d55de59": {
+      "definition": {
+        "name": "ResourceInput_a5be13c98d55de59",
+        "path": "../evidence/biomedical/calculations/lalanine40k-target-erased-quantum-bond-density/inertia/basin_refinement/source/geometry.json",
+        "text": false
+      },
+      "sha256": "cf46fad3d849b801551bf5edaf231e727b9ba0b20dd92b98b3430c6489ba646b"
+    },
+    "ResourceInput_a8ba570880d786e7": {
+      "definition": {
+        "name": "ResourceInput_a8ba570880d786e7",
+        "path": "../evidence/biomedical/calculations/lalanine40k-target-erased-quantum-bond-density/inertia/bond_readout/source/bond-readout.json",
+        "text": false
+      },
+      "sha256": "27c9d1c85e4d4112134657623050bbbbb6e51d66b95ea5b1bd12f692d8fb83eb"
+    },
+    "ResourceInput_a9cfcb862f08d790": {
+      "definition": {
+        "name": "ResourceInput_a9cfcb862f08d790",
+        "path": "../evidence/second-edition/v2/original/Biomedical/runtime/calculations/cps1-physical-supply/source/packet.json",
+        "text": false
+      },
+      "sha256": "6be4533e6a08f42d9e97b0cc9de587985927547bc8536263c04023c85efbb5fe"
+    },
+    "ResourceInput_b0054fdd1430293f": {
+      "definition": {
+        "name": "ResourceInput_b0054fdd1430293f",
+        "path": "../evidence/second-edition/v2/original/Biomedical/runtime/calculations/cps1-longitudinal-maintenance/source/packet.json",
+        "text": false
+      },
+      "sha256": "e621587c6261aa24eff4066f80d223f805743cc0063bead3065c5ca1d23a1991"
+    },
+    "ResourceInput_bc8736156be163cd": {
+      "definition": {
+        "name": "ResourceInput_bc8736156be163cd",
+        "path": "../evidence/second-edition/v2/original/Biomedical/runtime/calculations/lalanine40k-target-erased-quantum-bond-density/thermal/source/lalanine40k-partial-swap-thermal-collision.json",
+        "text": false
+      },
+      "sha256": "bf3274c886bc4aa781c51e2c00807a14127af28623e9c385226f932c8e13a5ee"
+    },
+    "ResourceInput_ca63848ccd9141be": {
+      "definition": {
+        "name": "ResourceInput_ca63848ccd9141be",
+        "path": "../evidence/second-edition/v2/original/Biomedical/runtime/calculations/lmna-hgadfn188-correction/source/program.json",
+        "text": false
+      },
+      "sha256": "92eb553a05176b151d65c627272989b4f49a1f8c33d98da51ebf7cd9a5f187cd"
+    },
+    "ResourceInput_da6d7ec0232b12e5": {
+      "definition": {
+        "name": "ResourceInput_da6d7ec0232b12e5",
+        "path": "../evidence/second-edition/v2/original/Biomedical/runtime/calculations/lalanine40k-m3-fock/source/packet.json",
+        "text": false
+      },
+      "sha256": "ef42e5ae04dfb428ebe89b3abf419dc0c564ab9265427a83930190c678ca0b8d"
+    },
+    "ResourceInput_daa265056ec8d552": {
+      "definition": {
+        "name": "ResourceInput_daa265056ec8d552",
+        "path": "../evidence/biomedical/calculations/lalanine40k-target-erased-quantum-bond-density/force/source/lalanine40k-force-material-next.json",
+        "text": false
+      },
+      "sha256": "4949a7f925127e4303d8df70b3520828aebee3ad5483131f95c98415cdd42a70"
+    },
+    "ResourceInput_df027f387d2e7e21": {
+      "definition": {
+        "name": "ResourceInput_df027f387d2e7e21",
+        "path": "../evidence/second-edition/v2/original/Biomedical/runtime/calculations/cps1-personalized-program/source/packet.json",
+        "text": false
+      },
+      "sha256": "fe6703ea162a756f295b10326aaf11d8737bdaebc11b303c0a0feb944f7012b5"
+    },
+    "ResourceInput_e7aebe388314d626": {
+      "definition": {
+        "name": "ResourceInput_e7aebe388314d626",
+        "path": "../evidence/biomedical/calculations/lalanine40k-target-erased-quantum-bond-density/inertia/source/lalanine40k-inertial-next.json",
+        "text": false
+      },
+      "sha256": "cb290011475c3d8bdc0f64949b8522c925f17658fd80055309468599ccaac1c6"
+    },
+    "ResourceInput_e94628c12cb5af16": {
+      "definition": {
+        "name": "ResourceInput_e94628c12cb5af16",
+        "path": "../evidence/biomedical/calculations/lalanine40k-target-erased-quantum-bond-density/inertia/charge_identity/source/charge-identity.json",
+        "text": false
+      },
+      "sha256": "38f7bd7d0a795570179b7fe78171a2a1410a46c1a21d6358f9d0b12bf184a6eb"
+    },
+    "ResourceInput_efa122af6a18f938": {
+      "definition": {
+        "name": "ResourceInput_efa122af6a18f938",
+        "path": "../evidence/truthchild/six-point-consciousness-consumer.json",
+        "text": false
+      },
+      "sha256": "2e56983ec68174358e15ab0a185eb9627da942a9d23cd1dcc67db4e4674de1c6"
+    },
+    "ResourceInput_f16f09d592d9fed1": {
+      "definition": {
+        "name": "ResourceInput_f16f09d592d9fed1",
+        "path": "../evidence/biomedical/calculations/lalanine40k-target-erased-quantum-bond-density/inertia/basin_refinement/source/gaussian-jets.json",
+        "text": false
+      },
+      "sha256": "704198fc5fb94e27e32ff770d5b1c1e41918fb5aa1fc27a4d8035dba3f499451"
+    },
+    "ResourceInput_f25476fbec0ec3ec": {
+      "definition": {
+        "name": "ResourceInput_f25476fbec0ec3ec",
+        "path": "../evidence/biomedical/calculations/lalanine40k-target-erased-quantum-bond-density/inertia/basin_refinement/continuous/source/field0-integer-matrix.json",
+        "text": false
+      },
+      "sha256": "59f1d909c8b2cab628b60ad19aacd80e37b887285c9c7d21718c25a6fcd5a0aa"
+    },
+    "ResourceInput_fb8213f28d86d220": {
+      "definition": {
+        "name": "ResourceInput_fb8213f28d86d220",
+        "path": "../evidence/biomedical/calculations/lalanine40k-target-erased-quantum-bond-density/inertia/reentry/source/reentry.json",
+        "text": false
+      },
+      "sha256": "0ad604b1b69b3542055a663c8996ecc6f6906b5076fa8aa9ec6aa1074543bfa4"
+    }
+  },
+  "schema": "h0mework/economic-constitution-cache-baseline@1",
+  "scientific_replays_executed": false,
+  "selection": "b1bf6b3260efaf715795900878404e87a7dc624ad888a9087297b84918144f39",
+  "source_commit": "15bb696579c0405bbd050257264da0912f67106f",
+  "stage_shards": [
+    5,
+    3,
+    9,
+    20,
+    3,
+    3,
+    1,
+    2,
+    2,
+    14,
+    1
+  ],
+  "stages": 11,
+  "status": "passed",
+  "toolchain": "leanprover/lean4:v4.33.0"
+}

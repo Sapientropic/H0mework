@@ -1,0 +1,76 @@
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.SaturationMonoid.ProcessGame.Society.Institutions.Capitalism.Universal.Abolition.Functions.Revision.Enactment.Ledger
+
+set_option autoImplicit false
+
+namespace SaturationMonoid.ProcessGame.Society.Institutions.Capitalism.Universal.Abolition.Functions.Revision.Enactment
+
+open ResponsibilityLifecycle LivingLawEvolution ConstructiveRoot RootInquiryCompletion
+open SaturationMonoid.ProcessGame.Society.Institutions.Capitalism.Universal.Root
+open Abolition.Root.Registered
+
+noncomputable section
+
+variable {Party Good Port Technology Instrument : Type}
+  [DecidableEq Party] [DecidableEq Good] [DecidableEq Port] [DecidableEq Instrument]
+  {input : ProgrammeSource.Input Party Good Port Technology Instrument}
+  {depth count prefixLimit renewalLimit sourceDepth sourceCount : Nat}
+  {review : Option (ReviewPhase.ContextAt input)}
+  (context : Context (input := input) (review := review) depth count prefixLimit renewalLimit sourceDepth sourceCount)
+  (ready : Trigger.ReadyAt context)
+
+def occurrencePresentation : ConstructivePresentation
+    ((sourceRoot context).toAuthoritativeRoot.toRoot.actual.OccurrenceAt context.visit.current)
+    ((root context ready).toAuthoritativeRoot.toRoot.actual.OccurrenceAt (initial context)) where
+  forward := fun _ => (root context ready).emitted (initial context)
+  backward := fun _ => (sourceRoot context).emitted context.visit.current
+  backward_forward := fun occurrence => (context.data.occurrence_eq_emitted context.visit.current occurrence).symm
+  forward_backward := fun occurrence =>
+    (Macro.Public.Source.occurrence_eq_emitted input depth count prefixLimit renewalLimit (oldPast context)
+      publicStart (family context) occurrence).symm
+
+def targetAt (event : ExactTemporalCausalRootEventAt (sourceRoot context).toAuthoritativeRoot.toLedgerRoot context.visit) :
+    SourceNativeSequentialActualActionTargetAt (sourceRoot context) context.visit event
+      (sourceEntry context) (sourceAuthority context) := by
+  rw [event.eq_generated]
+  exact {
+    TargetN := context.native.N
+    translation := translation context
+    TargetV := Macro.Public.Source.V input depth count prefixLimit renewalLimit (oldPast context) publicStart (family context)
+    targetRoot := root context ready
+    targetTheory := TheoryState.rootSemantic context.native.N
+    lawSurface_heq := HEq.rfl
+    targetTheory_rootSemantic := ⟨id, fun _ => rfl⟩
+    occurrencePresentation := occurrencePresentation context ready
+    occurrence_commutes := rfl
+    initialSupport_heq := heq_of_eq (initial_support_is_the_literal_original_current context ready)
+    initialOpenLedger := initialLedger context ready
+    initialOpenLedger_heq := initial_ledger_is_the_original_identity context ready
+    initialLedger_responsibility_commutes := fun entry => (initial_ledger_preserves_every_original_row context ready entry).1.symm
+    initialLedger_claim_commutes := fun entry => (initial_ledger_preserves_every_original_row context ready entry).2.1.symm
+    initialLedger_budget_conservative := fun entry => (initial_ledger_preserves_every_original_row context ready entry).2.2.le
+    initialLedgerNoFresh := fun entry => ⟨⟨(initialLedger context ready).backward entry,
+      ⟨initial_ledger_has_no_fresh_row context ready entry⟩⟩⟩
+    translatedSourceEntryRow := initialRow context ready (sourceEntry context)
+    firstSuccessor := firstSuccessor context ready
+    canonical_targetNextVisit_eq := Macro.Ingress.next_is_the_same_generated_successor (root context ready)
+      (.finite (firstVisit context ready)) (firstSuccessor context ready)
+    Answer := Macro.Raw.ResultAt context.native context.data context.reader context.germ
+    answer := Macro.Raw.reportAt context.native context.data context.reader context.germ
+    Receipt := fun answer => ULift.{3, 0} (PLift
+      ((firstSuccessor context ready).targetCurrent = bodyNext context ∧
+        (bodyNext context).account = context.native.account context.visit.current ∧
+        answer = Macro.Raw.reportAt context.native context.data context.reader context.germ))
+    receipt := ⟨⟨first_successor_is_the_actual_public_body context ready, rfl, rfl⟩⟩ }
+
+def program : SourceNativeSequentialActualActionProgramAt (sourceRoot context) context.visit
+    (sourceEntry context) (sourceAuthority context) where
+  targetAt := targetAt context ready
+
+def generated := (program context ready).generate
+  ((sourceRoot context).toAuthoritativeRoot.toLedgerRoot.exactTemporalCausalEventAt context.visit)
+
+#print axioms targetAt
+#print axioms generated
+
+end
+end SaturationMonoid.ProcessGame.Society.Institutions.Capitalism.Universal.Abolition.Functions.Revision.Enactment

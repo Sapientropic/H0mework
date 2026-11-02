@@ -1,0 +1,272 @@
+{
+  "schema": "h0mework/new-df-dependent-signal-update-audit@1",
+  "old_owner_baseline": "15bb696579c0405bbd050257264da0912f67106f",
+  "export_map_sha256": "92398c35cfd6f0a8ecbbe439ba9d251d96fd6c638c8405462dd9826388494df7",
+  "only_new_owners_scanned": true,
+  "new_DF_owners_scanned": 609,
+  "updates": [
+    {
+      "public_owner": "H0mework.Versions.R59df7e39.ReleaseMaterials.SaturationMonoid.ProcessGame.Society.PublicFunction.Distributed.Recall",
+      "public_path": "Lean/H0mework/Versions/R59df7e39/ReleaseMaterials/SaturationMonoid/ProcessGame/Society/PublicFunction/Distributed/Recall.lean",
+      "public_sha256": "dbe2daffe0bb48e52a4673ce6520c8b61de2e92711f314bb908ad3c790a65a62",
+      "source_path": "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Distributed/Recall.lean",
+      "source_sha256": "49fd0b68a002e71a427c890cc04df90dfc7dd6fe70d30b7ab1b768d6c45de11b",
+      "source_origin": {
+        "dependency_epoch": "df421ff600085cbc290a7ae946193961bed7c83b",
+        "kind": "git-source-supplement",
+        "original_certification": {
+          "fresh_H0_kernel_required": true,
+          "status": "fixed Git source recovered; no individual source-SHA check located in retained final-window overrides"
+        },
+        "reason": "The intake Git tree omits this original Distributed.Recall dependency. Restore fixed Git bytes from the separately committed original branch; preserve the original importer and its complete imports.",
+        "source_commit": "6db1c46189653bae46b58716c8edf0e0026a00f1",
+        "source_path": "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Distributed/Recall.lean"
+      },
+      "source_line": 109,
+      "base_expression": "base",
+      "assigned_fields": [
+        "signals",
+        "initialSignal",
+        "memoryReady",
+        "readLocal",
+        "afterSend",
+        "afterDelivery",
+        "afterAction"
+      ],
+      "changes_signal_count": true,
+      "memory_defaults_all_rebound": true,
+      "public_update": "{ base with\n    signals := width base capacity\n    initialSignal := encode base capacity []\n    memoryReady := fun state => (decode base capacity state).isSome\n    readLocal := fun site snapshot => sensor base capacity (base.readLocal site snapshot)\n    afterSend := fun _ recipient old reading =>\n      remember base capacity old (.sent recipient (signal base capacity reading))\n    afterDelivery := fun _ sender old reading =>\n      remember base capacity old (.received sender (signal base capacity reading))\n    afterAction := fun _ old word => remember base capacity old (.attempted word) }",
+      "candidate_fixed_Git_sources": []
+    },
+    {
+      "public_owner": "H0mework.Versions.Rdf421ff6.ReleaseMaterials.SaturationMonoid.ProcessGame.Society.Institutions.Capitalism.Universal.Abolition.Innovation.Control.Scenario.Source",
+      "public_path": "Lean/H0mework/Versions/Rdf421ff6/ReleaseMaterials/SaturationMonoid/ProcessGame/Society/Institutions/Capitalism/Universal/Abolition/Innovation/Control/Scenario/Source.lean",
+      "public_sha256": "898397412b4ca87c2efe3826de9883c18ac7455cf454f21c348097885394e036",
+      "source_path": "Lean/SaturationMonoid/ProcessGame/Society/Institutions/Capitalism/Universal/Abolition/Innovation/Control/Scenario/Source.lean",
+      "source_sha256": "2b2dadd2271546e39bb10592819e733e58fa461bfb0aa0838fc3d64e4548b470",
+      "source_origin": null,
+      "source_line": 100,
+      "base_expression": "Trials.Example.code 12 100",
+      "assigned_fields": [
+        "signals",
+        "initialSignal",
+        "memoryReady",
+        "readLocal",
+        "afterSend",
+        "afterDelivery",
+        "afterAction"
+      ],
+      "changes_signal_count": true,
+      "memory_defaults_all_rebound": true,
+      "public_update": "{ Trials.Example.code 12 100 with\n    law := lawAt opened\n    initial := seed\n    actions := commonWork ++ [repay,successLiability,failureLiability,successPayment,failureCoverage]\n    actionLimit := 12\n    signals := 3\n    initialSignal := 0\n    memoryReady := fun _ => true\n    readLocal := fun _ current => if 0 < current.stock .result then 1 else 0\n    afterSend := fun _ _ previous _ => previous\n    afterDelivery := fun _ _ _ signal => signal\n    afterAction := fun _ _ _ => 2\n    sendCost := fun _ _ => [observationFee]\n    eventAlphabet := [.adversary (discovery 0),.adversary (discovery 1),.send 0 0,.deliver 0,.activate 0] }",
+      "candidate_fixed_Git_sources": []
+    },
+    {
+      "public_owner": "H0mework.Versions.Rdf421ff6.ReleaseMaterials.SaturationMonoid.ProcessGame.Society.PublicFunction.Distributed.Regression",
+      "public_path": "Lean/H0mework/Versions/Rdf421ff6/ReleaseMaterials/SaturationMonoid/ProcessGame/Society/PublicFunction/Distributed/Regression.lean",
+      "public_sha256": "6711c19971613c745aa30aafd4ef8187f263fb5a6ed1ecd8d9b840527097eabb",
+      "source_path": "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Distributed/Regression.lean",
+      "source_sha256": "3e9b72ef3ae8444e988f871c5ca235ba30bfaf8ef944f4e88ccf8cb7cf799e14",
+      "source_origin": null,
+      "source_line": 83,
+      "base_expression": "code",
+      "assigned_fields": [
+        "signals",
+        "memoryReady",
+        "afterSend",
+        "afterDelivery",
+        "afterAction",
+        "initialSignal",
+        "readLocal"
+      ],
+      "changes_signal_count": true,
+      "memory_defaults_all_rebound": true,
+      "public_update": "{ code with\n    signals := 2\n    memoryReady := fun _ => true\n    afterSend := fun _ _ old _ => old\n    afterDelivery := fun _ _ _ reading => reading\n    afterAction := fun _ old _ => old\n    initialSignal := 0\n    readLocal := fun _ snapshot => if 0 < snapshot.stock () then 1 else 0 }",
+      "candidate_fixed_Git_sources": []
+    },
+    {
+      "public_owner": "H0mework.Versions.Rdf421ff6.ReleaseMaterials.SaturationMonoid.ProcessGame.Society.PublicFunction.Distributed.Reaction.Feedback.Regression",
+      "public_path": "Lean/H0mework/Versions/Rdf421ff6/ReleaseMaterials/SaturationMonoid/ProcessGame/Society/PublicFunction/Distributed/Reaction/Feedback/Regression.lean",
+      "public_sha256": "4d8a25d5f9c682b9ae18002ff5adbe42c9aa260d51c203290b93f19a006c2466",
+      "source_path": "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Distributed/Reaction/Feedback/Regression.lean",
+      "source_sha256": "7830f770584deb769b9cbbc670bdb45d11b03ceb50b8bf167091b6da738055d4",
+      "source_origin": null,
+      "source_line": 16,
+      "base_expression": "Reaction.Regression.code",
+      "assigned_fields": [
+        "signals",
+        "initialSignal",
+        "readLocal"
+      ],
+      "changes_signal_count": true,
+      "memory_defaults_all_rebound": false,
+      "public_update": "{ Reaction.Regression.code with\n  initial := {Reaction.Regression.code.initial with claims := fun _ _ _ => 0}\n  bootstrap := [issue]\n  actions := [need, repay]\n  actionLimit := 1\n  signals := 3\n  initialSignal := 0\n  readLocal := fun _ snapshot => if 0 < snapshot.liabilities () false then 1 else 2\n  eventAlphabet := [.activate 0, .send 0 0, .deliver 0, .deliver 1]\n  eligible := fun events => decide (events = [.activate 0]) }",
+      "candidate_fixed_Git_sources": [
+        {
+          "source_commit": "7e2cc053821fedbb638122b3b2f8c82134c61ac0",
+          "source_sha256": "f021ff47671fa4b8de9d7d352da7104b70f651b65cfcae11d8b586758f666c29",
+          "only_four_default_lines_added_to_raw_df": true,
+          "same_as_raw_df": false
+        },
+        {
+          "source_commit": "59df7e39d81e8698f3cf8507e64b93829bb1cac3",
+          "source_sha256": "f021ff47671fa4b8de9d7d352da7104b70f651b65cfcae11d8b586758f666c29",
+          "only_four_default_lines_added_to_raw_df": true,
+          "same_as_raw_df": false
+        }
+      ]
+    },
+    {
+      "public_owner": "H0mework.Versions.Rdf421ff6.ReleaseMaterials.SaturationMonoid.ProcessGame.Society.PublicFunction.Protocol.SymbolicAuthentication.AttestationControls",
+      "public_path": "Lean/H0mework/Versions/Rdf421ff6/ReleaseMaterials/SaturationMonoid/ProcessGame/Society/PublicFunction/Protocol/SymbolicAuthentication/AttestationControls.lean",
+      "public_sha256": "00cc8fb611c17f6683344b9a09bdafdaebb89a5abec6988274c6d58728a352ff",
+      "source_path": "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Protocol/SymbolicAuthentication/AttestationControls.lean",
+      "source_sha256": "2e6955152726103815fac6ec63f5bba4731dfb8979a3232f9d7f02b09b6080be",
+      "source_origin": null,
+      "source_line": 23,
+      "base_expression": "origin.code",
+      "assigned_fields": [
+        "signals",
+        "initialSignal",
+        "memoryReady",
+        "readLocal",
+        "afterSend",
+        "afterDelivery",
+        "afterAction"
+      ],
+      "changes_signal_count": true,
+      "memory_defaults_all_rebound": true,
+      "public_update": "{origin.code with\n  actions := [yes, no, nextPhase, free, wrong, huge]\n  actionLimit := 3\n  signals := 2\n  initialSignal := 0\n  memoryReady := fun _ => true\n  readLocal := fun _ _ => 0\n  afterSend := fun _ _ _ reading => reading\n  afterDelivery := fun _ _ _ reading => reading\n  afterAction := fun _ _ _ => 1\n  eventAlphabet := [.activate 0, .adversary yes, .adversary wrong]\n  eventLimit := 0}",
+      "candidate_fixed_Git_sources": []
+    },
+    {
+      "public_owner": "H0mework.Versions.Rdf421ff6.ReleaseMaterials.SaturationMonoid.ProcessGame.Society.PublicFunction.Protocol.SymbolicAuthentication.AdmissionCode",
+      "public_path": "Lean/H0mework/Versions/Rdf421ff6/ReleaseMaterials/SaturationMonoid/ProcessGame/Society/PublicFunction/Protocol/SymbolicAuthentication/AdmissionCode.lean",
+      "public_sha256": "0e97da314bf98304a9147324d9164afc12ee4e3b4be21087d6bd8fec1bdb9ca7",
+      "source_path": "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Protocol/SymbolicAuthentication/AdmissionCode.lean",
+      "source_sha256": "ee0097d696ff79d4516f357a7677ccdfbe7e49b79e4e7352d928d3ac1bedf3f5",
+      "source_origin": null,
+      "source_line": 39,
+      "base_expression": "base",
+      "assigned_fields": [
+        "signals",
+        "initialSignal",
+        "readLocal",
+        "memoryReady",
+        "afterSend",
+        "afterDelivery",
+        "afterAction"
+      ],
+      "changes_signal_count": true,
+      "memory_defaults_all_rebound": true,
+      "public_update": "{base with\n    signals := base.signals * 2\n    actionLimit := 1\n    initialSignal := pack base true base.initialSignal\n    readLocal := fun site snapshot => pack base true (base.readLocal site snapshot)\n    memoryReady := fun old => ready base old && base.memoryReady (content base old)\n    afterSend := fun sender recipient old reading => pack base (ready base old)\n      (base.afterSend sender recipient (content base old) (content base reading))\n    afterDelivery := fun recipient sender old reading => pack base (ready base old)\n      (base.afterDelivery recipient sender (content base old) (content base reading))\n    afterAction := fun site old word => pack base (ready base old && mayRewrite base site)\n      (base.afterAction site (content base old) word)}",
+      "candidate_fixed_Git_sources": []
+    },
+    {
+      "public_owner": "H0mework.Versions.Rdf421ff6.ReleaseMaterials.SaturationMonoid.ProcessGame.Society.PublicFunction.Protocol.SymbolicAuthentication.RequestReadbackSource",
+      "public_path": "Lean/H0mework/Versions/Rdf421ff6/ReleaseMaterials/SaturationMonoid/ProcessGame/Society/PublicFunction/Protocol/SymbolicAuthentication/RequestReadbackSource.lean",
+      "public_sha256": "4f04fa97a232d568c7524a7b8cd05763ad9322e80ad5ceeb51dffe766f0b073c",
+      "source_path": "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Protocol/SymbolicAuthentication/RequestReadbackSource.lean",
+      "source_sha256": "1e995188e3555b4c881255807fdc0f38d03f497fddb6aca76d82494580efbc35",
+      "source_origin": null,
+      "source_line": 22,
+      "base_expression": "AttestationControls.origin.code",
+      "assigned_fields": [
+        "signals",
+        "initialSignal",
+        "memoryReady",
+        "readLocal",
+        "afterAction",
+        "afterSend",
+        "afterDelivery"
+      ],
+      "changes_signal_count": true,
+      "memory_defaults_all_rebound": true,
+      "public_update": "{AttestationControls.origin.code with\n    initial := {AttestationControls.origin.code.initial with stock := fun _ _ => 10}\n    actions := [yes, no]\n    actionLimit := 1\n    sites := 2\n    siteParty := fun site => decide (site = 1)\n    signals := 3\n    initialSignal := 0\n    memoryReady := fun reading => !(mode == .unreadable && reading == 1)\n    readLocal := fun _ _ => if mode = .wrongWire then 2 else 1\n    afterAction := fun _ old _ => old\n    afterSend := fun _ _ old _ => old\n    afterDelivery := fun _ _ _ reading => if mode = .erased then 0 else if mode = .rewritten then 2 else reading\n    sendCost := fun _ _ => if mode = .unpaidSend then [AttestationControls.huge] else [yes]\n    deliveryCost := fun _ => if mode = .unpaidDelivery then [hugeReceive] else [receiveFee]\n    eventAlphabet := [.activate 0, .activate 1, .send 0 1, .deliver 0]\n    eventLimit := 0\n    eligible := fun _ => true}",
+      "candidate_fixed_Git_sources": []
+    },
+    {
+      "public_owner": "H0mework.Versions.Rdf421ff6.ReleaseMaterials.SaturationMonoid.ProcessGame.Society.PublicFunction.Protocol.SymbolicAuthentication.RequestResponseSource",
+      "public_path": "Lean/H0mework/Versions/Rdf421ff6/ReleaseMaterials/SaturationMonoid/ProcessGame/Society/PublicFunction/Protocol/SymbolicAuthentication/RequestResponseSource.lean",
+      "public_sha256": "30fea97bb9ad8ec814ba1bc27e389a78ab15dd22dd462eb3699e0fa470c6ba20",
+      "source_path": "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Protocol/SymbolicAuthentication/RequestResponseSource.lean",
+      "source_sha256": "4dda153c034a1857acd08857321acae35d95112702d403bd0e744f5015f988f1",
+      "source_origin": null,
+      "source_line": 31,
+      "base_expression": "RequestReadbackSource.code (transportMode mode)",
+      "assigned_fields": [
+        "signals",
+        "initialSignal",
+        "memoryReady",
+        "readLocal",
+        "afterSend",
+        "afterAction",
+        "afterDelivery"
+      ],
+      "changes_signal_count": true,
+      "memory_defaults_all_rebound": true,
+      "public_update": "{RequestReadbackSource.code (transportMode mode) with\n    initial := { (RequestReadbackSource.code (transportMode mode)).initial with\n      stock := fun party _ => if party && mode == .poor then 1 else 10 }\n    actions := [yes, no] ++ if mode = .noReply then [] else [positive, negative]\n    signals := 4\n    initialSignal := 0\n    memoryReady := fun reading => decide (reading ≠ 3) && !(mode == .unreadable && reading == 1)\n    readLocal := fun _ _ => if mode = .wrongWire then 2 else 1\n    afterSend := fun _ _ old _ => old\n    afterAction := fun _ _ _ => 3\n    afterDelivery := fun _ _ old reading => if old = 3 then 3 else\n      if mode = .erased then 0 else if mode = .rewritten then 2 else reading}",
+      "candidate_fixed_Git_sources": []
+    }
+  ],
+  "signal_count_updates_without_four_rebindings": [
+    {
+      "public_owner": "H0mework.Versions.Rdf421ff6.ReleaseMaterials.SaturationMonoid.ProcessGame.Society.PublicFunction.Distributed.Reaction.Feedback.Regression",
+      "public_path": "Lean/H0mework/Versions/Rdf421ff6/ReleaseMaterials/SaturationMonoid/ProcessGame/Society/PublicFunction/Distributed/Reaction/Feedback/Regression.lean",
+      "public_sha256": "4d8a25d5f9c682b9ae18002ff5adbe42c9aa260d51c203290b93f19a006c2466",
+      "source_path": "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Distributed/Reaction/Feedback/Regression.lean",
+      "source_sha256": "7830f770584deb769b9cbbc670bdb45d11b03ceb50b8bf167091b6da738055d4",
+      "source_origin": null,
+      "source_line": 16,
+      "base_expression": "Reaction.Regression.code",
+      "assigned_fields": [
+        "signals",
+        "initialSignal",
+        "readLocal"
+      ],
+      "changes_signal_count": true,
+      "memory_defaults_all_rebound": false,
+      "public_update": "{ Reaction.Regression.code with\n  initial := {Reaction.Regression.code.initial with claims := fun _ _ _ => 0}\n  bootstrap := [issue]\n  actions := [need, repay]\n  actionLimit := 1\n  signals := 3\n  initialSignal := 0\n  readLocal := fun _ snapshot => if 0 < snapshot.liabilities () false then 1 else 2\n  eventAlphabet := [.activate 0, .send 0 0, .deliver 0, .deliver 1]\n  eligible := fun events => decide (events = [.activate 0]) }",
+      "candidate_fixed_Git_sources": [
+        {
+          "source_commit": "7e2cc053821fedbb638122b3b2f8c82134c61ac0",
+          "source_sha256": "f021ff47671fa4b8de9d7d352da7104b70f651b65cfcae11d8b586758f666c29",
+          "only_four_default_lines_added_to_raw_df": true,
+          "same_as_raw_df": false
+        },
+        {
+          "source_commit": "59df7e39d81e8698f3cf8507e64b93829bb1cac3",
+          "source_sha256": "f021ff47671fa4b8de9d7d352da7104b70f651b65cfcae11d8b586758f666c29",
+          "only_four_default_lines_added_to_raw_df": true,
+          "same_as_raw_df": false
+        }
+      ]
+    }
+  ],
+  "counts": {
+    "signal_change_complete": 7,
+    "signal_change_missing_rebindings": 1
+  },
+  "formal_files_modified": false,
+  "Lean_executed": false,
+  "adjacent_site_domain_check": {
+    "actual_sites_count_record_updates": [
+      {
+        "source_path": "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Protocol/SymbolicAuthentication/RequestReadbackSource.lean",
+        "line": 22,
+        "base": "AttestationControls.origin.code",
+        "assigned_fields": [
+          "sites",
+          "siteParty",
+          "readLocal",
+          "afterAction",
+          "afterSend",
+          "afterDelivery"
+        ],
+        "all_site_dependent_hooks_rebound": true
+      }
+    ],
+    "all_site_dependent_hook_domains_complete": true,
+    "scope": "supplementary same-family direct record-level sites-domain check; direct Code constructors are excluded"
+  }
+}
