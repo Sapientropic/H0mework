@@ -20,7 +20,7 @@ for (const slug of ["generated-society", "economic-constitution"] as const) {
     const rows = claimsOf(slug, lang), paper = paperOf(slug, lang);
     assert.equal(rows.length, slug === "generated-society" ? 29 : 16);
     assert.equal(paper.current.guide.includes(`/blob/${commit}/`), true);
-    assert.equal(Boolean(paper.current.acceptance), true);
+    assert.equal(Boolean(paper.current.acceptance), false);
     assert.equal(Boolean(paper.abstract.shown.length), true);
     for (const file of Object.values(release.files(slug, lang))) assert.equal(existsSync(resolve(ROOT, file)), true, file);
     for (const row of rows) {

@@ -13,7 +13,7 @@ type Producer = {
   declarations?: Declaration[];
 };
 type Text = { title: string | null; statement: string | null };
-export type Source = { key: string; ids: string[]; edition: number; text: Text; location: Record<Lang, string | null>; producers: Producer[]; category?: "principle" | "interface" | "formal"; passages?: Partial<Record<Lang, string[]>> };
+export type Source = { key: string; ids: string[]; edition: number; text: Text; location: Record<Lang, string | null>; producers: Producer[]; category?: "principle" | "interface" | "formal"; passages?: Partial<Record<Lang, string[]>>; readingOrder?: number };
 
 // Every mapped Lean producer passed its kernel check before release. A map's "pending" marks only
 // the later re-acceptance of the public package in CI, so the site does not show it as a status.
@@ -231,17 +231,18 @@ function principleAt(slug: string, ordinal: number, lang: Lang) {
   const opening = `**${lang === "zh" ? "原则" : "Principle "}${PRINCIPLES[lang][ordinal - 1]}`;
   const paragraph = text.split(/\n\s*\n/).find((paragraph) => paragraph.startsWith(opening));
   if (!paragraph) throw new Error(`paper has no principle ${ordinal}: ${lang}`);
-  const before = text.slice(0, text.indexOf(paragraph));
+  const readingOrder = text.indexOf(paragraph);
+  const before = text.slice(0, readingOrder);
   const section = [...before.matchAll(/^#{2,4}\s+(\d+(?:\.\d+)*)\s/gm)].at(-1)?.[1];
-  return { opening, location: section ? `§${section}` : null };
+  return { opening, location: section ? `§${section}` : null, readingOrder };
 }
 function formalResultAt(slug: string, ordinal: string, lang: Lang) {
   const text = manuscriptOf("economic-constitution", slug, lang);
   const pattern = new RegExp(`^\\*\\*${lang === "zh" ? "结果" : "Result "}\\s*${ordinal}(?!\\d)`, "m");
-  const at = text.search(pattern);
-  if (at < 0) throw new Error(`paper has no formal result ${ordinal}: ${lang}`);
-  const section = [...text.slice(0, at).matchAll(/^#{2,4}\s+(\d+(?:\.\d+)*)\s/gm)].at(-1)?.[1];
-  return `${section ? `§${section} ` : ""}${lang === "zh" ? "结果" : "Result"} ${ordinal}`;
+  const readingOrder = text.search(pattern);
+  if (readingOrder < 0) throw new Error(`paper has no formal result ${ordinal}: ${lang}`);
+  const section = [...text.slice(0, readingOrder).matchAll(/^#{2,4}\s+(\d+(?:\.\d+)*)\s/gm)].at(-1)?.[1];
+  return { location: `${section ? `§${section} ` : ""}${lang === "zh" ? "结果" : "Result"} ${ordinal}`, readingOrder };
 }
 function economicConstitution(slug: string, edition: number): Source[] {
   const map = mapOf("economic-constitution");
@@ -250,7 +251,7 @@ function economicConstitution(slug: string, edition: number): Source[] {
       throw new Error(`economic principle classification changed: ${claim.id}`);
     const zh = principleAt(slug, index + 1, "zh"), en = principleAt(slug, index + 1, "en");
     return {
-      key: `ecn.${claim.id}`, ids: [claim.id], edition, category: "principle",
+      key: `ecn.${claim.id}`, ids: [claim.id], edition, category: "principle", readingOrder: zh.readingOrder,
       text: { title: claim.title, statement: claim.statement_scope },
       location: { zh: zh.location, en: en.location }, passages: { zh: [zh.opening], en: [en.opening] },
       producers: acceptedEntries([...claim.producers, ...claim.direct_consumers, ...claim.resources]),
@@ -266,10 +267,11 @@ function economicConstitution(slug: string, edition: number): Source[] {
       return declarations.length ? [{ ...entry, declarations }] : [];
     });
     if (!selected.length) throw new Error(`formal result has no accepted declarations: ${result.id}`);
+    const zh = formalResultAt(slug, result.id.slice(1), "zh"), en = formalResultAt(slug, result.id.slice(1), "en");
     return {
-      key: `ecn.${result.id}`, ids: [result.id], edition, category: "formal",
+      key: `ecn.${result.id}`, ids: [result.id], edition, category: "formal", readingOrder: zh.readingOrder,
       text: { title: result.paper_label, statement: result.statement },
-      location: { zh: formalResultAt(slug, result.id.slice(1), "zh"), en: formalResultAt(slug, result.id.slice(1), "en") },
+      location: { zh: zh.location, en: en.location },
       producers: acceptedEntries(selected),
     };
   });
@@ -419,6 +421,7 @@ function rowOf(source: Source, release: ReleaseId, slug: string, lang: Lang) {
     ids: source.ids,
     label: labelOf(source.ids),
     edition: source.edition,
+    readingOrder: source.readingOrder,
     title: spaced(reading?.title ?? derived),
     // The registered wording (or its translation): the statement, and the title a reading title replaced.
     statement,
@@ -446,7 +449,9 @@ export function claimsOf(slug: string, lang: Lang) {
   return once(`claims:${slug}:${lang}`, () =>
     entryOf(slug)
       .editions.flatMap((edition, index) => ADAPTERS[edition.release](slug, index + 1).map((source) => rowOf(source, edition.release, slug, lang)))
-      .sort((a, b) => a.order[0] - b.order[0] || a.order[1] - b.order[1] || idNumber(a.ids[0] ?? "") - idNumber(b.ids[0] ?? "")),
+      .sort((a, b) => a.order[0] - b.order[0] || a.order[1] - b.order[1]
+        || (a.readingOrder ?? Number.MAX_SAFE_INTEGER) - (b.readingOrder ?? Number.MAX_SAFE_INTEGER)
+        || idNumber(a.ids[0] ?? "") - idNumber(b.ids[0] ?? "")),
   );
 }
 

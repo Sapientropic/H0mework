@@ -49,10 +49,6 @@ const societyPaper = (slug: string) => {
 };
 export const publishedPaperJson = (slug: string, path: string) =>
   once(`published:${slug}:${path}`, () => JSON.parse(unzip(societyArchive(slug), `papers/${slug}/${path}`)));
-const localAcceptance = {
-  zh: "固定回执中的完整本地构建、trust 与完整类型验收通过；该回执不含新选集的远端 CI 通过记录。",
-  en: "The fixed receipts record a passed complete local build, trust, and complete-type acceptance. They contain no remote CI pass for the new selection.",
-};
 
 export const RELEASES: Record<ReleaseId, Release> = {
   "first-release": {
@@ -123,7 +119,6 @@ export const RELEASES: Record<ReleaseId, Release> = {
     check: "python3 tools/generated_society.py entry --require-ready --output .local/generated-society-entry",
     guide: "docs/generated-society-reproduction.md",
     sourceCommit: SOCIETY_SOURCE,
-    acceptance: localAcceptance,
     claimsNote: {
       zh: "G0–G27 与 G2a 按实际来源映射列示。展开可读论文原文、生产声明、直接消费者及原认证；G10–G12 保持引用接口。",
       en: "G0–G27 and G2a follow the actual source map. Open a row for the paper's wording, producers, direct consumers, and original evidence. G10–G12 remain cited interfaces.",
@@ -140,7 +135,6 @@ export const RELEASES: Record<ReleaseId, Release> = {
     check: "python3 tools/economic_constitution.py entry --require-ready --output .local/economic-constitution-entry",
     guide: "docs/economic-constitution-reproduction.md",
     sourceCommit: SOCIETY_SOURCE,
-    acceptance: localAcceptance,
     claimsNote: {
       zh: "八项制度原则与八项采用的形式结果分别列示。原则由规范论证承担；Lean 模块证明其明确采用的形式支撑。每条可展开原文、实际声明、直接消费者及原证据。",
       en: "Eight institutional principles and eight adopted formal results are listed separately. The principles have normative arguments; Lean checks their explicitly adopted formal support. Each row opens the original text, actual declarations, direct consumers, and evidence.",
