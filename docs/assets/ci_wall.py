@@ -1,21 +1,18 @@
 #!/usr/bin/env python3
-"""Draw docs/assets/ci-wall.svg and ci-wall.en.svg: the run that took the whole
-Lean selection green, as a wall of shards.
+"""Draw docs/assets/ci-wall.svg and ci-wall.en.svg as a quiet wall of verified shards.
 
-The eleven stages run left to right, as CI runs them; each column holds that
-stage's parallel shards, one cell each, read from tools/ci_layout.tsv. The cells
-are laid wet in indigo, stage after stage, and dry to green; once the last stage
-has dried the selection is stamped with a vermilion seal reading 核, both the
+Stages run left to right; each column holds that stage's parallel shards, one
+cell each, read from tools/ci_layout.tsv. The vermilion seal reads 核, both the
 kernel and the check. Lettering and seal outline come from banner.py so the two
 figures share their types, paper and ink.
 
-RUN names the run being recorded. When a later change to the selection goes
-green across every stage, point RUN at that run and regenerate.
-
-Usage: python3 docs/assets/ci_wall.py   (deterministic; rewrites both SVGs)
+ci-run.json records the green run shown here. Update it when a later selection
+is accepted, then regenerate both the README figures and their status text with
+`bun run readme` from site/.
 """
 from __future__ import annotations
 
+import json
 from collections import defaultdict
 from pathlib import Path
 
@@ -24,8 +21,7 @@ from fontTools.pens.boundsPen import BoundsPen
 from banner import Face, seal_outline
 
 ROOT = Path(__file__).resolve().parents[2]
-RUN = {"id": 39025063045, "commit": "279d795d", "jobs": 66,
-       "zh_date": "2026-10-17", "en_date": "17 Oct 2026"}
+RUN = json.loads((ROOT / "docs/assets/ci-run.json").read_text())
 W, H = 960, 300
 
 TEXT = {
@@ -33,37 +29,29 @@ TEXT = {
         "title": "Lean 完整选集：全部阶段通过",
         "eyebrow": "Lean 4 · 完整选集 · {zh_date}",
         "unit": "个模块，全部通过内核检查",
-        "facts": "{stages} 个阶段 · {shards} 个分片 · {jobs} 个 job 全绿",
+        "facts": "{stages} 个阶段 · {shards} 个分片 · 同一指纹验收",
         "axis": "阶段依次推进，每格是一个并行分片",
     },
     "en": {
         "title": "Lean full selection: every stage green",
         "eyebrow": "Lean 4 · full selection · {en_date}",
         "unit": "modules, every one kernel-checked",
-        "facts": "{stages} stages · {shards} shards · {jobs} jobs green",
+        "facts": "{stages} stages · {shards} shards · one verified fingerprint",
         "axis": "stages run in sequence; each cell is a parallel shard",
     },
 }
 
 STYLE = """
-    :root { --paper:#f5efe3; --ink:#3a332b; --seal-ink:#b0302a; --wet:#3c679f; --dry:#5c8a60;
+    :root { --paper:#f5efe3; --ink:#3a332b; --seal-ink:#b0302a; --dry:#5c8a60;
             --shade:#6b5236; --shade-a:.1; }
     .paper { fill:var(--paper); }
     .ink { fill:var(--ink); }
-    .later { animation:fade 1s ease-out backwards; }
-    .cell { fill:var(--dry); transform-box:fill-box; transform-origin:50% 100%;
-            animation:lay .4s cubic-bezier(.2,.8,.3,1) backwards, dry 2.2s ease-out backwards; }
+    .cell { fill:var(--dry); }
     .sealink { fill:var(--seal-ink); }
-    .stamp { transform-box:fill-box; transform-origin:center; animation:stamp .45s cubic-bezier(.3,0,.2,1) backwards; }
-    @keyframes fade { from { opacity:0; } }
-    @keyframes lay { from { opacity:0; transform:scaleY(.2); } }
-    @keyframes dry { 0% { fill:var(--wet); } }
-    @keyframes stamp { 0% { transform:scale(1.35); opacity:0; } 70% { transform:scale(.97); opacity:1; } }
     @media (prefers-color-scheme: dark) {
-      :root { --paper:#15171a; --ink:#dcd3c2; --seal-ink:#c9463a; --wet:#8cb4e6; --dry:#7fb383;
+      :root { --paper:#15171a; --ink:#dcd3c2; --seal-ink:#c9463a; --dry:#7fb383;
               --shade:#000; --shade-a:.45; }
     }
-    @media (prefers-reduced-motion: reduce) { * { animation:none !important; } }
 """
 
 
@@ -131,25 +119,22 @@ def draw(lang, t, shards, modules, setter, glyph):
     x0, x1, base = 500, 912, 236
     pitch = (x1 - x0) / len(shards)
     cw, ch, gap = pitch - 10, 7, 2.2
-    cells, labels, delay = [], [], .4
+    cells, labels = [], []
     for s, n in enumerate(shards):
         cx = x0 + s * pitch + (pitch - cw) / 2
         for k in range(n):
             cy = base - (k + 1) * ch - k * gap
-            cells.append(f'<rect class="cell" style="animation-delay:{delay + k * .03:.2f}s" '
-                         f'x="{cx:.1f}" y="{cy:.1f}" width="{cw:.1f}" height="{ch}" rx="1.6"/>')
+            cells.append(f'<rect class="cell" x="{cx:.1f}" y="{cy:.1f}" width="{cw:.1f}" height="{ch}" rx="1.6"/>')
         label = str(s + 1)
         lx = cx + cw / 2 - setter.width(label, 13) / 2
         labels += setter.line(label, 13, lx, base + 20)[0]
-        delay += .26
     axis_w = setter.width(t["axis"], 12)
     axis, _ = setter.line(t["axis"], 12, (x0 + x1) / 2 - axis_w / 2, base + 46)
-    t_seal = delay + .5
 
     seal_size = 56
     seal_x, seal_y = big_end + 18, 96
     desc = (f"Run {RUN['id']} on commit {RUN['commit']}: {modules:,} Lean modules in "
-            f"{len(shards)} stages and {sum(shards)} shards, {RUN['jobs']} jobs, all green. "
+            f"{len(shards)} stages and {sum(shards)} shards, checked as one selection. "
             "Each stage is a column of its parallel shards; the selection is sealed with 核.")
     return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" role="img" aria-labelledby="t d">
   <title id="t">{t["title"]}</title>
@@ -189,7 +174,7 @@ def draw(lang, t, shards, modules, setter, glyph):
   <rect class="paper" width="{W}" height="{H}" rx="14"/>
   <rect width="{W}" height="{H}" rx="14" filter="url(#paper)"/>
 
-  <g class="ink later">
+  <g class="ink">
     {paths(eyebrow, style="opacity:.62")}
     {paths(big)}
     {paths(unit, style="opacity:.85")}
@@ -199,15 +184,13 @@ def draw(lang, t, shards, modules, setter, glyph):
   <g filter="url(#pen)">
     {"".join(cells)}
   </g>
-  <g class="ink later" style="animation-delay:.4s">
+  <g class="ink">
     {paths(labels, style="opacity:.6")}
     {paths(axis, style="opacity:.5")}
   </g>
 
   <g transform="translate({seal_x:.1f} {seal_y:.1f}) rotate(-4) scale({seal_size / 116:.4f})">
-    <g class="stamp" style="animation-delay:{t_seal:.2f}s">
-      <g filter="url(#inkpad)"><path class="sealink" mask="url(#carve)" d="{seal_outline()}"/></g>
-    </g>
+    <g filter="url(#inkpad)"><path class="sealink" mask="url(#carve)" d="{seal_outline()}"/></g>
   </g>
 
   <rect width="{W}" height="{H}" rx="14" fill="url(#vignette)"/>

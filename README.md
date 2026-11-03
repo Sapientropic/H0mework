@@ -15,27 +15,62 @@
 
 ## 机器已核
 
-<a href="https://github.com/Sapientropic/H0mework/actions/runs/39025063045"><img src="docs/assets/ci-wall.svg" alt="Lean 完整选集：47,616 个模块，11 个阶段、61 个分片、66 个 job 全部通过" width="100%"></a>
+<!-- BEGIN CI STATUS -->
+<a href="https://github.com/Sapientropic/H0mework/actions/runs/41500430850"><img src="docs/assets/ci-wall.svg" alt="Lean 完整选集：53,198 个模块，11 个阶段、65 个分片，全部通过" width="100%"></a>
 
-- **47,616 个 Lean 模块全部通过内核检查。** 11 个阶段、61 个分片、66 个 job 一次全绿：[run 39025063045](https://github.com/Sapientropic/H0mework/actions/runs/39025063045)，提交 `279d795d`，全包 `--trust=0`。
-- **论文引用的声明逐版再审。** 沿完整依赖闭包检查：公理只有 Lean 标准三条（`propext`、`Classical.choice`、`Quot.sound`），`unsafe = 0`、`partial = 0`。回执见[首发验收](docs/first-release-readiness.md)与[第二版验收](docs/second-edition-readiness.md)。
-- **之后的运行按内容指纹核对。** Lean 选集不变就复用这次验收，CI 徽章的绿灯指的就是它。
-- **这盏绿灯跑了很多轮。** 此前十天连续 56 次运行未过：个别模块内存峰值 58 GiB，要在 16 GiB 的托管 runner 上编完；逐模块编译耗时合计超过 570 runner 小时。分片、跨运行续建与内存调度见 [CI 与增量构建](docs/ci.md)。
+- **53,198 个 Lean 模块纳入同一套内核验收。** 当前 11 个阶段、65 个分片，全包 `--trust=0`；[main 最新运行](https://github.com/Sapientropic/H0mework/actions/runs/41500430850) 已通过，提交 `4bdfd360`。
+<!-- END CI STATUS -->
+
+- **论文引用的声明逐版再审。** 完整依赖闭包只使用 Lean 标准三条公理，`unsafe = 0`、`partial = 0`；各篇验收与复现入口列在下方论文分组中。
+- **新增内容重新构建，不变内容复用验收。** 分片、跨运行续建与内存调度见 [CI 与增量构建](docs/ci.md)。
 
 ## 论文
 
-| 论文 | Zenodo | 证明 |
-| --- | --- | --- |
-| [**状态不是历史，源才是**](https://h0mework.wiki/papers/source-process-core/)：过程同一性、责任承接与最小修订 | [v2](https://doi.org/10.5281/zenodo.23297175) | [映射](docs/second-edition-map.json) · [复现](docs/edition-reproduction.md) |
-| [**这浩瀚宇宙里，我们没找到魔法**](https://h0mework.wiki/papers/physics-common-source/)：Spin×SU(7) 理论的同源生成与经典—量子对应 | [v2](https://doi.org/10.5281/zenodo.23297179) | [映射](docs/second-edition-map.json) · [复现](docs/edition-reproduction.md) |
-| [**电流出庭**](https://h0mework.wiki/papers/low-energy-phenomenology/)：从耦合传播到实际电子、Coulomb 返回与 Born 修饰 | [v1](https://doi.org/10.5281/zenodo.23299174) | [映射](docs/low-energy-release-map.json) · [复现](docs/edition-reproduction.md) |
-| [**两负一正，裸迹宣誓**](https://h0mework.wiki/papers/low-energy-loop-response/)：有序闭迹与整球响应曲率 | [v1](https://doi.org/10.5281/zenodo.23299177) | [映射](docs/low-energy-release-map.json) · [复现](docs/edition-reproduction.md) |
-| [**平账魔法别想逃**](https://h0mework.wiki/papers/whole-ledger-accounting/)：源生整账与真实续行 | [v1](https://doi.org/10.5281/zenodo.23437454) | [映射](docs/whole-ledger-map.json) · [复现](docs/whole-ledger-reproduction.md) |
-| [**1 Bit Is All You Need**](https://h0mework.wiki/papers/one-bit/)：世界，不许赖账 | [v1](https://doi.org/10.5281/zenodo.23437456) | [映射](docs/one-bit-map.json) · [复现](docs/one-bit-reproduction.md) |
-| [**典范社会总定理**](https://h0mework.wiki/papers/generated-society/)：主体、完整制度、真实退出与全深度续生 | [v1](https://doi.org/10.5281/zenodo.23892126) | [映射](docs/generated-society-map.json) · [复现](docs/generated-society-reproduction.md) |
-| [**可能性的经济宪法**](https://h0mework.wiki/papers/economic-constitution/)：真实自由的生产、贡献的清算与权力的续约 | [v1](https://doi.org/10.5281/zenodo.23892128) | [映射](docs/economic-constitution-map.json) · [复现](docs/economic-constitution-reproduction.md) |
+<!-- BEGIN PAPERS -->
+**[在网站上浏览全部论文，读摘要并逐条展开证明 →](https://h0mework.wiki/papers/)**
 
-正文、证明补充与可编辑源码从各自 Zenodo 记录下载；映射逐条给出每个主张落在哪个 Lean 声明。 社会总定理与经济宪法固定引用 `2d6fbc96e33b`；七包／十六包的完整本地 build、trust 与 1012／3313 项类型验收分别见[社会稿](docs/generated-society-readiness.md)和[经济宪法](docs/economic-constitution-readiness.md)，远端 CI 按实际运行另记。
+最新：[可能性的经济宪法](https://h0mework.wiki/papers/economic-constitution/) · [典范社会总定理](https://h0mework.wiki/papers/generated-society/)
+
+<details>
+<summary><strong>总序</strong> · 1 篇</summary>
+
+- [1 Bit Is All You Need](https://h0mework.wiki/papers/one-bit/) · [v1](https://doi.org/10.5281/zenodo.23437456) · [映射](docs/one-bit-map.json) · [复现](docs/one-bit-reproduction.md)
+
+</details>
+
+<details>
+<summary><strong>核心方法</strong> · 2 篇</summary>
+
+- [状态不是历史，源才是](https://h0mework.wiki/papers/source-process-core/) · [v2](https://doi.org/10.5281/zenodo.23297175) · [映射](docs/second-edition-map.json) · [复现](docs/edition-reproduction.md)
+- [平账魔法别想逃](https://h0mework.wiki/papers/whole-ledger-accounting/) · [v1](https://doi.org/10.5281/zenodo.23437454) · [映射](docs/whole-ledger-map.json) · [复现](docs/whole-ledger-reproduction.md)
+
+</details>
+
+<details>
+<summary><strong>物理</strong> · 1 篇</summary>
+
+- [这浩瀚宇宙里，我们没找到魔法](https://h0mework.wiki/papers/physics-common-source/) · [v2](https://doi.org/10.5281/zenodo.23297179) · [映射](docs/second-edition-map.json) · [复现](docs/edition-reproduction.md)
+
+</details>
+
+<details>
+<summary><strong>低能系列</strong> · 2 篇</summary>
+
+- [电流出庭](https://h0mework.wiki/papers/low-energy-phenomenology/) · [v1](https://doi.org/10.5281/zenodo.23299174) · [映射](docs/low-energy-release-map.json) · [复现](docs/edition-reproduction.md)
+- [两负一正，裸迹宣誓](https://h0mework.wiki/papers/low-energy-loop-response/) · [v1](https://doi.org/10.5281/zenodo.23299177) · [映射](docs/low-energy-release-map.json) · [复现](docs/edition-reproduction.md)
+
+</details>
+
+<details>
+<summary><strong>心智与社会</strong> · 2 篇</summary>
+
+- [典范社会总定理](https://h0mework.wiki/papers/generated-society/) · [v1](https://doi.org/10.5281/zenodo.23892126) · [映射](docs/generated-society-map.json) · [复现](docs/generated-society-reproduction.md)
+- [可能性的经济宪法](https://h0mework.wiki/papers/economic-constitution/) · [v1](https://doi.org/10.5281/zenodo.23892128) · [映射](docs/economic-constitution-map.json) · [复现](docs/economic-constitution-reproduction.md)
+
+</details>
+<!-- END PAPERS -->
+
+正文、证明补充与可编辑源码从各自 Zenodo 记录下载；网站可逐条展开主张、Lean 声明与原证据，映射和复现入口则归并到上面的主题分组。
 
 <details>
 <summary>旧版本与源码绑定</summary>

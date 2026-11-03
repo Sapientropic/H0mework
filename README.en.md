@@ -15,27 +15,62 @@ Lean 4 proofs, reproduction programs and frozen evidence behind a family of rese
 
 ## Machine-checked
 
-<a href="https://github.com/Sapientropic/H0mework/actions/runs/39025063045"><img src="docs/assets/ci-wall.en.svg" alt="Lean full selection: 47,616 modules across 11 stages, 61 shards and 66 jobs, all green" width="100%"></a>
+<!-- BEGIN CI STATUS -->
+<a href="https://github.com/Sapientropic/H0mework/actions/runs/41500430850"><img src="docs/assets/ci-wall.en.svg" alt="Lean full selection: 53,198 modules across 11 stages and 65 shards, all checked" width="100%"></a>
 
-- **All 47,616 Lean modules pass the kernel.** 11 stages, 61 shards and 66 jobs went green in one run: [run 39025063045](https://github.com/Sapientropic/H0mework/actions/runs/39025063045) on commit `279d795d`, with `--trust=0` package-wide.
-- **Every cited declaration is audited again per edition.** Across its full dependency closure, the only axioms are Lean's standard three (`propext`, `Classical.choice`, `Quot.sound`), with `unsafe = 0` and `partial = 0`. Receipts are in the [first-release](docs/first-release-readiness.md) and [second-edition](docs/second-edition-readiness.md) acceptance records.
-- **Later runs check the content fingerprint.** While the Lean selection is unchanged, CI reuses this acceptance; that is what the green badge refers to.
-- **The green took many runs.** The ten days before it saw 56 consecutive runs that did not pass: single modules peak at 58 GiB of memory and have to compile on 16 GiB hosted runners, and per-module compile times add up to more than 570 runner hours. Sharding, cross-run continuation and memory scheduling are described in [CI and incremental builds](docs/ci.md).
+- **53,198 Lean modules belong to one kernel-checked selection.** The current 11 stages and 65 shards use `--trust=0` throughout; [the latest main run](https://github.com/Sapientropic/H0mework/actions/runs/41500430850) passes at `4bdfd360`.
+<!-- END CI STATUS -->
+
+- **Cited declarations are audited again per edition.** Their full dependency closures use only Lean's three standard axioms, with `unsafe = 0` and `partial = 0`; each paper's acceptance and reproduction links are grouped below.
+- **New content is rebuilt; unchanged content reuses its acceptance.** See [CI and incremental builds](docs/ci.md) for sharding, continuation and memory scheduling.
 
 ## Papers
 
-| Paper | Zenodo | Proofs |
-| --- | --- | --- |
-| [**The State Is Not the History, the Source Is**](https://h0mework.wiki/en/papers/source-process-core/): Identity, Responsibility, and Minimal Revision in Processes | [v2](https://doi.org/10.5281/zenodo.23297175) | [Map](docs/second-edition-map.json) · [Reproduce](docs/edition-reproduction.md) |
-| [**We Found No Magic in This Mighty Universe**](https://h0mework.wiki/en/papers/physics-common-source/): Common-Source Generation and Classical–Quantum Correspondence in a Spin×SU(7) Theory | [v2](https://doi.org/10.5281/zenodo.23297179) | [Map](docs/second-edition-map.json) · [Reproduce](docs/edition-reproduction.md) |
-| [**The Current Takes the Stand**](https://h0mework.wiki/en/papers/low-energy-phenomenology/): From Coupled Propagation to Actual Electrons, Coulomb Response, and Born Dressing | [v1](https://doi.org/10.5281/zenodo.23299174) | [Map](docs/low-energy-release-map.json) · [Reproduce](docs/edition-reproduction.md) |
-| [**Two Minuses, One Plus, and a Bare Trace Under Oath**](https://h0mework.wiki/en/papers/low-energy-loop-response/): Ordered Closed Traces and Whole-Ball Response Curvature | [v1](https://doi.org/10.5281/zenodo.23299177) | [Map](docs/low-energy-release-map.json) · [Reproduce](docs/edition-reproduction.md) |
-| [**Book-Balancing Magic Has Nowhere to Hide**](https://h0mework.wiki/en/papers/whole-ledger-accounting/): Source-Native Accounting and Actual Continuation | [v1](https://doi.org/10.5281/zenodo.23437454) | [Map](docs/whole-ledger-map.json) · [Reproduce](docs/whole-ledger-reproduction.md) |
-| [**1 Bit Is All You Need**](https://h0mework.wiki/en/papers/one-bit/): The Weakest Superpower: No Unaccounted Differences | [v1](https://doi.org/10.5281/zenodo.23437456) | [Map](docs/one-bit-map.json) · [Reproduce](docs/one-bit-reproduction.md) |
-| [**The Canonical Society Theorem**](https://h0mework.wiki/en/papers/generated-society/) | [v1](https://doi.org/10.5281/zenodo.23892126) | [Map](docs/generated-society-map.json) · [Reproduce](docs/generated-society-reproduction.md) |
-| [**An Economic Constitution of Possibility**](https://h0mework.wiki/en/papers/economic-constitution/): Producing Real Freedom, Settling Contributions, and Renewing Authority | [v1](https://doi.org/10.5281/zenodo.23892128) | [Map](docs/economic-constitution-map.json) · [Reproduce](docs/economic-constitution-reproduction.md) |
+<!-- BEGIN PAPERS -->
+**[Browse all papers on the site, with abstracts and claim-level proofs →](https://h0mework.wiki/en/papers/)**
 
-Main texts, proof supplements and editable sources are available from each Zenodo record; each map lists, claim by claim, the Lean declaration it rests on. The society and economic-constitution papers cite `2d6fbc96e33b`. Their complete local builds, trust audits and 1012/3313 full declaration types are accepted in the [society](docs/generated-society-readiness.md) and [economic-constitution](docs/economic-constitution-readiness.md) records; remote CI retains its actual run status.
+Latest: [An Economic Constitution of Possibility](https://h0mework.wiki/en/papers/economic-constitution/) · [The Canonical Society Theorem](https://h0mework.wiki/en/papers/generated-society/)
+
+<details>
+<summary><strong>Preface</strong> · 1 paper</summary>
+
+- [1 Bit Is All You Need](https://h0mework.wiki/en/papers/one-bit/) · [v1](https://doi.org/10.5281/zenodo.23437456) · [Map](docs/one-bit-map.json) · [Reproduce](docs/one-bit-reproduction.md)
+
+</details>
+
+<details>
+<summary><strong>Core methods</strong> · 2 papers</summary>
+
+- [The State Is Not the History, the Source Is](https://h0mework.wiki/en/papers/source-process-core/) · [v2](https://doi.org/10.5281/zenodo.23297175) · [Map](docs/second-edition-map.json) · [Reproduce](docs/edition-reproduction.md)
+- [Book-Balancing Magic Has Nowhere to Hide](https://h0mework.wiki/en/papers/whole-ledger-accounting/) · [v1](https://doi.org/10.5281/zenodo.23437454) · [Map](docs/whole-ledger-map.json) · [Reproduce](docs/whole-ledger-reproduction.md)
+
+</details>
+
+<details>
+<summary><strong>Physics</strong> · 1 paper</summary>
+
+- [We Found No Magic in This Mighty Universe](https://h0mework.wiki/en/papers/physics-common-source/) · [v2](https://doi.org/10.5281/zenodo.23297179) · [Map](docs/second-edition-map.json) · [Reproduce](docs/edition-reproduction.md)
+
+</details>
+
+<details>
+<summary><strong>Low-energy series</strong> · 2 papers</summary>
+
+- [The Current Takes the Stand](https://h0mework.wiki/en/papers/low-energy-phenomenology/) · [v1](https://doi.org/10.5281/zenodo.23299174) · [Map](docs/low-energy-release-map.json) · [Reproduce](docs/edition-reproduction.md)
+- [Two Minuses, One Plus, and a Bare Trace Under Oath](https://h0mework.wiki/en/papers/low-energy-loop-response/) · [v1](https://doi.org/10.5281/zenodo.23299177) · [Map](docs/low-energy-release-map.json) · [Reproduce](docs/edition-reproduction.md)
+
+</details>
+
+<details>
+<summary><strong>Mind & society</strong> · 2 papers</summary>
+
+- [The Canonical Society Theorem](https://h0mework.wiki/en/papers/generated-society/) · [v1](https://doi.org/10.5281/zenodo.23892126) · [Map](docs/generated-society-map.json) · [Reproduce](docs/generated-society-reproduction.md)
+- [An Economic Constitution of Possibility](https://h0mework.wiki/en/papers/economic-constitution/) · [v1](https://doi.org/10.5281/zenodo.23892128) · [Map](docs/economic-constitution-map.json) · [Reproduce](docs/economic-constitution-reproduction.md)
+
+</details>
+<!-- END PAPERS -->
+
+Main texts, proof supplements and editable sources are available from each Zenodo record. The site opens each claim, Lean declaration and original receipt; the theme groups above keep the maps and reproduction guides together.
 
 <details>
 <summary>Earlier editions and source bindings</summary>
@@ -69,6 +104,7 @@ The [reproduction guide](docs/first-release-reproduction.md) describes scope and
 | Native flow | Native Navier–Stokes evolution and consumers of its history | [NativeFlow](Lean/H0mework/Papers/NativeFlow.lean) |
 | Whole-ledger accounting | Whole-ledger structures, debt settlement and unforgeable settlement | [WholeLedgerAccountingY1](Lean/H0mework/Papers/WholeLedgerAccountingY1.lean) |
 | Canonical society | Generated actors, nonempty root-law completion, actionable exit and same-occurrence regeneration | [GeneratedSocietyMInfinity](Lean/H0mework/Papers/GeneratedSocietyMInfinity.lean) · [Selection and acceptance](docs/generated-society-readiness.md) |
+| Economic constitution of possibility | Capital, public production, public functions and planning interfaces adopted by the institutional argument | [EconomicConstitutionSourceDF](Lean/H0mework/Papers/EconomicConstitutionSourceDF.lean) · [Selection and acceptance](docs/economic-constitution-readiness.md) |
 | Observation dynamics | Counted observation, versioned proofs and the exact cost of compression | [ObservationDynamics](Lean/H0mework/Papers/ObservationDynamics.lean) |
 
 ## Repository map
