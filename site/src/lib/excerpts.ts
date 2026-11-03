@@ -161,7 +161,7 @@ export function excerptsOf(release: ReleaseId, slug: string, lang: Lang, locatio
   const { results } = indexOf(release, slug, lang);
   const cited = [...(location ? citedResults(location) : []), ...(more.cite ?? []).map((number) => ({ number, parts: null }))];
   // This paper numbers its adopted formal results 1–8; its principles are quoted as passages.
-  if (release === "economic-constitution" && location)
+  if (slug === "economic-constitution" && location)
     cited.push(...[...location.matchAll(/结果\s*(\d+)(?![\d.])/g)].map((match) => ({ number: match[1], parts: null })));
   const passages = (more.passages ?? []).flatMap((opening) => passageOf(release, slug, lang, opening) ?? []);
   if (cited.length > 0 || passages.length > 0) {

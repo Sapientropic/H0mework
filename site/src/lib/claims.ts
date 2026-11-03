@@ -203,18 +203,24 @@ function societyIds(text: string): string[] {
   return [...text.matchAll(/G(\d+)(a)?(?:[–-]G(\d+))?/g)].flatMap((match) =>
     match[3] ? Array.from({ length: +match[3] - +match[1] + 1 }, (_, i) => `G${+match[1] + i}`) : [`G${match[1]}${match[2] ?? ""}`]);
 }
-function generatedSociety(slug: string, edition: number): Source[] {
-  const correspondence = publishedPaperJson(slug, "records/theorem-correspondence.json").rows;
-  return mapOf("generated-society").claims.map((claim: any) => {
+function generatedSociety(slug: string, edition: number, release: ReleaseId): Source[] {
+  const correspondence = publishedPaperJson(release, slug, "records/theorem-correspondence.json").rows;
+  return mapOf(release).claims.map((claim: any) => {
     const all = correspondence.filter((row: any) => societyIds(row.claims).includes(claim.id)
       || (claim.cited_interface_contracts?.length && row.claims === "PT15 independent"));
     const specific = all.filter((row: any) => row.main !== "1.1");
     // Lead with the result devoted to this claim, before a broader assembly that also cites it.
     const references = (specific.length ? specific : all).sort((a: any, b: any) =>
       (new Set(societyIds(a.claims)).size || 999) - (new Set(societyIds(b.claims)).size || 999));
-    const locations = (lang: Lang) => [...new Set(references.map((row: any) => row.main
-      ? `${kindOf(manuscriptOf("generated-society", slug, lang), row.main, lang)} ${row.main}`
-      : `${lang === "zh" ? "附录" : "Appendix"} ${row.supplement}`))].join(lang === "zh" ? "；" : "; ") || null;
+    const locations = (lang: Lang) => [...new Set(references.map((row: any) => {
+      if (!row.main) return `${lang === "zh" ? "附录" : "Appendix"} ${row.supplement}`;
+      const text = manuscriptOf(release, slug, lang);
+      const kind = kindOf(text, row.main, lang);
+      // Some correspondence rows point to a section, without a numbered result there.
+      if (kind === (lang === "zh" ? "结果" : "Result")
+        && new RegExp(`^#{2,4}\\s+${row.main.replace(/\./g, "\\.")}\\s`, "m").test(text)) return `§${row.main}`;
+      return `${kind} ${row.main}`;
+    }))].join(lang === "zh" ? "；" : "; ") || null;
     return {
       key: `soc.${claim.id}`, ids: [claim.id], edition,
       text: { title: claim.title, statement: claim.statement_scope === claim.title ? null : claim.statement_scope },
@@ -226,30 +232,34 @@ function generatedSociety(slug: string, edition: number): Source[] {
 }
 
 const PRINCIPLES = { zh: ["一", "二", "三", "四", "五", "六", "七", "八"], en: ["One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight"] };
-function principleAt(slug: string, ordinal: number, lang: Lang) {
-  const text = manuscriptOf("economic-constitution", slug, lang);
-  const opening = `**${lang === "zh" ? "原则" : "Principle "}${PRINCIPLES[lang][ordinal - 1]}`;
-  const paragraph = text.split(/\n\s*\n/).find((paragraph) => paragraph.startsWith(opening));
-  if (!paragraph) throw new Error(`paper has no principle ${ordinal}: ${lang}`);
+function principleAt(slug: string, ordinal: number, lang: Lang, release: ReleaseId) {
+  const text = manuscriptOf(release, slug, lang);
+  const openings = lang === "zh" ? [`**原则${PRINCIPLES.zh[ordinal - 1]}`]
+    : [`**Principle ${PRINCIPLES.en[ordinal - 1]}`, `**Principle ${ordinal}`];
+  const matches = text.split(/\n\s*\n/).flatMap((paragraph) => openings
+    .filter((opening) => paragraph.startsWith(opening) && /[:：. (]/.test(paragraph.slice(opening.length, opening.length + 1)))
+    .map((opening) => ({ paragraph, opening })));
+  if (matches.length !== 1) throw new Error(`paper must have exactly one principle ${ordinal}: ${lang}`);
+  const { paragraph, opening } = matches[0];
   const readingOrder = text.indexOf(paragraph);
   const before = text.slice(0, readingOrder);
   const section = [...before.matchAll(/^#{2,4}\s+(\d+(?:\.\d+)*)\s/gm)].at(-1)?.[1];
   return { opening, location: section ? `§${section}` : null, readingOrder };
 }
-function formalResultAt(slug: string, ordinal: string, lang: Lang) {
-  const text = manuscriptOf("economic-constitution", slug, lang);
+function formalResultAt(slug: string, ordinal: string, lang: Lang, release: ReleaseId) {
+  const text = manuscriptOf(release, slug, lang);
   const pattern = new RegExp(`^\\*\\*${lang === "zh" ? "结果" : "Result "}\\s*${ordinal}(?!\\d)`, "m");
   const readingOrder = text.search(pattern);
   if (readingOrder < 0) throw new Error(`paper has no formal result ${ordinal}: ${lang}`);
   const section = [...text.slice(0, readingOrder).matchAll(/^#{2,4}\s+(\d+(?:\.\d+)*)\s/gm)].at(-1)?.[1];
   return { location: `${section ? `§${section} ` : ""}${lang === "zh" ? "结果" : "Result"} ${ordinal}`, readingOrder };
 }
-function economicConstitution(slug: string, edition: number): Source[] {
-  const map = mapOf("economic-constitution");
+function economicConstitution(slug: string, edition: number, release: ReleaseId): Source[] {
+  const map = mapOf(release);
   const principles: Source[] = map.claims.map((claim: any, index: number) => {
     if (claim.claim_kind !== "normative_argument_with_exact_formal_support" || !claim.formal_support_only)
       throw new Error(`economic principle classification changed: ${claim.id}`);
-    const zh = principleAt(slug, index + 1, "zh"), en = principleAt(slug, index + 1, "en");
+    const zh = principleAt(slug, index + 1, "zh", release), en = principleAt(slug, index + 1, "en", release);
     return {
       key: `ecn.${claim.id}`, ids: [claim.id], edition, category: "principle", readingOrder: zh.readingOrder,
       text: { title: claim.title, statement: claim.statement_scope },
@@ -267,7 +277,7 @@ function economicConstitution(slug: string, edition: number): Source[] {
       return declarations.length ? [{ ...entry, declarations }] : [];
     });
     if (!selected.length) throw new Error(`formal result has no accepted declarations: ${result.id}`);
-    const zh = formalResultAt(slug, result.id.slice(1), "zh"), en = formalResultAt(slug, result.id.slice(1), "en");
+    const zh = formalResultAt(slug, result.id.slice(1), "zh", release), en = formalResultAt(slug, result.id.slice(1), "en", release);
     return {
       key: `ecn.${result.id}`, ids: [result.id], edition, category: "formal", readingOrder: zh.readingOrder,
       text: { title: result.paper_label, statement: result.statement },
@@ -278,7 +288,7 @@ function economicConstitution(slug: string, edition: number): Source[] {
   return [...principles, ...results];
 }
 
-const ADAPTERS: Record<ReleaseId, (slug: string, edition: number) => Source[]> = {
+const ADAPTERS: Record<ReleaseId, (slug: string, edition: number, release: ReleaseId) => Source[]> = {
   "first-release": firstRelease,
   "second-edition": secondEdition,
   "low-energy": lowEnergy,
@@ -286,6 +296,8 @@ const ADAPTERS: Record<ReleaseId, (slug: string, edition: number) => Source[]> =
   "one-bit": oneBit,
   "generated-society": generatedSociety,
   "economic-constitution": economicConstitution,
+  "generated-society-v2": generatedSociety,
+  "economic-constitution-v2": economicConstitution,
 };
 
 // --- translations -----------------------------------------------------------------------------
@@ -445,10 +457,17 @@ function rowOf(source: Source, release: ReleaseId, slug: string, lang: Lang) {
   };
 }
 
+function claimEditions(slug: string) {
+  const editions = entryOf(slug).editions;
+  const replaced = new Set(editions.map((edition) => RELEASES[edition.release].replacesClaimsFrom));
+  return editions.map((edition, index) => ({ ...edition, number: index + 1 }))
+    .filter((edition) => !replaced.has(edition.release));
+}
+
 export function claimsOf(slug: string, lang: Lang) {
   return once(`claims:${slug}:${lang}`, () =>
-    entryOf(slug)
-      .editions.flatMap((edition, index) => ADAPTERS[edition.release](slug, index + 1).map((source) => rowOf(source, edition.release, slug, lang)))
+    claimEditions(slug)
+      .flatMap((edition) => ADAPTERS[edition.release](slug, edition.number, edition.release).map((source) => rowOf(source, edition.release, slug, lang)))
       .sort((a, b) => a.order[0] - b.order[0] || a.order[1] - b.order[1]
         || (a.readingOrder ?? Number.MAX_SAFE_INTEGER) - (b.readingOrder ?? Number.MAX_SAFE_INTEGER)
         || idNumber(a.ids[0] ?? "") - idNumber(b.ids[0] ?? "")),
@@ -456,7 +475,7 @@ export function claimsOf(slug: string, lang: Lang) {
 }
 
 // Sources keyed for the translation layers, used by scripts/translations.ts.
-export const sourcesOf = (slug: string) => entryOf(slug).editions.flatMap((edition, index) => ADAPTERS[edition.release](slug, index + 1));
+export const sourcesOf = (slug: string) => claimEditions(slug).flatMap((edition) => ADAPTERS[edition.release](slug, edition.number, edition.release));
 
 // Every public Lean file the pages read, for the site workflow's sparse checkout (scripts/lean-paths.ts).
 export const leanPaths = (slugs: string[]) => [...new Set(slugs.flatMap(sourcesOf).flatMap((source) => leanOf(source.producers).map((producer) => producer.public!.path)))].sort();

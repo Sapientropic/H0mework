@@ -64,8 +64,8 @@
 <details>
 <summary><strong>心智与社会</strong> · 2 篇</summary>
 
-- [典范社会总定理](https://h0mework.wiki/papers/generated-society/) · [v1](https://doi.org/10.5281/zenodo.23892126) · [映射](docs/generated-society-map.json) · [复现](docs/generated-society-reproduction.md)
-- [可能性的经济宪法](https://h0mework.wiki/papers/economic-constitution/) · [v1](https://doi.org/10.5281/zenodo.23892128) · [映射](docs/economic-constitution-map.json) · [复现](docs/economic-constitution-reproduction.md)
+- [典范社会总定理](https://h0mework.wiki/papers/generated-society/) · [v2](https://doi.org/10.5281/zenodo.23917896) · [映射](docs/generated-society-map.json) · [复现](docs/generated-society-reproduction.md)
+- [可能性的经济宪法](https://h0mework.wiki/papers/economic-constitution/) · [v2](https://doi.org/10.5281/zenodo.23917902) · [映射](docs/economic-constitution-map.json) · [复现](docs/economic-constitution-reproduction.md)
 
 </details>
 <!-- END PAPERS -->

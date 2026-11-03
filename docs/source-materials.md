@@ -1,6 +1,6 @@
 # 来源材料索引
 
-社会总定理与经济宪法的固定来源为 `2d6fbc96e33b7c4c3cfd91104fda74e3caeda045`。各自的完整原声明、公开owner、直接消费者、实际适配与原认证分别从[社会映射](generated-society-map.json)和[经济宪法映射](economic-constitution-map.json)恢复；原strict、失败及本地移植验收各保执行身份。两稿成品、可编辑包与DOI见[2026-11-03发布清单](../papers/society-economic/2026-11-03/manifest.json)。
+社会总定理与经济宪法的固定来源为 `2d6fbc96e33b7c4c3cfd91104fda74e3caeda045`。各自的完整原声明、公开owner、直接消费者、实际适配与原认证分别从[社会映射](generated-society-map.json)和[经济宪法映射](economic-constitution-map.json)恢复；原strict、失败及本地移植验收各保执行身份。当前v2成品、可编辑包与DOI见[发布清单](../papers/society-economic/2026-11-03-v2/manifest.json)，[v1](../papers/society-economic/2026-11-03/manifest.json)保留原文件；两版完整证明范围相同。
 
 第二版与低能首发选集的生产、直接消费者和原认证材料分别由[第二版映射](second-edition-map.json)与[低能映射](low-energy-release-map.json)登记。原认证、原失败和本次公开执行分列，验收入口见[版本复现](edition-reproduction.md)。
 

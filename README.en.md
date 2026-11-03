@@ -64,8 +64,8 @@ Latest: [An Economic Constitution of Possibility](https://h0mework.wiki/en/paper
 <details>
 <summary><strong>Mind & society</strong> · 2 papers</summary>
 
-- [The Canonical Society Theorem](https://h0mework.wiki/en/papers/generated-society/) · [v1](https://doi.org/10.5281/zenodo.23892126) · [Map](docs/generated-society-map.json) · [Reproduce](docs/generated-society-reproduction.md)
-- [An Economic Constitution of Possibility](https://h0mework.wiki/en/papers/economic-constitution/) · [v1](https://doi.org/10.5281/zenodo.23892128) · [Map](docs/economic-constitution-map.json) · [Reproduce](docs/economic-constitution-reproduction.md)
+- [The Canonical Society Theorem](https://h0mework.wiki/en/papers/generated-society/) · [v2](https://doi.org/10.5281/zenodo.23917896) · [Map](docs/generated-society-map.json) · [Reproduce](docs/generated-society-reproduction.md)
+- [An Economic Constitution of Possibility](https://h0mework.wiki/en/papers/economic-constitution/) · [v2](https://doi.org/10.5281/zenodo.23917902) · [Map](docs/economic-constitution-map.json) · [Reproduce](docs/economic-constitution-reproduction.md)
 
 </details>
 <!-- END PAPERS -->

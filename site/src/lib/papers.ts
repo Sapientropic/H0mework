@@ -174,13 +174,13 @@ export function paperOf(slug: string, lang: Lang) {
   const title = titleOf(manuscript);
   const parts = splitTitle(title);
   // This paper places its subtitle on a separate heading before the abstract.
-  if (latest === "economic-constitution" && !parts.sub)
+  if (slug === "economic-constitution" && !parts.sub)
     parts.sub = manuscript.split(/^##\s+(?:摘要|Abstract)\s*$/m)[0].match(/^##\s+(.+)$/m)?.[1] ?? "";
   const abstract = abstractOf(manuscript, lang);
   const other = titleOf(manuscriptOf(latest, slug, lang === "zh" ? "en" : "zh"));
   return {
     ...entry,
-    title: parts.sub && latest === "economic-constitution" ? `${title}: ${parts.sub}` : title,
+    title: parts.sub && slug === "economic-constitution" ? `${title}: ${parts.sub}` : title,
     ...parts,
     // The other language's title, less a main title both languages share.
     other: splitTitle(other).main === splitTitle(title).main ? splitTitle(other).sub : other,

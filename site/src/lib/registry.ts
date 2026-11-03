@@ -15,7 +15,7 @@ export const repoLink = (path: string, line?: number, commit = "main") => `${REP
 const suffix = (lang: Lang) => (lang === "en" ? "-en" : "");
 const unzip = (zip: string, member: string) => execFileSync("unzip", ["-p", resolve(ROOT, zip), member], { encoding: "utf8", maxBuffer: 1 << 26 });
 
-export type ReleaseId = "first-release" | "second-edition" | "low-energy" | "whole-ledger" | "one-bit" | "generated-society" | "economic-constitution";
+export type ReleaseId = "first-release" | "second-edition" | "low-energy" | "whole-ledger" | "one-bit" | "generated-society" | "economic-constitution" | "generated-society-v2" | "economic-constitution-v2";
 type Release = {
   label: Record<Lang, string>;
   date: string;
@@ -30,6 +30,8 @@ type Release = {
   sourceCommit?: string;
   acceptance?: Record<Lang, string>;
   claimsNote?: Record<Lang, string>;
+  // A prose revision quotes its current text once while retaining both editions' downloads.
+  replacesClaimsFrom?: ReleaseId;
 };
 
 const FIRST = "papers/first-release";
@@ -39,18 +41,19 @@ const LEDGER = "papers/whole-ledger-one-bit/2026-10-17";
 // The 2026-10-17 papers ship their manuscripts and selections inside the editable archive uploaded to Zenodo.
 const ledgerArchive = (slug: string) => `${LEDGER}/editable/${slug}-v1-editable.zip`;
 const SOCIETY = "papers/society-economic/2026-11-03";
+const SOCIETY_V2 = "papers/society-economic/2026-11-03-v2";
 const SOCIETY_SOURCE = "2d6fbc96e33b7c4c3cfd91104fda74e3caeda045";
-const societyArchive = (slug: string) => `${SOCIETY}/editable/${slug}-v1-editable.zip`;
-const societyPaper = (slug: string) => {
-  const paper = readJson(`${SOCIETY}/manifest.json`).papers.find((paper: any) => paper.paper === slug);
+const societyArchive = (slug: string, version = "v1") => `${version === "v2" ? SOCIETY_V2 : SOCIETY}/editable/${slug}-${version}-editable.zip`;
+const societyPaper = (slug: string, version = "v1") => {
+  const paper = readJson(`${version === "v2" ? SOCIETY_V2 : SOCIETY}/manifest.json`).papers.find((paper: any) => paper.paper === slug);
   if (!paper?.doi || !/^10\.\d{4,9}\/\S+$/.test(paper.doi) || paper.source_commit !== SOCIETY_SOURCE)
     throw new Error(`release manifest has no fixed proof source and DOI for ${slug}`);
   return paper;
 };
-export const publishedPaperJson = (slug: string, path: string) =>
-  once(`published:${slug}:${path}`, () => JSON.parse(unzip(societyArchive(slug), `papers/${slug}/${path}`)));
+export const publishedPaperJson = (release: ReleaseId, slug: string, path: string) =>
+  once(`published:${release}:${slug}:${path}`, () => JSON.parse(unzip(RELEASES[release].selection!.path, `papers/${slug}/${path}`)));
 
-export const RELEASES: Record<ReleaseId, Release> = {
+const BASE_RELEASES: Record<Exclude<ReleaseId, "generated-society-v2" | "economic-constitution-v2">, Release> = {
   "first-release": {
     label: { zh: "首发", en: "First release" },
     date: readJson(`${FIRST}/manifest.json`).date,
@@ -142,6 +145,25 @@ export const RELEASES: Record<ReleaseId, Release> = {
   },
 };
 
+function societyRevision(slug: "generated-society" | "economic-constitution"): Release {
+  return {
+    ...BASE_RELEASES[slug],
+    label: { zh: `${BASE_RELEASES[slug].label.zh} · 第 2 版`, en: `${BASE_RELEASES[slug].label.en} · v2` },
+    date: societyPaper(slug, "v2").publication_date,
+    selection: { path: societyArchive(slug, "v2"), member: `papers/${slug}/release-selection.json` },
+    manuscript: (paper, lang) => unzip(societyArchive(paper, "v2"), `papers/${paper}/manuscript${suffix(lang)}.md`),
+    supplement: (paper, lang) => unzip(societyArchive(paper, "v2"), `papers/${paper}/supplement${suffix(lang)}.md`),
+    files: (paper, lang) => ({ pdf: `${SOCIETY_V2}/pdf/${paper}${suffix(lang)}.pdf`, supplement: `${SOCIETY_V2}/pdf/${paper}-supplement${suffix(lang)}.pdf` }),
+    replacesClaimsFrom: slug,
+  };
+}
+
+export const RELEASES: Record<ReleaseId, Release> = {
+  ...BASE_RELEASES,
+  "generated-society-v2": societyRevision("generated-society"),
+  "economic-constitution-v2": societyRevision("economic-constitution"),
+};
+
 type Edition = { release: ReleaseId; doi: string };
 export type ThemeId = "preface" | "core" | "computation" | "physics" | "low-energy" | "math" | "chemistry" | "metrology" | "life" | "mind";
 // Home groups the index by these themes, in this order; a paper's theme lives on its PAPERS entry.
@@ -229,13 +251,19 @@ export const PAPERS: PaperEntry[] = [
   {
     slug: "generated-society",
     theme: "mind",
-    editions: [{ release: "generated-society", doi: societyPaper("generated-society").doi }],
+    editions: [
+      { release: "generated-society", doi: societyPaper("generated-society").doi },
+      { release: "generated-society-v2", doi: societyPaper("generated-society", "v2").doi },
+    ],
     figure: { name: "exit-run", claim: "G4" },
   },
   {
     slug: "economic-constitution",
     theme: "mind",
-    editions: [{ release: "economic-constitution", doi: societyPaper("economic-constitution").doi }],
+    editions: [
+      { release: "economic-constitution", doi: societyPaper("economic-constitution").doi },
+      { release: "economic-constitution-v2", doi: societyPaper("economic-constitution", "v2").doi },
+    ],
     figure: { name: "clepsydra", claim: "R4" },
   },
 ];
