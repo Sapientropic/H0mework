@@ -82,6 +82,64 @@ const rod = (a, b, r, style, steps) => {
   const length = Math.hypot(...d);
   return length < 0.05 ? "" : S(G.disc(0, length, r, G.frameAlong(a, d), P, steps ? { steps } : {}), style);
 };
+
+// --- light: highlights and shadows from the kit's own light, so they turn with the view -------------
+
+// The direction half-way between the light and the eye: a round surface shows its highlight where it faces it.
+const halfway = () => { const V = G.viewOf(P), Lt = G.lightOf(P); return unit([V[0] + Lt[0], V[1] + Lt[1], V[2] + Lt[2]]); };
+// The angle round frame F's axis at which its surface faces the half-way direction.
+const litAngle = (F) => {
+  const h = halfway();
+  const ha = h[0] * F.a[0] + h[1] * F.a[1] + h[2] * F.a[2];
+  const n = [0, 1, 2].map((i) => h[i] - ha * F.a[i]);
+  return Math.atan2(n[0] * F.v[0] + n[1] * F.v[1] + n[2] * F.v[2], n[0] * F.u[0] + n[1] * F.u[1] + n[2] * F.u[2]);
+};
+// A highlight streak down a turned body from s0 (radius r) to s1 (radius r1), fading in and out.
+const shine = (F, s0, s1, r, r1 = r, fade = 1.5) => { const t = litAngle(F); return k.fadeLineSvg([at(G.pointOf(F, s0, r, t)), at(G.pointOf(F, s1, r1, t))], { fade: [fade, fade], tone: "spec", className: "spec" }); };
+// A straight highlight along a lit edge from a to b.
+const edgeShine = (a, b, fade = 4) => k.fadeLineSvg([at(a), at(b)], { fade: [fade, fade], tone: "spec", className: "spec" });
+// A soft glint on a glazed body: a blurred spot in the view's plane where the surface at s, radius r faces the light.
+const glintAt = (p, size = 1.3) => {
+  const V = G.viewOf(P), u = unit([-V[1], V[0], 0]);
+  const v = [V[1] * u[2] - V[2] * u[1], V[2] * u[0] - V[0] * u[2], V[0] * u[1] - V[1] * u[0]];
+  return `<path class="glint" d="${G.circleOf(G.frameOf(p, V, u, v), 0, size, P, 18)}"/>`;
+};
+const glint = (F, s, r, size = 1.3) => glintAt(G.pointOf(F, s, r, litAngle(F)), size);
+// The glint on a ball of radius r at c sits towards the half-way direction.
+const ballGlint = (c, r, size = r * 0.28) => { const h = halfway(); return glintAt(c.map((v, i) => v + h[i] * r * 0.72), size); };
+// A rod from a to b with its highlight streak.
+const brightRod = (a, b, r, style, steps, fade = 2) => {
+  const d = [b[0] - a[0], b[1] - a[1], b[2] - a[2]];
+  const length = Math.hypot(...d);
+  if (length < 0.05) return "";
+  const F = G.frameAlong(a, d);
+  return S(G.disc(0, length, r, F, P, steps ? { steps } : {}), { ...style, inner: shine(F, 0.3, length - 0.3, r * 1.01, r * 1.01, Math.min(fade, length / 3)) });
+};
+// A part standing on the plane z at (x, y): a tight contact shadow of radius r at its foot and, for a part
+// of height h, a short soft shadow of half-width w cast away from the light.
+// A box (plan, standing on z, h tall) casts its shadow away from the light: the hull of its foot and its
+// foot moved by the shadow's reach, blurred.
+function boxCast(plan, z, h, o = 1) {
+  const Lt = G.lightOf(P);
+  const flat = Math.hypot(Lt[0], Lt[1]) || 1;
+  const reach = Math.min(h * (flat / Lt[2]) * 0.42, 30);
+  const [dx, dy] = [(-Lt[0] / flat) * reach, (-Lt[1] / flat) * reach];
+  const foot = k.corners(plan);
+  const pts = [...foot, ...foot.map(([x, y]) => [x + dx, y + dy])].map(([x, y]) => at([x, y, z]));
+  return `<path class="iso-halo" d="${k.pathOf(G.hullOf(pts), true)}" style="filter:blur(3px);transform:none;opacity:calc(var(--fig-shadow) * ${n2(1.05 * o)})"/>`;
+}
+function grounded(x, y, r, { z = 0, h = 0, w = r * 0.85, o = 1 } = {}) {
+  const core = r <= 0 ? "" : `<path class="iso-halo" d="${k.haloOf({ x: x - r, y: y - r, w: 2 * r, d: 2 * r, r }, z, 0.1, P)}" style="filter:blur(1.2px);transform:none;opacity:calc(var(--fig-shadow) * ${n2(1.1 * o)})"/>`;
+  if (h <= 0) return core;
+  const Lt = G.lightOf(P);
+  const flat = Math.hypot(Lt[0], Lt[1]) || 1;
+  const dir = [-Lt[0] / flat, -Lt[1] / flat], n = [-dir[1], dir[0]];
+  const reach = Math.min(h * (flat / Lt[2]) * 0.42, 30);
+  const end = [x + dir[0] * reach, y + dir[1] * reach];
+  const cap = (c, rr, from) => Array.from({ length: 11 }, (_, i) => { const a = from + (i / 10) * Math.PI; return [c[0] + rr * (Math.cos(a) * dir[0] + Math.sin(a) * n[0]), c[1] + rr * (Math.cos(a) * dir[1] + Math.sin(a) * n[1])]; });
+  const outline = [...cap([x, y], w, Math.PI / 2), ...cap(end, w * 0.7, -Math.PI / 2)];
+  return `<path class="iso-halo" d="${k.pathOf(outline.map(([px, py]) => at([px, py, z])), true)}" style="filter:blur(2.6px);transform:none;opacity:calc(var(--fig-shadow) * ${n2(1.05 * o)})"/>` + core;
+}
 // A falling stream is a tapered sheet with a narrow highlight, both driven by the same flow envelope.
 const fall = (a, b, w = 1.2, opacity = 1) => {
   const sheet = k.pathOf([at([a[0] - w / 2, a[1], a[2]]), at([a[0] + w / 2, a[1], a[2]]), at([b[0] + w * 0.35, b[1], b[2]]), at([b[0] - w * 0.35, b[1], b[2]])], true);
@@ -92,7 +150,8 @@ const WATER_DEFS = `<defs>
   <linearGradient id="cl-water-fill" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="var(--cl-water-light)"/><stop offset=".55" stop-color="var(--cl-water)"/><stop offset="1" stop-color="var(--cl-water-edge)"/></linearGradient>
   <linearGradient id="cl-stream-fill" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="var(--cl-water-edge)"/><stop offset=".42" stop-color="var(--cl-water-light)"/><stop offset="1" stop-color="var(--cl-water)"/></linearGradient>
 </defs>`;
-const shadow = (x, y, r, o = 0.35) => `<path class="iso-halo" d="${k.haloOf({ x: x - r, y: y - r, w: 2 * r, d: 2 * r, r }, 0, 0.1, P)}" style="filter:blur(2.5px);opacity:calc(var(--anatomy-halo-opacity) * ${o})"/>`;
+// A part's shadow: a soft halo, a tight contact shadow at the foot and, with `h`, a short cast shadow.
+const shadow = (x, y, r, o = 0.35, { z = 0, h = 0, w = r * 0.8 } = {}) => `<path class="iso-halo" d="${k.haloOf({ x: x - r, y: y - r, w: 2 * r, d: 2 * r, r }, z, 0.1, P)}" style="filter:blur(2.5px);opacity:calc(var(--anatomy-halo-opacity) * ${o})"/>` + grounded(x, y, r * 0.86, { z, h, w, o: o / 0.35 * 0.8 });
 
 // --- the base and the stand ---------------------------------------------------------------------
 
@@ -101,7 +160,7 @@ function base() {
   const out = [`<path class="iso-halo" d="${k.haloOf(BASE, BASE_Z[0] - FOOT.h, BASE_Z[1] - BASE_Z[0], P)}"/>`];
   const feet = k.corners(BASE, FOOT.inset).sort((a, b) => k.depthOf([...a, 0], P) - k.depthOf([...b, 0], P));
   for (const [x, y] of feet) out.push(cyl(x, y, FOOT.r, BASE_Z[0] - FOOT.h, FOOT.h, { tone: "mid" }, 28, 0.4));
-  out.push(box(BASE, BASE_Z[0], -BASE_Z[0] - 3, { tone: "hi", inner: L(k.sideSeam(BASE, BASE_Z[0] + 3, P, 6), { tone: "faint" }) }, 6, 1));
+  out.push(box(BASE, BASE_Z[0], -BASE_Z[0] - 3, { tone: "hi", inner: L(k.sideSeam(BASE, BASE_Z[0] + 3, P, 6), { tone: "faint" }) + edgeShine([BASE.x + 8, BASE.y + BASE.d, -3.9], [BASE.x + BASE.w - 8, BASE.y + BASE.d, -3.9], 30) }, 6, 1));
   const deck = k.insetPlan(BASE, 1.5);
   const [p0, p1] = C.PLATE;
   const plate = `<g transform="${faceY(C.FACE + 0.02)}">${L(rectD(p0, 5, p1, 14, 1.2), { tone: "faint" })}${L(`M${p0 + 6} 8H${p1 - 10}M${p0 + 6} 10H${p1 - 16}M${p0 + 6} 12H${p1 - 22}`, { tone: "faint", free: true })}</g>`;
@@ -130,6 +189,7 @@ function counter(state) {
 function stand() {
   const out = [];
   for (const [i, s] of C.STEPS.entries()) {
+    out.push(boxCast(s, s.z, s.h, 0.8), `<path class="iso-halo" d="${k.haloOf(k.insetPlan(s, -1.2), s.z, 0.1, P)}" style="filter:blur(3px);opacity:calc(var(--anatomy-halo-opacity) * .45)"/>`, `<path class="iso-halo" d="${k.haloOf(k.insetPlan(s, -0.4), s.z, 0.1, P)}" style="filter:blur(1.1px);transform:none;opacity:calc(var(--anatomy-halo-opacity) * .7)"/>`);
     // Each riser is laid in blocks: vertical joints across its front, a sunk panel in each block.
     const front = s.y + s.d, z1 = s.z + s.h - 1.4;
     const blocks = Math.max(2, Math.round(s.w / 23));
@@ -140,7 +200,8 @@ function stand() {
       panels.push(rectD(u0 + 2.2, -(z1 - 2.2), u1 - 2.2, -(s.z + 2.2), 0.8));
     }
     out.push(M("marble", box(s, s.z, s.h - 1.4, { tone: "mid", inner: `<g transform="${faceY(front)}">${L(joints.join(""), { tone: "faint" })}${L(panels.join(""), { tone: "faint" })}</g>` }, 2, 0.5)));
-    out.push(M("jade", box(k.insetPlan(s, -0.8), s.z + s.h - 1.4, 1.4, { tone: "mid" }, 2, 0.4)));
+    const nose = k.insetPlan(s, -0.8);
+    out.push(M("jade", box(nose, s.z + s.h - 1.4, 1.4, { tone: "mid" }, 2, 0.4), edgeShine([nose.x + 2, nose.y + nose.d, s.z + s.h - 0.25], [nose.x + nose.w - 2, nose.y + nose.d, s.z + s.h - 0.25], 10)));
     if (i === 0) out.push(D([[s.x + 4, s.y + s.d, 4], [s.x + s.w - 4, s.y + s.d, 4]].map(at), { size: 0.45 }));
   }
   return out.join("");
@@ -152,11 +213,11 @@ function source() {
   const [x, y, z] = C.SOURCE;
   const F = FV(x, y, z);
   const profile = [[0, 6.2], [0.8, 7, 1], [4, 8.6, 1], [9, 8.4, 1], [13, 6.6, 1], [15, 5.2, 1], [16, 5.6]];
-  const out = [shadow(x, y, 8, 0.3), M("ink", cyl(x, y, 7, z, 0.8, { tone: "mid" }, 40, 0.2)), M("marble", S(G.solidOf(profile, F, P, { smooth: true }), { tone: "mid" }))];
-  out.push(M("marble", L(G.arcOf(F, 8.4, 8.5, P) + G.arcOf(F, 9.4, 8.45, P), { tone: "lo" })));
+  const out = [shadow(x, y, 7.6, 0.3, { z, h: 20, w: 7 }), M("ink", cyl(x, y, 7, z, 0.8, { tone: "mid" }, 40, 0.2)), M("marble", S(G.solidOf(profile, F, P, { smooth: true }), { tone: "mid" }))];
+  out.push(M("marble", L(G.arcOf(F, 8.4, 8.5, P) + G.arcOf(F, 9.4, 8.45, P), { tone: "lo" }), shine(F, 2.6, 7.4, 8.4, 8.6, 1.6), glint(F, 5.2, 8.62, 1.7)));
   out.push(M("jade", S(G.disc(16, 17.2, 6, F, P, { bevel: 0.4 }), { tone: "mid" }), S(G.sphereOf([x, y, z + 19], 1.8, P), { tone: "mid" })));
   // Three spouts: left and right to the troughs, front into the clock's vessel.
-  out.push(M("jade", rod([x - 7.4, y, z + 6], [x - 11.4, y, z + 5.6], 1.1, { tone: "mid" }, 14), rod([x + 7.4, y, z + 6], [x + 11.4, y, z + 5.6], 1.1, { tone: "mid" }, 14), rod([x, y + 7.6, z + 9], [x, y + 11, z + 8.6], 0.9, { tone: "mid" }, 14)));
+  out.push(M("jade", brightRod([x - 7.4, y, z + 6], [x - 11.4, y, z + 5.6], 1.1, { tone: "mid" }, 14), brightRod([x + 7.4, y, z + 6], [x + 11.4, y, z + 5.6], 1.1, { tone: "mid" }, 14), brightRod([x, y + 7.6, z + 9], [x, y + 11, z + 8.6], 0.9, { tone: "mid" }, 14)));
   return out.join("");
 }
 // A trough from a to b: a floor and two walls on one frame, its water, and trestles under it.
@@ -168,9 +229,13 @@ function trough(a, b, { trestles = [] } = {}) {
   const up = unit([dir[1] * across[2] - dir[2] * across[1], dir[2] * across[0] - dir[0] * across[2], dir[0] * across[1] - dir[1] * across[0]]);
   const F = G.frameOf(a, dir, across, up[2] > 0 ? up : up.map((c) => -c));
   const out = [];
+  // Each trestle is a turned marble column on an ink foot, with an ink saddle under the trough.
   for (const trestle of trestles) {
     const p = a.map((v, i) => v + d[i] * trestle.t);
-    out.push(M("ink", box({ x: p[0] - 0.8, y: p[1] - 0.8, w: 1.6, d: 1.6, r: 0.2 }, trestle.z0, p[2] - 1 - trestle.z0, { tone: "mid" }, 1), box({ x: p[0] - 2.2, y: p[1] - 2.6 * Math.abs(across[1]) - 0.6, w: 4.4, d: 1.2 + 5.2 * Math.abs(across[1]), r: 0.3 }, p[2] - 1.6, 0.8, { tone: "mid" }, 1)));
+    const z0 = trestle.z0 + 0.7, top = p[2] - 1.6, hgt = top - z0;
+    const profile = [[0, 1.9], [0.6, 1.9, 1], [1.1, 1.45, 1], [1.7, 1.05], [hgt - 2.1, 1], [hgt - 1.7, 1.35, 1], [hgt - 1.3, 1], [hgt - 0.9, 1.1, 1], [hgt - 0.2, 1.6, 1], [hgt, 1.6]];
+    out.push(shadow(p[0], p[1], 2.8, 0.3, { z: trestle.z0, h: hgt, w: 1.9 }), M("ink", cyl(p[0], p[1], 2.4, trestle.z0, 0.7, { tone: "mid" }, 24, 0.2)), M("marble", S(G.solidOf(profile, FV(p[0], p[1], z0), P), { tone: "mid", inner: shine(FV(p[0], p[1], z0), 1.9, hgt - 2.3, 1.03, 1.03, 2.5) })),
+      M("ink", box({ x: p[0] - 2.2, y: p[1] - 2.6 * Math.abs(across[1]) - 0.6, w: 4.4, d: 1.2 + 5.2 * Math.abs(across[1]), r: 0.3 }, top, 0.8, { tone: "mid" }, 2, 0.15)));
   }
   out.push(M("marble", S(G.prismOf(F, [[-2.2, -0.6], [2.2, -0.6], [2.2, 0], [-2.2, 0]], 0, len, P), { tone: "mid" }), S(G.prismOf(F, [[-2.2, 0], [-1.6, 0], [-1.6, 1.6], [-2.2, 1.6]], 0, len, P), { tone: "mid" })));
   const w = (u) => k.pathOf([0, len].map((s) => at(G.pointOf(F, s, 0, 0).map((v, i) => v + across[i] * u + F.v[i] * 0.9))));
@@ -221,7 +286,7 @@ function vessel(elapsed) {
   const [x, y, z, r, h] = C.VESSEL;
   const F = FV(x, y, z);
   const wall = G.ringBand(0.8, h - 0.25, r - 0.55, r, F, P);
-  const out = [shadow(x, y, r + 1, 0.3), M("jade", S(G.ringBand(0, 0.65, r - 0.65, r + 0.25, F, P), { tone: "mid" }))];
+  const out = [shadow(x, y, r + 1, 0.3, { z, h: h + 6, w: r * 0.9 }), M("jade", S(G.ringBand(0, 0.65, r - 0.65, r + 0.25, F, P), { tone: "mid" }))];
   out.push(`<path class="cl-glass-wall" fill-rule="evenodd" d="${wall.fill}"/>`, L(wall.outline, { tone: "mid" }));
   out.push(`<path class="iso-shade" data-shade="0" d="${k.ring(x, y, r - 0.8, z + h, P, 40)}"/><path class="tw-water" d="${k.ring(x, y, r - 0.8, z + h - 2.2, P, 40)}"/>`);
   out.push(M("jade", S(G.ringBand(h - 0.35, h, r - 0.55, r + 0.35, F, P), { tone: "mid" })));
@@ -239,7 +304,7 @@ function ruler() {
   const [x, y] = C.RULER;
   const z0 = C.VESSEL[2] + C.VESSEL[4] + 4;
   const top = z0 + 8 * C.STEP_UP;
-  const out = [M("ink", box({ x: x - 1.6, y: y - 1.6, w: 3.2, d: 3.2, r: 0.4 }, C.VESSEL[2], 1.4, { tone: "mid" }, 2)), M("marble", box({ x: x - 0.9, y: y - 0.6, w: 1.8, d: 1.2, r: 0.2 }, C.VESSEL[2] + 1.4, top - C.VESSEL[2] - 1.4, { tone: "mid" }, 1))];
+  const out = [grounded(x, y, 2.2, { z: C.VESSEL[2], h: top - C.VESSEL[2], w: 1.2, o: 0.8 }), M("ink", box({ x: x - 1.6, y: y - 1.6, w: 3.2, d: 3.2, r: 0.4 }, C.VESSEL[2], 1.4, { tone: "mid" }, 2)), M("marble", box({ x: x - 0.9, y: y - 0.6, w: 1.8, d: 1.2, r: 0.2 }, C.VESSEL[2] + 1.4, top - C.VESSEL[2] - 1.4, { tone: "mid" }, 1))];
   const face = y + 0.62;
   const minor = [], major = [];
   for (let i = 0; i <= 8; i++) (i % 5 ? minor : major).push(k.pathOf([at([x - 0.9, face, z0 + i * C.STEP_UP]), at([x - (i % 5 ? 0.2 : -0.4), face, z0 + i * C.STEP_UP])]));
@@ -252,7 +317,7 @@ function ruler() {
 function seal(state) {
   const [x, y] = C.SEAL;
   const z = C.STEPS[0].h;
-  const out = [shadow(x, y, 4.4, 0.3), M("ink", box({ x: x - 4, y: y - 3.4, w: 8, d: 6.8, r: 0.8 }, z, 4, { tone: "mid" }, 2, 0.4))];
+  const out = [shadow(x, y, 4.4, 0.3, { z, h: 10, w: 3.6 }), M("ink", box({ x: x - 4, y: y - 3.4, w: 8, d: 6.8, r: 0.8 }, z, 4, { tone: "mid" }, 2, 0.4))];
   out.push(M("jade", box({ x: x - 3.2, y: y - 2.6, w: 6.4, d: 5.2, r: 1.4 }, z + 4, 0.9, { tone: "mid" }, 3, 0.3)));
   out.push(M(state.seatAt[0] === 0 ? "ink" : "marble", box({ x: x - 2, y: y - 2, w: 4, d: 4, r: 0.4 }, z + 4.9, 3.2, { tone: "hi" }, 2, 0.3), S(G.sphereOf([x, y, z + 9.2], 1.2, P), { tone: "hi" })));
   const F = G.frameOf([x, y + 3.42, z + 2], Y3, X3, Z3);
@@ -265,7 +330,7 @@ function tablet(lines) {
   const z = C.STEPS[0].h;
   const face = y + 1.02;
   const border = `<g transform="${faceY(face)}">${L(rectD(x - 3.3, -(z + 12.4), x + 3.3, -(z + 2.7), 0.5), { tone: "faint" })}</g>`;
-  const out = [M("ink", box({ x: x - 5, y: y - 2.4, w: 10, d: 4.8, r: 0.6 }, z, 2, { tone: "mid" }, 2, 0.3), D([at([x - 4, y + 2.4, z + 1]), at([x + 4, y + 2.4, z + 1])], { size: 0.38 })),
+  const out = [boxCast({ x: x - 4, y: y - 1, w: 8, d: 2, r: 0.4 }, z, 14, 0.7), grounded(x, y, 4.6, { z, o: 0.8 }), M("ink", box({ x: x - 5, y: y - 2.4, w: 10, d: 4.8, r: 0.6 }, z, 2, { tone: "mid" }, 2, 0.3), D([at([x - 4, y + 2.4, z + 1]), at([x + 4, y + 2.4, z + 1])], { size: 0.38 })),
     M("marble", box({ x: x - 4, y: y - 1, w: 8, d: 2, r: 0.4 }, z + 2, 11, { tone: "mid", inner: border }, 2, 0.3)),
     // Its cap: an ink coping over the slab and a jade boss at the centre.
     M("ink", box({ x: x - 4.6, y: y - 1.5, w: 9.2, d: 3, r: 0.5 }, z + 13, 0.9, { tone: "mid" }, 2, 0.25)), M("jade", S(G.sphereOf([x, y, z + 14.4], 0.8, P), { tone: "mid" }))];
@@ -277,28 +342,40 @@ function tablet(lines) {
 
 // --- the basin: anyone may draw; it has no box and reads no tally ----------------------------------
 
+// Rings spread from where the stream lands: three short, slightly uneven arcs at staggered ages, each
+// growing and fading as it travels out (`phase` 0–1 is the age of the first). Their ends fade, so no
+// target is drawn on the water.
+function ripples(level, phase) {
+  const [x, y, , h] = C.BASIN;
+  const zw = h - 0.8 + level * 0.4 + 0.02;
+  const out = [];
+  for (const [i, [from, to, wob]] of [[-0.4, 1.9, 0], [0.7, 3, 1], [2.2, 4.5, 2]].entries()) {
+    const f = (phase + i / 3) % 1;
+    const r = 1.2 + 3.5 * f;
+    const alpha = Math.min(1, f * 5) * (1 - f) ** 1.2;
+    if (alpha < 0.03) continue;
+    const points = Array.from({ length: 31 }, (_, j) => {
+      const a = from + ((to - from) * j) / 30;
+      const rr = r * (1 + 0.035 * Math.sin(3 * a + wob));
+      return at([x + 3 + rr * Math.cos(a), y - 6 + rr * Math.sin(a), zw]);
+    });
+    out.push(`<g opacity="${n2(alpha)}">${k.fadeLineSvg(points, { fade: [1.8, 1.8], tone: "faint", className: "cl-ripple" })}</g>`);
+  }
+  return out.join("");
+}
 function basin(level, bowls) {
   const [x, y, r, h] = C.BASIN;
   const F = FV(x, y, 0);
   const profile = [[0, r - 3], [1.4, r - 2.4, 1], [3, r - 0.6, 1], [h - 1, r, 1], [h, r + 0.6]];
-  const out = [shadow(x, y, r + 1, 0.35), M("ink", cyl(x, y, r - 2.4, 0, 0.8, { tone: "mid" }, 40, 0.2)), M("marble", S(G.solidOf(profile, F, P), { tone: "mid" }), S(G.ringBand(h - 0.2, h + 0.6, r - 1.4, r + 0.6, F, P), { tone: "mid" }), L(G.arcOf(F, h - 1.6, r - 0.15, P), { tone: "lo" }))];
+  const out = [shadow(x, y, r + 1, 0.35, { h, w: r * 0.9 }), M("ink", cyl(x, y, r - 2.4, 0, 0.8, { tone: "mid" }, 40, 0.2)), M("marble", S(G.solidOf(profile, F, P), { tone: "mid" }), S(G.ringBand(h - 0.2, h + 0.6, r - 1.4, r + 0.6, F, P), { tone: "mid" }), L(G.arcOf(F, h - 1.6, r - 0.15, P), { tone: "lo" }), glint(F, 4.6, r - 0.38, 1.6))];
   out.push(`<path class="iso-shade" data-shade="0" d="${k.ring(x, y, r - 1.4, h + 0.6, P, 48)}"/><path class="tw-water" d="${k.ring(x, y, r - 1.4, h - 0.8 + level * 0.4, P, 48)}"/>`);
 
-  // Short, slightly uneven arcs spread from the stream's landing point; their ends fade instead of drawing a target.
   const zw = h - 0.8 + level * 0.4 + 0.02;
-  for (const [r, from, to, phase] of [[1.8, -0.4, 1.9, 0], [3.1, 0.7, 3, 1], [4.5, 2.2, 4.5, 2]]) {
-    const points = Array.from({ length: 31 }, (_, i) => {
-      const a = from + ((to - from) * i) / 30;
-      const rr = r * (1 + 0.035 * Math.sin(3 * a + phase));
-      return at([x + 3 + rr * Math.cos(a), y - 6 + rr * Math.sin(a), zw]);
-    });
-    out.push(k.fadeLineSvg(points, { fade: [1.8, 1.8], tone: "faint", className: "cl-ripple" }));
-  }
   // A ladle resting across the rim, its bowl in the water.
   out.push(M("ink", S(G.disc(-0.3, 0.3, 1.6, FV(x + r - 5.4, y - 1.5, zw), P), { tone: "mid" }), rod([x + r - 4, y - 2, h + 0.9], [x + r + 3, y - 6, h + 2.4], 0.4, { tone: "mid" }, 8)));
   for (const [i, [bx, by]] of C.BOWLS.entries()) {
     const B = FV(bx, by, 0);
-    out.push(shadow(bx, by, 4, 0.3), M("marble", S(G.lathe([[0, 0], [0, 2], [0.8, 2.4, 1], [3.4, 4, 1], [4, 4.2]], B, P, { fill: "surface" }), { tone: "mid", inner: L(G.arcOf(B, 0.6, 2.3, P) + G.arcOf(B, 3.6, 4.07, P), { tone: "lo" }) })));
+    out.push(shadow(bx, by, 4, 0.3, { h: 4.2, w: 3.6 }), M("marble", S(G.lathe([[0, 0], [0, 2], [0.8, 2.4, 1], [3.4, 4, 1], [4, 4.2]], B, P, { fill: "surface" }), { tone: "mid", inner: L(G.arcOf(B, 0.6, 2.3, P) + G.arcOf(B, 3.6, 4.07, P), { tone: "lo" }) }), glint(B, 2.4, 3.3, 0.75)));
     if (bowls[i] > 0.05) out.push(`<path class="tw-water" d="${k.ring(bx, by, 2.8 + 1 * bowls[i], 1 + 2.6 * bowls[i], P, 28)}"/>`);
   }
   return out.join("");
@@ -324,8 +401,8 @@ function wheel(turn) {
   const V = G.viewOf(P);
   const TAU = Math.PI * 2;
   // A bearing post on its foot, carrying a pillow block and its cap.
-  const post = (y) => M("ink", box({ x: cx - 4, y: y - 1.2, w: 8, d: 2.4, r: 0.4 }, 0, 1.2, { tone: "mid" }, 1), D([at([cx - 2.8, y + 1.2, 0.6]), at([cx + 2.8, y + 1.2, 0.6])], { size: 0.34 }), box({ x: cx - 1, y: y - 0.8, w: 2, d: 1.6, r: 0.3 }, 1.2, cz - 3.2, { tone: "mid" }, 1), box({ x: cx - 1.9, y: y - 1, w: 3.8, d: 2, r: 0.4 }, cz - 2, 1.6, { tone: "mid" }, 2, 0.2), box({ x: cx - 1.5, y: y - 1, w: 3, d: 2, r: 0.7 }, cz - 0.4, 1.5, { tone: "mid" }, 3, 0.2));
-  const shaft = (y0, y1) => M("ink", S(G.disc(y0 - s0, y1 - s0, 1.1, F, P), { tone: "mid" }));
+  const post = (y) => grounded(cx, y, 2.6, { h: cz, w: 1.6, o: 0.8 }) + M("ink", box({ x: cx - 4, y: y - 1.2, w: 8, d: 2.4, r: 0.4 }, 0, 1.2, { tone: "mid" }, 1), D([at([cx - 2.8, y + 1.2, 0.6]), at([cx + 2.8, y + 1.2, 0.6])], { size: 0.34 }), box({ x: cx - 1, y: y - 0.8, w: 2, d: 1.6, r: 0.3 }, 1.2, cz - 3.2, { tone: "mid" }, 1), box({ x: cx - 1.9, y: y - 1, w: 3.8, d: 2, r: 0.4 }, cz - 2, 1.6, { tone: "mid" }, 2, 0.2), box({ x: cx - 1.5, y: y - 1, w: 3, d: 2, r: 0.7 }, cz - 0.4, 1.5, { tone: "mid" }, 3, 0.2));
+  const shaft = (y0, y1) => M("ink", S(G.disc(y0 - s0, y1 - s0, 1.1, F, P), { tone: "mid", inner: y1 - y0 > 3 ? shine(F, y0 - s0 + 0.5, y1 - s0 - 0.5, 1.12, 1.12, 2) : "" }));
   const spokes = (s) => Array.from({ length: 6 }, (_, i) => { const t = turn + (i / 6) * TAU; return rod(G.pointOf(F, s, 2, t), G.pointOf(F, s, r - 1.4, t), 0.38, { tone: "mid" }, 8); }).join("");
   const back = s0 - 1.6, front = cy + w / 2 + 2.8;
   const out = [post(back), shaft(back - 1, s0), M("marble", rimSvg(F, 0, 0.8, r - 1.5, r), spokes(0.4))];
@@ -352,7 +429,7 @@ function hammer(lift) {
   const head = 11, tail = 7;
   const mortar = [px + head, py];
   const mz = pz - 5;
-  const out = [shadow(mortar[0], mortar[1], 5, 0.35), M("ink", cyl(mortar[0], mortar[1], 4.8, 0, 1.2, { tone: "mid" }, 28, 0.3)), M("marble", S(G.solidOf([[1.2, 3.4], [2, 3.6, 1], [mz - 4, 3.2, 1], [mz - 1.6, 4.2, 1], [mz, 4.6]], FV(mortar[0], mortar[1], 0), P), { tone: "mid" }), L(G.arcOf(FV(mortar[0], mortar[1], 0), 2.6, 3.56, P) + G.arcOf(FV(mortar[0], mortar[1], 0), mz - 0.4, 4.5, P), { tone: "lo" })), `<path class="iso-shade" data-shade="0" d="${k.ring(mortar[0], mortar[1], 3, mz, P, 24)}"/>`];
+  const out = [shadow(mortar[0], mortar[1], 5, 0.35, { h: mz, w: 4 }), M("ink", cyl(mortar[0], mortar[1], 4.8, 0, 1.2, { tone: "mid" }, 28, 0.3)), M("marble", S(G.solidOf([[1.2, 3.4], [2, 3.6, 1], [mz - 4, 3.2, 1], [mz - 1.6, 4.2, 1], [mz, 4.6]], FV(mortar[0], mortar[1], 0), P), { tone: "mid" }), L(G.arcOf(FV(mortar[0], mortar[1], 0), 2.6, 3.56, P) + G.arcOf(FV(mortar[0], mortar[1], 0), mz - 0.4, 4.5, P), { tone: "lo" }), shine(FV(mortar[0], mortar[1], 0), 3, mz - 4.6, 3.54, 3.22, 1.6)), `<path class="iso-shade" data-shade="0" d="${k.ring(mortar[0], mortar[1], 3, mz, P, 24)}"/>`];
   for (const dy of [-3, 3]) out.push(M("ink", box({ x: px - 0.7, y: py + dy - 0.7, w: 1.4, d: 1.4, r: 0.2 }, 0, pz + 0.6, { tone: "mid" }, 1)));
   const a = 0.06 + lift * 0.4;
   const dir = [Math.cos(a), 0, Math.sin(a)];
@@ -365,14 +442,14 @@ function hammer(lift) {
 function coinbox(coin) {
   const [x, y] = C.COINBOX;
   const z = C.STEPS[0].h;
-  const out = [M("ink", box({ x: x - 4, y: y - 3, w: 8, d: 6, r: 0.6 }, z, 7, { tone: "mid" }, 2, 0.4), L(k.planOutline({ x: x - 2, y: y - 0.4, w: 4, d: 0.8, r: 0.3 }, z + 7, P, 2), { tone: "faint" }))];
+  const out = [boxCast({ x: x - 4, y: y - 3, w: 8, d: 6, r: 0.6 }, z, 7, 0.8), grounded(x, y, 4.2, { z, o: 0.8 }), M("ink", box({ x: x - 4, y: y - 3, w: 8, d: 6, r: 0.6 }, z, 7, { tone: "mid" }, 2, 0.4), L(k.planOutline({ x: x - 2, y: y - 0.4, w: 4, d: 0.8, r: 0.3 }, z + 7, P, 2), { tone: "faint" }))];
   if (coin > 0) out.push(M("ink", S(G.disc(-0.4, 0.4, 2, G.frameOf([x, y, z + 7.2 + 9 * coin], Y3, X3, Z3), P), { tone: "hi" })));
   return out.join("");
 }
 // The mill's two legs: a lamp for the payment, a lamp for the grinding, a mark when both are done.
 function millLamps(performed) {
   const [x, y] = C.LAMPS;
-  const out = [shadow(x, y, 3, 0.3), M("marble", box({ x: x - 0.8, y: y - 0.8, w: 1.6, d: 1.6, r: 0.3 }, 0, 9, { tone: "mid" }, 1), box({ x: x - 7, y: y - 0.7, w: 14, d: 1.4, r: 0.4 }, 9, 6.4, { tone: "mid" }, 2, 0.3))];
+  const out = [shadow(x, y, 3, 0.3, { h: 15, w: 2.2 }), M("marble", box({ x: x - 0.8, y: y - 0.8, w: 1.6, d: 1.6, r: 0.3 }, 0, 9, { tone: "mid" }, 1), box({ x: x - 7, y: y - 0.7, w: 14, d: 1.4, r: 0.4 }, 9, 6.4, { tone: "mid" }, 2, 0.3))];
   const lens = (u, on) => `<circle class="${on ? "cl-lens cl-paid" : "cl-lens"}" cx="${u}" cy="-12.2" r="1.5"/>`;
   out.push(`<g transform="${faceY(y + 0.72)}">${lens(x - 4, performed.includes("pay"))}${lens(x, performed.includes("grind"))}${L(`M${x + 2.6} -12.2l1.1 1.1l2 -2.4`, { tone: MD.cleared(performed) ? "hi" : "faint", free: true })}</g>`);
   return out.join("");
@@ -385,8 +462,8 @@ function jar(state) {
   const F = FV(x, y, 0);
   const left = state.left ?? MD.remainingFor(state.account, state.origin);
   const profile = [[0, r - 1.6], [0.8, r - 0.6, 1], [h * 0.4, r, 1], [h * 0.8, r - 1, 1], [h - 0.8, r - 3, 1], [h, r - 3.2]];
-  const out = [shadow(x, y, r + 1, 0.4), M("ink", cyl(x, y, r - 1.1, 0, 0.7, { tone: "mid" }, 36, 0.2)), M("marble", S(G.solidOf(profile, F, P, { smooth: true }), { tone: "mid" }))];
-  out.push(M("marble", L(G.arcOf(F, h * 0.16, r - 0.2, P) + G.arcOf(F, h * 0.22, r - 0.1, P), { tone: "lo" })));
+  const out = [shadow(x, y, r + 1, 0.4, { h: h + 4, w: r * 0.9 }), M("ink", cyl(x, y, r - 1.1, 0, 0.7, { tone: "mid" }, 36, 0.2)), M("marble", S(G.solidOf(profile, F, P, { smooth: true }), { tone: "mid" }))];
+  out.push(M("marble", L(G.arcOf(F, h * 0.16, r - 0.2, P) + G.arcOf(F, h * 0.22, r - 0.1, P), { tone: "lo" }), shine(F, h * 0.28, h * 0.56, r - 0.05, r - 0.15, 2.2), glint(F, h * 0.42, r + 0.02, 2)));
   // The lid, sealed with the contribution's mark: one dot per origin issued.
   out.push(M("jade", S(G.disc(h, h + 1.6, r - 2.6, F, P, { bevel: 0.4 }), { tone: "mid" }), box({ x: x + 2.2, y: y - 2, w: 4, d: 4, r: 0.4 }, h + 1.6, 2.4, { tone: "mid" }, 2, 0.3), D(Array.from({ length: state.origin }, (_, i) => at([x + 3.4 + i * 1, y, h + 4.02])), { size: 0.45, tone: "hi" })));
   // The float arrow through the lid: up Q steps when full, down one step a unit paid.
@@ -400,7 +477,7 @@ function qruler() {
   const [x, y] = C.QRULER;
   const h = C.JAR[3];
   const z0 = h + 3, top = z0 + MD.Q * C.Q_UP + 2;
-  const out = [M("ink", box({ x: x - 1.6, y: y - 1.6, w: 3.2, d: 3.2, r: 0.4 }, 0, 1.4, { tone: "mid" }, 2)), M("marble", box({ x: x - 0.9, y: y - 0.6, w: 1.8, d: 1.2, r: 0.2 }, 1.4, top - 1.4, { tone: "mid" }, 1))];
+  const out = [grounded(x, y, 2.2, { h: top, w: 1.2, o: 0.8 }), M("ink", box({ x: x - 1.6, y: y - 1.6, w: 3.2, d: 3.2, r: 0.4 }, 0, 1.4, { tone: "mid" }, 2)), M("marble", box({ x: x - 0.9, y: y - 0.6, w: 1.8, d: 1.2, r: 0.2 }, 1.4, top - 1.4, { tone: "mid" }, 1))];
   const face = y + 0.62;
   const ticks = [];
   for (let i = 0; i <= MD.Q; i++) ticks.push(k.pathOf([at([x - 0.9, face, z0 + i * C.Q_UP]), at([x + (i === MD.Q ? 0.9 : 0.1), face, z0 + i * C.Q_UP])]));
@@ -431,19 +508,19 @@ function cup(index, received) {
   const [x, y] = C.CUPS[index];
   const z = TRAY;
   const fill = Math.min(1, received / MD.Q);
-  return M(index === 0 ? "jade" : "marble", S(G.lathe([[0, 0], [0, 2.8], [0.8, 3.2, 1], [4.6, 3.8, 1], [5.2, 4.1]], FV(x, y, z), P, { fill: "surface" }), { tone: "mid", inner: L(G.arcOf(FV(x, y, z), 0.9, 3.22, P), { tone: "lo" }) }))
+  return grounded(x, y, 3.4, { z, h: 5.2, w: 2.6, o: 0.7 }) + M(index === 0 ? "jade" : "marble", S(G.lathe([[0, 0], [0, 2.8], [0.8, 3.2, 1], [4.6, 3.8, 1], [5.2, 4.1]], FV(x, y, z), P, { fill: "surface" }), { tone: "mid", inner: L(G.arcOf(FV(x, y, z), 0.9, 3.22, P), { tone: "lo" }) }), glint(FV(x, y, z), 2.6, 3.5, 0.7))
     + (fill > 0 ? `<path class="tw-water" d="${k.ring(x, y, 3.1 + 0.6 * fill, z + 0.8 + 4 * fill, P, 28)}"/>` : "") + L(k.ring(x, y, 4.1, z + 5.2, P, 28), { tone: "mid" });
 }
 function tray() {
   const [[x0, y0], [, y1]] = C.CUPS;
   const plan = { x: x0 - 5.4, y: y0 - 5.4, w: 10.8, d: y1 - y0 + 10.8, r: 2 };
-  return shadow(x0, (y0 + y1) / 2, 7, 0.3) + M("ink", box(plan, 0, TRAY, { tone: "mid" }, 4, 0.25), L(k.planOutline(k.insetPlan(plan, 1), TRAY, P, 4), { tone: "faint" }));
+  return shadow(x0, (y0 + y1) / 2, 7, 0.3, { h: 6, w: 5.4 }) + M("ink", box(plan, 0, TRAY, { tone: "mid" }, 4, 0.25), L(k.planOutline(k.insetPlan(plan, 1), TRAY, P, 4), { tone: "faint" }));
 }
 // The tally rack: a peg for each holder; the jade tally lies on its holder's peg.
 function rack() {
   const [x, y] = C.RACK;
   const plan = { x: x - 2.4, y: y - 9, w: 4.8, d: 18, r: 0.6 };
-  return shadow(x, y, 4, 0.3) + M("ink", box(plan, 0, 1.4, { tone: "mid" }, 2, 0.3), L(k.planOutline(k.insetPlan(plan, 0.8), 1.4, P, 2), { tone: "faint" }), D([at([x, y - 1.2, 1.4]), at([x, y + 1.2, 1.4])], { size: 0.36 }),
+  return shadow(x, y, 4, 0.3, { h: 6.6, w: 2.6 }) + M("ink", box(plan, 0, 1.4, { tone: "mid" }, 2, 0.3), L(k.planOutline(k.insetPlan(plan, 0.8), 1.4, P, 2), { tone: "faint" }), D([at([x, y - 1.2, 1.4]), at([x, y + 1.2, 1.4])], { size: 0.36 }),
     ...[-6.5, 6.5].map((dy) => cyl(x, y + dy, 1.1, 1.4, 0.5, { tone: "mid" }, 16, 0.15) + cyl(x, y + dy, 0.6, 1.9, 4.5, { tone: "mid", crease: "none" }, 10) + S(G.sphereOf([x, y + dy, 6.6], 0.75, P), { tone: "mid" })));
 }
 function tally(where) {
@@ -474,6 +551,7 @@ function composition(state) {
     `<g data-part="hammer">${hammer(state.lift)}</g>`,
     `<g data-part="lamps">${millLamps(state.legs)}</g>`,
     `<g data-part="basin">${basin(state.level, state.bowls)}</g>`,
+    `<g data-part="ripples">${ripples(state.level, state.ripple ?? 0.2)}</g>`,
     qruler(),
     `<g data-part="jar">${jar(state)}</g>`,
     `<g data-part="spigot">${spigot(state.tally.t, state.pour)}</g>`,
@@ -507,7 +585,7 @@ function hitAreas() {
 const REST = {
   origin: 1, account: MD.pay(MD.issue({ slots: [] }, 1, "甲", MD.Q).account, 1, 2).account,
   holder: 0, received: [2, 0], pour: 0, tally: { t: 0, dx: 0, dy: 0, lift: 0 },
-  legs: ["pay", "grind"], open: 0, coin: 0, turn: 0.4, lift: 0,
+  legs: ["pay", "grind"], open: 0, coin: 0, turn: 0.4, spin: 0, lift: 0, hv: 0, ripple: 0.2,
   elapsed: 2, force: true, seatAt: [0, 1], log: [1, 1, 1], level: 1, bowls: [0, 0],
 };
 
@@ -520,12 +598,24 @@ const svg = k.figureSvg({
 });
 
 const CSS = `
+.cl-svg{--anatomy-spec:#ffffff;--fig-shadow:.52}
+.iso[data-theme="dark"] .cl-svg{--fig-shadow:.7}
+.iso[data-theme="dark"] .cl-svg .glint{opacity:.32}
+.cl-svg [data-mat="jade"]{--anatomy-spec:#f3faf4}
+.cl-svg [data-mat="ink"]{--anatomy-spec:#9aa4a6}
+.iso[data-theme="dark"] .cl-svg [data-mat="marble"],.iso[data-theme="dark"] .cl-svg{--anatomy-spec:#9a9c98}
+.iso[data-theme="dark"] .cl-svg [data-mat="jade"]{--anatomy-spec:#8fb39b}
+.iso[data-theme="dark"] .cl-svg [data-mat="ink"]{--anatomy-spec:#626a6c}
+.cl-svg .iso-line[data-tone="spec"]{stroke:var(--anatomy-spec)}
+.cl-svg .spec{stroke-width:.75;stroke-linecap:round}
+.cl-svg .glint{fill:var(--anatomy-spec);stroke:none;filter:blur(.9px);opacity:.8}
 .cl-svg{--cl-fault:var(--cinnabar,#c8372d);--cl-force:#9fc7a9;--cl-water-light:#edf5ee;--cl-water:#b8d2c8;--cl-water-edge:#7fa89b;--cl-water-ink:#5f8e82}
 .iso[data-theme="dark"] .cl-svg{--cl-water-light:#47685a;--cl-water:#29483b;--cl-water-edge:#1c342a;--cl-water-ink:#83aa98}
 .cl-svg .tw-water{fill:var(--cl-water);fill:url(#cl-water-fill);fill-opacity:.86;stroke:var(--cl-water-edge);stroke-width:.45}
 .cl-svg .cl-flow{opacity:.55;stroke:var(--cl-water-ink);stroke-width:.55}
 .cl-svg .cl-fall{fill:var(--cl-water);fill:url(#cl-stream-fill);stroke:none}
-.cl-svg .cl-stream-shine{fill:none;stroke:var(--cl-water-light);stroke-width:.45;stroke-linecap:round}
+.cl-svg .cl-stream-shine{fill:none;stroke:var(--cl-water-light);stroke-width:.45;stroke-linecap:round;stroke-dasharray:1.1 1.9;animation:cl-shine .7s linear infinite}
+@keyframes cl-shine{to{stroke-dashoffset:-3}}
 .cl-svg .cl-ripple{stroke:var(--cl-water-ink);stroke-width:.45}
 .cl-svg .cl-glass-wall{fill:#d9e8e2;fill-opacity:.22;stroke:none}
 .iso[data-theme="dark"] .cl-svg .cl-glass-wall{fill:#2a453a;fill-opacity:.3}
@@ -541,7 +631,7 @@ const CSS = `
 .iso-stage:focus-visible{box-shadow:0 0 0 1px var(--anatomy-mid)}
 ${SWING_CSS}
 @media (max-width:560px){.iso-plate:has(.cl-svg){overflow:hidden}.iso-plate:has(.cl-svg) .iso-plate-corner[data-corner="title"]{max-width:calc(100% - 62px);white-space:normal;text-align:right;line-height:1.35}.cl-svg.iso-svg{width:114%;max-width:none;margin:0 -7%}}
-@media (prefers-reduced-motion:reduce){.cl-svg .cl-flow{animation:none}}
+@media (prefers-reduced-motion:reduce){.cl-svg .cl-flow,.cl-svg .cl-stream-shine{animation:none}}
 `;
 
 const strip = (file) => readFileSync(join(HERE, file), "utf8").replace(/^export /gm, "");
@@ -555,8 +645,8 @@ let P = P0;
 ${shipped({ C, COUNTER, TRAY, FRAME, X3, Y3, Z3, WATER_DEFS })}
 const k = { ${Object.keys(k).join(", ")} };
 const G = LATHE;
-${shipped({ at, S, L, D, M, n2, faceY, rectD, box, cyl, FV, unit, rod, fall, shadow })}
-${shipped({ rimSvg, base, counterFace, counter, tray, stand, source, trough, troughs, rightTrough, vessel, ruler, seal, tablet, basin, wheel, hammer, coinbox, millLamps, jar, qruler, spigot, cup, rack, tally, composition, hitAreas })}
+${shipped({ at, S, L, D, M, n2, faceY, rectD, box, cyl, FV, unit, rod, fall, shadow, halfway, litAngle, shine, edgeShine, glintAt, glint, ballGlint, brightRod, boxCast, grounded })}
+${shipped({ ripples, rimSvg, base, counterFace, counter, tray, stand, source, trough, troughs, rightTrough, vessel, ruler, seal, tablet, basin, wheel, hammer, coinbox, millLamps, jar, qruler, spigot, cup, rack, tally, composition, hitAreas })}
 ${swingSource}
 ${liveScript()}
 `;
@@ -574,7 +664,7 @@ const HOLDER = ["甲", "丙"], KEEPER = ["乙", "戊"];
 const st = {
   origin: 1, account: MD.pay(MD.issue({ slots: [] }, 1, "甲", MD.Q).account, 1, 2).account,
   holder: 0, received: [2, 0], shownReceived: [2, 0], left: 4, pour: 0, tally: { t: 0, dx: 0, dy: 0, lift: 0 },
-  legs: ["pay", "grind"], open: 0, coin: 0, turn: 0.4, lift: 0,
+  legs: ["pay", "grind"], open: 0, coin: 0, turn: 0.4, spin: 0, lift: 0, hv: 0, ripple: 0.2,
   elapsed: 2, force: true, seatAt: [0, 1], log: [1, 1, 1], level: 1, bowls: [0, 0],
 };
 // The clock: one tick per unit of time; the seat's own deadline decides its jurisdiction.
@@ -602,13 +692,13 @@ function paint(force = false) {
   const want = {
     wheel: key([n2(st.turn)]), right: key([n2(st.open)]), coinbox: key([n2(st.coin)]), tablet: key([st.log.length]),
     vessel: key([n2(st.elapsed)]), seal: key([st.force, st.seatAt]), hammer: key([n2(st.lift)]), lamps: key(st.legs),
-    basin: key([n2(st.level), st.bowls.map(n2)]), jar: key([n2(st.left), st.origin]), spigot: key([n2(st.tally.t), n2(st.pour)]),
+    basin: key([n2(st.level), st.bowls.map(n2)]), ripples: key([n2(st.level), n2(st.ripple)]), jar: key([n2(st.left), st.origin]), spigot: key([n2(st.tally.t), n2(st.pour)]),
     counter: key([MD.receivedFor(st.account, st.origin), MD.remainingFor(st.account, st.origin)]), "cup-0": key([n2(st.shownReceived[0])]), "cup-1": key([n2(st.shownReceived[1])]), tally: key([n2(st.tally.t), n2(st.tally.dx), n2(st.tally.dy), n2(st.tally.lift)]),
   };
   const draw = {
     wheel: () => wheel(st.turn), right: () => rightTrough(st.open), coinbox: () => coinbox(st.coin), tablet: () => tablet(st.log.length),
     vessel: () => vessel(st.elapsed), seal: () => seal(st), hammer: () => hammer(st.lift), lamps: () => millLamps(st.legs),
-    basin: () => basin(st.level, st.bowls), jar: () => jar(st), spigot: () => spigot(st.tally.t, st.pour),
+    basin: () => basin(st.level, st.bowls), ripples: () => ripples(st.level, st.ripple), jar: () => jar(st), spigot: () => spigot(st.tally.t, st.pour),
     counter: () => counter(st), "cup-0": () => cup(0, st.shownReceived[0]), "cup-1": () => cup(1, st.shownReceived[1]), tally: () => tally(st.tally),
   };
   for (const name of Object.keys(want)) if (force || want[name] !== shown[name]) part(name).innerHTML = draw[name]();
@@ -696,11 +786,9 @@ function advance(dt) {
     st.shownReceived[step.holder] += step.paid * delivered;
   } else if (step.kind === "mill") {
     // The payment leg, then the grinding leg: the gate lifts for one run and the hammer falls.
-    st.coin = t < 0.25 ? 1 - smooth(t / 0.25) : 0;
+    st.coin = t < 0.25 ? 1 - (t / 0.25) ** 2 : 0;
     if (t >= 0.25 && !st.legs.includes("pay")) st.legs = ["pay"];
     st.open = t < 0.3 ? 0 : t < 0.85 ? smooth((t - 0.3) / 0.2) : 1 - smooth((t - 0.85) / 0.15);
-    st.turn += dt * 3.2 * st.open;
-    st.lift = Math.abs(Math.sin(st.turn * 2)) * st.open;
     if (t >= 0.85 && !st.legs.includes("grind")) st.legs = ["pay", "grind"];
   } else if (step.kind === "transfer") {
     const u = smooth(t);
@@ -721,19 +809,41 @@ function advance(dt) {
   if (t >= 1) {
     if (step.kind === "draw") st.level = 1;
     if (step.kind === "pay") st.pour = 0;
-    if (step.kind === "mill") { st.open = 0; st.lift = 0; }
+    if (step.kind === "mill") st.open = 0;
     if (step.kind === "try") st.tally = { t: st.holder, dx: 0, dy: 0, lift: 0 };
     complete(step);
     step = null;
   }
   return true;
 }
+// The parts that keep moving between steps: the wheel spins up under the water and coasts down on its
+// bearings; the trip hammer rides the cam, drops off its lobe onto the mortar and bounces; the basin's
+// rings keep spreading.
+function mechanics(dt) {
+  if (still.matches || !dt) return false;
+  const drive = 3.4 * st.open;
+  st.spin += (drive - st.spin) * (1 - Math.exp(-dt / (drive > st.spin ? 0.45 : 1.2)));
+  if (drive === 0 && st.spin < 0.03) st.spin = 0;
+  st.turn += st.spin * dt;
+  const TAU = Math.PI * 2;
+  const p = (((st.turn * 2) % TAU) + TAU) % TAU / TAU;
+  const cam = p < 0.78 ? Math.sin(((p / 0.78) * Math.PI) / 2) : 0;
+  if (st.spin > 0.05 && cam >= st.lift) { st.lift = cam; st.hv = 0; }
+  else if (st.lift > 0 || st.hv !== 0) {
+    st.hv -= 30 * dt;
+    st.lift += st.hv * dt;
+    if (st.lift <= 0) { st.lift = 0; st.hv = st.hv < -1.2 ? -st.hv * 0.22 : 0; }
+  }
+  st.ripple = (st.ripple + dt * 0.55) % 1;
+  return st.spin !== 0 || st.lift > 0 || st.hv !== 0;
+}
 function tick(time) {
   const dt = last ? Math.min((time - last) / 1000, 1 / 30) : 1 / 60;
   last = time;
   const busy = advance(dt);
+  const moving = mechanics(dt);
   paint();
-  frame = visible && (busy || touring) ? requestAnimationFrame(tick) : 0;
+  frame = visible && (busy || moving || touring) ? requestAnimationFrame(tick) : 0;
 }
 const run = () => { if (!frame && visible) { last = 0; frame = requestAnimationFrame(tick); } };
 const hold = () => { touring = false; clearTimeout(idle); idle = setTimeout(() => { touring = !still.matches; run(); }, 9000); };

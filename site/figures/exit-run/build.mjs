@@ -26,9 +26,9 @@ const C = {
   BASE_Z: [-20, 0],
   FOOT: { r: 5.5, h: 4, inset: 14 },
   FACE: 30,
-  TRACK: { x0: -80, x1: 64, z0: 60, z1: 24, gauge: 1.8, rail: 0.5 },
+  TRACK: { x0: -80, x1: 64, z0: 60, z1: 24, gauge: 1.8, rail: 0.62 },
   BEAD: 2.1,
-  POSTS: [-58, -34, -14, 14, 42],
+  POSTS: [-58, -37, -14, 14, 42],
   TIES: 8,
   CAGE: { x0: -86, x1: -73, cheek: 4.4 },
   HOPPER: { x: -79.5, z0: 73, z1: 106, r: 2.9 },
@@ -82,6 +82,64 @@ const rod = (a, b, r, style, steps) => {
   return length < 0.05 ? "" : S(G.disc(0, length, r, G.frameAlong(a, d), P, steps ? { steps } : {}), style);
 };
 
+// --- light: highlights and shadows from the kit's own light, so they turn with the view -------------
+
+// The direction half-way between the light and the eye: a round surface shows its highlight where it faces it.
+const halfway = () => { const V = G.viewOf(P), Lt = G.lightOf(P); return unit([V[0] + Lt[0], V[1] + Lt[1], V[2] + Lt[2]]); };
+// The angle round frame F's axis at which its surface faces the half-way direction.
+const litAngle = (F) => {
+  const h = halfway();
+  const ha = h[0] * F.a[0] + h[1] * F.a[1] + h[2] * F.a[2];
+  const n = [0, 1, 2].map((i) => h[i] - ha * F.a[i]);
+  return Math.atan2(n[0] * F.v[0] + n[1] * F.v[1] + n[2] * F.v[2], n[0] * F.u[0] + n[1] * F.u[1] + n[2] * F.u[2]);
+};
+// A highlight streak down a turned body from s0 (radius r) to s1 (radius r1), fading in and out.
+const shine = (F, s0, s1, r, r1 = r, fade = 1.5) => { const t = litAngle(F); return k.fadeLineSvg([at(G.pointOf(F, s0, r, t)), at(G.pointOf(F, s1, r1, t))], { fade: [fade, fade], tone: "spec", className: "spec" }); };
+// A straight highlight along a lit edge from a to b.
+const edgeShine = (a, b, fade = 4) => k.fadeLineSvg([at(a), at(b)], { fade: [fade, fade], tone: "spec", className: "spec" });
+// A soft glint on a glazed body: a blurred spot in the view's plane where the surface at s, radius r faces the light.
+const glintAt = (p, size = 1.3) => {
+  const V = G.viewOf(P), u = unit([-V[1], V[0], 0]);
+  const v = [V[1] * u[2] - V[2] * u[1], V[2] * u[0] - V[0] * u[2], V[0] * u[1] - V[1] * u[0]];
+  return `<path class="glint" d="${G.circleOf(G.frameOf(p, V, u, v), 0, size, P, 18)}"/>`;
+};
+const glint = (F, s, r, size = 1.3) => glintAt(G.pointOf(F, s, r, litAngle(F)), size);
+// The glint on a ball of radius r at c sits towards the half-way direction.
+const ballGlint = (c, r, size = r * 0.28) => { const h = halfway(); return glintAt(c.map((v, i) => v + h[i] * r * 0.72), size); };
+// A rod from a to b with its highlight streak.
+const brightRod = (a, b, r, style, steps, fade = 2) => {
+  const d = [b[0] - a[0], b[1] - a[1], b[2] - a[2]];
+  const length = Math.hypot(...d);
+  if (length < 0.05) return "";
+  const F = G.frameAlong(a, d);
+  return S(G.disc(0, length, r, F, P, steps ? { steps } : {}), { ...style, inner: shine(F, 0.3, length - 0.3, r * 1.01, r * 1.01, Math.min(fade, length / 3)) });
+};
+// A part standing on the plane z at (x, y): a tight contact shadow of radius r at its foot and, for a part
+// of height h, a short soft shadow of half-width w cast away from the light.
+// A box (plan, standing on z, h tall) casts its shadow away from the light: the hull of its foot and its
+// foot moved by the shadow's reach, blurred.
+function boxCast(plan, z, h, o = 1) {
+  const Lt = G.lightOf(P);
+  const flat = Math.hypot(Lt[0], Lt[1]) || 1;
+  const reach = Math.min(h * (flat / Lt[2]) * 0.42, 30);
+  const [dx, dy] = [(-Lt[0] / flat) * reach, (-Lt[1] / flat) * reach];
+  const foot = k.corners(plan);
+  const pts = [...foot, ...foot.map(([x, y]) => [x + dx, y + dy])].map(([x, y]) => at([x, y, z]));
+  return `<path class="iso-halo" d="${k.pathOf(G.hullOf(pts), true)}" style="filter:blur(3px);transform:none;opacity:calc(var(--fig-shadow) * ${n2(1.05 * o)})"/>`;
+}
+function grounded(x, y, r, { z = 0, h = 0, w = r * 0.85, o = 1 } = {}) {
+  const core = r <= 0 ? "" : `<path class="iso-halo" d="${k.haloOf({ x: x - r, y: y - r, w: 2 * r, d: 2 * r, r }, z, 0.1, P)}" style="filter:blur(1.2px);transform:none;opacity:calc(var(--fig-shadow) * ${n2(1.1 * o)})"/>`;
+  if (h <= 0) return core;
+  const Lt = G.lightOf(P);
+  const flat = Math.hypot(Lt[0], Lt[1]) || 1;
+  const dir = [-Lt[0] / flat, -Lt[1] / flat], n = [-dir[1], dir[0]];
+  const reach = Math.min(h * (flat / Lt[2]) * 0.42, 30);
+  const end = [x + dir[0] * reach, y + dir[1] * reach];
+  const cap = (c, rr, from) => Array.from({ length: 11 }, (_, i) => { const a = from + (i / 10) * Math.PI; return [c[0] + rr * (Math.cos(a) * dir[0] + Math.sin(a) * n[0]), c[1] + rr * (Math.cos(a) * dir[1] + Math.sin(a) * n[1])]; });
+  const outline = [...cap([x, y], w, Math.PI / 2), ...cap(end, w * 0.7, -Math.PI / 2)];
+  return `<path class="iso-halo" d="${k.pathOf(outline.map(([px, py]) => at([px, py, z])), true)}" style="filter:blur(2.6px);transform:none;opacity:calc(var(--fig-shadow) * ${n2(1.05 * o)})"/>` + core;
+}
+
 // The visible front half of a thin band round an upright tube, from z0 to z1: no caps, so the tube shows through.
 const bandD = (x, y, r, z0, z1) => {
   const [vx, vy] = G.viewOf(P);
@@ -97,7 +155,7 @@ function base() {
   const out = [`<path class="iso-halo" d="${k.haloOf(BASE, BASE_Z[0] - FOOT.h, BASE_Z[1] - BASE_Z[0], P)}"/>`];
   const feet = k.corners(BASE, FOOT.inset).sort((a, b) => k.depthOf([...a, 0], P) - k.depthOf([...b, 0], P));
   for (const [x, y] of feet) out.push(cyl(x, y, FOOT.r, BASE_Z[0] - FOOT.h, FOOT.h, { tone: "mid" }, 28, 0.4));
-  out.push(box(BASE, BASE_Z[0], -BASE_Z[0] - 3, { tone: "hi", inner: L(k.sideSeam(BASE, BASE_Z[0] + 3, P, 6), { tone: "faint" }) }, 6, 1));
+  out.push(box(BASE, BASE_Z[0], -BASE_Z[0] - 3, { tone: "hi", inner: L(k.sideSeam(BASE, BASE_Z[0] + 3, P, 6), { tone: "faint" }) + edgeShine([BASE.x + 8, BASE.y + BASE.d, -3.9], [BASE.x + BASE.w - 8, BASE.y + BASE.d, -3.9], 30) }, 6, 1));
   const deck = k.insetPlan(BASE, 1.5);
   return M("ink", ...out) + M("marble", box(deck, -3, 3, { tone: "mid" }, 6, 0.8),
     L(k.planOutline(k.insetPlan(deck, 3.5), 0, P), { tone: "faint" }),
@@ -122,6 +180,7 @@ function faceLamp(x, z, glow) {
 }
 // The source selector: a knurled knob whose pointer stands at the loaded source, over five engraved stops.
 const SELECTOR = { x: 4, z: -10.6, r: 3.1, stops: [-64, -32, 0, 32, 64] };
+const DIAL = ["whole", "link", "path", "capture", "single"];
 function selectorFace() {
   const { x, z, stops } = SELECTOR;
   const rad = (d) => (d * Math.PI) / 180;
@@ -130,11 +189,12 @@ function selectorFace() {
   const ticks = stops.map((d, i) => `M${pt(d, 4.6)}L${pt(d, i === 0 ? 6.6 : 5.8)}`).join("");
   return `<g transform="${faceY(C.FACE + 0.02)}">${L(arc + ticks, { tone: "faint" })}${L(rectD(x - 8.4, 3.4, x + 8.4, 17.4, 1.4), { tone: "faint" })}</g>`;
 }
-function selector(scene) {
+// `dial` is the knob's position in stops (0 = whole … 4 = single); between stops it is turning.
+function selector(dial) {
   const { x, z, r, stops } = SELECTOR;
   const F = G.frameOf([x, C.FACE, z], Y3, X3, Z3);
   const ribs = G.ribsOf(F, 0.15, 1.85, r, 36, P, { fade: [0.1, 0.6] });
-  const d = (stops[["whole", "link", "path", "capture", "single"].indexOf(scene)] * Math.PI) / 180;
+  const d = ((stops[0] + (stops[1] - stops[0]) * dial) * Math.PI) / 180;
   const tip = [x + (r - 0.7) * Math.sin(d), C.FACE + 2, z + (r - 0.7) * Math.cos(d)];
   return M("ink", S(G.disc(0, 0.6, r + 0.9, F, P), { tone: "mid" }), S(G.disc(0.6, 2, r, F, P, { steps: 40 }), { tone: "mid", inner: k.fadedSvg(ribs, { tone: "lo" }) }))
     + L(k.pathOf([at([x, C.FACE + 2, z]), at(tip)]), { tone: "hi" }) + D([at([x, C.FACE + 2, z])], { size: 0.5, tone: "hi" }) + M("jade", S(G.sphereOf(tip, 0.6, P), { tone: "hi", lit: true }));
@@ -179,14 +239,14 @@ function readings(state) {
     out.push(faceLamp(PANEL.kinds[i], -9.6, kind === name ? "er-lens er-fault" : "er-lens"));
     out.push(lever(PANEL.kinds[i], state.pull[i]));
   });
-  out.push(selector(state.scene));
+  out.push(selector(state.dial ?? DIAL.indexOf(state.scene)));
   return out.join("");
 }
 
 // --- the track ----------------------------------------------------------------------------------
 
 // A rail run from x0 to x1 on one side (y = ±gauge); the bridge's runs come from bridgeRails.
-const railRun = (x0, x1, side) => rod([x0, side * C.TRACK.gauge, railZ(x0)], [x1, side * C.TRACK.gauge, railZ(x1)], C.TRACK.rail, { tone: "mid" }, 10);
+const railRun = (x0, x1, side) => brightRod([x0, side * C.TRACK.gauge, railZ(x0)], [x1, side * C.TRACK.gauge, railZ(x1)], C.TRACK.rail, { tone: "mid" }, 10, 6);
 const FIXED = [[C.TRACK.x0 - 4, C.BRIDGE.x0], [C.BRIDGE.x1, C.TRACK.x1]];
 function rails(side) {
   return M("ink", ...FIXED.map(([a, b]) => railRun(a, b, side)), endStops(side));
@@ -214,22 +274,54 @@ function ties() {
 }
 // Soft shadows where the posts, the coin's bracket and the station stand on the deck.
 function shadows() {
-  const spot = (x, y, r, o = 0.35) => `<path class="iso-halo" d="${k.haloOf({ x: x - r, y: y - r, w: 2 * r, d: 2 * r, r }, 0, 0.1, P)}" style="filter:blur(2.5px);opacity:calc(var(--anatomy-halo-opacity) * ${o})"/>`;
   // The track's own shadow, a faint band on the deck under the rails.
   const band = `<path class="iso-halo" d="${k.haloOf({ x: C.CAGE.x1, y: -2, w: C.STATION.x - C.CAGE.x1, d: 4, r: 2 }, 0, 0.1, P)}" style="filter:blur(3px);opacity:calc(var(--anatomy-halo-opacity) * .2)"/>`;
-  return [band, ...C.POSTS.map((x) => spot(x, 0, 4.6)), spot(C.WEIGHT[0], C.WEIGHT[1], 4), `<path class="iso-halo" d="${k.haloOf({ x: C.CAGE.x0 - 1, y: -6, w: C.CAGE.x1 - C.CAGE.x0 + 2, d: 12, r: 2 }, 0, 0.1, P)}" style="filter:blur(3px);opacity:calc(var(--anatomy-halo-opacity) * .4)"/>`, `<path class="iso-halo" d="${k.haloOf(k.insetPlan(C.STATION, -2), 0, 0.1, P)}" style="filter:blur(4px);opacity:calc(var(--anatomy-halo-opacity) * .4)"/>`].join("");
+  const s = C.STATION, { x0, x1, y, z } = C.ROW;
+  return [
+    band,
+    ...C.POSTS.map((x) => grounded(x, 0, 5.2, { h: railZ(x) - BED - GIRDER, w: 4.4 })),
+    grounded(C.HOPPER.x, 0, 7.2, { h: C.HOPPER.z1, w: 6.4 }),
+    grounded(C.WEIGHT[0], C.WEIGHT[1], 3.4, { h: railZ(C.WEIGHT[0]), w: 2.8 }),
+    grounded(s.x + s.w / 2, s.y + s.d / 2, 0, { h: s.h + 2, w: 11, o: 0.8 }),
+    `<path class="iso-halo" d="${k.haloOf(k.insetPlan(s, -2), 0, 0.1, P)}" style="filter:blur(4px);opacity:calc(var(--anatomy-halo-opacity) * .4)"/>`,
+    `<path class="iso-halo" d="${k.haloOf(k.insetPlan(s, -0.6), 0, 0.1, P)}" style="filter:blur(1.2px);transform:none;opacity:calc(var(--anatomy-halo-opacity) * .5)"/>`,
+    `<path class="iso-halo" d="${k.haloOf({ x: x0 - 2.4, y: y - 3.8, w: x1 - x0 + 4.8, d: 7.6, r: 1.4 }, 0, 0.1, P)}" style="filter:blur(1.4px);transform:none;opacity:calc(var(--anatomy-halo-opacity) * .45)"/>`,
+  ].join("");
 }
 // A post under the track: an ink foot, a marble column, a jade collar and the saddle the tie sits on.
 function post(x) {
-  const top = railZ(x) - C.TRACK.rail - 1.1;
+  const top = railZ(x) - BED - GIRDER;
   const F = G.frameOf([x, 0, 0], Z3, X3, Y3);
-  // A torus base, a fluted shaft with an astragal under the capital, a flared capital.
-  const profile = [[0, 3.4], [0.9, 3.4, 1], [1.3, 3.0, 1], [1.8, 2.5, 1], [2.3, 1.75, 1], [2.9, 1.6], [top - 5.4, 1.5], [top - 5.0, 1.95, 1], [top - 4.6, 1.5], [top - 3, 1.5], [top - 2.4, 2.2, 1], [top - 0.8, 2.2]];
-  const ribs = G.ribsOf(F, 2.9, top - 5.4, 1.6, 10, P, { fade: [0.05, 0.6], r1: 1.5, seams: true });
-  const bolts = [0.6, 2.2, 3.8, 5.4].map((t) => at([x + 3.8 * Math.cos(t), 3.8 * Math.sin(t), 0.9]));
-  return M("ink", cyl(x, 0, 4.2, 0, 0.9, { tone: "mid" }, 28, 0.3), D(bolts, { size: 0.36 })) + M("marble", S(G.solidOf(profile, F, P), { tone: "mid", inner: k.fadedSvg(ribs, { tone: "faint" }) })) + M("jade", cyl(x, 0, 2.6, top - 0.8, 0.8, { tone: "mid" }, 20, 0.2));
+  // A torus base, a fluted shaft with an astragal under the capital, a flared capital under the girder.
+  const profile = [[0, 4.2], [1.1, 4.2, 1], [1.6, 3.7, 1], [2.2, 3.1, 1], [2.8, 2.2, 1], [3.5, 2], [top - 6.2, 1.9], [top - 5.7, 2.45, 1], [top - 5.2, 1.9], [top - 3.4, 1.9], [top - 2.6, 2.8, 1], [top - 0.9, 2.8]];
+  const ribs = G.ribsOf(F, 3.5, top - 6.2, 2, 12, P, { fade: [0.05, 0.6], r1: 1.9, seams: true });
+  const bolts = [0.6, 2.2, 3.8, 5.4].map((t) => at([x + 4.6 * Math.cos(t), 4.6 * Math.sin(t), 1.1]));
+  return M("ink", cyl(x, 0, 5.1, 0, 1.1, { tone: "mid" }, 32, 0.35), D(bolts, { size: 0.4 })) + M("marble", S(G.solidOf(profile, F, P), { tone: "mid", inner: k.fadedSvg(ribs, { tone: "faint" }) + shine(F, 3.7, top - 6.4, 1.96, 1.96, 4) })) + M("jade", cyl(x, 0, 3.2, top - 0.9, 0.9, { tone: "mid" }, 24, 0.25));
 }
-
+// The track's girder: an ink I-beam under the ties of each fixed run, carried by the posts. The bridge's
+// span is its own lighter stringer, so the gap the bridge closes stays visible.
+const BED = C.TRACK.rail + 1.1;
+const GIRDER = 2.2;
+const BEAMS = [[C.CAGE.x1 - 1, C.BRIDGE.x0 - 0.4], [C.BRIDGE.x1 + 4.2, C.STATION.x]];
+function ibeam(F, len, depth, flange) {
+  return [
+    S(G.prismOf(F, [[-flange * 0.85, -depth], [flange * 0.85, -depth], [flange * 0.85, -depth + 0.42], [-flange * 0.85, -depth + 0.42]], 0, len, P), { tone: "mid" }),
+    S(G.prismOf(F, [[-0.5, -depth + 0.42], [0.5, -depth + 0.42], [0.5, -0.42], [-0.5, -0.42]], 0, len, P), { tone: "mid" }),
+    S(G.prismOf(F, [[-flange, -0.42], [flange, -0.42], [flange, 0], [-flange, 0]], 0, len, P), { tone: "mid" }),
+  ].join("");
+}
+function girder() {
+  const out = [];
+  for (const [x0, x1] of BEAMS) {
+    const F = G.frameOf([x0, 0, railZ(x0) - BED], DIR, Y3, UP);
+    const len = (x1 - x0) / DIR[0];
+    // Rivets down the web's near face, one between each pair of ties.
+    const rivets = [];
+    for (let along = 2; along < len - 1; along += 4) rivets.push(at(G.pointOf(F, along, 0, 0).map((v, i) => v + Y3[i] * 0.52 - UP[i] * GIRDER * 0.5)));
+    out.push(ibeam(F, len, GIRDER, 1.7), D(rivets, { size: 0.3 }), edgeShine(G.pointOf(F, 0.8, 1.7, 0), G.pointOf(F, len - 0.8, 1.7, 0), 6));
+  }
+  return M("ink", ...out);
+}
 // The hinged bridge: two rails and two ties on one frame, turning about the hinge at x1.
 function bridgeRails(lift, side) {
   const { x0, x1 } = C.BRIDGE;
@@ -241,7 +333,7 @@ function bridgeRails(lift, side) {
   const pointAt = (along) => [hinge[0] - along * Math.cos(base - a), 0, hinge[2] - along * Math.sin(base - a)];
   const y = side * C.TRACK.gauge;
   const [p0, p1] = [pointAt(0), pointAt(len)];
-  return M("ink", rod([p0[0], y, p0[2]], [p1[0], y, p1[2]], C.TRACK.rail, { tone: "mid" }, 10)) + (lift > 0.2 && side > 0 ? D([at([p1[0], y, p1[2]])], { size: 1.1, tone: "red" }) : "");
+  return M("ink", brightRod([p0[0], y, p0[2]], [p1[0], y, p1[2]], C.TRACK.rail, { tone: "mid" }, 10, 3)) + (lift > 0.2 && side > 0 ? D([at([p1[0], y, p1[2]])], { size: 1.1, tone: "red" }) : "");
 }
 function bridgeTies(lift) {
   const { x0, x1 } = C.BRIDGE;
@@ -252,18 +344,20 @@ function bridgeTies(lift) {
   const dir = [-Math.cos(base - a), 0, -Math.sin(base - a)];
   const up = [-Math.sin(base - a), 0, Math.cos(base - a)];
   const out = [];
+  const foot = [hinge[0] - up[0] * BED, 0, hinge[2] - up[2] * BED];
+  const stringer = M("ink", ibeam(G.frameOf(foot.map((v, i) => v + dir[i] * 4.6), dir, Y3, up), len - 5.2, 1.4, 1.4));
   for (const along of [4, len - 4]) {
     const c = [hinge[0] + dir[0] * along, 0, hinge[2] + dir[2] * along];
     const F = G.frameOf([c[0] - up[0] * (C.TRACK.rail + 0.5), 0, c[2] - up[2] * (C.TRACK.rail + 0.5)], dir, Y3, up);
     out.push(S(G.prismOf(F, [[-3.6, -0.6], [3.6, -0.6], [3.6, 0.6], [-3.6, 0.6]], -0.9, 0.9, P), { tone: "mid" }));
   }
-  return M("marble", ...out);
+  return stringer + M("marble", ...out);
 }
 // The hinge block and its pin, on the post at the bridge's right end.
 function hinge() {
   const { x1 } = C.BRIDGE;
   const z = railZ(x1);
-  return M("ink", S(G.prismOf(G.frameOf([x1, 0, z - 2.4], DIR, Y3, UP), [[-4, -1.2], [4, -1.2], [4, 1.2], [-4, 1.2]], -1.8, 1.8, P), { tone: "mid" }), S(G.disc(-4.6, 4.6, 0.7, G.frameOf([x1, 0, z - 1.4], Y3, X3, Z3), P), { tone: "hi" }));
+  return M("ink", S(G.prismOf(G.frameOf([x1, 0, z - 2.4], DIR, Y3, UP), [[-4, -1.6], [4, -1.6], [4, 1.2], [-4, 1.2]], -1.8, 1.8, P), { tone: "mid" }), S(G.disc(-4.6, 4.6, 0.7, G.frameOf([x1, 0, z - 1.4], Y3, X3, Z3), P), { tone: "hi" }));
 }
 
 // --- the cage, the hopper and the gate -----------------------------------------------------------
@@ -312,7 +406,7 @@ function hopper(shift) {
   out.push(`<path class="er-glass-back" d="${k.cylinder(x, 0, r, z0, z1 - z0, P, 28).fill}"/>`);
   for (let i = 0; i < 8; i++) {
     const z = z0 + C.BEAD + i * 2 * C.BEAD + shift * 2 * C.BEAD;
-    if (z < z1 - C.BEAD) out.push(M("jade", S(G.sphereOf([x, 0, z], C.BEAD - 0.1, P), { tone: "mid" })));
+    if (z < z1 - C.BEAD) out.push(M("jade", S(G.sphereOf([x, 0, z], C.BEAD - 0.1, P), { tone: "mid" }), ballGlint([x, 0, z], C.BEAD - 0.1, 0.45)));
   }
   const glass = k.cylinder(x, 0, r, z0, z1 - z0, P, 28);
   out.push(`<path class="er-glass" d="${glass.fill}"/>`, L(glass.outline, { tone: "mid" }), L(k.pathOf([at([x - r * 0.45, r * 0.8, z0 + 3]), at([x - r * 0.45, r * 0.8, z1 - 3])]), { tone: "faint", free: true }));
@@ -384,7 +478,7 @@ function latch(up) {
 function weight(up) {
   const [x, y] = C.WEIGHT;
   const zp = railZ(x) - 1;
-  const out = [M("marble", cyl(x, y, 3.2, 0, 1, { tone: "mid" }, 22, 0.3), cyl(x, y, 1.1, 1, zp - 1, { tone: "mid", crease: "none" }, 14))];
+  const out = [M("marble", cyl(x, y, 3.2, 0, 1, { tone: "mid" }, 22, 0.3), cyl(x, y, 1.1, 1, zp - 1, { tone: "mid", crease: "none", inner: shine(G.frameOf([x, y, 1], Z3, X3, Y3), 0.6, zp - 2.6, 1.12, 1.12, 3) }, 14))];
   const a = -0.05 + up * 0.32;
   const arm = [x + 9 * Math.cos(a), y, zp - 9 * Math.sin(a)];
   out.push(M("ink", rod([x - 4, y, zp + 4 * Math.sin(a) * 0.3], arm, 0.5, { tone: "mid" }), rod([x - 4, y, zp], [x - 1, 0, railZ(x) - 1.6], 0.4, { tone: "mid" }), S(G.disc(-1, 1, 1.1, G.frameOf([x, y, zp], Y3, X3, Z3), P), { tone: "mid" })));
@@ -421,7 +515,7 @@ function station(homeLit, clinicLit, shut) {
   // The roof: a jade cornice under an ink lid with a sunk panel and screws.
   const cornice = k.insetPlan(s, -0.8), roof = k.insetPlan(s, -1.2);
   out.push(M("jade", box(cornice, s.h, 0.8, { tone: "mid" }, 2, 0.2)));
-  out.push(M("ink", box(roof, s.h + 0.8, 0.8, { tone: "mid" }, 2, 0.25), L(k.planOutline(k.insetPlan(roof, 2.4), s.h + 1.6, P, 2), { tone: "faint" }), D(k.corners(roof, 1.2).map(([x, y]) => at([x, y, s.h + 1.6])), { size: 0.4 })));
+  out.push(M("ink", box(roof, s.h + 0.8, 0.8, { tone: "mid" }, 2, 0.25), edgeShine([roof.x + 1.2, roof.y + roof.d, s.h + 1.58], [roof.x + roof.w - 1.2, roof.y + roof.d, s.h + 1.58], 5), L(k.planOutline(k.insetPlan(roof, 2.4), s.h + 1.6, P, 2), { tone: "faint" }), D(k.corners(roof, 1.2).map(([x, y]) => at([x, y, s.h + 1.6])), { size: 0.4 })));
   return M("marble", ...out);
 }
 // The funnel is a separate foreground layer: the bead visibly crosses its mouth and disappears into its throat.
@@ -466,7 +560,7 @@ const rowAt = (i) => C.ROW.x0 + C.BEAD + i * 2 * C.BEAD;
 function row(count) {
   const shown = Math.min(count, Math.floor((C.ROW.x1 - C.ROW.x0) / (2 * C.BEAD)) - 1);
   const out = [];
-  for (let i = 0; i < shown; i++) out.push(S(G.sphereOf([rowAt(i), C.ROW.y, C.ROW.z + C.BEAD], C.BEAD - 0.1, P), { tone: "mid" }));
+  for (let i = 0; i < shown; i++) { const c = [rowAt(i), C.ROW.y, C.ROW.z + C.BEAD]; out.push(S(G.sphereOf(c, C.BEAD - 0.1, P), { tone: "mid" }), ballGlint(c, C.BEAD - 0.1, 0.5)); }
   return M("jade", ...out);
 }
 
@@ -495,8 +589,31 @@ function beadAt(state) {
   const from = [C.STATION.x + 13, C.ROW.y, C.ROW.z + C.BEAD], to = [rowAt(state.receipts), C.ROW.y, C.ROW.z + C.BEAD];
   return from.map((v, i) => v + (to[i] - v) * t);
 }
-const beadSvg = () => M("jade", S(G.sphereOf([0, 0, 0], C.BEAD, P), { tone: "hi", lit: true }));
+// The bead carries a seam, a great circle through its axle (y), turned by the distance it has rolled; only
+// the half facing the viewer is drawn, so the seam ends on the bead's outline.
+function seamD(roll) {
+  const V = G.viewOf(P);
+  const w = [Math.cos(roll), 0, Math.sin(roll)];
+  const runs = [];
+  let run = [];
+  for (let i = 0; i <= 64; i++) {
+    const t = (i / 64) * Math.PI * 2;
+    const p = [0, 1, 2].map((j) => C.BEAD * (Math.cos(t) * Y3[j] + Math.sin(t) * w[j]));
+    if (p[0] * V[0] + p[1] * V[1] + p[2] * V[2] > 0.02) run.push(at(p));
+    else if (run.length) { runs.push(run); run = []; }
+  }
+  if (run.length) runs.push(run);
+  return runs.filter((r) => r.length > 1).map((r) => k.pathOf(r)).join("");
+}
+function beadSvg(roll = 0) {
+  return M("jade", S(G.sphereOf([0, 0, 0], C.BEAD, P), { tone: "hi", lit: true, inner: `<path class="er-seam" data-seam d="${seamD(roll)}"/>` }), ballGlint([0, 0, 0], C.BEAD, 0.6));
+}
 const beadTransform = (state) => k.translateAlong(P, beadAt(state));
+// Under the bead on the track, a soft spot on the deck: fainter the higher the bead runs.
+const beadShadow = (state) => {
+  const [x, y, z] = beadAt(state);
+  return { transform: k.translateAlong(P, [x, y, 0]), opacity: state.s <= 1 ? n2(state.fade * (0.16 + 0.5 / (1 + z / 18))) : 0 };
+};
 const stopS = (kind) => (C.STOP[kind] - C.CAGE.x0 - 5) / (C.TRACK.x1 - C.CAGE.x0 - 5);
 
 function composition(state) {
@@ -507,17 +624,19 @@ function composition(state) {
     base(),
     `<g data-part="readings">${readings(state)}</g>`,
     shadows(),
+    `<g data-part="bead-shadow" transform="${beadShadow(state).transform}" style="opacity:${beadShadow(state).opacity}"><path class="iso-halo" d="${k.haloOf({ x: -2.6, y: -2.6, w: 5.2, d: 5.2, r: 2.6 }, 0, 0.1, P)}" style="filter:blur(2px)"/></g>`,
     tower(),
     ...C.POSTS.filter((x) => x < C.STATION.x).map(post),
     hinge(),
     cage(-1),
+    girder(),
     ties(),
     `<g data-part="bridge-ties">${bridgeTies(state.lift)}</g>`,
     rails(-1),
     `<g data-part="bridge-back">${bridgeRails(state.lift, -1)}</g>`,
     `<g data-part="latch">${latch(state.up)}</g>`,
     `<g data-part="gate">${gate(state.open)}</g>`,
-    `<g data-part="bead-track" style="display:${onRow || inside ? "none" : "inline"}"><g data-part="bead" transform="${beadTransform(state)}" style="opacity:${n2(state.fade)}">${beadSvg()}</g></g>`,
+    `<g data-part="bead-track" style="display:${onRow || inside ? "none" : "inline"}"><g data-part="bead" transform="${beadTransform(state)}" style="opacity:${n2(state.fade)}">${beadSvg(state.roll ?? 0)}</g></g>`,
     rails(1),
     `<g data-part="bridge-front">${bridgeRails(state.lift, 1)}</g>`,
     cage(1),
@@ -529,10 +648,10 @@ function composition(state) {
     `<g data-part="weight">${weight(state.up)}</g>`,
     `<g data-part="station">${station(state.homeLit, state.clinicLit, state.shut)}</g>`,
     funnel(),
-    `<g data-part="bead-station" style="display:${entering ? "inline" : "none"}"><g data-part="bead-drop" transform="${beadTransform(state)}" style="opacity:${n2(state.fade * Math.max(0, Math.min(1, (FUNNEL_S - state.s) / 0.12)))}">${beadSvg()}</g></g>`,
+    `<g data-part="bead-station" style="display:${entering ? "inline" : "none"}"><g data-part="bead-drop" transform="${beadTransform(state)}" style="opacity:${n2(state.fade * Math.max(0, Math.min(1, (FUNNEL_S - state.s) / 0.12)))}">${beadSvg(state.roll ?? 0)}</g></g>`,
     channel(),
     `<g data-part="row">${row(state.receipts)}</g>`,
-    `<g data-part="bead-row" style="display:${onRow ? "inline" : "none"}"><g data-part="bead-low" transform="${beadTransform(state)}" style="opacity:${n2(state.fade)}">${beadSvg()}</g></g>`,
+    `<g data-part="bead-row" style="display:${onRow ? "inline" : "none"}"><g data-part="bead-low" transform="${beadTransform(state)}" style="opacity:${n2(state.fade)}">${beadSvg(state.roll ?? 0)}</g></g>`,
     channelGlass(),
     ruler(),
     `<g class="er-hits">${hitAreas()}</g>`,
@@ -563,6 +682,17 @@ const svg = k.figureSvg({
 });
 
 const CSS = `
+.er-svg{--anatomy-spec:#ffffff;--fig-shadow:.52}
+.iso[data-theme="dark"] .er-svg{--fig-shadow:.7}
+.iso[data-theme="dark"] .er-svg .glint{opacity:.32}
+.er-svg [data-mat="jade"]{--anatomy-spec:#f3faf4}
+.er-svg [data-mat="ink"]{--anatomy-spec:#9aa4a6}
+.iso[data-theme="dark"] .er-svg [data-mat="marble"],.iso[data-theme="dark"] .er-svg{--anatomy-spec:#9a9c98}
+.iso[data-theme="dark"] .er-svg [data-mat="jade"]{--anatomy-spec:#8fb39b}
+.iso[data-theme="dark"] .er-svg [data-mat="ink"]{--anatomy-spec:#626a6c}
+.er-svg .iso-line[data-tone="spec"]{stroke:var(--anatomy-spec)}
+.er-svg .spec{stroke-width:.75;stroke-linecap:round}
+.er-svg .glint{fill:var(--anatomy-spec);stroke:none;filter:blur(.9px);opacity:.8}
 .er-svg{--er-fault:var(--cinnabar,#c8372d);--er-reach:#9fc7a9}
 .er-svg .er-window{fill:#151819}
 .er-svg .er-digit{fill:#eef2ef;font-family:var(--anatomy-mono);font-variant-numeric:tabular-nums}
@@ -578,6 +708,7 @@ const CSS = `
 .er-svg .er-funnel-inside{fill:#41594a;stroke:#9bb9a3;stroke-width:.45}
 .er-svg .er-funnel-core{fill:#15271d;stroke:none}
 .er-svg .er-glint{fill:#fff;stroke:none;opacity:.55}
+.er-svg .er-seam{fill:none;stroke:var(--anatomy-lo);stroke-width:.4;stroke-linecap:round}
 .er-svg .er-cord{stroke-width:1.1}
 .er-svg .iso-line[data-tone="red"]{stroke:var(--er-fault)}
 .er-svg .iso-dots[data-tone="red"] circle{fill:var(--er-fault);opacity:1}
@@ -598,13 +729,13 @@ const modelSource = `const MD = (() => {\n${strip("model.mjs")}\nreturn { ${Obje
 const live = `
 const P0 = ${JSON.stringify(P0)};
 let P = P0;
-${shipped({ C, SELECTOR, SLOPE, LIFT, FRAME, KINDS, REPAIR_OF, DOMAINS_ICON, X3, Y3, Z3, FUNNEL_S })}
+${shipped({ C, BED, GIRDER, BEAMS, SELECTOR, DIAL, SLOPE, LIFT, FRAME, KINDS, REPAIR_OF, DOMAINS_ICON, X3, Y3, Z3, FUNNEL_S })}
 const k = { ${Object.keys(k).join(", ")} };
 const G = LATHE;
-${shipped({ railZ, at, S, L, D, M, n2, faceY, rectD, box, cyl, unit })}
+${shipped({ railZ, at, S, L, D, M, n2, faceY, rectD, box, cyl, unit, halfway, litAngle, shine, edgeShine, glintAt, glint, ballGlint, brightRod, boxCast, grounded })}
 const DIR = unit([1, 0, SLOPE]);
 const UP = unit([-SLOPE, 0, 1]);
-${shipped({ rod, bandD, chairs, selector, selectorFace, ruler, shadows, tower, base, glyphD, icon, faceLamp, lever, panel, readings, railRun, rails, endStops, tie, ties, post, bridgeRails, bridgeTies, hinge, cage, cageCap, hopper, gate, gateLever, leverTip, coinPost, coin, latch, weight, station, funnel, channel, channelGlass, rowAt, row, beadAt, beadSvg, beadTransform, stopS, composition, hitAreas })}
+${shipped({ ibeam, girder, rod, bandD, chairs, selector, selectorFace, ruler, shadows, tower, base, glyphD, icon, faceLamp, lever, panel, readings, railRun, rails, endStops, tie, ties, post, bridgeRails, bridgeTies, hinge, cage, cageCap, hopper, gate, gateLever, leverTip, coinPost, coin, latch, weight, station, funnel, channel, channelGlass, rowAt, row, beadAt, seamD, beadSvg, beadTransform, beadShadow, stopS, composition, hitAreas })}
 const FIXED = [[C.TRACK.x0 - 4, C.BRIDGE.x0], [C.BRIDGE.x1, C.TRACK.x1]];
 ${swingSource}
 ${liveScript()}
@@ -619,8 +750,17 @@ const svg = stage.querySelector("svg");
 const readout = root.querySelector("[data-readout]");
 const still = matchMedia("(prefers-reduced-motion: reduce)");
 const T = root.dataset;
-const st = { scene: "whole", s: 0, fade: 1, feed: 0, arrived: true, loose: 0, open: 0, lift: 0, up: 0, shut: 0, pull: [0, 0, 0], receipts: 7, homeLit: true, clinicLit: true };
-const goal = { loose: 0, lift: 0, up: 0, shut: 0 };
+const st = { scene: "whole", s: 0, v: 0, roll: 0, fade: 1, feed: 0, arrived: true, loose: 0, open: 0, lift: 0, up: 0, shut: 0, dial: 0, pull: [0, 0, 0], receipts: 7, homeLit: true, clinicLit: true };
+const goal = { loose: 0, lift: 0, up: 0, shut: 0, open: 0, dial: 0 };
+const vel = { loose: 0, lift: 0, up: 0, shut: 0, open: 0, dial: 0 };
+// Each moving part is a damped spring (frequency in Hz, damping ratio). The hinged parts strike hard stops
+// at their travel's ends and rebound a little; the dial's detent overshoots and settles.
+const SPRING = { loose: [1.5, 0.4], lift: [1.3, 0.55], up: [2.2, 0.42], shut: [1.6, 0.6], open: [2.6, 0.34], dial: [2.4, 0.5] };
+const STOPS = { loose: [0, 1], lift: [0, 1], up: [0, 1], shut: [0, 1], open: [0, Infinity], dial: [-Infinity, Infinity] };
+// The run: a solid ball rolling from rest gains speed steadily down the incline; it drops through the
+// funnel, then rolls on along the slightly tilted channel; at a stop it strikes and rebounds.
+const RUN = { a: 0.62, max: 1.15, drop: 3.2, dropMax: 2.2, row: 0.7, rowMax: 0.95, rebound: 0.32 };
+const TRACK_LEN = (C.TRACK.x1 - C.CAGE.x0 - 5) / DIR[0];
 let steps = [], step = null, stepTime = 0, touring = !still.matches, idle = 0, visible = false, frame = 0, last = 0, tourAt = 0;
 const part = (name) => svg.querySelector('[data-part="' + name + '"]');
 const sourceOf = () => MD.SOURCES[st.scene];
@@ -641,7 +781,7 @@ let shown = {};
 function paint(force = false) {
   const key = (v) => JSON.stringify(v);
   const want = {
-    readings: key([st.scene, st.arrived, st.pull.map(n2)]), row: key([st.receipts]), hopper: key([n2(st.feed)]),
+    readings: key([st.scene, st.arrived, st.pull.map(n2), n2(st.dial)]), row: key([st.receipts]), hopper: key([n2(st.feed)]),
     "bridge-ties": key([n2(st.lift)]), "bridge-back": key([n2(st.lift)]), "bridge-front": key([n2(st.lift)]),
     latch: key([n2(st.up)]), gate: key([n2(st.open)]), lever: key([n2(st.open)]), coin: key([n2(st.loose), n2(st.open)]),
     weight: key([n2(st.up)]), station: key([st.homeLit, st.clinicLit, n2(st.shut)]),
@@ -660,6 +800,10 @@ function paint(force = false) {
   part("bead-station").style.display = entering ? "inline" : "none";
   part("bead-row").style.display = onRow ? "inline" : "none";
   for (const name of ["bead", "bead-low"]) { const node = part(name); node.setAttribute("transform", beadTransform(st)); node.style.opacity = n2(st.fade); }
+  for (const node of svg.querySelectorAll("[data-seam]")) node.setAttribute("d", seamD(st.roll));
+  const shade = beadShadow(st), spot = part("bead-shadow");
+  spot.setAttribute("transform", shade.transform);
+  spot.style.opacity = shade.opacity;
   const drop = part("bead-drop");
   drop.setAttribute("transform", beadTransform(st));
   drop.style.opacity = n2(st.fade * Math.max(0, Math.min(1, (FUNNEL_S - st.s) / 0.12)));
@@ -681,11 +825,12 @@ function apply(name) {
   goal.lift = name === "path" ? 1 : 0;
   goal.up = name === "capture" ? 1 : 0;
   goal.shut = name === "single" ? 1 : 0;
+  goal.dial = DIAL.indexOf(name);
 }
 function begin(next) {
   step = next;
   stepTime = 0;
-  if (step.kind === "feed") { st.arrived = false; st.s = 0; st.fade = 0; }
+  if (step.kind === "feed") { st.arrived = false; st.s = 0; st.v = 0; st.fade = 0; st.roll = Math.random() * Math.PI * 2; }
   else if (step.kind === "break") { st.scene = step.name; st.arrived = false; st.clinicLit = true; apply(st.scene); }
   else if (step.kind === "single") { st.scene = step.on ? "single" : "whole"; st.arrived = false; st.clinicLit = !step.on; apply(st.scene); }
   else if (step.kind === "pull") {
@@ -702,41 +847,62 @@ function advance(dt) {
   }
   stepTime += dt;
   if (step.kind === "feed") {
-    // A new bead drops from the tube into the cage.
-    st.fade = Math.min(1, stepTime / 0.4);
-    st.feed = Math.max(0, 1 - stepTime / 0.4);
-    if (stepTime >= 0.45) { st.fade = 1; st.feed = 0; step = null; }
+    // A new bead drops from the tube into the cage; the column above falls one place and bounces on it.
+    st.fade = Math.min(1, stepTime / 0.25);
+    st.feed = Math.exp(-7 * stepTime) * Math.abs(Math.cos(11 * stepTime));
+    if (stepTime >= 0.6) { st.fade = 1; st.feed = 0; step = null; }
   } else if (step.kind === "release") {
     // Tied, the coin's weight swings the gate up; untied, the gate stays down.
-    const want = MD.SOURCES[st.scene].link ? 1 : 0;
-    const t = Math.min(1, stepTime / 0.45);
-    st.open = t * t * (3 - 2 * t) * want;
-    if (stepTime >= 0.45) step = null;
+    goal.open = MD.SOURCES[st.scene].link ? 1 : 0;
+    if (stepTime >= 0.4) step = null;
   } else if (step.kind === "run") {
     const target = stopAt();
-    const speed = st.s < 1 ? 0.42 : st.s < 2 ? 1.0 : 0.9;
-    st.s = Math.min(target, st.s + dt * speed);
-    if (st.s > 0.08) st.open = Math.max(0, st.open - dt * 2);
+    const from = st.s;
+    if (st.s < 1) st.v = Math.min(st.v + RUN.a * dt, RUN.max);
+    else if (st.s < 2) st.v = Math.min(Math.max(st.v, 0.6) + RUN.drop * dt, RUN.dropMax);
+    else st.v = st.v > RUN.rowMax ? RUN.rowMax + (st.v - RUN.rowMax) * Math.exp(-dt * 6) : Math.min(st.v + RUN.row * dt, RUN.rowMax);
+    st.s = Math.min(target, st.s + st.v * dt);
+    if (st.s >= target) {
+      // At a stop the bead strikes and rebounds until it has no speed left; at the row's end it settles.
+      if (st.v > 0.09) st.v = -st.v * RUN.rebound;
+      else { st.v = 0; st.s = target; step = null; }
+    }
+    // Rolling turns the bead by the distance travelled over its radius (backwards along the row).
+    const ds = st.s - from;
+    if (st.s <= 1) st.roll += (ds * TRACK_LEN) / C.BEAD;
+    else if (st.s >= 2) st.roll -= (ds * Math.abs(rowAt(st.receipts) - (C.STATION.x + 13))) / C.BEAD;
+    if (st.s > 0.08) goal.open = 0;
     if (st.s > 1.3 && K() > 0) st.arrived = true;
-    if (st.s >= target) step = null;
   } else if (step.kind === "arrive") {
     if (K() > 0 && st.s >= 3) { st.receipts += 1; st.s = 3; st.fade = 0; }
     step = null;
   } else if (step.kind === "pull") {
-    const t = Math.min(1, stepTime / 0.6);
-    st.pull[step.i] = Math.sin(t * Math.PI) ** 2;
-    if (t >= 1) { st.pull[step.i] = 0; step = null; }
+    // Pulled down hard, then let go: the lever springs back past its rest and settles.
+    const tau = stepTime - 0.18;
+    st.pull[step.i] = tau < 0 ? (1 - Math.cos((Math.PI * stepTime) / 0.18)) / 2 : Math.exp(-6.5 * tau) * Math.cos(14 * tau);
+    if (tau >= 0.8) { st.pull[step.i] = 0; step = null; }
   } else if (step.kind === "wait") { if (stepTime >= step.t) step = null; }
   else step = null;
   return true;
 }
 function ease(dt) {
   let moving = false;
-  const f = still.matches || !dt ? 1 : 1 - Math.exp(-dt / 0.18);
-  for (const name of ["loose", "lift", "up", "shut"]) {
-    const next = st[name] + (goal[name] - st[name]) * f;
-    st[name] = Math.abs(goal[name] - next) < 0.002 ? goal[name] : next;
-    if (st[name] !== goal[name]) moving = true;
+  for (const name of Object.keys(SPRING)) {
+    if (still.matches || !dt) { st[name] = goal[name]; vel[name] = 0; continue; }
+    const [hz, zeta] = SPRING[name], [lo, hi] = STOPS[name];
+    const w = 2 * Math.PI * hz;
+    let x = st[name], v = vel[name];
+    const n = Math.ceil(dt * 240), h = dt / n;
+    for (let i = 0; i < n; i++) {
+      v += (w * w * (goal[name] - x) - 2 * zeta * w * v) * h;
+      x += v * h;
+      if (x < lo) { x = lo; v = -v * 0.28; }
+      if (x > hi) { x = hi; v = -v * 0.28; }
+    }
+    if (Math.abs(goal[name] - x) < 0.0015 && Math.abs(v) < 0.01) { x = goal[name]; v = 0; }
+    st[name] = x;
+    vel[name] = v;
+    if (v !== 0 || x !== goal[name]) moving = true;
   }
   return moving;
 }
@@ -753,7 +919,7 @@ const hold = () => { touring = false; clearTimeout(idle); idle = setTimeout(() =
 // Under reduced motion each request is carried out at once.
 function now(list) {
   st.pull = [0, 0, 0];
-  st.open = 0;
+  st.open = goal.open = vel.open = 0;
   if (!still.matches) { steps.push(...list); run(); return; }
   for (const next of list) {
     begin(next);
@@ -763,7 +929,7 @@ function now(list) {
     step = null;
   }
   st.pull = [0, 0, 0];
-  st.open = 0;
+  st.open = goal.open = vel.open = 0;
   ease(0);
   paint();
 }
