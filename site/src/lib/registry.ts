@@ -236,11 +236,13 @@ export const PAPERS: PaperEntry[] = [
     slug: "generated-society",
     theme: "mind",
     editions: [{ release: "generated-society", doi: societyPaper("generated-society").doi }],
+    figure: { name: "exit-run", claim: "G4" },
   },
   {
     slug: "economic-constitution",
     theme: "mind",
     editions: [{ release: "economic-constitution", doi: societyPaper("economic-constitution").doi }],
+    figure: { name: "clepsydra", claim: "R4" },
   },
 ];
 
