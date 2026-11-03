@@ -363,7 +363,7 @@ function millLamps(performed) {
 function jar(state) {
   const [x, y, r, h] = C.JAR;
   const F = FV(x, y, 0);
-  const left = MD.remainingFor(state.account, state.origin);
+  const left = state.left ?? MD.remainingFor(state.account, state.origin);
   const profile = [[0, r - 1.6], [0.8, r - 0.6, 1], [h * 0.4, r, 1], [h * 0.8, r - 1, 1], [h - 0.8, r - 3, 1], [h, r - 3.2]];
   const out = [shadow(x, y, r + 1, 0.4), M("ink", cyl(x, y, r - 1.1, 0, 0.7, { tone: "mid" }, 36, 0.2)), M("marble", S(G.solidOf(profile, F, P, { smooth: true }), { tone: "mid" }))];
   out.push(M("marble", L(G.arcOf(F, h * 0.16, r - 0.2, P) + G.arcOf(F, h * 0.22, r - 0.1, P), { tone: "lo" })));
@@ -392,7 +392,9 @@ function qruler() {
 function spigot(toward, pour) {
   const [x, y, r] = C.JAR;
   const from = [x + r - 0.4, y + 1, 6];
-  const [cx, cy] = C.CUPS[toward];
+  const i = Math.floor(toward), u = toward - i;
+  const aCup = C.CUPS[i], bCup = C.CUPS[Math.min(C.CUPS.length - 1, i + 1)];
+  const [cx, cy] = aCup.map((v, axis) => v + (bCup[axis] - v) * u);
   const a = Math.atan2(cy - from[1], cx - from[0]);
   const F = G.frameOf(from, [Math.cos(a), Math.sin(a), -0.05], Z3, [-Math.sin(a), Math.cos(a), 0]);
   const out = [M("jade", S(G.disc(0, 7, 0.9, F, P), { tone: "mid" }), S(G.disc(-0.6, 0.8, 1.7, F, P), { tone: "mid" }))];
@@ -543,7 +545,7 @@ const T = root.dataset;
 const HOLDER = ["甲", "丙"], KEEPER = ["乙", "戊"];
 const st = {
   origin: 1, account: MD.pay(MD.issue({ slots: [] }, 1, "甲", MD.Q).account, 1, 2).account,
-  holder: 0, received: [2, 0], pour: 0, tally: { t: 0, dx: 0, dy: 0, lift: 0 },
+  holder: 0, received: [2, 0], shownReceived: [2, 0], left: 4, pour: 0, tally: { t: 0, dx: 0, dy: 0, lift: 0 },
   legs: ["pay", "grind"], open: 0, coin: 0, turn: 0.4, lift: 0,
   elapsed: 2, force: true, seatAt: [0, 1], log: [1, 1, 1], level: 1, bowls: [0, 0],
 };
@@ -552,9 +554,16 @@ let clock = 2, seat = MD.seatOf("乙", 0), keeperIndex = 0;
 let steps = [], step = null, stepTime = 0, touring = !still.matches, idle = 0, visible = false, frame = 0, last = 0, tourAt = 0;
 const part = (name) => svg.querySelector('[data-part="' + name + '"]');
 const inForce = () => MD.jurisdiction(seat, KEEPER[keeperIndex], clock);
+const smooth = (value) => { const t = Math.max(0, Math.min(1, value)); return t * t * (3 - 2 * t); };
+function syncAccount() {
+  st.left = MD.remainingFor(st.account, st.origin);
+  st.shownReceived = [...st.received];
+}
 function say() {
   const got = MD.receivedFor(st.account, st.origin), left = MD.remainingFor(st.account, st.origin);
-  const term = inForce() ? T.term + " " + Math.max(0, clock - seat.granted) + "/" + MD.TERM : T.lapsed;
+  const elapsed = Math.max(0, clock - seat.granted);
+  const reading = Number.isInteger(elapsed) ? elapsed : elapsed.toFixed(1);
+  const term = inForce() ? T.term + " " + reading + "/" + MD.TERM : T.lapsed;
   const text = T.received + " " + got + " + " + T.left + " " + left + " = Q " + MD.Q + " · " + term;
   if (readout.textContent !== text) readout.textContent = text;
   stage.setAttribute("aria-valuetext", text);
@@ -565,14 +574,14 @@ function paint(force = false) {
   const want = {
     wheel: key([n2(st.turn)]), right: key([n2(st.open)]), coinbox: key([n2(st.coin)]), tablet: key([st.log.length]),
     vessel: key([n2(st.elapsed)]), seal: key([st.force, st.seatAt]), hammer: key([n2(st.lift)]), lamps: key(st.legs),
-    basin: key([n2(st.level), st.bowls.map(n2)]), jar: key([MD.remainingFor(st.account, st.origin), st.origin]), spigot: key([st.holder, n2(st.pour)]),
-    counter: key([MD.receivedFor(st.account, st.origin), MD.remainingFor(st.account, st.origin)]), "cup-0": key([st.received[0]]), "cup-1": key([st.received[1]]), tally: key([n2(st.tally.t), n2(st.tally.dx), n2(st.tally.dy), n2(st.tally.lift)]),
+    basin: key([n2(st.level), st.bowls.map(n2)]), jar: key([n2(st.left), st.origin]), spigot: key([n2(st.tally.t), n2(st.pour)]),
+    counter: key([MD.receivedFor(st.account, st.origin), MD.remainingFor(st.account, st.origin)]), "cup-0": key([n2(st.shownReceived[0])]), "cup-1": key([n2(st.shownReceived[1])]), tally: key([n2(st.tally.t), n2(st.tally.dx), n2(st.tally.dy), n2(st.tally.lift)]),
   };
   const draw = {
     wheel: () => wheel(st.turn), right: () => rightTrough(st.open), coinbox: () => coinbox(st.coin), tablet: () => tablet(st.log.length),
     vessel: () => vessel(st.elapsed), seal: () => seal(st), hammer: () => hammer(st.lift), lamps: () => millLamps(st.legs),
-    basin: () => basin(st.level, st.bowls), jar: () => jar(st), spigot: () => spigot(st.holder, st.pour),
-    counter: () => counter(st), "cup-0": () => cup(0, st.received[0]), "cup-1": () => cup(1, st.received[1]), tally: () => tally(st.tally),
+    basin: () => basin(st.level, st.bowls), jar: () => jar(st), spigot: () => spigot(st.tally.t, st.pour),
+    counter: () => counter(st), "cup-0": () => cup(0, st.shownReceived[0]), "cup-1": () => cup(1, st.shownReceived[1]), tally: () => tally(st.tally),
   };
   for (const name of Object.keys(want)) if (force || want[name] !== shown[name]) part(name).innerHTML = draw[name]();
   shown = want;
@@ -598,29 +607,47 @@ function begin(next) {
   step = next;
   stepTime = 0;
   if (step.kind === "pay") {
-    const result = MD.pay(st.account, st.origin, 1);
-    step.paid = result.paid;
-    if (result.paid) { st.account = result.account; st.received[st.holder] += result.paid; }
+    step.result = MD.pay(st.account, st.origin, 1);
+    step.paid = step.result.paid;
+    step.holder = st.holder;
+    step.fromLeft = st.left;
+    step.fromReceived = [...st.shownReceived];
   } else if (step.kind === "transfer") {
     step.from = st.holder;
-    st.holder = 1 - st.holder;
-    st.account = MD.transfer(st.account, st.origin, HOLDER[st.holder]);
+    step.to = 1 - st.holder;
   } else if (step.kind === "mill") st.legs = [];
   else if (step.kind === "time") step.from = clock;
   else if (step.kind === "renew") {
-    // A new seat: its own grant, with a fresh deadline; the clock's vessel is emptied to measure it, and
-    // the tablet keeps every line.
-    keeperIndex = 1 - keeperIndex;
-    seat = MD.renew(st.log, KEEPER[keeperIndex], clock).seat;
-    st.log = [...st.log, 1];
-    st.seatAt = keeperIndex === 0 ? [0, 1] : [1, 0];
+    // The vessel empties before the next grant replaces the seal and starts its own deadline.
+    step.keeper = 1 - keeperIndex;
+    step.result = MD.renew(st.log, KEEPER[step.keeper], clock);
     step.from = st.elapsed;
   } else if (step.kind === "contribute") {
-    // A new contribution is a new origin with its own quantity; the old one is not issued again.
-    st.origin += 1;
-    st.account = MD.issue({ slots: [] }, st.origin, HOLDER[st.holder], MD.Q).account;
+    // A new origin arrives only when the new seal lands; the old one is not issued again.
+    step.origin = st.origin + 1;
+    step.account = MD.issue({ slots: [] }, step.origin, HOLDER[st.holder], MD.Q).account;
+  }
+}
+function complete(next) {
+  if (next.kind === "pay") {
+    st.account = next.result.account;
+    st.received[next.holder] += next.paid;
+  } else if (next.kind === "transfer") {
+    st.holder = next.to;
+    st.account = MD.transfer(st.account, st.origin, HOLDER[st.holder]);
+  } else if (next.kind === "renew") {
+    keeperIndex = next.keeper;
+    seat = next.result.seat;
+    st.log = [...st.log, 1];
+    st.seatAt = keeperIndex === 0 ? [0, 1] : [1, 0];
+    st.elapsed = 0;
+  } else if (next.kind === "contribute") {
+    st.origin = next.origin;
+    st.account = next.account;
     st.received = [0, 0];
   }
+  st.force = inForce();
+  syncAccount();
 }
 function advance(dt) {
   if (!step) {
@@ -632,36 +659,43 @@ function advance(dt) {
   const d = DURATION[step.kind] ?? step.t ?? 0;
   const t = d ? Math.min(1, stepTime / d) : 1;
   const bell = Math.sin(t * Math.PI);
-  if (step.kind === "draw") { st.bowls[step.bowl] = Math.min(1, t * 1.6); st.level = 1 - 0.3 * bell; }
-  else if (step.kind === "pay") st.pour = step.paid ? t : 0;
-  else if (step.kind === "mill") {
+  if (step.kind === "draw") { st.bowls[step.bowl] = bell; st.level = 1 - 0.3 * bell; }
+  else if (step.kind === "pay") {
+    st.pour = step.paid ? t : 0;
+    const delivered = smooth((t - 0.42) / 0.46);
+    st.left = step.fromLeft - step.paid * delivered;
+    st.shownReceived = [...step.fromReceived];
+    st.shownReceived[step.holder] += step.paid * delivered;
+  } else if (step.kind === "mill") {
     // The payment leg, then the grinding leg: the gate lifts for one run and the hammer falls.
-    st.coin = t < 0.25 ? 1 - t / 0.25 : 0;
+    st.coin = t < 0.25 ? 1 - smooth(t / 0.25) : 0;
     if (t >= 0.25 && !st.legs.includes("pay")) st.legs = ["pay"];
-    st.open = t < 0.3 ? 0 : t < 0.85 ? Math.min(1, (t - 0.3) * 5) : Math.max(0, 1 - (t - 0.85) * 7);
+    st.open = t < 0.3 ? 0 : t < 0.85 ? smooth((t - 0.3) / 0.2) : 1 - smooth((t - 0.85) / 0.15);
     st.turn += dt * 3.2 * st.open;
-    st.lift = st.open > 0 ? Math.abs(Math.sin(st.turn * 2)) : 0;
+    st.lift = Math.abs(Math.sin(st.turn * 2)) * st.open;
     if (t >= 0.85 && !st.legs.includes("grind")) st.legs = ["pay", "grind"];
-  } else if (step.kind === "transfer") st.tally = { t: step.from === 0 ? t : 1 - t, dx: 0, dy: 0, lift: 0 };
-  else if (step.kind === "try") {
-    // The tally is carried to the seal's lock and does not open it.
-    const reach = t < 0.5 ? t * 2 : 2 - t * 2;
+  } else if (step.kind === "transfer") {
+    const u = smooth(t);
+    st.tally = { t: step.from + (step.to - step.from) * u, dx: 0, dy: 0, lift: 0 };
+  } else if (step.kind === "try") {
+    // The tally is carried to the seal's lock and does not open it or change the seat's lamp.
+    const reach = t < 0.5 ? smooth(t * 2) : smooth(2 - t * 2);
     const [rx, ry] = C.RACK, py = ry + (-6.5 + 13 * st.holder);
     st.tally = { t: st.holder, dx: (C.SEAL[0] - rx) * reach, dy: (C.SEAL[1] + 4 - py) * reach, lift: 14 * Math.sin(reach * Math.PI) + (C.STEPS[0].h + 4) * reach };
-    st.force = t > 0.4 && t < 0.62 ? false : inForce();
   } else if (step.kind === "time") {
     // Time runs past the term: the arrow rises past the mark, and no later step restores the seat.
     const target = Math.max(step.from, seat.deadline + 1);
-    clock = Math.round(step.from + (target - step.from) * t);
+    clock = step.from + (target - step.from) * smooth(t);
     st.elapsed = Math.min(MD.TERM + 1.6, clock - seat.granted);
     st.force = inForce();
-  } else if (step.kind === "renew") { st.elapsed = step.from * (1 - t); if (t >= 1) { st.elapsed = 0; st.force = inForce(); } }
+  } else if (step.kind === "renew") st.elapsed = step.from * (1 - smooth(t));
   else if (step.kind === "contribute") st.tally = { t: st.holder, dx: 0, dy: 0, lift: 3 * bell };
   if (t >= 1) {
     if (step.kind === "draw") { st.bowls[step.bowl] = 0; st.level = 1; }
     if (step.kind === "pay") st.pour = 0;
     if (step.kind === "mill") { st.open = 0; st.lift = 0; }
     if (step.kind === "try") st.tally = { t: st.holder, dx: 0, dy: 0, lift: 0 };
+    complete(step);
     step = null;
   }
   return true;
@@ -686,7 +720,7 @@ stage.addEventListener("click", (event) => {
   if (!hit) return;
   hold();
   steps = [];
-  step = null;
+  if (step?.kind === "wait") step = null;
   now(ACTION[hit.dataset.hit]());
 });
 const KEYS = ["basin", "jar", "tally", "mill", "keeper", "seal"];
@@ -698,7 +732,7 @@ stage.addEventListener("keydown", (event) => {
   event.preventDefault();
   hold();
   steps = [];
-  step = null;
+  if (step?.kind === "wait") step = null;
   now(ACTION[KEYS[keyAt]]());
 });
 new IntersectionObserver((entries) => { visible = entries[entries.length - 1].isIntersecting; if (visible) run(); }, { rootMargin: "120px 0px" }).observe(stage);

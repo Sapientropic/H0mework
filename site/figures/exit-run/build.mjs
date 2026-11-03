@@ -477,7 +477,7 @@ function beadAt(state) {
   }
   if (s <= 2) {
     const t = s - 1;
-    const from = [C.TRACK.x1 + 1, 0, C.STATION.h + 3], to = [C.STATION.x + 13, C.STATION.y + C.STATION.d + 2.5, C.ROW.z + C.BEAD];
+    const from = [C.TRACK.x1, 0, railZ(C.TRACK.x1) + LIFT], to = [C.STATION.x + 13, C.ROW.y, C.ROW.z + C.BEAD];
     return from.map((v, i) => v + (to[i] - v) * t);
   }
   const t = s - 2;
@@ -664,7 +664,7 @@ function apply(name) {
 function begin(next) {
   step = next;
   stepTime = 0;
-  if (step.kind === "feed") { st.arrived = false; if (st.s >= 1) { st.s = 0; st.fade = 0; } }
+  if (step.kind === "feed") { st.arrived = false; st.s = 0; st.fade = 0; }
   else if (step.kind === "break") { st.scene = step.name; st.arrived = false; st.clinicLit = true; apply(st.scene); }
   else if (step.kind === "single") { st.scene = step.on ? "single" : "whole"; st.arrived = false; st.clinicLit = !step.on; apply(st.scene); }
   else if (step.kind === "pull") {
@@ -688,7 +688,8 @@ function advance(dt) {
   } else if (step.kind === "release") {
     // Tied, the coin's weight swings the gate up; untied, the gate stays down.
     const want = MD.SOURCES[st.scene].link ? 1 : 0;
-    st.open = Math.min(1, stepTime / 0.4) * want;
+    const t = Math.min(1, stepTime / 0.45);
+    st.open = t * t * (3 - 2 * t) * want;
     if (stepTime >= 0.45) step = null;
   } else if (step.kind === "run") {
     const target = stopAt();
@@ -701,8 +702,8 @@ function advance(dt) {
     if (K() > 0 && st.s >= 3) { st.receipts += 1; st.s = 3; st.fade = 0; }
     step = null;
   } else if (step.kind === "pull") {
-    const t = stepTime / 0.6;
-    st.pull[step.i] = Math.sin(Math.min(1, t) * Math.PI);
+    const t = Math.min(1, stepTime / 0.6);
+    st.pull[step.i] = Math.sin(t * Math.PI) ** 2;
     if (t >= 1) { st.pull[step.i] = 0; step = null; }
   } else if (step.kind === "wait") { if (stepTime >= step.t) step = null; }
   else step = null;
@@ -730,6 +731,8 @@ const run = () => { if (!frame && visible) { last = 0; frame = requestAnimationF
 const hold = () => { touring = false; clearTimeout(idle); idle = setTimeout(() => { touring = !still.matches; run(); }, 9000); };
 // Under reduced motion each request is carried out at once.
 function now(list) {
+  st.pull = [0, 0, 0];
+  st.open = 0;
   if (!still.matches) { steps.push(...list); run(); return; }
   for (const next of list) {
     begin(next);

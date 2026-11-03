@@ -258,8 +258,9 @@ const defsOf = (name: string) =>
   });
 export function thumbSvgOf(name: string, css: string) {
   const { width, height } = thumbOf(name);
+  const fragment = JSON.parse(readFileSync(resolve(process.cwd(), "src/generated", `${name}.json`), "utf8"));
   return xmlAttributes(figureSvgOf(name)).replace(/^<svg([^>]*)>/, (_, attrs: string) => {
     const kept = attrs.replace(/\s(role|aria-label)="[^"]*"/g, "").replace(/class="/, 'class="iso ');
-    return `<svg${kept} data-theme="light" width="${width}" height="${height}"><style><![CDATA[${css}]]></style>${defsOf(name)}`;
+    return `<svg${kept} data-theme="light" width="${width}" height="${height}"><style><![CDATA[${css}${fragment.css}]]></style>${defsOf(name)}`;
   });
 }
