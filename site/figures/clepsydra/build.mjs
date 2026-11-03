@@ -82,8 +82,16 @@ const rod = (a, b, r, style, steps) => {
   const length = Math.hypot(...d);
   return length < 0.05 ? "" : S(G.disc(0, length, r, G.frameAlong(a, d), P, steps ? { steps } : {}), style);
 };
-// A falling stream between two points, as a thin tapered sheet facing the viewer.
-const fall = (a, b, w = 1.2, opacity = 1) => `<path class="cl-fall" style="opacity:${n2(opacity)}" d="${k.pathOf([at([a[0] - w / 2, a[1], a[2]]), at([a[0] + w / 2, a[1], a[2]]), at([b[0] + w * 0.35, b[1], b[2]]), at([b[0] - w * 0.35, b[1], b[2]])], true)}"/>`;
+// A falling stream is a tapered sheet with a narrow highlight, both driven by the same flow envelope.
+const fall = (a, b, w = 1.2, opacity = 1) => {
+  const sheet = k.pathOf([at([a[0] - w / 2, a[1], a[2]]), at([a[0] + w / 2, a[1], a[2]]), at([b[0] + w * 0.35, b[1], b[2]]), at([b[0] - w * 0.35, b[1], b[2]])], true);
+  const shine = k.pathOf([at([a[0] - w * 0.12, a[1] + 0.02, a[2]]), at([b[0] - w * 0.08, b[1] + 0.02, b[2]])]);
+  return `<path class="cl-fall" style="opacity:${n2(opacity)}" d="${sheet}"/><path class="cl-stream-shine" style="opacity:${n2(opacity * 0.75)}" d="${shine}"/>`;
+};
+const WATER_DEFS = `<defs>
+  <linearGradient id="cl-water-fill" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="var(--cl-water-light)"/><stop offset=".55" stop-color="var(--cl-water)"/><stop offset="1" stop-color="var(--cl-water-edge)"/></linearGradient>
+  <linearGradient id="cl-stream-fill" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="var(--cl-water-edge)"/><stop offset=".42" stop-color="var(--cl-water-light)"/><stop offset="1" stop-color="var(--cl-water)"/></linearGradient>
+</defs>`;
 const shadow = (x, y, r, o = 0.35) => `<path class="iso-halo" d="${k.haloOf({ x: x - r, y: y - r, w: 2 * r, d: 2 * r, r }, 0, 0.1, P)}" style="filter:blur(2.5px);opacity:calc(var(--anatomy-halo-opacity) * ${o})"/>`;
 
 // --- the base and the stand ---------------------------------------------------------------------
@@ -212,9 +220,14 @@ function rightTrough(open) {
 function vessel(elapsed) {
   const [x, y, z, r, h] = C.VESSEL;
   const F = FV(x, y, z);
-  const out = [shadow(x, y, r + 1, 0.3), M("marble", S(G.solidOf([[0, r - 0.6], [0.6, r, 1], [h - 1.4, r, 1], [h - 0.6, r + 0.6, 1], [h, r + 0.6]], F, P), { tone: "mid" }))];
-  out.push(M("marble", L([h * 0.3, h * 0.36, h * 0.64, h * 0.7].map((s) => G.arcOf(F, s, r, P)).join(""), { tone: "lo" })));
+  const wall = G.ringBand(0.8, h - 0.25, r - 0.55, r, F, P);
+  const out = [shadow(x, y, r + 1, 0.3), M("jade", S(G.ringBand(0, 0.65, r - 0.65, r + 0.25, F, P), { tone: "mid" }))];
+  out.push(`<path class="cl-glass-wall" fill-rule="evenodd" d="${wall.fill}"/>`, L(wall.outline, { tone: "mid" }));
   out.push(`<path class="iso-shade" data-shade="0" d="${k.ring(x, y, r - 0.8, z + h, P, 40)}"/><path class="tw-water" d="${k.ring(x, y, r - 0.8, z + h - 2.2, P, 40)}"/>`);
+  out.push(M("jade", S(G.ringBand(h - 0.35, h, r - 0.55, r + 0.35, F, P), { tone: "mid" })));
+  for (const [dx, dy, start] of [[-0.48, 0.8, 2.1], [-0.18, 0.96, 4.2]]) {
+    out.push(k.fadeLineSvg([at([x + r * dx, y + r * dy, z + start]), at([x + r * dx, y + r * dy, z + h - 1.2])], { fade: [1.4, 1.4], tone: "hi", className: "cl-glass-shine" }));
+  }
   // The float arrow: its tip rises one step per unit of the seat's time.
   const tip = z + h + 4 + elapsed * C.STEP_UP;
   out.push(M("jade", cyl(x, y, 2.6, z + h - 2, 1.2, { tone: "mid" }, 20), cyl(x, y, 0.55, z + h - 0.8, tip - z - h + 0.8, { tone: "hi", crease: "none", lit: true }, 10), S(G.solidOf([[tip, 0.9], [tip + 2.6, 0.15]], FV(x, y, 0), P), { tone: "hi", lit: true })));
@@ -271,9 +284,16 @@ function basin(level, bowls) {
   const out = [shadow(x, y, r + 1, 0.35), M("ink", cyl(x, y, r - 2.4, 0, 0.8, { tone: "mid" }, 40, 0.2)), M("marble", S(G.solidOf(profile, F, P), { tone: "mid" }), S(G.ringBand(h - 0.2, h + 0.6, r - 1.4, r + 0.6, F, P), { tone: "mid" }), L(G.arcOf(F, h - 1.6, r - 0.15, P), { tone: "lo" }))];
   out.push(`<path class="iso-shade" data-shade="0" d="${k.ring(x, y, r - 1.4, h + 0.6, P, 48)}"/><path class="tw-water" d="${k.ring(x, y, r - 1.4, h - 0.8 + level * 0.4, P, 48)}"/>`);
 
-  // Rings spread on the water where the stream lands.
+  // Short, slightly uneven arcs spread from the stream's landing point; their ends fade instead of drawing a target.
   const zw = h - 0.8 + level * 0.4 + 0.02;
-  out.push(L([1.6, 3, 4.4].map((rr) => k.ring(x + 3, y - 6, rr, zw, P, 32)).join(""), { tone: "faint" }));
+  for (const [r, from, to, phase] of [[1.8, -0.4, 1.9, 0], [3.1, 0.7, 3, 1], [4.5, 2.2, 4.5, 2]]) {
+    const points = Array.from({ length: 31 }, (_, i) => {
+      const a = from + ((to - from) * i) / 30;
+      const rr = r * (1 + 0.035 * Math.sin(3 * a + phase));
+      return at([x + 3 + rr * Math.cos(a), y - 6 + rr * Math.sin(a), zw]);
+    });
+    out.push(k.fadeLineSvg(points, { fade: [1.8, 1.8], tone: "faint", className: "cl-ripple" }));
+  }
   // A ladle resting across the rim, its bowl in the water.
   out.push(M("ink", S(G.disc(-0.3, 0.3, 1.6, FV(x + r - 5.4, y - 1.5, zw), P), { tone: "mid" }), rod([x + r - 4, y - 2, h + 0.9], [x + r + 3, y - 6, h + 2.4], 0.4, { tone: "mid" }, 8)));
   for (const [i, [bx, by]] of C.BOWLS.entries()) {
@@ -438,6 +458,7 @@ function tally(where) {
 
 function composition(state) {
   return [
+    WATER_DEFS,
     base(),
     `<g data-part="counter">${counter(state)}</g>`,
     `<g data-part="wheel">${wheel(state.turn)}</g>`,
@@ -455,11 +476,11 @@ function composition(state) {
     `<g data-part="basin">${basin(state.level, state.bowls)}</g>`,
     qruler(),
     `<g data-part="jar">${jar(state)}</g>`,
-    `<g data-part="spigot">${spigot(state.holder, state.pour)}</g>`,
+    `<g data-part="spigot">${spigot(state.tally.t, state.pour)}</g>`,
     tray(),
-    `<g data-part="cup-0">${cup(0, state.received[0])}</g>`,
+    `<g data-part="cup-0">${cup(0, state.shownReceived?.[0] ?? state.received[0])}</g>`,
     rack(),
-    `<g data-part="cup-1">${cup(1, state.received[1])}</g>`,
+    `<g data-part="cup-1">${cup(1, state.shownReceived?.[1] ?? state.received[1])}</g>`,
     `<g data-part="tally">${tally(state.tally)}</g>`,
     `<g class="cl-hits">${hitAreas()}</g>`,
   ].join("");
@@ -469,12 +490,14 @@ function hitAreas() {
   const boxPts = (x0, y0, x1, y1, z0, z1) => k.boxCorners({ x: x0, y: y0, w: x1 - x0, d: y1 - y0 }, z0, z1);
   const [bx, by, br, bh] = C.BASIN;
   const [jx, jy, jr, jh] = C.JAR;
+  const [vx, vy, vz, vr, vh] = C.VESSEL;
   return [
     zone("basin", boxPts(bx - br - 6, by - br, bx + br + 4, C.BOWLS[1][1] + 5, 0, bh + 3)),
     zone("jar", boxPts(jx - jr, jy - jr, jx + jr + 6, jy + jr, 0, jh + 6)),
     zone("tally", boxPts(C.CUPS[0][0] - 5, C.CUPS[0][1] - 5, C.RACK[0] + 4, C.CUPS[1][1] + 5, 0, 10)),
     zone("mill", boxPts(C.GATE_X - 4, -46, C.LAMPS[0] + 8, C.PIVOT[1] + 5, 0, C.WHEEL[2] + C.WHEEL[3] + 2)),
-    zone("keeper", boxPts(C.VESSEL[0] - 9, C.VESSEL[1] - 9, C.RULER[0] + 3, C.VESSEL[1] + 9, C.VESSEL[2], C.VESSEL[2] + C.VESSEL[4] + 32)),
+    zone("keeper", boxPts(vx - vr - 1, vy - vr - 1, vx + vr + 1, vy + vr + 1, vz, vz + vh + 2)),
+    zone("keeper", boxPts(C.RULER[0] - 1.8, C.RULER[1] - 1.4, C.RULER[0] + 1.8, C.RULER[1] + 1.4, vz, vz + vh + 8 * C.STEP_UP + 3)),
     zone("seal", boxPts(C.SEAL[0] - 5, C.SEAL[1] - 4, C.SEAL[0] + 5, C.SEAL[1] + 4, C.STEPS[0].h, C.STEPS[0].h + 11)),
   ].join("");
 }
@@ -497,11 +520,16 @@ const svg = k.figureSvg({
 });
 
 const CSS = `
-.cl-svg{--cl-fault:var(--cinnabar,#c8372d);--cl-force:#9fc7a9}
-.cl-svg .tw-water{fill:#d2e2d8;stroke:none}
-.iso[data-theme="dark"] .cl-svg .tw-water{fill:#1d2b25}
-.cl-svg .cl-flow{opacity:.5}
-.cl-svg .cl-fall{fill:#c3d9cb;stroke:none}
+.cl-svg{--cl-fault:var(--cinnabar,#c8372d);--cl-force:#9fc7a9;--cl-water-light:#edf5ee;--cl-water:#b8d2c8;--cl-water-edge:#7fa89b;--cl-water-ink:#5f8e82}
+.iso[data-theme="dark"] .cl-svg{--cl-water-light:#47685a;--cl-water:#29483b;--cl-water-edge:#1c342a;--cl-water-ink:#83aa98}
+.cl-svg .tw-water{fill:var(--cl-water);fill:url(#cl-water-fill);fill-opacity:.86;stroke:var(--cl-water-edge);stroke-width:.45}
+.cl-svg .cl-flow{opacity:.55;stroke:var(--cl-water-ink);stroke-width:.55}
+.cl-svg .cl-fall{fill:var(--cl-water);fill:url(#cl-stream-fill);stroke:none}
+.cl-svg .cl-stream-shine{fill:none;stroke:var(--cl-water-light);stroke-width:.45;stroke-linecap:round}
+.cl-svg .cl-ripple{stroke:var(--cl-water-ink);stroke-width:.45}
+.cl-svg .cl-glass-wall{fill:#d9e8e2;fill-opacity:.22;stroke:none}
+.iso[data-theme="dark"] .cl-svg .cl-glass-wall{fill:#2a453a;fill-opacity:.3}
+.cl-svg .cl-glass-shine{fill:none;stroke:#fff;stroke-width:.65}
 .cl-svg .cl-lens{fill:#2a2f30;stroke:none;transition:fill .35s var(--anatomy-ease)}
 .cl-svg .cl-lens.cl-force,.cl-svg .cl-lens.cl-paid{fill:var(--cl-force)}
 .cl-svg .cl-lens.cl-lapsed{fill:var(--cl-fault)}
@@ -524,7 +552,7 @@ const modelSource = `const MD = (() => {\n${strip("model.mjs")}\nreturn { ${Obje
 const live = `
 const P0 = ${JSON.stringify(P0)};
 let P = P0;
-${shipped({ C, COUNTER, TRAY, FRAME, X3, Y3, Z3 })}
+${shipped({ C, COUNTER, TRAY, FRAME, X3, Y3, Z3, WATER_DEFS })}
 const k = { ${Object.keys(k).join(", ")} };
 const G = LATHE;
 ${shipped({ at, S, L, D, M, n2, faceY, rectD, box, cyl, FV, unit, rod, fall, shadow })}
@@ -659,7 +687,7 @@ function advance(dt) {
   const d = DURATION[step.kind] ?? step.t ?? 0;
   const t = d ? Math.min(1, stepTime / d) : 1;
   const bell = Math.sin(t * Math.PI);
-  if (step.kind === "draw") { st.bowls[step.bowl] = bell; st.level = 1 - 0.3 * bell; }
+  if (step.kind === "draw") { st.bowls[step.bowl] = Math.max(st.bowls[step.bowl], smooth(t)); st.level = 1 - 0.3 * bell; }
   else if (step.kind === "pay") {
     st.pour = step.paid ? t : 0;
     const delivered = smooth((t - 0.42) / 0.46);
@@ -691,7 +719,7 @@ function advance(dt) {
   } else if (step.kind === "renew") st.elapsed = step.from * (1 - smooth(t));
   else if (step.kind === "contribute") st.tally = { t: st.holder, dx: 0, dy: 0, lift: 3 * bell };
   if (t >= 1) {
-    if (step.kind === "draw") { st.bowls[step.bowl] = 0; st.level = 1; }
+    if (step.kind === "draw") st.level = 1;
     if (step.kind === "pay") st.pour = 0;
     if (step.kind === "mill") { st.open = 0; st.lift = 0; }
     if (step.kind === "try") st.tally = { t: st.holder, dx: 0, dy: 0, lift: 0 };

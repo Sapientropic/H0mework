@@ -1,5 +1,6 @@
 // Build-time view of a paper: titles and abstract from its latest manuscript, editions, files and
 // claim statistics. Every fact shown on the site is read from the repository, never retyped.
+import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { unified } from "unified";
@@ -242,11 +243,16 @@ export const figureSvgOf = (name: string) =>
     return String(fragment.html.zh.match(/<svg[\s\S]*?<\/svg>/)?.[0] ?? "");
   });
 
-// Thumbnails are that frame as a standalone light-theme SVG file (src/pages/thumbs), so a list loads one
-// cached image per paper instead of inlining every drawing into its HTML.
+// Thumbnails are standalone light-theme SVG files. Their URLs change with every drawing, style and paint-server input,
+// so a browser or CDN cannot keep showing an older black or otherwise stale image after a deployment.
 export function thumbOf(name: string) {
-  const [, width, height] = figureSvgOf(name).match(/viewBox="0 0 ([\d.]+) ([\d.]+)"/) ?? [];
-  return { src: `/thumbs/${name}.svg`, width: Number(width), height: Number(height) };
+  return once(`thumb:${name}`, () => {
+    const fragment = JSON.parse(readFileSync(resolve(process.cwd(), "src/generated", `${name}.json`), "utf8"));
+    const version = createHash("sha256").update(figureSvgOf(name)).update(fragment.css)
+      .update(readFileSync(resolve(process.cwd(), "figures/kit/iso.css"))).update(defsOf(name)).digest("hex").slice(0, 12);
+    const [, width, height] = figureSvgOf(name).match(/viewBox="0 0 ([\d.]+) ([\d.]+)"/) ?? [];
+    return { src: `/thumbs/${name}.svg?v=${version}`, width: Number(width), height: Number(height) };
+  });
 }
 // An SVG file is parsed as XML, so a bare HTML boolean attribute (data-on) needs a value.
 const xmlAttributes = (svg: string) => svg.replace(/<[a-zA-Z][^>]*>/g, (tag) => tag.replace(/("[^"]*")|\s([a-zA-Z_:][-\w:.]*)(?=\s|\/?>)/g, (match, quoted, name) => quoted ?? ` ${name}=""`));

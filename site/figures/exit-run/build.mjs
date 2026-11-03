@@ -422,11 +422,16 @@ function station(homeLit, clinicLit, shut) {
   const cornice = k.insetPlan(s, -0.8), roof = k.insetPlan(s, -1.2);
   out.push(M("jade", box(cornice, s.h, 0.8, { tone: "mid" }, 2, 0.2)));
   out.push(M("ink", box(roof, s.h + 0.8, 0.8, { tone: "mid" }, 2, 0.25), L(k.planOutline(k.insetPlan(roof, 2.4), s.h + 1.6, P, 2), { tone: "faint" }), D(k.corners(roof, 1.2).map(([x, y]) => at([x, y, s.h + 1.6])), { size: 0.4 })));
-  // The funnel the track's foot drops into: a collar at its stem and a rolled rim.
-  const F = G.frameOf([C.TRACK.x1 + 1, 0, s.h + 1.6], Z3, X3, Y3);
-  out.push(M("ink", S(G.disc(0, 0.6, 2.4, F, P), { tone: "mid" })));
-  out.push(M("jade", S(G.lathe([[0, 1.6], [0.6, 1.8, 1], [3.6, 4.4, 1], [4.2, 4.8]], F, P, { fill: "surface" }), { tone: "mid", inner: L(G.arcOf(F, 3.75, 4.5, P, { slope: 0.67 }), { tone: "lo" }) })));
   return M("marble", ...out);
+}
+// The funnel is a separate foreground layer: the bead visibly crosses its mouth and disappears into its throat.
+function funnel() {
+  const z = C.STATION.h + 1.6;
+  const F = G.frameOf([C.TRACK.x1 + 1, 0, z], Z3, X3, Y3);
+  const shell = G.lathe([[0, 2.4], [0.55, 2.55, 1], [3.65, 4.55, 1], [4.15, 4.85, 1], [4.35, 4.9]], F, P, { fill: "surface" });
+  const mouth = k.ring(C.TRACK.x1 + 1, 0, 4.05, z + 4.12, P, 56);
+  return M("ink", S(G.disc(0, 0.6, 3, F, P), { tone: "mid" }), `<path class="er-funnel-throat" d="${k.ring(C.TRACK.x1 + 1, 0, 2.5, z + 0.62, P, 32)}"/>`)
+    + M("jade", S(shell, { tone: "mid" }), `<path class="er-funnel-inside" d="${mouth}"/><path class="er-funnel-core" d="${k.ring(C.TRACK.x1 + 1, 0, 1.35, z + 4.14, P, 32)}"/>`, S(G.ringBand(4.12, 4.38, 4.05, 4.95, F, P), { tone: "hi" }), L(G.arcOf(F, 3.68, 4.58, P, { slope: 0.52 }), { tone: "lo" }));
 }
 // The receipts: a glazed channel along the deck's front; every arriving bead joins the row's end.
 function channel() {
@@ -467,17 +472,23 @@ function row(count) {
 
 // --- the bead -----------------------------------------------------------------------------------------
 
-// The bead's journey as one parameter: 0 in the cage, 1 at the track's foot, then the drop through the
-// station (1–2) and the roll along the channel to the row's end (2–3).
+// The bead's journey: track (0–1), a visible drop through the funnel (1–1.35), the occluded station
+// (1.35–2), then the roll along the channel to the row's end (2–3).
+const FUNNEL_S = 1.35;
 function beadAt(state) {
   const s = state.s;
   if (s <= 1) {
     const x = C.CAGE.x0 + 5 + (C.TRACK.x1 - C.CAGE.x0 - 5) * s;
     return [x, 0, railZ(x) + LIFT];
   }
+  if (s <= FUNNEL_S) {
+    const t = (s - 1) / (FUNNEL_S - 1);
+    const from = [C.TRACK.x1, 0, railZ(C.TRACK.x1) + LIFT], to = [C.TRACK.x1 + 1, 0, C.STATION.h + 2.2];
+    return from.map((v, i) => v + (to[i] - v) * t);
+  }
   if (s <= 2) {
-    const t = s - 1;
-    const from = [C.TRACK.x1, 0, railZ(C.TRACK.x1) + LIFT], to = [C.STATION.x + 13, C.ROW.y, C.ROW.z + C.BEAD];
+    const t = (s - FUNNEL_S) / (2 - FUNNEL_S);
+    const from = [C.TRACK.x1 + 1, 0, C.STATION.h + 2.2], to = [C.STATION.x + 13, C.ROW.y, C.ROW.z + C.BEAD];
     return from.map((v, i) => v + (to[i] - v) * t);
   }
   const t = s - 2;
@@ -490,6 +501,7 @@ const stopS = (kind) => (C.STOP[kind] - C.CAGE.x0 - 5) / (C.TRACK.x1 - C.CAGE.x0
 
 function composition(state) {
   const inside = state.s > 1 && state.s < 2;
+  const entering = state.s > 1 && state.s < FUNNEL_S;
   const onRow = state.s >= 2;
   return [
     base(),
@@ -516,6 +528,8 @@ function composition(state) {
     `<g data-part="coin">${coin(state.loose, state.open)}</g>`,
     `<g data-part="weight">${weight(state.up)}</g>`,
     `<g data-part="station">${station(state.homeLit, state.clinicLit, state.shut)}</g>`,
+    funnel(),
+    `<g data-part="bead-station" style="display:${entering ? "inline" : "none"}"><g data-part="bead-drop" transform="${beadTransform(state)}" style="opacity:${n2(state.fade * Math.max(0, Math.min(1, (FUNNEL_S - state.s) / 0.12)))}">${beadSvg()}</g></g>`,
     channel(),
     `<g data-part="row">${row(state.receipts)}</g>`,
     `<g data-part="bead-row" style="display:${onRow ? "inline" : "none"}"><g data-part="bead-low" transform="${beadTransform(state)}" style="opacity:${n2(state.fade)}">${beadSvg()}</g></g>`,
@@ -560,6 +574,9 @@ const CSS = `
 .er-svg .er-shutter{fill:var(--anatomy-shade-1);stroke:var(--anatomy-mid);stroke-width:.4}
 .er-svg .er-glass{fill:#eef5f1;stroke:none;opacity:.42}
 .er-svg .er-glass-back{fill:#dfe9e3;stroke:none;opacity:.5}
+.er-svg .er-funnel-throat{fill:var(--anatomy-shade-1);stroke:var(--anatomy-lo);stroke-width:.45}
+.er-svg .er-funnel-inside{fill:#41594a;stroke:#9bb9a3;stroke-width:.45}
+.er-svg .er-funnel-core{fill:#15271d;stroke:none}
 .er-svg .er-glint{fill:#fff;stroke:none;opacity:.55}
 .er-svg .er-cord{stroke-width:1.1}
 .er-svg .iso-line[data-tone="red"]{stroke:var(--er-fault)}
@@ -581,13 +598,13 @@ const modelSource = `const MD = (() => {\n${strip("model.mjs")}\nreturn { ${Obje
 const live = `
 const P0 = ${JSON.stringify(P0)};
 let P = P0;
-${shipped({ C, SELECTOR, SLOPE, LIFT, FRAME, KINDS, REPAIR_OF, DOMAINS_ICON, X3, Y3, Z3 })}
+${shipped({ C, SELECTOR, SLOPE, LIFT, FRAME, KINDS, REPAIR_OF, DOMAINS_ICON, X3, Y3, Z3, FUNNEL_S })}
 const k = { ${Object.keys(k).join(", ")} };
 const G = LATHE;
 ${shipped({ railZ, at, S, L, D, M, n2, faceY, rectD, box, cyl, unit })}
 const DIR = unit([1, 0, SLOPE]);
 const UP = unit([-SLOPE, 0, 1]);
-${shipped({ rod, bandD, chairs, selector, selectorFace, ruler, shadows, tower, base, glyphD, icon, faceLamp, lever, panel, readings, railRun, rails, endStops, tie, ties, post, bridgeRails, bridgeTies, hinge, cage, cageCap, hopper, gate, gateLever, leverTip, coinPost, coin, latch, weight, station, channel, channelGlass, rowAt, row, beadAt, beadSvg, beadTransform, stopS, composition, hitAreas })}
+${shipped({ rod, bandD, chairs, selector, selectorFace, ruler, shadows, tower, base, glyphD, icon, faceLamp, lever, panel, readings, railRun, rails, endStops, tie, ties, post, bridgeRails, bridgeTies, hinge, cage, cageCap, hopper, gate, gateLever, leverTip, coinPost, coin, latch, weight, station, funnel, channel, channelGlass, rowAt, row, beadAt, beadSvg, beadTransform, stopS, composition, hitAreas })}
 const FIXED = [[C.TRACK.x0 - 4, C.BRIDGE.x0], [C.BRIDGE.x1, C.TRACK.x1]];
 ${swingSource}
 ${liveScript()}
@@ -637,11 +654,15 @@ function paint(force = false) {
   };
   for (const name of Object.keys(want)) if (force || want[name] !== shown[name]) part(name).innerHTML = draw[name]();
   shown = want;
-  // The bead moves by a transform; on the track, in the station and on the row it sits in different slots.
-  const onRow = st.s >= 2, inside = st.s > 1 && st.s < 2;
+  // The bead moves by a transform; the funnel drop has its own foreground slot before the station hides it.
+  const onRow = st.s >= 2, inside = st.s > 1 && st.s < 2, entering = st.s > 1 && st.s < FUNNEL_S;
   part("bead-track").style.display = onRow || inside ? "none" : "inline";
+  part("bead-station").style.display = entering ? "inline" : "none";
   part("bead-row").style.display = onRow ? "inline" : "none";
   for (const name of ["bead", "bead-low"]) { const node = part(name); node.setAttribute("transform", beadTransform(st)); node.style.opacity = n2(st.fade); }
+  const drop = part("bead-drop");
+  drop.setAttribute("transform", beadTransform(st));
+  drop.style.opacity = n2(st.fade * Math.max(0, Math.min(1, (FUNNEL_S - st.s) / 0.12)));
   say();
 }
 const cycle = () => [{ kind: "feed" }, { kind: "release" }, { kind: "run" }, { kind: "arrive" }, { kind: "wait", t: 1.2 }];
@@ -693,7 +714,7 @@ function advance(dt) {
     if (stepTime >= 0.45) step = null;
   } else if (step.kind === "run") {
     const target = stopAt();
-    const speed = st.s < 1 ? 0.42 : st.s < 2 ? 1.6 : 0.9;
+    const speed = st.s < 1 ? 0.42 : st.s < 2 ? 1.0 : 0.9;
     st.s = Math.min(target, st.s + dt * speed);
     if (st.s > 0.08) st.open = Math.max(0, st.open - dt * 2);
     if (st.s > 1.3 && K() > 0) st.arrived = true;
