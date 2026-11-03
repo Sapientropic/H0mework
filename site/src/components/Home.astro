@@ -2,6 +2,7 @@
 import Base from "../layouts/Base.astro";
 import ClaimTape from "./ClaimTape.astro";
 import Forest from "./Forest.astro";
+import SiteStats from "./SiteStats.astro";
 import NullScreen from "./NullScreen.astro";
 import Thumb from "./Thumb.astro";
 import { PAPERS, paperOf, statsOf, vtFigure, vtTitle, type Lang } from "../lib/papers";
@@ -25,7 +26,7 @@ const latest = [...papers]
     <section class="hero prose">
       <h1>{t.tagline.split("|").map((phrase) => <span class="phrase">{phrase}</span>)}</h1>
       <p class="lede">{t.lede}</p>
-      <p class="tally"><b>{papers.length}</b>{t.statPapers} · <b>{tally.claims}</b>{t.statClaims} · <b>{tally.modules}</b>{t.statModules} · <span class="ok">✓ {t.statKernel}</span></p>
+      <SiteStats lang={lang} papers={papers.length} {...tally} />
     </section>
     <Forest lang={lang} />
     <section class="section" id="latest">
@@ -47,7 +48,7 @@ const latest = [...papers]
             <span class="meta">{[paper.series?.[lang], paper.current.date].filter(Boolean).join(" · ")}</span>
             <span class="t vt-title" style={`view-transition-name:${vtTitle(paper.slug)}`}>{paper.main}</span>
             {paper.sub && <span class="sub">{paper.sub}</span>}
-            <span class="st"><b>{paper.stats.claims}</b>{t.statClaims} · <b>{paper.stats.modules}</b>{t.statModules}</span>
+            <span class="st"><span><b>{paper.stats.claims}</b>{t.statClaims}</span><span><b>{paper.stats.modules}</b>{t.statModules}</span></span>
           </a>
         ))}
       </div>

@@ -2,6 +2,7 @@
 import Base from "../layouts/Base.astro";
 import ClaimTape from "./ClaimTape.astro";
 import Thumb from "./Thumb.astro";
+import SiteStats from "./SiteStats.astro";
 import { ORDERED, THEMES, paperOf, statsOf, vtFigure, vtTitle, type Lang } from "../lib/papers";
 import { claimsOf } from "../lib/claims";
 import { T, paperHref } from "../lib/i18n";
@@ -18,7 +19,7 @@ const themes = THEMES.map((theme) => ({ ...theme, papers: papers.filter((paper) 
   <div class="wrap">
     <section class="hero prose">
       <h1>{t.papers}</h1>
-      <p class="tally"><b>{papers.length}</b>{t.statPapers} · <b>{tally.claims}</b>{t.statClaims} · <b>{tally.modules}</b>{t.statModules} · <span class="ok">✓ {t.statKernel}</span></p>
+      <SiteStats lang={lang} papers={papers.length} {...tally} />
     </section>
     <div class="idx">
       <nav class="idx-nav" aria-label={t.papers}>
@@ -35,7 +36,7 @@ const themes = THEMES.map((theme) => ({ ...theme, papers: papers.filter((paper) 
                     <span class="meta">{[paper.series?.[lang], paper.current.date].filter(Boolean).join(" · ")}</span>
                     <span class="t vt-title" style={`view-transition-name:${vtTitle(paper.slug)}`}>{paper.main}</span>
                     {paper.sub && <span class="sub">{paper.sub}</span>}
-                    <span class="st"><b>{paper.stats.claims}</b>{t.statClaims} · <b>{paper.stats.modules}</b>{t.statModules}</span>
+                    <span class="st"><span><b>{paper.stats.claims}</b>{t.statClaims}</span><span><b>{paper.stats.modules}</b>{t.statModules}</span></span>
                   </span>
                   <span class="idx-art" aria-hidden="true">
                     {paper.figure ? <Thumb name={paper.figure.name} transition={vtFigure(paper.slug)} /> : <span class="idx-tape"><ClaimTape rows={claimsOf(paper.slug, lang)} lang={lang} grouped={false} /></span>}

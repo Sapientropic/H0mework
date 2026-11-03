@@ -221,7 +221,7 @@ const chapterLabel = (key: string) => (/\d/.test(key) ? fill(t.chapter, key) : f
             <ul>
               {group.papers.map((other) => (
                 <li>
-                  <a href={other.href}>
+                  <a href={other.href} class:list={{ "text-only": !other.figure }}>
                     {other.figure && <span class="rel-art" aria-hidden="true"><Thumb name={other.figure} transition={other.transition} /></span>}
                     <span class="rel-text"><span class="rel-label">{other.label}</span>{other.title}</span>
                   </a>

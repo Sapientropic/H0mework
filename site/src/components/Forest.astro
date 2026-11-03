@@ -38,6 +38,11 @@ const rows = THEMES.filter((theme) => theme.id !== "preface").map((theme) => {
 const height = rows.length * ROW;
 const counted = (template: string, n: number, m: number, r = 0) => template.replace("{n}", String(n)).replace("{m}", String(m)).replace("{t}", String(n + m)).replace("{r}", String(r));
 const totals = { published: rows.reduce((n, row) => n + row.published.length, root ? 1 : 0), hollow: rows.reduce((n, row) => n + row.hollow.length, 0), reserved: rows.reduce((n, row) => n + row.reserved.length, 0) };
+const metrics = [
+  { label: t.planRegistered, value: totals.published + totals.hollow },
+  { label: t.planPublished, value: totals.published },
+  { label: t.planPreparing, value: totals.hollow },
+];
 ---
 <section class="section" id="forest">
   <h2>{t.forest}</h2>
@@ -80,7 +85,9 @@ const totals = { published: rows.reduce((n, row) => n + row.published.length, ro
         {rows.some((row) => row.hollow.some((node) => node.soon)) && <p class="legend"><span class="node up soon" />{t.legendSoon}</p>}
         <p class="legend"><span class="node up" />{t.legendUpcoming}</p>
         {totals.reserved > 0 && <p class="legend"><span class="node reserved" />{t.legendReserved}</p>}
-        <p class="totals">{counted(t.forestTotals, totals.published, totals.hollow)}</p>
+        <dl class="forest-totals">
+          {metrics.map((metric) => <div><dt>{metric.label}</dt><dd>{metric.value}</dd></div>)}
+        </dl>
         {totals.reserved > 0 && <p class="reserve-total">{counted(t.forestReserved, 0, 0, totals.reserved)}</p>}
       </div>
       <div class="detail" hidden>
@@ -117,7 +124,16 @@ const totals = { published: rows.reduce((n, row) => n + row.published.length, ro
       node?.classList.add("on");
       idle.hidden = Boolean(node);
       detail.hidden = !node;
-      if (node) keys.forEach((key, i) => (fields[i].textContent = node.dataset[key] ?? ""));
+      if (node) keys.forEach((key, i) => {
+        const value = node.dataset[key] ?? "";
+        if (key === "stats") {
+          fields[i].replaceChildren(...value.split(" · ").filter(Boolean).map((text) => {
+            const span = document.createElement("span");
+            span.textContent = text;
+            return span;
+          }));
+        } else fields[i].textContent = value;
+      });
       detail.classList.toggle("pending", Boolean(node?.classList.contains("up") || node?.classList.contains("reserved")));
     };
     forest.querySelectorAll<HTMLElement>(".grove .node, .grove .seed[data-title]").forEach((node) => {

@@ -1,0 +1,14 @@
+---
+import { T } from "../lib/i18n";
+import type { Lang } from "../lib/registry";
+
+interface Props { lang: Lang; papers: number; claims: number; modules: number }
+const { lang, papers, claims, modules } = Astro.props;
+const t = T[lang];
+---
+<ul class="tally">
+  <li><b>{papers}</b>{t.statPapers}</li>
+  <li><b>{claims}</b>{t.statClaims}</li>
+  <li><b>{modules}</b>{t.statModules}</li>
+  <li class="ok">✓ {t.statKernel}</li>
+</ul>

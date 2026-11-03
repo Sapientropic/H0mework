@@ -8,8 +8,8 @@ const { lang, checks } = Astro.props;
 const t = T[lang];
 ---
 <div class="cmdblock">
-  <pre class="command">{checks.map((check, i) => <>{i > 0 && "\n\n"}{check.label && <span class="comment"># {check.label}{"\n"}</span>}{check.command}</>)}</pre>
   <button class="copy" type="button" data-label={t.copy} data-done={t.copied}>{t.copy}</button>
+  <pre class="command">{checks.map((check, i) => <>{i > 0 && "\n\n"}{check.label && <span class="comment"># {check.label}{"\n"}</span>}{check.command}</>)}</pre>
 </div>
 <script>
   document.addEventListener("click", (event) => {
