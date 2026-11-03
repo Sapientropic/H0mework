@@ -15,7 +15,7 @@ export const repoLink = (path: string, line?: number, commit = "main") => `${REP
 const suffix = (lang: Lang) => (lang === "en" ? "-en" : "");
 const unzip = (zip: string, member: string) => execFileSync("unzip", ["-p", resolve(ROOT, zip), member], { encoding: "utf8", maxBuffer: 1 << 26 });
 
-export type ReleaseId = "first-release" | "second-edition" | "low-energy" | "whole-ledger" | "one-bit" | "generated-society" | "economic-constitution" | "generated-society-v2" | "economic-constitution-v2";
+export type ReleaseId = "first-release" | "second-edition" | "low-energy" | "whole-ledger" | "one-bit" | "generated-society" | "economic-constitution" | "generated-society-v2" | "economic-constitution-v2" | "capital-formation";
 type Release = {
   label: Record<Lang, string>;
   date: string;
@@ -28,6 +28,7 @@ type Release = {
   check: string;
   guide: string;
   sourceCommit?: string;
+  documentationCommit?: string;
   acceptance?: Record<Lang, string>;
   claimsNote?: Record<Lang, string>;
   // A prose revision quotes its current text once while retaining both editions' downloads.
@@ -43,6 +44,14 @@ const ledgerArchive = (slug: string) => `${LEDGER}/editable/${slug}-v1-editable.
 const SOCIETY = "papers/society-economic/2026-11-03";
 const SOCIETY_V2 = "papers/society-economic/2026-11-03-v2";
 const SOCIETY_SOURCE = "2d6fbc96e33b7c4c3cfd91104fda74e3caeda045";
+const CAPITAL = "papers/capital-formation/2026-11-04";
+const capitalArchive = `${CAPITAL}/editable/capital-formation-v1-editable.zip`;
+const capitalPaper = () => {
+  const paper = readJson(`${CAPITAL}/manifest.json`).papers.find((paper: any) => paper.paper === "capital-formation");
+  if (!paper?.doi || !/^10\.\d{4,9}\/\S+$/.test(paper.doi) || paper.source_commit !== SOCIETY_SOURCE)
+    throw new Error("capital release manifest has no fixed proof source and DOI");
+  return paper;
+};
 const societyArchive = (slug: string, version = "v1") => `${version === "v2" ? SOCIETY_V2 : SOCIETY}/editable/${slug}-${version}-editable.zip`;
 const societyPaper = (slug: string, version = "v1") => {
   const paper = readJson(`${version === "v2" ? SOCIETY_V2 : SOCIETY}/manifest.json`).papers.find((paper: any) => paper.paper === slug);
@@ -143,6 +152,23 @@ const BASE_RELEASES: Record<Exclude<ReleaseId, "generated-society-v2" | "economi
       en: "Eight institutional principles and eight adopted formal results are listed separately. The principles have normative arguments; Lean checks their explicitly adopted formal support. Each row opens the original text, actual declarations, direct consumers, and evidence.",
     },
   },
+  "capital-formation": {
+    label: { zh: "资本主义的结构总定理", en: "The structural theorem of capitalism" },
+    date: capitalPaper().publication_date,
+    map: "docs/capital-formation-map.json",
+    selection: { path: capitalArchive, member: "papers/capital-formation/records/source-selection.json" },
+    manuscript: (slug, lang) => unzip(capitalArchive, `papers/${slug}/manuscript${suffix(lang)}.md`),
+    supplement: (slug, lang) => unzip(capitalArchive, `papers/${slug}/supplement${suffix(lang)}.md`),
+    files: (slug, lang) => ({ pdf: `${CAPITAL}/pdf/${slug}${suffix(lang)}.pdf`, supplement: `${CAPITAL}/pdf/${slug}-supplement${suffix(lang)}.pdf` }),
+    check: "python3 tools/capital_formation.py entry --require-ready --output .local/capital-formation-entry",
+    guide: "docs/capital-formation-reproduction.md",
+    sourceCommit: SOCIETY_SOURCE,
+    documentationCommit: "main",
+    claimsNote: {
+      zh: "按论文顺序列出18项结果。展开可读定理原文、证明声明、直接消费者与来源材料。",
+      en: "The paper's eighteen results appear in reading order. Open a row for its original statement, proof declarations, direct consumers, and source materials.",
+    },
+  },
 };
 
 function societyRevision(slug: "generated-society" | "economic-constitution"): Release {
@@ -192,7 +218,7 @@ export const UPCOMING: Partial<Record<ThemeId, { count: number; soon?: number }>
   chemistry: { count: 4 },
   metrology: { count: 3 },
   life: { count: 3 },
-  mind: { count: 1 },
+  mind: { count: 0 },
 };
 export type PaperEntry = {
   slug: string;
@@ -265,6 +291,11 @@ export const PAPERS: PaperEntry[] = [
       { release: "economic-constitution-v2", doi: societyPaper("economic-constitution", "v2").doi },
     ],
     figure: { name: "clepsydra", claim: "R4" },
+  },
+  {
+    slug: "capital-formation",
+    theme: "mind",
+    editions: [{ release: "capital-formation", doi: capitalPaper().doi }],
   },
 ];
 

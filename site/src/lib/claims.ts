@@ -9,7 +9,7 @@ import { excerptsOf } from "./excerpts";
 type Declaration = { name?: string; qualified_name: string; line?: number };
 type Producer = {
   kind: string;
-  public?: { path: string; module?: string };
+  public?: { path: string; module?: string; commit?: string };
   declarations?: Declaration[];
 };
 type Text = { title: string | null; statement: string | null };
@@ -288,6 +288,44 @@ function economicConstitution(slug: string, edition: number, release: ReleaseId)
   return [...principles, ...results];
 }
 
+function capitalFormation(slug: string, edition: number, release: ReleaseId): Source[] {
+  const map = mapOf(release);
+  const binding = publishedPaperJson(release, slug, "records/public-source-binding.json");
+  const byId = new Map<string, any>(binding.entries.map((entry: any) => [entry.id, entry]));
+  return map.claims.map((claim: any) => {
+    const selected = claim.source_ids.map((id: string) => {
+      const entry = byId.get(id);
+      if (!entry) throw new Error(`capital result has no registered source ${id}`);
+      return entry;
+    });
+    const producers: Producer[] = selected.flatMap((entry: any) => {
+      if (!entry.public) return [];
+      const locations = new Map<string, number>(entry.previous_claim_map_declarations.map((declaration: any) => [declaration.qualified_name, declaration.source_line]));
+      return [{
+        kind: "lean", public: entry.public,
+        declarations: entry.type_observations.map((observation: any) => ({
+          qualified_name: observation.qualified_name, line: locations.get(observation.qualified_name),
+        })),
+      }];
+    });
+    const consumers = new Set<string>(selected.flatMap((entry: any) => entry.consumers ?? [])
+      .flatMap((consumer: any) => consumer.public_module ? [consumer.public_module] : []));
+    for (const module of consumers) {
+      const consumer = map.public_consumers[module];
+      if (!consumer) throw new Error(`capital consumer has no accepted owner ${module}`);
+      producers.push({ kind: "lean", public: consumer.public, declarations: [] });
+    }
+    for (const entry of selected.filter((entry: any) => entry.preserved_source))
+      producers.push({ kind: "artifact", public: { path: `papers/capital-formation/2026-11-04/${entry.preserved_source.path}`, commit: "main" } });
+    return {
+      key: `cap.${claim.id}`, ids: [claim.id], edition, category: "formal",
+      text: { title: claim.title.zh, statement: null },
+      location: claim.written,
+      producers,
+    };
+  });
+}
+
 const ADAPTERS: Record<ReleaseId, (slug: string, edition: number, release: ReleaseId) => Source[]> = {
   "first-release": firstRelease,
   "second-edition": secondEdition,
@@ -298,6 +336,7 @@ const ADAPTERS: Record<ReleaseId, (slug: string, edition: number, release: Relea
   "economic-constitution": economicConstitution,
   "generated-society-v2": generatedSociety,
   "economic-constitution-v2": economicConstitution,
+  "capital-formation": capitalFormation,
 };
 
 // --- translations -----------------------------------------------------------------------------
@@ -426,7 +465,7 @@ function rowOf(source: Source, release: ReleaseId, slug: string, lang: Lang) {
   const order = orderOf(source.location.zh ?? source.location.en);
   const artifacts = source.producers
     .filter((producer) => producer.kind !== "lean" && producer.public)
-    .map((producer) => ({ path: producer.public!.path, name: producer.public!.path.split("/").pop()!, link: repoLink(producer.public!.path, undefined, commit) }));
+    .map((producer) => ({ path: producer.public!.path, name: producer.public!.path.split("/").pop()!, link: repoLink(producer.public!.path, undefined, producer.public!.commit ?? commit) }));
   return {
     key: source.key,
     category: source.category,

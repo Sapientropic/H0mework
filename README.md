@@ -3,7 +3,7 @@
 <p align="center">
   <a href="https://github.com/Sapientropic/H0mework/actions/workflows/ci.yml"><img alt="CI" src="https://img.shields.io/github/actions/workflow/status/Sapientropic/H0mework/ci.yml?branch=main&style=flat-square&label=CI"></a>
   <a href="https://h0mework.wiki"><img alt="网站 h0mework.wiki" src="https://img.shields.io/badge/%E7%BD%91%E7%AB%99-h0mework.wiki-b3372c?style=flat-square"></a>
-  <a href="#论文"><img alt="Zenodo 论文 8 篇" src="https://img.shields.io/badge/Zenodo-8%20%E7%AF%87%E8%AE%BA%E6%96%87-3c679f?style=flat-square"></a>
+  <a href="#论文"><img alt="Zenodo 论文 9 篇" src="https://img.shields.io/badge/Zenodo-9%20%E7%AF%87%E8%AE%BA%E6%96%87-3c679f?style=flat-square"></a>
   <a href="LICENSE"><img alt="Apache-2.0" src="https://img.shields.io/badge/license-Apache--2.0-3a332b?style=flat-square"></a>
 </p>
 
@@ -29,7 +29,7 @@
 <!-- BEGIN PAPERS -->
 **[在网站上浏览全部论文，读摘要并逐条展开证明 →](https://h0mework.wiki/papers/)**
 
-最新：[可能性的经济宪法](https://h0mework.wiki/papers/economic-constitution/) · [典范社会总定理](https://h0mework.wiki/papers/generated-society/)
+最新：[资本主义的结构总定理](https://h0mework.wiki/papers/capital-formation/) · [可能性的经济宪法](https://h0mework.wiki/papers/economic-constitution/)
 
 <details>
 <summary><strong>总序</strong> · 1 篇</summary>
@@ -62,10 +62,11 @@
 </details>
 
 <details>
-<summary><strong>心智与社会</strong> · 2 篇</summary>
+<summary><strong>心智与社会</strong> · 3 篇</summary>
 
 - [典范社会总定理](https://h0mework.wiki/papers/generated-society/) · [v2](https://doi.org/10.5281/zenodo.23917896) · [映射](docs/generated-society-map.json) · [复现](docs/generated-society-reproduction.md)
 - [可能性的经济宪法](https://h0mework.wiki/papers/economic-constitution/) · [v2](https://doi.org/10.5281/zenodo.23917902) · [映射](docs/economic-constitution-map.json) · [复现](docs/economic-constitution-reproduction.md)
+- [资本主义的结构总定理](https://h0mework.wiki/papers/capital-formation/) · [v1](https://doi.org/10.5281/zenodo.23927949) · [映射](docs/capital-formation-map.json) · [复现](docs/capital-formation-reproduction.md)
 
 </details>
 <!-- END PAPERS -->
@@ -105,6 +106,7 @@ make check-first-release-full                 # 完整验收
 | 整账会计 | 整账结构、债务结算与不可伪造的结算 | [WholeLedgerAccountingY1](Lean/H0mework/Papers/WholeLedgerAccountingY1.lean) |
 | 典范社会 | 主体生成、非空根法、真实退出、同发生续生及完整经济责任链 | [GeneratedSocietyMInfinity](Lean/H0mework/Papers/GeneratedSocietyMInfinity.lean) · [选集与验收](docs/generated-society-readiness.md) |
 | 可能性的经济宪法 | 经济制度论证采用的资本、公共生产、公共功能与公共规划接口 | [EconomicConstitutionSourceDF](Lean/H0mework/Papers/EconomicConstitutionSourceDF.lean) · [选集与验收](docs/economic-constitution-readiness.md) |
+| 资本主义的结构总定理 | 全形态刻画、任意执行的公共替代、连续创新、共同清算与实际历史承接 | [EconomicConstitutionSourceDF](Lean/H0mework/Papers/EconomicConstitutionSourceDF.lean) · [本稿映射与验收](docs/capital-formation-readiness.md) |
 | 动态观察 | 计数观察、版本证明与压缩的精确代价 | [ObservationDynamics](Lean/H0mework/Papers/ObservationDynamics.lean) |
 
 ## 仓库地图

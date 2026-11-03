@@ -1,5 +1,7 @@
 # 证据对应表
 
+《资本主义的结构总定理》的18项结果沿[逐结果映射](capital-formation-map.json)定位既有SourceDF证明、实际消费者、160项完整类型观测与五份辅助源码；[公共复现](capital-formation-reproduction.md)和[本稿就绪状态](capital-formation-readiness.md)分别保存复现命令与准确复用范围。
+
 社会稿G0–G27、G2a及所用独立接口由[社会映射](generated-society-map.json)登记，七包与1012项完整类型验收见[准备状态](generated-society-readiness.md)。经济宪法ECN1–ECN8的形式支撑与结果1–8见[经济映射](economic-constitution-map.json)，十六包与3313项完整类型验收见[准备状态](economic-constitution-readiness.md)；规范原则保留本篇独立论证。当前v2成品与DOI见[发布清单](../papers/society-economic/2026-11-03-v2/manifest.json)，[v1](../papers/society-economic/2026-11-03/manifest.json)保留原文件；v2未改变固定证明与认证身份。
 
 两篇首发修订以[首发映射](first-release-map.json)登记生产声明、消费者和验证身份，命令见[首发复现指南](first-release-reproduction.md)。本页保存原八稿与历史选集对应。

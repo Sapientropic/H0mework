@@ -35,7 +35,7 @@ const historical = allReleases.filter((release) => !current.has(release.id));
           <li>
             <span class="meta">{release.date}</span>
             <span class="papers">{release.papers.map((paper) => <a href={paper.href}>{paper.title}</a>)}</span>
-            <a class="guide" href={repoLink(release.guide, undefined, release.sourceCommit)}>{t.guide}</a>
+            <a class="guide" href={repoLink(release.guide, undefined, release.documentationCommit ?? release.sourceCommit)}>{t.guide}</a>
           </li>
         ))}
       </ul>
@@ -48,7 +48,7 @@ const historical = allReleases.filter((release) => !current.has(release.id));
                 <div class="version-links">
                   <span>{release.label[lang]} · {release.date}</span>
                   {release.papers.map((paper) => <a href={paper.href}>{paper.title}</a>)}
-                  <a href={repoLink(release.guide, undefined, release.sourceCommit)}>{t.guide}</a>
+                  <a href={repoLink(release.guide, undefined, release.documentationCommit ?? release.sourceCommit)}>{t.guide}</a>
                 </div>
                 <CheckCommands lang={lang} checks={[{ label: "", command: release.check }]} />
               </li>

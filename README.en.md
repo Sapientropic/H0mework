@@ -3,7 +3,7 @@
 <p align="center">
   <a href="https://github.com/Sapientropic/H0mework/actions/workflows/ci.yml"><img alt="CI" src="https://img.shields.io/github/actions/workflow/status/Sapientropic/H0mework/ci.yml?branch=main&style=flat-square&label=CI"></a>
   <a href="https://h0mework.wiki/en/"><img alt="Site h0mework.wiki" src="https://img.shields.io/badge/site-h0mework.wiki-b3372c?style=flat-square"></a>
-  <a href="#papers"><img alt="8 papers on Zenodo" src="https://img.shields.io/badge/Zenodo-8%20papers-3c679f?style=flat-square"></a>
+  <a href="#papers"><img alt="9 papers on Zenodo" src="https://img.shields.io/badge/Zenodo-9%20papers-3c679f?style=flat-square"></a>
   <a href="LICENSE"><img alt="Apache-2.0" src="https://img.shields.io/badge/license-Apache--2.0-3a332b?style=flat-square"></a>
 </p>
 
@@ -29,7 +29,7 @@ Lean 4 proofs, reproduction programs and frozen evidence behind a family of rese
 <!-- BEGIN PAPERS -->
 **[Browse all papers on the site, with abstracts and claim-level proofs →](https://h0mework.wiki/en/papers/)**
 
-Latest: [An Economic Constitution of Possibility](https://h0mework.wiki/en/papers/economic-constitution/) · [The Canonical Society Theorem](https://h0mework.wiki/en/papers/generated-society/)
+Latest: [The Structural Theorem of Capitalism](https://h0mework.wiki/en/papers/capital-formation/) · [An Economic Constitution of Possibility](https://h0mework.wiki/en/papers/economic-constitution/)
 
 <details>
 <summary><strong>Preface</strong> · 1 paper</summary>
@@ -62,10 +62,11 @@ Latest: [An Economic Constitution of Possibility](https://h0mework.wiki/en/paper
 </details>
 
 <details>
-<summary><strong>Mind & society</strong> · 2 papers</summary>
+<summary><strong>Mind & society</strong> · 3 papers</summary>
 
 - [The Canonical Society Theorem](https://h0mework.wiki/en/papers/generated-society/) · [v2](https://doi.org/10.5281/zenodo.23917896) · [Map](docs/generated-society-map.json) · [Reproduce](docs/generated-society-reproduction.md)
 - [An Economic Constitution of Possibility](https://h0mework.wiki/en/papers/economic-constitution/) · [v2](https://doi.org/10.5281/zenodo.23917902) · [Map](docs/economic-constitution-map.json) · [Reproduce](docs/economic-constitution-reproduction.md)
+- [The Structural Theorem of Capitalism](https://h0mework.wiki/en/papers/capital-formation/) · [v1](https://doi.org/10.5281/zenodo.23927949) · [Map](docs/capital-formation-map.json) · [Reproduce](docs/capital-formation-reproduction.md)
 
 </details>
 <!-- END PAPERS -->
@@ -105,6 +106,7 @@ The [reproduction guide](docs/first-release-reproduction.md) describes scope and
 | Whole-ledger accounting | Whole-ledger structures, debt settlement and unforgeable settlement | [WholeLedgerAccountingY1](Lean/H0mework/Papers/WholeLedgerAccountingY1.lean) |
 | Canonical society | Generated actors, nonempty root-law completion, actionable exit and same-occurrence regeneration | [GeneratedSocietyMInfinity](Lean/H0mework/Papers/GeneratedSocietyMInfinity.lean) · [Selection and acceptance](docs/generated-society-readiness.md) |
 | Economic constitution of possibility | Capital, public production, public functions and planning interfaces adopted by the institutional argument | [EconomicConstitutionSourceDF](Lean/H0mework/Papers/EconomicConstitutionSourceDF.lean) · [Selection and acceptance](docs/economic-constitution-readiness.md) |
+| Structural theorem of capitalism | Full structural characterization, public replay of arbitrary executions, continuing innovation, joint settlement and actual history | [EconomicConstitutionSourceDF](Lean/H0mework/Papers/EconomicConstitutionSourceDF.lean) · [Paper mapping and acceptance](docs/capital-formation-readiness.md) |
 | Observation dynamics | Counted observation, versioned proofs and the exact cost of compression | [ObservationDynamics](Lean/H0mework/Papers/ObservationDynamics.lean) |
 
 ## Repository map

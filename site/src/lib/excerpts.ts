@@ -163,6 +163,8 @@ export function excerptsOf(release: ReleaseId, slug: string, lang: Lang, locatio
   // This paper numbers its adopted formal results 1–8; its principles are quoted as passages.
   if (slug === "economic-constitution" && location)
     cited.push(...[...location.matchAll(/结果\s*(\d+)(?![\d.])/g)].map((match) => ({ number: match[1], parts: null })));
+  if (slug === "capital-formation" && location)
+    cited.push(...[...location.matchAll(/(?:定理|命题)\s*(\d+)(?![\d.])/g)].map((match) => ({ number: match[1], parts: null })));
   const passages = (more.passages ?? []).flatMap((opening) => passageOf(release, slug, lang, opening) ?? []);
   if (cited.length > 0 || passages.length > 0) {
     const seen = new Set<string>();
