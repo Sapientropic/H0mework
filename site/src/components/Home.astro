@@ -44,7 +44,7 @@ const latest = [...papers]
             ) : (
               <span class="card-art" aria-hidden="true"><span class="punch-card"><ClaimTape rows={paper.claims} lang={lang} grouped={false} /></span></span>
             )}
-            <span class="meta">{[paper.series?.[lang], paper.editions.length > 1 ? fill(t.edition, paper.current.number) : null, paper.current.date].filter(Boolean).join(" · ")}</span>
+            <span class="meta">{[paper.series?.[lang], paper.current.date].filter(Boolean).join(" · ")}</span>
             <span class="t vt-title" style={`view-transition-name:${vtTitle(paper.slug)}`}>{paper.main}</span>
             {paper.sub && <span class="sub">{paper.sub}</span>}
             <span class="st"><b>{paper.stats.claims}</b>{t.statClaims} · <b>{paper.stats.modules}</b>{t.statModules}</span>

@@ -4,7 +4,7 @@
 // and fill as they condense. A panel beside the forest describes the node under the pointer.
 import { ORDERED, THEMES, paperOf, statsOf, type Lang } from "../lib/papers";
 import { UPCOMING } from "../lib/registry";
-import { T, fill, paperHref, papersHref } from "../lib/i18n";
+import { T, paperHref, papersHref } from "../lib/i18n";
 
 interface Props { lang: Lang }
 const { lang } = Astro.props;
@@ -20,7 +20,7 @@ const card = (slug: string, fallback: string) => {
     href: paperHref(lang, slug),
     title: paper.main,
     sub: paper.sub,
-    meta: [paper.series?.[lang] ?? fallback, paper.editions.length > 1 ? fill(t.edition, paper.current.number) : null, paper.current.date].filter(Boolean).join(" · "),
+    meta: [paper.series?.[lang] ?? fallback, paper.current.date].filter(Boolean).join(" · "),
     stats: `${stats.claims} ${t.statClaims} · ${stats.modules} ${t.statModules}`,
   };
 };

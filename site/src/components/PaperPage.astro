@@ -34,7 +34,6 @@ const related = [
   { heading: t.cites, papers: citesOf(slug).map(linkOf) },
   { heading: t.citedBy, papers: citedByOf(slug).map(linkOf) },
 ].filter((group) => group.papers.length > 0);
-const checks = paper.editions.map((edition) => ({ label: paper.editions.length > 1 ? fill(t.edition, edition.number) : "", command: edition.check, guide: edition.guide }));
 
 // In a long list a divider opens each chapter the list enters; a short list reads without them.
 const grouped = claims.length >= 12;
@@ -50,7 +49,7 @@ const chapterLabel = (key: string) => (/\d/.test(key) ? fill(t.chapter, key) : f
 <Base lang={lang} title={paper.title} alternate={paperHref(lang === "zh" ? "en" : "zh", slug)} description={paper.summary} ogImage={paper.figure ? `/og/${paper.figure.name}.png` : undefined}>
   <div class="wrap">
     <header class="hero">
-      <p class="eyebrow"><a href={place.href}>{place.label}</a>{[paper.editions.length > 1 ? fill(t.edition, latest.number) : null, latest.date].filter(Boolean).map((part) => ` · ${part}`)}</p>
+      <p class="eyebrow"><a href={place.href}>{place.label}</a>{` · ${latest.date}`}</p>
       <h1 class="prose vt-title" style={`view-transition-name:${vtTitle(slug)}`}>{paper.main}</h1>
       {paper.sub && <p class="title-sub prose">{paper.sub}</p>}
       {paper.other && <p class="other prose">{paper.other}</p>}
@@ -60,14 +59,6 @@ const chapterLabel = (key: string) => (/\d/.test(key) ? fill(t.chapter, key) : f
         {latest.arxiv && <a class="button" href={latest.arxiv}>{t.arxiv}</a>}
         <a class="doi" href={latest.doiLink}>DOI {latest.doi}</a>
       </div>
-      {earlier.length > 0 && (
-        <p class="editions">
-          {t.earlier}{sep}
-          {earlier.map((edition) => (
-            <span>{fill(t.edition, edition.number)} · {edition.date} · <a href={edition.pdf}>PDF</a> · <a href={edition.doiLink}>DOI {edition.doi}</a></span>
-          ))}
-        </p>
-      )}
       <ul class="stats">
         <li><b>{stats.claims}</b>{t.statClaims}</li>
         <li><b>{stats.modules}</b>{t.statModules}</li>
@@ -92,7 +83,7 @@ const chapterLabel = (key: string) => (/\d/.test(key) ? fill(t.chapter, key) : f
     </section>
     <section class="section" id="claims">
       <h2>{t.claims}</h2>
-      <p class="note prose">{paper.claimsNote ?? t.claimsNote}{paper.editions.length > 1 && (lang === "zh" ? t.claimsNoteEditions : ` ${t.claimsNoteEditions}`)}{translated && fill(t.translatedNote, translated)}</p>
+      <p class="note prose">{paper.claimsNote ?? t.claimsNote}{translated && fill(t.translatedNote, translated)}</p>
       <ClaimTape rows={claims} lang={lang} featured={featured} link grouped={grouped} />
       <p class="tape-key" aria-hidden="true">
         <span><i class="hole" />{t.keyLean}</span>
@@ -113,7 +104,6 @@ const chapterLabel = (key: string) => (/\d/.test(key) ? fill(t.chapter, key) : f
                     <span set:html={renderClaimTitle(item.claim.title)} />
                     {item.claim.category === "interface" && <span class="tag later">{t.keyInterface}</span>}
                     {item.claim.category === "principle" && <span class="tag later">{t.principle}</span>}
-                    {item.claim.edition > 1 && <span class="tag later">{fill(t.edition, item.claim.edition)}</span>}
                     {item.claim.key === featured && <span class="tag">{t.figure}</span>}
                   </span>
                   <span class="where" title={item.claim.location ?? undefined}>{item.claim.section}</span>
@@ -200,8 +190,27 @@ const chapterLabel = (key: string) => (/\d/.test(key) ? fill(t.chapter, key) : f
       <div class="prose">
         <h2>{t.check}</h2>
         <p>{t.checkPaper}</p>
-        <CheckCommands lang={lang} checks={checks} />
-        <p>{t.checkMore}{checks.map((check, i) => <>{i > 0 && (lang === "zh" ? "、" : ", ")}<a href={check.guide}>{t.guide}{check.label && (lang === "zh" ? `（${check.label}）` : ` (${check.label})`)}</a></>)}</p>
+        <CheckCommands lang={lang} checks={[{ label: "", command: latest.check }]} />
+        <p>{t.checkMore}<a href={latest.guide}>{t.guide}</a></p>
+        {earlier.length > 0 && (
+          <details class="version-history">
+            <summary>{t.versions}</summary>
+            <ul class="version-list">
+              {[latest, ...earlier].map((edition) => (
+                <li>
+                  <div class="version-links">
+                    <span>{fill(t.edition, edition.number)} · {edition.date}</span>
+                    <a href={edition.pdf}>PDF</a>
+                    {edition.supplement && <a href={edition.supplement}>{t.supplement}</a>}
+                    <a href={edition.doiLink}>DOI {edition.doi}</a>
+                    <a href={edition.guide}>{t.guide}</a>
+                  </div>
+                  <CheckCommands lang={lang} checks={[{ label: "", command: edition.check }]} />
+                </li>
+              ))}
+            </ul>
+          </details>
+        )}
       </div>
     </section>
     {related.length > 0 && (

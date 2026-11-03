@@ -5,14 +5,18 @@ import { ORDERED, paperOf, type Lang } from "../lib/papers";
 import { RELEASES, repoLink, type ReleaseId } from "../lib/registry";
 import { T, paperHref } from "../lib/i18n";
 
-// The entry checks of every release, and which papers each release carries.
+// Current papers lead; superseded releases remain available in the collapsed history.
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const t = T[lang];
-const releases = (Object.keys(RELEASES) as ReleaseId[]).map((id) => ({
+const current = new Set(ORDERED.map((entry) => entry.editions.at(-1)!.release));
+const allReleases = (Object.keys(RELEASES) as ReleaseId[]).map((id) => ({
+  id,
   ...RELEASES[id],
-  papers: ORDERED.filter((entry) => entry.editions.some((edition) => edition.release === id)).map((entry) => ({ href: paperHref(lang, entry.slug), title: paperOf(entry.slug, lang).main })),
+  papers: ORDERED.filter((entry) => current.has(id) ? entry.editions.at(-1)!.release === id : entry.editions.some((edition) => edition.release === id)).map((entry) => ({ href: paperHref(lang, entry.slug), title: paperOf(entry.slug, lang).main })),
 }));
+const releases = allReleases.filter((release) => current.has(release.id));
+const historical = allReleases.filter((release) => !current.has(release.id));
 ---
 <Base lang={lang} title={`${t.check} · ${t.site}`} alternate={lang === "zh" ? "/en/check/" : "/check/"}>
   <div class="wrap">
@@ -21,7 +25,7 @@ const releases = (Object.keys(RELEASES) as ReleaseId[]).map((id) => ({
       <p class="lede">{t.checkNote}</p>
     </section>
     <div class="prose">
-      <CheckCommands lang={lang} checks={releases.map((release) => ({ label: release.label[lang], command: release.check }))} />
+      <CheckCommands lang={lang} checks={releases.map((release) => ({ label: release.papers.map((paper) => paper.title).join(" · "), command: release.check }))} />
       <p>{t.checkHome}</p>
     </div>
     <section class="section prose">
@@ -29,12 +33,29 @@ const releases = (Object.keys(RELEASES) as ReleaseId[]).map((id) => ({
       <ul class="release-list">
         {releases.map((release) => (
           <li>
-            <span class="meta"><b>{release.label[lang]}</b>{release.date}</span>
+            <span class="meta">{release.date}</span>
             <span class="papers">{release.papers.map((paper) => <a href={paper.href}>{paper.title}</a>)}</span>
             <a class="guide" href={repoLink(release.guide, undefined, release.sourceCommit)}>{t.guide}</a>
           </li>
         ))}
       </ul>
+      {historical.length > 0 && (
+        <details class="version-history">
+          <summary>{t.versions}</summary>
+          <ul class="version-list">
+            {historical.map((release) => (
+              <li>
+                <div class="version-links">
+                  <span>{release.label[lang]} · {release.date}</span>
+                  {release.papers.map((paper) => <a href={paper.href}>{paper.title}</a>)}
+                  <a href={repoLink(release.guide, undefined, release.sourceCommit)}>{t.guide}</a>
+                </div>
+                <CheckCommands lang={lang} checks={[{ label: "", command: release.check }]} />
+              </li>
+            ))}
+          </ul>
+        </details>
+      )}
     </section>
   </div>
 </Base>

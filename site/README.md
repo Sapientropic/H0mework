@@ -2,6 +2,8 @@
 
 把仓库里的论文、逐主张映射和 Lean 声明做成可浏览的站点。所有页面在构建时直接读取 `../papers`、`../docs/*-map.json` 与映射指向的 Lean 文件，不复制、不转写任何主张。
 
+阅读入口默认使用最新稿和当前复现命令，主张与目录不重复标版本号。论文页底部的“版本信息”默认折叠，保留各版下载、DOI与对应复现；检查总页同样先列当前论文，再折叠历史发布。
+
 ```bash
 bun install
 bun run build      # 先跑图的模型自检与构建，再出 dist/
@@ -22,7 +24,7 @@ bun run build      # 先跑图的模型自检与构建，再出 dist/
 - `src/components/Home.astro`（`/`）：留空的开场画框（创世框占位，只有一句话）、一句介绍与全局统计、论文森林、最近三篇的配图卡片，以及到全部论文的入口。
 - `src/components/Forest.astro`：首页的论文森林。朱红的 0 为根，每个主题一根枝，实心节点是已发布论文（链接），空心节点是 `registry.ts` 里 `UPCOMING` 登记的在写稿件（只登记各主题篇数，不写题目；`soon` 为已写成待发布）。旁边的面板随指针显示节点详情。入视口时生长一次；空心节点的虚线环慢转、核心反复凝聚，只在视口内运行；`prefers-reduced-motion` 下静止。
 - `src/components/PaperIndex.astro`（`/papers/`）：按主题分区的全部论文；桌面左侧主题导航随滚动标出当前主题，窄屏为吸顶 chips；行尾是迷你主张打孔带。
-- `src/components/CheckPage.astro`（`/check/`）：各次发布的入口检查命令，以及每次发布包含哪些论文与复现指南。
+- `src/components/CheckPage.astro`（`/check/`）：当前论文的入口检查命令与复现指南，旧发布折叠保存。
 - 跨页过渡：支持的浏览器在页面间用 View Transitions，论文标题与配图从卡片或目录行移到论文页的位置（`vtTitle`、`vtFigure` 命名）；不支持的浏览器照常跳转，`prefers-reduced-motion` 下关闭。
 - `figures/kit/`：取自 [anatomy](https://github.com/wheresryan22/anatomy)（MIT，commit `689dcf9`）的等轴测绘图核心。
 - `figures/<name>/`：一张图一个目录。`model.mjs` 是真值模型，`check.mjs` 用论文定理校验它，`build.mjs --fragment` 输出到 `src/generated/` 供页面挂载；不带参数时输出独立页到 `out/` 用于截图与线端检查。

@@ -4,7 +4,7 @@ import ClaimTape from "./ClaimTape.astro";
 import Thumb from "./Thumb.astro";
 import { ORDERED, THEMES, paperOf, statsOf, vtFigure, vtTitle, type Lang } from "../lib/papers";
 import { claimsOf } from "../lib/claims";
-import { T, fill, paperHref } from "../lib/i18n";
+import { T, paperHref } from "../lib/i18n";
 
 // Every paper, grouped by theme: a sticky theme list beside the rows on wide screens, chips on narrow ones.
 interface Props { lang: Lang }
@@ -32,7 +32,7 @@ const themes = THEMES.map((theme) => ({ ...theme, papers: papers.filter((paper) 
               {theme.papers.map((paper) => (
                 <a class="idx-row" href={paperHref(lang, paper.slug)}>
                   <span class="info">
-                    <span class="meta">{[paper.series?.[lang], paper.editions.length > 1 ? fill(t.edition, paper.current.number) : null, paper.current.date].filter(Boolean).join(" · ")}</span>
+                    <span class="meta">{[paper.series?.[lang], paper.current.date].filter(Boolean).join(" · ")}</span>
                     <span class="t vt-title" style={`view-transition-name:${vtTitle(paper.slug)}`}>{paper.main}</span>
                     {paper.sub && <span class="sub">{paper.sub}</span>}
                     <span class="st"><b>{paper.stats.claims}</b>{t.statClaims} · <b>{paper.stats.modules}</b>{t.statModules}</span>

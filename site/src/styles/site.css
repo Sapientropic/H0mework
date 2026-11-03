@@ -62,10 +62,14 @@ h2 .count { margin-left: 10px; font: 13px/1 var(--mono); color: var(--muted); ve
 .stats .ok { color: #2f7d4f; }
 .stats .ok a { color: inherit; text-decoration: none; }
 .stats .ok a:hover { text-decoration: underline; text-decoration-color: currentColor; }
-.editions { margin: 14px 0 0; font-size: 13.5px; color: var(--muted); }
-.editions span + span::before { content: " · "; }
-.editions a { color: var(--muted); }
-.editions a:hover { color: var(--ink); }
+.version-history { margin-top: 24px; font-size: 13.5px; color: var(--muted); }
+.version-history > summary { cursor: pointer; }
+.version-list { list-style: none; margin: 12px 0 0; padding: 0; }
+.version-list > li { padding: 16px 0; border-top: 1px solid var(--rule); }
+.version-links { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: baseline; }
+.version-links > span { width: 100%; }
+.version-links a { color: var(--muted); }
+.version-links a:hover { color: var(--ink); }
 
 .figure-slot { margin: 40px 0 0; }
 .figure-slot .iso-figure { margin: 0; }
