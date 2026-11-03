@@ -254,7 +254,7 @@ h2 .count { margin-left: 10px; font: 13px/1 var(--mono); color: var(--muted); ve
 .seed { padding-right: 6px; font: 600 40px/1 var(--mono); color: var(--cinnabar); text-align: right; }
 a.seed { text-decoration: none; border-radius: 4px; outline: none; }
 a.seed:hover, a.seed.on, a.seed:focus-visible { color: #a62a22; }
-.fan { display: block; overflow: visible; }
+.fan { display: block; width: 100%; overflow: visible; }
 .fan path { fill: none; stroke: var(--rule); stroke-width: 1; }
 .trees { margin: 0; padding: 0; list-style: none; }
 .tree { position: relative; height: var(--row); }
@@ -274,9 +274,12 @@ a.seed:hover, a.seed.on, a.seed:focus-visible { color: #a62a22; }
 .node.up.soon::before { background: repeating-conic-gradient(var(--text) 0 31deg, transparent 31deg 36deg); }
 .node.up.soon::after { opacity: .5; transform: scale(.8); }
 .node.up.on { box-shadow: 0 0 0 2px var(--page), 0 0 0 3.5px var(--rule); }
+.node.reserved { border: 1px dotted var(--muted); background: var(--page); }
+.node.reserved.on { box-shadow: 0 0 0 2px var(--page), 0 0 0 3.5px var(--rule); }
 .forest-panel { min-height: 148px; padding: 20px 22px; background: var(--paper); box-shadow: 0 0 0 1px var(--rule); }
 .forest-panel .legend { display: flex; align-items: center; gap: 12px; margin: 0 0 10px; font-size: 13.5px; line-height: 1.5; color: var(--text); }
 .forest-panel .totals { margin: 14px 0 0; padding-top: 12px; border-top: 1px solid var(--soft); font: 12px/1.5 var(--mono); color: var(--muted); }
+.forest-panel .reserve-total { margin: 6px 0 0; font: 12px/1.5 var(--mono); color: var(--muted); }
 .forest-panel .detail { display: flex; flex-direction: column; gap: 3px; }
 .forest-panel .detail[hidden], .forest-panel .idle[hidden] { display: none; }
 .forest-panel .t { font-family: var(--serif); font-size: 18px; font-weight: 600; line-height: 1.4; color: var(--ink); }
@@ -408,5 +411,9 @@ footer.site { margin: 96px 0 0; padding: 32px 0 56px; border-top: 1px solid var(
   .claims > .chapter .n { width: auto; }
   .pager { grid-template-columns: 1fr; }
   .pager .next { text-align: left; align-items: flex-start; }
+}
+@media (max-width: 380px) {
+  /* Keep full labels and all nodes visible; compress only the fan's horizontal span. */
+  .grove { grid-template-columns: 26px 20px minmax(0, 1fr); }
 }
 html[lang="zh-CN"] .eyebrow { letter-spacing: .05em; }

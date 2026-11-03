@@ -11,7 +11,7 @@ const { lang } = Astro.props;
 const t = T[lang];
 const ROW = 46; // row height in px; the branch line sits LINE px below a row's top
 const LINE = 30;
-const FAN = 80; // width of the fan of branches from the 0, drawn 1:1
+const FAN = 80;
 let phase = 0;
 const card = (slug: string, fallback: string) => {
   const paper = paperOf(slug, lang);
@@ -29,14 +29,15 @@ const preface = ORDERED.find((entry) => entry.theme === "preface");
 const root = preface && card(preface.slug, THEMES.find((theme) => theme.id === "preface")!.label[lang]);
 const rows = THEMES.filter((theme) => theme.id !== "preface").map((theme) => {
   const published = ORDERED.filter((entry) => entry.theme === theme.id).map((entry) => card(entry.slug, theme.label[lang]));
-  const upcoming = UPCOMING[theme.id] ?? { count: 0 };
+  const upcoming = UPCOMING[theme.id] ?? { count: 0, reserved: 0 };
   // Written papers sit next to the published ones; each hollow node starts its cycle at its own phase.
   const hollow = Array.from({ length: upcoming.count }, (_, i) => ({ soon: i < (upcoming.soon ?? 0), phase: (phase++ * 0.618) % 1 }));
-  return { ...theme, published, hollow };
-}).filter((row) => row.published.length + row.hollow.length > 0);
+  const reserved = Array.from({ length: upcoming.reserved });
+  return { ...theme, published, hollow, reserved };
+}).filter((row) => row.published.length + row.hollow.length + row.reserved.length > 0);
 const height = rows.length * ROW;
-const counted = (template: string, n: number, m: number) => template.replace("{n}", String(n)).replace("{m}", String(m));
-const totals = { published: rows.reduce((n, row) => n + row.published.length, root ? 1 : 0), hollow: rows.reduce((n, row) => n + row.hollow.length, 0) };
+const counted = (template: string, n: number, m: number, r = 0) => template.replace("{n}", String(n)).replace("{m}", String(m)).replace("{t}", String(n + m)).replace("{r}", String(r));
+const totals = { published: rows.reduce((n, row) => n + row.published.length, root ? 1 : 0), hollow: rows.reduce((n, row) => n + row.hollow.length, 0), reserved: rows.reduce((n, row) => n + row.reserved.length, 0) };
 ---
 <section class="section" id="forest">
   <h2>{t.forest}</h2>
@@ -47,7 +48,7 @@ const totals = { published: rows.reduce((n, row) => n + row.published.length, ro
       ) : (
         <span class="seed" aria-hidden="true">0</span>
       )}
-      <svg class="fan" viewBox={`0 0 ${FAN} ${height}`} width={FAN} height={height} aria-hidden="true">
+      <svg class="fan" viewBox={`0 0 ${FAN} ${height}`} width={FAN} height={height} preserveAspectRatio="none" aria-hidden="true">
         {rows.map((_, i) => <path d={`M0 ${height / 2} C${FAN / 2} ${height / 2} ${FAN / 2} ${i * ROW + LINE} ${FAN} ${i * ROW + LINE}`} pathLength="1" style={`--i:${i}`} />)}
       </svg>
       <ol class="trees">
@@ -55,7 +56,7 @@ const totals = { published: rows.reduce((n, row) => n + row.published.length, ro
           <li class="tree" style={`--i:${i}`}>
             <span class="tree-name">
               {row.published.length > 0 ? <a href={`${papersHref(lang)}#theme-${row.id}`}>{row.label[lang]}</a> : row.label[lang]}
-              <span class="tree-count">{row.published.length}/{row.published.length + row.hollow.length}{row.hollow.length > 0 && "+"}</span>
+              <span class="tree-count" title={t.forestCount}>{row.published.length}/{row.published.length + row.hollow.length}{row.reserved.length > 0 && ` · ${counted(t.reservedShort, 0, 0, row.reserved.length)}`}</span>
             </span>
             <span class="branch">
               {row.published.map((paper, j) => (
@@ -64,8 +65,11 @@ const totals = { published: rows.reduce((n, row) => n + row.published.length, ro
               {row.hollow.map((node, j) => (
                 <span class={`node up${node.soon ? " soon" : ""}`} aria-hidden="true" style={`--j:${row.published.length + j};--p:${node.phase.toFixed(3)}`} data-meta={row.label[lang]} data-title={node.soon ? t.nodeSoon : t.nodeUpcoming} />
               ))}
+              {row.reserved.map((_, j) => (
+                <span class="node reserved" aria-hidden="true" style={`--j:${row.published.length + row.hollow.length + j}`} data-meta={row.label[lang]} data-title={t.nodeReserved} />
+              ))}
             </span>
-            <span class="sr-only">{counted(t.forestRow, row.published.length, row.hollow.length)}</span>
+            <span class="sr-only">{counted(t.forestRow, row.published.length, row.hollow.length)}{row.reserved.length > 0 && ` · ${counted(t.forestReserved, 0, 0, row.reserved.length)}`}</span>
           </li>
         ))}
       </ol>
@@ -73,9 +77,11 @@ const totals = { published: rows.reduce((n, row) => n + row.published.length, ro
     <aside class="forest-panel" aria-hidden="true">
       <div class="idle">
         <p class="legend"><span class="node pub" />{t.legendPublished}</p>
-        <p class="legend"><span class="node up soon" />{t.legendSoon}</p>
+        {rows.some((row) => row.hollow.some((node) => node.soon)) && <p class="legend"><span class="node up soon" />{t.legendSoon}</p>}
         <p class="legend"><span class="node up" />{t.legendUpcoming}</p>
+        {totals.reserved > 0 && <p class="legend"><span class="node reserved" />{t.legendReserved}</p>}
         <p class="totals">{counted(t.forestTotals, totals.published, totals.hollow)}</p>
+        {totals.reserved > 0 && <p class="reserve-total">{counted(t.forestReserved, 0, 0, totals.reserved)}</p>}
       </div>
       <div class="detail" hidden>
         <span class="meta" />
@@ -112,7 +118,7 @@ const totals = { published: rows.reduce((n, row) => n + row.published.length, ro
       idle.hidden = Boolean(node);
       detail.hidden = !node;
       if (node) keys.forEach((key, i) => (fields[i].textContent = node.dataset[key] ?? ""));
-      detail.classList.toggle("pending", Boolean(node?.classList.contains("up")));
+      detail.classList.toggle("pending", Boolean(node?.classList.contains("up") || node?.classList.contains("reserved")));
     };
     forest.querySelectorAll<HTMLElement>(".grove .node, .grove .seed[data-title]").forEach((node) => {
       node.addEventListener("pointerenter", () => show(node));

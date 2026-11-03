@@ -4,12 +4,11 @@ import { existsSync, readFileSync } from "node:fs";
 import { createHash } from "node:crypto";
 import { resolve } from "node:path";
 import { claimsOf, fingerprint, leanPaths, sourcesOf, translationsOf } from "../src/lib/claims";
-import { PAPERS, RELEASES, ROOT, UPCOMING, entryOf, mapOf, manuscriptOf, readJson, supplementOf } from "../src/lib/registry";
+import { PAPERS, RELEASES, ROOT, entryOf, mapOf, manuscriptOf, readJson, supplementOf } from "../src/lib/registry";
 import { paperOf, statsOf } from "../src/lib/papers";
 
 const commit = "2d6fbc96e33b7c4c3cfd91104fda74e3caeda045";
 assert.equal(PAPERS.length, 9);
-assert.equal(UPCOMING.mind?.count, 0);
 for (const slug of ["generated-society", "economic-constitution"] as const) {
   const entry = entryOf(slug), current = entry.editions.at(-1)!;
   const release = RELEASES[current.release], map = mapOf(current.release);

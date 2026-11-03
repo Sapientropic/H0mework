@@ -191,35 +191,16 @@ export const RELEASES: Record<ReleaseId, Release> = {
 };
 
 type Edition = { release: ReleaseId; doi: string };
-export type ThemeId = "preface" | "core" | "computation" | "physics" | "low-energy" | "math" | "chemistry" | "metrology" | "life" | "mind";
+export type ThemeId = "preface" | "core" | "computation" | "physics" | "low-energy" | "math" | "chemistry" | "energy" | "metrology" | "life" | "mind" | "society";
+export const PAPER_PLAN = readJson<{
+  asOf: string;
+  source: string;
+  registeredPapers: number;
+  resultTriggeredSlots: number;
+  themes: { id: ThemeId; label: Record<Lang, string>; registered: number; reserved?: number; soon?: number }[];
+}>("site/src/data/paper-plan.json");
 // Home groups the index by these themes, in this order; a paper's theme lives on its PAPERS entry.
-export const THEMES: { id: ThemeId; label: Record<Lang, string> }[] = [
-  // The preface opens the series; the home forest draws it as the root, not as a branch.
-  { id: "preface", label: { zh: "总序", en: "Preface" } },
-  { id: "core", label: { zh: "核心方法", en: "Core methods" } },
-  { id: "computation", label: { zh: "计算与博弈", en: "Computation & games" } },
-  { id: "physics", label: { zh: "物理", en: "Physics" } },
-  { id: "low-energy", label: { zh: "低能系列", en: "Low-energy series" } },
-  { id: "math", label: { zh: "数学", en: "Mathematics" } },
-  { id: "chemistry", label: { zh: "化学与材料", en: "Chemistry & materials" } },
-  { id: "metrology", label: { zh: "计量与仪器", en: "Metrology & instruments" } },
-  { id: "life", label: { zh: "生命与神经", en: "Life & neuroscience" } },
-  { id: "mind", label: { zh: "心智与社会", en: "Mind & society" } },
-];
-// Papers in preparation, by theme, drawn as hollow nodes in the home forest. Counts only: a title is
-// published with its paper. `soon` of them are written and await release. A released paper moves to
-// PAPERS and leaves this count. A series can grow, so the page shows these counts as lower bounds.
-export const UPCOMING: Partial<Record<ThemeId, { count: number; soon?: number }>> = {
-  core: { count: 2 },
-  computation: { count: 2 },
-  physics: { count: 1 },
-  "low-energy": { count: 5 },
-  math: { count: 6 },
-  chemistry: { count: 4 },
-  metrology: { count: 3 },
-  life: { count: 3 },
-  mind: { count: 0 },
-};
+export const THEMES = PAPER_PLAN.themes.map(({ id, label }) => ({ id, label }));
 export type PaperEntry = {
   slug: string;
   theme: ThemeId;
@@ -276,7 +257,7 @@ export const PAPERS: PaperEntry[] = [
   },
   {
     slug: "generated-society",
-    theme: "mind",
+    theme: "society",
     editions: [
       { release: "generated-society", doi: societyPaper("generated-society").doi },
       { release: "generated-society-v2", doi: societyPaper("generated-society", "v2").doi },
@@ -285,7 +266,7 @@ export const PAPERS: PaperEntry[] = [
   },
   {
     slug: "economic-constitution",
-    theme: "mind",
+    theme: "society",
     editions: [
       { release: "economic-constitution", doi: societyPaper("economic-constitution").doi },
       { release: "economic-constitution-v2", doi: societyPaper("economic-constitution", "v2").doi },
@@ -294,10 +275,20 @@ export const PAPERS: PaperEntry[] = [
   },
   {
     slug: "capital-formation",
-    theme: "mind",
+    theme: "society",
     editions: [{ release: "capital-formation", doi: capitalPaper().doi }],
   },
 ];
+
+// The inventory counts registered papers, including published ones. A release automatically leaves
+// the preparation count. Reserved result-dependent slots have no brief and remain separate.
+export const UPCOMING: Partial<Record<ThemeId, { count: number; reserved: number; soon?: number }>> = Object.fromEntries(
+  PAPER_PLAN.themes.map((theme) => [theme.id, {
+    count: theme.registered - PAPERS.filter((paper) => paper.theme === theme.id).length,
+    reserved: theme.reserved ?? 0,
+    soon: theme.soon,
+  }]),
+);
 
 export const entryOf = (slug: string) => {
   const entry = PAPERS.find((paper) => paper.slug === slug);

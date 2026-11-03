@@ -14,6 +14,7 @@ bun run build      # 先跑图的模型自检与构建，再出 dist/
 ## 结构
 
 - `src/lib/registry.ts`：发布了什么。`PAPERS` 是论文与各版 DOI，每条带 `theme`；`THEMES` 是论文目录的主题及顺序（`preface` 总序在首页森林里是根上的 0，不占一根枝）。`RELEASES` 说明每次发布的日期、映射、正文（目录或可编辑 ZIP）、PDF 与入口检查命令。
+- `src/data/paper-plan.json`：论文地图的分组与立题总数快照，只公开分组数量，不公开未发表题名。`THEMES`从此读取，`UPCOMING`以各组总数减去实际发表记录自动计算；结果触发席位单列`reserved`，不计入已立题或在写数。扩充论文地图时更新这份快照，默认构建检查分类唯一、数量非负、分组总和及发表／在写之和。
 - `src/lib/claims.ts`：把各发布映射的不同 schema 读成同一种主张行。第二版映射按发布选集的证明包成行。整账法按 `docs/whole-ledger-map.json` 成行，正文位置取自已发布可编辑包里的选集，Lean 声明经 `tools/export-map.json` 按源路径与源提交定位到公开模块。一比特按已发布选集成行，Lean 依据取其已验证的 H0 绑定。映射里的 `kernel: pending` 只表示公开包在 CI 中的重新验收，页面不把它当作状态。
 - 社会总定理与经济宪法直接沿各自已验收 map 的精确 owner，源码链接固定到证明提交；DOI 从发布 manifest 读取，正文和附录从可编辑 ZIP 读取。当前 v2 以 `replacesClaimsFrom` 接替 v1 的原文引用，两个版本的下载各保原文件，主张只显示一次。社会的 G10–G12 保留引用接口。经济的八项制度原则与八项采用的形式结果分别展示：空心点表示规范原则，其 Lean 形式支撑可展开核对。`bun scripts/check-society-economic.ts` 核对两版发布文件、v2双语原文、固定来源、唯一主张及分类。
 - 资本总定理按本稿的18项编号结果逐项展开，保留第10项为命题。`docs/capital-formation-map.json`从已发布编辑包的原来源绑定与实际原文派生；100个采用模块及63个额外直接消费者均沿同一固定验收闭包，160项既有完整类型观测单独计数，五份辅助原字节源码作为资源展示。新文档由`documentationCommit`链接当前发布版本，Lean源码继续固定到证明提交。`bun scripts/check-capital-formation.ts`核对双语原陈述、编号分类、实际链接及引用。
@@ -23,7 +24,7 @@ bun run build      # 先跑图的模型自检与构建，再出 dist/
 - `src/data/claims-<lang>.json`：登记原文不是页面语言时显示的译文（英文页译中文主张，中文页译以英文登记的主张），每条带所译原文的指纹；原文改动后构建告警并回退原文。`bun scripts/translations.ts --lang en|zh` 列出缺译与过期条目，`--merge <file>` 并入新译文。
 - `src/components/CheckCommands.astro`：入口检查命令块，右上角带复制按钮；剪贴板不可用时退化为全选文本。
 - `src/components/Home.astro`（`/`）：留空的开场画框（创世框占位，只有一句话）、一句介绍与全局统计、论文森林、最近三篇的配图卡片，以及到全部论文的入口。
-- `src/components/Forest.astro`：首页的论文森林。朱红的 0 为根，每个主题一根枝，实心节点是已发布论文（链接），空心节点是 `registry.ts` 里 `UPCOMING` 登记的在写稿件（只登记各主题篇数，不写题目；`soon` 为已写成待发布）。旁边的面板随指针显示节点详情。入视口时生长一次；空心节点的虚线环慢转、核心反复凝聚，只在视口内运行；`prefers-reduced-motion` 下静止。
+- `src/components/Forest.astro`：首页的论文森林。朱红的 0 为根，每个主题一根枝，实心节点是已发布论文（链接），空心节点是自动计算的在写稿件（不显示未发表题名；`soon`须有已完成成稿依据）。结果触发席位用独立点线空环表示，不混入在写数；分枝显示已发表／已立题及另列的预留数。旁边的面板随指针显示节点详情。入视口时生长一次；在写节点的虚线环慢转、核心反复凝聚，只在视口内运行；`prefers-reduced-motion` 下静止。
 - `src/components/PaperIndex.astro`（`/papers/`）：按主题分区的全部论文；桌面左侧主题导航随滚动标出当前主题，窄屏为吸顶 chips；行尾是迷你主张打孔带。
 - `src/components/CheckPage.astro`（`/check/`）：当前论文的入口检查命令与复现指南，旧发布折叠保存。
 - 跨页过渡：支持的浏览器在页面间用 View Transitions，论文标题与配图从卡片或目录行移到论文页的位置（`vtTitle`、`vtFigure` 命名）；不支持的浏览器照常跳转，`prefers-reduced-motion` 下关闭。
@@ -38,7 +39,7 @@ bun run build      # 先跑图的模型自检与构建，再出 dist/
 
 ## 新增论文
 
-1. 在 `PAPERS` 加一项，并从 `UPCOMING` 对应主题减一：slug、`theme`（`THEMES` 之一，新主题同时在 `THEMES` 登记双语名）、各版 `{ release, doi }`，系列稿可加 `series`。
+1. 在 `PAPERS` 加一项：slug、`theme`、各版 `{ release, doi }`，系列稿可加 `series`。已立题稿发表后自动离开在写计数，不手工改`UPCOMING`；新增立题或新主题先更新`paper-plan.json`的分组与总数。
 2. 新的发布目录在 `RELEASES` 登记（2026-10-17 起的发布在 `papers/<发布>/<日期>/` 放 Zenodo 上传的原字节文件，`manifest.json` 记 DOI 与每个文件的 SHA-256）；映射 schema 与已有发布不同时，在 `claims.ts` 的 `ADAPTERS` 加一个读取函数。
 3. 分别以 `--lang en`、`--lang zh` 运行 `bun scripts/translations.ts`，为列出的条目补译文后 `--merge`。
 4. 没有配图的论文在首页卡片里显示主张打孔卡；配图做好后在该项加 `figure`，并在 `scripts/og.mjs` 的 `FIGURES` 加同名条目，重截该论文的 og 图。

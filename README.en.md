@@ -47,7 +47,7 @@ Latest: [The Structural Theorem of Capitalism](https://h0mework.wiki/en/papers/c
 </details>
 
 <details>
-<summary><strong>Physics</strong> · 1 paper</summary>
+<summary><strong>Fields & dynamics</strong> · 1 paper</summary>
 
 - [We Found No Magic in This Mighty Universe](https://h0mework.wiki/en/papers/physics-common-source/) · [v2](https://doi.org/10.5281/zenodo.23297179) · [Map](docs/second-edition-map.json) · [Reproduce](docs/edition-reproduction.md)
 
@@ -62,7 +62,7 @@ Latest: [The Structural Theorem of Capitalism](https://h0mework.wiki/en/papers/c
 </details>
 
 <details>
-<summary><strong>Mind & society</strong> · 3 papers</summary>
+<summary><strong>Society & institutions</strong> · 3 papers</summary>
 
 - [The Canonical Society Theorem](https://h0mework.wiki/en/papers/generated-society/) · [v2](https://doi.org/10.5281/zenodo.23917896) · [Map](docs/generated-society-map.json) · [Reproduce](docs/generated-society-reproduction.md)
 - [An Economic Constitution of Possibility](https://h0mework.wiki/en/papers/economic-constitution/) · [v2](https://doi.org/10.5281/zenodo.23917902) · [Map](docs/economic-constitution-map.json) · [Reproduce](docs/economic-constitution-reproduction.md)
