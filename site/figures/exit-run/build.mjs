@@ -116,6 +116,12 @@ const brightRod = (a, b, r, style, steps, fade = 2) => {
 };
 // A part standing on the plane z at (x, y): a tight contact shadow of radius r at its foot and, for a part
 // of height h, a short soft shadow of half-width w cast away from the light.
+// A shadow's fill that fades from its foot `a` to its far end `b` (screen points); `hold` keeps it full that far.
+const fadeFill = (a, b, hold = 0) => {
+  const id = `er-sh-${Math.round(a[0] * 10)}-${Math.round(a[1] * 10)}-${Math.round(b[0] * 10)}-${Math.round(b[1] * 10)}`;
+  const stop = (at, alpha) => `<stop offset="${at}" stop-opacity="${alpha}" style="stop-color:var(--anatomy-halo)"/>`;
+  return [`fill:url(#${id})`, `<defs><linearGradient id="${id}" gradientUnits="userSpaceOnUse" x1="${n2(a[0])}" y1="${n2(a[1])}" x2="${n2(b[0])}" y2="${n2(b[1])}">${stop(0, 1)}${stop(n2(hold), 1)}${stop(n2((1 + hold) / 2), 0.5)}${stop(1, 0)}</linearGradient></defs>`];
+};
 // A box (plan, standing on z, h tall) casts its shadow away from the light: the hull of its foot and its
 // foot moved by the shadow's reach, blurred.
 function boxCast(plan, z, h, o = 1) {
@@ -125,7 +131,9 @@ function boxCast(plan, z, h, o = 1) {
   const [dx, dy] = [(-Lt[0] / flat) * reach, (-Lt[1] / flat) * reach];
   const foot = k.corners(plan);
   const pts = [...foot, ...foot.map(([x, y]) => [x + dx, y + dy])].map(([x, y]) => at([x, y, z]));
-  return `<path class="iso-halo" d="${k.pathOf(G.hullOf(pts), true)}" style="filter:blur(3px);transform:none;opacity:calc(var(--fig-shadow) * ${n2(1.05 * o)})"/>`;
+  const c = [plan.x + plan.w / 2, plan.y + plan.d / 2];
+  const [fill, defs] = fadeFill(at([c[0], c[1], z]), at([c[0] + dx * 1.2, c[1] + dy * 1.2, z]), 0.75);
+  return defs + `<path class="iso-halo" d="${k.pathOf(G.hullOf(pts), true)}" style="${fill};filter:blur(3px);transform:none;opacity:calc(var(--fig-shadow) * ${n2(1.15 * o)})"/>`;
 }
 function grounded(x, y, r, { z = 0, h = 0, w = r * 0.85, o = 1 } = {}) {
   const core = r <= 0 ? "" : `<path class="iso-halo" d="${k.haloOf({ x: x - r, y: y - r, w: 2 * r, d: 2 * r, r }, z, 0.1, P)}" style="filter:blur(1.2px);transform:none;opacity:calc(var(--fig-shadow) * ${n2(1.1 * o)})"/>`;
@@ -136,8 +144,10 @@ function grounded(x, y, r, { z = 0, h = 0, w = r * 0.85, o = 1 } = {}) {
   const reach = Math.min(h * (flat / Lt[2]) * 0.42, 30);
   const end = [x + dir[0] * reach, y + dir[1] * reach];
   const cap = (c, rr, from) => Array.from({ length: 11 }, (_, i) => { const a = from + (i / 10) * Math.PI; return [c[0] + rr * (Math.cos(a) * dir[0] + Math.sin(a) * n[0]), c[1] + rr * (Math.cos(a) * dir[1] + Math.sin(a) * n[1])]; });
-  const outline = [...cap([x, y], w, Math.PI / 2), ...cap(end, w * 0.7, -Math.PI / 2)];
-  return `<path class="iso-halo" d="${k.pathOf(outline.map(([px, py]) => at([px, py, z])), true)}" style="filter:blur(2.6px);transform:none;opacity:calc(var(--fig-shadow) * ${n2(1.05 * o)})"/>` + core;
+  const outline = [...cap([x, y], w, Math.PI / 2), ...cap(end, w * 1.25, -Math.PI / 2)];
+  // Full strength out to the edge of the part's foot, then fading along the rest of its length.
+  const [fill, defs] = fadeFill(at([x, y, z]), at([end[0], end[1], z]), Math.min(0.6, Math.max(r, w) / (reach + w)));
+  return defs + `<path class="iso-halo" d="${k.pathOf(outline.map(([px, py]) => at([px, py, z])), true)}" style="${fill};filter:blur(2.4px);transform:none;opacity:calc(var(--fig-shadow) * ${n2(1.3 * o)})"/>` + core;
 }
 
 // The visible front half of a thin band round an upright tube, from z0 to z1: no caps, so the tube shows through.
@@ -279,9 +289,9 @@ function shadows() {
   const s = C.STATION, { x0, x1, y, z } = C.ROW;
   return [
     band,
-    ...C.POSTS.map((x) => grounded(x, 0, 5.2, { h: railZ(x) - BED - GIRDER, w: 4.4 })),
-    grounded(C.HOPPER.x, 0, 7.2, { h: C.HOPPER.z1, w: 6.4 }),
-    grounded(C.WEIGHT[0], C.WEIGHT[1], 3.4, { h: railZ(C.WEIGHT[0]), w: 2.8 }),
+    ...C.POSTS.map((x) => grounded(x, 0, 5.2, { h: railZ(x) - BED - GIRDER, w: 2.3 })),
+    grounded(C.HOPPER.x, 0, 7.2, { h: C.HOPPER.z1, w: 4.6 }),
+    grounded(C.WEIGHT[0], C.WEIGHT[1], 3.4, { h: railZ(C.WEIGHT[0]), w: 1.2, o: 0.8 }),
     grounded(s.x + s.w / 2, s.y + s.d / 2, 0, { h: s.h + 2, w: 11, o: 0.8 }),
     `<path class="iso-halo" d="${k.haloOf(k.insetPlan(s, -2), 0, 0.1, P)}" style="filter:blur(4px);opacity:calc(var(--anatomy-halo-opacity) * .4)"/>`,
     `<path class="iso-halo" d="${k.haloOf(k.insetPlan(s, -0.6), 0, 0.1, P)}" style="filter:blur(1.2px);transform:none;opacity:calc(var(--anatomy-halo-opacity) * .5)"/>`,
@@ -524,8 +534,18 @@ function funnel() {
   const F = G.frameOf([C.TRACK.x1 + 1, 0, z], Z3, X3, Y3);
   const shell = G.lathe([[0, 2.4], [0.55, 2.55, 1], [3.65, 4.55, 1], [4.15, 4.85, 1], [4.35, 4.9]], F, P, { fill: "surface" });
   const mouth = k.ring(C.TRACK.x1 + 1, 0, 4.05, z + 4.12, P, 56);
-  return M("ink", S(G.disc(0, 0.6, 3, F, P), { tone: "mid" }), `<path class="er-funnel-throat" d="${k.ring(C.TRACK.x1 + 1, 0, 2.5, z + 0.62, P, 32)}"/>`)
+  // What is inside the funnel shows through its mouth only; above the rim's middle it is free.
+  const [, my] = at([C.TRACK.x1 + 1, 0, z + 4.12]);
+  const clip = `<clipPath id="er-funnel-clip"><path d="${mouth}"/><path d="M-4000 -4000H4000V${n2(my)}H-4000Z"/></clipPath>`;
+  return clip + M("ink", S(G.disc(0, 0.6, 3, F, P), { tone: "mid" }), `<path class="er-funnel-throat" d="${k.ring(C.TRACK.x1 + 1, 0, 2.5, z + 0.62, P, 32)}"/>`)
     + M("jade", S(shell, { tone: "mid" }), `<path class="er-funnel-inside" d="${mouth}"/><path class="er-funnel-core" d="${k.ring(C.TRACK.x1 + 1, 0, 1.35, z + 4.14, P, 32)}"/>`, S(G.ringBand(4.12, 4.38, 4.05, 4.95, F, P), { tone: "hi" }), L(G.arcOf(F, 3.68, 4.58, P, { slope: 0.52 }), { tone: "lo" }));
+}
+// The outlet chute: a short marble runway from the station's door to the receipts channel.
+const CHUTE = { x: C.STATION.x + 13, y0: C.STATION.y + C.STATION.d + 1.4, y1: C.ROW.y - 3.2, z: 1.5 };
+function chute() {
+  const { x, y0, y1, z } = CHUTE;
+  const floor = { x: x - 2.6, y: y0, w: 5.2, d: y1 - y0, r: 0.4 };
+  return grounded(x, (y0 + y1) / 2, 0, { h: 3, w: 3, o: 0.5 }) + M("marble", box(floor, 0, z, { tone: "mid" }, 2, 0.2), ...[-1, 1].map((side) => box({ x: x + side * 2.6 - (side > 0 ? 0.7 : 0), y: y0, w: 0.7, d: y1 - y0, r: 0.2 }, z, 1.1, { tone: "mid" }, 1, 0.1)));
 }
 // The receipts: a glazed channel along the deck's front; every arriving bead joins the row's end.
 function channel() {
@@ -568,37 +588,75 @@ function row(count) {
 
 // The bead's journey: track (0–1), a visible drop through the funnel (1–1.35), the occluded station
 // (1.35–2), then the roll along the channel to the row's end (2–3).
-const FUNNEL_S = 1.35;
+// The bead's journey past the track's foot, as stretches of s: it rolls off the rail ends into the funnel
+// (1 → FUNNEL_S), drops through the station unseen (→ CHUTE_S), rolls out of the door down the chute (→ 2),
+// then along the channel to the row's end (2 → 3). From S_MOUTH on the track it is over the funnel's mouth.
+const FUNNEL_S = 1.35, CHUTE_S = 1.72;
+const S_MOUTH = (60.5 - (C.CAGE.x0 + 5)) / (C.TRACK.x1 - C.CAGE.x0 - 5);
+// Inside the funnel: the bead's centre rides the cone's wall at radius rho from its axis; the wall's slope
+// sets its height. It lands on the far wall, circles down a turn and a half, and drops through the throat.
+function funnelAt(u) {
+  const c = [C.TRACK.x1 + 1, 0, C.STATION.h + 1.6];
+  const wall = (rho) => { const zl = 0.55 + (rho + 1.764 - 2.55) / 0.645; return zl + 1.138; };
+  const local = (rho, th, z) => [c[0] + rho * Math.cos(th), c[1] + rho * Math.sin(th), c[2] + z];
+  const th0 = 0.35, land = 1.9;
+  if (u < 0.14) {
+    // Off the rail ends: a short arc onto the far wall.
+    const t = u / 0.14;
+    const a = [C.TRACK.x1, 0, railZ(C.TRACK.x1) + LIFT], b = local(land, th0, wall(land));
+    const run = Math.hypot(b[0] - a[0], b[1] - a[1]), v0 = SLOPE * run, k2 = Math.min(0, b[2] - a[2] - v0);
+    return [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t, a[2] + (b[2] - a[2] - k2) * t + k2 * t * t];
+  }
+  if (u < 0.86) {
+    // Round the wall, a little faster as it sinks; a small hop where it first lands.
+    const w = (u - 0.14) / 0.72;
+    const rho = 0.8 + (land - 0.8) * (1 - w) ** 1.5;
+    const th = th0 + Math.PI * 3 * (w + 0.25 * w * w) / 1.25;
+    return local(rho, th, wall(rho) + 0.45 * Math.abs(Math.sin(w * Math.PI * 5)) * Math.exp(-9 * w));
+  }
+  // Through the throat.
+  const w = (u - 0.86) / 0.14;
+  const th = th0 + Math.PI * 3;
+  const rho = 0.8 * (1 - w);
+  return local(rho, th, wall(0.8) - 4.2 * w * w);
+}
 function beadAt(state) {
   const s = state.s;
   if (s <= 1) {
     const x = C.CAGE.x0 + 5 + (C.TRACK.x1 - C.CAGE.x0 - 5) * s;
     return [x, 0, railZ(x) + LIFT];
   }
-  if (s <= FUNNEL_S) {
-    const t = (s - 1) / (FUNNEL_S - 1);
-    const from = [C.TRACK.x1, 0, railZ(C.TRACK.x1) + LIFT], to = [C.TRACK.x1 + 1, 0, C.STATION.h + 2.2];
-    return from.map((v, i) => v + (to[i] - v) * t);
-  }
+  if (s <= FUNNEL_S) return funnelAt((s - 1) / (FUNNEL_S - 1));
+  if (s <= CHUTE_S) return [CHUTE.x, C.STATION.y + C.STATION.d / 2, CHUTE.z + C.BEAD];
   if (s <= 2) {
-    const t = (s - FUNNEL_S) / (2 - FUNNEL_S);
-    const from = [C.TRACK.x1 + 1, 0, C.STATION.h + 2.2], to = [C.STATION.x + 13, C.ROW.y, C.ROW.z + C.BEAD];
-    return from.map((v, i) => v + (to[i] - v) * t);
+    const t = (s - CHUTE_S) / (2 - CHUTE_S);
+    return [CHUTE.x, C.STATION.y + C.STATION.d + 0.4 + (C.ROW.y - C.STATION.y - C.STATION.d - 0.4) * t, CHUTE.z + C.BEAD - (CHUTE.z - C.ROW.z) * t];
   }
   const t = s - 2;
   const from = [C.STATION.x + 13, C.ROW.y, C.ROW.z + C.BEAD], to = [rowAt(state.receipts), C.ROW.y, C.ROW.z + C.BEAD];
   return from.map((v, i) => v + (to[i] - v) * t);
 }
+// Where the bead is drawn: on the track (behind the near rail), in the funnel-and-chute slot, or on the row;
+// and how visible it is there (it fades into the throat and out of the door).
+function beadSlot(state) {
+  const s = state.s;
+  if (s >= 2) return { slot: "row", alpha: 1 };
+  if (s <= S_MOUTH) return { slot: "track", alpha: 1 };
+  if (s <= FUNNEL_S) return { slot: "station", alpha: s < 1 + (FUNNEL_S - 1) * 0.86 ? 1 : Math.max(0, 1 - ((s - 1) / (FUNNEL_S - 1) - 0.86) / 0.1), clip: true };
+  if (s <= CHUTE_S) return { slot: "none", alpha: 0 };
+  return { slot: "station", alpha: Math.min(1, (s - CHUTE_S) / ((2 - CHUTE_S) * 0.25)), clip: false };
+}
 // The bead carries a seam, a great circle through its axle (y), turned by the distance it has rolled; only
 // the half facing the viewer is drawn, so the seam ends on the bead's outline.
-function seamD(roll) {
+function seamD(roll, along = X3) {
   const V = G.viewOf(P);
-  const w = [Math.cos(roll), 0, Math.sin(roll)];
+  const axle = along === Y3 ? X3 : Y3;
+  const w = [0, 1, 2].map((j) => Math.cos(roll) * along[j] + Math.sin(roll) * Z3[j]);
   const runs = [];
   let run = [];
   for (let i = 0; i <= 64; i++) {
     const t = (i / 64) * Math.PI * 2;
-    const p = [0, 1, 2].map((j) => C.BEAD * (Math.cos(t) * Y3[j] + Math.sin(t) * w[j]));
+    const p = [0, 1, 2].map((j) => C.BEAD * (Math.cos(t) * axle[j] + Math.sin(t) * w[j]));
     if (p[0] * V[0] + p[1] * V[1] + p[2] * V[2] > 0.02) run.push(at(p));
     else if (run.length) { runs.push(run); run = []; }
   }
@@ -617,9 +675,7 @@ const beadShadow = (state) => {
 const stopS = (kind) => (C.STOP[kind] - C.CAGE.x0 - 5) / (C.TRACK.x1 - C.CAGE.x0 - 5);
 
 function composition(state) {
-  const inside = state.s > 1 && state.s < 2;
-  const entering = state.s > 1 && state.s < FUNNEL_S;
-  const onRow = state.s >= 2;
+  const slot = beadSlot(state);
   return [
     base(),
     `<g data-part="readings">${readings(state)}</g>`,
@@ -636,7 +692,7 @@ function composition(state) {
     `<g data-part="bridge-back">${bridgeRails(state.lift, -1)}</g>`,
     `<g data-part="latch">${latch(state.up)}</g>`,
     `<g data-part="gate">${gate(state.open)}</g>`,
-    `<g data-part="bead-track" style="display:${onRow || inside ? "none" : "inline"}"><g data-part="bead" transform="${beadTransform(state)}" style="opacity:${n2(state.fade)}">${beadSvg(state.roll ?? 0)}</g></g>`,
+    `<g data-part="bead-track" style="display:${slot.slot === "track" ? "inline" : "none"}"><g data-part="bead" transform="${beadTransform(state)}" style="opacity:${n2(state.fade)}">${beadSvg(state.roll ?? 0)}</g></g>`,
     rails(1),
     `<g data-part="bridge-front">${bridgeRails(state.lift, 1)}</g>`,
     cage(1),
@@ -648,10 +704,11 @@ function composition(state) {
     `<g data-part="weight">${weight(state.up)}</g>`,
     `<g data-part="station">${station(state.homeLit, state.clinicLit, state.shut)}</g>`,
     funnel(),
-    `<g data-part="bead-station" style="display:${entering ? "inline" : "none"}"><g data-part="bead-drop" transform="${beadTransform(state)}" style="opacity:${n2(state.fade * Math.max(0, Math.min(1, (FUNNEL_S - state.s) / 0.12)))}">${beadSvg(state.roll ?? 0)}</g></g>`,
+    chute(),
+    `<g data-part="bead-station" style="display:${slot.slot === "station" ? "inline" : "none"}"><g data-part="bead-clip"${slot.clip ? ' clip-path="url(#er-funnel-clip)"' : ""}><g data-part="bead-drop" transform="${beadTransform(state)}" style="opacity:${n2(state.fade * slot.alpha)}">${beadSvg(state.roll ?? 0)}</g></g></g>`,
     channel(),
     `<g data-part="row">${row(state.receipts)}</g>`,
-    `<g data-part="bead-row" style="display:${onRow ? "inline" : "none"}"><g data-part="bead-low" transform="${beadTransform(state)}" style="opacity:${n2(state.fade)}">${beadSvg(state.roll ?? 0)}</g></g>`,
+    `<g data-part="bead-row" style="display:${slot.slot === "row" ? "inline" : "none"}"><g data-part="bead-low" transform="${beadTransform(state)}" style="opacity:${n2(state.fade)}">${beadSvg(state.roll ?? 0)}</g></g>`,
     channelGlass(),
     ruler(),
     `<g class="er-hits">${hitAreas()}</g>`,
@@ -691,8 +748,8 @@ const CSS = `
 .iso[data-theme="dark"] .er-svg [data-mat="jade"]{--anatomy-spec:#8fb39b}
 .iso[data-theme="dark"] .er-svg [data-mat="ink"]{--anatomy-spec:#626a6c}
 .er-svg .iso-line[data-tone="spec"]{stroke:var(--anatomy-spec)}
-.er-svg .spec{stroke-width:.75;stroke-linecap:round}
-.er-svg .glint{fill:var(--anatomy-spec);stroke:none;filter:blur(.9px);opacity:.8}
+.er-svg .spec{stroke-width:.95;stroke-linecap:round;opacity:.78;filter:blur(.35px)}
+.er-svg .glint{fill:var(--anatomy-spec);stroke:none;filter:blur(1px);opacity:.68}
 .er-svg{--er-fault:var(--cinnabar,#c8372d);--er-reach:#9fc7a9}
 .er-svg .er-window{fill:#151819}
 .er-svg .er-digit{fill:#eef2ef;font-family:var(--anatomy-mono);font-variant-numeric:tabular-nums}
@@ -729,13 +786,13 @@ const modelSource = `const MD = (() => {\n${strip("model.mjs")}\nreturn { ${Obje
 const live = `
 const P0 = ${JSON.stringify(P0)};
 let P = P0;
-${shipped({ C, BED, GIRDER, BEAMS, SELECTOR, DIAL, SLOPE, LIFT, FRAME, KINDS, REPAIR_OF, DOMAINS_ICON, X3, Y3, Z3, FUNNEL_S })}
+${shipped({ C, BED, GIRDER, BEAMS, SELECTOR, DIAL, SLOPE, LIFT, FRAME, KINDS, REPAIR_OF, DOMAINS_ICON, X3, Y3, Z3, FUNNEL_S, CHUTE_S, S_MOUTH, CHUTE })}
 const k = { ${Object.keys(k).join(", ")} };
 const G = LATHE;
-${shipped({ railZ, at, S, L, D, M, n2, faceY, rectD, box, cyl, unit, halfway, litAngle, shine, edgeShine, glintAt, glint, ballGlint, brightRod, boxCast, grounded })}
+${shipped({ railZ, at, S, L, D, M, n2, faceY, rectD, box, cyl, unit, halfway, litAngle, shine, edgeShine, glintAt, glint, ballGlint, brightRod, fadeFill, boxCast, grounded })}
 const DIR = unit([1, 0, SLOPE]);
 const UP = unit([-SLOPE, 0, 1]);
-${shipped({ ibeam, girder, rod, bandD, chairs, selector, selectorFace, ruler, shadows, tower, base, glyphD, icon, faceLamp, lever, panel, readings, railRun, rails, endStops, tie, ties, post, bridgeRails, bridgeTies, hinge, cage, cageCap, hopper, gate, gateLever, leverTip, coinPost, coin, latch, weight, station, funnel, channel, channelGlass, rowAt, row, beadAt, seamD, beadSvg, beadTransform, beadShadow, stopS, composition, hitAreas })}
+${shipped({ ibeam, girder, rod, bandD, chairs, selector, selectorFace, ruler, shadows, tower, base, glyphD, icon, faceLamp, lever, panel, readings, railRun, rails, endStops, tie, ties, post, bridgeRails, bridgeTies, hinge, cage, cageCap, hopper, gate, gateLever, leverTip, coinPost, coin, latch, weight, station, funnel, chute, funnelAt, beadSlot, channel, channelGlass, rowAt, row, beadAt, seamD, beadSvg, beadTransform, beadShadow, stopS, composition, hitAreas })}
 const FIXED = [[C.TRACK.x0 - 4, C.BRIDGE.x0], [C.BRIDGE.x1, C.TRACK.x1]];
 ${swingSource}
 ${liveScript()}
@@ -759,7 +816,7 @@ const SPRING = { loose: [1.5, 0.4], lift: [1.3, 0.55], up: [2.2, 0.42], shut: [1
 const STOPS = { loose: [0, 1], lift: [0, 1], up: [0, 1], shut: [0, 1], open: [0, Infinity], dial: [-Infinity, Infinity] };
 // The run: a solid ball rolling from rest gains speed steadily down the incline; it drops through the
 // funnel, then rolls on along the slightly tilted channel; at a stop it strikes and rebounds.
-const RUN = { a: 0.62, max: 1.15, drop: 3.2, dropMax: 2.2, row: 0.7, rowMax: 0.95, rebound: 0.32 };
+const RUN = { a: 0.62, max: 1.15, funnel: 1.3, inside: 0.35, chute: 0.45, row: 0.7, rowMax: 0.95, rebound: 0.32 };
 const TRACK_LEN = (C.TRACK.x1 - C.CAGE.x0 - 5) / DIR[0];
 let steps = [], step = null, stepTime = 0, touring = !still.matches, idle = 0, visible = false, frame = 0, last = 0, tourAt = 0;
 const part = (name) => svg.querySelector('[data-part="' + name + '"]');
@@ -795,18 +852,20 @@ function paint(force = false) {
   for (const name of Object.keys(want)) if (force || want[name] !== shown[name]) part(name).innerHTML = draw[name]();
   shown = want;
   // The bead moves by a transform; the funnel drop has its own foreground slot before the station hides it.
-  const onRow = st.s >= 2, inside = st.s > 1 && st.s < 2, entering = st.s > 1 && st.s < FUNNEL_S;
-  part("bead-track").style.display = onRow || inside ? "none" : "inline";
-  part("bead-station").style.display = entering ? "inline" : "none";
-  part("bead-row").style.display = onRow ? "inline" : "none";
+  const slot = beadSlot(st);
+  part("bead-track").style.display = slot.slot === "track" ? "inline" : "none";
+  part("bead-station").style.display = slot.slot === "station" ? "inline" : "none";
+  part("bead-row").style.display = slot.slot === "row" ? "inline" : "none";
+  if (slot.clip) part("bead-clip").setAttribute("clip-path", "url(#er-funnel-clip)");
+  else part("bead-clip").removeAttribute("clip-path");
   for (const name of ["bead", "bead-low"]) { const node = part(name); node.setAttribute("transform", beadTransform(st)); node.style.opacity = n2(st.fade); }
-  for (const node of svg.querySelectorAll("[data-seam]")) node.setAttribute("d", seamD(st.roll));
+  for (const node of svg.querySelectorAll("[data-seam]")) node.setAttribute("d", seamD(st.roll, st.s > CHUTE_S && st.s < 2 ? Y3 : X3));
   const shade = beadShadow(st), spot = part("bead-shadow");
   spot.setAttribute("transform", shade.transform);
   spot.style.opacity = shade.opacity;
   const drop = part("bead-drop");
   drop.setAttribute("transform", beadTransform(st));
-  drop.style.opacity = n2(st.fade * Math.max(0, Math.min(1, (FUNNEL_S - st.s) / 0.12)));
+  drop.style.opacity = n2(st.fade * slot.alpha);
   say();
 }
 const cycle = () => [{ kind: "feed" }, { kind: "release" }, { kind: "run" }, { kind: "arrive" }, { kind: "wait", t: 1.2 }];
@@ -830,7 +889,16 @@ function apply(name) {
 function begin(next) {
   step = next;
   stepTime = 0;
-  if (step.kind === "feed") { st.arrived = false; st.s = 0; st.v = 0; st.fade = 0; st.roll = Math.random() * Math.PI * 2; }
+  if (step.kind === "feed") {
+    st.arrived = false;
+    // A bead held on the track by a link that has since been repaired is not replaced: it rolls on from
+    // where it waits. One stranded past the newly failing link fades where it lies before the next drops in.
+    const out = st.s > 0.05 && st.s < 1 && st.fade > 0.5;
+    if (out && st.s <= stopAt() + 1e-6) { st.parked = true; step = null; return; }
+    step.clearing = out;
+    if (!out) { st.s = 0; st.v = 0; st.fade = 0; st.roll = Math.random() * Math.PI * 2; }
+  }
+  else if (step.kind === "release" && st.parked) step = null;
   else if (step.kind === "break") { st.scene = step.name; st.arrived = false; st.clinicLit = true; apply(st.scene); }
   else if (step.kind === "single") { st.scene = step.on ? "single" : "whole"; st.arrived = false; st.clinicLit = !step.on; apply(st.scene); }
   else if (step.kind === "pull") {
@@ -844,9 +912,14 @@ function advance(dt) {
     if (steps.length) begin(steps.shift());
     else if (touring) { begin(TOUR[tourAt]); tourAt = (tourAt + 1) % TOUR.length; }
     else return false;
+    // A step can decline at its start (a held bead needs no new feed); the next one begins next frame.
+    if (!step) return true;
   }
   stepTime += dt;
-  if (step.kind === "feed") {
+  if (step.kind === "feed" && step.clearing) {
+    st.fade = Math.max(0, 1 - stepTime / 0.35);
+    if (stepTime >= 0.35) { step.clearing = false; stepTime = 0; st.s = 0; st.v = 0; st.roll = Math.random() * Math.PI * 2; }
+  } else if (step.kind === "feed") {
     // A new bead drops from the tube into the cage; the column above falls one place and bounces on it.
     st.fade = Math.min(1, stepTime / 0.25);
     st.feed = Math.exp(-7 * stepTime) * Math.abs(Math.cos(11 * stepTime));
@@ -856,12 +929,21 @@ function advance(dt) {
     goal.open = MD.SOURCES[st.scene].link ? 1 : 0;
     if (stepTime >= 0.4) step = null;
   } else if (step.kind === "run") {
+    st.parked = false;
     const target = stopAt();
     const from = st.s;
-    if (st.s < 1) st.v = Math.min(st.v + RUN.a * dt, RUN.max);
-    else if (st.s < 2) st.v = Math.min(Math.max(st.v, 0.6) + RUN.drop * dt, RUN.dropMax);
-    else st.v = st.v > RUN.rowMax ? RUN.rowMax + (st.v - RUN.rowMax) * Math.exp(-dt * 6) : Math.min(st.v + RUN.row * dt, RUN.rowMax);
-    st.s = Math.min(target, st.s + st.v * dt);
+    if (st.s < 1) {
+      st.v = Math.min(st.v + RUN.a * dt, RUN.max);
+      st.s = Math.min(target, st.s + st.v * dt);
+    } else if (st.s < 2) {
+      // Round the funnel, through the station and down the chute, each in its own time.
+      const rate = st.s < FUNNEL_S ? (FUNNEL_S - 1) / RUN.funnel : st.s < CHUTE_S ? (CHUTE_S - FUNNEL_S) / RUN.inside : (2 - CHUTE_S) / RUN.chute;
+      st.s = Math.min(2, st.s + rate * dt);
+      st.v = RUN.rowMax * 0.8;
+    } else {
+      st.v = Math.min(st.v + RUN.row * dt, RUN.rowMax);
+      st.s = Math.min(target, st.s + st.v * dt);
+    }
     if (st.s >= target) {
       // At a stop the bead strikes and rebounds until it has no speed left; at the row's end it settles.
       if (st.v > 0.09) st.v = -st.v * RUN.rebound;
@@ -870,6 +952,8 @@ function advance(dt) {
     // Rolling turns the bead by the distance travelled over its radius (backwards along the row).
     const ds = st.s - from;
     if (st.s <= 1) st.roll += (ds * TRACK_LEN) / C.BEAD;
+    else if (st.s < FUNNEL_S) st.roll += dt * 9;
+    else if (st.s > CHUTE_S && st.s < 2) st.roll -= (ds * (C.ROW.y - C.STATION.y - C.STATION.d)) / C.BEAD;
     else if (st.s >= 2) st.roll -= (ds * Math.abs(rowAt(st.receipts) - (C.STATION.x + 13))) / C.BEAD;
     if (st.s > 0.08) goal.open = 0;
     if (st.s > 1.3 && K() > 0) st.arrived = true;
