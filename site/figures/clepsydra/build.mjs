@@ -65,6 +65,7 @@ const FIT = [
 const VIEW = { pad: 22, azimuth: 72, elevation: 26 };
 const P0 = k.fitProjection(FIT, WIDTH, HEIGHT, VIEW);
 const FRAME = { points: FIT, width: WIDTH, height: HEIGHT, pad: VIEW.pad };
+const WHEEL_FRONT_BEARING = C.WHEEL[1] + C.WHEEL[4] / 2 + 2.8;
 let P = P0;
 
 // --- shared with the page --------------------------------------------------------------------
@@ -256,26 +257,25 @@ function source() {
   out.push(M("jade", brightRod([x - 7.4, y, z + 6], [x - 11.4, y, z + 5.6], 1.1, { tone: "mid" }, 14), brightRod([x + 7.4, y, z + 6], [x + 11.4, y, z + 5.6], 1.1, { tone: "mid" }, 14), brightRod([x, y + 7.6, z + 9], [x, y + 11, z + 8.6], 0.9, { tone: "mid" }, 14)));
   return out.join("");
 }
+function troughTrestle(F, length, { t, z0 }) {
+  const p = G.pointOf(F, length * t, 0, 0);
+  const top = p[2] - 2.1, hgt = top - z0 - 0.7;
+  const column = FV(p[0], p[1], z0 + 0.7);
+  const profile = [[0, 1.9], [0.6, 1.9, 1], [1.1, 1.45, 1], [1.7, 1.05], [hgt - 2.1, 1], [hgt - 1.7, 1.35, 1], [hgt - 1.3, 1], [hgt - 0.9, 1.1, 1], [hgt - 0.2, 1.6, 1], [hgt, 1.6]];
+  // The saddle is level underneath and meets the inclined floor along its whole top face.
+  const bottom = (s) => (top - p[2] - s * F.a[2]) / F.v[2];
+  const saddle = G.prismOf(G.frameOf(p, F.u, F.a, F.v), [[-1.5, bottom(-1.5)], [1.5, bottom(1.5)], [1.5, -0.6], [-1.5, -0.6]], -2.35, 2.35, P);
+  return shadow(p[0], p[1], 2.8, 0.3, { z: z0, h: hgt, w: 1.2 })
+    + M("ink", cyl(p[0], p[1], 2.4, z0, 0.7, { tone: "mid" }, 24, 0.2))
+    + M("marble", S(G.solidOf(profile, column, P), { tone: "mid", inner: shine(column, 1.9, hgt - 2.3, 1.03, 1.03, 2.5) }))
+    + M("ink", S(saddle, { tone: "mid" }));
+}
 // A trough from a to b: a floor and two walls on one frame, its water, and trestles under it.
 function trough(a, b, { trestles = [], wet = 1 } = {}) {
-  const d = [b[0] - a[0], b[1] - a[1], b[2] - a[2]];
-  const len = Math.hypot(...d);
-  const dir = unit(d);
-  const across = unit([-dir[1], dir[0], 0]);
-  const up = unit([dir[1] * across[2] - dir[2] * across[1], dir[2] * across[0] - dir[0] * across[2], dir[0] * across[1] - dir[1] * across[0]]);
-  const F = G.frameOf(a, dir, across, up[2] > 0 ? up : up.map((c) => -c));
-  const out = [];
-  // Each trestle is a turned marble column on an ink foot, with an ink saddle under the trough.
-  for (const trestle of trestles) {
-    const p = a.map((v, i) => v + d[i] * trestle.t);
-    const z0 = trestle.z0 + 0.7, top = p[2] - 2.1, hgt = top - z0;
-    const profile = [[0, 1.9], [0.6, 1.9, 1], [1.1, 1.45, 1], [1.7, 1.05], [hgt - 2.1, 1], [hgt - 1.7, 1.35, 1], [hgt - 1.3, 1], [hgt - 0.9, 1.1, 1], [hgt - 0.2, 1.6, 1], [hgt, 1.6]];
-    // The saddle is level underneath and meets the inclined floor along its whole top face.
-    const bottom = (s) => (top - p[2] - s * F.a[2]) / F.v[2];
-    const saddle = G.prismOf(G.frameOf(p, F.u, F.a, F.v), [[-1.5, bottom(-1.5)], [1.5, bottom(1.5)], [1.5, -0.6], [-1.5, -0.6]], -2.35, 2.35, P);
-    out.push(shadow(p[0], p[1], 2.8, 0.3, { z: trestle.z0, h: hgt, w: 1.2 }), M("ink", cyl(p[0], p[1], 2.4, trestle.z0, 0.7, { tone: "mid" }, 24, 0.2)), M("marble", S(G.solidOf(profile, FV(p[0], p[1], z0), P), { tone: "mid", inner: shine(FV(p[0], p[1], z0), 1.9, hgt - 2.3, 1.03, 1.03, 2.5) })),
-      M("ink", S(saddle, { tone: "mid" })));
-  }
+  const d = G.sub3(b, a);
+  const len = G.len3(d);
+  const F = G.frameAlong(a, d);
+  const out = trestles.map((trestle) => troughTrestle(F, len, trestle));
   const view = G.viewOf(P);
   const near = Math.sign(G.dot3(F.u, view)) || 1;
   const wall = (side) => S(G.prismOf(F, [[side * 1.6, 0], [side * 2.2, 0], [side * 2.2, 1.6], [side * 1.6, 1.6]], 0, len, P), { tone: "mid" });
@@ -312,13 +312,19 @@ function wheelStream(open) {
   return open > 0.6 ? jet(troughLip(r0, r1), [x + 2.4, y, z + Math.sqrt(r ** 2 - 2.4 ** 2) - 0.8], 1.6, millFlow(open),
     { slope: (r1[2] - r0[2]) / (r1[0] - r0[0]), foam: false }) : "";
 }
+function millTrestle() {
+  const [a, b] = C.RIGHT;
+  const d = G.sub3(b, a);
+  // The outboard foot sits beyond the stand, and its upright clears the wheel's sweep.
+  return troughTrestle(G.frameAlong(a, d), G.len3(d), { t: 0.88, z0: 0 });
+}
 function rightTrough(open) {
   const [r0, r1] = C.RIGHT;
   const x = C.GATE_X;
   const t = (x - r0[0]) / (r1[0] - r0[0]);
   const z = r0[2] + (r1[2] - r0[2]) * t;
   return [
-    trough(r0, r1, { wet: t + (1 - t) * smoothstep(open / 0.6), trestles: [{ t: 0.5, z0: 16 }, { t: 0.96, z0: 0 }] }),
+    trough(r0, r1, { wet: t + (1 - t) * smoothstep(open / 0.6), trestles: [{ t: 0.5, z0: 16 }] }),
     jet([C.SOURCE[0] + 11.4, C.SOURCE[1], C.SOURCE[2] + 5.1], [r0[0] + 1.8, r0[1], r0[2] + 0.88], 0.9, 1, { slope: -0.1, foam: false }),
     // The paid gate: a plate in its frame across the trough, lifted when the use is paid.
     M("ink", box({ x: x - 0.9, y: r0[1] - 3.4, w: 1.8, d: 1.2, r: 0.2 }, z - 1, 7, { tone: "mid" }, 1), box({ x: x - 0.9, y: r0[1] + 2.2, w: 1.8, d: 1.2, r: 0.2 }, z - 1, 7, { tone: "mid" }, 1), box({ x: x - 1.2, y: r0[1] - 3.6, w: 2.4, d: 7.2, r: 0.3 }, z + 6, 1.2, { tone: "mid" }, 1)),
@@ -509,6 +515,12 @@ function rimSvg(F, s0, s1, rIn, rOut) {
   const face = k.pathOf(ring(near, rOut), true) + hole;
   return `<g class="iso-solid"><path class="iso-fill" fill-rule="evenodd" d="${band + hole}"/><path class="iso-top" fill-rule="evenodd" d="${face}"/>${L(k.pathOf(ring(near, rOut), true), { tone: "faint" })}<path class="iso-line iso-edge" data-tone="mid" d="${band + hole}"/></g>`;
 }
+function wheelShaft(y0, y1) {
+  const [x, , z] = C.WHEEL;
+  const F = G.frameOf([x, 0, z], Y3, X3, Z3);
+  const inner = y1 - y0 > 3 ? shine(F, y0 + 0.5, y1 - 0.5, 1.12, 1.12, 2) : "";
+  return M("ink", S(G.disc(y0, y1, 1.1, F, P), { tone: "mid", inner }));
+}
 function wheel(turn, frontHalf) {
   const [cx, cy, cz, r, w] = C.WHEEL;
   const s0 = cy - w / 2;
@@ -517,15 +529,14 @@ function wheel(turn, frontHalf) {
   const TAU = Math.PI * 2;
   // A bearing post on its foot, carrying a pillow block and its cap.
   const post = (y) => grounded(cx, y, 2.6, { h: cz, w: 1.6, o: 0.8 }) + M("ink", box({ x: cx - 4, y: y - 1.2, w: 8, d: 2.4, r: 0.4 }, 0, 1.2, { tone: "mid" }, 1), D([at([cx - 2.8, y + 1.2, 0.6]), at([cx + 2.8, y + 1.2, 0.6])], { size: 0.34 }), box({ x: cx - 1, y: y - 0.8, w: 2, d: 1.6, r: 0.3 }, 1.2, cz - 3.2, { tone: "mid" }, 1), box({ x: cx - 1.9, y: y - 1, w: 3.8, d: 2, r: 0.4 }, cz - 2, 1.6, { tone: "mid" }, 2, 0.2), box({ x: cx - 1.5, y: y - 1, w: 3, d: 2, r: 0.7 }, cz - 0.4, 1.5, { tone: "mid" }, 3, 0.2));
-  const shaft = (y0, y1) => M("ink", S(G.disc(y0 - s0, y1 - s0, 1.1, F, P), { tone: "mid", inner: y1 - y0 > 3 ? shine(F, y0 - s0 + 0.5, y1 - s0 - 0.5, 1.12, 1.12, 2) : "" }));
   const spokes = (s) => Array.from({ length: 6 }, (_, i) => { const t = turn + (i / 6) * TAU; return rod(G.pointOf(F, s, 2, t), G.pointOf(F, s, r - 1.4, t), 0.38, { tone: "mid" }, 8); }).join("");
-  const back = s0 - 1.6, front = cy + w / 2 + 2.8;
+  const back = s0 - 1.6;
   if (frontHalf) return M("marble", spokes(w - 0.4), rimSvg(F, w - 0.8, w, r - 1.5, r))
-    + shaft(cy + w / 2, front + 1)
+    + wheelShaft(cy + w / 2, WHEEL_FRONT_BEARING + 1)
     + M("ink", S(G.disc(w + 0.1, w + 1.4, 2.6, F, P), { tone: "mid", inner: L(G.circleOf(F, w + 1.4, 1.7, P, 24), { tone: "faint" }) }),
       D(G.dotsOf(F, w + 1.4, 2.1, 6, P, { all: true, phase: turn }), { size: 0.32 }))
-    + post(front) + shaft(front + 1, C.CAM.y + C.CAM.width / 2 + 0.5);
-  const out = [post(back), shaft(back - 1, s0), M("marble", rimSvg(F, 0, 0.8, r - 1.5, r), spokes(0.4))];
+    + post(WHEEL_FRONT_BEARING);
+  const out = [post(back), wheelShaft(back - 1, s0), M("marble", rimSvg(F, 0, 0.8, r - 1.5, r), spokes(0.4))];
   // Fourteen bucket boards between the rims, far ones first; each leans back against the way the wheel
   // turns, and is lit or in shade by which way it faces.
   const buckets = [];
@@ -565,7 +576,8 @@ function hammer(angle, turn) {
   const bowl = FV(...mortar, 0);
   const opening = k.ring(...mortar, 3.15, rim, P, 44);
   const [, rimY] = at([...mortar, rim]);
-  const post = (dy) => M("ink", box({ x: px - 0.8, y: py + dy - 0.7, w: 1.6, d: 1.4, r: 0.2 }, 0, pz + 0.85, { tone: "mid" }, 1));
+  const foot = { x: px - 3.2, y: py - 4.6, w: 6.4, d: 9.2, r: 0.6 };
+  const post = (dy) => M("ink", box({ x: px - 0.8, y: py + dy - 0.7, w: 1.6, d: 1.4, r: 0.2 }, 1, pz - 0.15, { tone: "mid" }, 1));
   const F = hammerFrame(angle);
   const sleeve = G.frameOf(C.PIVOT, Y3, X3, Z3);
   const follower = G.frameOf(followerCentre(F), Y3, X3, Z3);
@@ -581,6 +593,8 @@ function hammer(angle, turn) {
     M("marble", S(G.lathe([[1.2, 3.4], [2, 3.6, 1], [rim - 3.6, 3.2, 1], [rim - 1.6, 4.2, 1], [rim, 4.6]], bowl, P, { fill: "surface" }), { tone: "mid" }),
       rimSvg(bowl, rim - 0.35, rim, 3.15, 4.6)),
     `<path class="iso-shade" data-shade="0" d="${opening}" style="opacity:.55"/>`,
+    boxCast(foot, 0, 1, 0.6),
+    M("ink", box(foot, 0, 1, { tone: "mid" }, 2, 0.2), D([-2.1, 2.1].map((dx) => at([px + dx, py + 2.8, 1])), { size: 0.32 })),
     post(-3),
     M("ink", S(G.disc(-3.7, 3.7, 0.62, sleeve, P), { tone: "mid" })),
     M("marble", S(G.prismOf(F, [[-0.9, -arm], [0.9, -arm], [0.9, arm], [-0.9, arm]], -tail - 0.85, head + 1, P), { tone: "mid" })),
@@ -698,15 +712,15 @@ function tally(where) {
 // --- composition: back to front -----------------------------------------------------------------------
 
 function composition(state) {
-  // The stream falls between the rims. The stand and wheel exchange depth when the
-  // camera crosses the x axis of the bench.
+  // The stand, outboard trestle and wheel occupy successive ranges along x.
   const rotor = `<g data-part="wheel-back">${wheel(state.turn, false)}</g><g data-part="mill-stream">${wheelStream(state.open)}</g><g data-part="wheel-front">${wheel(state.turn, true)}</g>`;
+  const trestle = millTrestle();
   const standFirst = G.viewOf(P)[0] > 0;
   return [
     WATER_DEFS,
     base(),
     `<g data-part="counter">${counter(state)}</g>`,
-    standFirst ? stand() + rotor : rotor + stand(),
+    standFirst ? stand() + trestle + rotor : rotor + trestle + stand(),
     source(),
     `<g data-part="right">${rightTrough(state.open)}</g>`,
     `<g data-part="coinbox">${coinbox(state.coin)}</g>`,
@@ -716,6 +730,8 @@ function composition(state) {
     `<g data-part="seal">${seal(state)}</g>`,
     troughs(),
     `<g data-part="lamps">${millLamps(state.legs)}</g>`,
+    // The exposed shaft is in front of the trough trestle and ends against the cam's back face.
+    wheelShaft(WHEEL_FRONT_BEARING + 1, C.CAM.y - C.CAM.width / 2),
     `<g data-part="hammer">${hammer(state.lift, state.turn)}</g>`,
     `<g data-part="basin">${basin(state.level, state.bowls, state.ladle)}</g>`,
     `<g data-part="ripples">${ripples(state.level, state.ripple ?? 0.2)}</g>`,
@@ -815,11 +831,11 @@ const modelSource = `const MD = (() => {\n${strip("model.mjs")}\nreturn { ${Obje
 const live = `
 const P0 = ${JSON.stringify(P0)};
 let P = P0;
-${shipped({ C, ARROW, COUNTER, TRAY, FRAME, X3, Y3, Z3, WATER_DEFS })}
+${shipped({ C, ARROW, COUNTER, TRAY, FRAME, WHEEL_FRONT_BEARING, X3, Y3, Z3, WATER_DEFS })}
 const k = { ${Object.keys(k).join(", ")} };
 const G = LATHE;
 ${shipped({ at, S, L, D, M, n2, faceY, rectD, box, cyl, FV, unit, rod, jet, shadow, halfway, litAngle, shine, edgeShine, glintAt, glint, ballGlint, brightRod, fadeFill, boxCast, grounded })}
-${shipped({ levelOf, smoothstep, ladlePose, ladleSvg, ripples, rimSvg, base, counterFace, counter, tray, stand, source, trough, troughLip, troughs, millFlow, wheelStream, rightTrough, vessel, ruler, seal, tablet, basin, wheel, camCentre, hammerFrame, followerCentre, camAngle, hammer, coinbox, millLamps, jar, qruler, spigotFrame, spigot, cup, rack, tally, composition, hitAreas })}
+${shipped({ levelOf, smoothstep, ladlePose, ladleSvg, ripples, rimSvg, base, counterFace, counter, tray, stand, source, troughTrestle, trough, troughLip, troughs, millFlow, wheelStream, millTrestle, rightTrough, vessel, ruler, seal, tablet, basin, wheelShaft, wheel, camCentre, hammerFrame, followerCentre, camAngle, hammer, coinbox, millLamps, jar, qruler, spigotFrame, spigot, cup, rack, tally, composition, hitAreas })}
 ${swingSource}
 ${liveScript()}
 `;
