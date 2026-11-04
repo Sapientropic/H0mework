@@ -46,7 +46,7 @@ const C = {
   SPHERES: [{ block: 1, c: [98, -1, 121] }, { block: -1, c: [158, -1, 121] }],
   R_SPHERE: 15,
   ARROW: 9,
-  FEELER: { dx: 7.2, rod: 27, foot: 4.4 },
+  FEELER: { dx: 7.2, rod: 27, foot: { halfX: 2.4, halfY: 7.6, r: 1.15 } },
   GUIDE_Z: 137.5,
   STAND: [136.5, -24],
   CONE: { x: 132, z: 126.4, step: 10 },
@@ -56,7 +56,7 @@ const C = {
   // Two slide switches that follow the testimony: Q on the top shelf, the leg count in the middle.
   SWITCHES: [{ tier: 2, plan: { x: 170, y: -2, w: 18, d: 8, r: 1.5 }, marks: ["B", "T"] }, { tier: 1, plan: { x: 158, y: 8, w: 18, d: 8, r: 1.5 }, marks: ["2", "1"] }],
   // Station 2: the state derivative δu as two meshed gears, bra and ket, each read by a yoke.
-  GEARS: { c: [[86, -2.5, 63.4], [114, -2.5, 63.4]], tip: 15, root: 13, teeth: 20, t: 3, pin: 8, stem: 19.5, guide: 74.4 },
+  GEARS: { c: [[86, -2.5, 63.4], [114, -2.5, 63.4]], tip: 14.7, root: 13, teeth: 20, t: 3, pin: 8, stem: 19.5, guide: 74.4 },
   // Station 3: a disc-and-wheel integrator for the Kubo kernel.
   DISC: { c: [124, -6], r: 30, z: 11, h: 3 },
   WHEEL: { r: 6, travel: 14, pinion: 3.2 },
@@ -188,11 +188,13 @@ function makeLive(k, G, P, C, M) {
     ];
     return parts.join("");
   }
-  // A feeler: a flat round foot resting on the arrow's tip ball, its rod rising to the beam.
+  // The shoe spans the arrow's sweep while the sphere turns between its two mountings.
   function feelerAt(tip, index) {
     const { c } = C.SPHERES[index];
     const x = c[0] + C.FEELER.dx, z = tip[2] + 1.15;
-    return stone("ink", S(k.cylinder(x, c[1], C.FEELER.foot, z, 0.6, P, 28), { tone: "lo", crease: "none" })) + S(k.cylinder(x, c[1], 0.7, z + 0.6, C.FEELER.rod - 0.6, P, 10), { tone: "mid", crease: "none" });
+    const { halfX, halfY, r } = C.FEELER.foot;
+    const shoe = { x: x - halfX, y: c[1] - halfY, w: 2 * halfX, d: 2 * halfY, r };
+    return stone("ink", S(k.slabOf(shoe, z, 0.6, P, 4), { tone: "lo", crease: "none" })) + S(k.cylinder(x, c[1], 0.7, z + 0.6, C.FEELER.rod - 0.6, P, 10), { tone: "mid", crease: "none" });
   }
   const tipHeight = (state, index) => {
     const { c } = C.SPHERES[index];
@@ -242,15 +244,22 @@ function makeLive(k, G, P, C, M) {
     return out.join("");
   }
   // The lane-1 cord: from the drum's top over the idler and down to the pen bar.
-  function penCord(state, penZ) {
+  function penCord(penZ) {
     const y = C.Y_BAR;
-    const top = C.CONE.z + C.CONE.R;
+    const { x, z, R } = C.CONE;
+    const top = z + R;
     const drumY = C.STAND[1] + 3 - 1.6;
-    return L(k.pathOf([at([C.CONE.x, drumY, top]), at([C.X_IN + C.IDLER.r, y, top]), at([C.X_IN, y, top - C.IDLER.r]), at([C.X_IN, y, penZ + 1.8])]), { tone: "hi" });
+    const wrap = (cx, cy, cz, r, from, to) => Array.from({ length: 13 }, (_, i) => {
+      const a = from + (to - from) * i / 12;
+      return at([cx + r * Math.cos(a), cy, cz + r * Math.sin(a)]);
+    });
+    const drum = wrap(x, drumY, z, R, Math.PI / 3, Math.PI / 2);
+    const idler = wrap(C.X_IN + C.IDLER.r, y, C.IDLER.z, C.IDLER.r, Math.PI / 2, Math.PI);
+    return L(k.pathOf([...drum, ...idler, at([C.X_IN, y, penZ + 1.8])]), { tone: "hi" }) + D([drum[0]], { size: 0.42, tone: "mid" });
   }
 
   // Station 2 — the two gears. The ket gear turns φ = 2ωt, the bra gear −φ (complex conjugate).
-  function gearFace(cx, cy, cz, angle, mirror) {
+  function gearProfile(angle, mirror) {
     const g = C.GEARS, points = [];
     const pitch = TAU / g.teeth;
     for (let i = 0; i < g.teeth; i++) {
@@ -258,33 +267,24 @@ function makeLive(k, G, P, C, M) {
       const step = mirror ? -1 : 1;
       for (const [dt, r] of [[-0.3, g.root], [-0.18, g.tip], [0.18, g.tip], [0.3, g.root]]) {
         const a = t + step * dt * pitch;
-        points.push([cx + r * Math.cos(a), cy, cz + r * Math.sin(a)]);
+        points.push([r * Math.cos(a), r * Math.sin(a)]);
       }
     }
     return points;
   }
   function gears(state) {
     const g = C.GEARS, phi = 2 * state.x;
-    const out = [];
-    g.c.forEach(([cx, cy, cz], index) => {
-      const mirror = index === 1;
-      const back = gearFace(cx, cy - g.t / 2, cz, phi, mirror), front = gearFace(cx, cy + g.t / 2, cz, phi, mirror);
-      const hull = poly(back, true);
-      const gear = [];
-      gear.push(`<path class="iso-fill" d="${hull}"/><path class="iso-shade" data-shade="1" d="${hull}"/>`);
-      // Tooth flanks between the faces, then the front face.
-      const flanks = [];
-      for (let i = 0; i < front.length; i += 2) flanks.push(seg(back[i + 1], front[i + 1]));
-      const face = poly(front, true);
-      gear.push(L(hull, { tone: "lo" }));
-      gear.push(`<path class="iso-fill" d="${face}"/><path class="iso-top" d="${face}"/>`);
-      gear.push(L(face, { tone: "hi" }));
-      const F = G.frameOf([cx, cy + g.t / 2, cz], [0, 1, 0], [1, 0, 0], [0, 0, 1]);
-      gear.push(L(G.circleOf(F, 0, 3.4, P, 24), { tone: "lo" }));
-      out.push(stone("jade", ...gear));
-      out.push(stone("ink", S(G.disc(0, 1.2, 2.2, F, P, { steps: 18 }), { tone: "mid" })));
-    });
-    return out.join("");
+    const order = depth(g.c[0]) <= depth(g.c[1]) ? [0, 1] : [1, 0];
+    return order.map((index) => {
+      const F = G.frameOf(g.c[index], [0, 1, 0], [1, 0, 0], [0, 0, 1]);
+      const face = g.t / 2;
+      const profile = gearProfile(phi, index === 1);
+      const body = G.prismOf(F, profile, -face, face, P);
+      const teeth = poly(profile.map(([x, z]) => [F.o[0] + x, F.o[1] + face, F.o[2] + z]), true);
+      // Use the tooth profile on the face. The prism's convex hull would fill the gaps.
+      return stone("jade", k.shadeSvg(body), `<path class="iso-top" d="${teeth}"/>`, L(body.crease, { tone: "faint" }), L(teeth, { tone: "mid" }), L(G.circleOf(F, face, 3.4, P, 24), { tone: "lo" }))
+        + stone("ink", S(G.disc(face, face + 1.2, 2.2, F, P, { steps: 18 }), { tone: "mid" }));
+    }).join("");
   }
   const pinOf = (state, index) => {
     const g = C.GEARS, phi = 2 * state.x, [cx, cy, cz] = g.c[index];
@@ -555,7 +555,8 @@ function board() {
   for (const x of [BOARD.x + 18, BOARD.x + BOARD.w - 18]) out.push(stone("ink", S(k.slabOf({ x: x - 5, y: BOARD.y - 6, w: 10, d: 18, r: 1.5 }, 0, 4, P, 3, 0.4), { tone: "mid" })));
   out.push(stone("ink", S(k.slabOf(BOARD, 0, BOARD_H, P, 3, 0.6), { tone: "mid", inner: L(k.sideSeam(BOARD, 6, P, 3), { tone: "faint" }) })));
   // The paper on the face, its lanes ruled.
-  const paper = [[BOARD.x + 1, Y_P, PAPER_Z[0]], [BOARD.x + BOARD.w - 1, Y_P, PAPER_Z[0]], [BOARD.x + BOARD.w - 1, Y_P, PAPER_Z[1]], [BOARD.x + 1, Y_P, PAPER_Z[1]]];
+  const { take, supply } = C.SPOOL;
+  const paper = [[take, Y_P, PAPER_Z[0]], [supply, Y_P, PAPER_Z[0]], [supply, Y_P, PAPER_Z[1]], [take, Y_P, PAPER_Z[1]]];
   out.push(`<path class="iso-fill" d="${loop(paper)}" style="fill:var(--anatomy-face)"/>`);
   out.push(L(loop(paper), { tone: "mid" }));
   const lines = [], faint = [];
@@ -806,7 +807,7 @@ function body(state, empty = false) {
     part("bar-0", () => LIVE.penBar(pens[0], 0)),
     stone("ink", station1Back()),
     part("pulley", () => LIVE.pulley(state)),
-    part("cord", () => LIVE.penCord(state, pens[0])),
+    part("cord", () => LIVE.penCord(pens[0])),
     part("beam", () => LIVE.beam(state)),
     stone("ink", fork(0)),
     part("sphere-0", () => LIVE.sphere(state, 0)),
@@ -833,7 +834,7 @@ const CSS = `
 .iso-stage{outline:none;cursor:pointer;touch-action:pan-y}
 ${SWING_CSS}
 .iso-stage:focus-visible{box-shadow:0 0 0 1px var(--anatomy-mid)}
-@media (max-width:560px){.iso-plate:has(.cw-svg){overflow:hidden}.cw-svg.iso-svg{width:112%;max-width:none;margin:0 -6%}}
+@media (max-width:560px){.cw-svg.iso-svg{width:104%;max-width:none;margin:0 -2%}}
 `;
 
 const COPY = {
@@ -960,7 +961,7 @@ function draw() {
   set("gears", LIVE.gears(state));
   set("yokes", LIVE.yokes(state));
   set("pulley", LIVE.pulley(state));
-  set("cord", LIVE.penCord(state, pens[0]));
+  set("cord", LIVE.penCord(pens[0]));
   set("beam", LIVE.beam(state));
   set("sphere-0", LIVE.sphere(state, 0));
   set("sphere-1", LIVE.sphere(state, 1));

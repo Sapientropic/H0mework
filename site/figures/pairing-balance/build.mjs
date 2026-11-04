@@ -68,8 +68,9 @@ const panTop = (phi, side) => { const h = hookOf(phi, side); return [h[0], 0, h[
 const STRING_ANGLES = [0, (2 * Math.PI) / 3, (4 * Math.PI) / 3];
 const strings = (kit, P, phi, side, front) => {
   const h = hookOf(phi, side), top = panTop(phi, side);
+  const [vx, vy] = G.viewOf(P);
   return STRING_ANGLES.map((angle) => [top[0] + Math.sin(angle) * (PAN.r - 1.5), -Math.cos(angle) * (PAN.r - 1.5), top[2]])
-    .filter((rim) => (rim[1] > 0) === front)
+    .filter((rim) => ((rim[0] - top[0]) * vx + rim[1] * vy > 0) === front)
     .map((rim) => kit.wireSvg(kit.iso(h, P), kit.iso(rim, P), { ends: "to", size: 0.7, tone: "mid" }))
     .join("");
 };
@@ -87,7 +88,10 @@ const beamSvg = (kit, G, P, phi) => {
 };
 const needleD = (kit, P, phi) => {
   const [x, y, z] = NEEDLE.at;
-  return kit.pathOf([kit.iso([x, y, z], P), kit.iso([x + Math.sin(phi) * NEEDLE.length, y, z - Math.cos(phi) * NEEDLE.length], P)]);
+  const point = (r, depth) => kit.iso([x + Math.sin(phi) * r, depth, z - Math.cos(phi) * r], P);
+  // The tip bends back to the scale's face, so the reading stays on its tick from the side.
+  const tip = SCALE.y + 0.22, length = NEEDLE.length;
+  return kit.pathOf([point(0, y), point(length - 5, y), point(length - 3, tip), point(length, tip)]);
 };
 const pointerOnTop = (kit, P, [x, y], angle, from, to, z) =>
   kit.lineOnTop([x + Math.sin(angle) * from, y - Math.cos(angle) * from], [x + Math.sin(angle) * to, y - Math.cos(angle) * to], z, P);

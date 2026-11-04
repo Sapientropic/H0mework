@@ -23,7 +23,7 @@ const C = {
   // The dome: the hub sits at the centre of the sphere of directions; the glass is its upper half.
   DOME: { c: [-56, -4], z: 36, R: 58 },
   BASE: { r: 66, h: 2.4 },
-  RING: { rIn: 53, rOut: 63, h: 2.6 },
+  RING: { rIn: 57.4, rOut: 63, h: 2.6 },
   LEGS: [252, 12, 132],
   LEG_R: 59.5,
   // Headings in the world plane: +e1 points front-left, +e3 front-right (e1 × e2 = e3, e2 up).
@@ -204,8 +204,8 @@ function makeLive(k, G, P, C, M) {
     out.push(`<path d="${G.sphereOf(HUB, B, P, { steps: 48 }).outline}" style="${GLASS}"/>`);
     if (s > 0.05) out.push(`<path d="${G.sphereOf(obs, B, P, { steps: 48 }).outline}" style="${GLASS}"/>`);
     // The arm's outer half when it points away from the viewer.
-    // At the horizon the head must stop inside the ring's bore.
-    const head1 = C.RING.rIn - 0.25, head0 = head1 - 4.4;
+    // At the horizon both the head and its nib need clearance inside the ring's bore.
+    const head1 = R - 5.25, head0 = head1 - 4.4;
     const outer = () => [
       rod(add(HUB, mul(B, w)), add(HUB, mul(head0, w)), 0.8, { tone: "mid" }),
       rod(add(HUB, mul(head0, w)), add(HUB, mul(head1, w)), 1.9, { tone: "hi" }, 18),

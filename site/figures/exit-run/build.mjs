@@ -531,16 +531,18 @@ function station(homeLit, clinicLit, shut) {
   const s = C.STATION;
   const front = s.y + s.d;
   const plinth = { x: s.x - 1.5, y: s.y - 1.5, w: s.w + 3, d: s.d + 3, r: 1.2 };
-  const out = [box(plinth, 0, 1.6, { tone: "mid" }, 2, 0.4), D(k.corners(plinth, 0.9).map(([x, y]) => at([x, y, 1.6])), { size: 0.36 }), box(s, 1.6, s.h - 1.6, { tone: "mid", inner: L(k.sideSeam(s, 6, P, 2), { tone: "faint" }) }, 2, 0.5)];
+  const sill = C.ROW.z;
+  const out = [box(plinth, 0, sill, { tone: "mid" }, 2, 0.4), D(k.corners(plinth, 0.9).map(([x, y]) => at([x, y, sill])), { size: 0.36 }), box(s, sill, s.h - sill, { tone: "mid", inner: L(k.sideSeam(s, 6, P, 2), { tone: "faint" }) }, 2, 0.5)];
   // A window: its pane (lit while its service is installed), a shutter that drops over it, glazing bars.
   const pane = (u0, u1, lit, closing) => `<path class="er-pane${lit ? " er-lit" : ""}" d="${rectD(u0, -16.4, u1, -9, 0.6)}"/>` + (closing > 0 ? `<path class="er-shutter" d="${rectD(u0, -16.4, u1, -16.4 + 7.4 * closing, 0)}"/>` : "")
     + L(`M${(u0 + u1) / 2} -16.4V-9M${u0} -12.7H${u1}`, { tone: "lo" }) + L(rectD(u0, -16.4, u1, -9, 0.6), { tone: "mid" });
-  out.push(`<g transform="${faceY(front)}">${pane(s.x + 3.5, s.x + 11, homeLit, 0)}${pane(s.x + 15, s.x + 22.5, clinicLit, shut)}<path class="er-pane" d="${rectD(s.x + 9.5, -5.6, s.x + 16.5, -1.6, 0.8)}"/>${L(rectD(s.x + 9.5, -5.6, s.x + 16.5, -1.6, 0.8), { tone: "mid" })}</g>`);
+  const outlet = rectD(CHUTE.x - 3.5, -(CHUTE.z + 2 * C.BEAD + 0.15), CHUTE.x + 3.5, -CHUTE.z, 0.4);
+  out.push(`<g transform="${faceY(front)}">${pane(s.x + 3.5, s.x + 11, homeLit, 0)}${pane(s.x + 15, s.x + 22.5, clinicLit, shut)}<path class="er-pane" d="${outlet}"/>${L(outlet, { tone: "mid" })}</g>`);
   // The sills under the windows and the hood over the outlet the bead leaves by.
   for (const [u0, u1] of [[s.x + 2.4, s.x + 12.1], [s.x + 13.9, s.x + 23.6]]) out.push(box({ x: u0, y: front - 0.2, w: u1 - u0, d: 1.1, r: 0.3 }, 7.4, 0.7, { tone: "mid" }, 2, 0.15));
   out.push(M("ink", box({ x: s.x + 8.9, y: front - 0.2, w: 8.2, d: 1.6, r: 0.3 }, 5.9, 0.6, { tone: "mid" }, 2, 0.15)));
   // Corner pilasters on the three corners in view.
-  for (const [x, y] of [[s.x + s.w, s.y], [s.x, s.y + s.d], [s.x + s.w, s.y + s.d]]) out.push(box({ x: x - 1.1, y: y - 1.1, w: 2.2, d: 2.2, r: 0.3 }, 1.6, s.h - 1.6, { tone: "mid" }, 2, 0.2));
+  for (const [x, y] of [[s.x + s.w, s.y], [s.x, s.y + s.d], [s.x + s.w, s.y + s.d]]) out.push(box({ x: x - 1.1, y: y - 1.1, w: 2.2, d: 2.2, r: 0.3 }, sill, s.h - sill, { tone: "mid" }, 2, 0.2));
   // The two services' marks above their windows.
   out.push(`<g transform="${faceY(front + 0.02)}"><g transform="translate(${s.x + 7.25} -18.2) scale(0.85)">${L(glyphD("tenure"), { tone: "lo" })}</g><g transform="translate(${s.x + 18.75} -18.2) scale(0.85)">${L(glyphD("health"), { tone: "lo" })}</g></g>`);
   // The roof: a jade cornice under an ink lid with a sunk panel and screws.
@@ -564,11 +566,17 @@ function funnel() {
     + M("jade", S(shell, { tone: "mid" }), `<path class="er-funnel-inside" d="${mouth}"/><path class="er-funnel-core" d="${k.ring(C.TRACK.x1 + 1, 0, 1.35, z + 4.14, P, 32)}"/>`, S(lip, { tone: "hi" }), L(G.arcOf(F, 3.68, 4.58, P, { slope: 0.52 }), { tone: "lo" }));
 }
 // The outlet chute: a short marble runway from the station's door to the receipts channel.
-const CHUTE = { x: C.STATION.x + 13, y0: C.STATION.y + C.STATION.d + 1.4, y1: C.ROW.y - 3.2, z: 1.5 };
-function chute() {
+const CHUTE = { x: C.STATION.x + 13, y0: C.STATION.y + C.STATION.d, y1: C.ROW.y - 3.4, z: 1.5 };
+const chuteHeight = (y) => CHUTE.z + (C.ROW.z - CHUTE.z) * (y - CHUTE.y0) / (C.ROW.y - CHUTE.y0);
+function chute(front) {
   const { x, y0, y1, z } = CHUTE;
-  const floor = { x: x - 2.6, y: y0, w: 5.2, d: y1 - y0, r: 0.4 };
-  return grounded(x, (y0 + y1) / 2, 0, { h: 3, w: 3, o: 0.5 }) + M("marble", box(floor, 0, z, { tone: "mid" }, 2, 0.2), ...[-1, 1].map((side) => box({ x: x + side * 2.6 - (side > 0 ? 0.7 : 0), y: y0, w: 0.7, d: y1 - y0, r: 0.2 }, z, 1.1, { tone: "mid" }, 1, 0.1)));
+  const near = Math.sign(G.viewOf(P)[0]) || 1;
+  const F = G.frameOf([x, y0, 0], X3, Y3, Z3);
+  const len = y1 - y0, toe = chuteHeight(y1);
+  const prism = (profile, a, b) => S(G.prismOf(F, profile, a, b, P), { tone: "mid" });
+  const wall = (side) => prism([[0, z], [len, toe], [len, toe + 1.1], [0, z + 1.1]], Math.min(2.6 * side, 1.9 * side), Math.max(2.6 * side, 1.9 * side));
+  if (front) return M("marble", wall(near));
+  return M("marble", prism([[0, 0], [len, 0], [len, toe], [0, z]], -2.6, 2.6), wall(-near));
 }
 // The receipts: a glazed channel along the deck's front; every arriving bead joins the row's end.
 function channel() {
@@ -665,7 +673,8 @@ function beadAt(state) {
   if (s <= CHUTE_S) return [CHUTE.x, C.STATION.y + C.STATION.d / 2, CHUTE.z + C.BEAD];
   if (s <= 2) {
     const t = (s - CHUTE_S) / (2 - CHUTE_S);
-    return [CHUTE.x, C.STATION.y + C.STATION.d + 0.4 + (C.ROW.y - C.STATION.y - C.STATION.d - 0.4) * t, CHUTE.z + C.BEAD - (CHUTE.z - C.ROW.z) * t];
+    const y = CHUTE.y0 + (C.ROW.y - CHUTE.y0) * t;
+    return [CHUTE.x, y, chuteHeight(y) + C.BEAD];
   }
   const t = s - 2;
   const from = [CHUTE.x, C.ROW.y, C.ROW.z + C.BEAD], to = [rowTarget(state.receipts), C.ROW.y, C.ROW.z + C.BEAD];
@@ -739,9 +748,10 @@ function composition(state) {
     `<g data-part="weight">${weight(state.up)}</g>`,
     `<g data-part="station">${station(state.homeLit, state.clinicLit, state.shut)}</g>`,
     funnel(),
-    chute(),
-    `<g data-part="bead-station" style="display:${slot.slot === "station" ? "inline" : "none"}"><g data-part="bead-clip"${slot.clip ? ' clip-path="url(#er-funnel-clip)"' : ""}><g data-part="bead-drop" transform="${beadTransform(state)}" style="opacity:${n2(state.fade * slot.alpha)}">${beadSvg(state.roll ?? 0)}</g></g></g>`,
     channel(),
+    chute(false),
+    `<g data-part="bead-station" style="display:${slot.slot === "station" ? "inline" : "none"}"><g data-part="bead-clip"${slot.clip ? ' clip-path="url(#er-funnel-clip)"' : ""}><g data-part="bead-drop" transform="${beadTransform(state)}" style="opacity:${n2(state.fade * slot.alpha)}">${beadSvg(state.roll ?? 0)}</g></g></g>`,
+    chute(true),
     `<g data-part="row">${row(state.receipts, rowShift(state))}</g>`,
     `<g data-part="bead-row" style="display:${slot.slot === "row" ? "inline" : "none"}"><g data-part="bead-low" transform="${beadTransform(state)}" style="opacity:${n2(state.fade)}">${beadSvg(state.roll ?? 0)}</g></g>`,
     channelGlass(),
@@ -827,7 +837,7 @@ const G = LATHE;
 ${shipped({ railZ, at, S, L, D, M, n2, faceY, rectD, box, cyl, unit, halfway, litAngle, shine, edgeShine, glintAt, glint, ballGlint, brightRod, fadeFill, boxCast, grounded })}
 const DIR = unit([1, 0, SLOPE]);
 const UP = unit([-SLOPE, 0, 1]);
-${shipped({ PIN, leverAngle, ibeam, girder, rod, bandD, chairs, selector, selectorFace, ruler, shadows, tower, base, glyphD, icon, faceLamp, lever, panel, readings, railRun, rails, tie, ties, post, bridgeRails, bridgeTies, hinge, cage, cageCap, hopper, gate, gateLever, leverTip, latchCrank, coinPost, coin, latch, weight, station, funnel, chute, funnelAt, beadSlot, channel, channelGlass, rowAt, rowTarget, rowShift, row, beadAt, seamD, beadSvg, beadTransform, beadShadow, stopS, composition, hitAreas })}
+${shipped({ PIN, leverAngle, ibeam, girder, rod, bandD, chairs, selector, selectorFace, ruler, shadows, tower, base, glyphD, icon, faceLamp, lever, panel, readings, railRun, rails, tie, ties, post, bridgeRails, bridgeTies, hinge, cage, cageCap, hopper, gate, gateLever, leverTip, latchCrank, coinPost, coin, latch, weight, station, funnel, chuteHeight, chute, funnelAt, beadSlot, channel, channelGlass, rowAt, rowTarget, rowShift, row, beadAt, seamD, beadSvg, beadTransform, beadShadow, stopS, composition, hitAreas })}
 const FIXED = [[C.TRACK.x0 - 4, C.BRIDGE.x0], [C.BRIDGE.x1, RAIL_END]];
 ${swingSource}
 ${liveScript()}

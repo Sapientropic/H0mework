@@ -1042,7 +1042,7 @@ const CSS = `
 .iso-stage{outline:none;touch-action:pan-y}
 .iso-stage:focus-visible{box-shadow:0 0 0 1px var(--anatomy-mid)}
 ${SWING_CSS}
-@media (max-width:560px){.iso-plate:has(.rb-svg){overflow:hidden}.rb-svg.iso-svg{width:114%;max-width:none;margin:0 -7%}}
+@media (max-width:560px){.rb-svg.iso-svg{width:104%;max-width:none;margin:0 -2%}}
 `;
 const GLOW_DEFS = `<defs><radialGradient id="rb-glow" cx=".5" cy=".7" r=".75"><stop offset="0" stop-color="#fff1d6"/><stop offset=".55" stop-color="#f1d3a2"/><stop offset="1" stop-color="#c79a62"/></radialGradient></defs>`;
 

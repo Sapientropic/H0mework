@@ -296,11 +296,23 @@ function trough(a, b, { trestles = [], wet = 1 } = {}) {
   return out.join("");
 }
 const troughLip = (a, b) => G.add3(b, G.mul3(G.frameAlong(a, G.sub3(b, a)).v, 0.9));
+function leftDeckTrestles() {
+  const [a, b, c] = C.LEFT;
+  const ab = G.sub3(b, a), bc = G.sub3(c, b);
+  const bend = G.frameAlong(a, ab), descent = G.frameAlong(b, bc);
+  return troughTrestle(bend, G.len3(ab), { t: 0.98, z0: 0 })
+    + [0.45, 0.8].map((t) => troughTrestle(descent, G.len3(bc), { t, z0: 0 })).join("");
+}
+function leftStepTrestle() {
+  const [a, b] = C.LEFT;
+  const d = G.sub3(b, a);
+  return troughTrestle(G.frameAlong(a, d), G.len3(d), { t: 0.62, z0: C.STEPS[0].h });
+}
 function troughs() {
   const [a, b, c] = C.LEFT;
   return [
-    trough(a, b, { trestles: [{ t: 0.62, z0: 16 }, { t: 0.98, z0: 0 }] }),
-    trough(b, c, { trestles: [{ t: 0.45, z0: 0 }, { t: 0.8, z0: 0 }] }),
+    trough(a, b),
+    trough(b, c),
     jet(troughLip(b, c), [C.BASIN[0] + 3, C.BASIN[1] - 6, C.BASIN[3] - 0.38], 1.5, 1, { slope: (c[2] - b[2]) / Math.hypot(c[0] - b[0], c[1] - b[1]) }),
     jet([C.SOURCE[0] - 11.4, C.SOURCE[1], C.SOURCE[2] + 5.1], [a[0] - 1.8, a[1], a[2] + 0.88], 0.9, 1, { slope: -0.1, foam: false }),
   ].join("");
@@ -654,7 +666,8 @@ function qruler() {
   const ticks = [];
   for (let i = 0; i <= MD.Q; i++) ticks.push(k.pathOf([at([x - 0.9, face, z0 + i * C.Q_UP]), at([x + (i === MD.Q ? 0.9 : 0.1), face, z0 + i * C.Q_UP])]));
   out.push(L(ticks.join(""), { tone: "lo" }));
-  out.push(k.faceTextSvg(`${faceY(face)} translate(${x - 1.4} ${-(z0 + MD.Q * C.Q_UP) + 1})`, "Q", { size: 2.8, tone: "mid", anchor: "end" }));
+  const label = { x: x - 2.2, y: y - 0.7, w: 4.4, d: 1.4, r: 0.25 };
+  out.push(M("marble", box(label, top - 1.5, 3.2, { tone: "mid" }, 2)), k.faceTextSvg(`${faceY(y + 0.72)} translate(${x} ${-top + 0.95})`, "Q", { size: 2.8, tone: "mid", anchor: "middle" }));
   return out.join("");
 }
 // The spigot stands high enough for the jet to clear the cup's lip before falling to the water.
@@ -712,15 +725,16 @@ function tally(where) {
 // --- composition: back to front -----------------------------------------------------------------------
 
 function composition(state) {
-  // The stand, outboard trestle and wheel occupy successive ranges along x.
+  // The deck trestles flank the stand. Its own trestles are drawn above their steps.
   const rotor = `<g data-part="wheel-back">${wheel(state.turn, false)}</g><g data-part="mill-stream">${wheelStream(state.open)}</g><g data-part="wheel-front">${wheel(state.turn, true)}</g>`;
-  const trestle = millTrestle();
+  const left = leftDeckTrestles(), right = millTrestle();
   const standFirst = G.viewOf(P)[0] > 0;
   return [
     WATER_DEFS,
     base(),
     `<g data-part="counter">${counter(state)}</g>`,
-    standFirst ? stand() + trestle + rotor : rotor + trestle + stand(),
+    standFirst ? left + stand() + right + rotor : rotor + right + stand() + left,
+    leftStepTrestle(),
     source(),
     `<g data-part="right">${rightTrough(state.open)}</g>`,
     `<g data-part="coinbox">${coinbox(state.coin)}</g>`,
@@ -819,7 +833,7 @@ const CSS = `
 .iso-stage{outline:none;touch-action:pan-y}
 .iso-stage:focus-visible{box-shadow:0 0 0 1px var(--anatomy-mid)}
 ${SWING_CSS}
-@media (max-width:560px){.iso-plate:has(.cl-svg){overflow:hidden}.cl-svg.iso-svg{width:114%;max-width:none;margin:0 -7%}}
+@media (max-width:560px){.cl-svg.iso-svg{width:104%;max-width:none;margin:0 -2%}}
 @media (prefers-reduced-motion:reduce){.cl-svg .cl-flow,.cl-svg .cl-stream-shine{animation:none}}
 `;
 
@@ -835,7 +849,7 @@ ${shipped({ C, ARROW, COUNTER, TRAY, FRAME, WHEEL_FRONT_BEARING, X3, Y3, Z3, WAT
 const k = { ${Object.keys(k).join(", ")} };
 const G = LATHE;
 ${shipped({ at, S, L, D, M, n2, faceY, rectD, box, cyl, FV, unit, rod, jet, shadow, halfway, litAngle, shine, edgeShine, glintAt, glint, ballGlint, brightRod, fadeFill, boxCast, grounded })}
-${shipped({ levelOf, smoothstep, ladlePose, ladleSvg, ripples, rimSvg, base, counterFace, counter, tray, stand, source, troughTrestle, trough, troughLip, troughs, millFlow, wheelStream, millTrestle, rightTrough, vessel, ruler, seal, tablet, basin, wheelShaft, wheel, camCentre, hammerFrame, followerCentre, camAngle, hammer, coinbox, millLamps, jar, qruler, spigotFrame, spigot, cup, rack, tally, composition, hitAreas })}
+${shipped({ levelOf, smoothstep, ladlePose, ladleSvg, ripples, rimSvg, base, counterFace, counter, tray, stand, source, troughTrestle, trough, troughLip, leftDeckTrestles, leftStepTrestle, troughs, millFlow, wheelStream, millTrestle, rightTrough, vessel, ruler, seal, tablet, basin, wheelShaft, wheel, camCentre, hammerFrame, followerCentre, camAngle, hammer, coinbox, millLamps, jar, qruler, spigotFrame, spigot, cup, rack, tally, composition, hitAreas })}
 ${swingSource}
 ${liveScript()}
 `;
