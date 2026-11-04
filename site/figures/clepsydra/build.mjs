@@ -750,7 +750,7 @@ const CSS = `
 .iso-stage{outline:none;touch-action:pan-y}
 .iso-stage:focus-visible{box-shadow:0 0 0 1px var(--anatomy-mid)}
 ${SWING_CSS}
-@media (max-width:560px){.iso-plate:has(.cl-svg){overflow:hidden}.iso-plate:has(.cl-svg) .iso-plate-corner[data-corner="title"]{max-width:calc(100% - 62px);white-space:normal;text-align:right;line-height:1.35}.cl-svg.iso-svg{width:114%;max-width:none;margin:0 -7%}}
+@media (max-width:560px){.iso-plate:has(.cl-svg){overflow:hidden}.cl-svg.iso-svg{width:114%;max-width:none;margin:0 -7%}}
 @media (prefers-reduced-motion:reduce){.cl-svg .cl-flow,.cl-svg .cl-stream-shine{animation:none}}
 `;
 

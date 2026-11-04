@@ -372,7 +372,7 @@ const CSS = `
 .iso-stage:focus-visible{box-shadow:0 0 0 1px var(--anatomy-mid)}
 .wt-svg [data-part="tower"],.wt-svg [data-part^="lever"],.wt-svg [data-part="beads"]{cursor:pointer}
 [data-figure="whole-ledger-tower"] .iso-swatch[data-mark="red"] path{stroke:var(--cinnabar,#c8372d)}
-@media (max-width:560px){.wt-svg.iso-svg{width:106%;max-width:none;margin:0 -3%}[data-figure="whole-ledger-tower"] .iso-plate-corner[data-corner="hint"]{display:none}[data-figure="whole-ledger-tower"] .iso-plate-corner[data-corner="readout"]{left:0;white-space:normal;text-align:right}}
+@media (max-width:560px){.wt-svg.iso-svg{width:106%;max-width:none;margin:0 -3%}}
 `;
 
 const COPY = {

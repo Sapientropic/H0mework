@@ -575,7 +575,7 @@ export function plateHtml({ fig, title, hint, readout = "", keys = [], caption, 
     const legend = keys.length || caption
         ? `<figcaption class="iso-legend">${keys.length ? `<span class="iso-keys">${keys.map((key) => `<span class="iso-key">${swatchSvg(key.mark)}${escape(key.label)}</span>`).join("")}</span>` : ""}${refs.length ? `<span class="iso-refs">${refs.map((ref) => `<span>${escape(ref)}</span>`).join("")}</span>` : ""}${text}</figcaption>`
         : "";
-    return `<figure class="iso-figure"><div class="iso-plate"><div class="iso-plate-corners" aria-hidden="true">${corner("fig", fig)}${title ? corner("title", title) : ""}${hint ? corner("hint", hint) : ""}${corner("readout", readout, " data-readout")}</div>${body}${SHEEN_SVG}</div>${legend}</figure>`;
+    return `<figure class="iso-figure"><div class="iso-plate"><div class="iso-plate-corners iso-plate-header" aria-hidden="true">${corner("fig", fig)}${title ? corner("title", title) : ""}</div>${body}${SHEEN_SVG}<div class="iso-plate-corners iso-plate-footer" aria-hidden="true">${hint ? corner("hint", hint) : ""}${corner("readout", readout, " data-readout")}</div></div>${legend}</figure>`;
 }
 export function pageHtml({ title, theme = "dark", body, script = "", width = 650 }) {
     return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>${escape(title)}</title><style>${ISO_CSS}${PAGE_CSS.replace("__WIDTH__", String(width))}</style></head><body class="iso" data-theme="${theme}"><main class="iso-page">${body}</main>${script ? `<script type="module">${script.replace(/<\/(script)/gi, "<\\/$1")}</script>` : ""}</body></html>`;
@@ -666,13 +666,15 @@ export const ISO_CSS = `
 .iso-line[data-flow]{animation:iso-flow 1600ms linear infinite}
 .iso-dots circle[data-pulse]{animation:iso-pulse 1600ms steps(1,end) infinite;animation-delay:var(--pulse-at,0ms)}
 .iso-figure{margin:32px 0 36px}
-.iso-plate{position:relative;padding:52px 24px;border-radius:0;background:var(--anatomy-card);box-shadow:0 0 0 1px var(--anatomy-mid);--anatomy-paper:var(--anatomy-card)}
-.iso-plate-corners{position:absolute;inset:18px 20px;pointer-events:none}
-.iso-plate-corner{position:absolute;color:var(--anatomy-muted);font-family:var(--anatomy-mono);font-size:10.5px;line-height:1;letter-spacing:.04em;white-space:nowrap}
-.iso-plate-corner[data-corner="fig"]{top:0;left:0;color:var(--anatomy-text)}
-.iso-plate-corner[data-corner="title"]{top:0;right:0;text-transform:uppercase;letter-spacing:.1em}
-.iso-plate-corner[data-corner="hint"]{bottom:0;left:0;text-transform:uppercase;letter-spacing:.1em}
-.iso-plate-corner[data-corner="readout"]{right:0;bottom:0;color:var(--anatomy-text);font-variant-numeric:tabular-nums}
+.iso-plate{position:relative;padding:18px 24px;border-radius:0;background:var(--anatomy-card);box-shadow:0 0 0 1px var(--anatomy-mid);--anatomy-paper:var(--anatomy-card)}
+.iso-plate-corners{display:flex;gap:6px 16px;min-width:0;pointer-events:none}
+.iso-plate-header{margin-bottom:20px}
+.iso-plate-footer{flex-wrap:wrap;margin-top:20px}
+.iso-plate-corner{min-width:0;max-width:100%;color:var(--anatomy-muted);font-family:var(--anatomy-mono);font-size:10.5px;line-height:1.35;letter-spacing:.04em;overflow-wrap:anywhere}
+.iso-plate-corner[data-corner="fig"]{flex:none;color:var(--anatomy-text);white-space:nowrap}
+.iso-plate-corner[data-corner="title"],.iso-plate-corner[data-corner="readout"]{margin-left:auto;text-align:right}
+.iso-plate-corner[data-corner="title"],.iso-plate-corner[data-corner="hint"]{text-transform:uppercase;letter-spacing:.1em}
+.iso-plate-corner[data-corner="readout"]{color:var(--anatomy-text);font-variant-numeric:tabular-nums}
 .iso-plate .iso-svg{margin:0 auto}
 .iso-legend{display:grid;gap:8px;margin-top:12px;color:var(--anatomy-muted);font-size:13px;line-height:1.55}
 .iso-keys{display:flex;flex-wrap:wrap;gap:6px 18px}
@@ -706,6 +708,6 @@ export const ISO_CSS = `
 .iso-defs{position:absolute;width:0;height:0;overflow:hidden}
 .iso[data-theme="light"] [data-mat="ink"] :not([data-lit])>.iso-top{fill:url(#iso-sheen-ink) var(--anatomy-top)}
 .iso[data-theme="light"] [data-mat="jade"] :not([data-lit])>.iso-top{fill:url(#iso-sheen-jade) var(--anatomy-top)}
-@media (max-width:560px){.iso-plate{padding:48px 12px 70px}.iso-plate-corner[data-corner="hint"]{bottom:18px}}
+@media (max-width:560px){.iso-plate{padding:18px 12px}.iso-plate-corners{margin-inline:8px}.iso-plate-footer{display:grid;grid-template-columns:minmax(0,1fr)}}
 @media (prefers-reduced-motion:reduce){.iso-line[data-flow],.iso-dots circle[data-pulse]{animation:none}}
 `;
