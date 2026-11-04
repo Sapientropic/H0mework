@@ -35,19 +35,20 @@ const C = {
   // The belt runs from its outer roller (x1) in to its inner roller (x0).
   BELT: { x0: 16.6, x1: 56, half: 4.2, z: 9 },
   // The dough tube stands over the belt's outer end.
-  TUBE: { x: 52.6, r: 2.35, z0: 12.4 },
-  DOUGH: 1.75,
-  LOAF: 2,
-  LOAF_LEN: 6,
+  // Its collar clears a ball resting on the belt; its bin clears the reader on the gate.
+  TUBE: { x: 54.6, r: 2.1, z0: 14.2, collar: 1.3 },
+  DOUGH: 1.6,
+  LOAF: 1.9,
+  LOAF_LEN: 5.8,
   GATE: 44,
   // The oven's vault: walls from `base` to `wall`, a half-round crown above them.
   OVEN: { x0: 21, x1: 37, y: 7, base: 4.2, wall: 10.4, crown: 17.4 },
-  MOUTH: { half: 5.2, z0: 6.6, z1: 15.2, spring: 12.2 },
-  PIVOT: [14.6, 0, 8.4],
-  CHUTE: 9.2,
+  MOUTH: { half: 5.2, z0: 6.6, z1: 15.2, spring: 12.2, hinge: 13.4, hem: 9.8 },
+  PIVOT: [14.15, 0, 8.4],
+  CHUTE: { reach: 7.6, drop: 0.85, half: 2.12, wall: 0.28, floor: 0.5, lip: 1.1, taper: 1.6, runout: 2.4 },
   // The stand in the middle and the baskets on it.
   STAND: { w: 11.4, d: 15, top: 3.4 },
-  BASKET: { x: 6, r: 4.3, h: 3.4 },
+  BASKET: { x: 6, r: 4.7, h: 3.4, floor: 0.45, foot: 3.95, wall: 0.2 },
   SLOTS: { 丙: -9.6, 甲: 0, 乙: 9.6 },
   REEL: { x: 58, y: -17, z: 33.8, r: 6.6 },
   TAPE: { y: -4.6, z0: 35, z1: 39, frame: 8 },
@@ -159,13 +160,18 @@ function grounded(x, y, r, { z = 0, h = 0, w = r * 0.85, o = 1 } = {}) {
   return defs + `<path class="iso-halo" d="${k.pathOf(outline.map(([px, py]) => at([px, py, z])), true)}" style="${fill};filter:blur(2.4px);transform:none;opacity:calc(var(--fig-shadow) * ${n2(1.3 * o)})"/>` + core;
 }
 const shadow = (x, y, r, o = 0.35, { z = 0, h = 0, w = r * 0.8 } = {}) => `<path class="iso-halo" d="${k.haloOf({ x: x - r, y: y - r, w: 2 * r, d: 2 * r, r }, z, 0.1, P)}" style="filter:blur(2.5px);opacity:calc(var(--anatomy-halo-opacity) * ${o})"/>` + grounded(x, y, r * 0.86, { z, h, w, o: o / 0.35 * 0.8 });
-// The visible front half of a thin band round an upright tube, from z0 to z1: no caps, so the tube shows through.
-const bandD = (x, y, r, z0, z1) => {
+const halfRing = (x, y, r, z, far = false) => {
   const [vx, vy] = G.viewOf(P);
-  const f = Math.atan2(vy, vx);
-  const arc = (z, back) => Array.from({ length: 25 }, (_, i) => { const t = f - Math.PI / 2 + ((back ? 24 - i : i) / 24) * Math.PI; return at([x + r * Math.cos(t), y + r * Math.sin(t), z]); });
-  return k.pathOf([...arc(z0, false), ...arc(z1, true)], true);
+  const f = Math.atan2(vy, vx) + (far ? Math.PI : 0);
+  return Array.from({ length: 25 }, (_, i) => {
+    const t = f + (i / 24 - 0.5) * Math.PI;
+    return at([x + r * Math.cos(t), y + r * Math.sin(t), z]);
+  });
 };
+const bandD = (x, y, r, z0, z1, far = false) =>
+  k.pathOf([...halfRing(x, y, r, z0, far), ...halfRing(x, y, r, z1, far).reverse()], true);
+const lipD = (x, y, inner, outer, z, far) =>
+  k.pathOf([...halfRing(x, y, outer, z, far), ...halfRing(x, y, inner, z, far).reverse()], true);
 // A lens on a plane facing +y at (x, y, z).
 const lensY = (x, y, z, r, className) => `<path class="${className}" d="${G.circleOf(G.frameOf([x, y, z], Y3, X3, Z3), 0, r, P, 20)}"/>`;
 // The clip for what lies inside an open container: its opening's outline and everything above it, so a part
@@ -233,11 +239,14 @@ function tangentPoint(c, r, g, sense) {
 function tapePath(q) {
   const { REEL, TAPE } = C;
   const [rL, rR] = packOf(q);
-  const gL = [-C.READER.x, TAPE.y], gR = [C.READER.x, TAPE.y];
+  const gL = [-C.READER.x - READ_HALF, TAPE.y], gR = [C.READER.x + READ_HALF, TAPE.y];
   return { rL, rR, pts: [tangentPoint([-REEL.x, REEL.y], rL, gL, 1), gL, gR, tangentPoint([REEL.x, REEL.y], rR, gR, -1)] };
 }
-// Where the tape's frame j stands along the tape (0 at the private reader) after q steps.
-const frameAt = (j, q) => C.TAPE.frame * (q - j - 1);
+// The tape runs straight through each reader and turns off toward its reel only past the reader's outer cheek.
+const READ_HALF = 4.9;
+// Where the tape's frame j stands along the tape (0 where it leaves the supply side) after q steps: frame j is
+// under the private reader after j + 1 steps.
+const frameAt = (j, q) => READ_HALF + C.TAPE.frame * (q - j - 1);
 // A reel on its pillar: the pillar, a collar and the flange (drawn once), then what turns: the flange's three
 // windows, the wound tape and the hub.
 function reelBase(side) {
@@ -300,14 +309,19 @@ function tape(q, stamps, fade = 1) {
 // Its shadow and its sleeve go behind everything; its shaft stands in front of the private line's crate.
 const GUIDE = [0, C.TAPE.y - 1];
 const guideShadow = () => "";
+// Above everything in the middle the post rises on behind the tape: its upper shaft and jade capital go into the
+// back row with the sleeve, so the tape passes in front of them.
+const GUIDE_SPLIT = 24;
 function guideSleeve() {
   const F = FV(GUIDE[0], GUIDE[1], 0);
-  return M("jade", S(G.disc(C.TAPE.z0 - 0.5, C.TAPE.z1 + 0.5, 1, F, P, { bevel: 0.15 }), { tone: "mid", inner: shine(F, C.TAPE.z0, C.TAPE.z1, 1.01, 1.01, 0.8) }), S(G.disc(C.TAPE.z1 + 0.5, C.TAPE.z1 + 1, 1.4, F, P, { bevel: 0.15 }), { tone: "mid" }));
+  const [x, y] = GUIDE;
+  return M("marble", cyl(x, y, 0.55, GUIDE_SPLIT, C.TAPE.z0 - GUIDE_SPLIT - 1.2, { tone: "mid", crease: "none" }, 12)) + M("jade", cyl(x, y, 0.9, C.TAPE.z0 - 1.2, 0.6, { tone: "mid" }, 14, 0.15)) + M("jade", S(G.disc(C.TAPE.z0 - 0.5, C.TAPE.z1 + 0.5, 1, F, P, { bevel: 0.15 }), { tone: "mid", inner: shine(F, C.TAPE.z0, C.TAPE.z1, 1.01, 1.01, 0.8) }), S(G.disc(C.TAPE.z1 + 0.5, C.TAPE.z1 + 1, 1.4, F, P, { bevel: 0.15 }), { tone: "mid" }));
 }
 function guideShaft() {
   const [x, y] = GUIDE;
   const z = C.STAND.top;
-  return M("marble", cyl(x, y, 1.5, z, 0.7, { tone: "mid" }, 18, 0.2), cyl(x, y, 0.55, z + 0.7, C.TAPE.z0 - z - 1.9, { tone: "mid", crease: "none" }, 12)) + M("jade", cyl(x, y, 0.9, C.TAPE.z0 - 1.2, 0.6, { tone: "mid" }, 14, 0.15));
+  // A collar marks where the post's two lengths join.
+  return M("marble", cyl(x, y, 1.5, z, 0.7, { tone: "mid" }, 18, 0.2), cyl(x, y, 0.55, z + 0.7, GUIDE_SPLIT - z - 0.7, { tone: "mid", crease: "none" }, 12), cyl(x, y, 0.85, GUIDE_SPLIT - 0.35, 0.7, { tone: "mid" }, 14, 0.15));
 }
 // A reader astride the tape, the capital of its gate's back post: a back plate behind the tape, two front
 // cheeks with the read window between them, a bridge with its lamp, and the punch (private) or feeler
@@ -349,62 +363,80 @@ function readerMoving(side, lamp, dip) {
 // its foot and a covered bin over it. `stock` is how many balls are in the tube, `drop` how many pitches the
 // stack still has to fall after a ball has gone, `refill` the balls still falling in from the bin (each its
 // seat and its height above it), `falling` the ball on its way out, drawn behind the collar.
+const CLAMPS = () => [C.TUBE.z0 + 4, TUBE_TOP - 4.6];
 function tubePost(side) {
   const { TUBE } = C;
   const x = side * TUBE.x, y = -6.8;
   const top = TUBE_TOP - 4;
   return grounded(x, y, 1.6, { h: top, w: 0.9, o: 0.6 }) + M("marble", box(span(x - 1.4, x + 1.4, y - 1.4, y + 1.4, 0.3), 0, 0.8, { tone: "mid" }, 2, 0.2), box(span(x - 0.65, x + 0.65, y - 0.65, y + 0.65, 0.15), 0.8, top - 0.8, { tone: "mid", inner: edgeShine([x + 0.65, y + 0.65, 2], [x + 0.65, y + 0.65, top - 1], 4) }, 1, 0.1))
-    + M("ink", ...[TUBE.z0 + 4, top - 1.2].map((z) => brightRod([x, y + 0.65, z], [x, -TUBE.r - 0.2, z], 0.28, { tone: "mid" }, 8, 0.6)));
+    + M("ink", ...CLAMPS().map((z) => brightRod([x, y + 0.65, z], [x, -TUBE.r - 0.3, z], 0.28, { tone: "mid" }, 8, 0.6)));
 }
 function tube(side, stock, drop, refill, fall, falling = "") {
-  const { TUBE, DOUGH } = C;
+  const { TUBE } = C;
   const x = side * TUBE.x, r = TUBE.r, z0 = TUBE.z0;
-  const out = [`<path class="rb-glass-back" d="${k.cylinder(x, 0, r, z0, TUBE_TOP - z0, P, 28).fill}"/>`];
+  const inner = r - 0.2, outer = r + 0.65, bottom = z0 - TUBE.collar;
+  const collar = (d) => M("jade", S({ fill: d, outline: d }, { tone: "mid", flat: true }));
+  const glass = k.cylinder(x, 0, r, z0, TUBE_TOP - z0, P, 28);
+  const out = [`<path class="rb-glass-back" d="${glass.fill}"/>`,
+    collar(bandD(x, 0, inner, bottom, z0, true)), collar(lipD(x, 0, inner, outer, z0, true))];
+  // Each clamp is a whole ring: its back half, where the post's arm takes hold, shows through the glass.
+  for (const z of CLAMPS()) { const d = bandD(x, 0, r + 0.3, z - 0.45, z + 0.45, true); out.push(M("ink", S({ fill: d, outline: d }, { tone: "mid", flat: true }))); }
   const ball = (c) => placed(c, "dough", () => doughSvg([0, 0, 0]));
+  out.push(falling);
   for (let i = 0; i < stock - refill.length; i++) out.push(ball(tubeSeat(side, i, drop)));
   for (const [i, lift] of refill) if (tubeSeat(side, i)[2] + lift < TUBE_TOP + 1) out.push(ball(tubeSeat(side, i, lift / PITCH)));
-  out.push(falling);
-  const glass = k.cylinder(x, 0, r, z0, TUBE_TOP - z0, P, 28);
   out.push(`<path class="rb-glass" d="${glass.fill}"/>`, L(glass.outline, { tone: "mid" }), k.fadeLineSvg([at([x - r * 0.42, r * 0.82, z0 + 2.5]), at([x - r * 0.42, r * 0.82, TUBE_TOP - 2.5])], { fade: [2.4, 2.4], tone: "hi", className: "rb-glass-shine" }));
-  for (const z of [z0 + 4, TUBE_TOP - 5.2]) { const d = bandD(x, 0, r + 0.3, z - 0.45, z + 0.45); out.push(M("ink", S({ fill: d, outline: d }, { tone: "mid", flat: true }))); }
+  for (const z of CLAMPS()) { const d = bandD(x, 0, r + 0.3, z - 0.45, z + 0.45); out.push(M("ink", S({ fill: d, outline: d }, { tone: "mid", flat: true }))); }
   // The escapement: a jade collar round the tube's foot, and the tab that swings out to let one ball go.
-  const F = FV(x, 0, z0 - 1.3);
-  out.push(M("jade", S(G.ringBand(0, 1.3, r - 0.2, r + 0.65, F, P), { tone: "mid" })), D(G.dotsOf(F, 0.65, r + 0.67, 6, P, { phase: 0.4 }), { size: 0.3 }));
+  out.push(collar(bandD(x, 0, outer, bottom, z0)), collar(lipD(x, 0, inner, outer, z0, false)),
+    D(G.dotsOf(FV(x, 0, bottom), TUBE.collar / 2, outer + 0.02, 6, P, { phase: 0.4 }), { size: 0.3 }));
   const swing = fall > 0 && fall < 1 ? Math.sin(Math.PI * Math.min(1, fall * 2.4)) : 0;
   out.push(M("ink", brightRod([x + side * 0.4, r + 0.55, z0 - 0.65], [x + side * (1.5 + 1.1 * swing), r + 2.3, z0 - 1 - 0.5 * swing], 0.28, { tone: "mid" }, 8, 0.6)));
   // The bin over the tube, its jade lid and knob.
   const B = FV(x, 0, TUBE_TOP);
-  out.push(M("ink", cyl(x, 0, r + 0.55, TUBE_TOP - 0.2, 0.7, { tone: "mid" }, 24, 0.15)), M("marble", S(G.solidOf([[0.5, r + 0.45], [1.2, r + 0.9, 1], [2.8, 3.9, 1], [3.5, 4.1]], B, P, { smooth: true }), { tone: "mid", inner: shine(B, 1.3, 3, r + 1, 3.9, 1) }), L(G.arcOf(B, 3.1, 4, P), { tone: "lo" })),
-    M("jade", S(G.disc(3.5, 4.2, 3.8, B, P, { bevel: 0.3 }), { tone: "mid" }), S(G.sphereOf([x, 0, TUBE_TOP + 4.85], 0.75, P), { tone: "mid" })));
+  out.push(M("ink", cyl(x, 0, r + 0.5, TUBE_TOP - 0.2, 0.6, { tone: "mid" }, 24, 0.15)), M("marble", S(G.solidOf([[0.4, r + 0.4], [0.9, r + 0.75, 1], [2.1, 3.4, 1], [2.6, 3.6]], B, P, { smooth: true }), { tone: "mid", inner: shine(B, 1, 2.3, r + 0.9, 3.4, 0.8) }), L(G.arcOf(B, 2.3, 3.5, P), { tone: "lo" })),
+    M("jade", S(G.disc(2.6, 3.2, 3.3, B, P, { bevel: 0.25 }), { tone: "mid" }), S(G.sphereOf([x, 0, TUBE_TOP + 3.75], 0.6, P), { tone: "mid" })));
   return out.join("");
 }
 // The belt: two side rails, the rubber band between them, a roller at each end and two pairs of legs.
 const beltZ = C.BELT.z;
-function belt(side) {
+// The belt is drawn in three lengths: the one beyond the oven's hidden end, the one inside it (seen only through
+// its mouth) and the one in front of its open end, each in its own place among the oven's parts.
+function beltSpans(side) {
+  const { BELT, OVEN } = C;
+  const inner = [BELT.x0, OVEN.x0], middle = [OVEN.x0, OVEN.x1], outer = [OVEN.x1, BELT.x1];
+  const innerSeen = endFaces(side).some((x) => Math.abs(x) === OVEN.x0);
+  return { far: innerSeen ? outer : inner, middle, near: innerSeen ? inner : outer };
+}
+function belt(side, [u0, u1]) {
   const { BELT } = C;
-  const xa = side * BELT.x0, xb = side * BELT.x1;
+  const xa = side * u0, xb = side * u1;
   const out = [];
-  for (const u of [19.4, 53.4]) {
+  const railDepth = 1.8;
+  for (const u of [19.4, 52.2].filter((u) => u > u0 && u < u1)) {
     const x = side * u;
-    out.push(M("ink", ...[-1, 1].map((s) => box(span(x - 0.6, x + 0.6, s * (BELT.half + 0.4) - 0.6, s * (BELT.half + 0.4) + 0.6, 0.15), 0, beltZ - 1.4, { tone: "mid" }, 1)), box(span(x - 0.5, x + 0.5, -BELT.half - 0.4, BELT.half + 0.4, 0.1), 2.6, 0.9, { tone: "mid" }, 1)));
+    const leg = (s) => box(span(x - 0.6, x + 0.6, s * (BELT.half + 0.4) - 0.6, s * (BELT.half + 0.4) + 0.6, 0.15), 0, beltZ - railDepth, { tone: "mid" }, 1);
+    out.push(M("ink", leg(-1), box(span(x - 0.5, x + 0.5, -BELT.half + 0.2, BELT.half - 0.2, 0.1), 2.6, 0.9, { tone: "mid" }, 1), leg(1)));
   }
-  const band = span(xa, xb, -BELT.half, BELT.half, 0.2);
-  out.push(M("ink", box(band, beltZ - 0.9, 0.9, { tone: "lo" }, 2, 0.1)));
-  for (const s of [-1, 1]) {
-    const rail = span(xa - side * 0.6, xb + side * 0.6, s * BELT.half + (s < 0 ? -0.9 : 0), s * BELT.half + (s < 0 ? 0 : 0.9), 0.2);
-    out.push(M("ink", box(rail, beltZ - 1.8, 2.4, { tone: "mid", inner: s > 0 ? edgeShine([xa, rail.y + rail.d, beltZ + 0.55], [xb, rail.y + rail.d, beltZ + 0.55], 5) : "" }, 2, 0.15)));
-  }
-  // The rollers' axle caps on the near rail.
-  out.push(D([xa, xb].map((xx) => at([xx, BELT.half + 0.9, beltZ - 0.6])), { size: 0.45 }));
+  // The rails overrun the band at the belt's two real ends, where its rollers turn.
+  const ra = u0 === BELT.x0 ? -0.6 : 0, rb = u1 === BELT.x1 ? 0.6 : 0;
+  const band = span(xa, xb, -BELT.half, BELT.half, u0 === BELT.x0 || u1 === BELT.x1 ? 0.2 : 0);
+  const sideRail = (s) => {
+    const rail = span(xa + side * ra, xb + side * rb, s * BELT.half + (s < 0 ? -0.9 : 0), s * BELT.half + (s < 0 ? 0 : 0.9), 0.2);
+    return box(rail, beltZ - railDepth, 2.4, { tone: "mid", inner: s > 0 ? edgeShine([xa, rail.y + rail.d, beltZ + 0.55], [xb, rail.y + rail.d, beltZ + 0.55], 3) : "" }, 2, 0.15);
+  };
+  out.push(M("ink", sideRail(-1), box(band, beltZ - 0.9, 0.9, { tone: "lo" }, 2, 0.1), sideRail(1)));
+  // The rollers' axle caps on the near rail, at the belt's real ends.
+  out.push(D([[u0, BELT.x0], [u1, BELT.x1]].filter(([u, end]) => u === end).map(([u]) => at([side * u, BELT.half + 0.9, beltZ - 0.6])), { size: 0.45 }));
   return out.join("");
 }
 // The cleats across the band, carried along as the belt runs.
-function cleats(side, travel) {
+function cleats(side, travel, [u0, u1]) {
   const { BELT } = C;
   const lines = [];
   const step = 3;
   const off = ((travel % step) + step) % step;
-  for (let u = BELT.x0 + 0.6 + off; u < BELT.x1 - 0.4; u += step) lines.push(k.pathOf([at([side * u, -BELT.half, beltZ]), at([side * u, BELT.half, beltZ])]));
+  for (let u = BELT.x0 + 0.6 + off; u < BELT.x1 - 0.4; u += step) if (u > u0 + 0.2 && u < u1 - 0.2) lines.push(k.pathOf([at([side * u, -BELT.half, beltZ]), at([side * u, BELT.half, beltZ])]));
   return L(lines.join(""), { tone: "faint" });
 }
 // The gate across the belt: a plate that slides up between two grooved posts under a crossbar; the back post
@@ -420,7 +452,8 @@ function gateBack(side) {
 function gatePlate(side, lift) {
   const x = side * C.GATE;
   // The plate rides in the posts' grooves above the side rails; a tongue below it closes the gap between them.
-  const z = beltZ + 0.3 + 4.6 * lift;
+  // Raised, its top stops just under the crossbar.
+  const z = beltZ + 0.3 + 4.4 * lift;
   const plan = span(x - 0.4, x + 0.4, -GATE_POST + 0.5, GATE_POST - 0.5, 0.1);
   const tongue = span(x - 0.35, x + 0.35, -C.BELT.half + 0.15, C.BELT.half - 0.15, 0.1);
   return M("marble", box(tongue, z, 1, { tone: "mid" }, 1, 0.1), box(plan, z + 0.9, 5.4, { tone: "mid", inner: edgeShine([x + side * 0.4, plan.y + 0.6, z + 6], [x + side * 0.4, plan.y + plan.d - 0.6, z + 6], 2) }, 1, 0.15), D([at([x + 0.4, 0, z + 4.9])], { size: 0.42 }));
@@ -465,7 +498,6 @@ function lock(state) {
     const bow = Array.from({ length: 20 }, (_, j) => { const t = (j / 20) * Math.PI * 2; return [1.05 * Math.cos(t) * (Math.abs(Math.cos(t)) ** -0.25 || 1) * 0.92, 0.62 * Math.sin(t)]; });
     out.push(M("marble", S(G.prismOf(K, bow, 1.1, 1.45, P), { tone: "mid" })), `<path class="rb-keyhole" d="${G.circleOf(G.frameOf(G.pointOf(K, 1.46, 0.55, 0), Y3, [Math.cos(a), 0, Math.sin(a)], [-Math.sin(a), 0, Math.cos(a)]), 0, 0.2, P, 10)}"/>`);
   }
-  out.push(flag(state.flag));
   return out.join("");
 }
 // The flag: up the mast and spread out when raised, hanging limp at the foot when lowered.
@@ -548,6 +580,7 @@ function ovenDark(side, heat) {
   for (const xe of endFaces(side)) {
     const m = planeOf([xe, 0, 0], Y3);
     out.push(`<path class="rb-mouth" transform="${m}" d="${mouthD(0)}"/>`, `<path class="rb-heat" transform="${m}" d="${mouthD(0)}" style="opacity:${n2(heat * 0.5)}"/>`);
+    out.push(`<path class="rb-mouth-frame" transform="${m}" d="${mouthD(0)}"/>`);
   }
   out.push(`<path class="rb-mouth" d="${portD(side)}"/>`, `<path class="rb-heat" d="${portD(side)}" style="opacity:${n2(heat)}"/>`);
   return out.join("");
@@ -564,19 +597,19 @@ function ovenFront(side, heat, flaps) {
   // The curtain at each visible mouth: six strips hung from a bar; a strip swings out as a piece pushes by.
   for (const xe of endFaces(side)) {
     const out_ = Math.sign(xe - ovenCenter(side));
-    const swingOf = flaps[xe === side * C.OVEN.x0 ? 0 : 1];
+    const outlet = xe === side * OVEN.x0;
+    const swing = flaps[outlet ? 0 : 1];
     const strips = [];
     for (let i = 0; i < 6; i++) {
       const y0 = -MOUTH.half + 0.35 + i * ((2 * MOUTH.half - 0.7) / 6), y1 = y0 + (2 * MOUTH.half - 0.7) / 6 - 0.22;
-      const near = Math.max(0, 1 - Math.abs((y0 + y1) / 2) / MOUTH.half);
-      const s = swingOf * (0.6 + 0.4 * near);
-      const top = MOUTH.spring + 1.2, low = MOUTH.z0 + 0.9;
-      const lowZ = top - (top - low) * Math.cos(s), lowX = xe + out_ * (top - low) * Math.sin(s) + out_ * 0.05;
-      strips.push(k.pathOf([at([xe + out_ * 0.05, y0, top]), at([xe + out_ * 0.05, y1, top]), at([lowX, y1, lowZ]), at([lowX, y0, lowZ])], true));
+      const top = MOUTH.hinge, length = top - MOUTH.hem;
+      const pinX = xe + out_ * 0.05;
+      const lowZ = top - length * Math.cos(swing), lowX = pinX - side * length * Math.sin(swing);
+      strips.push(k.pathOf([at([pinX, y0, top]), at([pinX, y1, top]), at([lowX, y1, lowZ]), at([lowX, y0, lowZ])], true));
     }
-    out.push(`<path class="rb-strip" d="${strips.join("")}"/>`);
+    const curtain = `<path class="rb-strip" d="${strips.join("")}"/>`;
+    out.push(outlet ? curtain : `<g clip-path="url(#rb-oven-${side < 0 ? "a" : "b"})">${curtain}</g>`);
     out.push(M("ink", box(span(xe, xe + out_ * 0.5, -MOUTH.half - 0.4, MOUTH.half + 0.4, 0.15), MOUTH.spring + 1, 0.6, { tone: "mid" }, 1)));
-    out.push(`<path class="rb-mouth-frame" transform="${planeOf([xe + out_ * 0.03, 0, 0], Y3)}" d="${mouthD(0)}"/>`);
   }
   // The dial's needle swings over its scale with the fire.
   const dx = ovenCenter(side) - side * DIAL_AT;
@@ -586,30 +619,36 @@ function ovenFront(side, heat, flaps) {
 }
 // The chute at the belt's end: a trough on a post, swung to whose basket the next loaf is for.
 const chuteDir = (side, angle) => [-side * Math.cos(angle), Math.sin(angle), 0];
-const BASKET_ANGLE = (who) => Math.atan2(C.SLOTS[who], C.PIVOT[0] - C.BASKET.x);
-const chuteEnd = (side, angle) => { const d = chuteDir(side, angle); const [px, py, pz] = C.PIVOT; return [side * px + d[0] * C.CHUTE, py + d[1] * C.CHUTE, pz - 1]; };
-function chute(side, angle) {
+const BASKET_ANGLE = (who) => Math.atan2(C.SLOTS[who] - C.PIVOT[1], C.PIVOT[0] - C.BASKET.x);
+function chuteFrame(side, angle) {
   const [px, py, pz] = C.PIVOT;
-  const x = side * px;
-  const a = [x, py, pz], b = chuteEnd(side, angle);
-  const d = [b[0] - a[0], b[1] - a[1], b[2] - a[2]];
-  const len = Math.hypot(...d);
-  const dir = d.map((c) => c / len);
-  const across = unit([-dir[1], dir[0], 0]);
-  const up = unit(G.cross3(dir, across));
-  const F = G.frameOf(a, dir, across, up[2] > 0 ? up : up.map((c) => -c));
-  // The trough: a jade floor and two low walls, the far wall first; the floor shows between them.
+  const [dx, dy] = chuteDir(side, angle);
+  return G.frameAlong([side * px, py, pz], [dx * C.CHUTE.reach, dy * C.CHUTE.reach, -C.CHUTE.drop]);
+}
+const CHUTE_LEN = Math.hypot(C.CHUTE.reach, C.CHUTE.drop);
+function chute(side, angle, front) {
+  const F = chuteFrame(side, angle);
+  const { half, wall: thick, floor, lip, taper, runout } = C.CHUTE;
+  const outer = half + thick;
   const V = G.viewOf(P);
-  const nearWall = Math.sign(across[0] * V[0] + across[1] * V[1]) || 1;
-  const wall = (s) => S(G.prismOf(F, s > 0 ? [[2, -0.5], [2.4, -0.5], [2.4, 1.1], [2, 1.1]] : [[-2.4, -0.5], [-2, -0.5], [-2, 1.1], [-2.4, 1.1]], 0, len, P), { tone: "mid" });
-  return M("jade", wall(-nearWall), S(G.prismOf(F, [[-2.4, -0.5], [2.4, -0.5], [2.4, 0], [-2.4, 0]], 0, len, P), { tone: "mid" }), wall(nearWall));
+  const near = Math.sign(G.dot3(F.u, V)) || 1;
+  // The side walls taper into the tip so the tail of a loaf clears them as it turns into the basket.
+  const wallEnd = CHUTE_LEN - runout;
+  const wallFrame = G.frameOf(F.o, F.u, F.a, F.v);
+  const wallShape = [[0, 0], [wallEnd, 0], [wallEnd - taper, lip], [0, lip]];
+  const wall = (s) => S(G.prismOf(wallFrame, wallShape, s < 0 ? -outer : half, s < 0 ? -half : outer, P), { tone: "mid" });
+  if (front) return M("jade", wall(near));
+  const deck = [[-0.45, -outer], [wallEnd, -outer], [CHUTE_LEN, -half], [CHUTE_LEN, half], [wallEnd, outer], [-0.45, outer]];
+  return M("jade", S(G.prismOf(G.frameOf(F.o, F.v, F.a, F.u), deck, -floor, 0, P), { tone: "mid" }), wall(-near));
 }
 // The chute's post and swivel, drawn apart from its trough: the post stands behind the baskets the trough
 // reaches over.
 function chutePost(side) {
   const [px, py, pz] = C.PIVOT;
   const x = side * px;
-  return shadow(x, py, 1.5, 0.3, { h: pz, w: 0.9 }) + M("marble", cyl(x, py, 1.5, 0, 0.7, { tone: "mid" }, 18, 0.2), cyl(x, py, 0.55, 0.7, pz - 1.4, { tone: "mid", crease: "none" }, 10)) + M("jade", cyl(x, py, 1, pz - 1.6, 0.9, { tone: "mid" }, 14, 0.15));
+  const bearing = pz - C.CHUTE.floor - 0.42;
+  return shadow(x, py, 1.3, 0.3, { h: pz, w: 0.9 }) + M("marble", cyl(x, py, 1.25, 0, 0.7, { tone: "mid" }, 18, 0.2), cyl(x, py, 0.55, 0.7, bearing - 1.6, { tone: "mid", crease: "none" }, 10))
+    + M("jade", cyl(x, py, 0.8, bearing - 0.9, 0.55, { tone: "mid" }, 14, 0.1), S(G.sphereOf([x, py, bearing], 0.42, P), { tone: "mid" }));
 }
 // The stand in the middle: two marble steps with a jade nosing, the baskets on its top.
 function stand() {
@@ -632,48 +671,51 @@ function stand() {
 }
 // A basket of woven rushes for 甲 and for 乙, a crate for 丙, standing on the stand; their loaves are drawn
 // inside after them.
-const CRATE = [4.7, 3.9];
+const CRATE = [4.7, 3.9, 0.7, 3.5];
+const basketFloor = (who) => C.STAND.top + (who === MD.CONTROLLER ? CRATE[2] : C.BASKET.floor);
+const basketTop = (who) => C.STAND.top + (who === MD.CONTROLLER ? CRATE[3] : C.BASKET.h);
 function basket(side, who) {
   const { BASKET, SLOTS } = C;
   const x = side * BASKET.x, y = SLOTS[who], z0 = C.STAND.top;
   if (who === MD.CONTROLLER) {
     // 丙's crate: a floor and four slatted walls, the far ones first.
-    const [hx, hy] = CRATE;
+    const [hx, hy, floor, top] = CRATE;
     const plan = span(x - hx, x + hx, y - hy, y + hy, 0.5);
-    const wall = (p) => box(p, z0 + 0.7, 2.8, { tone: "mid" }, 1, 0.1);
+    const wall = (p, inner = "") => box(p, basketFloor(who), top - floor, { tone: "mid", inner }, 1, 0.1);
     const slats = `<g transform="${faceY(y + hy)}">${L(`M${x - hx} ${-(z0 + 1.7)}H${x + hx}M${x - hx} ${-(z0 + 2.7)}H${x + hx}`, { tone: "faint" })}</g>`;
     const walls = [span(x - hx, x + hx, y - hy, y - hy + 0.6, 0.1), span(x - hx, x - hx + 0.6, y - hy + 0.6, y + hy - 0.6, 0.1), span(x + hx - 0.6, x + hx, y - hy + 0.6, y + hy - 0.6, 0.1)].sort((a, b) => k.depthOf([a.x, a.y, 0], P) - k.depthOf([b.x, b.y, 0], P));
-    return M("marble", box(plan, z0, 0.7, { tone: "mid" }, 3, 0.2), ...walls.map(wall), box(span(x - hx, x + hx, y + hy - 0.6, y + hy, 0.1), z0 + 0.7, 2.8, { tone: "mid", inner: slats }, 1, 0.1));
+    return M("marble", box(plan, z0, floor, { tone: "mid" }, 3, 0.2), ...walls.map((plan) => wall(plan)), wall(span(x - hx, x + hx, y + hy - 0.6, y + hy, 0.1), slats));
   }
   const F = FV(x, y, z0);
-  const profile = [[0, BASKET.r - 1.2], [0.6, BASKET.r - 0.8, 1], [BASKET.h - 0.6, BASKET.r - 0.1, 1], [BASKET.h, BASKET.r]];
-  return M("marble", S(G.lathe(profile, F, P, { fill: "surface" }), { tone: "mid", inner: k.fadedSvg(G.ribsOf(F, 0.6, BASKET.h - 0.6, BASKET.r - 0.8, 28, P, { r1: BASKET.r - 0.1, fade: [0.15, 0.6] }), { tone: "faint" }) + L(G.arcOf(F, 0.6, BASKET.r - 0.8, P) + G.arcOf(F, 1.5, BASKET.r - 0.5, P) + G.arcOf(F, 2.3, BASKET.r - 0.3, P) + G.arcOf(F, BASKET.h - 0.6, BASKET.r - 0.1, P), { tone: "lo" }) }), glint(F, 1.8, BASKET.r - 0.4, 0.8));
-}
-// The near half of a basket's rim, drawn again over the loaves inside it.
-function basketRim(side, who) {
-  const { BASKET, SLOTS } = C;
-  const x = side * BASKET.x, y = SLOTS[who];
-  if (who === MD.CONTROLLER) return "";
-  return M("marble", L(G.arcOf(FV(x, y, C.STAND.top), BASKET.h, BASKET.r, P), { tone: "mid" }));
+  const profile = [[0, BASKET.foot], [0.6, BASKET.r - 0.65, 1], [BASKET.h - 0.6, BASKET.r - 0.1, 1], [BASKET.h, BASKET.r]];
+  const inner = BASKET.r - BASKET.wall;
+  const opening = k.pathOf(basketOpening(side, who).map(at), true);
+  const cavity = G.lathe([[BASKET.h, inner], [BASKET.floor, BASKET.foot - BASKET.wall], [BASKET.floor, 0]], F, P, { fill: "faces" });
+  const id = `rb-bowl-${side}-${who}`;
+  return M("marble", S(G.lathe(profile, F, P, { fill: "surface" }), { tone: "mid", inner: k.fadedSvg(G.ribsOf(F, 0.6, BASKET.h - 0.6, BASKET.r - 0.65, 28, P, { r1: BASKET.r - 0.1, fade: [0.15, 0.6] }), { tone: "faint" }) + L(G.arcOf(F, 0.6, BASKET.r - 0.65, P) + G.arcOf(F, 1.5, BASKET.r - 0.44, P) + G.arcOf(F, 2.3, BASKET.r - 0.22, P) + G.arcOf(F, BASKET.h - 0.6, BASKET.r - 0.1, P), { tone: "lo" }) }), glint(F, 1.8, BASKET.r - 0.35, 0.8),
+    `<clipPath id="${id}"><path d="${opening}"/></clipPath><g clip-path="url(#${id})">${S({ ...cavity, fill: opening, outline: "" }, { tone: "lo" })}</g>`,
+    L(opening, { tone: "lo" }));
 }
 // The outline a basket or crate stands in: its foot and its rim.
 const basketBody = (side, who) => {
   const { BASKET, SLOTS, STAND } = C;
   const x = side * BASKET.x, y = SLOTS[who];
-  if (who === MD.CONTROLLER) return k.boxCorners(span(x - CRATE[0], x + CRATE[0], y - CRATE[1], y + CRATE[1]), STAND.top, STAND.top + 3.5);
+  if (who === MD.CONTROLLER) return k.boxCorners(span(x - CRATE[0], x + CRATE[0], y - CRATE[1], y + CRATE[1]), STAND.top, basketTop(who));
   const ring = (r, z) => Array.from({ length: 32 }, (_, i) => { const a = (i / 32) * Math.PI * 2; return [x + r * Math.cos(a), y + r * Math.sin(a), z]; });
-  return [...ring(BASKET.r - 1.2, STAND.top), ...ring(BASKET.r, STAND.top + BASKET.h)];
+  return [...ring(BASKET.foot, STAND.top), ...ring(BASKET.r, basketTop(who))];
 };
 const basketOpening = (side, who) => {
   const { BASKET, SLOTS } = C;
   const x = side * BASKET.x, y = SLOTS[who];
-  if (who === MD.CONTROLLER) return k.corners(span(x - CRATE[0] + 0.6, x + CRATE[0] - 0.6, y - CRATE[1] + 0.6, y + CRATE[1] - 0.6)).map(([px, py]) => [px, py, C.STAND.top + 3.5]);
-  return Array.from({ length: 32 }, (_, i) => { const a = (i / 32) * Math.PI * 2; return [x + (BASKET.r - 0.2) * Math.cos(a), y + (BASKET.r - 0.2) * Math.sin(a), C.STAND.top + BASKET.h]; });
+  const z = basketTop(who), r = BASKET.r - BASKET.wall;
+  if (who === MD.CONTROLLER) return k.corners(span(x - CRATE[0] + 0.6, x + CRATE[0] - 0.6, y - CRATE[1] + 0.6, y + CRATE[1] - 0.6)).map(([px, py]) => [px, py, z]);
+  return Array.from({ length: 48 }, (_, i) => { const a = (i / 48) * Math.PI * 2; return [x + r * Math.cos(a), y + r * Math.sin(a), z]; });
 };
 
 // --- the pieces: a ball of dough, and the loaf it bakes into -------------------------------------------
 
-const LOAF_PROFILE = [[0, 0.55], [0.4, 1.3, 1], [1.4, 1.85, 1], [3, C.LOAF, 1], [4.6, 1.85, 1], [5.6, 1.3, 1], [6, 0.55]];
+const LOAF_PROFILE = [[0, 0.5], [0.4, 1.25, 1], [1.35, 1.75, 1], [2.9, C.LOAF, 1], [4.45, 1.75, 1], [5.4, 1.25, 1], [5.8, 0.5]];
+const MERIDIAN_INSET = 0.02;
 function doughSvg(c) {
   return M("dough", S(G.sphereOf(c, C.DOUGH, P), { tone: "mid" }), ballGlint(c, C.DOUGH, 0.42));
 }
@@ -684,21 +726,21 @@ const loafAt = (t) => {
     const [s0, r0] = LOAF_PROFILE[j - 1], [s1, r1] = LOAF_PROFILE[j];
     if (s <= s1) { const u = (s - s0) / (s1 - s0), e = (1 - Math.cos(u * Math.PI)) / 2; return [s - C.LOAF_LEN / 2, r0 + (r1 - r0) * e]; }
   }
-  return [C.LOAF_LEN / 2, 0.55];
+  return [C.LOAF_LEN / 2, LOAF_PROFILE.at(-1)[1]];
 };
-// A piece baking: the ball's meridian drawn out into the loaf's as `bake` runs 0–1, and its skin browning
-// from dough to crust; the scores open as it rises.
-function loafSvg(c, dir, bake = 1) {
-  const d = unit(dir);
-  const meridian = Array.from({ length: 13 }, (_, j) => {
-    const t = 0.02 + (0.96 * j) / 12;
+function loafMeridian(bake) {
+  return Array.from({ length: 13 }, (_, j) => {
+    const t = MERIDIAN_INSET + ((1 - 2 * MERIDIAN_INSET) * j) / 12;
     const a = Math.PI * t, ball = [-C.DOUGH * Math.cos(a), C.DOUGH * Math.sin(a)];
     const [ls, lr] = loafAt(t);
     return [ball[0] + (ls - ball[0]) * bake, ball[1] + (lr - ball[1]) * bake, j && j < 12 ? 1 : 0];
   });
-  const s0 = meridian[0][0];
-  const F = G.frameAlong(c.map((v, i) => v + d[i] * s0), d);
-  const profile = meridian.map(([sv, r, knot]) => (knot ? [sv - s0, r, 1] : [sv - s0, r]));
+}
+// A piece baking: the ball's meridian draws out into the loaf's and its skin browns.
+function loafSvg(c, dir, bake = 1) {
+  const d = unit(dir);
+  const F = G.frameAlong(c, d);
+  const profile = loafMeridian(bake);
   const up = unit([-d[2] * d[0], -d[2] * d[1], 1 - d[2] * d[2]]);
   const side = unit(G.cross3(up, d));
   const scores = [-1.5, 0, 1.5].map((s) => {
@@ -722,28 +764,48 @@ function placed(c, key, make) {
   const o = at([0, 0, 0]), p = at(c);
   return `<g transform="translate(${n2(p[0] - o[0])} ${n2(p[1] - o[1])})">${LOOKS.get(key)}</g>`;
 }
+const bakedShape = (piece) => Math.round((piece.bake ?? 0) * 30) / 30;
 const pieceSvg = (piece) => {
-  const bake = Math.round((piece.bake ?? 0) * 30) / 30;
-  const dir = (piece.dir ?? X3).map((v) => Math.round(v * 50) / 50);
+  const bake = bakedShape(piece);
+  const dir = (piece.dir ?? X3).map((v) => Math.round(v * 200) / 200);
   const svg = bake > 0.001 ? placed(piece.c, `${bake}|${dir}`, () => loafSvg([0, 0, 0], dir, bake)) : placed(piece.c, "dough", () => doughSvg([0, 0, 0]));
   return piece.fade !== undefined && piece.fade < 1 ? `<g style="opacity:${n2(Math.max(0, piece.fade))}">${svg}</g>` : svg;
 };
 
 // --- the slots a moving piece is drawn in -----------------------------------------------------------------
 
-// Where along its line a piece is, as |x|: before the gate (near its dough), between the gate and the oven,
-// inside, beyond it on the way to the chute.
-function slotOf(piece) {
-  const u = Math.abs(piece.c[0]);
-  if (piece.at === "fall") return "fall";
-  if (piece.at === "basket") return "basket-" + piece.to;
-  if (piece.at === "chute") return "chute";
-  if (u > C.GATE) return "near";
-  if (u > C.OVEN.x1) return "between";
-  if (u >= C.OVEN.x0) return "inside";
-  return "beyond";
+const axialReach = (piece) => {
+  const bake = bakedShape(piece);
+  return bake ? C.DOUGH * Math.cos(Math.PI * MERIDIAN_INSET) * (1 - bake) + C.LOAF_LEN * (0.5 - MERIDIAN_INSET) * bake : C.DOUGH;
+};
+function piecesIn(wing, slot) {
+  return wing.pieces.filter((piece) => {
+    if (piece.at === "basket") return slot === "basket-" + piece.to;
+    if (piece.at !== "belt") return slot === piece.at;
+    const u = Math.abs(piece.c[0]), reach = axialReach(piece);
+    if (slot === "near") return u > C.GATE;
+    if (slot === "between") return u <= C.GATE && u + reach > C.OVEN.x1;
+    if (slot === "inside") return u - reach < C.OVEN.x1 && u + reach > C.OVEN.x0;
+    return slot === "beyond" && u - reach < C.OVEN.x0;
+  });
 }
-const piecesIn = (wing, slot) => wing.pieces.filter((piece) => slotOf(piece) === slot);
+// At the visible end only the section in front of the face may cover the oven shell.
+// Project that section's silhouette and use it to reveal the uncut piece, with no seam at the cut.
+function ovenPiece(piece, edge, id) {
+  const cut = edge - piece.c[0];
+  const reach = axialReach(piece);
+  const svg = pieceSvg(piece);
+  if (cut <= -reach) return svg;
+  if (cut >= reach) return "";
+  const bake = bakedShape(piece);
+  const radius = bake ? G.profileCurve(loafMeridian(bake)).radius : (s) => Math.sqrt(Math.max(0, C.DOUGH ** 2 - s ** 2));
+  const profile = Array.from({ length: 25 }, (_, i) => {
+    const s = cut + (reach - cut) * i / 24;
+    return [s, radius(s)];
+  });
+  const d = G.outlineOf(profile, G.frameAlong(piece.c, X3), P, { fill: "hull", smooth: false }).fill;
+  return `<clipPath id="${id}"><path d="${d}"/></clipPath><g clip-path="url(#${id})">${svg}</g>`;
+}
 
 // --- composition: back to front ---------------------------------------------------------------------------
 
@@ -752,14 +814,19 @@ function wingParts(side) {
   const tag = side < 0 ? "a" : "b";
   const baskets = WHO.map((who) => [who, k.depthOf([side * C.BASKET.x, C.SLOTS[who], 0], P)]).sort((a, b) => a[1] - b[1]).map(([who]) => who);
   // The tape's middle post stands just in front of the private line's crate.
-  const basketRow = baskets.map((who) => basket(side, who) + `<g data-part="${tag}-basket-${who}"></g>` + basketRim(side, who) + (side < 0 && who === MD.CONTROLLER ? guideShaft() : "")).join("");
-  const beltPart = belt(side) + `<g data-part="${tag}-cleats"></g>`;
-  const oven = ovenBody(side) + ovenClip(side) + `<g data-part="${tag}-dark"></g><g clip-path="url(#rb-oven-${tag})"><g data-part="${tag}-inside"></g></g><g data-part="${tag}-oven"></g>`;
+  const basketRow = baskets.map((who) => basket(side, who) + `<g data-part="${tag}-basket-${who}"></g>` + (side < 0 && who === MD.CONTROLLER ? guideShaft() : "")).join("");
+  const spans = beltSpans(side);
+  const beltPart = belt(side, spans.far) + `<g data-part="${tag}-cleats-far"></g>`;
+  // The oven, then what shows through its mouths (the belt inside and any piece on it), then its curtains, and
+  // the length of belt in front of its open end.
+  const oven = ovenBody(side) + ovenClip(side) + `<g data-part="${tag}-dark"></g><g clip-path="url(#rb-oven-${tag})">${belt(side, spans.middle)}<g data-part="${tag}-cleats-middle"></g><g data-part="${tag}-inside"></g></g>`
+    + belt(side, spans.near) + `<g data-part="${tag}-cleats-near"></g>`;
   const slot = (name) => `<g data-part="${tag}-${name}"></g>`;
+  const trough = slot("chute") + slot("chuted") + slot("chute-front");
   if (side < 0) {
-    return [beltPart, tubePost(side), slot("hopper"), slot("near"), slot("gate"), slot("between"), gateFront(side), lockBox(), slot("lock"), oven, slot("beyond"), stand(), chutePost(side), basketRow, slot("chute"), slot("chuted")].join("");
+    return [tubePost(side), beltPart, slot("near"), slot("hopper"), slot("gate"), slot("between"), gateFront(side), lockBox(), slot("lock"), oven, slot("beyond"), slot("oven"), slot("flag"), chutePost(side), stand(), basketRow, trough].join("");
   }
-  return [basketRow, chutePost(side), slot("chute"), slot("chuted"), beltPart, slot("beyond"), oven, slot("between"), slot("gate"), slot("near"), gateFront(side), tubePost(side), slot("hopper")].join("");
+  return [basketRow, chutePost(side), trough, tubePost(side), beltPart, slot("beyond"), oven, slot("oven"), slot("between"), slot("gate"), slot("near"), gateFront(side), slot("hopper")].join("");
 }
 function composition(state) {
   return [
@@ -803,22 +870,31 @@ function partsOf(state) {
   for (const side of [-1, 1]) {
     const tag = side < 0 ? "a" : "b";
     const wing = state.wings[side < 0 ? 0 : 1];
-    parts[`${tag}-cleats`] = () => cleats(side, state.travel);
+    for (const span_ of ["far", "middle", "near"]) parts[`${tag}-cleats-${span_}`] = () => cleats(side, state.travel, beltSpans(side)[span_]);
     parts[`${tag}-hopper`] = () => tube(side, wing.stock, wing.drop, wing.refill, wing.fall, piecesIn(wing, "fall").map(pieceSvg).join(""));
     parts[`${tag}-gate`] = () => gatePlate(side, wing.gate);
-    for (const name of ["near", "between", "beyond"]) parts[`${tag}-${name}`] = () => piecesIn(wing, name).map(pieceSvg).join("");
+    const nearOven = side < 0 ? "beyond" : "between";
+    const edge = side * C.OVEN[side < 0 ? "x0" : "x1"];
+    for (const name of ["near", "between", "beyond"]) parts[`${tag}-${name}`] = () => piecesIn(wing, name).map((piece, i) =>
+      name === nearOven ? ovenPiece(piece, edge, `rb-cut-${tag}-${i}`) : pieceSvg(piece)).join("");
     parts[`${tag}-dark`] = () => ovenDark(side, wing.heat);
     parts[`${tag}-inside`] = () => piecesIn(wing, "inside").map(pieceSvg).join("");
     parts[`${tag}-oven`] = () => ovenFront(side, wing.heat, wing.flaps);
-    parts[`${tag}-chute`] = () => chute(side, wing.chute);
+    parts[`${tag}-chute`] = () => chute(side, wing.chute, false);
+    parts[`${tag}-chute-front`] = () => chute(side, wing.chute, true);
     parts[`${tag}-chuted`] = () => piecesIn(wing, "chute").map(pieceSvg).join("");
     for (const who of WHO) {
       parts[`${tag}-basket-${who}`] = () => {
         const id = `rb-in-${tag}-${who === "丙" ? "c" : who === "甲" ? "j" : "y"}`;
-        return insideClip(id, basketOpening(side, who), basketBody(side, who)) + `<g clip-path="url(#${id})">${piecesIn(wing, "basket-" + who).map(pieceSvg).join("")}</g>`;
+        const pieces = piecesIn(wing, "basket-" + who);
+        const across = who === MD.CONTROLLER ? 0 : 1;
+        const inside = pieces.filter((piece) => piece.seated || piece.fly >= LAND_ALIGN).sort((a, b) => a.c[across] - b.c[across]);
+        return insideClip(id, basketOpening(side, who), basketBody(side, who))
+          + `<g clip-path="url(#${id})">${inside.map(pieceSvg).join("")}</g>`
+          + pieces.filter((piece) => !piece.seated && piece.fly < LAND_ALIGN).map(pieceSvg).join("");
       };
     }
-    if (side < 0) parts["a-lock"] = () => lock(state);
+    if (side < 0) { parts["a-lock"] = () => lock(state); parts["a-flag"] = () => flag(state.flag); }
   }
   return parts;
 }
@@ -826,10 +902,11 @@ function partsOf(state) {
 // The resting scene: the private law at (1, 0), the tape at its start, nothing baked yet.
 // Where the n-th loaf for `to` lies in its basket: along the basket, the second beside the first.
 function seatAt(side, to, n) {
-  const across = (n % 2 ? 1 : -1) * 2.05;
-  const lift = C.STAND.top + (to === "丙" ? 0.9 : 0.6) + C.LOAF * 0.92 + Math.floor(n / 2) * 2.4;
-  return to === "丙" ? [side * C.BASKET.x + across, C.SLOTS[to], lift] : [side * C.BASKET.x, C.SLOTS[to] + across, lift];
+  const across = (n % 2 ? 1 : -1) * (C.LOAF + 0.08);
+  const lift = basketFloor(to) + C.LOAF;
+  return to === "丙" ? [side * (C.BASKET.x + across), C.SLOTS[to], lift] : [side * C.BASKET.x, C.SLOTS[to] - across, lift];
 }
+const LAND_ALIGN = 0.62;
 // The scene the figure opens on: the private law at (1, 0) with its run and its replay just finished, both
 // lines' loaves in the same baskets, the stamped tape at the public reader.
 function restState() {
@@ -921,13 +998,13 @@ const modelSource = `const MD = (() => {\n${strip("model.mjs")}\nreturn { ${Obje
 const live = `
 const P0 = ${JSON.stringify(P0)};
 let P = P0;
-${shipped({ C, GUIDE, PITCH, TUBE_TOP, tubeSeat, SPEED, LAG, STEPS, ROWS, FRAME, X3, Y3, Z3, READ_Z, READ_BACK, READ_FRONT, VAULT, PORT, GATE_POST, LOCK, DIAL_AT, CRATE, LOAF_PROFILE, WHO })}
+${shipped({ C, GUIDE, GUIDE_SPLIT, READ_HALF, PITCH, TUBE_TOP, tubeSeat, CLAMPS, SPEED, LAG, STEPS, ROWS, FRAME, X3, Y3, Z3, READ_Z, READ_BACK, READ_FRONT, VAULT, PORT, GATE_POST, LOCK, DIAL_AT, CRATE, LOAF_PROFILE, MERIDIAN_INSET, WHO, CHUTE_LEN, LAND_ALIGN })}
 const k = { ${Object.keys(k).join(", ")} };
 const G = LATHE;
 const LOOKS = new Map();
 let looksFor = null;
-${shipped({ at, S, L, D, M, n2, n3, faceY, rectD, box, cyl, FV, unit, span, planeOf, rod, smooth, halfway, litAngle, shine, edgeShine, glintAt, glint, ballGlint, brightRod, fadeFill, boxCast, grounded, shadow, bandD, lensY, insideClip })}
-${shipped({ seatAt, restState, base, face, LAMP_U, faceLamp, faceLamps, counter, packOf, tangentPoint, tapePath, frameAt, reel, tape, reelBase, guideShadow, guideSleeve, guideShaft, readerBack, readerFront, readerMoving, tubePost, tube, stand, basketBody, vaultFrame, portD, loafAt, ovenDark, ovenClip, ovenFront, beltZ, belt, cleats, gateBack, gatePlate, gateFront, lockBox, lock, flag, ovenPlan, ovenCenter, ovenBody, mouthD, endFaces, chuteDir, BASKET_ANGLE, chuteEnd, chute, chutePost, basket, basketRim, basketOpening, doughSvg, loafSvg, placed, pieceSvg, slotOf, piecesIn, wingParts, composition, hitAreas, partsOf })}
+${shipped({ at, S, L, D, M, n2, n3, faceY, rectD, box, cyl, FV, unit, span, planeOf, rod, smooth, halfway, litAngle, shine, edgeShine, glintAt, glint, ballGlint, brightRod, fadeFill, boxCast, grounded, shadow, halfRing, bandD, lipD, lensY, insideClip })}
+${shipped({ seatAt, restState, base, face, LAMP_U, faceLamp, faceLamps, counter, packOf, tangentPoint, tapePath, frameAt, reel, tape, reelBase, guideShadow, guideSleeve, guideShaft, readerBack, readerFront, readerMoving, tubePost, tube, stand, basketFloor, basketTop, basketBody, vaultFrame, portD, loafAt, ovenDark, ovenClip, ovenFront, beltZ, beltSpans, belt, cleats, gateBack, gatePlate, gateFront, lockBox, lock, flag, ovenPlan, ovenCenter, ovenBody, mouthD, endFaces, chuteDir, BASKET_ANGLE, chuteFrame, chute, chutePost, basket, basketOpening, doughSvg, loafMeridian, loafSvg, placed, bakedShape, pieceSvg, axialReach, piecesIn, ovenPiece, wingParts, composition, hitAreas, partsOf })}
 ${swingSource}
 ${liveScript()}
 `;
@@ -957,20 +1034,20 @@ let shown = {};
 const key = (v) => JSON.stringify(v, (k_, v_) => (typeof v_ === "number" ? Math.round(v_ * 100) / 100 : v_));
 function paint(force = false) {
   const parts = partsOf(st);
-  const want = { counter: key(st.counts), lamps: key(st.wings.map((wing) => MD.MEMBERS.map((who) => wing.bread[who] >= 1))), reels: key(st.q), tape: key([st.q, st.stamps, st.stampFade]), readers: key([st.lamps, st.dips]), "a-lock": key([st.bezel, st.keys, st.flag]) };
+  const want = { counter: key(st.counts), lamps: key(st.wings.map((wing) => MD.MEMBERS.map((who) => wing.bread[who] >= 1))), reels: key(st.q), tape: key([st.q, st.stamps, st.stampFade]), readers: key([st.lamps, st.dips]), "a-lock": key([st.bezel, st.keys]), "a-flag": key(st.flag) };
   for (const [i, tag] of [[0, "a"], [1, "b"]]) {
     const wing = st.wings[i];
-    want[tag + "-cleats"] = key(st.travel);
+    for (const span_ of ["far", "middle", "near"]) want[tag + "-cleats-" + span_] = key(st.travel);
     want[tag + "-hopper"] = key([wing.stock, wing.drop, wing.refill, wing.fall, piecesIn(wing, "fall").map((piece) => piece.c)]);
     want[tag + "-gate"] = key(wing.gate);
     for (const name of ["near", "between", "beyond"]) want[tag + "-" + name] = key(piecesIn(wing, name).map((piece) => [piece.c, piece.bake]));
     want[tag + "-dark"] = key(wing.heat);
     want[tag + "-inside"] = key(piecesIn(wing, "inside").map((piece) => [piece.c, piece.bake]));
     want[tag + "-oven"] = key([wing.heat, wing.flaps]);
-    want[tag + "-chute"] = key(wing.chute);
+    want[tag + "-chute"] = want[tag + "-chute-front"] = key(wing.chute);
     want[tag + "-chuted"] = key(piecesIn(wing, "chute").map((piece) => [piece.c, piece.dir]));
     for (const who of WHO) {
-      want[tag + "-basket-" + who] = key(piecesIn(wing, "basket-" + who).map((piece) => [piece.c, piece.dir, piece.fade]));
+      want[tag + "-basket-" + who] = key(piecesIn(wing, "basket-" + who).map((piece) => [piece.c, piece.dir, piece.fade, piece.seated || piece.fly >= LAND_ALIGN]));
     }
   }
   for (const name of Object.keys(want)) if (force || want[name] !== shown[name]) { const el = part(name); if (el) el.innerHTML = parts[name](); }
@@ -984,12 +1061,14 @@ const sideOf = (i) => (i === 0 ? -1 : 1);
 // Release one ball from line i's tube for whose loaf it is.
 function release(i, to) {
   const wing = st.wings[i], side = sideOf(i);
+  wing.gateGoal = 1;
   wing.pieces.push({ to, at: "fall", bake: 0, c: tubeSeat(side, 0, wing.drop), v: 0 });
   wing.stock -= 1;
   wing.drop += 1;
   wing.fall = 0.001;
 }
 const G_ACC = 70, BELT_REST = beltZ + C.DOUGH;
+const HANDOFF = C.BELT.x0 - C.PIVOT[0];
 // Each loaf's seat in its basket: the first along the basket, the second beside it.
 const seatOf = (i, to) => seatAt(sideOf(i), to, st.wings[i].bread[to] + st.wings[i].pieces.filter((piece) => piece.to === to && piece.at === "basket" && !piece.seated).length);
 function movePieces(i, dt) {
@@ -1010,34 +1089,50 @@ function movePieces(i, dt) {
       piece.bake = smooth((C.OVEN.x1 - 1 - u) / ((C.OVEN.x1 - C.OVEN.x0) * 0.66));
       piece.c[2] = beltZ + C.DOUGH + (C.LOAF - C.DOUGH) * piece.bake;
       piece.dir = X3;
-      if (u <= C.BELT.x0) { piece.at = "chute"; piece.s = -1.2; piece.v = Math.max(st.speed, 6); }
+      if (u <= C.BELT.x0) {
+        piece.c[0] = side * C.BELT.x0;
+        piece.at = "chute";
+        piece.s = -HANDOFF;
+        piece.v = Math.max(st.speed, 6);
+      }
     } else if (piece.at === "chute") {
       // Off the roller onto the chute, then sliding down it.
       piece.v = Math.min(piece.v + 16 * dt, 20);
-      piece.s += piece.v * dt;
-      const a = wing.chute;
-      const d = chuteDir(side, a);
-      const p0 = [side * C.PIVOT[0], C.PIVOT[1], C.PIVOT[2]], p1 = chuteEnd(side, a);
-      const t = Math.max(0, piece.s) / C.CHUTE;
-      const slope = unit([p1[0] - p0[0], p1[1] - p0[1], p1[2] - p0[2]]);
-      const lift = C.LOAF * 0.92;
-      if (piece.s < 0) { const u = 1 + piece.s / 1.2; piece.c = [side * (C.BELT.x0 + (C.PIVOT[0] - C.BELT.x0) * u), 0, beltZ + C.LOAF + (p0[2] + lift - beltZ - C.LOAF) * u * u]; }
-      else piece.c = [p0[0] + (p1[0] - p0[0]) * t, p0[1] + (p1[1] - p0[1]) * t, p0[2] + (p1[2] - p0[2]) * t + lift];
-      piece.dir = piece.s < 0 ? X3 : slope;
-      if (piece.s >= C.CHUTE) {
+      piece.s = Math.min(CHUTE_LEN, piece.s + piece.v * dt);
+      const F = chuteFrame(side, wing.chute);
+      const onFloor = G.add3(F.o, G.mul3(F.v, C.LOAF));
+      const along = G.mul3(F.a, -side);
+      if (piece.s < 0) {
+        const t = 1 + piece.s / HANDOFF;
+        const start = [side * C.BELT.x0, 0, beltZ + C.LOAF];
+        piece.c = G.lerp3(start, onFloor, t);
+        piece.c[2] = start[2] + (onFloor[2] - start[2]) * t * t;
+        piece.dir = unit(G.lerp3(X3, along, smooth(t)));
+      } else {
+        piece.c = G.add3(onFloor, G.mul3(F.a, piece.s));
+        piece.dir = along;
+      }
+      if (piece.s === CHUTE_LEN) {
         piece.seat = seatOf(i, piece.to);
         piece.at = "basket";
         piece.from = [...piece.c];
         piece.fly = 0;
         piece.dir0 = piece.dir;
+        const occupied = wing.pieces.some((other) => other !== piece && other.at === "basket" && other.to === piece.to);
+        const obstacle = occupied ? piece.seat[2] + C.LOAF : basketTop(piece.to);
+        piece.landZ = Math.max(piece.from[2], obstacle + C.LOAF + 0.12);
       }
     } else if (piece.at === "basket" && !piece.seated) {
-      piece.fly = Math.min(1, piece.fly + dt / 0.32);
-      const t = piece.fly;
-      piece.c = piece.from.map((v, j) => v + (piece.seat[j] - v) * t + (j === 2 ? 1.6 * Math.sin(Math.PI * t) * (1 - t) : 0));
+      // Align over the opening while clear of the rim and any loaf already there, then drop into the seat.
+      piece.fly = Math.min(1, piece.fly + dt / 0.48);
+      const align = Math.min(1, piece.fly / LAND_ALIGN);
       const end = piece.to === "丙" ? Y3 : X3;
-      piece.dir = unit(piece.dir0.map((v, j) => v * (1 - smooth(t)) + end[j] * smooth(t)));
-      if (t >= 1) { piece.seated = true; wing.bread[piece.to] += 1; }
+      const dir = G.dot3(piece.dir0, end) < 0 ? G.mul3(end, -1) : end;
+      piece.dir = unit(G.lerp3(piece.dir0, dir, smooth(align)));
+      piece.c = G.lerp3(piece.from, piece.seat, align * (2 - align));
+      const drop = Math.max(0, (piece.fly - LAND_ALIGN) / (1 - LAND_ALIGN));
+      piece.c[2] = piece.from[2] + (piece.landZ - piece.from[2]) * align * (2 - align) + (piece.seat[2] - piece.landZ) * drop * drop;
+      if (piece.fly === 1) { piece.seated = true; wing.bread[piece.to] += 1; }
     }
   }
 }
@@ -1167,8 +1262,6 @@ function publicRead(s, t) {
   if (entry.op === "bake") openFor(1, s, "b", t, entry.to);
 }
 function openFor(i, s, tag, t, to) {
-  const wing = st.wings[i];
-  if (t > 0.4 && !s.did[tag + "open"]) { s.did[tag + "open"] = true; wing.gateGoal = 1; }
   if (t > 0.52 && !s.did[tag + "release"]) { s.did[tag + "release"] = true; release(i, to); }
 }
 const TOUR_LAWS = [[1, 0], [1, 1], [0, 0]];
@@ -1224,17 +1317,25 @@ function mechanics(dt) {
     // The chute swings to the next loaf's basket.
     // The next loaf to arrive is the one furthest in along the belt (the lines run toward the middle).
     const next = wing.pieces.filter((piece) => piece.at === "belt" || piece.at === "fall").sort((a, b) => Math.abs(a.c[0]) - Math.abs(b.c[0]))[0];
-    const aim = next && !wing.pieces.some((piece) => piece.at === "chute") ? BASKET_ANGLE(next.to) : wing.chute;
+    const delivering = wing.pieces.find((piece) => piece.at === "chute" || (piece.at === "basket" && !piece.seated && piece.fly < LAND_ALIGN));
+    const target = delivering ?? next;
+    const aim = target ? BASKET_ANGLE(target.to) : wing.chute;
     wing.cv = (wing.cv ?? 0) + ((aim - wing.chute) * 60 - (wing.cv ?? 0) * 11) * dt;
     wing.chute += wing.cv * dt;
     if (Math.abs(aim - wing.chute) < 0.002 && Math.abs(wing.cv) < 0.01) { wing.chute = aim; wing.cv = 0; } else moving = true;
     // The fire burns while a piece is inside; each curtain swings as a piece pushes through it.
-    const inside = wing.pieces.some((piece) => slotOf(piece) === "inside");
+    const inside = piecesIn(wing, "inside").length > 0;
     wing.heat += ((inside ? 1 : 0) - wing.heat) * (1 - Math.exp(-dt / (inside ? 0.3 : 1.2)));
     if (wing.heat > 0.003 && !inside) moving = true; else if (!inside) wing.heat = 0;
     wing.flaps = [C.OVEN.x0, C.OVEN.x1].map((edge) => {
-      const near = wing.pieces.filter((piece) => piece.at === "belt").map((piece) => Math.abs(piece.c[0]) - edge).filter((d) => Math.abs(d) < 3.5);
-      return near.length ? 1.5 * Math.max(0, 1 - Math.abs(near[0]) / 3.5) : 0;
+      return wing.pieces.reduce((open, piece) => {
+        if (piece.at !== "belt" && piece.at !== "chute") return open;
+        const d = Math.abs(piece.c[0]) - edge, reach = axialReach(piece);
+        const length = C.MOUTH.hinge - C.MOUTH.hem;
+        const entry = smooth((reach + 2.1 - d) / 1.8);
+        const exit = smooth((d + length + reach + 2.1) / 1.8);
+        return Math.max(open, 1.52 * entry * exit);
+      }, 0);
     });
     if (wing.pieces.some((piece) => piece.at !== "basket" || !piece.seated)) moving = true;
   }
