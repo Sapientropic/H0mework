@@ -32,7 +32,7 @@ const C = {
   TIES: 8,
   CAGE: { x0: -86, x1: -73, cheek: 4.4 },
   HOPPER: { x: -79.5, z0: 73, z1: 106, r: 2.9 },
-  LEVER: [-76, 5.6, 71], // the gate lever's pivot, on the cage cap's front edge
+  LEVER: [-76, 6.2, 71.8], // the gate lever's axle line (y, z), in bearings on the cage cap's front edge
   COIN: [-80, 13, 52], // the coin's dish, on a bracket from the cage's front cheek
   BRIDGE: { x0: -34, x1: -14, lift: 56 }, // hinged at x1
   LATCH: 18,
@@ -257,14 +257,17 @@ function readings(state) {
 
 // A rail run from x0 to x1 on one side (y = ±gauge); the bridge's runs come from bridgeRails.
 const railRun = (x0, x1, side) => brightRod([x0, side * C.TRACK.gauge, railZ(x0)], [x1, side * C.TRACK.gauge, railZ(x1)], C.TRACK.rail, { tone: "mid" }, 10, 6);
-const FIXED = [[C.TRACK.x0 - 4, C.BRIDGE.x0], [C.BRIDGE.x1, C.TRACK.x1]];
+// The fixed rail runs: from inside the cage to the bridge's gap, and from the hinge to just short of the
+// funnel's rim (RAIL_END); past that the bead leaves the rails and falls into the funnel.
+const RAIL_END = 59.4;
+const FIXED = [[C.TRACK.x0 - 4, C.BRIDGE.x0], [C.BRIDGE.x1, RAIL_END]];
 function rails(side) {
   return M("ink", ...FIXED.map(([a, b]) => railRun(a, b, side)), endStops(side));
 }
 // Stops at each open rail end, so a bead never leaves the track: at the bridge gap and the track's foot.
 function endStops(side) {
   const y = side * C.TRACK.gauge;
-  return [C.BRIDGE.x0, C.TRACK.x1].map((x) => S(G.disc(-0.6, 0.6, 0.9, G.frameAlong([x, y, railZ(x)], DIR), P, { steps: 12 }), { tone: "mid" })).join("");
+  return [C.BRIDGE.x0, RAIL_END].map((x) => S(G.disc(-0.6, 0.6, 0.9, G.frameAlong([x, y, railZ(x)], DIR), P, { steps: 12 }), { tone: "mid" })).join("");
 }
 // A tie under both rails at x, square to the incline.
 function tie(x, z = railZ(x)) {
@@ -279,7 +282,8 @@ function chairs(x, z = railZ(x)) {
 }
 function ties() {
   const out = [], clips = [];
-  for (let x = C.TRACK.x0 + 2; x < C.TRACK.x1 - 1; x += C.TIES) if (x < C.BRIDGE.x0 - 1 || x > C.BRIDGE.x1 + 1) out.push(tie(x)), clips.push(chairs(x));
+  // No tie on the bridge's span or under the latch, whose tongue lies flat between the rails there.
+  for (let x = C.TRACK.x0 + 2; x < RAIL_END - 0.9; x += C.TIES) if ((x < C.BRIDGE.x0 - 1 || x > C.BRIDGE.x1 + 1) && Math.abs(x - C.LATCH) > 3) out.push(tie(x)), clips.push(chairs(x));
   return M("marble", ...out) + M("ink", ...clips);
 }
 // Soft shadows where the posts, the coin's bracket and the station stand on the deck.
@@ -435,17 +439,33 @@ function gate(open) {
   return M("jade", S(G.prismOf(F, [[-3, -0.4], [3, -0.4], [3, 0.4], [-3, 0.4]], 0, 6.6, P), { tone: "mid" })) + M("ink", S(G.disc(-4.2, 4.2, 0.6, G.frameOf([x, 0, z], Y3, X3, Z3), P), { tone: "mid" }));
 }
 // The gate's lever: from the gate pin forward over the coin; the coin's weight on its hook holds the gate up.
+// The gate's linkage, all in front of the cage: an axle along x in two bearings on the cap's front edge.
+// Its left arm reaches forward over the coin; its right crank, outside the cage's exit, pulls a link that
+// turns a crank on the gate's pin. The coin's weight on the arm swings the gate up.
+const PIN = () => [C.CAGE.x1, 0, railZ(C.CAGE.x1) + 6.4];
+const leverAngle = (open) => -0.1 + open * 0.22;
+const leverTip = (open) => { const [, py, pz] = C.LEVER, a = leverAngle(open); return [C.COIN[0], py + 7.2 * Math.cos(a), pz - 7.2 * Math.sin(a)]; };
 function gateLever(open) {
-  const [px, py, pz] = C.LEVER;
+  const [, py, pz] = C.LEVER;
+  const a = leverAngle(open), g = open * 1.25;
+  const x0 = C.COIN[0], x1 = C.CAGE.x1 + 2.4;
   const tip = leverTip(open);
-  const tail = [C.CAGE.x1, -C.CAGE.cheek, railZ(C.CAGE.x1) + 6.4];
-  const PF = G.frameOf([px, py, pz], X3, Y3, Z3);
-  return M("ink", rod(tail, [C.CAGE.x1, py, pz], 0.45, { tone: "mid" }), rod([C.CAGE.x1, py, pz], [px, py, pz], 0.45, { tone: "mid" }), rod([px, py, pz], tip, 0.55, { tone: "mid" }),
-    S(G.disc(-1, 1, 1.2, PF, P), { tone: "mid", inner: L(G.circleOf(PF, 1, 0.75, P, 16), { tone: "faint" }) }), S(G.sphereOf([C.CAGE.x1, py, pz], 0.85, P), { tone: "mid" }))
+  const crank = [x1, py - 2.2 * Math.cos(a), pz + 2.2 * Math.sin(a)];
+  const [px, , pinZ] = PIN();
+  const pinCrank = [px + 2.4 * Math.cos(g), py, pinZ + 2.4 * Math.sin(g)];
+  const bearing = (bx) => box({ x: bx - 0.8, y: C.CAGE.cheek + 0.9, w: 1.6, d: 1.9, r: 0.3 }, railZ(C.CAGE.x0) + 9.1, 2.2, { tone: "mid" }, 2, 0.2);
+  return M("ink",
+    bearing(-78.2), bearing(-74.2),
+    brightRod([x0 - 0.6, py, pz], [x1 + 0.6, py, pz], 0.42, { tone: "mid" }, 12, 2),
+    brightRod([x0, py, pz], tip, 0.5, { tone: "mid" }, 10, 1.5),
+    rod([x1, py, pz], crank, 0.42, { tone: "mid" }, 10),
+    // The gate pin's end, through the front cheek, and its crank; the link between the two cranks.
+    S(G.disc(C.CAGE.cheek + 0.6, py + 0.5, 0.6, G.frameOf([px, 0, pinZ], Y3, X3, Z3), P), { tone: "mid" }),
+    rod([px, py, pinZ], pinCrank, 0.4, { tone: "mid" }, 10),
+    rod(crank, pinCrank, 0.28, { tone: "mid" }, 8),
+    S(G.sphereOf(crank, 0.5, P), { tone: "mid" }), S(G.sphereOf(pinCrank, 0.5, P), { tone: "mid" }))
     + M("jade", S(G.sphereOf(tip, 0.75, P), { tone: "mid" }));
 }
-// The lever's tip, over the coin's dish; the coin's pull tilts it down as the gate swings up.
-const leverTip = (open) => { const [px, py, pz] = C.LEVER; const a = -0.1 + open * 0.22; return [C.COIN[0], py + 7.4 * Math.cos(a), pz - 7.4 * Math.sin(a) - (px - C.COIN[0]) * 0.1]; };
 // The payment: a cash coin on its dish post, tied by a cord to the lever's tip; untied, the cord hangs.
 function coinPost() {
   const [x, y, z] = C.COIN;
@@ -481,8 +501,13 @@ function latch(up) {
   const a = up * (Math.PI / 2 - 0.12);
   const dir = [-Math.cos(a) * DIR[0] + Math.sin(a) * UP[0], 0, -Math.cos(a) * DIR[2] + Math.sin(a) * UP[2]];
   const F = G.frameOf([x, 0, z], dir, Y3, unit([-dir[2], 0, dir[0]]));
-  return M("ink", S(G.prismOf(F, [[-1.1, -0.35], [1.1, -0.35], [1.1, 0.35], [-1.1, 0.35]], 0, 6.4, P), { tone: "hi" }), S(G.disc(-1.6, 1.6, 0.6, G.frameOf([x, 0, z], Y3, X3, Z3), P), { tone: "mid" }));
+  // Its axle runs out under the near rail to a crank that 乙's lever pulls.
+  const crank = latchCrank(up);
+  return M("ink", S(G.prismOf(F, [[-1.1, -0.35], [1.1, -0.35], [1.1, 0.35], [-1.1, 0.35]], 0, 6.4, P), { tone: "hi" }), S(G.disc(-1.1, 3.9, 0.34, G.frameOf([x, 0, z], Y3, X3, Z3), P), { tone: "mid" }),
+    rod([x, 3.6, z], crank, 0.3, { tone: "mid" }, 8), S(G.sphereOf(crank, 0.42, P), { tone: "mid" }));
 }
+// The latch's crank end, outside the near rail: it turns with the tongue.
+const latchCrank = (up) => { const z = railZ(C.LATCH) - C.TRACK.rail - 0.4, a = up * (Math.PI / 2 - 0.12); return [C.LATCH - 2.2 * Math.sin(a) * 0.4, 3.6, z - 2.2 + 1.2 * up]; };
 // 乙's lever: a post in front of the latch, an arm, and the weight that keeps the tongue up; lifted onto
 // its peg (`up` 0) the weight no longer bears on the arm.
 function weight(up) {
@@ -491,7 +516,7 @@ function weight(up) {
   const out = [M("marble", cyl(x, y, 3.2, 0, 1, { tone: "mid" }, 22, 0.3), cyl(x, y, 1.1, 1, zp - 1, { tone: "mid", crease: "none", inner: shine(G.frameOf([x, y, 1], Z3, X3, Y3), 0.6, zp - 2.6, 1.12, 1.12, 3) }, 14))];
   const a = -0.05 + up * 0.32;
   const arm = [x + 9 * Math.cos(a), y, zp - 9 * Math.sin(a)];
-  out.push(M("ink", rod([x - 4, y, zp + 4 * Math.sin(a) * 0.3], arm, 0.5, { tone: "mid" }), rod([x - 4, y, zp], [x - 1, 0, railZ(x) - 1.6], 0.4, { tone: "mid" }), S(G.disc(-1, 1, 1.1, G.frameOf([x, y, zp], Y3, X3, Z3), P), { tone: "mid" })));
+  out.push(M("ink", rod([x - 4, y, zp + 4 * Math.sin(a) * 0.3], arm, 0.5, { tone: "mid" }), rod([x - 4, y, zp + 4 * Math.sin(a) * 0.3], latchCrank(up), 0.3, { tone: "mid" }), S(G.disc(-1, 1, 1.1, G.frameOf([x, y, zp], Y3, X3, Z3), P), { tone: "mid" })));
   // The weight hangs from the arm's end when it bears; parked, it sits on the peg beside the post.
   const hangTop = [arm[0], y, arm[2] - 0.6];
   const parked = [x + 4.6, y + 3.2, 9.6];
@@ -592,6 +617,8 @@ function row(count) {
 // (1 → FUNNEL_S), drops through the station unseen (→ CHUTE_S), rolls out of the door down the chute (→ 2),
 // then along the channel to the row's end (2 → 3). From S_MOUTH on the track it is over the funnel's mouth.
 const FUNNEL_S = 1.35, CHUTE_S = 1.72;
+// How fast the bead drops (per unit run squared) once it has left the rails.
+const FALL = 0.06;
 const S_MOUTH = (60.5 - (C.CAGE.x0 + 5)) / (C.TRACK.x1 - C.CAGE.x0 - 5);
 // Inside the funnel: the bead's centre rides the cone's wall at radius rho from its axis; the wall's slope
 // sets its height. It lands on the far wall, circles down a turn and a half, and drops through the throat.
@@ -603,8 +630,9 @@ function funnelAt(u) {
   if (u < 0.14) {
     // Off the rail ends: a short arc onto the far wall.
     const t = u / 0.14;
-    const a = [C.TRACK.x1, 0, railZ(C.TRACK.x1) + LIFT], b = local(land, th0, wall(land));
-    const run = Math.hypot(b[0] - a[0], b[1] - a[1]), v0 = SLOPE * run, k2 = Math.min(0, b[2] - a[2] - v0);
+    const off = C.TRACK.x1 - RAIL_END;
+    const a = [C.TRACK.x1, 0, railZ(C.TRACK.x1) + LIFT - FALL * off * off], b = local(land, th0, wall(land));
+    const run = Math.hypot(b[0] - a[0], b[1] - a[1]), v0 = (SLOPE - 2 * FALL * off) * run, k2 = Math.min(0, b[2] - a[2] - v0);
     return [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t, a[2] + (b[2] - a[2] - k2) * t + k2 * t * t];
   }
   if (u < 0.86) {
@@ -623,8 +651,10 @@ function funnelAt(u) {
 function beadAt(state) {
   const s = state.s;
   if (s <= 1) {
+    // Past the rails' ends the bead is in the air, falling away from the line it was rolling on.
     const x = C.CAGE.x0 + 5 + (C.TRACK.x1 - C.CAGE.x0 - 5) * s;
-    return [x, 0, railZ(x) + LIFT];
+    const off = Math.max(0, x - RAIL_END);
+    return [x, 0, railZ(x) + LIFT - FALL * off * off];
   }
   if (s <= FUNNEL_S) return funnelAt((s - 1) / (FUNNEL_S - 1));
   if (s <= CHUTE_S) return [CHUTE.x, C.STATION.y + C.STATION.d / 2, CHUTE.z + C.BEAD];
@@ -748,8 +778,8 @@ const CSS = `
 .iso[data-theme="dark"] .er-svg [data-mat="jade"]{--anatomy-spec:#8fb39b}
 .iso[data-theme="dark"] .er-svg [data-mat="ink"]{--anatomy-spec:#626a6c}
 .er-svg .iso-line[data-tone="spec"]{stroke:var(--anatomy-spec)}
-.er-svg .spec{stroke-width:.95;stroke-linecap:round;opacity:.78;filter:blur(.35px)}
-.er-svg .glint{fill:var(--anatomy-spec);stroke:none;filter:blur(1px);opacity:.68}
+.er-svg .spec{stroke-width:1.6;stroke-linecap:round;opacity:.42;filter:blur(.8px)}
+.er-svg .glint{fill:var(--anatomy-spec);stroke:none;filter:blur(1.5px);opacity:.5}
 .er-svg{--er-fault:var(--cinnabar,#c8372d);--er-reach:#9fc7a9}
 .er-svg .er-window{fill:#151819}
 .er-svg .er-digit{fill:#eef2ef;font-family:var(--anatomy-mono);font-variant-numeric:tabular-nums}
@@ -786,14 +816,14 @@ const modelSource = `const MD = (() => {\n${strip("model.mjs")}\nreturn { ${Obje
 const live = `
 const P0 = ${JSON.stringify(P0)};
 let P = P0;
-${shipped({ C, BED, GIRDER, BEAMS, SELECTOR, DIAL, SLOPE, LIFT, FRAME, KINDS, REPAIR_OF, DOMAINS_ICON, X3, Y3, Z3, FUNNEL_S, CHUTE_S, S_MOUTH, CHUTE })}
+${shipped({ C, RAIL_END, BED, GIRDER, BEAMS, SELECTOR, DIAL, SLOPE, LIFT, FRAME, KINDS, REPAIR_OF, DOMAINS_ICON, X3, Y3, Z3, FUNNEL_S, CHUTE_S, S_MOUTH, CHUTE, FALL })}
 const k = { ${Object.keys(k).join(", ")} };
 const G = LATHE;
 ${shipped({ railZ, at, S, L, D, M, n2, faceY, rectD, box, cyl, unit, halfway, litAngle, shine, edgeShine, glintAt, glint, ballGlint, brightRod, fadeFill, boxCast, grounded })}
 const DIR = unit([1, 0, SLOPE]);
 const UP = unit([-SLOPE, 0, 1]);
-${shipped({ ibeam, girder, rod, bandD, chairs, selector, selectorFace, ruler, shadows, tower, base, glyphD, icon, faceLamp, lever, panel, readings, railRun, rails, endStops, tie, ties, post, bridgeRails, bridgeTies, hinge, cage, cageCap, hopper, gate, gateLever, leverTip, coinPost, coin, latch, weight, station, funnel, chute, funnelAt, beadSlot, channel, channelGlass, rowAt, row, beadAt, seamD, beadSvg, beadTransform, beadShadow, stopS, composition, hitAreas })}
-const FIXED = [[C.TRACK.x0 - 4, C.BRIDGE.x0], [C.BRIDGE.x1, C.TRACK.x1]];
+${shipped({ PIN, leverAngle, ibeam, girder, rod, bandD, chairs, selector, selectorFace, ruler, shadows, tower, base, glyphD, icon, faceLamp, lever, panel, readings, railRun, rails, endStops, tie, ties, post, bridgeRails, bridgeTies, hinge, cage, cageCap, hopper, gate, gateLever, leverTip, latchCrank, coinPost, coin, latch, weight, station, funnel, chute, funnelAt, beadSlot, channel, channelGlass, rowAt, row, beadAt, seamD, beadSvg, beadTransform, beadShadow, stopS, composition, hitAreas })}
+const FIXED = [[C.TRACK.x0 - 4, C.BRIDGE.x0], [C.BRIDGE.x1, RAIL_END]];
 ${swingSource}
 ${liveScript()}
 `;
