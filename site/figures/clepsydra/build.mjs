@@ -43,7 +43,8 @@ const C = {
   GATE_X: 36,
   COINBOX: [36, -25],
   WHEEL: [62, -36, 20, 11, 6], // overshot: centre x, y, z, radius, width (axis along y)
-  PIVOT: [69, -10, 17], // the hammer's pivot, level with the wheel's shaft
+  CAM: { y: -10, r: 2.45, eccentric: 1.15, width: 2.3 },
+  HAMMER: { head: 11, tail: 7, arm: 0.72, roller: 0.72, axle: 1.5, pestle: 5 },
   LAMPS: [84, -22],
   JAR: [0, 22, 10, 20], // the contribution's jar: x, y, r, h
   QRULER: [-14, 22],
@@ -52,6 +53,9 @@ const C = {
   RACK: [34, 23],
   PLATE: [52, 92],
 };
+// At the cam's high point the hammer can strike the mortar before its follower re-engages.
+C.PIVOT = [C.WHEEL[0] + C.HAMMER.tail, C.CAM.y,
+  C.WHEEL[2] + C.CAM.eccentric - C.CAM.r - C.HAMMER.axle - C.HAMMER.roller - 0.2];
 
 const FIT = [
   ...k.boxCorners(C.BASE, C.BASE_Z[0] - C.FOOT.h, 0),
@@ -291,16 +295,23 @@ function trough(a, b, { trestles = [], wet = 1 } = {}) {
   out.push(L(joints.join(""), { tone: "faint" }));
   return out.join("");
 }
+const troughLip = (a, b) => G.add3(b, G.mul3(G.frameAlong(a, G.sub3(b, a)).v, 0.9));
 function troughs() {
   const [a, b, c] = C.LEFT;
   return [
     trough(a, b, { trestles: [{ t: 0.62, z0: 16 }, { t: 0.98, z0: 0 }] }),
     trough(b, c, { trestles: [{ t: 0.45, z0: 0 }, { t: 0.8, z0: 0 }] }),
-    jet([c[0], c[1], c[2] + 0.7], [C.BASIN[0] + 3, C.BASIN[1] - 6, C.BASIN[3] - 0.38], 1.5, 1, { slope: (c[2] - b[2]) / Math.hypot(c[0] - b[0], c[1] - b[1]) }),
+    jet(troughLip(b, c), [C.BASIN[0] + 3, C.BASIN[1] - 6, C.BASIN[3] - 0.38], 1.5, 1, { slope: (c[2] - b[2]) / Math.hypot(c[0] - b[0], c[1] - b[1]) }),
     jet([C.SOURCE[0] - 11.4, C.SOURCE[1], C.SOURCE[2] + 5.1], [a[0] - 1.8, a[1], a[2] + 0.88], 0.9, 1, { slope: -0.1, foam: false }),
   ].join("");
 }
 const millFlow = (open) => smoothstep((open - 0.6) / 0.4);
+function wheelStream(open) {
+  const [r0, r1] = C.RIGHT;
+  const [x, y, z, r] = C.WHEEL;
+  return open > 0.6 ? jet(troughLip(r0, r1), [x + 2.4, y, z + Math.sqrt(r ** 2 - 2.4 ** 2) - 0.8], 1.6, millFlow(open),
+    { slope: (r1[2] - r0[2]) / (r1[0] - r0[0]), foam: false }) : "";
+}
 function rightTrough(open) {
   const [r0, r1] = C.RIGHT;
   const x = C.GATE_X;
@@ -312,7 +323,6 @@ function rightTrough(open) {
     // The paid gate: a plate in its frame across the trough, lifted when the use is paid.
     M("ink", box({ x: x - 0.9, y: r0[1] - 3.4, w: 1.8, d: 1.2, r: 0.2 }, z - 1, 7, { tone: "mid" }, 1), box({ x: x - 0.9, y: r0[1] + 2.2, w: 1.8, d: 1.2, r: 0.2 }, z - 1, 7, { tone: "mid" }, 1), box({ x: x - 1.2, y: r0[1] - 3.6, w: 2.4, d: 7.2, r: 0.3 }, z + 6, 1.2, { tone: "mid" }, 1)),
     M("marble", box({ x: x - 0.5, y: r0[1] - 1.58, w: 1, d: 3.16, r: 0.1 }, z + 0.2 + open * 2.3, 3.4, { tone: "mid" }, 1)),
-    open > 0.6 ? jet([r1[0] + 0.2, r1[1], r1[2] + 0.7], [C.WHEEL[0] + 2.4, r1[1], C.WHEEL[2] + Math.sqrt(C.WHEEL[3] ** 2 - 2.4 ** 2) - 0.8], 1.6, millFlow(open), { slope: (r1[2] - r0[2]) / (r1[0] - r0[0]), foam: false }) : "",
   ].join("");
 }
 
@@ -332,7 +342,7 @@ function vessel(elapsed, drain = 0) {
   // Inside the glass: the water column, its surface, the float on it and the arrow's foot.
   const body = k.cylinder(x, y, r - 0.6, z + 0.8, lev - z - 0.8, P, 40);
   out.push(`<path class="cl-water-body" d="${body.fill}"/>`, `<path class="tw-water" d="${k.ring(x, y, r - 0.6, lev, P, 40)}"/>`);
-  out.push(jet([x, C.SOURCE[1] + 11.2, C.SOURCE[2] + 8.3], [x, y - 3.6, lev + 0.02], 0.8, 0.9, { slope: -0.12 }));
+  out.push(jet([x, C.SOURCE[1] + 11, C.SOURCE[2] + 8.35], [x, y - 3.6, lev + 0.02], 0.8, 0.9, { slope: -0.12 }));
   out.push(M("jade", cyl(x, y, 2.6, lev - 0.5, 1.1, { tone: "mid" }, 22, 0.2), cyl(x, y, 0.55, lev + 0.6, z + h - lev - 0.6, { tone: "hi", crease: "none", lit: true }, 10)));
   out.push(`<path class="cl-glass-wall" fill-rule="evenodd" d="${wall.fill}"/>`, L(wall.outline, { tone: "mid" }));
   out.push(`<path class="iso-shade" data-shade="0" d="${k.ring(x, y, r - 0.6, z + h, P, 40)}" style="opacity:.35"/>`);
@@ -499,7 +509,7 @@ function rimSvg(F, s0, s1, rIn, rOut) {
   const face = k.pathOf(ring(near, rOut), true) + hole;
   return `<g class="iso-solid"><path class="iso-fill" fill-rule="evenodd" d="${band + hole}"/><path class="iso-top" fill-rule="evenodd" d="${face}"/>${L(k.pathOf(ring(near, rOut), true), { tone: "faint" })}<path class="iso-line iso-edge" data-tone="mid" d="${band + hole}"/></g>`;
 }
-function wheel(turn) {
+function wheel(turn, frontHalf) {
   const [cx, cy, cz, r, w] = C.WHEEL;
   const s0 = cy - w / 2;
   const F = G.frameOf([cx, s0, cz], Y3, X3, Z3);
@@ -510,6 +520,11 @@ function wheel(turn) {
   const shaft = (y0, y1) => M("ink", S(G.disc(y0 - s0, y1 - s0, 1.1, F, P), { tone: "mid", inner: y1 - y0 > 3 ? shine(F, y0 - s0 + 0.5, y1 - s0 - 0.5, 1.12, 1.12, 2) : "" }));
   const spokes = (s) => Array.from({ length: 6 }, (_, i) => { const t = turn + (i / 6) * TAU; return rod(G.pointOf(F, s, 2, t), G.pointOf(F, s, r - 1.4, t), 0.38, { tone: "mid" }, 8); }).join("");
   const back = s0 - 1.6, front = cy + w / 2 + 2.8;
+  if (frontHalf) return M("marble", spokes(w - 0.4), rimSvg(F, w - 0.8, w, r - 1.5, r))
+    + shaft(cy + w / 2, front + 1)
+    + M("ink", S(G.disc(w + 0.1, w + 1.4, 2.6, F, P), { tone: "mid", inner: L(G.circleOf(F, w + 1.4, 1.7, P, 24), { tone: "faint" }) }),
+      D(G.dotsOf(F, w + 1.4, 2.1, 6, P, { all: true, phase: turn }), { size: 0.32 }))
+    + post(front) + shaft(front + 1, C.CAM.y + C.CAM.width / 2 + 0.5);
   const out = [post(back), shaft(back - 1, s0), M("marble", rimSvg(F, 0, 0.8, r - 1.5, r), spokes(0.4))];
   // Fourteen bucket boards between the rims, far ones first; each leans back against the way the wheel
   // turns, and is lit or in shade by which way it faces.
@@ -525,26 +540,61 @@ function wheel(turn) {
   }
   out.push(M("marble", ...buckets.sort((A, B) => A[0] - B[0]).map(([, svg]) => svg)));
   out.push(M("ink", S(G.disc(-0.6, w + 0.6, 2.2, F, P), { tone: "mid" })));
-  out.push(M("marble", spokes(w - 0.4), rimSvg(F, w - 0.8, w, r - 1.5, r)));
-  out.push(shaft(cy + w / 2, front + 1), M("ink", S(G.disc(w + 0.1, w + 1.4, 2.6, F, P), { tone: "mid", inner: L(G.circleOf(F, w + 1.4, 1.7, P, 24), { tone: "faint" }) }), D(G.dotsOf(F, w + 1.4, 2.1, 6, P, { all: true, phase: turn }), { size: 0.32 })));
-  out.push(post(front), shaft(front + 1, C.PIVOT[1] + 2));
-  const cam = G.frameOf([cx, C.PIVOT[1], cz], Y3, X3, Z3);
-  out.push(M("ink", S(G.prismOf(cam, [[-1.2, -1.2], [1.2, -1.2], [3.6 * Math.cos(turn * 2), 3.6 * Math.sin(turn * 2)]], -1, 1, P), { tone: "mid" })));
   return out.join("");
 }
-function hammer(lift) {
+const camCentre = (turn) => [C.WHEEL[0] + C.CAM.eccentric * Math.cos(turn), C.CAM.y, C.WHEEL[2] + C.CAM.eccentric * Math.sin(turn)];
+const hammerFrame = (angle) => G.frameOf(C.PIVOT, [Math.cos(angle), 0, Math.sin(angle)], Y3, [-Math.sin(angle), 0, Math.cos(angle)]);
+const followerCentre = (F) => G.add3(G.add3(F.o, G.mul3(F.a, -C.HAMMER.tail)), G.mul3(F.v, C.HAMMER.axle));
+function camAngle(turn) {
+  const centre = camCentre(turn);
+  const radius = C.CAM.r + C.HAMMER.roller;
+  const clears = (angle) => G.len3(G.sub3(followerCentre(hammerFrame(angle)), centre)) >= radius;
+  if (clears(0)) return 0;
+  let lo = 0, hi = 0.5;
+  for (let i = 0; i < 16; i++) {
+    const mid = (lo + hi) / 2;
+    if (clears(mid)) hi = mid; else lo = mid;
+  }
+  return hi;
+}
+function hammer(angle, turn) {
   const [px, py, pz] = C.PIVOT;
-  const head = 11, tail = 7;
+  const { head, tail, arm, roller, axle, pestle } = C.HAMMER;
   const mortar = [px + head, py];
-  const mz = pz - 5;
-  const out = [shadow(mortar[0], mortar[1], 5, 0.35, { h: mz, w: 4 }), M("ink", cyl(mortar[0], mortar[1], 4.8, 0, 1.2, { tone: "mid" }, 28, 0.3)), M("marble", S(G.solidOf([[1.2, 3.4], [2, 3.6, 1], [mz - 4, 3.2, 1], [mz - 1.6, 4.2, 1], [mz, 4.6]], FV(mortar[0], mortar[1], 0), P), { tone: "mid" }), L(G.arcOf(FV(mortar[0], mortar[1], 0), 2.6, 3.56, P) + G.arcOf(FV(mortar[0], mortar[1], 0), mz - 0.4, 4.5, P), { tone: "lo" }), shine(FV(mortar[0], mortar[1], 0), 3, mz - 4.6, 3.54, 3.22, 1.6)), `<path class="iso-shade" data-shade="0" d="${k.ring(mortar[0], mortar[1], 3, mz, P, 24)}"/>`];
-  for (const dy of [-3, 3]) out.push(M("ink", box({ x: px - 0.7, y: py + dy - 0.7, w: 1.4, d: 1.4, r: 0.2 }, 0, pz + 0.6, { tone: "mid" }, 1)));
-  const a = 0.06 + lift * 0.4;
-  const dir = [Math.cos(a), 0, Math.sin(a)];
-  const F = G.frameOf([px, py, pz], dir, Y3, [-Math.sin(a), 0, Math.cos(a)]);
-  out.push(M("marble", S(G.prismOf(F, [[-0.9, -0.8], [0.9, -0.8], [0.9, 0.8], [-0.9, 0.8]], -tail, head + 1, P), { tone: "mid" })));
-  out.push(M("ink", S(G.disc(-3.6, 3.6, 0.7, G.frameOf([px, py, pz], Y3, X3, Z3), P), { tone: "mid" })));
-  out.push(M("jade", S(G.disc(-5, 0.4, 1.6, G.frameOf(G.pointOf(F, head, 0, 0), Z3, X3, Y3), P), { tone: "mid" })));
+  const bed = pz - pestle, rim = bed + 1.15;
+  const bowl = FV(...mortar, 0);
+  const opening = k.ring(...mortar, 3.15, rim, P, 44);
+  const [, rimY] = at([...mortar, rim]);
+  const post = (dy) => M("ink", box({ x: px - 0.8, y: py + dy - 0.7, w: 1.6, d: 1.4, r: 0.2 }, 0, pz + 0.85, { tone: "mid" }, 1));
+  const F = hammerFrame(angle);
+  const sleeve = G.frameOf(C.PIVOT, Y3, X3, Z3);
+  const follower = G.frameOf(followerCentre(F), Y3, X3, Z3);
+  const fork = G.frameOf(G.add3(F.o, G.mul3(F.a, -tail)), Y3, F.a, F.v);
+  const forkProfile = [[-0.46, arm], [0.46, arm], [0.36, axle + 0.4], [-0.36, axle + 0.4]];
+  const cam = G.frameOf(camCentre(turn), Y3, X3, Z3);
+  const halfWidth = C.CAM.width / 2;
+  const pin = G.frameOf([C.WHEEL[0], C.CAM.y, C.WHEEL[2]], Y3, X3, Z3);
+  const pestleFrame = FV(...G.pointOf(F, head, 0, 0));
+  const out = [
+    shadow(...mortar, 5, 0.35, { h: rim, w: 4 }),
+    M("ink", cyl(...mortar, 4.8, 0, 1.2, { tone: "mid" }, 28, 0.3)),
+    M("marble", S(G.lathe([[1.2, 3.4], [2, 3.6, 1], [rim - 3.6, 3.2, 1], [rim - 1.6, 4.2, 1], [rim, 4.6]], bowl, P, { fill: "surface" }), { tone: "mid" }),
+      rimSvg(bowl, rim - 0.35, rim, 3.15, 4.6)),
+    `<path class="iso-shade" data-shade="0" d="${opening}" style="opacity:.55"/>`,
+    post(-3),
+    M("ink", S(G.disc(-3.7, 3.7, 0.62, sleeve, P), { tone: "mid" })),
+    M("marble", S(G.prismOf(F, [[-0.9, -arm], [0.9, -arm], [0.9, arm], [-0.9, arm]], -tail - 0.85, head + 1, P), { tone: "mid" })),
+    M("ink", S(G.prismOf(fork, [[-0.46, arm], [0.46, arm], [0.46, arm + 0.22], [-0.46, arm + 0.22]], -1.46, 1.46, P), { tone: "mid" }),
+      S(G.prismOf(fork, forkProfile, -1.46, -1.15, P), { tone: "mid" })),
+    M("jade", S(G.disc(-1.15, 1.15, roller, follower, P), { tone: "mid" })),
+    M("ink", S(G.disc(-halfWidth, halfWidth, C.CAM.r, cam, P), { tone: "mid" }),
+      S(G.disc(halfWidth, halfWidth + 0.45, 1.05, pin, P), { tone: "hi" }),
+      S(G.prismOf(fork, forkProfile, 1.15, 1.46, P), { tone: "mid" }),
+      S(G.disc(1.46, 1.61, 0.25, follower, P), { tone: "hi" })),
+    post(3),
+    M("jade", S(G.disc(3.7, 4.02, 1, sleeve, P), { tone: "mid" })),
+    `<clipPath id="cl-mortar-mouth"><path d="${opening}"/><path d="M-4000 -4000H4000V${n2(rimY)}H-4000Z"/></clipPath><g clip-path="url(#cl-mortar-mouth)">${M("jade", S(G.disc(-pestle, 0.4, 1.6, pestleFrame, P), { tone: "mid" }))}</g>`,
+  ];
   return out.join("");
 }
 function coinbox(coin) {
@@ -648,12 +698,15 @@ function tally(where) {
 // --- composition: back to front -----------------------------------------------------------------------
 
 function composition(state) {
+  // The stream falls between the rims. The stand and wheel exchange depth when the
+  // camera crosses the x axis of the bench.
+  const rotor = `<g data-part="wheel-back">${wheel(state.turn, false)}</g><g data-part="mill-stream">${wheelStream(state.open)}</g><g data-part="wheel-front">${wheel(state.turn, true)}</g>`;
+  const standFirst = G.viewOf(P)[0] > 0;
   return [
     WATER_DEFS,
     base(),
     `<g data-part="counter">${counter(state)}</g>`,
-    `<g data-part="wheel">${wheel(state.turn)}</g>`,
-    stand(),
+    standFirst ? stand() + rotor : rotor + stand(),
     source(),
     `<g data-part="right">${rightTrough(state.open)}</g>`,
     `<g data-part="coinbox">${coinbox(state.coin)}</g>`,
@@ -662,8 +715,8 @@ function composition(state) {
     ruler(),
     `<g data-part="seal">${seal(state)}</g>`,
     troughs(),
-    `<g data-part="hammer">${hammer(state.lift)}</g>`,
     `<g data-part="lamps">${millLamps(state.legs)}</g>`,
+    `<g data-part="hammer">${hammer(state.lift, state.turn)}</g>`,
     `<g data-part="basin">${basin(state.level, state.bowls, state.ladle)}</g>`,
     `<g data-part="ripples">${ripples(state.level, state.ripple ?? 0.2)}</g>`,
     qruler(),
@@ -699,7 +752,7 @@ function hitAreas() {
 const REST = {
   origin: 1, account: MD.pay(MD.issue({ slots: [] }, 1, "甲", MD.Q).account, 1, 2).account,
   holder: 0, received: [2, 0], pour: 0, tally: { t: 0, dx: 0, dy: 0, lift: 0 },
-  legs: ["pay", "grind"], open: 0, coin: 0, turn: 0.4, spin: 0, lift: 0, hv: 0, ripple: 0.2,
+  legs: ["pay", "grind"], open: 0, coin: 0, turn: Math.PI / 2, spin: 0, lift: 0, hv: 0, ripple: 0.2,
   elapsed: 2, force: true, seatAt: [0, 1], log: [1, 1, 1], level: 1, bowls: [0, 0],
 };
 
@@ -766,7 +819,7 @@ ${shipped({ C, ARROW, COUNTER, TRAY, FRAME, X3, Y3, Z3, WATER_DEFS })}
 const k = { ${Object.keys(k).join(", ")} };
 const G = LATHE;
 ${shipped({ at, S, L, D, M, n2, faceY, rectD, box, cyl, FV, unit, rod, jet, shadow, halfway, litAngle, shine, edgeShine, glintAt, glint, ballGlint, brightRod, fadeFill, boxCast, grounded })}
-${shipped({ levelOf, smoothstep, ladlePose, ladleSvg, ripples, rimSvg, base, counterFace, counter, tray, stand, source, trough, troughs, millFlow, rightTrough, vessel, ruler, seal, tablet, basin, wheel, hammer, coinbox, millLamps, jar, qruler, spigotFrame, spigot, cup, rack, tally, composition, hitAreas })}
+${shipped({ levelOf, smoothstep, ladlePose, ladleSvg, ripples, rimSvg, base, counterFace, counter, tray, stand, source, trough, troughLip, troughs, millFlow, wheelStream, rightTrough, vessel, ruler, seal, tablet, basin, wheel, camCentre, hammerFrame, followerCentre, camAngle, hammer, coinbox, millLamps, jar, qruler, spigotFrame, spigot, cup, rack, tally, composition, hitAreas })}
 ${swingSource}
 ${liveScript()}
 `;
@@ -784,7 +837,7 @@ const HOLDER = ["甲", "丙"], KEEPER = ["乙", "戊"];
 const st = {
   origin: 1, account: MD.pay(MD.issue({ slots: [] }, 1, "甲", MD.Q).account, 1, 2).account,
   holder: 0, received: [2, 0], shownReceived: [2, 0], left: 4, pour: 0, tally: { t: 0, dx: 0, dy: 0, lift: 0 },
-  legs: ["pay", "grind"], open: 0, coin: 0, turn: 0.4, spin: 0, lift: 0, hv: 0, ripple: 0.2,
+  legs: ["pay", "grind"], open: 0, coin: 0, turn: Math.PI / 2, spin: 0, lift: 0, hv: 0, ripple: 0.2,
   elapsed: 2, force: true, seatAt: [0, 1], log: [1, 1, 1], level: 1, bowls: [0, 0],
 };
 // The clock: one tick per unit of time; the seat's own deadline decides its jurisdiction.
@@ -810,14 +863,14 @@ let shown = {};
 function paint(force = false) {
   const key = (v) => JSON.stringify(v);
   const want = {
-    wheel: key([n2(st.turn)]), right: key([n2(st.open)]), coinbox: key([n2(st.coin)]), tablet: key([st.log.length]),
-    vessel: key([n2(st.elapsed), n2(st.drain ?? 0)]), seal: key([st.force, st.seatAt, n2(st.sealLift ?? 0)]), hammer: key([n2(st.lift)]), lamps: key(st.legs),
+    "wheel-back": n2(st.turn), "wheel-front": n2(st.turn), "mill-stream": n2(st.open), right: n2(st.open), coinbox: key([n2(st.coin)]), tablet: key([st.log.length]),
+    vessel: key([n2(st.elapsed), n2(st.drain ?? 0)]), seal: key([st.force, st.seatAt, n2(st.sealLift ?? 0)]), hammer: key([n2(st.turn), st.lift.toFixed(3)]), lamps: key(st.legs),
     basin: key([n2(st.level), st.bowls.map(n2), st.ladle ? [n2(st.ladle.t), st.ladle.bowl] : 0]), ripples: key([n2(st.level), n2(st.ripple)]), jar: key([n2(st.left), st.origin]), spigot: key(n2(st.tally.t)),
     counter: key([MD.receivedFor(st.account, st.origin), MD.remainingFor(st.account, st.origin)]), "cup-0": key([n2(st.shownReceived[0]), st.holder === 0 ? n2(st.pour) : 0]), "cup-1": key([n2(st.shownReceived[1]), st.holder === 1 ? n2(st.pour) : 0]), tally: key([n2(st.tally.t), n2(st.tally.dx), n2(st.tally.dy), n2(st.tally.lift)]),
   };
   const draw = {
-    wheel: () => wheel(st.turn), right: () => rightTrough(st.open), coinbox: () => coinbox(st.coin), tablet: () => tablet(st.log.length),
-    vessel: () => vessel(st.elapsed, st.drain ?? 0), seal: () => seal(st), hammer: () => hammer(st.lift), lamps: () => millLamps(st.legs),
+    "wheel-back": () => wheel(st.turn, false), "wheel-front": () => wheel(st.turn, true), "mill-stream": () => wheelStream(st.open), right: () => rightTrough(st.open), coinbox: () => coinbox(st.coin), tablet: () => tablet(st.log.length),
+    vessel: () => vessel(st.elapsed, st.drain ?? 0), seal: () => seal(st), hammer: () => hammer(st.lift, st.turn), lamps: () => millLamps(st.legs),
     basin: () => basin(st.level, st.bowls, st.ladle), ripples: () => ripples(st.level, st.ripple), jar: () => jar(st), spigot: () => spigot(st.tally.t),
     counter: () => counter(st), "cup-0": () => cup(0, st.shownReceived[0], st.holder === 0 ? st.pour : 0), "cup-1": () => cup(1, st.shownReceived[1], st.holder === 1 ? st.pour : 0), tally: () => tally(st.tally),
   };
@@ -967,17 +1020,15 @@ function mechanics(dt) {
   if (drive === 0 && st.spin < 0.03) st.spin = 0;
   // The water lands just past the top on the far side, so the top of the wheel runs away from the trough.
   st.turn -= st.spin * dt;
-  const TAU = Math.PI * 2;
-  const p = (((-st.turn * 2) % TAU) + TAU) % TAU / TAU;
-  const cam = p < 0.78 ? Math.sin(((p / 0.78) * Math.PI) / 2) : 0;
-  if (st.spin > 0.05 && cam >= st.lift) { st.lift = cam; st.hv = 0; }
-  else if (st.lift > 0 || st.hv !== 0) {
-    st.hv -= 30 * dt;
-    st.lift += st.hv * dt;
-    if (st.lift <= 0) { st.lift = 0; st.hv = st.hv < -1.2 ? -st.hv * 0.22 : 0; }
+  const cam = camAngle(st.turn);
+  st.hv -= 5.4 * dt;
+  st.lift += st.hv * dt;
+  if (st.lift <= cam) {
+    st.lift = cam;
+    st.hv = cam === 0 && st.hv < -0.6 ? -st.hv * 0.18 : 0;
   }
   st.ripple = (st.ripple + dt * 0.55) % 1;
-  return st.spin !== 0 || st.lift > 0 || st.hv !== 0;
+  return st.spin !== 0 || st.lift > cam || st.hv !== 0;
 }
 function tick(time) {
   const dt = last ? Math.min((time - last) / 1000, 1 / 30) : 1 / 60;
