@@ -277,6 +277,7 @@ export const PAPERS: PaperEntry[] = [
     slug: "capital-formation",
     theme: "society",
     editions: [{ release: "capital-formation", doi: capitalPaper().doi }],
+    figure: { name: "replay-bakery", claim: "R8" },
   },
 ];
 
