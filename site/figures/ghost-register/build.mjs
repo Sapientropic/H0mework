@@ -127,13 +127,23 @@ function makeLive(k, G, P, C, M) {
   // pushing the trip rod that tips the drawer's latch lever; at rest it is turned well clear.
   const CAM = { base: 4.2, lobe: 0.8, reach: 6.2, at: 1.36 * Math.PI };
   const camAngle = (theta) => CAM.at + theta;
-  const camPolygon = (theta) => {
+  const camPolygon = (theta, padding = 0) => {
     const circle = (cx, cy, r, n) => Array.from({ length: n }, (_, i) => [cx + r * Math.cos((i / n) * TAU), cy + r * Math.sin((i / n) * TAU)]);
     const a = camAngle(theta);
-    return G.hullOf([...circle(0, 0, CAM.base, 40), ...circle(CAM.reach * Math.cos(a), CAM.reach * Math.sin(a), CAM.lobe, 16)]);
+    return G.hullOf([...circle(0, 0, CAM.base + padding, 40), ...circle(CAM.reach * Math.cos(a), CAM.reach * Math.sin(a), CAM.lobe + padding, 24)]);
   };
-  // How far the cam pushes the rod down: its support below the shaft, less the base circle.
-  const dropAt = (theta) => Math.max(0, -CAM.reach * Math.cos(camAngle(theta)) + CAM.lobe - CAM.base);
+  // Trace the roller's centre on the cam expanded by its radius, along the rod's centreline.
+  function dropAt(theta) {
+    const profile = camPolygon(theta, ROD.roller);
+    const rest = -CAM.base - ROD.roller;
+    let contact = rest;
+    profile.forEach(([z, y], i) => {
+      const [nextZ, nextY] = profile[(i + 1) % profile.length];
+      if (y === 0) contact = Math.min(contact, z);
+      if (y * nextY < 0) contact = Math.min(contact, z + (nextZ - z) * y / (y - nextY));
+    });
+    return rest - contact;
+  }
   function crankBack(theta) {
     const out = [];
     const span = TAU / CR.teeth;
@@ -208,7 +218,7 @@ function makeLive(k, G, P, C, M) {
   const BRACKET = { z0: 49.5, z1: 52.5 };
   const rollerZ = (drop) => CR.z - CAM.base - ROD.roller - drop;
   const ROD_LEN = rollerZ(0) - (LEVER.z + LEVER.half);
-  const COLLAR = 57.5;
+  const COLLAR = 59.2;
   const cabSide = C.CAB.x + C.CAB.w;
   function helix(z0, z1, r, turns) {
     // A coil round the rod, split into the halves behind and in front of it.
@@ -401,11 +411,11 @@ function makeLive(k, G, P, C, M) {
     return S(card, { tone: "mid", crease: "none", inner: label });
   }
   function marquee({ index, pop }) {
-    // pop: 0 at rest; on a turn the old tab falls (0 → 1) and the new one rises with a spring.
+    // The old tab clears the slot before the new one rises through it.
     if (!pop) return tabCard(index, 0);
     const out = [];
     if (pop.old < 1) out.push(tabCard(index - 1, pop.old));
-    if (pop.rise > -1) out.push(tabCard(index, pop.rise));
+    if (pop.next < 1) out.push(tabCard(index, pop.next));
     return out.join("");
   }
 
@@ -762,6 +772,7 @@ const SLOW = 0.25;
 const G_REAL = 7360; // 9.81 m/s² in world units (a 9-unit radius is a 12 mm coin)
 const g = G_REAL * SLOW * SLOW;
 const REST_Z = 1.4 + C.COIN.t / 2;
+const coinHeight = (a) => 1.4 + C.COIN.r * Math.hypot(a[0], a[1]) + C.COIN.t / 2 * Math.abs(a[2]);
 const H = [Math.sin(P.azimuth * RAD), -Math.cos(P.azimuth * RAD), 0]; // across the screen
 const rot = (axis, angle, v) => {
   const c = Math.cos(angle), s = Math.sin(angle), d = axis[0] * v[0] + axis[1] * v[1] + axis[2] * v[2];
@@ -803,7 +814,7 @@ function draw(what) {
   if (what.striker) parts.striker.innerHTML = LIVE.striker(state.swing);
   if (what.counter) parts.counter.innerHTML = LIVE.counter(state.value);
   if (what.journal) parts.journal.innerHTML = LIVE.journal(state);
-  if (what.marquee) parts.marquee.innerHTML = LIVE.marquee({ index: state.index, pop: pop && { old: pop.old, rise: pop.rise } });
+  if (what.marquee) parts.marquee.innerHTML = LIVE.marquee({ index: state.index, pop });
   say();
 }
 const ALL = { crank: 1, till: 1, coin: 1, striker: 1, counter: 1, journal: 1, marquee: 1 };
@@ -834,8 +845,7 @@ function tossCoin() {
   // Three half-turns about the screen-wide axis, landing with a tilt it then loses in a short wobble.
   const T = 0.18 / SLOW;
   const tilt = 0.32;
-  const sign = state.bit ? -1 : 1;
-  toss = { t: 0, T, from: state.coin.a.slice(), sign, spin: 3 * Math.PI + tilt, tilt, wobble: null, z0: REST_Z, z1: REST_Z + C.COIN.r * Math.sin(tilt) };
+  toss = { t: 0, T, from: state.coin.a.slice(), spin: 3 * Math.PI + tilt, tilt, wobble: null, z0: REST_Z, z1: coinHeight([Math.sin(tilt), 0, Math.cos(tilt)]) };
   run();
 }
 function tugDrawer() {
@@ -852,7 +862,7 @@ function stepTurn(dt) {
   state.theta = TAU * easeInOut(f);
   const phase = state.theta / TAU;
   // Feed the strip up a line, print, roll the counter, then ring and release the drawer.
-  state.scroll = smooth((phase - 0.12) / 0.3);
+  state.scroll = turn.printed ? 0 : smooth((phase - 0.12) / 0.3);
   if (phase >= 0.5 && !turn.printed) {
     turn.printed = true;
     register();
@@ -864,7 +874,7 @@ function stepTurn(dt) {
   if (turn.printed) state.ink = smooth((turn.t - turn.inkAt) / 0.08);
   else state.ink = 1;
   if (turn.printed) state.value = state.index - 1 + smooth((phase - 0.55) / 0.33);
-  if (turn.printed && !pop && phase >= 0.6 && !turn.popped) { turn.popped = true; pop = { t: 0, old: 0, rise: -1 }; }
+  if (turn.printed && !pop && phase >= 0.6 && !turn.popped) { turn.popped = true; pop = { t: 0, old: 0, next: 1 }; }
   // The cam's lobe pushes the trip rod down; once the lever has lifted the bolt, the drawer goes and the bell rings.
   if (!turn.released && LIVE.dropAt(state.theta) > 1.8) {
     turn.released = true;
@@ -877,14 +887,13 @@ function stepTurn(dt) {
     turn = null;
   }
 }
-// The marquee: the old tab drops under gravity, the new one is sprung up past its rest and settles.
+// The marquee lowers the old tab, then raises the next through the same slot.
 function stepPop(dt) {
   pop.t += dt;
   const t = pop.t;
   pop.old = Math.min(1, (t / 0.2) ** 2);
-  const u = t - 0.1;
-  pop.rise = u <= 0 ? -1 : -Math.exp(-7 * u) * Math.cos(15 * u);
-  if (t > 0.9) pop = null;
+  pop.next = 1 - smooth((t - 0.2) / 0.42);
+  if (pop.next === 0) pop = null;
 }
 function stepRing(dt) {
   chime.t += dt;
@@ -918,13 +927,15 @@ function stepTill(dt) {
 }
 function stepToss(dt) {
   toss.t += dt;
-  const { T, from, sign } = toss;
+  const { T, from } = toss;
   if (!toss.wobble) {
-    const f = Math.min(1, toss.t / T);
+    const t = Math.min(toss.t, T);
+    const f = t / T;
     // A parabola from the mat to the height at which the tilted coin first touches down.
     const v0 = (toss.z1 - toss.z0) / T + 0.5 * g * T;
-    state.coin.c = [C.COIN.x, C.COIN.y, toss.z0 + v0 * toss.t - 0.5 * g * toss.t * toss.t];
     state.coin.a = rot(H, toss.spin * f, from);
+    const z = Math.max(coinHeight(state.coin.a), toss.z0 + v0 * t - 0.5 * g * t * t);
+    state.coin.c = [C.COIN.x, C.COIN.y, z];
     if (f >= 1) {
       state.bit = !state.bit;
       toss.wobble = { t: 0, phi: 0 };
@@ -942,7 +953,7 @@ function stepToss(dt) {
   const k0 = H;
   const kAxis = rot([0, 0, 1], w.phi, k0);
   state.coin.a = rot(kAxis, alpha * (state.bit ? -1 : 1), down);
-  state.coin.c = [C.COIN.x, C.COIN.y, 1.4 + C.COIN.r * Math.sin(alpha) + (C.COIN.t / 2) * Math.cos(alpha)];
+  state.coin.c = [C.COIN.x, C.COIN.y, coinHeight(state.coin.a)];
   if (w.t >= Ts) {
     state.coin.a = down;
     state.coin.c = [C.COIN.x, C.COIN.y, REST_Z];

@@ -45,27 +45,31 @@ const C = {
   // Station 1: the window's two blocks as Bloch spheres, read by feelers through a beam.
   SPHERES: [{ block: 1, c: [98, -1, 121] }, { block: -1, c: [158, -1, 121] }],
   R_SPHERE: 15,
-  ARROW: 10.5,
-  FEELER: { dx: 8.5, rod: 27, foot: 4.4 },
+  ARROW: 9,
+  FEELER: { dx: 7.2, rod: 27, foot: 4.4 },
   GUIDE_Z: 137.5,
   STAND: [136.5, -24],
-  CONE: { x: 132, z: 126.4, R: 10 * (8 / 10.5), step: 10 },
-  IDLER: { r: 2, z: 132 },
+  CONE: { x: 132, z: 126.4, step: 10 },
+  IDLER: { r: 2 },
   STAND_TOP: 164,
   DIAL: [66, 0],
   // Two slide switches that follow the testimony: Q on the top shelf, the leg count in the middle.
   SWITCHES: [{ tier: 2, plan: { x: 170, y: -2, w: 18, d: 8, r: 1.5 }, marks: ["B", "T"] }, { tier: 1, plan: { x: 158, y: 8, w: 18, d: 8, r: 1.5 }, marks: ["2", "1"] }],
   // Station 2: the state derivative δu as two meshed gears, bra and ket, each read by a yoke.
-  GEARS: { c: [[86, -2.5, 61], [114, -2.5, 61]], tip: 15, root: 13, teeth: 20, t: 3, pin: 8, stem: 19.5, guide: 72 },
+  GEARS: { c: [[86, -2.5, 63.4], [114, -2.5, 63.4]], tip: 15, root: 13, teeth: 20, t: 3, pin: 8, stem: 19.5, guide: 74.4 },
   // Station 3: a disc-and-wheel integrator for the Kubo kernel.
-  DISC: { c: [124, -6], r: 30, z: 6, h: 3 },
+  DISC: { c: [124, -6], r: 30, z: 11, h: 3 },
   WHEEL: { r: 6, travel: 14, pinion: 3.2 },
+  RACK_H: 20.5,
   YOKE: { c: [174, 10, 21.5], r: 14 },
 };
 C.Y_P = C.BOARD.y + C.BOARD.d + 0.4;
 // Lane 2's baseline is where the yokes put the balance bar with both pins at the bottom.
 C.LANES[1] = C.GEARS.c[0][2] - C.GEARS.pin + C.GEARS.stem;
+C.CONE.R = C.CONE.step * C.GAIN / C.ARROW;
+C.IDLER.z = C.CONE.z + C.CONE.R - C.IDLER.r;
 C.WHEEL.axle = C.DISC.z + C.DISC.h + C.WHEEL.r;
+C.WHEEL.rail = C.WHEEL.axle + 7;
 // Disc rate so that the rack moves GAIN per unit reading: rack = pinion·ψ, ψ = (Ω·travel/2r)(1 − cos 2x).
 C.OMEGA_DISC = (C.GAIN * 2 * C.WHEEL.r) / (C.WHEEL.pinion * C.WHEEL.travel);
 
@@ -229,7 +233,7 @@ function makeLive(k, G, P, C, M) {
     const out = [];
     const steps = M.AMPLITUDES.map(stepOf);
     out.push(stone("jade", S(G.disc(0, 3.2, C.CONE.R, F, P), { tone: "mid" }), L(G.spokesOf(F, 0, 3, C.CONE.R - 2, 6, P, { phase: -turn }), { tone: "lo" }),
-      ...steps.map((r, index) => S(G.disc(-1.6 - index * 1.6, -index * 1.6, r + 0.8, F, P, { steps: 28 }), { tone: r === step ? "hi" : "mid" }))));
+      ...steps.map((r, index) => S(G.disc(-1.6 - index * 1.6, -index * 1.6, r, F, P, { steps: 28 }), { tone: r === step ? "hi" : "mid" }))));
     // Cord from the step's right side up to the slide block.
     const blockBottom = middleOf(state) - 4;
     const cordX = C.CONE.x + step;
@@ -241,7 +245,8 @@ function makeLive(k, G, P, C, M) {
   function penCord(state, penZ) {
     const y = C.Y_BAR;
     const top = C.CONE.z + C.CONE.R;
-    return L(k.pathOf([at([C.CONE.x, y, top]), at([C.X_IN + C.IDLER.r, y, top]), at([C.X_IN, y, top - C.IDLER.r]), at([C.X_IN, y, penZ + 1.8])]), { tone: "hi" });
+    const drumY = C.STAND[1] + 3 - 1.6;
+    return L(k.pathOf([at([C.CONE.x, drumY, top]), at([C.X_IN + C.IDLER.r, y, top]), at([C.X_IN, y, top - C.IDLER.r]), at([C.X_IN, y, penZ + 1.8])]), { tone: "hi" });
   }
 
   // Station 2 — the two gears. The ket gear turns φ = 2ωt, the bra gear −φ (complex conjugate).
@@ -296,10 +301,10 @@ function makeLive(k, G, P, C, M) {
       const y0 = cy + g.t / 2 + 0.6;
       const hooked = !(index === 1 && state.unhooked > 0.5);
       out.push(stone("jade", S(G.disc(0, hooked ? 3.6 : 1.4, 1.1, G.frameOf(pin, [0, 1, 0], [1, 0, 0], [0, 0, 1]), P, { steps: 14 }), { tone: "hi" })));
-      const slot = { x: cx - g.pin - 2.4, y: y0 + 1.4, w: 2 * g.pin + 4.8, d: 1.6, r: 0.4 };
-      out.push(stone("ink", S(k.slabOf(slot, z - 1.8, 3.6, P, 2), { tone: "mid" })));
-      out.push(L(k.pathOf([[cx - g.pin - 1, z - 0.5], [cx + g.pin + 1, z - 0.5], [cx + g.pin + 1, z + 0.5], [cx - g.pin - 1, z + 0.5]].map(([x, zz]) => at([x, y0 + 3, zz])), true), { tone: "lo" }));
-      out.push(stone("ink", S(k.slabOf({ x: cx - 1, y: y0 + 1.6, w: 2, d: 1.4, r: 0.3 }, z + 1.8, g.stem - 1.8, P, 2), { tone: "mid" })));
+      const slot = { x: cx - g.pin - 2.4, y: y0 + 1.4, w: 2 * g.pin + 4.8, d: 1.6, r: 0.2 };
+      out.push(stone("ink", ...[-2.1, 1.2].map((dz) => S(k.slabOf(slot, z + dz, 0.9, P, 2), { tone: "mid" })),
+        ...[slot.x, slot.x + slot.w - 0.9].map((x) => S(k.slabOf({ ...slot, x, w: 0.9 }, z - 1.2, 2.4, P, 2), { tone: "mid" })),
+        S(k.slabOf({ x: cx - 1, y: y0 + 1.6, w: 2, d: 1.4, r: 0.3 }, z + 2.1, g.stem - 2.1, P, 2), { tone: "mid" })));
     });
     // Whiffletree: one bar across the two stems; its middle drives the lane-2 pen bar.
     const [l, r] = g.c.map(([cx], index) => [cx, g.c[0][1] + g.t / 2 + 2.3, yokeZ(state, index) + g.stem]);
@@ -342,8 +347,9 @@ function makeLive(k, G, P, C, M) {
     const fork = { x: wx - 4.8, y: c[1] - 5, w: 9.6, d: 10, r: 1 };
     out.push(stone("ink", S(k.slabOf({ x: fork.x, y: fork.y + 1, w: 1.6, d: 8, r: 0.3 }, C.WHEEL.axle - 1, 9, P, 2), { tone: "mid" }),
       S(k.slabOf({ x: fork.x + fork.w - 1.6, y: fork.y + 1, w: 1.6, d: 8, r: 0.3 }, C.WHEEL.axle - 1, 9, P, 2), { tone: "mid" }), S(k.slabOf(fork, C.WHEEL.axle + 8, 2.4, P, 2, 0.3), { tone: "mid" })));
-    // Rail sleeves and the connecting rod to the yoke's crosshead.
-    for (const dy of [-9, 9]) out.push(stone("ink", S(G.disc(-3, 3, 1.9, G.frameOf([wx, c[1] + dy, 22], [1, 0, 0], [0, 1, 0], [0, 0, 1]), P, { steps: 16 }), { tone: "mid" })));
+    // A crosspiece connects the fork to both rail sleeves above the wheel.
+    out.push(stone("ink", S(k.slabOf({ x: wx - 2.5, y: c[1] - 9, w: 5, d: 18, r: 0.4 }, C.WHEEL.rail - 0.6, 1.6, P, 2), { tone: "mid" })));
+    for (const dy of [-9, 9]) out.push(stone("ink", S(G.disc(-3, 3, 1.9, G.frameOf([wx, c[1] + dy, C.WHEEL.rail], [1, 0, 0], [0, 1, 0], [0, 0, 1]), P, { steps: 16 }), { tone: "mid" })));
     return out.join("");
   }
   function axle(state) {
@@ -360,9 +366,9 @@ function makeLive(k, G, P, C, M) {
     const top = lane3Z(state);
     const y = C.DISC.c[1] - C.WHEEL.pinion - 1.2;
     const plan = { x: C.X_IN - 1.2, y: y - 1.2, w: 2.4, d: 2.4, r: 0.3 };
-    const out = [S(k.slabOf(plan, top - 30, 30, P, 2), { tone: "mid" })];
+    const out = [S(k.slabOf(plan, top - C.RACK_H, C.RACK_H, P, 2), { tone: "mid" })];
     const teeth = [];
-    for (let z = top - 29; z < top - 1; z += 1.4) if (z > 3.5) teeth.push(k.pathOf([at([C.X_IN - 1.2, y + 1.2, z]), at([C.X_IN + 1.2, y + 1.2, z])]));
+    for (let z = top - C.RACK_H + 1; z < top - 1; z += 1.4) teeth.push(k.pathOf([at([C.X_IN - 1.2, y + 1.2, z]), at([C.X_IN + 1.2, y + 1.2, z])]));
     out.push(L(teeth.join(""), { tone: "lo" }));
     // Stub back to the pen bar.
     out.push(S(k.slabOf({ x: C.X_IN - 1, y: C.Y_BAR, w: 2, d: y - 1.2 - C.Y_BAR, r: 0.3 }, top - 1.2, 2.4, P, 2), { tone: "mid" }));
@@ -381,7 +387,12 @@ function makeLive(k, G, P, C, M) {
     const slot = { x: pin[0] - 1.6, y: y + 4.4, w: 3.2, d: 1.6, r: 0.4 };
     out.push(stone("ink", S(k.slabOf(slot, z - C.YOKE.r - 3, 2 * C.YOKE.r + 6, P, 2), { tone: "mid" })));
     out.push(L(k.pathOf([[-0.5, -C.YOKE.r - 1.5], [0.5, -C.YOKE.r - 1.5], [0.5, C.YOKE.r + 1.5], [-0.5, C.YOKE.r + 1.5]].map(([dx, dz]) => at([pin[0] + dx, y + 6, z + dz])), true), { tone: "lo" }));
-    out.push(S(G.disc(0, pin[0] - wx - 3, 0.9, G.frameOf([wx + 3, C.DISC.c[1] + 9, 22], [1, 0, 0], [0, 1, 0], [0, 0, 1]), P, { steps: 10 }), { tone: "mid" }));
+    const joinY = C.DISC.c[1] + 9;
+    const join = [pin[0], joinY, C.WHEEL.rail];
+    const overRim = z + C.YOKE.r + 2.4;
+    out.push(rod([wx + 3, joinY, C.WHEEL.rail], join, 0.9, { tone: "mid" }));
+    out.push(rod(join, [pin[0], joinY, overRim], 0.55, { tone: "mid" }));
+    out.push(rod([pin[0], joinY, overRim], [pin[0], slot.y, overRim], 0.55, { tone: "mid" }));
     return out.join("");
   }
 
@@ -716,14 +727,14 @@ function station3Back() {
   out.push(L(k.knurl(c[0], c[1], r, z, z + h, 96, P, 0.6), { tone: "faint" }));
   // Rails above the disc for the wheel carriage, on four standards.
   for (const dy of [-9, 9]) {
-    for (const x of [c[0] - r - 4, c[0] + r + 4]) out.push(stone("ink", S(k.slabOf({ x: x - 1.4, y: c[1] + dy - 1.4, w: 2.8, d: 2.8, r: 0.4 }, 3, 22 - 3, P, 2), { tone: "mid" })));
+    for (const x of [c[0] - r - 4, c[0] + r + 4]) out.push(stone("ink", S(k.slabOf({ x: x - 1.4, y: c[1] + dy - 1.4, w: 2.8, d: 2.8, r: 0.4 }, 3, C.WHEEL.rail - 0.9 - 3, P, 2), { tone: "mid" })));
   }
   return out.join("");
 }
 function rails() {
   const { c } = C.DISC;
   const { r } = C.DISC;
-  return [-9, 9].map((dy) => S(G.disc(0, 2 * r + 10, 0.9, G.frameOf([c[0] - r - 5, c[1] + dy, 22], [1, 0, 0], [0, 1, 0], [0, 0, 1]), P, { steps: 10 }), { tone: "mid" })).join("");
+  return [-9, 9].map((dy) => S(G.disc(0, 2 * r + 10, 0.9, G.frameOf([c[0] - r - 5, c[1] + dy, C.WHEEL.rail], [1, 0, 0], [0, 1, 0], [0, 0, 1]), P, { steps: 10 }), { tone: "mid" })).join("");
 }
 function yokeFrame() {
   const [x, y, z] = C.YOKE.c;
@@ -1023,7 +1034,14 @@ const run = () => { if (!frame && visible && !still.matches) { last = 0; frame =
 const hold = () => { touring = false; clearTimeout(idle); idle = setTimeout(() => { touring = !still.matches; }, 9000); };
 // Under reduced motion every change writes a whole run at once.
 function instant() {
-  if (phase === "gap") { state.a = pending.a; state.mode = pending.mode; state.tilt = state.a; startRun(); }
+  if (phase === "gap") {
+    state.a = pending.a;
+    state.mode = pending.mode;
+    state.tilt = state.a;
+    state.mu = state.mode === "readT" ? 0 : Math.PI;
+    state.unhooked = state.mode === "oneLeg" ? 1 : 0;
+    startRun();
+  }
   while (phase === "run") step(0.05);
   state.reset = null;
   state.x = C.RUN;

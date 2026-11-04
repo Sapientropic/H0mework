@@ -45,8 +45,8 @@ const C = {
 };
 const SLOPE = (C.TRACK.z1 - C.TRACK.z0) / (C.TRACK.x1 - C.TRACK.x0);
 const railZ = (x) => C.TRACK.z0 + SLOPE * (x - C.TRACK.x0);
-// The bead rests on both rails: its centre stands above the rail axis by √((R + r)² − g²).
-const LIFT = Math.sqrt((C.BEAD + C.TRACK.rail) ** 2 - C.TRACK.gauge ** 2);
+// Convert the perpendicular clearance above both rail axes to a vertical offset.
+const LIFT = Math.sqrt(((C.BEAD + C.TRACK.rail) ** 2 - C.TRACK.gauge ** 2) * (1 + SLOPE ** 2));
 
 const FIT = [
   ...k.boxCorners(C.BASE, C.BASE_Z[0] - C.FOOT.h, 0),
@@ -260,14 +260,10 @@ const railRun = (x0, x1, side) => brightRod([x0, side * C.TRACK.gauge, railZ(x0)
 // The fixed rail runs: from inside the cage to the bridge's gap, and from the hinge to just short of the
 // funnel's rim (RAIL_END); past that the bead leaves the rails and falls into the funnel.
 const RAIL_END = 59.4;
+const ROLL_OFF = RAIL_END - SLOPE * LIFT / (1 + SLOPE ** 2);
 const FIXED = [[C.TRACK.x0 - 4, C.BRIDGE.x0], [C.BRIDGE.x1, RAIL_END]];
 function rails(side) {
-  return M("ink", ...FIXED.map(([a, b]) => railRun(a, b, side)), endStops(side));
-}
-// Stops at each open rail end, so a bead never leaves the track: at the bridge gap and the track's foot.
-function endStops(side) {
-  const y = side * C.TRACK.gauge;
-  return [C.BRIDGE.x0, RAIL_END].map((x) => S(G.disc(-0.6, 0.6, 0.9, G.frameAlong([x, y, railZ(x)], DIR), P, { steps: 12 }), { tone: "mid" })).join("");
+  return M("ink", ...FIXED.map(([a, b]) => railRun(a, b, side)));
 }
 // A tie under both rails at x, square to the incline.
 function tie(x, z = railZ(x)) {
@@ -559,11 +555,13 @@ function funnel() {
   const F = G.frameOf([C.TRACK.x1 + 1, 0, z], Z3, X3, Y3);
   const shell = G.lathe([[0, 2.4], [0.55, 2.55, 1], [3.65, 4.55, 1], [4.15, 4.85, 1], [4.35, 4.9]], F, P, { fill: "surface" });
   const mouth = k.ring(C.TRACK.x1 + 1, 0, 4.05, z + 4.12, P, 56);
+  const lip = G.lathe([[4.12, 4.05], [4.12, 4.95], [4.38, 4.95], [4.38, 4.05], [4.12, 4.05]], F, P, { fill: "faces" });
+  lip.outline = G.circleOf(F, 4.38, 4.95, P) + G.circleOf(F, 4.38, 4.05, P);
   // What is inside the funnel shows through its mouth only; above the rim's middle it is free.
   const [, my] = at([C.TRACK.x1 + 1, 0, z + 4.12]);
   const clip = `<clipPath id="er-funnel-clip"><path d="${mouth}"/><path d="M-4000 -4000H4000V${n2(my)}H-4000Z"/></clipPath>`;
   return clip + M("ink", S(G.disc(0, 0.6, 3, F, P), { tone: "mid" }), `<path class="er-funnel-throat" d="${k.ring(C.TRACK.x1 + 1, 0, 2.5, z + 0.62, P, 32)}"/>`)
-    + M("jade", S(shell, { tone: "mid" }), `<path class="er-funnel-inside" d="${mouth}"/><path class="er-funnel-core" d="${k.ring(C.TRACK.x1 + 1, 0, 1.35, z + 4.14, P, 32)}"/>`, S(G.ringBand(4.12, 4.38, 4.05, 4.95, F, P), { tone: "hi" }), L(G.arcOf(F, 3.68, 4.58, P, { slope: 0.52 }), { tone: "lo" }));
+    + M("jade", S(shell, { tone: "mid" }), `<path class="er-funnel-inside" d="${mouth}"/><path class="er-funnel-core" d="${k.ring(C.TRACK.x1 + 1, 0, 1.35, z + 4.14, P, 32)}"/>`, S(lip, { tone: "hi" }), L(G.arcOf(F, 3.68, 4.58, P, { slope: 0.52 }), { tone: "lo" }));
 }
 // The outlet chute: a short marble runway from the station's door to the receipts channel.
 const CHUTE = { x: C.STATION.x + 13, y0: C.STATION.y + C.STATION.d + 1.4, y1: C.ROW.y - 3.2, z: 1.5 };
@@ -601,11 +599,18 @@ function channelGlass() {
   }
   return out.join("");
 }
-const rowAt = (i) => C.ROW.x0 + C.BEAD + i * 2 * C.BEAD;
-function row(count) {
-  const shown = Math.min(count, Math.floor((C.ROW.x1 - C.ROW.x0) / (2 * C.BEAD)) - 1);
+const rowAt = (i) => C.ROW.x0 + 1 + C.BEAD + i * 2 * C.BEAD;
+const ROW_CAPACITY = Math.floor((CHUTE.x - rowAt(0)) / (2 * C.BEAD));
+const rowTarget = (count) => rowAt(Math.min(count, ROW_CAPACITY - 1));
+const rowShift = (state) => state.receipts >= ROW_CAPACITY && state.fade > 0 ? Math.max(0, Math.min(1, (state.s - 2) / 0.7)) : 0;
+function row(count, shift) {
+  const shown = Math.min(count, ROW_CAPACITY);
   const out = [];
-  for (let i = 0; i < shown; i++) { const c = [rowAt(i), C.ROW.y, C.ROW.z + C.BEAD]; out.push(S(G.sphereOf(c, C.BEAD - 0.1, P), { tone: "mid" }), ballGlint(c, C.BEAD - 0.1, 0.5)); }
+  for (let i = 0; i < shown; i++) {
+    const r = C.BEAD - 0.1, c = [rowAt(i - shift), C.ROW.y, C.ROW.z + r];
+    const bead = S(G.sphereOf(c, r, P), { tone: "mid" }) + ballGlint(c, r, 0.5);
+    out.push(i === 0 && shift > 0 ? `<g opacity="${n2(1 - shift)}">${bead}</g>` : bead);
+  }
   return M("jade", ...out);
 }
 
@@ -630,7 +635,7 @@ function funnelAt(u) {
   if (u < 0.14) {
     // Off the rail ends: a short arc onto the far wall.
     const t = u / 0.14;
-    const off = C.TRACK.x1 - RAIL_END;
+    const off = C.TRACK.x1 - ROLL_OFF;
     const a = [C.TRACK.x1, 0, railZ(C.TRACK.x1) + LIFT - FALL * off * off], b = local(land, th0, wall(land));
     const run = Math.hypot(b[0] - a[0], b[1] - a[1]), v0 = (SLOPE - 2 * FALL * off) * run, k2 = Math.min(0, b[2] - a[2] - v0);
     return [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t, a[2] + (b[2] - a[2] - k2) * t + k2 * t * t];
@@ -653,7 +658,7 @@ function beadAt(state) {
   if (s <= 1) {
     // Past the rails' ends the bead is in the air, falling away from the line it was rolling on.
     const x = C.CAGE.x0 + 5 + (C.TRACK.x1 - C.CAGE.x0 - 5) * s;
-    const off = Math.max(0, x - RAIL_END);
+    const off = Math.max(0, x - ROLL_OFF);
     return [x, 0, railZ(x) + LIFT - FALL * off * off];
   }
   if (s <= FUNNEL_S) return funnelAt((s - 1) / (FUNNEL_S - 1));
@@ -663,7 +668,7 @@ function beadAt(state) {
     return [CHUTE.x, C.STATION.y + C.STATION.d + 0.4 + (C.ROW.y - C.STATION.y - C.STATION.d - 0.4) * t, CHUTE.z + C.BEAD - (CHUTE.z - C.ROW.z) * t];
   }
   const t = s - 2;
-  const from = [C.STATION.x + 13, C.ROW.y, C.ROW.z + C.BEAD], to = [rowAt(state.receipts), C.ROW.y, C.ROW.z + C.BEAD];
+  const from = [CHUTE.x, C.ROW.y, C.ROW.z + C.BEAD], to = [rowTarget(state.receipts), C.ROW.y, C.ROW.z + C.BEAD];
   return from.map((v, i) => v + (to[i] - v) * t);
 }
 // Where the bead is drawn: on the track (behind the near rail), in the funnel-and-chute slot, or on the row;
@@ -737,7 +742,7 @@ function composition(state) {
     chute(),
     `<g data-part="bead-station" style="display:${slot.slot === "station" ? "inline" : "none"}"><g data-part="bead-clip"${slot.clip ? ' clip-path="url(#er-funnel-clip)"' : ""}><g data-part="bead-drop" transform="${beadTransform(state)}" style="opacity:${n2(state.fade * slot.alpha)}">${beadSvg(state.roll ?? 0)}</g></g></g>`,
     channel(),
-    `<g data-part="row">${row(state.receipts)}</g>`,
+    `<g data-part="row">${row(state.receipts, rowShift(state))}</g>`,
     `<g data-part="bead-row" style="display:${slot.slot === "row" ? "inline" : "none"}"><g data-part="bead-low" transform="${beadTransform(state)}" style="opacity:${n2(state.fade)}">${beadSvg(state.roll ?? 0)}</g></g>`,
     channelGlass(),
     ruler(),
@@ -816,13 +821,13 @@ const modelSource = `const MD = (() => {\n${strip("model.mjs")}\nreturn { ${Obje
 const live = `
 const P0 = ${JSON.stringify(P0)};
 let P = P0;
-${shipped({ C, RAIL_END, BED, GIRDER, BEAMS, SELECTOR, DIAL, SLOPE, LIFT, FRAME, KINDS, REPAIR_OF, DOMAINS_ICON, X3, Y3, Z3, FUNNEL_S, CHUTE_S, S_MOUTH, CHUTE, FALL })}
+${shipped({ C, RAIL_END, ROLL_OFF, BED, GIRDER, BEAMS, SELECTOR, DIAL, SLOPE, LIFT, FRAME, KINDS, REPAIR_OF, DOMAINS_ICON, X3, Y3, Z3, FUNNEL_S, CHUTE_S, S_MOUTH, CHUTE, FALL, ROW_CAPACITY })}
 const k = { ${Object.keys(k).join(", ")} };
 const G = LATHE;
 ${shipped({ railZ, at, S, L, D, M, n2, faceY, rectD, box, cyl, unit, halfway, litAngle, shine, edgeShine, glintAt, glint, ballGlint, brightRod, fadeFill, boxCast, grounded })}
 const DIR = unit([1, 0, SLOPE]);
 const UP = unit([-SLOPE, 0, 1]);
-${shipped({ PIN, leverAngle, ibeam, girder, rod, bandD, chairs, selector, selectorFace, ruler, shadows, tower, base, glyphD, icon, faceLamp, lever, panel, readings, railRun, rails, endStops, tie, ties, post, bridgeRails, bridgeTies, hinge, cage, cageCap, hopper, gate, gateLever, leverTip, latchCrank, coinPost, coin, latch, weight, station, funnel, chute, funnelAt, beadSlot, channel, channelGlass, rowAt, row, beadAt, seamD, beadSvg, beadTransform, beadShadow, stopS, composition, hitAreas })}
+${shipped({ PIN, leverAngle, ibeam, girder, rod, bandD, chairs, selector, selectorFace, ruler, shadows, tower, base, glyphD, icon, faceLamp, lever, panel, readings, railRun, rails, tie, ties, post, bridgeRails, bridgeTies, hinge, cage, cageCap, hopper, gate, gateLever, leverTip, latchCrank, coinPost, coin, latch, weight, station, funnel, chute, funnelAt, beadSlot, channel, channelGlass, rowAt, rowTarget, rowShift, row, beadAt, seamD, beadSvg, beadTransform, beadShadow, stopS, composition, hitAreas })}
 const FIXED = [[C.TRACK.x0 - 4, C.BRIDGE.x0], [C.BRIDGE.x1, RAIL_END]];
 ${swingSource}
 ${liveScript()}
@@ -868,13 +873,13 @@ let shown = {};
 function paint(force = false) {
   const key = (v) => JSON.stringify(v);
   const want = {
-    readings: key([st.scene, st.arrived, st.pull.map(n2), n2(st.dial)]), row: key([st.receipts]), hopper: key([n2(st.feed)]),
+    readings: key([st.scene, st.arrived, st.pull.map(n2), n2(st.dial)]), row: key([Math.min(st.receipts, ROW_CAPACITY), n2(rowShift(st))]), hopper: key([n2(st.feed)]),
     "bridge-ties": key([n2(st.lift)]), "bridge-back": key([n2(st.lift)]), "bridge-front": key([n2(st.lift)]),
     latch: key([n2(st.up)]), gate: key([n2(st.open)]), lever: key([n2(st.open)]), coin: key([n2(st.loose), n2(st.open)]),
     weight: key([n2(st.up)]), station: key([st.homeLit, st.clinicLit, n2(st.shut)]),
   };
   const draw = {
-    readings: () => readings(st), row: () => row(st.receipts), hopper: () => hopper(st.feed),
+    readings: () => readings(st), row: () => row(st.receipts, rowShift(st)), hopper: () => hopper(st.feed),
     "bridge-ties": () => bridgeTies(st.lift), "bridge-back": () => bridgeRails(st.lift, -1), "bridge-front": () => bridgeRails(st.lift, 1),
     latch: () => latch(st.up), gate: () => gate(st.open), lever: () => gateLever(st.open), coin: () => coin(st.loose, st.open),
     weight: () => weight(st.up), station: () => station(st.homeLit, st.clinicLit, st.shut),
@@ -984,7 +989,7 @@ function advance(dt) {
     if (st.s <= 1) st.roll += (ds * TRACK_LEN) / C.BEAD;
     else if (st.s < FUNNEL_S) st.roll += dt * 9;
     else if (st.s > CHUTE_S && st.s < 2) st.roll -= (ds * (C.ROW.y - C.STATION.y - C.STATION.d)) / C.BEAD;
-    else if (st.s >= 2) st.roll -= (ds * Math.abs(rowAt(st.receipts) - (C.STATION.x + 13))) / C.BEAD;
+    else if (st.s >= 2) st.roll -= (ds * (CHUTE.x - rowTarget(st.receipts))) / C.BEAD;
     if (st.s > 0.08) goal.open = 0;
     if (st.s > 1.3 && K() > 0) st.arrived = true;
   } else if (step.kind === "arrive") {

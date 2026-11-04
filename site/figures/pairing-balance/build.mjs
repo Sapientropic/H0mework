@@ -27,7 +27,8 @@ const BEAM = { half: 76, arm: 72, y: 2.2, v: 3 };
 const DROP = 54; // hook to pan
 const PAN = { r: 19, h: 2.4 };
 const TILT = (12 * Math.PI) / 180; // beam angle when the pans differ by 2J
-const NEEDLE = { at: [0, 8, 125], length: 42 };
+const NEEDLE = { at: [0, 8, PIVOT[2]], length: 42 };
+const FORK = { half: 6, base: PIVOT[2] - 5.5, inner: BEAM.y + 0.6, outer: 5.5 };
 const SCALE = { y: 5.8, r0: 39.5, r1: 43.4 };
 const CLOCK = { at: [-66, 30], r: 13, h: 5 };
 const SWITCH = { x: 34, y: 26, w: 42, d: 10, r: 2, on: 47, off: 69 };
@@ -121,13 +122,20 @@ function pillar() {
   out.push(M("jade", S(k.cylinder(0, 0, 7, PILLAR.z0, 3, P, 32, 0.4), { tone: "mid" })));
   out.push(M("marble", column(PILLAR.z0 + 3, 57)));
   out.push(M("jade", S(k.cylinder(0, 0, 5.8, 57, 3, P, 28, 0.3), { tone: "mid" })));
-  out.push(M("marble", column(60, PILLAR.z1), L([30, 45, 96].map((z) => k.sideArc(0, 0, PILLAR.r, z, P, 16)).join(""), { tone: "faint" })));
+  out.push(M("marble", column(60, PILLAR.z1 - 4), L([30, 45, 96].map((z) => k.sideArc(0, 0, PILLAR.r, z, P, 16)).join(""), { tone: "faint" })));
   out.push(M("jade", S(k.cylinder(0, 0, 6.4, PILLAR.z1 - 4, 4, P, 28, 0.4), { tone: "mid" })));
-  out.push(M("ink", S(k.slabOf({ x: -6, y: -5, w: 12, d: 10, r: 1.5 }, PILLAR.z1, PIVOT[2] - BEAM.v - PILLAR.z1, P, 3, 0.5), { tone: "mid" })));
+  out.push(M("ink", S(k.slabOf({ x: -FORK.half, y: -FORK.outer, w: 2 * FORK.half, d: 2 * FORK.outer, r: 0.7 }, PILLAR.z1, FORK.base - PILLAR.z1, P, 3, 0.35), { tone: "mid" })));
   // Beam arrest: a knurled knob on the plinth front.
-  out.push(M("ink", S(k.slabOf({ x: -3, y: 10, w: 6, d: 3, r: 0.8 }, 6, 3, P, 2), { tone: "mid", crease: "none" })));
-  out.push(M("jade", S(k.cylinder(0, 14.5, 3.2, 6, 4.5, P, 24), { tone: "mid" }), L(k.knurl(0, 14.5, 3.2, 6, 10.5, 22, P), { tone: "lo" })));
+  out.push(M("jade", S(k.cylinder(0, 15, 2.5, 6, 4.5, P, 24), { tone: "mid" }), L(k.knurl(0, 15, 2.5, 6, 10.5, 22, P), { tone: "lo" })));
   return out.join("");
+}
+
+function bearing(front) {
+  const F = G.frameOf(PIVOT, [0, 1, 0], [1, 0, 0], [0, 0, 1]);
+  const radius = 4.9;
+  const arc = Array.from({ length: 13 }, (_, i) => [radius * Math.cos(Math.PI * i / 12), radius * Math.sin(Math.PI * i / 12)]);
+  const profile = [[radius, FORK.base - PIVOT[2]], ...arc, [-radius, FORK.base - PIVOT[2]]];
+  return M("ink", S(G.prismOf(F, profile, front ? FORK.inner : -FORK.outer, front ? FORK.outer : -FORK.inner, P), { tone: "mid" }));
 }
 
 // The tilt scale: a plate on the pillar's front, its ticks hanging from a printed arc.
@@ -179,7 +187,8 @@ function statePuck() {
     M("marble", S(k.cylinder(x, 0, 10, z + 3, 1.2, P, 48), { tone: "hi" })),
     M("ink", S(k.cylinder(x, 0, 5.4, z + 4.2, 1.6, P, 32, 0.3), { tone: "mid" })),
     `<path data-part="phase-upper" class="iso-line" data-tone="hi" data-free="start" d="" style="stroke-width:1"/>`,
-    `<path data-part="phase-lower" class="iso-line" data-tone="hi" data-free="start" d="" style="stroke-width:1"/>`,
+    `<path data-part="phase-lower" class="iso-line" data-tone="hi" data-free="end" d="" style="stroke-width:1"/>`,
+    D([at([x, 0, z + 5.8])], { size: 0.6, tone: "hi" }),
   ].join("");
 }
 
@@ -236,8 +245,10 @@ function composition() {
     // Pan shadows stay on the floor while the pans ride up and down.
     ...[-1, 1].map((sign) => `<path class="iso-halo" d="${k.haloOf({ x: sign * BEAM.arm - PAN.r + 4, y: -PAN.r + 4, w: 2 * PAN.r - 8, d: 2 * PAN.r - 8, r: PAN.r - 4 }, 0, 0.2, P)}" style="filter:blur(8px);opacity:calc(var(--anatomy-halo-opacity) * .45)"/>`),
     ...byDepth([[-1, -BEAM.arm], [1, BEAM.arm]], (item) => [item[1], 0]).map(([sign]) => side(sign)),
+    bearing(false),
     `<g data-part="beam">${beamSvg(kitLocal, G, P, 0)}</g>`,
-    M("jade", S(G.disc(-3, NEEDLE.at[1], 4.2, G.frameAlong(PIVOT, [0, 1, 0]), P), { tone: "mid" })),
+    bearing(true),
+    M("jade", S(G.disc(FORK.outer, NEEDLE.at[1], 2.3, G.frameAlong(PIVOT, [0, 1, 0]), P), { tone: "mid" })),
     `<path data-part="needle" class="iso-line" data-tone="hi" data-free="end" d="${needleD(kitLocal, P, 0)}" style="stroke-width:1.1"/>`,
     D([at(NEEDLE.at)], { size: 1.1, tone: "hi" }),
     clock(),
@@ -271,7 +282,7 @@ const modelSource = `const { balance, classicalCurrent } = (() => {\n${strip("mo
 const live = `
 const P0 = ${JSON.stringify(P)};
 let P = P0;
-${shipped({ PLATE, PLATE_H, FOOT_H, PLINTH, PILLAR, PIVOT, BEAM, DROP, PAN, TILT, NEEDLE, SCALE, CLOCK, SWITCH, LEVEL, UP, STRING_ANGLES, FRAME })}
+${shipped({ PLATE, PLATE_H, FOOT_H, PLINTH, PILLAR, PIVOT, BEAM, DROP, PAN, TILT, NEEDLE, FORK, SCALE, CLOCK, SWITCH, LEVEL, UP, STRING_ANGLES, FRAME })}
 const k = { ${Object.keys(k).join(", ")} };
 const kit = k, kitLocal = k;
 const G = LATHE;
@@ -281,7 +292,7 @@ const L = (d, style) => k.lineSvg(d, style);
 const D = (points, style) => k.dotsSvg(points, style);
 const M = ${M.toString()};
 const byDepth = ${byDepth.toString()};
-${shipped({ beamFrame, hookOf, panTop, strings, beamSvg, needleD, pointerOnTop, plate, plinth, pillar, scale, pan, weights, statePuck, clock, level, switchPlate, switchKnob, panGroup, side, composition })}
+${shipped({ beamFrame, hookOf, panTop, strings, beamSvg, needleD, pointerOnTop, plate, plinth, pillar, bearing, scale, pan, weights, statePuck, clock, level, switchPlate, switchKnob, panGroup, side, composition })}
 ${swingSource}
 const root = document.querySelector('[data-figure="pairing-balance"]');
 const stage = root.querySelector(".iso-stage");
@@ -312,7 +323,7 @@ function paint(b = balance(u, withS)) {
     part("strings-front-" + name).innerHTML = strings(kit, P, phi, sign, true);
   }
   const z = panTop(0, 1)[2] + 4.2;
-  part("phase-upper").setAttribute("d", pointerOnTop(kit, P, [BEAM.arm, 0], UP + b.theta, 6.4, 9.6, z - 1.2 + 0.05));
+  part("phase-upper").setAttribute("d", pointerOnTop(kit, P, [BEAM.arm, 0], UP + b.theta, 6.4, 10, z));
   part("phase-lower").setAttribute("d", pointerOnTop(kit, P, [BEAM.arm, 0], UP - b.theta, 0, 4.4, z + 1.6));
   part("clock").setAttribute("d", pointerOnTop(kit, P, CLOCK.at, UP + (u * Math.PI) / 2, -2, CLOCK.r - 2.8, CLOCK.h + 1.05));
   part("knob").setAttribute("transform", translateAlong(P, [knobX, 0, 0]));

@@ -36,9 +36,9 @@ const C = {
   FRAME: { y: 22, postY: 10, x0: 60, r: 5, zF: 34, zM: 68, beam: 98, left: 44 },
   GAIN: 10, // cord travel per 10⁻²⁰ of curvature
   DRUM: { r: 10.6 },
-  DIAL: { r: 14 },
+  DIAL: { r: 14, sweep: 0.75 * Math.PI, max: 2.5 },
   // The cord's free end is held taut by a spring to the bench; its hook sits at rest + travel.
-  SPRING: { rest: 30, r: 2.6, turns: 9, foot: 4.2 },
+  SPRING: { rest: 41, r: 2.6, turns: 9, foot: 4.2 },
   FINE: 50, // the range lever's second scale: the needle turns 50× faster
   SELECTOR: [100, 52],
   LABEL: { x: 130, y: 44, w: 46, d: 13, r: 1.5 },
@@ -204,7 +204,8 @@ function makeLive(k, G, P, C, M) {
     out.push(`<path d="${G.sphereOf(HUB, B, P, { steps: 48 }).outline}" style="${GLASS}"/>`);
     if (s > 0.05) out.push(`<path d="${G.sphereOf(obs, B, P, { steps: 48 }).outline}" style="${GLASS}"/>`);
     // The arm's outer half when it points away from the viewer.
-    const head0 = R - 7, head1 = R - 2.6;
+    // At the horizon the head must stop inside the ring's bore.
+    const head1 = C.RING.rIn - 0.25, head0 = head1 - 4.4;
     const outer = () => [
       rod(add(HUB, mul(B, w)), add(HUB, mul(head0, w)), 0.8, { tone: "mid" }),
       rod(add(HUB, mul(head0, w)), add(HUB, mul(head1, w)), 1.9, { tone: "hi" }, 18),
@@ -263,7 +264,12 @@ function makeLive(k, G, P, C, M) {
     return L(poly(points), { tone: "hi" });
   }
   const hookOf = (state) => C.SPRING.rest + outputOf(state);
-  function heads(state) {
+  // The cord runs between two flanges and bears on a smaller hub in their groove.
+  function sheave(F, r, front, tone) {
+    const disc = (s0, s1, radius) => S(G.disc(s0, s1, radius, F, P, { steps: 36 }), { tone });
+    return front ? disc(0.5, 1.4, r + 0.6) : disc(-1.4, -0.5, r + 0.6) + disc(-0.5, 0.5, r);
+  }
+  function heads(state, front) {
     const { y, r } = C.FRAME;
     const out = [];
     for (const head of C.HEADS) {
@@ -273,10 +279,13 @@ function makeLive(k, G, P, C, M) {
       // Pulleys with their groove ring and hub.
       for (const x of xs) {
         const F = G.frameOf([x, y, z], [0, 1, 0], [1, 0, 0], [0, 0, 1]);
-        out.push(stone("jade", S(G.disc(-1.4, 1.4, r + 0.6, F, P, { steps: 32 }), { tone: "hi" }), `<path class="iso-top" d="${G.circleOf(F, 1.4, r + 0.6, P, 32)}"/>`,
+        out.push(stone("jade", sheave(F, r, front, "hi")));
+        if (!front) continue;
+        out.push(stone("jade",
           L(G.circleOf(F, 1.45, r - 1.2, P, 28), { tone: "lo" }), L(G.spokesOf(F, 1.45, 2.2, r - 1.2, 4, P, { phase: (z - C.FRAME.zM) / r }), { tone: "lo" })));
         out.push(stone("ink", S(G.disc(1.4, 2.2, 1.5, F, P, { steps: 14 }), { tone: "mid" })));
       }
+      if (!front) continue;
       // The block: a bar over the pulleys with a cheek down to each axle on the front.
       const barZ = z + r + 2;
       out.push(stone("ink", S(k.slabOf({ x: x0, y: y - 5.2, w: x1 - x0, d: 7.8, r: 0.8 }, barZ, 2.6, P, 2, 0.3), { tone: "mid" })));
@@ -307,9 +316,9 @@ function makeLive(k, G, P, C, M) {
   function needle(state) {
     const { x, z } = C.DRUM;
     const y = C.FRAME.y + 5.4;
-    const turn = outputOf(state) / C.DRUM.r;
     const fine = state.range > 0.5;
-    const angle = Math.max(-2.62, Math.min(2.62, turn * (fine ? C.FINE : 1)));
+    const fraction = valueOf(state) * (fine ? C.FINE : 1) / C.DIAL.max;
+    const angle = C.DIAL.sweep * Math.max(-1, Math.min(1, fraction));
     const length = C.DIAL.r - 2.6;
     const tip = [x + length * Math.sin(angle), y, z + length * Math.cos(angle)];
     const tail = [x - 3 * Math.sin(angle), y, z - 3 * Math.cos(angle)];
@@ -387,7 +396,7 @@ function makeLive(k, G, P, C, M) {
       .map(([x, y, plus]) => stone(plus ? "jade" : "ink", S(k.cylinder(x, y, plus ? 1.2 : 0.95, z, plus ? 3.4 : 2, P, 14), { tone: plus ? "hi" : "mid" })))
       .join("");
   }
-  return { arm, stamps, pins, turn, cord, heads, screws, needle, spring, clutch, rangeLever, selector, valueOf };
+  return { arm, stamps, pins, turn, cord, heads, sheave, screws, needle, spring, clutch, rangeLever, selector, valueOf };
 }
 
 const LIVE = makeLive(k, G, P, C, M);
@@ -472,9 +481,14 @@ function domeRing() {
   const out = [];
   const z = C.DOME.z;
   const F = G.frameOf([DX, DY, z - C.RING.h], [0, 0, 1], [1, 0, 0], [0, 1, 0]);
-  out.push(stone("jade", S(G.ringBand(0, C.RING.h, C.RING.rIn, C.RING.rOut, F, P), { tone: "mid" })));
+  const ring = (s0, s1, inner, outer, tone) => {
+    const surface = G.lathe([[s0, inner], [s0, outer], [s1, outer], [s1, inner], [s0, inner]], F, P, { fill: "faces" });
+    const outline = G.arcOf(F, s0, outer, P) + G.circleOf(F, s1, outer, P) + G.circleOf(F, s1, inner, P);
+    return S({ ...surface, outline }, { tone });
+  };
+  out.push(stone("jade", ring(0, C.RING.h, C.RING.rIn, C.RING.rOut, "mid")));
   // The glass lip resting on the ring.
-  out.push(S(G.ringBand(C.RING.h, C.RING.h + 1.5, C.DOME.R - 0.6, C.DOME.R + 1.6, F, P), { tone: "lo" }));
+  out.push(ring(C.RING.h, C.RING.h + 1.5, C.DOME.R - 0.6, C.DOME.R + 1.6, "lo"));
   return out.join("");
 }
 // The glass: a back surface, the rim seen through it, the outline and two reflections in front.
@@ -549,14 +563,17 @@ function frameBack() {
   out.push(L(G.circleOf(G.frameOf([C.FIXED[0] - C.FRAME.r, y + 0.6, C.FRAME.zM + 5.8], [0, 1, 0], [1, 0, 0], [0, 0, 1]), 0, 1.2, P, 14), { tone: "hi" }));
   return out.join("");
 }
-function fixedPulleys() {
+function fixedPulleys(front) {
   const { y, zF, r } = C.FRAME;
   const out = [];
   for (const x of C.FIXED) {
-    for (const dy of [-2.4, 2.4]) out.push(S(k.slabOf({ x: x - 1.6, y: y + dy - 0.6, w: 3.2, d: 1.2, r: 0.3 }, zF - r - 2.2, r + 2.2, P, 2), { tone: "mid" }));
+    const dy = front ? 2.4 : -2.4;
+    const bracket = S(k.slabOf({ x: x - 1.6, y: y + dy - 0.6, w: 3.2, d: 1.2, r: 0.3 }, zF - r - 2.2, r + 2.2, P, 2), { tone: "mid" });
     const F = G.frameOf([x, y, zF], [0, 1, 0], [1, 0, 0], [0, 0, 1]);
-    out.push(stone("jade", S(G.disc(-1.4, 1.4, r + 0.6, F, P, { steps: 32 }), { tone: "mid" }), `<path class="iso-top" d="${G.circleOf(F, 1.4, r + 0.6, P, 32)}"/>`, L(G.circleOf(F, 1.45, r - 1.2, P, 28), { tone: "lo" })));
-    out.push(stone("ink", S(G.disc(1.4, 2.2, 1.5, F, P, { steps: 14 }), { tone: "mid" })));
+    if (!front) out.push(bracket);
+    out.push(stone("jade", LIVE.sheave(F, r, front, "mid")));
+    if (front) out.push(L(G.circleOf(F, 1.45, r - 1.2, P, 28), { tone: "lo" }),
+      stone("ink", S(G.disc(1.4, 2.2, 1.5, F, P, { steps: 14 }), { tone: "mid" })), bracket);
   }
   return out.join("");
 }
@@ -601,21 +618,21 @@ function dialFace() {
   const out = [];
   out.push(S(k.slabOf({ x: x - 2.4, y: C.FRAME.postY + 3.5, w: 4.8, d: y - C.FRAME.postY - 3.5, r: 0.4 }, z - 2.4, 4.8, P, 2), { tone: "mid" }));
   const F = G.frameOf([x, y, z], [0, 1, 0], [1, 0, 0], [0, 0, 1]);
-  out.push(stone("ink", S(G.disc(-1.6, 1.6, C.DRUM.r, F, P, { steps: 48 }), { tone: "mid" })));
-  out.push(stone("jade", S(G.disc(2.4, 5, C.DIAL.r, F, P, { steps: 64 }), { tone: "mid" })));
+  out.push(stone("ink", LIVE.sheave(F, C.DRUM.r, true, "mid"), S(G.disc(1.4, 3, 2.6, F, P), { tone: "mid" })));
+  out.push(stone("jade", S(G.disc(3, 5, C.DIAL.r, F, P, { steps: 64 }), { tone: "mid" })));
   const face = G.frameOf([x, y + 5.05, z], [0, 1, 0], [1, 0, 0], [0, 0, 1]);
   out.push(`<path class="iso-fill" d="${G.circleOf(face, 0, C.DIAL.r - 1.2, P, 64)}" style="fill:var(--anatomy-face)"/>`);
   out.push(L(G.circleOf(face, 0, C.DIAL.r - 1.2, P, 64), { tone: "lo" }));
   // Ticks from −2.5 to 2.5 (×10⁻²⁰ on the coarse range, ×2·10⁻²² on the fine), zero at the top.
   const tick = (value, r0, r1) => {
-    const a = (value / 2.5) * 0.75 * Math.PI;
+    const a = (value / C.DIAL.max) * C.DIAL.sweep;
     return k.pathOf([[x + r0 * Math.sin(a), y + 5.1, z + r0 * Math.cos(a)], [x + r1 * Math.sin(a), y + 5.1, z + r1 * Math.cos(a)]].map(at));
   };
   const minor = [], major = [];
   for (let i = -10; i <= 10; i++) (i % 2 === 0 ? major : minor).push(tick(i / 4, C.DIAL.r - (i % 2 === 0 ? 4.4 : 3.4), C.DIAL.r - 2.2));
   out.push(L(minor.join(""), { tone: "lo" }), L(major.join(""), { tone: "mid" }), L(tick(0, C.DIAL.r - 5.4, C.DIAL.r - 2.2), { tone: "hi" }));
   const arcOf = (from, to) => Array.from({ length: 33 }, (_, i) => {
-    const a = (from + ((to - from) * i) / 32) * 0.75 * Math.PI / 2.5;
+    const a = (from + ((to - from) * i) / 32) * C.DIAL.sweep / C.DIAL.max;
     return [x + (C.DIAL.r - 2.2) * Math.sin(a), y + 5.1, z + (C.DIAL.r - 2.2) * Math.cos(a)];
   });
   out.push(L(k.pathOf(arcOf(0, 2.5).map(at)), { tone: "hi" }), L(k.pathOf(arcOf(-2.5, 0).map(at)), { tone: "lo" }));
@@ -652,10 +669,13 @@ function body(state) {
     // The frame.
     stone("marble", frameBack()),
     stone("marble", frameBeam()),
-    fixedPulleys(),
+    fixedPulleys(false),
+    stone("ink", LIVE.sheave(G.frameAlong([C.DRUM.x, C.FRAME.y, C.DRUM.z], [0, 1, 0]), C.DRUM.r, false, "mid")),
+    part("heads-back", LIVE.heads(state, false)),
     part("cord", LIVE.cord(state)),
+    fixedPulleys(true),
     part("screws", LIVE.screws(state)),
-    part("heads", LIVE.heads(state)),
+    part("heads", LIVE.heads(state, true)),
     motors(),
     part("clutch-1", LIVE.clutch(1, state.clutch[0])),
     part("clutch-2", LIVE.clutch(2, state.clutch[1])),
@@ -832,7 +852,8 @@ function draw() {
   set("arm", LIVE.arm(state));
   set("cord", LIVE.cord(state));
   set("screws", LIVE.screws(state));
-  set("heads", LIVE.heads(state));
+  set("heads-back", LIVE.heads(state, false));
+  set("heads", LIVE.heads(state, true));
   set("spring", LIVE.spring(state));
   set("needle", LIVE.needle(state));
   set("range", LIVE.rangeLever(state.range));

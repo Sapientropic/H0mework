@@ -119,6 +119,7 @@ function makeLive(k, G, P0, C) {
     out.push(upright("puck" + isA, c, () => M("marble", S(G.disc(0, PK.h, PK.r, FT, P), { tone: edge, lit: isA, inner: L(G.arcOf(FT, PK.h * 0.55, PK.r, P), { tone: "faint" }) }))));
     let z = c[2] + PK.h;
     for (let i = 0; i < debt.budget; i++) {
+      out.push(upright("spacer", [c[0], c[1], z], () => M("marble", S(G.disc(0, PK.gap, 2.2, FT, P), { tone: "lo" }))));
       out.push(upright("ring" + isA, [c[0], c[1], z + PK.gap], () => M("marble", S(G.disc(0, PK.ringH, PK.ring, FT, P), { tone: isA ? "mid" : "lo" }))));
       z += PK.gap + PK.ringH;
     }
@@ -138,7 +139,7 @@ function makeLive(k, G, P0, C) {
     const out = [];
     const gTop = glassTop(z);
     // Two engraved tracks: the outer lane is bearer P, the inner one bearer Q.
-    out.push(upright("glass", [0, 0, z], () => `<path style="${PAINT.glass}" d="${G.disc(0.6, glassTop(0), PG.glass, FT, P).fill}"/>`
+    out.push(upright("glass", [0, 0, z], () => `<path fill-rule="evenodd" style="${PAINT.glass}" d="${G.disc(0.6, glassTop(0), PG.glass, FT, P).fill}${G.circleOf(FT, glassTop(0), 3.6, P)}"/>`
       + L(G.circleOf(FT, glassTop(0), C.LANES.P, P) + G.circleOf(FT, glassTop(0), C.LANES.Q, P), { tone: "faint" })));
     // Where a debt stood on the page below and is gone from this one, its socket is left empty, ringed in
     // cinnabar; when the settlement lands, a ripple goes out from it.
@@ -205,13 +206,14 @@ function makeLive(k, G, P0, C) {
       const to = spot(debt, glassTop(first.z));
       items0.push({ d: depth(mul(0.5, add(e, to))), svg: fade(`<path style="${isA ? PAINT.threadA : PAINT.thread}" d="${k.pathOf([at(e), at(to)])}"/>`, first.opacity) });
     }
-    items0.push({ d: depth([0, 0, (z0 + (first ? first.z : z0 + 6)) / 2]), svg: spindle(z0, first ? first.z : z0 + 6) });
+    const hubBase = first ? first.z - 1.2 : z0 + 6;
+    items0.push({ d: depth([0, 0, (z0 + hubBase) / 2]), svg: spindle(z0, hubBase) });
     items0.sort((a, b) => a.d - b.d).forEach((it) => out.push(it.svg));
     levels.forEach((lv, i) => {
       const gTop = glassTop(lv.z);
       const below = levels[i - 1];
       const vacant = below ? below.p.ledger.filter((e) => !lv.p.ledger.some((f) => f.lineage === e.lineage)) : [];
-      out.push(fade(upright("hub", [0, 0, lv.z - 1.2], () => M("jade", S(G.disc(0, 1.2, 3.6, FT, P), { tone: "mid" }))) + page(lv.z, { vacant, ping: lv.p.ping || 0 }), lv.opacity));
+      out.push(fade(page(lv.z, { vacant, ping: lv.p.ping || 0 }) + upright("hub", [0, 0, lv.z - 1.2], () => M("jade", S(G.disc(0, PG.rimH + 1.2, 3.6, FT, P), { tone: "mid" }))), lv.opacity));
       const items = [{ d: depth(add(vialAt(lv.z), [0, 0, 2])), svg: fade(vial(lv.z, lv.p.wobble || 0), lv.opacity) }];
       const above = levels[i + 1];
       for (const debt of lv.p.ledger) {
@@ -513,6 +515,10 @@ function turn(dt) {
 const last2 = () => st.pages[st.pages.length - 1];
 const prev2 = (i) => st.pages[i - 1];
 function begin([kind, arg]) {
+  if (kind === "page" && st.settledFlag) {
+    queue.unshift([kind, arg]);
+    kind = "reset";
+  }
   task = { kind, arg, t: 0 };
   if (kind === "page") {
     const prev = last2();
@@ -529,9 +535,11 @@ function stepTask(dt) {
   if (task.kind === "wait") { if (t >= task.arg) task = null; return; }
   if (task.kind === "reset") {
     // The pages lift off from the top down; the first page settles back.
-    const n = st.pages.length;
-    st.pages.forEach((p, i) => { const u = smooth((t - (n - 1 - i) * 0.12) / 0.5); p.opacity = 1 - u; p.z = C.pageZ(i) + 14 * u; });
-    if (t >= 0.5 + n * 0.12 + 0.1) { st = fresh(); st.pages[0].opacity = 0; task.back = task.back || t; }
+    if (task.back === undefined) {
+      const n = st.pages.length;
+      st.pages.forEach((p, i) => { const u = smooth((t - (n - 1 - i) * 0.12) / 0.5); p.opacity = 1 - u; p.z = C.pageZ(i) + 14 * u; });
+      if (t >= 0.5 + n * 0.12 + 0.1) { st = fresh(); task.back = t; }
+    }
     if (task.back) { const u = smooth((t - task.back) / 0.6); st.pages[0].opacity = u; st.pages[0].z = C.pageZ(0) + 14 * (1 - u); if (u >= 1) { delete st.pages[0].opacity; delete st.pages[0].z; task = null; } }
     return;
   }
@@ -544,10 +552,23 @@ function stepTask(dt) {
       if (t >= L0 && !task.acted) { task.acted = true; st.pair = task.next.pair; st.slide = 0; st.lamps = st.pair.map((n) => [2, 3, 5].includes(n)); }
     }
     if (t < L0) return;
-    const u = t - L0;
+    let u = t - L0;
+    if (task.sink) {
+      const sinkTime = 0.55;
+      if (u < sinkTime) {
+        const sink = smooth(u / sinkTime);
+        st.pages.forEach((page, i) => { page.z = C.pageZ(i) - C.PAGES.gap * sink; });
+        st.pages[0].opacity = 1 - sink;
+        return;
+      }
+      if (!task.added) {
+        st.pages.shift();
+        for (const page of st.pages) delete page.z;
+      }
+      u -= sinkTime;
+    }
     if (!task.added) {
       task.added = true;
-      if (task.sink) st.pages.shift();
       st.pages.push({ ...task.next, opacity: 0, z: C.pageZ(st.pages.length) + 16 });
     }
     const i = st.pages.length - 1;
@@ -599,13 +620,15 @@ function tick(time) {
   frame = visible && busy ? requestAnimationFrame(tick) : 0;
 }
 const run = () => { if (!frame && visible && !still.matches) { last = 0; frame = requestAnimationFrame(tick); } };
-const hold = () => { touring = false; clearTimeout(idle); idle = setTimeout(() => { touring = !still.matches; tourAt = 0; queue = [["reset"]]; run(); }, 12000); };
+const hold = () => {
+  touring = false;
+  clearTimeout(idle);
+  if (!still.matches) idle = setTimeout(() => { touring = true; tourAt = 0; queue.push(["reset"]); run(); }, 12000);
+};
 function request(event) {
   hold();
   // A pause gives way at once; after a settlement the tower starts over before the new page.
   if (task && task.kind === "wait") task = null;
-  const pending = queue.length || task ? null : st;
-  if ((pending || st).settledFlag && !queue.some((q) => q[0] === "reset")) queue.push(["reset"]);
   queue.push(["page", event]);
   if (still.matches) { while (queue.length) { begin(queue.shift()); let guard = 0; while (task && guard++ < 2000) stepTask(1 / 30); } draw(); return; }
   run();

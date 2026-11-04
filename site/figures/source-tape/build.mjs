@@ -27,6 +27,7 @@ const PITCH = 8.5;
 const CH_Y = CHANNELS.map((_, index) => -10.8 + 3.6 * index);
 const HOLE_R = 1.45;
 const FEED_R = 0.75;
+const PIN_R = 0.65;
 
 const EXEC_X = -48;
 const READ_X = 48;
@@ -149,6 +150,13 @@ function shoe(x) {
 const guide = (x, front) => ({ x: x - 5, y: front ? TAPE.y + TAPE.d + 0.6 : TAPE.y - 2.6, w: 10, d: 2, r: 0.6 });
 const shoeFront = (x) => M("jade", S(k.slabOf(guide(x, true), TAPE_Z, 2.6, P, 2, 0.3), { tone: "mid" })) + D([at([x - 3, TAPE.y + TAPE.d + 1.6, TAPE_Z + 2.6]), at([x + 3, TAPE.y + TAPE.d + 1.6, TAPE_Z + 2.6])], { size: 0.4 });
 
+function feeler(name, drop) {
+  const y = CH_Y[CHANNELS.indexOf(name)];
+  // The part inside the punched hole is hidden by the tape.
+  const tip = TAPE_TOP + Math.max(0, 0.4 - drop);
+  return M("ink", S(k.cylinder(READ_X, y, PIN_R, tip, CHEEK_H - tip, P, 12), { tone: "mid", crease: "none" }));
+}
+
 function tape() {
   const plan = { x: TAPE.from, y: TAPE.y, w: TAPE.to - TAPE.from, d: TAPE.d, r: 0 };
   return S(k.slabOf(plan, TAPE_Z, TAPE_T, P, 1), { tone: "hi", lit: true, crease: "lo" });
@@ -249,7 +257,7 @@ function treeLayout(tree, plan) {
     return index;
   };
   walk(tree, 0, -1);
-  return nodes.map((node) => ({ ...node, x: plan.x + plan.w / 2 + (node.slot - (leaves - 1) / 2) * 16, y: plan.y + 7 + node.depth * 9.5 }));
+  return nodes.map((node) => ({ ...node, x: plan.x + plan.w / 2 + (node.slot - (leaves - 1) / 2) * 16, y: plan.y + 7 + node.depth * 8 }));
 }
 
 function boardPegs(kit, P, plan, z, tree, shown) {
@@ -345,6 +353,7 @@ function composition() {
     ...SHOES.map(shoeFront),
     `<g clip-path="url(#${clipId})"><g data-part="holes" transform="${k.translateAlong(P, [REST_S, 0, 0])}">${first.holes}<g data-part="map">${first.map}</g></g></g>`,
     headFront(EXEC_X, "exec"),
+    ...READ_CHANNELS.map((name) => `<g data-feeler="${name}">${feeler(name, 0)}</g>`),
     headFront(READ_X, "read"),
     bin(BIN_R, "right"),
     board(SRC_BOARD),
@@ -384,8 +393,7 @@ ${SWING_CSS}
 const live = `
 const P0 = ${JSON.stringify(P)};
 let P = P0;
-${shipped({ PLATE, PLATE_H, FOOT_H, TAPE_Z, TAPE_T, TAPE_TOP, TAPE, PITCH, CH_Y, HOLE_R, FEED_R, EXEC_X, READ_X, CHEEK_H, BRIDGE_H, SHOES, BIN_H, BIN_L, BIN_R, SRC_BOARD, READ_BOARD, BOARD_H, DIAL, DIAL_R, DIAL_Z, DIAL_TOP, PER_TURN, KAPPA, KAPPA_H, KAPPA_STOPS, CHANNELS, READ_CHANNELS, DATA, SEQ, N, VISIBLE, LAST, REST_S, FRAME, clipId })}
-const PIN_Z = ${CHEEK_H + BRIDGE_H + 2};
+${shipped({ PLATE, PLATE_H, FOOT_H, TAPE_Z, TAPE_T, TAPE_TOP, TAPE, PITCH, CH_Y, HOLE_R, FEED_R, PIN_R, EXEC_X, READ_X, CHEEK_H, BRIDGE_H, SHOES, BIN_H, BIN_L, BIN_R, SRC_BOARD, READ_BOARD, BOARD_H, DIAL, DIAL_R, DIAL_Z, DIAL_TOP, PER_TURN, KAPPA, KAPPA_H, KAPPA_STOPS, CHANNELS, READ_CHANNELS, DATA, SEQ, N, VISIBLE, LAST, REST_S, FRAME, clipId })}
 const k = { ${Object.keys(k).join(", ")} };
 const kit = k, kitLocal = k;
 const at = (point) => k.iso(point, P);
@@ -393,19 +401,19 @@ const S = (paths, style) => k.solidSvg(paths, style);
 const L = (d, style) => k.lineSvg(d, style);
 const D = (points, style) => k.dotsSvg(points, style);
 const M = ${M.toString()};
-${shipped({ byDepth, loop, plate, board, bin, cheek, bridge, headBack, shoe, guide, shoeFront, tape, headFront, dial, kappaSwitch, kappaKnob, dialWire, treeLayout, boardPegs, holesOf, needleAt, firstFrame, composition })}
+${shipped({ byDepth, loop, plate, board, bin, cheek, bridge, headBack, shoe, guide, shoeFront, feeler, tape, headFront, dial, kappaSwitch, kappaKnob, dialWire, treeLayout, boardPegs, holesOf, needleAt, firstFrame, composition })}
 ${swingSource}
 const root = document.querySelector('[data-figure="source-tape"]');
 const stage = root.querySelector(".iso-stage");
 const part = (name) => stage.querySelector('[data-part="' + name + '"]');
-// The live nodes, found again whenever a swing redraws the figure; the pins keep how far they had dropped.
+// Find the live nodes again whenever a swing redraws the figure.
 let holes, mapHoles, source, readBoard, needle, knob, counter, payLamp, lamps, pins = [];
 function bind() {
   holes = part("holes"); mapHoles = part("map"); source = part("source"); readBoard = part("read");
   needle = part("needle"); knob = part("knob"); counter = part("counter"); payLamp = part("pay");
   lamps = Object.fromEntries([...stage.querySelectorAll("[data-lamp]")].map((node) => [node.dataset.lamp, node]));
-  const dropOf = Object.fromEntries(pins.map((pin) => [pin.name, pin.drop]));
-  pins = [...stage.querySelectorAll("[data-pin]")].map((node) => ({ node, name: node.dataset.pin, drop: dropOf[node.dataset.pin] ?? 0 }));
+  const feelers = Object.fromEntries([...stage.querySelectorAll("[data-feeler]")].map((node) => [node.dataset.feeler, node]));
+  pins = [...stage.querySelectorAll("[data-pin]")].map((node) => ({ node, name: node.dataset.pin, feeler: feelers[node.dataset.pin], drop: 0 }));
 }
 bind();
 let flash = 0, lastPaid = { tree: -1, paid: 0 };
@@ -457,16 +465,19 @@ function draw(dt) {
   if (shown.source !== srcKey) { source.innerHTML = boardPegs(kit, P, SRC_BOARD, BOARD_H, DATA[kappa][now.src.tree].tree, 99); shown.source = srcKey; }
   const readKey = now.read.tree + ":" + now.nodes;
   if (shown.read !== readKey) { readBoard.innerHTML = boardPegs(kit, P, READ_BOARD, BOARD_H, readEntry.tree, now.nodes); shown.read = readKey; }
-  // Sensing pins drop into whatever hole is under the read head.
+  // The tip only dips while the hole clears its full diameter.
   const offset = s - (READ_X - TAPE.from);
   const i = Math.round(offset / PITCH);
   const near = Math.abs(offset - i * PITCH);
   const row = SEQ[kappa].rows[mod(i, N)];
   for (const pin of pins) {
-    const want = row.includes(pin.name) && near < 1.4 ? 1.4 : 0;
-    pin.drop = still.matches || !dt ? want : pin.drop + (want - pin.drop) * (1 - Math.exp(-dt / 0.05));
-    pin.node.setAttribute("transform", kit.translateAlong(P, [0, 0, -pin.drop]));
-    lamps[pin.name]?.toggleAttribute("data-on", pin.drop > 0.7);
+    const u = row.includes(pin.name) ? Math.max(0, 1 - near / (HOLE_R - PIN_R)) : 0;
+    const drop = 1.4 * u * u * (3 - 2 * u);
+    if (drop === pin.drop) continue;
+    pin.drop = drop;
+    pin.node.setAttribute("transform", kit.translateAlong(P, [0, 0, -drop]));
+    pin.feeler.innerHTML = feeler(pin.name, drop);
+    lamps[pin.name]?.toggleAttribute("data-on", drop > 0.7);
   }
   knobX = still.matches || !dt ? KAPPA_STOPS[kappa] : knobX + (KAPPA_STOPS[kappa] - knobX) * (1 - Math.exp(-dt / 0.18));
   knob.setAttribute("transform", kit.translateAlong(P, [knobX, 0, 0]));
@@ -506,6 +517,7 @@ function choose(tree) {
   settleIdle(); run();
 }
 function flip() {
+  touring = false;
   kappa = kappa === "zero" ? "size" : "zero";
   shown = { source: "", read: "" };
   if (still.matches) draw(0);
