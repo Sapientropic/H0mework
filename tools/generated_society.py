@@ -65,9 +65,9 @@ def source_root(root):
         source_view.ROOT, source_view.EXPORT_MAP = previous
 
 
-def selected_views(root, *, exact=False, private_originals=None):
+def selected_views(root, *, exact=False, private_originals=None, selection_path=None):
     """Traverse original imports at each epoch, then recover public/exact bytes."""
-    selection = whole_ledger_export.load_selection(root / SELECTION)
+    selection = whole_ledger_export.load_selection(root / (selection_path or SELECTION))
     with source_root(root):
         exported, modules, artifacts, inverse = source_view.load_map()
         epochs = {}
@@ -135,6 +135,7 @@ def recorded_acceptance(data, scopes, entries, root):
         require(package.get("accepted_source_scope_sha256") == scopes[package["id"]]["digest"],
                 "Accepted society package source scope changed: " + package["id"])
     configured = release.settings(root)
+    accepted_lakefiles = set()
     for kind in ("build", "trust"):
         receipt = artifact(root, acceptance[kind])
         require(receipt.get("ok") is True and receipt.get("inputs_unchanged") is True
@@ -142,8 +143,12 @@ def recorded_acceptance(data, scopes, entries, root):
                 "Society H0 execution did not pass with stable inputs: " + kind)
         require(receipt["input_identity"]["package_inputs"] == {name: scope["digest"] for name, scope in scopes.items()},
                 "Society H0 execution package scope changed: " + kind)
-        for key, path in (("lakefile", "Lean/lakefile.toml"), ("toolchain", "Lean/lean-toolchain"),
-                          ("manifest", "Lean/lake-manifest.json")):
+        input_hashes = receipt["input_identity"]["sha256"]
+        lakefile_digest = input_hashes.get("lakefile")
+        if lakefile_digest not in accepted_lakefiles:
+            release.verify_build_configuration(root, lakefile_digest, data=data, scopes=scopes)
+            accepted_lakefiles.add(lakefile_digest)
+        for key, path in (("toolchain", "Lean/lean-toolchain"), ("manifest", "Lean/lake-manifest.json")):
             require(receipt["input_identity"]["sha256"].get(key) == release.sha(release.repo_file(root, path).read_bytes()),
                     "Society H0 execution build input changed: " + key)
         for key in ("package_moreLeanArgs", "package_weakLeanArgs"):

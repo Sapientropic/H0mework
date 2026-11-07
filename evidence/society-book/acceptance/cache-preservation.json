@@ -1,0 +1,667 @@
+{
+  "schema": "h0mework/society-book-cache-preservation@1",
+  "baseline_commit": "93b601352b13f0c19d5fe53ec71fc3300c82e63d",
+  "toolchain": "leanprover/lean4:v4.33.0",
+  "manifest_sha256": "2fe02acc26899fd57d82018e711e79c251e26d0b6d2bb370af81db0ed312fbfd",
+  "platform": "Linux-X64",
+  "cache_version": "lean-parts-v1",
+  "compatibility": "23f23031eec00a03d30ee31d",
+  "before": {
+    "selection": "c3e4f6280b9b8b450e2aa582acde2547549d97162174c7da7d992434314e8bc8",
+    "module_count": 53198,
+    "verified_run": 41500430850,
+    "verified_seal": "Linux-X64-lean-selection-c3e4f6280b9b8b450e2aa582acde2547549d97162174c7da7d992434314e8bc8.json"
+  },
+  "after": {
+    "selection": "c97e3ac2c4c6f76e2390124bb5be680f30cad1ce175974e0071950f5d37709bc",
+    "module_count": 54423,
+    "stages": 11,
+    "maximum_parts_in_one_stage": 20
+  },
+  "old_parts": [
+    {
+      "part": "s1-01",
+      "module_count": 1109,
+      "full_plan_sha256": "5a4178ba3ff74ea0fea8dfa732961a23279422a3c8dfdb2d367b82205e150dbf",
+      "complete_archive": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s1-01-45d3bce20ba3c741690c987bffa2339ccd6bd3583d4cfde6d0551344c295f3c1.tar.zst",
+      "key": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s1-01-45d3bce20ba3c741690c987bffa2339ccd6bd3583d4cfde6d0551344c295f3c1",
+      "status": "complete_archive_reusable"
+    },
+    {
+      "part": "s1-02",
+      "module_count": 430,
+      "full_plan_sha256": "024a97131f894b4766f587b18c75dad84f04255b5baad1e883cf00131d08d8d4",
+      "complete_archive": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s1-02-f976b54849d7539e2b4e9091be09fc75bb55793b4fbab4d5f56e2c2676f312f4.tar.zst",
+      "key": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s1-02-f976b54849d7539e2b4e9091be09fc75bb55793b4fbab4d5f56e2c2676f312f4",
+      "status": "complete_archive_reusable"
+    },
+    {
+      "part": "s1-03",
+      "module_count": 322,
+      "full_plan_sha256": "edc5920df820d9d3a1d662bac811ba2d88d94cdac9a97adc832cfc5d295bf757",
+      "complete_archive": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s1-03-e6b1f7be5071080ed846a71270b228c576b333591064bace7d4d79b9e08cd711.tar.zst",
+      "key": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s1-03-e6b1f7be5071080ed846a71270b228c576b333591064bace7d4d79b9e08cd711",
+      "status": "complete_archive_reusable"
+    },
+    {
+      "part": "s1-04",
+      "module_count": 157,
+      "full_plan_sha256": "9d41c57d86c3f4ffe5ac05e911109a94e29af5047da65be37249ee4df24c7a19",
+      "complete_archive": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s1-04-0b582d9087beb46d61ab736bf9a12a57ae4354bcf56ecc1f968ad7728bccc794.tar.zst",
+      "key": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s1-04-0b582d9087beb46d61ab736bf9a12a57ae4354bcf56ecc1f968ad7728bccc794",
+      "status": "complete_archive_reusable"
+    },
+    {
+      "part": "s1-05",
+      "module_count": 233,
+      "full_plan_sha256": "52987a701131294bf626782c02e7667fa8d8ccf77505c3cd645e80ca8f04fea3",
+      "complete_archive": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s1-05-4248766b6059683c03d114dda21b6ddba589c32392c30bbac2d0c187240bf273.tar.zst",
+      "key": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s1-05-4248766b6059683c03d114dda21b6ddba589c32392c30bbac2d0c187240bf273",
+      "status": "complete_archive_reusable"
+    },
+    {
+      "part": "s2-01",
+      "module_count": 2487,
+      "full_plan_sha256": "e13dc1ba6c2fbd0d36062b0e1cecaaee1b8a8ab9214250b6509748654513e4a8",
+      "complete_archive": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s2-01-0310980a4324edc06586c02c396f36312bfc253a901c2bc5435eba41015754b3.tar.zst",
+      "key": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s2-01-0310980a4324edc06586c02c396f36312bfc253a901c2bc5435eba41015754b3",
+      "status": "complete_archive_reusable"
+    },
+    {
+      "part": "s2-02",
+      "module_count": 2433,
+      "full_plan_sha256": "bb6edc0428af358213d6d4bb42e0bfd1c7dd0ce38f5cd83c0ac1d7d1a9ac6ef1",
+      "complete_archive": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s2-02-1c34193eaa055a3b30e644fa9c87662ce2aea3da62214e7d81257383f1da3768.tar.zst",
+      "key": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s2-02-1c34193eaa055a3b30e644fa9c87662ce2aea3da62214e7d81257383f1da3768",
+      "status": "complete_archive_reusable"
+    },
+    {
+      "part": "s2-03",
+      "module_count": 909,
+      "full_plan_sha256": "c74c01f19e744bb3532dbf323b62d02fef2352b4c8615a90d65248e11b78b908",
+      "complete_archive": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s2-03-0c5a39d8e6876e6ae859af8833ce9943652fe5fc8573087c25581310f1cd9a97.tar.zst",
+      "key": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s2-03-0c5a39d8e6876e6ae859af8833ce9943652fe5fc8573087c25581310f1cd9a97",
+      "status": "complete_archive_reusable"
+    },
+    {
+      "part": "s3-01",
+      "module_count": 157,
+      "full_plan_sha256": "4482d0ef45223dd27f95c6ba2987311bceff02f182bd67c58d41fb80b709c64c",
+      "complete_archive": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s3-01-8ad7c88a7f9eba2e922a80d536a1c3898b055d8baaf788bfd1f384e03757ccd2.tar.zst",
+      "key": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s3-01-8ad7c88a7f9eba2e922a80d536a1c3898b055d8baaf788bfd1f384e03757ccd2",
+      "status": "complete_archive_reusable"
+    },
+    {
+      "part": "s3-02",
+      "module_count": 73,
+      "full_plan_sha256": "b6760714f47daccc859a8055d9a5841fe7e347e7f3291725e50209616da236b2",
+      "complete_archive": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s3-02-b3dc15af984f7337ab633401cb984ac6886105f6d15579f007322fdf8e7857c5.tar.zst",
+      "key": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s3-02-b3dc15af984f7337ab633401cb984ac6886105f6d15579f007322fdf8e7857c5",
+      "status": "complete_archive_reusable"
+    },
+    {
+      "part": "s3-03",
+      "module_count": 55,
+      "full_plan_sha256": "04f9216854f6d3f83b8db3eb72227a44842bdb1a5256e0a452ff02a475be3fc0",
+      "complete_archive": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s3-03-28516b79d419c012de1ce6e7c09a9fa1dac1d80f5f1cad979e564543cc126f0c.tar.zst",
+      "key": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s3-03-28516b79d419c012de1ce6e7c09a9fa1dac1d80f5f1cad979e564543cc126f0c",
+      "status": "complete_archive_reusable"
+    },
+    {
+      "part": "s3-04",
+      "module_count": 273,
+      "full_plan_sha256": "ab1a13ca129e58ee0c0a5772a224d98e3b0c54b4caea83f12e6490a33f75366c",
+      "complete_archive": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s3-04-1f4cc5e18a85ab531a78bb7f2da5173226df94e0d2507fb01c19869e04043c5a.tar.zst",
+      "key": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s3-04-1f4cc5e18a85ab531a78bb7f2da5173226df94e0d2507fb01c19869e04043c5a",
+      "status": "complete_archive_reusable"
+    },
+    {
+      "part": "s3-05",
+      "module_count": 182,
+      "full_plan_sha256": "bbdb9d0365d2cd64a8906ce937de9c8475451aec3e40614729ad870d7bc467fb",
+      "complete_archive": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s3-05-764d67e9fd8e6ccbd628d6ffb4e983fbe68a014fd278f1bde7297e86c9095243.tar.zst",
+      "key": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s3-05-764d67e9fd8e6ccbd628d6ffb4e983fbe68a014fd278f1bde7297e86c9095243",
+      "status": "complete_archive_reusable"
+    },
+    {
+      "part": "s3-06",
+      "module_count": 45,
+      "full_plan_sha256": "b0a49161382a93c6ee7316f2cb82e378d1d7215ab982478b0ecf2662c0aa106e",
+      "complete_archive": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s3-06-063be1feddac09b35f4f410de8ad6ec035665a597371efa21c1e95b8cb134663.tar.zst",
+      "key": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s3-06-063be1feddac09b35f4f410de8ad6ec035665a597371efa21c1e95b8cb134663",
+      "status": "complete_archive_reusable"
+    },
+    {
+      "part": "s3-07",
+      "module_count": 46,
+      "full_plan_sha256": "326e38a88620b169c0bd23ae2f7cc1408d3ee6c65bfd1efc5accc6bce8b9cffa",
+      "complete_archive": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s3-07-2a8ae75db313d50ad172f646f8f87ec38454d104626e5e2956caad8dc8e319ee.tar.zst",
+      "key": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s3-07-2a8ae75db313d50ad172f646f8f87ec38454d104626e5e2956caad8dc8e319ee",
+      "status": "complete_archive_reusable"
+    },
+    {
+      "part": "s3-08",
+      "module_count": 50,
+      "full_plan_sha256": "65cde5be61f1aea6890624c9743fe96afc278ebb75e908a259577b0a46465d04",
+      "complete_archive": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s3-08-f2245ecf8406cc7a2440a3a149183bdd9370115a84f19562e7033a365767cfd2.tar.zst",
+      "key": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s3-08-f2245ecf8406cc7a2440a3a149183bdd9370115a84f19562e7033a365767cfd2",
+      "status": "complete_archive_reusable"
+    },
+    {
+      "part": "s3-09",
+      "module_count": 2926,
+      "full_plan_sha256": "e056af4a265683933799f2c4ca70e8931b35e2e626a737a7aa3a5161d90d28ee",
+      "complete_archive": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s3-09-43a8d630e77fd733072fa6931dbd019c58c18b09b278cabbe5b61b35303a755d.tar.zst",
+      "key": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s3-09-43a8d630e77fd733072fa6931dbd019c58c18b09b278cabbe5b61b35303a755d",
+      "status": "complete_archive_reusable"
+    },
+    {
+      "part": "s4-01",
+      "module_count": 1143,
+      "full_plan_sha256": "2736fa6624fc131825276536116ae4c992a25e789d5a54ad19098df4cb69cd97",
+      "complete_archive": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-01-1d493260700cc61b7fa01548a1cec104b2164106ed5b13cbd5087bbdf7f70a11.tar.zst",
+      "key": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-01-1d493260700cc61b7fa01548a1cec104b2164106ed5b13cbd5087bbdf7f70a11",
+      "status": "complete_archive_reusable"
+    },
+    {
+      "part": "s4-02",
+      "module_count": 431,
+      "full_plan_sha256": "37d3ff3f80db2da050a66f7a09f8ccb919c154c4f00d5a4bf06013029f36738b",
+      "complete_archive": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-02-e34468ca20edec0b21e79dac44eb1a11b262dcab88a586a16c431ea9e63eb9d0.tar.zst",
+      "key": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-02-e34468ca20edec0b21e79dac44eb1a11b262dcab88a586a16c431ea9e63eb9d0",
+      "status": "complete_archive_reusable"
+    },
+    {
+      "part": "s4-03",
+      "module_count": 355,
+      "full_plan_sha256": "a39d06602036b2a780b045eeb2145ee4ddbcde2c2d5a9592e2b33aa4de6f4efe",
+      "complete_archive": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-03-0a4c648726f7638148125e03cdc9525292730274ccc49b39f627bab30ed371b2.tar.zst",
+      "key": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-03-0a4c648726f7638148125e03cdc9525292730274ccc49b39f627bab30ed371b2",
+      "status": "complete_archive_reusable"
+    },
+    {
+      "part": "s4-04",
+      "module_count": 331,
+      "full_plan_sha256": "40068b99b911aadb4e0c12f16bd95a45e654a13c0361d1008baaf4de2968cf00",
+      "complete_archive": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-04-38794432ce4a0eb6daa707c9e577f104e553b6ac48b3508ebf2eb39f1d56ff24.tar.zst",
+      "key": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-04-38794432ce4a0eb6daa707c9e577f104e553b6ac48b3508ebf2eb39f1d56ff24",
+      "status": "complete_archive_reusable"
+    },
+    {
+      "part": "s4-05",
+      "module_count": 326,
+      "full_plan_sha256": "3ccb9489e1e8a495630321f183c4ef021b72973bf81184e66264cb310f537425",
+      "complete_archive": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-05-cffdfbe722130c9eed58e0d7e70d4fd2214faaaa0aee7347934c0368ef59dd90.tar.zst",
+      "key": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-05-cffdfbe722130c9eed58e0d7e70d4fd2214faaaa0aee7347934c0368ef59dd90",
+      "status": "complete_archive_reusable"
+    },
+    {
+      "part": "s4-06",
+      "module_count": 267,
+      "full_plan_sha256": "ba6388eba42524ddb311bbe62f3c589fa568c246b9686ff183c5f4ba117c2337",
+      "complete_archive": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-06-27aff7819f2c79593797ad215b4ebe4480194f9ea6370ac6408087a08138a51c.tar.zst",
+      "key": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-06-27aff7819f2c79593797ad215b4ebe4480194f9ea6370ac6408087a08138a51c",
+      "status": "complete_archive_reusable"
+    },
+    {
+      "part": "s4-07",
+      "module_count": 527,
+      "full_plan_sha256": "98b39fbc66661c9564b1a808d236e5dcd72cb927757c2d81f935ea684924d719",
+      "complete_archive": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-07-28469333f6960b147c528ee3b8a414a1246d5bc5a25783616044be75c530602e.tar.zst",
+      "key": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-07-28469333f6960b147c528ee3b8a414a1246d5bc5a25783616044be75c530602e",
+      "status": "complete_archive_reusable"
+    },
+    {
+      "part": "s4-08",
+      "module_count": 318,
+      "full_plan_sha256": "45a8a23e62d0b1bb84d0bb315112d6a908ed3d7476720bd809984330cb5ec3ee",
+      "complete_archive": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-08-9ca073548bc1ee89fbebc9fe467343a98a40d939c5278ee26bf023f187ea3e67.tar.zst",
+      "key": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-08-9ca073548bc1ee89fbebc9fe467343a98a40d939c5278ee26bf023f187ea3e67",
+      "status": "complete_archive_reusable"
+    },
+    {
+      "part": "s4-09",
+      "module_count": 365,
+      "full_plan_sha256": "f8484e6f3b3c6836ce177a61545147067484b285e8523fda1f5d6cd435ef6e0f",
+      "complete_archive": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-09-7b9361e8f6f06830231fddfbf457b5b90c02f43365ad35c76515653db1f43777.tar.zst",
+      "key": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-09-7b9361e8f6f06830231fddfbf457b5b90c02f43365ad35c76515653db1f43777",
+      "status": "complete_archive_reusable"
+    },
+    {
+      "part": "s4-10",
+      "module_count": 331,
+      "full_plan_sha256": "d59b752717bb0be0895a6b99bf055979f0377073bfa817b18664303b8867ba03",
+      "complete_archive": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-10-03b7c2679ed6190ac4008830e07092cdbb2d55d7491c369f5bdf0e71e23a4a7e.tar.zst",
+      "key": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-10-03b7c2679ed6190ac4008830e07092cdbb2d55d7491c369f5bdf0e71e23a4a7e",
+      "status": "complete_archive_reusable"
+    },
+    {
+      "part": "s4-11",
+      "module_count": 275,
+      "full_plan_sha256": "4dfc693bacc23c6372baa572bc925b11213fd744744cfa6de7528162f139631f",
+      "complete_archive": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-11-9f0a6fb12c1fcfc2592668880696155010c9df17e9175f3df15294298373c49a.tar.zst",
+      "key": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-11-9f0a6fb12c1fcfc2592668880696155010c9df17e9175f3df15294298373c49a",
+      "status": "complete_archive_reusable"
+    },
+    {
+      "part": "s4-12",
+      "module_count": 366,
+      "full_plan_sha256": "e3e54d37d895499a02baf4284ee9b09a2666a9fbf3db6b2bd899c10a46a8d292",
+      "complete_archive": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-12-e4f23e5b23eb47d7160fcfdff83bb54126fe9b4f0590203caa53f7e320564f6e.tar.zst",
+      "key": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-12-e4f23e5b23eb47d7160fcfdff83bb54126fe9b4f0590203caa53f7e320564f6e",
+      "status": "complete_archive_reusable"
+    },
+    {
+      "part": "s4-13",
+      "module_count": 486,
+      "full_plan_sha256": "e1b8a4f0ebed70fc2d0824f6f83df86d1c87bcbe0421de6ada2e1c29b2b2f3ca",
+      "complete_archive": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-13-26378035cfb7a34286cdb63e89aacdf627f6bbbc4e03a84b6ee5c63d67d9fd18.tar.zst",
+      "key": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-13-26378035cfb7a34286cdb63e89aacdf627f6bbbc4e03a84b6ee5c63d67d9fd18",
+      "status": "complete_archive_reusable"
+    },
+    {
+      "part": "s4-14",
+      "module_count": 398,
+      "full_plan_sha256": "bada50da908ce2cf7b09e2897a795cf8686a9711ef54efbab3f373e3a9068977",
+      "complete_archive": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-14-76c5ae2fd993f9d1c22fcb6b60d7cd95002d0d678cb4817a0507d32d47cc73df.tar.zst",
+      "key": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-14-76c5ae2fd993f9d1c22fcb6b60d7cd95002d0d678cb4817a0507d32d47cc73df",
+      "status": "complete_archive_reusable"
+    },
+    {
+      "part": "s4-15",
+      "module_count": 486,
+      "full_plan_sha256": "b895f0da686844e4305e8d159910f83d7e9d9a02039ad85c540e4ebe0c230d16",
+      "complete_archive": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-15-f7a613b6787a82038195f67d3c9a826b35a1c835e55a5718284b029baae497e0.tar.zst",
+      "key": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-15-f7a613b6787a82038195f67d3c9a826b35a1c835e55a5718284b029baae497e0",
+      "status": "complete_archive_reusable"
+    },
+    {
+      "part": "s4-16",
+      "module_count": 474,
+      "full_plan_sha256": "ef6a59d4f2b828afd3dae446f52bc72b6fd4732a05cd1c68f6bdc35ea5ea6d56",
+      "complete_archive": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-16-bef34fc74482b069af24cebbb5f0ae01d633809a37fbcbceaa6d2ed994a15fad.tar.zst",
+      "key": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-16-bef34fc74482b069af24cebbb5f0ae01d633809a37fbcbceaa6d2ed994a15fad",
+      "status": "complete_archive_reusable"
+    },
+    {
+      "part": "s4-17",
+      "module_count": 541,
+      "full_plan_sha256": "626ade978590311467f776d487702f534ce02d3685cefabe8fa4a7d2291c1fb3",
+      "complete_archive": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-17-e715d53b0b7f7defb6197b0808477d56a63abd9615d08019774fa7497cf424b7.tar.zst",
+      "key": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-17-e715d53b0b7f7defb6197b0808477d56a63abd9615d08019774fa7497cf424b7",
+      "status": "complete_archive_reusable"
+    },
+    {
+      "part": "s4-18",
+      "module_count": 346,
+      "full_plan_sha256": "a74b998656b2bc8715478986b3b49adfbea8a22d1300494a8aade1d9fa29085b",
+      "complete_archive": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-18-dca68fb4773aaf85a0b04d3c997c1dcf090dcc3a7a605e33c84fcd0149251581.tar.zst",
+      "key": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-18-dca68fb4773aaf85a0b04d3c997c1dcf090dcc3a7a605e33c84fcd0149251581",
+      "status": "complete_archive_reusable"
+    },
+    {
+      "part": "s4-19",
+      "module_count": 263,
+      "full_plan_sha256": "170761641c6c7883598506210b26ce247f1d09937072bea0bdaee9c2c330fe91",
+      "complete_archive": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-19-eb882af5fb563689912e64cb73f710749b04cf1d099767c6cd80c917aff268c0.tar.zst",
+      "key": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-19-eb882af5fb563689912e64cb73f710749b04cf1d099767c6cd80c917aff268c0",
+      "status": "complete_archive_reusable"
+    },
+    {
+      "part": "s4-20",
+      "module_count": 264,
+      "full_plan_sha256": "0e7dc495614fa329451a570a2164e617d7cb2d6992c0c8196999bb94c7d96a5e",
+      "complete_archive": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-20-365fef83cee0758395583bc89b5d2ed3fffce4ef0ad48b3e45f448e8177a8a02.tar.zst",
+      "key": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s4-20-365fef83cee0758395583bc89b5d2ed3fffce4ef0ad48b3e45f448e8177a8a02",
+      "status": "complete_archive_reusable"
+    },
+    {
+      "part": "s5-01",
+      "module_count": 1282,
+      "full_plan_sha256": "e9649cf543d7d912fd1dc748bbafa8269f0e33745a4a919cf342ce4ce477562b",
+      "complete_archive": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s5-01-2e0a648458cfe63ed38da874b3df8be57c75d45fc0f982a2d254b37312f92f45.tar.zst",
+      "key": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s5-01-2e0a648458cfe63ed38da874b3df8be57c75d45fc0f982a2d254b37312f92f45",
+      "status": "complete_archive_reusable"
+    },
+    {
+      "part": "s5-02",
+      "module_count": 904,
+      "full_plan_sha256": "322364def8c895589db32e09c613c19e19fc11f69a64a21c4e14dff2b97977fd",
+      "complete_archive": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s5-02-defbbfac20ea2aa9ea7487e938bd897462ab21b7b6ad4e797f6c18b8e575abdd.tar.zst",
+      "key": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s5-02-defbbfac20ea2aa9ea7487e938bd897462ab21b7b6ad4e797f6c18b8e575abdd",
+      "status": "complete_archive_reusable"
+    },
+    {
+      "part": "s5-03",
+      "module_count": 542,
+      "full_plan_sha256": "46e21d36cae3832b0774ba56a3627c2d916d03e3c86d96b0eea94ca224ee0a5e",
+      "complete_archive": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s5-03-a109b54bd3675f8a388357efd98092604747284e3a13946fb3620119689432fb.tar.zst",
+      "key": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s5-03-a109b54bd3675f8a388357efd98092604747284e3a13946fb3620119689432fb",
+      "status": "complete_archive_reusable"
+    },
+    {
+      "part": "s6-01",
+      "module_count": 1818,
+      "full_plan_sha256": "28349316ce4458f97713e3ce96556444c8236b8d59e5d2f7d5515058459476c0",
+      "complete_archive": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s6-01-e29a5a8b4c17d53ba44cd3385d72b10e66269d6568144d7ea51e674ade3c3849.tar.zst",
+      "key": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s6-01-e29a5a8b4c17d53ba44cd3385d72b10e66269d6568144d7ea51e674ade3c3849",
+      "status": "complete_archive_reusable"
+    },
+    {
+      "part": "s6-02",
+      "module_count": 1344,
+      "full_plan_sha256": "329f2fed2846c4f11efdf17156c816f1980c0b6b2fbfa825d34049785ce1b1e5",
+      "complete_archive": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s6-02-098f5d27a1177a6de08376169558f42d877f9aac2fd1c4dfc9f8fee3ae0c137c.tar.zst",
+      "key": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s6-02-098f5d27a1177a6de08376169558f42d877f9aac2fd1c4dfc9f8fee3ae0c137c",
+      "status": "complete_archive_reusable"
+    },
+    {
+      "part": "s6-03",
+      "module_count": 1345,
+      "full_plan_sha256": "20d7020856e280d1d714185bc83f9b2d32d3690b2124fa88d3368e28b5f7d014",
+      "complete_archive": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s6-03-1d1d5a6eb0b3e771917f1de33e6456a10099da38f9414ed90d7b6827096e4620.tar.zst",
+      "key": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s6-03-1d1d5a6eb0b3e771917f1de33e6456a10099da38f9414ed90d7b6827096e4620",
+      "status": "complete_archive_reusable"
+    },
+    {
+      "part": "s6-04",
+      "module_count": 2095,
+      "full_plan_sha256": "3b9616a0e3110d9c640cbb0d5502baba1965a58a0452fcafc85866ac0f5df851",
+      "complete_archive": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s6-04-11d800ce0ad897800781955b0e8ec955bef8a05ecbb28a38b3448d01e0684b92.tar.zst",
+      "key": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s6-04-11d800ce0ad897800781955b0e8ec955bef8a05ecbb28a38b3448d01e0684b92",
+      "status": "complete_archive_reusable"
+    },
+    {
+      "part": "s7-01",
+      "module_count": 1313,
+      "full_plan_sha256": "d549156576df953f6a7f4e14b0c71a80d34eba4da990721a5e5edb8a7721d095",
+      "complete_archive": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s7-01-4c992e8c97c9abfc6756c73669064ca73f559800734b32c99aa9cd27cbfddc93.tar.zst",
+      "key": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s7-01-4c992e8c97c9abfc6756c73669064ca73f559800734b32c99aa9cd27cbfddc93",
+      "status": "complete_archive_reusable"
+    },
+    {
+      "part": "s7-02",
+      "module_count": 18,
+      "full_plan_sha256": "dd974f9a0c06d9a89d9fa0d64516e535702cef1255f4da2812939a0750c54478",
+      "complete_archive": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s7-02-83d8c4f1e35745bb28fc1bad06a29355134c2e9db36a3ca9a9b6e896be21ee66.tar.zst",
+      "key": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s7-02-83d8c4f1e35745bb28fc1bad06a29355134c2e9db36a3ca9a9b6e896be21ee66",
+      "status": "complete_archive_reusable"
+    },
+    {
+      "part": "s8-01",
+      "module_count": 4362,
+      "full_plan_sha256": "d62a5241f61a264f9b46a98b00f6b8024f150199f5edffe65e489291c277a6a2",
+      "complete_archive": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s8-01-cc0c972ebc46ec6f7696e63e8b342aed5d6f084c2ee1e83497dc2b5a3aa8f2d5.tar.zst.parts",
+      "key": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s8-01-cc0c972ebc46ec6f7696e63e8b342aed5d6f084c2ee1e83497dc2b5a3aa8f2d5",
+      "status": "complete_archive_reusable"
+    },
+    {
+      "part": "s8-02",
+      "module_count": 2424,
+      "full_plan_sha256": "3023cadd32c2bb0e202ac3943de017b30fb93bcb713ea60a00eaa9dcb130181c",
+      "complete_archive": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s8-02-df16e0c307090e3829936589e6c7995627fa4a4a2178d6b4dcfe51781eedd205.tar.zst",
+      "key": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s8-02-df16e0c307090e3829936589e6c7995627fa4a4a2178d6b4dcfe51781eedd205",
+      "status": "complete_archive_reusable"
+    },
+    {
+      "part": "s9-01",
+      "module_count": 2090,
+      "full_plan_sha256": "0c5c1fbee943be9d40f0fc317e9e25f00b49d9251a50a1353edccfe8a8cf2da5",
+      "complete_archive": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s9-01-db2a51f901b2a8d50978776de79dc9224717ffa9a5021b427ee9e251190fb259.tar.zst",
+      "key": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s9-01-db2a51f901b2a8d50978776de79dc9224717ffa9a5021b427ee9e251190fb259",
+      "status": "complete_archive_reusable"
+    },
+    {
+      "part": "s9-02",
+      "module_count": 12681,
+      "full_plan_sha256": "57a8dfb4d8da752ac6b01f0afe3911cb46ca2542d991af7ad1a9a96e1a7895ac",
+      "complete_archive": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s9-02-f3d73d3b3f2285cf270ca5528f021720b880ef5c0a5283e28cae37bab3e6a0bf.tar.zst.parts",
+      "key": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s9-02-f3d73d3b3f2285cf270ca5528f021720b880ef5c0a5283e28cae37bab3e6a0bf",
+      "status": "complete_archive_reusable"
+    },
+    {
+      "part": "s10-01",
+      "module_count": 33,
+      "full_plan_sha256": "dd2c7070ee0ebfed9d3341a4b871ebbba922e9bb3e27ad1df8644e2bbc6db8a2",
+      "complete_archive": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s10-01-3c1a0073cdb9a458148d96e490e277ed0bb752d6232bb460a6fea743c8ca28c8.tar.zst",
+      "key": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s10-01-3c1a0073cdb9a458148d96e490e277ed0bb752d6232bb460a6fea743c8ca28c8",
+      "status": "complete_archive_reusable"
+    },
+    {
+      "part": "s10-02",
+      "module_count": 26,
+      "full_plan_sha256": "f53f7b9f31f70cab97cb240eebb1984936753ab6621a6e7f0fa9379d42718099",
+      "complete_archive": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s10-02-a0ca539546ee60c4894323c86c702c0b2043a31226870d8a2c6547c74bf2bc99.tar.zst",
+      "key": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s10-02-a0ca539546ee60c4894323c86c702c0b2043a31226870d8a2c6547c74bf2bc99",
+      "status": "complete_archive_reusable"
+    },
+    {
+      "part": "s10-03",
+      "module_count": 24,
+      "full_plan_sha256": "d9ff3a814e6b6887a16c046aab59dd76182d95642430852c5e90d742905a2b0b",
+      "complete_archive": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s10-03-fce08484c391b67dfa75cc2ebda0f21033a7e0446cb4b8c121709993f73a86da.tar.zst",
+      "key": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s10-03-fce08484c391b67dfa75cc2ebda0f21033a7e0446cb4b8c121709993f73a86da",
+      "status": "complete_archive_reusable"
+    },
+    {
+      "part": "s10-04",
+      "module_count": 23,
+      "full_plan_sha256": "d99d81b703b9dbbe263ea5b6b4c4902e44e5c5b288bceae0639a2ff94c3780b1",
+      "complete_archive": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s10-04-091c3f39f5ba12468b7288ade83f96ba8bcc160cefc3ef0786d2b36c288b1ae0.tar.zst",
+      "key": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s10-04-091c3f39f5ba12468b7288ade83f96ba8bcc160cefc3ef0786d2b36c288b1ae0",
+      "status": "complete_archive_reusable"
+    },
+    {
+      "part": "s10-05",
+      "module_count": 27,
+      "full_plan_sha256": "fa63c569c0a41f5ef037e91515cfcb04d9aae3b7228bee2948f88e9508af56aa",
+      "complete_archive": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s10-05-9550d39c936ce1325f4bef86b716f75c81c91bc6bcc3af0cbb6d5bdef140613e.tar.zst",
+      "key": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s10-05-9550d39c936ce1325f4bef86b716f75c81c91bc6bcc3af0cbb6d5bdef140613e",
+      "status": "complete_archive_reusable"
+    },
+    {
+      "part": "s10-06",
+      "module_count": 29,
+      "full_plan_sha256": "e76206212897484917ee045bbf86e7d0c39f1ec7ad5d560798591a4776f179d8",
+      "complete_archive": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s10-06-dc81093ca17a36d59293ceae57ced8a17e1cde960de79528ff0242b07d3b566a.tar.zst",
+      "key": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s10-06-dc81093ca17a36d59293ceae57ced8a17e1cde960de79528ff0242b07d3b566a",
+      "status": "complete_archive_reusable"
+    },
+    {
+      "part": "s10-07",
+      "module_count": 18,
+      "full_plan_sha256": "25584c255f62e3835cf175f02e49e374fecba5975b0efe1976418f5d13073a2a",
+      "complete_archive": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s10-07-a45981a3b0c4ebeb0d0616050cce9ba13a0d623cbb0addf7c183bb295d076315.tar.zst",
+      "key": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s10-07-a45981a3b0c4ebeb0d0616050cce9ba13a0d623cbb0addf7c183bb295d076315",
+      "status": "complete_archive_reusable"
+    },
+    {
+      "part": "s10-08",
+      "module_count": 18,
+      "full_plan_sha256": "fee7ba839abd1657d42b68ff8b96b039a4178a0cc09dd1e82f2e1a362eaf6963",
+      "complete_archive": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s10-08-31307fd2fb582d94e31a8124466017ed3d165c4a8dc7f50a4d524a243e5a1097.tar.zst",
+      "key": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s10-08-31307fd2fb582d94e31a8124466017ed3d165c4a8dc7f50a4d524a243e5a1097",
+      "status": "complete_archive_reusable"
+    },
+    {
+      "part": "s10-09",
+      "module_count": 21,
+      "full_plan_sha256": "bf2e14140061ccce12979c09b5507fd65f7d36a50ca680002bc519c32a6d4d10",
+      "complete_archive": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s10-09-becbc15183c0881df72a5884ffbd717297043a1258ba5979ae6cccae0abcd046.tar.zst",
+      "key": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s10-09-becbc15183c0881df72a5884ffbd717297043a1258ba5979ae6cccae0abcd046",
+      "status": "complete_archive_reusable"
+    },
+    {
+      "part": "s10-10",
+      "module_count": 29,
+      "full_plan_sha256": "3a86398c20a68498795899011471b5db0035f31dcd69311223aba20a622e37ea",
+      "complete_archive": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s10-10-f7caec70578ac11942bf063cd68dd106a5539c61f38d5fef0cb712c0f5580d15.tar.zst",
+      "key": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s10-10-f7caec70578ac11942bf063cd68dd106a5539c61f38d5fef0cb712c0f5580d15",
+      "status": "complete_archive_reusable"
+    },
+    {
+      "part": "s10-11",
+      "module_count": 24,
+      "full_plan_sha256": "707cc8f1bc4170d2e3338836cd1df29dca1c021810a7f341fb84ca541091ca1b",
+      "complete_archive": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s10-11-cbc38ba63c0c801ab438fb04401784c8065817d1a5dc14c187f6e756025957da.tar.zst",
+      "key": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s10-11-cbc38ba63c0c801ab438fb04401784c8065817d1a5dc14c187f6e756025957da",
+      "status": "complete_archive_reusable"
+    },
+    {
+      "part": "s10-12",
+      "module_count": 23,
+      "full_plan_sha256": "a3b8559cf4c071aa3d8075a0df261d445e4121a1a876fa8248a9e8c24bcb14d2",
+      "complete_archive": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s10-12-023cc813d88d93c870ed7db76ec57eaae85a0a8532e380f3e3e9b7c191eb1ead.tar.zst",
+      "key": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s10-12-023cc813d88d93c870ed7db76ec57eaae85a0a8532e380f3e3e9b7c191eb1ead",
+      "status": "complete_archive_reusable"
+    },
+    {
+      "part": "s10-13",
+      "module_count": 17,
+      "full_plan_sha256": "e0b3e6ec74acea48ac56eaebf9254c97e9add064e2372217ac3a8b4da48f09bb",
+      "complete_archive": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s10-13-86c78ff5dd0668f3538caf26acc6bd633b9ccf2d9e1dc8b369aad0b69cab3006.tar.zst",
+      "key": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s10-13-86c78ff5dd0668f3538caf26acc6bd633b9ccf2d9e1dc8b369aad0b69cab3006",
+      "status": "complete_archive_reusable"
+    },
+    {
+      "part": "s10-14",
+      "module_count": 20,
+      "full_plan_sha256": "3a153bb1c26e137259f066821720c343f981cdf853bbfacfa1a4479a4423e593",
+      "complete_archive": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s10-14-2a1d34bac4b3c7f2ef48be4f8097793617766c94a7d2d8fa1dca2590a1dc0cb6.tar.zst",
+      "key": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s10-14-2a1d34bac4b3c7f2ef48be4f8097793617766c94a7d2d8fa1dca2590a1dc0cb6",
+      "status": "complete_archive_reusable"
+    },
+    {
+      "part": "s11-01",
+      "module_count": 468,
+      "full_plan_sha256": "e348cb924da408472f9f2c6c903acb668f92c1d2bf43ccf8936f0aabd58ca5e6",
+      "complete_archive": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s11-01-0c065862e72c2b438b636c040f03180480e504f2e97f53b777ab5f981e58f6c8.tar.zst",
+      "key": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s11-01-0c065862e72c2b438b636c040f03180480e504f2e97f53b777ab5f981e58f6c8",
+      "status": "complete_archive_reusable"
+    }
+  ],
+  "new_parts": [
+    {
+      "part": "s7-03",
+      "key": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s7-03-c4a082cab9ac9fef27587b094bdbdc6f1860a2a38a3d5100de4286082ed737e0",
+      "stage": 7,
+      "module_count": 1172,
+      "estimated_runner_hours": 1.38,
+      "targets": [
+        "+H0mework.Papers.SocietyBookQuantities",
+        "+H0mework.Papers.SocietyBookRiskCompensation"
+      ],
+      "upstream": [
+        "s1-01",
+        "s1-02",
+        "s1-03",
+        "s1-04",
+        "s1-05",
+        "s2-01",
+        "s3-09",
+        "s5-03",
+        "s6-04"
+      ],
+      "status": "new"
+    },
+    {
+      "part": "s7-04",
+      "key": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s7-04-4ab237dd2e31a4427a734f3c63c43d593bf6af7a4c50275e016f45c1cbedef0f",
+      "stage": 7,
+      "module_count": 51,
+      "estimated_runner_hours": 0.15,
+      "targets": [
+        "+H0mework.Papers.SocietyBookScopedAudit",
+        "+H0mework.Papers.SocietyBookSourcePrivacy",
+        "+H0mework.Versions.Rac87df08.ReleaseMaterials.Scripts.Verification.HaTimingOwnerSource",
+        "+H0mework.Versions.Rfb9e88a7.ReleaseMaterials.Scripts.Verification.PublicContinuationSource",
+        "+H0mework.Versions.Rfb9e88a7.ReleaseMaterials.Scripts.Verification.PublicEnergySource",
+        "+H0mework.Versions.Rfb9e88a7.ReleaseMaterials.Scripts.Verification.PublicGovernanceSource",
+        "+H0mework.Versions.Rfb9e88a7.ReleaseMaterials.Scripts.Verification.PublicHandoffSource",
+        "+H0mework.Versions.Rfb9e88a7.ReleaseMaterials.Scripts.Verification.PublicMandateResponseSource",
+        "+H0mework.Versions.Rfb9e88a7.ReleaseMaterials.Scripts.Verification.PublicScopedAuditSource"
+      ],
+      "upstream": [
+        "s1-01",
+        "s1-04",
+        "s1-05",
+        "s2-01",
+        "s3-09",
+        "s6-04"
+      ],
+      "status": "new"
+    },
+    {
+      "part": "s7-05",
+      "key": "Linux-X64-lean-parts-v1-23f23031eec00a03d30ee31d-s7-05-902cb257f0e259e9c7d7e30ab95ac8626bc6e2b8655a633b3906d0ceeec760d2",
+      "stage": 7,
+      "module_count": 2,
+      "estimated_runner_hours": 0.01,
+      "targets": [
+        "+H0mework.Versions.Rdf421ff6.ReleaseMaterials.SaturationMonoid.ProcessGame.Regression.Society.Lifecycle.Universal.ReappearanceSuccessionRegression"
+      ],
+      "upstream": [
+        "s1-01",
+        "s1-04",
+        "s1-05",
+        "s3-09"
+      ],
+      "status": "new"
+    }
+  ],
+  "invalidated_old_parts": [],
+  "unchanged_old_layout_assignments": 53198,
+  "old_library_settings_and_resource_definitions_equal": true,
+  "export": {
+    "added_artifacts": 1,
+    "added_owners": 1221,
+    "exact_inverse_passed": 1221,
+    "existing_public_owners_rechecked": 875,
+    "resource_identities": 1,
+    "reused_artifacts": 0,
+    "reused_identities": 1267,
+    "source_closure": 2510,
+    "new_public_entry_modules": 4,
+    "new_owners_with_same_source_bytes_and_distinct_recursive_import_identity": 936,
+    "shared_owner_collisions": 0,
+    "selection_file_sha256": "34eb1bacea21062ea3f9314833732646d70810c7740f708970fb1e625fda1c4d"
+  },
+  "scientific_replay": {
+    "bell": {
+      "schema": "h0mework/first-release-cache@1",
+      "kind": "bell",
+      "status": "reused",
+      "source_commit": "4bdfd36040e7ee68f58e2b1e60651b66edb07ae8",
+      "source_run": "https://github.com/Sapientropic/H0mework/actions/runs/41500430850",
+      "reason": "validated against current source, configuration and inputs",
+      "report_sha256": "610a106e7753a02c87f05e2dc981355f11a257d1f9a7f0e489c1fdb998b4fd24",
+      "checks": 14,
+      "config_sha256": "cc3f1507168ea0b0c38aa8ff2ad6a8ddc7735a8e0624a0a58b4c28d81d847cce",
+      "map_sha256": "089f94ab28e84a2b04806d1a84a00fd6564fdc9f52fa428166afd8a3f52a671e",
+      "current_map_sha256": "324a032edc9c1ff3c6ea6c18daea55b9ced8853587375d507297b0ffb89adf3d",
+      "view_engine_comparison": "historical-source-vs-current-source",
+      "historical_source_view_sha256": "d08df9df0eaee27789d54e6591e88e30627e66b66a748e7819fdb6768f893a84",
+      "current_source_view_sha256": "d08df9df0eaee27789d54e6591e88e30627e66b66a748e7819fdb6768f893a84",
+      "historical_view_inputs_sha256": "20fc1df29865269a5bd71f9f505c49100ddcad473b4dca082933eb656df20dc0",
+      "current_view_inputs_sha256": "20fc1df29865269a5bd71f9f505c49100ddcad473b4dca082933eb656df20dc0"
+    },
+    "quantum": {
+      "schema": "h0mework/first-release-cache@1",
+      "kind": "quantum",
+      "status": "reused",
+      "source_commit": "4bdfd36040e7ee68f58e2b1e60651b66edb07ae8",
+      "source_run": "https://github.com/Sapientropic/H0mework/actions/runs/41500430850",
+      "reason": "validated against current source, configuration and inputs",
+      "report_sha256": "5af24035aa832c877ed10a853b2652067c4297c5e4e9ab72f26ced15b49a9297",
+      "checks": 18,
+      "config_sha256": "b68eacdc9a578c07212505a8e468353056f127616f2915241037e6a6c0097bbd",
+      "map_sha256": "089f94ab28e84a2b04806d1a84a00fd6564fdc9f52fa428166afd8a3f52a671e",
+      "current_map_sha256": "324a032edc9c1ff3c6ea6c18daea55b9ced8853587375d507297b0ffb89adf3d",
+      "view_engine_comparison": "historical-source-vs-current-source",
+      "historical_source_view_sha256": "d08df9df0eaee27789d54e6591e88e30627e66b66a748e7819fdb6768f893a84",
+      "current_source_view_sha256": "d08df9df0eaee27789d54e6591e88e30627e66b66a748e7819fdb6768f893a84",
+      "historical_view_inputs_sha256": "053ecfb55cee5ec92ab9ba9d45f921f38ddfbd8bf92a2f4f5d41d0244e42ddf7",
+      "current_view_inputs_sha256": "053ecfb55cee5ec92ab9ba9d45f921f38ddfbd8bf92a2f4f5d41d0244e42ddf7"
+    }
+  }
+}
