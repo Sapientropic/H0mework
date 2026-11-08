@@ -1,5 +1,7 @@
 # 《舞蹈生成舞者》的社会线证明补集
 
+定额、转轨、生产续行、冲突、供料隐私与第 91 号位的后续公开入口见[追加证明复现](society-book-supplement-reproduction.md)。
+
 [九项来源映射](../checks/society-book-map.json)登记原提交、原路径、完整声明名、公开行号、源码和公开文件摘要，以及核验过的完整类型。每项的 `selection_roots` 列出整个模块族与直接消费者。递归导入由[导出映射](../tools/export-map.json)给出，固定根见[选集](../checks/society-book-selection.json)。
 
 | 范围 | Homework 固定提交 | 公开入口 |

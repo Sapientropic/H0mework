@@ -1,0 +1,79 @@
+{
+  "economic_requests": 0,
+  "fixture": {
+    "checks": [
+      "missing-comparison-delivery-retains-original-intent",
+      "three-real-signatures-reject-and-retain-complete-responsibility",
+      "duplicate-disposition-is-idempotent",
+      "missing-quorum",
+      "duplicate-receipt",
+      "wrong-signer",
+      "forged-comparison",
+      "one-valid-signer-cannot-fork-expected-output",
+      "forged-actor-input-produces-no-comparison",
+      "deleted-generated-next-cannot-be-consumed",
+      "deleted-source-permission-cannot-be-consumed",
+      "changed-program-does-not-inherit-old-comparisons",
+      "source-timeout-is-not-deviation-or-decision",
+      "source-valid-blocked-is-not-a-ledger-decision",
+      "original-request-continues-once-with-old-debt-and-own-next",
+      "old-prefix-comparison-cannot-reject-the-next-round",
+      "fresh-owner-permission-binds-one-generated-poststate-request"
+    ],
+    "fixture_events": 1,
+    "native_fixture_calls": 19,
+    "original_request_id": "original-request",
+    "retained_invalid_intents": 4
+  },
+  "live_deployment": false,
+  "original_retained": {
+    "comparison_request_bytes": 20965,
+    "events": 90,
+    "fresh_owner_request": {
+      "command": {
+        "enabled": true,
+        "kind": "donate",
+        "quantity": 6,
+        "round": 135,
+        "signer": 3
+      },
+      "controls": [
+        "missing-new-permission",
+        "wrong-owner",
+        "old-permission-replay",
+        "caller-supplied-quantity"
+      ],
+      "current": {
+        "clock": "135",
+        "cut": 133,
+        "holder": 2,
+        "offered": null,
+        "version": 38
+      },
+      "index": 12,
+      "original_admission": "e8f20b64b937a4ebe9601a2d88c0a633e7a6820b444c522dab3b303c1f3f3a6b",
+      "prefix": {
+        "head": "99cf8b1406055c8f68faefd2ce2a8dfc5d09a1105f9056aa86fa6cc7dc78754b",
+        "seq": 90
+      }
+    },
+    "head": "99cf8b1406055c8f68faefd2ce2a8dfc5d09a1105f9056aa86fa6cc7dc78754b",
+    "journal_writes": 0,
+    "native_computations": 0,
+    "prefix": 81,
+    "remaining_frame_bytes": 44567,
+    "retained_event": 82,
+    "source_input": "663af52cd191611e947bbc02154ba23721835dc37d201d190aa4e7d007b36653"
+  },
+  "rpc": 0,
+  "schema": "supply-disposition-seam-check/v1",
+  "source_inputs": {
+    "Lean/scripts/verification/public-supply-disposition-check.py": "b7130f01fb727c7bb4e9eb1094d078d14f00ae234580d35a0ff9d3b2957e652b",
+    "Verification/public-audit/network/donor_arrival_live.py": "a470fa97cdc262b2c5e20a922474eebbf48fb422b33386c653a45b2d592d9fa0",
+    "Verification/public-audit/network/donor_owner_continuation.py": "315e4d12255c018b730bb7d4a15e230391f48f0307cd01fbae8f6e85893f3259",
+    "Verification/public-audit/network/ha_anchor.py": "71b49b0080878a9b5b52dd4e63773a9aef5173295dcab8f51a9367995eac2136",
+    "Verification/public-audit/network/source_semantics.py": "1c50af32cce1e038a0ca7566050835ba2b6a6f96ab70c5f805178b14976cabdf",
+    "Verification/public-audit/network/supply_disposition.py": "fe061cf3812bdd38c71427e05220a1c3b203c0ad6ae2f8228490a7b0c7faa5bd"
+  },
+  "verdict": "accepted-local-seam"
+}

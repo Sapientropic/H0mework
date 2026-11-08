@@ -1,0 +1,88 @@
+{
+  "schema": "actual91-source-supply-disposition/v1",
+  "checkpoint": "48baefa97d546d2aeb1bea3cadb2abcfc14ac439",
+  "protocol": "ddfc9c806cde8242631aaf0f5e41ca24c72ff8d82e3e83193c175e5163a811d5",
+  "runtime_files": 50,
+  "installed": true,
+  "seq": 91,
+  "head": "be8a6ef72b6cb0c98cf17c65526365b271d1cd65b3493baf933166c13be1e4ea",
+  "request_id": "ba2553f6d8904e5b47a983106d97c98a",
+  "owner_permission": "d6bd74ed449b72f43893954e8e686cbbbd86efcc52e06948d38e41aeaf64c6ce",
+  "original_members": [
+    "a",
+    "b",
+    "c",
+    "d"
+  ],
+  "invalid_source_comparisons": 3,
+  "valid_source_comparisons": 4,
+  "retained_dispositions": 4,
+  "status": "SUPPLIED",
+  "debit": [
+    [
+      "audit:3",
+      "feed",
+      "6"
+    ]
+  ],
+  "credit": [
+    [
+      "audit:0",
+      "feed",
+      "6"
+    ]
+  ],
+  "clock": "137",
+  "account": {
+    "outstanding": "0",
+    "slots": 24
+  },
+  "old_source_spent": true,
+  "original_claims_retained": true,
+  "original_id_lookups": 2,
+  "deviation": {
+    "original": "90158f0f57a50530962c0fefca9352c0ef6c60845adad10236ef12371f2b8039",
+    "deviating": "5c614fee36d9ff35ee17668168d3f4eb4a5b1c5c367054db27f7ba2358df84a2",
+    "affected_signer": "c2e12839103e04c3cf9a42e04214f4431dfd77b3685c3bc1bdda497c1cb718bb",
+    "proposal_fields": [
+      "native",
+      "next",
+      "stock",
+      1,
+      2
+    ]
+  },
+  "controls": {
+    "interface": 28,
+    "source_view": 13,
+    "actual": [
+      "missing-comparison",
+      "duplicate-receipt",
+      "wrong-signer",
+      "forged-native-result"
+    ]
+  },
+  "receipts": {
+    "installed": "918054b9af53826391ddd6c0ab5001731b97acb823207d43cd8ecd21926b16e6",
+    "actual": "d84260e31d99ef006a581040a561057f895e5b580db0bc5ad3915ee2a244b037",
+    "episode": "c83028500d13e1a4b1fedeabc35f818c3edf5045e349db8b6e602c22b79b2572",
+    "disposition": "7d8432692d5b5b4507697b8287854d6d24a0b1394bfdd389481361964259cb7b",
+    "accepted": "673cf58189150cc1d5d564e5c2ca25221aadc03c95d9e1a6265274f7ceddcddf",
+    "lookups": {
+      "lookup-771a71e72db0-accepted.json": "673cf58189150cc1d5d564e5c2ca25221aadc03c95d9e1a6265274f7ceddcddf",
+      "lookup-de4233c754bd-accepted.json": "673cf58189150cc1d5d564e5c2ca25221aadc03c95d9e1a6265274f7ceddcddf"
+    },
+    "interface_controls": "e281175cc842b4904e86467108d226c5977c72a510feaad5fed29920517b06b7",
+    "view_controls": "f0292602510cc6c826397184e05b4a495fb02c0037c9916b031304ebee7921dd"
+  },
+  "new_economic_requests": 1,
+  "prior_90_replayed": 0,
+  "native_preparations": 0,
+  "checker_native_computations": 0,
+  "acceptance": "actual source difference; three comparisons; four retained dispositions; same original request supplied once",
+  "proof_scope": "original four-member source protocol; open-membership general termination remains",
+  "consumer": {
+    "path": "Lean/scripts/verification/public-supply-live-check.py",
+    "sha256": "dfd509373e122ddf485718147b230e373e94cc2eca649e617869396dc2e07186"
+  }
+}

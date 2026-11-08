@@ -188,6 +188,24 @@ def transform(text: str, tokens, mapping: dict[str, str]) -> bytes:
     return text.encode("utf-8")
 
 
+def prepend_build_imports(text: str, modules, *, reverse: bool = False) -> str:
+    """Add or remove explicitly registered imports for an ordinary Lean header."""
+    if modules is None:
+        return text
+    if (not isinstance(modules, list)
+            or any(not isinstance(name, str) or not MODULE.fullmatch(name) for name in modules)
+            or len(set(modules)) != len(modules)):
+        raise ViewError("Build import additions need distinct exact module names")
+    prefix = "".join(f"import {name}\n" for name in modules)
+    if reverse:
+        if not text.startswith(prefix):
+            raise ViewError("Build import additions differ from the registered prefix")
+        text = text[len(prefix):]
+    if not text.startswith("import ") or set(modules) & {name for _, _, name in import_tokens(text)}:
+        raise ViewError("Build import additions require an ordinary header and new imports")
+    return text if reverse else prefix + text
+
+
 def private_open_module_tokens(text: str) -> list[tuple[int, int, str]]:
     """Locate only the module token in actual `open private ... from` commands."""
     masked = mask_comments_and_strings(text)
@@ -195,15 +213,29 @@ def private_open_module_tokens(text: str) -> list[tuple[int, int, str]]:
     tokens = []
     for command in re.finditer(r"(?m)^[ \t]*open\s+private\b", masked):
         cursor, members = command.end(), 0
+        declaration_selector = False
+        command_indent = len(command.group()) - len(command.group().lstrip(" \t"))
         while True:
             space = re.match(r"\s+", masked[cursor:])
             if space is None:
+                if declaration_selector:
+                    break
                 raise ViewError("Unsupported private-open module syntax")
             cursor += space.end()
             token = name.match(masked, cursor)
             if token is None:
+                if declaration_selector:
+                    break
                 raise ViewError("Private-open command needs named members and an exact module")
+            if (declaration_selector and token.group() != "from" and "\n" in space.group()
+                    and cursor - masked.rfind("\n", 0, cursor) - 1 <= command_indent):
+                break
             cursor = token.end()
+            if token.group() == "in":
+                # The declaration selector keeps the original declaration names.
+                # Only an explicit module selector needs relocation.
+                declaration_selector = True
+                continue
             if token.group() == "from":
                 if not members:
                     raise ViewError("Private-open command has no named members")
@@ -218,6 +250,24 @@ def private_open_module_tokens(text: str) -> list[tuple[int, int, str]]:
                 break
             members += 1
     return tokens
+
+
+def comment_retired_private_opens(text: str, commands, *, reverse: bool = False) -> str:
+    """Keep retired private-open commands recoverable after their member became public."""
+    if commands is None:
+        return text
+    if not isinstance(commands, list):
+        raise ViewError("Retired private opens need an explicit command list")
+    for command in commands:
+        if (not isinstance(command, str) or "\n" in command
+                or not re.fullmatch(r"open private [\w'.]+ from [\w'.]+", command)):
+            raise ViewError("Retired private opens need one exact member and module per command")
+        commented = "/- " + command + " -/"
+        old, new = (commented, command) if reverse else (command, commented)
+        text, count = re.subn(r"(?m)^" + re.escape(old) + r"$", lambda _: new, text)
+        if count != 1:
+            raise ViewError("Retired private-open command must occur exactly once")
+    return text
 
 
 def rewrite_private_open_modules(text: str, rewrites, *, reverse: bool = False) -> str:
@@ -1086,7 +1136,9 @@ def module_views(row: dict, inverse: dict) -> tuple[bytes, bytes]:
         original = name_anonymous_consumers(original, anonymous, reverse=True)
     original = rewrite_proof_bodies(original, row.get("proof_body_rewrites"), reverse=True)
     original = rewrite_noncomputable_markers(original, row.get("noncomputable_marker_rewrites"), reverse=True)
-    original = rebind_signal_memory_defaults(original, row.get("signal_memory_default_rebindings"), reverse=True).encode("utf-8")
+    original = rebind_signal_memory_defaults(original, row.get("signal_memory_default_rebindings"), reverse=True)
+    original = comment_retired_private_opens(original, row.get("retired_private_opens"), reverse=True)
+    original = prepend_build_imports(original, row.get("build_imports"), reverse=True).encode("utf-8")
     if sha(original) != row["source_sha256"]:
         raise ViewError(f"Reconstructed source digest differs: {row['source_path']}")
     if sha(view) != row.get("view_sha256", row["source_sha256"]):

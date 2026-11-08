@@ -553,6 +553,21 @@ class ExportTests(unittest.TestCase):
         with patch.object(sv, "ROOT", self.directory / "stage/stage"):
             self.assertEqual(sv.module_views(row, {})[1], raw)
 
+    def test_declared_build_import_is_in_the_closure_and_exactly_removed(self):
+        self.write(self.source, 'Lean/A.lean', b'import Mathlib\ndef value := 1\n')
+        self.write(self.source, 'Lean/B.lean', b'import Mathlib\ndef other := 2\n')
+        raw = b'import B\ndef use := value\n'
+        self.write(self.source, 'Lean/Root.lean', raw)
+        revision = self.commit(self.source)
+        plan = self.run_stage([{'source_commit': revision, 'roots': ['Lean/Root.lean'],
+                                'build_imports': {'Lean/Root.lean': ['A']}}])
+        row = next(row for row in plan['additions'] if row['source_path'] == 'Lean/Root.lean')
+        self.assertIn(w.source_key(revision, 'Lean/A.lean'), plan['assignments'])
+        with patch.object(sv, 'ROOT', self.directory / 'stage/stage'):
+            self.assertEqual(sv.module_views(row, {}), (b'import A\n' + raw, raw))
+        with self.assertRaisesRegex(sv.ViewError, 'new imports'):
+            sv.prepend_build_imports(raw.decode(), ['B'])
+
     def test_private_open_owner_uses_exact_actual_import_closure_and_restores_full_source(self):
         raw = (b'import A\nimport Mathlib\n'
                b'-- open private fake from Missing\n'

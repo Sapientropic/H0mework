@@ -105,6 +105,14 @@ def load_selection(path: Path) -> dict:
                 source_key(commit, source)
                 if field == "roots" and not source.endswith(".lean"):
                     raise ExportError("A production root must be a Lean source: " + source)
+        for field in ("build_imports", "retired_private_opens"):
+            rules = selection.get(field, {})
+            if not isinstance(rules, dict):
+                raise ExportError(field + " must map exact source paths to rule lists")
+            for source, values in rules.items():
+                source_key(commit, source)
+                if not source.endswith(".lean") or not isinstance(values, list) or not values:
+                    raise ExportError(field + " must name Lean paths and nonempty rule lists")
         if not selection.get("roots") and not selection.get("artifacts"):
             raise ExportError("An empty selection has no acceptance scope")
     return value
@@ -329,6 +337,14 @@ class Planner:
         self.resources = {}
         self.resource_keys = set()
         self.resource_includes = set()
+        self.source_adaptations = collections.defaultdict(dict)
+        for selected in selection["selections"]:
+            for field in ("build_imports", "retired_private_opens"):
+                for path, values in selected.get(field, {}).items():
+                    key = source_key(selected["source_commit"], path)
+                    if field in self.source_adaptations[key]:
+                        raise ExportError("Repeated source adaptation: " + key)
+                    self.source_adaptations[key][field] = values
         self.artifact_by_source = collections.defaultdict(list)
         for artifact in self.export["artifacts"]:
             self.artifact_by_source[artifact["source"]].append(artifact)
@@ -574,7 +590,8 @@ class Planner:
             commit, path = key.split(":", 1)
             raw, origin, original_digest = self.source(commit, path)
             self.raw[key] = raw
-            tokens = sv.import_tokens(raw.decode("utf-8"))
+            text = sv.prepend_build_imports(raw.decode("utf-8"), self.source_adaptations.get(key, {}).get("build_imports"))
+            tokens = sv.import_tokens(text)
             edges = []
             for _, _, name in tokens:
                 child = None if name.split(".")[0] in sv.EXTERNAL else self.resolve_import(commit, path, name)
@@ -594,6 +611,8 @@ class Planner:
             if origin:
                 self.sources[key]["source_origin"] = origin
             self.edges[key] = edges
+        if set(self.source_adaptations) - self.sources.keys():
+            raise ExportError("A source adaptation is outside the selected closure")
         children = {key: {child for _, child in edges if child} for key, edges in self.edges.items()}
         parents = collections.defaultdict(list)
         for key, dependencies in children.items():
@@ -819,6 +838,9 @@ class Planner:
         work = sv.rebind_signal_memory_defaults(raw.decode(), row.get("signal_memory_default_rebindings"))
         work = sv.rewrite_proof_bodies(work, row.get("proof_body_rewrites"))
         work = sv.rewrite_noncomputable_markers(work, row.get("noncomputable_marker_rewrites"))
+        row.update(self.source_adaptations.get(key, {}))
+        work = sv.prepend_build_imports(work, row.get("build_imports"))
+        work = sv.comment_retired_private_opens(work, row.get("retired_private_opens"))
         resource_rules, digest_rules = [], []
         for resource in source["resources"]:
             artifact = artifacts[resource["source_key"]]
@@ -939,6 +961,10 @@ class Planner:
                     row.get("noncomputable_marker_rewrites")),
                 row.get("anonymous_consumer_names")),
             row.get("suggestion_name_exclusions")).encode()
+        if row.get("build_imports"):
+            view = sv.prepend_build_imports(view.decode(), row["build_imports"]).encode()
+        if row.get("retired_private_opens"):
+            view = sv.comment_retired_private_opens(view.decode(), row["retired_private_opens"]).encode()
         encoded = text.encode()
         for rule in digest_rules:
             old, new = json.dumps(rule["source"]).encode(), json.dumps(rule["target"]).encode()

@@ -85,7 +85,7 @@ def selected_views(root, *, exact=False, private_originals=None, selection_path=
                 public, original = source_view.module_views(row, inverse)
                 state["modules"][path] = row
                 state["outputs"][path] = original if exact else public
-                for _, _, name in source_view.import_tokens(original.decode()):
+                for _, _, name in source_view.import_tokens(public.decode()):
                     if name.split(".")[0] in source_view.EXTERNAL:
                         continue
                     suffix = name.replace(".", "/") + ".lean"

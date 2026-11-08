@@ -1506,6 +1506,24 @@ class PrivateOpenModuleTests(unittest.TestCase):
         self.assertIn('from Original.ProviderExtra', public)
         self.assertEqual(s.rewrite_private_open_modules(original, None), original)
 
+    def test_declaration_selectors_keep_their_names_and_do_not_swallow_later_commands(self):
+        original = ('open private Consume.State.mk in Consume.arrival\n'
+                    'def result := Consume.arrival\n'
+                    'open private allocateLive in Allocation.run\n'
+                    '  from Original.Provider\n')
+        public = s.rewrite_private_open_modules(original, self.rules())
+        self.assertEqual(public, original.replace('from Original.Provider', 'from H0mework.Provider'))
+        self.assertEqual(s.rewrite_private_open_modules(public, self.rules(), reverse=True), original)
+
+    def test_retired_private_open_recovers_the_original_command(self):
+        command = "open private drain_preserves_control from Original.Provider"
+        original = "import Original.Provider\n" + command + "\ndef use := drain_preserves_control\n"
+        view = s.comment_retired_private_opens(original, [command])
+        self.assertEqual(s.private_open_module_tokens(view), [])
+        self.assertEqual(s.comment_retired_private_opens(view, [command], reverse=True), original)
+        with self.assertRaisesRegex(s.ViewError, "exactly once"):
+            s.comment_retired_private_opens(original + command + "\n", [command])
+
     def test_absent_or_miscounted_commands_cannot_be_replaced_by_comments_or_prefixes(self):
         original = self.source()
         for changed in (original.replace('from\n  Original.Provider\n', 'from\n  Original.ProviderExtra\n'),
