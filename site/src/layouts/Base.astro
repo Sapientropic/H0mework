@@ -2,14 +2,41 @@
 import "katex/dist/katex.min.css";
 import "../styles/site.css";
 import { T, checkHref, papersHref } from "../lib/i18n";
+import type { CitationMeta } from "../lib/papers";
 import type { Lang } from "../lib/registry";
 
-interface Props { lang: Lang; title: string; alternate: string; description?: string; ogImage?: string; indexable?: boolean }
-const { lang, title, alternate, description = T[lang].lede, ogImage = "/og/default.png", indexable = true } = Astro.props;
+interface Props { lang: Lang; title: string; alternate: string; description?: string; ogImage?: string; indexable?: boolean; citation?: CitationMeta }
+const { lang, title, alternate, description = T[lang].lede, ogImage = "/og/default.png", indexable = true, citation } = Astro.props;
 const t = T[lang];
 const abs = (path: string) => new URL(path, Astro.site ?? "https://h0mework.wiki").href;
 const selfPath = Astro.url.pathname;
 const [zhPath, enPath] = lang === "zh" ? [selfPath, alternate] : [alternate, selfPath];
+const citationDate = citation?.date.replaceAll("-", "/");
+const jsonLd = citation && {
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  headline: citation.title,
+  name: citation.title,
+  author: {
+    "@type": "Person",
+    name: citation.authorName,
+    alternateName: citation.alternateAuthorName,
+    ...(citation.orcid ? { url: `https://orcid.org/${citation.orcid}`, sameAs: `https://orcid.org/${citation.orcid}` } : {}),
+  },
+  datePublished: citation.date,
+  identifier: citation.doiLink,
+  sameAs: citation.doiLink,
+  url: abs(selfPath),
+  inLanguage: lang === "zh" ? "zh-CN" : "en",
+  keywords: citation.keywords,
+  abstract: citation.abstract,
+  license: "https://creativecommons.org/licenses/by/4.0/",
+  encoding: {
+    "@type": "MediaObject",
+    contentUrl: abs(citation.pdfPath),
+    encodingFormat: "application/pdf",
+  },
+};
 ---
 <!doctype html>
 <html lang={lang === "zh" ? "zh-CN" : "en"}>
@@ -28,7 +55,7 @@ const [zhPath, enPath] = lang === "zh" ? [selfPath, alternate] : [alternate, sel
     )}
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={citation ? "article" : "website"} />
     <meta property="og:url" content={abs(selfPath)} />
     <meta property="og:site_name" content={t.site} />
     <meta property="og:locale" content={lang === "zh" ? "zh_CN" : "en_US"} />
@@ -36,6 +63,21 @@ const [zhPath, enPath] = lang === "zh" ? [selfPath, alternate] : [alternate, sel
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
+    {citation && (
+      <>
+        <meta name="citation_title" content={citation.title} />
+        <meta name="citation_author" content={citation.author} />
+        {citation.orcid && <meta name="citation_author_orcid" content={citation.orcid} />}
+        <meta name="citation_publication_date" content={citationDate} />
+        <meta name="citation_online_date" content={citationDate} />
+        <meta name="citation_pdf_url" content={abs(citation.pdfPath)} />
+        <meta name="citation_doi" content={citation.doi} />
+        <meta name="citation_language" content={lang === "zh" ? "zh" : "en"} />
+        {citation.keywords.length > 0 && <meta name="citation_keywords" content={citation.keywords.join("; ")} />}
+        <meta name="citation_abstract" content={citation.abstract} />
+        <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+      </>
+    )}
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   </head>
   <body>

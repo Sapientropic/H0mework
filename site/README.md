@@ -34,7 +34,7 @@ bun run build      # 先跑图的模型自检与构建，再出 dist/
 
 ## 站点元信息
 
-`astro.config.mjs` 设了 `site: https://h0mework.wiki` 并启用 `@astrojs/sitemap`（双语 hreflang，404 不入册）；`public/robots.txt` 指向 sitemap。每页带 canonical、双向 hreflang + x-default、OG/Twitter 卡片。
+`astro.config.mjs` 设了 `site: https://h0mework.wiki` 并启用 `@astrojs/sitemap`（双语 hreflang，404 不入册）；`public/robots.txt` 指向 sitemap。每页带 canonical、双向 hreflang + x-default、OG/Twitter 卡片；论文页另从最新稿自动生成 Highwire Press `citation_*` 学术元标签、`ScholarlyArticle` JSON-LD 结构化数据，并在 `/papers/<slug>.pdf` 与 `/en/papers/<slug>.pdf` 输出同域 PDF 直链供 Google Scholar 等学术检索收录。
 
 `public/og/` 是分享预览图：有配图的论文用配图的机器图，其余页面用 `default.png`（打孔卡）。配图更新后重新生成：`bun scripts/og.mjs` 把 1200×630 的静态页写进 `.og/`，逐页截图覆盖 `public/og/<name>.png`（`.og/` 不入库）。
 

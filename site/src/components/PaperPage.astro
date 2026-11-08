@@ -46,7 +46,7 @@ claims.forEach((claim, i) => {
 const translated = lang === "zh" ? labelOf(claims.filter((claim) => claim.translated).flatMap((claim) => claim.ids)) : "";
 const chapterLabel = (key: string) => (/\d/.test(key) ? fill(t.chapter, key) : fill(t.appendix, key));
 ---
-<Base lang={lang} title={paper.title} alternate={paperHref(lang === "zh" ? "en" : "zh", slug)} description={paper.summary} ogImage={paper.figure ? `/og/${paper.figure.name}.png` : undefined}>
+<Base lang={lang} title={paper.title} alternate={paperHref(lang === "zh" ? "en" : "zh", slug)} description={paper.summary} ogImage={paper.figure ? `/og/${paper.figure.name}.png` : undefined} citation={paper.citation}>
   <div class="wrap">
     <header class="hero">
       <p class="eyebrow"><a href={place.href}>{place.label}</a>{` · ${latest.date}`}</p>
@@ -54,7 +54,7 @@ const chapterLabel = (key: string) => (/\d/.test(key) ? fill(t.chapter, key) : f
       {paper.sub && <p class="title-sub prose">{paper.sub}</p>}
       {paper.other && <p class="other prose">{paper.other}</p>}
       <div class="actions">
-        <a class="button primary" href={latest.pdf}>{t.pdf}</a>
+        <a class="button primary" href={paper.citation.pdfPath}>{t.pdf}</a>
         {latest.supplement && <a class="button" href={latest.supplement}>{t.supplement}</a>}
         {latest.arxiv && <a class="button" href={latest.arxiv}>{t.arxiv}</a>}
         <a class="doi" href={latest.doiLink}>DOI {latest.doi}</a>

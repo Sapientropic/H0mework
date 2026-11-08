@@ -10,7 +10,7 @@ import remarkRehype from "remark-rehype";
 import rehypeKatex from "rehype-katex";
 import rehypeStringify from "rehype-stringify";
 import katex from "katex";
-import { PAPERS, RELEASES, THEMES, entryOf, manuscriptOf, once, repoLink, type Lang, type ThemeId } from "./registry";
+import { PAPERS, RELEASES, ROOT, THEMES, entryOf, manuscriptOf, once, repoLink, type Lang, type ThemeId } from "./registry";
 import { claimsOf } from "./claims";
 
 export { PAPERS, THEMES, type Lang };
@@ -63,6 +63,40 @@ function splitTitle(title: string) {
   return at < 0 ? { main: title, sub: "" } : { main: title.slice(0, at), sub: title.slice(at).replace(/^(：|: )/, "") };
 }
 const titleOf = (manuscript: string) => manuscript.split("\n", 1)[0].replace(/^#\s+/, "").trim();
+
+function authorOf(manuscript: string, lang: Lang) {
+  const raw = manuscript.match(/^\*\*(?:作者[：:]|Author:\s*)(.+?)\*\*\\?\s*$/m)?.[1]?.trim() ?? "";
+  const clean = raw.replace(/\s*[（(].*?[）)]$/, "").trim();
+  if (lang === "zh") return clean;
+  const parts = clean.split(/\s+/);
+  return parts.length === 2 ? `${parts[1]}, ${parts[0]}` : clean;
+}
+const authorDisplayOf = (manuscript: string) =>
+  (manuscript.match(/^\*\*(?:作者[：:]|Author:\s*)(.+?)\*\*\\?\s*$/m)?.[1] ?? "").replace(/\s*[（(].*?[）)]$/, "").trim();
+const orcidOf = (manuscript: string) => manuscript.match(/\b\d{4}-\d{4}-\d{4}-\d{3}[\dX]\b/)?.[0] ?? "";
+function keywordsOf(manuscript: string) {
+  const line = manuscript.match(/^\*\*(?:关键词|Keywords)[：:]?\*\*[：:]?\s*(.+?)[。.]?\s*$/m)?.[1] ?? "";
+  return line.split(/[；;]\s*/).map((kw) => plain(kw)).filter(Boolean);
+}
+
+export type CitationMeta = {
+  title: string;
+  author: string;
+  authorName: string;
+  alternateAuthorName: string;
+  orcid: string;
+  date: string;
+  doi: string;
+  doiLink: string;
+  pdfPath: string;
+  keywords: string[];
+  abstract: string;
+};
+
+export const paperPdfOf = (slug: string, lang: Lang) => {
+  const latest = entryOf(slug).editions.at(-1)!.release;
+  return readFileSync(resolve(ROOT, RELEASES[latest].files(slug, lang).pdf));
+};
 
 function abstractOf(manuscript: string, lang: Lang) {
   const lines = manuscript.split("\n");
@@ -177,7 +211,23 @@ export function paperOf(slug: string, lang: Lang) {
   if ((slug === "economic-constitution" || slug === "capital-formation") && !parts.sub)
     parts.sub = manuscript.split(/^##\s+(?:摘要|Abstract)\s*$/m)[0].match(/^##\s+(.+)$/m)?.[1] ?? "";
   const abstract = abstractOf(manuscript, lang);
-  const other = titleOf(manuscriptOf(latest, slug, lang === "zh" ? "en" : "zh"));
+  const otherManuscript = manuscriptOf(latest, slug, lang === "zh" ? "en" : "zh");
+  const other = titleOf(otherManuscript);
+  const fullTitle = parts.sub && (slug === "economic-constitution" || slug === "capital-formation") ? `${title}${lang === "zh" ? "：" : ": "}${parts.sub}` : title;
+  const current = editions.at(-1)!;
+  const citation: CitationMeta = {
+    title: fullTitle,
+    author: authorOf(manuscript, lang),
+    authorName: authorDisplayOf(manuscript),
+    alternateAuthorName: authorDisplayOf(otherManuscript),
+    orcid: orcidOf(manuscript),
+    date: current.date,
+    doi: current.doi,
+    doiLink: current.doiLink,
+    pdfPath: `${lang === "en" ? "/en" : ""}/papers/${slug}.pdf`,
+    keywords: keywordsOf(manuscript),
+    abstract: abstract.map(plain).join(lang === "zh" ? "" : " "),
+  };
   return {
     ...entry,
     title: parts.sub && (slug === "economic-constitution" || slug === "capital-formation") ? `${title}: ${parts.sub}` : title,
@@ -185,7 +235,8 @@ export function paperOf(slug: string, lang: Lang) {
     // The other language's title, less a main title both languages share.
     other: splitTitle(other).main === splitTitle(title).main ? splitTitle(other).sub : other,
     editions,
-    current: editions.at(-1)!,
+    current,
+    citation,
     claimsNote: RELEASES[latest].claimsNote?.[lang],
     abstract: abstractLayout(abstract, lang),
     // Plain first sentences of the abstract for the page description.
