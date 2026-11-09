@@ -101,3 +101,9 @@ R9 的 `ActualEMSourceLockedCarrier` 消费同一 canonical LockedFieldReturn ow
 `signal_memory_default_rebindings` 处理 `Distributed.Regression.stale` 的结构更新：把 `signals` 从 1 改为 2 时，继承的四个记忆函数仍带原有限域。公开源码显式写出实际执行器原本采用的四个默认函数，其他字段、全部定理与预算保持。修复体与固定源 `7e2cc053821fedbb638122b3b2f8c82134c61ac0` 及 `59df7e39d81e8698f3cf8507e64b93829bb1cac3` 相同。
 
 规则验证完整原声明、默认基对象和四个精确函数，只允许这项基数更新；默认原路径视图保留修复，`--exact` 恢复原源 SHA。该编译适配由本轮独立 Lean 检查承担，不扩大历史资本认证的范围。
+
+## 生产调度的增量内核重放
+
+`ProductiveDispatchTrace` 用 `CachedCommandRun` 重放原有的 21 项输入。它逐步消费 `CachedWorkDispatch.choose_eq`，证明缓存检查器与原 `checks` 一致，再用 `decide +kernel` 核对同一组字面输入。
+
+`ProductiveDispatchChecks` 从同一末态缓存读取轨迹行、签票账本、接收状态和游标。已有投影等式把内核检查的结果送回原账本、法定人数和状态陈述。两模块的原证明可精确恢复。构建耗时、信任验收和 Linux 分片影响见[构建优化回执](../evidence/society-book-supplement/acceptance/dispatch-build-optimization.json)。

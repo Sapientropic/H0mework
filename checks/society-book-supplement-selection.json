@@ -409,7 +409,12 @@
         "Lean/scripts/verification/public-donor-arrival-source.lean",
         "Verification/public-audit/network/donor_arrival_admission.py",
         "Verification/public-audit/regeneration/productive/arrival-donor-privacy.json"
-      ]
+      ],
+      "build_imports": {
+        "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Protocol/SymbolicAuthentication/ProductiveDispatchTrace.lean": [
+          "SaturationMonoid.ProcessGame.Society.PublicFunction.Protocol.SymbolicAuthentication.CachedWorkDispatch"
+        ]
+      }
     },
     {
       "family": "go-g8",
@@ -641,7 +646,12 @@
           "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/EnergyRenewal/Regeneration/Supply/Material/Productive/ExternalArrival/Donor/Wire.lean"
         ]
       },
-      "standalone_readers": {}
+      "standalone_readers": {},
+      "build_imports": {
+        "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Protocol/SymbolicAuthentication/ProductiveDispatchTrace.lean": [
+          "SaturationMonoid.ProcessGame.Society.PublicFunction.Protocol.SymbolicAuthentication.CachedWorkDispatch"
+        ]
+      }
     }
   ]
 }

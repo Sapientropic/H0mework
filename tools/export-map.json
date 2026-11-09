@@ -1269588,10 +1269588,35 @@
 "variant": "R7e013edd"
 },
 {
+"build_adaptations": [
+{
+"independent_acceptance": "evidence/society-book-supplement/acceptance/dispatch-build-optimization.json",
+"kind": "cached-dispatch-kernel-replay",
+"scope": "actual_production_and_wages_generate_the_original_paid_ballots, the_same_actual_production_funds_both_identity_quorums, actual_joint_progress_generates_new_material_and_keeps_the_original_debt_and_revocation",
+"source_sha256": "89f2817e8d167223ee3d4988f6ae581b638e5c902c3dfb37c53ec7f2aa4f7dbd"
+}
+],
 "import_map": {
 "H0mework.Versions.R7e013edd.ReleaseMaterials.SaturationMonoid.ProcessGame.Society.PublicFunction.Protocol.SymbolicAuthentication.ProductiveDispatchTrace": "SaturationMonoid.ProcessGame.Society.PublicFunction.Protocol.SymbolicAuthentication.ProductiveDispatchTrace"
 },
 "path": "Lean/H0mework/Versions/R7e013edd/ReleaseMaterials/SaturationMonoid/ProcessGame/Society/PublicFunction/Protocol/SymbolicAuthentication/ProductiveDispatchChecks.lean",
+"proof_body_rewrites": [
+{
+"declaration": "actual_production_and_wages_generate_the_original_paid_ballots",
+"public": "theorem actual_production_and_wages_generate_the_original_paid_ballots :\n    (StageTrace.records start actual.stages).flatMap (fun row => row.submitted) = work ∧\n    (StageBudget.ledger vocabulary start actual.stages).map (fun ballot => (ballot.actor,ballot.cut,ballot.fee)) =\n      [(true,42,1),(false,48,1),(false,52,2)] := by\n  let cache := CachedCommandRun.run model start emitted\n  have rows : StageTrace.records start actual.stages = cache.rows :=\n    (congrArg (fun state : State => StageTrace.records start state.stages)\n      actual_is_the_original_execution_of_its_emitted_inputs).trans cache.rows_eq.symm\n  have ledger : StageBudget.ledger vocabulary start actual.stages = CachedWorkDispatch.ledger vocabulary cache.rows :=\n    (CachedWorkDispatch.ledger_eq vocabulary start actual.stages).symm.trans\n      (congrArg (CachedWorkDispatch.ledger vocabulary) rows)\n  have checked : cache.rows.flatMap (fun row => row.submitted) = work ∧\n      (CachedWorkDispatch.ledger vocabulary cache.rows).map (fun ballot => (ballot.actor,ballot.cut,ballot.fee)) =\n        [(true,42,1),(false,48,1),(false,52,2)] := by\n    dsimp only [cache]\n    decide +kernel\n  exact ⟨(congrArg (fun history => history.flatMap (fun row => row.submitted)) rows).trans checked.1,\n    (congrArg (fun ballots => ballots.map (fun ballot => (ballot.actor,ballot.cut,ballot.fee))) ledger).trans checked.2⟩\n",
+"source": "theorem actual_production_and_wages_generate_the_original_paid_ballots :\n    (StageTrace.records start actual.stages).flatMap (fun row => row.submitted) = work ∧\n    (StageBudget.ledger vocabulary start actual.stages).map (fun ballot => (ballot.actor,ballot.cut,ballot.fee)) =\n      [(true,42,1),(false,48,1),(false,52,2)] := by\n  rw [actual_is_the_original_execution_of_its_emitted_inputs]\n  decide +kernel\n"
+},
+{
+"declaration": "the_same_actual_production_funds_both_identity_quorums",
+"public": "theorem the_same_actual_production_funds_both_identity_quorums :\n    nextWork actual = none ∧\n    (observed actual zero).receipts.length = 2 ∧ (observed actual one).receipts.length = 2 ∧\n    ActorQuorum.support (observed actual zero) scope true = {false,true} ∧\n    ActorQuorum.support (observed actual one) scope true = {false,true} ∧\n    ActorStageEnvelope.budget start vocabulary actual.stages scope = 0 ∧\n    decideAt actual zero = .decided true ∧ decideAt actual one = .decided true := by\n  let cache := CachedCommandRun.run model start emitted\n  have rows : StageTrace.records start actual.stages = cache.rows :=\n    (congrArg (fun state : State => StageTrace.records start state.stages)\n      actual_is_the_original_execution_of_its_emitted_inputs).trans cache.rows_eq.symm\n  let pending (history : List (StageTrace.Record (code := model.source.code))) :=\n    work.find? fun request => !(history.any fun row =>\n      (StageTrace.items row).any fun item =>\n        decide (item.request = request ∧ model.source.code.law.Valid item.before item.request))\n  have originalWork : nextWork actual = pending (StageTrace.records start actual.stages) := rfl\n  have cachedWork : pending cache.rows = CachedWorkDispatch.nextWork work cache := rfl\n  have workDone := originalWork.trans ((congrArg pending rows).trans cachedWork)\n  have reception (receiver : Fin model.source.code.sites) :\n      observed actual receiver = CachedWorkDispatch.observed vocabulary law cache receiver := by\n    change HeaderDispatch.observed model start vocabulary law actual receiver = _\n    rw (config := {transparency := .default}) [actual_is_the_original_execution_of_its_emitted_inputs]\n    exact (CachedWorkDispatch.observed_eq vocabulary law cache receiver).symm\n  have affected : ActorStageEnvelope.affected start vocabulary actual.stages scope =\n      CachedWorkDispatch.affected vocabulary start cache.rows scope :=\n    (CachedWorkDispatch.affected_eq vocabulary start actual.stages scope).symm.trans\n      (congrArg (fun rows => CachedWorkDispatch.affected vocabulary start rows scope) rows)\n  have decision (receiver : Fin model.source.code.sites) :\n      decideAt actual receiver = CachedWorkDispatch.produce vocabulary start law cache.rows receiver scope 2 :=\n    (CachedWorkDispatch.produce_eq vocabulary start law actual.stages receiver scope 2).symm.trans\n      (congrArg (fun rows => CachedWorkDispatch.produce vocabulary start law rows receiver scope 2) rows)\n  let seen := CachedWorkDispatch.observed vocabulary law cache\n  let result := CachedWorkDispatch.produce vocabulary start law cache.rows\n  have checked : CachedWorkDispatch.nextWork work cache = none ∧\n      (seen zero).receipts.length = 2 ∧ (seen one).receipts.length = 2 ∧\n      ActorQuorum.support (seen zero) scope true = {false,true} ∧\n      ActorQuorum.support (seen one) scope true = {false,true} ∧\n      (CachedWorkDispatch.affected vocabulary start cache.rows scope).card = 0 ∧\n      result zero scope 2 = .decided true ∧ result one scope 2 = .decided true := by\n    dsimp only [seen, result, cache]\n    decide +kernel\n  rcases checked with ⟨done, zeroCount, oneCount, zeroSupport, oneSupport, budget, zeroResult, oneResult⟩\n  exact ⟨workDone.trans done,\n    (congrArg (fun receiver => receiver.receipts.length) (reception zero)).trans zeroCount,\n    (congrArg (fun receiver => receiver.receipts.length) (reception one)).trans oneCount,\n    (congrArg (fun receiver => ActorQuorum.support receiver scope true) (reception zero)).trans zeroSupport,\n    (congrArg (fun receiver => ActorQuorum.support receiver scope true) (reception one)).trans oneSupport,\n    (congrArg (fun actors : Finset Bool => actors.card) affected).trans budget, (decision zero).trans zeroResult, (decision one).trans oneResult⟩\n",
+"source": "theorem the_same_actual_production_funds_both_identity_quorums :\n    nextWork actual = none ∧\n    (observed actual zero).receipts.length = 2 ∧ (observed actual one).receipts.length = 2 ∧\n    ActorQuorum.support (observed actual zero) scope true = {false,true} ∧\n    ActorQuorum.support (observed actual one) scope true = {false,true} ∧\n    ActorStageEnvelope.budget start vocabulary actual.stages scope = 0 ∧\n    decideAt actual zero = .decided true ∧ decideAt actual one = .decided true := by\n  rw [actual_is_the_original_execution_of_its_emitted_inputs]\n  decide +kernel\n"
+},
+{
+"declaration": "actual_joint_progress_generates_new_material_and_keeps_the_original_debt_and_revocation",
+"public": "theorem actual_joint_progress_generates_new_material_and_keeps_the_original_debt_and_revocation :\n    (EventStep.seed (actual.current model start)).current.stock false true = 6 ∧\n    (EventStep.seed (actual.current model start)).current.stock true true = 2 ∧\n    (EventStep.seed (actual.current model start)).current.claims () false true = 7 ∧\n    (EventStep.seed (actual.current model start)).current.technology.holder = none ∧\n    (actual.current model start).cut = 62 ∧\n    (EventStep.seed (actual.current model start)).remaining = 2 := by\n  let cache := CachedCommandRun.run model start emitted\n  have current : actual.current model start = cache.cursor :=\n    (congrArg (fun state : State => state.current model start)\n      actual_is_the_original_execution_of_its_emitted_inputs).trans cache.cursor_eq.symm\n  have seed : EventStep.seed (actual.current model start) = cache.before := by\n    rw (config := {transparency := .default}) [current]\n    exact cache.before_eq.symm\n  have checked : cache.before.current.stock false true = 6 ∧\n      cache.before.current.stock true true = 2 ∧ cache.before.current.claims () false true = 7 ∧\n      cache.before.current.technology.holder = none ∧ cache.cursor.cut = 62 ∧ cache.before.remaining = 2 := by\n    dsimp only [cache]\n    decide +kernel\n  rcases checked with ⟨falseStock, trueStock, claims, holder, cut, fuel⟩\n  exact ⟨(congrArg (fun s => s.current.stock false true) seed).trans falseStock,\n    (congrArg (fun s => s.current.stock true true) seed).trans trueStock,\n    (congrArg (fun s => s.current.claims () false true) seed).trans claims,\n    (congrArg (fun s => s.current.technology.holder) seed).trans holder,\n    (congrArg (fun cursor => cursor.cut) current).trans cut,\n    (congrArg (fun s => s.remaining) seed).trans fuel⟩\n",
+"source": "theorem actual_joint_progress_generates_new_material_and_keeps_the_original_debt_and_revocation :\n    (EventStep.seed (actual.current model start)).current.stock false true = 6 ∧\n    (EventStep.seed (actual.current model start)).current.stock true true = 2 ∧\n    (EventStep.seed (actual.current model start)).current.claims () false true = 7 ∧\n    (EventStep.seed (actual.current model start)).current.technology.holder = none ∧\n    (actual.current model start).cut = 62 ∧\n    (EventStep.seed (actual.current model start)).remaining = 2 := by\n  rw [actual_is_the_original_execution_of_its_emitted_inputs]\n  decide +kernel\n"
+}
+],
 "source": "SaturationMonoid.ProcessGame.Society.PublicFunction.Protocol.SymbolicAuthentication.ProductiveDispatchChecks",
 "source_path": "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Protocol/SymbolicAuthentication/ProductiveDispatchChecks.lean",
 "source_revision": "7e013eddb90a302d0dc4da8623069a38b1935183",
@@ -1269601,8 +1269626,9 @@
 ],
 "source_sha256": "89f2817e8d167223ee3d4988f6ae581b638e5c902c3dfb37c53ec7f2aa4f7dbd",
 "target": "H0mework.Versions.R7e013edd.ReleaseMaterials.SaturationMonoid.ProcessGame.Society.PublicFunction.Protocol.SymbolicAuthentication.ProductiveDispatchChecks",
-"target_sha256": "5653145c758982c09229f6d580fe1c9066946e21118074b6c08d1b711ab1b30c",
-"variant": "R7e013edd"
+"target_sha256": "bac6d8b2c3ce6f92a5abf49765baab9814fb94cab3c4fa118e840d856d994fcf",
+"variant": "R7e013edd",
+"view_sha256": "71e135f884936aa9d8963ede3bea954288f7c7f1dfd717f1b07b94a424d0897e"
 },
 {
 "import_map": {
@@ -1269640,10 +1269666,29 @@
 "variant": "R7e013edd"
 },
 {
+"build_adaptations": [
+{
+"independent_acceptance": "evidence/society-book-supplement/acceptance/dispatch-build-optimization.json",
+"kind": "cached-dispatch-kernel-replay",
+"scope": "the_emitted_inputs_pass_the_independent_state_by_state_checker",
+"source_sha256": "3e13aec1b2d0a5ab68060af2702f2da2c28ce418f9e026dab3edb28787338224"
+}
+],
+"build_imports": [
+"SaturationMonoid.ProcessGame.Society.PublicFunction.Protocol.SymbolicAuthentication.CachedWorkDispatch"
+],
 "import_map": {
+"H0mework.Versions.R7e013edd.ReleaseMaterials.SaturationMonoid.ProcessGame.Society.PublicFunction.Protocol.SymbolicAuthentication.CachedWorkDispatch": "SaturationMonoid.ProcessGame.Society.PublicFunction.Protocol.SymbolicAuthentication.CachedWorkDispatch",
 "H0mework.Versions.R7e013edd.ReleaseMaterials.SaturationMonoid.ProcessGame.Society.PublicFunction.Protocol.SymbolicAuthentication.ProductiveDispatchSource": "SaturationMonoid.ProcessGame.Society.PublicFunction.Protocol.SymbolicAuthentication.ProductiveDispatchSource"
 },
 "path": "Lean/H0mework/Versions/R7e013edd/ReleaseMaterials/SaturationMonoid/ProcessGame/Society/PublicFunction/Protocol/SymbolicAuthentication/ProductiveDispatchTrace.lean",
+"proof_body_rewrites": [
+{
+"declaration": "the_emitted_inputs_pass_the_independent_state_by_state_checker",
+"public": "theorem the_emitted_inputs_pass_the_independent_state_by_state_checker : checks emitted initial = true := by\n  have sameChoice (state : State) : WorkDispatch.choose model start vocabulary law work state = choose state := by\n    have sameWork : WorkDispatch.nextWork model start work state = nextWork state := rfl\n    have sameTest (expected : Option ProductiveMandateSource.Action) :\n        WorkDispatch.workingFor model start state expected = workingFor state expected := by\n      funext input\n      cases input <;> cases expected <;> rfl\n    simp only [WorkDispatch.choose, ProductiveDispatchSource.choose, sameWork, sameTest]\n  let cachedChecks (inputs : List LocalCommandSource.Input) :\n      {state : State} → CachedCommandRun.Cache model start state → Bool :=\n    inputs.rec (motive := fun _ => {state : State} → CachedCommandRun.Cache model start state → Bool)\n      (fun {_} _ => true) (fun input _ verify {_} cache =>\n        decide (CachedWorkDispatch.choose vocabulary law work cache = input) &&\n          verify (CachedCommandRun.step model start cache input))\n  have cached_eq (inputs : List LocalCommandSource.Input) {state : State}\n      (cache : CachedCommandRun.Cache model start state) : cachedChecks inputs cache = checks inputs state := by\n    induction inputs generalizing state with\n    | nil => rfl\n    | cons input tail ih =>\n      change (decide (CachedWorkDispatch.choose vocabulary law work cache = input) &&\n          cachedChecks tail (CachedCommandRun.step model start cache input)) =\n        (decide (choose state = input) && checks tail (LocalCommandRun.step model start state input))\n      have choice : CachedWorkDispatch.choose vocabulary law work cache = choose state :=\n        (CachedWorkDispatch.choose_eq vocabulary law work cache).trans (sameChoice state)\n      exact congrArg₂ (fun selected rest => decide (selected = input) && rest) choice\n        (ih (CachedCommandRun.step model start cache input))\n  have accepted : cachedChecks emitted (CachedCommandRun.initial model start) = true := by\n    dsimp only [cachedChecks]\n    decide +kernel\n  exact (cached_eq emitted (CachedCommandRun.initial model start)).symm.trans accepted\n",
+"source": "theorem the_emitted_inputs_pass_the_independent_state_by_state_checker : checks emitted initial = true := by\n  decide +kernel\n"
+}
+],
 "source": "SaturationMonoid.ProcessGame.Society.PublicFunction.Protocol.SymbolicAuthentication.ProductiveDispatchTrace",
 "source_path": "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Protocol/SymbolicAuthentication/ProductiveDispatchTrace.lean",
 "source_revision": "7e013eddb90a302d0dc4da8623069a38b1935183",
@@ -1269653,8 +1269698,9 @@
 ],
 "source_sha256": "3e13aec1b2d0a5ab68060af2702f2da2c28ce418f9e026dab3edb28787338224",
 "target": "H0mework.Versions.R7e013edd.ReleaseMaterials.SaturationMonoid.ProcessGame.Society.PublicFunction.Protocol.SymbolicAuthentication.ProductiveDispatchTrace",
-"target_sha256": "03d8e4e0e6c3d7372cd3324f41b12799f747a250e9958dd00ecd21833a2c6df9",
-"variant": "R7e013edd"
+"target_sha256": "a24ec8fc20fc3415ab8e616a266f2b7b3a3b1a79c3a500428151960feb9b7bcd",
+"variant": "R7e013edd",
+"view_sha256": "c51eb1c02fe487e0abcbcddef10b262090be57d3b7662f9d2d6a474f8ecf9732"
 },
 {
 "import_map": {

@@ -28,6 +28,8 @@ python3 tools/society_book.py --supplement types --output .local/book-supplement
 
 构建适配为 `Forecast.Use` 补入 `Production.material` 的原定义模块，在 `Consumers.Actual.Path` 注释已公开的 `drain_preserves_control` 的旧私有打开命令。两处都保留原声明和证明体。原路径公开视图保留适配，精确视图逐字节恢复原文件。
 
+供料隐私闭包中的生产调度使用已有的增量轨迹执行内核检查。[证明适配](proof-build-adaptations.md#生产调度的增量内核重放) · [本机验收与分片缓存](../evidence/society-book-supplement/acceptance/dispatch-build-optimization.json)
+
 在恢复的公开源视图中，使用装有 `cryptography` 的 Python 运行第 91 号位的本地控制夹具。
 
 ```bash
