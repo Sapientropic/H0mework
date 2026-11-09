@@ -941,7 +941,7 @@ class ContinuationTests(unittest.TestCase):
         self.store.assets[name] = {"id": name, "created_at": "2026-10-07"}
 
     def job(self, conclusion="cancelled", part="s1-01"):
-        self.jobs.append({"name": f"Lean 阶段 {ci_plan.stage_number(part)} ({part}) / build", "conclusion": "failure",
+        self.jobs.append({"name": f"Lean 阶段 {ci_plan.stage_number(part)} / build ({part})", "conclusion": "failure",
                           "steps": [{"name": "Build part using Lake freshness checks", "conclusion": conclusion}]})
 
     def resume(self):
@@ -983,7 +983,7 @@ class ContinuationTests(unittest.TestCase):
     def test_stage_like_non_part_failure_stops_continuation(self):
         self.job()
         self.saved()
-        self.jobs.append({"name": "Lean 阶段 10 (s10-01) / build", "conclusion": "failure", "steps": []})
+        self.jobs.append({"name": "Lean 阶段 10 / build (s10-01)", "conclusion": "failure", "steps": []})
         self.assertEqual(self.resume(), [])
 
     def test_compiler_failure_is_not_retried_even_with_saved_progress(self):
@@ -994,8 +994,21 @@ class ContinuationTests(unittest.TestCase):
     def test_another_parts_compiler_failure_stops_the_whole_continuation(self):
         self.job()
         self.saved()
-        self.jobs.append({"name": "Lean 阶段 1 (s1-02) / build", "conclusion": "failure",
-                          "steps": [{"name": "Build part using Lake freshness checks", "conclusion": "failure"}]})
+        self.job("failure", part="s1-02")
+        self.assertEqual(self.resume(), [])
+
+    def test_deadline_marker_does_not_mask_another_failed_step(self):
+        self.job("failure")
+        self.saved(checkpoint=False)
+        self.artifacts = [{"name": "lean-incomplete-s1-01-2", "expired": False}]
+        self.jobs[0]["steps"].append({"name": "Pack this part's module artifacts", "conclusion": "failure"})
+        self.assertEqual(self.resume(), [])
+
+    def test_successful_shard_is_not_retried_from_a_marker(self):
+        self.job("success")
+        self.jobs[0]["conclusion"] = "success"
+        self.saved(checkpoint=False)
+        self.artifacts = [{"name": "lean-incomplete-s1-01-2", "expired": False}]
         self.assertEqual(self.resume(), [])
 
     def test_shutdown_without_current_matching_progress_does_not_loop(self):

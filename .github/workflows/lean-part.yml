@@ -13,6 +13,8 @@ permissions:
 
 jobs:
   build:
+    # The Jobs API omits the caller's matrix values when the caller has a custom name.
+    name: build (${{ inputs.part }})
     runs-on: ubuntu-latest
     timeout-minutes: 350
     env:

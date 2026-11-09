@@ -970,31 +970,31 @@ def continuation_parts(store: ReleaseStore, plan: dict, run: str, attempt: str) 
             page += 1
 
     markers = {a["name"] for a in items("artifacts") if not a["expired"]}
+    build_step = "Build part using Lake freshness checks"
     interrupted = set()
     for job in items("jobs"):
-        match = re.search(r"\((s[1-9][0-9]*-[0-9]+)\) / build$", job["name"])
         if job["conclusion"] != "failure":
             continue
         # A real compiler/setup/evidence failure must stop the whole continuation.
+        match = re.search(r"(?:^| / )build \((s[1-9][0-9]*-[0-9]+)\)$", job["name"])
         if not match or match[1] not in plan["parts"]:
             return []
         name = match[1]
-        if (any(s["conclusion"] == "failure" for s in job["steps"])
-                and f"lean-incomplete-{name}-{attempt}" not in markers):
+        steps = job["steps"]
+        if any(s["name"] != build_step and s["conclusion"] == "failure" for s in steps):
             return []
-        if any(
-                s["name"] == "Build part using Lake freshness checks" and s["conclusion"] == "cancelled"
-                for s in job["steps"]):
-            interrupted.add(name)
+        outcome = next((s["conclusion"] for s in steps if s["name"] == build_step), None)
+        deadline = outcome == "failure" and f"lean-incomplete-{name}-{attempt}" in markers
+        if outcome != "cancelled" and not deadline:
+            return []
+        interrupted.add(name)
     entries = store.entries()
     resumable = []
-    for name in plan["parts"]:
-        if name not in interrupted and f"lean-incomplete-{name}-{attempt}" not in markers:
-            continue
+    for name in sorted(interrupted):
         progress = part_key(plan, name) + f"-{run}-{attempt}"
         if progress + ".tar.zst" in entries or any(n.startswith(progress + "-checkpoint-") for n in entries):
             resumable.append(name)
-    return sorted(resumable)
+    return resumable
 
 
 def prune_store(store: ReleaseStore, keep: set[str]) -> list[str]:
