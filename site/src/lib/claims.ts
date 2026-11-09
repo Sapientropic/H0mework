@@ -3,7 +3,7 @@
 import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
-import { RELEASES, entryOf, manuscriptOf, mapOf, once, publishedPaperJson, read, readJson, repoLink, selectionOf, type Lang, type ReleaseId } from "./registry";
+import { RELEASES, entryOf, manuscriptOf, mapOf, once, peaceBinding, publishedPaperJson, read, readJson, repoLink, selectionOf, type Lang, type ReleaseId } from "./registry";
 import { excerptsOf } from "./excerpts";
 
 type Declaration = { name?: string; qualified_name: string; line?: number };
@@ -13,7 +13,7 @@ type Producer = {
   declarations?: Declaration[];
 };
 type Text = { title: string | null; statement: string | null };
-export type Source = { key: string; ids: string[]; edition: number; text: Text; location: Record<Lang, string | null>; producers: Producer[]; category?: "principle" | "interface" | "formal"; passages?: Partial<Record<Lang, string[]>>; readingOrder?: number };
+export type Source = { key: string; ids: string[]; edition: number; text: Text; location: Record<Lang, string | null>; producers: Producer[]; category?: "principle" | "interface" | "formal"; citations?: string[]; passages?: Partial<Record<Lang, string[]>>; readingOrder?: number };
 
 // Every mapped Lean producer passed its kernel check before release. A map's "pending" marks only
 // the later re-acceptance of the public package in CI, so the site does not show it as a status.
@@ -326,6 +326,44 @@ function capitalFormation(slug: string, edition: number, release: ReleaseId): So
   });
 }
 
+// PE numbers identify source claims. Result numbers follow the bilingual reading editions.
+const PE_LOCATIONS: [string, string[]][] = [
+  ["§2.2", ["4", "5"]], ["§2.2", ["4"]], ["§2.1", ["2", "3"]],
+  ["§3.1", ["6"]], ["§3.2", ["7", "8"]], ["§4.1", ["9", "10", "13"]],
+  ["§4.2", ["11"]], ["§7", ["21"]], ["§6.3", ["18", "19"]],
+  ["§5.2", ["15"]], ["§5.2", ["15"]], ["§5.2", ["15"]],
+  ["§5.1", ["14"]], ["§5.3", []], ["§6.3", ["18"]],
+  ["§4.2", ["10", "11"]], ["§4.3", ["12"]], ["§4.3", ["12"]],
+  ["§5.1", ["13", "14"]], ["§6.4", ["20"]], ["§6.3", ["19"]],
+  ["§3.2", ["8"]], ["§6.1", ["16"]], ["§6.2", ["17"]],
+  ["§6.4", ["20"]], ["§10.1", []], ["I.6", []],
+  ["§8.2", []], ["I.6", []], ["§8.1", ["22", "23"]],
+  ["§9.1", ["24", "25"]], ["§9.4", ["26"]], ["I.6", []],
+];
+
+function enforceablePeace(slug: string, edition: number, release: ReleaseId): Source[] {
+  const map = mapOf(release);
+  const binding = peaceBinding();
+  if (map.acceptance.status !== "passed" || binding.public_commit !== RELEASES[release].sourceCommit)
+    throw new Error("peace claims have no fixed accepted proof source");
+  return map.claims.filter((claim: any) => claim.paper === slug).map((claim: any) => {
+    const [section, citations] = PE_LOCATIONS[Number(claim.id.slice(2)) - 1];
+    const appendix = section.startsWith("I.");
+    const supports = binding.appendix_support.filter((entry: any) => entry.claim === claim.id)
+      .map((entry: any) => ({
+        kind: "lean", public: { path: entry.path, module: entry.module },
+        declarations: entry.declarations,
+      }));
+    return {
+      key: `peace.${claim.id}`, ids: [claim.id], edition, category: "formal",
+      text: { title: claim.title, statement: claim.statement },
+      location: appendix ? { zh: `附录 ${section}`, en: `Appendix ${section}` } : { zh: section, en: section },
+      citations,
+      producers: [...claim.producers, ...claim.direct_consumers, ...supports, ...claim.resources],
+    };
+  });
+}
+
 const ADAPTERS: Record<ReleaseId, (slug: string, edition: number, release: ReleaseId) => Source[]> = {
   "first-release": firstRelease,
   "second-edition": secondEdition,
@@ -337,6 +375,7 @@ const ADAPTERS: Record<ReleaseId, (slug: string, edition: number, release: Relea
   "generated-society-v2": generatedSociety,
   "economic-constitution-v2": economicConstitution,
   "capital-formation": capitalFormation,
+  "enforceable-peace": enforceablePeace,
 };
 
 // --- translations -----------------------------------------------------------------------------
@@ -459,7 +498,8 @@ function rowOf(source: Source, release: ReleaseId, slug: string, lang: Lang) {
   const location = source.location[lang];
   // Results are found by number, so the registered location (Chinese where both exist) names them for either page.
   const paper = excerptsOf(release, slug, lang, source.location.zh ?? source.location.en,
-    { ...reading, passages: [...(reading?.passages ?? []), ...(source.passages?.[lang] ?? [])] });
+    { ...reading, cite: [...(reading?.cite ?? []), ...(source.citations ?? [])],
+      passages: [...(reading?.passages ?? []), ...(source.passages?.[lang] ?? [])] });
   const commit = RELEASES[release].sourceCommit;
   const lean = modulesOf(source.producers, commit);
   const order = orderOf(source.location.zh ?? source.location.en);

@@ -15,7 +15,7 @@ export const repoLink = (path: string, line?: number, commit = "main") => `${REP
 const suffix = (lang: Lang) => (lang === "en" ? "-en" : "");
 const unzip = (zip: string, member: string) => execFileSync("unzip", ["-p", resolve(ROOT, zip), member], { encoding: "utf8", maxBuffer: 1 << 26 });
 
-export type ReleaseId = "first-release" | "second-edition" | "low-energy" | "whole-ledger" | "one-bit" | "generated-society" | "economic-constitution" | "generated-society-v2" | "economic-constitution-v2" | "capital-formation";
+export type ReleaseId = "first-release" | "second-edition" | "low-energy" | "whole-ledger" | "one-bit" | "generated-society" | "economic-constitution" | "generated-society-v2" | "economic-constitution-v2" | "capital-formation" | "enforceable-peace";
 type Release = {
   label: Record<Lang, string>;
   date: string;
@@ -46,6 +46,18 @@ const SOCIETY_V2 = "papers/society-economic/2026-11-03-v2";
 const SOCIETY_SOURCE = "2d6fbc96e33b7c4c3cfd91104fda74e3caeda045";
 const CAPITAL = "papers/capital-formation/2026-11-04";
 const capitalArchive = `${CAPITAL}/editable/capital-formation-v1-editable.zip`;
+const PEACE = "papers/enforceable-peace/2026-11-10";
+const peaceArchive = `${PEACE}/editable/enforceable-peace-editable.zip`;
+const peaceMember = "enforceable-peace-source/papers/enforceable-peace";
+const PEACE_SOURCE = "2678896740481f6eb6fc248c38d86549a6b6911d";
+export const peaceBinding = () =>
+  once("enforceable-peace:binding", () => JSON.parse(unzip(peaceArchive, `${peaceMember}/public-source-binding.json`)));
+const peacePaper = () => {
+  const paper = readJson(`${PEACE}/manifest.json`).papers.find((paper: any) => paper.paper === "enforceable-peace");
+  if (!paper?.is_published || !/^10\.5281\/zenodo\.\d+$/.test(paper.doi) || paper.source_commit !== PEACE_SOURCE)
+    throw new Error("peace release manifest has no published DOI and fixed proof source");
+  return paper;
+};
 const capitalPaper = () => {
   const paper = readJson(`${CAPITAL}/manifest.json`).papers.find((paper: any) => paper.paper === "capital-formation");
   if (!paper?.doi || !/^10\.\d{4,9}\/\S+$/.test(paper.doi) || paper.source_commit !== SOCIETY_SOURCE)
@@ -169,6 +181,26 @@ const BASE_RELEASES: Record<Exclude<ReleaseId, "generated-society-v2" | "economi
       en: "The paper's eighteen results appear in reading order. Open a row for its original statement, proof declarations, direct consumers, and source materials.",
     },
   },
+  "enforceable-peace": {
+    label: { zh: "战争与和平的源生终局定理", en: "War and Peace" },
+    date: peacePaper().publication_date,
+    map: "docs/enforceable-peace-map.json",
+    manuscript: (_slug, lang) => unzip(peaceArchive, `${peaceMember}/manuscript${suffix(lang)}.md`),
+    supplement: (_slug, lang) => ["technical-appendix", "appendix-execution"]
+      .map((part) => unzip(peaceArchive, `${peaceMember}/${part}${suffix(lang)}.md`)).join("\n\n"),
+    files: (slug, lang) => ({ pdf: `${PEACE}/pdf/${slug}${suffix(lang)}.pdf`, supplement: `${PEACE}/pdf/${slug}-supplement${suffix(lang)}.pdf` }),
+    check: "python3 tools/enforceable_peace.py entry",
+    guide: "docs/enforceable-peace-reproduction.md",
+    sourceCommit: peacePaper().source_commit,
+    acceptance: {
+      zh: "PE1–PE33 的六个证明包通过内核验收。原认证账本离线复演至钟 28。",
+      en: "All six proof packages for PE1–PE33 passed kernel checks. The original certified journal replays offline through clock 28.",
+    },
+    claimsNote: {
+      zh: "按论文位置查阅 PE1–PE33 的证明、直接消费者和原回执。四机执行的日期、账头与角色签认以原回执为准。",
+      en: "Explore the proofs, direct consumers, and original receipts for PE1–PE33. The four-host receipts record the execution dates, ledger heads, and role signatures.",
+    },
+  },
 };
 
 function societyRevision(slug: "generated-society" | "economic-constitution"): Release {
@@ -278,6 +310,11 @@ export const PAPERS: PaperEntry[] = [
     theme: "society",
     editions: [{ release: "capital-formation", doi: capitalPaper().doi }],
     figure: { name: "replay-bakery", claim: "R8" },
+  },
+  {
+    slug: "enforceable-peace",
+    theme: "society",
+    editions: [{ release: "enforceable-peace", doi: peacePaper().doi }],
   },
 ];
 
