@@ -1,0 +1,32 @@
+{
+  "affected_modules": 70,
+  "axiom_mouths": 55,
+  "axiom_report_sha256": "2d55cc538efddbcd7571bd2873dd5fda25c731269fcf432b49586fd72456e453",
+  "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "checked_bodies": 2152,
+  "private_bodies": 388,
+  "provenance_sha256": "2a1554211a3c2e6b623d3240bc632d632ff33a2f26c90e329bce3066f5dd9540",
+  "replay": {
+    "command": [
+      "lean",
+      "--trust=0",
+      "-j1",
+      "-M10000",
+      "-DwarningAsError=true",
+      "-DElab.async=false",
+      "--run",
+      "runtime/iqa-war-universal-terminal/affected-terminal/replay.lean",
+      "runtime/iqa-war-universal-terminal/affected-terminal"
+    ],
+    "exit": 0,
+    "graph_sha256": "f8a381dab15fbd907bac0170d9812028c846c4b4d1a7ca328fc78127f6f70ba2",
+    "replay_sha256": "f5fa227588a469d7b33323b52d94eb3d7d5d15e7fe153b51090208361de940c5",
+    "seconds": 167.457474542025
+  },
+  "separately_re_emitted_bodies": 3,
+  "source_artifact_pairs": 1295
+}
