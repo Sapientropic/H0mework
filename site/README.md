@@ -36,14 +36,14 @@ bun run build      # 先跑图的模型自检与构建，再出 dist/
 
 `astro.config.mjs` 设了 `site: https://h0mework.wiki` 并启用 `@astrojs/sitemap`（双语 hreflang，404 不入册）；`public/robots.txt` 指向 sitemap。每页带 canonical、双向 hreflang + x-default、OG/Twitter 卡片；论文页另从最新稿自动生成 Highwire Press `citation_*` 学术元标签、`ScholarlyArticle` JSON-LD 结构化数据，并在 `/papers/<slug>.pdf` 与 `/en/papers/<slug>.pdf` 输出同域 PDF 直链供 Google Scholar 等学术检索收录。
 
-`public/og/` 是分享预览图：有配图的论文用配图的机器图，其余页面用 `default.png`（打孔卡）。配图更新后重新生成：`bun scripts/og.mjs` 把 1200×630 的静态页写进 `.og/`，逐页截图覆盖 `public/og/<name>.png`（`.og/` 不入库）。
+`public/og/` 是分享预览图：有配图的论文用配图的机器图，其余页面用 `default.png`（打孔卡）。`bun run figures`（以及 `dev` / `build`）会自动运行 `bun scripts/og.mjs`：直接从 `PAPERS` 读取全部配图名，将 1200×630 静态页写入 `.og/`，比对每张 PNG 内嵌的 `og-sha256` 指纹块，仅在新增或配图/样式变更时调用无头 Chrome 自动重截 `public/og/<name>.png`（`.og/` 不入库）；页面元标签自动附带 `?v=<hash>` 破除社交平台缓存。
 
 ## 新增论文
 
 1. 在 `PAPERS` 加一项：slug、`theme`、各版 `{ release, doi }`，系列稿可加 `series`。已立题稿发表后自动离开在写计数，不手工改`UPCOMING`；新增立题或新主题先更新`paper-plan.json`的分组与总数。
 2. 新的发布目录在 `RELEASES` 登记（2026-10-17 起的发布在 `papers/<发布>/<日期>/` 放 Zenodo 上传的原字节文件，`manifest.json` 记 DOI 与每个文件的 SHA-256）；映射 schema 与已有发布不同时，在 `claims.ts` 的 `ADAPTERS` 加一个读取函数。
 3. 分别以 `--lang en`、`--lang zh` 运行 `bun scripts/translations.ts`，为列出的条目补译文后 `--merge`。
-4. 没有配图的论文在首页卡片里显示主张打孔卡；配图做好后在该项加 `figure`，并在 `scripts/og.mjs` 的 `FIGURES` 加同名条目，重截该论文的 og 图。
+4. 没有配图的论文在首页卡片里显示主张打孔卡；配图做好后在该项加 `figure`，运行 `bun run figures` 或 `bun run build` 即自动生成该论文的 og 预览图。
 
 ## 图
 

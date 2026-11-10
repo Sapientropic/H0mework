@@ -1,4 +1,7 @@
 ---
+import { createHash } from "node:crypto";
+import { readFileSync } from "node:fs";
+import { resolve } from "node:path";
 import "katex/dist/katex.min.css";
 import "../styles/site.css";
 import { T, checkHref, papersHref } from "../lib/i18n";
@@ -9,6 +12,8 @@ interface Props { lang: Lang; title: string; alternate: string; description?: st
 const { lang, title, alternate, description = T[lang].lede, ogImage = "/og/default.png", indexable = true, citation } = Astro.props;
 const t = T[lang];
 const abs = (path: string) => new URL(path, Astro.site ?? "https://h0mework.wiki").href;
+const ogVersion = createHash("sha256").update(readFileSync(resolve(process.cwd(), "public", ogImage.replace(/^\//, "")))).digest("hex").slice(0, 12);
+const ogImageUrl = abs(`${ogImage}?v=${ogVersion}`);
 const selfPath = Astro.url.pathname;
 const [zhPath, enPath] = lang === "zh" ? [selfPath, alternate] : [alternate, selfPath];
 const citationDate = citation?.date.replaceAll("-", "/");
@@ -59,10 +64,16 @@ const jsonLd = citation && {
     <meta property="og:url" content={abs(selfPath)} />
     <meta property="og:site_name" content={t.site} />
     <meta property="og:locale" content={lang === "zh" ? "zh_CN" : "en_US"} />
-    <meta property="og:image" content={abs(ogImage)} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={title} />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+    <meta name="twitter:image:alt" content={title} />
     {citation && (
       <>
         <meta name="citation_title" content={citation.title} />
