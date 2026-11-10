@@ -1,0 +1,2242 @@
+{
+  "schema": "source-kraus-word-wave/rha0291/certify-query-plan/r0001",
+  "formal_directory": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-kraus-word-wave-rha0291/certify-r0001",
+  "query_module_file": "SourceKrausWordWave291CertifyQuery.lean",
+  "all_source_declaration_inventory": [
+    "WordChart",
+    "WordHistory",
+    "baseMeasure",
+    "wordFunction",
+    "bornDensity",
+    "bornDensity_measurable",
+    "lintegral_bornDensity",
+    "bornMeasure",
+    "bornMeasure_univ",
+    "bornMeasure_finite",
+    "bornMeasure_probability",
+    "wordFunction_measurable",
+    "wordFunction_squared_integrable",
+    "wordFunction_memLp",
+    "wave",
+    "wave_ae",
+    "wave_norm",
+    "wave_add",
+    "wave_smul",
+    "sourceIsometry"
+  ],
+  "queried_declarations": [
+    "SourceKrausWordWave291.WordChart",
+    "SourceKrausWordWave291.WordHistory",
+    "SourceKrausWordWave291.baseMeasure",
+    "SourceKrausWordWave291.wordFunction",
+    "SourceKrausWordWave291.bornDensity",
+    "SourceKrausWordWave291.bornDensity_measurable",
+    "SourceKrausWordWave291.lintegral_bornDensity",
+    "SourceKrausWordWave291.bornMeasure",
+    "SourceKrausWordWave291.bornMeasure_univ",
+    "SourceKrausWordWave291.bornMeasure_finite",
+    "SourceKrausWordWave291.bornMeasure_probability",
+    "SourceKrausWordWave291.wordFunction_measurable",
+    "SourceKrausWordWave291.wordFunction_squared_integrable",
+    "SourceKrausWordWave291.wordFunction_memLp",
+    "SourceKrausWordWave291.wave",
+    "SourceKrausWordWave291.wave_ae",
+    "SourceKrausWordWave291.wave_norm",
+    "SourceKrausWordWave291.wave_add",
+    "SourceKrausWordWave291.wave_smul",
+    "SourceKrausWordWave291.sourceIsometry"
+  ],
+  "expected_declaration_type_reports": 20,
+  "expected_axiom_reports": 20,
+  "printed_core_definitions": [
+    "SourceKrausWordWave291.WordChart",
+    "SourceKrausWordWave291.WordHistory",
+    "SourceKrausWordWave291.baseMeasure",
+    "SourceKrausWordWave291.wordFunction",
+    "SourceKrausWordWave291.bornDensity",
+    "SourceKrausWordWave291.bornMeasure",
+    "SourceKrausWordWave291.wave",
+    "SourceKrausWordWave291.sourceIsometry"
+  ],
+  "expected_core_definition_reports": 8,
+  "qualified_candidate": {
+    "module": "SourceKrausWordWave291",
+    "source": {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-kraus-word-wave-rha0291/source-r0004/SourceKrausWordWave291.lean",
+      "sha256": "e7350e57bbd5e43efea50a0541d5f2452bffde6b74d678d5b206162b7f645ae6",
+      "bytes": 10393
+    },
+    "source_commit": "fa2085ee1fda4f01f8ff6c50a2a6a5f91fe3cbf5",
+    "host_commit": "131da598f9a885bba039adfc2d253fab68be24c6",
+    "artifact": {
+      "path": "runtime/storage/primary/Homework-runtime/audit-tmp/iqa-source-kraus-word-wave291/second-complete-word-wave-kernel-after-actual-term-repair-r0004/compiled/SourceKrausWordWave291.olean",
+      "sha256": "9a508ef5ad75a90369b03041364e26c415e26d76785e2f09aac4e470da7afa6b",
+      "bytes": 414544
+    },
+    "kernel_return": {
+      "path": "runtime/storage/primary/Homework-runtime/audit-tmp/iqa-source-kraus-word-wave291/second-complete-word-wave-kernel-after-actual-term-repair-r0004/SourceKrausWordWave291/qualified-return.json",
+      "sha256": "bca81ea9129f628fb20c052e546cfefd0968fb1553a8ead710987a9aa76db22f",
+      "bytes": 6670
+    },
+    "natural_return": {
+      "path": "runtime/storage/primary/Homework-runtime/audit-tmp/iqa-source-kraus-word-wave291/second-complete-word-wave-kernel-after-actual-term-repair-r0004/SourceKrausWordWave291/natural-return.json",
+      "sha256": "7e8d01ce46ef8ef6ee294ea290502dfde10604169b57db81d31ac6d9cb7cc1d2",
+      "bytes": 3458
+    },
+    "completion": {
+      "path": "runtime/storage/primary/Homework-runtime/audit-tmp/iqa-source-kraus-word-wave291/second-complete-word-wave-kernel-after-actual-term-repair-r0004/completion.json",
+      "sha256": "a98add6be1e666fe466a2ea68c3c5cdd0f78d4fe74d17ada1507a611b01009f0",
+      "bytes": 7591
+    },
+    "complete_log": {
+      "path": "runtime/storage/primary/Homework-runtime/audit-tmp/iqa-source-kraus-word-wave291/second-complete-word-wave-kernel-after-actual-term-repair-r0004/SourceKrausWordWave291/complete.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "module_start": {
+      "path": "runtime/storage/primary/Homework-runtime/audit-tmp/iqa-source-kraus-word-wave291/second-complete-word-wave-kernel-after-actual-term-repair-r0004/SourceKrausWordWave291/start.json",
+      "sha256": "f6db3880c052b89cc8dae5a30b3f460c225ba6baa57135ddf35df04df993836c",
+      "bytes": 5716
+    },
+    "child": {
+      "path": "runtime/storage/primary/Homework-runtime/audit-tmp/iqa-source-kraus-word-wave291/second-complete-word-wave-kernel-after-actual-term-repair-r0004/SourceKrausWordWave291/child.json",
+      "sha256": "c1758aef5f7f0ab94487deef44f9f213611a0128f76536e5174cf3b1bd95fceb",
+      "bytes": 44
+    },
+    "host_start": {
+      "path": "runtime/storage/primary/Homework-runtime/audit-tmp/iqa-source-kraus-word-wave291/second-complete-word-wave-kernel-after-actual-term-repair-r0004/start.json",
+      "sha256": "f6768d8eef1ede53355705bb472b1d1d04cd58fb0fbcd90806dd966e1f6dd9e5",
+      "bytes": 811
+    },
+    "natural_kernel_exit": 0,
+    "true_child_wait_completed": true,
+    "candidate_recompile": false
+  },
+  "qualified_candidate_dependencies": [
+    {
+      "module": "Mathlib.MeasureTheory.Function.L2Space",
+      "sha256": "da3bf2f69b33ff42dc8a8775aa467c179c5a823a2dfe5a4643a3d7d8a0a2a95f"
+    },
+    {
+      "module": "Mathlib.MeasureTheory.Integral.Bochner.SumMeasure",
+      "sha256": "a8fcd7f3da8a95ff54e5cd8328afe97cb02476f52bab53921b7f8db4afb34350"
+    },
+    {
+      "module": "Mathlib.MeasureTheory.Measure.WithDensity",
+      "sha256": "67fa317ced54b76a3973e618c249cc7ec316a286bfaf0bfd6e7da89a523dbed5"
+    },
+    {
+      "module": "SourceKrausWordSimplex290",
+      "sha256": "6d591588bf94d6ec5eb6aff931546f08aa862e3e781121fa1309c35ce8aa5b5e"
+    }
+  ],
+  "qualified_artifacts": [
+    {
+      "path": "runtime/storage/primary/Homework-runtime/audit-tmp/iqa-source-kraus-word-wave291/second-complete-word-wave-kernel-after-actual-term-repair-r0004/compiled/SourceKrausWordWave291.olean",
+      "sha256": "9a508ef5ad75a90369b03041364e26c415e26d76785e2f09aac4e470da7afa6b",
+      "bytes": 414544
+    },
+    {
+      "path": "runtime/storage/primary/Homework-runtime/audit-tmp/iqa-source-word-mass-simplex289-290/third-simplex-only-kernel-after-function-presentation-repair-r0010/compiled/SourceKrausWordSimplex290.olean",
+      "sha256": "6d591588bf94d6ec5eb6aff931546f08aa862e3e781121fa1309c35ce8aa5b5e",
+      "bytes": 923504
+    },
+    {
+      "path": "runtime/storage/primary/Homework-runtime/audit-tmp/iqa-source-word-mass-simplex289-290/fifth-kernel-after-canonical-coercion-source-repair-r0007/compiled/SourceKrausWordMass289.olean",
+      "sha256": "c478ecdb2c66d7c60dba85b66b7972df867e7e096eb3d10491e537417c9c20c6",
+      "bytes": 824408
+    },
+    {
+      "path": "runtime/storage/primary/Homework-runtime/audit-tmp/iqa-source-hidden-word-flow286/fifth-kernel-after-source-freeze-r0009/compiled/SourceHiddenWordFlow286.olean",
+      "sha256": "6c2a45125a28eb5f66d6d9a04459015ffb909b0eed30d02d8ab90a6bb3f99359",
+      "bytes": 1178376
+    },
+    {
+      "bytes": 809944,
+      "path": "runtime/storage/primary/Homework-runtime/audit-tmp/iqa-source-kraus-survival285/sixth-kernel-after-source-freeze-r0006/compiled/SourceKrausSurvival285.olean",
+      "sha256": "27f603bdb340a8946829334b73d368156939034046c8cbe2b2d826c45c498ef1"
+    },
+    {
+      "bytes": 289216,
+      "path": "runtime/storage/primary/Homework-runtime/audit-tmp/iqa-source-kraus-survival285/fourth-kernel-after-source-freeze-r0004/compiled/RetardedSourceSurvival284.olean",
+      "sha256": "efba2223939502b609ca2ca78be0691c0dc3cdf14e26582766f23e1bf8996b62"
+    },
+    {
+      "bytes": 834568,
+      "path": "Lean/.lake/build/lib/lean/SaturationMonoid/PhysicsCore/StageNineDiracMatterGalerkinEvolution.olean",
+      "sha256": "5f0d2213610a3e274c16a103b07e1da6b31fb8e5235304b1ff4e5c260cf13882"
+    },
+    {
+      "path": "Lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Constructions/Pi.olean",
+      "sha256": "41cf5ebef5e3c893ecd087941616197bfca39214dfb03f3aac04e77ccb7b7340",
+      "bytes": 424000
+    },
+    {
+      "path": "Lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Integral/IntervalIntegral/FundThmCalculus.olean",
+      "sha256": "affe0c6443f4912907b721e126e84072bfc560b6ea15946efdcafc949646590a",
+      "bytes": 329304
+    },
+    {
+      "path": "Lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Measure/Lebesgue/Basic.olean",
+      "sha256": "3dac7a2cce6b64676170e75cc093b22e2beaa394b7d559fa5b6af64c508de0cb",
+      "bytes": 163072
+    },
+    {
+      "path": "Lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Measure/WithDensity.olean",
+      "sha256": "67fa317ced54b76a3973e618c249cc7ec316a286bfaf0bfd6e7da89a523dbed5",
+      "bytes": 154848
+    },
+    {
+      "path": "Lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Topology/Order/ProjIcc.olean",
+      "sha256": "e320c066c03c0c1af0658b22a20a76a51237ea3a6cbcfdb139dfc45fa2957007",
+      "bytes": 40792
+    },
+    {
+      "path": "Lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Integral/Bochner/Set.olean",
+      "sha256": "73940be60456a435c370a133ed715a6fd4230818cc482d340276cfde99f2bb70",
+      "bytes": 452256
+    },
+    {
+      "path": "Lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Integral/Pi.olean",
+      "sha256": "df4f7720a6bb5bfb6c23b4546ff69fbc2113068118e335d7ce3230c36b0038bd",
+      "bytes": 65688
+    },
+    {
+      "path": "Lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/L2Space.olean",
+      "sha256": "da3bf2f69b33ff42dc8a8775aa467c179c5a823a2dfe5a4643a3d7d8a0a2a95f",
+      "bytes": 259208
+    },
+    {
+      "path": "Lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Integral/Bochner/SumMeasure.olean",
+      "sha256": "a8fcd7f3da8a95ff54e5cd8328afe97cb02476f52bab53921b7f8db4afb34350",
+      "bytes": 71000
+    }
+  ],
+  "qualified_module_lookup": [
+    {
+      "module": "SourceKrausWordWave291",
+      "artifact": {
+        "path": "runtime/storage/primary/Homework-runtime/audit-tmp/iqa-source-kraus-word-wave291/second-complete-word-wave-kernel-after-actual-term-repair-r0004/compiled/SourceKrausWordWave291.olean",
+        "sha256": "9a508ef5ad75a90369b03041364e26c415e26d76785e2f09aac4e470da7afa6b",
+        "bytes": 414544
+      }
+    },
+    {
+      "module": "SourceKrausWordSimplex290",
+      "artifact": {
+        "path": "runtime/storage/primary/Homework-runtime/audit-tmp/iqa-source-word-mass-simplex289-290/third-simplex-only-kernel-after-function-presentation-repair-r0010/compiled/SourceKrausWordSimplex290.olean",
+        "sha256": "6d591588bf94d6ec5eb6aff931546f08aa862e3e781121fa1309c35ce8aa5b5e",
+        "bytes": 923504
+      }
+    },
+    {
+      "module": "SourceKrausWordMass289",
+      "artifact": {
+        "path": "runtime/storage/primary/Homework-runtime/audit-tmp/iqa-source-word-mass-simplex289-290/fifth-kernel-after-canonical-coercion-source-repair-r0007/compiled/SourceKrausWordMass289.olean",
+        "sha256": "c478ecdb2c66d7c60dba85b66b7972df867e7e096eb3d10491e537417c9c20c6",
+        "bytes": 824408
+      }
+    },
+    {
+      "module": "SourceHiddenWordFlow286",
+      "artifact": {
+        "path": "runtime/storage/primary/Homework-runtime/audit-tmp/iqa-source-hidden-word-flow286/fifth-kernel-after-source-freeze-r0009/compiled/SourceHiddenWordFlow286.olean",
+        "sha256": "6c2a45125a28eb5f66d6d9a04459015ffb909b0eed30d02d8ab90a6bb3f99359",
+        "bytes": 1178376
+      }
+    },
+    {
+      "module": "SourceKrausSurvival285",
+      "artifact": {
+        "bytes": 809944,
+        "path": "runtime/storage/primary/Homework-runtime/audit-tmp/iqa-source-kraus-survival285/sixth-kernel-after-source-freeze-r0006/compiled/SourceKrausSurvival285.olean",
+        "sha256": "27f603bdb340a8946829334b73d368156939034046c8cbe2b2d826c45c498ef1"
+      }
+    },
+    {
+      "module": "RetardedSourceSurvival284",
+      "artifact": {
+        "bytes": 289216,
+        "path": "runtime/storage/primary/Homework-runtime/audit-tmp/iqa-source-kraus-survival285/fourth-kernel-after-source-freeze-r0004/compiled/RetardedSourceSurvival284.olean",
+        "sha256": "efba2223939502b609ca2ca78be0691c0dc3cdf14e26582766f23e1bf8996b62"
+      }
+    },
+    {
+      "module": "SaturationMonoid.PhysicsCore.StageNineDiracMatterGalerkinEvolution",
+      "artifact": {
+        "bytes": 834568,
+        "path": "Lean/.lake/build/lib/lean/SaturationMonoid/PhysicsCore/StageNineDiracMatterGalerkinEvolution.olean",
+        "sha256": "5f0d2213610a3e274c16a103b07e1da6b31fb8e5235304b1ff4e5c260cf13882"
+      }
+    },
+    {
+      "module": "Mathlib.MeasureTheory.Constructions.Pi",
+      "artifact": {
+        "path": "Lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Constructions/Pi.olean",
+        "sha256": "41cf5ebef5e3c893ecd087941616197bfca39214dfb03f3aac04e77ccb7b7340",
+        "bytes": 424000
+      }
+    },
+    {
+      "module": "Mathlib.MeasureTheory.Integral.IntervalIntegral.FundThmCalculus",
+      "artifact": {
+        "path": "Lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Integral/IntervalIntegral/FundThmCalculus.olean",
+        "sha256": "affe0c6443f4912907b721e126e84072bfc560b6ea15946efdcafc949646590a",
+        "bytes": 329304
+      }
+    },
+    {
+      "module": "Mathlib.MeasureTheory.Measure.Lebesgue.Basic",
+      "artifact": {
+        "path": "Lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Measure/Lebesgue/Basic.olean",
+        "sha256": "3dac7a2cce6b64676170e75cc093b22e2beaa394b7d559fa5b6af64c508de0cb",
+        "bytes": 163072
+      }
+    },
+    {
+      "module": "Mathlib.MeasureTheory.Measure.WithDensity",
+      "artifact": {
+        "path": "Lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Measure/WithDensity.olean",
+        "sha256": "67fa317ced54b76a3973e618c249cc7ec316a286bfaf0bfd6e7da89a523dbed5",
+        "bytes": 154848
+      }
+    },
+    {
+      "module": "Mathlib.Topology.Order.ProjIcc",
+      "artifact": {
+        "path": "Lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Topology/Order/ProjIcc.olean",
+        "sha256": "e320c066c03c0c1af0658b22a20a76a51237ea3a6cbcfdb139dfc45fa2957007",
+        "bytes": 40792
+      }
+    },
+    {
+      "module": "Mathlib.MeasureTheory.Integral.Bochner.Set",
+      "artifact": {
+        "path": "Lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Integral/Bochner/Set.olean",
+        "sha256": "73940be60456a435c370a133ed715a6fd4230818cc482d340276cfde99f2bb70",
+        "bytes": 452256
+      }
+    },
+    {
+      "module": "Mathlib.MeasureTheory.Integral.Pi",
+      "artifact": {
+        "path": "Lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Integral/Pi.olean",
+        "sha256": "df4f7720a6bb5bfb6c23b4546ff69fbc2113068118e335d7ce3230c36b0038bd",
+        "bytes": 65688
+      }
+    },
+    {
+      "module": "Mathlib.MeasureTheory.Function.L2Space",
+      "artifact": {
+        "path": "Lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Function/L2Space.olean",
+        "sha256": "da3bf2f69b33ff42dc8a8775aa467c179c5a823a2dfe5a4643a3d7d8a0a2a95f",
+        "bytes": 259208
+      }
+    },
+    {
+      "module": "Mathlib.MeasureTheory.Integral.Bochner.SumMeasure",
+      "artifact": {
+        "path": "Lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Integral/Bochner/SumMeasure.olean",
+        "sha256": "a8fcd7f3da8a95ff54e5cd8328afe97cb02476f52bab53921b7f8db4afb34350",
+        "bytes": 71000
+      }
+    }
+  ],
+  "fixed_sources": [
+    {
+      "source": {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0008/SourceKrausWordSimplex290.lean",
+        "sha256": "ed33ce2bb30b66a24478aa9c395e4aea1906dc0b779e860db3c4ed2cdde8bfb0",
+        "bytes": 18561
+      },
+      "commit": "b0ca5793ce01c29ee945512e7d2d2167f56bac7d",
+      "mode": "100644",
+      "blob": "c97398600895492539dcf8eb8ef998826f81fa08"
+    },
+    {
+      "source": {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0008/criterion-r0008.md",
+        "sha256": "2b655e26cd42f6945da1ba534e4d9e2f10448920dcd056ece2734ca9786011a9",
+        "bytes": 2254
+      },
+      "commit": "b0ca5793ce01c29ee945512e7d2d2167f56bac7d",
+      "mode": "100644",
+      "blob": "ec5fc12cc0d9a8d9b8b1a6012b72fa76aaf79ecd"
+    },
+    {
+      "source": {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0008/prior-return/SourceKrausWordSimplex290/child.json",
+        "sha256": "087fa8be91575363b47bd7839c809fbdc8c0b8cba8df5ea8977028cbcfa4313b",
+        "bytes": 44
+      },
+      "commit": "b0ca5793ce01c29ee945512e7d2d2167f56bac7d",
+      "mode": "100644",
+      "blob": "48dfa7b86fc8233252d1ab293e794a83b8a82f29"
+    },
+    {
+      "source": {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0008/prior-return/SourceKrausWordSimplex290/complete.log",
+        "sha256": "4249ab34a256355d847925588e54c140c82363f309180f074fcf47e0d46ed4ac",
+        "bytes": 6884
+      },
+      "commit": "b0ca5793ce01c29ee945512e7d2d2167f56bac7d",
+      "mode": "100644",
+      "blob": "fbbb332ef0fbee1a977bfd06effc83e364ba01bd"
+    },
+    {
+      "source": {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0008/prior-return/SourceKrausWordSimplex290/natural-return.json",
+        "sha256": "7ac213d247ac59afa630cf9a75ede6f9c87f365eea46f28e8e5795f8ddde74eb",
+        "bytes": 3191
+      },
+      "commit": "b0ca5793ce01c29ee945512e7d2d2167f56bac7d",
+      "mode": "100644",
+      "blob": "cd4433615fa6be310ebc84248b3b40245f149de9"
+    },
+    {
+      "source": {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0008/prior-return/SourceKrausWordSimplex290/qualified-return.json",
+        "sha256": "c32abb16e06360efa594c71f94a8dfe60b147a54269ca121e0c893d0f4e8cea9",
+        "bytes": 5190
+      },
+      "commit": "b0ca5793ce01c29ee945512e7d2d2167f56bac7d",
+      "mode": "100644",
+      "blob": "b957cde1590337b04c9673bc8d2df36e228d0512"
+    },
+    {
+      "source": {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0008/prior-return/SourceKrausWordSimplex290/start.json",
+        "sha256": "4ccd6961e88beb2a673f562c907cff317256e2941088c9a3a49c3307ce48d02a",
+        "bytes": 4751
+      },
+      "commit": "b0ca5793ce01c29ee945512e7d2d2167f56bac7d",
+      "mode": "100644",
+      "blob": "9c376ba71ad18d87bab8880b8aefe14e63c34620"
+    },
+    {
+      "source": {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0008/prior-return/completion.json",
+        "sha256": "ae4ce809ca64acfdbf586037a10dbbaa4c696073a189284fac60b1c392a2611b",
+        "bytes": 15511
+      },
+      "commit": "b0ca5793ce01c29ee945512e7d2d2167f56bac7d",
+      "mode": "100644",
+      "blob": "55bdddfed14a6c1a3e7cb8ebd6260adb4672c6a0"
+    },
+    {
+      "source": {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0008/prior-return/kernel-host-source-freeze.json",
+        "sha256": "7727473024c9a76c461cc77c19809c9815a73db09b4bf7181ce6197cac3d1abe",
+        "bytes": 2153
+      },
+      "commit": "b0ca5793ce01c29ee945512e7d2d2167f56bac7d",
+      "mode": "100644",
+      "blob": "3f4484419b9c30bb5c90fcac95640428c0b3ed69"
+    },
+    {
+      "source": {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0008/prior-return/start.json",
+        "sha256": "9611bca6b37c57b36ebaadd201c280f2188e6261ae265d9013fef74e05e9e2b7",
+        "bytes": 870
+      },
+      "commit": "b0ca5793ce01c29ee945512e7d2d2167f56bac7d",
+      "mode": "100644",
+      "blob": "a950b1e1f8daa61a30a2d3e993f5c77ab6f6845c"
+    },
+    {
+      "source": {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0008/source-independent-review-evidence.json",
+        "sha256": "409197cd7f6878044a9b7373dd3b94b897a44b04332680c68809aaae2bd26e9f",
+        "bytes": 32529
+      },
+      "commit": "b0ca5793ce01c29ee945512e7d2d2167f56bac7d",
+      "mode": "100644",
+      "blob": "ae8b6f5b733cb42928ac6cf113218a6f49ce895a"
+    },
+    {
+      "source": {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0008/source-independent-review.json",
+        "sha256": "d52d0ae692993b4ce7e46d10efb6f307f8c0ecd28b7a949edaca8bb71757535c",
+        "bytes": 5075
+      },
+      "commit": "b0ca5793ce01c29ee945512e7d2d2167f56bac7d",
+      "mode": "100644",
+      "blob": "6fc99f844cd2d0da55eacb9303624baca76ca162"
+    },
+    {
+      "source": {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0008/source-plan-r0008.json",
+        "sha256": "c401890559ab366063eeb02ab6d743c3aa20981eaaaea25ffa98065b3d7d4682",
+        "bytes": 14292
+      },
+      "commit": "b0ca5793ce01c29ee945512e7d2d2167f56bac7d",
+      "mode": "100644",
+      "blob": "1ae42344aa23e07d6a5382c4ee3f3f22e04378d2"
+    },
+    {
+      "source": {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0008/source-stopped.json",
+        "sha256": "3c160efaf3c8f219924d3c50dfb5a353d15117e6b3fa159baec687c0b443fc55",
+        "bytes": 10338
+      },
+      "commit": "b0ca5793ce01c29ee945512e7d2d2167f56bac7d",
+      "mode": "100644",
+      "blob": "bf216e669f72d8eaa7bbf4ed154b341b777ec6ca"
+    },
+    {
+      "source": {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0008/whole-source-inverse.json",
+        "sha256": "1cf0fa6794b8632755a13ea141b352067a60d7992cbfc66ac4fa0bd0279ce1cd",
+        "bytes": 94130
+      },
+      "commit": "b0ca5793ce01c29ee945512e7d2d2167f56bac7d",
+      "mode": "100644",
+      "blob": "20d54b1bd3ac62eab363ab809f040cd240e187ff"
+    },
+    {
+      "source": {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0009/SourceKrausWordSimplex290.lean",
+        "sha256": "49f434b07e3d40d51d9b13dd27c5e5d10eb075a3083fc5274550ad17d4c2ee0a",
+        "bytes": 19567
+      },
+      "commit": "a3e9f86cb572d5e22dbc6d1e8faaf317b0cf5a72",
+      "mode": "100644",
+      "blob": "9e929e20719889430bd078f4e7a50380df12c34e"
+    },
+    {
+      "source": {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0009/criterion-r0009.md",
+        "sha256": "af3a40a2f5988373b8404afc5e41db5369fbf8a181592cf3e850ae1b7a11d1ca",
+        "bytes": 2201
+      },
+      "commit": "a3e9f86cb572d5e22dbc6d1e8faaf317b0cf5a72",
+      "mode": "100644",
+      "blob": "8897bc6a814fbfdad6aeee56f667806f083d6603"
+    },
+    {
+      "source": {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0009/prior-return/SourceKrausWordSimplex290/child.json",
+        "sha256": "1c464363123f12fa28379904c0b4b67ff64a4442aa1a8860d7e6754cebb225bd",
+        "bytes": 44
+      },
+      "commit": "a3e9f86cb572d5e22dbc6d1e8faaf317b0cf5a72",
+      "mode": "100644",
+      "blob": "912d70b3ad5d0de5d2ceebaa1676b6241f2b4e56"
+    },
+    {
+      "source": {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0009/prior-return/SourceKrausWordSimplex290/complete.log",
+        "sha256": "d9d8893099ae387fa7d351f2384703fc8986b7c92f0ec32f3feb9e619d4cafdb",
+        "bytes": 5599
+      },
+      "commit": "a3e9f86cb572d5e22dbc6d1e8faaf317b0cf5a72",
+      "mode": "100644",
+      "blob": "2283b89175be735ea824202d55d983e644a0eeef"
+    },
+    {
+      "source": {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0009/prior-return/SourceKrausWordSimplex290/natural-return.json",
+        "sha256": "121274392de3e1278f2d6074875f4bd9ff92f4806e9df82de0d18a08b2498661",
+        "bytes": 3319
+      },
+      "commit": "a3e9f86cb572d5e22dbc6d1e8faaf317b0cf5a72",
+      "mode": "100644",
+      "blob": "7ad1b5f49bf9073adb19190fca88afddae0a6c98"
+    },
+    {
+      "source": {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0009/prior-return/SourceKrausWordSimplex290/qualified-return.json",
+        "sha256": "f8e681099bbb77379b3b5beb08b658bbdd286fdd30b74aa4776fd6e10f213707",
+        "bytes": 5176
+      },
+      "commit": "a3e9f86cb572d5e22dbc6d1e8faaf317b0cf5a72",
+      "mode": "100644",
+      "blob": "40999283b9b05abc9f6a8b1891657d767a53fd2e"
+    },
+    {
+      "source": {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0009/prior-return/SourceKrausWordSimplex290/start.json",
+        "sha256": "93fe1af19255e5fe89c2286dfe7f79917b5b19ac40bee2949659ec6fcf6550f1",
+        "bytes": 4886
+      },
+      "commit": "a3e9f86cb572d5e22dbc6d1e8faaf317b0cf5a72",
+      "mode": "100644",
+      "blob": "8a4cc63ceec4087ae4b953983928096bdd17c2b9"
+    },
+    {
+      "source": {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0009/prior-return/completion.json",
+        "sha256": "4b63532ab8f88721e16ff43773f1c0a4de2d892059cdf4885573951036e52fe8",
+        "bytes": 5993
+      },
+      "commit": "a3e9f86cb572d5e22dbc6d1e8faaf317b0cf5a72",
+      "mode": "100644",
+      "blob": "1a53cc76d4b5b51a6dfdf04354af45d044add288"
+    },
+    {
+      "source": {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0009/prior-return/kernel-host-source-freeze.json",
+        "sha256": "6b122e17c7b4d5763bec2f5beee9bf6a7de3865f5edc6a39fe5ad2c8430cbcad",
+        "bytes": 4323
+      },
+      "commit": "a3e9f86cb572d5e22dbc6d1e8faaf317b0cf5a72",
+      "mode": "100644",
+      "blob": "cf380077a8ea85e539ac010d8de09cdf609064da"
+    },
+    {
+      "source": {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0009/prior-return/start.json",
+        "sha256": "7140b76bbaad164173c331987bbf4044ce9da66183664ac5f58f3a33a572883c",
+        "bytes": 878
+      },
+      "commit": "a3e9f86cb572d5e22dbc6d1e8faaf317b0cf5a72",
+      "mode": "100644",
+      "blob": "8482aeae6f2f2da676e420ea38b049c58030586a"
+    },
+    {
+      "source": {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0009/source-independent-review-evidence.json",
+        "sha256": "7a019df7f2fe75de124cf13c403c5cf3a27fa90b55ea77dc475d705475a9e9bc",
+        "bytes": 29754
+      },
+      "commit": "a3e9f86cb572d5e22dbc6d1e8faaf317b0cf5a72",
+      "mode": "100644",
+      "blob": "fe76024700efdd8a6d947f5877472c35397f41d5"
+    },
+    {
+      "source": {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0009/source-independent-review.json",
+        "sha256": "ddd0bbe0e374983d7813efb72e23385088094c905480b6484c6468a1b5049ef7",
+        "bytes": 5758
+      },
+      "commit": "a3e9f86cb572d5e22dbc6d1e8faaf317b0cf5a72",
+      "mode": "100644",
+      "blob": "8a6bbf44c9115e8838931871b671260f31fa1868"
+    },
+    {
+      "source": {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0009/source-plan-r0009.json",
+        "sha256": "e32aaf6d9cb37a7bd8d4a53ea1feea6d982e4ca2857496b1f38664000bcead5f",
+        "bytes": 13111
+      },
+      "commit": "a3e9f86cb572d5e22dbc6d1e8faaf317b0cf5a72",
+      "mode": "100644",
+      "blob": "9369bbb581a610cd171ec867401e627d01619704"
+    },
+    {
+      "source": {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0009/source-stopped.json",
+        "sha256": "6fc6994cb08bcf2f08b99c41ab0b1fba43714f220acb7cfe3d6298037f52c13d",
+        "bytes": 10591
+      },
+      "commit": "a3e9f86cb572d5e22dbc6d1e8faaf317b0cf5a72",
+      "mode": "100644",
+      "blob": "74e03cd9c426a5cc7344baf7402a401e70713ab2"
+    },
+    {
+      "source": {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0009/whole-source-inverse.json",
+        "sha256": "5de9dffa2c05fe168c170d13f267be09a09f2cf0e5ecd6e71a3f8669a68aa1be",
+        "bytes": 90824
+      },
+      "commit": "a3e9f86cb572d5e22dbc6d1e8faaf317b0cf5a72",
+      "mode": "100644",
+      "blob": "7d01d354ece81a688c5c81c869bc0cf33ba8ff43"
+    },
+    {
+      "source": {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0010/SourceKrausWordSimplex290.lean",
+        "sha256": "92e2901e364132126264a8c1813d4de4d195b3a5bfa5b308202315d6716e2d4c",
+        "bytes": 19578
+      },
+      "commit": "01f114f0626cef169c1378823ebf2507a8ad47ad",
+      "mode": "100644",
+      "blob": "2be7d215890ae81ff2319854f1909c240d590a89"
+    },
+    {
+      "source": {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0010/criterion-r0010.md",
+        "sha256": "ff541d0e4fd4b1ed053bdf99828bb16acea3504bc35057749ac2883782562651",
+        "bytes": 1495
+      },
+      "commit": "01f114f0626cef169c1378823ebf2507a8ad47ad",
+      "mode": "100644",
+      "blob": "8aa0a59a5ecf108784eb591c20a64e7a9a71c49b"
+    },
+    {
+      "source": {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0010/prior-return/SourceKrausWordSimplex290/child.json",
+        "sha256": "c0e1a6363eb0a6d67801268e250ca59b19e1dddf742b83b42d31be120dcb3589",
+        "bytes": 44
+      },
+      "commit": "01f114f0626cef169c1378823ebf2507a8ad47ad",
+      "mode": "100644",
+      "blob": "3e10cacaf136189898ba094731af7931fc24d8c2"
+    },
+    {
+      "source": {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0010/prior-return/SourceKrausWordSimplex290/complete.log",
+        "sha256": "1d0af7069d3b7652b9a1caae02513d9af25e3f33ccccec8206a623288d2509c9",
+        "bytes": 1796
+      },
+      "commit": "01f114f0626cef169c1378823ebf2507a8ad47ad",
+      "mode": "100644",
+      "blob": "20e05b97363a3f284657b34830f3e533f4457de4"
+    },
+    {
+      "source": {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0010/prior-return/SourceKrausWordSimplex290/natural-return.json",
+        "sha256": "b39a95e1dbcfba0cf1e50380ece2dd2325cef95917459a73bb97238af6c0fbef",
+        "bytes": 3343
+      },
+      "commit": "01f114f0626cef169c1378823ebf2507a8ad47ad",
+      "mode": "100644",
+      "blob": "b66509fd393208f02fb27e96a276ba47c3f95db5"
+    },
+    {
+      "source": {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0010/prior-return/SourceKrausWordSimplex290/qualified-return.json",
+        "sha256": "e65d9b781b541f40442645605e34fa0faa311f4f0b789d0b7572ba0131aaf3eb",
+        "bytes": 5192
+      },
+      "commit": "01f114f0626cef169c1378823ebf2507a8ad47ad",
+      "mode": "100644",
+      "blob": "4ec3ec11854b4dbfeaad8a8875c30b033bb70738"
+    },
+    {
+      "source": {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0010/prior-return/SourceKrausWordSimplex290/start.json",
+        "sha256": "52f39de7e3eee8d6767573f9630cc93bd2946a5f85e85bc99919ddae131a230d",
+        "bytes": 4902
+      },
+      "commit": "01f114f0626cef169c1378823ebf2507a8ad47ad",
+      "mode": "100644",
+      "blob": "48ec0a35582e83576102f59471bd77d0b28560ee"
+    },
+    {
+      "source": {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0010/prior-return/completion.json",
+        "sha256": "70c4ed0981ee4621639136c67e2a89f0a5b8825946548939dec53f1626ca6511",
+        "bytes": 6009
+      },
+      "commit": "01f114f0626cef169c1378823ebf2507a8ad47ad",
+      "mode": "100644",
+      "blob": "f5298556caa1a9f22b2e162b8aa4f4d4db82923f"
+    },
+    {
+      "source": {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0010/prior-return/kernel-host-source-freeze.json",
+        "sha256": "f1d2fe4898e1193dee6ba6efae6f684b8c06d8b17913dff5b231601af87a4122",
+        "bytes": 2153
+      },
+      "commit": "01f114f0626cef169c1378823ebf2507a8ad47ad",
+      "mode": "100644",
+      "blob": "ad8c67c12943711b4aa9ce411c6f2dd1bb4434fb"
+    },
+    {
+      "source": {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0010/prior-return/start.json",
+        "sha256": "1ee3ac6c4b73de1e2360faee126e71124e28871b88b2f3a35e2967cb3dfd9f1a",
+        "bytes": 878
+      },
+      "commit": "01f114f0626cef169c1378823ebf2507a8ad47ad",
+      "mode": "100644",
+      "blob": "bbecdfe1ca1f603a4d4dfd919331379e7125bb02"
+    },
+    {
+      "source": {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0010/source-independent-review-evidence.json",
+        "sha256": "f760ed0fbd274d4f71f9f79ba3c7f42c1f8f934501504ad281224d085d00e060",
+        "bytes": 21485
+      },
+      "commit": "01f114f0626cef169c1378823ebf2507a8ad47ad",
+      "mode": "100644",
+      "blob": "238d57702ec456786878467a04c251a4c245aa21"
+    },
+    {
+      "source": {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0010/source-independent-review.json",
+        "sha256": "6a3bacf48d913ee0a92855384d9b5dd9e7e6a231ffb4ac889f2495490fc2df28",
+        "bytes": 5794
+      },
+      "commit": "01f114f0626cef169c1378823ebf2507a8ad47ad",
+      "mode": "100644",
+      "blob": "d191b847aafbacaa6089a75bcb88a155f3047f68"
+    },
+    {
+      "source": {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0010/source-plan-r0010.json",
+        "sha256": "3b981d043c6b1c3279c9651008f6b2baac66ae217e7225e37377c0b0073a15fd",
+        "bytes": 12875
+      },
+      "commit": "01f114f0626cef169c1378823ebf2507a8ad47ad",
+      "mode": "100644",
+      "blob": "84c096c5b3d9695a0f3f84d06141dd9aa3a554cf"
+    },
+    {
+      "source": {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0010/source-stopped.json",
+        "sha256": "446f9a39b8099afc0818f9296d64c528a5d4e4b09ae5bbf140f0469394a62a15",
+        "bytes": 11149
+      },
+      "commit": "01f114f0626cef169c1378823ebf2507a8ad47ad",
+      "mode": "100644",
+      "blob": "e795cb10f39df8f1cf441d55a157b936944c0c33"
+    },
+    {
+      "source": {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0010/whole-source-inverse.json",
+        "sha256": "17c0df4b9ac62741926ac712b4458536b1cc5ef99f18b6055f54fb785deb755b",
+        "bytes": 86525
+      },
+      "commit": "01f114f0626cef169c1378823ebf2507a8ad47ad",
+      "mode": "100644",
+      "blob": "736eacabd8ff81a0c0164838e63436db07ad80d0"
+    },
+    {
+      "source": {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/kernel-host-r0009/criterion.md",
+        "sha256": "be500e6879839fc601a16e1cfa6cb8d5aa0504c5f1e35c1478b0a8df0174cae3",
+        "bytes": 539
+      },
+      "commit": "9e83b9eef883a1886522546de87c9bbc0ce34c52",
+      "mode": "100644",
+      "blob": "2497147b0026dbd44e73067b7e6f1b4de0ca10e1"
+    },
+    {
+      "source": {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/kernel-host-r0009/execution-plan.json",
+        "sha256": "e98bc1eb6099b46deb0129a54cfcdbf7532dedc47b7cb34edd319d3662dc5141",
+        "bytes": 39399
+      },
+      "commit": "9e83b9eef883a1886522546de87c9bbc0ce34c52",
+      "mode": "100644",
+      "blob": "6fe14f65ead74e9da2d6c903400f732bc25cf1d5"
+    },
+    {
+      "source": {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/kernel-host-r0009/run-kernels.py",
+        "sha256": "7aaff58a01dfe7d776e93cf6834931dae91a84c001b08c1af8cd771c17b194ba",
+        "bytes": 7417
+      },
+      "commit": "9e83b9eef883a1886522546de87c9bbc0ce34c52",
+      "mode": "100644",
+      "blob": "9d08082378a451660e06012938e241de80ad1d30"
+    },
+    {
+      "source": {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/kernel-host-r0009/source-independent-review-evidence.json",
+        "sha256": "feffa7de3aecc72d28d9b56cbc4b0c6a73943d1b66a613a22d0b0bfd580902d5",
+        "bytes": 42077
+      },
+      "commit": "9e83b9eef883a1886522546de87c9bbc0ce34c52",
+      "mode": "100644",
+      "blob": "4a60b08dbbad5b3630e39456189f48897fa9c626"
+    },
+    {
+      "source": {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/kernel-host-r0009/source-independent-review.json",
+        "sha256": "6c1910500d1d3e48c222dee9fff490d66432fd43bde8ec081958fb880a40f4cd",
+        "bytes": 3568
+      },
+      "commit": "9e83b9eef883a1886522546de87c9bbc0ce34c52",
+      "mode": "100644",
+      "blob": "50c044b30f828b7b31efe51e128f55b20f76c65e"
+    },
+    {
+      "source": {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/kernel-host-r0009/source-stopped.json",
+        "sha256": "7efa93b404f94751be531893423eeb89c5b33a9996b60e10253ac50a9c482a42",
+        "bytes": 1271
+      },
+      "commit": "9e83b9eef883a1886522546de87c9bbc0ce34c52",
+      "mode": "100644",
+      "blob": "fccd89cc44c5bae5dc17a9ac435a6e7a8914a117"
+    },
+    {
+      "source": {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-hidden-word-flow-rha0286/source-r0009/SourceHiddenWordFlow286.lean",
+        "sha256": "0d16b05b50e24faf8938805420691133a5da398e2d4bbfc41a9ca78538b94eda",
+        "bytes": 26269
+      },
+      "commit": "5a407445fc3a6c895630110e7bf2a4e8ef074a71",
+      "mode": "100644",
+      "blob": "80d189038dfd83214a3701299687d905278e81a4"
+    },
+    {
+      "source": {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-kraus-survival-rha0285/source-r0006/SourceKrausSurvival285.lean",
+        "sha256": "309918c8dfd1c59ab8a722fbe3afedce042d645e5acb8b352f3464dd000fa395",
+        "bytes": 12179
+      },
+      "commit": "7c8399ec17626db8d00fd7e615737e9b48f9eb5c"
+    },
+    {
+      "source": {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-kraus-survival-rha0285/source-r0004/RetardedSourceSurvival284.lean",
+        "sha256": "e72e689f233ebb8e724c3eda8118bf805cd993578a4f92811eb72102d282ec5e",
+        "bytes": 4841
+      },
+      "commit": "b42a67795ed528036e5e1e2310af754529ddbb28"
+    },
+    {
+      "source": {
+        "path": "Lean/SaturationMonoid/PhysicsCore/StageNineDiracMatterGalerkinEvolution.lean",
+        "sha256": "7b21b5349634702ee838d10ed40d599315aabbe093307e2ebb4e8a0ac278f15c",
+        "bytes": 41672
+      },
+      "commit": "7c8399ec17626db8d00fd7e615737e9b48f9eb5c"
+    },
+    {
+      "source": {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0007/SourceKrausWordMass289.lean",
+        "sha256": "718f3f44ee5fef1030fed78b1214dc1220ae7c66151b1642f0628c5ad0253c9e",
+        "bytes": 19530
+      },
+      "commit": "3dba7b8841f8802dcde4cef2047312ad20317cef"
+    },
+    {
+      "source": {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0007/SourceKrausWordSimplex290.lean",
+        "sha256": "731dfa8ba32556f1722fd2fc88fedc89f719fd86d6c92b4fd9f4bddcc35c326e",
+        "bytes": 17008
+      },
+      "commit": "3dba7b8841f8802dcde4cef2047312ad20317cef"
+    },
+    {
+      "source": {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-kraus-word-wave-rha0291/source-r0004/SOURCE-STOP-r0004.json",
+        "sha256": "bac62d2e86d3943b85d7107c787e22429d94b8fff7f539a9a6e418eeb423bab2",
+        "bytes": 17614
+      },
+      "commit": "fa2085ee1fda4f01f8ff6c50a2a6a5f91fe3cbf5"
+    },
+    {
+      "source": {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-kraus-word-wave-rha0291/source-r0004/SourceKrausWordWave291.lean",
+        "sha256": "e7350e57bbd5e43efea50a0541d5f2452bffde6b74d678d5b206162b7f645ae6",
+        "bytes": 10393
+      },
+      "commit": "fa2085ee1fda4f01f8ff6c50a2a6a5f91fe3cbf5"
+    },
+    {
+      "source": {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-kraus-word-wave-rha0291/source-r0004/criterion-r0004.md",
+        "sha256": "8ed21fe83d5d9dcc6d7d49fec2d02eb7eae826bc46e10a2d288d6384106967da",
+        "bytes": 1654
+      },
+      "commit": "fa2085ee1fda4f01f8ff6c50a2a6a5f91fe3cbf5"
+    },
+    {
+      "source": {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-kraus-word-wave-rha0291/source-r0004/prior-return/SourceKrausWordWave291/child.json",
+        "sha256": "4353ce5b3eade2a5bf566cd1d980f5856cc370d0e7202cce57f187a3dfcf261d",
+        "bytes": 44
+      },
+      "commit": "fa2085ee1fda4f01f8ff6c50a2a6a5f91fe3cbf5"
+    },
+    {
+      "source": {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-kraus-word-wave-rha0291/source-r0004/prior-return/SourceKrausWordWave291/complete.log",
+        "sha256": "68c009c26070182dcb11feadd7dfd19b7e2290363cdb64e9dc6b86188165de63",
+        "bytes": 3561
+      },
+      "commit": "fa2085ee1fda4f01f8ff6c50a2a6a5f91fe3cbf5"
+    },
+    {
+      "source": {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-kraus-word-wave-rha0291/source-r0004/prior-return/SourceKrausWordWave291/natural-return.json",
+        "sha256": "67db6b9013cbde83b0376e80f474381ee81356c09f362ffbd13de95e12f27c4a",
+        "bytes": 3464
+      },
+      "commit": "fa2085ee1fda4f01f8ff6c50a2a6a5f91fe3cbf5"
+    },
+    {
+      "source": {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-kraus-word-wave-rha0291/source-r0004/prior-return/SourceKrausWordWave291/qualified-return.json",
+        "sha256": "c003c9c8b189990cedf2b22aaa2b9260704b841614eb200b350c4190cf7e6cd1",
+        "bytes": 6382
+      },
+      "commit": "fa2085ee1fda4f01f8ff6c50a2a6a5f91fe3cbf5"
+    },
+    {
+      "source": {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-kraus-word-wave-rha0291/source-r0004/prior-return/SourceKrausWordWave291/start.json",
+        "sha256": "3cd0f7309aebd4a0b2621204723a0c874b3b2de8b605353588d3367af9b67be6",
+        "bytes": 5718
+      },
+      "commit": "fa2085ee1fda4f01f8ff6c50a2a6a5f91fe3cbf5"
+    },
+    {
+      "source": {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-kraus-word-wave-rha0291/source-r0004/prior-return/completion.json",
+        "sha256": "8aac060d17a048eab348c7b8ab86e1b822124e0a7401ba608521d7f38dfae8cf",
+        "bytes": 7287
+      },
+      "commit": "fa2085ee1fda4f01f8ff6c50a2a6a5f91fe3cbf5"
+    },
+    {
+      "source": {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-kraus-word-wave-rha0291/source-r0004/prior-return/start.json",
+        "sha256": "db4ab9dd39adb9f233fe9537c2cfed00d72d08d2564ee8ae20429914bd9173b6",
+        "bytes": 811
+      },
+      "commit": "fa2085ee1fda4f01f8ff6c50a2a6a5f91fe3cbf5"
+    },
+    {
+      "source": {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-kraus-word-wave-rha0291/source-r0004/source-independent-review-evidence.json",
+        "sha256": "0aad16c5513175dee33aa4023040e2e566339a1a9206b117f2f4587802663099",
+        "bytes": 46427
+      },
+      "commit": "fa2085ee1fda4f01f8ff6c50a2a6a5f91fe3cbf5"
+    },
+    {
+      "source": {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-kraus-word-wave-rha0291/source-r0004/source-independent-review.json",
+        "sha256": "8b3a503ecd1dab771750028105899d7f972880e8153a1259c0e350b9c7289ccf",
+        "bytes": 4630
+      },
+      "commit": "fa2085ee1fda4f01f8ff6c50a2a6a5f91fe3cbf5"
+    },
+    {
+      "source": {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-kraus-word-wave-rha0291/source-r0004/source-plan-r0004.json",
+        "sha256": "67d54cfe66cb01ddba764c671342fbe87dd29aae04c11b08bdb8055cff9693b5",
+        "bytes": 17455
+      },
+      "commit": "fa2085ee1fda4f01f8ff6c50a2a6a5f91fe3cbf5"
+    },
+    {
+      "source": {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-kraus-word-wave-rha0291/source-r0004/whole-source-inverse-r0004.json",
+        "sha256": "e355470293e20509e3d3df8d3d2c7a33ab1a84c09a576e6d285cef214e4ab258",
+        "bytes": 104287
+      },
+      "commit": "fa2085ee1fda4f01f8ff6c50a2a6a5f91fe3cbf5"
+    },
+    {
+      "source": {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-kraus-word-wave-rha0291/kernel-host-r0002/criterion.md",
+        "sha256": "2d6aa51d0a4b103906e3196731974ea7b32eaa40c29f927c6c6a86548f712c5c",
+        "bytes": 652
+      },
+      "commit": "131da598f9a885bba039adfc2d253fab68be24c6"
+    },
+    {
+      "source": {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-kraus-word-wave-rha0291/kernel-host-r0002/execution-plan.json",
+        "sha256": "8679765ebf38c5dbb817365a697cede23be81e09a9200c92324d65fc03e7a496",
+        "bytes": 68146
+      },
+      "commit": "131da598f9a885bba039adfc2d253fab68be24c6"
+    },
+    {
+      "source": {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-kraus-word-wave-rha0291/kernel-host-r0002/run-kernels.py",
+        "sha256": "7aaff58a01dfe7d776e93cf6834931dae91a84c001b08c1af8cd771c17b194ba",
+        "bytes": 7417
+      },
+      "commit": "131da598f9a885bba039adfc2d253fab68be24c6"
+    },
+    {
+      "source": {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-kraus-word-wave-rha0291/kernel-host-r0002/source-independent-review-evidence.json",
+        "sha256": "87c4feb3d968e0d1327e6a16210a3f26a61c7f943f8a944246e35996ff578e6a",
+        "bytes": 34390
+      },
+      "commit": "131da598f9a885bba039adfc2d253fab68be24c6"
+    },
+    {
+      "source": {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-kraus-word-wave-rha0291/kernel-host-r0002/source-independent-review.json",
+        "sha256": "03253bb01ec45af8ac1715d84c920b799d2835085d2901fcb16574ab0f128c59",
+        "bytes": 3700
+      },
+      "commit": "131da598f9a885bba039adfc2d253fab68be24c6"
+    },
+    {
+      "source": {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-kraus-word-wave-rha0291/kernel-host-r0002/source-stopped.json",
+        "sha256": "c8ee906497f63fe45f14dc0ee1044b8bdea023e53945b26a6a2fdec2dad06312",
+        "bytes": 1264
+      },
+      "commit": "131da598f9a885bba039adfc2d253fab68be24c6"
+    }
+  ],
+  "qualified_roots_first": [
+    "runtime/storage/primary/Homework-runtime/audit-tmp/iqa-source-kraus-word-wave291/second-complete-word-wave-kernel-after-actual-term-repair-r0004/compiled",
+    "runtime/storage/primary/Homework-runtime/audit-tmp/iqa-source-word-mass-simplex289-290/third-simplex-only-kernel-after-function-presentation-repair-r0010/compiled",
+    "runtime/storage/primary/Homework-runtime/audit-tmp/iqa-source-word-mass-simplex289-290/fifth-kernel-after-canonical-coercion-source-repair-r0007/compiled",
+    "runtime/storage/primary/Homework-runtime/audit-tmp/iqa-source-hidden-word-flow286/fifth-kernel-after-source-freeze-r0009/compiled",
+    "runtime/storage/primary/Homework-runtime/audit-tmp/iqa-source-kraus-survival285/sixth-kernel-after-source-freeze-r0006/compiled",
+    "runtime/storage/primary/Homework-runtime/audit-tmp/iqa-source-kraus-survival285/fourth-kernel-after-source-freeze-r0004/compiled"
+  ],
+  "lookup_contract": "Reuse the signed actual294/actual292/286r2 mechanism. AfterLake explicit LEAN_PATH puts new290 and exact qualified289/286/285/284 flat roots before defaults; real first top-level package root checked against each module artifact before/after. Both290 and289 resolve to their originally paid distinct artifacts.",
+  "helper": {
+    "path": "Lean/scripts/cached_lean.py",
+    "sha256": "90e118784831c4b3ccbb09317505246ee63ae90e95bce1d92a3aa819b9e9cebb",
+    "bytes": 12162
+  },
+  "helper_role": "Only library roots, compiler metadata and dependency fingerprints; no compile_cached/uncached call.",
+  "compiler_githash": "d8b18978322de05a8f3dba51ef03cf5461676c17",
+  "lake_context": [
+    {
+      "path": "Lean/lean-toolchain",
+      "sha256": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+      "bytes": 25
+    },
+    {
+      "path": "Lean/lakefile.toml",
+      "sha256": "f109e0aa55ba804b4dc5ee7879c3ba0ea7ebae186768453d79acdffdfd9e0d42",
+      "bytes": 43738
+    },
+    {
+      "path": "Lean/lake-manifest.json",
+      "sha256": "aa60b347daf17a642d027cda3288f7d6f12c176c4ddd2677c28140daadb15c81",
+      "bytes": 5008
+    }
+  ],
+  "expected_query_dependencies": [
+    {
+      "module": "SourceKrausWordWave291",
+      "sha256": "9a508ef5ad75a90369b03041364e26c415e26d76785e2f09aac4e470da7afa6b"
+    }
+  ],
+  "verify_before_query": [
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-hidden-word-flow-rha0286/certify-r0002/final-certification.json",
+      "sha256": "bb671e51509ea9341d36747b9e1944e87905942ed32dacb72b329602f0f9b29b",
+      "bytes": 12644
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-hidden-word-flow-rha0286/certify-r0002/final-certification-evidence.json",
+      "sha256": "3383298a8b531d7713a5964634b6d9c2deed18437a98cf40cfbe3ed860e18f4e",
+      "bytes": 156379
+    },
+    {
+      "path": "runtime/storage/primary/Homework-runtime/audit-tmp/iqa-source-hidden-word-flow286/fifth-kernel-after-source-freeze-r0009/SourceHiddenWordFlow286-return.json",
+      "sha256": "90f7947fead861e646d2095300af0c1346d67e2f0766991b14c1c79a59f2d12b",
+      "bytes": 2429
+    },
+    {
+      "path": "runtime/storage/primary/Homework-runtime/audit-tmp/iqa-source-hidden-word-flow286/fifth-kernel-after-source-freeze-r0009/completion.json",
+      "sha256": "b60b7ff555c1771c3bcd5be30c2b04e33c8a0c234f1cc84ea8d6917dd6b18291",
+      "bytes": 553
+    },
+    {
+      "path": "runtime/storage/primary/Homework-runtime/audit-tmp/iqa-source-hidden-word-flow286/fifth-kernel-after-source-freeze-r0009/SourceHiddenWordFlow286.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "runtime/storage/primary/Homework-runtime/audit-tmp/iqa-source-hidden-word-flow286/fifth-kernel-after-source-freeze-r0009/start.json",
+      "sha256": "acb9caf14460753931a1d1f86c233d5ae4e90d32f31f1651bd65b6dd0cb7a4df",
+      "bytes": 4234
+    },
+    {
+      "path": ".agents/tmp/instrument-recovery119/source-hidden-word-flow286-certify-r0002/source-freeze.json",
+      "sha256": "dba9e911417884efcb80db9ed0bc506cf4af9d9618a8b3b7f5db55af9ca07b4c",
+      "bytes": 14026
+    },
+    {
+      "path": ".agents/tmp/instrument-recovery119/source-hidden-word-flow286-certify-r0002/source-stopped.json",
+      "sha256": "f1bab0740bf614eae76a289204c33319352816f36d78fc021800b102872c5b40",
+      "bytes": 12177
+    },
+    {
+      "path": ".agents/tmp/instrument-recovery119/source-hidden-word-flow286-certify-r0002/root-source-review.json",
+      "sha256": "831f2023ea314c023490b4d1918b3517d59ee79dd843f9d8a6ca360542848cf6",
+      "bytes": 1901
+    },
+    {
+      "path": "runtime/storage/primary/Homework-runtime/audit-tmp/iqa-source-hidden-word-flow286/final-certify-query-after-source-freeze-r0002/natural-return.json",
+      "sha256": "c22a2732723111fb1555dfc82d3cc9e138eb2407984bebf46d0f937be6bfb6b1",
+      "bytes": 5293
+    },
+    {
+      "path": "runtime/storage/primary/Homework-runtime/audit-tmp/iqa-source-hidden-word-flow286/final-certify-query-after-source-freeze-r0002/query-return.json",
+      "sha256": "a4cc643c9b698dfadbba696910d635b334a549942d24bc1eab0eecf633013f18",
+      "bytes": 15295
+    },
+    {
+      "path": "runtime/storage/primary/Homework-runtime/audit-tmp/iqa-source-hidden-word-flow286/final-certify-query-after-source-freeze-r0002/query.log",
+      "sha256": "018781cc024b56bb5e21be32736a71b041d766bef6d2605db8720fa118cb1f1b",
+      "bytes": 59218
+    },
+    {
+      "path": "runtime/storage/primary/Homework-runtime/audit-tmp/iqa-source-hidden-word-flow286/fifth-kernel-after-source-freeze-r0009/compiled/SourceHiddenWordFlow286.olean",
+      "sha256": "6c2a45125a28eb5f66d6d9a04459015ffb909b0eed30d02d8ab90a6bb3f99359",
+      "bytes": 1178376
+    },
+    {
+      "bytes": 809944,
+      "path": "runtime/storage/primary/Homework-runtime/audit-tmp/iqa-source-kraus-survival285/sixth-kernel-after-source-freeze-r0006/compiled/SourceKrausSurvival285.olean",
+      "sha256": "27f603bdb340a8946829334b73d368156939034046c8cbe2b2d826c45c498ef1"
+    },
+    {
+      "bytes": 289216,
+      "path": "runtime/storage/primary/Homework-runtime/audit-tmp/iqa-source-kraus-survival285/fourth-kernel-after-source-freeze-r0004/compiled/RetardedSourceSurvival284.olean",
+      "sha256": "efba2223939502b609ca2ca78be0691c0dc3cdf14e26582766f23e1bf8996b62"
+    },
+    {
+      "bytes": 834568,
+      "path": "Lean/.lake/build/lib/lean/SaturationMonoid/PhysicsCore/StageNineDiracMatterGalerkinEvolution.olean",
+      "sha256": "5f0d2213610a3e274c16a103b07e1da6b31fb8e5235304b1ff4e5c260cf13882"
+    },
+    {
+      "path": "Lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Constructions/Pi.olean",
+      "sha256": "41cf5ebef5e3c893ecd087941616197bfca39214dfb03f3aac04e77ccb7b7340",
+      "bytes": 424000
+    },
+    {
+      "path": "Lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Integral/IntervalIntegral/FundThmCalculus.olean",
+      "sha256": "affe0c6443f4912907b721e126e84072bfc560b6ea15946efdcafc949646590a",
+      "bytes": 329304
+    },
+    {
+      "path": "Lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Measure/Lebesgue/Basic.olean",
+      "sha256": "3dac7a2cce6b64676170e75cc093b22e2beaa394b7d559fa5b6af64c508de0cb",
+      "bytes": 163072
+    },
+    {
+      "path": "Lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Measure/WithDensity.olean",
+      "sha256": "67fa317ced54b76a3973e618c249cc7ec316a286bfaf0bfd6e7da89a523dbed5",
+      "bytes": 154848
+    },
+    {
+      "path": "Lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Topology/Order/ProjIcc.olean",
+      "sha256": "e320c066c03c0c1af0658b22a20a76a51237ea3a6cbcfdb139dfc45fa2957007",
+      "bytes": 40792
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0002/source-independent-review.json",
+      "sha256": "116bfab46d245b7c65c635774e53a1ea6a6158e771f8e95ece3adcfcc0024e95",
+      "bytes": 3874
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0002/source-independent-review-evidence.json",
+      "sha256": "8694adbb8330f59ee45250a9c9626458417d0db7d6e689bfdbde81ac57857169",
+      "bytes": 26535
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0002/source-stopped.json",
+      "sha256": "2312cf45791927c80fb7e763385095ef5a4a37ee3aeda198f65eb8c6199cd5dd",
+      "bytes": 9333
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-native-kraus-window-rha0292/source-r0001/source-independent-review.json",
+      "sha256": "b47a57bf14f2d731c52bda91318558b020503212c25c44e6f2fa10e216c354f3",
+      "bytes": 4553
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-native-kraus-window-rha0292/source-r0001/source-independent-review-evidence.json",
+      "sha256": "89d2eb7f8435c5b5d775e681da2538ee9a53791bbe8b95276a52e6edf88899f2",
+      "bytes": 21670
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-native-kraus-window-rha0292/source-r0001/source-stopped.json",
+      "sha256": "e1252aa3205780c52bac6d5442d2a5ae4ba09785b87f8426b157f28110214770",
+      "bytes": 12803
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0004/source-stopped.json",
+      "sha256": "cd0381389580173ea0674d8c2ee220b53a78429da1a6e4d5dc46f05ea2b30d10",
+      "bytes": 4850
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0004/source-independent-review.json",
+      "sha256": "e48472c7a74d946db5659c09d2217d48894746391ac78a5575b56fe482ed69d6",
+      "bytes": 4442
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0004/source-independent-review-evidence.json",
+      "sha256": "ecbca5c0e8501cdb730f29a4d8990077c256efa0df0625584b6d59430153e20f",
+      "bytes": 19851
+    },
+    {
+      "path": ".agents/tmp/instrument-recovery119/source-word-mass-simplex289-290-r0004/source-freeze.json",
+      "sha256": "e454b56effc682fd6cab846010cbe7c4a5de4508aa8c0c6e4887e42e5b6146b7",
+      "bytes": 6883
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0004/prior-return/start.json",
+      "sha256": "17bac3d7761f1324cc80bae662c72cea14fd65f7474f51c54fee0123702f50cb",
+      "bytes": 870
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0004/prior-return/completion.json",
+      "sha256": "d0417a5049c532d1510e368c2b7252a12109b5542a71085dc8d9f29455407a16",
+      "bytes": 9581
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0004/prior-return/SourceKrausWordMass289/complete.log",
+      "sha256": "3fcde214e46494fcba97da8a75eac6deacf152ede79db3a1733e20c104ba9005",
+      "bytes": 7134
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0004/prior-return/SourceKrausWordMass289/natural-return.json",
+      "sha256": "49a8e25226723740e8b41c059bf334ccfdfbbcb660a2d03ff3b89c1e3a0d6129",
+      "bytes": 3149
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0004/prior-return/SourceKrausWordMass289/qualified-return.json",
+      "sha256": "dfb112e861ed73c674d0180d583acaf3d386c322c055b630ce8524d5e837d403",
+      "bytes": 8465
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0005/source-stopped.json",
+      "sha256": "22de01d199f66283234b56d62ee091bf97bb1594c61d4964583a8d49971073f9",
+      "bytes": 7091
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0005/source-independent-review.json",
+      "sha256": "97236c02f2606310aa16eb052a71d65dd802f9222a9b6a1c97bd2f9c2536673c",
+      "bytes": 4466
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0005/source-independent-review-evidence.json",
+      "sha256": "d27afb096bc635c8b16774dc581f22f3bd35bf684188e2e9dff6e78eaf4da66b",
+      "bytes": 21386
+    },
+    {
+      "path": ".agents/tmp/instrument-recovery119/source-word-mass-simplex289-290-r0005/source-freeze.json",
+      "sha256": "6261dc669d2d2c61dc3982168db1beaac45a82a3965825d322186850fedb1a61",
+      "bytes": 4646
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0005/prior-return/start.json",
+      "sha256": "e72eca4acc5abe47d1a4ddeac949a737785dc738fb998a07427a7bdfdfb4c9ec",
+      "bytes": 870
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0005/prior-return/completion.json",
+      "sha256": "8e42fc44762e8325987172e7766426efa01c34e8150e059f24e27f0ee8ed2d56",
+      "bytes": 9585
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0005/prior-return/SourceKrausWordMass289/complete.log",
+      "sha256": "5a84608aeea8175bf3dff560187455f613cfffe25a1cce4247dd436a50bed12c",
+      "bytes": 1234
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0005/prior-return/SourceKrausWordMass289/natural-return.json",
+      "sha256": "c63d9d102ebf4e67b1fc5e28bfb5a057063ab5fc97dfa45d5eeab2e13b41e936",
+      "bytes": 3155
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0005/prior-return/SourceKrausWordMass289/qualified-return.json",
+      "sha256": "a033f1e8f5567b3181fd910a10dd36bf33f8215fe1fca62739c2f1cda63bc6a2",
+      "bytes": 8469
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0006/source-stopped.json",
+      "sha256": "d25719d123fb999d8826d84192b813cb02c11ac13216e3c388b6a8430f920627",
+      "bytes": 7083
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0006/source-independent-review.json",
+      "sha256": "470841c957119bd93d3f5c07d2aa2512499200abbe1985155ce4c80203a57645",
+      "bytes": 4439
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0006/source-independent-review-evidence.json",
+      "sha256": "ceb958d1dfa852d60128da1f17ea4b2b5af5a1356dea2a4f3429064d35b09f02",
+      "bytes": 15238
+    },
+    {
+      "path": ".agents/tmp/instrument-recovery119/source-word-mass-simplex289-290-r0006/source-freeze.json",
+      "sha256": "8a020952e6eba6a62d7c9f3a2a09e2dd53334684707f4bfd3f40787c9d0a7231",
+      "bytes": 4646
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0006/prior-return/start.json",
+      "sha256": "9776aeed2fdc4caa91811cfcb776ca893ea29069a3c3e231474c2d881e8bd41f",
+      "bytes": 870
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0006/prior-return/completion.json",
+      "sha256": "05e8ca3f263e14ab7bb85cff1b46ec6bc26786058df173f98279d3a0e0f4d111",
+      "bytes": 9582
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0006/prior-return/SourceKrausWordMass289/complete.log",
+      "sha256": "ccbe7205d31f9788bb8db284b9d4703c4d085be9883a94bcc556472c593ca907",
+      "bytes": 433
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0006/prior-return/SourceKrausWordMass289/natural-return.json",
+      "sha256": "e75d12aac0bc6d17a4dc7d534af89966c6930e12612c3394f34c64ca00e97c71",
+      "bytes": 3151
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0006/prior-return/SourceKrausWordMass289/qualified-return.json",
+      "sha256": "1b58a6fb13a68ee42bab926daeb59c4cf4da1bb4e0c36a7111b18235fcffc15c",
+      "bytes": 8466
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0007/source-stopped.json",
+      "sha256": "1d66e8388efcdf9b74ebfb4c1efbc9ff23acbee4b52a4b2e3b1b57678400adcd",
+      "bytes": 7139
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0007/source-independent-review.json",
+      "sha256": "ee4a17c8410c527232102658200278531b77e2a1e5261a51360b42d838e882d0",
+      "bytes": 4400
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0007/source-independent-review-evidence.json",
+      "sha256": "dc68163ca1756779adabebc502ec0e0ecccc94e111595f095a0c93ed88b1ee3d",
+      "bytes": 15818
+    },
+    {
+      "path": ".agents/tmp/instrument-recovery119/source-word-mass-simplex289-290-r0007/source-freeze.json",
+      "sha256": "ad247085f19290812cb355a8249c8bfab893ef0ba05c2274a5eda642a93b4d49",
+      "bytes": 4646
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0007/prior-return/start.json",
+      "sha256": "0b95869f28cf2353b6a8d131f53fac10b840c4c55be4d3a57df1a21a7c39d6a7",
+      "bytes": 870
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0007/prior-return/completion.json",
+      "sha256": "5f4945c03dbd2529b34f5a00a0dde6d01cac0e198afdfbf7df11cf49e8ae49a4",
+      "bytes": 9598
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0007/prior-return/SourceKrausWordMass289/complete.log",
+      "sha256": "0d8b76c3b57f6092ceeea21e13b00330d61390dd637456946309c01347252ac3",
+      "bytes": 433
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0007/prior-return/SourceKrausWordMass289/natural-return.json",
+      "sha256": "f0874e62bf6c66c47ed7ffdb90e50384937fad36aa74ef5648fff45df79a4967",
+      "bytes": 3175
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0007/prior-return/SourceKrausWordMass289/qualified-return.json",
+      "sha256": "482b86c708435ec1f2daa0f87f9476e359b2593dc28edc8317db6993afe11e50",
+      "bytes": 8482
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0008/source-stopped.json",
+      "sha256": "3c160efaf3c8f219924d3c50dfb5a353d15117e6b3fa159baec687c0b443fc55",
+      "bytes": 10338
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0008/source-independent-review.json",
+      "sha256": "d52d0ae692993b4ce7e46d10efb6f307f8c0ecd28b7a949edaca8bb71757535c",
+      "bytes": 5075
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0008/source-independent-review-evidence.json",
+      "sha256": "409197cd7f6878044a9b7373dd3b94b897a44b04332680c68809aaae2bd26e9f",
+      "bytes": 32529
+    },
+    {
+      "path": ".agents/tmp/instrument-recovery119/source-word-simplex290-r0008/source-freeze.json",
+      "sha256": "d2c19ce7d2353d95b31f94cc04a2617b021b3f88b383936e5c4a8be2a36c92be",
+      "bytes": 4424
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/certify289-r0001/final-certification.json",
+      "sha256": "9bd23510bf8cd87dd2dc0678f177a8fce635db1761ec01298b4e9d69ee24bea2",
+      "bytes": 8497
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/certify289-r0001/final-certification-evidence.json",
+      "sha256": "842c775551a8aba9c33f7d17206958b9690eede435e6cfb1031496dc9ea6826b",
+      "bytes": 151101
+    },
+    {
+      "path": "runtime/storage/primary/Homework-runtime/audit-tmp/iqa-source-word-mass-simplex289-290/fifth-kernel-after-canonical-coercion-source-repair-r0007/compiled/SourceKrausWordMass289.olean",
+      "sha256": "c478ecdb2c66d7c60dba85b66b7972df867e7e096eb3d10491e537417c9c20c6",
+      "bytes": 824408
+    },
+    {
+      "path": "runtime/storage/primary/Homework-runtime/audit-tmp/iqa-source-word-mass-simplex289-290/fifth-kernel-after-canonical-coercion-source-repair-r0007/SourceKrausWordMass289/qualified-return.json",
+      "sha256": "c6d120ef99274e2265f7fa0914f623005121216c93fa3625adf212a8306abeef",
+      "bytes": 8775
+    },
+    {
+      "path": "runtime/storage/primary/Homework-runtime/audit-tmp/iqa-source-word-mass-simplex289-290/fifth-kernel-after-canonical-coercion-source-repair-r0007/SourceKrausWordMass289/natural-return.json",
+      "sha256": "e8c530d63b671ca749b6869e395c2cdb8e9a3697cba1a2da3cec2e715de5a032",
+      "bytes": 3173
+    },
+    {
+      "path": "runtime/storage/primary/Homework-runtime/audit-tmp/iqa-source-word-mass-simplex289-290/fifth-kernel-after-canonical-coercion-source-repair-r0007/SourceKrausWordMass289/complete.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "runtime/storage/primary/Homework-runtime/audit-tmp/iqa-source-word-mass-simplex289-290/fifth-kernel-after-canonical-coercion-source-repair-r0007/completion.json",
+      "sha256": "ae4ce809ca64acfdbf586037a10dbbaa4c696073a189284fac60b1c392a2611b",
+      "bytes": 15511
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0009/source-stopped.json",
+      "sha256": "6fc6994cb08bcf2f08b99c41ab0b1fba43714f220acb7cfe3d6298037f52c13d",
+      "bytes": 10591
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0009/source-independent-review.json",
+      "sha256": "ddd0bbe0e374983d7813efb72e23385088094c905480b6484c6468a1b5049ef7",
+      "bytes": 5758
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0009/source-independent-review-evidence.json",
+      "sha256": "7a019df7f2fe75de124cf13c403c5cf3a27fa90b55ea77dc475d705475a9e9bc",
+      "bytes": 29754
+    },
+    {
+      "path": ".agents/tmp/instrument-recovery119/source-word-simplex290-r0009/source-freeze.json",
+      "sha256": "ed042ac9457bef440fac395f521bc73cec045bf47cc7254ecd0c022c0b817644",
+      "bytes": 4424
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0009/prior-return/start.json",
+      "sha256": "7140b76bbaad164173c331987bbf4044ce9da66183664ac5f58f3a33a572883c",
+      "bytes": 878
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0009/prior-return/completion.json",
+      "sha256": "4b63532ab8f88721e16ff43773f1c0a4de2d892059cdf4885573951036e52fe8",
+      "bytes": 5993
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0009/prior-return/SourceKrausWordSimplex290/complete.log",
+      "sha256": "d9d8893099ae387fa7d351f2384703fc8986b7c92f0ec32f3feb9e619d4cafdb",
+      "bytes": 5599
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0009/prior-return/SourceKrausWordSimplex290/natural-return.json",
+      "sha256": "121274392de3e1278f2d6074875f4bd9ff92f4806e9df82de0d18a08b2498661",
+      "bytes": 3319
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0009/prior-return/SourceKrausWordSimplex290/qualified-return.json",
+      "sha256": "f8e681099bbb77379b3b5beb08b658bbdd286fdd30b74aa4776fd6e10f213707",
+      "bytes": 5176
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0010/source-stopped.json",
+      "sha256": "446f9a39b8099afc0818f9296d64c528a5d4e4b09ae5bbf140f0469394a62a15",
+      "bytes": 11149
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0010/source-independent-review.json",
+      "sha256": "6a3bacf48d913ee0a92855384d9b5dd9e7e6a231ffb4ac889f2495490fc2df28",
+      "bytes": 5794
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0010/source-independent-review-evidence.json",
+      "sha256": "f760ed0fbd274d4f71f9f79ba3c7f42c1f8f934501504ad281224d085d00e060",
+      "bytes": 21485
+    },
+    {
+      "path": ".agents/tmp/instrument-recovery119/source-word-simplex290-r0010/source-freeze.json",
+      "sha256": "76b01274c319c2dc8a0c6ca2dd6c341eadea56727ce37b56ab36d2a160751944",
+      "bytes": 8086
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0010/prior-return/start.json",
+      "sha256": "1ee3ac6c4b73de1e2360faee126e71124e28871b88b2f3a35e2967cb3dfd9f1a",
+      "bytes": 878
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0010/prior-return/completion.json",
+      "sha256": "70c4ed0981ee4621639136c67e2a89f0a5b8825946548939dec53f1626ca6511",
+      "bytes": 6009
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0010/prior-return/SourceKrausWordSimplex290/complete.log",
+      "sha256": "1d0af7069d3b7652b9a1caae02513d9af25e3f33ccccec8206a623288d2509c9",
+      "bytes": 1796
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0010/prior-return/SourceKrausWordSimplex290/natural-return.json",
+      "sha256": "b39a95e1dbcfba0cf1e50380ece2dd2325cef95917459a73bb97238af6c0fbef",
+      "bytes": 3343
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0010/prior-return/SourceKrausWordSimplex290/qualified-return.json",
+      "sha256": "e65d9b781b541f40442645605e34fa0faa311f4f0b789d0b7572ba0131aaf3eb",
+      "bytes": 5192
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0008/SourceKrausWordSimplex290.lean",
+      "sha256": "ed33ce2bb30b66a24478aa9c395e4aea1906dc0b779e860db3c4ed2cdde8bfb0",
+      "bytes": 18561
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0008/criterion-r0008.md",
+      "sha256": "2b655e26cd42f6945da1ba534e4d9e2f10448920dcd056ece2734ca9786011a9",
+      "bytes": 2254
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0008/prior-return/SourceKrausWordSimplex290/child.json",
+      "sha256": "087fa8be91575363b47bd7839c809fbdc8c0b8cba8df5ea8977028cbcfa4313b",
+      "bytes": 44
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0008/prior-return/SourceKrausWordSimplex290/complete.log",
+      "sha256": "4249ab34a256355d847925588e54c140c82363f309180f074fcf47e0d46ed4ac",
+      "bytes": 6884
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0008/prior-return/SourceKrausWordSimplex290/natural-return.json",
+      "sha256": "7ac213d247ac59afa630cf9a75ede6f9c87f365eea46f28e8e5795f8ddde74eb",
+      "bytes": 3191
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0008/prior-return/SourceKrausWordSimplex290/qualified-return.json",
+      "sha256": "c32abb16e06360efa594c71f94a8dfe60b147a54269ca121e0c893d0f4e8cea9",
+      "bytes": 5190
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0008/prior-return/SourceKrausWordSimplex290/start.json",
+      "sha256": "4ccd6961e88beb2a673f562c907cff317256e2941088c9a3a49c3307ce48d02a",
+      "bytes": 4751
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0008/prior-return/completion.json",
+      "sha256": "ae4ce809ca64acfdbf586037a10dbbaa4c696073a189284fac60b1c392a2611b",
+      "bytes": 15511
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0008/prior-return/kernel-host-source-freeze.json",
+      "sha256": "7727473024c9a76c461cc77c19809c9815a73db09b4bf7181ce6197cac3d1abe",
+      "bytes": 2153
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0008/prior-return/start.json",
+      "sha256": "9611bca6b37c57b36ebaadd201c280f2188e6261ae265d9013fef74e05e9e2b7",
+      "bytes": 870
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0008/source-plan-r0008.json",
+      "sha256": "c401890559ab366063eeb02ab6d743c3aa20981eaaaea25ffa98065b3d7d4682",
+      "bytes": 14292
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0008/whole-source-inverse.json",
+      "sha256": "1cf0fa6794b8632755a13ea141b352067a60d7992cbfc66ac4fa0bd0279ce1cd",
+      "bytes": 94130
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0009/SourceKrausWordSimplex290.lean",
+      "sha256": "49f434b07e3d40d51d9b13dd27c5e5d10eb075a3083fc5274550ad17d4c2ee0a",
+      "bytes": 19567
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0009/criterion-r0009.md",
+      "sha256": "af3a40a2f5988373b8404afc5e41db5369fbf8a181592cf3e850ae1b7a11d1ca",
+      "bytes": 2201
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0009/prior-return/SourceKrausWordSimplex290/child.json",
+      "sha256": "1c464363123f12fa28379904c0b4b67ff64a4442aa1a8860d7e6754cebb225bd",
+      "bytes": 44
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0009/prior-return/SourceKrausWordSimplex290/start.json",
+      "sha256": "93fe1af19255e5fe89c2286dfe7f79917b5b19ac40bee2949659ec6fcf6550f1",
+      "bytes": 4886
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0009/prior-return/kernel-host-source-freeze.json",
+      "sha256": "6b122e17c7b4d5763bec2f5beee9bf6a7de3865f5edc6a39fe5ad2c8430cbcad",
+      "bytes": 4323
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0009/source-plan-r0009.json",
+      "sha256": "e32aaf6d9cb37a7bd8d4a53ea1feea6d982e4ca2857496b1f38664000bcead5f",
+      "bytes": 13111
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0009/whole-source-inverse.json",
+      "sha256": "5de9dffa2c05fe168c170d13f267be09a09f2cf0e5ecd6e71a3f8669a68aa1be",
+      "bytes": 90824
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0010/SourceKrausWordSimplex290.lean",
+      "sha256": "92e2901e364132126264a8c1813d4de4d195b3a5bfa5b308202315d6716e2d4c",
+      "bytes": 19578
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0010/criterion-r0010.md",
+      "sha256": "ff541d0e4fd4b1ed053bdf99828bb16acea3504bc35057749ac2883782562651",
+      "bytes": 1495
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0010/prior-return/SourceKrausWordSimplex290/child.json",
+      "sha256": "c0e1a6363eb0a6d67801268e250ca59b19e1dddf742b83b42d31be120dcb3589",
+      "bytes": 44
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0010/prior-return/SourceKrausWordSimplex290/start.json",
+      "sha256": "52f39de7e3eee8d6767573f9630cc93bd2946a5f85e85bc99919ddae131a230d",
+      "bytes": 4902
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0010/prior-return/kernel-host-source-freeze.json",
+      "sha256": "f1d2fe4898e1193dee6ba6efae6f684b8c06d8b17913dff5b231601af87a4122",
+      "bytes": 2153
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0010/source-plan-r0010.json",
+      "sha256": "3b981d043c6b1c3279c9651008f6b2baac66ae217e7225e37377c0b0073a15fd",
+      "bytes": 12875
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0010/whole-source-inverse.json",
+      "sha256": "17c0df4b9ac62741926ac712b4458536b1cc5ef99f18b6055f54fb785deb755b",
+      "bytes": 86525
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/kernel-host-r0009/criterion.md",
+      "sha256": "be500e6879839fc601a16e1cfa6cb8d5aa0504c5f1e35c1478b0a8df0174cae3",
+      "bytes": 539
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/kernel-host-r0009/execution-plan.json",
+      "sha256": "e98bc1eb6099b46deb0129a54cfcdbf7532dedc47b7cb34edd319d3662dc5141",
+      "bytes": 39399
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/kernel-host-r0009/run-kernels.py",
+      "sha256": "7aaff58a01dfe7d776e93cf6834931dae91a84c001b08c1af8cd771c17b194ba",
+      "bytes": 7417
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/kernel-host-r0009/source-independent-review-evidence.json",
+      "sha256": "feffa7de3aecc72d28d9b56cbc4b0c6a73943d1b66a613a22d0b0bfd580902d5",
+      "bytes": 42077
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/kernel-host-r0009/source-independent-review.json",
+      "sha256": "6c1910500d1d3e48c222dee9fff490d66432fd43bde8ec081958fb880a40f4cd",
+      "bytes": 3568
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/kernel-host-r0009/source-stopped.json",
+      "sha256": "7efa93b404f94751be531893423eeb89c5b33a9996b60e10253ac50a9c482a42",
+      "bytes": 1271
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-hidden-word-flow-rha0286/source-r0009/SourceHiddenWordFlow286.lean",
+      "sha256": "0d16b05b50e24faf8938805420691133a5da398e2d4bbfc41a9ca78538b94eda",
+      "bytes": 26269
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-kraus-survival-rha0285/source-r0006/SourceKrausSurvival285.lean",
+      "sha256": "309918c8dfd1c59ab8a722fbe3afedce042d645e5acb8b352f3464dd000fa395",
+      "bytes": 12179
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-kraus-survival-rha0285/source-r0004/RetardedSourceSurvival284.lean",
+      "sha256": "e72e689f233ebb8e724c3eda8118bf805cd993578a4f92811eb72102d282ec5e",
+      "bytes": 4841
+    },
+    {
+      "path": "Lean/SaturationMonoid/PhysicsCore/StageNineDiracMatterGalerkinEvolution.lean",
+      "sha256": "7b21b5349634702ee838d10ed40d599315aabbe093307e2ebb4e8a0ac278f15c",
+      "bytes": 41672
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0007/SourceKrausWordMass289.lean",
+      "sha256": "718f3f44ee5fef1030fed78b1214dc1220ae7c66151b1642f0628c5ad0253c9e",
+      "bytes": 19530
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/source-r0007/SourceKrausWordSimplex290.lean",
+      "sha256": "731dfa8ba32556f1722fd2fc88fedc89f719fd86d6c92b4fd9f4bddcc35c326e",
+      "bytes": 17008
+    },
+    {
+      "path": "runtime/storage/primary/Homework-runtime/audit-tmp/iqa-source-word-mass-simplex289-290/third-simplex-only-kernel-after-function-presentation-repair-r0010/compiled/SourceKrausWordSimplex290.olean",
+      "sha256": "6d591588bf94d6ec5eb6aff931546f08aa862e3e781121fa1309c35ce8aa5b5e",
+      "bytes": 923504
+    },
+    {
+      "path": "Lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Integral/Bochner/Set.olean",
+      "sha256": "73940be60456a435c370a133ed715a6fd4230818cc482d340276cfde99f2bb70",
+      "bytes": 452256
+    },
+    {
+      "path": "Lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Integral/Pi.olean",
+      "sha256": "df4f7720a6bb5bfb6c23b4546ff69fbc2113068118e335d7ce3230c36b0038bd",
+      "bytes": 65688
+    },
+    {
+      "path": ".agents/tmp/instrument-recovery119/source-coherent-kernel-host-r0012/source-freeze.json",
+      "sha256": "172cea1ee79efc634edbc094b5faa48ef6705631d25d32d3a9d129a18aed0cd0",
+      "bytes": 2153
+    },
+    {
+      "path": "runtime/storage/primary/Homework-runtime/audit-tmp/iqa-source-word-mass-simplex289-290/third-simplex-only-kernel-after-function-presentation-repair-r0010/SourceKrausWordSimplex290/qualified-return.json",
+      "sha256": "bf1e344066531c825aa2677028bc8a4edaebebac5fa404f5118d674320452841",
+      "bytes": 5512
+    },
+    {
+      "path": "runtime/storage/primary/Homework-runtime/audit-tmp/iqa-source-word-mass-simplex289-290/third-simplex-only-kernel-after-function-presentation-repair-r0010/SourceKrausWordSimplex290/natural-return.json",
+      "sha256": "a6b88c7b38fbbc2a09b82a500476141967ed0803f3b28987e3cf51b79d8c1ae7",
+      "bytes": 3364
+    },
+    {
+      "path": "runtime/storage/primary/Homework-runtime/audit-tmp/iqa-source-word-mass-simplex289-290/third-simplex-only-kernel-after-function-presentation-repair-r0010/completion.json",
+      "sha256": "3d2e459a0b906b69bd805f3de38854e133c79b623d0231bec1097c2267cfc0be",
+      "bytes": 6345
+    },
+    {
+      "path": "runtime/storage/primary/Homework-runtime/audit-tmp/iqa-source-word-mass-simplex289-290/third-simplex-only-kernel-after-function-presentation-repair-r0010/SourceKrausWordSimplex290/complete.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "runtime/storage/primary/Homework-runtime/audit-tmp/iqa-source-word-mass-simplex289-290/third-simplex-only-kernel-after-function-presentation-repair-r0010/SourceKrausWordSimplex290/start.json",
+      "sha256": "08a2ce3b3fbf8cd1f8851c6fd9ff9c2024d7022c227938b51a41433e830cdd8e",
+      "bytes": 4918
+    },
+    {
+      "path": "runtime/storage/primary/Homework-runtime/audit-tmp/iqa-source-word-mass-simplex289-290/third-simplex-only-kernel-after-function-presentation-repair-r0010/SourceKrausWordSimplex290/child.json",
+      "sha256": "477f11da94ce0711bc057f7e3c5a02d3235b0aa0026491d1743a2d8c7001c75b",
+      "bytes": 44
+    },
+    {
+      "path": "runtime/storage/primary/Homework-runtime/audit-tmp/iqa-source-word-mass-simplex289-290/third-simplex-only-kernel-after-function-presentation-repair-r0010/start.json",
+      "sha256": "ce3ecba971af53a6affecc1fb6e95d92429ee3031df34bf06c7ff2a7803bfe14",
+      "bytes": 878
+    },
+    {
+      "path": "Lean/lean-toolchain",
+      "sha256": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+      "bytes": 25
+    },
+    {
+      "path": "Lean/lakefile.toml",
+      "sha256": "f109e0aa55ba804b4dc5ee7879c3ba0ea7ebae186768453d79acdffdfd9e0d42",
+      "bytes": 43738
+    },
+    {
+      "path": "Lean/lake-manifest.json",
+      "sha256": "aa60b347daf17a642d027cda3288f7d6f12c176c4ddd2677c28140daadb15c81",
+      "bytes": 5008
+    },
+    {
+      "path": "Lean/scripts/cached_lean.py",
+      "sha256": "90e118784831c4b3ccbb09317505246ee63ae90e95bce1d92a3aa819b9e9cebb",
+      "bytes": 12162
+    },
+    {
+      "path": ".agents/tmp/instrument-recovery119/actual-silent-native294-certify-r0001/run_query.py",
+      "sha256": "6955cd5f94ed05017f1fe8fcec70a94bdc1d78cdaab96da9882ccba24fdc7842",
+      "bytes": 11168
+    },
+    {
+      "path": ".agents/tmp/instrument-recovery119/actual-silent-native294-certify-r0001/root-source-review.json",
+      "sha256": "5884fa8c07b7d0d00dce95dfb8a17d04b3d3004eda40cc51e7d74aeb085ec662",
+      "bytes": 2365
+    },
+    {
+      "path": ".agents/tmp/instrument-recovery119/source-word-simplex290-certify-r0001/final-certification.json",
+      "sha256": "a69f7709f227fa4cb640afc8de225e6497c8d45edb4dfe1e106f3ce92c58da3b",
+      "bytes": 8862
+    },
+    {
+      "path": ".agents/tmp/instrument-recovery119/source-word-simplex290-certify-r0001/final-certification-evidence.json",
+      "sha256": "211751af24e3b539d34651a50136cbbdd4565a0beb2fef22bb8084f60efa61cd",
+      "bytes": 135794
+    },
+    {
+      "path": ".agents/tmp/instrument-recovery119/source-word-simplex290-certify-r0001/source-freeze.json",
+      "sha256": "06b5331db1ecbe6fdbe32eab597838df84745cd6bef3590a910dacbe2222675e",
+      "bytes": 4200
+    },
+    {
+      "path": ".agents/tmp/instrument-recovery119/source-word-simplex290-certify-r0001/source-stopped.json",
+      "sha256": "542c511346b4579498bbabd26eab416974a21e349b0f161825d021172f4203ee",
+      "bytes": 15881
+    },
+    {
+      "path": ".agents/tmp/instrument-recovery119/source-word-simplex290-certify-r0001/root-source-review.json",
+      "sha256": "4156893267afbda703940bfa8968e491c6b5814f8c8480e209801abe15106c0f",
+      "bytes": 2549
+    },
+    {
+      "path": "runtime/storage/primary/Homework-runtime/audit-tmp/iqa-source-word-mass-simplex289-290/first-simplex290-certify-query-after-source-freeze-r0001/start.json",
+      "sha256": "2ebdf81e562d58f499802225e452c3ec1413126e120729813b30251a789651c4",
+      "bytes": 14670
+    },
+    {
+      "path": "runtime/storage/primary/Homework-runtime/audit-tmp/iqa-source-word-mass-simplex289-290/first-simplex290-certify-query-after-source-freeze-r0001/child.json",
+      "sha256": "40c786ff309ae2a63a3667c5dce4c227a3fca51ac2a9347886157aee0e49f483",
+      "bytes": 44
+    },
+    {
+      "path": "runtime/storage/primary/Homework-runtime/audit-tmp/iqa-source-word-mass-simplex289-290/first-simplex290-certify-query-after-source-freeze-r0001/natural-return.json",
+      "sha256": "69963b514d4f596c814a1c4ce1f2e12e86c339c9d331c11abf0a6544607a9a8a",
+      "bytes": 6940
+    },
+    {
+      "path": "runtime/storage/primary/Homework-runtime/audit-tmp/iqa-source-word-mass-simplex289-290/first-simplex290-certify-query-after-source-freeze-r0001/query-return.json",
+      "sha256": "35d87ea6df2ea37186fb34a39243be6b2ae80a689eaf3f03a81ed58d6f2e3752",
+      "bytes": 21156
+    },
+    {
+      "path": "runtime/storage/primary/Homework-runtime/audit-tmp/iqa-source-word-mass-simplex289-290/first-simplex290-certify-query-after-source-freeze-r0001/query.log",
+      "sha256": "f2554e9c2d197cff17c82f742e37703e40b6f391d62c681978d7799ad53d08c1",
+      "bytes": 23053
+    },
+    {
+      "path": "runtime/storage/primary/Homework-runtime/audit-tmp/iqa-source-word-mass-simplex289-290/first-simplex290-certify-query-after-source-freeze-r0001/completion.json",
+      "sha256": "bd16e52b594870e97360307b08c85ea854709a63ab59af585974848eb1cfc4e0",
+      "bytes": 1256
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-kraus-word-wave-rha0291/source-r0003/source-stopped.json",
+      "sha256": "d1e12fae3439cdbe46f512e44600fab7ec0c799fbc5335e3edb3f1137e6927fa",
+      "bytes": 6651
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-kraus-word-wave-rha0291/source-r0003/whole-source-inverse.json",
+      "sha256": "77d5563d0b55f28f2097c1d4b30274dfc3e61e9877bed2c6673f8defabc42c0f",
+      "bytes": 40900
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-kraus-word-wave-rha0291/source-r0003/source-independent-review.json",
+      "sha256": "39b6154c03d91bac5bae263eb699fa432f06463219dbc465e9385cd3df2973c9",
+      "bytes": 4076
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-kraus-word-wave-rha0291/source-r0003/source-independent-review-evidence.json",
+      "sha256": "5ab0803b0cf62309a7064f3ef2d5acdb7ba0141cf0b42052afcf87cef609c82f",
+      "bytes": 18037
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-kraus-word-wave-rha0291/source-r0003/source-plan-r0003.json",
+      "sha256": "a1c784b73dcf68bc9a5ada18ab00e66a70110fc394960ea1af6a598bf065621d",
+      "bytes": 7951
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-kraus-word-wave-rha0291/source-r0003/criterion-r0003.md",
+      "sha256": "cee054596e66367f7d76224dbd59e90522742a48d31bdebe07af13170e9fbbd6",
+      "bytes": 1522
+    },
+    {
+      "path": ".agents/tmp/instrument-recovery119/source-kraus-word-wave291-r0003/source-freeze.json",
+      "sha256": "dba9e911417884efcb80db9ed0bc506cf4af9d9618a8b3b7f5db55af9ca07b4c",
+      "bytes": 14026
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-kraus-word-wave-rha0291/source-r0004/SOURCE-STOP-r0004.json",
+      "sha256": "bac62d2e86d3943b85d7107c787e22429d94b8fff7f539a9a6e418eeb423bab2",
+      "bytes": 17614
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-kraus-word-wave-rha0291/source-r0004/SourceKrausWordWave291.lean",
+      "sha256": "e7350e57bbd5e43efea50a0541d5f2452bffde6b74d678d5b206162b7f645ae6",
+      "bytes": 10393
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-kraus-word-wave-rha0291/source-r0004/criterion-r0004.md",
+      "sha256": "8ed21fe83d5d9dcc6d7d49fec2d02eb7eae826bc46e10a2d288d6384106967da",
+      "bytes": 1654
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-kraus-word-wave-rha0291/source-r0004/prior-return/SourceKrausWordWave291/child.json",
+      "sha256": "4353ce5b3eade2a5bf566cd1d980f5856cc370d0e7202cce57f187a3dfcf261d",
+      "bytes": 44
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-kraus-word-wave-rha0291/source-r0004/prior-return/SourceKrausWordWave291/complete.log",
+      "sha256": "68c009c26070182dcb11feadd7dfd19b7e2290363cdb64e9dc6b86188165de63",
+      "bytes": 3561
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-kraus-word-wave-rha0291/source-r0004/prior-return/SourceKrausWordWave291/natural-return.json",
+      "sha256": "67db6b9013cbde83b0376e80f474381ee81356c09f362ffbd13de95e12f27c4a",
+      "bytes": 3464
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-kraus-word-wave-rha0291/source-r0004/prior-return/SourceKrausWordWave291/qualified-return.json",
+      "sha256": "c003c9c8b189990cedf2b22aaa2b9260704b841614eb200b350c4190cf7e6cd1",
+      "bytes": 6382
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-kraus-word-wave-rha0291/source-r0004/prior-return/SourceKrausWordWave291/start.json",
+      "sha256": "3cd0f7309aebd4a0b2621204723a0c874b3b2de8b605353588d3367af9b67be6",
+      "bytes": 5718
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-kraus-word-wave-rha0291/source-r0004/prior-return/completion.json",
+      "sha256": "8aac060d17a048eab348c7b8ab86e1b822124e0a7401ba608521d7f38dfae8cf",
+      "bytes": 7287
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-kraus-word-wave-rha0291/source-r0004/prior-return/start.json",
+      "sha256": "db4ab9dd39adb9f233fe9537c2cfed00d72d08d2564ee8ae20429914bd9173b6",
+      "bytes": 811
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-kraus-word-wave-rha0291/source-r0004/source-independent-review-evidence.json",
+      "sha256": "0aad16c5513175dee33aa4023040e2e566339a1a9206b117f2f4587802663099",
+      "bytes": 46427
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-kraus-word-wave-rha0291/source-r0004/source-independent-review.json",
+      "sha256": "8b3a503ecd1dab771750028105899d7f972880e8153a1259c0e350b9c7289ccf",
+      "bytes": 4630
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-kraus-word-wave-rha0291/source-r0004/source-plan-r0004.json",
+      "sha256": "67d54cfe66cb01ddba764c671342fbe87dd29aae04c11b08bdb8055cff9693b5",
+      "bytes": 17455
+    },
+    {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-kraus-word-wave-rha0291/source-r0004/whole-source-inverse-r0004.json",
+      "sha256": "e355470293e20509e3d3df8d3d2c7a33ab1a84c09a576e6d285cef214e4ab258",
+      "bytes": 104287
+    },
+    {
+      "path": ".agents/tmp/instrument-recovery119/source-kraus-word-wave291-r0004/source-freeze.json",
+      "sha256": "f1c786ca88ef519aa69575ddd6e2b5b3509960b8c7a6ecdcbc9c2200bb8fa0e7",
+      "bytes": 4243
+    },
+    {
+      "path": "runtime/storage/primary/Homework-runtime/audit-tmp/iqa-source-kraus-word-wave291/second-complete-word-wave-kernel-after-actual-term-repair-r0004/compiled/SourceKrausWordWave291.olean",
+      "sha256": "9a508ef5ad75a90369b03041364e26c415e26d76785e2f09aac4e470da7afa6b",
+      "bytes": 414544
+    },
+    {
+      "path": "runtime/storage/primary/Homework-runtime/audit-tmp/iqa-source-kraus-word-wave291/second-complete-word-wave-kernel-after-actual-term-repair-r0004/SourceKrausWordWave291/qualified-return.json",
+      "sha256": "bca81ea9129f628fb20c052e546cfefd0968fb1553a8ead710987a9aa76db22f",
+      "bytes": 6670
+    },
+    {
+      "path": "runtime/storage/primary/Homework-runtime/audit-tmp/iqa-source-kraus-word-wave291/second-complete-word-wave-kernel-after-actual-term-repair-r0004/SourceKrausWordWave291/natural-return.json",
+      "sha256": "7e8d01ce46ef8ef6ee294ea290502dfde10604169b57db81d31ac6d9cb7cc1d2",
+      "bytes": 3458
+    },
+    {
+      "path": "runtime/storage/primary/Homework-runtime/audit-tmp/iqa-source-kraus-word-wave291/second-complete-word-wave-kernel-after-actual-term-repair-r0004/completion.json",
+      "sha256": "a98add6be1e666fe466a2ea68c3c5cdd0f78d4fe74d17ada1507a611b01009f0",
+      "bytes": 7591
+    },
+    {
+      "path": "runtime/storage/primary/Homework-runtime/audit-tmp/iqa-source-kraus-word-wave291/second-complete-word-wave-kernel-after-actual-term-repair-r0004/SourceKrausWordWave291/complete.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "runtime/storage/primary/Homework-runtime/audit-tmp/iqa-source-kraus-word-wave291/second-complete-word-wave-kernel-after-actual-term-repair-r0004/SourceKrausWordWave291/start.json",
+      "sha256": "f6db3880c052b89cc8dae5a30b3f460c225ba6baa57135ddf35df04df993836c",
+      "bytes": 5716
+    },
+    {
+      "path": "runtime/storage/primary/Homework-runtime/audit-tmp/iqa-source-kraus-word-wave291/second-complete-word-wave-kernel-after-actual-term-repair-r0004/SourceKrausWordWave291/child.json",
+      "sha256": "c1758aef5f7f0ab94487deef44f9f213611a0128f76536e5174cf3b1bd95fceb",
+      "bytes": 44
+    },
+    {
+      "path": "runtime/storage/primary/Homework-runtime/audit-tmp/iqa-source-kraus-word-wave291/second-complete-word-wave-kernel-after-actual-term-repair-r0004/start.json",
+      "sha256": "f6768d8eef1ede53355705bb472b1d1d04cd58fb0fbcd90806dd966e1f6dd9e5",
+      "bytes": 811
+    },
+    {
+      "path": ".agents/tmp/instrument-recovery119/source-coherent-kernel-host-r0014/source-stopped.json",
+      "sha256": "c8ee906497f63fe45f14dc0ee1044b8bdea023e53945b26a6a2fdec2dad06312",
+      "bytes": 1264
+    },
+    {
+      "path": ".agents/tmp/instrument-recovery119/source-coherent-kernel-host-r0014/source-independent-review-evidence.json",
+      "sha256": "87c4feb3d968e0d1327e6a16210a3f26a61c7f943f8a944246e35996ff578e6a",
+      "bytes": 34390
+    },
+    {
+      "path": ".agents/tmp/instrument-recovery119/source-coherent-kernel-host-r0014/criterion.md",
+      "sha256": "2d6aa51d0a4b103906e3196731974ea7b32eaa40c29f927c6c6a86548f712c5c",
+      "bytes": 652
+    },
+    {
+      "path": ".agents/tmp/instrument-recovery119/source-coherent-kernel-host-r0014/execution-plan.json",
+      "sha256": "8679765ebf38c5dbb817365a697cede23be81e09a9200c92324d65fc03e7a496",
+      "bytes": 68146
+    },
+    {
+      "path": ".agents/tmp/instrument-recovery119/source-coherent-kernel-host-r0014/run-kernels.py",
+      "sha256": "7aaff58a01dfe7d776e93cf6834931dae91a84c001b08c1af8cd771c17b194ba",
+      "bytes": 7417
+    },
+    {
+      "path": ".agents/tmp/instrument-recovery119/source-coherent-kernel-host-r0014/source-freeze.json",
+      "sha256": "0f2c5bed248a57df44e3e1f1ee502a1a86afac4a44726394dd2f28bdf2742df6",
+      "bytes": 3924
+    },
+    {
+      "path": ".agents/tmp/instrument-recovery119/source-coherent-kernel-host-r0014/source-independent-review.json",
+      "sha256": "03253bb01ec45af8ac1715d84c920b799d2835085d2901fcb16574ab0f128c59",
+      "bytes": 3700
+    }
+  ],
+  "output_directory": "runtime/storage/primary/Homework-runtime/audit-tmp/iqa-source-kraus-word-wave291/first-word-wave291-certify-query-after-source-freeze-r0001",
+  "compile_options": {
+    "trust": 0,
+    "warningAsError": true,
+    "threads": 1,
+    "memory_mb": 16000,
+    "Elab.async": false,
+    "CLI_maxErrors": 80,
+    "timeout_seconds": null
+  },
+  "query_invocations_allowed": 1,
+  "candidate_recompiles": 0,
+  "qualified_dependency_recompiles": 0,
+  "automatic_restarts": 0,
+  "natural_return_contract": "Reuse the independently accepted286 r2 runner mechanism: finally child.wait() once; x-write/fsync immutable natural-return.json after closing complete log and before every postguard; record postqualification separately and retain natural exit even if later qualification fails.",
+  "runner_reuse": {
+    "prototype_runner": {
+      "path": ".agents/tmp/instrument-recovery119/actual-silent-native294-certify-r0001/run_query.py",
+      "sha256": "6955cd5f94ed05017f1fe8fcec70a94bdc1d78cdaab96da9882ccba24fdc7842",
+      "bytes": 11168
+    },
+    "accepted_prototype_SOURCE_review": {
+      "path": ".agents/tmp/instrument-recovery119/actual-silent-native294-certify-r0001/root-source-review.json",
+      "sha256": "5884fa8c07b7d0d00dce95dfb8a17d04b3d3004eda40cc51e7d74aeb085ec662",
+      "bytes": 2365
+    },
+    "text_replacements_only": {
+      "Inspect the four frozen actual294 primitive declarations without recompiling a PASS.": "Inspect the frozen complete real-time word simplex producer without recompiling a PASS.",
+      "ActualSilentNativeChannels294": "SourceKrausWordSimplex290",
+      "cached_lean_actual294_primitive_query_metadata": "cached_lean_simplex290_query_metadata",
+      "actual-silent-native294/query-natural-return/r0001": "source-word-simplex290/query-natural-return/r0001"
+    },
+    "replacement_counts": {
+      "Inspect the four frozen actual294 primitive declarations without recompiling a PASS.": 1,
+      "ActualSilentNativeChannels294": 3,
+      "cached_lean_actual294_primitive_query_metadata": 1,
+      "actual-silent-native294/query-natural-return/r0001": 1
+    },
+    "lifecycle_or_lookup_algorithm_changed": false
+  },
+  "claim_scope": {
+    "classification": "same raw-source full marked-word L2 state and generated Born measure producer",
+    "input": "Only original seven-field RawKrausWindow, in-window start, original vector; complete complex Hilbert E with measurable/Borel/second-countable structure for the L2 vector. No measure/wave/normalizer/coverage premise.",
+    "output": "All finite words and true continuous-time coordinates, generated Sigma base measure and Born norm-square density, total mass=norm(x)^2, finite Born measure and unit-vector probability, generated MemLp2 and complex linear isometry.",
+    "direct_consumer": "SourceNaturalSymmetrization293 and SourceNativeFock293 consume this same amplitude/L2 state; their kernel qualification remains separate.",
+    "not_claimed": [
+      "293/294/295 kernel qualification",
+      "actual opticalGram identification",
+      "159/public/CEM identity",
+      "actual hardware uniqueness",
+      "controller advance"
+    ]
+  },
+  "final_certification_contract": "Independently read all20 actual full types/transitive axiom closures and8 source definitions, full qualified kernel and prior failure provenance, exact package lookups. Standard3 or subset only. No passed proof/dependency/science/control/bank replay.",
+  "prequery_source_stage": "SOURCE-STOP only; independent SOURCE review and real Git freeze required before the single fresh query.",
+  "reviewer": "independent reviewer pending",
+  "controller_advance": false,
+  "created_at_UTC": "2026-10-24T17:31:55.621867+00:00",
+  "original_strict291_PASS": {
+    "module": "SourceKrausWordWave291",
+    "source": {
+      "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-kraus-word-wave-rha0291/source-r0004/SourceKrausWordWave291.lean",
+      "sha256": "e7350e57bbd5e43efea50a0541d5f2452bffde6b74d678d5b206162b7f645ae6",
+      "bytes": 10393
+    },
+    "source_commit": "fa2085ee1fda4f01f8ff6c50a2a6a5f91fe3cbf5",
+    "host_commit": "131da598f9a885bba039adfc2d253fab68be24c6",
+    "artifact": {
+      "path": "runtime/storage/primary/Homework-runtime/audit-tmp/iqa-source-kraus-word-wave291/second-complete-word-wave-kernel-after-actual-term-repair-r0004/compiled/SourceKrausWordWave291.olean",
+      "sha256": "9a508ef5ad75a90369b03041364e26c415e26d76785e2f09aac4e470da7afa6b",
+      "bytes": 414544
+    },
+    "kernel_return": {
+      "path": "runtime/storage/primary/Homework-runtime/audit-tmp/iqa-source-kraus-word-wave291/second-complete-word-wave-kernel-after-actual-term-repair-r0004/SourceKrausWordWave291/qualified-return.json",
+      "sha256": "bca81ea9129f628fb20c052e546cfefd0968fb1553a8ead710987a9aa76db22f",
+      "bytes": 6670
+    },
+    "natural_return": {
+      "path": "runtime/storage/primary/Homework-runtime/audit-tmp/iqa-source-kraus-word-wave291/second-complete-word-wave-kernel-after-actual-term-repair-r0004/SourceKrausWordWave291/natural-return.json",
+      "sha256": "7e8d01ce46ef8ef6ee294ea290502dfde10604169b57db81d31ac6d9cb7cc1d2",
+      "bytes": 3458
+    },
+    "completion": {
+      "path": "runtime/storage/primary/Homework-runtime/audit-tmp/iqa-source-kraus-word-wave291/second-complete-word-wave-kernel-after-actual-term-repair-r0004/completion.json",
+      "sha256": "a98add6be1e666fe466a2ea68c3c5cdd0f78d4fe74d17ada1507a611b01009f0",
+      "bytes": 7591
+    },
+    "complete_log": {
+      "path": "runtime/storage/primary/Homework-runtime/audit-tmp/iqa-source-kraus-word-wave291/second-complete-word-wave-kernel-after-actual-term-repair-r0004/SourceKrausWordWave291/complete.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "module_start": {
+      "path": "runtime/storage/primary/Homework-runtime/audit-tmp/iqa-source-kraus-word-wave291/second-complete-word-wave-kernel-after-actual-term-repair-r0004/SourceKrausWordWave291/start.json",
+      "sha256": "f6db3880c052b89cc8dae5a30b3f460c225ba6baa57135ddf35df04df993836c",
+      "bytes": 5716
+    },
+    "child": {
+      "path": "runtime/storage/primary/Homework-runtime/audit-tmp/iqa-source-kraus-word-wave291/second-complete-word-wave-kernel-after-actual-term-repair-r0004/SourceKrausWordWave291/child.json",
+      "sha256": "c1758aef5f7f0ab94487deef44f9f213611a0128f76536e5174cf3b1bd95fceb",
+      "bytes": 44
+    },
+    "host_start": {
+      "path": "runtime/storage/primary/Homework-runtime/audit-tmp/iqa-source-kraus-word-wave291/second-complete-word-wave-kernel-after-actual-term-repair-r0004/start.json",
+      "sha256": "f6768d8eef1ede53355705bb472b1d1d04cd58fb0fbcd90806dd966e1f6dd9e5",
+      "bytes": 811
+    },
+    "natural_kernel_exit": 0,
+    "true_child_wait_completed": true,
+    "candidate_recompile": false
+  },
+  "preserved_first291_natural1": {
+    "source_commit": "768304491f184dadffc6ea9de833d083b1914604",
+    "host_commit": "83726cb1a902837e12e24b4ea3cce6502f1bcf15",
+    "complete7records": [
+      {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-kraus-word-wave-rha0291/source-r0004/prior-return/SourceKrausWordWave291/child.json",
+        "sha256": "4353ce5b3eade2a5bf566cd1d980f5856cc370d0e7202cce57f187a3dfcf261d",
+        "bytes": 44
+      },
+      {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-kraus-word-wave-rha0291/source-r0004/prior-return/SourceKrausWordWave291/complete.log",
+        "sha256": "68c009c26070182dcb11feadd7dfd19b7e2290363cdb64e9dc6b86188165de63",
+        "bytes": 3561
+      },
+      {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-kraus-word-wave-rha0291/source-r0004/prior-return/SourceKrausWordWave291/natural-return.json",
+        "sha256": "67db6b9013cbde83b0376e80f474381ee81356c09f362ffbd13de95e12f27c4a",
+        "bytes": 3464
+      },
+      {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-kraus-word-wave-rha0291/source-r0004/prior-return/SourceKrausWordWave291/qualified-return.json",
+        "sha256": "c003c9c8b189990cedf2b22aaa2b9260704b841614eb200b350c4190cf7e6cd1",
+        "bytes": 6382
+      },
+      {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-kraus-word-wave-rha0291/source-r0004/prior-return/SourceKrausWordWave291/start.json",
+        "sha256": "3cd0f7309aebd4a0b2621204723a0c874b3b2de8b605353588d3367af9b67be6",
+        "bytes": 5718
+      },
+      {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-kraus-word-wave-rha0291/source-r0004/prior-return/completion.json",
+        "sha256": "8aac060d17a048eab348c7b8ab86e1b822124e0a7401ba608521d7f38dfae8cf",
+        "bytes": 7287
+      },
+      {
+        "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-kraus-word-wave-rha0291/source-r0004/prior-return/start.json",
+        "sha256": "db4ab9dd39adb9f233fe9537c2cfed00d72d08d2564ee8ae20429914bd9173b6",
+        "bytes": 811
+      }
+    ],
+    "natural_exit_code": 1,
+    "all4actual_diagnostics_preserved": true
+  },
+  "qualified_parent290": {
+    "path": "Verification/physics/stage10/independent-bell/munich/readout-domain/evidence/source-word-mass-simplex-rha0289-0290/certify290-r0001/final-certification.json",
+    "sha256": "a69f7709f227fa4cb640afc8de225e6497c8d45edb4dfe1e106f3ce92c58da3b",
+    "bytes": 8862
+  }
+}

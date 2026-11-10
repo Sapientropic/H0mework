@@ -1,0 +1,1216 @@
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedSchur97WardFactor
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedEMOuterRowFactor
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedSchur97WardSchur
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedSchur97JointCone
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedSchur97UnitChartReturn
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedSchur97RatioTail
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedSchur97JointTail
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedBivariateTailPrice
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedSchur97ClockOrder
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedSchur97CommonPrincipal
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedSchur97NoetherFraction
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.Scratch.AlphaSource.ActualSourcePreparedNoetherPiOwn.ActualSourcePreparedSchur97EMNormalization
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedSchur97PolynomialNormalization
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedSchur97Cofactor
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedSchur97Normalization
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedSchur97Polynomial
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedSchur97PhysicalRead
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedInactiveSchurReturn
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedSchurObservedPrice
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedMatterClockPrincipal
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedMatterClockPrice
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedAuxiliarySchurBalance
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedAuxiliaryActualReturn
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedEMAgePiReturn
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedEMMovingPiAge
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedEMAgeFieldReturn
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedEMAgeReturn
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedEMWeightedTorque
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedEMNativeRead
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedEMNativeRow
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedEMOuterResidue
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedEMSpatialClockPrice
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedEMClockResidue
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedEMJacobiRow
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedEMClockEquation
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedEMPhaseField
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedEMTemporalFreeReturn
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedEMTwoClockCarrier
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedReducedQuantumCofactor
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedFourClockCarrier
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedClockReducedPencil
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedQuantumColumnClock
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedMovingNoetherDrive
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedMovingMaterialCarrier
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedJointNoetherSourcePrice
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedQuantumFieldWindowPrice
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedMovingNoetherResolvent
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedMovingResolventPrice
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedQuantumNoetherPrice
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedQuantumDriverCofactor
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedQuantumDriverPrice
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedTemporalQuantumIR
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedTemporalQuantumRead
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedTemporalSchur
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedTemporalQuantumWard
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedTemporalQuantumCofactor
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedTemporalQuantumPrice
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedTemporalEMConstraint
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedN3EMCoefficient
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedJointEMReturn
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedN3EMConsumer
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedN3MovingResponse
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedStaticNativeConstraint
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedN3IRNumerator
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedN3EMAnalyticPrice
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedN3EMChargeRead
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedN3ChargeEndpoint
+import H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedN3EMIRSplit
+
+set_option autoImplicit false
+set_option maxHeartbeats 16000000
+set_option maxRecDepth 32768
+
+open LowEnergy GaussCoreDifferential SourceQuantumConfigurationHilbert GaussQuantumMultiplier
+open SourceQuantumGaugeSliceCoordinates
+open PreparationVacuumFullElectricWard
+open PreparationPhysicalFirstTemporalChargeReturn PreparationVacuumWeightedChargeActionWard
+open LowEnergy.GaussComposite.PhysicalEMVoltage
+open LowEnergy.GaussComposite.ActualSourcePreparedEMWeightedTorque
+
+private theorem sourceEMFullCARConsumerCheck (f : QuantumTest) (z : SourceCoordinateSlice) :
+    sourceEMTemporalCore f z = quantized (sourceWeightSymbol z) (quantized emGaugeChargeMatrix (f z)) -
+      pairFiber (sourceWeightSymbol z) emGaugeChargeMatrix (f z) := by
+  rw [← sourceTemporalNormalCore_fullCAR]
+  change sourceEMTemporalCore f z =
+    quantized (sourceWeightSymbol z) (quantized emGaugeChargeMatrix (f z)) -
+      (quantized (sourceWeightSymbol z) (quantized emGaugeChargeMatrix (f z)) - sourceEMTemporalCore f z)
+  abel
+
+section Schur97WardConsumer
+open Polynomial LowEnergy.GaussComposite CanonicalGradedSpatialSource
+open ActualDressedFullCoulomb PreparationVacuumPhysicalCharacteristic
+open ActualSourcePreparedInactiveNativeInverse ActualSourcePreparedSchur97Polynomial
+open ActualSourcePreparedSchur97Cofactor ActualSourcePreparedSchur97WardSchur
+open scoped Matrix
+
+private theorem sourceSchur97WardColumnConsumerCheck (event : DressedEvent)
+    (n : PhysicalMomentum) (j : NativeActive) :
+    (sourceSchur97Force ᵥ* sourceSchur97Polynomial event n) j =
+      ((X : (ℂ[X])[X])^2 • sourceSchur97WardRow event n) j :=
+  @congrFun NativeActive (fun _ : NativeActive => ((ℂ[X])[X]))
+    (sourceSchur97Force ᵥ* sourceSchur97Polynomial event n)
+    ((X : (ℂ[X])[X])^2 • sourceSchur97WardRow event n)
+    (source_schur97_em_ward_row event n) j
+end Schur97WardConsumer
+
+open Lean Elab Command
+private def packageCertChildren (info : ConstantInfo) : Array Name := Id.run do
+  let mut children := info.type.getUsedConstants
+  if let some value := info.value? (allowOpaque := true) then
+    children := children ++ value.getUsedConstants
+  if let .inductInfo value := info then children := children ++ value.ctors.toArray
+  if let .recInfo value := info then
+    for rule in value.rules do children := children ++ rule.rhs.getUsedConstants
+  return children
+
+private def packageCertClosure (env : Environment)
+    (roots : List Name) : CommandElabM NameSet := do
+  let mut pending := roots
+  let mut seen : NameSet := {}
+  while !pending.isEmpty do
+    let name := pending.head!
+    pending := pending.tail!
+    unless seen.contains name do
+      let some info := env.checked.get.find? name | throwError m!"UNKNOWN {name}"
+      pending := (packageCertChildren info).toList ++ pending
+      seen := seen.insert name
+  return seen
+
+
+elab "#audit_source_prepared_em_enclosure" : command => do
+  let env ← getEnv
+  let some noetherInfo := env.find? ``LowEnergy.GaussComposite.ActualSourcePreparedSchur97NoetherFraction.source_schur97_noether_fraction
+    | throwError "MISSING_SOURCE_NOETHER_FRACTION"
+  let some numeratorInfo := env.find? ``LowEnergy.GaussComposite.ActualSourcePreparedSchur97RatioTail.sourceSchur97LiteralNoetherNumerator
+    | throwError "MISSING_LITERAL_NOETHER_NUMERATOR"
+  let some numeratorValue := numeratorInfo.value? | throwError "MISSING_LITERAL_NOETHER_BODY"
+  liftTermElabM do
+    Lean.Meta.forallTelescope noetherInfo.type fun xs body => do
+      let rhs := body.getAppArgs[2]!
+      let evaluated := rhs.getAppArgs[rhs.getAppArgs.size-2]!
+      let actual := evaluated.getAppArgs.back!
+      let literal := (mkAppN numeratorValue #[xs[0]!,xs[2]!]).headBeta
+      unless literal == actual do throwError "SOURCE_NOETHER_LITERAL_CHANGED"
+      logInfo "SOURCE_NOETHER_LITERAL_MATCH"
+  let modules := env.header.moduleNames
+  let owner := fun name => (env.getModuleIdxFor? name).map fun i => modules[i.toNat]!
+  let candidates := #[`H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedBinaryRefinement, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedEMEnclosure, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedJointEMReturn, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedN3EMConsumer, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedN3MovingResponse, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedStaticNativeConstraint, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedN3IRNumerator, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedN3EMIRSplit, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedN3ChargeEndpoint, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedN3EMChargeRead, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedN3EMAnalyticPrice, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedN3EMCoefficient, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedTemporalEMConstraint, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedTemporalQuantumWard, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedTemporalQuantumCofactor, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedTemporalQuantumPrice, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedTemporalSchur, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedTemporalQuantumRead, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedTemporalQuantumIR, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedQuantumDriverCofactor, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedQuantumDriverPrice, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedMovingNoetherResolvent, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedMovingResolventPrice, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedQuantumNoetherPrice, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedQuantumFieldWindowPrice, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedMovingNoetherDrive, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedMovingMaterialCarrier, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedJointNoetherSourcePrice, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedQuantumColumnClock, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedFourClockCarrier, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedClockReducedPencil, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedReducedQuantumCofactor, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedEMPhaseField, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedEMTemporalFreeReturn, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedEMTwoClockCarrier, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedEMClockEquation, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedEMJacobiRow, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedEMClockResidue, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedEMSpatialClockPrice, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedEMOuterResidue, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedEMNativeRow, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedEMNativeRead, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedEMWeightedTorque, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedEMAgeReturn, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedEMAgeFieldReturn, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedEMMixedAgeRead, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedEMAgePiWindow, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedEMAgePiReturn, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedEMMovingAge, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedEMMovingPiAge, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedAuxiliaryClockRows, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedAuxiliaryClockReduction, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedAuxiliaryActualReturn, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedAuxiliaryClockSchur, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedAuxiliarySchurActualReturn, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedAuxiliarySchurBalance, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedSchurClockField, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedSchurClockBalance, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedSchurClockPrice, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedJointNativeObservation, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedSchurObservedPrice, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedMatterClockField, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedMatterClockBalance, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedMatterClockPrice, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedMatterClockPrincipal, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedInactiveNativeData, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedInactiveNativeCertificate, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedInactiveNativeWeights, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedInactiveNativeInverse, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedInactiveSchurReturn, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedSchur97PhysicalRead, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedSchur97Polynomial, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedSchur97Normalization, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedSchur97Cofactor, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedSchur97PolynomialNormalization, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Scratch.AlphaSource.ActualSourcePreparedNoetherPiOwn.ActualSourcePreparedSchur97EMNormalization, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedSchur97NoetherFraction, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedSchur97CommonPrincipal, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedSchur97ClockOrder, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedBivariateTailPrice, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedSchur97JointTail, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedSchur97RatioTail, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedSchur97UnitChartReturn, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedSchur97JointCone, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedSchur97WardRow, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedSchur97WardSchur, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedSchur97WardDeterminant, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedSchur97WardFactor, `H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourcePreparedEMOuterRowFactor]
+  let owned := env.constants.toList.filterMap fun (name, _) =>
+    if (owner name).any candidates.contains then some name else none
+  let mouths := #[
+    ``LowEnergy.GaussComposite.ActualSourcePreparedBinaryRefinement.source_prepared_cleared_matrix,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedBinaryRefinement.source_binary_entry_error_limit,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedBinaryRefinement.source_binary_window_entry_limit,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedBinaryRefinement.sourceExactClearedMass,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedBinaryRefinement.source_binary_window_mass_limit,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedBinaryRefinement.source_binary_error_mass_limit,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedBinaryRefinement.source_binary_determinant_error_limit,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedBinaryRefinement.source_binary_window_determinant_limit,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedBinaryRefinement.source_binary_margin_limit,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedBinaryRefinement.source_binary_margin_eventually_positive,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedBinaryRefinement.source_binary_em_numerator_error_limit,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedBinaryRefinement.source_binary_em_numerator_limit,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedBinaryRefinement.source_binary_em_read_error_limit,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMEnclosure.source_binary_green_numerator_error_limit,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMEnclosure.source_binary_green_numerator_limit,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMEnclosure.source_binary_green_read_error_limit,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMEnclosure.sourcePreparedBinaryTotalError,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMEnclosure.source_binary_total_error_limit,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMEnclosure.source_binary_precision_exists,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMEnclosure.sourcePreparedBinaryBits,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMEnclosure.source_binary_generated_precision,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMEnclosure.sourcePreparedFullGreenRead,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMEnclosure.source_prepared_full_green_original,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMEnclosure.sourcePreparedEMTensorRead,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMEnclosure.source_prepared_em_tensor_original,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMEnclosure.source_prepared_generated_enclosure,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedJointEMReturn.source_prepared_joint_em_return,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedN3EMConsumer.sourcePreparedN3Read,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedN3EMConsumer.source_prepared_n3_four_parts,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedN3EMConsumer.sourcePreparedN3BinaryRead,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedN3EMConsumer.sourceN3CurrentPairMass,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedN3EMConsumer.source_n3_current_pair_mass_nonnegative,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedN3EMConsumer.source_prepared_n3_generated_enclosure,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedN3MovingResponse.sourceNativeStaticMatrix,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedN3MovingResponse.sourcePreparedNativeConstraint,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedN3MovingResponse.sourcePreparedClockQuantumMatrix,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedN3MovingResponse.source_prepared_full_native_response,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedN3MovingResponse.sourcePreparedMovingLightMatrix,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedN3MovingResponse.sourcePreparedMovingHeavyMatrix,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedN3MovingResponse.sourcePreparedMovingOutsideMatrix,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedN3MovingResponse.sourcePreparedMovingTailMatrix,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedN3MovingResponse.source_prepared_moving_pi_partition,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedN3MovingResponse.sourcePreparedN3NativeRead,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedN3MovingResponse.sourcePreparedN3MovingArm,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedN3MovingResponse.source_prepared_n3_moving_response,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedStaticNativeConstraint.source_static_spatial_ray,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedStaticNativeConstraint.source_static_normalized_regular,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedStaticNativeConstraint.source_native_static_original,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedStaticNativeConstraint.source_prepared_native_constraint_actual,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedN3NativeIR.sourceN3NativeStaticResidue,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedN3NativeIR.source_native_static_small_eventually,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedN3NativeIR.source_prepared_n3_native_ir,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedN3NativeIR.source_prepared_full_native_null_response,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedN3NativeIR.source_prepared_n3_native_pole_price,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedN3IRNumerator.sourceN3CurrentNumerator,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedN3IRNumerator.source_n3_current_numerator_eval,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedN3IRNumerator.source_prepared_n3_read_clear,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedN3IRNumerator.source_prepared_n3_read_fraction,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedN3IRNumerator.sourceN3DampingFraction,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedN3IRNumerator.source_prepared_n3_damping_fraction,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedN3IRNumerator.source_prepared_n3_damping_order_return,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedN3IRNumerator.source_prepared_n3_damping_principal,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedN3EMIRSplit.sourceN3ArmCurrent,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedN3EMIRSplit.sourceN3ArmNumerator,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedN3EMIRSplit.sourceN3ArmRead,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedN3EMIRSplit.source_n3_numerator_four_arms,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedN3EMIRSplit.source_n3_arm_numerator_eval,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedN3EMIRSplit.source_n3_arm_read_fraction,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedN3EMIRSplit.source_n3_em_arm_noether_read,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedN3ChargeEndpoint.sourceN3AmputatedPoleCharge,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedN3ChargeEndpoint.sourceN3ChargeReadDefect,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedN3ChargeEndpoint.sourceN3ChargeReadPrice,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedN3ChargeEndpoint.source_n3_amputated_pole_charge_return,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedN3ChargeEndpoint.source_n3_noether_charge_endpoint,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedN3ChargeEndpoint.source_n3_charge_defect_price,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedN3ChargeEndpoint.sourceN3ChargePairPrice,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedN3ChargeEndpoint.source_n3_charge_pair_price,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedN3EMChargeRead.sourceN3ArmDampingFraction,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedN3EMChargeRead.source_n3_damping_four_arms,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedN3EMChargeRead.source_n3_arm_damping_read,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedN3EMChargeRead.source_n3_em_clock_order_return,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedN3EMChargeRead.sourceN3TemporalEMCoefficient,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedN3EMChargeRead.sourceN3OtherEMRead,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedN3EMChargeRead.source_n3_em_charge_endpoint_read,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedN3EMChargeRead.source_n3_em_charge_matching_price,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedN3EMAnalyticPrice.polynomialTailPrice,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedN3EMAnalyticPrice.polynomial_tail_price,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedN3EMAnalyticPrice.polynomialReadRadius,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedN3EMAnalyticPrice.polynomial_read_radius_positive,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedN3EMAnalyticPrice.polynomial_read_margin,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedN3EMAnalyticPrice.polynomialRatioSlope,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedN3EMAnalyticPrice.polynomial_ratio_price,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedN3EMAnalyticPrice.sourceEMAnalyticRadius,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedN3EMAnalyticPrice.sourceEMAnalyticCenter,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedN3EMAnalyticPrice.sourceEMAnalyticSlope,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedN3EMAnalyticPrice.source_em_analytic_price,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedN3EMAnalyticPrice.source_n3_em_principal_analytic_price,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedN3EMCoefficient.source_n3_em_numerator_noether,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedN3EMCoefficient.sourceN3OtherEMNumerator,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedN3EMCoefficient.source_n3_em_numerator_charge_endpoint,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedN3EMCoefficient.source_n3_em_clock_charge_coefficient,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedTemporalEMConstraint.sourceTemporalEMForce,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedTemporalEMConstraint.source_em_temporal_cokernel_frequency,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedTemporalEMConstraint.source_em_temporal_cokernel,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedTemporalEMConstraint.source_em_temporal_null_source,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedTemporalEMConstraint.source_prepared_temporal_native_defect_zero,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedTemporalEMConstraint.source_prepared_temporal_moving_response,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedTemporalQuantumWard.sourceTemporalCorrectedField,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedTemporalQuantumWard.source_temporal_corrected_field_equation,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedTemporalQuantumWard.source_temporal_quantum_cokernel,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedTemporalQuantumWard.source_temporal_quantum_history_return,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedTemporalQuantumCofactor.sourceTemporalQuantumConstraintPolynomial,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedTemporalQuantumCofactor.source_temporal_quantum_constraint_polynomial,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedTemporalQuantumCofactor.source_temporal_quantum_constraint_coefficient,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedTemporalQuantumPrice.sourceTemporalConstraintPairMass,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedTemporalQuantumPrice.source_temporal_quantum_window_price,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedTemporalQuantumPrice.source_temporal_quantum_history_price,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedTemporalSchur.sourceTemporalStaticPoint,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedTemporalSchur.sourceTemporalSchurMatrix,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedTemporalSchur.sourceTemporalSchurCoordinates,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedTemporalSchur.sourceTemporalSchurField,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedTemporalSchur.source_temporal_schur_regular,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedTemporalSchur.source_temporal_schur_field_actual,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedTemporalSchur.source_temporal_schur_coordinates_actual,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedTemporalSchur.source_temporal_schur_tensor_read,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedTemporalSchur.source_temporal_schur_clock_cofactor,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedTemporalSchur.source_temporal_schur_noether_coefficient,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedTemporalQuantumRead.source_temporal_detector_null_column,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedTemporalQuantumRead.source_temporal_detector_null_lift,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedTemporalQuantumRead.source_temporal_actual_native_field,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedTemporalQuantumRead.source_temporal_actual_quantum_read,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedTemporalQuantumRead.sourceTemporalNativeQuantumArm,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedTemporalQuantumRead.source_temporal_actual_moving_quantum_read,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedTemporalQuantumIR.sourceTemporalActualQuantumDriver,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedTemporalQuantumIR.source_temporal_quantum_spatial_pole_price,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedQuantumDriverCofactor.sourceQuantumDriverNumerator,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedQuantumDriverCofactor.source_quantum_driver_clear,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedQuantumDriverCofactor.sourceQuantumNativeReader,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedQuantumDriverCofactor.source_quantum_native_reader_actual,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedQuantumDriverCofactor.sourceQuantumNativeReaderNumerator,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedQuantumDriverCofactor.source_quantum_native_reader_clear,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedQuantumDriverCofactor.sourceQuantumNativeReaderFraction,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedQuantumDriverCofactor.source_quantum_native_reader_fraction,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedQuantumDriverCofactor.source_quantum_native_reader_clock_return,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedQuantumDriverPrice.rationalReaderBudget,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedQuantumDriverPrice.rational_read_budget,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedQuantumDriverPrice.sourceQuantumNativeReaderBudget,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedQuantumDriverPrice.sourceQuantumNativeReaderRadius,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedQuantumDriverPrice.source_quantum_native_reader_radius_positive,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedQuantumDriverPrice.source_quantum_native_reader_budget,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedQuantumDriverPrice.source_temporal_quantum_ir_budget,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedMovingNoetherResolvent.source_moving_evolution_update,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedMovingNoetherResolvent.sourceMovingResolventCorrection,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedMovingNoetherResolvent.source_moving_resolvent_update,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedMovingNoetherResolvent.sourceMovingNoetherCoefficients,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedMovingNoetherResolvent.source_moving_noether_inverse_update,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedMovingNoetherResolvent.sourceMovingPolarizationCoefficients,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedMovingNoetherResolvent.source_moving_polarization_update,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedMovingNoetherResolvent.source_moving_actual_quantum_driver_update,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedMovingResolventPrice.source_inverse_common_laplace_price,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedMovingResolventPrice.sourceClockResolventBudget,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedMovingResolventPrice.source_clock_resolvent_budget,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedMovingResolventPrice.source_moving_resolvent_correction_price,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedMovingResolventPrice.source_moving_resolvent_difference_price,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedQuantumNoetherPrice.sourceQuantumNoetherMass,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedQuantumNoetherPrice.source_quantum_noether_driver_price,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedQuantumNoetherPrice.source_quantum_noether_native_reader_price,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedQuantumNoetherPrice.source_quantum_noether_ir_price,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedQuantumFieldWindowPrice.sourceQuantumFieldWindowPrice,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedQuantumFieldWindowPrice.source_quantum_actual_field_window_price,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedQuantumFieldWindowPrice.sourceQuantumNoetherWindowMass,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedQuantumFieldWindowPrice.source_quantum_noether_window_mass_bound,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedQuantumFieldWindowPrice.source_quantum_noether_window_driver_price,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedQuantumFieldWindowPrice.source_quantum_noether_window_ir_price,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedMovingNoetherDrive.sourceMovingCurrentInsertion,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedMovingNoetherDrive.source_moving_left_current_update,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedMovingNoetherDrive.source_moving_right_current_fixed,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedMovingNoetherDrive.sourceMovingDriveInsertion,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedMovingNoetherDrive.source_moving_drive_update,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedMovingNoetherDrive.sourceMovingFullNoetherCoefficients,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedMovingNoetherDrive.source_moving_full_noether_update,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedMovingNoetherDrive.sourceMovingFullPolarizationCoefficients,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedMovingNoetherDrive.source_moving_full_polarization_update,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedMovingNoetherDrive.source_moving_full_actual_driver_update,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedMovingMaterialCarrier.source_moving_noether_initial_join,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedMovingMaterialCarrier.source_moving_material_initial_clear,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedMovingMaterialCarrier.source_moving_material_raw_clear,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedMovingMaterialCarrier.source_moving_noether_material_return,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedMovingMaterialCarrier.source_moving_polarization_material_return,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedJointNoetherSourcePrice.source_moving_free_current_price,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedJointNoetherSourcePrice.sourceJointCubicNoetherPrice,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedJointNoetherSourcePrice.source_joint_complete_noether_price,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedJointNoetherSourcePrice.source_joint_polarization_sigma_four_price,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedJointNoetherSourcePrice.source_joint_cubic_noether_nonnegative,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedJointNoetherSourcePrice.sourceJointNoetherWindowMass,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedJointNoetherSourcePrice.source_joint_quantum_window_driver_price,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedJointNoetherSourcePrice.source_joint_quantum_native_reader_price,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedJointNoetherSourcePrice.source_joint_quantum_window_ir_price,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedQuantumColumnClock.source_quantum_numerator_em_column,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedQuantumColumnClock.source_quantum_driver_clock_from_column,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedQuantumColumnClock.source_quantum_field_em_column,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedQuantumColumnClock.source_quantum_driver_em_column,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedQuantumColumnClock.source_quantum_driver_column_clock_return,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedFourClockCarrier.sourceFourClockClearing,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedFourClockCarrier.sourceFourClockOrder,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedFourClockCarrier.sourceFourClockNumerator,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedFourClockCarrier.source_four_clock_numerator_factor,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedFourClockCarrier.sourceFourClockDenominator,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedFourClockCarrier.sourceFourClockResponseNumerator,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedFourClockCarrier.source_four_clock_denominator_factor,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedFourClockCarrier.source_four_clock_response_factor,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedClockReducedPencil.sourceClockEval,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedClockReducedPencil.source_clock_reduced_pi_clear,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedClockReducedPencil.sourceClockReducedNumerator,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedClockReducedPencil.sourceClockReducedPencil,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedClockReducedPencil.source_clock_reduced_pencil_actual,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedClockReducedPencil.source_clock_reduced_actual_field,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedClockReducedPencil.source_clock_reduced_actual_driver,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedReducedQuantumCofactor.sourceReducedClockMatrix,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedReducedQuantumCofactor.sourceReducedClockDeterminant,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedReducedQuantumCofactor.sourceReducedClockFieldNumerator,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedReducedQuantumCofactor.source_reduced_clock_actual_field_clear,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedReducedQuantumCofactor.source_reduced_clock_denominator_nonzero,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedReducedQuantumCofactor.source_reduced_clock_determinant_nonzero,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedReducedQuantumCofactor.sourceReducedClockDriverNumerator,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedReducedQuantumCofactor.source_reduced_clock_actual_driver_clear,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedReducedQuantumCofactor.source_reduced_clock_actual_field_fraction,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedReducedQuantumCofactor.source_reduced_clock_actual_driver_fraction,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedReducedQuantumCofactor.source_reduced_clock_temporal_coefficient,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedReducedQuantumCofactor.source_reduced_clock_driver_cokernel,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMPhaseField.source_em_phase_field,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMPhaseField.source_temporal_force_phase,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMPhaseField.source_actual_em_noether_reader_momentum,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMPhaseField.source_actual_em_noether_contact_zero,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMTemporalFreeReturn.sourcePreparedEMTemporalPi,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMTemporalFreeReturn.source_prepared_em_temporal_pi_original,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMTemporalFreeReturn.source_actual_em_temporal_four_words,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMTemporalFreeReturn.source_prepared_em_temporal_pi_two_clock_price,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMTemporalFreeReturn.source_temporal_quantum_em_driver_return,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMTemporalFreeReturn.source_temporal_quantum_em_driver_clock_price,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMTwoClockCarrier.sourceEMClockNumerator,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMTwoClockCarrier.sourceEMTwoClockNumerator,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMTwoClockCarrier.source_em_two_clock_numerator_factor,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMTwoClockCarrier.sourceEMTwoClockResponseNumerator,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMTwoClockCarrier.source_em_two_clock_response_factor,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMTwoClockCarrier.source_em_two_clock_reduced_pi_clear,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedFourClockCarrier.bivariate_bounded_clock_factor,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedFourClockCarrier.static_pi_clear,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMClockEquation.sourceEMClockForce,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMClockEquation.sourceEMClockJacobiRow,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMClockEquation.source_em_clock_full_response_row,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMClockEquation.sourceEMClockReducedRow,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMClockEquation.source_em_clock_reduced_pencil_row,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMClockEquation.source_em_clock_reduced_actual_field,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMClockEquation.source_em_clock_reduced_cofactor_field,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMJacobiRow.sourceEMRowProjectorTerms,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMJacobiRow.sourceEMStaticJacobiTerms,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMJacobiRow.sourceEMJacobiConstantTerms,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMJacobiRow.sourceEMJacobiSpatialTerms,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMJacobiRow.source_em_jacobi_terms_certificate,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMJacobiRow.source_em_static_jacobi_original,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMJacobiRow.source_em_static_jacobi_split,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMJacobiRow.source_em_row_projector_actual,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMJacobiRow.source_em_jacobi_row_split,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMJacobiRow.sourceEMJacobiLiteralRow,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMJacobiRow.source_em_clock_jacobi_literal,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMJacobiRow.source_em_clock_cofactor_literal,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedFourClockCarrier.bounded_fraction_clock_factor,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMClockResidue.sourceEMSpecializedDenominator,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMClockResidue.sourceEMSpecializedNumerator,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMClockResidue.sourceEMSpecializedOrder,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMClockResidue.sourceEMFiniteClockDenominator,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMClockResidue.sourceEMFiniteClockNumerator,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMClockResidue.sourceEMClockResidue,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMClockResidue.source_em_specialized_denominator_nonzero,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMClockResidue.source_em_specialized_numerator_factor,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMClockResidue.source_em_finite_clock_denominator_factor,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMClockResidue.source_em_finite_clock_numerator_factor,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMClockResidue.source_em_finite_clock_denominator_origin,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMClockResidue.source_em_finite_clock_residue,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMClockResidue.source_em_two_clock_residue_limit,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMClockResidue.source_em_clock_residue_price,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMClockResidue.source_em_zero_transfer_residue_independent,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMClockResidue.source_em_clock_residue_original_leading,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMClockResidue.sourceEMFiniteClockRow,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMClockResidue.source_em_specialized_finite_row,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMClockResidue.source_em_finite_clock_row_origin,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMClockResidue.source_em_finite_clock_cofactor_field,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMSpatialClockPrice.sourceEMSpatialClockBudget,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMSpatialClockPrice.source_em_spatial_temporal_price,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMSpatialClockPrice.source_em_spatial_clock_uniform_price,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMSpatialClockPrice.source_em_spatial_residue_uniform_price,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMOuterResidue.sourceEMOuterDenominator,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMOuterResidue.sourceEMOuterNumerator,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMOuterResidue.sourceEMOuterOrder,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMOuterResidue.sourceEMOuterResidue,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMOuterResidue.source_em_outer_denominator_nonzero,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMOuterResidue.source_em_outer_fraction_actual,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMOuterResidue.source_em_outer_numerator_factor,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMOuterResidue.source_em_outer_denominator_coefficient_nonzero,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMOuterResidue.source_em_outer_finite_numerator,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMOuterResidue.source_em_outer_residue_limit,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMNativeRow.sourceEMNativeInverseRowTerms,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMNativeRow.source_em_native_inverse_terms_certificate,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMNativeRow.source_em_native_inverse_row,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMNativeRow.sourceEMNativeBackgroundTerms,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMNativeRow.sourceEMNativeLowerTerms,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMNativeRow.sourceEMNativePrincipalTerms,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMNativeRow.source_em_native_schur_terms_certificate,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMNativeRow.source_em_native_schur_row,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMNativeRead.sourceEMNativeBackgroundRead,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMNativeRead.sourceEMNativeLowerRead,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMNativeRead.source_em_native_background_actual,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMNativeRead.source_em_native_lower_actual,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMNativeRead.source_em_native_lower_scale,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMNativeRead.source_em_native_lower_spatial_factor,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMNativeRead.source_em_native_scaled_finite_return,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMNativeRead.source_em_native_background_cofactor,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMNativeRead.source_em_native_lower_cofactor,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMWeightedTorque.sourceEMTemporalCore,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMWeightedTorque.source_em_temporal_signed_reader,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMWeightedTorque.source_em_temporal_core_full_car,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMWeightedTorque.source_em_temporal_core_pair,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMWeightedTorque.sourceEMPhysicalCoreTorque,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMWeightedTorque.source_em_physical_core_torque,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMWeightedTorque.sourceEMPhysicalRightDefect,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMWeightedTorque.sourceEMPhysicalLeftDefect,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMWeightedTorque.sourceEMPhysicalCompressionTorque,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMWeightedTorque.source_em_physical_compression_torque,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMAgeReturn.source_em_zero_transfer_age_derivative,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMAgeReturn.sourceEMAgeLeft,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMAgeReturn.sourceEMAgeRight,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMAgeReturn.sourceEMAgePhysicalRead,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMAgeReturn.source_em_actual_observer_age_derivative,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMAgeReturn.source_em_dressed_noether_age_derivative,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMAgeReturn.source_em_free_current_assembly,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMAgeReturn.source_em_field_residual_direction,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMAgeFieldReturn.sourceEMAgeFieldKernel,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMAgeFieldReturn.source_em_actual_age_field_germ,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMAgeFieldReturn.sourceEMAgeFieldSlope,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMAgeFieldReturn.source_em_age_field_kernel_direction,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMAgeFieldReturn.source_em_actual_noether_age_field_direction,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMMixedAgeRead.sourceEMJointObserver,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMMixedAgeRead.source_em_joint_observer_C2,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMMixedAgeRead.source_em_temporal_jet_age_derivative,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMAgePiWindow.sourceEMAgePiWindow,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMAgePiWindow.source_em_age_residual_continuous,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMAgePiWindow.source_em_age_pi_window_integral,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMAgePiWindow.source_em_age_pi_window_boundary,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMAgePiWindow.source_em_age_pi_prepared_tail,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMAgePiReturn.sourceEMInitialKernel,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMAgePiReturn.source_em_initial_jet,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMAgePiReturn.source_em_weighted_endpoint_limit,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMAgePiReturn.source_em_age_pi_window_limit,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMAgePiReturn.sourceEMAgeResidualWindow,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMAgePiReturn.source_em_age_residual_window_limit,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMAgePiReturn.source_em_age_residual_window_price,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMMovingAge.sourceEMMovingAgeKernel,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMMovingAge.source_em_moving_actual_age_germ,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMMovingAge.sourceEMMovingAgeSlope,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMMovingAge.source_em_moving_age_kernel_direction,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMMovingAge.source_em_moving_noether_age_direction,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMMovingAge.sourceEMMovingJointObserver,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMMovingAge.source_em_moving_joint_observer_C2,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMMovingAge.source_em_moving_temporal_jet_age_derivative,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMMovingPiAge.sourceEMMovingPiWindow,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMMovingPiAge.source_em_moving_age_residual_continuous,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMMovingPiAge.source_em_moving_pi_window_integral,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMMovingPiAge.source_em_moving_pi_window_boundary,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMMovingPiAge.source_em_moving_pi_prepared_tail,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMMovingPiAge.sourceEMMovingInitialKernel,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMMovingPiAge.source_em_moving_initial_jet,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMMovingPiAge.source_em_moving_weighted_endpoint_limit,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMMovingPiAge.source_em_moving_pi_window_limit,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMMovingPiAge.sourceEMMovingResidualWindow,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMMovingPiAge.source_em_moving_residual_window_limit,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMMovingPiAge.source_em_moving_residual_window_price,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMMovingPiAge.sourceEMMovingDriverWindow,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMMovingPiAge.source_em_moving_actual_driver_window_limit,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMMovingPiAge.source_em_moving_actual_driver_window_price,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedAuxiliaryClockRows.source_auxiliary_clock_response_row_zero,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedAuxiliaryClockRows.source_auxiliary_clock_pencil_row,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedAuxiliaryClockRows.source_auxiliary_clock_factor_nonzero,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedAuxiliaryClockReduction.sourceAuxiliaryClockFactor,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedAuxiliaryClockReduction.sourceAuxiliaryRowWeight,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedAuxiliaryClockReduction.sourceAuxiliaryReducedPencil,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedAuxiliaryClockReduction.source_auxiliary_pencil_row_factor,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedAuxiliaryClockReduction.source_auxiliary_determinant_factor,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedAuxiliaryClockReduction.sourceAuxiliaryReducedFieldNumerator,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedAuxiliaryClockReduction.source_auxiliary_field_cofactor_factor,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedAuxiliaryActualReturn.sourceAuxiliaryActualDeterminant,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedAuxiliaryActualReturn.sourceAuxiliaryActualFieldNumerator,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedAuxiliaryActualReturn.source_auxiliary_actual_determinant_factor,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedAuxiliaryActualReturn.source_auxiliary_actual_field_factor,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedAuxiliaryActualReturn.source_auxiliary_actual_field_clear,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedAuxiliaryActualReturn.source_auxiliary_actual_determinant_nonzero,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedAuxiliaryActualReturn.source_auxiliary_actual_field_fraction,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedAuxiliaryActualReturn.sourceAuxiliaryActualDriverNumerator,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedAuxiliaryActualReturn.source_auxiliary_actual_driver_factor,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedAuxiliaryActualReturn.source_auxiliary_actual_driver_clear,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedAuxiliaryActualReturn.sourceAuxiliaryReducedEMBalance,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedAuxiliaryActualReturn.source_auxiliary_reduced_balance_actual,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedAuxiliaryActualReturn.source_em_auxiliary_reduced_finite_return,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedAuxiliaryClockSchur.sourceAuxiliaryClockBlock,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedAuxiliaryClockSchur.sourceAuxiliaryClockInverse,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedAuxiliaryClockSchur.source_auxiliary_clock_block_constant,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedAuxiliaryClockSchur.source_auxiliary_clock_block_inverse,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedAuxiliaryClockSchur.sourceAuxiliaryClockSchurPencil,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedAuxiliaryClockSchur.source_auxiliary_clock_schur_determinant,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedAuxiliarySchurActualReturn.source_auxiliary_actual_pencil_field,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedAuxiliarySchurActualReturn.source_auxiliary_actual_field_reconstruction,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedAuxiliarySchurActualReturn.source_auxiliary_actual_schur_field,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedAuxiliarySchurActualReturn.source_auxiliary_actual_schur_regular,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedAuxiliarySchurActualReturn.source_auxiliary_actual_schur_cofactor,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedAuxiliarySchurBalance.sourceSchurDeterminant,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedAuxiliarySchurBalance.sourceSchurRestNumerator,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedAuxiliarySchurBalance.sourceSchurFullFieldNumerator,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedAuxiliarySchurBalance.source_schur_determinant_nonzero,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedAuxiliarySchurBalance.source_schur_full_field_clear,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedAuxiliarySchurBalance.source_schur_full_field_fraction,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedAuxiliarySchurBalance.sourceSchurDriverNumerator,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedAuxiliarySchurBalance.source_schur_actual_driver_clear,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedAuxiliarySchurBalance.sourceSchurEMBalance,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedAuxiliarySchurBalance.source_schur_em_balance_actual,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedAuxiliarySchurBalance.source_em_schur_finite_return,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchurClockField.sourceSchurClockDeterminant,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchurClockField.sourceSchurClockRestNumerator,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchurClockField.sourceSchurClockFullFieldNumerator,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchurClockField.source_schur_clock_determinant_eval,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchurClockField.source_schur_clock_rest_eval,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchurClockField.source_schur_clock_full_field_eval,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchurClockField.source_schur_clock_full_field_fraction,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchurClockBalance.sourceSchurClockJacobi,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchurClockBalance.sourceSchurClockDriverNumerator,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchurClockBalance.source_schur_clock_driver_eval,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchurClockBalance.sourceSchurClockBalanceNumerator,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchurClockBalance.source_schur_clock_balance_numerator_eval,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchurClockBalance.source_schur_clock_balance_fraction,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchurClockBalance.source_em_schur_clock_finite_return,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchurClockPrice.sourceSchurDampingFraction,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchurClockPrice.source_schur_damping_read,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchurClockPrice.source_schur_full_clock_principal_price,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchurClockPrice.source_em_full_clock_coefficient_price,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedJointNativeObservation.sourceJointNativeAgeWindow,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedJointNativeObservation.source_joint_native_age_window_limit,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedJointNativeObservation.source_joint_native_age_window_price,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchurObservedPrice.sourceSchurClockCoefficientPrincipal,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchurObservedPrice.sourceSchurObservedError,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchurObservedPrice.source_schur_actual_observation_price,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedMatterClockField.sourceMatterClockDeterminant,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedMatterClockField.sourceMatterClockFieldNumerator,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedMatterClockField.source_matter_clock_field_factor,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedMatterClockField.source_matter_clock_determinant_eval,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedMatterClockField.source_matter_clock_field_eval,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedMatterClockField.source_matter_clock_field_fraction,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedMatterClockBalance.sourceMatterClockJacobi,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedMatterClockBalance.sourceMatterClockDriverNumerator,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedMatterClockBalance.source_matter_clock_driver_eval,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedMatterClockBalance.sourceMatterClockBalanceNumerator,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedMatterClockBalance.source_matter_clock_balance_numerator_eval,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedMatterClockBalance.source_matter_clock_balance_fraction,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedMatterClockBalance.source_em_matter_clock_finite_return,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedMatterClockPrice.sourceMatterDampingFraction,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedMatterClockPrice.source_matter_damping_read,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedMatterClockPrice.source_matter_full_clock_principal_price,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedMatterClockPrice.source_em_matter_full_clock_coefficient_price,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedMatterClockPrincipal.source_matter_clock_field_equation,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedMatterClockPrincipal.source_matter_clock_field_auxiliary_native,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedMatterClockPrincipal.source_em_native_principal_read,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedMatterClockPrincipal.source_matter_clock_balance_principal_eval,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedMatterClockPrincipal.source_matter_clock_balance_principal,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedInactiveNativeData.sourceInactiveInverseNumeratorTerms,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedInactiveNativeData.sourceInactiveWeightTerms,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedInactiveNativeData.sourceInactivePoleIndices,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedInactiveNativeData.sourceInactiveMassIndices,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedInactiveNativeCertificate.sourceInactive,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedInactiveNativeCertificate.sourceStaticInactiveTerms,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedInactiveNativeCertificate.source_inactive_native_cleared_left_certificate,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedInactiveNativeCertificate.source_inactive_native_cleared_right_certificate,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedInactiveNativeCertificate.source_inactive_native_cleared_products,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedInactiveNativeWeights.nativeSpatialSquare,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedInactiveNativeWeights.nativeInactiveWeight,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedInactiveNativeWeights.source_inactive_native_weight_matrix,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedInactiveNativeWeights.source_inactive_native_physical_square,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedInactiveNativeWeights.source_inactive_native_weight_nonzero,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedInactiveNativeInverse.NativeInactive,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedInactiveNativeInverse.NativeActive,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedInactiveNativeInverse.nativeWholeIndex,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedInactiveNativeInverse.source_inactive_native_dimensions,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedInactiveNativeInverse.nativeInactiveBlock,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedInactiveNativeInverse.nativeInactiveNumerator,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedInactiveNativeInverse.nativeInactiveInverse,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedInactiveNativeInverse.source_inactive_native_numerator_product,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedInactiveNativeInverse.source_inactive_native_physical_inverse,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedInactiveSchurReturn.sourceMatterNativeMatrix,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedInactiveSchurReturn.sourceMatterNativeSchur,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedInactiveSchurReturn.source_matter_native_schur_cofactor_field,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedInactiveSchurReturn.source_matter_native_schur_determinant,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchur97PhysicalRead.source_schur97_original_regular_iff,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchur97PhysicalRead.source_schur97_actual_field_return,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchur97PhysicalRead.source_schur97_actual_em_read,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchur97PhysicalRead.source_schur97_actual_coefficient,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchur97Polynomial.nativeClockSquare,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchur97Polynomial.nativeClockDenominator,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchur97Polynomial.nativeClockInverseNumerator,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchur97Polynomial.source_native_clock_inverse_clear,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchur97Polynomial.sourceSchur97Polynomial,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchur97Polynomial.source_schur97_polynomial_eval,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchur97Polynomial.source_native_clock_denominator_nonzero,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchur97Polynomial.source_schur97_polynomial_determinant_eval,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchur97Polynomial.source_schur97_polynomial_original_regular_iff,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchur97Cofactor.sourceSchur97Force,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchur97Cofactor.sourceSchur97Determinant,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchur97Cofactor.sourceSchur97FieldNumerator,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchur97Cofactor.sourceSchur97EMNumerator,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchur97Cofactor.source_schur97_actual_field_fraction,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchur97PolynomialNormalization.source_schur97_polynomial_adjugate_cross,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchur97EMNormalization.source_schur97_em_scalar_cofactor_cross,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchur97NoetherFraction.source_schur97_noether_fraction,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchur97CommonPrincipal.source_schur97_full_balance_cross,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchur97ClockOrder.source_schur97_clock_order_stable,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchur97ClockOrder.source_schur97_clock_leading_price,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedBivariateTailPrice.bivariate_clock_tail_price,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchur97JointTail.source_schur97_balance_tail_price,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchur97JointTail.source_schur97_determinant_tail_price,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchur97RatioTail.bivariate_ratio_tail_price,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchur97RatioTail.bivariateRatioRadius,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchur97RatioTail.bivariate_ratio_radius_positive,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchur97RatioTail.bivariateClockUnit,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchur97RatioTail.bivariate_clock_unit_factor,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchur97RatioTail.bivariate_clock_unit_origin,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchur97RatioTail.sourceSchur97LiteralNoetherNumerator,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchur97RatioTail.source_schur97_unit_spatial_chart,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchur97RatioTail.source_schur97_fraction_joint_tail_price,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchur97UnitChartReturn.source_schur97_original_regular_on_unit_radius,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchur97UnitChartReturn.source_schur97_noether_on_unit_radius,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchur97JointCone.spatialUnit,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchur97JointCone.clockLeading,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchur97JointCone.spatialWeight,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchur97JointCone.jointSpatialRadius,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchur97JointCone.clockRatioSlope,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchur97JointCone.jointClockRadius,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchur97JointCone.joint_spatial_radius_positive,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchur97JointCone.joint_clock_radius_positive,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchur97JointCone.source_schur97_joint_cone_price,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchur97WardRow.source_schur97_active_em_row,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchur97WardSchur.sourceSchur97WardRow,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchur97WardSchur.source_schur97_em_ward_row,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchur97WardDeterminant.sourceSchur97WardPivot,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchur97WardDeterminant.sourceSchur97WardDeterminant,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchur97WardDeterminant.source_schur97_ward_determinant_factor,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchur97WardFactor.sourceSchur97WardNoetherNumerator,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchur97WardFactor.source_schur97_noether_three_dvd,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchur97WardFactor.source_schur97_ward_noether_factor,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchur97WardFactor.source_schur97_ward_fraction,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchur97WardFactor.source_schur97_ward_actual_noether,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchur97WardFactor.source_schur97_ward_noether_order,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchur97WardFactor.source_schur97_ward_determinant_order,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMOuterRowFactor.source_em_outer_row_constant,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMOuterRowFactor.source_em_outer_row_factor,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchur97Normalization.source_schur97_adjugate_active,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchur97Normalization.source_schur97_adjugate_cross,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedSchur97Normalization.source_schur97_current_cofactor_cross]
+  for name in mouths do
+    unless owned.contains name do throwError m!"MISSING_MOUTH {name}"
+  let all ← packageCertClosure env (owned ++ [``sourceEMFullCARConsumerCheck, ``sourceSchur97WardColumnConsumerCheck])
+  let allowed := #[``propext, ``Classical.choice, ``Quot.sound]
+  let mut axioms : Array String := #[]
+  let mut opaques : Nat := 0
+  for name in all.toArray do
+    let some info := env.checked.get.find? name | throwError m!"UNKNOWN {name}"
+    if info.isUnsafe || info.isPartial then throwError m!"UNTRUSTED {name}"
+    match info with
+    | .defnInfo _ | .thmInfo _ | .opaqueInfo _ =>
+      unless (info.value? (allowOpaque := true)).isSome do throwError m!"UNREAD {name}"
+    | _ => pure ()
+    if let .opaqueInfo _ := info then opaques := opaques + 1
+    if let .axiomInfo _ := info then
+      unless allowed.contains name do throwError m!"UNAUTHORIZED_AXIOM {name}"
+      axioms := axioms.push name.toString
+    if #["CODATA", "alphaEMIntegerDenominator", "alphaEMFromIntegerConstraint",
+      "gutWeakMixingInformationRatio", "prepared_to_actual"].any (fun (part : String) => name.toString.contains part) then
+      throwError m!"TARGET_CONTAMINATION {name}"
+  let required := #[
+    ``LowEnergy.PreparationPhysicalSignedWeightDynamics.sourceWeightCore_physicalTorque,
+    ``LowEnergy.PreparationPhysicalFirstTemporalChargeReturn.sourceTemporalNormalCore_fullCAR,
+    ``LowEnergy.GaussComposite.PhysicalN3SourceEnergy.physical_n3_noether_em_signed_volume,
+    ``LowEnergy.GaussComposite.ActualDressedEMTemporal.actual_em_temporal_observer_germ,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedNoetherPi.source_prepared_finite_field_derivative,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedNoetherPi.source_prepared_pi_actual,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedStaticCorrectedReturn.source_prepared_static_pencil_actual,
+    ``LowEnergy.GaussComposite.ActualDressedCorrectedGreen.actual_corrected_green_inverse,
+    ``LowEnergy.GaussComposite.ActualDressedEMTensorClock.commonEMTensorNumerator,
+    ``LowEnergy.ActualSourceQuantumCoefficientErrorOwn.sourceStaticClearedWindow_entry_error,
+    ``LowEnergy.ActualSourceQuantumCoefficientErrorOwn.actual_source_symbolic_denominator_error,
+    ``LowEnergy.ActualSourceQuantumCoefficientErrorOwn.actual_source_EM16_numerator_error,
+    ``LowEnergy.ActualSourceQuantumCoefficientErrorOwn.actual_source_full289_green_binary_error,
+    ``LowEnergy.ActualSourceQuantumCoefficientErrorOwn.actual_source_EM16_binary_read_error,
+    ``LowEnergy.GaussComposite.ActualPreparedPiPreparationReturnProducer.ActualPreparedPiPreparationReturn.of_source,
+    ``LowEnergy.GaussComposite.ActualDressedTemporalResidual.physical_preparation_return,
+    ``LowEnergy.GaussComposite.ActualDressedTemporalResidual.preparation_ward_observer_price,
+    ``LowEnergy.GaussComposite.PhysicalN3SourceEnergy.physicalN3PoleCurrent,
+    ``LowEnergy.GaussComposite.PhysicalN3SourceEnergy.physicalN3PoleNoetherCurrent,
+    ``LowEnergy.GaussComposite.PhysicalN3SourceEnergy.physical_n3_pole_corrected_four_parts,
+    ``LowEnergy.GaussComposite.ActualMovingSourceFullLightReturnProducer.ActualMovingSourceFullLightReturn.of_source,
+    ``LowEnergy.GaussComposite.ActualEMAction.emOriginalJacobi,
+    ``LowEnergy.PreparationPhysicalNativePhotonFluxReturn.sourceWholePhotonGreen,
+    ``LowEnergy.PreparationPhysicalStaticSpatialCouplingReturn.sourceSpatialSourceStaticKernelZero,
+    ``LowEnergy.PreparationPhysicalStaticSpatialCouplingReturn.sourceSpatialStaticNativeFieldResidue,
+    ``LowEnergy.PreparationPhysicalStaticSpatialCouplingReturn.sourceStaticSpatialContraction_price,
+    ``LowEnergy.PreparationVacuumPhysicalCharacteristic.source_mode_of_characteristic,
+    ``LowEnergy.PreparationVacuumNativePoleTensor.nativeResponse_original,
+    ``LowEnergy.GaussComposite.ActualDressedVisiblePole.actual_common_green_adjugate,
+    ``LowEnergy.ActualDressedVisiblePole.reduced_read_at_regular,
+    ``LowEnergy.ActualDressedVisiblePole.complete_principal_part,
+    ``LowEnergy.ActualDressedVisiblePole.principal_negative_powers,
+    ``LowEnergy.ActualDressedVisiblePole.pole_order_limit,
+    ``LowEnergy.GaussComposite.PhysicalN3SourceEnergy.physical_n3_pole_em_action_zero_transfer_return,
+    ``LowEnergy.GaussComposite.PhysicalN3SourceEnergy.physical_n3_pole_raw_em_observer_charge,
+    ``LowEnergy.GaussComposite.PhysicalN3SourceEnergy.physical_n3_pole_em_calibration_bound,
+    ``LowEnergy.GaussComposite.PhysicalN3SourceEnergy.physical_n3_raw_em_reader_price,
+    ``LowEnergy.GaussComposite.PhysicalN3SourceEnergy.physical_n3_pole_coordinate_noether_unit,
+    ``LowEnergy.ActualDressedVisiblePole.root_remainder_nonzero,
+    ``LowEnergy.GaussComposite.ActualDressedNullNative.original_null_column_literal,
+    ``LowEnergy.GaussComposite.ActualDressedNullNative.original_null_cokernel,
+    ``LowEnergy.GaussComposite.ActualEMDressedSchur.source_compatibility_nine,
+    ``LowEnergy.GaussComposite.ActualEMCarrierOwn.em_projection_coordinates,
+    ``LowEnergy.GaussComposite.ActualEMDressedConstraint.source_compatibility_euler,
+    ``LowEnergy.GaussComposite.ActualDressedNativeConstraint.source_constraint_native_history,
+    ``LowEnergy.GaussComposite.ActualDressedStaticResponse.static_polarization_window_limit,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedNoetherPi.source_prepared_pi_tail,
+    ``LowEnergy.GaussComposite.ActualDressedUniformMaterialCoefficients.common_jacobi_eval,
+    ``Matrix.mul_adjugate,
+    ``LowEnergy.GaussComposite.ActualDressedHalfGreenSchur.half_full_solution_schur,
+    ``LowEnergy.GaussComposite.ActualDressedHalfGreenSchur.half_response_null_data,
+    ``LowEnergy.GaussComposite.ActualEMDressedSchur.source_null_lift_coordinates,
+    ``LowEnergy.PreparationPhysicalStaticSpatialCouplingReturn.sourceSpatialStaticRegularPoint,
+    ``LowEnergy.GaussComposite.ActualDressedEMTensorClock.actual_corrected_em_tensor_clear,
+    ``LowEnergy.PreparationPhysicalVoltageCompleteReturn.sourceGreen_original_left,
+    ``LowEnergy.GaussComposite.ActualDressedNullNative.original_null_lift_single,
+    ``LowEnergy.PreparationPhysicalStaticSpatialCouplingReturn.sourceSpatialStaticNativeFieldPolePrice,
+    ``LowEnergy.PreparationPhysicalStaticSpatialCouplingReturn.sourceSpatialStaticSourceReader,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedQuantumDriverCofactor.source_quantum_driver_clear,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedQuantumDriverCofactor.source_quantum_native_reader_fraction,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedQuantumDriverPrice.source_quantum_native_reader_radius_positive,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedQuantumDriverPrice.source_quantum_native_reader_budget,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedQuantumDriverPrice.source_temporal_quantum_ir_budget,
+    ``LowEnergy.SourcePropagationCommonMomentum.jointGenerator_momentum_difference,
+    ``LowEnergy.SourcePropagationCommonMomentum.actualA_common,
+    ``LowEnergy.SourcePropagationResolvent.sourceInverse_left,
+    ``LowEnergy.SourcePropagationResolvent.sourceInverse_right,
+    ``LowEnergy.PreparationVacuumPhysicalTailPrice.actualGrowth_envelope,
+    ``LowEnergy.ActualMixedNoetherTimePriceOwn.actual_static_polarization_source_sigma_four_price,
+    ``LowEnergy.GaussComposite.ActualDressedUniformMaterialCoefficients.actual_moving_current_affine,
+    ``LowEnergy.PreparationVacuumFullPoleContinuation.sourceRetainer_momentum,
+    ``LowEnergy.GaussComposite.ActualDressedUniformMaterialCoefficients.actual_material_joint_inverse_clear,
+    ``LowEnergy.GaussComposite.ActualDressedUniformMaterialCoefficients.material_denominator_nonzero,
+    ``LowEnergy.GaussComposite.ActualDressedCubicPrice.actual_static_polarization_sigma_four_price,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedMovingNoetherDrive.source_moving_full_actual_driver_update,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedMovingMaterialCarrier.source_moving_polarization_material_return,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedJointNoetherSourcePrice.source_joint_quantum_window_ir_price,
+    ``LowEnergy.GaussComposite.ActualDressedEMZeroClockColumns.commonEMSourceColumn,
+    ``LowEnergy.GaussComposite.ActualDressedEMZeroClockColumns.actual_zero_clock_em_column,
+    ``LowEnergy.GaussComposite.ActualDressedOrderedStatic.source_clock_factor,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedQuantumColumnClock.source_quantum_numerator_em_column,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedQuantumColumnClock.source_quantum_driver_column_clock_return,
+    ``LowEnergy.GaussComposite.ActualDressedUniformClockNonzero.actual_common_ir_denominator_nonzero,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedJointNoetherSourcePrice.source_joint_polarization_sigma_four_price,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedFourClockCarrier.source_four_clock_numerator_factor,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedClockReducedPencil.source_clock_reduced_actual_field,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedClockReducedPencil.source_clock_reduced_actual_driver,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedReducedQuantumCofactor.source_reduced_clock_determinant_nonzero,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedReducedQuantumCofactor.source_reduced_clock_actual_driver_clear,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedReducedQuantumCofactor.source_reduced_clock_temporal_coefficient,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedReducedQuantumCofactor.source_reduced_clock_driver_cokernel,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMPhaseField.source_em_phase_field,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMTemporalFreeReturn.source_actual_em_temporal_four_words,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMTemporalFreeReturn.source_prepared_em_temporal_pi_two_clock_price,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMTemporalFreeReturn.source_temporal_quantum_em_driver_clock_price,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMTwoClockCarrier.source_em_two_clock_numerator_factor,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMTwoClockCarrier.source_em_two_clock_reduced_pi_clear,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedFourClockCarrier.bivariate_bounded_clock_factor,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedFourClockCarrier.static_pi_clear,
+    ``LowEnergy.GaussComposite.ActualDressedEMTemporal.actual_em_temporal_pi_sigma_two_price,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMClockEquation.source_em_clock_full_response_row,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMClockEquation.source_em_clock_reduced_pencil_row,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMClockEquation.source_em_clock_reduced_actual_field,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMClockEquation.source_em_clock_reduced_cofactor_field,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMJacobiRow.source_em_jacobi_terms_certificate,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMJacobiRow.source_em_static_jacobi_original,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMJacobiRow.source_em_static_jacobi_split,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMJacobiRow.source_em_row_projector_actual,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMJacobiRow.source_em_jacobi_row_split,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMJacobiRow.source_em_clock_jacobi_literal,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMJacobiRow.source_em_clock_cofactor_literal,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedFourClockCarrier.bounded_fraction_clock_factor,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMClockResidue.sourceEMSpecializedDenominator,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMClockResidue.sourceEMSpecializedNumerator,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMClockResidue.sourceEMSpecializedOrder,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMClockResidue.sourceEMFiniteClockDenominator,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMClockResidue.sourceEMFiniteClockNumerator,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMClockResidue.sourceEMClockResidue,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMClockResidue.source_em_specialized_denominator_nonzero,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMClockResidue.source_em_specialized_numerator_factor,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMClockResidue.source_em_finite_clock_denominator_factor,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMClockResidue.source_em_finite_clock_numerator_factor,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMClockResidue.source_em_finite_clock_denominator_origin,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMClockResidue.source_em_finite_clock_residue,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMClockResidue.source_em_two_clock_residue_limit,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMClockResidue.source_em_clock_residue_price,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMClockResidue.source_em_zero_transfer_residue_independent,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMClockResidue.source_em_clock_residue_original_leading,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMClockResidue.sourceEMFiniteClockRow,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMClockResidue.source_em_specialized_finite_row,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMClockResidue.source_em_finite_clock_row_origin,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMClockResidue.source_em_finite_clock_cofactor_field,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMSpatialClockPrice.sourceEMSpatialClockBudget,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMSpatialClockPrice.source_em_spatial_temporal_price,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMSpatialClockPrice.source_em_spatial_clock_uniform_price,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMSpatialClockPrice.source_em_spatial_residue_uniform_price,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMOuterResidue.sourceEMOuterDenominator,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMOuterResidue.sourceEMOuterNumerator,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMOuterResidue.sourceEMOuterOrder,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMOuterResidue.sourceEMOuterResidue,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMOuterResidue.source_em_outer_denominator_nonzero,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMOuterResidue.source_em_outer_fraction_actual,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMOuterResidue.source_em_outer_numerator_factor,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMOuterResidue.source_em_outer_denominator_coefficient_nonzero,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMOuterResidue.source_em_outer_finite_numerator,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMOuterResidue.source_em_outer_residue_limit,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMNativeRow.sourceEMNativeInverseRowTerms,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMNativeRow.source_em_native_inverse_terms_certificate,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMNativeRow.source_em_native_inverse_row,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMNativeRow.sourceEMNativeBackgroundTerms,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMNativeRow.sourceEMNativeLowerTerms,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMNativeRow.sourceEMNativePrincipalTerms,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMNativeRow.source_em_native_schur_terms_certificate,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMNativeRow.source_em_native_schur_row,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMNativeRead.sourceEMNativeBackgroundRead,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMNativeRead.sourceEMNativeLowerRead,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMNativeRead.source_em_native_background_actual,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMNativeRead.source_em_native_lower_actual,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMNativeRead.source_em_native_lower_scale,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMNativeRead.source_em_native_lower_spatial_factor,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMNativeRead.source_em_native_scaled_finite_return,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMNativeRead.source_em_native_background_cofactor,
+    ``LowEnergy.GaussComposite.ActualSourcePreparedEMNativeRead.source_em_native_lower_cofactor]
+  for name in required do
+    unless all.contains name do throwError m!"UNCONSUMED_SOURCE {name}"
+  if let some path ← liftIO (IO.getEnv "ALPHA_SOURCE_PREPARED_EM_ENCLOSURE_AUDIT_OUTPUT") then
+    liftIO <| IO.FS.writeFile path <| (Json.mkObj [
+      ("owned", toJson (owned.map Name.toString)),
+      ("public", toJson (mouths.map Name.toString)),
+      ("nodes", toJson all.size), ("opaque_read", toJson opaques),
+      ("axioms", toJson axioms), ("anchors", toJson (required.map Name.toString))]).compress
+  logInfo m!"PASS_SOURCE_PREPARED_EM_ENCLOSURE_CLOSURE public={mouths.size} owned={owned.length} nodes={all.size} opaque={opaques} unknown=0 unsafe=0 partial=0"
+#audit_source_prepared_em_enclosure
+
+namespace SourceEMEnclosureNegativeControls
+open Polynomial
+open scoped Matrix
+-- A projected scalar cannot replace the remaining response components.
+private def tensor : Matrix (Fin 2) (Fin 2) ℂ := !![0,0;0,1]
+example : tensor 0 0 = 0 ∧ tensor ≠ 0 := by
+  constructor
+  · rfl
+  · intro zero
+    have bad := congrFun (congrFun zero 1) 1
+    norm_num [tensor] at bad
+-- A singular source chart has no positive norm margin.
+example (error : ℝ) (nonnegative : 0 ≤ error) : ¬ (0 < ‖(0 : ℂ)‖-error) := by
+  simp only [norm_zero, zero_sub]
+  linarith
+-- Accuracy at fixed positive damping does not supply a joint zero-clock rate.
+example : (1/2 : ℝ)^4 / ((1/2 : ℝ)^4)^4 > 1 := by norm_num
+example (k : ℕ) : (k : ℂ)-(k : ℂ) = 0 := sub_self _
+example : (2 : ℂ)-1 ≠ 2*0*1 := by norm_num
+-- Static compatibility of the actual time column does not cover nonstatic momentum.
+example : LowEnergy.GaussComposite.ActualEMDressedSchur.sourceCokernel (fun _ => (1 : ℂ))
+    LowEnergy.GaussComposite.ActualSourcePreparedTemporalEMConstraint.sourceTemporalEMForce 2 ≠ 0 := by
+  rw [LowEnergy.GaussComposite.ActualSourcePreparedTemporalEMConstraint.source_em_temporal_cokernel_frequency]
+  norm_num
+-- Original constraint cofactor cancellation alone does not remove a temporal pole.
+example (z : ℂ) (nonzero : z ≠ 0) :
+    let P : Matrix (Fin 2) (Fin 2) ℂ := !![z^2,0;0,-z]
+    let Q : Matrix (Fin 2) (Fin 2) ℂ := !![1-z,0;0,1]
+    let E : Fin 2 → ℂ := ![1,0]
+    (Q*ᵥ(P.adjugate*ᵥE)) 1 = 0 ∧ z * dotProduct E (P.adjugate*ᵥE) / P.det = 1/z := by
+  dsimp only
+  constructor
+  · simp [Matrix.adjugate_fin_two_of, Matrix.mulVec, dotProduct, Fin.sum_univ_two]
+  · simp only [Matrix.adjugate_fin_two_of, Matrix.det_fin_two_of]
+    simp [Matrix.mulVec, dotProduct, Fin.sum_univ_two]
+    field_simp
+-- A complete pencil can be regular while its native feedback chart is singular.
+example :
+    let J : Matrix (Fin 2) (Fin 2) ℂ := !![1,0;0,0]
+    let Q : Matrix (Fin 2) (Fin 2) ℂ := !![1,1;1,1]
+    (J-Q).det ≠ 0 ∧ (1-J*Q).det = 0 := by
+  dsimp only
+  norm_num [Matrix.det_fin_two, Matrix.sub_apply, Matrix.mul_apply, Fin.sum_univ_two]
+-- A direct null pairing can vanish while its original feedback pairing survives.
+example :
+    dotProduct (![1,0] : Fin 2 → ℂ) ![0,1] = 0 ∧
+    dotProduct (![1,0] : Fin 2 → ℂ) ((!![1,1;0,1] : Matrix (Fin 2) (Fin 2) ℂ)*ᵥ![0,1]) = 1 := by
+  norm_num [dotProduct, Matrix.mulVec, Fin.sum_univ_two]
+-- A native epsilon-squared factor alone does not control a varying quantum drive.
+example (e : ℝ) (nonzero : e ≠ 0) : e^2*(e^2)⁻¹ = 1 := by
+  exact mul_inv_cancel₀ (pow_ne_zero 2 nonzero)
+-- The source Pi clearing cancels against Green; retaining it or dropping sigma changes the drive.
+example : (2:ℂ)*(7/5)*(5/(5*3-2*7)) = 2*7/(5*3-2*7) ∧
+    (2:ℂ)*(7/5)*(5/(5*3-2*7)) ≠ (2*7)/(5*(5*3-2*7)) ∧
+    (2:ℂ)*(7/5)*(5/(5*3-2*7)) ≠ 7/(5*3-2*7) := by norm_num
+
+-- Exact complete two-resolvent Noether update retains its quadratic arm.
+example : (2:ℂ)*((7+11)+5*(2*13)) =
+    (1*(7+11)+1*(5*(1*13)))+1*(1*(7+11)+1*(5*(1*13))+1*(5*(1*13)))+
+      1^2*(1*(5*(1*13))) ∧
+    (2:ℂ)*((7+11)+5*(2*13)) ≠
+      (1*(7+11)+1*(5*(1*13)))+1*(1*(7+11)+1*(5*(1*13))+1*(5*(1*13))) := by norm_num
+example : (Complex.I:ℂ)*(-1)=-Complex.I ∧ (-Complex.I:ℂ) ≠ Complex.I := by norm_num [Complex.ext_iff]
+example : (2:ℝ)*56 > (1:ℝ)*56 := by norm_num
+
+-- Full Green entry error retains the actual forcing mass.
+example : ((7:ℝ)/2-3)*2+((9:ℝ)/2-4)*3=(1/2)*(2+3) ∧
+    ((7:ℝ)/2-3)*2+((9:ℝ)/2-4)*3 ≠ (1/2) := by norm_num
+
+-- Moving drive and both source resolvents generate a genuine cubic arm.
+example : (2:ℂ)*(7+(3+5)*(2*11)) =
+    (7+3*11)+(7+3*11+3*11+5*11)+(3*11+5*11+5*11)+5*11 ∧
+    (2:ℂ)*(7+(3+5)*(2*11)) ≠
+      (7+3*11)+(7+3*11+3*11+5*11)+(3*11+5*11+5*11) := by norm_num
+-- The raw contact cancels its original subtraction; the Noether contact stays.
+example : (2:ℝ)*7*3+2*(11-7)*3=2*11*3 ∧
+    (2:ℝ)*7*3+2*(11-7)*3 ≠ 0 := by norm_num
+-- Fixed observation radius supplies a bound, not a joint zero-clock decay.
+example : (1/2:ℝ)^2 / ((1/2:ℝ)^2)^3 > 1 := by norm_num
+
+-- The complete drive keeps the original forcing subtraction.
+example : (2:ℝ)*7/(5*3-2*7) = 3*(5/(5*3-2*7))-1 ∧
+    (2:ℝ)*7/(5*3-2*7) ≠ 3*(5/(5*3-2*7)) := by norm_num
+-- A finite actual temporal column can retain a nonzero drive and an
+-- unbounded other quantum channel; whole-pencil balance is not inferred.
+example : (2:ℝ)*1-1=1 ∧ (1/(1/4:ℝ))>1 := by norm_num
+
+-- Sigma-four boundedness pays exactly four clock powers, not three.
+example : (X:ℂ[X])^11 ∣ X^4*X^7 ∧ ¬ (X:ℂ[X])^11 ∣ X^3*X^7 := by
+  constructor
+  · rw [←pow_add]
+  · intro factor
+    have zero := X_pow_dvd_iff.mp factor 10 (by norm_num)
+    rw [←pow_add] at zero
+    norm_num at zero
+-- Both the normalized source denominator and surviving cubic clock factor stay.
+example : (10*(1/2:ℝ)^3-7)*(5*(1/2)^3/(10*(1/2)^3-7))=5*(1/2)^3 ∧
+    7*(5*(1/2:ℝ)^3/(10*(1/2)^3-7))=5*(1/2)^3*(7/(10*(1/2)^3-7)) ∧
+    (10*(1/2:ℝ)^3-7)*(5*(1/2)^3/(10*(1/2)^3-7))≠5 := by norm_num
+-- A bounded common two-variable quotient need not have a common endpoint.
+example : (1/2:ℝ)^2/((1/2)^2+(1/2)^2)=1/2 ∧
+    (1/2:ℝ)^2/((1/2)^2+(1/2)^4)≠1/2 := by norm_num
+
+-- The complete driver numerator retains the original forcing subtraction.
+example : 2*(5/8:ℝ)-(10/8-7)=7 ∧ 2*(5/8:ℝ)≠7 ∧
+    (10/8-7:ℝ)*(2*((5/8)/(10/8-7))-1)=7 := by norm_num
+-- det(c P) and the original det(d P) have different clearing factors.
+example : (5:ℝ)^2*(2*3)=150 ∧ (7:ℝ)^2*(2*3)=294 ∧
+    (5:ℝ)^2*(2*3)≠5^2*(7^2*(2*3)) := by norm_num
+
+end SourceEMEnclosureNegativeControls
+
+namespace SourceEMTwoClockNegativeControls
+open Polynomial
+-- The EM row source price pays two clock powers, not one.
+example : (X:ℂ[X])^9 ∣ X^2*X^7 ∧ ¬ (X:ℂ[X])^9 ∣ X*X^7 := by
+  constructor
+  · rw [←pow_add]
+  · intro factor
+    have zero := X_pow_dvd_iff.mp factor 8 (by norm_num)
+    rw [coeff_X_mul (X^7) 7] at zero
+    norm_num at zero
+-- A bounded EM row permits a different response row to diverge.
+example : (1/2:ℝ)^2*((1/2)^2)⁻¹=1 ∧
+    (1/2:ℝ)^2*((1/2)^4)⁻¹>1 := by norm_num
+-- Actual field mass cannot be replaced by a unit field normalization.
+example : (1/2:ℝ)*((1/2)*((1/2)^2)⁻¹*3)=3 ∧
+    (1/2:ℝ)*((1/2)*((1/2)^2)⁻¹*3)≠1 := by norm_num
+end SourceEMTwoClockNegativeControls
+
+-- The original three-coordinate EM force cannot be declared unit length.
+example : (-1/2:ℝ)^2+(1/2)^2+(-1/2)^2=3/4 ∧
+    (-1/2:ℝ)^2+(1/2)^2+(-1/2)^2≠1 := by norm_num
+
+-- The actual static EM row retains its original primal-matter coupling.
+example : (∑ i : Fin 289,
+    LowEnergy.GaussComposite.ActualSourcePreparedTemporalEMConstraint.sourceTemporalEMForce i *
+      LowEnergy.GaussComposite.ActualEMAction.emOriginalJacobi 0 i 76) =
+        LowEnergy.PreparationVacuumOriginalGreenFeedback.rootTwo := by
+  rw [LowEnergy.GaussComposite.ActualSourcePreparedEMJacobiRow.source_em_jacobi_row_split 0 rfl 76]
+  norm_num [LowEnergy.GaussComposite.ActualSourcePreparedEMJacobiRow.sourceEMJacobiConstantTerms,
+    LowEnergy.GaussComposite.ActualSourcePreparedEMJacobiRow.sourceEMJacobiSpatialTerms,
+    LowEnergy.PreparationVacuumOriginalGreenFeedback.sourceMatrix,
+    LowEnergy.PreparationVacuumOriginalGreenFeedback.SourceTerm.matrix,
+    LowEnergy.PreparationVacuumOriginalGreenFeedback.Powers.value,
+    LowEnergy.PreparationVacuumOriginalGreenFeedback.coefficientValue, Matrix.single, Fin.ext_iff]
+
+namespace SourceEMClockResidueNegativeControls
+open Polynomial
+-- Raw evaluation at a common zero loses the nonzero finite coefficient.
+example : ((X^2+3*X : ℂ[X]).eval 0)/(X : ℂ[X]).eval 0=0 ∧
+    (X^2+3*X : ℂ[X]).coeff 1/(X : ℂ[X]).coeff 1=3 := by
+  norm_num [coeff_add,coeff_mul_X,coeff_X_pow]
+-- Finite clock return does not commute with an unpriced spatial-clock path.
+example : (1/2 : ℝ)^2/((1/2)^2+(1/2)^2)=1/2 ∧
+    (1/2 : ℝ)^2/((1/2)^2+(1/2)^4)≠1/2 := by norm_num
+end SourceEMClockResidueNegativeControls
+
+namespace SourceEMOrderedResidueNegativeControls
+-- Distinct source limit mouths cannot be identified from their uniform size alone.
+example (x : ℝ) (nonzero : x≠0) :
+    x^2/(x^2+(0:ℝ)^2)=1 ∧ (0:ℝ)^2/((0:ℝ)^2+x^2)=0 ∧
+      x^2/(x^2+x^2)=1/2 := by
+  have square : x^2≠0 := pow_ne_zero 2 nonzero
+  constructor
+  · simp only [zero_pow (by decide : 2≠0),add_zero,div_self square]
+  constructor
+  · simp only [zero_pow (by decide : 2≠0),zero_div]
+  · field_simp
+    ring
+end SourceEMOrderedResidueNegativeControls
+
+-- The actual auxiliary elimination preserves a source matter coefficient.
+example : LowEnergy.GaussComposite.ActualSourcePreparedEMNativeRead.sourceEMNativeBackgroundRead
+    (Pi.single 76 1) = LowEnergy.PreparationVacuumOriginalGreenFeedback.rootTwo := by
+  norm_num [LowEnergy.GaussComposite.ActualSourcePreparedEMNativeRead.sourceEMNativeBackgroundRead,
+    LowEnergy.GaussComposite.ActualSourcePreparedEMNativeRow.sourceEMNativeBackgroundTerms,
+    LowEnergy.PreparationVacuumOriginalGreenFeedback.sourceMatrix,
+    LowEnergy.PreparationVacuumOriginalGreenFeedback.SourceTerm.matrix,
+    LowEnergy.PreparationVacuumOriginalGreenFeedback.Powers.value,
+    LowEnergy.PreparationVacuumOriginalGreenFeedback.coefficientValue,
+    Matrix.add_mulVec,Matrix.single_mulVec,Pi.single_apply,Matrix.single,Fin.ext_iff]
+-- The source lower row retains its actual sign and field slot.
+example : LowEnergy.GaussComposite.ActualSourcePreparedEMNativeRead.sourceEMNativeLowerRead
+    (Pi.single 1 1) (Pi.single 9 1) =
+      (-72/125 : ℂ) * LowEnergy.PreparationVacuumOriginalGreenFeedback.rootFifteen := by
+  norm_num [LowEnergy.GaussComposite.ActualSourcePreparedEMNativeRead.sourceEMNativeLowerRead,
+    LowEnergy.GaussComposite.ActualSourcePreparedEMNativeRow.sourceEMNativeLowerTerms,
+    LowEnergy.PreparationVacuumOriginalGreenFeedback.sourceMatrix,
+    LowEnergy.PreparationVacuumOriginalGreenFeedback.SourceTerm.matrix,
+    LowEnergy.PreparationVacuumOriginalGreenFeedback.Powers.value,
+    LowEnergy.PreparationVacuumOriginalGreenFeedback.coefficientValue,
+    Matrix.add_mulVec,Matrix.single_mulVec,Pi.single_apply,Matrix.single,Fin.ext_iff]
+
+namespace SourceAuxiliarySchurNegativeControls
+-- Exact elimination keeps the determinant and the nonzero auxiliary field.
+example : (4*5-3*2 : ℚ)=5*(4-3*(1/5)*2) ∧
+    (-(1/5)*2*(5/2) : ℚ)=-1 ∧ (4*(5/2)+3*(-1) : ℚ)=7 ∧
+    (2*(5/2)+5*(-1) : ℚ)=0 := by norm_num
+-- Quantum upper cross columns survive the source Schur complement.
+example : ((4*2-1)-(3*2-1)*(1/5)*2 : ℚ)≠((4*2-1)-3*2*(1/5)*2 : ℚ) := by norm_num
+-- A nonzero auxiliary block does not imply a regular full Schur chart.
+example : (5 : ℚ)≠0 ∧ ((4*(3/14)-1)-(3*(3/14)-1)*(1/5)*2 : ℚ)=0 := by norm_num
+end SourceAuxiliarySchurNegativeControls
+
+-- The two source coordinates are independent even before any IR return.
+open Polynomial
+example :
+    LowEnergy.GaussComposite.ActualSourcePreparedClockReducedPencil.sourceClockEval 2 3
+      (Polynomial.C (Polynomial.X : ℂ[X]))=2 ∧
+    LowEnergy.GaussComposite.ActualSourcePreparedClockReducedPencil.sourceClockEval 2 3
+      (Polynomial.X : (ℂ[X])[X])=3 := by
+  norm_num [LowEnergy.GaussComposite.ActualSourcePreparedClockReducedPencil.sourceClockEval,
+    LowEnergy.GaussComposite.ActualDressedOrderedStatic.clockSpecialize]
+
+-- The full price retains every principal clock term before bounding the tail.
+example : let s : ℚ := 1/4
+    |(1+2*s+3*s^2)/(s^2*(1-s))-(1/s^2+3/s)-6| ≤ 12*s ∧
+    12*s < |(1+2*s+3*s^2)/(s^2*(1-s))-6| := by norm_num
+
+-- Both independently paid observation errors can point in the same direction.
+example : |((1/4 : ℚ)+1/3)| ≤ (1/4 : ℚ)+1/3 ∧
+    max (1/4 : ℚ) (1/3) < |((1/4 : ℚ)+1/3)| := by norm_num
+
+namespace SourceMatterPrincipalNegativeControls
+open scoped Matrix BigOperators
+open LowEnergy.GaussComposite ActualEMCarrierOwn ActualSourcePreparedTemporalEMConstraint
+open ActualSourcePreparedMatterClockPrincipal
+private theorem actual_force_self : dotProduct sourceTemporalEMForce sourceTemporalEMForce=(3/4:ℂ) := by
+  have gram := congrFun (congrFun ActualEMCurrentSplit.em_coordinate_gram 0) 0
+  change (∑j,emInsertion j 0*emInsertion j 0)=(3/4:ℂ)
+  simpa only [Matrix.mul_apply,Matrix.transpose_apply,Matrix.smul_apply,Matrix.one_apply,
+    if_true,smul_eq_mul,mul_one] using gram
+-- The literal source row retains epsilon-four and the physical Fourier sign.
+example :
+    (LowEnergy.PreparationVacuumOriginalGreenFeedback.sourceMatrix
+      ActualSourcePreparedEMNativeRow.sourceEMNativePrincipalTerms
+      (LowEnergy.PreparationVacuumPhysicalCharacteristic.frequencyRay 2 0 (Pi.single 0 1))*ᵥsourceTemporalEMForce) 0=
+        24*(SaturationMonoid.PhysicsCore.Stage9C.Material.SpinPair.lapse:ℂ) := by
+  rw [source_em_native_principal_read,actual_force_self]
+  norm_num [LowEnergy.PreparationVacuumPhysicalCharacteristic.spatialSquare,Pi.single_apply,Fin.ext_iff]
+  ring
+end SourceMatterPrincipalNegativeControls
+
+-- Native clearing must enter the source numerator as well as its determinant.
+example : let d : ℚ := 3
+    let s : ℚ := 2
+    let c : ℚ := 5
+    c*d/(d*s)=c/s ∧ c/(d*s)≠c/s := by norm_num
+
+namespace SourceSchur97JointDirectConsumer
+open Polynomial LowEnergy.GaussComposite
+open ActualSourcePreparedClockReducedPencil
+open CanonicalGradedSpatialSource PreparationVacuumPhysicalCharacteristic ActualDressedFullCoulomb
+open ActualDressedCorrectedGreen ActualDressedOrderedStatic ActualSourcePreparedN3EMChargeRead
+open ActualSourcePreparedSchur97Cofactor ActualSourcePreparedSchur97Polynomial
+open ActualSourcePreparedSchur97RatioTail ActualSourcePreparedSchur97JointCone
+open ActualSourcePreparedSchur97NoetherFraction ActualDressedNoetherCoulombUnit
+open ActualSourcePreparedAuxiliaryClockReduction ActualSourcePreparedN3EMAnalyticPrice
+open scoped Matrix
+attribute [local irreducible] sourceSchur97LiteralNoetherNumerator sourceSchur97Determinant
+  sourceClockEval sourceN3TemporalEMCoefficient
+
+-- The unchanged actual reader consumes the newly generated whole-region chart.
+example (event : DressedEvent) (n : PhysicalMomentum) (eps₀ sigma₀ : ℝ)
+    (unit : spatialSquare n = 1) (positive₀ : 0 < eps₀) (small₀ : eps₀ ≤ 1/2)
+    (damping₀ : 0 < sigma₀) (regular₀ : correctedDet event eps₀ 0 sigma₀ n ≠ 0)
+    (e : scaleDomain) (sigma : ℝ) (positive : 0 < e.val)
+    (spatial : e.val ≤ jointSpatialRadius (sourceSchur97Determinant event n))
+    (damping : 0 < sigma) (clock : ‖(sigma : ℂ)‖ ≤ jointClockRadius
+      (sourceSchur97LiteralNoetherNumerator event n) (sourceSchur97Determinant event n) e.val) :
+    (e.val : ℂ)^4 * sourceN3TemporalEMCoefficient event e.val sigma n =
+      sourceClockEval e.val sigma ((C (C (noetherPairScale^2)) * (C (X : ℂ[X]))^4) *
+        ((sourceAuxiliaryClockFactor event n * nativeClockDenominator n) *
+          dotProduct sourceSchur97Force
+            ((sourceSchur97Polynomial event n).adjugate *ᵥ sourceSchur97Force)))/
+        sourceClockEval e.val sigma (sourceSchur97Determinant event n) := by
+  have region := source_schur97_joint_cone_price event n eps₀ sigma₀ unit positive₀ small₀
+    damping₀ regular₀
+  have chart := (region.2 e.val sigma positive spatial damping clock).2.1
+  exact source_schur97_noether_fraction event e n sigma unit positive
+    (spatial.trans (min_le_left _ _)) damping chart
+end SourceSchur97JointDirectConsumer
+
+-- The same Ward row keeps the entire inactive right reconstruction.
+example : let x : ℚ := 1/4
+    let d : ℚ := 4
+    let ra : ℚ := 3
+    let ri : ℚ := 2
+    let ni : ℚ := 5
+    let pia : ℚ := 7
+    d*(x*ra)-(x*ri)*ni*pia = x*(d*ra-ri*ni*pia) ∧
+      d*(x*ra)-(x*ri)*ni*pia ≠ x*(d*ra-ri*ni) := by norm_num
+
+-- Squared source clock forcing cannot be replaced by a single clock.
+example : (1/4 : ℚ)^2*3 ≠ (1/4 : ℚ)*3 := by norm_num
+
+-- The physical row coefficient is retained when deriving its determinant factor.
+example : let x : ℚ := 1/4
+    let residual : ℚ := 3
+    let original : ℚ := x^2*residual
+    (-1/2 : ℚ)*original = x^2*((-1/2 : ℚ)*residual) ∧
+      original ≠ x^2*((-1/2 : ℚ)*residual) := by norm_num
+
+-- A generated base factor keeps every remaining source clock zero.
+example : let s : ℚ := 1/4
+    s^5=s^2*s^3 ∧ s^5 ≠ s^2 ∧ s^3 ≠ 1 := by norm_num

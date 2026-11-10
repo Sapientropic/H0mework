@@ -73,6 +73,39 @@ class ExportTests(unittest.TestCase):
         self.write_map()
         return row
 
+    def test_standalone_import_uses_fixed_path_and_epoch_in_both_views(self):
+        from generated_society import selected_views
+
+        dependency = "Verification/parent/Child.lean"
+        root = "Verification/root/Consumer.lean"
+        child_raw = b"def value : Nat := 1\n"
+        self.write(self.source, dependency, child_raw)
+        first = self.commit(self.source)
+        root_raw = b"import Child\n\ndef read : Nat := value\n"
+        self.write(self.source, root, root_raw)
+        self.write(self.source, dependency, b"def value : Nat := 2\n")
+        second = self.commit(self.source)
+        selection = self.selection([{"source_commit": second, "roots": [root]}])
+        document = json.loads(selection.read_bytes())
+        binding = {"importer_commit": second, "importer_path": root, "module": "Child",
+                   "source_commit": first, "source_path": dependency, "source_sha256": w.sha(child_raw)}
+        document["import_sources"] = [binding]
+        selection.write_text(json.dumps(document))
+        directory = self.directory / "standalone"
+        plan = w.stage(self.public, self.source, selection, directory)
+        for row in plan["additions"]:
+            self.write(self.public, row["path"], (directory / "stage" / row["path"]).read_bytes())
+        self.export["modules"] = plan["additions"]
+        self.write_map()
+        for exact in (False, True):
+            _, _, epochs = selected_views(self.public, exact=exact, selection_path=selection)
+            self.assertEqual(epochs[first]["outputs"][dependency], child_raw)
+            self.assertEqual(epochs[second]["outputs"][root], root_raw)
+        binding["source_sha256"] = "0" * 64
+        selection.write_text(json.dumps(document))
+        with self.assertRaisesRegex(w.ExportError, "Fixed import source SHA differs"):
+            w.stage(self.public, self.source, selection, self.directory / "mismatch")
+
     def test_complete_import_resource_closure_and_exact_inverse(self):
         receipt = json.dumps({"root": "/Users/fixture/Homework", "result": 17, "status": "certified"}).encode()
         source = (b'import A\nimport Mathlib\ndef packet := include_str "../Verification/receipt.json"\n'
@@ -202,6 +235,78 @@ class ExportTests(unittest.TestCase):
         self.assertEqual(plan["assignments"][w.source_key(second, "Lean/A.lean")], owner["target"])
         self.assertEqual(plan["source_revision_updates"], [{"target": owner["target"], "source_revisions": sorted([first, second])}])
         self.assertEqual((self.public / owner["path"]).read_bytes(), before)
+
+    def test_registered_path_alias_shares_only_an_identical_recursive_layout(self):
+        dependency = b"def seed := 1\n"
+        source = b"import Seed\n\ndef result := seed\n"
+        alias = "Verification/overlay/Value.lean"
+        self.write(self.source, "Lean/Seed.lean", dependency)
+        self.write(self.source, alias, source)
+        first = self.commit(self.source)
+        parent = self.existing("Lean/Seed.lean", dependency, first, "H0mework.Seed")
+        owner = self.existing("Verification/original/Value.lean", source, first,
+                              imports={"Seed": parent["target"]})
+        owner["source_aliases"] = [{"source_path": alias, "source_sha256": w.sha(source),
+                                    "original_module_name": "Value", "source_revision": first,
+                                    "source_revisions": [first]}]
+        self.write_map()
+
+        selection = [{"source_commit": first, "roots": [alias]}]
+        plan = self.run_stage(selection)
+        self.assertEqual(plan["additions"], [])
+        self.assertEqual(plan["assignments"][w.source_key(first, alias)], owner["target"])
+
+        self.write(self.source, "Lean/Seed.lean", b"def seed := 2\n")
+        second = self.commit(self.source)
+        plan = self.run_stage([{"source_commit": second, "roots": [alias]}], name="changed-alias")
+        self.assertEqual(len(plan["additions"]), 2)
+        self.assertNotEqual(plan["assignments"][w.source_key(second, alias)], owner["target"])
+
+    def test_declared_original_proof_supplement_restores_the_archived_body(self):
+        from generated_society import selected_views
+
+        source, archive = "Lean/Value.lean", "docs/original/Value.lean"
+        original = b"import Mathlib\n\ntheorem value : True := by trivial\n"
+        effective = b"import Mathlib\n\ntheorem value : True := True.intro\n"
+        self.write(self.source, source, original)
+        epoch = self.commit(self.source)
+        self.write(self.public, archive, original)
+        origin = {"kind": "H0-proof-elaboration-only-supplement",
+                  "original_failure_source_artifact": archive, "original_source_sha256": w.sha(original)}
+        self.existing(source, effective, epoch, origin=origin)
+        path = self.selection([{"source_commit": epoch, "roots": [source]}])
+        selection = json.loads(path.read_bytes())
+        selection["original_proof_supplements"] = [
+            {"source_commit": epoch, "source_path": source, "original_artifact": archive,
+             "source_sha256": w.sha(original), "effective_sha256": w.sha(effective)}
+        ]
+        path.write_text(json.dumps(selection))
+        _, _, public = selected_views(self.public, selection_path=path)
+        _, _, exact = selected_views(self.public, exact=True, selection_path=path)
+        self.assertEqual(public[epoch]["outputs"][source], effective)
+        self.assertEqual(exact[epoch]["outputs"][source], original)
+
+    def test_fixed_public_owner_selects_a_compatible_legacy_copy(self):
+        source = "Lean/Value.lean"
+        raw = b"def value : Nat := 1\n"
+        self.write(self.source, source, raw)
+        revision = self.commit(self.source)
+        self.existing(source, raw, revision, "H0mework.Value")
+        self.existing(source, raw, revision, "H0mework.Versions.AB.Value")
+        self.existing(source, b"def value : Nat := 2\n", revision, "H0mework.Versions.AC.Value")
+        path = self.selection([{"source_commit": revision, "roots": [source]}])
+        document = json.loads(path.read_bytes())
+        key = w.source_key(revision, source)
+        document["public_owners"] = {key: "H0mework.Versions.AB.Value"}
+        path.write_text(json.dumps(document))
+        plan = w.stage(self.public, self.source, path, self.directory / "compatible")
+        self.assertEqual(plan["assignments"][key], "H0mework.Versions.AB.Value")
+        self.assertEqual(plan["additions"], [])
+
+        document["public_owners"][key] = "H0mework.Versions.AC.Value"
+        path.write_text(json.dumps(document))
+        with self.assertRaisesRegex(w.ExportError, "does not match the selected compile layout"):
+            w.stage(self.public, self.source, path, self.directory / "incompatible")
 
     def test_same_recursive_layout_across_epochs_compiles_once(self):
         self.write(self.source, "Lean/A.lean", b'import Mathlib\ndef a := 1\n')

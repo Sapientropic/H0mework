@@ -1,0 +1,73 @@
+import H0mework.Versions.R1357a4e9.ReleaseMaterials.Verification.Physics.Stage10.IndependentBell.Munich.ReadoutDomain.Evidence.SourceEndpointRecyclingRha0300.DensitySourceR0001.SourceEndpointDensity300
+
+set_option pp.universes true
+set_option pp.fullNames true
+set_option pp.deepTerms true
+set_option pp.maxSteps 1000000
+
+#check @SourceEndpointDensity300.atomicTrace
+#print axioms SourceEndpointDensity300.atomicTrace
+#check @SourceEndpointDensity300.atomicTrace_apply
+#print axioms SourceEndpointDensity300.atomicTrace_apply
+#check @SourceEndpointDensity300.tracePairing
+#print axioms SourceEndpointDensity300.tracePairing
+#check @SourceEndpointDensity300.tracePairing_apply
+#print axioms SourceEndpointDensity300.tracePairing_apply
+#check @SourceEndpointDensity300.atomicTrace_mul_comm
+#print axioms SourceEndpointDensity300.atomicTrace_mul_comm
+#check @SourceEndpointDensity300.tracePairing_rankOne
+#print axioms SourceEndpointDensity300.tracePairing_rankOne
+#check @SourceEndpointDensity300.tracePairing_nonnegative
+#print axioms SourceEndpointDensity300.tracePairing_nonnegative
+#check @SourceEndpointDensity300.densityGenerator
+#print axioms SourceEndpointDensity300.densityGenerator
+#check @SourceEndpointDensity300.densityGenerator_apply
+#print axioms SourceEndpointDensity300.densityGenerator_apply
+#check @SourceEndpointDensity300.densityGenerator_continuous
+#print axioms SourceEndpointDensity300.densityGenerator_continuous
+#check @SourceEndpointDensity300.generator_trace_duality
+#print axioms SourceEndpointDensity300.generator_trace_duality
+#check @SourceEndpointDensity300.densityFlow
+#print axioms SourceEndpointDensity300.densityFlow
+#check @SourceEndpointDensity300.densityFlow_initial
+#print axioms SourceEndpointDensity300.densityFlow_initial
+#check @SourceEndpointDensity300.densityFlow_derivative
+#print axioms SourceEndpointDensity300.densityFlow_derivative
+#check @SourceEndpointDensity300.densityFlow_applied_derivative
+#print axioms SourceEndpointDensity300.densityFlow_applied_derivative
+#check @SourceEndpointDensity300.generated_trace_pairing
+#print axioms SourceEndpointDensity300.generated_trace_pairing
+#check @SourceEndpointDensity300.whole_word_trace_eq_recycling_IVP
+#print axioms SourceEndpointDensity300.whole_word_trace_eq_recycling_IVP
+#check @SourceEndpointDensity300.whole_word_trace_hasSum
+#print axioms SourceEndpointDensity300.whole_word_trace_hasSum
+#check @SourceEndpointDensity300.whole_bath_trace_identity
+#print axioms SourceEndpointDensity300.whole_bath_trace_identity
+#check @SourceEndpointDensity300.densityFlow_positive
+#print axioms SourceEndpointDensity300.densityFlow_positive
+#check @SourceEndpointDensity300.densityFlow_trace_nonincreasing
+#print axioms SourceEndpointDensity300.densityFlow_trace_nonincreasing
+
+set_option pp.proofs true
+
+#print SourceEndpointDensity300.atomicTrace
+#print SourceEndpointDensity300.atomicTrace_apply
+#print SourceEndpointDensity300.tracePairing
+#print SourceEndpointDensity300.tracePairing_apply
+#print SourceEndpointDensity300.atomicTrace_mul_comm
+#print SourceEndpointDensity300.tracePairing_rankOne
+#print SourceEndpointDensity300.tracePairing_nonnegative
+#print SourceEndpointDensity300.densityGenerator
+#print SourceEndpointDensity300.densityGenerator_apply
+#print SourceEndpointDensity300.densityGenerator_continuous
+#print SourceEndpointDensity300.generator_trace_duality
+#print SourceEndpointDensity300.densityFlow
+#print SourceEndpointDensity300.densityFlow_initial
+#print SourceEndpointDensity300.densityFlow_derivative
+#print SourceEndpointDensity300.densityFlow_applied_derivative
+#print SourceEndpointDensity300.generated_trace_pairing
+#print SourceEndpointDensity300.whole_word_trace_eq_recycling_IVP
+#print SourceEndpointDensity300.whole_word_trace_hasSum
+#print SourceEndpointDensity300.whole_bath_trace_identity
+#print SourceEndpointDensity300.densityFlow_positive
+#print SourceEndpointDensity300.densityFlow_trace_nonincreasing

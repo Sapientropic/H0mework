@@ -1,0 +1,1413 @@
+{
+  "verdict": "certified",
+  "scope": "47 public original constrained4component staticGreen, actualGram/Noether/Hamiltonian/Fourier Coulomb producer and source propagation-normalized coupling/unit covariance with full actual corrected coefficient balance",
+  "controller_disposition": "Subordinate producer/consumer: same livingRoot visit10 row0.inl.liveAccount tick16 quantumFace10→quantumPresentation10→tick17; no shared controller edits",
+  "strict_flags": [
+    "-j1",
+    "--trust=0",
+    "-DwarningAsError=true",
+    "-DmaxErrors=1",
+    "-DElab.async=false"
+  ],
+  "construction_evidence": {
+    "candidate_path": "Lean/scratch/AlphaSource/ActualDressedEMNativeCoulombUnitOwn/candidate.json",
+    "candidate_sha256": "4721d7d85cf824bbfd391b29ff1697c8d50705c91c9587e76579bf4c41f318e0",
+    "source_bundle_sha256": "8461fe61df64d25315a1227ea99c7636d3ef2b9e71528a664dc4345f7568c074",
+    "frozen_sources": [
+      {
+        "module": "ActualDressedEMNativeStaticGreen",
+        "path": "Lean/scratch/AlphaSource/ActualDressedEMNativeCoulombUnitOwn/ActualDressedEMNativeStaticGreen.lean",
+        "source_sha256": "eb790dbeb33e6619e0a441d0cbda7a4a277369107bc419d3e25d310617625ac5",
+        "object_path": "Lean/scratch/AlphaSource/ActualDressedEMNativeCoulombUnitOwn/ActualDressedEMNativeStaticGreen.olean",
+        "object_sha256": "24ad607f4b2fb8371befc8e347fa8bb182c3c4cc2fa2cf508473e0515928d4d5",
+        "line_count": 126,
+        "public": [
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.nativeSpatialContraction",
+            "private": false,
+            "kind": "def",
+            "line": 21,
+            "source_signature": "def nativeSpatialContraction (k : PhysicalMomentum) (v : Fin 4 → ℂ) : ℂ",
+            "module": "ActualDressedEMNativeStaticGreen"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.nativeStaticGreen",
+            "private": false,
+            "kind": "def",
+            "line": 25,
+            "source_signature": "def nativeStaticGreen (k : PhysicalMomentum) (f : Fin 4 → ℂ) : Fin 4 → ℂ",
+            "module": "ActualDressedEMNativeStaticGreen"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.nativeStaticConstraintProjection",
+            "private": false,
+            "kind": "def",
+            "line": 32,
+            "source_signature": "def nativeStaticConstraintProjection (k : PhysicalMomentum) (v : Fin 4 → ℂ) : Fin 4 → ℂ",
+            "module": "ActualDressedEMNativeStaticGreen"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_static_green_right",
+            "private": false,
+            "kind": "theorem",
+            "line": 42,
+            "source_signature": "theorem actual_native_static_green_right (k : PhysicalMomentum) (nonzero : spatialSquare k≠0)\n    (f : Fin 4 → ℂ) :\n    nativeEMMomentumMatrix (physicalFrequencyMomentum 0 k)*ᵥnativeStaticGreen k f=\n      nativeStaticConstraintProjection k f",
+            "module": "ActualDressedEMNativeStaticGreen"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_static_green_left",
+            "private": false,
+            "kind": "theorem",
+            "line": 61,
+            "source_signature": "theorem actual_native_static_green_left (k : PhysicalMomentum) (nonzero : spatialSquare k≠0)\n    (v : Fin 4 → ℂ) :\n    nativeStaticGreen k (nativeEMMomentumMatrix (physicalFrequencyMomentum 0 k)*ᵥv)=\n      nativeStaticConstraintProjection k v",
+            "module": "ActualDressedEMNativeStaticGreen"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_static_temporal_reader",
+            "private": false,
+            "kind": "theorem",
+            "line": 80,
+            "source_signature": "theorem actual_native_static_temporal_reader (k : PhysicalMomentum) (r : Fin 217 → ℂ) :\n    (nativeEMRestInsertion.transpose*ᵥ(nativeMomentumPrincipal (physicalFrequencyMomentum 0 k)*ᵥr)) 0=\n      2*(lapse : ℂ)*(spatialSquare k : ℂ)*(nativeEMRestInsertion.transpose*ᵥr) 0",
+            "module": "ActualDressedEMNativeStaticGreen"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_static_temporal_solve",
+            "private": false,
+            "kind": "theorem",
+            "line": 89,
+            "source_signature": "theorem actual_native_static_temporal_solve (k : PhysicalMomentum) (nonzero : spatialSquare k≠0)\n    (r : Fin 217 → ℂ) :\n    (nativeEMRestInsertion.transpose*ᵥr) 0=\n      ((nativeEMRestInsertion.transpose*ᵥ(nativeSchurMatrix (physicalFrequencyMomentum 0 k)*ᵥr)) 0-\n        (nativeEMRestInsertion.transpose*ᵥ(nativeSchurMatrix 0*ᵥr)) 0-\n        (nativeEMRestInsertion.transpose*ᵥ(nativeMomentumLower (physicalFrequencyMomentum 0 k)*ᵥr)) 0)/\n          (2*(lapse : ℂ)*(spatialSquare k : ℂ))",
+            "module": "ActualDressedEMNativeStaticGreen"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_em_native_static_green_return",
+            "private": false,
+            "kind": "theorem",
+            "line": 104,
+            "source_signature": "theorem actual_em_native_static_green_return (event : DressedEvent) (eps : ℝ) (n : PhysicalMomentum)\n    (alpha beta : Fin 4) (balanced : PencilClockBalanced event eps n) (finite : EMColumnsClockFinite event eps n)\n    (regular : (zeroClockClearing event eps n).eval 0≠0)\n    (root : (0 : ℂ)∈visibleRoots (zeroClockFrequencyEMFraction event eps n alpha beta))\n    (nonzero : spatialSquare ((eps^2 : ℝ) • n)≠0) :\n    let r",
+            "module": "ActualDressedEMNativeStaticGreen"
+          }
+        ],
+        "declarations": [
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.source_lapse_ne",
+            "private": true,
+            "kind": "theorem",
+            "line": 18,
+            "source_signature": "private theorem source_lapse_ne : (lapse : ℂ)≠0",
+            "module": "ActualDressedEMNativeStaticGreen"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.nativeSpatialContraction",
+            "private": false,
+            "kind": "def",
+            "line": 21,
+            "source_signature": "def nativeSpatialContraction (k : PhysicalMomentum) (v : Fin 4 → ℂ) : ℂ",
+            "module": "ActualDressedEMNativeStaticGreen"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.nativeStaticGreen",
+            "private": false,
+            "kind": "def",
+            "line": 25,
+            "source_signature": "def nativeStaticGreen (k : PhysicalMomentum) (f : Fin 4 → ℂ) : Fin 4 → ℂ",
+            "module": "ActualDressedEMNativeStaticGreen"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.nativeStaticConstraintProjection",
+            "private": false,
+            "kind": "def",
+            "line": 32,
+            "source_signature": "def nativeStaticConstraintProjection (k : PhysicalMomentum) (v : Fin 4 → ℂ) : Fin 4 → ℂ",
+            "module": "ActualDressedEMNativeStaticGreen"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.source_square",
+            "private": true,
+            "kind": "theorem",
+            "line": 37,
+            "source_signature": "private theorem source_square (k : PhysicalMomentum) :\n    (spatialSquare k : ℂ)=(k 0 : ℂ)^2+(k 1 : ℂ)^2+(k 2 : ℂ)^2",
+            "module": "ActualDressedEMNativeStaticGreen"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_static_green_right",
+            "private": false,
+            "kind": "theorem",
+            "line": 42,
+            "source_signature": "theorem actual_native_static_green_right (k : PhysicalMomentum) (nonzero : spatialSquare k≠0)\n    (f : Fin 4 → ℂ) :\n    nativeEMMomentumMatrix (physicalFrequencyMomentum 0 k)*ᵥnativeStaticGreen k f=\n      nativeStaticConstraintProjection k f",
+            "module": "ActualDressedEMNativeStaticGreen"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_static_green_left",
+            "private": false,
+            "kind": "theorem",
+            "line": 61,
+            "source_signature": "theorem actual_native_static_green_left (k : PhysicalMomentum) (nonzero : spatialSquare k≠0)\n    (v : Fin 4 → ℂ) :\n    nativeStaticGreen k (nativeEMMomentumMatrix (physicalFrequencyMomentum 0 k)*ᵥv)=\n      nativeStaticConstraintProjection k v",
+            "module": "ActualDressedEMNativeStaticGreen"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_static_temporal_reader",
+            "private": false,
+            "kind": "theorem",
+            "line": 80,
+            "source_signature": "theorem actual_native_static_temporal_reader (k : PhysicalMomentum) (r : Fin 217 → ℂ) :\n    (nativeEMRestInsertion.transpose*ᵥ(nativeMomentumPrincipal (physicalFrequencyMomentum 0 k)*ᵥr)) 0=\n      2*(lapse : ℂ)*(spatialSquare k : ℂ)*(nativeEMRestInsertion.transpose*ᵥr) 0",
+            "module": "ActualDressedEMNativeStaticGreen"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_static_temporal_solve",
+            "private": false,
+            "kind": "theorem",
+            "line": 89,
+            "source_signature": "theorem actual_native_static_temporal_solve (k : PhysicalMomentum) (nonzero : spatialSquare k≠0)\n    (r : Fin 217 → ℂ) :\n    (nativeEMRestInsertion.transpose*ᵥr) 0=\n      ((nativeEMRestInsertion.transpose*ᵥ(nativeSchurMatrix (physicalFrequencyMomentum 0 k)*ᵥr)) 0-\n        (nativeEMRestInsertion.transpose*ᵥ(nativeSchurMatrix 0*ᵥr)) 0-\n        (nativeEMRestInsertion.transpose*ᵥ(nativeMomentumLower (physicalFrequencyMomentum 0 k)*ᵥr)) 0)/\n          (2*(lapse : ℂ)*(spatialSquare k : ℂ))",
+            "module": "ActualDressedEMNativeStaticGreen"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_em_native_static_green_return",
+            "private": false,
+            "kind": "theorem",
+            "line": 104,
+            "source_signature": "theorem actual_em_native_static_green_return (event : DressedEvent) (eps : ℝ) (n : PhysicalMomentum)\n    (alpha beta : Fin 4) (balanced : PencilClockBalanced event eps n) (finite : EMColumnsClockFinite event eps n)\n    (regular : (zeroClockClearing event eps n).eval 0≠0)\n    (root : (0 : ℂ)∈visibleRoots (zeroClockFrequencyEMFraction event eps n alpha beta))\n    (nonzero : spatialSquare ((eps^2 : ℝ) • n)≠0) :\n    let r",
+            "module": "ActualDressedEMNativeStaticGreen"
+          }
+        ],
+        "imports": [
+          {
+            "module": "ActualDressedEMNativeMomentumConsumer",
+            "object_path": "Lean/scratch/AlphaSource/ActualDressedEMNativeMomentumPrincipalOwn/ActualDressedEMNativeMomentumConsumer.olean",
+            "object_sha256": "efa46e571d4193e9202bb68acc74450f88a38150f1e804b83c1160268eef477a"
+          },
+          {
+            "module": "ActualDressedNoetherCoulombCoefficient",
+            "object_path": "Lean/scratch/AlphaSource/ActualDressedNoetherCoulombUnitOwn/ActualDressedNoetherCoulombCoefficient.olean",
+            "object_sha256": "d763fd17454d5b026afc4b66a085988a338ee420f3bbfe6882cb4b7744b57750"
+          }
+        ],
+        "strict": {
+          "exit": 0,
+          "seconds": 39.18,
+          "command": [
+            "lake",
+            "env",
+            "lean",
+            "--trust=0",
+            "-j1",
+            "-DwarningAsError=true",
+            "-DmaxErrors=4",
+            "-DElab.async=false",
+            "-o",
+            "Lean/scratch/AlphaSource/ActualDressedEMNativeCoulombUnitOwn/ActualDressedEMNativeStaticGreen.olean",
+            "Lean/scratch/AlphaSource/ActualDressedEMNativeCoulombUnitOwn/ActualDressedEMNativeStaticGreen.lean"
+          ],
+          "source_sha256": "eb790dbeb33e6619e0a441d0cbda7a4a277369107bc419d3e25d310617625ac5",
+          "object_sha256": "24ad607f4b2fb8371befc8e347fa8bb182c3c4cc2fa2cf508473e0515928d4d5"
+        }
+      },
+      {
+        "module": "ActualDressedEMNativeNoetherCoulomb",
+        "path": "Lean/scratch/AlphaSource/ActualDressedEMNativeCoulombUnitOwn/ActualDressedEMNativeNoetherCoulomb.lean",
+        "source_sha256": "3f46bc6058b8b8ae15f4e8d603e23c81a095fb6d0720291dc9ab82badefbe95c",
+        "object_path": "Lean/scratch/AlphaSource/ActualDressedEMNativeCoulombUnitOwn/ActualDressedEMNativeNoetherCoulomb.olean",
+        "object_sha256": "06e5dca9ea4f396fc7993f68431852e28157bbdabfd7489b744d0f91e80645ca",
+        "line_count": 229,
+        "public": [
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_rest_coordinate_gram",
+            "private": false,
+            "kind": "theorem",
+            "line": 37,
+            "source_signature": "theorem actual_native_rest_coordinate_gram :\n    nativeEMRestInsertion.transpose*nativeEMRestInsertion=(3/4 : ℂ) • (1 : Matrix (Fin 4) (Fin 4) ℂ)",
+            "module": "ActualDressedEMNativeNoetherCoulomb"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.nativeStaticCoordinateGreen",
+            "private": false,
+            "kind": "def",
+            "line": 59,
+            "source_signature": "def nativeStaticCoordinateGreen (k : PhysicalMomentum) (f : Fin 4 → ℂ) : Fin 4 → ℂ",
+            "module": "ActualDressedEMNativeNoetherCoulomb"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_coordinate_green_gram",
+            "private": false,
+            "kind": "theorem",
+            "line": 62,
+            "source_signature": "theorem actual_native_coordinate_green_gram (k : PhysicalMomentum) (f : Fin 4 → ℂ) :\n    nativeStaticCoordinateGreen k f=nativeStaticGreen k ((3/4 : ℂ) • f)",
+            "module": "ActualDressedEMNativeNoetherCoulomb"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_noether_action_vertex",
+            "private": false,
+            "kind": "theorem",
+            "line": 67,
+            "source_signature": "theorem actual_native_noether_action_vertex (p : PhysicalMomentum) (left right : CompositeLeg) (mu : Fin 4) :\n    -PreparationVacuumRawJointFeedback.rawForm (emGaugeField mu) p (compositeUnitLeg left) (compositeUnitLeg right) 0=\n      (Stage10.ActionNormalization.phaseMomentum : ℂ)*noetherEMCurrent p left right mu",
+            "module": "ActualDressedEMNativeNoetherCoulomb"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.nativeTemporalNoetherRead",
+            "private": false,
+            "kind": "def",
+            "line": 76,
+            "source_signature": "def nativeTemporalNoetherRead (k pd ps : PhysicalMomentum) (dL dR sL sR : CompositeLeg) : ℂ",
+            "module": "ActualDressedEMNativeNoetherCoulomb"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.nativeNoetherResponseWeight",
+            "private": false,
+            "kind": "def",
+            "line": 80,
+            "source_signature": "def nativeNoetherResponseWeight : ℂ",
+            "module": "ActualDressedEMNativeNoetherCoulomb"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_noether_temporal_read",
+            "private": false,
+            "kind": "theorem",
+            "line": 83,
+            "source_signature": "theorem actual_native_noether_temporal_read (k pd ps : PhysicalMomentum)\n    (dL dR sL sR : CompositeLeg) :\n    nativeTemporalNoetherRead k pd ps dL dR sL sR=\n      nativeNoetherResponseWeight*(spatialSquare k : ℂ)⁻¹*\n        noetherEMCurrent pd dL dR 0*noetherEMCurrent ps sL sR 0",
+            "module": "ActualDressedEMNativeNoetherCoulomb"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.nativeNoetherCoulomb",
+            "private": false,
+            "kind": "def",
+            "line": 95,
+            "source_signature": "def nativeNoetherCoulomb : ℂ",
+            "module": "ActualDressedEMNativeNoetherCoulomb"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_noether_response_weight",
+            "private": false,
+            "kind": "theorem",
+            "line": 97,
+            "source_signature": "theorem actual_native_noether_response_weight :\n    nativeNoetherResponseWeight=(2/3 : ℂ)*(Stage10.ActionNormalization.phaseMomentum : ℂ)^2*(lapse : ℂ)⁻¹",
+            "module": "ActualDressedEMNativeNoetherCoulomb"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_canonical_coulomb_ratio",
+            "private": false,
+            "kind": "theorem",
+            "line": 104,
+            "source_signature": "theorem actual_native_canonical_coulomb_ratio :\n    nativeNoetherCoulomb=(4/3 : ℂ)*\n      (SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.UnifiedAction.AtomicScales.canonicalCoulomb : ℂ)",
+            "module": "ActualDressedEMNativeNoetherCoulomb"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_fourier_jet",
+            "private": false,
+            "kind": "theorem",
+            "line": 122,
+            "source_signature": "theorem actual_native_fourier_jet (frequency : PhysicalMomentum) (j : Fin 3) :\n    physicalFrequencyMomentum 0 (sourceSpatialMomentum frequency) j.succ=\n      Complex.I*((2*Real.pi : ℝ) : ℂ)*(frequency j : ℂ)",
+            "module": "ActualDressedEMNativeNoetherCoulomb"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.nativeNoetherPotentialPacket",
+            "private": false,
+            "kind": "def",
+            "line": 128,
+            "source_signature": "def nativeNoetherPotentialPacket (test : 𝓢(PhysicalMomentum,ℂ)) (x : PhysicalMomentum) : ℂ",
+            "module": "ActualDressedEMNativeNoetherCoulomb"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_noether_packet_newton",
+            "private": false,
+            "kind": "theorem",
+            "line": 133,
+            "source_signature": "theorem actual_native_noether_packet_newton (test : 𝓢(PhysicalMomentum,ℂ)) (x : PhysicalMomentum) :\n    nativeNoetherPotentialPacket test x=\n      ∫y : PhysicalMomentum,nativeNoetherCoulomb/(Real.sqrt (spatialSquare y) : ℂ)*emPacket test (x-y)",
+            "module": "ActualDressedEMNativeNoetherCoulomb"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_em_static_hamiltonian",
+            "private": false,
+            "kind": "theorem",
+            "line": 154,
+            "source_signature": "theorem actual_em_static_hamiltonian (V : BasePoint → ℝ) (hV : Differentiable ℝ V)\n    (matter : BasePoint → DiracExteriorMatterCarrier)\n    (dual : BasePoint → Module.Dual ℂ DiracExteriorMatterCarrier) (x : StageNineSpatialPoint) :\n    StaticHamiltonian.hamiltonianDensity Stage10.Runtime.source (emCauchyField V matter dual) (canonicalCauchySlicePoint 0 x)-\n      StaticHamiltonian.hamiltonianDensity Stage10.Runtime.source (StaticHamiltonian.reference matter dual) (canonicalCauchySlicePoint 0 x)=\n      -lapse*((3/4 : ℝ)*(∑i : Fin 3,(fieldDirectionalDerivative V (canonicalCauchySlicePoint 0 x) i.succ)^2)+\n        gaugeScale^2*(V (canonicalCauchySlicePoint 0 x))^2)-\n      (dual (canonicalCauchySlicePoint 0 x) (Stage9DEF.Compatibility.currentAction 0\n        (emPotential V (canonicalCauchySlicePoint 0 x)) (matter (canonicalCauchySlicePoint 0 x)))).re",
+            "module": "ActualDressedEMNativeNoetherCoulomb"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.nativeStaticHamiltonianMode",
+            "private": false,
+            "kind": "def",
+            "line": 171,
+            "source_signature": "def nativeStaticHamiltonianMode (k : PhysicalMomentum) (charge : ℂ) (potential : ℂ) : ℂ",
+            "module": "ActualDressedEMNativeNoetherCoulomb"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.nativeNoetherPotentialMode",
+            "private": false,
+            "kind": "def",
+            "line": 175,
+            "source_signature": "def nativeNoetherPotentialMode (k : PhysicalMomentum) (charge : ℂ) : ℂ",
+            "module": "ActualDressedEMNativeNoetherCoulomb"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_hamiltonian_principal",
+            "private": false,
+            "kind": "theorem",
+            "line": 180,
+            "source_signature": "theorem actual_native_hamiltonian_principal (k : PhysicalMomentum) (charge potential : ℂ) :\n    nativeStaticHamiltonianMode k charge potential=\n      -(1/2 : ℂ)*potential*((3/4 : ℂ)*\n        (nativeEMMomentumMatrix (physicalFrequencyMomentum 0 k)*ᵥPi.single 0 potential) 0)+\n      (Stage10.ActionNormalization.phaseMomentum : ℂ)*charge*potential",
+            "module": "ActualDressedEMNativeNoetherCoulomb"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_noether_potential_green",
+            "private": false,
+            "kind": "theorem",
+            "line": 191,
+            "source_signature": "theorem actual_native_noether_potential_green (k : PhysicalMomentum) (charge : ℂ) :\n    nativeNoetherPotentialMode k charge=(4/3 : ℂ)*\n      nativeStaticGreen k ((Stage10.ActionNormalization.phaseMomentum : ℂ) • Pi.single 0 charge) 0",
+            "module": "ActualDressedEMNativeNoetherCoulomb"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_hamiltonian_half",
+            "private": false,
+            "kind": "theorem",
+            "line": 199,
+            "source_signature": "theorem actual_native_hamiltonian_half (k : PhysicalMomentum) (nonzero : spatialSquare k≠0) (charge : ℂ) :\n    nativeStaticHamiltonianMode k charge (nativeNoetherPotentialMode k charge)=\n      (1/2 : ℂ)*nativeNoetherResponseWeight*(spatialSquare k : ℂ)⁻¹*charge^2",
+            "module": "ActualDressedEMNativeNoetherCoulomb"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_hamiltonian_cross",
+            "private": false,
+            "kind": "theorem",
+            "line": 208,
+            "source_signature": "theorem actual_native_hamiltonian_cross (k : PhysicalMomentum) (nonzero : spatialSquare k≠0) (detector source : ℂ) :\n    nativeStaticHamiltonianMode k (detector+source) (nativeNoetherPotentialMode k (detector+source))-\n      nativeStaticHamiltonianMode k detector (nativeNoetherPotentialMode k detector)-\n      nativeStaticHamiltonianMode k source (nativeNoetherPotentialMode k source)=\n      nativeNoetherResponseWeight*(spatialSquare k : ℂ)⁻¹*detector*source",
+            "module": "ActualDressedEMNativeNoetherCoulomb"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_noether_hamiltonian_read",
+            "private": false,
+            "kind": "theorem",
+            "line": 218,
+            "source_signature": "theorem actual_native_noether_hamiltonian_read (k pd ps : PhysicalMomentum) (nonzero : spatialSquare k≠0)\n    (dL dR sL sR : CompositeLeg) :\n    nativeTemporalNoetherRead k pd ps dL dR sL sR=\n      let d",
+            "module": "ActualDressedEMNativeNoetherCoulomb"
+          }
+        ],
+        "declarations": [
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.original_em_auxiliary_zero",
+            "private": true,
+            "kind": "theorem",
+            "line": 26,
+            "source_signature": "private theorem original_em_auxiliary_zero (j : Fin 72) (mu : Fin 4) :\n    emInsertion (Fin.natAdd 217 j) mu=0",
+            "module": "ActualDressedEMNativeNoetherCoulomb"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_rest_coordinate_gram",
+            "private": false,
+            "kind": "theorem",
+            "line": 37,
+            "source_signature": "theorem actual_native_rest_coordinate_gram :\n    nativeEMRestInsertion.transpose*nativeEMRestInsertion=(3/4 : ℂ) • (1 : Matrix (Fin 4) (Fin 4) ℂ)",
+            "module": "ActualDressedEMNativeNoetherCoulomb"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.nativeStaticCoordinateGreen",
+            "private": false,
+            "kind": "def",
+            "line": 59,
+            "source_signature": "def nativeStaticCoordinateGreen (k : PhysicalMomentum) (f : Fin 4 → ℂ) : Fin 4 → ℂ",
+            "module": "ActualDressedEMNativeNoetherCoulomb"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_coordinate_green_gram",
+            "private": false,
+            "kind": "theorem",
+            "line": 62,
+            "source_signature": "theorem actual_native_coordinate_green_gram (k : PhysicalMomentum) (f : Fin 4 → ℂ) :\n    nativeStaticCoordinateGreen k f=nativeStaticGreen k ((3/4 : ℂ) • f)",
+            "module": "ActualDressedEMNativeNoetherCoulomb"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_noether_action_vertex",
+            "private": false,
+            "kind": "theorem",
+            "line": 67,
+            "source_signature": "theorem actual_native_noether_action_vertex (p : PhysicalMomentum) (left right : CompositeLeg) (mu : Fin 4) :\n    -PreparationVacuumRawJointFeedback.rawForm (emGaugeField mu) p (compositeUnitLeg left) (compositeUnitLeg right) 0=\n      (Stage10.ActionNormalization.phaseMomentum : ℂ)*noetherEMCurrent p left right mu",
+            "module": "ActualDressedEMNativeNoetherCoulomb"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.nativeTemporalNoetherRead",
+            "private": false,
+            "kind": "def",
+            "line": 76,
+            "source_signature": "def nativeTemporalNoetherRead (k pd ps : PhysicalMomentum) (dL dR sL sR : CompositeLeg) : ℂ",
+            "module": "ActualDressedEMNativeNoetherCoulomb"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.nativeNoetherResponseWeight",
+            "private": false,
+            "kind": "def",
+            "line": 80,
+            "source_signature": "def nativeNoetherResponseWeight : ℂ",
+            "module": "ActualDressedEMNativeNoetherCoulomb"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_noether_temporal_read",
+            "private": false,
+            "kind": "theorem",
+            "line": 83,
+            "source_signature": "theorem actual_native_noether_temporal_read (k pd ps : PhysicalMomentum)\n    (dL dR sL sR : CompositeLeg) :\n    nativeTemporalNoetherRead k pd ps dL dR sL sR=\n      nativeNoetherResponseWeight*(spatialSquare k : ℂ)⁻¹*\n        noetherEMCurrent pd dL dR 0*noetherEMCurrent ps sL sR 0",
+            "module": "ActualDressedEMNativeNoetherCoulomb"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.nativeNoetherCoulomb",
+            "private": false,
+            "kind": "def",
+            "line": 95,
+            "source_signature": "def nativeNoetherCoulomb : ℂ",
+            "module": "ActualDressedEMNativeNoetherCoulomb"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_noether_response_weight",
+            "private": false,
+            "kind": "theorem",
+            "line": 97,
+            "source_signature": "theorem actual_native_noether_response_weight :\n    nativeNoetherResponseWeight=(2/3 : ℂ)*(Stage10.ActionNormalization.phaseMomentum : ℂ)^2*(lapse : ℂ)⁻¹",
+            "module": "ActualDressedEMNativeNoetherCoulomb"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_canonical_coulomb_ratio",
+            "private": false,
+            "kind": "theorem",
+            "line": 104,
+            "source_signature": "theorem actual_native_canonical_coulomb_ratio :\n    nativeNoetherCoulomb=(4/3 : ℂ)*\n      (SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.UnifiedAction.AtomicScales.canonicalCoulomb : ℂ)",
+            "module": "ActualDressedEMNativeNoetherCoulomb"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_fourier_jet",
+            "private": false,
+            "kind": "theorem",
+            "line": 122,
+            "source_signature": "theorem actual_native_fourier_jet (frequency : PhysicalMomentum) (j : Fin 3) :\n    physicalFrequencyMomentum 0 (sourceSpatialMomentum frequency) j.succ=\n      Complex.I*((2*Real.pi : ℝ) : ℂ)*(frequency j : ℂ)",
+            "module": "ActualDressedEMNativeNoetherCoulomb"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.nativeNoetherPotentialPacket",
+            "private": false,
+            "kind": "def",
+            "line": 128,
+            "source_signature": "def nativeNoetherPotentialPacket (test : 𝓢(PhysicalMomentum,ℂ)) (x : PhysicalMomentum) : ℂ",
+            "module": "ActualDressedEMNativeNoetherCoulomb"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_noether_packet_newton",
+            "private": false,
+            "kind": "theorem",
+            "line": 133,
+            "source_signature": "theorem actual_native_noether_packet_newton (test : 𝓢(PhysicalMomentum,ℂ)) (x : PhysicalMomentum) :\n    nativeNoetherPotentialPacket test x=\n      ∫y : PhysicalMomentum,nativeNoetherCoulomb/(Real.sqrt (spatialSquare y) : ℂ)*emPacket test (x-y)",
+            "module": "ActualDressedEMNativeNoetherCoulomb"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_em_static_hamiltonian",
+            "private": false,
+            "kind": "theorem",
+            "line": 154,
+            "source_signature": "theorem actual_em_static_hamiltonian (V : BasePoint → ℝ) (hV : Differentiable ℝ V)\n    (matter : BasePoint → DiracExteriorMatterCarrier)\n    (dual : BasePoint → Module.Dual ℂ DiracExteriorMatterCarrier) (x : StageNineSpatialPoint) :\n    StaticHamiltonian.hamiltonianDensity Stage10.Runtime.source (emCauchyField V matter dual) (canonicalCauchySlicePoint 0 x)-\n      StaticHamiltonian.hamiltonianDensity Stage10.Runtime.source (StaticHamiltonian.reference matter dual) (canonicalCauchySlicePoint 0 x)=\n      -lapse*((3/4 : ℝ)*(∑i : Fin 3,(fieldDirectionalDerivative V (canonicalCauchySlicePoint 0 x) i.succ)^2)+\n        gaugeScale^2*(V (canonicalCauchySlicePoint 0 x))^2)-\n      (dual (canonicalCauchySlicePoint 0 x) (Stage9DEF.Compatibility.currentAction 0\n        (emPotential V (canonicalCauchySlicePoint 0 x)) (matter (canonicalCauchySlicePoint 0 x)))).re",
+            "module": "ActualDressedEMNativeNoetherCoulomb"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.nativeStaticHamiltonianMode",
+            "private": false,
+            "kind": "def",
+            "line": 171,
+            "source_signature": "def nativeStaticHamiltonianMode (k : PhysicalMomentum) (charge : ℂ) (potential : ℂ) : ℂ",
+            "module": "ActualDressedEMNativeNoetherCoulomb"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.nativeNoetherPotentialMode",
+            "private": false,
+            "kind": "def",
+            "line": 175,
+            "source_signature": "def nativeNoetherPotentialMode (k : PhysicalMomentum) (charge : ℂ) : ℂ",
+            "module": "ActualDressedEMNativeNoetherCoulomb"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_hamiltonian_principal",
+            "private": false,
+            "kind": "theorem",
+            "line": 180,
+            "source_signature": "theorem actual_native_hamiltonian_principal (k : PhysicalMomentum) (charge potential : ℂ) :\n    nativeStaticHamiltonianMode k charge potential=\n      -(1/2 : ℂ)*potential*((3/4 : ℂ)*\n        (nativeEMMomentumMatrix (physicalFrequencyMomentum 0 k)*ᵥPi.single 0 potential) 0)+\n      (Stage10.ActionNormalization.phaseMomentum : ℂ)*charge*potential",
+            "module": "ActualDressedEMNativeNoetherCoulomb"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_noether_potential_green",
+            "private": false,
+            "kind": "theorem",
+            "line": 191,
+            "source_signature": "theorem actual_native_noether_potential_green (k : PhysicalMomentum) (charge : ℂ) :\n    nativeNoetherPotentialMode k charge=(4/3 : ℂ)*\n      nativeStaticGreen k ((Stage10.ActionNormalization.phaseMomentum : ℂ) • Pi.single 0 charge) 0",
+            "module": "ActualDressedEMNativeNoetherCoulomb"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_hamiltonian_half",
+            "private": false,
+            "kind": "theorem",
+            "line": 199,
+            "source_signature": "theorem actual_native_hamiltonian_half (k : PhysicalMomentum) (nonzero : spatialSquare k≠0) (charge : ℂ) :\n    nativeStaticHamiltonianMode k charge (nativeNoetherPotentialMode k charge)=\n      (1/2 : ℂ)*nativeNoetherResponseWeight*(spatialSquare k : ℂ)⁻¹*charge^2",
+            "module": "ActualDressedEMNativeNoetherCoulomb"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_hamiltonian_cross",
+            "private": false,
+            "kind": "theorem",
+            "line": 208,
+            "source_signature": "theorem actual_native_hamiltonian_cross (k : PhysicalMomentum) (nonzero : spatialSquare k≠0) (detector source : ℂ) :\n    nativeStaticHamiltonianMode k (detector+source) (nativeNoetherPotentialMode k (detector+source))-\n      nativeStaticHamiltonianMode k detector (nativeNoetherPotentialMode k detector)-\n      nativeStaticHamiltonianMode k source (nativeNoetherPotentialMode k source)=\n      nativeNoetherResponseWeight*(spatialSquare k : ℂ)⁻¹*detector*source",
+            "module": "ActualDressedEMNativeNoetherCoulomb"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_noether_hamiltonian_read",
+            "private": false,
+            "kind": "theorem",
+            "line": 218,
+            "source_signature": "theorem actual_native_noether_hamiltonian_read (k pd ps : PhysicalMomentum) (nonzero : spatialSquare k≠0)\n    (dL dR sL sR : CompositeLeg) :\n    nativeTemporalNoetherRead k pd ps dL dR sL sR=\n      let d",
+            "module": "ActualDressedEMNativeNoetherCoulomb"
+          }
+        ],
+        "imports": [
+          {
+            "module": "ActualDressedEMNativeStaticGreen",
+            "object_path": "Lean/scratch/AlphaSource/ActualDressedEMNativeCoulombUnitOwn/ActualDressedEMNativeStaticGreen.olean",
+            "object_sha256": "24ad607f4b2fb8371befc8e347fa8bb182c3c4cc2fa2cf508473e0515928d4d5"
+          },
+          {
+            "module": "ActualEMPhysicalCarrierEnergy",
+            "object_path": "Lean/scratch/AlphaSource/ActualEMCarrierOwn/ActualEMPhysicalCarrierEnergy.olean",
+            "object_sha256": "17a4f46bb61ba833c8f26ba990f69ec145d57f0f2d3ead781d5eb03841794625"
+          },
+          {
+            "module": "SaturationMonoid.PhysicsCore.Stage10.StaticHamiltonian.Hamiltonian",
+            "object_path": "Lean/.lake/build/lib/lean/SaturationMonoid/PhysicsCore/Stage10/StaticHamiltonian/Hamiltonian.olean",
+            "object_sha256": "b35d26afb7fb484085b6c16ae934480e5b1352b01176ca6722ded3824332c53e"
+          },
+          {
+            "module": "SaturationMonoid.PhysicsCore.LowEnergy.Electromagnetic.CanonicalQuantumUnits",
+            "object_path": "Lean/.lake/build/lib/lean/SaturationMonoid/PhysicsCore/LowEnergy/Electromagnetic/CanonicalQuantumUnits.olean",
+            "object_sha256": "49902eb3a897b76a284bf8775efe23aed951f047a5335c3103cd877a78a46cfa"
+          }
+        ],
+        "strict": {
+          "exit": 0,
+          "seconds": 40.533,
+          "command": [
+            "lake",
+            "env",
+            "lean",
+            "--trust=0",
+            "-j1",
+            "-DwarningAsError=true",
+            "-DmaxErrors=4",
+            "-DElab.async=false",
+            "-o",
+            "Lean/scratch/AlphaSource/ActualDressedEMNativeCoulombUnitOwn/ActualDressedEMNativeNoetherCoulomb.olean",
+            "Lean/scratch/AlphaSource/ActualDressedEMNativeCoulombUnitOwn/ActualDressedEMNativeNoetherCoulomb.lean"
+          ],
+          "source_sha256": "3f46bc6058b8b8ae15f4e8d603e23c81a095fb6d0720291dc9ab82badefbe95c",
+          "object_sha256": "06e5dca9ea4f396fc7993f68431852e28157bbdabfd7489b744d0f91e80645ca"
+        }
+      },
+      {
+        "module": "ActualDressedEMNativeCouplingConsumer",
+        "path": "Lean/scratch/AlphaSource/ActualDressedEMNativeCoulombUnitOwn/ActualDressedEMNativeCouplingConsumer.lean",
+        "source_sha256": "daf2dff0850f4535e9c6a22d4098e2a9db29576f0906da19f387fcfb3c6641a5",
+        "object_path": "Lean/scratch/AlphaSource/ActualDressedEMNativeCoulombUnitOwn/ActualDressedEMNativeCouplingConsumer.olean",
+        "object_sha256": "af1bf0446a0a19ff62c9d7b1bc3d4bb5b542a1f5d194682c517d1b5f67cc185f",
+        "line_count": 188,
+        "public": [
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.nativePrimitiveSpeed",
+            "private": false,
+            "kind": "def",
+            "line": 15,
+            "source_signature": "def nativePrimitiveSpeed : ℝ",
+            "module": "ActualDressedEMNativeCouplingConsumer"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_transverse_principal",
+            "private": false,
+            "kind": "theorem",
+            "line": 18,
+            "source_signature": "theorem actual_native_transverse_principal (omega : ℝ) (k : PhysicalMomentum) (v : Fin 4 → ℂ)\n    (temporal : v 0=0) (transverse : nativeSpatialContraction k v=0) :\n    nativeEMMomentumMatrix (physicalFrequencyMomentum omega k)*ᵥv=\n      (2*(lapse : ℂ)*((omega : ℂ)^2-(nativePrimitiveSpeed : ℂ)^2*(spatialSquare k : ℂ))) • v",
+            "module": "ActualDressedEMNativeCouplingConsumer"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.nativePrincipalCoupling",
+            "private": false,
+            "kind": "def",
+            "line": 39,
+            "source_signature": "def nativePrincipalCoupling : ℂ",
+            "module": "ActualDressedEMNativeCouplingConsumer"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_principal_coupling",
+            "private": false,
+            "kind": "theorem",
+            "line": 42,
+            "source_signature": "theorem actual_native_principal_coupling :\n    nativePrincipalCoupling=(Stage10.ActionNormalization.phaseMomentum : ℂ)/(6*(Real.pi : ℂ))",
+            "module": "ActualDressedEMNativeCouplingConsumer"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_source_coupling",
+            "private": false,
+            "kind": "theorem",
+            "line": 55,
+            "source_signature": "theorem actual_native_source_coupling :\n    nativePrincipalCoupling=(2/3 : ℂ)*(spinScale : ℂ)/(Real.pi : ℂ)",
+            "module": "ActualDressedEMNativeCouplingConsumer"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.nativeDirectionalOrderedCoulomb",
+            "private": false,
+            "kind": "def",
+            "line": 62,
+            "source_signature": "def nativeDirectionalOrderedCoulomb (n : PhysicalMomentum) : ℂ",
+            "module": "ActualDressedEMNativeCouplingConsumer"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actualNativeCoulombCorrection",
+            "private": false,
+            "kind": "def",
+            "line": 66,
+            "source_signature": "def actualNativeCoulombCorrection (event : DressedEvent) (n : PhysicalMomentum) : ℂ",
+            "module": "ActualDressedEMNativeCouplingConsumer"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_noether_native_coulomb_balance",
+            "private": false,
+            "kind": "theorem",
+            "line": 70,
+            "source_signature": "theorem actual_noether_native_coulomb_balance (event : DressedEvent) (n pd ps : PhysicalMomentum)\n    (dL dR sL sR : CompositeLeg) :\n    sourceOrderedProbeCoefficient event n pd ps dL dR sL sR/(4*(Real.pi : ℂ))=\n      sourceInputCharge dR*sourceInputCharge sR*\n        (nativeDirectionalOrderedCoulomb n+actualNativeCoulombCorrection event n)+\n      (noetherChargeCalibration pd dL dR*sourceInputCharge sR+\n        sourceInputCharge dR*noetherChargeCalibration ps sL sR+\n        noetherChargeCalibration pd dL dR*noetherChargeCalibration ps sL sR)*\n          (nativeDirectionalOrderedCoulomb n+actualNativeCoulombCorrection event n)+\n      otherEMCoefficient event n pd ps dL dR sL sR/(4*(Real.pi : ℂ))+\n      noetherNonPureCoefficient event n pd ps dL dR sL sR/(4*(Real.pi : ℂ))",
+            "module": "ActualDressedEMNativeCouplingConsumer"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_ordered_noether_ray",
+            "private": false,
+            "kind": "theorem",
+            "line": 94,
+            "source_signature": "theorem actual_native_ordered_noether_ray (kappa : ℝ) (kappa_ne : kappa≠0)\n    (n pd ps : PhysicalMomentum) (nonzero : spatialSquare n≠0) (dL dR sL sR : CompositeLeg) :\n    -(kappa : ℂ)^2*nativeTemporalNoetherRead (kappa • n) pd ps dL dR sL sR/(4*(Real.pi : ℂ))=\n      noetherEMCurrent pd dL dR 0*nativeDirectionalOrderedCoulomb n*noetherEMCurrent ps sL sR 0",
+            "module": "ActualDressedEMNativeCouplingConsumer"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.nativeUnitPrincipal",
+            "private": false,
+            "kind": "def",
+            "line": 105,
+            "source_signature": "def nativeUnitPrincipal (energy length time field : ℝ) (omega : ℝ) (k : PhysicalMomentum)\n    (v : Fin 4 → ℂ) : Fin 4 → ℂ",
+            "module": "ActualDressedEMNativeCouplingConsumer"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_unit_action_measure",
+            "private": false,
+            "kind": "theorem",
+            "line": 110,
+            "source_signature": "theorem actual_native_unit_action_measure (energy length time : ℝ) (time_ne : time≠0) :\n    length^3/energy=(length^3*time)/(energy*time)",
+            "module": "ActualDressedEMNativeCouplingConsumer"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_unit_gauss_hessian",
+            "private": false,
+            "kind": "theorem",
+            "line": 115,
+            "source_signature": "theorem actual_native_unit_gauss_hessian (energy length time field : ℝ) (length_ne : length≠0)\n    (k : PhysicalMomentum) (v : Fin 4 → ℂ) :\n    nativeUnitPrincipal energy length time field 0 k v 0=\n      ((length/energy*field^2 : ℝ) : ℂ)*\n        (2*(lapse : ℂ)*(spatialSquare k : ℂ)*v 0)",
+            "module": "ActualDressedEMNativeCouplingConsumer"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_unit_transverse_principal",
+            "private": false,
+            "kind": "theorem",
+            "line": 133,
+            "source_signature": "theorem actual_native_unit_transverse_principal (energy length time field omega : ℝ)\n    (energy_ne : energy≠0) (length_ne : length≠0) (time_ne : time≠0)\n    (k : PhysicalMomentum) (v : Fin 4 → ℂ) (temporal : v 0=0) (transverse : nativeSpatialContraction k v=0) :\n    nativeUnitPrincipal energy length time field omega k v=\n      (((length^3/(energy*time^2)*field^2 : ℝ) : ℂ)*2*(lapse : ℂ)*\n        ((omega : ℂ)^2-((nativePrimitiveSpeed*time/length : ℝ) : ℂ)^2*(spatialSquare k : ℂ))) • v",
+            "module": "ActualDressedEMNativeCouplingConsumer"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.nativeUnitVertex",
+            "private": false,
+            "kind": "def",
+            "line": 151,
+            "source_signature": "def nativeUnitVertex (energy field : ℝ) : ℂ",
+            "module": "ActualDressedEMNativeCouplingConsumer"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_unit_action_vertex",
+            "private": false,
+            "kind": "theorem",
+            "line": 154,
+            "source_signature": "theorem actual_native_unit_action_vertex (energy field : ℝ) (p : PhysicalMomentum) (left right : CompositeLeg) :\n    ((Stage10.ActionNormalization.phaseMomentum/energy : ℝ) : ℂ)*\n      rescaledFieldNoetherCurrent field p left right 0=\n      nativeUnitVertex energy field*noetherEMCurrent p left right 0",
+            "module": "ActualDressedEMNativeCouplingConsumer"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.nativeUnitCoulomb",
+            "private": false,
+            "kind": "def",
+            "line": 162,
+            "source_signature": "def nativeUnitCoulomb (energy length field : ℝ) : ℂ",
+            "module": "ActualDressedEMNativeCouplingConsumer"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_unit_coulomb",
+            "private": false,
+            "kind": "theorem",
+            "line": 167,
+            "source_signature": "theorem actual_native_unit_coulomb (energy length field : ℝ)\n    (energy_ne : energy≠0) (length_ne : length≠0) (field_ne : field≠0) :\n    nativeUnitCoulomb energy length field=nativeNoetherCoulomb/((energy*length : ℝ) : ℂ)",
+            "module": "ActualDressedEMNativeCouplingConsumer"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_unit_coupling",
+            "private": false,
+            "kind": "theorem",
+            "line": 177,
+            "source_signature": "theorem actual_native_unit_coupling (energy length time field : ℝ)\n    (energy_ne : energy≠0) (length_ne : length≠0) (time_ne : time≠0) (field_ne : field≠0) :\n    nativeUnitCoulomb energy length field/\n      (((Stage10.ActionNormalization.phaseMomentum/(energy*time) : ℝ) : ℂ)*\n        ((nativePrimitiveSpeed*time/length : ℝ) : ℂ))=nativePrincipalCoupling",
+            "module": "ActualDressedEMNativeCouplingConsumer"
+          }
+        ],
+        "declarations": [
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.nativePrimitiveSpeed",
+            "private": false,
+            "kind": "def",
+            "line": 15,
+            "source_signature": "def nativePrimitiveSpeed : ℝ",
+            "module": "ActualDressedEMNativeCouplingConsumer"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_transverse_principal",
+            "private": false,
+            "kind": "theorem",
+            "line": 18,
+            "source_signature": "theorem actual_native_transverse_principal (omega : ℝ) (k : PhysicalMomentum) (v : Fin 4 → ℂ)\n    (temporal : v 0=0) (transverse : nativeSpatialContraction k v=0) :\n    nativeEMMomentumMatrix (physicalFrequencyMomentum omega k)*ᵥv=\n      (2*(lapse : ℂ)*((omega : ℂ)^2-(nativePrimitiveSpeed : ℂ)^2*(spatialSquare k : ℂ))) • v",
+            "module": "ActualDressedEMNativeCouplingConsumer"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.nativePrincipalCoupling",
+            "private": false,
+            "kind": "def",
+            "line": 39,
+            "source_signature": "def nativePrincipalCoupling : ℂ",
+            "module": "ActualDressedEMNativeCouplingConsumer"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_principal_coupling",
+            "private": false,
+            "kind": "theorem",
+            "line": 42,
+            "source_signature": "theorem actual_native_principal_coupling :\n    nativePrincipalCoupling=(Stage10.ActionNormalization.phaseMomentum : ℂ)/(6*(Real.pi : ℂ))",
+            "module": "ActualDressedEMNativeCouplingConsumer"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_source_coupling",
+            "private": false,
+            "kind": "theorem",
+            "line": 55,
+            "source_signature": "theorem actual_native_source_coupling :\n    nativePrincipalCoupling=(2/3 : ℂ)*(spinScale : ℂ)/(Real.pi : ℂ)",
+            "module": "ActualDressedEMNativeCouplingConsumer"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.nativeDirectionalOrderedCoulomb",
+            "private": false,
+            "kind": "def",
+            "line": 62,
+            "source_signature": "def nativeDirectionalOrderedCoulomb (n : PhysicalMomentum) : ℂ",
+            "module": "ActualDressedEMNativeCouplingConsumer"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actualNativeCoulombCorrection",
+            "private": false,
+            "kind": "def",
+            "line": 66,
+            "source_signature": "def actualNativeCoulombCorrection (event : DressedEvent) (n : PhysicalMomentum) : ℂ",
+            "module": "ActualDressedEMNativeCouplingConsumer"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_noether_native_coulomb_balance",
+            "private": false,
+            "kind": "theorem",
+            "line": 70,
+            "source_signature": "theorem actual_noether_native_coulomb_balance (event : DressedEvent) (n pd ps : PhysicalMomentum)\n    (dL dR sL sR : CompositeLeg) :\n    sourceOrderedProbeCoefficient event n pd ps dL dR sL sR/(4*(Real.pi : ℂ))=\n      sourceInputCharge dR*sourceInputCharge sR*\n        (nativeDirectionalOrderedCoulomb n+actualNativeCoulombCorrection event n)+\n      (noetherChargeCalibration pd dL dR*sourceInputCharge sR+\n        sourceInputCharge dR*noetherChargeCalibration ps sL sR+\n        noetherChargeCalibration pd dL dR*noetherChargeCalibration ps sL sR)*\n          (nativeDirectionalOrderedCoulomb n+actualNativeCoulombCorrection event n)+\n      otherEMCoefficient event n pd ps dL dR sL sR/(4*(Real.pi : ℂ))+\n      noetherNonPureCoefficient event n pd ps dL dR sL sR/(4*(Real.pi : ℂ))",
+            "module": "ActualDressedEMNativeCouplingConsumer"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.source_square_smul",
+            "private": true,
+            "kind": "theorem",
+            "line": 88,
+            "source_signature": "private theorem source_square_smul (scale : ℝ) (k : PhysicalMomentum) :\n    spatialSquare (scale • k)=scale^2*spatialSquare k",
+            "module": "ActualDressedEMNativeCouplingConsumer"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_ordered_noether_ray",
+            "private": false,
+            "kind": "theorem",
+            "line": 94,
+            "source_signature": "theorem actual_native_ordered_noether_ray (kappa : ℝ) (kappa_ne : kappa≠0)\n    (n pd ps : PhysicalMomentum) (nonzero : spatialSquare n≠0) (dL dR sL sR : CompositeLeg) :\n    -(kappa : ℂ)^2*nativeTemporalNoetherRead (kappa • n) pd ps dL dR sL sR/(4*(Real.pi : ℂ))=\n      noetherEMCurrent pd dL dR 0*nativeDirectionalOrderedCoulomb n*noetherEMCurrent ps sL sR 0",
+            "module": "ActualDressedEMNativeCouplingConsumer"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.nativeUnitPrincipal",
+            "private": false,
+            "kind": "def",
+            "line": 105,
+            "source_signature": "def nativeUnitPrincipal (energy length time field : ℝ) (omega : ℝ) (k : PhysicalMomentum)\n    (v : Fin 4 → ℂ) : Fin 4 → ℂ",
+            "module": "ActualDressedEMNativeCouplingConsumer"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_unit_action_measure",
+            "private": false,
+            "kind": "theorem",
+            "line": 110,
+            "source_signature": "theorem actual_native_unit_action_measure (energy length time : ℝ) (time_ne : time≠0) :\n    length^3/energy=(length^3*time)/(energy*time)",
+            "module": "ActualDressedEMNativeCouplingConsumer"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_unit_gauss_hessian",
+            "private": false,
+            "kind": "theorem",
+            "line": 115,
+            "source_signature": "theorem actual_native_unit_gauss_hessian (energy length time field : ℝ) (length_ne : length≠0)\n    (k : PhysicalMomentum) (v : Fin 4 → ℂ) :\n    nativeUnitPrincipal energy length time field 0 k v 0=\n      ((length/energy*field^2 : ℝ) : ℂ)*\n        (2*(lapse : ℂ)*(spatialSquare k : ℂ)*v 0)",
+            "module": "ActualDressedEMNativeCouplingConsumer"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_unit_transverse_principal",
+            "private": false,
+            "kind": "theorem",
+            "line": 133,
+            "source_signature": "theorem actual_native_unit_transverse_principal (energy length time field omega : ℝ)\n    (energy_ne : energy≠0) (length_ne : length≠0) (time_ne : time≠0)\n    (k : PhysicalMomentum) (v : Fin 4 → ℂ) (temporal : v 0=0) (transverse : nativeSpatialContraction k v=0) :\n    nativeUnitPrincipal energy length time field omega k v=\n      (((length^3/(energy*time^2)*field^2 : ℝ) : ℂ)*2*(lapse : ℂ)*\n        ((omega : ℂ)^2-((nativePrimitiveSpeed*time/length : ℝ) : ℂ)^2*(spatialSquare k : ℂ))) • v",
+            "module": "ActualDressedEMNativeCouplingConsumer"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.nativeUnitVertex",
+            "private": false,
+            "kind": "def",
+            "line": 151,
+            "source_signature": "def nativeUnitVertex (energy field : ℝ) : ℂ",
+            "module": "ActualDressedEMNativeCouplingConsumer"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_unit_action_vertex",
+            "private": false,
+            "kind": "theorem",
+            "line": 154,
+            "source_signature": "theorem actual_native_unit_action_vertex (energy field : ℝ) (p : PhysicalMomentum) (left right : CompositeLeg) :\n    ((Stage10.ActionNormalization.phaseMomentum/energy : ℝ) : ℂ)*\n      rescaledFieldNoetherCurrent field p left right 0=\n      nativeUnitVertex energy field*noetherEMCurrent p left right 0",
+            "module": "ActualDressedEMNativeCouplingConsumer"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.nativeUnitCoulomb",
+            "private": false,
+            "kind": "def",
+            "line": 162,
+            "source_signature": "def nativeUnitCoulomb (energy length field : ℝ) : ℂ",
+            "module": "ActualDressedEMNativeCouplingConsumer"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_unit_coulomb",
+            "private": false,
+            "kind": "theorem",
+            "line": 167,
+            "source_signature": "theorem actual_native_unit_coulomb (energy length field : ℝ)\n    (energy_ne : energy≠0) (length_ne : length≠0) (field_ne : field≠0) :\n    nativeUnitCoulomb energy length field=nativeNoetherCoulomb/((energy*length : ℝ) : ℂ)",
+            "module": "ActualDressedEMNativeCouplingConsumer"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_unit_coupling",
+            "private": false,
+            "kind": "theorem",
+            "line": 177,
+            "source_signature": "theorem actual_native_unit_coupling (energy length time field : ℝ)\n    (energy_ne : energy≠0) (length_ne : length≠0) (time_ne : time≠0) (field_ne : field≠0) :\n    nativeUnitCoulomb energy length field/\n      (((Stage10.ActionNormalization.phaseMomentum/(energy*time) : ℝ) : ℂ)*\n        ((nativePrimitiveSpeed*time/length : ℝ) : ℂ))=nativePrincipalCoupling",
+            "module": "ActualDressedEMNativeCouplingConsumer"
+          }
+        ],
+        "imports": [
+          {
+            "module": "ActualDressedEMNativeNoetherCoulomb",
+            "object_path": "Lean/scratch/AlphaSource/ActualDressedEMNativeCoulombUnitOwn/ActualDressedEMNativeNoetherCoulomb.olean",
+            "object_sha256": "06e5dca9ea4f396fc7993f68431852e28157bbdabfd7489b744d0f91e80645ca"
+          },
+          {
+            "module": "SaturationMonoid.PhysicsCore.LowEnergy.Electromagnetic.Units",
+            "object_path": "Lean/.lake/build/lib/lean/SaturationMonoid/PhysicsCore/LowEnergy/Electromagnetic/Units.olean",
+            "object_sha256": "230c9129764ffb598acaeb7c957370521e9c87dc27f78f0174ae599aff7a25be"
+          }
+        ],
+        "strict": {
+          "exit": 0,
+          "seconds": 29.99,
+          "command": [
+            "lake",
+            "env",
+            "lean",
+            "--trust=0",
+            "-j1",
+            "-DwarningAsError=true",
+            "-DmaxErrors=4",
+            "-DElab.async=false",
+            "-o",
+            "Lean/scratch/AlphaSource/ActualDressedEMNativeCoulombUnitOwn/ActualDressedEMNativeCouplingConsumer.olean",
+            "Lean/scratch/AlphaSource/ActualDressedEMNativeCoulombUnitOwn/ActualDressedEMNativeCouplingConsumer.lean"
+          ],
+          "source_sha256": "daf2dff0850f4535e9c6a22d4098e2a9db29576f0906da19f387fcfb3c6641a5",
+          "object_sha256": "af1bf0446a0a19ff62c9d7b1bc3d4bb5b542a1f5d194682c517d1b5f67cc185f"
+        }
+      }
+    ],
+    "inputs": {
+      "ActualDressedEMNativeMomentumPrincipalOwn": {
+        "path": "Lean/scratch/AlphaSource/ActualDressedEMNativeMomentumPrincipalOwn/candidate.json",
+        "sha256": "243eaf5358f6fafe00ba2195e9ebbd56fe5d8c334f83fbc4e9816165d75b4b07"
+      },
+      "ActualDressedNoetherCoulombUnitOwn": {
+        "path": "Lean/scratch/AlphaSource/ActualDressedNoetherCoulombUnitOwn/candidate.json",
+        "sha256": "3c9790d69da84a8296e98002b1c492ddbfc8c2a874ed06ff05ddbe7df1cdc846"
+      }
+    },
+    "scope": {
+      "static_green": "Every real physical k on the spatialSquare(k) nonzero chart; all four source components, both left/right compositions, all217 input fields. The null longitudinal direction is preserved.",
+      "coefficient": "Original positive principal Green/Hamiltonian polarized response C_native=(4/3)*canonicalCoulomb, generated from one Gram3/4 and the two original Noether vertices. Original ordered baseline is -C_native/spatialSquare(n).",
+      "hamiltonian": "Exact same-source static Cauchy Hamiltonian identity, plus bilinear complexified principal Fourier-mode quadratic/half/polarization. Full background energy is retained in the exact Cauchy identity and is not equated to the principal mode alone.",
+      "fourier": "Unchanged original sourceSpatialPhase, sourceSpatialMomentum=2*pi*frequency, literal jets p_j=i*k_j and original massless Newton transform. The single4pi is generated once.",
+      "units": "Joint algebraic source action-measure, literal-jet, field, Hamiltonian vertex, static Hessian, primitive propagation and phaseMomentum unit pullback. No invariance from changing h alone.",
+      "feedback": "Actual corrected EM-root fullQ forcing with background/lower terms; original Noether calibration, all15 other EM components and all non-pure fields. actualNativeCoulombCorrection is a retained complete-coefficient balance, not a correction producer.",
+      "physical": "This is the original native principal coefficient. The full infrared alpha0 identity/correction, actual corrected propagation and physical residueJet/Thomson normalization remain their existing actual full-source consumers.",
+      "controller": "Subordinate source producer and actual-read consumer only. Fixed root/current, whole-ledger and generated next unchanged."
+    },
+    "effective_lean_path_file": "Lean/scratch/AlphaSource/ActualDressedEMNativeCoulombUnitOwn/effective-lean-path.txt",
+    "effective_lean_path_sha256": "af26ef4dd41233a21161c8fb0cbeb77e437be258380389b54ea60828d5fc3133",
+    "next_return_contract": "Consume the unchanged actual root full background/lower/fullQ temporal solved read and the full corrected Noether coefficient balance to generate the real alpha0 correction/identity and actual Thomson/residueJet normalization, with actual corrected c_corr from the same original spectrum and constraints. The native signed baseline and positive Hamiltonian principal read are now fully source-paid; do not reopen their native Green, Gram/Noether unit, source4pi or Hamiltonian half gates. Keep all remaining actual full-source balances visible.",
+    "independent_pre_review": {
+      "path": "Lean/scratch/AlphaSource/ActualDressedEMNativeCoulombUnitOwn/independent-certify-review.json",
+      "sha256": "fe4fdcd6152ad1605c7420888723147a37db78d075a4c723fe832ae303605057"
+    },
+    "independent_finite_controls": {
+      "script_path": "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/check_actual_dressed_em_native_coulomb.py",
+      "script_sha256": "13fb043ef91043e69daaee4e6db172792b2769ffebded2897a9b0a6435a6f5a7",
+      "report_path": "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/check_actual_dressed_em_native_coulomb.json",
+      "report_sha256": "8a8c2be5f4ae61710deb085ff7b164b7b461da4fd738e89b6f5e5b87483bdb79",
+      "positive": 21,
+      "negative": 17,
+      "failed": [],
+      "invocation_controls": [
+        {
+          "case": "default frozen source",
+          "exit": 0,
+          "stdout": "{\"failed\": [], \"negative\": 17, \"positive\": 21, \"report_sha256\": \"4c657caaecd104734c44891b285e4f9353384e12228ad0e45f8c5b957dbf29f6\", \"script_sha256\": \"13fb043ef91043e69daaee4e6db172792b2769ffebded2897a9b0a6435a6f5a7\", \"status\": \"PASS\"}\n",
+          "stderr": ""
+        },
+        {
+          "case": "explicit root/candidate/production",
+          "exit": 0,
+          "stdout": "{\"failed\": [], \"negative\": 17, \"positive\": 21, \"report_sha256\": \"8a8c2be5f4ae61710deb085ff7b164b7b461da4fd738e89b6f5e5b87483bdb79\", \"script_sha256\": \"13fb043ef91043e69daaee4e6db172792b2769ffebded2897a9b0a6435a6f5a7\", \"status\": \"PASS\"}\n",
+          "stderr": ""
+        },
+        {
+          "case": "similar source omitting original Gram rejected",
+          "exit": 1,
+          "stdout": "",
+          "stderr": "Traceback (most recent call last):\n  File \"Verification/physics/low-energy-phenomenology/alpha-source/em-identification/check_actual_dressed_em_native_coulomb.py\", line 156, in <module>\n    main()\n  File \"Verification/physics/low-energy-phenomenology/alpha-source/em-identification/check_actual_dressed_em_native_coulomb.py\", line 139, in main\n    bound = source_binding(candidate, args.source_dir.resolve() if args.source_dir else None)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"Verification/physics/low-energy-phenomenology/alpha-source/em-identification/check_actual_dressed_em_native_coulomb.py\", line 127, in source_binding\n    raise ValueError(\"selected source changes frozen declaration bodies\")\nValueError: selected source changes frozen declaration bodies\n"
+        }
+      ],
+      "scope": "Exact source constrained Green/projector, original Gram once/two Noether vertices/Cnative4over3canonical, Hamiltonian half/polarized cross, original Fourier4pi and ordered minus, actual Qrest-minus-RBWQB, transverse principal/joint field-time-energy-length units, all complete calibration/correction/other channels. No correctedc/physicalThomson/alpha0 evaluation; changed comparison target cannot change the source expression."
+    },
+    "focused_attention": [
+      {
+        "case": "theorem_mouth_lint.py",
+        "exit": 0,
+        "stdout": "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedEMNativeCouplingConsumer.lean:4: WARN: `autoImplicit false` left in file; remove unless policy\nVerification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedEMNativeNoetherCoulomb.lean:6: WARN: `autoImplicit false` left in file; remove unless policy\nVerification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedEMNativeStaticGreen.lean:4: WARN: `autoImplicit false` left in file; remove unless policy\n",
+        "stderr": ""
+      },
+      {
+        "case": "frontier_guard.py",
+        "exit": 0,
+        "stdout": "FILE Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedEMNativeStaticGreen.lean: lines=126 bytes=7589 declarations=10 namespaces=1 scratch=no tracked=no\nFILE Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedEMNativeNoetherCoulomb.lean: lines=229 bytes=14445 declarations=22 namespaces=1 scratch=no tracked=no\nFILE Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedEMNativeCouplingConsumer.lean: lines=188 bytes=11400 declarations=19 namespaces=1 scratch=no tracked=no\n[frontier-guard] blocks=0 warnings=0 import-scope=active-files\n",
+        "stderr": ""
+      }
+    ],
+    "native_numerical_interval": {
+      "expression": "2*sqrt(2)/(3*pi)",
+      "decimal_interval": [
+        "0.300105438719035356",
+        "0.300105438719035357"
+      ],
+      "scope": "Original native principal coupling 2*sqrt(2)/(3*pi), before full corrected infrared response and physical Thomson identity",
+      "experimental_input_count": 0,
+      "corrected_alpha0_claimed": false,
+      "producer": {
+        "path": "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/produce_actual_native_coupling_interval.py",
+        "sha256": "ac017fd6ed64d60624d1f1b9acdc7333a346fcb722c67415bef27d7184edc0ed"
+      },
+      "independent_checker": {
+        "path": "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/check_actual_native_coupling_interval.py",
+        "sha256": "940183de36362edc0ca633c6ff7beed73ee17b6877191dcdef7bb96c87e46865"
+      },
+      "certificate": {
+        "path": "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/actual_native_coupling_interval.json",
+        "sha256": "02becc5f63601257453261c6f9ee7653aaca0d71d10a6d95f5f25bac650ce4f6"
+      },
+      "invocation_controls": [
+        {
+          "case": "wrongNumerator",
+          "exit": 1
+        },
+        {
+          "case": "inwardDecimal",
+          "exit": 1
+        },
+        {
+          "case": "fakeThomson",
+          "exit": 1
+        },
+        {
+          "case": "changedPi",
+          "exit": 1
+        },
+        {
+          "case": "explicit 32bits",
+          "exit": 0
+        },
+        {
+          "case": "explicit 80bits",
+          "exit": 0
+        }
+      ]
+    },
+    "independent_final_review": {
+      "path": "Lean/scratch/AlphaSource/ActualDressedEMNativeCoulombUnitOwn/final-independent-certify-review.json",
+      "sha256": "7552f547090892f7e5386bf28ba5a2d96ce2c330e79c091d3e73054874675dc9"
+    }
+  },
+  "audit_source_object_hashes": {
+    "module": "ActualDressedEMNativeCoulombFullAudit",
+    "exit": 0,
+    "seconds": 55.123368978500366,
+    "source_sha256": "a4111fbe776779059215e2b0462662596c17d0ee40fe4d9fbf6fb5722d518971",
+    "object_sha256": "6e574478f9603eb68e0203eadfa6157d922a1a41b230966f7169d7467b86c458"
+  },
+  "production_source_object_hashes": [
+    {
+      "module": "ActualDressedEMNativeStaticGreen",
+      "exit": 0,
+      "seconds": 51.401169776916504,
+      "source_sha256": "eb790dbeb33e6619e0a441d0cbda7a4a277369107bc419d3e25d310617625ac5",
+      "object_sha256": "92c80a050d3bfb5ec43df88adfb54ad645b7aa05f3274c26bcf760a952ee56fd"
+    },
+    {
+      "module": "ActualDressedEMNativeNoetherCoulomb",
+      "exit": 0,
+      "seconds": 43.82694411277771,
+      "source_sha256": "3f46bc6058b8b8ae15f4e8d603e23c81a095fb6d0720291dc9ab82badefbe95c",
+      "object_sha256": "b4241fcf55ce08683f4b3646dc93a0a21b1ec198c6352b03f2f35fc4300d45ac"
+    },
+    {
+      "module": "ActualDressedEMNativeCouplingConsumer",
+      "exit": 0,
+      "seconds": 66.98247694969177,
+      "source_sha256": "daf2dff0850f4535e9c6a22d4098e2a9db29576f0906da19f387fcfb3c6641a5",
+      "object_sha256": "95fa3a9e70389c20c9dd90c2d72c4619cd83e40bf18811cbf56e6da4b6b70378"
+    },
+    {
+      "module": "ActualDressedEMNativeCoulombFullAuditProductionConsumers",
+      "exit": 0,
+      "seconds": 29.86710786819458,
+      "source_sha256": "9e7eb3a3b24bb58969a29d09290f4f0027475695009732d4127444949bdefe8c",
+      "object_sha256": "08ecc53d78a2234c01cc7ec0097ae2af4f757b7f068bd8adb25d367a41912c41"
+    }
+  ],
+  "source_byte_identity": true,
+  "whitespace_check": "explicit untracked source/Audit PASS",
+  "public_mouths": [
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.nativeSpatialContraction",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.nativeStaticGreen",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.nativeStaticConstraintProjection",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_static_green_right",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_static_green_left",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_static_temporal_reader",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_static_temporal_solve",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_em_native_static_green_return",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_rest_coordinate_gram",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.nativeStaticCoordinateGreen",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_coordinate_green_gram",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_noether_action_vertex",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.nativeTemporalNoetherRead",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.nativeNoetherResponseWeight",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_noether_temporal_read",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.nativeNoetherCoulomb",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_noether_response_weight",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_canonical_coulomb_ratio",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_fourier_jet",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.nativeNoetherPotentialPacket",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_noether_packet_newton",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_em_static_hamiltonian",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.nativeStaticHamiltonianMode",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.nativeNoetherPotentialMode",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_hamiltonian_principal",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_noether_potential_green",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_hamiltonian_half",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_hamiltonian_cross",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_noether_hamiltonian_read",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.nativePrimitiveSpeed",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_transverse_principal",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.nativePrincipalCoupling",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_principal_coupling",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_source_coupling",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.nativeDirectionalOrderedCoulomb",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actualNativeCoulombCorrection",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_noether_native_coulomb_balance",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_ordered_noether_ray",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.nativeUnitPrincipal",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_unit_action_measure",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_unit_gauss_hessian",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_unit_transverse_principal",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.nativeUnitVertex",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_unit_action_vertex",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.nativeUnitCoulomb",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_unit_coulomb",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_unit_coupling"
+  ],
+  "owned_count": 102,
+  "tests": [
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulombFullAudit.checked_actual_native_static_green_right",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulombFullAudit.checked_actual_native_static_green_left",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulombFullAudit.checked_actual_native_static_temporal_reader",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulombFullAudit.checked_actual_native_static_temporal_solve",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulombFullAudit.checked_actual_em_native_static_green_return",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulombFullAudit.checked_actual_native_rest_coordinate_gram",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulombFullAudit.checked_actual_native_coordinate_green_gram",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulombFullAudit.checked_actual_native_noether_action_vertex",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulombFullAudit.checked_actual_native_noether_temporal_read",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulombFullAudit.checked_actual_native_noether_response_weight",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulombFullAudit.checked_actual_native_canonical_coulomb_ratio",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulombFullAudit.checked_actual_native_fourier_jet",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulombFullAudit.checked_actual_native_noether_packet_newton",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulombFullAudit.checked_actual_em_static_hamiltonian",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulombFullAudit.checked_actual_native_hamiltonian_principal",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulombFullAudit.checked_actual_native_noether_potential_green",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulombFullAudit.checked_actual_native_hamiltonian_half",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulombFullAudit.checked_actual_native_hamiltonian_cross",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulombFullAudit.checked_actual_native_noether_hamiltonian_read",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulombFullAudit.checked_actual_native_transverse_principal",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulombFullAudit.checked_actual_native_principal_coupling",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulombFullAudit.checked_actual_native_source_coupling",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulombFullAudit.checked_actual_noether_native_coulomb_balance",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulombFullAudit.checked_actual_native_ordered_noether_ray",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulombFullAudit.checked_actual_native_unit_action_measure",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulombFullAudit.checked_actual_native_unit_gauss_hessian",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulombFullAudit.checked_actual_native_unit_transverse_principal",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulombFullAudit.checked_actual_native_unit_action_vertex",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulombFullAudit.checked_actual_native_unit_coulomb",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulombFullAudit.checked_actual_native_unit_coupling"
+  ],
+  "anchors": [
+    "SaturationMonoid.PhysicsCore.StageNineEnrichedProofFreeSource.positiveSmoothUnifiedSource",
+    "SaturationMonoid.PhysicsCore.Stage9C.Material.SpinPair.actual",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_physical_em_principal",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_momentum_decomposition",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeAuxiliary.actual_em_quantum_auxiliary_schur",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeAuxiliary.nativeQuantumSchurForcing",
+    "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.nativeEMRestInsertion",
+    "LowEnergy.GaussComposite.ActualEMCurrentSplit.em_coordinate_gram",
+    "LowEnergy.GaussComposite.ActualDressedNoetherCoulombUnit.actual_coordinate_noether_unit",
+    "LowEnergy.GaussComposite.ActualDressedNoetherCoulombUnit.actual_noether_em_reader",
+    "SaturationMonoid.PhysicsCore.Stage10.ActionNormalization.phaseMomentum",
+    "SaturationMonoid.PhysicsCore.Stage10.ActionNormalization.phaseMomentum_source",
+    "SaturationMonoid.NoIslandNoMagic.Consciousness.Immortality.Embodied.Molecule.LAlanine40K2025.UnifiedAction.AtomicScales.canonicalCoulomb",
+    "LowEnergy.GaussComposite.ActualEMCarrierOwn.em_newton_massless_convolution",
+    "SaturationMonoid.PhysicsCore.Stage10.StaticHamiltonian.original_hamiltonian_shift",
+    "LowEnergy.GaussComposite.ActualEMPhysicalCarrier.em_cauchy_electric_energy",
+    "LowEnergy.GaussComposite.ActualDressedNoetherCoulombUnit.actual_noether_coulomb_coefficient",
+    "LowEnergy.GaussComposite.ActualDressedNoetherCoulombUnit.actual_generator_current_rescale"
+  ],
+  "direct_dependencies": [
+    [
+      "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_static_green_right",
+      [
+        "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_physical_em_principal"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_static_green_left",
+      [
+        "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_physical_em_principal"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_static_temporal_reader",
+      [
+        "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_em_momentum_principal",
+        "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_physical_em_principal"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_static_temporal_solve",
+      [
+        "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_momentum_decomposition",
+        "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_static_temporal_reader"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_em_native_static_green_return",
+      [
+        "LowEnergy.GaussComposite.ActualDressedEMNativeAuxiliary.actual_em_quantum_auxiliary_schur",
+        "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_static_temporal_solve"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_rest_coordinate_gram",
+      [
+        "LowEnergy.GaussComposite.ActualEMCurrentSplit.em_coordinate_gram"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_coordinate_green_gram",
+      [
+        "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_rest_coordinate_gram"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_noether_action_vertex",
+      [
+        "LowEnergy.GaussComposite.ActualDressedNoetherCoulombUnit.actual_noether_em_reader"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_noether_temporal_read",
+      [
+        "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_coordinate_green_gram",
+        "LowEnergy.GaussComposite.ActualDressedNoetherCoulombUnit.actual_coordinate_noether_unit"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_canonical_coulomb_ratio",
+      [
+        "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_noether_response_weight",
+        "SaturationMonoid.PhysicsCore.LowEnergy.Electromagnetic.CanonicalQuantumUnits.unit_leg_initial_coulomb"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_noether_packet_newton",
+      [
+        "LowEnergy.GaussComposite.ActualEMCarrierOwn.em_newton_massless_convolution"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_em_static_hamiltonian",
+      [
+        "SaturationMonoid.PhysicsCore.Stage10.StaticHamiltonian.original_hamiltonian_shift",
+        "LowEnergy.GaussComposite.ActualEMPhysicalCarrier.em_cauchy_electric_energy"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_hamiltonian_principal",
+      [
+        "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_physical_em_principal"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_noether_potential_green",
+      [
+        "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.nativeStaticGreen"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_hamiltonian_half",
+      [
+        "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_noether_response_weight"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_hamiltonian_cross",
+      [
+        "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_hamiltonian_half"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_noether_hamiltonian_read",
+      [
+        "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_hamiltonian_cross",
+        "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_noether_temporal_read"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_transverse_principal",
+      [
+        "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_physical_em_principal"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_principal_coupling",
+      [
+        "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_noether_response_weight"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_source_coupling",
+      [
+        "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_principal_coupling",
+        "SaturationMonoid.PhysicsCore.Stage10.ActionNormalization.phaseMomentum_source"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_noether_native_coulomb_balance",
+      [
+        "LowEnergy.GaussComposite.ActualDressedNoetherCoulombUnit.actual_noether_coulomb_coefficient"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_ordered_noether_ray",
+      [
+        "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_noether_temporal_read"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_unit_gauss_hessian",
+      [
+        "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_physical_em_principal"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_unit_transverse_principal",
+      [
+        "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_transverse_principal"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_unit_action_vertex",
+      [
+        "LowEnergy.GaussComposite.ActualDressedNoetherCoulombUnit.actual_generator_current_rescale"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_unit_coulomb",
+      [
+        "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_noether_response_weight"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_unit_coupling",
+      [
+        "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_unit_coulomb"
+      ]
+    ]
+  ],
+  "closure": {
+    "scope": "all producer-module declarations including private/generated, all direct consumers/controls; recursive complete type/value/allowOpaque/constructors/recursor RHS",
+    "nodes": 105397,
+    "opaque_all_read": 72,
+    "axioms": 3,
+    "authorized_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "unknown": 0,
+    "unsafe": 0,
+    "partial": 0,
+    "manifest_sha256": "e33e8e8b4cf59aecd43aa34a17b092d6206b07402cb2bb97d2fc9c08e58e0822",
+    "target_scan": {
+      "project_nodes": 24186,
+      "target_matches": []
+    }
+  },
+  "machine_stdout": "DRESSED_EM_NATIVE_COULOMB_PASS public=47 owned=102 tests=30 nodes=105397 anchors=18 direct=27 opaque_all_read=72 axioms=3 unknown=0 unsafe=0 partial=0\n'LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_static_green_right' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_static_green_left' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_static_temporal_reader' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_static_temporal_solve' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_em_native_static_green_return' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_rest_coordinate_gram' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_coordinate_green_gram' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_noether_action_vertex' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_noether_temporal_read' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_noether_response_weight' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_canonical_coulomb_ratio' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_fourier_jet' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_noether_packet_newton' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_em_static_hamiltonian' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_hamiltonian_principal' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_noether_potential_green' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_hamiltonian_half' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_hamiltonian_cross' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_noether_hamiltonian_read' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_transverse_principal' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_principal_coupling' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_source_coupling' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_noether_native_coulomb_balance' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_ordered_noether_ray' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_unit_action_measure' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_unit_gauss_hessian' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_unit_transverse_principal' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_unit_action_vertex' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_unit_coulomb' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_unit_coupling' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n",
+  "production_gate": "fresh strict production sources and direct consumer slice; complete closure reused only for byte-identical source",
+  "generated_structure": [
+    "The frozen native full217 EM principal is generated by the complete original literal action, all168 derivative gauge-B terms, all72 auxiliary rows and the original six lapse inverse weights. This package directly imports its physical four-component producer and same-actual-root full-feedback equation.",
+    "nativeStaticGreen is computed from the temporal Gauss and all three spatial equations. Both compositions with the generated original M(0,k) equal the explicit transverse constraint projector on the nonzero spatialSquare chart; the longitudinal null component is retained.",
+    "Every full217 input has the original temporal principal read 2*lapse*spatialSquare*E_R-transpose*r. Solving the same full Schur retains nativeSchur(0) and nativeMomentumLower; the actual corrected EM-root return retains the complete nativeQuantumSchurForcing, including Q0_rest and original RB*W*Q0_B.",
+    "All72 auxiliary input entries of the original EM insertion are kernel-proved zero, so its same nativeRest restriction has exactly the already-paid Gram3/4. nativeStaticCoordinateGreen consumes this E_R-transpose*E_R identity once. Both actual composite coordinate currents consume original actual_coordinate_noether_unit, with pairScale=4h/3.",
+    "The original Euler minus is consumed by actual_noether_em_reader to prove -rawForm(emGaugeField)=h*j_N, with original h=phaseMomentum. No charge calibration is replaced by a caller electron normalization.",
+    "The resulting temporal Noether response weight is 2*h^2/(3*lapse). The original source-space frequency-to-literal-jet relation is p_j=i*(2*pi)*frequency_j; the unchanged em_newton_massless_convolution consumes the original sourceSpatialPhase and sourceSpatialMomentum and produces the single4pi.",
+    "The resulting positive principal Coulomb read equals 4/3 times original CanonicalUnits.canonicalCoulomb. The unchanged ordered minus gives the negative directional baseline divided by spatialSquare(n), via the actual physical radial response -kappa^2*read(kappa*n).",
+    "The original hamiltonianDensity on emCauchyField minus its same-matter reference is consumed directly through original_hamiltonian_shift and em_cauchy_electric_energy. It retains original electric3/4, gaugeScale^2*V^2 and independent-dual matter. The bilinear complexified principal Hamiltonian is explicitly -oneHalf*V*(original EM Hessian V)+h*j_N*V. Its generated Gauss inverse yields the self-energy half; polarization of two independent charges consumes that half exactly once. The actual composite action-current temporal read is kernel-identified with this same polarized principal Hamiltonian read, retaining both charge calibrations in its original vertices.",
+    "The primitive transverse coefficient is generated from the same complete four-component M(omega,k); its speed is lapse inverse. Native principal coupling is h/(6*pi)=2*spinScale/(3*pi), kept separate from actual corrected c_corr.",
+    "nativeUnitPrincipal pulls the complete original M through jets omega/T and k/L, action measure L^3/E=(L^3*T)/(E*T), and field^2. The static Hessian scales by L*field^2/E. The actual rescaled-field Noether reader gives vertex h*field/E. Both vertices and the Hessian generate C/(E*L); the same pulled-back transverse principal generates speed*T/L. With h/(E*T), the resulting dimensionless native coupling is invariant.",
+    "The full actual_noether_coulomb_coefficient consumes the generated signed native directional baseline plus actualNativeCoulombCorrection. Both original charge calibrations, all15 other EM components and the complete three non-pure channels remain. This correction is an exact retained balance readout, not a claim that background/fullQ corrections vanish."
+  ],
+  "boundary": "All4component originalM/all217remaining/full72auxiliary/sourceGram3/4/actualNoetherunits/repaireddual/originalCauchyHamiltonian and original physical momentum. Positive principal C_native=4/3canonicalCoulomb=h²/(6pi*lapse); original orderedread keeps minus. Nativeprimitive c0=lapse^-1 gives h/(6pi)=2spinScale/(3pi), not correctedc/completeIRalpha0 or physicalThomson. Actual static root solving keeps original Q_rest−J_RB W Q_B, all background/lower and constraints. Fullactual coefficient retains both actualchargecalibrations, all15otherEM and allnonpure. actualNativeCoulombCorrection is exact retained balance readout not newcorrectionproducer. Same actionmeasure/field/jets/Hessian/twovertices/h/c unitpullback, no h-alone reset or angularaverage/fit. rootvisit10row0tick16→17controllerfalse."
+}

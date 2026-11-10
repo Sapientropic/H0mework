@@ -1,0 +1,1128 @@
+{
+  "verdict": "certified",
+  "scope": "43 public actual completed physical charge correction, exact true uncut momentum inverse difference/source price, generated positive adaptive nonzero transfer and wholeHistory strong soft/paired amputated charge return",
+  "controller_disposition": "Subordinate producer/consumer: same livingRoot visit10 row0.inl.liveAccount tick16 quantumFace10→quantumPresentation10→tick17; no shared controller edits",
+  "strict_flags": [
+    "-j1",
+    "--trust=0",
+    "-DwarningAsError=true",
+    "-DmaxErrors=1",
+    "-DElab.async=false"
+  ],
+  "construction_evidence": {
+    "candidate_path": "Lean/scratch/AlphaSource/ActualElectronWholeChargeSoftOwn/candidate.json",
+    "candidate_sha256": "7f5f2622b443ce50c1c39417cd5d3bef81c84497b1e07f6aa5c1a41fd7cadee1",
+    "frozen_sources": [
+      {
+        "module": "ActualWholePhysicalChargeCorrection",
+        "path": "Lean/scratch/AlphaSource/ActualElectronWholeChargeSoftOwn/ActualWholePhysicalChargeCorrection.lean",
+        "source_sha256": "8a43a190fc8ab3fc008a0283bc944360e1e81bb551cb3815c4faa2e570bc3b69",
+        "object_path": "Lean/scratch/AlphaSource/ActualElectronWholeChargeSoftOwn/ActualWholePhysicalChargeCorrection.olean",
+        "object_sha256": "93cb4fb78036bfe384ce0d0d85168460f1d71eaae40ad9f7debcd610ca07a1c3",
+        "line_count": 95,
+        "public": [
+          {
+            "name": "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.ElectronFamily",
+            "kind": "abbrev",
+            "line": 14,
+            "module": "ActualWholePhysicalChargeCorrection",
+            "source_signature": "abbrev ElectronFamily"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.ElectronHistory",
+            "kind": "abbrev",
+            "line": 15,
+            "module": "ActualWholePhysicalChargeCorrection",
+            "source_signature": "abbrev ElectronHistory"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actualElectronSign",
+            "kind": "def",
+            "line": 17,
+            "module": "ActualWholePhysicalChargeCorrection",
+            "source_signature": "def actualElectronSign (leg : CompositeLeg) : ℂ"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_electron_sign_norm",
+            "kind": "theorem",
+            "line": 19,
+            "module": "ActualWholePhysicalChargeCorrection",
+            "source_signature": "theorem actual_electron_sign_norm (leg : CompositeLeg) : ‖actualElectronSign leg‖=1"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actualWholeElectronCorrectionFamily",
+            "kind": "def",
+            "line": 24,
+            "module": "ActualWholePhysicalChargeCorrection",
+            "source_signature": "def actualWholeElectronCorrectionFamily (p : PhysicalMomentum) (z : ℂ) (hz : z.im≠0) (leg : CompositeLeg) : ElectronFamily"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_whole_electron_correction_value",
+            "kind": "theorem",
+            "line": 30,
+            "module": "ActualWholePhysicalChargeCorrection",
+            "source_signature": "theorem actual_whole_electron_correction_value (p : PhysicalMomentum) (z : ℂ) (hz : z.im≠0)\n    (leg : CompositeLeg) (F : GaussUnitaryHistory.Index) :\n    value (actualWholeElectronCorrectionFamily p z hz leg) F=actualElectronPhysicalChargeCorrection p F z leg"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_whole_electron_correction_frame_bound",
+            "kind": "theorem",
+            "line": 38,
+            "module": "ActualWholePhysicalChargeCorrection",
+            "source_signature": "theorem actual_whole_electron_correction_frame_bound (p : PhysicalMomentum) (z : ℂ) (hz : z.im≠0)\n    (leg : CompositeLeg) (F : GaussUnitaryHistory.Index) :\n    ‖value (actualWholeElectronCorrectionFamily p z hz leg) F‖≤‖chargeReader sourcePhaseGaugeLie‖+1"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actualWholeElectronCorrection",
+            "kind": "def",
+            "line": 51,
+            "module": "ActualWholePhysicalChargeCorrection",
+            "source_signature": "def actualWholeElectronCorrection (p : PhysicalMomentum) (z : ℂ) (hz : z.im≠0) (leg : CompositeLeg) : ElectronHistory"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_whole_electron_charge_equation",
+            "kind": "theorem",
+            "line": 54,
+            "module": "ActualWholePhysicalChargeCorrection",
+            "source_signature": "theorem actual_whole_electron_charge_equation (p : PhysicalMomentum) (z : ℂ) (hz : z.im≠0) (leg : CompositeLeg) :\n    GaussUnitaryHistory.reader (chargeReader sourcePhaseGaugeLie) (actualElectronPhysicalState p z hz leg)=\n      actualElectronSign leg • actualElectronPhysicalState p z hz leg+actualWholeElectronCorrection p z hz leg"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_whole_electron_correction_bound",
+            "kind": "theorem",
+            "line": 62,
+            "module": "ActualWholePhysicalChargeCorrection",
+            "source_signature": "theorem actual_whole_electron_correction_bound (p : PhysicalMomentum) (z : ℂ) (hz : z.im≠0) (leg : CompositeLeg) :\n    ‖actualWholeElectronCorrection p z hz leg‖≤‖chargeReader sourcePhaseGaugeLie‖+1"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_whole_electron_paired_charge",
+            "kind": "theorem",
+            "line": 69,
+            "module": "ActualWholePhysicalChargeCorrection",
+            "source_signature": "theorem actual_whole_electron_paired_charge (pL pR : PhysicalMomentum) (z w : ℂ)\n    (hz : z.im≠0) (hw : w.im≠0) (left right : CompositeLeg) :\n    inner ℂ (actualElectronPhysicalState pL z hz left)\n      (GaussUnitaryHistory.reader (chargeReader sourcePhaseGaugeLie) (actualElectronPhysicalState pR w hw right))=\n    actualElectronSign right*inner ℂ (actualElectronPhysicalState pL z hz left) (actualElectronPhysicalState pR w hw right)+\n      inner ℂ (actualElectronPhysicalState pL z hz left) (actualWholeElectronCorrection pR w hw right)"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_whole_electron_diagonal_charge",
+            "kind": "theorem",
+            "line": 78,
+            "module": "ActualWholePhysicalChargeCorrection",
+            "source_signature": "theorem actual_whole_electron_diagonal_charge (p : PhysicalMomentum) (z : ℂ) (hz : z.im≠0) (leg : CompositeLeg) :\n    inner ℂ (actualElectronPhysicalState p z hz leg)\n      (GaussUnitaryHistory.reader (chargeReader sourcePhaseGaugeLie) (actualElectronPhysicalState p z hz leg))=\n    actualElectronSign leg+inner ℂ (actualElectronPhysicalState p z hz leg) (actualWholeElectronCorrection p z hz leg)"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_whole_electron_correction_read_return",
+            "kind": "theorem",
+            "line": 86,
+            "module": "ActualWholePhysicalChargeCorrection",
+            "source_signature": "theorem actual_whole_electron_correction_read_return (p : PhysicalMomentum) (z : ℂ) (hz : z.im≠0) (leg : CompositeLeg) :\n    Tendsto (fun F=>inner ℂ (actualElectronPhysicalUnit p F z leg) (actualElectronPhysicalChargeCorrection p F z leg))\n      GaussUnitaryHistory.sourceFilter\n      (𝓝 (inner ℂ (actualElectronPhysicalState p z hz leg) (actualWholeElectronCorrection p z hz leg)))"
+          }
+        ],
+        "private": [],
+        "build_record_path": "Lean/scratch/AlphaSource/ActualElectronWholeChargeSoftOwn/ActualWholePhysicalChargeCorrection.build.json",
+        "build_record_sha256": "0565d4b47a52b9067b1e38d4e18e233b142fe484d4cc2b16a1568c1300247589",
+        "focused_default_strict": {
+          "module": "ActualWholePhysicalChargeCorrection",
+          "command": [
+            "lake",
+            "env",
+            "lean",
+            "--trust=0",
+            "-j1",
+            "-DwarningAsError=true",
+            "-DmaxErrors=4",
+            "-DElab.async=false",
+            "--root=Lean/scratch/AlphaSource/ActualElectronWholeChargeSoftOwn",
+            "-o",
+            "Lean/scratch/AlphaSource/ActualElectronWholeChargeSoftOwn/ActualWholePhysicalChargeCorrection.olean",
+            "Lean/scratch/AlphaSource/ActualElectronWholeChargeSoftOwn/ActualWholePhysicalChargeCorrection.lean"
+          ],
+          "exit": 0,
+          "seconds": 42.80920029198751,
+          "source_path": "Lean/scratch/AlphaSource/ActualElectronWholeChargeSoftOwn/ActualWholePhysicalChargeCorrection.lean",
+          "source_sha256": "8a43a190fc8ab3fc008a0283bc944360e1e81bb551cb3815c4faa2e570bc3b69",
+          "object_path": "Lean/scratch/AlphaSource/ActualElectronWholeChargeSoftOwn/ActualWholePhysicalChargeCorrection.olean",
+          "object_sha256": "93cb4fb78036bfe384ce0d0d85168460f1d71eaae40ad9f7debcd610ca07a1c3",
+          "log_path": "Lean/scratch/AlphaSource/ActualElectronWholeChargeSoftOwn/ActualWholePhysicalChargeCorrection.strict.log",
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout": ""
+        },
+        "direct_import_first_hits": [
+          {
+            "module": "ActualElectronPhysicalDomainAndContact",
+            "object_path": "Lean/scratch/AlphaSource/ActualElectronPhysicalJointInverseOwn/ActualElectronPhysicalDomainAndContact.olean",
+            "object_sha256": "0ecfd570b8562d6addf5ef8b539bab75e3c644b14c5c20090359e5799164593b"
+          }
+        ]
+      },
+      {
+        "module": "ActualPhysicalMomentumSoftSource",
+        "path": "Lean/scratch/AlphaSource/ActualElectronWholeChargeSoftOwn/ActualPhysicalMomentumSoftSource.lean",
+        "source_sha256": "7f3a83096306f020a9f9a9763d3c6822518ceb917b4eb1f18828a80d990ae2b1",
+        "object_path": "Lean/scratch/AlphaSource/ActualElectronWholeChargeSoftOwn/ActualPhysicalMomentumSoftSource.olean",
+        "object_sha256": "688dfa39eb23b17365d9582edf270b05d5952d74b5133e88e5c8cebb962c4323",
+        "line_count": 99,
+        "public": [
+          {
+            "name": "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_electron_physical_inverse_difference",
+            "kind": "theorem",
+            "line": 22,
+            "module": "ActualPhysicalMomentumSoftSource",
+            "source_signature": "theorem actual_electron_physical_inverse_difference (p k : PhysicalMomentum)\n    (F : GaussUnitaryHistory.Index) (z : ℂ) (hz : z.im≠0) :\n    jointResolvent (p+k) F z 0-jointResolvent p F z 0=\n      -(jointResolvent (p+k) F z 0*momentumCompressionMap F k*jointResolvent p F z 0)"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actualElectronPhysicalMomentumPrice",
+            "kind": "def",
+            "line": 33,
+            "module": "ActualPhysicalMomentumSoftSource",
+            "source_signature": "def actualElectronPhysicalMomentumPrice (p k : PhysicalMomentum) (F : GaussUnitaryHistory.Index) (z : ℂ) : ℝ"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_electron_physical_inverse_difference_price",
+            "kind": "theorem",
+            "line": 36,
+            "module": "ActualPhysicalMomentumSoftSource",
+            "source_signature": "theorem actual_electron_physical_inverse_difference_price (p k : PhysicalMomentum)\n    (F : GaussUnitaryHistory.Index) (z : ℂ) (hz : z.im≠0) :\n    ‖jointResolvent (p+k) F z 0-jointResolvent p F z 0‖≤actualElectronPhysicalMomentumPrice p k F z"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_electron_physical_response_difference_price",
+            "kind": "theorem",
+            "line": 51,
+            "module": "ActualPhysicalMomentumSoftSource",
+            "source_signature": "theorem actual_electron_physical_response_difference_price (p k : PhysicalMomentum)\n    (F : GaussUnitaryHistory.Index) (z : ℂ) (hz : z.im≠0) (leg : CompositeLeg) :\n    ‖actualElectronPhysicalResponse (p+k) F z leg-actualElectronPhysicalResponse p F z leg‖≤\n      actualElectronPhysicalMomentumPrice p k F z"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_electron_physical_resolvent_continuous",
+            "kind": "theorem",
+            "line": 63,
+            "module": "ActualPhysicalMomentumSoftSource",
+            "source_signature": "theorem actual_electron_physical_resolvent_continuous (F : GaussUnitaryHistory.Index) (z : ℂ) (hz : z.im≠0) :\n    Continuous (fun p : PhysicalMomentum=>jointResolvent p F z 0)"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_electron_physical_response_continuous",
+            "kind": "theorem",
+            "line": 76,
+            "module": "ActualPhysicalMomentumSoftSource",
+            "source_signature": "theorem actual_electron_physical_response_continuous (F : GaussUnitaryHistory.Index) (z : ℂ) (hz : z.im≠0)\n    (leg : CompositeLeg) :Continuous (fun p : PhysicalMomentum=>actualElectronPhysicalResponse p F z leg)"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_electron_physical_unit_continuous",
+            "kind": "theorem",
+            "line": 81,
+            "module": "ActualPhysicalMomentumSoftSource",
+            "source_signature": "theorem actual_electron_physical_unit_continuous (F : GaussUnitaryHistory.Index) (z : ℂ) (hz : z.im≠0)\n    (leg : CompositeLeg) :Continuous (fun p : PhysicalMomentum=>actualElectronPhysicalUnit p F z leg)"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_electron_physical_finite_soft_return",
+            "kind": "theorem",
+            "line": 92,
+            "module": "ActualPhysicalMomentumSoftSource",
+            "source_signature": "theorem actual_electron_physical_finite_soft_return (p : PhysicalMomentum) (F : GaussUnitaryHistory.Index)\n    (z : ℂ) (hz : z.im≠0) (leg : CompositeLeg) :\n    Tendsto (fun k : PhysicalMomentum=>actualElectronPhysicalUnit (p+k) F z leg) (𝓝 0)\n      (𝓝 (actualElectronPhysicalUnit p F z leg))"
+          }
+        ],
+        "private": [
+          {
+            "name": "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.inverse_difference",
+            "kind": "theorem",
+            "line": 15,
+            "module": "ActualPhysicalMomentumSoftSource",
+            "source_signature": "private theorem inverse_difference {A : Type*} [Ring A] (D0 D1 R0 R1 : A)\n    (right0 : D0*R0=1) (left1 : R1*D1=1) :R1-R0=-(R1*(D1-D0)*R0)"
+          }
+        ],
+        "build_record_path": "Lean/scratch/AlphaSource/ActualElectronWholeChargeSoftOwn/ActualPhysicalMomentumSoftSource.build.json",
+        "build_record_sha256": "da1f2ffaf79f17b11819a075911acf5175f74ac089ae79733094b3df65c47a52",
+        "focused_default_strict": {
+          "module": "ActualPhysicalMomentumSoftSource",
+          "command": [
+            "lake",
+            "env",
+            "lean",
+            "--trust=0",
+            "-j1",
+            "-DwarningAsError=true",
+            "-DmaxErrors=4",
+            "-DElab.async=false",
+            "--root=Lean/scratch/AlphaSource/ActualElectronWholeChargeSoftOwn",
+            "-o",
+            "Lean/scratch/AlphaSource/ActualElectronWholeChargeSoftOwn/ActualPhysicalMomentumSoftSource.olean",
+            "Lean/scratch/AlphaSource/ActualElectronWholeChargeSoftOwn/ActualPhysicalMomentumSoftSource.lean"
+          ],
+          "exit": 0,
+          "seconds": 34.64502445800463,
+          "source_path": "Lean/scratch/AlphaSource/ActualElectronWholeChargeSoftOwn/ActualPhysicalMomentumSoftSource.lean",
+          "source_sha256": "7f3a83096306f020a9f9a9763d3c6822518ceb917b4eb1f18828a80d990ae2b1",
+          "object_path": "Lean/scratch/AlphaSource/ActualElectronWholeChargeSoftOwn/ActualPhysicalMomentumSoftSource.olean",
+          "object_sha256": "688dfa39eb23b17365d9582edf270b05d5952d74b5133e88e5c8cebb962c4323",
+          "log_path": "Lean/scratch/AlphaSource/ActualElectronWholeChargeSoftOwn/ActualPhysicalMomentumSoftSource.strict.log",
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout": ""
+        },
+        "direct_import_first_hits": [
+          {
+            "module": "ActualWholePhysicalChargeCorrection",
+            "object_path": "Lean/scratch/AlphaSource/ActualElectronWholeChargeSoftOwn/ActualWholePhysicalChargeCorrection.olean",
+            "object_sha256": "93cb4fb78036bfe384ce0d0d85168460f1d71eaae40ad9f7debcd610ca07a1c3"
+          },
+          {
+            "module": "CanonicalSourcePropagationActualMomentumPencil",
+            "object_path": "Lean/scratch/AlphaSource/SourcePropagationCommonMomentumAudit/overlay/CanonicalSourcePropagationActualMomentumPencil.olean",
+            "object_sha256": "0d6f3ead7a6e6f1a8fe5f3a20e07c441bc303a77f6a72d95edda94ae1c12c95e"
+          }
+        ]
+      },
+      {
+        "module": "ActualWholeAdaptivePhysicalSoftReturn",
+        "path": "Lean/scratch/AlphaSource/ActualElectronWholeChargeSoftOwn/ActualWholeAdaptivePhysicalSoftReturn.lean",
+        "source_sha256": "003e7487935e7431a6062e5b1ad9ae0fac8d13d6a2588d4ce3f176e2ec54c940",
+        "object_path": "Lean/scratch/AlphaSource/ActualElectronWholeChargeSoftOwn/ActualWholeAdaptivePhysicalSoftReturn.olean",
+        "object_sha256": "70fd4593355165c8c8f70923410aa5b7a12e3e56e3c6100b5fa5cc33409b465e",
+        "line_count": 173,
+        "public": [
+          {
+            "name": "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actualSoftBudget",
+            "kind": "def",
+            "line": 13,
+            "module": "ActualWholeAdaptivePhysicalSoftReturn",
+            "source_signature": "def actualSoftBudget (m : ℕ) : ℝ"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_soft_budget_positive",
+            "kind": "theorem",
+            "line": 15,
+            "module": "ActualWholeAdaptivePhysicalSoftReturn",
+            "source_signature": "theorem actual_soft_budget_positive (m : ℕ) : 0<actualSoftBudget m"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_soft_budget_tendsto",
+            "kind": "theorem",
+            "line": 17,
+            "module": "ActualWholeAdaptivePhysicalSoftReturn",
+            "source_signature": "theorem actual_soft_budget_tendsto : Tendsto actualSoftBudget atTop (𝓝 0)"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actualPhysicalSoftRadius",
+            "kind": "def",
+            "line": 31,
+            "module": "ActualWholeAdaptivePhysicalSoftReturn",
+            "source_signature": "def actualPhysicalSoftRadius (p : PhysicalMomentum) (F : GaussUnitaryHistory.Index)\n    (z : ℂ) (hz : z.im≠0) (leg : CompositeLeg) (m : ℕ) : ℝ"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_physical_soft_radius_positive",
+            "kind": "theorem",
+            "line": 35,
+            "module": "ActualWholeAdaptivePhysicalSoftReturn",
+            "source_signature": "theorem actual_physical_soft_radius_positive (p : PhysicalMomentum) (F : GaussUnitaryHistory.Index)\n    (z : ℂ) (hz : z.im≠0) (leg : CompositeLeg) (m : ℕ) :0<actualPhysicalSoftRadius p F z hz leg m"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actualPhysicalSoftScale",
+            "kind": "def",
+            "line": 39,
+            "module": "ActualWholeAdaptivePhysicalSoftReturn",
+            "source_signature": "def actualPhysicalSoftScale (p : PhysicalMomentum) (F : GaussUnitaryHistory.Index)\n    (z : ℂ) (hz : z.im≠0) (leg : CompositeLeg) (m : ℕ) : ℝ"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actualPhysicalSoftTransfer",
+            "kind": "def",
+            "line": 43,
+            "module": "ActualWholeAdaptivePhysicalSoftReturn",
+            "source_signature": "def actualPhysicalSoftTransfer (p : PhysicalMomentum) (F : GaussUnitaryHistory.Index)\n    (z : ℂ) (hz : z.im≠0) (leg : CompositeLeg) (direction : PhysicalMomentum) (m : ℕ) : PhysicalMomentum"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_physical_soft_scale_positive",
+            "kind": "theorem",
+            "line": 47,
+            "module": "ActualWholeAdaptivePhysicalSoftReturn",
+            "source_signature": "theorem actual_physical_soft_scale_positive (p : PhysicalMomentum) (F : GaussUnitaryHistory.Index)\n    (z : ℂ) (hz : z.im≠0) (leg : CompositeLeg) (m : ℕ) :0<actualPhysicalSoftScale p F z hz leg m"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_physical_soft_transfer_norm",
+            "kind": "theorem",
+            "line": 51,
+            "module": "ActualWholeAdaptivePhysicalSoftReturn",
+            "source_signature": "theorem actual_physical_soft_transfer_norm (p : PhysicalMomentum) (F : GaussUnitaryHistory.Index)\n    (z : ℂ) (hz : z.im≠0) (leg : CompositeLeg) (direction : PhysicalMomentum) (unit : ‖direction‖=1) (m : ℕ) :\n    ‖actualPhysicalSoftTransfer p F z hz leg direction m‖=actualPhysicalSoftScale p F z hz leg m"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_physical_soft_transfer_nonzero",
+            "kind": "theorem",
+            "line": 57,
+            "module": "ActualWholeAdaptivePhysicalSoftReturn",
+            "source_signature": "theorem actual_physical_soft_transfer_nonzero (p : PhysicalMomentum) (F : GaussUnitaryHistory.Index)\n    (z : ℂ) (hz : z.im≠0) (leg : CompositeLeg) (direction : PhysicalMomentum) (unit : ‖direction‖=1) (m : ℕ) :\n    actualPhysicalSoftTransfer p F z hz leg direction m≠0"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_physical_soft_transfer_bound",
+            "kind": "theorem",
+            "line": 64,
+            "module": "ActualWholeAdaptivePhysicalSoftReturn",
+            "source_signature": "theorem actual_physical_soft_transfer_bound (p : PhysicalMomentum) (F : GaussUnitaryHistory.Index)\n    (z : ℂ) (hz : z.im≠0) (leg : CompositeLeg) (direction : PhysicalMomentum) (unit : ‖direction‖=1) (m : ℕ) :\n    ‖actualPhysicalSoftTransfer p F z hz leg direction m‖≤actualSoftBudget m"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_physical_soft_transfer_tendsto",
+            "kind": "theorem",
+            "line": 70,
+            "module": "ActualWholeAdaptivePhysicalSoftReturn",
+            "source_signature": "theorem actual_physical_soft_transfer_tendsto (p : PhysicalMomentum) (F : GaussUnitaryHistory.Index)\n    (z : ℂ) (hz : z.im≠0) (leg : CompositeLeg) (direction : PhysicalMomentum) (unit : ‖direction‖=1) :\n    Tendsto (actualPhysicalSoftTransfer p F z hz leg direction) atTop (𝓝 0)"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_physical_soft_unit_error",
+            "kind": "theorem",
+            "line": 79,
+            "module": "ActualWholeAdaptivePhysicalSoftReturn",
+            "source_signature": "theorem actual_physical_soft_unit_error (p : PhysicalMomentum) (F : GaussUnitaryHistory.Index)\n    (z : ℂ) (hz : z.im≠0) (leg : CompositeLeg) (direction : PhysicalMomentum) (unit : ‖direction‖=1) (m : ℕ) :\n    ‖actualElectronPhysicalUnit (p+actualPhysicalSoftTransfer p F z hz leg direction m) F z leg-\n      actualElectronPhysicalUnit p F z leg‖≤actualSoftBudget m"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actualAdaptivePhysicalFamily",
+            "kind": "def",
+            "line": 89,
+            "module": "ActualWholeAdaptivePhysicalSoftReturn",
+            "source_signature": "def actualAdaptivePhysicalFamily (p : PhysicalMomentum) (z : ℂ) (hz : z.im≠0) (leg : CompositeLeg)\n    (direction : PhysicalMomentum) (m : ℕ) : ElectronFamily"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actualAdaptivePhysicalState",
+            "kind": "def",
+            "line": 94,
+            "module": "ActualWholeAdaptivePhysicalSoftReturn",
+            "source_signature": "def actualAdaptivePhysicalState (p : PhysicalMomentum) (z : ℂ) (hz : z.im≠0) (leg : CompositeLeg)\n    (direction : PhysicalMomentum) (m : ℕ) : ElectronHistory"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_adaptive_physical_state_norm",
+            "kind": "theorem",
+            "line": 98,
+            "module": "ActualWholeAdaptivePhysicalSoftReturn",
+            "source_signature": "theorem actual_adaptive_physical_state_norm (p : PhysicalMomentum) (z : ℂ) (hz : z.im≠0)\n    (leg : CompositeLeg) (direction : PhysicalMomentum) (m : ℕ) :\n    ‖actualAdaptivePhysicalState p z hz leg direction m‖=1"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_adaptive_physical_state_error",
+            "kind": "theorem",
+            "line": 111,
+            "module": "ActualWholeAdaptivePhysicalSoftReturn",
+            "source_signature": "theorem actual_adaptive_physical_state_error (p : PhysicalMomentum) (z : ℂ) (hz : z.im≠0) (leg : CompositeLeg)\n    (direction : PhysicalMomentum) (unit : ‖direction‖=1) (m : ℕ) :\n    ‖actualAdaptivePhysicalState p z hz leg direction m-actualElectronPhysicalState p z hz leg‖≤actualSoftBudget m"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_adaptive_physical_state_soft_return",
+            "kind": "theorem",
+            "line": 119,
+            "module": "ActualWholeAdaptivePhysicalSoftReturn",
+            "source_signature": "theorem actual_adaptive_physical_state_soft_return (p : PhysicalMomentum) (z : ℂ) (hz : z.im≠0)\n    (leg : CompositeLeg) (direction : PhysicalMomentum) (unit : ‖direction‖=1) :\n    Tendsto (actualAdaptivePhysicalState p z hz leg direction) atTop (𝓝 (actualElectronPhysicalState p z hz leg))"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actualAdaptiveAmputatedChargeRead",
+            "kind": "def",
+            "line": 128,
+            "module": "ActualWholeAdaptivePhysicalSoftReturn",
+            "source_signature": "def actualAdaptiveAmputatedChargeRead (p : PhysicalMomentum) (F : GaussUnitaryHistory.Index) (z w : ℂ)\n    (hz : z.im≠0) (left right : CompositeLeg) (direction : PhysicalMomentum) (m : ℕ) : ℂ"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_adaptive_amputated_charge_value",
+            "kind": "theorem",
+            "line": 136,
+            "module": "ActualWholeAdaptivePhysicalSoftReturn",
+            "source_signature": "theorem actual_adaptive_amputated_charge_value (p : PhysicalMomentum) (F : GaussUnitaryHistory.Index) (z w : ℂ)\n    (hz : z.im≠0) (hw : w.im≠0) (left right : CompositeLeg) (direction : PhysicalMomentum) (m : ℕ) :\n    actualAdaptiveAmputatedChargeRead p F z w hz left right direction m=\n      inner ℂ (actualElectronPhysicalUnit (p+actualPhysicalSoftTransfer p F z hz left direction m) F z left)\n        (chargeReader sourcePhaseGaugeLie (actualElectronPhysicalUnit p F w right))"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_adaptive_amputated_charge_history_return",
+            "kind": "theorem",
+            "line": 146,
+            "module": "ActualWholeAdaptivePhysicalSoftReturn",
+            "source_signature": "theorem actual_adaptive_amputated_charge_history_return (p : PhysicalMomentum) (z w : ℂ)\n    (hz : z.im≠0) (hw : w.im≠0) (left right : CompositeLeg) (direction : PhysicalMomentum) (m : ℕ) :\n    Tendsto (fun F=>actualAdaptiveAmputatedChargeRead p F z w hz left right direction m)\n      GaussUnitaryHistory.sourceFilter (𝓝 (inner ℂ (actualAdaptivePhysicalState p z hz left direction m)\n        (GaussUnitaryHistory.reader (chargeReader sourcePhaseGaugeLie) (actualElectronPhysicalState p w hw right))))"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_adaptive_amputated_charge_soft_return",
+            "kind": "theorem",
+            "line": 164,
+            "module": "ActualWholeAdaptivePhysicalSoftReturn",
+            "source_signature": "theorem actual_adaptive_amputated_charge_soft_return (p : PhysicalMomentum) (z w : ℂ)\n    (hz : z.im≠0) (hw : w.im≠0) (left right : CompositeLeg) (direction : PhysicalMomentum) (unit : ‖direction‖=1) :\n    Tendsto (fun m=>inner ℂ (actualAdaptivePhysicalState p z hz left direction m)\n      (GaussUnitaryHistory.reader (chargeReader sourcePhaseGaugeLie) (actualElectronPhysicalState p w hw right))) atTop\n      (𝓝 (actualElectronSign right*inner ℂ (actualElectronPhysicalState p z hz left) (actualElectronPhysicalState p w hw right)+\n        inner ℂ (actualElectronPhysicalState p z hz left) (actualWholeElectronCorrection p w hw right)))"
+          }
+        ],
+        "private": [
+          {
+            "name": "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.physical_soft_radius_exists",
+            "kind": "theorem",
+            "line": 21,
+            "module": "ActualWholeAdaptivePhysicalSoftReturn",
+            "source_signature": "private theorem physical_soft_radius_exists (p : PhysicalMomentum) (F : GaussUnitaryHistory.Index)\n    (z : ℂ) (hz : z.im≠0) (leg : CompositeLeg) (m : ℕ) :\n    ∃r : ℝ,0<r ∧ ∀k : PhysicalMomentum,‖k‖<r→\n      ‖actualElectronPhysicalUnit (p+k) F z leg-actualElectronPhysicalUnit p F z leg‖<actualSoftBudget m"
+          }
+        ],
+        "build_record_path": "Lean/scratch/AlphaSource/ActualElectronWholeChargeSoftOwn/ActualWholeAdaptivePhysicalSoftReturn.build.json",
+        "build_record_sha256": "5319071a382d97a9c1ea845ea44f42ed04177398d4d5d2ae0bfd3a9cda979715",
+        "focused_default_strict": {
+          "module": "ActualWholeAdaptivePhysicalSoftReturn",
+          "command": [
+            "lake",
+            "env",
+            "lean",
+            "--trust=0",
+            "-j1",
+            "-DwarningAsError=true",
+            "-DmaxErrors=4",
+            "-DElab.async=false",
+            "--root=Lean/scratch/AlphaSource/ActualElectronWholeChargeSoftOwn",
+            "-o",
+            "Lean/scratch/AlphaSource/ActualElectronWholeChargeSoftOwn/ActualWholeAdaptivePhysicalSoftReturn.olean",
+            "Lean/scratch/AlphaSource/ActualElectronWholeChargeSoftOwn/ActualWholeAdaptivePhysicalSoftReturn.lean"
+          ],
+          "exit": 0,
+          "seconds": 33.24784762499621,
+          "source_path": "Lean/scratch/AlphaSource/ActualElectronWholeChargeSoftOwn/ActualWholeAdaptivePhysicalSoftReturn.lean",
+          "source_sha256": "003e7487935e7431a6062e5b1ad9ae0fac8d13d6a2588d4ce3f176e2ec54c940",
+          "object_path": "Lean/scratch/AlphaSource/ActualElectronWholeChargeSoftOwn/ActualWholeAdaptivePhysicalSoftReturn.olean",
+          "object_sha256": "70fd4593355165c8c8f70923410aa5b7a12e3e56e3c6100b5fa5cc33409b465e",
+          "log_path": "Lean/scratch/AlphaSource/ActualElectronWholeChargeSoftOwn/ActualWholeAdaptivePhysicalSoftReturn.strict.log",
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout": ""
+        },
+        "direct_import_first_hits": [
+          {
+            "module": "ActualPhysicalMomentumSoftSource",
+            "object_path": "Lean/scratch/AlphaSource/ActualElectronWholeChargeSoftOwn/ActualPhysicalMomentumSoftSource.olean",
+            "object_sha256": "688dfa39eb23b17365d9582edf270b05d5952d74b5133e88e5c8cebb962c4323"
+          }
+        ]
+      }
+    ],
+    "original_source_bindings": [
+      {
+        "module": "ActualElectronSourceAmputation",
+        "source_path": "Lean/scratch/AlphaSource/ActualElectronPhysicalNormalizationOwn/ActualElectronSourceAmputation.lean",
+        "source_sha256": "a5107b46d3dc1b417dbe2a3b1f8b80675329913770b9d00233bcf27a38be5060",
+        "first_hit_object_path": "Lean/scratch/AlphaSource/ActualElectronPhysicalNormalizationOwn/ActualElectronSourceAmputation.olean",
+        "first_hit_object_sha256": "81fe844ce8e779a6fffb87bca5a087ec1e3b2a3b525bcc1ffcea98f1aee1dc1b"
+      },
+      {
+        "module": "ActualElectronAmputatedCharge",
+        "source_path": "Lean/scratch/AlphaSource/ActualElectronPhysicalNormalizationOwn/ActualElectronAmputatedCharge.lean",
+        "source_sha256": "2ef707df529081e16266f93650b179dd52a28fccc872dbc293cbbe78b26c5164",
+        "first_hit_object_path": "Lean/scratch/AlphaSource/ActualElectronPhysicalNormalizationOwn/ActualElectronAmputatedCharge.olean",
+        "first_hit_object_sha256": "5e9b92ece09e644e35127f307a2a9504529ba195123849fc48e7871904f19741"
+      },
+      {
+        "module": "ActualElectronPhysicalTransfer",
+        "source_path": "Lean/scratch/AlphaSource/ActualElectronPhysicalNormalizationOwn/ActualElectronPhysicalTransfer.lean",
+        "source_sha256": "7cee6bed3a99d7078fd8d1d8a9f696b213726fc63d9dff443d800ddbc4e0bda9",
+        "first_hit_object_path": "Lean/scratch/AlphaSource/ActualElectronPhysicalNormalizationOwn/ActualElectronPhysicalTransfer.olean",
+        "first_hit_object_sha256": "0707f37238571219f57a17ed6f0b99101dafe801bbb5e2d09bbfc5659bbda255"
+      },
+      {
+        "module": "ActualElectronNoetherCalibration",
+        "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualElectronNoetherCalibration.lean",
+        "source_sha256": "2897fb54bb07981e77a91effa9a34a5dcb5d8ab9cb9a775559b08fd9de718e09",
+        "first_hit_object_path": "Lean/scratch/AlphaSource/ActualElectronNoetherDensityOwn/actual-electron-noether-density-prod-cert-overlay/ActualElectronNoetherCalibration.olean",
+        "first_hit_object_sha256": "e11014279dceeeb7787ebbb6360a03a91b1570fd775511e3eb413c2d5d271d90"
+      },
+      {
+        "module": "ActualCompositeFieldCurrent",
+        "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualCompositeFieldCurrent.lean",
+        "source_sha256": "3138133047b13ec444a0de8698203c7f5403e4f3e3e8f26ce0da935ac5afea50",
+        "first_hit_object_path": "Lean/scratch/AlphaSource/ActualChargedIdentityOwn/ActualCompositeFieldCurrent.olean",
+        "first_hit_object_sha256": "328fb21d94cd4a3ae5d2bb5db79b0b02c74ba77b33a3925f66402e8becc0cfaf"
+      },
+      {
+        "module": "ActualCompositeGaugeBand",
+        "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualCompositeGaugeBand.lean",
+        "source_sha256": "0a02b059a27850f7b0585b91b890a21dfa8ed384b31164f9677ce18b2e0790ba",
+        "first_hit_object_path": "Lean/scratch/AlphaSource/ActualChargedIdentityOwn/ActualCompositeGaugeBand.olean",
+        "first_hit_object_sha256": "f375a638406d9b1e8031a77e77cab60451588e20d7c9b9fab570d196db06882b"
+      },
+      {
+        "module": "ActualCompositeOriginWard",
+        "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualCompositeOriginWard.lean",
+        "source_sha256": "cda318ff047445faf76d8077594dee1bedf1e76cd322b2a9f5ed262b40fbf317",
+        "first_hit_object_path": "Lean/scratch/AlphaSource/ActualCompositeWardOwn/ActualCompositeOriginWard.olean",
+        "first_hit_object_sha256": "d1e9c8e5b103a663b1fc2e1e105d3616664afccf5ea73f28b0bec92aa253cdfa"
+      },
+      {
+        "module": "ActualDressedTemporalForm",
+        "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedTemporalForm.lean",
+        "source_sha256": "57504f34bbac9fb1ed7ae54dcf5637af2cc32460bd7dc379a0f13d9f97549a33",
+        "first_hit_object_path": "Lean/scratch/AlphaSource/ActualDressedTemporalNormalizationOwn/ActualDressedTemporalForm.olean",
+        "first_hit_object_sha256": "db41263d485b37a4bc35a8eba876b96e549186f5e432501f22403d73937d4439"
+      },
+      {
+        "module": "ActualEMOriginWardRead",
+        "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualEMOriginWardRead.lean",
+        "source_sha256": "2a43d1de6255627563a4ba6ca80b0d53c44c6f03fcb3db9e969e6d10f1b79458",
+        "first_hit_object_path": "Lean/scratch/AlphaSource/ActualEMCarrierOwn/ActualEMOriginWardRead.olean",
+        "first_hit_object_sha256": "c9e77a2be12af6aab6769216e1cec3e8898e9e5b179b7f7dbd34c7f5719e81f0"
+      },
+      {
+        "module": "SourceFullYLiteralCoreResolvent",
+        "source_path": "Verification/physics/low-energy-phenomenology/external-composite-decay/SourceFullYLiteralCoreResolvent.lean",
+        "source_sha256": "73991b702a356067e185ec42cf1d65b3bf99df46327ab3713d340b2f40552d47",
+        "first_hit_object_path": "runtime/.cache/low-energy-h0-checkpoint-20261005/fullY-checkpoint/canonical/SourceFullYLiteralCoreResolvent.olean",
+        "first_hit_object_sha256": "2ea13b6817dfdb8e9cc2fab2b1765066992259d7975641ecef12255faff5a9a0"
+      },
+      {
+        "module": "JointSourceArrayPrice",
+        "source_path": "Lean/scratch/AlphaSource/ActualSourceMixed289ResponseOwn/JointSourceArrayPrice.lean",
+        "source_sha256": "ff00333372ffc638206c68129a077d95184da921de67d7a109a5f3804d1da76b",
+        "first_hit_object_path": "Lean/scratch/AlphaSource/ActualSourceMixed289ResponseOwn/JointSourceArrayPrice.olean",
+        "first_hit_object_sha256": "72b29c1d03968f8dbdc566f264490f3e620631118607d629a66a3ebb54821f53"
+      },
+      {
+        "module": "JointOriginalResolventPrice",
+        "source_path": "Lean/scratch/AlphaSource/ActualSourceMixed289ResponseOwn/JointOriginalResolventPrice.lean",
+        "source_sha256": "d5935ef0ac99666aca6c9e2739c273daaa634b5046d342b4302def59c748f8a7",
+        "first_hit_object_path": "Lean/scratch/AlphaSource/ActualSourceMixed289ResponseOwn/JointOriginalResolventPrice.olean",
+        "first_hit_object_sha256": "e60f8d1cb3b360eead36cfd92ed8cd941a675363b44c6f7b4e2b6d8a2c5468a1"
+      },
+      {
+        "module": "ActualMixedResponsePrice",
+        "source_path": "Lean/scratch/AlphaSource/ActualSourceMixed289ResponseOwn/ActualMixedResponsePrice.lean",
+        "source_sha256": "cb83d719f6d93b3b6efe4502bf84c616a3f380fe4282f5f62fc53884ca6c5ab7",
+        "first_hit_object_path": "Lean/scratch/AlphaSource/ActualSourceMixed289ResponseOwn/ActualMixedResponsePrice.olean",
+        "first_hit_object_sha256": "6d67dbffff686569316fbeb35af1e70ddcfb61e03a15e25ad6dcdb2e9b901061"
+      },
+      {
+        "module": "ActualDressedMixed289Price",
+        "source_path": "Lean/scratch/AlphaSource/ActualSourceMixed289ResponseOwn/ActualDressedMixed289Price.lean",
+        "source_sha256": "a8d58dbe6606f4333067ecc42f0fdf98b52fb4c9c6e4f05ca26799570234bcfc",
+        "first_hit_object_path": "Lean/scratch/AlphaSource/ActualSourceMixed289ResponseOwn/ActualDressedMixed289Price.olean",
+        "first_hit_object_sha256": "f38a5d5d1c0d037df0fc6f84f08bac2fdaa7f83809ed146a7358cd7080d23e7f"
+      },
+      {
+        "module": "CanonicalPreparationJointMixedResponse",
+        "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationJointMixedResponse.lean",
+        "source_sha256": "e9b8e08ed4b0ebf216d3a4bf4bb2809d2e54f050c07f496cf4a816e672f860df",
+        "first_hit_object_path": "Lean/scratch/AlphaSource/PreparationJointFieldAudit/overlay/CanonicalPreparationJointMixedResponse.olean",
+        "first_hit_object_sha256": "a1c99f2863e5e6454b7f7d42db4dde1a24152dd59c21327af66d5583732712eb"
+      },
+      {
+        "module": "CanonicalPreparationSpatialFullFormFeed",
+        "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSpatialFullFormFeed.lean",
+        "source_sha256": "476b1f6f262d5c6c4cf9501e090b6731d7482ec898d8311c267107d1f6d52071",
+        "first_hit_object_path": "Lean/scratch/AlphaSource/PreparationSpatialDensityAudit/overlay/CanonicalPreparationSpatialFullFormFeed.olean",
+        "first_hit_object_sha256": "8b0d2fbc3d88d6436901c424f791ba8339936b5194c45b8ba8141454eead9eeb"
+      },
+      {
+        "module": "ActualDressedNoetherResponse",
+        "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedNoetherResponse.lean",
+        "source_sha256": "fc8cf5a350c374bc57a965f62f6fe4bfb261def4886514ccfd790aee6065cc60",
+        "first_hit_object_path": "Lean/scratch/AlphaSource/ActualDressedNoetherOwn/ActualDressedNoetherResponse.olean",
+        "first_hit_object_sha256": "011ba2c70604f619ee11f9db1130c074c35e64741fdab23ad8a908c7027c4d00"
+      },
+      {
+        "module": "NoetherSourceCoefficientPrices",
+        "source_path": "Lean/scratch/AlphaSource/ActualMixedNoetherTimePriceOwn/NoetherSourceCoefficientPrices.lean",
+        "source_sha256": "850684880b3bfe3a43a08383d859eba067952d6e8c4c43551dcd0c89bb6e909a",
+        "first_hit_object_path": "Lean/scratch/AlphaSource/ActualMixedNoetherTimePriceOwn/actual-full-noether-source-price-prod-cert-overlay/NoetherSourceCoefficientPrices.olean",
+        "first_hit_object_sha256": "6660345f62b960fed1d11cf38c94caeed8a008d8afb35a50d39b6cfa290bb863"
+      },
+      {
+        "module": "CompleteSourceNoetherPrice",
+        "source_path": "Lean/scratch/AlphaSource/ActualMixedNoetherTimePriceOwn/CompleteSourceNoetherPrice.lean",
+        "source_sha256": "48db1898bb0a95883536c7c605005e9238d0b6128cb8bffbcc9371ef2a354f6f",
+        "first_hit_object_path": "Lean/scratch/AlphaSource/ActualMixedNoetherTimePriceOwn/actual-full-noether-source-price-prod-cert-overlay/CompleteSourceNoetherPrice.olean",
+        "first_hit_object_sha256": "7f6785767f0c74060ee30686c224e7964255c640dea1045a98dff442e87ebba2"
+      },
+      {
+        "module": "FullQuantumSourceWindowError",
+        "source_path": "Lean/scratch/AlphaSource/ActualMixedNoetherTimePriceOwn/FullQuantumSourceWindowError.lean",
+        "source_sha256": "e89388ba06e1b648aafe2d8e213d7c97c2fae8ceae02d4016a4cda997b5f2e9c",
+        "first_hit_object_path": "Lean/scratch/AlphaSource/ActualMixedNoetherTimePriceOwn/actual-full-noether-source-price-prod-cert-overlay/FullQuantumSourceWindowError.olean",
+        "first_hit_object_sha256": "2fcc0c7047d35dd58ed19ad6400438a53a76d6a4431224d00ae335515c6e1262"
+      },
+      {
+        "module": "ActualQuantumBinaryReturn",
+        "source_path": "Lean/scratch/AlphaSource/ActualMixedNoetherTimePriceOwn/ActualQuantumBinaryReturn.lean",
+        "source_sha256": "8d637c0806d0e8a7e6cc5dcccee4869d0f7e8f5cad3c783917d4d122ee7ebec3",
+        "first_hit_object_path": "Lean/scratch/AlphaSource/ActualMixedNoetherTimePriceOwn/actual-full-noether-source-price-prod-cert-overlay/ActualQuantumBinaryReturn.olean",
+        "first_hit_object_sha256": "a2a3312882f8db40102b426ce3bc74cd80123354d04d213fd450008e914a067e"
+      },
+      {
+        "module": "ActualDressedCubicNoetherPrice",
+        "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedCubicNoetherPrice.lean",
+        "source_sha256": "272ef4cba2c439878a325d170f954c287228a2415d8811427a08955071667805",
+        "first_hit_object_path": "Lean/scratch/AlphaSource/ActualDressedCubicObservationPriceOwn/ActualDressedCubicNoetherPrice.olean",
+        "first_hit_object_sha256": "1c8185cc00b0501b226a9e38d6cb58320d0ec8d09f4d7d00fcfa39087aed4c04"
+      },
+      {
+        "module": "ActualDressedCubicLaplacePrice",
+        "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedCubicLaplacePrice.lean",
+        "source_sha256": "fc9e94de3acdad2ebec46fec7a69fbb13a5553400eb0970047c1cbe0b8591e62",
+        "first_hit_object_path": "Lean/scratch/AlphaSource/ActualDressedCubicObservationPriceOwn/ActualDressedCubicLaplacePrice.olean",
+        "first_hit_object_sha256": "42e906f9ece877c76070ee599bf5ebba449906bd7b8e7d94c82136b5871be9cc"
+      },
+      {
+        "module": "ActualDressedCubicStaticPrice",
+        "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedCubicStaticPrice.lean",
+        "source_sha256": "e9ed8edf80e6ffef56205c2cb0e66e30a7dd0cac2bb545cee6cac92cc84986b5",
+        "first_hit_object_path": "Lean/scratch/AlphaSource/ActualDressedCubicObservationPriceOwn/ActualDressedCubicStaticPrice.olean",
+        "first_hit_object_sha256": "516a5d2ba1bd60dbb86b4dc751431f0c6cb353d1e9d88bc7fd69365b63e3cfd0"
+      },
+      {
+        "module": "CanonicalPreparationYukawaObservedLimit",
+        "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationYukawaObservedLimit.lean",
+        "source_sha256": "922bf5b988d328238487534b4c2e78eaabcc02ff54f00943ab2a956429fda178",
+        "first_hit_object_path": "Lean/scratch/AlphaSource/PreparationUncutYukawaAudit/overlay/CanonicalPreparationYukawaObservedLimit.olean",
+        "first_hit_object_sha256": "c3e15f19d62236109b5e3a245f2ab477a0b50dc6b103c2ad8bfc8b25c2002c12"
+      },
+      {
+        "module": "CanonicalPreparationYukawaUncutDomain",
+        "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationYukawaUncutDomain.lean",
+        "source_sha256": "a6778ad8570c085bfa0fdd7f4a9a97e1f72484b160eb64749ac8e3bd8dc2417b",
+        "first_hit_object_path": "Lean/scratch/AlphaSource/PreparationUncutYukawaAudit/overlay/CanonicalPreparationYukawaUncutDomain.olean",
+        "first_hit_object_sha256": "0f00bf87e024338d01e8fd42e4301bce227e20be0aee569eca9c1f3b0262b6c3"
+      },
+      {
+        "module": "CanonicalPreparationYukawaLocalJets",
+        "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationYukawaLocalJets.lean",
+        "source_sha256": "3bb1b76479d0abbf16eee4dcd070161de036de10bb9c1a864914a54a909415e9",
+        "first_hit_object_path": "Lean/scratch/AlphaSource/PreparationYukawaTransportAudit/overlay/CanonicalPreparationYukawaLocalJets.olean",
+        "first_hit_object_sha256": "e7918e834c40b598473ec057859928ee3cde9bc50722a2fd83fe5b82aa453b21"
+      },
+      {
+        "module": "CanonicalPreparationYukawaFullYResponse",
+        "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationYukawaFullYResponse.lean",
+        "source_sha256": "ef4914dbd2ab0895984b7a57df029ecb4d516da430e523c850a30f4c6262ca87",
+        "first_hit_object_path": "Lean/scratch/AlphaSource/PreparationYukawaTransportAudit/overlay/CanonicalPreparationYukawaFullYResponse.olean",
+        "first_hit_object_sha256": "e5b2651ca453f915e14d4d477c25de74f2b140c5d22d832ff1edb52d8965f75a"
+      },
+      {
+        "module": "CanonicalPreparationTransportedGraded",
+        "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationTransportedGraded.lean",
+        "source_sha256": "a75e9f83b3015a27720d6dff0386261af391aaa663ef861a9e0baac8b2263c75",
+        "first_hit_object_path": "Lean/scratch/AlphaSource/PreparationGradedTransportAudit/overlay/CanonicalPreparationTransportedGraded.olean",
+        "first_hit_object_sha256": "42f4b7e2da437eb806296ae9adf9c90c48648fab26290d9107074f057fdde150"
+      },
+      {
+        "module": "CanonicalSourcePropagationCommonCarrier",
+        "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalSourcePropagationCommonCarrier.lean",
+        "source_sha256": "2c9a09d57f7eadf22209dd4c5e1de42fdcf415808bcc77c2cb94b205915d1f44",
+        "first_hit_object_path": "Lean/scratch/AlphaSource/SourcePropagationCommonMomentumAudit/overlay/CanonicalSourcePropagationCommonCarrier.olean",
+        "first_hit_object_sha256": "015d6334c576b187d627e0079466bcb62902a40d98e01a301e0aadc78642037f"
+      },
+      {
+        "module": "SourceFamilyHilbert",
+        "source_path": "Verification/physics/low-energy-phenomenology/external-composite-decay/SourceFamilyHilbert.lean",
+        "source_sha256": "b38d4dd161c9f9e92de92a6469ab07850c431226594c6ad7dadeb7007169c489",
+        "first_hit_object_path": "Lean/scratch/AlphaSource/PreparationSourceChartBudgetAudit/overlay/SourceFamilyHilbert.olean",
+        "first_hit_object_sha256": "ccdce7631ec03ef9d13804637e5f3a4a767c974ff2d0ceb86e0e3457bcb48767"
+      },
+      {
+        "module": "SourceFamilyOperator",
+        "source_path": "Verification/physics/low-energy-phenomenology/external-composite-decay/SourceFamilyOperator.lean",
+        "source_sha256": "0dd74328b4f1db11c40a3a31292760c061667854d9cc173c4909f14986da6eb4",
+        "first_hit_object_path": "Lean/scratch/AlphaSource/PreparationSourceChartBudgetAudit/overlay/SourceFamilyOperator.olean",
+        "first_hit_object_sha256": "ad082484ea22c5477287972e27cd3a628f786940630600521f0af793c3d74375"
+      },
+      {
+        "module": "GaussUnitaryHistory",
+        "source_path": "Verification/physics/low-energy-phenomenology/external-composite-decay/GaussUnitaryHistory.lean",
+        "source_sha256": "416382c8fb84851ad59c8b24347d6e1dd7d1ce17cd6dbf096cb1c3a4f4cda1be",
+        "first_hit_object_path": "Lean/scratch/AlphaSource/PreparationSourceChartBudgetAudit/overlay/GaussUnitaryHistory.olean",
+        "first_hit_object_sha256": "e95a9920ea6e5a2dbd88184118c283dc44984500c522bb47909d74f2cd0eeabd"
+      },
+      {
+        "module": "GaussCoreHilbert",
+        "source_path": "Verification/physics/low-energy-phenomenology/external-composite-decay/GaussCoreHilbert.lean",
+        "source_sha256": "dea2e853b3cf6cbe253df05d0888d4e68aa9a1160b650968e9aff62a08107b52",
+        "first_hit_object_path": "Lean/scratch/AlphaSource/PreparationSourceChartBudgetAudit/overlay/GaussCoreHilbert.olean",
+        "first_hit_object_sha256": "d3b42e28a88ff0b70d8726ee72488538eef405edc9a9d876aeee9c3f132fff10"
+      },
+      {
+        "module": "ActualElectronPhysicalJointSplice",
+        "source_path": "Lean/scratch/AlphaSource/ActualElectronPhysicalJointInverseOwn/ActualElectronPhysicalJointSplice.lean",
+        "source_sha256": "4b26b798867dc10530c3582d138d3dc3a41ade5ec5f41eab1d13968cb329c5b0",
+        "first_hit_object_path": "Lean/scratch/AlphaSource/ActualElectronPhysicalJointInverseOwn/ActualElectronPhysicalJointSplice.olean",
+        "first_hit_object_sha256": "9f8d999612c87eb8e59d7e663621ccf9319c12e3f004677326ca25a9d00c1117"
+      },
+      {
+        "module": "ActualElectronPhysicalChargeReturn",
+        "source_path": "Lean/scratch/AlphaSource/ActualElectronPhysicalJointInverseOwn/ActualElectronPhysicalChargeReturn.lean",
+        "source_sha256": "772af45a5d90da716815ad2b9abc6d8b29346022406503022e179890c23fca57",
+        "first_hit_object_path": "Lean/scratch/AlphaSource/ActualElectronPhysicalJointInverseOwn/ActualElectronPhysicalChargeReturn.olean",
+        "first_hit_object_sha256": "5ad58c053076aa00035ef2286c3143f098e79da7c21c19b438821eee8164b00d"
+      },
+      {
+        "module": "ActualElectronPhysicalDomainAndContact",
+        "source_path": "Lean/scratch/AlphaSource/ActualElectronPhysicalJointInverseOwn/ActualElectronPhysicalDomainAndContact.lean",
+        "source_sha256": "e9fa57bd0950ebbc0ecbccb365b7e0a793e7ac6628e2016c57f6e630dc5a803e",
+        "first_hit_object_path": "Lean/scratch/AlphaSource/ActualElectronPhysicalJointInverseOwn/ActualElectronPhysicalDomainAndContact.olean",
+        "first_hit_object_sha256": "0ecfd570b8562d6addf5ef8b539bab75e3c644b14c5c20090359e5799164593b"
+      },
+      {
+        "module": "CanonicalSourcePropagationActualMomentumPencil",
+        "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalSourcePropagationActualMomentumPencil.lean",
+        "source_sha256": "eaa72bfb9031afe3247a6b66c640e7e8a9294d6dcaecda0133a9e7527800b8fd",
+        "first_hit_object_path": "Lean/scratch/AlphaSource/SourcePropagationCommonMomentumAudit/overlay/CanonicalSourcePropagationActualMomentumPencil.olean",
+        "first_hit_object_sha256": "0d6f3ead7a6e6f1a8fe5f3a20e07c441bc303a77f6a72d95edda94ae1c12c95e"
+      }
+    ],
+    "controller_capsule": {
+      "root_current": "positiveSmoothUnifiedSource / repaired independent Dirac-dual / SpinPair.actual / livingRoot",
+      "visit": "visit10 materialEntry support",
+      "whole_ledger_row": "row0.inl.liveAccount",
+      "dependent_face": "tick16 quantumFace10→quantumPresentation10→tick17",
+      "role": "subordinate actual whole-H physical output charge correction and source-owned adaptive physical-transfer soft producer",
+      "producer": "true uncut physical jointR momentum difference/57 price and physicalUnit p continuity generate positive frame radii and nonzero adaptive physical transfer with uniform 2^-m output error",
+      "direct_consumer": "original HistorySpace completion consumes uniformly bounded actual physicalUnit and charge-correction families; true two-physical-inverse amputated paired charge read returns on that same sourceFilter then its source-owned soft curve",
+      "generated_next": "identify the completed actual charged pair/soft observable with the original physical external scattering/contact/pole observer without adding a target LSZ or Thomson premise"
+    },
+    "known_assumptions": "Fixed actual CompositeLeg endpoints, physical p, nonreal z,w and an external physical direction with ambient norm1. Whole Δ boundedness, actual physical p continuity, positive frame radius, transfer nonzero, geometric frame error, state norm1 and completed soft return are all generated. No eigen/zero torque/zero correction/LSZ/Thomson/ordinary-time uniformity/zero-imaginary-energy witness is supplied.",
+    "generated_next": "Directly consume the same actual complete-carrier charged pair and source-owned nonzero soft transfer in the original physical Ward/scattering/contact/pole observer. Pay the source-generated N3-to-actual-external observer relation and any ordinary F-independent physical-transfer/pole/zero-imaginary-energy uniformity required by that observer; keep whole correction and full current/mixed/contact until their cancellation or source price is generated.",
+    "same_occurrence_provenance": "All endpoints use the frozen original N3 CompositeLeg full504/profile source and its actual uncut physical jointR. The old preparation inverse and the original N1 FullMatterL2 charged scattering occurrence are not substituted for this carrier. The computed Dout.adjoint is the left amputation operation in the Hilbert pairing on the supplied actual left leg; it does not replace the independent left source by a selected adjoint of the right source.",
+    "upstream_candidates": [
+      {
+        "path": "Lean/scratch/AlphaSource/ActualElectronPhysicalNormalizationOwn/candidate.json",
+        "sha256": "231571fbcf632c9dc3d49557c5bf442ac2cce6fd3caa864d2fd1f8d5d41f3775"
+      },
+      {
+        "path": "Lean/scratch/AlphaSource/ActualSourceMixed289ResponseOwn/candidate.json",
+        "sha256": "c721d50acbcafdafa69e3256fba1fa56d24065f62453cfdf0458a97601755310"
+      },
+      {
+        "path": "Lean/scratch/AlphaSource/ActualMixedNoetherTimePriceOwn/candidate.json",
+        "sha256": "2b59adb059908d7057acbeeb31f5bab73d3e869999e37d29aef3f921bf9410d6"
+      },
+      {
+        "path": "Lean/scratch/AlphaSource/ActualElectronPhysicalJointInverseOwn/candidate.json",
+        "sha256": "b4cea515c1af9ef9d7f94c0eaa2018362f7a0988eb988f8a8733a207780738fb"
+      }
+    ],
+    "root_independent_source_review": {
+      "all_three_sources_read": true,
+      "actual_Rmix_bounded_by_charge_not_caller_uniform_inverse": true,
+      "real_joint_p_difference_price": true,
+      "source_radius_generated_by_continuity": true,
+      "nonzero_transfer_F_dependent_kept": true,
+      "left_endpoint_generator_adjoint_not_independent_source_replacement": true,
+      "full_right_correction_retained": true
+    },
+    "independent_finite_controls": {
+      "script_path": "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/check_actual_electron_whole_charge_soft.py",
+      "script_sha256": "eb8487a6f64549901820d632285fb4ed711252508eeefef1ad56dc1bca66e3a8",
+      "report_path": "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/check_actual_electron_whole_charge_soft.json",
+      "report_sha256": "54091cd21403a2cfa6699e22c2e0154d860302731d634e99bb7bfa8b847b830c",
+      "positive": 121,
+      "negative": 11,
+      "failed": [],
+      "invocation_controls": [
+        {
+          "case": "default original frozen source",
+          "exit": 0,
+          "stdout": "{\"failed\": [], \"negative\": 11, \"positive\": 121, \"report_sha256\": \"9f87887294bacc6663ed67a8dfb8fbcab8542daff7b9a607b74ebc17a45f0e9d\", \"script_sha256\": \"eb8487a6f64549901820d632285fb4ed711252508eeefef1ad56dc1bca66e3a8\", \"status\": \"PASS\"}\n",
+          "stderr": ""
+        },
+        {
+          "case": "explicit root candidate production source",
+          "exit": 0,
+          "stdout": "{\"failed\": [], \"negative\": 11, \"positive\": 121, \"report_sha256\": \"54091cd21403a2cfa6699e22c2e0154d860302731d634e99bb7bfa8b847b830c\", \"script_sha256\": \"eb8487a6f64549901820d632285fb4ed711252508eeefef1ad56dc1bca66e3a8\", \"status\": \"PASS\"}\n",
+          "stderr": ""
+        },
+        {
+          "case": "similar adaptive source omitting full right output charge correction rejected",
+          "exit": 1,
+          "stdout": "",
+          "stderr": "Traceback (most recent call last):\n  File \"Verification/physics/low-energy-phenomenology/alpha-source/em-identification/check_actual_electron_whole_charge_soft.py\", line 133, in <module>\n    main()\n  File \"Verification/physics/low-energy-phenomenology/alpha-source/em-identification/check_actual_electron_whole_charge_soft.py\", line 116, in main\n    bound = source_binding(candidate, args.source_dir.resolve() if args.source_dir else None)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"Verification/physics/low-energy-phenomenology/alpha-source/em-identification/check_actual_electron_whole_charge_soft.py\", line 104, in source_binding\n    raise ValueError(\"selected source changes frozen declaration bodies\")\nValueError: selected source changes frozen declaration bodies\n"
+        }
+      ],
+      "scope": "Exact original physical inverse difference/source price, actual Qpsi-signpsi correction equals Rmix value, bounded charge-generated correction family, source positive adaptive frame transfer/radius/nonzero/error controls, full actual overlap and right correction, and two true inverse computed-adjoint endpoint amputation. Finite fixtures do not compute actual source radius or prove sourceFilter completion/continuity (the Lean mouths do), fixed physical ray, zero imaginary energy, completed observer/Thomson or alpha0."
+    },
+    "focused_attention": [
+      {
+        "case": "theorem_mouth_lint.py",
+        "exit": 0,
+        "stdout": "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualPhysicalMomentumSoftSource.lean:4: WARN: `autoImplicit false` left in file; remove unless policy\nVerification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualWholeAdaptivePhysicalSoftReturn.lean:3: WARN: `autoImplicit false` left in file; remove unless policy\nVerification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualWholePhysicalChargeCorrection.lean:3: WARN: `autoImplicit false` left in file; remove unless policy\n",
+        "stderr": ""
+      },
+      {
+        "case": "frontier_guard.py",
+        "exit": 0,
+        "stdout": "FILE Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualWholePhysicalChargeCorrection.lean: lines=95 bytes=6467 declarations=13 namespaces=1 scratch=no tracked=no\nFILE Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualPhysicalMomentumSoftSource.lean: lines=99 bytes=6595 declarations=9 namespaces=1 scratch=no tracked=no\nFILE Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualWholeAdaptivePhysicalSoftReturn.lean: lines=173 bytes=12425 declarations=23 namespaces=1 scratch=no tracked=no\n[frontier-guard] blocks=0 warnings=0 import-scope=active-files\n",
+        "stderr": ""
+      }
+    ],
+    "independent_pre_review": {
+      "path": "Lean/scratch/AlphaSource/ActualElectronWholeChargeSoftOwn/independent-certify-review.json",
+      "sha256": "0e16c8c52856c97451c150ac7d89db5cc62a1743906922e23988a543a6b78cb4"
+    },
+    "independent_final_review": {
+      "path": "Lean/scratch/AlphaSource/ActualElectronWholeChargeSoftOwn/independent-final-certify-review.json",
+      "sha256": "a1f1a58b7acdbc449ea7398030fd64dac18e8d3474e0ca18902bf3412db2ddda"
+    }
+  },
+  "audit_source_object_hashes": {
+    "module": "ActualElectronWholeChargeSoftFullAudit",
+    "exit": 0,
+    "seconds": 58.75121212005615,
+    "source_sha256": "c26652cf2f893092005ba6db05f9eb6c8153a0d2484e5609b79f0887d655118d",
+    "object_sha256": "813f23212f71f7ff732e9590e68efd857bb58dbbf36ec42262da82c8fa921ce1"
+  },
+  "production_source_object_hashes": [
+    {
+      "module": "ActualWholePhysicalChargeCorrection",
+      "exit": 0,
+      "seconds": 31.920611143112183,
+      "source_sha256": "8a43a190fc8ab3fc008a0283bc944360e1e81bb551cb3815c4faa2e570bc3b69",
+      "object_sha256": "cce7997df1b84b61a2f263f5019e9610f7ac8141230e83337405cf5a8187af51"
+    },
+    {
+      "module": "ActualPhysicalMomentumSoftSource",
+      "exit": 0,
+      "seconds": 32.19138479232788,
+      "source_sha256": "7f3a83096306f020a9f9a9763d3c6822518ceb917b4eb1f18828a80d990ae2b1",
+      "object_sha256": "13639fa3bbc77b1d7687b03f8ec01bf235f286e87a32527dc94842bb929d8cbe"
+    },
+    {
+      "module": "ActualWholeAdaptivePhysicalSoftReturn",
+      "exit": 0,
+      "seconds": 32.24706792831421,
+      "source_sha256": "003e7487935e7431a6062e5b1ad9ae0fac8d13d6a2588d4ce3f176e2ec54c940",
+      "object_sha256": "5c2a7006563ea631c00c42ccd2e927f6a2eb3b35db448643f1431b5a8f54934f"
+    },
+    {
+      "module": "ActualElectronWholeChargeSoftFullAuditProductionConsumers",
+      "exit": 0,
+      "seconds": 25.22750687599182,
+      "source_sha256": "6141a668560d282b0637f428280347eaa7c8613af244a71b63a90a4d1a9d3e2b",
+      "object_sha256": "358d421c40b43ccbe142aa66226fbabccb3cddfd1f854e3da6c96615d6efae7d"
+    }
+  ],
+  "source_byte_identity": true,
+  "whitespace_check": "explicit untracked source/Audit PASS",
+  "public_mouths": [
+    "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.ElectronFamily",
+    "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.ElectronHistory",
+    "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actualElectronSign",
+    "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_electron_sign_norm",
+    "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actualWholeElectronCorrectionFamily",
+    "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_whole_electron_correction_value",
+    "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_whole_electron_correction_frame_bound",
+    "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actualWholeElectronCorrection",
+    "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_whole_electron_charge_equation",
+    "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_whole_electron_correction_bound",
+    "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_whole_electron_paired_charge",
+    "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_whole_electron_diagonal_charge",
+    "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_whole_electron_correction_read_return",
+    "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_electron_physical_inverse_difference",
+    "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actualElectronPhysicalMomentumPrice",
+    "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_electron_physical_inverse_difference_price",
+    "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_electron_physical_response_difference_price",
+    "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_electron_physical_resolvent_continuous",
+    "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_electron_physical_response_continuous",
+    "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_electron_physical_unit_continuous",
+    "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_electron_physical_finite_soft_return",
+    "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actualSoftBudget",
+    "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_soft_budget_positive",
+    "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_soft_budget_tendsto",
+    "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actualPhysicalSoftRadius",
+    "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_physical_soft_radius_positive",
+    "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actualPhysicalSoftScale",
+    "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actualPhysicalSoftTransfer",
+    "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_physical_soft_scale_positive",
+    "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_physical_soft_transfer_norm",
+    "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_physical_soft_transfer_nonzero",
+    "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_physical_soft_transfer_bound",
+    "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_physical_soft_transfer_tendsto",
+    "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_physical_soft_unit_error",
+    "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actualAdaptivePhysicalFamily",
+    "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actualAdaptivePhysicalState",
+    "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_adaptive_physical_state_norm",
+    "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_adaptive_physical_state_error",
+    "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_adaptive_physical_state_soft_return",
+    "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actualAdaptiveAmputatedChargeRead",
+    "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_adaptive_amputated_charge_value",
+    "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_adaptive_amputated_charge_history_return",
+    "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_adaptive_amputated_charge_soft_return"
+  ],
+  "owned_count": 68,
+  "tests": [
+    "LowEnergy.GaussComposite.ActualElectronWholeChargeSoftFullAudit.checked_actual_electron_sign_norm",
+    "LowEnergy.GaussComposite.ActualElectronWholeChargeSoftFullAudit.checked_actual_whole_electron_correction_value",
+    "LowEnergy.GaussComposite.ActualElectronWholeChargeSoftFullAudit.checked_actual_whole_electron_correction_frame_bound",
+    "LowEnergy.GaussComposite.ActualElectronWholeChargeSoftFullAudit.checked_actual_whole_electron_charge_equation",
+    "LowEnergy.GaussComposite.ActualElectronWholeChargeSoftFullAudit.checked_actual_whole_electron_correction_bound",
+    "LowEnergy.GaussComposite.ActualElectronWholeChargeSoftFullAudit.checked_actual_whole_electron_paired_charge",
+    "LowEnergy.GaussComposite.ActualElectronWholeChargeSoftFullAudit.checked_actual_whole_electron_diagonal_charge",
+    "LowEnergy.GaussComposite.ActualElectronWholeChargeSoftFullAudit.checked_actual_whole_electron_correction_read_return",
+    "LowEnergy.GaussComposite.ActualElectronWholeChargeSoftFullAudit.checked_actual_electron_physical_inverse_difference",
+    "LowEnergy.GaussComposite.ActualElectronWholeChargeSoftFullAudit.checked_actual_electron_physical_inverse_difference_price",
+    "LowEnergy.GaussComposite.ActualElectronWholeChargeSoftFullAudit.checked_actual_electron_physical_response_difference_price",
+    "LowEnergy.GaussComposite.ActualElectronWholeChargeSoftFullAudit.checked_actual_electron_physical_resolvent_continuous",
+    "LowEnergy.GaussComposite.ActualElectronWholeChargeSoftFullAudit.checked_actual_electron_physical_response_continuous",
+    "LowEnergy.GaussComposite.ActualElectronWholeChargeSoftFullAudit.checked_actual_electron_physical_unit_continuous",
+    "LowEnergy.GaussComposite.ActualElectronWholeChargeSoftFullAudit.checked_actual_electron_physical_finite_soft_return",
+    "LowEnergy.GaussComposite.ActualElectronWholeChargeSoftFullAudit.checked_actual_soft_budget_positive",
+    "LowEnergy.GaussComposite.ActualElectronWholeChargeSoftFullAudit.checked_actual_soft_budget_tendsto",
+    "LowEnergy.GaussComposite.ActualElectronWholeChargeSoftFullAudit.checked_actual_physical_soft_radius_positive",
+    "LowEnergy.GaussComposite.ActualElectronWholeChargeSoftFullAudit.checked_actual_physical_soft_scale_positive",
+    "LowEnergy.GaussComposite.ActualElectronWholeChargeSoftFullAudit.checked_actual_physical_soft_transfer_norm",
+    "LowEnergy.GaussComposite.ActualElectronWholeChargeSoftFullAudit.checked_actual_physical_soft_transfer_nonzero",
+    "LowEnergy.GaussComposite.ActualElectronWholeChargeSoftFullAudit.checked_actual_physical_soft_transfer_bound",
+    "LowEnergy.GaussComposite.ActualElectronWholeChargeSoftFullAudit.checked_actual_physical_soft_transfer_tendsto",
+    "LowEnergy.GaussComposite.ActualElectronWholeChargeSoftFullAudit.checked_actual_physical_soft_unit_error",
+    "LowEnergy.GaussComposite.ActualElectronWholeChargeSoftFullAudit.checked_actual_adaptive_physical_state_norm",
+    "LowEnergy.GaussComposite.ActualElectronWholeChargeSoftFullAudit.checked_actual_adaptive_physical_state_error",
+    "LowEnergy.GaussComposite.ActualElectronWholeChargeSoftFullAudit.checked_actual_adaptive_physical_state_soft_return",
+    "LowEnergy.GaussComposite.ActualElectronWholeChargeSoftFullAudit.checked_actual_adaptive_amputated_charge_value",
+    "LowEnergy.GaussComposite.ActualElectronWholeChargeSoftFullAudit.checked_actual_adaptive_amputated_charge_history_return",
+    "LowEnergy.GaussComposite.ActualElectronWholeChargeSoftFullAudit.checked_actual_adaptive_amputated_charge_soft_return"
+  ],
+  "anchors": [
+    "SaturationMonoid.PhysicsCore.StageNineEnrichedProofFreeSource.positiveSmoothUnifiedSource",
+    "SaturationMonoid.PhysicsCore.Stage9C.Material.SpinPair.actual",
+    "LowEnergy.GaussComposite.ActualElectronPhysicalJointInverse.actual_electron_physical_unit_charge",
+    "LowEnergy.GaussComposite.ActualElectronPhysicalJointInverse.actual_electron_physical_unit_norm",
+    "LowEnergy.GaussComposite.ActualElectronPhysicalJointInverse.actual_electron_physical_charge_amputation",
+    "LowEnergy.GaussComposite.ActualElectronPhysicalJointInverse.actual_electron_joint_inverse_right",
+    "LowEnergy.GaussComposite.ActualElectronPhysicalJointInverse.actual_electron_joint_inverse_left",
+    "LowEnergy.PreparationVacuumJointFieldResponse.jointGenerator_unit",
+    "LowEnergy.SourcePropagationCommonMomentum.jointGenerator_momentum_difference",
+    "LowEnergy.SourcePropagationCommonMomentum.jointGenerator_base_continuous",
+    "LowEnergy.ActualSourceMixed289ResponseOwn.originalJointResolvent_price",
+    "LowEnergy.SourceFamilyHilbert.norm_le_of_eventually",
+    "LowEnergy.SourceFamilyHilbert.norm_tendsto",
+    "LowEnergy.SourceFamilyHilbert.pair_tendsto",
+    "LowEnergy.SourceFamilyOperator.lift_coe",
+    "LowEnergy.GaussUnitaryHistory.HistorySpace",
+    "LowEnergy.GaussUnitaryHistory.sourceFilter"
+  ],
+  "direct_dependencies": [
+    [
+      "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_whole_electron_correction_value",
+      [
+        "LowEnergy.GaussComposite.ActualElectronPhysicalJointInverse.actual_electron_physical_unit_charge"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_whole_electron_correction_frame_bound",
+      [
+        "LowEnergy.GaussComposite.ActualElectronPhysicalJointInverse.actual_electron_physical_unit_norm"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_whole_electron_charge_equation",
+      [
+        "LowEnergy.SourceFamilyOperator.lift_coe",
+        "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actualWholeElectronCorrectionFamily"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_whole_electron_correction_bound",
+      [
+        "LowEnergy.SourceFamilyHilbert.norm_le_of_eventually",
+        "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_whole_electron_correction_frame_bound"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_whole_electron_correction_read_return",
+      [
+        "LowEnergy.SourceFamilyHilbert.pair_tendsto",
+        "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_whole_electron_correction_value"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_electron_physical_inverse_difference",
+      [
+        "LowEnergy.SourcePropagationCommonMomentum.jointGenerator_momentum_difference",
+        "LowEnergy.GaussComposite.ActualElectronPhysicalJointInverse.actual_electron_joint_inverse_right",
+        "LowEnergy.GaussComposite.ActualElectronPhysicalJointInverse.actual_electron_joint_inverse_left"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_electron_physical_inverse_difference_price",
+      [
+        "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_electron_physical_inverse_difference",
+        "LowEnergy.ActualSourceMixed289ResponseOwn.originalJointResolvent_price"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_electron_physical_resolvent_continuous",
+      [
+        "LowEnergy.PreparationVacuumJointFieldResponse.jointGenerator_unit",
+        "LowEnergy.SourcePropagationCommonMomentum.jointGenerator_base_continuous"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_electron_physical_unit_continuous",
+      [
+        "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_electron_physical_resolvent_continuous",
+        "LowEnergy.GaussComposite.ActualElectronPhysicalJointInverse.actual_electron_physical_response_nonzero"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_physical_soft_radius_positive",
+      [
+        "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_electron_physical_unit_continuous"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_physical_soft_transfer_nonzero",
+      [
+        "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_physical_soft_scale_positive",
+        "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_physical_soft_transfer_norm"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_physical_soft_unit_error",
+      [
+        "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_electron_physical_unit_continuous"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_adaptive_physical_state_norm",
+      [
+        "LowEnergy.SourceFamilyHilbert.norm_tendsto",
+        "LowEnergy.GaussComposite.ActualElectronPhysicalJointInverse.actual_electron_physical_unit_norm"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_adaptive_physical_state_error",
+      [
+        "LowEnergy.SourceFamilyHilbert.norm_le_of_eventually",
+        "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_physical_soft_unit_error"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_adaptive_physical_state_soft_return",
+      [
+        "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_adaptive_physical_state_error",
+        "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_soft_budget_tendsto"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_adaptive_amputated_charge_value",
+      [
+        "LowEnergy.GaussComposite.ActualElectronPhysicalJointInverse.actual_electron_physical_charge_amputation"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_adaptive_amputated_charge_history_return",
+      [
+        "LowEnergy.SourceFamilyHilbert.pair_tendsto",
+        "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_adaptive_amputated_charge_value"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_adaptive_amputated_charge_soft_return",
+      [
+        "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_adaptive_physical_state_soft_return",
+        "LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_whole_electron_paired_charge"
+      ]
+    ]
+  ],
+  "closure": {
+    "scope": "all producer-module declarations including private/generated, all direct consumers/controls; recursive complete type/value/allowOpaque/constructors/recursor RHS",
+    "nodes": 77454,
+    "opaque_all_read": 57,
+    "axioms": 3,
+    "authorized_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "unknown": 0,
+    "unsafe": 0,
+    "partial": 0,
+    "manifest_sha256": "a0b6f80aae7f86f5df7b91f94b61edcf8a0d6abd18457bd27b651a95f256cfa2",
+    "target_scan": {
+      "project_nodes": 6249,
+      "target_matches": []
+    }
+  },
+  "machine_stdout": "ACTUAL_ELECTRON_WHOLE_CHARGE_SOFT_PASS public=43 owned=68 tests=30 nodes=77454 anchors=17 direct=18 opaque_all_read=57 axioms=3 unknown=0 unsafe=0 partial=0\n'LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_electron_sign_norm' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_whole_electron_correction_value' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_whole_electron_correction_frame_bound' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_whole_electron_charge_equation' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_whole_electron_correction_bound' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_whole_electron_paired_charge' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_whole_electron_diagonal_charge' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_whole_electron_correction_read_return' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_electron_physical_inverse_difference' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_electron_physical_inverse_difference_price' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_electron_physical_response_difference_price' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_electron_physical_resolvent_continuous' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_electron_physical_response_continuous' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_electron_physical_unit_continuous' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_electron_physical_finite_soft_return' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_soft_budget_positive' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_soft_budget_tendsto' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_physical_soft_radius_positive' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_physical_soft_scale_positive' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_physical_soft_transfer_norm' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_physical_soft_transfer_nonzero' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_physical_soft_transfer_bound' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_physical_soft_transfer_tendsto' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_physical_soft_unit_error' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_adaptive_physical_state_norm' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_adaptive_physical_state_error' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_adaptive_physical_state_soft_return' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_adaptive_amputated_charge_value' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_adaptive_amputated_charge_history_return' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualElectronWholeChargeSoft.actual_adaptive_amputated_charge_soft_return' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n",
+  "production_gate": "fresh strict production sources and direct consumer slice; complete closure reused only for byte-identical source",
+  "generated_structure": [
+    "The original actual p-dependent uncut jointGenerator has the paid same-frame momentumCompressionMap difference, so its two actual inverses generate R(p+k)-R(p)=-R(p+k) M_F(k) R(p), with the original two uncut57 prices. Nonzero physical output plus the actual inverse continuity generates physicalUnit(p) continuity at every F; this produces a positive radius for each actual F and geometric budget. The same norm1 physical direction then generates k(F,m)>0 in that radius and physical output error at most 2^-m uniformly over F.",
+    "Actual correction family is Qψ-σψ and its value equals the original self-normalized true R mixing vector. Its uniform frame bound and whole-H norm price are ||Q||+1, generated by unit-norm physical outputs; no uniform inverse or supplied mixing witness is used.",
+    "Same original uncut Y occurrence is retained at every physical p through the paid common carrier. The momentum difference and inverse price are genuine same-F source calculations, not finiteFull substitution.",
+    "Positive radius is selected from the kernel-checked continuity of the actual finite-frame physical unit; no target-shaped radius or endpoint witness is a premise. Transfer remains nonzero at every F,m, on the same supplied norm1 physical direction, and is bounded by 2^-m.",
+    "Source-generated geometric frame error survives original sourceFilter completion, producing a strong actual HistorySpace soft return without interchanging a fixed-ray soft limit and sourceFilter.",
+    "The actual two-inverse amputated paired scalar returns first along sourceFilter and then along its generated soft curve, preserving independent supplied CompositeLeg endpoints, actual energies, right output calibration/mixing and overlap."
+  ],
+  "boundary": "This is a source-owned adaptive k(F,m) physical-transfer soft return at fixed nonreal energies in the original HistorySpace. It does not assert an arbitrary F-independent transfer ray, sigma0/soft-IR/on-shell limit or final Thomson alpha0 identification. The actual completed output charge correction remains in the result. The frozen original complete mixed/current/contact producers and prices remain intact; their full scattering-observer soft identification is a separate physical consumer responsibility. The positive transfer radius is source existence plus Classical.choice, not a numerical effective modulus; source-generated norm/error/soft contracts are exact. The original actual left leg is supplied independently; applying its actual generator adjoint is a computed amputation operation, not identification with the source independent dual generator."
+}

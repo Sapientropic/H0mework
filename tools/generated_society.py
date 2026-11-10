@@ -65,36 +65,127 @@ def source_root(root):
         source_view.ROOT, source_view.EXPORT_MAP = previous
 
 
+def same_compiled_source(root, inverse, left, right, matched):
+    """Compare two legacy owners through their actual compile dependencies."""
+    def resources(row):
+        return [(rule["source_address"], rule["data_sha256"],
+                 release.sha(release.repo_file(root, rule["target_artifact"]).read_bytes()))
+                for rule in row.get("resource_rewrites", [])]
+
+    def imports(row):
+        raw = release.repo_file(root, row["path"]).read_bytes()
+        require(release.sha(raw) == row["target_sha256"], "Public owner bytes changed: " + row["path"])
+        return [name for _, _, name in source_view.import_tokens(raw.decode())]
+
+    pending, checked = [(left, right)], set()
+    while pending:
+        pair = pending.pop()
+        if pair[0] == pair[1] or pair in matched or pair in checked:
+            continue
+        first, second = (inverse.get(target) for target in pair)
+        if first is None or second is None:
+            return False
+        for field in ("source_path", "source_sha256"):
+            if first[field] != second[field]:
+                return False
+        if source_view.semantic_origin(first.get("source_origin")) != source_view.semantic_origin(second.get("source_origin")):
+            return False
+        if resources(first) != resources(second):
+            return False
+        imports_first, imports_second = imports(first), imports(second)
+        if len(imports_first) != len(imports_second):
+            return False
+        pending.extend(zip(imports_first, imports_second))
+        checked.add(pair)
+    matched.update(checked)
+    return True
+
+
 def selected_views(root, *, exact=False, private_originals=None, selection_path=None):
     """Traverse original imports at each epoch, then recover public/exact bytes."""
     selection = whole_ledger_export.load_selection(root / (selection_path or SELECTION))
+    bindings = whole_ledger_export.import_sources(selection)
+    owners = whole_ledger_export.public_owners(selection)
+    supplements = {(row["source_commit"], row["source_path"]): row
+                   for row in selection.get("original_proof_supplements", [])}
+    used_bindings, matched, restored_supplements = set(), set(), set()
     with source_root(root):
         exported, modules, artifacts, inverse = source_view.load_map()
-        epochs = {}
+        epochs, resources, todo = {}, {}, []
+
+        def module_at(epoch, path):
+            rows = modules.get(path, [])
+            key = whole_ledger_export.source_key(epoch, path)
+            if key in owners:
+                rows = [row for row in rows if row["target"] == owners[key]]
+            return source_view.pick(rows, path, None, epoch)
+
+        def state_at(epoch):
+            resources.setdefault(epoch, set())
+            return epochs.setdefault(epoch, {"outputs": {}, "modules": {}, "artifacts": {}})
+
         for selected in selection["selections"]:
             epoch = selected["source_commit"]
-            state = epochs.setdefault(epoch, {"outputs": {}, "modules": {}, "artifacts": {}})
-            todo = list(selected.get("roots", []))
-            resource_paths = set(selected.get("artifacts", []))
-            while todo:
-                path = todo.pop()
-                if path in state["modules"]:
+            state_at(epoch)
+            todo.extend((epoch, path) for path in selected.get("roots", []))
+            resources[epoch].update(selected.get("artifacts", []))
+        while todo:
+            epoch, path = todo.pop()
+            state = state_at(epoch)
+            if path in state["modules"]:
+                continue
+            row = module_at(epoch, path)
+            require(row is not None, "Selected original module is not exported at its epoch: " + path)
+            public, original = source_view.module_views(row, inverse)
+            supplement = supplements.get((epoch, path))
+            if supplement is not None:
+                origin = row.get("source_origin", {})
+                archive = supplement["original_artifact"]
+                raw = release.repo_file(root, archive).read_bytes()
+                require(origin.get("kind") == "H0-proof-elaboration-only-supplement"
+                        and origin.get("original_failure_source_artifact") == archive
+                        and release.sha(raw) == origin.get("original_source_sha256") == supplement["source_sha256"]
+                        and release.sha(original) == supplement["effective_sha256"]
+                        and source_view.import_tokens(raw.decode()) == source_view.import_tokens(original.decode()),
+                        "Original proof supplement differs: " + path)
+                original = raw
+                restored_supplements.add((epoch, path))
+            state["modules"][path] = row
+            state["outputs"][path] = original if exact else public
+            for _, _, name in source_view.import_tokens(public.decode()):
+                if name.split(".")[0] in source_view.EXTERNAL:
                     continue
-                row = source_view.pick(modules.get(path, []), path, None, epoch)
-                require(row is not None, "Selected original module is not exported at its epoch: " + path)
-                public, original = source_view.module_views(row, inverse)
-                state["modules"][path] = row
-                state["outputs"][path] = original if exact else public
-                for _, _, name in source_view.import_tokens(public.decode()):
-                    if name.split(".")[0] in source_view.EXTERNAL:
-                        continue
-                    suffix = name.replace(".", "/") + ".lean"
-                    choices = ["Lean/" + suffix, posixpath.join(posixpath.dirname(path), suffix)]
-                    dependency = next((p for p in choices if source_view.pick(modules.get(p, []), p, None, epoch)), None)
-                    require(dependency is not None, "Original import closure is incomplete: " + path + " -> " + name)
-                    todo.append(dependency)
-                resource_paths.update(rule["source_artifact"] for rule in row.get("resource_rewrites", []))
-            for path in sorted(resource_paths):
+                key = whole_ledger_export.source_key(epoch, path), name
+                if key in bindings:
+                    child, digest = bindings[key]
+                    child_epoch, child_path = child.split(":", 1)
+                    owner = module_at(child_epoch, child_path)
+                    require(owner is not None and owner["source_sha256"] == digest,
+                            "Fixed original import source differs: " + path + " -> " + name)
+                    if (row.get("import_map") or {}).get(owner["target"]) != name:
+                        restored = source_view.import_tokens(public.decode())
+                        compiled = source_view.import_tokens((root / row["path"]).read_text())
+                        actual = [target for (_, _, original_name), (_, _, target) in zip(restored, compiled)
+                                  if original_name == name]
+                        require(len(restored) == len(compiled) and len(actual) == 1
+                                and same_compiled_source(root, inverse, actual[0], owner["target"], matched),
+                                "Fixed public import binding differs: " + path + " -> " + name)
+                    used_bindings.add(key)
+                    todo.append((child_epoch, child_path))
+                    continue
+                suffix = name.replace(".", "/") + ".lean"
+                choices = ["Lean/" + suffix, posixpath.join(posixpath.dirname(path), suffix)]
+                dependency = next((p for p in choices if module_at(epoch, p)), None)
+                require(dependency is not None, "Original import closure is incomplete: " + path + " -> " + name)
+                todo.append((epoch, dependency))
+            resources[epoch].update(rule["source_artifact"] for rule in row.get("resource_rewrites", []))
+        require(used_bindings == bindings.keys(), "A fixed import edge is outside the restored closure")
+        require(restored_supplements == supplements.keys(), "An original proof supplement is outside the restored closure")
+        require(all(path in epochs.get(epoch, {}).get("modules", {})
+                    for epoch, path in (key.split(":", 1) for key in owners)),
+                "A fixed public owner is outside the restored closure")
+        for epoch, state in epochs.items():
+            for path in sorted(resources[epoch]):
                 row = source_view.pick(artifacts.get(path, []), path, None, epoch)
                 require(row is not None, "Selected original resource is not exported at its epoch: " + path)
                 public, original = source_view.artifact_views(row, private_originals)

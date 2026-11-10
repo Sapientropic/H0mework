@@ -1,0 +1,79 @@
+{
+  "schema": "alpha-source-native-em-charge-bridge-strict-overlay/v2",
+  "status": "PASS",
+  "cwd": "Lean",
+  "lean_path_prefix": [
+    "runtime/temporary/alpha-native-bridge-strict",
+    "@file:scratch/AlphaSource/EMStaticReaderRecognitionGate/lean-path.txt"
+  ],
+  "commands": [
+    [
+      "lake",
+      "env",
+      "lean",
+      "-j1",
+      "--trust=0",
+      "-DwarningAsError=true",
+      "-DmaxErrors=2",
+      "-DElab.async=false",
+      "--root=../Verification/physics/low-energy-phenomenology/alpha-source/em-identification",
+      "-o",
+      "runtime/temporary/alpha-native-bridge-strict/PhysicalNativeEMChargeBridge.olean",
+      "../Verification/physics/low-energy-phenomenology/alpha-source/em-identification/PhysicalNativeEMChargeBridge.lean"
+    ],
+    [
+      "lake",
+      "env",
+      "lean",
+      "-j1",
+      "--trust=0",
+      "-DwarningAsError=true",
+      "-DmaxErrors=2",
+      "-DElab.async=false",
+      "--root=../Verification/physics/low-energy-phenomenology/alpha-source/em-identification",
+      "-o",
+      "runtime/temporary/alpha-native-bridge-strict/PhysicalNativeEMChargeBridgeAudit.olean",
+      "../Verification/physics/low-energy-phenomenology/alpha-source/em-identification/PhysicalNativeEMChargeBridgeAudit.lean"
+    ]
+  ],
+  "source_sha256": {
+    "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/PhysicalNativeEMChargeBridge.lean": "7523814b8bafaa990e1d9a4ad7693bd9872dcb870c57afef02591a8363975191",
+    "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/PhysicalNativeEMChargeBridgeAudit.lean": "d73a795d0c9b4d3e8ec9ab4a1a831a5d9700be51b7593f47f72c97d69137a784"
+  },
+  "overlay_outputs": {
+    "PhysicalNativeEMChargeBridge.olean": "cc6b321e0177a2463246deff30ddf7244e8ef221a3e2aa6dc81b874f88de4150",
+    "PhysicalNativeEMChargeBridgeAudit.olean": "f67efe6198a72315d8a1ecfd581d7b57f2106291c13802354e0f9b677b8d8c39"
+  },
+  "exit_codes": [
+    0,
+    0
+  ],
+  "scope": "overlay-resolved Lean compilation only; default production import path depends on the exact prerequisite overlay",
+  "claim": "Both readers consume the actual charged edge0 external state at rest index (side,1): native temporal pairing=-1 via actionScale*phaseMomentum=1 and EM reader Q=1. No operator equality is asserted.",
+  "classification": "subordinate same-external-state charge readout; controller unchanged",
+  "closure_check": {
+    "public": 13,
+    "owned": 16,
+    "nodes": 86042,
+    "source_anchors": 11,
+    "direct_checks": 5,
+    "consumers": 6,
+    "opaque_values_read": 52,
+    "unknown": 0,
+    "unsafe": 0,
+    "partial": 0
+  },
+  "axiom_check": {
+    "method": "complete imported owner type/value/private closure plus collectAxioms for every owner and consumer",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "independent_review": {
+    "verdict": "certified",
+    "scope": "actual external-state identity, direct consumers, corrections, exact closure; not an EM/native operator identity"
+  },
+  "remaining": "actual physical EM carrier and same-prepared full/light/contact/zero-transfer response; no alpha numeric or experiment read"
+}

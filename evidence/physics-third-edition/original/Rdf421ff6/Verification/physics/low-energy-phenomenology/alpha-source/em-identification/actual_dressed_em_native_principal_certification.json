@@ -1,0 +1,945 @@
+{
+  "verdict": "certified",
+  "scope": "12 public original complete action time-flux colour/gauge second clock identities and actualEM whole217 native principal coefficients/tensor, consumed by sameactualEM root with all lower/fullQ0 terms",
+  "controller_disposition": "Subordinate producer/consumer: same livingRoot visit10 row0.inl.liveAccount tick16 quantumFace10→quantumPresentation10→tick17; no shared controller edits",
+  "strict_flags": [
+    "-j1",
+    "--trust=0",
+    "-DwarningAsError=true",
+    "-DmaxErrors=1",
+    "-DElab.async=false"
+  ],
+  "construction_evidence": {
+    "candidate_path": "Lean/scratch/AlphaSource/ActualDressedEMNativePrincipalOwn/candidate.json",
+    "candidate_sha256": "6e72a7c2e21854f3e2f57a174bc913e75955e60ac57bd3c3a6456504c1714fb9",
+    "source_bundle_sha256": "6226407bb4b02c0f268b64e9f7609f8b6f7da4da06324598b6e1a523920136a6",
+    "frozen_sources": [
+      {
+        "module": "ActualDressedEMNativeTimeFlux",
+        "path": "Lean/scratch/AlphaSource/ActualDressedEMNativePrincipalOwn/ActualDressedEMNativeTimeFlux.lean",
+        "source_sha256": "79789d078958b177c93e93c05e952f3209d195735e12582adb2a70818c022c06",
+        "object_path": "Lean/scratch/AlphaSource/ActualDressedEMNativePrincipalOwn/ActualDressedEMNativeTimeFlux.olean",
+        "object_sha256": "b5dbf2c967ffa879230226faf9eedb776864eb210e61049dab553d5dc53c89d5",
+        "line_count": 328,
+        "public": [
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.actual_native_clock_auxiliary_flux",
+            "private": false,
+            "kind": "theorem",
+            "line": 107,
+            "source_signature": "theorem actual_native_clock_auxiliary_flux (k : PhysicalMomentum) (i j : Fin 289)\n    (high : 217 ≤ i.val ∨ 217 ≤ j.val) :\n    emOriginalJacobi (physicalFrequencyMomentum 1 k) i j-emOriginalJacobi (physicalFrequencyMomentum 0 k) i j=\n      nativeLiteralFourier sourceTimeTerms (physicalFrequencyMomentum 1 k) i j-\n        nativeLiteralFourier sourceTimeTerms (physicalFrequencyMomentum 0 k) i j",
+            "module": "ActualDressedEMNativeTimeFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.gaugeRestIndex",
+            "private": false,
+            "kind": "def",
+            "line": 119,
+            "source_signature": "def gaugeRestIndex (mu : Fin 4) (a : Fin 12) : Fin 217",
+            "module": "ActualDressedEMNativeTimeFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.actual_native_auxiliary_time_reader",
+            "private": false,
+            "kind": "theorem",
+            "line": 233,
+            "source_signature": "theorem actual_native_auxiliary_time_reader (k : PhysicalMomentum) (r : Fin 217 → ℂ) :\n    nativeAuxiliaryRestClockFirst k*ᵥr=fun i =>\n      if i.1=3 then -Complex.I*auxiliaryLieReader (fun a => r (gaugeRestIndex 1 a)) i.2 else\n      if i.1=4 then -Complex.I*auxiliaryLieReader (fun a => r (gaugeRestIndex 2 a)) i.2 else\n      if i.1=5 then -Complex.I*auxiliaryLieReader (fun a => r (gaugeRestIndex 3 a)) i.2 else 0",
+            "module": "ActualDressedEMNativeTimeFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.actual_native_time_flux_transpose",
+            "private": false,
+            "kind": "theorem",
+            "line": 279,
+            "source_signature": "theorem actual_native_time_flux_transpose (k : PhysicalMomentum) :\n    nativeRestAuxiliaryClockFirst k=-(nativeAuxiliaryRestClockFirst k).transpose",
+            "module": "ActualDressedEMNativeTimeFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.actual_native_rest_time_reader",
+            "private": false,
+            "kind": "theorem",
+            "line": 316,
+            "source_signature": "theorem actual_native_rest_time_reader (k : PhysicalMomentum) (b : (Fin 6 × Fin 12) → ℂ)\n    (mu : Fin 4) (i : Fin 12) :\n    (nativeRestAuxiliaryClockFirst k*ᵥb) (gaugeRestIndex mu i)=\n      if mu=0 then 0 else\n      if mu=1 then Complex.I*auxiliaryLieReader (fun j => b (3,j)) i else\n      if mu=2 then Complex.I*auxiliaryLieReader (fun j => b (4,j)) i else\n        Complex.I*auxiliaryLieReader (fun j => b (5,j)) i",
+            "module": "ActualDressedEMNativeTimeFlux"
+          }
+        ],
+        "declarations": [
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.clockAuxiliaryTerm",
+            "private": true,
+            "kind": "def",
+            "line": 14,
+            "source_signature": "private def clockAuxiliaryTerm (t : NativeJetIndex × NativeJetIndex × ℝ) : Bool",
+            "module": "ActualDressedEMNativeTimeFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.timeColourTerms",
+            "private": true,
+            "kind": "def",
+            "line": 18,
+            "source_signature": "private def timeColourTerms (mu : Fin 4) (pair : Fin 6) : List (NativeJetIndex × NativeJetIndex × ℝ)",
+            "module": "ActualDressedEMNativeTimeFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.sourceTimeTerms",
+            "private": true,
+            "kind": "def",
+            "line": 23,
+            "source_signature": "private def sourceTimeTerms : List (NativeJetIndex × NativeJetIndex × ℝ)",
+            "module": "ActualDressedEMNativeTimeFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.actual_clock_auxiliary_terms",
+            "private": true,
+            "kind": "theorem",
+            "line": 26,
+            "source_signature": "private theorem actual_clock_auxiliary_terms :\n    nativeCompleteLiteralTerms.filter clockAuxiliaryTerm=sourceTimeTerms",
+            "module": "ActualDressedEMNativeTimeFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.excluded_clock_support",
+            "private": true,
+            "kind": "theorem",
+            "line": 33,
+            "source_signature": "private theorem excluded_clock_support : nativeCompleteLiteralTerms.all (fun t =>\n    clockAuxiliaryTerm t || decide ((t.1.2.val<217 ∧ t.2.1.2.val<217) ∨\n      (t.1.1≠some 0 ∧ t.2.1.1≠some 0)))=true",
+            "module": "ActualDressedEMNativeTimeFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.jet_clock_constant",
+            "private": true,
+            "kind": "theorem",
+            "line": 37,
+            "source_signature": "private theorem jet_clock_constant (sign : ℂ) (slot : Option (Fin 4)) (omega : ℝ)\n    (k : PhysicalMomentum) (notTime : slot≠some 0) :\n    jetSymbol slot (fun mu => sign*physicalFrequencyMomentum omega k mu)=\n      jetSymbol slot (fun mu => sign*physicalFrequencyMomentum 0 k mu)",
+            "module": "ActualDressedEMNativeTimeFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.literal_cons",
+            "private": true,
+            "kind": "theorem",
+            "line": 49,
+            "source_signature": "private theorem literal_cons (t : NativeJetIndex × NativeJetIndex × ℝ)\n    (terms : List (NativeJetIndex × NativeJetIndex × ℝ)) (p : Fin 4 → ℂ) :\n    nativeLiteralFourier (t::terms) p=\n      (Matrix.single t.1.2 t.2.1.2 ((t.2.2 : ℂ)*jetSymbol t.1.1 (-p)*jetSymbol t.2.1.1 p)+\n        Matrix.single t.2.1.2 t.1.2 ((t.2.2 : ℂ)*jetSymbol t.2.1.1 (-p)*jetSymbol t.1.1 p))+\n      nativeLiteralFourier terms p",
+            "module": "ActualDressedEMNativeTimeFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.excluded_term_constant",
+            "private": true,
+            "kind": "theorem",
+            "line": 56,
+            "source_signature": "private theorem excluded_term_constant (t : NativeJetIndex × NativeJetIndex × ℝ)\n    (omega : ℝ) (k : PhysicalMomentum) (i j : Fin 289) (high : 217 ≤ i.val ∨ 217 ≤ j.val)\n    (support : (t.1.2.val<217 ∧ t.2.1.2.val<217) ∨ (t.1.1≠some 0 ∧ t.2.1.1≠some 0)) :\n    (nativeLiteralFourier [t] (physicalFrequencyMomentum omega k)) i j=\n      (nativeLiteralFourier [t] (physicalFrequencyMomentum 0 k)) i j",
+            "module": "ActualDressedEMNativeTimeFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.clock_auxiliary_filter",
+            "private": true,
+            "kind": "theorem",
+            "line": 80,
+            "source_signature": "private theorem clock_auxiliary_filter (terms : List (NativeJetIndex × NativeJetIndex × ℝ))\n    (support : terms.all (fun t => clockAuxiliaryTerm t || decide\n      ((t.1.2.val<217 ∧ t.2.1.2.val<217) ∨ (t.1.1≠some 0 ∧ t.2.1.1≠some 0)))=true)\n    (k : PhysicalMomentum) (i j : Fin 289) (high : 217 ≤ i.val ∨ 217 ≤ j.val) :\n    nativeLiteralFourier terms (physicalFrequencyMomentum 1 k) i j-\n      nativeLiteralFourier terms (physicalFrequencyMomentum 0 k) i j=\n    nativeLiteralFourier (terms.filter clockAuxiliaryTerm) (physicalFrequencyMomentum 1 k) i j-\n      nativeLiteralFourier (terms.filter clockAuxiliaryTerm) (physicalFrequencyMomentum 0 k) i j",
+            "module": "ActualDressedEMNativeTimeFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.actual_native_clock_auxiliary_flux",
+            "private": false,
+            "kind": "theorem",
+            "line": 107,
+            "source_signature": "theorem actual_native_clock_auxiliary_flux (k : PhysicalMomentum) (i j : Fin 289)\n    (high : 217 ≤ i.val ∨ 217 ≤ j.val) :\n    emOriginalJacobi (physicalFrequencyMomentum 1 k) i j-emOriginalJacobi (physicalFrequencyMomentum 0 k) i j=\n      nativeLiteralFourier sourceTimeTerms (physicalFrequencyMomentum 1 k) i j-\n        nativeLiteralFourier sourceTimeTerms (physicalFrequencyMomentum 0 k) i j",
+            "module": "ActualDressedEMNativeTimeFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.gaugeRestIndex",
+            "private": false,
+            "kind": "def",
+            "line": 119,
+            "source_signature": "def gaugeRestIndex (mu : Fin 4) (a : Fin 12) : Fin 217",
+            "module": "ActualDressedEMNativeTimeFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.gauge_rest_embed",
+            "private": true,
+            "kind": "theorem",
+            "line": 122,
+            "source_signature": "private theorem gauge_rest_embed (mu : Fin 4) (a : Fin 12) :\n    nativeRestIndex (gaugeRestIndex mu a)=gaugeSlot mu a",
+            "module": "ActualDressedEMNativeTimeFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.auxiliary_index_injective",
+            "private": true,
+            "kind": "theorem",
+            "line": 125,
+            "source_signature": "private theorem auxiliary_index_injective : Function.Injective gaugeAuxiliaryIndex",
+            "module": "ActualDressedEMNativeTimeFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.rest_index_injective",
+            "private": true,
+            "kind": "theorem",
+            "line": 133,
+            "source_signature": "private theorem rest_index_injective : Function.Injective nativeRestIndex",
+            "module": "ActualDressedEMNativeTimeFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.auxiliary_gauge_single",
+            "private": true,
+            "kind": "theorem",
+            "line": 138,
+            "source_signature": "private theorem auxiliary_gauge_single (i : Fin 6 × Fin 12) (mu : Fin 4) (a : Fin 12) (z : ℂ) :\n    (Matrix.single (gaugeAuxiliaryIndex i) (gaugeSlot mu a) z).submatrix gaugeAuxiliaryIndex nativeRestIndex=\n      Matrix.single i (gaugeRestIndex mu a) z",
+            "module": "ActualDressedEMNativeTimeFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.gauge_auxiliary_single_zero",
+            "private": true,
+            "kind": "theorem",
+            "line": 145,
+            "source_signature": "private theorem gauge_auxiliary_single_zero (mu : Fin 4) (a : Fin 12) (i : Fin 6 × Fin 12) (z : ℂ) :\n    (Matrix.single (gaugeSlot mu a) (gaugeAuxiliaryIndex i) z).submatrix gaugeAuxiliaryIndex nativeRestIndex=0",
+            "module": "ActualDressedEMNativeTimeFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.time_term_auxiliary_matrix",
+            "private": true,
+            "kind": "theorem",
+            "line": 157,
+            "source_signature": "private theorem time_term_auxiliary_matrix (mu : Fin 4) (pair : Fin 6) (a b : Fin 12) (h : ℝ)\n    (k : PhysicalMomentum) :\n    (nativeLiteralFourier [((some 0,gaugeSlot mu a),(none,gaugeBSlot pair b),h)] (physicalFrequencyMomentum 1 k)-\n      nativeLiteralFourier [((some 0,gaugeSlot mu a),(none,gaugeBSlot pair b),h)] (physicalFrequencyMomentum 0 k)).submatrix\n        gaugeAuxiliaryIndex nativeRestIndex=Matrix.single (pair,b) (gaugeRestIndex mu a) (-Complex.I*(h : ℂ))",
+            "module": "ActualDressedEMNativeTimeFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.temporalColourMatrix",
+            "private": true,
+            "kind": "def",
+            "line": 175,
+            "source_signature": "private def temporalColourMatrix (mu : Fin 4) (pair : Fin 6) : Matrix (Fin 6 × Fin 12) (Fin 217) ℂ",
+            "module": "ActualDressedEMNativeTimeFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.literal_clock_diff_cons",
+            "private": true,
+            "kind": "theorem",
+            "line": 180,
+            "source_signature": "private theorem literal_clock_diff_cons (t : NativeJetIndex × NativeJetIndex × ℝ)\n    (ts : List (NativeJetIndex × NativeJetIndex × ℝ)) (p q : Fin 4 → ℂ) :\n    nativeLiteralFourier (t::ts) p-nativeLiteralFourier (t::ts) q=\n      (nativeLiteralFourier [t] p-nativeLiteralFourier [t] q)+\n        (nativeLiteralFourier ts p-nativeLiteralFourier ts q)",
+            "module": "ActualDressedEMNativeTimeFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.literal_clock_diff_cons_two",
+            "private": true,
+            "kind": "theorem",
+            "line": 188,
+            "source_signature": "private theorem literal_clock_diff_cons_two (t u : NativeJetIndex × NativeJetIndex × ℝ)\n    (ts : List (NativeJetIndex × NativeJetIndex × ℝ)) (p q : Fin 4 → ℂ) :\n    nativeLiteralFourier (t::u::ts) p-nativeLiteralFourier (t::u::ts) q=\n      (nativeLiteralFourier [t] p-nativeLiteralFourier [t] q)+\n        (nativeLiteralFourier (u::ts) p-nativeLiteralFourier (u::ts) q)",
+            "module": "ActualDressedEMNativeTimeFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.time_colour_auxiliary_matrix",
+            "private": true,
+            "kind": "theorem",
+            "line": 195,
+            "source_signature": "private theorem time_colour_auxiliary_matrix (mu : Fin 4) (pair : Fin 6) (k : PhysicalMomentum) :\n    (nativeLiteralFourier (timeColourTerms mu pair) (physicalFrequencyMomentum 1 k)-\n      nativeLiteralFourier (timeColourTerms mu pair) (physicalFrequencyMomentum 0 k)).submatrix\n        gaugeAuxiliaryIndex nativeRestIndex=temporalColourMatrix mu pair",
+            "module": "ActualDressedEMNativeTimeFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.temporal_colour_read",
+            "private": true,
+            "kind": "theorem",
+            "line": 206,
+            "source_signature": "private theorem temporal_colour_read (mu : Fin 4) (pair a : Fin 6) (i : Fin 12) (r : Fin 217 → ℂ) :\n    (temporalColourMatrix mu pair*ᵥr) (a,i)=\n      if pair=a then -Complex.I*auxiliaryLieReader (fun j => r (gaugeRestIndex mu j)) i else 0",
+            "module": "ActualDressedEMNativeTimeFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.literal_clock_diff_append",
+            "private": true,
+            "kind": "theorem",
+            "line": 214,
+            "source_signature": "private theorem literal_clock_diff_append (a b : List (NativeJetIndex × NativeJetIndex × ℝ)) (p q : Fin 4 → ℂ) :\n    nativeLiteralFourier (a++b) p-nativeLiteralFourier (a++b) q=\n      (nativeLiteralFourier a p-nativeLiteralFourier a q)+\n        (nativeLiteralFourier b p-nativeLiteralFourier b q)",
+            "module": "ActualDressedEMNativeTimeFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.actual_auxiliary_clock_matrix",
+            "private": true,
+            "kind": "theorem",
+            "line": 221,
+            "source_signature": "private theorem actual_auxiliary_clock_matrix (k : PhysicalMomentum) :\n    nativeAuxiliaryRestClockFirst k=temporalColourMatrix 1 3+temporalColourMatrix 2 4+temporalColourMatrix 3 5",
+            "module": "ActualDressedEMNativeTimeFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.actual_native_auxiliary_time_reader",
+            "private": false,
+            "kind": "theorem",
+            "line": 233,
+            "source_signature": "theorem actual_native_auxiliary_time_reader (k : PhysicalMomentum) (r : Fin 217 → ℂ) :\n    nativeAuxiliaryRestClockFirst k*ᵥr=fun i =>\n      if i.1=3 then -Complex.I*auxiliaryLieReader (fun a => r (gaugeRestIndex 1 a)) i.2 else\n      if i.1=4 then -Complex.I*auxiliaryLieReader (fun a => r (gaugeRestIndex 2 a)) i.2 else\n      if i.1=5 then -Complex.I*auxiliaryLieReader (fun a => r (gaugeRestIndex 3 a)) i.2 else 0",
+            "module": "ActualDressedEMNativeTimeFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.single_time_skew",
+            "private": true,
+            "kind": "theorem",
+            "line": 244,
+            "source_signature": "private theorem single_time_skew (t : NativeJetIndex × NativeJetIndex × ℝ) (k : PhysicalMomentum)\n    (slots : t.1.1=some 0 ∧ t.2.1.1=none) (i j : Fin 289) :\n    nativeLiteralFourier [t] (physicalFrequencyMomentum 1 k) i j-\n      nativeLiteralFourier [t] (physicalFrequencyMomentum 0 k) i j=\n    -(nativeLiteralFourier [t] (physicalFrequencyMomentum 1 k) j i-\n      nativeLiteralFourier [t] (physicalFrequencyMomentum 0 k) j i)",
+            "module": "ActualDressedEMNativeTimeFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.list_time_skew",
+            "private": true,
+            "kind": "theorem",
+            "line": 257,
+            "source_signature": "private theorem list_time_skew (ts : List (NativeJetIndex × NativeJetIndex × ℝ)) (k : PhysicalMomentum)\n    (slots : ts.all (fun t => decide (t.1.1=some 0 ∧ t.2.1.1=none))=true) (i j : Fin 289) :\n    nativeLiteralFourier ts (physicalFrequencyMomentum 1 k) i j-\n      nativeLiteralFourier ts (physicalFrequencyMomentum 0 k) i j=\n    -(nativeLiteralFourier ts (physicalFrequencyMomentum 1 k) j i-\n      nativeLiteralFourier ts (physicalFrequencyMomentum 0 k) j i)",
+            "module": "ActualDressedEMNativeTimeFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.actual_native_time_flux_transpose",
+            "private": false,
+            "kind": "theorem",
+            "line": 279,
+            "source_signature": "theorem actual_native_time_flux_transpose (k : PhysicalMomentum) :\n    nativeRestAuxiliaryClockFirst k=-(nativeAuxiliaryRestClockFirst k).transpose",
+            "module": "ActualDressedEMNativeTimeFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.temporal_colour_dual_read",
+            "private": true,
+            "kind": "theorem",
+            "line": 292,
+            "source_signature": "private theorem temporal_colour_dual_read (mu nu : Fin 4) (pair : Fin 6) (i : Fin 12)\n    (b : (Fin 6 × Fin 12) → ℂ) :\n    ((temporalColourMatrix nu pair).transpose*ᵥb) (gaugeRestIndex mu i)=\n      if nu=mu then -Complex.I*auxiliaryLieReader (fun j => b (pair,j)) i else 0",
+            "module": "ActualDressedEMNativeTimeFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.actual_native_rest_time_reader",
+            "private": false,
+            "kind": "theorem",
+            "line": 316,
+            "source_signature": "theorem actual_native_rest_time_reader (k : PhysicalMomentum) (b : (Fin 6 × Fin 12) → ℂ)\n    (mu : Fin 4) (i : Fin 12) :\n    (nativeRestAuxiliaryClockFirst k*ᵥb) (gaugeRestIndex mu i)=\n      if mu=0 then 0 else\n      if mu=1 then Complex.I*auxiliaryLieReader (fun j => b (3,j)) i else\n      if mu=2 then Complex.I*auxiliaryLieReader (fun j => b (4,j)) i else\n        Complex.I*auxiliaryLieReader (fun j => b (5,j)) i",
+            "module": "ActualDressedEMNativeTimeFlux"
+          }
+        ],
+        "imports": [
+          {
+            "module": "ActualDressedEMNativeSchurPhysicalClock",
+            "object_path": "Lean/scratch/AlphaSource/ActualDressedEMNativeSchurClockOwn/ActualDressedEMNativeSchurPhysicalClock.olean",
+            "object_sha256": "05add1f7f7974458b0c96e6ddd59938c4dea76187196c9c9f27b4bfb69012079"
+          }
+        ],
+        "strict": {
+          "exit": 0,
+          "seconds": 63.221,
+          "command": [
+            "lake",
+            "env",
+            "lean",
+            "--trust=0",
+            "-j1",
+            "-DwarningAsError=true",
+            "-DmaxErrors=4",
+            "-DElab.async=false",
+            "-o",
+            "Lean/scratch/AlphaSource/ActualDressedEMNativePrincipalOwn/ActualDressedEMNativeTimeFlux.olean",
+            "Lean/scratch/AlphaSource/ActualDressedEMNativePrincipalOwn/ActualDressedEMNativeTimeFlux.lean"
+          ],
+          "source_sha256": "79789d078958b177c93e93c05e952f3209d195735e12582adb2a70818c022c06",
+          "object_sha256": "b5dbf2c967ffa879230226faf9eedb776864eb210e61049dab553d5dc53c89d5"
+        }
+      },
+      {
+        "module": "ActualDressedEMNativeClockSecond",
+        "path": "Lean/scratch/AlphaSource/ActualDressedEMNativePrincipalOwn/ActualDressedEMNativeClockSecond.lean",
+        "source_sha256": "2ba6eb0e7f154e6de6e043305c293d5c50101d47b79612e9ceaeb01b93f40f31",
+        "object_path": "Lean/scratch/AlphaSource/ActualDressedEMNativePrincipalOwn/ActualDressedEMNativeClockSecond.olean",
+        "object_sha256": "b15f4744ee0eb6f5787af00560c97c4d22c1bb2eacfb8dbb0960b24eb113bafd",
+        "line_count": 119,
+        "public": [
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.actual_native_gauge_clock_second_zero",
+            "private": false,
+            "kind": "theorem",
+            "line": 93,
+            "source_signature": "theorem actual_native_gauge_clock_second_zero (k : PhysicalMomentum) (mu : Fin 4) (a : Fin 12) (j : Fin 289) :\n    nativePhysicalClockSecond k (gaugeSlot mu a) j=0",
+            "module": "ActualDressedEMNativeClockSecond"
+          }
+        ],
+        "declarations": [
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.clockPair",
+            "private": true,
+            "kind": "def",
+            "line": 13,
+            "source_signature": "private def clockPair (a b : Option (Fin 4)) : Bool",
+            "module": "ActualDressedEMNativeClockSecond"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.jet_second_coefficient",
+            "private": true,
+            "kind": "theorem",
+            "line": 15,
+            "source_signature": "private theorem jet_second_coefficient (a b : Option (Fin 4)) (h : ℂ) (k : PhysicalMomentum) :\n    (1/2 : ℂ)*(h*jetSymbol a (-physicalFrequencyMomentum 1 k)*jetSymbol b (physicalFrequencyMomentum 1 k)+\n      h*jetSymbol a (-physicalFrequencyMomentum (-1) k)*jetSymbol b (physicalFrequencyMomentum (-1) k))-\n      h*jetSymbol a (-physicalFrequencyMomentum 0 k)*jetSymbol b (physicalFrequencyMomentum 0 k)=\n      if clockPair a b then h else 0",
+            "module": "ActualDressedEMNativeClockSecond"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.secondTermMatrix",
+            "private": true,
+            "kind": "def",
+            "line": 34,
+            "source_signature": "private def secondTermMatrix (t : NativeJetIndex × NativeJetIndex × ℝ) : Matrix (Fin 289) (Fin 289) ℂ",
+            "module": "ActualDressedEMNativeClockSecond"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.second_single_coefficient",
+            "private": true,
+            "kind": "theorem",
+            "line": 38,
+            "source_signature": "private theorem second_single_coefficient (a b : NativeJetIndex) (h : ℂ) (k : PhysicalMomentum) (i j : Fin 289) :\n    (1/2 : ℂ)*((Matrix.single a.2 b.2\n      (h*jetSymbol a.1 (-physicalFrequencyMomentum 1 k)*jetSymbol b.1 (physicalFrequencyMomentum 1 k))) i j+\n      (Matrix.single a.2 b.2\n        (h*jetSymbol a.1 (-physicalFrequencyMomentum (-1) k)*jetSymbol b.1 (physicalFrequencyMomentum (-1) k))) i j)-\n      (Matrix.single a.2 b.2\n        (h*jetSymbol a.1 (-physicalFrequencyMomentum 0 k)*jetSymbol b.1 (physicalFrequencyMomentum 0 k))) i j=\n    if clockPair a.1 b.1 then Matrix.single a.2 b.2 h i j else 0",
+            "module": "ActualDressedEMNativeClockSecond"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.second_literal_single",
+            "private": true,
+            "kind": "theorem",
+            "line": 51,
+            "source_signature": "private theorem second_literal_single (t : NativeJetIndex × NativeJetIndex × ℝ) (k : PhysicalMomentum) (i j : Fin 289) :\n    (1/2 : ℂ)*(nativeLiteralFourier [t] (physicalFrequencyMomentum 1 k) i j+\n      nativeLiteralFourier [t] (physicalFrequencyMomentum (-1) k) i j)-\n      nativeLiteralFourier [t] (physicalFrequencyMomentum 0 k) i j=secondTermMatrix t i j",
+            "module": "ActualDressedEMNativeClockSecond"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.literal_cons",
+            "private": true,
+            "kind": "theorem",
+            "line": 68,
+            "source_signature": "private theorem literal_cons (t : NativeJetIndex × NativeJetIndex × ℝ)\n    (ts : List (NativeJetIndex × NativeJetIndex × ℝ)) (p : Fin 4 → ℂ) :\n    nativeLiteralFourier (t::ts) p=\n      nativeLiteralFourier [t] p+nativeLiteralFourier ts p",
+            "module": "ActualDressedEMNativeClockSecond"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.literal_clock_second",
+            "private": true,
+            "kind": "theorem",
+            "line": 74,
+            "source_signature": "private theorem literal_clock_second (ts : List (NativeJetIndex × NativeJetIndex × ℝ))\n    (k : PhysicalMomentum) (i j : Fin 289) :\n    (1/2 : ℂ)*(nativeLiteralFourier ts (physicalFrequencyMomentum 1 k) i j+\n      nativeLiteralFourier ts (physicalFrequencyMomentum (-1) k) i j)-\n      nativeLiteralFourier ts (physicalFrequencyMomentum 0 k) i j=\n      (ts.map fun t => secondTermMatrix t i j).sum",
+            "module": "ActualDressedEMNativeClockSecond"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.original_gauge_clock_support",
+            "private": true,
+            "kind": "theorem",
+            "line": 88,
+            "source_signature": "private theorem original_gauge_clock_support : nativeCompleteLiteralTerms.all (fun t =>\n    !clockPair t.1.1 t.2.1.1 || decide\n      ((t.1.2.val<9 ∨ 57 ≤ t.1.2.val) ∧ (t.2.1.2.val<9 ∨ 57 ≤ t.2.1.2.val)))=true",
+            "module": "ActualDressedEMNativeClockSecond"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.actual_native_gauge_clock_second_zero",
+            "private": false,
+            "kind": "theorem",
+            "line": 93,
+            "source_signature": "theorem actual_native_gauge_clock_second_zero (k : PhysicalMomentum) (mu : Fin 4) (a : Fin 12) (j : Fin 289) :\n    nativePhysicalClockSecond k (gaugeSlot mu a) j=0",
+            "module": "ActualDressedEMNativeClockSecond"
+          }
+        ],
+        "imports": [
+          {
+            "module": "ActualDressedEMNativeTimeFlux",
+            "object_path": "Lean/scratch/AlphaSource/ActualDressedEMNativePrincipalOwn/ActualDressedEMNativeTimeFlux.olean",
+            "object_sha256": "b5dbf2c967ffa879230226faf9eedb776864eb210e61049dab553d5dc53c89d5"
+          }
+        ],
+        "strict": {
+          "exit": 0,
+          "seconds": 57.746,
+          "command": [
+            "lake",
+            "env",
+            "lean",
+            "--trust=0",
+            "-j1",
+            "-DwarningAsError=true",
+            "-DmaxErrors=4",
+            "-DElab.async=false",
+            "-o",
+            "Lean/scratch/AlphaSource/ActualDressedEMNativePrincipalOwn/ActualDressedEMNativeClockSecond.olean",
+            "Lean/scratch/AlphaSource/ActualDressedEMNativePrincipalOwn/ActualDressedEMNativeClockSecond.lean"
+          ],
+          "source_sha256": "2ba6eb0e7f154e6de6e043305c293d5c50101d47b79612e9ceaeb01b93f40f31",
+          "object_sha256": "b15f4744ee0eb6f5787af00560c97c4d22c1bb2eacfb8dbb0960b24eb113bafd"
+        }
+      },
+      {
+        "module": "ActualDressedEMNativePrincipal",
+        "path": "Lean/scratch/AlphaSource/ActualDressedEMNativePrincipalOwn/ActualDressedEMNativePrincipal.lean",
+        "source_sha256": "4e23ee031adfc7732452d555199250f3eb6c9abbdf14f7e5edbe8b8ba63ea888",
+        "object_path": "Lean/scratch/AlphaSource/ActualDressedEMNativePrincipalOwn/ActualDressedEMNativePrincipal.olean",
+        "object_sha256": "c2ab5674c66f9b4d7a34f4b8c031490319fde823099685d8c5d8a10bef4c5137",
+        "line_count": 154,
+        "public": [
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.actual_native_inverse_time_reader",
+            "private": false,
+            "kind": "theorem",
+            "line": 32,
+            "source_signature": "theorem actual_native_inverse_time_reader (k : PhysicalMomentum) (r : Fin 217 → ℂ)\n    (p : Fin 6) (a : Fin 12) :\n    (nativeAuxiliaryInverseMatrix*ᵥ(nativeAuxiliaryRestClockFirst k*ᵥr)) (p,a)=\n      if p=3 then 2*Complex.I*(lapse : ℂ)*r (gaugeRestIndex 1 a) else\n      if p=4 then 2*Complex.I*(lapse : ℂ)*r (gaugeRestIndex 2 a) else\n      if p=5 then 2*Complex.I*(lapse : ℂ)*r (gaugeRestIndex 3 a) else 0",
+            "module": "ActualDressedEMNativePrincipal"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.actual_native_gauge_schur_second",
+            "private": false,
+            "kind": "theorem",
+            "line": 47,
+            "source_signature": "theorem actual_native_gauge_schur_second (k : PhysicalMomentum) (r : Fin 217 → ℂ)\n    (mu : Fin 4) (a : Fin 12) :\n    (nativeSchurClockSecond k*ᵥr) (gaugeRestIndex mu a)=\n      if mu=0 then 0 else 2*(lapse : ℂ)*auxiliaryLieReader (fun b => r (gaugeRestIndex mu b)) a",
+            "module": "ActualDressedEMNativePrincipal"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.nativeEMRestInsertion",
+            "private": false,
+            "kind": "def",
+            "line": 77,
+            "source_signature": "def nativeEMRestInsertion : Matrix (Fin 217) (Fin 4) ℂ",
+            "module": "ActualDressedEMNativePrincipal"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.actual_native_em_time_reader",
+            "private": false,
+            "kind": "theorem",
+            "line": 94,
+            "source_signature": "theorem actual_native_em_time_reader (k : PhysicalMomentum) (r : Fin 217 → ℂ) (mu : Fin 4) :\n    (nativeEMRestInsertion.transpose*ᵥ(nativeSchurClockSecond k*ᵥr)) mu=\n      if mu=0 then 0 else 2*(lapse : ℂ)*(nativeEMRestInsertion.transpose*ᵥr) mu",
+            "module": "ActualDressedEMNativePrincipal"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.actual_native_em_time_tensor",
+            "private": false,
+            "kind": "theorem",
+            "line": 105,
+            "source_signature": "theorem actual_native_em_time_tensor (k : PhysicalMomentum) :\n    nativeEMRestInsertion.transpose*nativeSchurClockSecond k*nativeEMRestInsertion=\n      fun mu nu => if mu=0 then 0 else if mu=nu then (3/2 : ℂ)*(lapse : ℂ) else 0",
+            "module": "ActualDressedEMNativePrincipal"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.actual_em_native_principal_coefficient",
+            "private": false,
+            "kind": "theorem",
+            "line": 135,
+            "source_signature": "theorem actual_em_native_principal_coefficient (event : DressedEvent) (eps s : ℝ)\n    (n : PhysicalMomentum) (alpha beta mu : Fin 4)\n    (balanced : PencilClockBalanced event eps n) (finite : EMColumnsClockFinite event eps n)\n    (regular : (zeroClockClearing event eps n).eval (s : ℂ)≠0)\n    (root : (s : ℂ)∈visibleRoots (zeroClockFrequencyEMFraction event eps n alpha beta)) :\n    (nativeEMRestInsertion.transpose*ᵥ(nativeSchurClockZero ((eps^2 : ℝ) • n)*ᵥ\n      emRestSlice (actualEMZeroClockMode event eps n beta (s : ℂ)))) mu+\n    (sourceFrequency eps s : ℂ)*(nativeEMRestInsertion.transpose*ᵥ\n      (nativeSchurClockFirst ((eps^2 : ℝ) • n)*ᵥ\n        emRestSlice (actualEMZeroClockMode event eps n beta (s : ℂ)))) mu+\n    (sourceFrequency eps s : ℂ)^2*(if mu=0 then 0 else 2*(lapse : ℂ)*\n      (nativeEMRestInsertion.transpose*ᵥemRestSlice (actualEMZeroClockMode event eps n beta (s : ℂ))) mu)=\n    (nativeEMRestInsertion.transpose*ᵥnativeQuantumSchurForcing (frequencyRay eps s n)\n      (zeroClockQuantumResponse event eps s n) (actualEMZeroClockMode event eps n beta (s : ℂ))) mu",
+            "module": "ActualDressedEMNativePrincipal"
+          }
+        ],
+        "declarations": [
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.lie_inverse_scale",
+            "private": true,
+            "kind": "theorem",
+            "line": 19,
+            "source_signature": "private theorem lie_inverse_scale (z : ℂ) (v : Fin 12 → ℂ) :\n    auxiliaryLieInverse (fun a => z*v a)=fun a => z*auxiliaryLieInverse v a",
+            "module": "ActualDressedEMNativePrincipal"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.lie_reader_scale",
+            "private": true,
+            "kind": "theorem",
+            "line": 25,
+            "source_signature": "private theorem lie_reader_scale (z : ℂ) (v : Fin 12 → ℂ) :\n    auxiliaryLieReader (fun a => z*v a)=fun a => z*auxiliaryLieReader v a",
+            "module": "ActualDressedEMNativePrincipal"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.actual_native_inverse_time_reader",
+            "private": false,
+            "kind": "theorem",
+            "line": 32,
+            "source_signature": "theorem actual_native_inverse_time_reader (k : PhysicalMomentum) (r : Fin 217 → ℂ)\n    (p : Fin 6) (a : Fin 12) :\n    (nativeAuxiliaryInverseMatrix*ᵥ(nativeAuxiliaryRestClockFirst k*ᵥr)) (p,a)=\n      if p=3 then 2*Complex.I*(lapse : ℂ)*r (gaugeRestIndex 1 a) else\n      if p=4 then 2*Complex.I*(lapse : ℂ)*r (gaugeRestIndex 2 a) else\n      if p=5 then 2*Complex.I*(lapse : ℂ)*r (gaugeRestIndex 3 a) else 0",
+            "module": "ActualDressedEMNativePrincipal"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.actual_native_gauge_schur_second",
+            "private": false,
+            "kind": "theorem",
+            "line": 47,
+            "source_signature": "theorem actual_native_gauge_schur_second (k : PhysicalMomentum) (r : Fin 217 → ℂ)\n    (mu : Fin 4) (a : Fin 12) :\n    (nativeSchurClockSecond k*ᵥr) (gaugeRestIndex mu a)=\n      if mu=0 then 0 else 2*(lapse : ℂ)*auxiliaryLieReader (fun b => r (gaugeRestIndex mu b)) a",
+            "module": "ActualDressedEMNativePrincipal"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.nativeEMRestInsertion",
+            "private": false,
+            "kind": "def",
+            "line": 77,
+            "source_signature": "def nativeEMRestInsertion : Matrix (Fin 217) (Fin 4) ℂ",
+            "module": "ActualDressedEMNativePrincipal"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.actual_rest_em_projection",
+            "private": true,
+            "kind": "theorem",
+            "line": 80,
+            "source_signature": "private theorem actual_rest_em_projection (r : Fin 217 → ℂ) (mu : Fin 4) :\n    (nativeEMRestInsertion.transpose*ᵥr) mu=\n      (1/2 : ℂ)*(-r (gaugeRestIndex mu 6)+r (gaugeRestIndex mu 7)-r (gaugeRestIndex mu 11))",
+            "module": "ActualDressedEMNativePrincipal"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.actual_native_em_time_reader",
+            "private": false,
+            "kind": "theorem",
+            "line": 94,
+            "source_signature": "theorem actual_native_em_time_reader (k : PhysicalMomentum) (r : Fin 217 → ℂ) (mu : Fin 4) :\n    (nativeEMRestInsertion.transpose*ᵥ(nativeSchurClockSecond k*ᵥr)) mu=\n      if mu=0 then 0 else 2*(lapse : ℂ)*(nativeEMRestInsertion.transpose*ᵥr) mu",
+            "module": "ActualDressedEMNativePrincipal"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.actual_native_em_time_tensor",
+            "private": false,
+            "kind": "theorem",
+            "line": 105,
+            "source_signature": "theorem actual_native_em_time_tensor (k : PhysicalMomentum) :\n    nativeEMRestInsertion.transpose*nativeSchurClockSecond k*nativeEMRestInsertion=\n      fun mu nu => if mu=0 then 0 else if mu=nu then (3/2 : ℂ)*(lapse : ℂ) else 0",
+            "module": "ActualDressedEMNativePrincipal"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.actual_em_native_principal_coefficient",
+            "private": false,
+            "kind": "theorem",
+            "line": 135,
+            "source_signature": "theorem actual_em_native_principal_coefficient (event : DressedEvent) (eps s : ℝ)\n    (n : PhysicalMomentum) (alpha beta mu : Fin 4)\n    (balanced : PencilClockBalanced event eps n) (finite : EMColumnsClockFinite event eps n)\n    (regular : (zeroClockClearing event eps n).eval (s : ℂ)≠0)\n    (root : (s : ℂ)∈visibleRoots (zeroClockFrequencyEMFraction event eps n alpha beta)) :\n    (nativeEMRestInsertion.transpose*ᵥ(nativeSchurClockZero ((eps^2 : ℝ) • n)*ᵥ\n      emRestSlice (actualEMZeroClockMode event eps n beta (s : ℂ)))) mu+\n    (sourceFrequency eps s : ℂ)*(nativeEMRestInsertion.transpose*ᵥ\n      (nativeSchurClockFirst ((eps^2 : ℝ) • n)*ᵥ\n        emRestSlice (actualEMZeroClockMode event eps n beta (s : ℂ)))) mu+\n    (sourceFrequency eps s : ℂ)^2*(if mu=0 then 0 else 2*(lapse : ℂ)*\n      (nativeEMRestInsertion.transpose*ᵥemRestSlice (actualEMZeroClockMode event eps n beta (s : ℂ))) mu)=\n    (nativeEMRestInsertion.transpose*ᵥnativeQuantumSchurForcing (frequencyRay eps s n)\n      (zeroClockQuantumResponse event eps s n) (actualEMZeroClockMode event eps n beta (s : ℂ))) mu",
+            "module": "ActualDressedEMNativePrincipal"
+          }
+        ],
+        "imports": [
+          {
+            "module": "ActualDressedEMNativeClockSecond",
+            "object_path": "Lean/scratch/AlphaSource/ActualDressedEMNativePrincipalOwn/ActualDressedEMNativeClockSecond.olean",
+            "object_sha256": "b15f4744ee0eb6f5787af00560c97c4d22c1bb2eacfb8dbb0960b24eb113bafd"
+          }
+        ],
+        "strict": {
+          "exit": 0,
+          "seconds": 35.481,
+          "command": [
+            "lake",
+            "env",
+            "lean",
+            "--trust=0",
+            "-j1",
+            "-DwarningAsError=true",
+            "-DmaxErrors=4",
+            "-DElab.async=false",
+            "-o",
+            "Lean/scratch/AlphaSource/ActualDressedEMNativePrincipalOwn/ActualDressedEMNativePrincipal.olean",
+            "Lean/scratch/AlphaSource/ActualDressedEMNativePrincipalOwn/ActualDressedEMNativePrincipal.lean"
+          ],
+          "source_sha256": "4e23ee031adfc7732452d555199250f3eb6c9abbdf14f7e5edbe8b8ba63ea888",
+          "object_sha256": "c2ab5674c66f9b4d7a34f4b8c031490319fde823099685d8c5d8a10bef4c5137"
+        }
+      }
+    ],
+    "construction_capsule": {
+      "status": "frozen_strike_strict_pass_certification_pending",
+      "classification": "original complete-action time principal producer and same actual EM-root coefficient consumer",
+      "root": "positiveSmoothUnifiedSource / repaired independent Dirac-dual / SpinPair.actual / livingRoot / visit10 row0.inl.liveAccount / tick16 quantumFace10 -> quantumPresentation10 -> tick17",
+      "controller_advanced": false,
+      "source_bundle_sha256": "6226407bb4b02c0f268b64e9f7609f8b6f7da4da06324598b6e1a523920136a6",
+      "source_bundle_hash_rule": "SHA256 of module UTF8, NUL, exact source bytes in sources order",
+      "public_count": 12,
+      "declaration_count": 48,
+      "line_count": 601,
+      "public_signature_file": "Lean/scratch/AlphaSource/ActualDressedEMNativePrincipalOwn/public-signatures.json",
+      "public_signature_sha256": "15df4963152f1133a4dbbcd42858daf6e801fbe8da0d7df7daaf50eef4f71599",
+      "declaration_inventory_file": "Lean/scratch/AlphaSource/ActualDressedEMNativePrincipalOwn/declarations.json",
+      "declaration_inventory_sha256": "e7c8b38d3736b8bd9c7ccea7213d33a4246ab097b34b3bacc430cc5cb1da0a22",
+      "imports_file": "Lean/scratch/AlphaSource/ActualDressedEMNativePrincipalOwn/imports.json",
+      "imports_sha256": "0ca08b82dff795a9ce854b7d25573ddfac58c7b8968031e3d4bb1d6d40e85532",
+      "lean_path_file": "Lean/scratch/AlphaSource/ActualDressedEMNativePrincipalOwn/lean-path.txt",
+      "lean_path_sha256": "8eb1a04875e31ff4a5bdf25434c070e81a1d81ceb5ac6905cd9425c192d46c4f",
+      "source_provenance": [
+        "Kernel equality of the complete original literal action time/B filter generates exactly 42 time flux terms. The 6/7 cross-colour entries and colour11 weight remain.",
+        "Source-support exclusion proves all other complete-action terms constant in physical frequency on each B-incident row or column. This pays the full original Jacobi clock-to-literal flux identity.",
+        "Both original mixed time slots read the complete 72 B coordinates and the original gauge rows9..56, with independently generated transpose-dual Fourier sign.",
+        "The complete original action has zero second physical-clock coefficient in every gauge-potential row. This is generated by term-level second-clock extraction and source support, before any EM read.",
+        "The already-paid source colour/lapse inverse W cancels the original colour metric in J1_BR, producing its actual full72 inverse time reader.",
+        "All remaining-field S2 gauge rows act on arbitrary217 field components by temporal0 and spatial2*lapse times the full original colour reader.",
+        "The actual emInsertion restriction and its literal original three-slot read consume this full-row result. EM time read equals temporal0/spatial2*lapse times the same original EM read, for arbitrary full remaining field.",
+        "The actual E_R^T S2 E_R tensor is temporal0/spatial(3/2)*lapse on the diagonal, with zero cross entries, generated from actual raw EM coordinates and source W.",
+        "The same actual EM root consumes these coefficients in its native S0+omega*S1+omega^2*S2 equation at original omega=eps^2*s and k=eps^2*n, preserving the original whole-mode and all Q0_B/rest forcing."
+      ],
+      "scope": {
+        "clock": "Original physical time coefficient, arbitrary fixed spatial k, arbitrary217 remaining field; all three spatial EM components and cross entries.",
+        "feedback": "S0/S1 and complete Q0_rest plus J_RB W Q0_B forcing remain in the actual-root consumer. Corrected auxiliary loop singularity and necessary spectral factor remain separately owned paid gates.",
+        "source": "Full original literal action, fixed colour metric, same lapse and same actual emInsertion. No mother-trace or sourceCoupling replacement.",
+        "physical": "Native time coefficient is not c_corr. Same actual Q/constraints/normalized physical residueJet must generate corrected real/massless propagation and c_corr.",
+        "controller": "Subordinate source producer only; fixed root, whole ledger and generated next unchanged."
+      },
+      "direct_consumer": {
+        "clock_auxiliary_flux": "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.actual_native_clock_auxiliary_flux",
+        "complete72_time_reader": "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.actual_native_auxiliary_time_reader",
+        "transpose_dual": "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.actual_native_time_flux_transpose",
+        "complete72_rest_reader": "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.actual_native_rest_time_reader",
+        "original_gauge_J2": "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.actual_native_gauge_clock_second_zero",
+        "source_W_time_reader": "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.actual_native_inverse_time_reader",
+        "complete217_gauge_S2": "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.actual_native_gauge_schur_second",
+        "actual_EM_S2_read": "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.actual_native_em_time_reader",
+        "actual_EM_time_tensor": "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.actual_native_em_time_tensor",
+        "same_EM_root_full_feedback": "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.actual_em_native_principal_coefficient"
+      },
+      "input": {
+        "ActualDressedEMNativeAuxiliaryOwn": {
+          "path": "Lean/scratch/AlphaSource/ActualDressedEMNativeAuxiliaryOwn/candidate.json",
+          "sha256": "36565ea545a28cd4f49dc4f55028107c8c4c172495031b0058ab6beb207cc2eb"
+        },
+        "ActualDressedEMAuxiliaryFeedbackOwn": {
+          "path": "Lean/scratch/AlphaSource/ActualDressedEMAuxiliaryFeedbackOwn/candidate.json",
+          "sha256": "f002c2f2d981ac4608657f1d8a7caa24a1865ceb764eed83f6b66245970112db"
+        },
+        "ActualDressedEMNativeSchurClockOwn": {
+          "path": "Lean/scratch/AlphaSource/ActualDressedEMNativeSchurClockOwn/candidate.json",
+          "sha256": "a267fcc24e6306948dc74fa2f836fe13b5b131ba77346d321d69fca8d05a3e83"
+        }
+      },
+      "next_return_contract": "Consume this original native EM time coefficient together with the complete native spatial/background symbols and same actual Q, corrected auxiliary loop, source constraints and normalized physical residueJet to generate actual corrected real/massless propagation and c_corr. Do not replace these consumers with bare lapse/sourceSpeed/sourceSheet or photon/isotropy/null/simple-pole premises.",
+      "resource_policy": "Three sequential focused trust0/j1/warningAsError/asyncfalse checks on final exact LF source/object bytes with default heartbeats/recursion/synthesis budgets. No self-certification or paid-input recompilation; production/shared docs/Git/root untouched."
+    },
+    "next_return_contract": "Consume this original native EM time coefficient together with the complete native spatial/background symbols and same actual Q, corrected auxiliary loop, source constraints and normalized physical residueJet to generate actual corrected real/massless propagation and c_corr. Do not replace these consumers with bare lapse/sourceSpeed/sourceSheet or photon/isotropy/null/simple-pole premises.",
+    "independent_finite_controls": {
+      "script_path": "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/check_actual_dressed_em_native_principal.py",
+      "script_sha256": "4323e72d83fab04eb98e732e364754c7bb9b71d6fe559e2a665838086eea1fdb",
+      "report_path": "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/check_actual_dressed_em_native_principal.json",
+      "report_sha256": "6a4f6d44c12acbc6967dc79b7588f18598836f970eff49a048f9fe8be2e809b5",
+      "positive": 21,
+      "negative": 12,
+      "failed": [],
+      "invocation_controls": [
+        {
+          "case": "default frozen exact source",
+          "exit": 0,
+          "stdout": "{\"failed\": [], \"negative\": 12, \"positive\": 21, \"report_sha256\": \"641b7b77e283333db78c4a55fe3a37941f082788121d2ccd2ae07751b488e0f8\", \"script_sha256\": \"4323e72d83fab04eb98e732e364754c7bb9b71d6fe559e2a665838086eea1fdb\", \"status\": \"PASS\"}\n",
+          "stderr": ""
+        },
+        {
+          "case": "explicit root/candidate/production override",
+          "exit": 0,
+          "stdout": "{\"failed\": [], \"negative\": 12, \"positive\": 21, \"report_sha256\": \"6a4f6d44c12acbc6967dc79b7588f18598836f970eff49a048f9fe8be2e809b5\", \"script_sha256\": \"4323e72d83fab04eb98e732e364754c7bb9b71d6fe559e2a665838086eea1fdb\", \"status\": \"PASS\"}\n",
+          "stderr": ""
+        },
+        {
+          "case": "similar source omitted actual EM Gram rejected",
+          "exit": 1,
+          "stdout": "",
+          "stderr": "Traceback (most recent call last):\n  File \"Verification/physics/low-energy-phenomenology/alpha-source/em-identification/check_actual_dressed_em_native_principal.py\", line 153, in <module>\n    main()\n  File \"Verification/physics/low-energy-phenomenology/alpha-source/em-identification/check_actual_dressed_em_native_principal.py\", line 136, in main\n    bound = source_binding(candidate, args.source_dir.resolve() if args.source_dir else None)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"Verification/physics/low-energy-phenomenology/alpha-source/em-identification/check_actual_dressed_em_native_principal.py\", line 124, in source_binding\n    raise ValueError(\"selected source changes frozen declaration bodies\")\nValueError: selected source changes frozen declaration bodies\n"
+        }
+      ],
+      "scope": "Exact original colour/time-flux inverse, three-slot EM tensor and complete native clock/fullQforcing controls. Lean owns actual original literal support/full217/read/root identity; no corrected velocity or alpha evaluation."
+    },
+    "focused_attention": [
+      {
+        "case": "theorem_mouth_lint.py",
+        "exit": 0,
+        "stdout": "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedEMNativeClockSecond.lean:3: WARN: `autoImplicit false` left in file; remove unless policy\nVerification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedEMNativePrincipal.lean:3: WARN: `autoImplicit false` left in file; remove unless policy\nVerification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedEMNativeTimeFlux.lean:3: WARN: `autoImplicit false` left in file; remove unless policy\n",
+        "stderr": ""
+      },
+      {
+        "case": "frontier_guard.py",
+        "exit": 0,
+        "stdout": "FILE Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedEMNativeTimeFlux.lean: lines=328 bytes=19213 declarations=30 namespaces=1 scratch=no tracked=yes\nFILE Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedEMNativeClockSecond.lean: lines=119 bytes=7163 declarations=9 namespaces=1 scratch=no tracked=yes\nFILE Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedEMNativePrincipal.lean: lines=154 bytes=8919 declarations=9 namespaces=1 scratch=no tracked=yes\n[frontier-guard] blocks=0 warnings=0 import-scope=active-files\n",
+        "stderr": ""
+      }
+    ],
+    "independent_source_mouth_review": {
+      "path": "Lean/scratch/AlphaSource/ActualDressedEMNativePrincipalOwn/independent-certify-review.json",
+      "sha256": "4b5dbf603c13a2e2c444515e04b01b7324ef6d1e45518ba0f65c080eca4f5e34",
+      "verdict": "pre_review_pass_final_machine_evidence_pending",
+      "candidate_sha256": "6e72a7c2e21854f3e2f57a174bc913e75955e60ac57bd3c3a6456504c1714fb9",
+      "scope": "Independent all-source/private/type/source-provenance mouth review of unchanged frozen candidate, completed before root fresh machine gates. Final machine verification belongs to root certify phase."
+    },
+    "final_machine_certifier": {
+      "phase": "root lean-certify; proof construction owned by independent strike worker",
+      "source_candidate_unchanged": true,
+      "pending_gates_fulfilled": [
+        "fresh3 defaultstrict source and10 exact typed consumers",
+        "all84 owned/private/generated closure and72 opaque/Std3/source anchors/direct bindings",
+        "exact actual production bytes and private first-hit names",
+        "21 positive/12 negative finite controls plus frozen-source body binding default/override/reject"
+      ],
+      "public": 12,
+      "owned": 84,
+      "tests": 10,
+      "nodes": 103213,
+      "private_and_generated_production_names": 63,
+      "first_hits": "cert-overlay has no producer objects; all own imports first hit fresh production overlay, before original parent path. FullAudit begins after fresh typed terminal."
+    },
+    "independent_final_certification": {
+      "path": "Lean/scratch/AlphaSource/ActualDressedEMNativePrincipalOwn/final-independent-certify-review.json",
+      "sha256": "7e446b76e950ff7f22c45dfc1bb02900f1c969314b6c7d16ab85d0ab9393817e",
+      "verdict": "certified",
+      "scope": "Independent complete source/private/generated/type/production-path/closure/controls audit, unchanged proof candidate; no repeated Lean or solver"
+    },
+    "finite_control_correction": {
+      "scope": "Finite numerical fixture only; all unchanged Lean source/typed/closure evidence reused",
+      "exact_source_forcing": "Qrest - J_RB W Qaux",
+      "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedEMQuantumAuxiliarySchur.lean",
+      "source_sha256": "fe9043850d944a648757e02f471b7ec50565c1c5deca22245dc27d840252cf8c",
+      "correction": "The former fixture used a plus sign; new fixture uses the actual minus and rejects either omitted or wrongly signed auxiliary forcing. 21 positive/12 negative counts unchanged."
+    }
+  },
+  "audit_source_object_hashes": {
+    "module": "ActualDressedEMNativePrincipalFullAudit",
+    "exit": 0,
+    "seconds": 70.46361708641052,
+    "source_sha256": "5996fa7a30f122432eaa043192982803704dd5da08108fb0b602f39c474be087",
+    "object_sha256": "384e5e65d7828c325c3683333487742d399c2a973723f298db00c6cd8676ff52"
+  },
+  "production_source_object_hashes": [
+    {
+      "module": "ActualDressedEMNativeTimeFlux",
+      "exit": 0,
+      "seconds": 28.37446618080139,
+      "source_sha256": "79789d078958b177c93e93c05e952f3209d195735e12582adb2a70818c022c06",
+      "object_sha256": "f90ac29b596d7e94b70a69aea6eb6af061ebb3ad82c8d039b9c2221efccc268e"
+    },
+    {
+      "module": "ActualDressedEMNativeClockSecond",
+      "exit": 0,
+      "seconds": 24.78300905227661,
+      "source_sha256": "2ba6eb0e7f154e6de6e043305c293d5c50101d47b79612e9ceaeb01b93f40f31",
+      "object_sha256": "57ec18662e020f191567075b930b1f24e3e22faa919f7be836ee222958e8cbb6"
+    },
+    {
+      "module": "ActualDressedEMNativePrincipal",
+      "exit": 0,
+      "seconds": 36.799057960510254,
+      "source_sha256": "4e23ee031adfc7732452d555199250f3eb6c9abbdf14f7e5edbe8b8ba63ea888",
+      "object_sha256": "339c36b4d2951bf59e6c34044191a6c8c536408d8716244783cfccee63fb95fa"
+    },
+    {
+      "module": "ActualDressedEMNativePrincipalFullAuditProductionConsumers",
+      "exit": 0,
+      "seconds": 43.41848611831665,
+      "source_sha256": "e789e18f027098a154ef6381474910c99df4b1d8cf15b693db59beb9c8e97bbf",
+      "object_sha256": "feb74f2a3a920ef97f8ced8f0be94a45ce0cb66358b10f9830e281f7f6b48a0a"
+    }
+  ],
+  "source_byte_identity": true,
+  "whitespace_check": "explicit untracked source/Audit PASS",
+  "public_mouths": [
+    "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.actual_native_clock_auxiliary_flux",
+    "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.gaugeRestIndex",
+    "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.actual_native_auxiliary_time_reader",
+    "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.actual_native_time_flux_transpose",
+    "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.actual_native_rest_time_reader",
+    "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.actual_native_gauge_clock_second_zero",
+    "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.actual_native_inverse_time_reader",
+    "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.actual_native_gauge_schur_second",
+    "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.nativeEMRestInsertion",
+    "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.actual_native_em_time_reader",
+    "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.actual_native_em_time_tensor",
+    "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.actual_em_native_principal_coefficient"
+  ],
+  "owned_count": 84,
+  "tests": [
+    "LowEnergy.GaussComposite.ActualDressedEMNativePrincipalFullAudit.checked_actual_native_clock_auxiliary_flux",
+    "LowEnergy.GaussComposite.ActualDressedEMNativePrincipalFullAudit.checked_actual_native_auxiliary_time_reader",
+    "LowEnergy.GaussComposite.ActualDressedEMNativePrincipalFullAudit.checked_actual_native_time_flux_transpose",
+    "LowEnergy.GaussComposite.ActualDressedEMNativePrincipalFullAudit.checked_actual_native_rest_time_reader",
+    "LowEnergy.GaussComposite.ActualDressedEMNativePrincipalFullAudit.checked_actual_native_gauge_clock_second_zero",
+    "LowEnergy.GaussComposite.ActualDressedEMNativePrincipalFullAudit.checked_actual_native_inverse_time_reader",
+    "LowEnergy.GaussComposite.ActualDressedEMNativePrincipalFullAudit.checked_actual_native_gauge_schur_second",
+    "LowEnergy.GaussComposite.ActualDressedEMNativePrincipalFullAudit.checked_actual_native_em_time_reader",
+    "LowEnergy.GaussComposite.ActualDressedEMNativePrincipalFullAudit.checked_actual_native_em_time_tensor",
+    "LowEnergy.GaussComposite.ActualDressedEMNativePrincipalFullAudit.checked_actual_em_native_principal_coefficient"
+  ],
+  "anchors": [
+    "SaturationMonoid.PhysicsCore.StageNineEnrichedProofFreeSource.positiveSmoothUnifiedSource",
+    "SaturationMonoid.PhysicsCore.Stage9C.Material.SpinPair.actual",
+    "SaturationMonoid.PhysicsCore.Stage9C.Material.SpinPair.lapse",
+    "LowEnergy.SourcePropagationNativeActionHessian.nativeCompleteLiteralTerms",
+    "LowEnergy.SourcePropagationNativeActionHessian.nativeLiteralFourier",
+    "LowEnergy.GaussComposite.ActualEMAction.emOriginalJacobi",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeAuxiliary.auxiliaryLieReader",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeAuxiliary.auxiliaryLieInverse",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeAuxiliary.nativeAuxiliaryInverse",
+    "LowEnergy.GaussComposite.ActualDressedEMAuxiliaryFeedback.nativeAuxiliaryInverseMatrix",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeSchurClock.nativeSchurClockSecond",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeSchurClock.actual_em_native_schur_physical_dispersion",
+    "LowEnergy.GaussComposite.ActualEMCarrierOwn.emInsertion",
+    "LowEnergy.GaussComposite.ActualEMCarrierOwn.em_projection_coordinates",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeAuxiliary.nativeQuantumSchurForcing"
+  ],
+  "direct_dependencies": [
+    [
+      "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.actual_native_clock_auxiliary_flux",
+      [
+        "LowEnergy.GaussComposite.ActualEMAction.em_hessian_source",
+        "LowEnergy.SourcePropagationNativeActionHessian.nativeHessian_complete_literal",
+        "LowEnergy.SourcePropagationNativeActionHessian.nativeLiteralFourier_sound"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.actual_native_auxiliary_time_reader",
+      [
+        "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.actual_native_clock_auxiliary_flux",
+        "LowEnergy.GaussComposite.ActualDressedEMNativeAuxiliary.auxiliaryLieReader"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.actual_native_time_flux_transpose",
+      [
+        "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.actual_native_clock_auxiliary_flux"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.actual_native_rest_time_reader",
+      [
+        "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.actual_native_time_flux_transpose",
+        "LowEnergy.GaussComposite.ActualDressedEMNativeAuxiliary.auxiliaryLieReader"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.actual_native_gauge_clock_second_zero",
+      [
+        "LowEnergy.SourcePropagationNativeActionHessian.nativeCompleteLiteralTerms",
+        "LowEnergy.GaussComposite.ActualEMAction.em_hessian_source"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.actual_native_inverse_time_reader",
+      [
+        "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.actual_native_auxiliary_time_reader",
+        "LowEnergy.GaussComposite.ActualDressedEMNativeAuxiliary.auxiliary_lie_inverse_left",
+        "LowEnergy.GaussComposite.ActualDressedEMAuxiliaryFeedback.native_auxiliary_inverse_matrix_action"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.actual_native_gauge_schur_second",
+      [
+        "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.actual_native_gauge_clock_second_zero",
+        "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.actual_native_rest_time_reader",
+        "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.actual_native_inverse_time_reader"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.actual_native_em_time_reader",
+      [
+        "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.actual_native_gauge_schur_second",
+        "LowEnergy.GaussComposite.ActualEMCarrierOwn.em_projection_coordinates"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.actual_native_em_time_tensor",
+      [
+        "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.actual_native_em_time_reader",
+        "LowEnergy.GaussComposite.ActualEMCarrierOwn.em_original_coordinates"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.actual_em_native_principal_coefficient",
+      [
+        "LowEnergy.GaussComposite.ActualDressedEMNativeSchurClock.actual_em_native_schur_physical_dispersion",
+        "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.actual_native_em_time_reader",
+        "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.nativeEMRestInsertion"
+      ]
+    ]
+  ],
+  "closure": {
+    "scope": "all producer-module declarations including private/generated, all direct consumers/controls; recursive complete type/value/allowOpaque/constructors/recursor RHS",
+    "nodes": 103213,
+    "opaque_all_read": 72,
+    "axioms": 3,
+    "authorized_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "unknown": 0,
+    "unsafe": 0,
+    "partial": 0,
+    "manifest_sha256": "f0475cc51342d1857d3002410a348956084f6ddd03686c284fda332c41cf7940",
+    "target_scan": {
+      "project_nodes": 22674,
+      "target_matches": []
+    }
+  },
+  "machine_stdout": "DRESSED_EM_NATIVE_PRINCIPAL_PASS public=12 owned=84 tests=10 nodes=103213 anchors=15 direct=10 opaque_all_read=72 axioms=3 unknown=0 unsafe=0 partial=0\n'LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.actual_native_clock_auxiliary_flux' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.actual_native_auxiliary_time_reader' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.actual_native_time_flux_transpose' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.actual_native_rest_time_reader' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.actual_native_gauge_clock_second_zero' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.actual_native_inverse_time_reader' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.actual_native_gauge_schur_second' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.actual_native_em_time_reader' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.actual_native_em_time_tensor' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.actual_em_native_principal_coefficient' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n",
+  "production_gate": "fresh strict production sources and direct consumer slice; complete closure reused only for byte-identical source",
+  "generated_structure": [
+    "The complete original action generates its actual42 gauge-B time terms, preserving every colour cross and weight. Full native time rows and independent transpose-dual Fourier signs return exact fixed-colour readers, before any EM projection.",
+    "Original time-second literal source support proves every complete289 gauge-row J2 entry is zero. The original72 auxiliary inverse consumes all incident time rows, generating the complete217 native Schur S2 gauge action: temporal0, spatial2*lapse*the full colour reader.",
+    "The actual EM insertion restricted to original rest indices gives the exact arbitrary217-field time read, temporal0/spatial2*lapse*originalEMread. Its tensor E_R^T*S2*E_R is spatial diagonal3*lapse/2 with cross0, from actualsource slots and original colour pairing.",
+    "The same original actual EM mode/root directly consumes this time coefficient together with its S0,S1 and complete nativeQuantumSchurForcing at originalomega=epsilon^2*s/k=epsilon^2*n. Quantum feedback and lower mixed fields remain explicit."
+  ],
+  "boundary": "Same original action/Hessian/allgaugerows/sourcefunctions/12colourmetric/auxiliaryinverse/actualemDirectionandemInsertion/all217rest/source root/fullQ0forcing. Native time principal identity, no correctedpropagation c/photon/simplepole/realmassless/alpha number inference. E_RGram3/4 is used once through actualsource slots; no mothertrace/hypercharge/sourceCouplingrename. Originalsource failure/charts/constraints/physicalresidueJet retained. same rootvisit10row0tick16→17controllerfalse."
+}

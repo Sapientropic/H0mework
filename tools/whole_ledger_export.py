@@ -83,6 +83,44 @@ def original_module(path: str) -> str:
     return name if sv.MODULE.fullmatch(name) else "file:" + path
 
 
+def import_sources(selection: dict) -> dict:
+    """Fixed import edges from a standalone run's recorded search environment."""
+    rows = selection.get("import_sources", [])
+    if not isinstance(rows, list):
+        raise ExportError("import_sources must be a list of fixed import edges")
+    bindings = {}
+    for row in rows:
+        if not isinstance(row, dict):
+            raise ExportError("Each fixed import edge must be an object")
+        importer = source_key(row["importer_commit"], row["importer_path"])
+        child = source_key(row["source_commit"], row["source_path"])
+        module, digest = row["module"], row["source_sha256"]
+        if (not importer.endswith(".lean") or not child.endswith(".lean")
+                or not isinstance(module, str) or not sv.MODULE.fullmatch(module)
+                or module.split(".")[0] in sv.EXTERNAL
+                or not isinstance(digest, str) or not DIGEST.fullmatch(digest)):
+            raise ExportError("Invalid fixed import edge: " + importer)
+        key = importer, module
+        if key in bindings:
+            raise ExportError("Repeated fixed import edge: " + importer + " -> " + module)
+        bindings[key] = (child, digest)
+    return bindings
+
+
+def public_owners(selection: dict) -> dict[str, str]:
+    """Fix an already published owner when an older layout has several copies."""
+    rows = selection.get("public_owners", {})
+    if not isinstance(rows, dict):
+        raise ExportError("public_owners must map fixed source keys to existing owners")
+    for key, target in rows.items():
+        commit, separator, path = key.partition(":")
+        if (not separator or source_key(commit, path) != key
+                or not isinstance(target, str) or not sv.MODULE.fullmatch(target)
+                or not target.startswith("H0mework.")):
+            raise ExportError("Invalid fixed public owner: " + key)
+    return rows
+
+
 def load_selection(path: Path) -> dict:
     value = json.loads(path.read_bytes())
     if not isinstance(value, dict) or value.get("schema") != SELECTION_SCHEMA:
@@ -115,6 +153,8 @@ def load_selection(path: Path) -> dict:
                     raise ExportError(field + " must name Lean paths and nonempty rule lists")
         if not selection.get("roots") and not selection.get("artifacts"):
             raise ExportError("An empty selection has no acceptance scope")
+    import_sources(value)
+    public_owners(value)
     return value
 
 
@@ -332,6 +372,9 @@ class Planner:
         self.mapping = json.loads(mapping_path.read_bytes()) if mapping_path.is_file() else {}
         self.providers, self.provider_metadata, self.raw, self.sources, self.edges = {}, {}, {}, {}, {}
         self.public_imports, self.public_layouts = {}, {}
+        self.import_sources = import_sources(selection)
+        self.fixed_owners = public_owners(selection)
+        self.used_import_sources = set()
         self.incoming = collections.defaultdict(set)
         self.existing_raw = {}
         self.resources = {}
@@ -566,6 +609,10 @@ class Planner:
         return raw, origin, sha(original) if original is not None else None
 
     def resolve_import(self, commit, path, module):
+        key = source_key(commit, path), module
+        if key in self.import_sources:
+            self.used_import_sources.add(key)
+            return self.import_sources[key][0]
         # Original module roots precede adjacent overlays, as in close_entry.
         global_path = "Lean/" + module.replace(".", "/") + ".lean"
         if self.available(commit, global_path):
@@ -613,6 +660,13 @@ class Planner:
             self.edges[key] = edges
         if set(self.source_adaptations) - self.sources.keys():
             raise ExportError("A source adaptation is outside the selected closure")
+        if self.import_sources.keys() - self.used_import_sources:
+            raise ExportError("A fixed import edge is outside the selected closure")
+        if self.fixed_owners.keys() - self.sources.keys():
+            raise ExportError("A fixed public owner is outside the selected closure")
+        for (importer, module), (child, digest) in self.import_sources.items():
+            if self.sources[child]["source_sha256"] != digest:
+                raise ExportError("Fixed import source SHA differs: " + importer + " -> " + module)
         children = {key: {child for _, child in edges if child} for key, edges in self.edges.items()}
         parents = collections.defaultdict(list)
         for key, dependencies in children.items():
@@ -831,6 +885,13 @@ class Planner:
                               **({"instance_reducible": True} if ordinal in reducible else {})}
                              for ordinal, _ in validated]
                 values.add(json.dumps(value, sort_keys=True))
+            if field == "local_instance_names" and len(values) > 1:
+                # Older layouts can name a subset of the same local instances.
+                # Use an already-registered superset only when every name agrees.
+                rules = {value: {json.dumps(rule, sort_keys=True) for rule in json.loads(value)}
+                         for value in values}
+                values = {value for value, named in rules.items()
+                          if all(other <= named for other in rules.values())} or values
             if len(values) > 1:
                 raise ExportError("Conflicting inherited " + field + " in " + key)
             if values:
@@ -1005,8 +1066,9 @@ class Planner:
                                               for resource in source["resources"]]}
             signature = sha(json.dumps(signature_record, sort_keys=True, separators=(",", ":")).encode())
             signatures[key] = signature
-            layouts[key] = sv.layout_identity(source["source_path"], source["source_sha256"], source.get("source_origin"),
-                                             [layouts[child] for _, child in self.edges[key] if child])
+            dependency_layouts = [layouts[child] for _, child in self.edges[key] if child]
+            layouts[key] = sv.layout_identity(source["source_path"], source["source_sha256"],
+                                             source.get("source_origin"), dependency_layouts)
             exact = []
             for owner, record in self.by_path[source["source_path"]]:
                 if (record["source_sha256"] != source["source_sha256"]
@@ -1015,15 +1077,23 @@ class Planner:
                 if self.existing_body(owner) != self.raw[key]:
                     raise ExportError("Existing source byte identity differs: " + key)
                 self.public_layout(owner["target"])
-                actual = self.public_imports[owner["target"]]
                 resources = [{"source_address": rule["source_address"], "source_sha256": rule["data_sha256"]}
                              for rule in owner.get("resource_rewrites", [])]
-                if self.public_layouts[owner["target"]] == layouts[key] and resources == signature_record["resources"]:
+                # A registered original-path alias shares its owner's compile layout.
+                candidate_layout = sv.layout_identity(owner["source_path"], source["source_sha256"],
+                                                      source.get("source_origin"), dependency_layouts)
+                if self.public_layouts[owner["target"]] == candidate_layout and resources == signature_record["resources"]:
                     exact.append((owner, record))
+            if key in self.fixed_owners:
+                fixed = self.fixed_owners[key]
+                exact = [(owner, record) for owner, record in exact if owner["target"] == fixed]
+                if not exact:
+                    raise ExportError("Fixed public owner does not match the selected compile layout: " + key)
             if exact:
                 owner, record = min(exact, key=lambda pair: (not sv.row_at(pair[1], source["source_commit"]), pair[0]["target"]))
                 target = owner["target"]
                 assignments[key] = target
+                layouts[key] = self.public_layouts[target]
                 reuse.append({"source_key": key, "source_path": source["source_path"], "public_path": owner["path"], "target": target,
                               "source_sha256": source["source_sha256"], "target_sha256": owner["target_sha256"],
                               "signature_sha256": signature})

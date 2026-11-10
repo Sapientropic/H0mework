@@ -1,0 +1,944 @@
+{
+  "verdict": "certified",
+  "scope": "21 public original forced289 correctedEM column/native217 Schur source correction, native static coefficient source ordered return, actual root phase-speed correction and full all-order physical residue Schur-flux consumers",
+  "controller_disposition": "Subordinate producer/consumer: same livingRoot visit10 row0.inl.liveAccount tick16 quantumFace10→quantumPresentation10→tick17; no shared controller edits",
+  "strict_flags": [
+    "-j1",
+    "--trust=0",
+    "-DwarningAsError=true",
+    "-DmaxErrors=1",
+    "-DElab.async=false"
+  ],
+  "construction_evidence": {
+    "candidate_path": "Lean/scratch/AlphaSource/ActualDressedEMCorrectedCouplingSourceOwn/candidate.json",
+    "candidate_sha256": "1592b6b4857d74c6a68a4b67bc705475a464177e108152cbe35c245fca60eda3",
+    "source_bundle_sha256": "79397b4ea12e89d5106e447dba6ffc8bcf39256ee5dc4efff48e76be0c152720",
+    "frozen_sources": [
+      {
+        "module": "ActualDressedEMForcedSchurSource",
+        "path": "Lean/scratch/AlphaSource/ActualDressedEMCorrectedCouplingSourceOwn/ActualDressedEMForcedSchurSource.lean",
+        "source_sha256": "7c6f7fd25b3ab279d4f3c5f097b6f46e6b6d27e3cd86cab823c50a44ad459942",
+        "object_path": "Lean/scratch/AlphaSource/ActualDressedEMCorrectedCouplingSourceOwn/ActualDressedEMForcedSchurSource.olean",
+        "object_sha256": "1b441e5068cdc5f257ffea18e225e6c116d36002f7235ccd31e89c4937c21d8f",
+        "line_count": 198,
+        "public": [
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.nativeCompleteForceRead",
+            "private": false,
+            "kind": "def",
+            "line": 22,
+            "source_signature": "def nativeCompleteForceRead (p : Fin 4 → ℂ) (f : Fin 289 → ℂ) : Fin 217 → ℂ",
+            "module": "ActualDressedEMForcedSchurSource"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actual_native_complete_force_identity",
+            "private": false,
+            "kind": "theorem",
+            "line": 53,
+            "source_signature": "theorem actual_native_complete_force_identity (p : Fin 4 → ℂ) (v : Fin 289 → ℂ) :\n    nativeSchurMatrix p*ᵥemRestSlice v=nativeCompleteForceRead p (emOriginalJacobi p*ᵥv)",
+            "module": "ActualDressedEMForcedSchurSource"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actual_complete_em_observation",
+            "private": false,
+            "kind": "theorem",
+            "line": 87,
+            "source_signature": "theorem actual_complete_em_observation (v : Fin 289 → ℂ) :\n    nativeEMRestInsertion.transpose*ᵥemRestSlice v=emInsertion.transpose*ᵥv",
+            "module": "ActualDressedEMForcedSchurSource"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.nativeCompleteCorrection",
+            "private": false,
+            "kind": "def",
+            "line": 105,
+            "source_signature": "def nativeCompleteCorrection (p : Fin 4 → ℂ) (Q : Matrix (Fin 289) (Fin 289) ℂ)\n    (v : Fin 289 → ℂ) : Fin 217 → ℂ",
+            "module": "ActualDressedEMForcedSchurSource"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actual_native_forced_principal",
+            "private": false,
+            "kind": "theorem",
+            "line": 111,
+            "source_signature": "theorem actual_native_forced_principal (p : Fin 4 → ℂ) (Q : Matrix (Fin 289) (Fin 289) ℂ)\n    (v : Fin 289 → ℂ) :\n    nativeEMMomentumMatrix p*ᵥ(emInsertion.transpose*ᵥv)=\n      nativeEMRestInsertion.transpose*ᵥnativeCompleteForceRead p ((emOriginalJacobi p-Q)*ᵥv)+\n      nativeEMRestInsertion.transpose*ᵥnativeCompleteCorrection p Q v",
+            "module": "ActualDressedEMForcedSchurSource"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actual_corrected_forced_em_column",
+            "private": false,
+            "kind": "theorem",
+            "line": 152,
+            "source_signature": "theorem actual_corrected_forced_em_column (event : DressedEvent) (eps s : ℝ) (n : PhysicalMomentum)\n    (nu : Fin 4) (balanced : PencilClockBalanced event eps n) (finite : EMColumnsClockFinite event eps n)\n    (dRegular : (zeroClockClearing event eps n).eval (s : ℂ)≠0)\n    (DRegular : (zeroClockFrequencyDenominator event eps n).eval (s : ℂ)≠0) :\n    (emOriginalJacobi (frequencyRay eps s n)-zeroClockQuantumResponse event eps s n)*ᵥ\n      zeroClockEMColumnRead event eps s n nu=(fun i => emInsertion i nu)",
+            "module": "ActualDressedEMForcedSchurSource"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actual_corrected_em_principal_source",
+            "private": false,
+            "kind": "theorem",
+            "line": 169,
+            "source_signature": "theorem actual_corrected_em_principal_source (event : DressedEvent) (eps s : ℝ) (n : PhysicalMomentum)\n    (nu : Fin 4) (balanced : PencilClockBalanced event eps n) (finite : EMColumnsClockFinite event eps n)\n    (dRegular : (zeroClockClearing event eps n).eval (s : ℂ)≠0)\n    (DRegular : (zeroClockFrequencyDenominator event eps n).eval (s : ℂ)≠0) :\n    nativePhysicalEMPrincipal (sourceFrequency eps s) ((eps^2 : ℝ) • n)\n      (emInsertion.transpose*ᵥzeroClockEMColumnRead event eps s n nu)=\n      ((3/4 : ℂ) • Pi.single nu 1)+\n      nativeEMRestInsertion.transpose*ᵥnativeCompleteCorrection (frequencyRay eps s n)\n        (zeroClockQuantumResponse event eps s n) (zeroClockEMColumnRead event eps s n nu)",
+            "module": "ActualDressedEMForcedSchurSource"
+          }
+        ],
+        "declarations": [
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.nativeCompleteForceRead",
+            "private": false,
+            "kind": "def",
+            "line": 22,
+            "source_signature": "def nativeCompleteForceRead (p : Fin 4 → ℂ) (f : Fin 289 → ℂ) : Fin 217 → ℂ",
+            "module": "ActualDressedEMForcedSchurSource"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.wholeIndex",
+            "private": true,
+            "kind": "def",
+            "line": 25,
+            "source_signature": "private def wholeIndex : Fin 217 ⊕ (Fin 6 × Fin 12) ≃ Fin 289",
+            "module": "ActualDressedEMForcedSchurSource"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.whole_left",
+            "private": true,
+            "kind": "theorem",
+            "line": 28,
+            "source_signature": "private theorem whole_left (i : Fin 217) : wholeIndex (Sum.inl i)=nativeRestIndex i",
+            "module": "ActualDressedEMForcedSchurSource"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.whole_right",
+            "private": true,
+            "kind": "theorem",
+            "line": 30,
+            "source_signature": "private theorem whole_right (i : Fin 6 × Fin 12) : wholeIndex (Sum.inr i)=gaugeAuxiliaryIndex i",
+            "module": "ActualDressedEMForcedSchurSource"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.whole_sum",
+            "private": true,
+            "kind": "theorem",
+            "line": 35,
+            "source_signature": "private theorem whole_sum (f : Fin 289 → ℂ) :\n    (∑i,f i)=(∑i : Fin 217,f (nativeRestIndex i))+∑i : Fin 6 × Fin 12,f (gaugeAuxiliaryIndex i)",
+            "module": "ActualDressedEMForcedSchurSource"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.native_rest_rows",
+            "private": true,
+            "kind": "theorem",
+            "line": 40,
+            "source_signature": "private theorem native_rest_rows (p : Fin 4 → ℂ) (v : Fin 289 → ℂ) :\n    emRestSlice (emOriginalJacobi p*ᵥv)=\n      nativeRestRest p*ᵥemRestSlice v+nativeRestAuxiliary p*ᵥemAuxiliarySlice v",
+            "module": "ActualDressedEMForcedSchurSource"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.native_auxiliary_rows",
+            "private": true,
+            "kind": "theorem",
+            "line": 46,
+            "source_signature": "private theorem native_auxiliary_rows (p : Fin 4 → ℂ) (v : Fin 289 → ℂ) :\n    emAuxiliarySlice (emOriginalJacobi p*ᵥv)=nativeAuxiliaryRest p*ᵥemRestSlice v+\n      originalGaugeAuxiliaryPencil p*ᵥemAuxiliarySlice v",
+            "module": "ActualDressedEMForcedSchurSource"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actual_native_complete_force_identity",
+            "private": false,
+            "kind": "theorem",
+            "line": 53,
+            "source_signature": "theorem actual_native_complete_force_identity (p : Fin 4 → ℂ) (v : Fin 289 → ℂ) :\n    nativeSchurMatrix p*ᵥemRestSlice v=nativeCompleteForceRead p (emOriginalJacobi p*ᵥv)",
+            "module": "ActualDressedEMForcedSchurSource"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.complete_read_add",
+            "private": true,
+            "kind": "theorem",
+            "line": 60,
+            "source_signature": "private theorem complete_read_add (p : Fin 4 → ℂ) (f g : Fin 289 → ℂ) :\n    nativeCompleteForceRead p (f+g)=nativeCompleteForceRead p f+nativeCompleteForceRead p g",
+            "module": "ActualDressedEMForcedSchurSource"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.complete_read_sub",
+            "private": true,
+            "kind": "theorem",
+            "line": 68,
+            "source_signature": "private theorem complete_read_sub (p : Fin 4 → ℂ) (f g : Fin 289 → ℂ) :\n    nativeCompleteForceRead p (f-g)=nativeCompleteForceRead p f-nativeCompleteForceRead p g",
+            "module": "ActualDressedEMForcedSchurSource"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.original_em_auxiliary_zero",
+            "private": true,
+            "kind": "theorem",
+            "line": 76,
+            "source_signature": "private theorem original_em_auxiliary_zero (i : Fin 6 × Fin 12) (mu : Fin 4) :\n    emInsertion (gaugeAuxiliaryIndex i) mu=0",
+            "module": "ActualDressedEMForcedSchurSource"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actual_complete_em_observation",
+            "private": false,
+            "kind": "theorem",
+            "line": 87,
+            "source_signature": "theorem actual_complete_em_observation (v : Fin 289 → ℂ) :\n    nativeEMRestInsertion.transpose*ᵥemRestSlice v=emInsertion.transpose*ᵥv",
+            "module": "ActualDressedEMForcedSchurSource"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.complete_read_em_input",
+            "private": true,
+            "kind": "theorem",
+            "line": 96,
+            "source_signature": "private theorem complete_read_em_input (p : Fin 4 → ℂ) (nu : Fin 4) :\n    nativeCompleteForceRead p (fun i => emInsertion i nu)=fun i => nativeEMRestInsertion i nu",
+            "module": "ActualDressedEMForcedSchurSource"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.nativeCompleteCorrection",
+            "private": false,
+            "kind": "def",
+            "line": 105,
+            "source_signature": "def nativeCompleteCorrection (p : Fin 4 → ℂ) (Q : Matrix (Fin 289) (Fin 289) ℂ)\n    (v : Fin 289 → ℂ) : Fin 217 → ℂ",
+            "module": "ActualDressedEMForcedSchurSource"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actual_native_forced_principal",
+            "private": false,
+            "kind": "theorem",
+            "line": 111,
+            "source_signature": "theorem actual_native_forced_principal (p : Fin 4 → ℂ) (Q : Matrix (Fin 289) (Fin 289) ℂ)\n    (v : Fin 289 → ℂ) :\n    nativeEMMomentumMatrix p*ᵥ(emInsertion.transpose*ᵥv)=\n      nativeEMRestInsertion.transpose*ᵥnativeCompleteForceRead p ((emOriginalJacobi p-Q)*ᵥv)+\n      nativeEMRestInsertion.transpose*ᵥnativeCompleteCorrection p Q v",
+            "module": "ActualDressedEMForcedSchurSource"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.evaluated_column_equation",
+            "private": true,
+            "kind": "theorem",
+            "line": 127,
+            "source_signature": "private theorem evaluated_column_equation {ι : Type*} [Fintype ι]\n    (H : Matrix ι ι ℂ[X]) (V : ι → ℂ[X]) (D d : ℂ[X]) (f : ι → ℂ) (a : ℂ)\n    (paid : H*ᵥV=D • (d • fun i => C (f i))) :\n    H.map (Polynomial.eval a)*ᵥ(fun i => (V i).eval a)=(D.eval a*d.eval a) • f",
+            "module": "ActualDressedEMForcedSchurSource"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.divided_forcing",
+            "private": true,
+            "kind": "theorem",
+            "line": 136,
+            "source_signature": "private theorem divided_forcing {ι : Type*} [Fintype ι]\n    (H : Matrix ι ι ℂ) (v f : ι → ℂ) (D d : ℂ) (Dne : D≠0) (dne : d≠0)\n    (paid : H*ᵥv=(D*d) • f) :\n    (fun i j => H i j/d)*ᵥ(fun i => v i/D)=f",
+            "module": "ActualDressedEMForcedSchurSource"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actual_corrected_forced_em_column",
+            "private": false,
+            "kind": "theorem",
+            "line": 152,
+            "source_signature": "theorem actual_corrected_forced_em_column (event : DressedEvent) (eps s : ℝ) (n : PhysicalMomentum)\n    (nu : Fin 4) (balanced : PencilClockBalanced event eps n) (finite : EMColumnsClockFinite event eps n)\n    (dRegular : (zeroClockClearing event eps n).eval (s : ℂ)≠0)\n    (DRegular : (zeroClockFrequencyDenominator event eps n).eval (s : ℂ)≠0) :\n    (emOriginalJacobi (frequencyRay eps s n)-zeroClockQuantumResponse event eps s n)*ᵥ\n      zeroClockEMColumnRead event eps s n nu=(fun i => emInsertion i nu)",
+            "module": "ActualDressedEMForcedSchurSource"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actual_corrected_em_principal_source",
+            "private": false,
+            "kind": "theorem",
+            "line": 169,
+            "source_signature": "theorem actual_corrected_em_principal_source (event : DressedEvent) (eps s : ℝ) (n : PhysicalMomentum)\n    (nu : Fin 4) (balanced : PencilClockBalanced event eps n) (finite : EMColumnsClockFinite event eps n)\n    (dRegular : (zeroClockClearing event eps n).eval (s : ℂ)≠0)\n    (DRegular : (zeroClockFrequencyDenominator event eps n).eval (s : ℂ)≠0) :\n    nativePhysicalEMPrincipal (sourceFrequency eps s) ((eps^2 : ℝ) • n)\n      (emInsertion.transpose*ᵥzeroClockEMColumnRead event eps s n nu)=\n      ((3/4 : ℂ) • Pi.single nu 1)+\n      nativeEMRestInsertion.transpose*ᵥnativeCompleteCorrection (frequencyRay eps s n)\n        (zeroClockQuantumResponse event eps s n) (zeroClockEMColumnRead event eps s n nu)",
+            "module": "ActualDressedEMForcedSchurSource"
+          }
+        ],
+        "imports": [
+          {
+            "module": "ActualDressedEMNativeCouplingConsumer",
+            "object_path": "Lean/scratch/AlphaSource/ActualDressedEMNativeCoulombUnitOwn/ActualDressedEMNativeCouplingConsumer.olean",
+            "object_sha256": "af1bf0446a0a19ff62c9d7b1bc3d4bb5b542a1f5d194682c517d1b5f67cc185f"
+          },
+          {
+            "module": "ActualDressedEMOriginalClockResidueBalance",
+            "object_path": "Lean/scratch/AlphaSource/ActualDressedEMPhysicalResidueFluxOwn/ActualDressedEMOriginalClockResidueBalance.olean",
+            "object_sha256": "be8d413eccf370f880f69d0c189ebb7facf1ce43a4df0ab4dfb5fe5c896a2a15"
+          }
+        ],
+        "strict": {
+          "exit": 0,
+          "seconds": 43.418,
+          "command": [
+            "lake",
+            "env",
+            "lean",
+            "--trust=0",
+            "-j1",
+            "-DwarningAsError=true",
+            "-DmaxErrors=4",
+            "-DElab.async=false",
+            "-o",
+            "Lean/scratch/AlphaSource/ActualDressedEMCorrectedCouplingSourceOwn/ActualDressedEMForcedSchurSource.olean",
+            "Lean/scratch/AlphaSource/ActualDressedEMCorrectedCouplingSourceOwn/ActualDressedEMForcedSchurSource.lean"
+          ],
+          "source_sha256": "7c6f7fd25b3ab279d4f3c5f097b6f46e6b6d27e3cd86cab823c50a44ad459942",
+          "object_sha256": "1b441e5068cdc5f257ffea18e225e6c116d36002f7235ccd31e89c4937c21d8f"
+        }
+      },
+      {
+        "module": "ActualDressedEMStaticCorrectionPrice",
+        "path": "Lean/scratch/AlphaSource/ActualDressedEMCorrectedCouplingSourceOwn/ActualDressedEMStaticCorrectionPrice.lean",
+        "source_sha256": "60083d15aeb8fd867749db479dcd5734ba916cc24b96ee9554da219279d9e880",
+        "object_path": "Lean/scratch/AlphaSource/ActualDressedEMCorrectedCouplingSourceOwn/ActualDressedEMStaticCorrectionPrice.olean",
+        "object_sha256": "928e490fed621f9591c87c0bd9bf9b0c85ba953e19b4e7515d6272d91dbc8761",
+        "line_count": 96,
+        "public": [
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actualStaticSourceCorrection",
+            "private": false,
+            "kind": "def",
+            "line": 22,
+            "source_signature": "def actualStaticSourceCorrection (event : DressedEvent) (eps : ℝ) (n : PhysicalMomentum) : ℂ",
+            "module": "ActualDressedEMStaticCorrectionPrice"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actual_static_noether_coupling_source",
+            "private": false,
+            "kind": "theorem",
+            "line": 29,
+            "source_signature": "theorem actual_static_noether_coupling_source (event : DressedEvent) (eps : ℝ) (n : PhysicalMomentum)\n    (n_ne : spatialSquare n≠0)\n    (balanced : PencilClockBalanced event eps n) (finite : EMColumnsClockFinite event eps n)\n    (dRegular : (zeroClockClearing event eps n).eval 0≠0)\n    (DRegular : (zeroClockFrequencyDenominator event eps n).eval 0≠0) :\n    noetherPairScale^2*(-(eps : ℂ)^4)*zeroClockFrequencyEMRead event eps 0 n 0 0/(4*(Real.pi : ℂ))=\n      nativeDirectionalOrderedCoulomb n+actualStaticSourceCorrection event eps n",
+            "module": "ActualDressedEMStaticCorrectionPrice"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actual_static_correction_price_return",
+            "private": false,
+            "kind": "theorem",
+            "line": 68,
+            "source_signature": "theorem actual_static_correction_price_return (event : DressedEvent) (n : PhysicalMomentum)\n    (n_ne : spatialSquare n≠0) (nonzero : irClockDeterminant event n≠0)\n    (factors : ∀mu nu, X^sourceClockOrder event n∣irClockEMNumerator event n mu nu)\n    (bounded : ∀mu nu, LowEnergy.ActualDressedVisiblePole.poleOrder (zeroClockEMFraction event n mu nu) 0≤4)\n    (columns : ∀ᶠ eps : ℝ in nhdsWithin 0 ({0}ᶜ),\n      PencilClockBalanced event eps n ∧ EMColumnsClockFinite event eps n ∧\n      (zeroClockClearing event eps n).eval 0≠0 ∧ (zeroClockFrequencyDenominator event eps n).eval 0≠0) :\n    Tendsto (fun eps : ℝ => actualStaticSourceCorrection event eps n)\n      (nhdsWithin 0 ({0}ᶜ)) (𝓝 (actualNativeCoulombCorrection event n))",
+            "module": "ActualDressedEMStaticCorrectionPrice"
+          }
+        ],
+        "declarations": [
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.original_spatial_square_scale",
+            "private": true,
+            "kind": "theorem",
+            "line": 16,
+            "source_signature": "private theorem original_spatial_square_scale (a : ℝ) (n : PhysicalMomentum) :\n    spatialSquare (a • n)=a^2*spatialSquare n",
+            "module": "ActualDressedEMStaticCorrectionPrice"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actualStaticSourceCorrection",
+            "private": false,
+            "kind": "def",
+            "line": 22,
+            "source_signature": "def actualStaticSourceCorrection (event : DressedEvent) (eps : ℝ) (n : PhysicalMomentum) : ℂ",
+            "module": "ActualDressedEMStaticCorrectionPrice"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actual_static_noether_coupling_source",
+            "private": false,
+            "kind": "theorem",
+            "line": 29,
+            "source_signature": "theorem actual_static_noether_coupling_source (event : DressedEvent) (eps : ℝ) (n : PhysicalMomentum)\n    (n_ne : spatialSquare n≠0)\n    (balanced : PencilClockBalanced event eps n) (finite : EMColumnsClockFinite event eps n)\n    (dRegular : (zeroClockClearing event eps n).eval 0≠0)\n    (DRegular : (zeroClockFrequencyDenominator event eps n).eval 0≠0) :\n    noetherPairScale^2*(-(eps : ℂ)^4)*zeroClockFrequencyEMRead event eps 0 n 0 0/(4*(Real.pi : ℂ))=\n      nativeDirectionalOrderedCoulomb n+actualStaticSourceCorrection event eps n",
+            "module": "ActualDressedEMStaticCorrectionPrice"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actual_static_frequency_read",
+            "private": true,
+            "kind": "theorem",
+            "line": 56,
+            "source_signature": "private theorem actual_static_frequency_read (event : DressedEvent) (eps : ℝ) (n : PhysicalMomentum)\n    (DRegular : (zeroClockFrequencyDenominator event eps n).eval 0≠0)\n    (finite : EMColumnsClockFinite event eps n)\n    (paid : Tendsto (fun sigma : ℝ => correctedEMTensor event eps 0 sigma n)\n      (nhdsWithin 0 (Ioi 0)) (𝓝 (zeroClockEMRead event eps n))) :\n    zeroClockFrequencyEMRead event eps 0 n 0 0=zeroClockEMRead event eps n 0 0",
+            "module": "ActualDressedEMStaticCorrectionPrice"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actual_static_correction_price_return",
+            "private": false,
+            "kind": "theorem",
+            "line": 68,
+            "source_signature": "theorem actual_static_correction_price_return (event : DressedEvent) (n : PhysicalMomentum)\n    (n_ne : spatialSquare n≠0) (nonzero : irClockDeterminant event n≠0)\n    (factors : ∀mu nu, X^sourceClockOrder event n∣irClockEMNumerator event n mu nu)\n    (bounded : ∀mu nu, LowEnergy.ActualDressedVisiblePole.poleOrder (zeroClockEMFraction event n mu nu) 0≤4)\n    (columns : ∀ᶠ eps : ℝ in nhdsWithin 0 ({0}ᶜ),\n      PencilClockBalanced event eps n ∧ EMColumnsClockFinite event eps n ∧\n      (zeroClockClearing event eps n).eval 0≠0 ∧ (zeroClockFrequencyDenominator event eps n).eval 0≠0) :\n    Tendsto (fun eps : ℝ => actualStaticSourceCorrection event eps n)\n      (nhdsWithin 0 ({0}ᶜ)) (𝓝 (actualNativeCoulombCorrection event n))",
+            "module": "ActualDressedEMStaticCorrectionPrice"
+          }
+        ],
+        "imports": [
+          {
+            "module": "ActualDressedEMForcedSchurSource",
+            "object_path": "Lean/scratch/AlphaSource/ActualDressedEMCorrectedCouplingSourceOwn/ActualDressedEMForcedSchurSource.olean",
+            "object_sha256": "1b441e5068cdc5f257ffea18e225e6c116d36002f7235ccd31e89c4937c21d8f"
+          }
+        ],
+        "strict": {
+          "exit": 0,
+          "seconds": 40.058,
+          "command": [
+            "lake",
+            "env",
+            "lean",
+            "--trust=0",
+            "-j1",
+            "-DwarningAsError=true",
+            "-DmaxErrors=4",
+            "-DElab.async=false",
+            "-o",
+            "Lean/scratch/AlphaSource/ActualDressedEMCorrectedCouplingSourceOwn/ActualDressedEMStaticCorrectionPrice.olean",
+            "Lean/scratch/AlphaSource/ActualDressedEMCorrectedCouplingSourceOwn/ActualDressedEMStaticCorrectionPrice.lean"
+          ],
+          "source_sha256": "60083d15aeb8fd867749db479dcd5734ba916cc24b96ee9554da219279d9e880",
+          "object_sha256": "928e490fed621f9591c87c0bd9bf9b0c85ba953e19b4e7515d6272d91dbc8761"
+        }
+      },
+      {
+        "module": "ActualDressedEMCorrectedRootFluxConsumer",
+        "path": "Lean/scratch/AlphaSource/ActualDressedEMCorrectedCouplingSourceOwn/ActualDressedEMCorrectedRootFluxConsumer.lean",
+        "source_sha256": "6ae221ed52627a4fa635c8b2c38b6b3dcd6e15831d997b697a2c4a0eb59be8a2",
+        "object_path": "Lean/scratch/AlphaSource/ActualDressedEMCorrectedCouplingSourceOwn/ActualDressedEMCorrectedRootFluxConsumer.olean",
+        "object_sha256": "ce33d696f6a6a744ae61cee8e1b7f3ea1747fe08454fc819e7123d53b860e426",
+        "line_count": 235,
+        "public": [
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.nativeTransverseRead",
+            "private": false,
+            "kind": "def",
+            "line": 23,
+            "source_signature": "def nativeTransverseRead (k : PhysicalMomentum) (v : Fin 4 → ℂ) : Fin 3 → ℂ",
+            "module": "ActualDressedEMCorrectedRootFluxConsumer"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actual_native_transverse_source_symbol",
+            "private": false,
+            "kind": "theorem",
+            "line": 27,
+            "source_signature": "theorem actual_native_transverse_source_symbol (omega : ℝ) (k : PhysicalMomentum) (v : Fin 4 → ℂ)\n    (q_ne : spatialSquare k≠0) :\n    nativeTransverseRead k (nativePhysicalEMPrincipal omega k v)=\n      (2*(lapse : ℂ)*((omega : ℂ)^2-(nativePrimitiveSpeed : ℂ)^2*(spatialSquare k : ℂ))) •\n        nativeTransverseRead k v",
+            "module": "ActualDressedEMCorrectedRootFluxConsumer"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actualRootPhaseSpeedSquared",
+            "private": false,
+            "kind": "def",
+            "line": 53,
+            "source_signature": "def actualRootPhaseSpeedSquared (eps s : ℝ) (n : PhysicalMomentum) : ℝ",
+            "module": "ActualDressedEMCorrectedRootFluxConsumer"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actual_corrected_root_principal_source",
+            "private": false,
+            "kind": "theorem",
+            "line": 57,
+            "source_signature": "theorem actual_corrected_root_principal_source (event : DressedEvent) (eps s : ℝ) (n : PhysicalMomentum)\n    (mu nu : Fin 4) (balanced : PencilClockBalanced event eps n) (finite : EMColumnsClockFinite event eps n)\n    (regular : (zeroClockClearing event eps n).eval (s : ℂ)≠0)\n    (root : (s : ℂ)∈visibleRoots (zeroClockFrequencyEMFraction event eps n mu nu)) :\n    nativePhysicalEMPrincipal (sourceFrequency eps s) ((eps^2 : ℝ) • n)\n      (emInsertion.transpose*ᵥactualEMZeroClockMode event eps n nu (s : ℂ))=\n      nativeEMRestInsertion.transpose*ᵥnativeCompleteCorrection (frequencyRay eps s n)\n        (zeroClockQuantumResponse event eps s n) (actualEMZeroClockMode event eps n nu (s : ℂ))",
+            "module": "ActualDressedEMCorrectedRootFluxConsumer"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actual_corrected_root_speed_source",
+            "private": false,
+            "kind": "theorem",
+            "line": 86,
+            "source_signature": "theorem actual_corrected_root_speed_source (event : DressedEvent) (eps s : ℝ) (n : PhysicalMomentum)\n    (mu nu : Fin 4) (balanced : PencilClockBalanced event eps n) (finite : EMColumnsClockFinite event eps n)\n    (regular : (zeroClockClearing event eps n).eval (s : ℂ)≠0)\n    (root : (s : ℂ)∈visibleRoots (zeroClockFrequencyEMFraction event eps n mu nu))\n    (q_ne : spatialSquare ((eps^2 : ℝ) • n)≠0) :\n    (2*(lapse : ℂ)*(spatialSquare ((eps^2 : ℝ) • n) : ℂ)*\n      ((actualRootPhaseSpeedSquared eps s n : ℂ)-(nativePrimitiveSpeed : ℂ)^2)) •\n        nativeTransverseRead ((eps^2 : ℝ) • n)\n          (emInsertion.transpose*ᵥactualEMZeroClockMode event eps n nu (s : ℂ))=\n      nativeTransverseRead ((eps^2 : ℝ) • n)\n        (nativeEMRestInsertion.transpose*ᵥnativeCompleteCorrection (frequencyRay eps s n)\n          (zeroClockQuantumResponse event eps s n) (actualEMZeroClockMode event eps n nu (s : ℂ)))",
+            "module": "ActualDressedEMCorrectedRootFluxConsumer"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actual_corrected_root_speed_component_price",
+            "private": false,
+            "kind": "theorem",
+            "line": 111,
+            "source_signature": "theorem actual_corrected_root_speed_component_price (event : DressedEvent) (eps s : ℝ) (n : PhysicalMomentum)\n    (mu nu : Fin 4) (balanced : PencilClockBalanced event eps n) (finite : EMColumnsClockFinite event eps n)\n    (regular : (zeroClockClearing event eps n).eval (s : ℂ)≠0)\n    (root : (s : ℂ)∈visibleRoots (zeroClockFrequencyEMFraction event eps n mu nu))\n    (q_ne : spatialSquare ((eps^2 : ℝ) • n)≠0) (i : Fin 3)\n    (coordinate_ne : nativeTransverseRead ((eps^2 : ℝ) • n)\n      (emInsertion.transpose*ᵥactualEMZeroClockMode event eps n nu (s : ℂ)) i≠0) :\n    (actualRootPhaseSpeedSquared eps s n : ℂ)=(nativePrimitiveSpeed : ℂ)^2+\n      nativeTransverseRead ((eps^2 : ℝ) • n)\n        (nativeEMRestInsertion.transpose*ᵥnativeCompleteCorrection (frequencyRay eps s n)\n          (zeroClockQuantumResponse event eps s n) (actualEMZeroClockMode event eps n nu (s : ℂ))) i/\n        (2*(lapse : ℂ)*(spatialSquare ((eps^2 : ℝ) • n) : ℂ)*nativeTransverseRead ((eps^2 : ℝ) • n)\n          (emInsertion.transpose*ᵥactualEMZeroClockMode event eps n nu (s : ℂ)) i)",
+            "module": "ActualDressedEMCorrectedRootFluxConsumer"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actualFullPhysicalFlux",
+            "private": false,
+            "kind": "def",
+            "line": 132,
+            "source_signature": "def actualFullPhysicalFlux (event : DressedEvent) (eps s : ℝ) (n : PhysicalMomentum) (nu : Fin 4) : Fin 289 → ℂ",
+            "module": "ActualDressedEMCorrectedRootFluxConsumer"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actual_corrected_physical_schur_flux",
+            "private": false,
+            "kind": "theorem",
+            "line": 169,
+            "source_signature": "theorem actual_corrected_physical_schur_flux (event : DressedEvent) (eps s : ℝ) (n : PhysicalMomentum)\n    (mu nu : Fin 4) (eps_ne : eps≠0) (balanced : PencilClockBalanced event eps n) (finite : EMColumnsClockFinite event eps n)\n    (regular : (zeroClockClearing event eps n).eval (s : ℂ)≠0)\n    (root : (s : ℂ)∈visibleRoots (zeroClockFrequencyEMFraction event eps n mu nu)) :\n    let a : Fin 289 → ℂ",
+            "module": "ActualDressedEMCorrectedRootFluxConsumer"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actualRootPhaseSpeed",
+            "private": false,
+            "kind": "def",
+            "line": 211,
+            "source_signature": "def actualRootPhaseSpeed (eps s : ℝ) (n : PhysicalMomentum) : ℝ",
+            "module": "ActualDressedEMCorrectedRootFluxConsumer"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actualFullRootCouplingRead",
+            "private": false,
+            "kind": "def",
+            "line": 215,
+            "source_signature": "def actualFullRootCouplingRead (event : DressedEvent) (eps s : ℝ) (n pd ps : PhysicalMomentum)\n    (dL dR sL sR : CompositeLeg) : ℂ",
+            "module": "ActualDressedEMCorrectedRootFluxConsumer"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actual_full_root_coupling_balance",
+            "private": false,
+            "kind": "theorem",
+            "line": 221,
+            "source_signature": "theorem actual_full_root_coupling_balance (event : DressedEvent) (eps s : ℝ) (n pd ps : PhysicalMomentum)\n    (dL dR sL sR : CompositeLeg) :\n    actualFullRootCouplingRead event eps s n pd ps dL dR sL sR=\n      (sourceInputCharge dR*sourceInputCharge sR+\n        noetherChargeCalibration pd dL dR*sourceInputCharge sR+\n        sourceInputCharge dR*noetherChargeCalibration ps sL sR+\n        noetherChargeCalibration pd dL dR*noetherChargeCalibration ps sL sR)*\n        (nativeDirectionalOrderedCoulomb n+actualNativeCoulombCorrection event n)/\n          ((Stage10.ActionNormalization.phaseMomentum : ℂ)*(actualRootPhaseSpeed eps s n : ℂ))+\n      (otherEMCoefficient event n pd ps dL dR sL sR+noetherNonPureCoefficient event n pd ps dL dR sL sR)/\n        ((4*(Real.pi : ℂ))*((Stage10.ActionNormalization.phaseMomentum : ℂ)*(actualRootPhaseSpeed eps s n : ℂ)))",
+            "module": "ActualDressedEMCorrectedRootFluxConsumer"
+          }
+        ],
+        "declarations": [
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.nativeTransverseRead",
+            "private": false,
+            "kind": "def",
+            "line": 23,
+            "source_signature": "def nativeTransverseRead (k : PhysicalMomentum) (v : Fin 4 → ℂ) : Fin 3 → ℂ",
+            "module": "ActualDressedEMCorrectedRootFluxConsumer"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actual_native_transverse_source_symbol",
+            "private": false,
+            "kind": "theorem",
+            "line": 27,
+            "source_signature": "theorem actual_native_transverse_source_symbol (omega : ℝ) (k : PhysicalMomentum) (v : Fin 4 → ℂ)\n    (q_ne : spatialSquare k≠0) :\n    nativeTransverseRead k (nativePhysicalEMPrincipal omega k v)=\n      (2*(lapse : ℂ)*((omega : ℂ)^2-(nativePrimitiveSpeed : ℂ)^2*(spatialSquare k : ℂ))) •\n        nativeTransverseRead k v",
+            "module": "ActualDressedEMCorrectedRootFluxConsumer"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actualRootPhaseSpeedSquared",
+            "private": false,
+            "kind": "def",
+            "line": 53,
+            "source_signature": "def actualRootPhaseSpeedSquared (eps s : ℝ) (n : PhysicalMomentum) : ℝ",
+            "module": "ActualDressedEMCorrectedRootFluxConsumer"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actual_corrected_root_principal_source",
+            "private": false,
+            "kind": "theorem",
+            "line": 57,
+            "source_signature": "theorem actual_corrected_root_principal_source (event : DressedEvent) (eps s : ℝ) (n : PhysicalMomentum)\n    (mu nu : Fin 4) (balanced : PencilClockBalanced event eps n) (finite : EMColumnsClockFinite event eps n)\n    (regular : (zeroClockClearing event eps n).eval (s : ℂ)≠0)\n    (root : (s : ℂ)∈visibleRoots (zeroClockFrequencyEMFraction event eps n mu nu)) :\n    nativePhysicalEMPrincipal (sourceFrequency eps s) ((eps^2 : ℝ) • n)\n      (emInsertion.transpose*ᵥactualEMZeroClockMode event eps n nu (s : ℂ))=\n      nativeEMRestInsertion.transpose*ᵥnativeCompleteCorrection (frequencyRay eps s n)\n        (zeroClockQuantumResponse event eps s n) (actualEMZeroClockMode event eps n nu (s : ℂ))",
+            "module": "ActualDressedEMCorrectedRootFluxConsumer"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actual_corrected_root_speed_source",
+            "private": false,
+            "kind": "theorem",
+            "line": 86,
+            "source_signature": "theorem actual_corrected_root_speed_source (event : DressedEvent) (eps s : ℝ) (n : PhysicalMomentum)\n    (mu nu : Fin 4) (balanced : PencilClockBalanced event eps n) (finite : EMColumnsClockFinite event eps n)\n    (regular : (zeroClockClearing event eps n).eval (s : ℂ)≠0)\n    (root : (s : ℂ)∈visibleRoots (zeroClockFrequencyEMFraction event eps n mu nu))\n    (q_ne : spatialSquare ((eps^2 : ℝ) • n)≠0) :\n    (2*(lapse : ℂ)*(spatialSquare ((eps^2 : ℝ) • n) : ℂ)*\n      ((actualRootPhaseSpeedSquared eps s n : ℂ)-(nativePrimitiveSpeed : ℂ)^2)) •\n        nativeTransverseRead ((eps^2 : ℝ) • n)\n          (emInsertion.transpose*ᵥactualEMZeroClockMode event eps n nu (s : ℂ))=\n      nativeTransverseRead ((eps^2 : ℝ) • n)\n        (nativeEMRestInsertion.transpose*ᵥnativeCompleteCorrection (frequencyRay eps s n)\n          (zeroClockQuantumResponse event eps s n) (actualEMZeroClockMode event eps n nu (s : ℂ)))",
+            "module": "ActualDressedEMCorrectedRootFluxConsumer"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actual_corrected_root_speed_component_price",
+            "private": false,
+            "kind": "theorem",
+            "line": 111,
+            "source_signature": "theorem actual_corrected_root_speed_component_price (event : DressedEvent) (eps s : ℝ) (n : PhysicalMomentum)\n    (mu nu : Fin 4) (balanced : PencilClockBalanced event eps n) (finite : EMColumnsClockFinite event eps n)\n    (regular : (zeroClockClearing event eps n).eval (s : ℂ)≠0)\n    (root : (s : ℂ)∈visibleRoots (zeroClockFrequencyEMFraction event eps n mu nu))\n    (q_ne : spatialSquare ((eps^2 : ℝ) • n)≠0) (i : Fin 3)\n    (coordinate_ne : nativeTransverseRead ((eps^2 : ℝ) • n)\n      (emInsertion.transpose*ᵥactualEMZeroClockMode event eps n nu (s : ℂ)) i≠0) :\n    (actualRootPhaseSpeedSquared eps s n : ℂ)=(nativePrimitiveSpeed : ℂ)^2+\n      nativeTransverseRead ((eps^2 : ℝ) • n)\n        (nativeEMRestInsertion.transpose*ᵥnativeCompleteCorrection (frequencyRay eps s n)\n          (zeroClockQuantumResponse event eps s n) (actualEMZeroClockMode event eps n nu (s : ℂ))) i/\n        (2*(lapse : ℂ)*(spatialSquare ((eps^2 : ℝ) • n) : ℂ)*nativeTransverseRead ((eps^2 : ℝ) • n)\n          (emInsertion.transpose*ᵥactualEMZeroClockMode event eps n nu (s : ℂ)) i)",
+            "module": "ActualDressedEMCorrectedRootFluxConsumer"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actualFullPhysicalFlux",
+            "private": false,
+            "kind": "def",
+            "line": 132,
+            "source_signature": "def actualFullPhysicalFlux (event : DressedEvent) (eps s : ℝ) (n : PhysicalMomentum) (nu : Fin 4) : Fin 289 → ℂ",
+            "module": "ActualDressedEMCorrectedRootFluxConsumer"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.forcing_read_add",
+            "private": true,
+            "kind": "theorem",
+            "line": 139,
+            "source_signature": "private theorem forcing_read_add (p : Fin 4 → ℂ) (f g : Fin 289 → ℂ) :\n    nativeCompleteForceRead p (f+g)=nativeCompleteForceRead p f+nativeCompleteForceRead p g",
+            "module": "ActualDressedEMCorrectedRootFluxConsumer"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.original_auxiliary_em_input_zero",
+            "private": true,
+            "kind": "theorem",
+            "line": 147,
+            "source_signature": "private theorem original_auxiliary_em_input_zero (nu : Fin 4) :\n    emAuxiliarySlice (fun i => emInsertion i nu)=0",
+            "module": "ActualDressedEMCorrectedRootFluxConsumer"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.observed_em_forcing",
+            "private": true,
+            "kind": "theorem",
+            "line": 158,
+            "source_signature": "private theorem observed_em_forcing (p : Fin 4 → ℂ) (nu : Fin 4) :\n    nativeEMRestInsertion.transpose*ᵥnativeCompleteForceRead p (fun i => emInsertion i nu)=\n      (3/4 : ℂ) • Pi.single nu 1",
+            "module": "ActualDressedEMCorrectedRootFluxConsumer"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actual_corrected_physical_schur_flux",
+            "private": false,
+            "kind": "theorem",
+            "line": 169,
+            "source_signature": "theorem actual_corrected_physical_schur_flux (event : DressedEvent) (eps s : ℝ) (n : PhysicalMomentum)\n    (mu nu : Fin 4) (eps_ne : eps≠0) (balanced : PencilClockBalanced event eps n) (finite : EMColumnsClockFinite event eps n)\n    (regular : (zeroClockClearing event eps n).eval (s : ℂ)≠0)\n    (root : (s : ℂ)∈visibleRoots (zeroClockFrequencyEMFraction event eps n mu nu)) :\n    let a : Fin 289 → ℂ",
+            "module": "ActualDressedEMCorrectedRootFluxConsumer"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actualRootPhaseSpeed",
+            "private": false,
+            "kind": "def",
+            "line": 211,
+            "source_signature": "def actualRootPhaseSpeed (eps s : ℝ) (n : PhysicalMomentum) : ℝ",
+            "module": "ActualDressedEMCorrectedRootFluxConsumer"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actualFullRootCouplingRead",
+            "private": false,
+            "kind": "def",
+            "line": 215,
+            "source_signature": "def actualFullRootCouplingRead (event : DressedEvent) (eps s : ℝ) (n pd ps : PhysicalMomentum)\n    (dL dR sL sR : CompositeLeg) : ℂ",
+            "module": "ActualDressedEMCorrectedRootFluxConsumer"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actual_full_root_coupling_balance",
+            "private": false,
+            "kind": "theorem",
+            "line": 221,
+            "source_signature": "theorem actual_full_root_coupling_balance (event : DressedEvent) (eps s : ℝ) (n pd ps : PhysicalMomentum)\n    (dL dR sL sR : CompositeLeg) :\n    actualFullRootCouplingRead event eps s n pd ps dL dR sL sR=\n      (sourceInputCharge dR*sourceInputCharge sR+\n        noetherChargeCalibration pd dL dR*sourceInputCharge sR+\n        sourceInputCharge dR*noetherChargeCalibration ps sL sR+\n        noetherChargeCalibration pd dL dR*noetherChargeCalibration ps sL sR)*\n        (nativeDirectionalOrderedCoulomb n+actualNativeCoulombCorrection event n)/\n          ((Stage10.ActionNormalization.phaseMomentum : ℂ)*(actualRootPhaseSpeed eps s n : ℂ))+\n      (otherEMCoefficient event n pd ps dL dR sL sR+noetherNonPureCoefficient event n pd ps dL dR sL sR)/\n        ((4*(Real.pi : ℂ))*((Stage10.ActionNormalization.phaseMomentum : ℂ)*(actualRootPhaseSpeed eps s n : ℂ)))",
+            "module": "ActualDressedEMCorrectedRootFluxConsumer"
+          }
+        ],
+        "imports": [
+          {
+            "module": "ActualDressedEMStaticCorrectionPrice",
+            "object_path": "Lean/scratch/AlphaSource/ActualDressedEMCorrectedCouplingSourceOwn/ActualDressedEMStaticCorrectionPrice.olean",
+            "object_sha256": "928e490fed621f9591c87c0bd9bf9b0c85ba953e19b4e7515d6272d91dbc8761"
+          }
+        ],
+        "strict": {
+          "exit": 0,
+          "seconds": 36.451,
+          "command": [
+            "lake",
+            "env",
+            "lean",
+            "--trust=0",
+            "-j1",
+            "-DwarningAsError=true",
+            "-DmaxErrors=4",
+            "-DElab.async=false",
+            "-o",
+            "Lean/scratch/AlphaSource/ActualDressedEMCorrectedCouplingSourceOwn/ActualDressedEMCorrectedRootFluxConsumer.olean",
+            "Lean/scratch/AlphaSource/ActualDressedEMCorrectedCouplingSourceOwn/ActualDressedEMCorrectedRootFluxConsumer.lean"
+          ],
+          "source_sha256": "6ae221ed52627a4fa635c8b2c38b6b3dcd6e15831d997b697a2c4a0eb59be8a2",
+          "object_sha256": "ce33d696f6a6a744ae61cee8e1b7f3ea1747fe08454fc819e7123d53b860e426"
+        }
+      }
+    ],
+    "node_freezes": [
+      {
+        "path": "Lean/scratch/AlphaSource/ActualDressedEMCorrectedCouplingSourceOwn/node1-frozen.json",
+        "sha256": "c731e2fd7ccca1b73af5a8d2cd423f1477b42a1d088ae68c167f9cc7027645fc"
+      },
+      {
+        "path": "Lean/scratch/AlphaSource/ActualDressedEMCorrectedCouplingSourceOwn/node2-frozen.json",
+        "sha256": "6bcc7a4a416009385a8eeb94389ba6b55f31b5c435425a35aab7f94127cdd7e0"
+      },
+      {
+        "path": "Lean/scratch/AlphaSource/ActualDressedEMCorrectedCouplingSourceOwn/node3-frozen.json",
+        "sha256": "447c49c257a63c85467e8ae5e0ea9b8352730a1cdf83074dc393136927f3e4aa"
+      }
+    ],
+    "inputs": {
+      "ActualDressedEMNativeCoulombUnitOwn": {
+        "path": "Lean/scratch/AlphaSource/ActualDressedEMNativeCoulombUnitOwn/candidate.json",
+        "sha256": "4721d7d85cf824bbfd391b29ff1697c8d50705c91c9587e76579bf4c41f318e0"
+      },
+      "ActualDressedEMNativeMomentumPrincipalOwn": {
+        "path": "Lean/scratch/AlphaSource/ActualDressedEMNativeMomentumPrincipalOwn/candidate.json",
+        "sha256": "243eaf5358f6fafe00ba2195e9ebbd56fe5d8c334f83fbc4e9816165d75b4b07"
+      },
+      "ActualDressedEMPhysicalResidueFluxOwn": {
+        "path": "Lean/scratch/AlphaSource/ActualDressedEMPhysicalResidueFluxOwn/candidate.json",
+        "sha256": "1a145b8eae46c08c0bd57395350457763be080b7ec53a4ebe552451771a13bce"
+      }
+    },
+    "scope": {
+      "complete_force": "All complex four-momenta, arbitrary full289 fields and arbitrary full289 quantum matrices for the native elimination/principal identities. Actual corrected forcing consumes original adjugate column, PencilClockBalanced, EMColumnsClockFinite and original independent D0/d0 regularity charts.",
+      "correction_producer": "Explicit original Q_R-RB W Q_B-S0/lower operator applied to the actual source column. The finite normalized static correction function has no difference-of-couplings definition.",
+      "ordered_price": "Fixed original event/n on nonzero spatialSquare(n), original irClockDeterminant/factor/pole-order mouth plus eventually actual balanced/full-column/clearing charts. The generated source function returns the actualNativeCoulombCorrection endpoint in the original punctured-eps order.",
+      "propagation": "Actual real source EM roots. Full constrained symbol is preserved; arbitrary-field transverse projection is source-generated. Branch phase speed is physicalOmega^2/physicalKSquare. Its component price uses an explicit nonzero observable coordinate chart, not a prescribed corrected speed or photon realization.",
+      "residue": "Original complete normalized physical full-column pole/residue series, including analytic column, corrected physical frequency derivative and all higher principal orders. The original eps^2 physical-clock chain, original clearing unit and denominator-tail unit remain their paid sources.",
+      "units_and_read": "Original h and physical actual-root frequency/momentum coordinates are consumed together. The full coupling is a raw signed ordered read with all calibration/15EM/non-pure balances retained; no new fullQ unit-covariance claim or change-of-h-only invariance is made.",
+      "actual_occurrences": "The static regular column and the root/pole coefficients are restrictions of the same original source column/pencil family at their actual frequency points. N3/fullY-plus-delta CompositeLeg and N1 Gauss preparation remain distinct actual occurrences, with no forced iso.",
+      "physical": "This package prices actual native-to-corrected source terms and supplies branch propagation plus complete residue flux. It does not assert a global uniform c_corr, a simple physical photon pole, calibrated N1=N3 electron identity or the final Thomson/alpha0 observable.",
+      "controller": "Subordinate producer and actual-source consumers. Fixed root/current, whole ledger and generated next unchanged."
+    },
+    "effective_lean_path_file": "Lean/scratch/AlphaSource/ActualDressedEMCorrectedCouplingSourceOwn/effective-lean-path.txt",
+    "effective_lean_path_sha256": "dd8b57372dfd8680cf09ee512f369402895e0b58a9e5b83407728692246109ab",
+    "next_return_contract": "Use the generated actual Q/background/lower static correction function and its price, the actual root transverse speed correction and complete physical Schur residue flux to solve the real source response/normalization. Consume the independently generated N1 Gauss charge and normalized energy-jet evidence through their actual occurrence transport to the retained N3/fullY-plus-delta/calibrated full observable, rather than asserting an iso or replacing c_corr by c0. The remaining physical Thomson/alpha0 identity must use this same complete corrected source, constraints, calibration/15EM/non-pure terms and all-orders pole disposition. No native Green/Gram/single4pi/native units or already-paid original physical clock/residue gate is reopened.",
+    "independent_pre_review": {
+      "path": "Lean/scratch/AlphaSource/ActualDressedEMCorrectedCouplingSourceOwn/independent-certify-review.json",
+      "sha256": "69e38059e09c32806ed4d59254969128068197634e4f0f09e40dfe469df4ee66"
+    },
+    "kernel_type_scope": "Audit uses complete getConstInfo type, including the let-a conclusion omitted by signature metadata parser.",
+    "independent_finite_controls": {
+      "script_path": "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/check_actual_dressed_em_corrected_coupling_source.py",
+      "script_sha256": "7cee506e9b8f441930a4c977a8059fa8ee33cacd07033cf4b1202d1954a66b1b",
+      "report_path": "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/check_actual_dressed_em_corrected_coupling_source.json",
+      "report_sha256": "482bf1bc46eead459b54684d615c5605954254f485522754340b23eba61c7410",
+      "positive": 20,
+      "negative": 17,
+      "failed": [],
+      "invocation_controls": [
+        {
+          "case": "default frozen source",
+          "exit": 0,
+          "stdout": "{\"failed\": [], \"negative\": 17, \"positive\": 20, \"report_sha256\": \"52dc61de6792fb7df66ddfc6466dea008db7167b182c50aed146fda368cda914\", \"script_sha256\": \"7cee506e9b8f441930a4c977a8059fa8ee33cacd07033cf4b1202d1954a66b1b\", \"status\": \"PASS\"}\n",
+          "stderr": ""
+        },
+        {
+          "case": "explicit root/candidate/production",
+          "exit": 0,
+          "stdout": "{\"failed\": [], \"negative\": 17, \"positive\": 20, \"report_sha256\": \"482bf1bc46eead459b54684d615c5605954254f485522754340b23eba61c7410\", \"script_sha256\": \"7cee506e9b8f441930a4c977a8059fa8ee33cacd07033cf4b1202d1954a66b1b\", \"status\": \"PASS\"}\n",
+          "stderr": ""
+        },
+        {
+          "case": "similar source reversing auxiliary source sign rejected",
+          "exit": 1,
+          "stdout": "",
+          "stderr": "Traceback (most recent call last):\n  File \"Verification/physics/low-energy-phenomenology/alpha-source/em-identification/check_actual_dressed_em_corrected_coupling_source.py\", line 149, in <module>\n    main()\n  File \"Verification/physics/low-energy-phenomenology/alpha-source/em-identification/check_actual_dressed_em_corrected_coupling_source.py\", line 132, in main\n    bound = source_binding(candidate, args.source_dir.resolve() if args.source_dir else None)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"Verification/physics/low-energy-phenomenology/alpha-source/em-identification/check_actual_dressed_em_corrected_coupling_source.py\", line 120, in source_binding\n    raise ValueError(\"selected source changes frozen declaration bodies\")\nValueError: selected source changes frozen declaration bodies\n"
+        }
+      ],
+      "scope": "Exact original fullforce Schur/Q_R-minus-RBWQ_B-background-lower, original finite ordered-eps4 static correction with Gram once, arbitrary-field transverse projection, branch phase-price/nonzero coordinate and totalized zero-phase scope, allanalytic/higher physical flux read and full calibration/channel coupling balance. No numerical source correction, uniform/group/front c, Thomson or alpha0 evaluation."
+    },
+    "focused_attention": [
+      {
+        "case": "theorem_mouth_lint.py",
+        "exit": 0,
+        "stdout": "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedEMCorrectedRootFluxConsumer.lean:3: WARN: `autoImplicit false` left in file; remove unless policy\nVerification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedEMForcedSchurSource.lean:4: WARN: `autoImplicit false` left in file; remove unless policy\nVerification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedEMStaticCorrectionPrice.lean:3: WARN: `autoImplicit false` left in file; remove unless policy\n",
+        "stderr": ""
+      },
+      {
+        "case": "frontier_guard.py",
+        "exit": 0,
+        "stdout": "FILE Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedEMForcedSchurSource.lean: lines=198 bytes=11573 declarations=19 namespaces=1 scratch=no tracked=no\nFILE Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedEMStaticCorrectionPrice.lean: lines=96 bytes=6608 declarations=5 namespaces=1 scratch=no tracked=no\nFILE Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedEMCorrectedRootFluxConsumer.lean: lines=235 bytes=16594 declarations=14 namespaces=1 scratch=no tracked=no\n[frontier-guard] blocks=0 warnings=0 import-scope=active-files\n",
+        "stderr": ""
+      }
+    ],
+    "production_whitespace_normalization": {
+      "frozen_source": "Lean/scratch/AlphaSource/ActualDressedEMCorrectedCouplingSourceOwn/ActualDressedEMCorrectedRootFluxConsumer.lean",
+      "frozen_sha256": "6ae221ed52627a4fa635c8b2c38b6b3dcd6e15831d997b697a2c4a0eb59be8a2",
+      "normalized_source": "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedEMCorrectedRootFluxConsumer.lean",
+      "normalized_sha256": "aa49d51185ec1d9168f55d4c2add88d83fba68f47b2534dbe2bda5ba6bb161bd",
+      "only_changed_line": 207,
+      "change": "Remove one trailing ASCII space; original frozen candidate and all physical declarations retained",
+      "new_default_leaf_and_typed_compile_required": true
+    },
+    "independent_final_review": {
+      "path": "Lean/scratch/AlphaSource/ActualDressedEMCorrectedCouplingSourceOwn/independent-final-certify-review.json",
+      "sha256": "6fdd0f7a512f2105887c59027c158213c9e4ece3c7ec70ede7d1adef3fa35372"
+    }
+  },
+  "audit_source_object_hashes": {
+    "module": "ActualDressedEMCorrectedCouplingSourceFullAudit",
+    "exit": 0,
+    "seconds": 58.48734211921692,
+    "source_sha256": "2549e1c74846a4fa1315d62f4c7b91c2a2b8c31f80757a23690aae97fb6877ce",
+    "object_sha256": "bab6e830457073c912783634a8ff603f2dd7ad596a4151b7548831145c7903c5"
+  },
+  "production_source_object_hashes": [
+    {
+      "module": "ActualDressedEMForcedSchurSource",
+      "exit": 0,
+      "seconds": 30.650607109069824,
+      "source_sha256": "7c6f7fd25b3ab279d4f3c5f097b6f46e6b6d27e3cd86cab823c50a44ad459942",
+      "object_sha256": "cf8c565130fb70b6127d88dcf2cec68f98d61a59d17ba99f0e3e09c255320cf7"
+    },
+    {
+      "module": "ActualDressedEMStaticCorrectionPrice",
+      "exit": 0,
+      "seconds": 40.746437072753906,
+      "source_sha256": "60083d15aeb8fd867749db479dcd5734ba916cc24b96ee9554da219279d9e880",
+      "object_sha256": "3960087c1ddf707ec068fd62fffe967e6cfb78f6649c46f0aaa1b05cd9d032fa"
+    },
+    {
+      "module": "ActualDressedEMCorrectedRootFluxConsumer",
+      "exit": 0,
+      "seconds": 32.834821939468384,
+      "source_sha256": "aa49d51185ec1d9168f55d4c2add88d83fba68f47b2534dbe2bda5ba6bb161bd",
+      "object_sha256": "1098cca621d7665fd7e3c8627e34d59cbbce6883ec359755eaaebdae4c20eba0"
+    },
+    {
+      "module": "ActualDressedEMCorrectedCouplingSourceFullAuditProductionConsumers",
+      "exit": 0,
+      "seconds": 40.992154121398926,
+      "source_sha256": "72d54adbfd1259c6cc54d857dffc41def940297996afb33d600cfd7bd3aaad99",
+      "object_sha256": "dda9cc1607c4ed4241319720000053f0d1927e73df97adef196643f0defd38f0"
+    }
+  ],
+  "source_byte_identity": true,
+  "whitespace_check": "explicit untracked source/Audit PASS",
+  "public_mouths": [
+    "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.nativeCompleteForceRead",
+    "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actual_native_complete_force_identity",
+    "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actual_complete_em_observation",
+    "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.nativeCompleteCorrection",
+    "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actual_native_forced_principal",
+    "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actual_corrected_forced_em_column",
+    "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actual_corrected_em_principal_source",
+    "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actualStaticSourceCorrection",
+    "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actual_static_noether_coupling_source",
+    "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actual_static_correction_price_return",
+    "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.nativeTransverseRead",
+    "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actual_native_transverse_source_symbol",
+    "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actualRootPhaseSpeedSquared",
+    "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actual_corrected_root_principal_source",
+    "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actual_corrected_root_speed_source",
+    "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actual_corrected_root_speed_component_price",
+    "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actualFullPhysicalFlux",
+    "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actual_corrected_physical_schur_flux",
+    "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actualRootPhaseSpeed",
+    "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actualFullRootCouplingRead",
+    "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actual_full_root_coupling_balance"
+  ],
+  "owned_count": 80,
+  "tests": [
+    "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSourceFullAudit.checked_actual_native_complete_force_identity",
+    "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSourceFullAudit.checked_actual_complete_em_observation",
+    "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSourceFullAudit.checked_actual_native_forced_principal",
+    "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSourceFullAudit.checked_actual_corrected_forced_em_column",
+    "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSourceFullAudit.checked_actual_corrected_em_principal_source",
+    "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSourceFullAudit.checked_actual_static_noether_coupling_source",
+    "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSourceFullAudit.checked_actual_static_correction_price_return",
+    "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSourceFullAudit.checked_actual_native_transverse_source_symbol",
+    "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSourceFullAudit.checked_actual_corrected_root_principal_source",
+    "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSourceFullAudit.checked_actual_corrected_root_speed_source",
+    "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSourceFullAudit.checked_actual_corrected_root_speed_component_price",
+    "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSourceFullAudit.checked_actual_corrected_physical_schur_flux",
+    "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSourceFullAudit.checked_actual_full_root_coupling_balance"
+  ],
+  "anchors": [
+    "SaturationMonoid.PhysicsCore.StageNineEnrichedProofFreeSource.positiveSmoothUnifiedSource",
+    "SaturationMonoid.PhysicsCore.Stage9C.Material.SpinPair.actual",
+    "LowEnergy.GaussComposite.ActualEMAction.emOriginalJacobi",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeSchurClock.nativeSchurMatrix",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_momentum_decomposition",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_em_momentum_principal",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_physical_em_principal",
+    "LowEnergy.GaussComposite.ActualDressedEMAuxiliaryFeedback.native_auxiliary_inverse_matrix_action",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeAuxiliary.actual_native_auxiliary_inverse_left",
+    "LowEnergy.GaussComposite.ActualEMCarrierOwn.emInsertion",
+    "LowEnergy.GaussComposite.ActualEMCurrentSplit.em_coordinate_gram",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_rest_coordinate_gram",
+    "LowEnergy.GaussComposite.ActualDressedEMZeroClockColumns.actual_zero_clock_em_threshold_equation",
+    "LowEnergy.GaussComposite.ActualDressedEMZeroClockColumns.actual_zero_clock_em_column_tensor",
+    "LowEnergy.GaussComposite.ActualDressedEMQuantumThreshold.actual_zero_clock_threshold_quantum",
+    "LowEnergy.GaussComposite.ActualDressedEMQuantumThreshold.actual_zero_clock_em_original_balance",
+    "LowEnergy.GaussComposite.ActualDressedEMClockDispersion.actual_corrected_physical_threshold",
+    "LowEnergy.GaussComposite.ActualDressedEMPhysicalResidueFlux.actual_em_original_physical_residue_balance",
+    "LowEnergy.GaussComposite.ActualDressedOrderedStatic.actual_ordered_em_return",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_noether_native_coulomb_balance"
+  ],
+  "direct_dependencies": [
+    [
+      "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actual_native_complete_force_identity",
+      [
+        "LowEnergy.GaussComposite.ActualDressedEMNativeSchurClock.nativeSchurMatrix",
+        "LowEnergy.GaussComposite.ActualDressedEMAuxiliaryFeedback.native_auxiliary_inverse_matrix_action",
+        "LowEnergy.GaussComposite.ActualDressedEMNativeAuxiliary.actual_native_auxiliary_inverse_left"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actual_complete_em_observation",
+      [
+        "LowEnergy.GaussComposite.ActualEMCarrierOwn.emInsertion"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actual_native_forced_principal",
+      [
+        "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actual_native_complete_force_identity",
+        "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_momentum_decomposition",
+        "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_em_momentum_principal"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actual_corrected_forced_em_column",
+      [
+        "LowEnergy.GaussComposite.ActualDressedEMZeroClockColumns.actual_zero_clock_em_threshold_equation",
+        "LowEnergy.GaussComposite.ActualDressedEMQuantumThreshold.actual_zero_clock_threshold_quantum"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actual_corrected_em_principal_source",
+      [
+        "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actual_corrected_forced_em_column",
+        "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actual_native_forced_principal",
+        "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_native_rest_coordinate_gram",
+        "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_physical_em_principal"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actual_static_noether_coupling_source",
+      [
+        "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actual_corrected_em_principal_source",
+        "LowEnergy.GaussComposite.ActualDressedEMZeroClockColumns.actual_zero_clock_em_column_tensor"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actual_static_correction_price_return",
+      [
+        "LowEnergy.GaussComposite.ActualDressedOrderedStatic.actual_ordered_em_return",
+        "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actual_static_noether_coupling_source"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actual_native_transverse_source_symbol",
+      [
+        "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.nativePhysicalEMPrincipal"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actual_corrected_root_principal_source",
+      [
+        "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actual_native_forced_principal",
+        "LowEnergy.GaussComposite.ActualDressedEMQuantumThreshold.actual_zero_clock_em_original_balance"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actual_corrected_root_speed_source",
+      [
+        "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actual_corrected_root_principal_source",
+        "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actual_native_transverse_source_symbol"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actual_corrected_root_speed_component_price",
+      [
+        "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actual_corrected_root_speed_source"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actual_corrected_physical_schur_flux",
+      [
+        "LowEnergy.GaussComposite.ActualDressedEMPhysicalResidueFlux.actual_em_original_physical_residue_balance",
+        "LowEnergy.GaussComposite.ActualDressedEMClockDispersion.actual_corrected_physical_threshold",
+        "LowEnergy.GaussComposite.ActualDressedEMQuantumThreshold.actual_zero_clock_threshold_quantum",
+        "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actual_native_forced_principal"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actual_full_root_coupling_balance",
+      [
+        "LowEnergy.GaussComposite.ActualDressedEMNativeCoulomb.actual_noether_native_coulomb_balance"
+      ]
+    ]
+  ],
+  "closure": {
+    "scope": "all producer-module declarations including private/generated, all direct consumers/controls; recursive complete type/value/allowOpaque/constructors/recursor RHS",
+    "nodes": 106773,
+    "opaque_all_read": 73,
+    "axioms": 3,
+    "authorized_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "unknown": 0,
+    "unsafe": 0,
+    "partial": 0,
+    "manifest_sha256": "b50a31e40c105d3e68df6f1fc0584620dac6db7ecc214fea6be300d13f2af4c2",
+    "target_scan": {
+      "project_nodes": 25600,
+      "target_matches": []
+    }
+  },
+  "machine_stdout": "ACTUAL_CORRECTED_COUPLING_SOURCE_PASS public=21 owned=80 tests=13 nodes=106773 anchors=20 direct=13 opaque_all_read=73 axioms=3 unknown=0 unsafe=0 partial=0\n'LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actual_native_complete_force_identity' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actual_complete_em_observation' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actual_native_forced_principal' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actual_corrected_forced_em_column' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actual_corrected_em_principal_source' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actual_static_noether_coupling_source' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actual_static_correction_price_return' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actual_native_transverse_source_symbol' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actual_corrected_root_principal_source' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actual_corrected_root_speed_source' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actual_corrected_root_speed_component_price' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actual_corrected_physical_schur_flux' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualDressedEMCorrectedCouplingSource.actual_full_root_coupling_balance' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n",
+  "production_gate": "fresh strict production sources and direct consumer slice; complete closure reused only for byte-identical source",
+  "generated_structure": [
+    "The frozen NativeCoulombUnit3/NativeMomentum principal, original full289 EM column, native auxiliary inverse and complete physical clock/residue packages are directly consumed. No Green/Gram/single4pi/native unit gate is reopened.",
+    "nativeCompleteForceRead is the original force elimination f_R minus J_RB W f_B, on every full289 force. The original J_BB inverse gives nativeSchur(p)*rest(v)=nativeCompleteForceRead(p,J(p)*v) for arbitrary full289 v, without a caller kernel or force balance premise.",
+    "The actual EM observer is kernel-identified with the same nativeRest restriction. Its auxiliary input slots are source-zero. All gauge/colour, coframe, scalar, primal/independent dual, Lorentz/gravity/multiplier and auxiliary rows remain in the original full field.",
+    "The actual full289 adjugate EM column satisfies original H0*V0=D0*d0*E. Original H0=d0*J-N_Q and the original quotient read at regular D0/d0 yield (J-Q0)*v=E before any EM compression.",
+    "nativeCompleteCorrection is generated explicitly as [Q_R minus RB W Q_B] minus nativeSchur(0)*r minus nativeMomentumLower(p)*r. It is not a difference of coupling definitions. The source principal then returns M(p)*E^T*v=Gamma*input plus E_R^T*that actual correction for each original forcing column.",
+    "For actual static column0, original M00=2*lapse*physicalKSquare gives the finite source ordered Noether coupling as the frozen signed native baseline plus actualStaticSourceCorrection. Its expression is minus(4h/3)^2*E_R^T*[Q_R-RB W Q_B-S0 r-lower r]_0 divided by8*pi*lapse*spatialSquare(n). Original physical k=eps^2*n exactly consumes the eps^4 weight.",
+    "The unchanged original ordered EM return prices this explicit actual Q/background/lower source function into the already-paid actualNativeCoulombCorrection endpoint. The theorem consumes original clock determinant/factors, EM pole-order bound and the actual complete-column/clearing chart. No correction endpoint or desired scalar coefficient is a premise.",
+    "nativeTransverseRead is the source spatial constraint projector on arbitrary four-fields. Projection of the original complete time/space symbol cancels its Gauss/time-space/longitudinal terms without requiring temporal-zero or transverse input.",
+    "The same actualEMZeroClockMode obeys M(physicalOmega,physicalK)*E^T*v=E_R^T*nativeCompleteCorrection. This generates a vector relation for actualRootPhaseSpeedSquared=physicalOmega^2/physicalKSquare relative to the native c0^2. On an actual nonzero transverse-coordinate chart, the full quantum/background/lower force gives the explicit corrected branch speed-squared correction; no speed/null/scalar/isotropic/simple-pole/electron eigenvalue premise is introduced.",
+    "actualFullPhysicalFlux contains the original correctedPhysicalClockJet times canonical full physical residue and every higher principal order. The original source physical residue forcing balance is read through the same native force elimination. Its source principal acting on the analytic column plus this complete flux equals original Gamma*input plus the explicit source correction acting on that same analytic column. No analytic, high-order or auxiliary feedback term is discarded to assert a unit residue.",
+    "actualFullRootCouplingRead is a raw original ordered coupling read using original h=phaseMomentum and the same physical actual-root phase-speed read. Its exact balance retains native signed baseline plus the now-priced source correction, both N3 composite charge calibrations, all15 other EM components and all non-pure channels. It does not identify these N3/fullY-plus-delta endpoints with the separate N1 sourceChargedGaussPrepared occurrence."
+  ],
+  "boundary": "Same actual full289 adjugate forcing column/sourceM4/217nativeSchur/72auxW/actualEMroot/sourcephysicalfrequency and momentum/fullQ/background/lower. Native correction is original Q_R−J_RB WQ_B−S0r−lower r, not difference-of-coupling producer. Finite static orderedread−eps4 splits native signedC plus actual source correction; correction-price is original ordered Tendsto with original regular/factors/order/columns, not evaluated norminterval or uniform numericalrate. Phase-speed is branch-specific omega²/q, its price requires actualroot/regular/q and nonzero transversecoordinate; it is not group/front speed or uniformc_corr/Thomson. Full physical clockjet/canonicalresidue/allhigher/analytic remain. actualFullRootCouplingRead/balance is algebraic readout, including totalized division at phaseSpeed0; physical read still needs actual nonzero propagation/standard normalization, not alpha0. FullN3 calibration/15otherEM/nonpure retained. Same fixedroot/row/tick controllerfalse."
+}

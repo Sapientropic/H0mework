@@ -1,0 +1,829 @@
+{
+  "schema": "preparation-vacuum-voltage-gauss-green-whole-first/v1",
+  "phase": "STRIKE",
+  "scope": "same-source subordinate producer; positiveSmoothUnifiedSource/repaired independent dual/SpinPair.actual visit10 row0 tick16→17/current/whole-ledger unchanged",
+  "strict_flags": {
+    "j": 1,
+    "trust": 0,
+    "warningAsError": true,
+    "maxErrors": 1,
+    "Elab.async": false
+  },
+  "nodes": [
+    {
+      "source": "Lean/scratch/AlphaSource/PreparationVacuumVoltageGaussGreen/SourceVoltageGaussIdentity.lean",
+      "source_sha256": "6bb2fd99dcd4c9903bde95065c18e9079be3cd01ab7ae27e879a4c1d37002156",
+      "object": "Lean/scratch/AlphaSource/PreparationVacuumVoltageGaussGreen/overlay/SourceVoltageGaussIdentity.olean",
+      "object_sha256": "d0df706a72d6321dfb24c1c7c42031d0cb66418894f34ff669ac5af3ef337d3d",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "strict_seconds": 25.778,
+      "public_declarations": 4,
+      "imports": {
+        "SourceVoltageWholeForcing": {
+          "object": "Lean/scratch/AlphaSource/PreparationVacuumStaticVoltageSource/overlay/SourceVoltageWholeForcing.olean",
+          "sha256": "08ffa585bc703a317bead4a993fb97c9ab406ef69eba7ee39e97878bfb19d5b4"
+        }
+      },
+      "receipt": "Lean/scratch/AlphaSource/PreparationVacuumVoltageGaussGreen/SourceVoltageGaussIdentity.frozen.json",
+      "receipt_sha256": "d4eb0463fb0e25c29e1b40ae9ceb151d18f41d4969999482fbd4b53141b728c0",
+      "lines": 130,
+      "declarations": [
+        "sourceVoltageBaseCurrent",
+        "sourceVoltage_originalGauss",
+        "sourceVoltage_Gauss_eventually",
+        "sourceVoltage_Gauss_derivative"
+      ]
+    },
+    {
+      "source": "Lean/scratch/AlphaSource/PreparationVacuumVoltageGaussGreen/SourceVoltageGreenSolution.lean",
+      "source_sha256": "967b6463909e77821d87cd89ed1e9431397f613bd9846366fd22a34c5c0af27e",
+      "object": "Lean/scratch/AlphaSource/PreparationVacuumVoltageGaussGreen/overlay/SourceVoltageGreenSolution.olean",
+      "object_sha256": "3fa56fa557b25d6abf93d7a06d9a712e7ae6e2c609d442d6d91c512ddaacc535",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "strict_seconds": 26.409,
+      "public_declarations": 7,
+      "imports": {
+        "SourceVoltageGaussIdentity": {
+          "object": "Lean/scratch/AlphaSource/PreparationVacuumVoltageGaussGreen/overlay/SourceVoltageGaussIdentity.olean",
+          "sha256": "d0df706a72d6321dfb24c1c7c42031d0cb66418894f34ff669ac5af3ef337d3d"
+        },
+        "SaturationMonoid.PhysicsCore.Stage10.StaticGreen.PointSources": {
+          "object": "Lean/scratch/AlphaSource/PreparationNativeObjectRecovery/namespace-clone/SaturationMonoid/PhysicsCore/Stage10/StaticGreen/PointSources.olean",
+          "sha256": "a23ca773693b877fdd9a804620b7682c04a9467d7ba132cf8c2c8f7ccf1b7986"
+        }
+      },
+      "receipt": "Lean/scratch/AlphaSource/PreparationVacuumVoltageGaussGreen/SourceVoltageGreenSolution.frozen.json",
+      "receipt_sha256": "276ad03e0e6485443e3dcd826d185e0cb352aa01bf8b05ecf7b9c183a89abd51",
+      "lines": 72,
+      "declarations": [
+        "sourceVoltageTestResponse",
+        "sourceVoltage_test_generated",
+        "sourceVoltage_green_fundamental",
+        "sourceVoltageRawCharge",
+        "sourceVoltage_raw_potential",
+        "sourceVoltage_point_sources",
+        "sourceVoltage_potential_kernel"
+      ]
+    },
+    {
+      "source": "Lean/scratch/AlphaSource/PreparationVacuumVoltageGaussGreen/SourceVoltageGreenEnergy.lean",
+      "source_sha256": "9ff4da43d01c0bfde363d92f8b942045d933debd4ef99aafb233e577bd7ddaa8",
+      "object": "Lean/scratch/AlphaSource/PreparationVacuumVoltageGaussGreen/overlay/SourceVoltageGreenEnergy.olean",
+      "object_sha256": "4ae206a515a3e628e216d925e72dd9e61a5595f2ab52926f3245951f7b9c166b",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "strict_seconds": 18.656,
+      "public_declarations": 7,
+      "imports": {
+        "SourceVoltageGreenSolution": {
+          "object": "Lean/scratch/AlphaSource/PreparationVacuumVoltageGaussGreen/overlay/SourceVoltageGreenSolution.olean",
+          "sha256": "3fa56fa557b25d6abf93d7a06d9a712e7ae6e2c609d442d6d91c512ddaacc535"
+        },
+        "SourceVoltageGaussEnergyRead": {
+          "object": "Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether/SourceVoltageGaussEnergyRead.olean",
+          "sha256": "786d5bf7bf65a89ba452f577641801d54e6fb9d730a23dda482f527c889e8f92"
+        }
+      },
+      "receipt": "Lean/scratch/AlphaSource/PreparationVacuumVoltageGaussGreen/SourceVoltageGreenEnergy.frozen.json",
+      "receipt_sha256": "c71f9d447c1d37ca9e6555c21aa8112328b6adb5b2326227d7cf6c4403ee551d",
+      "lines": 127,
+      "declarations": [
+        "sourceVoltage_raw_originalGauss",
+        "sourceVoltageActualState",
+        "sourceVoltageGreenProfile",
+        "sourceVoltage_green_energy",
+        "sourceVoltage_energy_weak_gauss",
+        "sourceVoltage_energy_kernel",
+        "sourceVoltage_pair_energy"
+      ]
+    }
+  ],
+  "actual_search_root": "Lean/scratch/AlphaSource/PreparationVacuumVoltageGaussGreen/overlay",
+  "focused_helper": {
+    "path": "Lean/scratch/AlphaSource/PreparationVacuumVoltageGaussGreen/check.py",
+    "sha256": "002c4e6b7d2f24d6a6d9ade67e6e077b5629b9f3c451a286c6c0ba5779a572b4"
+  },
+  "paid_noether": {
+    "path": "Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether/whole-first-strict.json",
+    "sha256": "484642aebfb84756b568a05fb50303efa36b68ce1856c7b1fefa87ff7e5488be"
+  },
+  "import_compatibility": [
+    {
+      "module": "RawActionDensity",
+      "actual_object": "Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether/overlay/import-shims/RawActionDensity.olean",
+      "sha256": "547b8fc9258562b32c5f1489908bf25f3c492964ed836ab78bb7efff635a0554",
+      "payer": "Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether/whole-first-strict.json"
+    },
+    {
+      "module": "CanonicalPreparationPrincipalHistory",
+      "actual_object": "Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether/overlay/import-shims/CanonicalPreparationPrincipalHistory.olean",
+      "sha256": "b83f9c8fbcc5371296275db13fc2dc30a1938c3e2569c3a3e843695267fb8bb6",
+      "payer": "Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether/whole-first-strict.json"
+    },
+    {
+      "module": "CanonicalPreparationPrincipalLaplace",
+      "actual_object": "Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether/overlay/import-shims/CanonicalPreparationPrincipalLaplace.olean",
+      "sha256": "9838aca9705734a4c5efdd9b9cdde8602a0185f65c823d2a1b4e2c1fed432da7",
+      "payer": "Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether/whole-first-strict.json"
+    },
+    {
+      "module": "CanonicalPreparationSourceN1Prepared",
+      "actual_object": "Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether/overlay/import-shims/CanonicalPreparationSourceN1Prepared.olean",
+      "sha256": "32016c2119022f219d099ab3793484f3f9fe98fa08a003f6280ba2559add8d23",
+      "payer": "Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether/whole-first-strict.json"
+    }
+  ],
+  "canonical_action_units": {
+    "source_body_receipt": "Lean/scratch/AlphaSource/PreparationPhysicalActionUnitsAudit/parity.json",
+    "first_receipt": "Lean/scratch/AlphaSource/PreparationPhysicalActionUnitsAudit/production-whole-build.json",
+    "objects": [
+      {
+        "module": "CanonicalPreparationSourceActionTimeMatrix",
+        "path": "Lean/scratch/AlphaSource/PreparationPhysicalLockedGaussBalance/overlay/CanonicalPreparationSourceActionTimeMatrix.olean",
+        "resolved_path": "Lean/scratch/AlphaSource/PreparationPhysicalActionUnitsAudit/overlay/CanonicalPreparationSourceActionTimeMatrix.olean",
+        "sha256": "34825b97bd1ec54dfa717bc5a9162a80576b6e706c24fa0641194f55867fcbde"
+      },
+      {
+        "module": "CanonicalPreparationSourceOriginalEnergyDensity",
+        "path": "Lean/scratch/AlphaSource/PreparationPhysicalActionUnitsAudit/overlay/CanonicalPreparationSourceOriginalEnergyDensity.olean",
+        "resolved_path": "Lean/scratch/AlphaSource/PreparationPhysicalActionUnitsAudit/overlay/CanonicalPreparationSourceOriginalEnergyDensity.olean",
+        "sha256": "4f41db48b8f14f305fad3ed97ab8c578bdebdcd052ebea0bacc3bf1b353c686d"
+      },
+      {
+        "module": "CanonicalPreparationSourceGaussActionTimeReturn",
+        "path": "Lean/scratch/AlphaSource/PreparationPhysicalActionUnitsAudit/overlay/CanonicalPreparationSourceGaussActionTimeReturn.olean",
+        "resolved_path": "Lean/scratch/AlphaSource/PreparationPhysicalActionUnitsAudit/overlay/CanonicalPreparationSourceGaussActionTimeReturn.olean",
+        "sha256": "0e7794ae12439716edc58434de6972358fd4d6fae171eb6db3385e5887280831"
+      }
+    ]
+  },
+  "restart_import_recovery": [
+    {
+      "module": "SourceCoframeSpinConnection",
+      "original_source": "Verification/physics/low-energy-phenomenology/external-composite-decay/SourceCoframeSpinConnection.lean",
+      "original_source_sha256": "6612847faae6a53ebdeddf63b7dc544da75a9f9bf6e8f7d5607a1aff568b2885",
+      "recovery_source": "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-source/SourceCoframeSpinConnection.lean",
+      "recovery_source_sha256": "314c41b905ea6678f6542b05cd0bda584a2c0aa097e1e3ed358abfa98a0d8cfc",
+      "all_non_import_bytes_identical": true,
+      "non_import_body_sha256": "f2ffef6f722dfc8a242c4d00b682b783602e8273752fe023a9b1d3282e1ad721",
+      "old_object_identity_not_replaced_by_new_hash": true,
+      "domain_declarations_removed": false,
+      "mathematical_body_modified": false,
+      "new_object": "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-overlay/SourceCoframeSpinConnection.olean",
+      "new_object_sha256": "d89b48253715465b5a83d600e87e549f7dd8044d81b900d9143ccf2fedf7384b",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "strict_seconds": 17.417,
+      "command": [
+        "lake",
+        "env",
+        "sh",
+        "-c",
+        "export LEAN_PATH=\"$1:$LEAN_PATH\"; shift; exec lean \"$@\"",
+        "restart-imports-only",
+        "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-overlay:Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether/overlay/import-shims:Lean/scratch/AlphaSource/PreparationPhysicalChargedFieldFactor:Lean/scratch/AlphaSource/PreparationVacuumChargedPacketGreen:Lean/scratch/AlphaSource/PreparationPhysicalLockedN1Balance:Lean/scratch/AlphaSource/PreparationVacuumObservedPoleTensor/overlay:Lean/scratch/AlphaSource/PreparationVacuumStaticSpatialSource/overlay:Lean/scratch/AlphaSource/PreparationVacuumStaticSimpleCoupling/overlay:Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether:Lean/scratch/AlphaSource/PreparationPhysicalLockedGaussBalance:Lean/scratch/AlphaSource/PreparationPhysicalLockedGaussBalance/overlay:Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether/overlay:Lean/scratch/AlphaSource/EMGaugePoleReadout:Lean/scratch/AlphaSource/PreparationPhysicalModeChargeReadAudit/overlay:Lean/scratch/AlphaSource/PreparationVacuumObservedStaticResidue/overlay:Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether:Lean/scratch/AlphaSource/PreparationPhysicalModeChargeRead:Lean/scratch/AlphaSource/PreparationPhysicalLockedCurrentFirstResidue:Lean/scratch/AlphaSource/PreparationVacuumFullSlowFieldResponse/overlay:Lean/scratch/AlphaSource/PreparationVacuumNativePoleTensor/overlay:Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether:Lean/scratch/AlphaSource/PreparationPhysicalElectromagneticDirection:Lean/scratch/AlphaSource/PreparationVacuumQuantumSlowResidue/overlay:Lean/scratch/AlphaSource/PreparationPhysicalPinnedVelocity:Lean/scratch/AlphaSource/PreparationVacuumQuantumSlowResponse/overlay:Lean/scratch/AlphaSource/PreparationPhysicalSlowBlock:Lean/scratch/AlphaSource/PreparationVacuumGaugeSlowFrequency/overlay:Lean/scratch/AlphaSource/PreparationPhysicalCausalZeroRead:Lean/scratch/AlphaSource/PreparationPhysicalChargeTimeZero:Lean/scratch/AlphaSource/PreparationPhysicalNativeColourReturn:Lean/scratch/AlphaSource/PreparationPhysicalN1MaterialWard:Lean/scratch/AlphaSource/PreparationPhysicalGaussMaterialContact:Lean/scratch/AlphaSource/PreparationPhysicalGaussColorTorque:Lean/scratch/AlphaSource/PreparationPhysicalModeContact:Lean/scratch/AlphaSource/PreparationPhysicalN1WardCollapse:Lean/scratch/AlphaSource/PreparationVacuumRestModeCoupling/overlay:Lean/scratch/AlphaSource/PreparationPhysicalColorWard:Lean/scratch/AlphaSource/PreparationPhysicalColorCharge:Lean/scratch/AlphaSource/PreparationPhysicalConstraint114:Lean/scratch/AlphaSource/PreparationPhysicalNumberOneRead:Lean/scratch/AlphaSource/PreparationPhysicalGradeZeroRead:Lean/scratch/AlphaSource/PreparationPhysicalZeroRead:Lean/scratch/AlphaSource/PreparationPhysicalPoleAmputationAudit/overlay:Lean/scratch/AlphaSource/PreparationPoleQuantumWardAudit/overlay:Lean/scratch/AlphaSource/PreparationVacuumPhysicalFieldChannel/overlay:Lean/scratch/AlphaSource/PreparationPhysicalAbelZeroRead:Lean/scratch/AlphaSource/PreparationPhysicalQuantumLockedCharge:Lean/scratch/AlphaSource/PreparationVacuumChargedPacketGreen/overlay:Lean/scratch/AlphaSource/PreparationVacuumStaticVoltageSource/overlay:Lean/scratch/AlphaSource/PreparationPhysicalActionUnitsAudit/overlay:Lean/.lake/packages/MD4Lean/.lake/build/lib/lean:Lean/.lake/packages/BibtexQuery/.lake/build/lib/lean:Lean/.lake/packages/UnicodeBasic/.lake/build/lib/lean:Lean/.lake/packages/Cli/.lake/build/lib/lean:Lean/.lake/packages/leansqlite/.lake/build/lib/lean:Lean/.lake/packages/batteries/.lake/build/lib/lean:Lean/.lake/packages/Qq/.lake/build/lib/lean:Lean/.lake/packages/aesop/.lake/build/lib/lean:Lean/.lake/packages/proofwidgets/.lake/build/lib/lean:Lean/.lake/packages/importGraph/.lake/build/lib/lean:Lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:Lean/.lake/packages/plausible/.lake/build/lib/lean:Lean/.lake/packages/doc-gen4/.lake/build/lib/lean:Lean/.lake/packages/mathlib/.lake/build/lib/lean:Lean/.lake/packages/Physlib/.lake/build/lib/lean:Lean/.lake/build/lib/lean:runtime/.elan/manual/lean-4.33.0-darwin_aarch64/lib/lean",
+        "-j1",
+        "--trust=0",
+        "-DwarningAsError=true",
+        "-DmaxErrors=1",
+        "-DElab.async=false",
+        "-DmaxHeartbeats=2000000",
+        "--root=Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-source",
+        "-o",
+        "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-overlay/SourceCoframeSpinConnection.olean",
+        "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-source/SourceCoframeSpinConnection.lean"
+      ],
+      "status": "FIRST_IMPORTS_ONLY_RECOVERY_SUCCESS",
+      "old_successful_acceptance_gate_replayed": false,
+      "physics_domain_changed": false
+    },
+    {
+      "module": "SourceCoframeCovariantAction",
+      "original_source": "Verification/physics/low-energy-phenomenology/external-composite-decay/SourceCoframeCovariantAction.lean",
+      "original_source_sha256": "43b437813c86e667a3963c3166150508a7ce4ffd5dbe6501b654bc446ecd1a64",
+      "recovery_source": "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-source/SourceCoframeCovariantAction.lean",
+      "recovery_source_sha256": "43b437813c86e667a3963c3166150508a7ce4ffd5dbe6501b654bc446ecd1a64",
+      "all_non_import_bytes_identical": true,
+      "non_import_body_sha256": "8fcfcbe0199dcd84293235cafd182e24e4555e8c1a51d26388257a784d7e2b1f",
+      "old_object_identity_not_replaced_by_new_hash": true,
+      "domain_declarations_removed": false,
+      "mathematical_body_modified": false,
+      "new_object": "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-overlay/SourceCoframeCovariantAction.olean",
+      "new_object_sha256": "ef860b3af4a2fccc394244e255bb9d417f999b16b10a2c98c88b5ba9e972281f",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "strict_seconds": 25.727,
+      "command": [
+        "lake",
+        "env",
+        "sh",
+        "-c",
+        "export LEAN_PATH=\"$1:$LEAN_PATH\"; shift; exec lean \"$@\"",
+        "restart-imports-only",
+        "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-overlay:Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether/overlay/import-shims:Lean/scratch/AlphaSource/PreparationPhysicalChargedFieldFactor:Lean/scratch/AlphaSource/PreparationVacuumChargedPacketGreen:Lean/scratch/AlphaSource/PreparationPhysicalLockedN1Balance:Lean/scratch/AlphaSource/PreparationVacuumObservedPoleTensor/overlay:Lean/scratch/AlphaSource/PreparationVacuumStaticSpatialSource/overlay:Lean/scratch/AlphaSource/PreparationVacuumStaticSimpleCoupling/overlay:Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether:Lean/scratch/AlphaSource/PreparationPhysicalLockedGaussBalance:Lean/scratch/AlphaSource/PreparationPhysicalLockedGaussBalance/overlay:Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether/overlay:Lean/scratch/AlphaSource/EMGaugePoleReadout:Lean/scratch/AlphaSource/PreparationPhysicalModeChargeReadAudit/overlay:Lean/scratch/AlphaSource/PreparationVacuumObservedStaticResidue/overlay:Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether:Lean/scratch/AlphaSource/PreparationPhysicalModeChargeRead:Lean/scratch/AlphaSource/PreparationPhysicalLockedCurrentFirstResidue:Lean/scratch/AlphaSource/PreparationVacuumFullSlowFieldResponse/overlay:Lean/scratch/AlphaSource/PreparationVacuumNativePoleTensor/overlay:Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether:Lean/scratch/AlphaSource/PreparationPhysicalElectromagneticDirection:Lean/scratch/AlphaSource/PreparationVacuumQuantumSlowResidue/overlay:Lean/scratch/AlphaSource/PreparationPhysicalPinnedVelocity:Lean/scratch/AlphaSource/PreparationVacuumQuantumSlowResponse/overlay:Lean/scratch/AlphaSource/PreparationPhysicalSlowBlock:Lean/scratch/AlphaSource/PreparationVacuumGaugeSlowFrequency/overlay:Lean/scratch/AlphaSource/PreparationPhysicalCausalZeroRead:Lean/scratch/AlphaSource/PreparationPhysicalChargeTimeZero:Lean/scratch/AlphaSource/PreparationPhysicalNativeColourReturn:Lean/scratch/AlphaSource/PreparationPhysicalN1MaterialWard:Lean/scratch/AlphaSource/PreparationPhysicalGaussMaterialContact:Lean/scratch/AlphaSource/PreparationPhysicalGaussColorTorque:Lean/scratch/AlphaSource/PreparationPhysicalModeContact:Lean/scratch/AlphaSource/PreparationPhysicalN1WardCollapse:Lean/scratch/AlphaSource/PreparationVacuumRestModeCoupling/overlay:Lean/scratch/AlphaSource/PreparationPhysicalColorWard:Lean/scratch/AlphaSource/PreparationPhysicalColorCharge:Lean/scratch/AlphaSource/PreparationPhysicalConstraint114:Lean/scratch/AlphaSource/PreparationPhysicalNumberOneRead:Lean/scratch/AlphaSource/PreparationPhysicalGradeZeroRead:Lean/scratch/AlphaSource/PreparationPhysicalZeroRead:Lean/scratch/AlphaSource/PreparationPhysicalPoleAmputationAudit/overlay:Lean/scratch/AlphaSource/PreparationPoleQuantumWardAudit/overlay:Lean/scratch/AlphaSource/PreparationVacuumPhysicalFieldChannel/overlay:Lean/scratch/AlphaSource/PreparationPhysicalAbelZeroRead:Lean/scratch/AlphaSource/PreparationPhysicalQuantumLockedCharge:Lean/scratch/AlphaSource/PreparationVacuumChargedPacketGreen/overlay:Lean/scratch/AlphaSource/PreparationVacuumStaticVoltageSource/overlay:Lean/scratch/AlphaSource/PreparationPhysicalActionUnitsAudit/overlay:Lean/.lake/packages/MD4Lean/.lake/build/lib/lean:Lean/.lake/packages/BibtexQuery/.lake/build/lib/lean:Lean/.lake/packages/UnicodeBasic/.lake/build/lib/lean:Lean/.lake/packages/Cli/.lake/build/lib/lean:Lean/.lake/packages/leansqlite/.lake/build/lib/lean:Lean/.lake/packages/batteries/.lake/build/lib/lean:Lean/.lake/packages/Qq/.lake/build/lib/lean:Lean/.lake/packages/aesop/.lake/build/lib/lean:Lean/.lake/packages/proofwidgets/.lake/build/lib/lean:Lean/.lake/packages/importGraph/.lake/build/lib/lean:Lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:Lean/.lake/packages/plausible/.lake/build/lib/lean:Lean/.lake/packages/doc-gen4/.lake/build/lib/lean:Lean/.lake/packages/mathlib/.lake/build/lib/lean:Lean/.lake/packages/Physlib/.lake/build/lib/lean:Lean/.lake/build/lib/lean:runtime/.elan/manual/lean-4.33.0-darwin_aarch64/lib/lean",
+        "-j1",
+        "--trust=0",
+        "-DwarningAsError=true",
+        "-DmaxErrors=1",
+        "-DElab.async=false",
+        "-DmaxHeartbeats=2000000",
+        "--root=Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-source",
+        "-o",
+        "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-overlay/SourceCoframeCovariantAction.olean",
+        "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-source/SourceCoframeCovariantAction.lean"
+      ],
+      "status": "FIRST_IMPORTS_ONLY_RECOVERY_SUCCESS",
+      "old_successful_acceptance_gate_replayed": false,
+      "physics_domain_changed": false
+    },
+    {
+      "module": "SourceCoframeCovariantSquare",
+      "original_source": "Verification/physics/low-energy-phenomenology/external-composite-decay/SourceCoframeCovariantSquare.lean",
+      "original_source_sha256": "70c67c9f0213f44edb29ceafd310bcf4689fc4c519839b8e7ca0677e2b962dbe",
+      "recovery_source": "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-source/SourceCoframeCovariantSquare.lean",
+      "recovery_source_sha256": "70c67c9f0213f44edb29ceafd310bcf4689fc4c519839b8e7ca0677e2b962dbe",
+      "all_non_import_bytes_identical": true,
+      "non_import_body_sha256": "ba0d493c78f6022c9f15e1f44edcdb5628c5975a6f0a7f022b5575621dc338be",
+      "old_object_identity_not_replaced_by_new_hash": true,
+      "domain_declarations_removed": false,
+      "mathematical_body_modified": false,
+      "new_object": "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-overlay/SourceCoframeCovariantSquare.olean",
+      "new_object_sha256": "5ff5a2132704d068b33a2c83f50a3bc04bcdd58a015a68dbea0cd50d4ee7d45a",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "strict_seconds": 31.112,
+      "command": [
+        "lake",
+        "env",
+        "sh",
+        "-c",
+        "export LEAN_PATH=\"$1:$LEAN_PATH\"; shift; exec lean \"$@\"",
+        "restart-imports-only",
+        "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-overlay:Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether/overlay/import-shims:Lean/scratch/AlphaSource/PreparationPhysicalChargedFieldFactor:Lean/scratch/AlphaSource/PreparationVacuumChargedPacketGreen:Lean/scratch/AlphaSource/PreparationPhysicalLockedN1Balance:Lean/scratch/AlphaSource/PreparationVacuumObservedPoleTensor/overlay:Lean/scratch/AlphaSource/PreparationVacuumStaticSpatialSource/overlay:Lean/scratch/AlphaSource/PreparationVacuumStaticSimpleCoupling/overlay:Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether:Lean/scratch/AlphaSource/PreparationPhysicalLockedGaussBalance:Lean/scratch/AlphaSource/PreparationPhysicalLockedGaussBalance/overlay:Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether/overlay:Lean/scratch/AlphaSource/EMGaugePoleReadout:Lean/scratch/AlphaSource/PreparationPhysicalModeChargeReadAudit/overlay:Lean/scratch/AlphaSource/PreparationVacuumObservedStaticResidue/overlay:Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether:Lean/scratch/AlphaSource/PreparationPhysicalModeChargeRead:Lean/scratch/AlphaSource/PreparationPhysicalLockedCurrentFirstResidue:Lean/scratch/AlphaSource/PreparationVacuumFullSlowFieldResponse/overlay:Lean/scratch/AlphaSource/PreparationVacuumNativePoleTensor/overlay:Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether:Lean/scratch/AlphaSource/PreparationPhysicalElectromagneticDirection:Lean/scratch/AlphaSource/PreparationVacuumQuantumSlowResidue/overlay:Lean/scratch/AlphaSource/PreparationPhysicalPinnedVelocity:Lean/scratch/AlphaSource/PreparationVacuumQuantumSlowResponse/overlay:Lean/scratch/AlphaSource/PreparationPhysicalSlowBlock:Lean/scratch/AlphaSource/PreparationVacuumGaugeSlowFrequency/overlay:Lean/scratch/AlphaSource/PreparationPhysicalCausalZeroRead:Lean/scratch/AlphaSource/PreparationPhysicalChargeTimeZero:Lean/scratch/AlphaSource/PreparationPhysicalNativeColourReturn:Lean/scratch/AlphaSource/PreparationPhysicalN1MaterialWard:Lean/scratch/AlphaSource/PreparationPhysicalGaussMaterialContact:Lean/scratch/AlphaSource/PreparationPhysicalGaussColorTorque:Lean/scratch/AlphaSource/PreparationPhysicalModeContact:Lean/scratch/AlphaSource/PreparationPhysicalN1WardCollapse:Lean/scratch/AlphaSource/PreparationVacuumRestModeCoupling/overlay:Lean/scratch/AlphaSource/PreparationPhysicalColorWard:Lean/scratch/AlphaSource/PreparationPhysicalColorCharge:Lean/scratch/AlphaSource/PreparationPhysicalConstraint114:Lean/scratch/AlphaSource/PreparationPhysicalNumberOneRead:Lean/scratch/AlphaSource/PreparationPhysicalGradeZeroRead:Lean/scratch/AlphaSource/PreparationPhysicalZeroRead:Lean/scratch/AlphaSource/PreparationPhysicalPoleAmputationAudit/overlay:Lean/scratch/AlphaSource/PreparationPoleQuantumWardAudit/overlay:Lean/scratch/AlphaSource/PreparationVacuumPhysicalFieldChannel/overlay:Lean/scratch/AlphaSource/PreparationPhysicalAbelZeroRead:Lean/scratch/AlphaSource/PreparationPhysicalQuantumLockedCharge:Lean/scratch/AlphaSource/PreparationVacuumChargedPacketGreen/overlay:Lean/scratch/AlphaSource/PreparationVacuumStaticVoltageSource/overlay:Lean/scratch/AlphaSource/PreparationPhysicalActionUnitsAudit/overlay:Lean/.lake/packages/MD4Lean/.lake/build/lib/lean:Lean/.lake/packages/BibtexQuery/.lake/build/lib/lean:Lean/.lake/packages/UnicodeBasic/.lake/build/lib/lean:Lean/.lake/packages/Cli/.lake/build/lib/lean:Lean/.lake/packages/leansqlite/.lake/build/lib/lean:Lean/.lake/packages/batteries/.lake/build/lib/lean:Lean/.lake/packages/Qq/.lake/build/lib/lean:Lean/.lake/packages/aesop/.lake/build/lib/lean:Lean/.lake/packages/proofwidgets/.lake/build/lib/lean:Lean/.lake/packages/importGraph/.lake/build/lib/lean:Lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:Lean/.lake/packages/plausible/.lake/build/lib/lean:Lean/.lake/packages/doc-gen4/.lake/build/lib/lean:Lean/.lake/packages/mathlib/.lake/build/lib/lean:Lean/.lake/packages/Physlib/.lake/build/lib/lean:Lean/.lake/build/lib/lean:runtime/.elan/manual/lean-4.33.0-darwin_aarch64/lib/lean",
+        "-j1",
+        "--trust=0",
+        "-DwarningAsError=true",
+        "-DmaxErrors=1",
+        "-DElab.async=false",
+        "-DmaxHeartbeats=2000000",
+        "--root=Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-source",
+        "-o",
+        "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-overlay/SourceCoframeCovariantSquare.olean",
+        "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-source/SourceCoframeCovariantSquare.lean"
+      ],
+      "status": "FIRST_IMPORTS_ONLY_RECOVERY_SUCCESS",
+      "old_successful_acceptance_gate_replayed": false,
+      "physics_domain_changed": false
+    },
+    {
+      "module": "SourceCoframeSpinNormalOrder",
+      "original_source": "Verification/physics/low-energy-phenomenology/external-composite-decay/SourceCoframeSpinNormalOrder.lean",
+      "original_source_sha256": "cde7f6e1e5d8d3938abb4a6d2fd8058c2fc1bc430efe4e622ff917ac2f723a04",
+      "recovery_source": "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-source/SourceCoframeSpinNormalOrder.lean",
+      "recovery_source_sha256": "926e574833c65ad40fd89be7e24e0eb258e4d4c6cc47a39e5fac01a5e17b3cb3",
+      "all_non_import_bytes_identical": true,
+      "non_import_body_sha256": "e63bf2483ff3d337d8661f04085a07ab30aff74c94c5d88dfb1091ae1f71ba52",
+      "old_object_identity_not_replaced_by_new_hash": true,
+      "domain_declarations_removed": false,
+      "mathematical_body_modified": false,
+      "new_object": "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-overlay/SourceCoframeSpinNormalOrder.olean",
+      "new_object_sha256": "2df6df5eb7c04b4e533187f5741a202b78e3d35fbc75384361ff3dce5ad694dd",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "strict_seconds": 16.925,
+      "command": [
+        "lake",
+        "env",
+        "sh",
+        "-c",
+        "export LEAN_PATH=\"$1:$LEAN_PATH\"; shift; exec lean \"$@\"",
+        "restart-imports-only",
+        "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-overlay:Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether/overlay/import-shims:Lean/scratch/AlphaSource/PreparationPhysicalChargedFieldFactor:Lean/scratch/AlphaSource/PreparationVacuumChargedPacketGreen:Lean/scratch/AlphaSource/PreparationPhysicalLockedN1Balance:Lean/scratch/AlphaSource/PreparationVacuumObservedPoleTensor/overlay:Lean/scratch/AlphaSource/PreparationVacuumStaticSpatialSource/overlay:Lean/scratch/AlphaSource/PreparationVacuumStaticSimpleCoupling/overlay:Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether:Lean/scratch/AlphaSource/PreparationPhysicalLockedGaussBalance:Lean/scratch/AlphaSource/PreparationPhysicalLockedGaussBalance/overlay:Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether/overlay:Lean/scratch/AlphaSource/EMGaugePoleReadout:Lean/scratch/AlphaSource/PreparationPhysicalModeChargeReadAudit/overlay:Lean/scratch/AlphaSource/PreparationVacuumObservedStaticResidue/overlay:Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether:Lean/scratch/AlphaSource/PreparationPhysicalModeChargeRead:Lean/scratch/AlphaSource/PreparationPhysicalLockedCurrentFirstResidue:Lean/scratch/AlphaSource/PreparationVacuumFullSlowFieldResponse/overlay:Lean/scratch/AlphaSource/PreparationVacuumNativePoleTensor/overlay:Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether:Lean/scratch/AlphaSource/PreparationPhysicalElectromagneticDirection:Lean/scratch/AlphaSource/PreparationVacuumQuantumSlowResidue/overlay:Lean/scratch/AlphaSource/PreparationPhysicalPinnedVelocity:Lean/scratch/AlphaSource/PreparationVacuumQuantumSlowResponse/overlay:Lean/scratch/AlphaSource/PreparationPhysicalSlowBlock:Lean/scratch/AlphaSource/PreparationVacuumGaugeSlowFrequency/overlay:Lean/scratch/AlphaSource/PreparationPhysicalCausalZeroRead:Lean/scratch/AlphaSource/PreparationPhysicalChargeTimeZero:Lean/scratch/AlphaSource/PreparationPhysicalNativeColourReturn:Lean/scratch/AlphaSource/PreparationPhysicalN1MaterialWard:Lean/scratch/AlphaSource/PreparationPhysicalGaussMaterialContact:Lean/scratch/AlphaSource/PreparationPhysicalGaussColorTorque:Lean/scratch/AlphaSource/PreparationPhysicalModeContact:Lean/scratch/AlphaSource/PreparationPhysicalN1WardCollapse:Lean/scratch/AlphaSource/PreparationVacuumRestModeCoupling/overlay:Lean/scratch/AlphaSource/PreparationPhysicalColorWard:Lean/scratch/AlphaSource/PreparationPhysicalColorCharge:Lean/scratch/AlphaSource/PreparationPhysicalConstraint114:Lean/scratch/AlphaSource/PreparationPhysicalNumberOneRead:Lean/scratch/AlphaSource/PreparationPhysicalGradeZeroRead:Lean/scratch/AlphaSource/PreparationPhysicalZeroRead:Lean/scratch/AlphaSource/PreparationPhysicalPoleAmputationAudit/overlay:Lean/scratch/AlphaSource/PreparationPoleQuantumWardAudit/overlay:Lean/scratch/AlphaSource/PreparationVacuumPhysicalFieldChannel/overlay:Lean/scratch/AlphaSource/PreparationPhysicalAbelZeroRead:Lean/scratch/AlphaSource/PreparationPhysicalQuantumLockedCharge:Lean/scratch/AlphaSource/PreparationVacuumChargedPacketGreen/overlay:Lean/scratch/AlphaSource/PreparationVacuumStaticVoltageSource/overlay:Lean/scratch/AlphaSource/PreparationPhysicalActionUnitsAudit/overlay:Lean/.lake/packages/MD4Lean/.lake/build/lib/lean:Lean/.lake/packages/BibtexQuery/.lake/build/lib/lean:Lean/.lake/packages/UnicodeBasic/.lake/build/lib/lean:Lean/.lake/packages/Cli/.lake/build/lib/lean:Lean/.lake/packages/leansqlite/.lake/build/lib/lean:Lean/.lake/packages/batteries/.lake/build/lib/lean:Lean/.lake/packages/Qq/.lake/build/lib/lean:Lean/.lake/packages/aesop/.lake/build/lib/lean:Lean/.lake/packages/proofwidgets/.lake/build/lib/lean:Lean/.lake/packages/importGraph/.lake/build/lib/lean:Lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:Lean/.lake/packages/plausible/.lake/build/lib/lean:Lean/.lake/packages/doc-gen4/.lake/build/lib/lean:Lean/.lake/packages/mathlib/.lake/build/lib/lean:Lean/.lake/packages/Physlib/.lake/build/lib/lean:Lean/.lake/build/lib/lean:runtime/.elan/manual/lean-4.33.0-darwin_aarch64/lib/lean",
+        "-j1",
+        "--trust=0",
+        "-DwarningAsError=true",
+        "-DmaxErrors=1",
+        "-DElab.async=false",
+        "-DmaxHeartbeats=2000000",
+        "--root=Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-source",
+        "-o",
+        "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-overlay/SourceCoframeSpinNormalOrder.olean",
+        "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-source/SourceCoframeSpinNormalOrder.lean"
+      ],
+      "status": "FIRST_IMPORTS_ONLY_RECOVERY_SUCCESS",
+      "old_successful_acceptance_gate_replayed": false,
+      "physics_domain_changed": false
+    },
+    {
+      "module": "SourceCoframeSpinContraction",
+      "original_source": "Verification/physics/low-energy-phenomenology/external-composite-decay/SourceCoframeSpinContraction.lean",
+      "original_source_sha256": "4acfcaeb1fe9ae6a60aa22ed58441da2aeea276618c7e40dba37f24c16e4ae1d",
+      "recovery_source": "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-source/SourceCoframeSpinContraction.lean",
+      "recovery_source_sha256": "4acfcaeb1fe9ae6a60aa22ed58441da2aeea276618c7e40dba37f24c16e4ae1d",
+      "all_non_import_bytes_identical": true,
+      "non_import_body_sha256": "aa70c5876a847ffe981da56c299f657292ca07aae5c496f325fdac321e9ce1f7",
+      "old_object_identity_not_replaced_by_new_hash": true,
+      "domain_declarations_removed": false,
+      "mathematical_body_modified": false,
+      "new_object": "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-overlay/SourceCoframeSpinContraction.olean",
+      "new_object_sha256": "3336ad1224bfd543d7b1f6d738fd82bc9b9669ba71361290c9bf7461694523d5",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "strict_seconds": 77.339,
+      "command": [
+        "lake",
+        "env",
+        "sh",
+        "-c",
+        "export LEAN_PATH=\"$1:$LEAN_PATH\"; shift; exec lean \"$@\"",
+        "restart-imports-only",
+        "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-overlay:Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether/overlay/import-shims:Lean/scratch/AlphaSource/PreparationPhysicalChargedFieldFactor:Lean/scratch/AlphaSource/PreparationVacuumChargedPacketGreen:Lean/scratch/AlphaSource/PreparationPhysicalLockedN1Balance:Lean/scratch/AlphaSource/PreparationVacuumObservedPoleTensor/overlay:Lean/scratch/AlphaSource/PreparationVacuumStaticSpatialSource/overlay:Lean/scratch/AlphaSource/PreparationVacuumStaticSimpleCoupling/overlay:Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether:Lean/scratch/AlphaSource/PreparationPhysicalLockedGaussBalance:Lean/scratch/AlphaSource/PreparationPhysicalLockedGaussBalance/overlay:Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether/overlay:Lean/scratch/AlphaSource/EMGaugePoleReadout:Lean/scratch/AlphaSource/PreparationPhysicalModeChargeReadAudit/overlay:Lean/scratch/AlphaSource/PreparationVacuumObservedStaticResidue/overlay:Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether:Lean/scratch/AlphaSource/PreparationPhysicalModeChargeRead:Lean/scratch/AlphaSource/PreparationPhysicalLockedCurrentFirstResidue:Lean/scratch/AlphaSource/PreparationVacuumFullSlowFieldResponse/overlay:Lean/scratch/AlphaSource/PreparationVacuumNativePoleTensor/overlay:Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether:Lean/scratch/AlphaSource/PreparationPhysicalElectromagneticDirection:Lean/scratch/AlphaSource/PreparationVacuumQuantumSlowResidue/overlay:Lean/scratch/AlphaSource/PreparationPhysicalPinnedVelocity:Lean/scratch/AlphaSource/PreparationVacuumQuantumSlowResponse/overlay:Lean/scratch/AlphaSource/PreparationPhysicalSlowBlock:Lean/scratch/AlphaSource/PreparationVacuumGaugeSlowFrequency/overlay:Lean/scratch/AlphaSource/PreparationPhysicalCausalZeroRead:Lean/scratch/AlphaSource/PreparationPhysicalChargeTimeZero:Lean/scratch/AlphaSource/PreparationPhysicalNativeColourReturn:Lean/scratch/AlphaSource/PreparationPhysicalN1MaterialWard:Lean/scratch/AlphaSource/PreparationPhysicalGaussMaterialContact:Lean/scratch/AlphaSource/PreparationPhysicalGaussColorTorque:Lean/scratch/AlphaSource/PreparationPhysicalModeContact:Lean/scratch/AlphaSource/PreparationPhysicalN1WardCollapse:Lean/scratch/AlphaSource/PreparationVacuumRestModeCoupling/overlay:Lean/scratch/AlphaSource/PreparationPhysicalColorWard:Lean/scratch/AlphaSource/PreparationPhysicalColorCharge:Lean/scratch/AlphaSource/PreparationPhysicalConstraint114:Lean/scratch/AlphaSource/PreparationPhysicalNumberOneRead:Lean/scratch/AlphaSource/PreparationPhysicalGradeZeroRead:Lean/scratch/AlphaSource/PreparationPhysicalZeroRead:Lean/scratch/AlphaSource/PreparationPhysicalPoleAmputationAudit/overlay:Lean/scratch/AlphaSource/PreparationPoleQuantumWardAudit/overlay:Lean/scratch/AlphaSource/PreparationVacuumPhysicalFieldChannel/overlay:Lean/scratch/AlphaSource/PreparationPhysicalAbelZeroRead:Lean/scratch/AlphaSource/PreparationPhysicalQuantumLockedCharge:Lean/scratch/AlphaSource/PreparationVacuumChargedPacketGreen/overlay:Lean/scratch/AlphaSource/PreparationVacuumStaticVoltageSource/overlay:Lean/scratch/AlphaSource/PreparationPhysicalActionUnitsAudit/overlay:Lean/.lake/packages/MD4Lean/.lake/build/lib/lean:Lean/.lake/packages/BibtexQuery/.lake/build/lib/lean:Lean/.lake/packages/UnicodeBasic/.lake/build/lib/lean:Lean/.lake/packages/Cli/.lake/build/lib/lean:Lean/.lake/packages/leansqlite/.lake/build/lib/lean:Lean/.lake/packages/batteries/.lake/build/lib/lean:Lean/.lake/packages/Qq/.lake/build/lib/lean:Lean/.lake/packages/aesop/.lake/build/lib/lean:Lean/.lake/packages/proofwidgets/.lake/build/lib/lean:Lean/.lake/packages/importGraph/.lake/build/lib/lean:Lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:Lean/.lake/packages/plausible/.lake/build/lib/lean:Lean/.lake/packages/doc-gen4/.lake/build/lib/lean:Lean/.lake/packages/mathlib/.lake/build/lib/lean:Lean/.lake/packages/Physlib/.lake/build/lib/lean:Lean/.lake/build/lib/lean:runtime/.elan/manual/lean-4.33.0-darwin_aarch64/lib/lean",
+        "-j1",
+        "--trust=0",
+        "-DwarningAsError=true",
+        "-DmaxErrors=1",
+        "-DElab.async=false",
+        "-DmaxHeartbeats=2000000",
+        "--root=Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-source",
+        "-o",
+        "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-overlay/SourceCoframeSpinContraction.olean",
+        "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-source/SourceCoframeSpinContraction.lean"
+      ],
+      "status": "FIRST_IMPORTS_ONLY_RECOVERY_SUCCESS",
+      "old_successful_acceptance_gate_replayed": false,
+      "physics_domain_changed": false
+    }
+  ],
+  "additional_exact_recovery": [
+    {
+      "receipt": "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/OriginalFiniteChannelMassRecovery-SLIM-FIRST.json",
+      "receipt_sha256": "fedb102a2ad3d354b14c9661f46af6be86f183ee4ea8a28140e3791ef43eb6ce",
+      "record": {
+        "module": "OriginalFiniteChannelMassRecovery",
+        "recovery_source": "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-source/OriginalFiniteChannelMassRecovery.lean",
+        "recovery_source_sha256": "5e1e3b1543fb1d7d27a106c7bfe581aa8384ec6dc85547ade5dc60f290ad6bcf",
+        "original_source_parts": [
+          {
+            "original_source": "Verification/physics/low-energy-phenomenology/external-composite-decay/SourceHamiltonianSpectralMeasure.lean",
+            "original_source_sha256": "682e0bbf17d07ab54134f63165645b1c3d05b4362807f3a565c30215c34578ba",
+            "selected_exact_declaration_fragment_sha256": "968f07682ada66287b6c02d1bee208efa84f4bfc7aa14de0608b786640927c27",
+            "selected_bytes_identical": true
+          }
+        ],
+        "public_names_preserved": [
+          "LowEnergy.SourceHamiltonianSpectralMeasure.actual_channel_mass"
+        ],
+        "private_helper_bodies_preserved": [
+          "channel_resolution",
+          "unit_projection_pair",
+          "channel_pair"
+        ],
+        "claims_old_whole_module_coverage": false,
+        "new_source_material_or_premise": false,
+        "scope": "exact original finite-channel mass declaration and private helper recovery; no whole spectral probability-measure module claim",
+        "new_object": "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-overlay/OriginalFiniteChannelMassRecovery.olean",
+        "new_object_sha256": "a0dc881bd5fc3d3ce5ed51cd0f2167e78a6616f7c79156be795130a2e6d37e1d",
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "strict_seconds": 44.922,
+        "command": [
+          "lake",
+          "env",
+          "sh",
+          "-c",
+          "export LEAN_PATH=\"$1:$LEAN_PATH\"; shift; exec lean \"$@\"",
+          "restart-required-extra",
+          "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-overlay:Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/overlay:Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether/overlay/import-shims:Lean/scratch/AlphaSource/PreparationPhysicalChargedFieldFactor:Lean/scratch/AlphaSource/PreparationVacuumChargedPacketGreen:Lean/scratch/AlphaSource/PreparationPhysicalLockedN1Balance:Lean/scratch/AlphaSource/PreparationVacuumObservedPoleTensor/overlay:Lean/scratch/AlphaSource/PreparationVacuumStaticSpatialSource/overlay:Lean/scratch/AlphaSource/PreparationVacuumStaticSimpleCoupling/overlay:Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether:Lean/scratch/AlphaSource/PreparationPhysicalLockedGaussBalance:Lean/scratch/AlphaSource/PreparationPhysicalLockedGaussBalance/overlay:Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether/overlay:Lean/scratch/AlphaSource/EMGaugePoleReadout:Lean/scratch/AlphaSource/PreparationPhysicalModeChargeReadAudit/overlay:Lean/scratch/AlphaSource/PreparationVacuumObservedStaticResidue/overlay:Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether:Lean/scratch/AlphaSource/PreparationPhysicalModeChargeRead:Lean/scratch/AlphaSource/PreparationPhysicalLockedCurrentFirstResidue:Lean/scratch/AlphaSource/PreparationVacuumFullSlowFieldResponse/overlay:Lean/scratch/AlphaSource/PreparationVacuumNativePoleTensor/overlay:Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether:Lean/scratch/AlphaSource/PreparationPhysicalElectromagneticDirection:Lean/scratch/AlphaSource/PreparationVacuumQuantumSlowResidue/overlay:Lean/scratch/AlphaSource/PreparationPhysicalPinnedVelocity:Lean/scratch/AlphaSource/PreparationVacuumQuantumSlowResponse/overlay:Lean/scratch/AlphaSource/PreparationPhysicalSlowBlock:Lean/scratch/AlphaSource/PreparationVacuumGaugeSlowFrequency/overlay:Lean/scratch/AlphaSource/PreparationPhysicalCausalZeroRead:Lean/scratch/AlphaSource/PreparationPhysicalChargeTimeZero:Lean/scratch/AlphaSource/PreparationPhysicalNativeColourReturn:Lean/scratch/AlphaSource/PreparationPhysicalN1MaterialWard:Lean/scratch/AlphaSource/PreparationPhysicalGaussMaterialContact:Lean/scratch/AlphaSource/PreparationPhysicalGaussColorTorque:Lean/scratch/AlphaSource/PreparationPhysicalModeContact:Lean/scratch/AlphaSource/PreparationPhysicalN1WardCollapse:Lean/scratch/AlphaSource/PreparationVacuumRestModeCoupling/overlay:Lean/scratch/AlphaSource/PreparationPhysicalColorWard:Lean/scratch/AlphaSource/PreparationPhysicalColorCharge:Lean/scratch/AlphaSource/PreparationPhysicalConstraint114:Lean/scratch/AlphaSource/PreparationPhysicalNumberOneRead:Lean/scratch/AlphaSource/PreparationPhysicalGradeZeroRead:Lean/scratch/AlphaSource/PreparationPhysicalZeroRead:Lean/scratch/AlphaSource/PreparationPhysicalPoleAmputationAudit/overlay:Lean/scratch/AlphaSource/PreparationPoleQuantumWardAudit/overlay:Lean/scratch/AlphaSource/PreparationVacuumPhysicalFieldChannel/overlay:Lean/scratch/AlphaSource/PreparationPhysicalAbelZeroRead:Lean/scratch/AlphaSource/PreparationPhysicalQuantumLockedCharge:Lean/scratch/AlphaSource/PreparationVacuumChargedPacketGreen/overlay:Lean/scratch/AlphaSource/PreparationVacuumStaticVoltageSource/overlay:Lean/scratch/AlphaSource/PreparationPhysicalActionUnitsAudit/overlay:Lean/.lake/packages/MD4Lean/.lake/build/lib/lean:Lean/.lake/packages/BibtexQuery/.lake/build/lib/lean:Lean/.lake/packages/UnicodeBasic/.lake/build/lib/lean:Lean/.lake/packages/Cli/.lake/build/lib/lean:Lean/.lake/packages/leansqlite/.lake/build/lib/lean:Lean/.lake/packages/batteries/.lake/build/lib/lean:Lean/.lake/packages/Qq/.lake/build/lib/lean:Lean/.lake/packages/aesop/.lake/build/lib/lean:Lean/.lake/packages/proofwidgets/.lake/build/lib/lean:Lean/.lake/packages/importGraph/.lake/build/lib/lean:Lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:Lean/.lake/packages/plausible/.lake/build/lib/lean:Lean/.lake/packages/doc-gen4/.lake/build/lib/lean:Lean/.lake/packages/mathlib/.lake/build/lib/lean:Lean/.lake/packages/Physlib/.lake/build/lib/lean:Lean/.lake/build/lib/lean:runtime/.elan/manual/lean-4.33.0-darwin_aarch64/lib/lean",
+          "-j1",
+          "--trust=0",
+          "-DwarningAsError=true",
+          "-DmaxErrors=1",
+          "-DElab.async=false",
+          "-DmaxHeartbeats=2000000",
+          "--root=Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-source",
+          "-o",
+          "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-overlay/OriginalFiniteChannelMassRecovery.olean",
+          "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-source/OriginalFiniteChannelMassRecovery.lean"
+        ],
+        "status": "FIRST_EXACT_DECLARATION_PRELUDE_RECOVERY_SUCCESS",
+        "old_successful_acceptance_gate_replayed": false,
+        "physics_domain_changed": false
+      }
+    },
+    {
+      "receipt": "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/OriginalSpectralReadStateRecovery-SLIM-FIRST.json",
+      "receipt_sha256": "b6395c4110435ab6abc39f43444850920e82558759d80a0ef6c5de78cd06348a",
+      "record": {
+        "module": "OriginalSpectralReadStateRecovery",
+        "recovery_source": "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-source/OriginalSpectralReadStateRecovery.lean",
+        "recovery_source_sha256": "2926daee38f3bd383a666435a76a46c94594b57335bfd6b2d00d83503efa5a0e",
+        "original_source_parts": [
+          {
+            "original_source": "Verification/physics/low-energy-phenomenology/external-composite-decay/SourceNativeMixedCurrent.lean",
+            "original_source_sha256": "69130c1738db26c8413a5670e8c6cc076cb69316779f150cc58af6b80b13344b",
+            "selected_exact_declaration_fragment_sha256": "bf8fd7be045426c5573dced3abdd15a4ebf1ed818b6936b190e97a27d6bcc175",
+            "selected_bytes_identical": true
+          },
+          {
+            "original_source": "Verification/physics/low-energy-phenomenology/external-composite-decay/SourceScalarPositiveBulkWard.lean",
+            "original_source_sha256": "a300059d611cd75e7adf12029523ee75a4d80cb17447ca6722dbe1de267c7996",
+            "selected_exact_declaration_fragment_sha256": "7b6405cfdd1a655658cec4b61b8dd4cb3cc2eac48bfdf66f463ab30b56c61c69",
+            "selected_bytes_identical": true
+          }
+        ],
+        "public_names_preserved": [
+          "LowEnergy.SourceMixedNativeReturn.coreRead",
+          "LowEnergy.SourceMixedNativeReturn.sourceRead",
+          "LowEnergy.SourceMixedNativeReturn.source_read_resolvent",
+          "LowEnergy.SourceScalarPositiveBulkWard.state"
+        ],
+        "private_helper_bodies_preserved": [
+          "core_read_add",
+          "core_read_smul"
+        ],
+        "claims_old_whole_module_coverage": false,
+        "new_source_material_or_premise": false,
+        "scope": "independent exact selected original declaration recovery module; same public names and mathematical bodies, genuine fresh module ownership and complete selected consumer closure",
+        "original_source_core_owner": "SourceEscapeCurrent",
+        "new_object": "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-overlay/OriginalSpectralReadStateRecovery.olean",
+        "new_object_sha256": "3efe761349f8351416882e0122c8bb2eb885eb6fe437dc9b0eeedeb0bdd3b52b",
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "strict_seconds": 33.225,
+        "command": [
+          "lake",
+          "env",
+          "sh",
+          "-c",
+          "export LEAN_PATH=\"$1:$LEAN_PATH\"; shift; exec lean \"$@\"",
+          "restart-required-extra",
+          "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-overlay:Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/overlay:Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether/overlay/import-shims:Lean/scratch/AlphaSource/PreparationPhysicalChargedFieldFactor:Lean/scratch/AlphaSource/PreparationVacuumChargedPacketGreen:Lean/scratch/AlphaSource/PreparationPhysicalLockedN1Balance:Lean/scratch/AlphaSource/PreparationVacuumObservedPoleTensor/overlay:Lean/scratch/AlphaSource/PreparationVacuumStaticSpatialSource/overlay:Lean/scratch/AlphaSource/PreparationVacuumStaticSimpleCoupling/overlay:Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether:Lean/scratch/AlphaSource/PreparationPhysicalLockedGaussBalance:Lean/scratch/AlphaSource/PreparationPhysicalLockedGaussBalance/overlay:Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether/overlay:Lean/scratch/AlphaSource/EMGaugePoleReadout:Lean/scratch/AlphaSource/PreparationPhysicalModeChargeReadAudit/overlay:Lean/scratch/AlphaSource/PreparationVacuumObservedStaticResidue/overlay:Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether:Lean/scratch/AlphaSource/PreparationPhysicalModeChargeRead:Lean/scratch/AlphaSource/PreparationPhysicalLockedCurrentFirstResidue:Lean/scratch/AlphaSource/PreparationVacuumFullSlowFieldResponse/overlay:Lean/scratch/AlphaSource/PreparationVacuumNativePoleTensor/overlay:Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether:Lean/scratch/AlphaSource/PreparationPhysicalElectromagneticDirection:Lean/scratch/AlphaSource/PreparationVacuumQuantumSlowResidue/overlay:Lean/scratch/AlphaSource/PreparationPhysicalPinnedVelocity:Lean/scratch/AlphaSource/PreparationVacuumQuantumSlowResponse/overlay:Lean/scratch/AlphaSource/PreparationPhysicalSlowBlock:Lean/scratch/AlphaSource/PreparationVacuumGaugeSlowFrequency/overlay:Lean/scratch/AlphaSource/PreparationPhysicalCausalZeroRead:Lean/scratch/AlphaSource/PreparationPhysicalChargeTimeZero:Lean/scratch/AlphaSource/PreparationPhysicalNativeColourReturn:Lean/scratch/AlphaSource/PreparationPhysicalN1MaterialWard:Lean/scratch/AlphaSource/PreparationPhysicalGaussMaterialContact:Lean/scratch/AlphaSource/PreparationPhysicalGaussColorTorque:Lean/scratch/AlphaSource/PreparationPhysicalModeContact:Lean/scratch/AlphaSource/PreparationPhysicalN1WardCollapse:Lean/scratch/AlphaSource/PreparationVacuumRestModeCoupling/overlay:Lean/scratch/AlphaSource/PreparationPhysicalColorWard:Lean/scratch/AlphaSource/PreparationPhysicalColorCharge:Lean/scratch/AlphaSource/PreparationPhysicalConstraint114:Lean/scratch/AlphaSource/PreparationPhysicalNumberOneRead:Lean/scratch/AlphaSource/PreparationPhysicalGradeZeroRead:Lean/scratch/AlphaSource/PreparationPhysicalZeroRead:Lean/scratch/AlphaSource/PreparationPhysicalPoleAmputationAudit/overlay:Lean/scratch/AlphaSource/PreparationPoleQuantumWardAudit/overlay:Lean/scratch/AlphaSource/PreparationVacuumPhysicalFieldChannel/overlay:Lean/scratch/AlphaSource/PreparationPhysicalAbelZeroRead:Lean/scratch/AlphaSource/PreparationPhysicalQuantumLockedCharge:Lean/scratch/AlphaSource/PreparationVacuumChargedPacketGreen/overlay:Lean/scratch/AlphaSource/PreparationVacuumStaticVoltageSource/overlay:Lean/scratch/AlphaSource/PreparationPhysicalActionUnitsAudit/overlay:Lean/.lake/packages/MD4Lean/.lake/build/lib/lean:Lean/.lake/packages/BibtexQuery/.lake/build/lib/lean:Lean/.lake/packages/UnicodeBasic/.lake/build/lib/lean:Lean/.lake/packages/Cli/.lake/build/lib/lean:Lean/.lake/packages/leansqlite/.lake/build/lib/lean:Lean/.lake/packages/batteries/.lake/build/lib/lean:Lean/.lake/packages/Qq/.lake/build/lib/lean:Lean/.lake/packages/aesop/.lake/build/lib/lean:Lean/.lake/packages/proofwidgets/.lake/build/lib/lean:Lean/.lake/packages/importGraph/.lake/build/lib/lean:Lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:Lean/.lake/packages/plausible/.lake/build/lib/lean:Lean/.lake/packages/doc-gen4/.lake/build/lib/lean:Lean/.lake/packages/mathlib/.lake/build/lib/lean:Lean/.lake/packages/Physlib/.lake/build/lib/lean:Lean/.lake/build/lib/lean:runtime/.elan/manual/lean-4.33.0-darwin_aarch64/lib/lean",
+          "-j1",
+          "--trust=0",
+          "-DwarningAsError=true",
+          "-DmaxErrors=1",
+          "-DElab.async=false",
+          "-DmaxHeartbeats=2000000",
+          "--root=Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-source",
+          "-o",
+          "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-overlay/OriginalSpectralReadStateRecovery.olean",
+          "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-source/OriginalSpectralReadStateRecovery.lean"
+        ],
+        "status": "FIRST_EXACT_DECLARATION_PRELUDE_RECOVERY_SUCCESS",
+        "old_successful_acceptance_gate_replayed": false,
+        "physics_domain_changed": false
+      }
+    },
+    {
+      "receipt": "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/SourceCoframeCovariantAction-SLIM-FIRST.json",
+      "receipt_sha256": "c0f5fce9abec17cd3cb7941bc625c1bdcc3eac3cd2dfac51bacf31e28fb2db59",
+      "record": {
+        "module": "SourceCoframeCovariantAction",
+        "original_source": "Verification/physics/low-energy-phenomenology/external-composite-decay/SourceCoframeCovariantAction.lean",
+        "original_source_sha256": "43b437813c86e667a3963c3166150508a7ce4ffd5dbe6501b654bc446ecd1a64",
+        "recovery_source": "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-source/SourceCoframeCovariantAction.lean",
+        "recovery_source_sha256": "43b437813c86e667a3963c3166150508a7ce4ffd5dbe6501b654bc446ecd1a64",
+        "all_non_import_bytes_identical": true,
+        "non_import_body_sha256": "8fcfcbe0199dcd84293235cafd182e24e4555e8c1a51d26388257a784d7e2b1f",
+        "old_object_identity_not_replaced_by_new_hash": true,
+        "domain_declarations_removed": false,
+        "mathematical_body_modified": false,
+        "new_object": "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-overlay/SourceCoframeCovariantAction.olean",
+        "new_object_sha256": "ef860b3af4a2fccc394244e255bb9d417f999b16b10a2c98c88b5ba9e972281f",
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "strict_seconds": 25.727,
+        "command": [
+          "lake",
+          "env",
+          "sh",
+          "-c",
+          "export LEAN_PATH=\"$1:$LEAN_PATH\"; shift; exec lean \"$@\"",
+          "restart-imports-only",
+          "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-overlay:Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether/overlay/import-shims:Lean/scratch/AlphaSource/PreparationPhysicalChargedFieldFactor:Lean/scratch/AlphaSource/PreparationVacuumChargedPacketGreen:Lean/scratch/AlphaSource/PreparationPhysicalLockedN1Balance:Lean/scratch/AlphaSource/PreparationVacuumObservedPoleTensor/overlay:Lean/scratch/AlphaSource/PreparationVacuumStaticSpatialSource/overlay:Lean/scratch/AlphaSource/PreparationVacuumStaticSimpleCoupling/overlay:Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether:Lean/scratch/AlphaSource/PreparationPhysicalLockedGaussBalance:Lean/scratch/AlphaSource/PreparationPhysicalLockedGaussBalance/overlay:Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether/overlay:Lean/scratch/AlphaSource/EMGaugePoleReadout:Lean/scratch/AlphaSource/PreparationPhysicalModeChargeReadAudit/overlay:Lean/scratch/AlphaSource/PreparationVacuumObservedStaticResidue/overlay:Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether:Lean/scratch/AlphaSource/PreparationPhysicalModeChargeRead:Lean/scratch/AlphaSource/PreparationPhysicalLockedCurrentFirstResidue:Lean/scratch/AlphaSource/PreparationVacuumFullSlowFieldResponse/overlay:Lean/scratch/AlphaSource/PreparationVacuumNativePoleTensor/overlay:Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether:Lean/scratch/AlphaSource/PreparationPhysicalElectromagneticDirection:Lean/scratch/AlphaSource/PreparationVacuumQuantumSlowResidue/overlay:Lean/scratch/AlphaSource/PreparationPhysicalPinnedVelocity:Lean/scratch/AlphaSource/PreparationVacuumQuantumSlowResponse/overlay:Lean/scratch/AlphaSource/PreparationPhysicalSlowBlock:Lean/scratch/AlphaSource/PreparationVacuumGaugeSlowFrequency/overlay:Lean/scratch/AlphaSource/PreparationPhysicalCausalZeroRead:Lean/scratch/AlphaSource/PreparationPhysicalChargeTimeZero:Lean/scratch/AlphaSource/PreparationPhysicalNativeColourReturn:Lean/scratch/AlphaSource/PreparationPhysicalN1MaterialWard:Lean/scratch/AlphaSource/PreparationPhysicalGaussMaterialContact:Lean/scratch/AlphaSource/PreparationPhysicalGaussColorTorque:Lean/scratch/AlphaSource/PreparationPhysicalModeContact:Lean/scratch/AlphaSource/PreparationPhysicalN1WardCollapse:Lean/scratch/AlphaSource/PreparationVacuumRestModeCoupling/overlay:Lean/scratch/AlphaSource/PreparationPhysicalColorWard:Lean/scratch/AlphaSource/PreparationPhysicalColorCharge:Lean/scratch/AlphaSource/PreparationPhysicalConstraint114:Lean/scratch/AlphaSource/PreparationPhysicalNumberOneRead:Lean/scratch/AlphaSource/PreparationPhysicalGradeZeroRead:Lean/scratch/AlphaSource/PreparationPhysicalZeroRead:Lean/scratch/AlphaSource/PreparationPhysicalPoleAmputationAudit/overlay:Lean/scratch/AlphaSource/PreparationPoleQuantumWardAudit/overlay:Lean/scratch/AlphaSource/PreparationVacuumPhysicalFieldChannel/overlay:Lean/scratch/AlphaSource/PreparationPhysicalAbelZeroRead:Lean/scratch/AlphaSource/PreparationPhysicalQuantumLockedCharge:Lean/scratch/AlphaSource/PreparationVacuumChargedPacketGreen/overlay:Lean/scratch/AlphaSource/PreparationVacuumStaticVoltageSource/overlay:Lean/scratch/AlphaSource/PreparationPhysicalActionUnitsAudit/overlay:Lean/.lake/packages/MD4Lean/.lake/build/lib/lean:Lean/.lake/packages/BibtexQuery/.lake/build/lib/lean:Lean/.lake/packages/UnicodeBasic/.lake/build/lib/lean:Lean/.lake/packages/Cli/.lake/build/lib/lean:Lean/.lake/packages/leansqlite/.lake/build/lib/lean:Lean/.lake/packages/batteries/.lake/build/lib/lean:Lean/.lake/packages/Qq/.lake/build/lib/lean:Lean/.lake/packages/aesop/.lake/build/lib/lean:Lean/.lake/packages/proofwidgets/.lake/build/lib/lean:Lean/.lake/packages/importGraph/.lake/build/lib/lean:Lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:Lean/.lake/packages/plausible/.lake/build/lib/lean:Lean/.lake/packages/doc-gen4/.lake/build/lib/lean:Lean/.lake/packages/mathlib/.lake/build/lib/lean:Lean/.lake/packages/Physlib/.lake/build/lib/lean:Lean/.lake/build/lib/lean:runtime/.elan/manual/lean-4.33.0-darwin_aarch64/lib/lean",
+          "-j1",
+          "--trust=0",
+          "-DwarningAsError=true",
+          "-DmaxErrors=1",
+          "-DElab.async=false",
+          "-DmaxHeartbeats=2000000",
+          "--root=Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-source",
+          "-o",
+          "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-overlay/SourceCoframeCovariantAction.olean",
+          "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-source/SourceCoframeCovariantAction.lean"
+        ],
+        "status": "FIRST_IMPORTS_ONLY_RECOVERY_SUCCESS",
+        "old_successful_acceptance_gate_replayed": false,
+        "physics_domain_changed": false
+      }
+    },
+    {
+      "receipt": "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/SourceCoframeCovariantSquare-SLIM-FIRST.json",
+      "receipt_sha256": "f379b71bf2d93571f30329941f846bdac2f7f81499254473e80fd998f1f9eb9d",
+      "record": {
+        "module": "SourceCoframeCovariantSquare",
+        "original_source": "Verification/physics/low-energy-phenomenology/external-composite-decay/SourceCoframeCovariantSquare.lean",
+        "original_source_sha256": "70c67c9f0213f44edb29ceafd310bcf4689fc4c519839b8e7ca0677e2b962dbe",
+        "recovery_source": "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-source/SourceCoframeCovariantSquare.lean",
+        "recovery_source_sha256": "70c67c9f0213f44edb29ceafd310bcf4689fc4c519839b8e7ca0677e2b962dbe",
+        "all_non_import_bytes_identical": true,
+        "non_import_body_sha256": "ba0d493c78f6022c9f15e1f44edcdb5628c5975a6f0a7f022b5575621dc338be",
+        "old_object_identity_not_replaced_by_new_hash": true,
+        "domain_declarations_removed": false,
+        "mathematical_body_modified": false,
+        "new_object": "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-overlay/SourceCoframeCovariantSquare.olean",
+        "new_object_sha256": "5ff5a2132704d068b33a2c83f50a3bc04bcdd58a015a68dbea0cd50d4ee7d45a",
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "strict_seconds": 31.112,
+        "command": [
+          "lake",
+          "env",
+          "sh",
+          "-c",
+          "export LEAN_PATH=\"$1:$LEAN_PATH\"; shift; exec lean \"$@\"",
+          "restart-imports-only",
+          "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-overlay:Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether/overlay/import-shims:Lean/scratch/AlphaSource/PreparationPhysicalChargedFieldFactor:Lean/scratch/AlphaSource/PreparationVacuumChargedPacketGreen:Lean/scratch/AlphaSource/PreparationPhysicalLockedN1Balance:Lean/scratch/AlphaSource/PreparationVacuumObservedPoleTensor/overlay:Lean/scratch/AlphaSource/PreparationVacuumStaticSpatialSource/overlay:Lean/scratch/AlphaSource/PreparationVacuumStaticSimpleCoupling/overlay:Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether:Lean/scratch/AlphaSource/PreparationPhysicalLockedGaussBalance:Lean/scratch/AlphaSource/PreparationPhysicalLockedGaussBalance/overlay:Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether/overlay:Lean/scratch/AlphaSource/EMGaugePoleReadout:Lean/scratch/AlphaSource/PreparationPhysicalModeChargeReadAudit/overlay:Lean/scratch/AlphaSource/PreparationVacuumObservedStaticResidue/overlay:Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether:Lean/scratch/AlphaSource/PreparationPhysicalModeChargeRead:Lean/scratch/AlphaSource/PreparationPhysicalLockedCurrentFirstResidue:Lean/scratch/AlphaSource/PreparationVacuumFullSlowFieldResponse/overlay:Lean/scratch/AlphaSource/PreparationVacuumNativePoleTensor/overlay:Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether:Lean/scratch/AlphaSource/PreparationPhysicalElectromagneticDirection:Lean/scratch/AlphaSource/PreparationVacuumQuantumSlowResidue/overlay:Lean/scratch/AlphaSource/PreparationPhysicalPinnedVelocity:Lean/scratch/AlphaSource/PreparationVacuumQuantumSlowResponse/overlay:Lean/scratch/AlphaSource/PreparationPhysicalSlowBlock:Lean/scratch/AlphaSource/PreparationVacuumGaugeSlowFrequency/overlay:Lean/scratch/AlphaSource/PreparationPhysicalCausalZeroRead:Lean/scratch/AlphaSource/PreparationPhysicalChargeTimeZero:Lean/scratch/AlphaSource/PreparationPhysicalNativeColourReturn:Lean/scratch/AlphaSource/PreparationPhysicalN1MaterialWard:Lean/scratch/AlphaSource/PreparationPhysicalGaussMaterialContact:Lean/scratch/AlphaSource/PreparationPhysicalGaussColorTorque:Lean/scratch/AlphaSource/PreparationPhysicalModeContact:Lean/scratch/AlphaSource/PreparationPhysicalN1WardCollapse:Lean/scratch/AlphaSource/PreparationVacuumRestModeCoupling/overlay:Lean/scratch/AlphaSource/PreparationPhysicalColorWard:Lean/scratch/AlphaSource/PreparationPhysicalColorCharge:Lean/scratch/AlphaSource/PreparationPhysicalConstraint114:Lean/scratch/AlphaSource/PreparationPhysicalNumberOneRead:Lean/scratch/AlphaSource/PreparationPhysicalGradeZeroRead:Lean/scratch/AlphaSource/PreparationPhysicalZeroRead:Lean/scratch/AlphaSource/PreparationPhysicalPoleAmputationAudit/overlay:Lean/scratch/AlphaSource/PreparationPoleQuantumWardAudit/overlay:Lean/scratch/AlphaSource/PreparationVacuumPhysicalFieldChannel/overlay:Lean/scratch/AlphaSource/PreparationPhysicalAbelZeroRead:Lean/scratch/AlphaSource/PreparationPhysicalQuantumLockedCharge:Lean/scratch/AlphaSource/PreparationVacuumChargedPacketGreen/overlay:Lean/scratch/AlphaSource/PreparationVacuumStaticVoltageSource/overlay:Lean/scratch/AlphaSource/PreparationPhysicalActionUnitsAudit/overlay:Lean/.lake/packages/MD4Lean/.lake/build/lib/lean:Lean/.lake/packages/BibtexQuery/.lake/build/lib/lean:Lean/.lake/packages/UnicodeBasic/.lake/build/lib/lean:Lean/.lake/packages/Cli/.lake/build/lib/lean:Lean/.lake/packages/leansqlite/.lake/build/lib/lean:Lean/.lake/packages/batteries/.lake/build/lib/lean:Lean/.lake/packages/Qq/.lake/build/lib/lean:Lean/.lake/packages/aesop/.lake/build/lib/lean:Lean/.lake/packages/proofwidgets/.lake/build/lib/lean:Lean/.lake/packages/importGraph/.lake/build/lib/lean:Lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:Lean/.lake/packages/plausible/.lake/build/lib/lean:Lean/.lake/packages/doc-gen4/.lake/build/lib/lean:Lean/.lake/packages/mathlib/.lake/build/lib/lean:Lean/.lake/packages/Physlib/.lake/build/lib/lean:Lean/.lake/build/lib/lean:runtime/.elan/manual/lean-4.33.0-darwin_aarch64/lib/lean",
+          "-j1",
+          "--trust=0",
+          "-DwarningAsError=true",
+          "-DmaxErrors=1",
+          "-DElab.async=false",
+          "-DmaxHeartbeats=2000000",
+          "--root=Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-source",
+          "-o",
+          "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-overlay/SourceCoframeCovariantSquare.olean",
+          "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-source/SourceCoframeCovariantSquare.lean"
+        ],
+        "status": "FIRST_IMPORTS_ONLY_RECOVERY_SUCCESS",
+        "old_successful_acceptance_gate_replayed": false,
+        "physics_domain_changed": false
+      }
+    },
+    {
+      "receipt": "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/SourceCoframeSpinConnection-SLIM-FIRST.json",
+      "receipt_sha256": "38b2335a3ce127d9d5043c6f929755b78c3a40c814bbec703d12d23168aebe1c",
+      "record": {
+        "module": "SourceCoframeSpinConnection",
+        "original_source": "Verification/physics/low-energy-phenomenology/external-composite-decay/SourceCoframeSpinConnection.lean",
+        "original_source_sha256": "6612847faae6a53ebdeddf63b7dc544da75a9f9bf6e8f7d5607a1aff568b2885",
+        "recovery_source": "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-source/SourceCoframeSpinConnection.lean",
+        "recovery_source_sha256": "314c41b905ea6678f6542b05cd0bda584a2c0aa097e1e3ed358abfa98a0d8cfc",
+        "all_non_import_bytes_identical": true,
+        "non_import_body_sha256": "f2ffef6f722dfc8a242c4d00b682b783602e8273752fe023a9b1d3282e1ad721",
+        "old_object_identity_not_replaced_by_new_hash": true,
+        "domain_declarations_removed": false,
+        "mathematical_body_modified": false,
+        "new_object": "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-overlay/SourceCoframeSpinConnection.olean",
+        "new_object_sha256": "d89b48253715465b5a83d600e87e549f7dd8044d81b900d9143ccf2fedf7384b",
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "strict_seconds": 17.417,
+        "command": [
+          "lake",
+          "env",
+          "sh",
+          "-c",
+          "export LEAN_PATH=\"$1:$LEAN_PATH\"; shift; exec lean \"$@\"",
+          "restart-imports-only",
+          "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-overlay:Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether/overlay/import-shims:Lean/scratch/AlphaSource/PreparationPhysicalChargedFieldFactor:Lean/scratch/AlphaSource/PreparationVacuumChargedPacketGreen:Lean/scratch/AlphaSource/PreparationPhysicalLockedN1Balance:Lean/scratch/AlphaSource/PreparationVacuumObservedPoleTensor/overlay:Lean/scratch/AlphaSource/PreparationVacuumStaticSpatialSource/overlay:Lean/scratch/AlphaSource/PreparationVacuumStaticSimpleCoupling/overlay:Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether:Lean/scratch/AlphaSource/PreparationPhysicalLockedGaussBalance:Lean/scratch/AlphaSource/PreparationPhysicalLockedGaussBalance/overlay:Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether/overlay:Lean/scratch/AlphaSource/EMGaugePoleReadout:Lean/scratch/AlphaSource/PreparationPhysicalModeChargeReadAudit/overlay:Lean/scratch/AlphaSource/PreparationVacuumObservedStaticResidue/overlay:Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether:Lean/scratch/AlphaSource/PreparationPhysicalModeChargeRead:Lean/scratch/AlphaSource/PreparationPhysicalLockedCurrentFirstResidue:Lean/scratch/AlphaSource/PreparationVacuumFullSlowFieldResponse/overlay:Lean/scratch/AlphaSource/PreparationVacuumNativePoleTensor/overlay:Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether:Lean/scratch/AlphaSource/PreparationPhysicalElectromagneticDirection:Lean/scratch/AlphaSource/PreparationVacuumQuantumSlowResidue/overlay:Lean/scratch/AlphaSource/PreparationPhysicalPinnedVelocity:Lean/scratch/AlphaSource/PreparationVacuumQuantumSlowResponse/overlay:Lean/scratch/AlphaSource/PreparationPhysicalSlowBlock:Lean/scratch/AlphaSource/PreparationVacuumGaugeSlowFrequency/overlay:Lean/scratch/AlphaSource/PreparationPhysicalCausalZeroRead:Lean/scratch/AlphaSource/PreparationPhysicalChargeTimeZero:Lean/scratch/AlphaSource/PreparationPhysicalNativeColourReturn:Lean/scratch/AlphaSource/PreparationPhysicalN1MaterialWard:Lean/scratch/AlphaSource/PreparationPhysicalGaussMaterialContact:Lean/scratch/AlphaSource/PreparationPhysicalGaussColorTorque:Lean/scratch/AlphaSource/PreparationPhysicalModeContact:Lean/scratch/AlphaSource/PreparationPhysicalN1WardCollapse:Lean/scratch/AlphaSource/PreparationVacuumRestModeCoupling/overlay:Lean/scratch/AlphaSource/PreparationPhysicalColorWard:Lean/scratch/AlphaSource/PreparationPhysicalColorCharge:Lean/scratch/AlphaSource/PreparationPhysicalConstraint114:Lean/scratch/AlphaSource/PreparationPhysicalNumberOneRead:Lean/scratch/AlphaSource/PreparationPhysicalGradeZeroRead:Lean/scratch/AlphaSource/PreparationPhysicalZeroRead:Lean/scratch/AlphaSource/PreparationPhysicalPoleAmputationAudit/overlay:Lean/scratch/AlphaSource/PreparationPoleQuantumWardAudit/overlay:Lean/scratch/AlphaSource/PreparationVacuumPhysicalFieldChannel/overlay:Lean/scratch/AlphaSource/PreparationPhysicalAbelZeroRead:Lean/scratch/AlphaSource/PreparationPhysicalQuantumLockedCharge:Lean/scratch/AlphaSource/PreparationVacuumChargedPacketGreen/overlay:Lean/scratch/AlphaSource/PreparationVacuumStaticVoltageSource/overlay:Lean/scratch/AlphaSource/PreparationPhysicalActionUnitsAudit/overlay:Lean/.lake/packages/MD4Lean/.lake/build/lib/lean:Lean/.lake/packages/BibtexQuery/.lake/build/lib/lean:Lean/.lake/packages/UnicodeBasic/.lake/build/lib/lean:Lean/.lake/packages/Cli/.lake/build/lib/lean:Lean/.lake/packages/leansqlite/.lake/build/lib/lean:Lean/.lake/packages/batteries/.lake/build/lib/lean:Lean/.lake/packages/Qq/.lake/build/lib/lean:Lean/.lake/packages/aesop/.lake/build/lib/lean:Lean/.lake/packages/proofwidgets/.lake/build/lib/lean:Lean/.lake/packages/importGraph/.lake/build/lib/lean:Lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:Lean/.lake/packages/plausible/.lake/build/lib/lean:Lean/.lake/packages/doc-gen4/.lake/build/lib/lean:Lean/.lake/packages/mathlib/.lake/build/lib/lean:Lean/.lake/packages/Physlib/.lake/build/lib/lean:Lean/.lake/build/lib/lean:runtime/.elan/manual/lean-4.33.0-darwin_aarch64/lib/lean",
+          "-j1",
+          "--trust=0",
+          "-DwarningAsError=true",
+          "-DmaxErrors=1",
+          "-DElab.async=false",
+          "-DmaxHeartbeats=2000000",
+          "--root=Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-source",
+          "-o",
+          "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-overlay/SourceCoframeSpinConnection.olean",
+          "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-source/SourceCoframeSpinConnection.lean"
+        ],
+        "status": "FIRST_IMPORTS_ONLY_RECOVERY_SUCCESS",
+        "old_successful_acceptance_gate_replayed": false,
+        "physics_domain_changed": false
+      }
+    },
+    {
+      "receipt": "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/SourceCoframeSpinContraction-SLIM-FIRST.json",
+      "receipt_sha256": "7ecc07c6e1c2d3da2f4ed0a61274b5ca807dae4fe49531ff36a6669facfb726c",
+      "record": {
+        "module": "SourceCoframeSpinContraction",
+        "original_source": "Verification/physics/low-energy-phenomenology/external-composite-decay/SourceCoframeSpinContraction.lean",
+        "original_source_sha256": "4acfcaeb1fe9ae6a60aa22ed58441da2aeea276618c7e40dba37f24c16e4ae1d",
+        "recovery_source": "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-source/SourceCoframeSpinContraction.lean",
+        "recovery_source_sha256": "4acfcaeb1fe9ae6a60aa22ed58441da2aeea276618c7e40dba37f24c16e4ae1d",
+        "all_non_import_bytes_identical": true,
+        "non_import_body_sha256": "aa70c5876a847ffe981da56c299f657292ca07aae5c496f325fdac321e9ce1f7",
+        "old_object_identity_not_replaced_by_new_hash": true,
+        "domain_declarations_removed": false,
+        "mathematical_body_modified": false,
+        "new_object": "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-overlay/SourceCoframeSpinContraction.olean",
+        "new_object_sha256": "3336ad1224bfd543d7b1f6d738fd82bc9b9669ba71361290c9bf7461694523d5",
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "strict_seconds": 77.339,
+        "command": [
+          "lake",
+          "env",
+          "sh",
+          "-c",
+          "export LEAN_PATH=\"$1:$LEAN_PATH\"; shift; exec lean \"$@\"",
+          "restart-imports-only",
+          "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-overlay:Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether/overlay/import-shims:Lean/scratch/AlphaSource/PreparationPhysicalChargedFieldFactor:Lean/scratch/AlphaSource/PreparationVacuumChargedPacketGreen:Lean/scratch/AlphaSource/PreparationPhysicalLockedN1Balance:Lean/scratch/AlphaSource/PreparationVacuumObservedPoleTensor/overlay:Lean/scratch/AlphaSource/PreparationVacuumStaticSpatialSource/overlay:Lean/scratch/AlphaSource/PreparationVacuumStaticSimpleCoupling/overlay:Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether:Lean/scratch/AlphaSource/PreparationPhysicalLockedGaussBalance:Lean/scratch/AlphaSource/PreparationPhysicalLockedGaussBalance/overlay:Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether/overlay:Lean/scratch/AlphaSource/EMGaugePoleReadout:Lean/scratch/AlphaSource/PreparationPhysicalModeChargeReadAudit/overlay:Lean/scratch/AlphaSource/PreparationVacuumObservedStaticResidue/overlay:Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether:Lean/scratch/AlphaSource/PreparationPhysicalModeChargeRead:Lean/scratch/AlphaSource/PreparationPhysicalLockedCurrentFirstResidue:Lean/scratch/AlphaSource/PreparationVacuumFullSlowFieldResponse/overlay:Lean/scratch/AlphaSource/PreparationVacuumNativePoleTensor/overlay:Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether:Lean/scratch/AlphaSource/PreparationPhysicalElectromagneticDirection:Lean/scratch/AlphaSource/PreparationVacuumQuantumSlowResidue/overlay:Lean/scratch/AlphaSource/PreparationPhysicalPinnedVelocity:Lean/scratch/AlphaSource/PreparationVacuumQuantumSlowResponse/overlay:Lean/scratch/AlphaSource/PreparationPhysicalSlowBlock:Lean/scratch/AlphaSource/PreparationVacuumGaugeSlowFrequency/overlay:Lean/scratch/AlphaSource/PreparationPhysicalCausalZeroRead:Lean/scratch/AlphaSource/PreparationPhysicalChargeTimeZero:Lean/scratch/AlphaSource/PreparationPhysicalNativeColourReturn:Lean/scratch/AlphaSource/PreparationPhysicalN1MaterialWard:Lean/scratch/AlphaSource/PreparationPhysicalGaussMaterialContact:Lean/scratch/AlphaSource/PreparationPhysicalGaussColorTorque:Lean/scratch/AlphaSource/PreparationPhysicalModeContact:Lean/scratch/AlphaSource/PreparationPhysicalN1WardCollapse:Lean/scratch/AlphaSource/PreparationVacuumRestModeCoupling/overlay:Lean/scratch/AlphaSource/PreparationPhysicalColorWard:Lean/scratch/AlphaSource/PreparationPhysicalColorCharge:Lean/scratch/AlphaSource/PreparationPhysicalConstraint114:Lean/scratch/AlphaSource/PreparationPhysicalNumberOneRead:Lean/scratch/AlphaSource/PreparationPhysicalGradeZeroRead:Lean/scratch/AlphaSource/PreparationPhysicalZeroRead:Lean/scratch/AlphaSource/PreparationPhysicalPoleAmputationAudit/overlay:Lean/scratch/AlphaSource/PreparationPoleQuantumWardAudit/overlay:Lean/scratch/AlphaSource/PreparationVacuumPhysicalFieldChannel/overlay:Lean/scratch/AlphaSource/PreparationPhysicalAbelZeroRead:Lean/scratch/AlphaSource/PreparationPhysicalQuantumLockedCharge:Lean/scratch/AlphaSource/PreparationVacuumChargedPacketGreen/overlay:Lean/scratch/AlphaSource/PreparationVacuumStaticVoltageSource/overlay:Lean/scratch/AlphaSource/PreparationPhysicalActionUnitsAudit/overlay:Lean/.lake/packages/MD4Lean/.lake/build/lib/lean:Lean/.lake/packages/BibtexQuery/.lake/build/lib/lean:Lean/.lake/packages/UnicodeBasic/.lake/build/lib/lean:Lean/.lake/packages/Cli/.lake/build/lib/lean:Lean/.lake/packages/leansqlite/.lake/build/lib/lean:Lean/.lake/packages/batteries/.lake/build/lib/lean:Lean/.lake/packages/Qq/.lake/build/lib/lean:Lean/.lake/packages/aesop/.lake/build/lib/lean:Lean/.lake/packages/proofwidgets/.lake/build/lib/lean:Lean/.lake/packages/importGraph/.lake/build/lib/lean:Lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:Lean/.lake/packages/plausible/.lake/build/lib/lean:Lean/.lake/packages/doc-gen4/.lake/build/lib/lean:Lean/.lake/packages/mathlib/.lake/build/lib/lean:Lean/.lake/packages/Physlib/.lake/build/lib/lean:Lean/.lake/build/lib/lean:runtime/.elan/manual/lean-4.33.0-darwin_aarch64/lib/lean",
+          "-j1",
+          "--trust=0",
+          "-DwarningAsError=true",
+          "-DmaxErrors=1",
+          "-DElab.async=false",
+          "-DmaxHeartbeats=2000000",
+          "--root=Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-source",
+          "-o",
+          "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-overlay/SourceCoframeSpinContraction.olean",
+          "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-source/SourceCoframeSpinContraction.lean"
+        ],
+        "status": "FIRST_IMPORTS_ONLY_RECOVERY_SUCCESS",
+        "old_successful_acceptance_gate_replayed": false,
+        "physics_domain_changed": false
+      }
+    },
+    {
+      "receipt": "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/SourceCoframeSpinNormalOrder-SLIM-FIRST.json",
+      "receipt_sha256": "918855974021c34958e3d46246d02f5e9e5f7051bbc19c6e07e50e8ce6e7babe",
+      "record": {
+        "module": "SourceCoframeSpinNormalOrder",
+        "original_source": "Verification/physics/low-energy-phenomenology/external-composite-decay/SourceCoframeSpinNormalOrder.lean",
+        "original_source_sha256": "cde7f6e1e5d8d3938abb4a6d2fd8058c2fc1bc430efe4e622ff917ac2f723a04",
+        "recovery_source": "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-source/SourceCoframeSpinNormalOrder.lean",
+        "recovery_source_sha256": "926e574833c65ad40fd89be7e24e0eb258e4d4c6cc47a39e5fac01a5e17b3cb3",
+        "all_non_import_bytes_identical": true,
+        "non_import_body_sha256": "e63bf2483ff3d337d8661f04085a07ab30aff74c94c5d88dfb1091ae1f71ba52",
+        "old_object_identity_not_replaced_by_new_hash": true,
+        "domain_declarations_removed": false,
+        "mathematical_body_modified": false,
+        "new_object": "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-overlay/SourceCoframeSpinNormalOrder.olean",
+        "new_object_sha256": "2df6df5eb7c04b4e533187f5741a202b78e3d35fbc75384361ff3dce5ad694dd",
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "strict_seconds": 16.925,
+        "command": [
+          "lake",
+          "env",
+          "sh",
+          "-c",
+          "export LEAN_PATH=\"$1:$LEAN_PATH\"; shift; exec lean \"$@\"",
+          "restart-imports-only",
+          "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-overlay:Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether/overlay/import-shims:Lean/scratch/AlphaSource/PreparationPhysicalChargedFieldFactor:Lean/scratch/AlphaSource/PreparationVacuumChargedPacketGreen:Lean/scratch/AlphaSource/PreparationPhysicalLockedN1Balance:Lean/scratch/AlphaSource/PreparationVacuumObservedPoleTensor/overlay:Lean/scratch/AlphaSource/PreparationVacuumStaticSpatialSource/overlay:Lean/scratch/AlphaSource/PreparationVacuumStaticSimpleCoupling/overlay:Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether:Lean/scratch/AlphaSource/PreparationPhysicalLockedGaussBalance:Lean/scratch/AlphaSource/PreparationPhysicalLockedGaussBalance/overlay:Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether/overlay:Lean/scratch/AlphaSource/EMGaugePoleReadout:Lean/scratch/AlphaSource/PreparationPhysicalModeChargeReadAudit/overlay:Lean/scratch/AlphaSource/PreparationVacuumObservedStaticResidue/overlay:Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether:Lean/scratch/AlphaSource/PreparationPhysicalModeChargeRead:Lean/scratch/AlphaSource/PreparationPhysicalLockedCurrentFirstResidue:Lean/scratch/AlphaSource/PreparationVacuumFullSlowFieldResponse/overlay:Lean/scratch/AlphaSource/PreparationVacuumNativePoleTensor/overlay:Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether:Lean/scratch/AlphaSource/PreparationPhysicalElectromagneticDirection:Lean/scratch/AlphaSource/PreparationVacuumQuantumSlowResidue/overlay:Lean/scratch/AlphaSource/PreparationPhysicalPinnedVelocity:Lean/scratch/AlphaSource/PreparationVacuumQuantumSlowResponse/overlay:Lean/scratch/AlphaSource/PreparationPhysicalSlowBlock:Lean/scratch/AlphaSource/PreparationVacuumGaugeSlowFrequency/overlay:Lean/scratch/AlphaSource/PreparationPhysicalCausalZeroRead:Lean/scratch/AlphaSource/PreparationPhysicalChargeTimeZero:Lean/scratch/AlphaSource/PreparationPhysicalNativeColourReturn:Lean/scratch/AlphaSource/PreparationPhysicalN1MaterialWard:Lean/scratch/AlphaSource/PreparationPhysicalGaussMaterialContact:Lean/scratch/AlphaSource/PreparationPhysicalGaussColorTorque:Lean/scratch/AlphaSource/PreparationPhysicalModeContact:Lean/scratch/AlphaSource/PreparationPhysicalN1WardCollapse:Lean/scratch/AlphaSource/PreparationVacuumRestModeCoupling/overlay:Lean/scratch/AlphaSource/PreparationPhysicalColorWard:Lean/scratch/AlphaSource/PreparationPhysicalColorCharge:Lean/scratch/AlphaSource/PreparationPhysicalConstraint114:Lean/scratch/AlphaSource/PreparationPhysicalNumberOneRead:Lean/scratch/AlphaSource/PreparationPhysicalGradeZeroRead:Lean/scratch/AlphaSource/PreparationPhysicalZeroRead:Lean/scratch/AlphaSource/PreparationPhysicalPoleAmputationAudit/overlay:Lean/scratch/AlphaSource/PreparationPoleQuantumWardAudit/overlay:Lean/scratch/AlphaSource/PreparationVacuumPhysicalFieldChannel/overlay:Lean/scratch/AlphaSource/PreparationPhysicalAbelZeroRead:Lean/scratch/AlphaSource/PreparationPhysicalQuantumLockedCharge:Lean/scratch/AlphaSource/PreparationVacuumChargedPacketGreen/overlay:Lean/scratch/AlphaSource/PreparationVacuumStaticVoltageSource/overlay:Lean/scratch/AlphaSource/PreparationPhysicalActionUnitsAudit/overlay:Lean/.lake/packages/MD4Lean/.lake/build/lib/lean:Lean/.lake/packages/BibtexQuery/.lake/build/lib/lean:Lean/.lake/packages/UnicodeBasic/.lake/build/lib/lean:Lean/.lake/packages/Cli/.lake/build/lib/lean:Lean/.lake/packages/leansqlite/.lake/build/lib/lean:Lean/.lake/packages/batteries/.lake/build/lib/lean:Lean/.lake/packages/Qq/.lake/build/lib/lean:Lean/.lake/packages/aesop/.lake/build/lib/lean:Lean/.lake/packages/proofwidgets/.lake/build/lib/lean:Lean/.lake/packages/importGraph/.lake/build/lib/lean:Lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:Lean/.lake/packages/plausible/.lake/build/lib/lean:Lean/.lake/packages/doc-gen4/.lake/build/lib/lean:Lean/.lake/packages/mathlib/.lake/build/lib/lean:Lean/.lake/packages/Physlib/.lake/build/lib/lean:Lean/.lake/build/lib/lean:runtime/.elan/manual/lean-4.33.0-darwin_aarch64/lib/lean",
+          "-j1",
+          "--trust=0",
+          "-DwarningAsError=true",
+          "-DmaxErrors=1",
+          "-DElab.async=false",
+          "-DmaxHeartbeats=2000000",
+          "--root=Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-source",
+          "-o",
+          "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-overlay/SourceCoframeSpinNormalOrder.olean",
+          "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-source/SourceCoframeSpinNormalOrder.lean"
+        ],
+        "status": "FIRST_IMPORTS_ONLY_RECOVERY_SUCCESS",
+        "old_successful_acceptance_gate_replayed": false,
+        "physics_domain_changed": false
+      }
+    },
+    {
+      "receipt": "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/SourceInverseVolumeElectricMomentChannels-SLIM-FIRST.json",
+      "receipt_sha256": "80f52c80df90a4a9891a5a0fc254ee518f6bd52112cfaf2364cb36c255f2e9b4",
+      "record": {
+        "module": "SourceInverseVolumeElectricMomentChannels",
+        "original_source": "Verification/physics/low-energy-phenomenology/external-composite-decay/SourceInverseVolumeElectricMomentChannels.lean",
+        "original_source_sha256": "40bc2c140017de58d6908eebc23b33e6c1ac8cd7e2f3a3edb10be2683c853bd7",
+        "recovery_source": "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-source/SourceInverseVolumeElectricMomentChannels.lean",
+        "recovery_source_sha256": "ca62a2fdc87b57fb4f0131e28530d06d85b82d871dc1b79151f8938a255a00a4",
+        "all_declaration_type_value_math_bodies_identical": true,
+        "math_body_sha256": "13d30aef2e64791ed02029459057cca389b8099eae2da973cbd83600b56e227c",
+        "all_non_import_bytes_identical": false,
+        "removed_unused_open_namespaces": [
+          "SourceInverseElectricSourceMomentBudget",
+          "SourceScalarPairedTransport"
+        ],
+        "removed_unconsumed_imports": [
+          "SourceInverseVolumeElectricSourceMomentBudget",
+          "SourceFourPoleEnergyClosed"
+        ],
+        "true_owner_imports": [
+          "OriginalSpectralReadStateRecovery",
+          "SourceJointResidualEnergy"
+        ],
+        "domain_declarations_removed": false,
+        "mathematical_body_modified": false,
+        "selected_original_decl_port": "OriginalSpectralReadStateRecovery",
+        "new_object": "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-overlay/SourceInverseVolumeElectricMomentChannels.olean",
+        "new_object_sha256": "baa1342ce537ed354ab4f337186fa5601b8e2ffc1dbcebac936701396993e902",
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "strict_seconds": 43.82,
+        "command": [
+          "lake",
+          "env",
+          "sh",
+          "-c",
+          "export LEAN_PATH=\"$1:$LEAN_PATH\"; shift; exec lean \"$@\"",
+          "restart-required-extra",
+          "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-overlay:Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/overlay:Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether/overlay/import-shims:Lean/scratch/AlphaSource/PreparationPhysicalChargedFieldFactor:Lean/scratch/AlphaSource/PreparationVacuumChargedPacketGreen:Lean/scratch/AlphaSource/PreparationPhysicalLockedN1Balance:Lean/scratch/AlphaSource/PreparationVacuumObservedPoleTensor/overlay:Lean/scratch/AlphaSource/PreparationVacuumStaticSpatialSource/overlay:Lean/scratch/AlphaSource/PreparationVacuumStaticSimpleCoupling/overlay:Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether:Lean/scratch/AlphaSource/PreparationPhysicalLockedGaussBalance:Lean/scratch/AlphaSource/PreparationPhysicalLockedGaussBalance/overlay:Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether/overlay:Lean/scratch/AlphaSource/EMGaugePoleReadout:Lean/scratch/AlphaSource/PreparationPhysicalModeChargeReadAudit/overlay:Lean/scratch/AlphaSource/PreparationVacuumObservedStaticResidue/overlay:Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether:Lean/scratch/AlphaSource/PreparationPhysicalModeChargeRead:Lean/scratch/AlphaSource/PreparationPhysicalLockedCurrentFirstResidue:Lean/scratch/AlphaSource/PreparationVacuumFullSlowFieldResponse/overlay:Lean/scratch/AlphaSource/PreparationVacuumNativePoleTensor/overlay:Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether:Lean/scratch/AlphaSource/PreparationPhysicalElectromagneticDirection:Lean/scratch/AlphaSource/PreparationVacuumQuantumSlowResidue/overlay:Lean/scratch/AlphaSource/PreparationPhysicalPinnedVelocity:Lean/scratch/AlphaSource/PreparationVacuumQuantumSlowResponse/overlay:Lean/scratch/AlphaSource/PreparationPhysicalSlowBlock:Lean/scratch/AlphaSource/PreparationVacuumGaugeSlowFrequency/overlay:Lean/scratch/AlphaSource/PreparationPhysicalCausalZeroRead:Lean/scratch/AlphaSource/PreparationPhysicalChargeTimeZero:Lean/scratch/AlphaSource/PreparationPhysicalNativeColourReturn:Lean/scratch/AlphaSource/PreparationPhysicalN1MaterialWard:Lean/scratch/AlphaSource/PreparationPhysicalGaussMaterialContact:Lean/scratch/AlphaSource/PreparationPhysicalGaussColorTorque:Lean/scratch/AlphaSource/PreparationPhysicalModeContact:Lean/scratch/AlphaSource/PreparationPhysicalN1WardCollapse:Lean/scratch/AlphaSource/PreparationVacuumRestModeCoupling/overlay:Lean/scratch/AlphaSource/PreparationPhysicalColorWard:Lean/scratch/AlphaSource/PreparationPhysicalColorCharge:Lean/scratch/AlphaSource/PreparationPhysicalConstraint114:Lean/scratch/AlphaSource/PreparationPhysicalNumberOneRead:Lean/scratch/AlphaSource/PreparationPhysicalGradeZeroRead:Lean/scratch/AlphaSource/PreparationPhysicalZeroRead:Lean/scratch/AlphaSource/PreparationPhysicalPoleAmputationAudit/overlay:Lean/scratch/AlphaSource/PreparationPoleQuantumWardAudit/overlay:Lean/scratch/AlphaSource/PreparationVacuumPhysicalFieldChannel/overlay:Lean/scratch/AlphaSource/PreparationPhysicalAbelZeroRead:Lean/scratch/AlphaSource/PreparationPhysicalQuantumLockedCharge:Lean/scratch/AlphaSource/PreparationVacuumChargedPacketGreen/overlay:Lean/scratch/AlphaSource/PreparationVacuumStaticVoltageSource/overlay:Lean/scratch/AlphaSource/PreparationPhysicalActionUnitsAudit/overlay:Lean/.lake/packages/MD4Lean/.lake/build/lib/lean:Lean/.lake/packages/BibtexQuery/.lake/build/lib/lean:Lean/.lake/packages/UnicodeBasic/.lake/build/lib/lean:Lean/.lake/packages/Cli/.lake/build/lib/lean:Lean/.lake/packages/leansqlite/.lake/build/lib/lean:Lean/.lake/packages/batteries/.lake/build/lib/lean:Lean/.lake/packages/Qq/.lake/build/lib/lean:Lean/.lake/packages/aesop/.lake/build/lib/lean:Lean/.lake/packages/proofwidgets/.lake/build/lib/lean:Lean/.lake/packages/importGraph/.lake/build/lib/lean:Lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:Lean/.lake/packages/plausible/.lake/build/lib/lean:Lean/.lake/packages/doc-gen4/.lake/build/lib/lean:Lean/.lake/packages/mathlib/.lake/build/lib/lean:Lean/.lake/packages/Physlib/.lake/build/lib/lean:Lean/.lake/build/lib/lean:runtime/.elan/manual/lean-4.33.0-darwin_aarch64/lib/lean",
+          "-j1",
+          "--trust=0",
+          "-DwarningAsError=true",
+          "-DmaxErrors=1",
+          "-DElab.async=false",
+          "-DmaxHeartbeats=2000000",
+          "--root=Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-source",
+          "-o",
+          "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-overlay/SourceInverseVolumeElectricMomentChannels.olean",
+          "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-source/SourceInverseVolumeElectricMomentChannels.lean"
+        ],
+        "status": "FIRST_EXACT_DECLARATION_PRELUDE_RECOVERY_SUCCESS",
+        "old_successful_acceptance_gate_replayed": false,
+        "physics_domain_changed": false
+      }
+    },
+    {
+      "receipt": "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/SourceRetardedBandCurrent-SLIM-FIRST.json",
+      "receipt_sha256": "2faab840cb8e4eeacd9c78d8ac507439aaa2fd16721e3c0053dda2d9d871cc4a",
+      "record": {
+        "module": "SourceRetardedBandCurrent",
+        "original_source": "Verification/physics/low-energy-phenomenology/external-composite-decay/SourceRetardedBandCurrent.lean",
+        "original_source_sha256": "eb9fd1633a072dc5035994398478077df8e959463db66cce6675fb04b111b826",
+        "recovery_source": "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-source/SourceRetardedBandCurrent.lean",
+        "recovery_source_sha256": "38af36356af1bb74f32fabf32e03875e5e5eebdb4c97e40cbebc44c61990df4d",
+        "all_original_declaration_type_value_math_bodies_identical": true,
+        "prelude_change": "local instance explicitly uses original standard real second-countable left branch, avoiding failed search of H",
+        "original_source_modified": false,
+        "new_premise_or_axiom": false,
+        "old_failed_log": "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/SourceRetardedBandCurrent.log",
+        "mathematical_body_modified": false,
+        "new_object": "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-overlay/SourceRetardedBandCurrent.olean",
+        "new_object_sha256": "2f1f5a093240e9fff742f66085b60faa3ab485af9cdb64fead5a849b3f56e68c",
+        "log_sha256": "2a7b81285623831489f332a07960230aa232cd06cf031d2cb173f7166825d5a6",
+        "strict_seconds": 40.397,
+        "command": [
+          "lake",
+          "env",
+          "sh",
+          "-c",
+          "export LEAN_PATH=\"$1:$LEAN_PATH\"; shift; exec lean \"$@\"",
+          "restart-required-extra",
+          "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-overlay:Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/overlay:Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether/overlay/import-shims:Lean/scratch/AlphaSource/PreparationPhysicalChargedFieldFactor:Lean/scratch/AlphaSource/PreparationVacuumChargedPacketGreen:Lean/scratch/AlphaSource/PreparationPhysicalLockedN1Balance:Lean/scratch/AlphaSource/PreparationVacuumObservedPoleTensor/overlay:Lean/scratch/AlphaSource/PreparationVacuumStaticSpatialSource/overlay:Lean/scratch/AlphaSource/PreparationVacuumStaticSimpleCoupling/overlay:Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether:Lean/scratch/AlphaSource/PreparationPhysicalLockedGaussBalance:Lean/scratch/AlphaSource/PreparationPhysicalLockedGaussBalance/overlay:Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether/overlay:Lean/scratch/AlphaSource/EMGaugePoleReadout:Lean/scratch/AlphaSource/PreparationPhysicalModeChargeReadAudit/overlay:Lean/scratch/AlphaSource/PreparationVacuumObservedStaticResidue/overlay:Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether:Lean/scratch/AlphaSource/PreparationPhysicalModeChargeRead:Lean/scratch/AlphaSource/PreparationPhysicalLockedCurrentFirstResidue:Lean/scratch/AlphaSource/PreparationVacuumFullSlowFieldResponse/overlay:Lean/scratch/AlphaSource/PreparationVacuumNativePoleTensor/overlay:Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether:Lean/scratch/AlphaSource/PreparationPhysicalElectromagneticDirection:Lean/scratch/AlphaSource/PreparationVacuumQuantumSlowResidue/overlay:Lean/scratch/AlphaSource/PreparationPhysicalPinnedVelocity:Lean/scratch/AlphaSource/PreparationVacuumQuantumSlowResponse/overlay:Lean/scratch/AlphaSource/PreparationPhysicalSlowBlock:Lean/scratch/AlphaSource/PreparationVacuumGaugeSlowFrequency/overlay:Lean/scratch/AlphaSource/PreparationPhysicalCausalZeroRead:Lean/scratch/AlphaSource/PreparationPhysicalChargeTimeZero:Lean/scratch/AlphaSource/PreparationPhysicalNativeColourReturn:Lean/scratch/AlphaSource/PreparationPhysicalN1MaterialWard:Lean/scratch/AlphaSource/PreparationPhysicalGaussMaterialContact:Lean/scratch/AlphaSource/PreparationPhysicalGaussColorTorque:Lean/scratch/AlphaSource/PreparationPhysicalModeContact:Lean/scratch/AlphaSource/PreparationPhysicalN1WardCollapse:Lean/scratch/AlphaSource/PreparationVacuumRestModeCoupling/overlay:Lean/scratch/AlphaSource/PreparationPhysicalColorWard:Lean/scratch/AlphaSource/PreparationPhysicalColorCharge:Lean/scratch/AlphaSource/PreparationPhysicalConstraint114:Lean/scratch/AlphaSource/PreparationPhysicalNumberOneRead:Lean/scratch/AlphaSource/PreparationPhysicalGradeZeroRead:Lean/scratch/AlphaSource/PreparationPhysicalZeroRead:Lean/scratch/AlphaSource/PreparationPhysicalPoleAmputationAudit/overlay:Lean/scratch/AlphaSource/PreparationPoleQuantumWardAudit/overlay:Lean/scratch/AlphaSource/PreparationVacuumPhysicalFieldChannel/overlay:Lean/scratch/AlphaSource/PreparationPhysicalAbelZeroRead:Lean/scratch/AlphaSource/PreparationPhysicalQuantumLockedCharge:Lean/scratch/AlphaSource/PreparationVacuumChargedPacketGreen/overlay:Lean/scratch/AlphaSource/PreparationVacuumStaticVoltageSource/overlay:Lean/scratch/AlphaSource/PreparationPhysicalActionUnitsAudit/overlay:Lean/.lake/packages/MD4Lean/.lake/build/lib/lean:Lean/.lake/packages/BibtexQuery/.lake/build/lib/lean:Lean/.lake/packages/UnicodeBasic/.lake/build/lib/lean:Lean/.lake/packages/Cli/.lake/build/lib/lean:Lean/.lake/packages/leansqlite/.lake/build/lib/lean:Lean/.lake/packages/batteries/.lake/build/lib/lean:Lean/.lake/packages/Qq/.lake/build/lib/lean:Lean/.lake/packages/aesop/.lake/build/lib/lean:Lean/.lake/packages/proofwidgets/.lake/build/lib/lean:Lean/.lake/packages/importGraph/.lake/build/lib/lean:Lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:Lean/.lake/packages/plausible/.lake/build/lib/lean:Lean/.lake/packages/doc-gen4/.lake/build/lib/lean:Lean/.lake/packages/mathlib/.lake/build/lib/lean:Lean/.lake/packages/Physlib/.lake/build/lib/lean:Lean/.lake/build/lib/lean:runtime/.elan/manual/lean-4.33.0-darwin_aarch64/lib/lean",
+          "-j1",
+          "--trust=0",
+          "-DwarningAsError=true",
+          "-DmaxErrors=1",
+          "-DElab.async=false",
+          "-DmaxHeartbeats=2000000",
+          "--root=Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-source",
+          "-o",
+          "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-overlay/SourceRetardedBandCurrent.olean",
+          "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-source/SourceRetardedBandCurrent.lean"
+        ],
+        "status": "FIRST_EXACT_DECLARATION_PRELUDE_RECOVERY_SUCCESS",
+        "old_successful_acceptance_gate_replayed": false,
+        "physics_domain_changed": false
+      }
+    },
+    {
+      "receipt": "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/SourceStaticInterval-SLIM-FIRST.json",
+      "receipt_sha256": "6bc30607d23e541e018bcf821d2e221a50432cdf4f9f1abfae02dc58ff1e022c",
+      "record": {
+        "module": "SourceStaticInterval",
+        "original_source": "Lean/scratch/AlphaSource/PreparationPhysicalAbelZeroRead/SourceStaticInterval.lean",
+        "original_source_sha256": "320c250ff8d753a4ea2d68140e402d484c22aadda678fa36e4fb41e09eaee45f",
+        "recovery_source": "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-source/SourceStaticInterval.lean",
+        "recovery_source_sha256": "7aaa41460f4eca24eab0967ecb7bc936ad34bfcfe5ec03b01c60809f8fa18622",
+        "all_non_import_bytes_identical": true,
+        "non_import_body_sha256": "2a204c8fb8cde0cd9ce65457a71bf8b74e22742f2e14063204eb324514173ff6",
+        "domain_declarations_removed": false,
+        "mathematical_body_modified": false,
+        "selected_original_decl_port": "OriginalFiniteChannelMassRecovery",
+        "new_object": "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-overlay/SourceStaticInterval.olean",
+        "new_object_sha256": "c5c7381320c2c1889a6aaee2aaff840b24910dae091df40a5b2ab43029e592a4",
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "strict_seconds": 32.004,
+        "command": [
+          "lake",
+          "env",
+          "sh",
+          "-c",
+          "export LEAN_PATH=\"$1:$LEAN_PATH\"; shift; exec lean \"$@\"",
+          "restart-required-extra",
+          "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-overlay:Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/overlay:Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether/overlay/import-shims:Lean/scratch/AlphaSource/PreparationPhysicalChargedFieldFactor:Lean/scratch/AlphaSource/PreparationVacuumChargedPacketGreen:Lean/scratch/AlphaSource/PreparationPhysicalLockedN1Balance:Lean/scratch/AlphaSource/PreparationVacuumObservedPoleTensor/overlay:Lean/scratch/AlphaSource/PreparationVacuumStaticSpatialSource/overlay:Lean/scratch/AlphaSource/PreparationVacuumStaticSimpleCoupling/overlay:Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether:Lean/scratch/AlphaSource/PreparationPhysicalLockedGaussBalance:Lean/scratch/AlphaSource/PreparationPhysicalLockedGaussBalance/overlay:Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether/overlay:Lean/scratch/AlphaSource/EMGaugePoleReadout:Lean/scratch/AlphaSource/PreparationPhysicalModeChargeReadAudit/overlay:Lean/scratch/AlphaSource/PreparationVacuumObservedStaticResidue/overlay:Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether:Lean/scratch/AlphaSource/PreparationPhysicalModeChargeRead:Lean/scratch/AlphaSource/PreparationPhysicalLockedCurrentFirstResidue:Lean/scratch/AlphaSource/PreparationVacuumFullSlowFieldResponse/overlay:Lean/scratch/AlphaSource/PreparationVacuumNativePoleTensor/overlay:Lean/scratch/AlphaSource/PreparationPhysicalVoltageNoether:Lean/scratch/AlphaSource/PreparationPhysicalElectromagneticDirection:Lean/scratch/AlphaSource/PreparationVacuumQuantumSlowResidue/overlay:Lean/scratch/AlphaSource/PreparationPhysicalPinnedVelocity:Lean/scratch/AlphaSource/PreparationVacuumQuantumSlowResponse/overlay:Lean/scratch/AlphaSource/PreparationPhysicalSlowBlock:Lean/scratch/AlphaSource/PreparationVacuumGaugeSlowFrequency/overlay:Lean/scratch/AlphaSource/PreparationPhysicalCausalZeroRead:Lean/scratch/AlphaSource/PreparationPhysicalChargeTimeZero:Lean/scratch/AlphaSource/PreparationPhysicalNativeColourReturn:Lean/scratch/AlphaSource/PreparationPhysicalN1MaterialWard:Lean/scratch/AlphaSource/PreparationPhysicalGaussMaterialContact:Lean/scratch/AlphaSource/PreparationPhysicalGaussColorTorque:Lean/scratch/AlphaSource/PreparationPhysicalModeContact:Lean/scratch/AlphaSource/PreparationPhysicalN1WardCollapse:Lean/scratch/AlphaSource/PreparationVacuumRestModeCoupling/overlay:Lean/scratch/AlphaSource/PreparationPhysicalColorWard:Lean/scratch/AlphaSource/PreparationPhysicalColorCharge:Lean/scratch/AlphaSource/PreparationPhysicalConstraint114:Lean/scratch/AlphaSource/PreparationPhysicalNumberOneRead:Lean/scratch/AlphaSource/PreparationPhysicalGradeZeroRead:Lean/scratch/AlphaSource/PreparationPhysicalZeroRead:Lean/scratch/AlphaSource/PreparationPhysicalPoleAmputationAudit/overlay:Lean/scratch/AlphaSource/PreparationPoleQuantumWardAudit/overlay:Lean/scratch/AlphaSource/PreparationVacuumPhysicalFieldChannel/overlay:Lean/scratch/AlphaSource/PreparationPhysicalAbelZeroRead:Lean/scratch/AlphaSource/PreparationPhysicalQuantumLockedCharge:Lean/scratch/AlphaSource/PreparationVacuumChargedPacketGreen/overlay:Lean/scratch/AlphaSource/PreparationVacuumStaticVoltageSource/overlay:Lean/scratch/AlphaSource/PreparationPhysicalActionUnitsAudit/overlay:Lean/.lake/packages/MD4Lean/.lake/build/lib/lean:Lean/.lake/packages/BibtexQuery/.lake/build/lib/lean:Lean/.lake/packages/UnicodeBasic/.lake/build/lib/lean:Lean/.lake/packages/Cli/.lake/build/lib/lean:Lean/.lake/packages/leansqlite/.lake/build/lib/lean:Lean/.lake/packages/batteries/.lake/build/lib/lean:Lean/.lake/packages/Qq/.lake/build/lib/lean:Lean/.lake/packages/aesop/.lake/build/lib/lean:Lean/.lake/packages/proofwidgets/.lake/build/lib/lean:Lean/.lake/packages/importGraph/.lake/build/lib/lean:Lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:Lean/.lake/packages/plausible/.lake/build/lib/lean:Lean/.lake/packages/doc-gen4/.lake/build/lib/lean:Lean/.lake/packages/mathlib/.lake/build/lib/lean:Lean/.lake/packages/Physlib/.lake/build/lib/lean:Lean/.lake/build/lib/lean:runtime/.elan/manual/lean-4.33.0-darwin_aarch64/lib/lean",
+          "-j1",
+          "--trust=0",
+          "-DwarningAsError=true",
+          "-DmaxErrors=1",
+          "-DElab.async=false",
+          "-DmaxHeartbeats=2000000",
+          "--root=Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-source",
+          "-o",
+          "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-overlay/SourceStaticInterval.olean",
+          "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-source/SourceStaticInterval.lean"
+        ],
+        "status": "FIRST_EXACT_DECLARATION_PRELUDE_RECOVERY_SUCCESS",
+        "old_successful_acceptance_gate_replayed": false,
+        "physics_domain_changed": false
+      }
+    }
+  ],
+  "recovery_object_bindings": {
+    "path": "Lean/scratch/AlphaSource/PreparationVacuumVoltageGaussGreen/overlay/restart-import-bindings.json",
+    "sha256": "a20f846932209c0425b2a1a0e8d6d486041629a9d131634f8366a406d1e531b8"
+  },
+  "recovery_parity": {
+    "path": "Lean/scratch/AlphaSource/PreparationObjectRecoveryAfterRestart/slim-parity.json",
+    "sha256": "a0a88f6c453beb81118813d9114ef5b78bf313322e0b1652f84efecd69cbeb06"
+  },
+  "direct_consumer": "Lean/scratch/AlphaSource/PreparationPhysicalChargedPacketVoltage/SourceChargedPacketEnergy.lean"
+}

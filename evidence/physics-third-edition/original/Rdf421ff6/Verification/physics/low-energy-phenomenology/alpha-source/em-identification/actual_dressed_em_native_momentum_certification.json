@@ -1,0 +1,1168 @@
+{
+  "verdict": "certified",
+  "scope": "28 public original168-term source momentum flux/curl, full217 native Schur even principal and actualEM constrained4momentum symbol, consumed by sameactualEM root with all lower/background/fullQ0",
+  "controller_disposition": "Subordinate producer/consumer: same livingRoot visit10 row0.inl.liveAccount tick16 quantumFace10→quantumPresentation10→tick17; no shared controller edits",
+  "strict_flags": [
+    "-j1",
+    "--trust=0",
+    "-DwarningAsError=true",
+    "-DmaxErrors=1",
+    "-DElab.async=false"
+  ],
+  "construction_evidence": {
+    "candidate_path": "Lean/scratch/AlphaSource/ActualDressedEMNativeMomentumPrincipalOwn/candidate.json",
+    "candidate_sha256": "243eaf5358f6fafe00ba2195e9ebbd56fe5d8c334f83fbc4e9816165d75b4b07",
+    "source_bundle_sha256": "0be3ce9efdb7593dd0e24cc1faba4d1713c6a95f5b3c196a191b1c6eafcf7922",
+    "frozen_sources": [
+      {
+        "module": "ActualDressedEMNativeMomentumFlux",
+        "path": "Lean/scratch/AlphaSource/ActualDressedEMNativeMomentumPrincipalOwn/ActualDressedEMNativeMomentumFlux.lean",
+        "source_sha256": "9215bb8516109730f42a3bdb3afed2a03e244b1e0a5f7dc83b1647049e9df8fb",
+        "object_path": "Lean/scratch/AlphaSource/ActualDressedEMNativeMomentumPrincipalOwn/ActualDressedEMNativeMomentumFlux.olean",
+        "object_sha256": "0afd9315b380efa669114b39feb54487b0f7042c7edce6dc98eeaef09ae05fad",
+        "line_count": 357,
+        "public": [
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_momentum_auxiliary_flux",
+            "private": false,
+            "kind": "theorem",
+            "line": 90,
+            "source_signature": "theorem actual_native_momentum_auxiliary_flux (p : Fin 4 → ℂ) (i j : Fin 289)\n    (high : 217 ≤ i.val ∨ 217 ≤ j.val) :\n    emOriginalJacobi p i j-emOriginalJacobi 0 i j=\n      nativeLiteralFourier sourceDerivativeTerms p i j-nativeLiteralFourier sourceDerivativeTerms 0 i j",
+            "module": "ActualDressedEMNativeMomentumFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.nativeAuxiliaryMomentumFirst",
+            "private": false,
+            "kind": "def",
+            "line": 194,
+            "source_signature": "def nativeAuxiliaryMomentumFirst (p : Fin 4 → ℂ) : Matrix (Fin 6 × Fin 12) (Fin 217) ℂ",
+            "module": "ActualDressedEMNativeMomentumFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.nativeRestMomentumFirst",
+            "private": false,
+            "kind": "def",
+            "line": 197,
+            "source_signature": "def nativeRestMomentumFirst (p : Fin 4 → ℂ) : Matrix (Fin 217) (Fin 6 × Fin 12) ℂ",
+            "module": "ActualDressedEMNativeMomentumFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.nativeMomentumCurl",
+            "private": false,
+            "kind": "def",
+            "line": 218,
+            "source_signature": "def nativeMomentumCurl {K : Type*} [Field K] (p v : Fin 4 → K) : Fin 6 → K",
+            "module": "ActualDressedEMNativeMomentumFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_auxiliary_momentum_reader",
+            "private": false,
+            "kind": "theorem",
+            "line": 229,
+            "source_signature": "theorem actual_native_auxiliary_momentum_reader (p : Fin 4 → ℂ) (r : Fin 217 → ℂ) :\n    nativeAuxiliaryMomentumFirst p*ᵥr=fun i =>\n      auxiliaryLieReader (fun a => nativeMomentumCurl p (fun mu => r (gaugeRestIndex mu a)) i.1) i.2",
+            "module": "ActualDressedEMNativeMomentumFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_momentum_flux_transpose",
+            "private": false,
+            "kind": "theorem",
+            "line": 273,
+            "source_signature": "theorem actual_native_momentum_flux_transpose (p : Fin 4 → ℂ) :\n    nativeRestMomentumFirst p=-(nativeAuxiliaryMomentumFirst p).transpose",
+            "module": "ActualDressedEMNativeMomentumFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.nativeMomentumDivergence",
+            "private": false,
+            "kind": "def",
+            "line": 287,
+            "source_signature": "def nativeMomentumDivergence {K : Type*} [Field K] (p : Fin 4 → K) (b : Fin 6 → K) : Fin 4 → K",
+            "module": "ActualDressedEMNativeMomentumFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_rest_momentum_reader",
+            "private": false,
+            "kind": "theorem",
+            "line": 315,
+            "source_signature": "theorem actual_native_rest_momentum_reader (p : Fin 4 → ℂ) (b : (Fin 6 × Fin 12) → ℂ)\n    (mu : Fin 4) (a : Fin 12) :\n    (nativeRestMomentumFirst p*ᵥb) (gaugeRestIndex mu a)=\n      -nativeMomentumDivergence p (fun pair => auxiliaryLieReader (fun i => b (pair,i)) a) mu",
+            "module": "ActualDressedEMNativeMomentumFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.native_momentum_curl_neg",
+            "private": false,
+            "kind": "theorem",
+            "line": 328,
+            "source_signature": "theorem native_momentum_curl_neg (p v : Fin 4 → ℂ) :\n    nativeMomentumCurl (-p) v=-nativeMomentumCurl p v",
+            "module": "ActualDressedEMNativeMomentumFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_auxiliary_momentum_odd",
+            "private": false,
+            "kind": "theorem",
+            "line": 338,
+            "source_signature": "theorem actual_native_auxiliary_momentum_odd (p : Fin 4 → ℂ) :\n    nativeAuxiliaryMomentumFirst (-p)=-nativeAuxiliaryMomentumFirst p",
+            "module": "ActualDressedEMNativeMomentumFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_rest_momentum_odd",
+            "private": false,
+            "kind": "theorem",
+            "line": 351,
+            "source_signature": "theorem actual_native_rest_momentum_odd (p : Fin 4 → ℂ) :\n    nativeRestMomentumFirst (-p)=-nativeRestMomentumFirst p",
+            "module": "ActualDressedEMNativeMomentumFlux"
+          }
+        ],
+        "declarations": [
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.derivativeAuxiliaryTerm",
+            "private": true,
+            "kind": "def",
+            "line": 14,
+            "source_signature": "private def derivativeAuxiliaryTerm (t : NativeJetIndex × NativeJetIndex × ℝ) : Bool",
+            "module": "ActualDressedEMNativeMomentumFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.pairDerivativeTerms",
+            "private": true,
+            "kind": "def",
+            "line": 18,
+            "source_signature": "private def pairDerivativeTerms (d e mu nu : Fin 4) (pair : Fin 6) : List (NativeJetIndex × NativeJetIndex × ℝ)",
+            "module": "ActualDressedEMNativeMomentumFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.sourceDerivativeTerms",
+            "private": true,
+            "kind": "def",
+            "line": 27,
+            "source_signature": "private def sourceDerivativeTerms : List (NativeJetIndex × NativeJetIndex × ℝ)",
+            "module": "ActualDressedEMNativeMomentumFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_derivative_auxiliary_terms",
+            "private": true,
+            "kind": "theorem",
+            "line": 31,
+            "source_signature": "private theorem actual_derivative_auxiliary_terms :\n    nativeCompleteLiteralTerms.filter derivativeAuxiliaryTerm=sourceDerivativeTerms",
+            "module": "ActualDressedEMNativeMomentumFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.excluded_derivative_support",
+            "private": true,
+            "kind": "theorem",
+            "line": 38,
+            "source_signature": "private theorem excluded_derivative_support : nativeCompleteLiteralTerms.all (fun t =>\n    derivativeAuxiliaryTerm t || decide ((t.1.2.val<217 ∧ t.2.1.2.val<217) ∨\n      (t.1.1=none ∧ t.2.1.1=none)))=true",
+            "module": "ActualDressedEMNativeMomentumFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.literal_cons",
+            "private": true,
+            "kind": "theorem",
+            "line": 42,
+            "source_signature": "private theorem literal_cons (t : NativeJetIndex × NativeJetIndex × ℝ)\n    (ts : List (NativeJetIndex × NativeJetIndex × ℝ)) (p : Fin 4 → ℂ) :\n    nativeLiteralFourier (t::ts) p=\n      (Matrix.single t.1.2 t.2.1.2 ((t.2.2 : ℂ)*jetSymbol t.1.1 (-p)*jetSymbol t.2.1.1 p)+\n        Matrix.single t.2.1.2 t.1.2 ((t.2.2 : ℂ)*jetSymbol t.2.1.1 (-p)*jetSymbol t.1.1 p))+\n      nativeLiteralFourier ts p",
+            "module": "ActualDressedEMNativeMomentumFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.excluded_term_constant",
+            "private": true,
+            "kind": "theorem",
+            "line": 49,
+            "source_signature": "private theorem excluded_term_constant (t : NativeJetIndex × NativeJetIndex × ℝ)\n    (p : Fin 4 → ℂ) (i j : Fin 289) (high : 217 ≤ i.val ∨ 217 ≤ j.val)\n    (support : (t.1.2.val<217 ∧ t.2.1.2.val<217) ∨ (t.1.1=none ∧ t.2.1.1=none)) :\n    nativeLiteralFourier [t] p i j=nativeLiteralFourier [t] 0 i j",
+            "module": "ActualDressedEMNativeMomentumFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.derivative_auxiliary_filter",
+            "private": true,
+            "kind": "theorem",
+            "line": 64,
+            "source_signature": "private theorem derivative_auxiliary_filter (ts : List (NativeJetIndex × NativeJetIndex × ℝ))\n    (support : ts.all (fun t => derivativeAuxiliaryTerm t || decide\n      ((t.1.2.val<217 ∧ t.2.1.2.val<217) ∨ (t.1.1=none ∧ t.2.1.1=none)))=true)\n    (p : Fin 4 → ℂ) (i j : Fin 289) (high : 217 ≤ i.val ∨ 217 ≤ j.val) :\n    nativeLiteralFourier ts p i j-nativeLiteralFourier ts 0 i j=\n      nativeLiteralFourier (ts.filter derivativeAuxiliaryTerm) p i j-\n        nativeLiteralFourier (ts.filter derivativeAuxiliaryTerm) 0 i j",
+            "module": "ActualDressedEMNativeMomentumFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_momentum_auxiliary_flux",
+            "private": false,
+            "kind": "theorem",
+            "line": 90,
+            "source_signature": "theorem actual_native_momentum_auxiliary_flux (p : Fin 4 → ℂ) (i j : Fin 289)\n    (high : 217 ≤ i.val ∨ 217 ≤ j.val) :\n    emOriginalJacobi p i j-emOriginalJacobi 0 i j=\n      nativeLiteralFourier sourceDerivativeTerms p i j-nativeLiteralFourier sourceDerivativeTerms 0 i j",
+            "module": "ActualDressedEMNativeMomentumFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.gauge_rest_embed",
+            "private": true,
+            "kind": "theorem",
+            "line": 100,
+            "source_signature": "private theorem gauge_rest_embed (mu : Fin 4) (a : Fin 12) :\n    nativeRestIndex (gaugeRestIndex mu a)=gaugeSlot mu a",
+            "module": "ActualDressedEMNativeMomentumFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.auxiliary_index_injective",
+            "private": true,
+            "kind": "theorem",
+            "line": 103,
+            "source_signature": "private theorem auxiliary_index_injective : Function.Injective gaugeAuxiliaryIndex",
+            "module": "ActualDressedEMNativeMomentumFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.rest_index_injective",
+            "private": true,
+            "kind": "theorem",
+            "line": 111,
+            "source_signature": "private theorem rest_index_injective : Function.Injective nativeRestIndex",
+            "module": "ActualDressedEMNativeMomentumFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.auxiliary_gauge_single",
+            "private": true,
+            "kind": "theorem",
+            "line": 115,
+            "source_signature": "private theorem auxiliary_gauge_single (i : Fin 6 × Fin 12) (mu : Fin 4) (a : Fin 12) (z : ℂ) :\n    (Matrix.single (gaugeAuxiliaryIndex i) (gaugeSlot mu a) z).submatrix gaugeAuxiliaryIndex nativeRestIndex=\n      Matrix.single i (gaugeRestIndex mu a) z",
+            "module": "ActualDressedEMNativeMomentumFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.gauge_auxiliary_single_zero",
+            "private": true,
+            "kind": "theorem",
+            "line": 122,
+            "source_signature": "private theorem gauge_auxiliary_single_zero (mu : Fin 4) (a : Fin 12) (i : Fin 6 × Fin 12) (z : ℂ) :\n    (Matrix.single (gaugeSlot mu a) (gaugeAuxiliaryIndex i) z).submatrix gaugeAuxiliaryIndex nativeRestIndex=0",
+            "module": "ActualDressedEMNativeMomentumFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.derivative_term_auxiliary_matrix",
+            "private": true,
+            "kind": "theorem",
+            "line": 134,
+            "source_signature": "private theorem derivative_term_auxiliary_matrix (d mu : Fin 4) (pair : Fin 6) (a b : Fin 12)\n    (h : ℝ) (p : Fin 4 → ℂ) :\n    (nativeLiteralFourier [((some d,gaugeSlot mu a),(none,gaugeBSlot pair b),h)] p-\n      nativeLiteralFourier [((some d,gaugeSlot mu a),(none,gaugeBSlot pair b),h)] 0).submatrix\n        gaugeAuxiliaryIndex nativeRestIndex=Matrix.single (pair,b) (gaugeRestIndex mu a) ((h : ℂ)*p d)",
+            "module": "ActualDressedEMNativeMomentumFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.derivativeColourMatrix",
+            "private": true,
+            "kind": "def",
+            "line": 151,
+            "source_signature": "private def derivativeColourMatrix (d mu : Fin 4) (pair : Fin 6) (p : Fin 4 → ℂ) : Matrix (Fin 6 × Fin 12) (Fin 217) ℂ",
+            "module": "ActualDressedEMNativeMomentumFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.literal_diff_cons_two",
+            "private": true,
+            "kind": "theorem",
+            "line": 156,
+            "source_signature": "private theorem literal_diff_cons_two (t u : NativeJetIndex × NativeJetIndex × ℝ)\n    (ts : List (NativeJetIndex × NativeJetIndex × ℝ)) (p : Fin 4 → ℂ) :\n    nativeLiteralFourier (t::u::ts) p-nativeLiteralFourier (t::u::ts) 0=\n      (nativeLiteralFourier [t] p-nativeLiteralFourier [t] 0)+\n        (nativeLiteralFourier (u::ts) p-nativeLiteralFourier (u::ts) 0)",
+            "module": "ActualDressedEMNativeMomentumFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.rectangular_single_neg",
+            "private": true,
+            "kind": "theorem",
+            "line": 164,
+            "source_signature": "private theorem rectangular_single_neg {R C : Type*} [DecidableEq R] [DecidableEq C]\n    (i : R) (j : C) (z : ℂ) : Matrix.single i j (-z)=-Matrix.single i j z",
+            "module": "ActualDressedEMNativeMomentumFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.pair_auxiliary_matrix",
+            "private": true,
+            "kind": "theorem",
+            "line": 170,
+            "source_signature": "private theorem pair_auxiliary_matrix (d e mu nu : Fin 4) (pair : Fin 6) (p : Fin 4 → ℂ) :\n    (nativeLiteralFourier (pairDerivativeTerms d e mu nu pair) p-\n      nativeLiteralFourier (pairDerivativeTerms d e mu nu pair) 0).submatrix gaugeAuxiliaryIndex nativeRestIndex=\n      derivativeColourMatrix d mu pair p-derivativeColourMatrix e nu pair p",
+            "module": "ActualDressedEMNativeMomentumFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.colour_read",
+            "private": true,
+            "kind": "theorem",
+            "line": 180,
+            "source_signature": "private theorem colour_read (d mu : Fin 4) (pair a : Fin 6) (i : Fin 12) (p : Fin 4 → ℂ) (r : Fin 217 → ℂ) :\n    (derivativeColourMatrix d mu pair p*ᵥr) (a,i)=\n      if pair=a then p d*auxiliaryLieReader (fun j => r (gaugeRestIndex mu j)) i else 0",
+            "module": "ActualDressedEMNativeMomentumFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.literal_diff_append",
+            "private": true,
+            "kind": "theorem",
+            "line": 188,
+            "source_signature": "private theorem literal_diff_append (a b : List (NativeJetIndex × NativeJetIndex × ℝ)) (p : Fin 4 → ℂ) :\n    nativeLiteralFourier (a++b) p-nativeLiteralFourier (a++b) 0=\n      (nativeLiteralFourier a p-nativeLiteralFourier a 0)+(nativeLiteralFourier b p-nativeLiteralFourier b 0)",
+            "module": "ActualDressedEMNativeMomentumFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.nativeAuxiliaryMomentumFirst",
+            "private": false,
+            "kind": "def",
+            "line": 194,
+            "source_signature": "def nativeAuxiliaryMomentumFirst (p : Fin 4 → ℂ) : Matrix (Fin 6 × Fin 12) (Fin 217) ℂ",
+            "module": "ActualDressedEMNativeMomentumFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.nativeRestMomentumFirst",
+            "private": false,
+            "kind": "def",
+            "line": 197,
+            "source_signature": "def nativeRestMomentumFirst (p : Fin 4 → ℂ) : Matrix (Fin 217) (Fin 6 × Fin 12) ℂ",
+            "module": "ActualDressedEMNativeMomentumFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_auxiliary_momentum_matrix",
+            "private": true,
+            "kind": "theorem",
+            "line": 200,
+            "source_signature": "private theorem actual_auxiliary_momentum_matrix (p : Fin 4 → ℂ) :\n    nativeAuxiliaryMomentumFirst p=\n      (derivativeColourMatrix 0 1 3 p-derivativeColourMatrix 1 0 3 p)+\n      (derivativeColourMatrix 0 2 4 p-derivativeColourMatrix 2 0 4 p)+\n      (derivativeColourMatrix 0 3 5 p-derivativeColourMatrix 3 0 5 p)+\n      (derivativeColourMatrix 2 3 0 p-derivativeColourMatrix 3 2 0 p)+\n      (derivativeColourMatrix 3 1 1 p-derivativeColourMatrix 1 3 1 p)+\n      (derivativeColourMatrix 1 2 2 p-derivativeColourMatrix 2 1 2 p)",
+            "module": "ActualDressedEMNativeMomentumFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.nativeMomentumCurl",
+            "private": false,
+            "kind": "def",
+            "line": 218,
+            "source_signature": "def nativeMomentumCurl {K : Type*} [Field K] (p v : Fin 4 → K) : Fin 6 → K",
+            "module": "ActualDressedEMNativeMomentumFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.lie_reader_scale",
+            "private": true,
+            "kind": "theorem",
+            "line": 222,
+            "source_signature": "private theorem lie_reader_scale (z : ℂ) (v : Fin 12 → ℂ) :\n    auxiliaryLieReader (fun a => z*v a)=fun a => z*auxiliaryLieReader v a",
+            "module": "ActualDressedEMNativeMomentumFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_auxiliary_momentum_reader",
+            "private": false,
+            "kind": "theorem",
+            "line": 229,
+            "source_signature": "theorem actual_native_auxiliary_momentum_reader (p : Fin 4 → ℂ) (r : Fin 217 → ℂ) :\n    nativeAuxiliaryMomentumFirst p*ᵥr=fun i =>\n      auxiliaryLieReader (fun a => nativeMomentumCurl p (fun mu => r (gaugeRestIndex mu a)) i.1) i.2",
+            "module": "ActualDressedEMNativeMomentumFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.single_derivative_skew",
+            "private": true,
+            "kind": "theorem",
+            "line": 243,
+            "source_signature": "private theorem single_derivative_skew (t : NativeJetIndex × NativeJetIndex × ℝ) (p : Fin 4 → ℂ)\n    (slots : t.1.1≠none ∧ t.2.1.1=none) (i j : Fin 289) :\n    nativeLiteralFourier [t] p i j-nativeLiteralFourier [t] 0 i j=\n      -(nativeLiteralFourier [t] p j i-nativeLiteralFourier [t] 0 j i)",
+            "module": "ActualDressedEMNativeMomentumFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.list_derivative_skew",
+            "private": true,
+            "kind": "theorem",
+            "line": 256,
+            "source_signature": "private theorem list_derivative_skew (ts : List (NativeJetIndex × NativeJetIndex × ℝ)) (p : Fin 4 → ℂ)\n    (slots : ts.all (fun t => decide (t.1.1≠none ∧ t.2.1.1=none))=true) (i j : Fin 289) :\n    nativeLiteralFourier ts p i j-nativeLiteralFourier ts 0 i j=\n      -(nativeLiteralFourier ts p j i-nativeLiteralFourier ts 0 j i)",
+            "module": "ActualDressedEMNativeMomentumFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_momentum_flux_transpose",
+            "private": false,
+            "kind": "theorem",
+            "line": 273,
+            "source_signature": "theorem actual_native_momentum_flux_transpose (p : Fin 4 → ℂ) :\n    nativeRestMomentumFirst p=-(nativeAuxiliaryMomentumFirst p).transpose",
+            "module": "ActualDressedEMNativeMomentumFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.nativeMomentumDivergence",
+            "private": false,
+            "kind": "def",
+            "line": 287,
+            "source_signature": "def nativeMomentumDivergence {K : Type*} [Field K] (p : Fin 4 → K) (b : Fin 6 → K) : Fin 4 → K",
+            "module": "ActualDressedEMNativeMomentumFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.colour_dual_read",
+            "private": true,
+            "kind": "theorem",
+            "line": 291,
+            "source_signature": "private theorem colour_dual_read (d mu nu : Fin 4) (pair : Fin 6) (i : Fin 12)\n    (p : Fin 4 → ℂ) (b : (Fin 6 × Fin 12) → ℂ) :\n    ((derivativeColourMatrix d nu pair p).transpose*ᵥb) (gaugeRestIndex mu i)=\n      if nu=mu then p d*auxiliaryLieReader (fun j => b (pair,j)) i else 0",
+            "module": "ActualDressedEMNativeMomentumFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_rest_momentum_reader",
+            "private": false,
+            "kind": "theorem",
+            "line": 315,
+            "source_signature": "theorem actual_native_rest_momentum_reader (p : Fin 4 → ℂ) (b : (Fin 6 × Fin 12) → ℂ)\n    (mu : Fin 4) (a : Fin 12) :\n    (nativeRestMomentumFirst p*ᵥb) (gaugeRestIndex mu a)=\n      -nativeMomentumDivergence p (fun pair => auxiliaryLieReader (fun i => b (pair,i)) a) mu",
+            "module": "ActualDressedEMNativeMomentumFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.native_momentum_curl_neg",
+            "private": false,
+            "kind": "theorem",
+            "line": 328,
+            "source_signature": "theorem native_momentum_curl_neg (p v : Fin 4 → ℂ) :\n    nativeMomentumCurl (-p) v=-nativeMomentumCurl p v",
+            "module": "ActualDressedEMNativeMomentumFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_auxiliary_momentum_odd",
+            "private": false,
+            "kind": "theorem",
+            "line": 338,
+            "source_signature": "theorem actual_native_auxiliary_momentum_odd (p : Fin 4 → ℂ) :\n    nativeAuxiliaryMomentumFirst (-p)=-nativeAuxiliaryMomentumFirst p",
+            "module": "ActualDressedEMNativeMomentumFlux"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_rest_momentum_odd",
+            "private": false,
+            "kind": "theorem",
+            "line": 351,
+            "source_signature": "theorem actual_native_rest_momentum_odd (p : Fin 4 → ℂ) :\n    nativeRestMomentumFirst (-p)=-nativeRestMomentumFirst p",
+            "module": "ActualDressedEMNativeMomentumFlux"
+          }
+        ],
+        "imports": [
+          {
+            "module": "ActualDressedEMNativePrincipal",
+            "object_path": "Lean/scratch/AlphaSource/ActualDressedEMNativePrincipalOwn/ActualDressedEMNativePrincipal.olean",
+            "object_sha256": "c2ab5674c66f9b4d7a34f4b8c031490319fde823099685d8c5d8a10bef4c5137"
+          }
+        ],
+        "strict": {
+          "exit": 0,
+          "seconds": 33.401,
+          "command": [
+            "lake",
+            "env",
+            "lean",
+            "--trust=0",
+            "-j1",
+            "-DwarningAsError=true",
+            "-DmaxErrors=4",
+            "-DElab.async=false",
+            "-o",
+            "Lean/scratch/AlphaSource/ActualDressedEMNativeMomentumPrincipalOwn/ActualDressedEMNativeMomentumFlux.olean",
+            "Lean/scratch/AlphaSource/ActualDressedEMNativeMomentumPrincipalOwn/ActualDressedEMNativeMomentumFlux.lean"
+          ],
+          "source_sha256": "9215bb8516109730f42a3bdb3afed2a03e244b1e0a5f7dc83b1647049e9df8fb",
+          "object_sha256": "0afd9315b380efa669114b39feb54487b0f7042c7edce6dc98eeaef09ae05fad"
+        }
+      },
+      {
+        "module": "ActualDressedEMNativeMomentumPrincipal",
+        "path": "Lean/scratch/AlphaSource/ActualDressedEMNativeMomentumPrincipalOwn/ActualDressedEMNativeMomentumPrincipal.lean",
+        "source_sha256": "d239f174fcef7ba5fdbdf89cf89da582f3ae00a8d7c162423def8961409fef82",
+        "object_path": "Lean/scratch/AlphaSource/ActualDressedEMNativeMomentumPrincipalOwn/ActualDressedEMNativeMomentumPrincipal.olean",
+        "object_sha256": "8e72c6e03d6baf21e218f731e87dc6b9d092a169d633f150aa396e75fee37a9f",
+        "line_count": 195,
+        "public": [
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.nativeMomentumEven",
+            "private": false,
+            "kind": "def",
+            "line": 16,
+            "source_signature": "def nativeMomentumEven (p : Fin 4 → ℂ) : Matrix (Fin 289) (Fin 289) ℂ",
+            "module": "ActualDressedEMNativeMomentumPrincipal"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_gauge_momentum_even_zero",
+            "private": false,
+            "kind": "theorem",
+            "line": 67,
+            "source_signature": "theorem actual_native_gauge_momentum_even_zero (p : Fin 4 → ℂ) (mu : Fin 4) (a : Fin 12) (j : Fin 289) :\n    nativeMomentumEven p (gaugeSlot mu a) j=0",
+            "module": "ActualDressedEMNativeMomentumPrincipal"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.nativeMomentumPrincipal",
+            "private": false,
+            "kind": "def",
+            "line": 80,
+            "source_signature": "def nativeMomentumPrincipal (p : Fin 4 → ℂ) : Matrix (Fin 217) (Fin 217) ℂ",
+            "module": "ActualDressedEMNativeMomentumPrincipal"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.nativeMomentumCurlMatrix",
+            "private": false,
+            "kind": "def",
+            "line": 85,
+            "source_signature": "def nativeMomentumCurlMatrix (p : Fin 4 → ℂ) : Matrix (Fin 6) (Fin 4) ℂ",
+            "module": "ActualDressedEMNativeMomentumPrincipal"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.native_momentum_curl_matrix_action",
+            "private": false,
+            "kind": "theorem",
+            "line": 88,
+            "source_signature": "theorem native_momentum_curl_matrix_action (p v : Fin 4 → ℂ) :\n    nativeMomentumCurlMatrix p*ᵥv=nativeMomentumCurl p v",
+            "module": "ActualDressedEMNativeMomentumPrincipal"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.native_momentum_divergence_matrix_action",
+            "private": false,
+            "kind": "theorem",
+            "line": 95,
+            "source_signature": "theorem native_momentum_divergence_matrix_action (p : Fin 4 → ℂ) (b : Fin 6 → ℂ) :\n    (nativeMomentumCurlMatrix p).transpose*ᵥb=nativeMomentumDivergence p b",
+            "module": "ActualDressedEMNativeMomentumPrincipal"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.nativeEMMomentumMatrix",
+            "private": false,
+            "kind": "def",
+            "line": 103,
+            "source_signature": "def nativeEMMomentumMatrix (p : Fin 4 → ℂ) : Matrix (Fin 4) (Fin 4) ℂ",
+            "module": "ActualDressedEMNativeMomentumPrincipal"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_em_momentum_matrix_action",
+            "private": false,
+            "kind": "theorem",
+            "line": 107,
+            "source_signature": "theorem actual_native_em_momentum_matrix_action (p v : Fin 4 → ℂ) :\n    nativeEMMomentumMatrix p*ᵥv=\n      nativeMomentumDivergence p (fun pair => (nativeAuxiliaryWeight pair)⁻¹*nativeMomentumCurl p v pair)",
+            "module": "ActualDressedEMNativeMomentumPrincipal"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_inverse_momentum_reader",
+            "private": false,
+            "kind": "theorem",
+            "line": 119,
+            "source_signature": "theorem actual_native_inverse_momentum_reader (p : Fin 4 → ℂ) (r : Fin 217 → ℂ) :\n    nativeAuxiliaryInverseMatrix*ᵥ(nativeAuxiliaryMomentumFirst p*ᵥr)=fun i =>\n      (nativeAuxiliaryWeight i.1)⁻¹*nativeMomentumCurl p (fun mu => r (gaugeRestIndex mu i.2)) i.1",
+            "module": "ActualDressedEMNativeMomentumPrincipal"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_gauge_momentum_principal",
+            "private": false,
+            "kind": "theorem",
+            "line": 144,
+            "source_signature": "theorem actual_native_gauge_momentum_principal (p : Fin 4 → ℂ) (r : Fin 217 → ℂ) (mu : Fin 4) (a : Fin 12) :\n    (nativeMomentumPrincipal p*ᵥr) (gaugeRestIndex mu a)=\n      (nativeEMMomentumMatrix p*ᵥ(fun nu => auxiliaryLieReader (fun i => r (gaugeRestIndex nu i)) a)) mu",
+            "module": "ActualDressedEMNativeMomentumPrincipal"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_em_momentum_principal",
+            "private": false,
+            "kind": "theorem",
+            "line": 174,
+            "source_signature": "theorem actual_native_em_momentum_principal (p : Fin 4 → ℂ) (r : Fin 217 → ℂ) :\n    nativeEMRestInsertion.transpose*ᵥ(nativeMomentumPrincipal p*ᵥr)=\n      nativeEMMomentumMatrix p*ᵥ(nativeEMRestInsertion.transpose*ᵥr)",
+            "module": "ActualDressedEMNativeMomentumPrincipal"
+          }
+        ],
+        "declarations": [
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.nativeMomentumEven",
+            "private": false,
+            "kind": "def",
+            "line": 16,
+            "source_signature": "def nativeMomentumEven (p : Fin 4 → ℂ) : Matrix (Fin 289) (Fin 289) ℂ",
+            "module": "ActualDressedEMNativeMomentumPrincipal"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.original_gauge_derivative_support",
+            "private": true,
+            "kind": "theorem",
+            "line": 19,
+            "source_signature": "private theorem original_gauge_derivative_support : nativeCompleteLiteralTerms.all (fun t =>\n    decide (((t.1.2.val<9 ∨ 57 ≤ t.1.2.val) ∧ (t.2.1.2.val<9 ∨ 57 ≤ t.2.1.2.val)) ∨\n      t.1.1=none ∨ t.2.1.1=none))=true",
+            "module": "ActualDressedEMNativeMomentumPrincipal"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.literal_cons",
+            "private": true,
+            "kind": "theorem",
+            "line": 23,
+            "source_signature": "private theorem literal_cons (t : NativeJetIndex × NativeJetIndex × ℝ)\n    (ts : List (NativeJetIndex × NativeJetIndex × ℝ)) (p : Fin 4 → ℂ) :\n    nativeLiteralFourier (t::ts) p=nativeLiteralFourier [t] p+nativeLiteralFourier ts p",
+            "module": "ActualDressedEMNativeMomentumPrincipal"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.literal_single_gauge_even",
+            "private": true,
+            "kind": "theorem",
+            "line": 28,
+            "source_signature": "private theorem literal_single_gauge_even (t : NativeJetIndex × NativeJetIndex × ℝ)\n    (p : Fin 4 → ℂ) (i j : Fin 289) (low : 9 ≤ i.val) (high : i.val<57)\n    (support : ((t.1.2.val<9 ∨ 57 ≤ t.1.2.val) ∧ (t.2.1.2.val<9 ∨ 57 ≤ t.2.1.2.val)) ∨\n      t.1.1=none ∨ t.2.1.1=none) :\n    (1/2 : ℂ)*(nativeLiteralFourier [t] p i j+nativeLiteralFourier [t] (-p) i j)-\n      nativeLiteralFourier [t] 0 i j=0",
+            "module": "ActualDressedEMNativeMomentumPrincipal"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.literal_gauge_even",
+            "private": true,
+            "kind": "theorem",
+            "line": 49,
+            "source_signature": "private theorem literal_gauge_even (ts : List (NativeJetIndex × NativeJetIndex × ℝ))\n    (support : ts.all (fun t => decide (((t.1.2.val<9 ∨ 57 ≤ t.1.2.val) ∧\n      (t.2.1.2.val<9 ∨ 57 ≤ t.2.1.2.val)) ∨ t.1.1=none ∨ t.2.1.1=none))=true)\n    (p : Fin 4 → ℂ) (i j : Fin 289) (low : 9 ≤ i.val) (high : i.val<57) :\n    (1/2 : ℂ)*(nativeLiteralFourier ts p i j+nativeLiteralFourier ts (-p) i j)-\n      nativeLiteralFourier ts 0 i j=0",
+            "module": "ActualDressedEMNativeMomentumPrincipal"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_gauge_momentum_even_zero",
+            "private": false,
+            "kind": "theorem",
+            "line": 67,
+            "source_signature": "theorem actual_native_gauge_momentum_even_zero (p : Fin 4 → ℂ) (mu : Fin 4) (a : Fin 12) (j : Fin 289) :\n    nativeMomentumEven p (gaugeSlot mu a) j=0",
+            "module": "ActualDressedEMNativeMomentumPrincipal"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.nativeMomentumPrincipal",
+            "private": false,
+            "kind": "def",
+            "line": 80,
+            "source_signature": "def nativeMomentumPrincipal (p : Fin 4 → ℂ) : Matrix (Fin 217) (Fin 217) ℂ",
+            "module": "ActualDressedEMNativeMomentumPrincipal"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.nativeMomentumCurlMatrix",
+            "private": false,
+            "kind": "def",
+            "line": 85,
+            "source_signature": "def nativeMomentumCurlMatrix (p : Fin 4 → ℂ) : Matrix (Fin 6) (Fin 4) ℂ",
+            "module": "ActualDressedEMNativeMomentumPrincipal"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.native_momentum_curl_matrix_action",
+            "private": false,
+            "kind": "theorem",
+            "line": 88,
+            "source_signature": "theorem native_momentum_curl_matrix_action (p v : Fin 4 → ℂ) :\n    nativeMomentumCurlMatrix p*ᵥv=nativeMomentumCurl p v",
+            "module": "ActualDressedEMNativeMomentumPrincipal"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.native_momentum_divergence_matrix_action",
+            "private": false,
+            "kind": "theorem",
+            "line": 95,
+            "source_signature": "theorem native_momentum_divergence_matrix_action (p : Fin 4 → ℂ) (b : Fin 6 → ℂ) :\n    (nativeMomentumCurlMatrix p).transpose*ᵥb=nativeMomentumDivergence p b",
+            "module": "ActualDressedEMNativeMomentumPrincipal"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.nativeEMMomentumMatrix",
+            "private": false,
+            "kind": "def",
+            "line": 103,
+            "source_signature": "def nativeEMMomentumMatrix (p : Fin 4 → ℂ) : Matrix (Fin 4) (Fin 4) ℂ",
+            "module": "ActualDressedEMNativeMomentumPrincipal"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_em_momentum_matrix_action",
+            "private": false,
+            "kind": "theorem",
+            "line": 107,
+            "source_signature": "theorem actual_native_em_momentum_matrix_action (p v : Fin 4 → ℂ) :\n    nativeEMMomentumMatrix p*ᵥv=\n      nativeMomentumDivergence p (fun pair => (nativeAuxiliaryWeight pair)⁻¹*nativeMomentumCurl p v pair)",
+            "module": "ActualDressedEMNativeMomentumPrincipal"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_inverse_momentum_reader",
+            "private": false,
+            "kind": "theorem",
+            "line": 119,
+            "source_signature": "theorem actual_native_inverse_momentum_reader (p : Fin 4 → ℂ) (r : Fin 217 → ℂ) :\n    nativeAuxiliaryInverseMatrix*ᵥ(nativeAuxiliaryMomentumFirst p*ᵥr)=fun i =>\n      (nativeAuxiliaryWeight i.1)⁻¹*nativeMomentumCurl p (fun mu => r (gaugeRestIndex mu i.2)) i.1",
+            "module": "ActualDressedEMNativeMomentumPrincipal"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.lie_reader_scale",
+            "private": true,
+            "kind": "theorem",
+            "line": 128,
+            "source_signature": "private theorem lie_reader_scale (z : ℂ) (v : Fin 12 → ℂ) :\n    auxiliaryLieReader (fun a => z*v a)=fun a => z*auxiliaryLieReader v a",
+            "module": "ActualDressedEMNativeMomentumPrincipal"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.lie_reader_curl",
+            "private": true,
+            "kind": "theorem",
+            "line": 134,
+            "source_signature": "private theorem lie_reader_curl (p : Fin 4 → ℂ) (r : Fin 217 → ℂ) (pair : Fin 6) (i : Fin 12) :\n    auxiliaryLieReader (fun a => nativeMomentumCurl p (fun mu => r (gaugeRestIndex mu a)) pair) i=\n      nativeMomentumCurl p (fun mu => auxiliaryLieReader (fun a => r (gaugeRestIndex mu a)) i) pair",
+            "module": "ActualDressedEMNativeMomentumPrincipal"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_gauge_momentum_principal",
+            "private": false,
+            "kind": "theorem",
+            "line": 144,
+            "source_signature": "theorem actual_native_gauge_momentum_principal (p : Fin 4 → ℂ) (r : Fin 217 → ℂ) (mu : Fin 4) (a : Fin 12) :\n    (nativeMomentumPrincipal p*ᵥr) (gaugeRestIndex mu a)=\n      (nativeEMMomentumMatrix p*ᵥ(fun nu => auxiliaryLieReader (fun i => r (gaugeRestIndex nu i)) a)) mu",
+            "module": "ActualDressedEMNativeMomentumPrincipal"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_rest_em_projection",
+            "private": true,
+            "kind": "theorem",
+            "line": 160,
+            "source_signature": "private theorem actual_rest_em_projection (r : Fin 217 → ℂ) (mu : Fin 4) :\n    (nativeEMRestInsertion.transpose*ᵥr) mu=\n      (1/2 : ℂ)*(-r (gaugeRestIndex mu 6)+r (gaugeRestIndex mu 7)-r (gaugeRestIndex mu 11))",
+            "module": "ActualDressedEMNativeMomentumPrincipal"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_em_momentum_principal",
+            "private": false,
+            "kind": "theorem",
+            "line": 174,
+            "source_signature": "theorem actual_native_em_momentum_principal (p : Fin 4 → ℂ) (r : Fin 217 → ℂ) :\n    nativeEMRestInsertion.transpose*ᵥ(nativeMomentumPrincipal p*ᵥr)=\n      nativeEMMomentumMatrix p*ᵥ(nativeEMRestInsertion.transpose*ᵥr)",
+            "module": "ActualDressedEMNativeMomentumPrincipal"
+          }
+        ],
+        "imports": [
+          {
+            "module": "ActualDressedEMNativeMomentumFlux",
+            "object_path": "Lean/scratch/AlphaSource/ActualDressedEMNativeMomentumPrincipalOwn/ActualDressedEMNativeMomentumFlux.olean",
+            "object_sha256": "0afd9315b380efa669114b39feb54487b0f7042c7edce6dc98eeaef09ae05fad"
+          }
+        ],
+        "strict": {
+          "exit": 0,
+          "seconds": 39.776,
+          "command": [
+            "lake",
+            "env",
+            "lean",
+            "--trust=0",
+            "-j1",
+            "-DwarningAsError=true",
+            "-DmaxErrors=4",
+            "-DElab.async=false",
+            "-o",
+            "Lean/scratch/AlphaSource/ActualDressedEMNativeMomentumPrincipalOwn/ActualDressedEMNativeMomentumPrincipal.olean",
+            "Lean/scratch/AlphaSource/ActualDressedEMNativeMomentumPrincipalOwn/ActualDressedEMNativeMomentumPrincipal.lean"
+          ],
+          "source_sha256": "d239f174fcef7ba5fdbdf89cf89da582f3ae00a8d7c162423def8961409fef82",
+          "object_sha256": "8e72c6e03d6baf21e218f731e87dc6b9d092a169d633f150aa396e75fee37a9f"
+        }
+      },
+      {
+        "module": "ActualDressedEMNativeMomentumConsumer",
+        "path": "Lean/scratch/AlphaSource/ActualDressedEMNativeMomentumPrincipalOwn/ActualDressedEMNativeMomentumConsumer.lean",
+        "source_sha256": "3e7a46757bb9523572651b15b985131996d009962a54f59cb4df88e572bc0ca2",
+        "object_path": "Lean/scratch/AlphaSource/ActualDressedEMNativeMomentumPrincipalOwn/ActualDressedEMNativeMomentumConsumer.olean",
+        "object_sha256": "efa46e571d4193e9202bb68acc74450f88a38150f1e804b83c1160268eef477a",
+        "line_count": 154,
+        "public": [
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.nativeMomentumLower",
+            "private": false,
+            "kind": "def",
+            "line": 19,
+            "source_signature": "def nativeMomentumLower (p : Fin 4 → ℂ) : Matrix (Fin 217) (Fin 217) ℂ",
+            "module": "ActualDressedEMNativeMomentumConsumer"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_momentum_decomposition",
+            "private": false,
+            "kind": "theorem",
+            "line": 35,
+            "source_signature": "theorem actual_native_momentum_decomposition (p : Fin 4 → ℂ) :\n    nativeSchurMatrix p=nativeSchurMatrix 0+nativeMomentumLower p+nativeMomentumPrincipal p",
+            "module": "ActualDressedEMNativeMomentumConsumer"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_schur_even_principal",
+            "private": false,
+            "kind": "theorem",
+            "line": 57,
+            "source_signature": "theorem actual_native_schur_even_principal (p : Fin 4 → ℂ) :\n    (1/2 : ℂ) • (nativeSchurMatrix p+nativeSchurMatrix (-p))-nativeSchurMatrix 0=\n      nativeMomentumPrincipal p",
+            "module": "ActualDressedEMNativeMomentumConsumer"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.nativePhysicalEMPrincipal",
+            "private": false,
+            "kind": "def",
+            "line": 96,
+            "source_signature": "def nativePhysicalEMPrincipal (omega : ℝ) (k : PhysicalMomentum) (v : Fin 4 → ℂ) : Fin 4 → ℂ",
+            "module": "ActualDressedEMNativeMomentumConsumer"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_physical_em_principal",
+            "private": false,
+            "kind": "theorem",
+            "line": 109,
+            "source_signature": "theorem actual_native_physical_em_principal (omega : ℝ) (k : PhysicalMomentum) (v : Fin 4 → ℂ) :\n    nativeEMMomentumMatrix (physicalFrequencyMomentum omega k)*ᵥv=nativePhysicalEMPrincipal omega k v",
+            "module": "ActualDressedEMNativeMomentumConsumer"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_em_native_momentum_equation",
+            "private": false,
+            "kind": "theorem",
+            "line": 130,
+            "source_signature": "theorem actual_em_native_momentum_equation (event : DressedEvent) (eps s : ℝ) (n : PhysicalMomentum)\n    (alpha beta : Fin 4) (balanced : PencilClockBalanced event eps n) (finite : EMColumnsClockFinite event eps n)\n    (regular : (zeroClockClearing event eps n).eval (s : ℂ)≠0)\n    (root : (s : ℂ)∈visibleRoots (zeroClockFrequencyEMFraction event eps n alpha beta)) :\n    nativeEMRestInsertion.transpose*ᵥ(nativeSchurMatrix 0*ᵥ\n      emRestSlice (actualEMZeroClockMode event eps n beta (s : ℂ)))+\n    nativeEMRestInsertion.transpose*ᵥ(nativeMomentumLower (frequencyRay eps s n)*ᵥ\n      emRestSlice (actualEMZeroClockMode event eps n beta (s : ℂ)))+\n    nativePhysicalEMPrincipal (sourceFrequency eps s) ((eps^2 : ℝ) • n)\n      (nativeEMRestInsertion.transpose*ᵥemRestSlice (actualEMZeroClockMode event eps n beta (s : ℂ)))=\n    nativeEMRestInsertion.transpose*ᵥnativeQuantumSchurForcing (frequencyRay eps s n)\n      (zeroClockQuantumResponse event eps s n) (actualEMZeroClockMode event eps n beta (s : ℂ))",
+            "module": "ActualDressedEMNativeMomentumConsumer"
+          }
+        ],
+        "declarations": [
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.nativeMomentumLower",
+            "private": false,
+            "kind": "def",
+            "line": 19,
+            "source_signature": "def nativeMomentumLower (p : Fin 4 → ℂ) : Matrix (Fin 217) (Fin 217) ℂ",
+            "module": "ActualDressedEMNativeMomentumConsumer"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.matrix_principal_decomposition",
+            "private": true,
+            "kind": "theorem",
+            "line": 24,
+            "source_signature": "private theorem matrix_principal_decomposition {R B : Type*} [Fintype R] [Fintype B]\n    (A Aneg A0 : Matrix R R ℂ) (Bp B0 : Matrix R B ℂ) (Cp C0 : Matrix B R ℂ) (W : Matrix B B ℂ) :\n    A-Bp*W*Cp=(A0-B0*W*C0)+\n      ((1/2 : ℂ) • (A-Aneg)-((Bp-B0)*W*C0+B0*W*(Cp-C0)))+\n      ((1/2 : ℂ) • (A+Aneg)-A0-(Bp-B0)*W*(Cp-C0))",
+            "module": "ActualDressedEMNativeMomentumConsumer"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_momentum_decomposition",
+            "private": false,
+            "kind": "theorem",
+            "line": 35,
+            "source_signature": "theorem actual_native_momentum_decomposition (p : Fin 4 → ℂ) :\n    nativeSchurMatrix p=nativeSchurMatrix 0+nativeMomentumLower p+nativeMomentumPrincipal p",
+            "module": "ActualDressedEMNativeMomentumConsumer"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.matrix_schur_even",
+            "private": true,
+            "kind": "theorem",
+            "line": 47,
+            "source_signature": "private theorem matrix_schur_even {R B : Type*} [Fintype R] [Fintype B]\n    (A Aneg A0 : Matrix R R ℂ) (B0 B1 : Matrix R B ℂ) (C0 C1 : Matrix B R ℂ) (W : Matrix B B ℂ) :\n    (1/2 : ℂ) • ((A-(B0+B1)*W*(C0+C1))+(Aneg-(B0-B1)*W*(C0-C1)))-\n      (A0-B0*W*C0)=(1/2 : ℂ) • (A+Aneg)-A0-B1*W*C1",
+            "module": "ActualDressedEMNativeMomentumConsumer"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_schur_even_principal",
+            "private": false,
+            "kind": "theorem",
+            "line": 57,
+            "source_signature": "theorem actual_native_schur_even_principal (p : Fin 4 → ℂ) :\n    (1/2 : ℂ) • (nativeSchurMatrix p+nativeSchurMatrix (-p))-nativeSchurMatrix 0=\n      nativeMomentumPrincipal p",
+            "module": "ActualDressedEMNativeMomentumConsumer"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.source_auxiliary_inverse_weights",
+            "private": true,
+            "kind": "theorem",
+            "line": 84,
+            "source_signature": "private theorem source_auxiliary_inverse_weights :\n    (fun pair : Fin 6 => (nativeAuxiliaryWeight pair)⁻¹)=\n      ![2*(lapse : ℂ)⁻¹,2*(lapse : ℂ)⁻¹,2*(lapse : ℂ)⁻¹,\n        -2*(lapse : ℂ),-2*(lapse : ℂ),-2*(lapse : ℂ)]",
+            "module": "ActualDressedEMNativeMomentumConsumer"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.nativePhysicalEMPrincipal",
+            "private": false,
+            "kind": "def",
+            "line": 96,
+            "source_signature": "def nativePhysicalEMPrincipal (omega : ℝ) (k : PhysicalMomentum) (v : Fin 4 → ℂ) : Fin 4 → ℂ",
+            "module": "ActualDressedEMNativeMomentumConsumer"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_physical_em_principal",
+            "private": false,
+            "kind": "theorem",
+            "line": 109,
+            "source_signature": "theorem actual_native_physical_em_principal (omega : ℝ) (k : PhysicalMomentum) (v : Fin 4 → ℂ) :\n    nativeEMMomentumMatrix (physicalFrequencyMomentum omega k)*ᵥv=nativePhysicalEMPrincipal omega k v",
+            "module": "ActualDressedEMNativeMomentumConsumer"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_em_native_momentum_equation",
+            "private": false,
+            "kind": "theorem",
+            "line": 130,
+            "source_signature": "theorem actual_em_native_momentum_equation (event : DressedEvent) (eps s : ℝ) (n : PhysicalMomentum)\n    (alpha beta : Fin 4) (balanced : PencilClockBalanced event eps n) (finite : EMColumnsClockFinite event eps n)\n    (regular : (zeroClockClearing event eps n).eval (s : ℂ)≠0)\n    (root : (s : ℂ)∈visibleRoots (zeroClockFrequencyEMFraction event eps n alpha beta)) :\n    nativeEMRestInsertion.transpose*ᵥ(nativeSchurMatrix 0*ᵥ\n      emRestSlice (actualEMZeroClockMode event eps n beta (s : ℂ)))+\n    nativeEMRestInsertion.transpose*ᵥ(nativeMomentumLower (frequencyRay eps s n)*ᵥ\n      emRestSlice (actualEMZeroClockMode event eps n beta (s : ℂ)))+\n    nativePhysicalEMPrincipal (sourceFrequency eps s) ((eps^2 : ℝ) • n)\n      (nativeEMRestInsertion.transpose*ᵥemRestSlice (actualEMZeroClockMode event eps n beta (s : ℂ)))=\n    nativeEMRestInsertion.transpose*ᵥnativeQuantumSchurForcing (frequencyRay eps s n)\n      (zeroClockQuantumResponse event eps s n) (actualEMZeroClockMode event eps n beta (s : ℂ))",
+            "module": "ActualDressedEMNativeMomentumConsumer"
+          }
+        ],
+        "imports": [
+          {
+            "module": "ActualDressedEMNativeMomentumPrincipal",
+            "object_path": "Lean/scratch/AlphaSource/ActualDressedEMNativeMomentumPrincipalOwn/ActualDressedEMNativeMomentumPrincipal.olean",
+            "object_sha256": "8e72c6e03d6baf21e218f731e87dc6b9d092a169d633f150aa396e75fee37a9f"
+          }
+        ],
+        "strict": {
+          "exit": 0,
+          "seconds": 36.771,
+          "command": [
+            "lake",
+            "env",
+            "lean",
+            "--trust=0",
+            "-j1",
+            "-DwarningAsError=true",
+            "-DmaxErrors=4",
+            "-DElab.async=false",
+            "-o",
+            "Lean/scratch/AlphaSource/ActualDressedEMNativeMomentumPrincipalOwn/ActualDressedEMNativeMomentumConsumer.olean",
+            "Lean/scratch/AlphaSource/ActualDressedEMNativeMomentumPrincipalOwn/ActualDressedEMNativeMomentumConsumer.lean"
+          ],
+          "source_sha256": "3e7a46757bb9523572651b15b985131996d009962a54f59cb4df88e572bc0ca2",
+          "object_sha256": "efa46e571d4193e9202bb68acc74450f88a38150f1e804b83c1160268eef477a"
+        }
+      }
+    ],
+    "input": {
+      "ActualDressedEMNativeAuxiliaryOwn": {
+        "path": "Lean/scratch/AlphaSource/ActualDressedEMNativeAuxiliaryOwn/candidate.json",
+        "sha256": "36565ea545a28cd4f49dc4f55028107c8c4c172495031b0058ab6beb207cc2eb"
+      },
+      "ActualDressedEMAuxiliaryFeedbackOwn": {
+        "path": "Lean/scratch/AlphaSource/ActualDressedEMAuxiliaryFeedbackOwn/candidate.json",
+        "sha256": "f002c2f2d981ac4608657f1d8a7caa24a1865ceb764eed83f6b66245970112db"
+      },
+      "ActualDressedEMNativeSchurClockOwn": {
+        "path": "Lean/scratch/AlphaSource/ActualDressedEMNativeSchurClockOwn/candidate.json",
+        "sha256": "a267fcc24e6306948dc74fa2f836fe13b5b131ba77346d321d69fca8d05a3e83"
+      },
+      "ActualDressedEMNativePrincipalOwn": {
+        "path": "Lean/scratch/AlphaSource/ActualDressedEMNativePrincipalOwn/candidate.json",
+        "sha256": "6e72a7c2e21854f3e2f57a174bc913e75955e60ac57bd3c3a6456504c1714fb9"
+      }
+    },
+    "scope": {
+      "momentum": "Every complex four-momentum for the complete native principal; every real physical omega and arbitrary real three-momentum for the explicit physical expression. Source gauge rows retain all12 colour components and every remaining-field input.",
+      "background": "Original full217 nativeSchur(0), original odd-RR and both mixed background-momentum products remain in nativeMomentumLower. All quantum dependence remains in the complete actual forcing.",
+      "physical_formula": "Temporal:2*lapse*(kSquare*v0+omega*kDotV). Spatial i:2*lapse*omega^2*vi+2*lapse*omega*ki*v0-2/lapse*(kSquare*vi-ki*kDotV). This is the native source principal, including constraint and longitudinal terms.",
+      "coordinate_Gram": "M acts on the actual read E_R-transpose r. With original E_R input and original E_R-transpose output the existing source coordinate Gram3/4 is consumed once; raw temporal-time coefficient0 and raw spatial-time coefficient3*lapse/2 agree with the frozen actual_native_em_time_tensor. Source Noether pairScale4h/3, field=h*j_N and canonicalCoulomb/single4pi are preserved next-producer inputs, not added normalizations in this package.",
+      "feedback": "Same actual full289 EM-root mode and full Q0_B/rest response. Singular corrected auxiliary loop, necessary corrected spectral factor, all prior failure dispositions, full-column versus observed-EM orders and normalized physical residueJet remain their original paid owners.",
+      "physical": "The native symbol does not define c_corr. Actual corrected propagation and residue normalization must consume the same actual Q, constraints, source lower/background terms and physical residueJet; no experimental alpha input or caller photon/null/simple-pole premise is used.",
+      "controller": "Subordinate producer/consumer only; fixed root, whole ledger and generated next unchanged."
+    },
+    "next_return_contract": "Directly consume this same original native EM principal with the already-paid source Noether electron-charge unit, pairScale=4h/3, field=h*j_N, CanonicalUnits.canonicalCoulomb and single4pi. Generate the actual native EM Coulomb tensor and propagation-normalized dimensionless coefficient and kernel-check that all factors belong to the same field/current/observer mouth. Generate canonicalCoulomb from this same read rather than attaching it to the new principal. Preserve background/lower/fullQ whenever they are of the same order so the following alpha(0) correction/identity is solvable. Keep native principal propagation distinct from actual corrected c_corr, which remains a same-spectrum/physical residueJet responsibility.",
+    "independent_finite_controls": {
+      "script_path": "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/check_actual_dressed_em_native_momentum.py",
+      "script_sha256": "fbef5b4af34c00bfbf6e2fe93b959b88a0379ce657e3401b8b084e07bd366c5b",
+      "report_path": "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/check_actual_dressed_em_native_momentum.json",
+      "report_sha256": "0900f9acfa6f12358dc6a0ddab3ea1b3e8cc82ad5e9ae9f6c78daa296c840502",
+      "positive": 20,
+      "negative": 15,
+      "failed": [],
+      "invocation_controls": [
+        {
+          "case": "default frozen exact source",
+          "exit": 0,
+          "stdout": "{\"failed\": [], \"negative\": 15, \"positive\": 20, \"report_sha256\": \"b5ac769424282b83917791e3825f86c3b0000da84169bd5b37b3d0a01fd69695\", \"script_sha256\": \"fbef5b4af34c00bfbf6e2fe93b959b88a0379ce657e3401b8b084e07bd366c5b\", \"status\": \"PASS\"}\n",
+          "stderr": ""
+        },
+        {
+          "case": "explicit root/candidate/production override",
+          "exit": 0,
+          "stdout": "{\"failed\": [], \"negative\": 15, \"positive\": 20, \"report_sha256\": \"0900f9acfa6f12358dc6a0ddab3ea1b3e8cc82ad5e9ae9f6c78daa296c840502\", \"script_sha256\": \"fbef5b4af34c00bfbf6e2fe93b959b88a0379ce657e3401b8b084e07bd366c5b\", \"status\": \"PASS\"}\n",
+          "stderr": ""
+        },
+        {
+          "case": "similar source omitted actual longitudinal term rejected",
+          "exit": 1,
+          "stdout": "",
+          "stderr": "Traceback (most recent call last):\n  File \"Verification/physics/low-energy-phenomenology/alpha-source/em-identification/check_actual_dressed_em_native_momentum.py\", line 155, in <module>\n    main()\n  File \"Verification/physics/low-energy-phenomenology/alpha-source/em-identification/check_actual_dressed_em_native_momentum.py\", line 138, in main\n    bound = source_binding(candidate, args.source_dir.resolve() if args.source_dir else None)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"Verification/physics/low-energy-phenomenology/alpha-source/em-identification/check_actual_dressed_em_native_momentum.py\", line 126, in source_binding\n    raise ValueError(\"selected source changes frozen declaration bodies\")\nValueError: selected source changes frozen declaration bodies\n"
+        }
+      ],
+      "scope": "Exact original168 curl/all72 colour/sixweight/all217 EM reader, complete constrained4momentum and whole Schur-even/decomposition/fullQminus controls. Lean owns the same actual EM root and source identities; no corrected speed or IRalpha."
+    },
+    "focused_attention": [
+      {
+        "case": "theorem_mouth_lint.py",
+        "exit": 0,
+        "stdout": "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedEMNativeMomentumConsumer.lean:3: WARN: `autoImplicit false` left in file; remove unless policy\nVerification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedEMNativeMomentumFlux.lean:3: WARN: `autoImplicit false` left in file; remove unless policy\nVerification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedEMNativeMomentumPrincipal.lean:3: WARN: `autoImplicit false` left in file; remove unless policy\n",
+        "stderr": ""
+      },
+      {
+        "case": "frontier_guard.py",
+        "exit": 0,
+        "stdout": "FILE Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedEMNativeMomentumFlux.lean: lines=357 bytes=20316 declarations=36 namespaces=1 scratch=no tracked=no\nFILE Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedEMNativeMomentumPrincipal.lean: lines=195 bytes=11628 declarations=18 namespaces=1 scratch=no tracked=no\nFILE Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedEMNativeMomentumConsumer.lean: lines=154 bytes=9388 declarations=9 namespaces=1 scratch=no tracked=no\n[frontier-guard] blocks=0 warnings=0 import-scope=active-files\n",
+        "stderr": ""
+      }
+    ],
+    "independent_final_certification": {
+      "path": "Lean/scratch/AlphaSource/ActualDressedEMNativeMomentumPrincipalOwn/independent-certify-review.json",
+      "sha256": "0f8eb46fd09888d9f686fd7c73686ee87065e901ec86023112cda1e3cb57a023",
+      "verdict": "certified",
+      "scope": "Independent complete source/private/generated/type/production-path/closure/controls audit, unchanged proof candidate; no repeated Lean or solver"
+    }
+  },
+  "audit_source_object_hashes": {
+    "module": "ActualDressedEMNativeMomentumFullAudit",
+    "exit": 0,
+    "seconds": 64.34005904197693,
+    "source_sha256": "601ce09afaef621e7bee91a3e7bc96c125d78ccbcc9da82c9885eeffbc6a279f",
+    "object_sha256": "03f110adf809766c0b2bbff410dc894ae1b6857e8a96236ac62aae10a1c7afd1"
+  },
+  "production_source_object_hashes": [
+    {
+      "module": "ActualDressedEMNativeMomentumFlux",
+      "exit": 0,
+      "seconds": 46.87642812728882,
+      "source_sha256": "9215bb8516109730f42a3bdb3afed2a03e244b1e0a5f7dc83b1647049e9df8fb",
+      "object_sha256": "9b4191119e3e334c1e4f393aa7879fcb0b982093c350f2c5c3cc821839f251e4"
+    },
+    {
+      "module": "ActualDressedEMNativeMomentumPrincipal",
+      "exit": 0,
+      "seconds": 53.66115403175354,
+      "source_sha256": "d239f174fcef7ba5fdbdf89cf89da582f3ae00a8d7c162423def8961409fef82",
+      "object_sha256": "1609bf767d6d3f6a599dad64d419a1c581018bb3fe22db937df4c434cf39f9de"
+    },
+    {
+      "module": "ActualDressedEMNativeMomentumConsumer",
+      "exit": 0,
+      "seconds": 44.58421611785889,
+      "source_sha256": "3e7a46757bb9523572651b15b985131996d009962a54f59cb4df88e572bc0ca2",
+      "object_sha256": "b57517d2ec2fa48a959b45d5f538e631d901ae2b5e7a91d21d5694286f3e7ae2"
+    },
+    {
+      "module": "ActualDressedEMNativeMomentumFullAuditProductionConsumers",
+      "exit": 0,
+      "seconds": 29.50687885284424,
+      "source_sha256": "8c3d51ef169a22ade5e8176e840b91290eedef1319d656021e55913867def36d",
+      "object_sha256": "23678db92653ea99897fc84cb5f2fde313816cd1ec5dab28260a238cba7d1f3c"
+    }
+  ],
+  "source_byte_identity": true,
+  "whitespace_check": "explicit untracked source/Audit PASS",
+  "public_mouths": [
+    "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_momentum_auxiliary_flux",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.nativeAuxiliaryMomentumFirst",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.nativeRestMomentumFirst",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.nativeMomentumCurl",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_auxiliary_momentum_reader",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_momentum_flux_transpose",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.nativeMomentumDivergence",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_rest_momentum_reader",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.native_momentum_curl_neg",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_auxiliary_momentum_odd",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_rest_momentum_odd",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.nativeMomentumEven",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_gauge_momentum_even_zero",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.nativeMomentumPrincipal",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.nativeMomentumCurlMatrix",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.native_momentum_curl_matrix_action",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.native_momentum_divergence_matrix_action",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.nativeEMMomentumMatrix",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_em_momentum_matrix_action",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_inverse_momentum_reader",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_gauge_momentum_principal",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_em_momentum_principal",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.nativeMomentumLower",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_momentum_decomposition",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_schur_even_principal",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.nativePhysicalEMPrincipal",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_physical_em_principal",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_em_native_momentum_equation"
+  ],
+  "owned_count": 108,
+  "tests": [
+    "LowEnergy.GaussComposite.ActualDressedEMNativeMomentumFullAudit.checked_actual_native_momentum_auxiliary_flux",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeMomentumFullAudit.checked_actual_native_auxiliary_momentum_reader",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeMomentumFullAudit.checked_actual_native_momentum_flux_transpose",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeMomentumFullAudit.checked_actual_native_rest_momentum_reader",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeMomentumFullAudit.checked_native_momentum_curl_neg",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeMomentumFullAudit.checked_actual_native_auxiliary_momentum_odd",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeMomentumFullAudit.checked_actual_native_rest_momentum_odd",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeMomentumFullAudit.checked_actual_native_gauge_momentum_even_zero",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeMomentumFullAudit.checked_native_momentum_curl_matrix_action",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeMomentumFullAudit.checked_native_momentum_divergence_matrix_action",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeMomentumFullAudit.checked_actual_native_em_momentum_matrix_action",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeMomentumFullAudit.checked_actual_native_inverse_momentum_reader",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeMomentumFullAudit.checked_actual_native_gauge_momentum_principal",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeMomentumFullAudit.checked_actual_native_em_momentum_principal",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeMomentumFullAudit.checked_actual_native_momentum_decomposition",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeMomentumFullAudit.checked_actual_native_schur_even_principal",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeMomentumFullAudit.checked_actual_native_physical_em_principal",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeMomentumFullAudit.checked_actual_em_native_momentum_equation"
+  ],
+  "anchors": [
+    "SaturationMonoid.PhysicsCore.StageNineEnrichedProofFreeSource.positiveSmoothUnifiedSource",
+    "SaturationMonoid.PhysicsCore.Stage9C.Material.SpinPair.actual",
+    "SaturationMonoid.PhysicsCore.Stage9C.Material.SpinPair.lapse",
+    "LowEnergy.SourcePropagationNativeActionHessian.nativeCompleteLiteralTerms",
+    "LowEnergy.SourcePropagationNativeActionHessian.nativeLiteralFourier",
+    "LowEnergy.GaussComposite.ActualEMAction.emOriginalJacobi",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeAuxiliary.auxiliaryLieReader",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeAuxiliary.auxiliaryLieInverse",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeAuxiliary.nativeAuxiliaryWeight",
+    "LowEnergy.GaussComposite.ActualDressedEMAuxiliaryFeedback.nativeAuxiliaryInverseMatrix",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeSchurClock.nativeSchurMatrix",
+    "LowEnergy.GaussComposite.ActualDressedEMNativePrincipal.nativeEMRestInsertion",
+    "LowEnergy.GaussComposite.ActualEMCarrierOwn.emInsertion",
+    "LowEnergy.GaussComposite.ActualEMCarrierOwn.em_projection_coordinates",
+    "LowEnergy.GaussComposite.ActualEMCarrierOwn.em_original_coordinates",
+    "LowEnergy.GaussComposite.ActualDressedEMNativeAuxiliary.nativeQuantumSchurForcing"
+  ],
+  "direct_dependencies": [
+    [
+      "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_momentum_auxiliary_flux",
+      [
+        "LowEnergy.GaussComposite.ActualEMAction.em_hessian_source",
+        "LowEnergy.SourcePropagationNativeActionHessian.nativeHessian_complete_literal",
+        "LowEnergy.SourcePropagationNativeActionHessian.nativeLiteralFourier_sound"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_auxiliary_momentum_reader",
+      [
+        "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_momentum_auxiliary_flux",
+        "LowEnergy.GaussComposite.ActualDressedEMNativeAuxiliary.auxiliaryLieReader"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_momentum_flux_transpose",
+      [
+        "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_momentum_auxiliary_flux"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_rest_momentum_reader",
+      [
+        "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_momentum_flux_transpose",
+        "LowEnergy.GaussComposite.ActualDressedEMNativeAuxiliary.auxiliaryLieReader"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_gauge_momentum_even_zero",
+      [
+        "LowEnergy.SourcePropagationNativeActionHessian.nativeCompleteLiteralTerms",
+        "LowEnergy.GaussComposite.ActualEMAction.em_hessian_source"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_inverse_momentum_reader",
+      [
+        "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_auxiliary_momentum_reader",
+        "LowEnergy.GaussComposite.ActualDressedEMNativeAuxiliary.auxiliary_lie_inverse_left",
+        "LowEnergy.GaussComposite.ActualDressedEMAuxiliaryFeedback.native_auxiliary_inverse_matrix_action"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_gauge_momentum_principal",
+      [
+        "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_gauge_momentum_even_zero",
+        "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_rest_momentum_reader",
+        "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_inverse_momentum_reader"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_em_momentum_principal",
+      [
+        "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_gauge_momentum_principal",
+        "LowEnergy.GaussComposite.ActualEMCarrierOwn.em_projection_coordinates",
+        "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_em_momentum_matrix_action"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_schur_even_principal",
+      [
+        "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_auxiliary_momentum_odd",
+        "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_rest_momentum_odd",
+        "LowEnergy.GaussComposite.ActualDressedEMNativeSchurClock.nativeSchurMatrix"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_momentum_decomposition",
+      [
+        "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.nativeMomentumPrincipal",
+        "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.nativeMomentumLower",
+        "LowEnergy.GaussComposite.ActualDressedEMNativeSchurClock.nativeSchurMatrix"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_physical_em_principal",
+      [
+        "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_em_momentum_matrix_action",
+        "LowEnergy.GaussComposite.ActualDressedEMNativeAuxiliary.nativeAuxiliaryWeight"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_em_native_momentum_equation",
+      [
+        "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_momentum_decomposition",
+        "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_em_momentum_principal",
+        "LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_physical_em_principal",
+        "LowEnergy.GaussComposite.ActualDressedEMNativeAuxiliary.actual_em_quantum_auxiliary_schur"
+      ]
+    ]
+  ],
+  "closure": {
+    "scope": "all producer-module declarations including private/generated, all direct consumers/controls; recursive complete type/value/allowOpaque/constructors/recursor RHS",
+    "nodes": 103216,
+    "opaque_all_read": 72,
+    "axioms": 3,
+    "authorized_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "unknown": 0,
+    "unsafe": 0,
+    "partial": 0,
+    "manifest_sha256": "e30989ae30861f17d71812d2cfe2ec8ef97d6b89f4173fb75419d129ffa7e15c",
+    "target_scan": {
+      "project_nodes": 22668,
+      "target_matches": []
+    }
+  },
+  "machine_stdout": "DRESSED_EM_NATIVE_MOMENTUM_PASS public=28 owned=108 tests=18 nodes=103216 anchors=16 direct=12 opaque_all_read=72 axioms=3 unknown=0 unsafe=0 partial=0\n'LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_momentum_auxiliary_flux' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_auxiliary_momentum_reader' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_momentum_flux_transpose' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_rest_momentum_reader' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.native_momentum_curl_neg' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_auxiliary_momentum_odd' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_rest_momentum_odd' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_gauge_momentum_even_zero' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.native_momentum_curl_matrix_action' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.native_momentum_divergence_matrix_action' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_em_momentum_matrix_action' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_inverse_momentum_reader' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_gauge_momentum_principal' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_em_momentum_principal' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_momentum_decomposition' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_schur_even_principal' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_native_physical_em_principal' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualDressedEMNativeMomentum.actual_em_native_momentum_equation' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n",
+  "production_gate": "fresh strict production sources and direct consumer slice; complete closure reused only for byte-identical source",
+  "generated_structure": [
+    "The complete original literal action generates all168 original gauge-B derivative terms, before EM projection. Its full72 complexfourmomentum flux is the six source curl pairs with complete12colour reader and independent transpose-dual Fourier sign; algebraic background terms remain.",
+    "Original literal support pays gauge-row momentum-even zero across289 fields. The same source72 inverse W cancels the colour reader and generates arbitrary217-field native gauge principal. Actual EM reads exactly through M(p)=C(p)^T*diag(originalWeight^-1)*C(p), acting on the original E_R^T r.",
+    "The complete217 nativeMomentumPrincipal is exactly the source Schur even part at p/-p. Native source background plus lower plus principal is an exact full Schur decomposition, before original quantum forcing.",
+    "Original six pairs(23,31,12,01,02,03) and weights(lapse/2 x3, -lapse^-1/2 x3) generate the entire physical Gauss/longitudinal/time-space4component expression. The sameactualEM root directly consumes this expression at original eps2 frequency/spatial ray, retaining all background/lower/fullQ0."
+  ],
+  "boundary": "All complex4momentum/original fixed background/arbitrary217fields/sourceEM insertion/original twelvecolour and sixlapse inverse. M acts on originalEM read, not raw doubleE tensor; raw tensor has Gram3/4 once. Original time result3lapse/2 preserved through same source slots. No averaging, scalar correctedEM/c_corr/realmassless/simplepole/IR alpha0 claim. Original background/lower/allQ0 and constraints remain explicit. same rootvisit10row0tick16→17controllerfalse."
+}

@@ -1,0 +1,67 @@
+{
+  "schema": "source-electron-thomson-identity-return/v1",
+  "phase": "CERTIFY",
+  "classification": "same-source electron-unit to static-C_EM identity transporter/readout",
+  "prediction_source": "positiveSmoothUnifiedSource / repaired independent Dirac-dual / SpinPair.actual",
+  "controller": {
+    "root": "SpinPair.livingRoot",
+    "visit": 10,
+    "whole_ledger_row": 0,
+    "live_account": ".inl.liveAccount",
+    "tick": 16,
+    "generated_next": 17,
+    "controller_advanced": false
+  },
+  "production_sha256": {
+    "Verification/physics/low-energy-phenomenology/alpha-source/SourceElectronThomsonIdentity.lean": "436ec2ffb549c33b4706270e248b71c8ab08ba5056f9b576f238650330ab59c4",
+    "Verification/physics/low-energy-phenomenology/alpha-source/CanonicalPreparationSourceElectronThomsonIdentity.lean": "c2927f6116454641ce0aedb9b413629aac6af5d2e787b872adcfcab95500f23d",
+    "Verification/physics/low-energy-phenomenology/alpha-source/canonical_preparation_physical_source_electron_thomson_identity_check.py": "2aaba2449d31cdde07632c20e834674e499f15376370340a4bcc4317d7cc9311"
+  },
+  "source_first": {
+    "source_sha256": "436ec2ffb549c33b4706270e248b71c8ab08ba5056f9b576f238650330ab59c4",
+    "object_sha256": "339d8a03c1e2769c98df59f4002f3731d318413614f8a9ed25e1c62c6230c153",
+    "public_declarations": 13,
+    "theorem_mouths": 9,
+    "source_lines": 177,
+    "strict_flags": ["--trust=0", "-DwarningAsError=true", "-DmaxErrors=1", "-DElab.async=false"],
+    "axioms": ["propext", "Classical.choice", "Quot.sound"]
+  },
+  "canonical_shim": {
+    "object_sha256": "091a18e1d159f764bc0205e439dbe2267dbfdc7aad8d3f6ba72101abcd9b034a",
+    "strict_returncode": 0
+  },
+  "audit": {
+    "object_sha256": "01eee6cd51d0f8078b859d91f4994ca90612639e80cb57a9c7ed51f3007932db",
+    "standard_axioms_only": true,
+    "unauthorized_axioms": [],
+    "target_alpha_or_137_read": false
+  },
+  "public_mouths": [
+    "SourceElectronThomsonSetup",
+    "sourceElectronThomsonBareResidue",
+    "sourceElectronThomsonCEM",
+    "sourceElectronThomsonAlphaSource",
+    "sourceElectronThomson_actual_direction",
+    "sourceElectronThomson_charge_unit",
+    "sourceElectronThomson_normalizer_ne_zero",
+    "sourceElectronThomsonCEM_generated",
+    "sourceElectronThomsonCEM_eq_sourceThomsonStaticCEM",
+    "sourceElectronThomsonCEM_eq_bare_residue",
+    "sourceElectronThomsonAlpha_eq_matching",
+    "sourceElectronThomsonCEM_rescale_invariant",
+    "sourceElectronThomsonAlpha_rescale_invariant"
+  ],
+  "direct_consumer": "SourceThomsonMatchingConsumer.sourceThomsonMatching_return through SourceThomsonMatchingContract.sourceCEM",
+  "generated_structure": [
+    "actual sourcePhaseGaugeLie direction retained",
+    "edge-0 absolute electron charge unit retained as 1",
+    "same prepared detector/source legs and same full static residue",
+    "sourceElectronThomsonCEM equals sourceThomsonStaticCEM",
+    "one phaseMomentum*sourceSpeed normalization gives source alpha read",
+    "common nonzero current rescaling leaves the normalized read unchanged"
+  ],
+  "physical_boundary": "This identity wires the generated electron-unit static residue into the matching owner. It does not generate ordinary full/light/contact response, a transverse physical photon carrier, Thomson zero-momentum equality, an alpha(0) interval, or an experiment comparison.",
+  "prediction_inputs_read": false,
+  "experiment_alpha_or_137_read": false,
+  "controls": "canonical_preparation_physical_source_electron_thomson_identity_check.py PASS 33"
+}

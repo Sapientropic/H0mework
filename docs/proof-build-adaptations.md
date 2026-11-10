@@ -38,6 +38,18 @@ AB 的原生轨道安装读口也恢复同提交的 `Shared.next` 展开，见[�
 
 每个导出记录保存同一可逆证明规则，默认原路径视图使用适配证明，`--exact` 恢复原字节。九环境的实际 Lake 构建与受影响包的完整审查按[当前验收状态](second-edition-readiness.md)签收；原回执保留原源码范围。
 
+## 物理旗舰第三版
+
+`SU7GeneratedProjectionPositiveExtraction` 的两次能量重写使用 `erw` 展开半透明定义。`StageNinePlebanskiInternalMultiplierCarrier` 显式展开余标架二形式分量，并在二阶复矩阵上直接消去中心负号的平方。两模块的 `proof_body_rewrites` 固定实际修改的证明体和原字节逆变换。
+
+`SourcePinnedPoleBoundary` 在 `sourcePinnedResolvent_boundary` 的非共振分支先化简连续线性映射的逐点作用，再在向量上消去零项。两个历史依赖布局均通过 `--trust=0` 单模块检查，原定理陈述与预算保留，原证明通过 `proof_body_rewrites` 逆恢复。
+
+`CanonicalPreparationPhiGrade` 使用原编译对象中的两个局部实例名，使相位规范消费者可以同时载入两个 grade 布局。电荷桥审计按实测原编译图恢复 200 个导入名，并按原谓词拒绝其余带 `scratch` 分段的模块。[原对象与模块名绑定](../evidence/physics-third-edition/original-em-search.json)登记这两项变换。
+
+移动源的九个同名空间模块使用原编译对象中的 17 个局部实例名，保留 Noether 和物理分割消费者的联合导入。N3 极点电流和 Ward 围闭审计分别有 2 个和 21 个传递导入查询由 `audit_module_rewrites` 指向实际公开 owner。这些变换都能恢复原路径字节。
+
+`PhysicalPreparedCharge` 沿用既有 `prepared_increment_ward` 的 `simpa` 适配。第三版[固定选集](../checks/physics-third-edition-selection.json)逐项绑定适配字节和已存的原源码。电磁独立运行的加载环境与原认证在[导入绑定](../evidence/physics-third-edition/original-em-search.json)中登记。
+
 ## 局部实例与私有环境 owner
 
 `local_instance_names` 给匿名局部实例显式、唯一的名称，保持类型、值和证明正文。Jets 或 DiracRay 与 GSR 共同导入时，`NormedAddCommGroup`、`SeminormedAddCommGroup`、`NormedSpace` 三类匿名实例都会产生同名声明，因此三类必须一并命名。DiracRay 六份晚期副本只命名这三类，其余四个局部实例保持原字节；四份已经命名的副本也保持原字节。原路径恢复时精确去除登记的名称。

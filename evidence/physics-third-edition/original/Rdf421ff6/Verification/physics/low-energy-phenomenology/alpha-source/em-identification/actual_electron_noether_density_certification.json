@@ -1,0 +1,483 @@
+{
+  "verdict": "certified",
+  "scope": "18 public actual source signed-volume temporal EM density/full output canonical charge and generated actual calibration-vector error consumers",
+  "controller_disposition": "Subordinate producer/consumer: same livingRoot visit10 row0.inl.liveAccount tick16 quantumFace10→quantumPresentation10→tick17; no shared controller edits",
+  "strict_flags": [
+    "-j1",
+    "--trust=0",
+    "-DwarningAsError=true",
+    "-DmaxErrors=1",
+    "-DElab.async=false"
+  ],
+  "construction_evidence": {
+    "candidate_path": "Lean/scratch/AlphaSource/ActualElectronNoetherDensityOwn/candidate.json",
+    "candidate_sha256": "6674be3f7bfd01d1a66ee203bb1885ab4d11e1dab76357a83222c22738eb49b1",
+    "frozen_sources": [
+      {
+        "module": "ActualElectronNoetherDensity",
+        "path": "Lean/scratch/AlphaSource/ActualElectronNoetherDensityOwn/ActualElectronNoetherDensity.lean",
+        "source_sha256": "6c00062116614f786c7a991bff41ee95869cfc307bef83ed983566bdf470574d",
+        "object_path": "Lean/scratch/AlphaSource/ActualElectronNoetherDensityOwn/ActualElectronNoetherDensity.olean",
+        "object_sha256": "5857977a861b73b97074268c98e924d67fe88be8b8cc6db3eb94c095006ebfdd",
+        "line_count": 98,
+        "public": [
+          {
+            "name": "LowEnergy.GaussComposite.ActualElectronNoetherDensity.actual_em_time_weight",
+            "kind": "theorem",
+            "line": 32,
+            "source_signature": "theorem actual_em_time_weight (z : physicalChart) :\n    sourceTimeWeight (sourceState z.val)=\n      ((Stage10.ActionNormalization.phaseMomentum*GaussNativeEnergy.volume z.val : ℝ) : ℂ) • sourceTimeSignMatrix := by"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualElectronNoetherDensity.actual_em_signed_density_sample",
+            "kind": "theorem",
+            "line": 42,
+            "source_signature": "theorem actual_em_signed_density_sample (p : PhysicalMomentum) (a b : QuantumTest) (z : SourceCoordinateSlice) :\n    rawSample (emGaugeField 0) p a b (0,z)=sourceSignedVolumeSample emGaugeChargeMatrix a b z := by"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualElectronNoetherDensity.actual_em_signed_density_form",
+            "kind": "theorem",
+            "line": 54,
+            "source_signature": "theorem actual_em_signed_density_form (p : PhysicalMomentum) (a b : QuantumTest) :\n    rawForm (emGaugeField 0) p a b 0=sourceSignedVolumeForm emGaugeChargeMatrix a b := by"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualElectronNoetherDensity.actual_noether_signed_density_read",
+            "kind": "theorem",
+            "line": 60,
+            "source_signature": "theorem actual_noether_signed_density_read (p : PhysicalMomentum) (left right : CompositeLeg) :\n    noetherEMCurrent p left right 0=\n      -(Stage10.ActionNormalization.phaseMomentum : ℂ)⁻¹*\n        sourcePair (compositeUnitLeg left)\n          (sourceTemporalMatrixCore emGaugeChargeMatrix (compositeUnitLeg right)) := by"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualElectronNoetherDensity.actual_noether_zero_momentum_read",
+            "kind": "theorem",
+            "line": 69,
+            "source_signature": "theorem actual_noether_zero_momentum_read (p : PhysicalMomentum) (left right : CompositeLeg) :\n    noetherEMCurrent p left right 0=noetherEMCurrent 0 left right 0 := by"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualElectronNoetherDensity.actual_canonical_em_action_charge",
+            "kind": "theorem",
+            "line": 74,
+            "source_signature": "theorem actual_canonical_em_action_charge (p : PhysicalMomentum) (left right : CompositeLeg) :\n    emActionForm p (compositeUnitLeg left) (compositeUnitLeg right)=actualChargeRead left right := by"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualElectronNoetherDensity.actualDensityCorrection",
+            "kind": "def",
+            "line": 80,
+            "source_signature": "def actualDensityCorrection (right : CompositeLeg) : QuantumTest :="
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualElectronNoetherDensity.actual_noether_density_correction",
+            "kind": "theorem",
+            "line": 86,
+            "source_signature": "theorem actual_noether_density_correction (p : PhysicalMomentum) (left right : CompositeLeg) :\n    noetherDensityDefect p left right=sourcePair (compositeUnitLeg left) (actualDensityCorrection right) := by"
+          }
+        ],
+        "strict": {
+          "exit": 0,
+          "seconds": 39.545,
+          "command": [
+            "lake",
+            "env",
+            "lean",
+            "--trust=0",
+            "-j1",
+            "-DwarningAsError=true",
+            "-DmaxErrors=4",
+            "-DElab.async=false",
+            "-o",
+            "Lean/scratch/AlphaSource/ActualElectronNoetherDensityOwn/ActualElectronNoetherDensity.olean",
+            "Lean/scratch/AlphaSource/ActualElectronNoetherDensityOwn/ActualElectronNoetherDensity.lean"
+          ],
+          "source_sha256": "6c00062116614f786c7a991bff41ee95869cfc307bef83ed983566bdf470574d",
+          "object_sha256": "5857977a861b73b97074268c98e924d67fe88be8b8cc6db3eb94c095006ebfdd"
+        }
+      },
+      {
+        "module": "ActualElectronNoetherCalibration",
+        "path": "Lean/scratch/AlphaSource/ActualElectronNoetherDensityOwn/ActualElectronNoetherCalibration.lean",
+        "source_sha256": "2897fb54bb07981e77a91effa9a34a5dcb5d8ab9cb9a775559b08fd9de718e09",
+        "object_path": "Lean/scratch/AlphaSource/ActualElectronNoetherDensityOwn/ActualElectronNoetherCalibration.olean",
+        "object_sha256": "510b6fb0d2dfaa48212d07c85174f9d1586a97f8e8847a0abd9f0845d715da86",
+        "line_count": 84,
+        "public": [
+          {
+            "name": "LowEnergy.GaussComposite.ActualElectronNoetherDensity.actual_output_charge_overlap_one",
+            "kind": "theorem",
+            "line": 23,
+            "source_signature": "theorem actual_output_charge_overlap_one (leg : CompositeLeg) : actualChargeOverlap leg leg=1 := by"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualElectronNoetherDensity.actual_canonical_output_charge",
+            "kind": "theorem",
+            "line": 28,
+            "source_signature": "theorem actual_canonical_output_charge (p : PhysicalMomentum) (leg : CompositeLeg) :\n    emActionForm p (compositeUnitLeg leg) (compositeUnitLeg leg)=\n      sourceInputCharge leg+actualChargeMixingRead leg leg := by"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualElectronNoetherDensity.actualChargeMixingVector",
+            "kind": "def",
+            "line": 34,
+            "source_signature": "def actualChargeMixingVector (leg : CompositeLeg) : QuantumTest :="
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualElectronNoetherDensity.actualElectronCalibrationVector",
+            "kind": "def",
+            "line": 38,
+            "source_signature": "def actualElectronCalibrationVector (leg : CompositeLeg) : QuantumTest :="
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualElectronNoetherDensity.actual_charge_mixing_vector_read",
+            "kind": "theorem",
+            "line": 41,
+            "source_signature": "theorem actual_charge_mixing_vector_read (left right : CompositeLeg) :\n    actualChargeMixingRead left right=sourcePair (compositeUnitLeg left) (actualChargeMixingVector right) := by"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualElectronNoetherDensity.actual_electron_calibration_read",
+            "kind": "theorem",
+            "line": 46,
+            "source_signature": "theorem actual_electron_calibration_read (p : PhysicalMomentum) (leg : CompositeLeg) :\n    noetherChargeCalibration p leg leg=sourcePair (compositeUnitLeg leg) (actualElectronCalibrationVector leg) := by"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualElectronNoetherDensity.actual_electron_calibration_price",
+            "kind": "theorem",
+            "line": 57,
+            "source_signature": "theorem actual_electron_calibration_price (p : PhysicalMomentum) (leg : CompositeLeg) :\n    ‖noetherChargeCalibration p leg leg‖≤‖embed (actualElectronCalibrationVector leg)‖ := by"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualElectronNoetherDensity.actual_electron_noether_unit_return",
+            "kind": "theorem",
+            "line": 64,
+            "source_signature": "theorem actual_electron_noether_unit_return (p : PhysicalMomentum) (leg : CompositeLeg) (side : Fin 2) :\n    noetherEMCurrent p leg leg 0=\n      sourceInputCharge leg*sourceElectronNoetherUnit side+\n        sourcePair (compositeUnitLeg leg) (actualElectronCalibrationVector leg) := by"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualElectronNoetherDensity.actual_electron_noether_unit_price",
+            "kind": "theorem",
+            "line": 72,
+            "source_signature": "theorem actual_electron_noether_unit_price (p : PhysicalMomentum) (leg : CompositeLeg) (side : Fin 2) :\n    ‖noetherEMCurrent p leg leg 0-sourceInputCharge leg*sourceElectronNoetherUnit side‖≤\n      ‖embed (actualElectronCalibrationVector leg)‖ := by"
+          },
+          {
+            "name": "LowEnergy.GaussComposite.ActualElectronNoetherDensity.actual_electron_fraction_preserved",
+            "kind": "theorem",
+            "line": 80,
+            "source_signature": "theorem actual_electron_fraction_preserved (addition : Bool) :\n    PreparationPhysicalJointEMCouplingUnitReturn.sourceJointIncrement addition≠sourceElectronChargeUnit :="
+          }
+        ],
+        "strict": {
+          "exit": 0,
+          "seconds": 49.641,
+          "command": [
+            "lake",
+            "env",
+            "lean",
+            "--trust=0",
+            "-j1",
+            "-DwarningAsError=true",
+            "-DmaxErrors=4",
+            "-DElab.async=false",
+            "-o",
+            "Lean/scratch/AlphaSource/ActualElectronNoetherDensityOwn/ActualElectronNoetherCalibration.olean",
+            "Lean/scratch/AlphaSource/ActualElectronNoetherDensityOwn/ActualElectronNoetherCalibration.lean"
+          ],
+          "source_sha256": "2897fb54bb07981e77a91effa9a34a5dcb5d8ab9cb9a775559b08fd9de718e09",
+          "object_sha256": "510b6fb0d2dfaa48212d07c85174f9d1586a97f8e8847a0abd9f0845d715da86"
+        }
+      }
+    ],
+    "dependencies": [
+      {
+        "manifest": "Lean/scratch/AlphaSource/ActualDressedNoetherCoulombUnitOwn/candidate.json",
+        "sha256": "3c9790d69da84a8296e98002b1c492ddbfc8c2a874ed06ff05ddbe7df1cdc846"
+      }
+    ],
+    "external_original_sources": [
+      {
+        "module": "SourceSignedVolumeMatrix",
+        "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/SourceSignedVolumeMatrix.lean",
+        "source_sha256": "134be2ad138337e286ac5042ae11775b0335f9c0c5350c98071411b74e536acb",
+        "object_path": "Lean/scratch/AlphaSource/PreparationPhysicalSignedVolumeWeightReturn/SourceSignedVolumeMatrix.olean",
+        "object_sha256": "e503d4af455c83363ebb7b467bb3607edaffed64b0d445b443e1fcf05df08116"
+      },
+      {
+        "module": "SourceSignedVolumeObservation",
+        "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/SourceSignedVolumeObservation.lean",
+        "source_sha256": "28503387fe64ffb4cd0e25a654ef2cbf5d873fd896b0a86ceb5ee8469f6c9fea",
+        "object_path": "Lean/scratch/AlphaSource/PreparationPhysicalSignedVolumeWeightReturn/SourceSignedVolumeObservation.olean",
+        "object_sha256": "0cce8755c723ce460518618dd7172b0fe714cb6d44a48ebaa39ff92d1512f060"
+      },
+      {
+        "module": "ActualDressedTemporalForm",
+        "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedTemporalForm.lean",
+        "source_sha256": "57504f34bbac9fb1ed7ae54dcf5637af2cc32460bd7dc379a0f13d9f97549a33",
+        "object_path": "Lean/scratch/AlphaSource/ActualDressedTemporalNormalizationOwn/ActualDressedTemporalForm.olean",
+        "object_sha256": "db41263d485b37a4bc35a8eba876b96e549186f5e432501f22403d73937d4439"
+      },
+      {
+        "module": "SourceElectronChargeUnit",
+        "source_path": "Verification/physics/low-energy-phenomenology/alpha-source/SourceElectronChargeUnit.lean",
+        "source_sha256": "028d0e6e5091a0504b3857c18c912ccda82acf1295119eff1e3d15a069ffe841",
+        "object_path": "Lean/scratch/AlphaSource/PreparationPhysicalElectronChargeUnitReturn/SourceElectronChargeUnit.olean",
+        "object_sha256": "52fe36388da394ce73be25f6128c74a547d2adfc5d7214399a4b2e0998148d46"
+      }
+    ],
+    "known_assumptions": "No density defect, full-output mixing or calibration vanishing is assumed or asserted. Input +/-1 is not renamed as the fully normalized physical output charge. The source actual electron Noether unit is independently generated by SourceElectronChargeUnit on the original charged source column; the composite raw reader equals input-character times that unit plus its generated calibration vector read. The price is the norm of this concrete source-generated vector, not an externally supplied scalar or a numerical alpha bound. The full source charge matrix and original fractional CAR increment remain intact.",
+    "remaining_responsibility": "The raw output calibration is now a concrete same-source coframe/time/dual plus full-mixing vector, with a generated price, and temporal momentum dependence is eliminated. Its actual numerical size or vanishing, and complete pole/amputation/full-light/Thomson consumption, remain for their owning original source consumers. No current/ledger/next change is made.",
+    "independent_pre_review": {
+      "path": "Lean/scratch/AlphaSource/ActualElectronNoetherDensityOwn/independent-certify-review.json",
+      "sha256": "86331b86cfcaaa9a51541bcc4714008ba2b719a5c95fd66b7ac90e7a015e6062"
+    },
+    "independent_finite_controls": {
+      "script_path": "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/check_actual_electron_noether_density.py",
+      "script_sha256": "d99e6dbdf2612fcb0dd473880d8658763990a490b4e8f9e6100e18488e8d3453",
+      "report_path": "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/check_actual_electron_noether_density.json",
+      "report_sha256": "ad705fe18c14275dadf4aeeedbf7447e7758042a5ab4caefa8e2c2db5f722f9a",
+      "positive": 14,
+      "negative": 11,
+      "failed": [],
+      "invocation_controls": [
+        {
+          "case": "default frozen source",
+          "exit": 0,
+          "stdout": "{\"failed\": [], \"negative\": 11, \"positive\": 14, \"report_sha256\": \"3bce4458d277f5acc9ea0efaf676760227c156de1dd687c61e42df27a06a10a5\", \"script_sha256\": \"d99e6dbdf2612fcb0dd473880d8658763990a490b4e8f9e6100e18488e8d3453\", \"status\": \"PASS\"}\n",
+          "stderr": ""
+        },
+        {
+          "case": "explicit root/candidate/production",
+          "exit": 0,
+          "stdout": "{\"failed\": [], \"negative\": 11, \"positive\": 14, \"report_sha256\": \"ad705fe18c14275dadf4aeeedbf7447e7758042a5ab4caefa8e2c2db5f722f9a\", \"script_sha256\": \"d99e6dbdf2612fcb0dd473880d8658763990a490b4e8f9e6100e18488e8d3453\", \"status\": \"PASS\"}\n",
+          "stderr": ""
+        },
+        {
+          "case": "similar source deleting canonical correction rejected",
+          "exit": 1,
+          "stdout": "",
+          "stderr": "Traceback (most recent call last):\n  File \"Verification/physics/low-energy-phenomenology/alpha-source/em-identification/check_actual_electron_noether_density.py\", line 126, in <module>\n    main()\n  File \"Verification/physics/low-energy-phenomenology/alpha-source/em-identification/check_actual_electron_noether_density.py\", line 109, in main\n    bound = source_binding(candidate, args.source_dir.resolve() if args.source_dir else None)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"Verification/physics/low-energy-phenomenology/alpha-source/em-identification/check_actual_electron_noether_density.py\", line 97, in source_binding\n    raise ValueError(\"selected source changes frozen declaration bodies\")\nValueError: selected source changes frozen declaration bodies\n"
+        }
+      ],
+      "scope": "Exact signed temporal volume weight, raw vs canonical full-output charge, actual mixing plus density calibration norm price, original electron/fractional units and consistent generator rescale controls. Literal rawForm p independence is fixed-endpoint only, not physical transfer/Thomson; no numeric actual calibration/alpha claim."
+    },
+    "focused_attention": [
+      {
+        "case": "theorem_mouth_lint.py",
+        "exit": 0,
+        "stdout": "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualElectronNoetherCalibration.lean:4: WARN: `autoImplicit false` left in file; remove unless policy\nVerification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualElectronNoetherDensity.lean:6: WARN: `autoImplicit false` left in file; remove unless policy\n",
+        "stderr": ""
+      },
+      {
+        "case": "frontier_guard.py",
+        "exit": 0,
+        "stdout": "FILE Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualElectronNoetherDensity.lean: lines=98 bytes=6419 declarations=8 namespaces=1 scratch=no tracked=no\nFILE Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualElectronNoetherCalibration.lean: lines=84 bytes=5274 declarations=12 namespaces=1 scratch=no tracked=no\n[frontier-guard] blocks=0 warnings=0 import-scope=active-files\n",
+        "stderr": ""
+      }
+    ],
+    "independent_final_review": {
+      "path": "Lean/scratch/AlphaSource/ActualElectronNoetherDensityOwn/final-independent-certify-review.json",
+      "sha256": "8b548806abd9099427e9102f2427f839ea53b8d4a41298d789f2e5c3b686ee6f"
+    }
+  },
+  "audit_source_object_hashes": {
+    "module": "ActualElectronNoetherDensityFullAudit",
+    "exit": 0,
+    "seconds": 57.833170890808105,
+    "source_sha256": "ee8d548e92104e8c6a3717dc23fbde44d434e7c29b57afb1059a8731ac38be8b",
+    "object_sha256": "092732452fc8208d9f4416edaaf1d77e51bd0cc4bd17ec62a7872c20e9121637"
+  },
+  "production_source_object_hashes": [
+    {
+      "module": "ActualElectronNoetherDensity",
+      "exit": 0,
+      "seconds": 51.42105484008789,
+      "source_sha256": "6c00062116614f786c7a991bff41ee95869cfc307bef83ed983566bdf470574d",
+      "object_sha256": "084fcf7eaf7dbe0244b5dc80e05a21ad69315f109d9e454027533bd9ba2d50a6"
+    },
+    {
+      "module": "ActualElectronNoetherCalibration",
+      "exit": 0,
+      "seconds": 39.599621057510376,
+      "source_sha256": "2897fb54bb07981e77a91effa9a34a5dcb5d8ab9cb9a775559b08fd9de718e09",
+      "object_sha256": "e11014279dceeeb7787ebbb6360a03a91b1570fd775511e3eb413c2d5d271d90"
+    },
+    {
+      "module": "ActualElectronNoetherDensityFullAuditProductionConsumers",
+      "exit": 0,
+      "seconds": 56.74100184440613,
+      "source_sha256": "68d44d57ac77b0cb0a46b478a3b3384039b544f14cb4548047397edc0644388a",
+      "object_sha256": "9be6a6ba4cea2a3c67d8e3084aa1448b70e43d888ee8b9c85e9e16dbb8757a77"
+    }
+  ],
+  "source_byte_identity": true,
+  "whitespace_check": "explicit untracked source/Audit PASS",
+  "public_mouths": [
+    "LowEnergy.GaussComposite.ActualElectronNoetherDensity.actual_em_time_weight",
+    "LowEnergy.GaussComposite.ActualElectronNoetherDensity.actual_em_signed_density_sample",
+    "LowEnergy.GaussComposite.ActualElectronNoetherDensity.actual_em_signed_density_form",
+    "LowEnergy.GaussComposite.ActualElectronNoetherDensity.actual_noether_signed_density_read",
+    "LowEnergy.GaussComposite.ActualElectronNoetherDensity.actual_noether_zero_momentum_read",
+    "LowEnergy.GaussComposite.ActualElectronNoetherDensity.actual_canonical_em_action_charge",
+    "LowEnergy.GaussComposite.ActualElectronNoetherDensity.actualDensityCorrection",
+    "LowEnergy.GaussComposite.ActualElectronNoetherDensity.actual_noether_density_correction",
+    "LowEnergy.GaussComposite.ActualElectronNoetherDensity.actual_output_charge_overlap_one",
+    "LowEnergy.GaussComposite.ActualElectronNoetherDensity.actual_canonical_output_charge",
+    "LowEnergy.GaussComposite.ActualElectronNoetherDensity.actualChargeMixingVector",
+    "LowEnergy.GaussComposite.ActualElectronNoetherDensity.actualElectronCalibrationVector",
+    "LowEnergy.GaussComposite.ActualElectronNoetherDensity.actual_charge_mixing_vector_read",
+    "LowEnergy.GaussComposite.ActualElectronNoetherDensity.actual_electron_calibration_read",
+    "LowEnergy.GaussComposite.ActualElectronNoetherDensity.actual_electron_calibration_price",
+    "LowEnergy.GaussComposite.ActualElectronNoetherDensity.actual_electron_noether_unit_return",
+    "LowEnergy.GaussComposite.ActualElectronNoetherDensity.actual_electron_noether_unit_price",
+    "LowEnergy.GaussComposite.ActualElectronNoetherDensity.actual_electron_fraction_preserved"
+  ],
+  "owned_count": 31,
+  "tests": [
+    "LowEnergy.GaussComposite.ActualElectronNoetherDensityFullAudit.checked_actual_em_time_weight",
+    "LowEnergy.GaussComposite.ActualElectronNoetherDensityFullAudit.checked_actual_em_signed_density_sample",
+    "LowEnergy.GaussComposite.ActualElectronNoetherDensityFullAudit.checked_actual_em_signed_density_form",
+    "LowEnergy.GaussComposite.ActualElectronNoetherDensityFullAudit.checked_actual_noether_signed_density_read",
+    "LowEnergy.GaussComposite.ActualElectronNoetherDensityFullAudit.checked_actual_noether_zero_momentum_read",
+    "LowEnergy.GaussComposite.ActualElectronNoetherDensityFullAudit.checked_actual_canonical_em_action_charge",
+    "LowEnergy.GaussComposite.ActualElectronNoetherDensityFullAudit.checked_actual_noether_density_correction",
+    "LowEnergy.GaussComposite.ActualElectronNoetherDensityFullAudit.checked_actual_output_charge_overlap_one",
+    "LowEnergy.GaussComposite.ActualElectronNoetherDensityFullAudit.checked_actual_canonical_output_charge",
+    "LowEnergy.GaussComposite.ActualElectronNoetherDensityFullAudit.checked_actual_charge_mixing_vector_read",
+    "LowEnergy.GaussComposite.ActualElectronNoetherDensityFullAudit.checked_actual_electron_calibration_read",
+    "LowEnergy.GaussComposite.ActualElectronNoetherDensityFullAudit.checked_actual_electron_calibration_price",
+    "LowEnergy.GaussComposite.ActualElectronNoetherDensityFullAudit.checked_actual_electron_noether_unit_return",
+    "LowEnergy.GaussComposite.ActualElectronNoetherDensityFullAudit.checked_actual_electron_noether_unit_price",
+    "LowEnergy.GaussComposite.ActualElectronNoetherDensityFullAudit.checked_actual_electron_fraction_preserved"
+  ],
+  "anchors": [
+    "SaturationMonoid.PhysicsCore.StageNineEnrichedProofFreeSource.positiveSmoothUnifiedSource",
+    "SaturationMonoid.PhysicsCore.Stage9C.Material.SpinPair.actual",
+    "LowEnergy.PreparationPhysicalSignedVolumeWeightReturn.sourceTimeSignMatrix",
+    "LowEnergy.PreparationPhysicalSignedVolumeWeightReturn.sourceWeightSymbol_signed",
+    "LowEnergy.PreparationPhysicalSignedVolumeWeightReturn.sourceSignedVolumeForm_actual",
+    "LowEnergy.PreparationVacuumRawJointFeedback.rawForm",
+    "LowEnergy.GaussComposite.PhysicalEMVoltage.emGaugeChargeMatrix",
+    "LowEnergy.GaussComposite.ActualDressedTemporalForm.em_action_form",
+    "LowEnergy.GaussComposite.ActualCompositeOriginWard.composite_charge_original",
+    "LowEnergy.GaussComposite.ActualDressedNoetherCoulombUnit.actual_calibrated_noether_charge",
+    "LowEnergy.PreparationPhysicalElectronChargeUnitReturn.sourceElectronNoetherUnit_generated",
+    "LowEnergy.PreparationPhysicalElectronChargeUnitReturn.sourceElectronChargeUnit_generated",
+    "LowEnergy.PreparationPhysicalElectronChargeUnitReturn.sourceElectron_joint_increment_ne_unit",
+    "LowEnergy.GaussComposite.ActualCompositeFieldCurrent.composite_unit_norm"
+  ],
+  "direct_dependencies": [
+    [
+      "LowEnergy.GaussComposite.ActualElectronNoetherDensity.actual_em_time_weight",
+      [
+        "LowEnergy.PreparationPhysicalSignedVolumeWeightReturn.sourceWeightSymbol_signed"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualElectronNoetherDensity.actual_em_signed_density_sample",
+      [
+        "LowEnergy.GaussComposite.ActualElectronNoetherDensity.actual_em_time_weight"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualElectronNoetherDensity.actual_em_signed_density_form",
+      [
+        "LowEnergy.GaussComposite.ActualElectronNoetherDensity.actual_em_signed_density_sample"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualElectronNoetherDensity.actual_noether_signed_density_read",
+      [
+        "LowEnergy.GaussComposite.ActualDressedNoetherCoulombUnit.actual_noether_em_reader",
+        "LowEnergy.GaussComposite.ActualElectronNoetherDensity.actual_em_signed_density_form",
+        "LowEnergy.PreparationPhysicalSignedVolumeWeightReturn.sourceSignedVolumeForm_actual"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualElectronNoetherDensity.actual_noether_zero_momentum_read",
+      [
+        "LowEnergy.GaussComposite.ActualElectronNoetherDensity.actual_noether_signed_density_read"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualElectronNoetherDensity.actual_canonical_em_action_charge",
+      [
+        "LowEnergy.GaussComposite.ActualDressedTemporalForm.em_action_form",
+        "LowEnergy.GaussComposite.ActualCompositeOriginWard.composite_charge_original"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualElectronNoetherDensity.actual_noether_density_correction",
+      [
+        "LowEnergy.GaussComposite.ActualElectronNoetherDensity.actual_noether_signed_density_read"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualElectronNoetherDensity.actual_output_charge_overlap_one",
+      [
+        "LowEnergy.GaussComposite.ActualCompositeFieldCurrent.composite_unit_norm"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualElectronNoetherDensity.actual_canonical_output_charge",
+      [
+        "LowEnergy.GaussComposite.ActualElectronNoetherDensity.actual_canonical_em_action_charge",
+        "LowEnergy.GaussComposite.ActualElectronNoetherDensity.actual_output_charge_overlap_one"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualElectronNoetherDensity.actual_electron_calibration_read",
+      [
+        "LowEnergy.GaussComposite.ActualDressedNoetherCoulombUnit.noetherChargeCalibration",
+        "LowEnergy.GaussComposite.ActualElectronNoetherDensity.actual_charge_mixing_vector_read",
+        "LowEnergy.GaussComposite.ActualElectronNoetherDensity.actual_noether_density_correction"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualElectronNoetherDensity.actual_electron_calibration_price",
+      [
+        "LowEnergy.GaussComposite.ActualElectronNoetherDensity.actual_electron_calibration_read",
+        "LowEnergy.GaussComposite.ActualCompositeFieldCurrent.composite_unit_norm"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualElectronNoetherDensity.actual_electron_noether_unit_return",
+      [
+        "LowEnergy.GaussComposite.ActualDressedNoetherCoulombUnit.actual_calibrated_noether_charge",
+        "LowEnergy.GaussComposite.ActualElectronNoetherDensity.actual_electron_calibration_read",
+        "LowEnergy.PreparationPhysicalElectronChargeUnitReturn.sourceElectronNoetherUnit_generated",
+        "LowEnergy.PreparationPhysicalElectronChargeUnitReturn.sourceElectronChargeUnit_generated"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualElectronNoetherDensity.actual_electron_noether_unit_price",
+      [
+        "LowEnergy.GaussComposite.ActualElectronNoetherDensity.actual_electron_noether_unit_return"
+      ]
+    ],
+    [
+      "LowEnergy.GaussComposite.ActualElectronNoetherDensity.actual_electron_fraction_preserved",
+      [
+        "LowEnergy.PreparationPhysicalElectronChargeUnitReturn.sourceElectron_joint_increment_ne_unit"
+      ]
+    ]
+  ],
+  "closure": {
+    "scope": "all producer-module declarations including private/generated, all direct consumers/controls; recursive complete type/value/allowOpaque/constructors/recursor RHS",
+    "nodes": 84431,
+    "opaque_all_read": 57,
+    "axioms": 3,
+    "authorized_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "unknown": 0,
+    "unsafe": 0,
+    "partial": 0,
+    "manifest_sha256": "b497a0460e2eff9291a0bf716772dcb9990746c46e6bb3eb27bfbdc8f613f472",
+    "target_scan": {
+      "project_nodes": 12715,
+      "target_matches": []
+    }
+  },
+  "machine_stdout": "ACTUAL_ELECTRON_NOETHER_DENSITY_PASS public=18 owned=31 tests=15 nodes=84431 anchors=14 direct=14 opaque_all_read=57 axioms=3 unknown=0 unsafe=0 partial=0\n'LowEnergy.GaussComposite.ActualElectronNoetherDensity.actual_em_time_weight' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualElectronNoetherDensity.actual_em_signed_density_sample' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualElectronNoetherDensity.actual_em_signed_density_form' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualElectronNoetherDensity.actual_noether_signed_density_read' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualElectronNoetherDensity.actual_noether_zero_momentum_read' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualElectronNoetherDensity.actual_canonical_em_action_charge' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualElectronNoetherDensity.actual_noether_density_correction' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualElectronNoetherDensity.actual_output_charge_overlap_one' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualElectronNoetherDensity.actual_canonical_output_charge' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualElectronNoetherDensity.actual_charge_mixing_vector_read' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualElectronNoetherDensity.actual_electron_calibration_read' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualElectronNoetherDensity.actual_electron_calibration_price' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualElectronNoetherDensity.actual_electron_noether_unit_return' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualElectronNoetherDensity.actual_electron_noether_unit_price' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LowEnergy.GaussComposite.ActualElectronNoetherDensity.actual_electron_fraction_preserved' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n",
+  "production_gate": "fresh strict production sources and direct consumer slice; complete closure reused only for byte-identical source",
+  "generated_structure": [
+    "The original h-volume time weight retains the full504 independent-dual sign matrix. Original raw temporal EM sample/form on arbitrary source tests equals the same signed-volume source charge integral.",
+    "The actual noether temporal reader is the h-normalized signed-volume charge on unchanged CompositeLeg endpoints. Its literal raw-form Fourier parameter p drops out; canonical full-CAR action charge remains a separate exact output reader.",
+    "Original complete-output unit norm pays overlap one. Original frame/fullY charge mixing plus signed-volume density defect generate the actual calibration vector, its exact Noether charge balance and norm price around the original independent-dual electron unit. Fractional CAR increment is preserved."
+  ],
+  "boundary": "Same source/repaired dual/SpinPair.actual/original coframe/weighted configuration measure/fullCAR/sourceTemporalMatrixCore/actual CompositeLeg normalization and resolvents. p independence holds only for literal rawForm Fourier parameter on fixed endpoints, not physical external transfer or Thomson/onshell limit. Generated sourceElectronNoetherUnit=1 does not remove actualCalibrationVector or prove actual raw physical electron charge equals input labels; no eigenstate, calibration zero, numerical charge price, nonzero physical current or alpha0 claim. rootvisit10row0tick16→17controllerfalse."
+}

@@ -1075,6 +1075,32 @@ class AuditRewriteTests(unittest.TestCase):
                     s.module_views({**row, 'target_sha256': p.sha(tampered)}, {})
 
 
+class AuditScratchImportTests(unittest.TestCase):
+    guard = ('  for moduleName in modules do\n'
+             '    if (moduleName.toString.toLower.splitOn ".").contains "scratch" then\n'
+             '      throwError m!"SCRATCH_IMPORT {moduleName}"\n')
+    names = {'H0mework.ReleaseMaterials.Scratch.Source': 'OriginalSource'}
+
+    def test_source_view_preserves_the_guard_and_restores_the_original(self):
+        original = 'elab "#audit" : command => do\n' + self.guard
+        public = s.rebind_audit_scratch_modules(original, self.names)
+        self.assertIn('(`H0mework.ReleaseMaterials.Scratch.Source, `OriginalSource)', public)
+        self.assertIn('relocated[moduleName]?.getD moduleName', public)
+        self.assertIn(self.guard.splitlines()[-1], public)
+        self.assertEqual(s.rebind_audit_scratch_modules(public, self.names, reverse=True), original)
+
+    def test_rejects_ambiguous_names_and_non_executable_guard(self):
+        header = 'elab "#audit" : command => do\n'
+        original = header + self.guard
+        for names in ({'H0mework.Source': 'OriginalSource'},
+                      {'H0mework.Scratch.Source': 'Scratch.OriginalSource'},
+                      {**self.names, 'H0mework.Scratch.Other': 'OriginalSource'}):
+            with self.subTest(names=names), self.assertRaises(s.ViewError):
+                s.rebind_audit_scratch_modules(original, names)
+        with self.assertRaises(s.ViewError):
+            s.rebind_audit_scratch_modules(header + '/-\n' + self.guard + '-/\n', self.names)
+
+
 class AuditCommandNameTests(unittest.TestCase):
     header = 'elab "#audit" : command => do'
 

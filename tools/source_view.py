@@ -680,6 +680,40 @@ def rewrite_audit_module_names(text: str, rewrites, *, reverse: bool = False) ->
     return text[:split] + tail
 
 
+def rebind_audit_scratch_modules(text: str, names, *, reverse: bool = False) -> str:
+    """Run the scratch-name guard on the registered original import names."""
+    if names is None:
+        return text
+    if not isinstance(names, dict) or not names:
+        raise ViewError("Audit scratch names must map public owners to original modules")
+    for target, source in names.items():
+        if (not isinstance(target, str) or not target.startswith("H0mework.")
+                or not MODULE.fullmatch(target) or "scratch" not in target.lower().split(".")
+                or not isinstance(source, str) or not MODULE.fullmatch(source)
+                or "scratch" in source.lower().split(".")):
+            raise ViewError("Invalid original audit scratch module binding")
+    if len(set(names.values())) != len(names):
+        raise ViewError("An original audit module must have one public owner")
+    split = audit_observer_start(text)
+    if split is None:
+        raise ViewError("Audit scratch names need one trailing observer command")
+    guard = '    if (moduleName.toString.toLower.splitOn ".").contains "scratch" then\n'
+    loop = "  for moduleName in modules do\n"
+    failure = '      throwError m!"SCRATCH_IMPORT {moduleName}"\n'
+    source_block = loop + guard + failure
+    bindings = ",\n".join(f"    (`{target}, `{source})" for target, source in sorted(names.items()))
+    public_block = ("  let relocated : Std.HashMap Name Name := .ofList [\n" + bindings + "\n  ]\n"
+                    + loop + "    let sourceModule := relocated[moduleName]?.getD moduleName\n"
+                    + guard.replace("moduleName", "sourceModule") + failure)
+    before, after = (public_block, source_block) if reverse else (source_block, public_block)
+    tail = text[split:]
+    begin = tail.find(before)
+    if (begin < 0 or tail.find(before, begin + len(before)) >= 0
+            or mask_comments_and_strings(tail)[begin:begin + 5] != before[:5]):
+        raise ViewError("Declared audit scratch guard is absent or duplicated")
+    return text[:split] + tail.replace(before, after, 1)
+
+
 def rewrite_audit_runtime(text: str, environments, full_closure=False, *, reverse=False) -> str:
     """Keep legacy boundary overrides; an absent boundary traverses every edge."""
     if not isinstance(full_closure, bool):
@@ -1103,6 +1137,7 @@ def module_views(row: dict, inverse: dict) -> tuple[bytes, bytes]:
     text = name_local_instances(text, row.get("local_instance_names"), reverse=True)
     text = rewrite_audit_runtime(text, row.get("audit_boundary_fallbacks"),
                                  row.get("audit_full_closure", False), reverse=True)
+    text = rebind_audit_scratch_modules(text, row.get("audit_scratch_module_rebindings"), reverse=True)
     text = rewrite_audit_module_names(text, row.get("audit_module_rewrites"), reverse=True)
     text = rewrite_private_names(text, row.get("private_name_rewrites"),
                                  reverse=True)
