@@ -2,7 +2,7 @@
 """Draw docs/assets/ci-wall.svg and ci-wall.en.svg as a quiet wall of verified shards.
 
 Stages run left to right; each column holds that stage's parallel shards, one
-cell each, read from tools/ci_layout.tsv. The vermilion seal reads 核, both the
+cell each, read from the accepted commit’s tools/ci_layout.tsv. The vermilion seal reads 核, both the
 kernel and the check. Lettering and seal outline come from banner.py so the two
 figures share their types, paper and ink.
 
@@ -13,6 +13,7 @@ is accepted, then regenerate both the README figures and their status text with
 from __future__ import annotations
 
 import json
+import subprocess
 from collections import defaultdict
 from pathlib import Path
 
@@ -58,7 +59,9 @@ STYLE = """
 def selection():
     """Shards per stage and the module count, as CI lays them out."""
     stages, modules = defaultdict(set), 0
-    for row in (ROOT / "tools/ci_layout.tsv").read_text().splitlines():
+    layout = subprocess.check_output(
+        ["git", "show", f"{RUN['commit']}:tools/ci_layout.tsv"], cwd=ROOT, text=True)
+    for row in layout.splitlines():
         part = row.split("\t")[0]
         stages[int(part[1:].split("-")[0])].add(part)
         modules += 1

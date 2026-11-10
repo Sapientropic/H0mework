@@ -18,7 +18,7 @@
 <!-- BEGIN CI STATUS -->
 <a href="https://github.com/Sapientropic/H0mework/actions/runs/42657239378"><img src="docs/assets/ci-wall.svg" alt="Lean 完整选集：56,206 个模块，11 个阶段、83 个分片，全部通过" width="100%"></a>
 
-- **56,206 个 Lean 模块纳入同一套内核验收。** 当前 11 个阶段、83 个分片，全包 `--trust=0`；[main 最新运行](https://github.com/Sapientropic/H0mework/actions/runs/42657239378) 已通过，提交 `26788967`。
+- **56,206 个 Lean 模块通过完整内核验收。** [验收运行](https://github.com/Sapientropic/H0mework/actions/runs/42657239378) 使用 11 个阶段、83 个分片，全包 `--trust=0`，提交 `26788967`。当前构建覆盖 58,068 个模块、92 个分片。
 <!-- END CI STATUS -->
 
 - **论文引用的声明逐版再审。** 完整依赖闭包只使用 Lean 标准三条公理，`unsafe = 0`、`partial = 0`；各篇验收与复现入口列在下方论文分组中。
@@ -29,7 +29,7 @@
 <!-- BEGIN PAPERS -->
 **[在网站上浏览全部论文，读摘要并逐条展开证明 →](https://h0mework.wiki/papers/)**
 
-最新：[战争与和平的源生终局定理](https://h0mework.wiki/papers/enforceable-peace/) · [资本主义的结构总定理](https://h0mework.wiki/papers/capital-formation/)
+最新：[战争与和平的源生终局定理](https://h0mework.wiki/papers/enforceable-peace/) · [从单一发生源到连续—量子统一场](https://h0mework.wiki/papers/physics-common-source/)
 
 <details>
 <summary><strong>总序</strong> · 1 篇</summary>
@@ -49,7 +49,7 @@
 <details>
 <summary><strong>场论与动力学</strong> · 1 篇</summary>
 
-- [这浩瀚宇宙里，我们没找到魔法](https://h0mework.wiki/papers/physics-common-source/) · [v2](https://doi.org/10.5281/zenodo.23297179) · [映射](docs/second-edition-map.json) · [复现](docs/edition-reproduction.md)
+- [从单一发生源到连续—量子统一场](https://h0mework.wiki/papers/physics-common-source/) · [v3](https://doi.org/10.5281/zenodo.24100339) · [映射](docs/physics-third-edition-map.json) · [复现](docs/physics-third-edition-reproduction.md)
 
 </details>
 

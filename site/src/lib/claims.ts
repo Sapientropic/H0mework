@@ -364,6 +364,19 @@ function enforceablePeace(slug: string, edition: number, release: ReleaseId): So
   });
 }
 
+function physicsThirdEdition(slug: string, edition: number, release: ReleaseId): Source[] {
+  const map = mapOf(release);
+  if (map.acceptance.status !== "passed")
+    throw new Error("physics third edition has no accepted proof selection");
+  return map.claims.filter((claim: any) => claim.paper === slug).map((claim: any) => ({
+    key: claim.id, ids: [claim.id], edition, category: "formal",
+    text: { title: claim.title, statement: claim.statement },
+    location: { zh: claim.location, en: claim.location },
+    citations: claim.paper_results,
+    producers: [...claim.producers, ...claim.direct_consumers, ...claim.resources],
+  }));
+}
+
 const ADAPTERS: Record<ReleaseId, (slug: string, edition: number, release: ReleaseId) => Source[]> = {
   "first-release": firstRelease,
   "second-edition": secondEdition,
@@ -376,6 +389,7 @@ const ADAPTERS: Record<ReleaseId, (slug: string, edition: number, release: Relea
   "economic-constitution-v2": economicConstitution,
   "capital-formation": capitalFormation,
   "enforceable-peace": enforceablePeace,
+  "physics-third-edition": physicsThirdEdition,
 };
 
 // --- translations -----------------------------------------------------------------------------

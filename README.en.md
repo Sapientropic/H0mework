@@ -18,7 +18,7 @@ Lean 4 proofs, reproduction programs and frozen evidence behind a family of rese
 <!-- BEGIN CI STATUS -->
 <a href="https://github.com/Sapientropic/H0mework/actions/runs/42657239378"><img src="docs/assets/ci-wall.en.svg" alt="Lean full selection: 56,206 modules across 11 stages and 83 shards, all checked" width="100%"></a>
 
-- **56,206 Lean modules belong to one kernel-checked selection.** The current 11 stages and 83 shards use `--trust=0` throughout; [the latest main run](https://github.com/Sapientropic/H0mework/actions/runs/42657239378) passes at `26788967`.
+- **56,206 Lean modules passed the complete kernel check.** [The accepted run](https://github.com/Sapientropic/H0mework/actions/runs/42657239378) used 11 stages and 83 shards with `--trust=0` throughout at `26788967`. The current build covers 58,068 modules across 92 shards.
 <!-- END CI STATUS -->
 
 - **Cited declarations are audited again per edition.** Their full dependency closures use only Lean's three standard axioms, with `unsafe = 0` and `partial = 0`; each paper's acceptance and reproduction links are grouped below.
@@ -29,7 +29,7 @@ Lean 4 proofs, reproduction programs and frozen evidence behind a family of rese
 <!-- BEGIN PAPERS -->
 **[Browse all papers on the site, with abstracts and claim-level proofs →](https://h0mework.wiki/en/papers/)**
 
-Latest: [War and Peace](https://h0mework.wiki/en/papers/enforceable-peace/) · [The Structural Theorem of Capitalism](https://h0mework.wiki/en/papers/capital-formation/)
+Latest: [War and Peace](https://h0mework.wiki/en/papers/enforceable-peace/) · [From a Single Occurrence Source to a Continuous–Quantum Unified Field](https://h0mework.wiki/en/papers/physics-common-source/)
 
 <details>
 <summary><strong>Preface</strong> · 1 paper</summary>
@@ -49,7 +49,7 @@ Latest: [War and Peace](https://h0mework.wiki/en/papers/enforceable-peace/) · [
 <details>
 <summary><strong>Fields & dynamics</strong> · 1 paper</summary>
 
-- [We Found No Magic in This Mighty Universe](https://h0mework.wiki/en/papers/physics-common-source/) · [v2](https://doi.org/10.5281/zenodo.23297179) · [Map](docs/second-edition-map.json) · [Reproduce](docs/edition-reproduction.md)
+- [From a Single Occurrence Source to a Continuous–Quantum Unified Field](https://h0mework.wiki/en/papers/physics-common-source/) · [v3](https://doi.org/10.5281/zenodo.24100339) · [Map](docs/physics-third-edition-map.json) · [Reproduce](docs/physics-third-edition-reproduction.md)
 
 </details>
 

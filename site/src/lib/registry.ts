@@ -15,7 +15,7 @@ export const repoLink = (path: string, line?: number, commit = "main") => `${REP
 const suffix = (lang: Lang) => (lang === "en" ? "-en" : "");
 const unzip = (zip: string, member: string) => execFileSync("unzip", ["-p", resolve(ROOT, zip), member], { encoding: "utf8", maxBuffer: 1 << 26 });
 
-export type ReleaseId = "first-release" | "second-edition" | "low-energy" | "whole-ledger" | "one-bit" | "generated-society" | "economic-constitution" | "generated-society-v2" | "economic-constitution-v2" | "capital-formation" | "enforceable-peace";
+export type ReleaseId = "first-release" | "second-edition" | "low-energy" | "whole-ledger" | "one-bit" | "generated-society" | "economic-constitution" | "generated-society-v2" | "economic-constitution-v2" | "capital-formation" | "enforceable-peace" | "physics-third-edition";
 type Release = {
   label: Record<Lang, string>;
   date: string;
@@ -37,6 +37,11 @@ type Release = {
 
 const FIRST = "papers/first-release";
 const SECOND = "papers/second-edition/2026-10-11";
+const THIRD = "papers/third-edition/2026-11-10";
+const physicsArchive = `${THIRD}/editable/physics-common-source-v3-editable.zip`;
+const physicsThird = readJson(`${THIRD}/manifest.json`).papers.find((paper: any) => paper.paper === "physics-common-source");
+if (!physicsThird?.is_published || !/^10\.5281\/zenodo\.\d+$/.test(physicsThird.doi) || !/^[0-9a-f]{40}$/.test(physicsThird.source_commit))
+  throw new Error("physics third edition has no published DOI and fixed proof source");
 const LOW = "papers/low-energy-first-release/2026-10-11";
 const LEDGER = "papers/whole-ledger-one-bit/2026-10-17";
 // The 2026-10-17 papers ship their manuscripts and selections inside the editable archive uploaded to Zenodo.
@@ -102,6 +107,26 @@ const BASE_RELEASES: Record<Exclude<ReleaseId, "generated-society-v2" | "economi
     }),
     check: "python3 tools/edition_release.py --edition second verify-map",
     guide: "docs/edition-reproduction.md",
+  },
+  "physics-third-edition": {
+    label: { zh: "物理旗舰第三版", en: "Physics flagship, third edition" },
+    date: physicsThird.publication_date,
+    map: "docs/physics-third-edition-map.json",
+    selection: { path: "checks/physics-third-edition-selection.json" },
+    manuscript: (slug, lang) => unzip(physicsArchive, `papers/${slug}/manuscript${suffix(lang)}.md`),
+    supplement: (slug, lang) => unzip(physicsArchive, `papers/${slug}/supplement${suffix(lang)}.md`),
+    files: (slug, lang) => ({ pdf: `${THIRD}/pdf/${slug}${suffix(lang)}.pdf`, supplement: `${THIRD}/pdf/${slug}-supplement${suffix(lang)}.pdf` }),
+    check: "python3 tools/physics_third_edition.py entry",
+    guide: "docs/physics-third-edition-reproduction.md",
+    sourceCommit: physicsThird.source_commit,
+    acceptance: {
+      zh: "P45–P47 的新增证明通过构建、信任闭包和完整声明类型验收。",
+      en: "The additions for P45–P47 passed the build, dependency trust audit, and complete declaration type checks.",
+    },
+    claimsNote: {
+      zh: "展开第三版新增结果，查看正文命题、Lean 声明、直接消费者和原回执。前两版登记的证明列在下方。",
+      en: "Open the third-edition additions to see the results, Lean declarations, direct consumers and original receipts. Earlier proofs follow below.",
+    },
   },
   "low-energy": {
     label: { zh: "低能系列", en: "Low-energy series" },
@@ -270,6 +295,7 @@ export const PAPERS: PaperEntry[] = [
     editions: [
       { release: "first-release", doi: "10.5281/zenodo.23210292" },
       { release: "second-edition", doi: "10.5281/zenodo.23297179" },
+      { release: "physics-third-edition", doi: physicsThird.doi },
     ],
     figure: { name: "pairing-balance", claim: "phys.P4" },
   },

@@ -14,7 +14,11 @@ const t = T[lang];
 const sep = lang === "zh" ? "：" : ": ";
 const paper = paperOf(slug, lang);
 const stats = statsOf(slug);
-const claims = claimsOf(slug, lang);
+const registered = claimsOf(slug, lang);
+const currentFirst = slug === "physics-common-source" && paper.current.number === 3;
+const claims = currentFirst
+  ? [...registered.filter((claim) => claim.edition === 3), ...registered.filter((claim) => claim.edition < 3)]
+  : registered;
 const chapters = chaptersOf(slug, lang);
 const featured = claims.find((claim) => paper.figure && claim.ids.includes(paper.figure.claim))?.key;
 const latest = paper.current;
@@ -36,9 +40,11 @@ const related = [
 ].filter((group) => group.papers.length > 0);
 
 // In a long list a divider opens each chapter the list enters; a short list reads without them.
-const grouped = claims.length >= 12;
-const items: ({ kind: "chapter"; key: string; title?: string } | { kind: "claim"; claim: ClaimRow })[] = [];
+const grouped = claims.length >= 12 && !currentFirst;
+const items: ({ kind: "chapter"; key: string; title?: string } | { kind: "claim"; claim: ClaimRow } | { kind: "earlier" })[] = [];
 claims.forEach((claim, i) => {
+  if (currentFirst && claim.edition < 3 && claims[i - 1]?.edition === 3)
+    items.push({ kind: "earlier" });
   if (grouped && claim.chapter && claim.chapter !== claims[i - 1]?.chapter) items.push({ kind: "chapter", key: claim.chapter, title: chapters.get(claim.chapter) });
   items.push({ kind: "claim", claim });
 });
@@ -63,9 +69,8 @@ const chapterLabel = (key: string) => (/\d/.test(key) ? fill(t.chapter, key) : f
         <li><b>{stats.claims}</b>{t.statClaims}</li>
         <li><b>{stats.modules}</b>{t.statModules}</li>
         <li><b>{stats.declarations}</b>{t.statDeclarations}</li>
-        <li class="ok"><a href="#check">✓ {latest.acceptance ? t.localKernel : t.statKernel}</a></li>
+        <li class="ok"><a href="#check">✓ {t.statKernel}</a></li>
       </ul>
-      {latest.acceptance && <p class="note prose">{latest.acceptance} <a href={latest.sourceMap}>{t.evidence} · {latest.sourceCommit?.slice(0, 8)}</a></p>}
     </header>
     {paper.figure && <Figure name={paper.figure.name} lang={lang} transition={vtFigure(slug)} claim={featured} />}
     <section class="section">
@@ -95,6 +100,8 @@ const chapterLabel = (key: string) => (/\d/.test(key) ? fill(t.chapter, key) : f
         {items.map((item) =>
           item.kind === "chapter" ? (
             <li class="chapter" aria-hidden="true"><span class="n">{chapterLabel(item.key)}</span>{item.title && <span class="t" set:html={item.title} />}</li>
+          ) : item.kind === "earlier" ? (
+            <li class="chapter"><span class="t">{lang === "zh" ? "前两版的证明" : "Proofs from the earlier editions"}</span></li>
           ) : (
             <li class="claim" id={item.claim.key}>
               <details open={item.claim.key === featured}>
@@ -190,6 +197,7 @@ const chapterLabel = (key: string) => (/\d/.test(key) ? fill(t.chapter, key) : f
       <div class="prose">
         <h2>{t.check}</h2>
         <p>{t.checkPaper}</p>
+        {latest.acceptance && <p class="note">{latest.acceptance} <a href={latest.sourceMap}>{t.evidence} · {latest.sourceCommit?.slice(0, 8)}</a></p>}
         <CheckCommands lang={lang} checks={[{ label: "", command: latest.check }]} />
         <p>{t.checkMore}<a href={latest.guide}>{t.guide}</a></p>
         {earlier.length > 0 && (

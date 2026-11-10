@@ -1,6 +1,6 @@
 // Rebuild the bilingual README navigation and CI figure from the paper registry and fixed run record.
 // Run from site/: bun run readme
-import { spawnSync } from "node:child_process";
+import { execFileSync, spawnSync } from "node:child_process";
 import { readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { PAPERS, RELEASES, ROOT, THEMES } from "../src/lib/registry";
@@ -8,10 +8,18 @@ import { paperOf } from "../src/lib/papers";
 
 const run = JSON.parse(readFileSync(resolve(ROOT, "docs/assets/ci-run.json"), "utf8"));
 const runUrl = `https://github.com/Sapientropic/H0mework/actions/runs/${run.id}`;
-const layout = readFileSync(resolve(ROOT, "tools/ci_layout.tsv"), "utf8").split("\n").filter(Boolean).map((line) => line.split("\t")[0]);
-const modules = layout.length.toLocaleString("en-US");
-const stageCount = new Set(layout.map((part) => part.split("-")[0])).size;
-const shardCount = new Set(layout).size;
+const acceptedLayout = execFileSync("git", ["show", `${run.commit}:tools/ci_layout.tsv`], { cwd: ROOT, encoding: "utf8", maxBuffer: 1 << 26 });
+const currentLayout = readFileSync(resolve(ROOT, "tools/ci_layout.tsv"), "utf8");
+const metrics = (layout) => {
+  const parts = layout.trimEnd().split("\n").map((line) => line.split("\t")[0]);
+  return {
+    modules: parts.length.toLocaleString("en-US"),
+    stageCount: new Set(parts.map((part) => part.split("-")[0])).size,
+    shardCount: new Set(parts).size,
+  };
+};
+const { modules, stageCount, shardCount } = metrics(acceptedLayout);
+const current = currentLayout === acceptedLayout ? null : metrics(currentLayout);
 
 const COPY = {
   zh: {
@@ -25,7 +33,8 @@ const COPY = {
     badge: `<a href="#论文"><img alt="Zenodo 论文 ${PAPERS.length} 篇" src="https://img.shields.io/badge/Zenodo-${PAPERS.length}%20%E7%AF%87%E8%AE%BA%E6%96%87-3c679f?style=flat-square"></a>`,
     alt: `Lean 完整选集：${modules} 个模块，${stageCount} 个阶段、${shardCount} 个分片，全部通过`,
     image: "docs/assets/ci-wall.svg",
-    status: `**${modules} 个 Lean 模块纳入同一套内核验收。** 当前 ${stageCount} 个阶段、${shardCount} 个分片，全包 \`--trust=0\`；[main 最新运行](${runUrl}) 已通过，提交 \`${run.commit.slice(0, 8)}\`。`,
+    status: `**${modules} 个 Lean 模块通过完整内核验收。** [验收运行](${runUrl}) 使用 ${stageCount} 个阶段、${shardCount} 个分片，全包 \`--trust=0\`，提交 \`${run.commit.slice(0, 8)}\`。` +
+      (current ? `当前构建覆盖 ${current.modules} 个模块、${current.shardCount} 个分片。` : ""),
   },
   en: {
     file: "README.en.md",
@@ -38,7 +47,8 @@ const COPY = {
     badge: `<a href="#papers"><img alt="${PAPERS.length} papers on Zenodo" src="https://img.shields.io/badge/Zenodo-${PAPERS.length}%20papers-3c679f?style=flat-square"></a>`,
     alt: `Lean full selection: ${modules} modules across ${stageCount} stages and ${shardCount} shards, all checked`,
     image: "docs/assets/ci-wall.en.svg",
-    status: `**${modules} Lean modules belong to one kernel-checked selection.** The current ${stageCount} stages and ${shardCount} shards use \`--trust=0\` throughout; [the latest main run](${runUrl}) passes at \`${run.commit.slice(0, 8)}\`.`,
+    status: `**${modules} Lean modules passed the complete kernel check.** [The accepted run](${runUrl}) used ${stageCount} stages and ${shardCount} shards with \`--trust=0\` throughout at \`${run.commit.slice(0, 8)}\`.` +
+      (current ? ` The current build covers ${current.modules} modules across ${current.shardCount} shards.` : ""),
   },
 };
 
