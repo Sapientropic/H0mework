@@ -24,6 +24,7 @@ type Release = {
   selection?: { path: string; member?: string };
   manuscript: (slug: string, lang: Lang) => string;
   supplement?: (slug: string, lang: Lang) => string;
+  bibliography?: (slug: string) => string;
   files: (slug: string, lang: Lang) => { pdf: string; supplement?: string; arxiv?: string };
   check: string;
   guide: string;
@@ -213,6 +214,7 @@ const BASE_RELEASES: Record<Exclude<ReleaseId, "generated-society-v2" | "economi
     manuscript: (_slug, lang) => unzip(peaceArchive, `${peaceMember}/manuscript${suffix(lang)}.md`),
     supplement: (_slug, lang) => ["technical-appendix", "appendix-execution"]
       .map((part) => unzip(peaceArchive, `${peaceMember}/${part}${suffix(lang)}.md`)).join("\n\n"),
+    bibliography: () => unzip(peaceArchive, `${peaceMember}/references.bib`),
     files: (slug, lang) => ({ pdf: `${PEACE}/pdf/${slug}${suffix(lang)}.pdf`, supplement: `${PEACE}/pdf/${slug}-supplement${suffix(lang)}.pdf` }),
     check: "python3 tools/enforceable_peace.py entry",
     guide: "docs/enforceable-peace-reproduction.md",
@@ -369,6 +371,8 @@ export const manuscriptOf = (release: ReleaseId, slug: string, lang: Lang) =>
   once(`manuscript:${release}:${slug}:${lang}`, () => RELEASES[release].manuscript(slug, lang));
 export const supplementOf = (release: ReleaseId, slug: string, lang: Lang) =>
   once(`supplement:${release}:${slug}:${lang}`, () => RELEASES[release].supplement?.(slug, lang) ?? "");
+export const bibliographyOf = (release: ReleaseId, slug: string) =>
+  once(`bibliography:${release}:${slug}`, () => RELEASES[release].bibliography?.(slug) ?? "");
 export const mapOf = (release: ReleaseId) => once(`map:${release}`, () => readJson(RELEASES[release].map));
 export const selectionOf = (release: ReleaseId) =>
   once(`selection:${release}`, () => {

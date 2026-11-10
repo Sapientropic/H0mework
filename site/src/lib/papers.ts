@@ -10,7 +10,7 @@ import remarkRehype from "remark-rehype";
 import rehypeKatex from "rehype-katex";
 import rehypeStringify from "rehype-stringify";
 import katex from "katex";
-import { PAPERS, RELEASES, ROOT, THEMES, entryOf, manuscriptOf, once, repoLink, type Lang, type ThemeId } from "./registry";
+import { PAPERS, RELEASES, ROOT, THEMES, bibliographyOf, entryOf, manuscriptOf, once, repoLink, type Lang, type ThemeId } from "./registry";
 import { claimsOf } from "./claims";
 
 export { PAPERS, THEMES, type Lang };
@@ -274,13 +274,15 @@ const mainOf = (slug: string, lang: Lang) => splitTitle(titleOf(latestOf(slug, l
 // a same-series manuscript is cited by title before it has a DOI. Both languages are read.
 export function citesOf(slug: string) {
   return once(`cites:${slug}`, () => {
-    const refs = (["zh", "en"] as const)
-      .map((lang) => {
+    const latest = entryOf(slug).editions.at(-1)!.release;
+    const refs = [
+      ...(["zh", "en"] as const).map((lang) => {
         const text = latestOf(slug, lang);
         const at = text.search(/^##\s+(References|参考文献)\s*$/m);
         return at < 0 ? "" : text.slice(at);
-      })
-      .join("\n");
+      }),
+      bibliographyOf(latest, slug),
+    ].join("\n");
     const doiIn = (doi: string) => new RegExp(`${doi.replace(/\./g, "\\.")}(?!\\d)`).test(refs);
     return PAPERS.filter((other) => other.slug !== slug && (other.editions.some((edition) => doiIn(edition.doi)) || (["zh", "en"] as const).some((lang) => refs.includes(mainOf(other.slug, lang))))).map((other) => other.slug);
   });

@@ -3,7 +3,7 @@ import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { claimsOf, leanPaths } from "../src/lib/claims";
-import { paperOf } from "../src/lib/papers";
+import { citesOf, paperOf } from "../src/lib/papers";
 import { ROOT, peaceBinding, readJson } from "../src/lib/registry";
 
 const slug = "enforceable-peace";
@@ -11,6 +11,7 @@ const release = "papers/enforceable-peace/2026-11-10";
 const manifest = readJson(`${release}/manifest.json`).papers.find((paper: any) => paper.paper === slug);
 const binding = peaceBinding();
 assert.equal(binding.public_commit, manifest.source_commit);
+assert.deepEqual(citesOf(slug), ["whole-ledger-accounting", "generated-society", "economic-constitution", "capital-formation"]);
 assert.equal(manifest.files.length, 5);
 for (const file of manifest.files) {
   const raw = readFileSync(resolve(ROOT, release, file.path));
