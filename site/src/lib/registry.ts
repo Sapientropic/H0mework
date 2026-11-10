@@ -343,6 +343,7 @@ export const PAPERS: PaperEntry[] = [
     slug: "enforceable-peace",
     theme: "society",
     editions: [{ release: "enforceable-peace", doi: peacePaper().doi }],
+    figure: { name: "quan-heng", claim: "PE2" },
   },
 ];
 
