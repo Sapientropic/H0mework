@@ -2,12 +2,14 @@
 
 Standalone, zero-dependency Python 3 standard-library reproduction of the CH-inequality parameter optimization reported in:
 
-- L. K. Shalm *et al.*, *Phys. Rev. Lett.* **115**, 250402 (2015), DOI: `10.1103/PhysRevLett.115.250402` (p. 4 global channel parameters).
+- L. K. Shalm *et al.*, *Phys. Rev. Lett.* **115**, 250402 (2015), DOI: `10.1103/PhysRevLett.115.250402` (pp. 3-4 nominal settings and global channel parameters).
 - B. G. Christensen, PhD thesis (UIUC, 2016), Appendix A (pp. 76-78) and Section 4.6.2 (pp. 46-47).
+
+![NIST 2015 loophole-free Bell test: Christensen Appendix A replay vs. nominal settings](nist-2015-nominal-replay.png)
 
 ## Quick Start
 
-From the repository root (works from either `git clone` or a GitHub `.zip` archive download, using only the Python 3 standard library):
+From the repository root (works from either `git clone` or a GitHub `.zip` archive download; `run_r0003.py` uses only the Python 3 standard library):
 
 ```bash
 # Fast sanity & threshold check (~5 seconds):
@@ -15,6 +17,9 @@ python3 scripts/physics/bell-nist/nist-real/run_r0003.py --tests-only
 
 # Full 16-corner box optimization + independent density-matrix verification (~3 minutes):
 python3 scripts/physics/bell-nist/nist-real/run_r0003.py
+
+# Regenerate the summary figure above (requires matplotlib):
+python3 scripts/physics/bell-nist/nist-real/plot_r0003.py
 ```
 
 `run_r0003.py` verifies all SHA-256 digests of the pinned scripts and input extracts, stages them in an ephemeral temporary directory without modifying any tracked file, runs both independent implementations, and checks exact agreement with the archived receipt.
