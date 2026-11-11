@@ -1,0 +1,71 @@
+import H0mework.Versions.R7e4da746.ReleaseMaterials.SaturationMonoid.NoIslandNoMagic.CanonicalRiemann.GeneralizedDual.CoPoissonEnergy.Muntz.Cokernel.CenteredGram.JointAction.Runtime.Feedback.ClozelOriginalKDecodedPaRFourFaceSourceAction.Material
+import H0mework.Versions.R7e4da746.ReleaseMaterials.SaturationMonoid.NoIslandNoMagic.CanonicalRiemann.GeneralizedDual.CoPoissonEnergy.Muntz.Cokernel.CenteredGram.JointAction.Runtime.Feedback.ClozelOriginalKDecodedPaRFourFaceSourceAction.Physical
+set_option autoImplicit false
+set_option Elab.async false
+set_option maxHeartbeats 600000
+set_option backward.isDefEq.respectTransparency false
+noncomputable section
+namespace SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot
+namespace NoIslandNoMagic.CanonicalRiemann.ClozelGeneralizedDual.CenteredGram.IntegralGraphJointAction.OriginalKDecodedPaRFourFaceSourceAction
+open RootInquiryCompletion SourceOperationEffects SourceOperationExecution SourceOperationScalarInventoryLift CofinalHistorySettlement
+open NoIslandNoMagic.CanonicalRiemann NoIslandNoMagic.CanonicalRiemann.ClozelGeneralizedDual BurnolPhysicalState
+local instance effectSuccessorGroups (grade : Nat) (target : Unit) :
+ AddCommGroup (L.Value (PairValue C.Value) grade target) := L.groups (PairValue C.Value) grade target
+variable (observation : GeneratedRiemannZeroObservation)
+variable (nontrivial : ¬∃ n:Nat,observation.coordinate=-2*(n+1))
+variable (half : OriginalKCombCalculation.Half observation) (depth ordinal : Nat) (h H N : ℝ)
+variable (producer : SF.Factory (PairValue C.Value) C.Var ()) (grade : Nat)
+variable (data : SF.Packet (W:=PairValue C.Value) (X:=C.Var) (s:=()) grade)
+variable (sourceCfg : A.Programme (PhysicalValue:=L.Value (PairValue C.Value) grade) (PhysicalVar:=C.Var) (sort:=()))
+variable (language : sourceCfg.LowVar=C.Var)
+
+def inheritedSourceIncrement (name : sourceCfg.LowVar ()) : OriginalKFinitePaWindowOperatorSourceAction.Branches :=
+ CF.collapseValue grade (updatedSourceTotal observation nontrivial half depth ordinal h H N
+  (fourFaceFactory producer) grade data sourceCfg language) -
+ CF.collapseValue grade ((stockSelected observation nontrivial half depth ordinal h H N producer grade data sourceCfg language).activeEnvironment () name)
+
+/-- The complete source increment is read from actual material, retaining the inherited native fee. -/
+theorem actual_material_complete_source_increment (name : sourceCfg.LowVar ()) :
+ CF.collapseValue (grade+1) ((stockMaterial observation nontrivial half depth ordinal h H N producer grade data sourceCfg language).increment () name) =
+ inheritedSourceIncrement observation nontrivial half depth ordinal h H N producer grade data sourceCfg language name +
+ ownFourFaceSource observation nontrivial half depth ordinal h H N := by
+ rw [actual_material_source_increment]
+ change CF.collapseValue grade
+  (((stockBorn observation nontrivial half depth ordinal h H N producer grade data sourceCfg language).activeEnvironment () name-
+    (stockSelected observation nontrivial half depth ordinal h H N producer grade data sourceCfg language).activeEnvironment () name)+0) = _
+ rw [add_zero,OriginalKFiniteWard.collapse_sub]
+ have actor := actual_born_four_stock_increment observation nontrivial half depth ordinal h H N
+  (fourFaceFactory producer) grade data sourceCfg language name
+ unfold inheritedSourceIncrement
+ linear_combination (norm:=module) actor
+
+theorem actual_material_raw_source_stock :
+ (stockMaterial observation nontrivial half depth ordinal h H N producer grade data sourceCfg language).raw =
+ CF.codeAt (language.symm ▸ stockReadCode) (grade+1) := by
+ have source := actual_material_reader_stock observation nontrivial half depth ordinal h H N producer grade data sourceCfg language
+  (stockSelected observation nontrivial half depth ordinal h H N producer grade data sourceCfg language)
+  (Shared.actualOccurrence (stockSelected observation nontrivial half depth ordinal h H N producer grade data sourceCfg language))
+ exact congrArg (fun raw => raw.expression) source
+
+/-- The complete material effect reads the actual emitted stock while retaining the inherited cost. -/
+theorem actual_material_stock_effect :
+ CF.collapseValue (grade+1)
+  ((stockMaterial observation nontrivial half depth ordinal h H N producer grade data sourceCfg language).raw.effect
+   (stockMaterial observation nontrivial half depth ordinal h H N producer grade data sourceCfg language).environment
+   (stockMaterial observation nontrivial half depth ordinal h H N producer grade data sourceCfg language).increment) =
+ inheritedSourceIncrement observation nontrivial half depth ordinal h H N producer grade data sourceCfg language (language.symm ▸ ()) +
+ ownFourFaceSource observation nontrivial half depth ordinal h H N := by
+ cases sourceCfg with
+ | mk lowVar datum inventory pairInventory =>
+  change lowVar=C.Var at language
+  cases language
+  let cfg : A.Programme (PhysicalValue:=L.Value (PairValue C.Value) grade) (PhysicalVar:=C.Var) (sort:=()) :=
+   ⟨C.Var,datum,inventory,pairInventory⟩
+  rw [actual_material_raw_source_stock,OriginalKFullSourceRAction.Projection.code_effect_base]
+  change CF.collapseValue (grade+1)
+   ((stockMaterial observation nontrivial half depth ordinal h H N producer grade data cfg rfl).increment () ()) = _
+  exact actual_material_complete_source_increment _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+end NoIslandNoMagic.CanonicalRiemann.ClozelGeneralizedDual.CenteredGram.IntegralGraphJointAction.OriginalKDecodedPaRFourFaceSourceAction
+end SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot
+end

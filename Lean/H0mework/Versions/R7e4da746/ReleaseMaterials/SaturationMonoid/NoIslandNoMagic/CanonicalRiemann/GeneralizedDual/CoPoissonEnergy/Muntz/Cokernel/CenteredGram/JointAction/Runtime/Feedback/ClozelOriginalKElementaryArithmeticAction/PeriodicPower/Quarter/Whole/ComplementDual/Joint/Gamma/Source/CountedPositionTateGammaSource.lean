@@ -1,0 +1,66 @@
+import H0mework.Versions.R7e4da746.ReleaseMaterials.SaturationMonoid.NoIslandNoMagic.CanonicalRiemann.GeneralizedDual.CoPoissonEnergy.Muntz.Cokernel.CenteredGram.JointAction.Runtime.Feedback.ClozelOriginalKElementaryArithmeticAction.PeriodicPower.Quarter.Whole.ComplementDual.Joint.Gamma.Source.CountedDTateGammaSource
+import H0mework.Versions.R7e4da746.ReleaseMaterials.SaturationMonoid.NoIslandNoMagic.CanonicalRiemann.GeneralizedDual.CoPoissonEnergy.Muntz.Cokernel.CenteredGram.JointAction.Runtime.Feedback.ClozelOriginalKElementaryArithmeticAction.PeriodicPower.Quarter.Whole.ComplementDual.Joint.Gamma.Source.CountedPositionGammaSource
+import H0mework.Versions.R7e4da746.ReleaseMaterials.SaturationMonoid.NoIslandNoMagic.CanonicalRiemann.GeneralizedDual.CoPoissonEnergy.Muntz.Cokernel.CenteredGram.JointAction.Runtime.Feedback.ClozelOriginalKElementaryArithmeticAction.PeriodicPower.Quarter.Whole.ComplementDual.Joint.Gamma.Source.CountingQuadraticLimit
+import H0mework.Versions.R7e4da746.ReleaseMaterials.SaturationMonoid.NoIslandNoMagic.CanonicalRiemann.GeneralizedDual.CoPoissonEnergy.Muntz.Cokernel.CenteredGram.JointAction.Runtime.Feedback.ClozelOriginalKElementaryArithmeticAction.PeriodicPower.Quarter.Whole.ComplementDual.Joint.Gamma.Source.DivisorJointSource
+import H0mework.Versions.R7e4da746.ReleaseMaterials.SaturationMonoid.NoIslandNoMagic.CanonicalRiemann.GeneralizedDual.CoPoissonEnergy.Muntz.Cokernel.CenteredGram.JointAction.Runtime.Feedback.ClozelOriginalKElementaryArithmeticAction.PeriodicPower.Quarter.Whole.ComplementDual.Joint.Gamma.Source.FirstConductorSource
+import H0mework.Versions.R7e4da746.ReleaseMaterials.SaturationMonoid.NoIslandNoMagic.CanonicalRiemann.GeneralizedDual.CoPoissonEnergy.Muntz.Cokernel.CenteredGram.JointAction.Runtime.Feedback.ClozelOriginalKElementaryArithmeticAction.PeriodicPower.Quarter.Whole.ComplementDual.Joint.Gamma.Source.ForwardLogStepSource
+import H0mework.Versions.R7e4da746.ReleaseMaterials.SaturationMonoid.NoIslandNoMagic.CanonicalRiemann.GeneralizedDual.CoPoissonEnergy.Muntz.Cokernel.CenteredGram.JointAction.Runtime.Feedback.ClozelOriginalKElementaryArithmeticAction.PeriodicPower.Quarter.Whole.ComplementDual.Joint.Gamma.Source.GammaFirstCountingConductorSource
+import H0mework.Versions.R7e4da746.ReleaseMaterials.SaturationMonoid.NoIslandNoMagic.CanonicalRiemann.GeneralizedDual.CoPoissonEnergy.Muntz.Cokernel.CenteredGram.JointAction.Runtime.Feedback.ClozelOriginalKElementaryArithmeticAction.PeriodicPower.Quarter.Whole.ComplementDual.Joint.Gamma.Source.GammaOrdinaryDPrincipalValueSource
+import H0mework.Versions.R7e4da746.ReleaseMaterials.SaturationMonoid.NoIslandNoMagic.CanonicalRiemann.GeneralizedDual.CoPoissonEnergy.Muntz.Cokernel.CenteredGram.JointAction.Runtime.Feedback.ClozelOriginalKElementaryArithmeticAction.PeriodicPower.Quarter.Whole.ComplementDual.Joint.Gamma.Source.KappaConductorSource
+import H0mework.Versions.R7e4da746.ReleaseMaterials.SaturationMonoid.NoIslandNoMagic.CanonicalRiemann.GeneralizedDual.CoPoissonEnergy.Muntz.Cokernel.CenteredGram.JointAction.Runtime.Feedback.ClozelOriginalKElementaryArithmeticAction.PeriodicPower.Quarter.Whole.ComplementDual.Joint.Gamma.Source.LogDifferencePaSource
+import H0mework.Versions.R7e4da746.ReleaseMaterials.SaturationMonoid.NoIslandNoMagic.CanonicalRiemann.GeneralizedDual.CoPoissonEnergy.Muntz.Cokernel.CenteredGram.JointAction.Runtime.Feedback.ClozelOriginalKElementaryArithmeticAction.PeriodicPower.Quarter.Whole.ComplementDual.Joint.Gamma.Source.PhiConductorReadback
+import H0mework.Versions.R7e4da746.ReleaseMaterials.SaturationMonoid.NoIslandNoMagic.CanonicalRiemann.GeneralizedDual.CoPoissonEnergy.Muntz.Cokernel.CenteredGram.JointAction.Runtime.Feedback.ClozelOriginalKElementaryArithmeticAction.PeriodicPower.Quarter.Whole.ComplementDual.Joint.Gamma.Source.TateConductorSource
+import H0mework.Versions.R7e4da746.ReleaseMaterials.SaturationMonoid.NoIslandNoMagic.CanonicalRiemann.GeneralizedDual.CoPoissonEnergy.Muntz.Cokernel.CenteredGram.JointAction.Runtime.Feedback.ClozelOriginalKElementaryArithmeticAction.PeriodicPower.Quarter.Whole.ComplementDual.Joint.Gamma.Source.TateGaussianClock
+import H0mework.Versions.R7e4da746.ReleaseMaterials.SaturationMonoid.NoIslandNoMagic.CanonicalRiemann.GeneralizedDual.CoPoissonEnergy.Muntz.Cokernel.CenteredGram.JointAction.Runtime.Feedback.ClozelOriginalKElementaryArithmeticAction.PeriodicPower.Quarter.Whole.ComplementDual.Joint.Gamma.Source.WholePrimeLogSource
+import H0mework.Arithmetic.BurnolCarrier.ConstantGapFace
+import H0mework.Versions.R7e4da746.Arithmetic.MellinTateSource.Isometry
+import H0mework.Arithmetic.MellinProjection.TailKernel
+
+set_option autoImplicit false
+namespace SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot
+namespace NoIslandNoMagic.CanonicalRiemann.ClozelGeneralizedDual.BurnolPhysicalState
+namespace OriginalGamma.Source.CountedPositionTateGamma
+open Complex Filter MeasureTheory Set
+open scoped Topology InnerProductSpace
+open OriginalRieszFinitePairing.CoPoisson.Ward
+open OriginalGamma.Source.CountingQuadraticLimit OriginalGamma.Source.FiniteLogCounting
+open OriginalGamma.Source.ConductorDual OriginalGamma.Source.JointLogConductor
+open OriginalGamma.Source.RelativeConductorGapReadback OriginalGamma.Source.PhiConductorReadback
+open OriginalGamma.Source.FirstConductor OriginalGamma.Source.TateConductor
+open OriginalGamma.Source.KappaConductor OriginalGamma.Source.CountedDTateGamma
+open OriginalGamma.Source.GammaFirstCountingConductor
+open OriginalGamma.Source.CountedPositionGamma OriginalGamma.Source.GammaOrdinaryDPrincipalValue
+open OriginalGamma.Source.DivisorJoint
+noncomputable section
+local notation "T" => burnolTateReciprocalL2
+private theorem complete_seed_joint : joint dualFirstConductor=firstConductorValue := by
+  rw [joint_apply,←countedTateSeedPaid% dual_first_conductor_readback,
+    burnolTateReciprocalL2_involutive,original_tate_strong_readback,firstTateConductorValue,
+    LinearIsometryEquiv.apply_symm_apply]
+
+private theorem complete_position_Tate_field (c:BurnolCompletedMellinCoordinate) :
+    T (originalCountedPositionGamma c)=
+      -fourierL2.symm (originalBaseSynthesis c firstConductorValue) := by
+  have same:=(ordinaryPhiPaid% original_inverse_fourier_base_joint) c dualFirstConductor
+  rw [complete_seed_joint] at same
+  rw [originalCountedPositionGamma,map_neg,←same]
+
+/-- The original two seed conductors and their common joint action generate the whole dual reaction as D plus Tate(Pos), with neither contact discarded. -/
+theorem actual_original_counted_dual_complete_Gamma_field_source (c:BurnolCompletedMellinCoordinate) :
+    originalDualLogValue c= -actualDGamma c-T (originalCountedPositionGamma c) := by
+  have original:=(ordinaryPhiPaid% original_gamma_value) c
+  rw [←(GammaDIdentityPaid% actual_D_gamma_same_native_seed) c] at original
+  rw [←original,complete_position_Tate_field]
+  module
+
+theorem actual_original_counted_first_dual_same_Gamma_occurrence
+    (c:BurnolCompletedMellinCoordinate) (zero:riemannZeta c.value=0) :
+    T (originalFirstFieldGamma c)=originalDualLogValue c := by
+  rw [actual_original_counted_position_Tate_D_joint_Gamma_source c zero,map_sub,map_neg,
+    burnolTateReciprocalL2_involutive,actual_original_counted_dual_complete_Gamma_field_source]
+  module
+
+end
+end OriginalGamma.Source.CountedPositionTateGamma
+end NoIslandNoMagic.CanonicalRiemann.ClozelGeneralizedDual.BurnolPhysicalState
+end SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot

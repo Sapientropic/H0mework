@@ -949,6 +949,27 @@ class PrivateOwnerFamilyPrefixTests(unittest.TestCase):
                     s.module_views({**row, 'target_sha256': p.sha(tampered)}, {})
 
 
+class AuditOutputFallbackTests(unittest.TestCase):
+    audit = "cp532-canonical-method"
+
+    def test_exact_cp532_tail_round_trips(self):
+        prefix = "import Lean\n\ndef unchanged := 12\n\n"
+        source = prefix + s.CP532_AUDIT_OUTPUT_SOURCE
+        public = s.rewrite_audit_output_paths(source, self.audit)
+        self.assertEqual(public, prefix + s.CP532_AUDIT_OUTPUT_PUBLIC)
+        self.assertEqual(s.rewrite_audit_output_paths(public, self.audit, reverse=True), source)
+        self.assertEqual(s.rewrite_audit_output_paths(source, None), source)
+
+    def test_rejects_another_command_or_multiple_candidate_tails(self):
+        source = s.CP532_AUDIT_OUTPUT_SOURCE
+        for altered in (source.replace("sameCanonicalMethod", "anotherMethod"), source + "def later := 1\n",
+                        source + source):
+            with self.subTest(source=altered), self.assertRaisesRegex(s.ViewError, "exact trailing CP532"):
+                s.rewrite_audit_output_paths(altered, self.audit)
+        with self.assertRaisesRegex(s.ViewError, "Unregistered audit output-path fallback"):
+            s.rewrite_audit_output_paths(source, "unknown-audit")
+
+
 class AuditRewriteTests(unittest.TestCase):
     source = "SaturationMonoid.PhysicsCore.Bell.Source"
     target = "H0mework.Versions.AE.Physics.Bell.Source"

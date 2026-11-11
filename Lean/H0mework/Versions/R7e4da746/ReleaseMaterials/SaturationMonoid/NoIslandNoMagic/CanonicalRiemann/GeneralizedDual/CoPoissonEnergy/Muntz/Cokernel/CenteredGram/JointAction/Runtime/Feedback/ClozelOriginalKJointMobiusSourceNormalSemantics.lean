@@ -1,0 +1,32 @@
+import H0mework.Versions.R7e4da746.ReleaseMaterials.SaturationMonoid.NoIslandNoMagic.CanonicalRiemann.GeneralizedDual.CoPoissonEnergy.Muntz.Cokernel.CenteredGram.JointAction.Runtime.Material.Calculation.ClozelOriginalKJointMobiusSourceData
+import H0mework.Versions.R7e4da746.ReleaseMaterials.SaturationMonoid.NoIslandNoMagic.CanonicalRiemann.GeneralizedDual.CoPoissonEnergy.Muntz.Cokernel.CenteredGram.JointAction.Runtime.Feedback.ClozelOriginalKPairedBEulerJunctionSource
+import H0mework.Versions.R7e4da746.ReleaseMaterials.SaturationMonoid.NoIslandNoMagic.CanonicalRiemann.GeneralizedDual.CoPoissonEnergy.Muntz.Cokernel.CenteredGram.JointAction.Runtime.Feedback.ClozelOriginalKCoefficientBSelfMaterialSemantics
+
+set_option autoImplicit false
+set_option Elab.async false
+set_option backward.isDefEq.respectTransparency false
+set_option maxHeartbeats 1200000
+noncomputable section
+namespace SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot
+namespace NoIslandNoMagic.CanonicalRiemann.ClozelGeneralizedDual.CenteredGram.IntegralGraphJointAction
+namespace OriginalKJointMobiusSourceCalculation
+open Complex BurnolPhysicalState SourceOperationEffects SourceOperationExecution
+open private boundary_code_actual from
+  H0mework.Versions.R7e4da746.ReleaseMaterials.SaturationMonoid.NoIslandNoMagic.CanonicalRiemann.GeneralizedDual.CoPoissonEnergy.Muntz.Cokernel.CenteredGram.JointAction.Runtime.Feedback.ClozelOriginalKCoefficientBSelfMaterialSemantics
+
+theorem actual_source_code (c : BurnolCompletedMellinCoordinate) :
+    (sourceCode c).eval sourceEnvironment =
+      OriginalKSourceFiniteUpdate.OriginalBFiniteRAction.calculatedSourceNormal c fixedShift := by
+  rw [sourceCode, boundary_code_actual,
+    OriginalKCoefficientBSelfCalculation.Semantics.kernel_code_eval,
+    OriginalKCoefficientBFiniteAction.sourceKernel_original]
+  rw [OriginalKCoefficientBFiniteAction.calculated_normal_full_inventory c fixedShift
+    OriginalKPairedBEulerJunctionSource.junctionShift_pos.le,
+    ← OriginalKCoefficientBFiniteAction.source_boundary_full_inventory c fixedShift
+      OriginalKPairedBEulerJunctionSource.junctionShift_pos.le,
+    OriginalKCoefficientBFiniteAction.sourceKernel_original]
+
+end OriginalKJointMobiusSourceCalculation
+end NoIslandNoMagic.CanonicalRiemann.ClozelGeneralizedDual.CenteredGram.IntegralGraphJointAction
+end SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot
+end

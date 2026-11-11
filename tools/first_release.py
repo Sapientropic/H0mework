@@ -453,8 +453,8 @@ def verify_build_configuration(root: Path, accepted_digest: str, *, data: dict, 
     """Preserve signed package acceptance across explicitly bound library additions.
 
     The receipt's original Lake file stays authoritative. A changed file is
-    admitted only through its retained snapshot and unchanged module owners,
-    compiler settings and resource inputs in the actual accepted proof scopes.
+    admitted only through its retained snapshot and equivalent module compiler
+    settings and resource inputs in the actual accepted proof scopes.
     """
     current_raw = repo_file(root, "Lean/lakefile.toml").read_bytes()
     if sha(current_raw) == accepted_digest:
@@ -517,12 +517,47 @@ def verify_build_configuration(root: Path, accepted_digest: str, *, data: dict, 
     old_libs = named(old.get("lean_lib", []), "library")
     current_libs = named(current.get("lean_lib", []), "library")
     append_only(list(old_libs), list(current_libs), "lean_lib")
+
+    def matches(module, glob):
+        # The explicit Lake globs have the same semantics as ci_plan.matches.
+        if glob.endswith(".+"):
+            return module.startswith(glob[:-1])
+        if glob.endswith(".*"):
+            return module == glob[:-2] or module.startswith(glob[:-1])
+        return module == glob
+
+    def owners(module, libraries):
+        return [lib for lib in libraries.values()
+                if any(matches(module, glob) for glob in lib.get("globs", []))]
+
+    def library_settings(lib):
+        return {key: value for key, value in lib.items() if key not in {"name", "globs"}}
+
+    promotions = {}
     for name, before in old_libs.items():
         after = current_libs[name]
-        if ({key: value for key, value in before.items() if key != "globs"}
-                != {key: value for key, value in after.items() if key != "globs"}):
+        if library_settings(before) != library_settings(after):
             raise ReleaseError("Signed library settings or resource needs changed: " + name)
-        append_only(before.get("globs"), after.get("globs"), name + ".globs")
+        old_globs, new_globs = before.get("globs", []), after.get("globs", [])
+        if any(not isinstance(globs, list) or any(not isinstance(glob, str) for glob in globs)
+               for globs in (old_globs, new_globs)):
+            raise ReleaseError("Invalid Lake library globs: " + name)
+        removed = set(old_globs) - set(new_globs)
+        for module in sorted(removed):
+            # A new paper can make an exact dependency from a historical
+            # non-default library part of CI under the same effective options.
+            module_name(module)
+            original = owners(module, old_libs)
+            current_owners = owners(module, current_libs)
+            if (name in current.get("defaultTargets", []) or original != [before]
+                    or len(current_owners) != 1):
+                raise ReleaseError("Signed library glob removed without a unique promotion: " + module)
+            target = current_owners[0]
+            if (target["name"] in old_libs or target["name"] not in current.get("defaultTargets", [])
+                    or module not in target.get("globs", []) or library_settings(target) != library_settings(before)):
+                raise ReleaseError("Promoted module library options or resource needs differ: " + module)
+            promotions[module] = (name, target["name"])
+        append_only([glob for glob in old_globs if glob not in removed], new_globs, name + ".globs")
     old_resources = named(old.get("input_file", []), "resource input")
     current_resources = named(current.get("input_file", []), "resource input")
     for name, before in old_resources.items():
@@ -545,22 +580,15 @@ def verify_build_configuration(root: Path, accepted_digest: str, *, data: dict, 
                 raise ReleaseError("Build compatibility scope contains a non-module path")
             module_names.add(module_name(path[5:-5].replace("/", ".")))
 
-    def matches(module, glob):
-        # The explicit Lake globs have the same semantics as ci_plan.matches.
-        if glob.endswith(".+"):
-            return module.startswith(glob[:-1])
-        if glob.endswith(".*"):
-            return module == glob[:-2] or module.startswith(glob[:-1])
-        return module == glob
-
     needed = set()
     for module in sorted(module_names):
-        owners = [[lib for lib in libraries.values()
-                   if any(matches(module, glob) for glob in lib.get("globs", []))]
-                  for libraries in (old_libs, current_libs)]
-        if len(owners[0]) != 1 or len(owners[1]) != 1 or owners[0][0]["name"] != owners[1][0]["name"]:
+        original, current_owners = owners(module, old_libs), owners(module, current_libs)
+        if len(original) != 1 or len(current_owners) != 1:
             raise ReleaseError("Signed module library owner changed or became ambiguous: " + module)
-        needed.update(owners[0][0].get("needs", []))
+        owner_pair = original[0]["name"], current_owners[0]["name"]
+        if owner_pair[0] != owner_pair[1] and promotions.get(module) != owner_pair:
+            raise ReleaseError("Signed module library owner changed: " + module)
+        needed.update(original[0].get("needs", []))
     resource_bindings = baseline.get("resources", {})
     for name in sorted(needed):
         if name not in old_resources or name not in resource_bindings:
@@ -572,7 +600,8 @@ def verify_build_configuration(root: Path, accepted_digest: str, *, data: dict, 
             raise ReleaseError("Signed resource input bytes changed: " + name)
         if sha(fixed_blob(path)) != reference["sha256"]:
             raise ReleaseError("Resource input differs from its fixed Git preservation baseline: " + name)
-    return {"mode": "append-only-equivalent", "accepted_lakefile_sha256": accepted_digest,
+    return {"mode": "nondefault-promotion-equivalent" if promotions else "append-only-equivalent",
+            "accepted_lakefile_sha256": accepted_digest,
             "current_lakefile_sha256": sha(current_raw), "source_commit": baseline["source_commit"],
             "modules": len(module_names), "resources": len(needed)}
 
@@ -679,7 +708,10 @@ set_option maxRecDepth 200000
 set_option maxHeartbeats 0
 open Lean Elab Command
 private def releaseName (value : String) : Name :=
-  (value.splitOn ".").foldl Name.str .anonymous
+  (value.splitOn ".").foldl (fun name part =>
+    match part.toNat? with
+    | some number => Name.num name number
+    | none => Name.str name part) .anonymous
 
 private def completeRefs (info : ConstantInfo) : NameSet := Id.run do
   let mut refs := info.type.getUsedConstantsAsSet ++ info.getUsedConstantsAsSet

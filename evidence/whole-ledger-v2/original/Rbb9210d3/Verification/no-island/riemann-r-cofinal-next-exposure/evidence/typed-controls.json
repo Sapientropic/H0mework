@@ -1,0 +1,40 @@
+{
+  "schema": "cp514-typed-controls/v1",
+  "positive": [
+    "duplicate_generators_keep_requests_and_full_exposures",
+    "reindexed_receiver_has_entire_paid_exposure"
+  ],
+  "negative": [
+    "counter_same_content_cannot_select_second_offset",
+    "counter_current_packet_cannot_be_literal_next"
+  ],
+  "duplicate_model": {
+    "expression": "2+3",
+    "value": 5,
+    "request_positions": [
+      0,
+      1
+    ],
+    "exposure_offsets": [
+      2,
+      4
+    ]
+  },
+  "wrong_site_control": "consecutive cofinal packets have distinct grades",
+  "gate_receipt": {
+    "label": "003-gate",
+    "exit_code": 0,
+    "elapsed_seconds": 13.068144500022754,
+    "source_sha256": "9bd7be071ca069021d48f98d6b607f3afeff77534d4d04704bfd7ee069900c6f",
+    "log_sha256": "946b5518da94bfc002cbf5395c9375db8b0d7e3d74bea1a8bf264da6f93bab8f",
+    "config_sha256": null
+  },
+  "gate_olean": {
+    "sha256": "5c75ef235ecdf6e95a725c386cd82bbad5996f07a25a65a6f90f7c698c448eae",
+    "bytes": 1065592
+  },
+  "raw_same_method_proof": {
+    "sha256": "b9a0e0b15e55421ca8ec351310adfe12e7cf3abb191612e1d826a05684a339f9",
+    "bytes": 76650
+  }
+}

@@ -1,0 +1,33 @@
+import H0mework.Versions.R7e4da746.ReleaseMaterials.SaturationMonoid.NoIslandNoMagic.CanonicalRiemann.GeneralizedDual.CoPoissonEnergy.Muntz.Cokernel.CenteredGram.JointAction.Runtime.Feedback.ClozelOriginalKElementaryArithmeticAction.PeriodicPower.Quarter.Whole.ComplementDual.Joint.Gamma.Source.CountingQuadraticLimit
+import H0mework.Versions.R7e4da746.ReleaseMaterials.SaturationMonoid.NoIslandNoMagic.CanonicalRiemann.GeneralizedDual.CoPoissonEnergy.Muntz.Cokernel.CenteredGram.JointAction.Runtime.Feedback.ClozelOriginalKElementaryArithmeticAction.PeriodicPower.Quarter.Whole.ComplementDual.Joint.Gamma.Source.FiniteLogCountingSource
+import H0mework.Versions.R7e4da746.ReleaseMaterials.SaturationMonoid.NoIslandNoMagic.CanonicalRiemann.GeneralizedDual.CoPoissonEnergy.Muntz.Cokernel.CenteredGram.JointAction.Runtime.Feedback.ClozelOriginalKElementaryArithmeticAction.PeriodicPower.Quarter.Whole.ComplementDual.Joint.Gamma.Source.ForwardLogStepSource
+import H0mework.Versions.R7e4da746.ReleaseMaterials.SaturationMonoid.NoIslandNoMagic.CanonicalRiemann.GeneralizedDual.CoPoissonEnergy.Muntz.Cokernel.CenteredGram.JointAction.Runtime.Feedback.ClozelOriginalKElementaryArithmeticAction.PeriodicPower.Quarter.Whole.ComplementDual.Joint.Gamma.Source.WholePrimeLogSource
+import H0mework.Arithmetic.BurnolCarrier.ConstantGapFace
+import H0mework.Arithmetic.MellinProjection.TailKernel
+import H0mework.Versions.R7e4da746.ReleaseMaterials.SaturationMonoid.NoIslandNoMagic.CanonicalRiemann.GeneralizedDual.CoPoissonEnergy.Muntz.Cokernel.CenteredGram.JointAction.Sonine.Physical.Spectral.Direct.ClozelBurnolPaRiemannConsumer
+
+set_option autoImplicit false
+set_option maxHeartbeats 400000
+namespace SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot
+namespace NoIslandNoMagic.CanonicalRiemann.ClozelGeneralizedDual.BurnolPhysicalState
+namespace OriginalGamma.Source.KLogVector
+open Complex Filter MeasureTheory Set
+open scoped Topology InnerProductSpace
+open OriginalRieszSource OriginalRieszSourceGreen OriginalRieszFinitePairing.CoPoisson.Ward
+open OriginalGamma.Source.FiniteLogCounting OriginalGamma.Source.CountingQuadratic OriginalGamma.Source.CountingQuadraticLimit
+noncomputable section
+local notation "q" => (1 / 4 : ℝ)
+local notation "K" => burnolCompletedMellinRieszVector
+
+def originalLogDValue (c : BurnolCompletedMellinCoordinate) : BurnolL2 :=
+  originalBaseSynthesis c OriginalGamma.Source.WholePrimeLog.logStepValue -
+    fourierL2 (originalBSynthesis c OriginalGamma.Source.ForwardLogStep.logStepValue)
+
+def originalLogAValue (c : BurnolCompletedMellinCoordinate) : BurnolL2 :=
+  originalBaseSynthesis c OriginalGamma.Source.ForwardLogStep.logStepValue -
+    fourierL2 (originalBSynthesis c OriginalGamma.Source.WholePrimeLog.logStepValue)
+
+end
+end OriginalGamma.Source.KLogVector
+end NoIslandNoMagic.CanonicalRiemann.ClozelGeneralizedDual.BurnolPhysicalState
+end SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot

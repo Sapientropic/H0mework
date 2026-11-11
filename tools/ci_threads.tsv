@@ -2,6 +2,12 @@
 # The LAlanine attraction row blocks hold 14-25 GiB each while compiling (4.6-21 GiB
 # private, measured locally); two at once on the runner mostly swapped.
 s9-02	1
-s10-*	1
+s10-0[1-9]	1
+s10-1[0-6]	1
+# Whole-ledger: the long native receipt modules use about 4.3 GiB RSS locally.
+# Two slots let their independent inputs build concurrently with runner memory headroom.
+s10-1[78]	2
+s10-19	1
+s11-04	2
 # The donor-protocol shard reached 30 GiB of swap with four concurrent modules.
 s7-08	1

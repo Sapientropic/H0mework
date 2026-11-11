@@ -1,5 +1,9 @@
 # 可逆的证明构建适配
 
+CP532 `Gate` 在无输出路径覆盖时将当次 canonical 内核回执与进度写入独立临时目录。两个
+`CP532_CANONICAL_*` 路径仍可成对指定。`audit_output_fallback` 保存这一变换，公开源码
+视图和精确恢复均还原原门检命令。原认证单独保留，当前门检调用同一个 `sameCanonicalMethod`。
+
 研究源码的身份与公开编译使用的证明体分开登记。`export-map.modules` 保留原 `source_sha256`、`source_revision` 与可用 epoch；`proof_body_rewrites` 用唯一完整定理锚点声明原／公开证明体，二者的定理陈述必须逐字相同。`target_sha256` 核对公开模块，`view_sha256` 核对恢复原路径后的适配视图。
 
 `source_view.module_views` 返回公开视图和精确原件。默认原路径视图使用已适配的证明，便于构建；`--exact` 逆转证明适配及资源摘要变换，再核对原源码 SHA。资源、定义或定理陈述的变动不能借证明适配登记。实际 kernel 构建与完整声明审查负责验收适配证明的类型、值和信任闭包。
@@ -82,9 +86,13 @@ R9 的 `ActualEMSourceLockedCarrier` 消费同一 canonical LockedFieldReturn ow
 
 新增论文的库、globs 和默认目标会改变整个 `lakefile.toml` 的 SHA。整账法与一比特的原完整类型回执继续保留该文件的固定摘要；`first_release.verify_build_configuration` 在摘要不同时读取[配置兼容登记](../checks/build-configuration-compatibility.json)，核对保留的原 Lake 快照，并从本仓固定 Git 基线 `48dc9ad13ffa79d9c2e9a93a8bc755a2388320bc` 读取原配置及实际所用资源的原字节。
 
-兼容检查重新计算原论文包的完整源码闭包，要求每个模块在原、新配置中均有且只有一个同名库 owner。全局强弱编译选项、依赖声明、旧库全部配置、`needs`、所用资源定义及字节保持；既有库、globs 和默认目标仅允许追加。工具链与 manifest 仍按原回执逐字节核对。资源摘要是本次固定基线的身份保全证据，原类型回执的签收范围保持原样。
+兼容检查重新计算原论文包的完整源码闭包，要求模块在原、新配置中均有唯一库归属。既有默认库的归属、全局编译选项、依赖声明、旧库配置与 `needs` 以及所用资源的定义及字节均按原配置核对。新论文实际依赖的原非默认模块可以用精确 glob 纳入新追加的默认库。检查同时核对新旧库的编译参数、根及资源需求完全相同，其他 glob 保留原序。工具链与 manifest 仍按原回执逐字节核对。
 
 检查只读本仓，不访问研究仓、不重编 Lean、不联网取回对象。浅克隆缺少该基线时明确失败，并给出 `git fetch --no-tags origin 48dc9ad13ffa79d9c2e9a93a8bc755a2388320bc` 恢复命令。登记表、资源同时改动也须通过固定 Git 字节核对。此机制保留旧包的验收身份；新增社会选集由其独立构建、公理及完整类型验收签收。
+
+## 原生出生库存的旧迹读回
+
+整账法第二版在 `df421ff6` 和 `7e4da746` 两个环境中沿用原库存读回证明。实际标量库存由 `SourceInventoryExecutionFeed.written` 交付。证明体适配应用 `original_preserved`，把义务传回该写入的源库存，再执行原有读回步骤。差分消费者还以 `scalar_legacy_preserved` 从当前标量接纳库存取回原分录。完整声明与原字节由 `proof_body_rewrites` 保留。[逐项映射](whole-ledger-v2-map.json)
 
 ## GT 原程序的双 provider 查找
 

@@ -322,6 +322,9 @@ def public_text_path(value: str) -> str:
 
 def adapt_observer(text: str, imports: dict, target: str):
     # Same registered observer adaptation as migration/migrate2.adapt_observer.
+    if text.endswith(sv.CP532_AUDIT_OUTPUT_SOURCE):
+        audit = "cp532-canonical-method"
+        return sv.rewrite_audit_output_paths(text, audit), {"audit_output_fallback": audit}
     if not re.search(r"\bgetModuleIdx(?:For)?\?", sv.mask_comments_and_strings(text)):
         return text, {}
     split = sv.audit_observer_start(text)

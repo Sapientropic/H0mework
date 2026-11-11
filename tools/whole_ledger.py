@@ -366,7 +366,10 @@ set_option maxRecDepth 200000
 set_option maxHeartbeats 0
 ''' + TYPE_DAG_CODE + r'''
 private def wholeLedgerName (value : String) : Name :=
-  (value.splitOn ".").foldl Name.str .anonymous
+  (value.splitOn ".").foldl (fun name part =>
+    match part.toNat? with
+    | some number => Name.num name number
+    | none => Name.str name part) .anonymous
 run_cmd do
   let env ← getEnv
   let owners : List String := __OWNERS__

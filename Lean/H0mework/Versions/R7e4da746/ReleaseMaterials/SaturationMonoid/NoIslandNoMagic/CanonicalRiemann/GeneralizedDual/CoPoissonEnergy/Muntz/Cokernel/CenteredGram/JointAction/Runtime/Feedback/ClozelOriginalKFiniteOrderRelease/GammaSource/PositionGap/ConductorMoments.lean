@@ -1,0 +1,111 @@
+import H0mework.Versions.R7e4da746.ReleaseMaterials.SaturationMonoid.NoIslandNoMagic.CanonicalRiemann.GeneralizedDual.CoPoissonEnergy.Muntz.Cokernel.CenteredGram.JointAction.Runtime.Feedback.ClozelOriginalKFiniteOrderRelease.GammaSource.PositionGap.ConductorJet
+import H0mework.Versions.R7e4da746.ReleaseMaterials.SaturationMonoid.GenericFoundation.Scalar.Feature.FiniteGram.Projection
+
+set_option autoImplicit false
+noncomputable section
+
+namespace SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot
+namespace NoIslandNoMagic.CanonicalRiemann.ClozelGeneralizedDual.CenteredGram.IntegralGraphJointAction
+namespace OriginalKFiniteOrderRelease.PositionGapCayley.ConductorJet
+
+open BurnolPhysicalState MeasureTheory
+open OriginalGamma.Source.WeightedRadialKernel
+open OriginalGamma.Source.JointLogConductor OriginalGamma.Source.FiniteLogCounting
+open BurnolPhysicalState.OriginalRSourceJointContact.LogAction
+open scoped InnerProductSpace
+
+open private even_dense_induction right_quarter from
+  H0mework.Versions.R7e4da746.ReleaseMaterials.SaturationMonoid.NoIslandNoMagic.CanonicalRiemann.GeneralizedDual.CoPoissonEnergy.Muntz.Cokernel.CenteredGram.JointAction.Runtime.Feedback.ClozelOriginalKFiniteOrderRelease.GammaSource.PositionGap.ResolventConductor
+open private inverse_log_from_complete_source from
+  H0mework.Versions.R7e4da746.ReleaseMaterials.SaturationMonoid.NoIslandNoMagic.CanonicalRiemann.GeneralizedDual.CoPoissonEnergy.Muntz.Cokernel.CenteredGram.JointAction.Runtime.Feedback.ClozelOriginalKElementaryArithmeticAction.PeriodicPower.Quarter.Whole.ComplementDual.Joint.Gamma.Source.GammaMobiusActedDLogSource
+open private even_position_log_pair from
+  H0mework.Versions.R7e4da746.ReleaseMaterials.SaturationMonoid.NoIslandNoMagic.CanonicalRiemann.GeneralizedDual.CoPoissonEnergy.Muntz.Cokernel.CenteredGram.JointAction.Runtime.Feedback.ClozelOriginalKElementaryArithmeticAction.PeriodicPower.Quarter.Whole.ComplementDual.Joint.Gamma.Source.WindowLog.Physical
+open private seed_even from
+  H0mework.Versions.R7e4da746.ReleaseMaterials.SaturationMonoid.NoIslandNoMagic.CanonicalRiemann.GeneralizedDual.CoPoissonEnergy.Muntz.Cokernel.CenteredGram.JointAction.Runtime.Feedback.ClozelOriginalKFiniteOrderRelease.CofinalCanonicalSourceMaterial
+
+local notation "R" => burnolDirectRightResolventCLM
+local notation "G" => gammaR
+local notation "Ev" => burnolAmbientEvenPart
+local notation "seed" => (burnolPaCombApproximation 0 : BurnolL2)
+
+namespace Gram
+export SourceGeneratedFiniteGram (action Coordinates)
+export SourceGeneratedFiniteGram.Projection (gram rhs synthesis action_read synthesis_inner)
+end Gram
+
+/-- On actual R outputs the conductor pairing extends to every even preimage. -/
+theorem gammaR_range_symmetry (c : BurnolCompletedMellinCoordinate) (x y : BurnolL2)
+    (xe : reflectL2 x = x) (ye : reflectL2 y = y) :
+    inner ℂ (G c x) (R c y) = inner ℂ (R c x) (G c y) := by
+  apply even_dense_induction x xe
+    (p := fun v => inner ℂ (G c v) (R c y) = inner ℂ (R c v) (G c y))
+  · exact isClosed_eq ((G c).continuous.inner continuous_const) ((R c).continuous.inner continuous_const)
+  · intro test
+    let source := Ev (test.toLp 2 volume)
+    have position := even_position_log_pair _ _ (original_log_schwartz_domain test)
+    have output := actual_direct_R_log (c.value/2) (right_quarter c) _ _ position
+    have graph := actual_gamma_R c source (burnolAmbientEvenPart_even _)
+    have inverse := inverse_log_from_complete_source _ _ _ graph output
+    exact actual_gamma_R_dual c y (R c source) (G c source) _ _ ye graph output inverse
+
+/-- The sum of the two actual conductor degrees is paid by the same source budget. -/
+theorem jetField_pair (c : BurnolCompletedMellinCoordinate) (x : BurnolL2)
+    (even : reflectL2 x = x) (budget i j : Nat) (paid : i+j ≤ budget) :
+    inner ℂ (jetField c x budget i) (jetField c x budget j) =
+      inner ℂ (jetField c x budget 0) (jetField c x budget (i+j)) := by
+  induction i generalizing j with
+  | zero => rw [Nat.zero_add]
+  | succ i prior =>
+    let left := jetField c x (budget-1) i
+    let right := jetField c x (budget-1) j
+    have xi := jetField_source c x even budget i (by omega)
+    have yj := jetField_source c x even budget j (by omega)
+    change reflectL2 left = left ∧ R c left = jetField c x budget i ∧
+      G c left = jetField c x budget (i+1) at xi
+    change reflectL2 right = right ∧ R c right = jetField c x budget j ∧
+      G c right = jetField c x budget (j+1) at yj
+    have swap := gammaR_range_symmetry c left right xi.1 yj.1
+    rw [xi.2.1, xi.2.2, yj.2.1, yj.2.2] at swap
+    have chain := swap.trans (prior (j+1) (by omega))
+    rwa [show i+(j+1) = i+1+j by omega] at chain
+
+def momentMatrix (c : BurnolCompletedMellinCoordinate) (x : BurnolL2) (budget degree : Nat) :
+    Matrix (Fin (degree+1)) (Fin (degree+1)) ℂ :=
+  Matrix.of fun i j => inner ℂ (jetField c x budget 0) (jetField c x budget ((i : Nat)+j))
+
+/-- The apparent Hankel matrix is generated by the actual conductor fields. -/
+theorem momentMatrix_gram (c : BurnolCompletedMellinCoordinate) (x : BurnolL2)
+    (even : reflectL2 x = x) (budget degree : Nat) (paid : 2*degree ≤ budget) :
+    momentMatrix c x budget degree =
+      Gram.gram (fun i : Fin (degree+1) => jetField c x budget i) := by
+  ext i j
+  have first := i.isLt
+  have second := j.isLt
+  exact (jetField_pair c x even budget i j (by omega)).symm
+
+variable (observation : GeneratedRiemannZeroObservation)
+variable (half : OriginalKCombCalculation.Half observation)
+
+local notation "c" => burnolDivisionZeroCompletedMellinCoordinate observation half.down
+local notation "b" => CofinalCanonicalSourceMaterial.sourceIndex observation
+
+/-- The source moment matrix directly feeds the existing finite Gram synthesis. -/
+theorem actual_division_moment_energy (ordinal degree : Nat) (paid : 2*degree ≤ b ordinal)
+    (a : Gram.Coordinates (Fin (degree+1))) :
+    let fields := fun i : Fin (degree+1) => jetField c seed (b ordinal) i;
+    inner ℂ a (Gram.action (momentMatrix c seed (b ordinal) degree) a) =
+      (‖Gram.synthesis fields a‖ ^ 2 : ℝ) := by
+  let fields := fun i : Fin (degree+1) => jetField c seed (b ordinal) i
+  have matrix : momentMatrix c seed (b ordinal) degree = Gram.gram fields :=
+    momentMatrix_gram c seed seed_even (b ordinal) degree paid
+  have rhs : Gram.action (Gram.gram fields) a = Gram.rhs fields (Gram.synthesis fields a) := by
+    ext i
+    exact Gram.action_read fields a i
+  change inner ℂ a (Gram.action (momentMatrix c seed (b ordinal) degree) a) = _
+  rw [matrix, rhs, ← Gram.synthesis_inner]
+  simpa only [RCLike.ofReal_eq_complex_ofReal, Complex.ofReal_pow] using
+    (inner_self_eq_norm_sq_to_K (𝕜 := ℂ) (Gram.synthesis fields a))
+
+end OriginalKFiniteOrderRelease.PositionGapCayley.ConductorJet
+end NoIslandNoMagic.CanonicalRiemann.ClozelGeneralizedDual.CenteredGram.IntegralGraphJointAction
+end SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot

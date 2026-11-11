@@ -1,0 +1,27 @@
+import H0mework.Versions.R7e4da746.ReleaseMaterials.SaturationMonoid.NoIslandNoMagic.CanonicalRiemann.GeneralizedDual.CoPoissonEnergy.Muntz.Cokernel.CenteredGram.JointAction.Runtime.Feedback.ClozelOriginalKElementaryArithmeticAction.PeriodicPower.Quarter.Whole.ComplementDual.Joint.Gamma.Source.KForwardWholeSource
+import H0mework.Arithmetic.BurnolCarrier.ConstantGapFace
+import H0mework.Versions.R7e4da746.ReleaseMaterials.SaturationMonoid.NoIslandNoMagic.CanonicalRiemann.GeneralizedDual.CoPoissonEnergy.Muntz.Cokernel.CenteredGram.JointAction.Sonine.Physical.Projection.ExtendedSonine.Source.Action.Finite.Pairing.CoPoisson.Ward.ConstantDual
+import H0mework.Versions.R7e4da746.ReleaseMaterials.SaturationMonoid.NoIslandNoMagic.CanonicalRiemann.GeneralizedDual.CoPoissonEnergy.Muntz.Cokernel.CenteredGram.JointAction.Sonine.Physical.Projection.ExtendedSonine.Source.Action.Finite.Pairing.CoPoisson.Ward.ConstantMean
+import H0mework.Arithmetic.TruncatedFourier.IntegralKernel
+import H0mework.Arithmetic.TruncatedFourier.RadiusIntegralKernel
+import H0mework.Versions.R7e4da746.Arithmetic.TruncatedFourier.Overlap
+
+set_option autoImplicit false
+namespace SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot
+namespace NoIslandNoMagic.CanonicalRiemann.ClozelGeneralizedDual.BurnolPhysicalState
+namespace OriginalGamma.Source.HermitianGammaTau
+open Complex Filter MeasureTheory Set
+open scoped Topology InnerProductSpace
+open OriginalRieszSource OriginalRieszFinitePairing.CoPoisson.Ward
+open OriginalGamma.Source.KappaConductor
+open OriginalGamma.Source.CountingQuadraticLimit
+noncomputable section
+local notation "C" => ConstantDual.seed
+private theorem seed_even : reflectL2 C=C := by
+  unfold ConstantDual.seed burnolQuarterZeroExtension
+  rw [burnolRadiusZeroExtension_reflect,reflectRestricted_intervalConstant]
+
+end
+end OriginalGamma.Source.HermitianGammaTau
+end NoIslandNoMagic.CanonicalRiemann.ClozelGeneralizedDual.BurnolPhysicalState
+end SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot

@@ -1,0 +1,49 @@
+{
+  "schema": "cp529-independent-cost/v1",
+  "calls": [
+    {
+      "label": "001-gate",
+      "exit_code": 1,
+      "elapsed_seconds": 74.13381475000642,
+      "source_sha256": "f955f6147386ceaa3213a18d6b6961e800924325ffc013f9530fbbcb2c82ece1",
+      "log_sha256": "bc57d2f988757c70720ae60437acdb59b6b37ad02920059d230898485d053042",
+      "receipt_sha256": "2ff0a19992bda4b444fd1dadee12e1866530c4479e25105a2c17bfd083af142e"
+    },
+    {
+      "label": "002-gate",
+      "exit_code": 0,
+      "elapsed_seconds": 74.55854062500293,
+      "source_sha256": "667828675426c23f7f0ec6cf0b57aa804d6550474a9be5b9f2107019cefd7ded",
+      "log_sha256": "1593c5938b776b42bceea1f13265b2b4d4845e2a165ff1a9cc2e2e1871a41dfe",
+      "receipt_sha256": "71dcdddfbbb690ac96ddc0b8ab0b1c746835f2648d694bc7a9511219a947dcc1"
+    },
+    {
+      "label": "003-audit",
+      "exit_code": 0,
+      "elapsed_seconds": 130.59820858298917,
+      "source_sha256": "66751de7186faeed1044e5a19b2f32845a20a5ef6fc8214fa6579c681cbfea6d",
+      "log_sha256": "84f98098cdaff7e5bdf8b3d0f8fdea73ac744b0d4c0ed6c65402f65011cc59de",
+      "receipt_sha256": "bb21d9c5ab7f7f42eec96ebd35d54cc130dca552d9619f55a27de042a20d50f2"
+    }
+  ],
+  "actual_calls": 3,
+  "known_seconds": 279.29056395799853,
+  "unknown_calls": 0,
+  "old_ci_replays": 0,
+  "old_source_recompiles": 0,
+  "kernel_calls": 201,
+  "kernel_ms": 4584,
+  "diagnostic": "The first Gate used the reserved trace[ token. The successful Gate imported for 41.1s and its largest actual exact took 15.0s. The audit sample showed subject-free environment import before any kernel calls.",
+  "profile_excerpts": [
+    {
+      "path": "002-gate.sample.excerpt.txt",
+      "bytes": 1528,
+      "sha256": "ad14b5562900207155c5014a37c3329bb82e83406225d5779640ffb5fbf20684"
+    },
+    {
+      "path": "003-audit.sample.excerpt.txt",
+      "bytes": 1499,
+      "sha256": "aa6ee4803ff206990a95b4457bc11272a8d9b24cb3b9aac00116ac35ea04a980"
+    }
+  ]
+}

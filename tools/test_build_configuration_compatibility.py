@@ -9,7 +9,7 @@ import first_release as release
 
 
 class BuildConfigurationCompatibilityTests(unittest.TestCase):
-    def fixture(self, root):
+    def fixture(self, root, *, promote_dependency=False):
         for path in ("Lean/Public", "checks", "evidence", "tools"):
             (root / path).mkdir(parents=True)
         before = '''name = "Fixture"
@@ -28,6 +28,15 @@ name = "Input"
 path = "../evidence/input.json"
 text = false
 '''
+        if promote_dependency:
+            before = before.replace('globs = ["Public.*"]', 'globs = ["Public.Root"]')
+            before += '''[[lean_lib]]
+name = "Optional"
+globs = ["Public.Dep", "Public.Other"]
+moreLeanArgs = ["-DwarningAsError=true"]
+roots = []
+needs = ["Input"]
+'''
         after = before.replace('defaultTargets = ["Existing"]', 'defaultTargets = ["Existing", "Added"]')
         after = after.replace('globs = ["Public.*"]', 'globs = ["Public.*", "Extension.New"]')
         after += '''[[lean_lib]]
@@ -35,6 +44,10 @@ name = "Added"
 globs = ["Added.*"]
 moreLeanArgs = ["-DwarningAsError=true"]
 '''
+        if promote_dependency:
+            after = after.replace('globs = ["Public.Dep", "Public.Other"]', 'globs = ["Public.Other"]')
+            after = after.replace('globs = ["Added.*"]', 'globs = ["Added.*", "Public.Dep"]')
+            after += 'roots = []\nneeds = ["Input"]\n'
         (root / "Lean/lakefile.toml").write_text(after)
         (root / "evidence/lakefile-before.toml").write_text(before)
         resource = b'{"value":1.00}\n'
@@ -85,6 +98,27 @@ moreLeanArgs = ["-DwarningAsError=true"]
             (root / "Lean/lakefile.toml").write_bytes((root / "evidence/lakefile-before.toml").read_bytes())
             (root / release.BUILD_COMPATIBILITY).unlink()
             self.assertEqual(self.verify(root, inputs)["mode"], "exact")
+
+    def test_nondefault_dependency_can_enter_ci_with_the_same_options_and_resources(self):
+        with tempfile.TemporaryDirectory() as name:
+            root = Path(name)
+            inputs = self.fixture(root, promote_dependency=True)
+            result = self.verify(root, inputs)
+            self.assertEqual(result["mode"], "nondefault-promotion-equivalent")
+            self.assertEqual((result["modules"], result["resources"]), (2, 1))
+
+            path = root / "Lean/lakefile.toml"
+            config = path.read_text()
+            before, added = config.split('name = "Added"', 1)
+            for source, replacement in [
+                ('needs = ["Input"]', 'needs = []'),
+                ('"-DwarningAsError=true"', '"-DwarningAsError=false"'),
+                ('"Public.Dep"', '"Public.+"'),
+            ]:
+                with self.subTest(replacement=replacement):
+                    path.write_text(before + 'name = "Added"' + added.replace(source, replacement))
+                    with self.assertRaises(release.ReleaseError):
+                        self.verify(root, inputs)
 
     def test_changed_options_owners_needs_or_dependency_configuration_are_rejected(self):
         changes = {

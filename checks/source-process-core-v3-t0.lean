@@ -1,0 +1,24 @@
+import H0mework.Foundation.Source.AccountedUnfolding
+import H0mework.Foundation.Authority.Representation
+import H0mework.Realization.SourceComparison.GroundedRealization
+import H0mework.Foundation.Inquiry.MinimalCoface
+import H0mework.Checks.Runtime.Inquiry
+import H0mework.Foundation.Runtime.AnswerHistory
+
+open SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot
+
+#print axioms RootedAccountedUnfolding.frontier_ne_nil
+#print axioms RootedAccountedUnfolding.advance_assoc
+#print axioms RootedAccountedUnfolding.cardinalShadow_parallelAt
+#print axioms RootedAccountedUnfolding.cardinalShadow_jointAt
+#print axioms RootedAccountedUnfolding.fold_unique
+#print axioms rootCofaceRead_consumerSafe
+#print axioms no_hiddenNull_at_rootCofaceRead
+#print axioms SourceNativeLivingRootCausalEvolutionAt.installedSubsystemAuthority_factorizes
+#print axioms SourceNativeLivingRootCausalEvolutionAt.installedJointSubsystemAuthority_factorizes
+#print axioms SourceNativeLivingRootProcess.successor_difference_reflects_current
+#print axioms SourceNativeLivingRootProcess.generateHistory
+#print axioms GroundedFaithfulRealization.comparison_unique
+#print axioms ObstructionGeneratedMinimalCoface.minimal_coface_initial
+#print axioms ObstructionGeneratedMinimalCoface.minimal_coface_factorization_unique
+#print axioms CanonicalInquiryRuntimeRegression.oneShot_has_no_autonomous_runtime

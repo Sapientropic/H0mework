@@ -1,0 +1,1287 @@
+{
+  "schema": "h0mework/source-process-core-v3-map@1",
+  "paper_contract": "Source-generated process algebra, third edition, C1–C54",
+  "selection": {
+    "path": "checks/source-process-core-v3-selection.json",
+    "sha256": "a1c686f17186388a2234bc74664b6e57cded698a9815c0b630eb8232b56eabb3"
+  },
+  "frozen_proof_maps": [
+    {
+      "path": "docs/first-release-map.json",
+      "sha256": "70a109c44e4fa0907f817e5ff7751029562415d82b0a1b48cb854053aeba78be"
+    },
+    {
+      "path": "docs/second-edition-map.json",
+      "sha256": "729c472505df96cf890b0d7ffe7e6db43c7fc6204c23926503dd17fad3d5af05"
+    },
+    {
+      "path": "docs/whole-ledger-map.json",
+      "sha256": "6d1703102f3f06f2eff31571d563986796f096e8ab63d79e752d8bad422bf9df"
+    }
+  ],
+  "shared_claims": [
+    {
+      "id": "C46",
+      "release": "whole-ledger",
+      "map": "docs/whole-ledger-map.json",
+      "claim_id": "WA38",
+      "location": {
+        "zh": "§10.1 定理10.1",
+        "en": "§10.1 Theorem 10.1"
+      }
+    },
+    {
+      "id": "C49",
+      "release": "whole-ledger",
+      "map": "docs/whole-ledger-map.json",
+      "claim_id": "WA39",
+      "location": {
+        "zh": "§10.1 定理10.2(3)",
+        "en": "§10.1 Theorem 10.2(3)"
+      }
+    },
+    {
+      "id": "C50",
+      "release": "whole-ledger",
+      "map": "docs/whole-ledger-map.json",
+      "claim_id": "WA40",
+      "location": {
+        "zh": "§10.4",
+        "en": "§10.4"
+      }
+    },
+    {
+      "id": "C51",
+      "release": "whole-ledger-v2",
+      "map": "docs/whole-ledger-v2-map.json",
+      "claim_id": "WA41",
+      "location": {
+        "zh": "§10.2 定理10.3",
+        "en": "§10.2 Theorem 10.3"
+      }
+    },
+    {
+      "id": "C52",
+      "release": "whole-ledger-v2",
+      "map": "docs/whole-ledger-v2-map.json",
+      "claim_id": "WA42",
+      "location": {
+        "zh": "§10.2 定理10.4",
+        "en": "§10.2 Theorem 10.4"
+      }
+    },
+    {
+      "id": "C53",
+      "release": "whole-ledger-v2",
+      "map": "docs/whole-ledger-v2-map.json",
+      "claim_id": "WA44",
+      "location": {
+        "zh": "§10.3 定理10.5",
+        "en": "§10.3 Theorem 10.5"
+      }
+    },
+    {
+      "id": "C54",
+      "release": "whole-ledger-v2",
+      "map": "docs/whole-ledger-v2-map.json",
+      "claim_id": "WA45",
+      "location": {
+        "zh": "§10.3 定理10.6",
+        "en": "§10.3 Theorem 10.6"
+      }
+    }
+  ],
+  "claims": [
+    {
+      "id": "C47",
+      "paper": "source-process-core",
+      "title": "完整源程序在实际输入上重生并作用于保留余项",
+      "titles": {
+        "zh": "完整源程序在实际输入上重生并作用于保留余项",
+        "en": "The complete source programme regenerates on the actual input and acts on the retained remainder"
+      },
+      "statement_scope": "逐阶的原代码在各次实际输入上执行。联合求值恢复完整输入上的值，原写入交付下一原包。",
+      "statements": {
+        "zh": "逐阶的原代码在各次实际输入上执行。联合求值恢复完整输入上的值，原写入交付下一原包。",
+        "en": "The source code executes on each actual input. Joint evaluation recovers the value on the complete input, and the original write produces the next packet."
+      },
+      "location": {
+        "zh": "§10.1 定理10.2(1)",
+        "en": "§10.1 Theorem 10.2(1)"
+      },
+      "direct_consumers": [
+        {
+          "kind": "lean",
+          "source_commit": "ba7e274beb1de38900a6fc2c8c8dfe6cfad9d9aa",
+          "source_path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/SourceFamily/Calculation/ActualInput/Consumer.lean",
+          "source_sha256": "4f51c97418d4264eb982305b7550233c6bb1416f4f2940a782b40c60abbb2c29",
+          "public": {
+            "path": "Lean/H0mework/Versions/Rba7e274b/ReleaseMaterials/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/SourceFamily/Calculation/ActualInput/Consumer.lean",
+            "module": "H0mework.Versions.Rba7e274b.ReleaseMaterials.SaturationMonoid.GenericFoundation.Operations.Native.Tree.Fold.Dependent.Branch.JointQuery.Actor.Operation.Query.Inventory.Observer.CurrentChild.Dynamic.Live.Native.Action.Coupled.Registry.Calculation.Common.Feedback.Continuation.SourceFamily.Calculation.ActualInput.Consumer",
+            "variant": "Rba7e274b",
+            "sha256": "f1cfba650ce76257abff7b525b849581dfc827a0d8521a6cf0437923afca6215"
+          },
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationNative.Tree.Fold.Dependent.Branch.JointQuery.Actor.Operation.Query.Inventory.Observer.CurrentChild.Dynamic.Live.Native.Action.Coupled.Registry.Calculation.Common.Feedback.Continuation.Lower.SourceFamily.ActualInputCalculation.actual_value",
+              "complete_type": {
+                "declaration_index": 42,
+                "type_sha256": "bef1919af1a707a2e1f607b9688675b1c0a5494be4f863f4bca4d03280793664"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationNative.Tree.Fold.Dependent.Branch.JointQuery.Actor.Operation.Query.Inventory.Observer.CurrentChild.Dynamic.Live.Native.Action.Coupled.Registry.Calculation.Common.Feedback.Continuation.Lower.SourceFamily.ActualInputCalculation.cofinal_actual_input",
+              "complete_type": {
+                "declaration_index": 43,
+                "type_sha256": "3284c0771d583ae4fba45df5e7f07f61a17221afdabfdc38396799afd147ab53"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationNative.Tree.Fold.Dependent.Branch.JointQuery.Actor.Operation.Query.Inventory.Observer.CurrentChild.Dynamic.Live.Native.Action.Coupled.Registry.Calculation.Common.Feedback.Continuation.Lower.SourceFamily.ActualInputCalculation.cofinal_actual_value",
+              "complete_type": {
+                "declaration_index": 44,
+                "type_sha256": "43634f908edb6fb5c3e07c37fff8a81597a78763d54ada971e98345fcf15c5db"
+              }
+            }
+          ],
+          "verification": {
+            "kernel": "passed",
+            "proof_package": "mv4-input-and-query"
+          }
+        },
+        {
+          "kind": "lean",
+          "source_commit": "ba7e274beb1de38900a6fc2c8c8dfe6cfad9d9aa",
+          "source_path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/SourceFamily/Calculation/Factory/Consumer.lean",
+          "source_sha256": "4a1dcb8e70bdece691f56ea020d0da47ee67683468c87afdfb05321e9c9bdcf2",
+          "public": {
+            "path": "Lean/H0mework/Versions/Rba7e274b/ReleaseMaterials/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/SourceFamily/Calculation/Factory/Consumer.lean",
+            "module": "H0mework.Versions.Rba7e274b.ReleaseMaterials.SaturationMonoid.GenericFoundation.Operations.Native.Tree.Fold.Dependent.Branch.JointQuery.Actor.Operation.Query.Inventory.Observer.CurrentChild.Dynamic.Live.Native.Action.Coupled.Registry.Calculation.Common.Feedback.Continuation.SourceFamily.Calculation.Factory.Consumer",
+            "variant": "Rba7e274b",
+            "sha256": "0e1e50e98e835c36673dc6f8d1e503098777069ff8d9836d79e4c209f5b0996b"
+          },
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationNative.Tree.Fold.Dependent.Branch.JointQuery.Actor.Operation.Query.Inventory.Observer.CurrentChild.Dynamic.Live.Native.Action.Coupled.Registry.Calculation.Common.Feedback.Continuation.Lower.SourceFamily.CalculationFactory.actual_source_code",
+              "complete_type": {
+                "declaration_index": 46,
+                "type_sha256": "074be9c5716471ab55dd0c806af657512c062d4129f4941ef077077d86cdc29e"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationNative.Tree.Fold.Dependent.Branch.JointQuery.Actor.Operation.Query.Inventory.Observer.CurrentChild.Dynamic.Live.Native.Action.Coupled.Registry.Calculation.Common.Feedback.Continuation.Lower.SourceFamily.CalculationFactory.cofinal_actual_value",
+              "complete_type": {
+                "declaration_index": 48,
+                "type_sha256": "b256dfd23c1db285cb3ece0ec5fee2bb58eab5fdb07c0899573a2d96ed5714b2"
+              }
+            }
+          ],
+          "verification": {
+            "kernel": "passed",
+            "proof_package": "mv4-input-and-query"
+          }
+        },
+        {
+          "kind": "lean",
+          "source_commit": "ba7e274beb1de38900a6fc2c8c8dfe6cfad9d9aa",
+          "source_path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/SourceFamily/Calculation/FullResidual/Consumer.lean",
+          "source_sha256": "e3d608223fb2b7b4854f56e04c84e2ea5041f06dd32f6435e7cc3f7bcd77e7ae",
+          "public": {
+            "path": "Lean/H0mework/Versions/Rba7e274b/ReleaseMaterials/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/SourceFamily/Calculation/FullResidual/Consumer.lean",
+            "module": "H0mework.Versions.Rba7e274b.ReleaseMaterials.SaturationMonoid.GenericFoundation.Operations.Native.Tree.Fold.Dependent.Branch.JointQuery.Actor.Operation.Query.Inventory.Observer.CurrentChild.Dynamic.Live.Native.Action.Coupled.Registry.Calculation.Common.Feedback.Continuation.SourceFamily.Calculation.FullResidual.Consumer",
+            "variant": "Rba7e274b",
+            "sha256": "bf06acccd4d085f3bcd770bebea29eb6eb9f26e395604900d3ad7db0cd9ffabf"
+          },
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationNative.Tree.Fold.Dependent.Branch.JointQuery.Actor.Operation.Query.Inventory.Observer.CurrentChild.Dynamic.Live.Native.Action.Coupled.Registry.Calculation.Common.Feedback.Continuation.Lower.SourceFamily.FullResidualCalculation.actual_branches",
+              "complete_type": {
+                "declaration_index": 52,
+                "type_sha256": "b8e668683ec193b8957f0241d0a6d8c8e12af6f591d2ce04c87949e1405b2639"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationNative.Tree.Fold.Dependent.Branch.JointQuery.Actor.Operation.Query.Inventory.Observer.CurrentChild.Dynamic.Live.Native.Action.Coupled.Registry.Calculation.Common.Feedback.Continuation.Lower.SourceFamily.FullResidualCalculation.actual_complete",
+              "complete_type": {
+                "declaration_index": 53,
+                "type_sha256": "0abe8069f9fc19371c106466b7a2d3873d38d92d74818f0980360de940e9db48"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationNative.Tree.Fold.Dependent.Branch.JointQuery.Actor.Operation.Query.Inventory.Observer.CurrentChild.Dynamic.Live.Native.Action.Coupled.Registry.Calculation.Common.Feedback.Continuation.Lower.SourceFamily.FullResidualCalculation.cofinal_complete",
+              "complete_type": {
+                "declaration_index": 54,
+                "type_sha256": "c7ac12c8648bb7bfa4fec7ab11a10ed5783b6af6a16e11c36d42d8855e64186d"
+              }
+            }
+          ],
+          "verification": {
+            "kernel": "passed",
+            "proof_package": "mv4-input-and-query"
+          }
+        },
+        {
+          "kind": "lean",
+          "source_commit": "ba7e274beb1de38900a6fc2c8c8dfe6cfad9d9aa",
+          "source_path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/SourceFamily/Calculation/FullResidual/Dynamics/Consumer.lean",
+          "source_sha256": "7d0c3749a427d497ac404dc98c911b6fac791acae14ed8070ef3413633e5339e",
+          "public": {
+            "path": "Lean/H0mework/Versions/Rba7e274b/ReleaseMaterials/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/SourceFamily/Calculation/FullResidual/Dynamics/Consumer.lean",
+            "module": "H0mework.Versions.Rba7e274b.ReleaseMaterials.SaturationMonoid.GenericFoundation.Operations.Native.Tree.Fold.Dependent.Branch.JointQuery.Actor.Operation.Query.Inventory.Observer.CurrentChild.Dynamic.Live.Native.Action.Coupled.Registry.Calculation.Common.Feedback.Continuation.SourceFamily.Calculation.FullResidual.Dynamics.Consumer",
+            "variant": "Rba7e274b",
+            "sha256": "1fadf052e3e8f3759c993a3c1289ed1be739f8e7c09b2ea618b4a958b08b11a9"
+          },
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationNative.Tree.Fold.Dependent.Branch.JointQuery.Actor.Operation.Query.Inventory.Observer.CurrentChild.Dynamic.Live.Native.Action.Coupled.Registry.Calculation.Common.Feedback.Continuation.Lower.SourceFamily.FullSourceDynamics.cofinal_native_value",
+              "complete_type": {
+                "declaration_index": 63,
+                "type_sha256": "fc852aac637ad3a7129edd72a72cbb2d36dee91b2a76cb413751d8eb0f224ad9"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationNative.Tree.Fold.Dependent.Branch.JointQuery.Actor.Operation.Query.Inventory.Observer.CurrentChild.Dynamic.Live.Native.Action.Coupled.Registry.Calculation.Common.Feedback.Continuation.Lower.SourceFamily.FullSourceDynamics.cofinal_next_active",
+              "complete_type": {
+                "declaration_index": 64,
+                "type_sha256": "8c4ccf1e3873951fe992fd77e9f8d154fb7bbf7568aa591ce7fe74694b6748d3"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationNative.Tree.Fold.Dependent.Branch.JointQuery.Actor.Operation.Query.Inventory.Observer.CurrentChild.Dynamic.Live.Native.Action.Coupled.Registry.Calculation.Common.Feedback.Continuation.Lower.SourceFamily.FullSourceDynamics.cofinal_collapsed_value",
+              "complete_type": {
+                "declaration_index": 62,
+                "type_sha256": "00c44adcc85a5a586208ff7857b7866476728f3acf7db2e1910c58b2c4dbd8ed"
+              }
+            }
+          ],
+          "verification": {
+            "kernel": "passed",
+            "proof_package": "mv4-input-and-query"
+          }
+        },
+        {
+          "kind": "lean",
+          "source_commit": "ba7e274beb1de38900a6fc2c8c8dfe6cfad9d9aa",
+          "source_path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/SourceFamily/Calculation/FullResidual/Dynamics/Initial.lean",
+          "source_sha256": "c1b7d8e922191fb984e02ec9b4c446adb790d7b101bb618519e2d2f090e6b545",
+          "public": {
+            "path": "Lean/H0mework/Versions/Rba7e274b/ReleaseMaterials/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/SourceFamily/Calculation/FullResidual/Dynamics/Initial.lean",
+            "module": "H0mework.Versions.Rba7e274b.ReleaseMaterials.SaturationMonoid.GenericFoundation.Operations.Native.Tree.Fold.Dependent.Branch.JointQuery.Actor.Operation.Query.Inventory.Observer.CurrentChild.Dynamic.Live.Native.Action.Coupled.Registry.Calculation.Common.Feedback.Continuation.SourceFamily.Calculation.FullResidual.Dynamics.Initial",
+            "variant": "Rba7e274b",
+            "sha256": "5a51f63b2a1efb430c5fb0cc22797a98777e7404c9966ba19515a257eb8bdee1"
+          },
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationNative.Tree.Fold.Dependent.Branch.JointQuery.Actor.Operation.Query.Inventory.Observer.CurrentChild.Dynamic.Live.Native.Action.Coupled.Registry.Calculation.Common.Feedback.Continuation.Lower.SourceFamily.FullSourceDynamics.Initial.first_collapsed_value",
+              "complete_type": {
+                "declaration_index": 59,
+                "type_sha256": "07852bf60993a6d7770f207941852919d2ae58230a9f45c97116ca5a811f2672"
+              }
+            }
+          ],
+          "verification": {
+            "kernel": "passed",
+            "proof_package": "mv4-input-and-query"
+          }
+        }
+      ],
+      "producers": [
+        {
+          "kind": "lean",
+          "source_commit": "ba7e274beb1de38900a6fc2c8c8dfe6cfad9d9aa",
+          "source_path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/SourceFamily/Calculation/ActualInput/Source.lean",
+          "source_sha256": "ac09d871ebbab852f0820b37c6fd07c8761ca9d3b2d0920dd4a1f41e0deebfae",
+          "public": {
+            "path": "Lean/H0mework/Versions/Rba7e274b/ReleaseMaterials/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/SourceFamily/Calculation/ActualInput/Source.lean",
+            "module": "H0mework.Versions.Rba7e274b.ReleaseMaterials.SaturationMonoid.GenericFoundation.Operations.Native.Tree.Fold.Dependent.Branch.JointQuery.Actor.Operation.Query.Inventory.Observer.CurrentChild.Dynamic.Live.Native.Action.Coupled.Registry.Calculation.Common.Feedback.Continuation.SourceFamily.Calculation.ActualInput.Source",
+            "variant": "Rba7e274b",
+            "sha256": "27320111a1d7e98df6682c880ca03e5836514a71493ef38d261a83231a9ec6ca"
+          },
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationNative.Tree.Fold.Dependent.Branch.JointQuery.Actor.Operation.Query.Inventory.Observer.CurrentChild.Dynamic.Live.Native.Action.Coupled.Registry.Calculation.Common.Feedback.Continuation.Lower.SourceFamily.ActualInputCalculation.withActualInput",
+              "complete_type": {
+                "declaration_index": 45,
+                "type_sha256": "3f86a453021013769f84899305b3f4be43309298b4263855d645007f5e35c774"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationNative.Tree.Fold.Dependent.Branch.JointQuery.Actor.Operation.Query.Inventory.Observer.CurrentChild.Dynamic.Live.Native.Action.Coupled.Registry.Calculation.Common.Feedback.Continuation.Lower.SourceFamily.ActualInputCalculation.actual_environment",
+              "complete_type": {
+                "declaration_index": 40,
+                "type_sha256": "a3084738b56b3470febc4765dac4ddfc5bed2996a1606bbf001326cf5e955e2c"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationNative.Tree.Fold.Dependent.Branch.JointQuery.Actor.Operation.Query.Inventory.Observer.CurrentChild.Dynamic.Live.Native.Action.Coupled.Registry.Calculation.Common.Feedback.Continuation.Lower.SourceFamily.ActualInputCalculation.actual_reader_environment",
+              "complete_type": {
+                "declaration_index": 41,
+                "type_sha256": "cd852dbaa51842b8cbd839166c4b3027a3b6cbd346d4a6e7fc57ada51fcaf17a"
+              }
+            }
+          ],
+          "verification": {
+            "kernel": "passed",
+            "proof_package": "mv4-input-and-query"
+          }
+        },
+        {
+          "kind": "lean",
+          "source_commit": "ba7e274beb1de38900a6fc2c8c8dfe6cfad9d9aa",
+          "source_path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/SourceFamily/Calculation/Factory/Source.lean",
+          "source_sha256": "df7a63e2e561b45883642c66d0357a3877819e0ac759b5ae568f914b9cdcac17",
+          "public": {
+            "path": "Lean/H0mework/Versions/Rba7e274b/ReleaseMaterials/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/SourceFamily/Calculation/Factory/Source.lean",
+            "module": "H0mework.Versions.Rba7e274b.ReleaseMaterials.SaturationMonoid.GenericFoundation.Operations.Native.Tree.Fold.Dependent.Branch.JointQuery.Actor.Operation.Query.Inventory.Observer.CurrentChild.Dynamic.Live.Native.Action.Coupled.Registry.Calculation.Common.Feedback.Continuation.SourceFamily.Calculation.Factory.Source",
+            "variant": "Rba7e274b",
+            "sha256": "4327b679ecb5953428b06275a9d573f0e3461d878d4928df6764e35a96eefa3c"
+          },
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationNative.Tree.Fold.Dependent.Branch.JointQuery.Actor.Operation.Query.Inventory.Observer.CurrentChild.Dynamic.Live.Native.Action.Coupled.Registry.Calculation.Common.Feedback.Continuation.Lower.SourceFamily.CalculationFactory.codeAt",
+              "complete_type": {
+                "declaration_index": 47,
+                "type_sha256": "751b8362a59d49ef60460ee411504fa5b21d70b7cb7752d9fc6d6aad9a0edbc4"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationNative.Tree.Fold.Dependent.Branch.JointQuery.Actor.Operation.Query.Inventory.Observer.CurrentChild.Dynamic.Live.Native.Action.Coupled.Registry.Calculation.Common.Feedback.Continuation.Lower.SourceFamily.CalculationFactory.withCalculation",
+              "complete_type": {
+                "declaration_index": 51,
+                "type_sha256": "4f530b3e6a76007fc4f674b35847f3ab3f5a1ad5e21361f5518f2e60c89537f3"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationNative.Tree.Fold.Dependent.Branch.JointQuery.Actor.Operation.Query.Inventory.Observer.CurrentChild.Dynamic.Live.Native.Action.Coupled.Registry.Calculation.Common.Feedback.Continuation.Lower.SourceFamily.CalculationFactory.reader_source",
+              "complete_type": {
+                "declaration_index": 49,
+                "type_sha256": "57f85e450b19619f503becea6d1b7bdc9b88271e4be7818ef2078282bec5e713"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationNative.Tree.Fold.Dependent.Branch.JointQuery.Actor.Operation.Query.Inventory.Observer.CurrentChild.Dynamic.Live.Native.Action.Coupled.Registry.Calculation.Common.Feedback.Continuation.Lower.SourceFamily.CalculationFactory.transported_action_code",
+              "complete_type": {
+                "declaration_index": 50,
+                "type_sha256": "d973eb8604d93503337880fda6439766a68165883f8d3c24433150f16b159f6f"
+              }
+            }
+          ],
+          "verification": {
+            "kernel": "passed",
+            "proof_package": "mv4-input-and-query"
+          }
+        },
+        {
+          "kind": "lean",
+          "source_commit": "ba7e274beb1de38900a6fc2c8c8dfe6cfad9d9aa",
+          "source_path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/SourceFamily/Calculation/FullResidual/Dynamics/Source.lean",
+          "source_sha256": "d780e3346a850b86e538c271ad8c0588f396b364d5a420b44523a8bb5e5db8fc",
+          "public": {
+            "path": "Lean/H0mework/Versions/Rba7e274b/ReleaseMaterials/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/SourceFamily/Calculation/FullResidual/Dynamics/Source.lean",
+            "module": "H0mework.Versions.Rba7e274b.ReleaseMaterials.SaturationMonoid.GenericFoundation.Operations.Native.Tree.Fold.Dependent.Branch.JointQuery.Actor.Operation.Query.Inventory.Observer.CurrentChild.Dynamic.Live.Native.Action.Coupled.Registry.Calculation.Common.Feedback.Continuation.SourceFamily.Calculation.FullResidual.Dynamics.Source",
+            "variant": "Rba7e274b",
+            "sha256": "ebe24f2a88d44dbabb4f6fc14b3d8106a3f4a130464e5495f7e8334fe783409b"
+          },
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationNative.Tree.Fold.Dependent.Branch.JointQuery.Actor.Operation.Query.Inventory.Observer.CurrentChild.Dynamic.Live.Native.Action.Coupled.Registry.Calculation.Common.Feedback.Continuation.Lower.SourceFamily.FullSourceDynamics.actual_writeback",
+              "complete_type": {
+                "declaration_index": 60,
+                "type_sha256": "48eff5d8dfa41287ca7332fc91355f53d36a65342d1eef8fa8db3756d504104d"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationNative.Tree.Fold.Dependent.Branch.JointQuery.Actor.Operation.Query.Inventory.Observer.CurrentChild.Dynamic.Live.Native.Action.Coupled.Registry.Calculation.Common.Feedback.Continuation.Lower.SourceFamily.FullSourceDynamics.updated_total",
+              "complete_type": {
+                "declaration_index": 65,
+                "type_sha256": "45e77b187e0a701353f1329652184a77f80284ffa7a81e7a221b485c1d1f41a2"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationNative.Tree.Fold.Dependent.Branch.JointQuery.Actor.Operation.Query.Inventory.Observer.CurrentChild.Dynamic.Live.Native.Action.Coupled.Registry.Calculation.Common.Feedback.Continuation.Lower.SourceFamily.FullSourceDynamics.born_environment",
+              "complete_type": {
+                "declaration_index": 61,
+                "type_sha256": "d701a6024ff8d10cf31491bb81a7e745d844ac7dd5fc18451fa51d5b71691703"
+              }
+            }
+          ],
+          "verification": {
+            "kernel": "passed",
+            "proof_package": "mv4-input-and-query"
+          }
+        },
+        {
+          "kind": "lean",
+          "source_commit": "ba7e274beb1de38900a6fc2c8c8dfe6cfad9d9aa",
+          "source_path": "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/SourceFamily/Calculation/FullResidual/Source.lean",
+          "source_sha256": "b620612ec74c49dcdb923dd273704b28840c825786c799d22183d8e7749fcd07",
+          "public": {
+            "path": "Lean/H0mework/Versions/Rba7e274b/ReleaseMaterials/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/SourceFamily/Calculation/FullResidual/Source.lean",
+            "module": "H0mework.Versions.Rba7e274b.ReleaseMaterials.SaturationMonoid.GenericFoundation.Operations.Native.Tree.Fold.Dependent.Branch.JointQuery.Actor.Operation.Query.Inventory.Observer.CurrentChild.Dynamic.Live.Native.Action.Coupled.Registry.Calculation.Common.Feedback.Continuation.SourceFamily.Calculation.FullResidual.Source",
+            "variant": "Rba7e274b",
+            "sha256": "598f45b316135fa327f89078fbcae8ceb783704089be24dc1aca05f15653d8f0"
+          },
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationNative.Tree.Fold.Dependent.Branch.JointQuery.Actor.Operation.Query.Inventory.Observer.CurrentChild.Dynamic.Live.Native.Action.Coupled.Registry.Calculation.Common.Feedback.Continuation.Lower.SourceFamily.FullResidualCalculation.regroup",
+              "complete_type": {
+                "declaration_index": 58,
+                "type_sha256": "6c9a8bab47e2319e96ac359462d08823b5db43359da41a8362e13a252331f9ee"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationNative.Tree.Fold.Dependent.Branch.JointQuery.Actor.Operation.Query.Inventory.Observer.CurrentChild.Dynamic.Live.Native.Action.Coupled.Registry.Calculation.Common.Feedback.Continuation.Lower.SourceFamily.FullResidualCalculation.jointCode",
+              "complete_type": {
+                "declaration_index": 55,
+                "type_sha256": "82e6e4843748bea47a12c40bbd537648f7d170623d8b02308bad4290928fc1b6"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationNative.Tree.Fold.Dependent.Branch.JointQuery.Actor.Operation.Query.Inventory.Observer.CurrentChild.Dynamic.Live.Native.Action.Coupled.Registry.Calculation.Common.Feedback.Continuation.Lower.SourceFamily.FullResidualCalculation.joint_eval",
+              "complete_type": {
+                "declaration_index": 57,
+                "type_sha256": "7b8f083e3e06220d6322f6710058450182eeb1dba46ad9f841823110c84cffe6"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceOperationNative.Tree.Fold.Dependent.Branch.JointQuery.Actor.Operation.Query.Inventory.Observer.CurrentChild.Dynamic.Live.Native.Action.Coupled.Registry.Calculation.Common.Feedback.Continuation.Lower.SourceFamily.FullResidualCalculation.joint_complete",
+              "complete_type": {
+                "declaration_index": 56,
+                "type_sha256": "30525a40dff36284d0306e9a7d006ba0d60cd8214470b22a98eed0a04f75062c"
+              }
+            }
+          ],
+          "verification": {
+            "kernel": "passed",
+            "proof_package": "mv4-input-and-query"
+          }
+        }
+      ],
+      "resources": [
+        {
+          "kind": "artifact",
+          "source_commit": "4ee616c0dc9456a8371ef814c214df6e23a0f473",
+          "source_path": "Verification/framework/source-policy/original-certification/CP123/verdict.json",
+          "source_sha256": "6af22a0efd72a1036868d87ee085e67bb3534940b67bbc8b1fa56acf02dcc3cf",
+          "source_origin": {
+            "artifact_binding_kind": "fixed-ledger-original-verdict-SHA",
+            "checkpoint": "CP123",
+            "dependency_epoch": "ba7e274beb1de38900a6fc2c8c8dfe6cfad9d9aa",
+            "kind": "retained-original-certification",
+            "ledger_commit": "ba7e274beb1de38900a6fc2c8c8dfe6cfad9d9aa",
+            "ledger_path": "Lean/docs/ledgers/living-law-framework-checkpoints-v31.md",
+            "ledger_sha256": "792574020587ecb7782fb1ffc845007146b94fba6bc731718bb83afff901aaf2",
+            "original_artifact_name": "verdict.json",
+            "original_fixed_head": "4ee616c0dc9456a8371ef814c214df6e23a0f473",
+            "original_source_sha256": "6af22a0efd72a1036868d87ee085e67bb3534940b67bbc8b1fa56acf02dcc3cf",
+            "original_verdict_sha256": "6af22a0efd72a1036868d87ee085e67bb3534940b67bbc8b1fa56acf02dcc3cf",
+            "original_verdict_sha_bindings": []
+          },
+          "public": {
+            "path": "evidence/source-process-core-v3/original/R4ee616c0/Verification/framework/source-policy/original-certification/CP123/verdict.json.gz",
+            "sha256": "1b6d32ea750e55ddc0a904108b3b670a02fb1d4278b6ccb6b24bf0822ab8615f"
+          },
+          "verification": {
+            "identity": "verified"
+          }
+        },
+        {
+          "kind": "artifact",
+          "source_commit": "c401e946a770e21217093767e09a52d32d3c7acb",
+          "source_path": "Verification/framework/source-policy/original-certification/CP122/verdict.json",
+          "source_sha256": "d4c52283831b06498c4ae35b091a177cca54e4d2a215d9eb5e44823f6b1a984d",
+          "source_origin": {
+            "artifact_binding_kind": "fixed-ledger-original-verdict-SHA",
+            "checkpoint": "CP122",
+            "dependency_epoch": "ba7e274beb1de38900a6fc2c8c8dfe6cfad9d9aa",
+            "kind": "retained-original-certification",
+            "ledger_commit": "ba7e274beb1de38900a6fc2c8c8dfe6cfad9d9aa",
+            "ledger_path": "Lean/docs/ledgers/living-law-framework-checkpoints-v31.md",
+            "ledger_sha256": "792574020587ecb7782fb1ffc845007146b94fba6bc731718bb83afff901aaf2",
+            "original_artifact_name": "verdict.json",
+            "original_fixed_head": "c401e946a770e21217093767e09a52d32d3c7acb",
+            "original_source_sha256": "d4c52283831b06498c4ae35b091a177cca54e4d2a215d9eb5e44823f6b1a984d",
+            "original_verdict_sha256": "d4c52283831b06498c4ae35b091a177cca54e4d2a215d9eb5e44823f6b1a984d",
+            "original_verdict_sha_bindings": []
+          },
+          "public": {
+            "path": "evidence/source-process-core-v3/original/Rc401e946/Verification/framework/source-policy/original-certification/CP122/verdict.json.gz",
+            "sha256": "a3a419c424840e455aed417781b06736580fe51cd267bc917baaff8fe2dee765"
+          },
+          "verification": {
+            "identity": "verified"
+          }
+        },
+        {
+          "kind": "artifact",
+          "source_commit": "d84cfd6f4f6cb825838d1304b8ee4df6c2e96cab",
+          "source_path": "Verification/framework/source-policy/original-certification/CP124/verdict.json",
+          "source_sha256": "3ffeea79d41e78b955a4aea76e6963f9c0802c20d6447ce9c3aa91ffebb30a9d",
+          "source_origin": {
+            "artifact_binding_kind": "fixed-ledger-original-verdict-SHA",
+            "checkpoint": "CP124",
+            "dependency_epoch": "ba7e274beb1de38900a6fc2c8c8dfe6cfad9d9aa",
+            "kind": "retained-original-certification",
+            "ledger_commit": "ba7e274beb1de38900a6fc2c8c8dfe6cfad9d9aa",
+            "ledger_path": "Lean/docs/ledgers/living-law-framework-checkpoints-v31.md",
+            "ledger_sha256": "792574020587ecb7782fb1ffc845007146b94fba6bc731718bb83afff901aaf2",
+            "original_artifact_name": "verdict.json",
+            "original_fixed_head": "d84cfd6f4f6cb825838d1304b8ee4df6c2e96cab",
+            "original_source_sha256": "3ffeea79d41e78b955a4aea76e6963f9c0802c20d6447ce9c3aa91ffebb30a9d",
+            "original_verdict_sha256": "3ffeea79d41e78b955a4aea76e6963f9c0802c20d6447ce9c3aa91ffebb30a9d",
+            "original_verdict_sha_bindings": []
+          },
+          "public": {
+            "path": "evidence/source-process-core-v3/original/Rd84cfd6f/Verification/framework/source-policy/original-certification/CP124/verdict.json.gz",
+            "sha256": "400a635ed5b0e513e33a1e25edbacade59e979466cca188ff9e9fb067959ccf1"
+          },
+          "verification": {
+            "identity": "verified"
+          }
+        },
+        {
+          "kind": "artifact",
+          "source_commit": "f6d561e4000108a5554e999002c7b078f792979d",
+          "source_path": "Verification/framework/source-policy/original-certification/CP125/verdict.json",
+          "source_sha256": "024c891913d5a6e91bfad549c1195dd479841660ec652fdeab7853fedc78bf47",
+          "source_origin": {
+            "artifact_binding_kind": "fixed-ledger-original-verdict-SHA",
+            "checkpoint": "CP125",
+            "dependency_epoch": "ba7e274beb1de38900a6fc2c8c8dfe6cfad9d9aa",
+            "kind": "retained-original-certification",
+            "ledger_commit": "ba7e274beb1de38900a6fc2c8c8dfe6cfad9d9aa",
+            "ledger_path": "Lean/docs/ledgers/living-law-framework-checkpoints-v31.md",
+            "ledger_sha256": "792574020587ecb7782fb1ffc845007146b94fba6bc731718bb83afff901aaf2",
+            "original_artifact_name": "verdict.json",
+            "original_fixed_head": "f6d561e4000108a5554e999002c7b078f792979d",
+            "original_source_sha256": "024c891913d5a6e91bfad549c1195dd479841660ec652fdeab7853fedc78bf47",
+            "original_verdict_sha256": "024c891913d5a6e91bfad549c1195dd479841660ec652fdeab7853fedc78bf47",
+            "original_verdict_sha_bindings": []
+          },
+          "public": {
+            "path": "evidence/source-process-core-v3/original/Rf6d561e4/Verification/framework/source-policy/original-certification/CP125/verdict.json.gz",
+            "sha256": "2f4c380eded14b7bbca8528320ce3cab01e80969b44cb9f1ad046653a78b17bd"
+          },
+          "verification": {
+            "identity": "verified"
+          }
+        },
+        {
+          "kind": "artifact",
+          "source_commit": "f7f993049278800e171305fc4fd857038e9ce230",
+          "source_path": "Verification/framework/source-policy/original-certification/CP126/verdict.json",
+          "source_sha256": "b5f0b37e486756620cfb57a2fdf97b5e2612521f7ee328a4225e0fae641268fb",
+          "source_origin": {
+            "artifact_binding_kind": "fixed-ledger-original-verdict-SHA",
+            "checkpoint": "CP126",
+            "dependency_epoch": "ba7e274beb1de38900a6fc2c8c8dfe6cfad9d9aa",
+            "kind": "retained-original-certification",
+            "ledger_commit": "ba7e274beb1de38900a6fc2c8c8dfe6cfad9d9aa",
+            "ledger_path": "Lean/docs/ledgers/living-law-framework-checkpoints-v31.md",
+            "ledger_sha256": "792574020587ecb7782fb1ffc845007146b94fba6bc731718bb83afff901aaf2",
+            "original_artifact_name": "verdict.json",
+            "original_fixed_head": "f7f993049278800e171305fc4fd857038e9ce230",
+            "original_source_sha256": "b5f0b37e486756620cfb57a2fdf97b5e2612521f7ee328a4225e0fae641268fb",
+            "original_verdict_sha256": "b5f0b37e486756620cfb57a2fdf97b5e2612521f7ee328a4225e0fae641268fb",
+            "original_verdict_sha_bindings": []
+          },
+          "public": {
+            "path": "evidence/source-process-core-v3/original/Rf7f99304/Verification/framework/source-policy/original-certification/CP126/verdict.json.gz",
+            "sha256": "21f704d0cacca76ef08f5d0d85c96e1f6e82f4e3f3cc18ff7ffd000794480119"
+          },
+          "verification": {
+            "identity": "verified"
+          }
+        }
+      ]
+    },
+    {
+      "id": "C48",
+      "paper": "source-process-core",
+      "title": "共同源输入与线性接收器出处",
+      "titles": {
+        "zh": "共同源输入与线性接收器出处",
+        "en": "Common source input and linear receiver provenance"
+      },
+      "statement_scope": "原查询与执行轨迹读取同一完整源式。下一环境由实际出生生成。线性接收器在每个已登记发生处读取源并保全写入、整账和后继。",
+      "statements": {
+        "zh": "原查询与执行轨迹读取同一完整源式。下一环境由实际出生生成。线性接收器在每个已登记发生处读取源并保全写入、整账和后继。",
+        "en": "The query and its execution trace read the same complete source expression. The actual birth supplies the next environment. The linear receiver reads the source at each registered occurrence and preserves the write, the whole ledger, and the successor."
+      },
+      "location": {
+        "zh": "§10.1 定理10.2(2)",
+        "en": "§10.1 Theorem 10.2(2)"
+      },
+      "direct_consumers": [
+        {
+          "kind": "lean",
+          "source_commit": "ba7e274beb1de38900a6fc2c8c8dfe6cfad9d9aa",
+          "source_path": "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Receipt/Inventory/ActualQuery/Consumer.lean",
+          "source_sha256": "b5eeb80b0f1ded60db5eb31efa4d5396ecd25e209024a2835e4d870e755c6a30",
+          "public": {
+            "path": "Lean/H0mework/Versions/Rba7e274b/ReleaseMaterials/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Receipt/Inventory/ActualQuery/Consumer.lean",
+            "module": "H0mework.Versions.Rba7e274b.ReleaseMaterials.SaturationMonoid.GenericFoundation.Operations.Inquiry.Context.Faces.Execution.Activation.Receipt.Inventory.ActualQuery.Consumer",
+            "variant": "Rba7e274b",
+            "sha256": "e373376658ac0178ace546bed5c820f79fd9509931417aba0f1c264cf53b6297"
+          },
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceGeneratedInquiryReceiptAction.Inventory.ActualQuery.stock_retained",
+              "complete_type": {
+                "declaration_index": 39,
+                "type_sha256": "7a9cbfc7bad4da23616f056c7d6c5a3d2b3381f6da52d50434f40ea4bc61efb8"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceGeneratedInquiryReceiptAction.Inventory.ActualQuery.query_action_raw",
+              "complete_type": {
+                "declaration_index": 36,
+                "type_sha256": "f8bab009c79af92ace70af3905273b0518a4c2ce23b709d40fca23efb7fc2c02"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceGeneratedInquiryReceiptAction.Inventory.ActualQuery.result_value",
+              "complete_type": {
+                "declaration_index": 38,
+                "type_sha256": "823e419fa65d097f495d24628fb58e02d8954818b24cb99d757ed64f4401087a"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceGeneratedInquiryReceiptAction.Inventory.ActualQuery.result_trace",
+              "complete_type": {
+                "declaration_index": 37,
+                "type_sha256": "8d388c3e5ba69d3e93fc0c4873acedf342d5a450f308a5a63bcc7fe5db396eb5"
+              }
+            }
+          ],
+          "verification": {
+            "kernel": "passed",
+            "proof_package": "mv4-input-and-query"
+          }
+        },
+        {
+          "kind": "lean",
+          "source_commit": "ba7e274beb1de38900a6fc2c8c8dfe6cfad9d9aa",
+          "source_path": "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Receipt/Inventory/ActualQuery/Next/Consumer.lean",
+          "source_sha256": "f4b941b93c7b1ba881d37f4895c85b8fa4d15435bb872af560cdc12b79525d53",
+          "public": {
+            "path": "Lean/H0mework/Versions/Rba7e274b/ReleaseMaterials/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Receipt/Inventory/ActualQuery/Next/Consumer.lean",
+            "module": "H0mework.Versions.Rba7e274b.ReleaseMaterials.SaturationMonoid.GenericFoundation.Operations.Inquiry.Context.Faces.Execution.Activation.Receipt.Inventory.ActualQuery.Next.Consumer",
+            "variant": "Rba7e274b",
+            "sha256": "ed433a7b4fc58acea1b64c558b3dbaebab8f60badbbbfa4d6b72fc9e629b8f27"
+          },
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceGeneratedInquiryReceiptAction.Inventory.ActualQuery.Next.common_at_actual_next",
+              "complete_type": {
+                "declaration_index": 26,
+                "type_sha256": "9fffafd5552f13c8bf6df58b10babc666242024d081526a461d58f9ad4831938"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceGeneratedInquiryReceiptAction.Inventory.ActualQuery.Next.reader_admitted_source",
+              "complete_type": {
+                "declaration_index": 31,
+                "type_sha256": "9cc8e41e0d5a3a1e9454b8c5e8ef55855d88e57ba8a56dccb95d4a1f1f08f339"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceGeneratedInquiryReceiptAction.Inventory.ActualQuery.Next.emitter_current",
+              "complete_type": {
+                "declaration_index": 27,
+                "type_sha256": "be42fea13ccc7d05595b54f1e3a1586c66ae608a633dfd58a0b7380eb18e9e2b"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceGeneratedInquiryReceiptAction.Inventory.ActualQuery.Next.actual_pair",
+              "complete_type": {
+                "declaration_index": 23,
+                "type_sha256": "e3304a929dd77fa8754ad1124fd6ccbcde8c6a48a2a790d031d80acc42930d44"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceGeneratedInquiryReceiptAction.Inventory.ActualQuery.Next.emitter_whole",
+              "complete_type": {
+                "declaration_index": 29,
+                "type_sha256": "9f15064ea45e72b60e046631d66ea64bb223e8c42421afa1fbcdfded4a70536e"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceGeneratedInquiryReceiptAction.Inventory.ActualQuery.Next.emitter_successor",
+              "complete_type": {
+                "declaration_index": 28,
+                "type_sha256": "215f67a0384cd7a4a2ce43a52ea1d1761fc4452a90e817745d1a86dc65e55c29"
+              }
+            }
+          ],
+          "verification": {
+            "kernel": "passed",
+            "proof_package": "mv4-input-and-query"
+          }
+        },
+        {
+          "kind": "lean",
+          "source_commit": "ba7e274beb1de38900a6fc2c8c8dfe6cfad9d9aa",
+          "source_path": "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Receipt/Inventory/ActualQuery/Next/EnvironmentUpdate/Consumer.lean",
+          "source_sha256": "b9433e5af9cbfe8a3aa8bb6a33915c401d075dc3d50bb20db780701969d9a0fc",
+          "public": {
+            "path": "Lean/H0mework/Versions/Rba7e274b/ReleaseMaterials/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Receipt/Inventory/ActualQuery/Next/EnvironmentUpdate/Consumer.lean",
+            "module": "H0mework.Versions.Rba7e274b.ReleaseMaterials.SaturationMonoid.GenericFoundation.Operations.Inquiry.Context.Faces.Execution.Activation.Receipt.Inventory.ActualQuery.Next.EnvironmentUpdate.Consumer",
+            "variant": "Rba7e274b",
+            "sha256": "fdc4b500c402efad9088f683566551cd61d689d18869eb6fedb42ff2457caab5"
+          },
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.ActualQueryBornEnvironmentUpdate.own_written",
+              "complete_type": {
+                "declaration_index": 6,
+                "type_sha256": "c66b67c8988ae98fb8a717e0c4b8d7e854131b59f48c9fd8c9a97f003cff6a7f"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.ActualQueryBornEnvironmentUpdate.own_whole",
+              "complete_type": {
+                "declaration_index": 5,
+                "type_sha256": "6b2956476a169446ccd8bfdf8922d3fb181fc4daf1726ff814c9fe34ad82191b"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.ActualQueryBornEnvironmentUpdate.own_next",
+              "complete_type": {
+                "declaration_index": 4,
+                "type_sha256": "2e3aa60394c329cf373e63822febdea1060934ee648bd6439f8d4aad41ce7a33"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.ActualQueryBornEnvironmentUpdate.own_inventories",
+              "complete_type": {
+                "declaration_index": 3,
+                "type_sha256": "2c32ef7c3c31fc6cc6b515fc750b4a55d4766dee431c97703bd6cfb408b94c2f"
+              }
+            }
+          ],
+          "verification": {
+            "kernel": "passed",
+            "proof_package": "mv4-input-and-query"
+          }
+        },
+        {
+          "kind": "lean",
+          "source_commit": "ba7e274beb1de38900a6fc2c8c8dfe6cfad9d9aa",
+          "source_path": "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Receipt/Inventory/ActualQuery/Next/Linear/Receiver/Action.lean",
+          "source_sha256": "b7631288b07f76dfce81fda9bec3a6234615cefa2e7bad58bb6e4ef7d06bd060",
+          "public": {
+            "path": "Lean/H0mework/Versions/Rba7e274b/ReleaseMaterials/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Receipt/Inventory/ActualQuery/Next/Linear/Receiver/Action.lean",
+            "module": "H0mework.Versions.Rba7e274b.ReleaseMaterials.SaturationMonoid.GenericFoundation.Operations.Inquiry.Context.Faces.Execution.Activation.Receipt.Inventory.ActualQuery.Next.Linear.Receiver.Action",
+            "variant": "Rba7e274b",
+            "sha256": "01058ba7d6d0732bc2eca83b25fbb2818f1e1e88e894c16dfdf355546d98e364"
+          },
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.FullSourceReceiverLinearAction.actual_source_eval",
+              "complete_type": {
+                "declaration_index": 16,
+                "type_sha256": "f7e1acf7a6ad2237a90e71c3d01e6626f9d26226eaf43625a9be0654415220bb"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.FullSourceReceiverLinearAction.actual_source_effect",
+              "complete_type": {
+                "declaration_index": 15,
+                "type_sha256": "ce86fec01915e176337f1387e255c767fcc365acc037f76ffd421580490d9efa"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.FullSourceReceiverLinearAction.read_material_update",
+              "complete_type": {
+                "declaration_index": 20,
+                "type_sha256": "b2b473038d29ff10875730585775e5ec5c8534b9a9261f5b3f7358592bd09bf9"
+              }
+            }
+          ],
+          "verification": {
+            "kernel": "passed",
+            "proof_package": "mv4-input-and-query"
+          }
+        },
+        {
+          "kind": "lean",
+          "source_commit": "ba7e274beb1de38900a6fc2c8c8dfe6cfad9d9aa",
+          "source_path": "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Receipt/Inventory/ActualQuery/Next/Linear/Receiver/Consumer.lean",
+          "source_sha256": "c0a17c8a2e1ef578aabd9579a26ab83d8aee261167142bdf169459ad83370cfc",
+          "public": {
+            "path": "Lean/H0mework/Versions/Rba7e274b/ReleaseMaterials/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Receipt/Inventory/ActualQuery/Next/Linear/Receiver/Consumer.lean",
+            "module": "H0mework.Versions.Rba7e274b.ReleaseMaterials.SaturationMonoid.GenericFoundation.Operations.Inquiry.Context.Faces.Execution.Activation.Receipt.Inventory.ActualQuery.Next.Linear.Receiver.Consumer",
+            "variant": "Rba7e274b",
+            "sha256": "cb2332ac3ae936c6b5f5ae22532c97dc0ee1e21adba952e49766b2164f49ea38"
+          },
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.FullSourceReceiverLinearAction.reader_at_depth",
+              "complete_type": {
+                "declaration_index": 22,
+                "type_sha256": "90cdceef42d141d7f8381975325940c19aceb87eb3fa609ce9df40c32952e682"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.FullSourceReceiverLinearAction.actual_updated_value",
+              "complete_type": {
+                "declaration_index": 17,
+                "type_sha256": "53b3656a3a73b98f440fbb9f909d65640c9b43617b3d38e7f3cb3f6c34c585a4"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.FullSourceReceiverLinearAction.actual_full_raw",
+              "complete_type": {
+                "declaration_index": 14,
+                "type_sha256": "67aa041db596c89793ac0c3daba13c9aebe6317aa3c7f56fe720a9cecfe53b45"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.FullSourceReceiverLinearAction.actual_emitter_next",
+              "complete_type": {
+                "declaration_index": 12,
+                "type_sha256": "33d57e265c8f71f7ef770f0a244af9a1a94725b28ed3ca5753dbc44827f83d4b"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.FullSourceReceiverLinearAction.actual_emitter_whole",
+              "complete_type": {
+                "declaration_index": 13,
+                "type_sha256": "4f0dbf646e5f511e120ae38e802e34dd6b23c88899a5d639cb6390f277ecf8f0"
+              }
+            }
+          ],
+          "verification": {
+            "kernel": "passed",
+            "proof_package": "mv4-input-and-query"
+          }
+        }
+      ],
+      "producers": [
+        {
+          "kind": "lean",
+          "source_commit": "ba7e274beb1de38900a6fc2c8c8dfe6cfad9d9aa",
+          "source_path": "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Receipt/Inventory/ActualQuery/Next/EnvironmentUpdate/Source.lean",
+          "source_sha256": "b773a8da2188194fc73e9ce73ca0d25f8c0f127b0d5ef7659d02ded0ba8aaab6",
+          "public": {
+            "path": "Lean/H0mework/Versions/Rba7e274b/ReleaseMaterials/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Receipt/Inventory/ActualQuery/Next/EnvironmentUpdate/Source.lean",
+            "module": "H0mework.Versions.Rba7e274b.ReleaseMaterials.SaturationMonoid.GenericFoundation.Operations.Inquiry.Context.Faces.Execution.Activation.Receipt.Inventory.ActualQuery.Next.EnvironmentUpdate.Source",
+            "variant": "Rba7e274b",
+            "sha256": "e45b4df856c974b5e51f338f11f14d45168f4625d815b1a411769c3cd4c95bb7"
+          },
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.ActualQueryBornEnvironmentUpdate.fullRaw",
+              "complete_type": {
+                "declaration_index": 1,
+                "type_sha256": "b31abc3db924c0aa24dde32a713e108e2693b564486216b9704e7a57d7b7f119"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.ActualQueryBornEnvironmentUpdate.bornEnv",
+              "complete_type": {
+                "declaration_index": 0,
+                "type_sha256": "40960c52634749272995a29262fb64d44c3f5f86b522e8f14dc67dd3894a9342"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.ActualQueryBornEnvironmentUpdate.increment",
+              "complete_type": {
+                "declaration_index": 2,
+                "type_sha256": "cf8843900599d7cc03d76e063f148db169de30438bbd7b758194d876ec89af05"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.ActualQueryBornEnvironmentUpdate.source_env_update",
+              "complete_type": {
+                "declaration_index": 7,
+                "type_sha256": "beb27633519b82fdd0d51927f81de05c9edb5ee86a1a08c1d778a3568047c81a"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.ActualQueryBornEnvironmentUpdate.source_sum_actual",
+              "complete_type": {
+                "declaration_index": 8,
+                "type_sha256": "fac69024d8cf39992f379be4acd262a60a5a1db75a6e04d801408b0ffe9e5dc6"
+              }
+            }
+          ],
+          "verification": {
+            "kernel": "passed",
+            "proof_package": "mv4-input-and-query"
+          }
+        },
+        {
+          "kind": "lean",
+          "source_commit": "ba7e274beb1de38900a6fc2c8c8dfe6cfad9d9aa",
+          "source_path": "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Receipt/Inventory/ActualQuery/Next/Linear/Receiver/Source.lean",
+          "source_sha256": "dab44b61e86d3f8bb9ae2f53059d3d7eaddadab4ca42442fb7fbbc0b6007778e",
+          "public": {
+            "path": "Lean/H0mework/Versions/Rba7e274b/ReleaseMaterials/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Receipt/Inventory/ActualQuery/Next/Linear/Receiver/Source.lean",
+            "module": "H0mework.Versions.Rba7e274b.ReleaseMaterials.SaturationMonoid.GenericFoundation.Operations.Inquiry.Context.Faces.Execution.Activation.Receipt.Inventory.ActualQuery.Next.Linear.Receiver.Source",
+            "variant": "Rba7e274b",
+            "sha256": "f02973ff92334ce987561450a5cc8eef0dde34cdfbd9a2bc9a2a6fec830914e0"
+          },
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.FullSourceReceiverLinearAction.current_native_source",
+              "complete_type": {
+                "declaration_index": 18,
+                "type_sha256": "b9c122f139b3d2ca0564bac552bbbbd4ceef9c72aa6ac7b9457204a90834097c"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.FullSourceReceiverLinearAction.datum_actual_epoch",
+              "complete_type": {
+                "declaration_index": 19,
+                "type_sha256": "d969fb11d0143bec1293288de9aa12a4d74287be840ac135eb7084f4fbdc377f"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.FullSourceReceiverLinearAction.reader_actual_source",
+              "complete_type": {
+                "declaration_index": 21,
+                "type_sha256": "29a9e1a7f9921597f853d71988007972be061289e96f0184de2e593f83859561"
+              }
+            }
+          ],
+          "verification": {
+            "kernel": "passed",
+            "proof_package": "mv4-input-and-query"
+          }
+        },
+        {
+          "kind": "lean",
+          "source_commit": "ba7e274beb1de38900a6fc2c8c8dfe6cfad9d9aa",
+          "source_path": "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Receipt/Inventory/ActualQuery/Next/Linear/Source.lean",
+          "source_sha256": "87540608f24ae87499149cd3f8b78fe2362bbe6e6a5f83896396281b5bd89d28",
+          "public": {
+            "path": "Lean/H0mework/Versions/Rba7e274b/ReleaseMaterials/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Receipt/Inventory/ActualQuery/Next/Linear/Source.lean",
+            "module": "H0mework.Versions.Rba7e274b.ReleaseMaterials.SaturationMonoid.GenericFoundation.Operations.Inquiry.Context.Faces.Execution.Activation.Receipt.Inventory.ActualQuery.Next.Linear.Source",
+            "variant": "Rba7e274b",
+            "sha256": "02376af17cca4ec452e3aa881f32e8cd15405d37f09071ac018bcd1a684ca18a"
+          },
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.FullSourceLinearAction.reader_actual_source",
+              "complete_type": {
+                "declaration_index": 11,
+                "type_sha256": "ae9d0c96b8112de352733cf93882238c2fe09cf237b736832ef69ceb13e9e771"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.FullSourceLinearAction.admitted_full_raw",
+              "complete_type": {
+                "declaration_index": 10,
+                "type_sha256": "b8ae1f4f4e84ecb43f551bdf652b5feea18a25ee856b3a102b84c26d87752628"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.FullSourceLinearAction.actual_value",
+              "complete_type": {
+                "declaration_index": 9,
+                "type_sha256": "89b895c36d8a6e649504ec59d67399c6a5ebc7f086399485e6538100233c6aa6"
+              }
+            }
+          ],
+          "verification": {
+            "kernel": "passed",
+            "proof_package": "mv4-input-and-query"
+          }
+        },
+        {
+          "kind": "lean",
+          "source_commit": "ba7e274beb1de38900a6fc2c8c8dfe6cfad9d9aa",
+          "source_path": "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Receipt/Inventory/ActualQuery/Next/Source.lean",
+          "source_sha256": "4f66e3c38d1f6de8b5cbb1ac96eeafb162d1e4200b6303649ff1176f16e945e9",
+          "public": {
+            "path": "Lean/H0mework/Versions/Rba7e274b/ReleaseMaterials/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Receipt/Inventory/ActualQuery/Next/Source.lean",
+            "module": "H0mework.Versions.Rba7e274b.ReleaseMaterials.SaturationMonoid.GenericFoundation.Operations.Inquiry.Context.Faces.Execution.Activation.Receipt.Inventory.ActualQuery.Next.Source",
+            "variant": "Rba7e274b",
+            "sha256": "4682222b1f2b245618823546c8e91b9fa93cd482aa4a608c38156ac468204270"
+          },
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceGeneratedInquiryReceiptAction.Inventory.ActualQuery.Next.commonAtNext",
+              "complete_type": {
+                "declaration_index": 25,
+                "type_sha256": "a2d6d000ccec22e27d747aba3d566e44aaa76f0f21f137aaa40c94c2510877f2"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceGeneratedInquiryReceiptAction.Inventory.ActualQuery.Next.fullRaw",
+              "complete_type": {
+                "declaration_index": 30,
+                "type_sha256": "a45f078a4161a79b396f654c388518830bc9fe1adb1279ced248340dc721d52a"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceGeneratedInquiryReceiptAction.Inventory.ActualQuery.Next.admittedCommon",
+              "complete_type": {
+                "declaration_index": 24,
+                "type_sha256": "c2841c736da8385675f20a6f06dba02779b4bb55e031885c7332e55f2e1e96ae"
+              }
+            }
+          ],
+          "verification": {
+            "kernel": "passed",
+            "proof_package": "mv4-input-and-query"
+          }
+        },
+        {
+          "kind": "lean",
+          "source_commit": "ba7e274beb1de38900a6fc2c8c8dfe6cfad9d9aa",
+          "source_path": "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Receipt/Inventory/ActualQuery/Source.lean",
+          "source_sha256": "a81cd545aa9fba23b407fd72ff0532b00d0a89e0644a6ba46e832b0c15e0e95f",
+          "public": {
+            "path": "Lean/H0mework/Versions/Rba7e274b/ReleaseMaterials/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Receipt/Inventory/ActualQuery/Source.lean",
+            "module": "H0mework.Versions.Rba7e274b.ReleaseMaterials.SaturationMonoid.GenericFoundation.Operations.Inquiry.Context.Faces.Execution.Activation.Receipt.Inventory.ActualQuery.Source",
+            "variant": "Rba7e274b",
+            "sha256": "03f7acec2ddb55de6ac9fd17bca5bdb638c2bd8b799b80da14231c04a5e29cea"
+          },
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceGeneratedInquiryReceiptAction.Inventory.ActualQuery.commonMaterial",
+              "complete_type": {
+                "declaration_index": 33,
+                "type_sha256": "88c857c9dcde78301fc553f066184f64276154d6009e059b6ab7692648dc6224"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceGeneratedInquiryReceiptAction.Inventory.ActualQuery.commonLaw",
+              "complete_type": {
+                "declaration_index": 32,
+                "type_sha256": "9476894cf00f4087e1fa0f323c4139de6a41671c396fd3b9fad571855c738952"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceGeneratedInquiryReceiptAction.Inventory.ActualQuery.programme",
+              "complete_type": {
+                "declaration_index": 35,
+                "type_sha256": "8d78ce025554a9c8ca0e3359c9b3a11995623426d47e90677c83a0f20c82b9f3"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceGeneratedInquiryReceiptAction.Inventory.ActualQuery.commonOutcome",
+              "complete_type": {
+                "declaration_index": 34,
+                "type_sha256": "e62fe07ddcb407ae746cb512caf15b218a548fc47b63956439276a2b97e6d01b"
+              }
+            }
+          ],
+          "verification": {
+            "kernel": "passed",
+            "proof_package": "mv4-input-and-query"
+          }
+        }
+      ],
+      "resources": [
+        {
+          "kind": "artifact",
+          "source_commit": "66037778c8933d28ac03a0cb9dc20591be952f9b",
+          "source_path": "Verification/framework/source-policy/original-certification/CP136/verdict.json",
+          "source_sha256": "23860ceec5f6d1c47a99f502087a515f11bd397c724725be2001fcee5082798e",
+          "source_origin": {
+            "artifact_binding_kind": "fixed-ledger-original-verdict-SHA",
+            "checkpoint": "CP136",
+            "dependency_epoch": "ba7e274beb1de38900a6fc2c8c8dfe6cfad9d9aa",
+            "kind": "retained-original-certification",
+            "ledger_commit": "ba7e274beb1de38900a6fc2c8c8dfe6cfad9d9aa",
+            "ledger_path": "Lean/docs/ledgers/living-law-framework-checkpoints-v32.md",
+            "ledger_sha256": "634d4703f6c4fe73cdaba354f5828ed92e130b9fe37a835a965b18159d9d6894",
+            "original_artifact_name": "verdict.json",
+            "original_fixed_head": "66037778c8933d28ac03a0cb9dc20591be952f9b",
+            "original_source_sha256": "23860ceec5f6d1c47a99f502087a515f11bd397c724725be2001fcee5082798e",
+            "original_verdict_sha256": "23860ceec5f6d1c47a99f502087a515f11bd397c724725be2001fcee5082798e",
+            "original_verdict_sha_bindings": []
+          },
+          "public": {
+            "path": "evidence/source-process-core-v3/original/R66037778/Verification/framework/source-policy/original-certification/CP136/verdict.json.gz",
+            "sha256": "447d58ec8a20a5d9742c3ccc34aad0c8469dc4fe08684393dfb9cd8f534cf8ba"
+          },
+          "verification": {
+            "identity": "verified"
+          }
+        },
+        {
+          "kind": "artifact",
+          "source_commit": "6c6f74fab7a9dea070d956c5c2f3f9f4d1134a43",
+          "source_path": "Verification/framework/source-policy/original-certification/CP131/verdict.json",
+          "source_sha256": "335828885734e34f208834fb2b6cd21d30e815e4965007bc6d71357147fc910f",
+          "source_origin": {
+            "artifact_binding_kind": "fixed-ledger-original-verdict-SHA",
+            "checkpoint": "CP131",
+            "dependency_epoch": "ba7e274beb1de38900a6fc2c8c8dfe6cfad9d9aa",
+            "kind": "retained-original-certification",
+            "ledger_commit": "ba7e274beb1de38900a6fc2c8c8dfe6cfad9d9aa",
+            "ledger_path": "Lean/docs/ledgers/living-law-framework-checkpoints-v31.md",
+            "ledger_sha256": "792574020587ecb7782fb1ffc845007146b94fba6bc731718bb83afff901aaf2",
+            "original_artifact_name": "verdict.json",
+            "original_fixed_head": "6c6f74fab7a9dea070d956c5c2f3f9f4d1134a43",
+            "original_source_sha256": "335828885734e34f208834fb2b6cd21d30e815e4965007bc6d71357147fc910f",
+            "original_verdict_sha256": "335828885734e34f208834fb2b6cd21d30e815e4965007bc6d71357147fc910f",
+            "original_verdict_sha_bindings": []
+          },
+          "public": {
+            "path": "evidence/source-process-core-v3/original/R6c6f74fa/Verification/framework/source-policy/original-certification/CP131/verdict.json.gz",
+            "sha256": "2686930a31f4f8b39165323397ffb1e025b7043de87faec1783e6c6c8363520d"
+          },
+          "verification": {
+            "identity": "verified"
+          }
+        },
+        {
+          "kind": "artifact",
+          "source_commit": "8d6acd9991adafbb0f48a319c7a57064e3fb4377",
+          "source_path": "Verification/framework/source-policy/original-certification/CP128/verdict.json",
+          "source_sha256": "a32b7ca6bda79d4a8b0575f9d40bb1d7c7664dd33251c191230d8ae307d4c730",
+          "source_origin": {
+            "artifact_binding_kind": "fixed-ledger-original-verdict-SHA",
+            "checkpoint": "CP128",
+            "dependency_epoch": "ba7e274beb1de38900a6fc2c8c8dfe6cfad9d9aa",
+            "kind": "retained-original-certification",
+            "ledger_commit": "ba7e274beb1de38900a6fc2c8c8dfe6cfad9d9aa",
+            "ledger_path": "Lean/docs/ledgers/living-law-framework-checkpoints-v31.md",
+            "ledger_sha256": "792574020587ecb7782fb1ffc845007146b94fba6bc731718bb83afff901aaf2",
+            "original_artifact_name": "verdict.json",
+            "original_fixed_head": "8d6acd9991adafbb0f48a319c7a57064e3fb4377",
+            "original_source_sha256": "a32b7ca6bda79d4a8b0575f9d40bb1d7c7664dd33251c191230d8ae307d4c730",
+            "original_verdict_sha256": "a32b7ca6bda79d4a8b0575f9d40bb1d7c7664dd33251c191230d8ae307d4c730",
+            "original_verdict_sha_bindings": []
+          },
+          "public": {
+            "path": "evidence/source-process-core-v3/original/R8d6acd99/Verification/framework/source-policy/original-certification/CP128/verdict.json.gz",
+            "sha256": "cfbf7f00e395d6a6e68e55193f1ffb32254e9168ce2065d6710c93dab30564bf"
+          },
+          "verification": {
+            "identity": "verified"
+          }
+        },
+        {
+          "kind": "artifact",
+          "source_commit": "b15368813a76dbe6916b13ab2f00ba7983937305",
+          "source_path": "Verification/framework/source-policy/original-certification/CP130/verdict.json",
+          "source_sha256": "e10cdfe03e4a6482bf53d4f5c2a52c83d431f80baac0d1db91f0499352452113",
+          "source_origin": {
+            "artifact_binding_kind": "fixed-ledger-original-verdict-SHA",
+            "checkpoint": "CP130",
+            "dependency_epoch": "ba7e274beb1de38900a6fc2c8c8dfe6cfad9d9aa",
+            "kind": "retained-original-certification",
+            "ledger_commit": "ba7e274beb1de38900a6fc2c8c8dfe6cfad9d9aa",
+            "ledger_path": "Lean/docs/ledgers/living-law-framework-checkpoints-v31.md",
+            "ledger_sha256": "792574020587ecb7782fb1ffc845007146b94fba6bc731718bb83afff901aaf2",
+            "original_artifact_name": "verdict.json",
+            "original_fixed_head": "b15368813a76dbe6916b13ab2f00ba7983937305",
+            "original_source_sha256": "e10cdfe03e4a6482bf53d4f5c2a52c83d431f80baac0d1db91f0499352452113",
+            "original_verdict_sha256": "e10cdfe03e4a6482bf53d4f5c2a52c83d431f80baac0d1db91f0499352452113",
+            "original_verdict_sha_bindings": []
+          },
+          "public": {
+            "path": "evidence/source-process-core-v3/original/Rb1536881/Verification/framework/source-policy/original-certification/CP130/verdict.json.gz",
+            "sha256": "e03c1081fc35fc8b23b62075280c2bb722e46f648775940b1dd2d206dbb860df"
+          },
+          "verification": {
+            "identity": "verified"
+          }
+        },
+        {
+          "kind": "artifact",
+          "source_commit": "fa6594cf300b1d6f2124e02fffc1777ad290a90f",
+          "source_path": "Verification/framework/source-policy/original-certification/CP129/verdict.json",
+          "source_sha256": "6b66769ccc89d3712323fc1ee55212abfee7aae4fe3d35651461198102cb5471",
+          "source_origin": {
+            "artifact_binding_kind": "fixed-ledger-original-verdict-SHA",
+            "checkpoint": "CP129",
+            "dependency_epoch": "ba7e274beb1de38900a6fc2c8c8dfe6cfad9d9aa",
+            "kind": "retained-original-certification",
+            "ledger_commit": "ba7e274beb1de38900a6fc2c8c8dfe6cfad9d9aa",
+            "ledger_path": "Lean/docs/ledgers/living-law-framework-checkpoints-v31.md",
+            "ledger_sha256": "792574020587ecb7782fb1ffc845007146b94fba6bc731718bb83afff901aaf2",
+            "original_artifact_name": "verdict.json",
+            "original_fixed_head": "fa6594cf300b1d6f2124e02fffc1777ad290a90f",
+            "original_source_sha256": "6b66769ccc89d3712323fc1ee55212abfee7aae4fe3d35651461198102cb5471",
+            "original_verdict_sha256": "6b66769ccc89d3712323fc1ee55212abfee7aae4fe3d35651461198102cb5471",
+            "original_verdict_sha_bindings": []
+          },
+          "public": {
+            "path": "evidence/source-process-core-v3/original/Rfa6594cf/Verification/framework/source-policy/original-certification/CP129/verdict.json.gz",
+            "sha256": "c1a4cac28739b13a5877e9f138b742d78406472a9b763ba208a5d022ad50dfcd"
+          },
+          "verification": {
+            "identity": "verified"
+          }
+        }
+      ]
+    }
+  ],
+  "proof_packages": [
+    {
+      "id": "mv4-input-and-query",
+      "paper": "source-process-core",
+      "source_commit": "ba7e274beb1de38900a6fc2c8c8dfe6cfad9d9aa",
+      "claim_ids": [
+        "C47",
+        "C48"
+      ],
+      "lean_target": "H0mework.Papers.SourceProcessCoreV3.MV4",
+      "source_paths": [
+        "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Receipt/Inventory/ActualQuery/Consumer.lean",
+        "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Receipt/Inventory/ActualQuery/Next/Consumer.lean",
+        "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Receipt/Inventory/ActualQuery/Next/EnvironmentUpdate/Consumer.lean",
+        "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Receipt/Inventory/ActualQuery/Next/EnvironmentUpdate/Source.lean",
+        "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Receipt/Inventory/ActualQuery/Next/Linear/Receiver/Action.lean",
+        "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Receipt/Inventory/ActualQuery/Next/Linear/Receiver/Consumer.lean",
+        "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Receipt/Inventory/ActualQuery/Next/Linear/Receiver/Source.lean",
+        "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Receipt/Inventory/ActualQuery/Next/Linear/Source.lean",
+        "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Receipt/Inventory/ActualQuery/Next/Source.lean",
+        "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Receipt/Inventory/ActualQuery/Source.lean",
+        "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/SourceFamily/Calculation/ActualInput/Consumer.lean",
+        "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/SourceFamily/Calculation/ActualInput/Source.lean",
+        "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/SourceFamily/Calculation/Factory/Consumer.lean",
+        "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/SourceFamily/Calculation/Factory/Source.lean",
+        "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/SourceFamily/Calculation/FullResidual/Consumer.lean",
+        "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/SourceFamily/Calculation/FullResidual/Dynamics/Consumer.lean",
+        "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/SourceFamily/Calculation/FullResidual/Dynamics/Initial.lean",
+        "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/SourceFamily/Calculation/FullResidual/Dynamics/Source.lean",
+        "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/SourceFamily/Calculation/FullResidual/Source.lean"
+      ],
+      "accepted_source_scope_sha256": "907ab9d8df2de6130415711ef5c05ac2b40cd3b7215e0a31cea6c565775b081c"
+    }
+  ],
+  "acceptance": {
+    "status": "passed",
+    "execution_map_sha256": "034af435dd7e89e02b524bd74d744455e322f32acdaf0ab2d51f57a5ebf4c09c",
+    "declarations": 66,
+    "build": {
+      "path": "evidence/source-process-core-v3/acceptance/build.json.gz",
+      "sha256": "4cdc354be2f3795b1afce247bbef7d5e7609bd2c7ae477af60f1323ff6b5a861",
+      "compression": "gzip",
+      "payload_sha256": "650225d277655995d894bc36f4a1ec99144fd144280be3313e0bccee5a7e743e"
+    },
+    "trust": {
+      "path": "evidence/source-process-core-v3/acceptance/trust.json.gz",
+      "sha256": "00d6cfd4b425cc1abb473a8b3129d95978ccee3795ed6cd81de7568224158110",
+      "compression": "gzip",
+      "payload_sha256": "2496fc8d90b6a49e7c66f753a3e3fdbcf32b0459c204df72f85287d52f08320b"
+    },
+    "declaration_types": {
+      "path": "evidence/source-process-core-v3/acceptance/declaration-types.json.gz",
+      "sha256": "fcae06fc95bae5f9d325986b7fb54cfea0afa63ecf7a1641e0954b60b257a38b",
+      "compression": "gzip",
+      "payload_sha256": "7c7755369e7b27a2bb5885824503ce1c8e229c1931c2cd7a32fb733885a60442"
+    },
+    "source_public": {
+      "path": "evidence/source-process-core-v3/acceptance/source-public.json",
+      "sha256": "5603e33ac0307e62495b9efd6b34b0b680d5d68cc09553b54a178b3904124841"
+    },
+    "source_exact": {
+      "path": "evidence/source-process-core-v3/acceptance/source-exact.json",
+      "sha256": "94fd2704eb4ef94865e5e76f7b73e5a4ecae631e9beb7b6de823ea2c9244129d"
+    },
+    "t0_axioms": {
+      "path": "evidence/source-process-core-v3/acceptance/foundation-axioms.json",
+      "sha256": "bd436d6aa49b7113dbfb764f88dedef59e96b7cb3d46d435b881644d579c787f"
+    }
+  }
+}

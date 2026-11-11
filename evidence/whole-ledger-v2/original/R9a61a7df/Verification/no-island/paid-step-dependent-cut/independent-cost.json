@@ -1,0 +1,194 @@
+{
+  "schema": "cp528-independent-cost/v1",
+  "calls": [
+    {
+      "label": "001-gate",
+      "command": [
+        "lean",
+        "--trust=0",
+        "-DElab.async=false",
+        "-DwarningAsError=true",
+        "-j1",
+        "-M32000",
+        "-DstderrAsMessages=false",
+        "-DmaxErrors=8",
+        "-Dprofiler=true",
+        "-Dprofiler.threshold=100",
+        "--root=runtime/iqa-paid-step-dependent-cut-independent",
+        "-o",
+        "runtime/iqa-paid-step-dependent-cut-independent/001-gate.olean",
+        "runtime/iqa-paid-step-dependent-cut-independent/Gate.lean"
+      ],
+      "pid": 50327,
+      "exit_code": 1,
+      "elapsed_seconds": 21.731899832986528,
+      "source": {
+        "path": "runtime/iqa-paid-step-dependent-cut-independent/001-gate.source.lean",
+        "bytes": 12413,
+        "sha256": "c3a5e6f8a9dd76fee390f3e1be11de9f9c806e7f9b9e43226890f8ef0b077b47"
+      },
+      "log": {
+        "path": "runtime/iqa-paid-step-dependent-cut-independent/001-gate.log",
+        "bytes": 4261,
+        "sha256": "d374fcfb0eac38d18a392d52151d6e9022479d50428b507ed4b02a4a734d2295"
+      },
+      "receipt": {
+        "path": "runtime/iqa-paid-step-dependent-cut-independent/001-gate.receipt.json",
+        "bytes": 1195,
+        "sha256": "a616609485421d57d9f9d64878838165a67aba02bd8124d7bdbc191655b0df49"
+      }
+    },
+    {
+      "label": "002-gate",
+      "command": [
+        "lean",
+        "--trust=0",
+        "-DElab.async=false",
+        "-DwarningAsError=true",
+        "-j1",
+        "-M32000",
+        "-DstderrAsMessages=false",
+        "-DmaxErrors=12",
+        "-Dprofiler=true",
+        "-Dprofiler.threshold=100",
+        "--root=runtime/iqa-paid-step-dependent-cut-independent",
+        "-o",
+        "runtime/iqa-paid-step-dependent-cut-independent/002-gate.olean",
+        "runtime/iqa-paid-step-dependent-cut-independent/Gate.lean"
+      ],
+      "pid": 52616,
+      "exit_code": 1,
+      "elapsed_seconds": 83.04949074998149,
+      "source": {
+        "path": "runtime/iqa-paid-step-dependent-cut-independent/002-gate.source.lean",
+        "bytes": 13070,
+        "sha256": "dfb3459a1127bb736328f756c2e4dc7596cfa4f2aad937e7c17e99244150e887"
+      },
+      "log": {
+        "path": "runtime/iqa-paid-step-dependent-cut-independent/002-gate.log",
+        "bytes": 1649,
+        "sha256": "73e898247e4fcb27aac68e0a3e184c109fca6c83cf68b1b54ea49999f50eb7f8"
+      },
+      "receipt": {
+        "path": "runtime/iqa-paid-step-dependent-cut-independent/002-gate.receipt.json",
+        "bytes": 1195,
+        "sha256": "120395b39d6018fea3ffe363a048dc03516caa938ce58c8f015f5b89daee9a8a"
+      }
+    },
+    {
+      "label": "003-gate",
+      "command": [
+        "lean",
+        "--trust=0",
+        "-DElab.async=false",
+        "-DwarningAsError=true",
+        "-j1",
+        "-M32000",
+        "-DstderrAsMessages=false",
+        "-DmaxErrors=8",
+        "-Dprofiler=true",
+        "-Dprofiler.threshold=100",
+        "--root=runtime/iqa-paid-step-dependent-cut-independent",
+        "-o",
+        "runtime/iqa-paid-step-dependent-cut-independent/003-gate.olean",
+        "runtime/iqa-paid-step-dependent-cut-independent/Gate.lean"
+      ],
+      "pid": 58041,
+      "exit_code": 0,
+      "elapsed_seconds": 63.1548136670026,
+      "source": {
+        "path": "runtime/iqa-paid-step-dependent-cut-independent/003-gate.source.lean",
+        "bytes": 14261,
+        "sha256": "6bb4cc685b7fd0a1bdec8776dc338235be93cd06b4affe3c0b91cffb9c03fbce"
+      },
+      "log": {
+        "path": "runtime/iqa-paid-step-dependent-cut-independent/003-gate.log",
+        "bytes": 1234,
+        "sha256": "93e03bb4b5d585fa864023a20353872ea5288cf2df5afce66deb093af4c626bc"
+      },
+      "object": {
+        "path": "runtime/iqa-paid-step-dependent-cut-independent/003-gate.olean",
+        "bytes": 788640,
+        "sha256": "95484374651499ec6d8160927cb418d0d9d6fb0a68808518d5b1ef498b5431ce"
+      },
+      "receipt": {
+        "path": "runtime/iqa-paid-step-dependent-cut-independent/003-gate.receipt.json",
+        "bytes": 1430,
+        "sha256": "f8134033c258860b19e3ac17aec48bc761d951c7ca3206cc428812413275630c"
+      }
+    },
+    {
+      "label": "004-audit",
+      "command": [
+        "lean",
+        "--trust=0",
+        "-DElab.async=false",
+        "-DwarningAsError=true",
+        "-j1",
+        "-M32000",
+        "-DstderrAsMessages=false",
+        "-DmaxErrors=1",
+        "--run",
+        "runtime/iqa-paid-step-dependent-cut-independent/Audit.lean",
+        "runtime/iqa-paid-step-dependent-cut-independent/audit-config.json"
+      ],
+      "pid": 60557,
+      "exit_code": 1,
+      "elapsed_seconds": 6.697966915991856,
+      "source": {
+        "path": "runtime/iqa-paid-step-dependent-cut-independent/004-audit.source.lean",
+        "bytes": 37568,
+        "sha256": "120160cf7c5d3a176b193de10e4c9ce9cbb41969d0df49860ec4bf37d711c60d"
+      },
+      "log": {
+        "path": "runtime/iqa-paid-step-dependent-cut-independent/004-audit.log",
+        "bytes": 165,
+        "sha256": "4483dd8be566730e16da04ad1424f653207ab4aa154c8fb0b513e258b5db5eb4"
+      },
+      "receipt": {
+        "path": "runtime/iqa-paid-step-dependent-cut-independent/004-audit.receipt.json",
+        "bytes": 1048,
+        "sha256": "3add19bcfe2cb6adccce84434046be736db675ff515d0649a46cfa3e4dee48d8"
+      }
+    },
+    {
+      "label": "005-audit",
+      "command": [
+        "lean",
+        "--trust=0",
+        "-DElab.async=false",
+        "-DwarningAsError=true",
+        "-j1",
+        "-M32000",
+        "-DstderrAsMessages=false",
+        "-DmaxErrors=1",
+        "--run",
+        "runtime/iqa-paid-step-dependent-cut-independent/Audit.lean",
+        "runtime/iqa-paid-step-dependent-cut-independent/audit-config.json"
+      ],
+      "pid": 64807,
+      "exit_code": 0,
+      "elapsed_seconds": 29.873977583978558,
+      "source": {
+        "path": "runtime/iqa-paid-step-dependent-cut-independent/005-audit.source.lean",
+        "bytes": 37708,
+        "sha256": "ec129a102bc2d68e35c2d56d5263badd1bdfc48a1fa00ad44d1713e050099e89"
+      },
+      "log": {
+        "path": "runtime/iqa-paid-step-dependent-cut-independent/005-audit.log",
+        "bytes": 216,
+        "sha256": "7992b183f9cb122edbbfb7a01713e502138b66de856bad831c143f398f18ed5c"
+      },
+      "receipt": {
+        "path": "runtime/iqa-paid-step-dependent-cut-independent/005-audit.receipt.json",
+        "bytes": 1049,
+        "sha256": "b8dabf35c73ccf660de2435206a95f930508e39e921ff9028f032fdb5371b6e9"
+      }
+    }
+  ],
+  "actual_calls": 5,
+  "known_seconds": 204.50814874994103,
+  "unknown_calls": 0,
+  "old_source_recompiles": 0,
+  "old_CI_replays": 0
+}

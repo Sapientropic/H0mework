@@ -1,0 +1,45 @@
+{
+  "schema": "cp514-independent-cost/v1",
+  "calls": [
+    {
+      "label": "001-audit",
+      "exit_code": 0,
+      "elapsed_seconds": 44.16961287500453,
+      "source_sha256": "30dd2aa01b7e421c7b9d0271d689b23091a245fa3a652422c4b6d3e372da0a56",
+      "log_sha256": "2f1f1c9b08e323f038b2ebc89ee8c689f471e648a7778fdc323c73ec901606eb",
+      "config_sha256": "c6f74e0cf2d76a9fa7116a4b156025d5d9523385ae5ee656d712feac69928153"
+    },
+    {
+      "label": "002-gate",
+      "exit_code": 1,
+      "elapsed_seconds": 13.218475792004028,
+      "source_sha256": "c6030f76261346abe669cd0d63bed50537791d154921dd8a5121a57e937d4d8f",
+      "log_sha256": "510f5e617f6af625adb8528bc6b555963c807d3c12a2d14821cf08d8df6f66f7",
+      "config_sha256": null
+    },
+    {
+      "label": "003-gate",
+      "exit_code": 0,
+      "elapsed_seconds": 13.068144500022754,
+      "source_sha256": "9bd7be071ca069021d48f98d6b607f3afeff77534d4d04704bfd7ee069900c6f",
+      "log_sha256": "946b5518da94bfc002cbf5395c9375db8b0d7e3d74bea1a8bf264da6f93bab8f",
+      "config_sha256": null
+    }
+  ],
+  "actual_calls": 3,
+  "known_seconds": 70.45623316703131,
+  "unknown_calls": 0,
+  "old_compatibility_replays": 0,
+  "old_certificate_scope_replays": 0,
+  "science_source_recompiles": 0,
+  "gate_diagnostic": {
+    "label": "002-gate",
+    "reason": "implicit-transparency rewrite did not match an inferred split proof",
+    "correction": "use two explicitly typed actual request splits and directly apply the proved offset identity",
+    "first_canonical_check": {
+      "sha256": "27d5cc253a02a0313180a341910ef8970d4ec10a937b9704674f764312840db2",
+      "bytes": 76650
+    },
+    "first_canonical_kernel_ms": 732
+  }
+}

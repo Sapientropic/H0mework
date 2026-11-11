@@ -755,6 +755,46 @@ def rewrite_audit_runtime(text: str, environments, full_closure=False, *, revers
     return prefix + tail
 
 
+CP532_AUDIT_OUTPUT_SOURCE = '''open Lean Elab Command in
+run_cmd do
+ let some report ← liftIO <| IO.getEnv "CP532_CANONICAL_REPORT"
+  | throwError "set CP532_CANONICAL_REPORT for the same canonical method check"
+ let some current ← liftIO <| IO.getEnv "CP532_CANONICAL_CURRENT"
+  | throwError "set CP532_CANONICAL_CURRENT for the canonical kernel marker"
+ let env ← getEnv
+ liftIO <| CofinalCompleteGroupedWriteCertificate.sameCanonicalMethod env report current
+'''
+
+CP532_AUDIT_OUTPUT_PUBLIC = '''open Lean Elab Command in
+run_cmd do
+ let report ← liftIO <| IO.getEnv "CP532_CANONICAL_REPORT"
+ let current ← liftIO <| IO.getEnv "CP532_CANONICAL_CURRENT"
+ let env ← getEnv
+ liftIO do
+  match report, current with
+  | some report, some current =>
+   CofinalCompleteGroupedWriteCertificate.sameCanonicalMethod env report current
+  | none, none =>
+   IO.FS.withTempDir fun dir =>
+    CofinalCompleteGroupedWriteCertificate.sameCanonicalMethod env
+     (dir / "canonical-application.json").toString (dir / "kernel-progress.json").toString
+  | _, _ => throw (IO.userError "set both CP532_CANONICAL_REPORT and CP532_CANONICAL_CURRENT")
+'''
+
+
+def rewrite_audit_output_paths(text: str, audit, *, reverse: bool = False) -> str:
+    """Supply temporary destinations for the original CP532 kernel command."""
+    if audit is None:
+        return text
+    if audit != "cp532-canonical-method":
+        raise ViewError("Unregistered audit output-path fallback")
+    source, public = CP532_AUDIT_OUTPUT_SOURCE, CP532_AUDIT_OUTPUT_PUBLIC
+    before, after = (public, source) if reverse else (source, public)
+    if not text.endswith(before) or text.count(before) != 1:
+        raise ViewError("Audit output-path fallback requires the exact trailing CP532 command")
+    return text.removesuffix(before) + after
+
+
 def name_local_instances(text: str, rules, *, reverse: bool = False) -> str:
     """Give colliding anonymous local instances explicit names; keep type and value."""
     if rules is None:
@@ -1137,6 +1177,7 @@ def module_views(row: dict, inverse: dict) -> tuple[bytes, bytes]:
     text = name_local_instances(text, row.get("local_instance_names"), reverse=True)
     text = rewrite_audit_runtime(text, row.get("audit_boundary_fallbacks"),
                                  row.get("audit_full_closure", False), reverse=True)
+    text = rewrite_audit_output_paths(text, row.get("audit_output_fallback"), reverse=True)
     text = rebind_audit_scratch_modules(text, row.get("audit_scratch_module_rebindings"), reverse=True)
     text = rewrite_audit_module_names(text, row.get("audit_module_rewrites"), reverse=True)
     text = rewrite_private_names(text, row.get("private_name_rewrites"),
@@ -1211,7 +1252,7 @@ def alias_record(row: dict, alias) -> dict:
     """The row as seen through one of its shared source identities."""
     if (not isinstance(alias, dict)
             or set(alias) & {"path", "target", "target_sha256", "import_map", "proof_body_rewrites",
-                             "suggestion_name_exclusions"}
+                             "suggestion_name_exclusions", "audit_output_fallback"}
             or alias.get("source_sha256") != row["source_sha256"]
             or not MODULE.fullmatch(str(alias.get("original_module_name", "")))
             or not re.fullmatch(r"[0-9a-f]{40}", str(alias.get("source_revision", "")))

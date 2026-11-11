@@ -1,0 +1,467 @@
+// Lean compiler output
+// Module: SaturationMonoid.GenericFoundation.Operations.Inquiry.NativeHistoryContinuation
+// Imports: public import Init public meta import Init public import SaturationMonoid.GenericFoundation.Operations.Inquiry.NativeHistoryLookup
+#include <lean/lean.h>
+#if defined(__clang__)
+#pragma clang diagnostic ignored "-Wunused-parameter"
+#pragma clang diagnostic ignored "-Wunused-label"
+#elif defined(__GNUC__) && !defined(__CLANG__)
+#pragma GCC diagnostic ignored "-Wunused-parameter"
+#pragma GCC diagnostic ignored "-Wunused-label"
+#pragma GCC diagnostic ignored "-Wunused-but-set-variable"
+#endif
+#ifdef __cplusplus
+extern "C" {
+#endif
+lean_object* l_Fin_cases___redArg(lean_object*, lean_object*, lean_object*);
+lean_object* lp_SaturationMonoid_SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_runFrom(lean_object*, lean_object*, lean_object*, lean_object*);
+lean_object* lean_nat_add(lean_object*, lean_object*);
+lean_object* l_Nat_recCompiled___redArg(lean_object*, lean_object*, lean_object*);
+lean_object* lean_nat_sub(lean_object*, lean_object*);
+uint8_t lean_nat_dec_eq(lean_object*, lean_object*);
+LEAN_EXPORT lean_object* l___private_SaturationMonoid_GenericFoundation_Operations_Inquiry_NativeHistoryContinuation_0__SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_runFrom_match__1_splitter___redArg(lean_object*, lean_object*, lean_object*, lean_object*);
+LEAN_EXPORT lean_object* l___private_SaturationMonoid_GenericFoundation_Operations_Inquiry_NativeHistoryContinuation_0__SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_runFrom_match__1_splitter___redArg___boxed(lean_object*, lean_object*, lean_object*, lean_object*);
+LEAN_EXPORT lean_object* l___private_SaturationMonoid_GenericFoundation_Operations_Inquiry_NativeHistoryContinuation_0__SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_runFrom_match__1_splitter(lean_object*, lean_object*, lean_object*, lean_object*, lean_object*, lean_object*, lean_object*);
+LEAN_EXPORT lean_object* l___private_SaturationMonoid_GenericFoundation_Operations_Inquiry_NativeHistoryContinuation_0__SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_runFrom_match__1_splitter___boxed(lean_object*, lean_object*, lean_object*, lean_object*, lean_object*, lean_object*, lean_object*);
+LEAN_EXPORT lean_object* l___private_SaturationMonoid_GenericFoundation_Operations_Inquiry_NativeHistoryContinuation_0__SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_storedStart___redArg(lean_object*);
+LEAN_EXPORT lean_object* l___private_SaturationMonoid_GenericFoundation_Operations_Inquiry_NativeHistoryContinuation_0__SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_storedStart___redArg___boxed(lean_object*);
+LEAN_EXPORT lean_object* l___private_SaturationMonoid_GenericFoundation_Operations_Inquiry_NativeHistoryContinuation_0__SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_storedStart(lean_object*, lean_object*, lean_object*, lean_object*, lean_object*);
+LEAN_EXPORT lean_object* l___private_SaturationMonoid_GenericFoundation_Operations_Inquiry_NativeHistoryContinuation_0__SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_storedStart___boxed(lean_object*, lean_object*, lean_object*, lean_object*, lean_object*);
+LEAN_EXPORT lean_object* l___private_SaturationMonoid_GenericFoundation_Operations_Inquiry_NativeHistoryContinuation_0__SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_withStoredStart___redArg(lean_object*);
+LEAN_EXPORT lean_object* l___private_SaturationMonoid_GenericFoundation_Operations_Inquiry_NativeHistoryContinuation_0__SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_withStoredStart___redArg___boxed(lean_object*);
+LEAN_EXPORT lean_object* l___private_SaturationMonoid_GenericFoundation_Operations_Inquiry_NativeHistoryContinuation_0__SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_withStoredStart(lean_object*, lean_object*, lean_object*, lean_object*, lean_object*);
+LEAN_EXPORT lean_object* l___private_SaturationMonoid_GenericFoundation_Operations_Inquiry_NativeHistoryContinuation_0__SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_withStoredStart___boxed(lean_object*, lean_object*, lean_object*, lean_object*, lean_object*);
+LEAN_EXPORT lean_object* l_SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_HistoryAt_storedOccurrenceAt___redArg___lam__0(lean_object*, lean_object*, lean_object*);
+LEAN_EXPORT lean_object* l_SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_HistoryAt_storedOccurrenceAt___redArg___lam__0___boxed(lean_object*, lean_object*, lean_object*);
+LEAN_EXPORT lean_object* l_SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_HistoryAt_storedOccurrenceAt___redArg___lam__1(lean_object*, lean_object*, lean_object*, lean_object*, lean_object*);
+LEAN_EXPORT lean_object* l_SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_HistoryAt_storedOccurrenceAt___redArg___lam__1___boxed(lean_object*, lean_object*, lean_object*, lean_object*, lean_object*);
+static const lean_closure_object l_SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_HistoryAt_storedOccurrenceAt___redArg___closed__0_value = {.m_header = {.m_rc = 0, .m_cs_sz = sizeof(lean_closure_object) + sizeof(void*)*0, .m_other = 0, .m_tag = 245}, .m_fun = (void*)l_SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_HistoryAt_storedOccurrenceAt___redArg___lam__0___boxed, .m_arity = 3, .m_num_fixed = 0, .m_objs = {} };
+static const lean_object* l_SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_HistoryAt_storedOccurrenceAt___redArg___closed__0 = (const lean_object*)&l_SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_HistoryAt_storedOccurrenceAt___redArg___closed__0_value;
+static const lean_closure_object l_SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_HistoryAt_storedOccurrenceAt___redArg___closed__1_value = {.m_header = {.m_rc = 0, .m_cs_sz = sizeof(lean_closure_object) + sizeof(void*)*0, .m_other = 0, .m_tag = 245}, .m_fun = (void*)l_SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_HistoryAt_storedOccurrenceAt___redArg___lam__1___boxed, .m_arity = 5, .m_num_fixed = 0, .m_objs = {} };
+static const lean_object* l_SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_HistoryAt_storedOccurrenceAt___redArg___closed__1 = (const lean_object*)&l_SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_HistoryAt_storedOccurrenceAt___redArg___closed__1_value;
+LEAN_EXPORT lean_object* l_SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_HistoryAt_storedOccurrenceAt___redArg(lean_object*, lean_object*, lean_object*, lean_object*);
+LEAN_EXPORT lean_object* l_SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_HistoryAt_storedOccurrenceAt___redArg___boxed(lean_object*, lean_object*, lean_object*, lean_object*);
+LEAN_EXPORT lean_object* l_SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_HistoryAt_storedOccurrenceAt(lean_object*, lean_object*, lean_object*, lean_object*, lean_object*, lean_object*);
+LEAN_EXPORT lean_object* l_SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_HistoryAt_storedOccurrenceAt___boxed(lean_object*, lean_object*, lean_object*, lean_object*, lean_object*, lean_object*);
+LEAN_EXPORT lean_object* l_SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_HistoryAt_continueFor___lam__0(lean_object*, lean_object*, lean_object*, lean_object*, lean_object*);
+LEAN_EXPORT lean_object* l_SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_HistoryAt_continueFor___lam__0___boxed(lean_object*, lean_object*, lean_object*, lean_object*, lean_object*);
+LEAN_EXPORT lean_object* l_SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_HistoryAt_continueFor___lam__1(lean_object*, lean_object*, lean_object*, lean_object*, lean_object*);
+LEAN_EXPORT lean_object* l_SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_HistoryAt_continueFor___lam__1___boxed(lean_object*, lean_object*, lean_object*, lean_object*, lean_object*);
+LEAN_EXPORT lean_object* l_SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_HistoryAt_continueFor(lean_object*, lean_object*, lean_object*, lean_object*, lean_object*, lean_object*);
+LEAN_EXPORT lean_object* l_SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_HistoryAt_continueFor___boxed(lean_object*, lean_object*, lean_object*, lean_object*, lean_object*, lean_object*);
+LEAN_EXPORT lean_object* l_SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_HistoryAt_extendTo___redArg(lean_object*, lean_object*, lean_object*, lean_object*, lean_object*, lean_object*);
+LEAN_EXPORT lean_object* l_SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_HistoryAt_extendTo___redArg___boxed(lean_object*, lean_object*, lean_object*, lean_object*, lean_object*, lean_object*);
+LEAN_EXPORT lean_object* l_SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_HistoryAt_extendTo(lean_object*, lean_object*, lean_object*, lean_object*, lean_object*, lean_object*, lean_object*);
+LEAN_EXPORT lean_object* l_SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_HistoryAt_extendTo___boxed(lean_object*, lean_object*, lean_object*, lean_object*, lean_object*, lean_object*, lean_object*);
+LEAN_EXPORT lean_object* l___private_SaturationMonoid_GenericFoundation_Operations_Inquiry_NativeHistoryContinuation_0__SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_runFrom_match__1_splitter___redArg(lean_object* v_x_1_, lean_object* v_x_2_, lean_object* v_h__1_3_, lean_object* v_h__2_4_){
+_start:
+{
+lean_object* v_zero_5_; uint8_t v_isZero_6_; 
+v_zero_5_ = lean_unsigned_to_nat(0u);
+v_isZero_6_ = lean_nat_dec_eq(v_x_1_, v_zero_5_);
+if (v_isZero_6_ == 1)
+{
+lean_object* v___x_7_; 
+lean_dec(v_h__2_4_);
+v___x_7_ = lean_apply_1(v_h__1_3_, v_x_2_);
+return v___x_7_;
+}
+else
+{
+lean_object* v_one_8_; lean_object* v_n_9_; lean_object* v___x_10_; 
+lean_dec(v_h__1_3_);
+v_one_8_ = lean_unsigned_to_nat(1u);
+v_n_9_ = lean_nat_sub(v_x_1_, v_one_8_);
+v___x_10_ = lean_apply_2(v_h__2_4_, v_n_9_, v_x_2_);
+return v___x_10_;
+}
+}
+}
+LEAN_EXPORT lean_object* l___private_SaturationMonoid_GenericFoundation_Operations_Inquiry_NativeHistoryContinuation_0__SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_runFrom_match__1_splitter___redArg___boxed(lean_object* v_x_11_, lean_object* v_x_12_, lean_object* v_h__1_13_, lean_object* v_h__2_14_){
+_start:
+{
+lean_object* v_res_15_; 
+v_res_15_ = l___private_SaturationMonoid_GenericFoundation_Operations_Inquiry_NativeHistoryContinuation_0__SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_runFrom_match__1_splitter___redArg(v_x_11_, v_x_12_, v_h__1_13_, v_h__2_14_);
+lean_dec(v_x_11_);
+return v_res_15_;
+}
+}
+LEAN_EXPORT lean_object* l___private_SaturationMonoid_GenericFoundation_Operations_Inquiry_NativeHistoryContinuation_0__SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_runFrom_match__1_splitter(lean_object* v_process_16_, lean_object* v_runtime_17_, lean_object* v_motive_18_, lean_object* v_x_19_, lean_object* v_x_20_, lean_object* v_h__1_21_, lean_object* v_h__2_22_){
+_start:
+{
+lean_object* v_zero_23_; uint8_t v_isZero_24_; 
+v_zero_23_ = lean_unsigned_to_nat(0u);
+v_isZero_24_ = lean_nat_dec_eq(v_x_19_, v_zero_23_);
+if (v_isZero_24_ == 1)
+{
+lean_object* v___x_25_; 
+lean_dec(v_h__2_22_);
+v___x_25_ = lean_apply_1(v_h__1_21_, v_x_20_);
+return v___x_25_;
+}
+else
+{
+lean_object* v_one_26_; lean_object* v_n_27_; lean_object* v___x_28_; 
+lean_dec(v_h__1_21_);
+v_one_26_ = lean_unsigned_to_nat(1u);
+v_n_27_ = lean_nat_sub(v_x_19_, v_one_26_);
+v___x_28_ = lean_apply_2(v_h__2_22_, v_n_27_, v_x_20_);
+return v___x_28_;
+}
+}
+}
+LEAN_EXPORT lean_object* l___private_SaturationMonoid_GenericFoundation_Operations_Inquiry_NativeHistoryContinuation_0__SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_runFrom_match__1_splitter___boxed(lean_object* v_process_29_, lean_object* v_runtime_30_, lean_object* v_motive_31_, lean_object* v_x_32_, lean_object* v_x_33_, lean_object* v_h__1_34_, lean_object* v_h__2_35_){
+_start:
+{
+lean_object* v_res_36_; 
+v_res_36_ = l___private_SaturationMonoid_GenericFoundation_Operations_Inquiry_NativeHistoryContinuation_0__SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_runFrom_match__1_splitter(v_process_29_, v_runtime_30_, v_motive_31_, v_x_32_, v_x_33_, v_h__1_34_, v_h__2_35_);
+lean_dec(v_x_32_);
+lean_dec_ref(v_runtime_30_);
+lean_dec_ref(v_process_29_);
+return v_res_36_;
+}
+}
+LEAN_EXPORT lean_object* l___private_SaturationMonoid_GenericFoundation_Operations_Inquiry_NativeHistoryContinuation_0__SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_storedStart___redArg(lean_object* v_history_37_){
+_start:
+{
+if (lean_obj_tag(v_history_37_) == 0)
+{
+lean_object* v_reached_38_; 
+v_reached_38_ = lean_ctor_get(v_history_37_, 0);
+lean_inc_ref(v_reached_38_);
+return v_reached_38_;
+}
+else
+{
+lean_object* v_current_39_; 
+v_current_39_ = lean_ctor_get(v_history_37_, 1);
+lean_inc_ref(v_current_39_);
+return v_current_39_;
+}
+}
+}
+LEAN_EXPORT lean_object* l___private_SaturationMonoid_GenericFoundation_Operations_Inquiry_NativeHistoryContinuation_0__SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_storedStart___redArg___boxed(lean_object* v_history_40_){
+_start:
+{
+lean_object* v_res_41_; 
+v_res_41_ = l___private_SaturationMonoid_GenericFoundation_Operations_Inquiry_NativeHistoryContinuation_0__SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_storedStart___redArg(v_history_40_);
+lean_dec_ref(v_history_40_);
+return v_res_41_;
+}
+}
+LEAN_EXPORT lean_object* l___private_SaturationMonoid_GenericFoundation_Operations_Inquiry_NativeHistoryContinuation_0__SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_storedStart(lean_object* v_process_42_, lean_object* v_runtime_43_, lean_object* v_fuel_44_, lean_object* v_state_45_, lean_object* v_history_46_){
+_start:
+{
+lean_object* v___x_47_; 
+v___x_47_ = l___private_SaturationMonoid_GenericFoundation_Operations_Inquiry_NativeHistoryContinuation_0__SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_storedStart___redArg(v_history_46_);
+return v___x_47_;
+}
+}
+LEAN_EXPORT lean_object* l___private_SaturationMonoid_GenericFoundation_Operations_Inquiry_NativeHistoryContinuation_0__SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_storedStart___boxed(lean_object* v_process_48_, lean_object* v_runtime_49_, lean_object* v_fuel_50_, lean_object* v_state_51_, lean_object* v_history_52_){
+_start:
+{
+lean_object* v_res_53_; 
+v_res_53_ = l___private_SaturationMonoid_GenericFoundation_Operations_Inquiry_NativeHistoryContinuation_0__SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_storedStart(v_process_48_, v_runtime_49_, v_fuel_50_, v_state_51_, v_history_52_);
+lean_dec_ref(v_history_52_);
+lean_dec_ref(v_state_51_);
+lean_dec(v_fuel_50_);
+lean_dec_ref(v_runtime_49_);
+lean_dec_ref(v_process_48_);
+return v_res_53_;
+}
+}
+LEAN_EXPORT lean_object* l___private_SaturationMonoid_GenericFoundation_Operations_Inquiry_NativeHistoryContinuation_0__SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_withStoredStart___redArg(lean_object* v_history_54_){
+_start:
+{
+lean_inc_ref(v_history_54_);
+return v_history_54_;
+}
+}
+LEAN_EXPORT lean_object* l___private_SaturationMonoid_GenericFoundation_Operations_Inquiry_NativeHistoryContinuation_0__SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_withStoredStart___redArg___boxed(lean_object* v_history_55_){
+_start:
+{
+lean_object* v_res_56_; 
+v_res_56_ = l___private_SaturationMonoid_GenericFoundation_Operations_Inquiry_NativeHistoryContinuation_0__SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_withStoredStart___redArg(v_history_55_);
+lean_dec_ref(v_history_55_);
+return v_res_56_;
+}
+}
+LEAN_EXPORT lean_object* l___private_SaturationMonoid_GenericFoundation_Operations_Inquiry_NativeHistoryContinuation_0__SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_withStoredStart(lean_object* v_process_57_, lean_object* v_runtime_58_, lean_object* v_fuel_59_, lean_object* v_state_60_, lean_object* v_history_61_){
+_start:
+{
+lean_inc_ref(v_history_61_);
+return v_history_61_;
+}
+}
+LEAN_EXPORT lean_object* l___private_SaturationMonoid_GenericFoundation_Operations_Inquiry_NativeHistoryContinuation_0__SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_withStoredStart___boxed(lean_object* v_process_62_, lean_object* v_runtime_63_, lean_object* v_fuel_64_, lean_object* v_state_65_, lean_object* v_history_66_){
+_start:
+{
+lean_object* v_res_67_; 
+v_res_67_ = l___private_SaturationMonoid_GenericFoundation_Operations_Inquiry_NativeHistoryContinuation_0__SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_withStoredStart(v_process_62_, v_runtime_63_, v_fuel_64_, v_state_65_, v_history_66_);
+lean_dec_ref(v_history_66_);
+lean_dec_ref(v_state_65_);
+lean_dec(v_fuel_64_);
+lean_dec_ref(v_runtime_63_);
+lean_dec_ref(v_process_62_);
+return v_res_67_;
+}
+}
+LEAN_EXPORT lean_object* l_SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_HistoryAt_storedOccurrenceAt___redArg___lam__0(lean_object* v_x_68_, lean_object* v_x_69_, lean_object* v___y_70_){
+_start:
+{
+lean_internal_panic_unreachable();
+}
+}
+LEAN_EXPORT lean_object* l_SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_HistoryAt_storedOccurrenceAt___redArg___lam__0___boxed(lean_object* v_x_71_, lean_object* v_x_72_, lean_object* v___y_73_){
+_start:
+{
+lean_object* v_res_74_; 
+v_res_74_ = l_SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_HistoryAt_storedOccurrenceAt___redArg___lam__0(v_x_71_, v_x_72_, v___y_73_);
+lean_dec(v___y_73_);
+lean_dec_ref(v_x_72_);
+lean_dec_ref(v_x_71_);
+return v_res_74_;
+}
+}
+LEAN_EXPORT lean_object* l_SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_HistoryAt_storedOccurrenceAt___redArg___lam__1(lean_object* v_x_75_, lean_object* v_previous_76_, lean_object* v_x_77_, lean_object* v_history_78_, lean_object* v_i_79_){
+_start:
+{
+lean_object* v_activated_80_; lean_object* v_tail_81_; lean_object* v___x_82_; lean_object* v___x_83_; lean_object* v___x_84_; lean_object* v___x_85_; 
+v_activated_80_ = lean_ctor_get(v_history_78_, 2);
+lean_inc(v_activated_80_);
+v_tail_81_ = lean_ctor_get(v_history_78_, 3);
+lean_inc_ref(v_tail_81_);
+lean_dec_ref(v_history_78_);
+v___x_82_ = lean_alloc_ctor(0, 2, 0);
+lean_ctor_set(v___x_82_, 0, v_x_77_);
+lean_ctor_set(v___x_82_, 1, v_activated_80_);
+v___x_83_ = l___private_SaturationMonoid_GenericFoundation_Operations_Inquiry_NativeHistoryContinuation_0__SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_storedStart___redArg(v_tail_81_);
+v___x_84_ = lean_apply_2(v_previous_76_, v___x_83_, v_tail_81_);
+v___x_85_ = l_Fin_cases___redArg(v___x_82_, v___x_84_, v_i_79_);
+lean_dec_ref_known(v___x_82_, 2);
+return v___x_85_;
+}
+}
+LEAN_EXPORT lean_object* l_SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_HistoryAt_storedOccurrenceAt___redArg___lam__1___boxed(lean_object* v_x_86_, lean_object* v_previous_87_, lean_object* v_x_88_, lean_object* v_history_89_, lean_object* v_i_90_){
+_start:
+{
+lean_object* v_res_91_; 
+v_res_91_ = l_SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_HistoryAt_storedOccurrenceAt___redArg___lam__1(v_x_86_, v_previous_87_, v_x_88_, v_history_89_, v_i_90_);
+lean_dec(v_i_90_);
+lean_dec(v_x_86_);
+return v_res_91_;
+}
+}
+LEAN_EXPORT lean_object* l_SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_HistoryAt_storedOccurrenceAt___redArg(lean_object* v_fuel_94_, lean_object* v_state_95_, lean_object* v_history_96_, lean_object* v_a_97_){
+_start:
+{
+lean_object* v___f_98_; lean_object* v___f_99_; lean_object* v___x_42__overap_100_; lean_object* v___x_101_; 
+v___f_98_ = ((lean_object*)(l_SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_HistoryAt_storedOccurrenceAt___redArg___closed__0));
+v___f_99_ = ((lean_object*)(l_SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_HistoryAt_storedOccurrenceAt___redArg___closed__1));
+v___x_42__overap_100_ = l_Nat_recCompiled___redArg(v___f_98_, v___f_99_, v_fuel_94_);
+v___x_101_ = lean_apply_3(v___x_42__overap_100_, v_state_95_, v_history_96_, v_a_97_);
+return v___x_101_;
+}
+}
+LEAN_EXPORT lean_object* l_SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_HistoryAt_storedOccurrenceAt___redArg___boxed(lean_object* v_fuel_102_, lean_object* v_state_103_, lean_object* v_history_104_, lean_object* v_a_105_){
+_start:
+{
+lean_object* v_res_106_; 
+v_res_106_ = l_SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_HistoryAt_storedOccurrenceAt___redArg(v_fuel_102_, v_state_103_, v_history_104_, v_a_105_);
+lean_dec(v_fuel_102_);
+return v_res_106_;
+}
+}
+LEAN_EXPORT lean_object* l_SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_HistoryAt_storedOccurrenceAt(lean_object* v_process_107_, lean_object* v_runtime_108_, lean_object* v_fuel_109_, lean_object* v_state_110_, lean_object* v_history_111_, lean_object* v_a_112_){
+_start:
+{
+lean_object* v___x_113_; 
+v___x_113_ = l_SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_HistoryAt_storedOccurrenceAt___redArg(v_fuel_109_, v_state_110_, v_history_111_, v_a_112_);
+return v___x_113_;
+}
+}
+LEAN_EXPORT lean_object* l_SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_HistoryAt_storedOccurrenceAt___boxed(lean_object* v_process_114_, lean_object* v_runtime_115_, lean_object* v_fuel_116_, lean_object* v_state_117_, lean_object* v_history_118_, lean_object* v_a_119_){
+_start:
+{
+lean_object* v_res_120_; 
+v_res_120_ = l_SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_HistoryAt_storedOccurrenceAt(v_process_114_, v_runtime_115_, v_fuel_116_, v_state_117_, v_history_118_, v_a_119_);
+lean_dec(v_fuel_116_);
+lean_dec_ref(v_runtime_115_);
+lean_dec_ref(v_process_114_);
+return v_res_120_;
+}
+}
+LEAN_EXPORT lean_object* l_SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_HistoryAt_continueFor___lam__0(lean_object* v_process_121_, lean_object* v_runtime_122_, lean_object* v_extra_123_, lean_object* v_x_124_, lean_object* v_history_125_){
+_start:
+{
+lean_object* v___x_126_; lean_object* v___x_127_; 
+v___x_126_ = l___private_SaturationMonoid_GenericFoundation_Operations_Inquiry_NativeHistoryContinuation_0__SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_storedStart___redArg(v_history_125_);
+v___x_127_ = lp_SaturationMonoid_SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_runFrom(v_process_121_, v_runtime_122_, v_extra_123_, v___x_126_);
+return v___x_127_;
+}
+}
+LEAN_EXPORT lean_object* l_SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_HistoryAt_continueFor___lam__0___boxed(lean_object* v_process_128_, lean_object* v_runtime_129_, lean_object* v_extra_130_, lean_object* v_x_131_, lean_object* v_history_132_){
+_start:
+{
+lean_object* v_res_133_; 
+v_res_133_ = l_SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_HistoryAt_continueFor___lam__0(v_process_128_, v_runtime_129_, v_extra_130_, v_x_131_, v_history_132_);
+lean_dec_ref(v_history_132_);
+lean_dec_ref(v_x_131_);
+lean_dec(v_extra_130_);
+return v_res_133_;
+}
+}
+LEAN_EXPORT lean_object* l_SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_HistoryAt_continueFor___lam__1(lean_object* v_extra_134_, lean_object* v_fuel_135_, lean_object* v_previous_136_, lean_object* v_x_137_, lean_object* v_history_138_){
+_start:
+{
+lean_object* v_activated_139_; lean_object* v_tail_140_; lean_object* v___x_142_; uint8_t v_isShared_143_; uint8_t v_isSharedCheck_150_; 
+v_activated_139_ = lean_ctor_get(v_history_138_, 2);
+v_tail_140_ = lean_ctor_get(v_history_138_, 3);
+v_isSharedCheck_150_ = !lean_is_exclusive(v_history_138_);
+if (v_isSharedCheck_150_ == 0)
+{
+lean_object* v_unused_151_; lean_object* v_unused_152_; 
+v_unused_151_ = lean_ctor_get(v_history_138_, 1);
+lean_dec(v_unused_151_);
+v_unused_152_ = lean_ctor_get(v_history_138_, 0);
+lean_dec(v_unused_152_);
+v___x_142_ = v_history_138_;
+v_isShared_143_ = v_isSharedCheck_150_;
+goto v_resetjp_141_;
+}
+else
+{
+lean_inc(v_tail_140_);
+lean_inc(v_activated_139_);
+lean_dec(v_history_138_);
+v___x_142_ = lean_box(0);
+v_isShared_143_ = v_isSharedCheck_150_;
+goto v_resetjp_141_;
+}
+v_resetjp_141_:
+{
+lean_object* v___x_144_; lean_object* v___x_145_; lean_object* v___x_146_; lean_object* v___x_148_; 
+v___x_144_ = lean_nat_add(v_extra_134_, v_fuel_135_);
+v___x_145_ = l___private_SaturationMonoid_GenericFoundation_Operations_Inquiry_NativeHistoryContinuation_0__SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_storedStart___redArg(v_tail_140_);
+v___x_146_ = lean_apply_2(v_previous_136_, v___x_145_, v_tail_140_);
+if (v_isShared_143_ == 0)
+{
+lean_ctor_set(v___x_142_, 3, v___x_146_);
+lean_ctor_set(v___x_142_, 1, v_x_137_);
+lean_ctor_set(v___x_142_, 0, v___x_144_);
+v___x_148_ = v___x_142_;
+goto v_reusejp_147_;
+}
+else
+{
+lean_object* v_reuseFailAlloc_149_; 
+v_reuseFailAlloc_149_ = lean_alloc_ctor(1, 4, 0);
+lean_ctor_set(v_reuseFailAlloc_149_, 0, v___x_144_);
+lean_ctor_set(v_reuseFailAlloc_149_, 1, v_x_137_);
+lean_ctor_set(v_reuseFailAlloc_149_, 2, v_activated_139_);
+lean_ctor_set(v_reuseFailAlloc_149_, 3, v___x_146_);
+v___x_148_ = v_reuseFailAlloc_149_;
+goto v_reusejp_147_;
+}
+v_reusejp_147_:
+{
+return v___x_148_;
+}
+}
+}
+}
+LEAN_EXPORT lean_object* l_SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_HistoryAt_continueFor___lam__1___boxed(lean_object* v_extra_153_, lean_object* v_fuel_154_, lean_object* v_previous_155_, lean_object* v_x_156_, lean_object* v_history_157_){
+_start:
+{
+lean_object* v_res_158_; 
+v_res_158_ = l_SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_HistoryAt_continueFor___lam__1(v_extra_153_, v_fuel_154_, v_previous_155_, v_x_156_, v_history_157_);
+lean_dec(v_fuel_154_);
+lean_dec(v_extra_153_);
+return v_res_158_;
+}
+}
+LEAN_EXPORT lean_object* l_SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_HistoryAt_continueFor(lean_object* v_process_159_, lean_object* v_runtime_160_, lean_object* v_fuel_161_, lean_object* v_state_162_, lean_object* v_history_163_, lean_object* v_extra_164_){
+_start:
+{
+lean_object* v___f_165_; lean_object* v___f_166_; lean_object* v___x_41__overap_167_; lean_object* v___x_168_; 
+lean_inc(v_extra_164_);
+v___f_165_ = lean_alloc_closure((void*)(l_SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_HistoryAt_continueFor___lam__0___boxed), 5, 3);
+lean_closure_set(v___f_165_, 0, v_process_159_);
+lean_closure_set(v___f_165_, 1, v_runtime_160_);
+lean_closure_set(v___f_165_, 2, v_extra_164_);
+v___f_166_ = lean_alloc_closure((void*)(l_SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_HistoryAt_continueFor___lam__1___boxed), 5, 1);
+lean_closure_set(v___f_166_, 0, v_extra_164_);
+v___x_41__overap_167_ = l_Nat_recCompiled___redArg(v___f_165_, v___f_166_, v_fuel_161_);
+lean_dec_ref(v___f_165_);
+v___x_168_ = lean_apply_2(v___x_41__overap_167_, v_state_162_, v_history_163_);
+return v___x_168_;
+}
+}
+LEAN_EXPORT lean_object* l_SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_HistoryAt_continueFor___boxed(lean_object* v_process_169_, lean_object* v_runtime_170_, lean_object* v_fuel_171_, lean_object* v_state_172_, lean_object* v_history_173_, lean_object* v_extra_174_){
+_start:
+{
+lean_object* v_res_175_; 
+v_res_175_ = l_SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_HistoryAt_continueFor(v_process_169_, v_runtime_170_, v_fuel_171_, v_state_172_, v_history_173_, v_extra_174_);
+lean_dec(v_fuel_171_);
+return v_res_175_;
+}
+}
+LEAN_EXPORT lean_object* l_SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_HistoryAt_extendTo___redArg(lean_object* v_process_176_, lean_object* v_runtime_177_, lean_object* v_fuel_178_, lean_object* v_state_179_, lean_object* v_history_180_, lean_object* v_total_181_){
+_start:
+{
+lean_object* v___x_182_; lean_object* v___x_183_; 
+v___x_182_ = lean_nat_sub(v_total_181_, v_fuel_178_);
+v___x_183_ = l_SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_HistoryAt_continueFor(v_process_176_, v_runtime_177_, v_fuel_178_, v_state_179_, v_history_180_, v___x_182_);
+return v___x_183_;
+}
+}
+LEAN_EXPORT lean_object* l_SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_HistoryAt_extendTo___redArg___boxed(lean_object* v_process_184_, lean_object* v_runtime_185_, lean_object* v_fuel_186_, lean_object* v_state_187_, lean_object* v_history_188_, lean_object* v_total_189_){
+_start:
+{
+lean_object* v_res_190_; 
+v_res_190_ = l_SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_HistoryAt_extendTo___redArg(v_process_184_, v_runtime_185_, v_fuel_186_, v_state_187_, v_history_188_, v_total_189_);
+lean_dec(v_total_189_);
+lean_dec(v_fuel_186_);
+return v_res_190_;
+}
+}
+LEAN_EXPORT lean_object* l_SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_HistoryAt_extendTo(lean_object* v_process_191_, lean_object* v_runtime_192_, lean_object* v_fuel_193_, lean_object* v_state_194_, lean_object* v_history_195_, lean_object* v_total_196_, lean_object* v_within_197_){
+_start:
+{
+lean_object* v___x_198_; 
+v___x_198_ = l_SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_HistoryAt_extendTo___redArg(v_process_191_, v_runtime_192_, v_fuel_193_, v_state_194_, v_history_195_, v_total_196_);
+return v___x_198_;
+}
+}
+LEAN_EXPORT lean_object* l_SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_HistoryAt_extendTo___boxed(lean_object* v_process_199_, lean_object* v_runtime_200_, lean_object* v_fuel_201_, lean_object* v_state_202_, lean_object* v_history_203_, lean_object* v_total_204_, lean_object* v_within_205_){
+_start:
+{
+lean_object* v_res_206_; 
+v_res_206_ = l_SaturationMonoid_ResponsibilityLifecycle_LivingLawEvolution_ConstructiveRoot_RootInquiryCompletion_SourceNativeInquiryRuntime_HistoryAt_extendTo(v_process_199_, v_runtime_200_, v_fuel_201_, v_state_202_, v_history_203_, v_total_204_, v_within_205_);
+lean_dec(v_total_204_);
+lean_dec(v_fuel_201_);
+return v_res_206_;
+}
+}
+lean_object* initialize_Init(uint8_t builtin);
+lean_object* initialize_Init(uint8_t builtin);
+lean_object* initialize_SaturationMonoid_GenericFoundation_Operations_Inquiry_NativeHistoryLookup(uint8_t builtin);
+static bool _G_initialized = false;
+LEAN_EXPORT lean_object* initialize_SaturationMonoid_GenericFoundation_Operations_Inquiry_NativeHistoryContinuation(uint8_t builtin) {
+lean_object * res;
+if (_G_initialized) return lean_io_result_mk_ok(lean_box(0));
+_G_initialized = true;
+res = initialize_Init(builtin);
+if (lean_io_result_is_error(res)) return res;
+lean_dec_ref(res);
+res = initialize_Init(builtin);
+if (lean_io_result_is_error(res)) return res;
+lean_dec_ref(res);
+res = initialize_SaturationMonoid_GenericFoundation_Operations_Inquiry_NativeHistoryLookup(builtin);
+if (lean_io_result_is_error(res)) return res;
+lean_dec_ref(res);
+return lean_io_result_mk_ok(lean_box(0));
+}
+#ifdef __cplusplus
+}
+#endif
