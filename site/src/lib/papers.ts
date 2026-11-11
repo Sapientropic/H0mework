@@ -211,12 +211,15 @@ export function paperOf(slug: string, lang: Lang) {
   // Some papers place their subtitle on a separate heading or bold line before the abstract.
   if ((slug === "economic-constitution" || slug === "capital-formation") && !parts.sub)
     parts.sub = manuscript.split(/^##\s+(?:摘要|Abstract)\s*$/m)[0].match(/^##\s+(.+)$/m)?.[1] ?? "";
-  if (slug === "one-bit" && lang === "en" && !parts.sub)
-    parts.sub = manuscript.split(/^\*\*Author:/m)[0].match(/^\*\*(.+)\*\*$/m)?.[1] ?? "";
-  const hasSeparateSub = slug === "economic-constitution" || slug === "capital-formation" || (slug === "one-bit" && lang === "en");
+  const hasBoldSubtitle = lang === "en" && (slug === "one-bit" || latest === "whole-ledger-v2");
+  const boldSubtitle = (text: string) => text.split(/^\*\*Author:/m)[0].match(/^\*\*(.+)\*\*$/m)?.[1] ?? "";
+  if (hasBoldSubtitle && !parts.sub) parts.sub = boldSubtitle(manuscript);
+  const hasSeparateSub = slug === "economic-constitution" || slug === "capital-formation" || hasBoldSubtitle;
   const abstract = abstractOf(manuscript, lang);
   const otherManuscript = manuscriptOf(latest, slug, lang === "zh" ? "en" : "zh");
-  const other = titleOf(otherManuscript);
+  const otherTitle = titleOf(otherManuscript);
+  const other = latest === "whole-ledger-v2" && lang === "zh"
+    ? [otherTitle, boldSubtitle(otherManuscript)].filter(Boolean).join(": ") : otherTitle;
   const fullTitle = parts.sub && hasSeparateSub ? `${title}${lang === "zh" ? "：" : ": "}${parts.sub}` : title;
   const current = editions.at(-1)!;
   const citation: CitationMeta = {

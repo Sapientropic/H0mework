@@ -15,7 +15,7 @@ export const repoLink = (path: string, line?: number, commit = "main") => `${REP
 const suffix = (lang: Lang) => (lang === "en" ? "-en" : "");
 const unzip = (zip: string, member: string) => execFileSync("unzip", ["-p", resolve(ROOT, zip), member], { encoding: "utf8", maxBuffer: 1 << 26 });
 
-export type ReleaseId = "first-release" | "second-edition" | "low-energy" | "whole-ledger" | "one-bit" | "one-bit-v2" | "generated-society" | "economic-constitution" | "generated-society-v2" | "economic-constitution-v2" | "capital-formation" | "enforceable-peace" | "physics-third-edition";
+export type ReleaseId = "first-release" | "second-edition" | "low-energy" | "whole-ledger" | "whole-ledger-v2" | "source-process-core-v3" | "one-bit" | "one-bit-v2" | "generated-society" | "economic-constitution" | "generated-society-v2" | "economic-constitution-v2" | "capital-formation" | "enforceable-peace" | "physics-third-edition";
 type Release = {
   label: Record<Lang, string>;
   date: string;
@@ -47,6 +47,33 @@ const LOW = "papers/low-energy-first-release/2026-10-11";
 const LEDGER = "papers/whole-ledger-one-bit/2026-10-17";
 // The 2026-10-17 papers ship their manuscripts and selections inside the editable archive uploaded to Zenodo.
 const ledgerArchive = (slug: string) => `${LEDGER}/editable/${slug}-v1-editable.zip`;
+const PROCESS_LEDGER = "papers/process-core-whole-ledger/2026-11-12";
+const processLedgerManifest = readJson(`${PROCESS_LEDGER}/manifest.json`);
+function processLedgerPaper(slug: string, version: string) {
+  const paper = processLedgerManifest.papers.find((row: any) => row.paper === slug);
+  if (!paper?.is_published || paper.version !== version || !/^10\.5281\/zenodo\.\d+$/.test(paper.doi)
+    || !/^[0-9a-f]{40}$/.test(paper.source_commit) || paper.source_commit !== processLedgerManifest.source_commit)
+    throw new Error(`Missing published ${version} DOI or proof binding for ${slug}`);
+  return paper;
+}
+const coreThird = processLedgerPaper("source-process-core", "v3");
+const ledgerSecond = processLedgerPaper("whole-ledger-accounting", "v2");
+function processLedgerRelease(slug: string, version: string, paper: any, binding: string) {
+  const archive = `${PROCESS_LEDGER}/editable/${slug}-${version}-editable.zip`;
+  const member = `papers/${slug}`;
+  return {
+    date: paper.publication_date,
+    selection: { path: archive, member: `${member}/${binding}` },
+    manuscript: (_slug: string, lang: Lang) => unzip(archive, `${member}/manuscript${suffix(lang)}.md`),
+    supplement: (_slug: string, lang: Lang) => unzip(archive, `${member}/supplement${suffix(lang)}.md`),
+    bibliography: () => unzip(archive, `${member}/references-${version}.bib`),
+    files: (_slug: string, lang: Lang) => ({
+      pdf: `${PROCESS_LEDGER}/pdf/${slug}${suffix(lang)}.pdf`,
+      supplement: `${PROCESS_LEDGER}/pdf/${slug}-supplement${suffix(lang)}.pdf`,
+    }),
+    sourceCommit: paper.source_commit,
+  };
+}
 const ONE_BIT_V2 = "papers/one-bit/2026-11-11-v2";
 const oneBitArchive = `${ONE_BIT_V2}/editable/one-bit-v2-editable.zip`;
 const oneBitSecond = readJson(`${ONE_BIT_V2}/manifest.json`).papers.find((paper: any) => paper.paper === "one-bit");
@@ -153,6 +180,29 @@ const BASE_RELEASES: Record<Exclude<ReleaseId, "generated-society-v2" | "economi
     files: (slug, lang) => ({ pdf: `${LEDGER}/pdf/${slug}${suffix(lang)}.pdf`, supplement: `${LEDGER}/pdf/${slug}-supplement${suffix(lang)}.pdf` }),
     check: "make check-whole-ledger-entry",
     guide: "docs/whole-ledger-reproduction.md",
+  },
+  "whole-ledger-v2": {
+    ...processLedgerRelease("whole-ledger-accounting", "v2", ledgerSecond, "release-selection-v2.json"),
+    label: { zh: "整账法第二版", en: "Whole ledger, second edition" },
+    map: "docs/whole-ledger-v2-map.json",
+    check: "python3 tools/whole_ledger_v2.py entry",
+    guide: "docs/whole-ledger-v2-reproduction.md",
+    replacesClaimsFrom: "whole-ledger",
+    acceptance: {
+      zh: "WA4 的容量核及 WA41–WA45 通过本地构建、公理依赖和完整声明类型核验。",
+      en: "The WA4 capacity kernel and WA41–WA45 passed the local build, dependency trust audit, and complete declaration type checks.",
+    },
+  },
+  "source-process-core-v3": {
+    ...processLedgerRelease("source-process-core", "v3", coreThird, "public-source-binding.json"),
+    label: { zh: "过程核心第三版", en: "Process core, third edition" },
+    map: "docs/source-process-core-v3-map.json",
+    check: "python3 tools/source_process_core_v3.py entry",
+    guide: "docs/source-process-core-v3-reproduction.md",
+    acceptance: {
+      zh: "C47–C48 通过本地构建、公理依赖和完整声明类型核验。其余新增主张沿用整账法的验收。",
+      en: "C47–C48 passed the local build, dependency trust audit, and complete declaration type checks. The other new claims reuse the whole-ledger acceptance.",
+    },
   },
   "one-bit": {
     label: { zh: "一比特", en: "One bit" },
@@ -308,13 +358,17 @@ export const PAPERS: PaperEntry[] = [
     editions: [
       { release: "first-release", doi: "10.5281/zenodo.23210084" },
       { release: "second-edition", doi: "10.5281/zenodo.23297175" },
+      { release: "source-process-core-v3", doi: coreThird.doi },
     ],
     figure: { name: "source-tape", claim: "core.C23" },
   },
   {
     slug: "whole-ledger-accounting",
     theme: "core",
-    editions: [{ release: "whole-ledger", doi: "10.5281/zenodo.23437454" }],
+    editions: [
+      { release: "whole-ledger", doi: "10.5281/zenodo.23437454" },
+      { release: "whole-ledger-v2", doi: ledgerSecond.doi },
+    ],
     figure: { name: "whole-ledger-tower", claim: "wla.WA10" },
   },
   {

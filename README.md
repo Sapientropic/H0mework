@@ -16,9 +16,9 @@
 ## 机器已核
 
 <!-- BEGIN CI STATUS -->
-<a href="https://github.com/Sapientropic/H0mework/actions/runs/42657239378"><img src="docs/assets/ci-wall.svg" alt="Lean 完整选集：56,206 个模块，11 个阶段、83 个分片，全部通过" width="100%"></a>
+<a href="https://github.com/Sapientropic/H0mework/actions/runs/43018293075"><img src="docs/assets/ci-wall.svg" alt="Lean 完整选集：58,722 个模块，11 个阶段、96 个分片，全部通过" width="100%"></a>
 
-- **56,206 个 Lean 模块通过完整内核验收。** [验收运行](https://github.com/Sapientropic/H0mework/actions/runs/42657239378) 使用 11 个阶段、83 个分片，全包 `--trust=0`，提交 `26788967`。当前构建覆盖 58,722 个模块、96 个分片。
+- **58,722 个 Lean 模块通过完整内核验收。** [验收运行](https://github.com/Sapientropic/H0mework/actions/runs/43018293075) 使用 11 个阶段、96 个分片，全包 `--trust=0`，提交 `2e5b4cbc`。当前构建覆盖 62,694 个模块、106 个分片。
 <!-- END CI STATUS -->
 
 - **论文引用的声明逐版再审。** 完整依赖闭包只使用 Lean 标准三条公理，`unsafe = 0`、`partial = 0`；各篇验收与复现入口列在下方论文分组中。
@@ -29,7 +29,7 @@
 <!-- BEGIN PAPERS -->
 **[在网站上浏览全部论文，读摘要并逐条展开证明 →](https://h0mework.wiki/papers/)**
 
-最新：[现实刚性与单母源普遍形成](https://h0mework.wiki/papers/one-bit/) · [战争与和平的源生终局定理](https://h0mework.wiki/papers/enforceable-peace/)
+最新：[溯源守恒演算与非免费连续性](https://h0mework.wiki/papers/whole-ledger-accounting/) · [源生过程代数与初始余面修订](https://h0mework.wiki/papers/source-process-core/)
 
 <details>
 <summary><strong>总序</strong> · 1 篇</summary>
@@ -41,8 +41,8 @@
 <details>
 <summary><strong>核心方法</strong> · 2 篇</summary>
 
-- [状态不是历史，源才是](https://h0mework.wiki/papers/source-process-core/) · [v2](https://doi.org/10.5281/zenodo.23297175) · [映射](docs/second-edition-map.json) · [复现](docs/edition-reproduction.md)
-- [平账魔法别想逃](https://h0mework.wiki/papers/whole-ledger-accounting/) · [v1](https://doi.org/10.5281/zenodo.23437454) · [映射](docs/whole-ledger-map.json) · [复现](docs/whole-ledger-reproduction.md)
+- [源生过程代数与初始余面修订](https://h0mework.wiki/papers/source-process-core/) · [v3](https://doi.org/10.5281/zenodo.24147130) · [映射](docs/source-process-core-v3-map.json) · [复现](docs/source-process-core-v3-reproduction.md)
+- [溯源守恒演算与非免费连续性](https://h0mework.wiki/papers/whole-ledger-accounting/) · [v2](https://doi.org/10.5281/zenodo.24147183) · [映射](docs/whole-ledger-v2-map.json) · [复现](docs/whole-ledger-v2-reproduction.md)
 
 </details>
 
@@ -79,7 +79,7 @@
 
 - 过程核心与物理旗舰的第一版保留原 DOI（[过程核心](https://doi.org/10.5281/zenodo.23210084)、[物理旗舰](https://doi.org/10.5281/zenodo.23210292)）及[首发成品](papers/first-release/README.md)；低能两稿的[2026-10-09 成品快照](papers/low-energy-first-release/2026-10-09/README.md)保留原文件与绑定身份。
 - 过程核心／物理旗舰第二版及低能两稿固定引用公开源码 `b9d66048`；后续修复与 `643721f1` 的对应见[源码绑定](docs/source-materials.md#四篇论文的源码绑定)，材料验收见[版本状态](docs/second-edition-readiness.md)。
-- 整账法固定引用 [`4301fa8c`](https://github.com/Sapientropic/H0mework/tree/4301fa8c5bb19bb1e8c3824d7c69be406264ed12)，验收范围见[整账法验收](docs/whole-ledger-readiness.md)。一比特第二版固定引用 [`ffa5eeb7`](https://github.com/Sapientropic/H0mework/tree/ffa5eeb70130b17db3873407d0cd10a218e45896)，逐项验收见[复现指南](docs/one-bit-v2-reproduction.md)。
+- 过程核心第三版与整账法第二版固定引用 [`5f94af7e`](https://github.com/Sapientropic/H0mework/tree/5f94af7e988c9831c92e54fe89747699fa29cd85)。[过程核心验收](docs/source-process-core-v3-readiness.md) · [整账法验收](docs/whole-ledger-v2-readiness.md) · [缓存保全](evidence/whole-ledger-v2/acceptance/cache-preservation.json)。一比特第二版固定引用 [`ffa5eeb7`](https://github.com/Sapientropic/H0mework/tree/ffa5eeb70130b17db3873407d0cd10a218e45896)，逐项验收见[复现指南](docs/one-bit-v2-reproduction.md)。
 - 首版八稿的“代码与数据可用性”对应标签 [`papers-2026-09`](https://github.com/Sapientropic/H0mework/tree/papers-2026-09)，命令见[旧版复现指南](docs/reproduction.md)；首发修订选集按[逐主张映射](docs/first-release-map.json)使用各自固定来源。
 
 </details>

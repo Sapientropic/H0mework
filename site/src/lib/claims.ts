@@ -3,7 +3,7 @@
 import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
-import { RELEASES, entryOf, manuscriptOf, mapOf, once, peaceBinding, publishedPaperJson, read, readJson, repoLink, selectionOf, type Lang, type ReleaseId } from "./registry";
+import { RELEASES, entryOf, manuscriptOf, mapOf, once, peaceBinding, publishedPaperJson, read, repoLink, selectionOf, type Lang, type ReleaseId } from "./registry";
 import { excerptsOf } from "./excerpts";
 
 type Declaration = { name?: string; qualified_name: string; line?: number };
@@ -13,7 +13,7 @@ type Producer = {
   declarations?: Declaration[];
 };
 type Text = { title: string | null; statement: string | null };
-export type Source = { key: string; ids: string[]; edition: number; text: Text; location: Record<Lang, string | null>; producers: Producer[]; category?: "principle" | "interface" | "formal"; citations?: string[]; passages?: Partial<Record<Lang, string[]>>; readingOrder?: number };
+export type Source = { key: string; ids: string[]; edition: number; text: Text; localizedText?: Partial<Record<Lang, Text>>; location: Record<Lang, string | null>; producers: Producer[]; category?: "principle" | "interface" | "formal"; citations?: string[]; passages?: Partial<Record<Lang, string[]>>; readingOrder?: number };
 
 // Every mapped Lean producer passed its kernel check before release. A map's "pending" marks only
 // the later re-acceptance of the public package in CI, so the site does not show it as a status.
@@ -106,24 +106,6 @@ function secondEdition(slug: string, edition: number): Source[] {
     });
 }
 
-// The whole-ledger map names each producer by its research source and commit; the export map says
-// which public module carries that source at that commit.
-const moduleOf = (path: string) => path.replace(/^Lean\//, "").replace(/\.lean$/, "").replace(/\//g, ".");
-const exportIndex = () =>
-  once("export-index", () => {
-    const index = new Map<string, { path: string; revisions: string[] }[]>();
-    for (const row of readJson("tools/export-map.json").modules) {
-      const rows = index.get(row.source_path) ?? [];
-      rows.push({ path: row.path, revisions: row.source_revisions ?? [row.source_revision] });
-      index.set(row.source_path, rows);
-    }
-    return index;
-  });
-function publicOf(commit: string, sourcePath: string) {
-  const row = exportIndex().get(sourcePath)?.find((candidate) => candidate.revisions.includes(commit));
-  return row && { path: row.path, module: moduleOf(row.path) };
-}
-
 // Locations are registered in Chinese; the English page names the same results in English and keeps
 // only the section of a reference that is a description rather than a result.
 const TERMS: [RegExp, string][] = [
@@ -141,23 +123,35 @@ function englishLocation(zh: string) {
   return parts.filter(Boolean).join(" / ") || null;
 }
 
-function wholeLedger(slug: string, edition: number): Source[] {
-  const published = new Map<string, any>(selectionOf("whole-ledger").claims.map((claim: any) => [claim.id, claim]));
-  return mapOf("whole-ledger")
-    .claims.filter((claim: any) => claim.paper === slug)
-    .map((claim: any) => {
-      const zh = published.get(claim.id)?.body?.location ?? null;
-      return {
-        key: `wla.${claim.id}`,
-        ids: [`wla.${claim.id}`],
-        edition,
-        text: { title: claim.title.replace(/^WA\d+\s*/, ""), statement: claim.statement_scope ?? null },
-        location: { zh, en: zh && englishLocation(zh) },
-        producers: claim.producers
-          .map((producer: any) => ({ kind: "lean", public: publicOf(producer.source_commit, producer.source_path), declarations: producer.declarations.map((decl: any) => ({ qualified_name: decl.qualified_name })) }))
-          .filter((producer: Producer) => producer.public),
-      };
-    });
+function wholeLedger(slug: string, edition: number, release: ReleaseId): Source[] {
+  const selection = selectionOf(release);
+  const inherited = new Map<string, any>(mapOf("whole-ledger").claims
+    .filter((claim: any) => claim.paper === slug).map((claim: any) => [claim.id, claim]));
+  const additions = release === "whole-ledger-v2" ? mapOf(release) : null;
+  if (additions && (additions.acceptance?.status !== "passed"
+    || selection.h0_binding.new_paper_acceptance_commit !== RELEASES[release].sourceCommit))
+    throw new Error("Whole-ledger second edition does not match its accepted proof selection");
+  const added = new Map<string, any>((additions?.claims ?? []).map((claim: any) => [claim.id, claim]));
+  return selection.claims.map((location: any) => {
+    const prior = inherited.get(location.id);
+    const current = added.get(location.id);
+    const claim = prior ?? current;
+    if (!claim) throw new Error(`Whole-ledger result has no proof map entry: ${location.id}`);
+    const zh = location.body?.location ?? null;
+    const citations = additions ? location.written.zh.flatMap((anchor: string) => {
+      const match = anchor.match(/^manuscript\.md#(?:thm|prop|def|cor|lem|ex)-(\d+(?:-\d+)*)$/);
+      return match && match[1] !== "1-1" ? [match[1].replace(/-/g, ".")] : [];
+    }) : [];
+    return {
+      key: `wla.${claim.id}`,
+      ids: [`wla.${claim.id}`],
+      edition,
+      text: { title: claim.title.replace(/^WA\d+\s*/, ""), statement: claim.statement_scope ?? null },
+      location: { zh, en: zh && englishLocation(zh) },
+      citations,
+      producers: [...acceptedEntries(prior?.producers ?? []), ...(current ? proofEntries(current) : [])],
+    };
+  });
 }
 
 // One-bit rows come from the published selection: its titles, its manuscript anchors, and each
@@ -206,6 +200,34 @@ const acceptedEntries = (entries: any[]): Producer[] => entries.map((entry) => (
   public: entry.public,
   declarations: entry.declarations?.map((decl: any) => ({ qualified_name: decl.public_name ?? decl.qualified_name })),
 }));
+const proofEntries = (claim: any) => acceptedEntries([...claim.producers, ...claim.direct_consumers, ...claim.resources]);
+
+function sourceProcessCoreV3(_slug: string, edition: number, release: ReleaseId): Source[] {
+  const map = mapOf(release);
+  const binding = selectionOf(release);
+  if (map.acceptance?.status !== "passed" || binding.public_commit !== RELEASES[release].sourceCommit)
+    throw new Error("Process core third edition does not match its accepted proof selection");
+  const selected: Source[] = map.claims.map((claim: any) => ({
+    key: `core.${claim.id}`, ids: [`core.${claim.id}`], edition,
+    text: { title: claim.titles.zh, statement: claim.statements.zh },
+    localizedText: { en: { title: claim.titles.en, statement: claim.statements.en } },
+    location: claim.location,
+    producers: proofEntries(claim),
+  }));
+  for (const row of map.shared_claims) {
+    const shared = mapOf(row.release);
+    const claim = shared.claims.find((entry: any) => entry.id === row.claim_id);
+    if (RELEASES[row.release as ReleaseId].map !== row.map || shared.acceptance?.status !== "passed" || !claim)
+      throw new Error(`Process core result has no accepted shared proof: ${row.id}`);
+    selected.push({
+      key: `core.${row.id}`, ids: [`core.${row.id}`], edition,
+      text: { title: claim.title, statement: claim.statement_scope ?? null },
+      location: row.location,
+      producers: proofEntries(claim),
+    });
+  }
+  return selected;
+}
 function societyIds(text: string): string[] {
   return [...text.matchAll(/G(\d+)(a)?(?:[–-]G(\d+))?/g)].flatMap((match) =>
     match[3] ? Array.from({ length: +match[3] - +match[1] + 1 }, (_, i) => `G${+match[1] + i}`) : [`G${match[1]}${match[2] ?? ""}`]);
@@ -389,6 +411,8 @@ const ADAPTERS: Record<ReleaseId, (slug: string, edition: number, release: Relea
   "second-edition": secondEdition,
   "low-energy": lowEnergy,
   "whole-ledger": wholeLedger,
+  "whole-ledger-v2": wholeLedger,
+  "source-process-core-v3": sourceProcessCoreV3,
   "one-bit": oneBit,
   "one-bit-v2": oneBit,
   "generated-society": generatedSociety,
@@ -410,9 +434,12 @@ export const fingerprint = (text: Text) => createHash("sha256").update(`${text.t
 export const translationsOf = (lang: Lang) =>
   once<Translations>(`claims-${lang}`, () => JSON.parse(readFileSync(resolve(process.cwd(), `src/data/claims-${lang}.json`), "utf8")));
 const isChinese = (text: Text) => /[\u4e00-\u9fff]/.test(`${text.title ?? ""}${text.statement ?? ""}`);
-export const needsTranslation = (source: Source, lang: Lang) => (lang === "zh") !== isChinese(source.text);
+export const needsTranslation = (source: Source, lang: Lang) =>
+  !source.localizedText?.[lang] && (lang === "zh") !== isChinese(source.text);
 
 function textOf(source: Source, lang: Lang): Text & { translated: boolean } {
+  const localized = source.localizedText?.[lang];
+  if (localized) return { ...localized, translated: false };
   if (!needsTranslation(source, lang)) return { ...source.text, translated: false };
   const entry = translationsOf(lang)[source.key];
   if (entry?.from === fingerprint(source.text)) return { title: entry.title ?? null, statement: entry.statement ?? null, translated: true };
