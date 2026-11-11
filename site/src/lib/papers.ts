@@ -85,6 +85,7 @@ export type CitationMeta = {
   authorName: string;
   alternateAuthorName: string;
   orcid: string;
+  version: number;
   date: string;
   doi: string;
   doiLink: string;
@@ -224,6 +225,7 @@ export function paperOf(slug: string, lang: Lang) {
     authorName: authorDisplayOf(manuscript),
     alternateAuthorName: authorDisplayOf(otherManuscript),
     orcid: orcidOf(manuscript),
+    version: current.number,
     date: current.date,
     doi: current.doi,
     doiLink: current.doiLink,

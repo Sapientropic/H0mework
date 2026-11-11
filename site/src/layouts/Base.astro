@@ -17,31 +17,79 @@ const ogImageUrl = abs(`${ogImage}?v=${ogVersion}`);
 const selfPath = Astro.url.pathname;
 const [zhPath, enPath] = lang === "zh" ? [selfPath, alternate] : [alternate, selfPath];
 const citationDate = citation?.date.replaceAll("-", "/");
-const jsonLd = citation && {
-  "@context": "https://schema.org",
-  "@type": "ScholarlyArticle",
-  headline: citation.title,
-  name: citation.title,
-  author: {
-    "@type": "Person",
-    name: citation.authorName,
-    alternateName: citation.alternateAuthorName,
-    ...(citation.orcid ? { url: `https://orcid.org/${citation.orcid}`, sameAs: `https://orcid.org/${citation.orcid}` } : {}),
-  },
-  datePublished: citation.date,
-  identifier: citation.doiLink,
-  sameAs: citation.doiLink,
-  url: abs(selfPath),
-  inLanguage: lang === "zh" ? "zh-CN" : "en",
-  keywords: citation.keywords,
-  abstract: citation.abstract,
-  license: "https://creativecommons.org/licenses/by/4.0/",
-  encoding: {
-    "@type": "MediaObject",
-    contentUrl: abs(citation.pdfPath),
-    encodingFormat: "application/pdf",
-  },
-};
+const jsonLd = citation
+  ? {
+      "@context": "https://schema.org",
+      "@type": "ScholarlyArticle",
+      "@id": citation.doiLink,
+      headline: citation.title,
+      name: citation.title,
+      version: `v${citation.version}`,
+      author: {
+        "@type": "Person",
+        name: citation.authorName,
+        alternateName: citation.alternateAuthorName,
+        ...(citation.orcid
+          ? {
+              url: `https://orcid.org/${citation.orcid}`,
+              sameAs: [
+                `https://orcid.org/${citation.orcid}`,
+                ...(citation.orcid === "0009-0009-5002-1655" ? ["https://openalex.org/A5157965724"] : []),
+              ],
+            }
+          : {}),
+      },
+      datePublished: citation.date,
+      identifier: [
+        { "@type": "PropertyValue", propertyID: "DOI", value: citation.doi },
+        citation.doiLink,
+      ],
+      sameAs: [citation.doiLink, abs(alternate)],
+      url: abs(selfPath),
+      mainEntityOfPage: abs(selfPath),
+      inLanguage: lang === "zh" ? "zh-CN" : "en",
+      isAccessibleForFree: true,
+      keywords: citation.keywords,
+      abstract: citation.abstract,
+      license: "https://creativecommons.org/licenses/by/4.0/",
+      publisher: {
+        "@type": "Organization",
+        name: "Zenodo",
+        url: "https://zenodo.org",
+      },
+      isPartOf: {
+        "@type": "WebSite",
+        name: "H0mework",
+        url: "https://h0mework.wiki",
+      },
+      isBasedOn: {
+        "@type": "SoftwareSourceCode",
+        name: "H0mework",
+        codeRepository: "https://github.com/Sapientropic/H0mework",
+        programmingLanguage: "Lean 4",
+        license: "https://www.apache.org/licenses/LICENSE-2.0",
+      },
+      encoding: {
+        "@type": "MediaObject",
+        contentUrl: abs(citation.pdfPath),
+        encodingFormat: "application/pdf",
+      },
+    }
+  : {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      name: "H0mework",
+      url: "https://h0mework.wiki",
+      inLanguage: lang === "zh" ? "zh-CN" : "en",
+      description,
+      author: {
+        "@type": "Person",
+        name: lang === "zh" ? "高健" : "Jian Gao",
+        alternateName: lang === "zh" ? "Jian Gao" : "高健",
+        url: "https://orcid.org/0009-0009-5002-1655",
+        sameAs: ["https://orcid.org/0009-0009-5002-1655", "https://openalex.org/A5157965724", "https://github.com/Sapientropic"],
+      },
+    };
 ---
 <!doctype html>
 <html lang={lang === "zh" ? "zh-CN" : "en"}>
@@ -86,9 +134,9 @@ const jsonLd = citation && {
         <meta name="citation_language" content={lang === "zh" ? "zh" : "en"} />
         {citation.keywords.length > 0 && <meta name="citation_keywords" content={citation.keywords.join("; ")} />}
         <meta name="citation_abstract" content={citation.abstract} />
-        <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
       </>
     )}
+    {indexable && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   </head>
   <body>

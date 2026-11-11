@@ -7,7 +7,7 @@ license = "Apache-2.0"
 licenseFiles = ["LICENSE"]
 readmeFile = "README.en.md"
 srcDir = "Lean"
-defaultTargets = ["H0mework", "ResourceConsumers_15a9a7f1af9edd94", "ResourceConsumers_3606f5269412e357", "ResourceConsumers_d700e8a5f12a0c72", "ResourceConsumers_1e1ae4b55cfaa424", "ResourceConsumers_5d60190f8c552243", "ResourceConsumers_c8f26eb536eba11f", "ResourceConsumers_05819243d0f03058", "ResourceConsumers_42d0393dda443953", "ResourceConsumers_662d860139605627", "ResourceConsumers_c5ce7c98c6fb2afe", "ResourceConsumers_4306926d26d3e100", "ResourceConsumers_524380564da88277", "ResourceConsumers_598bc2100d4a470f", "ResourceConsumers_f16f09d592d9fed1", "ResourceConsumers_38dd326bee1881e5", "ResourceConsumers_a5be13c98d55de59", "ResourceConsumers_a8ba570880d786e7", "ResourceConsumers_e94628c12cb5af16", "ResourceConsumers_e615fc1eae897d2f", "ResourceConsumers_3ec8ead604397acb", "ResourceConsumers_f3b844eed8451357", "ResourceConsumers_fb8213f28d86d220", "ResourceConsumers_343b97a439466c84", "ResourceConsumers_e7aebe388314d626", "ResourceConsumers_5ee63fcc1d2eabc2", "ResourceConsumers_048d35b0f13ffddc", "ResourceConsumers_8a02641b81044b03", "ResourceConsumers_efa122af6a18f938", "H0meworkRelaxed", "ResourceConsumers_27de91880f85717a", "ResourceConsumers_84273b86d41c7cc1", "ResourceConsumers_b0054fdd1430293f", "ResourceConsumers_df027f387d2e7e21", "ResourceConsumers_a9cfcb862f08d790", "ResourceConsumers_da6d7ec0232b12e5", "ResourceConsumers_384fd6d4ee850ec5", "ResourceConsumers_70f37e98e05b9a24", "ResourceConsumers_bc8736156be163cd", "ResourceConsumers_ca63848ccd9141be", "GeneratedSocietyRelease", "EconomicConstitutionRelease", "SocietyBookSupplement"]
+defaultTargets = ["H0mework", "ResourceConsumers_15a9a7f1af9edd94", "ResourceConsumers_3606f5269412e357", "ResourceConsumers_d700e8a5f12a0c72", "ResourceConsumers_1e1ae4b55cfaa424", "ResourceConsumers_5d60190f8c552243", "ResourceConsumers_c8f26eb536eba11f", "ResourceConsumers_05819243d0f03058", "ResourceConsumers_42d0393dda443953", "ResourceConsumers_662d860139605627", "ResourceConsumers_c5ce7c98c6fb2afe", "ResourceConsumers_4306926d26d3e100", "ResourceConsumers_524380564da88277", "ResourceConsumers_598bc2100d4a470f", "ResourceConsumers_f16f09d592d9fed1", "ResourceConsumers_38dd326bee1881e5", "ResourceConsumers_a5be13c98d55de59", "ResourceConsumers_a8ba570880d786e7", "ResourceConsumers_e94628c12cb5af16", "ResourceConsumers_e615fc1eae897d2f", "ResourceConsumers_3ec8ead604397acb", "ResourceConsumers_f3b844eed8451357", "ResourceConsumers_fb8213f28d86d220", "ResourceConsumers_343b97a439466c84", "ResourceConsumers_e7aebe388314d626", "ResourceConsumers_5ee63fcc1d2eabc2", "ResourceConsumers_048d35b0f13ffddc", "ResourceConsumers_8a02641b81044b03", "ResourceConsumers_efa122af6a18f938", "H0meworkRelaxed", "ResourceConsumers_27de91880f85717a", "ResourceConsumers_84273b86d41c7cc1", "ResourceConsumers_b0054fdd1430293f", "ResourceConsumers_df027f387d2e7e21", "ResourceConsumers_a9cfcb862f08d790", "ResourceConsumers_da6d7ec0232b12e5", "ResourceConsumers_384fd6d4ee850ec5", "ResourceConsumers_70f37e98e05b9a24", "ResourceConsumers_bc8736156be163cd", "ResourceConsumers_ca63848ccd9141be", "GeneratedSocietyRelease", "EconomicConstitutionRelease", "SocietyBookSupplement", "EnforceablePeace", "PhysicsThirdEdition"]
 # Preserve source proof text: these lint suggestions are stylistic, not proof failures.
 # warningAsError is a per-library gate (the relaxed library exempts pinned sources
 # that emit hard warnings); --trust=0 stays package-wide.
@@ -546,3 +546,36 @@ name = "SocietyBookSupplement"
 roots = []
 globs = ["H0mework.Versions.R7c228ac7.+", "H0mework.Versions.Rac87df08.+", "H0mework.Versions.Rfb9e88a7.+", "H0mework.Papers.SocietyBookScopedAudit", "H0mework.Papers.SocietyBookSourcePrivacy", "H0mework.Papers.SocietyBookRiskCompensation", "H0mework.Papers.SocietyBookQuantities", "H0mework.Versions.R3b3d24a4.+", "H0mework.Versions.R5e4033a6.+", "H0mework.Versions.R7e013edd.+", "H0mework.Versions.Rcb211392.+", "H0mework.Versions.Rf1d58550.+", "H0mework.Versions.Rf9493be3.+", "H0mework.Papers.SocietyBookExactQuantities", "H0mework.Papers.SocietyBookAccountedTransition", "H0mework.Papers.SocietyBookProductiveContinuation", "H0mework.Papers.SocietyBookConflict", "H0mework.Papers.SocietyBookDonorPrivacy", "H0mework.Papers.SocietyBookCrossDomainG8", "H0mework.Versions.Rffa160b3.ReleaseMaterials.Scripts.Verification.PublicDonorLiveOwnerSource"]
 moreLeanArgs = ["-DwarningAsError=true"]
+
+
+[[lean_lib]]
+name = "EnforceablePeace"
+roots = []
+globs = ["H0mework.Versions.R3a90cba5.+", "H0mework.Versions.R71cb159f.+", "H0mework.Versions.R7e4da746.+", "H0mework.Versions.Rb5b9c5f8.+", "H0mework.Versions.Rb675168b.+", "H0mework.Versions.Rcf880bb2.+", "H0mework.Papers.EnforceablePeace", "H0mework.Papers.EnforceablePeace.+"]
+moreLeanArgs = ["-DwarningAsError=true"]
+
+[[lean_lib]]
+name = "PhysicsThirdEdition"
+roots = []
+moreLeanArgs = ["-DwarningAsError=true"]
+globs = [
+  "H0mework.Versions.R01f114f0.ReleaseMaterials.Verification.Physics.Stage10.IndependentBell.Munich.ReadoutDomain.Evidence.SourceWordMassSimplexRha02890290.SourceR0010.SourceKrausWordSimplex290",
+  "H0mework.Versions.R10c4592e.ReleaseMaterials.Verification.Physics.Stage10.IndependentBell.Munich.ReadoutDomain.Evidence.SourceNativeKrausWindowRha0292.SourceR0002.SourceNativeKrausWindow292",
+  "H0mework.Versions.R1357a4e9.ReleaseMaterials.Verification.Physics.Stage10.IndependentBell.Munich.ReadoutDomain.Evidence.SourceEndpointRecyclingRha0300.DensitySourceR0001.SourceEndpointDensity300",
+  "H0mework.Versions.R1dea0007.ReleaseMaterials.Verification.Physics.Stage10.IndependentBell.Munich.ReadoutDomain.Evidence.SourceOpenProgrammeRealizationRha0301.SourceR0010.SourceOpenProgrammeRealization301",
+  "H0mework.Versions.R374d24d1.ReleaseMaterials.Verification.Physics.Stage10.IndependentBell.Munich.ReadoutDomain.Evidence.SourceEndpointRecyclingRha0300.DensityCertifyR0001.SourceEndpointDensity300CertifyQuery",
+  "H0mework.Versions.R3dba7b88.ReleaseMaterials.Verification.Physics.Stage10.IndependentBell.Munich.ReadoutDomain.Evidence.SourceWordMassSimplexRha02890290.SourceR0007.SourceKrausWordMass289",
+  "H0mework.Versions.R4770e616.ReleaseMaterials.Verification.Physics.Stage10.IndependentBell.Munich.ReadoutDomain.Evidence.SourceEndpointRecyclingRha0300.SourceR0009.SourceEndpointRecycling300",
+  "H0mework.Versions.R52891d0c.ReleaseMaterials.Verification.Physics.Stage10.IndependentBell.Munich.ReadoutDomain.Evidence.SourceOpenProgrammeRealizationRha0301.SourceR0006.SourceOpenProgrammeMaterial301",
+  "H0mework.Versions.R5a407445.ReleaseMaterials.Verification.Physics.Stage10.IndependentBell.Munich.ReadoutDomain.Evidence.SourceHiddenWordFlowRha0286.SourceR0009.SourceHiddenWordFlow286",
+  "H0mework.Versions.R64fe0788.ReleaseMaterials.Verification.Physics.Stage10.IndependentBell.Munich.ReadoutDomain.Evidence.SourceKrausWordWaveRha0291.CertifyR0001.SourceKrausWordWave291CertifyQuery",
+  "H0mework.Versions.R75d8419e.ReleaseMaterials.Verification.Physics.Stage10.IndependentBell.Munich.ReadoutDomain.Evidence.SourceTerminalBanachFlowRha0303.SourceR0003.SourceTerminalBanachFlow303",
+  "H0mework.Versions.R7c8399ec.ReleaseMaterials.Verification.Physics.Stage10.IndependentBell.Munich.ReadoutDomain.Evidence.SourceKrausSurvivalRha0285.SourceR0006.SourceKrausSurvival285",
+  "H0mework.Versions.Ra4744604.ReleaseMaterials.Verification.Physics.Stage10.IndependentBell.Munich.ReadoutDomain.Evidence.SourceEndpointRecyclingRha0300.SourceR0006.SourceEndpointWords300",
+  "H0mework.Versions.Ra4744604.ReleaseMaterials.Verification.Physics.Stage10.IndependentBell.Munich.ReadoutDomain.Evidence.SourceOpenFieldKernelRha0299.SourceR0006.SourceExactDensityFlow299",
+  "H0mework.Versions.Rb42a6779.ReleaseMaterials.Verification.Physics.Stage10.IndependentBell.Munich.ReadoutDomain.Evidence.SourceKrausSurvivalRha0285.SourceR0004.RetardedSourceSurvival284",
+  "H0mework.Versions.Rfa2085ee.ReleaseMaterials.Verification.Physics.Stage10.IndependentBell.Munich.ReadoutDomain.Evidence.SourceKrausWordWaveRha0291.SourceR0004.SourceKrausWordWave291",
+  "H0mework.Versions.R2cccd55f.+",
+  "H0mework.Versions.R320c1651.+",
+  "H0mework.Papers.PhysicsThirdEdition.+",
+]

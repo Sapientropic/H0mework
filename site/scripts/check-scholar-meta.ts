@@ -56,6 +56,15 @@ for (const entry of PAPERS) {
     assert.ok(body.includes(`href="${paper.citation.pdfPath}"`), `${pageDir}: visible body missing direct link to ${paper.citation.pdfPath}`);
     const abstractSection = body.match(/<div class="prose abstract">([\s\S]*?)<\/section>/)?.[1] ?? "";
     assert.ok(abstractSection.length > 0 && !abstractSection.includes("<details"), `${pageDir}: abstract must be fully visible without <details>`);
+
+    // Rule 4: Valid Schema.org ScholarlyArticle JSON-LD linking DOI, ORCID, PDF MediaObject, and Lean 4 repository.
+    const ldRaw = head.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)?.[1] ?? "";
+    assert.ok(ldRaw.length > 0, `${pageDir}: missing application/ld+json`);
+    const ld = JSON.parse(ldRaw);
+    assert.equal(ld["@type"], "ScholarlyArticle", `${pageDir}: JSON-LD must be ScholarlyArticle`);
+    assert.equal(ld.isAccessibleForFree, true, `${pageDir}: JSON-LD must set isAccessibleForFree=true`);
+    assert.equal(ld.encoding?.contentUrl, pdfUrl, `${pageDir}: JSON-LD encoding.contentUrl mismatch`);
+    assert.ok(Array.isArray(ld.sameAs) && ld.sameAs.includes(`https://doi.org/${doi}`), `${pageDir}: JSON-LD sameAs missing DOI URL`);
   }
 }
 
