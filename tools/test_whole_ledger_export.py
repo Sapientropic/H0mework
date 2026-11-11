@@ -286,6 +286,40 @@ class ExportTests(unittest.TestCase):
         self.assertEqual(public[epoch]["outputs"][source], effective)
         self.assertEqual(exact[epoch]["outputs"][source], original)
 
+    def test_git_supplement_restores_only_its_bound_original_epoch(self):
+        from first_release import ReleaseError
+        from generated_society import selected_views
+
+        source, archive = "Lean/Value.lean", "docs/original/Value.lean"
+        original = b"import Mathlib\ndef value : Sum Unit Unit := ()\n"
+        effective = b"import Mathlib\ndef value : Sum Unit Unit := .inr ()\n"
+        self.write(self.source, source, original)
+        epoch = self.commit(self.source)
+        self.write(self.source, source, effective)
+        supplement = self.commit(self.source)
+        self.write(self.public, archive, original)
+        origin = {"kind": "git-source-supplement", "source_commit": supplement,
+                  "source_path": source, "source_sha256": w.sha(effective),
+                  "original_source_commit": epoch, "original_source_path": source,
+                  "original_failure_source_artifact": archive, "original_source_sha256": w.sha(original)}
+        self.existing(source, effective, epoch, origin=origin)
+        path = self.selection([{"source_commit": epoch, "roots": [source]}])
+        selection = json.loads(path.read_bytes())
+        selection["original_proof_supplements"] = [
+            {"source_commit": epoch, "source_path": source, "original_artifact": archive,
+             "source_sha256": w.sha(original), "effective_sha256": w.sha(effective)}
+        ]
+        path.write_text(json.dumps(selection))
+        _, _, public = selected_views(self.public, selection_path=path)
+        _, _, exact = selected_views(self.public, exact=True, selection_path=path)
+        self.assertEqual(public[epoch]["outputs"][source], effective)
+        self.assertEqual(exact[epoch]["outputs"][source], original)
+
+        origin["original_source_commit"] = supplement
+        self.write_map()
+        with self.assertRaisesRegex(ReleaseError, "Original proof supplement differs"):
+            selected_views(self.public, exact=True, selection_path=path)
+
     def test_fixed_public_owner_selects_a_compatible_legacy_copy(self):
         source = "Lean/Value.lean"
         raw = b"def value : Nat := 1\n"

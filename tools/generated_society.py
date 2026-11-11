@@ -142,7 +142,13 @@ def selected_views(root, *, exact=False, private_originals=None, selection_path=
                 origin = row.get("source_origin", {})
                 archive = supplement["original_artifact"]
                 raw = release.repo_file(root, archive).read_bytes()
-                require(origin.get("kind") == "H0-proof-elaboration-only-supplement"
+                local_proof = origin.get("kind") == "H0-proof-elaboration-only-supplement"
+                fixed_source = (origin.get("kind") == "git-source-supplement"
+                                and release.HEX40.fullmatch(origin.get("source_commit", ""))
+                                and origin.get("source_path") == origin.get("original_source_path") == path
+                                and origin.get("original_source_commit") == epoch
+                                and origin.get("source_sha256") == supplement["effective_sha256"])
+                require((local_proof or fixed_source)
                         and origin.get("original_failure_source_artifact") == archive
                         and release.sha(raw) == origin.get("original_source_sha256") == supplement["source_sha256"]
                         and release.sha(original) == supplement["effective_sha256"]
