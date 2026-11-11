@@ -164,7 +164,7 @@ function wholeLedger(slug: string, edition: number): Source[] {
 // claim's verified H0 bindings, the public modules of the claims it reuses and of its own control.
 const ANCHORS: Record<string, Record<Lang, string>> = {
   thm: { zh: "定理", en: "Theorem" }, def: { zh: "定义", en: "Definition" }, prop: { zh: "命题", en: "Proposition" },
-  cor: { zh: "推论", en: "Corollary" }, lem: { zh: "引理", en: "Lemma" },
+  cor: { zh: "推论", en: "Corollary" }, lem: { zh: "引理", en: "Lemma" }, ex: { zh: "例", en: "Example" },
 };
 function anchorLabel(anchor: string, lang: Lang) {
   const [kind, ...rest] = anchor.split("#").pop()!.split("-");
@@ -172,8 +172,13 @@ function anchorLabel(anchor: string, lang: Lang) {
   if (kind === "appendix") return `${lang === "zh" ? "附录" : "Appendix"} ${rest[0].toUpperCase()}`;
   return ANCHORS[kind] ? `${ANCHORS[kind][lang]} ${rest.map((part) => part.toUpperCase()).join(".")}` : anchor;
 }
-function oneBit(slug: string, edition: number): Source[] {
-  return selectionOf("one-bit").claims.map((claim: any) => ({
+function oneBit(_slug: string, edition: number, release: ReleaseId): Source[] {
+  const selection = selectionOf(release);
+  const additions = release === "one-bit-v2" ? mapOf(release) : null;
+  if (additions && (additions.acceptance?.status !== "passed"
+      || selection.h0_binding.one_bit_v2.commit !== RELEASES[release].sourceCommit))
+    throw new Error("One Bit second edition does not match its accepted proof selection");
+  return selection.claims.map((claim: any) => ({
     key: `ob.${claim.id}`,
     ids: [`ob.${claim.id}`],
     edition,
@@ -182,13 +187,15 @@ function oneBit(slug: string, edition: number): Source[] {
       zh: claim.written.zh.map((anchor: string) => anchorLabel(anchor, "zh")).join("；"),
       en: claim.written.en.map((anchor: string) => anchorLabel(anchor, "en")).join("; "),
     },
-    producers: claim.h0
-      .filter((binding: any) => binding.identity === "verified")
-      .map((binding: any) => {
+    producers: [
+      ...claim.h0.filter((binding: any) => binding.identity === "verified").map((binding: any) => {
         const path = binding.target_path ?? `Lean/${binding.target_module.replace(/\./g, "/")}.lean`;
         const source = claim.sources.find((entry: any) => entry.path === binding.source_path);
-        return { kind: "lean", public: { path, module: binding.target_module }, declarations: (source?.declarations ?? []).map((name: string) => ({ qualified_name: name })) };
+        const declarations = binding.declarations ?? source?.declarations ?? [];
+        return { kind: "lean", public: { path, module: binding.target_module }, declarations: declarations.map((name: string) => ({ qualified_name: name })) };
       }),
+      ...(additions?.claims.find((entry: any) => entry.id === claim.id)?.resources ?? []),
+    ],
   }));
 }
 
@@ -383,6 +390,7 @@ const ADAPTERS: Record<ReleaseId, (slug: string, edition: number, release: Relea
   "low-energy": lowEnergy,
   "whole-ledger": wholeLedger,
   "one-bit": oneBit,
+  "one-bit-v2": oneBit,
   "generated-society": generatedSociety,
   "economic-constitution": economicConstitution,
   "generated-society-v2": generatedSociety,

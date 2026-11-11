@@ -15,7 +15,7 @@ export const repoLink = (path: string, line?: number, commit = "main") => `${REP
 const suffix = (lang: Lang) => (lang === "en" ? "-en" : "");
 const unzip = (zip: string, member: string) => execFileSync("unzip", ["-p", resolve(ROOT, zip), member], { encoding: "utf8", maxBuffer: 1 << 26 });
 
-export type ReleaseId = "first-release" | "second-edition" | "low-energy" | "whole-ledger" | "one-bit" | "generated-society" | "economic-constitution" | "generated-society-v2" | "economic-constitution-v2" | "capital-formation" | "enforceable-peace" | "physics-third-edition";
+export type ReleaseId = "first-release" | "second-edition" | "low-energy" | "whole-ledger" | "one-bit" | "one-bit-v2" | "generated-society" | "economic-constitution" | "generated-society-v2" | "economic-constitution-v2" | "capital-formation" | "enforceable-peace" | "physics-third-edition";
 type Release = {
   label: Record<Lang, string>;
   date: string;
@@ -47,6 +47,12 @@ const LOW = "papers/low-energy-first-release/2026-10-11";
 const LEDGER = "papers/whole-ledger-one-bit/2026-10-17";
 // The 2026-10-17 papers ship their manuscripts and selections inside the editable archive uploaded to Zenodo.
 const ledgerArchive = (slug: string) => `${LEDGER}/editable/${slug}-v1-editable.zip`;
+const ONE_BIT_V2 = "papers/one-bit/2026-11-11-v2";
+const oneBitArchive = `${ONE_BIT_V2}/editable/one-bit-v2-editable.zip`;
+const oneBitSecond = readJson(`${ONE_BIT_V2}/manifest.json`).papers.find((paper: any) => paper.paper === "one-bit");
+if (!oneBitSecond?.is_published || oneBitSecond.version !== "v2"
+    || !/^10\.5281\/zenodo\.\d+$/.test(oneBitSecond.doi) || !/^[0-9a-f]{40}$/.test(oneBitSecond.source_commit))
+  throw new Error("One Bit second edition has no published DOI and fixed proof source");
 const SOCIETY = "papers/society-economic/2026-11-03";
 const SOCIETY_V2 = "papers/society-economic/2026-11-03-v2";
 const SOCIETY_SOURCE = "2d6fbc96e33b7c4c3cfd91104fda74e3caeda045";
@@ -157,6 +163,23 @@ const BASE_RELEASES: Record<Exclude<ReleaseId, "generated-society-v2" | "economi
     files: (slug, lang) => ({ pdf: `${LEDGER}/pdf/${slug}${suffix(lang)}.pdf` }),
     check: "make check-one-bit-entry",
     guide: "docs/one-bit-reproduction.md",
+  },
+  "one-bit-v2": {
+    label: { zh: "一比特第二版", en: "One Bit, second edition" },
+    date: oneBitSecond.publication_date,
+    map: "docs/one-bit-v2-map.json",
+    selection: { path: oneBitArchive, member: "papers/one-bit/release-selection-v2.json" },
+    manuscript: (slug, lang) => unzip(oneBitArchive, `papers/${slug}/manuscript${suffix(lang)}.md`),
+    bibliography: (slug) => unzip(oneBitArchive, `papers/${slug}/references-v2.bib`),
+    files: (slug, lang) => ({ pdf: `${ONE_BIT_V2}/pdf/${slug}${suffix(lang)}.pdf` }),
+    check: "python3 tools/one_bit_v2.py entry",
+    guide: "docs/one-bit-v2-reproduction.md",
+    sourceCommit: oneBitSecond.source_commit,
+    replacesClaimsFrom: "one-bit",
+    acceptance: {
+      zh: "OB2、OB12 和 OB13 的新增材料通过本地构建、公理依赖和完整声明类型核验。",
+      en: "The additions for OB2, OB12, and OB13 passed the local build, dependency trust audit, and complete declaration type checks.",
+    },
   },
   "generated-society": {
     label: { zh: "典范社会总定理", en: "Canonical society" },
@@ -273,7 +296,10 @@ export const PAPERS: PaperEntry[] = [
   {
     slug: "one-bit",
     theme: "preface",
-    editions: [{ release: "one-bit", doi: "10.5281/zenodo.23437456" }],
+    editions: [
+      { release: "one-bit", doi: "10.5281/zenodo.23437456" },
+      { release: "one-bit-v2", doi: oneBitSecond.doi },
+    ],
     figure: { name: "ghost-register", claim: "ob.OB2" },
   },
   {

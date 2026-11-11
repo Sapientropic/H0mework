@@ -18,7 +18,7 @@ Lean 4 proofs, reproduction programs and frozen evidence behind a family of rese
 <!-- BEGIN CI STATUS -->
 <a href="https://github.com/Sapientropic/H0mework/actions/runs/42657239378"><img src="docs/assets/ci-wall.en.svg" alt="Lean full selection: 56,206 modules across 11 stages and 83 shards, all checked" width="100%"></a>
 
-- **56,206 Lean modules passed the complete kernel check.** [The accepted run](https://github.com/Sapientropic/H0mework/actions/runs/42657239378) used 11 stages and 83 shards with `--trust=0` throughout at `26788967`. The current build covers 58,068 modules across 92 shards.
+- **56,206 Lean modules passed the complete kernel check.** [The accepted run](https://github.com/Sapientropic/H0mework/actions/runs/42657239378) used 11 stages and 83 shards with `--trust=0` throughout at `26788967`. The current build covers 58,722 modules across 96 shards.
 <!-- END CI STATUS -->
 
 - **Cited declarations are audited again per edition.** Their full dependency closures use only Lean's three standard axioms, with `unsafe = 0` and `partial = 0`; each paper's acceptance and reproduction links are grouped below.
@@ -29,12 +29,12 @@ Lean 4 proofs, reproduction programs and frozen evidence behind a family of rese
 <!-- BEGIN PAPERS -->
 **[Browse all papers on the site, with abstracts and claim-level proofs →](https://h0mework.wiki/en/papers/)**
 
-Latest: [War and Peace](https://h0mework.wiki/en/papers/enforceable-peace/) · [From a Single Occurrence Source to a Continuous–Quantum Unified Field](https://h0mework.wiki/en/papers/physics-common-source/)
+Latest: [Ontological Rigidity and Universal Single-Mother Formation](https://h0mework.wiki/en/papers/one-bit/) · [War and Peace](https://h0mework.wiki/en/papers/enforceable-peace/)
 
 <details>
 <summary><strong>Preface</strong> · 1 paper</summary>
 
-- [1 Bit Is All You Need](https://h0mework.wiki/en/papers/one-bit/) · [v1](https://doi.org/10.5281/zenodo.23437456) · [Map](docs/one-bit-map.json) · [Reproduce](docs/one-bit-reproduction.md)
+- [Ontological Rigidity and Universal Single-Mother Formation](https://h0mework.wiki/en/papers/one-bit/) · [v2](https://doi.org/10.5281/zenodo.24135399) · [Map](docs/one-bit-v2-map.json) · [Reproduce](docs/one-bit-v2-reproduction.md)
 
 </details>
 
@@ -79,7 +79,7 @@ Main texts, proof supplements and editable sources are available from each Zenod
 
 - The first versions of the process-core and physics papers retain their original DOIs ([process core](https://doi.org/10.5281/zenodo.23210084), [physics](https://doi.org/10.5281/zenodo.23210292)) and [first-release package](papers/first-release/README.md). The [2026-10-09 low-energy snapshot](papers/low-energy-first-release/2026-10-09/README.md) retains its original file and source identities.
 - The second editions and the two low-energy papers cite source commit `b9d66048`. Later public-source repairs and their `643721f1` binding are described in the [source index](docs/source-materials.md#四篇论文的源码绑定); material acceptance is recorded in the [edition status](docs/second-edition-readiness.md).
-- Whole-ledger accounting and One Bit cite [`4301fa8c`](https://github.com/Sapientropic/H0mework/tree/4301fa8c5bb19bb1e8c3824d7c69be406264ed12) and [`6bff9d40`](https://github.com/Sapientropic/H0mework/tree/6bff9d4046b3f89004678244482b1c403837150c); their accepted scopes are in the [whole-ledger](docs/whole-ledger-readiness.md) and [One Bit](docs/one-bit-readiness.md) acceptance records.
+- Whole-ledger accounting cites [`4301fa8c`](https://github.com/Sapientropic/H0mework/tree/4301fa8c5bb19bb1e8c3824d7c69be406264ed12) and its [acceptance record](docs/whole-ledger-readiness.md). One Bit's second edition cites [`ffa5eeb7`](https://github.com/Sapientropic/H0mework/tree/ffa5eeb70130b17db3873407d0cd10a218e45896) and its [reproduction guide](docs/one-bit-v2-reproduction.md).
 - The earlier eight papers are bound to the [`papers-2026-09`](https://github.com/Sapientropic/H0mework/tree/papers-2026-09) tag, with commands in the [original reproduction guide](docs/reproduction.md). The first two-paper release follows the fixed versions in the [claim-to-source map](docs/first-release-map.json).
 
 </details>
