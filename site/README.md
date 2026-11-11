@@ -34,7 +34,7 @@ bun run build      # 先跑图的模型自检与构建，再出 dist/
 
 ## 站点元信息
 
-`astro.config.mjs` 设了 `site: https://h0mework.wiki` 并启用 `@astrojs/sitemap`（双语 hreflang，404 不入册）；`public/robots.txt` 指向 sitemap。每页带 canonical、双向 hreflang + x-default、OG/Twitter 卡片；论文页另从最新稿自动生成 Highwire Press `citation_*` 学术元标签、`ScholarlyArticle` JSON-LD 结构化数据，并在 `/papers/<slug>.pdf` 与 `/en/papers/<slug>.pdf` 输出同域 PDF 直链供 Google Scholar 等学术检索收录。
+`astro.config.mjs` 设了 `site: https://h0mework.wiki` 并启用 `@astrojs/sitemap`（双语 hreflang，404 不入册）；`public/robots.txt` 指向 sitemap。每页带 canonical、双向 hreflang + x-default、OG/Twitter 卡片；论文页另从最新稿自动生成 Highwire Press `citation_*` 学术元标签、页面可见作者与 ORCID 署名、完整可见摘要、`ScholarlyArticle` JSON-LD 结构化数据，并在与摘要页同目录的 `/papers/<slug>/<slug>.pdf` 与 `/en/papers/<slug>/<slug>.pdf` 输出同域同子目录 PDF 直链（同时保留 `/papers/<slug>.pdf` 与 `/en/papers/<slug>.pdf` 兼容直链），由 `scripts/check-scholar-meta.ts` 在每次构建后校验 Google Scholar 收录规范。
 
 `public/og/` 是分享预览图：有配图的论文用配图的机器图，其余页面用 `default.png`（打孔卡）。`bun run figures`（以及 `dev` / `build`）会自动运行 `bun scripts/og.mjs`：直接从 `PAPERS` 读取全部配图名，将 1200×630 静态页写入 `.og/`，比对每张 PNG 内嵌的 `og-sha256` 指纹块，仅在新增或配图/样式变更时调用无头 Chrome 自动重截 `public/og/<name>.png`（`.og/` 不入库）；页面元标签自动附带 `?v=<hash>` 破除社交平台缓存。
 

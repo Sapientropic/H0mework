@@ -207,13 +207,16 @@ export function paperOf(slug: string, lang: Lang) {
   const manuscript = manuscriptOf(latest, slug, lang);
   const title = titleOf(manuscript);
   const parts = splitTitle(title);
-  // This paper places its subtitle on a separate heading before the abstract.
+  // Some papers place their subtitle on a separate heading or bold line before the abstract.
   if ((slug === "economic-constitution" || slug === "capital-formation") && !parts.sub)
     parts.sub = manuscript.split(/^##\s+(?:摘要|Abstract)\s*$/m)[0].match(/^##\s+(.+)$/m)?.[1] ?? "";
+  if (slug === "one-bit" && lang === "en" && !parts.sub)
+    parts.sub = manuscript.split(/^\*\*Author:/m)[0].match(/^\*\*(.+)\*\*$/m)?.[1] ?? "";
+  const hasSeparateSub = slug === "economic-constitution" || slug === "capital-formation" || (slug === "one-bit" && lang === "en");
   const abstract = abstractOf(manuscript, lang);
   const otherManuscript = manuscriptOf(latest, slug, lang === "zh" ? "en" : "zh");
   const other = titleOf(otherManuscript);
-  const fullTitle = parts.sub && (slug === "economic-constitution" || slug === "capital-formation") ? `${title}${lang === "zh" ? "：" : ": "}${parts.sub}` : title;
+  const fullTitle = parts.sub && hasSeparateSub ? `${title}${lang === "zh" ? "：" : ": "}${parts.sub}` : title;
   const current = editions.at(-1)!;
   const citation: CitationMeta = {
     title: fullTitle,
@@ -224,13 +227,13 @@ export function paperOf(slug: string, lang: Lang) {
     date: current.date,
     doi: current.doi,
     doiLink: current.doiLink,
-    pdfPath: `${lang === "en" ? "/en" : ""}/papers/${slug}.pdf`,
+    pdfPath: `${lang === "en" ? "/en" : ""}/papers/${slug}/${slug}.pdf`,
     keywords: keywordsOf(manuscript),
     abstract: abstract.map(plain).join(lang === "zh" ? "" : " "),
   };
   return {
     ...entry,
-    title: parts.sub && (slug === "economic-constitution" || slug === "capital-formation") ? `${title}: ${parts.sub}` : title,
+    title: parts.sub && hasSeparateSub ? `${title}: ${parts.sub}` : title,
     ...parts,
     // The other language's title, less a main title both languages share.
     other: splitTitle(other).main === splitTitle(title).main ? splitTitle(other).sub : other,
