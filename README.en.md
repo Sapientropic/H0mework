@@ -18,7 +18,7 @@ Lean 4 proofs, reproduction programs and frozen evidence behind a family of rese
 <!-- BEGIN CI STATUS -->
 <a href="https://github.com/Sapientropic/H0mework/actions/runs/43284094032"><img src="docs/assets/ci-wall.en.svg" alt="Lean full selection: 62,695 modules across 11 stages and 107 shards, all checked" width="100%"></a>
 
-- **62,695 Lean modules passed the complete kernel check.** [The accepted run](https://github.com/Sapientropic/H0mework/actions/runs/43284094032) used 11 stages and 107 shards with `--trust=0` throughout at `a33906ce`.
+- **62,695 Lean modules passed the complete kernel check.** [The accepted run](https://github.com/Sapientropic/H0mework/actions/runs/43284094032) used 11 stages and 107 shards with `--trust=0` throughout at `a33906ce`. The current build covers 62,714 modules across 108 shards.
 <!-- END CI STATUS -->
 
 - **Cited declarations are audited again per edition.** Their full dependency closures use only Lean's three standard axioms, with `unsafe = 0` and `partial = 0`; each paper's acceptance and reproduction links are grouped below.
@@ -29,7 +29,7 @@ Lean 4 proofs, reproduction programs and frozen evidence behind a family of rese
 <!-- BEGIN PAPERS -->
 **[Browse all papers on the site, with abstracts and claim-level proofs →](https://h0mework.wiki/en/papers/)**
 
-Latest: [An Economic Constitution of Possibility](https://h0mework.wiki/en/papers/economic-constitution/) · [The Structural Theorem of Capitalism](https://h0mework.wiki/en/papers/capital-formation/)
+Latest: [An Economic Constitution of Possibility](https://h0mework.wiki/en/papers/economic-constitution/) · [Cutoff-Free Noncommutative Polarization Curvature, Second-Variation Action Identification, and the (2,1) Inertia Law of Whole-Ball Response](https://h0mework.wiki/en/papers/low-energy-loop-response/)
 
 <details>
 <summary><strong>Preface</strong> · 1 paper</summary>
@@ -56,8 +56,8 @@ Latest: [An Economic Constitution of Possibility](https://h0mework.wiki/en/paper
 <details>
 <summary><strong>Low-energy series</strong> · 2 papers</summary>
 
-- [The Current Takes the Stand](https://h0mework.wiki/en/papers/low-energy-phenomenology/) · [v1](https://doi.org/10.5281/zenodo.23299174) · [Map](docs/low-energy-release-map.json) · [Reproduce](docs/edition-reproduction.md)
-- [Two Minuses, One Plus, and a Bare Trace Under Oath](https://h0mework.wiki/en/papers/low-energy-loop-response/) · [v1](https://doi.org/10.5281/zenodo.23299177) · [Map](docs/low-energy-release-map.json) · [Reproduce](docs/edition-reproduction.md)
+- [Low-Energy Electromagnetic Emergence from a Zero-Knob Unified Source](https://h0mework.wiki/en/papers/low-energy-phenomenology/) · [v2](https://doi.org/10.5281/zenodo.24176697) · [Map](docs/low-energy-v2-map.json) · [Reproduce](docs/low-energy-v2-reproduction.md)
+- [Cutoff-Free Noncommutative Polarization Curvature, Second-Variation Action Identification, and the (2,1) Inertia Law of Whole-Ball Response](https://h0mework.wiki/en/papers/low-energy-loop-response/) · [v2](https://doi.org/10.5281/zenodo.24176698) · [Map](docs/low-energy-v2-map.json) · [Reproduce](docs/low-energy-v2-reproduction.md)
 
 </details>
 

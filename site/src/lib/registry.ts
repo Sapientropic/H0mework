@@ -15,7 +15,7 @@ export const repoLink = (path: string, line?: number, commit = "main") => `${REP
 const suffix = (lang: Lang) => (lang === "en" ? "-en" : "");
 const unzip = (zip: string, member: string) => execFileSync("unzip", ["-p", resolve(ROOT, zip), member], { encoding: "utf8", maxBuffer: 1 << 26 });
 
-export type ReleaseId = "first-release" | "second-edition" | "low-energy" | "whole-ledger" | "whole-ledger-v2" | "source-process-core-v3" | "one-bit" | "one-bit-v2" | "generated-society" | "economic-constitution" | "generated-society-v2" | "generated-society-v3" | "economic-constitution-v2" | "economic-constitution-v3" | "capital-formation" | "capital-formation-v2" | "enforceable-peace" | "physics-third-edition";
+export type ReleaseId = "first-release" | "second-edition" | "low-energy" | "low-energy-v2" | "whole-ledger" | "whole-ledger-v2" | "source-process-core-v3" | "one-bit" | "one-bit-v2" | "generated-society" | "economic-constitution" | "generated-society-v2" | "generated-society-v3" | "economic-constitution-v2" | "economic-constitution-v3" | "capital-formation" | "capital-formation-v2" | "enforceable-peace" | "physics-third-edition";
 type Release = {
   label: Record<Lang, string>;
   date: string;
@@ -44,6 +44,16 @@ const physicsThird = readJson(`${THIRD}/manifest.json`).papers.find((paper: any)
 if (!physicsThird?.is_published || !/^10\.5281\/zenodo\.\d+$/.test(physicsThird.doi) || !/^[0-9a-f]{40}$/.test(physicsThird.source_commit))
   throw new Error("physics third edition has no published DOI and fixed proof source");
 const LOW = "papers/low-energy-first-release/2026-10-11";
+const LOW_V2 = "papers/low-energy/2026-11-13-v2";
+const lowSecond = readJson(`${LOW_V2}/manifest.json`);
+const lowSecondArchive = (slug: string) => `${LOW_V2}/editable/${slug}-v2-editable.zip`;
+function lowSecondPaper(slug: string) {
+  const paper = lowSecond.papers.find((row: any) => row.paper === slug);
+  if (!paper?.is_published || paper.version !== "v2" || !/^10\.5281\/zenodo\.\d+$/.test(paper.doi)
+    || !/^[0-9a-f]{40}$/.test(paper.source_commit) || paper.source_commit !== lowSecond.source_commit)
+    throw new Error(`Missing second-edition DOI or proof source for ${slug}`);
+  return paper;
+}
 const LEDGER = "papers/whole-ledger-one-bit/2026-10-17";
 // The 2026-10-17 papers ship their manuscripts and selections inside the editable archive uploaded to Zenodo.
 const ledgerArchive = (slug: string) => `${LEDGER}/editable/${slug}-v1-editable.zip`;
@@ -188,6 +198,28 @@ const BASE_RELEASES: Record<Exclude<ReleaseId, "generated-society-v2" | "economi
     files: (slug, lang) => ({ pdf: `${LOW}/pdf/${slug}${suffix(lang)}.pdf` }),
     check: "python3 tools/edition_release.py --edition low-energy verify-map",
     guide: "docs/edition-reproduction.md",
+  },
+  "low-energy-v2": {
+    label: { zh: "低能系列第二版", en: "Low-energy series, second edition" },
+    date: lowSecond.snapshot_date,
+    map: "docs/low-energy-v2-map.json",
+    selection: { path: "checks/low-energy-v2-selection.json" },
+    manuscript: (slug, lang) => unzip(lowSecondArchive(slug), `papers/${slug}/manuscript${suffix(lang)}.md`),
+    supplement: (slug, lang) => slug === "low-energy-phenomenology"
+      ? unzip(lowSecondArchive(slug), `papers/${slug}/supplement${suffix(lang)}.md`) : "",
+    bibliography: (slug) => unzip(lowSecondArchive(slug), `papers/${slug}/references-v2.bib`),
+    files: (slug, lang) => ({
+      pdf: `${LOW_V2}/pdf/${slug}${suffix(lang)}.pdf`,
+      supplement: slug === "low-energy-phenomenology" ? `${LOW_V2}/pdf/${slug}-supplement${suffix(lang)}.pdf` : undefined,
+    }),
+    check: "python3 tools/low_energy_v2.py entry",
+    guide: "docs/low-energy-v2-reproduction.md",
+    sourceCommit: lowSecond.source_commit,
+    replacesClaimsFrom: "low-energy",
+    acceptance: {
+      zh: "首版继承范围和第二版新增证明均通过本地构建、信任闭包和完整类型验收。",
+      en: "The inherited proofs and the second-edition additions passed the local build, trust audit and complete type checks.",
+    },
   },
   "whole-ledger": {
     label: { zh: "整账法", en: "Whole ledger" },
@@ -472,14 +504,20 @@ export const PAPERS: PaperEntry[] = [
   {
     slug: "low-energy-phenomenology",
     theme: "low-energy",
-    editions: [{ release: "low-energy", doi: "10.5281/zenodo.23299174" }],
+    editions: [
+      { release: "low-energy", doi: "10.5281/zenodo.23299174" },
+      { release: "low-energy-v2", doi: lowSecondPaper("low-energy-phenomenology").doi },
+    ],
     series: { zh: "低能系列 1", en: "Low-energy series 1" },
     figure: { name: "current-witness", claim: "low1.L17" },
   },
   {
     slug: "low-energy-loop-response",
     theme: "low-energy",
-    editions: [{ release: "low-energy", doi: "10.5281/zenodo.23299177" }],
+    editions: [
+      { release: "low-energy", doi: "10.5281/zenodo.23299177" },
+      { release: "low-energy-v2", doi: lowSecondPaper("low-energy-loop-response").doi },
+    ],
     series: { zh: "低能系列 2", en: "Low-energy series 2" },
     figure: { name: "curvature-dome", claim: "low2.Q4" },
   },

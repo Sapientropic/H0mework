@@ -62,7 +62,8 @@ function splitTitle(title: string) {
   const at = title.search(/：|: /);
   return at < 0 ? { main: title, sub: "" } : { main: title.slice(0, at), sub: title.slice(at).replace(/^(：|: )/, "") };
 }
-const titleOf = (manuscript: string) => manuscript.split("\n", 1)[0].replace(/^#\s+/, "").trim();
+const titleOf = (manuscript: string) => manuscript.split("\n", 1)[0].replace(/^#\s+/, "")
+  .replace("$1/(4\\pi r)$", "1/(4πr)").trim();
 
 function authorOf(manuscript: string, lang: Lang) {
   const raw = manuscript.match(/^\*\*(?:作者[：:]|Author:\s*)(.+?)\*\*\\?\s*$/m)?.[1]?.trim() ?? "";

@@ -18,7 +18,7 @@
 <!-- BEGIN CI STATUS -->
 <a href="https://github.com/Sapientropic/H0mework/actions/runs/43284094032"><img src="docs/assets/ci-wall.svg" alt="Lean 完整选集：62,695 个模块，11 个阶段、107 个分片，全部通过" width="100%"></a>
 
-- **62,695 个 Lean 模块通过完整内核验收。** [验收运行](https://github.com/Sapientropic/H0mework/actions/runs/43284094032) 使用 11 个阶段、107 个分片，全包 `--trust=0`，提交 `a33906ce`。
+- **62,695 个 Lean 模块通过完整内核验收。** [验收运行](https://github.com/Sapientropic/H0mework/actions/runs/43284094032) 使用 11 个阶段、107 个分片，全包 `--trust=0`，提交 `a33906ce`。当前构建覆盖 62,714 个模块、108 个分片。
 <!-- END CI STATUS -->
 
 - **论文引用的声明逐版再审。** 完整依赖闭包只使用 Lean 标准三条公理，`unsafe = 0`、`partial = 0`；各篇验收与复现入口列在下方论文分组中。
@@ -29,7 +29,7 @@
 <!-- BEGIN PAPERS -->
 **[在网站上浏览全部论文，读摘要并逐条展开证明 →](https://h0mework.wiki/papers/)**
 
-最新：[可能性的经济宪法](https://h0mework.wiki/papers/economic-constitution/) · [资本主义的结构总定理](https://h0mework.wiki/papers/capital-formation/)
+最新：[可能性的经济宪法](https://h0mework.wiki/papers/economic-constitution/) · [无截断非交换极化曲率、母作用二阶变分认回与整球响应张量的 (2,1) 惯性律](https://h0mework.wiki/papers/low-energy-loop-response/)
 
 <details>
 <summary><strong>总序</strong> · 1 篇</summary>
@@ -56,8 +56,8 @@
 <details>
 <summary><strong>低能系列</strong> · 2 篇</summary>
 
-- [电流出庭](https://h0mework.wiki/papers/low-energy-phenomenology/) · [v1](https://doi.org/10.5281/zenodo.23299174) · [映射](docs/low-energy-release-map.json) · [复现](docs/edition-reproduction.md)
-- [两负一正，裸迹宣誓](https://h0mework.wiki/papers/low-energy-loop-response/) · [v1](https://doi.org/10.5281/zenodo.23299177) · [映射](docs/low-energy-release-map.json) · [复现](docs/edition-reproduction.md)
+- [零旋钮统一场的低能电磁涌现](https://h0mework.wiki/papers/low-energy-phenomenology/) · [v2](https://doi.org/10.5281/zenodo.24176697) · [映射](docs/low-energy-v2-map.json) · [复现](docs/low-energy-v2-reproduction.md)
+- [无截断非交换极化曲率、母作用二阶变分认回与整球响应张量的 (2,1) 惯性律](https://h0mework.wiki/papers/low-energy-loop-response/) · [v2](https://doi.org/10.5281/zenodo.24176698) · [映射](docs/low-energy-v2-map.json) · [复现](docs/low-energy-v2-reproduction.md)
 
 </details>
 

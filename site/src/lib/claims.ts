@@ -44,17 +44,31 @@ function lowEnergyLocation(claim: any, lang: Lang): string | null {
   return lang === "zh" ? raw.replace(/Appendi(?:x|ces)\s*/g, "附录 ").replace(/Figure\s*/g, "图 ").replace(/;\s*/g, "；") : raw;
 }
 
-function lowEnergy(slug: string, edition: number): Source[] {
-  return mapOf("low-energy")
-    .claims.filter((claim: any) => claim.paper === slug)
-    .map((claim: any) => ({
+function lowEnergy(slug: string, edition: number, release: ReleaseId): Source[] {
+  const inherited = mapOf("low-energy").claims.filter((claim: any) => claim.paper === slug);
+  const update = release === "low-energy-v2" ? mapOf(release) : null;
+  const claims = new Map<string, { claim: any; revised: boolean }>(
+    inherited.map((claim: any) => [claim.id, { claim, revised: false }]),
+  );
+  for (const claim of update?.claims ?? []) {
+    if (claim.paper === slug) claims.set(claim.id, { claim, revised: true });
+  }
+  return [...claims.values()].map(({ claim, revised }) => {
+    const commit = revised ? RELEASES[release].sourceCommit : update?.inherited.public_commit;
+    const producers = revised ? [...claim.producers, ...claim.direct_consumers, ...claim.resources] : claim.producers;
+    return {
       key: claim.id,
       ids: [claim.id],
       edition,
       text: { title: claim.title ?? null, statement: claim.statement ?? null },
+      localizedText: claim.localized,
       location: { zh: lowEnergyLocation(claim, "zh"), en: lowEnergyLocation(claim, "en") },
-      producers: claim.producers,
-    }));
+      producers: producers.map((producer: Producer) => ({
+        ...producer,
+        public: producer.public ? { ...producer.public, commit: producer.public.commit ?? commit } : undefined,
+      })),
+    };
+  });
 }
 
 // The second-edition map registers its claims per intake package: several claims share one
@@ -518,6 +532,7 @@ const ADAPTERS: Record<ReleaseId, (slug: string, edition: number, release: Relea
   "first-release": firstRelease,
   "second-edition": secondEdition,
   "low-energy": lowEnergy,
+  "low-energy-v2": lowEnergy,
   "whole-ledger": wholeLedger,
   "whole-ledger-v2": wholeLedger,
   "source-process-core-v3": sourceProcessCoreV3,
