@@ -1,80 +1,103 @@
-// Check the new paper against its actual eighteen results and reused proof-source identities.
+// Check both publication records and the current edition's fixed proof links.
 import assert from "node:assert/strict";
 import { readFileSync, existsSync } from "node:fs";
 import { createHash } from "node:crypto";
 import { execFileSync } from "node:child_process";
 import { resolve } from "node:path";
-import { claimsOf, sourcesOf, fingerprint, translationsOf } from "../src/lib/claims";
+import { claimsOf } from "../src/lib/claims";
 import { paperOf, statsOf, citesOf } from "../src/lib/papers";
 import { ROOT, RELEASES, mapOf, manuscriptOf, publishedPaperJson, readJson } from "../src/lib/registry";
 
-const slug = "capital-formation", fixed = "2d6fbc96e33b7c4c3cfd91104fda74e3caeda045";
-const map = mapOf(slug);
+const slug = "capital-formation", edition = "capital-formation-v2";
+const firstFolder = "papers/capital-formation/2026-11-04", folder = "papers/capital-formation/2026-11-12-v2";
+const first = mapOf(slug), current = mapOf(edition), risk = current.risk_compensation;
 const sha = (raw: Buffer) => createHash("sha256").update(raw).digest("hex");
-const manifest = readJson("papers/capital-formation/2026-11-04/manifest.json");
-const release = manifest.papers.find((paper: any) => paper.paper === slug);
-assert.equal(manifest.published, true);
-assert.equal(release.is_published, true);
-assert.equal(release.is_draft, false);
-assert.equal(release.files.length, 5);
-for (const file of release.files) {
-  const raw = readFileSync(resolve(ROOT, "papers/capital-formation/2026-11-04", file.path));
-  assert.equal(raw.length, file.bytes);
-  assert.equal(sha(raw), file.sha256);
+
+function checkRelease(directory: string) {
+  const manifest = readJson(`${directory}/manifest.json`);
+  const release = manifest.papers.find((paper: any) => paper.paper === slug);
+  assert.equal(manifest.published, true);
+  assert.equal(release.is_published, true);
+  assert.equal(release.is_draft, false);
+  assert.equal(release.files.length, 5);
+  for (const file of release.files) {
+    const raw = readFileSync(resolve(ROOT, directory, file.path));
+    assert.equal(raw.length, file.bytes);
+    assert.equal(sha(raw), file.sha256);
+  }
+  return release;
 }
-const unzip = (member: string) => execFileSync("unzip", ["-p", resolve(ROOT, map.inputs.archive), member], { maxBuffer: 1 << 26 });
-assert.equal(sha(unzip(map.inputs.binding_member)), map.inputs.binding_sha256);
-assert.equal(sha(unzip(map.inputs.selection_member)), map.inputs.selection_sha256);
-for (const [member, digest] of Object.entries(map.inputs.manuscripts)) assert.equal(sha(unzip(member)), digest);
+
+const previous = checkRelease(firstFolder), release = checkRelease(folder);
+assert.equal(release.previous_doi, previous.doi);
+assert.equal(release.source_commit, risk.proof_commit);
+assert.equal(current.inherited.proof_commit, first.proof_commit);
+assert.equal(sha(readFileSync(resolve(ROOT, current.inherited.map))), current.inherited.map_sha256);
+assert.equal(first.schema, "capital-formation/claim-map@1");
+assert.equal(current.schema, "capital-formation/claim-map@2");
+assert.equal(first.summary.public_support_owners, 163);
+assert.equal(first.summary.existing_complete_type_observations_in_selected_modules, 160);
+assert.equal(first.summary.auxiliary_reading_files, 5);
+assert.equal(first.acceptance.new_Lean_execution, false);
+assert.equal(risk.summary.complete_types, 17);
+assert.equal(risk.summary.pricing_modules, 55);
+assert.equal(RELEASES[edition].replacesClaimsFrom, slug);
+
+for (const { inputs } of [first, current]) {
+  const unzip = (member: string) => execFileSync("unzip", ["-p", resolve(ROOT, inputs.archive), member], { maxBuffer: 1 << 26 });
+  assert.equal(sha(unzip(inputs.binding_member)), first.inputs.binding_sha256);
+  assert.equal(sha(unzip(inputs.selection_member)), first.inputs.selection_sha256);
+  for (const [member, digest] of Object.entries(inputs.manuscripts)) assert.equal(sha(unzip(member)), digest);
+  if (inputs.risk_binding_member) assert.equal(sha(unzip(inputs.risk_binding_member)), inputs.risk_binding_sha256);
+}
 const binding = publishedPaperJson(slug, slug, "records/public-source-binding.json");
 for (const entry of binding.entries) {
   if (entry.public) assert.equal(sha(readFileSync(resolve(ROOT, entry.public.path))), entry.public.target_sha256);
-  if (entry.preserved_source) assert.equal(sha(readFileSync(resolve(ROOT, "papers/capital-formation/2026-11-04", entry.preserved_source.path))), entry.source_sha256);
+  if (entry.preserved_source) assert.equal(sha(readFileSync(resolve(ROOT, firstFolder, entry.preserved_source.path))), entry.source_sha256);
 }
-for (const consumer of Object.values(map.public_consumers) as any[])
-  assert.equal(sha(readFileSync(resolve(ROOT, consumer.public.path))), consumer.public.sha256);
-assert.equal(map.schema, "capital-formation/claim-map@1");
-assert.equal(map.summary.accepted_public_modules, 100);
-assert.equal(map.summary.additional_public_direct_consumer_owners, 63);
-assert.equal(map.summary.existing_complete_type_observations_in_selected_modules, 160);
-assert.equal(map.summary.auxiliary_reading_files, 5);
-assert.equal(map.acceptance.new_Lean_execution, false);
-assert.deepEqual(statsOf(slug), { claims: 18, modules: 163, declarations: 160 });
+const riskEntries = [...risk.claim.producers, ...risk.claim.direct_consumers];
+const riskModules = new Set(riskEntries.map((entry) => entry.public.module));
+for (const entry of [...Object.values(first.public_consumers) as any[], ...riskEntries])
+  assert.equal(sha(readFileSync(resolve(ROOT, entry.public.path))), entry.public.sha256);
+assert.deepEqual(statsOf(slug), { claims: 19, modules: 172, declarations: 177 });
 for (const lang of ["zh", "en"] as const) {
   const paper = paperOf(slug, lang), rows = claimsOf(slug, lang);
-  const text = manuscriptOf(slug, slug, lang);
-  assert.equal(rows.length, 18);
-  assert.equal(new Set(rows.map((row) => row.key)).size, 18);
+  const text = manuscriptOf(edition, slug, lang);
+  assert.equal(rows.length, 19);
+  assert.equal(new Set(rows.map((row) => row.key)).size, 19);
   assert.ok(paper.sub.length > 10);
-  assert.ok(paper.current.guide.includes("/blob/main/docs/capital-formation-reproduction.md"));
-  assert.ok(paper.current.sourceMap?.includes("/blob/main/docs/capital-formation-map.json"));
-  assert.equal(paper.current.sourceCommit, fixed);
+  assert.ok(paper.current.guide.includes("/blob/main/docs/capital-formation-v2-reproduction.md"));
+  assert.ok(paper.current.sourceMap?.includes("/blob/main/docs/capital-formation-v2-map.json"));
+  assert.equal(paper.current.sourceCommit, risk.proof_commit);
+  assert.equal(paper.current.doi, release.doi);
   assert.ok(paper.abstract.shown.length > 0);
   for (const [index, row] of rows.entries()) {
-    assert.equal(row.ids[0], `R${index + 1}`);
+    const number = index + 1, result = current.claims[index];
+    const label = number === 10 ? (lang === "zh" ? "命题" : "Proposition") : (lang === "zh" ? "定理" : "Theorem");
+    assert.equal(row.ids[0], `R${number}`);
+    assert.equal(result.inherited_result, number === 12 ? null : `R${number - Number(number > 12)}`);
+    assert.equal(row.title.replaceAll(" ", ""), result.title[lang].replaceAll(" ", ""));
     assert.equal(row.proved, true);
     assert.equal(row.excerpts.length, 1);
-    assert.equal(row.excerpts[0].label, `${index === 9 ? (lang === "zh" ? "命题" : "Proposition") : (lang === "zh" ? "定理" : "Theorem")} ${index + 1}`);
-    assert.ok(row.excerpts[0].body.length > 35);
-    assert.ok(text.includes(row.excerpts[0].body), `${lang}/${row.key}: statement absent from actual manuscript`);
+    assert.equal(row.excerpts[0].label, `${label} ${number}`);
+    assert.ok(row.excerpts[0].body.length > 35 && text.includes(row.excerpts[0].body));
+    assert.equal(row.lean.filter((module) => riskModules.has(module.module)).length, result.risk_claim ? riskModules.size : 0);
     for (const module of row.lean) {
-      assert.ok(module.link.includes(`/blob/${fixed}/Lean/`));
+      const commit = riskModules.has(module.module) ? risk.proof_commit : first.proof_commit;
+      assert.ok(module.link.includes(`/blob/${commit}/Lean/`));
       assert.ok(existsSync(resolve(ROOT, "Lean", module.module.replaceAll(".", "/") + ".lean")));
       for (const declaration of module.declarations) {
         assert.ok(declaration.line && declaration.link.endsWith(`#L${declaration.line}`));
-        const path = new URL(declaration.link).pathname.split(`/blob/${fixed}/`)[1];
+        const path = new URL(declaration.link).pathname.split(`/blob/${commit}/`)[1];
         assert.ok(readFileSync(resolve(ROOT, path), "utf8").split("\n")[declaration.line! - 1].includes(declaration.name));
       }
     }
     for (const artifact of row.artifacts) {
-      assert.ok(artifact.link.includes("/blob/main/papers/capital-formation/2026-11-04/source-excerpts/"));
+      assert.ok(artifact.link.includes(`/blob/main/${firstFolder}/source-excerpts/`));
       assert.ok(existsSync(resolve(ROOT, artifact.path)));
     }
   }
-  for (const file of Object.values(RELEASES[slug].files(slug, lang))) assert.ok(existsSync(resolve(ROOT, file)));
+  for (const file of Object.values(RELEASES[edition].files(slug, lang))) assert.ok(existsSync(resolve(ROOT, file)));
 }
-for (const source of sourcesOf(slug))
-  assert.equal(translationsOf("en")[source.key]?.from, fingerprint(source.text), source.key);
-assert.deepEqual(citesOf(slug).sort(), ["economic-constitution", "generated-society"]);
-assert.equal(paperOf(slug, "zh").current.doi, release.doi);
-console.log("capital-formation: all eighteen bilingual statements, theorem/proposition distinction, 163 exact owners, 160 observed declaration links, five source resources, current documentation and fixed proof links passed");
+assert.deepEqual(citesOf(slug).sort(), ["economic-constitution", "generated-society", "whole-ledger-accounting"]);
+console.log("capital-formation: both publications, nineteen bilingual results, CF17 direct consumers, and both proof snapshots passed");

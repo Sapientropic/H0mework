@@ -29,7 +29,7 @@ Lean 4 proofs, reproduction programs and frozen evidence behind a family of rese
 <!-- BEGIN PAPERS -->
 **[Browse all papers on the site, with abstracts and claim-level proofs →](https://h0mework.wiki/en/papers/)**
 
-Latest: [Provenance-Preserving Conservation Calculus and Non-Free Continuity](https://h0mework.wiki/en/papers/whole-ledger-accounting/) · [Source-Native Process Algebra and Initial-Coface Revision](https://h0mework.wiki/en/papers/source-process-core/)
+Latest: [The Structural Theorem of Capitalism](https://h0mework.wiki/en/papers/capital-formation/) · [Provenance-Preserving Conservation Calculus and Non-Free Continuity](https://h0mework.wiki/en/papers/whole-ledger-accounting/)
 
 <details>
 <summary><strong>Preface</strong> · 1 paper</summary>
@@ -66,7 +66,7 @@ Latest: [Provenance-Preserving Conservation Calculus and Non-Free Continuity](ht
 
 - [The Canonical Society Theorem](https://h0mework.wiki/en/papers/generated-society/) · [v2](https://doi.org/10.5281/zenodo.23917896) · [Map](docs/generated-society-map.json) · [Reproduce](docs/generated-society-reproduction.md)
 - [An Economic Constitution of Possibility](https://h0mework.wiki/en/papers/economic-constitution/) · [v2](https://doi.org/10.5281/zenodo.23917902) · [Map](docs/economic-constitution-map.json) · [Reproduce](docs/economic-constitution-reproduction.md)
-- [The Structural Theorem of Capitalism](https://h0mework.wiki/en/papers/capital-formation/) · [v1](https://doi.org/10.5281/zenodo.23927949) · [Map](docs/capital-formation-map.json) · [Reproduce](docs/capital-formation-reproduction.md)
+- [The Structural Theorem of Capitalism](https://h0mework.wiki/en/papers/capital-formation/) · [v2](https://doi.org/10.5281/zenodo.24155195) · [Map](docs/capital-formation-v2-map.json) · [Reproduce](docs/capital-formation-v2-reproduction.md)
 - [War and Peace](https://h0mework.wiki/en/papers/enforceable-peace/) · [v1](https://doi.org/10.5281/zenodo.24093231) · [Map](docs/enforceable-peace-map.json) · [Reproduce](docs/enforceable-peace-reproduction.md)
 
 </details>
@@ -107,7 +107,7 @@ The [reproduction guide](docs/first-release-reproduction.md) describes scope and
 | Whole-ledger accounting | Whole-ledger structures, debt settlement and unforgeable settlement | [WholeLedgerAccountingY1](Lean/H0mework/Papers/WholeLedgerAccountingY1.lean) |
 | Canonical society | Generated actors, nonempty root-law completion, actionable exit and same-occurrence regeneration | [GeneratedSocietyMInfinity](Lean/H0mework/Papers/GeneratedSocietyMInfinity.lean) · [Selection and acceptance](docs/generated-society-readiness.md) |
 | Economic constitution of possibility | Capital, public production, public functions and planning interfaces adopted by the institutional argument | [EconomicConstitutionSourceDF](Lean/H0mework/Papers/EconomicConstitutionSourceDF.lean) · [Selection and acceptance](docs/economic-constitution-readiness.md) |
-| Structural theorem of capitalism | Full structural characterization, public replay of arbitrary executions, continuing innovation, joint settlement and actual history | [EconomicConstitutionSourceDF](Lean/H0mework/Papers/EconomicConstitutionSourceDF.lean) · [Paper mapping and acceptance](docs/capital-formation-readiness.md) |
+| Structural theorem of capitalism | Minimal permission support, public functional replay and unique minimal risk pricing | [Structural proof](Lean/H0mework/Papers/EconomicConstitutionSourceDF.lean) · [Risk pricing](Lean/H0mework/Papers/SocietyBookRiskCompensation.lean) · [Reproduction and acceptance](docs/capital-formation-v2-reproduction.md) |
 | War and Peace | Original reparation, open peace, and agreement through certified handovers | [EnforceablePeace](Lean/H0mework/Papers/EnforceablePeace.lean) · [Selection and checks](docs/enforceable-peace-readiness.md) |
 | Observation dynamics | Counted observation, versioned proofs and the exact cost of compression | [ObservationDynamics](Lean/H0mework/Papers/ObservationDynamics.lean) |
 

@@ -15,7 +15,7 @@ import re
 import stat
 import zipfile
 
-import source_view as sv
+from first_release_cache import VIEW_ENGINES, load_view_engines
 from whole_ledger_export import FixedGit
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -51,8 +51,8 @@ def safe_relative(name: str) -> None:
             "Unsafe release or archive path")
 
 
-def archive_inputs() -> dict[str, bytes]:
-    with zipfile.ZipFile(ROOT / ARCHIVE) as archive:
+def archive_inputs(path=ARCHIVE) -> dict[str, bytes]:
+    with zipfile.ZipFile(ROOT / path) as archive:
         names = archive.namelist()
         require(len(names) == len(set(names)), "Repeated ZIP member")
         for info in archive.infolist():
@@ -72,7 +72,7 @@ def archive_inputs() -> dict[str, bytes]:
     return payload
 
 
-def numbered_results(raw: bytes, language: str) -> dict[int, dict]:
+def numbered_results(raw: bytes, language: str, count=18) -> dict[int, dict]:
     text = raw.decode()
     words = "定理|命题" if language == "zh" else "Theorem|Proposition"
     pattern = re.compile(r"^\*\*(" + words + r")\s*(\d+)\s*[（(]([^\n]*?)[）)]\s*[。.]?\*\*", re.M)
@@ -85,7 +85,7 @@ def numbered_results(raw: bytes, language: str) -> dict[int, dict]:
         section = headings[-1][1]
         results[number] = {"kind": match[1], "title": match[3], "section": section,
                            "location": f"§{section} {match[1]} {number}"}
-    require(set(results) == set(range(1, 19)), "The paper must retain all eighteen numbered results")
+    require(set(results) == set(range(1, count + 1)), f"The paper must retain all {count} numbered results")
     for number, result in results.items():
         require(result["kind"] == (("命题" if language == "zh" else "Proposition") if number == 10
                                    else ("定理" if language == "zh" else "Theorem")),
@@ -115,9 +115,11 @@ def derive(payload: dict[str, bytes]) -> dict:
     try:
         read = lambda path: git.read(PROOF, path)
         evidence = binding["evidence"]
+        engines = {path: read(path) for path in VIEW_ENGINES}
         for path, digest in evidence["verified_helper_bytes"].items():
-            require(sha(read(path)) == digest and sha((ROOT / path).read_bytes()) == digest,
-                    "Use the source-view helpers bound by the fixed acceptance")
+            raw = engines[path] if path in engines else read(path)
+            require(sha(raw) == digest, "Pinned source-view helper bytes changed")
+        sv, _ = load_view_engines(engines, ROOT)
         for ref in (evidence["claim_map"], evidence["export_map"], evidence["acceptance_summary"]):
             require(sha(read(ref["path"])) == ref["sha256"], "Pinned evidence identity mismatch")
         old_map = json.loads(read(evidence["claim_map"]["path"]))

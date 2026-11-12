@@ -15,7 +15,7 @@ export const repoLink = (path: string, line?: number, commit = "main") => `${REP
 const suffix = (lang: Lang) => (lang === "en" ? "-en" : "");
 const unzip = (zip: string, member: string) => execFileSync("unzip", ["-p", resolve(ROOT, zip), member], { encoding: "utf8", maxBuffer: 1 << 26 });
 
-export type ReleaseId = "first-release" | "second-edition" | "low-energy" | "whole-ledger" | "whole-ledger-v2" | "source-process-core-v3" | "one-bit" | "one-bit-v2" | "generated-society" | "economic-constitution" | "generated-society-v2" | "economic-constitution-v2" | "capital-formation" | "enforceable-peace" | "physics-third-edition";
+export type ReleaseId = "first-release" | "second-edition" | "low-energy" | "whole-ledger" | "whole-ledger-v2" | "source-process-core-v3" | "one-bit" | "one-bit-v2" | "generated-society" | "economic-constitution" | "generated-society-v2" | "economic-constitution-v2" | "capital-formation" | "capital-formation-v2" | "enforceable-peace" | "physics-third-edition";
 type Release = {
   label: Record<Lang, string>;
   date: string;
@@ -85,6 +85,12 @@ const SOCIETY_V2 = "papers/society-economic/2026-11-03-v2";
 const SOCIETY_SOURCE = "2d6fbc96e33b7c4c3cfd91104fda74e3caeda045";
 const CAPITAL = "papers/capital-formation/2026-11-04";
 const capitalArchive = `${CAPITAL}/editable/capital-formation-v1-editable.zip`;
+const CAPITAL_V2 = "papers/capital-formation/2026-11-12-v2";
+const capitalSecondArchive = `${CAPITAL_V2}/editable/capital-formation-v2-editable.zip`;
+const capitalSecond = readJson(`${CAPITAL_V2}/manifest.json`).papers.find((paper: any) => paper.paper === "capital-formation");
+if (!capitalSecond?.is_published || capitalSecond.version !== "v2"
+    || !/^10\.5281\/zenodo\.\d+$/.test(capitalSecond.doi) || !/^[0-9a-f]{40}$/.test(capitalSecond.source_commit))
+  throw new Error("Capital formation second edition has no published DOI and fixed proof source");
 const PEACE = "papers/enforceable-peace/2026-11-10";
 const peaceArchive = `${PEACE}/editable/enforceable-peace-editable.zip`;
 const peaceMember = "enforceable-peace-source/papers/enforceable-peace";
@@ -280,6 +286,28 @@ const BASE_RELEASES: Record<Exclude<ReleaseId, "generated-society-v2" | "economi
       en: "The paper's eighteen results appear in reading order. Open a row for its original statement, proof declarations, direct consumers, and source materials.",
     },
   },
+  "capital-formation-v2": {
+    label: { zh: "资本主义的结构总定理", en: "The structural theorem of capitalism" },
+    date: capitalSecond.publication_date,
+    map: "docs/capital-formation-v2-map.json",
+    selection: { path: capitalSecondArchive, member: "papers/capital-formation/records/cf17-source-binding.json" },
+    manuscript: (slug, lang) => unzip(capitalSecondArchive, `papers/${slug}/manuscript${suffix(lang)}.md`),
+    supplement: (slug, lang) => unzip(capitalSecondArchive, `papers/${slug}/supplement${suffix(lang)}.md`),
+    bibliography: (slug) => unzip(capitalSecondArchive, `papers/${slug}/references-v2.bib`),
+    files: (slug, lang) => ({
+      pdf: `${CAPITAL_V2}/pdf/${slug}${suffix(lang)}.pdf`,
+      supplement: `${CAPITAL_V2}/pdf/${slug}-supplement${suffix(lang)}.pdf`,
+    }),
+    check: "python3 tools/capital_formation_v2.py entry --output .local/capital-formation-v2-entry",
+    guide: "docs/capital-formation-v2-reproduction.md",
+    sourceCommit: capitalSecond.source_commit,
+    documentationCommit: "main",
+    replacesClaimsFrom: "capital-formation",
+    acceptance: {
+      zh: "CF17 风险补偿证明包通过本地构建、公理依赖和完整类型核验。",
+      en: "CF17 passed the local proof build, dependency trust audit, and complete declaration type checks.",
+    },
+  },
   "enforceable-peace": {
     label: { zh: "战争与和平的源生终局定理", en: "War and Peace" },
     date: peacePaper().publication_date,
@@ -416,7 +444,10 @@ export const PAPERS: PaperEntry[] = [
   {
     slug: "capital-formation",
     theme: "society",
-    editions: [{ release: "capital-formation", doi: capitalPaper().doi }],
+    editions: [
+      { release: "capital-formation", doi: capitalPaper().doi },
+      { release: "capital-formation-v2", doi: capitalSecond.doi },
+    ],
     figure: { name: "replay-bakery", claim: "R8" },
   },
   {

@@ -319,6 +319,10 @@ function economicConstitution(slug: string, edition: number, release: ReleaseId)
 
 function capitalFormation(slug: string, edition: number, release: ReleaseId): Source[] {
   const map = mapOf(release);
+  const prior = release === "capital-formation-v2" ? mapOf("capital-formation") : map;
+  const risk = map.risk_compensation;
+  if (risk && risk.proof_commit !== RELEASES[release].sourceCommit)
+    throw new Error("Capital formation second edition does not match its accepted risk proof");
   const binding = publishedPaperJson(release, slug, "records/public-source-binding.json");
   const byId = new Map<string, any>(binding.entries.map((entry: any) => [entry.id, entry]));
   return map.claims.map((claim: any) => {
@@ -331,7 +335,7 @@ function capitalFormation(slug: string, edition: number, release: ReleaseId): So
       if (!entry.public) return [];
       const locations = new Map<string, number>(entry.previous_claim_map_declarations.map((declaration: any) => [declaration.qualified_name, declaration.source_line]));
       return [{
-        kind: "lean", public: entry.public,
+        kind: "lean", public: { ...entry.public, commit: prior.proof_commit },
         declarations: entry.type_observations.map((observation: any) => ({
           qualified_name: observation.qualified_name, line: locations.get(observation.qualified_name),
         })),
@@ -340,15 +344,27 @@ function capitalFormation(slug: string, edition: number, release: ReleaseId): So
     const consumers = new Set<string>(selected.flatMap((entry: any) => entry.consumers ?? [])
       .flatMap((consumer: any) => consumer.public_module ? [consumer.public_module] : []));
     for (const module of consumers) {
-      const consumer = map.public_consumers[module];
+      const consumer = prior.public_consumers[module];
       if (!consumer) throw new Error(`capital consumer has no accepted owner ${module}`);
-      producers.push({ kind: "lean", public: consumer.public, declarations: [] });
+      producers.push({ kind: "lean", public: { ...consumer.public, commit: prior.proof_commit }, declarations: [] });
     }
     for (const entry of selected.filter((entry: any) => entry.preserved_source))
       producers.push({ kind: "artifact", public: { path: `papers/capital-formation/2026-11-04/${entry.preserved_source.path}`, commit: "main" } });
+    if (claim.risk_claim) {
+      if (!risk || risk.claim.id !== claim.risk_claim) throw new Error("Capital result has no accepted risk proof");
+      for (const entry of [...risk.claim.producers, ...risk.claim.direct_consumers]) {
+        producers.push({
+          kind: "lean", public: { ...entry.public, commit: risk.proof_commit },
+          declarations: entry.declarations.map((declaration: any) => ({
+            qualified_name: declaration.qualified_name, line: declaration.public_line,
+          })),
+        });
+      }
+    }
     return {
       key: `cap.${claim.id}`, ids: [claim.id], edition, category: "formal",
       text: { title: claim.title.zh, statement: null },
+      localizedText: { en: { title: claim.title.en, statement: null } },
       location: claim.written,
       producers,
     };
@@ -420,6 +436,7 @@ const ADAPTERS: Record<ReleaseId, (slug: string, edition: number, release: Relea
   "generated-society-v2": generatedSociety,
   "economic-constitution-v2": economicConstitution,
   "capital-formation": capitalFormation,
+  "capital-formation-v2": capitalFormation,
   "enforceable-peace": enforceablePeace,
   "physics-third-edition": physicsThirdEdition,
 };
@@ -496,13 +513,14 @@ function lineOf(path: string, qualified: string) {
 }
 
 function modulesOf(producers: Producer[], commit?: string) {
-  const modules = new Map<string, { path: string; declarations: Map<string, Declaration> }>();
+  const modules = new Map<string, { path: string; commit?: string; declarations: Map<string, Declaration> }>();
   for (const producer of leanOf(producers)) {
-    const entry = modules.get(producer.public!.module!) ?? { path: producer.public!.path, declarations: new Map() };
+    const owner = producer.public!;
+    const entry = modules.get(owner.module!) ?? { path: owner.path, commit: owner.commit ?? commit, declarations: new Map() };
     for (const decl of producer.declarations ?? []) entry.declarations.set(decl.qualified_name, decl);
     modules.set(producer.public!.module!, entry);
   }
-  return [...modules].map(([module, { path, declarations }]) => {
+  return [...modules].map(([module, { path, commit, declarations }]) => {
     const decls = [...declarations.values()].map((decl) => {
       const line = decl.line ?? lineOf(path, decl.qualified_name);
       return { name: decl.name ?? decl.qualified_name.split(".").pop()!, qualified: decl.qualified_name, line, link: repoLink(path, line, commit) };
