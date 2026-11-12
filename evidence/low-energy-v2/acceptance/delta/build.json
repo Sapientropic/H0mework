@@ -1,0 +1,622 @@
+{
+  "schema": "h0mework/first-release-build@1",
+  "kind": "build",
+  "ok": true,
+  "input_identity": {
+    "sha256": {
+      "claim_map": "cbcdf2da413c7b186db2f9e9660dddc93a378c3bd351f17aa7b3c3a941a06042",
+      "export_map": "25c00876d8f449ce9ce941987059f02dfd1b2d0a1ce2e9eda74077b946408b43",
+      "lakefile": "e24966a9fccbaf96f5338f09f997eea223ee9f94189cdde0cf488762d6025847",
+      "toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+      "manifest": "2fe02acc26899fd57d82018e711e79c251e26d0b6d2bb370af81db0ed312fbfd"
+    },
+    "package_inputs": {
+      "l26-l27-standard": "c9e6ce31129bffe7251fd905e91930c41dc349ab1f908520cfeccc4c4c961bb0",
+      "l28-born": "f60ed16873d1807aff158009060cb05432927d3a6f0256ea3f14c20436b4b937",
+      "l29-far-field": "f0a2a31935fede62dd292fbb541b067c5a133c2760b1237274d40f017a5c2cef",
+      "l29-production-types": "8de5fe2d2bb3f36ac344db5597f9d9f59b5c30f0e4187c0376ae87469c128cc8",
+      "q7-matrix": "f95c2e8c6eeb140dfaf6f1db83aa0d8c6dc5aa9f5c1697c39f062f0a94787ba0",
+      "q7-feed": "7112a32fefd3b34841563e56b8d13b227a9c00ada36203413f392b68c6b1c913",
+      "q7-cut": "72b9592cd99ff4179661da1607525da2a7a02dde2b2a7654984d77d78aa57611",
+      "q7-explicit": "29760483449e2bc6886e6338b36f19f7d535d1b62e61781e1e5e72cea081d63f",
+      "q7-ir": "9632040e0e11903b1f517656fb985f32636a44fdd681cf5d8e13d8f2d757465d",
+      "q7-window": "75df5ed30c8e8a82257460924b9d39742dff37d8f9d3cf4a821a79fc355dc495"
+    }
+  },
+  "settings": {
+    "toolchain_pin": "leanprover/lean4:v4.33.0",
+    "package_moreLeanArgs": [
+      "--trust=0",
+      "-Dweak.linter.unnecessarySimpa=false",
+      "-Dweak.linter.style.haveILetI=false",
+      "-Dweak.linter.unusedSimpArgs=false"
+    ],
+    "package_weakLeanArgs": [
+      "-DmaxHeartbeats=2000000",
+      "-Dweak.linter.unusedSectionVars=false",
+      "-Dweak.linter.unnecessarySeqFocus=false",
+      "-Dweak.linter.unusedVariables=false",
+      "-Dweak.linter.unreachableTactic=false",
+      "-Dweak.linter.unusedTactic=false",
+      "-Dweak.linter.defProp=false",
+      "-Dweak.linter.deprecated=false",
+      "-Dlinter.deprecated=false",
+      "-Dweak.linter.tacticAnalysis.introMerge=false",
+      "-Dweak.linter.constructorNameAsVariable=false"
+    ],
+    "libraries": [
+      {
+        "name": "H0mework",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_15a9a7f1af9edd94",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_3606f5269412e357",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_d700e8a5f12a0c72",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_1e1ae4b55cfaa424",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_5d60190f8c552243",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_c8f26eb536eba11f",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_05819243d0f03058",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_42d0393dda443953",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_662d860139605627",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_c5ce7c98c6fb2afe",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_4306926d26d3e100",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_524380564da88277",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_598bc2100d4a470f",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_f16f09d592d9fed1",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_38dd326bee1881e5",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_a5be13c98d55de59",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_a8ba570880d786e7",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_e94628c12cb5af16",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_e615fc1eae897d2f",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_3ec8ead604397acb",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_f3b844eed8451357",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_fb8213f28d86d220",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_343b97a439466c84",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_e7aebe388314d626",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_5ee63fcc1d2eabc2",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_048d35b0f13ffddc",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_8a02641b81044b03",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_efa122af6a18f938",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "H0meworkRelaxed",
+        "moreLeanArgs": []
+      },
+      {
+        "name": "H0meworkPinned",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_27de91880f85717a",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_84273b86d41c7cc1",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_b0054fdd1430293f",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_df027f387d2e7e21",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_a9cfcb862f08d790",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_da6d7ec0232b12e5",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_384fd6d4ee850ec5",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_70f37e98e05b9a24",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_bc8736156be163cd",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_ca63848ccd9141be",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "WholeLedgerAccountingRelease",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "GeneratedSocietyRelease",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "EconomicConstitutionRelease",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "SocietyBookSupplement",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "EnforceablePeace",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "PhysicsThirdEdition",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "OneBitSecondEdition",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "WholeLedgerSecondEdition",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "SourceProcessCoreThirdEdition",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "LowEnergySecondEdition",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      }
+    ]
+  },
+  "identity_scope": {
+    "packages": [
+      "l26-l27-standard",
+      "l28-born",
+      "l29-far-field",
+      "l29-production-types",
+      "q7-matrix",
+      "q7-feed",
+      "q7-cut",
+      "q7-explicit",
+      "q7-ir",
+      "q7-window"
+    ],
+    "proof_entries": 30
+  },
+  "cache": {
+    "kind": "existing_workspace_cache",
+    "clean_clone": false,
+    "build_directory_preexisted": true,
+    "lean_num_threads": "4",
+    "compiled_targets_before": {
+      "H0mework.Papers.PhysicsThirdEdition.Phenomenology": "68ad495252debc87e84a2a2c3382c8e1c0e6770212f919e252a6de3999457f27",
+      "H0mework.Versions.R0dd3c96d.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualCompositeBornHighFrequency": null,
+      "H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualDressedStaticFeedbackFullAudit": "6681d3e2868c8f19dd11eaeaf40731a43c72543ef42149b7c4a9e6035feadf4a",
+      "H0mework.Versions.Rdf421ff6.ReleaseMaterials.Scratch.AlphaSource.ActualDressedStaticFeedbackDispositionOwn.DressedStaticFeedbackProdCertOverlay.ActualDressedStaticFeedbackFullAuditProductionConsumers": "09e22dc47da2ce738111617e936739d84dfa337446943bd2cf7f4192156e7d5a",
+      "H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourceFullSylvesterMatrixFullAudit": "c139abdc45c969f06535602940735d843d4fea94bc239e3e00eacb02a05b6cc8",
+      "H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourceEMEventFeedFullAudit": "089e4257aff672e1453eb7f69fd22c6bccb2fb7ee85f195aadff0172a05b84e0",
+      "H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourceEventCutFullAudit": "00211e56fed52515bf7da194f15fa928e4674798de09ad30e8453ad9ed268a68",
+      "H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualExplicitGreenNoetherWords": "8c441c190096ea5bb86d6881335f71ed7d0753efbf9a246faab6effeaedd9147",
+      "H0mework.Versions.R0dd3c96d.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourceCutFreeIRRegularization": null,
+      "H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualDressedStaticHalfPencil": "0c81dd2eda636c96ae7fa61de98c42202e9b16059440d005981dfe70a2a6a5ba"
+    }
+  },
+  "packages": [
+    {
+      "id": "l26-l27-standard",
+      "paper": "low-energy-phenomenology",
+      "source_commit": "df421ff600085cbc290a7ae946193961bed7c83b",
+      "source_commits": [
+        "df421ff600085cbc290a7ae946193961bed7c83b"
+      ],
+      "claim_ids": [
+        "low1.L26",
+        "low1.L27"
+      ],
+      "source_paths": [
+        "Lean/scratch/AlphaSource/ActualDressedEMCorrectedCouplingSourceOwn/ActualDressedEMCorrectedRootFluxConsumer.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedEMStandardLongRange.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/PhysicalN3PoleCoulombPacket.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/PhysicalN3PoleCurrentAudit.lean"
+      ],
+      "lean_target": "H0mework.Papers.PhysicsThirdEdition.Phenomenology"
+    },
+    {
+      "id": "l28-born",
+      "paper": "low-energy-phenomenology",
+      "source_commit": "0dd3c96d3ee778c7b0270f24dcf2acd01df5da4c",
+      "source_commits": [
+        "0dd3c96d3ee778c7b0270f24dcf2acd01df5da4c",
+        "71e94e8261d67cf4849a05eb14ac95aa2f7dcbb9"
+      ],
+      "claim_ids": [
+        "low1.L28"
+      ],
+      "source_paths": [
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualCompositeBornHighFrequency.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualCompositeCoulombDressing.lean",
+        "Verification/physics/low-energy-phenomenology/external-composite-decay/MixedSpectatorYukawaColumn.lean",
+        "Verification/physics/low-energy-phenomenology/external-composite-decay/MixedSpectatorYukawaMatrix.lean",
+        "Verification/physics/low-energy-phenomenology/external-composite-decay/MixedSpectatorYukawaNonzero.lean",
+        "Verification/physics/low-energy-phenomenology/external-composite-decay/MixedSpectatorYukawaSource.lean",
+        "Verification/physics/low-energy-phenomenology/external-composite-decay/SourceYukawaPositiveCorrection.lean"
+      ],
+      "lean_target": "H0mework.Versions.R0dd3c96d.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualCompositeBornHighFrequency"
+    },
+    {
+      "id": "l29-far-field",
+      "paper": "low-energy-phenomenology",
+      "source_commit": "df421ff600085cbc290a7ae946193961bed7c83b",
+      "source_commits": [
+        "df421ff600085cbc290a7ae946193961bed7c83b"
+      ],
+      "claim_ids": [
+        "low1.L29"
+      ],
+      "source_paths": [
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedStaticCurrentCircuit.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedStaticFeedback.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedStaticFeedbackFullAudit.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedStaticLongrangeReturn.lean"
+      ],
+      "lean_target": "H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualDressedStaticFeedbackFullAudit"
+    },
+    {
+      "id": "l29-production-types",
+      "paper": "low-energy-phenomenology",
+      "source_commit": "df421ff600085cbc290a7ae946193961bed7c83b",
+      "source_commits": [
+        "df421ff600085cbc290a7ae946193961bed7c83b"
+      ],
+      "claim_ids": [
+        "low1.L29"
+      ],
+      "source_paths": [
+        "Lean/scratch/AlphaSource/ActualDressedStaticFeedbackDispositionOwn/dressed-static-feedback-prod-cert-overlay/ActualDressedStaticFeedbackFullAuditProductionConsumers.lean"
+      ],
+      "lean_target": "H0mework.Versions.Rdf421ff6.ReleaseMaterials.Scratch.AlphaSource.ActualDressedStaticFeedbackDispositionOwn.DressedStaticFeedbackProdCertOverlay.ActualDressedStaticFeedbackFullAuditProductionConsumers"
+    },
+    {
+      "id": "q7-matrix",
+      "paper": "low-energy-loop-response",
+      "source_commit": "df421ff600085cbc290a7ae946193961bed7c83b",
+      "source_commits": [
+        "df421ff600085cbc290a7ae946193961bed7c83b"
+      ],
+      "claim_ids": [
+        "low2.Q7"
+      ],
+      "source_paths": [
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualSourceFullNoetherMatrixRead.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualSourceFullSylvesterMatrix.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualSourceFullSylvesterMatrixFullAudit.lean"
+      ],
+      "lean_target": "H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourceFullSylvesterMatrixFullAudit"
+    },
+    {
+      "id": "q7-feed",
+      "paper": "low-energy-loop-response",
+      "source_commit": "df421ff600085cbc290a7ae946193961bed7c83b",
+      "source_commits": [
+        "df421ff600085cbc290a7ae946193961bed7c83b"
+      ],
+      "claim_ids": [
+        "low2.Q7"
+      ],
+      "source_paths": [
+        "Verification/physics/low-energy-phenomenology/alpha-source/SourcePreparedPhotonAmplitude.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualSourceEMEventFeed.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualSourceEMEventFeedFullAudit.lean"
+      ],
+      "lean_target": "H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourceEMEventFeedFullAudit"
+    },
+    {
+      "id": "q7-cut",
+      "paper": "low-energy-loop-response",
+      "source_commit": "df421ff600085cbc290a7ae946193961bed7c83b",
+      "source_commits": [
+        "df421ff600085cbc290a7ae946193961bed7c83b"
+      ],
+      "claim_ids": [
+        "low2.Q7"
+      ],
+      "source_paths": [
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualSourceEventCutElimination.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualSourceEventCutFullAudit.lean"
+      ],
+      "lean_target": "H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourceEventCutFullAudit"
+    },
+    {
+      "id": "q7-explicit",
+      "paper": "low-energy-loop-response",
+      "source_commit": "df421ff600085cbc290a7ae946193961bed7c83b",
+      "source_commits": [
+        "df421ff600085cbc290a7ae946193961bed7c83b"
+      ],
+      "claim_ids": [
+        "low2.Q7"
+      ],
+      "source_paths": [
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualExplicitEvolutionPolynomial.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualExplicitGreenNoetherWords.lean"
+      ],
+      "lean_target": "H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualExplicitGreenNoetherWords"
+    },
+    {
+      "id": "q7-ir",
+      "paper": "low-energy-loop-response",
+      "source_commit": "0dd3c96d3ee778c7b0270f24dcf2acd01df5da4c",
+      "source_commits": [
+        "0dd3c96d3ee778c7b0270f24dcf2acd01df5da4c",
+        "df421ff600085cbc290a7ae946193961bed7c83b"
+      ],
+      "claim_ids": [
+        "low2.Q7"
+      ],
+      "source_paths": [
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedCubicIRReturn.lean",
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualSourceCutFreeIRRegularization.lean"
+      ],
+      "lean_target": "H0mework.Versions.R0dd3c96d.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourceCutFreeIRRegularization"
+    },
+    {
+      "id": "q7-window",
+      "paper": "low-energy-loop-response",
+      "source_commit": "df421ff600085cbc290a7ae946193961bed7c83b",
+      "source_commits": [
+        "df421ff600085cbc290a7ae946193961bed7c83b"
+      ],
+      "claim_ids": [
+        "low2.Q7"
+      ],
+      "source_paths": [
+        "Verification/physics/low-energy-phenomenology/alpha-source/em-identification/ActualDressedStaticHalfPencil.lean"
+      ],
+      "lean_target": "H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualDressedStaticHalfPencil"
+    }
+  ],
+  "results": [
+    {
+      "command": [
+        "lake",
+        "build",
+        "H0mework.Papers.PhysicsThirdEdition.Phenomenology",
+        "H0mework.Versions.R0dd3c96d.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualCompositeBornHighFrequency",
+        "H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualDressedStaticFeedbackFullAudit",
+        "H0mework.Versions.Rdf421ff6.ReleaseMaterials.Scratch.AlphaSource.ActualDressedStaticFeedbackDispositionOwn.DressedStaticFeedbackProdCertOverlay.ActualDressedStaticFeedbackFullAuditProductionConsumers",
+        "H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourceFullSylvesterMatrixFullAudit",
+        "H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourceEMEventFeedFullAudit",
+        "H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourceEventCutFullAudit",
+        "H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualExplicitGreenNoetherWords",
+        "H0mework.Versions.R0dd3c96d.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourceCutFreeIRRegularization",
+        "H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualDressedStaticHalfPencil"
+      ],
+      "cwd": "Lean",
+      "started_at": "2026-11-12T20:46:41.850365+00:00",
+      "finished_at": "2026-11-12T20:48:14.867224+00:00",
+      "elapsed_seconds": 93.013,
+      "exit_code": 0,
+      "error": null,
+      "log": ".local/low-energy-v2-delta-build/build.log"
+    }
+  ],
+  "publication_readiness": "not_assessed",
+  "input_identity_after": {
+    "sha256": {
+      "claim_map": "cbcdf2da413c7b186db2f9e9660dddc93a378c3bd351f17aa7b3c3a941a06042",
+      "export_map": "25c00876d8f449ce9ce941987059f02dfd1b2d0a1ce2e9eda74077b946408b43",
+      "lakefile": "e24966a9fccbaf96f5338f09f997eea223ee9f94189cdde0cf488762d6025847",
+      "toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+      "manifest": "2fe02acc26899fd57d82018e711e79c251e26d0b6d2bb370af81db0ed312fbfd"
+    },
+    "package_inputs": {
+      "l26-l27-standard": "c9e6ce31129bffe7251fd905e91930c41dc349ab1f908520cfeccc4c4c961bb0",
+      "l28-born": "f60ed16873d1807aff158009060cb05432927d3a6f0256ea3f14c20436b4b937",
+      "l29-far-field": "f0a2a31935fede62dd292fbb541b067c5a133c2760b1237274d40f017a5c2cef",
+      "l29-production-types": "8de5fe2d2bb3f36ac344db5597f9d9f59b5c30f0e4187c0376ae87469c128cc8",
+      "q7-matrix": "f95c2e8c6eeb140dfaf6f1db83aa0d8c6dc5aa9f5c1697c39f062f0a94787ba0",
+      "q7-feed": "7112a32fefd3b34841563e56b8d13b227a9c00ada36203413f392b68c6b1c913",
+      "q7-cut": "72b9592cd99ff4179661da1607525da2a7a02dde2b2a7654984d77d78aa57611",
+      "q7-explicit": "29760483449e2bc6886e6338b36f19f7d535d1b62e61781e1e5e72cea081d63f",
+      "q7-ir": "9632040e0e11903b1f517656fb985f32636a44fdd681cf5d8e13d8f2d757465d",
+      "q7-window": "75df5ed30c8e8a82257460924b9d39742dff37d8f9d3cf4a821a79fc355dc495"
+    }
+  },
+  "inputs_unchanged": true,
+  "receipt": ".local/low-energy-v2-delta-build/result.json",
+  "compiled_targets_after": {
+    "H0mework.Papers.PhysicsThirdEdition.Phenomenology": "68ad495252debc87e84a2a2c3382c8e1c0e6770212f919e252a6de3999457f27",
+    "H0mework.Versions.R0dd3c96d.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualCompositeBornHighFrequency": "1a0fbb14037a96afa0348e4105fce660dcc6f776ca4f1a43e9bf96df44f9954f",
+    "H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualDressedStaticFeedbackFullAudit": "6681d3e2868c8f19dd11eaeaf40731a43c72543ef42149b7c4a9e6035feadf4a",
+    "H0mework.Versions.Rdf421ff6.ReleaseMaterials.Scratch.AlphaSource.ActualDressedStaticFeedbackDispositionOwn.DressedStaticFeedbackProdCertOverlay.ActualDressedStaticFeedbackFullAuditProductionConsumers": "09e22dc47da2ce738111617e936739d84dfa337446943bd2cf7f4192156e7d5a",
+    "H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourceFullSylvesterMatrixFullAudit": "c139abdc45c969f06535602940735d843d4fea94bc239e3e00eacb02a05b6cc8",
+    "H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourceEMEventFeedFullAudit": "089e4257aff672e1453eb7f69fd22c6bccb2fb7ee85f195aadff0172a05b84e0",
+    "H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourceEventCutFullAudit": "00211e56fed52515bf7da194f15fa928e4674798de09ad30e8453ad9ed268a68",
+    "H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualExplicitGreenNoetherWords": "8c441c190096ea5bb86d6881335f71ed7d0753efbf9a246faab6effeaedd9147",
+    "H0mework.Versions.R0dd3c96d.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualSourceCutFreeIRRegularization": "e14dee1b4cda0765450332a99dfafad22e348bb481be83d2fe6395a1c223de88",
+    "H0mework.Versions.Rdf421ff6.ReleaseMaterials.Verification.Physics.LowEnergyPhenomenology.AlphaSource.EmIdentification.ActualDressedStaticHalfPencil": "0c81dd2eda636c96ae7fa61de98c42202e9b16059440d005981dfe70a2a6a5ba"
+  }
+}
