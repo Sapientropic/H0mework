@@ -16,9 +16,9 @@ Lean 4 proofs, reproduction programs and frozen evidence behind a family of rese
 ## Machine-checked
 
 <!-- BEGIN CI STATUS -->
-<a href="https://github.com/Sapientropic/H0mework/actions/runs/43018293075"><img src="docs/assets/ci-wall.en.svg" alt="Lean full selection: 58,722 modules across 11 stages and 96 shards, all checked" width="100%"></a>
+<a href="https://github.com/Sapientropic/H0mework/actions/runs/43159515852"><img src="docs/assets/ci-wall.en.svg" alt="Lean full selection: 62,694 modules across 11 stages and 106 shards, all checked" width="100%"></a>
 
-- **58,722 Lean modules passed the complete kernel check.** [The accepted run](https://github.com/Sapientropic/H0mework/actions/runs/43018293075) used 11 stages and 96 shards with `--trust=0` throughout at `2e5b4cbc`. The current build covers 62,694 modules across 106 shards.
+- **62,694 Lean modules passed the complete kernel check.** [The accepted run](https://github.com/Sapientropic/H0mework/actions/runs/43159515852) used 11 stages and 106 shards with `--trust=0` throughout at `53c8d110`.
 <!-- END CI STATUS -->
 
 - **Cited declarations are audited again per edition.** Their full dependency closures use only Lean's three standard axioms, with `unsafe = 0` and `partial = 0`; each paper's acceptance and reproduction links are grouped below.
@@ -29,7 +29,7 @@ Lean 4 proofs, reproduction programs and frozen evidence behind a family of rese
 <!-- BEGIN PAPERS -->
 **[Browse all papers on the site, with abstracts and claim-level proofs →](https://h0mework.wiki/en/papers/)**
 
-Latest: [The Structural Theorem of Capitalism](https://h0mework.wiki/en/papers/capital-formation/) · [Provenance-Preserving Conservation Calculus and Non-Free Continuity](https://h0mework.wiki/en/papers/whole-ledger-accounting/)
+Latest: [The Structural Theorem of Capitalism](https://h0mework.wiki/en/papers/capital-formation/) · [The Canonical Society Theorem](https://h0mework.wiki/en/papers/generated-society/)
 
 <details>
 <summary><strong>Preface</strong> · 1 paper</summary>
@@ -64,7 +64,7 @@ Latest: [The Structural Theorem of Capitalism](https://h0mework.wiki/en/papers/c
 <details>
 <summary><strong>Society & institutions</strong> · 4 papers</summary>
 
-- [The Canonical Society Theorem](https://h0mework.wiki/en/papers/generated-society/) · [v2](https://doi.org/10.5281/zenodo.23917896) · [Map](docs/generated-society-map.json) · [Reproduce](docs/generated-society-reproduction.md)
+- [The Canonical Society Theorem](https://h0mework.wiki/en/papers/generated-society/) · [v3](https://doi.org/10.5281/zenodo.24162923) · [Map](docs/generated-society-v3-map.json) · [Reproduce](docs/generated-society-v3-reproduction.md)
 - [An Economic Constitution of Possibility](https://h0mework.wiki/en/papers/economic-constitution/) · [v2](https://doi.org/10.5281/zenodo.23917902) · [Map](docs/economic-constitution-map.json) · [Reproduce](docs/economic-constitution-reproduction.md)
 - [The Structural Theorem of Capitalism](https://h0mework.wiki/en/papers/capital-formation/) · [v2](https://doi.org/10.5281/zenodo.24155195) · [Map](docs/capital-formation-v2-map.json) · [Reproduce](docs/capital-formation-v2-reproduction.md)
 - [War and Peace](https://h0mework.wiki/en/papers/enforceable-peace/) · [v1](https://doi.org/10.5281/zenodo.24093231) · [Map](docs/enforceable-peace-map.json) · [Reproduce](docs/enforceable-peace-reproduction.md)

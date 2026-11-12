@@ -15,7 +15,7 @@ export const repoLink = (path: string, line?: number, commit = "main") => `${REP
 const suffix = (lang: Lang) => (lang === "en" ? "-en" : "");
 const unzip = (zip: string, member: string) => execFileSync("unzip", ["-p", resolve(ROOT, zip), member], { encoding: "utf8", maxBuffer: 1 << 26 });
 
-export type ReleaseId = "first-release" | "second-edition" | "low-energy" | "whole-ledger" | "whole-ledger-v2" | "source-process-core-v3" | "one-bit" | "one-bit-v2" | "generated-society" | "economic-constitution" | "generated-society-v2" | "economic-constitution-v2" | "capital-formation" | "capital-formation-v2" | "enforceable-peace" | "physics-third-edition";
+export type ReleaseId = "first-release" | "second-edition" | "low-energy" | "whole-ledger" | "whole-ledger-v2" | "source-process-core-v3" | "one-bit" | "one-bit-v2" | "generated-society" | "economic-constitution" | "generated-society-v2" | "generated-society-v3" | "economic-constitution-v2" | "capital-formation" | "capital-formation-v2" | "enforceable-peace" | "physics-third-edition";
 type Release = {
   label: Record<Lang, string>;
   date: string;
@@ -83,6 +83,12 @@ if (!oneBitSecond?.is_published || oneBitSecond.version !== "v2"
 const SOCIETY = "papers/society-economic/2026-11-03";
 const SOCIETY_V2 = "papers/society-economic/2026-11-03-v2";
 const SOCIETY_SOURCE = "2d6fbc96e33b7c4c3cfd91104fda74e3caeda045";
+const SOCIETY_V3 = "papers/generated-society/2026-11-12-v3";
+const societyThirdArchive = `${SOCIETY_V3}/editable/generated-society-v3-editable.zip`;
+const societyThird = readJson(`${SOCIETY_V3}/manifest.json`).papers.find((paper: any) => paper.paper === "generated-society");
+if (!societyThird?.is_published || societyThird.version !== "v3" || societyThird.source_commit !== SOCIETY_SOURCE
+    || !/^10\.5281\/zenodo\.\d+$/.test(societyThird.doi))
+  throw new Error("Canonical Society third edition has no published DOI and fixed proof source");
 const CAPITAL = "papers/capital-formation/2026-11-04";
 const capitalArchive = `${CAPITAL}/editable/capital-formation-v1-editable.zip`;
 const CAPITAL_V2 = "papers/capital-formation/2026-11-12-v2";
@@ -269,6 +275,28 @@ const BASE_RELEASES: Record<Exclude<ReleaseId, "generated-society-v2" | "economi
       en: "Eight institutional principles and eight adopted formal results are listed separately. The principles have normative arguments; Lean checks their explicitly adopted formal support. Each row opens the original text, actual declarations, direct consumers, and evidence.",
     },
   },
+  "generated-society-v3": {
+    label: { zh: "典范社会总定理", en: "The Canonical Society Theorem" },
+    date: societyThird.publication_date,
+    map: "docs/generated-society-v3-map.json",
+    selection: { path: societyThirdArchive, member: "papers/generated-society/records/m7-source-binding-v3.json" },
+    manuscript: (slug, lang) => unzip(societyThirdArchive, `papers/${slug}/manuscript${suffix(lang)}.md`),
+    supplement: (slug, lang) => unzip(societyThirdArchive, `papers/${slug}/supplement${suffix(lang)}.md`),
+    bibliography: (slug) => unzip(societyThirdArchive, `papers/${slug}/references-v3.bib`),
+    files: (slug, lang) => ({
+      pdf: `${SOCIETY_V3}/pdf/${slug}${suffix(lang)}.pdf`,
+      supplement: `${SOCIETY_V3}/pdf/${slug}-supplement${suffix(lang)}.pdf`,
+    }),
+    check: "python3 tools/generated_society_v3.py entry --output .local/generated-society-v3-entry",
+    guide: "docs/generated-society-v3-reproduction.md",
+    sourceCommit: societyThird.source_commit,
+    documentationCommit: "main",
+    replacesClaimsFrom: "generated-society-v2",
+    acceptance: {
+      zh: "M7–M10 与跨领域主体来源的公开证明通过本地构建、公理依赖和完整类型核验。",
+      en: "The M7–M10 proofs and cross-domain actor provenance passed the local build, axiom dependency audit, and complete type checks.",
+    },
+  },
   "capital-formation": {
     label: { zh: "资本主义的结构总定理", en: "The structural theorem of capitalism" },
     date: capitalPaper().publication_date,
@@ -429,6 +457,7 @@ export const PAPERS: PaperEntry[] = [
     editions: [
       { release: "generated-society", doi: societyPaper("generated-society").doi },
       { release: "generated-society-v2", doi: societyPaper("generated-society", "v2").doi },
+      { release: "generated-society-v3", doi: societyThird.doi },
     ],
     figure: { name: "exit-run", claim: "G4" },
   },

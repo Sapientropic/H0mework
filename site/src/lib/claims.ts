@@ -233,8 +233,11 @@ function societyIds(text: string): string[] {
     match[3] ? Array.from({ length: +match[3] - +match[1] + 1 }, (_, i) => `G${+match[1] + i}`) : [`G${match[1]}${match[2] ?? ""}`]);
 }
 function generatedSociety(slug: string, edition: number, release: ReleaseId): Source[] {
-  const correspondence = publishedPaperJson(release, slug, "records/theorem-correspondence.json").rows;
-  return mapOf(release).claims.map((claim: any) => {
+  const third = release === "generated-society-v3" ? mapOf(release) : null;
+  const correspondence = publishedPaperJson(release, slug,
+    third ? "records/theorem-correspondence-v3.json" : "records/theorem-correspondence.json").rows;
+  const inherited = third ? mapOf("generated-society") : mapOf(release);
+  const rows: Source[] = inherited.claims.map((claim: any) => {
     const all = correspondence.filter((row: any) => societyIds(row.claims).includes(claim.id)
       || (claim.cited_interface_contracts?.length && row.claims === "PT15 independent"));
     const specific = all.filter((row: any) => row.main !== "1.1");
@@ -258,6 +261,32 @@ function generatedSociety(slug: string, edition: number, release: ReleaseId): So
       producers: acceptedEntries([...claim.producers, ...claim.direct_consumers, ...claim.resources]),
     };
   });
+  if (!third) return rows;
+  if (third.acceptance?.status !== "passed"
+      || third.proof_snapshots.main !== RELEASES[release].sourceCommit)
+    throw new Error("Canonical Society third edition does not match the accepted proof selection");
+  for (const claim of third.claims) {
+    const crossDomain = claim.id === "cross-domain-actors";
+    const commit = crossDomain ? third.proof_snapshots.cross_domain : third.proof_snapshots.main;
+    const entries: Producer[] = [...claim.producers, ...claim.direct_consumers].map((entry: any) => ({
+      kind: "lean",
+      public: { ...entry.public, commit },
+      declarations: entry.declarations.map((decl: any) => ({ qualified_name: decl.qualified_name, line: decl.public_line })),
+    }));
+    if (crossDomain) {
+      // The four-domain certificate gives a second source for the subject-generation claim.
+      rows.find((row) => row.ids.includes("G0"))!.producers.push(...entries);
+    } else {
+      rows.push({
+        key: `soc.${claim.id}`, ids: [claim.id], edition, category: "formal",
+        text: { title: claim.titles.zh, statement: null },
+        localizedText: { en: { title: claim.titles.en, statement: null } },
+        location: claim.location,
+        producers: entries,
+      });
+    }
+  }
+  return rows;
 }
 
 const PRINCIPLES = { zh: ["一", "二", "三", "四", "五", "六", "七", "八"], en: ["One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight"] };
@@ -434,6 +463,7 @@ const ADAPTERS: Record<ReleaseId, (slug: string, edition: number, release: Relea
   "generated-society": generatedSociety,
   "economic-constitution": economicConstitution,
   "generated-society-v2": generatedSociety,
+  "generated-society-v3": generatedSociety,
   "economic-constitution-v2": economicConstitution,
   "capital-formation": capitalFormation,
   "capital-formation-v2": capitalFormation,

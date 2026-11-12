@@ -12,7 +12,7 @@ export type Excerpt = { label: string; name: string; body: string; parts: string
 // "**定理 6.2（名）。** 正文" / "**Theorem 6.2 (Name).** Text": a kind word, a dotted number, then the name in brackets.
 const HEAD = /^\*\*([^*\d（(]{1,24}?)\s*((?:[A-Z]\.)?\d+(?:\.\d+)*[a-z]?)\s*([（(][\s\S]*?)\*\*\s*[。．.:：]?\s*/;
 const NOT_RESULT = /^(图|表|Figure|Table)$/;
-const CAPITAL_FORMAL_RESULT = /^(定理|命题|Theorem|Proposition)$/;
+const FORMAL_RESULT = /^(定理|命题|引理|Theorem|Proposition|Lemma)$/;
 const ANCHOR = /^<a id="[^"]*"><\/a>\s*/gm;
 
 const isDisplay = (p: string) => /^(\$\$|\\\[)/.test(p);
@@ -73,9 +73,9 @@ function indexOf(release: ReleaseId, slug: string, lang: Lang) {
       const kind = head[1].trim();
       if (NOT_RESULT.test(kind)) return;
       const previous = results.get(head[2]);
-      // Capital formation numbers its examples and formal results independently.
-      const capitalFormal = slug === "capital-formation" && CAPITAL_FORMAL_RESULT.test(kind);
-      if (previous && (!capitalFormal || CAPITAL_FORMAL_RESULT.test(previous.kind))) return;
+      // In these papers examples and formal results have independent numbering.
+      const preferFormal = slug === "capital-formation" || release === "generated-society-v3";
+      if (previous && (!preferFormal || !FORMAL_RESULT.test(kind) || FORMAL_RESULT.test(previous.kind))) return;
       const first = paragraph.slice(head[0].length).trim();
       const body = continuation(paragraphs, at, Boolean(first), first ? [first] : []);
       results.set(head[2], { kind, number: head[2], name: clean(nameOf(head[3])), body: clean(body.join("\n\n")), section });

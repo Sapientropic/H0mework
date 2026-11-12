@@ -16,9 +16,9 @@
 ## 机器已核
 
 <!-- BEGIN CI STATUS -->
-<a href="https://github.com/Sapientropic/H0mework/actions/runs/43018293075"><img src="docs/assets/ci-wall.svg" alt="Lean 完整选集：58,722 个模块，11 个阶段、96 个分片，全部通过" width="100%"></a>
+<a href="https://github.com/Sapientropic/H0mework/actions/runs/43159515852"><img src="docs/assets/ci-wall.svg" alt="Lean 完整选集：62,694 个模块，11 个阶段、106 个分片，全部通过" width="100%"></a>
 
-- **58,722 个 Lean 模块通过完整内核验收。** [验收运行](https://github.com/Sapientropic/H0mework/actions/runs/43018293075) 使用 11 个阶段、96 个分片，全包 `--trust=0`，提交 `2e5b4cbc`。当前构建覆盖 62,694 个模块、106 个分片。
+- **62,694 个 Lean 模块通过完整内核验收。** [验收运行](https://github.com/Sapientropic/H0mework/actions/runs/43159515852) 使用 11 个阶段、106 个分片，全包 `--trust=0`，提交 `53c8d110`。
 <!-- END CI STATUS -->
 
 - **论文引用的声明逐版再审。** 完整依赖闭包只使用 Lean 标准三条公理，`unsafe = 0`、`partial = 0`；各篇验收与复现入口列在下方论文分组中。
@@ -29,7 +29,7 @@
 <!-- BEGIN PAPERS -->
 **[在网站上浏览全部论文，读摘要并逐条展开证明 →](https://h0mework.wiki/papers/)**
 
-最新：[资本主义的结构总定理](https://h0mework.wiki/papers/capital-formation/) · [溯源守恒演算与非免费连续性](https://h0mework.wiki/papers/whole-ledger-accounting/)
+最新：[资本主义的结构总定理](https://h0mework.wiki/papers/capital-formation/) · [典范社会总定理](https://h0mework.wiki/papers/generated-society/)
 
 <details>
 <summary><strong>总序</strong> · 1 篇</summary>
@@ -64,7 +64,7 @@
 <details>
 <summary><strong>社会与制度</strong> · 4 篇</summary>
 
-- [典范社会总定理](https://h0mework.wiki/papers/generated-society/) · [v2](https://doi.org/10.5281/zenodo.23917896) · [映射](docs/generated-society-map.json) · [复现](docs/generated-society-reproduction.md)
+- [典范社会总定理](https://h0mework.wiki/papers/generated-society/) · [v3](https://doi.org/10.5281/zenodo.24162923) · [映射](docs/generated-society-v3-map.json) · [复现](docs/generated-society-v3-reproduction.md)
 - [可能性的经济宪法](https://h0mework.wiki/papers/economic-constitution/) · [v2](https://doi.org/10.5281/zenodo.23917902) · [映射](docs/economic-constitution-map.json) · [复现](docs/economic-constitution-reproduction.md)
 - [资本主义的结构总定理](https://h0mework.wiki/papers/capital-formation/) · [v2](https://doi.org/10.5281/zenodo.24155195) · [映射](docs/capital-formation-v2-map.json) · [复现](docs/capital-formation-v2-reproduction.md)
 - [战争与和平的源生终局定理](https://h0mework.wiki/papers/enforceable-peace/) · [v1](https://doi.org/10.5281/zenodo.24093231) · [映射](docs/enforceable-peace-map.json) · [复现](docs/enforceable-peace-reproduction.md)

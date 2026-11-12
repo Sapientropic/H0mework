@@ -209,12 +209,13 @@ export function paperOf(slug: string, lang: Lang) {
   const title = titleOf(manuscript);
   const parts = splitTitle(title);
   // Some papers place their subtitle on a separate heading or bold line before the abstract.
-  if ((slug === "economic-constitution" || slug === "capital-formation") && !parts.sub)
+  const hasSubtitleHeading = slug === "economic-constitution" || slug === "capital-formation" || latest === "generated-society-v3";
+  if (hasSubtitleHeading && !parts.sub)
     parts.sub = manuscript.split(/^##\s+(?:摘要|Abstract)\s*$/m)[0].match(/^##\s+(.+)$/m)?.[1] ?? "";
   const hasBoldSubtitle = lang === "en" && (slug === "one-bit" || latest === "whole-ledger-v2");
   const boldSubtitle = (text: string) => text.split(/^\*\*Author:/m)[0].match(/^\*\*(.+)\*\*$/m)?.[1] ?? "";
   if (hasBoldSubtitle && !parts.sub) parts.sub = boldSubtitle(manuscript);
-  const hasSeparateSub = slug === "economic-constitution" || slug === "capital-formation" || hasBoldSubtitle;
+  const hasSeparateSub = hasSubtitleHeading || hasBoldSubtitle;
   const abstract = abstractOf(manuscript, lang);
   const otherManuscript = manuscriptOf(latest, slug, lang === "zh" ? "en" : "zh");
   const otherTitle = titleOf(otherManuscript);
