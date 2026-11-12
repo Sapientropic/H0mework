@@ -1,0 +1,2967 @@
+{
+  "schema": "h0mework/economic-constitution-v3-map@1",
+  "paper": "economic-constitution",
+  "edition": "v3",
+  "proof_snapshots": {
+    "main": "2d6fbc96e33b7c4c3cfd91104fda74e3caeda045",
+    "society_book": "fd6147f8c337d88ebf72d91ddadef0aa601e6c2e",
+    "edition": "3c6a36c3d7ddd920f52afeb52990f0456ee53c83"
+  },
+  "inherited": {
+    "map": "docs/economic-constitution-map.json",
+    "selection": "checks/economic-constitution-selection.json",
+    "binding_path": "papers/economic-constitution/records/public-source-binding.json",
+    "complete_types": 3313
+  },
+  "historical_maps": [
+    "checks/society-book-map.json",
+    "docs/generated-society-map.json"
+  ],
+  "source_snapshots": {
+    "Lean/H0mework/Versions/R7c228ac7/ReleaseMaterials/SaturationMonoid/ProcessGame/Society/UBI/Capacity/OriginalDemand.lean": "society_book",
+    "Lean/H0mework/Versions/R7c228ac7/ReleaseMaterials/SaturationMonoid/ProcessGame/Society/UBI/Capacity/Observation.lean": "society_book",
+    "Lean/H0mework/Versions/R7c228ac7/ReleaseMaterials/SaturationMonoid/ProcessGame/Regression/Society/M14/Consumer/Economy/OriginalExitDemandDeficitRegression.lean": "society_book",
+    "Lean/H0mework/Versions/Rdf421ff6/ReleaseMaterials/SaturationMonoid/ProcessGame/Regression/Society/Lifecycle/Universal/ReappearanceSuccessionRegression.lean": "society_book",
+    "Lean/H0mework/Versions/Rac87df08/ReleaseMaterials/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/Evidence.lean": "society_book",
+    "Lean/H0mework/Versions/Rac87df08/ReleaseMaterials/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/Disclosure.lean": "society_book",
+    "Lean/H0mework/Versions/Rac87df08/ReleaseMaterials/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/Actual.lean": "society_book",
+    "Lean/H0mework/Versions/Rac87df08/ReleaseMaterials/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/Runtime.lean": "society_book",
+    "Lean/H0mework/Versions/Rac87df08/ReleaseMaterials/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/Response/Runtime.lean": "society_book",
+    "Lean/H0mework/Versions/Rac87df08/ReleaseMaterials/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/EnergyRenewal/Runtime.lean": "society_book",
+    "Lean/H0mework/Versions/Rac87df08/ReleaseMaterials/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/EnergyRenewal/Continuation/Runtime.lean": "society_book",
+    "Lean/H0mework/Versions/Rac87df08/ReleaseMaterials/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/EnergyRenewal/Handoff/Runtime.lean": "society_book",
+    "Lean/H0mework/Versions/Rfb9e88a7/ReleaseMaterials/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/Response/Regression.lean": "society_book",
+    "Lean/H0mework/Versions/Rac87df08/ReleaseMaterials/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/Governance/Runtime.lean": "society_book",
+    "Lean/H0mework/Versions/Rac87df08/ReleaseMaterials/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/EnergyRenewal/Privacy/Source.lean": "society_book",
+    "Lean/H0mework/Versions/Rac87df08/ReleaseMaterials/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/EnergyRenewal/Privacy/Wire.lean": "society_book",
+    "Lean/H0mework/Versions/Rac87df08/ReleaseMaterials/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/EnergyRenewal/Privacy/Network.lean": "society_book",
+    "Lean/H0mework/Versions/Rac87df08/ReleaseMaterials/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/EnergyRenewal/Privacy/Timing.lean": "society_book",
+    "Lean/H0mework/Versions/Rac87df08/ReleaseMaterials/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/EnergyRenewal/Privacy/Timing/Source.lean": "society_book",
+    "Lean/H0mework/Versions/Rac87df08/ReleaseMaterials/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/EnergyRenewal/Privacy/Online.lean": "society_book",
+    "Lean/H0mework/Versions/R16573f5d/ReleaseMaterials/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/EnergyRenewal/Privacy/IndependentProduct.lean": "edition",
+    "Lean/H0mework/Versions/Rfde5c14d/ReleaseMaterials/SaturationMonoid/ProcessGame/Regression/Society/M14/Consumer/Economy/Regeneration/ProofCarryingSameOccurrenceRegenerationRegression.lean": "main",
+    "Lean/H0mework/Versions/Rfde5c14d/ReleaseMaterials/SaturationMonoid/ProcessGame/Regression/Society/M14/M14WholeProgramRegression.lean": "main",
+    "Lean/H0mework/Versions/Rfde5c14d/ReleaseMaterials/SaturationMonoid/ProcessGame/Regression/Society/M14/Fixture/Economy/Credit/Risk/Merge/Capacity/Renewal/Settlement/Joint/Renewal/Accountability/Consumer/ProofCarryingContributionCapacityPostSettlementExternalLiability.lean": "main",
+    "Lean/H0mework/Versions/Rfde5c14d/ReleaseMaterials/SaturationMonoid/ProcessGame/Regression/Society/M14/Fixture/Economy/Credit/Risk/Merge/Capacity/Renewal/Settlement/Joint/Renewal/Accountability/Producer/SourceGeneratedContributionCapacityPostSettlementExternalLiability.lean": "main",
+    "Lean/H0mework/Versions/Rdf421ff6/ReleaseMaterials/SaturationMonoid/ProcessGame/Society/Institutions/Capitalism/Universal/Abolition/Innovation/Contribution/RiskMath.lean": "main",
+    "Lean/H0mework/Versions/Rdf421ff6/ReleaseMaterials/SaturationMonoid/ProcessGame/Society/Institutions/Capitalism/Universal/Abolition/Innovation/Contribution/Forecast.lean": "main",
+    "Lean/H0mework/Versions/Rdf421ff6/ReleaseMaterials/SaturationMonoid/ProcessGame/Society/Institutions/Capitalism/Universal/Abolition/Accounting/Quantifiers/Assembly/Strengthening/Characterization/Support/Law.lean": "main",
+    "evidence/society-book/original/Rfb9e88a7/Lean/scripts/verification/public-scoped-audit-kernel.lean": "society_book",
+    "evidence/generated-society/original/Rfde5c14d/Lean/docs/handoffs/process-generated-society-active-route.md": "main",
+    "evidence/generated-society/original/Re60a8605/Lean/docs/research/process-generated-society/launch-kit/common/02-root-law-theorem-map.md": "main",
+    "evidence/generated-society/original/Re60a8605/Lean/docs/research/process-generated-society/launch-kit/common/05-refusal-recourse-flagship.md": "main",
+    "evidence/generated-society/original/Re60a8605/Lean/docs/research/process-generated-society/launch-kit/common/07-reproduction-card.md": "main",
+    "evidence/generated-society/original/Re60a8605/Lean/docs/research/process-generated-society/launch-kit/common/08-regression-reuse-manifest.md": "main",
+    "evidence/generated-society/original/Rfde5c14d/Lean/docs/research/process-generated-society/economic-constitution-of-possibility.md": "main",
+    "evidence/economic-constitution/original/Rdf421ff6/Lean/docs/research/process-generated-society/launch-kit/common/09-theory-as-occurrence-flagship.md": "main"
+  },
+  "results": [
+    {
+      "number": "1.2",
+      "principle": null,
+      "titles": {
+        "zh": {
+          "label": "定理 1.2",
+          "title": "可能性的经济宪法总定理：五轴构造与六类失效见证"
+        },
+        "en": {
+          "label": "Theorem 1.2",
+          "title": "The Constitutional Possibility Theorem: Five Constructive Axes and Six Failure Witnesses"
+        }
+      },
+      "supplement": "A–C",
+      "inherited_interface_ids": [
+        "r001",
+        "r002",
+        "r003",
+        "r004",
+        "r005",
+        "r006",
+        "r007",
+        "r008",
+        "r009",
+        "r010",
+        "r011",
+        "r012",
+        "r013",
+        "r014",
+        "r015",
+        "r016",
+        "r017",
+        "r018",
+        "r019",
+        "r020",
+        "r021",
+        "r022",
+        "r023",
+        "r024",
+        "r025",
+        "r026",
+        "r027",
+        "r028",
+        "r029",
+        "r030",
+        "r031",
+        "r032",
+        "r033",
+        "r034",
+        "r035",
+        "r036",
+        "r037",
+        "r038",
+        "r039",
+        "r040",
+        "r041",
+        "r042",
+        "r043",
+        "r044",
+        "r045",
+        "r046",
+        "r047",
+        "r048",
+        "r049",
+        "r050",
+        "r051",
+        "r052",
+        "r053",
+        "r054",
+        "r055",
+        "r056",
+        "r057",
+        "r058",
+        "r059",
+        "r060",
+        "r061",
+        "r062",
+        "r063",
+        "r064",
+        "r065",
+        "r066",
+        "r067",
+        "r068",
+        "r069",
+        "r070",
+        "r071",
+        "r072",
+        "r073",
+        "r074",
+        "r075",
+        "r076",
+        "r077",
+        "r078",
+        "r079",
+        "r080",
+        "r081",
+        "r082",
+        "r083",
+        "r084",
+        "r085",
+        "r086",
+        "r087",
+        "r088",
+        "r089",
+        "r090"
+      ],
+      "proof_claims": [
+        "original-exit-demand",
+        "same-debt-reappearance",
+        "scoped-dual-verification",
+        "paid-audit-handoff",
+        "adaptive-source-privacy",
+        "network-observation-law",
+        "timed-own-root-next",
+        "finite-independent-privacy",
+        "same-occurrence-regeneration",
+        "post-settlement-external-liability",
+        "source-risk-quote",
+        "symmetric-port-permissions"
+      ]
+    },
+    {
+      "number": "2.1",
+      "principle": "ECN1",
+      "titles": {
+        "zh": {
+          "label": "定理 2.1",
+          "title": "五门真实退出充要刻画与“三个零”诊断不可逆性"
+        },
+        "en": {
+          "label": "Theorem 2.1",
+          "title": "Five-Gate Real Exit Characterization and Irreversibility of the Three Zeros"
+        }
+      },
+      "supplement": "A.1",
+      "inherited_interface_ids": [
+        "r001",
+        "r002",
+        "r003",
+        "r004",
+        "r005"
+      ],
+      "proof_claims": []
+    },
+    {
+      "number": "2.2",
+      "principle": "ECN1",
+      "titles": {
+        "zh": {
+          "label": "定理 2.2",
+          "title": "同正容量盲区与全领域粗读数修复不可识别性"
+        },
+        "en": {
+          "label": "Theorem 2.2",
+          "title": "Equal-Capacity Blind Spot and Coarse-Readout Repair Impossibility"
+        }
+      },
+      "supplement": "A.2–A.3",
+      "inherited_interface_ids": [
+        "r006",
+        "r007",
+        "r008",
+        "r009",
+        "r010",
+        "r011",
+        "r012",
+        "r013",
+        "r014",
+        "r015"
+      ],
+      "proof_claims": []
+    },
+    {
+      "number": "2.3",
+      "principle": "ECN1",
+      "titles": {
+        "zh": {
+          "label": "命题 2.3",
+          "title": "原始退出需求守恒、全捕获全额赤字与名义重标不变性"
+        },
+        "en": {
+          "label": "Proposition 2.3",
+          "title": "Original Exit-Demand Conservation, Full-Capture Deficit, and Re-Observation Invariance"
+        }
+      },
+      "supplement": "A.1",
+      "inherited_interface_ids": [
+        "r001",
+        "r002"
+      ],
+      "proof_claims": [
+        "original-exit-demand"
+      ]
+    },
+    {
+      "number": "3.1",
+      "principle": "ECN2",
+      "titles": {
+        "zh": {
+          "label": "定理 3.1",
+          "title": "基础参与生命周期等价、反报复保护、非雇用接续与再出现同债继承"
+        },
+        "en": {
+          "label": "Theorem 3.1",
+          "title": "Basic Participation Lifecycle Equivalence, Anti-Retaliation, Mandate Succession, and Same-Debt Reappearance"
+        }
+      },
+      "supplement": "A.4",
+      "inherited_interface_ids": [
+        "r016",
+        "r017",
+        "r018",
+        "r019",
+        "r020",
+        "r021",
+        "r022",
+        "r023",
+        "r024",
+        "r025",
+        "r026",
+        "r027",
+        "r028"
+      ],
+      "proof_claims": [
+        "same-debt-reappearance"
+      ]
+    },
+    {
+      "number": "4.1",
+      "principle": "ECN3",
+      "titles": {
+        "zh": {
+          "label": "定理 4.1",
+          "title": "全称开放事件处置、事前风险报价与两轮菜单外实付探索"
+        },
+        "en": {
+          "label": "Theorem 4.1",
+          "title": "Universal Open-Event Disposition, Ex-Ante Risk Pricing, and Two-Round Out-of-Menu Exploration"
+        }
+      },
+      "supplement": "B.2",
+      "inherited_interface_ids": [
+        "r054",
+        "r055",
+        "r056",
+        "r057",
+        "r064",
+        "r065"
+      ],
+      "proof_claims": [
+        "source-risk-quote"
+      ]
+    },
+    {
+      "number": "4.2",
+      "principle": "ECN3",
+      "titles": {
+        "zh": {
+          "label": "定理 4.2",
+          "title": "原发行唯一身份与跨转让全槽累计受领上界"
+        },
+        "en": {
+          "label": "Theorem 4.2",
+          "title": "Unique Issuance Provenance and All-Slot Cumulative Receipt Cap"
+        }
+      },
+      "supplement": "B.3",
+      "inherited_interface_ids": [
+        "r058",
+        "r059",
+        "r060",
+        "r061",
+        "r062",
+        "r063",
+        "r064",
+        "r065"
+      ],
+      "proof_claims": []
+    },
+    {
+      "number": "4.3",
+      "principle": "ECN3",
+      "titles": {
+        "zh": {
+          "label": "命题 4.3",
+          "title": "无资本五面对称等价刻画与平凡闭律负对照"
+        },
+        "en": {
+          "label": "Proposition 4.3",
+          "title": "Five-Facet Absence of Capital via Symmetric Port Access and Trivial Closed Control"
+        }
+      },
+      "supplement": "B.1",
+      "inherited_interface_ids": [
+        "r052",
+        "r053"
+      ],
+      "proof_claims": [
+        "symmetric-port-permissions"
+      ]
+    },
+    {
+      "number": "5.1",
+      "principle": "ECN4",
+      "titles": {
+        "zh": {
+          "label": "定理 5.1",
+          "title": "可复制方法零边际复用与开放复制净燃料红利"
+        },
+        "en": {
+          "label": "Theorem 5.1",
+          "title": "Zero-Marginal-Fee Method Reuse and Open-Replication Net Fuel Dividend"
+        }
+      },
+      "supplement": "A.5, B.5",
+      "inherited_interface_ids": [
+        "r029",
+        "r030",
+        "r031",
+        "r032",
+        "r066",
+        "r067",
+        "r074"
+      ],
+      "proof_claims": []
+    },
+    {
+      "number": "6.1",
+      "principle": "ECN5",
+      "titles": {
+        "zh": {
+          "label": "定理 6.1",
+          "title": "单次审计方法复用的全词时间红利与非强制派工轨迹"
+        },
+        "en": {
+          "label": "Theorem 6.1",
+          "title": "Single-Audit Method Reuse Time Dividend and Non-Compulsory Production Trajectory"
+        }
+      },
+      "supplement": "B.4–B.5",
+      "inherited_interface_ids": [
+        "r066",
+        "r067",
+        "r068",
+        "r069",
+        "r070",
+        "r071",
+        "r072",
+        "r073",
+        "r074"
+      ],
+      "proof_claims": []
+    },
+    {
+      "number": "7.1",
+      "principle": "ECN6",
+      "titles": {
+        "zh": {
+          "label": "定理 7.1",
+          "title": "公共职能责任连续与公职任期零吸收汇"
+        },
+        "en": {
+          "label": "Theorem 7.1",
+          "title": "Continuous Public-Function Responsibility and Zero Sovereign Absorbing Sink"
+        }
+      },
+      "supplement": "C.1–C.2",
+      "inherited_interface_ids": [
+        "r075",
+        "r076",
+        "r077",
+        "r078",
+        "r079",
+        "r080"
+      ],
+      "proof_claims": []
+    },
+    {
+      "number": "7.2",
+      "principle": "ECN6",
+      "titles": {
+        "zh": {
+          "label": "定理 7.2",
+          "title": "同窗机构可替换性与捕获净负担上界"
+        },
+        "en": {
+          "label": "Theorem 7.2",
+          "title": "In-Window Provider Replaceability and Net Capture-Burden Bound"
+        }
+      },
+      "supplement": "C.3",
+      "inherited_interface_ids": [
+        "r081"
+      ],
+      "proof_claims": []
+    },
+    {
+      "number": "7.3",
+      "principle": "ECN6",
+      "titles": {
+        "zh": {
+          "label": "定理 7.3",
+          "title": "共同初始切口自适应规划等价、双发票目录计费与六阶段槽位守恒"
+        },
+        "en": {
+          "label": "Theorem 7.3",
+          "title": "Common-Cut Adaptive Planning Equivalence, Two-Invoice Billing, and Six-Phase Slot Conservation"
+        }
+      },
+      "supplement": "C.4",
+      "inherited_interface_ids": [
+        "r082",
+        "r083",
+        "r084",
+        "r085",
+        "r086",
+        "r087",
+        "r088",
+        "r089",
+        "r090"
+      ],
+      "proof_claims": []
+    },
+    {
+      "number": "7.4",
+      "principle": "ECN6",
+      "titles": {
+        "zh": {
+          "label": "定理 7.4",
+          "title": "反全景限域双路核验、公开时序零泄漏与私域后继精确重构"
+        },
+        "en": {
+          "label": "Theorem 7.4",
+          "title": "Scoped Dual Verification, Timed Zero Leakage, and Exact Private Successor Reconstruction"
+        }
+      },
+      "supplement": "C.5",
+      "inherited_interface_ids": [],
+      "proof_claims": [
+        "scoped-dual-verification",
+        "paid-audit-handoff",
+        "adaptive-source-privacy",
+        "network-observation-law",
+        "timed-own-root-next",
+        "finite-independent-privacy"
+      ]
+    },
+    {
+      "number": "8.1",
+      "principle": "ECN7",
+      "titles": {
+        "zh": {
+          "label": "定理 8.1",
+          "title": "本地结清后的跨边界外部责任持续存在性"
+        },
+        "en": {
+          "label": "Theorem 8.1",
+          "title": "Survival of Cross-Boundary External Liability After Local Ledger Closure"
+        }
+      },
+      "supplement": "E.4",
+      "inherited_interface_ids": [],
+      "proof_claims": [
+        "post-settlement-external-liability"
+      ]
+    },
+    {
+      "number": "9.1",
+      "principle": "ECN8",
+      "titles": {
+        "zh": {
+          "label": "定理 9.1",
+          "title": "耗尽责任账的双层零预算夹逼闭包与无补给修法边界"
+        },
+        "en": {
+          "label": "Theorem 9.1",
+          "title": "Two-Layer Zero-Budget Squeeze Closure and Unrefilled Amendment Boundary"
+        }
+      },
+      "supplement": "A.7",
+      "inherited_interface_ids": [
+        "r049",
+        "r050",
+        "r051"
+      ],
+      "proof_claims": []
+    },
+    {
+      "number": "9.2",
+      "principle": "ECN8",
+      "titles": {
+        "zh": {
+          "label": "命题 9.2",
+          "title": "恒定瞬时退出容量下的已付权威前沿真包含与共终自我修法"
+        },
+        "en": {
+          "label": "Proposition 9.2",
+          "title": "Strict Paid-Authority Frontier Expansion at Constant Instantaneous Capacity and Cofinal Self-Amendment"
+        }
+      },
+      "supplement": "A.6",
+      "inherited_interface_ids": [
+        "r033",
+        "r034",
+        "r035",
+        "r036",
+        "r037",
+        "r038",
+        "r039",
+        "r040",
+        "r041",
+        "r042",
+        "r043",
+        "r044",
+        "r045",
+        "r046",
+        "r047",
+        "r048"
+      ],
+      "proof_claims": []
+    },
+    {
+      "number": "9.3",
+      "principle": "ECN8",
+      "titles": {
+        "zh": {
+          "label": "定理 9.3",
+          "title": "同发生周期付款驱动的六因子世界安全再生"
+        },
+        "en": {
+          "label": "Theorem 9.3",
+          "title": "Six-Factor World-Safe Regeneration Driven by One Same-Occurrence Periodic Payment"
+        }
+      },
+      "supplement": "A.8",
+      "inherited_interface_ids": [],
+      "proof_claims": [
+        "same-occurrence-regeneration"
+      ]
+    }
+  ],
+  "claims": [
+    {
+      "id": "original-exit-demand",
+      "paper": "economic-constitution",
+      "historical_map_claim": "original-exit-demand",
+      "producers": [
+        {
+          "kind": "lean",
+          "source_commit": "7c228ac7fd77350d3fe761c24b887cbf2f6e5afc",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Society/UBI/Capacity/OriginalDemand.lean",
+          "source_sha256": "81c451d1bdc6e0c1550727b75477dfa9a9420ed70e11389155295b8905d08e90",
+          "public": {
+            "path": "Lean/H0mework/Versions/R7c228ac7/ReleaseMaterials/SaturationMonoid/ProcessGame/Society/UBI/Capacity/OriginalDemand.lean",
+            "module": "H0mework.Versions.R7c228ac7.ReleaseMaterials.SaturationMonoid.ProcessGame.Society.UBI.Capacity.OriginalDemand",
+            "sha256": "9e8b42b5352aa8ebbbc2d4623243588aed53d569b6d0f33787e09d6fd1df3b38",
+            "variant": "R7c228ac7"
+          },
+          "declarations": [
+            {
+              "name": "actual_exit_capacity_and_original_deficit_balance_the_full_source_demand",
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.UBI.Capacity.SourceOwnedExitGeometryCompilerAt.actual_exit_capacity_and_original_deficit_balance_the_full_source_demand",
+              "source_line": 134,
+              "public_line": 134,
+              "complete_type": {
+                "declaration_index": 2,
+                "type_sha256": "bc4eb7e5d90a2be911db5074441d9b324564fd53648cf6359dda08cf05e02765"
+              }
+            },
+            {
+              "name": "full_capture_leaves_all_original_exit_demand_as_an_exact_deficit",
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.UBI.Capacity.SourceOwnedExitGeometryCompilerAt.full_capture_leaves_all_original_exit_demand_as_an_exact_deficit",
+              "source_line": 140,
+              "public_line": 140,
+              "complete_type": {
+                "declaration_index": 4,
+                "type_sha256": "e7445e6bd6471a7bafb32fa9360ce597fda30671fe927e9df02f595d611f6b1e"
+              }
+            }
+          ],
+          "verification": {
+            "kernel": "passed",
+            "proof_package": "institutional-quantities"
+          }
+        },
+        {
+          "kind": "lean",
+          "source_commit": "7c228ac7fd77350d3fe761c24b887cbf2f6e5afc",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Society/UBI/Capacity/Observation.lean",
+          "source_sha256": "0176f593c9663bb5cf45d3222b3eb438df826056ddc3c864961a970d6fc7b750",
+          "public": {
+            "path": "Lean/H0mework/Versions/R7c228ac7/ReleaseMaterials/SaturationMonoid/ProcessGame/Society/UBI/Capacity/Observation.lean",
+            "module": "H0mework.Versions.R7c228ac7.ReleaseMaterials.SaturationMonoid.ProcessGame.Society.UBI.Capacity.Observation",
+            "sha256": "c1ee1d9f29b203d63d98284d0332fe67172a598a5af9ccdb642ed846adbf2d76",
+            "variant": "R7c228ac7"
+          },
+          "declarations": [
+            {
+              "name": "changing_only_the_observation_keeps_original_exit_capacity_and_shortage",
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.UBI.Capacity.SourceOwnedExitGeometryCompilerAt.changing_only_the_observation_keeps_original_exit_capacity_and_shortage",
+              "source_line": 139,
+              "public_line": 139,
+              "complete_type": {
+                "declaration_index": 3,
+                "type_sha256": "1ac6b3b349f516dc89d52225c9f5c45ea40b1382c40f334651714eda8caa8803"
+              }
+            }
+          ],
+          "verification": {
+            "kernel": "passed",
+            "proof_package": "institutional-quantities"
+          }
+        }
+      ],
+      "direct_consumers": [
+        {
+          "kind": "lean",
+          "source_commit": "7c228ac7fd77350d3fe761c24b887cbf2f6e5afc",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Regression/Society/M14/Consumer/Economy/OriginalExitDemandDeficitRegression.lean",
+          "source_sha256": "f8fc9924cc052af99f65bb408bc90c7fd6ccbfd5929b8464cf221ed9760c4d92",
+          "public": {
+            "path": "Lean/H0mework/Versions/R7c228ac7/ReleaseMaterials/SaturationMonoid/ProcessGame/Regression/Society/M14/Consumer/Economy/OriginalExitDemandDeficitRegression.lean",
+            "module": "H0mework.Versions.R7c228ac7.ReleaseMaterials.SaturationMonoid.ProcessGame.Regression.Society.M14.Consumer.Economy.OriginalExitDemandDeficitRegression",
+            "sha256": "c30e53486a8a3a8a764b426fb5c6ebc93a573e0960084dde9ee6843d0071262b",
+            "variant": "R7c228ac7"
+          },
+          "declarations": [
+            {
+              "name": "the_actual_capture_keeps_the_original_paid_root_and_records_one_lost_exit",
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.M14OriginalExitDemandDeficit.the_actual_capture_keeps_the_original_paid_root_and_records_one_lost_exit",
+              "source_line": 23,
+              "public_line": 23,
+              "complete_type": {
+                "declaration_index": 1,
+                "type_sha256": "678f6979485461f0d0cc259dd4025ccb5f338d41f57a8ab02caa1869088687dd"
+              }
+            },
+            {
+              "name": "every_quote_keeps_the_original_paid_capacity_and_the_actual_capture_loss",
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.M14OriginalExitDemandDeficit.every_quote_keeps_the_original_paid_capacity_and_the_actual_capture_loss",
+              "source_line": 38,
+              "public_line": 38,
+              "complete_type": {
+                "declaration_index": 0,
+                "type_sha256": "27ac4a02137530342a04e6a5d2db05cad816cc78199ee4b68c27a27dfbb43dda"
+              }
+            }
+          ],
+          "verification": {
+            "kernel": "passed",
+            "proof_package": "institutional-quantities"
+          }
+        }
+      ],
+      "resources": []
+    },
+    {
+      "id": "same-debt-reappearance",
+      "paper": "economic-constitution",
+      "historical_map_claim": "pgs-m1-reappearance-is-succession",
+      "producers": [
+        {
+          "kind": "lean",
+          "source_commit": "df421ff600085cbc290a7ae946193961bed7c83b",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Regression/Society/Lifecycle/Universal/ReappearanceSuccessionRegression.lean",
+          "source_sha256": "b5d7a0e94088b53aa1d95bda452f5735c82bd7488e36c4dc472110c759957fe9",
+          "public": {
+            "path": "Lean/H0mework/Versions/Rdf421ff6/ReleaseMaterials/SaturationMonoid/ProcessGame/Regression/Society/Lifecycle/Universal/ReappearanceSuccessionRegression.lean",
+            "module": "H0mework.Versions.Rdf421ff6.ReleaseMaterials.SaturationMonoid.ProcessGame.Regression.Society.Lifecycle.Universal.ReappearanceSuccessionRegression",
+            "sha256": "36b9b63f4a1340a3e7266c0f1252c6e0176f429fff917ea0bef00975bdbb6e22",
+            "variant": "Rdf421ff6"
+          },
+          "declarations": [
+            {
+              "name": "target_reappears",
+              "qualified_name": "SaturationMonoid.ProcessGame.Regression.Society.Lifecycle.Universal.ReappearanceSuccessionRegression.target_reappears",
+              "source_line": 246,
+              "public_line": 246,
+              "complete_type": {
+                "declaration_index": 8,
+                "type_sha256": "2ccbaffc0eae1231f958010ac5b92ac5c187049012908ddc77fb3544a2a86bdc"
+              }
+            },
+            {
+              "name": "target_succession",
+              "qualified_name": "SaturationMonoid.ProcessGame.Regression.Society.Lifecycle.Universal.ReappearanceSuccessionRegression.target_succession",
+              "source_line": 252,
+              "public_line": 252,
+              "complete_type": {
+                "declaration_index": 9,
+                "type_sha256": "ca519af02ed1c70f3afad0695c840fb6be25d55691c0f74957cf3ba14728f9e6"
+              }
+            },
+            {
+              "name": "target_not_birth",
+              "qualified_name": "SaturationMonoid.ProcessGame.Regression.Society.Lifecycle.Universal.ReappearanceSuccessionRegression.target_not_birth",
+              "source_line": 255,
+              "public_line": 255,
+              "complete_type": {
+                "declaration_index": 7,
+                "type_sha256": "78e8c9958b08478c17720c84597427d6bd85f51ea469f7d541f8a7f19fd32621"
+              }
+            },
+            {
+              "name": "reappearance_same_debt",
+              "qualified_name": "SaturationMonoid.ProcessGame.Regression.Society.Lifecycle.Universal.ReappearanceSuccessionRegression.reappearance_same_debt",
+              "source_line": 266,
+              "public_line": 266,
+              "complete_type": {
+                "declaration_index": 6,
+                "type_sha256": "27330fbd19724d18ffe94ca72045ca9e29042e2a3f5d137a50f1dc09dd6768ba"
+              }
+            }
+          ],
+          "verification": {
+            "kernel": "passed",
+            "proof_package": "reappearance"
+          }
+        }
+      ],
+      "direct_consumers": [
+        {
+          "kind": "lean",
+          "source_commit": "df421ff600085cbc290a7ae946193961bed7c83b",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Regression/Society/Lifecycle/Universal/ReappearanceSuccessionRegression.lean",
+          "source_sha256": "b5d7a0e94088b53aa1d95bda452f5735c82bd7488e36c4dc472110c759957fe9",
+          "public": {
+            "path": "Lean/H0mework/Versions/Rdf421ff6/ReleaseMaterials/SaturationMonoid/ProcessGame/Regression/Society/Lifecycle/Universal/ReappearanceSuccessionRegression.lean",
+            "module": "H0mework.Versions.Rdf421ff6.ReleaseMaterials.SaturationMonoid.ProcessGame.Regression.Society.Lifecycle.Universal.ReappearanceSuccessionRegression",
+            "sha256": "36b9b63f4a1340a3e7266c0f1252c6e0176f429fff917ea0bef00975bdbb6e22",
+            "variant": "Rdf421ff6"
+          },
+          "declarations": [
+            {
+              "name": "target_succession_consumes_reappearance",
+              "qualified_name": "SaturationMonoid.ProcessGame.Regression.Society.Lifecycle.Universal.ReappearanceSuccessionRegression.target_succession_consumes_reappearance",
+              "source_line": 281,
+              "public_line": 281,
+              "complete_type": {
+                "declaration_index": 10,
+                "type_sha256": "7690a1aaaae6150d544a18f9dc1174804c64033919a808fc6c3ab435c6cfd6f1"
+              }
+            },
+            {
+              "name": "whole_next",
+              "qualified_name": "SaturationMonoid.ProcessGame.Regression.Society.Lifecycle.Universal.ReappearanceSuccessionRegression.whole_next",
+              "source_line": 289,
+              "public_line": 289,
+              "complete_type": {
+                "declaration_index": 11,
+                "type_sha256": "62b4b95b5ece28768831f6d83ffc06dfb9ddcb562079ca16cea3ca7b5d015d6b"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Regression.Society.Lifecycle.Universal.ReappearanceSuccessionRegression.reappearance_next_slot",
+              "public_line": 276,
+              "complete_type": {
+                "declaration_index": 5,
+                "type_sha256": "6530b3c1b6adb7f55013de8e96bec523e78ade0dac86279285db41526baaeac8"
+              }
+            }
+          ],
+          "verification": {
+            "kernel": "passed",
+            "proof_package": "reappearance"
+          }
+        }
+      ],
+      "resources": []
+    },
+    {
+      "id": "scoped-dual-verification",
+      "paper": "economic-constitution",
+      "historical_map_claim": "pgs-public-pf10-bounded-independent-audit",
+      "producers": [
+        {
+          "kind": "lean",
+          "source_commit": "fb9e88a77a955af973dc46b1ba849e63cf8a58eb",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/Evidence.lean",
+          "source_sha256": "83687fe5c1f38f1292406971fdc0e6ca755a8fb7dbba0497150f62581055256a",
+          "public": {
+            "path": "Lean/H0mework/Versions/Rac87df08/ReleaseMaterials/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/Evidence.lean",
+            "module": "H0mework.Versions.Rac87df08.ReleaseMaterials.SaturationMonoid.ProcessGame.Society.PublicFunction.Productivity.Cell.Audit.Scoped.Evidence",
+            "sha256": "dcdebbbcd854ff42becd1068ef3c651acea4e59be0b2c32fb05118b53ded4051",
+            "variant": "Rac87df08"
+          },
+          "declarations": [
+            {
+              "name": "trace_sound",
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.PublicFunction.Productivity.Cell.Audit.Scoped.trace_sound",
+              "source_line": 86,
+              "public_line": 86,
+              "complete_type": {
+                "declaration_index": 23,
+                "type_sha256": "e23507e86e4a968acbeee98cc091b730ca79897deade8b058d6bb053c808c181"
+              }
+            },
+            {
+              "name": "lifecycle_sound",
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.PublicFunction.Productivity.Cell.Audit.Scoped.lifecycle_sound",
+              "source_line": 91,
+              "public_line": 91,
+              "complete_type": {
+                "declaration_index": 20,
+                "type_sha256": "d923a4bda3fdda76e86deaabf08810d47838989ed9f2f671010062d5cdf6deab"
+              }
+            },
+            {
+              "name": "missing_payment_stops_both",
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.PublicFunction.Productivity.Cell.Audit.Scoped.missing_payment_stops_both",
+              "source_line": 99,
+              "public_line": 99,
+              "complete_type": {
+                "declaration_index": 21,
+                "type_sha256": "6b07df666a9c77f7b307b13b1ecccaee9dae91b5a273dac8bd65c69e80351141"
+              }
+            }
+          ],
+          "verification": {
+            "kernel": "passed",
+            "proof_package": "scoped-audit"
+          }
+        },
+        {
+          "kind": "lean",
+          "source_commit": "fb9e88a77a955af973dc46b1ba849e63cf8a58eb",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/Disclosure.lean",
+          "source_sha256": "dd7d5033abe08ab73ddcb8b7a4171dc0f496a4efd82a108af8a4a99376ab011f",
+          "public": {
+            "path": "Lean/H0mework/Versions/Rac87df08/ReleaseMaterials/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/Disclosure.lean",
+            "module": "H0mework.Versions.Rac87df08.ReleaseMaterials.SaturationMonoid.ProcessGame.Society.PublicFunction.Productivity.Cell.Audit.Scoped.Disclosure",
+            "sha256": "764db095d2cab44cba324e7af3c0127e121067c519f11d467b3b1d65f0bdc443",
+            "variant": "Rac87df08"
+          },
+          "declarations": [
+            {
+              "name": "every_adaptive_finite_prefix_has_identical_cumulative_disclosure",
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.PublicFunction.Productivity.Cell.Audit.Scoped.every_adaptive_finite_prefix_has_identical_cumulative_disclosure",
+              "source_line": 152,
+              "public_line": 152,
+              "complete_type": {
+                "declaration_index": 16,
+                "type_sha256": "88cf7be71d845af5801d6de8ff0688301263f910a47bc2cbdb089a3b2d225ef9"
+              }
+            }
+          ],
+          "verification": {
+            "kernel": "passed",
+            "proof_package": "scoped-audit"
+          }
+        }
+      ],
+      "direct_consumers": [
+        {
+          "kind": "lean",
+          "source_commit": "fb9e88a77a955af973dc46b1ba849e63cf8a58eb",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/Disclosure.lean",
+          "source_sha256": "dd7d5033abe08ab73ddcb8b7a4171dc0f496a4efd82a108af8a4a99376ab011f",
+          "public": {
+            "path": "Lean/H0mework/Versions/Rac87df08/ReleaseMaterials/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/Disclosure.lean",
+            "module": "H0mework.Versions.Rac87df08.ReleaseMaterials.SaturationMonoid.ProcessGame.Society.PublicFunction.Productivity.Cell.Audit.Scoped.Disclosure",
+            "sha256": "764db095d2cab44cba324e7af3c0127e121067c519f11d467b3b1d65f0bdc443",
+            "variant": "Rac87df08"
+          },
+          "declarations": [
+            {
+              "name": "trace_acceptance_is_the_original_whole_slot",
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.PublicFunction.Productivity.Cell.Audit.Scoped.trace_acceptance_is_the_original_whole_slot",
+              "source_line": 102,
+              "public_line": 102,
+              "complete_type": {
+                "declaration_index": 22,
+                "type_sha256": "5f609ad953c86edfdc5f1e522b19e856932a1ee864425d25d158ec42e5624e53"
+              }
+            },
+            {
+              "name": "lifecycle_acceptance_is_the_original_whole_slot",
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.PublicFunction.Productivity.Cell.Audit.Scoped.lifecycle_acceptance_is_the_original_whole_slot",
+              "source_line": 107,
+              "public_line": 107,
+              "complete_type": {
+                "declaration_index": 19,
+                "type_sha256": "c41a0ac7df14ceede4de9962d110ff1240ce7e63e606e4c8c5d2eb5d19fbfeb0"
+              }
+            }
+          ],
+          "verification": {
+            "kernel": "passed",
+            "proof_package": "scoped-audit"
+          }
+        },
+        {
+          "kind": "lean",
+          "source_commit": "fb9e88a77a955af973dc46b1ba849e63cf8a58eb",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/Actual.lean",
+          "source_sha256": "06dcbb89b1ac6dc2fdf0e4dab4fb176c0ffaa55d7bf5967c76bf544e0e079284",
+          "public": {
+            "path": "Lean/H0mework/Versions/Rac87df08/ReleaseMaterials/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/Actual.lean",
+            "module": "H0mework.Versions.Rac87df08.ReleaseMaterials.SaturationMonoid.ProcessGame.Society.PublicFunction.Productivity.Cell.Audit.Scoped.Actual",
+            "sha256": "7497edea9239de94c730bc0eb17528bb18d003cb2bd09cb4dc471c9cd08c1b11",
+            "variant": "Rac87df08"
+          },
+          "declarations": [
+            {
+              "name": "actual_private_histories_have_different_future_capacity",
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.PublicFunction.Productivity.Cell.Audit.Scoped.actual_private_histories_have_different_future_capacity",
+              "source_line": 147,
+              "public_line": 147,
+              "complete_type": {
+                "declaration_index": 15,
+                "type_sha256": "1620916bd73dc519deec235cb454aa7ea331ad6863952792160a6f2a9843ec6e"
+              }
+            },
+            {
+              "name": "every_generated_request_is_scope_bound",
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.PublicFunction.Productivity.Cell.Audit.Scoped.every_generated_request_is_scope_bound",
+              "source_line": 103,
+              "public_line": 103,
+              "complete_type": {
+                "declaration_index": 17,
+                "type_sha256": "b7a828d8e5720931957606e04260d3ceb8667954cfa8089b4ccd4ca2ed5da9f3"
+              }
+            },
+            {
+              "name": "labor_readout_is_the_actual_raw_net_flow",
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.PublicFunction.Productivity.Cell.Audit.Scoped.labor_readout_is_the_actual_raw_net_flow",
+              "source_line": 129,
+              "public_line": 129,
+              "complete_type": {
+                "declaration_index": 18,
+                "type_sha256": "256198f779f2b2b1bf39d636147cf28d786ebc93fed5b4f4e88ca46ab779b56c"
+              }
+            }
+          ],
+          "verification": {
+            "kernel": "passed",
+            "proof_package": "scoped-audit"
+          }
+        },
+        {
+          "kind": "lean",
+          "source_commit": "fb9e88a77a955af973dc46b1ba849e63cf8a58eb",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/Runtime.lean",
+          "source_sha256": "1d0997aaa7ef268e10fbf464fb04f7d547a2e000445edee6f4fb3abb8feab6eb",
+          "public": {
+            "path": "Lean/H0mework/Versions/Rac87df08/ReleaseMaterials/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/Runtime.lean",
+            "module": "H0mework.Versions.Rac87df08.ReleaseMaterials.SaturationMonoid.ProcessGame.Society.PublicFunction.Productivity.Cell.Audit.Scoped.Runtime",
+            "sha256": "a4a9b824c701a6bd24a2c2660207e0dcea57f0c9613ea711d690e750fb07ea2d",
+            "variant": "Rac87df08"
+          },
+          "declarations": [
+            {
+              "name": "audit_shares_actual_writeback_and_generated_next",
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.PublicFunction.Productivity.Cell.Audit.Scoped.Runtime.audit_shares_actual_writeback_and_generated_next",
+              "source_line": 96,
+              "public_line": 96,
+              "complete_type": {
+                "declaration_index": 24,
+                "type_sha256": "18c4079f87539e2064145124d5f8ef284ba63fc79bccc3e0171e36c37d3da7b4"
+              }
+            }
+          ],
+          "verification": {
+            "kernel": "passed",
+            "proof_package": "public-scoped-audit-source"
+          }
+        }
+      ],
+      "resources": [
+        {
+          "kind": "artifact",
+          "source_commit": "fb9e88a77a955af973dc46b1ba849e63cf8a58eb",
+          "source_path": "Lean/scripts/verification/public-scoped-audit-kernel.lean",
+          "source_sha256": "5f78d7efaf3c8bd6c1e1adb8e84b77618e1a9c3aaeecb8d99de8f2340230c827",
+          "public": {
+            "path": "evidence/society-book/original/Rfb9e88a7/Lean/scripts/verification/public-scoped-audit-kernel.lean",
+            "sha256": "5f78d7efaf3c8bd6c1e1adb8e84b77618e1a9c3aaeecb8d99de8f2340230c827"
+          },
+          "verification": {
+            "identity": "verified"
+          }
+        }
+      ]
+    },
+    {
+      "id": "paid-audit-handoff",
+      "paper": "economic-constitution",
+      "historical_map_claim": "pgs-public-pf11-paid-revocation-and-handoff",
+      "producers": [
+        {
+          "kind": "lean",
+          "source_commit": "fb9e88a77a955af973dc46b1ba849e63cf8a58eb",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/Response/Runtime.lean",
+          "source_sha256": "6fe1b5cb67d42707fb83675eb3b8a2f3e11852ea90b1707855092653791c7829",
+          "public": {
+            "path": "Lean/H0mework/Versions/Rac87df08/ReleaseMaterials/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/Response/Runtime.lean",
+            "module": "H0mework.Versions.Rac87df08.ReleaseMaterials.SaturationMonoid.ProcessGame.Society.PublicFunction.Productivity.Cell.Audit.Scoped.Response.Runtime",
+            "sha256": "fea15b3f98916e13fe7d947bee9107452a8638c3275609006049c8fd2ce23de4",
+            "variant": "Rac87df08"
+          },
+          "declarations": [
+            {
+              "name": "response_shares_actual_writeback_and_generated_next",
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.PublicFunction.Productivity.Cell.Audit.Scoped.Response.Runtime.response_shares_actual_writeback_and_generated_next",
+              "source_line": 130,
+              "public_line": 130,
+              "complete_type": {
+                "declaration_index": 25,
+                "type_sha256": "c50424db00391eee2ec56a673bec79995255f2d8f7bc8b07048a04eb62ac0cbe"
+              }
+            },
+            {
+              "name": "whole_claim_matrix_is_preserved",
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.PublicFunction.Productivity.Cell.Audit.Scoped.Response.Runtime.whole_claim_matrix_is_preserved",
+              "source_line": 28,
+              "public_line": 28,
+              "complete_type": {
+                "declaration_index": 26,
+                "type_sha256": "44789350ff6ddac53b470bac4be6b7dadcbb1a0708761d769a4a2cb35bd18953"
+              }
+            }
+          ],
+          "verification": {
+            "kernel": "passed",
+            "proof_package": "public-mandate-response-source"
+          }
+        },
+        {
+          "kind": "lean",
+          "source_commit": "fb9e88a77a955af973dc46b1ba849e63cf8a58eb",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/EnergyRenewal/Runtime.lean",
+          "source_sha256": "cd11c553488281b1c1be45d2b3bd28f4cfa6cbb4b6121287322fc14d2754b2cf",
+          "public": {
+            "path": "Lean/H0mework/Versions/Rac87df08/ReleaseMaterials/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/EnergyRenewal/Runtime.lean",
+            "module": "H0mework.Versions.Rac87df08.ReleaseMaterials.SaturationMonoid.ProcessGame.Society.PublicFunction.Productivity.Cell.Audit.Scoped.EnergyRenewal.Runtime",
+            "sha256": "4ad3eb0013d24ffd74dbb4b46bf606c0a07f72edbc2d8aeed29f5f258ce88354",
+            "variant": "Rac87df08"
+          },
+          "declarations": [
+            {
+              "name": "EpochSeed.starts_at_the_supply_roots_generated_next",
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.PublicFunction.Productivity.Cell.Audit.Scoped.EnergyRenewal.Runtime.EpochSeed.starts_at_the_supply_roots_generated_next",
+              "source_line": 232,
+              "public_line": 232,
+              "complete_type": {
+                "declaration_index": 27,
+                "type_sha256": "f23ef305b275400c9dca2d8703ffdbb8d524f422ba1da16f8ec86d4fcc15d127"
+              }
+            }
+          ],
+          "verification": {
+            "kernel": "passed",
+            "proof_package": "public-energy-source"
+          }
+        },
+        {
+          "kind": "lean",
+          "source_commit": "fb9e88a77a955af973dc46b1ba849e63cf8a58eb",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/EnergyRenewal/Continuation/Runtime.lean",
+          "source_sha256": "fce6b859b88fc8b4e304a11e8c23fd4680fb84a14b8691e2bf936a7ec7514824",
+          "public": {
+            "path": "Lean/H0mework/Versions/Rac87df08/ReleaseMaterials/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/EnergyRenewal/Continuation/Runtime.lean",
+            "module": "H0mework.Versions.Rac87df08.ReleaseMaterials.SaturationMonoid.ProcessGame.Society.PublicFunction.Productivity.Cell.Audit.Scoped.EnergyRenewal.Continuation.Runtime",
+            "sha256": "47407b7b957610e870aa3ed7b51e8ddf8f61b43b2d4833e1fc2cdbb1af07573d",
+            "variant": "Rac87df08"
+          },
+          "declarations": [
+            {
+              "name": "shares_actual_writeback_and_generated_next",
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.PublicFunction.Productivity.Cell.Audit.Scoped.EnergyRenewal.Continuation.Runtime.shares_actual_writeback_and_generated_next",
+              "source_line": 173,
+              "public_line": 173,
+              "complete_type": {
+                "declaration_index": 28,
+                "type_sha256": "69e34d847f648c8d6bf4b0a87141fa01de60a26c11e357650fa425d04b4e5c37"
+              }
+            },
+            {
+              "name": "successor_is_installed_output",
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.PublicFunction.Productivity.Cell.Audit.Scoped.EnergyRenewal.Continuation.Runtime.successor_is_installed_output",
+              "source_line": 197,
+              "public_line": 197,
+              "complete_type": {
+                "declaration_index": 29,
+                "type_sha256": "2a40ac8914ee5f43b1809c37add5cbbc4bab6c58cefaf4906c6905d8c34ba97e"
+              }
+            }
+          ],
+          "verification": {
+            "kernel": "passed",
+            "proof_package": "public-continuation-source"
+          }
+        },
+        {
+          "kind": "lean",
+          "source_commit": "fb9e88a77a955af973dc46b1ba849e63cf8a58eb",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/EnergyRenewal/Handoff/Runtime.lean",
+          "source_sha256": "bf447c034c2ff8c243e28570d36af157c5e528bf9c287ad5db8dc06ce3427f55",
+          "public": {
+            "path": "Lean/H0mework/Versions/Rac87df08/ReleaseMaterials/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/EnergyRenewal/Handoff/Runtime.lean",
+            "module": "H0mework.Versions.Rac87df08.ReleaseMaterials.SaturationMonoid.ProcessGame.Society.PublicFunction.Productivity.Cell.Audit.Scoped.EnergyRenewal.Handoff.Runtime",
+            "sha256": "bcc86d21b16d975a752d4070eb0d18070da3f29d2659e263eb61cf5e153bb3e1",
+            "variant": "Rac87df08"
+          },
+          "declarations": [
+            {
+              "name": "shares_actual_writeback_and_generated_next",
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.PublicFunction.Productivity.Cell.Audit.Scoped.EnergyRenewal.Handoff.Runtime.shares_actual_writeback_and_generated_next",
+              "source_line": 172,
+              "public_line": 172,
+              "complete_type": {
+                "declaration_index": 31,
+                "type_sha256": "0ee1ccfd9c80f523aab6276c6ce34e63f51c7dbd9524595f3158eb098dd6fe48"
+              }
+            }
+          ],
+          "verification": {
+            "kernel": "passed",
+            "proof_package": "public-handoff-source"
+          }
+        }
+      ],
+      "direct_consumers": [
+        {
+          "kind": "lean",
+          "source_commit": "fb9e88a77a955af973dc46b1ba849e63cf8a58eb",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/EnergyRenewal/Handoff/Runtime.lean",
+          "source_sha256": "bf447c034c2ff8c243e28570d36af157c5e528bf9c287ad5db8dc06ce3427f55",
+          "public": {
+            "path": "Lean/H0mework/Versions/Rac87df08/ReleaseMaterials/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/EnergyRenewal/Handoff/Runtime.lean",
+            "module": "H0mework.Versions.Rac87df08.ReleaseMaterials.SaturationMonoid.ProcessGame.Society.PublicFunction.Productivity.Cell.Audit.Scoped.EnergyRenewal.Handoff.Runtime",
+            "sha256": "bcc86d21b16d975a752d4070eb0d18070da3f29d2659e263eb61cf5e153bb3e1",
+            "variant": "Rac87df08"
+          },
+          "declarations": [
+            {
+              "name": "both_independent_checks_consume_the_original_service",
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.PublicFunction.Productivity.Cell.Audit.Scoped.EnergyRenewal.Handoff.Delivery.both_independent_checks_consume_the_original_service",
+              "source_line": 90,
+              "public_line": 90,
+              "complete_type": {
+                "declaration_index": 30,
+                "type_sha256": "34410e1943fab34f33822482554ab1ab48133743c08b04f159d07a8959ac2db7"
+              }
+            },
+            {
+              "name": "stale_holder_cannot_access",
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.PublicFunction.Productivity.Cell.Audit.Scoped.EnergyRenewal.Handoff.stale_holder_cannot_access",
+              "source_line": 15,
+              "public_line": 15,
+              "complete_type": {
+                "declaration_index": 32,
+                "type_sha256": "8c29970fb7a1218ae4d141289cc5afec29cff30d0115cf5599f5775bdbcf087d"
+              }
+            }
+          ],
+          "verification": {
+            "kernel": "passed",
+            "proof_package": "public-handoff-source"
+          }
+        },
+        {
+          "kind": "lean",
+          "source_commit": "fb9e88a77a955af973dc46b1ba849e63cf8a58eb",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/Response/Regression.lean",
+          "source_sha256": "509212ee748a71d5eda0ff3749872309d9a7b7f719e85256705a318914377197",
+          "public": {
+            "path": "Lean/H0mework/Versions/Rfb9e88a7/ReleaseMaterials/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/Response/Regression.lean",
+            "module": "H0mework.Versions.Rfb9e88a7.ReleaseMaterials.SaturationMonoid.ProcessGame.Society.PublicFunction.Productivity.Cell.Audit.Scoped.Response.Regression",
+            "sha256": "596ac09fa12f32aa49b036c304e9e10e434fd92f414b721d3b9997b95e7e9559",
+            "variant": "Rfb9e88a7"
+          },
+          "declarations": [
+            {
+              "name": "actual_source_replacement_is_paid_and_verified",
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.PublicFunction.Productivity.Cell.Audit.Scoped.Response.Regression.actual_source_replacement_is_paid_and_verified",
+              "source_line": 19,
+              "public_line": 19,
+              "complete_type": {
+                "declaration_index": 12,
+                "type_sha256": "3056a624ef8141fe2838ba76dc267f4253aad2e6011bd88a29c078daac0a0c2d"
+              }
+            },
+            {
+              "name": "exhausted_original_source_pays_revoke_and_keeps_refusal",
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.PublicFunction.Productivity.Cell.Audit.Scoped.Response.Regression.exhausted_original_source_pays_revoke_and_keeps_refusal",
+              "source_line": 26,
+              "public_line": 26,
+              "complete_type": {
+                "declaration_index": 13,
+                "type_sha256": "4962e1744c1e681dc8308c690efcd42696c08cac4f2139bff007d0686437a912"
+              }
+            },
+            {
+              "name": "expiry_cannot_mint_replacement_authority",
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.PublicFunction.Productivity.Cell.Audit.Scoped.Response.Regression.expiry_cannot_mint_replacement_authority",
+              "source_line": 36,
+              "public_line": 36,
+              "complete_type": {
+                "declaration_index": 14,
+                "type_sha256": "bbca6f39b2b4ca88dae560c0b1d989b7bffba4a1e1b083daf0d77f8dd1536dea"
+              }
+            }
+          ],
+          "verification": {
+            "kernel": "passed",
+            "proof_package": "scoped-audit"
+          }
+        },
+        {
+          "kind": "lean",
+          "source_commit": "fb9e88a77a955af973dc46b1ba849e63cf8a58eb",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/Governance/Runtime.lean",
+          "source_sha256": "f482747ae50f46f7d5220fe3d0d26147590e6fc58e4e0cf0a300fdbc44d9ec33",
+          "public": {
+            "path": "Lean/H0mework/Versions/Rac87df08/ReleaseMaterials/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/Governance/Runtime.lean",
+            "module": "H0mework.Versions.Rac87df08.ReleaseMaterials.SaturationMonoid.ProcessGame.Society.PublicFunction.Productivity.Cell.Audit.Scoped.Governance.Runtime",
+            "sha256": "cbe74d750514c3c5046c98c28309c8fc9e639d771654109583e4099f943bd540",
+            "variant": "Rac87df08"
+          },
+          "declarations": [
+            {
+              "name": "governance_shares_actual_writeback_and_generated_next",
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.PublicFunction.Productivity.Cell.Audit.Scoped.Governance.Runtime.governance_shares_actual_writeback_and_generated_next",
+              "source_line": 120,
+              "public_line": 120,
+              "complete_type": {
+                "declaration_index": 33,
+                "type_sha256": "d840e35bb3815e91c066efbc1c6e24fe54958c010b0031c5bea5c0c9c6c1ad21"
+              }
+            }
+          ],
+          "verification": {
+            "kernel": "passed",
+            "proof_package": "public-governance-source"
+          }
+        }
+      ],
+      "resources": []
+    },
+    {
+      "id": "adaptive-source-privacy",
+      "paper": "economic-constitution",
+      "historical_map_claim": "pgs-public-complete-source-privacy",
+      "producers": [
+        {
+          "kind": "lean",
+          "source_commit": "ac87df0871be9c286bba31984070d2fa865c6781",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/EnergyRenewal/Privacy/Source.lean",
+          "source_sha256": "ba94f70895e82dfb66f1ca2474823ebb5d15d79c169ddc23c9957d40acb65ee1",
+          "public": {
+            "path": "Lean/H0mework/Versions/Rac87df08/ReleaseMaterials/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/EnergyRenewal/Privacy/Source.lean",
+            "module": "H0mework.Versions.Rac87df08.ReleaseMaterials.SaturationMonoid.ProcessGame.Society.PublicFunction.Productivity.Cell.Audit.Scoped.EnergyRenewal.Privacy.Source",
+            "sha256": "f65da2b73c39366cb90bb0a2c936e14a8916178ea3d43b471775554eecf8574d",
+            "variant": "Rac87df08"
+          },
+          "declarations": [
+            {
+              "name": "every_original_source_strategy_preserves_complete_cumulative_privacy",
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.PublicFunction.Productivity.Cell.Audit.Scoped.EnergyRenewal.Privacy.every_original_source_strategy_preserves_complete_cumulative_privacy",
+              "source_line": 57,
+              "public_line": 57,
+              "complete_type": {
+                "declaration_index": 45,
+                "type_sha256": "66bb40d99003ade16a7df2e7a6eecdf434cfcacdf28f708d749e9444bdfb00ba"
+              }
+            },
+            {
+              "name": "every_decoded_source_strategy_preserves_all_output",
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.PublicFunction.Productivity.Cell.Audit.Scoped.EnergyRenewal.Privacy.every_decoded_source_strategy_preserves_all_output",
+              "source_line": 84,
+              "public_line": 84,
+              "complete_type": {
+                "declaration_index": 44,
+                "type_sha256": "3e02dbef20ce8a36da809d37b4ee7ddc3f119032850fa029987548059d19f3f1"
+              }
+            }
+          ],
+          "verification": {
+            "kernel": "passed",
+            "proof_package": "source-privacy"
+          }
+        }
+      ],
+      "direct_consumers": [
+        {
+          "kind": "lean",
+          "source_commit": "ac87df0871be9c286bba31984070d2fa865c6781",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/EnergyRenewal/Privacy/Wire.lean",
+          "source_sha256": "ffd0d0028beb344d8e87e7cccfaef8e3499fa9374a3c1543da9d4069a460810d",
+          "public": {
+            "path": "Lean/H0mework/Versions/Rac87df08/ReleaseMaterials/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/EnergyRenewal/Privacy/Wire.lean",
+            "module": "H0mework.Versions.Rac87df08.ReleaseMaterials.SaturationMonoid.ProcessGame.Society.PublicFunction.Productivity.Cell.Audit.Scoped.EnergyRenewal.Privacy.Wire",
+            "sha256": "660e83371385d31ac7f748588274d931dbfc0e1e5b766582ea9a2781f8bd22a5",
+            "variant": "Rac87df08"
+          },
+          "declarations": [
+            {
+              "name": "public_readout_is_actual",
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.PublicFunction.Productivity.Cell.Audit.Scoped.EnergyRenewal.Privacy.Wire.public_readout_is_actual",
+              "source_line": 99,
+              "public_line": 99,
+              "complete_type": {
+                "declaration_index": 43,
+                "type_sha256": "60deff37d0e5d1c439f50cacd982284aba249cb46dcc23d53194a25ab254afd8"
+              }
+            },
+            {
+              "name": "actual_branches_equal",
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.PublicFunction.Productivity.Cell.Audit.Scoped.EnergyRenewal.Privacy.Wire.actual_branches_equal",
+              "source_line": 108,
+              "public_line": 108,
+              "complete_type": {
+                "declaration_index": 42,
+                "type_sha256": "e262023a84763e54f1e3fafa82c2a1d03e8b84433883d6402750a746e1bbb455"
+              }
+            }
+          ],
+          "verification": {
+            "kernel": "passed",
+            "proof_package": "source-privacy"
+          }
+        }
+      ],
+      "resources": []
+    },
+    {
+      "id": "network-observation-law",
+      "paper": "economic-constitution",
+      "historical_map_claim": "pgs-public-network-observation-law",
+      "producers": [
+        {
+          "kind": "lean",
+          "source_commit": "ac87df0871be9c286bba31984070d2fa865c6781",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/EnergyRenewal/Privacy/Network.lean",
+          "source_sha256": "ce28d9419144a04ab4d15e7726b2de370cfea644a3ee82d2539711d0de45ea16",
+          "public": {
+            "path": "Lean/H0mework/Versions/Rac87df08/ReleaseMaterials/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/EnergyRenewal/Privacy/Network.lean",
+            "module": "H0mework.Versions.Rac87df08.ReleaseMaterials.SaturationMonoid.ProcessGame.Society.PublicFunction.Productivity.Cell.Audit.Scoped.EnergyRenewal.Privacy.Network",
+            "sha256": "afd07258c053f6c538adf690c7ffa48c0949388ba27e97e0b17ffbed538d9ebd",
+            "variant": "Rac87df08"
+          },
+          "declarations": [
+            {
+              "name": "all_exogenous_laws_preserve_complete_observation_distribution",
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.PublicFunction.Productivity.Cell.Audit.Scoped.EnergyRenewal.Privacy.Network.all_exogenous_laws_preserve_complete_observation_distribution",
+              "source_line": 59,
+              "public_line": 59,
+              "complete_type": {
+                "declaration_index": 34,
+                "type_sha256": "62369675a7528d5aa0493c727854825d4bc79ab8b669f9497a325a26a810b01a"
+              }
+            },
+            {
+              "name": "independent_draws_have_the_same_product_law",
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.PublicFunction.Productivity.Cell.Audit.Scoped.EnergyRenewal.Privacy.Network.independent_draws_have_the_same_product_law",
+              "source_line": 77,
+              "public_line": 77,
+              "complete_type": {
+                "declaration_index": 36,
+                "type_sha256": "92c8c6532b276c678a40e01e4407420239bf2a7b722877f11bb52e66390ceb7e"
+              }
+            }
+          ],
+          "verification": {
+            "kernel": "passed",
+            "proof_package": "source-privacy"
+          }
+        },
+        {
+          "kind": "lean",
+          "source_commit": "ac87df0871be9c286bba31984070d2fa865c6781",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/EnergyRenewal/Privacy/Network.lean",
+          "source_sha256": "ce28d9419144a04ab4d15e7726b2de370cfea644a3ee82d2539711d0de45ea16",
+          "public": {
+            "path": "Lean/H0mework/Versions/Rac87df08/ReleaseMaterials/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/EnergyRenewal/Privacy/Network.lean",
+            "module": "H0mework.Versions.Rac87df08.ReleaseMaterials.SaturationMonoid.ProcessGame.Society.PublicFunction.Productivity.Cell.Audit.Scoped.EnergyRenewal.Privacy.Network",
+            "sha256": "afd07258c053f6c538adf690c7ffa48c0949388ba27e97e0b17ffbed538d9ebd",
+            "variant": "Rac87df08"
+          },
+          "declarations": [
+            {
+              "name": "full_observation_coupling",
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.PublicFunction.Productivity.Cell.Audit.Scoped.EnergyRenewal.Privacy.Network.full_observation_coupling",
+              "source_line": 26,
+              "public_line": 26,
+              "complete_type": {
+                "declaration_index": 35,
+                "type_sha256": "ec50842e64f154161a46f0896458e434b91d1a3f4c02a2f4db0fbc3e29142252"
+              }
+            },
+            {
+              "name": "public_run_is_actual",
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.PublicFunction.Productivity.Cell.Audit.Scoped.EnergyRenewal.Privacy.Network.public_run_is_actual",
+              "source_line": 44,
+              "public_line": 44,
+              "complete_type": {
+                "declaration_index": 37,
+                "type_sha256": "7b1224a0f103e0f79050ce52c29421a1a695c8add34a88cf3743c54718c5fffa"
+              }
+            }
+          ],
+          "verification": {
+            "kernel": "passed",
+            "proof_package": "source-privacy"
+          }
+        }
+      ],
+      "direct_consumers": [
+        {
+          "kind": "lean",
+          "source_commit": "ac87df0871be9c286bba31984070d2fa865c6781",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/EnergyRenewal/Privacy/Timing.lean",
+          "source_sha256": "3e1f4fadee1cf60fc48d40e26414a4903e238ebf649972d803f2a09c75fb3b39",
+          "public": {
+            "path": "Lean/H0mework/Versions/Rac87df08/ReleaseMaterials/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/EnergyRenewal/Privacy/Timing.lean",
+            "module": "H0mework.Versions.Rac87df08.ReleaseMaterials.SaturationMonoid.ProcessGame.Society.PublicFunction.Productivity.Cell.Audit.Scoped.EnergyRenewal.Privacy.Timing",
+            "sha256": "3a160a24f3226e42ef8648d2a8a0b11d6eea7f36c3f69450b69961bc0cf1db2c",
+            "variant": "Rac87df08"
+          },
+          "declarations": [
+            {
+              "name": "framed_public_run_is_actual",
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.PublicFunction.Productivity.Cell.Audit.Scoped.EnergyRenewal.Privacy.Timing.framed_public_run_is_actual",
+              "source_line": 82,
+              "public_line": 82,
+              "complete_type": {
+                "declaration_index": 39,
+                "type_sha256": "9375ffb1eafd171873b46b97206db0fd22c87489f18e387d42981274380bc626"
+              }
+            }
+          ],
+          "verification": {
+            "kernel": "passed",
+            "proof_package": "source-privacy"
+          }
+        }
+      ],
+      "resources": []
+    },
+    {
+      "id": "timed-own-root-next",
+      "paper": "economic-constitution",
+      "historical_map_claim": "pgs-public-timed-own-root-next",
+      "producers": [
+        {
+          "kind": "lean",
+          "source_commit": "ac87df0871be9c286bba31984070d2fa865c6781",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/EnergyRenewal/Privacy/Timing/Source.lean",
+          "source_sha256": "5079c3188d938beb44da1587c097c69c558319d81bdcdcb5a812c86eb99308ad",
+          "public": {
+            "path": "Lean/H0mework/Versions/Rac87df08/ReleaseMaterials/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/EnergyRenewal/Privacy/Timing/Source.lean",
+            "module": "H0mework.Versions.Rac87df08.ReleaseMaterials.SaturationMonoid.ProcessGame.Society.PublicFunction.Productivity.Cell.Audit.Scoped.EnergyRenewal.Privacy.Timing.Source",
+            "sha256": "4be02b0e49eb5bb117143be9582989314cc7c0349c37a17dc3e7549df2a6995d",
+            "variant": "Rac87df08"
+          },
+          "declarations": [
+            {
+              "name": "original_source_generates_related_handoff_seeds",
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.PublicFunction.Productivity.Cell.Audit.Scoped.EnergyRenewal.Privacy.Timing.original_source_generates_related_handoff_seeds",
+              "source_line": 21,
+              "public_line": 21,
+              "complete_type": {
+                "declaration_index": 48,
+                "type_sha256": "5ce095c21b890c71737a4d429474d090b130789c607120a5e2b9c7654d5d9eeb"
+              }
+            },
+            {
+              "name": "public_next_with_generated_frame_is_actual_root_next",
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.PublicFunction.Productivity.Cell.Audit.Scoped.EnergyRenewal.Privacy.Timing.public_next_with_generated_frame_is_actual_root_next",
+              "source_line": 75,
+              "public_line": 75,
+              "complete_type": {
+                "declaration_index": 49,
+                "type_sha256": "8238fe0deeea8d4ec6c181a0ab566476bb65f3f87a6b2e2f309bded051e19043"
+              }
+            }
+          ],
+          "verification": {
+            "kernel": "passed",
+            "proof_package": "timed-owner"
+          }
+        },
+        {
+          "kind": "lean",
+          "source_commit": "ac87df0871be9c286bba31984070d2fa865c6781",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/EnergyRenewal/Privacy/Timing.lean",
+          "source_sha256": "3e1f4fadee1cf60fc48d40e26414a4903e238ebf649972d803f2a09c75fb3b39",
+          "public": {
+            "path": "Lean/H0mework/Versions/Rac87df08/ReleaseMaterials/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/EnergyRenewal/Privacy/Timing.lean",
+            "module": "H0mework.Versions.Rac87df08.ReleaseMaterials.SaturationMonoid.ProcessGame.Society.PublicFunction.Productivity.Cell.Audit.Scoped.EnergyRenewal.Privacy.Timing",
+            "sha256": "3a160a24f3226e42ef8648d2a8a0b11d6eea7f36c3f69450b69961bc0cf1db2c",
+            "variant": "Rac87df08"
+          },
+          "declarations": [
+            {
+              "name": "rebuild_commutes_with_actual_next",
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.PublicFunction.Productivity.Cell.Audit.Scoped.EnergyRenewal.Privacy.Timing.rebuild_commutes_with_actual_next",
+              "source_line": 42,
+              "public_line": 42,
+              "complete_type": {
+                "declaration_index": 41,
+                "type_sha256": "4fc4f385a35a7e1c44e1f1bd54121952dc8dcefce60e57c08d8066021633b584"
+              }
+            },
+            {
+              "name": "all_private_frames_have_the_same_complete_timed_observation",
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.PublicFunction.Productivity.Cell.Audit.Scoped.EnergyRenewal.Privacy.Timing.all_private_frames_have_the_same_complete_timed_observation",
+              "source_line": 77,
+              "public_line": 77,
+              "complete_type": {
+                "declaration_index": 38,
+                "type_sha256": "d8f0ef972c48a949dbd40cad6150114e78826737b8f491cbabb561705d18b577"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.PublicFunction.Productivity.Cell.Audit.Scoped.EnergyRenewal.Privacy.Timing.handoff_rebuild_is_own_root_next",
+              "public_line": 62,
+              "complete_type": {
+                "declaration_index": 40,
+                "type_sha256": "3ddb3437b370002173bda78c2049da8b650ee39c20186daeeb79376b7959ca88"
+              }
+            }
+          ],
+          "verification": {
+            "kernel": "passed",
+            "proof_package": "source-privacy"
+          }
+        }
+      ],
+      "direct_consumers": [
+        {
+          "kind": "lean",
+          "source_commit": "ac87df0871be9c286bba31984070d2fa865c6781",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/EnergyRenewal/Privacy/Online.lean",
+          "source_sha256": "e7d8c16a09ba2cf3f5c16d5aa999c8e5883def90fc9e949d5744d2832f44aed1",
+          "public": {
+            "path": "Lean/H0mework/Versions/Rac87df08/ReleaseMaterials/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/EnergyRenewal/Privacy/Online.lean",
+            "module": "H0mework.Versions.Rac87df08.ReleaseMaterials.SaturationMonoid.ProcessGame.Society.PublicFunction.Productivity.Cell.Audit.Scoped.EnergyRenewal.Privacy.Online",
+            "sha256": "17fc24c1e058483b6e7af51e019adf99e59d6bb1c2b5275a43a99f114f5d165b",
+            "variant": "Rac87df08"
+          },
+          "declarations": [
+            {
+              "name": "online_handoff_next_is_own_root",
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.PublicFunction.Productivity.Cell.Audit.Scoped.EnergyRenewal.Privacy.online_handoff_next_is_own_root",
+              "source_line": 60,
+              "public_line": 60,
+              "complete_type": {
+                "declaration_index": 46,
+                "type_sha256": "26a38b9ad3c0970e99a8377cc1b17781e9f4d4258cae45caf7898e3873baf71f"
+              }
+            },
+            {
+              "name": "online_handoff_preserves_parent_next_and_complete_reply",
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.PublicFunction.Productivity.Cell.Audit.Scoped.EnergyRenewal.Privacy.online_handoff_preserves_parent_next_and_complete_reply",
+              "source_line": 47,
+              "public_line": 47,
+              "complete_type": {
+                "declaration_index": 47,
+                "type_sha256": "decb19b0de4e11ab612b1a63f1d7ba42578c9001619667fdf6b70a7dda9a3c82"
+              }
+            }
+          ],
+          "verification": {
+            "kernel": "passed",
+            "proof_package": "source-privacy"
+          }
+        }
+      ],
+      "resources": []
+    },
+    {
+      "id": "finite-independent-privacy",
+      "paper": "economic-constitution",
+      "statement": "Equality of finite independent joint observation laws and their original two-run case.",
+      "producers": [
+        {
+          "source_commit": "16573f5d092d7748563183f18623ecf4efd02076",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/EnergyRenewal/Privacy/IndependentProduct.lean",
+          "source_sha256": "98a0d2c2b0b396076e9f59edeca6e2717ec8dc00da74a20e9019f31aa3b3ecb6",
+          "source_origin": null,
+          "public": {
+            "path": "Lean/H0mework/Versions/R16573f5d/ReleaseMaterials/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/EnergyRenewal/Privacy/IndependentProduct.lean",
+            "module": "H0mework.Versions.R16573f5d.ReleaseMaterials.SaturationMonoid.ProcessGame.Society.PublicFunction.Productivity.Cell.Audit.Scoped.EnergyRenewal.Privacy.IndependentProduct",
+            "sha256": "32552eac1f2040c2c560e7ce09ee20c7f8c32775994bf84137ed5c7986fe3c71",
+            "variant": "R16573f5d"
+          },
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.PublicFunction.Productivity.Cell.Audit.Scoped.EnergyRenewal.Privacy.Network.IndependentDraw",
+              "public_line": 9,
+              "complete_type": {
+                "declaration_index": 50,
+                "type_sha256": "898691b6ecf254eca2383de798528b5e2fd7f1efb9e0e03523753f75a4ca7e44"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.PublicFunction.Productivity.Cell.Audit.Scoped.EnergyRenewal.Privacy.Network.independentProductLaw",
+              "public_line": 17,
+              "complete_type": {
+                "declaration_index": 51,
+                "type_sha256": "a73fd86fc9f9bbc917624842d0354e0a34912c9eaee8c7008fc47c0d4a2b393c"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.PublicFunction.Productivity.Cell.Audit.Scoped.EnergyRenewal.Privacy.Network.independent_productLaw_eq_of_same_public_draws",
+              "public_line": 30,
+              "complete_type": {
+                "declaration_index": 53,
+                "type_sha256": "d7e655a0269c2fee7a24906c57096a34341a641d0c2009f0ee4dfad0135c489b"
+              }
+            }
+          ],
+          "verification": {
+            "kernel": "passed",
+            "proof_package": "finite-independent-privacy"
+          }
+        }
+      ],
+      "direct_consumers": [
+        {
+          "source_commit": "16573f5d092d7748563183f18623ecf4efd02076",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/EnergyRenewal/Privacy/IndependentProduct.lean",
+          "source_sha256": "98a0d2c2b0b396076e9f59edeca6e2717ec8dc00da74a20e9019f31aa3b3ecb6",
+          "source_origin": null,
+          "public": {
+            "path": "Lean/H0mework/Versions/R16573f5d/ReleaseMaterials/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/EnergyRenewal/Privacy/IndependentProduct.lean",
+            "module": "H0mework.Versions.R16573f5d.ReleaseMaterials.SaturationMonoid.ProcessGame.Society.PublicFunction.Productivity.Cell.Audit.Scoped.EnergyRenewal.Privacy.IndependentProduct",
+            "sha256": "32552eac1f2040c2c560e7ce09ee20c7f8c32775994bf84137ed5c7986fe3c71",
+            "variant": "R16573f5d"
+          },
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.PublicFunction.Productivity.Cell.Audit.Scoped.EnergyRenewal.Privacy.Network.independentProductLaw_pair",
+              "public_line": 53,
+              "complete_type": {
+                "declaration_index": 52,
+                "type_sha256": "1c9a860e8f3f32367d3b4af1bbb647aa552671ae02a91427a163c61991dc260a"
+              }
+            }
+          ],
+          "verification": {
+            "kernel": "passed",
+            "proof_package": "finite-independent-privacy"
+          }
+        }
+      ],
+      "resources": []
+    },
+    {
+      "id": "same-occurrence-regeneration",
+      "paper": "economic-constitution",
+      "historical_map_claim": "G9",
+      "producers": [
+        {
+          "source_commit": "fde5c14df36b6064c87064acd20830d3df0500bb",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Regression/Society/M14/Consumer/Economy/Regeneration/ProofCarryingSameOccurrenceRegenerationRegression.lean",
+          "source_sha256": "e6ef7c339bd034a90f306758939cbdc3f19a180de58ae230ab09fe51a41d5548",
+          "original_git_source_sha256": "e6ef7c339bd034a90f306758939cbdc3f19a180de58ae230ab09fe51a41d5548",
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.M14ProofCarryingSameOccurrenceRegenerationRegression.RepairRenewalAt",
+              "kind": "abbrev",
+              "source_line": 66,
+              "source_name": "SaturationMonoid.ProcessGame.Society.M14ProofCarryingSameOccurrenceRegenerationRegression.RepairRenewalAt",
+              "source_signature": "abbrev RepairRenewalAt (depth : Nat)",
+              "public_line": 66,
+              "complete_type": {
+                "declaration_index": 61,
+                "type_sha256": "8ae2b6c786df55fcc3baefd53099600c9350261eddf1cfb9ead8048580599213"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.M14ProofCarryingSameOccurrenceRegenerationRegression.PeriodicSameOccurrenceRegenerationAt",
+              "kind": "structure",
+              "source_line": 73,
+              "source_name": "SaturationMonoid.ProcessGame.Society.M14ProofCarryingSameOccurrenceRegenerationRegression.PeriodicSameOccurrenceRegenerationAt",
+              "source_signature": "structure PeriodicSameOccurrenceRegenerationAt (depth : Nat) : Type 18",
+              "public_line": 73,
+              "complete_type": {
+                "declaration_index": 59,
+                "type_sha256": "a65eb734e682138b475ef1d155722908951cc350836d76985f2c32faf5040465"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.M14ProofCarryingSameOccurrenceRegenerationRegression.periodicSameOccurrenceRegenerationAt",
+              "kind": "def",
+              "source_line": 85,
+              "source_name": "SaturationMonoid.ProcessGame.Society.M14ProofCarryingSameOccurrenceRegenerationRegression.periodicSameOccurrenceRegenerationAt",
+              "source_signature": "def periodicSameOccurrenceRegenerationAt (depth : Nat) :\n    PeriodicSameOccurrenceRegenerationAt depth",
+              "public_line": 85,
+              "complete_type": {
+                "declaration_index": 65,
+                "type_sha256": "8a6f314a0255fe5bd9aff2cb7ed0ba0c8980c9db1efd90035fdafeec342e93f2"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.M14ProofCarryingSameOccurrenceRegenerationRegression.PeriodicSameOccurrenceRegenerationCertificate",
+              "kind": "structure",
+              "source_line": 95,
+              "source_name": "SaturationMonoid.ProcessGame.Society.M14ProofCarryingSameOccurrenceRegenerationRegression.PeriodicSameOccurrenceRegenerationCertificate",
+              "source_signature": "structure PeriodicSameOccurrenceRegenerationCertificate {depth : Nat}\n    (step : PeriodicSameOccurrenceRegenerationAt depth) : Prop",
+              "public_line": 95,
+              "complete_type": {
+                "declaration_index": 60,
+                "type_sha256": "e306e19cc5d960cbd1807b6a2f0e7687c35635d8346d18459b6366453260b140"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.M14ProofCarryingSameOccurrenceRegenerationRegression.periodicSameOccurrenceRegeneration_certificate",
+              "kind": "theorem",
+              "source_line": 180,
+              "source_name": "SaturationMonoid.ProcessGame.Society.M14ProofCarryingSameOccurrenceRegenerationRegression.periodicSameOccurrenceRegeneration_certificate",
+              "source_signature": "theorem periodicSameOccurrenceRegeneration_certificate {depth : Nat}\n    (step : PeriodicSameOccurrenceRegenerationAt depth) :\n    PeriodicSameOccurrenceRegenerationCertificate step",
+              "public_line": 180,
+              "complete_type": {
+                "declaration_index": 66,
+                "type_sha256": "09220fdc65fb3e8abe3a236f3f513489fbc981a671d6857f01ad3a1489bd1f58"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.M14ProofCarryingSameOccurrenceRegenerationRegression.periodicSameOccurrenceRegeneration_nextIsNextStep",
+              "kind": "theorem",
+              "source_line": 232,
+              "source_name": "SaturationMonoid.ProcessGame.Society.M14ProofCarryingSameOccurrenceRegenerationRegression.periodicSameOccurrenceRegeneration_nextIsNextStep",
+              "source_signature": "theorem periodicSameOccurrenceRegeneration_nextIsNextStep {depth : Nat}\n    (step : PeriodicSameOccurrenceRegenerationAt depth)\n    (following : PeriodicSameOccurrenceRegenerationAt (depth + 1)) :\n    step.renewal.generatedNext.visit = temporalVisitAt (depth + 1) ∧\n      following.renewal.rootOccurrence =\n        jointRoot.toAuthoritativeRoot.toLedgerRoot.exactTemporalCausalEventAt\n          (temporalVisitAt (depth + 1)) ∧\n      periodicPaymentOccurrenceAt depth ≠\n        periodicPaymentOccurrenceAt (depth + 1)",
+              "public_line": 232,
+              "complete_type": {
+                "declaration_index": 67,
+                "type_sha256": "d26e9a63ccaa7468001f7d04424445e18ea78dc48bd2090e2e47f22414cd204c"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.M14ProofCarryingSameOccurrenceRegenerationRegression.SameOccurrenceCanonicalRegenerationAt",
+              "kind": "structure",
+              "source_line": 249,
+              "source_name": "SaturationMonoid.ProcessGame.Society.M14ProofCarryingSameOccurrenceRegenerationRegression.SameOccurrenceCanonicalRegenerationAt",
+              "source_signature": "structure SameOccurrenceCanonicalRegenerationAt : Type 18",
+              "public_line": 249,
+              "complete_type": {
+                "declaration_index": 62,
+                "type_sha256": "a98df2047d5211b1b90070f4ad8bcc7b230c04a903aa42c09cfe8fa6e2bbc06b"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.M14ProofCarryingSameOccurrenceRegenerationRegression.sameOccurrenceCanonicalRegeneration",
+              "kind": "def",
+              "source_line": 262,
+              "source_name": "SaturationMonoid.ProcessGame.Society.M14ProofCarryingSameOccurrenceRegenerationRegression.sameOccurrenceCanonicalRegeneration",
+              "source_signature": "def sameOccurrenceCanonicalRegeneration :\n    SameOccurrenceCanonicalRegenerationAt",
+              "public_line": 262,
+              "complete_type": {
+                "declaration_index": 68,
+                "type_sha256": "611614f98dcc93c423c4f3b03894660b523a9b5ee6e38155bb88a8ce3ca35a49"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.M14ProofCarryingSameOccurrenceRegenerationRegression.SameOccurrenceCanonicalRegenerationCertificate",
+              "kind": "structure",
+              "source_line": 271,
+              "source_name": "SaturationMonoid.ProcessGame.Society.M14ProofCarryingSameOccurrenceRegenerationRegression.SameOccurrenceCanonicalRegenerationCertificate",
+              "source_signature": "structure SameOccurrenceCanonicalRegenerationCertificate\n    (regeneration : SameOccurrenceCanonicalRegenerationAt) : Prop",
+              "public_line": 271,
+              "complete_type": {
+                "declaration_index": 63,
+                "type_sha256": "9ce4e312819a53a8d27ba6d78b34951d66ebb59d1c52928e59d37540a1be6b1d"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.M14ProofCarryingSameOccurrenceRegenerationRegression.sameOccurrenceCanonicalRegeneration_certificate",
+              "kind": "theorem",
+              "source_line": 296,
+              "source_name": "SaturationMonoid.ProcessGame.Society.M14ProofCarryingSameOccurrenceRegenerationRegression.sameOccurrenceCanonicalRegeneration_certificate",
+              "source_signature": "theorem sameOccurrenceCanonicalRegeneration_certificate\n    (regeneration : SameOccurrenceCanonicalRegenerationAt) :\n    SameOccurrenceCanonicalRegenerationCertificate regeneration",
+              "public_line": 296,
+              "complete_type": {
+                "declaration_index": 69,
+                "type_sha256": "031375d8cdc5c5f8120a654653ee7470523408fe3162c2a2fb47af83b25231f0"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.M14ProofCarryingSameOccurrenceRegenerationRegression.SameOccurrenceRegenerationCertificate",
+              "kind": "structure",
+              "source_line": 311,
+              "source_name": "SaturationMonoid.ProcessGame.Society.M14ProofCarryingSameOccurrenceRegenerationRegression.SameOccurrenceRegenerationCertificate",
+              "source_signature": "structure SameOccurrenceRegenerationCertificate : Prop",
+              "public_line": 311,
+              "complete_type": {
+                "declaration_index": 64,
+                "type_sha256": "bd66b1333d26332c4dcc9217da88aa9fa40e3207db576b7f4cf72b2256351d0c"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.M14ProofCarryingSameOccurrenceRegenerationRegression.sameOccurrenceCanonicalRegeneration_directConsumer",
+              "kind": "theorem",
+              "source_line": 330,
+              "source_name": "SaturationMonoid.ProcessGame.Society.M14ProofCarryingSameOccurrenceRegenerationRegression.sameOccurrenceCanonicalRegeneration_directConsumer",
+              "source_signature": "theorem sameOccurrenceCanonicalRegeneration_directConsumer :\n    SameOccurrenceRegenerationCertificate",
+              "public_line": 330,
+              "complete_type": {
+                "declaration_index": 70,
+                "type_sha256": "b68147896b9fbe3a61265713928e7da9ffbf4c0ff0fd7344e0351f30a61d932f"
+              }
+            }
+          ],
+          "public": {
+            "module": "H0mework.Versions.Rfde5c14d.ReleaseMaterials.SaturationMonoid.ProcessGame.Regression.Society.M14.Consumer.Economy.Regeneration.ProofCarryingSameOccurrenceRegenerationRegression",
+            "path": "Lean/H0mework/Versions/Rfde5c14d/ReleaseMaterials/SaturationMonoid/ProcessGame/Regression/Society/M14/Consumer/Economy/Regeneration/ProofCarryingSameOccurrenceRegenerationRegression.lean",
+            "sha256": "aa6e49b57bafe9ca117000b286ec4016a6a6050c602bc4d302fc945cad88243a",
+            "variant": "Rfde5c14d"
+          },
+          "verification": {
+            "kernel": "passed",
+            "proof_package": "generated-society-regeneration-ab",
+            "source_scope_sha256": "cdb2e529ada3caa857d65262dd568ba4c0ee5a976d7e1f8d9698a8ecf471a4be",
+            "h0_build": "evidence/generated-society/acceptance/final-manuscript/build/result.json.gz",
+            "h0_trust": "evidence/generated-society/acceptance/final-manuscript/trust/result.json.gz"
+          }
+        }
+      ],
+      "direct_consumers": [
+        {
+          "source_commit": "fde5c14df36b6064c87064acd20830d3df0500bb",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Regression/Society/M14/Consumer/Economy/Regeneration/ProofCarryingSameOccurrenceRegenerationRegression.lean",
+          "source_sha256": "e6ef7c339bd034a90f306758939cbdc3f19a180de58ae230ab09fe51a41d5548",
+          "original_git_source_sha256": "e6ef7c339bd034a90f306758939cbdc3f19a180de58ae230ab09fe51a41d5548",
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.M14ProofCarryingSameOccurrenceRegenerationRegression.RepairRenewalAt",
+              "kind": "abbrev",
+              "source_line": 66,
+              "source_name": "SaturationMonoid.ProcessGame.Society.M14ProofCarryingSameOccurrenceRegenerationRegression.RepairRenewalAt",
+              "source_signature": "abbrev RepairRenewalAt (depth : Nat)",
+              "public_line": 66,
+              "complete_type": {
+                "declaration_index": 61,
+                "type_sha256": "8ae2b6c786df55fcc3baefd53099600c9350261eddf1cfb9ead8048580599213"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.M14ProofCarryingSameOccurrenceRegenerationRegression.PeriodicSameOccurrenceRegenerationAt",
+              "kind": "structure",
+              "source_line": 73,
+              "source_name": "SaturationMonoid.ProcessGame.Society.M14ProofCarryingSameOccurrenceRegenerationRegression.PeriodicSameOccurrenceRegenerationAt",
+              "source_signature": "structure PeriodicSameOccurrenceRegenerationAt (depth : Nat) : Type 18",
+              "public_line": 73,
+              "complete_type": {
+                "declaration_index": 59,
+                "type_sha256": "a65eb734e682138b475ef1d155722908951cc350836d76985f2c32faf5040465"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.M14ProofCarryingSameOccurrenceRegenerationRegression.periodicSameOccurrenceRegenerationAt",
+              "kind": "def",
+              "source_line": 85,
+              "source_name": "SaturationMonoid.ProcessGame.Society.M14ProofCarryingSameOccurrenceRegenerationRegression.periodicSameOccurrenceRegenerationAt",
+              "source_signature": "def periodicSameOccurrenceRegenerationAt (depth : Nat) :\n    PeriodicSameOccurrenceRegenerationAt depth",
+              "public_line": 85,
+              "complete_type": {
+                "declaration_index": 65,
+                "type_sha256": "8a6f314a0255fe5bd9aff2cb7ed0ba0c8980c9db1efd90035fdafeec342e93f2"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.M14ProofCarryingSameOccurrenceRegenerationRegression.PeriodicSameOccurrenceRegenerationCertificate",
+              "kind": "structure",
+              "source_line": 95,
+              "source_name": "SaturationMonoid.ProcessGame.Society.M14ProofCarryingSameOccurrenceRegenerationRegression.PeriodicSameOccurrenceRegenerationCertificate",
+              "source_signature": "structure PeriodicSameOccurrenceRegenerationCertificate {depth : Nat}\n    (step : PeriodicSameOccurrenceRegenerationAt depth) : Prop",
+              "public_line": 95,
+              "complete_type": {
+                "declaration_index": 60,
+                "type_sha256": "e306e19cc5d960cbd1807b6a2f0e7687c35635d8346d18459b6366453260b140"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.M14ProofCarryingSameOccurrenceRegenerationRegression.periodicSameOccurrenceRegeneration_certificate",
+              "kind": "theorem",
+              "source_line": 180,
+              "source_name": "SaturationMonoid.ProcessGame.Society.M14ProofCarryingSameOccurrenceRegenerationRegression.periodicSameOccurrenceRegeneration_certificate",
+              "source_signature": "theorem periodicSameOccurrenceRegeneration_certificate {depth : Nat}\n    (step : PeriodicSameOccurrenceRegenerationAt depth) :\n    PeriodicSameOccurrenceRegenerationCertificate step",
+              "public_line": 180,
+              "complete_type": {
+                "declaration_index": 66,
+                "type_sha256": "09220fdc65fb3e8abe3a236f3f513489fbc981a671d6857f01ad3a1489bd1f58"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.M14ProofCarryingSameOccurrenceRegenerationRegression.periodicSameOccurrenceRegeneration_nextIsNextStep",
+              "kind": "theorem",
+              "source_line": 232,
+              "source_name": "SaturationMonoid.ProcessGame.Society.M14ProofCarryingSameOccurrenceRegenerationRegression.periodicSameOccurrenceRegeneration_nextIsNextStep",
+              "source_signature": "theorem periodicSameOccurrenceRegeneration_nextIsNextStep {depth : Nat}\n    (step : PeriodicSameOccurrenceRegenerationAt depth)\n    (following : PeriodicSameOccurrenceRegenerationAt (depth + 1)) :\n    step.renewal.generatedNext.visit = temporalVisitAt (depth + 1) ∧\n      following.renewal.rootOccurrence =\n        jointRoot.toAuthoritativeRoot.toLedgerRoot.exactTemporalCausalEventAt\n          (temporalVisitAt (depth + 1)) ∧\n      periodicPaymentOccurrenceAt depth ≠\n        periodicPaymentOccurrenceAt (depth + 1)",
+              "public_line": 232,
+              "complete_type": {
+                "declaration_index": 67,
+                "type_sha256": "d26e9a63ccaa7468001f7d04424445e18ea78dc48bd2090e2e47f22414cd204c"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.M14ProofCarryingSameOccurrenceRegenerationRegression.SameOccurrenceCanonicalRegenerationAt",
+              "kind": "structure",
+              "source_line": 249,
+              "source_name": "SaturationMonoid.ProcessGame.Society.M14ProofCarryingSameOccurrenceRegenerationRegression.SameOccurrenceCanonicalRegenerationAt",
+              "source_signature": "structure SameOccurrenceCanonicalRegenerationAt : Type 18",
+              "public_line": 249,
+              "complete_type": {
+                "declaration_index": 62,
+                "type_sha256": "a98df2047d5211b1b90070f4ad8bcc7b230c04a903aa42c09cfe8fa6e2bbc06b"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.M14ProofCarryingSameOccurrenceRegenerationRegression.sameOccurrenceCanonicalRegeneration",
+              "kind": "def",
+              "source_line": 262,
+              "source_name": "SaturationMonoid.ProcessGame.Society.M14ProofCarryingSameOccurrenceRegenerationRegression.sameOccurrenceCanonicalRegeneration",
+              "source_signature": "def sameOccurrenceCanonicalRegeneration :\n    SameOccurrenceCanonicalRegenerationAt",
+              "public_line": 262,
+              "complete_type": {
+                "declaration_index": 68,
+                "type_sha256": "611614f98dcc93c423c4f3b03894660b523a9b5ee6e38155bb88a8ce3ca35a49"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.M14ProofCarryingSameOccurrenceRegenerationRegression.SameOccurrenceCanonicalRegenerationCertificate",
+              "kind": "structure",
+              "source_line": 271,
+              "source_name": "SaturationMonoid.ProcessGame.Society.M14ProofCarryingSameOccurrenceRegenerationRegression.SameOccurrenceCanonicalRegenerationCertificate",
+              "source_signature": "structure SameOccurrenceCanonicalRegenerationCertificate\n    (regeneration : SameOccurrenceCanonicalRegenerationAt) : Prop",
+              "public_line": 271,
+              "complete_type": {
+                "declaration_index": 63,
+                "type_sha256": "9ce4e312819a53a8d27ba6d78b34951d66ebb59d1c52928e59d37540a1be6b1d"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.M14ProofCarryingSameOccurrenceRegenerationRegression.sameOccurrenceCanonicalRegeneration_certificate",
+              "kind": "theorem",
+              "source_line": 296,
+              "source_name": "SaturationMonoid.ProcessGame.Society.M14ProofCarryingSameOccurrenceRegenerationRegression.sameOccurrenceCanonicalRegeneration_certificate",
+              "source_signature": "theorem sameOccurrenceCanonicalRegeneration_certificate\n    (regeneration : SameOccurrenceCanonicalRegenerationAt) :\n    SameOccurrenceCanonicalRegenerationCertificate regeneration",
+              "public_line": 296,
+              "complete_type": {
+                "declaration_index": 69,
+                "type_sha256": "031375d8cdc5c5f8120a654653ee7470523408fe3162c2a2fb47af83b25231f0"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.M14ProofCarryingSameOccurrenceRegenerationRegression.SameOccurrenceRegenerationCertificate",
+              "kind": "structure",
+              "source_line": 311,
+              "source_name": "SaturationMonoid.ProcessGame.Society.M14ProofCarryingSameOccurrenceRegenerationRegression.SameOccurrenceRegenerationCertificate",
+              "source_signature": "structure SameOccurrenceRegenerationCertificate : Prop",
+              "public_line": 311,
+              "complete_type": {
+                "declaration_index": 64,
+                "type_sha256": "bd66b1333d26332c4dcc9217da88aa9fa40e3207db576b7f4cf72b2256351d0c"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.M14ProofCarryingSameOccurrenceRegenerationRegression.sameOccurrenceCanonicalRegeneration_directConsumer",
+              "kind": "theorem",
+              "source_line": 330,
+              "source_name": "SaturationMonoid.ProcessGame.Society.M14ProofCarryingSameOccurrenceRegenerationRegression.sameOccurrenceCanonicalRegeneration_directConsumer",
+              "source_signature": "theorem sameOccurrenceCanonicalRegeneration_directConsumer :\n    SameOccurrenceRegenerationCertificate",
+              "public_line": 330,
+              "complete_type": {
+                "declaration_index": 70,
+                "type_sha256": "b68147896b9fbe3a61265713928e7da9ffbf4c0ff0fd7344e0351f30a61d932f"
+              }
+            }
+          ],
+          "public": {
+            "module": "H0mework.Versions.Rfde5c14d.ReleaseMaterials.SaturationMonoid.ProcessGame.Regression.Society.M14.Consumer.Economy.Regeneration.ProofCarryingSameOccurrenceRegenerationRegression",
+            "path": "Lean/H0mework/Versions/Rfde5c14d/ReleaseMaterials/SaturationMonoid/ProcessGame/Regression/Society/M14/Consumer/Economy/Regeneration/ProofCarryingSameOccurrenceRegenerationRegression.lean",
+            "sha256": "aa6e49b57bafe9ca117000b286ec4016a6a6050c602bc4d302fc945cad88243a",
+            "variant": "Rfde5c14d"
+          },
+          "verification": {
+            "kernel": "passed",
+            "proof_package": "generated-society-regeneration-ab",
+            "source_scope_sha256": "cdb2e529ada3caa857d65262dd568ba4c0ee5a976d7e1f8d9698a8ecf471a4be",
+            "h0_build": "evidence/generated-society/acceptance/final-manuscript/build/result.json.gz",
+            "h0_trust": "evidence/generated-society/acceptance/final-manuscript/trust/result.json.gz"
+          }
+        },
+        {
+          "source_commit": "fde5c14df36b6064c87064acd20830d3df0500bb",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Regression/Society/M14/M14WholeProgramRegression.lean",
+          "source_sha256": "f9c5007e73ae82e10344f4112caa6ed2c33da7fd6b9d5f3b2beb4e74cf545fdf",
+          "original_git_source_sha256": "f9c5007e73ae82e10344f4112caa6ed2c33da7fd6b9d5f3b2beb4e74cf545fdf",
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.M14WholeProgramRegression.CanonicalSocietyAt",
+              "kind": "structure",
+              "source_line": 351,
+              "source_name": "SaturationMonoid.ProcessGame.Society.M14WholeProgramRegression.CanonicalSocietyAt",
+              "source_signature": "structure CanonicalSocietyAt (horizon : Nat) : Type 18",
+              "public_line": 351,
+              "complete_type": {
+                "declaration_index": 74,
+                "type_sha256": "e89f2fb882dd5eb34e64290c0f891a49382f33739499f766b00882b5db1572e4"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.M14WholeProgramRegression.canonicalSociety",
+              "kind": "def",
+              "source_line": 631,
+              "source_name": "SaturationMonoid.ProcessGame.Society.M14WholeProgramRegression.canonicalSociety",
+              "source_signature": "def canonicalSociety (horizon : Nat) : CanonicalSocietyAt horizon",
+              "public_line": 631,
+              "complete_type": {
+                "declaration_index": 75,
+                "type_sha256": "92aff1f46872ba266759a2ee5bd9f05c695ee2fb2a874e6e350deef2649fcc4e"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.M14WholeProgramRegression.canonicalSociety_rootLawComplete_and_u8Available",
+              "kind": "theorem",
+              "source_line": 3180,
+              "source_name": "SaturationMonoid.ProcessGame.Society.M14WholeProgramRegression.canonicalSociety_rootLawComplete_and_u8Available",
+              "source_signature": "theorem canonicalSociety_rootLawComplete_and_u8Available\n    (foundationHorizon : Nat) (oldVisit : OldVisit)\n    (sourceIndex boundary healthDepth fuel observerFuel : Nat) :\n    let registered",
+              "public_line": 3180,
+              "complete_type": {
+                "declaration_index": 78,
+                "type_sha256": "8d4542f8ca1b1b535c0c006ed2b2a3e5d5b90678139ff37ead3c03ea3dd61337"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.M14WholeProgramRegression.canonicalSociety_sameOccurrenceRegeneration",
+              "kind": "theorem",
+              "source_line": 3978,
+              "source_name": "SaturationMonoid.ProcessGame.Society.M14WholeProgramRegression.canonicalSociety_sameOccurrenceRegeneration",
+              "source_signature": "theorem canonicalSociety_sameOccurrenceRegeneration (horizon : Nat) :\n    SameOccurrenceRegenerationCertificate",
+              "public_line": 3978,
+              "complete_type": {
+                "declaration_index": 79,
+                "type_sha256": "40f3c28b66e829e7737f99ede10166d9f54c54ddba2161cacd7f4897b4893797"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.M14WholeProgramRegression.canonicalSociety_periodicSameOccurrenceRegeneration",
+              "kind": "theorem",
+              "source_line": 3983,
+              "source_name": "SaturationMonoid.ProcessGame.Society.M14WholeProgramRegression.canonicalSociety_periodicSameOccurrenceRegeneration",
+              "source_signature": "theorem canonicalSociety_periodicSameOccurrenceRegeneration\n    (horizon depth : Nat) :\n    ∃ step : PeriodicSameOccurrenceRegenerationAt depth,\n      PeriodicSameOccurrenceRegenerationCertificate step",
+              "public_line": 3983,
+              "complete_type": {
+                "declaration_index": 77,
+                "type_sha256": "ad9aeaabc7f923fac2b6059462827e94e666683be64356a3b4cc0aab7e250534"
+              }
+            }
+          ],
+          "public": {
+            "module": "H0mework.Versions.Rfde5c14d.ReleaseMaterials.SaturationMonoid.ProcessGame.Regression.Society.M14.M14WholeProgramRegression",
+            "path": "Lean/H0mework/Versions/Rfde5c14d/ReleaseMaterials/SaturationMonoid/ProcessGame/Regression/Society/M14/M14WholeProgramRegression.lean",
+            "sha256": "5083f6d6076cf74bfaf75961d795b6c57d898aadcd226887a47dfad69b8e4ed1",
+            "variant": "Rfde5c14d"
+          },
+          "verification": {
+            "kernel": "passed",
+            "proof_package": "generated-society-regeneration-ab",
+            "source_scope_sha256": "cdb2e529ada3caa857d65262dd568ba4c0ee5a976d7e1f8d9698a8ecf471a4be",
+            "h0_build": "evidence/generated-society/acceptance/final-manuscript/build/result.json.gz",
+            "h0_trust": "evidence/generated-society/acceptance/final-manuscript/trust/result.json.gz"
+          }
+        }
+      ],
+      "resources": [
+        {
+          "source_commit": "fde5c14df36b6064c87064acd20830d3df0500bb",
+          "source_path": "Lean/docs/handoffs/process-generated-society-active-route.md",
+          "source_sha256": "b1d326d2aac8d8c6d34b25965cd7ce709017e2710e24972ccb1625b4b4124046",
+          "public": {
+            "path": "evidence/generated-society/original/Rfde5c14d/Lean/docs/handoffs/process-generated-society-active-route.md",
+            "sha256": "b1d326d2aac8d8c6d34b25965cd7ce709017e2710e24972ccb1625b4b4124046"
+          },
+          "verification": {
+            "identity": "verified"
+          },
+          "evidence_role": "fixed-source historical report/navigation; not an independently recovered raw execution receipt"
+        },
+        {
+          "source_commit": "fde5c14df36b6064c87064acd20830d3df0500bb",
+          "source_path": "Lean/docs/research/process-generated-society/launch-kit/common/02-root-law-theorem-map.md",
+          "source_sha256": "abee8c87388a761b376a2d9e2c652fdc31024e614fc7e4a08011ec7ee838dad0",
+          "public": {
+            "path": "evidence/generated-society/original/Re60a8605/Lean/docs/research/process-generated-society/launch-kit/common/02-root-law-theorem-map.md",
+            "sha256": "abee8c87388a761b376a2d9e2c652fdc31024e614fc7e4a08011ec7ee838dad0"
+          },
+          "verification": {
+            "identity": "verified"
+          },
+          "evidence_role": "fixed-source historical report/navigation; not an independently recovered raw execution receipt"
+        },
+        {
+          "source_commit": "fde5c14df36b6064c87064acd20830d3df0500bb",
+          "source_path": "Lean/docs/research/process-generated-society/launch-kit/common/05-refusal-recourse-flagship.md",
+          "source_sha256": "30e14d768dbf84f5ca4f6273624f6c22ff9083903acc889a23b731fb9b1901ac",
+          "public": {
+            "path": "evidence/generated-society/original/Re60a8605/Lean/docs/research/process-generated-society/launch-kit/common/05-refusal-recourse-flagship.md",
+            "sha256": "30e14d768dbf84f5ca4f6273624f6c22ff9083903acc889a23b731fb9b1901ac"
+          },
+          "verification": {
+            "identity": "verified"
+          },
+          "evidence_role": "fixed-source historical report/navigation; not an independently recovered raw execution receipt"
+        },
+        {
+          "source_commit": "fde5c14df36b6064c87064acd20830d3df0500bb",
+          "source_path": "Lean/docs/research/process-generated-society/launch-kit/common/07-reproduction-card.md",
+          "source_sha256": "2711d76718af026c09d11c0270d59cb4aa126b9d32405e2c240a418a5fb8183c",
+          "public": {
+            "path": "evidence/generated-society/original/Re60a8605/Lean/docs/research/process-generated-society/launch-kit/common/07-reproduction-card.md",
+            "sha256": "2711d76718af026c09d11c0270d59cb4aa126b9d32405e2c240a418a5fb8183c"
+          },
+          "verification": {
+            "identity": "verified"
+          },
+          "evidence_role": "fixed-source historical report/navigation; not an independently recovered raw execution receipt"
+        },
+        {
+          "source_commit": "fde5c14df36b6064c87064acd20830d3df0500bb",
+          "source_path": "Lean/docs/research/process-generated-society/launch-kit/common/08-regression-reuse-manifest.md",
+          "source_sha256": "0705721cdd3aa2554d82f3f5b924ae2aae7e4d9b4aca43f4b42a75db590d13e4",
+          "public": {
+            "path": "evidence/generated-society/original/Re60a8605/Lean/docs/research/process-generated-society/launch-kit/common/08-regression-reuse-manifest.md",
+            "sha256": "0705721cdd3aa2554d82f3f5b924ae2aae7e4d9b4aca43f4b42a75db590d13e4"
+          },
+          "verification": {
+            "identity": "verified"
+          },
+          "evidence_role": "fixed-source historical report/navigation; not an independently recovered raw execution receipt"
+        },
+        {
+          "source_commit": "fde5c14df36b6064c87064acd20830d3df0500bb",
+          "source_path": "Lean/docs/research/process-generated-society/economic-constitution-of-possibility.md",
+          "source_sha256": "6681964fa6f326e138df42acec1e2096443cc1062839e40d877a4556ba0a74bc",
+          "public": {
+            "path": "evidence/generated-society/original/Rfde5c14d/Lean/docs/research/process-generated-society/economic-constitution-of-possibility.md",
+            "sha256": "6681964fa6f326e138df42acec1e2096443cc1062839e40d877a4556ba0a74bc"
+          },
+          "verification": {
+            "identity": "verified"
+          },
+          "evidence_role": "fixed-source historical report/navigation; not an independently recovered raw execution receipt"
+        },
+        {
+          "source_commit": "df421ff600085cbc290a7ae946193961bed7c83b",
+          "source_path": "Lean/docs/research/process-generated-society/launch-kit/common/09-theory-as-occurrence-flagship.md",
+          "source_sha256": "04781c8724e7fd782a2f5674902d52a1cd416a46101551ad7b5c3ce9ea237a60",
+          "public": {
+            "path": "evidence/economic-constitution/original/Rdf421ff6/Lean/docs/research/process-generated-society/launch-kit/common/09-theory-as-occurrence-flagship.md",
+            "sha256": "04781c8724e7fd782a2f5674902d52a1cd416a46101551ad7b5c3ce9ea237a60"
+          },
+          "verification": {
+            "identity": "verified"
+          },
+          "evidence_role": "fixed cited editorial/source-route record; not a proof producer or fresh certification"
+        }
+      ]
+    },
+    {
+      "id": "post-settlement-external-liability",
+      "paper": "economic-constitution",
+      "statement": "The actual post-joint-settlement family keeps external liability on empty local support.",
+      "producers": [
+        {
+          "source_commit": "fde5c14df36b6064c87064acd20830d3df0500bb",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Regression/Society/M14/Fixture/Economy/Credit/Risk/Merge/Capacity/Renewal/Settlement/Joint/Renewal/Accountability/Consumer/ProofCarryingContributionCapacityPostSettlementExternalLiability.lean",
+          "source_sha256": "418ff2654eebc70c1d6cf52b2f2bffd2230dfa368f2cb63fdc55baf380ea81be",
+          "source_origin": null,
+          "public": {
+            "path": "Lean/H0mework/Versions/Rfde5c14d/ReleaseMaterials/SaturationMonoid/ProcessGame/Regression/Society/M14/Fixture/Economy/Credit/Risk/Merge/Capacity/Renewal/Settlement/Joint/Renewal/Accountability/Consumer/ProofCarryingContributionCapacityPostSettlementExternalLiability.lean",
+            "module": "H0mework.Versions.Rfde5c14d.ReleaseMaterials.SaturationMonoid.ProcessGame.Regression.Society.M14.Fixture.Economy.Credit.Risk.Merge.Capacity.Renewal.Settlement.Joint.Renewal.Accountability.Consumer.ProofCarryingContributionCapacityPostSettlementExternalLiability",
+            "sha256": "09eb97b95c9e0896371a86871afeef3d6b960904e493899e1ab3f49e600ff23a",
+            "variant": "Rfde5c14d"
+          },
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.M14ProofCarryingContributionCapacityPostSettlementExternalLiability.contributionCapacityPostSettlementReachableRootOccurrences_injective",
+              "public_line": 32,
+              "complete_type": {
+                "declaration_index": 57,
+                "type_sha256": "e92d381a9c9d447b6f7b55a9a3dd51df3e30c1481b0683be5e1d749e655a1083"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.M14ProofCarryingContributionCapacityPostSettlementExternalLiability.contributionCapacityPostSettlementReachablePaymentOccurrences_injective",
+              "public_line": 47,
+              "complete_type": {
+                "declaration_index": 56,
+                "type_sha256": "211044a6d99eee135b53653f052748517ff6115617952feb3098493411497a10"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.M14ProofCarryingContributionCapacityPostSettlementExternalLiability.contributionCapacityPostSettlementReachableActualServiceOccurrences_injective",
+              "public_line": 59,
+              "complete_type": {
+                "declaration_index": 55,
+                "type_sha256": "f6a903652ea7a7a159f1ad114083b6b832ea2d57c8838aff4566f5cbca62af5f"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.M14ProofCarryingContributionCapacityPostSettlementExternalLiability.contributionCapacityPostSettlementGeneratedPaymentOccurrences_indexLocked",
+              "public_line": 86,
+              "complete_type": {
+                "declaration_index": 54,
+                "type_sha256": "0f8051c58496968cb5219102e8f37cd57300f4eaf31ef3c28d1d4c51d269641e"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.M14ProofCarryingContributionCapacityPostSettlementExternalLiability.proofCarryingContributionCapacityPostSettlementExternalLiability",
+              "public_line": 182,
+              "complete_type": {
+                "declaration_index": 58,
+                "type_sha256": "6403771182a03f94567cf4749586682c63b1dbf6823305c836b6fbfefc724fd2"
+              }
+            }
+          ],
+          "verification": {
+            "kernel": "passed",
+            "proof_package": "generated-society-regeneration-ab"
+          }
+        },
+        {
+          "source_commit": "fde5c14df36b6064c87064acd20830d3df0500bb",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Regression/Society/M14/Fixture/Economy/Credit/Risk/Merge/Capacity/Renewal/Settlement/Joint/Renewal/Accountability/Producer/SourceGeneratedContributionCapacityPostSettlementExternalLiability.lean",
+          "source_sha256": "95e462db628cfce07765c8120c48795abea63576d28f149a40bd9d6680c4857f",
+          "source_origin": null,
+          "public": {
+            "path": "Lean/H0mework/Versions/Rfde5c14d/ReleaseMaterials/SaturationMonoid/ProcessGame/Regression/Society/M14/Fixture/Economy/Credit/Risk/Merge/Capacity/Renewal/Settlement/Joint/Renewal/Accountability/Producer/SourceGeneratedContributionCapacityPostSettlementExternalLiability.lean",
+            "module": "H0mework.Versions.Rfde5c14d.ReleaseMaterials.SaturationMonoid.ProcessGame.Regression.Society.M14.Fixture.Economy.Credit.Risk.Merge.Capacity.Renewal.Settlement.Joint.Renewal.Accountability.Producer.SourceGeneratedContributionCapacityPostSettlementExternalLiability",
+            "sha256": "95aa3f66237fddd645ae50be187645195dac8b2ff15f58625b2271cf3c26d3cc",
+            "variant": "Rfde5c14d"
+          },
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.M14SourceGeneratedContributionCapacityPostSettlementExternalLiability.contributionCapacityPostSettlementGeneratedExternalLiabilityOfRootEventAt",
+              "public_line": 177,
+              "complete_type": {
+                "declaration_index": 72,
+                "type_sha256": "5c85ae41cf9c7dfc4346c710e66d3d45b328d3198cfb1707bc220ca68961ae84"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.M14SourceGeneratedContributionCapacityPostSettlementExternalLiability.sourceGeneratedContributionCapacityPostSettlementExternalLiabilityAt",
+              "public_line": 246,
+              "complete_type": {
+                "declaration_index": 73,
+                "type_sha256": "e355b247dda19bff1a3be1407af2ac75be55dd95e61d528df3d3b846b8444fa6"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.M14SourceGeneratedContributionCapacityPostSettlementExternalLiability.contributionCapacityPostSettlementEmptyLedger_doesNotEraseExternalLiability",
+              "public_line": 274,
+              "complete_type": {
+                "declaration_index": 71,
+                "type_sha256": "3fc5654a8c920aa0389725c81632aff39232cbad57730a57401873c0a094c813"
+              }
+            }
+          ],
+          "verification": {
+            "kernel": "passed",
+            "proof_package": "generated-society-regeneration-ab"
+          }
+        }
+      ],
+      "direct_consumers": [
+        {
+          "source_commit": "fde5c14df36b6064c87064acd20830d3df0500bb",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Regression/Society/M14/Fixture/Economy/Credit/Risk/Merge/Capacity/Renewal/Settlement/Joint/Renewal/Accountability/Consumer/ProofCarryingContributionCapacityPostSettlementExternalLiability.lean",
+          "source_sha256": "418ff2654eebc70c1d6cf52b2f2bffd2230dfa368f2cb63fdc55baf380ea81be",
+          "source_origin": null,
+          "public": {
+            "path": "Lean/H0mework/Versions/Rfde5c14d/ReleaseMaterials/SaturationMonoid/ProcessGame/Regression/Society/M14/Fixture/Economy/Credit/Risk/Merge/Capacity/Renewal/Settlement/Joint/Renewal/Accountability/Consumer/ProofCarryingContributionCapacityPostSettlementExternalLiability.lean",
+            "module": "H0mework.Versions.Rfde5c14d.ReleaseMaterials.SaturationMonoid.ProcessGame.Regression.Society.M14.Fixture.Economy.Credit.Risk.Merge.Capacity.Renewal.Settlement.Joint.Renewal.Accountability.Consumer.ProofCarryingContributionCapacityPostSettlementExternalLiability",
+            "sha256": "09eb97b95c9e0896371a86871afeef3d6b960904e493899e1ab3f49e600ff23a",
+            "variant": "Rfde5c14d"
+          },
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.M14ProofCarryingContributionCapacityPostSettlementExternalLiability.contributionCapacityPostSettlementGeneratedPaymentOccurrences_indexLocked",
+              "public_line": 86,
+              "complete_type": {
+                "declaration_index": 54,
+                "type_sha256": "0f8051c58496968cb5219102e8f37cd57300f4eaf31ef3c28d1d4c51d269641e"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.M14ProofCarryingContributionCapacityPostSettlementExternalLiability.proofCarryingContributionCapacityPostSettlementExternalLiability",
+              "public_line": 182,
+              "complete_type": {
+                "declaration_index": 58,
+                "type_sha256": "6403771182a03f94567cf4749586682c63b1dbf6823305c836b6fbfefc724fd2"
+              }
+            }
+          ],
+          "verification": {
+            "kernel": "passed",
+            "proof_package": "generated-society-regeneration-ab"
+          }
+        },
+        {
+          "source_commit": "fde5c14df36b6064c87064acd20830d3df0500bb",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Regression/Society/M14/M14WholeProgramRegression.lean",
+          "source_sha256": "f9c5007e73ae82e10344f4112caa6ed2c33da7fd6b9d5f3b2beb4e74cf545fdf",
+          "source_origin": null,
+          "public": {
+            "path": "Lean/H0mework/Versions/Rfde5c14d/ReleaseMaterials/SaturationMonoid/ProcessGame/Regression/Society/M14/M14WholeProgramRegression.lean",
+            "module": "H0mework.Versions.Rfde5c14d.ReleaseMaterials.SaturationMonoid.ProcessGame.Regression.Society.M14.M14WholeProgramRegression",
+            "sha256": "5083f6d6076cf74bfaf75961d795b6c57d898aadcd226887a47dfad69b8e4ed1",
+            "variant": "Rfde5c14d"
+          },
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.M14WholeProgramRegression.canonicalSociety_contributionCapacityPostSettlementExternalLiability",
+              "public_line": 2183,
+              "complete_type": {
+                "declaration_index": 76,
+                "type_sha256": "7cb3376872b6a704e80d44cd5198862f3096e888d498e303bb7fb80c12656cea"
+              }
+            }
+          ],
+          "verification": {
+            "kernel": "passed",
+            "proof_package": "generated-society-regeneration-ab"
+          }
+        }
+      ],
+      "resources": []
+    },
+    {
+      "id": "source-risk-quote",
+      "paper": "economic-constitution",
+      "statement": "Original finite source loss, advance quote, and its exact participation value.",
+      "producers": [
+        {
+          "source_commit": "df421ff600085cbc290a7ae946193961bed7c83b",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Society/Institutions/Capitalism/Universal/Abolition/Innovation/Contribution/RiskMath.lean",
+          "source_sha256": "4f9aca943a2ca833315897383f4b45dba68af47f25ae6056cf8d10950f99efa0",
+          "source_origin": null,
+          "public": {
+            "path": "Lean/H0mework/Versions/Rdf421ff6/ReleaseMaterials/SaturationMonoid/ProcessGame/Society/Institutions/Capitalism/Universal/Abolition/Innovation/Contribution/RiskMath.lean",
+            "module": "H0mework.Versions.Rdf421ff6.ReleaseMaterials.SaturationMonoid.ProcessGame.Society.Institutions.Capitalism.Universal.Abolition.Innovation.Contribution.RiskMath",
+            "sha256": "4f9aca943a2ca833315897383f4b45dba68af47f25ae6056cf8d10950f99efa0",
+            "variant": "Rdf421ff6"
+          },
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.Institutions.Capitalism.Universal.Abolition.Innovation.Contribution.the_source_quote_pays_the_declared_ex_ante_return",
+              "public_line": 45,
+              "complete_type": {
+                "declaration_index": 82,
+                "type_sha256": "800670675be0d1ffb13f3d4ffb2c47ff38932698673a5c0c5935b3ece2d9336c"
+              }
+            }
+          ],
+          "verification": {
+            "kernel": "passed",
+            "proof_package": "source-risk-quote"
+          }
+        }
+      ],
+      "direct_consumers": [
+        {
+          "source_commit": "df421ff600085cbc290a7ae946193961bed7c83b",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Society/Institutions/Capitalism/Universal/Abolition/Innovation/Contribution/Forecast.lean",
+          "source_sha256": "f1145bb22c77811eaa8bc6a2a2848f215e138463e78c2ebef2f05767e367619a",
+          "source_origin": null,
+          "public": {
+            "path": "Lean/H0mework/Versions/Rdf421ff6/ReleaseMaterials/SaturationMonoid/ProcessGame/Society/Institutions/Capitalism/Universal/Abolition/Innovation/Contribution/Forecast.lean",
+            "module": "H0mework.Versions.Rdf421ff6.ReleaseMaterials.SaturationMonoid.ProcessGame.Society.Institutions.Capitalism.Universal.Abolition.Innovation.Contribution.Forecast",
+            "sha256": "660113ed6887c9e905ea3f51a6010555d2b721cb111dea80557a2f96de485075",
+            "variant": "Rdf421ff6"
+          },
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.Institutions.Capitalism.Universal.Abolition.Innovation.Contribution.the_source_derived_quote_has_its_declared_participation_value",
+              "public_line": 131,
+              "complete_type": {
+                "declaration_index": 81,
+                "type_sha256": "abb58d63abdce50fce5fe32e34f0264b5f0cdfe39e09cba476439467c5b9ab17"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.Institutions.Capitalism.Universal.Abolition.Innovation.Contribution.the_participation_rule_is_fixed_before_the_actual_nature_event",
+              "public_line": 139,
+              "complete_type": {
+                "declaration_index": 80,
+                "type_sha256": "90ed98767e70fa532403b07e0101120f19d64d950ae1f2898f509cc93694d458"
+              }
+            }
+          ],
+          "verification": {
+            "kernel": "passed",
+            "proof_package": "source-risk-quote"
+          }
+        }
+      ],
+      "resources": []
+    },
+    {
+      "id": "symmetric-port-permissions",
+      "paper": "economic-constitution",
+      "statement": "Five-facet no-capital equivalence and the uniformly open and closed permissions.",
+      "producers": [
+        {
+          "source_commit": "df421ff600085cbc290a7ae946193961bed7c83b",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Society/Institutions/Capitalism/Universal/Abolition/Accounting/Quantifiers/Assembly/Strengthening/Characterization/Support/Law.lean",
+          "source_sha256": "f5710fbf64629a7959302f7b96da94497637e56d567e9a92d3d64092dea53161",
+          "source_origin": null,
+          "public": {
+            "path": "Lean/H0mework/Versions/Rdf421ff6/ReleaseMaterials/SaturationMonoid/ProcessGame/Society/Institutions/Capitalism/Universal/Abolition/Accounting/Quantifiers/Assembly/Strengthening/Characterization/Support/Law.lean",
+            "module": "H0mework.Versions.Rdf421ff6.ReleaseMaterials.SaturationMonoid.ProcessGame.Society.Institutions.Capitalism.Universal.Abolition.Accounting.Quantifiers.Assembly.Strengthening.Characterization.Support.Law",
+            "sha256": "a6ef1b66ae3ab06bbe7748aede5cc334b0bffe424b480ac3a7bf8fd4faf1301c",
+            "variant": "Rdf421ff6"
+          },
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.Institutions.Capitalism.Universal.Abolition.Accounting.Quantifiers.Assembly.Strengthening.Characterization.Support.the_existing_no_capital_contract_iff_its_minimal_permission_support",
+              "public_line": 50,
+              "complete_type": {
+                "declaration_index": 85,
+                "type_sha256": "05a1a557396bab88d84805d4dbf26e9521f431050df2fe200034c272761c20e5"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.Institutions.Capitalism.Universal.Abolition.Accounting.Quantifiers.Assembly.Strengthening.Characterization.Support.no_asymmetry_generates_the_complete_no_capital_contract",
+              "public_line": 32,
+              "complete_type": {
+                "declaration_index": 84,
+                "type_sha256": "ecfb9064054a949cfc7facb5787e4e8898d05c6e41048d626176582bcef5dd6c"
+              }
+            }
+          ],
+          "verification": {
+            "kernel": "passed",
+            "proof_package": "symmetric-port-permissions"
+          }
+        }
+      ],
+      "direct_consumers": [
+        {
+          "source_commit": "df421ff600085cbc290a7ae946193961bed7c83b",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Society/Institutions/Capitalism/Universal/Abolition/Accounting/Quantifiers/Assembly/Strengthening/Characterization/Support/Law.lean",
+          "source_sha256": "f5710fbf64629a7959302f7b96da94497637e56d567e9a92d3d64092dea53161",
+          "source_origin": null,
+          "public": {
+            "path": "Lean/H0mework/Versions/Rdf421ff6/ReleaseMaterials/SaturationMonoid/ProcessGame/Society/Institutions/Capitalism/Universal/Abolition/Accounting/Quantifiers/Assembly/Strengthening/Characterization/Support/Law.lean",
+            "module": "H0mework.Versions.Rdf421ff6.ReleaseMaterials.SaturationMonoid.ProcessGame.Society.Institutions.Capitalism.Universal.Abolition.Accounting.Quantifiers.Assembly.Strengthening.Characterization.Support.Law",
+            "sha256": "a6ef1b66ae3ab06bbe7748aede5cc334b0bffe424b480ac3a7bf8fd4faf1301c",
+            "variant": "Rdf421ff6"
+          },
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.Institutions.Capitalism.Universal.Abolition.Accounting.Quantifiers.Assembly.Strengthening.Characterization.Support.uniformly_closed_also_has_the_same_no_capital_contract",
+              "public_line": 70,
+              "complete_type": {
+                "declaration_index": 86,
+                "type_sha256": "010a0f3c0144b43defa768d0a7c0218a925be4ebacb72bdb267e7c775293b08c"
+              }
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Society.Institutions.Capitalism.Universal.Abolition.Accounting.Quantifiers.Assembly.Strengthening.Characterization.Support.fully_open_is_a_sufficient_special_case",
+              "public_line": 63,
+              "complete_type": {
+                "declaration_index": 83,
+                "type_sha256": "0920c6258b13b880338b3a6f4bab66d617c96764458da205e2fe95a2f26e53ce"
+              }
+            }
+          ],
+          "verification": {
+            "kernel": "passed",
+            "proof_package": "symmetric-port-permissions"
+          }
+        }
+      ],
+      "resources": []
+    }
+  ],
+  "proof_packages": [
+    {
+      "id": "institutional-quantities",
+      "paper": "economic-constitution",
+      "source_commit": "7c228ac7fd77350d3fe761c24b887cbf2f6e5afc",
+      "lean_target": "H0mework.Papers.SocietyBookQuantities",
+      "claim_ids": [
+        "original-exit-demand"
+      ],
+      "source_paths": [
+        "Lean/SaturationMonoid/ProcessGame/Regression/Society/M14/Consumer/Economy/OriginalExitDemandDeficitRegression.lean",
+        "Lean/SaturationMonoid/ProcessGame/Society/UBI/Capacity/Observation.lean",
+        "Lean/SaturationMonoid/ProcessGame/Society/UBI/Capacity/OriginalDemand.lean"
+      ],
+      "accepted_source_scope_sha256": "a48be9bb1a2b31a504805c0deea65169fd7f8514f1d5f06284ae6c2384950ec1",
+      "accepted_source_modules": 1772
+    },
+    {
+      "id": "reappearance",
+      "paper": "economic-constitution",
+      "source_commit": "df421ff600085cbc290a7ae946193961bed7c83b",
+      "lean_target": "H0mework.Versions.Rdf421ff6.ReleaseMaterials.SaturationMonoid.ProcessGame.Regression.Society.Lifecycle.Universal.ReappearanceSuccessionRegression",
+      "claim_ids": [
+        "same-debt-reappearance"
+      ],
+      "source_paths": [
+        "Lean/SaturationMonoid/ProcessGame/Regression/Society/Lifecycle/Universal/ReappearanceSuccessionRegression.lean"
+      ],
+      "accepted_source_scope_sha256": "a7956d98a049780c4db76711e7af8a52e09dfa81cc14215ed6ae85230a4ebadc",
+      "accepted_source_modules": 23
+    },
+    {
+      "id": "scoped-audit",
+      "paper": "economic-constitution",
+      "source_commit": "fb9e88a77a955af973dc46b1ba849e63cf8a58eb",
+      "lean_target": "H0mework.Papers.SocietyBookScopedAudit",
+      "claim_ids": [
+        "paid-audit-handoff",
+        "scoped-dual-verification"
+      ],
+      "source_paths": [
+        "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/Actual.lean",
+        "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/Disclosure.lean",
+        "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/Evidence.lean",
+        "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/Response/Regression.lean"
+      ],
+      "accepted_source_scope_sha256": "f38f9ff60144d0107d5d1c1a4a1c9d192fe59f48edc4ba3ea4dc785a2312454e",
+      "accepted_source_modules": 213
+    },
+    {
+      "id": "public-scoped-audit-source",
+      "paper": "economic-constitution",
+      "source_commit": "fb9e88a77a955af973dc46b1ba849e63cf8a58eb",
+      "lean_target": "H0mework.Versions.Rfb9e88a7.ReleaseMaterials.Scripts.Verification.PublicScopedAuditSource",
+      "claim_ids": [
+        "scoped-dual-verification"
+      ],
+      "source_paths": [
+        "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/Runtime.lean"
+      ],
+      "accepted_source_scope_sha256": "2c6eefd67c3140b5439307d35d4e0013dfe0e6c44f0fc94074c7a640a889bfaf",
+      "accepted_source_modules": 202
+    },
+    {
+      "id": "public-mandate-response-source",
+      "paper": "economic-constitution",
+      "source_commit": "fb9e88a77a955af973dc46b1ba849e63cf8a58eb",
+      "lean_target": "H0mework.Versions.Rfb9e88a7.ReleaseMaterials.Scripts.Verification.PublicMandateResponseSource",
+      "claim_ids": [
+        "paid-audit-handoff"
+      ],
+      "source_paths": [
+        "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/Response/Runtime.lean"
+      ],
+      "accepted_source_scope_sha256": "b3f2da9e72c1521460ef6dadecf62377e457985ab3d044aefba5a022bb8824db",
+      "accepted_source_modules": 204
+    },
+    {
+      "id": "public-energy-source",
+      "paper": "economic-constitution",
+      "source_commit": "fb9e88a77a955af973dc46b1ba849e63cf8a58eb",
+      "lean_target": "H0mework.Versions.Rfb9e88a7.ReleaseMaterials.Scripts.Verification.PublicEnergySource",
+      "claim_ids": [
+        "paid-audit-handoff"
+      ],
+      "source_paths": [
+        "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/EnergyRenewal/Runtime.lean"
+      ],
+      "accepted_source_scope_sha256": "8b9693bfdf6f9abfc1f1d484a86e66ccb102d2fbe8f4bef3fb771ac3effeeae6",
+      "accepted_source_modules": 208
+    },
+    {
+      "id": "public-continuation-source",
+      "paper": "economic-constitution",
+      "source_commit": "fb9e88a77a955af973dc46b1ba849e63cf8a58eb",
+      "lean_target": "H0mework.Versions.Rfb9e88a7.ReleaseMaterials.Scripts.Verification.PublicContinuationSource",
+      "claim_ids": [
+        "paid-audit-handoff"
+      ],
+      "source_paths": [
+        "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/EnergyRenewal/Continuation/Runtime.lean"
+      ],
+      "accepted_source_scope_sha256": "9af6aa61e2cfdbc0c6f3ef56ad6fd4a8493685b91445c93b28529e53f26e5599",
+      "accepted_source_modules": 210
+    },
+    {
+      "id": "public-handoff-source",
+      "paper": "economic-constitution",
+      "source_commit": "fb9e88a77a955af973dc46b1ba849e63cf8a58eb",
+      "lean_target": "H0mework.Versions.Rfb9e88a7.ReleaseMaterials.Scripts.Verification.PublicHandoffSource",
+      "claim_ids": [
+        "paid-audit-handoff"
+      ],
+      "source_paths": [
+        "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/EnergyRenewal/Handoff/Runtime.lean"
+      ],
+      "accepted_source_scope_sha256": "de43d017a286e90aaca84182269452ecb01174ce9d578bec52f6f336f410b538",
+      "accepted_source_modules": 212
+    },
+    {
+      "id": "public-governance-source",
+      "paper": "economic-constitution",
+      "source_commit": "fb9e88a77a955af973dc46b1ba849e63cf8a58eb",
+      "lean_target": "H0mework.Versions.Rfb9e88a7.ReleaseMaterials.Scripts.Verification.PublicGovernanceSource",
+      "claim_ids": [
+        "paid-audit-handoff"
+      ],
+      "source_paths": [
+        "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/Governance/Runtime.lean"
+      ],
+      "accepted_source_scope_sha256": "ecafdaec9a74f78911e385e3c728de2a58b8baf2ceaafb570d62823f857bfe27",
+      "accepted_source_modules": 206
+    },
+    {
+      "id": "source-privacy",
+      "paper": "economic-constitution",
+      "source_commit": "ac87df0871be9c286bba31984070d2fa865c6781",
+      "lean_target": "H0mework.Papers.SocietyBookSourcePrivacy",
+      "claim_ids": [
+        "adaptive-source-privacy",
+        "network-observation-law",
+        "timed-own-root-next"
+      ],
+      "source_paths": [
+        "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/EnergyRenewal/Privacy/Network.lean",
+        "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/EnergyRenewal/Privacy/Online.lean",
+        "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/EnergyRenewal/Privacy/Source.lean",
+        "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/EnergyRenewal/Privacy/Timing.lean",
+        "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/EnergyRenewal/Privacy/Wire.lean"
+      ],
+      "accepted_source_scope_sha256": "d81838e36d8b47c9459cc9d44ff9a55f7a6c158dfefe9557e5f66467664354a6",
+      "accepted_source_modules": 231
+    },
+    {
+      "id": "timed-owner",
+      "paper": "economic-constitution",
+      "source_commit": "ac87df0871be9c286bba31984070d2fa865c6781",
+      "lean_target": "H0mework.Versions.Rac87df08.ReleaseMaterials.Scripts.Verification.HaTimingOwnerSource",
+      "claim_ids": [
+        "timed-own-root-next"
+      ],
+      "source_paths": [
+        "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/EnergyRenewal/Privacy/Timing/Source.lean"
+      ],
+      "accepted_source_scope_sha256": "4a2961b81b0ed4134b00d71d3463efefd40a2c6260a84258acba7ee4c49b92ce",
+      "accepted_source_modules": 230
+    },
+    {
+      "id": "finite-independent-privacy",
+      "paper": "economic-constitution",
+      "source_commit": "16573f5d092d7748563183f18623ecf4efd02076",
+      "lean_target": "H0mework.Versions.R16573f5d.ReleaseMaterials.SaturationMonoid.ProcessGame.Society.PublicFunction.Productivity.Cell.Audit.Scoped.EnergyRenewal.Privacy.IndependentProduct",
+      "claim_ids": [
+        "finite-independent-privacy"
+      ],
+      "source_paths": [
+        "Lean/SaturationMonoid/ProcessGame/Society/PublicFunction/Productivity/Cell/Audit/Scoped/EnergyRenewal/Privacy/IndependentProduct.lean"
+      ],
+      "accepted_source_scope_sha256": "095423c99d247141976275c175a8a45d8ec9340d0a1a413f62f39e66bd1d1ec9",
+      "accepted_source_modules": 226
+    },
+    {
+      "id": "generated-society-regeneration-ab",
+      "paper": "economic-constitution",
+      "source_commit": "fde5c14df36b6064c87064acd20830d3df0500bb",
+      "lean_target": "H0mework.Papers.GeneratedSocietyRegeneration",
+      "claim_ids": [
+        "post-settlement-external-liability",
+        "same-occurrence-regeneration"
+      ],
+      "source_paths": [
+        "Lean/SaturationMonoid/ProcessGame/Regression/Society/M14/Consumer/Economy/Regeneration/ProofCarryingSameOccurrenceRegenerationRegression.lean",
+        "Lean/SaturationMonoid/ProcessGame/Regression/Society/M14/Fixture/Economy/Credit/Risk/Merge/Capacity/Renewal/Settlement/Joint/Renewal/Accountability/Consumer/ProofCarryingContributionCapacityPostSettlementExternalLiability.lean",
+        "Lean/SaturationMonoid/ProcessGame/Regression/Society/M14/Fixture/Economy/Credit/Risk/Merge/Capacity/Renewal/Settlement/Joint/Renewal/Accountability/Producer/SourceGeneratedContributionCapacityPostSettlementExternalLiability.lean",
+        "Lean/SaturationMonoid/ProcessGame/Regression/Society/M14/M14WholeProgramRegression.lean"
+      ],
+      "accepted_source_scope_sha256": "cdb2e529ada3caa857d65262dd568ba4c0ee5a976d7e1f8d9698a8ecf471a4be",
+      "accepted_source_modules": 1037
+    },
+    {
+      "id": "source-risk-quote",
+      "paper": "economic-constitution",
+      "source_commit": "df421ff600085cbc290a7ae946193961bed7c83b",
+      "lean_target": "H0mework.Versions.Rdf421ff6.ReleaseMaterials.SaturationMonoid.ProcessGame.Society.Institutions.Capitalism.Universal.Abolition.Innovation.Contribution.Forecast",
+      "claim_ids": [
+        "source-risk-quote"
+      ],
+      "source_paths": [
+        "Lean/SaturationMonoid/ProcessGame/Society/Institutions/Capitalism/Universal/Abolition/Innovation/Contribution/Forecast.lean",
+        "Lean/SaturationMonoid/ProcessGame/Society/Institutions/Capitalism/Universal/Abolition/Innovation/Contribution/RiskMath.lean"
+      ],
+      "accepted_source_scope_sha256": "8db9cf9135fc8cc0b16a2722887fe81aaf44658e2acfc9e6e24966fe087cd42b",
+      "accepted_source_modules": 23
+    },
+    {
+      "id": "symmetric-port-permissions",
+      "paper": "economic-constitution",
+      "source_commit": "df421ff600085cbc290a7ae946193961bed7c83b",
+      "lean_target": "H0mework.Versions.Rdf421ff6.ReleaseMaterials.SaturationMonoid.ProcessGame.Society.Institutions.Capitalism.Universal.Abolition.Accounting.Quantifiers.Assembly.Strengthening.Characterization.Support.Law",
+      "claim_ids": [
+        "symmetric-port-permissions"
+      ],
+      "source_paths": [
+        "Lean/SaturationMonoid/ProcessGame/Society/Institutions/Capitalism/Universal/Abolition/Accounting/Quantifiers/Assembly/Strengthening/Characterization/Support/Law.lean"
+      ],
+      "accepted_source_scope_sha256": "aa2cd5c6d86ffe41762d36c978949ff7ffb3ee472bc3622498db9065bfd36514",
+      "accepted_source_modules": 146
+    }
+  ],
+  "acceptance": {
+    "status": "passed",
+    "platform": "Darwin-arm64",
+    "toolchain": "leanprover/lean4:v4.33.0",
+    "execution_map_sha256": "f7a435c770fde3b5c4538764143d1f2018b2cfabf9b90db0a4ed134a7b1e0ea5",
+    "complete_types": 87,
+    "trust_summary": {
+      "institutional-quantities": {
+        "roots": 5,
+        "constants": 10432,
+        "axioms": [
+          "Quot.sound",
+          "Classical.choice",
+          "propext"
+        ],
+        "unsafe": 0,
+        "partial": 0
+      },
+      "reappearance": {
+        "roots": 7,
+        "constants": 1508,
+        "axioms": [
+          "Quot.sound",
+          "Classical.choice",
+          "propext"
+        ],
+        "unsafe": 0,
+        "partial": 0
+      },
+      "scoped-audit": {
+        "roots": 12,
+        "constants": 6505,
+        "axioms": [
+          "Quot.sound",
+          "Classical.choice",
+          "propext"
+        ],
+        "unsafe": 0,
+        "partial": 0
+      },
+      "public-scoped-audit-source": {
+        "roots": 1,
+        "constants": 7915,
+        "axioms": [
+          "Quot.sound",
+          "Classical.choice",
+          "propext"
+        ],
+        "unsafe": 0,
+        "partial": 0
+      },
+      "public-mandate-response-source": {
+        "roots": 2,
+        "constants": 8263,
+        "axioms": [
+          "Quot.sound",
+          "Classical.choice",
+          "propext"
+        ],
+        "unsafe": 0,
+        "partial": 0
+      },
+      "public-energy-source": {
+        "roots": 1,
+        "constants": 8414,
+        "axioms": [
+          "Quot.sound",
+          "Classical.choice",
+          "propext"
+        ],
+        "unsafe": 0,
+        "partial": 0
+      },
+      "public-continuation-source": {
+        "roots": 2,
+        "constants": 8597,
+        "axioms": [
+          "Quot.sound",
+          "Classical.choice",
+          "propext"
+        ],
+        "unsafe": 0,
+        "partial": 0
+      },
+      "public-handoff-source": {
+        "roots": 3,
+        "constants": 8646,
+        "axioms": [
+          "Quot.sound",
+          "Classical.choice",
+          "propext"
+        ],
+        "unsafe": 0,
+        "partial": 0
+      },
+      "public-governance-source": {
+        "roots": 1,
+        "constants": 8229,
+        "axioms": [
+          "Quot.sound",
+          "Classical.choice",
+          "propext"
+        ],
+        "unsafe": 0,
+        "partial": 0
+      },
+      "source-privacy": {
+        "roots": 14,
+        "constants": 12282,
+        "axioms": [
+          "Quot.sound",
+          "Classical.choice",
+          "propext"
+        ],
+        "unsafe": 0,
+        "partial": 0
+      },
+      "timed-owner": {
+        "roots": 2,
+        "constants": 8963,
+        "axioms": [
+          "Quot.sound",
+          "Classical.choice",
+          "propext"
+        ],
+        "unsafe": 0,
+        "partial": 0
+      },
+      "finite-independent-privacy": {
+        "roots": 4,
+        "constants": 12260,
+        "axioms": [
+          "Quot.sound",
+          "Classical.choice",
+          "propext"
+        ],
+        "unsafe": 0,
+        "partial": 0
+      },
+      "generated-society-regeneration-ab": {
+        "roots": 26,
+        "constants": 43779,
+        "axioms": [
+          "Quot.sound",
+          "Classical.choice",
+          "propext"
+        ],
+        "unsafe": 0,
+        "partial": 0
+      },
+      "source-risk-quote": {
+        "roots": 3,
+        "constants": 4042,
+        "axioms": [
+          "Quot.sound",
+          "Classical.choice",
+          "propext"
+        ],
+        "unsafe": 0,
+        "partial": 0
+      },
+      "symmetric-port-permissions": {
+        "roots": 4,
+        "constants": 2759,
+        "axioms": [
+          "Quot.sound",
+          "Classical.choice",
+          "propext"
+        ],
+        "unsafe": 0,
+        "partial": 0
+      }
+    },
+    "build": {
+      "path": "evidence/economic-constitution-v3/acceptance/build.json.gz",
+      "compression": "gzip",
+      "sha256": "3d739158068f658f06bba659a5bd30d0ed3616a7e395fd39ae8f52d619881b22",
+      "payload_sha256": "248f62dee111d15345ffab646ff52e3c64c55442697d5214013f4d386f6a7d61"
+    },
+    "trust": {
+      "path": "evidence/economic-constitution-v3/acceptance/trust.json.gz",
+      "compression": "gzip",
+      "sha256": "4d70ff8edeeb35fb7804b08f6f21a37c38fd9f2af8e9e7d32d20035c78f13764",
+      "payload_sha256": "75786faf191c3550bade41175e2335ce3c4488142f6451cb73c19460ad07bf45"
+    },
+    "declaration_types": {
+      "path": "evidence/economic-constitution-v3/acceptance/declaration-types.json.gz",
+      "compression": "gzip",
+      "sha256": "95f4a098b76d4980faf1e072582fb44927b1649bc009ebe3051cd72bbd893615",
+      "payload_sha256": "59462bd218b24802f146a4159414b773d5368465adc0263bf374fa05552953ce"
+    },
+    "cache_preservation": {
+      "path": "evidence/economic-constitution-v3/acceptance/cache-preservation.json",
+      "sha256": "f156d89a11a741d945f2a9aec62d7866dc7c14226aa7924202dc10c4be547c79"
+    }
+  },
+  "source_binding_sha256": "bac2785274111eda72d97bf718af08efdb4a48184f5508adbd8f407792506f67"
+}

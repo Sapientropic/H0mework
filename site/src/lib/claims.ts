@@ -13,7 +13,7 @@ type Producer = {
   declarations?: Declaration[];
 };
 type Text = { title: string | null; statement: string | null };
-export type Source = { key: string; ids: string[]; edition: number; text: Text; localizedText?: Partial<Record<Lang, Text>>; location: Record<Lang, string | null>; producers: Producer[]; category?: "principle" | "interface" | "formal"; citations?: string[]; passages?: Partial<Record<Lang, string[]>>; readingOrder?: number };
+export type Source = { key: string; ids: string[]; edition: number; text: Text; localizedText?: Partial<Record<Lang, Text>>; location: Record<Lang, string | null>; producers: Producer[]; category?: "principle" | "interface" | "formal"; citations?: string[]; passages?: Partial<Record<Lang, string[]>>; readingOrder?: number; labels?: Record<Lang, string> };
 
 // Every mapped Lean producer passed its kernel check before release. A map's "pending" marks only
 // the later re-acceptance of the public package in CI, so the site does not show it as a status.
@@ -294,9 +294,12 @@ function principleAt(slug: string, ordinal: number, lang: Lang, release: Release
   const text = manuscriptOf(release, slug, lang);
   const openings = lang === "zh" ? [`**原则${PRINCIPLES.zh[ordinal - 1]}`]
     : [`**Principle ${PRINCIPLES.en[ordinal - 1]}`, `**Principle ${ordinal}`];
-  const matches = text.split(/\n\s*\n/).flatMap((paragraph) => openings
-    .filter((opening) => paragraph.startsWith(opening) && /[:：. (]/.test(paragraph.slice(opening.length, opening.length + 1)))
-    .map((opening) => ({ paragraph, opening })));
+  const matches = text.split(/\n\s*\n/).flatMap((paragraph) => {
+    const prefix = paragraph.startsWith("> ") ? "> " : "";
+    return openings.map((opening) => prefix + opening)
+      .filter((opening) => paragraph.startsWith(opening) && /[:：. (（]/.test(paragraph.slice(opening.length, opening.length + 1)))
+      .map((opening) => ({ paragraph, opening }));
+  });
   if (matches.length !== 1) throw new Error(`paper must have exactly one principle ${ordinal}: ${lang}`);
   const { paragraph, opening } = matches[0];
   const readingOrder = text.indexOf(paragraph);
@@ -312,9 +315,8 @@ function formalResultAt(slug: string, ordinal: string, lang: Lang, release: Rele
   const section = [...text.slice(0, readingOrder).matchAll(/^#{2,4}\s+(\d+(?:\.\d+)*)\s/gm)].at(-1)?.[1];
   return { location: `${section ? `§${section} ` : ""}${lang === "zh" ? "结果" : "Result"} ${ordinal}`, readingOrder };
 }
-function economicConstitution(slug: string, edition: number, release: ReleaseId): Source[] {
-  const map = mapOf(release);
-  const principles: Source[] = map.claims.map((claim: any, index: number) => {
+function economicPrinciples(slug: string, edition: number, release: ReleaseId): Source[] {
+  return mapOf("economic-constitution").claims.map((claim: any, index: number) => {
     if (claim.claim_kind !== "normative_argument_with_exact_formal_support" || !claim.formal_support_only)
       throw new Error(`economic principle classification changed: ${claim.id}`);
     const zh = principleAt(slug, index + 1, "zh", release), en = principleAt(slug, index + 1, "en", release);
@@ -325,6 +327,11 @@ function economicConstitution(slug: string, edition: number, release: ReleaseId)
       producers: acceptedEntries([...claim.producers, ...claim.direct_consumers, ...claim.resources]),
     };
   });
+}
+
+function economicConstitution(slug: string, edition: number, release: ReleaseId): Source[] {
+  const map = mapOf(release);
+  const principles = economicPrinciples(slug, edition, release);
   const entries = map.claims.flatMap((claim: any) => [...claim.producers, ...claim.direct_consumers]);
   const results: Source[] = map.paper_formal_results.map((result: any) => {
     const bindings = map.paper_interface_registry.bindings.filter((binding: any) => result.source_keys.includes(binding.source_key));
@@ -344,6 +351,62 @@ function economicConstitution(slug: string, edition: number, release: ReleaseId)
     };
   });
   return [...principles, ...results];
+}
+
+const ECONOMIC_RESULT_ANCHORS: Record<string, string> = {
+  "2.1": "R1", "2.2": "R2", "4.1": "R3", "4.2": "R4", "5.1": "R5", "6.1": "R6", "7.1": "R7", "9.2": "R8",
+};
+
+function economicConstitutionThird(slug: string, edition: number, release: ReleaseId): Source[] {
+  const map = mapOf(release);
+  if (map.acceptance.status !== "passed" || map.proof_snapshots.main !== RELEASES[release].sourceCommit)
+    throw new Error("Economic Constitution third edition does not match the accepted proof selection");
+  const inherited = publishedPaperJson(release, slug, "records/public-source-binding.json");
+  const byRecord = new Map<string, any>(
+    Object.values(inherited.by_key).flatMap((rows: any) => rows.map((row: any) => [row.record_id, row])),
+  );
+  const moduleById = new Map<string, any>(inherited.modules.map((row: any) => [row.id, row]));
+  const byClaim = new Map<string, any>(map.claims.map((claim: any) => [claim.id, claim]));
+  const results: Source[] = map.results.map((result: any) => {
+    const producers: Producer[] = result.inherited_interface_ids.flatMap((id: string) => {
+      const row = byRecord.get(id);
+      const declarations = [...new Set<string>([...row.declaration_ids,
+        ...row.consumer_bindings.flatMap((consumer: any) => consumer.accepted_consumer_ids ?? consumer.declaration_ids ?? [])])];
+      return declarations.flatMap((key) => {
+        const declaration = inherited.declarations[key];
+        if (declaration.original_kind === "anonymous-example") return [];
+        const owner = moduleById.get(declaration.module_id);
+        return {
+          kind: "lean",
+          public: { path: owner.path, module: declaration.public_module, commit: map.proof_snapshots.main },
+          declarations: [{ qualified_name: declaration.qualified_name }],
+        };
+      });
+    });
+    for (const id of result.proof_claims) {
+      const claim = byClaim.get(id);
+      for (const row of [...claim.producers, ...claim.direct_consumers, ...claim.resources]) {
+        const commit = map.proof_snapshots[map.source_snapshots[row.public.path]] ?? map.proof_snapshots.main;
+        producers.push({
+          kind: row.declarations ? "lean" : "artifact",
+          public: { ...row.public, commit },
+          declarations: row.declarations?.map((decl: any) => ({ qualified_name: decl.qualified_name, line: decl.public_line })),
+        });
+      }
+    }
+    if (!producers.length) throw new Error(`Economic Constitution result ${result.number} has no accepted source`);
+    const { zh, en } = result.titles;
+    const id = ECONOMIC_RESULT_ANCHORS[result.number] ?? `result-${result.number.replace(".", "-")}`;
+    return {
+      key: `ecn.${id}`, ids: [id], edition, category: "formal",
+      text: { title: zh.title, statement: null },
+      localizedText: { en: { title: en.title, statement: null } },
+      labels: { zh: zh.label, en: en.label },
+      location: { zh: zh.label, en: en.label },
+      producers,
+    };
+  });
+  return [...economicPrinciples(slug, edition, release), ...results];
 }
 
 function capitalFormation(slug: string, edition: number, release: ReleaseId): Source[] {
@@ -465,6 +528,7 @@ const ADAPTERS: Record<ReleaseId, (slug: string, edition: number, release: Relea
   "generated-society-v2": generatedSociety,
   "generated-society-v3": generatedSociety,
   "economic-constitution-v2": economicConstitution,
+  "economic-constitution-v3": economicConstitutionThird,
   "capital-formation": capitalFormation,
   "capital-formation-v2": capitalFormation,
   "enforceable-peace": enforceablePeace,
@@ -607,7 +671,7 @@ function rowOf(source: Source, release: ReleaseId, slug: string, lang: Lang) {
     key: source.key,
     category: source.category,
     ids: source.ids,
-    label: labelOf(source.ids),
+    label: source.labels?.[lang] ?? labelOf(source.ids),
     edition: source.edition,
     readingOrder: source.readingOrder,
     title: spaced(reading?.title ?? derived),

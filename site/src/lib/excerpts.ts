@@ -74,7 +74,7 @@ function indexOf(release: ReleaseId, slug: string, lang: Lang) {
       if (NOT_RESULT.test(kind)) return;
       const previous = results.get(head[2]);
       // In these papers examples and formal results have independent numbering.
-      const preferFormal = slug === "capital-formation" || release === "generated-society-v3";
+      const preferFormal = slug === "capital-formation" || release === "generated-society-v3" || release === "economic-constitution-v3";
       if (previous && (!preferFormal || !FORMAL_RESULT.test(kind) || FORMAL_RESULT.test(previous.kind))) return;
       const first = paragraph.slice(head[0].length).trim();
       const body = continuation(paragraphs, at, Boolean(first), first ? [first] : []);

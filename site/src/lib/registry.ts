@@ -15,7 +15,7 @@ export const repoLink = (path: string, line?: number, commit = "main") => `${REP
 const suffix = (lang: Lang) => (lang === "en" ? "-en" : "");
 const unzip = (zip: string, member: string) => execFileSync("unzip", ["-p", resolve(ROOT, zip), member], { encoding: "utf8", maxBuffer: 1 << 26 });
 
-export type ReleaseId = "first-release" | "second-edition" | "low-energy" | "whole-ledger" | "whole-ledger-v2" | "source-process-core-v3" | "one-bit" | "one-bit-v2" | "generated-society" | "economic-constitution" | "generated-society-v2" | "generated-society-v3" | "economic-constitution-v2" | "capital-formation" | "capital-formation-v2" | "enforceable-peace" | "physics-third-edition";
+export type ReleaseId = "first-release" | "second-edition" | "low-energy" | "whole-ledger" | "whole-ledger-v2" | "source-process-core-v3" | "one-bit" | "one-bit-v2" | "generated-society" | "economic-constitution" | "generated-society-v2" | "generated-society-v3" | "economic-constitution-v2" | "economic-constitution-v3" | "capital-formation" | "capital-formation-v2" | "enforceable-peace" | "physics-third-edition";
 type Release = {
   label: Record<Lang, string>;
   date: string;
@@ -31,6 +31,7 @@ type Release = {
   sourceCommit?: string;
   documentationCommit?: string;
   acceptance?: Record<Lang, string>;
+  byline?: Record<Lang, string> & { orcid: string };
   claimsNote?: Record<Lang, string>;
   // A prose revision quotes its current text once while retaining both editions' downloads.
   replacesClaimsFrom?: ReleaseId;
@@ -89,6 +90,16 @@ const societyThird = readJson(`${SOCIETY_V3}/manifest.json`).papers.find((paper:
 if (!societyThird?.is_published || societyThird.version !== "v3" || societyThird.source_commit !== SOCIETY_SOURCE
     || !/^10\.5281\/zenodo\.\d+$/.test(societyThird.doi))
   throw new Error("Canonical Society third edition has no published DOI and fixed proof source");
+const ECONOMIC_V3 = "papers/economic-constitution/2026-11-13-v3";
+const economicThirdArchive = `${ECONOMIC_V3}/editable/economic-constitution-v3-editable.zip`;
+const economicThird = readJson(`${ECONOMIC_V3}/manifest.json`).papers.find((paper: any) => paper.paper === "economic-constitution");
+if (!economicThird?.is_published || economicThird.version !== "v3" || economicThird.source_commit !== SOCIETY_SOURCE
+    || !/^10\.5281\/zenodo\.\d+$/.test(economicThird.doi))
+  throw new Error("Economic Constitution third edition has no published DOI and fixed proof source");
+const economicAuthor = readJson(ECONOMIC_V3 + "/metadata/zenodo-metadata.json").creators[0].person_or_org;
+const economicOrcid = economicAuthor.identifiers.find((id: any) => id.scheme === "orcid")?.identifier;
+if (!economicAuthor.given_name || !economicAuthor.family_name || !economicOrcid)
+  throw new Error("Economic Constitution third edition has no author citation metadata");
 const CAPITAL = "papers/capital-formation/2026-11-04";
 const capitalArchive = `${CAPITAL}/editable/capital-formation-v1-editable.zip`;
 const CAPITAL_V2 = "papers/capital-formation/2026-11-12-v2";
@@ -297,6 +308,33 @@ const BASE_RELEASES: Record<Exclude<ReleaseId, "generated-society-v2" | "economi
       en: "The M7–M10 proofs and cross-domain actor provenance passed the local build, axiom dependency audit, and complete type checks.",
     },
   },
+  "economic-constitution-v3": {
+    label: { zh: "可能性的经济宪法", en: "An Economic Constitution of Possibility" },
+    date: economicThird.publication_date,
+    map: "docs/economic-constitution-v3-map.json",
+    selection: { path: economicThirdArchive, member: "papers/economic-constitution/records/v3-source-binding.json" },
+    manuscript: (slug, lang) => unzip(economicThirdArchive, `papers/${slug}/manuscript${suffix(lang)}.md`),
+    supplement: (slug, lang) => unzip(economicThirdArchive, `papers/${slug}/supplement${suffix(lang)}.md`),
+    bibliography: (slug) => unzip(economicThirdArchive, `papers/${slug}/references-v3.bib`),
+    files: (slug, lang) => ({
+      pdf: `${ECONOMIC_V3}/pdf/${slug}${suffix(lang)}.pdf`,
+      supplement: `${ECONOMIC_V3}/pdf/${slug}-supplement${suffix(lang)}.pdf`,
+    }),
+    check: "python3 tools/economic_constitution_v3.py entry --output .local/economic-constitution-v3-entry",
+    guide: "docs/economic-constitution-v3-reproduction.md",
+    sourceCommit: economicThird.source_commit,
+    documentationCommit: "main",
+    replacesClaimsFrom: "economic-constitution-v2",
+    byline: { zh: "高健", en: [economicAuthor.given_name, economicAuthor.family_name].join(" "), orcid: economicOrcid },
+    acceptance: {
+      zh: "公开证明通过本地构建、公理依赖和完整类型核验。",
+      en: "Public proofs passed the local build, axiom dependency audit, and complete type checks.",
+    },
+    claimsNote: {
+      zh: "展开可读十八项形式结果、八条制度原则，以及对应的公开证明。",
+      en: "Open any of the eighteen formal results or eight institutional principles to read its text and corresponding proofs.",
+    },
+  },
   "capital-formation": {
     label: { zh: "资本主义的结构总定理", en: "The structural theorem of capitalism" },
     date: capitalPaper().publication_date,
@@ -467,6 +505,7 @@ export const PAPERS: PaperEntry[] = [
     editions: [
       { release: "economic-constitution", doi: societyPaper("economic-constitution").doi },
       { release: "economic-constitution-v2", doi: societyPaper("economic-constitution", "v2").doi },
+      { release: "economic-constitution-v3", doi: economicThird.doi },
     ],
     figure: { name: "clepsydra", claim: "R4" },
   },

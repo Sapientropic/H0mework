@@ -64,12 +64,10 @@ function splitTitle(title: string) {
 }
 const titleOf = (manuscript: string) => manuscript.split("\n", 1)[0].replace(/^#\s+/, "").trim();
 
-function authorOf(manuscript: string, lang: Lang) {
-  const raw = manuscript.match(/^\*\*(?:作者[：:]|Author:\s*)(.+?)\*\*\\?\s*$/m)?.[1]?.trim() ?? "";
-  const clean = raw.replace(/\s*[（(].*?[）)]$/, "").trim();
-  if (lang === "zh") return clean;
-  const parts = clean.split(/\s+/);
-  return parts.length === 2 ? `${parts[1]}, ${parts[0]}` : clean;
+function authorOf(name: string, lang: Lang) {
+  if (lang === "zh") return name;
+  const parts = name.split(/\s+/);
+  return parts.length === 2 ? [parts[1], parts[0]].join(", ") : name;
 }
 const authorDisplayOf = (manuscript: string) =>
   (manuscript.match(/^\*\*(?:作者[：:]|Author:\s*)(.+?)\*\*\\?\s*$/m)?.[1] ?? "").replace(/\s*[（(].*?[）)]$/, "").trim();
@@ -223,12 +221,14 @@ export function paperOf(slug: string, lang: Lang) {
     ? [otherTitle, boldSubtitle(otherManuscript)].filter(Boolean).join(": ") : otherTitle;
   const fullTitle = parts.sub && hasSeparateSub ? `${title}${lang === "zh" ? "：" : ": "}${parts.sub}` : title;
   const current = editions.at(-1)!;
+  const byline = RELEASES[latest].byline;
+  const authorName = byline?.[lang] ?? authorDisplayOf(manuscript);
   const citation: CitationMeta = {
     title: fullTitle,
-    author: authorOf(manuscript, lang),
-    authorName: authorDisplayOf(manuscript),
-    alternateAuthorName: authorDisplayOf(otherManuscript),
-    orcid: orcidOf(manuscript),
+    author: authorOf(authorName, lang),
+    authorName,
+    alternateAuthorName: byline?.[lang === "zh" ? "en" : "zh"] ?? authorDisplayOf(otherManuscript),
+    orcid: byline?.orcid ?? orcidOf(manuscript),
     version: current.number,
     date: current.date,
     doi: current.doi,
