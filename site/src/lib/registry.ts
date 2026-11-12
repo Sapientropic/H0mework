@@ -31,7 +31,6 @@ type Release = {
   sourceCommit?: string;
   documentationCommit?: string;
   acceptance?: Record<Lang, string>;
-  byline?: Record<Lang, string> & { orcid: string };
   claimsNote?: Record<Lang, string>;
   // A prose revision quotes its current text once while retaining both editions' downloads.
   replacesClaimsFrom?: ReleaseId;
@@ -96,10 +95,6 @@ const economicThird = readJson(`${ECONOMIC_V3}/manifest.json`).papers.find((pape
 if (!economicThird?.is_published || economicThird.version !== "v3" || economicThird.source_commit !== SOCIETY_SOURCE
     || !/^10\.5281\/zenodo\.\d+$/.test(economicThird.doi))
   throw new Error("Economic Constitution third edition has no published DOI and fixed proof source");
-const economicAuthor = readJson(ECONOMIC_V3 + "/metadata/zenodo-metadata.json").creators[0].person_or_org;
-const economicOrcid = economicAuthor.identifiers.find((id: any) => id.scheme === "orcid")?.identifier;
-if (!economicAuthor.given_name || !economicAuthor.family_name || !economicOrcid)
-  throw new Error("Economic Constitution third edition has no author citation metadata");
 const CAPITAL = "papers/capital-formation/2026-11-04";
 const capitalArchive = `${CAPITAL}/editable/capital-formation-v1-editable.zip`;
 const CAPITAL_V2 = "papers/capital-formation/2026-11-12-v2";
@@ -325,7 +320,6 @@ const BASE_RELEASES: Record<Exclude<ReleaseId, "generated-society-v2" | "economi
     sourceCommit: economicThird.source_commit,
     documentationCommit: "main",
     replacesClaimsFrom: "economic-constitution-v2",
-    byline: { zh: "高健", en: [economicAuthor.given_name, economicAuthor.family_name].join(" "), orcid: economicOrcid },
     acceptance: {
       zh: "公开证明通过本地构建、公理依赖和完整类型核验。",
       en: "Public proofs passed the local build, axiom dependency audit, and complete type checks.",

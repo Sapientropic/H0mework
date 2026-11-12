@@ -16,9 +16,9 @@ Lean 4 proofs, reproduction programs and frozen evidence behind a family of rese
 ## Machine-checked
 
 <!-- BEGIN CI STATUS -->
-<a href="https://github.com/Sapientropic/H0mework/actions/runs/43159515852"><img src="docs/assets/ci-wall.en.svg" alt="Lean full selection: 62,694 modules across 11 stages and 106 shards, all checked" width="100%"></a>
+<a href="https://github.com/Sapientropic/H0mework/actions/runs/43284094032"><img src="docs/assets/ci-wall.en.svg" alt="Lean full selection: 62,695 modules across 11 stages and 107 shards, all checked" width="100%"></a>
 
-- **62,694 Lean modules passed the complete kernel check.** [The accepted run](https://github.com/Sapientropic/H0mework/actions/runs/43159515852) used 11 stages and 106 shards with `--trust=0` throughout at `53c8d110`. The current build covers 62,695 modules across 107 shards.
+- **62,695 Lean modules passed the complete kernel check.** [The accepted run](https://github.com/Sapientropic/H0mework/actions/runs/43284094032) used 11 stages and 107 shards with `--trust=0` throughout at `a33906ce`.
 <!-- END CI STATUS -->
 
 - **Cited declarations are audited again per edition.** Their full dependency closures use only Lean's three standard axioms, with `unsafe = 0` and `partial = 0`; each paper's acceptance and reproduction links are grouped below.

@@ -29,6 +29,8 @@ for (const lang of ["zh", "en"] as const) {
   const rows = claimsOf(slug, lang);
   assert.equal(paper.current.number, 3);
   assert.equal(paper.current.doi, published.doi);
+  assert.equal(paper.citation.authorName, lang === "zh" ? "高健" : "Jian Gao");
+  assert.equal(paper.citation.orcid, "0009-0009-5002-1655");
   assert.equal(rows.length, 26);
   assert.ok(rows.every((row) => row.edition === 3));
   assert.equal(new Set(rows.map((row) => row.key)).size, rows.length);
