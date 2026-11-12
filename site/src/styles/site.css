@@ -150,10 +150,7 @@ h2 .count { margin-left: 10px; font: 13px/1 var(--mono); color: var(--muted); ve
 .claim .result-body p { margin: 0 0 .6em; }
 .claim .result-body ol, .claim .result-body ul { margin: 0 0 .6em; padding-left: 1.4em; }
 .claim .result-body strong { color: var(--ink); font-weight: 600; }
-.claim .result-body .katex-display { margin: .5em 0; overflow-x: auto; overflow-y: hidden; }
-/* KaTeX pins an equation number to the right edge, over a formula wider than the column; here it follows the formula. */
-.claim .result-body .katex-display > .katex > .katex-html { white-space: nowrap; }
-.claim .result-body .katex-display > .katex > .katex-html > .tag { position: static; display: inline-block; margin-left: 1.5em; }
+.claim .result-body .katex-display { margin: .5em 0; }
 /* The map's own wording stays one click away, below the paper's. */
 .claim .registered { margin: 0 0 12px; }
 .claim .registered > summary { width: fit-content; cursor: pointer; list-style: none; font: 12.5px/1.6 var(--sans); color: var(--muted); }
@@ -186,6 +183,30 @@ h2 .count { margin-left: 10px; font: 13px/1 var(--mono); color: var(--muted); ve
 .claim .modules a, .claim .decls a { overflow-wrap: anywhere; }
 .claim .modules summary { max-width: 100%; }
 .katex-display { overflow-x: auto; overflow-y: hidden; padding: 2px 0; }
+/* Equal gutters center short equations and keep the number clear of the expression. */
+.katex-display:has(> .equation-number) {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, max-content) minmax(max-content, 1fr);
+  align-items: start;
+  overflow: visible;
+  padding: 0;
+}
+.katex-display:has(> .equation-number) > .katex:first-child {
+  grid-column: 2;
+  overflow: auto hidden;
+  padding: 2px 0;
+  scrollbar-width: thin;
+}
+.katex-display:has(> .equation-number) .katex-html {
+  white-space: normal;
+  text-wrap: balance;
+}
+.katex-display > .equation-number {
+  grid-column: 3;
+  justify-self: end;
+  margin-inline-start: .8em;
+  padding: 2px 0;
+}
 
 /* Claim tape: one hole per row, grouped by chapter. */
 .tape { display: flex; flex-wrap: wrap; gap: 10px 14px; margin: 0 0 6px; }

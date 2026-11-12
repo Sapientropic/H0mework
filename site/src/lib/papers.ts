@@ -9,6 +9,7 @@ import remarkMath from "remark-math";
 import remarkRehype from "remark-rehype";
 import rehypeKatex from "rehype-katex";
 import rehypeStringify from "rehype-stringify";
+import { fromHtml } from "hast-util-from-html";
 import katex from "katex";
 import { PAPERS, RELEASES, ROOT, THEMES, bibliographyOf, entryOf, manuscriptOf, once, repoLink, type Lang, type ThemeId } from "./registry";
 import { claimsOf } from "./claims";
@@ -29,6 +30,28 @@ export const renderMarkdown = (text: string) => String(markdown.processSync(doll
 const plain = (text: string) => text.replace(/\$+([^$]*)\$+/g, "$1").replace(/\\[()[\]]/g, "").replace(/[*_`]/g, "").replace(/\s+/g, " ").trim();
 export const renderInline = (text: string) => renderMarkdown(text).replace(/^<p>|<\/p>\s*$/g, "");
 
+function renderMath(tex: string, displayMode: boolean) {
+  const html = katex.renderToString(tex, { displayMode, throwOnError: false });
+  if (!displayMode || !html.includes('class="katex-tag"')) return html;
+  const fragment = fromHtml(html, { fragment: true });
+  const display = fragment.children[0];
+  if (display?.type !== "element") return html;
+  const equation = display.children[0];
+  if (equation?.type !== "element") return html;
+  const visual = equation.children.find((child) =>
+    child.type === "element" && Array.isArray(child.properties.className) && child.properties.className.includes("katex-html"));
+  if (visual?.type !== "element") return html;
+  const number = visual.children.at(-1);
+  if (number?.type !== "element" || !Array.isArray(number.properties.className) || !number.properties.className.includes("katex-tag")) return html;
+
+  // Keep the MathML intact and let the visual number sit outside the scrollable expression.
+  visual.children.pop();
+  number.properties.className.push("katex", "equation-number");
+  number.properties.ariaHidden = "true";
+  display.children.push(number);
+  return String(markdown.stringify(fragment));
+}
+
 // Claim texts are plain text with `code` and $math$ only: "*" there is multiplication, not emphasis.
 const escape = (text: string) => text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 function claimInline(text: string) {
@@ -38,7 +61,7 @@ function claimInline(text: string) {
       if (index % 2 === 0) return escape(part);
       if (part.startsWith("`")) return `<code>${escape(part.slice(1, -1))}</code>`;
       const display = part.startsWith("$$");
-      return katex.renderToString(part.slice(display ? 2 : 1, display ? -2 : -1), { displayMode: display, throwOnError: false });
+      return renderMath(part.slice(display ? 2 : 1, display ? -2 : -1), display);
     })
     .join("");
 }
@@ -46,7 +69,7 @@ function claimInline(text: string) {
 // with its text or inside a list item stays a display, and Markdown never reads inside a formula.
 export function renderPaperText(text: string) {
   const formulas: string[] = [];
-  const keep = (tex: string, displayMode: boolean) => `KATEX${formulas.push(katex.renderToString(tex.trim(), { displayMode, throwOnError: false })) - 1}X`;
+  const keep = (tex: string, displayMode: boolean) => `KATEX${formulas.push(renderMath(tex.trim(), displayMode)) - 1}X`;
   const masked = text
     .replace(/\$\$([\s\S]+?)\$\$|\\\[([\s\S]+?)\\\]/g, (_, a, b) => keep(a ?? b, true))
     // Inline math may wrap across lines, never across paragraphs.
