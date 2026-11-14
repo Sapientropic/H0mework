@@ -299,14 +299,36 @@ function shadows() {
   ].join("");
 }
 // A post under the track: an ink foot, a marble column, a jade collar and the saddle the tie sits on.
+// A body turned about an upright axis looks the same from every side: the light is locked to the camera, so
+// a swing only moves it across the card. It is drawn once at the origin and then placed, scaled where the
+// camera has stepped back a little; it is drawn again only if the scale drifts far or the elevation changes.
+function upright(key, c, draw) {
+  let memo = upright.memo;
+  if (!memo || memo.elevation !== P.elevation || Math.abs(P.scale / memo.scale - 1) > 0.25) memo = upright.memo = { scale: P.scale, elevation: P.elevation, parts: new Map() };
+  if (!memo.parts.has(key)) {
+    // Drawn at the memo's scale, so every kept part is placed by the one ratio.
+    const now = P;
+    P = { ...P, scale: memo.scale };
+    memo.parts.set(key, { svg: draw(), origin: at([0, 0, 0]) });
+    P = now;
+  }
+  const part = memo.parts.get(key), ratio = P.scale / memo.scale, p = at(c);
+  return `<g transform="translate(${n2(p[0] - ratio * part.origin[0])} ${n2(p[1] - ratio * part.origin[1])})${ratio === 1 ? "" : ` scale(${Math.round(ratio * 1e4) / 1e4})`}">${part.svg}</g>`;
+}
 function post(x) {
   const top = railZ(x) - BED - GIRDER;
-  const F = G.frameOf([x, 0, 0], Z3, X3, Y3);
-  // A torus base, a fluted shaft with an astragal under the capital, a flared capital under the girder.
-  const profile = [[0, 4.2], [1.1, 4.2, 1], [1.6, 3.7, 1], [2.2, 3.1, 1], [2.8, 2.2, 1], [3.5, 2], [top - 6.2, 1.9], [top - 5.7, 2.45, 1], [top - 5.2, 1.9], [top - 3.4, 1.9], [top - 2.6, 2.8, 1], [top - 0.9, 2.8]];
-  const ribs = G.ribsOf(F, 3.5, top - 6.2, 2, 12, P, { fade: [0.05, 0.6], r1: 1.9, seams: true });
+  // The foot's four bolts stay where they are on the deck; the turned column is kept. Its twelve flutes are
+  // kept with it: a swing would only slide them by less than one flute.
   const bolts = [0.6, 2.2, 3.8, 5.4].map((t) => at([x + 4.6 * Math.cos(t), 4.6 * Math.sin(t), 1.1]));
-  return M("ink", cyl(x, 0, 5.1, 0, 1.1, { tone: "mid" }, 32, 0.35), D(bolts, { size: 0.4 })) + M("marble", S(G.solidOf(profile, F, P), { tone: "mid", inner: k.fadedSvg(ribs, { tone: "faint" }) + shine(F, 3.7, top - 6.4, 1.96, 1.96, 4) })) + M("jade", cyl(x, 0, 3.2, top - 0.9, 0.9, { tone: "mid" }, 24, 0.25));
+  const foot = upright("post-foot", [x, 0, 0], () => M("ink", cyl(0, 0, 5.1, 0, 1.1, { tone: "mid" }, 32, 0.35)));
+  const column = upright("post" + n2(top), [x, 0, 0], () => {
+    const F = G.frameOf([0, 0, 0], Z3, X3, Y3);
+    // A torus base, a fluted shaft with an astragal under the capital, a flared capital under the girder.
+    const profile = [[0, 4.2], [1.1, 4.2, 1], [1.6, 3.7, 1], [2.2, 3.1, 1], [2.8, 2.2, 1], [3.5, 2], [top - 6.2, 1.9], [top - 5.7, 2.45, 1], [top - 5.2, 1.9], [top - 3.4, 1.9], [top - 2.6, 2.8, 1], [top - 0.9, 2.8]];
+    const ribs = G.ribsOf(F, 3.5, top - 6.2, 2, 12, P, { fade: [0.05, 0.6], r1: 1.9, seams: true });
+    return M("marble", S(G.solidOf(profile, F, P), { tone: "mid", inner: k.fadedSvg(ribs, { tone: "faint" }) + shine(F, 3.7, top - 6.4, 1.96, 1.96, 4) })) + M("jade", cyl(0, 0, 3.2, top - 0.9, 0.9, { tone: "mid" }, 24, 0.25));
+  });
+  return foot + M("ink", D(bolts, { size: 0.4 })) + column;
 }
 // The track's girder: an ink I-beam under the ties of each fixed run, carried by the posts. The bridge's
 // span is its own lighter stringer, so the gap the bridge closes stays visible.
@@ -837,7 +859,7 @@ const G = LATHE;
 ${shipped({ railZ, at, S, L, D, M, n2, faceY, rectD, box, cyl, unit, halfway, litAngle, shine, edgeShine, glintAt, glint, ballGlint, brightRod, fadeFill, boxCast, grounded })}
 const DIR = unit([1, 0, SLOPE]);
 const UP = unit([-SLOPE, 0, 1]);
-${shipped({ PIN, leverAngle, ibeam, girder, rod, bandD, chairs, selector, selectorFace, ruler, shadows, tower, base, glyphD, icon, faceLamp, lever, panel, readings, railRun, rails, tie, ties, post, bridgeRails, bridgeTies, hinge, cage, cageCap, hopper, gate, gateLever, leverTip, latchCrank, coinPost, coin, latch, weight, station, funnel, chuteHeight, chute, funnelAt, beadSlot, channel, channelGlass, rowAt, rowTarget, rowShift, row, beadAt, seamD, beadSvg, beadTransform, beadShadow, stopS, composition, hitAreas })}
+${shipped({ PIN, leverAngle, ibeam, girder, rod, bandD, chairs, selector, selectorFace, ruler, shadows, tower, base, glyphD, icon, faceLamp, lever, panel, readings, railRun, rails, tie, ties, upright, post, bridgeRails, bridgeTies, hinge, cage, cageCap, hopper, gate, gateLever, leverTip, latchCrank, coinPost, coin, latch, weight, station, funnel, chuteHeight, chute, funnelAt, beadSlot, channel, channelGlass, rowAt, rowTarget, rowShift, row, beadAt, seamD, beadSvg, beadTransform, beadShadow, stopS, composition, hitAreas })}
 const FIXED = [[C.TRACK.x0 - 4, C.BRIDGE.x0], [C.BRIDGE.x1, RAIL_END]];
 ${swingSource}
 ${liveScript()}

@@ -524,7 +524,7 @@ function surfaceOf(side, F, P, rims, { samples = 96, slope = null } = {}) {
   const arc = (s, r, from, to, through) => {
     let sweep = wrap(to - from);
     if (wrap(through - from) > sweep) sweep -= TAU;
-    const count = Math.max(4, Math.ceil(Math.abs(sweep) / (TAU / 96)), Math.ceil((Math.abs(sweep) * r * scaleOf(P)) / 1.5));
+    const count = Math.max(4, Math.ceil((Math.abs(sweep) / TAU) * leastFor(r * scaleOf(P), 96)), Math.ceil((Math.abs(sweep) * r * scaleOf(P)) / 1.5));
     return Array.from({ length: count + 1 }, (_, index) => iso(pointOf(F, s, r, from + (sweep * index) / count), P));
   };
   const r0 = side[0][1];

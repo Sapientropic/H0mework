@@ -260,13 +260,31 @@ function clockSpout() {
   const [x, y, z] = C.SOURCE;
   return [[x, y + 7.6, z + 9], [x, y + 11.8, z + 8.5]];
 }
+// A body turned about an upright axis looks the same from every side: the light is locked to the camera, so
+// a swing only moves it across the card. It is drawn once at the origin and then placed, scaled where the
+// camera has stepped back a little; it is drawn again only if the scale drifts far or the elevation changes.
+function upright(key, c, draw) {
+  let memo = upright.memo;
+  if (!memo || memo.elevation !== P.elevation || Math.abs(P.scale / memo.scale - 1) > 0.25) memo = upright.memo = { scale: P.scale, elevation: P.elevation, parts: new Map() };
+  if (!memo.parts.has(key)) {
+    // Drawn at the memo's scale, so every kept part is placed by the one ratio.
+    const now = P;
+    P = { ...P, scale: memo.scale };
+    memo.parts.set(key, { svg: draw(), origin: at([0, 0, 0]) });
+    P = now;
+  }
+  const part = memo.parts.get(key), ratio = P.scale / memo.scale, p = at(c);
+  return `<g transform="translate(${n2(p[0] - ratio * part.origin[0])} ${n2(p[1] - ratio * part.origin[1])})${ratio === 1 ? "" : ` scale(${Math.round(ratio * 1e4) / 1e4})`}">${part.svg}</g>`;
+}
 function source() {
   const [x, y, z] = C.SOURCE;
-  const F = FV(x, y, z);
-  const profile = [[0, 6.2], [0.8, 7, 1], [4, 8.6, 1], [9, 8.4, 1], [13, 6.6, 1], [15, 5.2, 1], [16, 5.6]];
-  const out = [shadow(x, y, 7.6, 0.3, { z, h: 20, w: 7 }), M("ink", cyl(x, y, 6.6, z, 0.8, { tone: "mid" }, 40, 0.2)), M("marble", S(G.solidOf(profile, F, P, { smooth: true }), { tone: "mid" }))];
-  out.push(M("marble", L(G.arcOf(F, 8.4, 8.5, P) + G.arcOf(F, 9.4, 8.45, P), { tone: "lo" }), shine(F, 2.6, 7.4, 8.4, 8.6, 1.6), glint(F, 5.2, 8.62, 1.7)));
-  out.push(M("jade", S(G.disc(16, 17.2, 6, F, P, { bevel: 0.4 }), { tone: "mid" }), S(G.sphereOf([x, y, z + 19], 1.8, P), { tone: "mid" })));
+  const out = [shadow(x, y, 7.6, 0.3, { z, h: 20, w: 7 }), upright("source", [x, y, z], () => {
+    const F = FV(0, 0, 0);
+    const profile = [[0, 6.2], [0.8, 7, 1], [4, 8.6, 1], [9, 8.4, 1], [13, 6.6, 1], [15, 5.2, 1], [16, 5.6]];
+    return M("ink", cyl(0, 0, 6.6, 0, 0.8, { tone: "mid" }, 40, 0.2)) + M("marble", S(G.solidOf(profile, F, P, { smooth: true }), { tone: "mid" }))
+      + M("marble", L(G.arcOf(F, 8.4, 8.5, P) + G.arcOf(F, 9.4, 8.45, P), { tone: "lo" }), shine(F, 2.6, 7.4, 8.4, 8.6, 1.6), glint(F, 5.2, 8.62, 1.7))
+      + M("jade", S(G.disc(16, 17.2, 6, F, P, { bevel: 0.4 }), { tone: "mid" }), S(G.sphereOf([0, 0, 19], 1.8, P), { tone: "mid" }));
+  })];
   // Three spouts: left and right to the troughs, front into the clock's vessel.
   out.push(M("jade", brightRod([x - 7.4, y, z + 6], [x - 11.4, y, z + 5.6], 1.1, { tone: "mid" }, 14), brightRod([x + 7.4, y, z + 6], [x + 11.4, y, z + 5.6], 1.1, { tone: "mid" }, 14), brightRod(...clockSpout(), 0.9, { tone: "mid" }, 14)));
   return out.join("");
@@ -274,15 +292,15 @@ function source() {
 function troughTrestle(F, length, { t, z0 }) {
   const p = G.pointOf(F, length * t, 0, 0);
   const top = p[2] - 2.1, hgt = top - z0 - 0.7;
-  const column = FV(p[0], p[1], z0 + 0.7);
-  const profile = [[0, 1.9], [0.6, 1.9, 1], [1.1, 1.45, 1], [1.7, 1.05], [hgt - 2.1, 1], [hgt - 1.7, 1.35, 1], [hgt - 1.3, 1], [hgt - 0.9, 1.1, 1], [hgt - 0.2, 1.6, 1], [hgt, 1.6]];
+  const post = upright("trestle" + n2(hgt), [p[0], p[1], z0], () => {
+    const column = FV(0, 0, 0.7);
+    const profile = [[0, 1.9], [0.6, 1.9, 1], [1.1, 1.45, 1], [1.7, 1.05], [hgt - 2.1, 1], [hgt - 1.7, 1.35, 1], [hgt - 1.3, 1], [hgt - 0.9, 1.1, 1], [hgt - 0.2, 1.6, 1], [hgt, 1.6]];
+    return M("ink", cyl(0, 0, 2.4, 0, 0.7, { tone: "mid" }, 24, 0.2)) + M("marble", S(G.solidOf(profile, column, P), { tone: "mid", inner: shine(column, 1.9, hgt - 2.3, 1.03, 1.03, 2.5) }));
+  });
   // The saddle is level underneath and meets the inclined floor along its whole top face.
   const bottom = (s) => (top - p[2] - s * F.a[2]) / F.v[2];
   const saddle = G.prismOf(G.frameOf(p, F.u, F.a, F.v), [[-1.5, bottom(-1.5)], [1.5, bottom(1.5)], [1.5, -0.6], [-1.5, -0.6]], -2.35, 2.35, P);
-  return shadow(p[0], p[1], 2.8, 0.3, { z: z0, h: hgt, w: 1.2 })
-    + M("ink", cyl(p[0], p[1], 2.4, z0, 0.7, { tone: "mid" }, 24, 0.2))
-    + M("marble", S(G.solidOf(profile, column, P), { tone: "mid", inner: shine(column, 1.9, hgt - 2.3, 1.03, 1.03, 2.5) }))
-    + M("ink", S(saddle, { tone: "mid" }));
+  return shadow(p[0], p[1], 2.8, 0.3, { z: z0, h: hgt, w: 1.2 }) + post + M("ink", S(saddle, { tone: "mid" }));
 }
 // A trough from a to b: a floor, two walls and the water between them.
 function trough(a, b, { wet = 1 } = {}) {
@@ -536,18 +554,23 @@ function ladleSvg(pose) {
 }
 function basin(level, bowls, ladle) {
   const [x, y, r, h] = C.BASIN;
-  const F = FV(x, y, 0);
-  const profile = [[0, r - 3], [1.4, r - 2.4, 1], [3, r - 0.6, 1], [h - 1, r, 1], [h, r + 0.6]];
-  const out = [shadow(x, y, r + 1, 0.35, { h, w: r * 0.9 }), M("ink", cyl(x, y, r - 2.4, 0, 0.8, { tone: "mid" }, 40, 0.2)), M("marble", S(G.solidOf(profile, F, P), { tone: "mid" }), S(G.ringBand(h - 0.2, h + 0.6, r - 1.4, r + 0.6, F, P), { tone: "mid" }), L(G.arcOf(F, h - 1.6, r - 0.15, P), { tone: "lo" }), glint(F, 4.6, r - 0.38, 1.6))];
-  out.push(`<path class="iso-shade" data-shade="0" d="${k.ring(x, y, r - 1.4, h + 0.6, P, 48)}"/><path class="tw-water" d="${k.ring(x, y, r - 1.4, h - 0.8 + level * 0.4, P, 48)}"/>`);
+  const out = [shadow(x, y, r + 1, 0.35, { h, w: r * 0.9 }), upright("basin", [x, y, 0], () => {
+    const F = FV(0, 0, 0);
+    const profile = [[0, r - 3], [1.4, r - 2.4, 1], [3, r - 0.6, 1], [h - 1, r, 1], [h, r + 0.6]];
+    return M("ink", cyl(0, 0, r - 2.4, 0, 0.8, { tone: "mid" }, 40, 0.2)) + M("marble", S(G.solidOf(profile, F, P), { tone: "mid" }), S(G.ringBand(h - 0.2, h + 0.6, r - 1.4, r + 0.6, F, P), { tone: "mid" }), L(G.arcOf(F, h - 1.6, r - 0.15, P), { tone: "lo" }), glint(F, 4.6, r - 0.38, 1.6))
+      + `<path class="iso-shade" data-shade="0" d="${k.ring(0, 0, r - 1.4, h + 0.6, P, 48)}"/>`;
+  })];
+  out.push(`<path class="tw-water" d="${k.ring(x, y, r - 1.4, h - 0.8 + level * 0.4, P, 48)}"/>`);
 
   const zw = h - 0.8 + level * 0.4 + 0.02;
   const pose = ladlePose(level, ladle);
   const out_ = Math.hypot(pose.d[0] - x, pose.d[1] - y) > r + 1;
   if (!out_) out.push(ladleSvg(pose));
   for (const [i, [bx, by]] of C.BOWLS.entries()) {
-    const B = FV(bx, by, 0);
-    out.push(shadow(bx, by, 4, 0.3, { h: 4.2, w: 3.6 }), M("marble", S(G.lathe([[0, 0], [0, 2], [0.8, 2.4, 1], [3.4, 4, 1], [4, 4.2]], B, P, { fill: "surface" }), { tone: "mid", inner: L(G.arcOf(B, 0.6, 2.3, P) + G.arcOf(B, 3.6, 4.07, P), { tone: "lo" }) }), glint(B, 2.4, 3.3, 0.75)));
+    out.push(shadow(bx, by, 4, 0.3, { h: 4.2, w: 3.6 }), upright("bowl", [bx, by, 0], () => {
+      const B = FV(0, 0, 0);
+      return M("marble", S(G.lathe([[0, 0], [0, 2], [0.8, 2.4, 1], [3.4, 4, 1], [4, 4.2]], B, P, { fill: "surface" }), { tone: "mid", inner: L(G.arcOf(B, 0.6, 2.3, P) + G.arcOf(B, 3.6, 4.07, P), { tone: "lo" }) }), glint(B, 2.4, 3.3, 0.75));
+    }));
     if (bowls[i] > 0.05) out.push(`<path class="tw-water" d="${k.ring(bx, by, 2.8 + 1 * bowls[i], 1 + 2.6 * bowls[i], P, 28)}"/>`);
   }
   if (out_) {
@@ -691,13 +714,16 @@ function millLamps(performed) {
 
 function jar(state) {
   const [x, y, r, h] = C.JAR;
-  const F = FV(x, y, 0);
   const left = state.left ?? MD.remainingFor(state.account, state.origin);
-  const profile = [[0, r - 1.6], [0.8, r - 0.6, 1], [h * 0.4, r, 1], [h * 0.8, r - 1, 1], [h - 0.8, r - 3, 1], [h, r - 3.2]];
-  const out = [shadow(x, y, r + 1, 0.4, { h: h + 4, w: r * 0.9 }), M("ink", cyl(x, y, r - 1.1, 0, 0.7, { tone: "mid" }, 36, 0.2)), M("marble", S(G.solidOf(profile, F, P, { smooth: true }), { tone: "mid" }))];
-  out.push(M("marble", L(G.arcOf(F, h * 0.16, r - 0.2, P) + G.arcOf(F, h * 0.22, r - 0.1, P), { tone: "lo" }), shine(F, h * 0.28, h * 0.56, r - 0.05, r - 0.15, 2.2), glint(F, h * 0.42, r + 0.02, 2)));
+  const out = [shadow(x, y, r + 1, 0.4, { h: h + 4, w: r * 0.9 }), upright("jar", [x, y, 0], () => {
+    const F = FV(0, 0, 0);
+    const profile = [[0, r - 1.6], [0.8, r - 0.6, 1], [h * 0.4, r, 1], [h * 0.8, r - 1, 1], [h - 0.8, r - 3, 1], [h, r - 3.2]];
+    return M("ink", cyl(0, 0, r - 1.1, 0, 0.7, { tone: "mid" }, 36, 0.2)) + M("marble", S(G.solidOf(profile, F, P, { smooth: true }), { tone: "mid" }))
+      + M("marble", L(G.arcOf(F, h * 0.16, r - 0.2, P) + G.arcOf(F, h * 0.22, r - 0.1, P), { tone: "lo" }), shine(F, h * 0.28, h * 0.56, r - 0.05, r - 0.15, 2.2), glint(F, h * 0.42, r + 0.02, 2))
+      + M("jade", S(G.disc(h, h + 1.6, r - 2.6, F, P, { bevel: 0.4 }), { tone: "mid" }));
+  })];
   // The lid, sealed with the contribution's mark: one dot per origin issued.
-  out.push(M("jade", S(G.disc(h, h + 1.6, r - 2.6, F, P, { bevel: 0.4 }), { tone: "mid" }), box({ x: x + 2.2, y: y - 2, w: 4, d: 4, r: 0.4 }, h + 1.6, 2.4, { tone: "mid" }, 2, 0.3), D(Array.from({ length: state.origin }, (_, i) => at([x + 3.4 + i * 1, y, h + 4.02])), { size: 0.45, tone: "hi" })));
+  out.push(M("jade", box({ x: x + 2.2, y: y - 2, w: 4, d: 4, r: 0.4 }, h + 1.6, 2.4, { tone: "mid" }, 2, 0.3), D(Array.from({ length: state.origin }, (_, i) => at([x + 3.4 + i * 1, y, h + 4.02])), { size: 0.45, tone: "hi" })));
   // The float arrow through the lid: up Q steps when full, down one step a unit paid.
   const tip = h + 3 + left * C.Q_UP;
   out.push(M("jade", cyl(x - 2.4, y, 1.1, h + 1.6, 1.4, { tone: "mid" }, 16, 0.2)));
@@ -746,7 +772,8 @@ function cup(index, received, pour) {
   const clip = `cl-pour-${index}`;
   const stream = pour > 0 ? `<clipPath id="${clip}"><path d="${opening}"/><path d="M-4000 -4000H4000V${n2(mid)}H-4000Z"/></clipPath><g clip-path="url(#${clip})">`
     + jet(G.pointOf(spigotFrame(index), 7, 0, 0), [x, y, water + 0.04], 0.9, Math.sin(pour * Math.PI), { slope: -0.05 }) + "</g>" : "";
-  return grounded(x, y, 3.4, { z, h: 5.2, w: 2.6, o: 0.7 }) + M(index === 0 ? "jade" : "marble", S(G.lathe([[0, 0], [0, 2.8], [0.8, 3.2, 1], [4.6, 3.8, 1], [5.2, 4.1]], FV(x, y, z), P, { fill: "surface" }), { tone: "mid", inner: L(G.arcOf(FV(x, y, z), 0.9, 3.22, P), { tone: "lo" }) }), glint(FV(x, y, z), 2.6, 3.5, 0.7))
+  const body = upright("cup" + index, [x, y, z], () => M(index === 0 ? "jade" : "marble", S(G.lathe([[0, 0], [0, 2.8], [0.8, 3.2, 1], [4.6, 3.8, 1], [5.2, 4.1]], FV(0, 0, 0), P, { fill: "surface" }), { tone: "mid", inner: L(G.arcOf(FV(0, 0, 0), 0.9, 3.22, P), { tone: "lo" }) }), glint(FV(0, 0, 0), 2.6, 3.5, 0.7)));
+  return grounded(x, y, 3.4, { z, h: 5.2, w: 2.6, o: 0.7 }) + body
     + (fill > 0 ? `<path class="tw-water" d="${k.ring(x, y, 3.1 + 0.6 * fill, water, P, 28)}"/>` : "") + stream + L(k.ring(x, y, 4.1, rim, P, 28), { tone: "mid" });
 }
 function tray() {
@@ -896,7 +923,7 @@ ${shipped({ C, ARROW, COUNTER, TRAY, FRAME, WHEEL_FRONT_BEARING, STEP_NOSING, CL
 const k = { ${Object.keys(k).join(", ")} };
 const G = LATHE;
 ${shipped({ at, S, L, D, M, n2, faceY, rectD, box, cyl, FV, unit, rod, jetCurve, jet, shadow, halfway, litAngle, shine, edgeShine, glintAt, glint, ballGlint, brightRod, fadeFill, boxCast, grounded })}
-${shipped({ levelOf, smoothstep, ladlePose, ladleSvg, ripples, rimSvg, base, counterFace, counter, tray, stand, clockSpout, source, troughTrestle, trough, troughLip, leftDeckTrestles, stepTrestle, troughs, millFlow, wheelStream, millTrestle, rightTrough, clockFeedRoute, vessel, ruler, seal, tablet, basin, wheelShaft, wheel, camCentre, hammerFrame, followerCentre, camAngle, hammer, coinbox, millLamps, jar, qruler, spigotFrame, spigot, cup, rack, tally, composition, hitAreas })}
+${shipped({ levelOf, smoothstep, ladlePose, ladleSvg, ripples, rimSvg, base, counterFace, counter, tray, stand, clockSpout, upright, source, troughTrestle, trough, troughLip, leftDeckTrestles, stepTrestle, troughs, millFlow, wheelStream, millTrestle, rightTrough, clockFeedRoute, vessel, ruler, seal, tablet, basin, wheelShaft, wheel, camCentre, hammerFrame, followerCentre, camAngle, hammer, coinbox, millLamps, jar, qruler, spigotFrame, spigot, cup, rack, tally, composition, hitAreas })}
 ${swingSource}
 ${liveScript()}
 `;

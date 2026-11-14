@@ -6,10 +6,19 @@ export const SHADES = 4;
 export const LEVELS = 8;
 const RADIANS = Math.PI / 180;
 const UNIT = Math.sqrt(1.6);
-export function cameraOf({ scale, azimuth = AZIMUTH, elevation = ELEVATION }) {
-    const a = azimuth * RADIANS;
-    const e = elevation * RADIANS;
-    return { sinA: Math.sin(a), cosA: Math.cos(a), sinE: Math.sin(e), cosE: Math.cos(e), k: scale * UNIT };
+// Every projected point asks for the camera, and a drawing asks with one projection thousands of times
+// running: the last answer is kept while the projection's three numbers stay what they were.
+let cameraFor = null;
+let camera = null;
+export function cameraOf(projection) {
+    const { scale, azimuth = AZIMUTH, elevation = ELEVATION } = projection;
+    if (projection !== cameraFor || camera.scale !== scale || camera.azimuth !== azimuth || camera.elevation !== elevation) {
+        const a = azimuth * RADIANS;
+        const e = elevation * RADIANS;
+        cameraFor = projection;
+        camera = { sinA: Math.sin(a), cosA: Math.cos(a), sinE: Math.sin(e), cosE: Math.cos(e), k: scale * UNIT, scale, azimuth, elevation };
+    }
+    return camera;
 }
 export function iso([x, y, z], projection) {
     const { origin } = projection;
@@ -33,7 +42,7 @@ const tenth = (value) => {
 // since the last one kept lies within PATH_SLACK px of the straight line on to the next. Lathed bodies sample
 // their straight runs and tiny caps far below a pixel, and a swing redraws every path on every frame.
 const PATH_SLACK = 0.04;
-const PATH_RUN = 48;
+const PATH_RUN = 16;
 export function pathOf(points, closed = false) {
     const count = points.length;
     if (!count)
@@ -383,7 +392,11 @@ export function radialTicks(cx, cy, radius, count, every, z, lengths, projection
     }
     return { minor: minor.join(""), major: major.join("") };
 }
-export const haloOf = (plan, z, height, projection) => slabOf(plan, z, height, projection).fill;
+// The footprint of a slab, for a shadow: only its outline, without the faces and shades slabOf would also work out.
+export function haloOf(plan, z, height, projection) {
+    const ring = ringOf(plan);
+    return pathOf(convexHull([...ring.map(([x, y]) => iso([x, y, z + height], projection)), ...ring.map(([x, y]) => iso([x, y, z], projection))]), true);
+}
 export function axisVector(projection, [dx, dy, dz]) {
     const origin = iso([0, 0, 0], projection);
     const moved = iso([dx, dy, dz], projection);
