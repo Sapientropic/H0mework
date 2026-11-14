@@ -206,13 +206,15 @@ function makeLive(k, G, P0, C) {
       const to = spot(debt, glassTop(first.z));
       items0.push({ d: depth(mul(0.5, add(e, to))), svg: fade(`<path style="${isA ? PAINT.threadA : PAINT.thread}" d="${k.pathOf([at(e), at(to)])}"/>`, first.opacity) });
     }
-    const hubBase = first ? first.z - 1.2 : z0 + 6;
+    const hubBase = first ? Math.min(first.z - 1.2, C.CROWN) : z0 + 6;
     items0.push({ d: depth([0, 0, (z0 + hubBase) / 2]), svg: spindle(z0, hubBase) });
     items0.sort((a, b) => a.d - b.d).forEach((it) => out.push(it.svg));
     levels.forEach((lv, i) => {
       const gTop = glassTop(lv.z);
       const below = levels[i - 1];
       const vacant = below ? below.p.ledger.filter((e) => !lv.p.ledger.some((f) => f.lineage === e.lineage)) : [];
+      // The spindle runs through the hub at full strength: a page that fades or lifts leaves the column whole.
+      out.push(spindle(Math.min(lv.z - 1.2, C.CROWN), Math.min(lv.z + PG.rimH, C.CROWN)));
       out.push(fade(page(lv.z, { vacant, ping: lv.p.ping || 0 }) + upright("hub", [0, 0, lv.z - 1.2], () => M("jade", S(G.disc(0, PG.rimH + 1.2, 3.6, FT, P), { tone: "mid" }))), lv.opacity));
       const items = [{ d: depth(add(vialAt(lv.z), [0, 0, 2])), svg: fade(vial(lv.z, lv.p.wobble || 0), lv.opacity) }];
       const above = levels[i + 1];
@@ -229,7 +231,7 @@ function makeLive(k, G, P0, C) {
           items.push({ d: depth(mul(0.5, add(from, to))), svg: fade(`<path style="${isA ? PAINT.threadA : PAINT.thread}" d="${k.pathOf([at(from), at(to)])}"/>`, Math.min(lv.opacity, above.opacity)) });
         }
       }
-      const z1 = above ? above.z - 1.2 : C.CROWN;
+      const z1 = above ? Math.min(above.z - 1.2, C.CROWN) : C.CROWN;
       items.push({ d: depth([0, 0, (gTop + z1) / 2]), svg: spindle(lv.z + PG.rimH, z1) });
       items.sort((a, b) => a.d - b.d).forEach((it) => out.push(it.svg));
     });
