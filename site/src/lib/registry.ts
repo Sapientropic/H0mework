@@ -26,7 +26,6 @@ type Release = {
   supplement?: (slug: string, lang: Lang) => string;
   bibliography?: (slug: string) => string;
   files: (slug: string, lang: Lang) => { pdf: string; supplement?: string; arxiv?: string };
-  pdfLanguage?: Lang;
   check: string;
   guide: string;
   sourceCommit?: string;
@@ -55,49 +54,41 @@ if (!physicsThird?.is_published || !/^10\.5281\/zenodo\.\d+$/.test(physicsThird.
 const LOW = "papers/low-energy-first-release/2026-10-11";
 const LOW_V2 = "papers/low-energy/2026-11-13-v2";
 const NEW_PAPERS = {
-  "observation-dynamics": "papers/observation-dynamics/2026-11-14",
+  "observation-dynamics": "site/src/releases/observation-dynamics/2026-11-15",
   "certified-go": "papers/certified-go/2026-11-14",
 } as const;
 type NewPaper = keyof typeof NEW_PAPERS;
-function newPaperRelease(slug: NewPaper, bilingual: boolean) {
+function newPaperRelease(slug: NewPaper) {
   const directory = NEW_PAPERS[slug];
   const manifest = readJson(`${directory}/manifest.json`);
   const paper = manifest.papers.find((row: any) => row.paper === slug);
   if (!paper?.is_published || paper.version !== "v1" || !/^10\.5281\/zenodo\.\d+$/.test(paper.doi)
       || !/^[0-9a-f]{40}$/.test(paper.source_commit) || paper.source_commit !== manifest.source_commit)
     throw new Error(`Missing published DOI or fixed proof source for ${slug}`);
-  const archive = `${directory}/editable/${slug}-v1-editable.zip`;
-  const manuscript = (_slug: string, lang: Lang) => {
-    if (bilingual) return unzip(archive, `papers/${slug}/manuscript${suffix(lang)}.md`);
-    const text = unzip(archive, `papers/${slug}/manuscript.md`);
-    const second = text.match(/^## (.+)$/m)?.[1];
-    // The Chinese reading edition supplies parallel titles and abstracts.
-    const abstracts = text.match(/^### (摘要|Abstract)[ \t]*$/gm);
-    if (!second || abstracts?.length !== 2 || !abstracts.includes("### Abstract"))
-      throw new Error(`${slug}: the reading edition needs both titles and abstracts`);
-    const body = text.replace(/^### (摘要|Abstract)\s*$/gm, "## $1");
-    if (lang === "zh") return body;
-    const byline = text.match(/^\*\*作者：.+\*\*\\?\n([^\n]+)$/m);
-    if (!byline) throw new Error(`${slug}: the reading edition needs an author byline`);
-    const details = byline[1].replace(/^独立研究者/, "Independent Researcher");
-    return `# ${second}\n\n**Author: Jian Gao**\\\n${details}\n\n${body.slice(body.indexOf("## Abstract"))}`;
+  const artifact = (key: string) => {
+    const file = paper.files.find((row: { key: string; path: string }) => row.key === key);
+    if (!file) throw new Error(`Missing ${key} in ${slug}'s release manifest`);
+    return `${directory}/${file.path}`;
   };
+  const archive = artifact(`${slug}-v1-editable.zip`);
+  const manuscript = (_slug: string, lang: Lang) =>
+    unzip(archive, `papers/${slug}/manuscript${suffix(lang)}.md`)
+      .replace(/^### (摘要|Abstract)[ \t]*$/gm, "## $1");
   return { doi: paper.doi, release: {
-    label: bilingual ? { zh: "第 1 版", en: "First edition" } : { zh: "中文正文", en: "Chinese full text" },
+    label: { zh: "第 1 版", en: "First edition" },
     date: paper.publication_date,
     map: `docs/${slug}-map.json`,
     manuscript,
     bibliography: () => unzip(archive, `papers/${slug}/references.bib`),
-    files: (_slug: string, lang: Lang) => ({ pdf: `${directory}/pdf/${slug}${bilingual ? suffix(lang) : ""}.pdf` }),
-    pdfLanguage: bilingual ? undefined : "zh" as const,
+    files: (_slug: string, lang: Lang) => ({ pdf: artifact(`${slug}${suffix(lang)}.pdf`) }),
     check: `python3 tools/paper_proofs.py ${slug} entry`,
     guide: `docs/${slug}-reproduction.md`,
     selection: { path: `checks/${slug}-selection.json` },
     sourceCommit: paper.source_commit,
   }};
 }
-const observation = newPaperRelease("observation-dynamics", false);
-const certifiedGo = newPaperRelease("certified-go", true);
+const observation = newPaperRelease("observation-dynamics");
+const certifiedGo = newPaperRelease("certified-go");
 const lowSecond = readJson(`${LOW_V2}/manifest.json`);
 const lowSecondArchive = (slug: string) => `${LOW_V2}/editable/${slug}-v2-editable.zip`;
 function lowSecondPaper(slug: string) {
