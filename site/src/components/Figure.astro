@@ -9,8 +9,34 @@ import type { Lang } from "../lib/papers";
 interface Props { name: string; lang: Lang; transition?: string; claim?: string }
 const { name, lang, transition, claim } = Astro.props;
 const figure = figureOf(name);
+// A phone gets a button on the plate that opens the drawing large, to pan about and tap; it is shown by the
+// page script, so it never sits there dead.
+const zoom = lang === "zh" ? ["放大", "收起"] : ["Enlarge", "Close"];
+const plate = (html: string) => html.replace('<div class="iso-plate">', `<div class="iso-plate"><button class="fig-zoom" type="button" hidden aria-pressed="false" data-open="${zoom[0]}" data-close="${zoom[1]}">${zoom[0]}</button>`);
 const script = `${import.meta.env.BASE_URL.replace(/\/$/, "")}/figures/${name}.js?v=${figureScriptOf(name).version}`;
 ---
 <style is:global set:html={isoCss + figure.css}></style>
-<div class="iso figure-slot vt-fig" data-theme="light" style={transition && `--vt:${transition}`} set:html={claim ? figure.html[lang].replace(/<span class="iso-refs">((?:<span>[^<]*<\/span>)*)<\/span>/, `<a class="iso-refs" href="#${claim}">$1</a>`) : figure.html[lang]} />
+<div class="iso figure-slot vt-fig" data-theme="light" style={transition && `--vt:${transition}`} set:html={plate(claim ? figure.html[lang].replace(/<span class="iso-refs">((?:<span>[^<]*<\/span>)*)<\/span>/, `<a class="iso-refs" href="#${claim}">$1</a>`) : figure.html[lang])} />
 <script is:inline type="module" src={script}></script>
+<script>
+  // Enlarged, the plate covers the screen with the drawing at twice the width: it pans both ways under the
+  // finger (so the sideways swing rests) and its parts are large enough to tap.
+  for (const slot of document.querySelectorAll<HTMLElement>(".figure-slot")) {
+    const button = slot.querySelector<HTMLButtonElement>(".fig-zoom");
+    const plate = slot.querySelector<HTMLElement>(".iso-plate");
+    if (!button || !plate) continue;
+    button.hidden = false;
+    const set = (open: boolean) => {
+      slot.classList.toggle("is-zoomed", open);
+      document.documentElement.classList.toggle("fig-zoomed", open);
+      button.setAttribute("aria-pressed", String(open));
+      button.textContent = open ? button.dataset.close! : button.dataset.open!;
+      // Open on the middle of the drawing.
+      if (open) plate.scrollTo((plate.scrollWidth - plate.clientWidth) / 2, 0);
+    };
+    button.addEventListener("click", () => set(!slot.classList.contains("is-zoomed")));
+    document.addEventListener("keydown", (event) => { if (event.key === "Escape" && slot.classList.contains("is-zoomed")) set(false); });
+    // Turned to landscape or widened past the phone layout, the button is gone: close with it.
+    matchMedia("(max-width: 560px)").addEventListener("change", (event) => { if (!event.matches) set(false); });
+  }
+</script>

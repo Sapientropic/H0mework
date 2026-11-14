@@ -76,6 +76,7 @@ h2 .count { margin-left: 10px; font: 13px/1 var(--mono); color: var(--muted); ve
 .version-links a:hover { color: var(--ink); }
 
 .figure-slot { margin: 40px 0 0; }
+.fig-zoom { display: none; }
 .figure-slot .iso-figure { margin: 0; }
 .figure-slot .iso-plate { box-shadow: 0 0 0 1px var(--rule); }
 /* Figure caption: the keys under the drawing, then the statements it draws (a link to its claim row), then the text. */
@@ -456,6 +457,16 @@ footer.site { margin: 96px 0 0; padding: 32px 0 56px; border-top: 1px solid var(
   .figure-slot .iso-plate-corners { margin-inline: 20px; }
   /* Each figure's own bleed into the plate's padding would now run off the screen. */
   .figure-slot .iso-plate .iso-svg { width: 100%; margin-inline: 0; }
+  .fig-zoom { display: block; position: absolute; z-index: 2; top: 44px; right: 12px; height: 28px; padding: 0 10px; font: 11.5px/1 var(--mono); color: var(--ink); background: color-mix(in srgb, var(--paper) 88%, transparent); border: 0; border-radius: 2px; box-shadow: 0 0 0 1px var(--rule); }
+  /* Enlarged: the plate is the screen, the drawing twice as wide, panned both ways. */
+  .figure-slot.is-zoomed .iso-plate { position: fixed; z-index: 60; inset: 0; margin: 0; overflow: auto; overscroll-behavior: contain; box-shadow: none; }
+  .figure-slot.is-zoomed .iso-plate .iso-svg { width: 220%; }
+  /* The corner text stays on the screen while the drawing pans, the title clear of the button. */
+  .figure-slot.is-zoomed .iso-plate-corners { position: sticky; left: 20px; box-sizing: border-box; width: calc(100vw - 40px); margin-inline: 0; }
+  .figure-slot.is-zoomed .iso-plate-header { padding-right: 60px; }
+  .figure-slot.is-zoomed .iso-stage { touch-action: pan-x pan-y; }
+  .figure-slot.is-zoomed .fig-zoom { position: fixed; top: 12px; right: 12px; background: var(--paper); }
+  html.fig-zoomed { overflow: hidden; }
 }
 @media (max-width: 520px) {
   header.site .wrap { flex-wrap: wrap; gap: 10px 24px; padding-block: 12px; }

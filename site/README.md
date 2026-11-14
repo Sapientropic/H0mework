@@ -30,7 +30,7 @@ bun run build      # 先跑图的模型自检与构建，再出 dist/
 - `src/components/CheckPage.astro`（`/check/`）：当前论文的入口检查命令与复现指南，旧发布折叠保存。
 - 跨页过渡：支持的浏览器在页面间用 View Transitions，论文标题与配图从卡片或目录行移到论文页的位置（`vtTitle`、`vtFigure` 命名）；不支持的浏览器照常跳转，`prefers-reduced-motion` 下关闭。
 - `figures/kit/`：取自 [anatomy](https://github.com/wheresryan22/anatomy)（MIT，commit `689dcf9`）的等轴测绘图核心。 本仓有两处改动：`pathOf` 丢弃画面上看不出的亚像素共线点（容差 0.04 px），`stepsFor` 让几像素大的小部件少分段；两者都只为减小片段体积和转视角时的重绘量。
-- `figures/<name>/`：一张图一个目录。`model.mjs` 是真值模型，`check.mjs` 用论文定理校验它，`build.mjs --fragment` 输出到 `src/generated/` 供页面挂载；不带参数时输出独立页到 `out/` 用于截图与线端检查。 页面脚本不内联：`src/pages/figures/[name].js.ts` 把它压缩后输出为 `/figures/<name>.js`，`Figure.astro` 以内容哈希作 `?v=` 引用。
+- `figures/<name>/`：一张图一个目录。`model.mjs` 是真值模型，`check.mjs` 用论文定理校验它，`build.mjs --fragment` 输出到 `src/generated/` 供页面挂载；不带参数时输出独立页到 `out/` 用于截图与线端检查。 页面脚本不内联：`src/pages/figures/[name].js.ts` 把它压缩后输出为 `/figures/<name>.js`，`Figure.astro` 以内容哈希作 `?v=` 引用。 窄屏（≤560 px）下卡片铺满屏宽，并带一个“放大”按钮：卡片盖满屏幕、图放到 2.2 倍，可双向平移和点按（此时不转视角）。漏刻与退出跑道里绕竖直轴车削的部件（支柱、壶、盆、杯）转视角时形状不变，只画一次后平移复用（各自的 `upright`）。
 
 ## 站点元信息
 
