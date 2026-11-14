@@ -16,9 +16,9 @@
 ## 机器已核
 
 <!-- BEGIN CI STATUS -->
-<a href="https://github.com/Sapientropic/H0mework/actions/runs/43311434613"><img src="docs/assets/ci-wall.svg" alt="Lean 完整选集：62,714 个模块，11 个阶段、108 个分片，全部通过" width="100%"></a>
+<a href="https://github.com/Sapientropic/H0mework/actions/runs/43584833886"><img src="docs/assets/ci-wall.svg" alt="Lean 完整选集：63,410 个模块，11 个阶段、117 个分片，全部通过" width="100%"></a>
 
-- **62,714 个 Lean 模块通过完整内核验收。** [验收运行](https://github.com/Sapientropic/H0mework/actions/runs/43311434613) 使用 11 个阶段、108 个分片，全包 `--trust=0`，提交 `f337e63a`。当前构建覆盖 63,410 个模块、117 个分片。
+- **63,410 个 Lean 模块通过完整内核验收。** [验收运行](https://github.com/Sapientropic/H0mework/actions/runs/43584833886) 使用 11 个阶段、117 个分片，全包 `--trust=0`，提交 `1c5a8b53`。
 <!-- END CI STATUS -->
 
 - **论文引用的声明逐版再审。** 完整依赖闭包只使用 Lean 标准三条公理，`unsafe = 0`、`partial = 0`；各篇验收与复现入口列在下方论文分组中。
