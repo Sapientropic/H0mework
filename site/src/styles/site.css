@@ -450,6 +450,13 @@ footer.site { margin: 96px 0 0; padding: 32px 0 56px; border-top: 1px solid var(
   .pager { grid-template-columns: 1fr; }
   .pager .next { text-align: left; align-items: flex-start; }
 }
+/* On a phone the drawing takes the whole screen width: its labels and click targets are small enough as it is. */
+@media (max-width: 560px) {
+  .figure-slot .iso-plate { margin-inline: -20px; padding-inline: 0; }
+  .figure-slot .iso-plate-corners { margin-inline: 20px; }
+  /* Each figure's own bleed into the plate's padding would now run off the screen. */
+  .figure-slot .iso-plate .iso-svg { width: 100%; margin-inline: 0; }
+}
 @media (max-width: 520px) {
   header.site .wrap { flex-wrap: wrap; gap: 10px 24px; padding-block: 12px; }
   nav.site { flex-wrap: wrap; gap: 8px 18px; font-size: 13px; }

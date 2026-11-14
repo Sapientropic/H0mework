@@ -24,13 +24,13 @@ bun run build      # 先跑图的模型自检与构建，再出 dist/
 - `src/data/claims-<lang>.json`：登记原文不是页面语言时显示的译文（英文页译中文主张，中文页译以英文登记的主张），每条带所译原文的指纹；原文改动后构建告警并回退原文。`bun scripts/translations.ts --lang en|zh` 列出缺译与过期条目，`--merge <file>` 并入新译文。
 - `src/components/CheckCommands.astro`：入口检查命令块，顶部独立放复制按钮，长命令在下方横向滚动；剪贴板不可用时退化为全选文本。
 - `src/components/SiteStats.astro`：首页与目录共用统计，数字和单位作为完整项目，只在项目之间换行。
-- `src/components/Home.astro`（`/`）：留空的开场画框（创世框占位，只有一句话）、一句介绍与全局统计、论文森林、最近三篇的配图卡片，以及到全部论文的入口。
+- `src/components/Home.astro`（`/`）：留空的开场画框（创世框占位，只有一句话）、一句介绍与全局统计、论文森林、全部论文的配图卡片架（最新在前，可横向滑动，每屏三张），以及到全部论文的入口。
 - `src/components/Forest.astro`：首页的论文森林。朱红的 0 为根，每个主题一根枝，实心节点是已发布论文（链接），空心节点是自动计算的在写稿件（不显示未发表题名；`soon`须有已完成成稿依据）。结果触发席位用独立点线空环表示，不混入在写数；分枝显示已发表／已立题及另列的预留数。面板汇总按三列对齐，节点详情与图例叠放，切换时保留图例所需高度。入视口时生长一次；在写节点的虚线环慢转、核心反复凝聚，只在视口内运行；`prefers-reduced-motion` 下静止。
 - `src/components/PaperIndex.astro`（`/papers/`）：按主题分区的全部论文；桌面左侧主题导航随滚动标出当前主题，窄屏为吸顶 chips；行尾是迷你主张打孔带。
 - `src/components/CheckPage.astro`（`/check/`）：当前论文的入口检查命令与复现指南，旧发布折叠保存。
 - 跨页过渡：支持的浏览器在页面间用 View Transitions，论文标题与配图从卡片或目录行移到论文页的位置（`vtTitle`、`vtFigure` 命名）；不支持的浏览器照常跳转，`prefers-reduced-motion` 下关闭。
-- `figures/kit/`：取自 [anatomy](https://github.com/wheresryan22/anatomy)（MIT，commit `689dcf9`）的等轴测绘图核心。
-- `figures/<name>/`：一张图一个目录。`model.mjs` 是真值模型，`check.mjs` 用论文定理校验它，`build.mjs --fragment` 输出到 `src/generated/` 供页面挂载；不带参数时输出独立页到 `out/` 用于截图与线端检查。
+- `figures/kit/`：取自 [anatomy](https://github.com/wheresryan22/anatomy)（MIT，commit `689dcf9`）的等轴测绘图核心。 本仓有两处改动：`pathOf` 丢弃画面上看不出的亚像素共线点（容差 0.04 px），`stepsFor` 让几像素大的小部件少分段；两者都只为减小片段体积和转视角时的重绘量。
+- `figures/<name>/`：一张图一个目录。`model.mjs` 是真值模型，`check.mjs` 用论文定理校验它，`build.mjs --fragment` 输出到 `src/generated/` 供页面挂载；不带参数时输出独立页到 `out/` 用于截图与线端检查。 页面脚本不内联：`src/pages/figures/[name].js.ts` 把它压缩后输出为 `/figures/<name>.js`，`Figure.astro` 以内容哈希作 `?v=` 引用。
 
 ## 站点元信息
 
@@ -53,3 +53,9 @@ bun run build      # 先跑图的模型自检与构建，再出 dist/
 | `pairing-balance` | physics-common-source | phys.P4 | 定理 6.2 与例 6.6：经典—量子配对与暗时刻反例 |
 | `current-witness` | low-energy-phenomenology | low1.L17 | §1 与定理 8.1–8.2：有限发展、双侧导数与 Kubo 积分读出同一电流 |
 | `curvature-dome` | low-energy-loop-response | low2.Q4 | 定理 1.2 与 §§7–11：完整五项的响应曲率在全部方向上两负一正 |
+| `ghost-register` | one-bit | ob.OB2 | 命题 2.3、引理 2.2 与定理 2.6：两枚布尔值，一个世界 |
+| `whole-ledger-tower` | whole-ledger-accounting | wla.WA10 | 定理 6.2、命题 5.2 与结清类型 (44)：每拍一页的整账与债 A 的结清 |
+| `exit-run` | generated-society | G4 | 定理 5.1、命题 5.2–5.3 与定理 1.3：退出容量与来源保留 |
+| `clepsydra` | economic-constitution | R4 | 结果 4、5、7：贡献可以结清，控制必须续约 |
+| `replay-bakery` | capital-formation | R8 | 定理 2、3、8：资本核心与公共功能重放 |
+| `quan-heng` | enforceable-peace | PE2 | 命题 4 与式 (5)–(8)：责任回接的止战比例 |
