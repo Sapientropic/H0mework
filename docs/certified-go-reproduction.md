@@ -36,4 +36,6 @@ run_go "$repo/Lean/$assembly" "$restored/$graph"
 
 The original W31 receipt records 1,700,986 nodes and 2,007,462 edges, and the actual first response B(2,4). The original H11 batch retained 348 of 351 immediate replies. W02, W31, and W32 retain their independent receipts. The source map links those historical computations separately from the local public proof build and trust audits.
 
+The public Lean checks passed for all 48 selected roots and 97 complete declaration types. Both source views recovered 1,434 files. The [complete H11 replay](../evidence/certified-go/acceptance/original-source-h11-replay.json) validates the original graph, assembles the 351 White replies in one process and produces the certificate at the actual ten-ply predecessor through Black's B(2,1).
+
 The [CI comparison](../evidence/cache-preservation/observation-go.json) lists the existing shard keys and their status after this intake.

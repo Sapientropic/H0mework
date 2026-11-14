@@ -1,0 +1,72 @@
+{
+  "schema": "h0mework/certified-go-original-source-replay@1",
+  "status": "passed",
+  "exit_code": 0,
+  "platform": "Darwin-arm64",
+  "toolchain": "leanprover/lean4:v4.33.0",
+  "execution_workspace": {
+    "kind": "research-checkout",
+    "head_at_launch": "efcae2ac3168cbdb499cb79be1a9ad3b05d81230",
+    "fixed_runner_closure_comparison": {
+      "source_modules": 1351,
+      "changes_relative_to_original_epoch": [
+        {
+          "path": "Lean/SaturationMonoid/FiniteCNF/Interference/Reduce.lean",
+          "original_sha256": "204989ebe663876132be9f78dff222358196b09bef3b4869db799ef0d376bd07",
+          "execution_head_sha256": "d3ad1fc8ec4b89090dae9cfe2c53536a7242c1c1cbcac396ecb83a7fd07a2e79",
+          "added_theorem": "SaturationMonoid.ComplexityProjection.SATSource.InterferenceProgram.Reduce.intern_table_balance"
+        }
+      ],
+      "used_external_package_revisions_match": true
+    },
+    "public_kernel_execution_recorded_separately": true
+  },
+  "input": {
+    "original_source_epoch": "e60a86058abcb74b7f2225f2383c182be8343785",
+    "original_runner_path": "Lean/scratch/GoCriticalKomi/EarlierSourceSearch/ElevenAssembly.lean",
+    "original_runner_sha256": "83cf5733a0dbb63935cc8cc63241384db8df25e65427f3e29799237516a59ce2",
+    "public_module": "H0mework.Versions.Re60a8605.ReleaseMaterials.Scratch.GoCriticalKomi.EarlierSourceSearch.ElevenAssembly",
+    "public_path": "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/Scratch/GoCriticalKomi/EarlierSourceSearch/ElevenAssembly.lean",
+    "graph_sha256": "21b609590cada2a55d318dfc0c2c570e2e80c1ce6429dc5536698ba0a7b730b2"
+  },
+  "command": [
+    "lake",
+    "env",
+    "lean",
+    "--trust=0",
+    "-DwarningAsError=true",
+    "--run",
+    "scratch/GoCriticalKomi/EarlierSourceSearch/ElevenAssembly.lean",
+    "scratch/GoCriticalKomi/EarlierSourceSearch/.cache/retained-w31-y2oi1paf/strategy_dag.json.gz"
+  ],
+  "original_receipt_unchanged": true,
+  "verified_at_utc": "2026-11-14T16:06:57.965940+00:00",
+  "log": {
+    "path": "evidence/certified-go/acceptance/original-source-h11-replay.log",
+    "sha256": "bd9a3f5a910d131f181624b4257bac1058fe2e05dcb39f549db9b2c7b932b6a9"
+  },
+  "results": {
+    "original_program_checked": {
+      "raw_nodes": 1700986,
+      "stage": "original_program_checked",
+      "statistics": "{ nodes := 1700986,\n  coalitionHits := 743205,\n  coalitionCompiles := 28,\n  vitalHits := 62431,\n  vitalCompiles := 85,\n  geometryReads := 743233,\n  geometryKeys := 28,\n  ordinaryNanos := 5653838243188,\n  coalitionNanos := 2441525312736,\n  vitalNanos := 18513934176,\n  elapsedNanos := 8187361484584 }"
+    },
+    "assembled_current_producers": {
+      "complete_certificate": true,
+      "elapsed_ms": 1939534,
+      "history_length": 12,
+      "original_white_ports": 351,
+      "outstanding_source_ports": [],
+      "retained_children": 351,
+      "source_plies": 11,
+      "stage": "assembled_current_producers"
+    },
+    "actual_predecessor": {
+      "black_reply": "SaturationMonoid.ProcessGame.Go.Move.play (2, 1)",
+      "complete_certificate": true,
+      "history_length": 11,
+      "source_plies": 10,
+      "stage": "actual_predecessor"
+    }
+  }
+}
