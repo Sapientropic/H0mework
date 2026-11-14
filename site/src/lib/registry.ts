@@ -15,7 +15,7 @@ export const repoLink = (path: string, line?: number, commit = "main") => `${REP
 const suffix = (lang: Lang) => (lang === "en" ? "-en" : "");
 export const unzip = (zip: string, member: string) => execFileSync("unzip", ["-p", resolve(ROOT, zip), member], { encoding: "utf8", maxBuffer: 1 << 26 });
 
-export type ReleaseId = "first-release" | "second-edition" | "low-energy" | "low-energy-v2" | "whole-ledger" | "whole-ledger-v2" | "source-process-core-v3" | "one-bit" | "one-bit-v2" | "generated-society" | "economic-constitution" | "generated-society-v2" | "generated-society-v3" | "economic-constitution-v2" | "economic-constitution-v3" | "capital-formation" | "capital-formation-v2" | "enforceable-peace" | "physics-third-edition" | "exact-realization";
+export type ReleaseId = "first-release" | "second-edition" | "low-energy" | "low-energy-v2" | "whole-ledger" | "whole-ledger-v2" | "source-process-core-v3" | "one-bit" | "one-bit-v2" | "generated-society" | "economic-constitution" | "generated-society-v2" | "generated-society-v3" | "economic-constitution-v2" | "economic-constitution-v3" | "capital-formation" | "capital-formation-v2" | "enforceable-peace" | "physics-third-edition" | "exact-realization" | "observation-dynamics" | "certified-go";
 type Release = {
   label: Record<Lang, string>;
   date: string;
@@ -26,6 +26,7 @@ type Release = {
   supplement?: (slug: string, lang: Lang) => string;
   bibliography?: (slug: string) => string;
   files: (slug: string, lang: Lang) => { pdf: string; supplement?: string; arxiv?: string };
+  pdfLanguage?: Lang;
   check: string;
   guide: string;
   sourceCommit?: string;
@@ -53,6 +54,50 @@ if (!physicsThird?.is_published || !/^10\.5281\/zenodo\.\d+$/.test(physicsThird.
   throw new Error("physics third edition has no published DOI and fixed proof source");
 const LOW = "papers/low-energy-first-release/2026-10-11";
 const LOW_V2 = "papers/low-energy/2026-11-13-v2";
+const NEW_PAPERS = {
+  "observation-dynamics": "papers/observation-dynamics/2026-11-14",
+  "certified-go": "papers/certified-go/2026-11-14",
+} as const;
+type NewPaper = keyof typeof NEW_PAPERS;
+function newPaperRelease(slug: NewPaper, bilingual: boolean) {
+  const directory = NEW_PAPERS[slug];
+  const manifest = readJson(`${directory}/manifest.json`);
+  const paper = manifest.papers.find((row: any) => row.paper === slug);
+  if (!paper?.is_published || paper.version !== "v1" || !/^10\.5281\/zenodo\.\d+$/.test(paper.doi)
+      || !/^[0-9a-f]{40}$/.test(paper.source_commit) || paper.source_commit !== manifest.source_commit)
+    throw new Error(`Missing published DOI or fixed proof source for ${slug}`);
+  const archive = `${directory}/editable/${slug}-v1-editable.zip`;
+  const manuscript = (_slug: string, lang: Lang) => {
+    if (bilingual) return unzip(archive, `papers/${slug}/manuscript${suffix(lang)}.md`);
+    const text = unzip(archive, `papers/${slug}/manuscript.md`);
+    const second = text.match(/^## (.+)$/m)?.[1];
+    // The Chinese reading edition supplies parallel titles and abstracts.
+    const abstracts = text.match(/^### (摘要|Abstract)[ \t]*$/gm);
+    if (!second || abstracts?.length !== 2 || !abstracts.includes("### Abstract"))
+      throw new Error(`${slug}: the reading edition needs both titles and abstracts`);
+    const body = text.replace(/^### (摘要|Abstract)\s*$/gm, "## $1");
+    if (lang === "zh") return body;
+    const byline = text.match(/^\*\*作者：.+\*\*\\?\n([^\n]+)$/m);
+    if (!byline) throw new Error(`${slug}: the reading edition needs an author byline`);
+    const details = byline[1].replace(/^独立研究者/, "Independent Researcher");
+    return `# ${second}\n\n**Author: Jian Gao**\\\n${details}\n\n${body.slice(body.indexOf("## Abstract"))}`;
+  };
+  return { doi: paper.doi, release: {
+    label: bilingual ? { zh: "第 1 版", en: "First edition" } : { zh: "中文正文", en: "Chinese full text" },
+    date: paper.publication_date,
+    map: `docs/${slug}-map.json`,
+    manuscript,
+    bibliography: () => unzip(archive, `papers/${slug}/references.bib`),
+    files: (_slug: string, lang: Lang) => ({ pdf: `${directory}/pdf/${slug}${bilingual ? suffix(lang) : ""}.pdf` }),
+    pdfLanguage: bilingual ? undefined : "zh" as const,
+    check: `python3 tools/paper_proofs.py ${slug} entry`,
+    guide: `docs/${slug}-reproduction.md`,
+    selection: { path: `checks/${slug}-selection.json` },
+    sourceCommit: paper.source_commit,
+  }};
+}
+const observation = newPaperRelease("observation-dynamics", false);
+const certifiedGo = newPaperRelease("certified-go", true);
 const lowSecond = readJson(`${LOW_V2}/manifest.json`);
 const lowSecondArchive = (slug: string) => `${LOW_V2}/editable/${slug}-v2-editable.zip`;
 function lowSecondPaper(slug: string) {
@@ -150,6 +195,8 @@ export const publishedPaperJson = (release: ReleaseId, slug: string, path: strin
   once(`published:${release}:${slug}:${path}`, () => JSON.parse(unzip(RELEASES[release].selection!.path, `papers/${slug}/${path}`)));
 
 const BASE_RELEASES: Record<Exclude<ReleaseId, "generated-society-v2" | "economic-constitution-v2">, Release> = {
+  "observation-dynamics": observation.release,
+  "certified-go": certifiedGo.release,
   "exact-realization": {
     label: { zh: "忠实表示与精确反演", en: "Faithful Representations and Exact Inversion" },
     date: exactPaper.publication_date,
@@ -518,6 +565,16 @@ export const PAPERS: PaperEntry[] = [
     slug: "exact-realization",
     theme: "core",
     editions: [{ release: "exact-realization", doi: exactPaper.doi }],
+  },
+  {
+    slug: "observation-dynamics",
+    theme: "core",
+    editions: [{ release: "observation-dynamics", doi: observation.doi }],
+  },
+  {
+    slug: "certified-go",
+    theme: "computation",
+    editions: [{ release: "certified-go", doi: certifiedGo.doi }],
   },
   {
     slug: "physics-common-source",

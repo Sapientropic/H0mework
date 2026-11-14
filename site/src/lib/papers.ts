@@ -110,6 +110,7 @@ export type CitationMeta = {
   alternateAuthorName: string;
   orcid: string;
   version: number;
+  language?: Lang;
   date: string;
   doi: string;
   doiLink: string;
@@ -248,6 +249,7 @@ export function paperOf(slug: string, lang: Lang) {
   const fullTitle = parts.sub && hasSeparateSub ? `${title}${lang === "zh" ? "：" : ": "}${parts.sub}` : title;
   const current = editions.at(-1)!;
   const citation: CitationMeta = {
+    language: RELEASES[latest].pdfLanguage ?? lang,
     title: fullTitle,
     author: authorOf(manuscript, lang),
     authorName: authorDisplayOf(manuscript),

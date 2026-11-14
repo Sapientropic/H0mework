@@ -3,7 +3,7 @@
 <p align="center">
   <a href="https://github.com/Sapientropic/H0mework/actions/workflows/ci.yml"><img alt="CI" src="https://img.shields.io/github/actions/workflow/status/Sapientropic/H0mework/ci.yml?branch=main&style=flat-square&label=CI"></a>
   <a href="https://h0mework.wiki/en/"><img alt="Site h0mework.wiki" src="https://img.shields.io/badge/site-h0mework.wiki-b3372c?style=flat-square"></a>
-  <a href="#papers"><img alt="11 papers on Zenodo" src="https://img.shields.io/badge/Zenodo-11%20papers-3c679f?style=flat-square"></a>
+  <a href="#papers"><img alt="13 papers on Zenodo" src="https://img.shields.io/badge/Zenodo-13%20papers-3c679f?style=flat-square"></a>
   <a href="LICENSE"><img alt="Apache-2.0" src="https://img.shields.io/badge/license-Apache--2.0-3a332b?style=flat-square"></a>
 </p>
 
@@ -18,7 +18,7 @@ Lean 4 proofs, reproduction programs and frozen evidence behind a family of rese
 <!-- BEGIN CI STATUS -->
 <a href="https://github.com/Sapientropic/H0mework/actions/runs/43584833886"><img src="docs/assets/ci-wall.en.svg" alt="Lean full selection: 63,410 modules across 11 stages and 117 shards, all checked" width="100%"></a>
 
-- **63,410 Lean modules passed the complete kernel check.** [The accepted run](https://github.com/Sapientropic/H0mework/actions/runs/43584833886) used 11 stages and 117 shards with `--trust=0` throughout at `1c5a8b53`.
+- **63,410 Lean modules passed the complete kernel check.** [The accepted run](https://github.com/Sapientropic/H0mework/actions/runs/43584833886) used 11 stages and 117 shards with `--trust=0` throughout at `1c5a8b53`. The current build covers 64,800 modules across 129 shards.
 <!-- END CI STATUS -->
 
 - **Cited declarations are audited again per edition.** Their full dependency closures use only Lean's three standard axioms, with `unsafe = 0` and `partial = 0`; each paper's acceptance and reproduction links are grouped below.
@@ -29,7 +29,7 @@ Lean 4 proofs, reproduction programs and frozen evidence behind a family of rese
 <!-- BEGIN PAPERS -->
 **[Browse all papers on the site, with abstracts and claim-level proofs →](https://h0mework.wiki/en/papers/)**
 
-Latest: [Faithful Representations and Exact Inversion from Quotients, Moments, and Streams](https://h0mework.wiki/en/papers/exact-realization/) · [An Economic Constitution of Possibility](https://h0mework.wiki/en/papers/economic-constitution/)
+Latest: [First-Player Non-Negativity and Proof-Carrying Regional DAG Strategy Certificates for Positional-Superko Go](https://h0mework.wiki/en/papers/certified-go/) · [Autonomous Observation Dynamics, Minimal All-Future Realizations, and Provenance Information Loss](https://h0mework.wiki/en/papers/observation-dynamics/)
 
 <details>
 <summary><strong>Preface</strong> · 1 paper</summary>
@@ -39,11 +39,19 @@ Latest: [Faithful Representations and Exact Inversion from Quotients, Moments, a
 </details>
 
 <details>
-<summary><strong>Core methods</strong> · 3 papers</summary>
+<summary><strong>Core methods</strong> · 4 papers</summary>
 
 - [Source-Native Process Algebra and Initial-Coface Revision](https://h0mework.wiki/en/papers/source-process-core/) · [v3](https://doi.org/10.5281/zenodo.24147130) · [Map](docs/source-process-core-v3-map.json) · [Reproduce](docs/source-process-core-v3-reproduction.md)
 - [Provenance-Preserving Conservation Calculus and Non-Free Continuity](https://h0mework.wiki/en/papers/whole-ledger-accounting/) · [v2](https://doi.org/10.5281/zenodo.24147183) · [Map](docs/whole-ledger-v2-map.json) · [Reproduce](docs/whole-ledger-v2-reproduction.md)
 - [Faithful Representations and Exact Inversion from Quotients, Moments, and Streams](https://h0mework.wiki/en/papers/exact-realization/) · [v1](https://doi.org/10.5281/zenodo.24218120) · [Map](docs/exact-realization-map.json) · [Reproduce](docs/exact-realization-reproduction.md)
+- [Autonomous Observation Dynamics, Minimal All-Future Realizations, and Provenance Information Loss](https://h0mework.wiki/en/papers/observation-dynamics/) · [v1](https://doi.org/10.5281/zenodo.24223415) · [Map](docs/observation-dynamics-map.json) · [Reproduce](docs/observation-dynamics-reproduction.md)
+
+</details>
+
+<details>
+<summary><strong>Computation, games & protocols</strong> · 1 paper</summary>
+
+- [First-Player Non-Negativity and Proof-Carrying Regional DAG Strategy Certificates for Positional-Superko Go](https://h0mework.wiki/en/papers/certified-go/) · [v1](https://doi.org/10.5281/zenodo.24223964) · [Map](docs/certified-go-map.json) · [Reproduce](docs/certified-go-reproduction.md)
 
 </details>
 

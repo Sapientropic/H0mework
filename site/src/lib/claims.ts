@@ -541,6 +541,20 @@ function exactRealization(slug: string, edition: number, release: ReleaseId): So
   }));
 }
 
+function checkedPaper(slug: string, edition: number, release: ReleaseId): Source[] {
+  const map = mapOf(release);
+  if (map.acceptance.status !== "passed") throw new Error(`${slug}: missing proof acceptance`);
+  return map.claims.filter((claim: any) => claim.paper === slug && claim.selection_status !== "not-selected").map((claim: any) => ({
+    key: `${slug}.${claim.id}`, ids: [claim.id], edition,
+    category: claim.category ?? "formal",
+    text: claim.localized.zh, localizedText: claim.localized,
+    location: { zh: claim.written_proof.zh.location, en: claim.written_proof.en?.location ?? claim.written_proof.zh.location },
+    producers: [...claim.producers, ...claim.direct_consumers, ...(claim.standalone_consumers ?? []),
+      ...(claim.compiled_controls ?? []),
+      ...claim.resources.filter((artifact: Producer) => artifact.public?.path.endsWith("/original-certificate.json"))],
+  }));
+}
+
 const ADAPTERS: Record<ReleaseId, (slug: string, edition: number, release: ReleaseId) => Source[]> = {
   "first-release": firstRelease,
   "second-edition": secondEdition,
@@ -562,6 +576,8 @@ const ADAPTERS: Record<ReleaseId, (slug: string, edition: number, release: Relea
   "enforceable-peace": enforceablePeace,
   "physics-third-edition": physicsThirdEdition,
   "exact-realization": exactRealization,
+  "observation-dynamics": checkedPaper,
+  "certified-go": checkedPaper,
 };
 
 // --- translations -----------------------------------------------------------------------------

@@ -47,7 +47,7 @@ const jsonLd = citation
       sameAs: [citation.doiLink, abs(alternate)],
       url: abs(selfPath),
       mainEntityOfPage: abs(selfPath),
-      inLanguage: lang === "zh" ? "zh-CN" : "en",
+      inLanguage: (citation.language ?? lang) === "zh" ? "zh-CN" : "en",
       isAccessibleForFree: true,
       keywords: citation.keywords,
       abstract: citation.abstract,
@@ -131,7 +131,7 @@ const jsonLd = citation
         <meta name="citation_online_date" content={citationDate} />
         <meta name="citation_pdf_url" content={abs(citation.pdfPath)} />
         <meta name="citation_doi" content={citation.doi} />
-        <meta name="citation_language" content={lang === "zh" ? "zh" : "en"} />
+        <meta name="citation_language" content={citation.language ?? lang} />
         {citation.keywords.length > 0 && <meta name="citation_keywords" content={citation.keywords.join("; ")} />}
         <meta name="citation_abstract" content={citation.abstract} />
       </>
