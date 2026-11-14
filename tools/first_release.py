@@ -714,7 +714,7 @@ private def releaseName (value : String) : Name :=
     | none => Name.str name part) .anonymous
 
 private def completeRefs (info : ConstantInfo) : NameSet := Id.run do
-  let mut refs := info.type.getUsedConstantsAsSet ++ info.getUsedConstantsAsSet
+  let mut refs := info.type.getUsedConstantsAsSet
   if let some value := info.value? true then refs := refs ++ value.getUsedConstantsAsSet
   match info with
   | .defnInfo val => for name in val.all do refs := refs.insert name
@@ -722,7 +722,7 @@ private def completeRefs (info : ConstantInfo) : NameSet := Id.run do
   | .opaqueInfo val => for name in val.all do refs := refs.insert name
   | .inductInfo val =>
       for name in val.all ++ val.ctors do refs := refs.insert name
-  | .ctorInfo val => refs := refs.insert val.induct
+  | .ctorInfo val => refs := (refs.insert val.name).insert val.induct
   | .recInfo val =>
       for name in val.all do refs := refs.insert name
       for rule in val.rules do
@@ -730,18 +730,6 @@ private def completeRefs (info : ConstantInfo) : NameSet := Id.run do
         refs := refs ++ rule.rhs.getUsedConstantsAsSet
   | _ => pure ()
   return refs
-
-private partial def recoveryClosure (env : Environment) (pending : List Name)
-    (seen : NameSet := {}) : NameSet :=
-  match pending with
-  | [] => seen
-  | name :: rest =>
-      if seen.contains name then recoveryClosure env rest seen
-      else
-        let children := match env.checked.get.find? name with
-          | some info => (completeRefs info).toArray.toList
-          | none => []
-        recoveryClosure env (children ++ rest) (seen.insert name)
 
 run_cmd do
   let env ← getEnv
@@ -752,14 +740,22 @@ run_cmd do
     let some index := env.getModuleIdxFor? name | throwError "MISSING_DECLARATION_MODULE {name}"
     unless env.header.moduleNames[index]! == releaseName owner do
       throwError "WRONG_DECLARATION_MODULE {name} expected={owner} actual={env.header.moduleNames[index]!}"
-  let closure := recoveryClosure env (roots.map fun item => releaseName item.1)
   let allowed := #[``propext, ``Classical.choice, ``Quot.sound]
+  let mut pending := roots.toArray.map (fun item => releaseName item.1)
+  let mut seen : NameHashSet := {}
   let mut axioms : NameSet := {}
   let mut edges := 0
-  for name in closure.toArray do
+  while let some name := pending.back? do
+    pending := pending.pop
+    if seen.contains name then continue
+    seen := seen.insert name
     let some info := env.checked.get.find? name | throwError "UNCHECKED_CONSTANT {name}"
     if info.isUnsafe || info.isPartial then throwError "UNSAFE_PARTIAL {name}"
-    edges := edges + (completeRefs info).size
+    -- Collect each complete type/value and metadata edge once.
+    let refs := completeRefs info
+    edges := edges + refs.size
+    for dep in refs do
+      unless seen.contains dep do pending := pending.push dep
     match info with
     | .axiomInfo _ =>
         unless allowed.contains name do throwError "UNAPPROVED_AXIOM {name}"
@@ -769,7 +765,7 @@ run_cmd do
     | _ => pure ()
   let report := Json.mkObj [
     ("token", toJson "__TOKEN__"), ("roots", toJson roots.length),
-    ("constants", toJson closure.size), ("edges", toJson edges),
+    ("constants", toJson seen.size), ("edges", toJson edges),
     ("axioms", toJson (axioms.toArray.toList.map Name.toString)),
     ("unsafe", toJson (0 : Nat)), ("partial", toJson (0 : Nat)),
     ("full_metadata", toJson true)]

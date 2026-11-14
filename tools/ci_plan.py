@@ -32,8 +32,9 @@ from first_release import build_environment
 
 CACHE_VERSION = "lean-parts-v1"
 SOLO = "tools/ci_solo.txt"
+SAME_STAGE_REUSE = "tools/ci_same_stage.tsv"
 # Changing these re-runs the complete-selection check; part caches stay valid.
-CI_FILES = ("tools/ci_plan.py", ".github/workflows/ci.yml", ".github/workflows/lean-part.yml", SOLO)
+CI_FILES = ("tools/ci_plan.py", ".github/workflows/ci.yml", ".github/workflows/lean-part.yml", SOLO, SAME_STAGE_REUSE)
 # Seconds per module on a hosted runner, refreshed from CI logs with `ci_plan.py times`.
 TIMES = "tools/ci_times.tsv"
 # Peak resident GiB of memory-heavy modules, measured locally; `Versions.<v>.` copies share an entry.
@@ -695,9 +696,10 @@ def pack_checkpoint(root: Path, modules: list[str], archive: Path) -> int:
         return len(copied)
 
 
-def unpack(root: Path, archive: Path):
+def unpack(root: Path, archive: Path, modules: set[str] | None = None):
     build = root / "Lean/.lake/build"
     build.mkdir(parents=True, exist_ok=True)
+    stems = ({"/".join(name.split(".")) for name in modules} if modules is not None else None)
     decompressor = subprocess.Popen(["zstd", "-q", "-d", "-c", str(archive)], stdout=subprocess.PIPE)
     try:
         with tarfile.open(fileobj=decompressor.stdout, mode="r|") as tar:
@@ -707,6 +709,10 @@ def unpack(root: Path, archive: Path):
                     raise ValueError(f"Invalid artifact archive entry: {member.name}")
                 if not (member.name.startswith("lib/lean/") or member.name.startswith("ir/")):
                     raise ValueError(f"Unexpected artifact archive entry: {member.name}")
+                if stems is not None:
+                    relative = member.name.removeprefix("lib/lean/").removeprefix("ir/")
+                    if relative.split(".", 1)[0] not in stems:
+                        continue
                 tar.extract(member, build, filter="data")
         # tar stops at its end marker before zstd has necessarily emitted the padding.
         while decompressor.stdout.read(1 << 20):
@@ -931,6 +937,50 @@ def store_call(action, fallback=None):
         return fallback
 
 
+def restore_same_stage_outputs(root: Path, plan: dict, name: str, store: ReleaseStore):
+    """Seed same-stage imports from exact archives before Lake validates freshness."""
+    config = root / SAME_STAGE_REUSE
+    if not config.is_file():
+        return
+    donors = {fields[1] for line in config.read_text().splitlines()
+              if len(fields := line.split()) == 2 and fields[0] == name}
+    if not donors:
+        return
+    current = plan["parts"][name]
+    shared = set(current["progress_modules"]) - set(current["modules"])
+    if not shared:
+        return
+    entries = store_call(store.entries, {})
+    directory = root / ".local/ci/cache"
+    directory.mkdir(parents=True, exist_ok=True)
+    for other in sorted(donors):
+        donor = plan["parts"].get(other)
+        if not donor or donor["stage"] != current["stage"]:
+            continue
+        modules = shared.intersection(donor["modules"])
+        if not modules:
+            continue
+        key = part_key(plan, other) + ".tar.zst"
+        if key not in entries:
+            continue
+        with tempfile.TemporaryDirectory(prefix="same-stage-", dir=directory) as temp:
+            staging = Path(temp)
+            archive = staging / "part.tar.zst"
+            if store_call(lambda: store.fetch(key, archive), False):
+                try:
+                    unpack(staging, archive, modules)
+                    archive.unlink()
+                    restored = staging / "Lean/.lake/build"
+                    for source in artifact_files(restored, sorted(modules)):
+                        target = root / "Lean/.lake/build" / source.relative_to(restored)
+                        target.parent.mkdir(parents=True, exist_ok=True)
+                        shutil.move(source, target)
+                except (OSError, ValueError, RuntimeError, tarfile.TarError) as error:
+                    print(f"::warning::Cannot restore same-stage outputs from {other}: {error}")
+                    continue
+                print(f"Restored same-stage outputs for {len(modules)} imports from {other}", flush=True)
+
+
 def save_archive(store: ReleaseStore, key: str, archive: Path, progress: str | None = None):
     name = f"{key}-{progress}.tar.zst" if progress else key + ".tar.zst"
     store.put(name, archive)
@@ -1111,7 +1161,7 @@ def main():
         return
     part = plan["parts"][args.part]
     archive = args.archive or root / ".local/ci/cache" / f"{args.part}.tar.zst"
-    if store and snapshot.is_file() and args.command == "fetch":
+    if store and snapshot.is_file() and args.command in {"fetch", "build"}:
         store.load(snapshot)
     if args.command == "part":
         outputs = {"prefix": f"{plan['version']}-{plan['compatibility']}-{args.part}-",
@@ -1131,6 +1181,8 @@ def main():
             store_call(lambda: save_archive(store, part_key(plan, args.part), archive, args.progress))
     elif args.command == "build":
         checkpoint = None
+        if store and not args.check_only:
+            restore_same_stage_outputs(root, plan, args.part, store)
         if store and os.environ.get("STORE_WRITES") == "true" and not args.check_only:
             checkpoint = live_checkpoint(root, plan, args.part, store,
                                          os.environ["GITHUB_RUN_ID"], os.environ["GITHUB_RUN_ATTEMPT"])

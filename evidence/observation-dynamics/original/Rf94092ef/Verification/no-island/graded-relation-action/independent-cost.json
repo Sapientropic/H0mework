@@ -1,0 +1,68 @@
+{
+  "actual_calls": 2,
+  "known_seconds": 40.81062404200202,
+  "old_ci_replays": 0,
+  "old_source_recompiles": 0,
+  "calls": [
+    {
+      "label": "001-audit",
+      "scope": "audit",
+      "pid": 19517,
+      "exit_code": 0,
+      "elapsed_seconds": 27.89669862500159,
+      "command": [
+        "lean",
+        "--trust=0",
+        "-DElab.async=false",
+        "-DwarningAsError=true",
+        "-DmaxErrors=1",
+        "-j1",
+        "-M32000",
+        "-DstderrAsMessages=false",
+        "--run",
+        "runtime/Homework-runtime/audit-tmp/iqa-graded-relation-action-independent/Audit.lean",
+        "runtime/Homework-runtime/audit-tmp/iqa-graded-relation-action-independent/audit-config.json"
+      ],
+      "source_sha256": "efe5effa07a1cb50458683b2a2a8c128c9470ab65a2ce79e7ca9ed97c2af707f",
+      "source_unchanged": true,
+      "selected_lean_path_sha256": "f73c131db8cd98ab9d281df5cbc1744b5032d60129a0562a89ca9382240c0457",
+      "effective_lean_path_file": "runtime/Homework-runtime/audit-tmp/iqa-graded-relation-action/lean-path.txt",
+      "effective_lean_path_sha256": "f73c131db8cd98ab9d281df5cbc1744b5032d60129a0562a89ca9382240c0457",
+      "log_sha256": "cbe89e4a5aebfca89bb020ca06ccfa9722fc51ae0a7372ec27d13b1fe54b1ecf",
+      "log_bytes": 367,
+      "old_source_recompiles": 0,
+      "old_ci_replays": 0,
+      "receipt_sha256": "363c3b00abcbf332962fc5cead64be3dee5f1ed51a75b8126f71debd3f6e8f89"
+    },
+    {
+      "label": "001-gate",
+      "scope": "gate",
+      "pid": 14282,
+      "exit_code": 0,
+      "elapsed_seconds": 12.913925417000428,
+      "command": [
+        "lean",
+        "--trust=0",
+        "-DElab.async=false",
+        "-DwarningAsError=true",
+        "-DmaxErrors=6",
+        "-j1",
+        "-M32000",
+        "-DstderrAsMessages=false",
+        "-Dprofiler=true",
+        "-Dprofiler.threshold=100",
+        "runtime/Homework-runtime/audit-tmp/iqa-graded-relation-action-independent/Gate.lean"
+      ],
+      "source_sha256": "4bd52bdaf42cdaeba0daffa976639e6c92350dbe4f3374dcf195fe6468b3f3c5",
+      "source_unchanged": true,
+      "selected_lean_path_sha256": "f73c131db8cd98ab9d281df5cbc1744b5032d60129a0562a89ca9382240c0457",
+      "effective_lean_path_file": "runtime/Homework-runtime/audit-tmp/iqa-graded-relation-action/lean-path.txt",
+      "effective_lean_path_sha256": "f73c131db8cd98ab9d281df5cbc1744b5032d60129a0562a89ca9382240c0457",
+      "log_sha256": "7afe077ea73a6d8b9f000d2716cd1feabc210c4784c6f40190b1942c53c028ee",
+      "log_bytes": 1384,
+      "old_source_recompiles": 0,
+      "old_ci_replays": 0,
+      "receipt_sha256": "e94a8f5fde0e8794eb84b48f2ededd5d6bfe8eb00da2cf8f1ea2a4334a43b764"
+    }
+  ]
+}

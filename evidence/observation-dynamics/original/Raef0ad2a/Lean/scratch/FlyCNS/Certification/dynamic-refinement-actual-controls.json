@@ -1,0 +1,125 @@
+{
+  "schema": "flycns-independent-dynamic-refinement-actual-audit/v1",
+  "frozen_python_sha256": "e695cf792da4d216060f2264efee0d28b7fa8f57b428d562a5492d597aa69a29",
+  "source_directory": "Lean/scratch/FlyCNS/.cache/body-full-source-154440967171458",
+  "identity": {
+    "instance_id": "male-cns-393a1613-ddc6-49c0-9226-9640883d0ec3",
+    "occurrence_id": "fly-occurrence-6f3385a3-7f70-4ddb-8c80-d89661a7e42e",
+    "installation_sha256": "5f91ca446b90b79ebcf8b77680976cf5378b6111392cbb2e1a236bb666192c4e"
+  },
+  "source_command_dataflow": {
+    "single_fixed_source_command": "[str(PYTHON), str(Path(binding['root']) / 'primitive.py'), 'step', binding['root'], str(output / 'decoded'), str(generated)]",
+    "expected_state_absent_from_source_call": true,
+    "added_coordinates_use_original_states_only": true
+  },
+  "raw_original_source_guards": [
+    {
+      "role": "annotations",
+      "bytes": 14483314,
+      "sha256": "2177e246113e4cfbf1e7772ec37c6da1955ff22e8063d0b1f833101f99a9a3b2"
+    },
+    {
+      "role": "neurotransmitters",
+      "bytes": 43282834,
+      "sha256": "95c9289220663abeb3409f3ad9e5a7f8a53f8093f5139d15502cd08da8879621"
+    },
+    {
+      "role": "weights",
+      "bytes": 1051241946,
+      "sha256": "e35da783d1c686b2b58b3b87cd6a403ae43bfcfba8bff28e08ef752c1a56afc1"
+    }
+  ],
+  "source_guarded_files": 64,
+  "actual_before_visits": [
+    55,
+    56
+  ],
+  "actual_future_visits": [
+    56,
+    57
+  ],
+  "old_plan_words": 51,
+  "source_origin_added": [
+    "word:body.controller_enabled",
+    "visit"
+  ],
+  "future_different_words": [
+    "neural.voltage",
+    "neural.conductance",
+    "neural.refractory",
+    "neural.delay_nodes",
+    "neural.delay_counts",
+    "neural.tick",
+    "neural.adaptation_uv",
+    "neural.release_q",
+    "neural.dopamine_rise_q",
+    "neural.dopamine_decay_q",
+    "neural.dopamine_fraction_q",
+    "body.integration",
+    "body.motor_trace",
+    "body.feeding_trace",
+    "body.world_values",
+    "body.peptide_concentrations",
+    "body.tick",
+    "body.physics_ticks",
+    "body.steering_trace",
+    "source.plastic_eligibility_q",
+    "source.plastic_dopamine_q",
+    "source.plastic_labile_q",
+    "source.plastic_delta_uv",
+    "source.plastic_last_update_tick",
+    "source.plastic_modulation_scratch_q",
+    "diagnostics.plastic_changes"
+  ],
+  "complete_current_files": 57,
+  "complete_reopen_sha256": "f5a578f7a4ec6f859a78b3cdfe7013834a751af419e072d256b667ea31cfa0bf",
+  "packet_only_actual_successors": [
+    {
+      "after_visit": 57,
+      "neural_tick": 5600,
+      "physics_tick": 56000,
+      "literal_58_sha256": "5bd35b679d0baea55e1aec5f859ef7c0a055a5350921576dadf7e762db5b01e3",
+      "microtrace_sha256": "292f7271a3c67b557e07299aa763d9628f0dcfd9a0c833d16ea61527c8bd5281"
+    },
+    {
+      "after_visit": 58,
+      "neural_tick": 5700,
+      "physics_tick": 57000,
+      "literal_58_sha256": "add2755f70cd7d78f282dfadf805c4e7717bea9ca9c7a6f10608995613a16d15",
+      "microtrace_sha256": "0f02e05a07dbecf8a53332c388250ac5f91ddb981bffbb60c8a05a00840f23db"
+    }
+  ],
+  "initial_codec": {
+    "decode_seconds": 0.09428183399722911,
+    "encode_seconds": 0.07053591599105857,
+    "packet_bytes": 17170139,
+    "packet_sha256": "98e1c379f5d79765bcf6d1970dacc7c976b48fba19a3a21edff3220a4729de89",
+    "raw_bytes": 27538174,
+    "raw_reduction_percent": 37.64968221930764,
+    "root_visit": 56
+  },
+  "negative_controls": [
+    {
+      "case": "descriptor",
+      "reason": "packet and parsed original word interpretations differ",
+      "rejected_before_source_event": true
+    },
+    {
+      "case": "visit",
+      "reason": "packet lost the source-owned autonomous visit",
+      "rejected_before_source_event": true
+    },
+    {
+      "case": "missing-gate",
+      "reason": "representation omits or aliases a complete source file",
+      "rejected_before_source_event": true
+    }
+  ],
+  "evidence_sha256": "0a7496d6a51d94319906b8d1c0a0a0e78eb595e91cb669d031ae726f4d33230c",
+  "consumer_sha256": "e695cf792da4d216060f2264efee0d28b7fa8f57b428d562a5492d597aa69a29",
+  "basis_scope": "gate plus visit are actual original-state directions; different macro operation letters remain part of the fixed source",
+  "activation_scope": "fresh captured fixed foreign primitive consumer; not late installation into the already-born Lean cap",
+  "quotient_scope": "complete exact residual execution and local source-derived refinement; minimum behavioral partition not computed",
+  "activation_prefix": "Lean/scratch/FlyCNS/.cache/body-full-source-154440967171458/activation-58.json",
+  "activation_sha256": "1a39e627d1e7df6128cf3cb335f17b39475a24e9610e589b6cf287fa63594cc2"
+}

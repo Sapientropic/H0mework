@@ -1,0 +1,125 @@
+{
+  "schema": "original-go-regional-program-receipt/v1",
+  "status": "original_certificate_generated",
+  "scope": "actual H11 followed by White (3,1), original 19x19 rules",
+  "law": {
+    "size": 19,
+    "black_first": true,
+    "suicide": "forbidden",
+    "repetition": "positional_superko",
+    "pass_exempt": true,
+    "scoring": "two_passes_area"
+  },
+  "source": {
+    "moves": [
+      [
+        1,
+        1
+      ],
+      [
+        18,
+        18
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        18,
+        16
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        18,
+        14
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        18,
+        12
+      ],
+      [
+        2,
+        1
+      ],
+      [
+        3,
+        1
+      ]
+    ],
+    "plies": 12,
+    "original_history_rows": 13,
+    "header_environment_replay_used_for_final_consumer": false
+  },
+  "input": {
+    "file": "scratch/GoCriticalKomi/EarlierSourceSearch/.cache/retained-w31-y2oi1paf/strategy_dag.json.gz",
+    "compressed_bytes": 32417077,
+    "nodes": 1700986,
+    "edges": 2007462,
+    "white_nodes": 33164,
+    "white_ports": 1145389,
+    "own_nodes": 862073,
+    "history_rows": 249,
+    "historical_masks": 268
+  },
+  "certificate": {
+    "type": "Certificate .positive (-345) frame",
+    "at_actual_source": "Some",
+    "first_original_move": [
+      2,
+      4
+    ],
+    "first_child": "all",
+    "native_step_and_complete_history_checked": true,
+    "unmatched_initial_source_rejected": true
+  },
+  "compiler": {
+    "checked_nodes": 1700986,
+    "coalition_hits": 743205,
+    "coalition_geometry_compiles": 28,
+    "vital_hits": 62431,
+    "vital_geometry_compiles": 85,
+    "geometry_reads": 743233,
+    "coalition_keys": 28,
+    "ordinary_nanoseconds": 2479537356626,
+    "coalition_nanoseconds": 577567067250,
+    "vital_nanoseconds": 3880628224,
+    "total_check_nanoseconds": 3071967391542
+  },
+  "execution": {
+    "exit_code": 0,
+    "whole_process_wall_seconds": 3140.66,
+    "user_seconds": 3113.34,
+    "system_seconds": 14.67,
+    "peak_rss_bytes": 7065436160,
+    "new_game_search_branches": 0,
+    "log": "original-certificate.log",
+    "command_at_run": "lake env lean --trust=0 -DwarningAsError=true --run scratch/GoCriticalKomi/RegionalDAGRun.lean scratch/GoCriticalKomi/EarlierSourceSearch/.cache/retained-w31-y2oi1paf/strategy_dag.json.gz --w31",
+    "formal_runner": "SaturationMonoid/ProcessGame/Regression/CriticalKomi/RunRegionalDAG19.lean"
+  },
+  "implementation_at_run": {
+    "shared_placement_effects": true,
+    "direct_bit_board_reader": true,
+    "current_holds_checked_at_every_leaf": true,
+    "white_admission": "original admittedPorts; captureAdmittedPorts was proved and installed after this run"
+  },
+  "artifact": {
+    "kind": "complete execution receipt, not a serialized typed Certificate",
+    "cross_process_compiled_program_retained": false,
+    "next_consumer": "ElevenAssembly single IO main: one checked graph -> Provider -> original 351-port assembly -> earlier consumer"
+  }
+}

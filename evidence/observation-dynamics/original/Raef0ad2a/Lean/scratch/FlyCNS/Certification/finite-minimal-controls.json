@@ -1,0 +1,104 @@
+{
+  "schema": "flycns-finite-minimal-independent-kernel-controls/v1",
+  "scope": "complete four-state raw source; no actual MaleCNS execution claim",
+  "candidate_sha256": "aa2805aa54f6d53fdaf457ba3e227bd4e8c970bb8e84da750e22bbda7f80fafa",
+  "audit_source_sha256": "f95b4cfba27c7cdbf18b0308845b2affdab36124ce5f629a645f7c3131d7faa5",
+  "fresh_kernel_controls": 55,
+  "raw_domain": {
+    "states": 4,
+    "letters": 2,
+    "heterogeneous_reader_outputs": [
+      "Bool",
+      "Nat"
+    ],
+    "letter0_successors": [
+      1,
+      2,
+      3,
+      3
+    ],
+    "letter1_successors": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "initial_pair_count": 10,
+  "generated_kernel_pair_count": 4,
+  "computed_chain_codes": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "computed_blind_codes": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "computed_blind_kernel_pair_count": 16,
+  "computed_adjoined_codes": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "future_escape": {
+    "left": 0,
+    "right": 1,
+    "current_equal": true,
+    "one_step_equal": true,
+    "two_step_different": true,
+    "word": [
+      0,
+      0
+    ],
+    "incremental_kernel_equals_full_recomputation": true
+  },
+  "hostile_contracts_rejected": [
+    "current-only code future factorization",
+    "Unit code with incompatible source reads",
+    "one refinement round claimed fixed",
+    "reversed operation word orientation"
+  ],
+  "source_input_contracts": [
+    "nonempty state/letter/reader inventories",
+    "every action total and closed on raw state domain",
+    "generated fuel is original pair card",
+    "no caller quotient/normalizer/every-fibre witness"
+  ],
+  "source_process_consumer": "exact raw ConstructivePresentation inverses + original model_future_kernel + same sealed runtime root/ledger/next",
+  "compiled_execution": {
+    "adjoined_codes": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "blind_codes": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "chain_autonomous_next_codes": [
+      1,
+      2,
+      3,
+      3
+    ],
+    "chain_codes": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "incremental_equals_recomputed": true,
+    "kernel_card": 4,
+    "schema": "flycns-finite-minimal-independent-execution/v1"
+  },
+  "compiled_execution_log_sha256": "a92cfd64b7986f5737d10852bf538bf014921625f517a0672274886ce761fe8c",
+  "execution_source_sha256": "03b0c072b436b79dcf2d2afb22b0075e4d9d4a9cedb436d96687834cee201631"
+}

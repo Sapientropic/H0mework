@@ -1,0 +1,265 @@
+import H0mework.Versions.Rf94092ef.ReleaseMaterials.SaturationMonoid.NoIslandNoMagic.CanonicalRiemann.GeneralizedDual.CoPoissonEnergy.Muntz.Cokernel.CenteredGram.JointAction.Runtime.Feedback.ClozelOriginalKFiniteOrderRelease.GammaSource.PositionGap.ResidualProbe.BoundaryCountedGenerator
+
+set_option autoImplicit false
+noncomputable section
+
+namespace SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot
+namespace NoIslandNoMagic.CanonicalRiemann.ClozelGeneralizedDual.CenteredGram.IntegralGraphJointAction
+namespace OriginalKFiniteOrderRelease.PositionGapCayley.OutsideLogRank.ParameterSource.FixedRead.ResidualProbe.BoundaryCountedContinuousInverse
+
+open BurnolPhysicalState MeasureTheory Set Filter OriginalRieszFinitePairing.CoPoisson.Ward
+open scoped Topology
+
+open private BoundaryCountedInverse.normalized BoundaryCountedInverse.weight mass mass_nonneg remainder remainder_bound headUnit
+  from H0mework.Versions.R502c11c3.ReleaseMaterials.SaturationMonoid.NoIslandNoMagic.CanonicalRiemann.GeneralizedDual.CoPoissonEnergy.Muntz.Cokernel.CenteredGram.JointAction.Runtime.Feedback.ClozelOriginalKFiniteOrderRelease.GammaSource.PositionGap.ResidualProbe.BoundaryCountedInverse
+open private right_quarter from H0mework.Versions.R7e4da746.ReleaseMaterials.SaturationMonoid.NoIslandNoMagic.CanonicalRiemann.GeneralizedDual.CoPoissonEnergy.Muntz.Cokernel.CenteredGram.JointAction.Runtime.Feedback.ClozelOriginalKFiniteOrderRelease.GammaSource.PositionGapCayley
+
+local notation "End" => (BurnolL2 →L[ℂ] BurnolL2)
+local notation "U" => burnolMultiplicativeDilation
+local notation "smallCell" => BoundaryCountedInverse.normalized
+local notation "clock" => BoundaryCountedGenerator.clock
+
+private theorem mass_source (N : Nat) (positive : 0 < N) :
+    mass N = 2 * (Real.sqrt ((N : ℝ)+1) - Real.sqrt (N : ℝ)) := by
+  have nPositive : (0 : ℝ) < N := by exact_mod_cast positive
+  have order : (N : ℝ) ≤ (N : ℝ)+1 := by linarith
+  have integrand (x : ℝ) (inside : x ∈ uIcc (N : ℝ) ((N : ℝ)+1)) :
+      BoundaryCountedInverse.weight x = x ^ (-(1/2 : ℝ)) := by
+    rw [uIcc_of_le order] at inside
+    unfold BoundaryCountedInverse.weight
+    rw [Real.sqrt_eq_rpow, Real.rpow_neg (nPositive.le.trans inside.1)]
+  rw [mass, ← intervalIntegral.integral_of_le order, intervalIntegral.integral_congr integrand,
+    integral_rpow (Or.inl (by norm_num : -1 < -(1/2 : ℝ))),
+    show -(1/2 : ℝ)+1=1/2 by norm_num, ← Real.sqrt_eq_rpow, ← Real.sqrt_eq_rpow]
+  ring
+
+private def realGap (N : Nat) : ℝ := (N : ℝ) * (1 - Real.sqrt (N : ℝ) * mass N)
+
+private theorem gap_source (N : Nat) (positive : 0 < N) :
+    realGap N = ((Real.sqrt (1+(N : ℝ)⁻¹)+1)^2)⁻¹ := by
+  let lo := Real.sqrt (N : ℝ)
+  let hi := Real.sqrt ((N : ℝ)+1)
+  let scale := Real.sqrt (1+(N : ℝ)⁻¹)
+  have nPositive : (0 : ℝ) < N := by exact_mod_cast positive
+  have loPos : 0 < lo := Real.sqrt_pos.mpr nPositive
+  have hiPos : 0 < hi := Real.sqrt_pos.mpr (by linarith)
+  have total : 0 < hi+lo := add_pos hiPos loPos
+  have loSq : lo^2 = (N : ℝ) := Real.sq_sqrt nPositive.le
+  have hiSq : hi^2 = (N : ℝ)+1 := Real.sq_sqrt (by linarith)
+  have product : (hi-lo)*(hi+lo) = 1 := by nlinarith only [loSq, hiSq]
+  have inverse : hi-lo = (hi+lo)⁻¹ := by
+    calc
+      _ = (hi-lo)*(hi+lo)*(hi+lo)⁻¹ := by rw [mul_assoc, mul_inv_cancel₀ total.ne', mul_one]
+      _ = _ := by rw [product, one_mul]
+  have same : lo * scale = hi := by
+    change Real.sqrt (N : ℝ) * Real.sqrt (1+(N : ℝ)⁻¹) = _
+    rw [← Real.sqrt_mul nPositive.le, mul_add, mul_one, mul_inv_cancel₀ nPositive.ne']
+  have factored : hi+lo = lo*(scale+1) := by rw [mul_add, same, mul_one]
+  rw [realGap, mass_source N positive]
+  change (N : ℝ)*(1 - lo*(2*(hi-lo))) = ((scale+1)^2)⁻¹
+  calc
+    _ = (N : ℝ)*(hi-lo)^2 := by
+      congr 1
+      nlinarith only [loSq, hiSq]
+    _ = _ := by
+      have denominator : 0 < scale+1 := by dsimp only [scale]; positivity
+      rw [inverse, inv_pow, factored, mul_pow, loSq]
+      field_simp [nPositive.ne', (pow_pos denominator 2).ne']
+
+private theorem gap_lower (N : Nat) (positive : 0 < N) :
+    (1/4 : ℝ) - (N : ℝ)⁻¹/8 ≤ realGap N := by
+  rw [gap_source N positive]
+  let x := (N : ℝ)⁻¹
+  have xNonneg : 0 ≤ x := inv_nonneg.mpr (Nat.cast_nonneg _)
+  have root : Real.sqrt (1+x) ≤ 1+x/2 := by
+    apply (sq_le_sq₀ (Real.sqrt_nonneg _) (by positivity)).mp
+    rw [Real.sq_sqrt (by positivity)]
+    nlinarith only [sq_nonneg x]
+  have upper : (Real.sqrt (1+x)+1)^2 ≤ 4+2*x := by
+    nlinarith only [Real.sq_sqrt (show 0 ≤ 1+x by positivity), root]
+  have denominator : 0 < 4+2*x := by positivity
+  have expanded : 0 < (Real.sqrt (1+x)+1)^2 := by positivity
+  have approx : (1/4 : ℝ)-x/8 ≤ (4+2*x)⁻¹ := by
+    rw [← one_div]
+    apply (le_div_iff₀ denominator).mpr
+    nlinarith only [sq_nonneg x]
+  exact approx.trans ((inv_le_inv₀ denominator expanded).mpr upper)
+
+private def tailStart (coordinate : ℂ) : Nat := ⌈(4*(coordinate.re-1/4))⁻¹⌉₊
+
+/-- The literal counted cutoff is generated by the actual real damping parameter. -/
+def index (coordinate : ℂ) (n : Nat) : Nat := tailStart coordinate + n + 1
+
+private theorem index_pos (coordinate : ℂ) (n : Nat) : 0 < index coordinate n :=
+  Nat.succ_pos _
+
+private theorem remainder_norm (N : Nat) (positive : 0 < N) :
+    ‖smallCell N positive‖ ≤ Real.sqrt (N : ℝ) * mass N := by
+  have rootNonneg : 0 ≤ Real.sqrt (N : ℝ) := Real.sqrt_nonneg _
+  apply (smallCell N positive).opNorm_le_bound (mul_nonneg rootNonneg (mass_nonneg N))
+  intro value
+  change ‖(Real.sqrt (N : ℝ) : ℂ) • (U (-Real.log (N : ℝ))).symm (remainder N value)‖ ≤ _
+  rw [norm_smul, Complex.norm_real, Real.norm_of_nonneg rootNonneg, LinearIsometryEquiv.norm_map, mul_assoc]
+  exact mul_le_mul_of_nonneg_left (remainder_bound N positive value) rootNonneg
+
+private def damping (coordinate : ℂ) (N : Nat) : ℂ := (N : ℂ) + coordinate - 1/2
+
+private def compensation (N : Nat) (positive : 0 < N) : End :=
+  (N : ℂ) • smallCell N positive
+
+private theorem margin_bound (coordinate : ℂ) (right : 1/4 < coordinate.re) (n : Nat) :
+    ‖compensation (index coordinate n) (index_pos coordinate n)‖ +
+      (coordinate.re-1/4)/2 ≤ (damping coordinate (index coordinate n)).re := by
+  let N := index coordinate n
+  have p : 0 < N := index_pos coordinate n
+  have dampingPos : 0 < 4*(coordinate.re-1/4) := by linarith
+  have nPositive : (0 : ℝ) < N := by exact_mod_cast p
+  have afterStart : tailStart coordinate < N := by dsimp only [N, index]; omega
+  have first : (4*(coordinate.re-1/4))⁻¹ ≤ (tailStart coordinate : ℝ) := Nat.le_ceil _
+  have after : (4*(coordinate.re-1/4))⁻¹ < (N : ℝ) :=
+    first.trans_lt (by exact_mod_cast afterStart)
+  have small : (N : ℝ)⁻¹ < 4*(coordinate.re-1/4) := by
+    have bound := (inv_lt_inv₀ nPositive (inv_pos.mpr dampingPos)).mpr after
+    rwa [inv_inv] at bound
+  have gain : (1/4 : ℝ) - (coordinate.re-1/4)/2 < realGap N := by
+    linarith only [gap_lower N p, small]
+  have nonneg : (0 : ℝ) ≤ N := Nat.cast_nonneg _
+  have normBound : ‖compensation N p‖ ≤ (N : ℝ)*(Real.sqrt (N : ℝ)*mass N) := by
+    rw [compensation, norm_smul, Complex.norm_natCast]
+    exact mul_le_mul_of_nonneg_left (remainder_norm N p) nonneg
+  change ‖compensation N p‖ + (coordinate.re-1/4)/2 ≤ (damping coordinate N).re
+  simp only [damping, Complex.add_re, Complex.sub_re, Complex.natCast_re, Complex.div_ofNat_re, Complex.one_re]
+  unfold realGap at gain
+  linarith only [gain, normBound]
+
+private theorem damping_nonzero (coordinate : ℂ) (right : 1/4 < coordinate.re) (n : Nat) :
+    damping coordinate (index coordinate n) ≠ 0 := by
+  have margin := margin_bound coordinate right n
+  have nonnegative := norm_nonneg (compensation (index coordinate n) (index_pos coordinate n))
+  intro zero
+  rw [zero, Complex.zero_re] at margin
+  linarith
+
+private theorem contraction (coordinate : ℂ) (right : 1/4 < coordinate.re) (n : Nat) :
+    let N := index coordinate n
+    ‖(damping coordinate N)⁻¹ • compensation N (index_pos coordinate n)‖ < 1 := by
+  let N := index coordinate n
+  let β := damping coordinate N
+  have gap := margin_bound coordinate right n
+  have halfPositive : 0 < (coordinate.re-1/4)/2 := by linarith
+  have strict : ‖compensation N (index_pos coordinate n)‖ < ‖β‖ :=
+    (lt_of_lt_of_le (lt_add_of_pos_right _ halfPositive) gap).trans_le (Complex.re_le_norm β)
+  change ‖β⁻¹ • compensation N (index_pos coordinate n)‖ < 1
+  rw [norm_smul, norm_inv, mul_comm, ← div_eq_mul_inv]
+  exact (div_lt_one (norm_pos_iff.mpr (damping_nonzero coordinate right n))).mpr strict
+
+private def clockUnit (coordinate : ℂ) (right : 1/4 < coordinate.re) (n : Nat) : Endˣ :=
+  let N := index coordinate n
+  let β := damping coordinate N
+  Units.map (algebraMap ℂ End).toMonoidHom (Units.mk0 β (damping_nonzero coordinate right n)) *
+    Units.oneSub (β⁻¹ • compensation N (index_pos coordinate n)) (contraction coordinate right n)
+
+/-- The finite inverse uses only the actual cell, its generated margin and the chosen parameter. -/
+def finiteEquiv (coordinate : ℂ) (right : 1/4 < coordinate.re) (n : Nat) : BurnolL2 ≃L[ℂ] BurnolL2 :=
+  ContinuousLinearEquiv.ofUnit (clockUnit coordinate right n)
+
+theorem finiteEquiv_source (coordinate : ℂ) (right : 1/4 < coordinate.re) (n : Nat) (value : BurnolL2) :
+    finiteEquiv coordinate right n value =
+      clock coordinate (index coordinate n) (index_pos coordinate n) value := by
+  let N := index coordinate n
+  let β := damping coordinate N
+  let tail := compensation N (index_pos coordinate n)
+  have same : (algebraMap ℂ End β) * (1 - β⁻¹ • tail) = β • (1 : End) - tail := by
+    rw [Algebra.algebraMap_eq_smul_one, smul_mul_assoc, one_mul, smul_sub, smul_smul,
+      mul_inv_cancel₀ (damping_nonzero coordinate right n), one_smul]
+  exact congrArg (fun op : End => op value) same
+
+/-- The actual real damping margin pays a uniform norm bound for every finite inverse. -/
+theorem inverse_bound (coordinate : ℂ) (right : 1/4 < coordinate.re) (n : Nat) (value : BurnolL2) :
+    ‖(finiteEquiv coordinate right n).symm value‖ ≤ ((coordinate.re-1/4)/2)⁻¹ * ‖value‖ := by
+  let N := index coordinate n
+  let β := damping coordinate N
+  let tail := compensation N (index_pos coordinate n)
+  let e := finiteEquiv coordinate right n
+  let x := e.symm value
+  let sigma := (coordinate.re-1/4)/2
+  have sigmaPos : 0 < sigma := by dsimp only [sigma]; linarith
+  have margin : ‖tail‖ + sigma ≤ ‖β‖ :=
+    (margin_bound coordinate right n).trans (Complex.re_le_norm _)
+  have split : value + tail x = β • x := by
+    have read : e x = β • x - tail x := finiteEquiv_source coordinate right n x
+    change e (e.symm value) = _ at read
+    rw [ContinuousLinearEquiv.apply_symm_apply] at read
+    rw [read, sub_add_cancel]
+  have triangle : ‖β‖ * ‖x‖ ≤ ‖value‖ + ‖tail x‖ := by
+    rw [← norm_smul, ← split]
+    exact norm_add_le value (tail x)
+  have lower := mul_le_mul_of_nonneg_right margin (norm_nonneg x)
+  have tailBound := tail.le_opNorm x
+  have bound : ‖x‖ * sigma ≤ ‖value‖ := by
+    rw [add_mul] at lower
+    linarith only [lower, triangle, tailBound]
+  change ‖x‖ ≤ sigma⁻¹ * ‖value‖
+  rw [mul_comm, ← div_eq_mul_inv]
+  exact (le_div_iff₀ sigmaPos).mpr bound
+
+/-- The source-generated finite inverse converges in the entire field to the actual original resolvent. -/
+theorem inverse_tendsto (coordinate : ℂ) (right : 1/4 < coordinate.re) (value : BurnolL2) :
+    Tendsto (fun n : Nat => (finiteEquiv coordinate right n).symm value) atTop
+      (𝓝 (-burnolDirectRightResolvent coordinate value)) := by
+  let old := -burnolDirectRightResolvent coordinate value
+  let start := tailStart coordinate
+  let k := ((coordinate.re-1/4)/2)⁻¹
+  have source := (BoundaryCountedGenerator.clock_applied_tendsto coordinate right value).comp
+    (tendsto_add_atTop_nat start)
+  have applied : Tendsto (fun n : Nat => finiteEquiv coordinate right n old) atTop (𝓝 value) := by
+    have sequence : (fun n : Nat => finiteEquiv coordinate right n old) =
+        (fun n : Nat => clock coordinate (n+1) (Nat.succ_pos n) old) ∘ (fun n : Nat => n+start) := by
+      funext n
+      rw [finiteEquiv_source]
+      simp only [Function.comp_apply, index, start, Nat.add_comm n (tailStart coordinate)]
+    rw [sequence]
+    exact source
+  have error : Tendsto (fun n : Nat => k * ‖value - finiteEquiv coordinate right n old‖) atTop (𝓝 0) := by
+    have defect := ((tendsto_const_nhds (x := value)).sub applied).norm.const_mul k
+    simpa only [sub_self, norm_zero, mul_zero] using defect
+  apply tendsto_iff_norm_sub_tendsto_zero.mpr
+  refine squeeze_zero' (Eventually.of_forall (fun _ => norm_nonneg _)) ?_ error
+  refine Eventually.of_forall (fun n => ?_)
+  have same : (finiteEquiv coordinate right n).symm value - old =
+      (finiteEquiv coordinate right n).symm (value - finiteEquiv coordinate right n old) := by
+    rw [map_sub, ContinuousLinearEquiv.symm_apply_apply]
+  change ‖(finiteEquiv coordinate right n).symm value - old‖ ≤ _
+  rw [same]
+  exact inverse_bound coordinate right n _
+
+variable (observation : GeneratedRiemannZeroObservation)
+variable (nontrivial : ¬ ∃ j : Nat, observation.coordinate = -2 * (j + 1))
+variable (half : OriginalKCombCalculation.Half observation) (depth : Nat)
+
+local notation "c" => burnolDivisionZeroCompletedMellinCoordinate observation half.down
+local notation "raw" => OriginalKCombFirstFullSourceDynamics.raw observation nontrivial half depth
+
+/-- The finite inverse acts on the actual old packet before the two original projections. -/
+theorem actual_next_tendsto (ordinal : Nat) :
+    let finite := fun n : Nat => -(finiteEquiv ((c).value/2) (right_quarter c) n).symm (raw ordinal)
+    Tendsto finite atTop (𝓝 (raw (ordinal+1))) ∧
+    Tendsto (fun n => (burnolEvenAmbientProjection (finite n), OriginalKCombPhysicalAction.physicalRemainder (finite n)))
+      atTop (𝓝 (burnolEvenAmbientProjection (raw (ordinal+1)),
+        OriginalKCombPhysicalAction.physicalRemainder (raw (ordinal+1)))) := by
+  let finite := fun n : Nat => -(finiteEquiv ((c).value/2) (right_quarter c) n).symm (raw ordinal)
+  have computed := (inverse_tendsto ((c).value/2) (right_quarter c) (raw ordinal)).neg
+  rw [neg_neg] at computed
+  have next : raw (ordinal+1) = burnolDirectRightResolvent ((c).value/2) (raw ordinal) := by
+    rw [OriginalKCombFirstFullSourceDynamics.raw_successor,
+      OriginalKCombCofinalRAction.original_R_direct observation nontrivial half]
+    rfl
+  have source : Tendsto finite atTop (𝓝 (raw (ordinal+1))) := by
+    rw [next]
+    exact computed
+  let read := burnolEvenAmbientProjection.prod OriginalKCombPhysicalAction.physicalRemainder
+  exact ⟨source, (read.continuous.tendsto _).comp source⟩
+
+end OriginalKFiniteOrderRelease.PositionGapCayley.OutsideLogRank.ParameterSource.FixedRead.ResidualProbe.BoundaryCountedContinuousInverse
+end NoIslandNoMagic.CanonicalRiemann.ClozelGeneralizedDual.CenteredGram.IntegralGraphJointAction
+end SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot

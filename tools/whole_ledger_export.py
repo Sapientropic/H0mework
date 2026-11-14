@@ -886,9 +886,9 @@ class Planner:
         for field in INHERITED_FIELDS:
             values = set()
             for prior in candidates:
-                if not prior.get(field):
+                value = sv.proof_body_rules(prior, root=self.root) if field == "proof_body_rewrites" else prior.get(field)
+                if not value:
                     continue
-                value = prior[field]
                 if field == "anonymous_consumer_names":
                     validated = sv._anonymous_consumer_rules(value)
                     heads = {rule["ordinal"]: rule.get("source_head", "example") for rule in value}

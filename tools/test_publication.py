@@ -457,6 +457,27 @@ class CompactProofBodyRewriteTests(unittest.TestCase):
                 self.assertEqual(s.reconstruct(paths=[path])[0][path], adapted)
                 self.assertEqual(s.reconstruct(paths=[path], exact=True)[0][path], original)
 
+    def test_referenced_rules_restore_the_same_bytes_and_validate_the_sidecar(self):
+        original = ("import Mathlib\n" + self.private_source).encode()
+        adapted = ("import Mathlib\n" + self.private_public).encode()
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "Proof.lean").write_bytes(adapted)
+            rules = self.rule()
+            reference = p.externalize_runtime_paths(
+                {"publication": {"kind": p.DECLARED_KIND, "runtime_paths": rules}}, root, "rules")
+            row = {"source_path": "Lean/Original/Proof.lean", "path": "Proof.lean",
+                   "source_sha256": p.sha(original), "target_sha256": p.sha(adapted),
+                   "view_sha256": p.sha(adapted), "proof_body_rewrites_ref": reference}
+            with patch.object(s, "ROOT", root):
+                self.assertEqual(s.module_views(row, {}), (adapted, original))
+                with self.assertRaisesRegex(s.ViewError, "both inline and referenced"):
+                    s.proof_body_rules({**row, "proof_body_rewrites": rules})
+                sidecar = root / reference["path"]
+                sidecar.write_bytes(sidecar.read_bytes() + b"unexpected")
+                with self.assertRaisesRegex(s.ViewError, "Compressed runtime metadata digest differs"):
+                    s.module_views(row, {})
+
     def test_term_proof_may_become_a_tactic_proof_with_the_same_statement(self):
         source = "theorem total (n : Nat) : n = n :=\n  rfl\n"
         public = "theorem total (n : Nat) : n = n := by\n  exact Eq.refl n\n"

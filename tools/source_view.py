@@ -33,7 +33,7 @@ import re
 import shutil
 import sys
 
-from publication import (PublicationError, verify_artifact, verify_file_sizes,
+from publication import (PublicationError, runtime_path_rules, verify_artifact, verify_file_sizes,
                          verify_repository_file_sizes)
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -1178,6 +1178,18 @@ def suggestion_index_postlude(text: str, components, *, reverse=False) -> str:
     return source if reverse else source + postlude
 
 
+def proof_body_rules(row: dict, *, root: Path | None = None) -> list[dict] | None:
+    reference = "proof_body_rewrites_ref"
+    if reference not in row:
+        return row.get("proof_body_rewrites")
+    if "proof_body_rewrites" in row:
+        raise ViewError("Proof body adaptations have both inline and referenced rules")
+    try:
+        return runtime_path_rules({"runtime_paths_ref": row[reference]}, root=root if root is not None else ROOT)
+    except PublicationError as error:
+        raise ViewError(f"Proof body adaptation metadata failed: {error}") from error
+
+
 def module_views(row: dict, inverse: dict) -> tuple[bytes, bytes]:
     """Return the public source-layout view and its exact pinned source."""
     raw = (ROOT / row["path"]).read_bytes()
@@ -1228,7 +1240,7 @@ def module_views(row: dict, inverse: dict) -> tuple[bytes, bytes]:
                for ordinal, name in _anonymous_consumer_rules(anonymous)):
             raise ViewError("Anonymous consumer observation prefix differs from its public module owner")
         original = name_anonymous_consumers(original, anonymous, reverse=True)
-    original = rewrite_proof_bodies(original, row.get("proof_body_rewrites"), reverse=True)
+    original = rewrite_proof_bodies(original, proof_body_rules(row), reverse=True)
     original = rewrite_noncomputable_markers(original, row.get("noncomputable_marker_rewrites"), reverse=True)
     original = rebind_signal_memory_defaults(original, row.get("signal_memory_default_rebindings"), reverse=True)
     original = comment_retired_private_opens(original, row.get("retired_private_opens"), reverse=True)
@@ -1270,7 +1282,7 @@ def alias_record(row: dict, alias) -> dict:
     """The row as seen through one of its shared source identities."""
     if (not isinstance(alias, dict)
             or set(alias) & {"path", "target", "target_sha256", "import_map", "proof_body_rewrites",
-                             "suggestion_name_exclusions", "audit_output_fallback"}
+                             "proof_body_rewrites_ref", "suggestion_name_exclusions", "audit_output_fallback"}
             or alias.get("source_sha256") != row["source_sha256"]
             or not MODULE.fullmatch(str(alias.get("original_module_name", "")))
             or not re.fullmatch(r"[0-9a-f]{40}", str(alias.get("source_revision", "")))

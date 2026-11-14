@@ -882,6 +882,42 @@ class StoreTests(unittest.TestCase):
         with patch.object(ReleaseStore, "pages", side_effect=AssertionError("listed again")):
             self.assertEqual(list(later.entries()), ["k.tar.zst"])
 
+    def test_same_stage_seed_uses_only_requested_modules_from_the_exact_donor(self):
+        root = self.root / "checkout"
+        plan = {"version": "v1", "compatibility": "fixed", "parts": {
+            "s1-01": {"stage": 1, "modules": ["H0mework.Donor", "H0mework.Unused"],
+                      "fingerprint": "donor"},
+            "s1-02": {"stage": 1, "modules": ["H0mework.New"], "fingerprint": "new",
+                      "progress_modules": ["H0mework.New", "H0mework.Donor"]},
+        }}
+        donor = self.root / "donor"
+        layout = donor / "Lean/.lake/build/lib/lean/H0mework"
+        layout.mkdir(parents=True)
+        for path in (layout / "Donor.olean", layout / "Donor.olean.private", layout / "Unused.olean"):
+            path.write_bytes(path.name.encode())
+        archive = self.root / "part.tar.zst"
+        pack(donor, ["H0mework.Donor", "H0mework.Unused"], archive)
+        store = FakeStore()
+        key = ci_plan.part_key(plan, "s1-01")
+        store.put(key + "-progress.tar.zst", archive)
+        config = root / ci_plan.SAME_STAGE_REUSE
+        config.parent.mkdir(parents=True)
+        store.put(key + ".tar.zst", archive)
+        # Explicit opt-in and exact stored fingerprint are both required.
+        with patch.object(store, "fetch", wraps=store.fetch) as fetch:
+            ci_plan.restore_same_stage_outputs(root, plan, "s1-02", store)
+            fetch.assert_not_called()
+            config.write_text("s1-02\ts1-01\n")
+            store.remove([key + ".tar.zst"])
+            ci_plan.restore_same_stage_outputs(root, plan, "s1-02", store)
+            fetch.assert_not_called()
+            store.put(key + ".tar.zst", archive)
+            ci_plan.restore_same_stage_outputs(root, plan, "s1-02", store)
+            self.assertEqual(fetch.call_args.args[0], key + ".tar.zst")
+        installed = root / "Lean/.lake/build/lib/lean/H0mework"
+        self.assertEqual(sorted(p.name for p in installed.iterdir()), ["Donor.olean", "Donor.olean.private"])
+        self.assertEqual((installed / "Donor.olean.private").read_bytes(), b"Donor.olean.private")
+
     def test_progress_and_full_archives_supersede_older_progress(self):
         store, archive = FakeStore(), self.file("part", b"outputs")
         save_archive(store, "k", archive, "1-1")

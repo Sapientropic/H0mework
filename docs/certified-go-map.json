@@ -1,0 +1,2162 @@
+{
+  "schema": "h0mework/certified-go-map@1",
+  "claims": [
+    {
+      "id": "GO1",
+      "paper": "certified-go",
+      "title": "全对手的原策略证书",
+      "statement": null,
+      "localized": {
+        "zh": {
+          "title": "全对手的原策略证书",
+          "statement": null
+        },
+        "en": {
+          "title": "Native strategy certificates against every opponent",
+          "statement": null
+        }
+      },
+      "written_proof": {
+        "zh": {
+          "location": "§4.3",
+          "paper_reference": "§4.3"
+        },
+        "en": {
+          "location": "§4.3",
+          "paper_reference": "§4.3"
+        }
+      },
+      "producers": [
+        {
+          "kind": "lean",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Go/BoardKernel.lean",
+          "source_commit": "e60a86058abcb74b7f2225f2383c182be8343785",
+          "source_sha256": "a4411b28d29c946cbf2b0b27c0486a9a704fb55271f4755f3c17d47649b2f6da",
+          "public": {
+            "module": "H0mework.Versions.Re60a8605.ReleaseMaterials.SaturationMonoid.ProcessGame.Go.BoardKernel",
+            "path": "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/BoardKernel.lean",
+            "sha256": "a4411b28d29c946cbf2b0b27c0486a9a704fb55271f4755f3c17d47649b2f6da",
+            "variant": "Re60a8605"
+          },
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.stoneHasLiberty",
+              "source_line": 206,
+              "line": 206
+            }
+          ],
+          "verification": {
+            "kernel": "pending",
+            "proof_package": "certified-go-re60a8605"
+          }
+        },
+        {
+          "kind": "lean",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Go/RulesKernel.lean",
+          "source_commit": "e60a86058abcb74b7f2225f2383c182be8343785",
+          "source_sha256": "1ad4207ef63f8f2410150ff4226ab710fe101db4b040d0f1084bf7930930418e",
+          "public": {
+            "module": "H0mework.Versions.Re60a8605.ReleaseMaterials.SaturationMonoid.ProcessGame.Go.RulesKernel",
+            "path": "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/RulesKernel.lean",
+            "sha256": "8affac4f19887ef70250b56acc4db6e2d7f4074933a26b96488f81c4ba79e465",
+            "variant": "Re60a8605"
+          },
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.nativeStep?",
+              "source_line": 250,
+              "line": 250
+            }
+          ],
+          "verification": {
+            "kernel": "pending",
+            "proof_package": "certified-go-re60a8605"
+          }
+        },
+        {
+          "kind": "lean",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Go/ScoreReadout.lean",
+          "source_commit": "e60a86058abcb74b7f2225f2383c182be8343785",
+          "source_sha256": "19708627e81e79d8f159fabc64efb1b4cbcd612fc41b1acf3f4e8fdd8d81c77f",
+          "public": {
+            "module": "H0mework.Versions.Re60a8605.ReleaseMaterials.SaturationMonoid.ProcessGame.Go.ScoreReadout",
+            "path": "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/ScoreReadout.lean",
+            "sha256": "18557f0a4e84be631eb5fdf9215da515e840c906a1cca2e43b47ef2f6f92f8b6",
+            "variant": "Re60a8605"
+          },
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.areaScore",
+              "source_line": 39,
+              "line": 39
+            }
+          ],
+          "verification": {
+            "kernel": "pending",
+            "proof_package": "certified-go-re60a8605"
+          }
+        },
+        {
+          "kind": "lean",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Go/CriticalKomi/StrategyCertificate.lean",
+          "source_commit": "e60a86058abcb74b7f2225f2383c182be8343785",
+          "source_sha256": "0525fe8f09f6eaa94fa1ad1cf20baada5bbc60f6a817e8c011800dfa686ecfbe",
+          "public": {
+            "module": "H0mework.Versions.Re60a8605.ReleaseMaterials.SaturationMonoid.ProcessGame.Go.CriticalKomi.StrategyCertificate",
+            "path": "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/StrategyCertificate.lean",
+            "sha256": "77b2d391d0d502e81f536032252a04bf13d228fed6c4129b2903beecbbbc62e2",
+            "variant": "Re60a8605"
+          },
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.CriticalKomi.Certificate",
+              "source_line": 56,
+              "line": 56
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.CriticalKomi.Certificate.closed",
+              "source_line": 118,
+              "line": 118
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.CriticalKomi.Certificate.policy",
+              "source_line": 186,
+              "line": 186
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.CriticalKomi.Certificate.guarantee",
+              "source_line": 190,
+              "line": 190
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.CriticalKomi.Certificate.faceGuarantee",
+              "source_line": 315,
+              "line": 315
+            }
+          ],
+          "verification": {
+            "kernel": "pending",
+            "proof_package": "certified-go-re60a8605"
+          }
+        }
+      ],
+      "direct_consumers": [
+        {
+          "kind": "lean",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Go/CriticalKomi/InitialColourPass.lean",
+          "source_commit": "e60a86058abcb74b7f2225f2383c182be8343785",
+          "source_sha256": "e5b8af753d088300169dbfedb3eae00ae5a685a817a549980a98f2a8c621967c",
+          "public": {
+            "module": "H0mework.Versions.Re60a8605.ReleaseMaterials.SaturationMonoid.ProcessGame.Go.CriticalKomi.InitialColourPass",
+            "path": "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/InitialColourPass.lean",
+            "sha256": "46664c7ce1c8211bd6a740c3fdb391dffe8ee7a3dfce640268e968579b37c554",
+            "variant": "Re60a8605"
+          },
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.CriticalKomi.InitialColourPass.initial_nonnegative_policy",
+              "source_line": 492,
+              "line": 492
+            }
+          ],
+          "verification": {
+            "kernel": "pending",
+            "proof_package": "certified-go-re60a8605"
+          }
+        }
+      ],
+      "resources": []
+    },
+    {
+      "id": "GO2",
+      "paper": "certified-go",
+      "title": "任意尺寸空盘的首手非负性",
+      "statement": null,
+      "localized": {
+        "zh": {
+          "title": "任意尺寸空盘的首手非负性",
+          "statement": null
+        },
+        "en": {
+          "title": "First-player non-negativity on every square board",
+          "statement": null
+        }
+      },
+      "written_proof": {
+        "zh": {
+          "location": "§3",
+          "paper_reference": "§3"
+        },
+        "en": {
+          "location": "§3",
+          "paper_reference": "§3"
+        }
+      },
+      "producers": [
+        {
+          "kind": "lean",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Go/CriticalKomi/PositionFace.lean",
+          "source_commit": "e60a86058abcb74b7f2225f2383c182be8343785",
+          "source_sha256": "3ec5bb267b0402fd8fc276e630660f3a37ebe46bac4aa7cd354c93cd72990a10",
+          "public": {
+            "module": "H0mework.Versions.Re60a8605.ReleaseMaterials.SaturationMonoid.ProcessGame.Go.CriticalKomi.PositionFace",
+            "path": "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/PositionFace.lean",
+            "sha256": "46905aa6fe67eafa43b5c56c12118598ce946efa39378e0bffae85b64e710f86",
+            "variant": "Re60a8605"
+          },
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.CriticalKomi.PositionFace.legalStep_lift",
+              "source_line": 68,
+              "line": 68
+            }
+          ],
+          "verification": {
+            "kernel": "pending",
+            "proof_package": "certified-go-re60a8605"
+          }
+        },
+        {
+          "kind": "lean",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Go/CriticalKomi/Termination.lean",
+          "source_commit": "e60a86058abcb74b7f2225f2383c182be8343785",
+          "source_sha256": "2bf3b15c24dd979e44771cf18bf805508c240d817b97d7a000b0b62034456e15",
+          "public": {
+            "module": "H0mework.Versions.Re60a8605.ReleaseMaterials.SaturationMonoid.ProcessGame.Go.CriticalKomi.Termination",
+            "path": "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/Termination.lean",
+            "sha256": "72b78bd6987866a0db99e39adfb8c3e922a17276dacef3927bd850fadfdedafc",
+            "variant": "Re60a8605"
+          },
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.CriticalKomi.terminationRank",
+              "source_line": 28,
+              "line": 28
+            }
+          ],
+          "verification": {
+            "kernel": "pending",
+            "proof_package": "certified-go-re60a8605"
+          }
+        },
+        {
+          "kind": "lean",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Go/CriticalKomi/InitialColourPass.lean",
+          "source_commit": "e60a86058abcb74b7f2225f2383c182be8343785",
+          "source_sha256": "e5b8af753d088300169dbfedb3eae00ae5a685a817a549980a98f2a8c621967c",
+          "public": {
+            "module": "H0mework.Versions.Re60a8605.ReleaseMaterials.SaturationMonoid.ProcessGame.Go.CriticalKomi.InitialColourPass",
+            "path": "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/InitialColourPass.lean",
+            "sha256": "46664c7ce1c8211bd6a740c3fdb391dffe8ee7a3dfce640268e968579b37c554",
+            "variant": "Re60a8605"
+          },
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.CriticalKomi.InitialColourPass.forcing_dichotomy",
+              "source_line": 293,
+              "line": 293
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.CriticalKomi.InitialColourPass.initial_not_white_negative",
+              "source_line": 440,
+              "line": 440
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.CriticalKomi.InitialColourPass.initial_nonnegative_certificate",
+              "source_line": 486,
+              "line": 486
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.CriticalKomi.InitialColourPass.exact_value_bounds",
+              "source_line": 502,
+              "line": 502
+            }
+          ],
+          "verification": {
+            "kernel": "pending",
+            "proof_package": "certified-go-re60a8605"
+          }
+        }
+      ],
+      "direct_consumers": [
+        {
+          "kind": "lean",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Go/CriticalKomi/CalculationRuntime.lean",
+          "source_commit": "e60a86058abcb74b7f2225f2383c182be8343785",
+          "source_sha256": "f31f2d025d7b9509ec4ddb679aa5046a8109caad904f2ca746945435a69100cb",
+          "public": {
+            "module": "H0mework.Versions.Re60a8605.ReleaseMaterials.SaturationMonoid.ProcessGame.Go.CriticalKomi.CalculationRuntime",
+            "path": "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/CalculationRuntime.lean",
+            "sha256": "3ababee34e0c16b31b782fde3d451c545ce3da0aff8cba9c706b2108ebfdb23d",
+            "variant": "Re60a8605"
+          },
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.CriticalKomi.CalculationRuntime.mathematicalRange",
+              "source_line": 308,
+              "line": 308
+            }
+          ],
+          "verification": {
+            "kernel": "pending",
+            "proof_package": "certified-go-re60a8605"
+          }
+        }
+      ],
+      "resources": []
+    },
+    {
+      "id": "GO3",
+      "paper": "certified-go",
+      "title": "区域反链 DAG 的全盘提升",
+      "statement": null,
+      "localized": {
+        "zh": {
+          "title": "区域反链 DAG 的全盘提升",
+          "statement": null
+        },
+        "en": {
+          "title": "Whole-board lifting from regional antichain DAGs",
+          "statement": null
+        }
+      },
+      "written_proof": {
+        "zh": {
+          "location": "§5",
+          "paper_reference": "§5"
+        },
+        "en": {
+          "location": "§5",
+          "paper_reference": "§5"
+        }
+      },
+      "producers": [
+        {
+          "kind": "lean",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Go/CriticalKomi/RegionProjection.lean",
+          "source_commit": "e60a86058abcb74b7f2225f2383c182be8343785",
+          "source_sha256": "b2b47ec278f060273dcf8e70eb3b44459aab6c8fc5041c9caa43a3847c229b48",
+          "public": {
+            "module": "H0mework.Versions.Re60a8605.ReleaseMaterials.SaturationMonoid.ProcessGame.Go.CriticalKomi.RegionProjection",
+            "path": "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/RegionProjection.lean",
+            "sha256": "5e722c64cffb41eff07533aa98e72d0b2db41aeffb7d8eefb021b2b520c0f450",
+            "variant": "Re60a8605"
+          },
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.CriticalKomi.RegionProjection.restrict",
+              "source_line": 14,
+              "line": 14
+            }
+          ],
+          "verification": {
+            "kernel": "pending",
+            "proof_package": "certified-go-re60a8605"
+          }
+        },
+        {
+          "kind": "lean",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Go/CriticalKomi/ExteriorLiberty.lean",
+          "source_commit": "e60a86058abcb74b7f2225f2383c182be8343785",
+          "source_sha256": "19568a79adf37e33b2c99a3d4d779c0d22d60dd4e11fdbf561c4a77604daf140",
+          "public": {
+            "module": "H0mework.Versions.Re60a8605.ReleaseMaterials.SaturationMonoid.ProcessGame.Go.CriticalKomi.ExteriorLiberty",
+            "path": "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/ExteriorLiberty.lean",
+            "sha256": "25ca0355b00327120587480942265f9b4cf13390d60ddad7eab4255edbd70486",
+            "variant": "Re60a8605"
+          },
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.CriticalKomi.ExteriorLiberty.occupiedPoints",
+              "source_line": 170,
+              "line": 170
+            }
+          ],
+          "verification": {
+            "kernel": "pending",
+            "proof_package": "certified-go-re60a8605"
+          }
+        },
+        {
+          "kind": "lean",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Go/CriticalKomi/RegionSparse.lean",
+          "source_commit": "e60a86058abcb74b7f2225f2383c182be8343785",
+          "source_sha256": "7e5779f3a635d03fd0b24fa67bb3607be012cbea9da47a3444d2ba23d5de34bf",
+          "public": {
+            "module": "H0mework.Versions.Re60a8605.ReleaseMaterials.SaturationMonoid.ProcessGame.Go.CriticalKomi.RegionSparse",
+            "path": "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/RegionSparse.lean",
+            "sha256": "eabfbc292f7c16c4a49ec1f2bf735a60af424308639f8d422e0cd0718f499d1d",
+            "variant": "Re60a8605"
+          },
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.CriticalKomi.RegionSparse.own_board_exact",
+              "source_line": 75,
+              "line": 75
+            }
+          ],
+          "verification": {
+            "kernel": "pending",
+            "proof_package": "certified-go-re60a8605"
+          }
+        },
+        {
+          "kind": "lean",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Go/CriticalKomi/CoreHistory.lean",
+          "source_commit": "e60a86058abcb74b7f2225f2383c182be8343785",
+          "source_sha256": "78fad85f2b864526488ac5a8f656287c3e78285fb218d503e938493563eb62ff",
+          "public": {
+            "module": "H0mework.Versions.Re60a8605.ReleaseMaterials.SaturationMonoid.ProcessGame.Go.CriticalKomi.CoreHistory",
+            "path": "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/CoreHistory.lean",
+            "sha256": "12c704fe3da41e2492be3678b1aab94c42ab09d009b5ee6c14975313ff1567fa",
+            "variant": "Re60a8605"
+          },
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.CriticalKomi.CoreHistory.no_repetition",
+              "source_line": 25,
+              "line": 25
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.CriticalKomi.CoreHistory.step",
+              "source_line": 35,
+              "line": 35
+            }
+          ],
+          "verification": {
+            "kernel": "pending",
+            "proof_package": "certified-go-re60a8605"
+          }
+        },
+        {
+          "kind": "lean",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Go/CriticalKomi/RetainedCoreHistory.lean",
+          "source_commit": "e60a86058abcb74b7f2225f2383c182be8343785",
+          "source_sha256": "cba6d167763c7fbd06b54d89a0457653d5167b61a019f4a0a2af3edf3ea27fbe",
+          "public": {
+            "module": "H0mework.Versions.Re60a8605.ReleaseMaterials.SaturationMonoid.ProcessGame.Go.CriticalKomi.RetainedCoreHistory",
+            "path": "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/RetainedCoreHistory.lean",
+            "sha256": "a041621f29f94b80789e9f25bb33f704cb6c9bf06838623b0f67697d24f5f11c",
+            "variant": "Re60a8605"
+          },
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.CriticalKomi.CoreHistory.retain",
+              "source_line": 52,
+              "line": 52
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.CriticalKomi.CoreHistory.fresh_iff_retained",
+              "source_line": 75,
+              "line": 75
+            }
+          ],
+          "verification": {
+            "kernel": "pending",
+            "proof_package": "certified-go-re60a8605"
+          }
+        },
+        {
+          "kind": "lean",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Go/CriticalKomi/RegionalProgram.lean",
+          "source_commit": "e60a86058abcb74b7f2225f2383c182be8343785",
+          "source_sha256": "ec55830a671a6a1839e88b678a27389af3e8f1c36f98d9b0195f6d1ac7eb9ee8",
+          "public": {
+            "module": "H0mework.Versions.Re60a8605.ReleaseMaterials.SaturationMonoid.ProcessGame.Go.CriticalKomi.RegionalProgram",
+            "path": "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/RegionalProgram.lean",
+            "sha256": "10415dc26963ed8cf2f9c8037ce7ba7866a14dd9aeb2362fd12722243caebbd6",
+            "variant": "Re60a8605"
+          },
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.CriticalKomi.RegionalProgram.HistoryMatches",
+              "source_line": 19,
+              "line": 19
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.CriticalKomi.RegionalProgram.HistoryMatches.step",
+              "source_line": 110,
+              "line": 110
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.CriticalKomi.RegionalProgram.HistoryMatches.after_subset",
+              "source_line": 120,
+              "line": 120
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.CriticalKomi.RegionalProgram.SourceAt",
+              "source_line": 490,
+              "line": 490
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.CriticalKomi.RegionalProgram.SourceAt.credit_step",
+              "source_line": 527,
+              "line": 527
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.CriticalKomi.RegionalProgram.compileNode?",
+              "source_line": 741,
+              "line": 741
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.CriticalKomi.RegionalProgram.compileDAG",
+              "source_line": 828,
+              "line": 828
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.CriticalKomi.RegionalProgram.Compiled.at?",
+              "source_line": 845,
+              "line": 845
+            }
+          ],
+          "verification": {
+            "kernel": "pending",
+            "proof_package": "certified-go-re60a8605"
+          }
+        }
+      ],
+      "direct_consumers": [],
+      "resources": [
+        {
+          "kind": "artifact",
+          "source_commit": "e60a86058abcb74b7f2225f2383c182be8343785",
+          "source_path": "Lean/scratch/GoCriticalKomi/EarlierSourceSearch/results/retained-w31/lookup.json",
+          "source_sha256": "f46cba70ac72880b4df2877c5a50b96f4cefee780881409167e50894086aa976",
+          "public": {
+            "path": "evidence/certified-go/original/Re60a8605/Lean/scratch/GoCriticalKomi/EarlierSourceSearch/results/retained-w31/lookup.json",
+            "sha256": "f46cba70ac72880b4df2877c5a50b96f4cefee780881409167e50894086aa976"
+          },
+          "verification": {
+            "identity": "mapped"
+          }
+        },
+        {
+          "kind": "artifact",
+          "source_commit": "e60a86058abcb74b7f2225f2383c182be8343785",
+          "source_path": "Lean/scratch/GoCriticalKomi/EarlierSourceSearch/.cache/w01-wide-core-b12-2-ecraabvz/vital_birth_witness.json.gz",
+          "source_sha256": "a04c27de90716d0feb26d112a4fb1a002dbaedffdd48b6a9bb93c265751c513d",
+          "public": {
+            "path": "evidence/certified-go/original/Re60a8605/Lean/scratch/GoCriticalKomi/EarlierSourceSearch/.cache/w01-wide-core-b12-2-ecraabvz/vital_birth_witness.json.gz",
+            "sha256": "a04c27de90716d0feb26d112a4fb1a002dbaedffdd48b6a9bb93c265751c513d"
+          },
+          "verification": {
+            "identity": "mapped"
+          },
+          "source_origin": {
+            "kind": "retained-replay-input",
+            "original_path": "Lean/scratch/GoCriticalKomi/EarlierSourceSearch/.cache/w01-wide-core-b12-2-ecraabvz/vital_birth_witness.json.gz",
+            "receipt_commit": "1e0da1732d34be419181ae3c387462376411a902",
+            "receipt_path": "evidence/certified-go/input-custody.json",
+            "receipt_pointer": "/inputs/1",
+            "receipt_repository": "https://github.com/Sapientropic/H0mework.git",
+            "receipt_sha256": "d027a93b40c02a9d3a7c526617bbf56cf3cdce821c3d22af9668caeabc31f59f"
+          }
+        }
+      ],
+      "standalone_consumers": [
+        {
+          "kind": "lean",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Regression/CriticalKomi/RunRegionalProgram19.lean",
+          "source_commit": "e60a86058abcb74b7f2225f2383c182be8343785",
+          "source_sha256": "9dd99960ec0dbf13bf44b1bb3b0d6183d55386b482312e38a9b55e5d713d2596",
+          "public": {
+            "module": "H0mework.Versions.Re60a8605.ReleaseMaterials.SaturationMonoid.ProcessGame.Regression.CriticalKomi.RunRegionalProgram19",
+            "path": "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Regression/CriticalKomi/RunRegionalProgram19.lean",
+            "sha256": "dde4edd4a5ba6153df6c801f76c1fa1cee79fe1deda5182a7a76a3856a4e851a",
+            "variant": "Re60a8605"
+          },
+          "commands": [
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.CriticalKomi.RegionalProgram.Control.runDAG",
+              "source_line": 129,
+              "line": 129
+            },
+            {
+              "qualified_name": "main",
+              "source_line": 273,
+              "line": 273
+            }
+          ]
+        },
+        {
+          "kind": "lean",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Regression/CriticalKomi/RunRegionalDAG19.lean",
+          "source_commit": "e60a86058abcb74b7f2225f2383c182be8343785",
+          "source_sha256": "61ab9a5713ba76117fea90ec24b8b6039d936cc6116a755dccf165193a76bac2",
+          "public": {
+            "module": "H0mework.Versions.Re60a8605.ReleaseMaterials.SaturationMonoid.ProcessGame.Regression.CriticalKomi.RunRegionalDAG19",
+            "path": "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Regression/CriticalKomi/RunRegionalDAG19.lean",
+            "sha256": "f9d3881d8ae84d7f75f026c0f2a42bf32aa413d335fe2e9182b39b1822b7cdc4",
+            "variant": "Re60a8605"
+          },
+          "commands": [
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.CriticalKomi.RegionalDAGRun.run",
+              "source_line": 72,
+              "line": 72
+            },
+            {
+              "qualified_name": "main",
+              "source_line": 110,
+              "line": 110
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "GO4",
+      "paper": "certified-go",
+      "title": "驻敌要害室、多群活棋及钩形全端口",
+      "statement": null,
+      "localized": {
+        "zh": {
+          "title": "驻敌要害室、多群活棋及钩形全端口",
+          "statement": null
+        },
+        "en": {
+          "title": "Invaded vital chambers, coalition life and the hook enclosure",
+          "statement": null
+        }
+      },
+      "written_proof": {
+        "zh": {
+          "location": "§4; §6.2",
+          "paper_reference": "§4; §6.2"
+        },
+        "en": {
+          "location": "§4; §6.2",
+          "paper_reference": "§4; §6.2"
+        }
+      },
+      "producers": [
+        {
+          "kind": "lean",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Go/CriticalKomi/EyeCoalition.lean",
+          "source_commit": "e60a86058abcb74b7f2225f2383c182be8343785",
+          "source_sha256": "04080b6c5b27e06e45b3f6bdabbd15c44a63a30842fe0cd4847185b7911396fd",
+          "public": {
+            "module": "H0mework.Versions.Re60a8605.ReleaseMaterials.SaturationMonoid.ProcessGame.Go.CriticalKomi.EyeCoalition",
+            "path": "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/EyeCoalition.lean",
+            "sha256": "0b6106ea125b22e12931a2fc4a744cbde8e83406703738b34c8bbee02e4f7e35",
+            "variant": "Re60a8605"
+          },
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.CriticalKomi.EyeCoalition.Geometry",
+              "source_line": 17,
+              "line": 17
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.CriticalKomi.EyeCoalition.points_area",
+              "source_line": 138,
+              "line": 138
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.CriticalKomi.EyeCoalition.closed",
+              "source_line": 167,
+              "line": 167
+            }
+          ],
+          "verification": {
+            "kernel": "pending",
+            "proof_package": "certified-go-re60a8605"
+          }
+        },
+        {
+          "kind": "lean",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Go/CriticalKomi/VitalChambers.lean",
+          "source_commit": "e60a86058abcb74b7f2225f2383c182be8343785",
+          "source_sha256": "2fac6407671190f02e4f3422ba2e36e4e1db4fde8ad239128ab25207743530a4",
+          "public": {
+            "module": "H0mework.Versions.Re60a8605.ReleaseMaterials.SaturationMonoid.ProcessGame.Go.CriticalKomi.VitalChambers",
+            "path": "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/VitalChambers.lean",
+            "sha256": "296a8ae2edc3824fa821a60992609013ad21d54253e99fda1350113fa9253b62",
+            "variant": "Re60a8605"
+          },
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.CriticalKomi.VitalChambers.Geometry",
+              "source_line": 16,
+              "line": 16
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.CriticalKomi.VitalChambers.points_area",
+              "source_line": 190,
+              "line": 190
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.CriticalKomi.VitalChambers.closed",
+              "source_line": 219,
+              "line": 219
+            }
+          ],
+          "verification": {
+            "kernel": "pending",
+            "proof_package": "certified-go-re60a8605"
+          }
+        },
+        {
+          "kind": "lean",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Go/CriticalKomi/VitalBirthRecognize.lean",
+          "source_commit": "e60a86058abcb74b7f2225f2383c182be8343785",
+          "source_sha256": "854e5d88efb9479e7d877146b1d4fde4dbd8fe4a2b946a18d8c9cfd5e1870e3f",
+          "public": {
+            "module": "H0mework.Versions.Re60a8605.ReleaseMaterials.SaturationMonoid.ProcessGame.Go.CriticalKomi.VitalBirthRecognize",
+            "path": "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/VitalBirthRecognize.lean",
+            "sha256": "df7dd222e0a620ff1ad9de3223ae917b76fc9de4c433ba859ddfd2bdca87d5e2",
+            "variant": "Re60a8605"
+          },
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.CriticalKomi.VitalBirthRecognize.recognize?",
+              "source_line": 103,
+              "line": 103
+            }
+          ],
+          "verification": {
+            "kernel": "pending",
+            "proof_package": "certified-go-re60a8605"
+          }
+        },
+        {
+          "kind": "lean",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Go/CriticalKomi/HookSource.lean",
+          "source_commit": "e60a86058abcb74b7f2225f2383c182be8343785",
+          "source_sha256": "8433fed7abff3c5b30a03310cb89abf23bc4808b19d6959d969f88319550a364",
+          "public": {
+            "module": "H0mework.Versions.Re60a8605.ReleaseMaterials.SaturationMonoid.ProcessGame.Go.CriticalKomi.HookSource",
+            "path": "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/HookSource.lean",
+            "sha256": "4a8363efc0b3f0e733854ec24eaa315348b6d36912d9be93aee49348eefe1d33",
+            "variant": "Re60a8605"
+          },
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.CriticalKomi.HookSource.Source",
+              "source_line": 10,
+              "line": 10
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.CriticalKomi.HookSource.certificate?",
+              "source_line": 364,
+              "line": 364
+            }
+          ],
+          "verification": {
+            "kernel": "pending",
+            "proof_package": "certified-go-re60a8605"
+          }
+        }
+      ],
+      "direct_consumers": [
+        {
+          "kind": "lean",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Go/CriticalKomi/StrategyCertificate.lean",
+          "source_commit": "e60a86058abcb74b7f2225f2383c182be8343785",
+          "source_sha256": "0525fe8f09f6eaa94fa1ad1cf20baada5bbc60f6a817e8c011800dfa686ecfbe",
+          "public": {
+            "module": "H0mework.Versions.Re60a8605.ReleaseMaterials.SaturationMonoid.ProcessGame.Go.CriticalKomi.StrategyCertificate",
+            "path": "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/StrategyCertificate.lean",
+            "sha256": "77b2d391d0d502e81f536032252a04bf13d228fed6c4129b2903beecbbbc62e2",
+            "variant": "Re60a8605"
+          },
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.CriticalKomi.Certificate.closed",
+              "source_line": 118,
+              "line": 118
+            }
+          ],
+          "verification": {
+            "kernel": "pending",
+            "proof_package": "certified-go-re60a8605"
+          }
+        },
+        {
+          "kind": "lean",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Go/CriticalKomi/SourceLeaf.lean",
+          "source_commit": "e60a86058abcb74b7f2225f2383c182be8343785",
+          "source_sha256": "b648833089802c929501df5579584d18d05ea9d20d01b769466f2e008100f2ea",
+          "public": {
+            "module": "H0mework.Versions.Re60a8605.ReleaseMaterials.SaturationMonoid.ProcessGame.Go.CriticalKomi.SourceLeaf",
+            "path": "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/SourceLeaf.lean",
+            "sha256": "5c0d3624a8150e7fd222b956dddc3c1d77a1f4c1c8e5b70d35e22d8429c6be6a",
+            "variant": "Re60a8605"
+          },
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.CriticalKomi.SourceLeaf.hookSourceResult?",
+              "source_line": 171,
+              "line": 171
+            }
+          ],
+          "verification": {
+            "kernel": "pending",
+            "proof_package": "certified-go-re60a8605"
+          }
+        }
+      ],
+      "resources": [],
+      "standalone_consumers": [
+        {
+          "kind": "lean",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Regression/CriticalKomi/RunEyeCoalition19.lean",
+          "source_commit": "e60a86058abcb74b7f2225f2383c182be8343785",
+          "source_sha256": "a830cd06590d76e9363e5f03e7ee5266625f314daa11cf75713d06f62fde4989",
+          "public": {
+            "module": "H0mework.Versions.Re60a8605.ReleaseMaterials.SaturationMonoid.ProcessGame.Regression.CriticalKomi.RunEyeCoalition19",
+            "path": "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Regression/CriticalKomi/RunEyeCoalition19.lean",
+            "sha256": "130cafb04c1db0778246d39d4f17ea9cbb47771621e736aee28b676ff6ee6721",
+            "variant": "Re60a8605"
+          },
+          "commands": [
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.CriticalKomi.EyeCoalitionControl.check",
+              "source_line": 20,
+              "line": 20
+            },
+            {
+              "qualified_name": "main",
+              "source_line": 66,
+              "line": 66
+            }
+          ]
+        },
+        {
+          "kind": "lean",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Regression/CriticalKomi/RunVitalChambers19.lean",
+          "source_commit": "e60a86058abcb74b7f2225f2383c182be8343785",
+          "source_sha256": "524603e5803e36423d4e6afad91e59654a7695b0a8f77d9d5e38fc54e247bd91",
+          "public": {
+            "module": "H0mework.Versions.Re60a8605.ReleaseMaterials.SaturationMonoid.ProcessGame.Regression.CriticalKomi.RunVitalChambers19",
+            "path": "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Regression/CriticalKomi/RunVitalChambers19.lean",
+            "sha256": "643b43fbb9cd33a1fd8028e09d3e0052600e99d5d641092b63d078b67a5b1b17",
+            "variant": "Re60a8605"
+          },
+          "commands": [
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.CriticalKomi.VitalChamberControl.run",
+              "source_line": 15,
+              "line": 15
+            },
+            {
+              "qualified_name": "main",
+              "source_line": 72,
+              "line": 72
+            }
+          ]
+        },
+        {
+          "kind": "lean",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Regression/CriticalKomi/RunHookSource19.lean",
+          "source_commit": "e60a86058abcb74b7f2225f2383c182be8343785",
+          "source_sha256": "e09464c90129fdb1bb4b2f7ad7d3f609ae959964678bc57a1a496faece8b9d79",
+          "public": {
+            "module": "H0mework.Versions.Re60a8605.ReleaseMaterials.SaturationMonoid.ProcessGame.Regression.CriticalKomi.RunHookSource19",
+            "path": "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Regression/CriticalKomi/RunHookSource19.lean",
+            "sha256": "6c91566547d89ec15d13c13dcb6201085d53b1137e86a406f6d3f9af1dcac0c4",
+            "variant": "Re60a8605"
+          },
+          "commands": [
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.CriticalKomi.HookSourceControl.run",
+              "source_line": 97,
+              "line": 97
+            },
+            {
+              "qualified_name": "main",
+              "source_line": 132,
+              "line": 132
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "GO5",
+      "paper": "certified-go",
+      "title": "19×19 实际 W31 区域证书",
+      "statement": null,
+      "localized": {
+        "zh": {
+          "title": "19×19 实际 W31 区域证书",
+          "statement": null
+        },
+        "en": {
+          "title": "The 19×19 W31 certificate",
+          "statement": null
+        }
+      },
+      "written_proof": {
+        "zh": {
+          "location": "§6.2",
+          "paper_reference": "§6.2"
+        },
+        "en": {
+          "location": "§6.2",
+          "paper_reference": "§6.2"
+        }
+      },
+      "producers": [
+        {
+          "kind": "lean",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Go/CriticalKomi/RegionalProgramCache.lean",
+          "source_commit": "e60a86058abcb74b7f2225f2383c182be8343785",
+          "source_sha256": "2e7ae199e86c46c7b33b9519b961a4274b6be2c77b0b081f6a120f91e7beea27",
+          "public": {
+            "module": "H0mework.Versions.Re60a8605.ReleaseMaterials.SaturationMonoid.ProcessGame.Go.CriticalKomi.RegionalProgramCache",
+            "path": "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/RegionalProgramCache.lean",
+            "sha256": "5f48c16a0b35a65ee453d897086fa8074d388840395d5f68fe238daa5d1758d6",
+            "variant": "Re60a8605"
+          },
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.CriticalKomi.RegionalDAGCache.compile",
+              "source_line": 108,
+              "line": 108
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.CriticalKomi.RegionalDAGCache.Provider",
+              "source_line": 157,
+              "line": 157
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.CriticalKomi.RegionalDAGCache.provider_at_eq",
+              "source_line": 170,
+              "line": 170
+            }
+          ],
+          "verification": {
+            "kernel": "pending",
+            "proof_package": "certified-go-re60a8605"
+          }
+        }
+      ],
+      "direct_consumers": [],
+      "resources": [
+        {
+          "kind": "artifact",
+          "source_commit": "e60a86058abcb74b7f2225f2383c182be8343785",
+          "source_path": "Lean/scratch/GoCriticalKomi/EarlierSourceSearch/results/retained-w31/original-certificate.json",
+          "source_sha256": "78c089fa45f315e54676fa39571df1596653ca609cea90031496760a75ac6987",
+          "public": {
+            "path": "evidence/certified-go/original/Re60a8605/Lean/scratch/GoCriticalKomi/EarlierSourceSearch/results/retained-w31/original-certificate.json",
+            "sha256": "78c089fa45f315e54676fa39571df1596653ca609cea90031496760a75ac6987"
+          },
+          "verification": {
+            "identity": "mapped"
+          }
+        },
+        {
+          "kind": "artifact",
+          "source_commit": "e60a86058abcb74b7f2225f2383c182be8343785",
+          "source_path": "Lean/scratch/GoCriticalKomi/EarlierSourceSearch/results/retained-w31/original-certificate.log",
+          "source_sha256": "550159e1f6b923f01085d3baae80d81088fec4ead88ca0dfe0bb5ab8c4b2bd1c",
+          "public": {
+            "path": "evidence/certified-go/original/Re60a8605/Lean/scratch/GoCriticalKomi/EarlierSourceSearch/results/retained-w31/original-certificate.log",
+            "sha256": "550159e1f6b923f01085d3baae80d81088fec4ead88ca0dfe0bb5ab8c4b2bd1c"
+          },
+          "verification": {
+            "identity": "mapped"
+          }
+        },
+        {
+          "kind": "artifact",
+          "source_commit": "e60a86058abcb74b7f2225f2383c182be8343785",
+          "source_path": "Lean/scratch/GoCriticalKomi/EarlierSourceSearch/.cache/retained-w31-y2oi1paf/strategy_dag.json.gz",
+          "source_sha256": "21b609590cada2a55d318dfc0c2c570e2e80c1ce6429dc5536698ba0a7b730b2",
+          "public": {
+            "path": "evidence/certified-go/original/Re60a8605/Lean/scratch/GoCriticalKomi/EarlierSourceSearch/.cache/retained-w31-y2oi1paf/strategy_dag.json.gz",
+            "sha256": "21b609590cada2a55d318dfc0c2c570e2e80c1ce6429dc5536698ba0a7b730b2"
+          },
+          "verification": {
+            "identity": "mapped"
+          },
+          "source_origin": {
+            "kind": "retained-replay-input",
+            "original_path": "Lean/scratch/GoCriticalKomi/EarlierSourceSearch/.cache/retained-w31-y2oi1paf/strategy_dag.json.gz",
+            "receipt_commit": "1e0da1732d34be419181ae3c387462376411a902",
+            "receipt_path": "evidence/certified-go/input-custody.json",
+            "receipt_pointer": "/inputs/0",
+            "receipt_repository": "https://github.com/Sapientropic/H0mework.git",
+            "receipt_sha256": "d027a93b40c02a9d3a7c526617bbf56cf3cdce821c3d22af9668caeabc31f59f"
+          }
+        }
+      ],
+      "standalone_consumers": [
+        {
+          "kind": "lean",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Regression/CriticalKomi/RunRegionalDAG19.lean",
+          "source_commit": "e60a86058abcb74b7f2225f2383c182be8343785",
+          "source_sha256": "61ab9a5713ba76117fea90ec24b8b6039d936cc6116a755dccf165193a76bac2",
+          "public": {
+            "module": "H0mework.Versions.Re60a8605.ReleaseMaterials.SaturationMonoid.ProcessGame.Regression.CriticalKomi.RunRegionalDAG19",
+            "path": "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Regression/CriticalKomi/RunRegionalDAG19.lean",
+            "sha256": "f9d3881d8ae84d7f75f026c0f2a42bf32aa413d335fe2e9182b39b1822b7cdc4",
+            "variant": "Re60a8605"
+          },
+          "commands": [
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.CriticalKomi.RegionalDAGRun.run",
+              "source_line": 72,
+              "line": 72
+            },
+            {
+              "qualified_name": "main",
+              "source_line": 110,
+              "line": 110
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "GO6",
+      "paper": "certified-go",
+      "title": "原游标与实际执行区间",
+      "statement": null,
+      "localized": {
+        "zh": {
+          "title": "原游标与实际执行区间",
+          "statement": null
+        },
+        "en": {
+          "title": "The native cursor and checked score brackets",
+          "statement": null
+        }
+      },
+      "written_proof": {
+        "zh": {
+          "location": "§7.1",
+          "paper_reference": "§7.1"
+        },
+        "en": {
+          "location": "§7.1",
+          "paper_reference": "§7.1"
+        }
+      },
+      "producers": [
+        {
+          "kind": "lean",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Go/CriticalKomi/GoalBracket.lean",
+          "source_commit": "e60a86058abcb74b7f2225f2383c182be8343785",
+          "source_sha256": "ac7cae960235275d16702b7ea60566d6ebcc194ed818d1043a1d9d1ea26dc3c6",
+          "public": {
+            "module": "H0mework.Versions.Re60a8605.ReleaseMaterials.SaturationMonoid.ProcessGame.Go.CriticalKomi.GoalBracket",
+            "path": "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/GoalBracket.lean",
+            "sha256": "7580abb4e9d9ebbc4b20f4f7724461143680f4f0daeb8e94c9469469bb420e1e",
+            "variant": "Re60a8605"
+          },
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.CriticalKomi.GoalBracket.Bracket.absorb",
+              "source_line": 97,
+              "line": 97
+            }
+          ],
+          "verification": {
+            "kernel": "pending",
+            "proof_package": "certified-go-re60a8605"
+          }
+        },
+        {
+          "kind": "lean",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Go/CriticalKomi/GoalCursor.lean",
+          "source_commit": "e60a86058abcb74b7f2225f2383c182be8343785",
+          "source_sha256": "778939ff3d9eeb1c774ec38237604e99acc3eb9e463d235729e29186ff132888",
+          "public": {
+            "module": "H0mework.Versions.Re60a8605.ReleaseMaterials.SaturationMonoid.ProcessGame.Go.CriticalKomi.GoalCursor",
+            "path": "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/GoalCursor.lean",
+            "sha256": "b9b3b1cffba0a980c8d4cbd5ab32f16ccbe023a56706a3450d1a100b6769ae8a",
+            "variant": "Re60a8605"
+          },
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.CriticalKomi.GoalCursor.observe",
+              "source_line": 113,
+              "line": 113
+            }
+          ],
+          "verification": {
+            "kernel": "pending",
+            "proof_package": "certified-go-re60a8605"
+          }
+        },
+        {
+          "kind": "lean",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Go/CriticalKomi/CalculationRuntime.lean",
+          "source_commit": "e60a86058abcb74b7f2225f2383c182be8343785",
+          "source_sha256": "f31f2d025d7b9509ec4ddb679aa5046a8109caad904f2ca746945435a69100cb",
+          "public": {
+            "module": "H0mework.Versions.Re60a8605.ReleaseMaterials.SaturationMonoid.ProcessGame.Go.CriticalKomi.CalculationRuntime",
+            "path": "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/CalculationRuntime.lean",
+            "sha256": "3ababee34e0c16b31b782fde3d451c545ce3da0aff8cba9c706b2108ebfdb23d",
+            "variant": "Re60a8605"
+          },
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.CriticalKomi.CalculationRuntime.mathematicalRange",
+              "source_line": 308,
+              "line": 308
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.CriticalKomi.CalculationRuntime.authoritativeRoot",
+              "source_line": 347,
+              "line": 347
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.CriticalKomi.CalculationRuntime.observe_is_original_cursor",
+              "source_line": 389,
+              "line": 389
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.CriticalKomi.CalculationRuntime.faceAt_factorizes",
+              "source_line": 404,
+              "line": 404
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.CriticalKomi.CalculationRuntime.received_next",
+              "source_line": 420,
+              "line": 420
+            }
+          ],
+          "verification": {
+            "kernel": "pending",
+            "proof_package": "certified-go-re60a8605"
+          }
+        }
+      ],
+      "direct_consumers": [],
+      "resources": [],
+      "standalone_consumers": [
+        {
+          "kind": "lean",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Regression/CriticalKomi/RunCalculation.lean",
+          "source_commit": "e60a86058abcb74b7f2225f2383c182be8343785",
+          "source_sha256": "5ad251daebc646a29bd3045242a8e4efd042eb731605577e6b00c535a1544659",
+          "public": {
+            "module": "H0mework.Versions.Re60a8605.ReleaseMaterials.SaturationMonoid.ProcessGame.Regression.CriticalKomi.RunCalculation",
+            "path": "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Regression/CriticalKomi/RunCalculation.lean",
+            "sha256": "47eb98fe56bfdef8cf352f8b89b618ca5c92ce8c5acbc6042f61853ca785f64b",
+            "variant": "Re60a8605"
+          },
+          "commands": [
+            {
+              "qualified_name": "main",
+              "source_line": 23,
+              "line": 23
+            }
+          ]
+        },
+        {
+          "kind": "lean",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Regression/CriticalKomi/RunInitialBoundReceipt19.lean",
+          "source_commit": "e60a86058abcb74b7f2225f2383c182be8343785",
+          "source_sha256": "6dd6d87773d4150925efd813c4965d412494bedebbeee0635830cb64febc4be5",
+          "public": {
+            "module": "H0mework.Versions.Re60a8605.ReleaseMaterials.SaturationMonoid.ProcessGame.Regression.CriticalKomi.RunInitialBoundReceipt19",
+            "path": "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Regression/CriticalKomi/RunInitialBoundReceipt19.lean",
+            "sha256": "10a2e7a02c6f92d012c529f8f923a9b2e4847ba9b28c8ffaa52e9674d88fafdd",
+            "variant": "Re60a8605"
+          },
+          "commands": [
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.CriticalKomi.InitialBoundReceiptControl.run",
+              "source_line": 73,
+              "line": 73
+            },
+            {
+              "qualified_name": "main",
+              "source_line": 110,
+              "line": 110
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "GO7",
+      "paper": "certified-go",
+      "title": "经典博弈读出、跨发生等价与劫循环",
+      "statement": null,
+      "localized": {
+        "zh": {
+          "title": "经典博弈读出、跨发生等价与劫循环",
+          "statement": null
+        },
+        "en": {
+          "title": "Classical game recovery, equivalence and ko holonomy",
+          "statement": null
+        }
+      },
+      "written_proof": {
+        "zh": {
+          "location": "Appendix A",
+          "paper_reference": "Appendix A"
+        },
+        "en": {
+          "location": "Appendix A",
+          "paper_reference": "Appendix A"
+        }
+      },
+      "producers": [
+        {
+          "kind": "lean",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Go/Classical/ClassicalGameRecovery.lean",
+          "source_commit": "e60a86058abcb74b7f2225f2383c182be8343785",
+          "source_sha256": "19836b20f19213e3cc7c5ac7ceeb12ecf6e5a5887ae739b1a13381cd2098e29a",
+          "public": {
+            "module": "H0mework.Versions.Re60a8605.ReleaseMaterials.SaturationMonoid.ProcessGame.Go.Classical.ClassicalGameRecovery",
+            "path": "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/Classical/ClassicalGameRecovery.lean",
+            "sha256": "77ab917f9007dcabb5fc477c33c04b55a107c5856ec46b2e17e95457580242b6",
+            "variant": "Re60a8605"
+          },
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.Classical.recoverExtensiveGame",
+              "source_line": 22,
+              "line": 22
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.Classical.FiniteExtensiveGame.History.factors_through_stateTree",
+              "source_line": 181,
+              "line": 181
+            }
+          ],
+          "verification": {
+            "kernel": "pending",
+            "proof_package": "certified-go-re60a8605"
+          }
+        },
+        {
+          "kind": "lean",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Go/Classical/NormalFormEquivalence.lean",
+          "source_commit": "e60a86058abcb74b7f2225f2383c182be8343785",
+          "source_sha256": "7715ddea9bdcf2d251b18dbfe24838d47e9114516e245a48c1f2654c3f24a79a",
+          "public": {
+            "module": "H0mework.Versions.Re60a8605.ReleaseMaterials.SaturationMonoid.ProcessGame.Go.Classical.NormalFormEquivalence",
+            "path": "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/Classical/NormalFormEquivalence.lean",
+            "sha256": "2fe54249b2649d1fe12e34aa21d48c74bdf3ca9e27f51a914b751aea3c43693c",
+            "variant": "Re60a8605"
+          },
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.Classical.terminalNormalFormEquivalence",
+              "source_line": 363,
+              "line": 363
+            }
+          ],
+          "verification": {
+            "kernel": "pending",
+            "proof_package": "certified-go-re60a8605"
+          }
+        },
+        {
+          "kind": "lean",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Go/Ko/PrincipalHolonomy.lean",
+          "source_commit": "e60a86058abcb74b7f2225f2383c182be8343785",
+          "source_sha256": "53ed89601e5b28f67d5d82812af682e2a7b4a02298b855b8104867134a979bbb",
+          "public": {
+            "module": "H0mework.Versions.Re60a8605.ReleaseMaterials.SaturationMonoid.ProcessGame.Go.Ko.PrincipalHolonomy",
+            "path": "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/Ko/PrincipalHolonomy.lean",
+            "sha256": "2a214a0aa5807f51c0579613c464ed5bb35071df6b7810faf525f9610dc83107",
+            "variant": "Re60a8605"
+          },
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.Ko.koPrincipalConnection_not_flat",
+              "source_line": 245,
+              "line": 245
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.Ko.koPrincipalTransition_not_oneCoboundary",
+              "source_line": 251,
+              "line": 251
+            }
+          ],
+          "verification": {
+            "kernel": "pending",
+            "proof_package": "certified-go-re60a8605"
+          }
+        }
+      ],
+      "direct_consumers": [
+        {
+          "kind": "lean",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Go/Regression/G7ClassicalGameRecoveryRegression.lean",
+          "source_commit": "e60a86058abcb74b7f2225f2383c182be8343785",
+          "source_sha256": "8f1184e3e408a05ad914ed26f8e6438d7370972d6f00e919e5aa88ae44ed01e9",
+          "public": {
+            "module": "H0mework.Versions.Re60a8605.ReleaseMaterials.SaturationMonoid.ProcessGame.Go.Regression.G7ClassicalGameRecoveryRegression",
+            "path": "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/Regression/G7ClassicalGameRecoveryRegression.lean",
+            "sha256": "642361fdc0fff23c52075e9d018644b78ee1b34fb8afa2e9a132175e36a9eee0",
+            "variant": "Re60a8605"
+          },
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.G7ClassicalGameRecoveryRegression.recovered_players_are_exact_generated_lineages",
+              "source_line": 30,
+              "line": 30
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.G7ClassicalGameRecoveryRegression.history_membership_is_exact_bounded_execution",
+              "source_line": 37,
+              "line": 37
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.G7ClassicalGameRecoveryRegression.root_and_one_play_are_histories",
+              "source_line": 44,
+              "line": 44
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.G7ClassicalGameRecoveryRegression.overlong_and_illegal_words_are_rejected",
+              "source_line": 52,
+              "line": 52
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.G7ClassicalGameRecoveryRegression.root_owner_and_actions_are_native",
+              "source_line": 67,
+              "line": 67
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.G7ClassicalGameRecoveryRegression.played_history_is_exact_and_factors_through_tree",
+              "source_line": 88,
+              "line": 88
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.G7ClassicalGameRecoveryRegression.recovered_stateTree_is_exact_futureCone",
+              "source_line": 98,
+              "line": 98
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.G7ClassicalGameRecoveryRegression.recovered_root_evaluator_is_unique",
+              "source_line": 108,
+              "line": 108
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.G7ClassicalGameRecoveryRegression.zero_fuel_playing_leaf_is_cutoff_not_terminal",
+              "source_line": 116,
+              "line": 116
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.G7ClassicalGameRecoveryRegression.twoPass_generated_isSome",
+              "source_line": 130,
+              "line": 130
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.G7ClassicalGameRecoveryRegression.two_pass_is_world_terminal_with_scoreMargin_payoff",
+              "source_line": 141,
+              "line": 141
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.G7ClassicalGameRecoveryRegression.resign_generated_isSome",
+              "source_line": 164,
+              "line": 164
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.G7ClassicalGameRecoveryRegression.resignation_payoff_uses_generated_winner",
+              "source_line": 175,
+              "line": 175
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.G7ClassicalGameRecoveryRegression.strategy_and_payoff_commute_with_direct_process",
+              "source_line": 187,
+              "line": 187
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.G7ClassicalGameRecoveryRegression.strategy_search_does_not_write_actual_authority",
+              "source_line": 204,
+              "line": 204
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.G7ClassicalGameRecoveryRegression.normal_form_coordinates_are_generated",
+              "source_line": 215,
+              "line": 215
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.G7ClassicalGameRecoveryRegression.normal_form_utility_commutes_and_uses_evaluated_payoff",
+              "source_line": 223,
+              "line": 223
+            }
+          ],
+          "verification": {
+            "kernel": "pending",
+            "proof_package": "certified-go-re60a8605"
+          }
+        },
+        {
+          "kind": "lean",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Go/Regression/Classical/G7NormalFormEquivalenceRegression.lean",
+          "source_commit": "e60a86058abcb74b7f2225f2383c182be8343785",
+          "source_sha256": "f83b8a7d9b990946fc10a44d85066359d2c7acfe489f1c547d026518a4ae1106",
+          "public": {
+            "module": "H0mework.Versions.Re60a8605.ReleaseMaterials.SaturationMonoid.ProcessGame.Go.Regression.Classical.G7NormalFormEquivalenceRegression",
+            "path": "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/Regression/Classical/G7NormalFormEquivalenceRegression.lean",
+            "sha256": "3c972db59aa0e91378883f34bb06d9ebf1cbc0ad984813109eb3ddbbc60352e5",
+            "variant": "Re60a8605"
+          },
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.G7NormalFormEquivalenceRegression.transporter_preserves_distinct_actual_occurrences",
+              "source_line": 32,
+              "line": 32
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.G7NormalFormEquivalenceRegression.generated_player_coordinate_N_is_equivalent",
+              "source_line": 39,
+              "line": 39
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.G7NormalFormEquivalenceRegression.every_strategy_fibre_Si_and_profile_are_equivalent",
+              "source_line": 53,
+              "line": 53
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.G7NormalFormEquivalenceRegression.transported_profile_is_fibrewise_strategy_transport",
+              "source_line": 68,
+              "line": 68
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.G7NormalFormEquivalenceRegression.every_utility_ui_is_preserved",
+              "source_line": 74,
+              "line": 74
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.G7NormalFormEquivalenceRegression.positive_and_negative_terminal_utilities_are_exact_and_preserved",
+              "source_line": 82,
+              "line": 82
+            }
+          ],
+          "verification": {
+            "kernel": "pending",
+            "proof_package": "certified-go-re60a8605"
+          }
+        },
+        {
+          "kind": "lean",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Go/Regression/G5PrincipalHolonomyRegression.lean",
+          "source_commit": "e60a86058abcb74b7f2225f2383c182be8343785",
+          "source_sha256": "ca1cfc6f1cf635af95cc146d96f52473b2b82d71db24d16919b3ac8ba26dbc9e",
+          "public": {
+            "module": "H0mework.Versions.Re60a8605.ReleaseMaterials.SaturationMonoid.ProcessGame.Go.Regression.G5PrincipalHolonomyRegression",
+            "path": "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/Regression/G5PrincipalHolonomyRegression.lean",
+            "sha256": "3662a61109a35188ff7c70bef07ae6be55ce68dacec2bc3110ba598ffe0f523e",
+            "variant": "Re60a8605"
+          },
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.G5PrincipalHolonomyRegression.positional_projected_loop_keeps_lifted_difference",
+              "source_line": 25,
+              "line": 25
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.G5PrincipalHolonomyRegression.positional_principal_holonomy_is_i",
+              "source_line": 44,
+              "line": 44
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.G5PrincipalHolonomyRegression.all_three_repetition_laws_have_principal_obstruction",
+              "source_line": 54,
+              "line": 54
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.G5PrincipalHolonomyRegression.all_three_repetition_laws_are_nonflat",
+              "source_line": 65,
+              "line": 65
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.G5PrincipalHolonomyRegression.positional_cochain_is_not_a_projected_potential_difference",
+              "source_line": 75,
+              "line": 75
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.G5PrincipalHolonomyRegression.positional_transport_factor_and_mismatch",
+              "source_line": 86,
+              "line": 86
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.G5PrincipalHolonomyRegression.positional_topological_transition_is_continuous_and_obstructed",
+              "source_line": 108,
+              "line": 108
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.G5PrincipalHolonomyRegression.all_three_topological_obstructions",
+              "source_line": 119,
+              "line": 119
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.G5PrincipalHolonomyRegression.positional_topological_transport_factor_and_mismatch",
+              "source_line": 130,
+              "line": 130
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.G5PrincipalHolonomyRegression.exact_potential_is_flat_and_holonomy_trivial",
+              "source_line": 163,
+              "line": 163
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.G5PrincipalHolonomyRegression.all_zero_phase_is_trivial",
+              "source_line": 173,
+              "line": 173
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.G5PrincipalHolonomyRegression.exact_topological_potential_has_no_obstruction",
+              "source_line": 191,
+              "line": 191
+            }
+          ],
+          "verification": {
+            "kernel": "pending",
+            "proof_package": "certified-go-re60a8605"
+          }
+        }
+      ],
+      "resources": []
+    },
+    {
+      "id": "GO8",
+      "paper": "certified-go",
+      "title": "动作物化等价与三分支总装",
+      "statement": null,
+      "localized": {
+        "zh": {
+          "title": "动作物化等价与三分支总装",
+          "statement": null
+        },
+        "en": {
+          "title": "Materialized transitions and continuous H11 assembly",
+          "statement": null
+        }
+      },
+      "written_proof": {
+        "zh": {
+          "location": "§2.2–2.3; §6.2",
+          "paper_reference": "§2.2–2.3; §6.2"
+        },
+        "en": {
+          "location": "§2.2–2.3; §6.2",
+          "paper_reference": "§2.2–2.3; §6.2"
+        }
+      },
+      "producers": [
+        {
+          "kind": "lean",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Go/CriticalKomi/MaterializedStep.lean",
+          "source_commit": "e60a86058abcb74b7f2225f2383c182be8343785",
+          "source_sha256": "4380cbcc649d73f6c470e4f7e895f6cb83ff8c2565857fc4e353433dfc312109",
+          "public": {
+            "module": "H0mework.Versions.Re60a8605.ReleaseMaterials.SaturationMonoid.ProcessGame.Go.CriticalKomi.MaterializedStep",
+            "path": "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/MaterializedStep.lean",
+            "sha256": "3eeb6d0b4f9d249d6b64b084b810d78935bd3a577875d60a1caf54e3d963bb49",
+            "variant": "Re60a8605"
+          },
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.CriticalKomi.MaterializedStep.step_eq",
+              "source_line": 40,
+              "line": 40
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.CriticalKomi.MaterializedStep.scoring_eq",
+              "source_line": 49,
+              "line": 49
+            }
+          ],
+          "verification": {
+            "kernel": "pending",
+            "proof_package": "certified-go-re60a8605"
+          }
+        },
+        {
+          "kind": "lean",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Go/CriticalKomi/CarriedProgram.lean",
+          "source_commit": "e60a86058abcb74b7f2225f2383c182be8343785",
+          "source_sha256": "691d06aa559c7e521cbf085f658ee6da3ca3530c2c1bb93a291ec755d9a021f0",
+          "public": {
+            "module": "H0mework.Versions.Re60a8605.ReleaseMaterials.SaturationMonoid.ProcessGame.Go.CriticalKomi.CarriedProgram",
+            "path": "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/CarriedProgram.lean",
+            "sha256": "0219518d6688e55c8833ef592ac3830a3ae27eaa6f64b42092a2af86fa86b012",
+            "variant": "Re60a8605"
+          },
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.CriticalKomi.CarriedProgram.chooseTracked?",
+              "source_line": 48,
+              "line": 48
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.CriticalKomi.CarriedProgram.allTracked?",
+              "source_line": 71,
+              "line": 71
+            }
+          ],
+          "verification": {
+            "kernel": "pending",
+            "proof_package": "certified-go-re60a8605"
+          }
+        },
+        {
+          "kind": "lean",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Go/CriticalKomi/ElevenLeftBridge.lean",
+          "source_commit": "e60a86058abcb74b7f2225f2383c182be8343785",
+          "source_sha256": "14085603eab84131c68e75e590a02a5a42888be75130799a137f5593c3dddf79",
+          "public": {
+            "module": "H0mework.Versions.Re60a8605.ReleaseMaterials.SaturationMonoid.ProcessGame.Go.CriticalKomi.ElevenLeftBridge",
+            "path": "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/ElevenLeftBridge.lean",
+            "sha256": "f5df218aa5c7c0c33a115f9a469fd9ccf04621d0db220b867bcb5b641a4403d7",
+            "variant": "Re60a8605"
+          },
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.CriticalKomi.ElevenLeftBridge.recognize?",
+              "source_line": 74,
+              "line": 74
+            }
+          ],
+          "verification": {
+            "kernel": "pending",
+            "proof_package": "certified-go-re60a8605"
+          }
+        },
+        {
+          "kind": "lean",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Go/CriticalKomi/ElevenW02.lean",
+          "source_commit": "e60a86058abcb74b7f2225f2383c182be8343785",
+          "source_sha256": "ed91dc3fd6a5ba7dc094e5964b2ec6db2f4b80b20376be38e110e67f2e4bb438",
+          "public": {
+            "module": "H0mework.Versions.Re60a8605.ReleaseMaterials.SaturationMonoid.ProcessGame.Go.CriticalKomi.ElevenW02",
+            "path": "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/ElevenW02.lean",
+            "sha256": "8b1f8b45c168ed6283d9c8a89e20b2cc824a945ee8f7480e16ad4a389b211631",
+            "variant": "Re60a8605"
+          },
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.CriticalKomi.ElevenW02.certificate?",
+              "source_line": 108,
+              "line": 108
+            }
+          ],
+          "verification": {
+            "kernel": "pending",
+            "proof_package": "certified-go-re60a8605"
+          }
+        },
+        {
+          "kind": "lean",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Go/CriticalKomi/ElevenW32.lean",
+          "source_commit": "e60a86058abcb74b7f2225f2383c182be8343785",
+          "source_sha256": "4b95e250e6f7d18cc27f517159fef73479c8c6ef3d707ab5b3891380a0eedfdd",
+          "public": {
+            "module": "H0mework.Versions.Re60a8605.ReleaseMaterials.SaturationMonoid.ProcessGame.Go.CriticalKomi.ElevenW32",
+            "path": "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/ElevenW32.lean",
+            "sha256": "430bddfbe56250ffabe32401bfcf9435860b403bcbe33825f3387876710790d3",
+            "variant": "Re60a8605"
+          },
+          "declarations": [
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.CriticalKomi.ElevenW32.certificate?",
+              "source_line": 132,
+              "line": 132
+            }
+          ],
+          "verification": {
+            "kernel": "pending",
+            "proof_package": "certified-go-re60a8605"
+          }
+        }
+      ],
+      "direct_consumers": [],
+      "resources": [
+        {
+          "kind": "artifact",
+          "source_commit": "e60a86058abcb74b7f2225f2383c182be8343785",
+          "source_path": "Lean/scratch/GoCriticalKomi/EarlierSourceSearch/results/eleven-left-bridge/w02-spine.jsonl",
+          "source_sha256": "8becb8a1de916d3ea5c053e4a68187b151c1bf94056d960387cd40a902335580",
+          "public": {
+            "path": "evidence/certified-go/original/Re60a8605/Lean/scratch/GoCriticalKomi/EarlierSourceSearch/results/eleven-left-bridge/w02-spine.jsonl",
+            "sha256": "8becb8a1de916d3ea5c053e4a68187b151c1bf94056d960387cd40a902335580"
+          },
+          "verification": {
+            "identity": "mapped"
+          }
+        },
+        {
+          "kind": "artifact",
+          "source_commit": "e60a86058abcb74b7f2225f2383c182be8343785",
+          "source_path": "Lean/scratch/GoCriticalKomi/EarlierSourceSearch/results/eleven-left-bridge/w02-carried.jsonl",
+          "source_sha256": "1c77a984d95f53ac19f87896ffb9df9bb4ac54e24cad19e86d58b299c9568f2e",
+          "public": {
+            "path": "evidence/certified-go/original/Re60a8605/Lean/scratch/GoCriticalKomi/EarlierSourceSearch/results/eleven-left-bridge/w02-carried.jsonl",
+            "sha256": "1c77a984d95f53ac19f87896ffb9df9bb4ac54e24cad19e86d58b299c9568f2e"
+          },
+          "verification": {
+            "identity": "mapped"
+          }
+        },
+        {
+          "kind": "artifact",
+          "source_commit": "e60a86058abcb74b7f2225f2383c182be8343785",
+          "source_path": "Lean/scratch/GoCriticalKomi/EarlierSourceSearch/results/eleven-left-bridge/assembly.jsonl",
+          "source_sha256": "beb2db868ab4ee1741872cdeda18afc311e21bf72d21fa3cdf2b3c449ace588d",
+          "public": {
+            "path": "evidence/certified-go/original/Re60a8605/Lean/scratch/GoCriticalKomi/EarlierSourceSearch/results/eleven-left-bridge/assembly.jsonl",
+            "sha256": "beb2db868ab4ee1741872cdeda18afc311e21bf72d21fa3cdf2b3c449ace588d"
+          },
+          "verification": {
+            "identity": "mapped"
+          }
+        },
+        {
+          "kind": "artifact",
+          "source_commit": "e60a86058abcb74b7f2225f2383c182be8343785",
+          "source_path": "Lean/scratch/GoCriticalKomi/EarlierSourceSearch/Eleven-W32-native.log",
+          "source_sha256": "74c08b8cf1c2ca441243b989fff533ab107a823cdd76f34d4f960a2ca59e6df4",
+          "public": {
+            "path": "evidence/certified-go/original/Re60a8605/Lean/scratch/GoCriticalKomi/EarlierSourceSearch/Eleven-W32-native.log",
+            "sha256": "74c08b8cf1c2ca441243b989fff533ab107a823cdd76f34d4f960a2ca59e6df4"
+          },
+          "verification": {
+            "identity": "mapped"
+          }
+        },
+        {
+          "kind": "artifact",
+          "source_commit": "e60a86058abcb74b7f2225f2383c182be8343785",
+          "source_path": "Lean/scratch/GoCriticalKomi/EarlierSourceSearch/Eleven-W32-carried.log",
+          "source_sha256": "62a3b100cdc4fe6ae979857e1746c20f2c2ee96d97e161481bafeb0e1489a9ee",
+          "public": {
+            "path": "evidence/certified-go/original/Re60a8605/Lean/scratch/GoCriticalKomi/EarlierSourceSearch/Eleven-W32-carried.log",
+            "sha256": "62a3b100cdc4fe6ae979857e1746c20f2c2ee96d97e161481bafeb0e1489a9ee"
+          },
+          "verification": {
+            "identity": "mapped"
+          }
+        }
+      ],
+      "standalone_consumers": [
+        {
+          "kind": "lean",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Regression/CriticalKomi/RunMaterializedStep19.lean",
+          "source_commit": "e60a86058abcb74b7f2225f2383c182be8343785",
+          "source_sha256": "514a5eccc890b6182102e627530b12c6210e8430e08378f1b53b65feb6b05119",
+          "public": {
+            "module": "H0mework.Versions.Re60a8605.ReleaseMaterials.SaturationMonoid.ProcessGame.Regression.CriticalKomi.RunMaterializedStep19",
+            "path": "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Regression/CriticalKomi/RunMaterializedStep19.lean",
+            "sha256": "c3982b3c51f9ac351d234403f8519f3e874b23886c5d68360ab759ef04d099e8",
+            "variant": "Re60a8605"
+          },
+          "commands": [
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.CriticalKomi.MaterializedStep.run",
+              "source_line": 14,
+              "line": 14
+            },
+            {
+              "qualified_name": "main",
+              "source_line": 56,
+              "line": 56
+            }
+          ]
+        },
+        {
+          "kind": "lean",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Regression/CriticalKomi/RunElevenLeftBridge19.lean",
+          "source_commit": "e60a86058abcb74b7f2225f2383c182be8343785",
+          "source_sha256": "2256c30196c18e25b4022f77dcb3fdce731706428f1641d9acd7c853e37ad0bb",
+          "public": {
+            "module": "H0mework.Versions.Re60a8605.ReleaseMaterials.SaturationMonoid.ProcessGame.Regression.CriticalKomi.RunElevenLeftBridge19",
+            "path": "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Regression/CriticalKomi/RunElevenLeftBridge19.lean",
+            "sha256": "457968cfeae1994032ff287d61aa835972749343c63f166184eac77e29ef8214",
+            "variant": "Re60a8605"
+          },
+          "commands": [
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.CriticalKomi.ElevenLeftBridgeControl.full",
+              "source_line": 69,
+              "line": 69
+            },
+            {
+              "qualified_name": "main",
+              "source_line": 207,
+              "line": 207
+            }
+          ]
+        },
+        {
+          "kind": "lean",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Regression/CriticalKomi/RunElevenW02.lean",
+          "source_commit": "e60a86058abcb74b7f2225f2383c182be8343785",
+          "source_sha256": "03197eea64fd815962f1efad5eab188f2bebe2f6bdcb95f70d4ed28c5a12e9b5",
+          "public": {
+            "module": "H0mework.Versions.Re60a8605.ReleaseMaterials.SaturationMonoid.ProcessGame.Regression.CriticalKomi.RunElevenW02",
+            "path": "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Regression/CriticalKomi/RunElevenW02.lean",
+            "sha256": "8e525acb8d064f3eef8480588e6498cf2e4b5997d986973f6d62012d3cbf96cd",
+            "variant": "Re60a8605"
+          },
+          "commands": [
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.CriticalKomi.Regression.RunElevenW02.run",
+              "source_line": 23,
+              "line": 23
+            },
+            {
+              "qualified_name": "main",
+              "source_line": 71,
+              "line": 71
+            }
+          ]
+        },
+        {
+          "kind": "lean",
+          "source_path": "Lean/SaturationMonoid/ProcessGame/Regression/CriticalKomi/RunElevenW32.lean",
+          "source_commit": "e60a86058abcb74b7f2225f2383c182be8343785",
+          "source_sha256": "948d433fc57aa3ce7e26e073a44d1a9d30e8cf1c9a6009f59c86fb79ec0cee2d",
+          "public": {
+            "module": "H0mework.Versions.Re60a8605.ReleaseMaterials.SaturationMonoid.ProcessGame.Regression.CriticalKomi.RunElevenW32",
+            "path": "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Regression/CriticalKomi/RunElevenW32.lean",
+            "sha256": "d97ccf02cc9a8ad5870e2e9314b18dc2c7a2ddab4c939372a34dfdfa5ff38637",
+            "variant": "Re60a8605"
+          },
+          "commands": [
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.CriticalKomi.Regression.RunElevenW32.sourceMoves",
+              "source_line": 9,
+              "line": 9
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.CriticalKomi.Regression.RunElevenW32.run",
+              "source_line": 32,
+              "line": 32
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.CriticalKomi.Regression.RunElevenW32.bottomControl",
+              "source_line": 70,
+              "line": 70
+            },
+            {
+              "qualified_name": "main",
+              "source_line": 105,
+              "line": 105
+            }
+          ]
+        },
+        {
+          "kind": "lean",
+          "source_path": "Lean/scratch/GoCriticalKomi/EarlierSourceSearch/ElevenAssembly.lean",
+          "source_commit": "e60a86058abcb74b7f2225f2383c182be8343785",
+          "source_sha256": "83cf5733a0dbb63935cc8cc63241384db8df25e65427f3e29799237516a59ce2",
+          "public": {
+            "module": "H0mework.Versions.Re60a8605.ReleaseMaterials.Scratch.GoCriticalKomi.EarlierSourceSearch.ElevenAssembly",
+            "path": "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/Scratch/GoCriticalKomi/EarlierSourceSearch/ElevenAssembly.lean",
+            "sha256": "836fa0014e772ce3a500cb7d66e7176fcc858966c820b669d195d67583568c63",
+            "variant": "Re60a8605"
+          },
+          "commands": [
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.CriticalKomi.EarlierSourceSearch.ElevenAssembly.child?",
+              "source_line": 50,
+              "line": 50
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.CriticalKomi.EarlierSourceSearch.ElevenAssembly.assemble",
+              "source_line": 68,
+              "line": 68
+            },
+            {
+              "qualified_name": "SaturationMonoid.ProcessGame.Go.CriticalKomi.EarlierSourceSearch.ElevenAssembly.run",
+              "source_line": 98,
+              "line": 98
+            },
+            {
+              "qualified_name": "main",
+              "source_line": 133,
+              "line": 133
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "proof_packages": [
+    {
+      "id": "certified-go-re60a8605",
+      "lean_target": "H0mework.Papers.CertifiedGo.Re60a8605",
+      "source_commit": "e60a86058abcb74b7f2225f2383c182be8343785",
+      "paper": "certified-go"
+    }
+  ],
+  "new_owner_paths": [
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/WordMachine.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/Proposition127.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/JoinMachine.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/Proposition141.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/IntegerMachine.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/TwoEyePreservation.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/TwoEyeHistory.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/BufferedReplay.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/Termination.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/Scratch/GoCriticalKomi/EarlierSourceSearch/Extracted.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/Survival.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/PositionFace.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/Regression/Classical/G7NormalFormEquivalenceRegression.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Encoding/Syntax.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Joint.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/CubeWords.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/JointMarginal.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/JointBudget.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Shared.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Pruned.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/FaceReduction.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Factor.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/FaceBudget.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Alias.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Affine/ParityBlock.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/Proposition828.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Spectrum.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Action.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/EmptyCube.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/UnifiedFlow/Direct.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Forgetting/Channels.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Interference/Nodes.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/PhaseSource.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Eliminate/Normalize.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Interference/ProgramCore.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Interference/Reduce.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Subsumption.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Interference/Program.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Interference/Constant.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Eliminate.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Interference/Shared.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Dense.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Interference/Cone.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Interference/Parity.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Encoding.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Affine/Row.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Consumer.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Interference/Decision.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Affine/Eliminate.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Affine/Extract.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Affine/Gates.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Affine/Basis.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/FunctionalRelations.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Affine/Acceptance.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Affine/Indices.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Affine/Boolean.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Affine/Lift.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/BooleanValues.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Affine/Projector.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Affine/Propagation.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Affine/Table.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/FunctionalSubstitution.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Affine/Atoms.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Affine/Decision.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Affine/EliminateCost.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/AtomImage.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Affine/Realization.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Affine/Atoms/Consumer.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/FunctionalAffine.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/FunctionalPivot.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Affine/AtomSource.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Affine/JointFeedback.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Affine/BranchImage.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Affine/ConditionalPivot.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Affine/Union.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Capacity.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Affine/CapacityFeedback.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/CapacityMatching/Core.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/SignedCapacity.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/CapacityMatching/Search.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/CapacityMatching/Source.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/CapacityMatching/Tight.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/CapacityMatching/SourceCost.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/CapacityMatching/Decision.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/CapacityMatching/TightCost.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/CapacityMatching/SourceTight.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/CapacityMatching/RowCost.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Affine/TightFeedback.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/BinaryRelations.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/AffineCarrier/Core.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/AffineCarrier/Cost.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/AffineCollect/Core.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/AffineProduct/Core.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/AffineCollect/Cost.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/AffineProduct/Cost.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Affine/StrongFeedbackScale.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/AffineClauses/Core.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/AffineCollect/Joint.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/AffineClauses/Cost.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/AffineClauses/Product.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/AffineCollect/JointCost.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/AffineClauses/Seed.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/AffineClauses/Image.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/AffineClauses/Source.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/AffineClauses/Joint.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Affine/BinaryContext.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Affine/Forget.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/AffineClauses/JointCost.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/AffineClauses/JointImage.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/AffineCollect/Group.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/AffineClauses/JointEmission.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/AffineClauses/ProductCost.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/AffineClauses/ImageSource.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Affine/ForgetCost.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/FunctionalSchedule.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/AffineClauses/StrongImage.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/FunctionalSchedule/Cost.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/AffineClauses/Future.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/FunctionalFeedback.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/AffineClauses/FutureCost.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/AffineClauses/Residual.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/AffineClauses/BoundaryTree/Common.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/AffineClauses/ResidualCost.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/AffineClauses/ResidualDecision.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/AffineClauses/JointResidual.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/AffineClauses/SharedSource.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/AffineClauses/SharedSourceScale.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Affine/ContextScale.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Affine/FeedbackCost.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Affine/AtomFeedbackCost.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Affine/AtomFeedbackCostInventory.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Affine/AtomFeedbackCostBranch.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Affine/RelationExtractionCostPrimitives.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Affine/RelationExtractionCost.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Affine/RelationExtractionCostAtoms.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Affine/ConditionalCandidateCostCode.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Affine/ConditionalCandidateCostFunctional.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Affine/ConditionalCandidateCost.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/FunctionalSourceCost/Acceptance.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/UnifiedFlow/Source.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/AffineClauses/SharedFunctional.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/FunctionalFeedback/Cost.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Arena/Action.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/FunctionalSourceCost.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/ForcedBranches.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/ForcedBranches/Cost.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Arena/Source.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/FunctionalMessage.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Arena/Cost/Primitives.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/JointCircuit/Gates.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Arena/Cost/Cone.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/JointCircuit/Core.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Arena/Cost.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/JointCircuit/Feedback.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Arena/Total.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Arena/Total/Cost.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/JointCircuit/Iteration.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/JointCircuit/Cost/Front.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/JointCircuit/Cost/Query.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/JointCircuit/Cost.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/JointCircuit/InputRelations.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/JointCircuit/RelationUpdate.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/JointCircuit/RelationCost/Rows.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/JointCircuit/RelationCost/Source.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/JointCircuit/RelationCost.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/JointCircuit/Ports/Embedding.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/JointCircuit/Ports/Relations.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/JointCircuit/Ports/Update.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/JointCircuit/Ports/Cost/Core.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/JointCircuit/Ports/Cost/Source.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/JointCircuit/Ports/Cost.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/JointCircuit/Ports/Branch.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/JointCircuit/Ports/Branch/Cost/Source.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/JointCircuit/Ports/Branch/Cost.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/JointCircuit/Product/Core.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/JointCircuit/Product/Batch.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/JointCircuit/Product/Relations.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/JointCircuit/Product/Cost/Source.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/JointCircuit/Product/Cost/Action.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/JointCircuit/Product/Cost.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/JointCircuit/Product/Closure/Source.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/JointCircuit/Product/Closure/Consumer.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/JointCircuit/Product/Closure/Cost/Source.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/JointCircuit/Product/Closure/Cost.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Forgetting/Scalar/Source.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Forgetting/Scalar.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Effects/Gate.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Effects/Read.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Effects/Shared.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Effects/Consumer.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Effects/Relations.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Effects/Relations/Cost.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/FiniteCNF/Effects/Memory.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/Forcing.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/LibertyReserve.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/PassSettlement.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/PositionExecution.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/TwoEyeScore.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/ForcingClosure.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/TwoEyeClosure.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/TwoEyeGrowth.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/TwoEyeRecognize.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/RegionAction.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/TwoEyeFamily.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/EyeCoalition.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/RegionProjection.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/VirginHistory.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/TwoPointChamber.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/EyeCoalitionRecognize.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/ExteriorLiberty.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/RegionCapture.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/CoreHistory.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/VitalChambers.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/RegionSparse.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/RetainedCoreHistory.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/StrategyCertificate.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/ExteriorSource.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/ChamberStrategy.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/CoalitionBirth.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/InitialColourPass.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/OnePointBirth.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/RegionLift.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/ChamberRecognize.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/CapturingBirth.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/CorridorSource.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/ExceptionalAll.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/VitalBirth.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/GroupReserve.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/VirginRegionAction.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/CoreCapturingBirth.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/StraightFourBirth.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/CorridorContinuationGeometry.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/VitalBirthCapturing.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/VitalBirthRecognize.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/RegionalProgram.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/CorridorContinuation.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/CorridorPreparation.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/RoomSplit.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/MaterializedStep.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/RegionalProgramCache.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Regression/CriticalKomi/RegionalDAGLoader.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Regression/CriticalKomi/RunRegionalProgram19.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/Corridor.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/HookSourceGeometry.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Regression/CriticalKomi/RunMaterializedStep19.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Regression/CriticalKomi/RunRegionalDAG19.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/CarriedProgram.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/ElevenLeftBridge.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/StraightFourVital.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/HookSource.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/ElevenW32.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/WallResponse.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/ElevenW02.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/Scratch/GoCriticalKomi/EarlierSourceSearch/ElevenOuter.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Regression/CriticalKomi/RunElevenW32.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/SourceLeaf.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Regression/CriticalKomi/RunElevenW02.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/Scratch/GoCriticalKomi/EarlierSourceSearch/ElevenAssembly.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/DecisionCursor.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/GoalBracket.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Regression/CriticalKomi/RunElevenLeftBridge19.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Regression/CriticalKomi/RunEyeCoalition19.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Regression/CriticalKomi/RunHookSource19.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Regression/CriticalKomi/RunVitalChambers19.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/GoalCursor.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Go/CriticalKomi/CalculationRuntime.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Regression/CriticalKomi/Audit.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Regression/CriticalKomi/RunCalculation.lean",
+    "Lean/H0mework/Versions/Re60a8605/ReleaseMaterials/SaturationMonoid/ProcessGame/Regression/CriticalKomi/RunInitialBoundReceipt19.lean"
+  ],
+  "acceptance": {
+    "status": "pending"
+  }
+}

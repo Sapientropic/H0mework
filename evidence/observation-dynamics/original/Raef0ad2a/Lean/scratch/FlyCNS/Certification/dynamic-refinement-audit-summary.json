@@ -1,0 +1,356 @@
+{
+  "schema": "flycns-dynamic-refinement-full-type-value-audit/v1",
+  "frozen_candidate_sha256": {
+    "BodyFullDynamicRefinement.lean": "06409e689fffd99b5ca6bff30ee43ee3cc7968b8b2c8ce1ff71c2a549b14c6d2",
+    "full_dynamic_refinement.py": "e695cf792da4d216060f2264efee0d28b7fa8f57b428d562a5492d597aa69a29"
+  },
+  "frozen_upstream_sha256": {
+    "SourceBodyFullIO.lean": "994f26f8b180a133ad273f7bc472b4569c6c70125d197eec42f6c5450b19d5f4",
+    "BodyFullPackedIO.lean": "67201db7740f2e1fee74e75eb9113071487158291c03c3b71faf8ce9e61a1c76"
+  },
+  "fresh_trust": 0,
+  "warning_as_error": true,
+  "independent_kernel_controls": 34,
+  "checked_roots": 48,
+  "dependency_operator": "ConstantInfo.getUsedConstantsAsSet: type + value",
+  "unsafe_check": "ConstantInfo.isUnsafe for every reached checked declaration",
+  "roots": {
+    "Coordinate": {
+      "closure": 1704,
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    "Datum": {
+      "closure": 65,
+      "axioms": []
+    },
+    "coordinateRead": {
+      "closure": 1724,
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    "sourceBasis": {
+      "closure": 1719,
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    "completeCoordinates": {
+      "closure": 1719,
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    "gateOmittingPlan": {
+      "closure": 1722,
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    "view": {
+      "closure": 1725,
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    "viewConsumers": {
+      "closure": 1728,
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    "view_kernel_exact": {
+      "closure": 1734,
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    "sourceCoordinateReadout": {
+      "closure": 1727,
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    "adjoined_source_coordinate_exact": {
+      "closure": 1754,
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    "source_coordinate_adjoin_does_not_merge": {
+      "closure": 1732,
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    "view_append_old": {
+      "closure": 1743,
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    "refined_preserves_old_kernel": {
+      "closure": 1744,
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    "OriginAt": {
+      "closure": 1741,
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    "findOrigin": {
+      "closure": 1909,
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    "separationCoordinates": {
+      "closure": 1905,
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    "origin_mem_separation": {
+      "closure": 1954,
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    "Branch": {
+      "closure": 1754,
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    "beforeView": {
+      "closure": 1923,
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    "futureView": {
+      "closure": 1929,
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    "EscapeAt": {
+      "closure": 1943,
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    "detectEscape": {
+      "closure": 2117,
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    "actual_future_escape": {
+      "closure": 1947,
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    "actual_future_cannot_factor": {
+      "closure": 1950,
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    "EscapeAt.nextPlan": {
+      "closure": 2102,
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    "escape_nextPlan_separates": {
+      "closure": 2168,
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    "escape_preserves_old_view": {
+      "closure": 2111,
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    "Representation": {
+      "closure": 1746,
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    "Representation.image": {
+      "closure": 1927,
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    "Representation.observation": {
+      "closure": 1946,
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    "represent": {
+      "closure": 2214,
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    "representation_complete": {
+      "closure": 2313,
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    "refineRepresentation": {
+      "closure": 2113,
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    "refinement_keeps_complete_residual": {
+      "closure": 2153,
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    "StepAt": {
+      "closure": 1961,
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    "execute": {
+      "closure": 5745,
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    "execute_whole_current": {
+      "closure": 1969,
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    "execute_source_support": {
+      "closure": 2084,
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    "continuation_current": {
+      "closure": 2053,
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    "continuation_every_reader": {
+      "closure": 2054,
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    "step_whole_ledger_next": {
+      "closure": 2533,
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    "TraceAt": {
+      "closure": 1965,
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    "TraceAt.final": {
+      "closure": 1973,
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    "TraceAt.packed": {
+      "closure": 1978,
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    "packed_final_cast": {
+      "closure": 1962,
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    "finite_autonomous_words_exact": {
+      "closure": 1991,
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    "runAccounted": {
+      "closure": 5752,
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    }
+  }
+}
