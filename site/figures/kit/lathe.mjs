@@ -157,7 +157,13 @@ function groupsOf(keys) {
   return out;
 }
 
-export const stepsFor = (radius, least = 16, most = 112, scale = 0) => Math.max(least, Math.min(most, scale ? Math.ceil((TAU * radius * scale) / 3) : Math.round((radius * 1.3) / 4) * 4));
+// With a scale, a small body takes only the steps its size can show: enough that the polygon stays within
+// SAG px of the circle, instead of the full `least`. A column a few px across is redrawn on every swing frame.
+const SAG = 0.04;
+const leastFor = (px, least) => (px <= SAG ? 8 : Math.min(least, Math.max(8, Math.ceil(Math.PI / Math.acos(1 - SAG / px)))));
+export const stepsFor = (radius, least = 16, most = 112, scale = 0) => (scale
+  ? Math.max(leastFor(radius * scale, least), Math.min(most, Math.ceil((TAU * radius * scale) / 3)))
+  : Math.max(least, Math.min(most, Math.round((radius * 1.3) / 4) * 4)));
 
 function chains(edges) {
   const out = [];

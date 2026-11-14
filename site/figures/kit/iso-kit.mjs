@@ -24,14 +24,41 @@ export function depthOf([x, y, z], projection) {
     const { sinA, cosA, sinE, cosE } = cameraOf(projection);
     return (x * cosA + y * sinA) * cosE + z * sinE;
 }
+// One decimal, no trailing ".0", no "-0". A swing redraws every path each frame, so this stays off toFixed and regex.
 const tenth = (value) => {
-    const text = (Math.round(value * 10) / 10).toFixed(1).replace(/\.0$/, "");
-    return text === "-0" ? "0" : text;
+    const tenths = Math.round(value * 10);
+    return tenths === 0 ? "0" : String(tenths / 10);
 };
+// A path through the points, without the ones the drawing cannot show: a point is dropped when every point
+// since the last one kept lies within PATH_SLACK px of the straight line on to the next. Lathed bodies sample
+// their straight runs and tiny caps far below a pixel, and a swing redraws every path on every frame.
+const PATH_SLACK = 0.04;
+const PATH_RUN = 48;
 export function pathOf(points, closed = false) {
-    if (!points.length)
+    const count = points.length;
+    if (!count)
         return "";
-    return points.map(([x, y], at) => `${at ? "L" : "M"}${tenth(x)} ${tenth(y)}`).join("") + (closed ? "Z" : "");
+    let d = `M${tenth(points[0][0])} ${tenth(points[0][1])}`;
+    let anchor = 0;
+    for (let next = 2; next < count; next++) {
+        const [ax, ay] = points[anchor];
+        const dx = points[next][0] - ax, dy = points[next][1] - ay;
+        const span = dx * dx + dy * dy;
+        let straight = next - anchor <= PATH_RUN;
+        for (let at = anchor + 1; straight && at < next; at++) {
+            const px = points[at][0] - ax, py = points[at][1] - ay;
+            // Between the two ends, and within PATH_SLACK of the line through them.
+            const along = px * dx + py * dy, across = px * dy - py * dx;
+            straight = span > 0 ? along >= 0 && along <= span && across * across <= PATH_SLACK * PATH_SLACK * span : px * px + py * py <= PATH_SLACK * PATH_SLACK;
+        }
+        if (!straight) {
+            anchor = next - 1;
+            d += `L${tenth(points[anchor][0])} ${tenth(points[anchor][1])}`;
+        }
+    }
+    if (count > 1)
+        d += `L${tenth(points[count - 1][0])} ${tenth(points[count - 1][1])}`;
+    return d + (closed ? "Z" : "");
 }
 export const joinPaths = (paths) => paths.filter(Boolean).join("");
 export function roundedPlan({ x, y, w, d, r }, steps = 8) {

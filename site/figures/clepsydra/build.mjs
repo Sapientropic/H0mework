@@ -937,7 +937,8 @@ function say() {
   stage.setAttribute("aria-valuetext", text);
 }
 let shown = {};
-function paint(force = false) {
+// fresh: composition(st) has just drawn every part in this state, so only the record of it is taken.
+function paint(force = false, fresh = false) {
   const key = (v) => JSON.stringify(v);
   const want = {
     "wheel-back": n2(st.turn), "wheel-front": n2(st.turn), "mill-stream": n2(st.open), right: n2(st.open), coinbox: key([n2(st.coin)]), tablet: key([st.log.length]),
@@ -951,7 +952,7 @@ function paint(force = false) {
     basin: () => basin(st.level, st.bowls, st.ladle), ripples: () => ripples(st.level, st.ripple), jar: () => jar(st), spigot: () => spigot(st.tally.t),
     counter: () => counter(st), "cup-0": () => cup(0, st.shownReceived[0], st.holder === 0 ? st.pour : 0), "cup-1": () => cup(1, st.shownReceived[1], st.holder === 1 ? st.pour : 0), tally: () => tally(st.tally),
   };
-  for (const name of Object.keys(want)) if (force || want[name] !== shown[name]) part(name).innerHTML = draw[name]();
+  if (!fresh) for (const name of Object.keys(want)) if (force || want[name] !== shown[name]) part(name).innerHTML = draw[name]();
   shown = want;
   say();
 }
@@ -1146,7 +1147,7 @@ stage.addEventListener("keydown", (event) => {
 new IntersectionObserver((entries) => { visible = entries[entries.length - 1].isIntersecting; if (visible) run(); }, { rootMargin: "120px 0px" }).observe(stage);
 if (still.matches) touring = false;
 paint(true);
-mountSwing(stage, { onHold: hold, onSwing: (angle) => { P = swingOf(iso, P0, FRAME, angle); svg.innerHTML = composition(st); shown = {}; paint(true); } });
+mountSwing(stage, { onHold: hold, onSwing: (angle) => { P = swingOf(iso, P0, FRAME, angle); svg.innerHTML = composition(st); paint(false, true); } });
 `;
 }
 

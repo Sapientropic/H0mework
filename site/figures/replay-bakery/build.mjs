@@ -176,9 +176,17 @@ const lipD = (x, y, inner, outer, z, far) =>
 // A lens on a plane facing +y at (x, y, z).
 const lensY = (x, y, z, r, className) => `<path class="${className}" d="${G.circleOf(G.frameOf([x, y, z], Y3, X3, Z3), 0, r, P, 20)}"/>`;
 // Keep the opening and the region outside the container's silhouette.
+// A polygon turned the way of the clip's outer rectangle (turn 1) or against it (-1). A clip is one path
+// read by winding, with no fill rule and no second child: Chrome unions a clipPath's children with path
+// operations, and that union dropped a loaf's upper part for some outlines.
+const wound = (points, turn) => {
+  let area = 0;
+  for (let i = 0; i < points.length; i++) { const [x0, y0] = points[i], [x1, y1] = points[(i + 1) % points.length]; area += x0 * y1 - x1 * y0; }
+  return area * turn < 0 ? [...points].reverse() : points;
+};
 const insideClipD = (opening, body) => {
   const all = "M-2000 -2000H4000V4000H-2000Z";
-  return all + k.pathOf(G.hullOf(body.map(at)), true) + k.pathOf(G.hullOf(opening.map(at)), true);
+  return all + k.pathOf(wound(G.hullOf(body.map(at)), -1), true) + k.pathOf(wound(G.hullOf(opening.map(at)), 1), true);
 };
 
 // --- the base and its face ----------------------------------------------------------------------
@@ -809,7 +817,7 @@ function loafAbove(piece, origin, normal) {
     const arc = depth >= r * radial ? Math.PI : Math.acos(-depth / (r * radial));
     for (let j = 0; j <= 24; j++) points.push(at(G.pointOf(F, s, r, middle + arc * (j / 12 - 1))));
   }
-  return points.length < 3 ? "" : k.pathOf(G.hullOf(points), true);
+  return points.length < 3 ? "" : k.pathOf(wound(G.hullOf(points), 1), true);
 }
 function piecesIn(wing, slot) {
   return wing.pieces.filter((piece) => {
@@ -945,7 +953,7 @@ function partsOf(state) {
         return inside.map((piece, i) => {
           const clip = `${id}-${i}`;
           const upper = loafAbove(piece, [0, 0, basketTop(who)], Z3);
-          return `<clipPath id="${clip}"><path clip-rule="evenodd" d="${wallClip}"/>${upper ? `<path d="${upper}"/>` : ""}</clipPath><g clip-path="url(#${clip})">${pieceSvg(piece)}</g>`;
+          return `<clipPath id="${clip}"><path d="${wallClip}${upper}"/></clipPath><g clip-path="url(#${clip})">${pieceSvg(piece)}</g>`;
         }).join("");
       };
     }
@@ -1059,7 +1067,7 @@ const k = { ${Object.keys(k).join(", ")} };
 const G = LATHE;
 const LOOKS = new Map();
 let looksFor = null;
-${shipped({ at, S, L, D, M, n2, n3, faceY, rectD, box, cyl, FV, unit, span, planeOf, rod, smooth, halfway, litAngle, shine, edgeShine, glintAt, glint, ballGlint, brightRod, fadeFill, boxCast, grounded, shadow, halfRing, bandD, lipD, lensY, insideClipD })}
+${shipped({ at, S, L, D, M, n2, n3, faceY, rectD, box, cyl, FV, unit, span, planeOf, rod, smooth, halfway, litAngle, shine, edgeShine, glintAt, glint, ballGlint, brightRod, fadeFill, boxCast, grounded, shadow, halfRing, bandD, lipD, lensY, insideClipD, wound })}
 ${shipped({ seatAt, restState, base, face, LAMP_U, faceLamp, faceLamps, counter, packOf, tangentPoint, tapePath, frameAt, reel, tape, reelBase, guideShadow, guideSleeve, guideShaft, readerBack, readerDie, readerFront, readerMoving, tubePost, tube, stand, basketFloor, basketTop, basketBody, vaultFrame, portD, loafAt, ovenDark, ovenClip, ovenFront, beltZ, beltSpans, belt, cleats, gateBack, gatePlate, gateFront, lockBox, lock, flag, ovenPlan, ovenCenter, ovenBody, mouthD, endFaces, chuteDir, BASKET_ANGLE, chuteFrame, chuteDeck, chute, chutePost, basket, basketOpening, doughSvg, loafMeridian, loafSvg, placed, bakedShape, pieceSvg, axialReach, loafAbove, piecesIn, deliveringPieces, ovenPiece, slot, beltRun, delivery, wingParts, composition, hitAreas, partsOf })}
 ${swingSource}
 ${liveScript()}

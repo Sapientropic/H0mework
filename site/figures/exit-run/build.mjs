@@ -880,7 +880,8 @@ function say() {
   stage.setAttribute("aria-valuetext", text);
 }
 let shown = {};
-function paint(force = false) {
+// fresh: composition(st) has just drawn every part in this state, so only the record of it is taken.
+function paint(force = false, fresh = false) {
   const key = (v) => JSON.stringify(v);
   const want = {
     readings: key([st.scene, st.arrived, st.pull.map(n2), n2(st.dial)]), row: key([Math.min(st.receipts, ROW_CAPACITY), n2(rowShift(st))]), hopper: key([n2(st.feed)]),
@@ -894,7 +895,7 @@ function paint(force = false) {
     latch: () => latch(st.up), gate: () => gate(st.open), lever: () => gateLever(st.open), coin: () => coin(st.loose, st.open),
     weight: () => weight(st.up), station: () => station(st.homeLit, st.clinicLit, st.shut),
   };
-  for (const name of Object.keys(want)) if (force || want[name] !== shown[name]) part(name).innerHTML = draw[name]();
+  if (!fresh) for (const name of Object.keys(want)) if (force || want[name] !== shown[name]) part(name).innerHTML = draw[name]();
   shown = want;
   // The bead moves by a transform; the funnel drop has its own foreground slot before the station hides it.
   const slot = beadSlot(st);
@@ -1091,7 +1092,7 @@ new IntersectionObserver((entries) => { visible = entries[entries.length - 1].is
 if (still.matches) touring = false;
 paint(true);
 // A sideways drag swings the view (../swing.mjs): the instrument is redrawn from there.
-mountSwing(stage, { onHold: hold, onSwing: (angle) => { P = swingOf(iso, P0, FRAME, angle); svg.innerHTML = composition(st); shown = {}; paint(true); } });
+mountSwing(stage, { onHold: hold, onSwing: (angle) => { P = swingOf(iso, P0, FRAME, angle); svg.innerHTML = composition(st); paint(false, true); } });
 `;
 }
 
