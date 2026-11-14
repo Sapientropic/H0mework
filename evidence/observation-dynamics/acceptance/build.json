@@ -1,0 +1,654 @@
+{
+  "schema": "h0mework/first-release-build@1",
+  "kind": "build",
+  "ok": true,
+  "input_identity": {
+    "sha256": {
+      "claim_map": "755b81e73d2014d8e4cae309137e543073b8cb3e34ef5cda7cf8824df676503c",
+      "export_map": "f8eaba5759377e428fb3d8de36f0e6169f42ade1ac76021c4c64ed136b3d907b",
+      "lakefile": "52b501a0f814d8806cf9051a7cdcda41c8cbd5fada09e399c0b295780762dd23",
+      "toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+      "manifest": "2fe02acc26899fd57d82018e711e79c251e26d0b6d2bb370af81db0ed312fbfd"
+    },
+    "package_inputs": {
+      "observation-dynamics-re60a8605": "a4340cf4e04e9bb3b9b8dd3b3a0d6712ec49d1fca44410834f5326e0b33ec7fa",
+      "observation-dynamics-re5319635": "06c04e69ef3b3fc3bd0ebcac23ccf4096cb3d9b960164cb6cb907e477f5fd329",
+      "observation-dynamics-rca2d0dcb": "b7881a78c1f4274e8a404533bbe947b1853e480654f126994ccac19563e94a89",
+      "observation-dynamics-reec031c4": "0c0d30f03efe706efaf877bf0dcc1d22309c33262b81e62bb11caa1017296cb0",
+      "observation-dynamics-r453de275": "fd1aaad6a221056f14f801c2d61e346938ad56db1b0df24c8e6bce03fbd2b00c",
+      "observation-dynamics-rc19e94a5": "f734dc1226631cde8e4c1aae3a15f0c88c5232076886fa29513927f1658afe15",
+      "observation-dynamics-r174b232f": "f01aa2a4be8bb5b7b2f58dc90b69a00b741391ee09525b3337d5dfdbf9c1b43f",
+      "observation-dynamics-rfde5c14d": "9f9292ead65c8b37e79f88f3f2f714ec87ccbe8c1c9fbb24d327f533bb90e719",
+      "observation-dynamics-raef0ad2a": "6baaa34dc527a3b38ec7c4b0a73e07a597c7cd86feee3721be2a029a228c802b",
+      "observation-dynamics-r26b91feb": "34bc92c1648f4a350c913b0a52e08c9774dee1109da47ec20cb51d90abf65d93",
+      "observation-dynamics-re0555809": "1b6f7ea53d968605fe75b1258f64e3562c137d1a12588ccfc2618d6ae9528b18",
+      "observation-dynamics-re0555809-inventory": "0fa32b69383da7ce241f83887686ac8bb93f062dfc9a3674d9e249285e332e23",
+      "observation-dynamics-rc62f3d25": "9834b2e1ddd6512b5d1d91f478772e12888f7c37615d719151ca4824b5608cdd",
+      "observation-dynamics-r71e94e82": "cb6776d87b56c5aaaa97db062d59649983e0c4006e91abca438610893443aa41",
+      "observation-dynamics-r9c73a630": "905807e10b1151934d16ab5cdfa425269b5bf5a27dfefb2fd75907fa6159748f",
+      "observation-dynamics-rba7e274b": "5ee3bf04cd246763cbd8e5eed0b2eed2eaf2701cc9c77418ac93451eef5e6aca",
+      "observation-dynamics-rdf421ff6": "8dc7b6836bc91d1ee1a883f8557b65312670ea6f819fc9520224a2ffd6c42971",
+      "observation-dynamics-r7e4da746": "ae8ac4b77127bff4d0701bd1f394503566bab6c9dcd2566621cbc57f35466d79",
+      "observation-dynamics-rf94092ef": "b8524d227629a1a185b320e013a55edfd8aaaf54fc9f6c6e678d06b553d664ec"
+    }
+  },
+  "settings": {
+    "toolchain_pin": "leanprover/lean4:v4.33.0",
+    "package_moreLeanArgs": [
+      "--trust=0",
+      "-Dweak.linter.unnecessarySimpa=false",
+      "-Dweak.linter.style.haveILetI=false",
+      "-Dweak.linter.unusedSimpArgs=false"
+    ],
+    "package_weakLeanArgs": [
+      "-DmaxHeartbeats=2000000",
+      "-Dweak.linter.unusedSectionVars=false",
+      "-Dweak.linter.unnecessarySeqFocus=false",
+      "-Dweak.linter.unusedVariables=false",
+      "-Dweak.linter.unreachableTactic=false",
+      "-Dweak.linter.unusedTactic=false",
+      "-Dweak.linter.defProp=false",
+      "-Dweak.linter.deprecated=false",
+      "-Dlinter.deprecated=false",
+      "-Dweak.linter.tacticAnalysis.introMerge=false",
+      "-Dweak.linter.constructorNameAsVariable=false"
+    ],
+    "libraries": [
+      {
+        "name": "H0mework",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_15a9a7f1af9edd94",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_3606f5269412e357",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_d700e8a5f12a0c72",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_1e1ae4b55cfaa424",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_5d60190f8c552243",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_c8f26eb536eba11f",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_05819243d0f03058",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_42d0393dda443953",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_662d860139605627",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_c5ce7c98c6fb2afe",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_4306926d26d3e100",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_524380564da88277",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_598bc2100d4a470f",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_f16f09d592d9fed1",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_38dd326bee1881e5",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_a5be13c98d55de59",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_a8ba570880d786e7",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_e94628c12cb5af16",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_e615fc1eae897d2f",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_3ec8ead604397acb",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_f3b844eed8451357",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_fb8213f28d86d220",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_343b97a439466c84",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_e7aebe388314d626",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_5ee63fcc1d2eabc2",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_048d35b0f13ffddc",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_8a02641b81044b03",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_efa122af6a18f938",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "H0meworkRelaxed",
+        "moreLeanArgs": []
+      },
+      {
+        "name": "H0meworkPinned",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_27de91880f85717a",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_84273b86d41c7cc1",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_b0054fdd1430293f",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_df027f387d2e7e21",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_a9cfcb862f08d790",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_da6d7ec0232b12e5",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_384fd6d4ee850ec5",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_70f37e98e05b9a24",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_bc8736156be163cd",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ResourceConsumers_ca63848ccd9141be",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "WholeLedgerAccountingRelease",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "GeneratedSocietyRelease",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "EconomicConstitutionRelease",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "SocietyBookSupplement",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "EnforceablePeace",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "PhysicsThirdEdition",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "OneBitSecondEdition",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "WholeLedgerSecondEdition",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "SourceProcessCoreThirdEdition",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "LowEnergySecondEdition",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ExactRealization",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "CertifiedGo",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      },
+      {
+        "name": "ObservationDynamicsRelease",
+        "moreLeanArgs": [
+          "-DwarningAsError=true"
+        ]
+      }
+    ]
+  },
+  "identity_scope": {
+    "packages": [
+      "observation-dynamics-re60a8605",
+      "observation-dynamics-re5319635",
+      "observation-dynamics-rca2d0dcb",
+      "observation-dynamics-reec031c4",
+      "observation-dynamics-r453de275",
+      "observation-dynamics-rc19e94a5",
+      "observation-dynamics-r174b232f",
+      "observation-dynamics-rfde5c14d",
+      "observation-dynamics-raef0ad2a",
+      "observation-dynamics-r26b91feb",
+      "observation-dynamics-re0555809",
+      "observation-dynamics-re0555809-inventory",
+      "observation-dynamics-rc62f3d25",
+      "observation-dynamics-r71e94e82",
+      "observation-dynamics-r9c73a630",
+      "observation-dynamics-rba7e274b",
+      "observation-dynamics-rdf421ff6",
+      "observation-dynamics-r7e4da746",
+      "observation-dynamics-rf94092ef"
+    ],
+    "proof_entries": 365
+  },
+  "cache": {
+    "kind": "existing_workspace_cache",
+    "clean_clone": false,
+    "build_directory_preexisted": true,
+    "lean_num_threads": "3",
+    "compiled_targets_before": {
+      "H0mework.Papers.ObservationDynamicsRelease.Re60a8605": "1e7d3d6efabcd6c8e75dca5490c637c6634a39d0defd771a05655c194d31fd01",
+      "H0mework.Papers.ObservationDynamicsRelease.Re5319635": "3bad1983b40471333dfe386c81acb0ad95f382f2b71e3609b8ba992f5d702314",
+      "H0mework.Papers.ObservationDynamicsRelease.Rca2d0dcb": "b05f1cf141d54886d04fcc8bd04867caf1107789afea37029ecffffe2f2ba061",
+      "H0mework.Papers.ObservationDynamicsRelease.Reec031c4": "004c65954c5c3f1e7f86a8dd5507b7d97996568b7d2f76be5214ab2d225f0be2",
+      "H0mework.Papers.ObservationDynamicsRelease.R453de275": "e72ed998c68124dbf6101e560b92b9cd1f1aebe68eee82b3ef353eae96d4b883",
+      "H0mework.Papers.ObservationDynamicsRelease.Rc19e94a5": "48b57d5360bd25a57529a28fba88b2025000fde96067e929ec7dfdedc1f840d8",
+      "H0mework.Papers.ObservationDynamicsRelease.R174b232f": "7ffec0512ecfde73465cd50e43703fe2071df9a090f1ef3bc821f68f551f3c9a",
+      "H0mework.Papers.ObservationDynamicsRelease.Rfde5c14d": "37ee4ed18a4a9d4a5328b3824be586498cf9caa2e94b9e0b95f8ddf8a13cf7c7",
+      "H0mework.Papers.ObservationDynamicsRelease.Raef0ad2a": "53b004aa2cfcfef5fab1954a376b58108ef813dc3d1f1acf0dd6586540217b19",
+      "H0mework.Papers.ObservationDynamicsRelease.R26b91feb": "a96b6fd10984d44c071705c3019876bc700030e7a46a1256af353bc69da09c29",
+      "H0mework.Papers.ObservationDynamicsRelease.Re0555809": "9c65de982498bae84a047b804aaaf1f180026c0dc748fe2efb01f08147f73372",
+      "H0mework.Papers.ObservationDynamicsRelease.Re0555809Inventory": "fd9b59fab538951f4acf29551695d4653b0d11dbab24a51b883a7e1159681458",
+      "H0mework.Papers.ObservationDynamicsRelease.Rc62f3d25": "f47c518c069183925bdc86d098a9a56d54535c42a9b0ecf3f11530096dcdc676",
+      "H0mework.Papers.ObservationDynamicsRelease.R71e94e82": "6bd0852615d616ea090bb2f3f50ae7a72f643fc43f02a50405d53a06b660a4b5",
+      "H0mework.Papers.ObservationDynamicsRelease.R9c73a630": "37b72c8898377e109119873f63cab48c28afcc9a51b6b19ef4eab296461fb57f",
+      "H0mework.Papers.ObservationDynamicsRelease.Rba7e274b": "bf2f1170ca0c476912765168c812adabe366325e0c8751d15bd58220478fb86d",
+      "H0mework.Papers.ObservationDynamicsRelease.Rdf421ff6": "b85e5c73d375c4485b94c9788907d5d9f8a639ad5f092203b4071c02f4aafe7e",
+      "H0mework.Papers.ObservationDynamicsRelease.R7e4da746": "fb860152b21b90b478e0f4166436576f46c6d831f22f5a0e9ab34105fe35c301",
+      "H0mework.Papers.ObservationDynamicsRelease.Rf94092ef": "7972914b97f8947dd77cc0f98258f95a846b3179d0697e6c4942f1d433dfce43"
+    }
+  },
+  "packages": [
+    {
+      "id": "observation-dynamics-re60a8605",
+      "lean_target": "H0mework.Papers.ObservationDynamicsRelease.Re60a8605",
+      "source_commit": "e60a86058abcb74b7f2225f2383c182be8343785",
+      "paper": "observation-dynamics"
+    },
+    {
+      "id": "observation-dynamics-re5319635",
+      "lean_target": "H0mework.Papers.ObservationDynamicsRelease.Re5319635",
+      "source_commit": "e53196357f7284ebcbb44c7ed58af0335a1322f0",
+      "paper": "observation-dynamics"
+    },
+    {
+      "id": "observation-dynamics-rca2d0dcb",
+      "lean_target": "H0mework.Papers.ObservationDynamicsRelease.Rca2d0dcb",
+      "source_commit": "ca2d0dcbfabd82472423cbc588a73ebb9910d403",
+      "paper": "observation-dynamics"
+    },
+    {
+      "id": "observation-dynamics-reec031c4",
+      "lean_target": "H0mework.Papers.ObservationDynamicsRelease.Reec031c4",
+      "source_commit": "eec031c489f37459742e62a59a26b9866a21caed",
+      "paper": "observation-dynamics"
+    },
+    {
+      "id": "observation-dynamics-r453de275",
+      "lean_target": "H0mework.Papers.ObservationDynamicsRelease.R453de275",
+      "source_commit": "453de27572a4d6d00034d167e7b0704aa54c2523",
+      "paper": "observation-dynamics"
+    },
+    {
+      "id": "observation-dynamics-rc19e94a5",
+      "lean_target": "H0mework.Papers.ObservationDynamicsRelease.Rc19e94a5",
+      "source_commit": "c19e94a5e0cf8f9371ec841a886fefc0cc78152c",
+      "paper": "observation-dynamics"
+    },
+    {
+      "id": "observation-dynamics-r174b232f",
+      "lean_target": "H0mework.Papers.ObservationDynamicsRelease.R174b232f",
+      "source_commit": "174b232f82539a2cdea66d453aa79a63ac7946f6",
+      "paper": "observation-dynamics"
+    },
+    {
+      "id": "observation-dynamics-rfde5c14d",
+      "lean_target": "H0mework.Papers.ObservationDynamicsRelease.Rfde5c14d",
+      "source_commit": "fde5c14df36b6064c87064acd20830d3df0500bb",
+      "paper": "observation-dynamics"
+    },
+    {
+      "id": "observation-dynamics-raef0ad2a",
+      "lean_target": "H0mework.Papers.ObservationDynamicsRelease.Raef0ad2a",
+      "source_commit": "aef0ad2a26199d9fd6da9bc9e7ec1a65636ef63f",
+      "paper": "observation-dynamics"
+    },
+    {
+      "id": "observation-dynamics-r26b91feb",
+      "lean_target": "H0mework.Papers.ObservationDynamicsRelease.R26b91feb",
+      "source_commit": "26b91feb6b507fdc3f43be9c429edb63fb9395ef",
+      "paper": "observation-dynamics"
+    },
+    {
+      "id": "observation-dynamics-re0555809",
+      "lean_target": "H0mework.Papers.ObservationDynamicsRelease.Re0555809",
+      "source_commit": "e05558097256e86b537c019c8ca63cd449d6b2d2",
+      "paper": "observation-dynamics",
+      "source_paths": [
+        "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Receipt/Consumer.lean",
+        "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Programme.lean",
+        "Lean/SaturationMonoid/GenericFoundation/Operations/Inquiry/Context/Faces/Execution/Activation/Receipt/Source.lean",
+        "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/SourceFamily/Foresight/Contextual/Profile/Finite/Reader/Difference/Forward.lean",
+        "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/SourceFamily/Foresight/Contextual/Factory.lean",
+        "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Next/Source.lean",
+        "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Next/Consumer.lean",
+        "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/SourceFamily/Foresight/Next.lean",
+        "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/SourceFamily/Foresight/Born.lean",
+        "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/Future/Feedback/Next.lean"
+      ]
+    },
+    {
+      "id": "observation-dynamics-re0555809-inventory",
+      "lean_target": "H0mework.Papers.ObservationDynamicsRelease.Re0555809Inventory",
+      "source_commit": "e05558097256e86b537c019c8ca63cd449d6b2d2",
+      "paper": "observation-dynamics",
+      "source_paths": [
+        "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/Future/Feedback/Applied.lean",
+        "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/Future/Installed.lean",
+        "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/SourceFamily/Foresight/Elimination.lean",
+        "Lean/SaturationMonoid/GenericFoundation/Operations/Native/Tree/Fold/Dependent/Branch/JointQuery/Actor/Operation/Query/Inventory/Observer/CurrentChild/Dynamic/Live/Native/Action/Coupled/Registry/Calculation/Common/Feedback/Continuation/Future/Inventory.lean"
+      ]
+    },
+    {
+      "id": "observation-dynamics-rc62f3d25",
+      "lean_target": "H0mework.Papers.ObservationDynamicsRelease.Rc62f3d25",
+      "source_commit": "c62f3d25c42d4bf2b77ac009b49fc71cfd752f46",
+      "paper": "observation-dynamics"
+    },
+    {
+      "id": "observation-dynamics-r71e94e82",
+      "lean_target": "H0mework.Papers.ObservationDynamicsRelease.R71e94e82",
+      "source_commit": "71e94e8261d67cf4849a05eb14ac95aa2f7dcbb9",
+      "paper": "observation-dynamics"
+    },
+    {
+      "id": "observation-dynamics-r9c73a630",
+      "lean_target": "H0mework.Papers.ObservationDynamicsRelease.R9c73a630",
+      "source_commit": "9c73a630ce05bea062ec889b188f5105c0afb796",
+      "paper": "observation-dynamics"
+    },
+    {
+      "id": "observation-dynamics-rba7e274b",
+      "lean_target": "H0mework.Papers.ObservationDynamicsRelease.Rba7e274b",
+      "source_commit": "ba7e274beb1de38900a6fc2c8c8dfe6cfad9d9aa",
+      "paper": "observation-dynamics"
+    },
+    {
+      "id": "observation-dynamics-rdf421ff6",
+      "lean_target": "H0mework.Papers.ObservationDynamicsRelease.Rdf421ff6",
+      "source_commit": "df421ff600085cbc290a7ae946193961bed7c83b",
+      "paper": "observation-dynamics"
+    },
+    {
+      "id": "observation-dynamics-r7e4da746",
+      "lean_target": "H0mework.Papers.ObservationDynamicsRelease.R7e4da746",
+      "source_commit": "7e4da746f300b3796b8b18afb26cb0765c29afcb",
+      "paper": "observation-dynamics"
+    },
+    {
+      "id": "observation-dynamics-rf94092ef",
+      "lean_target": "H0mework.Papers.ObservationDynamicsRelease.Rf94092ef",
+      "source_commit": "f94092efb4bed57487f0d95f0b94c65ab3431d70",
+      "paper": "observation-dynamics"
+    }
+  ],
+  "results": [
+    {
+      "command": [
+        "lake",
+        "build",
+        "H0mework.Papers.ObservationDynamicsRelease.Re60a8605",
+        "H0mework.Papers.ObservationDynamicsRelease.Re5319635",
+        "H0mework.Papers.ObservationDynamicsRelease.Rca2d0dcb",
+        "H0mework.Papers.ObservationDynamicsRelease.Reec031c4",
+        "H0mework.Papers.ObservationDynamicsRelease.R453de275",
+        "H0mework.Papers.ObservationDynamicsRelease.Rc19e94a5",
+        "H0mework.Papers.ObservationDynamicsRelease.R174b232f",
+        "H0mework.Papers.ObservationDynamicsRelease.Rfde5c14d",
+        "H0mework.Papers.ObservationDynamicsRelease.Raef0ad2a",
+        "H0mework.Papers.ObservationDynamicsRelease.R26b91feb",
+        "H0mework.Papers.ObservationDynamicsRelease.Re0555809",
+        "H0mework.Papers.ObservationDynamicsRelease.Re0555809Inventory",
+        "H0mework.Papers.ObservationDynamicsRelease.Rc62f3d25",
+        "H0mework.Papers.ObservationDynamicsRelease.R71e94e82",
+        "H0mework.Papers.ObservationDynamicsRelease.R9c73a630",
+        "H0mework.Papers.ObservationDynamicsRelease.Rba7e274b",
+        "H0mework.Papers.ObservationDynamicsRelease.Rdf421ff6",
+        "H0mework.Papers.ObservationDynamicsRelease.R7e4da746",
+        "H0mework.Papers.ObservationDynamicsRelease.Rf94092ef"
+      ],
+      "cwd": "Lean",
+      "started_at": "2026-11-14T15:05:56.925334+00:00",
+      "finished_at": "2026-11-14T15:07:09.787558+00:00",
+      "elapsed_seconds": 72.862,
+      "exit_code": 0,
+      "error": null,
+      "log": ".local/observation-dynamics-build/build.log"
+    }
+  ],
+  "publication_readiness": "not_assessed",
+  "input_identity_after": {
+    "sha256": {
+      "claim_map": "755b81e73d2014d8e4cae309137e543073b8cb3e34ef5cda7cf8824df676503c",
+      "export_map": "f8eaba5759377e428fb3d8de36f0e6169f42ade1ac76021c4c64ed136b3d907b",
+      "lakefile": "52b501a0f814d8806cf9051a7cdcda41c8cbd5fada09e399c0b295780762dd23",
+      "toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+      "manifest": "2fe02acc26899fd57d82018e711e79c251e26d0b6d2bb370af81db0ed312fbfd"
+    },
+    "package_inputs": {
+      "observation-dynamics-re60a8605": "a4340cf4e04e9bb3b9b8dd3b3a0d6712ec49d1fca44410834f5326e0b33ec7fa",
+      "observation-dynamics-re5319635": "06c04e69ef3b3fc3bd0ebcac23ccf4096cb3d9b960164cb6cb907e477f5fd329",
+      "observation-dynamics-rca2d0dcb": "b7881a78c1f4274e8a404533bbe947b1853e480654f126994ccac19563e94a89",
+      "observation-dynamics-reec031c4": "0c0d30f03efe706efaf877bf0dcc1d22309c33262b81e62bb11caa1017296cb0",
+      "observation-dynamics-r453de275": "fd1aaad6a221056f14f801c2d61e346938ad56db1b0df24c8e6bce03fbd2b00c",
+      "observation-dynamics-rc19e94a5": "f734dc1226631cde8e4c1aae3a15f0c88c5232076886fa29513927f1658afe15",
+      "observation-dynamics-r174b232f": "f01aa2a4be8bb5b7b2f58dc90b69a00b741391ee09525b3337d5dfdbf9c1b43f",
+      "observation-dynamics-rfde5c14d": "9f9292ead65c8b37e79f88f3f2f714ec87ccbe8c1c9fbb24d327f533bb90e719",
+      "observation-dynamics-raef0ad2a": "6baaa34dc527a3b38ec7c4b0a73e07a597c7cd86feee3721be2a029a228c802b",
+      "observation-dynamics-r26b91feb": "34bc92c1648f4a350c913b0a52e08c9774dee1109da47ec20cb51d90abf65d93",
+      "observation-dynamics-re0555809": "1b6f7ea53d968605fe75b1258f64e3562c137d1a12588ccfc2618d6ae9528b18",
+      "observation-dynamics-re0555809-inventory": "0fa32b69383da7ce241f83887686ac8bb93f062dfc9a3674d9e249285e332e23",
+      "observation-dynamics-rc62f3d25": "9834b2e1ddd6512b5d1d91f478772e12888f7c37615d719151ca4824b5608cdd",
+      "observation-dynamics-r71e94e82": "cb6776d87b56c5aaaa97db062d59649983e0c4006e91abca438610893443aa41",
+      "observation-dynamics-r9c73a630": "905807e10b1151934d16ab5cdfa425269b5bf5a27dfefb2fd75907fa6159748f",
+      "observation-dynamics-rba7e274b": "5ee3bf04cd246763cbd8e5eed0b2eed2eaf2701cc9c77418ac93451eef5e6aca",
+      "observation-dynamics-rdf421ff6": "8dc7b6836bc91d1ee1a883f8557b65312670ea6f819fc9520224a2ffd6c42971",
+      "observation-dynamics-r7e4da746": "ae8ac4b77127bff4d0701bd1f394503566bab6c9dcd2566621cbc57f35466d79",
+      "observation-dynamics-rf94092ef": "b8524d227629a1a185b320e013a55edfd8aaaf54fc9f6c6e678d06b553d664ec"
+    }
+  },
+  "inputs_unchanged": true,
+  "receipt": ".local/observation-dynamics-build/result.json",
+  "compiled_targets_after": {
+    "H0mework.Papers.ObservationDynamicsRelease.Re60a8605": "1e7d3d6efabcd6c8e75dca5490c637c6634a39d0defd771a05655c194d31fd01",
+    "H0mework.Papers.ObservationDynamicsRelease.Re5319635": "3bad1983b40471333dfe386c81acb0ad95f382f2b71e3609b8ba992f5d702314",
+    "H0mework.Papers.ObservationDynamicsRelease.Rca2d0dcb": "b05f1cf141d54886d04fcc8bd04867caf1107789afea37029ecffffe2f2ba061",
+    "H0mework.Papers.ObservationDynamicsRelease.Reec031c4": "004c65954c5c3f1e7f86a8dd5507b7d97996568b7d2f76be5214ab2d225f0be2",
+    "H0mework.Papers.ObservationDynamicsRelease.R453de275": "e72ed998c68124dbf6101e560b92b9cd1f1aebe68eee82b3ef353eae96d4b883",
+    "H0mework.Papers.ObservationDynamicsRelease.Rc19e94a5": "48b57d5360bd25a57529a28fba88b2025000fde96067e929ec7dfdedc1f840d8",
+    "H0mework.Papers.ObservationDynamicsRelease.R174b232f": "7ffec0512ecfde73465cd50e43703fe2071df9a090f1ef3bc821f68f551f3c9a",
+    "H0mework.Papers.ObservationDynamicsRelease.Rfde5c14d": "37ee4ed18a4a9d4a5328b3824be586498cf9caa2e94b9e0b95f8ddf8a13cf7c7",
+    "H0mework.Papers.ObservationDynamicsRelease.Raef0ad2a": "53b004aa2cfcfef5fab1954a376b58108ef813dc3d1f1acf0dd6586540217b19",
+    "H0mework.Papers.ObservationDynamicsRelease.R26b91feb": "a96b6fd10984d44c071705c3019876bc700030e7a46a1256af353bc69da09c29",
+    "H0mework.Papers.ObservationDynamicsRelease.Re0555809": "9c65de982498bae84a047b804aaaf1f180026c0dc748fe2efb01f08147f73372",
+    "H0mework.Papers.ObservationDynamicsRelease.Re0555809Inventory": "fd9b59fab538951f4acf29551695d4653b0d11dbab24a51b883a7e1159681458",
+    "H0mework.Papers.ObservationDynamicsRelease.Rc62f3d25": "f47c518c069183925bdc86d098a9a56d54535c42a9b0ecf3f11530096dcdc676",
+    "H0mework.Papers.ObservationDynamicsRelease.R71e94e82": "6bd0852615d616ea090bb2f3f50ae7a72f643fc43f02a50405d53a06b660a4b5",
+    "H0mework.Papers.ObservationDynamicsRelease.R9c73a630": "37b72c8898377e109119873f63cab48c28afcc9a51b6b19ef4eab296461fb57f",
+    "H0mework.Papers.ObservationDynamicsRelease.Rba7e274b": "bf2f1170ca0c476912765168c812adabe366325e0c8751d15bd58220478fb86d",
+    "H0mework.Papers.ObservationDynamicsRelease.Rdf421ff6": "b85e5c73d375c4485b94c9788907d5d9f8a639ad5f092203b4071c02f4aafe7e",
+    "H0mework.Papers.ObservationDynamicsRelease.R7e4da746": "fb860152b21b90b478e0f4166436576f46c6d831f22f5a0e9ab34105fe35c301",
+    "H0mework.Papers.ObservationDynamicsRelease.Rf94092ef": "7972914b97f8947dd77cc0f98258f95a846b3179d0697e6c4942f1d433dfce43"
+  }
+}

@@ -24,3 +24,5 @@ The public view restores each fixed source path and the selected publication vie
 Corollary 2.5 is proved by `prefix_has_update_iff_kernel_eq` in `H0mework.ReleaseProofs.Observation.PrefixDeterminacy`. At the live receiver seam, `delta_pair_query` gives the query's actual next pair, and the original and stock programs establish the equality needed to read that pair from the next receipt. The claim map identifies both public owners and the exact historical sources.
 
 The [CI comparison](../evidence/cache-preservation/observation-go.json) records the unchanged shard keys. The [certification custody record](../evidence/observation-dynamics/certification-custody.json) identifies the retained historical inputs and distinguishes them from this edition's kernel runs.
+
+The local release checks passed for 19 proof environments, 1,552 complete declaration types and all 369 selected Lean roots. The source recovery checked 34,487 paths. For CP71–CP73, the fixed historical audit retains the verdict digests. The verdict files themselves are unavailable.
