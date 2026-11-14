@@ -17,7 +17,7 @@ export function swingOf(iso, P0, { points, width, height, pad }, degrees) {
   return { ...P0, azimuth, scale, origin: [width / 2 - ((left + right) / 2) * scale, height / 2 - ((up + down) / 2) * scale] };
 }
 
-export function mountSwing(stage, { onSwing, onHold, limit = 30, home = 9000 }) {
+export function mountSwing(stage, { onSwing, onHold, onDragStart, onDragEnd, touch = true, limit = 30, home = 9000 }) {
   const still = matchMedia("(prefers-reduced-motion: reduce)");
   const svg = stage.querySelector("svg");
   let angle = 0, goal = null, press = null, quiet = -1e9, frame = 0, last = 0, back = 0, dragged = null, paint = 0;
@@ -41,7 +41,7 @@ export function mountSwing(stage, { onSwing, onHold, limit = 30, home = 9000 }) 
   // Home after the figure has been left alone; without motion it stays where it was left.
   const later = () => { clearTimeout(back); if (!still.matches) back = setTimeout(() => ease(0), home); };
   stage.addEventListener("pointerdown", (event) => {
-    if (event.button !== 0) return;
+    if (event.button !== 0 || (!touch && event.pointerType === "touch") || stage.closest(".is-zoomed")) return;
     press = { id: event.pointerId, x: event.clientX, y: event.clientY, from: angle, moved: false };
   });
   stage.addEventListener("pointermove", (event) => {
@@ -54,6 +54,7 @@ export function mountSwing(stage, { onSwing, onHold, limit = 30, home = 9000 }) 
       stage.setPointerCapture(event.pointerId);
       stage.classList.add("swinging");
       onHold?.();
+      onDragStart?.();
     }
     // A pointer can report several moves a frame; the drawing follows once per frame.
     dragged = give(press.from + dx * perPx());
@@ -67,6 +68,7 @@ export function mountSwing(stage, { onSwing, onHold, limit = 30, home = 9000 }) 
       dragged = null;
       quiet = event.timeStamp;
       stage.classList.remove("swinging");
+      onDragEnd?.();
       ease(clamp(angle));
       later();
     }
@@ -74,6 +76,7 @@ export function mountSwing(stage, { onSwing, onHold, limit = 30, home = 9000 }) 
   };
   stage.addEventListener("pointerup", release);
   stage.addEventListener("pointercancel", release);
+  stage.addEventListener("lostpointercapture", release);
   // The click that ends a drag is not the figure's click.
   stage.addEventListener("click", (event) => { if (event.timeStamp - quiet < 80) { event.stopImmediatePropagation(); event.preventDefault(); } }, true);
   const control = { get: () => angle, set: (value) => { onHold?.(); cancelAnimationFrame(frame); frame = 0; goal = null; show(clamp(Number(value))); later(); } };

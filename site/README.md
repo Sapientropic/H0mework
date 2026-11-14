@@ -59,3 +59,8 @@ bun run build      # 先跑图的模型自检与构建，再出 dist/
 | `clepsydra` | economic-constitution | R4 | 结果 4、5、7：贡献可以结清，控制必须续约 |
 | `replay-bakery` | capital-formation | R8 | 定理 2、3、8：资本核心与公共功能重放 |
 | `quan-heng` | enforceable-peace | PE2 | 命题 4 与式 (5)–(8)：责任回接的止战比例 |
+| `hankel-bench` | exact-realization | R49 | 定理 6.2 与例 1.1(d)：有号矩的 Hankel 首块定阶与恢复 |
+| `twin-window` | observation-dynamics | O8 | 定理 3.3–3.4 与例 3.2：全列观测器恰需 a + 1 帧 |
+| `ko-ledger` | certified-go | GO2 | 引理 3.2、例 2.3 与 §1.1：盘面加历史盘面集合是强双模拟 |
+
+这三张图沿用 `kit/iso.css` 的白瓷、墨石和玉石材质。鼠标可拖转视角，触屏可点按控件或放大平移。读数在动作结束后显示结果，系统启用减少动态效果时直接切换。

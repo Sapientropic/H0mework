@@ -556,16 +556,19 @@ export const PAPERS: PaperEntry[] = [
     slug: "exact-realization",
     theme: "core",
     editions: [{ release: "exact-realization", doi: exactPaper.doi }],
+    figure: { name: "hankel-bench", claim: "R49" },
   },
   {
     slug: "observation-dynamics",
     theme: "core",
     editions: [{ release: "observation-dynamics", doi: observation.doi }],
+    figure: { name: "twin-window", claim: "O8" },
   },
   {
     slug: "certified-go",
     theme: "computation",
     editions: [{ release: "certified-go", doi: certifiedGo.doi }],
+    figure: { name: "ko-ledger", claim: "GO2" },
   },
   {
     slug: "physics-common-source",

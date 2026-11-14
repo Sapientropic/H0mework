@@ -1,0 +1,75 @@
+.paper-figure-stage { outline: none; touch-action: manipulation; }
+.paper-figure-stage:focus-visible { box-shadow: inset 0 0 0 1px var(--anatomy-mid); }
+.paper-figure-stage[data-advance] { cursor: pointer; }
+.paper-figure-controls { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 0 12px; }
+.og .paper-figure-controls { display: none; }
+.paper-figure-controls button {
+  min-height: 36px;
+  padding: 4px 10px;
+  border: 1px solid var(--anatomy-lo);
+  border-radius: 3px;
+  background: var(--anatomy-card);
+  color: var(--anatomy-strong);
+  font: 12px/1.3 var(--anatomy-mono);
+  cursor: pointer;
+}
+.paper-figure-controls button:is(:hover, [aria-pressed="true"]) { border-color: var(--anatomy-text); }
+.paper-figure-controls button[aria-pressed="true"] { background: var(--anatomy-shade-1); }
+.iso[data-theme="light"] .paper-figure-controls button[aria-pressed="true"] {
+  background: #e3efe3;
+  border-color: #3f634d;
+  color: #163222;
+}
+.paper-figure-controls button:focus-visible { outline: 2px solid var(--anatomy-strong); outline-offset: 2px; }
+.iso-plate:has(.paper-figure-stage) :is([data-corner="title"], [data-corner="hint"]) { color: var(--anatomy-text); }
+.iso-plate:has(.paper-figure-stage) [data-corner="title"] { margin-left: 0; text-align: left; color: var(--anatomy-strong); font-weight: 600; }
+.iso-plate:has(.paper-figure-stage) [data-corner="readout"] { font-size: 12px; letter-spacing: 0; }
+.iso-plate:has(.paper-figure-stage) [data-corner="readout"] span { display: inline-block; }
+
+.paper-figure-art [data-mat="cinnabar"] {
+  --anatomy-paper: var(--cinnabar, #c8372d);
+  --anatomy-face: #d55549;
+  --anatomy-top: #e88477;
+  --anatomy-shade-0: #932c25;
+  --anatomy-shade-1: #ae3930;
+  --anatomy-shade-2: #c34d42;
+  --anatomy-shade-3: #d56659;
+  --anatomy-hi: #78291f;
+  --anatomy-mid: #9e372e;
+  --anatomy-lo: #b54e43;
+}
+.paper-figure-art .polished-edge {
+  stroke: #f3faf4;
+  stroke-width: .85;
+  opacity: .78;
+}
+.iso[data-theme="dark"] .paper-figure-art .polished-edge {
+  stroke: #8fb39b;
+  opacity: .55;
+}
+.iso[data-theme="dark"] .paper-figure-art [data-mat="cinnabar"] {
+  --anatomy-paper: #803b33;
+  --anatomy-face: #9c483e;
+  --anatomy-top: #cb6b5b;
+  --anatomy-shade-0: #552720;
+  --anatomy-shade-1: #72332b;
+  --anatomy-shade-2: #8d4238;
+  --anatomy-shade-3: #ab5348;
+  --anatomy-hi: #ffd2c9;
+  --anatomy-mid: #ed9b8c;
+  --anatomy-lo: #be6c60;
+}
+
+@media (max-width: 560px) {
+  .paper-figure-controls button { min-height: 44px; }
+  .figure-slot:not(.is-zoomed) .iso-plate:has(.paper-figure-stage) .fig-zoom { top: 10px; }
+  .figure-slot.is-zoomed .paper-figure-controls {
+    position: sticky;
+    left: 12px;
+    width: calc(100vw - 24px);
+    margin-inline: 12px 0;
+  }
+}
+@media (pointer: coarse) {
+  .paper-figure-controls ~ .iso-plate-footer [data-corner="hint"] { display: none; }
+}
