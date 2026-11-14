@@ -1,0 +1,91 @@
+runtime/audit-tmp/iqa-linear-paid-trace-transport-independent/Gate.lean:56:62: error: no macro or `[quot_precheck]` instance for syntax kind `Lean.Parser.Term.proj` found
+  (authority).emitted
+This means we cannot eagerly check your notation/quotation for unbound identifiers; you can use `set_option quotPrecheck false` to disable this check.
+runtime/audit-tmp/iqa-linear-paid-trace-transport-independent/Gate.lean:60:24: error: elaboration function for `_private.Gate.0.SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.NoIslandNoMagic.CanonicalRiemann.ClozelGeneralizedDual.CenteredGram.IntegralGraphJointAction.CP806Independent.termPrefixRoot` has not been implemented
+  prefixRoot
+runtime/audit-tmp/iqa-linear-paid-trace-transport-independent/Gate.lean:66:23: error: elaboration function for `_private.Gate.0.SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.NoIslandNoMagic.CanonicalRiemann.ClozelGeneralizedDual.CenteredGram.IntegralGraphJointAction.CP806Independent.termPrefixRoot` has not been implemented
+  prefixRoot
+runtime/audit-tmp/iqa-linear-paid-trace-transport-independent/Gate.lean:67:25: error: elaboration function for `_private.Gate.0.SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.NoIslandNoMagic.CanonicalRiemann.ClozelGeneralizedDual.CenteredGram.IntegralGraphJointAction.CP806Independent.termPrefixRoot` has not been implemented
+  prefixRoot
+runtime/audit-tmp/iqa-linear-paid-trace-transport-independent/Gate.lean:86:59: error: elaboration function for `_private.Gate.0.SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.NoIslandNoMagic.CanonicalRiemann.ClozelGeneralizedDual.CenteredGram.IntegralGraphJointAction.CP806Independent.termPrefixRoot` has not been implemented
+  prefixRoot
+runtime/audit-tmp/iqa-linear-paid-trace-transport-independent/Gate.lean:90:8: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  words actual
+in the target expression
+  (words cut.trace).length < (words actual).length
+
+observation : GeneratedRiemannZeroObservation
+nontrivial : ¬∃ n, observation.coordinate = -2 * (↑n + 1)
+half : OriginalKCombCalculation.Half observation
+depth ordinal N : ℕ
+positive : 0 < N
+n : ℕ
+actual : Trace
+  (CountedCayleyProgramme.reader observation nontrivial half depth ordinal N positive n
+      (authority.emitted origin)).environment
+  (CountedCayleyProgramme.reader observation nontrivial half depth ordinal N positive n
+      (authority.emitted origin)).expression
+  (Expr.const
+    (RootGeneratedDebtActivationJointSource.OwnerFree.Consumer.value authority origin
+      (CountedCayleyProgramme.reader observation nontrivial half depth ordinal N positive n))) :=
+  actualTrace N positive n
+cut : actual.LinearSplit := actual.splitLinear
+⊢ (words cut.trace).length < (words actual).length
+
+Note: The target expression is not type-correct under the `implicit` transparency level, which may have triggered the failure. This is usually caused by unfolding of semireducible definitions in prior tactic steps. Use `set_option linter.tacticCheckInstances true` to investigate the source of the issue.
+Full error:
+  Application type mismatch: The argument
+    authority.emitted origin
+  has type
+    @ActualEventAlgebra.OccurrenceAt
+      (RootGeneratedDebtActivationJointSource.Successor.CompilerFromPacketSourceLaw.JointV
+        (SourceOperationInquiry.Context.Faces.Execution.Activation.epoch
+            (OriginalKCombFirstFullSourceDynamics.packet observation nontrivial half depth
+                    (ordinal + 1 + 1)).snd.fst.1).registered
+        (SourceOperationInquiry.Context.Faces.Execution.Activation.epoch
+            (OriginalKCombFirstFullSourceDynamics.packet observation nontrivial half depth
+                    (ordinal + 1 + 1)).snd.fst.1).packetAt)
+      authority.source.restructuringSource.source.toRootSource.actual origin
+  but is expected to have type
+    @ActualEventAlgebra.OccurrenceAt
+      (RootGeneratedDebtActivationJointSource.Successor.CompilerFromPacketSourceLaw.JointV
+        (SourceOperationInquiry.Context.Faces.Execution.Activation.epoch
+            (OriginalKCombFirstFullSourceDynamics.packet observation nontrivial half depth
+                    (ordinal + 1 + 1)).snd.fst.1).registered
+        (SourceOperationInquiry.Context.Faces.Execution.Activation.epoch
+            (OriginalKCombFirstFullSourceDynamics.packet observation nontrivial half depth
+                    (ordinal + 1 + 1)).snd.fst.1).packetAt)
+      authority.toLedgerRoot.source.source.toRootSource.actual origin
+  in the application
+    CountedCayleyProgramme.reader observation nontrivial half depth ordinal N positive n (authority.emitted origin)
+runtime/audit-tmp/iqa-linear-paid-trace-transport-independent/Gate.lean:93:38: error: elaboration function for `_private.Gate.0.SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.NoIslandNoMagic.CanonicalRiemann.ClozelGeneralizedDual.CenteredGram.IntegralGraphJointAction.CP806Independent.termPrefixRoot` has not been implemented
+  prefixRoot
+runtime/audit-tmp/iqa-linear-paid-trace-transport-independent/Gate.lean:86:102: error: unsolved goals
+observation : GeneratedRiemannZeroObservation
+nontrivial : ¬∃ n, observation.coordinate = -2 * (↑n + 1)
+half : OriginalKCombCalculation.Half observation
+depth ordinal N : ℕ
+positive : 0 < N
+n : ℕ
+actual : Trace
+  (CountedCayleyProgramme.reader observation nontrivial half depth ordinal N positive n
+      (authority.emitted origin)).environment
+  (CountedCayleyProgramme.reader observation nontrivial half depth ordinal N positive n
+      (authority.emitted origin)).expression
+  (Expr.const
+    (RootGeneratedDebtActivationJointSource.OwnerFree.Consumer.value authority origin
+      (CountedCayleyProgramme.reader observation nontrivial half depth ordinal N positive n))) :=
+  actualTrace N positive n
+cut : actual.LinearSplit := actual.splitLinear
+live : (words cut.trace).length < (words actual).length
+address : Fin (words actual).length := ⟨(words cut.trace).length, live⟩
+⊢ let actual := actualTrace N positive n;
+  let cut := actual.splitLinear;
+  ∃ relation, relation ∉ sorry.range
+CP806_CONTROL + ordered_child_and_signed_payment
+CP806_CONTROL + relation_retraction_and_differential
+CP806_CONTROL + actual_count_child_has_integer_retraction
+CP806_CONTROL + actual_count_child_has_paid_cochain
+CP806_CONTROL + actual_boundary_and_original_whole_next
+CP806_CONTROL - actual_parent_only_charge_cannot_descend
+CP806_GATE_PASS positive=5 negative=1

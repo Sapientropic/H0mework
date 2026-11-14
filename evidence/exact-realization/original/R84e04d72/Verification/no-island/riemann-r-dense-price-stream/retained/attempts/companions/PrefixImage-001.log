@@ -1,0 +1,33 @@
+import took 5.55s
+runtime/audit-tmp/iqa-r-dense-price-stream/source-root/main/SaturationMonoid/GenericFoundation/Scalar/Feature/FiniteGram/PrefixImage.lean:108:8: error: automatically included section variable(s) unused in theorem `_private.SaturationMonoid.GenericFoundation.Scalar.Feature.FiniteGram.PrefixImage.0.SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceGeneratedFiniteGram.PrefixImage.coordinate_exact`:
+  [CompleteSpace H]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [CompleteSpace H] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+cumulative profiling times:
+	attribute application 0.166ms
+	compilation (IR) 0.103ms
+	compilation (LCNF base) 1.01ms
+	compilation (LCNF impure) 0.438ms
+	compilation (LCNF mono) 1.06ms
+	dsimp 1.03ms
+	elaboration 34.2ms
+	fix level params 0.812ms
+	import 5.55s
+	initialization 31.9ms
+	instantiate metavars 0.953ms
+	interpretation 393ms
+	let-to-have transformation 0.089ms
+	linting 6.56ms
+	module linting 0.000542ms
+	norm_num 0.415ms
+	overlappingInstancesLinter 6.27ms
+	parsing 5.56ms
+	process pre-definitions 12.7ms
+	ring 10.7ms
+	share common exprs 3.09ms
+	tactic execution 128ms
+	tacticAnalysis 11.6ms
+	type checking 46.1ms
+	typeclass inference 371ms

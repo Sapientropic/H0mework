@@ -1,0 +1,15 @@
+import took 2.96s
+interpretation of Lean.Elab.Command.elabOpenPrivate._boxed took 420ms
+interpretation of Lean.Elab.Command.elabOpenPrivate._boxed took 551ms
+typeclass inference of CoeT took 108ms
+runtime/audit-tmp/iqa-cofinal-factorial-completion/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/FiniteModulus/Factorial/Readback.lean:117:2: error: Type mismatch
+  read.toIntLinearMap
+has type
+  @LinearMap ℤ ℤ Int.instSemiring Int.instSemiring (RingHom.id ℤ) (↑FactorialCompletion) (AllPrimeCompletion L)
+    FactorialCompletion.isAddCommGroup.toAddCommMonoid Pi.addCommGroup.toAddCommMonoid
+    (AddCommGroup.toIntModule ↑FactorialCompletion) (AddCommGroup.toIntModule (AllPrimeCompletion L))
+but is expected to have type
+  @LinearMap ℤ ℤ Int.instSemiring Int.instSemiring (RingHom.id ℤ) (↑FactorialCompletion) (AllPrimeCompletion L)
+    FactorialCompletion.isAddCommGroup.toAddCommMonoid Pi.addCommMonoid FactorialCompletion.isModule
+    (AddCommGroup.toIntModule (AllPrimeCompletion L))
+runtime/audit-tmp/iqa-cofinal-factorial-completion/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/FiniteModulus/Factorial/Readback.lean:123:2: error: maximum number of errors (1; from option `maxErrors`) reached, exiting

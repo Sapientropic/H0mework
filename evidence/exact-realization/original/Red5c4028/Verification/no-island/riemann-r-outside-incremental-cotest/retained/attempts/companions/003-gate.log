@@ -1,0 +1,50 @@
+import took 19.4s
+interpretation of Lean.Elab.Command.elabOpenPrivate._boxed took 894ms
+interpretation of Lean.Elab.Command.elabOpenPrivate._boxed took 1.01s
+type checking took 830ms
+runtime/audit-tmp/iqa-r-outside-incremental-cotest-independent/Gate.lean:103:4: error: Type mismatch: After simplification, term
+  atOne
+ has type
+  (weights 1 * if True then 1 else 0) = 0
+but is expected to have type
+  weights 1 = 0
+runtime/audit-tmp/iqa-r-outside-incremental-cotest-independent/Gate.lean:106:4: error: Type mismatch: After simplification, term
+  atZero
+ has type
+  (weights 0 * if True then 1 else 0) = 0
+but is expected to have type
+  weights 0 = 0
+CP775_CONTROL + the_Gram_snoc_pays_both_cotests_and_all_arbitrary_field_coordinates
+CP775_CONTROL + actual_D_exterior_pays_the_new_innovation_and_keeps_the_original_price
+CP775_CONTROL + the_written_registered_field_pays_the_same_residual_and_its_innovation_norm
+CP775_CONTROL + the_actual_joint_source_occurrences_pay_the_born_relation_and_canonical_whole_next
+CP775_CONTROL - the_nonorthogonal_append_requires_subtracting_the_new_charge
+CP775_GATE_PASS positive=4 negative=1
+cumulative profiling times:
+	attribute application 0.199ms
+	blocked (unaccounted) 2.14ms
+	compilation (IR) 0.364ms
+	compilation (LCNF base) 6.25ms
+	compilation (LCNF impure) 1.94ms
+	compilation (LCNF mono) 4.21ms
+	congr simp thm 0.763ms
+	do element elaborator 0.442ms
+	dsimp 2.1ms
+	elaboration 109ms
+	fix level params 0.604ms
+	import 19.4s
+	initialization 31.6ms
+	instantiate metavars 1.16ms
+	interpretation 2.72s
+	let-to-have transformation 1.38ms
+	linting 12.7ms
+	module linting 0.000792ms
+	overlappingInstancesLinter 9.91ms
+	parsing 10ms
+	process pre-definitions 13.4ms
+	share common exprs 5.99ms
+	simp 43.5ms
+	tactic execution 195ms
+	tacticAnalysis 22.7ms
+	type checking 918ms
+	typeclass inference 427ms

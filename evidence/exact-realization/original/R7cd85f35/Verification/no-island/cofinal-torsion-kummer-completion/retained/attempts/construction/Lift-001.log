@@ -1,0 +1,42 @@
+import took 1.81s
+typeclass inference of CoeT took 152ms
+runtime/audit-tmp/iqa-cofinal-torsion-completion/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/CokernelTorsion/CoherentLift.lean:87:29: error: unexpected token '/--'; expected ')', ',' or ':'
+runtime/audit-tmp/iqa-cofinal-torsion-completion/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/CokernelTorsion/CoherentLift.lean:97:96: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  OfNat (↑cone.pt) 1
+numerals are polymorphic in Lean, but the numeral `1` cannot be used in a context where the expected type is
+  ↑cone.pt
+due to the absence of the instance above
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+runtime/audit-tmp/iqa-cofinal-torsion-completion/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/CokernelTorsion/CoherentLift.lean:102:18: error: Application type mismatch: The argument
+  primePowerTorsionTower (M ⧸ evaluate.range) p
+has type
+  ℕᵒᵖ ⥤ ModuleCat ℤ
+but is expected to have type
+  Cone ?m.123
+in the application
+  limit.lift_π (primePowerTorsionTower (M ⧸ evaluate.range) p)
+cumulative profiling times:
+	attribute application 0.112ms
+	blocked (unaccounted) 1.26ms
+	compilation (IR) 0.135ms
+	compilation (LCNF base) 4.79ms
+	compilation (LCNF impure) 0.589ms
+	compilation (LCNF mono) 1.46ms
+	elaboration 46ms
+	fix level params 0.789ms
+	import 1.81s
+	initialization 19.4ms
+	instantiate metavars 0.67ms
+	interpretation 397ms
+	let-to-have transformation 0.131ms
+	linting 5.83ms
+	module linting 0.000541ms
+	overlappingInstancesLinter 4.45ms
+	parsing 3.96ms
+	process pre-definitions 21.8ms
+	share common exprs 2.02ms
+	tactic execution 116ms
+	tacticAnalysis 6.99ms
+	type checking 31.8ms
+	typeclass inference 433ms

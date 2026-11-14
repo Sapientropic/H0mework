@@ -1,0 +1,54 @@
+import took 17.4s
+interpretation of Lean.Elab.Command.elabOpenPrivate._boxed took 719ms
+interpretation of Lean.Elab.Command.elabOpenPrivate._boxed took 685ms
+type checking took 731ms
+runtime/audit-tmp/iqa-r-outside-incremental-cotest-independent/Gate.lean:86:4: error: Type mismatch
+  Fin.snoc_castSucc ?m.54 ?m.56 0
+has type
+  Fin.snoc ?m.56 ?m.54 (Fin.castSucc 0) = ?m.56 0
+but is expected to have type
+  ?m.45 = axis 0
+runtime/audit-tmp/iqa-r-outside-incremental-cotest-independent/Gate.lean:114:8: error: typeclass instance problem is stuck, it is often due to metavariables
+  (i : ?m.69) → Zero (?m.70 i)
+runtime/audit-tmp/iqa-r-outside-incremental-cotest-independent/Gate.lean:132:24: error(lean.unknownIdentifier): Unknown identifier `action`
+runtime/audit-tmp/iqa-r-outside-incremental-cotest-independent/Gate.lean:133:10: error(lean.unknownIdentifier): Unknown identifier `action`
+runtime/audit-tmp/iqa-r-outside-incremental-cotest-independent/Gate.lean:144:6: error: Application type mismatch: The argument
+  Eq.symm (Fin.snoc_last ?m.302 ?m.304)
+has type
+  ?m.302 = Fin.snoc ?m.304 ?m.302 (Fin.last ?m.300)
+but is expected to have type
+  addedColumn = Fin.snoc priorAxis addedColumn (Fin.last 1)
+in the application
+  congrArg (fun v => (coefficients (Fin.snoc priorAxis addedColumn) v).ofLp (Fin.last 1))
+    (Eq.symm (Fin.snoc_last ?m.302 ?m.304))
+CP775_CONTROL + the_Gram_snoc_pays_both_cotests_and_all_arbitrary_field_coordinates
+CP775_CONTROL + actual_D_exterior_pays_the_new_innovation_and_keeps_the_original_price
+CP775_CONTROL + the_written_registered_field_pays_the_same_residual_and_its_innovation_norm
+CP775_CONTROL + the_actual_joint_source_occurrences_pay_the_born_relation_and_canonical_whole_next
+CP775_CONTROL - the_nonorthogonal_append_requires_subtracting_the_new_charge
+CP775_GATE_PASS positive=4 negative=1
+cumulative profiling times:
+	attribute application 0.167ms
+	compilation (IR) 0.233ms
+	compilation (LCNF base) 14.5ms
+	compilation (LCNF impure) 1.22ms
+	compilation (LCNF mono) 3.97ms
+	do element elaborator 0.745ms
+	dsimp 2.31ms
+	elaboration 93.2ms
+	fix level params 0.461ms
+	import 17.4s
+	initialization 30ms
+	instantiate metavars 0.618ms
+	interpretation 2.25s
+	let-to-have transformation 1.11ms
+	linting 9.46ms
+	module linting 0.000667ms
+	overlappingInstancesLinter 9.45ms
+	parsing 7.43ms
+	process pre-definitions 18.9ms
+	share common exprs 8.45ms
+	tactic execution 126ms
+	tacticAnalysis 12.5ms
+	type checking 778ms
+	typeclass inference 260ms

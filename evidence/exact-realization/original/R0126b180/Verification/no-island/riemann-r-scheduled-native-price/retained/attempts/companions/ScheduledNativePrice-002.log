@@ -1,0 +1,68 @@
+import took 23.7s
+interpretation of Lean.Elab.Command.elabOpenPrivate._boxed took 735ms
+interpretation of Lean.Elab.Command.elabOpenPrivate._boxed took 657ms
+elaboration took 110ms
+elaboration took 127ms
+elaboration took 137ms
+elaboration took 120ms
+elaboration took 125ms
+elaboration took 129ms
+process pre-definitions took 282ms
+elaboration took 323ms
+let-to-have transformation took 1.66s
+process pre-definitions took 330ms
+tactic execution of Lean.Parser.Tactic.exact took 31.7s
+process pre-definitions took 681ms
+dsimp took 209ms
+tactic execution of Lean.Parser.Tactic.rewriteSeq took 6.93s
+typeclass inference of CoeT took 475ms
+typeclass inference of CoeT took 324ms
+interpretation of _private.Mathlib.Tactic.Linter.Style.0.Mathlib.Linter.Style.nameCheck.doubleUnderscore._lam_2._boxed took 209ms
+typeclass inference of CoeT took 300ms
+typeclass inference of CoeT took 126ms
+runtime/audit-tmp/iqa-r-scheduled-native-price/source-root/main/SaturationMonoid/NoIslandNoMagic/CanonicalRiemann/GeneralizedDual/CoPoissonEnergy/Muntz/Cokernel/CenteredGram/JointAction/Runtime/Feedback/ClozelOriginalKFiniteOrderRelease/GammaSource/PositionGap/ScheduledNativePrice.lean:102:79: error: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+
+Note: Use `set_option maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+runtime/audit-tmp/iqa-r-scheduled-native-price/source-root/main/SaturationMonoid/NoIslandNoMagic/CanonicalRiemann/GeneralizedDual/CoPoissonEnergy/Muntz/Cokernel/CenteredGram/JointAction/Runtime/Feedback/ClozelOriginalKFiniteOrderRelease/GammaSource/PositionGap/ScheduledNativePrice.lean:125:6: error(lean.unknownIdentifier): Unknown identifier `paid_whole_is_target`
+runtime/audit-tmp/iqa-r-scheduled-native-price/source-root/main/SaturationMonoid/NoIslandNoMagic/CanonicalRiemann/GeneralizedDual/CoPoissonEnergy/Muntz/Cokernel/CenteredGram/JointAction/Runtime/Feedback/ClozelOriginalKFiniteOrderRelease/GammaSource/PositionGap/ScheduledNativePrice.lean:118:84: error: unsolved goals
+observation : GeneratedRiemannZeroObservation
+nontrivial : ¬∃ n, observation.coordinate = -2 * (↑n + 1)
+half : OriginalKCombCalculation.Half observation
+depth start count actor : ℕ
+i : Fin count
+ordinal : ℕ := predecessor observation nontrivial half depth start count actor i
+written :
+  OriginalKDirectRCofinalCalculatedSource.calculatedTargetRaw observation nontrivial half depth ordinal =
+    raw (ordinal + 1)
+⊢ ⟪fourierL2 ↑(burnolCompletedMellinRieszVector (burnolDivisionZeroCompletedMellinCoordinate observation ⋯)),
+      ↑(OriginalKCombCofinalPaAction.Q (paidWhole observation nontrivial half depth start count actor i))⟫_ℂ =
+    nativePriceAt observation half (raw actor) (↑(schedule start count) i)
+cumulative profiling times:
+	attribute application 3.28ms
+	blocked (unaccounted) 17.6ms
+	compilation (IR) 2.33ms
+	compilation (LCNF base) 132ms
+	compilation (LCNF impure) 11.1ms
+	compilation (LCNF mono) 64.2ms
+	congr simp thm 0.0595ms
+	dsimp 268ms
+	elaboration 1.32s
+	fix level params 1.76ms
+	import 23.7s
+	initialization 32ms
+	instantiate metavars 0.588ms
+	interpretation 2.76s
+	let-to-have transformation 1.69s
+	linting 26.1ms
+	module linting 0.000875ms
+	overlappingInstancesLinter 8.62ms
+	parsing 85.3ms
+	process pre-definitions 1.44s
+	share common exprs 8.14ms
+	simp 2.6ms
+	tactic execution 38.7s
+	tacticAnalysis 99.9ms
+	type checking 286ms
+	typeclass inference 1.55s

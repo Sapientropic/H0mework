@@ -1,0 +1,73 @@
+import took 3.81s
+runtime/audit-tmp/iqa-cofinal-paid-trace/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/Operations/Morphism.lean:26:14: error: unsolved goals
+S : Type u
+V X : S → Type u
+inst✝ : (s : S) → AddCommGroup (V s)
+s : S
+p : Nat.Primes
+old increment : Env V X
+term : Expr V X s
+coefficient : ℤ
+⊢ ((canonicalLinearMap p)
+        (Function.prod (⇑(Finsupp.linearCombination ℤ fun e => e.eval old))
+            (⇑(Finsupp.linearCombination ℤ fun e => e.effect old increment)) (Finsupp.single term coefficient)).1,
+      (canonicalLinearMap p)
+        (Function.prod (⇑(Finsupp.linearCombination ℤ fun e => e.eval old))
+            (⇑(Finsupp.linearCombination ℤ fun e => e.effect old increment)) (Finsupp.single term coefficient)).2) =
+    Function.prod (⇑(Finsupp.linearCombination ℤ fun e => e.eval (environment p old)))
+      (⇑(Finsupp.linearCombination ℤ fun e => e.effect (environment p old) (environment p increment)))
+      (Finsupp.single (expression p term) coefficient)
+runtime/audit-tmp/iqa-cofinal-paid-trace/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/Operations/Morphism.lean:30:60: error: This simp argument is unused:
+  Finsupp.linearCombination_single
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [LinearMap.comp_apply, word_map_single, updateInventory, LinearMap.prod_apply,
+    LinearMap.prodMap_apply, evaluation, effectEvaluator, expression_eval, expression_effect, map_smul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+runtime/audit-tmp/iqa-cofinal-paid-trace/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/Operations/Morphism.lean:31:6: error: This simp argument is unused:
+  expression_eval
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [LinearMap.comp_apply, word_map_single, updateInventory, LinearMap.prod_apply,
+    LinearMap.prodMap_apply, evaluation, effectEvaluator, Finsupp.linearCombination_single, expression_effect, map_smul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+runtime/audit-tmp/iqa-cofinal-paid-trace/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/Operations/Morphism.lean:31:23: error: This simp argument is unused:
+  expression_effect
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [LinearMap.comp_apply, word_map_single, updateInventory, LinearMap.prod_apply,
+    LinearMap.prodMap_apply, evaluation, effectEvaluator, Finsupp.linearCombination_single, expression_eval, map_smul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+runtime/audit-tmp/iqa-cofinal-paid-trace/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/Operations/Morphism.lean:31:42: error: This simp argument is unused:
+  map_smul
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [LinearMap.comp_apply, word_map_single, updateInventory, LinearMap.prod_apply,
+    LinearMap.prodMap_apply, evaluation, effectEvaluator, Finsupp.linearCombination_single, expression_eval,
+    expression_effect]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+cumulative profiling times:
+	attribute application 0.285ms
+	congr simp thm 0.768ms
+	elaboration 25.9ms
+	fix level params 0.149ms
+	import 3.81s
+	initialization 27.5ms
+	instantiate metavars 0.119ms
+	interpretation 370ms
+	let-to-have transformation 0.0547ms
+	linting 1.94ms
+	module linting 0.000583ms
+	overlappingInstancesLinter 2.7ms
+	parsing 1.07ms
+	process pre-definitions 9.29ms
+	share common exprs 0.356ms
+	simp 15.8ms
+	tactic execution 6.3ms
+	tacticAnalysis 2.4ms
+	type checking 26.4ms
+	typeclass inference 32.4ms

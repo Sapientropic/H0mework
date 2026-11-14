@@ -1,0 +1,35 @@
+import took 2.59s
+runtime/audit-tmp/iqa-cofinal-factorial-completion/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/FiniteModulus/Factorial/Equivalence.lean:34:4: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  e ≥ 1
+  d ≥ 0
+  c ≥ 0
+  c - d ≥ 1
+  b ≥ 1
+  b - c ≥ 1
+  a ≥ 1
+where
+ a := ↑(modulus.factorization ↑prime)
+ b := ↑(modulus.factorization ↑↑coordinate)
+ c := ↑j
+ d := ↑(depths coordinate)
+ e := ↑(factorialModulus address)
+cumulative profiling times:
+	attribute application 0.0288ms
+	elaboration 13.4ms
+	fix level params 0.362ms
+	import 2.59s
+	initialization 20ms
+	instantiate metavars 0.464ms
+	interpretation 382ms
+	let-to-have transformation 0.023ms
+	linting 1.92ms
+	module linting 0.000625ms
+	overlappingInstancesLinter 2.71ms
+	parsing 1.93ms
+	process pre-definitions 3.39ms
+	share common exprs 1.14ms
+	tactic execution 84.7ms
+	tacticAnalysis 4.57ms
+	type checking 21.3ms
+	typeclass inference 67.7ms

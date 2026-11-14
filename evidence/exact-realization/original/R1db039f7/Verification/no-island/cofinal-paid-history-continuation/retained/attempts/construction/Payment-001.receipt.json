@@ -1,0 +1,35 @@
+{
+  "stage": "Payment",
+  "attempt": "001",
+  "command": [
+    "lean",
+    "--trust=0",
+    "-DElab.async=false",
+    "-DwarningAsError=true",
+    "-DmaxErrors=4",
+    "-j1",
+    "-M32000",
+    "-DstderrAsMessages=false",
+    "-Dprofiler=true",
+    "-Dprofiler.threshold=100",
+    "--root=runtime/audit-tmp/iqa-cofinal-paid-continuation/source-root/main",
+    "-o",
+    "runtime/audit-tmp/iqa-cofinal-paid-continuation/objects/Payment-001.olean",
+    "runtime/audit-tmp/iqa-cofinal-paid-continuation/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/Operations/Closure/Continuation/Payment.lean"
+  ],
+  "source": "runtime/audit-tmp/iqa-cofinal-paid-continuation/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/Operations/Closure/Continuation/Payment.lean",
+  "source_sha256": "9c91d35cf50954ee478640b5a6d9b642974ef16151811ce3db2ec5486cb44bfe",
+  "source_snapshot": "runtime/audit-tmp/iqa-cofinal-paid-continuation/receipts/Payment-001.lean",
+  "lean_path_sha256": "df5f9e8ac11ae4b9783d171f8b6e87b1f3f819514f35e77e4ef2a3d2d0ab8f15",
+  "old_compilations": 0,
+  "pid": 29051,
+  "exit_code": 1,
+  "elapsed_seconds": 3.4797373339970363,
+  "source_unchanged": true,
+  "log_sha256": "153b983104637bd45b912ebf1e4db124f4e096a154680d5ff1e7ad1b2e2d02c5",
+  "log_bytes": 2553,
+  "object": {
+    "path": "runtime/audit-tmp/iqa-cofinal-paid-continuation/objects/Payment-001.olean",
+    "present": false
+  }
+}

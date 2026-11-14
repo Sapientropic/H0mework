@@ -1,0 +1,41 @@
+import took 9.7s
+runtime/audit-tmp/iqa-cofinal-finite-modulus/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/FiniteModulus/Completion.lean:52:29: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  𝟙 ?m.82 ≫ ?f
+in the target expression
+  𝟙 (ModuleCat.of ℤ L) ≫ (sourceState ↑p).app (Opposite.op j) =
+    (sourceState ↑p).app (Opposite.op (depth p)) ≫ (tower ↑p).map edge
+
+L : Type u
+inst✝ : AddCommGroup L
+primes : Finset Nat.Primes
+depth : ↥primes → ℕ
+value : AllPrimeCompletion L
+p : ↥primes
+j : ℕ
+within : j ≤ depth p
+source : L := finitePrimeLift primes depth value
+edge : Opposite.op (depth p) ⟶ Opposite.op j := (homOfLE within).op
+restrict : (tower ↑p).obj (Opposite.op (depth p)) ⟶ (tower ↑p).obj (Opposite.op j) := (tower ↑p).map edge
+diagonal :
+  𝟙 (ModuleCat.of ℤ L) ≫ (sourceState ↑p).app (Opposite.op j) =
+    (sourceState ↑p).app (Opposite.op (depth p)) ≫ (tower ↑p).map edge
+⊢ (stageProjection (↑p) j) (finitePrimeLift primes depth value) = (ModuleCat.Hom.hom (restriction (↑p) j)) (value ↑p)
+cumulative profiling times:
+	attribute application 0.082ms
+	elaboration 37.3ms
+	fix level params 0.706ms
+	import 9.7s
+	initialization 37.1ms
+	instantiate metavars 0.698ms
+	interpretation 461ms
+	let-to-have transformation 1.29ms
+	linting 5.98ms
+	module linting 0.000667ms
+	overlappingInstancesLinter 4.97ms
+	parsing 4.57ms
+	process pre-definitions 9.37ms
+	share common exprs 2.34ms
+	tactic execution 80.9ms
+	tacticAnalysis 9.68ms
+	type checking 44.9ms
+	typeclass inference 185ms

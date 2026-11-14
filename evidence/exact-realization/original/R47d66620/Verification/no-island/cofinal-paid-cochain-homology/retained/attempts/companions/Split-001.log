@@ -1,0 +1,30 @@
+import took 4.32s
+interpretation of Lean.Elab.Command.elabOpenPrivate._boxed took 428ms
+elaboration took 222ms
+runtime/audit-tmp/iqa-cofinal-paid-cochain-homology/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/Operations/Closure/Continuation/Cochain/Settlement.lean:46:6: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  HAdd ↑((natComplex sourceHistory).X 1) ↥sourceHistory.generatorClosure ?m.259
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+cumulative profiling times:
+	attribute application 0.372ms
+	compilation (IR) 0.533ms
+	compilation (LCNF base) 15.5ms
+	compilation (LCNF impure) 3.65ms
+	compilation (LCNF mono) 7.35ms
+	elaboration 291ms
+	fix level params 0.141ms
+	import 4.32s
+	initialization 20.6ms
+	instantiate metavars 0.0398ms
+	interpretation 1.25s
+	let-to-have transformation 0.0638ms
+	linting 3.76ms
+	module linting 0.000416ms
+	overlappingInstancesLinter 4.23ms
+	parsing 2.21ms
+	process pre-definitions 14.8ms
+	share common exprs 0.64ms
+	tactic execution 37ms
+	tacticAnalysis 7.69ms
+	type checking 10.3ms
+	typeclass inference 83.8ms

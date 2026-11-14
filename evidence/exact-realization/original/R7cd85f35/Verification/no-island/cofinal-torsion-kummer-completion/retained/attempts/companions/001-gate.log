@@ -1,0 +1,38 @@
+import took 10.3s
+interpretation of Lean.Elab.Command.elabOpenPrivate._boxed took 659ms
+runtime/audit-tmp/iqa-cofinal-torsion-completion-independent/Gate.lean:55:11: error: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+CP741_CONTROL + the_same_prime_multiplication_commutes_with_stage_and_limit_restrictions
+CP741_CONTROL + actual_ambient_division_lifts_the_compatible_upper_class_over_its_given_lower_class
+CP741_CONTROL + every_coherent_source_class_has_one_coherent_torsion_lift
+CP741_CONTROL + one_actual_kummer_lift_reads_every_layer_and_original_R_whole_next_remain_consumed
+CP741_CONTROL - omitting_the_ambient_correction_loses_the_given_lower_class
+CP741_GATE_PASS positive=4 negative=1
+cumulative profiling times:
+	attribute application 0.882ms
+	compilation (IR) 4.23ms
+	compilation (LCNF base) 43.8ms
+	compilation (LCNF impure) 3.99ms
+	compilation (LCNF mono) 13.2ms
+	congr simp thm 0.46ms
+	elaboration 99.2ms
+	fix level params 0.961ms
+	import 10.3s
+	initialization 18.7ms
+	instantiate metavars 0.778ms
+	interpretation 1.29s
+	let-to-have transformation 0.344ms
+	linting 9ms
+	module linting 0.000709ms
+	norm_num 8.68ms
+	overlappingInstancesLinter 7.15ms
+	parsing 6.67ms
+	process pre-definitions 29.4ms
+	ring 4.51ms
+	share common exprs 4.73ms
+	simp 1.74ms
+	tactic execution 163ms
+	tacticAnalysis 17.1ms
+	type checking 148ms
+	typeclass inference 311ms

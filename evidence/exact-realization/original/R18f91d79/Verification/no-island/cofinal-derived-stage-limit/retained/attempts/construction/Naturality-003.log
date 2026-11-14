@@ -1,0 +1,61 @@
+import took 1.37s
+runtime/audit-tmp/iqa-cofinal-derived-stage-limit/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/Cochain/DerivedNaturality.lean:84:24: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  productMap ?source ?target ?comparison ≫ RootGeneratedSequentialHomotopyLimitAt.productProjection ?target ?stage
+in the target expression
+  limitProductMap before sourceCone ≫ products ≫ after.productProjection stage =
+    (completed ≫ limitProductMap after targetCone) ≫ after.productProjection stage
+
+Root : Type u
+NextRoot : Type v
+root : RootedAccountedUnfolding Root
+next : RootedAccountedUnfolding NextRoot
+p : Nat.Primes
+source target : CochainComplex AddCommGrpCat ℤ
+action : source ⟶ target
+sourceCone : Cone (cochainStageTower shape p source) := cochainCompletionCone shape p source
+targetCone : Cone (cochainStageTower shape p target) := cochainCompletionCone shape p target
+written : cochainStageTower shape p source ⟶ cochainStageTower shape p target := cochainStageTowerMap shape p action
+products : before.productComplex ⟶ after.productComplex := productMap before after written
+completed : ((completionFunctor p).mapHomologicalComplex shape).obj source ⟶
+  ((completionFunctor p).mapHomologicalComplex shape).obj target :=
+  ((completionFunctor p).mapHomologicalComplex shape).map action
+stage : ℕ
+⊢ limitProductMap before sourceCone ≫ products ≫ after.productProjection stage =
+    (completed ≫ limitProductMap after targetCone) ≫ after.productProjection stage
+
+Note: The target expression is not type-correct under the `implicit` transparency level, which may have triggered the failure. This is usually caused by unfolding of semireducible definitions in prior tactic steps. Use `set_option linter.tacticCheckInstances true` to investigate the source of the issue.
+Full error:
+  Application type mismatch: The argument
+    sourceCone
+  has type
+    @Cone ℕᵒᵖ Category.opposite (HomologicalComplex (ModuleCat ℤ) shape) HomologicalComplex.instCategory
+      (cochainStageTower shape p source)
+  but is expected to have type
+    @Cone ℕᵒᵖ Category.opposite IntegralCochainComplex HomologicalComplex.instCategory before.actualTower
+  in the application
+    sourceCone.pt
+cumulative profiling times:
+	attribute application 0.619ms
+	compilation (IR) 0.657ms
+	compilation (LCNF base) 26.4ms
+	compilation (LCNF impure) 3.44ms
+	compilation (LCNF mono) 7.63ms
+	congr simp thm 1.22ms
+	elaboration 101ms
+	fix level params 0.281ms
+	import 1.37s
+	initialization 18ms
+	instantiate metavars 0.383ms
+	interpretation 327ms
+	let-to-have transformation 0.101ms
+	linting 6.15ms
+	module linting 0.000875ms
+	overlappingInstancesLinter 1.85ms
+	parsing 2.61ms
+	process pre-definitions 18.3ms
+	share common exprs 2.11ms
+	simp 15.4ms
+	tactic execution 61.3ms
+	tacticAnalysis 13.3ms
+	type checking 19.2ms
+	typeclass inference 52.8ms

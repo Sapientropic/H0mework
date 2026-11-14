@@ -1,0 +1,74 @@
+import took 1.89s
+runtime/audit-tmp/iqa-cofinal-native-bilinear/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/Bilinear.lean:43:76: error: unsolved goals
+L M N : Type u
+inst✝² : AddCommGroup L
+inst✝¹ : AddCommGroup M
+inst✝ : AddCommGroup N
+act : L →ₗ[ℤ] M →ₗ[ℤ] N
+p : Nat.Primes
+j : ℕ
+left : L
+right : M
+⊢ (transition p j) ((stageProjection p (j + 1)) ((act left) right)) =
+    ((stageBilinear act p j) ((transition p j) ((stageProjection p (j + 1)) left)))
+      ((transition p j) ((stageProjection p (j + 1)) right))
+runtime/audit-tmp/iqa-cofinal-native-bilinear/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/Bilinear.lean:49:40: error: This simp argument is unused:
+  LinearMap.congr_fun (transition_projection p j)
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [stage_bilinear_projection]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+runtime/audit-tmp/iqa-cofinal-native-bilinear/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/Bilinear.lean:58:16: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  (?a • ?f) ?x
+in the target expression
+  (stageProjection p (j + k + 1)) (↑↑p ^ (k + 1) • (act (↑↑p ^ (j + 1) • oldLeft)) oldRight) = 0
+
+L M N : Type u
+inst✝² : AddCommGroup L
+inst✝¹ : AddCommGroup M
+inst✝ : AddCommGroup N
+act : L →ₗ[ℤ] M →ₗ[ℤ] N
+p : Nat.Primes
+j k : ℕ
+oldLeft : L
+leftZero : (stageProjection p j) (↑↑p ^ (j + 1) • oldLeft) = 0
+oldRight : M
+rightZero : (stageProjection p k) (↑↑p ^ (k + 1) • oldRight) = 0
+⊢ (stageProjection p (j + k + 1)) (↑↑p ^ (k + 1) • (act (↑↑p ^ (j + 1) • oldLeft)) oldRight) = 0
+
+Note: The target expression is not type-correct under the `implicit` transparency level, which may have triggered the failure. This is usually caused by unfolding of semireducible definitions in prior tactic steps. Use `set_option linter.tacticCheckInstances true` to investigate the source of the issue.
+Full error:
+  Application type mismatch: The argument
+    p
+  has type
+    Nat.Primes
+  but is expected to have type
+    { p // Nat.Prime p }
+  in the application
+    ↑p
+cumulative profiling times:
+	attribute application 1.67ms
+	compilation (IR) 0.149ms
+	compilation (LCNF base) 1.3ms
+	compilation (LCNF impure) 0.19ms
+	compilation (LCNF mono) 0.545ms
+	congr simp thm 0.336ms
+	elaboration 31.7ms
+	fix level params 0.525ms
+	import 1.89s
+	initialization 18.8ms
+	instantiate metavars 0.623ms
+	interpretation 317ms
+	let-to-have transformation 0.0725ms
+	linting 2.61ms
+	module linting 0.000583ms
+	overlappingInstancesLinter 3.55ms
+	parsing 2.27ms
+	process pre-definitions 7.67ms
+	share common exprs 1.32ms
+	simp 7.42ms
+	tactic execution 53ms
+	tacticAnalysis 3.87ms
+	type checking 54.2ms
+	typeclass inference 160ms

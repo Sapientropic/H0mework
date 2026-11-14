@@ -1,0 +1,27 @@
+import took 5.99s
+interpretation of Lean.Elab.Command.elabOpenPrivate._boxed took 473ms
+interpretation of Lean.Elab.Command.elabOpenPrivate._boxed took 465ms
+type checking took 312ms
+type checking took 295ms
+process pre-definitions took 154ms
+elaboration took 523ms
+type checking took 107ms
+elaboration took 191ms
+runtime/audit-tmp/iqa-cofinal-factorial-cohomology-independent/Gate.lean:55:6: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  read (read.symm ?c)
+in the target expression
+  let source := factorialCanonicalMap (2 • unit);
+  (ModuleCat.Hom.hom (factorialRestriction 1)) (read (read.symm source)) = 0 ∧
+    (ModuleCat.Hom.hom (factorialRestriction 2)) (read (read.symm source)) ≠ 0
+
+A : Type u
+inst✝ : AddCommGroup A
+H : ModuleCat ℤ
+coordinate : A ≃ₗ[ℤ] ℤ
+unit : A
+unitRead : coordinate unit = 1
+read : ↑H ≃ₗ[ℤ] ↑FactorialCompletion
+⊢ let source := factorialCanonicalMap (2 • unit);
+  (ModuleCat.Hom.hom (factorialRestriction 1)) (read (read.symm source)) = 0 ∧
+    (ModuleCat.Hom.hom (factorialRestriction 2)) (read (read.symm source)) ≠ 0
+runtime/audit-tmp/iqa-cofinal-factorial-cohomology-independent/Gate.lean:113:0: error: maximum number of errors (1; from option `maxErrors`) reached, exiting

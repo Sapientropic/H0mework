@@ -1,0 +1,30 @@
+import took 1.92s
+runtime/audit-tmp/iqa-cofinal-derived-stage-limit/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/Cochain/DerivedNaturality.lean:127:55: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  QuasiIso (completed.hom ≫ last)
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+cumulative profiling times:
+	attribute application 0.595ms
+	compilation (IR) 0.63ms
+	compilation (LCNF base) 25ms
+	compilation (LCNF impure) 3.41ms
+	compilation (LCNF mono) 8ms
+	congr simp thm 1.15ms
+	elaboration 109ms
+	fix level params 0.427ms
+	import 1.92s
+	initialization 17.5ms
+	instantiate metavars 0.563ms
+	interpretation 325ms
+	let-to-have transformation 0.124ms
+	linting 8.04ms
+	module linting 0.0005ms
+	overlappingInstancesLinter 2.09ms
+	parsing 3.82ms
+	process pre-definitions 18ms
+	share common exprs 2.46ms
+	simp 14.7ms
+	tactic execution 77.9ms
+	tacticAnalysis 15.6ms
+	type checking 24.3ms
+	typeclass inference 69.7ms

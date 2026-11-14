@@ -1,0 +1,118 @@
+import took 2.92s
+interpretation of Lean.Elab.Command.elabOpenPrivate._boxed took 409ms
+runtime/audit-tmp/iqa-cofinal-paid-cochain-homology/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/Operations/Closure/Continuation/Cochain/Cohomology/Naturality.lean:47:48: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ShortComplex.homologyMap (choose.map f) ≫
+    (ShortComplex.HomologyData.ofIsColimitCokernelCofork (choose.obj targetComplex) ⋯ targetCofork
+            (observedCoforkIsColimit nextRoot next G)).left.homologyIso.hom
+in the target expression
+  ShortComplex.homologyMap (compare.hom.app sourceComplex) ≫
+      ShortComplex.homologyMap ((HomologicalComplex.shortComplexFunctor' (ModuleCat ℤ) shape 0 1 2).map f) ≫
+        (observedHomologyData nextRoot next G).left.homologyIso.hom =
+    (ShortComplex.homologyMap (compare.hom.app sourceComplex) ≫
+        (observedHomologyData root prior F).left.homologyIso.hom) ≫
+      read
+
+S Root NextRoot : Type u
+V X : S → Type u
+inst✝² : (s : S) → AddCommGroup (V s)
+s : S
+old : Env V X
+before✝ middle after : Expr V X s
+root : RootedAccountedUnfolding Root
+prior : Trace old before✝ middle
+nextRoot : RootedAccountedUnfolding NextRoot
+next : Trace old before✝ after
+F G : AddCommGrpCat ⥤ ModuleCat ℤ
+inst✝¹ : F.Additive
+inst✝ : G.Additive
+f : sourceComplex ⟶ targetComplex
+read : sourceCofork.pt ⟶ targetCofork.pt
+square : f.f 1 ≫ Cofork.π targetCofork = Cofork.π sourceCofork ≫ read
+shape : ComplexShape ℕ := ComplexShape.up ℕ
+choose : HomologicalComplex (ModuleCat ℤ) shape ⥤ ShortComplex (ModuleCat ℤ) :=
+  HomologicalComplex.shortComplexFunctor' (ModuleCat ℤ) shape 0 1 2
+compare : HomologicalComplex.shortComplexFunctor (ModuleCat ℤ) shape 1 ≅
+  HomologicalComplex.shortComplexFunctor' (ModuleCat ℤ) shape 0 1 2 :=
+  HomologicalComplex.natIsoSc' (ModuleCat ℤ) shape 0 1 2 ⋯ ⋯
+mapData : ShortComplex.HomologyMapData (choose.map f)
+  (ShortComplex.HomologyData.ofIsColimitCokernelCofork (choose.obj sourceComplex) ⋯ sourceCofork
+    (observedCoforkIsColimit root prior F))
+  (ShortComplex.HomologyData.ofIsColimitCokernelCofork (choose.obj targetComplex) ⋯ targetCofork
+    (observedCoforkIsColimit nextRoot next G)) :=
+  ShortComplex.HomologyMapData.ofIsColimitCokernelCofork (choose.map f) ⋯ sourceCofork
+    (observedCoforkIsColimit root prior F) ⋯ targetCofork (observedCoforkIsColimit nextRoot next G) read square
+reported :
+  ShortComplex.homologyMap (choose.map f) ≫
+      (ShortComplex.HomologyData.ofIsColimitCokernelCofork (choose.obj targetComplex) ⋯ targetCofork
+              (observedCoforkIsColimit nextRoot next G)).left.homologyIso.hom =
+    (ShortComplex.HomologyData.ofIsColimitCokernelCofork (choose.obj sourceComplex) ⋯ sourceCofork
+              (observedCoforkIsColimit root prior F)).left.homologyIso.hom ≫
+      mapData.left.φH
+before :
+  ShortComplex.homologyMap ((HomologicalComplex.shortComplexFunctor (ModuleCat ℤ) shape 1).map f) ≫
+      ShortComplex.homologyMap (compare.hom.app targetComplex) =
+    ShortComplex.homologyMap (compare.hom.app sourceComplex) ≫
+      ShortComplex.homologyMap ((HomologicalComplex.shortComplexFunctor' (ModuleCat ℤ) shape 0 1 2).map f)
+⊢ ShortComplex.homologyMap (compare.hom.app sourceComplex) ≫
+      ShortComplex.homologyMap ((HomologicalComplex.shortComplexFunctor' (ModuleCat ℤ) shape 0 1 2).map f) ≫
+        (observedHomologyData nextRoot next G).left.homologyIso.hom =
+    (ShortComplex.homologyMap (compare.hom.app sourceComplex) ≫
+        (observedHomologyData root prior F).left.homologyIso.hom) ≫
+      read
+
+Note: The target expression is not type-correct under the `implicit` transparency level, which may have triggered the failure. This is usually caused by unfolding of semireducible definitions in prior tactic steps. Use `set_option linter.tacticCheckInstances true` to investigate the source of the issue.
+Full error:
+  Application type mismatch: The argument
+    read
+  has type
+    @Quiver.Hom (ModuleCat ℤ) (ModuleCat.moduleCategory ℤ).toQuiver sourceCofork.pt targetCofork.pt
+  but is expected to have type
+    @Quiver.Hom (ModuleCat ℤ) (ModuleCat.moduleCategory ℤ).toQuiver (observedHomologyData root prior F).left.H
+      targetCofork.pt
+  in the application
+    (ShortComplex.homologyMap (compare.hom.app sourceComplex) ≫
+        (observedHomologyData root prior F).left.homologyIso.hom) ≫
+      read
+runtime/audit-tmp/iqa-cofinal-paid-cochain-homology/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/Operations/Closure/Continuation/Cochain/Cohomology/Naturality.lean:57:68: error: Application type mismatch: The argument
+  comparison.naturality quotient
+has type
+  F.map quotient ≫
+      comparison.app
+        ((forget₂ (ModuleCat ℤ) AddCommGrpCat).obj
+          (ModuleCat.of ℤ (prefixHistory root (exposure prior)).CompletionCarrier)) =
+    comparison.app
+        ((forget₂ (ModuleCat ℤ) AddCommGrpCat).obj
+          (ModuleCat.of ℤ ↥(prefixHistory root (exposure prior)).generatorClosure)) ≫
+      G.map quotient
+but is expected to have type
+  ((NatTrans.mapHomologicalComplex comparison (ComplexShape.up ℕ)).app (paidGroupComplex root prior)).f 1 ≫
+      Cofork.π (observedCofork root prior G) =
+    Cofork.π sourceCofork ≫ comparison.app (AddCommGrpCat.of (prefixHistory root (exposure prior)).CompletionCarrier)
+in the application
+  paid_cohomology_map_of_projection root prior root prior
+    ((NatTrans.mapHomologicalComplex comparison (ComplexShape.up ℕ)).app (paidGroupComplex root prior))
+    (comparison.app (AddCommGrpCat.of (prefixHistory root (exposure prior)).CompletionCarrier))
+    (comparison.naturality quotient)
+cumulative profiling times:
+	attribute application 1.6ms
+	compilation (IR) 1.55ms
+	compilation (LCNF base) 91.6ms
+	compilation (LCNF impure) 8.04ms
+	compilation (LCNF mono) 28.8ms
+	elaboration 402ms
+	fix level params 1.14ms
+	import 2.92s
+	initialization 21.3ms
+	instantiate metavars 0.545ms
+	interpretation 829ms
+	let-to-have transformation 18.6ms
+	linting 14.2ms
+	module linting 0.000625ms
+	overlappingInstancesLinter 9.31ms
+	parsing 3.72ms
+	process pre-definitions 56.9ms
+	share common exprs 4.59ms
+	tactic execution 242ms
+	tacticAnalysis 39.1ms
+	type checking 41.2ms
+	typeclass inference 213ms

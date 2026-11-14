@@ -1,0 +1,29 @@
+import took 1.67s
+runtime/audit-tmp/iqa-cofinal-finite-modulus/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/FiniteModulus/Cokernel.lean:23:2: error: Type mismatch
+  LinearEquiv.piCongrRight fun p => cokernelCompletionEquiv evaluate injective p ⋯
+has type
+  @LinearEquiv ℤ ℤ Int.instSemiring Int.instSemiring (RingHom.id ℤ) (RingHom.id ℤ) ⋯ ⋯
+    ((i : Nat.Primes) → ↑(Completion i)) ((i : Nat.Primes) → ↑(PrimePowerTorsionCompletion (M ⧸ evaluate.range) i))
+    Pi.addCommMonoid Pi.addCommMonoid (Pi.module Nat.Primes (fun p => ↑(Completion p)) ℤ)
+    (Pi.module Nat.Primes (fun p => ↑(PrimePowerTorsionCompletion (M ⧸ evaluate.range) p)) ℤ)
+but is expected to have type
+  @LinearEquiv ℤ ℤ Int.instSemiring Int.instSemiring (RingHom.id ℤ) (RingHom.id ℤ) ⋯ ⋯ (AllPrimeCompletion L)
+    (AllPrimeCokernel evaluate) Pi.addCommMonoid Pi.addCommMonoid (AddCommGroup.toIntModule (AllPrimeCompletion L))
+    (AddCommGroup.toIntModule (AllPrimeCokernel evaluate))
+runtime/audit-tmp/iqa-cofinal-finite-modulus/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/FiniteModulus/Cokernel.lean:27:39: error: Application type mismatch: The argument
+  injective
+has type
+  Function.Injective ⇑evaluate
+of sort `Prop` but is expected to have type
+  AllPrimeCompletion L
+of sort `Type u` in the application
+  (allPrimeCokernelEquiv evaluate) injective
+runtime/audit-tmp/iqa-cofinal-finite-modulus/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/FiniteModulus/Cokernel.lean:28:44: error: Application type mismatch: The argument
+  injective
+has type
+  Function.Injective ⇑evaluate
+of sort `Prop` but is expected to have type
+  AllPrimeCompletion L
+of sort `Type u` in the application
+  (allPrimeCokernelEquiv evaluate) injective
+runtime/audit-tmp/iqa-cofinal-finite-modulus/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/FiniteModulus/Cokernel.lean:35:83: error: maximum number of errors (3; from option `maxErrors`) reached, exiting

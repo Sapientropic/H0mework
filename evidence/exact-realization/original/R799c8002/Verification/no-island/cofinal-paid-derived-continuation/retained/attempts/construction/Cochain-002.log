@@ -1,0 +1,39 @@
+import took 2.49s
+tactic execution of Lean.Parser.Tactic.exact took 347ms
+runtime/audit-tmp/iqa-cofinal-paid-derived/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/Operations/Closure/Continuation/Cochain.lean:89:8: error: Type mismatch
+  Eq.symm
+    (Eq.trans
+      (congrArg (fun g => g + generatorForward (generatorBack word))
+        (continuation_homotopy_generator root prior nextRoot next paid word))
+      (sub_add_cancel word (generatorForward (generatorBack word))))
+has type
+  word = (relationInclusion targetHistory) (contraction word) + generatorForward (generatorBack word)
+but is expected to have type
+  (ModuleCat.Hom.hom ((𝟙 (natComplex targetHistory)).f 1)) word =
+    (ModuleCat.Hom.hom
+        (0 + homotopyComponent root prior nextRoot next 1 0 ≫ ModuleCat.ofHom (relationInclusion targetHistory) +
+          (retractCochainMap root prior nextRoot next ≫ continuationCochainMap root prior nextRoot next paid).f 1))
+      word
+cumulative profiling times:
+	attribute application 1.5ms
+	compilation (IR) 1.56ms
+	compilation (LCNF base) 77.7ms
+	compilation (LCNF impure) 8.29ms
+	compilation (LCNF mono) 26.6ms
+	elaboration 366ms
+	fix level params 1.04ms
+	import 2.49s
+	initialization 17.7ms
+	instantiate metavars 0.95ms
+	interpretation 401ms
+	let-to-have transformation 3.29ms
+	linting 13.2ms
+	module linting 0.0005ms
+	overlappingInstancesLinter 6.98ms
+	parsing 4.45ms
+	process pre-definitions 67.7ms
+	share common exprs 3.89ms
+	tactic execution 535ms
+	tacticAnalysis 36ms
+	type checking 89.1ms
+	typeclass inference 154ms

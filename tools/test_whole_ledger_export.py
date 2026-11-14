@@ -167,24 +167,26 @@ class ExportTests(unittest.TestCase):
                       "/private/var/run/receipt.json"):
             self.assertTrue(w.UNDECLARED_PATH.search(value), value)
 
-    def test_absolute_runtime_root_still_requires_an_explicit_declaration(self):
+    def test_explicit_runtime_declaration_overrides_the_recognized_root(self):
         raw = b'{"receipt":"/tmp/run/receipt.json","status":"failed","value":1.00}\n'
         self.write(self.source, "Verification/absolute.json", raw)
         revision = self.commit(self.source)
         selected = [{"source_commit": revision, "artifacts": ["Verification/absolute.json"]}]
-        with self.assertRaisesRegex(w.ExportError, "explicit runtime_paths"):
-            self.run_stage(selected, name="undeclared")
+        automatic = self.run_stage(selected, name="automatic")
+        stored = (self.directory / "automatic/stage" / automatic["artifacts"][0]["path"]).read_bytes()
+        self.assertIn(b'"value":1.00', stored)
+        self.assertEqual(json.loads(stored)["receipt"], "runtime/receipt.json")
         self.write(self.directory, "absolute.json", raw)
         origin = {"kind": "fixed-git-original-material", "source_commit": revision,
                   "source_path": "Verification/absolute.json"}
         providers = self.directory / "absolute-providers.json"
         providers.write_text(json.dumps([{"source_commit": revision, "source_path": "Verification/absolute.json",
             "source_sha256": w.sha(raw), "provider": "absolute.json", "source_origin": origin,
-            "runtime_paths": [{"pointer": "/receipt", "relative": "runtime/receipt.json"}]}]))
+            "runtime_paths": [{"pointer": "/receipt", "relative": "runtime/receipts/failed.json"}]}]))
         plan = self.run_stage(selected, [providers], name="explicit")
         stored = (self.directory / "explicit/stage" / plan["artifacts"][0]["path"]).read_bytes()
         self.assertIn(b'"value":1.00', stored)
-        self.assertEqual(json.loads(stored)["receipt"], "runtime/receipt.json")
+        self.assertEqual(json.loads(stored)["receipt"], "runtime/receipts/failed.json")
 
     def test_unchanged_body_with_changed_dependency_gets_distinct_owner(self):
         self.write(self.source, "Lean/A.lean", b'import Mathlib\ndef a := 1\n')
@@ -480,12 +482,54 @@ class ExportTests(unittest.TestCase):
         self.assertEqual(alias["source_origin"]["inherited_supplement_dependency_epoch"], first)
         self.assertEqual(plan["source_revision_updates"], [])
 
-    def test_unregistered_runtime_pointer_is_reported_without_changing_result(self):
-        raw = b'{"command":"/tmp/fixed-audit/run.lean", "result":17, "status":"certified"}'
+    def test_module_name_can_be_recovered_from_its_conventional_path(self):
+        raw = b"def seed := 1\n"
+        rev = "a" * 40
+        dep = self.existing("Lean/Original/Seed.lean", raw, rev, target="H0mework.Seed")
+        consumer = self.existing("Lean/Consumer.lean", b"import Original.Seed\ndef result := seed\n",
+                                 rev, target="H0mework.Consumer", imports={"Original.Seed": "H0mework.Seed"})
+        dep.pop("source")
+        consumer.pop("import_map")
+        with patch.object(sv, "ROOT", self.public):
+            _, exact = sv.module_views(consumer, {dep["target"]: dep})
+        self.assertEqual(exact, b"import Original.Seed\ndef result := seed\n")
+
+    def test_existing_original_epoch_takes_precedence_over_other_epoch_repair(self):
+        original = b"def reader := 0\n"
+        effective = b"def reader := 1\n"
+        self.write(self.source, "Lean/A.lean", original)
+        early = self.commit(self.source)
+        self.write(self.source, "unrelated.txt", b"Later environment\n")
+        late = self.commit(self.source)
+        self.write(self.public, "docs/source/repair.lean", effective)
+        repair = self.commit(self.public)
+        self.existing("Lean/A.lean", effective, late, target="H0mework.Repaired", origin={
+            "kind": "H0-source-action-environment-contract-repair",
+            "source_repository": "https://example.org/H0mework.git", "source_commit": repair,
+            "source_path": "docs/source/repair.lean", "dependency_epoch": late,
+            "original_source_sha256": w.sha(original),
+        })
+        owner = self.existing("Lean/A.lean", original, early)
+        owner.pop("source_revisions")
+        self.write_map()
+        plan = self.run_stage([{"source_commit": early, "roots": ["Lean/A.lean"]}])
+        self.assertEqual(plan["additions"], [])
+        self.assertEqual(plan["assignments"][w.source_key(early, "Lean/A.lean")], owner["target"])
+        self.assertEqual(plan["sources"][w.source_key(early, "Lean/A.lean")]["source_sha256"],
+                         w.sha(original))
+
+    def test_recognized_runtime_paths_do_not_change_result_bytes(self):
+        raw = (b'{"command":"/tmp/fixed-audit/run.lean",'
+               b'"root":"/Volumes/Fixture/runtime/work","result":17.00,"status":"certified"}')
         self.write(self.source, "Verification/receipt.json", raw)
         revision = self.commit(self.source)
-        with self.assertRaisesRegex(w.ExportError, r"runtime_paths.*\/command"):
-            self.run_stage([{"source_commit": revision, "artifacts": ["Verification/receipt.json"]}])
+        plan = self.run_stage([{"source_commit": revision, "artifacts": ["Verification/receipt.json"]}])
+        row, = plan["artifacts"]
+        public = (self.directory / "stage/stage" / row["path"]).read_bytes()
+        self.assertNotIn(b"/tmp/", public)
+        self.assertNotIn(b"/Volumes/", public)
+        self.assertIn(b'"result":17.00,"status":"certified"', public)
+        self.assertEqual(row["source_sha256"], w.sha(raw))
 
     def test_recursive_semantic_reuse_does_not_copy_a_legacy_import_owner(self):
         a = b'import Mathlib\ndef a := 1\n'

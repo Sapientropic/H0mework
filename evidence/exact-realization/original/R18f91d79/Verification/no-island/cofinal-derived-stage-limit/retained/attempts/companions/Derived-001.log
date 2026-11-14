@@ -1,0 +1,26 @@
+import took 2.35s
+runtime/audit-tmp/iqa-cofinal-derived-stage-limit/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/Cochain/DerivedLimit.lean:41:6: error: Type mismatch
+  (NatTrans.mapHomologicalComplex (stageFunctorTransition p stage) shape).app source
+has type
+  ((stageFunctor p (stage + 1)).mapHomologicalComplex shape).obj source ⟶
+    ((stageFunctor p stage).mapHomologicalComplex shape).obj source
+but is expected to have type
+  (cochainDerivedLimitFace root p source).towerObject (stage + 1) ⟶
+    (cochainDerivedLimitFace root p source).towerObject stage
+runtime/audit-tmp/iqa-cofinal-derived-stage-limit/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/Cochain/DerivedLimit.lean:48:115: error: Application type mismatch: The argument
+  coneAt
+has type
+  Cone towerAt
+but is expected to have type
+  Cone (cochainDerivedLimitFace root p source).actualTower
+in the application
+  limitDifferenceSequence (cochainDerivedLimitFace root p source) coneAt
+runtime/audit-tmp/iqa-cofinal-derived-stage-limit/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/Cochain/DerivedLimit.lean:52:74: error: Application type mismatch: The argument
+  coneAt
+has type
+  Cone towerAt
+but is expected to have type
+  Cone (cochainDerivedLimitFace root p source).actualTower
+in the application
+  limit_difference_short_exact (cochainDerivedLimitFace root p source) coneAt
+runtime/audit-tmp/iqa-cofinal-derived-stage-limit/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/Cochain/DerivedLimit.lean:57:6: error: maximum number of errors (3; from option `maxErrors`) reached, exiting

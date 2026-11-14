@@ -1,0 +1,74 @@
+import took 13.6s
+interpretation of Lean.Elab.Command.elabOpenPrivate._boxed took 437ms
+runtime/audit-tmp/iqa-goldbach-native-moment-completion/source-root/main/SaturationMonoid/NoIslandNoMagic/CanonicalArithmeticState/ParticleWave/Fock/Runtime/Goldbach/Occurrence/Actuality/Dynamics/History/Inventory/SourceSelected/Calculation/Cursor/NativeMomentCompletion.lean:21:23: error: Application type mismatch: The argument
+  effectRows depth i
+has type
+  Fin 4 → ℚ
+but is expected to have type
+  Fin (?m.3 + ?m.3) → ?m.1
+in the application
+  SparseMoment.order (effectRows depth i)
+runtime/audit-tmp/iqa-goldbach-native-moment-completion/source-root/main/SaturationMonoid/NoIslandNoMagic/CanonicalArithmeticState/ParticleWave/Fock/Runtime/Goldbach/Occurrence/Actuality/Dynamics/History/Inventory/SourceSelected/Calculation/Cursor/NativeMomentCompletion.lean:55:55: error: Application type mismatch: The argument
+  rows i
+has type
+  Fin 4 → ℚ
+but is expected to have type
+  Fin (?m.26 i + ?m.26 i) → ?m.24 i
+in the application
+  SparseMoment.order (rows i)
+runtime/audit-tmp/iqa-goldbach-native-moment-completion/source-root/main/SaturationMonoid/NoIslandNoMagic/CanonicalArithmeticState/ParticleWave/Fock/Runtime/Goldbach/Occurrence/Actuality/Dynamics/History/Inventory/SourceSelected/Calculation/Cursor/NativeMomentCompletion.lean:66:46: error(lean.unknownIdentifier): Unknown identifier `rank_zero`
+runtime/audit-tmp/iqa-goldbach-native-moment-completion/source-root/main/SaturationMonoid/NoIslandNoMagic/CanonicalArithmeticState/ParticleWave/Fock/Runtime/Goldbach/Occurrence/Actuality/Dynamics/History/Inventory/SourceSelected/Calculation/Cursor/NativeMomentCompletion.lean:65:25: error: Application type mismatch: The argument
+  effectRows depth i
+has type
+  Fin 4 → ℚ
+but is expected to have type
+  Fin (?m.33 i before + ?m.33 i before) → ?m.31 i before
+in the application
+  SparseMoment.order (effectRows depth i)
+runtime/audit-tmp/iqa-goldbach-native-moment-completion/source-root/main/SaturationMonoid/NoIslandNoMagic/CanonicalArithmeticState/ParticleWave/Fock/Runtime/Goldbach/Occurrence/Actuality/Dynamics/History/Inventory/SourceSelected/Calculation/Cursor/NativeMomentCompletion.lean:105:31: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  c ≥ 0
+  b ≥ 0
+  b - c ≥ 1
+  a ≥ 0
+  a - b ≥ 1
+where
+ a := ↑(Steps depth)
+ b := ↑step
+ c := ↑(budget depth)
+runtime/audit-tmp/iqa-goldbach-native-moment-completion/source-root/main/SaturationMonoid/NoIslandNoMagic/CanonicalArithmeticState/ParticleWave/Fock/Runtime/Goldbach/Occurrence/Actuality/Dynamics/History/Inventory/SourceSelected/Calculation/Cursor/NativeMomentCompletion.lean:105:50: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  c ≥ 0
+  b ≥ 0
+  b - c ≥ 2
+  a ≥ 0
+  a - b ≥ 1
+where
+ a := ↑(Steps depth)
+ b := ↑step
+ c := ↑(budget depth)
+cumulative profiling times:
+	attribute application 0.139ms
+	compilation (IR) 0.199ms
+	compilation (LCNF base) 1.15ms
+	compilation (LCNF impure) 1.04ms
+	compilation (LCNF mono) 1.18ms
+	congr simp thm 0.0796ms
+	elaboration 38ms
+	fix level params 0.206ms
+	import 13.6s
+	initialization 31.9ms
+	instantiate metavars 0.301ms
+	interpretation 944ms
+	let-to-have transformation 0.17ms
+	linting 4.56ms
+	module linting 0.000583ms
+	overlappingInstancesLinter 2.71ms
+	parsing 6.31ms
+	process pre-definitions 10.5ms
+	share common exprs 1.63ms
+	simp 4.01ms
+	tactic execution 267ms
+	tacticAnalysis 8.85ms
+	type checking 23.1ms
+	typeclass inference 48.8ms

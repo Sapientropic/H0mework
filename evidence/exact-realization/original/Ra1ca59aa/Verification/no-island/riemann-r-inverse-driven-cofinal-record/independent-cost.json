@@ -1,0 +1,101 @@
+{
+  "schema": "cp603-independent-cost/v1",
+  "actual_calls": 3,
+  "known_seconds": 376.76499662396964,
+  "unknown_calls": 0,
+  "old_ci_replays": 0,
+  "old_source_recompiles": 0,
+  "kernel_calls": 69,
+  "kernel_ms": 238,
+  "calls": [
+    {
+      "label": "001-gate",
+      "scope": "gate",
+      "pid": 2426,
+      "exit_code": 0,
+      "elapsed_seconds": 271.7028892079834,
+      "command": [
+        "lean",
+        "--trust=0",
+        "-DElab.async=false",
+        "-DwarningAsError=true",
+        "-DmaxErrors=1",
+        "-j1",
+        "-M32000",
+        "-DstderrAsMessages=false",
+        "runtime/Homework-runtime/audit-tmp/iqa-r-inverse-driven-cofinal-record-independent/Gate.lean"
+      ],
+      "source_sha256": "c32542f5bd881bbc4726090385d3a1433e293b27513d190eaf2b14ee6be856c7",
+      "source_unchanged": true,
+      "selected_lean_path_sha256": "0df4e69d856b3678431168e4f5f6b3fdaf0cad21159827979ce7a8885ac67939",
+      "log_sha256": "b173ea1e1b56341a9e46cdd5bc08a24610d68ac8d20cf1054f95fcbcd8b2b76c",
+      "log_bytes": 430,
+      "old_source_recompiles": 0,
+      "old_ci_replays": 0,
+      "receipt_sha256": "30dbce149d180c7e883c2bfaa18abb15728b7264cee1fc08d31c8f8712c96f1c"
+    },
+    {
+      "label": "002-audit",
+      "scope": "audit",
+      "pid": 10347,
+      "exit_code": 1,
+      "elapsed_seconds": 3.775507208018098,
+      "command": [
+        "lean",
+        "--trust=0",
+        "-DElab.async=false",
+        "-DwarningAsError=true",
+        "-DmaxErrors=1",
+        "-j1",
+        "-M32000",
+        "-DstderrAsMessages=false",
+        "--run",
+        "runtime/Homework-runtime/audit-tmp/iqa-r-inverse-driven-cofinal-record-independent/Audit.lean",
+        "runtime/Homework-runtime/audit-tmp/iqa-r-inverse-driven-cofinal-record-independent/audit-config.json"
+      ],
+      "source_sha256": "6c7e9bdf8794c9f9a8183c59f0a7b76d6bf96dd94f092ff1d00892b85905bf15",
+      "source_unchanged": true,
+      "selected_lean_path_sha256": "0df4e69d856b3678431168e4f5f6b3fdaf0cad21159827979ce7a8885ac67939",
+      "log_sha256": "11400549cd6ad1b94deb3c3af658a94c00def00c723d5ff53141c9d775dcbc8a",
+      "log_bytes": 421,
+      "old_source_recompiles": 0,
+      "old_ci_replays": 0,
+      "receipt_sha256": "b723653c38bf19edc8250e4302f369a1048cb6ced263cb997a1799311476572a"
+    },
+    {
+      "label": "003-audit",
+      "scope": "audit",
+      "pid": 11344,
+      "exit_code": 0,
+      "elapsed_seconds": 101.28660020796815,
+      "command": [
+        "lean",
+        "--trust=0",
+        "-DElab.async=false",
+        "-DwarningAsError=true",
+        "-DmaxErrors=1",
+        "-j1",
+        "-M32000",
+        "-DstderrAsMessages=false",
+        "--run",
+        "runtime/Homework-runtime/audit-tmp/iqa-r-inverse-driven-cofinal-record-independent/Audit.lean",
+        "runtime/Homework-runtime/audit-tmp/iqa-r-inverse-driven-cofinal-record-independent/audit-config.json"
+      ],
+      "source_sha256": "e6c577a1fa7499df70588c9e569b820303d7a3078ef39ca628bfdb433d7eb3c5",
+      "source_unchanged": true,
+      "selected_lean_path_sha256": "0df4e69d856b3678431168e4f5f6b3fdaf0cad21159827979ce7a8885ac67939",
+      "log_sha256": "717b3571947d42316d75f3a3061be7039e02a0b8e83872ee394b3ddb694c096c",
+      "log_bytes": 326,
+      "old_source_recompiles": 0,
+      "old_ci_replays": 0,
+      "receipt_sha256": "4a5c028ce87a10c763ecac4595807249776e36f065762827e10be2184f332559"
+    }
+  ],
+  "paid_base_environment_imports": 1,
+  "full_candidate_environment_imports_in_audit": 0,
+  "verification_overlay_objects": 0,
+  "gate001_import_sample": {
+    "bytes": 18240,
+    "sha256": "172a3a6925b9911196a8dc035d4f295b9f6e020cc179a118bb80d6bc1277fdbb"
+  }
+}

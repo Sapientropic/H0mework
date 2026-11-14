@@ -1,0 +1,81 @@
+import took 7.09s
+runtime/audit-tmp/iqa-cofinal-torsion-completion/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/CokernelTorsion/CoherentFibre.lean:17:12: error: Type mismatch: After simplification, term
+  surjective
+ has type
+  Function.Surjective fun value => ↑↑p • value
+but is expected to have type
+  Function.Surjective ⇑(powerMultiplication p 0)
+runtime/audit-tmp/iqa-cofinal-torsion-completion/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/CokernelTorsion/CoherentFibre.lean:24:28: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  (fun value => ↑↑p • value) divided
+in the target expression
+  ↑↑p ^ (j + 1) • ↑↑p • divided = value
+
+case succ
+M : Type u
+inst✝ : AddCommGroup M
+p : Nat.Primes
+surjective : Function.Surjective fun value => ↑↑p • value
+j : ℕ
+previous : Function.Surjective ⇑(powerMultiplication p j)
+value prior : M
+written : (powerMultiplication p j) prior = value
+divided : M
+dividedEq : (fun value => ↑↑p • value) divided = prior
+⊢ ↑↑p ^ (j + 1) • ↑↑p • divided = value
+
+Note: The target expression is not type-correct under the `implicit` transparency level, which may have triggered the failure. This is usually caused by unfolding of semireducible definitions in prior tactic steps. Use `set_option linter.tacticCheckInstances true` to investigate the source of the issue.
+Full error:
+  Application type mismatch: The argument
+    p
+  has type
+    Nat.Primes
+  but is expected to have type
+    { p // Nat.Prime p }
+  in the application
+    ↑p
+runtime/audit-tmp/iqa-cofinal-torsion-completion/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/CokernelTorsion/CoherentFibre.lean:40:28: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  (fun value => ↑↑p • value) divided
+in the target expression
+  ↑↑p ^ (j + 1) • ↑↑p • divided = 0
+
+M : Type u
+inst✝ : AddCommGroup M
+p : Nat.Primes
+j : ℕ
+surjective : Function.Surjective fun value => ↑↑p • value
+value : ↥(PrimePowerTorsionSubmodule M p j)
+divided : M
+exactDivision : (fun value => ↑↑p • value) divided = ↑value
+⊢ ↑↑p ^ (j + 1) • ↑↑p • divided = 0
+
+Note: The target expression is not type-correct under the `implicit` transparency level, which may have triggered the failure. This is usually caused by unfolding of semireducible definitions in prior tactic steps. Use `set_option linter.tacticCheckInstances true` to investigate the source of the issue.
+Full error:
+  Application type mismatch: The argument
+    p
+  has type
+    Nat.Primes
+  but is expected to have type
+    { p // Nat.Prime p }
+  in the application
+    ↑p
+cumulative profiling times:
+	attribute application 0.0295ms
+	congr simp thm 0.0994ms
+	elaboration 20.6ms
+	fix level params 1.05ms
+	import 7.09s
+	initialization 22.3ms
+	instantiate metavars 0.906ms
+	interpretation 648ms
+	let-to-have transformation 0.0419ms
+	linting 4.59ms
+	module linting 0.000541ms
+	overlappingInstancesLinter 11.8ms
+	parsing 2.08ms
+	process pre-definitions 1.88ms
+	share common exprs 2.61ms
+	simp 0.546ms
+	tactic execution 123ms
+	tacticAnalysis 7.11ms
+	type checking 26.2ms
+	typeclass inference 290ms

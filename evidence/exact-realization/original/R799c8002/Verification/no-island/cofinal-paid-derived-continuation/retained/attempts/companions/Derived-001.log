@@ -1,0 +1,44 @@
+import took 8.24s
+runtime/audit-tmp/iqa-cofinal-paid-derived/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/Operations/Closure/Continuation/Cochain/Derived.lean:40:2: error: Try this: 
+  haveI̵
+
+The goal is a proposition, so `have` is preferred over `haveI`.
+The difference between `have` and `haveI` is that `haveI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+runtime/audit-tmp/iqa-cofinal-paid-derived/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/Operations/Closure/Continuation/Cochain/Derived.lean:43:4: error: Invalid projection: Projections cannot be used on functions, and
+  DerivedCategory.isIso_Q_map_iff_quasiIso ?m.143
+has function type
+  ∀ (φ : ?m.147 ⟶ ?m.148), IsIso (DerivedCategory.Q.map φ) ↔ QuasiIso φ
+runtime/audit-tmp/iqa-cofinal-paid-derived/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/Operations/Closure/Continuation/Cochain/Derived.lean:42:2: error: Try this: 
+  haveI̵
+
+The goal is a proposition, so `have` is preferred over `haveI`.
+The difference between `have` and `haveI` is that `haveI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+cumulative profiling times:
+	attribute application 2.8ms
+	compilation (IR) 1.53ms
+	compilation (LCNF base) 71.3ms
+	compilation (LCNF impure) 8.57ms
+	compilation (LCNF mono) 23.5ms
+	elaboration 297ms
+	fix level params 0.316ms
+	import 8.24s
+	initialization 30.6ms
+	instantiate metavars 0.17ms
+	interpretation 441ms
+	let-to-have transformation 0.206ms
+	linting 10.2ms
+	module linting 0.000666ms
+	overlappingInstancesLinter 6.1ms
+	parsing 2.46ms
+	process pre-definitions 39ms
+	share common exprs 2.4ms
+	tactic execution 6.98ms
+	tacticAnalysis 31.1ms
+	type checking 14.8ms
+	typeclass inference 56.5ms

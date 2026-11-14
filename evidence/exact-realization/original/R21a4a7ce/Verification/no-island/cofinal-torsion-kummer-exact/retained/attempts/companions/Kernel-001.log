@@ -1,0 +1,61 @@
+import took 3.62s
+runtime/audit-tmp/iqa-cofinal-torsion-kernel/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/CokernelTorsion/CoherentKernel.lean:34:19: error: unsolved goals
+case succ
+M : Type u
+inst✝ : AddCommGroup M
+p : Nat.Primes
+j : ℕ
+value : ↑(PrimePowerTorsionCompletion M p)
+d : ℕ
+earlier :
+  ↑((ModuleCat.Hom.hom (torsionCompletionRestriction M p j)) value) =
+    ↑↑p ^ d • ↑((ModuleCat.Hom.hom (torsionCompletionRestriction M p (j + d))) value)
+next :
+  ↑↑p • ↑((ModuleCat.Hom.hom (torsionCompletionRestriction M p (j + d + 1))) value) =
+    ↑((ModuleCat.Hom.hom (torsionCompletionRestriction M p (j + d))) value)
+⊢ ↑↑p ^ (d + 1) • ↑((ModuleCat.Hom.hom (torsionCompletionRestriction M p (j + d + 1))) value) =
+    ↑↑p ^ (d + 1) • ↑((ModuleCat.Hom.hom (torsionCompletionRestriction M p (j + (d + 1)))) value)
+runtime/audit-tmp/iqa-cofinal-torsion-kernel/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/CokernelTorsion/CoherentKernel.lean:125:4: error: Tactic `introN` failed: There are no additional binders or `let` bindings in the goal to introduce
+
+case mpr
+L M : Type u
+inst✝¹ : AddCommGroup L
+inst✝ : AddCommGroup M
+evaluate : L →ₗ[ℤ] M
+injective : Function.Injective ⇑evaluate
+p : Nat.Primes
+d : ℕ
+bounded : ∀ (j : ℕ) (value : ↥Tor[L,p,j]), ↑↑p ^ d • ↑value = 0
+value : ↑(PrimePowerTorsionCompletion (M ⧸ evaluate.range) p)
+zero : (cokernelConnectingAtLimit evaluate injective p) value = 0
+C : Type u := M ⧸ evaluate.range
+observed : (j : ℕ) → ↑(ModuleCat.of ℤ ↥Tor[C,p,j]) :=
+  fun j => (ModuleCat.Hom.hom (torsionCompletionRestriction C p j)) value
+choices : ∀ (j : ℕ), ∃ raw, (ambientToCokernelTorsion evaluate p j) raw = observed j
+⊢ value ∈ (ambientToCokernelAtLimit evaluate p).range
+runtime/audit-tmp/iqa-cofinal-torsion-kernel/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/CokernelTorsion/CoherentKernel.lean:125:15: error: unexpected token 'matches'; expected command
+cumulative profiling times:
+	attribute application 0.421ms
+	compilation (IR) 0.396ms
+	compilation (LCNF base) 11.5ms
+	compilation (LCNF impure) 1.8ms
+	compilation (LCNF mono) 3.3ms
+	congr simp thm 0.743ms
+	elaboration 80.6ms
+	fix level params 1.64ms
+	import 3.62s
+	initialization 39.4ms
+	instantiate metavars 1.64ms
+	interpretation 436ms
+	let-to-have transformation 0.138ms
+	linting 8.71ms
+	module linting 0.00075ms
+	overlappingInstancesLinter 5.51ms
+	parsing 5.3ms
+	process pre-definitions 16.6ms
+	share common exprs 5.34ms
+	simp 7.61ms
+	tactic execution 186ms
+	tacticAnalysis 10.9ms
+	type checking 69.3ms
+	typeclass inference 380ms

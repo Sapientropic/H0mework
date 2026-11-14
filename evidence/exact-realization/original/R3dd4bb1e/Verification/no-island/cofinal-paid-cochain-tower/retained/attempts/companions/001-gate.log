@@ -1,0 +1,37 @@
+import took 4.74s
+type checking took 109ms
+type checking took 151ms
+type checking took 166ms
+runtime/audit-tmp/iqa-cofinal-paid-cochain-tower-independent/Gate.lean:43:4: error: omega could not prove the goal:
+No usable constraints found. You may need to unfold definitions so `omega` can see linear arithmetic facts about `Nat` and `Int`, which may also involve multiplication, division, and modular remainder by constants.
+CP749_CONTROL + the_coherent_map_is_the_universal_lift_of_original_stage_actions
+CP749_CONTROL + all_four_original_R_stages_read_the_two_limits_and_the_paid_whole
+CP749_CONTROL + independent_original_R_Division_K_and_literal_model_next
+CP749_CONTROL + the_fixed_target_reads_its_original_cochain_and_terminal
+CP749_CONTROL - an_injective_action_erases_a_nonzero_original_stage_charge
+CP749_GATE_PASS positive=4 negative=1
+cumulative profiling times:
+	attribute application 0.468ms
+	compilation (IR) 1.55ms
+	compilation (LCNF base) 12.3ms
+	compilation (LCNF impure) 2.09ms
+	compilation (LCNF mono) 4.06ms
+	congr simp thm 0.0781ms
+	elaboration 146ms
+	fix level params 1.49ms
+	import 4.74s
+	initialization 17.6ms
+	instantiate metavars 0.711ms
+	interpretation 422ms
+	let-to-have transformation 211ms
+	linting 5.9ms
+	module linting 0.000458ms
+	norm_num 7.12ms
+	overlappingInstancesLinter 2.86ms
+	parsing 3.2ms
+	process pre-definitions 69.8ms
+	share common exprs 7.74ms
+	tactic execution 25.9ms
+	tacticAnalysis 7.44ms
+	type checking 667ms
+	typeclass inference 40.5ms

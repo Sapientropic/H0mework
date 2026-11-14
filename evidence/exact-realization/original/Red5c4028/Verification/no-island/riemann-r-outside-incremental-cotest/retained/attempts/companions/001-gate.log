@@ -1,0 +1,98 @@
+import took 11.6s
+interpretation of Lean.Elab.Command.elabOpenPrivate._boxed took 556ms
+type checking took 585ms
+runtime/audit-tmp/iqa-r-outside-incremental-cotest-independent/Gate.lean:83:4: error: Type mismatch
+  Fin.snoc_castSucc ?m.54 ?m.56 0
+has type
+  Fin.snoc ?m.56 ?m.54 (Fin.castSucc 0) = ?m.56 0
+but is expected to have type
+  ?m.45 = axis 0
+runtime/audit-tmp/iqa-r-outside-incremental-cotest-independent/Gate.lean:106:13: error(lean.unknownIdentifier): Unknown identifier `Coordinates`
+runtime/audit-tmp/iqa-r-outside-incremental-cotest-independent/Gate.lean:106:50: error: Application type mismatch: The argument
+  1
+has type
+  ℂ
+but is expected to have type
+  ?m.22 index
+in the application
+  PiLp.single 2 index 1
+runtime/audit-tmp/iqa-r-outside-incremental-cotest-independent/Gate.lean:124:84: error: Application type mismatch: The argument
+  1
+has type
+  ℂ
+but is expected to have type
+  ?m.150 1
+in the application
+  PiLp.single 2 1 1
+runtime/audit-tmp/iqa-r-outside-incremental-cotest-independent/Gate.lean:130:10: error: Tactic `rewrite` failed: motive is not type correct:
+  fun _a =>
+    SourceGeneratedFiniteGram.coefficients (gram priorAxis) ⋯ _a ⋯ =
+      SourceGeneratedFiniteGram.coefficients (gram priorAxis) ⋯ (rhs priorAxis (axis 0)) ⋯
+Error: Application type mismatch: The argument
+  compatible priorAxis addedColumn
+has type
+  SourceGeneratedFiniteGram.Compatible (gram priorAxis) (rhs priorAxis addedColumn)
+but is expected to have type
+  SourceGeneratedFiniteGram.Compatible (gram priorAxis) _a
+in the application
+  SourceGeneratedFiniteGram.coefficients (gram priorAxis) ⋯ _a ⋯
+
+Explanation: The rewrite tactic rewrites an expression 'e' using an equality 'a = b' by the following process. First, it looks for all 'a' in 'e'. Second, it tries to abstract these occurrences of 'a' to create a function 'm := fun _a => ...', called the *motive*, with the property that 'm a' is definitionally equal to 'e'. Third, we observe that 'congrArg' implies that 'm a = m b', which can be used with lemmas such as 'Eq.mpr' to change the goal. However, if 'e' depends on specific properties of 'a', then the motive 'm' might not typecheck.
+
+Possible solutions: use rewrite's 'occs' configuration option to limit which occurrences are rewritten, or use 'simp' or 'conv' mode, which have strategies for certain kinds of dependencies (these tactics can handle proofs and 'Decidable' instances whose types depend on the rewritten term, and 'simp' can apply user-defined '@[congr]' theorems as well).
+
+oldIndependent : LinearIndependent ℂ priorAxis
+sameRead : rhs priorAxis addedColumn = rhs priorAxis (axis 0)
+⊢ SourceGeneratedFiniteGram.coefficients (gram priorAxis) ⋯ (rhs priorAxis addedColumn) ⋯ =
+    SourceGeneratedFiniteGram.coefficients (gram priorAxis) ⋯ (rhs priorAxis (axis 0)) ⋯
+
+Note: The target expression is not type-correct under the `implicit` transparency level, which may have triggered the failure. This is usually caused by unfolding of semireducible definitions in prior tactic steps. Use `set_option linter.tacticCheckInstances true` to investigate the source of the issue.
+Full error:
+  Application type mismatch: The argument
+    coefficients._proof_1 priorAxis
+  has type
+    @Matrix.IsHermitian ℂ (Fin 1) StarRing.toStarAddMonoid.toStar (Matrix.gram ℂ priorAxis)
+  but is expected to have type
+    @Matrix.IsHermitian ℂ (Fin 1) StarRing.toStarAddMonoid.toStar (gram priorAxis)
+  in the application
+    SourceGeneratedFiniteGram.coefficients (gram priorAxis) ⋯
+runtime/audit-tmp/iqa-r-outside-incremental-cotest-independent/Gate.lean:137:6: error: Application type mismatch: The argument
+  Eq.symm (Fin.snoc_last ?m.261 ?m.263)
+has type
+  ?m.261 = Fin.snoc ?m.263 ?m.261 (Fin.last ?m.259)
+but is expected to have type
+  addedColumn = Fin.snoc priorAxis addedColumn (Fin.last 1)
+in the application
+  congrArg (fun v => (coefficients (Fin.snoc priorAxis addedColumn) v).ofLp (Fin.last 1))
+    (Eq.symm (Fin.snoc_last ?m.261 ?m.263))
+CP775_CONTROL + the_Gram_snoc_pays_both_cotests_and_all_arbitrary_field_coordinates
+CP775_CONTROL + actual_D_exterior_pays_the_new_innovation_and_keeps_the_original_price
+CP775_CONTROL + the_written_registered_field_pays_the_same_residual_and_its_innovation_norm
+CP775_CONTROL + the_actual_joint_source_occurrences_pay_the_born_relation_and_canonical_whole_next
+CP775_CONTROL - the_nonorthogonal_append_requires_subtracting_the_new_charge
+CP775_GATE_PASS positive=4 negative=1
+cumulative profiling times:
+	attribute application 0.146ms
+	compilation (IR) 0.8ms
+	compilation (LCNF base) 4.02ms
+	compilation (LCNF impure) 1.21ms
+	compilation (LCNF mono) 3.13ms
+	do element elaborator 0.541ms
+	dsimp 1.59ms
+	elaboration 71.7ms
+	fix level params 0.491ms
+	import 11.6s
+	initialization 22.7ms
+	instantiate metavars 0.428ms
+	interpretation 1.21s
+	let-to-have transformation 1.74ms
+	linting 8.13ms
+	module linting 0.000709ms
+	overlappingInstancesLinter 5.71ms
+	parsing 6.05ms
+	process pre-definitions 8.89ms
+	share common exprs 3.11ms
+	tactic execution 102ms
+	tacticAnalysis 11.2ms
+	type checking 621ms
+	typeclass inference 274ms

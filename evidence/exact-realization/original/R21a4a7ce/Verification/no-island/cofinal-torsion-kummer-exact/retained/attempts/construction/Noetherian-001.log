@@ -1,0 +1,29 @@
+import took 3.89s
+runtime/audit-tmp/iqa-cofinal-torsion-kernel/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/CokernelTorsion/CoherentKernel/Noetherian.lean:25:33: error: Function expected at
+  Submodule.mem_torsion_iff ?m.149
+but this term has type
+  ?m.149 ∈ Submodule.torsion ?m.144 ?m.145 ↔ ∃ a, a • ?m.149 = 0
+
+Note: Expected a function because this term is being applied to the argument
+  _
+cumulative profiling times:
+	attribute application 0.0253ms
+	congr simp thm 0.198ms
+	elaboration 12.6ms
+	fix level params 0.251ms
+	import 3.89s
+	initialization 38.7ms
+	instantiate metavars 0.197ms
+	interpretation 372ms
+	let-to-have transformation 0.0283ms
+	linting 1.96ms
+	module linting 0.000875ms
+	overlappingInstancesLinter 3.09ms
+	parsing 1.51ms
+	process pre-definitions 1.24ms
+	share common exprs 0.714ms
+	simp 0.527ms
+	tactic execution 92.3ms
+	tacticAnalysis 3.23ms
+	type checking 10.3ms
+	typeclass inference 59.1ms

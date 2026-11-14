@@ -1,0 +1,43 @@
+import took 6.76s
+runtime/audit-tmp/iqa-r-cayley-effect-price/source-root/main/SaturationMonoid/GenericFoundation/Operations/Observed/Operator/CayleyEffectInverse.lean:28:37: error: Tactic `assumption` failed
+
+d : ℝ
+positive : 0 < d
+budget : ℝ
+q : 0 ≤ weight d ∧ weight d < 1
+⊢ weight d < 1
+runtime/audit-tmp/iqa-r-cayley-effect-price/source-root/main/SaturationMonoid/GenericFoundation/Operations/Observed/Operator/CayleyEffectInverse.lean:33:45: error: `ring_nf` made no progress on the goal
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+cumulative profiling times:
+	attribute application 0.115ms
+	compilation (IR) 0.208ms
+	compilation (LCNF base) 1.05ms
+	compilation (LCNF impure) 0.357ms
+	compilation (LCNF mono) 2.09ms
+	congr simp thm 0.691ms
+	dsimp 0.211ms
+	elaboration 35.1ms
+	fix level params 0.604ms
+	import 6.76s
+	initialization 30.5ms
+	instantiate metavars 0.694ms
+	interpretation 462ms
+	let-to-have transformation 0.0596ms
+	linting 8.2ms
+	module linting 0.000584ms
+	norm_num 1.31ms
+	overlappingInstancesLinter 6.99ms
+	parsing 5.64ms
+	process pre-definitions 7.22ms
+	ring 11.9ms
+	share common exprs 2.13ms
+	simp 4.97ms
+	tactic execution 111ms
+	tacticAnalysis 11.7ms
+	type checking 25.1ms
+	typeclass inference 218ms

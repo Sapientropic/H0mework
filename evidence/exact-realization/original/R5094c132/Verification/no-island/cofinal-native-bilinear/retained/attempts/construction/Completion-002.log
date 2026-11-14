@@ -1,0 +1,45 @@
+import took 2.72s
+runtime/audit-tmp/iqa-cofinal-native-bilinear/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/Bilinear/Completion.lean:52:2: error: Type mismatch
+  (AddMonoidHom.mk' (completedRight act p) ⋯).toIntLinearMap
+has type
+  @LinearMap ℤ ℤ Int.instSemiring Int.instSemiring (RingHom.id ℤ) (↑(Completion p))
+    (↑(Completion p) →ₗ[ℤ] ↑(Completion p)) (Completion p).isAddCommGroup.toAddCommMonoid
+    LinearMap.addCommGroup.toAddCommMonoid (AddCommGroup.toIntModule ↑(Completion p))
+    (AddCommGroup.toIntModule (↑(Completion p) →ₗ[ℤ] ↑(Completion p)))
+but is expected to have type
+  @LinearMap ℤ ℤ Int.instSemiring Int.instSemiring (RingHom.id ℤ) (↑(Completion p))
+    (↑(Completion p) →ₗ[ℤ] ↑(Completion p)) (Completion p).isAddCommGroup.toAddCommMonoid LinearMap.addCommMonoid
+    (Completion p).isModule (AddCommGroup.toIntModule (↑(Completion p) →ₗ[ℤ] ↑(Completion p)))
+runtime/audit-tmp/iqa-cofinal-native-bilinear/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/Bilinear/Completion.lean:69:2: error: Type mismatch
+  completed_right_restriction act p j left right
+has type
+  (ModuleCat.Hom.hom (restriction p j)) ((completedRight act p left) right) =
+    ((stageBilinear act p j) ((ModuleCat.Hom.hom (restriction p j)) left)) ((ModuleCat.Hom.hom (restriction p j)) right)
+but is expected to have type
+  (ModuleCat.Hom.hom (restriction p j)) (((completionBilinear act p) left) right) =
+    ((stageBilinear act p j) ((ModuleCat.Hom.hom (restriction p j)) left)) ((ModuleCat.Hom.hom (restriction p j)) right)
+cumulative profiling times:
+	attribute application 0.0594ms
+	compilation (IR) 0.0548ms
+	compilation (LCNF base) 0.618ms
+	compilation (LCNF impure) 0.136ms
+	compilation (LCNF mono) 0.118ms
+	congr simp thm 0.635ms
+	elaboration 67ms
+	fix level params 0.836ms
+	import 2.72s
+	initialization 27ms
+	instantiate metavars 0.899ms
+	interpretation 345ms
+	let-to-have transformation 0.0943ms
+	linting 4.38ms
+	module linting 0.000542ms
+	overlappingInstancesLinter 4.35ms
+	parsing 3.13ms
+	process pre-definitions 9.57ms
+	share common exprs 2.37ms
+	simp 5.44ms
+	tactic execution 192ms
+	tacticAnalysis 6.33ms
+	type checking 37ms
+	typeclass inference 248ms

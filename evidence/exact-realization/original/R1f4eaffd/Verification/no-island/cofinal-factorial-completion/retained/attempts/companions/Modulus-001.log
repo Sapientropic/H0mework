@@ -1,0 +1,37 @@
+import took 2.8s
+runtime/audit-tmp/iqa-cofinal-factorial-completion/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/FiniteModulus/Factorization.lean:17:61: error: Application type mismatch: The argument
+  equal
+has type
+  (fun p => ⟨↑p, ⋯⟩) x✝¹ = (fun p => ⟨↑p, ⋯⟩) x✝
+but is expected to have type
+  x✝¹ = x✝
+in the application
+  congrArg Subtype.val equal
+runtime/audit-tmp/iqa-cofinal-factorial-completion/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/FiniteModulus/Factorization.lean:43:6: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ∏ i, ?f ↑i
+in the target expression
+  ∏ x, ↑↑↑x ^ modulus.factorization ↑↑x = ↑modulus
+
+modulus : ℕ
+nonzero : modulus ≠ 0
+⊢ ∏ x, ↑↑↑x ^ modulus.factorization ↑↑x = ↑modulus
+
+Note: The target expression is not type-correct under the `implicit` transparency level, which may have triggered the failure. This is usually caused by unfolding of semireducible definitions in prior tactic steps. Use `set_option linter.tacticCheckInstances true` to investigate the source of the issue.
+Full error:
+  Application type mismatch: The argument
+    ↑x
+  has type
+    Nat.Primes
+  but is expected to have type
+    { p // Nat.Prime p }
+  in the application
+    ↑↑x
+runtime/audit-tmp/iqa-cofinal-factorial-completion/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/FiniteModulus/Factorization.lean:97:67: error: Application type mismatch: The argument
+  value ↑p
+has type
+  ↑(Completion ↑p)
+of sort `Type u` but is expected to have type
+  ℤ
+of sort `Type` in the application
+  map_zsmul (ModuleCat.Hom.hom (restriction (↑p) (depth p))) (value ↑p)
+runtime/audit-tmp/iqa-cofinal-factorial-completion/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/FiniteModulus/Factorization.lean:97:14: error: maximum number of errors (3; from option `maxErrors`) reached, exiting

@@ -1,0 +1,69 @@
+{
+  "schema": "cp591-independent-cost/v1",
+  "actual_calls": 2,
+  "known_seconds": 240.9210775839747,
+  "unknown_calls": 0,
+  "old_ci_replays": 0,
+  "old_source_recompiles": 0,
+  "kernel_calls": 64,
+  "kernel_ms": 1064,
+  "calls": [
+    {
+      "label": "001-gate",
+      "scope": "gate",
+      "pid": 94821,
+      "exit_code": 0,
+      "elapsed_seconds": 120.06827262497973,
+      "command": [
+        "lean",
+        "--trust=0",
+        "-DElab.async=false",
+        "-DwarningAsError=true",
+        "-DmaxErrors=1",
+        "-j1",
+        "-M32000",
+        "-DstderrAsMessages=false",
+        "runtime/Homework-runtime/audit-tmp/iqa-r-scheduled-native-price-independent/Gate.lean"
+      ],
+      "source_sha256": "5c0f7c67c77e44ce819caaaabe67ee9431e68a87d7fd5a045daa20feae1cd118",
+      "source_unchanged": true,
+      "selected_lean_path_sha256": "8c32aa19ea590690736dd37a92afe5a141ed154b9c00760ac0b12a2ef4678e83",
+      "log_sha256": "a578bd3029e0b041cf2f7dae847d42409e662a7d45a5f1aed97a42fc467a2af3",
+      "log_bytes": 295,
+      "old_source_recompiles": 0,
+      "old_ci_replays": 0,
+      "receipt_sha256": "fc7cb031fe9dd58a0c53373be9545fe650f63c934a12810d6426f72e87c1103c"
+    },
+    {
+      "label": "002-audit",
+      "scope": "audit",
+      "pid": 1486,
+      "exit_code": 0,
+      "elapsed_seconds": 120.85280495899497,
+      "command": [
+        "lean",
+        "--trust=0",
+        "-DElab.async=false",
+        "-DwarningAsError=true",
+        "-DmaxErrors=1",
+        "-j1",
+        "-M32000",
+        "-DstderrAsMessages=false",
+        "--run",
+        "runtime/Homework-runtime/audit-tmp/iqa-r-scheduled-native-price-independent/Audit.lean",
+        "runtime/Homework-runtime/audit-tmp/iqa-r-scheduled-native-price-independent/audit-config.json"
+      ],
+      "source_sha256": "d16ef0d5b160c17e809538e7498dca13791bd7b40daa3f5975da07d3213b5f6c",
+      "source_unchanged": true,
+      "selected_lean_path_sha256": "8c32aa19ea590690736dd37a92afe5a141ed154b9c00760ac0b12a2ef4678e83",
+      "log_sha256": "3986161eaac908acb6d1d52215aa0d39fc939cf3d56c25a4bd4eca2786ac01b9",
+      "log_bytes": 313,
+      "old_source_recompiles": 0,
+      "old_ci_replays": 0,
+      "receipt_sha256": "f47eac804a3a38083168a9a12ecb124b0f288b2a5873bcade65c2f807ce6e0e7"
+    }
+  ],
+  "paid_base_environment_imports": 1,
+  "full_candidate_environment_imports_in_audit": 0,
+  "verification_overlay_objects": 0
+}

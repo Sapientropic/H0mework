@@ -1,0 +1,13 @@
+import took 2s
+runtime/audit-tmp/iqa-cofinal-paid-cochain-tower/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/Cochain/Tower.lean:18:49: error: no macro or `[quot_precheck]` instance for syntax kind `Lean.Parser.Term.explicitUniv` found
+  ModuleCat.{u}
+This means we cannot eagerly check your notation/quotation for unbound identifiers; you can use `set_option quotPrecheck false` to disable this check.
+runtime/audit-tmp/iqa-cofinal-paid-cochain-tower/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/Cochain/Tower.lean:21:30: error: elaboration function for `_private.SaturationMonoid.GenericFoundation.Cofinal.Topology.Cochain.Tower.0.SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceGeneratedPrimePowerCompletion.termCochains` has not been implemented
+  Cochains
+runtime/audit-tmp/iqa-cofinal-paid-cochain-tower/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/Cochain/Tower.lean:26:28: error: typeclass instance problem is stuck
+  Category.{?u.12, ?u.10} ?m.6
+
+Note: Lean will not try to resolve this typeclass instance problem because the type argument to `Category` is a metavariable. This argument must be fully determined before Lean will try to resolve the typeclass.
+
+Hint: Adding type annotations and supplying implicit arguments to functions can give Lean more information for typeclass resolution. For example, if you have a variable `x` that you intend to be a `Nat`, but Lean reports it as having an unresolved type like `?m`, replacing `x` with `(x : Nat)` can get typeclass resolution un-stuck.
+runtime/audit-tmp/iqa-cofinal-paid-cochain-tower/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/Cochain/Tower.lean:42:19: error: maximum number of errors (3; from option `maxErrors`) reached, exiting

@@ -1,0 +1,51 @@
+import took 1.77s
+typeclass inference of CoeT took 124ms
+runtime/audit-tmp/iqa-cofinal-torsion-completion/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/CokernelTorsion/CoherentLift.lean:73:26: error: Application type mismatch: The last
+  ℤ
+argument has type
+  Type
+of sort `Type 1` but is expected to have type
+  Type u
+of sort `Type (u + 1)` in the application
+  @ModuleCat.of ℤ Int.instRing ℤ
+runtime/audit-tmp/iqa-cofinal-torsion-completion/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/CokernelTorsion/CoherentLift.lean:78:12: error: Failed to rewrite using equation theorems for `fibreTower`
+runtime/audit-tmp/iqa-cofinal-torsion-completion/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/CokernelTorsion/CoherentLift.lean:97:96: error: Application type mismatch: The argument
+  1
+has type
+  ℤ
+of sort `Type` but is expected to have type
+  ↑cone.pt
+of sort `Type u` in the application
+  (ModuleCat.Hom.hom (limit.lift (primePowerTorsionTower (M ⧸ evaluate.range) p) cone)) 1
+runtime/audit-tmp/iqa-cofinal-torsion-completion/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/CokernelTorsion/CoherentLift.lean:102:40: error: Application type mismatch: The argument
+  1
+has type
+  ℤ
+of sort `Type` but is expected to have type
+  ToType cone.pt
+of sort `Type u` in the application
+  ConcreteCategory.congr_hom (limit.lift_π cone (Opposite.op j)) 1
+cumulative profiling times:
+	attribute application 0.0908ms
+	blocked (unaccounted) 1ms
+	compilation (IR) 0.129ms
+	compilation (LCNF base) 5.08ms
+	compilation (LCNF impure) 0.495ms
+	compilation (LCNF mono) 1.37ms
+	elaboration 36.9ms
+	fix level params 0.716ms
+	import 1.77s
+	initialization 17.3ms
+	instantiate metavars 0.586ms
+	interpretation 336ms
+	let-to-have transformation 0.111ms
+	linting 3.99ms
+	module linting 0.0005ms
+	overlappingInstancesLinter 3.7ms
+	parsing 3.65ms
+	process pre-definitions 17.1ms
+	share common exprs 1.7ms
+	tactic execution 95.6ms
+	tacticAnalysis 5.94ms
+	type checking 27.8ms
+	typeclass inference 344ms

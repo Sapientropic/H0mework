@@ -1,0 +1,58 @@
+import took 2.64s
+runtime/audit-tmp/iqa-cofinal-paid-continuation/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/Operations/Closure/Continuation/Payment.lean:72:23: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ?x ∈ Set.range (Finsupp.mapDomain ?m.510)
+in the target expression
+  target.symm word ∈ Set.range (Finsupp.mapDomain ⇑embed) ↔
+    ∀ (index : Fin (words next).length),
+      (words prior).length ≤ ↑index → ((relationPaymentEquiv nextRoot next).symm word) index = 0
+
+S Root NextRoot : Type u
+V X : S → Type u
+inst✝ : (s : S) → AddCommGroup (V s)
+s : S
+old : Env V X
+before middle after : Expr V X s
+prior : Trace old before middle
+next : Trace old before after
+root : RootedAccountedUnfolding Root
+nextRoot : RootedAccountedUnfolding NextRoot
+paid : words prior <+: words next
+word : ↥history[nextRoot,next].relationClosure
+embed : Fin (words prior).length ↪ Fin (words next).length := Fin.castLEEmb ⋯
+source : (Fin (words prior).length →₀ ℤ) ≃ₗ[ℤ] ↥history[root,prior].relationClosure := relationPaymentEquiv root prior
+target : (Fin (words next).length →₀ ℤ) ≃ₗ[ℤ] ↥history[nextRoot,next].relationClosure :=
+  relationPaymentEquiv nextRoot next
+push : ↥history[root,prior].relationClosure →ₗ[ℤ] ↥history[nextRoot,next].relationClosure :=
+  continuationRelation root nextRoot paid
+coordinateRange : word ∈ push.range ↔ target.symm word ∈ Set.range (Finsupp.mapDomain ⇑embed)
+outside : ∀ (index : Fin (words next).length), index ∉ Set.range ⇑embed ↔ (words prior).length ≤ ↑index
+⊢ target.symm word ∈ Set.range (Finsupp.mapDomain ⇑embed) ↔
+    ∀ (index : Fin (words next).length),
+      (words prior).length ≤ ↑index → ((relationPaymentEquiv nextRoot next).symm word) index = 0
+cumulative profiling times:
+	attribute application 0.252ms
+	blocked (unaccounted) 3.71ms
+	compilation (IR) 0.284ms
+	compilation (LCNF base) 9.25ms
+	compilation (LCNF impure) 1.66ms
+	compilation (LCNF mono) 2.98ms
+	congr simp thm 0.761ms
+	dsimp 1.6ms
+	elaboration 74.4ms
+	fix level params 0.607ms
+	import 2.64s
+	initialization 17.2ms
+	instantiate metavars 0.462ms
+	interpretation 343ms
+	let-to-have transformation 6.78ms
+	linting 4.79ms
+	module linting 0.000708ms
+	overlappingInstancesLinter 3.46ms
+	parsing 2.87ms
+	process pre-definitions 11.2ms
+	share common exprs 2.24ms
+	simp 13.4ms
+	tactic execution 109ms
+	tacticAnalysis 9.47ms
+	type checking 35.5ms
+	typeclass inference 70.5ms

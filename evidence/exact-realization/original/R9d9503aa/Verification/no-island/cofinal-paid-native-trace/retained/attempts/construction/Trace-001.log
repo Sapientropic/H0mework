@@ -1,0 +1,41 @@
+import took 2.22s
+runtime/audit-tmp/iqa-cofinal-paid-trace/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/Operations/Trace.lean:41:70: error: Application type mismatch: The argument
+  previous
+has type
+  Step.{u, v, w} (environment p old) (expression p before✝) (expression p after✝)
+but is expected to have type
+  Step.{v + 1, v, ?u.114} ?m.195 ?m.202 ?m.203
+in the application
+  Step.linear (linear p operation) previous
+runtime/audit-tmp/iqa-cofinal-paid-trace/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/Operations/Trace.lean:42:84: error: Application type mismatch: The argument
+  previous
+has type
+  Step.{u, v, w} (environment p old) (expression p before✝) (expression p after✝)
+but is expected to have type
+  Step.{v + 1, v, ?u.118} ?m.212 ?m.222 ?m.223
+in the application
+  Step.bilinearLeft (bilinear p operation) previous
+runtime/audit-tmp/iqa-cofinal-paid-trace/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/Operations/Trace.lean:43:86: error: Application type mismatch: The argument
+  previous
+has type
+  Step.{u, v, w} (environment p old) (expression p before✝) (expression p after✝)
+but is expected to have type
+  Step.{v + 1, v, ?u.122} ?m.233 ?m.244 ?m.245
+in the application
+  Step.bilinearRight (bilinear p operation) previous
+runtime/audit-tmp/iqa-cofinal-paid-trace/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/Operations/Trace.lean:65:34: error: Application type mismatch: The argument
+  paid
+has type
+  Trace.{u, v, w} old before after
+of sort `Type (max u v w)` but is expected to have type
+  Trace.{u, u, u} ?m.34 ?m.35 ?m.36
+of sort `Type u` in the application
+  words paid
+runtime/audit-tmp/iqa-cofinal-paid-trace/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/Operations/Trace.lean:77:58: error(lean.unknownIdentifier): Unknown identifier `trace_words`
+runtime/audit-tmp/iqa-cofinal-paid-trace/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/Operations/Trace.lean:77:46: error: Type mismatch: After simplification, term
+  index.isLt
+ has type
+  ↑index < (words ?m.20).length
+but is expected to have type
+  ↑index < (words (trace p ?m.38)).length
+runtime/audit-tmp/iqa-cofinal-paid-trace/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/Operations/Trace.lean:78:36: error: maximum number of errors (6; from option `maxErrors`) reached, exiting

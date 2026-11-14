@@ -1562,6 +1562,25 @@ class PrivateOpenModuleTests(unittest.TestCase):
         self.assertEqual(public, original.replace('from Original.Provider', 'from H0mework.Provider'))
         self.assertEqual(s.rewrite_private_open_modules(public, self.rules(), reverse=True), original)
 
+    def test_from_group_relocates_each_module_across_lines(self):
+        original = ('  open private first second in Decl.f from Original.Provider Original.Second\n'
+                    '    /- grouped selectors -/ Mathlib.Provider\n'
+                    '    Original.Third\n'
+                    '  local notation "T" => Original.Third\n')
+        rules = self.rules() + [
+            {'source_module': f'Original.{name}', 'target_module': f'H0mework.{name}', 'count': 1}
+            for name in ('Second', 'Third')
+        ]
+        self.assertEqual([owner for _, _, owner in s.private_open_module_tokens(original)],
+                         ['Original.Provider', 'Original.Second', 'Mathlib.Provider', 'Original.Third'])
+        expected = ('  open private first second in Decl.f from H0mework.Provider H0mework.Second\n'
+                    '    /- grouped selectors -/ Mathlib.Provider\n'
+                    '    H0mework.Third\n'
+                    '  local notation "T" => Original.Third\n')
+        public = s.rewrite_private_open_modules(original, rules)
+        self.assertEqual(public, expected)
+        self.assertEqual(s.rewrite_private_open_modules(public, rules, reverse=True), original)
+
     def test_retired_private_open_recovers_the_original_command(self):
         command = "open private drain_preserves_control from Original.Provider"
         original = "import Original.Provider\n" + command + "\ndef use := drain_preserves_control\n"

@@ -1,0 +1,49 @@
+import took 2.68s
+runtime/audit-tmp/iqa-cofinal-torsion-connecting/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/CokernelTorsion/ConnectingExact.lean:25:20: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  (DistribSMul.toLinearMap ℤ L (↑↑p ^ (j + 1))) ↑value
+in the target expression
+  move (↑↑p ^ (j + 1) • ↑value) = 0
+
+L M : Type u
+inst✝¹ : AddCommGroup L
+inst✝ : AddCommGroup M
+move : L →ₗ[ℤ] M
+p : Nat.Primes
+j : ℕ
+value : ↥Tor[L,p,j]
+⊢ move (↑↑p ^ (j + 1) • ↑value) = 0
+
+Note: The target expression is not type-correct under the `implicit` transparency level, which may have triggered the failure. This is usually caused by unfolding of semireducible definitions in prior tactic steps. Use `set_option linter.tacticCheckInstances true` to investigate the source of the issue.
+Full error:
+  Application type mismatch: The argument
+    p
+  has type
+    Nat.Primes
+  but is expected to have type
+    { p // Nat.Prime p }
+  in the application
+    ↑p
+cumulative profiling times:
+	attribute application 0.361ms
+	compilation (IR) 0.32ms
+	compilation (LCNF base) 10.4ms
+	compilation (LCNF impure) 1.49ms
+	compilation (LCNF mono) 3.32ms
+	dsimp 0.38ms
+	elaboration 57ms
+	fix level params 1.59ms
+	import 2.68s
+	initialization 18.4ms
+	instantiate metavars 1.51ms
+	interpretation 377ms
+	let-to-have transformation 0.12ms
+	linting 5.34ms
+	module linting 0.000416ms
+	overlappingInstancesLinter 4.92ms
+	parsing 3.9ms
+	process pre-definitions 13.5ms
+	share common exprs 3.9ms
+	tactic execution 131ms
+	tacticAnalysis 10.7ms
+	type checking 49.9ms
+	typeclass inference 179ms

@@ -1,0 +1,38 @@
+import took 9.04s
+interpretation of Lean.Elab.Command.elabOpenPrivate._boxed took 372ms
+interpretation of Lean.Elab.Command.elabOpenPrivate._boxed took 375ms
+runtime/audit-tmp/iqa-cofinal-factorial-completion/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/FiniteModulus/Factorial/Readback.lean:115:44: error: Type mismatch
+  map_zsmul (factorialToPrime p) scalar value
+has type
+  (factorialToPrime p)
+      (@HSMul.hSMul ℤ (↑FactorialCompletion) (↑FactorialCompletion) (@instHSMul ℤ (↑FactorialCompletion) ZSMul.toSMul)
+        scalar value) =
+    scalar • (factorialToPrime p) value
+but is expected to have type
+  (factorialToPrime p)
+      (@HSMul.hSMul ℤ (↑FactorialCompletion) (↑FactorialCompletion)
+        (@instHSMul ℤ (↑FactorialCompletion) DistribMulAction.toDistribSMul.toSMul) scalar value) =
+    ((RingHom.id ℤ) scalar • fun p => (factorialToPrime p) value) p
+cumulative profiling times:
+	attribute application 0.86ms
+	compilation (IR) 0.116ms
+	compilation (LCNF base) 2.87ms
+	compilation (LCNF impure) 0.332ms
+	compilation (LCNF mono) 1.26ms
+	elaboration 89.1ms
+	fix level params 0.697ms
+	import 9.04s
+	initialization 31.6ms
+	instantiate metavars 0.633ms
+	interpretation 1.17s
+	let-to-have transformation 0.11ms
+	linting 5.81ms
+	module linting 0.000542ms
+	overlappingInstancesLinter 4.78ms
+	parsing 4.45ms
+	process pre-definitions 17.2ms
+	share common exprs 2.14ms
+	tactic execution 94.8ms
+	tacticAnalysis 10.3ms
+	type checking 43.4ms
+	typeclass inference 165ms

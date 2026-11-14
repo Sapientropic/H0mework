@@ -1,0 +1,45 @@
+import took 6.83s
+runtime/audit-tmp/iqa-r-price-stream-finite-write/source-root/main/SaturationMonoid/GenericFoundation/Scalar/Feature/FiniteGram/PrefixImage/PrefixEnergy.lean:51:34: error: linarith failed to find a contradiction
+case h1
+H : Type u_1
+inst✝² : NormedAddCommGroup H
+inst✝¹ : InnerProductSpace ℂ H
+inst✝ : CompleteSpace H
+source : ℕ → H
+data : Admitted source
+n : ℕ
+S : Submodule ℂ H := Projection.sourceSpan fun i => source ↑i
+current : H := realize source data
+projection : approximate source (↑data) n = S.starProjection current
+pythag : ‖current‖ ^ 2 = ‖approximate source (↑data) n‖ ^ 2 + ‖current - approximate source (↑data) n‖ ^ 2
+a✝ : ‖realize source data - approximate source (↑data) n‖ ^ 2 + energy source (↑data) n < ‖realize source data‖ ^ 2
+⊢ False
+failed
+runtime/audit-tmp/iqa-r-price-stream-finite-write/source-root/main/SaturationMonoid/GenericFoundation/Scalar/Feature/FiniteGram/PrefixImage/PrefixEnergy.lean:53:8: error: automatically included section variable(s) unused in theorem `_private.SaturationMonoid.GenericFoundation.Scalar.Feature.FiniteGram.PrefixImage.PrefixEnergy.0.SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceGeneratedFiniteGram.PrefixImage.small_remainder`:
+  [CompleteSpace H]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [CompleteSpace H] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+cumulative profiling times:
+	attribute application 0.0906ms
+	blocked (unaccounted) 1.6ms
+	elaboration 40.8ms
+	fix level params 0.751ms
+	import 6.83s
+	initialization 23.7ms
+	instantiate metavars 0.712ms
+	interpretation 558ms
+	let-to-have transformation 0.59ms
+	linting 6.12ms
+	module linting 0.000792ms
+	norm_num 0.594ms
+	overlappingInstancesLinter 7.67ms
+	parsing 4.38ms
+	process pre-definitions 6.25ms
+	ring 14.6ms
+	share common exprs 3.41ms
+	tactic execution 103ms
+	tacticAnalysis 9.27ms
+	type checking 39.9ms
+	typeclass inference 210ms

@@ -37,7 +37,7 @@
 | E | observation-dynamics-e |
 | I | observation-dynamics-i |
 
-同一源路径在不同修订处字节一致则共享一条导出记录，`source_revisions` 登记适用修订；不同字节版本保存在 `H0mework.Versions.<标签>.*` 命名空间。
+同一源路径、源码内容与递归导入环境相同的修订共享导出记录，`source_revisions` 登记适用修订。按 `Lean/` 下的标准路径可直接还原原模块名时，映射允许省略重复的 `modules.source`。不同环境或不同字节的版本保存在 `H0mework.Versions.<标签>.*` 命名空间。
 
 迁移改写本地 `import` 地址、`resource_rewrites` 登记的 `include_str` 地址及 `resource_sha256_rewrites` 登记的资源摘要。声明名、命名空间、前提、量词和其余正文保持源字节。回执的原件／公开副本身份及字节合同见[公开回执与原始来源](evidence-publication.md)。
 

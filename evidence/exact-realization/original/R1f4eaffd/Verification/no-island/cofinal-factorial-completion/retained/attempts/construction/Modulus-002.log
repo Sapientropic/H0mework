@@ -1,0 +1,48 @@
+import took 5.56s
+interpretation of Lean.Elab.Tactic._aux_Mathlib_Tactic_Widget_Calc___elabRules_Lean_calcTactic_1._boxed took 220ms
+tactic execution of Lean.calcTactic took 224ms
+runtime/audit-tmp/iqa-cofinal-factorial-completion/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/FiniteModulus/Factorization.lean:50:73: error: Type mismatch
+  Finset.prod_attach ?m.116 ?m.117
+has type
+  ∏ x ∈ Finset.attach ?m.116, ?m.117 ↑x = ∏ x ∈ ?m.116, ?m.117 x
+but is expected to have type
+  ∏ p ∈ modulus.primeFactors.attach, factor ((primeOfFactor modulus) p) =
+    ∏ p ∈ modulus.primeFactors, ↑p ^ modulus.factorization p
+runtime/audit-tmp/iqa-cofinal-factorial-completion/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/FiniteModulus/Factorization.lean:101:8: error: Type mismatch
+  map_zsmul (ModuleCat.Hom.hom (restriction (↑p) (depth p))) scalar (value ↑p)
+has type
+  (ModuleCat.Hom.hom (restriction (↑p) (depth p))) (scalar • value ↑p) =
+    scalar • (ModuleCat.Hom.hom (restriction (↑p) (depth p))) (value ↑p)
+but is expected to have type
+  finitePrimeRestriction primes depth (scalar • value) p = (?m.85 scalar • finitePrimeRestriction primes depth value) p
+runtime/audit-tmp/iqa-cofinal-factorial-completion/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/FiniteModulus/Factorization.lean:111:77: error: Type mismatch
+  LinearEquiv.apply_symm_apply read coordinates
+has type
+  read (read.symm coordinates) = coordinates
+but is expected to have type
+  read ((modulusRead modulus nonzero) family) = coordinates
+cumulative profiling times:
+	attribute application 1.05ms
+	compilation (IR) 0.675ms
+	compilation (LCNF base) 6.91ms
+	compilation (LCNF impure) 1.91ms
+	compilation (LCNF mono) 3.52ms
+	congr simp thm 0.268ms
+	elaboration 65.9ms
+	fix level params 0.48ms
+	import 5.56s
+	initialization 18.4ms
+	instantiate metavars 0.449ms
+	interpretation 851ms
+	let-to-have transformation 0.109ms
+	linting 5.53ms
+	module linting 0.000375ms
+	overlappingInstancesLinter 11.8ms
+	parsing 4.6ms
+	process pre-definitions 14.1ms
+	share common exprs 1.45ms
+	simp 8.56ms
+	tactic execution 316ms
+	tacticAnalysis 7.91ms
+	type checking 32.2ms
+	typeclass inference 146ms

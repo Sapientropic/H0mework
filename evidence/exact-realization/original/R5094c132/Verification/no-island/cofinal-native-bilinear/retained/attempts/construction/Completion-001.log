@@ -1,0 +1,71 @@
+import took 3.51s
+runtime/audit-tmp/iqa-cofinal-native-bilinear/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/Bilinear/Completion.lean:30:42: error: This simp argument is unused:
+  Category.id_comp
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Functor.const_obj_map, tower, Functor.ofOpSequence_map_homOfLE_succ]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+runtime/audit-tmp/iqa-cofinal-native-bilinear/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/Bilinear/Completion.lean:53:25: error: unsolved goals
+L M N : Type u
+inst✝² : AddCommGroup L
+inst✝¹ : AddCommGroup M
+inst✝ : AddCommGroup N
+act : L →ₗ[ℤ] M →ₗ[ℤ] N
+p : Nat.Primes
+left other : ↑(Completion p)
+right : ↑(Completion p)
+j : ℕ
+⊢ (ModuleCat.Hom.hom (restriction p j)) ((completedRight act p (left + other)) right) =
+    (ModuleCat.Hom.hom (restriction p j)) ((completedRight act p left) right) +
+      (ModuleCat.Hom.hom (restriction p j)) ((completedRight act p other) right)
+runtime/audit-tmp/iqa-cofinal-native-bilinear/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/Bilinear/Completion.lean:66:4: error: 'change' tactic failed, pattern
+  (ModuleCat.Hom.hom (restriction p j))
+      ((completedRight act p
+          (@HSMul.hSMul ℤ (↑(Completion p)) (↑(Completion p)) (@instHSMul ℤ (↑(Completion p)) ZSMul.toSMul) coefficient
+            left))
+        right) =
+    (ModuleCat.Hom.hom (restriction p j)) (coefficient • (completedRight act p left) right)
+is not definitionally equal to target
+  (ConcreteCategory.hom (limit.π (tower p) (Opposite.op j)))
+      ((completedRight act p
+          (@HSMul.hSMul ℤ (↑(Completion p)) (↑(Completion p))
+            (@instHSMul ℤ (↑(Completion p)) DistribMulAction.toDistribSMul.toSMul) coefficient left))
+        right) =
+    (ConcreteCategory.hom (limit.π (tower p) (Opposite.op j)))
+      (((RingHom.id ℤ) coefficient • completedRight act p left) right)
+runtime/audit-tmp/iqa-cofinal-native-bilinear/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/Bilinear/Completion.lean:60:24: error: This simp argument is unused:
+  completed_right_restriction
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [map_add, LinearMap.add_apply]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+runtime/audit-tmp/iqa-cofinal-native-bilinear/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/Bilinear/Completion.lean:60:53: error: This simp argument is unused:
+  LinearMap.add_apply
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [map_add, completed_right_restriction]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+cumulative profiling times:
+	attribute application 0.0635ms
+	congr simp thm 0.82ms
+	elaboration 73.8ms
+	fix level params 0.923ms
+	import 3.51s
+	initialization 31.6ms
+	instantiate metavars 1.08ms
+	interpretation 399ms
+	let-to-have transformation 0.125ms
+	linting 5.87ms
+	module linting 0.000417ms
+	overlappingInstancesLinter 5.43ms
+	parsing 3.48ms
+	process pre-definitions 19ms
+	share common exprs 3.13ms
+	simp 11.1ms
+	tactic execution 207ms
+	tacticAnalysis 6.53ms
+	type checking 46.8ms
+	typeclass inference 216ms

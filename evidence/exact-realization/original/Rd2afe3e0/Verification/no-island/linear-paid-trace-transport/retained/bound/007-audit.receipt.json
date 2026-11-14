@@ -1,0 +1,53 @@
+{
+  "label": "007-audit",
+  "command": [
+    "lean",
+    "--trust=0",
+    "-DElab.async=false",
+    "-DwarningAsError=true",
+    "-DmaxErrors=8",
+    "-j1",
+    "-M32000",
+    "-DstderrAsMessages=false",
+    "--run",
+    "runtime/audit-tmp/iqa-linear-paid-trace-transport-independent/Audit.lean",
+    "runtime/audit-tmp/iqa-linear-paid-trace-transport-independent/audit-config.json"
+  ],
+  "source": {
+    "path": "runtime/audit-tmp/iqa-linear-paid-trace-transport-independent/Audit.lean",
+    "bytes": 26324,
+    "sha256": "d9e9081f8a21189e72ab9274b9fe0b8671111e7cae6fadae6401ebd51a5f4638"
+  },
+  "snapshot": {
+    "path": "runtime/audit-tmp/iqa-linear-paid-trace-transport-independent/007-audit.lean",
+    "bytes": 26324,
+    "sha256": "d9e9081f8a21189e72ab9274b9fe0b8671111e7cae6fadae6401ebd51a5f4638"
+  },
+  "lean_path": {
+    "path": "runtime/audit-tmp/iqa-linear-paid-trace-transport/lean-path.txt",
+    "bytes": 3017,
+    "sha256": "f8df2cd0fc79a8e975427c713033b1e264373e2bacf02dd7016d8db5c217a71e"
+  },
+  "config": {
+    "path": "runtime/audit-tmp/iqa-linear-paid-trace-transport-independent/audit-config.json",
+    "bytes": 675299,
+    "sha256": "3079f78cc2105a86f3a4a16532525ce06a6f060e6bcd7e35f8fcdd176d0a7193"
+  },
+  "config_snapshot": {
+    "path": "runtime/audit-tmp/iqa-linear-paid-trace-transport-independent/007-audit.config.json",
+    "bytes": 675299,
+    "sha256": "3079f78cc2105a86f3a4a16532525ce06a6f060e6bcd7e35f8fcdd176d0a7193"
+  },
+  "old_source_recompiles": 0,
+  "old_ci_replays": 0,
+  "pid": 69280,
+  "exit_code": 0,
+  "natural_exit": true,
+  "elapsed_seconds": 50.312804374989355,
+  "source_unchanged": true,
+  "log": {
+    "path": "runtime/audit-tmp/iqa-linear-paid-trace-transport-independent/007-audit.log",
+    "bytes": 277,
+    "sha256": "5165a410a2c16cebc71c283843d85f085fe7472e6f3f354970c98ee8f199f5a7"
+  }
+}

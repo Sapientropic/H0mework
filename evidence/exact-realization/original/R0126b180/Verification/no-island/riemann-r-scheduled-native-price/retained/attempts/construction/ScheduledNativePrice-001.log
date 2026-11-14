@@ -1,0 +1,42 @@
+import took 13.1s
+interpretation of Lean.Elab.Command.elabOpenPrivate._boxed took 754ms
+interpretation of Lean.Elab.Command.elabOpenPrivate._boxed took 791ms
+elaboration took 147ms
+elaboration took 173ms
+elaboration took 182ms
+elaboration took 110ms
+elaboration took 119ms
+elaboration took 115ms
+process pre-definitions took 277ms
+let-to-have transformation took 1.32s
+process pre-definitions took 244ms
+tactic execution of Lean.Parser.Tactic.exact took 11.1s
+process pre-definitions took 269ms
+runtime/audit-tmp/iqa-r-scheduled-native-price/source-root/main/SaturationMonoid/NoIslandNoMagic/CanonicalRiemann/GeneralizedDual/CoPoissonEnergy/Muntz/Cokernel/CenteredGram/JointAction/Runtime/Feedback/ClozelOriginalKFiniteOrderRelease/GammaSource/PositionGap/ScheduledNativePrice.lean:44:6: error: omega could not prove the goal:
+No usable constraints found. You may need to unfold definitions so `omega` can see linear arithmetic facts about `Nat` and `Int`, which may also involve multiplication, division, and modular remainder by constants.
+cumulative profiling times:
+	attribute application 3.55ms
+	blocked (unaccounted) 9.48ms
+	compilation (IR) 2.97ms
+	compilation (LCNF base) 232ms
+	compilation (LCNF impure) 14.7ms
+	compilation (LCNF mono) 94.6ms
+	congr simp thm 0.0802ms
+	elaboration 939ms
+	fix level params 0.647ms
+	import 13.1s
+	initialization 32.2ms
+	instantiate metavars 0.373ms
+	interpretation 2.3s
+	let-to-have transformation 1.32s
+	linting 24.5ms
+	module linting 0.000667ms
+	overlappingInstancesLinter 9.23ms
+	parsing 5.43ms
+	process pre-definitions 879ms
+	share common exprs 6.2ms
+	simp 2.92ms
+	tactic execution 11.2s
+	tacticAnalysis 58.1ms
+	type checking 121ms
+	typeclass inference 337ms

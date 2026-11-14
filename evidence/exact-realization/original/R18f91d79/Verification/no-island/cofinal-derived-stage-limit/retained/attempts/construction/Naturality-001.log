@@ -1,0 +1,35 @@
+import took 2.09s
+runtime/audit-tmp/iqa-cofinal-derived-stage-limit/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/Cochain/DerivedNaturality.lean:54:104: error: Application type mismatch: The argument
+  i
+has type
+  ℤ
+but is expected to have type
+  ?m.440 ⟶ ?m.441
+in the application
+  Category.assoc ?m.453 i
+runtime/audit-tmp/iqa-cofinal-derived-stage-limit/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/Cochain/DerivedNaturality.lean:48:2: error: unsolved goals
+case second
+S T : ShortComplex IntegralCochainComplex
+completed : S.X₁ ⟶ T.X₁
+products : S.X₂ ⟶ T.X₂
+difference : S.X₃ ⟶ T.X₃
+kernelSquare : S.f ≫ products = completed ≫ T.f
+differenceSquare : products ≫ T.g = S.g ≫ difference
+map : CochainComplex.mappingCocone S.g ⟶ CochainComplex.mappingCocone T.g :=
+  mappingCoconeMap S.g T.g products difference differenceSquare
+i : ℤ
+read :
+  (mappingCoconeMap S.g T.g products difference differenceSquare).f i ≫
+      (CochainComplex.mappingCocone.snd T.g).v i (i + -1) ⋯ =
+    (CochainComplex.mappingCocone.snd S.g).v i (i + -1) ⋯ ≫ difference.f (i + -1)
+⊢ (CochainComplex.mappingCocone.lift S.g S.f 0 ⋯).f i ≫
+      (CochainComplex.mappingCocone.snd S.g).v i (i + -1) ⋯ ≫ difference.f (i + -1) =
+    0
+runtime/audit-tmp/iqa-cofinal-derived-stage-limit/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/Cochain/DerivedNaturality.lean:55:33: error: This simp argument is unused:
+  Category.assoc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [liftShortComplex, CochainComplex.mappingCocone.lift_f_snd_v, Cochain.zero_v, zero_comp, comp_zero]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+runtime/audit-tmp/iqa-cofinal-derived-stage-limit/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/Cochain/DerivedNaturality.lean:56:6: error: maximum number of errors (3; from option `maxErrors`) reached, exiting

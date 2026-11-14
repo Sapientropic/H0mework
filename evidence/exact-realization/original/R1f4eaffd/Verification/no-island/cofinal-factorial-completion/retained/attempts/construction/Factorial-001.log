@@ -1,0 +1,31 @@
+import took 12.6s
+runtime/audit-tmp/iqa-cofinal-factorial-completion/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/FiniteModulus/Factorial.lean:76:30: error: Function expected at
+  limit.lift_π ?m.31 factorialPrimeCone
+but this term has type
+  limit.lift ?m.29 ?m.31 ≫ limit.π ?m.29 factorialPrimeCone = (Cone.π ?m.31).app factorialPrimeCone
+
+Note: Expected a function because this term is being applied to the argument
+  (Opposite.op stage)
+cumulative profiling times:
+	attribute application 0.119ms
+	compilation (IR) 0.523ms
+	compilation (LCNF base) 6.1ms
+	compilation (LCNF impure) 0.574ms
+	compilation (LCNF mono) 1.93ms
+	elaboration 67.3ms
+	fix level params 0.35ms
+	import 12.6s
+	initialization 169ms
+	instantiate metavars 0.237ms
+	interpretation 555ms
+	let-to-have transformation 0.0609ms
+	linting 3.31ms
+	module linting 0.000416ms
+	overlappingInstancesLinter 8.46ms
+	parsing 2.95ms
+	process pre-definitions 11.9ms
+	share common exprs 1.18ms
+	tactic execution 66.4ms
+	tacticAnalysis 6.13ms
+	type checking 28.2ms
+	typeclass inference 99.2ms

@@ -1,0 +1,33 @@
+import took 7.22s
+runtime/audit-tmp/iqa-r-cofinal-sparse-record/source-root/main/SaturationMonoid/GenericFoundation/Scalar/Feature/FiniteGram/CofinalInsertion.lean:53:2: error: Try `simp at gone` instead of `simpa using gone`
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+cumulative profiling times:
+	attribute application 0.152ms
+	blocked (unaccounted) 1.76ms
+	compilation (IR) 0.203ms
+	compilation (LCNF base) 3.99ms
+	compilation (LCNF impure) 1.06ms
+	compilation (LCNF mono) 2.02ms
+	congr simp thm 1.49ms
+	dsimp 0.67ms
+	elaboration 48ms
+	fix level params 0.525ms
+	import 7.22s
+	initialization 23.2ms
+	instantiate metavars 0.809ms
+	interpretation 614ms
+	let-to-have transformation 0.657ms
+	linting 8.24ms
+	module linting 0.000875ms
+	norm_num 0.674ms
+	overlappingInstancesLinter 3.35ms
+	parsing 5.46ms
+	process pre-definitions 13ms
+	ring 10.9ms
+	share common exprs 3.76ms
+	simp 107ms
+	tactic execution 165ms
+	tacticAnalysis 11.1ms
+	type checking 80.1ms
+	typeclass inference 229ms

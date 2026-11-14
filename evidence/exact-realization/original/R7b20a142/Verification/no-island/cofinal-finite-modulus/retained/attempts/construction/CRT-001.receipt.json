@@ -1,0 +1,35 @@
+{
+  "stage": "CRT",
+  "attempt": "001",
+  "command": [
+    "lean",
+    "--trust=0",
+    "-DElab.async=false",
+    "-DwarningAsError=true",
+    "-DmaxErrors=3",
+    "-j1",
+    "-M32000",
+    "-DstderrAsMessages=false",
+    "-Dprofiler=true",
+    "-Dprofiler.threshold=100",
+    "--root=runtime/audit-tmp/iqa-cofinal-finite-modulus/source-root/main",
+    "-o",
+    "runtime/audit-tmp/iqa-cofinal-finite-modulus/objects/CRT-001.olean",
+    "runtime/audit-tmp/iqa-cofinal-finite-modulus/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/FiniteModulus.lean"
+  ],
+  "source": "runtime/audit-tmp/iqa-cofinal-finite-modulus/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/FiniteModulus.lean",
+  "source_sha256": "ab4ca5574391e6044ba8b5af52f0e261316d6f55b4f8d4f666e168fd5579b791",
+  "source_snapshot": "runtime/audit-tmp/iqa-cofinal-finite-modulus/receipts/CRT-001.lean",
+  "lean_path_sha256": "034aa77981df02d742ae22385aecab1067fa35a700358d906346c76230993c52",
+  "old_compilations": 0,
+  "pid": 10652,
+  "exit_code": 1,
+  "elapsed_seconds": 3.099924458001624,
+  "source_unchanged": true,
+  "log_sha256": "8c6fcca8ade5c6b03234aa0980d9ea8e284514cb3bd9b9e0cee474cae842a1d2",
+  "log_bytes": 1546,
+  "object": {
+    "path": "runtime/audit-tmp/iqa-cofinal-finite-modulus/objects/CRT-001.olean",
+    "present": false
+  }
+}

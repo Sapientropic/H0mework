@@ -1,0 +1,54 @@
+import took 1.64s
+runtime/audit-tmp/iqa-cofinal-native-bilinear/source-root/main/SaturationMonoid/NoIslandNoMagic/CanonicalArithmeticState/ParticleWave/Fock/Runtime/SourceHistory/CofinalBilinear.lean:36:25: error: Type mismatch
+  SourceNativeLivingProcessCausalEvolutionAt.nextCurrent runtime.tick
+has type
+  SourceNativeLivingRootCurrentAt N
+but is expected to have type
+  SourceNativeAuthoritativeRootCurrentAt N
+runtime/audit-tmp/iqa-cofinal-native-bilinear/source-root/main/SaturationMonoid/NoIslandNoMagic/CanonicalArithmeticState/ParticleWave/Fock/Runtime/SourceHistory/CofinalBilinear.lean:52:4: error: Tactic `rfl` failed: The left-hand side
+  true
+is not definitionally equal to the right-hand side
+  Function.const Lean.Name ()
+    `SaturationMonoid.NoIslandNoMagic.CanonicalArithmeticState.ParticleWave.Fock.Runtime.SourceHistory.CofinalBilinear.36.6.36.49.6.49._sorry._@.SaturationMonoid.NoIslandNoMagic.CanonicalArithmeticState.ParticleWave.Fock.Runtime.SourceHistory.CofinalBilinear.95303029._hygCtx._hyg.96
+
+case refine_3
+runtime : LivingRuntimeState runtimeFacade.process
+p : Nat.Primes
+step : RootArithmeticIncidenceStepAt recognition (temporalVisit runtime.state) := actualStep runtime
+left : Charges := point step.material.left
+right : Charges := point step.material.right
+next : step.material.left.parallel step.material.right = runtime.tick.next.current.visit.current
+sibling :
+  ((SourceNativeBinary.linear UnitHistory.parallel) (point step.material.left)) (point step.material.right) =
+    point runtime.tick.next.current.visit.current
+dependent :
+  ((SourceNativeBinary.linear UnitHistory.joint) (point step.material.left)) (point step.material.right) =
+    point (jointFold step)
+⊢ sorry
+cumulative profiling times:
+	attribute application 0.101ms
+	blocked (unaccounted) 0.434ms
+	compilation (IR) 0.0263ms
+	compilation (LCNF base) 0.473ms
+	compilation (LCNF impure) 0.0884ms
+	compilation (LCNF mono) 0.121ms
+	congr simp thm 0.314ms
+	dsimp 0.5ms
+	elaboration 31.6ms
+	fix level params 0.161ms
+	import 1.64s
+	initialization 17.8ms
+	instantiate metavars 0.367ms
+	interpretation 334ms
+	let-to-have transformation 6.61ms
+	linting 2.87ms
+	module linting 0.000708ms
+	overlappingInstancesLinter 1.72ms
+	parsing 3.23ms
+	process pre-definitions 3.09ms
+	share common exprs 1.41ms
+	simp 5.47ms
+	tactic execution 80.3ms
+	tacticAnalysis 6.28ms
+	type checking 25.5ms
+	typeclass inference 75.3ms

@@ -1,0 +1,73 @@
+import took 16s
+interpretation of Lean.Elab.Command.elabOpenPrivate._boxed took 458ms
+interpretation of Lean.Elab.Command.elabOpenPrivate._boxed took 472ms
+type checking took 122ms
+type checking took 193ms
+elaboration took 8.15s
+let-to-have transformation took 136ms
+type checking took 121ms
+elaboration took 337ms
+runtime/audit-tmp/iqa-cofinal-paid-cochain-homology-independent/Gate.lean:99:4: error: Application type mismatch: The argument
+  CP750Independent.the_lifted_terminal_unit_survives_the_first_binary_layer
+    (actualPaidCompletion observation nontrivial half depth ordinal) unit
+    (actual_paid_completion_source_unit observation nontrivial half depth ordinal) ?m.67
+    (actualPaidCokernelCompletion observation nontrivial half depth ordinal prime)
+    (actualPaidCokernelStage observation nontrivial half depth ordinal prime 0)
+    (actual_paid_cokernel_completion_restriction observation nontrivial half depth ordinal prime 0)
+has type
+  have original := (ModuleCat.Hom.hom (canonicalMap CP750Independent.binary)) unit;
+  (ModuleCat.Hom.hom
+        (torsionCompletionRestriction
+          (PairValue
+              (SourceOperationNative.Tree.Fold.Dependent.Branch.JointQuery.Actor.Operation.Query.Inventory.Observer.CurrentChild.Dynamic.Live.Native.Action.Coupled.Registry.Calculation.Common.Feedback.Continuation.Lower.Value
+                (PairValue OriginalKCombReceiptFeedback.Value)
+                (OriginalKCombFirstFullSourceDynamics.packet observation nontrivial half depth ordinal).fst)
+              () ⧸
+            (SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.NoIslandNoMagic.CanonicalRiemann.ClozelGeneralizedDual.CenteredGram.IntegralGraphJointAction.OriginalKCofinalFullBranchFibre.RootRelation.paidEvaluation✝
+                observation nontrivial half depth ordinal).range)
+          CP750Independent.binary 0))
+      ((?m.67 ≪≫ₗ actualPaidCokernelCompletion observation nontrivial half depth ordinal prime)
+        ((LinearEquiv.symm ?m.67) original)) ≠
+    0
+but is expected to have type
+  ?m.58 ordinal
+in the application
+  ⟨actual_paid_cohomology_cokernel_stage observation nontrivial half depth ordinal prime 0 charge,
+    CP750Independent.the_lifted_terminal_unit_survives_the_first_binary_layer
+      (actualPaidCompletion observation nontrivial half depth ordinal) unit
+      (actual_paid_completion_source_unit observation nontrivial half depth ordinal) ?m.67
+      (actualPaidCokernelCompletion observation nontrivial half depth ordinal prime)
+      (actualPaidCokernelStage observation nontrivial half depth ordinal prime 0)
+      (actual_paid_cokernel_completion_restriction observation nontrivial half depth ordinal prime 0)⟩
+CP750_CONTROL + the_original_projection_splits_and_reads_every_observed_H1_class
+CP750_CONTROL + every_original_R_H1_charge_reaches_its_stage_and_literal_model_next
+CP750_CONTROL + independent_original_R_Division_K_whole_and_model_action
+CP750_CONTROL + the_fixed_target_paid_H1_restricts_and_advances_with_its_original_terminal
+CP750_CONTROL - deleting_the_original_R_terminal_H1_charge_changes_its_binary_read
+CP750_GATE_PASS positive=4 negative=1
+cumulative profiling times:
+	attribute application 0.691ms
+	compilation (IR) 1.65ms
+	compilation (LCNF base) 13.4ms
+	compilation (LCNF impure) 2.09ms
+	compilation (LCNF mono) 5.01ms
+	congr simp thm 0.243ms
+	elaboration 8.6s
+	fix level params 2.82ms
+	import 16s
+	initialization 19.7ms
+	instantiate metavars 3.39ms
+	interpretation 1.59s
+	let-to-have transformation 138ms
+	linting 12.5ms
+	module linting 0.000625ms
+	norm_num 8.11ms
+	overlappingInstancesLinter 7.35ms
+	parsing 4.52ms
+	process pre-definitions 28.7ms
+	share common exprs 15.7ms
+	simp 4.94ms
+	tactic execution 41.4ms
+	tacticAnalysis 14.3ms
+	type checking 462ms
+	typeclass inference 257ms

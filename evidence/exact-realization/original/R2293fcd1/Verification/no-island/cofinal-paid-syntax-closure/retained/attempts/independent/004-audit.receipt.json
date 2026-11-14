@@ -1,0 +1,29 @@
+{
+  "label": "004-audit",
+  "scope": "audit",
+  "pid": 3266,
+  "exit_code": 1,
+  "elapsed_seconds": 20.87934437500371,
+  "command": [
+    "lean",
+    "--trust=0",
+    "-DElab.async=false",
+    "-DwarningAsError=true",
+    "-DmaxErrors=1",
+    "-j1",
+    "-M32000",
+    "-DstderrAsMessages=false",
+    "--run",
+    "runtime/audit-tmp/iqa-cofinal-paid-closure-independent/Audit.lean",
+    "runtime/audit-tmp/iqa-cofinal-paid-closure-independent/audit-config.json"
+  ],
+  "source_sha256": "bad7cea99c97806f55a6fa7fa3d0b5d874182026c75103107c49167d313939fe",
+  "source_unchanged": true,
+  "selected_lean_path_sha256": "24e869b233fc4eeb6fcc33b993237e7ca3ed57be2a563c6d29009d44e70fccc9",
+  "effective_lean_path_file": "runtime/audit-tmp/iqa-cofinal-paid-closure/lean-path.txt",
+  "effective_lean_path_sha256": "24e869b233fc4eeb6fcc33b993237e7ca3ed57be2a563c6d29009d44e70fccc9",
+  "log_sha256": "46a49dcc8a6515a262935d794fab830786dbb82eab26a0013c0110a0c4508491",
+  "log_bytes": 274,
+  "old_source_recompiles": 0,
+  "old_ci_replays": 0
+}

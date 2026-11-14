@@ -1,0 +1,39 @@
+import took 1.89s
+runtime/audit-tmp/iqa-sparse-moment-source/source-root/main/SaturationMonoid/GenericFoundation/Scalar/Feature/FiniteGram/SparseMoment.lean:21:3: error: unexpected token 'prefix'; expected identifier
+runtime/audit-tmp/iqa-sparse-moment-source/source-root/main/SaturationMonoid/GenericFoundation/Scalar/Feature/FiniteGram/SparseMoment.lean:32:12: error: unexpected token 'prefix'; expected ')', '↑', '↥', '⇑' or term
+runtime/audit-tmp/iqa-sparse-moment-source/source-root/main/SaturationMonoid/GenericFoundation/Scalar/Feature/FiniteGram/SparseMoment.lean:32:18: error: unexpected identifier; expected ':'
+runtime/audit-tmp/iqa-sparse-moment-source/source-root/main/SaturationMonoid/GenericFoundation/Scalar/Feature/FiniteGram/SparseMoment.lean:33:41: error: unexpected token ']'; expected ':'
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+runtime/audit-tmp/iqa-sparse-moment-source/source-root/main/SaturationMonoid/GenericFoundation/Scalar/Feature/FiniteGram/SparseMoment.lean:71:40: error: unsolved goals
+I : Type u
+K : Type v
+inst✝ : Field K
+clock : I → K
+source : I →₀ K
+width : ℕ
+i k : Fin width
+j : Fin source.support.card
+x✝ : j ∈ Finset.univ
+⊢ source ↑(slots source.support j) * clock ↑(slots source.support j) ^ ↑i * clock ↑(slots source.support j) ^ ↑k =
+    clock ↑(slots source.support j) ^ ↑k *
+      ∑ x, clock ↑(slots source.support x) ^ ↑i * diagonal (fun j => source ↑(slots source.support j)) x j
+runtime/audit-tmp/iqa-sparse-moment-source/source-root/main/SaturationMonoid/GenericFoundation/Scalar/Feature/FiniteGram/SparseMoment.lean:69:56: error: This simp argument is unused:
+  Matrix.mul_diagonal
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [hankel, Matrix.of_apply, Matrix.mul_apply, Matrix.transpose_apply, powers]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+runtime/audit-tmp/iqa-sparse-moment-source/source-root/main/SaturationMonoid/GenericFoundation/Scalar/Feature/FiniteGram/SparseMoment.lean:96:20: error: unexpected token 'prefix'; expected ')', '↑', '↥', '⇑' or term
+runtime/audit-tmp/iqa-sparse-moment-source/source-root/main/SaturationMonoid/GenericFoundation/Scalar/Feature/FiniteGram/SparseMoment.lean:96:26: error: unexpected identifier; expected ':'
+runtime/audit-tmp/iqa-sparse-moment-source/source-root/main/SaturationMonoid/GenericFoundation/Scalar/Feature/FiniteGram/SparseMoment.lean:105:11: error: unexpected token 'prefix'; expected ')', '↑', '↥', '⇑' or term
+runtime/audit-tmp/iqa-sparse-moment-source/source-root/main/SaturationMonoid/GenericFoundation/Scalar/Feature/FiniteGram/SparseMoment.lean:105:17: error: unexpected identifier; expected ':'
+runtime/audit-tmp/iqa-sparse-moment-source/source-root/main/SaturationMonoid/GenericFoundation/Scalar/Feature/FiniteGram/SparseMoment.lean:108:40: error: unexpected identifier; expected ':'
+runtime/audit-tmp/iqa-sparse-moment-source/source-root/main/SaturationMonoid/GenericFoundation/Scalar/Feature/FiniteGram/SparseMoment.lean:135:26: error: unexpected token 'prefix'; expected ')', '↑', '↥', '⇑' or term
+runtime/audit-tmp/iqa-sparse-moment-source/source-root/main/SaturationMonoid/GenericFoundation/Scalar/Feature/FiniteGram/SparseMoment.lean:135:32: error: unexpected identifier; expected ':'
+runtime/audit-tmp/iqa-sparse-moment-source/source-root/main/SaturationMonoid/GenericFoundation/Scalar/Feature/FiniteGram/SparseMoment.lean:145:68: error: maximum number of errors (13; from option `maxErrors`) reached, exiting

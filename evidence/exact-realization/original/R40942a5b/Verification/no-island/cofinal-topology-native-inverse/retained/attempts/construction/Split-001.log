@@ -1,0 +1,53 @@
+import took 2.18s
+runtime/audit-tmp/iqa-cofinal-topology-native-inverse/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/SplitAction.lean:47:21: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  IsScalarTower ℤ ℤ ↑(limit.cone (tower p)).1
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+runtime/audit-tmp/iqa-cofinal-topology-native-inverse/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/SplitAction.lean:54:4: error: 'change' tactic failed, pattern
+  (ModuleCat.Hom.hom (restriction p j)) (scalar.down • left) =
+    (ModuleCat.Hom.hom (restriction p j)) (scalar.down • right)
+is not definitionally equal to target
+  (ModuleCat.Hom.hom (atPoint left ≫ (limit.cone (tower p)).π.app (Opposite.op j))) scalar =
+    (ModuleCat.Hom.hom (atPoint right ≫ (limit.cone (tower p)).π.app (Opposite.op j))) scalar
+runtime/audit-tmp/iqa-cofinal-topology-native-inverse/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/SplitAction.lean:58:2: error: 'change' tactic failed, pattern
+  1 • left = 1 • right
+is not definitionally equal to target
+  (ConcreteCategory.hom (atPoint left)) { down := 1 } = (ConcreteCategory.hom (atPoint right)) { down := 1 }
+runtime/audit-tmp/iqa-cofinal-topology-native-inverse/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/SplitAction.lean:96:4: error: Type mismatch
+  stage p j ((ModuleCat.Hom.hom (restriction p j)) (value p))
+has type
+  (stageMap p j action) ((stageMap p j backward) ((ModuleCat.Hom.hom (restriction p j)) (value p))) +
+      (stageMap p j inclusion) ((stageMap p j coefficient) ((ModuleCat.Hom.hom (restriction p j)) (value p))) =
+    (ModuleCat.Hom.hom (restriction p j)) (value p)
+but is expected to have type
+  (ModuleCat.Hom.hom (restriction p j)) ((allPrimeSuccessor action) ((allPrimeSuccessor backward) value) p) +
+      (ModuleCat.Hom.hom (restriction p j)) ((allPrimeSuccessor inclusion) ((allPrimeSuccessor coefficient) value) p) =
+    (ModuleCat.Hom.hom (restriction p j)) (value p)
+runtime/audit-tmp/iqa-cofinal-topology-native-inverse/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/SplitAction.lean:95:24: error: This simp argument is unused:
+  allPrime_successor_restriction
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [map_add]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+cumulative profiling times:
+	attribute application 0.0334ms
+	congr simp thm 0.769ms
+	elaboration 28.9ms
+	fix level params 1.31ms
+	import 2.18s
+	initialization 19.4ms
+	instantiate metavars 0.869ms
+	interpretation 383ms
+	let-to-have transformation 0.0992ms
+	linting 3.76ms
+	module linting 0.000583ms
+	overlappingInstancesLinter 3.9ms
+	parsing 3.12ms
+	process pre-definitions 2.43ms
+	share common exprs 2.37ms
+	simp 20.1ms
+	tactic execution 120ms
+	tacticAnalysis 4.03ms
+	type checking 32.7ms
+	typeclass inference 176ms

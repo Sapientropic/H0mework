@@ -1,0 +1,44 @@
+import took 9.89s
+elaboration took 267ms
+runtime/audit-tmp/iqa-r-cofinal-sparse-record/source-root/main/SaturationMonoid/GenericFoundation/Scalar/Feature/FiniteGram/CofinalRecord.lean:97:4: error: Application type mismatch: The argument
+  pivotTime source separates ↑(schedule source separates count)
+has type
+  ℕ
+but is expected to have type
+  ?m.24 (Fin.last count)
+in the application
+  Fin.snoc ?m.28 (pivotTime source separates ↑(schedule source separates count))
+runtime/audit-tmp/iqa-r-cofinal-sparse-record/source-root/main/SaturationMonoid/GenericFoundation/Scalar/Feature/FiniteGram/CofinalRecord.lean:104:4: error: Application type mismatch: The argument
+  pivotTime source separates ↑(schedule source separates count)
+has type
+  ℕ
+but is expected to have type
+  ?m.24 (Fin.last count)
+in the application
+  Fin.snoc ?m.28 (pivotTime source separates ↑(schedule source separates count))
+cumulative profiling times:
+	attribute application 0.22ms
+	compilation (IR) 0.0517ms
+	compilation (LCNF base) 0.929ms
+	compilation (LCNF impure) 0.245ms
+	compilation (LCNF mono) 0.385ms
+	congr simp thm 0.905ms
+	dsimp 1.4ms
+	elaboration 317ms
+	fix level params 0.608ms
+	import 9.89s
+	initialization 22.6ms
+	instantiate metavars 1.84ms
+	interpretation 413ms
+	let-to-have transformation 4.53ms
+	linting 6.74ms
+	module linting 0.000792ms
+	overlappingInstancesLinter 3.69ms
+	parsing 5.42ms
+	process pre-definitions 15.2ms
+	share common exprs 3.5ms
+	simp 89.6ms
+	tactic execution 131ms
+	tacticAnalysis 14.4ms
+	type checking 102ms
+	typeclass inference 145ms

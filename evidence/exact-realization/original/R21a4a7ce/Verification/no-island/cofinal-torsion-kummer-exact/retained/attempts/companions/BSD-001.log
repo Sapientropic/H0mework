@@ -1,0 +1,53 @@
+import took 17.2s
+interpretation of Lean.Elab.Command.elabOpenPrivate._boxed took 616ms
+tactic execution of Lean.Parser.Tactic.change took 106ms
+typeclass inference of IsNoetherian took 139ms
+typeclass inference of IsNoetherian took 108ms
+runtime/audit-tmp/iqa-cofinal-torsion-kernel/source-root/main/SaturationMonoid/UniversalBSDTate/Clay/Analytic/RationalKummerCokernel/CompletionExact.lean:17:33: error(lean.unknownIdentifier): Unknown identifier `RationalPoints`
+
+Note: It is not possible to treat `RationalPoints` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.
+runtime/audit-tmp/iqa-cofinal-torsion-kernel/source-root/main/SaturationMonoid/UniversalBSDTate/Clay/Analytic/RationalKummerCokernel/CompletionExact.lean:20:46: error(lean.unknownIdentifier): Unknown identifier `RationalPoints`
+runtime/audit-tmp/iqa-cofinal-torsion-kernel/source-root/main/SaturationMonoid/UniversalBSDTate/Clay/Analytic/RationalKummerCokernel/CompletionExact.lean:22:39: error(lean.unknownIdentifier): Unknown identifier `RationalPoints`
+runtime/audit-tmp/iqa-cofinal-torsion-kernel/source-root/main/SaturationMonoid/UniversalBSDTate/Clay/Analytic/RationalKummerCokernel/CompletionExact.lean:30:2: error: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+runtime/audit-tmp/iqa-cofinal-torsion-kernel/source-root/main/SaturationMonoid/UniversalBSDTate/Clay/Analytic/RationalKummerCokernel/CompletionExact.lean:31:8: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  IsNoetherian ℤ ↥(Submodule.torsion ℤ (UniversalBSDRationalKummerCohomology.RationalPoints source))
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+runtime/audit-tmp/iqa-cofinal-torsion-kernel/source-root/main/SaturationMonoid/UniversalBSDTate/Clay/Analytic/RationalKummerCokernel/CompletionExact.lean:40:2: error: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+runtime/audit-tmp/iqa-cofinal-torsion-kernel/source-root/main/SaturationMonoid/UniversalBSDTate/Clay/Analytic/RationalKummerCokernel/CompletionExact.lean:47:8: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  IsNoetherian ℤ ↥(Submodule.torsion ℤ (UniversalBSDRationalKummerCohomology.RationalPoints source))
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+cumulative profiling times:
+	attribute application 0.0596ms
+	elaboration 43.4ms
+	fix level params 0.147ms
+	import 17.2s
+	initialization 166ms
+	instantiate metavars 0.408ms
+	interpretation 1.4s
+	let-to-have transformation 0.257ms
+	linting 3.51ms
+	module linting 0.000584ms
+	overlappingInstancesLinter 11.5ms
+	parsing 2.66ms
+	process pre-definitions 6.59ms
+	share common exprs 1.9ms
+	tactic execution 147ms
+	tacticAnalysis 6.62ms
+	type checking 6.68ms
+	typeclass inference 646ms

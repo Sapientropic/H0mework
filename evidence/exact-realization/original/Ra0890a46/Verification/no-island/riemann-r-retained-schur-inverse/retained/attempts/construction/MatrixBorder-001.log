@@ -1,0 +1,80 @@
+import took 3.54s
+runtime/audit-tmp/iqa-r-retained-schur-inverse/source-root/main/SaturationMonoid/GenericFoundation/Scalar/Feature/FiniteGram/MatrixBorder.lean:31:8: error: automatically included section variable(s) unused in theorem `SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceGeneratedFiniteGram.MatrixBorder.border_old_old`:
+  [CommRing R]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [CommRing R] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+runtime/audit-tmp/iqa-r-retained-schur-inverse/source-root/main/SaturationMonoid/GenericFoundation/Scalar/Feature/FiniteGram/MatrixBorder.lean:36:8: error: automatically included section variable(s) unused in theorem `SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceGeneratedFiniteGram.MatrixBorder.border_old_new`:
+  [CommRing R]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [CommRing R] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+runtime/audit-tmp/iqa-r-retained-schur-inverse/source-root/main/SaturationMonoid/GenericFoundation/Scalar/Feature/FiniteGram/MatrixBorder.lean:41:8: error: automatically included section variable(s) unused in theorem `SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceGeneratedFiniteGram.MatrixBorder.border_new_old`:
+  [CommRing R]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [CommRing R] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+runtime/audit-tmp/iqa-r-retained-schur-inverse/source-root/main/SaturationMonoid/GenericFoundation/Scalar/Feature/FiniteGram/MatrixBorder.lean:46:8: error: automatically included section variable(s) unused in theorem `SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceGeneratedFiniteGram.MatrixBorder.border_new_new`:
+  [CommRing R]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [CommRing R] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+runtime/audit-tmp/iqa-r-retained-schur-inverse/source-root/main/SaturationMonoid/GenericFoundation/Scalar/Feature/FiniteGram/MatrixBorder.lean:74:25: error: Type mismatch
+  invertibleOfIsUnitDet ?m.100
+has type
+  IsUnit (det ?m.100) → Invertible ?m.100
+but is expected to have type
+  Invertible S
+runtime/audit-tmp/iqa-r-retained-schur-inverse/source-root/main/SaturationMonoid/GenericFoundation/Scalar/Feature/FiniteGram/MatrixBorder.lean:74:54: error: Application type mismatch: The argument
+  unitDet
+has type
+  IsUnit S.det
+of sort `Prop` but is expected to have type
+  Matrix ?m.95 ?m.95 ?m.96
+of sort `Type (max ?u.63 ?u.62)` in the application
+  invertibleOfIsUnitDet unitDet
+runtime/audit-tmp/iqa-r-retained-schur-inverse/source-root/main/SaturationMonoid/GenericFoundation/Scalar/Feature/FiniteGram/MatrixBorder.lean:66:0: error: Definition `SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.SourceGeneratedFiniteGram.MatrixBorder.borderInverse` of class type is semireducible. Most type class instances should be instance-reducible, so consider marking this
+definition with `@[instance_reducible]`. If it is intentionally semireducible, this warning can be disabled with `set_option warn.classDefReducibility false`.
+runtime/audit-tmp/iqa-r-retained-schur-inverse/source-root/main/SaturationMonoid/GenericFoundation/Scalar/Feature/FiniteGram/MatrixBorder.lean:88:85: error: This simp argument is unused:
+  PiLp.toLp_apply
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [WithLp.ofLp_sum, Finset.sum_apply, WithLp.ofLp_smul, Pi.smul_apply, columns, smul_eq_mul,
+    Matrix.mulVec_apply_eq_sum]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+runtime/audit-tmp/iqa-r-retained-schur-inverse/source-root/main/SaturationMonoid/GenericFoundation/Scalar/Feature/FiniteGram/MatrixBorder.lean:105:47: error: Invalid `⟨...⟩` notation: The expected type
+  (Submodule.toAddSubmonoid ?m.172).toAddSubsemigroup.1 ?m.174
+is not an inductive type
+
+Note: This notation can only be used when the expected type is an inductive type with a single constructor
+cumulative profiling times:
+	attribute application 1.01ms
+	blocked (unaccounted) 3.96ms
+	compilation (IR) 0.983ms
+	compilation (LCNF base) 9.64ms
+	compilation (LCNF impure) 4.7ms
+	compilation (LCNF mono) 8.02ms
+	congr simp thm 0.999ms
+	elaboration 44.6ms
+	fix level params 0.434ms
+	import 3.54s
+	initialization 26ms
+	instantiate metavars 0.726ms
+	interpretation 534ms
+	let-to-have transformation 0.495ms
+	linting 7.09ms
+	module linting 0.000917ms
+	overlappingInstancesLinter 10.3ms
+	parsing 7.92ms
+	process pre-definitions 15.4ms
+	share common exprs 2.22ms
+	simp 27.4ms
+	tactic execution 140ms
+	tacticAnalysis 9.1ms
+	type checking 30.8ms
+	typeclass inference 203ms

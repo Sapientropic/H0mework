@@ -207,21 +207,22 @@ def prepend_build_imports(text: str, modules, *, reverse: bool = False) -> str:
 
 
 def private_open_module_tokens(text: str) -> list[tuple[int, int, str]]:
-    """Locate only the module token in actual `open private ... from` commands."""
+    """Locate module selectors in actual `open private ... from` commands."""
     masked = mask_comments_and_strings(text)
     name = re.compile(r"[A-Za-z_][A-Za-z0-9_']*(?:\.[A-Za-z_][A-Za-z0-9_']*)*")
+    whitespace = re.compile(r"\s+")
     tokens = []
     for command in re.finditer(r"(?m)^[ \t]*open\s+private\b", masked):
         cursor, members = command.end(), 0
         declaration_selector = False
         command_indent = len(command.group()) - len(command.group().lstrip(" \t"))
         while True:
-            space = re.match(r"\s+", masked[cursor:])
+            space = whitespace.match(masked, cursor)
             if space is None:
                 if declaration_selector:
                     break
                 raise ViewError("Unsupported private-open module syntax")
-            cursor += space.end()
+            cursor = space.end()
             token = name.match(masked, cursor)
             if token is None:
                 if declaration_selector:
@@ -239,14 +240,23 @@ def private_open_module_tokens(text: str) -> list[tuple[int, int, str]]:
             if token.group() == "from":
                 if not members:
                     raise ViewError("Private-open command has no named members")
-                space = re.match(r"\s+", masked[cursor:])
-                if space is None:
+                first = True
+                while space := whitespace.match(masked, cursor):
+                    begin = space.end()
+                    # Later owners continue on this line or inside the indented command.
+                    if (not first and "\n" in space.group()
+                            and begin - masked.rfind("\n", 0, begin) - 1 <= command_indent):
+                        break
+                    module = name.match(masked, begin)
+                    if module is None:
+                        break
+                    cursor = module.end()
+                    if cursor < len(masked) and (masked[cursor].isalnum() or masked[cursor] in "_'.!?"):
+                        raise ViewError("Private-open command has an unsupported module name")
+                    tokens.append((begin, cursor, module.group()))
+                    first = False
+                if first:
                     raise ViewError("Private-open command has no source module")
-                module = name.match(masked, cursor + space.end())
-                if module is None or (module.end() < len(masked)
-                        and (masked[module.end()].isalnum() or masked[module.end()] in "_'.!?")):
-                    raise ViewError("Private-open command has an unsupported module name")
-                tokens.append((module.start(), module.end(), module.group()))
                 break
             members += 1
     return tokens
@@ -1196,7 +1206,15 @@ def module_views(row: dict, inverse: dict) -> tuple[bytes, bytes]:
         source_row = inverse.get(module)
         if source_row is None:
             raise ViewError(f"Unmapped exported import: {module}")
-        reverse[module] = source_row["source"] if not source_row["source"].startswith("file:") \
+        original_module = source_row.get("source")
+        if original_module is None:
+            original_path = source_path(source_row["source_path"])
+            if not original_path.startswith("Lean/") or not original_path.endswith(".lean"):
+                raise ViewError(f"Nonstandard original module needs an explicit source name: {original_path}")
+            original_module = original_path[5:-5].replace("/", ".")
+            if not MODULE.fullmatch(original_module):
+                raise ViewError(f"Invalid derived original module name: {original_path}")
+        reverse[module] = original_module if not original_module.startswith("file:") \
             else _file_token(source_row, row)
     view = invert_resources(transform(text, tokens, reverse).decode("utf-8"),
                             row.get("resource_rewrites")).encode("utf-8")

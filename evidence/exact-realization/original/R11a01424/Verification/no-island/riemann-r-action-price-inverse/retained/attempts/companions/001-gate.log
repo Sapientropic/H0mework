@@ -1,0 +1,18 @@
+CP620_CONTROL + true_adjoint_reads_the_same_prices_and_exposes_the_full_action_kernel
+CP620_CONTROL + admissible_predecessor_data_use_the_original_R_action_and_literal_successor_prices
+CP620_CONTROL + the_same_inverse_recovers_the_old_graph_and_executes_the_original_coefficient_inverse
+CP620_CONTROL + literal_successor_prices_restore_both_original_graphs_relations_and_whole
+runtime/audit-tmp/iqa-r-action-price-inverse-independent/Gate.lean:136:76: error: Application type mismatch: The argument
+  zeroAction
+has type
+  @ContinuousLinearMap ℂ ℂ Complex.instSemiring Complex.instSemiring (RingHom.id ℂ) Wide instTopologicalSpaceSubtype
+    unitGap.addCommMonoid Wide instTopologicalSpaceSubtype unitGap.addCommMonoid unitGap.module unitGap.module
+but is expected to have type
+  @ContinuousLinearMap ℂ ℂ Complex.instSemiring Complex.instSemiring (RingHom.id ℂ) ?m.106
+    PseudoMetricSpace.toUniformSpace.toTopologicalSpace NormedAddCommGroup.toAddCommGroup.toAddCommMonoid Wide
+    PseudoMetricSpace.toUniformSpace.toTopologicalSpace unitGap.normedAddCommGroup.toAddCommMonoid
+    InnerProductSpace.toNormedSpace.toModule wideInner.toModule
+in the application
+  PrefixImage.ActionImage.pull zeroAction
+CP620_CONTROL - the_zero_action_cannot_generate_the_actual_nonzero_current_prices
+CP620_GATE_PASS positive=4 negative=1

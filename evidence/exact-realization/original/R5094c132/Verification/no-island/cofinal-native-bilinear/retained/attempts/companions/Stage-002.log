@@ -1,0 +1,50 @@
+import took 2.92s
+runtime/audit-tmp/iqa-cofinal-native-bilinear/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/Bilinear.lean:51:33: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  (transition p j ∘ₗ stageProjection p (j + 1)) left
+in the target expression
+  (transition p j) ((stageProjection p (j + 1)) ((act left) right)) =
+    ((stageBilinear act p j) ((transition p j) ((stageProjection p (j + 1)) left)))
+      ((transition p j) ((stageProjection p (j + 1)) right))
+
+L M N : Type u
+inst✝² : AddCommGroup L
+inst✝¹ : AddCommGroup M
+inst✝ : AddCommGroup N
+act : L →ₗ[ℤ] M →ₗ[ℤ] N
+p : Nat.Primes
+j : ℕ
+left : L
+right : M
+leftRead : (transition p j ∘ₗ stageProjection p (j + 1)) left = (stageProjection p j) left
+rightRead : (transition p j ∘ₗ stageProjection p (j + 1)) right = (stageProjection p j) right
+⊢ (transition p j) ((stageProjection p (j + 1)) ((act left) right)) =
+    ((stageBilinear act p j) ((transition p j) ((stageProjection p (j + 1)) left)))
+      ((transition p j) ((stageProjection p (j + 1)) right))
+runtime/audit-tmp/iqa-cofinal-native-bilinear/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/Bilinear.lean:70:6: error: Unused tactic linter: `change
+  (p.1 : ℤ) ^ (j + k + 1 + 1) • act oldLeft oldRight = leftDepth • (rightDepth • act oldLeft oldRight)` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+cumulative profiling times:
+	attribute application 1.76ms
+	compilation (IR) 0.0472ms
+	compilation (LCNF base) 1.16ms
+	compilation (LCNF impure) 0.159ms
+	compilation (LCNF mono) 0.351ms
+	dsimp 0.402ms
+	elaboration 33.5ms
+	fix level params 0.631ms
+	import 2.92s
+	initialization 25.4ms
+	instantiate metavars 0.594ms
+	interpretation 446ms
+	let-to-have transformation 0.0617ms
+	linting 3.59ms
+	module linting 0.000541ms
+	overlappingInstancesLinter 3.83ms
+	parsing 2.62ms
+	process pre-definitions 6.3ms
+	share common exprs 1.53ms
+	tactic execution 76.1ms
+	tacticAnalysis 3.44ms
+	type checking 60.7ms
+	typeclass inference 177ms

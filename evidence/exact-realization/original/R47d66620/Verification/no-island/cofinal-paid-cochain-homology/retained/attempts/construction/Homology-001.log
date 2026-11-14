@@ -1,0 +1,30 @@
+import took 2.67s
+runtime/audit-tmp/iqa-cofinal-paid-cochain-homology/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/Operations/Closure/Continuation/Cochain/Cohomology.lean:32:58: error: Type mismatch
+  CochainComplex.of_d ?m.146 ?m.147 1
+has type
+  CochainComplex.of.d ?m.146 ?m.147 1 (1 + 1) = ?m.147 1
+but is expected to have type
+  (natComplex sourceHistory).d 1 2 = 0
+cumulative profiling times:
+	attribute application 0.403ms
+	compilation (IR) 0.439ms
+	compilation (LCNF base) 13.1ms
+	compilation (LCNF impure) 2.96ms
+	compilation (LCNF mono) 4.68ms
+	elaboration 106ms
+	fix level params 0.313ms
+	import 2.67s
+	initialization 18ms
+	instantiate metavars 0.16ms
+	interpretation 428ms
+	let-to-have transformation 0.12ms
+	linting 4.13ms
+	module linting 0.000584ms
+	overlappingInstancesLinter 4.64ms
+	parsing 2.27ms
+	process pre-definitions 21.2ms
+	share common exprs 1.32ms
+	tactic execution 18.4ms
+	tacticAnalysis 10.1ms
+	type checking 17.5ms
+	typeclass inference 81.6ms

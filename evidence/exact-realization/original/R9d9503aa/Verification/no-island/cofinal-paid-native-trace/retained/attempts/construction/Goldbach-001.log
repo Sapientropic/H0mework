@@ -1,0 +1,250 @@
+import took 2.46s
+runtime/audit-tmp/iqa-cofinal-paid-trace/source-root/main/SaturationMonoid/NoIslandNoMagic/CanonicalArithmeticState/ParticleWave/Fock/Runtime/Goldbach/Occurrence/Actuality/Dynamics/History/Inventory/SourceSelected/Calculation/Cursor/Native/TopologyTrace.lean:38:8: error: synthesized type class instance is not definitionally equal to expression inferred by typing rules, synthesized
+  AddCommGroup.toIntModule
+    (SourceOperationCompletion.Value (Registered.Value depth) p () ×
+      SourceOperationCompletion.Value (Registered.Value depth) p ())
+inferred
+  Prod.instModule
+runtime/audit-tmp/iqa-cofinal-paid-trace/source-root/main/SaturationMonoid/NoIslandNoMagic/CanonicalArithmeticState/ParticleWave/Fock/Runtime/Goldbach/Occurrence/Actuality/Dynamics/History/Inventory/SourceSelected/Calculation/Cursor/Native/TopologyTrace.lean:41:30: error: Application type mismatch: The argument
+  (RootGeneratedDebtActivationJointSource.OwnerFree.runtimeCurrent (Registered.old depth) (Registered.origin depth)
+      (Registered.reader depth) runtime).fst
+has type
+  Expr (Registered.Value depth) Var ()
+but is expected to have type
+  StateAt ?m.196
+in the application
+  remaining
+    (RootGeneratedDebtActivationJointSource.OwnerFree.runtimeCurrent (Registered.old depth) (Registered.origin depth)
+        (Registered.reader depth) runtime).fst
+runtime/audit-tmp/iqa-cofinal-paid-trace/source-root/main/SaturationMonoid/NoIslandNoMagic/CanonicalArithmeticState/ParticleWave/Fock/Runtime/Goldbach/Occurrence/Actuality/Dynamics/History/Inventory/SourceSelected/Calculation/Cursor/Native/TopologyTrace.lean:39:74: error: unsolved goals
+depth count : ℕ
+within : count < sourceFuel (Registered.source depth (emitted depth))
+p : Nat.Primes
+runtime : RootGeneratedDebtActivationJointSource.OwnerFree.Runtime (Registered.old depth) (Registered.origin depth)
+  (Registered.reader depth) :=
+  mathRuntime depth (count + 1)
+⊢ let runtime := mathRuntime depth (count + 1);
+  let prior :=
+    (RootGeneratedDebtActivationJointSource.OwnerFree.runtimeCurrent (Registered.old depth) (Registered.origin depth)
+        (Registered.reader depth) runtime).snd;
+  let next :=
+    (RootGeneratedDebtActivationJointSource.OwnerFree.runtimeCurrent (Registered.old depth) (Registered.origin depth)
+        (Registered.reader depth) (LivingRuntimeState.tick runtime).next).snd;
+  let old := (calculation depth).environment;
+  let increment := Registered.actualIncrement depth;
+  let map := SourceOperationCompletion.inventoryMorphism p old increment;
+  ∃ word,
+    words next = words prior ++ [word] ∧
+      words (SourceOperationCompletion.trace p next) =
+          words (SourceOperationCompletion.trace p prior) ++ [(SourceOperationCompletion.wordMap p ()) word] ∧
+        (updateInventory (SourceOperationCompletion.environment p old)
+                (SourceOperationCompletion.environment p increment))
+              ((SourceOperationCompletion.wordMap p ()) word) =
+            sorry ∧
+          (let runtime := mathRuntime depth (count + 1);
+            have paying := Consumer.continuation depth count within;
+            (Action.actualAction depth (count + 1))
+                  ((canonical depth (count + 1)) (SourceOperationNative.point runtime)) =
+                (canonical depth (count + 1 + 1)) (SourceOperationNative.point (LivingRuntimeState.tick runtime).next) ∧
+              (Action.coimageBackward depth (count + 1))
+                    ((Action.actualAction depth (count + 1))
+                      ((canonical depth (count + 1)) (SourceOperationNative.point runtime))) =
+                  (canonical depth (count + 1)) (SourceOperationNative.point runtime) ∧
+                (recover depth (count + 1))
+                      ((Action.coimageBackward depth (count + 1))
+                        ((canonical depth (count + 1 + 1))
+                          (SourceOperationNative.point (LivingRuntimeState.tick runtime).next))) =
+                    SourceOperationNative.point runtime ∧
+                  paying.target.state = (LivingRuntimeState.tick runtime).next.state ∧
+                    (Consumer.continuation depth count within).target.entry =
+                        ((RootGeneratedDebtActivationJointSource.OwnerFree.whole (Registered.old depth)
+                                (Registered.origin depth) (Registered.reader depth)
+                                (RootGeneratedDebtActivationJointSource.OwnerFree.finiteVisit (Registered.old depth)
+                                    (Registered.origin depth) (Registered.reader depth)
+                                    (count + 1)).current).destination
+                            (RootGeneratedDebtActivationJointSource.OwnerFree.Payment.entry (Registered.old depth)
+                              (Registered.origin depth) (Registered.reader depth) (count + 1))).fst ∧
+                      paying.target.budget <
+                          (RootGeneratedDebtActivationJointSource.OwnerFree.Payment.debtCurrent (Registered.old depth)
+                              (Registered.origin depth) (Registered.reader depth) (count + 1)).budget ∧
+                        (have stage := SourceGeneratedRuntimeMaterialStageAt.generate runtime;
+                          (SourceOperationNative.sourceAction
+                                  (RootGeneratedDebtActivationJointSource.OwnerFree.process (Registered.old depth)
+                                    (Registered.origin depth) (Registered.reader depth)))
+                                (SourceOperationNative.point runtime) =
+                              SourceOperationNative.point (LivingRuntimeState.tick runtime).next ∧
+                            (RootGeneratedDebtActivationJointSource.OwnerFree.process (Registered.old depth)
+                                      (Registered.origin depth) (Registered.reader depth)).stateAt
+                                  runtime.state =
+                                LivingRuntimeState.current runtime ∧
+                              (RootGeneratedDebtActivationJointSource.OwnerFree.process (Registered.old depth)
+                                          (Registered.origin depth)
+                                          (Registered.reader depth)).toAnswerNextCausalWorld.emitted
+                                    { down := runtime.state } =
+                                  { down := SourceNativeLivingProcessCausalEvolutionAt.generated stage.activated } ∧
+                                (SourceNativeLivingProcessCausalEvolutionAt.generated stage.activated).occurrence =
+                                    (LivingRuntimeState.current runtime).root.toAuthoritativeRoot.toLedgerRoot.emitted
+                                      (LivingRuntimeState.current runtime).visit.current ∧
+                                  stage.wholeLedgerWriteBack ≍
+                                      (LivingRuntimeState.current
+                                                  runtime).root.toAuthoritativeRoot.toLedgerRoot.generatedLedgerAt
+                                        (LivingRuntimeState.current runtime).visit.current ∧
+                                    stage.next.current =
+                                      SourceNativeLivingProcessCausalEvolutionAt.nextCurrent stage.activated) ∧
+                          ((RootGeneratedDebtActivationJointSource.OwnerFree.facade (Registered.old depth)
+                                          (Registered.origin depth)
+                                          (Registered.reader depth)).process.toAnswerNextCausalWorld.emitted
+                                  { down := runtime.state } =
+                                {
+                                  down :=
+                                    SourceNativeLivingProcessCausalEvolutionAt.generated
+                                      (LivingRuntimeState.tick runtime) } ∧
+                              (SourceNativeLivingProcessCausalEvolutionAt.generated
+                                      (LivingRuntimeState.tick runtime)).occurrence =
+                                  (LivingRuntimeState.current runtime).root.toAuthoritativeRoot.toLedgerRoot.emitted
+                                    (LivingRuntimeState.current runtime).visit.current ∧
+                                (SourceNativeLivingProcessCausalEvolutionAt.generated
+                                        (LivingRuntimeState.tick runtime)).wholeLedgerWriteBack ≍
+                                    (LivingRuntimeState.current
+                                                runtime).root.toAuthoritativeRoot.toLedgerRoot.generatedLedgerAt
+                                      (LivingRuntimeState.current runtime).visit.current ∧
+                                  (RootGeneratedDebtActivationJointSource.OwnerFree.facade (Registered.old depth)
+                                            (Registered.origin depth) (Registered.reader depth)).readoutAt
+                                        runtime
+                                        (RootGeneratedDebtActivationJointSource.OwnerFree.mathFace
+                                            (Registered.old depth) (Registered.origin depth) (Registered.reader depth)
+                                            runtime).projection ≍
+                                      (SourceNativeLivingProcessCausalEvolutionAt.generated
+                                            (LivingRuntimeState.tick runtime)).projectionOutcome
+                                        (((RootGeneratedDebtActivationJointSource.OwnerFree.facade
+                                                  (Registered.old depth) (Registered.origin depth)
+                                                  (Registered.reader depth)).installationAt
+                                              runtime
+                                              (RootGeneratedDebtActivationJointSource.OwnerFree.mathFace
+                                                  (Registered.old depth) (Registered.origin depth)
+                                                  (Registered.reader depth) runtime).projection).embed
+                                          ((RootGeneratedDebtActivationJointSource.OwnerFree.facade
+                                                (Registered.old depth) (Registered.origin depth)
+                                                (Registered.reader depth)).projectionAt
+                                            runtime
+                                            (RootGeneratedDebtActivationJointSource.OwnerFree.mathFace
+                                                (Registered.old depth) (Registered.origin depth)
+                                                (Registered.reader depth) runtime).projection)) ∧
+                                    SourceNativeLivingProcessCausalEvolutionAt.nextCurrent
+                                        (LivingRuntimeState.tick runtime) =
+                                      (RootGeneratedDebtActivationJointSource.OwnerFree.facade (Registered.old depth)
+                                              (Registered.origin depth) (Registered.reader depth)).process.stateAt
+                                        ((RootGeneratedDebtActivationJointSource.OwnerFree.facade (Registered.old depth)
+                                                (Registered.origin depth) (Registered.reader depth)).process.successor
+                                          runtime.state)) ∧
+                            ((RootGeneratedDebtActivationJointSource.OwnerFree.facade (Registered.old depth)
+                                            (Registered.origin depth)
+                                            (Registered.reader depth)).process.toAnswerNextCausalWorld.emitted
+                                    { down := runtime.state } =
+                                  {
+                                    down :=
+                                      SourceNativeLivingProcessCausalEvolutionAt.generated
+                                        (LivingRuntimeState.tick runtime) } ∧
+                                (SourceNativeLivingProcessCausalEvolutionAt.generated
+                                        (LivingRuntimeState.tick runtime)).occurrence =
+                                    (LivingRuntimeState.current runtime).root.toAuthoritativeRoot.toLedgerRoot.emitted
+                                      (LivingRuntimeState.current runtime).visit.current ∧
+                                  (SourceNativeLivingProcessCausalEvolutionAt.generated
+                                          (LivingRuntimeState.tick runtime)).wholeLedgerWriteBack ≍
+                                      (LivingRuntimeState.current
+                                                  runtime).root.toAuthoritativeRoot.toLedgerRoot.generatedLedgerAt
+                                        (LivingRuntimeState.current runtime).visit.current ∧
+                                    (RootGeneratedDebtActivationJointSource.OwnerFree.facade (Registered.old depth)
+                                              (Registered.origin depth) (Registered.reader depth)).readoutAt
+                                          runtime
+                                          ((RootGeneratedDebtActivationJointSource.OwnerFree.baseInstallation
+                                                (Registered.old depth) (Registered.origin depth)
+                                                (Registered.reader depth)).embed
+                                            (Sum.inr (Sum.inr PUnit.unit))) ≍
+                                        (SourceNativeLivingProcessCausalEvolutionAt.generated
+                                              (LivingRuntimeState.tick runtime)).projectionOutcome
+                                          (((RootGeneratedDebtActivationJointSource.OwnerFree.facade
+                                                    (Registered.old depth) (Registered.origin depth)
+                                                    (Registered.reader depth)).installationAt
+                                                runtime
+                                                ((RootGeneratedDebtActivationJointSource.OwnerFree.baseInstallation
+                                                      (Registered.old depth) (Registered.origin depth)
+                                                      (Registered.reader depth)).embed
+                                                  (Sum.inr (Sum.inr PUnit.unit)))).embed
+                                            ((RootGeneratedDebtActivationJointSource.OwnerFree.facade
+                                                  (Registered.old depth) (Registered.origin depth)
+                                                  (Registered.reader depth)).projectionAt
+                                              runtime
+                                              ((RootGeneratedDebtActivationJointSource.OwnerFree.baseInstallation
+                                                    (Registered.old depth) (Registered.origin depth)
+                                                    (Registered.reader depth)).embed
+                                                (Sum.inr (Sum.inr PUnit.unit))))) ∧
+                                      SourceNativeLivingProcessCausalEvolutionAt.nextCurrent
+                                          (LivingRuntimeState.tick runtime) =
+                                        (RootGeneratedDebtActivationJointSource.OwnerFree.facade (Registered.old depth)
+                                                (Registered.origin depth) (Registered.reader depth)).process.stateAt
+                                          ((RootGeneratedDebtActivationJointSource.OwnerFree.facade
+                                                  (Registered.old depth) (Registered.origin depth)
+                                                  (Registered.reader depth)).process.successor
+                                            runtime.state)) ∧
+                              (∀
+                                  event ∈
+                                    (RootGeneratedDebtActivationJointSource.OwnerFree.Relations.exposure
+                                        (Registered.old depth) (Registered.origin depth) (Registered.reader depth)
+                                        runtime).trace,
+                                  event ∈
+                                    (RootGeneratedDebtActivationJointSource.OwnerFree.Relations.exposure
+                                        (Registered.old depth) (Registered.origin depth) (Registered.reader depth)
+                                        (LivingRuntimeState.tick runtime).next).trace) ∧
+                                (((SourceOperationNative.Context.embed (readEnv depth) (physicalExpr depth)).subst
+                                            SourceOperationNative.Context.binding).eval
+                                        (SourceOperationNative.Context.environment
+                                          (SourceOperationNative.point runtime)),
+                                      ((SourceOperationNative.Context.embed (readEnv depth) (physicalExpr depth)).subst
+                                            SourceOperationNative.Context.binding).effect
+                                        (SourceOperationNative.Context.environment
+                                          (SourceOperationNative.point runtime))
+                                        (SourceOperationNative.Context.environment
+                                          (SourceOperationNative.point (LivingRuntimeState.tick runtime).next -
+                                            SourceOperationNative.point runtime))) =
+                                    ((physicalExpr depth).eval
+                                        (readEnv depth (LivingRuntimeState.tick runtime).next.state),
+                                      (physicalExpr depth).effect
+                                        (readEnv depth (LivingRuntimeState.tick runtime).next.state)
+                                        (readEnv depth (LivingRuntimeState.tick runtime).next.tick.next.state -
+                                          readEnv depth (LivingRuntimeState.tick runtime).next.state)) ∧
+                                  (cursorRestriction depth)
+                                      ((recover depth (count + 1))
+                                        ((Action.coimageBackward depth (count + 1))
+                                          ((canonical depth (count + 1 + 1))
+                                            (SourceOperationNative.point (LivingRuntimeState.tick runtime).next)))) =
+                                    Source.readMaterial depth runtime.state) ∧
+            (cursorRestriction depth)
+                ((recover depth (count + 1))
+                  ((Action.actualAction depth (count + 1))
+                    ((canonical depth (count + 1)) (SourceOperationNative.point (mathRuntime depth (count + 1)))))) =
+              (Source.someLift depth)
+                ((action (Registered.index depth) ⋯)
+                  (Finsupp.single
+                    (runPoint (Registered.index depth) ⋯ count
+                      (initialPoint (Registered.index depth) ⋯ (emitted depth)))
+                    1))
+cumulative profiling times:
+	attribute application 0.0657ms
+	elaboration 36.5ms
+	fix level params 0.401ms
+	import 2.46s
+	initialization 19ms
+	instantiate metavars 0.274ms
+	interpretation 471ms
+	let-to-have transformation 53.5ms
+	linting 1.62ms
+	module linting 0.00108ms
+	overlappingInstancesLinter 1.12ms
+	parsing 2.33ms
+	process pre-definitions 5.02ms
+	share common exprs 1.65ms
+	tactic execution 12.6ms
+	tacticAnalysis 3.15ms
+	type checking 48.8ms
+	typeclass inference 28.4ms

@@ -1,0 +1,95 @@
+import took 47.3s
+interpretation of Lean.Elab.Command.elabOpenPrivate._boxed took 1.21s
+interpretation of Lean.Elab.Command.elabOpenPrivate._boxed took 1.26s
+elaboration took 263ms
+elaboration took 244ms
+elaboration took 285ms
+elaboration took 438ms
+typeclass inference of Pow took 105ms
+simp took 355ms
+runtime/audit-tmp/iqa-r-scheduled-native-price/source-root/main/SaturationMonoid/NoIslandNoMagic/CanonicalRiemann/GeneralizedDual/CoPoissonEnergy/Muntz/Cokernel/CenteredGram/JointAction/Runtime/Feedback/ClozelOriginalKFiniteOrderRelease/GammaSource/PositionGap/ScheduledPriceMatrix.lean:37:80: error: unsolved goals
+observation : GeneratedRiemannZeroObservation
+nontrivial : ¬∃ n, observation.coordinate = -2 * (↑n + 1)
+half : OriginalKCombCalculation.Half observation
+depth start count samples : ℕ
+a : SourceGeneratedFiniteGram.CofinalRecord.Values count
+b : ℂ
+row : Fin samples
+⊢ ∑ x,
+        a.ofLp x *
+          ⟪fourierL2 ↑(burnolCompletedMellinRieszVector (burnolDivisionZeroCompletedMellinCoordinate observation ⋯)),
+            (⇑(burnolDirectRightResolventCLM
+                    (burnolDivisionZeroCompletedMellinCoordinate observation
+                      ⋯)))^[↑(priceSchedule observation nontrivial half depth start samples) row]
+              (raw (start + ↑x))⟫_ℂ +
+      b *
+        ⟪fourierL2 ↑(burnolCompletedMellinRieszVector (burnolDivisionZeroCompletedMellinCoordinate observation ⋯)),
+          (⇑(burnolDirectRightResolventCLM
+                  (burnolDivisionZeroCompletedMellinCoordinate observation
+                    ⋯)))^[↑(priceSchedule observation nontrivial half depth start samples) row]
+            (raw (start + count))⟫_ℂ =
+    ⟪fourierL2 ↑(burnolCompletedMellinRieszVector (burnolDivisionZeroCompletedMellinCoordinate observation ⋯)),
+        (⇑(burnolDirectRightResolventCLM
+                (burnolDivisionZeroCompletedMellinCoordinate observation
+                  ⋯)))^[↑(priceSchedule observation nontrivial half depth start samples) row]
+          (∑ x, a.ofLp x • raw (start + ↑x))⟫_ℂ +
+      ⟪fourierL2 ↑(burnolCompletedMellinRieszVector (burnolDivisionZeroCompletedMellinCoordinate observation ⋯)),
+        (⇑(burnolDirectRightResolventCLM
+                (burnolDivisionZeroCompletedMellinCoordinate observation
+                  ⋯)))^[↑(priceSchedule observation nontrivial half depth start samples) row]
+          (b • raw (start + count))⟫_ℂ
+runtime/audit-tmp/iqa-r-scheduled-native-price/source-root/main/SaturationMonoid/NoIslandNoMagic/CanonicalRiemann/GeneralizedDual/CoPoissonEnergy/Muntz/Cokernel/CenteredGram/JointAction/Runtime/Feedback/ClozelOriginalKFiniteOrderRelease/GammaSource/PositionGap/ScheduledPriceMatrix.lean:40:39: error: This simp argument is unused:
+  map_sum
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [paidMixtureRecord, actual_paid_price_record, recordedPrices, Record.sample, nativePriceAt,
+    WithLp.ofLp_sum, Finset.sum_apply, inner_sum, inner_add_right, inner_smul_right, smul_eq_mul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+runtime/audit-tmp/iqa-r-scheduled-native-price/source-root/main/SaturationMonoid/NoIslandNoMagic/CanonicalRiemann/GeneralizedDual/CoPoissonEnergy/Muntz/Cokernel/CenteredGram/JointAction/Runtime/Feedback/ClozelOriginalKFiniteOrderRelease/GammaSource/PositionGap/ScheduledPriceMatrix.lean:40:48: error: This simp argument is unused:
+  inner_sum
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [paidMixtureRecord, actual_paid_price_record, recordedPrices, Record.sample, nativePriceAt,
+    WithLp.ofLp_sum, Finset.sum_apply, map_sum, inner_add_right, inner_smul_right, smul_eq_mul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+runtime/audit-tmp/iqa-r-scheduled-native-price/source-root/main/SaturationMonoid/NoIslandNoMagic/CanonicalRiemann/GeneralizedDual/CoPoissonEnergy/Muntz/Cokernel/CenteredGram/JointAction/Runtime/Feedback/ClozelOriginalKFiniteOrderRelease/GammaSource/PositionGap/ScheduledPriceMatrix.lean:40:76: error: This simp argument is unused:
+  inner_smul_right
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [paidMixtureRecord, actual_paid_price_record, recordedtactic execution of Lean.Parser.Tactic.rewriteSeq took 139ms
+tactic execution of Lean.Parser.Tactic.rewriteSeq took 176ms
+tactic execution of Lean.Parser.Tactic.exact took 2.28s
+elaboration took 119ms
+Prices, Record.sample, nativePriceAt,
+    WithLp.ofLp_sum, Finset.sum_apply, map_sum, inner_sum, inner_add_right, smul_eq_mul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+cumulative profiling times:
+	attribute application 3.35ms
+	blocked (unaccounted) 20.5ms
+	compilation (IR) 2.11ms
+	compilation (LCNF base) 198ms
+	compilation (LCNF impure) 17ms
+	compilation (LCNF mono) 76.7ms
+	congr simp thm 15.9ms
+	dsimp 11.8ms
+	elaboration 1.47s
+	fix level params 0.71ms
+	import 47.3s
+	initialization 33.7ms
+	instantiate metavars 0.879ms
+	interpretation 4.98s
+	let-to-have transformation 50.4ms
+	linting 26.3ms
+	module linting 0.000916ms
+	overlappingInstancesLinter 5.16ms
+	parsing 5.95ms
+	process pre-definitions 112ms
+	share common exprs 8.33ms
+	simp 355ms
+	tactic execution 2.74s
+	tacticAnalysis 55.9ms
+	type checking 148ms
+	typeclass inference 1.13s

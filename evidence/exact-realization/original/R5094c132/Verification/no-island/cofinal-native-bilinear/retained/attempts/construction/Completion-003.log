@@ -1,0 +1,47 @@
+import took 2.29s
+runtime/audit-tmp/iqa-cofinal-native-bilinear/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/Bilinear/Completion.lean:71:7: error(lean.unknownIdentifier): Unknown constant `Module.int_smul_eq_zsmul`
+runtime/audit-tmp/iqa-cofinal-native-bilinear/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/Bilinear/Completion.lean:72:42: error: Application type mismatch: The argument
+  left
+has type
+  ↑(Completion p)
+of sort `Type u` but is expected to have type
+  ℤ
+of sort `Type` in the application
+  map_zsmul (completedLeftAdd act p) left
+runtime/audit-tmp/iqa-cofinal-native-bilinear/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/Bilinear/Completion.lean:72:7: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  FunLike (↑(Completion p) →+ ↑(Completion p) →ₗ[ℤ] ↑(Completion p)) ℤ ?m.86
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+runtime/audit-tmp/iqa-cofinal-native-bilinear/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/Bilinear/Completion.lean:78:2: error: Type mismatch
+  completed_right_restriction act p j left right
+has type
+  (ModuleCat.Hom.hom (restriction p j)) ((completedRight act p left) right) =
+    ((stageBilinear act p j) ((ModuleCat.Hom.hom (restriction p j)) left)) ((ModuleCat.Hom.hom (restriction p j)) right)
+but is expected to have type
+  (ModuleCat.Hom.hom (restriction p j)) (((completionBilinear act p) left) right) =
+    ((stageBilinear act p j) ((ModuleCat.Hom.hom (restriction p j)) left)) ((ModuleCat.Hom.hom (restriction p j)) right)
+cumulative profiling times:
+	attribute application 0.067ms
+	compilation (IR) 0.166ms
+	compilation (LCNF base) 1.41ms
+	compilation (LCNF impure) 0.833ms
+	compilation (LCNF mono) 1.08ms
+	congr simp thm 0.581ms
+	elaboration 69.7ms
+	fix level params 1.06ms
+	import 2.29s
+	initialization 18.4ms
+	instantiate metavars 1.16ms
+	interpretation 314ms
+	let-to-have transformation 0.107ms
+	linting 5.17ms
+	module linting 0.000791ms
+	overlappingInstancesLinter 7.51ms
+	parsing 3.1ms
+	process pre-definitions 12.5ms
+	share common exprs 2.99ms
+	simp 4.76ms
+	tactic execution 175ms
+	tacticAnalysis 7.19ms
+	type checking 40.5ms
+	typeclass inference 212ms

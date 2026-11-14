@@ -1,0 +1,38 @@
+import took 9.38s
+interpretation of Lean.Elab.Command.elabOpenPrivate._boxed took 469ms
+process pre-definitions took 152ms
+typeclass inference of CoeFun took 253ms
+tactic execution of Lean.Parser.Tactic.refine took 17.2s
+type checking took 130ms
+runtime/audit-tmp/iqa-cofinal-paid-closure/source-root/main/SaturationMonoid/NoIslandNoMagic/CanonicalRiemann/GeneralizedDual/CoPoissonEnergy/Muntz/Cokernel/CenteredGram/JointAction/Runtime/Feedback/ClozelOriginalKCofinalFullBranchFibre/RootRelation/PaidSyntaxCompletion.lean:75:25: error: Application type mismatch: The argument
+  factor observation nontrivial half depth (ordinal + 1)
+has type
+  SourceCompletion observation nontrivial half depth (ordinal + 1) →ₗ[ℤ] SourceModel observation nontrivial half
+but is expected to have type
+  ?m.128 → ?m.129
+in the application
+  congrArg (factor observation nontrivial half depth (ordinal + 1))
+runtime/audit-tmp/iqa-cofinal-paid-closure/source-root/main/SaturationMonoid/NoIslandNoMagic/CanonicalRiemann/GeneralizedDual/CoPoissonEnergy/Muntz/Cokernel/CenteredGram/JointAction/Runtime/Feedback/ClozelOriginalKCofinalFullBranchFibre/RootRelation/PaidSyntaxCompletion.lean:76:5: error: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+
+Note: Use `set_option maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+cumulative profiling times:
+	attribute application 0.684ms
+	elaboration 144ms
+	fix level params 1.05ms
+	import 9.38s
+	initialization 25.9ms
+	instantiate metavars 1.33ms
+	interpretation 1s
+	let-to-have transformation 0.431ms
+	linting 3.81ms
+	module linting 0.000541ms
+	overlappingInstancesLinter 2.07ms
+	parsing 2.71ms
+	process pre-definitions 169ms
+	share common exprs 9.93ms
+	tactic execution 17.3s
+	tacticAnalysis 6.99ms
+	type checking 331ms
+	typeclass inference 678ms

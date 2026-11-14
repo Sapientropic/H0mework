@@ -129,8 +129,32 @@ def entry(root, map_path=MAP, selection_path=SELECTION):
 
 
 def source(root, output, *, exact, selection_path=SELECTION, private_originals=None):
-    _, _, epochs = finite.selected_views(root, exact=exact, selection_path=selection_path,
-                                         private_originals=private_originals)
+    selection, _, epochs = finite.selected_views(root, exact=exact, selection_path=selection_path,
+                                                 private_originals=private_originals)
+    restored = set()
+    for binding in selection.get("original_source_bodies", []):
+        revision, path = binding["source_commit"], binding["source_path"]
+        finite.require((revision, path) not in restored and revision in epochs and path in epochs[revision]["modules"],
+                       "Original source binding lies outside the selection or repeats: " + path)
+        state = epochs[revision]
+        owner = state["modules"][path]
+        origin = owner.get("source_origin", {})
+        raw = release.repo_file(root, binding["original_artifact"]).read_bytes()
+        original_path = origin.get("original_source_path", origin.get("original_path", origin.get("source_path")))
+        original_sha = origin.get("original_source_sha256")
+        if original_sha is None and origin.get("kind") == "git-source-supplement":
+            # Older signed rows carry the replacement's Git SHA only. The
+            # original and effective byte identities are pinned by the selection.
+            original_sha = binding["source_sha256"]
+        finite.require(
+            owner["source_sha256"] == binding["effective_sha256"]
+            and original_path == path
+            and original_sha == release.sha(raw) == binding["source_sha256"],
+            "Archived source body differs from the registered original: " + path,
+        )
+        if exact:
+            state["outputs"][path] = raw
+        restored.add((revision, path))
     directory = release.new_output(root, output)
     for epoch, state in epochs.items():
         for path, body in state["outputs"].items():
@@ -138,7 +162,8 @@ def source(root, output, *, exact, selection_path=SELECTION, private_originals=N
             target.parent.mkdir(parents=True, exist_ok=True)
             target.write_bytes(body)
     return {"status": "passed", "view": "exact" if exact else "public",
-            "files": sum(len(s["outputs"]) for s in epochs.values())}
+            "files": sum(len(s["outputs"]) for s in epochs.values()),
+            **({"archived_originals": len(restored)} if restored else {})}
 
 
 def scoped_kernel(root, output):

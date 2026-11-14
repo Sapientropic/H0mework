@@ -1,0 +1,86 @@
+import took 3.74s
+runtime/audit-tmp/iqa-cofinal-paid-cochain-tower/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/Cochain/Tower.lean:29:35: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  𝟙 ?m.62 ≫ ?f
+in the target expression
+  𝟙 (((completionFunctor p).mapHomologicalComplex shape).obj source) ≫
+      (NatTrans.mapHomologicalComplex (completionFunctorRestriction p j) shape).app source =
+    (NatTrans.mapHomologicalComplex (completionFunctorRestriction p (j + 1)) shape).app source ≫
+      (cochainStageTower shape p source).map (homOfLE ⋯).op
+
+I : Type v
+shape : ComplexShape I
+p : Nat.Primes
+source : HomologicalComplex AddCommGrpCat shape
+j : ℕ
+⊢ 𝟙 (((completionFunctor p).mapHomologicalComplex shape).obj source) ≫
+      (NatTrans.mapHomologicalComplex (completionFunctorRestriction p j) shape).app source =
+    (NatTrans.mapHomologicalComplex (completionFunctorRestriction p (j + 1)) shape).app source ≫
+      (cochainStageTower shape p source).map (homOfLE ⋯).op
+
+Note: The target expression is not type-correct under the `implicit` transparency level, which may have triggered the failure. This is usually caused by unfolding of semireducible definitions in prior tactic steps. Use `set_option linter.tacticCheckInstances true` to investigate the source of the issue.
+Full error:
+  Application type mismatch: The argument
+    (NatTrans.mapHomologicalComplex (completionFunctorRestriction p j) shape).app source
+  has type
+    @Quiver.Hom (HomologicalComplex (ModuleCat ℤ) shape) HomologicalComplex.instCategory.toQuiver
+      (((completionFunctor p).mapHomologicalComplex shape).obj source)
+      (((stageFunctor p j).mapHomologicalComplex shape).obj source)
+  but is expected to have type
+    @Quiver.Hom (HomologicalComplex (ModuleCat ℤ) shape) HomologicalComplex.instCategory.toQuiver
+      (((Functor.const ℕᵒᵖ).obj (((completionFunctor p).mapHomologicalComplex shape).obj source)).obj (Opposite.op j))
+      ((cochainStageTower shape p source).obj (Opposite.op j))
+  in the application
+    𝟙 (((completionFunctor p).mapHomologicalComplex shape).obj source) ≫
+      (NatTrans.mapHomologicalComplex (completionFunctorRestriction p j) shape).app source
+runtime/audit-tmp/iqa-cofinal-paid-cochain-tower/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/Cochain/Tower.lean:45:10: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ?f ≫ 𝟙 ?m.65
+in the target expression
+  evaluated.map (homOfLE ⋯).op ≫ 𝟙 (evaluated.obj (Opposite.op j)) =
+    𝟙 (evaluated.obj (Opposite.op (j + 1))) ≫ original.map (homOfLE ⋯).op
+
+I : Type v
+shape : ComplexShape I
+p : Nat.Primes
+source : HomologicalComplex AddCommGrpCat shape
+degree : I
+evaluated : ℕᵒᵖ ⥤ ModuleCat ℤ := cochainStageTower shape p source ⋙ HomologicalComplex.eval (ModuleCat ℤ) shape degree
+original : ℕᵒᵖ ⥤ ModuleCat ℤ := tower p
+j : ℕ
+⊢ evaluated.map (homOfLE ⋯).op ≫ 𝟙 (evaluated.obj (Opposite.op j)) =
+    𝟙 (evaluated.obj (Opposite.op (j + 1))) ≫ original.map (homOfLE ⋯).op
+
+Note: The target expression is not type-correct under the `implicit` transparency level, which may have triggered the failure. This is usually caused by unfolding of semireducible definitions in prior tactic steps. Use `set_option linter.tacticCheckInstances true` to investigate the source of the issue.
+Full error:
+  Application type mismatch: The argument
+    𝟙 (evaluated.obj (Opposite.op j))
+  has type
+    @Quiver.Hom (ModuleCat ℤ) (ModuleCat.moduleCategory ℤ).toQuiver (evaluated.obj (Opposite.op j))
+      (evaluated.obj (Opposite.op j))
+  but is expected to have type
+    @Quiver.Hom (ModuleCat ℤ) (ModuleCat.moduleCategory ℤ).toQuiver (evaluated.obj (Opposite.op j))
+      (original.obj (Opposite.op j))
+  in the application
+    evaluated.map (homOfLE ⋯).op ≫ 𝟙 (evaluated.obj (Opposite.op j))
+cumulative profiling times:
+	attribute application 0.0441ms
+	compilation (IR) 0.219ms
+	compilation (LCNF base) 8.8ms
+	compilation (LCNF impure) 1.45ms
+	compilation (LCNF mono) 5.15ms
+	elaboration 18.3ms
+	fix level params 0.195ms
+	import 3.74s
+	initialization 19.7ms
+	instantiate metavars 0.15ms
+	interpretation 355ms
+	let-to-have transformation 18.7ms
+	linting 1.84ms
+	module linting 0.000625ms
+	overlappingInstancesLinter 1.37ms
+	parsing 2.41ms
+	process pre-definitions 11.7ms
+	share common exprs 0.497ms
+	tactic execution 59.1ms
+	tacticAnalysis 3.46ms
+	type checking 28.4ms
+	typeclass inference 21.8ms

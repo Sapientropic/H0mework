@@ -1,0 +1,30 @@
+import took 2.37s
+runtime/audit-tmp/iqa-cofinal-paid-closure/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/Operations/Payment.lean:64:2: error: Type mismatch
+  congrArg (RootedAccountedUnfolding.occur ?m.49) (paid_events_map p paid)
+has type
+  RootedAccountedUnfolding.occur ?m.49 (RootedAccountedUnfolding.mapBranches (eventMap p) (events paid)) =
+    RootedAccountedUnfolding.occur ?m.49 (events (trace p paid))
+but is expected to have type
+  RootedAccountedUnfolding.map (eventMap p) (exposure paid) = exposure (trace p paid)
+cumulative profiling times:
+	attribute application 0.0555ms
+	blocked (unaccounted) 4.71ms
+	congr simp thm 1.02ms
+	elaboration 28.4ms
+	fix level params 0.487ms
+	import 2.37s
+	initialization 19.3ms
+	instantiate metavars 0.437ms
+	interpretation 371ms
+	let-to-have transformation 0.0644ms
+	linting 3.01ms
+	module linting 0.000583ms
+	overlappingInstancesLinter 3.42ms
+	parsing 2.44ms
+	process pre-definitions 5.11ms
+	share common exprs 1.47ms
+	simp 22.6ms
+	tactic execution 55.4ms
+	tacticAnalysis 6.49ms
+	type checking 33.8ms
+	typeclass inference 57.9ms

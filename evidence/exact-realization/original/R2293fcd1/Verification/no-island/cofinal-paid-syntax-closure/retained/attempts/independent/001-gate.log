@@ -1,0 +1,36 @@
+import took 6.99s
+interpretation of Lean.Elab.Command.elabOpenPrivate._boxed took 452ms
+runtime/audit-tmp/iqa-cofinal-paid-closure-independent/Gate.lean:76:4: error: 'change' tactic failed, pattern
+  Eq.{max 2 (?u.67 + 1)} (Expr.const ((canonicalLinearMap binary) 0)) (Expr.const ((canonicalLinearMap binary) 1))
+is not definitionally equal to target
+  Eq.{1} (expression binary zeroTerm) (expression binary oneTerm)
+CP746_CONTROL + the_original_paid_word_and_its_ordered_exposure_have_the_same_coordinates
+CP746_CONTROL + the_original_generator_and_relator_restore_and_commute_with_differential
+CP746_CONTROL + the_actual_quotient_map_keeps_the_projection_and_original_integer_coordinate
+CP746_CONTROL + same_actual_R_unit_inverse_whole_and_literal_next
+CP746_CONTROL - arbitrary_rational_syntax_words_can_collapse
+CP746_GATE_PASS positive=4 negative=1
+cumulative profiling times:
+	attribute application 0.864ms
+	compilation (IR) 1.63ms
+	compilation (LCNF base) 12.6ms
+	compilation (LCNF impure) 3.21ms
+	compilation (LCNF mono) 4.75ms
+	elaboration 97.1ms
+	fix level params 0.987ms
+	import 6.99s
+	initialization 19.5ms
+	instantiate metavars 0.789ms
+	interpretation 1.16s
+	let-to-have transformation 3.02ms
+	linting 7.56ms
+	module linting 0.000333ms
+	norm_num 6.09ms
+	overlappingInstancesLinter 13ms
+	parsing 5.18ms
+	process pre-definitions 17.1ms
+	share common exprs 4.84ms
+	tactic execution 32.8ms
+	tacticAnalysis 12.4ms
+	type checking 243ms
+	typeclass inference 63.7ms

@@ -1,0 +1,47 @@
+import took 3.79s
+runtime/audit-tmp/iqa-r-cofinal-sparse-record/source-root/main/SaturationMonoid/GenericFoundation/Scalar/Feature/FiniteGram/CofinalRecord.lean:47:87: error: This simp argument is unused:
+  PiLp.toLp_apply
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [withBirth, replay, Fin.sum_univ_castSucc, Fin.val_castSucc, Fin.val_last]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+runtime/audit-tmp/iqa-r-cofinal-sparse-record/source-root/main/SaturationMonoid/GenericFoundation/Scalar/Feature/FiniteGram/CofinalRecord.lean:96:2: error: Type mismatch
+  Fin.snoc_castSucc ?m.24 ?m.25 ?m.26
+has type
+  Fin.snoc ?m.25 ?m.24 (Fin.castSucc ?m.26) = ?m.25 ?m.26
+but is expected to have type
+  ↑(schedule source separates (count + 1)) i.castSucc = ↑(schedule source separates count) i
+runtime/audit-tmp/iqa-r-cofinal-sparse-record/source-root/main/SaturationMonoid/GenericFoundation/Scalar/Feature/FiniteGram/CofinalRecord.lean:101:2: error: Type mismatch
+  Fin.snoc_last ?m.24 ?m.25
+has type
+  Fin.snoc ?m.25 ?m.24 (Fin.last ?m.22) = ?m.24
+but is expected to have type
+  ↑(schedule source separates (count + 1)) (Fin.last count) =
+    pivotTime source separates ↑(schedule source separates count)
+cumulative profiling times:
+	attribute application 0.217ms
+	compilation (IR) 0.299ms
+	compilation (LCNF base) 1.3ms
+	compilation (LCNF impure) 0.972ms
+	compilation (LCNF mono) 1.18ms
+	congr simp thm 1.08ms
+	dsimp 1.12ms
+	elaboration 71.7ms
+	fix level params 0.458ms
+	import 3.79s
+	initialization 28.8ms
+	instantiate metavars 1.48ms
+	interpretation 504ms
+	let-to-have transformation 3.48ms
+	linting 8.05ms
+	module linting 0.0005ms
+	overlappingInstancesLinter 4.44ms
+	parsing 7.17ms
+	process pre-definitions 12.8ms
+	share common exprs 3.8ms
+	simp 99.2ms
+	tactic execution 102ms
+	tacticAnalysis 15ms
+	type checking 116ms
+	typeclass inference 164ms

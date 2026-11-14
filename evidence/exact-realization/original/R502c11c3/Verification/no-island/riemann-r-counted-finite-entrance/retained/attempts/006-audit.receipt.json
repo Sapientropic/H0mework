@@ -1,0 +1,48 @@
+{
+  "label": "006-audit",
+  "command": [
+    "lean",
+    "--trust=0",
+    "-DElab.async=false",
+    "-DwarningAsError=true",
+    "-DmaxErrors=8",
+    "-j1",
+    "-M32000",
+    "-DstderrAsMessages=false",
+    "--run",
+    "runtime/audit-tmp/iqa-r-counted-finite-entrance-independent/Audit.lean",
+    "runtime/audit-tmp/iqa-r-counted-finite-entrance-independent/audit-config.json"
+  ],
+  "source": {
+    "path": "runtime/audit-tmp/iqa-r-counted-finite-entrance-independent/Audit.lean",
+    "bytes": 25549,
+    "sha256": "f20ccfc8fefe54761d5a72113f1c95762f7936d68ab7a5c3ec1e391b5bcc21f9"
+  },
+  "snapshot": {
+    "path": "runtime/audit-tmp/iqa-r-counted-finite-entrance-independent/006-audit.lean",
+    "bytes": 25549,
+    "sha256": "f20ccfc8fefe54761d5a72113f1c95762f7936d68ab7a5c3ec1e391b5bcc21f9"
+  },
+  "lean_path": {
+    "path": "runtime/audit-tmp/iqa-r-counted-finite-entrance/lean-path.txt",
+    "bytes": 2935,
+    "sha256": "66bc35b42c2919038621fd88e4cb395e55e6941f3438222f3ad74d64c17daafb"
+  },
+  "config": {
+    "path": "runtime/audit-tmp/iqa-r-counted-finite-entrance-independent/audit-config.json",
+    "bytes": 1050573,
+    "sha256": "2f4df750b47b87ef28b73055d66f93bacc4643fc65625e8070a36a3e920dae04"
+  },
+  "old_source_recompiles": 0,
+  "old_ci_replays": 0,
+  "pid": 23899,
+  "exit_code": 1,
+  "natural_exit": true,
+  "elapsed_seconds": 3.7899000410106964,
+  "source_unchanged": true,
+  "log": {
+    "path": "runtime/audit-tmp/iqa-r-counted-finite-entrance-independent/006-audit.log",
+    "bytes": 451,
+    "sha256": "04943c2f5655a0ed96202f1a9434d4c3800e06fb8dd667534f29f05d2e6534b3"
+  }
+}

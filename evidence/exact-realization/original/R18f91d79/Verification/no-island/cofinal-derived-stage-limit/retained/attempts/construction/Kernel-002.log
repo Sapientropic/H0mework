@@ -1,0 +1,68 @@
+import took 8.31s
+runtime/audit-tmp/iqa-cofinal-derived-stage-limit/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/Cochain/SequentialKernel.lean:36:22: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  face.difference ≫ face.productProjection ?stage
+in the target expression
+  limitProductMap face cone ≫ face.difference ≫ Pi.π (fun stage => face.towerObject stage) stage =
+    0 ≫ Pi.π (fun stage => face.towerObject stage) stage
+
+Root : Type w
+occurrence : RootedAccountedUnfolding (Root × (ℕᵒᵖ ⥤ IntegralCochainComplex))
+face : RootGeneratedSequentialHomotopyLimitAt occurrence
+cone : Cone face.actualTower
+stage : ℕ
+inclusion : cone.pt ⟶ face.productComplex := limitProductMap face cone
+transition : face.towerObject (stage + 1) ⟶ face.towerObject stage := face.transitionAt stage
+shifts : inclusion ≫ face.shiftComponent stage = cone.π.app (Opposite.op stage)
+⊢ limitProductMap face cone ≫ face.difference ≫ Pi.π (fun stage => face.towerObject stage) stage =
+    0 ≫ Pi.π (fun stage => face.towerObject stage) stage
+runtime/audit-tmp/iqa-cofinal-derived-stage-limit/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/Cochain/SequentialKernel.lean:57:8: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  (?f ≫ ?g) ≫ ?h
+in the target expression
+  (lim.lift (compatibleProductCone face map zero) ≫ limitProductMap face cone) ≫
+      Pi.π (fun stage => face.towerObject stage) stage =
+    map ≫ Pi.π (fun stage => face.towerObject stage) stage
+
+case refine_1
+Root : Type w
+occurrence : RootedAccountedUnfolding (Root × (ℕᵒᵖ ⥤ IntegralCochainComplex))
+face : RootGeneratedSequentialHomotopyLimitAt occurrence
+cone : Cone face.actualTower
+lim : IsLimit cone
+K : IntegralCochainComplex
+map : K ⟶ face.productComplex
+zero : map ≫ face.difference = 0
+stage : ℕ
+⊢ (lim.lift (compatibleProductCone face map zero) ≫ limitProductMap face cone) ≫
+      Pi.π (fun stage => face.towerObject stage) stage =
+    map ≫ Pi.π (fun stage => face.towerObject stage) stage
+
+Note: The target expression is not type-correct under the `implicit` transparency level, which may have triggered the failure. This is usually caused by unfolding of semireducible definitions in prior tactic steps. Use `set_option linter.tacticCheckInstances true` to investigate the source of the issue.
+Full error:
+  Application type mismatch: The argument
+    lim.lift (compatibleProductCone face map zero)
+  has type
+    @Quiver.Hom IntegralCochainComplex HomologicalComplex.instCategory.toQuiver (compatibleProductCone face map zero).pt
+      cone.pt
+  but is expected to have type
+    @Quiver.Hom IntegralCochainComplex HomologicalComplex.instCategory.toQuiver K cone.pt
+  in the application
+    CategoryStruct.comp (lim.lift (compatibleProductCone face map zero))
+cumulative profiling times:
+	attribute application 0.066ms
+	elaboration 49.3ms
+	fix level params 0.234ms
+	import 8.31s
+	initialization 177ms
+	instantiate metavars 0.196ms
+	interpretation 492ms
+	let-to-have transformation 0.242ms
+	linting 4ms
+	module linting 0.00821ms
+	overlappingInstancesLinter 5.09ms
+	parsing 2.35ms
+	process pre-definitions 13.8ms
+	share common exprs 1.04ms
+	tactic execution 29.4ms
+	tacticAnalysis 5.49ms
+	type checking 13.1ms
+	typeclass inference 30.2ms

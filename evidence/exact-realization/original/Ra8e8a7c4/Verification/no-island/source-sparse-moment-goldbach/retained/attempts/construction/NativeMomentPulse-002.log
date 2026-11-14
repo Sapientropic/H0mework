@@ -1,0 +1,43 @@
+import took 6.9s
+interpretation of Lean.Elab.Command.elabOpenPrivate._boxed took 409ms
+interpretation of Lean.Elab.Command.elabOpenPrivate._boxed took 409ms
+tactic execution of Lean.Parser.Tactic.refine took 122ms
+tactic execution of Lean.Parser.Tactic.refine took 480ms
+tactic execution of Lean.Parser.Tactic.change took 174ms
+tactic execution of Lean.Parser.Tactic.exact took 218ms
+runtime/audit-tmp/iqa-sparse-moment-source/source-root/main/SaturationMonoid/NoIslandNoMagic/CanonicalArithmeticState/ParticleWave/Fock/Runtime/Goldbach/Occurrence/Actuality/Dynamics/History/Inventory/SourceSelected/Calculation/Cursor/NativeMomentPulse.lean:67:45: error: don't know how to synthesize placeholder for argument `hf`
+context:
+depth : ℕ
+i : Site depth
+a : ℤ
+⊢ (Int.castAddHom ℚ) 0 = 0
+runtime/audit-tmp/iqa-sparse-moment-source/source-root/main/SaturationMonoid/NoIslandNoMagic/CanonicalArithmeticState/ParticleWave/Fock/Runtime/Goldbach/Occurrence/Actuality/Dynamics/History/Inventory/SourceSelected/Calculation/Cursor/NativeMomentPulse.lean:66:84: error: unsolved goals
+depth : ℕ
+i : Site depth
+a : ℤ
+⊢ (restrict depth) (Finsupp.single ((actor depth) i) a) = Finsupp.single i ↑a
+cumulative profiling times:
+	attribute application 0.23ms
+	compilation (IR) 0.0328ms
+	compilation (LCNF base) 0.229ms
+	compilation (LCNF impure) 0.146ms
+	compilation (LCNF mono) 0.204ms
+	congr simp thm 0.295ms
+	elaboration 52.2ms
+	fix level params 0.464ms
+	import 6.9s
+	initialization 20.9ms
+	instantiate metavars 0.72ms
+	interpretation 1.31s
+	let-to-have transformation 0.691ms
+	linting 8.89ms
+	module linting 0.000625ms
+	overlappingInstancesLinter 6.02ms
+	parsing 8.84ms
+	process pre-definitions 25.9ms
+	share common exprs 3.3ms
+	simp 2.32ms
+	tactic execution 1.12s
+	tacticAnalysis 17ms
+	type checking 37ms
+	typeclass inference 106ms

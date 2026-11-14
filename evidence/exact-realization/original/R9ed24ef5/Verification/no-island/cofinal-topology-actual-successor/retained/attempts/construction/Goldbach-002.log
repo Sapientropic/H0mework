@@ -1,0 +1,51 @@
+import took 8.52s
+typeclass inference of CoeT took 177ms
+typeclass inference of CoeT took 177ms
+elaboration took 235ms
+runtime/audit-tmp/iqa-cofinal-topology-actual-successor/source-root/main/SaturationMonoid/NoIslandNoMagic/CanonicalArithmeticState/ParticleWave/Fock/Runtime/Goldbach/Occurrence/Actuality/Dynamics/History/Inventory/SourceSelected/Calculation/Cursor/Native/TopologySuccessor.lean:11:5: error: Ambiguous namespace `Source`: it is interpreted as `_root_.SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.NoIslandNoMagic.CanonicalArithmeticState.GoldbachUnitSelectedActor.Calculation.Cursor.Native.Source` because this `open` occurs inside `namespace SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.NoIslandNoMagic.CanonicalArithmeticState.GoldbachUnitSelectedActor.Calculation.Cursor.Native`, while `_root_.SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.NoIslandNoMagic.CanonicalArithmeticState.GoldbachUnitSelectedActor.Calculation.Cursor.Source`, `_root_.SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.Source` are silently not opened. Specify the namespace unambiguously, e.g. `_root_.SaturationMonoid.ResponsibilityLifecycle.LivingLawEvolution.ConstructiveRoot.NoIslandNoMagic.CanonicalArithmeticState.GoldbachUnitSelectedActor.Calculation.Cursor.Native.Source`. The warning can sometimes also be addressed by moving the `open` outside of the surrounding `namespace`.
+
+Note: This linter can be disabled with `set_option linter.ambiguousOpen false`
+runtime/audit-tmp/iqa-cofinal-topology-actual-successor/source-root/main/SaturationMonoid/NoIslandNoMagic/CanonicalArithmeticState/ParticleWave/Fock/Runtime/Goldbach/Occurrence/Actuality/Dynamics/History/Inventory/SourceSelected/Calculation/Cursor/Native/TopologySuccessor.lean:26:31: error: Application type mismatch: The argument
+  action
+has type
+  @LinearMap ℤ ℤ CommRing.toCommSemiring.toSemiring CommRing.toCommSemiring.toSemiring (RingHom.id ℤ)
+    (↥(SourceOperationRuntime.Character.Carrier (nativeRead depth) (nativeEnvironment depth) runtime))
+    (↥(SourceOperationRuntime.Character.Carrier (nativeRead depth) (nativeEnvironment depth)
+        (LivingRuntimeState.tick runtime).next))
+    (SourceOperationRuntime.Character.Carrier (nativeRead depth) (nativeEnvironment depth) runtime).addCommMonoid
+    (SourceOperationRuntime.Character.Carrier (nativeRead depth) (nativeEnvironment depth)
+        (LivingRuntimeState.tick runtime).next).addCommMonoid
+    (SourceOperationRuntime.Character.Carrier (nativeRead depth) (nativeEnvironment depth) runtime).module
+    (SourceOperationRuntime.Character.Carrier (nativeRead depth) (nativeEnvironment depth)
+        (LivingRuntimeState.tick runtime).next).module
+but is expected to have type
+  @LinearMap ℤ ℤ Int.instSemiring Int.instSemiring (RingHom.id ℤ) (↥(NativeField depth (count + 1)))
+    (↥(NativeField depth (count + 1 + 1))) (NativeField depth (count + 1)).addCommGroup.toAddCommMonoid
+    (NativeField depth (count + 1 + 1)).addCommGroup.toAddCommMonoid
+    (AddCommGroup.toIntModule ↥(NativeField depth (count + 1)))
+    (AddCommGroup.toIntModule ↥(NativeField depth (count + 1 + 1)))
+in the application
+  allPrimeCoimageSuccessor action
+cumulative profiling times:
+	attribute application 0.497ms
+	compilation (IR) 0.324ms
+	compilation (LCNF base) 14.3ms
+	compilation (LCNF impure) 1.8ms
+	compilation (LCNF mono) 6.43ms
+	elaboration 286ms
+	fix level params 0.0495ms
+	import 8.52s
+	initialization 20.1ms
+	instantiate metavars 0.0164ms
+	interpretation 398ms
+	let-to-have transformation 0.0397ms
+	linting 1.71ms
+	module linting 0.000542ms
+	overlappingInstancesLinter 1.09ms
+	parsing 1.39ms
+	process pre-definitions 8.3ms
+	share common exprs 0.416ms
+	tactic execution 4.57ms
+	tacticAnalysis 4.68ms
+	type checking 1.71ms
+	typeclass inference 721ms

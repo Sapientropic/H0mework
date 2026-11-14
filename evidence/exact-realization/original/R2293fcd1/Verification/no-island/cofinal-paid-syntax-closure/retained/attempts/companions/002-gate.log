@@ -1,0 +1,40 @@
+import took 4.5s
+interpretation of Lean.Elab.Command.elabOpenPrivate._boxed took 460ms
+type checking took 115ms
+runtime/audit-tmp/iqa-cofinal-paid-closure-independent/Gate.lean:78:6: error: Type mismatch
+  Expr.const ((canonicalLinearMap binary) 1)
+has type
+  Expr.{1, 0, ?u.79} ModuleCat.carrier ?m.118 (Completion binary)
+of sort `Type (max 1 ?u.79)` but is expected to have type
+  Expr.{0, 0, 0} (Value RatValue binary) EmptyVariable ()
+of sort `Type`
+CP746_CONTROL + the_original_paid_word_and_its_ordered_exposure_have_the_same_coordinates
+CP746_CONTROL + the_original_generator_and_relator_restore_and_commute_with_differential
+CP746_CONTROL + the_actual_quotient_map_keeps_the_projection_and_original_integer_coordinate
+CP746_CONTROL + same_actual_R_unit_inverse_whole_and_literal_next
+CP746_CONTROL - arbitrary_rational_syntax_words_can_collapse
+CP746_GATE_PASS positive=4 negative=1
+cumulative profiling times:
+	attribute application 4.89ms
+	compilation (IR) 0.423ms
+	compilation (LCNF base) 6.57ms
+	compilation (LCNF impure) 1.68ms
+	compilation (LCNF mono) 3.1ms
+	elaboration 80.7ms
+	fix level params 0.988ms
+	import 4.5s
+	initialization 18.3ms
+	instantiate metavars 0.854ms
+	interpretation 897ms
+	let-to-have transformation 1.38ms
+	linting 6.35ms
+	module linting 0.000667ms
+	norm_num 1.82ms
+	overlappingInstancesLinter 5.01ms
+	parsing 4.88ms
+	process pre-definitions 13.4ms
+	share common exprs 5.04ms
+	tactic execution 29.6ms
+	tacticAnalysis 10.7ms
+	type checking 265ms
+	typeclass inference 69.8ms

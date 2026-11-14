@@ -1,0 +1,53 @@
+{
+  "label": "003-audit",
+  "command": [
+    "lean",
+    "--trust=0",
+    "-DElab.async=false",
+    "-DwarningAsError=true",
+    "-DmaxErrors=8",
+    "-j1",
+    "-M32000",
+    "-DstderrAsMessages=false",
+    "--run",
+    "runtime/audit-tmp/iqa-r-wide-residual-return-independent/Audit.lean",
+    "runtime/audit-tmp/iqa-r-wide-residual-return-independent/audit-config.json"
+  ],
+  "source": {
+    "path": "runtime/audit-tmp/iqa-r-wide-residual-return-independent/Audit.lean",
+    "bytes": 26990,
+    "sha256": "8645b51e11ee9a4d24b89fad5b909c8d89032845ac0c3b445a79e6cb52387884"
+  },
+  "snapshot": {
+    "path": "runtime/audit-tmp/iqa-r-wide-residual-return-independent/003-audit.lean",
+    "bytes": 26990,
+    "sha256": "8645b51e11ee9a4d24b89fad5b909c8d89032845ac0c3b445a79e6cb52387884"
+  },
+  "lean_path": {
+    "path": "runtime/audit-tmp/iqa-r-wide-residual-return/lean-path.txt",
+    "bytes": 3262,
+    "sha256": "36875b5c3c4a364faabbefbca707f4052b5c1e78ed4cbff9ebe1b0165ef41d64"
+  },
+  "config": {
+    "path": "runtime/audit-tmp/iqa-r-wide-residual-return-independent/audit-config.json",
+    "bytes": 1474916,
+    "sha256": "8515df0cde1743b02f0c3b062e756dfd42b176a5901ba4512c57aeebef1d302a"
+  },
+  "config_snapshot": {
+    "path": "runtime/audit-tmp/iqa-r-wide-residual-return-independent/003-audit.config.json",
+    "bytes": 1474916,
+    "sha256": "8515df0cde1743b02f0c3b062e756dfd42b176a5901ba4512c57aeebef1d302a"
+  },
+  "old_source_recompiles": 0,
+  "old_ci_replays": 0,
+  "pid": 41135,
+  "exit_code": 0,
+  "natural_exit": true,
+  "elapsed_seconds": 47.69146066700341,
+  "source_unchanged": true,
+  "log": {
+    "path": "runtime/audit-tmp/iqa-r-wide-residual-return-independent/003-audit.log",
+    "bytes": 305,
+    "sha256": "ddea38c1b70939b3dab8be315e4bc25dea3ccef755ff6e63281702f16611fd7e"
+  }
+}

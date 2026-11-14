@@ -1,0 +1,30 @@
+import took 2.61s
+runtime/audit-tmp/iqa-cofinal-paid-trace/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/Operations/Morphism.lean:37:20: error: synthesized type class instance is not definitionally equal to expression inferred by typing rules, synthesized
+  ZSMul.toSMul
+inferred
+  DistribMulAction.toDistribSMul.toSMul
+runtime/audit-tmp/iqa-cofinal-paid-trace/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/Operations/Morphism.lean:37:50: error: synthesized type class instance is not definitionally equal to expression inferred by typing rules, synthesized
+  ZSMul.toSMul
+inferred
+  DistribMulAction.toDistribSMul.toSMul
+cumulative profiling times:
+	attribute application 0.184ms
+	congr simp thm 0.361ms
+	elaboration 23ms
+	fix level params 0.158ms
+	import 2.61s
+	initialization 19.4ms
+	instantiate metavars 0.237ms
+	interpretation 346ms
+	let-to-have transformation 9.65ms
+	linting 1.14ms
+	module linting 0.0005ms
+	overlappingInstancesLinter 2.54ms
+	parsing 1.29ms
+	process pre-definitions 7.66ms
+	share common exprs 0.444ms
+	simp 6.76ms
+	tactic execution 27.3ms
+	tacticAnalysis 2.21ms
+	type checking 16.5ms
+	typeclass inference 47.3ms

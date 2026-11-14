@@ -1,0 +1,60 @@
+import took 1.75s
+runtime/audit-tmp/iqa-cofinal-paid-derived/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/Operations/Closure/Continuation/Cochain.lean:38:8: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  (natComplex ?face).d 0 1
+in the target expression
+  component 0 ≫ (natComplex target).d 0 (0 + 1) = (natComplex source).d 0 (0 + 1) ≫ component (0 + 1)
+
+case zero
+A B G : Type u
+first : RootedAccountedUnfolding A
+later : RootedAccountedUnfolding B
+firstSeed laterSeed : RootedAccountedUnfolding (PresentedRelationEventAt G)
+firstContinue laterContinue :
+  RootedAccountedUnfolding (PresentedRelationEventAt G → RootedAccountedUnfolding (PresentedRelationEventAt G))
+source : RootGeneratedCofinalHistoryAt first firstSeed firstContinue
+target : RootGeneratedCofinalHistoryAt later laterSeed laterContinue
+relation : ↥source.relationClosure →ₗ[ℤ] ↥target.relationClosure
+generator : ↥source.generatorClosure →ₗ[ℤ] ↥target.generatorClosure
+square :
+  ∀ (word : ↥source.relationClosure),
+    generator ((relationInclusion source) word) = (relationInclusion target) (relation word)
+component : (degree : ℕ) → (natComplex source).X degree ⟶ (natComplex target).X degree :=
+  fun x =>
+    match x with
+    | 0 => ModuleCat.ofHom relation
+    | 1 => ModuleCat.ofHom generator
+    | n.succ.succ => 𝟙 ((natComplex source).X (n + 2))
+⊢ component 0 ≫ (natComplex target).d 0 (0 + 1) = (natComplex source).d 0 (0 + 1) ≫ component (0 + 1)
+runtime/audit-tmp/iqa-cofinal-paid-derived/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/Operations/Closure/Continuation/Cochain.lean:40:72: error(lean.unknownIdentifier): Unknown identifier `comp_zero`
+runtime/audit-tmp/iqa-cofinal-paid-derived/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/Operations/Closure/Continuation/Cochain.lean:84:10: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  contraction ((relationInclusion targetHistory) ?word)
+in the target expression
+  word = contraction ((relationInclusion targetHistory) word) + relationForward (relationBack word)
+
+case zero
+S Root NextRoot : Type u
+V X : S → Type u
+inst✝ : (s : S) → AddCommGroup (V s)
+s : S
+old : Env V X
+before middle after : Expr V X s
+root : RootedAccountedUnfolding Root
+prior : Trace old before middle
+nextRoot : RootedAccountedUnfolding NextRoot
+next : Trace old before after
+paid : words prior <+: words next
+word : ↑((natComplex targetHistory).X 0)
+⊢ word = contraction ((relationInclusion targetHistory) word) + relationForward (relationBack word)
+
+Note: The target expression is not type-correct under the `implicit` transparency level, which may have triggered the failure. This is usually caused by unfolding of semireducible definitions in prior tactic steps. Use `set_option linter.tacticCheckInstances true` to investigate the source of the issue.
+Full error:
+  Application type mismatch: The argument
+    word
+  has type
+    ↑((natComplex targetHistory).X 0)
+  but is expected to have type
+    ↥targetHistory.relationClosure
+  in the application
+    (relationInclusion targetHistory) word
+runtime/audit-tmp/iqa-cofinal-paid-derived/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/Operations/Closure/Continuation/Cochain.lean:85:80: error(lean.unknownIdentifier): Unknown identifier `zero_comp`
+runtime/audit-tmp/iqa-cofinal-paid-derived/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/Operations/Closure/Continuation/Cochain.lean:92:80: error: maximum number of errors (4; from option `maxErrors`) reached, exiting

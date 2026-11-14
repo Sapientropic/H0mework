@@ -1,0 +1,52 @@
+import took 1.64s
+runtime/audit-tmp/iqa-cofinal-paid-continuation/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/Operations/Closure/Continuation/Payment.lean:45:68: error: unsolved goals
+S Root NextRoot : Type u
+V X : S → Type u
+inst✝ : (s : S) → AddCommGroup (V s)
+s : S
+old : Env V X
+before middle after : Expr V X s
+prior : Trace old before middle
+next : Trace old before after
+root : RootedAccountedUnfolding Root
+nextRoot : RootedAccountedUnfolding NextRoot
+paid : words prior <+: words next
+word : ↥history[nextRoot,next].relationClosure
+embed : Fin (words prior).length ↪ Fin (words next).length := Fin.castLEEmb ⋯
+source : (Fin (words prior).length →₀ ℤ) ≃ₗ[ℤ] ↥history[root,prior].relationClosure := relationPaymentEquiv root prior
+target : (Fin (words next).length →₀ ℤ) ≃ₗ[ℤ] ↥history[nextRoot,next].relationClosure :=
+  relationPaymentEquiv nextRoot next
+push : ↥history[root,prior].relationClosure →ₗ[ℤ] ↥history[nextRoot,next].relationClosure :=
+  continuationRelation root nextRoot paid
+coordinateRange : word ∈ push.range ↔ target.symm word ∈ Set.range (Finsupp.mapDomain ⇑embed)
+outside : ∀ (index : Fin (words next).length), index ∉ Set.range ⇑embed ↔ (words prior).length ≤ ↑index
+⊢ (∀ (b : Fin (words next).length), (words prior).length ≤ ↑b → (target.symm word) b = 0) ↔
+    ∀ (index : Fin (words next).length),
+      (words prior).length ≤ ↑index → ((relationPaymentEquiv nextRoot next).symm word) index = 0
+cumulative profiling times:
+	attribute application 0.26ms
+	blocked (unaccounted) 4.06ms
+	compilation (IR) 0.366ms
+	compilation (LCNF base) 9.56ms
+	compilation (LCNF impure) 1.71ms
+	compilation (LCNF mono) 3.43ms
+	congr simp thm 0.895ms
+	dsimp 1.32ms
+	elaboration 77.6ms
+	fix level params 0.818ms
+	import 1.64s
+	initialization 19.4ms
+	instantiate metavars 1.08ms
+	interpretation 347ms
+	let-to-have transformation 6.25ms
+	linting 4.83ms
+	module linting 0.0005ms
+	overlappingInstancesLinter 3.47ms
+	parsing 3.27ms
+	process pre-definitions 12.1ms
+	share common exprs 2.91ms
+	simp 15.3ms
+	tactic execution 107ms
+	tacticAnalysis 10.5ms
+	type checking 42ms
+	typeclass inference 69.5ms

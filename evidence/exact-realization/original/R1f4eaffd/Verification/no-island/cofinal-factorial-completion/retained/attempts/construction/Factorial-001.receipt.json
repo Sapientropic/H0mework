@@ -1,0 +1,35 @@
+{
+  "stage": "Factorial",
+  "attempt": "001",
+  "command": [
+    "lean",
+    "--trust=0",
+    "-DElab.async=false",
+    "-DwarningAsError=true",
+    "-DmaxErrors=3",
+    "-j1",
+    "-M32000",
+    "-DstderrAsMessages=false",
+    "-Dprofiler=true",
+    "-Dprofiler.threshold=100",
+    "--root=runtime/audit-tmp/iqa-cofinal-factorial-completion/source-root/main",
+    "-o",
+    "runtime/audit-tmp/iqa-cofinal-factorial-completion/objects/Factorial-001.olean",
+    "runtime/audit-tmp/iqa-cofinal-factorial-completion/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/FiniteModulus/Factorial.lean"
+  ],
+  "source": "runtime/audit-tmp/iqa-cofinal-factorial-completion/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/FiniteModulus/Factorial.lean",
+  "source_sha256": "8449db40246d39560e41c44111ae29f19d21c0036b54e4bee90dcddc0498b679",
+  "source_snapshot": "runtime/audit-tmp/iqa-cofinal-factorial-completion/receipts/Factorial-001.lean",
+  "lean_path_sha256": "73bcdabf73eccfc71c6842743665d300ba5769e1ed97ee4a4e8542de65492b9d",
+  "old_compilations": 0,
+  "pid": 54347,
+  "exit_code": 1,
+  "elapsed_seconds": 13.78328162500111,
+  "source_unchanged": true,
+  "log_sha256": "e178ea9274f2ddb23ef74612fca22a8a3da0dd2aab4d54d94b63b8f5e4ccad7b",
+  "log_bytes": 1102,
+  "object": {
+    "path": "runtime/audit-tmp/iqa-cofinal-factorial-completion/objects/Factorial-001.olean",
+    "present": false
+  }
+}

@@ -1,0 +1,92 @@
+import took 6.45s
+runtime/audit-tmp/iqa-sparse-moment-source/source-root/main/SaturationMonoid/GenericFoundation/Scalar/Feature/FiniteGram/SparseMoment.lean:146:68: error: This simp argument is unused:
+  if_pos rfl
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [monic, Polynomial.coeff_add, Polynomial.coeff_monomial, Polynomial.finsetSum_coeff]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+runtime/audit-tmp/iqa-sparse-moment-source/source-root/main/SaturationMonoid/GenericFoundation/Scalar/Feature/FiniteGram/SparseMoment.lean:213:8: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  hankel (moments clock source) source.support.card *ᵥ coefficients (moments clock source) source.support.card
+in the target expression
+  let r := source.support.card;
+  have atSite := slots source.support;
+  have V := powers (fun j => clock ↑(atSite j)) r;
+  (V *ᵥ fun j => source ↑(atSite j) * Polynomial.eval (clock ↑(atSite j)) (monic coeff)) =
+    (fun i => moments clock source (↑i + r)) + hankel (moments clock source) r *ᵥ coeff
+
+I : Type u
+K : Type v
+inst✝ : Field K
+clock : I → K
+distinct : Function.Injective clock
+source : I →₀ K
+bound : ℕ
+within : source.support.card ≤ bound
+site : I
+active : site ∈ source.support
+r : ℕ := source.support.card
+atSite : Fin source.support.card → ↥source.support := slots source.support
+nodes : Fin source.support.card → K := fun j => clock ↑(atSite j)
+V : Matrix (Fin r) (Fin source.support.card) K := powers nodes r
+coeff : Fin r → K := coefficients (moments clock source) r
+z : Fin source.support.card → K := fun j => source ↑(atSite j) * Polynomial.eval (nodes j) (monic coeff)
+square :
+  let r := source.support.card;
+  have atSite := slots source.support;
+  have V := powers (fun j => clock ↑(atSite j)) r;
+  (V *ᵥ fun j => source ↑(atSite j) * Polynomial.eval (clock ↑(atSite j)) (monic coeff)) =
+    (fun i => moments clock source (↑i + r)) + hankel (moments clock source) r *ᵥ coeff
+⊢ V *ᵥ z = 0
+runtime/audit-tmp/iqa-sparse-moment-source/source-root/main/SaturationMonoid/GenericFoundation/Scalar/Feature/FiniteGram/SparseMoment.lean:301:4: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  (powers (fun j => clock ↑(slots source.support j)) source.support.card)⁻¹ *ᵥ fun i =>
+    padded (measure clock source bound) ↑i
+in the target expression
+  (have sites := source.support;
+    have V := powers (fun j => clock ↑(slots sites j)) sites.card;
+    fromSlots sites (V⁻¹ *ᵥ fun i => padded (measure clock source bound) ↑i)) =
+    source
+
+I : Type u
+K : Type v
+inst✝ : Field K
+clock : I → K
+distinct : Function.Injective clock
+available : Finset I
+source : I →₀ K
+availableSource : source.support ⊆ available
+bound : ℕ
+within : source.support.card ≤ bound
+⊢ (have sites := source.support;
+    have V := powers (fun j => clock ↑(slots sites j)) sites.card;
+    fromSlots sites (V⁻¹ *ᵥ fun i => padded (measure clock source bound) ↑i)) =
+    source
+cumulative profiling times:
+	attribute application 1.17ms
+	blocked (unaccounted) 5.38ms
+	compilation (IR) 0.378ms
+	compilation (LCNF base) 3.18ms
+	compilation (LCNF impure) 1.23ms
+	compilation (LCNF mono) 3.64ms
+	congr simp thm 1.26ms
+	dsimp 0.683ms
+	elaboration 115ms
+	fix level params 2.13ms
+	import 6.45s
+	initialization 27.2ms
+	instantiate metavars 2.69ms
+	interpretation 491ms
+	let-to-have transformation 2.31ms
+	linting 18.6ms
+	module linting 0.000542ms
+	norm_num 0.556ms
+	overlappingInstancesLinter 14.5ms
+	parsing 15ms
+	process pre-definitions 17.7ms
+	ring 18.3ms
+	share common exprs 7.46ms
+	simp 44.7ms
+	tactic execution 237ms
+	tacticAnalysis 26.2ms
+	type checking 80.2ms
+	typeclass inference 143ms

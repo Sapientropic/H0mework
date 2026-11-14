@@ -1,0 +1,51 @@
+import took 2.33s
+type checking took 113ms
+type checking took 206ms
+elaboration took 7.08s
+runtime/audit-tmp/iqa-cofinal-finite-modulus/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/FiniteModulus.lean:76:28: error: Function expected at
+  TensorProduct.quotTensorEquivQuotSMul_mk_one_tmul ?m.113 (primeIdeal primes depth p)
+but this term has type
+  (TensorProduct.quotTensorEquivQuotSMul (Ideal ℤ) ?m.113) (1 ⊗ₜ[?m.108] primeIdeal primes depth p) =
+    Submodule.Quotient.mk (primeIdeal primes depth p)
+
+Note: Expected a function because this term is being applied to the argument
+  value
+runtime/audit-tmp/iqa-cofinal-finite-modulus/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/FiniteModulus.lean:76:78: error: Application type mismatch: The argument
+  L
+has type
+  Type u
+but is expected to have type
+  Ideal ?m.108
+in the application
+  TensorProduct.quotTensorEquivQuotSMul_mk_one_tmul L
+runtime/audit-tmp/iqa-cofinal-finite-modulus/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/FiniteModulus.lean:109:2: error: (deterministic) timeout at `isDefEq`, maximum number of heartbeats (200000) has been reached
+
+Note: Use `set_option maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+cumulative profiling times:
+	attribute application 0.161ms
+	blocked (unaccounted) 1.01ms
+	compilation (IR) 0.193ms
+	compilation (LCNF base) 3.89ms
+	compilation (LCNF impure) 1.21ms
+	compilation (LCNF mono) 1.81ms
+	congr simp thm 0.687ms
+	elaboration 7.17s
+	fix level params 0.657ms
+	import 2.33s
+	initialization 20ms
+	instantiate metavars 0.862ms
+	interpretation 386ms
+	let-to-have transformation 0.129ms
+	linting 4.84ms
+	module linting 0.000584ms
+	overlappingInstancesLinter 5.8ms
+	parsing 5.07ms
+	process pre-definitions 24.5ms
+	share common exprs 2.39ms
+	simp 13.2ms
+	tactic execution 192ms
+	tacticAnalysis 10ms
+	type checking 469ms
+	typeclass inference 430ms

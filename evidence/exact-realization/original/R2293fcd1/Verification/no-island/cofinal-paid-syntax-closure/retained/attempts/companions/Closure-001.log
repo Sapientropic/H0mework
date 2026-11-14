@@ -1,0 +1,65 @@
+import took 4.53s
+interpretation of Lean.Elab.Command.elabOpenPrivate._boxed took 381ms
+type checking took 24s
+runtime/audit-tmp/iqa-cofinal-paid-closure/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/Operations/Closure.lean:42:4: error: unsolved goals
+case refine_1.snd
+S Root : Type u
+V X : S → Type u
+inst✝ : (s : S) → AddCommGroup (V s)
+s : S
+old : Env V X
+before after : Expr V X s
+root : RootedAccountedUnfolding Root
+paid : Trace old before after
+read : ↥history[root,paid].generatorClosure →ₗ[ℤ] (Fin (words paid).length →₀ ℤ) × ℤ :=
+  (readPayment paid ∘ₗ history[root,paid].generatorClosure.subtype).prod
+    (coefficientSum ∘ₗ history[root,paid].generatorClosure.subtype)
+write : (Fin (words paid).length →₀ ℤ) →ₗ[ℤ] ↑((natComplex history[root,paid]).X 1) :=
+  ModuleCat.Hom.hom ((natComplex history[root,paid]).d 0 1) ∘ₗ ↑(relationPaymentEquiv root paid)
+terminal : ℤ →ₗ[ℤ] ↥history[root,paid].generatorClosure :=
+  LinearMap.toSpanSingleton ℤ (↥history[root,paid].generatorClosure) (terminalGenerator root paid)
+restore : (Fin (words paid).length →₀ ℤ) × ℤ →ₗ[ℤ] ↑((natComplex history[root,paid]).X 1) := write.coprod terminal
+charges : Fin (words paid).length →₀ ℤ
+coefficient : ℤ
+recovered : ↑(restore (charges, coefficient)) = (writePayment paid) charges + Finsupp.single after coefficient
+balanced : coefficientSum ((writePayment paid) charges) = 0
+⊢ (Finsupp.linearCombination ℤ fun x => 1) ((writePayment paid) charges) + coefficient = coefficient
+runtime/audit-tmp/iqa-cofinal-paid-closure/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/Operations/Closure.lean:45:26: error: This simp argument is unused:
+  balanced
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [map_add, zero_add, coefficientSum, Finsupp.linearCombination_single, smul_eq_mul, mul_one]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+runtime/audit-tmp/iqa-cofinal-paid-closure/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/Operations/Closure.lean:45:36: error: This simp argument is unused:
+  zero_add
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [map_add, balanced, coefficientSum, Finsupp.linearCombination_single, smul_eq_mul, mul_one]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+cumulative profiling times:
+	attribute application 0.743ms
+	compilation (IR) 0.358ms
+	compilation (LCNF base) 11.6ms
+	compilation (LCNF impure) 2.25ms
+	compilation (LCNF mono) 3.76ms
+	congr simp thm 0.255ms
+	elaboration 82.3ms
+	fix level params 1.23ms
+	import 4.53s
+	initialization 18.6ms
+	instantiate metavars 0.707ms
+	interpretation 832ms
+	let-to-have transformation 42.5ms
+	linting 5.47ms
+	module linting 0.0005ms
+	overlappingInstancesLinter 4.27ms
+	parsing 3.68ms
+	process pre-definitions 26ms
+	share common exprs 3.21ms
+	simp 5.06ms
+	tactic execution 277ms
+	tacticAnalysis 11.4ms
+	type checking 24.1s
+	typeclass inference 136ms

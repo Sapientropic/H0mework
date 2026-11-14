@@ -1,0 +1,35 @@
+{
+  "stage": "Derived",
+  "attempt": "001",
+  "command": [
+    "lean",
+    "--trust=0",
+    "-DElab.async=false",
+    "-DwarningAsError=true",
+    "-DmaxErrors=3",
+    "-j1",
+    "-M32000",
+    "-DstderrAsMessages=false",
+    "-Dprofiler=true",
+    "-Dprofiler.threshold=100",
+    "--root=runtime/audit-tmp/iqa-cofinal-derived-stage-limit/source-root/main",
+    "-o",
+    "runtime/audit-tmp/iqa-cofinal-derived-stage-limit/objects/Derived-001.olean",
+    "runtime/audit-tmp/iqa-cofinal-derived-stage-limit/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/Cochain/DerivedLimit.lean"
+  ],
+  "source": "runtime/audit-tmp/iqa-cofinal-derived-stage-limit/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/Cochain/DerivedLimit.lean",
+  "source_sha256": "b545fb84a10e78e4b32132c35692a5050b2204b3550d9f5528f1140d08c164dc",
+  "source_snapshot": "runtime/audit-tmp/iqa-cofinal-derived-stage-limit/receipts/Derived-001.lean",
+  "lean_path_sha256": "a83d072e098886bab1b561019ec577c09dfed606db5beda2cc9d32778e71d22f",
+  "old_compilations": 0,
+  "pid": 79094,
+  "exit_code": 1,
+  "elapsed_seconds": 3.1292341250082245,
+  "source_unchanged": true,
+  "log_sha256": "0d75343a260d43942d385c663230eef398a4fc068833263b4ac5bc6b92ab7c52",
+  "log_bytes": 1760,
+  "object": {
+    "path": "runtime/audit-tmp/iqa-cofinal-derived-stage-limit/objects/Derived-001.olean",
+    "present": false
+  }
+}

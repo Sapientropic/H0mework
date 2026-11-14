@@ -1,0 +1,35 @@
+{
+  "schema": "cp591-independent-controls/v1",
+  "accepted": true,
+  "typed_controls": [
+    [
+      "+",
+      "actual_receipt_original_whole_next"
+    ],
+    [
+      "+",
+      "actual_preserved_receipt_and_paid_prices"
+    ],
+    [
+      "+",
+      "actual_matrix_and_birth_decoder"
+    ],
+    [
+      "+",
+      "actual_dual_stock_writeback_and_next"
+    ],
+    [
+      "-",
+      "actual_new_receipt_not_retained"
+    ]
+  ],
+  "receipt": {
+    "bytes": 841,
+    "sha256": "fc7cb031fe9dd58a0c53373be9545fe650f63c934a12810d6426f72e87c1103c"
+  },
+  "log": {
+    "bytes": 295,
+    "sha256": "a578bd3029e0b041cf2f7dae847d42409e662a7d45a5f1aed97a42fc467a2af3"
+  },
+  "transcript": "CP591_CONTROL + actual_receipt_original_whole_next\nCP591_CONTROL + actual_preserved_receipt_and_paid_prices\nCP591_CONTROL + actual_matrix_and_birth_decoder\nCP591_CONTROL + actual_dual_stock_writeback_and_next\nCP591_CONTROL - actual_new_receipt_not_retained\nCP591_GATE_PASS positive=4 negative=1\n"
+}

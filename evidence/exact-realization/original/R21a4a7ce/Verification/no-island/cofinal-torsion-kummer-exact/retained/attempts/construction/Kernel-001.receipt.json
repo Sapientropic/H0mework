@@ -1,0 +1,35 @@
+{
+  "stage": "Kernel",
+  "attempt": "001",
+  "command": [
+    "lean",
+    "--trust=0",
+    "-DElab.async=false",
+    "-DwarningAsError=true",
+    "-DmaxErrors=7",
+    "-j1",
+    "-M32000",
+    "-DstderrAsMessages=false",
+    "-Dprofiler=true",
+    "-Dprofiler.threshold=100",
+    "--root=runtime/audit-tmp/iqa-cofinal-torsion-kernel/source-root/main",
+    "-o",
+    "runtime/audit-tmp/iqa-cofinal-torsion-kernel/objects/Kernel-001.olean",
+    "runtime/audit-tmp/iqa-cofinal-torsion-kernel/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/CokernelTorsion/CoherentKernel.lean"
+  ],
+  "source": "runtime/audit-tmp/iqa-cofinal-torsion-kernel/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/CokernelTorsion/CoherentKernel.lean",
+  "source_sha256": "b0021746678ee4c37e4a36c2dfffd41d39fe4a2af5b4343bd81e382f48abd59b",
+  "source_snapshot": "runtime/audit-tmp/iqa-cofinal-torsion-kernel/receipts/Kernel-001.lean",
+  "lean_path_sha256": "ba4eb5fb3081a73639b1d886ef400c394a738f5d84b41a2bcbb5e17a8babb07e",
+  "old_compilations": 0,
+  "pid": 99131,
+  "exit_code": 1,
+  "elapsed_seconds": 5.0250373750022845,
+  "source_unchanged": true,
+  "log_sha256": "3735d8682398553f1ad7b3e127d96b7900e8e3722055f5b1909990aae9f646cc",
+  "log_bytes": 2777,
+  "object": {
+    "path": "runtime/audit-tmp/iqa-cofinal-torsion-kernel/objects/Kernel-001.olean",
+    "present": false
+  }
+}

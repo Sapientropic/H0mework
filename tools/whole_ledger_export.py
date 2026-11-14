@@ -46,7 +46,6 @@ INHERITED_FIELDS = ("local_instance_names", "proof_body_rewrites", "build_adapta
 # A project-relative address such as .agents/tmp/x is not an absolute /tmp/x.
 # Compiler -I/-L paths and escaped console newlines still begin runtime roots.
 RUNTIME_BOUNDARY = r'(?:(?<![A-Za-z0-9_./])|(?<=\\n)|(?<=\\r)|(?<=\\t)|(?<=-I)|(?<=-L)|(?<=-R)|(?<=-o)|(?<=-c))'
-PRIVATE_PATH = re.compile(RUNTIME_BOUNDARY + r'(?:/(?:Users|home|home2)/[^/\s"\\]+/[^\s"\\:;]*|/var/folders/[^\s"\\:;]*)')
 UNDECLARED_PATH = re.compile(RUNTIME_BOUNDARY + r'(?:/(?:Users|home|home2|tmp|Volumes)/[^\s"\\:;]+|/private/(?:tmp|var)/[^\s"\\:;]*|/var/folders/[^\s"\\:;]*)')
 
 
@@ -293,18 +292,18 @@ def runtime_declarations(raw: bytes):
             if original.endswith("/bin/lean"):
                 return "lean"
             return "runtime/" + "/".join(parts[3:])
-        return PRIVATE_PATH.sub(replace, value)
+        return UNDECLARED_PATH.sub(replace, value)
     result = []
     def visit(value, pointer):
         if isinstance(value, dict):
             for index, (key, item) in enumerate(value.items()):
-                if PRIVATE_PATH.search(key):
+                if UNDECLARED_PATH.search(key):
                     result.append({"pointer": pointer, "key_index": index, "relative": public_runtime(key)})
                 visit(item, pointer + "/" + key.replace("~", "~0").replace("/", "~1"))
         elif isinstance(value, list):
             for index, item in enumerate(value):
                 visit(item, pointer + "/" + str(index))
-        elif isinstance(value, str) and PRIVATE_PATH.search(value):
+        elif isinstance(value, str) and UNDECLARED_PATH.search(value):
             result.append({"pointer": pointer, "relative": public_runtime(value)})
     visit(json.loads(raw), "")
     return result
@@ -564,11 +563,22 @@ class Planner:
         elif self.git.exists(commit, path):
             original = self.git.read(commit, path)
             digest = sha(original)
-            supplements = [(owner, record) for owner, record in self.by_path[path]
-                           if record.get("source_origin", {}).get("original_source_sha256") == digest
-                           and record["source_sha256"] != digest]
+            # An admitted unmodified epoch takes precedence over a repair that
+            # was needed for the same original text in a different environment.
+            candidates = self.by_path[path]
+            if key in self.fixed_owners:
+                retained_original = any(owner["target"] == self.fixed_owners[key]
+                                        and record["source_sha256"] == digest
+                                        for owner, record in candidates)
+            else:
+                retained_original = any(sv.row_at(record, commit) and record["source_sha256"] == digest
+                                        for _, record in candidates)
+            supplements = [] if retained_original else [
+                (owner, record) for owner, record in candidates
+                if record.get("source_origin", {}).get("original_source_sha256") == digest
+                and record["source_sha256"] != digest]
             epoch_bound_git_supplement = False
-            if not supplements:
+            if not supplements and not retained_original:
                 # Earlier signed Git supplements predate original_source_sha256.
                 # Their exact admitted epoch/path is the binding; this fallback
                 # cannot carry a repair to an unregistered later epoch.
@@ -751,12 +761,12 @@ class Planner:
                     text = raw.decode("utf-8")
                     metadata = self.provider_metadata.get(source_key(commit, row["source"]), {})
                     declared = metadata.get("runtime_paths")
-                    if declared is not None or PRIVATE_PATH.search(text):
+                    if declared is not None or UNDECLARED_PATH.search(text):
                         # Same fixed text-span publication contract as plan_artifacts.
                         rules = declared if declared is not None else [
                             {"begin": match.start(), "end": match.end(), "relative": public_text_path(match.group())}
-                            for match in PRIVATE_PATH.finditer(text)]
-                        kind = pub.TEXT_RUNTIME_KIND if declared is not None else pub.TEXT_KIND
+                            for match in UNDECLARED_PATH.finditer(text)]
+                        kind = pub.TEXT_RUNTIME_KIND
                         raw = pub.text_runtime_paths(raw, rules, kind=kind)
                         outputs[row["path"]] = raw
                         row["publication"] = {"kind": kind, "runtime_paths": rules,
@@ -1106,7 +1116,8 @@ class Planner:
                         "comparison": "source_view recursive full-source layout identity", "layout_sha256": layouts[key]}
                 if not sv.row_at(record, source["source_commit"]):
                     if record is owner and record.get("source_origin") == source.get("source_origin"):
-                        revision_updates.setdefault(target, set(owner["source_revisions"])).add(source["source_commit"])
+                        recorded = owner.get("source_revisions", [owner["source_revision"]])
+                        revision_updates.setdefault(target, set(recorded)).add(source["source_commit"])
                     else:
                         alias_updates[target].append(self.alias(key, signature, owner["source_path"]))
                 signature_owners.setdefault(signature, target)

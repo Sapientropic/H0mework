@@ -1,0 +1,55 @@
+import took 6.76s
+interpretation of Lean.Elab.Command.elabOpenPrivate._boxed took 546ms
+interpretation of Lean.Elab.Command.elabOpenPrivate._boxed took 453ms
+type checking took 135ms
+type checking took 200ms
+type checking took 105ms
+elaboration took 7.8s
+elaboration took 195ms
+runtime/audit-tmp/iqa-cofinal-paid-cochain-homology-independent/Gate.lean:103:83: error: Application type mismatch: The argument
+  read
+has type
+  @LinearEquiv ℤ ℤ Int.instSemiring Int.instSemiring (RingHom.id ℤ) (RingHom.id ℤ) ⋯ ⋯ (↑H) (↑(Completion prime))
+    H.isAddCommGroup.toAddCommMonoid (Completion prime).isAddCommGroup.toAddCommMonoid H.isModule
+    (Completion prime).isModule
+but is expected to have type
+  @LinearEquiv ℤ ℤ Int.instSemiring Int.instSemiring (RingHom.id ℤ) (RingHom.id ℤ) ⋯ ⋯ (↑H)
+    (↑(Completion CP750Independent.binary)) AddCommGroup.toAddCommMonoid
+    (Completion CP750Independent.binary).isAddCommGroup.toAddCommMonoid (AddCommGroup.toIntModule ↑H)
+    (Completion CP750Independent.binary).isModule
+in the application
+  CP750Independent.the_lifted_terminal_unit_survives_the_first_binary_layer
+    (actualPaidCompletion observation nontrivial half depth ordinal) unit
+    (actual_paid_completion_source_unit observation nontrivial half depth ordinal) read
+CP750_CONTROL + the_original_projection_splits_and_reads_every_observed_H1_class
+CP750_CONTROL + every_original_R_H1_charge_reaches_its_stage_and_literal_model_next
+CP750_CONTROL + independent_original_R_Division_K_whole_and_model_action
+CP750_CONTROL + the_fixed_target_paid_H1_restricts_and_advances_with_its_original_terminal
+CP750_CONTROL - deleting_the_original_R_terminal_H1_charge_changes_its_binary_read
+CP750_GATE_PASS positive=4 negative=1
+cumulative profiling times:
+	attribute application 0.671ms
+	compilation (IR) 0.416ms
+	compilation (LCNF base) 6.91ms
+	compilation (LCNF impure) 1.8ms
+	compilation (LCNF mono) 3.69ms
+	congr simp thm 0.396ms
+	elaboration 8.14s
+	fix level params 3.03ms
+	import 6.76s
+	initialization 18.9ms
+	instantiate metavars 2.44ms
+	interpretation 2.81s
+	let-to-have transformation 99ms
+	linting 15.9ms
+	module linting 0.000625ms
+	norm_num 4.4ms
+	overlappingInstancesLinter 7.8ms
+	parsing 9.51ms
+	process pre-definitions 26.8ms
+	share common exprs 16ms
+	simp 7.41ms
+	tactic execution 56.7ms
+	tacticAnalysis 19.7ms
+	type checking 579ms
+	typeclass inference 442ms

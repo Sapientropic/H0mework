@@ -1,0 +1,35 @@
+{
+  "stage": "Readback",
+  "attempt": "001",
+  "command": [
+    "lean",
+    "--trust=0",
+    "-DElab.async=false",
+    "-DwarningAsError=true",
+    "-DmaxErrors=3",
+    "-j1",
+    "-M32000",
+    "-DstderrAsMessages=false",
+    "-Dprofiler=true",
+    "-Dprofiler.threshold=100",
+    "--root=runtime/audit-tmp/iqa-cofinal-factorial-completion/source-root/main",
+    "-o",
+    "runtime/audit-tmp/iqa-cofinal-factorial-completion/objects/Readback-001.olean",
+    "runtime/audit-tmp/iqa-cofinal-factorial-completion/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/FiniteModulus/Factorial/Readback.lean"
+  ],
+  "source": "runtime/audit-tmp/iqa-cofinal-factorial-completion/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/FiniteModulus/Factorial/Readback.lean",
+  "source_sha256": "0c916efc1f1e7ac17ada231428091238ffc1e7dc1988ac28439af7f5ce80e254",
+  "source_snapshot": "runtime/audit-tmp/iqa-cofinal-factorial-completion/receipts/Readback-001.lean",
+  "lean_path_sha256": "73bcdabf73eccfc71c6842743665d300ba5769e1ed97ee4a4e8542de65492b9d",
+  "old_compilations": 0,
+  "pid": 55793,
+  "exit_code": 1,
+  "elapsed_seconds": 10.814691749998019,
+  "source_unchanged": true,
+  "log_sha256": "ac319adc4a6e883e29c8d80a4559e5ca6910505d4cc11c496ed461c84de2cad3",
+  "log_bytes": 1551,
+  "object": {
+    "path": "runtime/audit-tmp/iqa-cofinal-factorial-completion/objects/Readback-001.olean",
+    "present": false
+  }
+}

@@ -111,7 +111,7 @@ def selected_views(root, *, exact=False, private_originals=None, selection_path=
     used_bindings, matched, restored_supplements = set(), set(), set()
     with source_root(root):
         exported, modules, artifacts, inverse = source_view.load_map()
-        epochs, resources, todo = {}, {}, []
+        epochs, resources, todo, restored = {}, {}, [], {}
 
         def module_at(epoch, path):
             rows = modules.get(path, [])
@@ -136,7 +136,12 @@ def selected_views(root, *, exact=False, private_originals=None, selection_path=
                 continue
             row = module_at(epoch, path)
             require(row is not None, "Selected original module is not exported at its epoch: " + path)
-            public, original = source_view.module_views(row, inverse)
+            # Epoch aliases can share a compiled owner and the same original path.
+            view_key = row["target"], path
+            if view_key not in restored:
+                public, original = source_view.module_views(row, inverse)
+                restored[view_key] = public, original, source_view.import_tokens(public.decode())
+            public, original, tokens = restored[view_key]
             supplement = supplements.get((epoch, path))
             if supplement is not None:
                 origin = row.get("source_origin", {})
@@ -158,7 +163,7 @@ def selected_views(root, *, exact=False, private_originals=None, selection_path=
                 restored_supplements.add((epoch, path))
             state["modules"][path] = row
             state["outputs"][path] = original if exact else public
-            for _, _, name in source_view.import_tokens(public.decode()):
+            for _, _, name in tokens:
                 if name.split(".")[0] in source_view.EXTERNAL:
                     continue
                 key = whole_ledger_export.source_key(epoch, path), name
@@ -169,11 +174,10 @@ def selected_views(root, *, exact=False, private_originals=None, selection_path=
                     require(owner is not None and owner["source_sha256"] == digest,
                             "Fixed original import source differs: " + path + " -> " + name)
                     if (row.get("import_map") or {}).get(owner["target"]) != name:
-                        restored = source_view.import_tokens(public.decode())
                         compiled = source_view.import_tokens((root / row["path"]).read_text())
-                        actual = [target for (_, _, original_name), (_, _, target) in zip(restored, compiled)
+                        actual = [target for (_, _, original_name), (_, _, target) in zip(tokens, compiled)
                                   if original_name == name]
-                        require(len(restored) == len(compiled) and len(actual) == 1
+                        require(len(tokens) == len(compiled) and len(actual) == 1
                                 and same_compiled_source(root, inverse, actual[0], owner["target"], matched),
                                 "Fixed public import binding differs: " + path + " -> " + name)
                     used_bindings.add(key)

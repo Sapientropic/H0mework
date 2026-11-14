@@ -1,0 +1,21 @@
+import took 2.19s
+type checking took 124ms
+runtime/audit-tmp/iqa-cofinal-finite-modulus/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/FiniteModulus.lean:27:39: error(lean.unknownIdentifier): Unknown constant `Int.ofNat_pos.mpr`
+runtime/audit-tmp/iqa-cofinal-finite-modulus/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/FiniteModulus.lean:36:2: error: Type mismatch: After simplification, term
+  Nat.Coprime.isCoprime powers
+ has type
+  @IsCoprime ℤ Int.instCommSemiring (↑↑↑p ^ (depth p + 1)) (↑↑↑q ^ (depth q + 1))
+but is expected to have type
+  @IsCoprime ℤ Int.instCommSemiring (primeModulus primes depth p) (primeModulus primes depth q)
+runtime/audit-tmp/iqa-cofinal-finite-modulus/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/FiniteModulus.lean:63:41: error: unsolved goals
+L : Type u
+inst✝ : AddCommGroup L
+primes : Finset Nat.Primes
+depth : ↥primes → ℕ
+value : L
+p : ↥primes
+⊢ Submodule.Quotient.mk value =
+    ((TensorProduct.quotTensorEquivQuotSMul L (primeIdeal primes depth p)).trans
+        ((primeIdeal primes depth p • ⊤).quotEquivOfEq (powerRange (↑p) (depth p)) ⋯))
+      (1 ⊗ₜ[ℤ] value)
+runtime/audit-tmp/iqa-cofinal-finite-modulus/source-root/main/SaturationMonoid/GenericFoundation/Cofinal/Topology/FiniteModulus.lean:68:26: error: maximum number of errors (3; from option `maxErrors`) reached, exiting
