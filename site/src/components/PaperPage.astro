@@ -48,6 +48,11 @@ claims.forEach((claim, i) => {
   if (grouped && claim.chapter && claim.chapter !== claims[i - 1]?.chapter) items.push({ kind: "chapter", key: claim.chapter, title: chapters.get(claim.chapter) });
   items.push({ kind: "claim", claim });
 });
+const proofFigures = slug === "exact-realization" ? [
+  { file: "fig2-torsion-picard", height: 882, claim: "R58", title: lang === "zh" ? "阶乘完备化与整源判据" : "Factorial completion and integral descent" },
+  { file: "fig3-sparse-hankel", height: 599, claim: "R49", title: lang === "zh" ? "Hankel 定阶、支撑与权重恢复" : "Hankel order, support, and weight recovery" },
+  { file: "fig4-hilbert-cayley", height: 853, claim: "R61", title: lang === "zh" ? "Cayley 双边逆与截断误差" : "The two-sided Cayley inverse and its truncation error" },
+] : [];
 // The English note covers every row; a Chinese page names the rows registered in English.
 const translated = lang === "zh" ? labelOf(claims.filter((claim) => claim.translated).flatMap((claim) => claim.ids)) : "";
 const chapterLabel = (key: string) => (/\d/.test(key) ? fill(t.chapter, key) : fill(t.appendix, key));
@@ -89,6 +94,24 @@ const chapterLabel = (key: string) => (/\d/.test(key) ? fill(t.chapter, key) : f
         <Fragment set:html={[...paper.abstract.shown, ...paper.abstract.folded].join("")} />
       </div>
     </section>
+    {!!proofFigures.length && (
+      <section class="section proof-figures" id="proof-diagrams" aria-label={lang === "zh" ? "推导图" : "Proof diagrams"}>
+        <h2>{lang === "zh" ? "推导图" : "Proof diagrams"}</h2>
+        {proofFigures.map(({ file, height, claim, title }) => {
+          const href = `/papers/exact-realization/figures/${file}${lang === "en" ? "-en" : ""}.svg`;
+          return <figure>
+            <div class="figure-viewport" role="group" tabindex="0" aria-labelledby={`caption-${file}`}>
+              <img src={href} width="1000" height={height} alt={title} loading="lazy" decoding="async" />
+            </div>
+            <figcaption id={`caption-${file}`}>
+              <span>{title}</span>
+              <a href={`#exact.${claim}`}>{claim}</a>
+              <a href={href} aria-label={lang === "zh" ? `打开${title}原图` : `Open ${title} at full size`}>{lang === "zh" ? "原图" : "Full size"}</a>
+            </figcaption>
+          </figure>;
+        })}
+      </section>
+    )}
     <section class="section" id="claims">
       <h2>{t.claims}</h2>
       <p class="note prose">{paper.claimsNote ?? t.claimsNote}{translated && fill(t.translatedNote, translated)}</p>
@@ -249,3 +272,10 @@ const chapterLabel = (key: string) => (/\d/.test(key) ? fill(t.chapter, key) : f
     </nav>
   </div>
 </Base>
+
+<style is:global>
+  .proof-figures figure { margin: 1.4rem 0 2rem; }
+  .proof-figures .figure-viewport { overflow-x: auto; }
+  .proof-figures img { display: block; width: 100%; min-width: 720px; height: auto; }
+  .proof-figures figcaption { display: flex; flex-wrap: wrap; gap: .15rem 1rem; margin-top: .45rem; }
+</style>

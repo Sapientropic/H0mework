@@ -3,7 +3,7 @@
 <p align="center">
   <a href="https://github.com/Sapientropic/H0mework/actions/workflows/ci.yml"><img alt="CI" src="https://img.shields.io/github/actions/workflow/status/Sapientropic/H0mework/ci.yml?branch=main&style=flat-square&label=CI"></a>
   <a href="https://h0mework.wiki"><img alt="网站 h0mework.wiki" src="https://img.shields.io/badge/%E7%BD%91%E7%AB%99-h0mework.wiki-b3372c?style=flat-square"></a>
-  <a href="#论文"><img alt="Zenodo 论文 10 篇" src="https://img.shields.io/badge/Zenodo-10%20%E7%AF%87%E8%AE%BA%E6%96%87-3c679f?style=flat-square"></a>
+  <a href="#论文"><img alt="Zenodo 论文 11 篇" src="https://img.shields.io/badge/Zenodo-11%20%E7%AF%87%E8%AE%BA%E6%96%87-3c679f?style=flat-square"></a>
   <a href="LICENSE"><img alt="Apache-2.0" src="https://img.shields.io/badge/license-Apache--2.0-3a332b?style=flat-square"></a>
 </p>
 
@@ -18,7 +18,7 @@
 <!-- BEGIN CI STATUS -->
 <a href="https://github.com/Sapientropic/H0mework/actions/runs/43311434613"><img src="docs/assets/ci-wall.svg" alt="Lean 完整选集：62,714 个模块，11 个阶段、108 个分片，全部通过" width="100%"></a>
 
-- **62,714 个 Lean 模块通过完整内核验收。** [验收运行](https://github.com/Sapientropic/H0mework/actions/runs/43311434613) 使用 11 个阶段、108 个分片，全包 `--trust=0`，提交 `f337e63a`。
+- **62,714 个 Lean 模块通过完整内核验收。** [验收运行](https://github.com/Sapientropic/H0mework/actions/runs/43311434613) 使用 11 个阶段、108 个分片，全包 `--trust=0`，提交 `f337e63a`。当前构建覆盖 63,410 个模块、117 个分片。
 <!-- END CI STATUS -->
 
 - **论文引用的声明逐版再审。** 完整依赖闭包只使用 Lean 标准三条公理，`unsafe = 0`、`partial = 0`；各篇验收与复现入口列在下方论文分组中。
@@ -29,7 +29,7 @@
 <!-- BEGIN PAPERS -->
 **[在网站上浏览全部论文，读摘要并逐条展开证明 →](https://h0mework.wiki/papers/)**
 
-最新：[可能性的经济宪法](https://h0mework.wiki/papers/economic-constitution/) · [无截断非交换极化曲率、母作用二阶变分认回与整球响应张量的 (2,1) 惯性律](https://h0mework.wiki/papers/low-energy-loop-response/)
+最新：[忠实表示与精确反演](https://h0mework.wiki/papers/exact-realization/) · [可能性的经济宪法](https://h0mework.wiki/papers/economic-constitution/)
 
 <details>
 <summary><strong>总序</strong> · 1 篇</summary>
@@ -39,10 +39,11 @@
 </details>
 
 <details>
-<summary><strong>核心方法</strong> · 2 篇</summary>
+<summary><strong>核心方法</strong> · 3 篇</summary>
 
 - [源生过程代数与初始余面修订](https://h0mework.wiki/papers/source-process-core/) · [v3](https://doi.org/10.5281/zenodo.24147130) · [映射](docs/source-process-core-v3-map.json) · [复现](docs/source-process-core-v3-reproduction.md)
 - [溯源守恒演算与非免费连续性](https://h0mework.wiki/papers/whole-ledger-accounting/) · [v2](https://doi.org/10.5281/zenodo.24147183) · [映射](docs/whole-ledger-v2-map.json) · [复现](docs/whole-ledger-v2-reproduction.md)
+- [忠实表示与精确反演](https://h0mework.wiki/papers/exact-realization/) · [v1](https://doi.org/10.5281/zenodo.24218120) · [映射](docs/exact-realization-map.json) · [复现](docs/exact-realization-reproduction.md)
 
 </details>
 

@@ -528,6 +528,19 @@ function physicsThirdEdition(slug: string, edition: number, release: ReleaseId):
   }));
 }
 
+function exactRealization(slug: string, edition: number, release: ReleaseId): Source[] {
+  const map = mapOf(release);
+  if (map.acceptance.status !== "passed")
+    throw new Error("Exact Realization selection has no recorded kernel acceptance");
+  return map.claims.filter((claim: any) => claim.paper === slug).map((claim: any) => ({
+    key: `exact.${claim.id}`, ids: [claim.id], edition, category: "formal",
+    text: claim.localized.zh, localizedText: claim.localized,
+    location: { zh: claim.written_proof.zh.paper_reference, en: claim.written_proof.en.paper_reference },
+    producers: [...claim.producers, ...claim.direct_consumers,
+      ...claim.resources.filter((artifact: Producer) => artifact.public?.path.endsWith("/certificate.json"))],
+  }));
+}
+
 const ADAPTERS: Record<ReleaseId, (slug: string, edition: number, release: ReleaseId) => Source[]> = {
   "first-release": firstRelease,
   "second-edition": secondEdition,
@@ -548,6 +561,7 @@ const ADAPTERS: Record<ReleaseId, (slug: string, edition: number, release: Relea
   "capital-formation-v2": capitalFormation,
   "enforceable-peace": enforceablePeace,
   "physics-third-edition": physicsThirdEdition,
+  "exact-realization": exactRealization,
 };
 
 // --- translations -----------------------------------------------------------------------------

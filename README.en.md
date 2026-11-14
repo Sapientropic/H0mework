@@ -3,7 +3,7 @@
 <p align="center">
   <a href="https://github.com/Sapientropic/H0mework/actions/workflows/ci.yml"><img alt="CI" src="https://img.shields.io/github/actions/workflow/status/Sapientropic/H0mework/ci.yml?branch=main&style=flat-square&label=CI"></a>
   <a href="https://h0mework.wiki/en/"><img alt="Site h0mework.wiki" src="https://img.shields.io/badge/site-h0mework.wiki-b3372c?style=flat-square"></a>
-  <a href="#papers"><img alt="10 papers on Zenodo" src="https://img.shields.io/badge/Zenodo-10%20papers-3c679f?style=flat-square"></a>
+  <a href="#papers"><img alt="11 papers on Zenodo" src="https://img.shields.io/badge/Zenodo-11%20papers-3c679f?style=flat-square"></a>
   <a href="LICENSE"><img alt="Apache-2.0" src="https://img.shields.io/badge/license-Apache--2.0-3a332b?style=flat-square"></a>
 </p>
 
@@ -18,7 +18,7 @@ Lean 4 proofs, reproduction programs and frozen evidence behind a family of rese
 <!-- BEGIN CI STATUS -->
 <a href="https://github.com/Sapientropic/H0mework/actions/runs/43311434613"><img src="docs/assets/ci-wall.en.svg" alt="Lean full selection: 62,714 modules across 11 stages and 108 shards, all checked" width="100%"></a>
 
-- **62,714 Lean modules passed the complete kernel check.** [The accepted run](https://github.com/Sapientropic/H0mework/actions/runs/43311434613) used 11 stages and 108 shards with `--trust=0` throughout at `f337e63a`.
+- **62,714 Lean modules passed the complete kernel check.** [The accepted run](https://github.com/Sapientropic/H0mework/actions/runs/43311434613) used 11 stages and 108 shards with `--trust=0` throughout at `f337e63a`. The current build covers 63,410 modules across 117 shards.
 <!-- END CI STATUS -->
 
 - **Cited declarations are audited again per edition.** Their full dependency closures use only Lean's three standard axioms, with `unsafe = 0` and `partial = 0`; each paper's acceptance and reproduction links are grouped below.
@@ -29,7 +29,7 @@ Lean 4 proofs, reproduction programs and frozen evidence behind a family of rese
 <!-- BEGIN PAPERS -->
 **[Browse all papers on the site, with abstracts and claim-level proofs →](https://h0mework.wiki/en/papers/)**
 
-Latest: [An Economic Constitution of Possibility](https://h0mework.wiki/en/papers/economic-constitution/) · [Cutoff-Free Noncommutative Polarization Curvature, Second-Variation Action Identification, and the (2,1) Inertia Law of Whole-Ball Response](https://h0mework.wiki/en/papers/low-energy-loop-response/)
+Latest: [Faithful Representations and Exact Inversion from Quotients, Moments, and Streams](https://h0mework.wiki/en/papers/exact-realization/) · [An Economic Constitution of Possibility](https://h0mework.wiki/en/papers/economic-constitution/)
 
 <details>
 <summary><strong>Preface</strong> · 1 paper</summary>
@@ -39,10 +39,11 @@ Latest: [An Economic Constitution of Possibility](https://h0mework.wiki/en/paper
 </details>
 
 <details>
-<summary><strong>Core methods</strong> · 2 papers</summary>
+<summary><strong>Core methods</strong> · 3 papers</summary>
 
 - [Source-Native Process Algebra and Initial-Coface Revision](https://h0mework.wiki/en/papers/source-process-core/) · [v3](https://doi.org/10.5281/zenodo.24147130) · [Map](docs/source-process-core-v3-map.json) · [Reproduce](docs/source-process-core-v3-reproduction.md)
 - [Provenance-Preserving Conservation Calculus and Non-Free Continuity](https://h0mework.wiki/en/papers/whole-ledger-accounting/) · [v2](https://doi.org/10.5281/zenodo.24147183) · [Map](docs/whole-ledger-v2-map.json) · [Reproduce](docs/whole-ledger-v2-reproduction.md)
+- [Faithful Representations and Exact Inversion from Quotients, Moments, and Streams](https://h0mework.wiki/en/papers/exact-realization/) · [v1](https://doi.org/10.5281/zenodo.24218120) · [Map](docs/exact-realization-map.json) · [Reproduce](docs/exact-realization-reproduction.md)
 
 </details>
 

@@ -13,9 +13,9 @@ const REPO = "https://github.com/Sapientropic/H0mework/blob";
 export const repoLink = (path: string, line?: number, commit = "main") => `${REPO}/${commit}/${path}${line ? `#L${line}` : ""}`;
 
 const suffix = (lang: Lang) => (lang === "en" ? "-en" : "");
-const unzip = (zip: string, member: string) => execFileSync("unzip", ["-p", resolve(ROOT, zip), member], { encoding: "utf8", maxBuffer: 1 << 26 });
+export const unzip = (zip: string, member: string) => execFileSync("unzip", ["-p", resolve(ROOT, zip), member], { encoding: "utf8", maxBuffer: 1 << 26 });
 
-export type ReleaseId = "first-release" | "second-edition" | "low-energy" | "low-energy-v2" | "whole-ledger" | "whole-ledger-v2" | "source-process-core-v3" | "one-bit" | "one-bit-v2" | "generated-society" | "economic-constitution" | "generated-society-v2" | "generated-society-v3" | "economic-constitution-v2" | "economic-constitution-v3" | "capital-formation" | "capital-formation-v2" | "enforceable-peace" | "physics-third-edition";
+export type ReleaseId = "first-release" | "second-edition" | "low-energy" | "low-energy-v2" | "whole-ledger" | "whole-ledger-v2" | "source-process-core-v3" | "one-bit" | "one-bit-v2" | "generated-society" | "economic-constitution" | "generated-society-v2" | "generated-society-v3" | "economic-constitution-v2" | "economic-constitution-v3" | "capital-formation" | "capital-formation-v2" | "enforceable-peace" | "physics-third-edition" | "exact-realization";
 type Release = {
   label: Record<Lang, string>;
   date: string;
@@ -35,6 +35,14 @@ type Release = {
   // A prose revision quotes its current text once while retaining both editions' downloads.
   replacesClaimsFrom?: ReleaseId;
 };
+
+const EXACT = "papers/exact-realization/2026-11-14";
+export const exactArchive = `${EXACT}/editable/exact-realization-v1-editable.zip`;
+const exactRelease = readJson(`${EXACT}/manifest.json`);
+const exactPaper = exactRelease.papers.find((paper: any) => paper.paper === "exact-realization");
+if (!exactPaper?.is_published || !/^10\.5281\/zenodo\.\d+$/.test(exactPaper.doi)
+  || !/^[0-9a-f]{40}$/.test(exactPaper.source_commit))
+  throw new Error("Exact Realization release has no published DOI or fixed proof source");
 
 const FIRST = "papers/first-release";
 const SECOND = "papers/second-edition/2026-10-11";
@@ -142,6 +150,21 @@ export const publishedPaperJson = (release: ReleaseId, slug: string, path: strin
   once(`published:${release}:${slug}:${path}`, () => JSON.parse(unzip(RELEASES[release].selection!.path, `papers/${slug}/${path}`)));
 
 const BASE_RELEASES: Record<Exclude<ReleaseId, "generated-society-v2" | "economic-constitution-v2">, Release> = {
+  "exact-realization": {
+    label: { zh: "忠实表示与精确反演", en: "Faithful Representations and Exact Inversion" },
+    date: exactPaper.publication_date,
+    map: "docs/exact-realization-map.json",
+    manuscript: (slug, lang) => unzip(exactArchive, `papers/${slug}/manuscript${suffix(lang)}.md`),
+    bibliography: (slug) => unzip(exactArchive, `papers/${slug}/references.bib`),
+    files: (slug, lang) => ({ pdf: `${EXACT}/pdf/${slug}${suffix(lang)}.pdf` }),
+    check: "python3 tools/exact_realization.py entry",
+    guide: "docs/exact-realization-reproduction.md",
+    sourceCommit: exactPaper.source_commit,
+    acceptance: {
+      zh: "R1–R62 与五组接口通过构建、内核 trust 和完整类型核验。",
+      en: "R1–R62 and the five interfaces passed the build, kernel trust, and complete type checks.",
+    },
+  },
   "first-release": {
     label: { zh: "首发", en: "First release" },
     date: readJson(`${FIRST}/manifest.json`).date,
@@ -490,6 +513,11 @@ export const PAPERS: PaperEntry[] = [
       { release: "whole-ledger-v2", doi: ledgerSecond.doi },
     ],
     figure: { name: "whole-ledger-tower", claim: "wla.WA10" },
+  },
+  {
+    slug: "exact-realization",
+    theme: "core",
+    editions: [{ release: "exact-realization", doi: exactPaper.doi }],
   },
   {
     slug: "physics-common-source",
